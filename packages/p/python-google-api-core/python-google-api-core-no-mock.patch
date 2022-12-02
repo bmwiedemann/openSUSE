@@ -1,6 +1,6 @@
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/future/test_async_future.py google-api-core-2.10.0/tests/asyncio/future/test_async_future.py
---- google-api-core-2.10.0.orig/tests/asyncio/future/test_async_future.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/future/test_async_future.py	2022-09-08 13:25:05.452419648 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/future/test_async_future.py google-api-core-2.11.0/tests/asyncio/future/test_async_future.py
+--- google-api-core-2.11.0.orig/tests/asyncio/future/test_async_future.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/future/test_async_future.py	2022-12-02 11:02:43.002329239 +0100
 @@ -14,7 +14,7 @@
  
  import asyncio
@@ -10,9 +10,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/future/test_async_future.py 
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/gapic/test_method_async.py google-api-core-2.10.0/tests/asyncio/gapic/test_method_async.py
---- google-api-core-2.10.0.orig/tests/asyncio/gapic/test_method_async.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/gapic/test_method_async.py	2022-09-08 13:25:05.444419568 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/gapic/test_method_async.py google-api-core-2.11.0/tests/asyncio/gapic/test_method_async.py
+--- google-api-core-2.11.0.orig/tests/asyncio/gapic/test_method_async.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/gapic/test_method_async.py	2022-12-02 11:02:42.994329152 +0100
 @@ -14,7 +14,7 @@
  
  import datetime
@@ -22,9 +22,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/gapic/test_method_async.py g
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py google-api-core-2.10.0/tests/asyncio/operations_v1/test_operations_async_client.py
---- google-api-core-2.10.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/operations_v1/test_operations_async_client.py	2022-09-08 13:25:05.436419487 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py google-api-core-2.11.0/tests/asyncio/operations_v1/test_operations_async_client.py
+--- google-api-core-2.11.0.orig/tests/asyncio/operations_v1/test_operations_async_client.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/operations_v1/test_operations_async_client.py	2022-12-02 11:02:42.990329109 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -34,9 +34,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/operations_v1/test_operation
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_grpc_helpers_async.py google-api-core-2.10.0/tests/asyncio/test_grpc_helpers_async.py
---- google-api-core-2.10.0.orig/tests/asyncio/test_grpc_helpers_async.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/test_grpc_helpers_async.py	2022-09-08 13:25:05.432419447 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/test_grpc_helpers_async.py google-api-core-2.11.0/tests/asyncio/test_grpc_helpers_async.py
+--- google-api-core-2.11.0.orig/tests/asyncio/test_grpc_helpers_async.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/test_grpc_helpers_async.py	2022-12-02 11:02:42.982329022 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -46,9 +46,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_grpc_helpers_async.py g
  import pytest  # noqa: I202
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_operation_async.py google-api-core-2.10.0/tests/asyncio/test_operation_async.py
---- google-api-core-2.10.0.orig/tests/asyncio/test_operation_async.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/test_operation_async.py	2022-09-08 13:25:05.448419608 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/test_operation_async.py google-api-core-2.11.0/tests/asyncio/test_operation_async.py
+--- google-api-core-2.11.0.orig/tests/asyncio/test_operation_async.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/test_operation_async.py	2022-12-02 11:02:43.002329239 +0100
 @@ -13,7 +13,7 @@
  # limitations under the License.
  
@@ -58,9 +58,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_operation_async.py goog
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_page_iterator_async.py google-api-core-2.10.0/tests/asyncio/test_page_iterator_async.py
---- google-api-core-2.10.0.orig/tests/asyncio/test_page_iterator_async.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/test_page_iterator_async.py	2022-09-08 13:25:05.428419407 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/test_page_iterator_async.py google-api-core-2.11.0/tests/asyncio/test_page_iterator_async.py
+--- google-api-core-2.11.0.orig/tests/asyncio/test_page_iterator_async.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/test_page_iterator_async.py	2022-12-02 11:02:42.982329022 +0100
 @@ -14,7 +14,7 @@
  
  import inspect
@@ -70,9 +70,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_page_iterator_async.py 
  import pytest
  
  from google.api_core import page_iterator_async
-diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_retry_async.py google-api-core-2.10.0/tests/asyncio/test_retry_async.py
---- google-api-core-2.10.0.orig/tests/asyncio/test_retry_async.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/asyncio/test_retry_async.py	2022-09-08 13:25:05.436419487 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/asyncio/test_retry_async.py google-api-core-2.11.0/tests/asyncio/test_retry_async.py
+--- google-api-core-2.11.0.orig/tests/asyncio/test_retry_async.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/asyncio/test_retry_async.py	2022-12-02 11:02:42.986329066 +0100
 @@ -15,7 +15,7 @@
  import datetime
  import re
@@ -82,9 +82,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/asyncio/test_retry_async.py google-a
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.10.0.orig/tests/unit/future/test__helpers.py google-api-core-2.10.0/tests/unit/future/test__helpers.py
---- google-api-core-2.10.0.orig/tests/unit/future/test__helpers.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/future/test__helpers.py	2022-09-08 13:25:05.508420211 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/future/test__helpers.py google-api-core-2.11.0/tests/unit/future/test__helpers.py
+--- google-api-core-2.11.0.orig/tests/unit/future/test__helpers.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/future/test__helpers.py	2022-12-02 11:02:43.070329976 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -94,9 +94,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/future/test__helpers.py google-
  
  from google.api_core.future import _helpers
  
-diff -Nru google-api-core-2.10.0.orig/tests/unit/future/test_polling.py google-api-core-2.10.0/tests/unit/future/test_polling.py
---- google-api-core-2.10.0.orig/tests/unit/future/test_polling.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/future/test_polling.py	2022-09-08 13:25:05.508420211 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/future/test_polling.py google-api-core-2.11.0/tests/unit/future/test_polling.py
+--- google-api-core-2.11.0.orig/tests/unit/future/test_polling.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/future/test_polling.py	2022-12-02 11:02:43.070329976 +0100
 @@ -16,7 +16,7 @@
  import threading
  import time
@@ -106,9 +106,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/future/test_polling.py google-a
  import pytest
  
  from google.api_core import exceptions, retry
-diff -Nru google-api-core-2.10.0.orig/tests/unit/gapic/test_method.py google-api-core-2.10.0/tests/unit/gapic/test_method.py
---- google-api-core-2.10.0.orig/tests/unit/gapic/test_method.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/gapic/test_method.py	2022-09-08 13:25:05.492420050 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/gapic/test_method.py google-api-core-2.11.0/tests/unit/gapic/test_method.py
+--- google-api-core-2.11.0.orig/tests/unit/gapic/test_method.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/gapic/test_method.py	2022-12-02 11:02:43.054329803 +0100
 @@ -14,7 +14,7 @@
  
  import datetime
@@ -118,9 +118,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/gapic/test_method.py google-api
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/unit/operations_v1/test_operations_rest_client.py google-api-core-2.10.0/tests/unit/operations_v1/test_operations_rest_client.py
---- google-api-core-2.10.0.orig/tests/unit/operations_v1/test_operations_rest_client.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/operations_v1/test_operations_rest_client.py	2022-09-08 13:25:05.480419930 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/operations_v1/test_operations_rest_client.py google-api-core-2.11.0/tests/unit/operations_v1/test_operations_rest_client.py
+--- google-api-core-2.11.0.orig/tests/unit/operations_v1/test_operations_rest_client.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/operations_v1/test_operations_rest_client.py	2022-12-02 11:02:43.038329629 +0100
 @@ -15,7 +15,7 @@
  #
  import os
@@ -130,9 +130,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/operations_v1/test_operations_r
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_bidi.py google-api-core-2.10.0/tests/unit/test_bidi.py
---- google-api-core-2.10.0.orig/tests/unit/test_bidi.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_bidi.py	2022-09-08 13:25:05.456419688 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_bidi.py google-api-core-2.11.0/tests/unit/test_bidi.py
+--- google-api-core-2.11.0.orig/tests/unit/test_bidi.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_bidi.py	2022-12-02 11:02:43.010329326 +0100
 @@ -17,7 +17,7 @@
  import queue
  import threading
@@ -142,9 +142,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_bidi.py google-api-core-2.
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_exceptions.py google-api-core-2.10.0/tests/unit/test_exceptions.py
---- google-api-core-2.10.0.orig/tests/unit/test_exceptions.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_exceptions.py	2022-09-08 13:25:05.488420010 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_exceptions.py google-api-core-2.11.0/tests/unit/test_exceptions.py
+--- google-api-core-2.11.0.orig/tests/unit/test_exceptions.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_exceptions.py	2022-12-02 11:02:43.050329759 +0100
 @@ -15,7 +15,7 @@
  import http.client
  import json
@@ -154,9 +154,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_exceptions.py google-api-c
  import pytest
  import requests
  
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_extended_operation.py google-api-core-2.10.0/tests/unit/test_extended_operation.py
---- google-api-core-2.10.0.orig/tests/unit/test_extended_operation.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_extended_operation.py	2022-09-08 13:25:05.468419809 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_extended_operation.py google-api-core-2.11.0/tests/unit/test_extended_operation.py
+--- google-api-core-2.11.0.orig/tests/unit/test_extended_operation.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_extended_operation.py	2022-12-02 11:02:43.022329456 +0100
 @@ -16,7 +16,7 @@
  import enum
  import typing
@@ -166,9 +166,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_extended_operation.py goog
  import pytest
  
  from google.api_core import exceptions
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_grpc_helpers.py google-api-core-2.10.0/tests/unit/test_grpc_helpers.py
---- google-api-core-2.10.0.orig/tests/unit/test_grpc_helpers.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_grpc_helpers.py	2022-09-08 13:25:05.476419890 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_grpc_helpers.py google-api-core-2.11.0/tests/unit/test_grpc_helpers.py
+--- google-api-core-2.11.0.orig/tests/unit/test_grpc_helpers.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_grpc_helpers.py	2022-12-02 11:02:43.034329586 +0100
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -178,9 +178,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_grpc_helpers.py google-api
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_operation.py google-api-core-2.10.0/tests/unit/test_operation.py
---- google-api-core-2.10.0.orig/tests/unit/test_operation.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_operation.py	2022-09-08 13:25:05.464419769 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_operation.py google-api-core-2.11.0/tests/unit/test_operation.py
+--- google-api-core-2.11.0.orig/tests/unit/test_operation.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_operation.py	2022-12-02 11:02:43.018329413 +0100
 @@ -13,7 +13,7 @@
  # limitations under the License.
  
@@ -190,9 +190,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_operation.py google-api-co
  import pytest
  
  try:
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_page_iterator.py google-api-core-2.10.0/tests/unit/test_page_iterator.py
---- google-api-core-2.10.0.orig/tests/unit/test_page_iterator.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_page_iterator.py	2022-09-08 13:25:05.460419729 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_page_iterator.py google-api-core-2.11.0/tests/unit/test_page_iterator.py
+--- google-api-core-2.11.0.orig/tests/unit/test_page_iterator.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_page_iterator.py	2022-12-02 11:02:43.014329369 +0100
 @@ -15,7 +15,7 @@
  import math
  import types
@@ -202,9 +202,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_page_iterator.py google-ap
  import pytest
  
  from google.api_core import page_iterator
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_path_template.py google-api-core-2.10.0/tests/unit/test_path_template.py
---- google-api-core-2.10.0.orig/tests/unit/test_path_template.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_path_template.py	2022-09-08 13:25:05.456419688 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_path_template.py google-api-core-2.11.0/tests/unit/test_path_template.py
+--- google-api-core-2.11.0.orig/tests/unit/test_path_template.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_path_template.py	2022-12-02 11:02:43.010329326 +0100
 @@ -14,7 +14,7 @@
  
  from __future__ import unicode_literals
@@ -214,9 +214,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_path_template.py google-ap
  import pytest
  
  from google.api import auth_pb2
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_retry.py google-api-core-2.10.0/tests/unit/test_retry.py
---- google-api-core-2.10.0.orig/tests/unit/test_retry.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_retry.py	2022-09-08 13:25:05.484419970 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_retry.py google-api-core-2.11.0/tests/unit/test_retry.py
+--- google-api-core-2.11.0.orig/tests/unit/test_retry.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_retry.py	2022-12-02 11:02:43.046329716 +0100
 @@ -16,7 +16,7 @@
  import itertools
  import re
@@ -226,9 +226,9 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_retry.py google-api-core-2
  import pytest
  import requests.exceptions
  
-diff -Nru google-api-core-2.10.0.orig/tests/unit/test_timeout.py google-api-core-2.10.0/tests/unit/test_timeout.py
---- google-api-core-2.10.0.orig/tests/unit/test_timeout.py	2022-09-02 03:27:23.000000000 +0200
-+++ google-api-core-2.10.0/tests/unit/test_timeout.py	2022-09-08 13:25:05.500420130 +0200
+diff -Nru google-api-core-2.11.0.orig/tests/unit/test_timeout.py google-api-core-2.11.0/tests/unit/test_timeout.py
+--- google-api-core-2.11.0.orig/tests/unit/test_timeout.py	2022-12-01 16:29:15.000000000 +0100
++++ google-api-core-2.11.0/tests/unit/test_timeout.py	2022-12-02 11:02:43.066329933 +0100
 @@ -15,7 +15,7 @@
  import datetime
  import itertools
@@ -236,5 +236,5 @@ diff -Nru google-api-core-2.10.0.orig/tests/unit/test_timeout.py google-api-core
 -import mock
 +from unittest import mock
  
- from google.api_core import timeout
+ from google.api_core import timeout as timeouts
  

@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-google-api-core
-Version:        2.10.2
+Version:        2.11.0
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
@@ -35,7 +35,7 @@ URL:            https://github.com/googleapis/python-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-core/google-api-core-%{version}.tar.gz
 # https://github.com/googleapis/python-api-core/issues/377
 Patch0:         python-google-api-core-no-mock.patch
-BuildRequires:  %{python_module google-auth >= 1.25.0}
+BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module googleapis-common-protos >= 1.53.0}
 BuildRequires:  %{python_module grpcio >= 1.33.2}
 BuildRequires:  %{python_module grpcio-gcp >= 0.2.2}
@@ -56,7 +56,7 @@ BuildRequires:  %{python_module pytest}
 # END TESTIN SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-auth >= 1.25.0
+Requires:       python-google-auth >= 2.14.1
 Requires:       python-googleapis-common-protos >= 1.53.0
 Requires:       python-grpcio >= 1.33.2
 Requires:       python-grpcio-status >= 1.33.2

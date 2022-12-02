@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec  2 10:03:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.11.0
+  * Add support for Python 3.11 (#466)
+  * Allow representing enums with their unqualified
+    symbolic names in headers (#465)
+  * Major refactoring of Polling, Retry and Timeout logic (#462)
+  * Require google-auth >= 2.14.1 (#463)
+- Refresh patches for new version
+  * python-google-api-core-no-mock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Oct 14 08:14:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.10.2
