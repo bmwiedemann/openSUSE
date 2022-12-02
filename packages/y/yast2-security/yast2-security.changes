@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  1 14:56:43 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed wrong steps count causing a crash during saving (bsc#1205918)
+- 4.5.4
+
+-------------------------------------------------------------------
 Tue Nov  8 17:40:12 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add support for DISA STIG security policy validation
