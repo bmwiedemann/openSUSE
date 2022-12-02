@@ -354,4 +354,21 @@
     <comment></comment>
     <requestid>1001398</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5976d333c9a543c148aa10e91c16c922</srcmd5>
+    <version>0.5.12</version>
+    <time>1669983223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.12:
+  * Add support for Xbox games with the xemu runner
+  * Fix authentication issue with Origin
+  * Fix authentication issue with EGS
+  * Fix authentication issue with Ubisoft Connect when 2FA is enabled
+  * Fix integration issue with GOG
+  * Add Discord Rich Presence integration
+  * Add ability to extract icons from Windows executables
+  * Allow setting custom cover art
+  * Re-style configuration dialogs</comment>
+    <requestid>1039517</requestid>
+  </revision>
 </revisionlist>

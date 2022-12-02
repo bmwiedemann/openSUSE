@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  2 09:04:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.12:
+  * Add support for Xbox games with the xemu runner
+  * Fix authentication issue with Origin
+  * Fix authentication issue with EGS
+  * Fix authentication issue with Ubisoft Connect when 2FA is enabled
+  * Fix integration issue with GOG
+  * Add Discord Rich Presence integration
+  * Add ability to extract icons from Windows executables
+  * Allow setting custom cover art
+  * Re-style configuration dialogs
+
+-------------------------------------------------------------------
 Tue Sep  6 08:50:00 UTC 2022 - Kostadin Shishmanov <kocelfc@tutanota.com>
 
 - Remove unneeded line in the spec file which makes lutris

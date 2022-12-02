@@ -18,7 +18,7 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.11
+Version:        0.5.12
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
