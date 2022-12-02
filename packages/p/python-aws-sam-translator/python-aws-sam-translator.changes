@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Nov 14 16:29:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Update to 1.54.0
+  * chore: fix custom domain integration tests for feature toggle by @hnnasit
+    in #2517
+  * Revert "chore: fix custom domain integration tests for feature toggle" by
+    @hnnasit in #2518
+  * Release 1.52.0 (to develop) by @aws-sam-cli-bot in #2523
+  * Release 1.53.0 (to develop) by @aws-sam-cli-bot in #2530
+  * chore: rerun failing tests by @hoffa in #2527
+  * docs: update PR template by @hoffa in #2531
+  * chore: run tests with GitHub workflow by @hoffa in #2535
+  * chore: pylint fix by @GavinZZ in #2538
+  * chore: remove AppVeyor by @hoffa in #2539
+  * Add Integration Test Deployer Logging Improvements by @awood45 in #2543
+  * Upgrade Pylint Version and Fix Pylint Issues by @GavinZZ in #2540
+  * Add ability to set State of EventBridge Rule by @sebastiankasprzak in #2524
+  * Add Integ Test Skip Flag for EventBus by @awood45 in #2545
+  * chore: Enable more pylint rules and fixes pylint issues by @GavinZZ in
+    #2544
+  * chore: add CodeQL by @hoffa in #2541
+  * Enable more pylint rules and fixes pylint issues by @GavinZZ in #2547
+  * fix: Correct kafka property names in generated event source mapping by
+    @aahung in #2549
+  * Enable more pylint rules and fixes pylint issues by @GavinZZ in #2548
+  * chore: Add transform test creation script by @GavinZZ in #2551
+  * chore: Add JSON formatter and format all JSON files in tests by @aahung in
+    #2553
+  * Do not change input file and exit if hardcoded partition used by @GavinZZ
+    in #2554
+  * feat: replace DependsOn to connector by its generated logical IDs by @hoffa
+    in #2537
+  * chore: use connector logical ID for DependsOn in integ test by @hoffa in
+    #2559
+  * Enable mypy --strict for future code by @xazhao in #2558
+  * Bug fix: Fix DisableExecuteApiEndpoint bug fix by @aaythapa in #2560
+  * Add ability to set Name of EventBridge Rule by @sebastiankasprzak in #2525
+  * Remove unrecognized pylint options by @GavinZZ in #2555
+  * chore: Make PropertyType and related validator typed by @aahung in #2562
+  * chore: Make intrinsics helper functions typed by @aahung in #2563
+  * chore: Type improvements initiated from adding all by @aahung in #2564
+  * feat: Add support to Fn::GetAtt X.Y when looking up IAM role in serve… by
+    @aahung in #2567
+  * docs: new README by @hoffa in #2565
+  * docs: use sam sync instead of sam deploy by @hoffa in #2569
+  * docs: add SAM workshop, minor polish to README by @hoffa in #2571
+  * chore: add Gitpod config, docs polish by @hoffa in #2573
+  * Bug fix: Fix generated Lambda permission's SourceARN when $default path is
+    used in HTTP API by @aaythapa in #2574
+  * Better test for type of a variable by @kddejong in #2520
+  * chore: Add yaml formatter and format yaml files in tests/ by @aahung in
+    #2577
+  * chore: Explicitly make our test yamls yaml 1.1 by @aahung in #2579
+  * chore: clean up docs by @hoffa in #2580
+  * docs: development guidelines by @hoffa in #2582
+  * docs: add "add types" guideline by @hoffa in #2584
+  * chore: add development guidelines to checklist by @hoffa in #2585
+  * feat: Add ScheduleV2 for AWS::Scheduler::Schedule by @aahung
+
+-------------------------------------------------------------------
 Thu Oct 27 09:58:47 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.53.0

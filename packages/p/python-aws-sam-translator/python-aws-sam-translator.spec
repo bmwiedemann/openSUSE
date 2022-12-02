@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Disable tests on SLE-12 due to issues with Python 3.4
 # see: https://github.com/awslabs/serverless-application-model/issues/1255
 %if 0%{?suse_version} < 1500
@@ -28,7 +27,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.53.0
+Version:        1.54.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
@@ -55,6 +54,7 @@ BuildRequires:  %{python_module jsonschema >= 3.2}
 BuildRequires:  %{python_module parameterized >= 0.7.4}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.10.1}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module requests >= 2.24.0}
 %python_subpackages
 
@@ -65,6 +65,10 @@ templates into AWS CloudFormation templates
 %prep
 %autosetup -p1 -n serverless-application-model-%{version}
 sed -i -e 's:~=:>=:g' requirements/base.txt
+# Remove the __init__.py file from bin to avoid installation of this
+# folder in python_sitelib
+# https://github.com/aws/serverless-application-model/issues/2588
+rm bin/__init__.py
 
 %build
 %python_build
