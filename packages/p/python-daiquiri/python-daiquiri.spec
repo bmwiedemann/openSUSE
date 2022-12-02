@@ -18,7 +18,7 @@
 
 %global skip_python2 1
 Name:           python-daiquiri
-Version:        3.0.1
+Version:        3.2.1
 Release:        0
 Summary:        Library to configure Python logging
 License:        Apache-2.0

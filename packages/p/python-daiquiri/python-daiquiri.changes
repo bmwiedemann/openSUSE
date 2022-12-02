@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec  2 01:09:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.2.1
+  * chore: add custom LogRecord classes to avoid ignore
+  * fix(output): correct Datadog handler class
+  * fix: use _ version
+
+- Update to 3.2.0
+  * chore: type everything
+  * refactor: remove Python 2 support leftover
+  * chore: configure black
+
+- Update to 3.1.1
+  * fix: add missing py.typed
+
+- Update to 3.1.0 
+  * fix: update setup.cfg
+
+-------------------------------------------------------------------
 Wed Nov 16 16:54:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed python-six dep
