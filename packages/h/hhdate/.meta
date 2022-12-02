@@ -1,0 +1,7 @@
+<package name="hhdate" project="openSUSE:Factory">
+  <title>Howard Hinnant's date library</title>
+  <description>A date and time library based on the C++11/14/17 &lt;chrono&gt; header 
+
+https://github.com/HowardHinnant/date</description>
+  <devel project="devel:libraries:c_c++" package="hhdate"/>
+</package>
