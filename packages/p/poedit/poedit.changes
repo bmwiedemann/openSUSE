@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  1 19:03:45 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.2.2: Fixed overzealous placeholders correctness check.
+
+-------------------------------------------------------------------
 Tue Oct 25 19:33:10 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.2.1: Fixed chown/chmod verification logic broken in 3.2.

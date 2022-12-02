@@ -600,4 +600,12 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 - Remove poedit-3.2-fix-file-save.patch: Fixed upstream.</comment>
     <requestid>1031196</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>db3687093453b4e7044b3d3fba00c662</srcmd5>
+    <version>3.2.2</version>
+    <time>1669983188</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 3.2.2: Fixed overzealous placeholders correctness check.</comment>
+    <requestid>1039391</requestid>
+  </revision>
 </revisionlist>
