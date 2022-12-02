@@ -189,4 +189,12 @@
     <comment>- Update to release 20221020</comment>
     <requestid>1030231</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>682d93599a1512448f4322bc15f53d80</srcmd5>
+    <version>20221201</version>
+    <time>1669983193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221201</comment>
+    <requestid>1039388</requestid>
+  </revision>
 </revisionlist>
