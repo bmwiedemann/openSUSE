@@ -119,4 +119,17 @@
     <comment></comment>
     <requestid>1039297</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>59302a97acc241f6c572a02a1a8d14ee</srcmd5>
+    <version>20221129.a10bb7c</version>
+    <time>1669983225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendor dir
+
+- Require /usr/bin/mandoc: we rely on mandoc to render the man
+  pages as html.
+
+- Fix building on Leap 15.4</comment>
+    <requestid>1039537</requestid>
+  </revision>
 </revisionlist>
