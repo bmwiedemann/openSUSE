@@ -1,0 +1,5 @@
+<package name="uasm" project="openSUSE:Factory">
+  <title>uasm</title>
+  <description></description>
+  <devel project="devel:tools:building" package="uasm"/>
+</package>

@@ -1,0 +1,24 @@
+Index: UASM-2.56.2/invoke.c
+===================================================================
+--- UASM-2.56.2.orig/invoke.c
++++ UASM-2.56.2/invoke.c
+@@ -1588,6 +1588,7 @@ static int sysv_GetNextVEC(struct proc_i
+ 		return(sysV64_regsYMM[info->firstVEC++]);
+ 	if (size == 64)
+ 		return(sysV64_regsZMM[info->firstVEC++]);
++	return -1;
+ }
+ 
+ /*
+Index: UASM-2.56.2/proc.c
+===================================================================
+--- UASM-2.56.2.orig/proc.c
++++ UASM-2.56.2/proc.c
+@@ -4855,6 +4855,7 @@ static ret_code write_generic_prologue(s
+ 			AddLineQueueX("push %r", *regist);
+ 		}
+ 	}
++	return(NOT_ERROR);
+ }
+ 
+ /* Write out UASM internal prologue */
