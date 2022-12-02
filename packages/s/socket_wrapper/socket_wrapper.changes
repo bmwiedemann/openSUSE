@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 24 09:40:58 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.5
+  * Inject O_LARGEFILE as needed on 32bit
+  * pkgconfig: Fix path to libsocket_wrapper.so
+  * Fix -Wcast-qual warnings
+  * Fix dclose(RTLD_NEXT)
+
+-------------------------------------------------------------------
 Thu Jul 21 12:53:16 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.3.4

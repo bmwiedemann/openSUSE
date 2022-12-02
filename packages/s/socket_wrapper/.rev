@@ -182,4 +182,12 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>991556</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4aa9c67fc6cbb1b2a2d8da90ca4341cb</srcmd5>
+    <version>1.3.5</version>
+    <time>1669983123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1039284</requestid>
+  </revision>
 </revisionlist>
