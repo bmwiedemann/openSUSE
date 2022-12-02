@@ -21,7 +21,7 @@
 %global logdir %{_localstatedir}/log/%{app_name}
 
 Name:           %{app_name}
-Version:        0.3.6
+Version:        0.3.7
 Release:        0%{?dist}
 Summary:        Certificate Enrollment through CEP/CES
 

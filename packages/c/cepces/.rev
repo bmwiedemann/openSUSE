@@ -61,4 +61,14 @@
     <comment></comment>
     <requestid>1030897</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c74833299aee8be6a288c7dd69d3aa02</srcmd5>
+    <version>0.3.7</version>
+    <time>1669983128</time>
+    <user>dimstar_suse</user>
+    <comment>Release v0.3.7:
+- Make the openssl security level configurable
+</comment>
+    <requestid>1039334</requestid>
+  </revision>
 </revisionlist>
