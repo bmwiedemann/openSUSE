@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 30 16:02:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.3:
+  + Update GTK Rust template to recent gtk4-rs release.
+  + Spellcheck fixes.
+  + UI improvements to various panels including GAction fixes.
+  + Preference dialog widgetry fixes.
+  + Clear diagnostics when starting a new build.
+  + New "shellcheck" plugin providing diagnostics for shell scripts
+  + Add print support for web pages.
+  + Addition of various default snippet variables.
+  + Vim integration improvements when interacting with some
+    internal features such as bracket/brace overwrite.
+  + Ensure sourceview scrolls when moving between search results
+    instead of jumping, while maintaining jump support when file is
+    opened.
+  + Fix various action activation for web page menus.
+  + CSS style fixes for :backdrop pseudo selector.
+  + Fix measurements for gutter when font is scaled.
+  + Fix console interaction for debugger UI.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct  5 08:07:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

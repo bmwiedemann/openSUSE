@@ -25,13 +25,13 @@
 
 Name:           gnome-builder
 ### FIXME ### Enable docs build again on next versionbump (see meson options)
-Version:        43.2
+Version:        43.3
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/%{basever}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/43/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
@@ -106,6 +106,7 @@ Obsoletes:      gnome-builder-doc <= %{version}
 %description
 Builder is an IDE for GNOME and a tool to help writing GNOME-based
 applications.
+
 
 
 

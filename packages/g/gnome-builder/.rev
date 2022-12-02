@@ -521,4 +521,30 @@
     <comment></comment>
     <requestid>1009284</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d7820b17532a12820dc6775b814d81b9</srcmd5>
+    <version>43.3</version>
+    <time>1669983179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Update GTK Rust template to recent gtk4-rs release.
+  + Spellcheck fixes.
+  + UI improvements to various panels including GAction fixes.
+  + Preference dialog widgetry fixes.
+  + Clear diagnostics when starting a new build.
+  + New &quot;shellcheck&quot; plugin providing diagnostics for shell scripts
+  + Add print support for web pages.
+  + Addition of various default snippet variables.
+  + Vim integration improvements when interacting with some
+    internal features such as bracket/brace overwrite.
+  + Ensure sourceview scrolls when moving between search results
+    instead of jumping, while maintaining jump support when file is
+    opened.
+  + Fix various action activation for web page menus.
+  + CSS style fixes for :backdrop pseudo selector.
+  + Fix measurements for gutter when font is scaled.
+  + Fix console interaction for debugger UI.
+  + Updated translations. (forwarded request 1039198 from dimstar)</comment>
+    <requestid>1039365</requestid>
+  </revision>
 </revisionlist>
