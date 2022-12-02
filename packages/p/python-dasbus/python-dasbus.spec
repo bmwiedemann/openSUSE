@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dasbus
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        DBus library in Python 3
 License:        LGPL-2.0-or-later

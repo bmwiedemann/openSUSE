@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec  2 01:18:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to dasbus-1.7 
+  Document limitations of the DBus specification generator by @poncovka in #63
+  Fix testing with Travis CI by @poncovka in #68
+  Allow to run tests in a container by @poncovka in #69
+  Provide a language argument for the code blocks by @seahawk1986 in #71
+  Change the type of 'h' glib objects from 'File' to 'UnixFD' by @wdouglass in #70
+  Add functions for generating/consuming fdlists with variants by @wdouglass in #72
+  Use CentOS Stream for testing with Travis by @poncovka in #83
+  add remove dbus object function on bus and update tests by @mc18g13 in #74
+  properly measure coverage across multiprocess test cases by @wdouglass in #82
+  Extend the .coveragerc file by @poncovka in #86
+  Disable builds for Fedora ELN on commits by @poncovka in #85
+  Run tests for Debian and Ubuntu in Travis by @poncovka in #84
+  Fix pylint issues by @poncovka in #91
+  Support unixfd transfer via dbus by @wdouglass in #78
+  Raise TimeoutError if a DBus call times out by @poncovka in #92
+  UnixFD: Rename a parameter to server_arguments by @poncovka in #94
+  UnixFD: Revert a change in GLibClient._async_call_finish by @poncovka in #93
+  Don't use pylint from pip on Fedora Rawhide by @poncovka in #96
+  Simplify the code for replacing values of the UnixFD type by @poncovka in #95
+  UnixFD: Move the unit tests to a new file by @poncovka in #97
+  Use pylint from pip on Fedora Rawhide by @poncovka in #98
+  Always pull the latest container image by @poncovka in #99
+  CI: Run tests for all supported Python versions by @poncovka in #103
+  UnixFD: Move the support for Unix file descriptors to dasbus.unix by @poncovka in #100
+  UnixFD: Clean up tests of DBus calls with Unix file descriptors by @poncovka in #101
+  UnixFD: Handle DBus signals with Unix file descriptors by @poncovka in #102
+  Fix rpm lint warnings for OpenSUSE 15.3 by @cmcantalupo in #89
+  Fix bullet point lists by @poncovka in #107
+  Remove untracked files from the git repository interactively by @poncovka in #108
+  Simplify the hostname example by @poncovka in #106
+  UnixFD: Document the support for Unix file descriptors by @poncovka in #105
+  Improve the installation instruction by @poncovka in #109
+
+-------------------------------------------------------------------
 Fri Jan  7 16:32:06 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Add python-rpm-macros to BuildRequires.
