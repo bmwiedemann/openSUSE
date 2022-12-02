@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:03:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %ansible_python version, which is the
+  python version, that ansible is built against, as well as
+  %ansible_python_sitelib and %ansible_python_executable
+
+-------------------------------------------------------------------
+Wed Nov 23 07:27:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.0.0:
+  Ansible 7.0.0 will include ansible-core 2.14.0 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  This is a major version update from Ansible 6.x which included
+  ansible-core 2.13 and there may be backwards incompatibilities in the
+  core playbook language.
+
+  * What's new in Ansible 7
+    - Ansible 7 requires Python 3.9 on the controller, same as ansible-core 2.14.
+    - Variables are now evaluated lazily; only when they are actually used. For
+      example, in ansible-core 2.14 an expression ``{{ defined_variable or
+      undefined_variable }}`` does not fail on ``undefined_variable`` if the
+      first part of ``or`` is evaluated to ``True`` as it is not needed to
+      evaluate the second part.
+
+  * Collections added to Ansible 7:
+    - ibm.spectrum_virtualize (version 1.9.0)
+    - inspur.ispim (version 1.0.1)
+    - purestorage.fusion (version 1.1.1)
+    - vultr.cloud (version 1.1.0)
+
+  * The previously deprecated servicenow.servicenow collection has been removed.
+
+  * NOTE: Read the full Ansible 7 porting guide at
+    https://github.com/ansible/ansible/blob/devel/docs/docsite/rst/porting_guides/porting_guide_7.rst
+    for complete details.
+    - The changelog for ansible-core 2.14 installed by this release of
+      ansible is available here:
+      https://github.com/ansible/ansible/blob/stable-2.14/changelogs/CHANGELOG-v2.14.rst
+    - Collections which have opted into being a part of the Ansible-7
+      unified changelog will have an entry on this page:
+      https://github.com/ansible-community/ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
 Wed Nov 16 08:27:00 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - remove lowlydba.sqlserver collection as rpmlint throws errors due to powershell:
