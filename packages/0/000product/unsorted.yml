@@ -711,7 +711,7 @@ unsorted:
   - apache2-mod_nss 
   - apache2-mod_perl 
   - apache2-mod_perl-devel 
-  - apache2-mod_php8 
+  - apache2-mod_php7 
   - apache2-mod_security2 
   - apache2-mod_uwsgi 
   - apache2-mod_wsgi 
@@ -1183,7 +1183,10 @@ unsorted:
   - bash-legacybin 
   - bash-loadables 
   - bat 
+  - bat-bash-completion 
   - bat-extras 
+  - bat-fish-completion 
+  - bat-zsh-completion 
   - batctl 
   - bats 
   - bazel: [x86_64] 
@@ -2305,6 +2308,7 @@ unsorted:
   - consoleet-kbd-fonts 
   - consoleet-oldschoolpc-fonts 
   - consoleet-terminus-fonts 
+  - consoleet-utils 
   - consoleet-xorg-fonts 
   - container-build-checks 
   - container-build-checks-strict 
@@ -10261,7 +10265,7 @@ unsorted:
   - libcairomm-1_16-1-32bit: [x86_64] 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_1_0 
+  - libcalc2_14_1_2 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -10293,7 +10297,7 @@ unsorted:
   - libcapi20-devel 
   - libcapi20-devel-32bit: [x86_64] 
   - libcapi20-mod_misdn 
-  - libcapnp-0_10_2 
+  - libcapnp-0_10_3 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcares2-32bit: [x86_64] 
@@ -20738,13 +20742,17 @@ unsorted:
   - php-pear-Net_Sieve 
   - php-pear-Net_Socket 
   - php-pear-XML_Parser 
+  - php7 
   - php7-APCu 
   - php7-bcmath 
   - php7-bz2 
   - php7-calendar 
+  - php7-cli 
+  - php7-ctype 
   - php7-curl 
   - php7-dba 
   - php7-devel 
+  - php7-dom 
   - php7-embed 
   - php7-enchant 
   - php7-exif 
@@ -20752,19 +20760,27 @@ unsorted:
   - php7-fileinfo 
   - php7-fpm 
   - php7-ftp 
+  - php7-gd 
+  - php7-gettext 
   - php7-gmagick 
   - php7-gmp 
   - php7-ice 
+  - php7-iconv 
   - php7-imagick 
   - php7-intl 
+  - php7-json 
   - php7-ldap 
   - php7-lzf 
   - php7-maxminddb 
+  - php7-mbstring 
   - php7-memcache 
   - php7-memcached 
+  - php7-mysql 
   - php7-odbc 
   - php7-opcache 
+  - php7-openssl 
   - php7-pcntl 
+  - php7-pdo 
   - php7-pear 
   - php7-pecl 
   - php7-pgsql 
@@ -20781,28 +20797,28 @@ unsorted:
   - php7-soap 
   - php7-sockets 
   - php7-sodium 
+  - php7-sqlite 
   - php7-sysvmsg 
   - php7-sysvsem 
   - php7-sysvshm 
   - php7-test 
   - php7-tidy 
+  - php7-tokenizer 
   - php7-uuid 
   - php7-xdebug 
+  - php7-xmlreader 
   - php7-xmlrpc 
+  - php7-xmlwriter 
   - php7-xsl 
   - php7-zip 
   - php7-zlib 
-  - php8 
   - php8-APCu 
   - php8-bcmath 
   - php8-bz2 
   - php8-calendar 
-  - php8-cli 
-  - php8-ctype 
   - php8-curl 
   - php8-dba 
   - php8-devel 
-  - php8-dom 
   - php8-embed 
   - php8-enchant 
   - php8-exif 
@@ -20812,26 +20828,19 @@ unsorted:
   - php8-fpm 
   - php8-fpm-apache 
   - php8-ftp 
-  - php8-gd 
-  - php8-gettext 
   - php8-gmagick 
   - php8-gmp 
   - php8-ice 
-  - php8-iconv 
   - php8-imagick 
   - php8-intl 
   - php8-ldap 
   - php8-lzf 
   - php8-maxminddb 
-  - php8-mbstring 
   - php8-memcache 
   - php8-memcached 
-  - php8-mysql 
   - php8-odbc 
   - php8-opcache 
-  - php8-openssl 
   - php8-pcntl 
-  - php8-pdo 
   - php8-pear 
   - php8-pecl 
   - php8-pgsql 
@@ -20847,17 +20856,13 @@ unsorted:
   - php8-soap 
   - php8-sockets 
   - php8-sodium 
-  - php8-sqlite 
   - php8-sysvmsg 
   - php8-sysvsem 
   - php8-sysvshm 
   - php8-test 
   - php8-tidy 
-  - php8-tokenizer 
   - php8-uuid 
   - php8-xdebug 
-  - php8-xmlreader 
-  - php8-xmlwriter 
   - php8-xsl 
   - php8-zip 
   - php8-zlib 
@@ -21234,8 +21239,6 @@ unsorted:
   - postgresql10-plr 
   - postgresql10-plr-doc 
   - postgresql10-pltcl 
-  - postgresql10-postgis 
-  - postgresql10-postgis-utils 
   - postgresql10-server 
   - postgresql10-test 
   - postgresql11 
@@ -21327,6 +21330,8 @@ unsorted:
   - postgresql15-plperl 
   - postgresql15-plpython 
   - postgresql15-pltcl 
+  - postgresql15-postgis 
+  - postgresql15-postgis-utils 
   - postgresql15-server-devel 
   - postgresql15-test 
   - postgrey 
