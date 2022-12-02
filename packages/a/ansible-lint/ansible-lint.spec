@@ -16,6 +16,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} < 1550
+# Leap15, SLES15
+%define ansible_python python310
+%define ansible_python_executable python3.10
+%define ansible_python_sitelib %python310_sitelib
+%else
+# Tumbleweed
+%define ansible_python python3
+%define ansible_python_executable python3
+%define ansible_python_sitelib %python3_sitelib
+%endif
 
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
@@ -28,54 +39,59 @@ URL:            https://github.com/ansible-community/ansible-lint
 Source0:        https://github.com/ansible-community/ansible-lint/archive/v%{version}/ansible-lint-%{version}.tar.gz#/ansible-lint-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pip
-BuildRequires:  python3-wheel
+BuildRequires:  %{ansible_python}-base >= 3.8
+BuildRequires:  %{ansible_python}-pip
+BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  fdupes
 
 # https://github.com/ansible/ansible-lint/blob/main/setup.cfg#L98
 # SECTION tests
-BuildRequires:  python3-flaky >= 3.7.0
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-xdist >= 2.1.0
-BuildRequires:  python3-psutil
-BuildRequires:  python3-black >= 22.8.0
-BuildRequires:  python3-mypy
-BuildRequires:  python3-pylint
-BuildRequires:  python3-flake8
+BuildRequires:  %{ansible_python}-flaky >= 3.7.0
+BuildRequires:  %{ansible_python}-pytest
+BuildRequires:  %{ansible_python}-pytest-cov
+BuildRequires:  %{ansible_python}-pytest-xdist >= 2.1.0
+BuildRequires:  %{ansible_python}-psutil
+BuildRequires:  %{ansible_python}-black >= 22.8.0
+BuildRequires:  %{ansible_python}-mypy
+BuildRequires:  %{ansible_python}-pylint
+BuildRequires:  %{ansible_python}-flake8
 # /SECTION
 
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
 # https://github.com/ansible/ansible-lint/blob/main/setup.cfg#L64
 BuildRequires:  ansible-core >= 2.12
-BuildRequires:  python3-ansible-compat >= 2.2.5
-BuildRequires:  python3-enrich >= 1.2.6
-BuildRequires:  python3-filelock >= 3.8.0
-BuildRequires:  python3-jsonschema >= 4.17.0
-BuildRequires:  python3-packaging >= 21.3
-BuildRequires:  python3-PyYAML >= 5.4.1
-BuildRequires:  python3-rich >= 12.0.0
-BuildRequires:  python3-ruamel.yaml >= 0.17.21
-BuildRequires:  python3-six
-BuildRequires:  python3-tenacity
-BuildRequires:  python3-wcmatch >= 8.3.2
-BuildRequires:  python3-yamllint >= 1.26.3
+BuildRequires:  %{ansible_python}-ansible-compat >= 2.2.5
+BuildRequires:  %{ansible_python}-enrich >= 1.2.6
+BuildRequires:  %{ansible_python}-filelock >= 3.8.0
+BuildRequires:  %{ansible_python}-jsonschema >= 4.17.0
+BuildRequires:  %{ansible_python}-packaging >= 21.3
+BuildRequires:  %{ansible_python}-PyYAML >= 5.4.1
+BuildRequires:  %{ansible_python}-rich >= 12.0.0
+BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.21 and %{ansible_python}-ruamel.yaml < 0.18)
+BuildRequires:  %{ansible_python}-six
+BuildRequires:  %{ansible_python}-subprocess-tee
+BuildRequires:  %{ansible_python}-tenacity
+BuildRequires:  %{ansible_python}-wcmatch >= 8.3.2
+BuildRequires:  %{ansible_python}-yamllint >= 1.26.3
 
 # https://github.com/ansible/ansible-lint/blob/main/setup.cfg#L69
 Requires:       ansible-core >= 2.12
-Requires:       python3-ansible-compat >= 2.2.5
-Requires:       python3-black >= 22.8.0
-Requires:       python3-enrich >= 1.2.6
-Requires:       python3-jsonschema >= 4.17.0
-Requires:       python3-packaging >= 21.3
-Requires:       python3-PyYAML >= 5.4.1
-Requires:       python3-rich >= 12.0.0
-Requires:       python3-ruamel.yaml >= 0.17.21
-Requires:       python3-six
-Requires:       python3-tenacity
-Requires:       python3-wcmatch >= 8.3.2
-Requires:       python3-yamllint >= 1.26.3
+Requires:       %{ansible_python}-ansible-compat >= 2.2.5
+Requires:       %{ansible_python}-black >= 22.8.0
+Requires:       %{ansible_python}-bracex
+Requires:       %{ansible_python}-enrich >= 1.2.6
+Requires:       %{ansible_python}-filelock
+Requires:       %{ansible_python}-jsonschema >= 4.17.0
+Requires:       %{ansible_python}-packaging >= 21.3
+Requires:       %{ansible_python}-PyYAML  >= 5.4.1
+Requires:       %{ansible_python}-rich >= 12.0.0
+Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.21 and %{ansible_python}-ruamel.yaml < 0.18)
+Requires:       %{ansible_python}-six
+Requires:       %{ansible_python}-subprocess-tee
+Requires:       %{ansible_python}-tenacity
+Requires:       %{ansible_python}-wcmatch >= 8.3.2
+Requires:       %{ansible_python}-yamllint >= 1.26.3
 
 %description
 Checks playbooks for practices and behavior that could potentially be improved.
@@ -86,21 +102,21 @@ sed -ri 's/(\[metadata\])/\1\nversion = %{version}/' setup.cfg
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
 
 %build
-python3 -mpip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose . -w build/
+%{ansible_python_executable} -mpip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose . -w build/
 
 %install
-python3 -mpip install --root %{buildroot} --disable-pip-version-check --no-compile --no-deps --progress-bar off build/ansible_lint-*.whl
-find %{buildroot}/%{python3_sitelib} -name '*.pyc' -delete
-python3 -m compileall %{buildroot}/%{python3_sitelib}
-python3 -O -m compileall %{buildroot}/%{python3_sitelib}
+%{ansible_python_executable} -mpip install --root %{buildroot} --disable-pip-version-check --no-compile --no-deps --progress-bar off build/ansible_lint-*.whl
+find %{buildroot}/%{ansible_python_sitelib} -name '*.pyc' -delete
+%{ansible_python_executable} -m compileall %{buildroot}/%{ansible_python_sitelib}
+%{ansible_python_executable} -O -m compileall %{buildroot}/%{ansible_python_sitelib}
 
-%fdupes -s %{buildroot}/%{python3_sitelib}
+%fdupes -s %{buildroot}/%{ansible_python_sitelib}
 
 %files
 %doc README.md
 %license COPYING
 %{_bindir}/ansible-lint
-%{python3_sitelib}/%{lib_name}/
-%{python3_sitelib}/ansible_lint-%{version}.dist-info/
+%{ansible_python_sitelib}/%{lib_name}/
+%{ansible_python_sitelib}/ansible_lint-%{version}.dist-info/
 
 %changelog

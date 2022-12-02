@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:12:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %ansible_python version, which is the
+  python version, that ansible is built against, as well as
+  %ansible_python_sitelib
+- add explicit Requires for python*-subprocess-tee, that is not being added
+  automatically
+- Add Requires for python-filelock
+- Add Requires for python-bracex
+- Add version constraint for python-ruamel.yaml
+
+-------------------------------------------------------------------
 Thu Nov 24 16:00:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.9.0:
@@ -19,7 +31,7 @@ Thu Nov 24 16:00:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
     - Docs: usage content edits (#2682) @oraNod
     - Sort dependencies (#2711) @ssbarnea
     - Fix loop_var_prefix message list in the docs (#2709) @evgeni
-    - Clarify progressive mode documentation (#2708) @MarcinWieczorek 
+    - Clarify progressive mode documentation (#2708) @MarcinWieczorek
 
 -------------------------------------------------------------------
 Mon Nov 21 09:24:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
