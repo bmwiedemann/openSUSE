@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-jsonschema
-Version:        4.17.1
+Version:        4.17.3
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
