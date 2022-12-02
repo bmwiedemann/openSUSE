@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20221129
+ExpandFlags: macroserial:20221202
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
