@@ -7,4 +7,16 @@
     <comment>- New package for Azure SDK</comment>
     <requestid>910481</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0f2de8318bb53c50a942ca5d827e2b7</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1669992460</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1039585 from glaubitz)</comment>
+    <requestid>1039594</requestid>
+  </revision>
 </revisionlist>
