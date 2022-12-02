@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:48:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 3.9.1.post1 
+  * Dropped Python 2.7 from the list of supported Python versions
+    Relates to #666.
+
+-------------------------------------------------------------------
 Tue Mar  1 13:02:06 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.9.1
