@@ -34,38 +34,21 @@ Patch5:         %{name}-add-systemd-support.patch
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
 Requires:       mdadm
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
-Hard disks are the most commonly replaced system elements, and are
-therefore a critical consideration for improving availability. Root
-Disk Mirroring (RAID-1) is the technique of using redundant disks to
-record multiple copies of the data so that one disk failure will not
-cause data loss.
+The SCSI RAS (Reliability, Availability, and Serviceability) tools
+work with SCSI devices used in a Linux software RAID-1 configuration.
 
-This project includes changes that enhance the Reliability,
-Availability, and Serviceability (RAS) of the drivers that are commonly
-used in a Linux software RAID-1 configuration. Other efforts have been
-made to enable various common hardware RAID adapters and their drivers
-on Linux.
+* sgraidmon - a tool to monitor software RAID disks for
+  hot-insertion/removal
+* sgdefects - a tool to read the primary and grown defect lists
+* sgdskfl - a tool to load disk firmware to SCSI disks under Linux
+* sgmode - a tool to get and set SCSI device mode pages
+* sgdiag - a tool to perform format and other diagnostic functions
 
-The tools in this project were designed to add to the serviceability of
-SCSI devices under Linux so that the system does not have to be
-rebooted or taken out of service to perform common maintenance or
-service functions. This project has user-space and kernel level
-components:
-
-sgraidmon - a tool to monitor software RAID disks for
-hot-insertion/removal; Note that this uses raidtools like mdadm to
-re-configure the new disk. sgdefects - a tool to read the primary and
-grown defect lists sgdskfl - a tool to load disk firmware to SCSI disks
-under Linux; some sample firmware images are included in the package
-sgmode - a tool to get and set SCSI device mode pages; some sample mode
-page definition files are included in the package sgdiag - a tool to
-perform format and other diagnostic functions
-
-The scsiras patches are not currently included in our kernel.
+The tools require SCSIRAS patches in the kernel; these are not
+present in SUSE-provided kernels.
 
 %prep
 %autosetup -p1
@@ -89,7 +72,6 @@ install -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE2} %{buildroot}%{_unitdir}
 
 %files
-%defattr(-,root,root)
 %{_sbindir}/sg*
 %{_sbindir}/md*
 %{_sbindir}/getmd

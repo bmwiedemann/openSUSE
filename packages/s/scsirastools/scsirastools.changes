@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:35:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact description and fix the broken markup for the tool list.
+- Remove old specfile constructs.
+
+-------------------------------------------------------------------
 Thu Oct 20 13:37:29 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - Use /usr/sbin (boo#1191093)
