@@ -4608,4 +4608,17 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Thunderbird 102.5</comment>
     <requestid>1036233</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>373bbd35e892c18a92c20adb3e657715</srcmd5>
+    <version>102.5.1</version>
+    <time>1669983160</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.5.1
+  MFSA 2022-50
+  * CVE-2022-45414 (bmo#1788096)
+    Quoting from an HTML email with certain tags will trigger network
+    requests and load remote content, regardless of a configuration
+    to block remote content</comment>
+    <requestid>1039407</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 30 20:49:28 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.5.1
+  MFSA 2022-50
+  * CVE-2022-45414 (bmo#1788096)
+    Quoting from an HTML email with certain tags will trigger network
+    requests and load remote content, regardless of a configuration
+    to block remote content
+
+-------------------------------------------------------------------
 Sat Nov 12 22:48:04 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.5.0
