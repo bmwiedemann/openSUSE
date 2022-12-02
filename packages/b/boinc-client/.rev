@@ -437,4 +437,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>- Update to release 7.20.2</comment>
     <requestid>990864</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>7b3eec1d5ec531a62d65c363bc9fdbe3</srcmd5>
+    <version>7.20.5</version>
+    <time>1669992454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.20.5</comment>
+    <requestid>1039563</requestid>
+  </revision>
 </revisionlist>

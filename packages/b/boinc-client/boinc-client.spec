@@ -36,7 +36,7 @@
 Name:           boinc-client
 %define rel_name        %{name}_release
 %define minor_version   7.20
-Version:        %{minor_version}.2
+Version:        %{minor_version}.5
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
