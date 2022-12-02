@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 30 14:52:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.50.12:
+  + Fix weight conversion on MacOS.
+  + Update to Unicode 15.
+  + Some introspection annotation fixes.
+  + Improve PangoAttrList serialization.
+  + Fix char offset calculatiosn in multi-paragraph layouts.
+
+-------------------------------------------------------------------
 Tue Oct  4 07:52:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.50.11:
