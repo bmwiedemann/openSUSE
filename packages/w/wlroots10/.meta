@@ -1,0 +1,5 @@
+<package name="wlroots10" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="wlroots10"/>
+</package>

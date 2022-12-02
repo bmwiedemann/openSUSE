@@ -1,0 +1,477 @@
+-------------------------------------------------------------------
+Tue Jul 12 20:21:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 3456.patch: Fix build with ffmpeg 5. Patch from upstream git.
+
+-------------------------------------------------------------------
+Mon Feb 21 12:29:04 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.15.1:
+  * xdg-foreign: Fix crash on destroy of degenerate surface
+  * wlr_texture: remove wlr_texture_from_wl_drm() from header
+  * foreign-toplevel: send enter if needed on output bind
+  * tinywl: fix check whether client is focused or not
+  * scene/subsurface_tree: fix handling subsurface destruction
+  * compositor: damage the whole buffer on viewport src change
+  * subsurface: unlock cached state on commit if desynced
+  * backend: error out in autocreate without libinput support
+  * scene: schedule an output frame on wl_surface.frame
+  * scene: try to import buffers as textures before rendering
+  * input_method_v2: improve mapping detection
+  * render/gles2: don't constrain shm formats to ones that support reading
+  * vulkan: Fix imported image layout
+
+-------------------------------------------------------------------
+Tue Jan 25 03:51:29 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.15.0:
+  Release highlights:
+  * A new experimental Vulkan renderer has been merged (manually enabled with
+    WLR_RENDERER=vulkan).
+  * A new scene-graph API has been introduced to enable more code-sharing
+    between compositors.
+  * Large parts of the backend and renderer APIs have been refactored and
+    reworked.
+  * The drm-lease-v1 protocol has been implemented.
+  * Feedback support has been added to the linux-dmabuf-unstable-v1
+    implementation, unlocking many zero-copy and multi-GPU optimizations and
+    features.
+  * The wlr_output rendering API now supports 10bpc and 16bpc formats.
+  * The DRM backend now supports hotplugging secondary GPUs at runtime.
+  * wlr_region and wlr_box are now stable APIs.
+
+-------------------------------------------------------------------
+Tue Jan 18 15:45:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Remove libcap build option. It's not used since 0.11.0:
+  https://github.com/swaywm/wlroots/pull/2140
+- Fix x11 backend option: x11_backend is actually x11-backend
+
+-------------------------------------------------------------------
+Fri Dec  3 16:49:37 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- seatd is no more optional, see upstream commit 95b657ba80f6128eefd
+
+-------------------------------------------------------------------
+Fri Jul  9 12:23:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * surface: accept commits with buffer size not divisible by scale
+  * buffer: make enum wlr_buffer_cap public
+  * surface: allow locking pending state in commit handler
+  * Revert "backend/drm: populate cursor plane's current_fb"
+  * backend/drm: don't clear pending cursor FB on failed commit
+  * output: detach buffer from renderer before commit
+  * output-damage: fix output swapchain handling
+  * tablet-v2: fix pad and tool object versions
+  * backend/drm: force linear layout for multi-GPU buffers
+
+-------------------------------------------------------------------
+Thu Jun 24 08:14:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  Release highlights:
+  * Renderer refactoring work is well underway: everything now uses the new
+    infrastructure under-the-hood except the DRM backend's primary plane.
+  * The Pixman renderer has been merged, alongside new allocators (shared
+    memory for Wayland/X11 and DRM dumb buffers).
+  * Session management is now completely offloaded to libseat.
+  * Support for the xdg-activation-v1 protocol has been merged.
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.14.0
+- Remove logind/systemd dependency and use libseat instead for (e)logind
+  and seat support
+
+-------------------------------------------------------------------
+Sat Jun 19 13:25:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Use named source tarball
+- Fix meson version requirement
+
+-------------------------------------------------------------------
+Thu Apr  8 08:26:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Replace wlr_key_state with wl_keyboard_key_state (#2446[1]):
+    enum wlr_key_state has been replaced with enum wl_keyboard_key_state
+  * Use uint32_t in wlr_renderer_begin signature (#2433[2])
+  * Remove unneeded includes from wlr_input_device.h (#2470[3])
+  * Renderer v6, incremental version (#2240[4]): some implicit assumptions about
+    wlr_renderer's EGL context no longer hold true. Compositors not using EGL
+    directly shouldn't be affected.
+    + wlroots' framebuffer no longer is the EGL default framebuffer
+    + wlroots' framebuffer no longer has a depth attachment
+  * Remove wlr_create_renderer_func_t (#2561[5])
+    + wlr_backend_autocreate, wlr_drm_backend_create, wlr_headless_backend_create,
+      wlr_wl_backend_create, wlr_x11_backend_create no longer take a
+      wlr_renderer_create_func_t parameter
+    +The wlr_renderer_create_func_t type has been removed
+  * backend/noop: listen to display destroy and destroy the backend (#2583[6]):
+    the noop backend should no longer be manually destroyed after the wl_display
+  * xdg shell: remove wlr_xdg_surface_for_each_popup (#2610[7])
+    wlr_xdg_surface_for_each_popup has been removed, use
+    wlr_xdg_surface_for_each_popup_surface instead.
+  * layer shell: rename popup iterator for consistency (#2617[8]):
+    wlr_layer_surface_v1_for_each_popup has been renamed to
+    wlr_layer_surface_v1_for_each_popup_surface.
+  * Keyboard interactivity options (#2555[9]):
+    wlr_layer_surface_v1_state.keyboard_interactivity has now the type
+    enum zwlr_layer_surface_v1_keyboard_interactivity to reflect protocol changes.
+  * output: remove scale/transform events (#2631[10]): the scale and transform
+    output events have been removed, compositors should use the commit event instead.
+  * output: send commit event after pending state is cleared (#2630[11]):
+    compositors can no longer read the to-be-committed state from wlr_output.pending in
+    an output commit event handler. Instead, use the current state and
+    wlr_output_event_commit.
+  * render/wlr_texture: clamp texture coordinates to edge by default (#2476[12]):
+    the GLES2 renderer no longer wraps textures with GL_REPEAT. If you want to repeat a
+    texture, manually change wlroots' default via glTexParameteri.
+  * text_input_v3: correct typo in enum field (#2735[13]):
+     WLR_TEXT_INPUT_v3_FEATURE_CONTENT_TYPE has been renamed to
+     WLR_TEXT_INPUT_V3_FEATURE_CONTENT_TYPE.
+  * Stop using wl_shm_format (#2744[14]): the renderer functions take DRM_FORMAT_* values
+    instead of WL_SHM_FORMAT_*. Make sure you don't have any remaining WL_SHM_FORMAT_*
+    enum values in your compositor.
+    + wlr_renderer_read_pixels now takes a DRM format code instead of an enum
+      wl_shm_format
+    + wlr_renderer_get_shm_texture_formats now returns DRM format codes instead of an
+      enum wl_shm_format
+    + wlr_renderer_read_pixels now takes a DRM format code instead of an enum
+      wl_shm_format
+    + wlr_output_preferred_read_format now returns a DRM format code instead of an enum
+      wl_shm_format
+
+-------------------------------------------------------------------
+Mon Nov  9 07:44:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  breaking changes:
+  * render/gles2: remove gles2_procs global (#2351)
+    The wlr_gles2_texture_from_* family of functions are no longer
+    public API.
+  * Remove xdg-shell-unstable-v6 support (#2391)
+    wlr_xdg_shell_v6 has been dropped and is superseded by wlr_xdg_shell.
+  * output: fix blurred hw cursors with fractional scaling (#2107)
+    For backends: wlr_output_impl.set_cursor now takes a float scale
+    instead of an int32_t.
+  * Introduce wlr_output_event_commit (#2315)
+    The wlr_output.events.commit event now has a data argument of
+    type struct wlr_output_event_commit * instead of struct wlr_output *.
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.12.0
+
+-------------------------------------------------------------------
+Thu Jul 16 07:45:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * build: replace version with soversion (#2005)
+  * Fix wl_output_transform rotation direction, and composition (#2023)
+  * backend/drm: add support for custom modes (#1881)
+  * Introduce wlr_client_buffer (#2043)
+  * Augment wlr_buffer to support swapchains (#2044)
+  * output: remove wlr_output_impl.schedule_frame (#2046)
+  * output: replace wlr_output.damage with a damage event (#2065)
+  * Implement the viewporter protocol (#2092)
+  * output: introduce wlr_output_test (#2097)
+  * output: fix blurred hw cursors with fractional scaling (#2107)
+  * Texture improvements (#2139)
+  * xwayland: split server (#2175)
+  * Make wlr_xcursor_manager_load() return a bool (#2195)
+  * output: make wlr_output_set_gamma atomic (#2196)
+  * Allow keyboard and pointer grabs to hook clear_focus() (#2217)
+  * backend/drm: atomic improvements (#2238)
+  * render: choose DMA-BUF texture target via eglQueryDmaBufModifiersEXT (#2255)
+  * output: fix dangling renderer context after wlr_output_preferred_read_format (#2292)
+  * layer-shell: remove unused surface list (#2309)
+  * For details see: https://github.com/swaywm/wlroots/releases/tag/0.11.0
+- Remove 0001-Declare-wlr_seat-globals-as-extern.patch: in new release
+- Remove viewport-implementation.patch: in new release
+- Set -Dlogind-provider=systemd
+
+-------------------------------------------------------------------
+Thu Jun 25 07:31:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add viewport-implementation.patch:
+  To be able to compile sway 1.5 RC1 which depends on unreleased
+  wlroots
+
+-------------------------------------------------------------------
+Sat Jun  6 14:09:57 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Add -fno-common patch in order to address boo#1160244
+  * 0001-Declare-wlr_seat-globals-as-extern.patch
+  * https://github.com/swaywm/wlroots/pull/2013
+
+-------------------------------------------------------------------
+Thu Mar 12 00:54:43 UTC 2020 - Max Lin <mlin@suse.com>
+
+- Disable logind support in Leap 15, we don't have systemd >= 237,
+  neither elogind.
+
+-------------------------------------------------------------------
+Wed Mar 11 08:39:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  * xdg-shell: fix popups rendered outside of the screen
+  * meson: Fix protocol includes for compositor examples
+  * examples: Fix compositor-examples
+  * xwayland: ignore pointer focus changes
+
+-------------------------------------------------------------------
+Thu Jan 23 08:42:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  * The RDP backend has been removed entirely in favor of solutions
+    like wayvnc
+  * Code cleanups and bug fixes
+
+-------------------------------------------------------------------
+Mon Jan 13 12:06:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * virtual-pointer: Actually use the value passed to axis_discrete
+  * xwm: allow applications to change focus between their own surfaces
+
+  * backend/wayland: fix frame callback not registered
+
+-------------------------------------------------------------------
+Fri Jan  3 11:26:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * layer_shell: set layer of existing surface #1842
+  * backend/drm: add support for custom modes #1881
+  * Simplify globals implementation by removing destructors #1915
+  * Improve presentation-time API #1919
+  * output: re-introduce atomic mode, enabled, scale and transform #1797
+  * See for details: https://github.com/swaywm/wlroots/releases/tag/0.9.0
+- Changes form 0.8.0:
+  * presentation_feedback: add the sampled state
+  * See for details: https://github.com/swaywm/wlroots/releases/tag/0.8.0
+
+-------------------------------------------------------------------
+Tue Aug 27 08:51:24 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.0:
+  * backend: touch: Assign good ids to single touch devices
+  * backend: touch: Fixup incomplete patch for single touch devices.
+  * render/drm: keep old drm_format if realloc fails
+  * xcursor: avoid leak and loss of all cursors if cursors realloc fails
+  * Fix memory leak
+  * Simplify check
+  * wlr_surface: condition is always false
+  * xdg_shell: remove variable self-assignment
+  * backend/session: non-void function should return a value
+  * backend/drm: use UINT64_C for uint64_t literals
+  * Avoid loss of a fractional part
+  * backend/wayland: check if zxdg_toplevel_decoration_v1 is not NULL
+  * xwayland: prevent possible array overrun
+  * examples: remove duplicated condition
+  * Use a set to track pointer button state.
+  * session/logind: keep active for pause_device gone
+  * zwp_virtual-keyboard: fix mmap error handling
+  * wlr_xdg_toplevel: reparent on parent unmap
+  * wlr-layer-shell-v1: destroy xdg popups on unmap
+  * x11: Send a frame event on the pointer after button events
+  * virtual_keyboard: Require keymap before accepting keycodes
+  * Remove rootston
+  * Add libinput-1.14 support
+  * Revert "render/drm: keep old drm_format if realloc fails"
+  * Add _incr_version to contrib/
+  * Support pointer-gestures on Wayland backend
+  * wlr_seat_touch: Don't destroy touch point with surface
+  * layer-shell: Remove unused event source
+  * layer-shell: Reject requests on gone surfaces
+  * text_input: Don't forget to send enter events
+  * output: clear output->damage on successful commit
+  * output-damage: set needs swap only when we have new damage
+  * session/logind: specify seat exactly
+  * session/logind: check for XDG_SESSION_ID first
+  * screencopy: fix segfault on disabled output
+  * screencopy: send failed after output disconnect
+  * export-dmabuf-v1: fix segfault on output disable
+  * Implement serial validation for selection requests
+  * wlr_seat: Fix edge cases with serial validation
+  * wlr_pointer_gestures: Register event serials
+  * wlr_tablet_v2: Register event serials
+  * wlr_seat: special-case first serial set use
+  * Use -fmacro-prefix-map to strip build path
+  * Fixes #1689 RDP RemoteFX crash
+  * wlr_output: remove idle_done on output destroy
+  * drm: legacy: issue a NULL modeset on disable
+  * backend: drm: switch to pageflip_handler_2
+  * backend/drm: destroy output immediately
+  * Revert "output: atomic mode"
+  * seat: Move focus back to first shell surface when unfocusing layer surface
+  * xdg_shell(_v6): Take maximize/fullscreen state into account on view init
+  * wlr_touch: Declare wlr_touch_impl usage as const
+  * backends/x11: Touch support
+  * wlr_input_method_v2: Remove input method's resource from the list on destroy
+  * wlr_seat_touch: add a way for a grab to ignore a touch point
+  * wlr_xdg_popup: grab touch events alongside pointer and keyboard
+  * wlr_xdg_popup: don't treat all surfaces of grabbing client as grabbing surfaces
+  * backend/wayland: use xdg-decoration-unstable-v1
+  * backend/wayland: remove wl_shm
+  * render/gles2: print GL_RENDERER
+  * Remove orbital screenshooter and gamma-control
+  * backend/drm: check format when scanning out DMA-BUF
+  * backend/drm: strip alpha channel on scan-out
+  * render/dmabuf: add wlr_dmabuf_attributes_copy
+  * buffer: add wlr_buffer_get_dmabuf
+  * output: change set_dmabuf to attach_buffer
+  * output: fix attach_buffer semantics
+  * output: save buffer in pending state
+  * backend/drm: hold buffers while scanning out
+  * backend/drm: reject DMA-BUFs with flags
+  * rootston: add support for direct scan-out
+  * output: refuse to scan-out if software cursors are used
+  * output: introduce wlr_output_lock_attach_render
+  * output-damage: support direct scan-out
+  * backend/drm: fallback to drmModeAddFB2
+  * backend/drm: add support for multiplanar BOs
+  * output: reset the pending state on failed commit
+  * output: remove wlr_output_impl.transform
+  * output: drop wlr_output_mode.flags
+  * Remove all wayland-server.h includes
+  * output: atomic mode, enabled, scale and transform
+  * xdg-output: add support for xdg-output-unstable-v1 version 3
+  * backend/drm: fix missing plane formats
+
+-------------------------------------------------------------------
+Mon May  6 08:44:03 UTC 2019 - mvetter@suse.com
+
+- Update to 0.6.0:
+  * We have removed the long-deprecated wl_shell implementation from wlroots.
+  * output: refactor frame submission API
+  * output: remove lx, ly
+  * Rename lid_switch to switch_device to disambiguate lid and tablet mode switches
+  * Add FreeRDP backend for remote desktop support
+- Remove wlroots-0.3-libinput-include.patch: not needed anymore
+
+-------------------------------------------------------------------
+Tue Mar 12 07:58:48 UTC 2019 - mvetter@suse.com
+
+- Update to 0.5.0:
+  * DISPLAY is no longer set automatically for Xwayland
+  * wlr_output_layout_get_box: handle empty layout
+  * Unbreak build with '-Wstrict-prototypes'
+  * rootston/view: Remove redundant declaration in the same file
+  * wlr_xdg_shell: Remove redundant declaration in the same file
+  * Remove glEGLImageTargetTexture2DOES
+  * seat: fix remaining wlr_button_state enum rename
+  * xwm: use min size as base size hint if it is missing and vice versa
+  * xwm: fix typos in WM_NORMAL_HINTS handling
+  * backend/session: Allow setting a custom tty via WLR_DIRECT_TTY
+  * backend/drm: Don't fail on failing to find overlay format
+  * seat: guard against button count corruption
+  * meson: enable more compiler warnings
+  * seat: use wlr_button_state enum instead of uint32_t
+  * seat: only store serial if pressing a button
+  * tinywl: send pointer frame events
+  * backend/session: add noop session
+  * rootston: refactor rendering
+  * rootston: fix rotated views rendering
+  * rootston: fix Xwayland children rendering when fullscreen
+  * rootston: split rendering code into render.c
+  * rootston: fix input events for rotated views
+  * xwayland: don't set DISPLAY
+  * seat: add debug logs when validating grab serials
+  * backend/session: open TTY with O_CLOEXEC for direct session
+  * xwayland: set CLOEXEC on /dev/null FD
+- Compile with -Wno-redundant-decls
+  See: https://gitlab.freedesktop.org/wayland/wayland/issues/82
+
+-------------------------------------------------------------------
+Thu Feb 28 07:59:57 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * rootston: Make add_{switch,binding}_config static
+  * clang compile fix#1572[1]
+
+-------------------------------------------------------------------
+Tue Feb 26 08:20:27 UTC 2019 - mvetter@suse.com
+
+- Update to 0.4:
+  * xwm: stack below on map
+  * drm: do not modeset to current mode
+  * wlr_output: do not modeset to current mode
+  * backend/drm: fix modeset on drm fd resume
+  * Make popup inert when destroyed.
+  * Add build-*/ to gitignore.
+  * Revert "drm: do not modeset to current mode"
+  * Add a wlr_output_set_subpixel()
+  * data-control: add primary selection support
+  * Prevent NULL dereference in tablet_tool handler
+  * backend/drm: fix memory leak in realloc crtcs
+  * backend/drm: Unset cursor on cleanup
+  * Post protocol error on invalid wl_surface scale
+  * rootston: don't try to maximize fullscreen surfaces
+  * rootston: surface_at: check for fullscreen surfaces in between TOP and OVERLAY layers
+  * xwm: Add _NET_CLIENT_LIST support
+  * Allow cursor render surface to be used as fb
+  * Copy cursor surface to secondary gpu if necessary
+  * Add workaround for hardware cursors on nouveau
+  * data-device: destroy previous source when starting drag
+  * xdg-shell: destroy child popups on unmap
+  * Deprecate old protocols
+  * primary-selection-v1: copy from gtk-primary-selection
+  * surface: error out on invalid transform
+  * subsurface: add map/unmap events
+  * xwayland, data-device: fix surface state on unmap
+  * data-device: make old offers inert before sending selection
+  * backend/drm: fix NULL dereference when unsetting cursor
+  * xwayland: don't use SOCK_CLOEXEC
+  * xwayland: remove remaining SOCK_CLOEXEC
+  * data-device: refactor wlr_drag
+  * data-device: fix drag cleanup if not started
+  * rootston: cancel drag on invalid serial
+  * data-offer: send WL_DATA_OFFER_ERROR_INVALID_FINISH
+  * data-device: unbreak wl_data_source.cancel during drag-and-drop
+  * rootston: move part of desktop.c to view.c, use an interface for views
+  * rootston: add a view child interface
+  * rootston: make roots_view embedded and remove unions
+  * data-device: check if there's a source before sending dnd_finish
+  * Allow compositors to run as systemd user units
+
+-------------------------------------------------------------------
+Mon Feb  4 08:55:24 UTC 2019 - mvetter@suse.com
+
+- Update to 0.3:
+  * gtk-primary-selection: refactor everything, untie from seat (#1397).
+    Various properties related to this unstable protocol have been
+    removed from wlr_seat and wlr_seat_client. Use wlr_gtk_primary_selection_* instead.
+  * output: switch wlr_output_swap_buffers damage to output-buffer-local coords (#1403)
+  * Standardize the wlr_box input paramaters (#1441). The destination
+    parameter is now always the first one.
+  * Remove wlr_xdg_surface_send_close (#1461). Use
+    wlr_xdg_toplevel_send_close and wlr_xdg_popup_destroy instead.
+  * data-device, primary-selection: add request_set_selection (#1402).
+    Compositors now need to listen on wlr_seat.events.request_set_selection
+    and wlr_seat.events.request_set_primary_selection, then decide whether or not to
+    accept the request with wlr_seat_set_selection and wlr_seat_set_primary_selection.
+  * wlr_seat_client_send_selection has been removed, this is an internal function (#1427)
+  * wlr_data_source_finish has been removed, this is now handled
+    by wlr_data_source_destroy (#1427)
+  * wlr_data_source_cancel has been renamed to wlr_data_source_destroy (#1427)
+  * Compositors now need to listen on the wlr_pointer.frame or wlr_cursor.frame
+    events, and call wlr_seat_notify_frame (#1503). If you're simulating pointer events,
+    you'll need to call wlr_seat_notify_frame manually.
+- Add wlroots-0.3-libinput-include.patch: fix include
+
+-------------------------------------------------------------------
+Mon Jan 28 10:51:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid pointless scriptlet dependency on /bin/sh.
+- Avoid double-shipping documentation.
+
+-------------------------------------------------------------------
+Fri Jan 25 11:45:34 UTC 2019 - mvetter@suse.com
+
+- Update description
+
+-------------------------------------------------------------------
+Thu Jan 24 21:54:01 UTC 2019 - mvetter@suse.com
+
+- Adjust spec file to not use git but version 0.2
+
+-------------------------------------------------------------------
+Thu May 17 15:20:27 UTC 2018 - rzl@l2f.inesc-id.pt
+
+- Initial version
