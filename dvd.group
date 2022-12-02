@@ -124,7 +124,7 @@
     <package name="apache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-manual" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-mod_dnssd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="apache2-mod_php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="apache2-mod_php8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-prefork" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apache2-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="apparmor-abstractions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
@@ -3378,22 +3378,21 @@
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phononsettings-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="php7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-cli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="php7-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-dom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-gd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="php7-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="php7-iconv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-json" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-mbstring" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="php7-mysql" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="php7-openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
-    <package name="php7-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-cli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="php8-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-dom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-gd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="php8-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="php8-iconv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-mbstring" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="php8-mysql" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="php8-openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-pdo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-tokenizer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
+    <package name="php8-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="pia" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pico" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pidgin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4266,6 +4265,7 @@
     <package name="sudo-plugin-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="sunpinyin-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="susefirewall2-to-firewalld" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="susepaste" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="susepaste-screenshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

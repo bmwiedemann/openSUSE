@@ -1011,6 +1011,7 @@
     <package name="sound-theme-freedesktop" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="sunpinyin-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="system-group-audit" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="system-group-kvm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
