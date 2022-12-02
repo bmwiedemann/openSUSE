@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 01 19:48:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.11:
+  * Prepare for v0.12.11 release
+  * go.mod, vendor: pull in latest cilium charts for v1.10.17, v1.11.11, v1.12.4 and v1.13-rc3
+  * workflows: add wait for no operation for cleaning up GKE
+  * .github/workflows: remove duplicate CI Image release digest step
+  * status: Include pending pods in total Cluster Pods count
+  * clustermesh: use Cilium version extracted from helm secret if available
+  * Update stable release to v0.12.10
+
+-------------------------------------------------------------------
 Wed Nov 30 13:20:51 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.10:
