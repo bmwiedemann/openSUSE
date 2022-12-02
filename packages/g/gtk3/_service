@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://gitlab.gnome.org/GNOME/gtk.git</param>
     <param name="scm">git</param>
-    <param name="revision">3.24.34</param>
+    <param name="revision">3.24.35</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>

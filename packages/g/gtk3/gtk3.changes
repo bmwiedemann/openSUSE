@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 30 14:16:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.35:
+  + GtkFontChooserWidget: Fix a critical.
+  + GtkAccelLabel: Differentiate keypad keysyms in accelerators.
+  + Input:
+    - Recognize stylus devices as pens.
+    - Fix problems with motion compression.
+  + Windows: Build system improvements.
+  + Wayland:
+    - Fix problems with unreliable DND.
+    - Use GLES if required.
+    - Add support for titlebar gestures.
+    - Refactor handling of IM client updates.
+    - Fix cursor hotspots with scaled surfaces.
+    - Use the xdg-activation protocol.
+    - Load cursors on demand.
+    - Fix cursor size on hi-dpi displays.
+  + MacOS: Use a CVDisplayLink based frame clock.
+  + Updated translations.
+- Drop upstream merged patch
+  gtk3-gdkwayland-Update-selections-offer-before-updating-dnd.patch.
+
+-------------------------------------------------------------------
 Fri Sep 23 09:30:34 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Fix unstable drag-and-drop on Wayland KDE, add:
@@ -15,7 +39,7 @@ Thu Sep  1 10:27:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Mon Aug 15 19:13:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid bashism in baselibs postscript (bsc#1195391) 
+- avoid bashism in baselibs postscript (bsc#1195391).
 
 -------------------------------------------------------------------
 Mon Jul  4 08:11:44 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
