@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Thu Dec  1 12:01:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.4+39.a81ab70
+  We asked in https://github.com/Hjdskes/cage/issues/232
+  for a long time for a wlroots 0.15.0 compat release
+  * Compatibility with wlroots 0.15.0
+  * Fix count_surface_iterator
+  * Set xdg_toplevel geometry for fullscreen clients
+  * Restore direct libm dependency (#222) 
+  * Several more fixes
+- Add cage-wlroots-016-compat.patch:
+  Add compat with wlroots 0.16.0. See PR 244.
+- Switch to service file to generate tarball
+
+-------------------------------------------------------------------
+Sun Jun 27 09:51:03 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4:
+  * Compatibility release to track wlroots 0.14.0
+- Drop cage-wlroots-0140.patch: upstreamed
+
+-------------------------------------------------------------------
+Thu Jun 24 08:37:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Add cage-wlroots-0140.patch: make compatible with wlroots 0.14.0
+
+-------------------------------------------------------------------
+Fri Apr 16 12:42:22 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.3:
+  * compatibility release to track wlroots 0.13.0
+
+-------------------------------------------------------------------
+Thu Jul 16 14:29:01 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.2.1:
+  * man: indent with tabs (#156)
+
+-------------------------------------------------------------------
+Thu Jul 16 14:10:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.2:
+  * Cage now implements the
+    wlr-screencopy-unstable-v1,
+    xdg-output-unstable-v1.xml,
+    wlr-gamma-control-unstable-v1,
+    and wlr_export_dmabuf_unstable_v1 protocols.
+  * Support for direct scan-out has been added to Cage.
+  * Cage now allows switching VTs
+  * Extended multi monitor behaviour
+    One to extend the application across the monitors' bounding
+    box and another to use only the last plugged in monitor.
+  * Add support for keyboard groups.
+  * Cage now comes with a manpage
+  * For details see https://github.com/Hjdskes/cage/releases/tag/v0.1.2
+- Remove because in new release:
+  * cage-0.1.1-new-wlroots.patch
+  * cage-0.1.1-dont-terminate-display.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 10:03:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add cage-0.1.1-dont-terminate-display.patch: dont terminate display
+  Some applications wont work correctly otherwise.
+
+-------------------------------------------------------------------
+Thu Jan 23 15:22:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add cage-0.1.1-new-wlroots.patch: make it work with newer wlroots
+
+-------------------------------------------------------------------
+Tue Jun  4 06:28:06 UTC 2019 - mvetter@suse.com
+
+- Update to 1.1.1:
+  * Update to wlroots 0.6.0
+  * Cage: drop root on startup like Sway
+
+-------------------------------------------------------------------
+Wed Apr 24 06:48:44 UTC 2019 - mvetter@suse.com
+
+- Initial package for cage 0.1
