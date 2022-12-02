@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 28 06:55:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unneeded Requires on python.
+
+-------------------------------------------------------------------
 Wed Feb 16 13:15:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Files in /usr/lib/rpm/macros.d are not config files: drop %config

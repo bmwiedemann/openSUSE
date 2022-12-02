@@ -29,7 +29,6 @@ BuildArch:      noarch
 Requires:       gcc-c++
 Requires:       nodejs-devel
 Requires:       npm
-Requires:       python
 Requires:       ruby
 Requires:       rubygem(json)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
