@@ -1,6 +1,6 @@
 <services>
 	<service name="download_files" mode="disabled" />
 	<service name="go_modules" mode="disabled">
-		<param name="archive">go.d.plugin-v0.40.1.tar.gz</param>
+		<param name="archive">go.d.plugin-v0.45.0.tar.gz</param>
 	</service>
 </services>

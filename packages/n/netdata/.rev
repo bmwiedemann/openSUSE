@@ -3808,4 +3808,438 @@ Fixes
   * postgres: don't create bloat charts if no bloat metrics</comment>
     <requestid>1007105</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>989afd6d89c55a7cc8e990d6f4e924e8</srcmd5>
+    <version>1.37.0</version>
+    <time>1669983205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.37.0 (go.d.plugin 0.45.0)
+Collectors
+  * New collectors
+    + Add Pandas collector (python.d/pandas)
+      gh#netdata/netdata#13773
+    + Add NGINX Plus collector (go.d/nginxplus)
+      gh#netdata/go.d.plugin#992
+    + Add NVMe collector (go.d/nvme)
+      gh#netdata/go.d.plugin#973
+    + Add Ping collector (go.d/ping)
+      gh#netdata/go.d.plugin#952
+    + Add Cassandra collector (go.d/cassandra)
+      gh#netdata/go.d.plugin#901
+    + Add systemd-logind collector (go.d/logind)
+      gh#netdata/go.d.plugin#786
+    + Add Docker collector (go.d/docker)
+      gh#netdata/go.d.plugin#760
+    + Add PgBouncer collector (go.d/pgbouncer)
+      gh#netdata/go.d.plugin#748
+    + Add ProxySQL collector (go.d/proxysql)
+      gh#netdata/go.d.plugin#703
+  * Improvements
+    + Allow statsd tags to modify chart metadata on the fly
+      (stats.d.plugin)
+      gh#netdata/netdata#14014
+    + Add Cassandra icon to dashboard info (go.d/cassandra)
+      gh#netdata/netdata#13975
+    + Add ping dashboard info and alarms (go.d/ping)
+      gh#netdata/netdata#13916
+    + Add WMI Process dashboard info (go.d/wmi)
+      gh#netdata/netdata#13910
+    + Add processes dashboard info (go.d/wmi)
+      gh#netdata/netdata#13910
+    + Add TCP dashboard description (go.d/wmi)
+      gh#netdata/netdata#13878
+    + Add Cassandra dashboard description (go.d/cassandra)
+      gh#netdata/netdata#13835
+    + Respect NETDATA_INTERNALS_MONITORING (python.d.plugin)
+      gh#netdata/netdata#13793
+    + Add ZFS hit rate charts (proc.plugin)
+      gh#netdata/netdata#13757
+    + Add alarms filtering via config (python.d/alarms)
+      gh#netdata/netdata#13701
+    + Add ProxySQL dashboard info (go.d/proxysql)
+      gh#netdata/netdata#13669
+    + Update PostgreSQL dashboard info (go.d/postgres)
+      gh#netdata/netdata#13661
+    + Add _collect_job label (job name) to charts (python.d.plugin)
+      gh#netdata/netdata#13648
+    + Re-add chrome to the webbrowser group (apps.plugin)
+      gh#netdata/netdata#13642
+    + Add labels to charts (tc.plugin)
+      gh#netdata/netdata#13634
+    + Improve the gui and email app groups and improve GUI coverage
+      (apps.plugin)
+      gh#netdata/netdata#13631
+    + Update Postgres &quot;connections&quot; dashboard info (go.d/postgres)
+      gh#netdata/netdata#13619
+    + Assorted updates for apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#13618
+    + Add spiceproxy to proxmox group (apps.plugin)
+      gh#netdata/netdata#13615
+    + Improve coverage of Linux kernel threads (apps.plugin)
+      gh#netdata/netdata#13612
+    + Improve dashboard info for WAL and checkpoints
+      (go.d/postgres)
+      gh#netdata/netdata#13607
+    + Update logind dashboard info (go.d/logind)
+      gh#netdata/netdata#13597
+    + Add collecting power state (python.d/nvidia_smi)
+      gh#netdata/netdata#13580
+    + Improve PostgreSQL dashboard info (go.d/postgres)
+      gh#netdata/netdata#13573
+    + Add apt group to apps_groups.conf (apps.plguin)
+      gh#netdata/netdata#13571
+    + Add more monitoring tools to apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#13566
+    + Add docker dashboard info (go.d/docker)
+      gh#netdata/netdata#13547
+    + Add discovering chips, and features at runtime
+      (python.d/sensors)
+      gh#netdata/netdata#13545
+    + Add summary dashboard for PostgreSQL (go.d/postgres)
+      gh#netdata/netdata#13534
+    + Add jupyter to apps_groups.conf (apps.plugin)
+      gh#netdata/netdata#13533
+    + Improve performance and add co-re support for more modules
+      (ebpf.plugin)
+      gh#netdata/netdata#13530
+    + Use LVM UUIDs in chart ids for logical volumes (proc.plugin)
+      gh#netdata/netdata#13525
+    + Reduce CPU and memory usage (ebpf.plugin)
+      gh#netdata/netdata#13397
+    + Add 'domain' label to charts (go.d/whoisquery)
+      gh#netdata/go.d.plugin#1002
+    + Add 'source' label to charts (go.d/x509check)
+      gh#netdata/go.d.plugin#1001
+    + Add 'host' label to charts (go.d/portcheck)
+      gh#netdata/go.d.plugin#1000
+    + Add 'url' label to charts (go.d/httpcheck)
+      gh#netdata/go.d.plugin#999
+    + Remove pipeline instance from family and add it as a chart
+      label (go.d/logstash)
+      gh#netdata/go.d.plugin#998
+    + Add http cache io/iops metrics (go.d/nginxplus)
+      gh#netdata/go.d.plugin#997
+    + Add resolver metrics (go.d/nginxplus)
+      gh#netdata/go.d.plugin#996
+    + Add MSSQL metrics (go.d/wmi)
+      gh#netdata/go.d.plugin#991
+    + Add IIS data collection job (go.d/web_log)
+      gh#netdata/go.d.plugin#977
+    + Add IIS metrics (go.d/wmi)
+      gh#netdata/go.d.plugin#972
+    + Add services metrics (go.d/wmi)
+      gh#netdata/go.d.plugin#961
+    + Resolve 'hostname' in job name (go.d.plugin)
+      gh#netdata/go.d.plugin#959
+    + Add processes metrics (go.d/wmi)
+      gh#netdata/go.d.plugin#953
+    + Resolve 'hostname' in URL (go.d.plugin)
+      gh#netdata/go.d.plugin#941
+    + Add TCP metrics (go.d/wmi)
+      gh#netdata/go.d.plugin#938
+    + Add collection of Table_open_cache_overflows (go.d/dns_query)
+      gh#netdata/go.d.plugin#936
+    + Allow to set a list of record types in config
+      (go.d/dns_query)
+      gh#netdata/go.d.plugin#912
+    + Create a chart per server instead of a dimension per server
+      (go.d/dns_query)
+      gh#netdata/go.d.plugin#911
+    + Respect NETDATA_INTERNALS_MONITORING env variable
+      (go.d.plugin)
+      gh#netdata/go.d.plugin#908
+    + Add query status chart (go.d/dns_query)
+      gh#netdata/go.d.plugin#903
+    + Add collection of agent metrics (go.d/consul)
+      gh#netdata/go.d.plugin#900
+    + Create a chart per health check (go.d/consul)
+      gh#netdata/go.d.plugin#899
+    + Add collection of master link status (go.d/redis)
+      gh#netdata/go.d.plugin#856
+    + Add collection of master slave link metrics (go.d/redis)
+      gh#netdata/go.d.plugin#851
+    + Add collection of time elapsed since last RDB save
+      (go.d/redis)
+      gh#netdata/go.d.plugin#850
+    + Add ping latency chart (go.d/redis)
+      gh#netdata/go.d.plugin#849
+    + Check for 'connect' privilege before querying database size
+      (go.d/postgres)
+      gh#netdata/go.d.plugin#845
+    + Allow to set data collection job labels in config
+      (go.d.plugin)
+      gh#netdata/go.d.plugin#840
+    + Improve histogram buckets dimensions (go.d/postgres)
+      gh#netdata/go.d.plugin#833
+    + Add acquired locks utilization chart (go.d/postgres)
+      gh#netdata/go.d.plugin#831
+    + Add _collect_job label (job name) to charts (go.d.plugin)
+      gh#netdata/go.d.plugin#814
+    + Add TCP socket connection support and the state path
+      modification (go.d/phpfpm)
+      gh#netdata/go.d.plugin#805
+    + Create a dimension for every unit state (go.d/systemdunits)
+      gh#netdata/go.d.plugin#795
+    + Improve Galera state and status charts
+      gh#netdata/go.d.plugin#779
+    + Add discovering dhcp-ranges at runtime (go.d/dnsmasq_dhcp)
+      gh#netdata/go.d.plugin#778
+    + Add collecting image and volume stats (go.d/docker)
+      gh#netdata/go.d.plugin#777
+    + Add Percona MySQL compatibility (go.d/mysql)
+      gh#netdata/go.d.plugin#776
+    + Add collection of additional user statistics metrics
+      gh#netdata/go.d.plugin#775
+  * Bug fixes
+    + Fix eBPF crashes on exit (ebpf.plugin)
+      gh#netdata/netdata#14012
+    + Fix not working on Oracle linux (ebpf.plugin)
+      gh#netdata/netdata#13935
+    + Fix retry logic when reading network interfaces speed
+      (proc.plugin)
+      gh#netdata/netdata#13893
+    + Fix systemd chart update (ebpf.plugin)
+      gh#netdata/netdata#13884
+    + Fix handling qemu-1- prefix when extracting virsh domain
+      gh#netdata/netdata#13866
+    + Fix collection of carrier, duplex, and speed metrics when
+      network interface is down (proc.plugin)
+      gh#netdata/netdata#13850
+    + Fix various issues (ebpf.plugin)
+      gh#netdata/netdata#13624
+    + Fix apps plugin users charts description (apps.plugin)
+      gh#netdata/netdata#13621
+    + Fix chart id length check (cgroups.plugin)
+      gh#netdata/netdata#13601
+    + Fix not respecting update_every for polling
+      (python.d/nvidia_smi)
+      gh#netdata/netdata#13579
+    + Fix containers name resolution when Docker is a snap package
+      (cgroups.plugin)
+      gh#netdata/netdata#13523
+    + Fix handling string and float values (go.d/nvme)
+      gh#netdata/go.d.plugin#993
+    + Fix handling ExpirationDate with space (go.d/whoisquery)
+      gh#netdata/go.d.plugin#974
+    + Fix query queryable databases (go.d/postgres)
+      gh#netdata/go.d.plugin#960
+    + Fix not respecting headers config option (go.d/pihole)
+      gh#netdata/go.d.plugin#942
+    + Fix dns_queries_percentage metric calculation (go.d/pihole)
+      gh#netdata/go.d.plugin#922
+    + Fix data collection when auth.bind query is not supported
+      (go.d/dnsmasq)
+      gh#netdata/go.d.plugin#902
+    + Fix data collection when too many db tables and indexes
+      (go.d/postgres)
+      gh#netdata/go.d.plugin#857
+    + Fix creation of bloat charts if no bloat metrics collected
+      (go.d/postgres)
+      gh#netdata/go.d.plugin#846
+    + Fix unregistering connStr at runtime (go.d/postgres)
+      gh#netdata/go.d.plugin#843
+    + Fix bloat size percentage calculation (go.d/postgres)
+      gh#netdata/go.d.plugin#841
+    + Fix charts when binary log and MyISAM are disabled
+      (go.d/mysql)
+      gh#netdata/go.d.plugin#763
+    + Fix data collection jobs cleanup on exit (go.d.plugin)
+      gh#netdata/go.d.plugin#758
+    + Fix handling the case when no images are found (go.d/docker)
+      gh#netdata/go.d.plugin#739
+  * Other
+    + Don't let slow disk plugin thread delay shutdown
+      gh#netdata/netdata#14044
+    + Remove nginx_plus collector (python.d.plugin)
+      gh#netdata/netdata#13995
+    + Enable collecting ECC memory errors by default
+      gh#netdata/netdata#13970
+    + Make Statsd dictionaries multi-threaded
+      gh#netdata/netdata#13938
+    + Remove NFS readahead histogram (proc.plugin)
+      gh#netdata/netdata#13819
+    + Merge netstat, snmp, and snmp6 modules (proc.plugin)
+      gh#netdata/netdata#13806
+    + Rename dockerd job on lock registration (python.d/dockerd)
+      gh#netdata/netdata#13537
+    + Remove python.d/* announced in v1.36.0 deprecation notice
+      (python.d.plugin)
+      gh#netdata/netdata#13503
+    + Remove blocklist file existence state chart (go.d/pihole)
+      gh#netdata/go.d.plugin#914
+    + Remove instance-specific information from chart families
+      (go.d/portcheck)
+      gh#netdata/go.d.plugin#790
+    + Remove spaces in &quot;HTTP Response Time&quot; chart dimensions
+      (go.d/httpcheck)
+      gh#netdata/go.d.plugin#788
+Health
+  * Engine
+    + Add support of chart labels in alerts
+      gh#netdata/netdata#13290
+  * Notifications
+    + Add an option to retry on telegram API limit error
+      gh#netdata/netdata#13119
+    + Set default curl connection timeout if not set
+      gh#netdata/netdata#13529
+  * Alarms
+    + Use 'host' label in alerts info (health.d/ping.conf)
+      gh#netdata/netdata#13955
+    + Remove pihole_blocklist_gravity_file_existence_state
+      (health.d/pihole.conf)
+      gh#netdata/netdata#13826
+    + Fix the systemd_mount_unit_failed_state alarm name
+      (health.d/systemdunits.conf)
+      gh#netdata/netdata#13796
+    + Add 1m delay for tcp reset alarms (health.d/tcp_resets.conf)
+      gh#netdata/netdata#13761
+    + Add new Redis alarms (health.d/redis.conf)
+      gh#netdata/netdata#13715
+    + Fix inconsistent alert class names
+      gh#netdata/netdata#13699
+    + Disable Postgres last vacuum/analyze alarms
+      (health.d/postgres.conf)
+      gh#netdata/netdata#13698
+    + Add node level AR based example (health.d/ml.conf)
+      gh#netdata/netdata#13684
+    + Add Postgres alarms (health.d/postgres.conf)
+      gh#netdata/netdata#13671
+    + Adjust systemdunits alarms (health.d/systemdunits.conf)
+      gh#netdata/netdata#13623
+    + Add Postgres total connection utilization alarm
+      (health.d/postgres.conf)
+      gh#netdata/netdata#13620
+    + Adjust mysql_galera_cluster_size_max_2m lookup to make time
+      in warn/crit predictable (health.d/mysql.conf)
+      gh#netdata/netdata#13563
+Other Notable Changes
+  * Improvements
+    + Add replication of metrics (gaps filling) during streaming
+      gh#netdata/netdata#13873
+    + Remove anomaly rates chart
+      gh#netdata/netdata#13763
+    + Add disabling netdata monitoring section of the dashboard
+      gh#netdata/netdata#13788
+    + Add host labels for ephemerality and nodes with unstable
+      connections
+      gh#netdata/netdata#13784
+    + Allow netdata plugins to expose functions for querying more
+      information about specific charts
+      gh#netdata/netdata#13720
+    + Improve Health engine performance by adding a thread per host
+      gh#netdata/netdata#13712
+    + Improve streaming performance by 25% on the child
+      gh#netdata/netdata#13708
+    + Improve agent shutdown time
+      gh#netdata/netdata#13649
+    + Add disabling Cloud functionality via NETDATA_DISABLE_CLOUD
+      environment variable
+      gh#netdata/netdata#13106
+  * Bug Fixes
+    + Fix sanitizing command arguments executed by the health
+      component
+      gh#netdata/netdata#14064
+    + Fix control of streaming API keys and MACHINE GUIDs in
+      stream.conf
+      gh#netdata/netdata#14063
+    + Fix build on old versions of openssl on Centos
+      gh#netdata/netdata#14045
+    + Fix merging duplicate replication requests
+      gh#netdata/netdata#14037
+    + Fix various problems in streaming compression, query planner
+      and replication
+      gh#netdata/netdata#14023
+    + Fix ACLK connection resets on parents with a lot of children
+      gh#netdata/netdata#14004
+    + Fix crash when netdata cannot execute its external plugins
+      gh#netdata/netdata#13978
+    + Fix metrics suffix for counters when using remote write
+      exporter
+      gh#netdata/netdata#13977
+    + Fix replicating non-existing child host
+      gh#netdata/netdata#13968
+    + Fix local dashboard cloud links
+      gh#netdata/netdata#13953
+    + Fix stopping Netdata on WSL1
+      gh#netdata/netdata#13948
+    + Fix  negative values when removing a &quot;percentage-of-
+      incremental-row&quot; dimension
+      gh#netdata/netdata#13945
+    + Fix chart definition end time_t printing and parsing
+      gh#netdata/netdata#13942
+    + Fix not using system CA certificates when streaming
+      gh#netdata/netdata#13941
+    + Fix segfault when a dimension is deleted while replicated
+      gh#netdata/netdata#13932
+    + Fix compiling without dbengine
+      gh#netdata/netdata#13931
+    + Fix crash on query plan switch
+      gh#netdata/netdata#13920
+    + Fix crash when free hosts if a change on db mode is not
+      needed
+      gh#netdata/netdata#13912
+    + Fix timeframe matching in query engine
+      gh#netdata/netdata#13911
+    + Fix reading health &quot;enable&quot; from the configuration
+      gh#netdata/netdata#13894
+    + Fix segmentation fault on 32-bit RPi
+      gh#netdata/netdata#13876
+    + Fix ml_info call via ACLK
+      gh#netdata/netdata#13863
+    + Fix compiling with LTO enabled on FreeBSD
+      gh#netdata/netdata#13854
+    + Fix tiers update frequency
+      gh#netdata/netdata#13844
+    + Fix crash on child reconnect and lost metrics
+      gh#netdata/netdata#13821
+    + Fix post-processing of contexts
+      gh#netdata/netdata#13807
+    + Fix initialization of chart variables
+      gh#netdata/netdata#13795
+    + Fix Array Allocator memory leak
+      gh#netdata/netdata#13792
+    + Fix chart variables initialization
+      gh#netdata/netdata#13786
+    + Fix compilation on CentOS 7.9
+      gh#netdata/netdata#13775
+    + Fix count of currently streaming senders on the localhost
+      gh#netdata/netdata#13755
+    + Fix streaming crash when child reconnects and is archived on
+      the parent
+      gh#netdata/netdata#13754
+    + Fix sending NodeInfo during first database cleanup
+      gh#netdata/netdata#13740
+    + Fix starting an archived host in dbengine if dbengine is not
+      compiled
+      gh#netdata/netdata#13724
+    + Fix building judy without dbengine
+      gh#netdata/netdata#13703
+    + fix typo not deleting collected flag; force removing
+      collected flag on child disconnect
+      gh#netdata/netdata#13672
+    + Fix access to old data when nmap is used
+      gh#netdata/netdata#13666
+    + Fix container virtualization info detection
+      gh#netdata/netdata#13653
+    + Fix rrdcontexts left in the post-processing queue from the
+      garbage collector
+      gh#netdata/netdata#13645
+    + Fix a memory leak on archived host creation
+      gh#netdata/netdata#13641
+    + Fix worker utilization cleanup
+      gh#netdata/netdata#13633
+    + Fix loading db rows when chart_id or dim_id is null
+      gh#netdata/netdata#13608
+    + Fix crash on rrdcontext apis when rrdcontexts is not
+      initialized
+      gh#netdata/netdata#13578
+    + Fix a failure to build eBPF with CMake
+      gh#netdata/netdata#13568
+    + Fix a crash when xen libraries are misconfigured
+      gh#netdata/netdata#13535
+    + Fix crashes on 32bit system
+      gh#netdata/netdata#13511
+</comment>
+    <requestid>1039442</requestid>
+  </revision>
 </revisionlist>
