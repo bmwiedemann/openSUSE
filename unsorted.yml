@@ -182,6 +182,10 @@ unsorted:
   - OpenRGB 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
+  - OpenSceneGraph-plugin-gdal 
+  - OpenSceneGraph-plugin-gstreamer 
+  - OpenSceneGraph-plugin-opencascade 
+  - OpenSceneGraph-plugin-pdf 
   - OpenSceneGraph-plugins 
   - OpenShadingLanguage: [x86_64] 
   - OpenShadingLanguage-common-headers: [x86_64] 
@@ -1711,6 +1715,7 @@ unsorted:
   - caddy 
   - cadsondemak-fonts 
   - caffeine 
+  - cage 
   - cairo-clock 
   - cairo-clock-lang 
   - cairo-devel 
@@ -6994,6 +6999,8 @@ unsorted:
   - hfst-devel 
   - hfst-ospell 
   - hfst-ospell-devel 
+  - hhdate 
+  - hhdate-devel 
   - hiawatha 
   - hiawatha-letsencrypt 
   - hibiscus 
@@ -13123,7 +13130,7 @@ unsorted:
   - libpapi-hpc 
   - libpapi_6_0_0_1-hpc 
   - libparanoia1_0 
-  - libparaview5_10 
+  - libparaview5_11 
   - libpari-gmp-tls8 
   - libparlatype-devel 
   - libparlatype5 
@@ -14919,6 +14926,7 @@ unsorted:
   - libwind0 
   - libwireshark16 
   - libwiretap13 
+  - libwlroots10 
   - libwlroots11 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
@@ -20284,6 +20292,7 @@ unsorted:
   - perl-Search-Elasticsearch 
   - perl-Search-Xapian 
   - perl-Selenium-Remote-Driver 
+  - perl-SemVer 
   - perl-Sereal 
   - perl-Sereal-Decoder 
   - perl-Sereal-Encoder 
@@ -43420,6 +43429,7 @@ unsorted:
   - u-boot-tools 
   - u3-tool 
   - uacme 
+  - uasm 
   - ubi_reader 
   - ubridge 
   - ubuntu-fonts 
@@ -43729,7 +43739,6 @@ unsorted:
   - veusz: [x86_64] 
   - veusz-common: [x86_64] 
   - veyon 
-  - vfontas 
   - vgrabbj 
   - vgrep 
   - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -44058,6 +44067,7 @@ unsorted:
   - wlr-randr 
   - wlr-sunclock 
   - wlroots-devel 
+  - wlroots10-devel 
   - wlsunset 
   - wm-icons 
   - wmpomme 
