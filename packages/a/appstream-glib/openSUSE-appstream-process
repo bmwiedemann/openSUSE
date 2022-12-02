@@ -11,7 +11,6 @@ HASHED_NAMES=no
 TMPDIR=$(mktemp -d)
 
 /usr/bin/appstream-builder \
-  --enable-hidpi					\
   --temp-dir=${TMPDIR}/apb				\
   --cache-dir=${TMPDIR}/apb/cache			\
   --origin=appdata					\

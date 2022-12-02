@@ -830,4 +830,20 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <comment></comment>
     <requestid>1000821</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>72ac3f1b8cae78b8f4c8ac0eb7ca408f</srcmd5>
+    <version>0.8.2</version>
+    <time>1669983134</time>
+    <user>dimstar_suse</user>
+    <comment>- openSUSE-appstream-process: drop --enable-hidpi parameter:
+  --enable-hidpi now does nothing and will be removed in future
+  versions.
+
+- Update to version 0.8.2:
+  + asb-plugin-appdata: Never add default icons to firmware, IMs or
+    codecs.
+  + Tell CURL to follow http redirect for validate.
+  + Updated translations. (forwarded request 1039135 from dimstar)</comment>
+    <requestid>1039362</requestid>
+  </revision>
 </revisionlist>

@@ -6,10 +6,7 @@
     <param name="versionrewrite-pattern">appstream_glib_(\d+)_(\d+)_(\d+)(\+0)?(\+[1-9][0-9]*)?</param>
     <param name="versionrewrite-replacement">\1.\2.\3\5</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/appstream_glib_0_8_1</param>
-<!--
-    <param name="revision">0_7_X</param>
--->
+    <param name="revision">refs/tags/appstream_glib_0_8_2</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

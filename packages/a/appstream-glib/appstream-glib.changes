@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 17 14:14:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- openSUSE-appstream-process: drop --enable-hidpi parameter:
+  --enable-hidpi now does nothing and will be removed in future
+  versions.
+
+-------------------------------------------------------------------
+Mon Nov 14 16:03:16 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 0.8.2:
+  + asb-plugin-appdata: Never add default icons to firmware, IMs or
+    codecs.
+  + Tell CURL to follow http redirect for validate.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 01 07:01:22 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.8.1:
