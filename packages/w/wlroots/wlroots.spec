@@ -30,7 +30,9 @@ Summary:        Modular Wayland compositor library
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://gitlab.freedesktop.org/wlroots/wlroots
-Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz
+Source1:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz.sig
+Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
 BuildRequires:  glslang-devel
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
