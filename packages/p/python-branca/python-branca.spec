@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-branca
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT
