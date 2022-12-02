@@ -1,42 +1,5 @@
-# guix is bootstrapping package so there are some non-standard exceptions
-#  1] it violates FHS (intentionally) - this is feature, not bug
-addFilter("W: suse-filelist-forbidden-fhs23 /gnu is not allowed in FHS 2.3")
-
-
-#  2] it contains foreign static binaries used for bootstrap see:
-# https://www.gnu.org/software/guix/manual/html_node/Bootstrapping.html#Building-the-Bootstrap-Binaries
-
-# they are binaries in /usr/share
-addFilter("E: arch-dependent-file-in-usr-share .*/usr/share/guile/site/3.*/gnu/packages/bootstrap/.*")
-
-# they are static binaries
-addFilter("W: statically-linked-binary /usr/share/guile/site/3.*/gnu/packages/bootstrap/.*")
-
-# they are foreign
-addFilter("W: missing-PT_GNU_STACK-section /usr/share/guile/site/3.*/gnu/packages/bootstrap/.*")
-
-# they are not position independent. Upstream consider to build them as PIE
-addFilter("W: position-independent-executable-suggested /usr/share/guile/site/3.*/gnu/packages/bootstrap/.*")
-
-# 3] it contains precompiled .go files for GNU Guile (makes execution faster)
-# they doesn't include dependency information
-addFilter("W: shared-lib-without-dependency-information /usr/lib64/guile/3.*/site-ccache/.*")
-
-# they can't be stripped
-addFilter("W: unstripped-binary-or-object /usr/lib64/guile/3.*/site-ccache/*")
-
-# they are foreign
-addFilter("W: missing-PT_GNU_STACK-section /usr/lib64/guile/3.*/site-ccache/.*")
-
 # 4] Other
 # Needed for "guix pack --relocatable", needed at runtime so no devel file
 # This file gots compiled by Guix with a compiler from Guix right before the
 # resulting "pack" gets build
 addFilter("E: devel-file-in-non-devel-package *")
-
-# I will add guixbuild group into rpmlint once I know that everything
-# else is correct
-addFilter("W: non-standard-gid /gnu/store guixbuild")
-
-# It ships a wrapper of Guile to reduce "locale warning" spam of the cli
-addFilter("E: invalid-filepath-dependency *")

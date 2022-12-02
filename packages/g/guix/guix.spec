@@ -1,7 +1,7 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,7 @@ Requires:       guile-ssh-devel
 Requires:       guile-zlib
 Requires:       gzip
 Requires:       libgcrypt-devel
-Requires:       libguile-ssh13
+Requires:       libguile-ssh14
 Requires(pre):  %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64

@@ -232,4 +232,12 @@ I tested it manually and it looks fine when the SR above is in. Although upstrea
 </comment>
     <requestid>892744</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>01795345dfd5e2b958889d1ca126d753</srcmd5>
+    <version>1.3.0</version>
+    <time>1669983218</time>
+    <user>dimstar_suse</user>
+    <comment>This should make guix installable again on Tumbleweed/Factory</comment>
+    <requestid>1039514</requestid>
+  </revision>
 </revisionlist>
