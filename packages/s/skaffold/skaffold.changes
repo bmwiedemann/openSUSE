@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 02 06:43:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.3:
+  * fix: support alternative env var naming using support env variable + artifact-name (vs env variable + index)
+
+-------------------------------------------------------------------
 Thu Nov 17 06:17:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.2:
