@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  1 08:31:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build: pick up a compatible verison of wlroots boo#1205766
+
+-------------------------------------------------------------------
+Sat Nov 26 05:51:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update upstream signing key and verify source signature
+- https://github.com/swaywm/sway/pull/6484 6484.patch refreshed
+
+-------------------------------------------------------------------
 Mon May 16 06:24:47 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Fix build with gcc12

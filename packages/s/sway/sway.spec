@@ -23,8 +23,9 @@ Summary:        Window manager for Wayland compatible with i3
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/sway
-Source0:        https://github.com/swaywm/sway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        sway.keyring
+Source0:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
+Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
 Patch0:         https://github.com/swaywm/sway/pull/6484.patch
 # Will be in next release
 Patch1:         fix-upstream-gcc12-build-issue.patch
@@ -52,6 +53,7 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
 BuildRequires:  pkgconfig(wlroots) >= 0.15.0
+BuildConflicts: pkgconfig(wlroots) >= 0.16.0
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       %{name}-branding
 %if 0%{?suse_version}
