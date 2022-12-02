@@ -722,4 +722,12 @@
     <comment></comment>
     <requestid>999069</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>54654a3e455ba997d09a80a75e94d0e4</srcmd5>
+    <version>1.8.0.352</version>
+    <time>1669983142</time>
+    <user>dimstar_suse</user>
+    <comment>October 2022 CPU</comment>
+    <requestid>1039379</requestid>
+  </revision>
 </revisionlist>

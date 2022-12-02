@@ -8,16 +8,4 @@
     </disk>
   </hardware>
 
-  <overwrite>
-    <conditions>
-      <arch>armv7l</arch>
-      <arch>armv6l</arch>
-    </conditions>
-    <hardware>
-      <physicalmemory>
-        <size unit="M">512</size>
-      </physicalmemory>
-    </hardware>
-  </overwrite>
-
 </constraints> 

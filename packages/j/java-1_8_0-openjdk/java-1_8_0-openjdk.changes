@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:23:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u352 (icedtea-3.25.0)
+  * October 2022 CPU
+  * CVEs
+    + CVE-2022-21619 (bsc#1204473)
+    + CVE-2022-21626 (bsc#1204471) 
+    + CVE-2022-21624 (bsc#1204475)
+    + CVE-2022-21628 (bsc#1204472)
+  * Security fixes
+    + JDK-8282252: Improve BigInteger/Decimal validation
+    + JDK-8285662: Better permission resolution
+    + JDK-8286511: Improve macro allocation
+    + JDK-8286519: Better memory handling
+    + JDK-8286526: Improve NTLM support
+    + JDK-8286533: Key X509 usages
+    + JDK-8286910: Improve JNDI lookups
+    + JDK-8286918: Better HttpServer service
+    + JDK-8288508: Enhance ECDSA usage
+  * Import of OpenJDK 8 u352
+    + JDK-7131823: bug in GIFImageReader
+    + JDK-7186258: InetAddress$Cache should replace
+      currentTimeMillis with nanoTime for more precise and accurate
+    + JDK-8028265: Add legacy tz tests to OpenJDK
+    + JDK-8039955: [TESTBUG] jdk/lambda/LambdaTranslationTest1 - 
+      java.lang.AssertionError: expected [d:1234.000000] but found
+      [d:1234,000000]
+    + JDK-8049228: Improve multithreaded scalability of InetAddress
+      cache
+    + JDK-8071507: (ref) Clear phantom reference as soft and weak
+      references do
+    + JDK-8087283: Add support for the XML Signature here() function
+      to the JDK XPath implementation
+    + JDK-8130895: Test javax/swing/system/6799345/TestShutdown.java
+      fails on Solaris11 Sparcv9
+    + JDK-8136354: [TEST_BUG] Test
+      java/awt/image/RescaleOp/RescaleAlphaTest.java with Bad action
+      for script
+    + JDK-8139668: Generate README-build.html from markdown
+    + JDK-8143847: Remove REF_CLEANER reference category
+    + JDK-8147862: Null check too late in
+      sun.net.httpserver.ServerImpl
+    + JDK-8150669: C1 intrinsic for Class.isPrimitive
+    + JDK-8155742: [Windows] robot.keyPress(KeyEvent.VK_ALT_GRAPH)
+      throws java.lang.IllegalArgumentException in windows
+    + JDK-8173339: AArch64: Fix minimum stack size computations
+    + JDK-8173361: various crashes in
+      JvmtiExport::post_compiled_method_load
+    + JDK-8175797: (ref) Reference::enqueue method should clear the
+      reference object before enqueuing
+    + JDK-8178832: (ref) jdk.lang.ref.disableClearBeforeEnqueue
+      property is ignored
+    + JDK-8183107: PKCS11 regression regarding checkKeySize
+    + JDK-8193780: (ref) Remove the undocumented
+      "jdk.lang.ref.disableClearBeforeEnqueue" system property
+    + JDK-8194873: right ALT key hotkeys no longer work in Swing
+      components
+    + JDK-8201793: (ref) Reference object should not support cloning
+    + JDK-8214427: probable bug in logic of
+      ConcurrentHashMap.addCount()
+    + JDK-8232950: SUNPKCS11 Provider incorrectly check key length
+      for PSS Signatures.
+    + JDK-8233019: java.lang.Class.isPrimitive() (C1) returns wrong
+      result if Klass* is aligned to 32bit
+    + JDK-8235218: Minimal VM is broken after JDK-8173361
+    + JDK-8235385: Crash on aarch64 JDK due to long offset
+    + JDK-8245263: Enable TLSv1.3 by default on JDK 8u for Client
+      roles
+    + JDK-8254178: Remove .hgignore
+    + JDK-8254318: Remove .hgtags
+    + JDK-8256722: handle VC++:1927 VS2019 in  abstract_vm_version
+    + JDK-8260589: Crash in JfrTraceIdLoadBarrier::load(_jclass*)
+    + JDK-8280963: Incorrect PrintFlags formatting on Windows
+    + JDK-8282538: PKCS11 tests fail on CentOS Stream 9
+    + JDK-8283849: AsyncGetCallTrace may crash JVM on guarantee
+    + JDK-8285400: Add '@apiNote' to the APIs defined in
+      Java SE 8 MR 3
+    + JDK-8285497: Add system property for Java SE specification
+      maintenance version
+    + JDK-8287132: Retire Runtime.runFinalizersOnExit so that it
+      always throws UOE
+    + JDK-8287508: The tests added to jdk-8 by 8235385 are to be
+      ported to jdk-11
+    + JDK-8287521: Bump update version of OpenJDK: 8u352
+    + JDK-8288763: Pack200 extraction failure with invalid size
+    + JDK-8288865: [aarch64] LDR instructions must use legitimized
+      addresses
+    + JDK-8290000: Bump macOS GitHub actions to macOS 11
+    + JDK-8292579: (tz) Update Timezone Data to 2022c
+    + JDK-8292688: Support Security properties in
+      security.testlibrary.Proc
+  * AArch32 port
+    + JDK-8292599: [aarch32] Crash due to missed CPU specific part
+      of 8233019
+
+-------------------------------------------------------------------
 Wed Aug 24 10:48:55 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - make-jobserver-detection.patch: Fix detection of jobserver support
