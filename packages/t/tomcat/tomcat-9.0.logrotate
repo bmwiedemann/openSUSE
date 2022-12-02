@@ -1,4 +1,5 @@
 @@@TCLOG@@@/catalina.out {
+    notifempty
     copytruncate
     weekly
     rotate 52

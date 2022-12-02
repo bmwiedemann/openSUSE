@@ -829,4 +829,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>sec. fixes</comment>
     <requestid>1037218</requestid>
   </revision>
+  <revision rev="88" vrev="12">
+    <srcmd5>1d6dcb06f0b5235ef3aefff44ed38a6f</srcmd5>
+    <version>9.0.43</version>
+    <time>1669983216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039508</requestid>
+  </revision>
 </revisionlist>

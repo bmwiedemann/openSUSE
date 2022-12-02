@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 29 14:46:26 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Use catalina.out for logging (bsc#1205647)
+- Added patches:
+  * tomcat-9.0-fix_catalina.patch
+
+-------------------------------------------------------------------
 Mon Nov 21 07:42:34 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Fixed CVEs:
