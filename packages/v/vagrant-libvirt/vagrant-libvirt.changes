@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Dec  2 09:36:07 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.11.1
+  Remove patch: 0001-Mock-out-synced-folders-for-action-tests-1610.patch
+
+## What's Changed
+* Rework release workflow by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1609
+* Bump commonmarker from 0.23.5 to 0.23.6 in /docs by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1607
+* Mock out synced folders for action tests by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1610
+* Use correct release branch for changelog by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1612
+* Remove need to pass machine and domain around in driver by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1579
+* Facilitate profiling of tests by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1611
+* Replace 9p synced folder :owner with :access by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1571
+* Remove remaining tabs from template by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1614
+* Bump actions/download-artifact from 2 to 3 by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1615
+* Bump actions/upload-artifact from 2 to 3 by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1616
+* Bump actions/github-script from 6.2.0 to 6.3.0 by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1617
+* Ensure explicit setting of inputs respected by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1619
+* Add example for use of kernel/initrd/cmdline options by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1620
+* Emit default for bootmenu to be off by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1621
+* Report graphics port after resolving by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1622
+* Update development steps by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1623
+* Select better defaults when graphics type is spice by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1625
+* Bump actions/github-script from 6.3.0 to 6.3.1 by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1626
+* Make code available as gem for test installs by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1629
+* Note that vagrant may select nfs or rsync as default synced_folder by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1630
+* Query host interfaces directly as libvirt may not include them by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1627
+* Ensure credentials file permissions set correctly by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1631
+* Ignore networks that cannot be used by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1628
+* Workflow to notify gem artifact available for PR by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1632
+* Adjust workflow to work for forked PRs by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1635
+* Add vcpupin support by @mark-i-m in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1007
+* Floppy support by @guss77 in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1334
+* Bump actions/github-script from 5 to 6 by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1637
+* Use same list_all_networks and filter by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1638
+* Disable graphics autoport attr when using spice by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1636
+* Unit context improvements by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1639
+* Use provided ssh port for machine by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1641
+* Tidy UI output on create by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1643
+* Validate provided synced_folders types for access by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1644
+* Bump JamesIves/github-pages-deploy-action from 4.4.0 to 4.4.1 by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1645
+* Bump nokogiri from 1.13.8 to 1.13.9 in /docs by @dependabot in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1647
+* Avoid setting cpu element on unsupported architectures by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1633
+* Update installation docs by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1650
+* Fix list networks being read-only by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1651
+* Switch to using github generated release notes by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1652
+* Publish docker image to github packages for PRs by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1646
+* Ensure reusable workflow reference correctly by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1654
+* Fix docker image workflow syntax issue by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1655
+* Ensure buildah job checks out pull request changes by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1656
+* Remove calls to set-output as now deprecated by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1657
+* Roll forward to ruby 3.1 and remove patches by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1660
+* Attempt to treat image names as text block by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1659
+* Attempt to passing multiple lines via env context by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1661
+* Replace use of secret for org name by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1662
+* Reject cpu features enabled without model by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1658
+* Tweak fedora installation instructions by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1663
+* Include distro matrix status badge from qa project by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1665
+* Use ruby 3.1.2 by default for development by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1666
+* Support running tests in parallel by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1667
+* Adding SEV support by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1664
+* Ensure default public_network :dev shown on error by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1670
+* Adding disk_address_type option. by @bdegreve in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/954
+* feat: add websocket graphics config by @Tooa in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1672
+* Add libvirt-dev to Ubuntu install by @daviddavis in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1676
+* Clear and create forwarded ports on suspend/resume by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1679
+* Ensure acceptance tests are executed  by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1680
+* Ensure dependency on ip tool is satisfied by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1681
+* Add docs to install latest development version by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1683
+* Correct destroy method call logic by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1684
+
+-------------------------------------------------------------------
 Fri Sep 23 08:19:50 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Add patch: 0001-Mock-out-synced-folders-for-action-tests-1610.patch

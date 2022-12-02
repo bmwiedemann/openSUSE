@@ -21,7 +21,7 @@
 %global rb_ruby_suffix %rb_default_ruby_suffix
 
 Name:           vagrant-libvirt
-Version:        0.10.8
+Version:        0.11.1
 Release:        0
 %define mod_name vagrant-libvirt
 %define mod_full_name %{mod_name}-%{version}
@@ -87,8 +87,6 @@ BuildRequires:  kmod
 
 URL:            https://github.com/%{name}/%{name}
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-# fixes test failures, remove on next upstream release after 0.10.8
-Patch:          0001-Mock-out-synced-folders-for-action-tests-1610.patch
 
 Summary:        Vagrant provider for libvirt
 License:        MIT
