@@ -17,20 +17,20 @@
 
 
 Name:           hxtools
-Version:        20221119
+Version:        20221120
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
 Group:          Productivity/Other
 Url:            https://inai.de/projects/hxtools/
 
-Source:         https://inai.de/files/hxtools/%name-%version.tar.xz
+Source:         https://inai.de/files/hxtools/%name-%version.tar.zst
 Source2:        https://inai.de/files/hxtools/%name-%version.tar.asc
 Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel >= 2
-BuildRequires:  xz
+BuildRequires:  zstd
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  pkgconfig(libHX) >= 3.17
 BuildRequires:  pkgconfig(libpci) >= 3
@@ -152,20 +152,13 @@ directories or files in specific locations in use. It differs from
 lsof/fuser in that it can scan recursively and won't bluntly look at
 an entire mount.
 
-%package -n vfontas
-Summary:        Bitmap font file transformation utility
-Group:          System/Console
-Provides:       hxtools:/usr/bin/vfontas
-
-%description -n vfontas
-vfontas (originally "VGA font file assembler") can transform raster
-font files in various ways - scaling, moving, row-filling, convert
-between formats (bdf/clt/pbm/psf/raw DOS font) and vector export to
-sfd (and then TrueType/OpenType/WOFF/etc. via FontForge). The vector
-export is able to smoothen the jagged edges of bitmap fonts.
-
 %prep
+%if 0%{?suse_version} < 1550
+%setup -Tcq
+pushd .. && tar --use=zstd -xf "%{S:0}" && popd
+%else
 %autosetup -p1
+%endif
 
 %build
 %configure
@@ -249,8 +242,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %exclude %_mandir/man*/fd0ssh.1*
 %exclude %_mandir/man*/ofl.1*
 %exclude %_mandir/man1/sysinfo.1*
-%exclude %_mandir/man*/palcomp.1*
-%exclude %_mandir/man*/vfontas.1*
 
 %files data
 %dir %_sysconfdir/openldap
@@ -287,11 +278,5 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %hldir/hxnetload
 %hldir/paddrspacesize
 %hldir/proc_stat_signal_decode
-
-%files -n vfontas
-%_bindir/palcomp
-%_bindir/vfontas
-%_mandir/man1/palcomp.1*
-%_mandir/man1/vfontas.1*
 
 %changelog
