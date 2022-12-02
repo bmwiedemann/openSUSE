@@ -135,4 +135,12 @@
     <comment>- Drop the download URL from Source to allow submission to FACTORY (forwarded request 911471 from tiwai)</comment>
     <requestid>911472</requestid>
   </revision>
+  <revision rev="21" vrev="51">
+    <srcmd5>04e19f7e313965cf962b1e11774328f2</srcmd5>
+    <version>0.6.0</version>
+    <time>1669983208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039464</requestid>
+  </revision>
 </revisionlist>
