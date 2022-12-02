@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 24 14:18:26 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.21
+  * Workaround a mutter bug that client side input panel may freeze
+    nautilus if typing in rename dialog.
+  * Workaround a gtk4 bug that breaks the cursor position calculation
+    when typing in the gtk popover window.
+
+-------------------------------------------------------------------
+Sun Nov 20 09:03:34 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- update version 5.0.20
+  * remove backport-c772576.diff
+
+-------------------------------------------------------------------
 Sun Nov 13 05:40:53 UTC 2022 - Tranter Madi <trmdi@yandex.com>
 
 - backport bugfix from upstream
