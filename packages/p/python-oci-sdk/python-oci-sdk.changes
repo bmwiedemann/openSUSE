@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  1 09:59:14 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.88.2
+  * Support for Resource Principals version 2.1 and 2.1.1
+  * Support for disabling Lazy Imports introduced in version
+    `2.88.1` by setting the environment variable
+    `OCI_PYTHON_SDK_LAZY_IMPORTS_DISABLED` to `True`
+  * The upper bound for `cryptography` dependency has changed
+    from `37.0.2` to versions less than `39.0.0`
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Tue Nov 22 14:42:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.88.1
