@@ -92,4 +92,15 @@
 - Update Requires from setup.py (forwarded request 1002728 from glaubitz)</comment>
     <requestid>1002789</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b32df9dcab33e9db70b8f308d9ea5622</srcmd5>
+    <version>5.2.1</version>
+    <time>1669992457</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.2.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1039581 from glaubitz)</comment>
+    <requestid>1039587</requestid>
+  </revision>
 </revisionlist>
