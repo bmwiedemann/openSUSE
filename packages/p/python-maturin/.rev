@@ -626,4 +626,37 @@
     gh#PyO3/maturin#1279</comment>
     <requestid>1038001</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb846af9bbfcb1dfa3bbab50902294b2</srcmd5>
+    <version>0.14.3</version>
+    <time>1669983189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.3:
+  * Bump MSRV to 1.62.0
+    gh#PyO3/maturin#1297
+  * CI: Run ruff in lint jobs
+    gh#PyO3/maturin#1298
+  * Fix build error when required features of bin target isn't
+    enabled
+    gh#PyO3/maturin#1299
+  * Build and publish armv6l wheels for maturin
+    gh#PyO3/maturin#1300
+  * Fix wrong platform tag when building in i386 docker container
+    on x86_64 host
+    gh#PyO3/maturin#1301
+  * Fix wrong platform tag when building in armv7 docker container
+    on aarch64 host
+    gh#PyO3/maturin#1303
+  * CI: Stop caching test crates target directory
+    gh#PyO3/maturin#1302
+  * refactor: Use clap_complete_command
+    gh#PyO3/maturin#1304
+  * Remove human-panic dependency
+    gh#PyO3/maturin#1305
+  * chore: cargo update to remove rustix 0.35.x
+    gh#PyO3/maturin#1307
+  * chore: cargo update cargo-zigbuild and cargo-xwin
+    gh#PyO3/maturin#1314</comment>
+    <requestid>1039390</requestid>
+  </revision>
 </revisionlist>
