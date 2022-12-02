@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec  2 09:00:03 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Update to 3.0:
+  * Force latest `0.2.4` version for entrypoint2 dependency
+  * remove py2
+  * PIL is the first choice for osx and win
+  * select PIL backend for Linux also
+  * test: remove path.py dependency
+  * fix sway doc
+  * format code
+  * test: fix sway
+  * test: error message for missing DISPLAY variable
+  * grim: fix py2 syntax
+  * test_pygdk3: check Gdk install
+  * clean.py: new
+  * use UNKNOWN_VERSION constant in grim wrapper
+  * add grim wrapper
+  * test: log_format
+  * fix speedtest
+  * speedtest: "number" parameter
+  * vagrant: fix ubuntu 20.04 based boxes
+  * remove gtk backend
+  * remove qtpy backend
+  * test: showall: faster window opening
+  * xwd backend (but not used)
+  * test_examples
+  * test: remove temp files
+  * test: use os.path.join
+  * examples+generate doc
+
+-------------------------------------------------------------------
 Tue Aug 25 07:58:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild to avoid build cycles

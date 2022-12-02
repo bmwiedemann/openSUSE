@@ -1,7 +1,7 @@
 #
-# spec file for package python-pyscreenshot
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -27,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pyscreenshot%{psuffix}
-Version:        2.2
+Version:        3.0
 Release:        0
 Summary:        Python screenshots
 License:        BSD-3-Clause
@@ -78,7 +77,7 @@ to a Pillow image memory using various back-ends.
 Replacement for the ImageGrab Module.
 
 %prep
-%setup -q -n pyscreenshot-%{version}
+%autosetup -p1 -n pyscreenshot-%{version}
 
 %build
 %python_build
@@ -93,14 +92,19 @@ Replacement for the ImageGrab Module.
 %if %{with test}
 cd tests/
 # test_maim fails on Leap 15.x
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run --server-args "-screen 0 1920x1080x24" $python -m pytest -rs -v test_*.py -k 'not test_maim'
+%{python_expand # Necessary to run configure with all python flavors
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+xvfb-run --server-args "-br -screen 0 900x800x24" $python -m pytest -v -k 'not test_maim'
+rm -rf /tmp/fillscreen*
+}
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyscreenshot
+%{python_sitelib}/pyscreenshot-%{version}*-info
 %endif
 
 %changelog
