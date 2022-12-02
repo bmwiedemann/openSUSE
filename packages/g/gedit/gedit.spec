@@ -17,10 +17,10 @@
 
 
 %bcond_without  python_bindings
-%define api_ver 3.38
+%define api_ver 43
 
 Name:           gedit
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later

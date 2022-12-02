@@ -1148,4 +1148,12 @@
     <comment> (forwarded request 1033634 from iznogood)</comment>
     <requestid>1034163</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1b244bc41ecd715c582591e3dc4f2362</srcmd5>
+    <version>43.2</version>
+    <time>1669983133</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 43.2 (forwarded request 1039131 from dimstar)</comment>
+    <requestid>1039361</requestid>
+  </revision>
 </revisionlist>
