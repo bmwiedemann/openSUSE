@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Dec 1 12:45:11 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#616
+- always redirect udev log output to /var/log/udev.log (bsc#1204216)
+- include hint about how to enable udev debug output
+- 17.67
+
+--------------------------------------------------------------------
+Thu Dec 1 08:41:08 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#614
+- etc: update module.config to match 6.1
+- 17.66
+
+--------------------------------------------------------------------
 Thu Nov 17 12:19:59 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#615
