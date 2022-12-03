@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Dec  3 03:00:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update 3.0.1 (2022-11-08)
+  * Fixed import of packaging.markers. [maurits] (#621)
+
+- Update to 3.0.0 (2022-11-07)
+  * Add support for PEP 508 markers in section condition expressions. For example: [versions:python_version <= "3.9"]. [maurits] (#621)
+  Bug fixes:
+  * Command-line ‘extends’ now works with dirs in file names [gotcha] (cli-extends)
+  * Add support for python311-315 in conditional section expressions. (#311)
+  * Make compatible with pip 22.2+, restoring Requires-Python functionality there. Fixes issue 613. [maurits] (#613)
+
+- Update to 3.0.0rc3 (2022-04-07)
+  * Fix TypeError: dist must be a Distribution instance due to issue between setuptools and pip. (#600)
+
+- Update to 3.0.0rc2 (2022-03-04)
+  * add support for PEP496 environment markers (pep496)
+  * Fix TypeError for missing required use_deprecated_html5lib with pip 22. Keep compatible with earlier pip versions. (#598)
+
+- Update to 3.0.0rc1 (2021-12-16)
+  * Call pip via python -m pip. (#569)
+
+- Update to 3.0.0b5 (2021-11-29)
+  * Fix when c extension implements namespace packages without the corresponding directories. (#589)
+  * Honor command-line buildout:extends (#592)
+
+- Update to 3.0.0b4 (2021-11-25)
+  * Allow to run buildout in FIPS enabled environments. (#570)
+  * Proper error message if extends-cache tries to expand ${section:variable} (#585)
+  * Forward verbose option to pip (#576)
+  * Check that file top_level.txt exists before opening. Add check for other files as well. (#582)
+  * Return code of pip install subprocess is now properly returned to buildout. (#586)
+
+- Update to 3.0.0b3 (2021-10-08)
+  * Improve warning message when a section contains unused options. (#483)
+  * Fix support of pip>=21.1 (#567)
+  * Fix confusion when using multiple Python versions and installing packages with C extensions without proper binary wheel available. (#574)
+  * Avoid broken jobs on Travis because of security on PRs (travis-pr)
+
+- Update to 3.0.0b2 (2021-03-09)
+ * Improve error message when a package version is not pinned and allow-picked-versions = false. (#481)
+ * Fix FileNotFoundError when installing eggs with top-level directory without code (like doc). (#556)
+ * Login to docker hub to avoid pull limits (travis)
+ * Initialize towncrier (#519)
+
+- Update to 3.0.0b1 (2021-03-07)
+  * Fix issue with combination of > specs and extras and recent setuptools.
+  * Fix issue with incrementing options from .buildout/default.cfg.
+  * Support python37, python38 and python39 in conditional section expressions.
+  * Fix bootstrapping for python27 and python35.
+
+- Update to 3.0.0a2 (2020-05-25)
+  * Ignore .git when computing signature of a recipe develop egg
+  * Warn when the name passed to zc.recipe.egg:scripts is not defined in egg entry points.
+  * Show pip warning about Python version only once.
+  * Better patch for pkg_resources.Distribution.hashcmp performance.
+
+- Update to 3.0.0a1 (2020-05-17)
+  * Scripts: ensure eggs are inserted before site-packages in sys.path.
+  * Fix forever loop when changing zc.buildout version via buildout.
+  * Add support for Requires-Python metadata. Fragile monkeypatch that relies on pip._internal. Emits a warning when support is disabled due to changes in pip.
+  * Use pip install instead of deprecated setuptools.easy_install.
+  * Patch pkg_resources.Distribution to make install of unpinned versions quicker. Most obvious with setuptools. 
+
+-------------------------------------------------------------------
 Sat Oct 29 18:02:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.13.8 
