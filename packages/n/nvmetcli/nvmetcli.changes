@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 25 11:39:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_nvmet.service.patch
+
+-------------------------------------------------------------------
 Fri Mar 27 07:48:31 UTC 2020 - hare@suse.de
 
 - Update to version v0.7:

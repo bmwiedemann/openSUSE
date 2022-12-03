@@ -1,7 +1,7 @@
 #
 # spec file for package nvmetcli
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,17 +22,18 @@ Release:        1%{?dist}
 Summary:        Command line interface for the kernel NVMe nvmet
 License:        Apache-2.0
 Group:          System/Management
-Url:            http://git.infradead.org/users/hch/nvmetcli.git
+URL:            http://git.infradead.org/users/hch/nvmetcli.git
 Source:         nvmetcli-v%{version}.tar.gz
 Patch1:         %{name}-update-python-to-python3.patch
 Patch2:         0001-nvmetcli-don-t-remove-ANA-Group-1-on-clear.patch
+Patch3:         harden_nvmet.service.patch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-configshell-fb
 Requires:       python3-kmod
 Requires(post): systemd
-Requires(postun): systemd
-Requires(preun): systemd
+Requires(postun):systemd
+Requires(preun):systemd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -46,6 +47,7 @@ to / from a json file.
 %setup -q -n nvmetcli-v%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 python3 setup.py build

@@ -1,0 +1,21 @@
+Index: nvmetcli-v0.7/nvmet.service
+===================================================================
+--- nvmetcli-v0.7.orig/nvmet.service
++++ nvmetcli-v0.7/nvmet.service
+@@ -4,6 +4,16 @@ Requires=sys-kernel-config.mount
+ After=sys-kernel-config.mount network.target local-fs.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ RemainAfterExit=yes
+ ExecStart=/usr/sbin/nvmetcli restore
