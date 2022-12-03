@@ -1,0 +1,24 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Nov 30 20:16:21 2022 +0100
+Subject: Link library with -z,noexecstack
+Patch-mainline: Not yet
+Git-commit: adddc0eadc81bcd29c48594793cb33eac0edb572
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ exports/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+diff --git a/exports/Makefile b/exports/Makefile
+index d8173534..a23fbc7f 100644
+--- a/exports/Makefile
++++ b/exports/Makefile
+@@ -193,6 +193,7 @@ else ifeq ($(F_COMPILER), FLANG)
+ else
+ ifneq ($(C_COMPILER), LSB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o ../$(LIBSONAME) \
++	-Wl,-z,noexecstack \
+ 	-Wl,--whole-archive $< -Wl,--no-whole-archive \
+ 	-Wl,-soname,$(INTERNALNAME) $(EXTRALIB)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -w -o linktest linktest.c ../$(LIBSONAME) $(FEXTRALIB) && echo OK.

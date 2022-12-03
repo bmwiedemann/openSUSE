@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Nov 30 19:24:20 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Update to v0.3.21:
+  * general:
+    - Updated the included LAPACK to Reference-LAPACK release 3.10.1
+    - when no Fortran compiler is available, OpenBLAS builds will now automatically
+    - function LAPACKE_lsame is now annotated with the GCC attribute "const" to aid static analyzers
+    - added USE_TLS to the list of options reported by the openblas_get_config() function
+    - added SYMBOLPREFIX/SYMBOLSUFFIX handling for LAPACK 3.10.0 functions added in 0.3.20
+    - reverted OpenMP threadpool behaviour in the exec_blas call to its state before 0.3.11, that is
+      the threadpool will no longer grow or shrink on demand as the overhead for this is too big at least with
+      GNU OpenMP. The adaptive behaviour introduced in 0.3.11 can still be requested at runtime by setting
+      the environment variable OMP_ADAPTIVE
+    - worked around spurious STFSM/CTFSM errors reported by the LAPACK testsuite
+  * x86_64:
+    - fixed determination of compiler support for AVX512 and removed the 0.3.19
+    - workaround for building SKYLAKEX kernels on Sandybridge hardware
+    - fixed compilation for the SKYLAKEX target with gcc 6
+    - fixed compilation of the SkyLakeX small matrix GEMM kernels with LLVM or ICC
+    - added support for the Zhaoxin/Centaur KH40000 cpu
+    - fixed a potential crash in the ZSYMV kernel used for all targets except generic
+  * POWER:
+    - worked around an overflow error in the POWER6 DNRM2 kernel
+    - fixed compilation on PPC440
+    - fixed a performance regression in the level1 BLAS on POWER10
+    - fixed the POWER10 ZGEMM kernel
+    - fixed singlethreaded builds for POWER10
+    - fixed compilation of the POWER10 DGEMV kernel with older gcc versions
+    - enabled compilation of the BFLOAT16 kernels by default
+    - enabled the small matrix kernels by default for DYNAMIC_ARCH builds
+    - added a workaround for a miscompilation of the CDOT and ZDOT kernels by GCC 12
+- Obsolete:
+  * Define-sbgemm_r-to-fix-DYNAMIC_ARCH-builds.patch
+  * Remove-extraneous-and-wrong-definition-of-sbgemm_r-on-x86_64.patch
+  * Do-not-include-symbols-defined-in-driver-others-parameter.c-in-DYNAMIC_BUILD.patch
+  * Utilize-compiler-AVX512-capability-info-from-c_check-when-building-getarch.patch
+  * Revert-AVX512-capability-check-from-PR-1980-moved-to-build.patch
+  * Fix-checks-for-AVX512-and-atomics.patch
+  * Use-CC-and-full-command-line-instead-of-hard-coding-gcc-for-AVX512-checking.patch
+- Updated/renamed:
+  * openblas-noexecstack.patch to Link-library-with-z-noexecstack.patch
+  * openblas-s390.patch to Handle-s390-correctly.patch
+- Added (see https://github.com/xianyi/OpenBLAS/issues/3738):
+  * remove-spurious-loops.patch
+  * Use-blasint-for-INTERFACE64-compatibility.patch
+
+-------------------------------------------------------------------
 Wed Sep 14 06:08:40 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - The toolchain and 'make' in TW have been updated to handle parallel
@@ -42,7 +89,7 @@ Mon Apr  4 08:57:16 UTC 2022 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Wed Mar 30 12:00:30 UTC 2022 - Egbert Eich <eich@suse.com>
 
-- Build PPC64LE libraries with the lastest gcc available to
+- Build PPC64LE libraries with the latest gcc available to
   take advantage of instruction sets in later CPUs used in
   the CPU specific kernels (jsc#SLE-18143, bsc#1197721).
   For fortran use the stock compiler to avoid compatibility

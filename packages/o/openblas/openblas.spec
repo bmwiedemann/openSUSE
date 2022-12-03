@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_20
-%define vers 0.3.20
+%define _vers 0_3_21
+%define vers 0.3.21
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -133,6 +133,9 @@ ExclusiveArch:  do_not_build
 %ifarch ppc64le x86_64 s390x
 %if 0%{?c_f_ver} > 9
 %else
+%if 0%{?sle_version} == 150500
+%define cc_v 12
+%endif
 %if 0%{?sle_version} == 150400
 %define cc_v 11
 %endif
@@ -181,18 +184,11 @@ URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
-Patch1:         Define-sbgemm_r-to-fix-DYNAMIC_ARCH-builds.patch
-Patch2:         Remove-extraneous-and-wrong-definition-of-sbgemm_r-on-x86_64.patch
-Patch3:         Do-not-include-symbols-defined-in-driver-others-parameter.c-in-DYNAMIC_BUILD.patch
-Patch4:         Utilize-compiler-AVX512-capability-info-from-c_check-when-building-getarch.patch
-Patch5:         Revert-AVX512-capability-check-from-PR-1980-moved-to-build.patch
-Patch6:         Fix-checks-for-AVX512-and-atomics.patch
-Patch7:         Use-CC-and-full-command-line-instead-of-hard-coding-gcc-for-AVX512-checking.patch
-
-# PATCH-FIX-UPSTREAM openblas-noexecstack.patch
-Patch101:       openblas-noexecstack.patch
+Patch1:         Use-blasint-for-INTERFACE64-compatibility.patch
+Patch2:         remove-spurious-loops.patch
+Patch101:       Link-library-with-z-noexecstack.patch
 # PATCH port
-Patch102:       openblas-s390.patch
+Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

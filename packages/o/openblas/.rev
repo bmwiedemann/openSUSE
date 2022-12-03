@@ -603,4 +603,12 @@
 - Disable lto when linking test programs to speeds up building. (forwarded request 1003588 from eeich)</comment>
     <requestid>1004663</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f694e6428646f7e3db944deaa587dd7f</srcmd5>
+    <version>0.3.21</version>
+    <time>1670058205</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove stray comment (forwarded request 1039330 from eeich)</comment>
+    <requestid>1039332</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,30 @@
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Mon Aug 8 14:52:10 2022 +0200
+Subject: Use blasint for INTERFACE64 compatibility
+Patch-mainline: Not yet
+Git-repo: https://github.com/xianyi/OpenBLAS
+Git-commit: d9dc015cfc78fc32f555995a89d6957ef0184ea2
+References: 
+
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ test/compare_sgemm_sbgemm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/compare_sgemm_sbgemm.c b/test/compare_sgemm_sbgemm.c
+index a2c358cf..d4b59145 100644
+--- a/test/compare_sgemm_sbgemm.c
++++ b/test/compare_sgemm_sbgemm.c
+@@ -76,9 +76,9 @@ float16to32 (bfloat16_bits f16)
+ int
+ main (int argc, char *argv[])
+ {
+-  int m, n, k;
++  blasint m, n, k;
+   int i, j, l;
+-  int x;
++  blasint x;
+   int ret = 0;
+   int loop = 100;
+   char transA = 'N', transB = 'N';

@@ -1,0 +1,34 @@
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Mon Aug 8 17:09:45 2022 +0200
+Subject: remove spurious loops
+Patch-mainline: Not yet
+Git-repo: https://github.com/xianyi/OpenBLAS
+Git-commit: 3d338b57de1837f1e2264a1262a9ee9203f31c6c
+References: 
+
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ test/compare_sgemm_sbgemm.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/test/compare_sgemm_sbgemm.c b/test/compare_sgemm_sbgemm.c
+index d4b59145..276fecae 100644
+--- a/test/compare_sgemm_sbgemm.c
++++ b/test/compare_sgemm_sbgemm.c
+@@ -112,7 +112,6 @@ main (int argc, char *argv[])
+ 	      &m, BB, &k, &beta, CC, &m);
+       for (i = 0; i < n; i++)
+ 	for (j = 0; j < m; j++)
+-	  for (l = 0; l < k; l++)
+ 	    if (fabs (CC[i * m + j] - C[i * m + j]) > 1.0)
+ 	      ret++;
+       if (transA == 'N' && transB == 'N')
+@@ -126,7 +125,6 @@ main (int argc, char *argv[])
+ 		}
+ 	  for (i = 0; i < n; i++)
+ 	    for (j = 0; j < m; j++)
+-	      for (l = 0; l < k; l++)
+ 		if (CC[i * m + j] != DD[i * m + j])
+ 		  ret++;
+ 	}

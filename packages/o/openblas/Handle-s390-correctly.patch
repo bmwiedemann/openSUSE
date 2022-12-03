@@ -1,0 +1,39 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Nov 30 20:14:53 2022 +0100
+Subject: Handle s390 correctly
+Patch-mainline: Not yet
+Git-commit: f1761f16899756e4da71df35b82772bcbcc33460
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ c_check | 2 +-
+ ctest.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+diff --git a/c_check b/c_check
+index 01d4f4a7..7db8bb42 100755
+--- a/c_check
++++ b/c_check
+@@ -11,7 +11,7 @@ case "$hostarch" in
+     arm*) [ "$hostarch" = "arm64" ] || hostarch='arm' ;;
+     aarch64) hostarch=arm64 ;;
+     powerpc*|ppc*) hostarch=power ;;
+-    s390x) hostarch=zarch ;;
++    s390*) hostarch=zarch ;;
+ esac
+ 
+ makefile="$1"
+diff --git a/ctest.c b/ctest.c
+index df628b1d..f09571b1 100644
+--- a/ctest.c
++++ b/ctest.c
+@@ -121,7 +121,7 @@ ARCH_X86_64
+ ARCH_POWER
+ #endif
+ 
+-#if defined(__s390x__) || defined(__zarch__)
++#if defined(__s390x__) || defined(__s390__) || defined(__zarch__)
+ ARCH_ZARCH
+ #endif
+ 
