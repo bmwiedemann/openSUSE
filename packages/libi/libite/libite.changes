@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  3 09:50:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * Add printf format attribute hint to all vararg functions.  This will
+    help users of these functions by telling CC what to look for
+  * Fix `fisdir()` segfault on GNU/Hurd
+  * Fix `touch)` on Debian/kFreeBSD, use `creat()` instad of `mknod()`
+
+-------------------------------------------------------------------
 Thu Dec  2 08:47:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.0

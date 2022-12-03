@@ -63,4 +63,16 @@
     <comment></comment>
     <requestid>935305</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>808980fae24a9b13519d799b84e3b58b</srcmd5>
+    <version>2.5.2</version>
+    <time>1670068113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.2:
+  * Add printf format attribute hint to all vararg functions.  This will
+    help users of these functions by telling CC what to look for
+  * Fix `fisdir()` segfault on GNU/Hurd
+  * Fix `touch)` on Debian/kFreeBSD, use `creat()` instad of `mknod()`</comment>
+    <requestid>1039769</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           libite
-Version:        2.5.0
+Version:        2.5.2
 Release:        0
 Summary:        BSD function library
 License:        MIT AND X11
@@ -66,7 +66,7 @@ Development and header files for libite.
 autoreconf -fiv
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
