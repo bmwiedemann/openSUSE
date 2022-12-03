@@ -1,7 +1,7 @@
 #
 # spec file for package xvfb-run
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Script to run a virtualized X-Server
 License:        GPL-2.0-only
 Group:          System/X11/Utilities
-Url:            https://packages.debian.org/de/sid/xvfb
+URL:            https://packages.debian.org/de/sid/xvfb
 Source0:        http://svn.exactcode.de/t2/trunk/package/xorg/xorg-server/xvfb-run.sh
 Source1:        https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.gz#/xvfb-run.1.gz
 # PATCH-FIX-OPENSUSE https://bugzilla.redhat.com/show_bug.cgi?id=508739#c6

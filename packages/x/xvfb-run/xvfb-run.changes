@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 30 18:03:44 CET 2022 - ro@suse.de
+
+- actually gzip manpage to match the filename extension 
+
+-------------------------------------------------------------------
 Wed Nov 11 13:57:41 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add missing runtime dependencies to which and xauth (boo#1178672)
