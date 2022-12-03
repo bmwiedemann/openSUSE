@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:18:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.41.0 
+  * CommitComment.comment has been deprecated in favour of CommitComment.body to make the naming consistent across objects. (#748)
+  * ogr now requires Python 3.9 or later. (#746)
+
+-------------------------------------------------------------------
 Fri Oct 14 04:02:57 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.40.0:

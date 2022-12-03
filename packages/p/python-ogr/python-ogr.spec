@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ogr
-Version:        0.40.0
+Version:        0.41.0
 Release:        0
 Summary:        One API for multiple git forges
 License:        MIT
