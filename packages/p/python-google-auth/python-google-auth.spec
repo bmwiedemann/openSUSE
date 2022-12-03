@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-google-auth
-Version:        2.14.1
+Version:        2.15.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0

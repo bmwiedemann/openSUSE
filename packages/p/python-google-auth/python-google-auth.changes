@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  2 10:25:44 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.15.0
+  * Add api_key credentials (#1184)
+  * Introduce a way to provide scopes granted by user (#1189)
+  * Allow mtls sts endpoint for external account token urls. (#1185)
+  * CI broken by removal of py.path (#1194)
+  * Ensure JWT segments have the right types (#1162)
+  * Updated the lower bound of interactive timeout and fix the kwarg… (#1182)
+
+-------------------------------------------------------------------
 Wed Nov 16 15:26:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.14.1
