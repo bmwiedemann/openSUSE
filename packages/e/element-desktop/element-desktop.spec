@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.13
+Version:        1.11.15
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
