@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  1 16:43:05 UTC 2022 - David Mulder <dmulder@suse.com>
+
+- Introduce without-smb1-server spec flag; (bsc#1205104);
+
+-------------------------------------------------------------------
 Tue Nov 15 17:14:58 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - CVE-2022-42898: Samba buffer overflow vulnerabilities on 32-bit

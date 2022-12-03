@@ -3575,4 +3575,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1036489</requestid>
   </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>3e6a89b47c50b486ef5d139080f3c492</srcmd5>
+    <version>4.17.3+git.283.2157972742b</version>
+    <time>1670058197</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce without-smb1-server spec flag; (bsc#1205104);</comment>
+    <requestid>1039573</requestid>
+  </revision>
 </revisionlist>

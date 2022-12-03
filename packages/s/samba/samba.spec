@@ -56,6 +56,9 @@
 %{!?with_mit_dc: %define with_mit_dc 1}
 %{!?with_dc: %define with_dc 1}
 
+# Define whether smbd is built with SMB1 disabled
+%{!?without_smb1_server: %define without_smb1_server 1}
+
 Name:           samba
 BuildRequires:  autoconf
 BuildRequires:  cups-devel
@@ -145,7 +148,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.3+git.279.ff9bb8a298
+Version:        4.17.3+git.283.2157972742b
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -682,7 +685,9 @@ CONFIGURE_OPTIONS="\
 	--bundled-libraries=NONE,socket_wrapper,cmocka,${bundled_libraries_extra} \
 	--without-fam \
 %if 0%{?suse_version} > 1500
+%if %{without_smb1_server}
 	--without-smb1-server \
+%endif
 %endif
 "
 
