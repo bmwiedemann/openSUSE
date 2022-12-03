@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 01 11:12:36 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221201.82b8b0c:
+  * Remove shared-library-without-dependency and library-not-linked-against-libc
+
+-------------------------------------------------------------------
 Mon Nov 28 09:39:59 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221128.b71453b:
