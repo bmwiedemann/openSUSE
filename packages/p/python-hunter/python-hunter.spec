@@ -17,7 +17,7 @@
 
 
 Name:           python-hunter
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        BSD-2-Clause
