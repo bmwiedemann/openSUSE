@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  2 20:29:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.15.0
+  Moved auto signature string to Signature object conversion to wraps. …
+      …Added a test.
+
+-------------------------------------------------------------------
 Thu Sep 29 15:46:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Version 1.15.0

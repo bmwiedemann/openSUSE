@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-makefun
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Small library to dynamically create python functions
