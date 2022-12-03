@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  3 00:55:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v3.19.5 
+  #1303 Fix #1302 by updating the warning logs in WebClient to be consistent with Node SDK - Thanks @mar3mar3
+  #1307 Fix #1304 ssl_context is not passed from async web_client to aiohttp socket client - Thanks @seratch @giwrgos-skouras
+  #1308 Fix #1305 by fixing pagination with async for syntax - Thanks @seratch @WilliamYuhangLee
+
+- Update to v3.19.4
+  #1301 Fix #1297 Building user_auth_blocks with slack_sdk.models class objects for chat.unfurl API call fails - Thanks @seratch @injust
+
+- Update to v3.19.3
+  #1288 Add datetimepicker, url, email, number block elements - Thanks @WilliamBergamin
+  #1294 Fix #1292 files_upload_v2 does not work with io.BytesIO file parameters - Thanks @seratch
+  #1290 Update RTM API documents - Thanks @ryan-aldaz
+
+-------------------------------------------------------------------
 Wed Nov  9 18:59:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.19.2 

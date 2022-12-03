@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-slack-sdk
-Version:        3.19.2
+Version:        3.19.3
 Release:        0
 Summary:        Python SDKs for the Slack API
 License:        MIT
