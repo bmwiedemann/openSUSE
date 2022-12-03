@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Nov 20 02:32:15 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.8.7
+  * fix build: add missing struct affine functions and headers
+- Changes in 0.8.6:
+New features:
+  * new affine transform and project functions
+    gh#recp/cglm#260
+  * add basic ivec functions
+    gh#recp/cglm#251
+Bugfixes and improvements:
+  * added missing include in io.h which adds GLM_MAX macro
+    gh#recp/cglm#257
+  * update README to show that integer types are supported
+    gh#recp/cglm#254
+  * fix grammatical errors in docs index
+    gh#recp/cglm#247
+  * some improvements including build files
+- Changes in 0.8.5:
+  * update GLM_FLT_EPSILON to use 1e-5 instead of 1e-
+  * implement a few complex routines
+  * header containing sse3 intrinsics is pmmintrin.h
+  * add missing ivec types
+  * extend unions for struct api
+  * fix glm_pickmatrix()'s param type
+  * fix a bug in glm_lookat_lh
+  * fix bug in view_lh.h
+  * some improvements including build files
+
+
+-------------------------------------------------------------------
 Tue May 17 08:46:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8.5

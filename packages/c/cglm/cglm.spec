@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           cglm
-Version:        0.8.5
+Version:        0.8.7
 Release:        0
 Summary:        OpenGL mathematics (glm) for C
 License:        MIT
@@ -75,7 +75,7 @@ rm -rf html/.{buildinfo,doctrees,nojekyll}
 
 %install
 %meson_install
-%fdupes %buildroot/%_prefix
+%fdupes %{buildroot}/%{_prefix}
 %fdupes -s docs/html
 
 %check
