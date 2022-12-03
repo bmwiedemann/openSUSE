@@ -61,6 +61,7 @@ Requires:	grep
 Requires:	findutils
 Requires:	coreutils
 Requires:	zypper
+Requires:	sudo
 
 
 BuildRequires:  cmake
