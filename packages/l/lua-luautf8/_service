@@ -3,7 +3,7 @@
     <param name="url">https://github.com/starwing/luautf8</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">a3db9cca0d7d82d78e2acaba2b5571178fcddc01</param>
+    <param name="revision">751c782864f4c636760339e16f218d6dee292d5d</param>
     <param name="versionrewrite-pattern">(\d+.\d+.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

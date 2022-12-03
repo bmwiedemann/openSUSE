@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luautf8
-%define rock_version 0.1.4-1
+%define rock_version 0.1.5-1
 %ifarch %{ix86}
  %define luarock_arch x86
 %else
@@ -28,7 +28,7 @@
   %define luarock_arch %{_arch}
  %endif
 %endif
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        A utf-8 support module for Lua and LuaJIT
 License:        MIT
