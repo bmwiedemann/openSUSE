@@ -32,7 +32,6 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 PreReq:         %fillup_prereq
-PreReq:         %{_sbindir}/mkinitrd
 PreReq:         coreutils
 Recommends:     smtp_daemon
 URL:            http://www.kernel.org/pub/linux/utils/raid/mdadm/
@@ -97,7 +96,7 @@ Patch51:        0051-Mdmonitor-Omit-non-md-devices.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
-Patch1004:      1004-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
+Patch1004:      1004-call-mdadm_env.sh-from-usr-libexec-mdadm.patch
 Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
@@ -231,7 +230,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %{_unitdir}/mdcheck_start.timer
 %{_unitdir}/mdmonitor-oneshot.service
 %{_unitdir}/mdmonitor-oneshot.timer
-%dir %{_prefix}/lib/mdadm
-%{_prefix}/lib/mdadm/mdadm_env.sh
+%dir %{_prefix}/libexec/
+%dir %{_prefix}/libexec/mdadm
+%{_prefix}/libexec/mdadm/mdadm_env.sh
 
 %changelog
