@@ -2602,4 +2602,12 @@
     <comment>submit new version 4.5.9</comment>
     <requestid>1036309</requestid>
   </revision>
+  <revision rev="330" vrev="1">
+    <srcmd5>80ff2d61ea912a612f6648a4ffdd8e99</srcmd5>
+    <version>4.5.11</version>
+    <time>1670058193</time>
+    <user>dimstar_suse</user>
+    <comment>new versions </comment>
+    <requestid>1039522</requestid>
+  </revision>
 </revisionlist>
