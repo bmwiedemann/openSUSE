@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 02 12:04:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.3:
+  * #2347 - add --terragrunt-global-cache support to run_cmd (#2348)
+
+-------------------------------------------------------------------
 Wed Nov 30 13:38:48 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.42.2:
