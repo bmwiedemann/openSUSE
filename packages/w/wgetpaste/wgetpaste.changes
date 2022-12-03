@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  2 22:05:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.33:
+  * -N/--no-ansi was added to strip ANSI codes using ansifilter (fixes #34)
+  * bpaste is now the default to avoid issues with dpaste and DNSSEC and less
+    JavaScript (fixes #36) 
+
+-------------------------------------------------------------------
 Sat Oct 16 12:06:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.32:

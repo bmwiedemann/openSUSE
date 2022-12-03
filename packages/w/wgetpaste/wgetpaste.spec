@@ -1,7 +1,7 @@
 #
 # spec file for package wgetpaste
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wgetpaste
-Version:        2.32
+Version:        2.33
 Release:        0
 Summary:        Command-line interface to various pastebins
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/zlin/wgetpaste
 Source0:        https://github.com/zlin/wgetpaste/releases/download/%{version}/wgetpaste-%{version}.tar.xz
 Source1:        https://github.com/zlin/wgetpaste/releases/download/%{version}/wgetpaste-%{version}.tar.xz.sig
 Source2:        services.conf
+Source3:        wgetpaste.keyring
 Requires:       bash
 Requires:       coreutils
 Requires:       wget
