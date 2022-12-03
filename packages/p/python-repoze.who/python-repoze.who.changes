@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 00:21:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.4.1 
+  * Disallow separators in AuthTicket component values. Closes #37.
+  * Handle bytes / string correctly in ‘repoze.who.plugins.htpasswd.sha1_check’. Closes #28.
+  * Switch to use pytest as the testrunner. Closes #34.
+
+-------------------------------------------------------------------
 Mon Aug  3 11:09:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.4
