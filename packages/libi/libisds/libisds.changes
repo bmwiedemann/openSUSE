@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  3 10:53:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.2:
+  * A build failure with Musl C library and new warnings with GCC 12 were fixed.
+  * Building with GCC 10, which defaults to tentative definitions of global
+    variables now as with -fno-common option and resulted into
+    an error about multiple definitions of a variable, was fixed.
+- drop tests-Fix-building-with-GCC-10.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Jun  5 05:17:39 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add tests-Fix-building-with-GCC-10.patch

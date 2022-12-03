@@ -1,7 +1,7 @@
 #
 # spec file for package libisds
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname %{name}5
 Name:           libisds
-Version:        0.11
+Version:        0.11.2
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            http://xpisar.wz.cz/libisds/
 Source0:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz
 Source1:        http://xpisar.wz.cz/%{name}/dist/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:         tests-Fix-building-with-GCC-10.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gpg2
 BuildRequires:  libgcrypt-devel
@@ -72,10 +71,10 @@ developing applications that use %{name}.
   --disable-fatalwarnings \
   --disable-static \
   --enable-test \
-  --with-docbook-xsl-stylesheets=/usr/share/xml/docbook/stylesheet/nwalsh/current/ \
+  --with-docbook-xsl-stylesheets=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/ \
   --with-libcurl \
   --disable-openssl-backend
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -98,7 +97,7 @@ rm -f specification/*.3
 %{_includedir}/isds.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_mandir}/man3/*.3.gz
+%{_mandir}/man3/*.3%{?ext_man}
 %doc client specification
 
 %changelog
