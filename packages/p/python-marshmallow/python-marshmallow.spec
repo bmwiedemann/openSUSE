@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-marshmallow
-Version:        3.18.0
+Version:        3.19.0
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        BSD-3-Clause AND MIT

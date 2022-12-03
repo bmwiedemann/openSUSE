@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  2 20:31:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.19.0 
+  * Add timestamp and timestamp_ms formats to fields.DateTime (#612). Thanks @vgavro for    the suggestion and thanks @vanHoi for the PR. 
+
+-------------------------------------------------------------------
 Fri Oct 28 18:21:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.18.0 (2022-09-15)¶
