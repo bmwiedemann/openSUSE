@@ -415,4 +415,41 @@ update to version 1.10.0
     <comment>- add osc-lib dependency</comment>
     <requestid>984181</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>085848e43ac4d83ba22d6b6916e28d82</srcmd5>
+    <version>4.2.0</version>
+    <time>1670058221</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.2.0
+  - [OSC] Implement Share Server Migration Cancel and Complete Command
+  - Fix test to not check service updated_at time
+  - Respect OS_CACERT when using Manila OSC plugin
+  - [OSC] Add OSC Functional Tests Network
+  - [OSC] Add functional tests for share access rules
+  - Fix share server listing with network subnet id
+  - Add support for --soft when deleting a share or more shares
+  - Add functional tests for &quot;os share limits show&quot;
+  - [OSC] Add functional tests for share snapshots
+  - [OSC] Fix share deletion when using share group id
+  - [OSC] Implement security services commands
+  - [OSC] Implement Share Server  Migration Start Command
+  - Fix missing space before end quote
+  - Avoid using &quot;force&quot; kwarg in extend API
+  - [OSC] Add OSC Functional Tests Share set unset
+  - Fix incompatible headers on OS share group type list
+  - Ensures API microversion is greater than  or equal to '2.69'
+  - fix manager _list() method when called from another manager
+  - [OSC] Implement Share Server  Migration set task-state
+  - requirements: Add stestr
+  - [OSC] Implement Share Migration show and add argument to Share Set Command
+  - Update Python as per the Zed cycle testing runtime
+  - Fix &quot;test_share_server_migration&quot; sporadic failure
+  - Fixes minor typos and removes redundants lines.
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - [OSC] Add OSC Functional Tests Replica Export Location
+  - Python3.11: fix unit test crashes
+  - [OSC] Implement Share Migration Start Command
+  - Add availability zones functional tests for OSC</comment>
+    <requestid>1039647</requestid>
+  </revision>
 </revisionlist>

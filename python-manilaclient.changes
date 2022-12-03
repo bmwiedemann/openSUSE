@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Dec  1 10:27:54 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - [OSC] Implement Share Server Migration Cancel and Complete Command
+  - Fix test to not check service updated_at time
+  - Respect OS_CACERT when using Manila OSC plugin
+  - [OSC] Add OSC Functional Tests Network
+  - [OSC] Add functional tests for share access rules
+  - Fix share server listing with network subnet id
+  - Add support for --soft when deleting a share or more shares
+  - Add functional tests for "os share limits show"
+  - [OSC] Add functional tests for share snapshots
+  - [OSC] Fix share deletion when using share group id
+  - [OSC] Implement security services commands
+  - [OSC] Implement Share Server  Migration Start Command
+  - Fix missing space before end quote
+  - Avoid using "force" kwarg in extend API
+  - [OSC] Add OSC Functional Tests Share set unset
+  - Fix incompatible headers on OS share group type list
+  - Ensures API microversion is greater than  or equal to '2.69'
+  - fix manager _list() method when called from another manager
+  - [OSC] Implement Share Server  Migration set task-state
+  - requirements: Add stestr
+  - [OSC] Implement Share Migration show and add argument to Share Set Command
+  - Update Python as per the Zed cycle testing runtime
+  - Fix "test_share_server_migration" sporadic failure
+  - Fixes minor typos and removes redundants lines.
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - [OSC] Add OSC Functional Tests Replica Export Location
+  - Python3.11: fix unit test crashes
+  - [OSC] Implement Share Migration Start Command
+  - Add availability zones functional tests for OSC
+  - Avoid any capitalization of the name "None"
+  - [OSC] Fix typos in help messages for security services command
+  - requirements: Bump python-openstackclient version
+  - [OSC] Add functional tests for share services
+  - [OSC] Add functional tests for share types
+  - Add functional tests for group type access
+  - Add share group type functional tests for OSC
+  - [reno] Announce openstackclient GA
+  - Make the OSC plugin handle the --insecure flag
+  - [OSC] Implement Share Restore Command
+  - Fix the Create Share Group from Snap Shot create.
+  - [OSC] Add OSC Functional Tests Share Actions
+  - [OSC] Add OSC Functional Tests Export Location
+  - [OSC] Implement Share Group Snapshot Commands
+  - [OSC] Don't use default type with snapshot clones
+  - Support multiple subnets per AZ
+  - Add 'share-network' option for share replica create.
+  - [OSC] Implement Share Server Commands
+  - [OSC] Implement Share Server  Migration check
+  - Add functional tests for OSC User Messages
+  - Add FIPS testing jobs
+  - Add functional tests for "os share pool list"
+  - [OSC] Implement Share Server  Migration Show Command
+  - Update master for stable/zed
+  - [OSC] Implement Share Migration Cancel and Complete Command
+  - Add support for --export-location filtering when listing shares
+
+-------------------------------------------------------------------
 Sat Jun 18 13:48:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add osc-lib dependency 
