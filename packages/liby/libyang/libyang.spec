@@ -18,9 +18,8 @@
 
 
 %global sover 2
-
 Name:           libyang
-Version:        2.0.231
+Version:        2.1.4
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
@@ -109,7 +108,7 @@ This is the API documentation of libyang.
     -DENABLE_LYD_PRIV=ON \
     -DGEN_LANGUAGE_BINDINGS=ON \
     -DENABLE_BUILD_TESTS=ON
-make %{?_smp_mflags}
+%make_build
 doxygen
 
 %install

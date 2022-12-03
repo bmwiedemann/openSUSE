@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  3 10:12:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.4:
+  * large extensions refactoring
+  * increased ext plugin API version
+  * new callbacks and capabilities of plugins
+  * changes in the parsed and compiled ext instance structures
+  * native support for structure extension
+  * error path logging improvements
+  * fixed unions with leafrefs
+  * yanglint schema mount support
+  * huge number of other fixes and improvements 
+
+-------------------------------------------------------------------
 Mon Aug 29 10:05:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.231

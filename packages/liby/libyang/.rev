@@ -123,4 +123,21 @@
     <comment></comment>
     <requestid>1001457</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6e1234e02b7fd54de9d591638b94e287</srcmd5>
+    <version>2.1.4</version>
+    <time>1670068115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.4:
+  * large extensions refactoring
+  * increased ext plugin API version
+  * new callbacks and capabilities of plugins
+  * changes in the parsed and compiled ext instance structures
+  * native support for structure extension
+  * error path logging improvements
+  * fixed unions with leafrefs
+  * yanglint schema mount support
+  * huge number of other fixes and improvements</comment>
+    <requestid>1039775</requestid>
+  </revision>
 </revisionlist>
