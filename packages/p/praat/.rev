@@ -297,4 +297,16 @@
     <comment></comment>
     <requestid>897339</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ad028c7afcc945dc887c771e5c888846</srcmd5>
+    <version>6.3.02</version>
+    <time>1670058217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.3.01
+- Add praat-allow-system-flags.patch: allow system specified  compiler and linker flags to be incorporated into appropriate flags in the makefile; in particular this allows us to incorporate rpm optflags without using sed snippets.
+- Rebase praat-use_system_libs.patch to apply cleanly.
+- Clean up some trailing white-spaces in changelog entries.
+- Drop praat-gcc11.patch: incorporated upstream.</comment>
+    <requestid>1039635</requestid>
+  </revision>
 </revisionlist>

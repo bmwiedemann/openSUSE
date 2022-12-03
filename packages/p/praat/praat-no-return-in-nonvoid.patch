@@ -1,8 +1,8 @@
-Index: praat-6.1.41/melder/melder_search.cpp
+Index: praat-6.3.02/melder/melder_search.cpp
 ===================================================================
---- praat-6.1.41.orig/melder/melder_search.cpp
-+++ praat-6.1.41/melder/melder_search.cpp
-@@ -145,7 +145,7 @@ bool Melder_stringMatchesCriterion (cons
+--- praat-6.3.02.orig/melder/melder_search.cpp
++++ praat-6.3.02/melder/melder_search.cpp
+@@ -146,7 +146,7 @@ bool Melder_stringMatchesCriterion (cons
  			return !! place;
  		}
  	}

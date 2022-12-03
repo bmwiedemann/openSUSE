@@ -1,0 +1,21 @@
+Index: praat-6.3.02/makefiles/makefile.defs.linux.pulse
+===================================================================
+--- praat-6.3.02.orig/makefiles/makefile.defs.linux.pulse
++++ praat-6.3.02/makefiles/makefile.defs.linux.pulse
+@@ -12,13 +12,13 @@ PKG_CONFIG ?= "pkg-config"
+ COMMONFLAGS = -DUNIX -Dlinux -DALSA -DHAVE_PULSEAUDIO -D_FILE_OFFSET_BITS=64 `$(PKG_CONFIG) --cflags gtk+-3.0` \
+ 	-Wreturn-type -Wunused -Wunused-parameter -Wuninitialized -O3 -g1 -pthread
+ 
+-CFLAGS = -std=gnu99 $(COMMONFLAGS) -Werror=missing-prototypes -Werror=implicit
++CFLAGS += -std=gnu99 $(COMMONFLAGS) -Werror=missing-prototypes -Werror=implicit
+ 
+-CXXFLAGS = -std=c++17 $(COMMONFLAGS) -Wshadow
++CXXFLAGS += -std=c++17 $(COMMONFLAGS) -Wshadow
+ 
+ EXECUTABLE = praat
+ 
+-LIBS = `$(PKG_CONFIG) --libs gtk+-3.0` -no-pie -lm -lpulse -lasound -lpthread -L /usr/lib/x86_64-linux-gnu
++LIBS = ${LDFLAGS} `$(PKG_CONFIG) --libs gtk+-3.0` -no-pie -lm -lpulse -lasound -lpthread -L /usr/lib/x86_64-linux-gnu
+ 
+ AR = ar
+ RANLIB = ls

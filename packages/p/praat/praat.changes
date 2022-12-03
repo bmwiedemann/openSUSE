@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 30 10:44:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.01:
+  * Linux: corrected a bug introduced in 6.2.20 by which typing
+    Tab would not start a Sound.
+  * Sound window: corrected a bug introduced in 6.2.19 by which
+    drawing selection hairs could not be switched off (or on) when
+    painting a spectrogram to the Picture window.
+- Add praat-allow-system-flags.patch: allow system specified
+  compiler and linker flags to be incorporated into appropriate
+  flags in the makefile; in particular this allows us to
+  incorporate rpm optflags without using sed snippets.
+- Rebase praat-use_system_libs.patch to apply cleanly.
+- Clean up some trailing white-spaces in changelog entries.
+- Drop praat-gcc11.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Fri Jun  4 07:16:31 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.48
@@ -111,7 +128,7 @@ Wed Oct  7 14:54:34 UTC 2020 - Juan Erbes <jerbes@gmail.com>
 
  - Update to version 6.1.26
   * Removed a bug that caused Praat to crash when clicking Change
-    in the Inspect window. 
+    in the Inspect window.
   version 6.1.25
   * Added FormantPath and FormantPathEditor.
   * Removed a bug that caused Praat to crash when double-clicking
@@ -121,14 +138,14 @@ Wed Oct  7 14:54:34 UTC 2020 - Juan Erbes <jerbes@gmail.com>
   * Removed a bug that caused Praat to crash when zooming in to a
     region in the Sound window without samples, when a pitch curve
     was visible.
-  * Removed a bug that caused Praat to crash when pasting 
-    in a region in the Sound window without samples. 
+  * Removed a bug that caused Praat to crash when pasting
+    in a region in the Sound window without samples.
   version 6.1.24
   * Got rid of flashing during a running cursor or when making a
-    selection in the Sound window or the Picture window. 
+    selection in the Sound window or the Picture window.
   version 6.1.23
   * Corrected a bug that caused the buttons at the top of a manual
-    window to be overwritten with text when scrolling. 
+    window to be overwritten with text when scrolling.
 
 -------------------------------------------------------------------
 Fri Sep 25 07:06:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
@@ -415,7 +432,7 @@ Tue Aug 22 06:43:30 UTC 2017 - aloisio@gmx.com
 Sat Jul 29 13:52:09 UTC 2017 - aloisio@gmx.com
 
 - Added praat-use_system_libs.patch to use system libs when
-  possible 
+  possible
 
 -------------------------------------------------------------------
 Sun Jul 23 04:47:36 UTC 2017 - aloisio@gmx.com
@@ -483,7 +500,7 @@ Thu Mar  2 10:39:32 UTC 2017 - aloisio@gmx.com
 
 - Update to version 6.0.26
   * PraatBarren: better error message when an attempt is made
-    to run PraatBarren interactively. 
+    to run PraatBarren interactively.
 
 -------------------------------------------------------------------
 Sun Feb 12 07:51:54 UTC 2017 - aloisio@gmx.com
@@ -498,14 +515,14 @@ Mon Dec 12 17:09:44 UTC 2016 - aloisio@gmx.com
     playing a sound of more than 7 channels.
   * Change Gender: fixed a bug introduced in 6.0.22 by
     which the pitch range factor could not be 0.
-  * Improvements in the manual and in texts. 
+  * Improvements in the manual and in texts.
 
 -------------------------------------------------------------------
 Wed Nov 16 09:11:36 UTC 2016 - aloisio@gmx.com
 
 - Update to version 6.0.22
   * Scripting: correct error messages for expressions
-    like 5 + "hello" 
+    like 5 + "hello"
   * Command line: the --open option works correctly in
     the GUI if you open multiple files.
 
@@ -513,14 +530,14 @@ Wed Nov 16 09:11:36 UTC 2016 - aloisio@gmx.com
 Mon Sep 26 06:32:21 UTC 2016 - aloisio@gmx.com
 
 - Update to version 6.0.21
-  * ExperimentMFC: you can now specify font sizes and response 
+  * ExperimentMFC: you can now specify font sizes and response
     keys for goodness judgments.
-  * Table: when drawing ellipses, a font size of 0 can now be 
+  * Table: when drawing ellipses, a font size of 0 can now be
     used to prevent drawing the labels.
-  * Mac: dragging selections repaired for System 10.11.6 (but 
+  * Mac: dragging selections repaired for System 10.11.6 (but
     we advise to upgrade to 10.12).
-  * Mac: re-enabled Return key for confirming some dialog 
-    boxes. 
+  * Mac: re-enabled Return key for confirming some dialog
+    boxes.
 
 -------------------------------------------------------------------
 Sun Sep  4 12:16:22 UTC 2016 - aloisio@gmx.com
@@ -528,7 +545,7 @@ Sun Sep  4 12:16:22 UTC 2016 - aloisio@gmx.com
 - Update to version 6.0.20
   * Can open UTF-8 text files with Byte Order Mark.
   * Scripting improvement: function names can now be used
-    as names of indexed variables. 
+    as names of indexed variables.
 
 -------------------------------------------------------------------
 Tue Jul 19 13:50:46 UTC 2016 - toddrme2178@gmail.com

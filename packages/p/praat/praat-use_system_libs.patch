@@ -10,10 +10,10 @@ to be compatible with upstream ones.
 Praat also supplies an unstable upstream portaudio version that's
 not recommendable for distro inclusion.
 
-Index: praat-6.1.48/melder/NUMlinprog.cpp
+Index: praat-6.3.02/melder/NUMlinprog.cpp
 ===================================================================
---- praat-6.1.48.orig/melder/NUMlinprog.cpp
-+++ praat-6.1.48/melder/NUMlinprog.cpp
+--- praat-6.3.02.orig/melder/NUMlinprog.cpp
++++ praat-6.3.02/melder/NUMlinprog.cpp
 @@ -17,7 +17,7 @@
   */
  
@@ -23,10 +23,10 @@ Index: praat-6.1.48/melder/NUMlinprog.cpp
  
  struct structNUMlinprog {
  	glp_prob *linearProgram;
-Index: praat-6.1.48/melder/NUMspecfunc.cpp
+Index: praat-6.3.02/melder/NUMspecfunc.cpp
 ===================================================================
---- praat-6.1.48.orig/melder/NUMspecfunc.cpp
-+++ praat-6.1.48/melder/NUMspecfunc.cpp
+--- praat-6.3.02.orig/melder/NUMspecfunc.cpp
++++ praat-6.3.02/melder/NUMspecfunc.cpp
 @@ -31,10 +31,10 @@
  #include "melder.h"
  #include "../dwsys/NUM2.h"   // NUMridders
@@ -42,10 +42,10 @@ Index: praat-6.1.48/melder/NUMspecfunc.cpp
  
  double NUMlnGamma (double x) {
  	gsl_sf_result result;
-Index: praat-6.1.48/melder/melder.cpp
+Index: praat-6.3.02/melder/melder.cpp
 ===================================================================
---- praat-6.1.48.orig/melder/melder.cpp
-+++ praat-6.1.48/melder/melder.cpp
+--- praat-6.3.02.orig/melder/melder.cpp
++++ praat-6.3.02/melder/melder.cpp
 @@ -24,7 +24,7 @@
  #include "melder_enums.h"
  
@@ -55,16 +55,16 @@ Index: praat-6.1.48/melder/melder.cpp
  #ifdef macintosh
  	#include <Carbon/Carbon.h>   // Gestalt
  #endif
-Index: praat-6.1.48/dwsys/Makefile
+Index: praat-6.3.02/dwsys/Makefile
 ===================================================================
---- praat-6.1.48.orig/dwsys/Makefile
-+++ praat-6.1.48/dwsys/Makefile
+--- praat-6.3.02.orig/dwsys/Makefile
++++ praat-6.3.02/dwsys/Makefile
 @@ -4,7 +4,7 @@
  
  include ../makefile.defs
  
--CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I ../external/gsl -I ../external/clapack -I ../kar
-+CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I /usr/include/gsl -I ../external/clapack -I ../kar
+-CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I ../external/gsl -I ../external/clapack -I ../kar -I ../dwtools
++CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I /usr/include/gsl -I ../external/clapack -I ../kar -I ../dwtools
  
  all: libdwsys.a
  
@@ -75,11 +75,11 @@ Index: praat-6.1.48/dwsys/Makefile
 -$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../dwsys/*.h ../kar/*.h
 +$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../dwsys/*.h ../kar/*.h
  
-Index: praat-6.1.48/Makefile
+Index: praat-6.3.02/Makefile
 ===================================================================
---- praat-6.1.48.orig/Makefile
-+++ praat-6.1.48/Makefile
-@@ -23,23 +23,17 @@ all: all-external all-self
+--- praat-6.3.02.orig/Makefile
++++ praat-6.3.02/Makefile
+@@ -22,23 +22,17 @@ all: all-external all-self
  		external/espeak/libespeak.a \
  		external/portaudio/libportaudio.a \
  		external/flac/libflac.a external/mp3/libmp3.a \
@@ -105,24 +105,11 @@ Index: praat-6.1.48/Makefile
  
  all-self:
  	$(MAKE) -C kar
-Index: praat-6.1.48/dwtools/Makefile
+Index: praat-6.3.02/dwtools/Sound_extensions.cpp
 ===================================================================
---- praat-6.1.48.orig/dwtools/Makefile
-+++ praat-6.1.48/dwtools/Makefile
-@@ -4,7 +4,7 @@
- 
- include ../makefile.defs
- 
--CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I ../external/vorbis -I ../external/opusfile
-+CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I /usr/include/opus
- 
- OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
- 	Categories.o CategoriesEditor.o \
-Index: praat-6.1.48/dwtools/Sound_extensions.cpp
-===================================================================
---- praat-6.1.48.orig/dwtools/Sound_extensions.cpp
-+++ praat-6.1.48/dwtools/Sound_extensions.cpp
-@@ -35,9 +35,9 @@
+--- praat-6.3.02.orig/dwtools/Sound_extensions.cpp
++++ praat-6.3.02/dwtools/Sound_extensions.cpp
+@@ -36,9 +36,9 @@
  #include "Ltas.h"
  #include "Manipulation.h"
  #include "NUMcomplex.h"
@@ -135,3 +122,16 @@ Index: praat-6.1.48/dwtools/Sound_extensions.cpp
  
  #include "enums_getText.h"
  #include "Sound_extensions_enums.h"
+Index: praat-6.3.02/dwtools/Makefile
+===================================================================
+--- praat-6.3.02.orig/dwtools/Makefile
++++ praat-6.3.02/dwtools/Makefile
+@@ -4,7 +4,7 @@
+ 
+ include ../makefile.defs
+ 
+-CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../foned -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I ../external/vorbis -I ../external/opusfile
++CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../foned -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I /usr/include/opus
+ 
+ OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
+ 	Categories.o CategoriesEditor.o \

@@ -1,7 +1,7 @@
 #
 # spec file for package praat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1.48
+Version:        6.3.02
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -29,8 +29,8 @@ Source3:        %{name}.changes
 Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- make the compiler happy
 Patch2:         praat-no-return-in-nonvoid.patch
-# PATCH-FIX-UPSTREAM praat-gcc11.patch
-Patch3:         praat-gcc11.patch
+# PATCH-FEATURE-OPENSUSE praat-allow-system-flags.patch badshah400@gmail.com -- Allow compilation and linker flags to incorporate appropriate env flags
+Patch3:         praat-allow-system-flags.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme
@@ -61,10 +61,8 @@ provisions for communicating with other programs.
 
 %build
 cp makefiles/makefile.defs.linux.pulse ./makefile.defs
-sed -e '/^CFLAGS/s/$/\ %{optflags}/' \
-    -e '/^CXXFLAGS/s/$/\ %{optflags}/' \
-    -e '/^CC/s/=/?=/' -e '/^CXX/s/=/?=/' \
-    -e '/^LINK/s/=/?=/' -i makefile.defs
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
 %make_build
 
 %install
