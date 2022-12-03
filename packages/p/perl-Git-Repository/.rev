@@ -24,4 +24,13 @@
     <comment></comment>
     <requestid>896826</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>92d5c46db1931d844f963babd117680f</srcmd5>
+    <version>1.325</version>
+    <time>1670068114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix from https://github.com/book/Git-Repository/pull/22 to work
+  around git 2.38.1's new default behaviour (22.patch)</comment>
+    <requestid>1039783</requestid>
+  </revision>
 </revisionlist>
