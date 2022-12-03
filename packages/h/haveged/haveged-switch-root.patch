@@ -1,0 +1,198 @@
+From 6a6cf4de8e31981b0e8bd3e2cf37921a8a8d3d48 Mon Sep 17 00:00:00 2001
+From: Otto Hollmann <otto.hollmann@suse.com>
+Date: Mon, 14 Nov 2022 14:47:12 +0100
+Subject: [PATCH 1/2] Synchronize haveged instances during switching root
+
+---
+ src/havegecmd.c | 20 +++++++++++++++++---
+ src/havegecmd.h |  2 ++
+ src/haveged.c   | 28 ++++++++++++++++++++++++++++
+ 3 files changed, 47 insertions(+), 3 deletions(-)
+
+diff --git a/src/havegecmd.c b/src/havegecmd.c
+index 06a2367..e87767e 100644
+--- a/src/havegecmd.c
++++ b/src/havegecmd.c
+@@ -39,6 +39,7 @@
+ #include <sys/stat.h>
+ #include <sys/un.h>
+ #include <unistd.h>
++#include <semaphore.h>
+ 
+ #ifndef HAVE_STRUCT_UCRED
+ struct ucred
+@@ -54,6 +55,7 @@ struct ucred
+ int first_byte;
+ int socket_fd;
+ static char errmsg[1024];
++extern  sem_t *sem;
+ 
+ static int new_root(               /* RETURN: status                        */
+    const char *root,               /* IN: path of the new root file system  */
+@@ -95,6 +97,7 @@ static int new_root(               /* RETURN: status                        */
+                strerror(errno));
+       goto err;
+       }
++   sem_close(sem);
+    ret = execv((const char *)path, argv);
+    if (ret < 0) {
+       snprintf(&errmsg[0], sizeof(errmsg)-1,
+@@ -265,8 +268,14 @@ int socket_handler(                /* RETURN: closed file descriptor        */
+       }
+ 
+    if (magic[1] == '\002') {       /* ASCII start of text: read argument provided */
+-      uint32_t alen;
+-
++      uint32_t alen = 0;
++
++      /*
++       * wait for the haveged -c instance to finish writting
++       * before continuing to read from the socket
++       */
++      sem_wait(sem);
++      sem_post(sem);
+       ret = receive_uinteger(fd, &alen);
+       if (ret < 0) {
+          print_msg("%s: can not read from UNIX socket\n", params->daemon);
+@@ -285,6 +294,11 @@ int socket_handler(                /* RETURN: closed file descriptor        */
+          print_msg("%s: can not read from UNIX socket\n", params->daemon);
+          goto out;
+          }
++      /*
++       * We no more need the semaphore unlink it
++       * Not sure if it is the best place to unlink here
++       */
++      sem_unlink(SEM_NAME);
+       }
+ 
+    clen = sizeof(struct ucred);
+@@ -444,7 +458,7 @@ int receive_uinteger(              /* RETURN: status                        */
+    int fd,                         /* IN: file descriptor                   */
+    uint32_t *value)                /* OUT: 32 bit unsigned integer          */
+ {
+-   uint8_t buffer[4];
++   uint8_t buffer[4] = {0};
+ 
+    if (safein(fd, buffer, 4 * sizeof(uint8_t)) < 0)
+       return -1;
+diff --git a/src/havegecmd.h b/src/havegecmd.h
+index 7765334..2f6fa96 100644
+--- a/src/havegecmd.h
++++ b/src/havegecmd.h
+@@ -49,6 +49,8 @@ extern "C" {
+ #define SOCK_NONBLOCK 0
+ #endif
+ 
++#define SEM_NAME "haveged_sem"
++
+ /**
+  * Open and listen on a UNIX socket to get command from there
+  */
+diff --git a/src/haveged.c b/src/haveged.c
+index f668968..02c6c81 100644
+--- a/src/haveged.c
++++ b/src/haveged.c
+@@ -34,6 +34,7 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <time.h>
++#include <semaphore.h>
+ 
+ #ifndef NO_DAEMON
+ #include <syslog.h>
+@@ -131,6 +132,8 @@ static void usage(int db, int nopts, struct option *long_options, const char **c
+ 
+ static sigset_t mask, omask;
+ 
++sem_t *sem = NULL;
++
+ #define  ATOU(a)     (unsigned int)atoi(a)
+ /**
+  * Entry point
+@@ -360,6 +363,15 @@ int main(int argc, char **argv)
+       fd_set read_fd;
+       sigset_t block;
+ 
++      /* init semaphore */
++      sem = sem_open(SEM_NAME, 0);
++      if (sem == NULL) {
++         print_msg("sem_open() failed \n");
++         print_msg("Error : %s \n", strerror(errno));
++         ret = -1;
++         goto err;
++         }
++
+       socket_fd = cmd_connect(params);
+       if (socket_fd < 0) {
+          ret = -1;
+@@ -377,9 +389,19 @@ int main(int argc, char **argv)
+             root = optarg;
+             size = (uint32_t)strlen(root)+1;
+             cmd[1] = '\002';
++            /*
++             * Synchronise haveged -c instance and daemon instance
++             * prevent daemon instance from readin messages
++             * from the socket until the -c instance finish writting
++             */
++            sem_wait(sem);
+             safeout(socket_fd, &cmd[0], 2);
+             send_uinteger(socket_fd, size);
+             safeout(socket_fd, root, size);
++            /*
++             * unblock the daemon instance as we finished writting
++             */
++            sem_post(sem);
+             break;
+          case MAGIC_CLOSE:
+             ptr = &cmd[0];
+@@ -440,6 +462,7 @@ int main(int argc, char **argv)
+          }
+    err:
+       close(socket_fd);
++      sem_close(sem);
+       return ret;
+       }
+    else if (!(params->setup & RUN_AS_APP)){
+@@ -455,6 +478,11 @@ int main(int argc, char **argv)
+             fprintf(stderr, "%s: disabling command mode for this instance\n", params->daemon);
+          }
+       }
++      /* Initilize named semaphore to synchronize command isntances */
++      sem = sem_open(SEM_NAME, O_CREAT, 0644, 1);
++      if (sem == NULL) {
++         error_exit("Couldn't create nammed semaphore " SEM_NAME" error: %s", strerror(errno));
++      }
+     }
+ #endif
+    if (params->tests_config == 0)
+
+From 55dd6b7dc851df3ccf5e52019537f420e32450dd Mon Sep 17 00:00:00 2001
+From: Otto Hollmann <otto.hollmann@suse.com>
+Date: Mon, 21 Nov 2022 13:01:53 +0100
+Subject: [PATCH 2/2] Link with -pthread
+
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 99451c9..ff1cbaa 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -10,7 +10,7 @@ AC_CONFIG_HEADER([config.h])
+ AM_INIT_AUTOMAKE([subdir-objects no-dependencies])
+ AC_CONFIG_SRCDIR([src/haveged.c])
+ AC_CHECK_TYPES([uint32_t, uint8_t])
+-HA_LDFLAGS=""
++HA_LDFLAGS="-pthread"
+ 
+ ##libtool_start##
+ LT_INIT
+@@ -73,7 +73,6 @@ AC_ARG_ENABLE(threads,
+    , enable_threads="no")
+ if test "x$enable_threads" = "xyes"; then
+    AC_DEFINE(NUMBER_CORES, 4, [Define maxium number of collection threads])
+-   HA_LDFLAGS="-pthread"
+ else
+    AC_DEFINE(NUMBER_CORES, 1, [Define to single collection thread])
+ fi

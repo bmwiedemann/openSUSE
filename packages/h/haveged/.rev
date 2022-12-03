@@ -603,4 +603,13 @@ Updated sample spec file and other documentation changes. (forwarded request 174
     <comment></comment>
     <requestid>972436</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>8c9b02fd918e209a56d0dd344a31fcbd</srcmd5>
+    <version>1.9.18</version>
+    <time>1670058200</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize haveged instances during switching root (bsc#1203079)
+  * Add haveged-switch-root.patch</comment>
+    <requestid>1039602</requestid>
+  </revision>
 </revisionlist>

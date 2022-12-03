@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  2 12:24:35 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Synchronize haveged instances during switching root (bsc#1203079)
+  * Add haveged-switch-root.patch
+
+-------------------------------------------------------------------
 Sun Apr 24 20:37:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.18:
