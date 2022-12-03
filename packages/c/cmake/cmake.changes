@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  1 19:45:57 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- Update to 3.25.1
+  * Tests: Update FindBoost.TestPython for Python 3.11 and 3.12
+  * try_compile: Restore COPY_FILE with
+    CMAKE_TRY_COMPILE_CONFIGURATION
+  * FindCUDA: Do not use CUDA_nppicom_LIBRARY in CUDA 11.0+
+
+-------------------------------------------------------------------
 Thu Nov 17 05:37:38 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Update to 3.25.0
