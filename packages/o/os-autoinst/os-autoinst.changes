@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 03 02:29:09 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1669996116.7d465c7:
+  * Add subtest for search_for_expected_serial_failures
+  * Resume directly after failure in case `assert_script_run` fails
+  * Show escaped version of keyboard emulator server return
+  * Fix assert_script_sudo invocation
+  * Update pertidy to 20221112
+
+-------------------------------------------------------------------
 Wed Nov 30 12:44:15 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1669812248.67848c3:
