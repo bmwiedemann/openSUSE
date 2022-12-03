@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyupgrade
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT
