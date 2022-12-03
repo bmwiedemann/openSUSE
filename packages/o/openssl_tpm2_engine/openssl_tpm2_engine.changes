@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  2 17:43:52 UTC 2022 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.1.2
+  * Fix segfault in unseal_tpm2_key
+  * Fix pcr sealing error in create_tpm2_key caused by uncleared stack
+
+-------------------------------------------------------------------
 Tue Mar  1 15:11:41 UTC 2022 - James.Bottomley@HansenPartnership.com
 
 - Update to version 3.1.1

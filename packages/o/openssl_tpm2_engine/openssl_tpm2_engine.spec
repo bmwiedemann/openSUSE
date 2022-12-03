@@ -18,7 +18,7 @@
 
 
 Name:           openssl_tpm2_engine
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        OpenSSL TPM 2.0 interface engine plugin
 License:        LGPL-2.1-only

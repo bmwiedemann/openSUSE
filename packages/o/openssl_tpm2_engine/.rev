@@ -58,4 +58,12 @@
   * Fix use after free in dynamic engines (forwarded request 962758 from jejb1)</comment>
     <requestid>962866</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f252d6c7b7f05b7ca0eac5024e8e712</srcmd5>
+    <version>3.1.2</version>
+    <time>1670058229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039648</requestid>
+  </revision>
 </revisionlist>
