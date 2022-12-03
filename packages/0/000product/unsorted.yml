@@ -12891,14 +12891,14 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_20-gnu-hpc 
-  - libopenblas-pthreads_0_3_20-gnu-hpc-32bit: [x86_64] 
-  - libopenblas-pthreads_0_3_20-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_20-gnu-hpc-devel-32bit: [x86_64] 
-  - libopenblas_0_3_20-gnu-hpc 
-  - libopenblas_0_3_20-gnu-hpc-32bit: [x86_64] 
-  - libopenblas_0_3_20-gnu-hpc-devel 
-  - libopenblas_0_3_20-gnu-hpc-devel-32bit: [x86_64] 
+  - libopenblas-pthreads_0_3_21-gnu-hpc 
+  - libopenblas-pthreads_0_3_21-gnu-hpc-32bit: [x86_64] 
+  - libopenblas-pthreads_0_3_21-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_21-gnu-hpc-devel-32bit: [x86_64] 
+  - libopenblas_0_3_21-gnu-hpc 
+  - libopenblas_0_3_21-gnu-hpc-32bit: [x86_64] 
+  - libopenblas_0_3_21-gnu-hpc-devel 
+  - libopenblas_0_3_21-gnu-hpc-devel-32bit: [x86_64] 
   - libopenblas_openmp-devel 
   - libopenblas_openmp-devel-32bit: [x86_64] 
   - libopenblas_openmp0 
@@ -14488,7 +14488,7 @@ unsorted:
   - libtimidity2 
   - libtimidity2-32bit: [x86_64] 
   - libtins-devel 
-  - libtins4_2 
+  - libtins4_4 
   - libtinyb0 
   - libtinygettext0 
   - libtinyobjloader2 
@@ -18492,8 +18492,8 @@ unsorted:
   - openbabel-devel 
   - openbabel-gui 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_20-gnu-hpc-devel-static 
-  - openblas_0_3_20-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_21-gnu-hpc-devel-static 
+  - openblas_0_3_21-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
