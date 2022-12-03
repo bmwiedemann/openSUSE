@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  3 09:40:02 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 108.0.5359.94:
+  * CVE-2022-4262: Type Confusion in V8 (boo#1205999)
+
+-------------------------------------------------------------------
 Wed Nov 30 21:56:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 108.0.5359.71 (boo#1205871):
