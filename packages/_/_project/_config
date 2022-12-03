@@ -557,6 +557,9 @@ Prefer: php8:php8-cli
 # Use the real package name
 Prefer: python38-vsts python39-vsts
 
+# have choice for pkgconfig(wlroots): wlroots-devel wlroots10-devel
+Prefer: -wlroots10-devel
+
 # have choice for (sysvinit(network) or service(network)) needed by sysconfig: NetworkManager wicked-service
 Prefer: -NetworkManager
 
