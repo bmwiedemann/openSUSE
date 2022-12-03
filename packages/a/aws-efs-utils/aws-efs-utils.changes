@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  2 11:38:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.34.3
+  * Fix stunnel constantly restart issue when upgrading
+    from 1.32.1 and before version to latest version
+  * Fix race in stunnel port selection
+  * Disable journal entry fetch from systemctl call
+- from version 1.34.2
+  * Fix potential issue on AL2 when watchdog trying to restart
+    stunnel for the TLS mounts that existing before upgrade
+- from version 1.34.1
+  * Update Amazon Linux 2 platform to use namespaced stunnel5
+
+-------------------------------------------------------------------
 Tue Oct 18 14:13:10 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required for build
