@@ -1121,4 +1121,13 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1030333</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>6f5b0bb02a07db5eebf1cb0d5814edd6</srcmd5>
+    <version>1.9.3</version>
+    <time>1670058207</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests.patch gh#scipy/scipy#16926#issuecomment-1287507634
+</comment>
+    <requestid>1039620</requestid>
+  </revision>
 </revisionlist>

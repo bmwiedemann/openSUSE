@@ -1,0 +1,47 @@
+Index: scipy-1.9.3/scipy/sparse/linalg/_eigen/tests/test_svds.py
+===================================================================
+--- scipy-1.9.3.orig/scipy/sparse/linalg/_eigen/tests/test_svds.py
++++ scipy-1.9.3/scipy/sparse/linalg/_eigen/tests/test_svds.py
+@@ -786,11 +786,15 @@ class SVDSCommonTests:
+     @pytest.mark.filterwarnings("ignore:The problem size")
+     @pytest.mark.parametrize("dtype", (float, complex, np.float32))
+     def test_small_sigma2(self, dtype):
+-        if not has_propack:
+-            pytest.skip("PROPACK not enabled")
+-        # https://github.com/scipy/scipy/issues/11406
+-        if dtype == complex and self.solver == 'propack':
+-            pytest.skip("PROPACK unsupported for complex dtype")
++        if self.solver == 'propack':
++            if not has_propack:
++                pytest.skip("PROPACK not enabled")
++            elif dtype == np.float32:
++                pytest.skip("Test failures in CI, see gh-17004")
++            elif dtype == complex:
++                # https://github.com/scipy/scipy/issues/11406
++                pytest.skip("PROPACK unsupported for complex dtype")
++
+         rng = np.random.default_rng(179847540)
+         # create a 10x10 singular matrix with a 4-dim null space
+         dim = 4
+Index: scipy-1.9.3/scipy/linalg/tests/test_solvers.py
+===================================================================
+--- scipy-1.9.3.orig/scipy/linalg/tests/test_solvers.py
++++ scipy-1.9.3/scipy/linalg/tests/test_solvers.py
+@@ -474,7 +474,7 @@ def test_solve_discrete_are():
+          np.array([[0], [1]]),
+          np.eye(2),
+          np.array([[1]]),
+-         None),
++        "Presumed issue with OpenBLAS, see gh-16926"),
+         # TEST CASE 16 : darex #13
+         (np.array([[16, 10, -2],
+                   [10, 13, -8],
+@@ -617,7 +617,7 @@ def test_solve_generalized_discrete_are(
+                    [7.093648e-01, 6.797027e-01, 1.189977e-01],
+                    [7.546867e-01, 6.550980e-01, 4.983641e-01]]),
+          np.ones((3, 2)),
+-         None),
++        "Presumed issue with OpenBLAS, see gh-16926"),
+         # user-reported (under PR-6616) 20-Jan-2017
+         # tests against the case where E is None but S is provided
+         (mat20170120['A'],

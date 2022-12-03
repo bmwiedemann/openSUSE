@@ -98,6 +98,8 @@ License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
 Group:          Development/Libraries/Python
 URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#scipy/scipy#16926#issuecomment-1287507634
+Patch1:         fix-tests.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module meson-python >= 0.9.0}
