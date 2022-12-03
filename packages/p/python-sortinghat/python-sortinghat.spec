@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sortinghat
-Version:        0.7.21
+Version:        0.7.23
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
