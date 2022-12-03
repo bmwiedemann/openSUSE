@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymediainfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pymediainfo
-Version:        5.1.0
+Version:        6.0.1
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT
@@ -51,12 +51,12 @@ rm -rf pymediainfo.egg-info
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
-%pytest -k 'not test_parse_url and not test_thread_safety'
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pymediainfo
+%{python_sitelib}/pymediainfo-%{version}-py%{python_version}.egg-info
 
 %changelog

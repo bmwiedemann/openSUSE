@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  2 16:03:09 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.0.1
+  * doc: improve description of parse()'s full parameter
+  version 6.0.0
+  Breaking changes:
+  * warning Drop support for Python 3.6
+  New features:
+  * Add support for Python 3.10 and 3.11
+  * tests: start a local HTTP server instead of relying on
+    GitHub, this means the test suite can now run without
+    Internet access
+  Bug fixes:
+  * Fix doc build with recent sphinx versions
+
+-------------------------------------------------------------------
 Sun May  2 08:09:58 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.1.0
