@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 01 15:25:38 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.7.0+git0.437fd289f:
+  https://www.haproxy.com/blog/announcing-haproxy-2-7/
+  https://www.mail-archive.com/haproxy@formilux.org/msg42914.html
+
+-------------------------------------------------------------------
 Tue Nov 22 13:13:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - reenable the pcre jit after the last change 

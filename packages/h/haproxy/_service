@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">http://git.haproxy.org/git/haproxy-2.6.git</param>
+    <param name="url">http://git.haproxy.org/git/haproxy-2.7.git</param>
     <param name="scm">git</param>
     <param name="filename">haproxy</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">v2.6.6</param>
+    <param name="revision">v2.7.0</param>
     <param name="changesgenerate">enable</param>
   </service>
 
