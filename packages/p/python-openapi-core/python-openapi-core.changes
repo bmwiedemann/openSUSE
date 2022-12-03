@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:23:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.16.2:
+  Add NullUnmarshaller #432
+  Multi type unmarshaller #433
+  Unmarshaller format refactor #434
+
+- Update to 0.16.1: 
+  lists as additional properties fix #429
+  x-model extension optional #431
+
+-------------------------------------------------------------------
 Thu Oct  6 19:06:37 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix dependencies.
