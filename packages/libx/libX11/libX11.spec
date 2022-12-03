@@ -142,6 +142,7 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %configure \
     --disable-silent-rules \
     --docdir=%{_docdir}/%{name} \
+    --disable-thread-safety-constructor \
     --disable-static
 make %{?_smp_mflags}
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  2 14:17:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- back to "--disable-thread-safety-constructor" for now; we see just
+  too many regressions, e.g. firefox freezes and crashes, crashes with
+  barrierc, crashes in Godot, assertions with vkquake (boo#1205818,
+  boo#1205778)
+
+-------------------------------------------------------------------
 Sat Nov 26 09:56:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
