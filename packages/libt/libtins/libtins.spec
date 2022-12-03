@@ -1,7 +1,7 @@
 #
 # spec file for package libtins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define libname  libtins4_2
+%define libname  libtins4_4
 Name:           libtins
-Version:        4.2
+Version:        4.4
 Release:        0
 Summary:        C++ library for manipulating raw network packets
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Other
-URL:            http://libtins.github.io/
+URL:            https://libtins.github.io/
 Source0:        https://github.com/mfontanini/%{name}/archive/v%{version}.tar.gz
 Patch0:         libtins-4.2_build.patch
 BuildRequires:  cmake
@@ -32,7 +32,6 @@ BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The library provides a C++ interface for creating tools which
@@ -67,17 +66,14 @@ application that use libtins.
 %make_install -C build
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc CHANGES.md README.md THANKS
 %license LICENSE
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/tins
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/%{name}.so
