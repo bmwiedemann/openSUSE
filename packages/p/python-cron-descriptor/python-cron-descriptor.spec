@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cron-descriptor
-Version:        1.2.31
+Version:        1.2.32
 Release:        0
 Summary:        Python library that converts cron expressions into human readable strings
 License:        MIT
