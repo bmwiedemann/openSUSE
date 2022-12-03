@@ -17,7 +17,7 @@
 
 
 Name:           libdwarf
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

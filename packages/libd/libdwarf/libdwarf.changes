@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec  2 19:23:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * libdwarf-0.5.0 improves library performance reading
+    DWARF DIEs by several percent (with no change in API).
+  * It adds functions allowing acess to the .debug_addr
+    section independent of other sections.
+    dwarfdump has a new option to show that
+    section.
+  * Corrects the handling of some aspects of
+    reading the .debug_names section.
+  * Enhances dwarf_get_globals() to return
+    all globals that .debug_pubnames and .debug_names
+    refer to (no change in the API except adding
+    a function to return the DW_TAG of any globals
+    derived from .debug_names)
+
+-------------------------------------------------------------------
 Mon Oct  3 15:23:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.2:
