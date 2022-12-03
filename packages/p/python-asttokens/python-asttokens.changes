@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  1 22:18:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.1.0 
+  * Merge pull request #93 from gristlabs/unmarked2
+      ASTText class that doesn't require tokens
+
+-------------------------------------------------------------------
 Fri Sep 23 11:59:52 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.0.8:
@@ -8,6 +15,16 @@ Fri Sep 23 11:59:52 UTC 2022 - ecsos <ecsos@opensuse.org>
   * Merge pull request #87 from gristlabs/astroid-type-checking
   * Fix astroid type checking import errors
 
+-------------------------------------------------------------------
+Fri Sep 23 02:15:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.0.8 
+  * Merge pull request #90 from palfrey/fix-explicit-import
+  * Fix mypy explicit re-export issues
+
+- Update to 2.0.7 
+  * Merge pull request #87 from gristlabs/astroid-type-checking
+  * Fix astroid type checking import errors
 -------------------------------------------------------------------
 Fri Nov 19 10:21:46 UTC 2021 - ecsos <ecsos@opensuse.org>
 
