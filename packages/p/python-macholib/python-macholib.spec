@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-macholib
-Version:        1.16
+Version:        1.16.2
 Release:        0
 Summary:        Mach-O header analysis and editing
 License:        MIT
