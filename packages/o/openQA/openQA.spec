@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1669740924.a0f6803
+Version:        4.6.1669922159.5e076a0
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -189,6 +189,8 @@ Requires(post): os-autoinst >= 4.6
 Recommends:     qemu
 # Needed for caching - not required if caching not used...
 Recommends:     rsync
+# Optionally enabled with USE_PNGQUANT=1
+Recommends:     pngquant
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(nogroup)
 %endif
@@ -230,8 +232,9 @@ next to the webui.
 %package single-instance
 Summary:        Convenience package for a single-instance setup
 Group:          Development/Tools/Other
+Requires:       %{name} = %{version}
 Requires:       %{name}-local-db
-Requires:       %{name}-worker
+Requires:       %{name}-worker = %{version}
 Requires:       apache2
 
 %description single-instance
