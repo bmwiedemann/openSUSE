@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:54:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.74
+  * remove template and opname not supported in old python version
+  * support python 3.11 bytecode, fixes #282
+
+-------------------------------------------------------------------
 Tue May 24 08:04:00 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.71

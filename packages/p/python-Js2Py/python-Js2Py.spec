@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Js2Py
-Version:        0.71
+Version:        0.74
 Release:        0
 Summary:        JavaScript to Python Translator & JavaScript interpreter
 License:        MIT
