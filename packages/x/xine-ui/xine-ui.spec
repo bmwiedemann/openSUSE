@@ -1,7 +1,7 @@
 #
 # spec file for package xine-ui
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,7 +34,6 @@ BuildRequires:  libxine2-codecs
 BuildRequires:  lirc-devel
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
@@ -49,7 +48,7 @@ License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
 Version:        0.99.13
 Release:        0
-Url:            http://xine.sourceforge.net
+URL:            http://xine.sourceforge.net
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       xine:/usr/bin/xine
 Source:         http://sourceforge.net/projects/xine/files/xine-ui/%{version}/xine-ui-%{version}.tar.xz
@@ -119,6 +118,7 @@ NO_CONFIGURE=1 ./autogen.sh
 	--enable-vdr-keys \
 	--with-pic \
 	--disable-static \
+	--without-caca \
 	--disable-silent-rules
 make %{_smp_mflags} V=1
 
@@ -137,8 +137,11 @@ done
 #
 %find_lang %{name}
 %find_lang xitk %{name}.lang
-%fdupes -s %{buildroot}%{_mandir}
+find . -name "xine-bugreport.1*" -print -delete
 %fdupes -s %{buildroot}%{_datadir}/xine
+%if 0
+%fdupes -s %{buildroot}%{_mandir}
+%endif
 
 %post
 %mime_database_post
@@ -160,12 +163,14 @@ done
 %doc %_mandir/man1/xine.1.gz
 %doc %_mandir/man1/xine-check.1.gz
 %doc %_mandir/man1/xine-remote.1.gz
+%doc %_mandir/*/man1/xine-bugreport.1.gz
+%doc %_mandir/man1/xine-bugreport.1.gz
 %{_bindir}/aaxine
 %{_bindir}/fbxine
 %{_bindir}/xine
 %{_bindir}/xine-check
 %{_bindir}/xine-remote
-%{_bindir}/cacaxine
+%{_bindir}/xine-bugreport
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/icons/hicolor/*/apps
@@ -190,8 +195,5 @@ done
 %{_datadir}/pixmaps/*
 %{_datadir}/mime/packages/xine-ui.xml
 %_defaultdocdir/xine-ui
-%doc %_mandir/*/man1/xine-bugreport.1.gz
-%doc %_mandir/man1/xine-bugreport.1.gz
-%{_bindir}/xine-bugreport
 
 %changelog
