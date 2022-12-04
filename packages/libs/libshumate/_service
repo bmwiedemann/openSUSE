@@ -4,7 +4,7 @@
     <param name="url">https://gitlab.gnome.org/GNOME/libshumate.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="revision">refs/tags/1.0.2</param>
+    <param name="revision">refs/tags/1.0.3</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

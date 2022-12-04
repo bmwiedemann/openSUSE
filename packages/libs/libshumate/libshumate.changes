@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:05:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.3:
+  + Fix memory leaks.
+  + Remove old tiles more aggresively, speeding up zoom animations.
+
+-------------------------------------------------------------------
 Sat Oct 22 11:29:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.2:

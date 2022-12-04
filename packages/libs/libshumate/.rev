@@ -31,4 +31,12 @@
     <comment>New stable release (forwarded request 1030524 from iznogood)</comment>
     <requestid>1030679</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11db9088af5e19195c9910410ed2a4e5</srcmd5>
+    <version>1.0.3</version>
+    <time>1670162285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039790</requestid>
+  </revision>
 </revisionlist>
