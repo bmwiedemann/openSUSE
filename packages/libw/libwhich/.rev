@@ -8,4 +8,13 @@
 dependency for julia</comment>
     <requestid>789458</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5c7e5d35101cffb15660728b188f61be</srcmd5>
+    <version>1.2.0</version>
+    <time>1670162323</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Now UTF-8 on Windows!</comment>
+    <requestid>1039881</requestid>
+  </revision>
 </revisionlist>

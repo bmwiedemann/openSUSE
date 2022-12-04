@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:08:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Now UTF-8 on Windows!
+
+-------------------------------------------------------------------
 Sat Mar 28 20:05:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix up license, rpmlint warnings for Factory submission
