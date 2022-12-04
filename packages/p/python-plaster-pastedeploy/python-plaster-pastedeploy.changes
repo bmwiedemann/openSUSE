@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  3 19:59:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.0.1 (2022-11-06)
+  * Minor release to cleanup README.
+
+- Update to version 1.0 (2022-11-06)
+  * Drop support for Python 2.7, 3.4, 3.5, 3.6.
+  * Add support for Python 3.8, 3.9, 3.10.
+  * Blackify the codebase.
+  * Switch CI to Github Actions.
+
+-------------------------------------------------------------------
 Mon Jun  3 10:49:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7:

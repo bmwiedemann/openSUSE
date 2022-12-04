@@ -1,7 +1,7 @@
 #
 # spec file for package python-plaster-pastedeploy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plaster-pastedeploy
-Version:        0.7
+Version:        1.0.1
 Release:        0
 Summary:        A loader implementing the PasteDeploy syntax to be used by plaster
 License:        MIT
