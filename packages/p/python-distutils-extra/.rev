@@ -230,4 +230,14 @@
     <comment></comment>
     <requestid>974525</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9ac822423a447633d697747d5a4b6b69</srcmd5>
+    <version>2.47</version>
+    <time>1670162334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.47:
+  * Sort files in POTFILES.in (for stable .pot files)
+  * Set Rules-Requires-Root: no</comment>
+    <requestid>1039915</requestid>
+  </revision>
 </revisionlist>

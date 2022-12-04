@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 22:38:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.47:
+  * Sort files in POTFILES.in (for stable .pot files)
+  * Set Rules-Requires-Root: no
+
+-------------------------------------------------------------------
 Mon May  2 22:34:44 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.45

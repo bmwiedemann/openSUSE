@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distutils-extra
-Version:        2.45
+Version:        2.47
 Release:        0
 Summary:        Distutils/Setuptools Adapter
 License:        GPL-2.0-only
