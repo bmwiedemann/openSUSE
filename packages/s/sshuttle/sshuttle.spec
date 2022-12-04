@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           sshuttle
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        VPN over an SSH tunnel
 License:        LGPL-2.1-only
@@ -32,7 +32,6 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sshuttle/sshutt
 Source1:        %{name}.service
 Source2:        sysconfig.%{name}
 Patch0:         fix-pytest.patch
-Patch1:         fix-shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pytest
@@ -61,7 +60,6 @@ sshuttle is a program that solves the following case:
 %prep
 %setup -q
 %patch0
-%patch1 -p1
 
 %build
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
@@ -115,7 +113,6 @@ install -d -m 755 -o %{name} -g %{name} %{_localstatedir}/lib/%{name}
 %files
 %{python3_sitelib}/%{name}*
 %{_bindir}/%{name}
-%{_bindir}/sudoers-add
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %endif

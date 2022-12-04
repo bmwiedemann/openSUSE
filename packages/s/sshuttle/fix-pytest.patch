@@ -1,8 +1,10 @@
---- setup.cfg.orig	2020-06-23 14:41:24.448582416 +0200
-+++ setup.cfg	2020-06-23 14:41:36.048613731 +0200
-@@ -13,9 +13,6 @@
- show-source = true
+Index: setup.cfg
+===================================================================
+--- setup.cfg.orig
++++ setup.cfg
+@@ -21,9 +21,6 @@ show-source = true
  statistics = true
+ max-line-length = 128
  
 -[tool:pytest]
 -addopts = --cov=sshuttle --cov-branch --cov-report=term-missing

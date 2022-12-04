@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:54:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Make --sudoers option work properly, fix regression in v1.1.0
+  * Clarify --disable-ipv6 in man page.
+  * Improve message when bind fails with a IPv6 address
+  * Add tests for host name resolution
+  * Allows wildcard host names as subnets
+  * Fix typo
+  * Remove --sudoers, improve --sudoers-no-modify
+  * avoid moving/renaming the hosts file - fix docker container issue
+  * fixed some spelling mistakes
+  * Fix incorrect permissions for /etc/hosts
+  * This test broke in Python3.11
+  * all elements are strings
+  * Replace setuptools_scm with bump2version
+- drop fix-shebang.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed May  4 18:41:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - depend on setuptools_scm also on older dists 
