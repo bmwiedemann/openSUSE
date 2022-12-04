@@ -233,6 +233,20 @@ getent passwd ftpsecure >/dev/null || useradd -r -g nobody -s /bin/false -c "Sec
 %if %{with_systemd}
 %service_add_pre %{name}.service %{name}.socket
 %endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/%{name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/%{name} ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %preun
 %if %{with_systemd}

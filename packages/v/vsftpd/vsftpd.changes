@@ -9,6 +9,12 @@ Fri Sep 16 06:18:26 UTC 2022 - Peter Simons <psimons@suse.com>
   older version of systemd. [bsc#1196918]
 
 -------------------------------------------------------------------
+Thu Sep 15 11:00:54 UTC 2022 - Stefan Schubert <schubi@localhost>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Thu Aug 25 08:23:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Apply "disable-tls13-to-support-older-openssl-versions.patch"
@@ -1295,3 +1301,4 @@ Mon Oct 22 15:57:40 CEST 2001 - mmj@suse.de
 - Initial package
 
 -------------------------------------------------------------------
+Mon Oct 22 15:57:40 CEST 2001 - 
