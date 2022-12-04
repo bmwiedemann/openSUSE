@@ -1,0 +1,61 @@
+From 0e12a96d9f8475e164c634be9d672ca7cdb26567 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Fri, 2 Dec 2022 20:11:45 +0800
+Subject: [PATCH] Revert "OvmfPkg/PlatformInitLib: dynamic mmio window size"
+
+This reverts commit ecb778d0ac62560aa172786ba19521f27bc3f650.
+
+Signed-off-by: Lee, Chun-Yi <jlee@suse.com>
+---
+ OvmfPkg/Library/PlatformInitLib/MemDetect.c | 28 ---------------------
+ 1 file changed, 28 deletions(-)
+
+diff --git a/OvmfPkg/Library/PlatformInitLib/MemDetect.c b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+index b8feae4309..822e4aefc3 100644
+--- a/OvmfPkg/Library/PlatformInitLib/MemDetect.c
++++ b/OvmfPkg/Library/PlatformInitLib/MemDetect.c
+@@ -606,33 +606,6 @@ PlatformAddressWidthFromCpuid (
+   }
+ }
+ 
+-VOID
+-EFIAPI
+-PlatformDynamicMmioWindow (
+-  IN OUT EFI_HOB_PLATFORM_INFO  *PlatformInfoHob
+-  )
+-{
+-  UINT64  AddrSpace, MmioSpace;
+-
+-  AddrSpace = LShiftU64 (1, PlatformInfoHob->PhysMemAddressWidth);
+-  MmioSpace = LShiftU64 (1, PlatformInfoHob->PhysMemAddressWidth - 3);
+-
+-  if ((PlatformInfoHob->PcdPciMmio64Size < MmioSpace) &&
+-      (PlatformInfoHob->PcdPciMmio64Base + MmioSpace < AddrSpace))
+-  {
+-    DEBUG ((DEBUG_INFO, "%a: using dynamic mmio window\n", __func__));
+-    DEBUG ((DEBUG_INFO, "%a:   Addr Space 0x%Lx (%Ld GB)\n", __func__, AddrSpace, RShiftU64 (AddrSpace, 30)));
+-    DEBUG ((DEBUG_INFO, "%a:   MMIO Space 0x%Lx (%Ld GB)\n", __func__, MmioSpace, RShiftU64 (MmioSpace, 30)));
+-    PlatformInfoHob->PcdPciMmio64Size = MmioSpace;
+-    PlatformInfoHob->PcdPciMmio64Base = AddrSpace - MmioSpace;
+-  } else {
+-    DEBUG ((DEBUG_INFO, "%a: using classic mmio window\n", __func__));
+-  }
+-
+-  DEBUG ((DEBUG_INFO, "%a:   Pci64 Base 0x%Lx\n", __func__, PlatformInfoHob->PcdPciMmio64Base));
+-  DEBUG ((DEBUG_INFO, "%a:   Pci64 Size 0x%Lx\n", __func__, PlatformInfoHob->PcdPciMmio64Size));
+-}
+-
+ /**
+   Iterate over the PCI host bridges resources information optionally provided
+   in fw-cfg and find the highest address contained in the PCI MMIO windows. If
+@@ -794,7 +767,6 @@ PlatformAddressWidthInitialization (
+   if (PlatformInfoHob->PhysMemAddressWidth != 0) {
+     // physical address width is known
+     PlatformInfoHob->FirstNonAddress = FirstNonAddress;
+-    PlatformDynamicMmioWindow (PlatformInfoHob);
+     return;
+   }
+ 
+-- 
+2.35.3
+

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  2 12:27:15 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
+  to avoid Page-Fault exception when booting with edk2-stable202211
+  ovmf. (bsc#1205978) 
+    - This is a revert patch for workaround problem temporary.
+
+-------------------------------------------------------------------
 Tue Nov 29 14:48:03 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - In the PFLASH_CODE in ovmf-build-funcs.sh, Use readonly=on instead of

@@ -58,6 +58,8 @@ Patch9:         %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.pat
 Patch10:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch
 Patch11:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
 Patch12:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
+# Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
+Patch13:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -181,6 +183,7 @@ rm -rf $PKG_TO_REMOVE
 %patch11 -p1
 %patch12 -p1
 %endif
+%patch13 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
