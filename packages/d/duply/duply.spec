@@ -1,7 +1,7 @@
 #
 # spec file for package duply
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,16 @@
 
 
 Name:           duply
-Version:        2.4
+Version:        2.4.1
 Release:        0
 Summary:        A frontend for the "duplicity" backup program
 License:        GPL-2.0-only
-URL:            http://duply.net/
-Source0:        https://sourceforge.net/projects/ftplicity/files/duply%20%28simple%20duplicity%29/2.2.x/%{name}_%{version}.tgz
+URL:            https://duply.net/
+Source0:        https://sourceforge.net/projects/ftplicity/files/duply%{20}%{28}simple%{20}duplicity%{29}/2.4.x/%{name}_%{version}.tgz
+BuildArch:      noarch
 # MANUAL BEGIN
 Requires:       duplicity
 # MANUAL END
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A shell front end to duplicity that simplifies the usage by managing
@@ -47,7 +46,6 @@ sed -i 's/\/usr\/bin\/env bash/\/bin\/bash/g' duply
 install -Dm0755 %{name} %{buildroot}%{_bindir}/%{name}
 
 %files
-%defattr(-,root,root,-)
 %doc CHANGELOG.txt
 %if ( 0%{?suse_version} == 1315 && 0%{?sle_version} == 120100 ) || ! 0%{?is_opensuse}
 # Needed if Leap 42.1 or SLE build targets

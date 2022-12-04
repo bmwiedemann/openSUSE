@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 19:32:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * fixup duplicity links, moved to http://duplicity.us
+  * bugfix: duply hangs on awk version detection on OpenBSD (thx phthomas137)
+
+-------------------------------------------------------------------
 Wed Jul  6 06:28:27 UTC 2022 - hsk17@mail.de
 
 - Update to 2.4:
