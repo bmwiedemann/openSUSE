@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  3 03:26:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.2.4 
+  [bug] [codegen] Fixed issue where unpacking nested tuples in a for loop using would raise a
+  "couldn't apply loop context" error if the loop context was used. The regex
+  used to match the for loop expression now allows the list of loop variables
+  to contain parenthesized sub-tuples. Pull request courtesy Matt Trescott.
+
+-------------------------------------------------------------------
 Thu Sep 29 19:44:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:

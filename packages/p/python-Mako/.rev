@@ -505,4 +505,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     templates that contain untrusted input.</comment>
     <requestid>1007102</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b704c2a74da097b324949c452e499363</srcmd5>
+    <version>1.2.4</version>
+    <time>1670162262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039736</requestid>
+  </revision>
 </revisionlist>

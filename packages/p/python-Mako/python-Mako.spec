@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-Mako
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        A Python templating language
 License:        MIT
