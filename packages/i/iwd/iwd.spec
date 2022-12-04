@@ -17,7 +17,7 @@
 
 
 Name:           iwd
-Version:        1.30
+Version:        2.0
 Release:        0
 Summary:        Wireless daemon for Linux
 License:        LGPL-2.1-or-later
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ell) >= 0.52
+BuildRequires:  pkgconfig(ell) >= 0.54
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
