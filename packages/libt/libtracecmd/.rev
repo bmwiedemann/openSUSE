@@ -7,4 +7,12 @@
     <comment>The trace-cmd project factored common code into a new library called libtracecmd. The update of trace-cmd 1.3 is depending on this new library. </comment>
     <requestid>1001753</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27e00f78e1b685f2f5bd109f3fdbe3b1</srcmd5>
+    <version>1.2.0</version>
+    <time>1670162314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.0</comment>
+    <requestid>1039895</requestid>
+  </revision>
 </revisionlist>

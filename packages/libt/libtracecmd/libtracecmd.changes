@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  3 13:04:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Process trace_clock for v7 trace.dat files
+  * Add network roles for time sync
+  * Have clock source TAI parse to seconds
+  * Use uncompressed size for file size
+  * Allow callers to save private data in tracecmd_input handlers
+  * Add filtering logic for iterating events
+  * Add man pages for iterator functions
+  * Add API for mapping between host and guests
+- Delete 0001-build-Only-consider-libtracecmd-documentation.patch,
+  0002-trace-cmd-library-Fix-decleration-of-msg_lseek.patch (merged)
+- Add static-assign.patch
+
+-------------------------------------------------------------------
 Mon Sep  5 10:38:26 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Drop previous added file extension glob on man pages. Whether it's

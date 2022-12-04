@@ -1,0 +1,87 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2022-12-03 14:04:21.501944293 +0100
+References: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/FPNDORIL6NDJD3HFQ76LQBIRBCWVG6TV/
+Upstream: no
+
+Mark a few vars as := in the hope to the cut the number of recursive
+pkg-config calls at least by some amount. It's not a panacea,
+you really must split the "configure" and the "build" steps
+and not conflate them together. Use autotools/cmake/meson/whatever.
+Not this.
+
+---
+ Makefile |   30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+Index: trace-cmd-libtracecmd-1.2.0/Makefile
+===================================================================
+--- trace-cmd-libtracecmd-1.2.0.orig/Makefile
++++ trace-cmd-libtracecmd-1.2.0/Makefile
+@@ -221,8 +221,8 @@ LIBS ?= -ldl
+ LIBTRACECMD_DIR = $(obj)/lib/trace-cmd
+ LIBTRACECMD_STATIC = $(LIBTRACECMD_DIR)/libtracecmd.a
+ LIBTRACECMD_SHARED = $(LIBTRACECMD_DIR)/libtracecmd.so.$(LIBTRACECMD_VERSION)
+-LIBTRACECMD_SHARED_VERSION = $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\.[0-9]*\).*/\1/')
+-LIBTRACECMD_SHARED_SO = $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\).*/\1/')
++LIBTRACECMD_SHARED_VERSION := $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\.[0-9]*\).*/\1/')
++LIBTRACECMD_SHARED_SO := $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\).*/\1/')
+ 
+ export LIBTRACECMD_STATIC LIBTRACECMD_SHARED
+ export LIBTRACECMD_SHARED_VERSION LIBTRACECMD_SHARED_SO
+@@ -230,12 +230,12 @@ export LIBTRACECMD_SHARED_VERSION LIBTRA
+ LIBTRACEEVENT=libtraceevent
+ LIBTRACEFS=libtracefs
+ 
+-TEST_LIBTRACEEVENT = $(shell sh -c "$(PKG_CONFIG) --atleast-version $(LIBTRACEEVENT_MIN_VERSION) $(LIBTRACEEVENT) > /dev/null 2>&1 && echo y")
+-TEST_LIBTRACEFS = $(shell sh -c "$(PKG_CONFIG) --atleast-version $(LIBTRACEFS_MIN_VERSION) $(LIBTRACEFS) > /dev/null 2>&1 && echo y")
++TEST_LIBTRACEEVENT := $(shell sh -c "$(PKG_CONFIG) --atleast-version $(LIBTRACEEVENT_MIN_VERSION) $(LIBTRACEEVENT) > /dev/null 2>&1 && echo y")
++TEST_LIBTRACEFS := $(shell sh -c "$(PKG_CONFIG) --atleast-version $(LIBTRACEFS_MIN_VERSION) $(LIBTRACEFS) > /dev/null 2>&1 && echo y")
+ 
+ ifeq ("$(TEST_LIBTRACEEVENT)", "y")
+-LIBTRACEEVENT_CFLAGS = $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEEVENT)")
+-LIBTRACEEVENT_LDLAGS = $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEEVENT)")
++LIBTRACEEVENT_CFLAGS := $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEEVENT)")
++LIBTRACEEVENT_LDLAGS := $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEEVENT)")
+ else
+ .PHONY: warning
+ warning:
+@@ -253,8 +253,8 @@ endif
+ export LIBTRACEEVENT_CFLAGS LIBTRACEEVENT_LDLAGS
+ 
+ ifeq ("$(TEST_LIBTRACEFS)", "y")
+-LIBTRACEFS_CFLAGS = $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEFS)")
+-LIBTRACEFS_LDLAGS = $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEFS)")
++LIBTRACEFS_CFLAGS := $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEFS)")
++LIBTRACEFS_LDLAGS := $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEFS)")
+ else
+ .PHONY: warning
+ warning:
+@@ -324,11 +324,11 @@ endif
+ export ZLIB_LDLAGS
+ 
+ ifndef NO_LIBZSTD
+-TEST_LIBZSTD = $(shell sh -c "$(PKG_CONFIG) --atleast-version 1.4.0 libzstd > /dev/null 2>&1 && echo y")
++TEST_LIBZSTD := $(shell sh -c "$(PKG_CONFIG) --atleast-version 1.4.0 libzstd > /dev/null 2>&1 && echo y")
+ 
+ ifeq ("$(TEST_LIBZSTD)", "y")
+-LIBZSTD_CFLAGS = $(shell sh -c "$(PKG_CONFIG) --cflags libzstd")
+-LIBZSTD_LDLAGS = $(shell sh -c "$(PKG_CONFIG) --libs libzstd")
++LIBZSTD_CFLAGS := $(shell sh -c "$(PKG_CONFIG) --cflags libzstd")
++LIBZSTD_LDLAGS := $(shell sh -c "$(PKG_CONFIG) --libs libzstd")
+ CFLAGS += -DHAVE_ZSTD
+ ZSTD_INSTALLED=1
+ $(info    Have ZSTD compression support)
+@@ -571,10 +571,10 @@ report_nopythondev: force
+ 	$(Q)echo
+ 
+ ifndef NO_PYTHON
+-PYTHON_INCLUDES = `$(PKG_CONFIG) --cflags $(PYTHON_PKGCONFIG_VERS)`
+-PYTHON_LDFLAGS = `$(PKG_CONFIG) --libs $(PYTHON_PKGCONFIG_VERS)` \
++PYTHON_INCLUDES := `$(PKG_CONFIG) --cflags $(PYTHON_PKGCONFIG_VERS)`
++PYTHON_LDFLAGS := `$(PKG_CONFIG) --libs $(PYTHON_PKGCONFIG_VERS)` \
+ 		$(shell $(PYTHON_VERS)-config --ldflags)
+-PYGTK_CFLAGS = `$(PKG_CONFIG) --cflags pygtk-2.0`
++PYGTK_CFLAGS := `$(PKG_CONFIG) --cflags pygtk-2.0`
+ else
+ PYTHON_INCLUDES =
+ PYTHON_LDFLAGS =

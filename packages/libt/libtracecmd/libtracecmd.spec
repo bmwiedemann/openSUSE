@@ -18,19 +18,19 @@
 
 Name:           libtracecmd
 %define lname   libtracecmd1
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Library for creating and reading trace-cmd data files
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
-Source0:        trace-cmd-libtracecmd-%{version}.tar.gz
-Patch1:		0001-build-Only-consider-libtracecmd-documentation.patch
-Patch2:         0002-trace-cmd-library-Fix-decleration-of-msg_lseek.patch
-BuildRequires:  libzstd-devel
+Source:         https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/trace-cmd-libtracecmd-%version.tar.gz
+Patch1:         static-assign.patch
 BuildRequires:  asciidoc
+BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libtracefs-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  source-highlight
 BuildRequires:  xmlto
 
@@ -56,7 +56,7 @@ Development files of the libtracecmd library
 %autosetup -p1 -n trace-cmd-libtracecmd-%{version}
 
 %build
-make -j1 V=1 prefix=%{_prefix} libdir=%{_libdir} libs
+%make_build V=1 prefix=%{_prefix} libdir=%{_libdir} libs
 make -j1 V=1 MANPAGE_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
 
 %install
@@ -65,6 +65,11 @@ make -j1 V=1 DESTDIR=%buildroot \
      pkgconfig_dir=%{_libdir}/pkgconfig \
      htmldir=%{_docdir}/libtracecmd pdfdir=%{_docdir}/libtracecmd \
      install_libs install_doc
+# remove files already built&shipped in trace-cmd
+for i in man1 man5 man8; do
+	rm -Rf "%buildroot/%_mandir/$i"
+done
+%fdupes %buildroot/%_prefix
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -77,7 +82,7 @@ make -j1 V=1 DESTDIR=%buildroot \
 %{_includedir}/trace-cmd
 %{_libdir}/libtracecmd.so
 %{_libdir}/pkgconfig/*.pc
-%{_mandir}/man3/*
+%{_mandir}/man*/*
 %{_docdir}/libtracecmd
 %license COPYING.LIB
 %doc README
