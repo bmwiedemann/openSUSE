@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:45:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * fix pagesize on ia64
+  * write out replace sections in original order
+  * patchelf: correct page size for sparc64/sparc32
+  * update vendored elf file
+  * add workaround for readelf from binutils 2.30
+  * make objdump/objcopy/readelf configurable and respect cross-compiling
+  * build patchelf on windows
+
+-------------------------------------------------------------------
 Sat Oct 29 12:06:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.1:

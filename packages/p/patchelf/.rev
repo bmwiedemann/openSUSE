@@ -166,4 +166,19 @@
   * Rework file shifting to avoid sections crossing multiple segments</comment>
     <requestid>1032197</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d6f5f6dfe23129ce685046b3179aee64</srcmd5>
+    <version>0.17.0</version>
+    <time>1670162260</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.0:
+  * fix pagesize on ia64
+  * write out replace sections in original order
+  * patchelf: correct page size for sparc64/sparc32
+  * update vendored elf file
+  * add workaround for readelf from binutils 2.30
+  * make objdump/objcopy/readelf configurable and respect cross-compiling
+  * build patchelf on windows</comment>
+    <requestid>1039676</requestid>
+  </revision>
 </revisionlist>
