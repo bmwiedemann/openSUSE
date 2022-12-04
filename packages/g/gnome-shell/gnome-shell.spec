@@ -43,6 +43,8 @@ Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.pa
 Patch7:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
 Patch8:         gnome-shell-exit-crash-workaround.patch
+# PATCH-FIX-OPENSUSE gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch bsc#1205518 xwang@suse.com -- Leak the GJS context and ShellGlobal
+Patch9:         gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -184,6 +186,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch5 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %if 0%{?sle_version}
 %patch1001 -p1

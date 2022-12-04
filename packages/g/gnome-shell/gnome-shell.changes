@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  2 01:44:58 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch:
+  Leak the GJS context and ShellGlobal, the patch is from 
+  https://src.fedoraproject.org/rpms/gnome-shell/tree/rawhide
+  (bsc#1205518)
+
+-------------------------------------------------------------------
 Fri Nov  4 17:56:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
