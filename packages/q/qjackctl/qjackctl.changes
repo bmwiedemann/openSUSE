@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  3 22:39:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.8:
+  *  Graph: View / Repel Overlapping Nodes option added.
+  *  Avoid nagging on D-BUS error messsage windows (or bubbles) when
+     trying to start in pure JACK client mode (Active).
+  *  Add current system user-name to the singleton/unique application
+     instance identifier.
+  *  Graph/Connect and Disconnect keyboard shortcuts added to existing
+     [Ins] and [Del], as [Ctrl+C] and [Ctrl+D] respectively; also added
+     [F2] as brand new keyboard shortcut for Edit/Rename...
+
+-------------------------------------------------------------------
 Sun Apr  3 08:41:59 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.7
