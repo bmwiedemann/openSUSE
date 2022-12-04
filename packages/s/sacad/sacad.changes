@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:04:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.2:
+  * fix: remove fake-useragent dependency because of lack of API stability
+  * fix: version fake-useragent cache file
+  * fix: pre-commit URL 
+
+-------------------------------------------------------------------
 Mon Nov 14 15:24:02 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.7.0
