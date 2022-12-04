@@ -82,4 +82,18 @@
     <comment></comment>
     <requestid>1039901</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1b845892a48213e7db912d17957dfc21</srcmd5>
+    <version>0.8.1</version>
+    <time>1670167026</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-resolvelib revision:5, using expand</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b69239f71c47496425a0da45fb3bc2e7</srcmd5>
+    <version>0.8.1</version>
+    <time>1670167048</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-resolvelib revision:5, using expand</comment>
+  </revision>
 </revisionlist>
