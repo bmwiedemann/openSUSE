@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 17:25:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.84:
+  * fix bug: target bound initiator-name but client cannot discovery the
+    target device
+  * fix use-after-free in iser_conn_free() 
+
+-------------------------------------------------------------------
 Tue Apr  5 19:01:02 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Update to version v1.0.82 (from 1.0.74):

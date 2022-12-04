@@ -18,17 +18,16 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           tgt
-Version:        v1.0.82
+Version:        1.0.84
 Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only
 Group:          System/Daemons
-URL:            http://stgt.sourceforge.net/
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/fujita/tgt
+Source:         https://github.com/fujita/tgt/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}d.service
 Source4:        sysconfig.%{name}
 Patch1:         %{name}-fix-build
@@ -66,7 +65,7 @@ user-space daemon and tools (i.e. they completely runs in user space).
 %else
 %define backends ISCSI=1 FCP=1 FCOE=1
 %endif
-make OPTFLAGS="%{optflags}" %{backends}
+%make_build OPTFLAGS="%{optflags}" %{backends}
 
 %install
 make DESTDIR=%{buildroot} docdir=%{_docdir}/%{name} install
@@ -88,19 +87,24 @@ ln -sf service %{buildroot}/%{_sbindir}/rc%{name}d
 %service_del_postun %{name}d.service
 
 %files
-%defattr(-,root,root)
-%{_sbindir}/*
+%license LICENSE
+%doc README.md doc/README.iscsi doc/README.iser doc/README.lu_configuration
+%doc doc/README.mmc doc/README.passthrough doc/README.sbcjukebox doc/README.ssc
+%doc doc/README.rbd doc/README.glfs doc/README.sheepdog doc/README.vtl
+%doc doc/tmf.txt
+%doc %{_defaultdocdir}/%{name}/examples
+%doc %{_defaultdocdir}/%{name}/html
+%{_sbindir}/rctgtd
+%{_sbindir}/tgt-admin
+%{_sbindir}/tgt-setup-lun
+%{_sbindir}/tgtadm
+%{_sbindir}/tgtd
+%{_sbindir}/tgtimg
 %dir %{_sysconfdir}/tgt
 %dir %{_sysconfdir}/tgt/conf.d
 %config %attr(0644,root,root) %{_sysconfdir}/tgt/targets.conf
 %{_fillupdir}/sysconfig.tgt
 %{_unitdir}/%{name}d.service
-%doc README.md doc/README.iscsi doc/README.iser doc/README.lu_configuration
-%doc doc/README.mmc doc/README.passthrough doc/README.sbcjukebox doc/README.ssc
-%doc doc/README.rbd doc/README.glfs doc/README.sheepdog doc/README.vtl
-%doc doc/tmf.txt
-%doc %_defaultdocdir/%name/examples
-%doc %_defaultdocdir/%name/html
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 

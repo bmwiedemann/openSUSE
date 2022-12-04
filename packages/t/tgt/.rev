@@ -312,4 +312,15 @@ Most of the source code files carry a GPL-2.0 notice, not GPL-2.0+ (forwarded re
     <comment></comment>
     <requestid>967365</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>65beaa1ad5a2cce42db359bae39ab440</srcmd5>
+    <version>1.0.84</version>
+    <time>1670162301</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.84:
+  * fix bug: target bound initiator-name but client cannot discovery the
+    target device
+  * fix use-after-free in iser_conn_free()</comment>
+    <requestid>1039848</requestid>
+  </revision>
 </revisionlist>
