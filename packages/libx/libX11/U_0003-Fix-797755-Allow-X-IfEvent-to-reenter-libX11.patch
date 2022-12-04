@@ -1,7 +1,7 @@
 From a9e845809bcaae22496bc8aa3ca252b410d5f39b Mon Sep 17 00:00:00 2001
 From: Matthieu Herrb <matthieu@herrb.eu>
 Date: Fri, 11 Nov 2022 18:55:23 +0100
-Subject: [PATCH] Fix 797755 Allow X*IfEvent() to reenter libX11
+Subject: [PATCH 3/5] Fix 797755 Allow X*IfEvent() to reenter libX11
 
 - the activation logic is reversed
 - there is also _XInternalLockDisplay() that needs protection
