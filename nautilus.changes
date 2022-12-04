@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Dec  2 22:21:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Bugfixes:
+    - Actually reset metadata when reseting to default columns
+    - Don't allow hiding name column
+    - Keep track of column sorting changes
+    - Fix view focus navigation
+    - Reimplement view navigation from the previewer
+    - Don't accept drops into search directory
+    - Share settings with GTK4 filechooser
+    - Fix a properties extensions bugs
+    - Fix various Drag-and-Drop bugs
+    - Remove dead shortcut from Keyboard Shortcut
+    - Allow opening current view in new tab from sidebar
+    - Fix crashes
+  + Performance improvements:
+    - Optimize sorting during directory loading
+    - Minimize column factories
+    - Increase search timeout
+    - Minimize and optimize menu updates
+  + Build fixes: Make header prototypes match definitions
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 12 06:22:36 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop nautilus-revert-extra-large-thumbnails.patch: No longer
