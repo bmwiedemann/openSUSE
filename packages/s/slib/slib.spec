@@ -1,7 +1,7 @@
 #
 # spec file for package slib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           slib
-Version:        3b6
+Version:        3b7
 Release:        0
 Summary:        Portable Scheme Library
 License:        SUSE-SLIB
 Group:          Development/Languages/Scheme
-URL:            http://swissnet.ai.mit.edu/~jaffer/SLIB.html
-Source:         http://groups.csail.mit.edu/mac/ftpdir/scm/slib-%{version}.tar.gz
+URL:            https://swissnet.ai.mit.edu/~jaffer/SLIB.html
+Source:         https://groups.csail.mit.edu/mac/ftpdir/scm/slib-%{version}.tar.gz
 # this is not upstreamable (bnc#754532):
 Patch0:         remove-resene-colors.diff
 Requires(post): %{install_info_prereq}

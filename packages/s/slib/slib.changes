@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:13:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3b7:
+  * iso8601.scm (iso-8601->time): Corrected scanf count
+  * sort.scm (sorted?): Fixed bug on vectors.
+
+-------------------------------------------------------------------
 Thu Jan 28 23:39:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3b6:
