@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  3 05:14:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.33.2 
+  * Stop using deprecated threading APIs
+    Way back in py26, snake_case alternatives were added for the old
+    camelCase APIs. py310 started emitting DeprecationWarnings about them;
+    presumably they'll look to remove the old APIs eventually. See
+
+-------------------------------------------------------------------
 Wed Nov  9 10:52:49 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with OpenSSL 3.0 [bsc#1205042]
