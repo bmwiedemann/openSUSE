@@ -411,4 +411,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>981103</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>6019da5094ac5194d48a3471cce9f793</srcmd5>
+    <version>1.6.6</version>
+    <time>1670162257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039672</requestid>
+  </revision>
 </revisionlist>

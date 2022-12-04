@@ -26,6 +26,9 @@
 %define git_version 10c12954828e7c7c9b6e0ea9b0c02b01407d3ae1
 %define git_short   10c12954828e
 
+%global provider_prefix github.com/containerd/containerd
+%global import_path %{provider_prefix}
+
 Name:           containerd
 Version:        1.6.6
 Release:        0
@@ -39,12 +42,11 @@ Source2:        %{name}.service
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-go-md2man
+BuildRequires:  golang-packaging
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  pkg-config
-# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.18' here, so just require 1.18 exactly. bsc#1172608
-BuildRequires:  go1.18
+BuildRequires:  golang(API) = 1.18
 # We provide a git revision so that Docker can require it properly.
 Provides:       %{name}-git = %{git_version}
 # Currently runc is the only supported runtime for containerd. We pin the same
@@ -80,12 +82,22 @@ Obsoletes:      %{name}-ctr_2a5e70c
 Standalone client for containerd, which allows management of containerd containers
 separately from Docker.
 
+%package devel
+Summary:        Source code for containerd
+Group:          Development/Libraries/Go
+Requires:       %{name} = %{version}
+
+%description devel
+This package contains the source code needed for building packages that
+reference the following Go import paths: github.com/containerd/containerd
+
 %prep
 %setup -q -n %{name}-%{version}_%{git_short}
 
 %build
+%goprep %{import_path}
 BUILDTAGS="apparmor selinux seccomp"
-%make_build \
+make \
 	BUILDTAGS="$BUILDTAGS" \
 	VERSION="v%{version}" \
 	REVISION="%{git_version}"
@@ -95,6 +107,7 @@ BUILDTAGS="apparmor selinux seccomp"
 cp -r "$PROJECT/bin" bin
 
 %install
+%gosrc
 # Install binaries.
 pushd bin/
 for bin in containerd{,-shim*}
@@ -152,5 +165,11 @@ install -Dp -m644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 %{_sbindir}/containerd-ctr
 # TODO: Fix man page generation.
 #%{_mandir}/man1/*ctr.1*
+
+%files devel
+%license LICENSE
+%dir %{go_contribsrcdir}/github.com
+%dir %{go_contribsrcdir}/github.com/containerd
+%{go_contribsrcdir}/%{import_path}
 
 %changelog
