@@ -227,4 +227,14 @@
 </comment>
     <requestid>1010071</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>40f4323348f46e4458afb4ef04926ca4</srcmd5>
+    <version>3.12.0</version>
+    <time>1670162271</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.12.0
+ see installed Changelog.md
+</comment>
+    <requestid>1032156</requestid>
+  </revision>
 </revisionlist>
