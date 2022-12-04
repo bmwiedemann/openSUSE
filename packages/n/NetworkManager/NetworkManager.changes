@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec  2 22:01:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.40.6:
+  + team:
+    - Also set empty port configuration so teamd knows about the
+      port.
+    - Restore port configuration after teamd respawn.
+- Changes from version 1.40.4:
+  + dhcp: revert restarting DHCP when MAC address changes, for
+    example during a bond fail over.
+  + Various documentation fixes.
+  + Fix non-exported ABI in libnm which was wrongly present in the
+    header files but unusable so far.
+  + ifcfg-rh: fix writing ethtool pause settings to file.
+  + core: set "proto static" for manual routing rules configured by
+    NetworkManager.
+  + Various minor bugfixes.
+
+-------------------------------------------------------------------
 Mon Nov  7 12:50:13 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Keep netconfig support. The rc-manager auto detection will select
