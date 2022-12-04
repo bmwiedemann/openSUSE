@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec  3 17:37:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.3.1  
+  * Add a trailing newline to package.json when appropriate by @blink1073 in #17
+
+- Update to version 0.3.0
+  * Update version to match distribution by @bollwyvl in #2
+  * Add official Hatch badge by @ofek in #3
+  * Refactor: don't store path in version_data by @agoose77 in #4
+  * feat: add support for metadata hook by @agoose77 in #5
+  * ci: test with pytest by @agoose77 in #6
+  * Add Python version classifiers by @ofek in #7
+  * Add urls for this package by @fcollonval in #8
+  * feat: add label configuration options to modify URLs table keys by @agoose77 in #9
+  * docs: explain fields fallback by @agoose77 in #10
+  * docs: replace NodeJS with Node.js by @agoose77 in #11
+  * Feat: support build metadata by @agoose77 in #13
+
+-------------------------------------------------------------------
 Fri Sep 23 09:34:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix metadata (description and files).
