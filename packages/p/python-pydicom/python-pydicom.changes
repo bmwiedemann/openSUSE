@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:04:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.3.1: 
+  * Small fix to make 2.3.X compatible with Python 3.11.
+
+-------------------------------------------------------------------
 Mon Oct 10 07:20:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add BD pydicom-data test data, and unskip many tests that now pass

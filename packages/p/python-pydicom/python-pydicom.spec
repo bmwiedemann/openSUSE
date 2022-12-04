@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-pydicom
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Pure python package for DICOM medical file reading and writing
 License:        MIT
@@ -41,8 +41,8 @@ BuildArch:      noarch
 Obsoletes:      %{oldpython}-dicom < %{version}
 Provides:       %{oldpython}-dicom = %{version}
 %endif
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
