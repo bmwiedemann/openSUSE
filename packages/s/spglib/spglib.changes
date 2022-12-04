@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:52:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Fix segmentation fault in spgms_get_symmetry_with_site_tensors with high symprec
+  * Fix possible segmentation fault in get_magnetic_dataset with high symprec
+
+-------------------------------------------------------------------
 Sun Sep 11 19:23:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.0.1:

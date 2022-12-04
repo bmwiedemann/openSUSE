@@ -18,7 +18,7 @@
 
 %define shlib libsymspg1
 Name:           spglib
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
