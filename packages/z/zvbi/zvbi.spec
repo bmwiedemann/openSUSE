@@ -1,7 +1,7 @@
 #
 # spec file for package zvbi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,22 +20,14 @@
 %define         libname lib%{name}%{sover}
 %define         libchains lib%{name}-chains%{sover}
 Name:           zvbi
-Version:        0.2.35
+Version:        0.2.38
 Release:        0
 Summary:        Linux "VBI proxy"
-License:        LGPL-2.1+ AND GPL-2.0+
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://zapping.sf.net/
-Source:         https://sourceforge.net/projects/zapping/files/zvbi/%{version}/zvbi-%{version}.tar.bz2
+URL:            https://github.com/zapping-vbi/zvbi/
+Source:         https://github.com/zapping-vbi/zvbi/archive/refs/tags/v%{version}.tar.gz
 Source2:        baselibs.conf
-Patch00:        00_fix-configure.in.patch
-Patch01:        01_Makefile.am.patch
-Patch03:        03_fails-to-write.patch
-Patch05:        05_MAXPATHLEN.patch
-Patch06:        06_sizeof-FTBFS.patch
-Patch07:        07_fix-spelling-in-binaries.patch
-Patch08:        08_fix-manpage.patch
-Patch09:        09_fix-FTBFS-GCC6.patch
 Patch10:        10_fix_private_libs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -100,14 +92,6 @@ sliced VBI data, and to interpret the data of several popular services.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 %patch10 -p1
 
 %build
@@ -122,7 +106,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 # This requires timezone package to be installed
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %post -n %{libchains} -p /sbin/ldconfig
@@ -130,15 +114,16 @@ make %{?_smp_mflags} check
 %postun -n %{libchains} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS BUGS COPYING ChangeLog NEWS README TODO
+%license COPYING
+%doc AUTHORS BUGS ChangeLog NEWS README.md TODO
 %{_bindir}/zvbi-atsc-cc
 %{_bindir}/zvbi-chains
 %{_bindir}/zvbi-ntsc-cc
 %{_sbindir}/zvbid
-%{_mandir}/man1/zvbi-atsc-cc.1%{ext_man}
-%{_mandir}/man1/zvbi-chains.1%{ext_man}
-%{_mandir}/man1/zvbi-ntsc-cc.1%{ext_man}
-%{_mandir}/man1/zvbid.1%{ext_man}
+%{_mandir}/man1/zvbi-atsc-cc.1%{?ext_man}
+%{_mandir}/man1/zvbi-chains.1%{?ext_man}
+%{_mandir}/man1/zvbi-ntsc-cc.1%{?ext_man}
+%{_mandir}/man1/zvbid.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

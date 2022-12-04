@@ -191,4 +191,12 @@ Use SPDX format and include the LGPL as well (forwarded request 131772 from babe
     <comment></comment>
     <requestid>895547</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a0769dc11e92a8358070d3ad0c31a0cd</srcmd5>
+    <version>0.2.38</version>
+    <time>1670162266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039746</requestid>
+  </revision>
 </revisionlist>
