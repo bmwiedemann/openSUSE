@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  3 00:03:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Fix show of updatable app in the details page.
+  + Fix search for apps providing some feature under rpm-ostree.
+  + Fix sending of ODRS data when using libsoup3.
+  + Fix occasional crash when installing apps.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 26 01:55:06 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnome-software-disable-offline-update.patch: Disable offline

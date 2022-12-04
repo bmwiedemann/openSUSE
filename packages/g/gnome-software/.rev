@@ -928,4 +928,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
   update in SLE and openSUSE Leap(bsc#944832). (forwarded request 1031668 from JonathanKang)</comment>
     <requestid>1032384</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>bae99df18fde0f378d96bd2e0c58d493</srcmd5>
+    <version>43.2</version>
+    <time>1670162280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039785</requestid>
+  </revision>
 </revisionlist>
