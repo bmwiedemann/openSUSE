@@ -19,7 +19,7 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.3.6
+Version:        2.3.7
 Release:        0
 Summary:        Python Version Management
 License:        MIT
