@@ -1,7 +1,7 @@
 #
 # spec file for package powercap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           powercap
-Version:        0.3.1
+Version:        0.6.0
 Release:        0
 Summary:        Tools for the Linux Power Capping Framework
 License:        GPL-2.0-only
@@ -37,6 +37,17 @@ It also provides the following applications:
 powercap-info - view powercap control type hierarchies or zone/constraint-specific configurations
 powercap-set - set powercap control type zone/constraint-specific configurations
 
+%package devel
+Summary:        development files for the Linux Power Capping Framework
+Requires:       %{name} = %{version}
+
+%description devel
+This project provides the powercap library -- a generic C interface to the
+Linux power capping framework (sysfs interface). It includes an implementation
+for working with Intel Running Average Power Limit (RAPL).
+
+This package provides the devel files.
+
 %prep
 %setup -q
 
@@ -46,10 +57,6 @@ powercap-set - set powercap control type zone/constraint-specific configurations
 
 %install
 %cmake_install
-
-# TODO split out when used by anything
-rm -rf %{buildroot}/%{_includedir} %{buildroot}/%{_libdir}/pkgconfig
-
 
 %files
 %license LICENSE
@@ -62,6 +69,12 @@ rm -rf %{buildroot}/%{_includedir} %{buildroot}/%{_libdir}/pkgconfig
 %{_mandir}/man1/powercap-set.1%{?ext_man}
 %{_mandir}/man1/rapl-info.1%{?ext_man}
 %{_mandir}/man1/rapl-set.1%{?ext_man}
-%{_libdir}/libpowercap.so*
+%{_libdir}/libpowercap.so.*
+
+%files devel
+%{_includedir}/powercap
+%{_libdir}/pkgconfig/powercap.pc
+%{_libdir}/libpowercap.so
+%{_libdir}/cmake/powercap
 
 %changelog

@@ -7,4 +7,23 @@
     <comment></comment>
     <requestid>872657</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>932b42389db8fb70e8dcbde6e927d4be</srcmd5>
+    <version>0.6.0</version>
+    <time>1670162316</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * powercap-info: control type name no longer required - will print info for all control types if not set
+  * added CMake installation components
+  * Increased minimum CMake version from 3.1 to 3.12
+  * powercap.h: header documentation for 'powercap_*_file_get_name' functions' return behavior
+  * Functions to support opening files in powercap.h:
+    'powercap_control_type_file_open'
+    'powercap_zone_file_open'
+    'powercap_constraint_file_open'
+  * CMake helper to find powercap without relying on pkg-config
+  * Flag '-p/--control-type' in powercap-{info,set} - specify control type name as the first positional argument instead
+  * Add compiler deprecation attributes to deprecated functions</comment>
+    <requestid>1039875</requestid>
+  </revision>
 </revisionlist>
