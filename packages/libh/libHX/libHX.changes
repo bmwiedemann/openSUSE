@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 11:24:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.8
+  * io: call posix_fadvise when slurping files
+  * io: fix garbling of slurped data when read from an
+    unknown-size source
+
+-------------------------------------------------------------------
 Sun Oct 23 12:12:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7
