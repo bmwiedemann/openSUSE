@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:28:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.11:
+  - simple: move default database to ~/.cache/mpd/db from ~/.cache/mpd.db
+  - simple: default "cache_directory" to ~/.cache/mpd/mounts
+- add keyring
+
+-------------------------------------------------------------------
 Mon Oct 17 07:12:07 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.10

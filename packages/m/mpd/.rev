@@ -679,4 +679,15 @@
   * output: alsa: fixed crash bug</comment>
     <requestid>1011997</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a89655cbb972be2be88881a1e69f940f</srcmd5>
+    <version>0.23.11</version>
+    <time>1670162337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.11:
+  - simple: move default database to ~/.cache/mpd/db from ~/.cache/mpd.db
+  - simple: default &quot;cache_directory&quot; to ~/.cache/mpd/mounts
+- add keyring</comment>
+    <requestid>1039907</requestid>
+  </revision>
 </revisionlist>
