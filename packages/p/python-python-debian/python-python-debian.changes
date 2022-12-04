@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:28:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.1.49 
+  * Fix whitespace handling of Copyright files (Closes: #960278)
+  * Make python-debian (more) portable (Closes: #1011937)
+    - Tweak tests to be portable to other platforms
+    - Adapt tests so that skipping optional tests can be prevented if needed
+    - Add other platforms to CI to test portability
+  * Switch tests to use more pytest features.
+  * Updates for newer mypy and pylint.
+  * Add Debian 14 'forky' to the list of known releases.
+
+-------------------------------------------------------------------
 Fri Oct 28 20:31:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.1.48 

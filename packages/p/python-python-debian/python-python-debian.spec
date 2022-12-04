@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-debian
-Version:        0.1.48
+Version:        0.1.49
 Release:        0
 Summary:        Debian package related modules
 License:        GPL-3.0-or-later

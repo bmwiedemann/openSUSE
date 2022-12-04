@@ -25,4 +25,12 @@ When accepted remove https://build.opensuse.org/package/show/openSUSE:Factory/py
     <comment></comment>
     <requestid>1032448</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92c51dc0e0a84c28edbe1676c99fa244</srcmd5>
+    <version>0.1.49</version>
+    <time>1670162327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039903</requestid>
+  </revision>
 </revisionlist>
