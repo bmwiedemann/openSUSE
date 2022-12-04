@@ -16,28 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-SQLAlchemy
-Version:        2.5.1
+Version:        3.0.2
 Release:        0
 Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/flask-sqlalchemy
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-SQLAlchemy/Flask-SQLAlchemy-%{version}.tar.gz
-# https://github.com/pallets-eco/flask-sqlalchemy/commit/20864ddfe4f9b70f20d38e5dc3f8d49c1ca99207
-Patch0:         python-Flask-SQLAlchemy-no-mock.patch
-# BR krb5 - the test suite falis with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
+# BR krb5 - the test suite fails with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
 BuildRequires:  krb5
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pdm-pep517}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 0.10
-Requires:       python-SQLAlchemy >= 0.8.0
+Requires:       python-Flask >= 2.2
+Requires:       python-SQLAlchemy >= 1.4.18
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Flask >= 0.10}
-BuildRequires:  %{python_module SQLAlchemy >= 0.8.0}
+BuildRequires:  %{python_module Flask >= 2.2}
+BuildRequires:  %{python_module SQLAlchemy >= 1.4.18}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -47,13 +46,12 @@ Adds SQLAlchemy support to your Flask application.
 
 %prep
 %setup -q -n Flask-SQLAlchemy-%{version}
-%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,9 +60,7 @@ Adds SQLAlchemy support to your Flask application.
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%dir %{python_sitelib}/flask_sqlalchemy
-%{python_sitelib}/flask_sqlalchemy/*
-%dir %{python_sitelib}/Flask_SQLAlchemy-%{version}-py*.egg-info
-%{python_sitelib}/Flask_SQLAlchemy-%{version}-py*.egg-info/*
+%{python_sitelib}/flask_sqlalchemy/
+%{python_sitelib}/Flask[-_]SQLAlchemy-%{version}.dist-info/
 
 %changelog
