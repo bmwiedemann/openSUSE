@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:25:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Minor cosmetic changes
+  * fix links to Docker & Kali wiki
+  * Upgrade rlimit
+  * Improve doc for addresses
+  * Allow CLI customisation of config file path
+  * Supports M1 Macs tada
+  * Partially fix #362: Fix examples (#363)
+  * Scripting engine arguments. Scan engine errors.
+
+-------------------------------------------------------------------
 Mon Jun 20 03:32:00 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
@@ -23,7 +36,7 @@ Fri Nov  5 04:00:35 UTC 2021 - William Brown <william.brown@suse.com>
 -------------------------------------------------------------------
 Fri Nov  6 16:55:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 2.2.1
+- Update to version 2.0.1
   Features
   * Scripting Engine Implementation.
   * Improved init_scripts error handling.
