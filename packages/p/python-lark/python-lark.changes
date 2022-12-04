@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec  2 18:23:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.1.4 
+  ci: Python 3.11 final by @henryiii in #1204
+  Add __all__ to __init__ by @aspizu in #1200
+  PropagatePositions: Allow any object to carry the metadata,
+  by returning it in __lark_meta__() by @erezsh in #1203
+  fix: Token now pattern matches correctly by @marcinplatek in #1181
+  Updates to merge PR #1151 by @erezsh in #1205
+  style: pre-commit basic config by @henryiii in #1151
+  PR for v1.1.4 by @erezsh in #1208
+
+-------------------------------------------------------------------
 Fri Oct 28 17:58:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.1.3 
