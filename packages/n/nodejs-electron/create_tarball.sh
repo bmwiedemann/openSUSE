@@ -358,8 +358,12 @@ rm -rf tools/disable_tests #6MB
 rm -rf tools/perf/{page_sets,testdata} #55MB
 rm -rf third_party/blink/web_tests # 1.6GB
 rm -rf third_party/catapult/tracing/test_data # 200MB
+rm -rf third_party/sqlite/src/test #86MB
 find chrome/test/data -type f ! -name "*.gn" -a ! -name "*.gni" -delete #249MB, thanks Mageia
 
+#see electron/.circleci/config/base.yml
+rm -rf android_webview
+rm -rf ios/chrome
 
 find . -type d -name .git -print0 | xargs -0 rm -rf
 # Remove generatted python bytecode

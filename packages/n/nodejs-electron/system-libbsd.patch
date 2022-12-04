@@ -2,7 +2,19 @@ This source file was copied from libbsd, use the system library instead
 
 --- a/third_party/libsync/BUILD.gn	2022-06-21 21:52:53.867987945 +0200
 +++ a/third_party/libsync/BUILD.gn	2022-06-28 17:30:45.327377489 +0200
-@@ -31,7 +31,6 @@
+@@ -21,9 +21,8 @@
+     ]
+   }
+ 
+-  config("libsync_private_config") {
+-    # To suppress the warning caused by strlcpy.
+-    cflags = [ "-Wno-implicit-function-declaration" ]
++  pkg_config("libsync_private_config") {
++    packages = [ "libbsd-overlay" ]
+   }
+ 
+   source_set("libsync") {
+@@ -31,7 +30,6 @@
        "src/include/sync/sync.h",
        "src/sw_sync.h",
        "src/sync.c",
@@ -10,12 +22,3 @@ This source file was copied from libbsd, use the system library instead
      ]
  
      configs -= [ "//build/config/compiler:chromium_code" ]
-@@ -41,6 +40,8 @@
-     ]
- 
-     public_configs = [ ":libsync_config" ]
-+
-+    libs = [ "bsd" ]
-   }
- }
- 

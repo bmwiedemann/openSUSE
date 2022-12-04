@@ -213,7 +213,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.3.0
+Version:        21.3.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -265,6 +265,7 @@ Patch72:        electron-version-from-env.patch
 # https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit/?h=102-based&id=d617766b236a93749ddbb50b75573dd35238ffc9
 Patch73:        disable-webspeech.patch
 Patch74:        common.gypi-remove-fno-omit-frame-pointer.patch
+Patch75:        gcc-asmflags.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
@@ -340,7 +341,6 @@ Patch3067:      reproducible-config.gypi.patch
 Patch3068:      content_language_parser-missing-string.patch
 Patch3069:      aggregatable_attribution_utils-do-not-assume-abseil-ABI.patch
 Patch3072:      attribution_response_parsing-do-not-assume-abseil-ABI.patch
-Patch3073:      common.gypi-cpp-version.patch
 Patch3074:      pending_beacon_dispatcher-virtual-functions-cannot-be-constexpr.patch
 Patch3075:      std_lib_extras-missing-intptr_t.patch
 Patch3076:      gtk_ui_platform_stub-incomplete-type-LinuxInputMethodContext.patch
@@ -602,11 +602,11 @@ BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{without clang}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
-BuildRequires:  gcc >= 11
-BuildRequires:  gcc-c++ >= 11
+BuildRequires:  gcc >= 12
+BuildRequires:  gcc-c++ >= 12
 %else
-BuildRequires:  gcc11-PIE
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12-PIE
+BuildRequires:  gcc12-c++
 %endif
 %endif
 %if %{with pipewire}
@@ -815,11 +815,11 @@ export AR=gcc-ar
 export NM=gcc-nm
 export RANLIB=gcc-ranlib
 %else
-export CC=gcc-11
-export CXX=g++-11
-export AR=gcc-ar-11
-export NM=gcc-nm-11
-export RANLIB=gcc-ranlib-11
+export CC=gcc-12
+export CXX=g++-12
+export AR=gcc-ar-12
+export NM=gcc-nm-12
+export RANLIB=gcc-ranlib-12
 %endif
 
 # endif with clang
@@ -1105,6 +1105,7 @@ myconf_gn+=" enable_vr=false"
 myconf_gn+=" enable_reading_list=false"
 myconf_gn+=" enable_reporting=false"
 myconf_gn+=" build_with_tflite_lib=false"
+myconf_gn+=" build_tflite_with_xnnpack=false"
 myconf_gn+=" safe_browsing_mode=0"
 myconf_gn+=" enable_captive_portal_detection=false"
 myconf_gn+=" enable_browser_speech_service=false"
@@ -1113,16 +1114,19 @@ myconf_gn+=" enable_screen_ai_service=false"
 myconf_gn+=" include_transport_security_state_preload_list=false"
 myconf_gn+=" enable_web_speech=false"
 myconf_gn+=" chrome_wide_echo_cancellation_supported=false"
-myconf_gn+=" enable_dice_support=false"
 myconf_gn+=" enable_downgrade_processing=false"
 myconf_gn+=" enable_click_to_call=false"
 myconf_gn+=" enable_webui_tab_strip=false"
+myconf_gn+=" enable_webui_certificate_viewer=false"
 myconf_gn+=" enable_background_contents=false"
+myconf_gn+=" enable_xz_extractor=false"
+myconf_gn+=" enable_feed_v2=false"
 
 
 #Do not build Chromecast
 myconf_gn+=" enable_remoting=false"
 myconf_gn+=" enable_media_remoting=false"
+myconf_gn+=" enable_service_discovery=false"
 
 
 

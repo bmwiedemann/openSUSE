@@ -1,0 +1,10 @@
+--- webrtc-5005b/build/toolchain/linux/unbundle/BUILD.gn.old	2022-11-03 22:00:52.560610182 +0100
++++ webrtc-5005b/build/toolchain/linux/unbundle/BUILD.gn	2022-12-02 18:00:45.728794737 +0100
+@@ -11,6 +11,7 @@
+   nm = getenv("NM")
+   ld = cxx
+ 
++  extra_asmflags = getenv("CFLAGS")
+   extra_cflags = getenv("CFLAGS")
+   extra_cppflags = getenv("CPPFLAGS")
+   extra_cxxflags = getenv("CXXFLAGS")
