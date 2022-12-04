@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.testrunner
-Version:        5.5
+Version:        5.5.1
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
