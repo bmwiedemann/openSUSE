@@ -1,7 +1,5 @@
-Index: conf/main.cf
-===================================================================
---- conf/main.cf.orig
-+++ conf/main.cf
+--- conf/main.cf.orig	2022-11-14 15:57:24.689108581 +0100
++++ conf/main.cf	2022-11-14 16:02:33.255317483 +0100
 @@ -285,7 +285,7 @@ unknown_local_recipient_reject_code = 55
  #
  #mynetworks = 168.100.3.0/28, 127.0.0.0/8
@@ -50,7 +48,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -682,4 +683,151 @@ sample_directory =
+@@ -682,4 +683,149 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -79,8 +77,6 @@ Index: conf/main.cf
 +masquerade_classes = envelope_sender, header_sender, header_recipient
 +masquerade_domains = 
 +masquerade_exceptions = 
-+mydestination = $myhostname, localhost.$mydomain
-+myhostname = localhost
 +mynetworks_style = subnet
 +relayhost = 
 +

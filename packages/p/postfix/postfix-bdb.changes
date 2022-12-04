@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 14 15:07:44 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- postfix default main.cf myhostname default causes conflict
+  (bsc#1192173)
+  Use the postfix build in defaults for myhostname and mydestination 
+
+-------------------------------------------------------------------
 Sun Oct  9 12:00:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 3.7.3
