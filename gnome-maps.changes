@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:08:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Fix excessive margins in place bubbles.
+  + Fix adaptive mode detection when maximized.
+  + Fix broken long-press to bring up the context menu on touch
+    screens.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 28 14:55:12 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add gnome-maps-icu72.patch: fix comparisons in time tests
