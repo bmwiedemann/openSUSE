@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-executing
-Version:        0.8.3
+Version:        1.2.0
 Release:        0
 License:        MIT
 Summary:        Get the currently executing AST node of a frame, and other information

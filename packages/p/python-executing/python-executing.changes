@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Dec  2 17:32:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.2.0
+  Merge pull request #56 from alexmojaki/init_tokens
+      Use new asttokens.ASTText
+
+- Update to 1.1.1
+  tox is breaking weirdly with too much parallelism
+
+- Update to 1.1.0
+  3.11 in setup.cfg
+
+- Update to 1.0.0
+  Merge pull request #46 from alexmojaki/checkcache
+      Always check linecache
+
+- Update to 0.10.0
+  Merge pull request #45 from alexmojaki/reload
+      Clear caches when modules are reloaded  
+
+- Update to 0.9.1
+  Merge pull request #41 from alexmojaki/node_linenos
+      Extract node_linenos to account for end_lineno and use in assert_linenos
+
+- Update to 0.9.0 
+  * Merge pull request #38 from alexmojaki/pwwang/master
+      Support STORE_ATTR and STORE_SUBSCR
+
+-------------------------------------------------------------------
 Sun Mar 27 10:48:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.3:
