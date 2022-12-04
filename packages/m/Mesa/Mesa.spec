@@ -732,7 +732,6 @@ This package contains the VK_MESA_Overlay Vulkan layer
 
 %package -n libxatracker2
 Version:        1.0.0
-Release:        0
 Summary:        XA state tracker
 Group:          System/Libraries
 
@@ -744,7 +743,6 @@ video driver.
 
 %package -n libxatracker-devel
 Version:        1.0.0
-Release:        0
 Summary:        Development files for the XA API
 Group:          Development/Libraries/C and C++
 Requires:       libxatracker2 = %{version}

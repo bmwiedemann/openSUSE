@@ -5096,4 +5096,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1036981</requestid>
   </revision>
+  <revision rev="462" vrev="334">
+    <srcmd5>5257111dd0b0f8ebdd82aba2916bcf79</srcmd5>
+    <version>unknown</version>
+    <time>1670162277</time>
+    <user>dimstar_suse</user>
+    <comment>- spefile: removed Release lines from libxatracker2, 
+  libxatracker-devel packages in the hope to have reproducibly
+  builds also on Tumbleweed (boo#1205998)</comment>
+    <requestid>1039772</requestid>
+  </revision>
 </revisionlist>

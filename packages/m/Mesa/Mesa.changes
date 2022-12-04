@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 09:53:53 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- spefile: removed Release lines from libxatracker2, 
+  libxatracker-devel packages in the hope to have reproducibly
+  builds also on Tumbleweed (boo#1205998)
+
+-------------------------------------------------------------------
 Thu Nov 17 16:32:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.2.4:
