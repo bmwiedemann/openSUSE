@@ -54,7 +54,6 @@ BuildRequires:  pkgconfig(talloc)
 %if %{with tests}
 BuildRequires:  dtach
 BuildRequires:  gdb
-BuildRequires:  libgcrypt-cavs
 BuildRequires:  man
 BuildRequires:  openssl
 BuildRequires:  valgrind-devel

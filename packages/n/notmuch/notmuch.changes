@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  3 15:05:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop build-dependency on libgcrypt-cavs: no longer existing with
+  libgcrypt 1.10.
+
+-------------------------------------------------------------------
 Mon Oct  3 15:43:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.37:

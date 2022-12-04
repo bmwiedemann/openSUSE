@@ -391,4 +391,12 @@ From the NEWS file, this version reports the following:
   * other man pages. (forwarded request 1007713 from dirkmueller)</comment>
     <requestid>1007767</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>cff36288d4e07acb0eaa1d2f797e7c39</srcmd5>
+    <version>0.37</version>
+    <time>1670162335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039914</requestid>
+  </revision>
 </revisionlist>
