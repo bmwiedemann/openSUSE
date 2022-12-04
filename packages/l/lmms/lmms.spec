@@ -22,7 +22,7 @@
 %define rpmallocrev b5bdc18051bb74a22f0bde4bcc90b01cf590b496
 %define qt5x11embedrev 022b39a1d496d72eb3e5b5188e5559f66afca957
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
-%bcond_without  wine
+%bcond_with  wine
 %endif
 %bcond_without  carla
 %bcond_without  crippled_stk
