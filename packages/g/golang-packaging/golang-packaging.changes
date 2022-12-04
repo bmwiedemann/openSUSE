@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:34:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 15.0.17:
+  * Add *.proto to the list of src files (Fixes #40)
+
+-------------------------------------------------------------------
 Thu Feb 17 00:04:46 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Define _rpmmacrodir if not present for SLE-12 compatibility

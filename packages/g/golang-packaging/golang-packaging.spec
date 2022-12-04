@@ -19,7 +19,7 @@
 %{?!_rpmmacrodir:%define _rpmmacrodir /etc/rpm}
 
 Name:           golang-packaging
-Version:        15.0.16
+Version:        15.0.17
 Release:        0
 Summary:        A toolchain to help packaging golang
 License:        GPL-3.0-only
