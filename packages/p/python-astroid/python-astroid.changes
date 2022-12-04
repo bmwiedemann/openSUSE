@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec  3 03:46:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.12.13: 
+  * Prevent returning an empty list for ``ClassDef.slots()`` when the mro list contains one class & it is not ``object``.
+  Refs PyCQA/pylint#5099
+
+  * Prevent a crash when inferring calls to ``str.format`` with inferred arguments
+  that would be invalid.
+  Closes #1856
+
+  * Infer the `length` argument of the ``random.sample`` function.
+  Refs PyCQA/pylint#7706
+
+  * Catch ``ValueError`` when indexing some builtin containers and sequences during inference.
+  Closes #1843
+
+-------------------------------------------------------------------
 Thu Oct 27 21:41:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.12.12: 
