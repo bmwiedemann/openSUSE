@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:18:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.74.3:
+  + Fix regression in type checking `g_str_equal()` from C++
+    projects (glgo#GNOME/GLib#2820).
+  + Bugs fixed:
+    - glgo#GNOME/GLib#2820 g_str_equal: New macro version breaks
+      compilation in C++ projects
+    - glgo#GNOME/GLib!3096 Backport !3094 “gstrfuncs: Fix
+      regression in C++ types accepted by g_str_equal()” to
+      glib-2-74
+- Changes from version 2.74.2:
+  + Fix GVariant type depths checks on text format variants.
+  + Fix an obscure corner case with FD handling in g_spawn_*() when
+    a process has already closed the standard I/O FDs.
+  + Fix regression in type checking on const arguments to
+    g_str_equal().
+  + Bugs fixed: glgo#GNOME/GLib#2782 GVariant type depth not
+    checked on typedecls in text format variants.
+    glgo#GNOME/GLib#2795 [regression] gnome-keyring-daemon uses
+    100% CPU with glib-2.74.1.
+    glgo#GNOME/GLib#2799 Wrong GTask tag on error return path in
+    g_proxy_resolver_lookup_async().
+    glgo#GNOME/GLib#2809 g_str_equal switched to stricter API
+    (typing).
+    glgo#GNOME/GLib!3017 Backport !3008 “gio/gdesktopappinfo: Free
+    the wrapped argv array on launch failure” to glib-2-74.
+    glgo#GNOME/GLib!3038 Backport !3035 “portal: Fix broken header
+    guard” to glib-2-74.
+    glgo#GNOME/GLib!3039 Backport !3029 “Revert "Handling collision
+    between standard i/o file descriptors and newly created ones" ”
+    to glib-2-74.
+    glgo#GNOME/GLib!3046 Backport !3045 “gproxyresolver:
+    lookup_finish() should better parallel lookup_async()” to
+    glib-2-74.
+    glgo#GNOME/GLib!3063 Backport !3061 “gvariant-parser: Speed up
+    maybe_wrapper() by an order of magnitude” to glib-2-74.
+    glgo#GNOME/GLib!3084 Backport !3082 “gstrfuncs: Fix regression
+    in types accepted by g_str_equal()” to glib-2-74.
+  + Updated translations.
+- Drop ca905744.patch and a1151bc1.patch: Fixed upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Mon Oct 31 15:17:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add a1151bc1.patch: gio/gdesktopappinfo: Free the wrapped argv

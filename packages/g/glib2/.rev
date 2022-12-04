@@ -2080,4 +2080,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>1032923</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>9d637dbae79cef49a7d04ae60df51de3</srcmd5>
+    <version>2.74.3</version>
+    <time>1670162283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039788</requestid>
+  </revision>
 </revisionlist>
