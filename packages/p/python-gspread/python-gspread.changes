@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec  3 17:33:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.7.1
+  * Fix dependencies required version by @lavigne958 in #1147
+
+- Update to version 5.7.0
+  * chore: Update outdated LICENSE year by @bluzir in #1124
+  * add dependabot to maintain dependencies by @lavigne958 in #1126
+  * improve trigger on CI by @lavigne958 in #1134
+  * Bump bandit from 1.7.0 to 1.7.4 by @dependabot in #1133
+  * cancel previous run on same ref by @lavigne958 in #1135
+  * Bump actions/setup-python from 2 to 4 by @dependabot in #1127
+  * Bump actions/checkout from 2 to 3 by @dependabot in #1128
+  * Bump black from 22.3.0 to 22.10.0 by @dependabot in #1132
+  * Bump isort from 5.9.3 to 5.10.1 by @dependabot in #1131
+  * Bump codespell from 2.1.0 to 2.2.2 by @dependabot in #1130
+  * add named tuple for DateTimeRenderOption by @lavigne958 in #1136
+  * Feature/copy cut paste by @lavigne958 in #1138
+  * isSheetHidden method added to worksheet.py by @SazidAF in #1140
+
+-------------------------------------------------------------------
 Fri Oct 28 17:30:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.6.2 (2022-10-23)
