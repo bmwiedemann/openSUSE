@@ -1,7 +1,7 @@
 #
 # spec file for package tcpreplay
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           tcpreplay
-Version:        4.3.4
+Version:        4.4.1
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
-URL:            http://tcpreplay.appneta.com/
+URL:            https://tcpreplay.appneta.com/
 Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -36,7 +36,6 @@ BuildRequires:  libnl3-devel
 %else
 # only needed for suse_version < 1130 (i.e. SLE11)
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %endif
 
 %description
@@ -52,14 +51,13 @@ supports switches, routers and IP Flow/NetFlow appliances.
 %build
 %configure \
   --enable-dynamic-link
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc docs/LICENSE
+%license docs/LICENSE
 %doc docs/CHANGELOG
 %{_bindir}/*
 %{_mandir}/man1/*

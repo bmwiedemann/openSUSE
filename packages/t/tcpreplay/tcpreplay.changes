@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul 17 16:06:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * fix support for feeding PCAP files from STDIN
+  * fix Debian/kfreebsd build
+  * fix typos
+  * safeguard against corrupt packet lengths in checksum functions
+  * fix double free in Juniper DLT
+  * fix to flows.c, fix #665
+  * update Travis CI to focal
+  * LINUX installed netmap auto detection
+  * Support for Q-in-Q VLAN tags
+  * skipbroadcast
+  * add security policy document
+  * Directories of pcaps as arguments
+  * stage PR from @halver94
+  * fix PPS calc for long-running sessions
+  * Improve SDK selection
+  * fix directory include feature
+  * mac os tests fail
+  * Revert "send_packet: Avoid clock drift
+  * mac update on multicast
+
+-------------------------------------------------------------------
 Sat May  8 14:22:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.3.4
