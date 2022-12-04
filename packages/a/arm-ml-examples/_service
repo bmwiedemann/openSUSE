@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/ARM-software/ML-examples</param>
+    <param name="scm">git</param>
+    <param name="revision">7f6276caea3995debbfbec8316e738e817b97990</param>
+    <param name="versionformat">0.0~git%cd.%h</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
