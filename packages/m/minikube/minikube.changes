@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:45:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.28.0:
+  * SECURITY WARNING: Log4j CVEs were detected in an image the efk addon uses,
+  * if you don't use the efk addon no action is required. If you use the addon
+  * we recommend running minikube addons disable efk to terminate the
+  * vulnerable pods.  See #15280 for more details.
+  * Prevent enabling efk addon due to containing Log4j CVE #15281
+  * Auto select network on QEMU #15266
+  * Implement mounting on QEMU with socket_vmnet #15108
+  * Added cloud-spanner emulator addon #15160
+  * Add minikube license command #15158
+  * Allow port forwarding on Linux with Docker Desktop #15126
+  * Add back service to mount VirtualBox host directory into the guest. #14784
+  * ISO: Add FANOTIFY_ACCESS_PERMISSIONS to kernel configs #15232
+  * When enabling addon warn if addon has no associated Github username #15081
+  * Fix detecting preload cache of size 0 as valid #15256
+  * Fix always writing to daemon by trimming docker.io from image name #14956
+  * Fix minikube tunnel repeated printout of status #14933
+  * Upgrade Portainer addon to 2.15.1 & HTTPS access enabled #15172
+  * Upgrade Headlamp addon to 0.13.0 #15186
+  * ISO: Upgrade Docker from 20.10.18 to 20.10.20 #15159
+  * KIC: Upgrade base image from ubuntu:focal-20220826 to ubuntu:focal-20220922 #15075
+  * KCI: Upgrade base image from ubuntu:focal-20220922 to ubuntu:focal-20221019 #15219
+
+-------------------------------------------------------------------
 Tue Oct 11 02:27:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - BuildRequires python3 rather than python. 
