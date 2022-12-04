@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover   3
 %define lname   libpci%{sover}
 Name:           pciutils
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later
@@ -27,16 +28,7 @@ URL:            https://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
 Source:         https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.sign
 Source2:        baselibs.conf
-# https://mj.ucw.cz/pgp.html
-#Source3:        https://mj.ucw.cz/pgpkey.txt#/%{name}.keyring
-# I checked with Martin, and this is the email I got:
-# BEGIN QUOTE
-# This is because the kernel.org archive does not have my new key yet,
-# so it refuses releases signed with the old one.
-# I plan to fix it and re-sign the release, but it will take some time.
-# END QUOTE
-# so I took the correct key from https://keys.openpgp.org/search?q=5558F9399CD7836850553C6EC28E7847ED70F82D
-Source3:        %{name}.keyring
+Source3:        https://keys.openpgp.org/vks/v1/by-fingerprint/C466A56CADA981F4297D20C31F3D0761D9B65F0B#/pciutils.keyring
 Patch0:         pciutils-3.1.9_pkgconfig.patch
 Patch1:         pciutils-endianh.patch
 Patch2:         pciutils-ocloexec.patch

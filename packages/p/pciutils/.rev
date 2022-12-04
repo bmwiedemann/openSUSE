@@ -555,4 +555,22 @@
     <comment></comment>
     <requestid>976584</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>6f78b0765bd56c50bc60cc3fba4d0fdd</srcmd5>
+    <version>3.9.0</version>
+    <time>1670162258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.0:
+  * We decode Compute Express Link (CXL) capabilities.
+  * The tree mode of lspci is now compatible with filtering options.
+  * When setpci is used with a named register, it checks whether
+    the register is present in the particular header type.
+  * Linux: The intel-conf[12] back-ends prefer to use ioperm() instead
+    of iopl() to gain access to I/O ports.
+  * mmio-conf1(-ext): Added a new back-end implementing the intel-conf1
+    interface over MMIO. This is useful on some ARM machines, but it
+    requires manual configuration of the MMIO addresses.
+  * As usually, updated pci.ids to the current snapshot of the database.</comment>
+    <requestid>1039674</requestid>
+  </revision>
 </revisionlist>

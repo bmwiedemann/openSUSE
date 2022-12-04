@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:41:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * We decode Compute Express Link (CXL) capabilities.
+  * The tree mode of lspci is now compatible with filtering options.
+  * When setpci is used with a named register, it checks whether
+    the register is present in the particular header type.
+  * Linux: The intel-conf[12] back-ends prefer to use ioperm() instead
+    of iopl() to gain access to I/O ports.
+  * mmio-conf1(-ext): Added a new back-end implementing the intel-conf1
+    interface over MMIO. This is useful on some ARM machines, but it
+    requires manual configuration of the MMIO addresses.
+  * As usually, updated pci.ids to the current snapshot of the database.
+
+-------------------------------------------------------------------
 Thu May 12 09:47:28 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Make shared library executable
