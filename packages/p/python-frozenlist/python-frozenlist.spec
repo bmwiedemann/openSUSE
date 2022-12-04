@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-frozenlist
-Version:        1.3.1
+Version:        1.3.3
 Release:        0
 Summary:        Python list-like structure which implements MutableSequence
 License:        Apache-2.0

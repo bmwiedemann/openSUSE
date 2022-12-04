@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  2 17:45:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.3.3
+  * Fixed CI runs when creating a new release, where new towncrier versions fail
+    when the current version section is already present.
+
+- Update to 1.3.2 
+  * Misc
+    Updated the CI runs to better check for test results and to avoid
+    deprecated syntax. #327
+
+-------------------------------------------------------------------
 Wed Sep 28 19:34:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 1.3.1
