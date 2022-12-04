@@ -16,15 +16,15 @@
 #
 
 
-%define somajor 27
+%define somajor 30
 Name:           meep
-Version:        1.22.0
+Version:        1.25.0
 Release:        0
 Summary:        FDTD finite-difference time-domain solver
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://meep.readthedocs.io/en/latest/
-Source0:        https://github.com/stevengj/meep/releases/download/v%{version}/meep-%{version}.tar.gz
+Source0:        https://github.com/NanoComp/meep/releases/download/v%{version}/meep-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  binutils
 BuildRequires:  blas-devel
@@ -111,7 +111,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 grep -E "flags|model name"  /proc/cpuinfo | head -n2
 # https://github.com/NanoComp/meep/issues/727
 make check TESTS=2D_convergence || export xfail=2D_convergence
-make %{_smp_mflags} check XFAIL_TESTS=${xfail}
+%make_build check XFAIL_TESTS=${xfail}
 cat tests/test-suite.log
 
 %post -n lib%{name}%{somajor} -p /sbin/ldconfig
@@ -121,7 +121,7 @@ cat tests/test-suite.log
 %files
 %doc AUTHORS NEWS.md
 %license COPYRIGHT
-%{_bindir}/*
+%{_bindir}/meep
 %{_datadir}/meep/
 
 %files -n lib%{name}%{somajor}

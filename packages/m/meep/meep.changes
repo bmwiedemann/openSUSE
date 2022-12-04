@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:41:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.25.0:
+  * Support for connectivity constraints in adjoint solver (#2207).
+  * Support for animation in topology optimization (#2186).
+  * Support for load_minus_flux in adjoint solver (#2271).
+  * Support colorbars in plot2D (#2289).
+  * Support for plot3D (#2305).
+  * Various improvements and bug fixes
+  * Support for adjoint gradients of local density of states (LDOS) (#2077).
+  * Improvements to memory usage of adjoint solver (#1855).
+  * Various bugfixes (#1959, #2044, #2066, #2073, #2079, #2091, #2095, #2114) and additional unit tests (#2032, #2049, #2053, #2076, #2082).
+  * Support for termination condition function based on the field energy in the entire cell (#2021).
+  * Support for mode decomposition for 2d cell with out of plane wavevector (#1968).
+  * Type annotations for the Simulation class (#1919).
+  * Various improvements (#1821, #1895, #2027), bug fixes (#1955, #2016), and additional documentation (#2005). 
+
+-------------------------------------------------------------------
 Mon Jul 11 10:59:42 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable '2D_convergence' test on all archs to avoid build
