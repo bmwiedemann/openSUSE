@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:01:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.3.0.post4 
+  * Build Python 3.11 wheels. No code changes.
+
+-------------------------------------------------------------------
 Wed Oct  5 00:00:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.3.0.post3 
