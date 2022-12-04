@@ -19,7 +19,7 @@
 
 %define libname libAlembic1_8
 Name:           alembic
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
