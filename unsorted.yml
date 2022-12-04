@@ -781,6 +781,7 @@ unsorted:
   - argyllcms-doc 
   - aria2-devel 
   - arkade 
+  - arm-ml-examples-data: [x86_64] 
   - arm-trusted-firmware 
   - arm-trusted-firmware-tools 
   - armadillo-devel 
@@ -2325,6 +2326,7 @@ unsorted:
   - container-support-utils 
   - containerd: [i586] 
   - containerd-ctr 
+  - containerd-devel 
   - containerized-data-importer-api: [x86_64] 
   - containerized-data-importer-cloner: [x86_64] 
   - containerized-data-importer-controller: [x86_64] 
@@ -12396,7 +12398,7 @@ unsorted:
   - libmediastreamer11 
   - libmediawiki-devel 
   - libmedimport0: [x86_64] 
-  - libmeep27 
+  - libmeep30 
   - libmemcache-devel 
   - libmemcache0 
   - libmemcached 
@@ -15546,7 +15548,6 @@ unsorted:
   - lmdb-devel 
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
-  - lmms-vst: [x86_64] 
   - lnav 
   - lndir 
   - loadlin: [i586] 
@@ -21356,6 +21357,7 @@ unsorted:
   - povray-doc 
   - power-profiles-daemon-doc 
   - powercap 
+  - powercap-devel 
   - powerd 
   - powerline 
   - powerline-docs 
