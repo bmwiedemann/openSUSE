@@ -32,7 +32,11 @@ Patch1:         p_xlib_skip_ext_env.diff
 # PATCH-FIX-UPSTREAM en-locales.diff fdo#48596 bnc#388711 -- Add missing data for more en locales
 Patch2:         en-locales.diff
 Patch3:         u_no-longer-crash-in-XVisualIDFromVisual.patch
-Patch4:         U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+Patch11:        U_0001-Add-XFreeThreads-function.patch
+Patch12:        U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+Patch13:        U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+Patch14:        U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+Patch15:        U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -136,13 +140,16 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %patch1
 %patch2
 %patch3 -p1
-%patch4 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
 
 %build
 %configure \
     --disable-silent-rules \
     --docdir=%{_docdir}/%{name} \
-    --disable-thread-safety-constructor \
     --disable-static
 make %{?_smp_mflags}
 

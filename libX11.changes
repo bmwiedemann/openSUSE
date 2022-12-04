@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  3 10:20:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_0001-Add-XFreeThreads-function.patch
+  U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
+  * adding all patches since 1.8.2 release in order to try fixing
+    regressions after introducing thread safety constructor with
+    1.8.1 (boo#1205778, boo#1205818)
+- supersedes U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+- re-enabled thread safe constructor
+
+-------------------------------------------------------------------
 Fri Dec  2 14:17:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - back to "--disable-thread-safety-constructor" for now; we see just

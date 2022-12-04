@@ -490,4 +490,21 @@ additions, including new UTF-8 compose sequences for:
   boo#1205778)</comment>
     <requestid>1039609</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>1f691bfa26e730d2d280d6acc96ebe88</srcmd5>
+    <version>1.8.2</version>
+    <time>1670162279</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-Add-XFreeThreads-function.patch
+  U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
+  * adding all patches since 1.8.2 release in order to try fixing
+    regressions after introducing thread safety constructor with
+    1.8.1 (boo#1205778, boo#1205818)
+- supersedes U_Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+- re-enabled thread safe constructor</comment>
+    <requestid>1039777</requestid>
+  </revision>
 </revisionlist>
