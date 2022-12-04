@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        43.0
+Version:        43.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

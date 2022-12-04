@@ -1500,4 +1500,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1035117</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>a992b0ac4d92defc6cf295ba452a10f4</srcmd5>
+    <version>43.1</version>
+    <time>1670162281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039786</requestid>
+  </revision>
 </revisionlist>
