@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:15:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libgdal30 dependency and recommends: the code does not
+  mention gdal in a single place. Additionally, requring a library
+  by a specific ABI bersion (30) is doomed to break.
+
+-------------------------------------------------------------------
 Thu Aug 25 03:07:37 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add test dependency and Recommends for libgdal30
