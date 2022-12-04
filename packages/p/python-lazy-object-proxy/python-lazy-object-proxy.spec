@@ -27,7 +27,7 @@
 %endif
 %global skip_python2 1
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
