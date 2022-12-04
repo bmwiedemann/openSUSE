@@ -16,8 +16,7 @@
 #
 
 
-# FIXME: need to check what should be done to enable this (at least adapt the pam files). See bnc#699999
-%define enable_split_authentication 0
+%define enable_split_authentication 1
 
 # special hack for SLE15/Leap 15: it does not yet know /usr/etc, and files in /etc should be %%config
 %if 0%{?suse_version} >= 1550
@@ -291,11 +290,6 @@ cp %{SOURCE4} %{buildroot}%{_pam_vendordir}/gdm-fingerprint
 cp %{SOURCE5} %{buildroot}%{_pam_vendordir}/gdm-smartcard
 %endif
 # The default gdm pam configuration is the one to be used as pam-password too
-%if %{enable_split_authentication}
-rm %{buildroot}%{_pam_vendordir}/gdm-password
-echo "We are not ready for this, we need to know what to put in gdm-fingerprint and gdm-smartcard pam config files."
-false
-%endif
 ln -s gdm %{buildroot}%{_pam_vendordir}/gdm-password
 ## Install other files
 # Install PostLogin script.
