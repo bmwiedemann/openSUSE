@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  2 18:07:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.8.0 
+  * Made DictStack mutable.
+
+-------------------------------------------------------------------
 Tue Nov  8 17:12:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.7.0: 
