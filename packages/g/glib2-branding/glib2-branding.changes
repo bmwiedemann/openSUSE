@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  1 15:09:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust desktop file names of preferred applications:
+  + evince.desktop => org.gnome.evince.desktop (since GNOME 3.30).
+  + eog.desktop => org.gnome.eog.desktop (since GNOME 3.36).
+  + file-roller.desktop => org.gnome.FileRoller.desktop
+- Fix name to impress: libreoffice-impress.destop.
+
+-------------------------------------------------------------------
 Mon Oct 17 16:06:38 UTC 2022 - Milachew <milachew@mail.lv>
 
 - Fix default openSUSE wallpaper is not present in dark mode (boo#1204138).

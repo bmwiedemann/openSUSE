@@ -152,4 +152,12 @@
     <comment>- Fix default openSUSE wallpaper is not present in dark mode (boo#1204138). (forwarded request 1029561 from milachew)</comment>
     <requestid>1030389</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>723fb6df5bbe38290441b24bfe897c78</srcmd5>
+    <version>15</version>
+    <time>1670162279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039784</requestid>
+  </revision>
 </revisionlist>
