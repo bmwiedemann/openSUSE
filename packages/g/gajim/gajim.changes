@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Dec  3 15:11:47 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.5.4:
+  * DataFormWidget: Set min width on right box.
+  * MUC: Add method for aborting join.
+  * Message selection: Improve wording for deselecting messages.
+  * Message selection: Improve styling.
+  * Features: Add entry for Audio Preview.
+  * Styling: Introduce URI scheme whitelisting.
+  * Message selection: Use date_time_format instead of time_format.
+  * Settings: Unify timestamp settings.
+  * Prettify display of geographical locations.
+  * ChatList: Scroll to top when switching workspace.
+  * Preferences: Improve preview settings.
+  * Chatstates: Add a timeout for the "composing" animation.
+  * Accounts window: Use equal widths for account switch label.
+  * VCardGrid: Linkify all URI-type fields iff they are valid URIs.
+  * URI parsing: Detect invalid file URIs earlier.
+  * Styling: Validate link syntax deeper and *after* parenthesis
+    correction.
+  * Add msg_log_id to live message events.
+  * Dependencies: Remove pyOpenSSL, add python-cryptography.
+  * Jingle: Remove XTLS support.
+  * Add FileTransferSelector as a central page for sending files.
+  * Block opening file:/ links by default.
+  * Control: Request history more efficiently.
+  * Preview: Handle multiple simultaneous certificate verification
+    errors.
+  * Styling: Linkify URIs only if at the start of a word.
+  * MessageInputTextView: Reintroduce gui_extension_point.
+  * GUI tests: Adapt GUI tests to Gajim changes.
+  * SSLErrorDialog: Fix test, remove OpenSSL usage.
+  * ChatFunctionPage: Don't close control on cancelling join error.
+  * SearchView: Set chat type correctly for ResultRows.
+  * Chatstates: Switch to Chatstate.ACTIVE after timeout.
+  * GroupchatRoster: Set visibility when hiding.
+  * MessageActionsBox: Reintroduce gui_extension_point.
+  * Preview: Respect MUC context for PMs.
+  * ConversationView: Fix scrollbar not being the right-most
+    widget.
+  * Preview: Stop further processing if decompression bomb
+    detected.
+  * URI parsing: More robustness with geo URIs.
+  * URI parsing: Properly unescape mailto URIs.
+  * URI parsing: Properly unescape XMPP URIs and handle unknown
+    query types.
+  * MessageInputTextView: Handle is_correcting if no contact is
+    set.
+  * Fix various issues with chat markers.
+  * Plugins: Replace usage of gui_extention_point().
+  * CSS: Fix settings related inconsistencies.
+  * CSS: Move overriding rules to bottom.
+  * Message selection: Don’t fail hard if log_line_id is None.
+  * Don’t fail when trying to reset last message id.
+
+-------------------------------------------------------------------
 Mon Oct 31 11:23:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.5.3:

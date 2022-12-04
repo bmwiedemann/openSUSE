@@ -38,7 +38,7 @@
 %define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
 %endif
 Name:           gajim
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 Requires:       %{py3pkg}-Pillow
 Requires:       %{py3pkg}-base
+Requires:       %{py3pkg}-cryptography >= 3.4.8
 Requires:       %{py3pkg}-css-parser
 Requires:       %{py3pkg}-gobject-Gdk
 Requires:       %{py3pkg}-gobject-cairo
@@ -65,7 +66,6 @@ Requires:       %{py3pkg}-gssapi
 Requires:       %{py3pkg}-keyring
 Requires:       %{py3pkg}-nbxmpp >= 3.2.5
 Requires:       %{py3pkg}-precis-i18n >= 1.0.0
-Requires:       %{py3pkg}-pyOpenSSL >= 16.2
 Requires:       %{py3pkg}-pycairo >= 1.16.0
 Requires:       ca-certificates-mozilla
 Requires:       typelib(GtkSource) = 4
