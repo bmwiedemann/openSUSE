@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 28 10:47:19 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- duktape-link-m.patch: link against libm for sin() and related functions,
+  in case the compiler with -Os creates external references. bsc#1205805
+
+-------------------------------------------------------------------
 Fri Oct 30 15:03:19 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 2.6.0:

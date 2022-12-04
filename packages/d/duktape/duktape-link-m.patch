@@ -1,0 +1,18 @@
+Index: duktape-2.6.0/Makefile.sharedlibrary
+===================================================================
+--- duktape-2.6.0.orig/Makefile.sharedlibrary
++++ duktape-2.6.0/Makefile.sharedlibrary
+@@ -63,11 +63,11 @@ all: libduktape.$(SO_REALNAME_SUFFIX) li
+ 
+ libduktape.$(SO_REALNAME_SUFFIX):
+ 	$(CC) -shared -fPIC -Wall -Wextra -Os -Wl,$(LD_SONAME_ARG),libduktape.$(SO_SONAME_SUFFIX) \
+-		-o $@ $(DUKTAPE_SRCDIR)/duktape.c
++		-o $@ $(DUKTAPE_SRCDIR)/duktape.c -lm
+ 
+ libduktaped.$(SO_REALNAME_SUFFIX):
+ 	$(CC) -shared -fPIC -g -Wall -Wextra -Os -Wl,$(LD_SONAME_ARG),libduktaped.$(SO_SONAME_SUFFIX) \
+-		-o $@ $(DUKTAPE_SRCDIR)/duktape.c
++		-o $@ $(DUKTAPE_SRCDIR)/duktape.c -lm
+ 
+ # Symlinks depend on platform conventions.
+ .PHONY: install

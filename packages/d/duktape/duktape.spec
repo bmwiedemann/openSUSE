@@ -1,7 +1,7 @@
 #
 # spec file for package duktape
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://duktape.org/
 Source0:        https://duktape.org/%{name}-%{version}.tar.xz
 Source1:        duktape.pc.in
+Patch0:         duktape-link-m.patch
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
 
@@ -55,6 +56,7 @@ application that use %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 sed -e's|@prefix@|%{_prefix}|' \
     -e's|@libdir@|%{_lib}|' \
