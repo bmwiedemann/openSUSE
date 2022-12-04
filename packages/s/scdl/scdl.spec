@@ -17,7 +17,7 @@
 
 
 Name:           scdl
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Souncloud Music Downloader
 License:        GPL-2.0-only
