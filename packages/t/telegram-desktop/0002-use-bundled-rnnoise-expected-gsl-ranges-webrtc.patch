@@ -25,10 +25,10 @@
 -        /usr/local/include
 +        ${libs_loc}/rnnoise/include
      )
--    find_library(RNNOISE_LIBRARY librnnoise.a REQUIRED)
-+    find_library(RNNOISE_LIBRARY librnnoise.a HINTS "${rnnoise_lib_loc}" REQUIRED)
+-    find_library(DESKTOP_APP_RNNOISE_LIBRARIES librnnoise.a REQUIRED)
++    find_library(DESKTOP_APP_RNNOISE_LIBRARIES librnnoise.a HINTS "${rnnoise_lib_loc}" REQUIRED)
      set_target_properties(external_rnnoise PROPERTIES
-         IMPORTED_LOCATION "${RNNOISE_LIBRARY}"
+         IMPORTED_LOCATION "${DESKTOP_APP_RNNOISE_LIBRARIES}"
      )
 --- a/cmake/external/expected/CMakeLists.txt
 +++ b/cmake/external/expected/CMakeLists.txt

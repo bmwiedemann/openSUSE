@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 29 11:49:02 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 4.3.4.
+  * Changed 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch.
+  * Added BuildRequires: Qt6Qml, Qt6Quick, Qt6QuickWidgets,
+    Qt6WaylandCompositor, qt6-widgets-private-devel and protobuf.
+  * Changed BuildRequires: from glibmm-2.4 to glibmm-2.68.
+  * Fixed OpenGL regression in Qt and language detection (video call crash).
+  * Other bug fixes and minor improvements.
+
+-------------------------------------------------------------------
 Tue Sep 20 15:44:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass -DQT_VERSION_MAJOR=6 to cmake when building Qt6 flavor: make

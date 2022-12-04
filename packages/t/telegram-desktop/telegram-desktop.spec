@@ -36,7 +36,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.1.1
+Version:        4.3.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -96,12 +96,17 @@ BuildRequires:  cmake(Qt%{qt_major_version}Core)
 BuildRequires:  cmake(Qt%{qt_major_version}DBus)
 BuildRequires:  cmake(Qt%{qt_major_version}Network)
 BuildRequires:  cmake(Qt%{qt_major_version}OpenGL)
+BuildRequires:  cmake(Qt%{qt_major_version}Qml)
+BuildRequires:  cmake(Qt%{qt_major_version}Quick)
+BuildRequires:  cmake(Qt%{qt_major_version}QuickWidgets)
 BuildRequires:  cmake(Qt%{qt_major_version}Svg)
 BuildRequires:  cmake(Qt%{qt_major_version}WaylandClient)
+BuildRequires:  cmake(Qt%{qt_major_version}WaylandCompositor)
 BuildRequires:  cmake(Qt%{qt_major_version}Widgets)
 %if %{qt_major_version} >= 6
 BuildRequires:  qt%{qt_major_version}-gui-private-devel
 BuildRequires:  qt%{qt_major_version}-waylandclient-private-devel
+BuildRequires:  qt%{qt_major_version}-widgets-private-devel
 BuildRequires:  cmake(Qt%{qt_major_version}Core5Compat)
 BuildRequires:  cmake(Qt%{qt_major_version}OpenGLWidgets)
 %else
@@ -115,7 +120,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(glibmm-2.4)
+BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -151,6 +156,7 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(opusurl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
+BuildRequires:  pkgconfig(protobuf)
 # Use system rnnoise on TW, self-build on others
 %if 0%{?suse_version} > 01500
 BuildRequires:  expect-devel
@@ -284,7 +290,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %license LICENSE LEGAL
 %doc README.md changelog.txt
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/metainfo/*.metainfo.xml
 
