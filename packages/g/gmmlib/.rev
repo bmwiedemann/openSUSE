@@ -188,4 +188,12 @@
   (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
     <requestid>1034272</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>830fc9e6064d3ffd7e8c1848037cfb51</srcmd5>
+    <version>22.3.1</version>
+    <time>1670259661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040052</requestid>
+  </revision>
 </revisionlist>
