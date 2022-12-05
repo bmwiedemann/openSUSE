@@ -15,28 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define so_version 29
 Name:           qpdf
-Version:        11.1.1
+Version:        11.2.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://qpdf.sourceforge.io/
-Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz
-Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
+Source:         https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz
+Source1:        https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
+BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-latexmk
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-Sphinx-latex
 BuildRequires:  python3-sphinx_rtd_theme
-BuildRequires:  cmake
-BuildRequires:  fdupes
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-latexmk
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 QPDF is a program that does structural, content-preserving
@@ -93,7 +94,6 @@ package.
 
 %check
 make -C build test
-
 
 %install
 %cmake_install
