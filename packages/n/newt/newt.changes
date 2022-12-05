@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:25:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.52.23:
+  * fix automatic height of menu/list in whiptail (broken in 0.52.22)
+  * fix automatic width of whiptail --yesno box
+  * fix automatic width in whiptail with unicode characters
+  * fix automatic width with whiptail --noitem and --notags options
+  * fix spacing with longer tags in whiptail
+  * avoid overlapping backtitle in whiptail with automatic height
+  * fix crash in whiptail with new libpopt
+  * switch from usleep to nanosleep (Rosen Penev)
+  * fix libnewt.pc to enable static linking (Alexey Sheplyakov)
+  * fix LDFLAGS order in snack linking (Sam James)
+  * use CFLAGS when compiling snack
+  * improve configure.ac (Thomas Kuehne)
+  * install header and libnewt.pc with shared library (Michael Olbrich)
+
+-------------------------------------------------------------------
 Wed Jun 10 07:39:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Split doc build into separate spec file

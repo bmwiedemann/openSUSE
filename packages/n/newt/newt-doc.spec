@@ -1,7 +1,7 @@
 #
 # spec file for package newt-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           newt-doc
-Version:        0.52.21
+Version:        0.52.23
 Release:        0
 Summary:        Tutorial for Nifty Erik's Windowing Toolkit
 License:        LGPL-2.1-or-later
