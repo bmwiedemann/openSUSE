@@ -406,13 +406,13 @@ Ignore: systemd-mini-container:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
 
 # Ring0 packages should not pull in 'info' - making the base VM smaller
-Ignore: libtool:info
 Ignore: autoconf:info
 Ignore: automake:info
 Ignore: binutils:info
 Ignore: bison:info
 Ignore: coreutils:info
 Ignore: cpio:info
+Ignore: dejagnu:info
 Ignore: diffutils:info
 Ignore: findutils:info
 Ignore: flex:info
@@ -424,6 +424,7 @@ Ignore: groff:info
 Ignore: gzip:info
 Ignore: help2man:info
 Ignore: libgcrypt-devel:info
+Ignore: libtool:info
 Ignore: m4:info
 Ignore: make:info
 Ignore: sed:info
