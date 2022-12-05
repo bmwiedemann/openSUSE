@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:02:50 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update to PostfixAdmin 3.3.12
+  - Update smarty to 4.3.0
+  - Fix passing a null value into htmlentities (#632)
+
+-------------------------------------------------------------------
 Tue Sep 27 21:17:36 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - Require 'php' instead of 'mod_php_any' to avoid requiring Apache (boo#1203647)

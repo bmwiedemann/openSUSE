@@ -453,4 +453,14 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
     <comment>- Require 'php' instead of 'mod_php_any' to avoid requiring Apache (boo#1203647) (forwarded request 1006529 from cboltz)</comment>
     <requestid>1006530</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e89bb23b952fecf33de48bbafc877115</srcmd5>
+    <version>3.3.12</version>
+    <time>1670259670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to PostfixAdmin 3.3.12
+  - Update smarty to 4.3.0
+  - Fix passing a null value into htmlentities (#632) (forwarded request 1040058 from cboltz)</comment>
+    <requestid>1040060</requestid>
+  </revision>
 </revisionlist>
