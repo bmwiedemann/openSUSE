@@ -17,7 +17,7 @@
 
 
 Name:           fs-uae-launcher
-Version:        3.1.66
+Version:        3.1.68
 Release:        0
 Summary:        Graphical configuration frontend and launcher for FS-UAE
 License:        GPL-2.0-or-later

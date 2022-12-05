@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 15:54:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.68:
+  * Fixes for PyQt5 errors observed on Fedora 35.
+
+-------------------------------------------------------------------
 Fri Jan 21 00:15:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.66
