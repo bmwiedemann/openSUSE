@@ -20,13 +20,13 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.19
+Version:        3.0.20
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://gdcm.sourceforge.net/wiki/index.php/Main_Page
-Source0:        https://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://sourceforge.net/projects/gdcm/files/gdcm%{203}.x/GDCM%{20}%{version}/%{name}-%{version}.tar.bz2
 Patch1:         0001-Fix-build-with-CharLS-2.1.0.patch
 Patch2:         gdcm-2.4.0-usecopyright.patch
 BuildRequires:  CharLS-devel >= 2.0
@@ -35,12 +35,6 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
-#check for Leap version = 15.4
-%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  libexpat-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libpoppler-devel
@@ -53,6 +47,12 @@ BuildRequires:  python3-devel
 BuildRequires:  swig
 BuildRequires:  cmake(DCMTK)
 BuildRequires:  pkgconfig(libopenjp2)
+#check for Leap version = 15.4
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 Grassroots DiCoM (GDCM) is a C++ library for parsing DICOM medical files.
@@ -110,9 +110,9 @@ Requires:       libgdcm%{soname}
 CSharp, C++, Java, PHP and Python example programs for GDCM.
 
 %package -n     python3-gdcm
+%{?python_provide:%python_provide python3-gdcm}
 Summary:        Python bindings for GDCM
 Group:          Productivity/Graphics/Other
-%{?python_provide:%python_provide python3-gdcm}
 Requires:       libgdcm%{soname}
 
 %description -n python3-gdcm
@@ -194,7 +194,7 @@ find %{buildroot}%{_datadir}/%{name}/ -depth -name CMakeLists* | xargs rm -rf
 %check
 # Making the tests informative only for now. Several failing tests (27/228):
 # 11,40,48,49,107-109,111-114,130-135,146,149,,151-154,157,194,216,219
-make %{?_smp_mflags} test  || exit 0
+%make_build test  || exit 0
 
 %files
 %doc AUTHORS INSTALL.txt README.md

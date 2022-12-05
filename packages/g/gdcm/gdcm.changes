@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 16:22:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.20:
+  * no upstream changelog available
+
+-------------------------------------------------------------------
 Wed Nov  2 10:49:42 UTC 2022 - Max Lin <mlin@suse.com>
 
 - use compiler gcc11-c++ to fix Leap 15.5 build
