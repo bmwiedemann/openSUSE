@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:06:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221022:
+  * This release contains source code to build libuninameslist (with
+    NamesList.txt 15.0), libuninameslist-fr (with ListeDesNoms 14.0), and
+    Python wrapper uninameslist.py (ver0.2). 
+
+-------------------------------------------------------------------
 Mon Jul 18 10:30:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220701:

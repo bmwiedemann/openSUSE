@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuninameslist
-Version:        20220701
+Version:        20221022
 Release:        0
 Summary:        A library providing Unicode character names and annotations
 License:        BSD-3-Clause
