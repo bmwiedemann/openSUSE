@@ -1,7 +1,7 @@
 #
 # spec file for package mojo-executor
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mojo-executor
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Mojo Executor
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://timmoore.github.io/mojo-executor/
-Source0:        https://github.com/TimMoore/%{name}/archive/%{name}-parent-%{version}.tar.gz
+URL:            https://mojo-executor.github.io/mojo-executor/
+Source0:        https://github.com/mojo-executor/mojo-executor/archive/refs/tags/mojo-executor-parent-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0
 Patch0:         mojo-executor-dependency.patch
 BuildRequires:  fdupes

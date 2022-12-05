@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:43:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Dependencies provided by Maven have been moved to the provided scope where
+    possible
+  * The plexus-utils dependency must remain in the compile scope due to
+    MNG-6965. It has been updated to version 3.0.24 to avoid spurious security
+    vulnerability notifications due to this dependency.
+
+-------------------------------------------------------------------
 Sun Nov 24 16:51:15 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.3.1
