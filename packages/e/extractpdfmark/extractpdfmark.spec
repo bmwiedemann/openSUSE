@@ -1,7 +1,7 @@
 #
 # spec file for package extractpdfmark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           extractpdfmark
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Helper for correctly compacting PDF files created by TeX
 License:        GPL-3.0-or-later
@@ -43,11 +43,9 @@ e.g. by removing duplicate font sets.
 %prep
 %autosetup -p1
 
-
 %build
 %configure
 %make_build
-
 
 %install
 %make_install

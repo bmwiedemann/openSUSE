@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:29:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Fix handling a named destination with an empty string name
+  * Exclude deprecated poppler-core interface for poppler 0.76+
+  * Add stable poppler-glib interface for poppler 0.78.0+
+
+-------------------------------------------------------------------
 Mon Mar  1 20:18:27 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Build against the poppler-cpp interface.
