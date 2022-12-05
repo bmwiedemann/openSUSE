@@ -232,4 +232,15 @@
   - Add some info and debug logging to commonly used funcs by @priyawadhwa in https://github.com/sigstore/rekor/pull/1106 (forwarded request 1029932 from msmeissn)</comment>
     <requestid>1029934</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9464caefa1476c7d52596c54d85aa061</srcmd5>
+    <version>1.0.1</version>
+    <time>1670259700</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.0.1 (jsc#SLE-23476):
+  - stop inserting envelope hash for intoto:0.0.2 types into index
+
+- updated to rekor 1.0.0 (jsc#SLE-23476): (forwarded request 1038886 from msmeissn)</comment>
+    <requestid>1040165</requestid>
+  </revision>
 </revisionlist>

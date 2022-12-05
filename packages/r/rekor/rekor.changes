@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 29 13:42:54 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to rekor 1.0.1 (jsc#SLE-23476):
+  - stop inserting envelope hash for intoto:0.0.2 types into index
+
+-------------------------------------------------------------------
 Wed Oct 19 08:21:25 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
-- updated to rekor 1.0.0 (sc#SLE-23476):
+- updated to rekor 1.0.0 (jsc#SLE-23476):
   - add description on /api/v1/index/retrieve endpoint by @bobcallaway in https://github.com/sigstore/rekor/pull/1073
   - Adding e2e test coverage by @cdris in https://github.com/sigstore/rekor/pull/1071
   - export rekor build/version information by @cpanato in https://github.com/sigstore/rekor/pull/1074
