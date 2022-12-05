@@ -17,7 +17,7 @@
 
 
 Name:           mbpfan
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        A simple daemon to control fan speed on all MacBook/MacBook Pros
 License:        GPL-3.0-only

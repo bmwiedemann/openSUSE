@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:19:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Improve comments in the config around {low,high,max}_temp settings, #232
+  * Moved tests to separate binary, #219 
+
+-------------------------------------------------------------------
 Thu Jan 27 23:56:25 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Remove "ProtectKernelTunables=true" systemd unit option from
