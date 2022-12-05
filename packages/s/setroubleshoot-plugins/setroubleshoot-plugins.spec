@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           setroubleshoot-plugins
-Version:        3.3.12
+Version:        3.3.14
 Release:        0
 Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later

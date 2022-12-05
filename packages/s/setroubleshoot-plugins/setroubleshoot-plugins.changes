@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 13:42:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.14:
+  * Update translations
+  * Add 'fur' into shipped locales
+  * Update translations
+
+-------------------------------------------------------------------
 Tue May 18 15:04:30 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Don't call dbus-send in %post as that would auto launch the server
