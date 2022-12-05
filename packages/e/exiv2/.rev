@@ -698,4 +698,12 @@
                     bsc#1189340, CVE-2021-34335):</comment>
     <requestid>1035724</requestid>
   </revision>
+  <revision rev="68" vrev="8">
+    <srcmd5>70798de85b217a667a27ca56295dba96</srcmd5>
+    <version>0.27.5</version>
+    <time>1670259689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1040336</requestid>
+  </revision>
 </revisionlist>
