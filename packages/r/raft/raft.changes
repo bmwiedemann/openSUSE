@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 18:35:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.16.0:
+  * support for hostnames
+  * bug fixes
+
+-------------------------------------------------------------------
 Mon Sep  5 19:20:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.15.0:

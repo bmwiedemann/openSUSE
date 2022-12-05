@@ -143,4 +143,12 @@
     <comment>raft 0.15.0 (forwarded request 1001312 from AndreasStieger)</comment>
     <requestid>1001313</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f0c9f0b84531ff0107354a025ee1ed9a</srcmd5>
+    <version>0.16.0</version>
+    <time>1670259655</time>
+    <user>dimstar_suse</user>
+    <comment>raft 0.16.0</comment>
+    <requestid>1040033</requestid>
+  </revision>
 </revisionlist>
