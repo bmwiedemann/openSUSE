@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 125
+%define poppler_sover 126
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        22.11.0
+Version:        22.12.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -44,7 +44,7 @@ Source90:       poppler.keyring
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif

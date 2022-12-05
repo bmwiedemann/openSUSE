@@ -1914,4 +1914,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1036626</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>a641f29900c360a6ff4507d7d2ff14a7</srcmd5>
+    <version>22.12.0</version>
+    <time>1670259637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040166</requestid>
+  </revision>
 </revisionlist>

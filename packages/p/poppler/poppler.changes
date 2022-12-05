@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  5 08:28:08 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- The development compiler in SLE 15 has been updated to gcc12 via
+  maintenance update. Therefore adjusting the compiler version for
+  SLE 15 in the spec file, to not build with gcc11 anymore. This
+  resolves bsc#1206019
+
+-------------------------------------------------------------------
+Sat Dec  3 20:23:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.12.0:
+  core:
+  * Form::addFontToDefaultResources: Be stubborn in finding a font we can use. Issue #1272
+
+-------------------------------------------------------------------
 Thu Nov 17 16:46:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.11.0:
