@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  3 19:55:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.10.2: 
+  Bug fixes:
+  * Fix failing tests on Windows.
+  * Type hint on root parameter on pathspec.pathspec.PathSpec.match_tree_entries().
+  * Type hint on root parameter on pathspec.pathspec.PathSpec.match_tree_files().
+  * Type hint on root parameter on pathspec.util.iter_tree_entries().
+  * Type hint on root parameter on pathspec.util.iter_tree_files().
+  * Issue #64: IndexError with my .gitignore file when trying to build a Python package.
+  Improvements:
+  * Issue #58: CI: add GitHub Actions test workflow.
+
+-------------------------------------------------------------------
 Mon Sep 12 20:36:41 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 0.10.1:
