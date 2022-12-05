@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Dec  5 11:46:40 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.23
+- UI: When trying to connect to a remote host using an incompatible
+  version, display the version it is running. This is only
+  supported as of v1.23 and newer, older versions will all report
+  as 'older than v1.23'.
+- UI: The buffer formatted allows stdint types like uint8_t or
+  int32_t.
+- All: Add an in-application API function to set a title for an
+  ongoing capture.
+- Linux: Use $HOME as a backup if getpwuid fails.
+- Vulkan/D3D12: Add a number of optimisations to D3D12 and Vulkan
+  both during capture and on replay, to improve performance. This
+  would affect programs using bindless and large number of
+  resources most.
+- Vulkan/D3D12: When doing feedback on bindless resources, if a
+  pixel shader is never invoked due to being offscreen/clipped,
+  treat that as valid and display no resources as used instead of
+  falling back to showing all resources.
+- Vulkan: Give a default name to un-named children in constant
+  buffer structs.
+- Vulkan: Add support for extensions:
+  * VK_EXT_mutable_descriptor_type
+  * VK_AMD_memory_overallocation_behavior
+  * VK_EXT_pageable_device_local_memory
+- D3D12: Relax the requirement for D3D12Core.dll to be signed by
+  microsoft on trusted captures. This works around an issue where
+  UE5.1 re-signed D3D12Core.dll as coming from epic, causing it to
+  be rejected. The signature check will still be applied on files
+  marked as untrusted e.g. downloaded from the internet.
+- OpenGL: Allow use of OVR extensions on desktop GL.
+- OpenGL: In the case that two different incompatibly-typed shader
+  variables are both bound to the same texture slot, display this
+  as an error in the pipeline state view.
+
+-------------------------------------------------------------------
 Mon Oct 10 06:59:27 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.22
