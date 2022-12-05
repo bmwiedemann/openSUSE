@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 03 15:05:11 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221203.9bb5442e:
+  * Dev: doc: ui_cluster: adapt usage text to asciidoc format
+  * Dev: behave: add assert_eq to print expected and actual values when assertions fail
+  * Fix: behave: specified destination dir explicitly when source code is copied into a container
+  * Dev: ui_context: redirect `foo -h`/`foo --help` to `help foo` (bsc#1205735)
+
+-------------------------------------------------------------------
+Fri Dec 02 09:56:49 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221202.ec9fec0e:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: behave: Add functional test based on previous changes
+  * Dev: bootstrap: remove more configuration files while removing node from cluster
+
+-------------------------------------------------------------------
 Thu Dec 01 06:28:39 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221201.bdfb0f2c:
