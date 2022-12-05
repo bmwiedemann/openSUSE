@@ -18,7 +18,7 @@
 
 %define __requires_exclude typelib\\(AppIndicator3\\)
 Name:           gammastep
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        Adjusts the color temperature of your screen according to time of day
 License:        GPL-3.0-or-later
@@ -72,13 +72,11 @@ to control color temperature.
 %prep
 %autosetup -p1 -n %{name}-v%{version}
 
-
 %build
 ./bootstrap
 %configure \
     --with-systemduserunitdir=%{_userunitdir}
 %make_build
-
 
 %install
 %make_install
@@ -88,7 +86,6 @@ sed -i 's|/env python3|/python3|' %{buildroot}%{_bindir}/%{name}-indicator
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-
 
 %post
 %systemd_user_post %{name}.service

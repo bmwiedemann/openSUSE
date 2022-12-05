@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 16:17:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.9:
+  * fix: wayland: avoid memory leak
+  * fix: wayland: recover from failure due to VT switch
+
+-------------------------------------------------------------------
 Wed Mar 16 14:36:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gobject-introspection BuildRequires: allow pygobject to
