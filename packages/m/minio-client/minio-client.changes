@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 05 10:20:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221202T234847Z:
+  * fix: IDP remove commands (#4384)
+  * Bump up madmin-go to v2 (#4382)
+  * Use NewArnFromString when parsing user-provided ARN string (#4378)
+  * Move `support logs` to `admin logs` (#4381)
+  * Add commands to set, show and remove proxy (#4375)
+  * Restructure `mc support callhome` command (#4372)
+  * top-locks: Include lock duration in --json output (#4366)
+  * fix: stat --json output for single alias (#4376)
+  * Add site resync commands (#4269)
+
+-------------------------------------------------------------------
 Fri Nov 18 13:37:54 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221117T212039Z:
