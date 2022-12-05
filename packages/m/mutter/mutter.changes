@@ -1,9 +1,9 @@
 -------------------------------------------------------------------
 Thu Nov 24 11:26:23 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
-- Fix window freezes when maximized on Xorg (boo#1205714, 
+- Fix window freezes when maximized on Xorg (boo#1205714,
   glgo#GNOME/mutter!2694, glgo#GNOME/gnome-shell#6054)
-  * add clutter-actor-Show-on-all-stage-views-when-actors-ha.patch 
+  * add clutter-actor-Show-on-all-stage-views-when-actors-ha.patch
 
 -------------------------------------------------------------------
 Fri Nov  4 17:40:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
