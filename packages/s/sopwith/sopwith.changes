@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Dec  5 14:59:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * An embarrassing bug was fixed where you could win by bombing your own
+  buildings.
+  * The ox "splat" screen now shows correctly if you are shot down and crash
+  into an ox.
+  * Bug fixes and changes in this version:
+  * libm is included as a dependency when needed (thanks slicer69).
+  * No error is printed if the config file doesn't exist (thanks Kenneth
+  Pronovici).
+  * The screen is now redrawn properly when in menus and the window is
+    uncovered
+  or resized (thanks Kenneth Pronovici).
+  * Some potential crashes were fixed when near the edges of the map.
+  * Some of the code has been refactored to centralize how levels are
+    defined. In
+  the future this will help to support custom levels.
+  * Documentation changes:
+  * Build instructions were clarified (thanks Kenneth Pronovici).
+  * Better documentation of novice mode was added to the manpage (thanks
+    Kenneth
+  Pronovici).
+  * References to the -p argument were removed from the manpage and the help
+    text
+  (thanks Kenneth Pronovici).
+  * Changes in this version:
+  * Sound has been reenabled. Sound output is now passed through a bandpass
+  filter intended to make it sound like a real PC speaker, and also plays
+  back at a much quieter volume, to be less startling to new players.
+  * Medals are now awarded to reward players (thanks creichen). The Unix
+  manpage includes some details about the medals and how to attain them.
+  * There is now a configuration screen for setting key bindings, which are
+  stored in the same configuration file as other settings.
+  * Thanks to SDL2's renderer API, the game now scales up to arbitrary
+    window
+  sizes and resolutions, and isn't limited to just 320x200 or 640x400.
+  * Network performance has been improved significantly.
+  * The Unix manpage has been significantly improved and expanded. A
+    separate
+  manpage was added for the configuration file.
+  * Sopwith now runs on macOS, and Mac .dmg packages are generated.
+  * Also now builds and runs cleanly on Haiku.
+  * The Windows .exe now has metadata and an icon.
+  * The missiles feature was changed to a hidden setting since it's not very
+  fun and doesn't really fit the game's theme.
+  * The networking option to use a "TCP loop" has now been merged with the
+  normal "connect" option, for simplicity. The target server may be a real
+  server or a TCP loop server, and the clients will autodiscover.
+  * Movement precision within the game was made significantly more precise.
+  This fixes a long-standing issue where fractional movement values were
+  just being discarded, instead of being included in calculations as they
+  should have been.
+  * Fix computer planes not shooting when tailing the player's plane
+    (creichen).
+  * Fix planes crashing into their own bullets (creichen).
+  * Fix players able to turn quickly when wounded and using the autopilot.
+  * Damaged ground no longer remains on the title screen after the game
+    ends.
+  * Network games no longer desync when only one player uses harry keys
+    mode.
+  * Big oil tank explosions now match the magnitude of the old explosions
+    from
+  Sopwith 1 and Sopwith 2. The command line option to disable them has been
+  replaced with a configuration variable.
+  * A bug was fixed where it was possible to stop the plane in midair when
+  playing the game in novice mode (thanks Alaux).
+  * Code has been ported to SDL2.
+  * Rewritten graphics code
+  * Major internal restructuring: removal of obsolete code, removal of
+  some global variables
+  * Sopwith configuration file is no longer ~/.sopwithrc on \*nix systems,
+    but
+  can now be found at ~/.local/share/SDL\ Sopwith/sopwith.cfg
+- drop sopwith-fix-string-include.patch, sopwith-gpl.diff: obsolete
+
+-------------------------------------------------------------------
 Wed Mar 25 16:08:38 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 1.8.4

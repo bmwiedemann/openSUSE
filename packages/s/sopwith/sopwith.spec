@@ -1,7 +1,7 @@
 #
 # spec file for package sopwith
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sopwith
-Version:        1.8.4
+Version:        2.1.1
 Release:        0
 Summary:        SDL port of the %{name} game
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://sdl-sopwith.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/sdl-sopwith/sdl_%{name}/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/fragglet/sdl-sopwith
+Source0:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-sopwith-%{version}/sdl-sopwith-%{version}.tar.gz
 Source1:        %{name}.png
-Patch0:         %{name}-fix-string-include.patch
-Patch5:         %{name}-gpl.diff
-
-BuildRequires:  SDL-devel
-BuildRequires:  SDL_gfx-devel
+BuildRequires:  SDL2-devel
+BuildRequires:  SDL2_gfx-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 
@@ -37,21 +34,16 @@ BuildRequires:  hicolor-icon-theme
 This is a port of the classic computer game "Sopwith" to run on modern
 computers and operating systems.
 
-
 %prep
-%setup -q
-rm -f src/font.h
-%patch0 -p1
-%patch5 -p1
-sed -i 's/\r//' doc/readme.txt
+%setup -q -n sdl-%{name}-%{version}
 
 %build
 %configure --docdir=%{_docdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-rm -rf $RPM_BUILD_ROOT%{_prefix}/share/doc/%{name}
+%make_install
+rm -rf %{buildroot}%{_datadir}/doc/sdl-%{name}
 
 cat > %{name}.desktop <<EOF
 [Desktop Entry]
@@ -69,13 +61,14 @@ desktop-file-install --delete-original \
   --add-category Game                                  \
   %{name}.desktop
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/72x72/apps/
-cp %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/72x72/apps/
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
+cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING FAQ NEWS README TODO doc/keys.txt doc/origdoc.txt doc/readme.txt
+%license COPYING.md
+%doc FAQ.md NEWS.md README.md TODO doc/origdoc.txt
 %{_bindir}/%{name}
+%{_mandir}/man5/sopwith.cfg.5*
 %{_mandir}/man6/%{name}*
 %{_datadir}/applications/*%{name}.desktop
 %{_datadir}/icons/hicolor/
