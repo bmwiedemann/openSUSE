@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  5 15:29:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * fixed an issue in preprocessing stage that caused it 
+    to ingest more bf code than there was if the bf code
+    started with <<... or >>... sequence. This lead to a
+    heap corruption with variable consequences. 
+  * added special handling for [-] and [+]
+- readd groups tag
+
+-------------------------------------------------------------------
+Thu Oct 17 14:34:20 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Sun Jun 10 09:02:36 UTC 2018 - antoine.belvire@opensuse.org
 
 - Update to 1.0.5:

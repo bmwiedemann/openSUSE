@@ -1,7 +1,7 @@
 #
 # spec file for package bff
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bff
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
-Summary:        Slightly-optimizing Brainfuck interpreter
+Summary:        Moderately-optimizing Brainfuck interpreter
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
-Url:            http://swapped.cc/bf/
+URL:            https://swapped.cc/bff
 Source:         https://github.com/apankrat/bff/archive/v%{version}/%{name}-%{version}.tar.gz
 
 %description
-Slightly-optimizing (tm) Brainfuck interpreter
+Moderately-optimizing (tm) Brainfuck interpreter
 
 %package samples
 Summary:        Samples of code written in Brainfuck
