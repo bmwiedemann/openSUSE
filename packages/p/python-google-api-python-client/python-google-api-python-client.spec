@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-google-api-python-client
-Version:        2.66.0
+Version:        2.68.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0

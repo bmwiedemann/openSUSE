@@ -567,4 +567,31 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **dataplex:** update the api (forwarded request 1039100 from glaubitz)</comment>
     <requestid>1039107</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5dda47874e84d288c07284a7caf6b335</srcmd5>
+    <version>2.68.0</version>
+    <time>1670259723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.68.0:
+  * Add support for Python 3.11 (#1973)
+  * **androidmanagement:** update the api (9b5767f)
+  * **chat:** update the api (9b5767f)
+  * **chromemanagement:** update the api (03f4753)
+  * **cloudasset:** update the api (9b5767f)
+  * **cloudsearch:** update the api (9b5767f)
+  * **composer:** update the api (9b5767f)
+  * **contactcenterinsights:** update the api (9b5767f)
+  * **container:** update the api (9b5767f)
+  * **datapipelines:** update the api  (9b5767f)
+  * **dataplex:** update the api (9b5767f)
+  * **dns:** update the api (9b5767f)
+  * **documentai:** update the api (9b5767f)
+  * **securitycenter:** update the api (9b5767f)
+  * **serviceconsumermanagement:** update the api (9b5767f)
+  * **servicenetworking:** update the api (9b5767f)
+  * **serviceusage:** update the api (9b5767f)
+  * **sqladmin:** update the api (03f4753)
+  * **testing:** update the api (9b5767f) (forwarded request 1040197 from glaubitz)</comment>
+    <requestid>1040248</requestid>
+  </revision>
 </revisionlist>

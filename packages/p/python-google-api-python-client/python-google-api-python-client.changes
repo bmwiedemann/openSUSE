@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:24:15 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.68.0:
+  * Add support for Python 3.11 (#1973)
+  * **androidmanagement:** update the api (9b5767f)
+  * **chat:** update the api (9b5767f)
+  * **chromemanagement:** update the api (03f4753)
+  * **cloudasset:** update the api (9b5767f)
+  * **cloudsearch:** update the api (9b5767f)
+  * **composer:** update the api (9b5767f)
+  * **contactcenterinsights:** update the api (9b5767f)
+  * **container:** update the api (9b5767f)
+  * **datapipelines:** update the api  (9b5767f)
+  * **dataplex:** update the api (9b5767f)
+  * **dns:** update the api (9b5767f)
+  * **documentai:** update the api (9b5767f)
+  * **securitycenter:** update the api (9b5767f)
+  * **serviceconsumermanagement:** update the api (9b5767f)
+  * **servicenetworking:** update the api (9b5767f)
+  * **serviceusage:** update the api (9b5767f)
+  * **sqladmin:** update the api (03f4753)
+  * **testing:** update the api (9b5767f)
+
+-------------------------------------------------------------------
 Wed Nov 30 12:14:13 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.66.0:
