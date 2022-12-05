@@ -29,8 +29,8 @@ Source:         https://downloads.sf.net/cdemu/vhba-module-%version.tar.xz
 Source2:        %name-preamble
 Patch1:         vhba-no-werror.diff
 Patch2:         vhba-devname.diff
+BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-syms >= 2.6.20
-BuildRequires:  modutils
 
 %{?kernel_module_package:%kernel_module_package -n vhba -p %name-preamble}
 

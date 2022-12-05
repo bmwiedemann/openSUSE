@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:47:43 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- BuildRequire %kernel_module_package_buildreqs (boo#1205149)
+
+-------------------------------------------------------------------
 Wed Jan 19 13:08:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20211218

@@ -162,4 +162,12 @@
   * Support for Linux 5.16 SCSI layer API updates</comment>
     <requestid>947427</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>79d7cad9296c4d419cdeaeecd1b90493</srcmd5>
+    <version>20211218</version>
+    <time>1670259737</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire %kernel_module_package_buildreqs (boo#1205149) (forwarded request 1040302 from lnussel)</comment>
+    <requestid>1040306</requestid>
+  </revision>
 </revisionlist>
