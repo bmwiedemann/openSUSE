@@ -16,9 +16,9 @@
 #
 
 
-%global longver 2022-06-01
+%global longver 2022-12-01
 %global shortver %(echo %{longver}|sed 's|-||g')
-%define libname libre2-9
+%define libname libre2-10
 %ifarch s390 s390x riscv64 armv6l armv6hl
 %bcond_with test
 %else
@@ -92,8 +92,6 @@ export CXX=g++-11
 
 %install
 %cmake_install
-# Install the pkgconfig file
-%make_build common-install DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
 
 %check
 # Test if created library is installed correctly

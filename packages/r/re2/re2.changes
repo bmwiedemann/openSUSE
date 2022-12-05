@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 10:53:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2022-12-01:
+  * Update to Unicode 15.0.0 data 
+  * cmake install now installs the pkg-config file
+
+-------------------------------------------------------------------
 Wed Jun  1 19:38:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2022-06-01:
