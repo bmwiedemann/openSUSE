@@ -24,7 +24,7 @@
 %endif
 %bcond_without  apparmor
 Name:           coturn
-Version:        4.5.2
+Version:        4.6.1
 Release:        0
 Summary:        TURN and STUN server for VoIP
 License:        BSD-3-Clause

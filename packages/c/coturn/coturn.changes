@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:27:54 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Version 4.6.1
+  - Fix memory corruption on socket close (#1113)
+- Version 4.6.0
+  - merge PR #967 (eakraly)
+    * fix small issues reported by cppcheck
+  - merge PR #974 (eakraly)
+    * fix long log line printing
+  - merge PR #973 (eakraly)
+    * Print turnserver version with --version
+  - merge PR #972 (eakraly)
+    * do not write outside of a buffer in admin interface
+  - merge PR #970 (eakraly)
+    * fix uclient certificate loading bug
+  - merge PR #971 (eakraly)
+    * fix duplicate TCP flag in run_tests.sh script
+    - merge PR #962 (huhaipeng)
+    * fix turn session leak
+    - merge PR #963 (eakraly)
+    * Document dependency of new-log-timestamp-format on new-log-timestamp
+    - merge PR #951 (steffen-moser)
+    * Enable compilation of coturn on Solaris 11.4
+    - merge PR #949 (eakraly)
+    * First step to re-enable compilation with OpenSSL 1.0.x
+    - merge PR #949 (eakraly)
+    * Fix cmake build on macOS
+    - merge PR #942 (eakraly)
+    * Disable SSL renegotiation
+    - merge PR #792 (yfaker)
+    * Fix user quota release #786
+    - merge PR #829 (fancycode)
+    * add more info to redis allocation status
+    - merge PR #938 (eakraly)
+    * update turnserver.conf comment
+    - merge PR #773 (haseebq)
+    * fix performance regression
+    - merge PR #773 (korayvt)
+    * add syslog facility config
+    - merge PR #897 (unicode-it)
+    * add support for dual-stack prom listener
+    - merge PR #984 (rozhuk-im)
+    * fix build with libressl 3.4.0+
+    - merge PR #926 (ggarber)
+    * add ci tests workflow
+    - merge PR #934 (neocat)
+    * show error on invalid config
+    - merge PR #787 (dsmeytis)
+    * add new prom allocations metric
+    - merge PR #869 (micmac1)
+    * don't link in libintl
+    - merge PR #895 (alexnedo)
+    * fix access to freed memory
+    - merge PR #919 (sysvinit)
+    * configurable prom username labels
+    - merge PR #840 (sysvinit)
+    * configurable prometheus listener port
+    - merge PR #870 (micmac1)
+    * fix build mariadb connector
+    - merge PR #851 (freedomben)
+    * fix README typo
+    - merge PR #877 (davel)
+    * correct doc typo
+  - merge PR #755(moznuy) and #825(by argggh)
+    * fix sqlite3_shutdown and sqlite3_config race
+  - merge PR #826 (by giavac)
+    * prom server better
+  - merge PR #684 (by brevilo)
+    * Define OPENSSL_VERSION_1_1_1 on systems where it doesn't (yet) exist
+    * Regression in 4.5.2 that cause issues in openssl version < 1.1.1.
+  - typo fix in prometheus (by fcecagno)
+  - merge PR #687 (by Wuelber Castillo)
+    * Add hash algorithm for hmackey value to redis userdb schema docs
+  - replace keep-address-family with allocation-default-address-family (keep-address-family deprecated and will be removed!!)
+  - merge PR #703 (by j4zzc4t)
+    * Restore no_stdout_log behavior
+  - merge PR #727 (by JoKoT3)
+    * Support older mysql client version in configure
+  - merge PR #721 (by KangLin)
+    * Add to support cmake
+  - merge PR #717 (by marcoschum)
+    * Fix typo in turnserver.conf
+  - merge PR #704 (by hills)
+    * Packaging scripts can miss out on these errors (exit code)
+  - merge PR #679 (by rubo77)
+    * Readme.turnserver: how to run server as a daemon
+  - merge PR #739 (by hills)
+    * SSL reload has hidden bugs which cause crashes
+  - Fix regression in PR #739
+  - Try to mitigate STUN amplification attatck
+    * Add new option --no-rfc5780 to force disable RFC8750
+    * Add new option --no-stun-backward-compatibility
+      Disable handling old STUN Binding requests and disable
+      MAPPED-ADDRESS attribute in binding response (use only the
+      XOR-MAPPED-ADDRESS)
+    * Add new option --response-origin-only-with-rfc5780
+      Add RESPONSE_ORIGIN attribute only if rfc5780 is enabled
+    * Don't send SOFTWARE attribute if --no-software-attribute set on (BREAKING CHANGE)
+  - merge PR #767 (by ggalperi)
+      * fix for log_binding (regression)
+
+-------------------------------------------------------------------
 Fri Aug 19 19:25:35 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Drop @privileged SystemCallFilter, can prevent service from starting (status=31/SYS)

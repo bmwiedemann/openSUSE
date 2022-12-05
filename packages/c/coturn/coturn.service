@@ -26,6 +26,9 @@ CPUSchedulingPolicy=other
 UMask=0007
 
 # various hardening options
+ProtectSystem=strict
+ReadWritePaths=/run/coturn /var/lib/coturn /var/log/coturn
+
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 MountFlags=private
@@ -39,15 +42,11 @@ ProtectHostname=yes
 ProtectKernelLogs=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
-ProtectSystem=full
 RemoveIPC=yes
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 RestrictNamespaces=yes
 RestrictSUIDSGID=yes
-# added automatically, for details please see
-# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 RestrictRealtime=true
-# end of automatic additions 
 SystemCallArchitectures=native
 SystemCallFilter=~@clock @debug @module @mount @raw-io @reboot @swap @resources @cpu-emulation @obsolete
 
