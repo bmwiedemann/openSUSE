@@ -53,4 +53,15 @@ Add xattr.patch to fix build with attr-2.4.48</comment>
   * Move test execution logic into Makefile to not require a separate script</comment>
     <requestid>827306</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75b05484a6ed9aa87072d87b19b0e351</srcmd5>
+    <version>0.5.11</version>
+    <time>1670259668</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.11:
+  * Improve tests.
+  * Add RPM spec file
+  * Makefile: allow to prepend flags in CXXFLAGS.</comment>
+    <requestid>1040071</requestid>
+  </revision>
 </revisionlist>

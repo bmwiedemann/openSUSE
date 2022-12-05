@@ -1,7 +1,7 @@
 #
 # spec file for package disorderfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           disorderfs
-Version:        0.5.10
+Version:        0.5.11
 Release:        0
 Summary:        FUSE filesystem that introduces non-determinism
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://packages.debian.org/sid/disorderfs
-Source0:        http://deb.debian.org/debian/pool/main/d/disorderfs/disorderfs_%{version}.orig.tar.gz
-Source1:        https://reproducible-builds.org/_lfs/releases/disorderfs/disorderfs-%{version}.tar.gz.asc
+Source0:        https://deb.debian.org/debian/pool/main/d/disorderfs/disorderfs_%{version}.orig.tar.bz2
+Source1:        https://reproducible-builds.org/_lfs/releases/disorderfs/disorderfs-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
