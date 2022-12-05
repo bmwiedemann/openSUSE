@@ -333,4 +333,14 @@
   * GetDeviceDetails(0) now uses SDL_GetDefaultAudioInfo, obsoleting our hack (forwarded request 1030904 from ukbeast89)</comment>
     <requestid>1030912</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>01bd01c4f5bf4e9cd9588bf7738e96e0</srcmd5>
+    <version>22.12</version>
+    <time>1670259707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.12:
+  * Added a Visual Studio solution for GDK support
+  * Minor cleanup in the utils/ folder (forwarded request 1040072 from dirkmueller)</comment>
+    <requestid>1040172</requestid>
+  </revision>
 </revisionlist>
