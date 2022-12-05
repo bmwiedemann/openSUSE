@@ -1,7 +1,7 @@
 #
 # spec file for package pithos
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012-2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global appid io.github.Pithos
 Name:           pithos
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Native Pandora Radio client for Linux
 License:        GPL-3.0-only

@@ -220,4 +220,20 @@
   * MPRIS: Fix media keys failing to bind on KDE (forwarded request 922770 from iDesmI)</comment>
     <requestid>923213</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a56c38c4a896f5dd5b32036ac993c0a9</srcmd5>
+    <version>1.6.0</version>
+    <time>1670259710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.0:
+  + This is a fairly small release with some UI tweaks and bug
+    fixes:
+    - Use a headerbar for main window.
+    - Add Ctrl+r shortcut to open stations popover.
+    - Remove access to host keyring when in flatpak.
+    - notification_icon: Remove dependency on libappindicator.
+      StatusNotifier is directly supported but XEmbed trays are no
+      longer supported.</comment>
+    <requestid>1040196</requestid>
+  </revision>
 </revisionlist>
