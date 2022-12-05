@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  4 22:12:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Remove unneeded variable initializations
+  * Remove unnecessary cast of XFree() argument
+  * Use C99 loop variable declarations
+  * Build xz tarballs instead of bzip2
+
+-------------------------------------------------------------------
 Thu Feb 21 11:19:32 UTC 2019 - sndirsch@suse.com
 
 - Update to version 1.0.4
