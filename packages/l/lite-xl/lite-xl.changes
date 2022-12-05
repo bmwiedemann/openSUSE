@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  5 15:02:14 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Group' specification
+
+-------------------------------------------------------------------
+Mon Dec  5 07:56:13 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Explicit to define BuildRequires pkgconfig(lua) >= 5.4
+
+-------------------------------------------------------------------
 Thu Nov 03 18:20:00 UTC 2022 - scott.bradnick@suse.com
 
 - Addressing https://github.com/lite-xl/lite-xl/issues/1185

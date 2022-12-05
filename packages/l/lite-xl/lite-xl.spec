@@ -15,19 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           lite-xl
 Version:        2.1.0+git20221103.03cc5ff
 Release:        0
 Summary:        A lightweight text editor written in Lua
+Group:          Productivity/Text/Editors
 License:        MIT
 URL:            https://github.com/lite-xl/lite-xl
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  meson
-BuildRequires:  pkgconfig(lua)
-BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(lua) >= 5.4
 BuildRequires:  pkgconfig(sdl2)
 Suggests:       %{name}-colors
 Suggests:       %{name}-plugins
