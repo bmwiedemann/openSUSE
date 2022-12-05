@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec 05 09:14:05 UTC 2022 - kastl@b1-systems.de
+
+- BuildRequires go1.19
+- Update to version 2.14.0:
+  * ci: upgrade to Go 1.19.3 & bump deps
+  * schema: add support for tmpfs.mode in mount definition (#10031)
+  * test: speed up Cucumber stop test (#10032)
+  * Make use of Containers.filter() and isService()
+  * Fix replacing "service:x" with "container:y"
+  * use StringToBool to detect COMPOSE_IGNORE_ORPHANS
+  * use api.Separator to print right image names
+  * use DistributionInspect to resolve image digest
+  * move image digests resolution to backend
+  * Broken Link fixed in compose docs
+  * add file header and cleanup profiles e2e tests
+  * add e2e tests to check profile activation via targeted service
+  * add e2e tests to check no profile usages
+  * add e2e tests using explicitly profiles
+  * pass services list to projectOrName function to add profiles for targeted services
+  * only stop services started by `up` on interruption
+  * docs: fix grammatical issues (#9997)
+  * implement support for oom_score_adj
+  * useDockerDefaultOrServicePlatform fct should return service.platform if defined and present in the build.platforms list (or if the list is empty)
+  * configure buildx for plain output if --ansi=never has been set
+  * change the default branch of the doc repository
+
+-------------------------------------------------------------------
 Thu Nov 24 15:58:43 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.13.0:

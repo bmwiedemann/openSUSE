@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           docker-compose
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0
 URL:            https://github.com/docker/compose
 Source:         compose-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.19
 Requires:       docker
 Requires:       docker-compose-switch
 
