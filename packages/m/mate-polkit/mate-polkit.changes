@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:13:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.1:
+  * Fix segfault from gdk_x11_get_server_time if not on X11 
+
+-------------------------------------------------------------------
 Fri Aug 13 03:07:47 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
