@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:49:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * Controlling the server behaviour using environment variables
+    You can also specify a custom server key via the `NFTLB_SERVER_KEY`
+    environment variable. Zero length keys will be ignored.
+
+-------------------------------------------------------------------
 Tue Sep 20 11:57:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.6
