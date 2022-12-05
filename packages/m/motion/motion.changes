@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:20:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Do not translate the ignoring IP alert message
+  * Fix processing for native_language config option
+  * Add additional sleep time for images to web stream
+  * Revise log level for some messages
+  * Update translations
+  * Update for new MariaDB pkg-config name
+  * Fix cleanup when v4l2 open fails
+  * Remove unused include module.
+  * Remove unused H264 palette code
+  * Fix sending of stale images to stream
+  * Revise path when checking headers
+  * Fix double free when using extpipe.
+  * Revise issue template
+  * Eliminate shared handle for sqlite3
+  * Fix setting of controls for v4l2 devices
+  * Fix processing for v4l2 devices when stride is not width
+  * Replace dbeventid with eventid
+  * Fix parsing of PGM files
+  * Fix scale of text when in debug mode
+  * Fix processing when camera is not initially available
+  * Fix double free when camera is lost frequently.
+  * Fix close on exec methods
+  * Fix processing for preferred codec with new ffmpeg versions
+  * Fix snapshots when using netcam high
+  * Enhance netcam processing for single jpg pages
+  * Update instructions on using libcamerify for pi camera
+  * Update instructions on maximum number of cameras shown on web control page.
+  * Expand buffer for log messages
+  * Update japanese translations.
+  * Fix extra event triggered upon quit
+
+-------------------------------------------------------------------
 Sun Nov 28 13:15:58 UTC 2021 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to 4.4.0:

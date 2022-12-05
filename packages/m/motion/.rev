@@ -158,4 +158,41 @@
     <comment></comment>
     <requestid>934871</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>405c1d061c79f194ddc95e837c106610</srcmd5>
+    <version>4.5.0</version>
+    <time>1670259704</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.0:
+  * Do not translate the ignoring IP alert message
+  * Fix processing for native_language config option
+  * Add additional sleep time for images to web stream
+  * Revise log level for some messages
+  * Update translations
+  * Update for new MariaDB pkg-config name
+  * Fix cleanup when v4l2 open fails
+  * Remove unused include module.
+  * Remove unused H264 palette code
+  * Fix sending of stale images to stream
+  * Revise path when checking headers
+  * Fix double free when using extpipe.
+  * Revise issue template
+  * Eliminate shared handle for sqlite3
+  * Fix setting of controls for v4l2 devices
+  * Fix processing for v4l2 devices when stride is not width
+  * Replace dbeventid with eventid
+  * Fix parsing of PGM files
+  * Fix scale of text when in debug mode
+  * Fix processing when camera is not initially available
+  * Fix double free when camera is lost frequently.
+  * Fix close on exec methods
+  * Fix processing for preferred codec with new ffmpeg versions
+  * Fix snapshots when using netcam high
+  * Enhance netcam processing for single jpg pages
+  * Update instructions on using libcamerify for pi camera
+  * Update instructions on maximum number of cameras shown on web control page.
+  * Expand buffer for log messages
+  * Update japanese translations. (forwarded request 1039989 from dirkmueller)</comment>
+    <requestid>1040170</requestid>
+  </revision>
 </revisionlist>
