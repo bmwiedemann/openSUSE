@@ -17,18 +17,17 @@
 
 
 Name:           gzdoom
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
 Group:          Amusements/Games/3D/Shoot
 URL:            https://zdoom.org/
 
-#Git-Clone:     https://github.com/coelckers/gzdoom
-Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
+#Git-Clone:     https://github.com/zdoom/gzdoom
+Source:         https://github.com/zdoom/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
-Patch3:         0001-build-unbreak-compilation-on-Linux.patch
 Patch5:         gzdoom-vulkan.patch
 Patch6:         gzdoom-discord.patch
 Patch8:         0001-removed-some-32bit-only-CMake-code.patch
@@ -51,7 +50,7 @@ BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1550
 BuildRequires:  glslang-devel >= 11.10
-BuildRequires:  pkgconfig(vulkan) >= 1.2.162
+BuildRequires:  pkgconfig(vulkan) >= 1.2.189
 %else
 Provides:       bundled(glslang) = 11.10.0
 Provides:       bundled(vulkan) = 1.2.189.1
@@ -61,7 +60,7 @@ Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
 Provides:       bundled(gdtoa)
 Provides:       bundled(re2c) = 0.16.0
-Provides:       bundled(xbrz) = 1.7
+Provides:       bundled(xbrz) = 1.8
 
 %description
 GZDoom is a port (a modification) of the original Doom source code, featuring:

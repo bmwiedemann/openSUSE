@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  4 15:39:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.10.0
+  * Map<K,V> and MapIterator<K,V> for ZScript
+  * Quaternion support for model rotations
+  * Improved IQM support
+- Delete 0001-build-unbreak-compilation-on-Linux.patch (merged)
+
+-------------------------------------------------------------------
 Sun Nov  6 23:02:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update description for the removal of SoftPoly

@@ -231,4 +231,12 @@ and that one is GPL3.</comment>
     <comment>- Update description for the removal of SoftPoly</comment>
     <requestid>1033886</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>35dc5fa8823052edf9798cd5b8f883c4</srcmd5>
+    <version>4.10.0</version>
+    <time>1670259650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.10.0</comment>
+    <requestid>1040019</requestid>
+  </revision>
 </revisionlist>
