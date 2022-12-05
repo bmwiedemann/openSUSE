@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 26 08:52:37 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.22 development release
+  - 32-on-64 thunks for both Vulkan and OpenGL.
+  - OpenLDAP library bundled and built as PE.
+  - Support for the RAW print processor in WinPrint.
+  - More progress on the long types printf format conversion.
+  - Various bug fixes.
+- update staging to 7.22 release
+- mark bundled libraries with Provides: bundled(name) = version
+
+-------------------------------------------------------------------
 Sat Nov 19 14:55:39 UTC 2022 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Reenable parallel build again as the buildsystem got fixed

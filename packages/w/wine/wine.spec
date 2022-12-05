@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package wine
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 7.21
-Version:        7.21
+%define realver 7.22
+Version:        7.22
 Release:        0
 
 %if "%{flavor}" != ""
@@ -164,7 +164,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 7.21
+%define staging_version 7.22
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -179,6 +179,21 @@ BuildRequires:  libOSMesa-devel
 BuildRequires:  pkgconfig(dri2proto)
 Source110:      wine-d3d9-patches-%{nine_version}.tar.xz
 %endif
+# wine bundles multiple unix libraries to be able to build PE files without dependencies
+# current versions are from 7.22 (update this if you update the versions below):
+Provides:       bundled(FAudio) = 22.11.0
+Provides:       bundled(jpeg) = 9e
+Provides:       bundled(libgsm) = 1.10.19
+Provides:       bundled(libjxr) = 1.1
+Provides:       bundled(liblcms2) = 2.14
+Provides:       bundled(libpng) = 1.6.38
+Provides:       bundled(libxml2) = 2.10.3
+Provides:       bundled(libxslt) = 1.1.37
+Provides:       bundled(mpg123) = 1.30.2
+Provides:       bundled(openldap2) = 2.5.13
+Provides:       bundled(tiff) = 4.4.0
+Provides:       bundled(vkd3d) = 1.5
+Provides:       bundled(zlib) = 1.2.13
 
 %description
 Wine is a compatibility layer capable of running Windows

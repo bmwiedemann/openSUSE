@@ -4619,4 +4619,12 @@
     <comment>- Reenable parallel build again as the buildsystem got fixed (forwarded request 1036812 from tobijk)</comment>
     <requestid>1036815</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>ad6557d9e8717dbb433f5068d7b2702c</srcmd5>
+    <version>7.22</version>
+    <time>1670259718</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1040232</requestid>
+  </revision>
 </revisionlist>
