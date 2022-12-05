@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 19:33:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.1:
+  * Fix SIGSEGV when an errors occurs in rpm_get_file_info (RhBug:1968594)
+  * For rpms without any files return file count 0 (RhBug:1968594)
+
+-------------------------------------------------------------------
 Wed Apr 27 12:33:06 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Do not use valgrind due to false positive error.

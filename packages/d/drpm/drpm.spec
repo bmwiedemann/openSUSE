@@ -36,14 +36,13 @@
 %endif
 
 Name:           drpm
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        A small library for fetching information from DeltaRPM packages
 License:        LGPL-2.1-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.bz2
-
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
