@@ -66,4 +66,13 @@
   - Support REBOOT_CMD=&quot;none&quot;</comment>
     <requestid>1037918</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e703496667c3d8bf3c64407c0d9bb3e7</srcmd5>
+    <version>1.6</version>
+    <time>1670259735</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6
+  - restart systemd if necessary</comment>
+    <requestid>1040294</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Updates the system regular to stay current and safe
 License:        GPL-2.0-or-later
