@@ -22,7 +22,7 @@
 %bcond_without system_debugedit
 %endif
 Name:           flatpak-builder
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later

@@ -267,4 +267,17 @@
     <comment> (forwarded request 971110 from dimstar)</comment>
     <requestid>973145</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fc662fbccd20a82e3993764289e82e9d</srcmd5>
+    <version>1.2.3</version>
+    <time>1670259710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  + This is a minor bug-fix release that fixes cloning `file://`
+    URIs with git 2.38.1 or newer.
+
+  + Add BuildRequires debugedit.
+  + Add Requires debugedit.</comment>
+    <requestid>1040200</requestid>
+  </revision>
 </revisionlist>

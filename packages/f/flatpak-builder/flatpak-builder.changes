@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  4 15:44:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.2.3:
+  + This is a minor bug-fix release that fixes cloning `file://`
+    URIs with git 2.38.1 or newer.
+
+-------------------------------------------------------------------
 Thu Apr 14 10:34:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use system debugedit on TW
-  * Add BuildRequires debugedit
-  * Add Requires debugedit
+  + Add BuildRequires debugedit.
+  + Add Requires debugedit.
 
 -------------------------------------------------------------------
 Fri Apr  8 12:03:24 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
