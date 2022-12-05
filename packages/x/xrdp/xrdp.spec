@@ -111,8 +111,8 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
-%patch15 -p1
 %endif
+%patch15 -p1
 
 %build
 sh ./bootstrap
