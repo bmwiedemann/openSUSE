@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  4 22:08:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.25:
+  * detect AWS arm virtual instance as kvm
+  * google-cloud: Print "kvm" fact on aarch64 instances
+  * illumos-lx: Fix test so it works under virtualization
+  * Detect Illumos (SmartOS/OmniOS) LX virtualization
+  * Add detection of Red Hat's hypervisor
+  * Display kvm/qemu fact for Nutanix AHV
+  * Add support for Alibaba Cloud Linux
+  * Add support for VMware ESXi on ARM
+  * aws: Match multi-digit version number in BIOS information
+
+-------------------------------------------------------------------
 Wed May 12 22:07:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21:

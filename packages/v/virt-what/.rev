@@ -65,4 +65,21 @@
     <comment></comment>
     <requestid>920332</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7dd40e0e38d9f425e2881872c6684dbb</srcmd5>
+    <version>1.25</version>
+    <time>1670259672</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.25:
+  * detect AWS arm virtual instance as kvm
+  * google-cloud: Print &quot;kvm&quot; fact on aarch64 instances
+  * illumos-lx: Fix test so it works under virtualization
+  * Detect Illumos (SmartOS/OmniOS) LX virtualization
+  * Add detection of Red Hat's hypervisor
+  * Display kvm/qemu fact for Nutanix AHV
+  * Add support for Alibaba Cloud Linux
+  * Add support for VMware ESXi on ARM
+  * aws: Match multi-digit version number in BIOS information</comment>
+    <requestid>1040083</requestid>
+  </revision>
 </revisionlist>
