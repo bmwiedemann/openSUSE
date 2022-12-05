@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  3 13:38:24 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 1.7.3
+  * ualpn.c: fix build with mbedtls 2.x ￼…
+  * LibreSSL > 3.5.0 has ASN1_TIME_diff()
+  * Enable --must-staple support with LibreSSL > 3.5.0 ￼…
+  * Add Unix philosophy link to README.md
+  * Compatibility wth LibreSSL
+
+-------------------------------------------------------------------
 Mon Aug  8 08:10:43 UTC 2022 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Update to version 1.7.2
