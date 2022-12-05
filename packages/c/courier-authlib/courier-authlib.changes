@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  4 19:34:09 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.72.0:
+  * Switch to libidn2.
+  * Debian/Ubuntu: update lintian overrides
+
+- update to 0.71.6:
+  * Adjust deb packaging. Check /etc/lsb-release and include the
+    distribution release in the deb package version, to faciliate
+    updating to the same version of the package in an updated release.
+  * Fix build dependencies.
+  * Remove obsolete setting from authpgsqlrc, update connection string
+    template.
+
+-------------------------------------------------------------------
 Sat Aug 20 18:44:48 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.71.5:

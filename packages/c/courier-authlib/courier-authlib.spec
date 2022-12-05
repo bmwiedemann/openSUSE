@@ -17,7 +17,7 @@
 
 
 Name:           courier-authlib
-Version:        0.71.5
+Version:        0.72.0
 Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception
@@ -41,6 +41,7 @@ BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel >= 9.1
+BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(systemd)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
@@ -58,6 +59,12 @@ other Courier applications.
 Summary:        Development libraries for the Courier authentication library
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
+Requires:       %{name}-ldap = %{version}
+Requires:       %{name}-mysql = %{version}
+Requires:       %{name}-pgsql = %{version}
+Requires:       %{name}-pipe = %{version}
+Requires:       %{name}-sqlite = %{version}
+Requires:       %{name}-userdb = %{version}
 
 %description devel
 This package contains the development libraries and files needed to
