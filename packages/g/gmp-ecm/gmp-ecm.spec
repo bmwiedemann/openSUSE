@@ -1,7 +1,7 @@
 #
 # spec file for package gmp-ecm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define so_version 1
 Name:           gmp-ecm
-Version:        7.0.4
+Version:        7.0.5
 Release:        0
 Summary:        Elliptic Curve Method for Integer Factorization
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Scientific/Math
-%define so_version 1
-Source0:        https://gforge.inria.fr/frs/download.php/36224/ecm-%{version}.tar.gz
+URL:            https://gitlab.inria.fr/zimmerma/ecm
+Source0:        https://gitlab.inria.fr/zimmerma/ecm/uploads/89f6f0d65d3e980cef33dc922004e4b2/ecm-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ecm-auxi.c.patch -- Add missing stdlib.h include
 BuildRequires:  gmp-devel >= 5.0.0
 BuildRequires:  m4
-Url:            https://gforge.inria.fr/projects/ecm
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 GMP-ECM reads the numbers to be factored from stdin (one number on each
@@ -46,9 +45,9 @@ Library for ecm. To use the library, you need to install ecm-devel, include
 "ecm.h" in your source file and link with -lecm.
 
 %package devel
-Requires:       libecm%{so_version} = %{version}
 Summary:        Development files for the gmp-ecm package
 Group:          Development/Libraries/C and C++
+Requires:       libecm%{so_version} = %{version}
 
 %description devel
 This package contains header files required when building applications which
@@ -66,33 +65,30 @@ use the libecm library.
     --enable-shared \
     --disable-static
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-%makeinstall
+%make_install
 
 rm %{buildroot}/%{_libdir}/libecm.la
 
 %check
-make check
+%make_build check
 
 %post -n libecm%{so_version} -p /sbin/ldconfig
-
 %postun -n libecm%{so_version} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING COPYING.LIB NEWS README README.lib
+%license COPYING COPYING.LIB
+%doc AUTHORS NEWS README README.lib
 %{_bindir}/ecm
-%{_mandir}/man1/ecm.1.gz
+%{_mandir}/man1/ecm.1%{?ext_man}
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/ecm.h
 %{_libdir}/libecm.so
 
 %files -n libecm%{so_version}
-%defattr(-,root,root,-)
 %{_libdir}/libecm.so.*
 
 %changelog

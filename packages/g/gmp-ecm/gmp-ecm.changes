@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 20:27:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.5:
+  * migration to gitlab
+  * https://gitlab.inria.fr/zimmerma/ecm/-/raw/git-7.0.5/ChangeLog 
+
+-------------------------------------------------------------------
 Fri Jul 14 12:03:39 UTC 2017 - jengelh@inai.de
 
 - Fix RPM groups, summaries, and the condition for SSE2 disabling.
