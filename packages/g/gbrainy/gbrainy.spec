@@ -17,7 +17,7 @@
 
 
 Name:           gbrainy
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        A brain teaser game and trainer
 License:        GPL-2.0-or-later

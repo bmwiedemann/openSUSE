@@ -525,4 +525,15 @@ The update addresses several other things and was much easier to fix for mono 3.
     <comment>- Update to version 2.4.4: (forwarded request 978054 from dimstar)</comment>
     <requestid>978057</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>24a63256653d252062b9e4c6e73d2ed5</srcmd5>
+    <version>2.4.5</version>
+    <time>1670259702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.5:
+  + PDF save dialog box fixes.
+  + Compability with gtk-sharp3-3.22.
+  + Update translations.</comment>
+    <requestid>1040173</requestid>
+  </revision>
 </revisionlist>

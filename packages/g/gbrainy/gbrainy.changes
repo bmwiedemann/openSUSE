@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:55:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.4.5:
+  + PDF save dialog box fixes.
+  + Compability with gtk-sharp3-3.22.
+  + Update translations.
+
+-------------------------------------------------------------------
 Thu May 19 06:52:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.4.4:
