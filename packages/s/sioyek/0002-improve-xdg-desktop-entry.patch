@@ -1,0 +1,22 @@
+From 58295fe4b70efcf96644f818d1c6656ea05cd311 Mon Sep 17 00:00:00 2001
+From: Gabriel Arazas <christiangabrielarazas@gmail.com>
+Date: Thu, 29 Sep 2022 20:28:16 +0800
+Subject: [PATCH] Improve XDG desktop entry
+
+---
+ resources/sioyek.desktop | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/resources/sioyek.desktop b/resources/sioyek.desktop
+index cf8b6b242..9115b520a 100644
+--- a/resources/sioyek.desktop
++++ b/resources/sioyek.desktop
+@@ -5,4 +5,6 @@ MimeType=application/pdf;
+ Name=Sioyek
+ Exec=sioyek
+ Icon=sioyek-icon-linux
+-Categories=Development;
++Comment=PDF viewer for reading research papers and technical books
++Categories=Development;Viewer;
++Keywords=pdf;viewer;reader;research
+

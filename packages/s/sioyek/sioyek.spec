@@ -26,8 +26,11 @@ URL:            https://github.com/ahrm/sioyek
 Source0:        https://github.com/ahrm/sioyek/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0000-mupdf-1.20-compat-issue.patch
 Patch1:         0001-parse-mupdf-1.20-links.patch
-BuildRequires:  c++_compiler
+Patch2:         0002-improve-xdg-desktop-entry.patch
+Patch3:         0002-fix-desktop-file-error.patch
+Patch4:         0002-improve-desktop-file.patch
 BuildRequires:  binutils
+BuildRequires:  c++_compiler
 BuildRequires:  libQt5Gui-devel
 BuildRequires:  libQt5OpenGL-devel
 BuildRequires:  libQt5OpenGLExtensions-devel-static
@@ -91,4 +94,3 @@ install -Dm644 tutorial.pdf -t "%{buildroot}%{_datadir}/%{name}/"
 %doc README.md
 
 %changelog
-

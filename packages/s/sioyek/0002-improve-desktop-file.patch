@@ -1,0 +1,38 @@
+From 9351b0b8c81d9c7312c18acaaaddafcd0d43e4e7 Mon Sep 17 00:00:00 2001
+From: Raffaele Mancuso <54762742+raffaem@users.noreply.github.com>
+Date: Sun, 9 Oct 2022 11:24:16 +0200
+Subject: [PATCH] Improve desktop file
+
+TryExec allows the system to check if the executable exists.
+The %U in Exec is needed for nautilus to pass the file to be opened to
+sioyek. Otherwise it's not even show in the "Open with" dialog.
+StartupNotify allow different windows of sioyek to be collected under
+the same icon in the docker.
+---
+ resources/sioyek.desktop | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/resources/sioyek.desktop b/resources/sioyek.desktop
+index 737738845..917fd62c0 100644
+--- a/resources/sioyek.desktop
++++ b/resources/sioyek.desktop
+@@ -1,10 +1,12 @@
+ [Desktop Entry]
+-Version=1.0
+-Type=Application
+-MimeType=application/pdf;
+ Name=Sioyek
+-Exec=sioyek
+-Icon=sioyek-icon-linux
+ Comment=PDF viewer for reading research papers and technical books
+-Categories=Development;Viewer;
+ Keywords=pdf;viewer;reader;research;
++TryExec=sioyek
++Exec=sioyek %U
++StartupNotify=true
++Terminal=false
++Type=Application
++Icon=sioyek-icon-linux
++Categories=Development;Viewer;
++MimeType=application/pdf;
+
