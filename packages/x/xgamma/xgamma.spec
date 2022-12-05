@@ -17,14 +17,14 @@
 
 
 Name:           xgamma
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Utility to alter a monitor's gamma correction through the X server
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2.sig
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        xgamma.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -49,7 +49,7 @@ monitor via the X video mode extension (XFree86-VidModeExtension).
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_bindir}/xgamma
 %{_mandir}/man1/xgamma.1%{?ext_man}
 

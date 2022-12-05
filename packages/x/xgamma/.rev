@@ -55,4 +55,21 @@
     <comment></comment>
     <requestid>998309</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>499644f122f6edafefdbd16c43aa53e9</srcmd5>
+    <version>1.0.7</version>
+    <time>1670259663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Resolve -Wdouble-promotion warnings from clang
+  * Refactor to reduce code duplication
+  * Use strtof() if available, instead of casting atof() to float
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1040080</requestid>
+  </revision>
 </revisionlist>
