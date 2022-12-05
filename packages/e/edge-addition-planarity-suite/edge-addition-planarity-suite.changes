@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  4 20:46:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- install license
+- move docs to main package
+
+-------------------------------------------------------------------
+Thu Jun 16 23:45:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.2.0
+  * Manpage updates
+
+-------------------------------------------------------------------
 Sat Sep 19 10:42:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 3.0.1.0) for build.opensuse.org

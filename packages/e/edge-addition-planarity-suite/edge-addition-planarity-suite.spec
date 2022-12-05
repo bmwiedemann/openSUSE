@@ -1,7 +1,7 @@
 #
 # spec file for package edge-addition-planarity-suite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname   libplanarity0
 Name:           edge-addition-planarity-suite
-Version:        3.0.1.0
+Version:        3.0.2.0
 Release:        0
 Summary:        Edge Addition Planarity Suite
 License:        GPL-3.0-or-later
@@ -59,7 +59,7 @@ This subpackage provides the development headers for it.
 
 %build
 autoreconf -fi
-%configure --disable-static
+%configure --disable-static --docdir="%_defaultdocdir/%name"
 %make_build
 
 %install
@@ -73,10 +73,13 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files
+%doc README.md
+%doc %_defaultdocdir/%name
 %_bindir/planarity
 %_mandir/man1/planarity.1*
 
 %files -n %lname
+%license LICENSE.TXT
 %_libdir/libplanarity.so.0*
 
 %files devel
