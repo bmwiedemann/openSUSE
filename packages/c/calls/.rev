@@ -7,4 +7,12 @@
     <comment>New package</comment>
     <requestid>1005054</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17af8f8565347eebf534da71f55dd89b</srcmd5>
+    <version>43.2</version>
+    <time>1670259739</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1040309 from iznogood)</comment>
+    <requestid>1040322</requestid>
+  </revision>
 </revisionlist>
