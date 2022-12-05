@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:13:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.22.27:
+  + theme: qsvg: Flush surface before drawing to it with qt.
+  + game: Provide a clean environment for each game.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 14 15:55:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.22.26:
