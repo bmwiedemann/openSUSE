@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 13:49:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * tll_sort() - sorts the list in O(n log(n)) time 
+
+-------------------------------------------------------------------
 Fri Jun 11 09:25:44 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.0.5

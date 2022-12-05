@@ -1,7 +1,7 @@
 #
 # spec file for package tllist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tllist
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        A C header file only implementation of a typed linked list
 License:        MIT
