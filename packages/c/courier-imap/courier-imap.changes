@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  4 20:16:13 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.0
+  * Switch to libidn2.
+  * Debian/Ubuntu: update lintian overrides
+  * make install: replace absolute links with relative links.
+
+- update to 5.1.9
+  * Adjust deb packaging. Check /etc/lsb-release and include the
+    distribution release in the deb package version, to faciliate
+    updating to the same version of the package in an updated release.
+  * Fix build dependencies.
+
+-------------------------------------------------------------------
 Sat Aug 20 19:07:14 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.1.8
