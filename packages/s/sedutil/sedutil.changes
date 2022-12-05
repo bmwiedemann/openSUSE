@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:16:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.0:
+  * Bug fixes and Windows Ryzen Fix.
+  * checkpoint: before new Identify.
+  * Fix typos for PSID revert text
+  * Fix PIN dump in --query output 
+  * Minor updates to linuxpba.
+  * Disable acpi & apic for better compatibility.
+  * Add cherry keyboard support.
+
+-------------------------------------------------------------------
 Wed Aug 19 09:48:57 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

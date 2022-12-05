@@ -1,7 +1,7 @@
 #
 # spec file for package sedutil
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,21 @@
 
 %define _dracutmodulesdir %{_prefix}/lib/dracut/modules.d
 Name:           sedutil
-Version:        1.15.1
+Version:        1.20.0
 Release:        0
 Summary:        Tools to manage the activation and use of self encrypting drives
 License:        GPL-3.0-or-later
 Group:          System/Management
-Url:            https://github.com/Drive-Trust-Alliance/sedutil/wiki
+URL:            https://github.com/Drive-Trust-Alliance/sedutil/wiki
 Source0:        https://github.com/Drive-Trust-Alliance/%{name}/archive/%{version}.tar.gz
 Source1:        module-setup.sh
 Source2:        linuxpba.sh
 Source3:        sedutil-pba.pl
+Patch0:         kernel_nvme_header.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Patch:          kernel_nvme_header.patch
 ExclusiveArch:  x86_64
 
 %description
@@ -47,15 +46,15 @@ the PBA image itself.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-%make_install 
+%make_install
 
 install -m 0755 -d %{buildroot}%{_dracutmodulesdir}/00sedutil/
 install -m 0755 %{SOURCE1} %{buildroot}%{_dracutmodulesdir}/00sedutil/
@@ -63,10 +62,9 @@ install -m 0755 %{SOURCE2} %{buildroot}%{_dracutmodulesdir}/00sedutil/
 install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/
 
 %files
-%defattr(-,root,root)
 %doc README.md Common/Copyright.txt Common/ReadMe.txt linux/PSIDRevert_LINUX.txt
 %license Common/LICENSE.txt
-%{_mandir}/man8/sedutil-cli.8*
+%{_mandir}/man8/sedutil-cli.8%{?ext_man}
 %{_sbindir}/sedutil-cli
 %{_sbindir}/linuxpba
 %dir %{_prefix}/lib/dracut
