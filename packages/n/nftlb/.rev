@@ -15,4 +15,15 @@
     <comment>- Update to release 1.0.6</comment>
     <requestid>1004948</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b682a99b2b88cc2505a83798ba7bd38</srcmd5>
+    <version>1.0.7</version>
+    <time>1670259652</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * Controlling the server behaviour using environment variables
+    You can also specify a custom server key via the `NFTLB_SERVER_KEY`
+    environment variable. Zero length keys will be ignored. (forwarded request 1040003 from dirkmueller)</comment>
+    <requestid>1040011</requestid>
+  </revision>
 </revisionlist>
