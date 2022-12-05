@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:24:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * The project license has been upgraded to GPLv3+.
+  * Added a tool to extract Sanitarium resource packs.
+  * Removed support for compressing BUN files.
+  * Added Grim engine tools.
+
+-------------------------------------------------------------------
 Sat Dec 11 13:21:35 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.5.0.

@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           scummvm-tools
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        ScummVM-related tools
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 URL:            https://www.scummvm.org
 Source0:        https://downloads.scummvm.org/frs/scummvm-tools/%{version}/scummvm-tools-%{version}.tar.xz
 Source1:        %{name}.desktop
