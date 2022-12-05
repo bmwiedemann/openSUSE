@@ -7,4 +7,13 @@
     <comment> </comment>
     <requestid>998204</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>411bc499e30ad06a78c41d99b197bf80</srcmd5>
+    <version>22.10.31</version>
+    <time>1670259734</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.10.31:
+  * translation updates (forwarded request 1040287 from dirkmueller)</comment>
+    <requestid>1040300</requestid>
+  </revision>
 </revisionlist>

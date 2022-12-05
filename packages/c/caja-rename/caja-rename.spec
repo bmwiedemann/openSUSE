@@ -32,7 +32,7 @@ done \
 %endif
 %define _name   cajarename
 Name:           caja-rename
-Version:        22.6.29
+Version:        22.10.31
 Release:        0
 Summary:        Batch renaming extension for Caja
 License:        GPL-3.0-or-later
