@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:05:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4:
+  * Add threaded input handling
+  * Fix so that is it possible to quit tio in tio etc.
+  * Add key command to toggle log on/off
+
+-------------------------------------------------------------------
 Sun Nov  6 19:04:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3

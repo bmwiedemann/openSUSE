@@ -17,7 +17,7 @@
 
 
 Name:           tio
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Hardware/Modem
 URL:            https://tio.github.io/
 Source:         https://github.com/tio/tio/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inih)
 
 %description
