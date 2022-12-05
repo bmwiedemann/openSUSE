@@ -15,4 +15,19 @@
     <comment>- Add missing boost require</comment>
     <requestid>1001741</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa73f56bf9c70978d1247a2cbb56aaa1</srcmd5>
+    <version>4.1.3</version>
+    <time>1670259648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.3:
+  * Fix compile error that direct inclusion of chrono with `MSGPACK_NO_BOOST`
+  * Fix noexcept on zone (#1030)
+  * Improve cmake support (#1028, #1032)
+  * Improve CI (#1023)
+  * Improve supporting platform (#1021)
+  * Refine double/float packing (#1018)
+  * Refine include files dependency (#1011) (forwarded request 1039995 from dirkmueller)</comment>
+    <requestid>1040010</requestid>
+  </revision>
 </revisionlist>

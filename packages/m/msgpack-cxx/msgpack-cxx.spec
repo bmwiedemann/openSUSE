@@ -17,7 +17,7 @@
 
 
 Name:           msgpack-cxx
-Version:        4.1.1
+Version:        4.1.3
 Release:        0
 Summary:        Object serialization library for cross-language communication (C++ interface)
 License:        BSL-1.0
