@@ -17,7 +17,7 @@
 
 
 Name:           man-pages-ja
-Version:        20220815
+Version:        20221015
 Release:        0
 Summary:        LDP Manual Pages (Japanese)
 License:        BSD-3-Clause AND GPL-2.0-only AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
