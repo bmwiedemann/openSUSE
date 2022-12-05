@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:31:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.5.1:
+  * Fixed bug: In the tag editing fields, the text cursor jumped to the end
+    of the line after entering a letter.
+  * Before starting the conversion, the program checks that the disks will
+    not overwrite each other's output files.
+  * Translations updated
+  * Fixed bug: In the tag editing fields, the text cursor jumped to the end
+    of the line after entering a letter.
+  * Before starting the conversion, the program checks that the disks will
+    not overwrite each other's output files.
+
+-------------------------------------------------------------------
 Thu Nov 10 14:19:24 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 9.4.0
