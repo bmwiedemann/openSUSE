@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:27:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.9:
+  * Document the <1234> key syntax for bind.
+  * Fix non-printable keyname printing to use <octal> syntax.
+  * Move AM_PATH_GPG_ERROR before AM_PATH_GPGME.
+  * Update gpgme autoconf files to the latest versions.
+  * Adjust manual concerning IMAP Fcc in batch mode.
+  * Add explicit void to 0-parameter function definitions.
+
+-------------------------------------------------------------------
 Mon Sep 12 08:50:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Refresh offsets of patches

@@ -1360,4 +1360,18 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
 - enable optional verbose debugging at run-time (boo#1203184)</comment>
     <requestid>1002755</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>dbab03d7a3c8fa423ccaf0258d58e793</srcmd5>
+    <version>2.2.9</version>
+    <time>1670259694</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.9:
+  * Document the &lt;1234&gt; key syntax for bind.
+  * Fix non-printable keyname printing to use &lt;octal&gt; syntax.
+  * Move AM_PATH_GPG_ERROR before AM_PATH_GPGME.
+  * Update gpgme autoconf files to the latest versions.
+  * Adjust manual concerning IMAP Fcc in batch mode.
+  * Add explicit void to 0-parameter function definitions. (forwarded request 1039996 from dirkmueller)</comment>
+    <requestid>1040160</requestid>
+  </revision>
 </revisionlist>
