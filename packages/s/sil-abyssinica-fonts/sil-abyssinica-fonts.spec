@@ -1,7 +1,7 @@
 #
 # spec file for package sil-abyssinica-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sil-abyssinica-fonts
-Version:        1.0
+Version:        2.200
 Release:        0
 Summary:        Smart Unicode Font for the Ethiopic Script (Amharic)
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=AbyssinicaSIL
-Source0:        AbyssinicaSIL1.0.zip
+URL:            https://software.sil.org/abyssinica/
+Source0:        https://software.sil.org/downloads/r/abyssinica/AbyssinicaSIL-%{version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-%reconfigure_fonts_prereq
-Provides:       locale(so)
-# FIXME: This causes a rpmlint warning; change <= to < once here's a new upstream version
-Obsoletes:      sil-abyssinica <= %{version}
 Provides:       sil-abyssinica = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Provides:       locale(so)
+Obsoletes:      sil-abyssinica < %{version}
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 The Ethiopic script is used for writing many of the languages of
@@ -51,22 +49,21 @@ release is a regular typeface, with no bold or italic version available
 or planned.
 
 %prep
-%setup -T -c sil-abyssinica -n sil-abyssinica
-unzip -j $RPM_SOURCE_DIR/AbyssinicaSIL1.0.zip
-chmod 644 *
-dos2unix *.txt
+%setup -q -T -c sil-abyssinica -n sil-abyssinica
+unzip -x %{SOURCE0}
+find -type f -print0 | xargs -0 chmod -x
+find -name '*.txt' -print0 | xargs -0 dos2unix
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}/
-install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
+install -c -m 644 AbyssinicaSIL-%{version}/*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
-%doc *.txt *.pdf
+%doc AbyssinicaSIL-%{version}/*.txt AbyssinicaSIL-%{version}/documentation/pdf/*.pdf
 %{_ttfontsdir}
 
 %changelog
