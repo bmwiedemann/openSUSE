@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lupa
-Version:        1.13
+Version:        1.14.1
 Release:        0
 Summary:        Python wrapper around Lua and LuaJIT
 License:        MIT
