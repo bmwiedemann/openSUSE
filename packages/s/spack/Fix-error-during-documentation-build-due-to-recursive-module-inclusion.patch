@@ -1,43 +1,23 @@
+From dc83f5aa199bd7a393f32f53611e069d7475ccfc Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Thu Apr 7 20:25:46 2022 +0200
-Subject: Fix error during documentation build due to recursive module inclusion
-Patch-mainline: Not yet
-Git-commit: 7000c074119ebc3354b18a3b2aa27d431f906840
-References: 
+Date: Thu, 7 Apr 2022 20:25:46 +0200
+Subject: [PATCH] Fix error during documentation build due to recursive module
+ inclusion
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- lib/spack/spack/cmd/__init__.py            | 5 ++++-
- lib/spack/spack/environment/environment.py | 5 ++++-
- lib/spack/spack/installer.py               | 5 ++++-
- lib/spack/spack/main.py                    | 5 ++++-
- 4 files changed, 16 insertions(+), 4 deletions(-)
-diff --git a/lib/spack/spack/cmd/__init__.py b/lib/spack/spack/cmd/__init__.py
-index 0b0451c..cbedb9a 100644
---- a/lib/spack/spack/cmd/__init__.py
-+++ b/lib/spack/spack/cmd/__init__.py
-@@ -21,7 +21,10 @@
- from llnl.util.tty.color import colorize
- 
- import spack.config
--import spack.environment as ev
-+try:
-+    import spack.environment as ev
-+except AttributeError:
-+    pass
- import spack.error
- import spack.extensions
- import spack.paths
+ lib/spack/spack/environment/environment.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
 diff --git a/lib/spack/spack/environment/environment.py b/lib/spack/spack/environment/environment.py
-index 3114f55..059b057 100644
+index f0598e5a83..76f50ff69c 100644
 --- a/lib/spack/spack/environment/environment.py
 +++ b/lib/spack/spack/environment/environment.py
-@@ -32,7 +32,10 @@
- import spack.stage
- import spack.store
+@@ -36,6 +36,10 @@
  import spack.subprocess_context
--import spack.user_environment as uenv
+ import spack.traverse
+ import spack.user_environment as uenv
 +try:
 +    import spack.user_environment as uenv
 +except AttributeError:
@@ -45,35 +25,6 @@ index 3114f55..059b057 100644
  import spack.util.cpus
  import spack.util.environment
  import spack.util.hash
-diff --git a/lib/spack/spack/installer.py b/lib/spack/spack/installer.py
-index df1d704..ef0bda2 100644
---- a/lib/spack/spack/installer.py
-+++ b/lib/spack/spack/installer.py
-@@ -45,7 +45,10 @@
- from llnl.util.tty.color import colorize
- from llnl.util.tty.log import log_output
- 
--import spack.binary_distribution as binary_distribution
-+try:
-+    import spack.binary_distribution as binary_distribution
-+except AttributeError:
-+    pass
- import spack.compilers
- import spack.error
- import spack.hooks
-diff --git a/lib/spack/spack/main.py b/lib/spack/spack/main.py
-index f41423f..bb6c909 100644
---- a/lib/spack/spack/main.py
-+++ b/lib/spack/spack/main.py
-@@ -36,7 +36,10 @@
- import spack
- import spack.cmd
- import spack.config
--import spack.environment as ev
-+try:
-+    import spack.environment as ev
-+except AttributeError:
-+    pass
- import spack.modules
- import spack.paths
- import spack.platforms
+-- 
+2.35.3
+

@@ -1,10 +1,7 @@
+From e7bbc251529786e68297c8aac700358ab1fb5c14 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Wed Nov 10 09:40:07 2021 +0100
-Subject: Make spack paths compliant to distro installation
-Patch-mainline: Not yet
-Git-repo: https://github.com/spack/spack
-Git-commit: f91da8159ac285f41d215f0bf7d3a15461e63324
-References: 
+Date: Wed, 10 Nov 2021 09:40:07 +0100
+Subject: [PATCH] Make spack paths compliant to distro installation
 
 Spack is particular about the choice of 'prefix' which will
 replace $spack. 'prefix' is the 4th ancestor of paths.py, so
@@ -18,25 +15,29 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  lib/spack/spack/paths.py | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
+
 diff --git a/lib/spack/spack/paths.py b/lib/spack/spack/paths.py
-index 6b3543406b..bb16e14145 100644
+index fc617342e8..c733da2286 100644
 --- a/lib/spack/spack/paths.py
 +++ b/lib/spack/spack/paths.py
 @@ -41,7 +41,7 @@
- operating_system_path = os.path.join(module_path, 'operating_systems')
- test_path             = os.path.join(module_path, "test")
- hooks_path            = os.path.join(module_path, "hooks")
--opt_path              = os.path.join(prefix, "opt")
-+opt_path              = os.path.join("/", "opt")
- share_path            = os.path.join(prefix, "share", "spack")
- etc_path              = os.path.join(prefix, "etc")
+ operating_system_path = os.path.join(module_path, "operating_systems")
+ test_path = os.path.join(module_path, "test")
+ hooks_path = os.path.join(module_path, "hooks")
+-opt_path = os.path.join(prefix, "opt")
++opt_path = os.path.join("/", "opt")
+ share_path = os.path.join(prefix, "share", "spack")
+ etc_path = os.path.join(prefix, "etc", "spack")
  
-@@ -49,7 +49,7 @@
+@@ -53,7 +53,7 @@
  #
  # Things in $spack/var/spack
  #
--var_path              = os.path.join(prefix, "var", "spack")
-+var_path              = os.path.join("/", "var", "lib", "spack")
+-var_path = os.path.join(prefix, "var", "spack")
++var_path = os.path.join("/", "var", "spack")
  
  # read-only things in $spack/var/spack
- repos_path            = os.path.join(var_path, "repos")
+ repos_path = os.path.join(var_path, "repos")
+-- 
+2.35.3
+

@@ -260,4 +260,12 @@
     <comment></comment>
     <requestid>998181</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>43cbc5c0757f1db48b9bf73bd97e5f62</srcmd5>
+    <version>0.19.0</version>
+    <time>1670259720</time>
+    <user>dimstar_suse</user>
+    <comment>env stuff fixed (forwarded request 1040235 from mslacken)</comment>
+    <requestid>1040236</requestid>
+  </revision>
 </revisionlist>

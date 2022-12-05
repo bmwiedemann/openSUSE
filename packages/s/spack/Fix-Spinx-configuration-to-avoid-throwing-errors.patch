@@ -1,10 +1,7 @@
+From 66bdd2b54c5e6d1ddc9a3970b120dda2ac69e52e Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Wed Nov 10 16:30:14 2021 +0100
-Subject: Fix Spinx configuration to avoid throwing errors
-Patch-mainline: Not yet
-Git-repo: https://github.com/spack/spack
-Git-commit: f8be4e346441f8d33b760ddfdc5fad360edf055d
-References: 
+Date: Wed, 10 Nov 2021 16:30:14 +0100
+Subject: [PATCH] Fix Spinx configuration to avoid throwing errors
 
 - Ignore certain variables
 - Don't attempt downloading ntersphinx inventory
@@ -12,45 +9,28 @@ References:
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- lib/spack/docs/conf.py | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+ lib/spack/docs/conf.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
 diff --git a/lib/spack/docs/conf.py b/lib/spack/docs/conf.py
-index 2b58223e1d..95888cf5d4 100644
+index 4fc321c72d..d31c2fe980 100644
 --- a/lib/spack/docs/conf.py
 +++ b/lib/spack/docs/conf.py
-@@ -179,6 +179,28 @@ def setup(sphinx):
-     ('py:class', '_frozen_importlib_external.SourceFileLoader'),
-     # Spack classes that are private and we don't want to expose
-     ('py:class', 'spack.provider_index._IndexBase'),
-+    ('py:class', 'datetime.datetime'),
-+    ('py:class', 'argparse.ArgumentParser'),
-+    ('py:class', 'argparse.RawTextHelpFormatter'),
-+    ('py:class', 'argparse.Namespace'),
-+    ('py:class', 'argparse.Action'),
-+    ('py:class', 'ast.NodeVisitor'),
-+    ('py:class', 'ast.NodeTransformer'),
-+    ('py:class', 'ast.AST'),
-+    ('py:class', 'collections.abc.MutableMapping'),
-+    ('py:class', 'collections.abc.Sequence'),
-+    ('py:class', 'collections.abc.Mapping'),
-+    ('py:class', 'html.parser.HTMLParser'),
-+    ('py:class', 'typing.IO'),
-+    ('py:class', 'urllib.request.HTTPSHandler'),
-+    ('py:obj', 'typing.Callable'),
-+    ('py:obj', 'typing.IO'),
-+    ('py:obj', 'bool'),
-+    ('py:obj', 'dict'),
-+    ('py:obj', 'int'),
-+    ('py:obj', 'list'),
-+    ('py:obj', 're'),
-+    ('py:obj', 'str')
+@@ -130,7 +130,6 @@ def setup(sphinx):
+     "sphinx.ext.napoleon",
+     "sphinx.ext.todo",
+     "sphinx.ext.viewcode",
+-    "sphinx_design",
+     "sphinxcontrib.programoutput",
  ]
  
- # The reST default role (used for this markup: `text`) to use for all documents.
-@@ -381,5 +403,5 @@ class SpackStyle(DefaultStyle):
+@@ -415,5 +414,5 @@ class SpackStyle(DefaultStyle):
  
  # sphinx.ext.intersphinx
  intersphinx_mapping = {
 -    "python": ("https://docs.python.org/3", None),
 +    "python": ("https://docs.python.org/3", "objects.inv"),
  }
+-- 
+2.35.3
+

@@ -1,26 +1,27 @@
+From ff6db56de20859436a1bfff30d22910bad0557d9 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Wed Nov 10 20:28:29 2021 +0100
-Subject: Set modules default to lmod
-Patch-mainline: Not yet
-Git-repo: https://github.com/spack/spack
-Git-commit: fc190d74554d93e1907a6d56aeaeb35d328c4e22
-References: 
+Date: Wed, 10 Nov 2021 20:28:29 +0100
+Subject: [PATCH] Set modules default to lmod
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  etc/spack/defaults/modules.yaml | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/etc/spack/defaults/modules.yaml b/etc/spack/defaults/modules.yaml
-index 27b7c45f66..09e572067b 100644
+index 27450b4259..9b476b7c69 100644
 --- a/etc/spack/defaults/modules.yaml
 +++ b/etc/spack/defaults/modules.yaml
-@@ -44,7 +44,7 @@ modules:
-     #  lmod:   $spack/share/spack/lmod
+@@ -42,7 +42,7 @@ modules:
+      lmod:   $spack/share/spack/lmod
      # What type of modules to use
      enable:
 -      - tcl
 +      - lmod
  
-     # Default configurations if lmod is enabled
-     lmod:
+     tcl:
+       all:
+-- 
+2.35.3
+

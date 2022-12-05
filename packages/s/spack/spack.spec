@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.17.1
+Version:        0.19.0
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -48,7 +48,6 @@ Source3:        run-find-external.sh.in
 Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
 # Source5 is from https://docs.python.org/3/objects.inv, but has permanent changes so using a static version
 Source5:        objects.inv
-Patch1:         fix-tumbleweed-naming.patch
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch
 Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
@@ -168,14 +167,15 @@ done
 %else
 cp %{S:5} lib/spack/docs/
 %endif
-
-for file in $(find . -type f); do
-    sed -e 's@$spack/opt@/opt@g' \
-	-e 's@$spack/share/spack/modules@/opt/spack/modules@g' \
-	-e 's@$spack/share/spack/lmod@/opt/spack/modules@g' \
-	-e 's@$spack/var@/var/lib@g' \
-	-i $file
-done
+grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i 's|#! /usr/bin/env bash|#!/usr/bin/bash|g' @
+grep -rl '#!/bin/env sh' . | xargs -i@ sed -i 's|#!/bin/env sh|#!/usr/bin/sh|g' @
+grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' @
+grep -rl "spack/" . | xargs -i@ sed -i \
+  -e 's|$spack/opt|/opt|g' \
+  -e 's|$spack/var|/var/lib|g'\
+  -e 's|$spack/share/spack/lmod|/opt/spack/modules|g'\
+  -e 's|$spack/share/spack/modules|/opt/spack/modules|g'\
+  @
 
 %build
 # Nothing to build
@@ -251,6 +251,8 @@ rm -rf var/spack/repos/builtin.mock  var/spack/gpg.mock var/spack/mock_configs
 rm -rf lib/spack/external/ruamel/yaml/.ruamel
 find . -type f -name .gitignore -delete
 find . -type f -name .nojekyll -delete
+find . -type f -name .gitlab-ci.yml -delete
+
 # Fix _spack_root link
 rm -f lib/spack/docs/_spack_root
 ln -sf ../.. lib/spack/docs/_spack_root
@@ -262,10 +264,12 @@ rm -f share/spack/setup-tutorial-env.sh
 # Fix rpmlint warnings
 ## No need for the standalone scripts
 rm -f lib/spack/external/macholib/macho_*.py
+## Remove non linux stuff
+rm -f bin/spack.bat bin/spack_cmd.bat bin/spack_pwsh.ps1
 ## Fix shebangs
-sed -i 's@#!/bin/env sh@#!/bin/bash@' var/spack/repos/builtin/packages/beast-tracer/tracer
-sed -i 's@#! /usr/bin/env bash@ #!/bin/bash@' share/spack/docker/entrypoint.bash
-sed -i 's@#!/usr/bin/env bash@#!/bin/bash@' share/spack/docker/package-index/split.sh
+#sed -i 's@#!/bin/env sh@#!/bin/bash@' var/spack/repos/builtin/packages/beast-tracer/tracer
+#sed -i 's@#! /usr/bin/env bash@ #!/bin/bash@' share/spack/docker/entrypoint.bash
+#sed -i 's@#!/usr/bin/env bash@#!/bin/bash@' share/spack/docker/package-index/split.sh
 
 mkdir -p %{buildroot}%{spack_dir}
 mkdir -p %{buildroot}%{spack_dir}/opt
@@ -281,7 +285,7 @@ ln -sf %{buildroot}/%{_localstatedir}/cache/spack %{buildroot}%{_localstatedir}/
 
 # Copy files to corresponding paths
 cp -r etc %{buildroot}%{_prefix}
-cp -r lib/spack/{env,external,llnl,spack} %{buildroot}%{spack_dir}
+cp -r lib/spack/{env,external,llnl,spack,spack_installable} %{buildroot}%{spack_dir}
 cp -r share/spack/* %{buildroot}%{_datarootdir}/spack
 cp -r var/spack/* %{buildroot}%{_localstatedir}/lib/spack
 cp -r bin/sbang %{buildroot}/%{_bindir}
@@ -294,6 +298,7 @@ sed -i -e 's#@@_sysconfdir@@#%{_sysconfdir}#' %{buildroot}/%{spack_dir}/run-find
 sed -i 's@\(\sroot:\) /opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 sed -i 's@\(\ssource_cache:\).*@\1 /var/tmp/$user/spack-cache@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 cat >>  %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml <<EOF
+
   binary_index_root: ~/.spack/indices
 EOF
 
@@ -443,7 +448,7 @@ if [ -e /etc/os-release ] ;  then
 fi
 sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 # find installed programms
-/usr/lib/spack/run-find-external.sh
+ /usr/lib/spack/run-find-external.sh
 mkdir -p /opt/spack
 chgrp spack /opt/spack
 chmod 0775 /opt/spack

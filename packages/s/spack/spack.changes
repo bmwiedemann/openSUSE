@@ -1,7 +1,69 @@
 -------------------------------------------------------------------
+Tue Nov 22 11:16:26 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- updated to version 0.19.0 with the following changes:
+  * Spack's traditional package preferences are soft, but we've added hard
+    requriements to packages.yaml and spack.yaml
+  * spack install in an environment will no longer add to the specs: list; you'll
+    need to either use spack add <spec> or spack install --add <spec>.
+  * spack uninstall will not remove from your environment's specs:
+    list; you'll need to use spack remove or spack uninstall --remove.
+  * concretizer:unify:true is now the default mode for new environments
+  * include environment configuration from URLs
+  * An increasing number of packages in the ecosystem need the ability to
+    support multiple build systems
+  * package ++variant:
+    enabled variant that will be propagated to dependencies
+  * git. prefix to specify git tags or branches as versions. All of these are
+    valid git versions in
+  * spack ci generate --tests will generate a .gitlab-ci.yml file that not only
+    does builds but also runs tests for built packages
+  * spack test run --explicit will only run tests for packages that are
+    explicitly installed, instead of all packages.
+  * You can add a new shared_linking option to config.yaml to make Spack embed absolute paths
+    to needed shared libraries in ELF executables and shared libraries on Linux
+  * spack spec prints dependencies more legibly. Dependencies in the output now
+    appear at the earliest level of indentation possible (#33406)
+  * You can override package.py attributes like url, directly in packages.yaml
+  * There are a number of new architecture-related format strings you can use
+    in Spack configuration files to specify paths
+- Improvements from v0.18.0
+  * spack install --reuse was introduced in v0.17.0, and --reuse is now the
+    default concretization mode. Spack will try hard to resolve dependencies
+    using installed packages or binaries
+  * Spack hashes now include link, run, and build dependencies, as well as a
+    canonical hash of package recipes. Previously, hashes only included link
+    and run dependencies (though build dependencies were stored by
+    environments). We coarsened the hash to reduce churn in user installations,
+    but the new default concretizer behavior mitigates this concern and gets us
+    reuse and provenance.  You will be able to see the build dependencies of
+    new installations
+  * concretizer:unify:when_possible will try to resolve a fully unified
+    environment, but if it cannot, it will create multiple configurations of
+    some packages where it has to.  with spack find.
+  * Spack now has an updated binary format, with improvements for security. The
+    new format has a detached signature file, and Spack verifies the signature
+    before untarring or decompressing the binary package. The previous format
+    embedded the signature in a tar file, which required the client to run tar
+    before verifying (#30750). Spack can still install from build caches using
+    the old format, but we encourage users to switch to the new format going
+    forward.
+  * The spack bootstrap mirror command can automatically create a mirror for
+    bootstrapping the concretizer and other needed dependencies in an
+    air-gapped environment.
+  * spack env depfile can be used to generate a Makefile from an environment,
+    which can be used to build packages the environment in parallel on a single
+    node
+  * In addition to being conditional themselves, variants can now have
+    conditional values that are only possible for certain configurations of a
+    package.
+- removed following patches as incorporated upstream:
+  * fix-tumbleweed-naming.patch
+
+-------------------------------------------------------------------
 Mon Aug 15 19:39:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid bashism in post scripts (bsc#1195391) 
+- avoid bashism in post scripts (bsc#1195391)
 
 -------------------------------------------------------------------
 Thu Apr  7 12:56:45 UTC 2022 - Egbert Eich <eich@suse.com>
