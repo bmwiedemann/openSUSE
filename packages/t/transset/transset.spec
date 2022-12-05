@@ -1,7 +1,7 @@
 #
 # spec file for package transset
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,13 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrender)
-Url:            http://www.kde.me.uk/index.php?page=x-6.8-xcomposite-howto
-Version:        20040120
+URL:            https://gitlab.freedesktop.org/xorg/app/transset
+Version:        1.0.3
 Release:        0
 Summary:        Simple program to make windows transparent
 License:        MIT
 Group:          System/X11/Utilities
-Source:         transset-%{version}.tar.bz2
-Patch:          transset-%{version}.diff
-Patch2:         transset-df-5.diff
+Source:         transset-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -38,28 +36,23 @@ transset manipulates the _NET_WM_WINDOW_OPACITY property to make
 windows transparent.
 
 %prep
-%setup -n transset
-%patch
-%patch2
+%setup -n %{name}-%{version}
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS"
+%configure
+%make_build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/bin
-install -m 755 transset $RPM_BUILD_ROOT/usr/bin
-cat >> README.SUSE <<EOF
-Details: 
-    http://gentoo-wiki.com/TIP_Xorg_X11_and_Tranparency
-    http://www.kde.me.uk/index.php?page=x-6.8-xcomposite-howto
-EOF
+%make_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc README.SUSE README ChangeLog
-/usr/bin/transset
+%license COPYING
+%doc README.md ChangeLog
+%{_bindir}/transset
+%{_mandir}/man1/transset.1%{?ext_man}
 
 %changelog

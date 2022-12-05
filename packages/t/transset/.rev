@@ -113,4 +113,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>566642</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4c027645d9078ba6230ff363d93fe772</srcmd5>
+    <version>1.0.3</version>
+    <time>1670259673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+- supersedes transset-20040120.diff, transset-df-5.diff
+- specfile cleanup</comment>
+    <requestid>1040093</requestid>
+  </revision>
 </revisionlist>
