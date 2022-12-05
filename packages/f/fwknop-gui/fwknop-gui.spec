@@ -1,7 +1,7 @@
 #
 # spec file for package fwknop-gui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           fwknop-gui
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        FireWall KNock OPerator Graphical User Interface
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://incomsystems.biz/fwknop-gui/
 #Git-Clone:     https://github.com/jp-bennett/fwknop-gui.git
-Source:         https://github.com/jp-bennett/fwknop-gui/archive/v%{version}-release.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://incomsystems.biz/fwknop-gui/downloads/fwknop-gui-%{version}.tar.gz
 Patch0:         fwknop-gui-fix-manpage-path.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
@@ -57,7 +57,7 @@ readable by the Android client, as well as to the .fwknoprc format
 readable by the command line client.
 
 %prep
-%setup -q -n %{name}-%{version}-release
+%setup -q -n %{name}
 %patch0 -p1
 
 %build
