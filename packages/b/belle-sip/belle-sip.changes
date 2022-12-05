@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:45:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.72:
+  * Allow multiple challenges in a single authenticate header as defined by rfc2616 
+
+-------------------------------------------------------------------
 Mon Oct 17 07:11:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.64 (no changelog).
