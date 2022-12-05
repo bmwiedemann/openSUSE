@@ -1,7 +1,7 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://source.puri.sm/Librem5/feedbackd.git</param>
-    <param name="revision">refs/tags/v0.0.0+git20211018</param>
+    <param name="revision">refs/tags/v0.0.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="scm">git</param>
@@ -11,5 +11,5 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version" />
+  <service mode="manual" name="set_version" />
 </services>
