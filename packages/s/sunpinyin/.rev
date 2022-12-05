@@ -125,4 +125,12 @@ When I sr'ed it the blasted sourceservice kicked in, and pulled down the source 
     <comment>- Drop sunpinyin-scons-on-py3.patch and reproducible.patch. Merge by upstream. (forwarded request 928655 from hillwood)</comment>
     <requestid>928656</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3c821d9e986670f0c2f85c0a3fd88c5c</srcmd5>
+    <version>2.0.99.2</version>
+    <time>1670259729</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on Python 2. (forwarded request 1040115 from StevenK)</comment>
+    <requestid>1040254</requestid>
+  </revision>
 </revisionlist>

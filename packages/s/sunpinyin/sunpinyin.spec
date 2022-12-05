@@ -1,7 +1,7 @@
 #
 # spec file for package sunpinyin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  scons
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(sqlite3)
 Provides:       locale(ibus:zh_CN;zh_SG)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

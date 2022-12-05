@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  5 04:58:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on Python 2. 
+
+-------------------------------------------------------------------
 Mon Nov  1 14:32:19 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.0.0-RC2(2.0.99.2)
