@@ -18,7 +18,7 @@
 
 %define shlib libfastjetcontribfragile
 Name:           fastjet-contrib
-Version:        1.048
+Version:        1.049
 Release:        0
 Summary:        A library of 3rd-party add-ons to FastJet
 License:        GPL-2.0-only

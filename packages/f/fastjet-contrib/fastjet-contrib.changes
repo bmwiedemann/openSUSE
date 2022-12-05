@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 20:36:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.049:
+  * updated Nsubjettiness to 2.26
+
+-------------------------------------------------------------------
 Wed Oct 12 15:09:03 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort the file list (boo#1041090)
