@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:52:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.4
+  * gitlab CI: add a basic build test
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix warning: missing initializer for field ‘extension’ of
+  * ‘SimpleClassPart'
+  * Variable scope reductions as recommended by cppcheck
+  * Mark usage() as _X_NORETURN _X_COLD
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Handle -Wextra-semi-stmt warnings from clang
+  * Tag unused arguments to callback functions as _X_UNUSED
+
+-------------------------------------------------------------------
 Sun Mar 10 11:43:51 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.3

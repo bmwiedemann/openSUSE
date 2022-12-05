@@ -76,4 +76,21 @@
   * Update README for gitlab migration</comment>
     <requestid>683548</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bcd1250d0ef8ab17af5f9c62a607171d</srcmd5>
+    <version>1.1.4</version>
+    <time>1670259663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+  * gitlab CI: add a basic build test
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix warning: missing initializer for field ‘extension’ of
+  * ‘SimpleClassPart'
+  * Variable scope reductions as recommended by cppcheck
+  * Mark usage() as _X_NORETURN _X_COLD
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Handle -Wextra-semi-stmt warnings from clang
+  * Tag unused arguments to callback functions as _X_UNUSED</comment>
+    <requestid>1040076</requestid>
+  </revision>
 </revisionlist>
