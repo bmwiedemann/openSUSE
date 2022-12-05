@@ -292,4 +292,24 @@
     <comment></comment>
     <requestid>1004951</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4ce96436b60c08008e23791a31a80e1f</srcmd5>
+    <version>1.11.1</version>
+    <time>1670259644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.1 (2022-11-09)
+  * Fix Linux wheels, downgrade to manylinux 2_24 #1176
+  * Windows wheels for Python 3.11 #1177
+  * CI: Use 3.11 final release for testing #1178
+  * Drop support for Python 3.7
+  * Update Linux wheels to manylinux 2_28 #1136
+  * Fix crash in signature representation #1162
+  * Fix memory leak in Signature #1173
+  * New optional argument raise_error in Repository.applies(...) #1166
+  * New notify/progress callbacks for checkout and stash #1167 #1169
+  * New Repository.remotes.names() #1159
+  * Now refname argument in RemoteCallbacks.push_update_reference(...) is a string, not bytes #1168
+  * Add missing newline at end of pygit2/decl/pack.h #1163</comment>
+    <requestid>1040007</requestid>
+  </revision>
 </revisionlist>

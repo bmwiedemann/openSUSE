@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:06:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.11.1 (2022-11-09)
+  * Fix Linux wheels, downgrade to manylinux 2_24 #1176
+  * Windows wheels for Python 3.11 #1177
+  * CI: Use 3.11 final release for testing #1178
+  * Drop support for Python 3.7
+  * Update Linux wheels to manylinux 2_28 #1136
+  * Fix crash in signature representation #1162
+  * Fix memory leak in Signature #1173
+  * New optional argument raise_error in Repository.applies(...) #1166
+  * New notify/progress callbacks for checkout and stash #1167 #1169
+  * New Repository.remotes.names() #1159
+  * Now refname argument in RemoteCallbacks.push_update_reference(...) is a string, not bytes #1168
+  * Add missing newline at end of pygit2/decl/pack.h #1163 
+
+-------------------------------------------------------------------
 Mon Sep 19 16:53:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Update to 1.10.1
