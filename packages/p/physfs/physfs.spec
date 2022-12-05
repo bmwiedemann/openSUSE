@@ -1,7 +1,7 @@
 #
 # spec file for package physfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define so_nr 1
 Name:           physfs
-Version:        3.0.2
+Version:        3.2.0
 Release:        0
 Summary:        PhysicsFS file abstraction layer for games
-License:        (LGPL-2.1-or-later OR CPL-1.0) AND Zlib
+License:        (CPL-1.0 OR LGPL-2.1-or-later) AND Zlib
 Group:          System/Libraries
 URL:            https://www.icculus.org/physfs/
-Source:         http://icculus.org/physfs/downloads/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake
+Source:         https://github.com/icculus/physfs/archive/refs/tags/release-%{version}.tar.gz
+BuildRequires:  cmake >= 3.0.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -88,7 +88,7 @@ Development package for libphysfs, a library to provide abstract access to
 various archives.
 
 %prep
-%setup -q
+%setup -q -n physfs-release-%{version}
 
 %build
 %cmake \
@@ -107,10 +107,10 @@ exec_prefix=\${prefix}
 libdir=\${exec_prefix}/%{_lib}
 includedir=\${prefix}/include
 
-Name: PhysicsFS
+Name:           PhysicsFS
 Description: PhysicsFS, a library to provide abstract access to various archives
-URL: %{url}
-Version: %{version}
+URL:            %{url}
+Version:        %{version}
 Libs: -L\${libdir} -lphysfs
 Cflags: -I\${includedir}
 EOF
@@ -129,6 +129,7 @@ EOF
 %defattr(0644,root,root,0755)
 %{_libdir}/libphysfs.so
 %{_includedir}/physfs.h
+%{_libdir}/cmake/PhysFS
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

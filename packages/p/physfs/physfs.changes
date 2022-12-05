@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:18:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Several changes were made to accommodate our migration from hg on our own
+    Mercurial server to git and GitHub.
+  * Tons of important fixes going back to Sep 27, 2017. Including static analysis
+    fixes, platform compatibility improvements, etc.
+  * Added PHYSFS_setRoot, to mount a subset of an archive.
+  * Support for HOG2 (Descent 3) archives.
+
+-------------------------------------------------------------------
 Sun Mar 29 16:39:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.0.2:
