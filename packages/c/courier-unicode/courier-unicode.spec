@@ -20,7 +20,7 @@
 %define libsoname %{libname}7
 
 Name:           courier-unicode
-Version:        2.2.4
+Version:        2.2.6
 Release:        0
 Summary:        Courier Unicode Library
 License:        GPL-3.0-or-later
@@ -67,9 +67,7 @@ libunicode library.
 %package doc
 Summary:        Courier Unicode Library - Docs and man pages
 Group:          Productivity/Networking/Email/Servers
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains the docs and the man pages of the Courier Unicode Library

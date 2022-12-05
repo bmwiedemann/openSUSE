@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  4 19:56:47 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.2.6
+  * Debian/Ubuntu: update lintian overrides
+
+- update to 2.2.5
+  * Adjust deb packaging. Check /etc/lsb-release and include the
+    distribution release in the deb package version, to faciliate
+    updating to the same version of the package in an updated release.
+
+-------------------------------------------------------------------
 Sat Aug 20 19:00:06 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.2.4
