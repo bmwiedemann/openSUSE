@@ -75,4 +75,16 @@
     cleanups.</comment>
     <requestid>677970</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f35b1fbca5ab528374b43e698841258</srcmd5>
+    <version>1.1.5</version>
+    <time>1670259675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reduction
+  * Handle -Wdouble-promotion warning from clang</comment>
+    <requestid>1040102</requestid>
+  </revision>
 </revisionlist>
