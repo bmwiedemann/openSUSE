@@ -1,7 +1,7 @@
 #
 # spec file for package feedbackd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.0.0+git20211018
+Version:        0.0.1
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
 URL:            https://source.puri.sm/Librem5/feedbackd
 Source0:        %{name}-%{version}.tar.xz
 
-BuildRequires:  dbus-1
 BuildRequires:  c_compiler
+BuildRequires:  dbus-1
 BuildRequires:  meson
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
@@ -66,8 +67,8 @@ This package contains the shared library for %{name}.
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
-Requires:       typelib-1_0-Lfb-0_0 = %{version}
 Requires:       %{soname} = %{version}
+Requires:       typelib-1_0-Lfb-0_0 = %{version}
 
 %description devel
 The %{name}-devel package contains libraries and header files for

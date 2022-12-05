@@ -7,4 +7,12 @@
     <comment>Ready for factory? Needed by callaudiod</comment>
     <requestid>998671</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa1b72e198cdf778b5dbc43aebf248c1</srcmd5>
+    <version>0.0.1</version>
+    <time>1670259740</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1040312 from iznogood)</comment>
+    <requestid>1040323</requestid>
+  </revision>
 </revisionlist>

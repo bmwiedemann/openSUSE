@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Dec  5 14:21:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.0.1:
+  * spec: Clarify feedback noisiness.
+    The old wording could be interpreted as the feedback being
+    discarded if it's noisier than the currently selected profile
+    which is not the case. Also take the new per application
+    settings into account.
+  * lfb-event: Fix SPDX identifier. The library is LGPL-2.1+, not
+    GPL-3.0+
+  * test-lfb-integration: Test event state in async callback
+  * lfb-event: Notify state change before completing async task
+    lfb_event_trigger_feedback_async() internally uses a GTask to
+    handle invocation of the user provided callback when
+    g_task_return_*() is called.
+    Currently GTask is completed first and only afterwards is the
+    state of the event being updated which can lead to suprising
+    behaviour.
+  * feedback-manager: Use guint for event id.
+    The ID is inserted into a hashtable below with GUINT_TO_POINTER
+    and is set using self->next_id++ with next_id also being a
+    guint, so change the type accordingly.
+  * run: Make it easy to run under gdb and document usage.
+    Having a fast and easy way to run the daemon under gdb can be
+    beneficial for debugging. For that start the run script with
+    FBD_GDB=1.
+  * tests/integration: Indicate that callback quits main loop
+    on_event_triggered() is renamed to on_event_triggered_quit()
+    as we will shortly introduce a variant that does not quit.
+  * tests/integration: Fix whitespace.
+    Remove all tabs in favour of spaces and align function
+    arguments.
+  * tests/integration: Test that "feedback-ended" is propagated
+    through LfbEvent. When no feedbacks are available (either
+    because the requested event does not exist in the theme or
+    because the system does not have required capabilities, e.g. no
+    vibration motor or LED) feedbackd will emit a "feedback-ended"
+    signal (with reason LFB_EVENT_STATE_REASON_NOT_FOUND) on DBus
+    _before_ completing the event triggering DBus call. Since the
+    DBus call was not completed yet, LfbEvent will not have learned
+    it's ID yet and therefore not emit it's own "feedback-ended"
+    GObject signal. In this case the test will timeout since the
+    main loop is never quit.
+  * feedback-manager: Complete DBus call before emitting
+    "feedback-ended" See previous commit adding the test (that now
+    passes) for the reasoning.
+  * data: Drop outdated comment. We use the hints since some time,
+    see lfb_event_set_feedback_profile().
+  * lfb-event: Fix typo. It's LfbEvent
+  * lfb-event: Use consistent prefix.
+    Make async data use the same prefix.
+  * Use g_error() when library is not initalized.
+    This makes sure it still works when asserts are disabled.
+  * lfb-event: Untabify
+  * tests: Drop unused variable
+  * tests/integration: Check the state of the ended event
+  * manager: Use FEEDBACKD_UDEV_ATTR.
+    It was introduced in
+    a5b4f99 ("feedbackd: Support visual feedback via LEDs")
+  * fbd: Fix indentation
+
+-------------------------------------------------------------------
 Mon Jan 31 16:19:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.0.0+git20211018:
