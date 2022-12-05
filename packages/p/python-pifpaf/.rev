@@ -170,4 +170,12 @@
   * Add Ceph config options for small disks</comment>
     <requestid>900661</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c3d4f3982c98cb72e783fe8ac87f033c</srcmd5>
+    <version>3.1.5</version>
+    <time>1670259682</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded Requires on mock and six.</comment>
+    <requestid>1040108</requestid>
+  </revision>
 </revisionlist>

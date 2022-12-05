@@ -1,7 +1,7 @@
 #
 # spec file for package python-pifpaf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        3.1.5
 Release:        0
 Summary:        Suite of tools and fixtures to manage daemons for testing
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jd/pifpaf
 Source:         https://pypi.io/packages/source/p/pifpaf/pifpaf-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
@@ -32,10 +31,8 @@ Requires:       python-Jinja2
 Requires:       python-click
 Requires:       python-daiquiri
 Requires:       python-fixtures
-Requires:       python-mock
 Requires:       python-psutil
 Requires:       python-requests
-Requires:       python-six
 Requires:       python-testrepository
 Requires:       python-testtools
 Requires:       python-xattr
