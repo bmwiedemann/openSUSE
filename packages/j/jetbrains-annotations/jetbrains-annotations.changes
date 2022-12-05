@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec  5 16:11:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 23.0.0
+  * Changes of 23.0.0
+    + Added new annotations: '@BlockingExecutor' and
+      '@NonBlockingExecutor'.
+  * Changes of 22.0.0
+    + Added new annotations: '@Blocking' and '@NonBlocking'.
+  * Changes of 21.0.1
+    + Multi-Release Jar: Manifest fixed 
+  * Changes of 21.0.0
+    + Added new annotation: '@UnknownNullability'.
+    + Proper JPMS module.
+    + 'JdkConstants' deprecated.
+  * Changes of 20.1.0
+    + Added 'TYPE_USE' target for 'PropertyKey' annotation.
+  * Changes of 20.0.0
+    + Added new annotation: '@MustBeInvokedByOverriders'.
+    + Added new annotation: '@VisibleForTesting'. 
+    + Added 'TYPE_USE' target for 'NonNls' annotation.
+    + String attributes of annotations are marked as '@NonNls'
+      where applicable.
+    + Documentation for '@Nls' and '@NonNls' updated: now they
+      could be used as meta-annotations.
+    + Documentation added for '@Subst' annotation.
+  * Changes of 19.0.0
+    + Added new annotations: '@Unmodifiable' and
+      '@UnmodifiableView'.
+    + Added 'TYPE_USE' target for 'Nls' annotation.
+    + Improved the documentation for '@Language', '@Pattern',
+      '@RegExp', and '@ApiStatus.Internal' annotations.
+    + Fixed 'Automatic-Module-Name' for Java 5.
+  * Changes of 18.0.0
+    + Added new annotation family '@ApiStatus.*'
+    + Added new annotation '@Debug.Renderer'
+  * Changes of 17.0.0
+    + Added new annotation: '@Range'
+  + Changes of 16.0.3
+    + Added 'Automatic-Module-Name' to MANIFEST.MF
+  * Changes 16.0.2
+    * Improved the documentation for the '@Contract' annotation.
+- Fetch sources using source service
+
+-------------------------------------------------------------------
 Fri Feb 28 07:28:19 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jetbrains-annotations 15.0

@@ -1,0 +1,19 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/JetBrains/java-annotations.git</param>
+		<param name="revision">23.0.0</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="include">common</param>
+		<param name="include">java8</param>
+		<param name="include">module-info</param>
+		<param name="include">LICENSE.txt</param>
+		<param name="include">README.md</param>
+        <param name="filename">jetbrains-annotations</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

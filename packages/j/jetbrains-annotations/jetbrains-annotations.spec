@@ -1,7 +1,7 @@
 #
 # spec file for package jetbrains-annotations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 %global oname annotations
 Name:           jetbrains-annotations
-Version:        15.0
+Version:        23.0.0
 Release:        0
 Summary:        IntelliJ IDEA Annotations
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.jetbrains.org
-Source0:        https://repo1.maven.org/maven2/org/jetbrains/annotations/%{version}/annotations-%{version}-sources.jar
+Source0:        %{name}-%{version}.tar.xz
 Source1:        https://repo1.maven.org/maven2/org/jetbrains/annotations/%{version}/annotations-%{version}.pom
-Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source2:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
+BuildRequires:  javapackages-local
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
 BuildArch:      noarch
 
 %description
@@ -42,34 +45,16 @@ Group:          Documentation/HTML
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -T -c
-
-mkdir -p src/main/{java,resources}
-
-(
-  cd src/main/java
-  %jar -xf %{SOURCE0}
-  rm -rf META-INF
-)
-
-cp -p %{SOURCE1} pom.xml
-
-%pom_remove_plugin :maven-antrun-plugin
-%pom_remove_plugin :maven-gpg-plugin
-%pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :maven-source-plugin
-
-%pom_xpath_inject pom:properties "<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
-
-cp -p %{SOURCE2} LICENSE.txt
-sed -i 's/\r//' LICENSE.txt
+%setup -q
+cp -p %{SOURCE2} build.xml
 
 %{mvn_file} org.jetbrains:%{oname} %{name}
 %{mvn_alias} org.jetbrains:%{oname} com.intellij:
 
-%build
+%{mvn_artifact} %{SOURCE1} target/annotations-%{version}.jar
 
-%{mvn_build} -- -Dsource=8
+%build
+%{ant} jar javadoc
 
 %install
 %mvn_install
@@ -77,6 +62,7 @@ sed -i 's/\r//' LICENSE.txt
 
 %files -f .mfiles
 %license LICENSE.txt
+%doc README.md
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE.txt
