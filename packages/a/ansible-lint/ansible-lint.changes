@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:14:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.9.1:
+  * Bugfixes
+    - Allow var_naming_pattern in linter config schema (#2776) @ssbarnea
+    - Fix multiline jinja pattern in schema (#2775) @ssbarnea
+    - schema: allow jinja in diff keyword (#2774) @ssbarnea
+    - Assimilate schemas project (#2769) @ssbarnea
+    - Allow a prefix in subtasks names (#2740) @shatakshiiii
+    - Refactor risky-octal and improve its messaging (#2759) @ssbarnea
+    - Deprecate running under py38 (#2760) @ssbarnea
+    - Restore offline mode functionality (#2761) @ssbarnea
+    - Fix badge linking to rules (#2746) @motlib
+    - Upgrade linters and fix reported issues (#2752) @ssbarnea
+    - Improve RPM Packaging (#2745) @gotmax23
+    - Refactor only-builtins to have less code duplication (#2739) @evgeni
+    - Treat ansible.legacy the same way ansible.builtin (#2727) @evgeni
+    - Allow additional modules in only-builtins (#2732) @evgeni
+    - Fix deannotate function (#2733) @ssbarnea
+    - Correct packaging metadata (#2734) @ssbarnea
+
+-------------------------------------------------------------------
 Fri Nov 25 07:12:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - rework spec file to define %ansible_python version, which is the
