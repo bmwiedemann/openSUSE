@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 23:41:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.7.0:
+  * Ignore FOSSA failures by @nettlingham in #323
+  * Update error messages and usage for add-node command by @HarrisonWAffel
+    in #322
+
+-------------------------------------------------------------------
 Mon Oct 17 05:14:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.6.9:

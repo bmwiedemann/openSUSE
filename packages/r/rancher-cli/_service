@@ -1,21 +1,6 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/rancher/cli</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="revision">v2.6.9</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-  </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">cli</param>
-  </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
-  </service>
+  <service name="download_files" mode="disabled"/>
   <service name="go_modules" mode="disabled">
-    <param name="archive">cli-2.6.9.tar.gz</param>
+    <param name="archive">cli-2.7.0.tar.gz</param>
   </service>
 </services>
