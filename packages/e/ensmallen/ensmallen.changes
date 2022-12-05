@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:16:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * Added DemonSGD and DemonAdam optimizers
+  * Fix bug with Adam-like optimizers not resetting when `resetPolicy` is `true`.
+  * Add Yogi optimizer
+  * Add AdaBelief optimizer
+  * Add AdaSqrt optimizer
+  * Bump check for minimum supported version of Armadillo
+  * Update Catch2 to 2.13.8
+  * Fix epoch timing output
+  * Accelerate SGD test time
+  * Fix potential infinite loop in CMAES
+  * Fix SCD partial gradient test
+  * Add gradient value clipping and gradient norm scaling callback
+  * Remove superfluous CMake option to build the tests
+  * Bump minimum Armadillo version to 9.800
+  * Update Catch2 to 2.13.7
+  * Remove redundant template argument for C++20 compatibility
+  * Fix MOEAD test stability
+ 
+-------------------------------------------------------------------
 Sun Sep 26 21:21:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.17.0
