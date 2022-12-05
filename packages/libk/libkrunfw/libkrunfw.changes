@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  5 07:30:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add split-provides for libkrunfw-sev-devel 
+
+-------------------------------------------------------------------
+Thu Sep 29 23:20:21 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to a "proper library" packaging layout. Downstreams (like
+  libkrun itself and crun) are now able to cope with this. So do it,
+  and get rid of a lot of RPM lint warnings and errors!
+- Make it easier to enable/disable building the SEV-enabled libraries
+- Add some tools into the SEV build & packages
+* Patches dropped:
+  dont-set-soname-as-it-is-plugin-for-us.patch
+
+-------------------------------------------------------------------
 Wed Sep 28 17:42:37 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest upstream version, v3.6.3

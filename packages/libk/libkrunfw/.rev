@@ -57,4 +57,20 @@ This version builds properly. Sorry for submitting one that did not (it was buil
     <comment></comment>
     <requestid>1006882</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5d3c9ea436fcced0b6f4d866a49cb357</srcmd5>
+    <version>3.6.3</version>
+    <time>1670259638</time>
+    <user>dimstar_suse</user>
+    <comment>- add split-provides for libkrunfw-sev-devel 
+
+- Switch to a &quot;proper library&quot; packaging layout. Downstreams (like
+  libkrun itself and crun) are now able to cope with this. So do it,
+  and get rid of a lot of RPM lint warnings and errors!
+- Make it easier to enable/disable building the SEV-enabled libraries
+- Add some tools into the SEV build &amp; packages
+* Patches dropped:
+  dont-set-soname-as-it-is-plugin-for-us.patch</comment>
+    <requestid>1040156</requestid>
+  </revision>
 </revisionlist>
