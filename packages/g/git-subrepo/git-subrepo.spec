@@ -1,7 +1,7 @@
 #
 # spec file for package git-subrepo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           git-subrepo
-Version:        0.4.3
+Version:        0.4.5
 Release:        0
 Summary:        Git Submodule Alternative
 License:        MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/ingydotnet/git-subrepo
-Source:         https://github.com/ingydotnet/git-subrepo/archive/0.4.3.tar.gz
+Source:         https://github.com/ingydotnet/git-subrepo/archive/%{version}.tar.gz
 Patch0:         fix-shebangs.patch
 BuildRequires:  bash >= 4
-BuildRequires:  git >= 2.7
+BuildRequires:  git-core >= 2.7
 BuildRequires:  make
 Requires:       bash >= 4
-Requires:       git >= 2.7
+Requires:       git-core >= 2.7
 BuildArch:      noarch
 
 %description

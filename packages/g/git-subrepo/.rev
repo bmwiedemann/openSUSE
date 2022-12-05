@@ -17,4 +17,23 @@ https://repology.org/project/git-subrepo/versions</comment>
     <comment></comment>
     <requestid>850472</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>398ac098987facebff5faffcb8dcd0c5</srcmd5>
+    <version>0.4.5</version>
+    <time>1670259667</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.5:
+  * Add --file option
+  * Fix git subrepo status command for subrepos that share a common prefix.
+  * Don't allow -b and --all
+  * Fix documentation links
+  * fix tests to support use of a default branch git config that is not
+    &quot;master&quot;
+  * pass --force to git add so a user's global .gitignore does not affect
+    tests
+  * Fix .rc and enable-completion.sh for zsh before 5.1
+  * Better format for options
+  * The fpath variable is an array; expand correctly</comment>
+    <requestid>1040061</requestid>
+  </revision>
 </revisionlist>

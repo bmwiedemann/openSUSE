@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:19:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.5:
+  * Add --file option
+  * Fix git subrepo status command for subrepos that share a common prefix.
+  * Don't allow -b and --all
+  * Fix documentation links
+  * fix tests to support use of a default branch git config that is not
+    "master"
+  * pass --force to git add so a user's global .gitignore does not affect
+    tests
+  * Fix .rc and enable-completion.sh for zsh before 5.1
+  * Better format for options
+  * The fpath variable is an array; expand correctly
+
+-------------------------------------------------------------------
 Tue Nov 24 11:57:33 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Update to 0.4.3
