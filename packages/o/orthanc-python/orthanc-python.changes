@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 07:24:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0:
+  * New functions from the SDK wrapped in Python:
+    - orthanc.RegisterIncomingCStoreInstanceFilter()
+    - orthanc.RegisterReceivedInstanceCallback()
+
+-------------------------------------------------------------------
 Wed Sep  1 07:49:14 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 3.4 

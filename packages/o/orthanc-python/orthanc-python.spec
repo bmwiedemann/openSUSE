@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-python
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,11 @@
 
 
 Name:           orthanc-python
+Version:        4.0
+Release:        0
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        3.4
-Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-python/OrthancPython-%{version}.tar.gz
 Source11:       orthanc-python-readme.openSUSE
@@ -38,19 +38,17 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libuuid-devel
-BuildRequires:  orthanc-devel
+BuildRequires:  orthanc-devel >= 1.10
 BuildRequires:  orthanc-source
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(python3)
-
 Requires:       orthanc
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This plugin can be used to write Orthanc plugins in Python instead of C++
-See /usr/share/doc/packages/orthanc/orthanc-python-readme.openSUSE
+See %{_docdir}/orthanc/orthanc-python-readme.openSUSE
 
 %prep
 %setup -q -n OrthancPython-%{version}
@@ -66,7 +64,7 @@ echo %{python3_version}
        -DORTHANC_FRAMEWORK_SOURCE=path \
        -DBoost_NO_BOOST_CMAKE=ON \
        -DPYTHON_VERSION=%{python3_version} \
-       -DORTHANC_FRAMEWORK_ROOT=/usr/src/orthanc/OrthancFramework/Sources \
+       -DORTHANC_FRAMEWORK_ROOT=%{_prefix}/src/orthanc/OrthancFramework/Sources \
        -DLIB_INSTALL_DIR=%{_libdir}/share/orthanc/plugins/
 
 %cmake_build %{?_smp_mflags}
@@ -79,18 +77,17 @@ echo %{python3_version}
 mkdir -p -m 755 %{buildroot}%{_libdir}/share/orthanc/plugins
 mkdir -p -m 755 %{buildroot}%{_docdir}/orthanc
 
-mv %{buildroot}%{_prefix}/share/orthanc/plugins/*.so* %{buildroot}%{_libdir}/share/orthanc/plugins/.
+mv %{buildroot}%{_datadir}/orthanc/plugins/*.so* %{buildroot}%{_libdir}/share/orthanc/plugins/.
 
 #Link from lib64 to orthanc plugin-directory, where it is expected
 ln -s ../../../..%{_libdir}/share/orthanc/plugins/libOrthancPython.so.%{version} \
-      %{buildroot}%{_prefix}/share/orthanc/plugins/libOrthancPython.so
+      %{buildroot}%{_datadir}/orthanc/plugins/libOrthancPython.so
 
 rm %{buildroot}%{_libdir}/share/orthanc/plugins/*.so
 
-cp %{S:11} %{buildroot}%{_docdir}/orthanc/.
+cp %{SOURCE11} %{buildroot}%{_docdir}/orthanc/.
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
@@ -101,8 +98,8 @@ cp %{S:11} %{buildroot}%{_docdir}/orthanc/.
 %dir %{_libdir}/share/orthanc
 %dir %{_libdir}/share/orthanc/plugins
 %{_libdir}/share/orthanc/plugins/*.so*
-%dir %{_prefix}/share/orthanc
-%dir %{_prefix}/share/orthanc/plugins
-%{_prefix}/share/orthanc/plugins/*.so*
+%dir %{_datadir}/orthanc
+%dir %{_datadir}/orthanc/plugins
+%{_datadir}/orthanc/plugins/*.so*
 
 %changelog
