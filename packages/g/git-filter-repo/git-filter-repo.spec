@@ -1,7 +1,7 @@
 #
 # spec file for package git-filter-repo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,21 +22,17 @@
 %global gitexecdir %{_libexecdir}/git
 
 Name:           git-filter-repo
-Version:        2.34.0
+Version:        2.38.0
 Release:        0
 Summary:        Quickly rewrite git repository history (git-filter-branch replacement)
 License:        GPL-2.0-only OR MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/newren/git-filter-repo
-#
 Source0:        https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
-#
 BuildArch:      noarch
-#
 BuildRequires:  %{python_module devel}
-BuildRequires:  git
-#
-Requires:       git
+BuildRequires:  git-core
+Requires:       git-core
 
 %description
 git filter-repo is a versatile tool for rewriting history, which includes
