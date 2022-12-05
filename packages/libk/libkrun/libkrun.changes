@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Dec 05 13:14:11 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.4.8:
+  * Bump version to v1.4.8
+  * macos: fix mapped volumes initialization
+  * Bump version to v1.4.6
+  * sev: fix a new clippy error
+  * fs: fix new clippy issue in descriptor_utils
+  * macos: init: register rosetta in binfmt_misc
+  * macos: map Rosetta directory if present
+  * macos: implement the ioctl Rosetta needs
+- add new-kvm-ioctl.patch
+
+-------------------------------------------------------------------
+Mon Dec  5 08:44:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add proper split-provides 
+- add cargo_audit
+
+-------------------------------------------------------------------
+Thu Nov 03 13:16:17 UTC 2022 - predivan@mts.rs
+
+- Update to version 1.4.6:
+  * Bump version to v1.4.6
+  * fs/macos: Fix some clippy warnings
+  * hvf: write reg on sysreg trap
+  * Bump version to v1.4.5
+  * sev: Don't use a static initrd size
+  * sev: Update to the final KBS attestation protocol
+  * vsock: Fix signal logic in Muxer
+  * examples/Makefile: Remove launch-tee binary on make clean
+
+-------------------------------------------------------------------
+Thu Sep 29 23:42:09 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to a "proper library" packaging layout. Downstreams (namely,
+  crun) are now able to cope with this. So do it, and get rid of a lot
+  of RPM lint warnings and errors!
+- Make it easier to turn on/off building the SEV-enabled library
+* Patches dropped:
+  not-set-soname-as-it-is-plugin.patch
+
+-------------------------------------------------------------------
 Thu Sep 29 09:01:33 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Build the SEV version first, so we don't overwrite the non-SEV

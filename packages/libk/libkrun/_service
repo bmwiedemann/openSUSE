@@ -2,13 +2,17 @@
 
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="revision">v1.4.4</param>
+    <param name="revision">v1.4.8</param>
     <param name="url">https://github.com/containers/libkrun.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">libkrun</param>
+    <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
     <param name="srcdir">libkrun</param>
   </service>
   <service mode="buildtime" name="tar" />

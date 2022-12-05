@@ -63,4 +63,41 @@
     <comment></comment>
     <requestid>1006910</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0859dfd13fbc9586e3cab59a056deadd</srcmd5>
+    <version>1.4.8</version>
+    <time>1670259642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.8:
+  * Bump version to v1.4.8
+  * macos: fix mapped volumes initialization
+  * Bump version to v1.4.6
+  * sev: fix a new clippy error
+  * fs: fix new clippy issue in descriptor_utils
+  * macos: init: register rosetta in binfmt_misc
+  * macos: map Rosetta directory if present
+  * macos: implement the ioctl Rosetta needs
+- add new-kvm-ioctl.patch
+
+- add proper split-provides 
+- add cargo_audit
+
+- Update to version 1.4.6:
+  * Bump version to v1.4.6
+  * fs/macos: Fix some clippy warnings
+  * hvf: write reg on sysreg trap
+  * Bump version to v1.4.5
+  * sev: Don't use a static initrd size
+  * sev: Update to the final KBS attestation protocol
+  * vsock: Fix signal logic in Muxer
+  * examples/Makefile: Remove launch-tee binary on make clean
+
+- Switch to a &quot;proper library&quot; packaging layout. Downstreams (namely,
+  crun) are now able to cope with this. So do it, and get rid of a lot
+  of RPM lint warnings and errors!
+- Make it easier to turn on/off building the SEV-enabled library
+* Patches dropped:
+  not-set-soname-as-it-is-plugin.patch</comment>
+    <requestid>1040286</requestid>
+  </revision>
 </revisionlist>

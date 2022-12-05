@@ -16,9 +16,23 @@
 #
 
 
+%define sev 1
+
+%define descr \
+libkrun is a dynamic library that allows programs to easily acquire the\
+ability to run processes in a partially isolated environment using KVM Virtualization.\
+It integrates a VMM (Virtual Machine Monitor, the userspace side of an Hypervisor) with\
+the minimum amount of emulated devices required to its purpose, abstracting most of the\
+complexity that comes from Virtual Machine management, offering users a simple C API.
+
+# However sev has been defined, reset it if we're not on x86
+%ifnarch x86_64
+%define sev 0
+%endif
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.4.4
+Version:        1.4.8
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -26,55 +40,125 @@ URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-# libkrunfw is a plugin for us, more than a full-fledged library,
-# so let's avoid setting up a SONAME etc (which upstream is now doing).
-Patch1:         not-set-soname-as-it-is-plugin.patch
+Patch1:         new-kvm-ioctl.patch
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo >= 1.43.0
 BuildRequires:  gcc
 BuildRequires:  glibc-static
-BuildRequires:  libkrunfw >= 0.6
+BuildRequires:  libkrunfw-devel >= 3.6.3
 BuildRequires:  libopenssl-devel
+BuildRequires:  patchelf
 BuildRequires:  rust
-Requires:       libkrunfw >= 0.6
+%if %{sev}
+BuildRequires:  libkrunfw-sev-devel >= 3.6.3
+%endif
 %ifarch aarch64
 BuildRequires:  libfdt-devel >= 1.6.0
 %endif
+# For handling the transition from (very) old versions of the packages
 Conflicts:      libkrun-devel <= 0.1.7
 Conflicts:      libkrun0 <= 0.1.7
 
 %description
-libkrun is a dynamic library that allows programs to easily acquire the ability to run processes in a partially isolated environment using KVM Virtualization.
+%{summary}
 
-It integrates a VMM (Virtual Machine Monitor, the userspace side of an Hypervisor) with the minimum amount of emulated devices required to its purpose, abstracting most of the complexity that comes from Virtual Machine management, offering users a simple C API.
+%package -n %{name}1
+Summary:        A dynamic library providing KVM-based process isolation capabilities
+Obsoletes:      libkrun <= 1.4.1
+
+%description -n %{name}1
+%{descr}
+
+%package devel
+Summary:        Header files and libraries for libkrun development
+Requires:       %{name}1 = %{version}-%{release}
+
+%description devel
+%{descr}
+
+This package containes the libraries and headers needed to develop programs
+that use libkrun Virtualization-based process isolation capabilities.
+
+%if %{sev}
+%package sev1
+Summary:        Dynamic library providing Virtualization-based process isolation capabilities (SEV variant)
+Obsoletes:      libkrun <= 1.4.1
+
+%description sev1
+%{descr}
+
+This package contains the library that enables using AMD SEV to create a
+microVM-based Trusted Execution Environment (TEE).
+
+%package sev-devel
+Summary:        Header files and libraries for libkrun development
+Requires:       %{name}-devel = %{version}-%{release}
+Requires:       %{name}-sev1 = %{version}-%{release}
+Provides:       %{name}:%{_libdir}/libkrun-sev.so
+Obsoletes:      %{name} < %{version}
+
+%description sev-devel
+%{descr}
+
+This package containes the libraries and headers needed to develop programs that
+use libkrun-sev Virtualization-based process isolation capabilities.
+%endif
 
 %prep
-%setup -qa1
-%patch1 -p1
+%autosetup -p1 -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}
-%ifarch x86_64
+
+%make_build
+
+%if %{sev}
 %make_build SEV=1
 %endif
-%make_build
 
 %install
 export RUSTFLAGS=%{rustflags}
-%ifarch x86_64
-%make_install SEV=1 PREFIX=%{_prefix}
-%endif
+
 %make_install PREFIX=%{_prefix}
 
-%files
+%if %{sev}
+%make_install SEV=1 PREFIX=%{_prefix}
+%endif
+
+%files -n %{name}1
 %license LICENSE
 %doc README.md
+%{_libdir}/libkrun.so.%{version}
+%{_libdir}/libkrun.so.1
+
+%files devel
 %{_libdir}/libkrun.so
-%ifarch x86_64
-%{_libdir}/libkrun-sev.so
-%endif
 %{_includedir}/libkrun.h
+
+%post -n %{name}1 -p /sbin/ldconfig
+
+%postun -n %{name}1 -p /sbin/ldconfig
+
+%if %{sev}
+%files sev1
+%license LICENSE
+%doc README.md
+%{_libdir}/libkrun-sev.so.%{version}
+%{_libdir}/libkrun-sev.so.1
+
+%files sev-devel
+%{_libdir}/libkrun-sev.so
+
+%post sev1 -p /sbin/ldconfig
+
+%postun sev1 -p /sbin/ldconfig
+%endif
+
+%if %{with check}
+%check
+%cargo_test
+%endif
 
 %changelog
