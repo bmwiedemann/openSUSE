@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:07:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Update of major version of fail2ban with primary target to fix a
+    dovecot-filter regression #3370.
+  * See the ChangeLog for more information.
+
+-------------------------------------------------------------------
 Wed Oct 12 08:11:52 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.1:

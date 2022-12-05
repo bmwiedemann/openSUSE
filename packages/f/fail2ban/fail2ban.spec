@@ -22,12 +22,12 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fail2ban
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Bans IP addresses that make too many authentication failures
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-URL:            http://www.fail2ban.org/
+URL:            https://www.fail2ban.org/
 Source0:        https://github.com/fail2ban/fail2ban/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.sysconfig
@@ -50,7 +50,6 @@ Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 Patch300:       fail2ban-opensuse-service-sfw.patch
 # PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
 Patch301:       harden_fail2ban.service.patch
-
 BuildRequires:  fdupes
 BuildRequires:  logrotate
 BuildRequires:  python-rpm-macros
@@ -272,7 +271,6 @@ export LANG=en_US.UTF-8
 %endif
 
 %files
-%defattr(-, root, root)
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/action.d
 %dir %{_sysconfdir}/%{name}/%{name}.d
@@ -327,14 +325,12 @@ export LANG=en_US.UTF-8
 %if !0%{?suse_version} > 1500
 %if 0%{?_unitdir:1}
 %files -n SuSEfirewall2-%{name}
-%defattr(-,root,root)
 %{_unitdir}/SuSEfirewall2.service.d
 %{_unitdir}/%{name}.service.d
 %endif
 %endif
 
 %files -n monitoring-plugins-%{name}
-%defattr(-,root,root)
 %license COPYING
 %doc files/nagios/README
 %dir %{_libexecdir}/nagios
