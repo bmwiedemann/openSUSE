@@ -5259,4 +5259,12 @@
 - merge oui data base from 2015-06-19</comment>
     <requestid>847429</requestid>
   </revision>
+  <revision rev="766" vrev="2">
+    <srcmd5>1c607f22ef702521452d288ab01ba8dc</srcmd5>
+    <version>20201026_100149</version>
+    <time>1670259699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040162</requestid>
+  </revision>
 </revisionlist>

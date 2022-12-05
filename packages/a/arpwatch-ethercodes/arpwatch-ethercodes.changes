@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 11 11:11:11 UTC 2022 - olaf@aepfle.de
+
+- sort existing oui.csv to show differences in future updates
+- sort downloaded oui.csv
+- move vim commands to a place where vim can find the commands
+
+-------------------------------------------------------------------
 Tue Nov 10 08:42:20 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Removed URL for source0 as this causes issues with our bots

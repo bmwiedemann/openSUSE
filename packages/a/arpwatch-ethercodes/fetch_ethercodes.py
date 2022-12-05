@@ -42,7 +42,6 @@ License:
 {license}
 """
 #
-# vim:set et ts=8 sw=4:
 #
 
 __version__ = '0.3'
@@ -159,7 +158,32 @@ def fetch_infile(infile):
     # fetch oui.csv
     if fetchoui:
         vout(1, 'fetch {ouifile}')
-        open(infile, 'wb').write(req.read())
+        content = req.read()
+        lines = content.split(sep=b'\r')
+        heading = lines.pop(0).replace(b'\n', b'', 1)
+
+        sort_dict = {}
+        for line in lines:
+            stripped = line.replace(b'\n', b'', 1)
+            items = stripped.split(b',', 3)
+            if len(stripped) == 0:
+                continue
+            OUI = items[1].decode('ascii').lower()
+            if OUI in sort_dict:
+                sort_dict[OUI].append(stripped)
+            else:
+                sort_dict[OUI] = [stripped]
+
+        with open(infile, 'wb') as f:
+            CRLF = b'\r\n'
+            f.write(heading)
+            f.write(CRLF)
+            for OUI in sorted(sort_dict.keys()):
+                items = sort_dict[OUI]
+                for item in items:
+                    f.write(item)
+                    f.write(CRLF)
+                        
         os.utime(infile, (ouitime, ouitime))
 
     return ouidate
@@ -296,3 +320,4 @@ def main(argv = None):
 
 if __name__ == '__main__':
     sys.exit(main())
+# vim: ts=8 shiftwidth=8 expandtab
