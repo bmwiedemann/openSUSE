@@ -34,7 +34,6 @@ BuildRequires:  clang%{_llvm_version}-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm%{_llvm_version}-devel
-BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -61,9 +60,7 @@ This package contains additional scripts for using %{name} as automated
 refactoring tool.
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{name}
 sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 
 %build

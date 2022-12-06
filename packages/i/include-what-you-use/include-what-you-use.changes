@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  5 03:23:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use autosetup macro.
+- Remove unneeded BuildRequires on Python 2. 
+
+-------------------------------------------------------------------
 Sun Apr 10 17:15:50 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.18, update LLVM/Clang to version 14.
