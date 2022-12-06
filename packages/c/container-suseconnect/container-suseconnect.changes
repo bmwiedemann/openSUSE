@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Tue Dec  6 14:04:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0 (jsc#PED-1710):
+  * Fix docker build example for non-SLE hosts
+  * Minor fixes to --help and README
+  * Improve documentation when building with podman on non-SLE host
+  * Add flag --log-credentials-errors
+  * Add GitHub actions
+  * Remove vendor/ dir
+  * Cleanup tests
+  * Update capture to the 1.0.0 release
+  * Bump cli to 2.34.4
+  * Update cli to 2.23.5
+  * Add dependabot
+  * Use URL.Redacted() to avoid security scanner warning
+  * Regcode fix
+
+-------------------------------------------------------------------
+Sat Mar 27 08:18:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- strip binaries (removes 4MB/25% of the uncompressed size) (bsc#1186827)
+
+-------------------------------------------------------------------
+Tue Jun 30 14:14:49 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 2.3.0 (bsc#1173375)
+    - Introduce "containerbuild-regionsrv" support and add
+      "susecloud" zypper url-resolver plugin to allow building SLE
+      containers on public cloud on-demand instances
+    - Fix usage with RMT when repositories require authentication
+- remove "%gosrc" call to avoid including all the go sources into
+  the main package.
+
+-------------------------------------------------------------------
+Thu Nov 28 10:01:56 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 2.2.0 (bsc#1157960)
+    - Update go version and dependencies
+    - Fix usage with RMT and SMT
+    - parse the /etc/products.d/*.prod files
+
+-------------------------------------------------------------------
+Wed Jun 19 13:45:28 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to 2.1.0 (bsc#1138731, bsc#1154247)
+    - Fix function comments based on best practices from Effective Go
+    - Interacting with SCC behind proxy and SMT
+
+-------------------------------------------------------------------
+Tue Dec 11 11:30:59 UTC 2018 - sgrunert@suse.com
+
+- Update to 2.0.0 (bsc#1119496)
+    - Add command line interface
+    - Add `ADDITIONAL_MODULES` capability to enable further extension
+      modules during image build and run
+    - Add documentation about how to build docker images on non SLE
+      distributions
+    - Improve documentation to clarify how container-suseconnect
+      works in a Dockerfile
+    - Improve error handling on non SLE hosts
+    - Fix bug which makes container-suseconnect work on SLE15 based
+      distributions
+- Update build to use latest golang-packaging
+- Added container-suseconnect-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Mar  1 14:27:26 UTC 2018 - jmassaguerpla@suse.com
+
+- Remove gcc since the latest go versions already support s390x, ppc64le
+  Remove 0001-Added-TLS-root-CA-certificates-for-SLE-11.patch: this
+  was needed for gcc builds. (fix bsc#1083189)
+
+-------------------------------------------------------------------
+Wed Jul 27 14:29:18 UTC 2016 - cbrauner@suse.de
+
+- add aarch64 to supported gc architectures
+
+-------------------------------------------------------------------
+Wed Nov 11 14:26:23 UTC 2015 - fcastelli@suse.com
+
+- Update to version 1.1.0:
+  - Improve logging
+
+-------------------------------------------------------------------
+Wed Nov 11 13:37:48 UTC 2015 - fcastelli@suse.com
+
+- Added 0001-Added-TLS-root-CA-certificates-for-SLE-11.patch to handle
+  SLE11 certificates on non-x86 architectures
+
+  work-around for bsc#953831
+
+-------------------------------------------------------------------
+Mon Jul 20 07:51:19 UTC 2015 - fcastelli@suse.com
+
+- Build using gcc on platforms where gc compiler is not available
+
+-------------------------------------------------------------------
+Thu Jun 18 16:49:20 UTC 2015 - jmassaguerpla@suse.com
+
+- Make SUSEConnect configuration file optional
+  Update to v1.0.1
+
+-------------------------------------------------------------------
+Tue Jun 16 16:08:09 UTC 2015 - jmassaguerpla@suse.com
+
+- Update to v1.0.0
+
+-------------------------------------------------------------------
+Thu Jun 11 09:56:16 UTC 2015 - fcastelli@suse.com
+
+- Update to latest version from git
+
+-------------------------------------------------------------------
+Thu Jun  4 12:34:14 UTC 2015 - fcastelli@suse.com
+
+- Fixed building
+
+-------------------------------------------------------------------
+Thu Jun  4 08:20:15 UTC 2015 - fcastelli@suse.com
+
+- Update to latest version of container-suseconnect
+
+-------------------------------------------------------------------
+Wed Jun  3 12:04:23 UTC 2015 - fcastelli@suse.com
+
+- Fix libzypp requirement, it must be a runtime one
+
+-------------------------------------------------------------------
+Wed Jun  3 10:05:17 UTC 2015 - fcastelli@suse.com
+
+- Relax libzypp requirement to build the package also on SLE11SP3
+
+-------------------------------------------------------------------
+Fri May 29 12:33:03 UTC 2015 - dmacvicar@suse.de
+
+- initial package

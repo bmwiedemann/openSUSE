@@ -1,0 +1,18 @@
+<services>
+    <service mode="disabled" name="tar_scm">
+        <param name="url">https://github.com/SUSE/container-suseconnect.git</param>
+        <param name="scm">git</param>
+        <param name="filename">container-suseconnect</param>
+        <param name="exclude">.git</param>
+        <param name="versionformat">2.4.0</param>
+        <param name="revision">v2.4.0</param>
+    </service>
+    <service mode="disabled" name="recompress">
+        <param name="file">*.tar</param>
+        <param name="compression">zst</param>
+    </service>
+    <service mode="disabled" name="set_version"/>
+    <service mode="disabled" name="go_modules">
+        <param name="compression">zst</param>
+    </service>
+</services>
