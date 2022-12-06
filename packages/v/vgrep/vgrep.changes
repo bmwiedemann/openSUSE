@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:15:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.6.1:
+  * delete/refine: fix adjusting indices
+  * build(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * Add environment variable to switch the order of LINEFLAG and file
+  * Add missing export for EDITOR
+  * simplify test by removing parameter expansion
+  * Add vendored dependency google/shlex
+  * Tests for vgrep --show .. and various EDITOR values
+  * Support opening file at line number in nano
+  * Update dependencies
+  * Allow passing command with options through the $EDITOR env variable
+  * allow ripgrep to use configuration file
+  * Dockerfile: use golang:latest
+  * make .install.go-md2man: use go install
+
+-------------------------------------------------------------------
 Thu Jan 27 06:35:12 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 2.6.0:

@@ -110,4 +110,25 @@
     <comment></comment>
     <requestid>949389</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a6e6af37caf1ef5abbd4a1a5911481fe</srcmd5>
+    <version>2.6.1</version>
+    <time>1670337339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.6.1:
+  * delete/refine: fix adjusting indices
+  * build(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * Add environment variable to switch the order of LINEFLAG and file
+  * Add missing export for EDITOR
+  * simplify test by removing parameter expansion
+  * Add vendored dependency google/shlex
+  * Tests for vgrep --show .. and various EDITOR values
+  * Support opening file at line number in nano
+  * Update dependencies
+  * Allow passing command with options through the $EDITOR env variable
+  * allow ripgrep to use configuration file
+  * Dockerfile: use golang:latest
+  * make .install.go-md2man: use go install</comment>
+    <requestid>1040653</requestid>
+  </revision>
 </revisionlist>
