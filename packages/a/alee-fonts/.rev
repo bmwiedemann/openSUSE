@@ -76,4 +76,14 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>75bc9dae8b288fbe4c696a4e6f3800d3</srcmd5>
+    <version>13.1</version>
+    <time>1670333023</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.1:
+  * New maintainer, team maintained
+  * improved glyphs, new glyphs (forwarded request 1040447 from dirkmueller)</comment>
+    <requestid>1040450</requestid>
+  </revision>
 </revisionlist>

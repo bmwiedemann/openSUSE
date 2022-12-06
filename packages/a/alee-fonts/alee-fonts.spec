@@ -1,7 +1,7 @@
 #
 # spec file for package alee-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           alee-fonts
-Version:        13
+Version:        13.1
 Release:        0
 Summary:        Korean TrueType fonts
 License:        Artistic-1.0+
 Group:          System/X11/Fonts
-Url:            http://packages.debian.org/unstable/source/ttf-alee
-Source0:        http://ftp.debian.org/debian/pool/main/t/ttf-alee/ttf-alee_%{version}.tar.gz
+URL:            https://packages.debian.org/unstable/source/ttf-alee
+Source0:        http://deb.debian.org/debian/pool/main/f/fonts-alee/fonts-alee_%{version}.tar.xz
 BuildRequires:  fontpackages-devel
-%reconfigure_fonts_prereq
 Provides:       scalable-font-ko
 Provides:       ttf-alee = %{version}
 Provides:       locale(ko)
 Obsoletes:      ttf-alee <= 12
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Korean TrueType fonts by A Lee.
 
 %prep
-%setup -q -n ttf-alee-%{version}
+%setup -q -n fonts-alee-%{version}
 
 %build
 chmod 644 debian/rules
@@ -49,8 +48,7 @@ install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets -c
 
 %files
-%defattr(-, root,root)
-%doc COPYING
+%license COPYING
 %doc debian
 %{_ttfontsdir}
 
