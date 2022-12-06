@@ -1,3 +1,10 @@
+--------------------------------------------------------------------
+Mon Dec 5 18:34:40 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#140
+- add basic support for systemd-boot
+- 0.940
+
 -------------------------------------------------------------------
 Tue Aug  2 12:19:13 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 

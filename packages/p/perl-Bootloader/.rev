@@ -1565,4 +1565,12 @@ Fix error in installation to extended partition (bnc#750897)
 - remove /boot/boot.readme while at it so we stay out of there (forwarded request 992317 from lnussel)</comment>
     <requestid>992343</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>39f9e4755d44ea862574490f5fc3490e</srcmd5>
+    <version>0.940</version>
+    <time>1670332966</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1040404</requestid>
+  </revision>
 </revisionlist>
