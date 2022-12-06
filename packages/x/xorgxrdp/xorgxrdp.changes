@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:22:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.19:
+  * We decided to bump up version from v0.2 to v0.9 to indicate xorgxrdp v0.9
+    is compatible with xrdp v0.9.
+  * Too fast scroll mitigation
+  * see https://github.com/neutrinolabs/xorgxrdp/releases/tag/v0.9.19
+
+-------------------------------------------------------------------
 Wed Jan  6 09:02:18 UTC 2021 - Felix Zhang <fzhang.foss@gmail.com>
 
 - Update to version 0.2.15

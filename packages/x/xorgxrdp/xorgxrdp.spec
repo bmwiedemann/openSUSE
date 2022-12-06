@@ -1,7 +1,7 @@
 #
 # spec file for package xorgxrdp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xorgxrdp
-Version:        0.2.15
+Version:        0.9.19
 Release:        0
 Summary:        Xorg drivers for xrdp
 License:        X11
@@ -30,19 +30,20 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  nasm
+BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server-sdk
 BuildRequires:  xrdp-devel
 BuildRequires:  pkgconfig(xorg-macros)
 Requires:       xrdp >= 0.9.1
+ExcludeArch:    s390 s390x
+%{x11_abi_videodrv_req}
+%{x11_abi_xinput_req}
 # For Leap 42.x and SLE 12.x <= 12.3, keep to use libXfont-devel
 %if 0%{?suse_version} > 1320 || 0%{?sle_version}  > 120300
 BuildRequires:  libXfont2-devel
 %else
 BuildRequires:  libXfont-devel
 %endif
-ExcludeArch:    s390 s390x
-%{x11_abi_videodrv_req}
-%{x11_abi_xinput_req}
 
 %description
 This package contains Xorg driver modules for xrdp
@@ -53,14 +54,15 @@ This package contains Xorg driver modules for xrdp
 %build
 sh ./bootstrap
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
-%doc README.md COPYING
+%license COPYING
+%doc README.md
 %{_libdir}/xorg/modules/drivers/xrdpdev_drv.so
 %dir %{_libdir}/xorg/modules/input
 %{_libdir}/xorg/modules/input/xrdpkeyb_drv.so
