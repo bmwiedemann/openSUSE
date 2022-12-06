@@ -1,6 +1,7 @@
+#
 # spec file for package mpris-ctl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +17,9 @@
 
 
 Name:           mpris-ctl
-Version:        0.8.3
+Version:        0.8.5
 Release:        0
-Summary:        Basic mpris player control for linux command line 
+Summary:        Basic mpris player control for linux command line
 License:        MIT
 URL:            https://github.com/mariusor/mpris-ctl
 Source:         https://github.com/mariusor/mpris-ctl/archive/refs/tags/v%{version}.tar.gz
@@ -36,7 +37,7 @@ DBus interface, targeted at keyboard based WMs.
 %autosetup -p1
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} INSTALL_PREFIX=%{_prefix}
@@ -45,6 +46,6 @@ make install DESTDIR=%{buildroot} INSTALL_PREFIX=%{_prefix}
 %license LICENSE
 %doc README.md
 %{_bindir}/mpris-ctl
-%{_mandir}/man1/mpris-ctl.1%{ext_man}
+%{_mandir}/man1/mpris-ctl.1%{?ext_man}
 
 %changelog
