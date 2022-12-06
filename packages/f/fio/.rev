@@ -509,4 +509,12 @@ This is the first openSUSE version to include gfio. gfio is in it's own package.
     <comment></comment>
     <requestid>1003710</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>98fb2b92f351a8beaba6680a4b6616de</srcmd5>
+    <version>3.33</version>
+    <time>1670333086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040611</requestid>
+  </revision>
 </revisionlist>
