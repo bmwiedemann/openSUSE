@@ -18,7 +18,7 @@
 
 %bcond_with zeitgeist
 Name:           xplayer
-Version:        2.4.2
+Version:        2.4.4
 Release:        0
 Summary:        Generic media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
