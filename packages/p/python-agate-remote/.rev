@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>894793</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>35e39ca498f2895d02b976b94be5ad8a</srcmd5>
+    <version>0.2.1</version>
+    <time>1670333015</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.1:
+  * Add ``requests_encoding`` keyword argument to ``from_url``.</comment>
+    <requestid>1040419</requestid>
+  </revision>
 </revisionlist>
