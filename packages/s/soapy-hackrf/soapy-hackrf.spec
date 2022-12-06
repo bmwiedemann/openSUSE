@@ -1,8 +1,7 @@
 #
 # spec file for package soapy-hackrf
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,14 +13,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soapy_modver 0.8
 %define soapy_modname soapysdr%{soapy_modver}-module-hackrf
 Name:           soapy-hackrf
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        SoapySDR HackRF module
 License:        MIT
