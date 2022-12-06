@@ -27,6 +27,7 @@ URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
 BuildRequires:  less
 BuildRequires:  zlib-devel
+Requires:       %{name}-bin = %{version}
 Provides:       man = %{version}
 Conflicts:      groff
 Conflicts:      groff-full
@@ -43,6 +44,15 @@ historical language for UNIX manuals.
 
 It includes a man(1) manual viewer and additional tools.
 For general information, see <http://mandoc.bsd.lv/>.
+
+%package bin
+Summary:        Format manual pages
+
+%description bin
+The mandoc utility formats manual pages for display.
+
+It is split out from the mandoc package as it can be useful
+even without replacing the entire man infrastructure.
 
 %prep
 %autosetup -p1
@@ -121,7 +131,6 @@ io.flush()
 %{_bindir}/apropos
 %{_bindir}/demandoc
 %{_bindir}/man
-%{_bindir}/mandoc
 %{_bindir}/soelim
 %{_bindir}/whatis
 %{_sbindir}/makewhatis
@@ -130,5 +139,8 @@ io.flush()
 %{_mandir}/man7/*.7%{?ext_man}
 %{_mandir}/man8/*.8%{?ext_man}
 %ghost %{_mandir}/mandoc.db
+
+%files bin
+%{_bindir}/mandoc
 
 %changelog

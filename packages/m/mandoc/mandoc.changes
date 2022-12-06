@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  2 09:23:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Split mandoc into a bin subpackage: tools like rpm2docserv rely
+  on mandoc to render the html pages, but they might be also wanted
+  on systems that do not want to replace the entire man
+  infrastructure.
+
+-------------------------------------------------------------------
 Thu Mar 10 14:50:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add build dependency for less to match behavior described in the
