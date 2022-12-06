@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:39:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.7:
+  * Cinnamon: Add support for the cornerbar applet.
+  * Cinnamon: Don't use the accent color for the panel-launcher hover state.
+  * GTK-4 directory and assets added in update-variations.py script (#401)
+  * Remove Mint-Y-Colors directory
+  * Remove hardcoded hover and pressed colors
+  * Rebuild generated files
+  * Soften light Cinnamon colors
+  * Remove accents in parts of the Cinnamon theme
+  * Generate CSS
+  * Update Pink
+  * Update Aqua, Orange, Purple, Red, Sand, Teal
+  * Update Blue and Grey
+  * Update Green
+  * Update Gtk3 thumbnails
+  * Update dark Gtk3 thumbnails
+  * Gtk2: Remove menubar-toolbar asset overrides
+  * Update Cinnamon thumbnails
+  * Mint-X: Update Cinnamon thumbnails
+  * Linux Mint: Update cinnamon thumbnail
+  * Update Gtk3 thumbnails
+  * Cinnamon: Add support for the cinnamon locate pointer
+  * Mint-X: Always use green for suggested-action buttons
+  * Mint-Y-Gtk4: Fix rounded corners on maximized windows
+  * Mint-X-Gtk4: Fix the suggested_bg_color variable
+  * Mint-Y-Gtk4: Fix treeview line colors
+  * Mint-Y-Gtk4: Improve dialog button styling
+  * Mint-Y-Gtk3: Fix dragging in the Nemo sidebar
+  * All Cinnamon: Fix artifacts in Main menu scrollview
+  * Mint-Y-Gtk3: Better match spacing between ssd and non ssd titlebar buttons
+  * Mint-Y: Add initial support for Gtk4
+  * Mint-Y-Gtk3: Improve the styling of GtkCalendar
+  * Mint-Y-Xfwm: Better match csd and non-csd titlebar font colors
+  * Mint-X-Gtk3: Remove the 1px margin on xfce panel buttons
+  * Mint-Y-Gtk3: Fix context menu label colors in Seahorse
+  * Mint-Y-Gtk3: Set a color for spinbuttons
+  * Mint-Y-Gtk3: Fix the color of treeview grid and tree lines
+  * Mint-Y-Gtk2: Clean up an issue in Qt entries
+  * Mint-X-Gtk3: Port the gtk3 theme to sass
+
+-------------------------------------------------------------------
 Sat Nov 27 11:28:44 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.8.9.
