@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  3 17:05:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * ykpiv: Add support for AES management keys
+  * ykpiv: Better handling of connection reset
+  * ykpiv: Add support for T=0 protocol
+  * ykcs11: Support YubiKeys in NFC readers
+  * ykcs11: Support touch and PIN policies for imported private keys
+  * ykcs11: Support touch and PIN policy when generating keys
+  * ykcs11: Set length to -1 on function fail
+  * ykcs11: Ignore CKA_NAME_HASH_ALGORITHM and CKA_HASH_OF_SUBJECT_PUBLIC_KEY for certificates
+  * cmd: Support attestation in selfsign certificates
+  * build: Compile cleanly with openssl 1.1 and 3
+- add keyring
+
+-------------------------------------------------------------------
 Mon Jan 31 20:31:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.1:
