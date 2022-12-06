@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 22 15:24:12 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Move pam_env config files below /usr/etc
+
+-------------------------------------------------------------------
 Tue Oct 11 14:44:56 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - pam_env: Using libeconf for reading configuration and environment

@@ -260,7 +260,8 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
 mkdir -p %{buildroot}%{_distconfdir}/security
-mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf} %{buildroot}%{_distconfdir}/security/
+mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf,pam_env.conf} %{buildroot}%{_distconfdir}/security/
+mv %{buildroot}%{_sysconfdir}/environment %{buildroot}%{_distconfdir}/environment
 
 # Remove manual pages for main package
 %if !%{build_doc}
@@ -330,12 +331,12 @@ done
 %{_pam_vendordir}/other
 %{_pam_vendordir}/common-*
 %endif
-%config(noreplace) %{_sysconfdir}/environment
+%{_distconfdir}/environment
 %config(noreplace) %{_pam_secconfdir}/access.conf
 %{_distconfdir}/security/group.conf
 %{_distconfdir}/security/faillock.conf
 %{_distconfdir}/security/limits.conf
-%config(noreplace) %{_pam_secconfdir}/pam_env.conf
+%{_distconfdir}/security/pam_env.conf
 %if %{enable_selinux}
 %config(noreplace) %{_pam_secconfdir}/sepermit.conf
 %endif
