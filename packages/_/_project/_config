@@ -1292,6 +1292,17 @@ Macros:
 %rubydevelruby31() ruby3.1-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
 %rubydevelxruby31() %{expand:%%{rubydevelx%*}}
 
+### And now Ruby 3.2
+
+%rubygemsruby32() rubygem(ruby:3.2.0+3:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby32() %{expand:%%{rubygemsx%*}}
+
+%rubyruby32() ruby3.2 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby32() %{expand:%%{rubyx%*}}
+
+%rubydevelruby32() ruby3.2-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby32() %{expand:%%{rubydevelx%*}}
+
 ### Things to define default ruby stuff for the distro
 
 %rb_default_ruby        ruby31
