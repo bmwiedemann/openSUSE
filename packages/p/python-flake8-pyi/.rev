@@ -208,4 +208,22 @@
 </comment>
     <requestid>1033576</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>92902d6449ff6488f43a8d74fd1aeb66</srcmd5>
+    <version>22.11.0</version>
+    <time>1670333063</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1040478 from yarunachalam
+
+- Update to version 22.11.0: 
+    * Bugfixes:
+      Specify encoding when opening files. Prevents UnicodeDecodeError on Windows when the file contains non-CP1252 characters. Contributed by Avasam.
+      Significant changes have been made to the Y041 check. Previously, Y041 flagged &quot;redundant numeric unions&quot;
+      (e.g. float | int, complex | float or complex | int) in all contexts outside of type aliases. This was incorrect.
+      PEP 484 only specifies that type checkers should treat int as an implicit subtype of float in the specific context of parameter annotations
+      for functions and methods. Y041 has therefore been revised to only emit errors on &quot;redundant numeric unions&quot; in the context of parameter annotations.
+    * Other changes:
+      Support running with flake8 v6.</comment>
+    <requestid>1040556</requestid>
+  </revision>
 </revisionlist>

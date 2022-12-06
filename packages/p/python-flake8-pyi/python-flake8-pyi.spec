@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-flake8-pyi
-Version:        22.10.0
+Version:        22.11.0
 Release:        0
 Summary:        A plugin for flake8 to enable linting .pyi files
 License:        MIT
