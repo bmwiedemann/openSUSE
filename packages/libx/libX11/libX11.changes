@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Dec  5 20:33:29 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.1
+  This release fixes the --enable-thread-safety-constructor option to the
+  configure script to work as intended.  In the previous release, the changes
+  for this option may not have been enabled when the option was not specified
+  or when the --enable option was specified.
+  While we have enabled it by default, believing that doing so will reduce
+  the number of bugs users encounter running libX11 clients, in some cases
+  it may expose bugs in which clients had previously gotten away with calling
+  libX11 functions while a libX11 lock is already held, and thus now deadlock,
+  as discussed in https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/157  
+- let's hope this version doesn't suffer yet from the regressions
+  reported in boo#1205778, boo#1205818 (reported against 1.8.2);
+  we need libX11 thread safe for totem (GNOME 43) :-(
+
+-------------------------------------------------------------------
+Mon Dec  5 13:40:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- going back to version 1.7.5 for now to get rid of regressions,
+  which were introduced by trying to get thread-safe in libX11
+  itself 
+- re-introduced U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+  which was not yet in 1.7.5
+- supersedes the following patches
+  * U_0001-Add-XFreeThreads-function.patch
+  * U_0002-Don-t-use-pragma-inside-a-function-it-breaks-compili.patch
+  * U_0003-Fix-797755-Allow-X-IfEvent-to-reenter-libX11.patch
+  * U_0004-Indentation-fixes-around-recent-dpy-in_ifevent-chang.patch
+  * U_0005-ChkIfEv.c-fix-wrong-handling-of-dpy-in_ifevent.patch
+
+-------------------------------------------------------------------
 Sat Dec  3 10:20:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_0001-Add-XFreeThreads-function.patch
