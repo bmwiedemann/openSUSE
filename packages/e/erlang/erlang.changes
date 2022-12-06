@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 24 17:37:54 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 25.1.2:
+  * mnesia: Don't fill the logs if mnesia can't connect to all
+    nodes, due to partitioned network.
+  * erts: Add abandon carrier free utilization limit (+Muacful)
+    option to erts_alloc. This option allows the user to mark
+    unused segments in a memory carrier as re-useable by the OS if
+    needed. This functionality was a non-configurable default
+    before Erlang/OTP 25, but removed due to performance issues.
+
+-------------------------------------------------------------------
 Thu Oct 13 16:02:52 UTC 2022 - opensuse-packaging@opensuse.org
 
 - Changes for 25.1.1:
