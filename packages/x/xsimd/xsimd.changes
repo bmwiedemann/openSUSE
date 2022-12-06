@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  3 16:55:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * SVE: Implement scatter/gather
+  * SVE: Implement nearbyint and ldexp
+  * Use intrinsic instead of generic implementation of ldexp on avx512f 
+  * SVE: Implement fused operations for all types
+- drop 0001-Only-use-_mm_insert_epi64-on-64-bit-architecture.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Nov  9 10:25:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 9.0.1. No changelog.

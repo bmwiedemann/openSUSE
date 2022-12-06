@@ -7,4 +7,12 @@
     <comment>Optional build dependency for krita for vectorization</comment>
     <requestid>1035778</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>349a5fb18c91b038079617540a3de7cb</srcmd5>
+    <version>10.0.0</version>
+    <time>1670340935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040703</requestid>
+  </revision>
 </revisionlist>

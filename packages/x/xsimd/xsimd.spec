@@ -17,16 +17,15 @@
 
 
 Name:           xsimd
-Version:        9.0.1
+Version:        10.0.0
 Release:        0
 Summary:        C++ wrappers for SIMD intrinsics
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://xsimd.readthedocs.io/en/latest/
 Source0:        https://github.com/xtensor-stack/xsimd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- x86 build fix
-Patch0:         0001-Only-use-_mm_insert_epi64-on-64-bit-architecture.patch
 BuildRequires:  cmake
+BuildRequires:  doctest-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  make
