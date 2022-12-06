@@ -1,2 +1,0 @@
-# guideline does not cover multibuild/flavors
-addFilter("libparpack2-openmpi\d+.\w+: E: shlib-policy-name-error.*")

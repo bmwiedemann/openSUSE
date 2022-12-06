@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 19:10:27 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add memory constraints for pyarpack builds on s390x (slightly
+  higher than on other 64 bit archs).
+- Remove obsolete rpmlintrc.
+
+-------------------------------------------------------------------
 Tue Apr 26 21:26:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add an rpmlintrc for shlib-policy-name-error

@@ -113,7 +113,6 @@ License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/opencollab/arpack-ng
 Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz#/arpack-ng-%{version}.tar.gz
-Source99:       arpack-ng-rpmlintrc
 # PATCH-FEATURE-OPENSUSE arpack-ng-python-module-installdir.patch badshah400@gmail.com -- Install python module to standard python sitearch instead of libdir
 Patch0:         arpack-ng-python-module-installdir.patch
 # PATCH-FIX-UPSTREAM -- Fix mixup of relative and absolute libdir in pkgconfig files
