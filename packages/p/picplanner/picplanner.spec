@@ -17,7 +17,7 @@
 
 
 Name:           picplanner
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        A GTK application for photographers using GNU Linux or especially Linux phones
 License:        GPL-3.0-or-later

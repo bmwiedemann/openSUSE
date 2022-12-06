@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 21:04:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.2:
+  * Switch to AdwAboutDialog to match GNOME 43 design
+  * Update Flatpak dependencies
+  * Switch to GNOME 43 runtime
+
+-------------------------------------------------------------------
 Wed Sep 14 05:44:56 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.1:
