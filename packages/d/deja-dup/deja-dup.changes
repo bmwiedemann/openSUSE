@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:00:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 44.0:
+  + Refresh the visuals in a few places by using modern text
+    entries and the new About dialog.
+  + Newly created restic backups will now use compression.
+  + Fix a bug that prevented updating the folder option in the
+    Preferences window after changing to an external disk.
+  + Fix a bug that prevented switching to the restore view if the
+    app startd up in mobile mode (thin width).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug  8 02:51:28 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - The nautilus-deja-dup plugin has been dropped since version 42.4,
