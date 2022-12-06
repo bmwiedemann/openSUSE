@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-screensaver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-screensaver
-Version:        5.0.6
+Version:        5.6.2
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libxdo)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Requires:       iso-country-flags-png

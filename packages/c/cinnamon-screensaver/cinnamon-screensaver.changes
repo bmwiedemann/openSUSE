@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:41:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.2:
+ * Fix makepot for the backup locker, don't translate its command-line arguments.
+  * backup-locker: Simplify translations.
+  * l10n: Update POT
+  * muffinClient.py: Fix behavior when muffin isn't available,
+  * fix a typing error
+  * muffinClient.py: Remove leftover debugging line.
+  * Rework behavior surrounding sleep, display changes, fractional scaling.
+  * Rework stack management, separate backup locker lifecycle from main screensaver's.
+  * logging: Skip buffering for most log output, clean up debug logging.
+  * remove trailing semicolons (#419)
+  * replace equality None check with identity None check (#420)
+  * Add option to disable the backup locker.
+  * libcscreensaver: add missing gio-unix-2.0 dependency (#411)
+  * Improve signal handler tracking.
+  * grabs: Use the original (cs-)event-grabber for everything, not just the backup locker.
+  * cs-auth-pam.c: Use GMainloop instead of Gtk.
+  * Cleanup, fix some build warnings.
+  * unlock: Don't listen to the AccountsService is-loaded after startup.
+  * backup locker: Clean up quit sequence.
+  * Rework screensaver refreshing during suspend, lock, user-switch activities.
+  * authentication: improve interaction between the main process and the pam helper.
+  * Use xdo to feed escape keycodes into the focused window prior to attempting mouse and keyboard grabs.
+  * event-grabber: Better debugging.
+  * Increase the inactivity-timeout from 10s to 30s and get the screensaver to respect it.
+  * stage.py: Delay initialization of certain components during startup.
+  * cinnamon-screensaver-main.py: Add a 'hold' flag for debugging.
+  * stage.py: Reset the fallback window when a compositor change is detected.
+  * keybindings: Allow enter/return to activate the unlock and switch- user buttons.
+  * updated trackname and albumartist to use more suitable fonts (ubuntu font family).
+  * css: Make album info label larger
+  * journal fix (#398) 
+
+-------------------------------------------------------------------
 Wed Jun 30 06:23:14 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.0.6.
