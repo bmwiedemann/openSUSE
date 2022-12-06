@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  2 19:31:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.8:
+  * Major rewrite of documentation with Material for mkdocs
+  * Reduce memory use of TCP PI backend (closes #621)
+  * Fixed MODBUS_ERROR_RECOVERY_LINK not working on Windows (@embeddedmz)
+  * Replace Travis CI by GitHub CI
+  * Fix linker error for Windows (VCLinkerTool)
+  * Address check in single register / coil responses added (#463)
+  * Swap CRC bytes in request data but not at CRC computing (#397)
+  * Fix float endianness issue on big endian architecture
+  * Fix comment about EMBUNKEXC (closes #566)
+  * Fix network library detection on Haiku
+  * Fix typos (closes #620) 
+
+-------------------------------------------------------------------
 Thu Feb  3 22:27:20 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 3.1.7:

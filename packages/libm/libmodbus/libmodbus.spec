@@ -17,18 +17,16 @@
 
 
 Name:           libmodbus
-URL:            https://www.libmodbus.org/
+Version:        3.1.8
+Release:        0
 Summary:        Modbus Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.1.7
-Release:        0
-# WARNING: tarballs from GitHub are different!
-Source:         http://libmodbus.org/releases/%{name}-%{version}.tar.gz
+URL:            https://www.libmodbus.org/
+Source:         https://github.com/stephane/libmodbus/releases/download/v%{version}/libmodbus-%{version}.tar.gz
 BuildRequires:  asciidoc
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xmlto
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libmodbus is a free software library to send/receive data with a device which
@@ -72,31 +70,25 @@ export CFLAGS="%{optflags}"
 %configure\
 	--docdir=%{_docdir}/%{name}\
 	--disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 # Installed by %%doc
 rm %{buildroot}%{_docdir}/%{name}/{AUTHORS,MIGRATION,NEWS,README.md}
 
 %post -n libmodbus5 -p /sbin/ldconfig
-
 %postun -n libmodbus5 -p /sbin/ldconfig
 
 %files -n libmodbus5
-%defattr(-,root,root)
-%doc AUTHORS MIGRATION NEWS README.md
 %license COPYING.LESSER
+%doc AUTHORS MIGRATION NEWS README.md
 %{_libdir}/*.so.*
-%{_mandir}/man7/*.*
 
 %files devel
-%defattr(-,root,root)
-%doc doc/*.txt
 %{_includedir}/modbus
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_mandir}/man3/*.*
 
 %changelog
