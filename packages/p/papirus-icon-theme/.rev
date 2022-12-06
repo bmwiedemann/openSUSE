@@ -430,4 +430,29 @@
     <comment></comment>
     <requestid>1032757</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>2ca7e5cee1f5725c92ba9d7e4eac163c</srcmd5>
+    <version>20221201</version>
+    <time>1670333020</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20221201:
+  * Added icons:
+  * icon Apifox #3330
+  * icon Atoms #3306
+  * icon Aviator
+  * icon Boards
+  * icon A Dance Of Fire And Ice
+  * icon Game Of Life
+  * icon Satisfactory
+  * icon Tube Converter
+  * icon Vanilla OS
+  * icon Zap
+  * symlink OpenJDK 19
+  * Updated icons:
+  * recolor Clairvoyant
+  * recolor Obfuscate
+  * Changes and fixes:
+  * fix htop</comment>
+    <requestid>1040435</requestid>
+  </revision>
 </revisionlist>

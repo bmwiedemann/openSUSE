@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  5 20:55:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221201:
+  * Added icons:
+  * icon Apifox #3330
+  * icon Atoms #3306
+  * icon Aviator
+  * icon Boards
+  * icon A Dance Of Fire And Ice
+  * icon Game Of Life
+  * icon Satisfactory
+  * icon Tube Converter
+  * icon Vanilla OS
+  * icon Zap
+  * symlink OpenJDK 19
+  * Updated icons:
+  * recolor Clairvoyant
+  * recolor Obfuscate
+  * Changes and fixes:
+  * fix htop
+
+-------------------------------------------------------------------
 Tue Nov  1 22:34:05 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20221101
