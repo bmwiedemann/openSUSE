@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-asttokens
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Annotate AST trees with source code positions
 License:        Apache-2.0
