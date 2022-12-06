@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:51:41 UTC 2022 - Dirk Müller <dirk@matrix>
+
+- update to 1.9.8:
+  - Allow the use of Linux IP aliases such as eth0:0 for the interface name.
+  - Permit regular MAC addresses e.g. 00:0c:29:b9:43:1b in mac-vendor.txt.
+  - --limit=n option exits after n of hosts have responded, exit 1 for <n
+  - --resolve option to resolve responding IP addresses to hostnames
+  - Potential buffer overrun in unmarshal_arp_pkt().
+  - arp-scan aborts with EAGAIN on busy network or using high bandwidth
+  - late ARP responses could sometimes be incorrectly flagged as duplicate
+  - Updated IEEE URLs in download perl scripts.
+  - Updated source for Mersenne RNG and replacement strlcat/strlcpy & getopt.
+  - Updated for compatability with autoconf 2.71
+  - "make distcheck" works now
+  - Number of responding hosts reported no longer counts duplicate packets.
+  - Many typos corrected and edge cases fixed.
+  - CI framework migrated from travis-ci to github actions.
+  - Several new tests for "make check" 
+
+-------------------------------------------------------------------
 Thu Nov 14 12:11:42 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9.7:

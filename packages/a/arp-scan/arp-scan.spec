@@ -1,7 +1,7 @@
 #
 # spec file for package arp-scan
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           arp-scan
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        ARP scanning and fingerprinting tool
 # strlcpy.c and strlcat.c have ISC header and embeded {getopt,obstack}.{c,h} has LGPL-2.1
