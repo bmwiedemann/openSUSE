@@ -185,4 +185,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1036855</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b1a3691519f7dd4dfb21e7bbfa58f3d3</srcmd5>
+    <version>5.6.0</version>
+    <time>1670337338</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove (fix_return_value_void.patch) as it's no longer needed.
+- Update to 5.6.0.
+  * Fix some introspection problems.
+  * Use github instead of circleci.
+  * Keybindings: Add a default keybinding for 'switch-panels-backward'.
+  * gvc-channel-map.c: Fix return with a value in a void function.
+  * gnome-wall-clock.c: Fix a gi scanner warning.
+  * fix a null pointer deref scan-build found.
+  * Add a setting for notification duration.
+</comment>
+    <requestid>1040649</requestid>
+  </revision>
 </revisionlist>

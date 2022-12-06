@@ -23,7 +23,7 @@
 %define typelib typelib-1_0-CinnamonDesktop-3_0
 %define typelib_cvc typelib-1_0-Cvc-1_0
 Name:           cinnamon-desktop
-Version:        5.4.2
+Version:        5.6.0
 Release:        0
 Summary:        Libcinnamon-desktop API
 License:        GPL-2.0-or-later AND MIT
@@ -35,8 +35,6 @@ Source1:        README.Gsettings-overrides
 Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE cinnamon-desktop-correct-background-path.patch sor.alexi@meowr.ru -- Fix path to Adwaita background.
 Patch0:         %{name}-correct-background-path.patch
-# PATCH-FIX-UPSTREAM fix_return_value_void.patch andythe_great@pm.me -- Fix return with a value in a void function gh#linuxmint/cinnamon-desktop#225
-Patch1:         fix_return_value_void.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pam-devel
@@ -96,6 +94,7 @@ Recommends:     %{soname}-lang
 # cinnamon-desktop-lang was last used in openSUSE 13.2.
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
+BuildArch:      noarch
 %glib2_gsettings_schema_requires
 
 %description -n %{soname}-data
@@ -190,7 +189,6 @@ This package contains development files for libcvc.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 cp -a %{SOURCE1} .
 
 %build

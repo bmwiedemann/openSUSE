@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  6 12:51:16 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Remove fix_return_value_void.patch as it's no longer needed.
+
+-------------------------------------------------------------------
+Tue Dec  6 12:12:06 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+-Update to 5.6.0.
+  * Fix some introspection problems.
+  * Use github instead of circleci.
+  * Keybindings: Add a default keybinding for 'switch-panels-backward'.
+  * gvc-channel-map.c: Fix return with a value in a void function.
+  * gnome-wall-clock.c: Fix a gi scanner warning.
+  * fix a null pointer deref scan-build found.
+  * Add a setting for notification duration.
+
+-------------------------------------------------------------------
 Fri Nov 11 13:39:46 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to 5.4.7.
