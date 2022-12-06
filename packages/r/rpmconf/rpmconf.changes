@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 21:52:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.8:
+  * change wording to avoid confusion
+  * avoid loops during clean action
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.1.4 (changes since 1.0.19):
