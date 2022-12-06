@@ -1,7 +1,7 @@
 #
 # spec file for package libltc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 11
 Name:           libltc
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Linear/longitudinal timecode library
 License:        LGPL-3.0-or-later
@@ -66,14 +66,14 @@ or EBU timecode, including SMPTE date support.
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
