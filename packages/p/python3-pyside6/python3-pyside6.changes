@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec  6 07:34:22 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Disable two additional tests on aarch64
+
+-------------------------------------------------------------------
+Thu Nov 24 08:14:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1. Check the installed changes-6.4.1 file for the
+  full list of changes
+  * The long missing support for __slots__ was finally added
+  * Documentation builds have been fixed to work with
+    system-installed versions of Qt 6.
+  * A bug when passing wrong keyword args to signals has been fixed
+  * The build with OpenGLES has been fixed
+  * Crashes when not implementing abstract methods have been
+    fixed
+  * Python 3.10 and higher are not compatible to the
+    __signature__ attribute. This has been fixed by a temporary
+    patch until the final removal of that attribute.
+- Drop patch, merged upstream:
+  * pyside-6.4.0-arm_gles.patch
+- Add patches to fix CMake builds:
+  * 0001-Fix-a-cmake-only-build.patch
+  * 0002-Fix-a-cmake-only-build-amended.patch
+
+-------------------------------------------------------------------
 Sun Oct 16 07:04:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.4.0. Check the installed changes-6.4.0 file for the

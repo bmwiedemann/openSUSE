@@ -25,7 +25,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -35,8 +35,9 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         pyside-6.4.0-arm_gles.patch
+# PATCH-FIX-UPSTREAM -- Fixes the CMake builds
+Patch2:         0001-Fix-a-cmake-only-build.patch
+Patch3:         0002-Fix-a-cmake-only-build-amended.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -53,6 +54,8 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 # /SECTION
 %if "%{pyside_flavor}" == "pyside6"
+# For the registry_existence test
+BuildRequires:  python3-distro
 BuildRequires:  cmake(Shiboken6) = %{version}
 # SECTION test_dependencies
 BuildRequires:  Mesa-dri
@@ -79,10 +82,7 @@ BuildRequires:  cmake(Qt63DRender)
 BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6DBus)
-# Skip Qt6DataVisualization on armv7l due to boo#1204267
-%ifnarch %{arm}
 BuildRequires:  cmake(Qt6DataVisualization)
-%endif
 BuildRequires:  cmake(Qt6Designer)
 BuildRequires:  cmake(Qt6Help)
 BuildRequires:  cmake(Qt6HttpServer)
@@ -141,7 +141,7 @@ _libsuffix=$(echo %{_lib} | cut -b4-)
 %global __qt6_builddir %{pyside_flavor}
 
 # Fix installation dir
-sed -i 's#purelib#platlib#' sources/{pyside6/cmake/PySideSetup.cmake,shiboken6/cmake/ShibokenHelpers.cmake}
+sed -i 's#purelib#platlib#' sources/shiboken6/cmake/ShibokenHelpers.cmake
 
 pushd sources/%{pyside_flavor}
 
@@ -207,7 +207,7 @@ done
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2022-10-17)
+# Excluded tests (last update: 2022-12-06)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
@@ -215,6 +215,10 @@ ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_te
 # Qt3DExtras_qt3dextras_test fails on s390x (timeout)
 %ifarch s390x
 ctest_exclude_regex="$ctest_exclude_regex|Qt3DExtras_qt3dextras_test"
+%endif
+# Random failures on aarch64: registry_existence_test times out and QtWebEngineCore_web_engine_custom_scheme asserts
+%ifarch aarch64
+ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test|QtWebEngineCore_web_engine_custom_scheme"
 %endif
 %endif
 
@@ -234,19 +238,18 @@ popd
 %files
 %license sources/%{pyside_flavor}/COPYING*
 %doc doc/changelogs/changes-*
-%{_libdir}/lib%{pyside_flavor}.%{py3_soflags}.so.*
-%if "%{pyside_flavor}" == "pyside6"
-%{_libdir}/libpyside6qml.%{py3_soflags}.so.*
-%endif
+%{_libdir}/lib%{pyside_flavor}.abi3.so.*
 %if "%{pyside_flavor}" == "shiboken6"
 %{_bindir}/shiboken6
 %{_bindir}/shiboken_tool.py
 %{python_sitearch}/shiboken6/
 %{python_sitearch}/shiboken6_generator/
-%else
-%{python_sitearch}/PySide6/
+%endif
+%if "%{pyside_flavor}" == "pyside6"
+%{_libdir}/libpyside6qml.abi3.so.*
 %dir %{_qt6_pluginsdir}/designer
 %{_qt6_pluginsdir}/designer/libPySidePlugin.so
+%{python_sitearch}/PySide6/
 %endif
 
 %files devel
@@ -254,16 +257,15 @@ popd
 %{_includedir}/shiboken6/
 %{_qt6_cmakedir}/Shiboken6/
 %{_qt6_cmakedir}/Shiboken6Tools/
-%else
+%endif
+%if "%{pyside_flavor}" == "pyside6"
 %{_datadir}/PySide6/
 %{_includedir}/PySide6/
+%{_libdir}/libpyside6qml.abi3.so
 %{_qt6_cmakedir}/PySide6/
 %{_qt6_cmakedir}/PySide6Qml/
 %endif
-%{_libdir}/lib%{pyside_flavor}.%{py3_soflags}.so
-%if "%{pyside_flavor}" == "pyside6"
-%{_libdir}/libpyside6qml.%{py3_soflags}.so
-%endif
+%{_libdir}/lib%{pyside_flavor}.abi3.so
 %{_libdir}/pkgconfig/%{pyside_flavor}.pc
 
 %changelog
