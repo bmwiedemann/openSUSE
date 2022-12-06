@@ -17,7 +17,7 @@
 
 
 Name:           procdump
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Process coredump emitter using performance triggers
 License:        MIT
