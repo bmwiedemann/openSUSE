@@ -41,4 +41,15 @@
     <comment></comment>
     <requestid>1008155</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>774e9ad6f7a7b6552ff636d59ea54c66</srcmd5>
+    <version>1.7</version>
+    <time>1670333014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7:
+  * fix pip install
+  * document zsh completion script generator usage
+  * makefile option to install completion scripts</comment>
+    <requestid>1040426</requestid>
+  </revision>
 </revisionlist>

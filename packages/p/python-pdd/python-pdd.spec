@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pdd
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Tiny date, time diff calculator with timers
 License:        GPL-3.0-only
