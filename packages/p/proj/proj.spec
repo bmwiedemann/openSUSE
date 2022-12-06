@@ -16,17 +16,17 @@
 #
 
 
-%define data_version 1.11
+%define data_version 1.12
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.1.0
+Version:        9.1.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://proj.org/
-Source0:        http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
+Source0:        https://download.osgeo.org/proj/%{name}-%{version}.tar.gz
 Source1:        https://download.osgeo.org/%{name}/%{name}-data-%{data_version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

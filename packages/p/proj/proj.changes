@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Dec  3 20:45:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.1:
+  * Implement alterGeodeticCRS and stripVerticalComponent for DerivedProjected (#3482)
+  * Various improvements to handling of DerivedProjectedCRS (#3482, #3477 , #3342 , #3319, #3317)
+  * Add missing <cstdint> includes (#3459)
+  * cs2cs: better validate value of -W option (#3453)
+  * DatabaseContext::lookForGridInfo(): fix caching of filenames and set correct URLs (#3448)
+  * Database: register in grid_alternatives grids from PROJ-data that have no corresponding transformation
+    record (#3446)
+  * cass projection: fix forward computation of easting (#3433)
+  * Implement Geographic/Vertical Offset conversions (#3413)
+  * vandg projection: handle +over to extend the validity domain outside of |lon|>180deg (#3427)
+  * eqdc projection: avoid floating point division by zero in non-nominal case (#3415)
+  * createOperations(): fix issues when transforming between Geog3D and DerivedGeog3D CRS with
+    Geographic3D offsets method (#3411)
+  * VerticalCRS::_isEquivalentTo(): do not consider VerticalCRS and DerivedVerticalCRS as equivalent (#3408)
+  * cct and cs2cs: Avoid problems when encountering UTF-8 BOM` characters at
+    beginning of input files (#3395)
+  * createFromUserInput(): Improved lookup when approximate name is provided (#3371)
+  * projinfo / cs2cs : auto promotion to 3D of CRS specified by name (#3367)
+  * findsOpsInRegistryWithIntermediate(): make it work when source/target geodetic CRS has no known
+  * createOperations(): emulate PROJ < 6 behavior when doing geocentric <–> geographic transformation
+    between datum with unknown transformation (#3361)
+  * Fix issue when transforming from/into a WKT2 Bound VerticalCRS with a ‘Geographic3D to GravityRelatedHeight’ method (#3355)
+  * proj_normalize_for_visualization(): take into account FORCE_OVER property from source operation
+  * Link geodtest against libm when available (#3341) 
+
+-------------------------------------------------------------------
 Sun Nov 13 16:36:35 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - * Update to 9.1.0:
