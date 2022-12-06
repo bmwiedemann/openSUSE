@@ -18,9 +18,8 @@
 
 
 %define sover  2
-
 Name:           pocl
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -36,13 +35,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 15) or clang14-devel)
-#!BuildIgnore: clang15
+BuildRequires:  (clang-devel >= 6.0.0 with clang-devel < 16)
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
-ExclusiveArch:  %{ix86} x86_64 %arm aarch64 riscv64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Portable Computing Language (pocl) is an implementation of the OpenCL standard
@@ -116,7 +114,7 @@ This subpackage provides the development files needed for pocl.
 %postun -n libpocl%{sover} -p /sbin/ldconfig
 
 %files
-%doc CHANGES README doc/sphinx/source/*.rst
+%doc CHANGES README.* doc/sphinx/source/*.rst
 %license LICENSE
 %dir %{_datadir}/OpenCL/
 %dir %{_datadir}/OpenCL/vendors
