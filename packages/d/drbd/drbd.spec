@@ -65,6 +65,7 @@ BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
 BuildRequires:  modutils
+BuildRequires:  %kernel_module_package_buildreqs
 Requires:       drbd-utils >= 9.2.0
 Supplements:    drbd-utils >= 9.2.0
 Obsoletes:      drbd-kmp < %{version}
