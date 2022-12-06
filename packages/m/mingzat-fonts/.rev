@@ -22,4 +22,16 @@
     <comment></comment>
     <requestid>977780</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1c9277ab47dd13ef966ee3b973d275e8</srcmd5>
+    <version>1.100</version>
+    <time>1670333024</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.100:
+  * Update fs bit to 7
+  * Update advanced width of U+00A0 NO-BREAK SPACE to match U+0020 SPACE
+  * Update advanced width of U+2008 PUNCTUATION SPACE to match U+002E FULL STOP
+  * Added visible square box to .notdef (forwarded request 1040315 from dirkmueller)</comment>
+    <requestid>1040451</requestid>
+  </revision>
 </revisionlist>

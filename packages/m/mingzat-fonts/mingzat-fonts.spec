@@ -18,7 +18,7 @@
 
 %define fontname Mingzat
 Name:           mingzat-fonts
-Version:        1.000
+Version:        1.100
 Release:        0
 Summary:        Lepcha Font
 License:        OFL-1.1

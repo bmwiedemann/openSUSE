@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  5 14:35:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.100:
+  * Update fs bit to 7
+  * Update advanced width of U+00A0 NO-BREAK SPACE to match U+0020 SPACE
+  * Update advanced width of U+2008 PUNCTUATION SPACE to match U+002E FULL STOP
+  * Added visible square box to .notdef 
+
+-------------------------------------------------------------------
 Tue May 17 12:10:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.000
