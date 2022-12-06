@@ -19,10 +19,10 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define c_api 0
 %define cpp_api 2
-%define slash_ver 1-27-3
+%define slash_ver 1-28-1
 
 Name:           genders
-Version:        1.27.3
+Version:        1.28.1
 Release:        0
 Summary:        Static cluster configuration database
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ Source:         https://github.com/chaos/genders/archive/genders-%{slash_ver}/%{
 Patch1:         Fix-Python-package-installation-use-root.patch
 Patch2:         Remove-PERL_DESTDIR-use-DESTDIR-instead.patch
 Patch4:         lua_bindings.patch
+Patch5:         also-check-for-python3.patch
 URL:            https://github.com/chaos/genders
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -41,9 +42,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  lua-devel
 BuildRequires:  patchelf
-BuildRequires:  python
-BuildRequires:  python-devel
-BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  perl(ExtUtils::MakeMaker)
 Requires:       %{name}-base
@@ -80,13 +78,14 @@ Requires:       %{name} = %{version}
 %description devel
 genders headers and libraries files needed for development
 
-%package -n python-%{name}
+%package -n python3-%{name}
 Summary:        Python bindings for genders
 Group:          Development/Languages/Python
+Provides:       python-%{name} = %{version}
+Obsoletes:      python-%{name}
 Requires:       %{name} = %{version}
-Requires:       python
 
-%description -n python-%{name}
+%description -n python3-%{name}
 Necessary files for using genders with Python.
 
 %package -n lua-%{name}
@@ -146,6 +145,7 @@ rm -r genders-genders-%{slash_ver}
 %autopatch -p1
 
 %build
+export PYTHON=python3
 aclocal --force --install -I config
 libtoolize -f -i
 automake -a -f
@@ -247,7 +247,7 @@ chmod 444 $brklib
 %{_mandir}/man3/libgenders*
 
 %if %{?_with_python_extensions:1}%{!?_with_python_extensions:0}
-%files -n python-%{name}
+%files -n python3-%{name}
 %{_libdir}/python*
 %endif
 

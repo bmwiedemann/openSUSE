@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  6 12:14:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28.1:
+  * Build Bindings for *both* python2 and python3 
+
+-------------------------------------------------------------------
+Thu Dec  1 02:13:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually move Python plugin to building with Python 3, and rename the
+  Python binding package to reflect this.
+- Add patch also-check-for-python3.patch to check for Python 3 as well.
+
+-------------------------------------------------------------------
 Mon Jul 25 12:25:49 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - remove the hard coded rpath explicitly 
