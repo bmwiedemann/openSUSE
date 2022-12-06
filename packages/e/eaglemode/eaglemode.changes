@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  4 18:02:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.92.2:
+  * Fixed DPI scaling on Windows.
+  * Fixed changing of only letter case when renaming files on Windows.
+  * Fixed useless re-rendering in emPdf.
+  * Allowed to trigger radio boxes and check boxes by clicking on the text.
+  * Adjusted some dialog sizes as well as click and expansion size thresholds to
+    modern screen resolutions.
+  * Updated emLKC to kernel 5.
+  * Minor fixes.
+  * Added a viewer for WebP image files.
+  * Fixed focus problems with XWayland.
+  * Minor fixes.
+
+-------------------------------------------------------------------
 Wed Sep 23 06:48:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.95

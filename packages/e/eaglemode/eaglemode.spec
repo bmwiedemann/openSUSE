@@ -1,7 +1,7 @@
 #
 # spec file for package eaglemode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           eaglemode
-Version:        0.95.0
+Version:        0.95.2
 Release:        0
 Summary:        A zoomable user interface (ZUI) with file manager, file viewers, games, etc.
 License:        GPL-3.0-only
 Group:          Development/Tools/Other
-URL:            http://eaglemode.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
+URL:            https://eaglemode.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
 Source3:        %{name}-rpmlintrc
@@ -33,12 +33,13 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  perl
+Requires:       abiword
+Requires:       xorg-x11
 %if 0%{?sles_version}
 BuildRequires:  gtk2-devel
 %else
 BuildRequires:  pkgconfig(gtk+-2.0)
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -60,8 +61,6 @@ BuildRequires:  librsvg2-devel
 BuildRequires:  poppler-glib-devel
 BuildRequires:  xine-lib-devel
 %endif
-Requires:       abiword
-Requires:       xorg-x11
 %if 0%{?suse_version}
 Requires:       binutils
 Requires:       bzip2
@@ -70,23 +69,23 @@ Requires:       gedit
 Requires:       ghostscript-x11
 Requires:       gzip
 Requires:       lzop
-# Remove when p7zip-full is in all products
-%if 0%{suse_version} > 1500
-Requires:       p7zip-full
-%else
-Requires:       p7zip
-%endif
 Requires:       perl
 Requires:       tar
 Requires:       texlive-bin-dvilj
 Requires:       transfig
 Requires:       unzip
+Requires:       zip
+# Remove when p7zip-full is in all products
+%if 0%{?suse_version} > 1500
+Requires:       p7zip-full
+%else
+Requires:       p7zip
+%endif
 %if 0%{?suse_version} > 1320
 Requires:       xterm-bin
 %else
 Requires:       xterm
 %endif
-Requires:       zip
 %endif
 
 %description
@@ -112,7 +111,7 @@ tree, and a C++ API.
 mkdir .bin
 cat > .bin/gcc <<\EOF
 #!/bin/sh
-exec /usr/bin/gcc %{optflags} "$@"
+exec %{_bindir}/gcc %{optflags} "$@"
 EOF
 chmod +x .bin/gcc
 PATH=$PWD/.bin:$PATH
@@ -134,18 +133,18 @@ mkdir -p ../../share/eaglemode
 cp -r res ../../share/eaglemode
 mkdir -p %{buildroot}%{_sysconfdir}/eaglemode
 cp -r etc/* %{buildroot}%{_sysconfdir}/eaglemode
-mkdir -p %{buildroot}%{_prefix}/bin
-cd %{buildroot}%{_prefix}/bin
+mkdir -p %{buildroot}%{_bindir}
+cd %{buildroot}%{_bindir}
 ln -s ../../%{_libdir}/eaglemode/eaglemode.sh eaglemode
 mkdir -p %{buildroot}%{_prefix}/lib
 cd %{buildroot}/%{_libdir}
 ln -s eaglemode/lib/*.so .
-mkdir -p %{buildroot}%{_prefix}/include
-cd %{buildroot}%{_prefix}/include
+mkdir -p %{buildroot}%{_includedir}
+cd %{buildroot}%{_includedir}
 ln -s ../../%{_libdir}/eaglemode/include/* .
 
 # install Desktop file
-install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}
@@ -153,7 +152,6 @@ install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %endif
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/%{name}
 %doc %{_docdir}/%{name}
 %{_datadir}/%{name}
