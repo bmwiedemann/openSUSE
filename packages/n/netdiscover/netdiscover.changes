@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  3 22:16:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10:
+  * Changed secure download site from https://linuxnet.ca/ieee/oui.txt (link
+    down) to https://standards-oui.ieee.org in update-oui-database.sh
+  * script.
+  * Fixed segfault when HOME env is not set. Thanks to Till Zimmermann
+    tzimmermann@uos.de.
+  * Use unsigned int for data_counter.hosts. Thanks to Brendan Coles
+    bcoles@gmail.com
+  * Updated OUI table.
+ 
+-------------------------------------------------------------------
 Wed Mar 16 12:49:22 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9:

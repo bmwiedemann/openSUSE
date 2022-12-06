@@ -17,7 +17,7 @@
 
 
 Name:           netdiscover
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        A network address discovering/monitoring tool
 License:        GPL-3.0-or-later
@@ -47,7 +47,7 @@ mode, which will scan for common local networks.
 %build
 autoreconf -fiv
 %configure
-cp %{_datadir}/hwdata/oui.txt ./oui.txt-$(date +%Y%m%d)
+cp -p %{_datadir}/hwdata/oui.txt ./oui.txt-$(date +%Y%m%d)
 sh update-oui-database.sh --no-download
 %make_build
 
