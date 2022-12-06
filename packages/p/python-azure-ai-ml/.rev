@@ -38,4 +38,15 @@
     <comment></comment>
     <requestid>1039146</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9c64a9ce1c17387d459e0dfd7317da1a</srcmd5>
+    <version>1.2.0</version>
+    <time>1670337337</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1040528 from glaubitz)</comment>
+    <requestid>1040638</requestid>
+  </revision>
 </revisionlist>

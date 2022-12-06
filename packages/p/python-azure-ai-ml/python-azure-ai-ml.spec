@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-ml
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft Azure Machine Learning Client Library for Python
 License:        MIT
