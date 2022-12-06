@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec  6 10:33:22 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.22.2
+  * Bugfixes:
+    #3744: Folders with custom icons not deletable on Windows
+    #8570: Incorrect rescan interval when add encrypted folder with watch for changes enabled
+    #8592: Newly added "connection type" icon and text in device info is slightly misaligned
+    #8630: Enabling rate limit drastically reduces network performance
+    #8654: Conflicts created on Android on files modified by other devices
+    #8657: Xattrs not properly applied to directories, causes rescan/resync loop
+    #8661: webgui complains about not set password in ldap mode
+    #8682: syncthing generate command writes the deviceId to stderr instead of stdout as INFO
+
+  * Enhancements:
+    #2771: Add mailto link to "Show ID" dialog, for sending device ID via email
+    #7703: Show if devices have not connected in a long time
+    #8638: Use healtcheck endpoint for docker
+    #8686: LAN detection via subnetmask
+
+  * Other issues:
+    #8601: Build fails due to setting xattrs that affect SELinux, "permission denied"
+    #8679: Bump quic-go
+
+-------------------------------------------------------------------
 Wed Nov  2 09:05:44 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.22.1
