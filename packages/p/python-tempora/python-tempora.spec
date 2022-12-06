@@ -24,7 +24,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-tempora
-Version:        5.0.2
+Version:        5.1.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
