@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec  5 19:10:20 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix: do not require versioned branding (bsc#1205950)
+- Add dependency to hhdate library now in Factory
+- Add _service file back now that we don't need to modify the source tarball
+- Move to obscpio archive to save space
+
+-------------------------------------------------------------------
+Fri Dec  2 13:52:41 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-replace-gethostbyname-getaddrinfo.patch
+
+-------------------------------------------------------------------
+Fri Dec  2 07:54:45 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update specfile and remove deprecated functions.
+- Improve description to remove rpmlint warnings.
+
+-------------------------------------------------------------------
+Thu Dec  1 22:42:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix sources on spec file.
+- Remove service file that was overlooked
+- Add back the tarball containing the downloaded subprojects
+- Add wireplumber dependency
+
+-------------------------------------------------------------------
 Tue Nov 29 19:15:28 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.9.16:

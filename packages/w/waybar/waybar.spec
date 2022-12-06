@@ -23,7 +23,8 @@ Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
-Source:         Waybar-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Patch0:         0000-replace-gethostbyname-getaddrinfo.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++
@@ -37,6 +38,8 @@ BuildRequires:  pkgconfig
 # test dependency
 BuildRequires:  pkgconfig(catch2) >= 3.0
 BuildRequires:  sndio-devel >= 1.7.0
+# date module
+BuildRequires:  hhdate-devel
 # optional: man pages
 BuildRequires:  scdoc
 # optional: tray module
@@ -66,12 +69,15 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wireplumber-0.4)
 BuildRequires:  pkgconfig(xkbregistry)
 # requires branding
-Requires:       %{name}-branding = %{version}
+# NOTE: unversioned branding is required to avoid issues like bsc#1205950
+Requires:       %{name}-branding
 # optional: sway integration
 Recommends:     sway
 
 %description
-Customizable Wayland bar for Sway and Wlroots based compositors.
+A customizable Wayland bar for Sway and Wlroots based compositors.
+It comes with modules for pipewire, alsa, backlight, and bluetooth.
+Other modules can be found in the manpages of Waybar.
 
 %package branding-upstream
 Summary:        Upstream branding of %{name}
@@ -88,7 +94,7 @@ BuildArch:      noarch
 This package provides the upstream look and feel for sway.
 
 %prep
-%autosetup -p1 -n Waybar-%{version}
+%autosetup -p1 -n waybar-%{version}
 
 %build
 %if 0%{?sle_version} >= 150400
