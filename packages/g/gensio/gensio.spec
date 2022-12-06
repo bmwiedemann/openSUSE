@@ -18,8 +18,8 @@
 
 
 %global sover   0
-%global sover_cpp 2
-%global libname libgensio%{sover}
+%global sover_cpp 4
+%global libname libgensio4
 %global libname_cpp libgensiocpp%{sover_cpp}
 %if 0%{?suse_version} > 1500
 %bcond_without openipmi
@@ -27,7 +27,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.5.4
+Version:        2.6.1
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -75,6 +75,32 @@ funcionality. For instance, you can create a TCP gensio, stack SSL
 on top of that, and stack Telnet on top of that. It supports a
 number of network I/O and serial ports. gensios that stack on
 other gensios are called filters.
+
+%package -n libgensioosh%{sover}
+Summary:        Library to abstract stream and packet I/O
+Group:          System/Libraries
+
+%description -n libgensioosh%{sover}
+This is gensio (pronounced gen'-see-oh), a framework for giving a
+consistent view of various stream (and packet) I/O types - osh support
+
+%package -n libgensiomdns%{sover}
+Summary:        Library to abstract stream and packet I/O
+Group:          System/Libraries
+
+%description -n libgensiomdns%{sover}
+This is gensio (pronounced gen'-see-oh), a framework for giving a
+consistent view of various stream (and packet) I/O types - mdns support
+
+%package -n libgensio_python_swig%{sover}
+Summary:        Library to abstract stream and packet I/O
+Group:          System/Libraries
+Provides:       libgensio0:/usr/lib/libgensio_python_swig.so.0.0.0
+Obsoletes:      libgensio0 < %{version}
+
+%description -n libgensio_python_swig%{sover}
+This is gensio (pronounced gen'-see-oh), a framework for giving a
+consistent view of various stream (and packet) I/O types - python support
 
 %package -n %{libname_cpp}
 Summary:        Library to abstract stream and packet I/O
@@ -139,6 +165,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+%post -n libgensioosh%{sover} -p /sbin/ldconfig
+%postun -n libgensioosh%{sover} -p /sbin/ldconfig
+%post -n libgensiomdns%{sover} -p /sbin/ldconfig
+%postun -n libgensiomdns%{sover} -p /sbin/ldconfig
+%post -n libgensio_python_swig%{sover} -p /sbin/ldconfig
+%postun -n libgensio_python_swig%{sover} -p /sbin/ldconfig
 %post -n %{libname_cpp} -p /sbin/ldconfig
 %postun -n %{libname_cpp} -p /sbin/ldconfig
 
@@ -163,7 +195,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man5/sergensio.5%{?ext_man}
 
 %files -n %{libname}
-%{_libdir}/libgensio*.so.%{sover}*
+%{_libdir}/libgensio.so.%{sover_cpp}*
+%{_libexecdir}/gensio-%{version}
+
+%files -n libgensioosh%{sover}
+%{_libdir}/libgensioosh.so.%{sover}*
+%{_libdir}/libgensiooshcpp.so.%{sover}*
+
+%files -n libgensiomdns%{sover}
+%{_libdir}/libgensiomdns.so.%{sover}*
+%{_libdir}/libgensiomdnscpp.so.%{sover}*
+
+%files -n libgensio_python_swig%{sover}
+%{_libdir}/libgensio_python_swig.so.%{sover}*
 
 %files -n %{libname_cpp}
 %{_libdir}/libgensiocpp.so.%{sover_cpp}*

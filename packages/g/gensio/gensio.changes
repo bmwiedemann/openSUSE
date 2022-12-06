@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec  4 22:03:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * https://github.com/cminyard/gensio/compare/v2.5.4...v2.6.1 
+  * The internal structure has been reworked so that gensios are dynamically loaded
+    by default and can be individually selected at build time. The library itself
+    was getting too many dependencies, so these dependencies are pushed to the
+    individally loaded gensios. There should be no difference from the user's point
+    of view; gensios go into libexec and get loaded on demand. And you can write
+    your own and stick them in this directory and it will pick them up.
+  * The os interface and mdns code has been put into their own libraries. There
+    were circular dependencies, and mdns brings a boatload of other libraries. They
+    really aren't gensios, they are gensio support, so they needed to be in their
+    own library anyway. This make the gensio library just about gensios. But it
+    will change the way you have to link against it if you are using mdns.
+  * The sound gensio is now no longer experimental, I'd say it's beta quality now.
+  * An AFSK modem gensio has been added. It sits on top of the sound gensio and
+    implements the 1200 baud modem used for AX.25 in ham radio.  pty and stdio have
+    a change in the way euid and uid setting work. There wasn't a security issue,
+    per se, but the way it was before didn't work on BSD. This makes the usage more
+    standard.
+- add splitprovides/obsoletes
+
+-------------------------------------------------------------------
 Wed Sep  7 11:57:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.4
