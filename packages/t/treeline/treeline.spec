@@ -1,7 +1,7 @@
 #
 # spec file for package treeline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           treeline
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Versatile Tree-Style Outliner for Defining Custom Data Schemas
 License:        GPL-2.0-or-later

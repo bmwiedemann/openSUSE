@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.5:
+  * Add a command for strike-through font formatting.
+  * For better visibility, increase the width of tree structure lines in printed
+    and PDF output files.
+  * Add a Russian translation of the GUI and the help files
+  * Update the German GUI translation (thanks to Karsten).
+  * Fix a bug preventing a second-try password entry from opening an encrypted file.
+  * Add fallbacks to UTF-8 encoding if the OS encoding fails on import and export.
+  * Avoid a crash when bad field name modifiers are in a math field equation. 
+
+-------------------------------------------------------------------
 Sun Nov 29 13:44:31 UTC 2020 - Gottfried Necker <gottfried.necker@gmx.de>
 
 - Update to 3.1.4
