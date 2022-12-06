@@ -1,7 +1,7 @@
 #
 # spec file for package iperf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname  0
 Name:           iperf
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        A tool to measure network performance
 License:        BSD-3-Clause
