@@ -12110,8 +12110,14 @@ unsorted:
   - libkonkretcmpi0 
   - libkpmcore12 
   - libkrb5-26 
-  - libkrun: [x86_64] 
-  - libkrunfw: [x86_64] 
+  - libkrun-devel: [x86_64] 
+  - libkrun-sev-devel: [x86_64] 
+  - libkrun-sev1: [x86_64] 
+  - libkrun1: [x86_64] 
+  - libkrunfw-devel: [x86_64] 
+  - libkrunfw-sev-devel: [x86_64] 
+  - libkrunfw-sev3: [x86_64] 
+  - libkrunfw3: [x86_64] 
   - libksane-devel 
   - libksba-devel 
   - libkscreen2-devel 
@@ -13317,7 +13323,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler125-32bit: [x86_64] 
+  - libpoppler126-32bit: [x86_64] 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -13707,7 +13713,7 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
-  - libre2-9-32bit: [x86_64] 
+  - libre2-10-32bit: [x86_64] 
   - libre7 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
@@ -44821,6 +44827,7 @@ unsorted:
   - zita-convolver-devel 
   - zita-resampler-devel 
   - zita-resampler-tools 
+  - zk 
   - zlib-devel: [i586] # devel package of common_locks:libminizip1 
   - zlib-devel-32bit: [x86_64] 
   - zlib-devel-static 
