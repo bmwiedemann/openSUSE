@@ -19,7 +19,7 @@
 %define upstream_name CLI11
 
 Name:           cli11
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Command line parser for C++11
 License:        BSD-3-Clause
@@ -27,11 +27,13 @@ Group:          Development/Libraries/C and C++
 
 URL:            https://github.com/CLIUtils/CLI11
 Source:         %{upstream_name}-%{version}.tar.gz
+BuildRequires:  Catch2-2-devel
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  python3-devel
+BuildArch:      noarch
 
 %description
 CLI11 is a command line parser for C++11 and beyond that provides a
@@ -68,17 +70,33 @@ limits by choice:
 %autosetup -p1 -n %{upstream_name}-%{version}
 
 %build
-%cmake -DCLI11_BUILD_TESTS:BOOL=FALSE -DCLI11_BUILD_DOCS:BOOL=TRUE -DCLI11_BUILD_EXAMPLES:BOOL=FALSE
+%cmake \
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} <= 1500
+  -DCLI11_BUILD_TESTS:BOOL=FALSE \
+%else
+  -DCLI11_BUILD_TESTS:BOOL=TRUE \
+%endif
+  -DCLI11_BUILD_DOCS:BOOL=TRUE \
+  -DCLI11_BUILD_EXAMPLES:BOOL=FALSE
 %cmake_build all docs
 
 %install
 %cmake_install
 
+%if 0%{?sle_version} <= 150300 && 0%{?suse_version} <= 1500
+%else
+
+%check
+%ctest
+%endif
+
 %files devel
 %license LICENSE
 %doc CHANGELOG.md
 %dir %{_includedir}/CLI
+%dir %{_includedir}/CLI/impl
 %{_includedir}/CLI/*.hpp
+%{_includedir}/CLI/impl/*.hpp
 %dir %{_datadir}/cmake/CLI11/
 %{_datadir}/cmake/CLI11/*.cmake
 %{_datadir}/pkgconfig/CLI11.pc

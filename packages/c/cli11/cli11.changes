@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct 24 09:57:11 UTC 2022 - Haochuan Chen <haochuan.chen@univ-lorraine.fr>
+
+- Disable tests for %{?sle_version} <= 150300 due to possible issues of old 
+  cmake versions
+
+-------------------------------------------------------------------
+Mon Oct 24 09:23:09 UTC 2022 - Haochuan Chen <haochuan.chen@univ-lorraine.fr>
+
+- Although the pre-compiled mode has been introduced upstream, it is still not 
+  able to build shared libs, so CLI11_PRECOMPILED is default to be disabled. 
+  The package is then still header-only, and the build architecture is changed 
+  to noarch.
+- Tests are enabled during building.
+- Upstream changes: update to version 2.3.0
+  * Add CLI11_PRECOMPILED as an option. #762
+  * Bugfix: Include <functional> in FormatterFwd #727
+  * Bugfix: Add missing Macros.hpp to Error.hpp #755
+  * Bugfix: Fix subcommand callback trigger #733
+  * Bugfix: Variable rename to avoid warning #734
+  * Bugfix: split_program_name single file name error #740
+  * Bugfix: Better support for min/max overrides on MSVC #741
+  * Bugfix: Support MSVC 2022 #748
+  * Bugfix: Support negated flag in config file #775
+  * Bugfix: Better errors for some confusing config file situations #781
+  * Backend: Restore coverage testing (lost with Travis CI) #747
+
+-------------------------------------------------------------------
 Wed Apr 13 14:13:43 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
 
 - Update to version 2.2.0
