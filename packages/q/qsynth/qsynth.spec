@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.0.0
 Recommends:     %{name}-lang

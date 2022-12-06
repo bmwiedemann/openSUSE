@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 22:49:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.8:
+  * Add current system user-name to the singleton/unique application
+    instance identifier.
+
+-------------------------------------------------------------------
 Sat Jun 18 14:45:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.7:
