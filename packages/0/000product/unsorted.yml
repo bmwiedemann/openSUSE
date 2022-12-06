@@ -2324,6 +2324,7 @@ unsorted:
   - container-diff 
   - container-registry-systemd 
   - container-support-utils 
+  - container-suseconnect 
   - containerd: [i586] 
   - containerd-ctr 
   - containerd-devel 
@@ -7372,7 +7373,7 @@ unsorted:
   - input-pad-devel 
   - input-pad-eek 
   - input-pad-xtest 
-  - insighttoolkit-devel: [x86_64] 
+  - insighttoolkit-devel 
   - inspectrum 
   - inst-source-utils 
   - install-initrd-MicroOS: [x86_64] 
@@ -11265,8 +11266,11 @@ unsorted:
   - libgenders0 
   - libgendersplusplus2 
   - libgeners0 
-  - libgensio0 
-  - libgensiocpp2 
+  - libgensio4 
+  - libgensio_python_swig0 
+  - libgensiocpp4 
+  - libgensiomdns0 
+  - libgensioosh0 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos3_11_1 
   - libgeos_c1 
@@ -11923,7 +11927,7 @@ unsorted:
   - libinsane1 
   - libinsane_gobject-devel 
   - libinsane_gobject1 
-  - libinsighttoolkit5_2-1: [x86_64] 
+  - libinsighttoolkit5_3-1 
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit: [x86_64] 
   - libinstpatch-devel 
@@ -12627,7 +12631,7 @@ unsorted:
   - libmysqlcppconn8-2 
   - libmysqlcppconn8-devel 
   - libmysqlcppconn9 
-  - libnanomsg5 
+  - libnanomsg6 
   - libnauty-2_7_4 
   - libnbcompat-devel 
   - libnbcompat0 
@@ -13450,7 +13454,7 @@ unsorted:
   - libpython3_9-1_0-32bit: [x86_64] 
   - libqaccessibilityclient-qt5-devel 
   - libqalculate-devel 
-  - libqatzip1: [x86_64] 
+  - libqatzip3: [x86_64] 
   - libqb-devel 
   - libqb-devel-32bit: [x86_64] 
   - libqb-tests 
@@ -13713,8 +13717,8 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
+  - libre10 
   - libre2-10-32bit: [x86_64] 
-  - libre7 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
   - libreadline-java-javadoc 
@@ -14475,11 +14479,11 @@ unsorted:
   - libtheora0-32bit: [x86_64] 
   - libtheoradec1-32bit: [x86_64] 
   - libtheoraenc1-32bit: [x86_64] 
-  - libthrift-0_16_0 
+  - libthrift-0_17_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_16_0 
-  - libthriftz-0_16_0 
+  - libthriftnb-0_17_0 
+  - libthriftz-0_17_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -15399,18 +15403,8 @@ unsorted:
   - lilv 
   - lilypond: [x86_64] 
   - lilypond-doc: [x86_64] 
-  - lilypond-doc-cs: [x86_64] 
-  - lilypond-doc-de: [x86_64] 
-  - lilypond-doc-es: [x86_64] 
-  - lilypond-doc-fr: [x86_64] 
-  - lilypond-doc-hu: [x86_64] 
-  - lilypond-doc-it: [x86_64] 
-  - lilypond-doc-ja: [x86_64] 
-  - lilypond-doc-nl: [x86_64] 
-  - lilypond-doc-zh: [x86_64] 
   - lilypond-emmentaler-fonts: [x86_64] 
   - lilypond-fonts-common: [x86_64] 
-  - lilypond-texgy-fonts: [x86_64] 
   - lime-devel 
   - limesuite 
   - limesuite-devel 
@@ -16032,6 +16026,7 @@ unsorted:
   - manaplus-lang 
   - manchu-fonts 
   - mandoc 
+  - mandoc-bin 
   - mandown 
   - mangler 
   - mangohud 
@@ -21726,7 +21721,6 @@ unsorted:
   - python-flup-doc 
   - python-freezerclient-doc 
   - python-gdbm 
-  - python-genders 
   - python-gevent-doc 
   - python-glanceclient-doc 
   - python-gnome-dvb-daemon 
@@ -21942,6 +21936,7 @@ unsorted:
   - python3-gcemetadata 
   - python3-gdcm 
   - python3-geis 
+  - python3-genders 
   - python3-gensio 
   - python3-gexiv2 
   - python3-gi-docgen 
@@ -33498,7 +33493,6 @@ unsorted:
   - sgi-bitmap-fonts 
   - sgmltool 
   - sgmltool-latex 
-  - sgmltools-lite 
   - sgpio 
   - sgrep 
   - sgtk-menu 
@@ -44355,6 +44349,7 @@ unsorted:
   - xfmpc-lang 
   - xfontsel 
   - xfs 
+  - xfs_undelete 
   - xfsinfo 
   - xfsprogs-devel 
   - xfstests 
