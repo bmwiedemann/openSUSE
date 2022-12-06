@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 20:57:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.55.0:
+  * RedrivePolicy added
+  * chore: Type improvements in http api generator
+  * feat: Add SnapStart support
+
+-------------------------------------------------------------------
 Mon Nov 14 16:29:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

@@ -155,4 +155,15 @@
     <comment></comment>
     <requestid>1039579</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eef46ea7942b1341ca907a636a0d1e95</srcmd5>
+    <version>1.55.0</version>
+    <time>1670333022</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.55.0:
+  * RedrivePolicy added
+  * chore: Type improvements in http api generator
+  * feat: Add SnapStart support</comment>
+    <requestid>1040436</requestid>
+  </revision>
 </revisionlist>
