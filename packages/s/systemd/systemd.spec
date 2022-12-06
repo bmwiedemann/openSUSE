@@ -823,6 +823,11 @@ ln -s ../../../etc/sysctl.conf %{buildroot}%{_sysctldir}/99-sysctl.conf
 # SUSE (bsc#1006978).
 rm -f %{buildroot}%{_sysusersdir}/basic.conf
 
+# systemd-user PAM module relies on pam_env(8) to import the environment defined
+# in /etc/environment (which is part of the environment configuration files of
+# pam_env(8) anyways).
+rm -f %{buildroot}%{_environmentdir}/99-environment.conf
+
 # Remove README file in init.d as (SUSE) rpm requires executable files in this
 # directory... oh well.
 rm -f %{buildroot}/etc/init.d/README

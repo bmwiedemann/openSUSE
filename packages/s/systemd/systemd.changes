@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  2 14:06:08 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Don't ship symlink /usr/lib/environment.d/99-environment.conf
+  anymore. /etc/environment is owned and parsed (among other config files) by
+  pam_env(8), which is included by 'systemd-user' PAM service anyway.
+
+-------------------------------------------------------------------
 Fri Nov 25 16:37:18 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit e7e931b07edd786dc6ca1dae6c23ff7b785f8efd (merge of v252.2)

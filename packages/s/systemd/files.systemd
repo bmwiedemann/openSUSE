@@ -209,7 +209,6 @@
 %{_datadir}/zsh/site-functions/_systemd-tmpfiles
 %{_datadir}/zsh/site-functions/_timedatectl
 %endif
-%{_environmentdir}/99-environment.conf
 %{_journalcatalogdir}/systemd.be.catalog
 %{_journalcatalogdir}/systemd.be@latin.catalog
 %{_journalcatalogdir}/systemd.bg.catalog
