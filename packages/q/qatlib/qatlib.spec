@@ -1,7 +1,7 @@
 #
 # spec file for package qatlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,18 @@
 
 
 Name:           qatlib
-Version:        21.08.0
+Version:        22.07.2
 Release:        0
 Summary:        Intel QuickAssist Technology Library
 License:        BSD-3-Clause
 Group:          Hardware/Other
 URL:            https://github.com/intel/qatlib
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/intel/qatlib/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  nasm
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
@@ -54,7 +56,7 @@ than the more general libkcapi.
 autoreconf -iv
 
 %build
-%configure
+%configure --disable-static
 %make_build
 
 %install
@@ -70,11 +72,15 @@ rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 %doc README.md
 %{_mandir}/man8/qat*
 %{_unitdir}/qat*
-%{_libdir}/lib*.so.[02].*
+%{_libdir}/libusdm.so.0*
+%{_libdir}/libqat.so.3*
 %{_sbindir}/qat*
 
 %files devel
 %{_includedir}/qat
 %{_libdir}/lib*.so
+%{_libdir}/pkgconfig/libqat.pc
+%{_libdir}/pkgconfig/libusdm.pc
+%{_libdir}/pkgconfig/qatlib.pc
 
 %changelog

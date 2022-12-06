@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec  3 23:15:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.07.2:
+  * Changed from yasm to nasm for assembly compilation
+  * Added configuration option to use C implementation of soft CRC
+    implementation instead of asm
+  * Added support for pkg-config
+  * Added missing lock around accesses to some global data in qatmgr
+  * Fix for QATE-86605 – improve error checking on size param used by qatmgr
+    debug function.
+  * Fix for issue #10
+  * Fixed link to Programmer's Guide
+  * Added support for Compression LZ4 and LZ4s algorithms
+  * Added support for Compression end-to-end integrity checks
+  * Added support for PKE Generic Point Multiply APIs
+  * Added support for CPM2.0b
+  * Updated library to support new version of QAT APIs
+  * Updated qat service to allow compression only and crypto only
+    configurations
+  * Created qatlib-tests rpm package
+  * Added option to configure script to skip building sample code
+
+-------------------------------------------------------------------
+Wed Apr 27 08:44:06 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use source url, switch to .tar.gz as this is used in github upstream
+
+-------------------------------------------------------------------
 Wed Oct  6 13:37:02 UTC 2021 - Torsten Duwe <duwe@suse.com>
 
 - Update to 21.05.0
