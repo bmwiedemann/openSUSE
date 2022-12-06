@@ -293,4 +293,12 @@
   * Add *.proto to the list of src files (Fixes #40)</comment>
     <requestid>1039659</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6aa5b05e9a6cae0b7ca1261df4329134</srcmd5>
+    <version>15.0.17</version>
+    <time>1670341512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.17 (jsc#PED-1344):</comment>
+    <requestid>1040726</requestid>
+  </revision>
 </revisionlist>

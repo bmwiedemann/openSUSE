@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Dec  2 21:34:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 15.0.17:
+- Update to version 15.0.17 (jsc#PED-1344):
   * Add *.proto to the list of src files (Fixes #40)
 
 -------------------------------------------------------------------
