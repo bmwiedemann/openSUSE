@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>901726</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b8ce51c4f45379ef53fa5999d6d6032e</srcmd5>
+    <version>1.4.16</version>
+    <time>1670332990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.16
+  * Fix #46 - utf8 support 
+- Update to version 1.4.15
+  *  Add option to truncate existing tables before inserting data
+- Update to version 1.4.14
+  * Fix safe_identifier_length
+- Update to version 1.4.13
+  * Add option to update duplicate records  
+</comment>
+    <requestid>1040400</requestid>
+  </revision>
 </revisionlist>

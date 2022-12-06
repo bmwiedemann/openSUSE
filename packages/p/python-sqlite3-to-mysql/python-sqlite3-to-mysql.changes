@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  3 01:01:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.4.16
+  * Fix #46 - utf8 support 
+
+- Update to version 1.4.15
+  *  Add option to truncate existing tables before inserting data
+
+- Update to version 1.4.14
+  * Fix safe_identifier_length
+
+- Update to version 1.4.13
+  * Add option to update duplicate records  
+
+-------------------------------------------------------------------
 Mon Jun 21 10:13:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
