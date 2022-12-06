@@ -523,4 +523,18 @@
   * Ensure mime-parts are utf8</comment>
     <requestid>1031034</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c00670d279deb016e806b1fac1350081</srcmd5>
+    <version>1.8.13</version>
+    <time>1670333055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.13:
+  * Make server buffer invisible
+
+- Update to 1.8.12:
+  * Fix mu-headers-toggle-setting user feedback
+  * Improve browse-url-handlers
+  * Update some tests, avoid compiler warnings</comment>
+    <requestid>1040532</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  6 08:34:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.13:
+  * Make server buffer invisible
+
+-------------------------------------------------------------------
+Tue Dec  6 08:33:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.12:
+  * Fix mu-headers-toggle-setting user feedback
+  * Improve browse-url-handlers
+  * Update some tests, avoid compiler warnings
+
+-------------------------------------------------------------------
 Tue Oct 25 06:47:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.11:
