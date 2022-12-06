@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  5 19:29:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 13.0.1 
+  * Make sure __version__ is consistent
+  * Make pylint happier
+  * Drop __version__
+
+- Update to version 13.0.0
+  * Adapt to pylint 2.15.5 (#670) @emontnemery
+  * Added three unknown models with cast-types (#658) @heikkih
+  * Revert "pin to protobuf v3" (#669) @emontnemery
+  * Pin github actions and add dependabot actions ecosystem (#655) @MartinHjelmare
+  * Improve output of discovery examples (#653) @emontnemery
+  * Update version_info in init (#640) @clach04
+
+-------------------------------------------------------------------
 Wed Aug 17 15:41:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 12.1.4 
