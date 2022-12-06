@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:24:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.6:
+  * Fixed spec version and updated template to include Final Release if <status> is empty.
+  * Added Eclipse copyright notice.
+  * Set copyright footer to 2019 Eclipse Foundation.
+  * Use Jakarta instead of Java.
+  * Include link to license in footer as well.
+
+-------------------------------------------------------------------
 Thu May  5 10:41:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Change the tarball location, since the old location does not work

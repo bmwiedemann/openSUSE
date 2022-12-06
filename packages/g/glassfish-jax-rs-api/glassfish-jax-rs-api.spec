@@ -17,11 +17,11 @@
 
 
 Name:           glassfish-jax-rs-api
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        JAX-RS API Specification (JSR 339)
 License:        EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
-URL:            https://github.com/eclipse-ee4j/jaxrs-api
+URL:            https://github.com/jakartaee/rest
 Source0:        https://github.com/jakartaee/rest/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
