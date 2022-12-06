@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 ExcludeArch:    i586
 
 Name:           lilypond
-Version:        2.23.3
+Version:        2.23.82
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
@@ -35,13 +35,13 @@ Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
 #Patch1:         0101-read_relocation_dir-in-lilypond_datadir-too.patch
 Patch2:         add_dircategories_to_documentation.patch
-Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
 Patch4:         use_cstring_and_ctype_includes.patch
-#Patch5:         0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch
+Patch5:         lilypond-missing-lgc.patch
 BuildRequires:  ImageMagick
 BuildRequires:  bison
 BuildRequires:  dblatex
 BuildRequires:  dejavu-fonts
+BuildRequires:  extractpdfmark
 BuildRequires:  flex
 BuildRequires:  fontforge
 BuildRequires:  freetype2-devel
@@ -51,10 +51,13 @@ BuildRequires:  ghostscript >= 8.15
 BuildRequires:  ghostscript-fonts-other
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  makeinfo >= 6.1
+BuildRequires:  mc
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  potrace-devel
 BuildRequires:  t1utils
-BuildRequires:  pkgconfig(guile-1.8)
+BuildRequires:  texlive-fontinst-bin
+BuildRequires:  texlive-fontware-bin
+BuildRequires:  pkgconfig(guile-3.0)
 # Needed for pngtopnm
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
@@ -62,6 +65,7 @@ BuildRequires:  rsync
 BuildRequires:  t1utils
 BuildRequires:  texi2html
 BuildRequires:  texinfo
+#BuildRequires:  texinfo4
 BuildRequires:  texlive-bibtex-bin
 BuildRequires:  texlive-extratools
 BuildRequires:  texlive-filesystem
@@ -72,6 +76,7 @@ BuildRequires:  texlive-metapost
 BuildRequires:  texlive-tex-gyre-fonts
 BuildRequires:  vim-base
 BuildRequires:  zip
+BuildRequires:  pkgconfig(bdw-gc)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(pango) >= 1.12.0
@@ -87,6 +92,7 @@ LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
 
+%if 1 == 0
 %package texgy-fonts
 Summary:        Lilypond Century Schoolbook L fonts
 Group:          System/X11/Fonts
@@ -97,6 +103,7 @@ LilyPond is an automated music engraving system. It formats music
 beautifully and automatically, and has a friendly syntax for its input
 files.
 These are the lilypond Texgy fonts.
+%endif
 
 %package emmentaler-fonts
 Summary:        Lilypond emmentaler fonts
@@ -114,7 +121,6 @@ Summary:        Lilypond fonts common dir
 Group:          System/X11/Fonts
 BuildArch:      noarch
 Requires:       lilypond-emmentaler-fonts = %{version}
-Requires:       lilypond-texgy-fonts = %{version}
 
 %description fonts-common
 LilyPond is an automated music engraving system. It formats music
@@ -135,11 +141,14 @@ for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3
 
 %build
 export LIBS="$LIBS  -lglib-2.0 -lgobject-2.0"
-
+export GUILE_FLAVOR=guile-3.0
 %configure \
+    GUILE_FLAVOR=guile-3.0 \
 	--disable-checking
+make bytecode
 # Build sometimes fails with multiple threads.
-make %{_smp_mflags} || make -j1
+make %{_smp_mflags} --trace
+#|| make -j1
 
 %install
 vimver=$(vim --version | head -n1 | grep -Po "\d\.\d" | sed 's|\.||')
@@ -172,7 +181,7 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS.txt DEDICATION HACKING NEWS.txt
+%doc AUTHORS.txt DEDICATION NEWS.txt
 %license COPYING LICENSE*
 %{_bindir}/*
 %{_datadir}/lilypond
@@ -181,9 +190,11 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 %{_infodir}/*%{ext_info}
 %{_mandir}/man1/*
 
+%if 1 == 0
 %files texgy-fonts
 %defattr(-,root,root,-)
 %{ttfdir}/texgy*otf
+%endif
 
 %files emmentaler-fonts
 %defattr(-,root,root,-)

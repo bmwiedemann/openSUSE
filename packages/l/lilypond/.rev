@@ -378,4 +378,12 @@
     <comment></comment>
     <requestid>933618</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>cb9ddfa59f97cf56ceae26bd6bc2a0e2</srcmd5>
+    <version>2.23.82</version>
+    <time>1670332972</time>
+    <user>dimstar_suse</user>
+    <comment>Comment out alternate Source0: statement due to build check false positive in lilypond's doc build</comment>
+    <requestid>1040525</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,8 @@
---- a/stepmake/stepmake/c++-vars.make
-+++ b/stepmake/stepmake/c++-vars.make
-@@ -11,7 +11,7 @@ ALL_CXXFLAGS = $(ALL_CXXPPFLAGS) $(CONFI
+Index: b/make/c++-vars.make
+===================================================================
+--- a/make/c++-vars.make	2022-11-27 14:28:56.000000000 +0200
++++ b/make/c++-vars.make	2022-12-04 12:05:31.145980329 +0200
+@@ -20,7 +20,7 @@ ALL_CXXFLAGS = $(ALL_CXXPPFLAGS) $(CONFI
  
  TCC_FILES := $(call src-wildcard,*.tcc)
  HH_FILES := $(call src-wildcard,*.hh)

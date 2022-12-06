@@ -2,8 +2,10 @@ Description: Include missing cstring include files
 Forwarded: 
 Origin: vendor
 Author: Don Armstrong <don@debian.org>
---- a/lily/piano-pedal-engraver.cc
-+++ b/lily/piano-pedal-engraver.cc
+Index: b/lily/piano-pedal-engraver.cc
+===================================================================
+--- a/lily/piano-pedal-engraver.cc	2022-11-27 14:28:56.000000000 +0200
++++ b/lily/piano-pedal-engraver.cc	2022-12-04 12:09:38.442668814 +0200
 @@ -39,6 +39,7 @@
  #include "item.hh"
  
@@ -12,19 +14,10 @@ Author: Don Armstrong <don@debian.org>
  
  using std::string;
  
---- a/lily/source-file.cc
-+++ b/lily/source-file.cc
-@@ -19,7 +19,7 @@
- */
- 
- #include "source-file.hh"
--
-+#include <cstring>
- #include "config.hh"
- 
- #include "international.hh"
---- a/lily/translator.cc
-+++ b/lily/translator.cc
+Index: b/lily/translator.cc
+===================================================================
+--- a/lily/translator.cc	2022-11-27 14:28:56.000000000 +0200
++++ b/lily/translator.cc	2022-12-04 12:09:38.446668630 +0200
 @@ -18,7 +18,7 @@
  */
  
@@ -34,8 +27,10 @@ Author: Don Armstrong <don@debian.org>
  #include "context-def.hh"
  #include "dispatcher.hh"
  #include "global-context.hh"
---- a/lily/prob.cc
-+++ b/lily/prob.cc
+Index: b/lily/prob.cc
+===================================================================
+--- a/lily/prob.cc	2022-11-27 14:28:56.000000000 +0200
++++ b/lily/prob.cc	2022-12-04 12:09:38.446668630 +0200
 @@ -22,6 +22,7 @@
  #include "item.hh"
  #include "input.hh"

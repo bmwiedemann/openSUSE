@@ -5,8 +5,8 @@ Author: Julian Gilbey <jdg@debian.org>
 Origin: vendor
 Index: b/Documentation/en/contributor.texi
 ===================================================================
---- a/Documentation/en/contributor.texi	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/en/contributor.texi	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/en/contributor.texi	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/contributor.texi	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -21,8 +21,8 @@ Index: b/Documentation/en/contributor.texi
  @version{}.  It discusses technical issues and policies that
 Index: b/Documentation/cs/learning.tely
 ===================================================================
---- a/Documentation/cs/learning.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/cs/learning.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/cs/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/cs/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -12,6 +12,11 @@
  @settitle Příručka k učení se
  @afourpaper
@@ -37,8 +37,8 @@ Index: b/Documentation/cs/learning.tely
  @version{}.
 Index: b/Documentation/cs/web.texi
 ===================================================================
---- a/Documentation/cs/web.texi	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/cs/web.texi	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/cs/web.texi	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/cs/web.texi	2022-12-04 12:06:37.146961396 +0200
 @@ -50,7 +50,6 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond --- the music typesetter
@@ -49,8 +49,8 @@ Index: b/Documentation/cs/web.texi
  * Úryvky LilyPondu: (lilypond-snippets).         Mnoho triků, rad a příkladů.
 Index: b/Documentation/de/essay.tely
 ===================================================================
---- a/Documentation/de/essay.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/de/essay.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/de/essay.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/de/essay.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -12,6 +12,11 @@
  @documentlanguage de
  @afourpaper
@@ -65,8 +65,8 @@ Index: b/Documentation/de/essay.tely
  @macro manualIntro
 Index: b/Documentation/de/extending.tely
 ===================================================================
---- a/Documentation/de/extending.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/de/extending.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/de/extending.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/de/extending.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage de
  @afourpaper
@@ -81,8 +81,8 @@ Index: b/Documentation/de/extending.tely
  @macro manualIntro
 Index: b/Documentation/de/learning.tely
 ===================================================================
---- a/Documentation/de/learning.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/de/learning.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/de/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/de/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -12,6 +12,11 @@
  @settitle LilyPond Handbuch zum Lernen
  @afourpaper
@@ -97,8 +97,8 @@ Index: b/Documentation/de/learning.tely
  @version{} zur Verfügung.
 Index: b/Documentation/de/notation.tely
 ===================================================================
---- a/Documentation/de/notation.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/de/notation.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/de/notation.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/de/notation.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -11,6 +11,11 @@
  @setfilename lilypond.info
  @settitle LilyPond Benutzerhandbuch
@@ -113,8 +113,8 @@ Index: b/Documentation/de/notation.tely
  @afourpaper
 Index: b/Documentation/de/usage.tely
 ===================================================================
---- a/Documentation/de/usage.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/de/usage.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/de/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/de/usage.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -12,7 +12,17 @@
  @settitle GNU LilyPond Programmbenutzung
  @afourpaper
@@ -136,8 +136,8 @@ Index: b/Documentation/de/usage.tely
  Diese Datei erklärt, wie man die Programme, die mit LilyPond
 Index: b/Documentation/es/essay.tely
 ===================================================================
---- a/Documentation/es/essay.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/essay.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/es/essay.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/es/essay.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -152,8 +152,8 @@ Index: b/Documentation/es/essay.tely
  @macro manualIntro
 Index: b/Documentation/es/extending.tely
 ===================================================================
---- a/Documentation/es/extending.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/extending.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/es/extending.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/es/extending.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -168,8 +168,8 @@ Index: b/Documentation/es/extending.tely
  @macro manualIntro
 Index: b/Documentation/es/learning.tely
 ===================================================================
---- a/Documentation/es/learning.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/learning.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/es/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/es/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -184,8 +184,8 @@ Index: b/Documentation/es/learning.tely
  @version{}.
 Index: b/Documentation/es/notation.tely
 ===================================================================
---- a/Documentation/es/notation.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/notation.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/es/notation.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/es/notation.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage es
  @afourpaper
@@ -200,8 +200,8 @@ Index: b/Documentation/es/notation.tely
  puede producir con LilyPond versión @version{}.  Da por sentado que el
 Index: b/Documentation/en/essay.tely
 ===================================================================
---- a/Documentation/en/essay.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/en/essay.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/en/essay.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/essay.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -216,8 +216,8 @@ Index: b/Documentation/en/essay.tely
  LilyPond version @version{}.
 Index: b/Documentation/es/usage.tely
 ===================================================================
---- a/Documentation/es/usage.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/usage.tely	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/es/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/es/usage.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,18 @@
  @documentlanguage es
  @afourpaper
@@ -239,8 +239,8 @@ Index: b/Documentation/es/usage.tely
  @macro manualIntro
 Index: b/Documentation/es/web.texi
 ===================================================================
---- a/Documentation/es/web.texi	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/web.texi	2021-01-12 13:05:18.370377247 +0200
+--- a/Documentation/es/web.texi	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/es/web.texi	2022-12-04 12:06:37.146961396 +0200
 @@ -53,20 +53,10 @@ Free Documentation License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond: el tipografiador de música
@@ -264,8 +264,8 @@ Index: b/Documentation/es/web.texi
  
 Index: b/Documentation/en/extending.tely
 ===================================================================
---- a/Documentation/en/extending.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/en/extending.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/en/extending.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/extending.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -280,8 +280,8 @@ Index: b/Documentation/en/extending.tely
  LilyPond version @version{}.
 Index: b/Documentation/fr/essay.tely
 ===================================================================
---- a/Documentation/fr/essay.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/fr/essay.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/fr/essay.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/fr/essay.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -16,6 +16,11 @@
  @documentlanguage fr
  @afourpaper
@@ -296,8 +296,8 @@ Index: b/Documentation/fr/essay.tely
  par ordinateur à l'aide de LilyPond version @version{}.
 Index: b/Documentation/fr/learning.tely
 ===================================================================
---- a/Documentation/fr/learning.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/fr/learning.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/fr/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/fr/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  
  @afourpaper
@@ -312,8 +312,8 @@ Index: b/Documentation/fr/learning.tely
  @version{}.
 Index: b/Documentation/fr/notation.tely
 ===================================================================
---- a/Documentation/fr/notation.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/fr/notation.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/fr/notation.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/fr/notation.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage fr
  @afourpaper
@@ -328,8 +328,8 @@ Index: b/Documentation/fr/notation.tely
  @version{}.  Sa lecture requiert une familiarité avec le contenu
 Index: b/Documentation/fr/usage.tely
 ===================================================================
---- a/Documentation/fr/usage.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/fr/usage.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/fr/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/fr/usage.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,17 @@
  @documentlanguage fr
  @afourpaper
@@ -350,8 +350,8 @@ Index: b/Documentation/fr/usage.tely
  @macro manualIntro
 Index: b/Documentation/hu/learning.tely
 ===================================================================
---- a/Documentation/hu/learning.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/hu/learning.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/hu/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/hu/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage hu
  @afourpaper
@@ -366,8 +366,8 @@ Index: b/Documentation/hu/learning.tely
  @macro manualIntro
 Index: b/Documentation/hu/web.texi
 ===================================================================
---- a/Documentation/hu/web.texi	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/hu/web.texi	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/hu/web.texi	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/hu/web.texi	2022-12-04 12:06:37.146961396 +0200
 @@ -51,20 +51,11 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory GNU LilyPond --- the music typesetter
@@ -391,8 +391,8 @@ Index: b/Documentation/hu/web.texi
  
 Index: b/Documentation/it/learning.tely
 ===================================================================
---- a/Documentation/it/learning.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/it/learning.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/it/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/it/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage it
  @afourpaper
@@ -407,8 +407,8 @@ Index: b/Documentation/it/learning.tely
  @version{}.
 Index: b/Documentation/it/usage.tely
 ===================================================================
---- a/Documentation/it/usage.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/it/usage.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/it/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/it/usage.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,18 @@
  @documentlanguage it
  @afourpaper
@@ -430,8 +430,8 @@ Index: b/Documentation/it/usage.tely
  
 Index: b/Documentation/ja/learning.tely
 ===================================================================
---- a/Documentation/ja/learning.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/ja/learning.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/ja/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/ja/learning.tely	2022-12-04 12:06:37.146961396 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage ja
  @afourpaper
@@ -446,8 +446,8 @@ Index: b/Documentation/ja/learning.tely
  @end macro
 Index: b/Documentation/ja/notation.tely
 ===================================================================
---- a/Documentation/ja/notation.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/ja/notation.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/ja/notation.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/ja/notation.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage ja
  @afourpaper
@@ -462,8 +462,8 @@ Index: b/Documentation/ja/notation.tely
  すべての記譜法についての参照を提供します。@c
 Index: b/Documentation/ja/usage.tely
 ===================================================================
---- a/Documentation/ja/usage.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/ja/usage.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/ja/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/ja/usage.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -13,6 +13,19 @@
  @documentlanguage ja
  @afourpaper
@@ -486,8 +486,8 @@ Index: b/Documentation/ja/usage.tely
  プログラムの実行方法について説明します。@c
 Index: b/Documentation/en/learning.tely
 ===================================================================
---- a/Documentation/en/learning.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/en/learning.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/en/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/learning.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -502,8 +502,8 @@ Index: b/Documentation/en/learning.tely
  @version{}.
 Index: b/Documentation/en/music-glossary.tely
 ===================================================================
---- a/Documentation/en/music-glossary.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/en/music-glossary.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/en/music-glossary.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/music-glossary.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -6,6 +6,11 @@
  @documentlanguage en
  @afourpaper
@@ -518,8 +518,8 @@ Index: b/Documentation/en/music-glossary.tely
  terms used in the documentation manuals for LilyPond version
 Index: b/Documentation/nl/learning.tely
 ===================================================================
---- a/Documentation/nl/learning.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/nl/learning.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/nl/learning.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/nl/learning.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -19,6 +19,11 @@
  @documentlanguage nl
  @afourpaper
@@ -534,8 +534,8 @@ Index: b/Documentation/nl/learning.tely
  @version{}.
 Index: b/Documentation/en/notation.tely
 ===================================================================
---- a/Documentation/en/notation.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/en/notation.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/en/notation.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/notation.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -13,6 +13,11 @@
  @documentlanguage en
  @afourpaper
@@ -550,8 +550,8 @@ Index: b/Documentation/en/notation.tely
  produced with LilyPond version @version{}.  It assumes that
 Index: b/Documentation/en/snippets.tely
 ===================================================================
---- a/Documentation/en/snippets.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/en/snippets.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/en/snippets.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/snippets.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -6,6 +6,11 @@
  @documentlanguage en
  @afourpaper
@@ -563,11 +563,11 @@ Index: b/Documentation/en/snippets.tely
 +
  @macro manualIntro
  This document shows a selected set of LilyPond snippets from the
- @uref{http://lsr@/.di@/.unimi@/.it,LilyPond Snippet Repository}
+ @uref{https://lsr@/.di@/.unimi@/.it,LilyPond Snippet Repository}
 Index: b/Documentation/en/usage.tely
 ===================================================================
---- a/Documentation/en/usage.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/en/usage.tely	2021-01-12 13:05:18.374377412 +0200
+--- a/Documentation/en/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/usage.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -13,6 +13,18 @@
  @documentlanguage en
  @afourpaper
@@ -589,36 +589,23 @@ Index: b/Documentation/en/usage.tely
  LilyPond version @version{}.  In addition, it suggests some
 Index: b/Documentation/en/changes.tely
 ===================================================================
---- a/Documentation/en/changes.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/en/changes.tely	2021-01-12 13:05:18.374377412 +0200
-@@ -13,6 +13,12 @@
- @end macro
- @end ifhtml
- 
-+@dircategory GNU LilyPond --- the music typesetter
-+@direntry
-+* LilyPond Changes: (lilypond-changes).   Changes to recent versions.
-+@end direntry
-+
-+
- @ifnothtml
- @macro inputfileref{DIR,NAME}
- @file{\DIR\/\NAME\}@c
-@@ -28,6 +34,10 @@ See user manual, \NAME\
- @end html
- @end macro
+--- a/Documentation/en/changes.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/changes.tely	2022-12-04 12:06:37.150961212 +0200
+@@ -53,6 +53,10 @@ run @command{convert-ly} directly from F
+ environments with LilyPond support may provide a way to run
+ @command{convert-ly} graphically.}
  
 +@dircategory GNU LilyPond --- the music typesetter
 +@direntry
 +* LilyPond Changes: (lilypond-changes).   Changes to recent versions.
 +@end direntry
  
- @documentencoding UTF-8
- @documentlanguage en
+ @node Major changes in LilyPond
+ @unnumbered Major changes in LilyPond
 Index: b/Documentation/hu/usage.tely
 ===================================================================
---- a/Documentation/hu/usage.tely	2021-01-12 13:04:38.360723986 +0200
-+++ b/Documentation/hu/usage.tely	2021-01-12 13:05:18.378377578 +0200
+--- a/Documentation/hu/usage.tely	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/hu/usage.tely	2022-12-04 12:06:37.150961212 +0200
 @@ -15,6 +15,19 @@
  
  @c translator: Harmath Dénes
@@ -639,63 +626,19 @@ Index: b/Documentation/hu/usage.tely
  @macro manualIntro
  Ez a dokumentáció ismerteti, hogyan kell a LilyPond @version{} verziójához
  tartozó programokat futtatni, valamint tanácsokat ad azok hatékony
-Index: b/Documentation/fr/web.texi
-===================================================================
---- a/Documentation/fr/web.texi	2021-01-12 13:05:18.374377412 +0200
-+++ b/Documentation/fr/web.texi	2021-01-12 13:09:56.757899239 +0200
-@@ -59,10 +59,7 @@ License''.
- * Extension des fonctionnalités: (lilypond-extending).       Comment utiliser Scheme dans LilyPond.
- * Glossaire musicologique: (music-glossary).                 Pour l'utilisateur non anglophone.
- * Référence des propriétés internes: (lilypond-internals).   Définitions pour les retouches.
--* Manuel d'initiation à LilyPond: (lilypond-learning).       Les premiers pas.
--* Manuel de notation: (lilypond-notation).                   Gravure de musique avec LilyPond.
- * Morceaux choisis de LilyPond: (lilypond-snippets).         Petits trucs, astuces et exemples.
--* Manuel d'utilisation: (lilypond-usage).                    Installation et exécution des programmes.
- * LilyPond Website: (lilypond-web).                          Prévisualisation du site.
- @end direntry
- 
-Index: b/Documentation/it/web.texi
-===================================================================
---- a/Documentation/it/web.texi	2021-01-12 13:05:18.374377412 +0200
-+++ b/Documentation/it/web.texi	2021-01-12 13:14:19.076783266 +0200
-@@ -63,7 +63,6 @@ License''.
- * Glossario musicale: (music-glossary).                   Per gli utenti non anglofoni.
- * Notazione: (lilypond-notation).                         Guida alla notazione.
- * Frammenti: (lilypond-snippets).                         Trucchi, suggerimenti e esempi.
--* Utilizzo: (lilypond-usage).                             Come installare e usare LilyPond.
- * Sito web: (lilypond-web).                               Versione di lilypond.org in formato info.
- @end direntry
- 
 Index: b/Documentation/en/web.texi
 ===================================================================
---- a/Documentation/en/web.texi	2021-01-12 13:05:18.374377412 +0200
-+++ b/Documentation/en/web.texi	2021-01-12 13:52:33.549351335 +0200
+--- a/Documentation/en/web.texi	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/en/web.texi	2022-12-04 12:06:37.150961212 +0200
 @@ -1,3 +1,4 @@
 +
  \input texinfo @c -*- coding: utf-8; mode: texinfo; -*-
  @ignore
      Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
-@@ -51,16 +52,7 @@ License''.
- @c expected to be found in lilypond/ subdirectory.
- @dircategory LilyPond -- the music typesetter
- @direntry
--* Changes: (lilypond-changes).          News since version 2.20.
--* Contributing: (lilypond-contributor). How to contribute to LilyPond.
--* Essay: (lilypond-essay).              The philosophy behind LilyPond.
--* Extending: (lilypond-extending).      How to use Scheme in LilyPond.
- * Internals: (lilypond-internals).      Tweaking reference.
--* Learning: (lilypond-learning).        Introduction.  Start here.
--* Music Glossary: (music-glossary).     For non-English users.
--* Notation: (lilypond-notation).        Notation reference.
--* Snippets: (lilypond-snippets).        Tricks, tips, and examples.
--* Usage: (lilypond-usage).              How to install and use LilyPond.
- * Website: (lilypond-web).              Info version of lilypond.org.
- @end direntry
- 
 Index: b/Documentation/de/web.texi
 ===================================================================
---- a/Documentation/de/web.texi	2021-01-12 13:05:18.378377578 +0200
-+++ b/Documentation/de/web.texi	2021-01-12 13:55:52.009393753 +0200
+--- a/Documentation/de/web.texi	2022-11-27 14:28:56.000000000 +0200
++++ b/Documentation/de/web.texi	2022-12-04 12:06:37.150961212 +0200
 @@ -52,16 +52,8 @@ License''.
  @c expected to be found in lilypond/ subdirectory.
  @dircategory LilyPond -- das Notensatzsystem

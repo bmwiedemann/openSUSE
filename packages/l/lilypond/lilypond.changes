@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:29:30 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to 2.23.82 to fix build against guile-3
+- Fixed undefined symbol with lilypond-missing-lgc.patch
+- Removed:
+  Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
+- For upstream changes visit:
+  https://http://lilypond.org/doc/v2.23/Documentation/changes/index.htm
+
+-------------------------------------------------------------------
 Thu Sep 30 05:06:45 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Exclude all 32 bit builds.

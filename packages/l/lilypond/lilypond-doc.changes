@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 15:49:40 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to 2.23.82
+- Use ready built documentation tarball
+
+-------------------------------------------------------------------
 Wed Nov 24 16:03:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build lilypond-doc package powerful workers for aarch64 to avoid

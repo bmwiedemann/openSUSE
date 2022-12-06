@@ -1,7 +1,7 @@
 #
 # spec file for package lilypond-doc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%bcond_without docbuild
+%bcond_with docbuild
 
 #Unsatisfied dependency for Factory i586
 ExcludeArch:    i586
@@ -24,24 +24,23 @@ ExcludeArch:    i586
 %if 0%{suse_version} <= 1500
 #0%%{?is_backports} && 0%%{?sle_version} == 150200
 #"%%_project" == "openSUSE:Backports:SLE-15-SP2:Update"
-ExcludeArch:    i586 x86_64 aarch64 ppc64le s390x
+ExcludeArch:    i586 aarch64 ppc64le s390x
 %endif
 Name:           lilypond-doc
-Version:        2.23.3
+Version:        2.23.82
 Release:        0
 Summary:        Documentation for the LilyPond Typesetter
 License:        GFDL-1.3-only
 Group:          Documentation/HTML
 URL:            http://lilypond.org/
-Source0:        lilypond-%{version}.tar.gz
 %if %{without docbuild}
-#Source1:        https://lilypond.org/download/binaries/documentation/lilypond-%%{version}-1.documentation.tar.bz2
-%endif
+Source0:        https://gitlab.com/lilypond/lilypond/-/releases/v%{version}/downloads/lilypond-%{version}-documentation.tar.xz
+%else
+#Source0:        lilypond-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
 Patch2:         add_dircategories_to_documentation.patch
-Patch3:         Issue-5243-1-editor-scm-Add-shell-quote-argument-function.diff
 Patch4:         use_cstring_and_ctype_includes.patch
 BuildRequires:  ImageMagick-extra
 BuildRequires:  autoconf
@@ -50,7 +49,6 @@ BuildRequires:  bitstream-vera-fonts
 BuildRequires:  dblatex
 BuildRequires:  dejavu
 BuildRequires:  extractpdfmark
-BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  fontconfig-devel >= 2.4.0
 BuildRequires:  fontforge
@@ -81,6 +79,8 @@ BuildRequires:  texlive-avantgar-fonts
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  texlive-dejavu-fonts
 BuildRequires:  texlive-fancybox
+BuildRequires:  texlive-fontinst-bin
+BuildRequires:  texlive-fontware-bin
 BuildRequires:  texlive-gnu-freefont-fonts
 BuildRequires:  texlive-lh
 BuildRequires:  texlive-libertine-fonts
@@ -92,9 +92,11 @@ BuildRequires:  ttf-wqy-zenhei
 BuildRequires:  xfntjp
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  zip
-BuildRequires:  pkgconfig(guile-1.8)
+BuildRequires:  pkgconfig(guile-3.0)
 BuildRequires:  pkgconfig(python3)
 Requires:       lilypond = %{version}
+%endif
+BuildRequires:  fdupes
 Provides:       lilypond-documentation = %{version}
 Obsoletes:      lilypond-documentation < %{version}
 BuildArch:      noarch
@@ -110,7 +112,6 @@ Common and english documentation files for the GNU LilyPond music typesetter.
 
 %global rlversion %{version}
 %define usrsrcp %{buildroot}
-%define _configure ./smart-configure.sh
 
 %package cs
 Summary:        Documentation for the LilyPond Typesetter (cs)
@@ -185,6 +186,7 @@ Requires:       %{name} = %{version}
 Chinese documentation files for the GNU LilyPond music typesetter.
 
 %prep
+%if %{with docbuild}
 %setup -q -n lilypond-%{version}
 %autopatch -p1
 
@@ -203,8 +205,12 @@ cd ../python
 for i in `grep -rl "/usr/bin/python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 popd
 for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
+%else
+%setup -q -c
+%endif
 
 %build
+%if %{with docbuild}
 %if 0 == 1
 mkdir -p $HOME/bin
 export PATH=$HOME/bin:$PATH
@@ -226,9 +232,12 @@ export CXXFLAGS="$CFLAGS"
 export LILYPOND_EXTERNAL_BINARY="%{_bindir}/lilypond"
 export LILYPOND_BINARY=$LILYPOND_EXTERNAL_BINARY
 export LILYPOND_LOGLEVEL=DEBUG
+export GUILE_FLAVOR=guile-3.0
 rm configure
-./smart-autogen.sh --noconfigure
-%configure --with-ncsb-dir=%{_datadir}/ghostscript/fonts/
+./autogen.sh --noconfigure
+%configure \
+           GUILE_FLAVOR=guile-3.0 \
+           --with-ncsb-dir=%{_datadir}/ghostscript/fonts/
 # build documentation
 echo "*********************************"
 echo "* Start the documentation build *"
@@ -242,8 +251,10 @@ make -e doc LILYPOND_EXTERNAL_BINARY="%{_bindir}/lilypond" LILYPOND_BINARY=$LILY
 #LILYPOND_EXTERNAL_BINARY="%%{_bindir}/lilypond" LILYPOND_BINARY=$LILYPOND_EXTERNAL_BINARY make doc)
 #popd
 #make -j1 out=www WWW-post
+%endif
 
 %install
+%if %{with docbuild}
 mkdir -p "%{buildroot}%{_datadir}/lilypond/%{rlversion}"
 # install documentation
 make install-doc DESTDIR=%{buildroot} webdir=%{_docdir}/lilypond
@@ -297,8 +308,8 @@ for f in DEDICATION \
   echo "%%exclude %{_docdir}/lilypond/$f" >> files-en
 done
 echo "%%exclude %{_datadir}/lilypond/%{rlversion}/ls-R" >> files-en
-#rm %%{_infodir}/lilypond || :
 
+#rm %%{_infodir}/lilypond || :
 %post
 ln -sf %{_docdir}/lilypond/Documentation %{_infodir}/lilypond
 
@@ -344,5 +355,15 @@ rm -f %{_infodir}/lilypond
 %files -f files-en
 %defattr(-,root,root)
 %license LICENSE LICENSE.DOCUMENTATION COPYING
+
+%else
+mkdir -p %{buildroot}
+%fdupes -s share/doc/lilypond/html/Documentation
+
+%files
+%license share/doc/lilypond/html/COPYING*
+%doc share/doc/lilypond/html/Documentation
+
+%endif
 
 %changelog
