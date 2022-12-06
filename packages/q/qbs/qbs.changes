@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 23:02:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.0:
+  * Users can now control if and when warnings for deprecated properties are
+    emitted.
+  * Added FileInfo.executableSuffix().
+
+-------------------------------------------------------------------
 Sun Nov 20 17:33:33 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.23.2
