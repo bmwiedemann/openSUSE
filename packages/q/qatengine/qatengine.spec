@@ -1,7 +1,7 @@
 #
 # spec file for package qatengine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           qatengine
-Version:        0.6.10
+Version:        0.6.17
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATengine Library
 License:        BSD-3-Clause
 Group:          Hardware/Other
 URL:            https://github.com/intel/QAT_Engine
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/intel/QAT_Engine/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc >= 4.8.5

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Dec  3 23:33:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.6.17:
+  * Add security policy - c1a7a96
+  * Add dependancy update tool file - 522c41d
+  * Release v0.6.17 version update - c1a7a96
+  * Enable QAT_SW RSA & ECDSA support for BoringSSL - 1035e82
+  * Fix QAT_SW SM2 ECDSA Performance issue - f44a564
+  * CPP check and Makefile Bug fixes - 98ccbe8
+  * Fix buffer overflow issue with SHA3 and ECX - cab65f3
+  * Update version and README for v0.6.16 - 1c95fd7
+  * Split --with-qat_sw_install_dir into seperate configures - d5f5656
+  * Add seperate err files for Boringssl - 1a09627
+  * Fix QAT_HW & QAT_SW AES-GCM issue with s_server in provider - c775f5c
+  * Fix issue with disable flags in provider - 2e00636
+  * Fix coredump issue in provider with qat_sw gcm - 6703c13
+  * Fix err files regeneration failure - 510f3dc
+  * Add Provider Support for ChachaPoly and SM2 - a98e51d
+  * Bug Fixes in testapp and with disable flags. - 0945535
+  * QAT HW&SW Co-existence dynamic mechanism support. - 5baf5aa
+  * Fix issue with SIGUSR1 during reload. - 00ea833
+  * Refactor qat_hw instances based on Sym/Asym capabilities. - bb10128
+  * Replace deprecated pthread_yield with sched_yield. - d514406
+  * BoringSSL support for RSA and ECDSA. - 41c67c7
+  * Fix s_server lseek forever issue with qatprovider. - cb3db21
+  * Fix aes-cbc failure issue in testapp. - a530427
+  * Fix glibc version test - 2461966
+  * Fix issue with generator param and ECDSA verify. - c51fc17
+  * Provider Support for DSA, DH, HKDF, PRF, SHA3 & aes-cbc - 7cc5eb9
+  * Fix testapp issues and optimization - e7c2ba8
+  * Optimize setup and clear async event notification - 573fe48
+  * Fix Nginx worker process core dump in QAT_SW with pkill/killall -
+    4eb4473
+  * Add Cofactor to take optimized path in ECDH API - 9a23c7e
+  * Fix double free issue with QAT_SW - 1a16708
+  * Add thread mapping to specific QAT_HW instance - 5ee799a
+  * OpenSSL 3.0 Provider Support - 38086fa
+  * Update README and version to v0.6.12 - dca2957
+  * Fixed worker process hung forever after nginx reload - bfe97aa
+  * Remove OpenSSL 1.1.0 Support - da8682a
+  * Add QAT_SW SM2 ECDH & SM3 support - 04a6af2
+  * QAT_SW ECDSA SM2 sign and verify Support - d44ae7e
+  * Disable SM3, Bug fixes, Readme & version update - d995046
+
+-------------------------------------------------------------------
 Thu Dec  2 17:13:16 UTC 2021 - Torsten Duwe <duwe@suse.com>
 
 - submit for jira feature SLE-20907
