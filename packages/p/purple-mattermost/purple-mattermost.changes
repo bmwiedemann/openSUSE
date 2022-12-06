@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 20:41:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * Fetch last 60 messages when a channel is joined for the first time from
+    Pidgin. 
+
+-------------------------------------------------------------------
 Tue May 11 22:04:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0

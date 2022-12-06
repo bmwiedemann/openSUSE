@@ -1,7 +1,7 @@
 #
 # spec file for package purple-mattermost
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   mattermost
 Name:           purple-mattermost
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        A libpurple/Pidgin plugin to connect to Mattermost
 License:        GPL-3.0-or-later
