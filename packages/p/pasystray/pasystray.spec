@@ -17,7 +17,7 @@
 
 
 Name:           pasystray
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        PulseAudio system tray
 License:        LGPL-2.1-or-later
@@ -32,13 +32,13 @@ BuildRequires:  pkgconfig(avahi-ui-gtk3)
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-broadway-3.0)
-BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
+BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk+-broadway-3.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
-BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(gtk+-wayland-3.0)
+BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
