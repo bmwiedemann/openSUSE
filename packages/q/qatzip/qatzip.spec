@@ -17,16 +17,19 @@
 
 
 Name:           qatzip
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATzip Library
 License:        BSD-3-Clause
 Group:          Hardware/Other
 URL:            https://github.com/intel/QATzip
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/intel/QATzip/archive/refs/tags/v%{version}.tar.gz
 Patch0:         qatzip-fortify_source=3.patch
-BuildRequires:  gcc >= 4.8.5
-BuildRequires:  qatlib-devel >= 21.08.0
+BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  liblz4-devel
+BuildRequires:  libtool
+BuildRequires:  qatlib-devel >= 22.07.0
 BuildRequires:  zlib-devel >= 1.2.7
 # This package can be built on all archs, but is useful only on enterprise-class intel.
 ExclusiveArch:  x86_64
@@ -42,20 +45,20 @@ compliant gzip* implementation. QATzip is designed to take full
 advantage of the performance provided by Intel QuickAssist
 Technology.
 
-%package        -n libqatzip1
+%package -n libqatzip3
 Summary:        Libraries for the qatzip package
 Group:          Hardware/Other
 
-%description    -n libqatzip1
+%description -n libqatzip3
 This package contains libraries for applications to use
 the QATzip APIs.
 
-%package        devel
+%package devel
 Summary:        Development components for the libqatzip package
 Group:          Hardware/Other
-Requires:       libqatzip1%{?_isa} = %{version}-%{release}
+Requires:       libqatzip3%{?_isa} = %{version}-%{release}
 
-%description    devel
+%description devel
 This package contains headers and libraries required to build
 applications that use the QATzip APIs.
 
@@ -63,32 +66,26 @@ applications that use the QATzip APIs.
 %autosetup -n QATzip-%{version}
 
 %build
-%{set_build_flags}
-./configure \
-    --bindir=%{_bindir} \
-    --sharedlib-dir=%{_libdir} \
-    --includedir=%{_includedir} \
-    --mandir=%{_mandir} \
-    --prefix=%{_prefix} \
-    --enable-symbol
+autoreconf -fiv
+%configure --enable-symbol
 %make_build
 
 %install
 %make_install
 rm -vf %{buildroot}%{_mandir}/*.pdf
+rm -vf %{buildroot}%{_libdir}/*.{la,a}
 
-%post -n libqatzip1 -p /sbin/ldconfig
-%postun -n libqatzip1 -p /sbin/ldconfig
+%post -n libqatzip3 -p /sbin/ldconfig
+%postun -n libqatzip3 -p /sbin/ldconfig
 
 %files
 %license LICENSE*
 %{_mandir}/man1/qzip.1%{?ext_man}
 %{_bindir}/qzip
 
-%files -n libqatzip1
+%files -n libqatzip3
 %license LICENSE*
-%{_libdir}/libqatzip.so.1
-%{_libdir}/libqatzip.so.%{version}
+%{_libdir}/libqatzip.so.3*
 
 %files devel
 %doc docs/QATzip-man.pdf

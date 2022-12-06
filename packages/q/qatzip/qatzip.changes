@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  3 23:31:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Add dependancy update tool file
+  * Updated New "Crc" series API
+  * Bug fix
+  * Enable static link QATzip into Envoy
+  * Support autoconf & automake to build QATzip
+  * Change the API for ABI/API compatibility
+  * Change the default installation directory of QATzip lib to
+    /usr/local/lib
+  * Bug fix
+
+-------------------------------------------------------------------
 Fri Jul  1 14:39:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add qatzip-fortify_source=3.patch: Use distro default CFLAGS.
