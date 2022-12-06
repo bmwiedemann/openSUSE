@@ -2,7 +2,7 @@
 #
 # spec file for package rsvndump
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,17 +19,13 @@
 
 
 Name:           rsvndump
-Version:        0.6
+Version:        0.6.1
 Release:        0
 Summary:        Remote Subversion Repository Dumping Tool
 License:        GPL-3.0-only
 Group:          Development/Tools/Version Control
-URL:            http://rsvndump.sourceforge.net/
+URL:            https://rsvndump.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/rsvndump/rsvndump-%{version}.tar.gz
-# pbleser: fixes the linking order:
-Patch1:         rsvndump-fix_linking_order.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  libapr-util1-devel
 BuildRequires:  libapr1-devel
 BuildRequires:  libtool
@@ -65,5 +61,6 @@ rsvndump can easily be imported into a new subversion repository.
 %{_bindir}/rsvndump
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 20:09:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.6.1:
+  * fix a bug where sub-directories with matching prefixes would be
+    included in the dump
+- drop rsvndump-fix_linking_order.patch
+
+-------------------------------------------------------------------
 Tue Dec 10 08:56:59 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup and modernise spec file
