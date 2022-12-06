@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 06 06:10:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.3:
+  * tag v1.8.3 (#5579)
+  * tag v1.8.3-rc.2 (#5529)
+  * feat: support attestations with multiple signatures (cherry-pick #5409) (#5528)
+  * logging action (#5416) (#5527)
+  * fix: bug in report resource watcher (#5525) (#5526)
+  * feat: Add default CI test values for helm charts (#5518) (#5521)
+  * feat(policies chart): Add ability to set autogen behavior (#5517) (#5520)
+  * tag 1.8.3-rc.1 (#5508)
+  * fix: report deletion fighting with garbage collection (#5486) (#5501)
+  * Migrate all mutate e2e tests to kuttl and expand (#5491) (#5499)
+  * Cherry-pick ff9328809b62097895b99d866d0d3c6d6a801ae9 (#5488)
+  * fix: fix mutating the "/metadata/serverAddress" section of a keda.s/v1alpha1/ScaledObject object (#5374) (#5487)
+  * fix: typo in autogen package (#5480) (#5481)
+  * fix: add clone check before validating namespace policy (#5459) (#5471)
+  * fix: issue when calling kustomize concurrently (cherry-pick #5465) (#5470)
+  * fix: admission reports stacking up (#5457) (#5467)
+  * fix: log watcher error in reports controller (#5449) (#5455)
+  * Handle  Match resources kind (#5421) (#5450)
+  * fix: mutate existing policy does not get applied when background=false (#5439) (#5447)
+  * Fix multi attestor keyless (#5432) (#5433)
+  * fix validationFailureAction case in kuttl tests (#5426)
+  * Add most basic kuttl tests for generate rules, clone and sync (#5413) (#5424)
+
+-------------------------------------------------------------------
 Mon Nov 21 09:25:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.8.2:
