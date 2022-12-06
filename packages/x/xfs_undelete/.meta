@@ -1,0 +1,8 @@
+<package name="xfs_undelete" project="openSUSE:Factory">
+  <title>An undelete tool for the XFS filesystem</title>
+  <description>xfs_undelete tries to recover all files on an XFS filesystem marked as
+deleted. You may also specify a date or age since deletion, and file types to ignore or to recover exclusively.
+
+https://github.com/ianka/xfs_undelete</description>
+  <devel project="filesystems" package="xfs_undelete"/>
+</package>
