@@ -1,7 +1,7 @@
 #
 # spec file for package flowgrind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           flowgrind
-Version:        0.8.0
+Version:        0.8.2
 Release:        0
 Summary:        Network performance measurement
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-URL:            http://flowgrind.net/
+URL:            https://flowgrind.github.io
 Source0:        https://github.com/flowgrind/flowgrind/releases/download/flowgrind-%{version}/flowgrind-%{version}.tar.bz2
 Source1:        https://github.com/flowgrind/flowgrind/releases/download/flowgrind-%{version}/flowgrind-%{version}.tar.bz2.asc
-Source2:        %{name}.keyring
+# can't find keyring anymore
+#Source2:        %{name}.keyring
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xmlrpc-c-devel
@@ -42,8 +43,6 @@ which are of use when exploring the idiosyncrasies of wireless mesh networks.
 %setup -q
 
 %build
-# fix building with gcc10
-export CFLAGS="%{optflags} -fcommon"
 %configure
 %make_build
 

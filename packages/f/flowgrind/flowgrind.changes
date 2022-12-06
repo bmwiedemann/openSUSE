@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  4 15:20:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * Fix version number (flowgrind -version)
+  * Fix minor groff issue in manual page
+  * Update debian packaging
+  * Fix compability with GCC10 (thanks to Jeroen Roovers <jer@gentoo.org>)
+  * lower loglevel of delay calculation error to prevent log overflow
+  * New website url: https://flowgrind.github.io (Closes #228)
+
+-------------------------------------------------------------------
 Thu Jun 11 07:08:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
