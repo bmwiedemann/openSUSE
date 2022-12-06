@@ -19,7 +19,7 @@
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %define _oname PcapPlusPlus
 Name:           pcapplusplus
-Version:        22.05
+Version:        22.11
 Release:        0
 Summary:        C++ network sniffing and packet parsing and crafting framework
 License:        Unlicense

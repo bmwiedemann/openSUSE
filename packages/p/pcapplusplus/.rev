@@ -7,4 +7,38 @@
     <comment>New package (3rd attempt)</comment>
     <requestid>979441</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fcc5c1d0ba1f60012566c522d249d34a</srcmd5>
+    <version>22.11</version>
+    <time>1670333017</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.11:
+  * PcapPlusPlus officially moved to C++11! (thanks @clementperon !)
+  * Remove the pthreads dependency and replace it with C++11 std::thread
+  * Stop supporting MinGW32 on Windows since it doesn't support std::thread.
+    MinGW-w64 and Visual Studio support remains unchanged
+  * New protocols:
+  * Telnet (thanks @egecetin !)
+  * FTP (thanks @egecetin !)
+  * ICMPv6 (thanks @kolbex !)
+  * NDP (thanks @kolbex !)
+  * LLC (thanks @egecetin !)
+  * STP (thanks @egecetin !)
+  * SOME/IP (thanks @kolbex !)
+  * Wake on LAN (WoL) (thanks @egecetin !)
+  * DPDK 21.11 support
+  * Better support for DPDK i40e NICs
+  * DPDK set up - add an option to get RTE_SDK from the command line or from
+    an environment variable
+  * Handle unilateral RST in TCP reassembly (thanks @neilstephens !)
+  * Retrieve live device IPv6 address if available (thanks @jafar75 !)
+  * Add .zst file extension support for pcapng files compressed with Zstd
+  * Auto pre-commit monthly update
+  * Add memory sanitizer regressions check
+  * Add CodeQL SAST and remove LGTM which is being deprecated 
+  * Support multiple packets in fuzzing tests (thanks @sashashura !)
+  * Revamped README.md (thanks @egecetin !)
+  * Tons of bug fixes and minor improvements</comment>
+    <requestid>1040422</requestid>
+  </revision>
 </revisionlist>
