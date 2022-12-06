@@ -1,7 +1,7 @@
 #
 # spec file for package eyeD3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eyeD3
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Audio files and ID3 Manipulation Tool
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -40,12 +40,11 @@ Requires:       python3-requests >= 2.25.1
 Requires:       python3-six >= 1.15.0
 Requires:       python3-toml >= 0.10.2
 Requires:       python3-urllib3 >= 1.26.2
-
+Recommends:     python-grako
+Recommends:     python-pillow
 # for plugins
 Recommends:     python-pylast
 Recommends:     python-requests
-Recommends:     python-pillow
-Recommends:     python-grako
 Recommends:     python-ruamel.yaml
 BuildArch:      noarch
 
