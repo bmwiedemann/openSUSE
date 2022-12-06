@@ -17,7 +17,7 @@
 
 
 Name:           mojo-parent
-Version:        60
+Version:        70
 Release:        0
 Summary:        Codehaus MOJO parent project pom file
 License:        Apache-2.0
@@ -26,6 +26,7 @@ URL:            https://www.mojohaus.org/mojo-parent/
 Source0:        https://github.com/mojohaus/mojo-parent/archive/%{name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  javapackages-local
+Requires:       mvn(org.junit:junit-bom:pom:)
 BuildArch:      noarch
 
 %description
@@ -48,6 +49,6 @@ install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom -a org.codehaus.mojo:mojo
 
 %files -f .mfiles
-%doc LICENSE-2.0.txt
+%license LICENSE-2.0.txt
 
 %changelog

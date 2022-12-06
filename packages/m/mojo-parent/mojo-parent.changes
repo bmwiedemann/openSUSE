@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:45:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 70:
+  * Improvement checkstyle configuration
+  * Add modello-maven-plugin to pluginManagement 
+  * Remove Google search box due to privacy (#274) @slawekjaranowski
+  * Put version for mrm-maven-plugin in property (#273) @slawekjaranowski
+  * Add streamLogsOnFailures to m-invoker-p (#272) @slawekjaranowski
+  * Add property for maven-fluido-skin version (#268) @slawekjaranowski
+  * Setup Apache Matomo analytics (#259) @slawekjaranowski
+  * Downgrade Checkstyle to 9.3. 10.x requires Java 11(ecfb1d1)
+  * remove requirement to use ssh for github scm devCon
+  * Require Maven 3.2.5 (#215) @slachiewicz
+  * [#225] add SHA-512 hashes (#226) @bmarwell
+  * Extract plugin version as variable so child pom can override if needed (#84) @nhojpatrick
+  * remove issue-tracking as do not exists anymore (#148) @olamy
+  * remove cim report as it do not exists anymore (#147) @olamy
+
+-------------------------------------------------------------------
 Fri Mar 25 07:56:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 60

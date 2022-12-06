@@ -15,4 +15,12 @@
     <comment>Upgrade to version 60</comment>
     <requestid>964788</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f40d6e1839951699fb8ae64d412a375</srcmd5>
+    <version>70</version>
+    <time>1670332980</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade</comment>
+    <requestid>1040354</requestid>
+  </revision>
 </revisionlist>
