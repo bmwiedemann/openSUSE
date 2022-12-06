@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tasklib
-Version:        2.4.3
+Version:        2.5.1
 Release:        0
 Summary:        Python Task Warrior library
 License:        BSD-3-Clause

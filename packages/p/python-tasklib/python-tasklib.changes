@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  5 13:39:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.5.1  
+  * Support for zoneinfo and comparison operators for TaskUUIDSets
+
+-------------------------------------------------------------------
 Wed Oct 12 11:27:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop six (unused)
