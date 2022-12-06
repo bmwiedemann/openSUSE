@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  2 06:26:54 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.0:
+  * No release notes.
+- Drop insighttoolkit-fno-sized-deallocation.patch: incorporated
+  upstream.
+- Enable builds for 32 bit, gh#InsightSoftwareConsortium/ITK#2529
+  resolved.
+- At least swig 4.0 required.
+
+-------------------------------------------------------------------
 Mon Aug 29 05:28:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable python bindings for openSUSE >= 1550 until swig related
