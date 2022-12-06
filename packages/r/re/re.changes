@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  1 08:43:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.8.0
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Use CMake for the build
+
+-------------------------------------------------------------------
 Thu Aug 25 22:26:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.0

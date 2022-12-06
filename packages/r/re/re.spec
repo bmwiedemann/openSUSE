@@ -16,16 +16,17 @@
 #
 
 
-%global sover   7
+%global sover   10
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/re
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 
@@ -58,20 +59,14 @@ applications that want to make use of libre.
 
 %prep
 %setup -q
-sed -e 's|@$(CC)|$(CC)|g' \
-    -e 's|@$(LD)|$(LD)|g' \
-    -e 's|@$(AR)|$(AR)|g' \
-    -e 's|@rm -rf|rm -rf|g' -i Makefile
 
 %build
-%make_build \
-    RELEASE=1 \
-    USE_OPENSSL=1 \
-    EXTRA_CFLAGS="%{optflags}"
+%cmake
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} LIBDIR=%{_libdir} install
-rm %{buildroot}/%{_libdir}/libre.a
+%cmake_install
+rm -v %{buildroot}/%{_libdir}/libre.a
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -84,8 +79,10 @@ rm %{buildroot}/%{_libdir}/libre.a
 %files devel
 %license LICENSE
 %{_includedir}/re
-%{_datadir}/re
+#%%{_datadir}/re
 %{_libdir}/libre.so
 %{_libdir}/pkgconfig/libre.pc
+%dir %{_libdir}/cmake/re
+%{_libdir}/cmake/re/re-config.cmake
 
 %changelog
