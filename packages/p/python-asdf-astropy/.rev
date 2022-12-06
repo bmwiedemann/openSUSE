@@ -59,4 +59,20 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
 - Drop asdf-astropy-pr84-fixtests.patch</comment>
     <requestid>1031583</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdbd23e75d696b21b9eede20164c8016</srcmd5>
+    <version>0.3.0</version>
+    <time>1670333028</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix builddeps
+
+- update to 0.3.0:
+  * Update citations.
+  * Switch to using ``pyproject.toml`` for package configuration.
+  * Fix bug with ``memmap`` of ``Quantity`` objects.
+  * Drop support for ``numpy-1.18``.
+  * Fix bug with ``str`` representations of ``astropy.time`` objects.
+  * Fix bug in preserving the ``dtype`` of ``Quantity`` objects.</comment>
+    <requestid>1040470</requestid>
+  </revision>
 </revisionlist>

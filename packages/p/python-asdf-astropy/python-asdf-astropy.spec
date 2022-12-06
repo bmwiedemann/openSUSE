@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
@@ -34,13 +34,10 @@ URL:            https://github.com/astropy/asdf-astropy
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf_astropy-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 16.0}
-BuildRequires:  %{python_module setuptools >= 42}
-BuildRequires:  %{python_module setuptools_scm}
-%if 0%{suse_version} >= 1550
-BuildRequires:  %{python_module tomli}
-%else
-BuildRequires:  %{python_module toml}
-%endif
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 60}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.0
@@ -66,14 +63,14 @@ ASDF serialization support for astropy
 
 %prep
 %autosetup -p1 -n asdf_astropy-%{version}
-sed -i 's/--color=yes//' setup.cfg
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -85,7 +82,7 @@ sed -i 's/--color=yes//' setup.cfg
 %if !%{with test}
 %files %{python_files}
 %{python_sitelib}/asdf_astropy
-%{python_sitelib}/asdf_astropy-%{version}*-info
+%{python_sitelib}/asdf_astropy-%{version}.dist-info
 %endif
 
 %changelog

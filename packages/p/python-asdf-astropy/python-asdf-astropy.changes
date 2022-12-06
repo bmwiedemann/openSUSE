@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  6 00:26:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix builddeps
+
+-------------------------------------------------------------------
+Mon Dec  5 20:44:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * Update citations.
+  * Switch to using ``pyproject.toml`` for package configuration.
+  * Fix bug with ``memmap`` of ``Quantity`` objects.
+  * Drop support for ``numpy-1.18``.
+  * Fix bug with ``str`` representations of ``astropy.time`` objects.
+  * Fix bug in preserving the ``dtype`` of ``Quantity`` objects.
+
+-------------------------------------------------------------------
 Thu Oct 27 16:23:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.2
