@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221204" schemaversion="4.1">
+<image name="OBS__MicroOS___20221205" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221204</productvar>
+      <productvar name="VERSION">20221205</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221204,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221205,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221204/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221205/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1534,7 +1534,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
       <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
-      <repopackage name="libpoppler125"/>
+      <repopackage name="libpoppler126"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal-1" arch="x86_64"/>
       <repopackage name="libportal-gtk3-1" arch="x86_64"/>
@@ -1621,7 +1621,7 @@
       <repopackage name="libraw1394-11"/>
       <repopackage name="libraw20" arch="x86_64"/>
       <repopackage name="librdf0"/>
-      <repopackage name="libre2-9"/>
+      <repopackage name="libre2-10"/>
       <repopackage name="libreadline8"/>
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreoffice"/>
