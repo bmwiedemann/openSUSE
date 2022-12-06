@@ -1,7 +1,7 @@
 #
 # spec file for package slick-greeter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   lightdm-slick-greeter
 Name:           slick-greeter
-Version:        1.5.4
+Version:        1.5.9
 Release:        0
 Summary:        The slick-looking login screen application
 License:        CC-BY-SA-3.0 AND GPL-3.0-only
@@ -72,8 +72,8 @@ Requires:       %{_name} = %{version}
 Requires:       gnome-icon-theme
 Requires:       gtk3-metatheme-adwaita
 Requires:       ubuntu-fonts
-Supplements:    packageand(%{_name}:branding-upstream)
-Conflicts:      otherproviders(%{_name}-branding)
+Supplements:    (%{_name} and branding-upstream)
+Conflicts:      %{_name}-branding
 Provides:       %{_name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: A /usr/share/glib-2.0/schemas/$NAME.gschema.override file can
@@ -94,7 +94,7 @@ cp -a %{SOURCE1} .
 %build
 NOCONFIGURE=1 gnome-autogen.sh
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

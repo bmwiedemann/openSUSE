@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:21:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.9:
+  * l10n: Update translations
+  * live session: Try to make sure no username entry is displayed in (#203)
+  * Fix typo in en_CA translation (fix submitted on LP also).
+ 
+-------------------------------------------------------------------
 Wed Jul 28 10:49:48 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.5.4.
