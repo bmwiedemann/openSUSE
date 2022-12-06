@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 08:49:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * Use github instead of circleci.
+  * Restore and update debian/ symbols file.
+  * update packaging (#53)
+
+-------------------------------------------------------------------
 Thu May 27 20:19:00 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.0.

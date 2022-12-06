@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-menus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define soname  libcinnamon-menu-3
 %define sover   0
 Name:           cinnamon-menus
-Version:        5.0.0
+Version:        5.6.0
 Release:        0
 Summary:        A menu system for the Cinnamon Desktop
 License:        LGPL-2.1-or-later
