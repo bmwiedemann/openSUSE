@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:28:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * ### C++
+  * THRIFT-5093 - lib: cpp: test: clarify effect of MemoryPolicy on
+    TMemoryBuffer
+  * THRIFT-5510 - On Windows NOMINMAX and WIN32_LEAN_AND_MEAN are unset even
+    if set before
+  * THRIFT-5515 - Oneway requests can stuck in TNonblockingServer with
+    TSSLSocket
+  * THRIFT-5529 - Missing space "<::" in C++ generator
+  * THRIFT-5576 - fix old-style cast at const value ctor/copy and redundant
+    copy at ctor
+  * ### Common LISP
+  * THRIFT-5501 - Remove Common Lisp support
+  * THRIFT-5567 - remove reference to common lisp namespace
+  * ### Go
+  * THRIFT-5495 - Go lib server not close client when shutdown
+  * THRIFT-5527 - generated Process function in go will swallow exceptions
+    defined in thrift IDL
+  * THRIFT-5539 - Performance penalty of using TDebugProtocol.DuplicateTo
+  * THRIFT-5569 - generated Go code crashes when reading invalid
+    map/set/list
+  * THRIFT-5583 - Add a skip_remote arg to go compiler
+  * THRIFT-5605 - Go client middleware has no (easy) access to IDL
+    exceptions
+  * THRIFT-5609 - TJSONProtocol is unsafe to be used with TDeserializerPool
+  * ### Java
+  * THRIFT-4086 - Java compiler generates different meta data depending on
+    order of structures in file
+  * THRIFT-5485 - @SuppressWarnings is placed above Javadoc
+  * THRIFT-5494 - byte count of
+    FrameBuffer(AbstractNonblockingServer.readBufferBytesAllocated) is not
+    subtracted
+  * THRIFT-5502 - Is it necessary to report CONNECTION RESET as an ERROR?
+  * THRIFT-5519 - Java async client loses exceptions in void methods
+  * THRIFT-5520 - add method to convert Option type to java Optional
+  * THRIFT-5521 - In Java lib, add param for option_type to generate JDK8
+    optional types
+  * THRIFT-5522 - Upgrade to gradle 6 for Java build
+  * THRIFT-5525 - java gen to use reuse_objects instead of reuse-objects as
+    a consistent param casing
+  * THRIFT-5526 - java gen to use private_members instead of private-members
+    as a consistent param casing
+  * THRIFT-5533 - Fix Java warnings: @param, @return and deprecation
+  * THRIFT-5543 - Java lib FieldMetaData should be more type-safe by adding
+    type parameter to metadata registerations
+  * THRIFT-5544 - add java code gen param to support including field
+    annotation as metadata
+  * THRIFT-5545 - Follow newer gradle convention in organizing source code
+    directories
+  * THRIFT-5552 - Apply clang-format to java code gen file
+  * THRIFT-5553 - java library to use newer gradle API
+  * THRIFT-5555 - Java codegen and library to support future-returning
+    client interface and implementation
+  * THRIFT-5557 - Move Java-only tests from /test to /lib/java
+  * THRIFT-5560 - Use JUnit 5 (Jupiter) for Java unit tests
+  * THRIFT-5562 - remove gradle wrapper jar file from source tree
+  * THRIFT-5563 - fix deprecation and enable xlint for java library
+  * THRIFT-5568 - Use spotless gradle plugin and google-java-format to
+    enforce a consistent code format
+  * THRIFT-5570 - update java lib document about gradle usage
+  * THRIFT-5581 - Upgrade gradle version to 7.4+
+  * THRIFT-5582 - Improve TProtocol.java
+  * THRIFT-5584 - Use gradle toolchain to specify build time Java version
+  * ### JSON
+  * THRIFT-5549 - Json generator should indent properly while generating
+    includes
+  * THRIFT-5535 - Ability to support connection on OpenHarmonyOS
+  * ### Perl
+  * THRIFT-5532 - Perl Thrift/HttpClient.pm headers bug
+  * ### Python
+  * THRIFT-2059 - Support for Python 3.4 enums
+  * THRIFT-5449 - Use select.poll instead of select.select in Python
+    TNonblockingServer if available
+  * THRIFT-5467 - CannotSendHeader exception with 0.15
+  * THRIFT-5595 - TSocket errors with SSLSocket
+  * ### Rust
+  * THRIFT-4100 - Extract Rust read/write struct methods into a trait
+  * ### Wish List
+  * THRIFT-3461 - Support Method Deprecation
+
+-------------------------------------------------------------------
 Tue Jun 14 10:35:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.0:
