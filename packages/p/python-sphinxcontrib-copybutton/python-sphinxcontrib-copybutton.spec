@@ -1,5 +1,5 @@
 #
-# spec file for package python-sphinx-copybutton
+# spec file for package python-sphinxcontrib-copybutton
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -18,25 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-copybutton
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Add a copy button to each of your code cells
 License:        MIT
 URL:            https://github.com/executablebooks/sphinx-copybutton
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-copybutton/sphinx-copybutton-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Sphinx >= 1.8
+Suggests:       python-ipython
+Suggests:       python-myst-nb
+Suggests:       python-pre-commit = 2.12.1
+Suggests:       python-sphinx
+Suggests:       python-sphinx-book-theme
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 1.8}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-Sphinx >= 1.8
-Suggests:       python-pre-commit == 2.12.1
-Suggests:       python-sphinx
-Suggests:       python-ipython
-Suggests:       python-myst-nb
-Suggests:       python-sphinx-book-theme
-BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  1 09:15:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * ENH: Unselectable text is now also not highlighted when you
+    manually highlight a code cell. Exclude unselectable text
+    from being copied (update) #178
+  * ENH: After copying, the copybutton will disappear before the
+    icon changes back if you are no longer hovering on the code
+    cell. FIX: Make copybutton remain for a second during
+    success #176
+  * MAINT: Add support for Python 3.10 #174
+
+-------------------------------------------------------------------
 Fri Mar  4 14:25:02 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 0.5.0
 
 - Initial version from upstream via py2pack.
