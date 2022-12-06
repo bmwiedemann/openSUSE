@@ -40,6 +40,7 @@ Patch3:         pcfclock-include.patch
 Patch4:         pcfclock-linux-3.19.patch
 Patch5:         pcfclock-linux-4.12.patch
 Patch6:         pcfclock-linux-5.8.patch
+BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  libelf-devel
