@@ -17,7 +17,7 @@
 
 
 Name:           jo
-Version:        1.7
+Version:        1.9
 Release:        0
 Summary:        JSON output from a shell
 License:        GPL-2.0-or-later AND MIT

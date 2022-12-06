@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  3 13:26:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9:
+  * FIX: fix reading of long lines from stdin (mk 2) (#195)
+  * FIX: add missing test files (#196)
+  * FIX: fix reading of long lines from stdin (mk 2) (#195)
+ 
+-------------------------------------------------------------------
 Sat Oct 29 14:19:36 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.7
