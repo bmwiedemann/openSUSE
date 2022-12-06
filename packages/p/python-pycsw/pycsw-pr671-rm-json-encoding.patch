@@ -8,7 +8,7 @@ Subject: [PATCH] remove encoding kw from json.loads
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/tests/functionaltests/test_suites_functional.py b/tests/functionaltests/test_suites_functional.py
-index d1077d9f..18643d2b 100644
+index d1077d9f0..18643d2bc 100644
 --- a/tests/functionaltests/test_suites_functional.py
 +++ b/tests/functionaltests/test_suites_functional.py
 @@ -216,7 +216,7 @@ def _test_xml_result(result, expected, encoding="utf-8"):
