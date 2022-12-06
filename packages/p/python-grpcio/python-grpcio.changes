@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  5 14:44:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.51.1:
+  * No Linux specific changes.
+- Changes from version 1.51.0:
+  * Fix lack of cooldown between poll attempts
+    (gh#grpc/grpc#31550).
+  * Remove enum and future (gh#grpc/grpc#31381).
+  * [Remove Six] Remove dependency on six (gh#grpc/grpc#31340).
+  * Update xds-protos package to pull in protobuf 4.X
+    (gh#grpc/grpc#31113).
+
+-------------------------------------------------------------------
 Mon Oct 31 10:09:02 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.50.0:
