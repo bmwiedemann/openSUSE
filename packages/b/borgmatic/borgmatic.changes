@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Nov 28 10:07:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.7.5:
+ * #463: Add "before_actions" and "after_actions" command hooks that run before/after all the
+   actions for each repository. These new hooks are a good place to run per-repository steps like
+   mounting/unmounting a remote filesystem.
+ * #463: Update documentation to cover per-repository configurations:
+   https://torsion.org/borgmatic/docs/how-to/make-per-application-backups/
+ * #557: Support for Borg 2 while still working with Borg 1. This includes new borgmatic actions
+   like "rcreate" (replaces "init"), "rlist" (list archives in repository), "rinfo" (show repository
+   info), and "transfer" (for upgrading Borg repositories). For the most part, borgmatic tries to
+   smooth over differences between Borg 1 and 2 to make your upgrade process easier. However, there
+   are still a few cases where Borg made breaking changes. See the Borg 2.0 changelog for more
+   information: https://www.borgbackup.org/releases/borg-2.0.html
+ * #557: If you install Borg 2, you'll need to manually upgrade your existing Borg 1 repositories
+   before use. Note that Borg 2 stable is not yet released as of this borgmatic release, so don't
+   use Borg 2 for production until it is! See the documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/upgrade/#upgrading-borg
+ * #557: Rename several configuration options to match Borg 2: "remote_rate_limit" is now
+   "upload_rate_limit", "numeric_owner" is "numeric_ids", and "bsd_flags" is "flags". borgmatic
+   still works with the old options.
+ * #557: Remote repository paths without the "ssh://" syntax are deprecated but still supported for
+   now. Remote repository paths containing "~" are deprecated in borgmatic and no longer work in
+   Borg 2.
+ * #557: Omitting the "--archive" flag on the "list" action is deprecated when using Borg 2. Use
+   the new "rlist" action instead.
+ * #557: The "--dry-run" flag can now be used with the "rcreate"/"init" action.
+ * #565: Fix handling of "repository" and "data" consistency checks to prevent invalid Borg flags.
+ * #566: Modify "mount" and "extract" actions to require the "--repository" flag when multiple
+   repositories are configured.
+ * #571: BREAKING: Remove old-style command-line action flags like "--create, "--list", etc. If
+   you're already using actions like "create" and "list" instead, this change should not affect you.
+ * #571: BREAKING: Rename "--files" flag on "prune" action to "--list", as it lists archives, not
+   files.
+ * #571: Add "--list" as alias for "--files" flag on "create" and "export-tar" actions.
+ * Add support for disabling TLS verification in Healthchecks monitoring hook with "verify_tls"
+   option.
+ * #381: BREAKING: Greatly simplify configuration file reuse by deep merging when including common
+   configuration. See the documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/make-per-application-backups/#include-merging
+ * #473: BREAKING: Instead of executing "before" command hooks before all borgmatic actions run (and
+   "after" hooks after), execute these hooks right before/after the corresponding action. E.g.,
+   "before_check" now runs immediately before the "check" action. This better supports running
+   timing-sensitive tasks like pausing containers. Side effect: before/after command hooks now run
+   once for each configured repository instead of once per configuration file. Additionally, the
+   "repositories" interpolated variable has been changed to "repository", containing the path to the
+   current repository for the hook. See the documentation for more information:
+   https://torsion.org/borgmatic/docs/how-to/add-preparation-and-cleanup-steps-to-backups/
+ * #513: Add mention of sudo's "secure_path" option to borgmatic installation documentation.
+ * #515: Fix "borgmatic borg key ..." to pass parameters to Borg in the correct order.
+ * #516: Fix handling of TERM signal to exit borgmatic, not just forward the signal to Borg.
+ * #517: Fix borgmatic exit code (so it's zero) when initial Borg calls fail but later retries
+   succeed.
+ * Change Healthchecks logs truncation size from 10k bytes to 100k bytes, corresponding to that
+   same change on Healthchecks.io.
+
+-------------------------------------------------------------------
 Tue Oct 18 13:26:05 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

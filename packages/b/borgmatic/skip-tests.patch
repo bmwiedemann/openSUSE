@@ -1,6 +1,8 @@
---- a/tests/integration/test_execute.py.orig	2021-07-28 13:47:51.839769127 +0200
-+++ b/tests/integration/test_execute.py	2021-07-28 13:48:37.963971510 +0200
-@@ -87,6 +87,7 @@
+Index: borgmatic-1.7.5/tests/integration/test_execute.py
+===================================================================
+--- borgmatic-1.7.5.orig/tests/integration/test_execute.py
++++ borgmatic-1.7.5/tests/integration/test_execute.py
+@@ -132,6 +132,7 @@ def test_log_outputs_skips_error_output_
      assert not error.value.output
  
  
@@ -8,7 +10,7 @@
  def test_log_outputs_kills_other_processes_when_one_errors():
      flexmock(module.logger).should_receive('log')
      flexmock(module).should_receive('command_for_process').and_return('grep')
-@@ -162,6 +163,7 @@
+@@ -238,6 +239,7 @@ def test_log_outputs_does_not_error_when
      )
  
  

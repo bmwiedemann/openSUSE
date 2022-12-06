@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.24
+Version:        1.7.5
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  borgbackup
 # To create the manpage
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.6
+BuildRequires:  python3 >= 3.7
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-appdirs
 BuildRequires:  python3-atomicwrites
@@ -62,7 +62,8 @@ Requires:       python3-colorama
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-pykwalify
 Requires:       python3-requests
-Requires:       python3-ruamel.yaml
+Requires:       python3-ruamel.yaml < 0.18.0
+Requires:       python3-ruamel.yaml > 0.15.0
 Requires:       python3-setuptools
 ExcludeArch:    %ix86
 BuildArch:      noarch
