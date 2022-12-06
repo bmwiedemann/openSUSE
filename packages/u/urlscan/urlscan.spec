@@ -18,7 +18,7 @@
 
 %define python_flavor python3
 Name:           urlscan
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later
