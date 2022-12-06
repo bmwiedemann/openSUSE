@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:36:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 28:
+  * [MPOM-345] - Respect property assembly.tarLongFileMode
+  * [MPOM-347] - Allow custom Release Distribution Repository
+  * [MPOM-323] Upgrade fluido skin to 1.11.0 by @slawekjaranowski in #86
+  * [MPOM-322] Add ASF Data Privacy by @slawekjaranowski in #85
+  * [MPOM-333] Drop outdated maven-docck-plugin from pluginManagement
+  * [MPOM-334] Upgrade fluido skin to 1.11.1 by @slawekjaranowski in #90
+  * [MPOM-305] Set minimum enforced Maven version to 3.2.5
+  * [MPOM-288] - Update m-plugin-p to 3.6.4 by @kwin in #63
+  * [MPOM-287] - Disable m2e warning for m-remote-resource-p:process
+  * [MPOM-209]. Corrected Jira URL. by @ofarganc in #3
+  * [MPOM-251] update minimum version to 3.1.1 by @elharo in #20
+  * [MNGSITE-393] assume Maven 3 by @elharo in #21
+  * [MPOM-256] Remove outdated clirr-maven-plugin by @slachiewicz in #27
+  * [MPOM-260] simplify m-javadoc-p configuration by @hboutemy in #34
+  * [MPOM-243] configure release profile with dedicated parameter by @kwin
+  * [MPOM-244] upload SHA-512 only for source-release to staging repo by
+  * [MPOM-263] enforce minimum Java build version 8 by @kwin in #46
+
+-------------------------------------------------------------------
 Fri Apr 23 20:52:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - SPEC file: Fixed URL tag
