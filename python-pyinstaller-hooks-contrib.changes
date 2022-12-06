@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  2 22:48:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2022.13 
+  * Update pyproj hook for compatibility with pyproj v3.4.0. (#505)
+
+-------------------------------------------------------------------
 Wed Nov  9 18:30:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2022.12 
