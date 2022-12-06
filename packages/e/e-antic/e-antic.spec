@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define lname	libeantic1
 Name:           e-antic
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
