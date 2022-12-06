@@ -1,7 +1,7 @@
 #
 # spec file for package python-atpublic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,55 +16,68 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
 Name:           python-atpublic
-Version:        2.3
+Version:        3.1.1
 Release:        0
 Summary:        @public decorator for populating __all__
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            http://public.readthedocs.io/
 Source:         https://gitlab.com/warsaw/public/-/archive/%{version}/public-%{version}.tar.gz#/atpublic-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pdm-pep517 >= 1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-typing_extensions
 BuildArch:      noarch
+%if %{with test}
 # SECTION test requirements
+BuildRequires:  %{python_module atpublic}
+BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
+%endif
 %python_subpackages
 
 %description
 public -- @public for populating __all__.
 
 %prep
-%setup -q -n public-%{version}
-rm setup.cfg
-# API change in sybil 3
-if [ -d %{python3_sitelib}/sybil-3*-info ]; then
-  sed -i 's/CodeBlockParser/PythonCodeBlockParser/' conftest.py
-fi
+%setup -q -n atpublic-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%else
 
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc docs/NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/public
 %{python_sitelib}/atpublic-%{version}*-info
+%endif
 
 %changelog

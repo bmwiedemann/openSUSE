@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Dec  4 20:31:51 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to v3.1.1
+  * Improvements to the GitLab CI integration.
+
+- version 3.1 (2022-08-27)
+  * Fix a typo in pyproject.toml file.
+  * Exclude certain local cache files from the sdist/wheel.
+  * Add support for Python 3.11.
+  * Updates for pdm and dependencies.
+
+- version 3.0.1 (2022-01-10)
+  * Fix a typo in the README.rst.
+
+- version 3.0 (2022-01-10)
+  * Use modern package management by adopting pdm and pyproject.toml, and dropping setup.py and setup.cfg.
+  * Build the docs with Python 3.8.
+  * Update to version 3.0 of Sybil.
+  * Adopt the Furo documentation theme.
+  * Use importlib.metadata.version() as a better way to get the package version number for the documentation.
+  * Drop Python 3.6 support.
+  * Update Windows GitLab runner to include Python 3.10.
+  * Update copyright years.
+  * The master branch is renamed to main. (GL#11)
+
+-------------------------------------------------------------------
 Tue Jan 11 20:25:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix sybil usage in conftest based on sybil version.
