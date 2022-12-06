@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  5 18:32:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.0
+  * Significantly improved performance.
+  * Added variable panels through the --panels and --terminal-width
+    flags.
+  * Added new --group-bytes/-g option.
+  * Added new --base B option (where B can be binary, octal,
+    decimal or hexadecimal).
+  * Show actual zero bytes as ⋄ in the character panel
+    (previously: 0), in order not to confuse them with ASCII.
+  * 0 bytes if colors are deactivated.
+
+-------------------------------------------------------------------
 Sun Nov 27 19:14:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.10.0

@@ -1,6 +1,10 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">hexyl-0.10.0</param>
+     <param name="srcdir">hexyl-0.11.0</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">hexyl-0.11.0</param>
   </service>
 </services>
 

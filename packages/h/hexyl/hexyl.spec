@@ -1,6 +1,7 @@
 #
 # spec file for package hexyl
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           hexyl
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        A command-line hex viewer
 License:        Apache-2.0
@@ -27,8 +29,8 @@ Source:         https://github.com/sharkdp/hexyl/archive/refs/tags/v%{version}.t
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  rust
-BuildRequires:  rust-packaging
 
 %description
 hexyl is a simple hex viewer for the terminal. It uses a colored output
