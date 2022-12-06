@@ -1,7 +1,8 @@
-diff -urEbw Stockfish-sf_15/src/Makefile Stockfish-sf_15.new/src/Makefile
---- Stockfish-sf_15/src/Makefile	2022-04-18 22:03:20.000000000 +0200
-+++ Stockfish-sf_15.new/src/Makefile	2022-04-20 21:20:19.092144400 +0200
-@@ -722,7 +722,6 @@
+Index: Stockfish-sf_15.1/src/Makefile
+===================================================================
+--- Stockfish-sf_15.1.orig/src/Makefile
++++ Stockfish-sf_15.1/src/Makefile
+@@ -748,7 +748,6 @@ help:
  	@echo ""
  	@echo "help                    > Display architecture details"
  	@echo "build                   > Standard build"
@@ -9,14 +10,14 @@ diff -urEbw Stockfish-sf_15/src/Makefile Stockfish-sf_15.new/src/Makefile
  	@echo "profile-build           > Faster build (with profile-guided optimization)"
  	@echo "strip                   > Strip executable"
  	@echo "install                 > Install executable"
-@@ -783,14 +782,14 @@
+@@ -810,14 +809,14 @@ else
  endif
  
  
 -.PHONY: help build profile-build strip install clean net objclean profileclean \
 +.PHONY: help build profile-build strip install clean objclean profileclean \
          config-sanity icc-profile-use icc-profile-make gcc-profile-use gcc-profile-make \
-         clang-profile-use clang-profile-make
+         clang-profile-use clang-profile-make FORCE
  
 -build: net config-sanity
 +build: config-sanity
@@ -27,7 +28,7 @@ diff -urEbw Stockfish-sf_15/src/Makefile Stockfish-sf_15.new/src/Makefile
  	@echo ""
  	@echo "Step 1/4. Building instrumented executable ..."
  	$(MAKE) ARCH=$(ARCH) COMP=$(COMP) $(profile_make)
-@@ -817,30 +816,6 @@
+@@ -844,40 +843,6 @@ install:
  clean: objclean profileclean
  	@rm -f .depend *~ core
  
@@ -35,30 +36,40 @@ diff -urEbw Stockfish-sf_15/src/Makefile Stockfish-sf_15.new/src/Makefile
 -net:
 -	$(eval nnuenet := $(shell grep EvalFileDefaultName evaluate.h | grep define | sed 's/.*\(nn-[a-z0-9]\{12\}.nnue\).*/\1/'))
 -	@echo "Default net: $(nnuenet)"
--	$(eval nnuedownloadurl := https://tests.stockfishchess.org/api/nn/$(nnuenet))
+-	$(eval nnuedownloadurl1 := https://tests.stockfishchess.org/api/nn/$(nnuenet))
+-	$(eval nnuedownloadurl2 := https://github.com/official-stockfish/networks/raw/master/$(nnuenet))
 -	$(eval curl_or_wget := $(shell if hash curl 2>/dev/null; then echo "curl -skL"; elif hash wget 2>/dev/null; then echo "wget -qO-"; fi))
--	@if test -f "$(nnuenet)"; then \
--            echo "Already available."; \
--         else \
--            if [ "x$(curl_or_wget)" = "x" ]; then \
--               echo "Automatic download failed: neither curl nor wget is installed. Install one of these tools or download the net manually"; exit 1; \
--            else \
--               echo "Downloading $(nnuedownloadurl)"; $(curl_or_wget) $(nnuedownloadurl) > $(nnuenet);\
--            fi; \
--        fi;
+-	@if [ "x$(curl_or_wget)" = "x" ]; then \
+-	    echo "Automatic download failed: neither curl nor wget is installed. Install one of these tools or download the net manually"; exit 1; \
+-        fi
 -	$(eval shasum_command := $(shell if hash shasum 2>/dev/null; then echo "shasum -a 256 "; elif hash sha256sum 2>/dev/null; then echo "sha256sum "; fi))
--	@if [ "x$(shasum_command)" != "x" ]; then \
--	    if [ "$(nnuenet)" != "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
--                echo "Failed download or $(nnuenet) corrupted, please delete!"; exit 1; \
--            fi \
--         else \
+-	@if [ "x$(shasum_command)" = "x" ]; then \
 -            echo "shasum / sha256sum not found, skipping net validation"; \
 -        fi
+-	@for nnuedownloadurl in "$(nnuedownloadurl1)" "$(nnuedownloadurl2)"; do \
+-	   if test -f "$(nnuenet)"; then \
+-	      echo "$(nnuenet) available."; \
+-	   else \
+-	      if [ "x$(curl_or_wget)" != "x" ]; then \
+-	         echo "Downloading $${nnuedownloadurl}"; $(curl_or_wget) $${nnuedownloadurl} > $(nnuenet);\
+-	      fi; \
+-	   fi; \
+-	   if [ "x$(shasum_command)" != "x" ]; then \
+-	      if [ "$(nnuenet)" != "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
+-	         echo "Removing failed download"; rm -f $(nnuenet); \
+-	      else \
+-	         echo "Network validated"; break; \
+-	      fi; \
+-	   fi; \
+-	done
+-	@if ! test -f "$(nnuenet)"; then \
+-	    echo "Failed to download $(nnuenet)."; \
+-	fi
 -
  # clean binaries and objects
  objclean:
  	@rm -f stockfish stockfish.exe *.o ./syzygy/*.o ./nnue/*.o ./nnue/features/*.o
-@@ -864,7 +839,7 @@
+@@ -901,7 +866,7 @@ default:
  
  all: $(EXE) .depend
  

@@ -104,4 +104,35 @@
   we already have it.</comment>
     <requestid>971242</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>08b77d65adbad13a4ca8a3f5f1e10b96</srcmd5>
+    <version>15.1</version>
+    <time>1670342286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.1:
+  * Elo gain and competition results:
+    With this release, version 5 of the NNUE neural net architecture
+    has been introduced, and the training data has been extended to
+    include Fischer random chess (FRC) positions. As a result, Elo
+    gains are largest for FRC, reaching up to 50 Elo for doubly
+    randomized FRC (DFRC). More importantly, also for standard chess
+    this release progressed and will win two times more game pairs than
+    it loses against Stockfish 15. 
+  * New evaluation:
+    This release also introduces a new convention for the evaluation
+    that is reported by search. An evaluation of +1 is now no longer
+    tied to the value of one pawn, but to the likelihood of winning the
+    game. With a +1 evaluation, Stockfish has now a 50% chance of winning
+    the game against an equally strong opponent. This convention scales
+    down evaluations a bit compared to Stockfish 15 and allows for
+    consistent evaluations in the future.
+- Refresh:
+  * date.patch
+  * stockfish-remove-net.patch
+- Remove nn-6877cd24400e.nnue
+- Add nn-ad9b42354671.nnue
+- Keep man page and stockfish-interface.txt but remove URL from
+  Source. Because not available anymore.</comment>
+    <requestid>1040725</requestid>
+  </revision>
 </revisionlist>
