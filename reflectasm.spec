@@ -17,7 +17,7 @@
 
 
 Name:           reflectasm
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        High performance Java library that provides reflection by using code generation
 License:        BSD-3-Clause
