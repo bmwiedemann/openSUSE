@@ -134,4 +134,41 @@
   * Allow any subclass of VFS to implement WAL, not just direct subclasses</comment>
     <requestid>947056</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4b4e1203cbae7f1828373d6e7e728238</srcmd5>
+    <version>3.40.0.0</version>
+    <time>1670333025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.40.0.0:
+  * Fixed regression in statement cache update (version 3.38.1-r1) where
+    trailing whitespace in queries would be incorrectly treated as
+    incomplete execution (APSW issue 376)
+  * Added Various interesting and useful bits of functionality (APSW issue
+    369)
+  * Added more Pythonic attributes as an alternative to getters and setters,
+    including Connection.in_transaction, Connection.exectrace,
+    Connection.rowtrace, Cursor.exectrace, Cursor.rowtrace,
+    Cursor.connection (APSW issue 371)
+  * Completed: To the extent permitted by CPython APIs every item has the
+    same docstring as this documentation. Every API can use named
+    parameters. The type stubs cover everything including constants. The
+    type stubs also include documentation for everything, which for example
+    Visual Studio Code displays as you type or hover. There is a single
+    source of documentation in the source code, which is then automatically
+    extracted to make this documentation, docstrings, and docstrings in the
+    type stubs.
+  * Example/Tour updated and appearance improved (APSW issue 367).
+  * Added Connection.cache_stats() to provide more information about the
+    statement cache.
+  * Cursor.execute() now uses sqlite_prepare_v3 which allows supplying
+    flags.
+  * Cursor.execute() has a new can_cache parameter to control whether the
+    query can use the statement cache. One example use is with authorizers
+    because they only run during prepare, which doesn’t happen with already
+    cached statements.
+  * (The Cursor.execute() additional parameters are keyword only and also
+    present in Cursor.executemany(), and the corresponding
+    Connection.execute() and Connection.executemany() methods.)</comment>
+    <requestid>1040441</requestid>
+  </revision>
 </revisionlist>

@@ -17,15 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define tarver  3.37.0-r1
 Name:           python-apsw
-Version:        3.37.0
+Version:        3.40.0.0
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
 Group:          Development/Libraries/Python
 URL:            https://github.com/rogerbinns/apsw/
-Source:         https://github.com/rogerbinns/apsw/archive/%{tarver}.tar.gz
+Source:         https://github.com/rogerbinns/apsw/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  pkgconfig
@@ -40,7 +39,7 @@ being a minimal layer over SQLite attempting just to translate the
 complete SQLite API into Python.
 
 %prep
-%setup -q -n apsw-%{tarver}
+%setup -q -n apsw-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

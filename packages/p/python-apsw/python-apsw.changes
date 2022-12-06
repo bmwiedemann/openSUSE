@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Dec  5 20:22:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.40.0.0:
+  * Fixed regression in statement cache update (version 3.38.1-r1) where
+    trailing whitespace in queries would be incorrectly treated as
+    incomplete execution (APSW issue 376)
+  * Added Various interesting and useful bits of functionality (APSW issue
+    369)
+  * Added more Pythonic attributes as an alternative to getters and setters,
+    including Connection.in_transaction, Connection.exectrace,
+    Connection.rowtrace, Cursor.exectrace, Cursor.rowtrace,
+    Cursor.connection (APSW issue 371)
+  * Completed: To the extent permitted by CPython APIs every item has the
+    same docstring as this documentation. Every API can use named
+    parameters. The type stubs cover everything including constants. The
+    type stubs also include documentation for everything, which for example
+    Visual Studio Code displays as you type or hover. There is a single
+    source of documentation in the source code, which is then automatically
+    extracted to make this documentation, docstrings, and docstrings in the
+    type stubs.
+  * Example/Tour updated and appearance improved (APSW issue 367).
+  * Added Connection.cache_stats() to provide more information about the
+    statement cache.
+  * Cursor.execute() now uses sqlite_prepare_v3 which allows supplying
+    flags.
+  * Cursor.execute() has a new can_cache parameter to control whether the
+    query can use the statement cache. One example use is with authorizers
+    because they only run during prepare, which doesn’t happen with already
+    cached statements.
+  * (The Cursor.execute() additional parameters are keyword only and also
+    present in Cursor.executemany(), and the corresponding
+    Connection.execute() and Connection.executemany() methods.)
+  * Added Cursor.is_readonly, Cursor.is_explain, and Cursor.expanded_sql.
+  * Updated processing named bindings so that types registered with
+    collections.abc.Mapping (such as collections.UserDict) will also be
+    treated as dictionaries. (APSW issue 373)
+  * Test no longer fails if APSW was compiled without
+    SQLITE_ENABLE_COLUMN_METADATA but sqlite3 was separately compiled with
+    it. APSW should be compiled with the same flags as sqlite3 to match
+    functionality and APIs. (APSW issue 363)
+  * –use-system-sqlite-config setup.py build_ext option added to allow
+    Matching APSW and SQLite options. (APSW issue 364)
+  * Source ▪ Downloads ▪ Changelogs  ▪ Documentation
+  * PyPI now includes Python 3.11 builds.
+  * Instead of using scripts, you can now run several tools directly:
+  * tests: python3 -m apsw.tests [options]
+  * tracer: python3 -m apsw.trace [options]
+  * speed tester: python3 -m apsw.speedtest [options]
+  * shell: python3 -m apsw [options]
+  * The shell class has moved from apsw.Shell to apsw.shell.Shell (APSW
+    issue 356). You can still reference it via the old name (ie existing
+    code will not break, except on Python 3.6).
+  * Shell: On Windows the native console support for colour is now used
+    (previously a third party module was supported).
+  * You can use –definevalues in setup.py build_ext to provide compiler
+    defines used for configuring SQLite. (APSW issue 357)
+  * If SQLITE_ENABLE_COLUMN_METADATA is enabled then Cursor.description_full
+    is available providing all the column metadata available. (APSW issue
+    354)
+  * Connection.cursor_factory attribute is now present and is used when
+    Connection.cursor() is called. Added Connection.execute() and
+    Connection.executemany() which automatically obtain the underlying
+    cursor. See customizing connections and cursors in the Tips. (APSW issue
+    361)
+
+
+-------------------------------------------------------------------
 Mon Jan 17 20:40:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.37.0-r1:
