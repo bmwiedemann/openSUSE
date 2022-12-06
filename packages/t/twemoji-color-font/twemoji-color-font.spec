@@ -1,9 +1,7 @@
 #
 # spec file for package twemoji-color-font
 #
-# Copyright © 2016 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright © 2016 Yunhe Guo <guoyunhebrave@gmail.com>
-# Copyright © 2018–2021 Markus S. <kamikazow@opensuse.org>
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,20 +11,20 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           twemoji-color-font
-Version:        13.1.0
+Version:        14.0.2
 Release:        0
 Summary:        Font using Twitter’s color emoji
 License:        CC-BY-4.0
 Group:          System/X11/Fonts
-Url:            https://github.com/eosrei/twemoji-color-font
+URL:            https://github.com/13rac1/twemoji-color-font/
 Source:         %{url}/releases/download/v%{version}/TwitterColorEmoji-SVGinOT-Linux-%{version}.tar.gz
 BuildRequires:  fontpackages-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -41,7 +39,7 @@ operating systems and applications. Regular monochrome outline
 emoji are included for backwards/fallback compatibility.
 
 %prep
-%setup -n TwitterColorEmoji-SVGinOT-Linux-%{version}
+%setup -q -n TwitterColorEmoji-SVGinOT-Linux-%{version}
 
 %build
 # Nothing to do
@@ -53,7 +51,6 @@ install -m 0644 *.ttf %{buildroot}/%{_datadir}/fonts/truetype
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
 %doc *.txt *.md
 %{_datadir}/fonts/truetype
 
