@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smbprotocol
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
@@ -27,10 +26,11 @@ URL:            https://github.com/jborean93/smbprotocol
 #Source:         https://files.pythonhosted.org/packages/source/s/smbprotocol/smbprotocol-%%{version}.tar.gz
 Source:         https://github.com/jborean93/smbprotocol/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 2.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyspnego}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.0
@@ -60,10 +60,10 @@ Features
 %setup -q -n smbprotocol-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,6 +74,6 @@ Features
 %doc CHANGELOG.md README.md
 %{python_sitelib}/smbclient
 %{python_sitelib}/smbprotocol
-%{python_sitelib}/smbprotocol-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/smbprotocol-%{version}*-info
 
 %changelog

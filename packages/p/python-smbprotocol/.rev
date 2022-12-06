@@ -140,4 +140,16 @@
     <comment></comment>
     <requestid>1034135</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c03a6ccb93140dd34447ce40e34ca4c2</srcmd5>
+    <version>1.10.1</version>
+    <time>1670332991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.1 
+  * Raise the original BadNetworkName error if the server doesn't indicate it supports DFS or
+    FSDriverRequired was raised trying to lookup the DFS information - #196
+  * Fix pre auth session id tracking if the intermediate token messages return 0 as the session id
+</comment>
+    <requestid>1040401</requestid>
+  </revision>
 </revisionlist>
