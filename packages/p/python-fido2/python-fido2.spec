@@ -16,34 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-fido2
-Version:        0.9.3
+Version:        1.1.0
 Release:        0
 Summary:        Python-based FIDO 2.0 library
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Yubico/python-fido2
 Source0:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz
-Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.sig
-# https://github.com/Yubico/python-fido2/issues/135
-Patch0:         python-fido2-no-mock.patch
-BuildRequires:  %{python_module cryptography >= 1.5}
+Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module cryptography >= 2.6}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core >= 1.0}
 BuildRequires:  %{python_module pyfakefs >= 3.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 1.5
+Requires:       python-cryptography >= 2.6
 Requires:       python-six
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-enum34
-%endif
-%ifpython2
-Requires:       python2-enum34
-%endif
 %python_subpackages
 
 %description
@@ -56,10 +50,10 @@ implement higher level device operations.
 %autosetup -p1 -n fido2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

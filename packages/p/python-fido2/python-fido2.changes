@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:06:02 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- drop python-fido2-no-mock.patch
+- Update to version 1.1.0
+  * Bugfix: Fix name of "crossOrigin" in CollectedClientData.create().
+  * Bugfix: Some incorrect type hints in the MDS3 classes were fixed.
+  * Stricter checking of dataclass field types.
+  * Add support for JSON-serialization of WebAuthn data classes.
+    This changes the objects dict representation to align with new additions in the
+    WebAuthn specification. As this may break compatibility, the new behavior
+    requires explicit opt-in until python-fido2 2.0 is released.
+  * Update server example to use JSON serialization.
+  * Server: Add support for passing RegistrationResponse/AuthenticationResponse (or
+    their deserialized JSON data) to register_complete/authenticate_complete.
+  * Add new "hybrid" AuthenticatorTransport.
+  * Add new AuthenticatorData flags, and use 2-letter names as in the WebAuthn spec
+    (long names are still available as aliases).
+
+- version 1.0.0
+  * Release Candidate 1 of first stable release.
+  * Require Python 3.7 or later.
+  * APIs have updated to align with WebAuthn level 2.
+  * Several CTAP 2.1 features have been implemented.
+
+-------------------------------------------------------------------
 Mon Mar 21 10:44:41 UTC 2022 - pgajdos@suse.com
 
 - do not require mock for build
