@@ -17,16 +17,13 @@
 
 
 Name:           swayidle
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Idle management daemon for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swayidle
 Source0:        %{url}/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch -- Fix printf using size_t lineno variable
-Patch0:         %{url}/commit/e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch
-
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc

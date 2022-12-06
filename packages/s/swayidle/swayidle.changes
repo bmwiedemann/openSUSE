@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  6 08:37:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  * bash-completion: localize variables
+  * Fix segfault when no arg is given and no config file exists
+  * Add support for ext-idle-notify-v1
+  * Fix printf using size_t lineno variable
+- Remove e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch
+
+-------------------------------------------------------------------
 Thu Jan 20 10:26:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch: Fix printf

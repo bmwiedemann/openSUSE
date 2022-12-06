@@ -107,4 +107,17 @@
     <comment></comment>
     <requestid>947712</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>19e1111d1d6fb46156838c7a0e1ed698</srcmd5>
+    <version>1.8.0</version>
+    <time>1670333053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * bash-completion: localize variables
+  * Fix segfault when no arg is given and no config file exists
+  * Add support for ext-idle-notify-v1
+  * Fix printf using size_t lineno variable
+- Remove e81d40fca7533f73319e76e42fa9694b21cc9e6e.patch</comment>
+    <requestid>1040533</requestid>
+  </revision>
 </revisionlist>
