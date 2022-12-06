@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:24:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.8:
+  * Use github actions for CI builds.
+  * minimap: Use a smaller font size.
+  * minimap: Use wide size by default
+  * l10n: Update translations
+  * textsize plugin: Fix extra accelerator bindings.
+  * Update xed-time-plugin.c
+  * *backporting* the replace (all) shortcuts from gedit to xed - issue no.
+  * xed-searchbar.ui: enable mnemonic accelerator behavior for previous commit.
+
+-------------------------------------------------------------------
 Tue Jan 25 11:17:59 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Update to version 3.2.2.
