@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  5 19:32:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.26.0 
+  * Bump to v1.26 and update layer to 149
+    Sort updates preemptively
+    Closes #3936.
+    There are two changes made to ensure the first update in a channel
+    cannot be lost, first by always sorting updates before applying pts,
+    and second by cautiously initializing the local pts if the client
+    had no pts known beforehand.
+    It might be possible to cleanup the handling of possible gaps now
+    that updates are always sorted, but that requires more thought.
+
+-------------------------------------------------------------------
 Thu Oct 27 21:22:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.25.4 
