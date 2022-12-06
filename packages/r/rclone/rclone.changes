@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 22 11:43:45 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 1.60.1:
+  * Version v1.60.1
+  * docs: faq: how to use a proxy server that requires a username and password - fixes #6565
+  * webdav: fix Move/Copy/DirMove when using -server-side-across-configs
+  * smb: fix Failed to sync: context canceled at the end of syncs
+  * vfs: fix deadlock caused by cache cleaner and upload finishing
+  * s3: Add additional Wasabi locations
+  * s3: fix for unchecked err value in s3 listv2
+  * local: fix -L/--copy-links with filters missing directories
+  * mailru: allow timestamps to be before the epoch 1970-01-01
+  * lib/cache: fix alias backend shutting down too soon
+
+-------------------------------------------------------------------
 Mon May  2 09:12:04 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.58.1:
