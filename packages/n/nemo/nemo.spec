@@ -1,7 +1,7 @@
 #
 # spec file for package nemo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        5.2.2
+Version:        5.6.0
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later

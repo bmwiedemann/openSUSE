@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Dec  4 14:23:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * Actions: Escape device paths also (#3057)
+  * Use Github actions instead of CircleCI.
+  * Actions: Escape path spaces when they are unquoted
+  * eel: Merge shell character escape functions
+  * icon view: don't highlight selected icons
+  * nemo-desktop: Rename new-launcher -> 90_new-launcher
+  * nemo-desktop: Add Desktop Settings action
+  * l10n: Update POT and files
+  * search: Perform deep counts on a search directories full file list, instead of the directory itself, when opening properties.
+  * nemo-search-directory-file.c: Add a missing NemoDirectory method.
+  * location bar: Add an option to always switch back to the pathbar (breadcrumbs) widget after entering a location or otherwise using the
+ location entry.
+  * Prevent interactive search from interfering with keystrokes intended for the window handler (for focusing the location entry).
+  * debian/control(nemo-dbg): priority extra->optional
+  * Remove custom btime (creation time) code.
+  * Add support for file creation time via GFileInfo.
+  * Add ability to display date columns in a monospaced font.
+  * nemo-file-operations.c: Fix null pointer error.
+  * nemo-file-operations.c: Handle a couple more potential problems with g_file_get_basename().
+  * list view: Do show dates in monospace font by default
+  * Change location entry/pathbar behavior.
+  * Fix build on LMDE.
+  * Toolbar: Use actions to control the location/path bar switching.
+  * toolbar: Hide the location entry toggle when not needed, and limit its shortcut to making sure the entry is focused.
+  * pathbar/entry: Fix a couple of issues when changing pathbar/entry preference.
+  * fix spelling error spotted by lintian
+  * App chooser: Quote custom executable file paths (#3041)
+  * Actions: Escape quoted content in paths (#3026)
+  * libnemo-private: add missing gio-unix-2.0 dependency (#3028)
+  * nemo-view.c: Use a shorter menu update delay when the update has been triggered by a selection change.
+  * Add epub search helper (#2867)
+  * Fix installation of epub search helper.
+
+-------------------------------------------------------------------
 Tue Dec 28 12:23:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - nemo 5.2.2:
