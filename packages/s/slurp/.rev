@@ -83,4 +83,12 @@
   * Fix loss of selection when pointer moves between outputs</comment>
     <requestid>886685</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>830978868310523bd8fccf2a89256842</srcmd5>
+    <version>1.4.0</version>
+    <time>1670333053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040531</requestid>
+  </revision>
 </revisionlist>
