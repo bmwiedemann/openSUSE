@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  6 01:00:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.2
+  Fix
+  - nested struct unpack fix
+  - nested anonymous union offset fix
+  - inspect offset for nested struct/union fix
+
+- Update to version 5.1 
+  Improved
+  * Support unpack from ctype pointers
+  Added
+  * Add support for char constants
+  * Add native type test
+  * dir.py example
+
+-------------------------------------------------------------------
 Sat Nov 12 11:16:08 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0

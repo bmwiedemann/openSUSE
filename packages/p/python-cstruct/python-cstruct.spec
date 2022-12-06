@@ -18,7 +18,7 @@
 
 
 Name:           python-cstruct
-Version:        5.0
+Version:        5.2
 Release:        0
 Summary:        C-style structs for Python
 License:        MIT
