@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 03:28:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.18.2 
+  * Add zoneinfo to list of standard library modules
+  * Fix registering of options with Flake8 >= 6.0
+
+-------------------------------------------------------------------
 Mon Apr 20 12:06:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

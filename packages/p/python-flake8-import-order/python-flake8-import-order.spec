@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-import-order
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8-import-order
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        Flake8 plugin that checks the ordering of import statements
 License:        LGPL-3.0-only
