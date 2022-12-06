@@ -1,7 +1,7 @@
 #
 # spec file for package spice-html5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           spice-html5
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        Pure Javascript SPICE client
 License:        LGPL-3.0-only
 Group:          Productivity/Other
-
 URL:            https://www.spice-space.org
 Source0:        https://gitlab.freedesktop.org/spice/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 %{name} is a Javascript SPICE client.  This includes a simple HTML

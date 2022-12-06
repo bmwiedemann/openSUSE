@@ -18,4 +18,16 @@ Diff:
     <comment></comment>
     <requestid>783450</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8a4cefec89fdd16f02292a48086a8a92</srcmd5>
+    <version>0.3.0</version>
+    <time>1670333029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * A new visual layout by Jonathan Race
+  * More visible support for ctrl-alt-delete
+  * Tuning of behavior of streaming videos
+  * A fix for an unresponsive GDM</comment>
+    <requestid>1040456</requestid>
+  </revision>
 </revisionlist>
