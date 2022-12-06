@@ -179,4 +179,12 @@
   * Support for AMD Zen 2 custom APU for Steam Deck</comment>
     <requestid>1010188</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2487a0efe3f134aedc1b02a39b54ddd3</srcmd5>
+    <version>0.6.2</version>
+    <time>1670333098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040606</requestid>
+  </revision>
 </revisionlist>
