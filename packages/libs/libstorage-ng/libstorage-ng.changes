@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Dec 7 09:44:34 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#907
+- handle changed output from 'btrfs qgroup show' (bsc#1206090)
+- 4.5.56
+
+--------------------------------------------------------------------
+Mon Dec 5 12:18:33 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#906
+- use RAII
+- 4.5.55
+
+--------------------------------------------------------------------
 Sat Dec 3 10:06:21 UTC 2022 - aschnell@suse.com
 
 - Translated using Weblate (Macedonian) (bsc#1149754)
