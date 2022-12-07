@@ -396,4 +396,12 @@
   * Declare support for Python 3.10 and add wheels</comment>
     <requestid>934530</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e26b44af15f9c4ca04212ba359e455f1</srcmd5>
+    <version>3.18.0</version>
+    <time>1670430827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040270</requestid>
+  </revision>
 </revisionlist>
