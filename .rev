@@ -403,4 +403,24 @@
 </comment>
     <requestid>965320</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f2b91ee0228dc0fa154b7bfb6fbf7c9b</srcmd5>
+    <version>1.14.1</version>
+    <time>1670430881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.1:
+  + printing,
+    - wallpaper: Fix some memory leaks.
+    - Consistently include .desktop in the fallback app name.
+  + screencast: Fall back to desktop ID if we don't know the app
+    name.
+  + appchooser: Fix a use-after-free.
+  + wallpaper: Handle errors storing images in the cache.
+  + email: Fix a crash if no addresses are provided.
+  + notification: Fix notifications for apps with no ID not
+    appearing.
+  + screenshot: Report whether PickColor is implemented, if
+    possible.</comment>
+    <requestid>1040721</requestid>
+  </revision>
 </revisionlist>
