@@ -1,7 +1,7 @@
 #
 # spec file for package wayland-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           wayland-utils
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Wayland diagnostic utilities
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://wayland.freedesktop.org/
-
-Source:         http://wayland.freedesktop.org/releases/%name-%version.tar.xz
-Source2:        http://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
+URL:            https://wayland.freedesktop.org/
+Source:         https://gitlab.freedesktop.org/wayland/%name/-/releases/%version/downloads/%name-%version.tar.xz
+Source1:        https://gitlab.freedesktop.org/wayland/%name/-/releases/%version/downloads/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 BuildRequires:  cmake
 BuildRequires:  meson
-BuildRequires:  pkgconfig(wayland-server) >= 1.17
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.17
+BuildRequires:  pkgconfig(wayland-server) >= 1.17
 
 %description
 A collection of wayland utilities, presently just wayland-info.

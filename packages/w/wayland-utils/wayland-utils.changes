@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  6 12:50:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Support for linux_dmabuf version 4 (version 3 still supported)
+  * A human readable description to the dmabuf format modifier tokens
+     using libdrm (optional),
+  * The list of SHM supported formats is now more consistent with the list
+     of dmabuf formats,
+  * Support for wl_output version 4,
+  * A couple of compilation issues on the BSD systems are addressed.
+
+-------------------------------------------------------------------
 Sun Aug  2 11:17:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (1.0.0) for build.opensuse.org
