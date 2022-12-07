@@ -263,4 +263,14 @@
     <comment></comment>
     <requestid>1035260</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>093e5f19ad95a99f9b905fbc60f9d597</srcmd5>
+    <version>5.5.2</version>
+    <time>1670430855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.5.2 
+  * Add support for building arm64 wheels on macOS.
+</comment>
+    <requestid>1040463</requestid>
+  </revision>
 </revisionlist>

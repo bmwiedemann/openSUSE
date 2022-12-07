@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,7 +27,7 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface%{psuffix}
-Version:        5.5.1
+Version:        5.5.2
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
@@ -89,7 +88,11 @@ cd src
 %files %{python_files}
 %license LICENSE.txt COPYRIGHT.txt
 %doc CHANGES.rst README.rst
-%{python_sitearch}/*
+%{python_sitearch}/zope.interface-%{version}*-info
+%{python_sitearch}/zope.interface-%{version}*-nspkg.pth
+%dir %{python_sitearch}/zope
+%{python_sitearch}/zope/interface
+
 %endif
 
 %changelog

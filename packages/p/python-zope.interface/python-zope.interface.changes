@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  5 13:50:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.5.2 
+  * Add support for building arm64 wheels on macOS.
+
+-------------------------------------------------------------------
 Wed Nov  9 19:57:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.5.1 
