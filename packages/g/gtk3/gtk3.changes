@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 16:47:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.35+10:
+  + Flush drawable surface when getting a pixbuf.
+  + wayland: Look for cursor themes in $HOME (boo#1206001).
+
+-------------------------------------------------------------------
 Wed Nov 30 14:16:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.35:

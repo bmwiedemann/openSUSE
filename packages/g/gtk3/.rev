@@ -1605,4 +1605,14 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>- Update to version 3.24.35: (forwarded request 1039175 from dimstar)</comment>
     <requestid>1039363</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>801b3fe05e8ff71a1b53e83ad75dc269</srcmd5>
+    <version>3.24.35+10</version>
+    <time>1670430873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.24.35+10:
+  + Flush drawable surface when getting a pixbuf.
+  + wayland: Look for cursor themes in $HOME (boo#1206001). (forwarded request 1040644 from iznogood)</comment>
+    <requestid>1040679</requestid>
+  </revision>
 </revisionlist>
