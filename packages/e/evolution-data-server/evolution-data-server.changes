@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  4 15:45:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.46.2:
+  + e-xml-utils: Enable parse of huge XML files.
+  I Fix possible NULL-dereference in
+    e_cal_backend_file_modify_objects().
+  I ECalComponentAttendee: Default CUTYPE is INDIVIDUAL.
+  I IMAP: Excessive memory usage on folder summary download.
+  I Trust Prompt: Add issuer's certificate fingerprint.
+  I Fails to add task with X-EVOLUTION-GTASKS-POSITION into Google
+    Task list.
+
+-------------------------------------------------------------------
 Fri Oct 21 06:44:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.1:

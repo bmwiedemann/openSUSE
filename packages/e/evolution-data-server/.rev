@@ -2175,4 +2175,20 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
   + Updated translations. (forwarded request 1030294 from iznogood)</comment>
     <requestid>1030390</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>52a8456eeab328a8f55d3859742ff397</srcmd5>
+    <version>3.46.2</version>
+    <time>1670430816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.2:
+  + e-xml-utils: Enable parse of huge XML files.
+  I Fix possible NULL-dereference in
+    e_cal_backend_file_modify_objects().
+  I ECalComponentAttendee: Default CUTYPE is INDIVIDUAL.
+  I IMAP: Excessive memory usage on folder summary download.
+  I Trust Prompt: Add issuer's certificate fingerprint.
+  I Fails to add task with X-EVOLUTION-GTASKS-POSITION into Google
+    Task list.</comment>
+    <requestid>1040203</requestid>
+  </revision>
 </revisionlist>
