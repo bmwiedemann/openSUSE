@@ -62,7 +62,7 @@ dos2unix LICENSE.rst # Fix wrong EOL encoding
 
 %check
 %if %{with test}
-%pytest
+%pytest -W ignore:'Support for nose tests is deprecated'
 %endif
 
 %files %{python_files}

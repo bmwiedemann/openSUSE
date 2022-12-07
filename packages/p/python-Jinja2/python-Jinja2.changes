@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  2 07:35:08 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- ignore 'pytest.PytestRemovedIn8Warning: Support for nose tests is
+  deprecated and will be removed in a future release.' error from
+  pytest 7.2
+
+-------------------------------------------------------------------
 Sat Jun  4 11:35:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.2:
