@@ -3,8 +3,8 @@
     <param name="url">https://github.com/containerd/containerd.git</param>
     <param name="scm">git</param>
     <param name="filename">containerd</param>
-    <param name="versionformat">1.6.6_%h</param>
-    <param name="revision">v1.6.6</param>
+    <param name="versionformat">1.6.9_%h</param>
+    <param name="revision">v1.6.9</param>
     <param name="exclude">.git</param>
   </service>
   <service name="recompress" mode="disabled">

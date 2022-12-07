@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 04:48:06 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.6.9 for Docker v20.10.21-ce. Also includes a fix for
+  CVE-2022-27191. boo#1206065 bsc#1197284 Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.6.9>
+
+-------------------------------------------------------------------
 Tue Nov 29 16:01:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add devel subpackage, which is needed by open-vm-tools
