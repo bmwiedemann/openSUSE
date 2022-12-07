@@ -66,4 +66,12 @@ https://build.opensuse.org/request/show/318310</comment>
   * Fix alignment bug when deco is modified</comment>
     <requestid>954399</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8debef3cf9cb0a8663124f21ecb203ed</srcmd5>
+    <version>1.6.7</version>
+    <time>1670430908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040779</requestid>
+  </revision>
 </revisionlist>

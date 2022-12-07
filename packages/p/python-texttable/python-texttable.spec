@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-texttable
-Version:        1.6.4
+Version:        1.6.7
 Release:        0
 Summary:        Module for creating simple ASCII tables
 License:        MIT
