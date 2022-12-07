@@ -423,4 +423,32 @@
   * hugo/parser: Fix shortcode boolean param parsing (forwarded request 1037983 from jfkw)</comment>
     <requestid>1037984</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f9d16be6d4646602f1b2f1e6c6ac6207</srcmd5>
+    <version>0.108.0</version>
+    <time>1670430919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.108.0:
+  * Make the hugo env non verbose output slightly more verbose
+  * Add dart-sass-embedded version info to hugo env -v
+  * deps: Upgrade github.com/bep/godartsass v0.15.0 =&gt; v0.16.0
+  * tpl/embedded: Make Open Graph's series optional
+  * common/hugio: Fix multiWriteCloser.Close
+  * build(deps): bump github.com/getkin/kin-openapi from 0.109.0 to 0.110.0
+  * docs: Add basic doc for wrapStandAloneImageWithinParagraph etc.
+  * dartsass: Add sourceMapIncludeSources option
+  * github: Update Dart Sass Embedded to 1.56.1
+  * markup/goldmark: Add removeSurroundingParagraph for Markdown images
+  * build(deps): bump github.com/evanw/esbuild from 0.15.16 to 0.15.18
+  * build(deps): bump golang.org/x/text from 0.4.0 to 0.5.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.15 to 0.15.16
+  * tpl/tplimpl: Allow alternate comment syntax
+  * resources: Increase timeout for http.Client
+  * tpl/collections: Fix some index cases where the indices given is a slice and be more lenient with nil inputs
+  * tpl: Misco GoDoc improvements
+  * config/security: Add CI env var to whitelist
+  * deps: Upgrade github.com/bep/godartsass v0.14.0 =&gt; v0.15.0
+  * tpl: Use consistent delimiter spacing in examples (forwarded request 1040817 from jfkw)</comment>
+    <requestid>1040818</requestid>
+  </revision>
 </revisionlist>
