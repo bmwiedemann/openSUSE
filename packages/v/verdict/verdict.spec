@@ -19,7 +19,7 @@
 %define libname libverdict1_4
 
 Name:           verdict
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Compute quality functions of 2 and 3-dimensional regions
 License:        BSD-3-Clause
@@ -46,7 +46,7 @@ Requires:       %{libname} = %{version}
 
 %description devel
 This package contains the header files and cmake config files.
- 
+
 %prep
 %setup
 
@@ -61,8 +61,7 @@ This package contains the header files and cmake config files.
 
 %install
 %cmake_install
-# README does not contain much useful info
-rm %{buildroot}%{_docdir}/verdict/%{version}/README.md
+rm -vrf %{buildroot}/%{_docdir}
 
 %check
 %ifarch %{ix86}
@@ -79,9 +78,9 @@ export GTEST_FILTER=:-verdict.hex_test3_flat
 %{_libdir}/lib*so.*
 
 %files devel
+%doc README.md
 %{_includedir}/verdict*.h
 %{_libdir}/lib*so
 %{_libdir}/cmake/verdict
 
 %changelog
-

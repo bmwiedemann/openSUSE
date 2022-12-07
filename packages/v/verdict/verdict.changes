@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:03:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * VerdictVector: Use c++ headers, re-enable length function
+  * Use c++ version of math functions
+  * Fix install dir for verdict on Linux.
+  * ome fixes for building with the Intel compiler.
+  * Fix quad_aspect_ratio for concave quads.
+  * Remove unnecessary link to gtest_main
+  * improved README
+  
+-------------------------------------------------------------------
 Wed Oct 19 01:38:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (1.4.0)
