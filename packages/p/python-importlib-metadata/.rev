@@ -170,4 +170,15 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>1032185</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a0690b5c540fa4a08133fc400d27d5fa</srcmd5>
+    <version>5.1.0</version>
+    <time>1670430878</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1040482 from yarunachalam
+
+- Update to versino 5.1.0 
+    #415: Instrument SimplePath with generic support.</comment>
+    <requestid>1040692</requestid>
+  </revision>
 </revisionlist>
