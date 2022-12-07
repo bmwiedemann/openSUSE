@@ -703,7 +703,7 @@ skip_mh:
     complete man	'n@[0-9n]@`\ls -1fUA ${_manpath}$:-1/|&\sed \\%.\*:%d\;s%\\.$:-1.\*\$%%|\sort -u`@' \
 			c@-@"(- f k M P s S t)"@ n@-f@c@ n@-k@x:'<keyword>'@ n/-l/f/ C@./*@f@ n@-[MP]@d@    \
 			'N@-[MP]@`\ls -1 $:-1/man? |&\sed -n s%\\..\\+\$%%p`@' \
-			'n@-[sS]@`\ls -1 ${_manpath:h}|&\sed -n s%man%%p|\sort -u`@' \
+			'n@-[sS]@`\ls -1 ${_manpath:h}|&\sed -n \\%/.\*:%d\;s%man%%p|\sort -u`@' \
 			'n@*@`\find ${_manpath:h} \( -type f -o -type l \) -printf "%f\n"|&\sed -r "\%find:.*:%d;s%([^.]+).([^ ]*?)%\1%g"|\sort -u`@'
     complete ps		c/-t/x:'<tty>'/ c/-/"(a c C e g k l S t u v w x)"/ \
 			n/-k/x:'<kernel>'/ N/-k/x:'<core_file>'/ n/*/x:'<PID>'/

@@ -21,7 +21,7 @@
  	autoset_dspmbyte(str2short(tcp));
 --- sh.func.c
 +++ sh.func.c	2021-04-27 07:36:57.210162751 +0000
-@@ -1370,14 +1370,6 @@ dosetenv(Char **v, struct command *c)
+@@ -1374,14 +1374,6 @@ dosetenv(Char **v, struct command *c)
      }
  #endif /* apollo */
  
@@ -36,7 +36,7 @@
      if (islocale_var(vp)) {
  #ifdef NLS
  	int     k;
-@@ -1402,6 +1394,13 @@ dosetenv(Char **v, struct command *c)
+@@ -1406,6 +1398,13 @@ dosetenv(Char **v, struct command *c)
  	nlsclose();
  	nlsinit();
  # endif /* NLS_CATALOGS */

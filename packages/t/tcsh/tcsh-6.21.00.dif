@@ -1,5 +1,5 @@
 ---
- config/linux |   10 ++++++++++
+ system/linux |   10 ++++++++++
  config_f.h   |    9 +++++++--
  glob.h       |    3 ++-
  host.defs    |    9 +++------
@@ -9,12 +9,12 @@
  tc.func.c    |    8 ++++++--
  tc.str.c     |    2 +-
  tc.who.c     |    3 +++
- tcsh.man     |    2 +-
+ tcsh.man.in  |    2 +-
  tw.h         |    4 ++++
  12 files changed, 47 insertions(+), 18 deletions(-)
 
---- config/linux
-+++ config/linux	2021-04-27 07:41:53.192829973 +0000
+--- system/linux
++++ system/linux	2021-04-27 07:41:53.192829973 +0000
 @@ -99,6 +99,9 @@
  #ifndef _SVID_SOURCE
  # define _SVID_SOURCE
@@ -219,8 +219,8 @@
      setutent();
  #else
      if ((utmpfd = xopen(TCSH_PATH_UTMP, O_RDONLY|O_LARGEFILE)) < 0) {
---- tcsh.man
-+++ tcsh.man	2021-04-27 07:41:53.196829900 +0000
+--- tcsh.man.in
++++ tcsh.man.in	2021-04-27 07:41:53.196829900 +0000
 @@ -1001,7 +1001,7 @@ much like
  .Ic history-search-backward
  does.

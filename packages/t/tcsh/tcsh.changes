@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  5 15:13:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.05
+  15. V6.24.05 - 2022-12-04
+  14. Build and release process improvements (Luke Mewburn, Kimmo Suominen)
+  13. V6.24.04 - 2022-12-03
+  12. Fix a test to match output from old bash versions (Corinna Vinschen)
+- Port patch tcsh-6.21.00.dif
+
+-------------------------------------------------------------------
+Mon Dec  5 15:02:30 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.03
+  10. Fix set/@ test when diff is from busybox (Luke Mewburn)
+   9. Handle \c in echo properly instead of printing garbage past the
+      end of the string.
+   8. Add a configure check for a working sbrk() (Luke Mewburn)
+- Correct offset and port patch tcsh-6.17.06-dspmbyte.dif
+
+-------------------------------------------------------------------
 Fri Nov 25 08:54:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.02

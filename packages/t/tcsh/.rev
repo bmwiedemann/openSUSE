@@ -946,4 +946,24 @@
 - Enhance completion for man command</comment>
     <requestid>1038210</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>034ac5c385b0da43d4c7cd6d555dafff</srcmd5>
+    <version>6.24.05</version>
+    <time>1670430840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh 6.24.05
+  15. V6.24.05 - 2022-12-04
+  14. Build and release process improvements (Luke Mewburn, Kimmo Suominen)
+  13. V6.24.04 - 2022-12-03
+  12. Fix a test to match output from old bash versions (Corinna Vinschen)
+- Port patch tcsh-6.21.00.dif
+
+- Update to tcsh 6.24.03
+  10. Fix set/@ test when diff is from busybox (Luke Mewburn)
+   9. Handle \c in echo properly instead of printing garbage past the
+      end of the string.
+   8. Add a configure check for a working sbrk() (Luke Mewburn)
+- Correct offset and port patch tcsh-6.17.06-dspmbyte.dif</comment>
+    <requestid>1040341</requestid>
+  </revision>
 </revisionlist>
