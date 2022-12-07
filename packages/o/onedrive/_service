@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/abraunegg/onedrive.git</param>
-    <param name="revision">v2.4.21</param>
+    <param name="revision">v2.4.22</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@~git.%h</param>
     <param name="versionrewrite-pattern">v(.*)\+0.git.*</param>
     <param name="versionrewrite-replacement">\1</param> 

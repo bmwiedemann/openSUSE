@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.21
+Version:        2.4.22
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -123,7 +123,8 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %files
 %defattr(-,root,root)
 %license LICENSE
-%doc USAGE.md SharePoint-Shared-Libraries.md INSTALL.md Docker.md CHANGELOG.md config README.md BusinessSharedFolders.md advanced-usage.md application-security.md
+%doc USAGE.md SharePoint-Shared-Libraries.md INSTALL.md Docker.md CHANGELOG.md config
+%doc README.md BusinessSharedFolders.md advanced-usage.md application-security.md
 %config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}

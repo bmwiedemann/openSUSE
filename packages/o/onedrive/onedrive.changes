@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Dec 05 22:40:53 UTC 2022 - hpj@urpla.net
+
+- Update to version 2.4.22:
+  * Release files for 2.4.22 (#2247)
+  * Fix creation of parent empty directories when parent is excluded by sync_list (#2245)
+  * Update config change detection handling (#2246)
+  * Fix application crash when exiting due to failure state (#2244)
+  * Change order of Microsoft OneDrive restrictions and limitations check and skip_file|skip_dir (#2238)
+  * Update when application exit message is printed (#2239)
+  * Display 'Sync with OneDrive is complete' when using --synchronize (#2229)
+  * Fix application crash due to access permissions on configured path for sync_dir (#2225)
+  * Fix issue of silent exit when unable to delete local files when using --cleanup-local-files (#2227)
+  * Fix build error with LDC 1.28.1 on Alpine (#2220)
+  * Fix build error with dmd-2.101.0 (#2219)
+  * Update USAGE.md
+  * Only call isPathExcludedViaSyncList if 'sync_list' is enabled where possible (#2213)
+  * Ensure path does not start with '/' before sync_list check (#2215)
+  * Update Fix 2211 and 2212 (#2214)
+  * Update Docker.md
+  * systemd: disable non-working remaining sandboxing options (#2205)
+  * Only calculate path with computeItemPath if path is empty (#2212)
+  * Fix application crash when local file is changed to a symbolic link with non-existent target  (#2211)
+  * Update USAGE.md
+  * Update USAGE.md
+  * Update ubuntu-package-install.md
+  * Add instructions for using OBS for Ubuntu 22.10 (#2201)
+  * Add note regarding what application version should be used (#2200)
+  * Add performance output for key functions (#2180)
+  * Update USAGE.md (#2178)
+  * Update podman.md (#2176)
+  * owed -> owned (typo) (#2171)
+  * Align application logging events to actual application defaults (#2170)
+  * Remove Fedora ARMv7 builds (#2165)
+  * Update docker.yaml to downgrade setup-qemu-action to use qemu-v6.2.0-26 (#2162)
+  * Release 2.4.22 Dev Prep (#2161)
+  * Update docker.yaml
+
+-------------------------------------------------------------------
 Mon Sep 26 19:57:09 UTC 2022 - hpj@urpla.net
 
 - Update to version 2.4.21:

@@ -290,4 +290,12 @@
   * Implement --display-running-config (#2064)</comment>
     <requestid>1007659</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e7c21401c6de863c381dc87be4a85772</srcmd5>
+    <version>2.4.22</version>
+    <time>1670430888</time>
+    <user>dimstar_suse</user>
+    <comment>supply correct &quot;tarball&quot; (forwarded request 1040760 from frispete)</comment>
+    <requestid>1041115</requestid>
+  </revision>
 </revisionlist>
