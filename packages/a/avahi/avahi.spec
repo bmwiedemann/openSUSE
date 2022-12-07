@@ -105,6 +105,8 @@ Patch25:        0006-man-add-missing-bshell.1-symlink.patch
 Patch26:        0007-Ship-avahi-discover-1-bssh-1-and-bvnc-1-also-for-GTK.patch
 # PATCH-FIX-UPSTREAM 0009-fix-bytestring-decoding-for-proper-display.patch mgorse@suse.com -- fix bytestring decoding for proper display.
 Patch27:        0009-fix-bytestring-decoding-for-proper-display.patch
+Patch28:        harden_avahi-daemon.service.patch
+Patch29:        harden_avahi-dnsconfd.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -416,8 +418,9 @@ DNS specifications for Zeroconf Computing.
 
 
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -512,6 +515,8 @@ cp -a %{SOURCE12} service-type-database/build-db
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
+%patch29 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:35:55 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_avahi-daemon.service.patch
+  * harden_avahi-dnsconfd.service.patch
+
+-------------------------------------------------------------------
 Sun Sep  4 12:19:08 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - avahi-daemon-check-dns.sh: convert obsolete egrep call to grep -E
@@ -27,7 +34,7 @@ Wed Feb 23 11:13:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Thu Feb 17 00:03:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove avahi-mono* subspecfiles, they are no longer required
-  by anything. this makes the spec file slightly more readable. 
+  by anything. this makes the spec file slightly more readable.
 
 -------------------------------------------------------------------
 Wed Feb 16 18:26:01 UTC 2022 - Michael Gorse <mgorse@suse.com>
