@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <constraints>
   <hardware>
-    <physicalmemory>
-      <size unit="M">8192</size>
-    </physicalmemory>
     <memory>
-      <size unit="M">16384</size>
+      <size unit="G">5</size>
     </memory>
+    <!-- Cannot use the correct value, rejects too many workers 
+	 otherwise. See spec file/limit_build -->
+    <memoryperjob>
+      <size unit="M">1100</size>
+    </memoryperjob>
   </hardware>
   <sandbox>kvm</sandbox>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>

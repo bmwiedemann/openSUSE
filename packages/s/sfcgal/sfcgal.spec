@@ -46,12 +46,10 @@ Patch0:         disable_invalid_cgal_test.patch
 BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
@@ -60,8 +58,8 @@ BuildRequires:  libboost_timer-devel
 BuildRequires:  libcgal-devel >= 5.3
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-clang
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  xz
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libecpg) >= 10
@@ -123,6 +121,8 @@ Content headers & files to envelopment files for %{_libname}
 rm -rfv test/unit/CGAL
 
 %build
+%limit_build -m 1400
+
 tmpflags="%{optflags} -fPIC -fPIE"
 echo "${tmpflags}"
 # Desactivate lto (check with upstream)
@@ -153,18 +153,10 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
   -DSFCGAL_BUILD_EXAMPLES=ON \
   -DSFCGAL_BUILD_TESTS=ON
 
-# Upstream recommend to lower number of -j with -g
-# so we can keep constraint low on memory
-%ifarch i586 ppc64
-make -j2
-%else
-make %{?_smp_mflags}
-%endif
+%cmake_build
 
 %install
 %cmake_install
-#No .la lib
-find %{buildroot} -type f -name "*.la" -delete -print
 
 # Work fine only on x86
 %ifarch i586 x86_64

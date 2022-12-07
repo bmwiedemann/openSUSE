@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 22:40:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reduce _constraints to actual lower bound, limit number of
+  jobs with memory_per_job and limit_build macro.
+- Remove some unused build dependencies.
+
+-------------------------------------------------------------------
 Wed Aug  3 08:28:42 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Disable i586 build which failed with both gcc and clang
