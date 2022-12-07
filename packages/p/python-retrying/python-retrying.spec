@@ -1,7 +1,7 @@
 #
 # spec file for package python-retrying
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-retrying
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Retrying library for Python
 License:        Apache-2.0
