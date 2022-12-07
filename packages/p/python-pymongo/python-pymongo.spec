@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pymongo
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0

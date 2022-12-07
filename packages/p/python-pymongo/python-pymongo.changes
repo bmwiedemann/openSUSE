@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:23:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 4.3.3 
+  Version 4.3.3 documents support for the following:
+  * CSFLE on-demand credentials for cloud KMS providers.
+  * Authentication support for EKS Clusters.
+  * Added the Client Side Operation Timeout example page to improve the documentation for pymongo.timeout().
+  Bug Fixes
+  * Fixed a performance regression in download_to_stream() and download_to_stream_by_name() by reading in chunks instead of line by line (PYTHON-3502).
+  * Improved performance of gridfs.grid_file.GridOut.read() and gridfs.grid_file.GridOut.readline() (PYTHON-3508).
+
+-------------------------------------------------------------------
 Fri Oct 28 20:14:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 4.3.2 
