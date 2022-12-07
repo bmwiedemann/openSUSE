@@ -19,7 +19,7 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^(libtool|perl)\\(
 Name:           texinfo
-Version:        7.0
+Version:        7.0.1
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later

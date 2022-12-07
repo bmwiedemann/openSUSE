@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  4 07:33:56 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- texinfo 7.0.1:
+  * texi2any: avoid multiple crashes on empty @image argument and
+    other conditions
+  * avoid hang on @ref command inside section command
+  * info: fix recoding of UTF-8 files to ASCII when run in C
+    locale
+  * js: index search fixed for new HTML output
+
+-------------------------------------------------------------------
 Tue Nov 15 07:55:39 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 7.0 (7 November 2022)

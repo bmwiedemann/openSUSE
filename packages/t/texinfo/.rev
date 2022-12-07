@@ -667,4 +667,12 @@
        * new USE_XML_SYNTAX, HTML_ROOT_ELEMENT_ATTRIBUTES and</comment>
     <requestid>1035772</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>84caa4f770f0b1961ca9efeded63895b</srcmd5>
+    <version>7.0.1</version>
+    <time>1670430782</time>
+    <user>dimstar_suse</user>
+    <comment>texinfo 7.0.1 (forwarded request 1039956 from AndreasStieger)</comment>
+    <requestid>1040159</requestid>
+  </revision>
 </revisionlist>
