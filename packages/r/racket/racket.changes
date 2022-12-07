@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Dec 5 10:17:43 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.7:
+  * Typed Racket offers Shallow and Optional modes for its gradual
+    types. These modes lower the cost of interacting with untyped code,
+    but provide less protection against buggy interactions.
+
+  * Racket uses Unicode 14.0 for character and string operations, and
+    includes grapheme operations. DrRacket supports emojis.
+
+  * Racket supports RV64G (RISC-V).
+
+  * Programmers can disable definition shadowing using
+    `(#%declare #:require=define)`.
+  
+  * The module dependency graphs available using raco dependencies-graph
+    and DrRacket's Module browser are faster and have new package
+    filtering support.
+  
+  * DrRacket is more responsive when killing programs that produce a lot
+    of output.
+  
+  * Plot 3D allows negative altitude values (e.g., looking at the plot
+    from "below").
+  
+  * The `scriblib/bibtex` and `scriblib/autobib` libraries support DOIs.
+  
+  * There are many other repairs and improvements!
+
+-------------------------------------------------------------------
 Thu Aug 18 10:17:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix file list
