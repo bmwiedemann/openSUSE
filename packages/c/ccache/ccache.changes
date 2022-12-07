@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:36:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.4:
+  * Fixed an inode cache race condition.
+  * The default temporary directory is now `$XDG_RUNTIME_DIR/ccache-tmp`
+    instead of a hardcoded `/run/user/<UID>/ccache-tmp`. If `XDG_RUNTIME_DIR` 
+    is not set, `<cache_dir>/tmp` is used. This avoids creating `/run/user/<UID>`
+    on systems that don't have it if compiling as root.
+  * Added a fallback in case `posix_fallocate` returns `EINVAL` when
+    creating the
+  inode cache file.
+  * Connection timeout for an HTTP connection is now reported as a timeout
+    instead
+  * Temporary files found in the cache are no longer counted in
+  `--show-compression`.
+  * Removed duplicate magic header in output from `--inspect`.
+  * Ccache now properly waits for all recompression jobs to finish when
+    there is no `f` subdirectory in the cache.
+  * Documentation improvements
+
+-------------------------------------------------------------------
 Thu Nov 17 16:38:52 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 4.7.3
