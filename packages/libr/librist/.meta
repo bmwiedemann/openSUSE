@@ -1,0 +1,6 @@
+<package name="librist" project="openSUSE:Factory">
+  <title>RIST protocol library</title>
+  <description>A library that can be used to easily add the RIST protocol to your application.</description>
+  <devel project="multimedia:libs" package="librist"/>
+  <url>https://code.videolan.org/rist/librist</url>
+</package>
