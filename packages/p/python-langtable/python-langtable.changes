@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  6 03:52:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.0.61 
+  * Add mnw_MM.UTF-8 and ckb_IQ.UTF-8
+  * Do not run test cases using Python2 anymore
+  * Add bih
+  * Add more translations from CLDR
+  * Migrate license tag to SPDX
+
+-------------------------------------------------------------------
 Wed Oct 12 03:39:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.0.60  

@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-langtable
-Version:        0.0.60
+Version:        0.0.61
 Release:        0
 Summary:        Database to guess defaults for locale settings
 # the translations in languages.xml and territories.xml are (mostly)
