@@ -1286,4 +1286,12 @@
     <comment>New stable release (forwarded request 1031353 from iznogood)</comment>
     <requestid>1031453</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>ab4c662a7104f61ae415447799bedb70</srcmd5>
+    <version>3.4.2</version>
+    <time>1670430834</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1040307 from iznogood)</comment>
+    <requestid>1040320</requestid>
+  </revision>
 </revisionlist>

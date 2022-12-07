@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  5 14:11:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.2:
+  + Warn if IRIs are not absolute. This will turn into a query
+    error in future releases.
+  + Handle slight type affinity changes in SQLite 3.40.0 in some
+    operations that broke Tracker expectations.
+  + Close file descriptors asynchronously in TrackerEndpointDBus.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 26 13:18:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.1:
