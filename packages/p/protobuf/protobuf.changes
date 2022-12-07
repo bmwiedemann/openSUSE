@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  5 20:51:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.10:
+  * Java
+  * Use bit-field int values in buildPartial to skip work on unset groups of
+    fields. (#10960)
+  * Mark nested builder as clean after clear is called (#10984)
+
+-------------------------------------------------------------------
 Sat Oct 29 12:20:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.9:
