@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  6 18:53:30 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove BuildRequires php8-json (builtin for php8)
+
+-------------------------------------------------------------------
+Fri Dec  2 10:41:22 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.13.0
+  * lot of changes, see
+  https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases
+  for changes in individual releases
+- modified sources
+  % LICENSE
+- deleted sources
+  - README.rst (not needed)
+- added sources
+  + README.md
+
+-------------------------------------------------------------------
 Wed Jan  8 13:21:01 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.16.1:
