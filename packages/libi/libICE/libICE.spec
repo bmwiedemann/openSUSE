@@ -1,7 +1,7 @@
 #
 # spec file for package libICE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 Name:           libICE
 %define lname	libICE6
-Version:        1.0.10
+Version:        1.1.0
 Release:        0
 Summary:        X11 Inter-Client Exchange Library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libICE
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libICE/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         U_ICEmsg-Fix-C-interoperability-error-due-to-static_as.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  autoconf
@@ -80,6 +81,7 @@ in %lname.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fi

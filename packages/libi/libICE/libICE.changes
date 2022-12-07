@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec  6 10:20:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_ICEmsg-Fix-C-interoperability-error-due-to-static_as.patch
+  * needed by plasma5-workspace
+
+-------------------------------------------------------------------
+Sun Dec  4 22:56:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.0
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * configure: check for libbsd before libxtrans checks for strlcpy
+  * ConnectToPeer: be doubly sure that use-after-free doesn't happen
+  * ProcessAuthReply: rename status variable to avoid shadowing
+  * Only link to libbsd for arc4random_buf if it is not found in libc
+  * IceGetHeaderExtra: only include extra space in outbufptr if there's room
+  * Refactor Fatal I/O error handling into a common function
+  * IceFlush: signal fatal I/O error if bufptr is past end of buffer
+  * ICEmsg.h: Add static asserts that message header length <= ICE_OUTBUFSIZE
+  * Handle arrays too large to fit in iceConn buffers
+  * Only link with libbsd if needed for arc4random_buf() or getentropy()
+  * Avoid -Wdeclaration-after-statement warnings from static_assert
+  * ice.pc.in: "Libs.Private" should be "Libs.private"
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+
+-------------------------------------------------------------------
 Mon Jul 15 09:45:31 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.10
