@@ -101,4 +101,20 @@
     <comment></comment>
     <requestid>878737</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3527b13f2ab382881471c17dcc1d09c7</srcmd5>
+    <version>1.2.6</version>
+    <time>1670430796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.6
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Mark help(), usage(), and grammar() with _X_NORETURN _X_COLD
+  * Declare help() and print_help() as static
+  * Rename &quot;dpy&quot; function arguments to &quot;display&quot; to avoid shadowing global
+  * Resolve many gcc -Wsign-compare warnings
+  * Variable scope reductions as suggested by cppcheck</comment>
+    <requestid>1040094</requestid>
+  </revision>
 </revisionlist>

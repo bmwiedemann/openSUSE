@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Dec  4 22:29:05 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.6
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Mark help(), usage(), and grammar() with _X_NORETURN _X_COLD
+  * Declare help() and print_help() as static
+  * Rename "dpy" function arguments to "display" to avoid shadowing global
+  * Resolve many gcc -Wsign-compare warnings
+  * Variable scope reductions as suggested by cppcheck
+
+-------------------------------------------------------------------
 Fri Mar 12 22:17:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 
