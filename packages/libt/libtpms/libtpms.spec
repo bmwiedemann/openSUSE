@@ -18,7 +18,7 @@
 
 %define lname libtpms0
 Name:           libtpms
-Version:        0.9.3
+Version:        0.9.5
 Release:        0
 Summary:        Library providing Trusted Platform Module (TPM) functionality
 License:        BSD-3-Clause

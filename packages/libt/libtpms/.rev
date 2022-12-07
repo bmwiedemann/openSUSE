@@ -152,4 +152,20 @@
   [bsc#1204556] (forwarded request 1038171 from pgajdos)</comment>
     <requestid>1038201</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>847075aa991d8b18c6f35bb51a70d5c9</srcmd5>
+    <version>0.9.5</version>
+    <time>1670430814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.5:
+  * tpm2: Do not set RSA_FLAG_NO_BLINDING on RSA keys anymore
+  * tpm2: Fix a potential overflow expression (coverity)
+  * tpm2: Fix size check in CryptSecretDecrypt
+  * tpm: #undef printf in case it is #define'd (OSS-Fuzz)
+  * tpm2: Check return code of BN_div()
+  * tpm2: Initialize variables due to gcc complaint (s390x, false positive)
+  * tpm12: Initialize variables due to gcc complaint (s390x, false positive)
+  * build-sys: Fix configure script to support _FORTIFY_SOURCE=3 (forwarded request 1039771 from dirkmueller)</comment>
+    <requestid>1040190</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Dec  3 09:56:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.5:
+  * tpm2: Do not set RSA_FLAG_NO_BLINDING on RSA keys anymore
+  * tpm2: Fix a potential overflow expression (coverity)
+  * tpm2: Fix size check in CryptSecretDecrypt
+  * tpm: #undef printf in case it is #define'd (OSS-Fuzz)
+  * tpm2: Check return code of BN_div()
+  * tpm2: Initialize variables due to gcc complaint (s390x, false positive)
+  * tpm12: Initialize variables due to gcc complaint (s390x, false positive)
+  * build-sys: Fix configure script to support _FORTIFY_SOURCE=3
+
+-------------------------------------------------------------------
 Fri Nov 25 10:04:05 UTC 2022 - pgajdos@suse.com
 
 - fix build for ppc64le: use -Wl,--no-as-needed in check-local
