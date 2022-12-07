@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:36:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.1.14
+  * This release improves compatibility for building with GNU
+    libc 2.36, and adds a --without-xinerama option to the
+    configure script for those who want to build without linking
+    to libXinerama.
+- supersedes u_glibc-2.36.patch
+
+-------------------------------------------------------------------
 Thu Oct 13 09:55:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - display-manager.service: simplified deps (boo#1203662)

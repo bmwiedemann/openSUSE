@@ -998,4 +998,17 @@
   * create /etc/X11/xinit directory if not present.</comment>
     <requestid>1010460</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>2f3c6b6225079ebd15ba4d7eb6436272</srcmd5>
+    <version>1.1.14</version>
+    <time>1670430792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.14
+  * This release improves compatibility for building with GNU
+    libc 2.36, and adds a --without-xinerama option to the
+    configure script for those who want to build without linking
+    to libXinerama.
+- supersedes u_glibc-2.36.patch</comment>
+    <requestid>1040075</requestid>
+  </revision>
 </revisionlist>
