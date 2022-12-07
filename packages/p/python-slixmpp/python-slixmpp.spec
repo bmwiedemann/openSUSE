@@ -20,7 +20,7 @@
 %define skip_python36 1
 %define _name   slixmpp
 Name:           python-slixmpp
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT

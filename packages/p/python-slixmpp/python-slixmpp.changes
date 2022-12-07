@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  6 15:35:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1205433 Update to 1.8.3:
+  * Fix CVE-2022-45197: missing certificate hostname validation
+
+-------------------------------------------------------------------
 Sat Oct 29 01:06:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.8.2
