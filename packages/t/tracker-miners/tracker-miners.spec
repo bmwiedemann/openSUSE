@@ -17,7 +17,7 @@
 
 
 Name:           tracker-miners
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
