@@ -321,4 +321,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
   /usr/share/pki/containers/ directory. (bsc#1204706) (forwarded request 1031132 from msmeissn)</comment>
     <requestid>1031133</requestid>
   </revision>
+  <revision rev="38" vrev="47">
+    <srcmd5>f6cf76e9fa1aa01171d69b588131ffdc</srcmd5>
+    <version>1.0</version>
+    <time>1670430836</time>
+    <user>dimstar_suse</user>
+    <comment>- Package OBS project key if available. Useful when forking
+  openSUSE-build-key for use in appliances. (forwarded request 1040280 from lnussel)</comment>
+    <requestid>1040333</requestid>
+  </revision>
 </revisionlist>

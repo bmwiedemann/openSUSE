@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:28:24 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- Package OBS project key if available. Useful when forking
+  openSUSE-build-key for use in appliances.
+
+-------------------------------------------------------------------
 Tue Oct 25 11:43:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - add the SUSE Container key in PEM format too to new

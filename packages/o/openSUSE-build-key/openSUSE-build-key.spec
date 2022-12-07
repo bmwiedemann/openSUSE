@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# needspubkeyforbuild
 
 
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys/
@@ -27,6 +28,7 @@ Summary:        The public gpg keys for rpm package signature verification
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://en.opensuse.org/openSUSE:Security_team
+Source:         key2rpmname
 # opensuse@opensuse.org
 Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
 # openSUSE RSA 4096 key
@@ -77,7 +79,7 @@ cp %{SOURCE6} .
 
 %install
 mkdir -p %{buildroot}%{keydir}
-for i in %{SOURCE0} %{SOURCE1} %{SOURCE10} %{SOURCE2} \
+for i in %{SOURCE1} %{SOURCE10} %{SOURCE2} \
 %if 0%{?sle_version}
 %{SOURCE9} \
 %endif
@@ -102,6 +104,12 @@ install -c -m 644 %{SOURCE7} %{buildroot}%{containerkeydir}/opensuse-container-k
 install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.asc
 mkdir -p %{buildroot}%{pemcontainerkeydir}/
 install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-key.pem
+if [ -e "%_sourcedir/_pubkey" ]; then
+    name="$(sh %{SOURCE0} %_sourcedir/_pubkey).asc"
+    if [ ! -e "%_sourcedir/$name" ]; then
+	install -D -m 644 %_sourcedir/_pubkey %{buildroot}%keydir/"$name"
+    fi
+fi
 
 %files
 %defattr(644,root,root)
@@ -111,23 +119,9 @@ install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-k
 %attr(755,root,root) %dir %{containerkeydir}
 %attr(755,root,root) %dir %{_datadir}/pki/
 %attr(755,root,root) %dir %{pemcontainerkeydir}
-%{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
-%{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
-%{keydir}/gpg-pubkey-29b700a4-62b07e22.asc
-%if 0%{?sle_version}
-%{keydir}/gpg-pubkey-65176565-61a0ee8f.asc
-%endif
+%{keydir}/gpg-pubkey-*.asc
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
 %{pemcontainerkeydir}/suse-container-key.pem
-%ifarch riscv64
-%{keydir}/gpg-pubkey-697ba1e5-5c755904.asc
-%endif
-%ifarch s390 s390x
-%{keydir}/gpg-pubkey-f6ab3975-5edd7d4f.asc
-%endif
-%ifarch ppc ppc64 ppc64le
-%{keydir}/gpg-pubkey-8ede3e07-5c755f3a.asc
-%endif
 
 %changelog
