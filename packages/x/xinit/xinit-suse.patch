@@ -2,8 +2,8 @@ Index: xinit-1.4.0/startx.cpp
 ===================================================================
 --- xinit-1.4.0.orig/startx.cpp	2018-03-10 02:46:03.000000000 +0100
 +++ xinit-1.4.0/startx.cpp	2018-07-11 13:16:21.864694488 +0200
-@@ -50,10 +50,102 @@
- userclientrc=$HOME/.xinitrc
+@@ -50,11 +50,103 @@
+ [ -f "${XINITRC}" ] && userclientrc="${XINITRC}"
  sysclientrc=XINITDIR/xinitrc
  
 +XCOMM
@@ -97,6 +97,7 @@ Index: xinit-1.4.0/startx.cpp
 +. /etc/sysconfig/displaymanager
 +
  userserverrc=$HOME/.xserverrc
+ [ -f "${XSERVERRC}" ] && userclientrc="${XSERVERRC}"
  sysserverrc=XINITDIR/xserverrc
  defaultclient=XTERM
 +XCOMM set X Server accordingly (Xorg/Xgl)

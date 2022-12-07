@@ -1,7 +1,7 @@
 #
 # spec file for package xinit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define UsrEtcMove 1
 %endif
 Name:           xinit
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        X Window System initializer
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xinit.tar.bz2
 Source2:        keygen.c
 Source3:        keygen.1
@@ -34,7 +34,6 @@ Patch0:         xinit.diff
 Patch1:         xinit-client-session.patch
 Patch2:         xinit-suse.patch
 Patch3:         xinit-tolerant-hostname-changes.patch
-Patch4:         xinit-nolonger-unset-dbus-session.patch
 Patch5:         xinit-tarball.patch
 # needed for patch0
 BuildRequires:  gcc-c++
@@ -72,7 +71,6 @@ sed -i 's+%{_sysconfdir}/X11+%{_libexecdir}+' %{PATCH0}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 ### patch is applied later in %install section
 #%patch5 -p0
 # needed for patch0

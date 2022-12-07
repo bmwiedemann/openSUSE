@@ -302,4 +302,29 @@
     <comment></comment>
     <requestid>887248</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f9e3b0053c8312f0ed3ab0a7d537d302</srcmd5>
+    <version>1.4.2</version>
+    <time>1670430795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * man page: Update remote display example from rsh to ssh
+  * Remove non-portable grep usage from startx
+  * Don't wait for X to finish starting if it has died
+  * stop unsetting DBUS_SESSION_BUS_ADDRESS variable
+  * darwin: Drop support for macOS 10.7 and earlier
+  * darwin: Ensure we launch the user startx from $HOME
+  * darwin: Specify +extension GLX when the user requests IGLX support
+  * darwin: Wait for font_cache to complete to avoid a race with `xset fb=`
+  * man: Restore non-SCO UNIX bits of the man page
+  * startx: use uname -n instead of hostname
+  * startx: Source XINITRC and XSERVERRC variables
+  * startx: don't attempt to catch SIGKILL
+- supersedes xinit-nolonger-unset-dbus-session.patch
+- refreshed xinit-suse.patch</comment>
+    <requestid>1040091</requestid>
+  </revision>
 </revisionlist>
