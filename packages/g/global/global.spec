@@ -1,7 +1,7 @@
 #
 # spec file for package global
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           global
-Version:        6.6.6
+Version:        6.6.8
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
@@ -38,6 +38,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sqlite3)
 Requires:       python3-Pygments
 Recommends:     ctags
 Recommends:     idutils
@@ -58,6 +59,7 @@ autoreconf -fiv
 export CPPFLAGS="-fno-common"
 %configure \
   --disable-static \
+  --with-sqlite3 \
   --without-included-ltdl \
   --with-exuberant-ctags=%{_bindir}/ctags \
   PYTHON=python3
