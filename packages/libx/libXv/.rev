@@ -86,4 +86,20 @@
   + Protocol handling issues in libXv - CVE-2016-5407</comment>
     <requestid>438264</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bbfb3910f177a7851b53138bb58f9d72</srcmd5>
+    <version>1.0.12</version>
+    <time>1670430820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.12:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * XvGetReq: remove trailing semicolon that caller is expected to provide
+  * Variable scope reductions
+  * Handle implicit conversion warnings from clang</comment>
+    <requestid>1040224</requestid>
+  </revision>
 </revisionlist>

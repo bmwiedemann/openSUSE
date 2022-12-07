@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:37:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.12:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * XvGetReq: remove trailing semicolon that caller is expected to provide
+  * Variable scope reductions
+  * Handle implicit conversion warnings from clang
+
+-------------------------------------------------------------------
 Wed Nov  2 10:39:47 UTC 2016 - sndirsch@suse.com
 
 - tagged baselibs.conf as source in specfile
