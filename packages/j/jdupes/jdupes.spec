@@ -18,7 +18,7 @@
 
 
 Name:           jdupes
-Version:        1.20.2
+Version:        1.21.1
 Release:        0
 Summary:        A powerful duplicate file finder and an enhanced fork of 'fdupes'
 License:        MIT

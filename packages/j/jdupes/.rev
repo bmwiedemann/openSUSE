@@ -19,4 +19,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>963793</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>574d1f1f624aa0e6f0c9b45b7c66727c</srcmd5>
+    <version>1.21.1</version>
+    <time>1670430921</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.1:
+  * Reinstate '-I/--isolate' by popular demand; use at your own risk!
+  * Expect to lose data if you use this feature. It is strongly susceptible
+    to the documented &quot;triangle problem&quot; and absolutely does not protect
+    files in each directory from matching with one another. Don't get mad at
+    me if you use it and see a cloud of smoke come out of your disk array.
+  * Remove '-I/--isolate' which has never worked correctly
+  * Fix compiling when NO_HARDLINKS and NO_SYMLINKS are both defined
+  * Increased stack size limits to enable deeper recursion without crashing
+  * Fixes to make compilation under Cygwin (instead of MSYS2 MinGW) work
+  * Remove the temporary '-X help' warning about changes in functionality
+  * Some minor under-the-hood changes for future enhancements</comment>
+    <requestid>1040814</requestid>
+  </revision>
 </revisionlist>

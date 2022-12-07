@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:35:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.1:
+  * Reinstate '-I/--isolate' by popular demand; use at your own risk!
+  * Expect to lose data if you use this feature. It is strongly susceptible
+    to the documented "triangle problem" and absolutely does not protect
+    files in each directory from matching with one another. Don't get mad at
+    me if you use it and see a cloud of smoke come out of your disk array.
+  * Remove '-I/--isolate' which has never worked correctly
+  * Fix compiling when NO_HARDLINKS and NO_SYMLINKS are both defined
+  * Increased stack size limits to enable deeper recursion without crashing
+  * Fixes to make compilation under Cygwin (instead of MSYS2 MinGW) work
+  * Remove the temporary '-X help' warning about changes in functionality
+  * Some minor under-the-hood changes for future enhancements
+
+-------------------------------------------------------------------
 Mon Mar 14 22:06:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add jdupes_wrapper to speedup symlinks
