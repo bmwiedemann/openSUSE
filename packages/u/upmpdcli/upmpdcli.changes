@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec  3 11:08:35 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.6.2:
+  * Media Server: uprcl, qobuz, upradios: properly implement
+    UPnP Browse(Metadata), for the sole use of Kodi, probably.
+  * Uprcl container sort: sort by file names if there are no tags
+    (e.g. wav files).
+  * Uprcl: add uprclnotag view configuration variable to disable the
+    "Tag View" entries in the folders tree.   
+  * Make configuration parameter names case-insensitive
+  * Small bugs fixes
+- update to 1.6.1:
+  * uprcl: process custom tags (not predefined anywhere) as regular ones.
+  * main: change order of media server and renderer initialisations so
+    that the media server does not have to wait for mpd.
+- update to 1.6.0:
+  * Allow all configuration variables to also be set through
+    environment variables named UPMPD_xxx where xxx is the upper-cased
+    version of the variable name. This should facilitate running
+    upmpdcli in a container.
+  * Change the names of the low level UPnP library log variables from
+    UPMPDCLI_xxx to UPMPD_xxx and manage them in the same way as the rest
+    (with config entries too).
+  * Allow substituting the host name (%h,%H) and version info (%v) in
+    the configured friendlyname. The default friendlyname is now UpMpd-%h
+  * Uprcl: use same host as upmpdcli by default. Add uprclport configuration
+    variable to only set the port
+- update to 1.5.20:
+  * Uprcl: preserve stored playlist order
+  * Uprcl: choose folder image file rather than track-embedded art for folder or album
+  * Uprcl: misc fixes.
+
+-------------------------------------------------------------------
 Sat Aug 13 10:59:31 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.19:
