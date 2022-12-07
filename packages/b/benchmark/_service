@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="revision">v1.7.0</param>
-    <param name="versionformat">1.7.0</param>
+    <param name="revision">v1.7.1</param>
+    <param name="versionformat">1.7.1</param>
     <param name="url">https://github.com/google/benchmark.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

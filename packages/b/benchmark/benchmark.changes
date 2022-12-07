@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Dec 05 08:36:46 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.7.1:
+  * version bump for release
+  * [bazel] Build libpfm as a dependency to allow collection of perf counters (#1408)
+  * Add information for supported Python versions to setup.py (#1502)
+  * Partially revert "Do not depend on unversioned python binary (#1496)" (#1501)
+  * Do not depend on unversioned python binary (#1496)
+  * Fix Solaris compilation (#1499) (#1500)
+  * Support for QuRT OS (Hexagon RTOS) (#1497)
+  * bump cmake dep and docs (#1468)
+  * Bump pybind11 version to enable Python 3.11 wheel builds (#1489)
+  * Discuss sources of variance in the user guide (#1481)
+  * Stop using pandas.Timedelta (fixes #1482) (#1483)
+  * Eliminate usage of deprecated  API in sysinfo.cc (#1474)
+  * Enable aarch64 Linux wheel builds, use cibuildwheel action directly (#1472)
+  * Clean up test documentation formatting (#1475)
+  * use CMAKE_INSTALL_FULL in pkg-config file (#1473)
+  * Link error when use as static library on windows. (#1470)
+  * add debug option for enabling more output for failed cxxfeaturechecks (#1467)
+  * FIx typo in benchmark.h (#1465)
+  * run ClearRegisteredBenchmarks at exit (#1463)
+  * Avoid deprecation warning in NVHPC (#1459)
+  * Ensure we don't need benchmark installed to pass c++ feature checks (#1456)
+  * Explicitly cast int literals to int8_t in tests to silence implicit-conversion warnings (#1455)
+  * Fixed build issues on window (#1449)
+  * remove unnecessary generated include directory (#1451)
+  * Initialize help hook before actually parsing the command line (#1447)
+  * Remove stray comment and added missing header (#1444)
+
+-------------------------------------------------------------------
 Mon Aug 15 11:19:19 UTC 2022 - dmueller@suse.com
 
 - Update to version 1.7.0:
