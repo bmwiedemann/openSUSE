@@ -295,4 +295,12 @@
   * Fix bugs (forwarded request 998664 from hillwood)</comment>
     <requestid>998666</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>08c4534bb2bbe90078736e633ace2106</srcmd5>
+    <version>1.13.1</version>
+    <time>1670430948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041105</requestid>
+  </revision>
 </revisionlist>
