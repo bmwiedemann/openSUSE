@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  3 19:17:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221106:
+  * test/run_test.sh: use context diff, to work with AIX
+  * defs.h:
+    fprintf_lineno might be passed a null, when reading from stdin - show "(null)"
+  * makefile.in, test/run_make.sh, test/run_test.sh, test/run_lint.sh:
+    fgrep-fixes
+  * yacc.1: mention use of stderr/stdout for usage/debugging
+  * yacc.1: document %empty
+  * yacc.1: document %debug
+  * yacc.1: minor fixes with check-manpage
+
+-------------------------------------------------------------------
 Sat Jun 25 20:37:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220128:

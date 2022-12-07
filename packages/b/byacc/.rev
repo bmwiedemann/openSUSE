@@ -277,4 +277,12 @@ http://invisible-island.net/byacc/CHANGES (forwarded request 185697 from elvigia
   * testsuite and autotools/build script fixes</comment>
     <requestid>985077</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>19b55c0b2dab234ef1682806ae118c9a</srcmd5>
+    <version>20221106</version>
+    <time>1670430866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040605</requestid>
+  </revision>
 </revisionlist>
