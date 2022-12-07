@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libzhuyin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 13
 
 Name:           ibus-libzhuyin
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        Zhuyin engine based on libzhuyin for IBus
 License:        GPL-2.0-only
