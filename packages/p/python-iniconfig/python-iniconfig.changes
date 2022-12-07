@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:45:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-py as test dependency
+
+-------------------------------------------------------------------
 Wed Jul 20 12:01:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - BuildRequire itself when building test flavour. 

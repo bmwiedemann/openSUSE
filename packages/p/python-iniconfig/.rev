@@ -25,4 +25,13 @@
     <comment>- BuildRequire itself when building test flavour.</comment>
     <requestid>990394</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8c5e4fe462b906cd1162e3cd0765b86b</srcmd5>
+    <version>1.1.1</version>
+    <time>1670430826</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-py as test dependency
+</comment>
+    <requestid>1040267</requestid>
+  </revision>
 </revisionlist>

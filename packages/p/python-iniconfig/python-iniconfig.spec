@@ -40,6 +40,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module py}
 %endif
 %python_subpackages
 
