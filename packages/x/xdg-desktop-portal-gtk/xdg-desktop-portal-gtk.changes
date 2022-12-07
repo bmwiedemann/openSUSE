@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  6 15:05:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.14.1:
+  + printing,
+    - wallpaper: Fix some memory leaks.
+    - Consistently include .desktop in the fallback app name.
+  + screencast: Fall back to desktop ID if we don't know the app
+    name.
+  + appchooser: Fix a use-after-free.
+  + wallpaper: Handle errors storing images in the cache.
+  + email: Fix a crash if no addresses are provided.
+  + notification: Fix notifications for apps with no ID not
+    appearing.
+  + screenshot: Report whether PickColor is implemented, if
+    possible.
+
+-------------------------------------------------------------------
 Sun Mar 27 19:11:43 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.14.0:

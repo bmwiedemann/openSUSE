@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-gtk
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Backend implementation for xdg-desktop-portal using GTK+
 License:        LGPL-2.1-or-later
