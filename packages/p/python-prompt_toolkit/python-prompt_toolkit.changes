@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  6 04:28:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.0.33: 
+  Fixes:
+  - Improve termination of `Application`. Don't suppress `CancelledError`. This
+  fixes a race condition when an `Application` gets cancelled while we're
+  waiting for the background tasks to complete.
+  - Fixed typehint for `OneStyleAndTextTuple`.
+  - Small bugfix in `CombinedRegistry`. Fixed missing `@property`.
+
+-------------------------------------------------------------------
 Wed Nov  9 16:32:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.0.32: 

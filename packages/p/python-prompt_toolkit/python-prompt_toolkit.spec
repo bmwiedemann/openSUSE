@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-prompt_toolkit
-Version:        3.0.32
+Version:        3.0.33
 Release:        0
 Summary:        Library for building interactive command lines in Python
 License:        BSD-3-Clause
