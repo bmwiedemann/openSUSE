@@ -17,7 +17,7 @@
 
 
 Name:           python-unearth
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20
 Requires:       python-requests >= 2.25
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 38
 Requires:       python-cached-property >= 1.5.2

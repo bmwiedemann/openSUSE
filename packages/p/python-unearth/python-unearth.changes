@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  6 17:07:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.6.2 
+   * Features
+   Log the file size when downloading  -  by @frostming in #22 (9514a)
+   Use token as the username if not specified Close #18  -  by @frostming in #18 (6d2a6)
+   Add more logs about the caches  -  by @frostming (e0000)
+   * Bug Fixes
+   Cache the index fetch result in memory  -  by @frostming (eacc0)
+   * Chores
+   Add python 3.11 to the test matrix  -  by @frostming (25338)
+
+-------------------------------------------------------------------
 Mon Aug 15 15:43:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.6.1
