@@ -18,7 +18,7 @@
 
 
 Name:           libcerf
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        A library that complex error functions
 License:        MIT
