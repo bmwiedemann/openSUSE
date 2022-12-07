@@ -3,6 +3,9 @@
     <param name="url">https://github.com/Xpra-org/xpra</param>
     <param name="scm">git</param>
     <!-- TESTING -->
+    <!-- LAST KNOWN GOOD:  (older) ;  (newer)
+    <param name="revision">223dc02f</param>
+    -->
     <!-- VERIFIED GOOD:  (older) ;  (newer)
     <param name="revision">d0ae240</param>
     <param name="revision">c001342</param>
@@ -10,6 +13,7 @@
     <param name="revision">cc03f57</param>
     <param name="revision">c52d8ac</param>
     <param name="revision">6f83fe7</param>
+    <param name="revision">1c1e6e0</param>
     -->
     <!-- BAD CLIPBOARD
     <param name="revision">df36fcc</param>
@@ -24,16 +28,14 @@
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <!--  These need changed dependent on tags
           at github.com/Xpra-org/xpra ; Currently
-          tag=4.3 but setup.py returns 4.4
+          tag=v4.4 but setup.py returns 5.0 as a
+          result of ./xpra/__init__.py
     -->
-    <!-- Hopefully this isn't needed anymore? 20221001
-    <param name="versionrewrite-pattern">v4.3</param>
-    <param name="versionrewrite-replacement">4.4</param>
-    -->
-    <param name="versionrewrite-pattern">v(.*)</param>
     <!--
-    <param name="package-meta">yes</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     -->
+    <param name="versionrewrite-pattern">v4.4</param>
+    <param name="versionrewrite-replacement">5.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>

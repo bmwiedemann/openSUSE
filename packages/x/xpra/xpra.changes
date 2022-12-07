@@ -1,4 +1,359 @@
 -------------------------------------------------------------------
+Tue Nov 29 15:33:54 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version v5.0+git20221127.3e61ef1c:
+  * use the correct value for bits-per-pixel with alpha
+  * prefer BGRA to RGBA
+  * add scaling debug logging
+  * f-stringify
+  * fix avif encoder loading
+  * output using the same colorspace used for encoding
+  * missing fake attributes for opengl toolbox test
+  * #3374 spng uses unpremultiplied alpha
+  * preserve ':' prefix for X11 displays
+  * #3692 re-add display to ssh args
+  * add debug logging
+  * #3692 ssh config overrides url
+  * fix minor pylint warnings
+  * more helpful messages
+  * fix minor pylint warnings
+  * use premultiplied alpha with pillow
+  * fix minor warnings
+  * #3359 don't use odd heights for vertically subsampled formats
+  * remove debug logging
+  * support specifying the key file password
+  * #3504 make it possible to bypass the check
+  * minor warnings
+  * #3504 nvjpeg decoder no longer leaks memory with latest drivers
+  * silence minor pylint warnings
+  * more helpful warning when there is no pixel data
+  * fix memoryview TypeError on MS Windows with lz4 raw cursor data
+  * try to continue without a cuda context
+  * oops: another pass missed
+  * find link.exe path with newer versions of VS
+  * make sure to include cuda libs when needed
+  * avoid pycuda import warnings on win32
+  * f-stringify
+  * also need innosetup to generate EXE, MSIWrapper for MSI
+  * handle more invalid x264 version strings
+  * hint for spng
+  * add missing import
+  * fix compatibility with older versions of cryptography
+  * fix minor warnings
+  * more python deps, add verpatch link
+  * #2743 don't enable local sockets by default on win32
+  * path missed during refactoring
+  * silence pylint warning
+  * try VS 2022 Community path
+  * switch to cuda 11.8
+  * don't show '64-bit' which is the default
+  * try to install more indirect dependencies
+  * simplify: install for $MSYSTEM_ARCH
+  * also install pyopengl-accelerate via MSYS2
+  * pycuda 2022.2 can be built on Fedora 37
+  * pycuda 2022.2
+  * #3690 uinput packages can be broken in new ways
+  * #3376 expose quic config object
+  * #3376 expose quic transport info in our connection's scope attribute
+  * #3376 minor tweaks and expose more info
+  * add quic link
+  * add quic link
+  * seamless is X11 only
+  * try harder to get a meaningful connection error message
+  * exceptions are re-thrown, no need to log them at 'error' level here
+  * f-stringify
+  * better diagnostic messages when quic components are missing
+  * failures to connect should not leave the splash screen hanging
+  * remove unused arguments
+  * f-stringify
+  * better log messages
+  * cosmetic
+  * add spng
+  * the key is not a secret
+  * #3376 honour the request path part of the URL
+  * #3376 add webtransport stub + refactoring
+  * unused import
+  * #3685 clamp clock values to 'unsigned long'
+  * cosmetic logging tweaks
+  * #3376 uvloop is not available on win32
+  * #3376 cleanups and explicit IPv6 support
+  * #3376 simplify: create the UDP socket ourselves
+  * move uvloop recommendation to aioquic
+  * support functions that return exceptions
+  * #3376 install aioquic via pip for now
+  * #3376 we no longer need wsproto
+  * missed from ff04ad48e3ec7a894c091a27c5b7cdf0e9374fec
+  * no more csc_* modules matching without csc_cython
+  * #3376 add working client connection
+  * make websocket close packet into a reusable function
+  * log and re-throw errors calling async functions
+  * #3376 simplify
+  * #3376 hook up the server connection
+  * make it easier to re-use opcodes
+  * avoid errors when cleaning up
+  * cosmetic
+  * #3376 remove dependency on wsproto
+  * flush_then_close improvements
+  * cosmetic
+  * provide utility function for waiting for async calls
+  * remove debug logging
+  * use ellipsizer to reduce debug logging
+  * #3376 make uvloop optional, always wait for main loop
+  * missed from 562b1f184792643b6364832b7b4a9d4df93a53e5
+  * #3376 split handlers to separate files
+  * cosmetic
+  * use ValueError for validation
+  * cython mask module should be safe to import globally
+  * clarify test failures
+  * oops: missing delayed imports
+  * older versions of python-cryptography require the backend argument
+  * prevent circular import
+  * prevent circular import
+  * missed from refactoring of header module in 3b68b9f34679b38d8b7f35a541c694af64f7a10d
+  * check for main loop after waiting
+  * move xpra's protocol modules to a subdir
+  * all modules need an __init__ file
+  * test code does not belong in releases
+  * only one backend is supported: python-cryptography
+  * remove unused constant, expose non-backend info
+  * oops: match refactoring in b2d0b2fb5e87bcae631a32a80b2d261e7b07d130
+  * adjust tests for 1492a2210504d9c3428f0e73428220e6df838d5e
+  * move lz4 to a subdir
+  * move qrencode to a subdir
+  * move vsock to a subdir
+  * forgot to remove the old file in b2d0b2fb5e87bcae631a32a80b2d261e7b07d130
+  * split paramiko and exec client code
+  * move ssh bits to sub-directory
+  * #3376 split directory listing, simplify calling async code
+  * d3des is only used with rfb, move it there
+  * #3376 oops: modules needs init file
+  * normalize ssh args function arguments
+  * use isinstance() rather than type()
+  * remove debug logging
+  * #3376 stub client quic connection
+  * #3376 logging tweaks and fixes
+  * #3376 for now, use wsproto
+  * #3679 we may get memoryviews from compressors
+  * strip header from more languages
+  * prevent false positives with memoryview
+  * #3682 no idea why this fails in github actions
+  * #3642 fixed child_command_test in 256c7a7d5bf55ba31926eed8b62487989bd9b30f
+  * fix all pylint warnings
+  * fix all pylint warnings
+  * f-stringify
+  * we don't need the csc cython on RPM platforms
+  * #3669 document splash=yes|no|auto
+  * fix ssh parsing: need to switch to using dicts
+  * test fixes and tweaks
+  * #3642 less intrusive fix
+  * #3667 minor test fixes
+  * #3667 remove tons of dependencies we don't need
+  * update dependencies for v4.4+
+  * #3667 yasm is not needed
+  * oops: don't normalize all display names to 'named-pipe'
+  * add GHA build/test
+  * teach run.py about --skip-*
+  * #3675 also skip spurious 'Control_L' events when releasing the AltGr key
+  * video_colorspace_test skip encodings unsupported by encoder
+  * #3376 hook a basic http3 server
+  * f-stringify
+  * #3359 don't care about mpeg1 / mpeg2
+  * better error message
+  * #3359 make it easier to test a specific encoder
+  * #3359 sample images for testing
+  * constify memory alignment
+  * #3359 x264 can handle odd widths with non-subsampled input
+  * #3359 correctly parse the resulting pixel data
+  * use strongly type accessors
+  * better error messages
+  * #3359 a codec can reject invalid input sizes
+  * #3359 x264 can crash if given odd dimensions with subsampled input
+  * add option to save compressed samples
+  * #3359 add test case for video dimension masks
+  * f-stringify and cleanup
+  * fixup bd22fb3165a856fd7660c99ba63c9cb9f8be2af2 ('p' undefined)
+  * fix minor lint warnings
+  * don't show 'Upgrade' in splash title
+  * f-stringify
+  * guard against stdin / stderr goin MIA
+  * #2174 include useful bug tracker link
+  * doh: protocols don't include the separator
+  * fix minor pylint warnings
+  * #3599 ugly parse_host_string() function was now unused
+  * fix minor pylint warnings
+  * 'join' is what we have to use to wait for threads
+  * unused import
+  * fix minor pylint warnings
+  * continue to support CentOS 8.x and clones
+  * unused import
+  * #3376 aioquic needs the openssl headers
+  * #3376 missed the actual files in ff7d58e7deea6d79e4166dece97d47f47f5410c1
+  * #3667 older versions of Pillow insist on a full palette
+  * #3667 show full encoder parameters when failing
+  * #3376 rpm packages for aioquic and pylsqpack
+  * Update RPM.md
+  * fix minor warnings
+  * this is where docs really belong..
+  * revert most of 23a0555bc94f530b78b7673526846099d60f0d6d
+  * revert 23a0555bc94f530b78b7673526846099d60f0d6d
+  * move docs to fs/
+  * #3670 fix ssh desktop start with older servers
+  * #3592 match all related subcommands
+  * #3668 update bug tracker link to use github
+  * Raise clarity: xpra install on server&client
+  * #3667 fix error handling
+  * Raise clarity: xpra install on server&client
+  * Update README.md
+  * Raise clarity that xpra install on server&client
+  * #3662 values from the URL take precedence
+  * #3664 symlink creation errors don't need a backtrace
+  * bump year
+  * 3664 send the full version when requested
+  * #3471 support expanding chdir option
+  * #3659 use dataclasses improve the code
+  * simplify: lookup packet_type just once
+  * round sizes up, so we never get '0KB'
+  * fix warnings on Ubuntu 20.04
+  * #3599 rename 'unix-domain' to 'socket'
+  * #3647 disable bandwidth-detection by default
+  * #3599 move more ssh parsing to a separate function
+  * fixup 18720c1f1d9fcade877c6174c7ef65d6580471ea
+  * fixup 18720c1f1d9fcade877c6174c7ef65d6580471ea
+  * #3647 don't blacklist any Intel cards
+  * #3599 don't override main attributes with query string values
+  * #3651 client should almost be required
+  * #3514 env vars must be strings
+  * #3599 use urllib.parse rather than custom code
+
+-------------------------------------------------------------------
+Tue Oct 18 18:18:37 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20221018.223dc02f:
+  * move nvidia codecs to 'Suggests'
+  * #3651 use dh_movefiles to split the modules into separate packages
+  * fix logging of decompressed messages
+  * revert 0d37df6807729c865cd216f3b4d5eeba2e8f6817
+  * server last info may have more data
+  * f-stringify
+  * remote logging of f-strings
+  * #3582 expose gstreamer version info when FULL_INFO=1
+  * #3582 these lib versions are no longer exposed by default
+  * #3651 we have to use dh_shlibdeps
+  * minor warnings
+  * oops: undo parts of 6fc032eda4ae23917ed770c3d6f1249b3efafa55
+  * fix chunked file uploads
+  * make it possible to force chunking
+  * ensure we don't try to process empty files
+  * f-stringify
+  * warn if we ever somehow get the wrong arguments here
+  * this is a text file
+  * only update one file
+  * fix conf files not updated on Posix OSes
+  * return change boolean just like the superclass
+  * return change boolean just like the superclass
+  * simplify: let update_focus() return the boolean
+  * #3654 disable mixins we don't need
+  * #3649 block the import of pycuda on WSL
+  * #3651 split nvidia codecs into their own package
+  * #3651 split packaging for DEBs
+  * replace assert with explicit check
+  * no need to raise an exception
+  * Allow --max-size and --min-size to work again
+  * the symlink is now in git
+  * make it easier to build debian packages of xpra
+  * #3651 move all cuda files to xpra-codecs-nvidia
+  * #3652 add explicit conflict
+  * #3651 split nvidia codecs into a separate package
+  * #3590 avoid video for small sizes
+  * f-stringify
+  * #3514 disable GTK HiDPI by default
+  * explicitly disable all codecs that use CUDA
+  * #3648 ignore alpha if client can't handle it
+  * forgot to update some codec references during refactoring
+  * minor warnings
+  * oops: fixup 105669b79fb522451f094dd2133be548ccd24966
+  * oops: forgot to update paths here
+  * #3582 the filters never change
+  * #3582 limit default network and sys info
+  * simplify
+  * replace 'asserts' with faster 'RuntimeException's
+  * remove unused var
+  * disable transparency early via env var
+  * #3646 filter out rgb formats with alpha
+  * better debug logging
+  * make it easier to run the examples
+  * make pillow optional in more places
+  * the proxy can be used for other modes
+  * more minor warnings
+  * minor warnings
+  * fix minor warnings
+  * use shorter method
+  * fix minor warnings
+  * fix more warnings
+  * oops: forgot to update paths in tests
+  * doh: typo
+  * avoid errors when running without pillow installed
+  * fix minor warnings
+  * f-stringify + avoid more warnings
+  * fix minor warnings
+  * f-stringify and simplify
+  * add link to #3633
+  * forgot to bump the version here
+  * try to ease upgrades from previous versions
+  * derp
+  * remove scary warning when pillow is missing
+  * pillow, cryptography and xrdb are not strictly required
+  * I have newer headers installed...
+  * we don't have usable evdi libs on Fedora
+  * make pillow optional again
+  * less scary message when we can't load webcam components
+  * make python pillow optional again
+  * missed from move in fa3e6ed7a02c4a5e8aef95102431c423df25c689
+  * fix minor warnings and f-stringify
+  * fix building with clang
+  * all supported distros have tmpfiles.d, including el9
+  * #3592 simplify
+  * less scary message when v4l2loopback is not installed
+  * #3592 warn that these options are deprecated
+  * #3592 warn if not building for 64-bits
+  * #3592 re-arrange codecs
+  * minor lint warnings
+  * #3592 move nv_util with the other nvidia bits
+  * minor lint warnings
+  * #3592 split codecs into their own package
+  * #3592 remove python3 package name prefix
+  * #3592 libfakeXinerama is being deprecated
+  * #3592 remove support for coexisting with python2 RPMs
+  * #3390 forgot to include the compat file in sdist
+  * these files no longer exist or have moved
+  * cosmetic
+  * #3636 also convert to bytes here
+  * #3636 lz4 memoryview data must be converted to bytes
+  * cosmetic
+  * #3641 enable agent forwarding by default
+  * #2303 also remove invalid non-symlink
+  * simplify and update docstring
+  * #2303 stash env option in display args
+  * #2303 preserve the actual display
+  * unused import
+  * #3592 stub vpl encoder
+  * #3592 simplify: just require 64-bit
+  * unused import
+  * fix minor warnings
+  * remove unused def
+  * #3592 bump minimum version requirement
+  * #3592 remove support for older versions of libvpx
+  * #3592 simplify: require libvpx 1.8
+  * simplify
+  * undo WIP from c86d1aaeadadd6c403997d218552e77a9a45ea5e
+  * #3637 update Xdummy documentation links
+  * remove redundant string prefix
+  * f-stringify
+  * don't log huge invalid packets, ellipsize them
+  * Fix test_root_window_model by formatting geometry string correctly
+  * Fix test_get_version_info when the revision is 0
+
+-------------------------------------------------------------------
 Sat Oct 01 19:31:40 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 4.4+git20221002.1c1e6e0d:
