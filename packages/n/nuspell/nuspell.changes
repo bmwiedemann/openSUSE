@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  3 22:29:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v5.1.2:
+  * Rewrite internal testing tool verify and improve it to support testing
+    suggestions.
+  * Greatly improve the speed of suggestions in certain edge cases. See #45.
+  * Fix minor encoding issue in the CLI tool on Windows when reading from
+    file(s) instead of the standard input. UTF-8 is now the default encoding
+    in that case and not the one of the console.
+
+-------------------------------------------------------------------
 Sat Oct  8 05:20:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.1:

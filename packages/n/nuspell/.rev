@@ -103,4 +103,12 @@ Drop redundant (autodetected) pkgconfig require.</comment>
     <comment></comment>
     <requestid>1030252</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dadddb1024f95b535a7317e93f2aa60</srcmd5>
+    <version>5.1.2</version>
+    <time>1670430864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040594</requestid>
+  </revision>
 </revisionlist>

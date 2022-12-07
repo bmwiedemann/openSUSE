@@ -23,7 +23,7 @@
 %define gcc_ver 10
 %endif
 Name:           nuspell
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
