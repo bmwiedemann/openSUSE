@@ -23,7 +23,7 @@
 %global libgnutls  libxmlsec1-gnutls1
 %global libnss     libxmlsec1-nss1
 Name:           xmlsec1
-Version:        1.2.36
+Version:        1.2.37
 Release:        0
 Summary:        Library providing support for "XML Signature" and "XML Encryption" standards
 License:        MIT
