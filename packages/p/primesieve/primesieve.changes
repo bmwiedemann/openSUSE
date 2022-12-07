@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 07 10:40:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-11.0
+- primesieve version now match libprimesieve version (.so version)
+- Added new primesieve::iterator::jump_to() method (C++ API)
+- Added new primesieve_jump_to() function (C API)
+- Mark primesieve_skipto() as deprecated
+- Fix use after free in primesieve::iterator::clear()
+- Fix use after free in primesieve_iterator_clear()
+- Fix potential memory leak in malloc_vector.hpp
+
+-------------------------------------------------------------------
 Thu July 07 09:00:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-8.0

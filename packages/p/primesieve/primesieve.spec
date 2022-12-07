@@ -17,7 +17,7 @@
 
 
 Name:           primesieve
-Version:        8.0
+Version:        11.0
 Release:        0
 Summary:        A prime number generator
 License:        BSD-2-Clause
@@ -36,15 +36,15 @@ sieve of Eratosthenes algorithm. It can generate primes and prime
 k-tuplets (twin primes, prime triplets, ...) up to 2^64 and find the
 nth prime.
 
-%package -n libprimesieve10
+%package -n libprimesieve11
 Summary:        C/C++ library for generating prime numbers
 
-%description -n libprimesieve10
+%description -n libprimesieve11
 This package contains the shared runtime library for primesieve.
 
 %package -n libprimesieve-devel
 Summary:        Development files for the primesieve library
-Requires:       libprimesieve10 = %{version}
+Requires:       libprimesieve11 = %{version}
 
 %description -n libprimesieve-devel
 This package contains the C/C++ header files and the configuration
@@ -64,8 +64,8 @@ It also contains the API documentation of the library.
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libprimesieve10 -p /sbin/ldconfig
-%postun -n libprimesieve10 -p /sbin/ldconfig
+%post -n libprimesieve11 -p /sbin/ldconfig
+%postun -n libprimesieve11 -p /sbin/ldconfig
 
 %check
 %ctest
@@ -75,7 +75,7 @@ It also contains the API documentation of the library.
 %{_bindir}/primesieve
 %{_mandir}/man1/primesieve.1%{?ext_man}
 
-%files -n libprimesieve10
+%files -n libprimesieve11
 %license COPYING
 %{_libdir}/libprimesieve.so.*
 
