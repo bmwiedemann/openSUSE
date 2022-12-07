@@ -19,7 +19,7 @@
 
 %define         sover 2
 Name:           libbluray
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
