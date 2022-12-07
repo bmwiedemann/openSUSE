@@ -1,7 +1,7 @@
 #
 # spec file for package xset
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xset
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        User preference utility for X
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -50,7 +50,7 @@ display.
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_bindir}/xset
 %{_mandir}/man1/xset.1%{?ext_man}
 

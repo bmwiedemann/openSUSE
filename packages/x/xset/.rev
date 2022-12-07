@@ -84,4 +84,24 @@
     <comment></comment>
     <requestid>889859</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b15ffbad0bece11dbd2e8953f0b2ae31</srcmd5>
+    <version>1.2.5</version>
+    <time>1670430804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Use the real name of the DPMS extension in messages &amp; man page
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reduction as recommended by cppcheck
+  * Remove unnecessary casts
+  * Remove unnecessary check for NULL pointer before calling free()
+  * set_pixels: Mark pixels parameter as const
+  * Use C99 designated struct initializers
+  * configure: Make xf86misc support disabled by default</comment>
+    <requestid>1040100</requestid>
+  </revision>
 </revisionlist>

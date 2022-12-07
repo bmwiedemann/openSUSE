@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec  4 22:46:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.5
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Use the real name of the DPMS extension in messages & man page
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reduction as recommended by cppcheck
+  * Remove unnecessary casts
+  * Remove unnecessary check for NULL pointer before calling free()
+  * set_pixels: Mark pixels parameter as const
+  * Use C99 designated struct initializers
+  * configure: Make xf86misc support disabled by default
+
+-------------------------------------------------------------------
 Sat May  1 18:43:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file (move license to licensedir) 
