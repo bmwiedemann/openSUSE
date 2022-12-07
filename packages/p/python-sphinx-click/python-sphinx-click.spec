@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-click
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Sphinx extension that automatically documents click applications
 License:        MIT

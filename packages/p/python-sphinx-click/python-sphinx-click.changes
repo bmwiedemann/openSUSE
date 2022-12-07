@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  6 15:46:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * Add release note for Python 3.11 support
+  * actions: Test Python 3.11
+  * Points to alternative to complement Click-based CLI documentation
+  * Add Sphinx extension classifier
+  * Add pull request template
+  * Trivial setup.py, setup.cfg changes
+  * Render option defaults as literals
+  * Change target Python version used for black
+  * actions: Update to latest versions of actions
+  * Use deep clone for GitHub actions
+  * docs: Add more examples
+  * tests: Add more application tests
+  * Add our first "extension" test
+  * Switch to pytest for testing
+  * Run mypy as part of CI job
+
+-------------------------------------------------------------------
 Fri Oct  7 16:22:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 4.3.0 

@@ -15,4 +15,27 @@
     <comment></comment>
     <requestid>1032478</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df6f769e9b248d19091aa94eb663f288</srcmd5>
+    <version>4.4.0</version>
+    <time>1670430891</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Add release note for Python 3.11 support
+  * actions: Test Python 3.11
+  * Points to alternative to complement Click-based CLI documentation
+  * Add Sphinx extension classifier
+  * Add pull request template
+  * Trivial setup.py, setup.cfg changes
+  * Render option defaults as literals
+  * Change target Python version used for black
+  * actions: Update to latest versions of actions
+  * Use deep clone for GitHub actions
+  * docs: Add more examples
+  * tests: Add more application tests
+  * Add our first &quot;extension&quot; test
+  * Switch to pytest for testing
+  * Run mypy as part of CI job</comment>
+    <requestid>1040735</requestid>
+  </revision>
 </revisionlist>
