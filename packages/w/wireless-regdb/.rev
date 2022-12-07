@@ -533,4 +533,14 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: Update regulatory rules for Brazil (BR)</comment>
     <requestid>1035686</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>bdfb7ceea2c21c06aab31c81f7c28dff</srcmd5>
+    <version>20221205</version>
+    <time>1670430869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221205:
+  * wireless-regdb: Update regulatory rules for Japan (JP) on 6GHz
+  * wireless-regdb: Update regulatory rules for Japan (JP) on 5GHz</comment>
+    <requestid>1040623</requestid>
+  </revision>
 </revisionlist>

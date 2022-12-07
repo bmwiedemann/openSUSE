@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 11:09:50 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20221205:
+  * wireless-regdb: Update regulatory rules for Japan (JP) on 6GHz
+  * wireless-regdb: Update regulatory rules for Japan (JP) on 5GHz
+
+-------------------------------------------------------------------
 Mon Nov 14 15:24:17 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20221012:
