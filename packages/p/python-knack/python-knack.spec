@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-knack
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
