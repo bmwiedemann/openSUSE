@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  4 16:16:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * fix(client): raise exception (40a473b)
+  * fix(nftables): raise exception (a4b82cc)
+  * fix(nftables): invalid conditional statement (e9ca0ad)
+  * fix(check_config): use on disk firewalld_conf (d141d6d)
+  * fix(service): llmnr: improve description (d233698)
+  * Revert "feat(service): Add jellyfin service" (ea154d5)
+
+-------------------------------------------------------------------
 Thu Nov  3 15:03:25 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.1:

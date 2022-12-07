@@ -27,7 +27,7 @@
 %global modprobe_d_files firewalld-sysctls.conf
 
 Name:           firewalld
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
