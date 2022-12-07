@@ -9,3 +9,4 @@ enable hostinfo.service
 enable hylafax-faxqclean.timer
 enable hylafax-usage.timer
 enable storeBackup.timer
+enable drkonqi-coredump-processor@

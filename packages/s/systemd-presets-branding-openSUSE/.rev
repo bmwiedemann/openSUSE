@@ -541,4 +541,12 @@
   systemd-presets-common-SUSE(bsc#1197684). (forwarded request 982347 from JonathanKang)</comment>
     <requestid>982356</requestid>
   </revision>
+  <revision rev="65" vrev="21">
+    <srcmd5>1b9d13d0197640853d351bdd8a181029</srcmd5>
+    <version>12.2</version>
+    <time>1670430857</time>
+    <user>dimstar_suse</user>
+    <comment>- enable autostart of drkonqi (bsc#1203493). (forwarded request 1036238 from mgerstner)</comment>
+    <requestid>1040553</requestid>
+  </revision>
 </revisionlist>
