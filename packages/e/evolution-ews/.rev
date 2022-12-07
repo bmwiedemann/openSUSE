@@ -1118,4 +1118,12 @@
   + Updated translations. (forwarded request 1030297 from iznogood)</comment>
     <requestid>1030392</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>f734666f675187a65cd1ddc443d5d29e</srcmd5>
+    <version>3.46.2</version>
+    <time>1670430830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.2: (forwarded request 1040207 from dimstar)</comment>
+    <requestid>1040316</requestid>
+  </revision>
 </revisionlist>

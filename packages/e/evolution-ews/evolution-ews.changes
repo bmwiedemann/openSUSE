@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:38:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.46.2:
+  + Camel: Remove invalid 'else' in ews_get_folder_info_sync().
+  + EWS: GetFolderPermissions response lost.
+  + EEwsNotification: Re-subscribe when current subscription fails.
+  + Fix visibility of "Subscribe to folder of other EWS user" menu
+    option.
+  + Fix a small memory leak when updating EWS foreign subfolders.
+  + Correct response read of SetUserOofSettingsRequest.
+  + EEwsOooNotificator:
+    - Change how timeout callback is removed.
+    - Simplify response code to the alert.
+  + Subscribe foreign folder dialog does not close on success.
+  + EEwsSearchUser: Fix a small memory leak.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 21 06:53:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.1:
