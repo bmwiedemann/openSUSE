@@ -2,3 +2,4 @@ enable pulseaudio.socket
 enable pipewire.socket
 enable pipewire-pulse.socket
 enable wireplumber.service
+enable drkonqi-coredump-launcher.socket

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 16 14:13:44 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- enable user side autostart of drkonqi socket (bsc#1203493).
+
+-------------------------------------------------------------------
 Tue Jun 14 09:25:09 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Modify branding-preset-states to fix systemd-presets-common-SUSE

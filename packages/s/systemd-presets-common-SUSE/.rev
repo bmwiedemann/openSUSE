@@ -206,4 +206,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
 - enable ignition-delete-config by default (bsc#1199524)</comment>
     <requestid>984452</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>20e4e742e823414e879737b4b20ad759</srcmd5>
+    <version>15</version>
+    <time>1670430858</time>
+    <user>dimstar_suse</user>
+    <comment>- enable user side autostart of drkonqi socket (bsc#1203493). (forwarded request 1036239 from mgerstner)</comment>
+    <requestid>1040554</requestid>
+  </revision>
 </revisionlist>
