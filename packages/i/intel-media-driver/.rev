@@ -299,4 +299,12 @@ versions of libva(2)</comment>
 - Remove u_libva-2.16.0.patch</comment>
     <requestid>1034188</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7a1a82d9365a4dbabbb59243ca83c77a</srcmd5>
+    <version>22.6.4</version>
+    <time>1670430925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040826</requestid>
+  </revision>
 </revisionlist>
