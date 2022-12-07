@@ -103,4 +103,15 @@
 </comment>
     <requestid>1031197</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a4dec8c04c57de6641028f6259f53c6</srcmd5>
+    <version>3.11.0</version>
+    <time>1670430882</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1040484 from yarunachalam
+
+- Update to version 3.11.0 
+    * Added strip-prefix script.</comment>
+    <requestid>1040724</requestid>
+  </revision>
 </revisionlist>

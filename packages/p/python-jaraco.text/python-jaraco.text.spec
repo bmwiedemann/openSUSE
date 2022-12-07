@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-jaraco.text
-Version:        3.10.0
+Version:        3.11.0
 Release:        0
 Summary:        Tools to work with text
 License:        MIT
