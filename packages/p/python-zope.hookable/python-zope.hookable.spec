@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.hookable%{psuffix}
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1

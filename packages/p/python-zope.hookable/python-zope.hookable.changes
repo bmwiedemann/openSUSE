@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  5 13:47:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.4 
+  * Add support for building arm64 wheels on macOS.
+
+-------------------------------------------------------------------
 Tue Nov  8 07:03:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file, make rpmlint happy.
