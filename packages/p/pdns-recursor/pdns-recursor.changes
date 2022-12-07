@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 25 16:50:07 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.7.4
+  * Fix compilation of the event ports multiplexer. #12046, PR#12231
+  * Correct skip record condition in processRecords. #12198, PR#12230
+  * Also consider recursive forward in the “forwarded DS should not end up in negCache code.” #12189, #12199, PR#12227
+  * Timout handling for IXFRs as a client. #12125, PR#12190
+  * Detect invalid bytes in makeBytesFromHex(). #12066, PR#12173
+  * Log invalid RPZ content when obtained via IXFR. #12081, PR#12171
+  * When an expired NSEC3 entry is seen, move it to the front of the expiry queue. #12038, PR#12168
+
+-------------------------------------------------------------------
 Tue Sep 20 09:03:59 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.7.3

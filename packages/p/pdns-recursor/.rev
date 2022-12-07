@@ -685,4 +685,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment></comment>
     <requestid>1006510</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e65edf227652e06fde0aedb4dc8cb0e4</srcmd5>
+    <version>4.7.4</version>
+    <time>1670430928</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1040841</requestid>
+  </revision>
 </revisionlist>
