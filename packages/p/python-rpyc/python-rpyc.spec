@@ -27,7 +27,7 @@
 %endif
 %global skip_python2 1
 Name:           python-rpyc%{psuffix}
-Version:        5.2.3
+Version:        5.3.0
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT

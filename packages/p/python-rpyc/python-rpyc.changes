@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  6 15:32:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.3.0 
+  #515 Support for Python 3.11 is available after teleportation bug fix
+  #507 Experimental support for threading is added (default is disabled for now)
+  #516 Resolved server-side exceptions due to the logic for checking if a name is in ModuleNamespace
+  #511 Improved documentation on the life-cycle of a netref/proxy-object
+
+-------------------------------------------------------------------
 Mon Sep 26 08:17:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove some failing tests because they where failing for some deadlock
