@@ -1,25 +1,26 @@
-Index: pgbackrest-release-2.37/src/configure
+Index: pgbackrest-release-2.43/src/configure
 ===================================================================
---- pgbackrest-release-2.37.orig/src/configure
-+++ pgbackrest-release-2.37/src/configure
-@@ -3678,11 +3678,11 @@ fi
- done
+--- pgbackrest-release-2.43.orig/src/configure
++++ pgbackrest-release-2.43/src/configure
+@@ -3603,12 +3603,12 @@ then :
+ printf "%s\n" "#define STDC_HEADERS 1" >>confdefs.h
  
+ fi
+-ac_fn_c_check_header_compile "$LINENO" "libpq-fe.h" "ac_cv_header_libpq_fe_h" "$ac_includes_default"
++ac_fn_c_check_header_compile "$LINENO" "pgsql/libpq-fe.h" "ac_cv_header_libpq_fe_h" "$ac_includes_default"
+ if test "x$ac_cv_header_libpq_fe_h" = xyes
+ then :
  
--ac_fn_c_check_header_mongrel "$LINENO" "libpq-fe.h" "ac_cv_header_libpq_fe_h" "$ac_includes_default"
-+ac_fn_c_check_header_mongrel "$LINENO" "pgsql/libpq-fe.h" "ac_cv_header_libpq_fe_h" "$ac_includes_default"
- if test "x$ac_cv_header_libpq_fe_h" = xyes; then :
- 
- else
+ else $as_nop
 -  as_fn_error $? "header file <libpq-fe.h> is required" "$LINENO" 5
 +  as_fn_error $? "header file <pgsql/libpq-fe.h> is required" "$LINENO" 5
  fi
  
  
-Index: pgbackrest-release-2.37/src/postgres/client.c
+Index: pgbackrest-release-2.43/src/postgres/client.c
 ===================================================================
---- pgbackrest-release-2.37.orig/src/postgres/client.c
-+++ pgbackrest-release-2.37/src/postgres/client.c
+--- pgbackrest-release-2.43.orig/src/postgres/client.c
++++ pgbackrest-release-2.43/src/postgres/client.c
 @@ -3,7 +3,7 @@ Postgres Client
  ***********************************************************************************************************************************/
  #include "build.auto.h"

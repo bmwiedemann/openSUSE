@@ -20,7 +20,7 @@
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 
 Name:           pgbackrest
-Version:        2.39
+Version:        2.43
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT

@@ -1,7 +1,86 @@
 -------------------------------------------------------------------
+Tue Dec  6 16:32:27 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.43
+  + Bug Fixes:
+    - Fix missing reference in diff/incr backup. 
+  + Improvements:
+    - Add hint when an option is specified without an index. 
+
+- update to version 2.42
+  + Bug Fixes:
+    - Fix memory leak in file bundle backup/restore. 
+    - Fix protocol error on short read of remote file.
+  + Improvements:
+    - Do not store references for zero-length files when bundling. 
+    - Use more generic descriptions for pg_start_backup()/pg_stop_backup(). 
+
+-------------------------------------------------------------------
+Tue Sep 20 18:33:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 2.41
+  + Bug Fixes:
+    - Fix incorrect time expiration being used for non-default
+      repositories. (Reviewed by Stefan Fercot. Reported by Adam
+      Brusselback.)
+    - Fix issue when listing directories recursively with a filter.
+      (Reviewed by Stephen Frost. Reported by Efremov Egor.)
+  + Features:
+    - Backup key/value annotations. (Contributed by Stefan Fercot.
+      Reviewed by David Steele. Suggested by Adam Berlin.)
+  + Improvements:
+    - Support --set in JSON output for info command. (Contributed
+      by Stefan Fercot. Reviewed by David Steele. Suggested by
+      Anton Kurochkin.)
+    - Update archive.info timestamps after a successful backup.
+      (Reviewed by Stefan Fercot. Suggested by Alex Richman.)
+    - Move standby timeline check after checkpoint. (Reviewed by
+      Stefan Fercot, Keith Fiske. Suggested by Keith Fiske.)
+    - Improve warning message on backup resume. (Suggested by
+      Cynthia Shang.)
+  + Additional Notes
+    - Documentation Improvements:
+    - Add absolute path for kill in pgbackrest.service. (Suggested
+      by Don Seiler.)
+- changes from 2.40 OpenSSL 3 Support
+  + Improvements:
+    - OpenSSL 3 support. (Reviewed by Stephen Frost.)
+    - Create snapshot when listing contents of a path. (Reviewed by
+      John Morris, Stephen Frost.)
+    - Force target-timeline=current when restore type=immediate.
+      (Reviewed by Stephen Frost.)
+    - Truncate files during delta restore when they are larger than
+      expected. (Reviewed by Stephen Frost.)
+    - Disable incremental manifest save when resume=n. (Contributed
+      by Reid Thompson. Reviewed by David Steele.)
+    - Set backup percent complete to zero before copy start.
+      (Contributed by Reid Thompson. Reviewed by David Steele.)
+    - Use S3 IsTruncated flag to determine list continuation.
+      (Reviewed by John Morris, Soulou. Suggested by Christian
+      Montagne.)
+  + Documentation Bug Fixes:
+    - Skip internal options in the configuration reference.
+      (Reported by Francisco Miguel Biete.)
+  + Documentation Improvements:
+    - Add link to PostgreSQL configuration in repository host
+      section. (Reviewed by Stefan Fercot. Suggested by Julien
+      Cigar.)
+  + Test Suite Improvements:
+    - Add experimental Meson build. (Reviewed by Eli Schwartz, Sam
+      Bassaly.)
+    - Allow any path to be passed to the --test-path option.
+      (Contributed by Andrey Sokolov. Reviewed by David Steele.)
+    - Fix compile error when DEBUG_EXEC_TIME is defined without
+      DEBUG. (Contributed by Andrey Sokolov. Reviewed by David
+      Steele.)
+- refreshed patches to apply cleanly again:
+  - libpq-fe.h_localisation.patch
+  - use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
 Mon Jun 27 12:45:15 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- update do version 2.39
+- update to version 2.39
   + Bug Fixes:
     - Fix error thrown from FINALLY() causing an infinite loop.
     - Error on all lock failures except another process holding the lock.
