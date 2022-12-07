@@ -1104,4 +1104,17 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment>New stable release (forwarded request 1031527 from iznogood)</comment>
     <requestid>1032382</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>a11d7e5305d72252ca703e2c748d7f85</srcmd5>
+    <version>0.70.2</version>
+    <time>1670430831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.70.2:
+  * widget: Modernise HTML output.
+  * missing: Add better fdwalk implementation for darawin.
+  * build: Print warning on unstable release.
+  * build: Add define for openbsd.
+  * Updated translations. (forwarded request 1040243 from dimstar)</comment>
+    <requestid>1040317</requestid>
+  </revision>
 </revisionlist>

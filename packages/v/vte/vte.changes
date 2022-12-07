@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 05 11:52:52 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 0.70.2:
+  * widget: Modernise HTML output.
+  * missing: Add better fdwalk implementation for darawin.
+  * build: Print warning on unstable release.
+  * build: Add define for openbsd.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 27 11:08:00 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.70.1:
