@@ -22,7 +22,7 @@
 %define _apiver 2.0
 %define _oname mdds
 Name:           %{_oname}-2_0
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        A collection of multi-dimensional data structure and indexing algorithm
 License:        MIT
