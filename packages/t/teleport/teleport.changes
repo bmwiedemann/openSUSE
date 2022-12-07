@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Dec 07 06:34:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 11.1.2:
+  * Release 11.1.2 (#19117)
+  * Fixed container images dockerfile download using hardcoded repo name (#19090)
+  * Remove mentions of "setup" as a verb (#18949)
+  * spelling, typos, and non-example nouns fixed (#18943) (#18976)
+  * docs: fix tsh --cert-format reference (#19057)
+  * update webassets (#19070)
+  * [v11] Update e ref to conditionally enable usage reporting in cloud/enterprise (#19064)
+  * Add a new usage reporter (#18142) (#19059)
+  * [v11] docs: Add warnings about using layer 7 LBs with TLS routing (#19052)
+  * Provided expanded definition on internal.logins (#19035)
+  * [v11] Re-add the section about EC2 instances including the AmazonSSMManagedInstanceCore (#19029)
+  * [v11] Fix web ssh session with proxy recording mode (#19021)
+  * [v11] Create a partial for adding a role to a user (#19026)
+  * [v11]  BUGFIX | Teleport ALPN Proxy doesn't respect HTTP CONNECT Proxy (#19038)
+  * [v11] Move corrupted uploads to separate directory (#19040)
+  * Cache static desktop labels (#18874)
+  * docs: clean up per-session MFA page (#18952)
+  * [v11] Fix unknown group error issue (#18990)
+  * full link to main site (#19004)
+  * [v11] Add clarification as to the purpose of Metrics endpoint. (#19017)
+  * Ensure `tctl windows_desktops ls` produces expected output (#18779) (#19016)
+  * correct heading level for 11.0.1 release (#18998)
+  * update docs version (#18997)
+  * Properly check err from EmitAuditEvent. (#18963)
+  * [v11] Add a guide to GKE Auto-Discovery (#18986)
+  * Address feedback
+  * Added 12/01 Upcoming Releases Update
+  * Fix dir path in Enterprise install instructions (#18967)
+  * [v11] Improve the Kubernetes Dynamic Registration guide (#18950)
+  * [v11] Add the `--version` flag to `helm install` (#18947)
+  * docs version update (#18927)
+  * [v11] [Docs] Update EC2 Discovery guide for bootstrapping. (#18924)
+  * [v11] Fixes for ec2 discovery installer script on legacy ubuntu and fixes for `teleport discovery bootstrap` (#18965)
+  * Connect: Check db cert before using it for local proxy (#18740) (#18852)
+  * [v11] Connect: Set TeleportClient.AuthConnector before logging in (#18900)
+
+-------------------------------------------------------------------
 Thu Dec 01 05:44:31 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 11.1.1:
