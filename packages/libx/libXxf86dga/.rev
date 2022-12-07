@@ -69,4 +69,19 @@
     1.6.0 from 2013.</comment>
     <requestid>687600</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d1bbe63bbae07e1eeb5140b76154c5b</srcmd5>
+    <version>1.1.6</version>
+    <time>1670430821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * unifdef __UNIXOS2__
+  * Remove SunOS 4 support (defined(sun) &amp;&amp; (SVR4))
+  * unifdef ISC
+  * unifdef Lynx
+  * unifdef DGUX</comment>
+    <requestid>1040227</requestid>
+  </revision>
 </revisionlist>
