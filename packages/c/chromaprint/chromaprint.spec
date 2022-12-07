@@ -26,14 +26,16 @@ License:        LGPL-2.1-only AND MIT
 URL:            https://acoustid.org/chromaprint
 Source0:        https://github.com/acoustid/chromaprint/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM https://github.com/acoustid/chromaprint/commit/8ccad69.patch -- Upgrade code to FFmpeg 5.x APIs
+Patch0:         8ccad69.patch
+
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtag-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavcodec) >= 59
 BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswresample)
 

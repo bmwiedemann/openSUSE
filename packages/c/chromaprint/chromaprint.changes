@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 11 17:00:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 8ccad69.patch: Upgrade code to FFmpeg 5.x APIs. Following
+  this, drop pkgconfig(libavresample) BuildRequires: No longer
+  used.
+  * https://github.com/acoustid/chromaprint/commit/8ccad69.patch
+
+-------------------------------------------------------------------
 Mon Jul 11 18:31:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1:
@@ -11,8 +19,8 @@ Mon Jul 11 18:31:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Mon Jul 27 20:37:40 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.5.0:
-  * Added support for fpcalc -raw -signed, which helps with easier PostgreSQL
-	integration
+  * Added support for fpcalc -raw -signed, which helps with easier
+    PostgreSQL integration
   * Added support for using libavresample instead of libswresample
   * Fixed possible crash in chromaprint_decode_fingerprint
   * Fixed unit tests on big endian CPUs
