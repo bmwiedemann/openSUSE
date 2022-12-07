@@ -36,6 +36,7 @@ Requires:       zstd
 Conflicts:      python-zstd
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.11}
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
