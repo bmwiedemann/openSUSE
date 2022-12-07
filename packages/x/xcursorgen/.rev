@@ -74,4 +74,17 @@
     <comment></comment>
     <requestid>935492</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bce7f1376fd2d9669928b169feeedf28</srcmd5>
+    <version>1.0.8</version>
+    <time>1670430788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * premultiply_data(): Mark png argument unused
+  * Handle -Wimplicit-int-conversion warnings from clang
+  * Resolve -Wsign-conversion warnings from clang</comment>
+    <requestid>1040070</requestid>
+  </revision>
 </revisionlist>

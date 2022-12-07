@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:33:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.8
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * premultiply_data(): Mark png argument unused
+  * Handle -Wimplicit-int-conversion warnings from clang
+  * Resolve -Wsign-conversion warnings from clang
+
+-------------------------------------------------------------------
 Fri Dec  3 14:00:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir)

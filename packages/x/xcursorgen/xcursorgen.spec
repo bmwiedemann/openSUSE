@@ -1,7 +1,7 @@
 #
 # spec file for package xcursorgen
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xcursorgen
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Utility to create an X cursor file from a collection of PNG images
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng) >= 1.2.0
 BuildRequires:  pkgconfig(x11)
