@@ -19,11 +19,11 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libwps-0_4-4
 Name:           libwps
-Version:        0.4.12
+Version:        0.4.13
 Release:        0
 Summary:        Library for the Microsoft Works text and spreadsheet formats
 License:        LGPL-2.1-or-later AND MPL-2.0
-URL:            http://libwps.sourceforge.net/
+URL:            https://libwps.sourceforge.io/
 Source:         https://downloads.sourceforge.net/project/libwps/libwps/libwps-%{version}/libwps-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

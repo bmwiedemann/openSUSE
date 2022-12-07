@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  2 20:55:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.13:
+  * Quattro Dos: try to retrieve correctly the spreadsheet's name when creating
+    some charts, Quattro: try to avoid potential spreadsheet names clashes +
+  * Quattro[dos,wq2]: try to retrieve sheet's name + check that the sheet id in
+    formula is not greater than 255, PocketWord: change some comments... 
+
+-------------------------------------------------------------------
 Fri Jan 28 06:12:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix license header to correspond to SPDX abbreviation
