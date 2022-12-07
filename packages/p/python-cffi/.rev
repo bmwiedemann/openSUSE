@@ -358,4 +358,13 @@
     ease future updates (thanks Niyas Sait!)</comment>
     <requestid>990222</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>35cfc33079c7ab0d41c74a0c99f3d419</srcmd5>
+    <version>1.15.1</version>
+    <time>1670430844</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-py as test dependency
+</comment>
+    <requestid>1040369</requestid>
+  </revision>
 </revisionlist>
