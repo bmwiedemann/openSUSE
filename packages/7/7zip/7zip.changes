@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 10:47:14 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Enable ASM to increase performance in compression and decompression
+  bsc#1202197
+
+-------------------------------------------------------------------
 Fri Jul 22 21:16:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.01:

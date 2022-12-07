@@ -33,6 +33,9 @@ Patch0:         fix-compatib-with-p7zip.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%ifarch x86_64 %ix86
+BuildRequires:  uasm
+%endif
 Conflicts:      p7zip
 Conflicts:      p7zip-full
 Provides:       p7zip = %{version}
@@ -59,14 +62,33 @@ sed -i -e 's/-Waddress-of-packed-member//' -e 's/-Wcast-align=strict//' C/warn_g
 %endif
 # Inject CFLAGS
 sed -i 's/^ -fPIC/ -fPIC %{optflags}/' CPP/7zip/7zip_gcc.mak
+sed -i 's/LFLAGS_ALL = -s/LFLAGS_ALL =/' CPP/7zip/7zip_gcc.mak
+%ifarch x86_64 %ix86
+sed -i 's/$(CXX) -o $(PROGPATH)/$(CXX) -Wl,-z,noexecstack -o $(PROGPATH)/' CPP/7zip/7zip_gcc.mak
+%endif
 
 %build
-cd CPP/7zip//Bundles/Alone2
-%make_build -f ../../cmpl_gcc.mak DISABLE_RAR_COMPRESS=1
+cd CPP/7zip/Bundles/Alone2
+%ifarch x86_64
+%make_build -f ../../cmpl_gcc_x64.mak MY_ASM=uasm
+%else
+%ifarch %ix86
+%make_build -f ../../cmpl_gcc_x86.mak MY_ASM=uasm
+%else
+%make_build -f ../../cmpl_gcc.mak
+%endif
+%endif
 
 %install
-install -d -m 755 %{buildroot}%{_bindir}
-install -Dt %{buildroot}%{_bindir} CPP/7zip/Bundles/Alone2/b/g/7zz
+%ifarch x86_64
+install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x64/7zz %{buildroot}%{_bindir}/7zz
+%else
+%ifarch %ix86
+install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x86/7zz %{buildroot}%{_bindir}/7zz
+%else
+install -Dm 755 CPP/7zip/Bundles/Alone2/b/g/7zz %{buildroot}%{_bindir}/7zz
+%endif
+%endif
 # Create links the executables provided by p7zip
 ln -s %{_bindir}/7zz %{buildroot}%{_bindir}/7z
 ln -s %{_bindir}/7z %{buildroot}%{_bindir}/7za
