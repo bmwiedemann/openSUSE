@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec  6 09:00:52 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Rebase gnome-control-center-disable-error-message-for-NM.patch.
+- Add gnome-control-center-network-use-AdwStatusPage.patch:
+  network-panel: Use AdwStatusPage to show NetworkManager error.
+  This is needed by the above rebased patch
+  (glgo#GNOME/gnome-control-center/commit/2b3de01124).
+
+-------------------------------------------------------------------
+Tue Dec  6 04:31:50 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-control-center-fix-ws-sea-pass-toggle.patch: Fix crash
+  when user clicking password visibility toggle in Security page
+  when method is WPA3 Personal
+  (glgo#GNOME/gnome-control-center!1520).
+
+-------------------------------------------------------------------
 Tue Oct 18 08:00:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

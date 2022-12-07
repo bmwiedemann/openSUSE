@@ -1,20 +1,8 @@
-From b5ae9ddfa0df356ae7bf9445631b756883226825 Mon Sep 17 00:00:00 2001
-From: Jonathan Kang <jonathankang@gnome.org>
-Date: Sun, 26 Sep 2021 11:04:13 +0800
-Subject: [PATCH] add error messages when wicked is used as network manager
-
----
- panels/network/cc-network-panel.c | 37 ++++++++++++++++++++++++++-
- panels/network/cc-wifi-panel.c    | 22 +++++++++++++++-
- panels/network/cc-wifi-panel.ui   | 42 +++++++++++++++++++++++++++++++
- tests/meson.build                 |  3 +++
- 4 files changed, 102 insertions(+), 2 deletions(-)
-
-diff --git a/panels/network/cc-network-panel.c b/panels/network/cc-network-panel.c
-index 01b164ea0..d32e94d09 100644
---- a/panels/network/cc-network-panel.c
-+++ b/panels/network/cc-network-panel.c
-@@ -643,10 +643,24 @@ static void
+Index: gnome-control-center-43.1/panels/network/cc-network-panel.c
+===================================================================
+--- gnome-control-center-43.1.orig/panels/network/cc-network-panel.c
++++ gnome-control-center-43.1/panels/network/cc-network-panel.c
+@@ -646,10 +646,24 @@ static void
  panel_check_network_manager_version (CcNetworkPanel *self)
  {
          const gchar *version;
@@ -37,31 +25,23 @@ index 01b164ea0..d32e94d09 100644
          version = nm_client_get_version (self->client);
 -        if (version == NULL) {
 +        if (version == NULL && g_strcmp0 (state, "inactive") == 0) {
-                 GtkWidget *box;
-                 GtkWidget *label;
-                 g_autofree gchar *markup = NULL;
-@@ -671,10 +685,31 @@ panel_check_network_manager_version (CcNetworkPanel *self)
-                 gtk_widget_set_valign (label, GTK_ALIGN_START);
-                 gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+                 GtkWidget *status_page;
  
-+                gtk_widget_show_all (box);
+                 status_page = adw_status_page_new ();
+@@ -661,9 +675,23 @@ panel_check_network_manager_version (CcN
+                                                  _("NetworkManager needs to be running to view or make "
+                                                    "connections. Contact a system administrator or the "
+                                                    "software vendor."));
 +        } else if (version == NULL && g_strcmp0 (state, "active") == 0) {
-+                GtkWidget *box;
-+                GtkWidget *label;
++                GtkWidget *status_page;
 +
-+                gtk_container_remove (GTK_CONTAINER (self), gtk_bin_get_child (GTK_BIN (self)));
++                status_page = adw_status_page_new ();
++                cc_panel_set_content (CC_PANEL (self), status_page);
 +
-+                box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 20);
-+                gtk_box_set_homogeneous (GTK_BOX (box), TRUE);
-+                gtk_widget_set_vexpand (box, TRUE);
-+                gtk_container_add (GTK_CONTAINER (self), box);
-+
-+                label = gtk_label_new (_("Please use YaST2 to configure your network."));
-+                gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-+                gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
-+                gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
-+
-                 gtk_widget_show_all (box);
++                adw_status_page_set_icon_name (ADW_STATUS_PAGE (status_page), "network-error-symbolic");
++                adw_status_page_set_title (ADW_STATUS_PAGE (status_page), _("Wicked is running"));
++                adw_status_page_set_description (ADW_STATUS_PAGE (status_page),
++                                                 _("Please use YaST2 to configure your network."));
          } else {
                  manager_running (self);
          }
@@ -72,11 +52,22 @@ index 01b164ea0..d32e94d09 100644
  }
  
  static void
-diff --git a/panels/network/cc-wifi-panel.c b/panels/network/cc-wifi-panel.c
-index 9ca6e6ee5..c4622e684 100644
---- a/panels/network/cc-wifi-panel.c
-+++ b/panels/network/cc-wifi-panel.c
-@@ -439,21 +439,41 @@ static void
+Index: gnome-control-center-43.1/panels/network/cc-wifi-panel.c
+===================================================================
+--- gnome-control-center-43.1.orig/panels/network/cc-wifi-panel.c
++++ gnome-control-center-43.1/panels/network/cc-wifi-panel.c
+@@ -425,8 +425,8 @@ remove_wifi_device (CcWifiPanel *self,
+     }
+ 
+   /* Disconnect the signal to prevent assertion crash */
+-  g_signal_handlers_disconnect_by_func (device, 
+-                                        G_CALLBACK (wifi_panel_update_qr_image_cb), 
++  g_signal_handlers_disconnect_by_func (device,
++                                        G_CALLBACK (wifi_panel_update_qr_image_cb),
+                                         self);
+ 
+   /* Destroy all stack pages related to this device */
+@@ -444,21 +444,41 @@ static void
  check_main_stack_page (CcWifiPanel *self)
  {
    const gchar *nm_version;
@@ -119,15 +110,14 @@ index 9ca6e6ee5..c4622e684 100644
  }
  
  static void
-diff --git a/panels/network/cc-wifi-panel.ui b/panels/network/cc-wifi-panel.ui
-index 2ac7570f9..5a53f9a57 100644
---- a/panels/network/cc-wifi-panel.ui
-+++ b/panels/network/cc-wifi-panel.ui
-@@ -318,6 +318,48 @@
-                         <property name="name">nm-not-running</property>
-                       </packing>
+Index: gnome-control-center-43.1/panels/network/cc-wifi-panel.ui
+===================================================================
+--- gnome-control-center-43.1.orig/panels/network/cc-wifi-panel.ui
++++ gnome-control-center-43.1/panels/network/cc-wifi-panel.ui
+@@ -311,6 +311,48 @@
+                       </object>
                      </child>
-+
+ 
 +                    <!-- "Wicked Running" page -->
 +                    <child>
 +                      <object class="GtkBox">
@@ -169,13 +159,14 @@ index 2ac7570f9..5a53f9a57 100644
 +                        <property name="name">wicked-running</property>
 +                      </packing>
 +                    </child>
++
                    </object>
                  </child>
  
-diff --git a/tests/meson.build b/tests/meson.build
-index d4fe361ef..da3bd104d 100644
---- a/tests/meson.build
-+++ b/tests/meson.build
+Index: gnome-control-center-43.1/tests/meson.build
+===================================================================
+--- gnome-control-center-43.1.orig/tests/meson.build
++++ gnome-control-center-43.1/tests/meson.build
 @@ -1,8 +1,11 @@
  subdir('common')
  #subdir('datetime')
@@ -188,6 +179,3 @@ index d4fe361ef..da3bd104d 100644
  
  subdir('interactive-panels')
  
--- 
-2.31.1
-

@@ -1841,4 +1841,16 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>1029917</requestid>
   </revision>
+  <revision rev="218" vrev="2">
+    <srcmd5>a84c2edcdf78f067bc52a26df94633d3</srcmd5>
+    <version>43.1</version>
+    <time>1670430872</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase gnome-control-center-disable-error-message-for-NM.patch.
+- Add gnome-control-center-network-use-AdwStatusPage.patch:
+  network-panel: Use AdwStatusPage to show NetworkManager error.
+  This is needed by the above rebased patch
+  (glgo#GNOME/gnome-control-center/commit/2b3de01124). (forwarded request 1040635 from JonathanKang)</comment>
+    <requestid>1040678</requestid>
+  </revision>
 </revisionlist>
