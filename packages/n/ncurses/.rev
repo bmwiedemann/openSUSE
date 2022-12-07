@@ -3887,4 +3887,12 @@
     directory does not yet exist, since this is processed before doing an</comment>
     <requestid>1034125</requestid>
   </revision>
+  <revision rev="227" vrev="31">
+    <srcmd5>59aeebc27763712a5856120c12586d49</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1670430784</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1040231</requestid>
+  </revision>
 </revisionlist>

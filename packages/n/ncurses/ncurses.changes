@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 28 09:23:05 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221126
+  + fix an error in pathname of explain.txt (cf: 20200201).
+  + fix an error in "@" command in test/ncurses.c F-menu (cf: 20190121).
+  + improve formatting of ncurses-intro.html and hackguide.html
+  + improve man/curs_clear.3x links to other pages
+
+-------------------------------------------------------------------
+Mon Nov 21 07:20:42 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221119
+  + use static libraries for AdaCurses test-package for Mageia, since no
+    gprbuild package is available.
+  + updated test packages for Debian.
+
+-------------------------------------------------------------------
+Mon Nov 14 06:50:37 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221112
+  + build-fixes for AdaCurses RPM test-package.
+
+-------------------------------------------------------------------
 Mon Nov  7 09:48:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20221105
