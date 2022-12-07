@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycryptodome
-Version:        3.15.0
+Version:        3.16.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
