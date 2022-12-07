@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Mon Dec  5 13:17:56 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Write snapshots configuration (gh#yast/d-installer#350).
+- Update to version 0.6.0
+
+-------------------------------------------------------------------
+Fri Dec  2 14:52:36 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Improve messages of storage validation errors.
+- Do not encrypt devices when receiving an empty password from
+  D-Bus (gh#yast/d-installer#321).
+
+-------------------------------------------------------------------
+Thu Dec  1 16:22:58 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to define products architectures and architecture specific
+  installation repositories
+- Adapt default d-installer.yml to fix installation on other archs
+  (gh#yast/d-installer#279)
+
+-------------------------------------------------------------------
+Wed Nov 30 12:42:42 UTC 2022 - Knut Alejandro Anderssen González <kanderssen@suse.de>
+
+- Add validation for the first user creation (gh#yast/d-installer#337)
+
+-------------------------------------------------------------------
+Wed Nov 30 12:41:26 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Encryption method and pbkdf are now configurable per-product, set
+  to LUKS2 and PBKDF2 for ALP (gh#yast/d-installer#340).
+- Improved selection of packages for ALP to boot from encrypted
+  devices and LVM (gh#yast/d-installer#338).
+- Temporarily adjusted storage proposal to delete all existing
+  partitions and to never reuse LVM (gh#yast/d-installer#340).
+
+-------------------------------------------------------------------
+Fri Nov 18 16:27:43 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.5.0:
+  * Use D-Bus activation instead of explicit service starting
+    (gh#yast/d-installer#287).
+  * Load the configuration from /etc/d-installer.yaml
+    (gh#yast/d-installer#301).
+  * Move D-Bus configuration to /usr/share (gh#yast/d-installer#254).
+  * Extract questions and storage handling to separate services
+    (gh#yast/d-installer#248).
+  * Add a mechanism to report problems found in the configuration
+    (gh#yast/d-installer#299).
+  * Extend the D-Bus API for the storage proposal
+    (gh#yast/d-installer#268).
+  * Do not block after software installation if a package cannot
+    be installed (gh#yast/d-installer#322).
+  * Add support to install the Adaptable Linux Platform Host OS
+    (gh#yast/d-installer#265).
+  * Update Leap Micro to version 5.3 (gh#yast/d-installer#318).
+
+-------------------------------------------------------------------
+Thu Jul 28 08:20:21 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4.2:
+  * Prevent the installation from being blocked when the user
+    changes the language (gh#yast/d-installer#239 and
+    gh#yast/yast-dinstaller#240).
+  * Add a new service org.opensuse.DInstaller.Language to handle
+    yast2-country related logic.
+
+-------------------------------------------------------------------
+Tue Jul 26 09:56:53 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4.1:
+  * Respond to D-Bus messages during software installation
+    (gh#yast/d-installer#223).
+  * Prevent the redefined PackagesProposal module from sending a
+    nil value over D-Bus.
+
+-------------------------------------------------------------------
+Fri Jul 15 07:24:16 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4:
+  * Add support for installing multiple products
+    (gh#yast/d-installer#181).
+  * Switch to a multi-process architecture (gh#yast/d-installer#153):
+    - Users service (gh#yast/d-installer#164).
+    - Software service (gh#yast/d-installer#201).
+  * Simplify the installation workflow and introduce a new
+    status/progress reporting API
+    (gh#yast/d-installer#209).
+  * Install packages that are required to configure the LSM
+    (gh#yast/d-installer#222).
+- Add dependencies on YaST2 and snapper packages.
+
+-------------------------------------------------------------------
+Mon Jun 13 10:17:32 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.3:
+  * Extend configuration to support:
+    - Selecting patterns for installation
+      (gh#yast/d-installer#184).
+    - Configuring an LSM (gh#yast/d-installer#173 and
+      gh#yast/d-installer#184).
+    - Specifying the list of storage volumes
+      (gh#yast/d-installer#188).
+
+-------------------------------------------------------------------
+Tue May 17 10:58:43 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.2:
+  * Introduce a YAML-based configuration system
+    (gh#yast/d-installer#132 and gh#yast/d-installer#158).
+  * Add a mechanism to allow user interaction from the service
+    (gh#yast/d-installer#123 and gh#yast/d-installer#135).
+  * Allow setting an SSL certificate for remote installation
+    or disabling SSL completely (gh#yast/d-installer#145).
+  * Define the installation repository through a configuration
+    file (gh#yast/d-installer#122).
+
+-------------------------------------------------------------------
+Wed Mar 30 07:06:18 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- First release (version 0.1):
+  * Minimal installation of openSUSE Leap or Tumbleweed.
+  * Allow setting the language, selecting a product, choosing a disk to
+    install into, setting the root authentication mechanism and creating
+    a first user.
+  * Automatic boot loader installation.
+  * Automatic network set up based on the configuration of the
+    underlying system.
