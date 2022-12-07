@@ -1,7 +1,7 @@
 #
 # spec file for package libXScrnSaver
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXScrnSaver
 %define lname	libXss1
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        X11 Screen Saver extension client library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXScrnSaver
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXScrnSaver/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
