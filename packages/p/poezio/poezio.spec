@@ -2,7 +2,7 @@
 #
 # spec file for package poezio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           poezio
-Version:        0.13.1
+Version:        0.14
 Release:        0
 Summary:        XMPP Client for the Console
 License:        MIT
 Group:          Productivity/Networking/Other
-URL:            http://poezio.eu/en/
+URL:            https://poez.io/en/
 Source:         https://lab.louiz.org/poezio/poezio/-/archive/v%{version}/poezio-v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - remove shebangs -- sleep_walker@opensuse.org
 Patch0:         poezio-remove_shebang.patch

@@ -28,4 +28,41 @@
     <comment></comment>
     <requestid>986997</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>644d6ae8734f0fe960b79093d45dae86</srcmd5>
+    <version>0.14</version>
+    <time>1670430899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14:
+  Configuration changes:
+  * ADDED: `mam_sync`, `mam_sync_limit`.
+  * ADDED: `autocolor_tab_names`.
+  * CHANGED: `ca_cert_path` is commented out. Poezio will attempt to guess
+    common CA bundle paths. The option can be used to overwrite this behaviour.
+  * REMOVED: `force_remote_bookmarks`.
+  * REMOVED: options related to activity, mood, gaming, tune:
+    `enable_user_activity`, `enable_user_mood`, `enable_user_gaming`,
+    `enable_user_tune`, `display_activity_notifications`,
+    `display_mood_notifications`, `display_gaming_notifications`,
+    `display_tune_notifications`.
+  * REMOVED: `deterministic_muc_colors`.
+  Changes:
+  * DEPRECATION: /leave is deprecated. Use /part or /close instead.
+  * REMOVED: rich presence (activity, mood, gaming, tune) from poezio, alongside
+    with configuration options and commands: /activity, /mood,
+    and /gaming. These are moved to the new user_extras plugin.
+  * REMOVED: non-deterministic nick colors in MUC.
+  * REMOVED: XEP-0319 support removed for privacy and performance.
+  * REMOVED: Support for pypy3 with the removal of poopt.py
+  * ADDED: New /request_voice command for moderated rooms
+  * ADDED: /join: support using an XMPP URI (xmpp:...?join)
+  * ADDED: /destroy_room: new optional reason and altroom arguments
+  * ADDED: Newlines now considered as word separator in input manipulation (#3411)
+  * ADDED: Colored tab names or number using Consistent Color Generation behind
+    `autocolor_tab_names` (thanks jonas!)
+  * Stop highlighting on MUC history messages just because they're delayed
+  * Stop displaying the traceback in debug log when /xhtml fails
+  * Ensure launch.sh can be use outside the repository (Thanks kaliko)</comment>
+    <requestid>1040755</requestid>
+  </revision>
 </revisionlist>

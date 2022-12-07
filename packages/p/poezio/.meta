@@ -1,5 +1,5 @@
 <package name="poezio" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="server:messaging" package="poezio"/>
+  <devel project="network:messaging:xmpp" package="poezio"/>
 </package>
