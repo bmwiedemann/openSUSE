@@ -228,4 +228,13 @@
 </comment>
     <requestid>1031943</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a767c8e12e9a1ab4728398b91e3b2cc2</srcmd5>
+    <version>2.2.0</version>
+    <time>1670430824</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-py as test dependency
+</comment>
+    <requestid>1040253</requestid>
+  </revision>
 </revisionlist>

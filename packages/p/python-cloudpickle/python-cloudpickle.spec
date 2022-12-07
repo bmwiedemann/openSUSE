@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-cloudpickle
 Version:        2.2.0
@@ -35,6 +34,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module tornado}
 # only test these for the primary interpreter, as packages for older pythons are dropped in TW
 BuildRequires:  python3-scipy

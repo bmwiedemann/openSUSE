@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:19:25 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-py as test dependency
+
+-------------------------------------------------------------------
 Fri Oct 28 12:04:27 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add Move-builtin-classmethod_descriptor-to-a-different-t.patch to fix the
