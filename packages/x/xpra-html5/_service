@@ -2,6 +2,10 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
+    <!-- TESTING -->
+    <!-- LAST KNOWN GOOD:  (older) ;  (newer)
+    <param name="revision">21cabde</param>
+    -->
     <!-- VERIFIED GOOD:  (older) ;  (newer)
     <param name="revision">8aea0a5</param>
     <param name="revision">0f51cab</param>
@@ -13,26 +17,16 @@
     <param name="revision">e181fd1</param>
     <param name="revision">caf9971</param>
     <param name="revision">f4e08d5</param>
-    -->
-    <!-- QUESTIONABLE
-    <param name="revision">ced316f</param>
-    <param name="revision">9e26e8e</param>
-    <param name="revision">8336b02</param>
-    -->
-    <!-- BAD
-    <param name="revision">799330a</param>
-    <param name="revision">fbb091f</param>
-    <param name="revision">39566a8</param>
-    -->
-    <!-- TESTING
-    <param name="revision">caf9971</param>
+    <param name="revision">c248091</param>
     -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <!--
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <!--  This comes from setup.py which defines
+      a 'VERSION = ' based off a tag; current
+      release is 'v6.1' (Tags) but master defines
+      it as 7.0
     -->
-    <param name="versionrewrite-pattern">v5.0</param>
-    <param name="versionrewrite-replacement">6.0</param>
+    <param name="versionrewrite-pattern">v6.0</param>
+    <param name="versionrewrite-replacement">7.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>

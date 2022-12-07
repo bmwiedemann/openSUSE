@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 29 16:37:27 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 7.0+git20221031.f1e0fa1:
+  * forgot to bump version here
+  * #210 brackets change the event handler scope somehow?
+  * Hotfix in OffscreenDecodeWorker
+
+-------------------------------------------------------------------
+Mon Oct 24 14:18:12 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update uglifyjs to '3.17.4'
+
+-------------------------------------------------------------------
+Tue Oct 18 19:10:56 UTC 2022 - scott.bradnick@suse.com
+
+- Update uglifyjs to '3.17.3'
+- Update to version 6.0+git20221017.21cabde:
+  * bump version
+  * update the release notes
+  * modernize - require python3
+  * bump revision
+  * typo: missing '%'
+  * better wording
+  * #204 don't allow modal windows to be minimized
+
+-------------------------------------------------------------------
 Sat Oct 01 20:00:10 UTC 2022 - scott.bradnick@suse.com
 
 - Update uglifyjs to '3.17.2'
