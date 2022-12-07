@@ -59,4 +59,17 @@
     <comment></comment>
     <requestid>636092</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f55d8893b0535a5ba6a81285253eb833</srcmd5>
+    <version>20210927</version>
+    <time>1670430792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20210927 from GitHub
+  * Add gasp tables
+  * Add VTT hinting
+  * Cvt editing
+  * Hinting Updates
+- Clarify license to be OFL 1.1 (forwarded request 1040053 from dirkmueller)</comment>
+    <requestid>1040077</requestid>
+  </revision>
 </revisionlist>

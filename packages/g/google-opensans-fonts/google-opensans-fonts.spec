@@ -1,7 +1,7 @@
 #
 # spec file for package google-opensans-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 %define  fontname   opensans
-
 Name:           google-opensans-fonts
-Version:        20180610
+Version:        20210927
 Release:        0
 Summary:        Humanist Sans Serif Typeface
-License:        Apache-2.0
+License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            https://github.com/googlefonts/opensans
-Source0:        %{fontname}-%{version}.tar.gz
-Obsoletes:      %{name} <= 1.0
+URL:            https://github.com/googlefonts/opensans
+Source0:        https://github.com/googlefonts/opensans/archive/27d060e1aad6886daeda67629ee28189f795f534.zip
 BuildRequires:  fontpackages-devel
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  unzip
+Obsoletes:      %{name} <= 1.0
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Open Sans is a humanist sans serif typeface designed by
@@ -46,20 +45,19 @@ excellent legibility characteristics in its letterforms.
 Designer: Steve Matteson
 
 %prep
-%setup -q -n %{fontname}-%{version}
+%setup -q -n %{fontname}-27d060e1aad6886daeda67629ee28189f795f534
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}/
-install -m 0644 hinted_ttfs/*.ttf %{buildroot}%{_ttfontsdir}
+install -p -m 0644 fonts/ttf/*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
-%license LICENSE.txt
+%license OFL.txt
 
 %changelog
