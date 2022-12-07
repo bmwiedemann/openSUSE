@@ -61,6 +61,8 @@ Patch12:        0001-Add-remote-print-queue-support.patch
 Patch21:        0001-Don-t-white-list-recent-Mesa-versions-for-multithrea.patch
 Patch24:        fix-fixqt4headers.patch
 # patches 1000-2000 and above from upstream 5.15 branch #
+# Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/447019
+Patch1001:      0001-Fix-wrong-to-linear-conversion.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch

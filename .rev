@@ -2471,4 +2471,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
     <requestid>1033094</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>fbc803c4eb91f6afc69a75aefedddf65</srcmd5>
+    <version>5.15.7+kde167</version>
+    <time>1670430849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040763</requestid>
+  </revision>
 </revisionlist>
