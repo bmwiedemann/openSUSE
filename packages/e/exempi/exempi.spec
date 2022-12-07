@@ -18,7 +18,7 @@
 
 %define sonum 8
 Name:           exempi
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        XMP support library
 License:        BSD-3-Clause
@@ -29,10 +29,10 @@ Source1:        https://libopenraw.freedesktop.org/download/%{name}-%{version}.t
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_test-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRequires:  libboost_test-devel
 
 %description
 Exempi is a library for XMP parsing and I/O. XMP is a kind of

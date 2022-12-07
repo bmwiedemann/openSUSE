@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:11:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.2:
+  - Update XMPCore to Adobe XMP SDK v2022.06
+    - Build system fixes that don't matter.
+  - Fix a typo in an ID3 genre string
+  - Build XMP_SDK with some fatal warnings:
+    - -Werror=missing-field-initializers
+    - -Werror=misleading-indentation
+    - -Werror=class-memaccess
+  - Remove (deprecated) boost_test_minimal
+  - Remove old .sym file (Daniel Kolesa)
+  - Added --enable-samples (default = yes) (Fabrice Fontaine)
+
+-------------------------------------------------------------------
 Mon May  9 15:29:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.6.1:
