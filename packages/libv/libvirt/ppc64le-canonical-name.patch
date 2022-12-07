@@ -10,10 +10,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/util/virarch.c | 2 ++
  1 file changed, 2 insertions(+)
 
-Index: libvirt-8.9.0/src/util/virarch.c
+Index: libvirt-8.10.0/src/util/virarch.c
 ===================================================================
---- libvirt-8.9.0.orig/src/util/virarch.c
-+++ libvirt-8.9.0/src/util/virarch.c
+--- libvirt-8.10.0.orig/src/util/virarch.c
++++ libvirt-8.10.0/src/util/virarch.c
 @@ -222,6 +222,8 @@ virArch virArchFromHost(void)
          arch = VIR_ARCH_X86_64;
      } else if (STREQ(ut.machine, "arm64")) {

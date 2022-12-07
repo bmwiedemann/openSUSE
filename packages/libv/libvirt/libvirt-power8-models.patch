@@ -8,10 +8,10 @@ From: <ro@suse.de>
  src/cpu_map/ppc64_POWER8.xml | 2 ++
  1 file changed, 2 insertions(+)
 
-Index: libvirt-8.9.0/src/cpu_map/ppc64_POWER8.xml
+Index: libvirt-8.10.0/src/cpu_map/ppc64_POWER8.xml
 ===================================================================
---- libvirt-8.9.0.orig/src/cpu_map/ppc64_POWER8.xml
-+++ libvirt-8.9.0/src/cpu_map/ppc64_POWER8.xml
+--- libvirt-8.10.0.orig/src/cpu_map/ppc64_POWER8.xml
++++ libvirt-8.10.0/src/cpu_map/ppc64_POWER8.xml
 @@ -4,5 +4,7 @@
      <pvr value='0x004b0000' mask='0xffff0000'/>
      <pvr value='0x004c0000' mask='0xffff0000'/>

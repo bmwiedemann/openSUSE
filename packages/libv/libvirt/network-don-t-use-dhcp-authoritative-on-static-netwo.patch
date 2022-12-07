@@ -17,10 +17,10 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  tests/networkxml2confdata/dhcp6host-routed-network.conf | 1 -
  2 files changed, 8 insertions(+), 2 deletions(-)
 
-Index: libvirt-8.9.0/src/network/bridge_driver.c
+Index: libvirt-8.10.0/src/network/bridge_driver.c
 ===================================================================
---- libvirt-8.9.0.orig/src/network/bridge_driver.c
-+++ libvirt-8.9.0/src/network/bridge_driver.c
+--- libvirt-8.10.0.orig/src/network/bridge_driver.c
++++ libvirt-8.10.0/src/network/bridge_driver.c
 @@ -1044,7 +1044,14 @@ networkDnsmasqConfDHCP(virBuffer *buf,
      if (VIR_SOCKET_ADDR_IS_FAMILY(&ipdef->address, AF_INET)) {
          if (ipdef->nranges || ipdef->nhosts) {
@@ -37,10 +37,10 @@ Index: libvirt-8.9.0/src/network/bridge_driver.c
          }
  
          if (ipdef->bootfile) {
-Index: libvirt-8.9.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+Index: libvirt-8.10.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 ===================================================================
---- libvirt-8.9.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
-+++ libvirt-8.9.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+--- libvirt-8.10.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
++++ libvirt-8.10.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 @@ -10,7 +10,6 @@ bind-dynamic
  interface=virbr1
  dhcp-range=192.168.122.1,static

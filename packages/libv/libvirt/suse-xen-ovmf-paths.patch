@@ -12,11 +12,11 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/libxl/libxl_conf.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: libvirt-8.9.0/src/libxl/libxl_conf.c
+Index: libvirt-8.10.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.9.0/src/libxl/libxl_conf.c
-@@ -1788,7 +1788,7 @@ libxlDriverConfigNew(void)
+--- libvirt-8.10.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.10.0/src/libxl/libxl_conf.c
+@@ -1792,7 +1792,7 @@ libxlDriverConfigNew(void)
      cfg->firmwares = g_new0(virFirmware *, 1);
      cfg->nfirmwares = 1;
      cfg->firmwares[0] = g_new0(virFirmware, 1);

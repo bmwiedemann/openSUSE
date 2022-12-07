@@ -8,10 +8,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  tools/libvirt-guests.sh.in | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
-Index: libvirt-8.9.0/tools/libvirt-guests.sh.in
+Index: libvirt-8.10.0/tools/libvirt-guests.sh.in
 ===================================================================
---- libvirt-8.9.0.orig/tools/libvirt-guests.sh.in
-+++ libvirt-8.9.0/tools/libvirt-guests.sh.in
+--- libvirt-8.10.0.orig/tools/libvirt-guests.sh.in
++++ libvirt-8.10.0/tools/libvirt-guests.sh.in
 @@ -20,10 +20,6 @@ sysconfdir="@sysconfdir@"
  localstatedir="@localstatedir@"
  libvirtd="@sbindir@"/libvirtd

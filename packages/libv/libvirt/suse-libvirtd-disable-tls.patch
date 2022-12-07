@@ -14,10 +14,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/remote/test_libvirtd.aug.in   | 2 +-
  3 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: libvirt-8.9.0/src/remote/libvirtd.conf.in
+Index: libvirt-8.10.0/src/remote/libvirtd.conf.in
 ===================================================================
---- libvirt-8.9.0.orig/src/remote/libvirtd.conf.in
-+++ libvirt-8.9.0/src/remote/libvirtd.conf.in
+--- libvirt-8.10.0.orig/src/remote/libvirtd.conf.in
++++ libvirt-8.10.0/src/remote/libvirtd.conf.in
 @@ -19,8 +19,8 @@
  # It is necessary to setup a CA and issue server certificates before
  # using this capability.
@@ -29,10 +29,10 @@ Index: libvirt-8.9.0/src/remote/libvirtd.conf.in
  
  # Listen for unencrypted TCP connections on the public TCP/IP port.
  #
-Index: libvirt-8.9.0/src/remote/remote_daemon_config.c
+Index: libvirt-8.10.0/src/remote/remote_daemon_config.c
 ===================================================================
---- libvirt-8.9.0.orig/src/remote/remote_daemon_config.c
-+++ libvirt-8.9.0/src/remote/remote_daemon_config.c
+--- libvirt-8.10.0.orig/src/remote/remote_daemon_config.c
++++ libvirt-8.10.0/src/remote/remote_daemon_config.c
 @@ -95,7 +95,7 @@ daemonConfigNew(bool privileged G_GNUC_U
  
  #ifdef WITH_IP
@@ -42,10 +42,10 @@ Index: libvirt-8.9.0/src/remote/remote_daemon_config.c
  # else /* ! LIBVIRTD */
      data->listen_tls = false; /* Always honoured, --listen doesn't exist. */
  # endif /* ! LIBVIRTD */
-Index: libvirt-8.9.0/src/remote/test_libvirtd.aug.in
+Index: libvirt-8.10.0/src/remote/test_libvirtd.aug.in
 ===================================================================
---- libvirt-8.9.0.orig/src/remote/test_libvirtd.aug.in
-+++ libvirt-8.9.0/src/remote/test_libvirtd.aug.in
+--- libvirt-8.10.0.orig/src/remote/test_libvirtd.aug.in
++++ libvirt-8.10.0/src/remote/test_libvirtd.aug.in
 @@ -3,7 +3,7 @@ module Test_@DAEMON_NAME@ =
  
     test @DAEMON_NAME_UC@.lns get conf =

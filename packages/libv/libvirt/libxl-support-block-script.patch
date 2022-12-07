@@ -13,11 +13,11 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/libxl/libxl_conf.c | 19 ++++++++++++++++++-
  1 file changed, 18 insertions(+), 1 deletion(-)
 
-Index: libvirt-8.9.0/src/libxl/libxl_conf.c
+Index: libvirt-8.10.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.9.0/src/libxl/libxl_conf.c
-@@ -942,6 +942,20 @@ libxlDiskSetDiscard(libxl_device_disk *x
+--- libvirt-8.10.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.10.0/src/libxl/libxl_conf.c
+@@ -946,6 +946,20 @@ libxlDiskSetDiscard(libxl_device_disk *x
  }
  
  static void
@@ -38,7 +38,7 @@ Index: libvirt-8.9.0/src/libxl/libxl_conf.c
  libxlDiskSetCacheMode(libxl_device_disk *x_disk, int cachemode)
  {
      switch (cachemode) {
-@@ -1084,6 +1098,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
+@@ -1088,6 +1102,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
  int
  libxlMakeDisk(virDomainDiskDef *l_disk, libxl_device_disk *x_disk)
  {
@@ -46,7 +46,7 @@ Index: libvirt-8.9.0/src/libxl/libxl_conf.c
      const char *driver = virDomainDiskGetDriver(l_disk);
      int format = virDomainDiskGetFormat(l_disk);
      virStorageType actual_type = virStorageSourceGetActualType(l_disk->src);
-@@ -1097,7 +1112,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+@@ -1101,7 +1116,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
          if (libxlMakeNetworkDiskSrc(l_disk->src, &x_disk->pdev_path) < 0)
              return -1;
      } else {
@@ -55,7 +55,7 @@ Index: libvirt-8.9.0/src/libxl/libxl_conf.c
      }
  
      x_disk->vdev = g_strdup(l_disk->dst);
-@@ -1203,6 +1218,8 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+@@ -1207,6 +1222,8 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
      x_disk->is_cdrom = l_disk->device == VIR_DOMAIN_DISK_DEVICE_CDROM ? 1 : 0;
      libxlDiskSetDiscard(x_disk, l_disk->discard);
      libxlDiskSetCacheMode(x_disk, l_disk->cachemode);

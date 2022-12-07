@@ -4187,4 +4187,19 @@ StandardGroups in rpmlint package.
   bsc#1205204</comment>
     <requestid>1035317</requestid>
   </revision>
+  <revision rev="365" vrev="1">
+    <srcmd5>690ebabb68c63d657e09451ad88548be</srcmd5>
+    <version>8.10.0</version>
+    <time>1670430846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 8.10.0
+  - jsc#PED-1472
+  - New virt-qemu-sev-validate utility for validating the
+    measurement reported for a domain launched with AMD SEV
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-10-0-2022-12-01
+  - Dropped patches:
+    f81ee7b5-tests-Fix-libxlxml2domconfigtest.patch</comment>
+    <requestid>1040374</requestid>
+  </revision>
 </revisionlist>

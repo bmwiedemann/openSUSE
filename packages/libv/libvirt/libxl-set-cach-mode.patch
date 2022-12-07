@@ -10,11 +10,11 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/libxl/libxl_conf.c | 23 +++++++++++++++++++++++
  1 file changed, 23 insertions(+)
 
-Index: libvirt-8.9.0/src/libxl/libxl_conf.c
+Index: libvirt-8.10.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.9.0/src/libxl/libxl_conf.c
-@@ -941,6 +941,28 @@ libxlDiskSetDiscard(libxl_device_disk *x
+--- libvirt-8.10.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.10.0/src/libxl/libxl_conf.c
+@@ -945,6 +945,28 @@ libxlDiskSetDiscard(libxl_device_disk *x
      }
  }
  
@@ -43,7 +43,7 @@ Index: libvirt-8.9.0/src/libxl/libxl_conf.c
  static char *
  libxlMakeNetworkDiskSrcStr(virStorageSource *src,
                             const char *username,
-@@ -1180,6 +1202,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+@@ -1184,6 +1206,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
      x_disk->readwrite = !l_disk->src->readonly;
      x_disk->is_cdrom = l_disk->device == VIR_DOMAIN_DISK_DEVICE_CDROM ? 1 : 0;
      libxlDiskSetDiscard(x_disk, l_disk->discard);

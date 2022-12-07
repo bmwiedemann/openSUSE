@@ -12,10 +12,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/libxl/libxl_driver.c      | 90 +++++++++++++++++++++++++++++++++++
  2 files changed, 105 insertions(+)
 
-Index: libvirt-8.9.0/src/libxl/libxl_api_wrapper.h
+Index: libvirt-8.10.0/src/libxl/libxl_api_wrapper.h
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_api_wrapper.h
-+++ libvirt-8.9.0/src/libxl/libxl_api_wrapper.h
+--- libvirt-8.10.0.orig/src/libxl/libxl_api_wrapper.h
++++ libvirt-8.10.0/src/libxl/libxl_api_wrapper.h
 @@ -215,3 +215,18 @@ libxlSetMemoryTargetWrapper(libxl_ctx *c
  
      return ret;
@@ -35,10 +35,10 @@ Index: libvirt-8.9.0/src/libxl/libxl_api_wrapper.h
 +
 +    return ret;
 +}
-Index: libvirt-8.9.0/src/libxl/libxl_driver.c
+Index: libvirt-8.10.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-8.9.0/src/libxl/libxl_driver.c
+--- libvirt-8.10.0.orig/src/libxl/libxl_driver.c
++++ libvirt-8.10.0/src/libxl/libxl_driver.c
 @@ -5257,6 +5257,95 @@ libxlDomainMemoryStats(virDomainPtr dom,
  
  #undef LIBXL_SET_MEMSTAT

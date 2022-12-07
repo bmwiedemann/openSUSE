@@ -8,11 +8,11 @@ Not sure who added this patch. See bug#904426 for possible suspects.
  src/security/apparmor/libvirt-qemu | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: libvirt-8.9.0/src/security/apparmor/libvirt-qemu
+Index: libvirt-8.10.0/src/security/apparmor/libvirt-qemu
 ===================================================================
---- libvirt-8.9.0.orig/src/security/apparmor/libvirt-qemu
-+++ libvirt-8.9.0/src/security/apparmor/libvirt-qemu
-@@ -253,3 +253,6 @@
+--- libvirt-8.10.0.orig/src/security/apparmor/libvirt-qemu
++++ libvirt-8.10.0/src/security/apparmor/libvirt-qemu
+@@ -254,3 +254,6 @@
    # required for QEMU accessing UEFI nvram variables
    owner /var/lib/libvirt/qemu/nvram/*_VARS.fd rwk,
    owner /var/lib/libvirt/qemu/nvram/*_VARS.ms.fd rwk,

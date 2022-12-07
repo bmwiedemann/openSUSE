@@ -162,7 +162,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.9.0
+Version:        8.10.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -304,7 +304,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         f81ee7b5-tests-Fix-libxlxml2domconfigtest.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1622,7 +1621,12 @@ fi
 %{_libdir}/%{name}/connection-driver/libvirt_driver_network.so
 %if %{with_firewalld_zone}
 %dir %{_prefix}/lib/firewalld/zones/
+%dir %{_prefix}/lib/firewalld/policies/
 %{_prefix}/lib/firewalld/zones/libvirt.xml
+%{_prefix}/lib/firewalld/zones/libvirt-routed.xml
+%{_prefix}/lib/firewalld/policies/libvirt-routed-in.xml
+%{_prefix}/lib/firewalld/policies/libvirt-routed-out.xml
+%{_prefix}/lib/firewalld/policies/libvirt-to-host.xml
 %endif
 %doc %{_mandir}/man8/virtnetworkd.8*
 
@@ -1869,7 +1873,9 @@ fi
 %if %{with_qemu}
 %files client-qemu
 %doc %{_mandir}/man1/virt-qemu-qmp-proxy.1*
+%{_mandir}/man1/virt-qemu-sev-validate.1*
 %{_bindir}/virt-qemu-qmp-proxy
+%{_bindir}/virt-qemu-sev-validate
 %endif
 
 %files libs -f %{name}.lang

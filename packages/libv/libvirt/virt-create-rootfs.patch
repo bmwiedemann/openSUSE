@@ -13,22 +13,22 @@ From <cbosdonnat@suse.com>
  create mode 100644 docs/manpages/virt-create-rootfs.rst
  create mode 100644 tools/virt-create-rootfs
 
-Index: libvirt-8.9.0/docs/manpages/meson.build
+Index: libvirt-8.10.0/docs/manpages/meson.build
 ===================================================================
---- libvirt-8.9.0.orig/docs/manpages/meson.build
-+++ libvirt-8.9.0/docs/manpages/meson.build
-@@ -20,6 +20,7 @@ docs_man_files = [
-   { 'name': 'virt-qemu-run', 'section': '1', 'install': conf.has('WITH_QEMU') },
+--- libvirt-8.10.0.orig/docs/manpages/meson.build
++++ libvirt-8.10.0/docs/manpages/meson.build
+@@ -21,6 +21,7 @@ docs_man_files = [
    { 'name': 'virt-qemu-qmp-proxy', 'section': '1', 'install': conf.has('WITH_QEMU') },
    { 'name': 'virt-xml-validate', 'section': '1', 'install': true },
+   { 'name': 'virt-qemu-sev-validate', 'section': '1', 'install': conf.has('WITH_QEMU') },
 +  { 'name': 'virt-create-rootfs', 'section': '1', 'install': true },
  
    { 'name': 'libvirt-guests', 'section': '8', 'install': conf.has('WITH_LIBVIRTD') },
    { 'name': 'libvirtd', 'section': '8', 'install': conf.has('WITH_LIBVIRTD') },
-Index: libvirt-8.9.0/docs/manpages/virt-create-rootfs.rst
+Index: libvirt-8.10.0/docs/manpages/virt-create-rootfs.rst
 ===================================================================
 --- /dev/null
-+++ libvirt-8.9.0/docs/manpages/virt-create-rootfs.rst
++++ libvirt-8.10.0/docs/manpages/virt-create-rootfs.rst
 @@ -0,0 +1,88 @@
 +==================
 +virt-create-rootfs
@@ -118,10 +118,10 @@ Index: libvirt-8.9.0/docs/manpages/virt-create-rootfs.rst
 +========
 +
 +virsh(1), `https://libvirt.org/ <https://libvirt.org/>`_
-Index: libvirt-8.9.0/tools/meson.build
+Index: libvirt-8.10.0/tools/meson.build
 ===================================================================
---- libvirt-8.9.0.orig/tools/meson.build
-+++ libvirt-8.9.0/tools/meson.build
+--- libvirt-8.10.0.orig/tools/meson.build
++++ libvirt-8.10.0/tools/meson.build
 @@ -154,6 +154,8 @@ else
    virsh_icon_res = []
  endif
@@ -131,10 +131,10 @@ Index: libvirt-8.9.0/tools/meson.build
  executable(
    'virsh',
    [
-Index: libvirt-8.9.0/tools/virt-create-rootfs
+Index: libvirt-8.10.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
-+++ libvirt-8.9.0/tools/virt-create-rootfs
++++ libvirt-8.10.0/tools/virt-create-rootfs
 @@ -0,0 +1,236 @@
 +#!/bin/sh
 +set -e

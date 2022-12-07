@@ -18,10 +18,10 @@ Signed-off-by: Martin Kletzander <mkletzan@redhat.com>
  src/util/virpolkit.c | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: libvirt-8.9.0/src/util/virpolkit.c
+Index: libvirt-8.10.0/src/util/virpolkit.c
 ===================================================================
---- libvirt-8.9.0.orig/src/util/virpolkit.c
-+++ libvirt-8.9.0/src/util/virpolkit.c
+--- libvirt-8.10.0.orig/src/util/virpolkit.c
++++ libvirt-8.10.0/src/util/virpolkit.c
 @@ -235,6 +235,9 @@ virPolkitAgentAvailable(void)
      const char *termid = ctermid(NULL);
      VIR_AUTOCLOSE fd = -1;

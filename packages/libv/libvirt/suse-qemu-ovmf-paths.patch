@@ -16,10 +16,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/security/virt-aa-helper.c      | 3 ++-
  4 files changed, 11 insertions(+), 13 deletions(-)
 
-Index: libvirt-8.9.0/src/qemu/qemu.conf.in
+Index: libvirt-8.10.0/src/qemu/qemu.conf.in
 ===================================================================
---- libvirt-8.9.0.orig/src/qemu/qemu.conf.in
-+++ libvirt-8.9.0/src/qemu/qemu.conf.in
+--- libvirt-8.10.0.orig/src/qemu/qemu.conf.in
++++ libvirt-8.10.0/src/qemu/qemu.conf.in
 @@ -857,10 +857,9 @@
  # for x86_64 and i686, but it's AAVMF for aarch64. The libvirt default
  # follows this scheme.
@@ -34,10 +34,10 @@ Index: libvirt-8.9.0/src/qemu/qemu.conf.in
  #]
  
  # The backend to use for handling stdout/stderr output from
-Index: libvirt-8.9.0/src/qemu/qemu_conf.c
+Index: libvirt-8.10.0/src/qemu/qemu_conf.c
 ===================================================================
---- libvirt-8.9.0.orig/src/qemu/qemu_conf.c
-+++ libvirt-8.9.0/src/qemu/qemu_conf.c
+--- libvirt-8.10.0.orig/src/qemu/qemu_conf.c
++++ libvirt-8.10.0/src/qemu/qemu_conf.c
 @@ -90,10 +90,9 @@ VIR_ONCE_GLOBAL_INIT(virQEMUConfig);
  
  #ifndef DEFAULT_LOADER_NVRAM
@@ -52,10 +52,10 @@ Index: libvirt-8.9.0/src/qemu/qemu_conf.c
  #endif
  
  
-Index: libvirt-8.9.0/src/qemu/test_libvirtd_qemu.aug.in
+Index: libvirt-8.10.0/src/qemu/test_libvirtd_qemu.aug.in
 ===================================================================
---- libvirt-8.9.0.orig/src/qemu/test_libvirtd_qemu.aug.in
-+++ libvirt-8.9.0/src/qemu/test_libvirtd_qemu.aug.in
+--- libvirt-8.10.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-8.10.0/src/qemu/test_libvirtd_qemu.aug.in
 @@ -96,10 +96,9 @@ module Test_libvirtd_qemu =
  { "migration_port_max" = "49215" }
  { "log_timestamp" = "0" }
@@ -70,10 +70,10 @@ Index: libvirt-8.9.0/src/qemu/test_libvirtd_qemu.aug.in
  }
  { "stdio_handler" = "logd" }
  { "gluster_debug_level" = "9" }
-Index: libvirt-8.9.0/src/security/virt-aa-helper.c
+Index: libvirt-8.10.0/src/security/virt-aa-helper.c
 ===================================================================
---- libvirt-8.9.0.orig/src/security/virt-aa-helper.c
-+++ libvirt-8.9.0/src/security/virt-aa-helper.c
+--- libvirt-8.10.0.orig/src/security/virt-aa-helper.c
++++ libvirt-8.10.0/src/security/virt-aa-helper.c
 @@ -482,7 +482,8 @@ valid_path(const char *path, const bool
          "/usr/share/qemu-efi/",              /* for AAVMF images */
          "/usr/share/qemu-efi-aarch64/",      /* for AAVMF images */

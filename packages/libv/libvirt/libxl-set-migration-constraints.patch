@@ -15,11 +15,11 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  tools/virsh-domain.c             | 29 +++++++++++++++++
  6 files changed, 124 insertions(+), 21 deletions(-)
 
-Index: libvirt-8.9.0/docs/manpages/virsh.rst
+Index: libvirt-8.10.0/docs/manpages/virsh.rst
 ===================================================================
---- libvirt-8.9.0.orig/docs/manpages/virsh.rst
-+++ libvirt-8.9.0/docs/manpages/virsh.rst
-@@ -3337,6 +3337,7 @@ migrate
+--- libvirt-8.10.0.orig/docs/manpages/virsh.rst
++++ libvirt-8.10.0/docs/manpages/virsh.rst
+@@ -3359,6 +3359,7 @@ migrate
        [--parallel [--parallel-connections connections]]
        [--bandwidth bandwidth] [--tls-destination hostname]
        [--disks-uri URI] [--copy-storage-synchronous-writes]
@@ -27,7 +27,7 @@ Index: libvirt-8.9.0/docs/manpages/virsh.rst
  
  Migrate domain to another host.  Add *--live* for live migration; <--p2p>
  for peer-2-peer migration; *--direct* for direct migration; or *--tunnelled*
-@@ -3463,6 +3464,12 @@ parallel connections. The number of such
+@@ -3485,6 +3486,12 @@ parallel connections. The number of such
  network link between the source and the target and thus speeding up the
  migration.
  
@@ -40,10 +40,10 @@ Index: libvirt-8.9.0/docs/manpages/virsh.rst
  Running migration can be canceled by interrupting virsh (usually using
  ``Ctrl-C``) or by ``domjobabort`` command sent from another virsh instance.
  
-Index: libvirt-8.9.0/include/libvirt/libvirt-domain.h
+Index: libvirt-8.10.0/include/libvirt/libvirt-domain.h
 ===================================================================
---- libvirt-8.9.0.orig/include/libvirt/libvirt-domain.h
-+++ libvirt-8.9.0/include/libvirt/libvirt-domain.h
+--- libvirt-8.10.0.orig/include/libvirt/libvirt-domain.h
++++ libvirt-8.10.0/include/libvirt/libvirt-domain.h
 @@ -1367,6 +1367,31 @@ typedef enum {
   */
  # define VIR_MIGRATE_PARAM_TLS_DESTINATION          "tls.destination"
@@ -76,10 +76,10 @@ Index: libvirt-8.9.0/include/libvirt/libvirt-domain.h
  /* Domain migration. */
  virDomainPtr virDomainMigrate (virDomainPtr domain, virConnectPtr dconn,
                                 unsigned long flags, const char *dname,
-Index: libvirt-8.9.0/src/libxl/libxl_driver.c
+Index: libvirt-8.10.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-8.9.0/src/libxl/libxl_driver.c
+--- libvirt-8.10.0.orig/src/libxl/libxl_driver.c
++++ libvirt-8.10.0/src/libxl/libxl_driver.c
 @@ -5996,6 +5996,9 @@ libxlDomainMigratePerform3Params(virDoma
      const char *dname = NULL;
      const char *uri = NULL;
@@ -120,10 +120,10 @@ Index: libvirt-8.9.0/src/libxl/libxl_driver.c
              goto cleanup;
      }
  
-Index: libvirt-8.9.0/src/libxl/libxl_migration.c
+Index: libvirt-8.10.0/src/libxl/libxl_migration.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_migration.c
-+++ libvirt-8.9.0/src/libxl/libxl_migration.c
+--- libvirt-8.10.0.orig/src/libxl/libxl_migration.c
++++ libvirt-8.10.0/src/libxl/libxl_migration.c
 @@ -329,18 +329,38 @@ libxlMigrateDstReceive(virNetSocket *soc
  static int
  libxlDoMigrateSrcSend(libxlDriverPrivate *driver,
@@ -284,10 +284,10 @@ Index: libvirt-8.9.0/src/libxl/libxl_migration.c
      virObjectLock(vm);
  
      if (ret == 0) {
-Index: libvirt-8.9.0/src/libxl/libxl_migration.h
+Index: libvirt-8.10.0/src/libxl/libxl_migration.h
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_migration.h
-+++ libvirt-8.9.0/src/libxl/libxl_migration.h
+--- libvirt-8.10.0.orig/src/libxl/libxl_migration.h
++++ libvirt-8.10.0/src/libxl/libxl_migration.h
 @@ -35,6 +35,9 @@
      VIR_MIGRATE_PARAM_URI,              VIR_TYPED_PARAM_STRING, \
      VIR_MIGRATE_PARAM_DEST_NAME,        VIR_TYPED_PARAM_STRING, \
@@ -330,10 +330,10 @@ Index: libvirt-8.9.0/src/libxl/libxl_migration.h
  
  virDomainPtr
  libxlDomainMigrationDstFinish(virConnectPtr dconn,
-Index: libvirt-8.9.0/tools/virsh-domain.c
+Index: libvirt-8.10.0/tools/virsh-domain.c
 ===================================================================
---- libvirt-8.9.0.orig/tools/virsh-domain.c
-+++ libvirt-8.9.0/tools/virsh-domain.c
+--- libvirt-8.10.0.orig/tools/virsh-domain.c
++++ libvirt-8.10.0/tools/virsh-domain.c
 @@ -11041,6 +11041,18 @@ static const vshCmdOptDef opts_migrate[]
       .completer = virshCompleteEmpty,
       .help = N_("override the destination host name used for TLS verification")

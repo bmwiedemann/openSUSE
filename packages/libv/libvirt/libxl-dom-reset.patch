@@ -12,10 +12,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/libxl/libxl_driver.c | 58 ++++++++++++++++++++++++++++++++++++++++
  1 file changed, 58 insertions(+)
 
-Index: libvirt-8.9.0/src/libxl/libxl_driver.c
+Index: libvirt-8.10.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-8.9.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-8.9.0/src/libxl/libxl_driver.c
+--- libvirt-8.10.0.orig/src/libxl/libxl_driver.c
++++ libvirt-8.10.0/src/libxl/libxl_driver.c
 @@ -1355,6 +1355,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
  }
  
