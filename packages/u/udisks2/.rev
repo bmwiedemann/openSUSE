@@ -440,4 +440,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>1036406</requestid>
   </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>727ad386a543b3cbc0b40db7b325c7f1</srcmd5>
+    <version>2.9.4</version>
+    <time>1670430822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040240</requestid>
+  </revision>
 </revisionlist>

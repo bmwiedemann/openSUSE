@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 22 08:21:22 UTC 2022 - Thomas Blume <thomas.blume@suse.com>
+
+- avoid wakening spun-down disks on unrelated events (bsc#1120608)
+  * add:
+    0001-udisksata-Move-the-low-level-PM-state-call.patch
+    0001-udiskslinuxfilesystem-Make-the-size-property-retriev.patch
+    0001-udiskslinuxprovider-Only-update-related-objects-on-u.patch
+
+-------------------------------------------------------------------
 Wed Nov 16 08:14:50 UTC 2022 - Thomas Blume <thomas.blume@suse.com>
 
 - fix crash during shutdown (bsc#1205371)

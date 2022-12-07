@@ -33,6 +33,9 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 Patch0:         harden_udisks2-zram-setup@.service.patch
 Patch1:         harden_udisks2.service.patch
 Patch2:         0001-udiskslinuxmountoptions-Do-not-free-static-daemon-re.patch
+Patch3:         0001-udisksata-Move-the-low-level-PM-state-call.patch
+Patch4:         0001-udiskslinuxfilesystem-Make-the-size-property-retriev.patch
+Patch5:         0001-udiskslinuxprovider-Only-update-related-objects-on-u.patch
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2
