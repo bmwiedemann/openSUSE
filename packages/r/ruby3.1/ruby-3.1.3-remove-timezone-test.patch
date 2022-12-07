@@ -1,0 +1,40 @@
+commit d35008d3d5438de8e1f78c40e5c672ee9983f29a
+Author: Stephan Kulow <coolo@suse.de>
+Date:   Tue Dec 6 12:35:26 2022 +0100
+
+    Remove timezone test case relying on the exact timezone data
+    
+    The exact hour of the DST switch for Singapore changed between 2022f and
+    2022g updates of the timezone database.
+    
+    See https://bugs.ruby-lang.org/issues/19187 and
+    http://mm.icann.org/pipermail/tz-announce/2022-November/000076.html
+
+diff --git a/test/ruby/test_time_tz.rb b/test/ruby/test_time_tz.rb
+index 6fdb95bafe..2b0ec9c8a4 100644
+--- a/test/ruby/test_time_tz.rb
++++ b/test/ruby/test_time_tz.rb
+@@ -138,15 +138,6 @@ def test_america_managua
+     }
+   end
+ 
+-  def test_asia_singapore
+-    with_tz(tz="Asia/Singapore") {
+-      assert_time_constructor(tz, "1981-12-31 23:59:59 +0730", :local, [1981,12,31,23,59,59])
+-      assert_time_constructor(tz, "1982-01-01 00:30:00 +0800", :local, [1982,1,1,0,0,0])
+-      assert_time_constructor(tz, "1982-01-01 00:59:59 +0800", :local, [1982,1,1,0,29,59])
+-      assert_time_constructor(tz, "1982-01-01 00:30:00 +0800", :local, [1982,1,1,0,30,0])
+-    }
+-  end
+-
+   def test_asia_tokyo
+     with_tz(tz="Asia/Tokyo") {
+       h = CORRECT_TOKYO_DST_1951 ? 0 : 2
+@@ -450,7 +441,6 @@ def self.gen_zdump_test(data)
+ America/Managua  Wed Jan  1 04:59:59 1997 UTC = Tue Dec 31 23:59:59 1996 EST isdst=0 gmtoff=-18000
+ America/Managua  Wed Jan  1 05:00:00 1997 UTC = Tue Dec 31 23:00:00 1996 CST isdst=0 gmtoff=-21600
+ Asia/Singapore  Sun Aug  8 16:30:00 1965 UTC = Mon Aug  9 00:00:00 1965 SGT isdst=0 gmtoff=27000
+-Asia/Singapore  Thu Dec 31 16:29:59 1981 UTC = Thu Dec 31 23:59:59 1981 SGT isdst=0 gmtoff=27000
+ Asia/Singapore  Thu Dec 31 16:30:00 1981 UTC = Fri Jan  1 00:30:00 1982 SGT isdst=0 gmtoff=28800
+ End
+   gen_zdump_test CORRECT_TOKYO_DST_1951 ? <<'End' + (CORRECT_TOKYO_DST_1951 < "2018f" ? <<'2018e' : <<'2018f') : <<'End'

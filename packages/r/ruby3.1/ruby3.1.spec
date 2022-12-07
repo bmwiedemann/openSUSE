@@ -48,7 +48,7 @@ Release:        0
 # keep in sync with macro file!
 %global rb_ver  %{api_version}
 %global rb_arch %(echo %{_target_cpu}-linux-gnu | sed -e "s/ppc/powerpc/")
-%global rb_arch_short %(echo %{_target_cpu}-linux | sed -e "s/ppc/powerpc/ ; s/i[0-9]86/x86/")
+%global rb_arch_short %(echo %{_target_cpu}-linux-gnu | sed -e "s/ppc/powerpc/ ; s/i[0-9]86/x86/")
 %global rb_libdir                         %{_libdir}/ruby/%{rb_ver}/
 %global rb_archdir                        %{_libdir}/ruby/%{rb_ver}/%{rb_arch}
 %global rb_extdir                         %{_libdir}/ruby/gems/%{rb_ver}/extensions/
@@ -88,6 +88,7 @@ Source4:        %{rb_soname}-default.macros
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
 Patch:          use-pie.patch
+Patch1:         ruby-3.1.3-remove-timezone-test.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang
