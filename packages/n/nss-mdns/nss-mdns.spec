@@ -1,7 +1,7 @@
 #
 # spec file for package nss-mdns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nss-mdns
-Version:        0.14.1
+Version:        0.15.1
 Release:        0
 Summary:        Host Name Resolution Via Multicast DNS (Zeroconf) for glibc
 License:        LGPL-2.1-or-later

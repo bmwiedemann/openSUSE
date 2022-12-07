@@ -196,4 +196,16 @@
   /etc/nsswitch.conf doesn't exist yet (forwarded request 807368 from Andreas_Schwab)</comment>
     <requestid>807577</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7d03bc0512417f9212c672502d4ec7c8</srcmd5>
+    <version>0.15.1</version>
+    <time>1670430814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.1:
+  + Updated README.md for clarity
+  + The return of BSD support!
+  + Support for `AVAHI_SOCKET` in `/run` (instead of legacy
+    `/var/run`).</comment>
+    <requestid>1040189</requestid>
+  </revision>
 </revisionlist>
