@@ -3,7 +3,7 @@
     <param name="url">https://github.com/alerque/cldr-lua</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">51e4760838c0a83ef1a76d0a0fb2e9f964069a50</param>
+    <param name="revision">4602a7859535ca198ddfaba73a02f9bce3e81025</param>
     <param name="versionrewrite-pattern">v(\d+.\d+.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

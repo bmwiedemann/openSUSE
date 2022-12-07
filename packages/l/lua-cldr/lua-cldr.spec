@@ -20,18 +20,15 @@
 %define mod_name cldr
 %define rock_version dev-0
 
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Unicode CLDR data and Lua interface
 License:        MIT AND Unicode-TOU
 Group:          Development/Languages/Other
 URL:            https://github.com/alerque/cldr-lua
 Source0:        %{mod_name}-lua-%{version}.tar.xz
-# License for data from CLDR 41
-# https://github.com/unicode-org/cldr/blob/180629dd13d7cc11ac5e5b930206ac4b8d2d49cd/unicode-license.txt
-Source1:        unicode-license.txt
-BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-penlight
 %lua_provides
 Requires:       %{flavor}
@@ -49,17 +46,19 @@ Unicode CLDR (Common Locale Data Repository) data and Lua interface.
 The Unicode CLDR provides key building blocks for software to support
 the world's languages, with the largest and most extensive standard
 repository of locale data available.
+
 %prep
 %autosetup -n %{mod_name}-lua-%{version}
-cp %{SOURCE1} .
+
 %build
 %luarocks_build "%{mod_name}-%{rock_version}.rockspec"
+
 %install
 %luarocks_install *.rock
 
 %files
 %license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE
-%license unicode-license.txt
+%license %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc/LICENSE-Unicode
 %docdir %{luarocks_treedir}/%{mod_name}/%{rock_version}/doc
 %{lua_noarchdir}/%{mod_name}
 %{luarocks_treedir}/%{mod_name}

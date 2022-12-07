@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 18:45:04 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.3.0:
+ * Refresh data based on Unicode CLDR 42
+ * Tarball now has a copy of the Unicode license covering bundled data
+
+-------------------------------------------------------------------
 Thu Aug 25 02:27:13 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - initial commit
