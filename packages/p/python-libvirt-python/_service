@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">libvirt-python</param>
-    <param name="revision">v8.9.0</param>
+    <param name="revision">v8.10.0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/libvirt/libvirt-python.git</param>
