@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:46:05 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.4
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * constify a couple more function arguments
+  * Mark global variables as static
+  * Fix -Wshorten-64-to-32 warnings from clang
+  * Fix -Wsign-conversion warning from clang
+  * Reduce number of strcmp calls to check directory names for revision control
+  * Use memmove instead of strcpy for overlapping strings
+  * Use strlcat and strlcpy if available
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Sun May 16 08:33:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 
