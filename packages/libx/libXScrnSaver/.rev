@@ -91,4 +91,19 @@
   * supersedes U_libXScrnSaver_copy_root_field.patch</comment>
     <requestid>621312</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b18cccb0787b753a3fe5a351ee95aff0</srcmd5>
+    <version>1.2.4</version>
+    <time>1670430819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Whitespace fixes
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Handle implicit conversion warnings from clang</comment>
+    <requestid>1040223</requestid>
+  </revision>
 </revisionlist>
