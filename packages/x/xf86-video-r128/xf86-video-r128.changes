@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  4 23:02:18 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 6.12.1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * R128RAMRec: constify name pointer
+  * Mark DriverRec exported in r128_probe.h to match r128_probe.c
+
+-------------------------------------------------------------------
 Wed Jan  6 13:51:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.12.0:

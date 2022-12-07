@@ -206,4 +206,19 @@
     <comment></comment>
     <requestid>860767</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8e0e0aa81f061ce08a64cf9e92d97fa8</srcmd5>
+    <version>6.12.1</version>
+    <time>1670430805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.12.1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * R128RAMRec: constify name pointer
+  * Mark DriverRec exported in r128_probe.h to match r128_probe.c</comment>
+    <requestid>1040104</requestid>
+  </revision>
 </revisionlist>

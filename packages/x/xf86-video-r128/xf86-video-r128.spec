@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-r128
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xf86-video-r128
-Version:        6.12.0
+Version:        6.12.1
 Release:        0
 Summary:        ATI Rage 128 video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 # https://lists.x.org/archives/xorg-devel/2018-June/057208.html
 BuildRequires:  Mesa-devel
 BuildRequires:  pkg-config
