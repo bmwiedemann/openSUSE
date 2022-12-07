@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 26 20:48:55 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix boo#1204320
+  - do no longer exclude %{ansible_python_sitelib}/ansible_test
+  - create subpackage for ansible-test
+  - remove Conflicts for ansible-test
+
+-------------------------------------------------------------------
 Fri Nov 25 07:03:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - rework spec file to define %ansible_python version, which is the

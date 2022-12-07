@@ -20,11 +20,13 @@
 # Leap15, SLES15
 %define pythons python310
 %define ansible_python python310
+%define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
 %else
 # Tumbleweed
 %define pythons python3
 %define ansible_python python3
+%define ansible_python_executable python3
 %define ansible_python_sitelib %python3_sitelib
 %endif
 
@@ -40,7 +42,6 @@ BuildArch:      noarch
 # cannot be installed with ansible < 3 or ansible-base
 Conflicts:      ansible < 3
 Conflicts:      ansible-base
-Conflicts:      ansible-test
 
 BuildRequires:  %{ansible_python}-base >= 3.8
 BuildRequires:  %{ansible_python}-setuptools
@@ -70,6 +71,22 @@ configuration management, application deployment, cloud provisioning,
 ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex
 changes like zero-downtime rolling updates with load balancers easy. More information on the Ansible `website <https://ansible.com/>`_.
 
+%package -n ansible-test
+Summary:        Tool for testing ansible plugin and module code
+Requires:       %{name} = %{version}
+BuildRequires:  %{ansible_python}-virtualenv
+Requires:       %{ansible_python}-virtualenv
+
+%description -n ansible-test
+This package installs the ansible-test command for testing modules and plugins
+developed for ansible.
+
+Ansible is a radically simple model-driven configuration management, multi-node
+deployment, and remote task execution system. Ansible works over SSH and does
+not require any software or daemons to be installed on remote nodes. Extension
+modules can be written in any language and are transferred to managed machines
+automatically.
+
 %prep
 %setup -q -n ansible-core-%{version}
 
@@ -80,6 +97,10 @@ done
 # Replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly.
 find ./ -type f -exec \
     sed -i '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} \;
+
+# Replace all #!/usr/bin/python lines to use %{ansible_python_executable} directly.
+find ./ -type f -exec \
+    sed -i '1s|^#!%{_bindir}/python$|#!%{_bindir}/%{ansible_python_executable}|' {} \;
 
 %build
 %python_build
@@ -158,12 +179,9 @@ cp -pr docs/docsite/rst .
 %{_bindir}/ansible-inventory
 %{_bindir}/ansible-playbook
 %{_bindir}/ansible-pull
-%{_bindir}/ansible-test
 %{_bindir}/ansible-vault
 %{ansible_python_sitelib}/ansible
 %{ansible_python_sitelib}/ansible_core-%{version}*-info
-
-%exclude %{ansible_python_sitelib}/ansible_test
 
 %{_mandir}/man1/ansible.1%{?ext_man}*
 %{_mandir}/man1/ansible-config.1%{?ext_man}*
@@ -178,5 +196,9 @@ cp -pr docs/docsite/rst .
 %config(noreplace) %{_sysconfdir}/ansible/ansible.cfg
 %config(noreplace) %{_sysconfdir}/ansible/hosts
 %{_datadir}/ansible/
+
+%files -n ansible-test
+%{_bindir}/ansible-test
+%{ansible_python_sitelib}/ansible_test
 
 %changelog
