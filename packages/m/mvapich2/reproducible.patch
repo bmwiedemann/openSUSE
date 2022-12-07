@@ -13,6 +13,8 @@ Date:   Mon Mar 25 11:12:56 2019 +0100
     and other output files varied between builds.
     
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+    
+    Also remove any unreproducible timestamps from generated files.
 
 diff --git maint/extractcvars.in maint/extractcvars.in
 index b627a6f8d937..879de7bf6d5a 100755
@@ -23,7 +25,7 @@ index b627a6f8d937..879de7bf6d5a 100755
  print "Cvars include :\n".Dumper(@cvars)."\n" if $debug;
  
 -my $run_timestamp = localtime();
-+my $run_timestamp = "openSUSE no date";
++my $run_timestamp = localtime($ENV{"SOURCE_DATE_EPOCH"} || time);
  my $uc_ns = uc($ns);
  
  # Setup output files

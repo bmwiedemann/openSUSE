@@ -1,11 +1,11 @@
 <constraints>
   <hardware>
-    <processors>8</processors>
+    <processors>4</processors>
     <disk>
-      <size unit="G">10</size>
+      <size unit="G">4</size>
     </disk>
-    <physicalmemory>
-      <size unit="G">16</size>
-    </physicalmemory>
+    <memory>
+      <size unit="G">6</size>
+    </memory>
   </hardware>
 </constraints>

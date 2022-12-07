@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  5 21:11:29 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reduce constraints to match the actual requirement. Exaggerating
+  the requirements hurts both this package (time until build can
+  start) as well as other OBS users (blocking large workers
+  without need).
+- Use a reproducible timestamp instead of removing it altogether.
+
+-------------------------------------------------------------------
 Mon Nov 28 08:30:49 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update reproducible.patch to remove timestamp generated at compilation time
