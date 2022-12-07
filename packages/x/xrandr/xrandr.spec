@@ -1,7 +1,7 @@
 #
 # spec file for package xrandr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xrandr
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Primitive command line interface to RandR extension
 License:        MIT

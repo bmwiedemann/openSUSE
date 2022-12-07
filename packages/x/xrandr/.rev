@@ -143,4 +143,21 @@
     <comment></comment>
     <requestid>879189</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed7cbece0173a35b342523db3b6ae05b</srcmd5>
+    <version>1.5.2</version>
+    <time>1670430797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.2
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reductions as suggested by cppcheck
+  * Fix a -Wsign-compare warning
+  * Remove unused macros left over from original RandR 1.2 code
+  * Remove unused definition of rectangle_t
+  * Constify array argument to find_last_non_clamped()
+- refreshed xrandr-print-outputs-per-provider.patch</comment>
+    <requestid>1040097</requestid>
+  </revision>
 </revisionlist>

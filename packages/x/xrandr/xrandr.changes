@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  4 22:32:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.2
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reductions as suggested by cppcheck
+  * Fix a -Wsign-compare warning
+  * Remove unused macros left over from original RandR 1.2 code
+  * Remove unused definition of rectangle_t
+  * Constify array argument to find_last_non_clamped()
+- refreshed xrandr-print-outputs-per-provider.patch
+
+-------------------------------------------------------------------
 Mon Mar 15 12:07:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file (move license to licensedir) 

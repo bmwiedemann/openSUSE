@@ -1,8 +1,8 @@
-Index: xrandr-1.5.0/xrandr.c
+Index: xrandr-1.5.2/xrandr.c
 ===================================================================
---- xrandr-1.5.0.orig/xrandr.c
-+++ xrandr-1.5.0/xrandr.c
-@@ -2635,6 +2635,53 @@ get_monitors(Bool get_active)
+--- xrandr-1.5.2.orig/xrandr.c
++++ xrandr-1.5.2/xrandr.c
+@@ -2584,6 +2584,53 @@ get_monitors(Bool get_active)
      monitors->monitors = m;
  }
  
@@ -56,13 +56,11 @@ Index: xrandr-1.5.0/xrandr.c
  int
  main (int argc, char **argv)
  {
-@@ -3924,35 +3971,8 @@ main (int argc, char **argv)
+@@ -3906,31 +3953,8 @@ main (int argc, char **argv)
  	}
  	exit (0);
      }
 -    if (list_providers) {
--	int k;
--
 -	if (!has_1_4) {
 -	    printf ("RandR 1.4 not supported\n");
 -	    exit (0);
@@ -72,16 +70,14 @@ Index: xrandr-1.5.0/xrandr.c
 -	get_providers ();
 -
 -	if (providers) {
--	    int j;
--
 -	    printf("Providers: number : %d\n", num_providers);
 -
--	    for (j = 0; j < num_providers; j++) {
+-	    for (int j = 0; j < num_providers; j++) {
 -		provider_t *provider = &providers[j];
 -		XRRProviderInfo *info = provider->info;
 -
 -		printf("Provider %d: id: 0x%x cap: 0x%x", j, (int)provider->provider.xid, info->capabilities);
--		for (k = 0; k < 4; k++)
+-		for (int k = 0; k < 4; k++)
 -			if (info->capabilities & (1 << k))
 -				printf(", %s", capability_name(1<<k));
 -
@@ -90,7 +86,7 @@ Index: xrandr-1.5.0/xrandr.c
 -	}
 -    }
 +    if (list_providers)
-+	print_providers (current);
++       print_providers (current);
      if (list_monitors || list_active_monitors) {
  
  	if (!has_1_5) {
