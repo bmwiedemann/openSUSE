@@ -17,7 +17,7 @@
 
 
 Name:           python-poetry-core
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Python poetry core utilities
 License:        MIT
