@@ -75,4 +75,25 @@
       build.sh / build.bat scripts (forwarded request 1030153 from iznogood)</comment>
     <requestid>1030245</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>38e8cd62c61a3421716b07d7d8d5e0a2</srcmd5>
+    <version>1.4.0</version>
+    <time>1670430851</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Adopted the 6L / 32-picture mini-GOP configuraion as default and
+    adjusted MD feature levels accordingly yielding higher compression
+    efficiency gains
+  * Update the TPL model to account for the larger mini-gop size
+  * Re-tune presets M0-M12 using the gained coding efficiency for improved
+    quality vs cycles tradeoffs
+  * Allow duplicate commandline parameters to be parsed and take into
+    consideration the latter to allow AWCY integration
+  * Build, Cleanup and Documentation
+  * Make include and lib paths friendly to abs and rel paths
+  * Update preset and API documentation
+  * Various functional bug fixes
+  * Remove manual prediction structure support (forwarded request 1040418 from dirkmueller)</comment>
+    <requestid>1040439</requestid>
+  </revision>
 </revisionlist>
