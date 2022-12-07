@@ -1,6 +1,7 @@
 #
 # spec file for package icmptunnel
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,37 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define realver 1.0.0-alpha
 Name:           icmptunnel
-Version:        1.0.0~alpha
+Version:        1.0.0
 Release:        0
 Summary:        A tunnel for wrapping IP traffic in ICMP
 License:        MIT
 Group:          Productivity/Networking/Security
 URL:            https://dhavalkapil.com/icmptunnel/
-Source:         https://github.com/DhavalKapil/icmptunnel/archive/%{realver}.tar.gz#/%{name}-%{realver}.tar.gz
-Patch0:         0001-Typo-fix.patch
-Patch1:         0002-Change-the-MTU-size-of-tunnel-23.patch
-Patch2:         0003-Free-the-unfree-heap.patch
-Patch3:         icmptunnel-obey-cflags.patch
+Source:         https://github.com/DhavalKapil/icmptunnel/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         icmptunnel-obey-cflags.patch
 
 %description
 This program transparently tunnels IP traffic through ICMP echo and reply packets.
 
 %prep
-%setup -q -n %{name}-%{realver}
+%setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -D -m 0755 icmptunnel %{buildroot}%{_bindir}/icmptunnel

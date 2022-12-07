@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:27:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * no real modification as everything was included as patches before
+- drop 0003-Free-the-unfree-heap.patch,
+  0001-Typo-fix.patch,
+  0002-Change-the-MTU-size-of-tunnel-23.patch: upstream
+
+-------------------------------------------------------------------
 Fri Mar 15 19:41:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Revert changes to realver to get back a working Source URL.
