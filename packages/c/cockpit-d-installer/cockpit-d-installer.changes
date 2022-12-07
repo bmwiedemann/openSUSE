@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Mon Dec  5 13:18:37 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.6.0
+
+-------------------------------------------------------------------
+Fri Dec  2 15:46:46 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for password confirmation
+  (related to gh#yast/d-installer#297)
+
+-------------------------------------------------------------------
+Fri Dec  2 13:41:41 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Add new UI for storage proposal offering LVM and encyption
+  options (gh#yast/d-installer#321).
+
+-------------------------------------------------------------------
+Fri Dec 2 10:48:14 UTC 2022 - Josef Reidinger <jreidinger@suse.cz>
+
+- Add support for adapting the configuration depending on the
+  architecture (gh#yast/d-installer#339)
+
+-------------------------------------------------------------------
+Wed Nov 30 08:16:42 UTC 2022 - Knut Alejandro Anderssen González <kanderssen@suse.de>
+
+- Add validation for the first user creation (gh#yast/d-installer#337)
+
+-------------------------------------------------------------------
+Fri Nov 18 16:27:26 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.5.0:
+  * Add support for basic network configuration, based on
+    NetworkManager (gh#yast/d-installer#260, gh#yast/d-installer#292).
+  * Improve the usability of the LUKS activation dialog
+    (gh#yast/d-installer#253).
+  * Prevent starting the installation with incomplete or wrong
+    configuration (gh#yast/d-installer#299).
+
+-------------------------------------------------------------------
+Thu Jul 28 08:17:06 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4.2:
+  * Connect to the org.opensuse.DInstaller.Language service
+    (related to gh#yast/d-installer#240).
+
+-------------------------------------------------------------------
+Tue Jul 26 10:04:53 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4.1:
+  * Fix several user interface-related issues (gh#yast/d-installer#230):
+    - Avoid reloading the page when pushing the enter key.
+    - Always display the D-Bus error page when the connection gets
+      broken. Reload the UI again when the D-Bus connection is
+      working again.
+    - Update the product selection page when the product is
+      modified in background (e.g., using the CLI).
+    - Update the first user settings when they are changed in
+      background.
+    - Refresh the storage section when the settings are modified
+      in background.
+    - If the storage proposal fails, display the error even after
+      reloading the page.
+
+-------------------------------------------------------------------
+Fri Jul 15 07:32:48 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.4:
+  * Support for installing multiple products
+    (gh#yast/d-installer#211).
+  * Adapt to the new status/progress reporting API
+    (gh#yast/d-installer#219).
+  * Add a better layout mechanism (gh#yast/d-installer#216).
+
+-------------------------------------------------------------------
+Mon Jun 13 10:10:03 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.3:
+  * Refresh the web UI when a selected option changes (e.g., through
+    the CLI) (gh#yast/d-installer#180).
+  * Remove the "Restart Installation" button
+    (gh#yast/d-installer#167 and gh#yast/d-installer#174).
+  * Add a task to generate the JSDoc-based documentation
+    (gh#yast/d-installer#186 and gh#yast/d-installer#191).
+
+-------------------------------------------------------------------
+Tue May 17 10:58:51 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.2:
+  * Turn the web UI into a Cockpit module (gh#yast/d-installer#127)
+    and drop the authentication code (gh#yast/d-installer#128).
+  * Add basic storage devices activation (gh#yast/d-installer#150).
+  * Fix the behavior of the language selector
+    (gh#yast/d-installer#125).
+  * Add an installation confirmation dialog
+    (gh#yast/d-installer#118) and a reboot button
+    (gh#yast/d-installer#114).
+
+-------------------------------------------------------------------
+Wed Mar 30 07:06:23 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- First release (version 0.1):
+  * Allow setting the language, selecting a product, choosing a disk to
+    install into, setting the root authentication mechanism and creating
+    a first user.
+  * Report installation progress.
+  * Communication with D-Bus through Cockpit's infrastructure.
