@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-patiencediff
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        Python implementation of the patiencediff algorithm
 License:        GPL-2.0-or-later
@@ -52,6 +51,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc AUTHORS README.rst
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/patiencediff
+%{python_sitearch}/patiencediff-%{version}*-info
 
 %changelog

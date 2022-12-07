@@ -48,4 +48,21 @@
     <comment></comment>
     <requestid>1035178</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>48a483001316d99460c3a4ba4208fa75</srcmd5>
+    <version>0.2.8</version>
+    <time>1670430904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.10
+  * Merge pull request #33 from jelmer/release-0.2.10
+    Merge release of 0.2.10
+- Update to version 0.2.9
+  * Merge pull request #32 from jelmer/release-0.2.9
+    Merge release of 0.2.9
+- Update to version 0.2.8 
+  * Merge pull request #31 from jelmer/bump-version
+  * Bump version to 0.2.8
+</comment>
+    <requestid>1040774</requestid>
+  </revision>
 </revisionlist>
