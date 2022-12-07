@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Dec  1 22:33:24 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.0.7
+
+  * Don't rely on the (undocumented) "Destroy" event to remove 
+    destroyed widgets from lists. In this way, the cause of a rare
+    crash is removed.
+  * Better guarantee for the lack of scrollbars in the config page
+    of Kvantum Manager when it's visited for the first time.
+
+-------------------------------------------------------------------
+Wed Nov 23 13:28:16 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- another fixes in naming
+
+-------------------------------------------------------------------
+Wed Nov 23 13:25:34 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Proper naming
+
+-------------------------------------------------------------------
+Wed Nov 23 13:11:33 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update Summary
+
+-------------------------------------------------------------------
+Wed Nov 23 13:00:02 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- fix build Qt6 version for 15.4
+
+-------------------------------------------------------------------
+Wed Nov 23 12:14:53 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- simplify conditions
+
+-------------------------------------------------------------------
+Wed Nov 23 12:06:50 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- use singlespec muiltibuild
+
+-------------------------------------------------------------------
+Tue Nov 22 23:37:16 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- attempt to multibuild
+
+-------------------------------------------------------------------
+Tue Nov 22 23:05:24 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.0.6
+
+  * Added workarounds for Kate's new side-pane and status-bar buttons
+    (which still have wrong style codes).
+  * Silenced the compilation warnings with Qt 6.4.
+
+-------------------------------------------------------------------
 Wed Sep 21 01:57:47 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.0.5

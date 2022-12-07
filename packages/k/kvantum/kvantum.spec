@@ -14,16 +14,30 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-
-Name:           kvantum
-Version:        1.0.5
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
+%if "%{flavor}" == "qt6"
+%define qt6 1
+%define pkg_suffix -qt6
+%define dsc_suffix Qt6
+%endif
+%if "%{flavor}" == "qt5"
+%define qt5 1
+%define pkg_suffix -qt5
+%define dsc_suffix Qt5
+%endif
+Name:           kvantum%{?pkg_suffix}
+Version:        1.0.7
 Release:        0
-Summary:        SVG-based theme engine for Qt5
+Summary:        SVG-based theme engine for Qt5 and Qt6
 License:        GPL-3.0-or-later
+Group:          System/GUI/KDE
 URL:            https://github.com/tsujan/Kvantum
-Source0:        https://github.com/tsujan/Kvantum/archive/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/tsujan/Kvantum/archive/V%{version}.tar.gz#/kvantum-%{version}.tar.gz
 BuildRequires:  cmake
+%if 0%{?qt5}
 BuildRequires:  fdupes
 BuildRequires:  kwindowsystem-devel
 BuildRequires:  libQt5PlatformHeaders-devel
@@ -34,6 +48,16 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+%endif
+%if 0%{?qt6}
+%if 0%{?sle_version} == 150400
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Svg)
+%endif
 
 %description
 Kvantum is an SVG-based theme engine for Qt, tuned to Plasma and LXQt, with an emphasis on elegance, usability and practicality.
@@ -41,54 +65,45 @@ Its homepage is https://github.com/tsujan/Kvantum.
 
 Kvantum also comes with extra themes that can be selected and activated by using Kvantum Manager.
 
-%package qt5
-Summary:        SVG-based theme engine for Qt5
+This package provides Kvantum theme engine for %{dsc_suffix}.
 
-%description qt5
-Kvantum is an SVG-based theme engine for Qt, tuned to Plasma and LXQt, with an emphasis on elegance, usability and practicality.
-Its homepage is https://github.com/tsujan/Kvantum.
-
-Kvantum also comes with extra themes that can be selected and activated by using Kvantum Manager.
-
-This package provides Kvantum theme engine for Qt5.
-
-%package manager
+%package -n kvantum-manager
 Summary:        GUI for installing, selecting and manipulating Kvantum themes
-Requires:       %{name}-qt5 = %{version}
+Requires:       kvantum-qt5 = %{version}
 
-%description manager
+%description -n kvantum-manager
 This package provides configuration manager - GUI appligation for installing, selecting and manipulating Kvantum themes.
 
-%package manager-lang
+%package -n kvantum-manager-lang
 Summary:        Translations for Kvantum manager
-Requires:       %{name}-manager = %{version}
+Requires:       kvantum-manager = %{version}
 BuildArch:      noarch
 
-%description manager-lang
+%description -n kvantum-manager-lang
 
 This package provides translations for Kvantum manager.
 
-%package doc
+%package -n kvantum-doc
 Summary:        Documentation for Kvantum engine
 BuildArch:      noarch
 
-%description doc
+%description -n kvantum-doc
 This package provides instructions on how to change configuration or make new themes for Kvantum engine.
 
-%package themes
+%package -n kvantum-themes
 Summary:        Themes for Kvantum engine
-Requires:       %{name}-qt5 = %{version}
+Requires:       (kvanum-qt5 = %{version} or kvantum-qt6 = %{version})
 BuildArch:      noarch
 
-%description themes
+%description -n kvantum-themes
 
 This package provides extra themes for Kvantum engine.
 
-%package openbox-themes
+%package -n kvantum-openbox-themes
 Summary:        Openbox themes for Kvantum engine
 BuildArch:      noarch
 
-%description openbox-themes
+%description -n kvantum-openbox-themes
 
 This package provides extra Openbox themes for Kvantum engine.
 
@@ -96,23 +111,37 @@ This package provides extra Openbox themes for Kvantum engine.
 %setup -q -n Kvantum-%{version}
 
 %build
+
 pushd Kvantum
+%if 0%{?qt5}
 %cmake
 %cmake_build
+%endif
+%if 0%{?qt6}
+%if 0%{?sle_version} == 150400
+export CXX=g++-10
+%endif
+%cmake -DENABLE_QT5=OFF
+%cmake_build
+%endif
 
 %install
 pushd Kvantum
 %cmake_install
+
+%if 0%{?qt5}
 %fdupes %{buildroot}%{_datadir}/themes
 %suse_update_desktop_file kvantummanager Utility Settings DesktopSettings X-XFCE-SettingsDialog X-XFCE-PersonalSettings X-GNOME-PersonalSettings
+%endif
 
-%files qt5
-%dir %{_libdir}/qt5/plugins/styles
-%{_libdir}/qt5/plugins/styles/*
+%files
+%dir %{_libdir}/%{flavor}/plugins/styles
+%{_libdir}/%{flavor}/plugins/styles/*
 %license Kvantum/COPYING
 %doc Kvantum/README.md
 
-%files manager
+%if 0%{?qt5}
+%files -n kvantum-manager
 %{_bindir}/*
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/scalable
@@ -120,7 +149,7 @@ pushd Kvantum
 %{_datadir}/applications/kvantummanager.desktop
 %{_datadir}/icons/hicolor/scalable/apps/kvantum.svg
 
-%files manager-lang
+%files -n kvantum-manager-lang
 %dir %{_datadir}/kvantummanager
 %dir %{_datadir}/kvantumpreview
 %dir %{_datadir}/kvantummanager/translations
@@ -128,11 +157,11 @@ pushd Kvantum
 %{_datadir}/kvantummanager/translations/*
 %{_datadir}/kvantumpreview/translations/*
 
-%files doc
+%files -n kvantum-doc
 
 %doc Kvantum/doc/*
 
-%files themes
+%files -n kvantum-themes
 %exclude %{_datadir}/kde4/apps/color-schemes/*
 %dir %{_datadir}/color-schemes/
 %dir %{_datadir}/Kvantum
@@ -140,9 +169,10 @@ pushd Kvantum
 %{_datadir}/color-schemes/*
 %{_datadir}/Kvantum/Kv*/*
 
-%files openbox-themes
+%files -n kvantum-openbox-themes
 %dir %{_datadir}/themes/Kv*
 %dir %{_datadir}/themes/Kv*/openbox-3
 %{_datadir}/themes/Kv*/openbox-3/*
+%endif
 
 %changelog
