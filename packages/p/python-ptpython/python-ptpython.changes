@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  6 04:31:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.0.21: 
+  New features:
+  - Make ptipython respect more config changes.
+  (See: https://github.com/prompt-toolkit/ptpython/pull/110 )
+  - Improved performance of `DictionaryCompleter` for slow mappings.
+
+  Fixes:
+  - Call `super()` in `PythonInputFilter`. This will prevent potentially breakage
+  with an upcoming prompt_toolkit change.
+  (See: https://github.com/prompt-toolkit/python-prompt-toolkit/pull/1690 )
+  - Improved type annotations.
+  - Added `py.typed` to the `package_data`.
+
+-------------------------------------------------------------------
 Tue Oct  4 23:22:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.0.20: 2021-09-14

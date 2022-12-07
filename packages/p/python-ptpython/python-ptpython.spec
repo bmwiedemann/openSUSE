@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ptpython
-Version:        3.0.20
+Version:        3.0.21
 Release:        0
 Summary:        Python REPL build on top of prompt_toolkit
 License:        ISC
