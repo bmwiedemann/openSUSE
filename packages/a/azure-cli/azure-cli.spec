@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.42.0
+Version:        2.43.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -98,7 +98,7 @@ Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
 Requires:       python3-azure-mgmt-hdinsight >= 9.0.0
 Requires:       python3-azure-mgmt-imagebuilder >= 1.1.0
 Requires:       python3-azure-mgmt-iotcentral >= 10.0.0b1
-Requires:       python3-azure-mgmt-iothub >= 2.2.0
+Requires:       python3-azure-mgmt-iothub >= 2.3.0
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 1.1.0
 Requires:       python3-azure-mgmt-keyvault >= 10.1.0
 Requires:       python3-azure-mgmt-kusto >= 0.3.0
@@ -114,7 +114,7 @@ Requires:       python3-azure-mgmt-netapp >= 9.0.1
 Requires:       python3-azure-mgmt-network >= 21.0.1
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
-Requires:       python3-azure-mgmt-rdbms >= 10.2.0b3
+Requires:       python3-azure-mgmt-rdbms >= 10.2.0b5
 Requires:       python3-azure-mgmt-recoveryservices >= 2.1.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 5.1.0b1
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.1.0
@@ -129,9 +129,9 @@ Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-servicelinker >= 1.0.0
 Requires:       python3-azure-mgmt-signalr >= 1.1.0
-Requires:       python3-azure-mgmt-sql >= 4.0.0b4
-Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b3
-Requires:       python3-azure-mgmt-storage >= 20.1.0
+Requires:       python3-azure-mgmt-sql >= 4.0.0b5
+Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b4
+Requires:       python3-azure-mgmt-storage >= 21.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       python3-azure-mgmt-web >= 7.0.0
