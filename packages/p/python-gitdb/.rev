@@ -40,4 +40,12 @@
   * Allow smmap 5</comment>
     <requestid>927594</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>976e5e421debd7cc3dc298ac1226ebc3</srcmd5>
+    <version>4.0.10</version>
+    <time>1670430884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040750</requestid>
+  </revision>
 </revisionlist>
