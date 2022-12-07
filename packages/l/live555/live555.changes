@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  2 21:59:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.12.01:
+  - Yet another fix to the previous fix for RTSP-over-HTTP streaming.
+  - The previous version's fix to "RTSPClient" (for RTSP-over-HTTP streaming) was incomplete.
+    This should fix it for real.
+  - Fixed a bug in "RTSPClient" that would cause RTSP-over-HTTP streaming over TLS to
+    sometimes fail.  (Thanks to Johannes Gajdosik for reporting this.)
+  - Fixed a bug that would cause a RTSP server to use an incorrect URL if it accepted connections
+    via TLS, but *without* streaming SRTP. 
+
+-------------------------------------------------------------------
 Tue Nov 22 20:26:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.11.19:
