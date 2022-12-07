@@ -1677,4 +1677,23 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     with error-recovery for a missing font (Debian #1022942). (forwarded request 1036713 from dirkmueller)</comment>
     <requestid>1036787</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>624cb70f974460038a81df3331282862</srcmd5>
+    <version>377</version>
+    <time>1670430813</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 377:
+  * add  control  sequences  for  reporting  the  current  state of the
+    modified   keys   options   (XTQMODKEYS)   and   allowed/disallowed
+    operations   (XTQALLOWED),   (prompted   by  discussion  with  Bram
+    Moolenaar).
+  * amend  modifyOtherKeys  case  2 to distinguish the escape character
+    with  modifiers,  e.g., shift-escape, from a plain escape character
+    (suggested by Bram Moolenaar).
+  * improve  parsing and error-recovery in the case where a list of X11
+    bitmap fonts is given in the -fn and related options.
+  * change  default  for  xftTrackMemUsage to false, because libXft has
+    does not handle certain fonts. (forwarded request 1039839 from dirkmueller)</comment>
+    <requestid>1040169</requestid>
+  </revision>
 </revisionlist>

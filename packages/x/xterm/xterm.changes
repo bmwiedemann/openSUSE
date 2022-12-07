@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  3 16:53:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 377:
+  * add  control  sequences  for  reporting  the  current  state of the
+    modified   keys   options   (XTQMODKEYS)   and   allowed/disallowed
+    operations   (XTQALLOWED),   (prompted   by  discussion  with  Bram
+    Moolenaar).
+  * amend  modifyOtherKeys  case  2 to distinguish the escape character
+    with  modifiers,  e.g., shift-escape, from a plain escape character
+    (suggested by Bram Moolenaar).
+  * improve  parsing and error-recovery in the case where a list of X11
+    bitmap fonts is given in the -fn and related options.
+  * change  default  for  xftTrackMemUsage to false, because libXft has
+    does not handle certain fonts.
+
+-------------------------------------------------------------------
 Fri Nov 18 21:21:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 376:
