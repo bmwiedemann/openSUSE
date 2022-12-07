@@ -88,4 +88,12 @@
   * Add support for python 3.11. PR #1070.</comment>
     <requestid>995145</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>57de8615f8eeedb666a08d4fe9e1d8f5</srcmd5>
+    <version>2.10.0</version>
+    <time>1670430895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040743</requestid>
+  </revision>
 </revisionlist>

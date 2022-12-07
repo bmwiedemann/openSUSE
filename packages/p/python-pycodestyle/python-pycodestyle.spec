@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-pycodestyle
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 Summary:        Python style guide checker
 License:        MIT
