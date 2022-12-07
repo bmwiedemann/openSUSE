@@ -18,15 +18,13 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.46.4
+Version:        3.46.7
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM f06e6e5.patch -- util: Fix interpretation of TryExec desktop entry key
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-terminal/-/commit/f06e6e5.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

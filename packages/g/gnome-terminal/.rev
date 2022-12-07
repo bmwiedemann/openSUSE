@@ -2384,4 +2384,27 @@
     <comment></comment>
     <requestid>1034862</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0bddf8661bf154ec3ff478c8a22b64b9</srcmd5>
+    <version>3.46.7</version>
+    <time>1670430832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.7:
+  * nautilus: Fix macro redefinition warning
+  * screen: Add some missing casts
+  * build: Add define for openbsd
+  * Updated translations.
+
+- Update to version 3.46.6:
+  * prefs: Sink a floating variant
+  * prefs: Use default timeout when debugging
+  * prefs: Reduce default bus timeout
+  * prefs: Fix serialisation format
+  * client: Improve env var filters
+
+- Update to version 3.46.5:
+  * util: Fix interpretation of TryExec desktop entry key
+- Drop f06e6e5.patch: fixed upstream. (forwarded request 1040244 from dimstar)</comment>
+    <requestid>1040318</requestid>
+  </revision>
 </revisionlist>

@@ -5,7 +5,7 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/3.46.4</param>
+    <param name="revision">refs/tags/3.46.7</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 05 11:50:19 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 3.46.7:
+  * nautilus: Fix macro redefinition warning
+  * screen: Add some missing casts
+  * build: Add define for openbsd
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 05 11:49:59 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 3.46.6:
+  * prefs: Sink a floating variant
+  * prefs: Use default timeout when debugging
+  * prefs: Reduce default bus timeout
+  * prefs: Fix serialisation format
+  * client: Improve env var filters
+
+-------------------------------------------------------------------
+Mon Dec 05 11:49:36 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 3.46.5:
+  * util: Fix interpretation of TryExec desktop entry key
+- Drop f06e6e5.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Nov 07 20:02:37 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 3.46.4:
