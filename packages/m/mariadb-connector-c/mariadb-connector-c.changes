@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  5 16:23:21 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to release 3.3.3:
+  https://mariadb.com/kb/en/mariadb-connector-c-333-release-notes/
+  https://mariadb.com/kb/en/mariadb-connector-c-333-changelog/
+
+-------------------------------------------------------------------
 Mon Aug 29 10:35:12 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3.2
+  https://mariadb.com/kb/en/mariadb-connector-c-332-release-notes/
+  https://mariadb.com/kb/en/mariadb-connector-c-332-changelog/
   * Enhanced mysql_close() and other related parts to prevent
     memory leaks when terminating an initiated but unestablished
     connection
