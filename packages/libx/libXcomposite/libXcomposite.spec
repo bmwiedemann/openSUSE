@@ -1,7 +1,7 @@
 #
 # spec file for package libXcomposite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 Name:           libXcomposite
 %define lname	libXcomposite1
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        X11 protocol Composite extension client library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://wiki.freedesktop.org/wiki/Software/CompositeExt
+URL:            http://wiki.freedesktop.org/wiki/Software/CompositeExt
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXcomposite
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXcomposite/
-Source0:        http://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.bz2
+Source0:        http://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool

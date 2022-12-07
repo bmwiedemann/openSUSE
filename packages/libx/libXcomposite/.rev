@@ -94,4 +94,19 @@
   * Update README for gitlab migration</comment>
     <requestid>706095</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>00e68be63fd8ff78fb866d23fc8b5e89</srcmd5>
+    <version>0.4.6</version>
+    <time>1670430807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.6
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Mark two dpy parameters const as suggested by cppcheck
+  * Remove unnecessary casts from malloc() and free() calls
+  * Wrap XComposite*CheckExtension() in do { ... } while(0)
+  * Handle implicit conversion warnings from clang
+  * XCompositeCloseDisplay: Mark codes as unused</comment>
+    <requestid>1040105</requestid>
+  </revision>
 </revisionlist>

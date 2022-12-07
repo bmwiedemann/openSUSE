@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  4 23:06:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.4.6
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Mark two dpy parameters const as suggested by cppcheck
+  * Remove unnecessary casts from malloc() and free() calls
+  * Wrap XComposite*CheckExtension() in do { ... } while(0)
+  * Handle implicit conversion warnings from clang
+  * XCompositeCloseDisplay: Mark codes as unused
+
+-------------------------------------------------------------------
 Tue May 28 14:00:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - marked baselibs.conf as sourcefile in specfile 
