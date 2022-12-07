@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:13:28 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use default depth for Xvnc, no longer enforce depth 16
+  (bsc#1205585)
+- 4.5.11
+
+-------------------------------------------------------------------
 Thu Nov 24 09:24:34 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Fix hash vs keyword arguments in RSpec expectations (bsc#1204871)
