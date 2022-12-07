@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-pdm-pep517%{psuffix}
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Python Development Master
 License:        MIT

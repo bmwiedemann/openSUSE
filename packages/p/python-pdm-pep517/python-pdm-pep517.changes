@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  6 04:14:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.0.6 
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #128
+  * Add setuptools to dev dependencies by @frenzymadness in #131
+  * feat: Honor the metadata_directory passed to build_wheel by @frostming in #132
+
+-------------------------------------------------------------------
 Fri Oct 28 19:49:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.0.5 
