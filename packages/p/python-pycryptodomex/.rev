@@ -379,4 +379,12 @@
   * GH#620: for Crypto.Util.number.getPrime , do not sequentially scan numbers searching for a prime.</comment>
     <requestid>985713</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8987b8217c644da683769f5dffd81ec2</srcmd5>
+    <version>3.16.0</version>
+    <time>1670430894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040741</requestid>
+  </revision>
 </revisionlist>

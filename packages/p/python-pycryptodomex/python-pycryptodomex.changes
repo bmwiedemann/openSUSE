@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:19:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.16.0 
+  New features
+  * Build wheels for musl Linux. Thanks to Ben Raz.
+  Resolved issues
+  * GH#639: ARC4 now also works with ‘keys’ as short as 8 bits.
+  * GH#669: fix segfaults when running in a manylinux2010 i686 image.
+
+-------------------------------------------------------------------
 Tue Jun 28 20:38:31 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - update to 3.15.0:
