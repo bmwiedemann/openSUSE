@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  6 10:37:08 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix text rendering on 16bit X11 surfaces (boo#1205585):
+  * 0001-Fix-wrong-to-linear-conversion.patch
+
+-------------------------------------------------------------------
 Thu Nov  3 08:50:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde167, rebased upstream:
