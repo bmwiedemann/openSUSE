@@ -1,0 +1,49 @@
+From 41965e194599af42e77bcf2462bd9c0db2823b16 Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 1 Nov 2022 11:06:03 -0400
+Subject: [PATCH] ieee1275: Increase initially allocated heap from 1/4 to 1/3
+
+The patch 'ieee1275: claim more memory' (commit 910676645d) states:
+
+"[...] This leaves us 381MB. 1/4 of 381MB is ~95MB. That should be enough
+to verify a 30MB vmlinux and should eave plenty of space to load Linux
+and the initrd."
+
+As it turns out the memory limit of ~95MB is insufficient for the FADUMP
+use case as described here:
+
+https://bugzilla.redhat.com/show_bug.cgi?id=2139000#c1
+
+Adjust the current memory limitation by increasing the allocation to
+1/3 of 381 MB, so ~127MB.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+---
+ grub-core/kern/ieee1275/init.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
+index 0bacc2348..f75a36493 100644
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -47,7 +47,7 @@
+ #include <grub/lockdown.h>
+ 
+ /* The maximum heap size we're going to claim. Not used by sparc.
+-   We allocate 1/4 of the available memory under 4G, up to this limit. */
++   We allocate 1/3 of the available memory under 4G, up to this limit. */
+ #ifdef __i386__
+ #define HEAP_MAX_SIZE		(unsigned long) (64 * 1024 * 1024)
+ #else // __powerpc__
+@@ -415,7 +415,7 @@ grub_claim_heap (void)
+ 
+   grub_machine_mmap_iterate (heap_size, &total);
+ 
+-  total = total / 4;
++  total = total / 3;
+   if (total > HEAP_MAX_SIZE)
+     total = HEAP_MAX_SIZE;
+ 
+-- 
+2.35.3
+

@@ -478,6 +478,7 @@ Patch948:       0011-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
 Patch949:       0012-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
 Patch950:       0001-fs-btrfs-Use-full-btrfs-bootloader-area.patch
 Patch951:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
+Patch952:       0001-ieee1275-Increase-initially-allocated-heap-from-1-4-.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -763,7 +764,7 @@ CD_MODULES="${CD_MODULES} linux"
 
 GRUB_MODULES="${CD_MODULES} ${FS_MODULES} ${PXE_MODULES} ${CRYPTO_MODULES} mdraid09 mdraid1x lvm serial"
 %ifarch ppc ppc64 ppc64le
-GRUB_MODULES="${GRUB_MODULES} appendedsig memdisk tar regexp prep_loadenv"
+GRUB_MODULES="${GRUB_MODULES} appendedsig memdisk tar regexp prep_loadenv tpm"
 %endif
 
 %ifarch %{efi}

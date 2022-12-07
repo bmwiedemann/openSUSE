@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 08:47:06 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Add tpm to signed grub.elf image (PED-1990) (bsc#1205912) 
+- Increase initial heap size from 1/4 to 1/3
+  * 0001-ieee1275-Increase-initially-allocated-heap-from-1-4-.patch
+
+-------------------------------------------------------------------
 Tue Nov 22 08:11:17 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Make full utilization of btrfs bootloader area (bsc#1161823)
