@@ -44,6 +44,7 @@ BuildArch:      i686
 
 %bcond_without pipewire
 
+%bcond_without swiftshader
 %ifarch %ix86 x86_64 %arm
 #Use subzero as swiftshader backend instead of LLVM
 %bcond_without subzero
@@ -51,13 +52,10 @@ BuildArch:      i686
 %bcond_with subzero
 %endif
 
+#the QT ui is currently borderline unusable (too small fonts in menu and wrong colors)
+%bcond_with qt
 
-
-%ifarch x86_64 %ix86 aarch64
 %bcond_without vaapi
-%else
-%bcond_with vaapi
-%endif
 
 %if %{with vaapi}
 #vaapi still requires bundled libvpx
@@ -164,6 +162,7 @@ BuildArch:      i686
 %else
 %bcond_with system_yuv
 %endif
+
 
 
 
@@ -361,6 +360,7 @@ Patch3091:      vector_math_impl-Wstrict-aliasing.patch
 Patch3092:      webgl_image_conversion-Wstrict-aliasing.patch
 Patch3093:      xr_cube_map-Wstrict-aliasing.patch
 Patch3094:      static_constructors-Wstrict-aliasing.patch
+Patch3095:      CVE-2022-43548.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -419,7 +419,7 @@ BuildRequires:  llhttp-devel < 8
 %if %{with lld}
 BuildRequires:  lld
 %endif
-%if %{without subzero}
+%if %{with swiftshader} && %{without subzero}
 BuildRequires:  llvm-devel
 %endif
 BuildRequires:  memory-constraints
@@ -580,6 +580,10 @@ BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(pangocairo)
+%if %{with qt}
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
 BuildRequires:  pkgconfig(re2)
 %if %{with system_spirv}
 %if 0%{?suse_version}
@@ -1045,10 +1049,15 @@ myconf_gn+=" host_os=\"linux\""
 myconf_gn+=" is_debug=false"
 myconf_gn+=" dcheck_always_on=false"
 myconf_gn+=" enable_nacl=false"
+%if %{with swiftshader}
+myconf_gn+=" enable_swiftshader=true"
 %if %{with subzero}
 myconf_gn+=" use_swiftshader_with_subzero=true"
 %else
 myconf_gn+=" use_swiftshader_with_subzero=false"
+%endif
+%else
+myconf_gn+=" enable_swiftshader=false"
 %endif
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
@@ -1152,6 +1161,7 @@ myconf_gn+=" use_dbus=true"
 myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" icu_use_data_file=false"
 myconf_gn+=" media_use_openh264=false"
+myconf_gn+=" use_libgav1_parser=true"
 myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
@@ -1223,8 +1233,9 @@ myconf_gn+=" enable_libaom=false"
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 %endif
 
-
-
+%if %{with qt}
+myconf_gn+=" use_qt=true"
+%endif
 
 # Do not build WebGPU support. It is huge and not used by ANY known apps (we would know if it was — it's hidden behind an experimental flag).
 myconf_gn+=" use_dawn=false"
@@ -1276,8 +1287,9 @@ install -pm 0755 electron                -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 chrome_crashpad_handler -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 libEGL.so               -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 libGLESv2.so            -t %{buildroot}%{_libdir}/electron/
-install -pm 0755 libvk_swiftshader.so    -t %{buildroot}%{_libdir}/electron/
-install -pm 0644 vk_swiftshader_icd.json -t %{buildroot}%{_libdir}/electron/
+install -pm 0755 libqt5_shim.so          -t %{buildroot}%{_libdir}/electron/ ||true
+install -pm 0755 libvk_swiftshader.so    -t %{buildroot}%{_libdir}/electron/ ||true
+install -pm 0644 vk_swiftshader_icd.json -t %{buildroot}%{_libdir}/electron/ ||true
 install -pm 0644 version                 -t %{buildroot}%{_libdir}/electron/
 popd
 

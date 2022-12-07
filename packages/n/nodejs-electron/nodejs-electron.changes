@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 17:20:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add backported CVE-2022-43548.patch
+  * inspector: DNS rebinding in --inspect via invalid octal IP
+    (bsc#1205119, CVE-2022-43548)
+- Fix vaapi build error in the arm port and reenable vaapi.
+
+-------------------------------------------------------------------
 Fri Dec  2 23:40:14 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.3.2
   * Updated Chromium to 106.0.5249.199

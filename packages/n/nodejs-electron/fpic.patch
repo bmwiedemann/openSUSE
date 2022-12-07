@@ -85,3 +85,23 @@ Use -fpic for code which goes only in dlls (gives smaller code),
    sources = [
      "compression_utils_portable.cc",
      "compression_utils_portable.h",
+--- src/ui/qt/BUILD.gn.old	2022-12-02 23:49:17.792117400 +0100
++++ src/ui/qt/BUILD.gn	2022-12-04 14:32:48.407196100 +0100
+@@ -43,6 +43,8 @@
+   # target instead.
+   public = [ "qt_interface.h" ]
+   sources = [ "qt_interface.cc" ]
++  cflags = ["-fpic", "-fno-semantic-interposition"]
++  asmflags = ["-fpic", "-fno-semantic-interposition"]
+ }
+ 
+ shared_library("qt5_shim") {
+@@ -76,6 +78,8 @@
+     # 3. Manually add copyright header.
+     "qt_shim_moc.cc",
+   ]
++  cflags = ["-fpic", "-fno-semantic-interposition"]
++  asmflags = ["-fpic", "-fno-semantic-interposition"]
+ }
+ 
+ component("qt") {
