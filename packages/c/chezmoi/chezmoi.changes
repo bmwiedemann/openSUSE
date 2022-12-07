@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 05 09:46:15 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.27.3:
+  * fix: Respect config file umask setting when creating entries
+  * fix: Don't attempt to run empty scripts
+  * chore: Update dependencies
+  * docs: Update stat.md to reference os.Stat
+
+-------------------------------------------------------------------
 Fri Nov 25 17:19:34 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.27.2:
