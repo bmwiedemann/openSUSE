@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-overlayfs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fuse-overlayfs
-Version:        1.7.1
+Version:        1.10
 Release:        0
 Summary:        FUSE implementation for overlayfs
 License:        GPL-3.0-only
