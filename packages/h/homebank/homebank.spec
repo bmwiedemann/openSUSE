@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.5.8
+Version:        5.6
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later

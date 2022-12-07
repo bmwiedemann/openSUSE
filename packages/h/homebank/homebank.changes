@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:24:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6:
+ * new   : add a Manage > Wallet menu entry
+ * new   : add suggested/destructive style to relevant dialog buttons
+ * new   : add search input into manage category dialog
+ * new   : all search input CTRL+F to activate, ESC to empty+quit
+ * new   : filter on individual type: expense, income, transfer
+ * new   : filter on individual status: cleared, reconciled
+ * new   : filter dialog has a visual indicator on page with active filter
+ * new   : added an info icon with detailed info as tooltip in import, account pages
+ * new   : added a warning icon when xfer with different currency prefill target amount fail
+ * change: dropped usage of remaining comboboxentry in profit of a popoverentry
+ * change: account rename dialog relayout
+ * change: payee edit dialog relayout
+ * change: category edit dialog relayout
+ * change: manage payee/category hid usage column by default, toggle button to show
+ * change: filter dialog relayout
+ * change: layout harmonisation of all manage dialog
+ * change: spacing check and harmonisation of all windows
+  * change: removed icons for secondary windows/dialogs
+ * wish  : #1996223 statistics time report stack chart to show rate in tooltip
+ * wish  : #1993088 register closed account popmenu should be disabled
+ * wish  : #1989211 stats report preference to include/exlcude xfer by default
+ * wish  : #1986501 columns visibility settings for scheduled mainwindow list
+ * wish  : #1983995 Ability to "Copy raw amount" from a transaction in the account's transactions list
+ * wish  : #1982036 improve columns order/width for target xfer transaction list
+ * wish  : #1980562 setting to unlock by default the reconciled changes
+ * wish  : #1977686 autocompletion for split memo field
+ * wish  : #1974450 modify assignment order by specifying its index
+ * wish  : #1973029 add tag import/export function
+ * wish  : #1958039 Add ability to sort by search text in Assignments Dialog
+ * wish  : #1955305 Ability to search for criteria text in "Management Assignments" window
+ * wish  : #1933164 sort by header column click on statistics
+ * wish  : #1932193 add a note field into payee
+ * wish  : #1920642 separate columns and widths settings for reports details pane
+ * wish  : #1909749 feature to lock changes of reconciled transactions
+ * wish  : #1906953 add "ignore" week-end behavior
+ * wish  : #1896887 Reports / Exclude tags does an AND on multiple tags, it should default to OR
+ * wish  : #1896441 set an account to be outflow into 'Your Accounts'
+ * wish  : #1886757 HomeBank Report Account balances for each month
+ * wish  : #1875801 shows split detail in the report detail list
+ * wish  : #1869352 option to add scheduled txn until x months
+ * wish  : #1826360 archive payee/category to lighten the lists
+ * wish  : #1710085 assignment based on amount
+ * wish  : #1673260 internal transfer with different currency
+ * wish  : #1530170 more date range option and redesign
+ * wish  : #1173135 charts for stat over time items (pay, cate, acc...) report
+ * wish  : #625527  multiselectable combobox in trendtime reports
+ * bugfix: unused tags were not saved
+ * bugfix: add ellipsize to some report columns for large item name
+ * bugfix: report budget layout problem with large category name
+ * bugfix: #1993599 your accounts tooltip fail when account name contains a &
+ * bugfix: #1993727 import assistant selection counts do not update
+
+-------------------------------------------------------------------
 Fri Oct 21 15:59:00 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.8:
