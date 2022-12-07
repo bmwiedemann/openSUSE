@@ -17,7 +17,7 @@
 
 
 Name:           mk-configure
-Version:        0.37.0
+Version:        0.38.2
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
@@ -102,8 +102,8 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_rpmmacrodir}/macros.mkcmake
 %check
 unset MAKEFLAGS
 env bmake test
-bmake -k cleandir-examples
-bmake -k cleandir-tests
+bmake nodeps-cleandir-examples
+bmake nodeps-cleandir-tests
 
 %files
 %doc README.md doc/FAQ doc/NEWS doc/TODO

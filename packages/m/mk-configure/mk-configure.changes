@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 29 20:00:00 UTC 2022 - vle@gmx.net
+
+- Update to 0.38.2
+
+  Fixes in tests
+
+-------------------------------------------------------------------
+Sun Nov 17 19:53:00 UTC 2022 - vle@gmx.net
+
+- Update to 0.38.1
+
+  Add support for .c++ extension for C++ sources
+
+  Fix some tests failures seen with bmake-20220418
+
+  Fix tests failures on tests/mkc_install seen on Darwin-21.6.0
+
+  Fix some tests ("mkcmake configure" does not support parallel
+  execution)
+
+  Fix examples/hello_lua test failure
+
+-------------------------------------------------------------------
 Fri Jun 11 11:52:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move macros.mkcmake from /etc/rpm to %{_rpmmacrodir}

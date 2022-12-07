@@ -164,4 +164,12 @@ POSIX utilities.</comment>
 </comment>
     <requestid>899481</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4374fb28dafde7193958c7451d7eb508</srcmd5>
+    <version>0.38.2</version>
+    <time>1670430917</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1040791</requestid>
+  </revision>
 </revisionlist>
