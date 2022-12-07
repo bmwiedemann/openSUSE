@@ -2410,4 +2410,12 @@ Recommended for 12.3</comment>
       . Update preview's iframe height to match its content (forwarded request 1030296 from iznogood)</comment>
     <requestid>1030391</requestid>
   </revision>
+  <revision rev="262" vrev="1">
+    <srcmd5>4bd9fce30cd918bd04eba29c7b456cc8</srcmd5>
+    <version>3.46.2</version>
+    <time>1670430829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.2: (forwarded request 1040205 from dimstar)</comment>
+    <requestid>1040314</requestid>
+  </revision>
 </revisionlist>

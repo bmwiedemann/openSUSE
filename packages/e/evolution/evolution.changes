@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:35:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.46.2:
+  + Composer: Correct conversion of TABLE into Plain Text.
+  + EHTMLEditor: Traverse between all editors when looking for the
+    editor name.
+  + itip-utils: Change provided HTML transcript of a replied-to
+    meeting.
+  + EYearView: Correct calculation of the shown date.
+  + Add WebKit user plugin paths into the sandbox.
+  + Mute "No provider available for protocol “sendmail”" under
+    Flatpak.
+  + EMailBrowser: Correct placement of the menu button in the
+    header bar.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 21 06:47:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.1:
