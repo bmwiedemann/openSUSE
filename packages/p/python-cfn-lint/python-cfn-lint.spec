@@ -16,76 +16,45 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-cfn-lint
-Version:        0.65.1
+Version:        0.72.2
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
 URL:            https://github.com/aws-cloudformation/cfn-python-lint
 Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%{version}.tar.gz#/cfn-lint-%{version}.tar.gz
-Patch0:         skip-tests-require-network.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-PyYAML >= 5.4
-Requires:       python-aws-sam-translator >= 1.51.0
+Requires:       python-aws-sam-translator >= 1.54.0
+Requires:       python-jschema-to-python >= 1.2.3
 Requires:       python-jsonpatch
-Requires:       python-jsonschema > 3.0
 Requires:       python-junit-xml >= 1.9
-Requires:       python-requests >= 2.15.0
-Requires:       python-sarif-om >= 1.0.4
-Requires:       python-six >= 1.11
-%if 0%{python_version_nodots} <= 34
-Requires:       python-importlib_resources >= 1.0.2
-Requires:       python-networkx >= 2.2
-Requires:       python-pathlib2 >= 2.3.0
-Requires:       python-pyrsistent <= 0.16.0
-%else
 Requires:       python-networkx >= 2.4
-Requires:       python-numpy
-%if 0%{python_version_nodots} < 37
-Requires:       python-importlib_resources >= 1.4
-%endif
-%endif
-
+Requires:       python-sarif-om >= 1.0.4
+Requires:       (python-jsonschema > 3.0 with python-jsonschema < 5)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Requires:       python-jschema-to-python >= 1.2.3
 Recommends:     python-pydot
 Provides:       cfn-lint = %{version}
 Obsoletes:      cfn-lint < %{version}
 BuildArch:      noarch
-%if 0%{?suse_version} < 1500
-BuildRequires:  python
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.4}
-BuildRequires:  %{python_module aws-sam-translator >= 1.39.0}
+BuildRequires:  %{python_module aws-sam-translator >= 1.54.0}
 BuildRequires:  %{python_module jschema-to-python >= 1.2.3}
 BuildRequires:  %{python_module jsonpatch}
-BuildRequires:  %{python_module jsonschema > 3.0}
+BuildRequires:  %{python_module jsonschema > 3.0 with %python-jsonschema < 5}
 BuildRequires:  %{python_module junit-xml >= 1.9}
-BuildRequires:  %{python_module networkx >= 2.2}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module networkx >= 2.4}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.15.0}
 BuildRequires:  %{python_module sarif-om >= 1.0.4}
-BuildRequires:  %{python_module six >= 1.11}
 BuildRequires:  bash
 BuildRequires:  git-core
-%if %{with python2}
-BuildRequires:  python-importlib-resources >= 1.0.2
-BuildRequires:  python-pathlib2 >= 2.3.0
-%endif
-BuildRequires:  (python3-importlib-resources >= 1.0.2 if python3-base == 3.4)
-BuildRequires:  (python3-importlib-resources >= 1.4 if (python3-base < 3.7 and python3-base > 3.4))
-BuildRequires:  (python3-pathlib2 >= 2.3.0 if python3-base <= 3.4)
-BuildRequires:  (python36-importlib-resources >= 1.4 if python36-base)
 # /SECTION
 %python_subpackages
 
@@ -96,7 +65,6 @@ resource properties and best practices.
 
 %prep
 %setup -q -n cfn-lint-%{version}
-%patch0 -p1
 # do not hardcode versions
 sed -i -e 's:~=:>=:g' setup.py
 
@@ -108,31 +76,23 @@ sed -i -e 's:~=:>=:g' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/cfn-lint
 
+%check
+export LANG=en_US.UTF-8
+export AWS_DEFAULT_REGION=us-east-1
+# the code calls git grep, need to be inside git repo
+git init
+git add src/cfnlint/rules
+# deselect online tests
+donttest="test_sarif_formatter"
+donttest="$donttest or test_update_resource_specs_python_2"
+donttest="$donttest or test_update_resource_specs_python_3"
+%pytest -s test -v -k "not ($donttest)"
+
 %post
 %python_install_alternative cfn-lint
 
 %postun
 %python_uninstall_alternative cfn-lint
-
-%check
-export LANG=en_US.UTF-8
-export AWS_DEFAULT_REGION=us-east-1
-
-# We use update-alternatives and don't have cfn-lint binary around during check
-mkdir bin
-OPATH=$PATH
-
-# the code calls git grep, need to be inside git repo
-git init
-git add src/cfnlint/rules
-
-%{python_expand #
-ln -sf %{buildroot}%{_bindir}/cfn-lint-%{$python_bin_suffix} bin/cfn-lint
-export PATH="./bin:$OPATH"
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-# test_sarif_formatter: online test
-$python -B -m pytest -s test -v -k 'not test_sarif_formatter'
-}
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

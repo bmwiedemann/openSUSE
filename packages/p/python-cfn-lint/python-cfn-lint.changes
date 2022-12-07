@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Dec  7 10:33:01 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.72.2
+  * Update CloudFormation specs to `100.0.0` (pull #2493)
+  * Update rule (#E1011) to merge key validation into one method (pull #2502)
+- from version 0.72.1
+  * Add `ap-south-2` region (pull #2503)
+  * Rebuild the graph after doing the transform (pull #2502)
+- from version 0.72.0
+  * Add more info into the graph including outputs and parameters (pull #2452)
+  * Update CloudFormation specs to `99.0.0` (pull #2486)
+  * Add `eu-south-2` region (pull #2490)
+  * Make sure regex patterns with `\w` are validating against ASCII (pull #2487)
+
+-------------------------------------------------------------------
+Wed Nov 16 13:08:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.71.1
+  * Add support for region eu-central-2 (pull #2478)
+  * Update CloudFormation specs to 97.0.0 (pull #2475)
+- Clean specfile from old python directives: requires Python >= 3.7
+- Clean %check section: alternatives provided by python-rpm-macros
+- Drop skip-tests-require-network.patch
+
+-------------------------------------------------------------------
+Mon Nov 14 16:40:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.71.0:
+  * Reduce storage on disk by reducing regional specs to only have differences
+    from us-east-1 spec (pull #2457)
+  * Update CloudFormation specs to 96.0.0 (pull #2461)
+  * Fix an issue with junit/pretty formatter/core process to get all rules even
+    on parse failure (pull #2462)
+  * Fix an issue when use stdin to pass a template and cfn-lint with parameters
+    giving E0000 (pull #2470)
+- Release v0.70.1
+  * Add support for Python 3.11 (pull #2463)
+  * Fix an issue with --list-rules failing (pull #2466)
+- Release v0.70.0
+  * Add rule W8003 to check if Fn::Equals will always be true or false (pull
+    #2426)
+  * Allow you to configure how exit codes work (pull #2436)
+  * Update CloudFormation specs to 95.0.0 (pull #2440)
+  * Remove check for string size of Lambda::Function.Code.Zipfile (pull #2447)
+  * Update rule E3012 to validate bad functions (pull #2441)
+  * Update rule E3016 to make checks less restrictive (pull #2453)
+- Release v0.69.1
+  * Updated string max value to Lambda::Function.Code.Zipfile to 4MB (pull
+    #2444)
+- Release v0.69.0
+  * Update decode of yaml/json to report on all duplicates (pull #2428)
+  * Patch in db.serverless into AWS::RDS::DBInstance.DBInstanceClass (pull
+    #2430)
+  * Added string max value to Lambda::Function.Code.Zipfile (pull #2431)
+  * Don't replace location for resource AWS::Serverless::Application in SAM
+    transform when its a string (pull #2425)
+- Release v0.68.1
+  * Patch in db.serverless into AWS::RDS::DBInstance.DBInstanceClass (pull
+    #2424)
+  * Update CloudFormation specs to 94.0.0 (pull #2420)
+- Release v0.68.0
+  * Ability to override location of the finding (pull #2410)
+  * Patch in DBClusterResourceId for as an Attribute of AWS::RDS::DBCluster
+    (pull #2407)
+  * Update CloudFormation specs to 93.0.0 (pull #2409)
+  * Update AllowedPatternRegex for AWS::CloudWatch::Alarm.MetricDataQuery.Id
+    (pull #2414
+  * Add GetAtt to AWS::KMS::ReplicaKey.Arn for KmsKey.Arn (pull #2417)
+- Release v0.67.0
+  * Support child rules allowing rules to add another rule in their match
+    responses (pull #2393)
+  * Update CloudFormation specs to 92.0.0 (pull #2399)
+- Release v0.66.1
+  * Update CloudFormation specs to 91.0.0 (pull #2392)
+  * Update E8003, E1018, E1019 to allow Fn::ToJsonString inside Equals, Split,
+    and Sub (pull #2397)
+  * Update I3013 to allow https and s3 (pull #2394)
+- Release v0.66.0
+  * Update E3002 to provide a suggestion if the wrong value is close to a
+    correct value (pull #2387)
+  * Update CloudFormation specs to 90.0.0 (pull #2376)
+  * Add in allowed values for oracle cdb engine types to
+    AWS::RDS::DBInstance.Engine (pull #2381)
+  * Add in allowd value PredictiveScaling to
+    AWS::AutoScaling::ScalingPolicy.PolicyType (pull #2378)
+  * Update W3002 to validate values aren't already S3 paths (pull #2382)
+  * Update I3013 to not regex check if a function (pull #2386)
+
+-------------------------------------------------------------------
 Tue Sep 20 12:05:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.65.1
