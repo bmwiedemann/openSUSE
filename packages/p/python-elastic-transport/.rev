@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1006512</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ba74da3ffa3df4cca66c6f758f58a521</srcmd5>
+    <version>8.4.0</version>
+    <time>1670430824</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken test with latest urllib3 release
+  gh#elastic/elastic-transport-python#96 
+</comment>
+    <requestid>1040249</requestid>
+  </revision>
 </revisionlist>

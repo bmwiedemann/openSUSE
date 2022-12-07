@@ -68,6 +68,8 @@ sed -i 's/from mock/from unittest.mock/' tests/node/test_http_*.py
 donttest="(test_http_aiohttp and not TestAiohttpHttpNode)"
 donttest="$donttest or test_tls_versions"
 donttest="$donttest or test_assert_fingerprint_in_cert_chain"
+# gh#elastic/elastic-transport-python#96
+donttest="$donttest or test_url_to_node_config[https://[::1]:0/-https://[::1]:0-]"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
