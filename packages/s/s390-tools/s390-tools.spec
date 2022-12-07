@@ -26,9 +26,14 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 %global modprobe_d_files 90-s390-tools.conf
+%if 0%{?usrmerged}
+%define _mysbindir %{_sbindir}
+%else
+%define _mysbindir /sbin
+%endif
 
 Name:           s390-tools
-Version:        2.19.0
+Version:        2.24.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -44,17 +49,30 @@ Source6:        sysconfig.xpram
 Source7:        appldata
 Source8:        sysconfig.appldata
 Source10:       dasdro
-Source11:       dasd_reload
-Source12:       mkdump.pl
+%if 0%{?usrmerged}
+Source11:       dasd_reload.opensuse
+Source12:       mkdump.pl.opensuse
+%else
+Source11:       dasd_reload.suse
+Source12:       mkdump.pl.suse
+%endif
 Source13:       sysconfig.osasnmpd
 Source14:       zfcp_san_disc
 Source15:       mkdump.8
 Source18:       zpxe.rexx
 Source19:       rules.xpram
 Source20:       rules.hw_random
-Source21:       59-graf.rules
+%if 0%{?usrmerged}
+Source21:       59-graf.rules.opensuse
+%else
+Source21:       59-graf.rules.suse
+%endif
 Source22:       s390-tools-zdsfs.caution.txt
-Source23:       README.SUSE
+%if 0%{?usrmerged}
+Source23:       README.SUSE.opensuse
+%else
+Source23:       README.SUSE.suse
+%endif
 Source24:       cputype
 Source25:       cputype.1
 Source26:       cio_ignore.service
@@ -62,15 +80,28 @@ Source27:       setup_cio_ignore.sh
 Source28:       59-prng.rules
 Source29:       59-zfcp-compat.rules
 Source30:       90-s390-tools.conf
-Source31:       detach_disks.sh
-Source32:       killcdl
+%if 0%{?usrmerged}
+Source31:       detach_disks.sh.opensuse
+Source32:       killcdl.opensuse
+%else
+Source31:       detach_disks.sh.suse
+Source32:       killcdl.suse
+%endif
 Source33:       lgr_check
 Source34:       sysconfig.virtsetup
 Source35:       virtsetup.service
-Source36:       virtsetup.sh
+%if 0%{?usrmerged}
+Source36:       virtsetup.sh.opensuse
+%else
+Source36:       virtsetup.sh.suse
+%endif
 Source37:       appldata.service
 Source38:       hsnc.service
-Source39:       vmlogrdr.service
+%if 0%{?usrmerged}
+Source39:       vmlogrdr.service.opensuse
+%else
+Source39:       vmlogrdr.service.suse
+%endif
 Source40:       xpram.service
 Source41:       pkey.conf
 
@@ -79,8 +110,13 @@ Source41:       pkey.conf
 Source86:       read_values.c
 Source87:       read_values.8
 Source88:       ctc_configure
-Source89:       dasd_configure
-Source90:       iucv_configure
+%if 0%{?usrmerged}
+Source89:       dasd_configure.opensuse
+Source90:       iucv_configure.opensuse
+%else
+Source89:       dasd_configure.suse
+Source90:       iucv_configure.suse
+%endif
 Source91:       qeth_configure
 Source92:       zfcp_disk_configure
 Source93:       zfcp_host_configure
@@ -93,22 +129,18 @@ Source99:       zfcp_host_configure.8
 ###
 
 # IBM patches
-Patch001:       s390-tools-sles15sp4-chreipl-fcp-mpath-don-t-compress-the-manpage-before-.patch
-Patch002:       s390-tools-sles15sp4-chreipl-fcp-mpath-remove-shebang-from-chreipl-fcp-mp.patch
-Patch003:       s390-tools-sles15sp4-zdev-modify-the-lsblk-output-parser-in-lszdev.patch
-Patch004:       s390-tools-sles15sp4-zdev-Fix-path-resolution-for-multi-mount-point-file-.patch
-Patch005:       s390-tools-sles15sp4-01-genprotimg-remove-DigiCert-root-CA-pinning.patch
-Patch006:       s390-tools-sles15sp4-02-genprotimg-check_hostkeydoc-relax-default-issuer-che.patch
-Patch007:       s390-tools-sles15sp4-libseckey-Fix-re-enciphering-of-EP11-secure-key.patch
-Patch008:       s390-tools-sles15sp4-zdump-fix-segfault-due-to-double-free.patch
-Patch009:       s390-tools-sles15sp4-libseckey-Adapt-keymgmt_match-implementation-to-Open.patch
-Patch010:       s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
-
+Patch001:       s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
+Patch002:       s390-tools-sles15sp5-util_lockfile-fix-includes.patch
+Patch003:       s390-tools-sles15sp5-ap_tools-ap-check-use-new-mdevctl-install-location.patch
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
 Patch902:       s390-tools-sles12-create-filesystem-links.patch
-Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch
+%if 0%{?usrmerged}
+Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.opensuse
+%else
+Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.suse
+%endif
 Patch904:       s390-tools-sles15sp3-Allow-multiple-device-arguments.patch
 Patch905:       s390-tools-sles15sp3-Format-devices-in-parallel.patch
 Patch906:       s390-tools-sles15sp3-Implement-Y-yast_mode.patch
@@ -116,11 +148,12 @@ Patch907:       s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
 Patch908:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
 Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
-Patch911:       s390-tools-sles15sp3-remove-no-pie-link-arguments.patch
+Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
+Patch999:       s390-tools-sles15sp5-fix-chown-commands-syntax.patch
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
-BuildRequires:  fuse-devel
+BuildRequires:  fuse3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel
@@ -128,13 +161,14 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  kernel-zfcpdump
 BuildRequires:  libcryptsetup-devel > 2.0.3
 BuildRequires:  libjson-c-devel
-BuildRequires:  libpfm-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  mdevctl
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel >= 1.1.1l
 BuildRequires:  pesign-obs-integration
 BuildRequires:  qclib-devel-static
+BuildRequires:  systemd-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel-static
 # Don't build with pie to avoid problems with zipl
@@ -312,7 +346,14 @@ popd
 
 install -m 755 read_values %{buildroot}/%{_bindir}/
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
+
+# The "usrmerge" has happened in openSUSE:Factory, but not yet in SLES.
+# Make sure we look for the zfcpdump kernel image in the right place.
+%if 0%{?usrmerged}
 install -D -m600 %{_prefix}/lib/modules/*-zfcpdump/image %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
+%else
+install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
+%endif
 
 install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
 install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/udev/rules.d/40-z90crypt.rules
@@ -342,11 +383,11 @@ install -D -m755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts/xpram
 install -D -m644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.xpram
 install -D -m755 %{SOURCE7} %{buildroot}%{_prefix}/lib/systemd/scripts/appldata
 install -D -m644 %{SOURCE8} %{buildroot}%{_fillupdir}/sysconfig.appldata
-install -D -m755 %{SOURCE10} %{buildroot}%{_sbindir}/dasdro
-install -D -m755 %{SOURCE11} %{buildroot}%{_sbindir}/dasd_reload
-install -D -m755 %{SOURCE12} %{buildroot}%{_sbindir}/mkdump
+install -D -m755 %{SOURCE10} %{buildroot}%{_mysbindir}/dasdro
+install -D -m755 %{SOURCE11} %{buildroot}%{_mysbindir}/dasd_reload
+install -D -m755 %{SOURCE12} %{buildroot}%{_mysbindir}/mkdump
 install -D -m644 %{SOURCE13} %{buildroot}%{_fillupdir}/sysconfig.osasnmpd
-install -D -m755 %{SOURCE14} %{buildroot}%{_sbindir}/zfcp_san_disc
+install -D -m755 %{SOURCE14} %{buildroot}%{_mysbindir}/zfcp_san_disc
 install -D -m644 %{SOURCE15} %{buildroot}/%{_mandir}/man8
 install -D -m644 %{SOURCE19} %{buildroot}%{_prefix}/lib/udev/rules.d/52-xpram.rules
 install -D -m644 %{SOURCE20} %{buildroot}%{_prefix}/lib/udev/rules.d/52-hw_random.rules
@@ -354,26 +395,26 @@ install -D -m644 %{SOURCE21} %{buildroot}%{_prefix}/lib/udev/rules.d/59-graf.rul
 install -D -m644 %{SOURCE28} %{buildroot}%{_prefix}/lib/udev/rules.d/59-prng.rules
 install -D -m644 %{SOURCE29} %{buildroot}%{_prefix}/lib/udev/rules.d/59-zfcp-compat.rules
 install -D -m644 %{SOURCE30} %{buildroot}%{_modprobedir}/90-s390-tools.conf
-install -D -m755 %{SOURCE32} %{buildroot}%{_sbindir}/killcdl
-install -D -m755 %{SOURCE33} %{buildroot}%{_sbindir}/lgr_check
+install -D -m755 %{SOURCE32} %{buildroot}%{_mysbindir}/killcdl
+install -D -m755 %{SOURCE33} %{buildroot}%{_mysbindir}/lgr_check
 install -D -m644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
 
-if [ ! -d %{_sbindir} ]; then
-    rm -f %{_sbindir}
-    mkdir -p %{_sbindir}
+if [ ! -d %{_mysbindir} ]; then
+    rm -f %{_mysbindir}
+    mkdir -p %{_mysbindir}
 fi
-(cd usr/sbin; ln -s service rcappldata)
-(cd usr/sbin; ln -s service rchsnc)
-(cd usr/sbin; ln -s service rcvmlogrdr)
-(cd usr/sbin; ln -s service rcxpram)
-(cd usr/sbin; ln -s service rccio_ignore)
-(cd usr/sbin; ln -s service rccpacfstatsd)
-(cd usr/sbin; ln -s service rccpi)
-(cd usr/sbin; ln -s service rccpuplugd)
-(cd usr/sbin; ln -s service rcdumpconf)
-(cd usr/sbin; ln -s service rcmon_fsstatd)
-(cd usr/sbin; ln -s service rcmon_procd)
-(cd usr/sbin; ln -s service rcvirtsetup)
+(cd %{buildroot}%{_sbindir}; ln -s service rcappldata)
+(cd %{buildroot}%{_sbindir}; ln -s service rchsnc)
+(cd %{buildroot}%{_sbindir}; ln -s service rcvmlogrdr)
+(cd %{buildroot}%{_sbindir}; ln -s service rcxpram)
+(cd %{buildroot}%{_sbindir}; ln -s service rccio_ignore)
+(cd %{buildroot}%{_sbindir}; ln -s service rccpacfstatsd)
+(cd %{buildroot}%{_sbindir}; ln -s service rccpi)
+(cd %{buildroot}%{_sbindir}; ln -s service rccpuplugd)
+(cd %{buildroot}%{_sbindir}; ln -s service rcdumpconf)
+(cd %{buildroot}%{_sbindir}; ln -s service rcmon_fsstatd)
+(cd %{buildroot}%{_sbindir}; ln -s service rcmon_procd)
+(cd %{buildroot}%{_sbindir}; ln -s service rcvirtsetup)
 
 if [ ! -d %{_bindir} ]; then
     rm -f %{_bindir}
@@ -383,24 +424,29 @@ install -D -m755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
 
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 
-# Move all the binaries installed via the IBM-provided Makefile from /sbin to
-# /usr/sbin/ to align with the openSUSE "usrmerge" project
-mv -vi %{buildroot}/sbin/* %{buildroot}%{_sbindir}/
+# If building for openSUSE, move all the binaries installed via
+# the IBM-provided Makefile from /sbin to /usr/sbin/ to
+# align with the openSUSE "usrmerge" project
+%if 0%{?usrmerged}
+mv -vi %{buildroot}/sbin/* %{buildroot}%{_mysbindir}/
+%endif
 
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
-install -m755 -t %{buildroot}/%{_sbindir}/ %{SOURCE88} %{SOURCE89} %{SOURCE90} %{SOURCE91} %{SOURCE92} %{SOURCE93}
+install -m755 -t %{buildroot}%{_mysbindir}/ %{SOURCE88} %{SOURCE91} %{SOURCE92} %{SOURCE93}
+install %{SOURCE89} %{buildroot}%{_mysbindir}/dasd_configure
+install %{SOURCE90} %{buildroot}%{_mysbindir}/iucv_configure
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE94} %{SOURCE95} %{SOURCE96} %{SOURCE97} %{SOURCE98} %{SOURCE99}
 ###
 
 ### lsmem/chmem have been added to util-linux
-rm -fv %{buildroot}/%{_mandir}/man8/lsmem.8*
-rm -fv %{buildroot}/%{_mandir}/man8/chmem.8*
-rm -fv %{buildroot}/%{_sbindir}/lsmem
-rm -fv %{buildroot}/%{_sbindir}/chmem
+rm -fv %{buildroot}%{_mandir}/man8/lsmem.8*
+rm -fv %{buildroot}%{_mandir}/man8/chmem.8*
+rm -fv %{buildroot}%{_mysbindir}/lsmem
+rm -fv %{buildroot}%{_mysbindir}/chmem
 
 find . ! -type d |
     sed 's/^.//;\-/man/-s/^.*$/%doc &.gz/' > %{_builddir}/%{name}-filelist
-grep -v -E 'osasnmp|*\.conf$|ekmfweb.so|ekmfweb.h|kmipclient|kmip/profiles/*\.profile|chreipl-fcp-mpath' %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.list
+grep -v -E 'osasnmp|etc/ziplenv|\.conf$|ekmfweb.so|ekmfweb.h|kmipclient|kmip/profiles/.*profile$|chreipl-fcp-mpath' %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.list
 grep    osasnmp[^-] %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.osasnmp
 
 touch boot/zipl/active_devices.txt
@@ -417,7 +463,7 @@ function cleanup
 . %{_sysconfdir}/sysconfig/osasnmpd
 trap cleanup 0
 echo \$\$ >\$PIDFILE
-%{_sbindir}/osasnmpd -f -P %{_localstatedir}/run/osasnmpd.real.pid \$OSASNMPD_PARAMETERS "\$@"
+%{_mysbindir}/osasnmpd -f -P %{_localstatedir}/run/osasnmpd.real.pid \$OSASNMPD_PARAMETERS "\$@"
 EOT
 chmod 755 osasnmpd
 
@@ -589,6 +635,7 @@ done
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/kmip/profiles
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/repository
 %config %{_sysconfdir}/zkey/kmip/profiles/*
+%config(noreplace) %{_sysconfdir}/ziplenv
 %dir %{_modprobedir}
 %{_modprobedir}/90-s390-tools.conf
 %config %{_sysconfdir}/cpuplugd.conf
@@ -597,6 +644,9 @@ done
 %dir %attr(2770,root,ts-shell) %{_localstatedir}/log/ts-shell
 %dir %{_sysconfdir}/cmsfs-fuse
 %config %attr(0640,root,root) %{_sysconfdir}/cmsfs-fuse/filetypes.conf
+%dir %{_prefix}/lib/mdevctl
+%dir %{_prefix}/lib/mdevctl/scripts.d
+%dir %{_prefix}/lib/mdevctl/scripts.d/callouts
 %dir %{_prefix}/lib/s390-tools
 %dir %{_prefix}/lib/s390-tools/zfcpdump
 %dir %{_prefix}/lib/udev/rules.d
@@ -605,6 +655,7 @@ done
 %dir %{_datadir}/s390-tools/netboot
 %dir %{_datadir}/s390-tools/genprotimg
 %dir %{_prefix}/lib/dracut/modules.d/95zdev
+%dir %{_prefix}/lib/dracut/modules.d/99ngdump
 %dir /boot/zipl
 %dir %{_libdir}/zkey
 %{_libdir}/zkey/zkey-ekmfweb.so
@@ -662,7 +713,6 @@ done
 %{_prefix}/lib/udev/chreipl-fcp-mpath-record-volume-identifier
 %{_prefix}/lib/udev/chreipl-fcp-mpath-try-change-ipl-path
 %{_udevrulesdir}/70-chreipl-fcp-mpath.rules
-## Requires build+install with ENABLE_DOC=1
-#{_mandir}/man7/chreipl-fcp-mpath.7.gz
+%{_mandir}/man7/chreipl-fcp-mpath.7%{?ext_man}
 
 %changelog

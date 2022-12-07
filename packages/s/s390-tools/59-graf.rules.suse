@@ -1,0 +1,13 @@
+#
+# Rules for unique 3270 device nodes created in /dev/3270/
+# This file should be installed in /usr/lib/udev/rules.d
+#
+
+SUBSYSTEM!="ccw", GOTO="graf_end"
+DRIVER!="3270", GOTO="graf_end"
+
+# Configure 3270 device
+ACTION=="add",    SUBSYSTEM=="ccw", PROGRAM="/sbin/chccwdev -e $kernel"
+ACTION=="remove", SUBSYSTEM=="ccw", PROGRAM="/sbin/chccwdev -d $kernel"
+
+LABEL="graf_end"

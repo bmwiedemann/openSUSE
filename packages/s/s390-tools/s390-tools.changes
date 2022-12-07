@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Tue Dec  6 19:39:22 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Made extensive changes to the spec file to accomodate building
+  this package on both openSUSE, which has implemented the
+  "usrmerge" project, and SLES, which has not. This was accomplished
+  by checking the usrmerged variable, and setting the value of the
+  _mysbindir variable, accordingly. The files identified in the
+  Thu May 26 2022 changelog entry, and also listed below, now have
+  two versions. One for SLES, and one for openSUSE, with either
+  ".suse" or ".opensuse" appended to the file name. The appropriate
+  SOURCE variable is selected based on the usrmerged variable, and
+  installed with the ".suse" or ".opensuse" suffix stripped from
+  the name.
+  *  59-graf.rules
+  *  dasd_configure
+  *  dasd_reload
+  *  detach_disks.sh
+  *  iucv_configure
+  *  killcdl
+  *  mkdump.pl
+  *  README.SUSE
+  *  s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch
+  *  virtsetup.sh
+  *  vmlogrdr.service
+
+-------------------------------------------------------------------
+Mon Nov 28 14:26:18 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Updated to version 2.24.0 (jsc#PED-627)
+  * __v2.24.0 (2022-11-09)__
+    For Linux kernel version: 6.0
+    Add new tools / libraries:
+    - Provide config files for checkpatch, codespell, and clang-format
+    Changes of existing tools:
+    - dbginfo.sh: Collect log from various distro tools (YaST, DNF, Anaconda)
+    - dbginfo.sh: add Kubernetes data collection
+    - libutil: Introduce util_lockfile
+    - zdev: Add site-aware device configuration
+    - zdump: Add support to read Protected Virtualization dumps
+    - zipl/boot: Add secure boot trailer
+    Bug Fixes:
+    - ap_tools/ap-check: Reject start for control domains without usage
+    - cpumf/lshwc: Fix incremented counter output
+    - cpumf/pai: Fix core dump when summary flag set
+    - dbginfo.sh: Ensure compatibility with /bin/dash shell
+    - dbginfo.sh: Save dbginfo.sh version to dbginfo.log
+    - zipl/src/zipl_helper.device-mapper: Fix bug in error path
+  * __v2.23.0 (2022-08-18)__
+    For Linux kernel version: 5.19
+    Changes of existing tools:
+    - Makefile: use common Make definition for DRACUTDIR
+    - Makefile: use common Make definition for UDEVDIR and UDEVRULESDIR
+    - cpacfstats: Add PAI and hotplug support
+    - cpumf/pai: Omit file write progress information
+    - dbginfo.sh: Get more details on lspci command
+    - dumpconf: Prevent running the service in containers
+    - libcpumf: Detect PMU named pai_ext
+    - pvattest: Improve error reporting and logging
+    - zdev: Add some --type ap examples to manpages
+    - zkey: Use default benchmarked Argon2i with LUKS2
+    Bug Fixes:
+    - dbginfo.sh: Fix accidental ftrace buffer shrinkage/free
+    - genprotimg: Fix BIO_reset() returncode handling
+    - libpv: Fix dependency checking
+    - pvattest: Fix dependency checking
+    - zipl: Fix segmentation fault when no parmline is provided
+  * __v2.22.0 (2022-06-20)__
+    For Linux kernel version: 5.18
+    Add new tools / libraries:
+    - ap_tools: Introduce ap_tools and the ap-check tool
+    - cpumf/pai: Add Processor Activity Instrumentation tool
+    - libpv: New library for PV tools
+    - pvattest: Add new tool to create, perform, and verify attestation measurements
+    - zipl/zdump: Add Next Gen Dump (NGDump) support
+    Changes of existing tools:
+    - Move man pages to System commands section (lscpumf, lshwc, pai, dbginfo.sh, zfcpdbf, zipl-switch-to-blscfg)
+    - README.md: Add 70-chreipl-fcp-mpath.rules to the list of udev rule descriptions
+    - Remove SysV related daemon scripts (cpacfstatsd, cpuplugd, mon_statd)
+    - genprotimg: Move man page to section 1 for user commands
+    - hyptop: increase initial update interval
+    - libseckey: Adapt keymgmt_match() implementation to OpenSSL
+    - libutil: Add util_exit_code
+    - libutil: Introduce util_udev
+    - zdev: Introduce the ap device type
+    - zipl-editenv: Add zIPL multienvironment support
+    - zipl: Implement sorting BLS entries by versions
+    - zkey: Add initramfs hook
+    Bug Fixes:
+    - cmsfs-fuse: Fix enabling of hard_remove option
+    - s390-tools: Fix typos that were detected by lintian as 'typo-in-manual-page'
+    - zkey-kmip: Fix possible use after free
+    - zkey: Fix EP11 host library version checking
+    - zkey_kmip: Setup ext-lib once the APQNs have been configured
+  * __v2.21.0 (2022-04-20)__
+    For Linux kernel version: 5.17
+    Add new tools / libraries:
+    - libcpumf: Create library libcpumf for CPU Measurement functions
+    Changes of existing tools:
+    - chreipl-fcp-mpath: bundle a pre-cooked version of the manpage for build
+                         environments without access to `pandoc`
+    - dbginfo.sh: Add multipath info to map paths to FC addressing and prio group
+    - dbginfo.sh: Collect config files of systemd-modules-load.service
+    - dbginfo.sh: Sort list of environment variables for readability
+    - dbginfo.sh: Replace "which" by builtin command "type"
+    - dbginfo.sh: Rework script formatting (indents, order)
+    - dbginfo.sh: Update sysfs collection (excludes, messages)
+    - genprotimg: Add Protected Virtualization (PV) dump support
+    - genprotimg: Remove DigiCert root CA pinning
+    - lszcrypt: Add CEX8S support
+    - zcryptctl: Add control domain handling
+    - zcryptstats: Add CEX8 support
+    - zipl: Allow optional entries that are left out when files are missing
+    - zipl: make IPL sections defined with BLS to inherit a target field
+    - zpcictl: Add option to trigger firmware reset
+    Bug Fixes:
+    - cpictl: Handle excessive kernel version numbers
+    - dbginfo.sh: Collect all places where modprobe.d config files could exist
+    - fdasd: Fix endless menu loop on EOF
+    - zdump/dfi: Fix segfault due to double free
+    - zdump: Fix /dev/mem reading
+    - zpcictl: Fix race of SCLP reset and Linux recovery
+  * __v2.20.0 (2022-02-04)__
+    For Linux kernel version: 5.16
+    Add new tools / libraries:
+    - Add EditorConfig configuration
+    Changes of existing tools:
+    - s390-tools switches to Fuse 3 as Fuse 2 is deprecated.
+          Affected tools: cmsfs, hmcdrvfs, hsavmcore, zdsfs, zdump
+    - chreipl-fcp-mpath: don't compress the manpage before installing it
+    - cpictl: Report extended version information
+    - genprotimg: Add extended kernel command line support
+    - zdev: modify the lsblk output parser in lszdev
+    - zipl: Add support for longer kernel command lines (now supports up to 64k length)
+    Bug Fixes:
+    - cpictl: Suppress messages for unwritable sysfs files
+    - dbginfo.sh: Fix missing syslog for step create_package
+    - lshwc: Fix CPU list parameter setup for device driver
+    - zdev: Check for errors when removing a devtype setting
+    - zdev: Fix path resolution for multi-mount point file systems
+- Updated s390-tools-sles15sp3-remove-no-pie-link-arguments.patch
+  to fit the new version, and renamed it to
+  s390-tools-sles15sp5-remove-no-pie-link-arguments.patch.
+- Added s390-tools-sles15sp5-util_lockfile-fix-includes.patch to fix a
+  compilation problem. One source file was missing an include statement
+  for unistd.h.
+- Added s390-tools-sles15sp5-ap_tools-ap-check-use-new-mdevctl-install-location.patch
+  An executable binary was being installed under /etc, which is
+  an FHS violation.
+- Modified spec file to
+  * Change BuildRequires for fuse-devel to fuse3-devel.
+  * Remove obsolete BuildRequires for libpfm-devel
+  * Add a BuildRequires for mdevctl and systemd-devel
+  * Added a %files entry for dir %{_prefix}/lib/dracut/modules.d/99ngdump  
+  * Added %config(noreplace) for the new file %{_sysconfdir}/ziplenv
+  * Uncomment the %files entry for %{_mandir}/man7/chreipl-fcp-mpath.7%{?ext_man}
+    Specifying ENABLE_DOC=1 is no longer needed for it to be generated.
+  * Add %dir entries for
+      %{_prefix}/lib/mdevctl,
+      %{_prefix}/lib/mdevctl/scripts.d, and 
+      %{_prefix}/lib/mdevctl/scripts.d/callouts
+    NOTE that these directories do not belong to this package, but
+    the mdevctl package has yet to be updated to claim them. So,
+    until that happens, we have to temporarily claim ownership of
+    them for the s390-tools package to build.
+- Updated the s390-tools-rpmlintrc file to suppress two warnings about
+  the /boot/zipl/active_devices.txt file.
+- Removed the following obsolete patches:
+  * s390-tools-sles15sp4-chreipl-fcp-mpath-don-t-compress-the-manpage-before-.patch
+  * s390-tools-sles15sp4-chreipl-fcp-mpath-remove-shebang-from-chreipl-fcp-mp.patch
+  * s390-tools-sles15sp4-zdev-modify-the-lsblk-output-parser-in-lszdev.patch
+  * s390-tools-sles15sp4-zdev-Fix-path-resolution-for-multi-mount-point-file-.patch
+  * s390-tools-sles15sp4-01-genprotimg-remove-DigiCert-root-CA-pinning.patch
+  * s390-tools-sles15sp4-02-genprotimg-check_hostkeydoc-relax-default-issuer-che.patch
+  * s390-tools-sles15sp4-libseckey-Fix-re-enciphering-of-EP11-secure-key.patch
+  * s390-tools-sles15sp4-zdump-fix-segfault-due-to-double-free.patch
+  * s390-tools-sles15sp4-libseckey-Adapt-keymgmt_match-implementation-to-Open.patch
+  * s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
+  * s390-tools-sles15sp4-hyptop-increase-initial-update-interval.patch
+  * s390-tools-sles15sp4-zipl-boot-add-secure-boot-trailer.patch
+- Added s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
+  With this version, the same false positive of "array subscript 0
+  is outside array bounds" that was previously seen in the
+  genprotimage/boot directory is now happening in zipl/boot.
+- Added s390-tools-sles15sp5-fix-chown-commands-syntax.patch to
+  eliminate a bunch of warnings. The new version of chown complains
+  if the deprecated 'owner.group' syntax is used instead of the
+  'owner:group' syntax.
+
+-------------------------------------------------------------------
+Thu Nov  3 16:17:13 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp4-zipl-boot-add-secure-boot-trailer.patch
+  for bsc#1204965. New IBM Z firmware requires all signed boot
+  images to contain a trailing data block with a specific format.
+
+-------------------------------------------------------------------
+Mon Jul 18 15:41:43 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp4-hyptop-increase-initial-update-interval.patch
+  for bsc#1201412. Initial iteration of hyptop can produce bloated values
+  independent from the update delay set by the user.
+
+-------------------------------------------------------------------
+Thu Jun  2 16:45:38 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
+  to fix a build failure with gcc12. With gcc12, a "false positive"
+  of "array subscript 0 is outside array bounds" is seen in
+  genprotimg/boot/stage3a.c (bsc#1200131).
+
+-------------------------------------------------------------------
 Thu May 26 17:03:32 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Modifed the spec file to install all binaires in /usr/sbin instead of /sbin

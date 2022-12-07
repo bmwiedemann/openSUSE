@@ -1,0 +1,16 @@
+This work around fixes a gcc-12 false positive by disabling `Warray-bounds`.
+It is similar in intent as the previous
+s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
+
+--- s390-tools-2.24.0/zipl/boot/Makefile	2022-11-09 17:11:48.000000000 +0100
++++ s390-tools-2.24.0/zipl/boot/Makefile	2022-12-02 23:16:30.513062000 +0100
+@@ -10,7 +10,8 @@
+ 	  -fno-delete-null-pointer-checks -fno-stack-protector \
+ 	  -fexec-charset=IBM1047 -m64 -mpacked-stack \
+ 	  -mstack-size=4096 -mstack-guard=128 -msoft-float \
+-	  -W -Wall -Wformat-security -fno-sanitize=all
++	  -W -Wall -Wformat-security -fno-sanitize=all \
++	  -Wno-array-bounds
+ ALL_LDFLAGS += -fno-sanitize=all
+ 
+ FILES	= fba0.bin fba1b.bin fba2.bin \
