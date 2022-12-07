@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:30:53 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.1.4
+  + Fixed a regression in Django 4.1 that caused an unnecessary table
+    rebuild when adding a ManyToManyField on SQLite
+  + Fixed a bug in Django 4.1 that caused a crash of the sitemap index
+    view with an empty Sitemap.items() and a callable lastmod
+  + Fixed a bug in Django 4.1 that caused a crash using acreate(),
+    aget_or_create(), and aupdate_or_create() asynchronous methods of
+    related managers
+  + Fixed a bug in Django 4.1 that caused a crash of
+    QuerySet.bulk_create() with "pk" in unique_fields
+  + Fixed a bug in Django 4.1 that caused a crash of
+    QuerySet.bulk_create() on fields with db_column
+
+-------------------------------------------------------------------
 Wed Nov  2 15:50:11 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.1.3

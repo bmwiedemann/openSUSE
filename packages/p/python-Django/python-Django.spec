@@ -24,7 +24,7 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
