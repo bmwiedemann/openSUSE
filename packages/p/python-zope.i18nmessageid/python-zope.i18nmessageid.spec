@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.i18nmessageid%{psuffix}
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
