@@ -77,4 +77,12 @@
     <comment>fix build on sle12</comment>
     <requestid>908792</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7ff414a4d942887f99c61e960c87d596</srcmd5>
+    <version>3.1.64</version>
+    <time>1670514669</time>
+    <user>dimstar_suse</user>
+    <comment>3.1.64</comment>
+    <requestid>1041213</requestid>
+  </revision>
 </revisionlist>

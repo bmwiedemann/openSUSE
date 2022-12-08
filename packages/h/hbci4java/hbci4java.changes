@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:31:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.64:
+  * various BLZ updates
+  * see https://github.com/hbci4j/hbci4java/compare/hbci4j-core-3.1.55...hbci4j-core-3.1.64 
+
+-------------------------------------------------------------------
 Wed Jul 28 07:34:26 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define %%make_build for systems that don't have it defined in

@@ -1,7 +1,7 @@
 #
 # spec file for package hbci4java
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           hbci4java
-Version:        3.1.55
+Version:        3.1.64
 Release:        0
 Summary:        Java online banking client using the HBCI standard
 License:        LGPL-2.1-only
