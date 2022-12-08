@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 19:24:07 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make build reproducible:
+  * Set GRASS_RANDOM_SEED for "random" colortable in documentation.
+  * Use SOURCE_DATE_EPOCH for version instead of current date.
+- Remove direct dependency on wxWidgets, dependency on Python
+  bindings is sufficient.
+- Drop some more extraneous build dependencies.
+
+-------------------------------------------------------------------
 Fri Nov 25 14:35:05 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to 7.8.7:

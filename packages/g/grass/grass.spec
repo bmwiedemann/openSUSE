@@ -18,21 +18,12 @@
 
 # Notice to maintainer : move this package to real lfhs
 %define	shortver 78
-# Post Leap 42 / TW
-%if 0%{?suse_version} > 1325
-BuildRequires:  wxWidgets-devel >= 3.0
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-wxPython
 %else
 BuildRequires:  python-wxWidgets-devel >= 3.0
 %endif
-%else
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-# Don't work for SLE why ?
-# BuildRequires:  python-wxWidgets >= 2.8
-BuildRequires:  wxWidgets-devel >= 2.8
-%endif
+
 Name:           grass
 Version:        7.8.7
 Release:        0
@@ -75,11 +66,12 @@ BuildRequires:  python3-six
 BuildRequires:  python3-xml
 BuildRequires:  sqlite-devel
 BuildRequires:  unixODBC-devel
-BuildRequires:  xorg-x11-Mesa-devel
 BuildRequires:  zlib-devel
-Requires:       fftw3
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
+# proj contains the required common data files
 Requires:       proj >= 6
-Requires:       python3
 Requires:       python3-dateutil
 Requires:       python3-numpy
 Requires:       python3-opengl
@@ -129,6 +121,8 @@ sed -i s/%{grasver}//g include/Make/Platform.make.in
 sed -i s/%{grasver}//g grass.pc.in
 sed -i s/%{grasver2}//g configure
 sed -i s/%{grasver2}//g Makefile
+sed -i -e "/GRASS_HEADERS_/ s/@GRASS_HEADERS_GIT_.*@/"$(date -d @${SOURCE_DATE_EPOCH} -u +%FT%T%:z)"/" include/version.h.in
+cat include/version.h.in
 
 %define grassprefix %{_libdir}
 %define grassdir %{grassprefix}/%{name}%{shortver}
@@ -172,6 +166,8 @@ export CFLAGS="-O2 -Werror=implicit-function-declaration"
 find . -type f -exec sed -i -e 's:#!%{_bindir}/env python3:#!%{_bindir}/python3:g' {} +
 
 %build
+# Make builds reproducible (e.g. "random" colortable example in documentation)
+export GRASS_RANDOM_SEED=1234
 make prefix=%{grassprefix} PREFIX=%{grassprefix} %{?_smp_mflags}
 
 %install
@@ -212,18 +208,18 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 
 %fdupes -s %{buildroot}%{grassdir}
 
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files devel
-%defattr(-,root,root)
 %{grassdir}/include
 %{grasslib}/*.a
 %{_sysconfdir}/GRASSDIR
 
 %files doc
-%defattr(-,root,root)
 %{grassdir}/docs
 
 %files
-%defattr(-,root,root)
 %config %{_sysconfdir}/ld.so.conf.d/grass-%{version}.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}%{shortver}
@@ -281,9 +277,5 @@ echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 %{grassdir}/CITING
 %{grassdir}/INSTALL
 %exclude %{grassdir}/demolocation
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
 
 %changelog
