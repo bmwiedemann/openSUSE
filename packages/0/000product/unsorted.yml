@@ -2161,6 +2161,7 @@ unsorted:
   - coccinelle: [x86_64] 
   - cockpit 
   - cockpit-bridge: [i586] 
+  - cockpit-d-installer 
   - cockpit-devel 
   - cockpit-doc 
   - cockpit-kdump 
@@ -7033,6 +7034,7 @@ unsorted:
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
+  - hoard 
   - hollywood 
   - hollywood-data 
   - holodev 
@@ -8722,6 +8724,7 @@ unsorted:
   - kvantum-manager-lang 
   - kvantum-openbox-themes 
   - kvantum-qt5 
+  - kvantum-qt6 
   - kvantum-themes 
   - kvirc 
   - kvm_stat-rebuild 
@@ -13366,19 +13369,19 @@ unsorted:
   - libprimecount-devel 
   - libprimecount7 
   - libprimesieve-devel 
-  - libprimesieve10 
+  - libprimesieve11 
   - libprofiler0 
   - libproj25 
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite3_21_9-32bit: [x86_64] 
+  - libprotobuf-lite3_21_10-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf3_21_9-32bit: [x86_64] 
-  - libprotoc3_21_9 
-  - libprotoc3_21_9-32bit: [x86_64] 
+  - libprotobuf3_21_10-32bit: [x86_64] 
+  - libprotoc3_21_10 
+  - libprotoc3_21_10-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -13898,6 +13901,9 @@ unsorted:
   - librime-lua 
   - librime-private-devel 
   - librime1 
+  - librist-devel 
+  - librist4 
+  - librist4-32bit: [x86_64] 
   - librk0 
   - librlog-devel 
   - librlog5 
@@ -32989,6 +32995,7 @@ unsorted:
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
   - ripgrep-zsh-completion 
+  - rist-tools 
   - ritchie-cli 
   - rk-devel 
   - rkdeveloptool 
