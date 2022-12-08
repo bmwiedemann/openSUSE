@@ -1,7 +1,7 @@
 #
 # spec file for package podman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
-# Build with libostree-devel in Tumbleweed, Leap 15 and SLES 15
-%if 0%{?suse_version} >= 1500
-%define with_libostree 1
-%endif
 Name:           podman
-Version:        4.2.1
+Version:        4.3.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://github.com/containers/podman
+URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
-Source3:        %{name}-rpmlintrc
-Source4:        README.SUSE.SLES
+Source2:        README.SUSE.SLES
+# hotfix for https://github.com/containers/podman/issues/16765
+Patch0:         0001-Revert-Default-missing-hostPort-to-containerPort-is-.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel
@@ -47,7 +44,7 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.17
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 Recommends:     apparmor-abstractions
@@ -64,9 +61,8 @@ Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
 Recommends:     %{name}-cni-config = %{version}
 Suggests:       katacontainers
-%if 0%{?with_libostree}
 BuildRequires:  libostree-devel
-%endif
+
 
 %description
 Podman is a container engine for managing pods, containers, and container
@@ -118,17 +114,22 @@ pages and %{name}.
 
 %build
 # Build podman
-BUILDFLAGS="-buildmode=pie" make
+BUILDFLAGS="-buildmode=pie" %make_build
 
 # Build manpages
-make %{?_smp_mflags} docs
+%make_build docs
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
 # Updates must be tested manually.
 
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr LIBEXECDIR=%{_libexecdir} install install.completions install.docker
+%make_install PREFIX=/usr LIBEXECDIR=%{_libexecdir} install.completions install.docker
+
+# remove the user tmpfile on SLE/Leap as it cannot handle them
+%if 0%{?suse_version} == 1500
+rm %{buildroot}%{_user_tmpfilesdir}/podman-docker.conf
+%endif
 
 # Add podman modprobe.d drop-in config
 mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
@@ -136,10 +137,11 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 
 # README.SUSE is SLES specifc currently
 %if !0%{?is_opensuse}
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %endif
 
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}/%{_datadir}
+%fdupes %{buildroot}/%{_systemd_util_dir}
 
 %files
 %if !0%{?is_opensuse}
@@ -194,6 +196,10 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %files docker
 %{_bindir}/docker
 %{_tmpfilesdir}/podman-docker.conf
+%if 0%{?suse_version} > 1500
+%{_user_tmpfilesdir}/podman-docker.conf
+%dir %{_user_tmpfilesdir}
+%endif
 
 %post docker
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf

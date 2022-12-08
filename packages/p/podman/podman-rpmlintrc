@@ -1,5 +1,0 @@
-addFilter (".* W: explicit-lib-dependency libcontainers-common")
-addFilter (".* W: explicit-lib-dependency libcontainers-image")
-addFilter (".* W: explicit-lib-dependency libcontainers-storage")
-addFilter (".* W: missing-call-to-setgroups-before-setuid")
-addFilter (".* W: non-conffile-in-etc .*zsh_completion.d.*")

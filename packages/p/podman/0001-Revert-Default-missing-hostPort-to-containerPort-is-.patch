@@ -1,0 +1,93 @@
+From 07151aaec3312b3235847106cfd76608c2d823e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Wed, 7 Dec 2022 17:28:39 +0100
+Subject: [PATCH] Revert "Default missing hostPort to containerPort is defined
+ in kube.yaml"
+
+This reverts commit f5fc0960e5eddf64a7d8fbf8fbfd3652b4ee5db3.
+---
+ pkg/specgen/generate/kube/kube.go |  3 ---
+ test/e2e/play_kube_test.go        |  6 ++++++
+ test/system/700-play.bats         | 24 ------------------------
+ 3 files changed, 6 insertions(+), 27 deletions(-)
+
+diff --git a/pkg/specgen/generate/kube/kube.go b/pkg/specgen/generate/kube/kube.go
+index 5186a2f72..b707c52a2 100644
+--- a/pkg/specgen/generate/kube/kube.go
++++ b/pkg/specgen/generate/kube/kube.go
+@@ -918,9 +918,6 @@ func getPodPorts(containers []v1.Container) []types.PortMapping {
+ 			if p.HostPort != 0 && p.ContainerPort == 0 {
+ 				p.ContainerPort = p.HostPort
+ 			}
+-			if p.HostPort == 0 && p.ContainerPort != 0 {
+-				p.HostPort = p.ContainerPort
+-			}
+ 			if p.Protocol == "" {
+ 				p.Protocol = "tcp"
+ 			}
+diff --git a/test/e2e/play_kube_test.go b/test/e2e/play_kube_test.go
+index 97823e232..6fe299b38 100644
+--- a/test/e2e/play_kube_test.go
++++ b/test/e2e/play_kube_test.go
+@@ -133,6 +133,8 @@ spec:
+   containers:
+   - name: podnameEqualsContainerNameYaml
+     image: quay.io/libpod/alpine:latest
++    ports:
++    - containerPort: 80
+ `
+ 
+ var podWithoutAName = `
+@@ -237,6 +239,8 @@ spec:
+         - "1.5"
+         name: alpine
+         image: quay.io/libpod/alpine:latest
++        ports:
++        - containerPort: 80
+         livenessProbe:
+           exec:
+             command:
+@@ -270,6 +274,8 @@ spec:
+         - "1.5"
+         name: alpine
+         image: quay.io/libpod/alpine:latest
++        ports:
++        - containerPort: 80
+         livenessProbe:
+           exec:
+             command:
+diff --git a/test/system/700-play.bats b/test/system/700-play.bats
+index 5f3eb1ef2..3ff1e1ed6 100644
+--- a/test/system/700-play.bats
++++ b/test/system/700-play.bats
+@@ -392,27 +392,3 @@ status: {}
+     run_podman rm -a -f
+     run_podman rm -f -t0 myyaml
+ }
+-
+-@test "podman kube play - hostport" {
+-    HOST_PORT=$(random_free_port)
+-    echo "
+-apiVersion: v1
+-kind: Pod
+-metadata:
+-  labels:
+-    app: test
+-  name: test_pod
+-spec:
+-  containers:
+-    - name: server
+-      image: $IMAGE
+-      ports:
+-        - name: hostp
+-          containerPort: $HOST_PORT
+-" > $PODMAN_TMPDIR/testpod.yaml
+-
+-    run_podman kube play $PODMAN_TMPDIR/testpod.yaml
+-    run_podman pod inspect test_pod --format "{{.InfraConfig.PortBindings}}"
+-    assert "$output" = "map[$HOST_PORT/tcp:[{ $HOST_PORT}]]"
+-    run_podman kube down $PODMAN_TMPDIR/testpod.yaml
+-}
+-- 
+2.38.1
+
