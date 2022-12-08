@@ -19,9 +19,10 @@
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
 Name:           crun
-Version:        1.6
+Version:        1.7.2
 Release:        0
-Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 URL:            https://github.com/containers/crun
 # We always run autogen.sh
 BuildRequires:  autoconf
@@ -43,8 +44,8 @@ BuildRequires:  systemd-devel
 BuildRequires:  criu-devel >= 3.15
 %endif
 %ifarch x86_64 aarch64
-BuildRequires:  libkrun >= 0.1.4
-Requires:       libkrun >= 0.1.7
+BuildRequires:  libkrun-devel
+Requires:       libkrun1
 %endif
 
 %description

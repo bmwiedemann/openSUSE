@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Dec  7 09:24:19 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 1.7.2:
+  * criu: hardcode library name to libcriu.so.2.
+  * cgroup: always enable all controllers, even if the cgroup was
+    already joined. Regression caused by crun-1.7.
+
+- Changes from 1.7.1:
+  * criu: load libcriu dynamically.
+  * seccomp: initialize libgcrypt.
+  * handlers: fix rewriting the argv if the full cmdline doesn't
+    fit.
+  * utils: honor SELinux label when using a custom handler.
+  * utils: honor AppArmor label when using a custom handler.
+  * krun: copy the OCI configuration file into the container.
+  * utils: fix creating the default user namespace when running
+    with euid != 0.
+  * Add setlinebuf() when --debug and --log=file: are used.
+  * Fix timestamp format in the error messages.
+  *  krun: disable libkrun's collection of env vars.
+
+- Changes from 1.7:
+  * seccomp: use a cache for the generated BPF.
+  * add support for setting the domainname through the OCI spec.
+  * handlers: define wasm and krun.
+  * wasmtime: add support for compiling .wat format.
+  * cgroup: honor checkBeforeUpdate on cgroupv2.
+  * crun: chown std streams before joining the user namespace.
+  * crun: display rundir in --version output.
+  * container: with cgroupfs use clone3 to join directly the target
+    cgroup.
+  * linux: create parent directories for created devices with mode
+    0755.
+  * wasm: inherit environment variables in the WasmEdge handler.
+
+-------------------------------------------------------------------
+Fri Sep 30 12:31:47 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update the libkrun dependency to the new libkrun1 library and
+  devel package
+
+-------------------------------------------------------------------
 Thu Sep 29 10:44:19 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to 1.6
