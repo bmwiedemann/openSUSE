@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu Dec 01 08:02:15 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221130.db5d69f:
+  * gocd: drop SUSE:ALP:ARM project from pkglistgen
+
+-------------------------------------------------------------------
+Tue Nov 29 12:54:11 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221129.8ed5c06:
+  * Update publish_distro_conf/publish_leap155_appliances.config
+  * Limit flavors to just one
+  * Use correct Minimal-VM reference
+  * comment out 15.5 flavors that do not build yet
+
+-------------------------------------------------------------------
+Mon Nov 28 14:12:50 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221128.1e849ff:
+  * ignore more jar version of yaml validator
+  * gocd: add more subprojects to ALP pkglistgen
+
+-------------------------------------------------------------------
+Fri Nov 25 19:04:14 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221125.1eb9923:
+  * gocd: Add configuration for openSUSE:Factory:LegacyX86
+
+-------------------------------------------------------------------
+Thu Nov 24 17:26:00 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221124.c0644df:
+  * readd ToTest 15.4_ARM manager
+
+-------------------------------------------------------------------
+Thu Nov 24 15:25:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221124.fd471a3:
+  * ci: Adjust path to memcached as done in the package
+
+-------------------------------------------------------------------
+Thu Nov 24 13:21:15 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221124.a808aa2:
+  * gocd/rabbit-openqa.py: Also try to match disk images (#2888)
+  * gocd/rabbit-openqa.py: Ignore isos which don't have an OpenQAMapping
+
+-------------------------------------------------------------------
+Wed Nov 23 15:06:38 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221123.d483a44:
+  * gocd/rabbit-openqa.py: Ignore jobs in "Development" groups
+  * gocd/rabbit-openqa.py: Add --dry option
+  * gocd/rabbit-openqa.py: Remove unused parameters
+
+-------------------------------------------------------------------
+Thu Nov 17 13:47:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221117.de9316e:
+  * gocd: fix another double quote in BCI
+
+-------------------------------------------------------------------
+Thu Nov 17 12:47:52 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221117.db274c7:
+  * gocd: fix typo in BCI release pipeline
+
+-------------------------------------------------------------------
+Thu Nov 17 12:05:51 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221117.6e6e1ec:
+  * Move comment out of the value block - script executor plugin doesn't like it
+  * Update version of the config plugin
+  * Update SLE Micro to 5.4
+  * gocd: change erb template file and not just the generated file
+  * include review feedback and adapt script for SP5
+  * gocd: allow to publish SLE BCI repository using a token
+
+-------------------------------------------------------------------
+Fri Nov 11 11:22:42 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221111.5c2645c:
+  * Improve bs_mirrorfull help text
+
+-------------------------------------------------------------------
+Fri Nov 11 10:24:20 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221111.ffbab4f:
+  * Adapt check_source test to latest source validator output
+  * check_bugowner: Don't get tripped over trailing space
+
+-------------------------------------------------------------------
+Fri Nov 11 09:19:46 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221111.8fe27f7:
+  * Move the copy & pasted bci blocks into a template
+
+-------------------------------------------------------------------
+Fri Nov 11 09:12:17 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221111.37857f9:
+  * Added BCI 15SP5 parts
+
+-------------------------------------------------------------------
 Tue Oct 25 12:32:56 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20221025.1ef34941:
