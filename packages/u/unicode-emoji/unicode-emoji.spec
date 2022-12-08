@@ -18,7 +18,7 @@
 
 %define long_version 14.0.0
 Name:           unicode-emoji
-Version:        14.0
+Version:        15.0
 Release:        0
 Summary:        Unicode Emoji Data Files
 License:        Unicode
