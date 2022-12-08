@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 30 17:46:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file, make rpmlint happy.
+
+-------------------------------------------------------------------
 Wed Jul  1 14:23:32 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.10.2:
