@@ -200,7 +200,7 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
 install -m 755 sample/.libs/client %{buildroot}%{_bindir}/cyrus_sasl_sample_client
 install -m 755 sample/.libs/server %{buildroot}%{_bindir}/cyrus_sasl_sample_server
-chmod 0644 doc/*
+find doc -type f -exec chmod 0644 {} \;
 rm -f doc/Makefile*
 rm -f %{buildroot}/%{_mandir}/cat?/*
 rm -f %{buildroot}/%{_mandir}/man8/saslauthd*

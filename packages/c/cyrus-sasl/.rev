@@ -614,4 +614,12 @@
 - drop cyrus-sasl-bug587.patch (upstream)</comment>
     <requestid>963371</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>278d03ee1c61476d1c9b64004f794839</srcmd5>
+    <version>2.1.28</version>
+    <time>1670514620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041090</requestid>
+  </revision>
 </revisionlist>

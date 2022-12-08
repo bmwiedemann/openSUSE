@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:15:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not set directories inside doc/ mode 644; otherwise the
+  directories are set 644 as well, which means no files inside are
+  accessible. This resulted in the past in doc/ actually not being
+  added to the devel package.
+
+-------------------------------------------------------------------
 Wed Mar  9 08:39:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.28 (bsc#1196036, CVE-2022-24407):
