@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:41:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.6.4:
+  * Fix VC1 Decode assertion failure when frame type is NONE_PICTURE
+
+-------------------------------------------------------------------
 Mon Nov  7 12:24:27 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - needed for jira#PED-1174 (Video decoding/encoding support 
