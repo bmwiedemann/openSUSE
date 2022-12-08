@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-defcon
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        A set of UFO based objects for use in font editing applications
 License:        MIT

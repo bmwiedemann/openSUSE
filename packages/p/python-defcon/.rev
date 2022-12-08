@@ -90,4 +90,12 @@
   * drop python 3.6 support</comment>
     <requestid>990221</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0773ab909f0fa1b886498c05ed88a71d</srcmd5>
+    <version>0.10.2</version>
+    <time>1670514659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041204</requestid>
+  </revision>
 </revisionlist>
