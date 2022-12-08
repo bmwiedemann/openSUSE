@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  7 18:50:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.7.2 
+  * Fix: hidden property might not be set from the API by @lavigne958 in #1151
+
+-------------------------------------------------------------------
 Sat Dec  3 17:33:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.7.1
