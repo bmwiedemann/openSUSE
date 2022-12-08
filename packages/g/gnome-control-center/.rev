@@ -1853,4 +1853,11 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
   (glgo#GNOME/gnome-control-center/commit/2b3de01124). (forwarded request 1040635 from JonathanKang)</comment>
     <requestid>1040678</requestid>
   </revision>
+  <revision rev="219" vrev="3">
+    <srcmd5>29471a7f316d0bf5bbc42b9ca8fb7016</srcmd5>
+    <version>43.1</version>
+    <time>1670511713</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206233</comment>
+  </revision>
 </revisionlist>
