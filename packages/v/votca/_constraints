@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <constraints>
   <hardware>
-    <physicalmemory>
-      <size unit="G">4</size>
-    </physicalmemory>
+    <memory>
+      <size unit="G">6</size>
+    </memory>
     <memoryperjob>
-      <size unit="M">2000</size>
+      <size unit="M">1000</size>
     </memoryperjob>
   </hardware>
   <sandbox>kvm</sandbox>

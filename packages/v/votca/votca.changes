@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 06:21:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Adjust constraints to avoid rejecting too many workers, enable
+  parallel builds with limit_build.
+- Clean up specfile, remove obsolete __DATE__ mangling.
+
+-------------------------------------------------------------------
 Fri Jul 29 05:23:54 UTC 2022 - Christoph Junghans <junghans@votca.org>
 
 - only use python3-epressomd for testing on x86_64

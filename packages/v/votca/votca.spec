@@ -25,10 +25,8 @@ Release:        0
 Summary:        Versatile Object-oriented Toolkit for Coarse-graining Applications
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
-URL:            http://www.votca.org
+URL:            https://www.votca.org
 Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  cmake >= 3.13
 BuildRequires:  eigen3-devel
@@ -51,6 +49,7 @@ BuildRequires:  libecpint-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libint-devel
 BuildRequires:  libxc-devel
+BuildRequires:  memory-constraints
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkg-config
 BuildRequires:  procps
@@ -173,16 +172,11 @@ This package contains the bash completion support for votca.
 %prep
 %setup -n %{name}-%{uversion} -q
 
-# Avoid unnecessary rebuilds of the package
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
-sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" tools/src/libtools/version.cc csg/src/libcsg/version.cc xtp/src/libxtp/version.cc
-
 %build
 %setup_openmpi
 
 # save some memory
-%define _smp_mflags -j1
+%limit_build -m 2400
 %{cmake} -DINSTALL_RC_FILES=OFF -DCMAKE_SKIP_RPATH=OFF -DENABLE_TESTING=ON -DENABLE_REGRESSION_TESTING=ON \
          -DINJECT_MARCH_NATIVE=OFF -DBUILD_CSGAPPS=ON \
          -DBUILD_XTP=%{with_xtp} \
