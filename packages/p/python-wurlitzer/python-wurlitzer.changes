@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:42:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.0.3 
+  * ci: update packages in freebsd #70
+  * Include STDOUT and PIPE in public API #69
+  * use 2**18 for bufsize test #61
+  * Try running tests on freebsd #60
+  * Add details to the failed-to-set-pipe-buffer-size warning #58
+  * Add details to the failed-to-set-pipe-buffer-size warning, closes #5757 #5757
+
+-------------------------------------------------------------------
 Thu Apr 14 09:47:12 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.0.2
