@@ -19,7 +19,7 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        5.1.32
+Version:        5.1.72
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
