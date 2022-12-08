@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:33:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.9.2 
+  BUGS
+  * Fix for issue #94
+  FEATURES
+  * Added match variable copy funtion
+  * Added new ttp parser method get_templates to emit fully constructed templates after processing all extend tags
+
+-------------------------------------------------------------------
 Mon Oct 24 05:56:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-ttp-templates dependency to test build requirements

@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-ttp%{psuffix}
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Template Text Parser
 License:        MIT

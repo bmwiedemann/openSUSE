@@ -8,4 +8,12 @@
 - Remove python-ttp-templates dependency</comment>
     <requestid>1030655</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f50aebdda71995a7062a479b2b398ef5</srcmd5>
+    <version>0.9.2</version>
+    <time>1670514752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041650</requestid>
+  </revision>
 </revisionlist>
