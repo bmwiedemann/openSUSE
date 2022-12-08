@@ -44,6 +44,8 @@ Source2:        https://github.com/OpenChemistry/crystals/archive/%{crystals_rev
 Patch0:         not-install-gwavi.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         https://github.com/OpenChemistry/avogadrolibs/commit/e48e67b85aae1f694b1d8c63b844bf8846006aae.patch#/Fix_qtplugins_surfaces_linking.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Avoid-ambigous-definition-of-mmtf-s-is_polymer.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes

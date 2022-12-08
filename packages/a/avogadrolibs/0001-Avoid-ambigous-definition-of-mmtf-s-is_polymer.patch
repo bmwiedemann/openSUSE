@@ -1,0 +1,43 @@
+From 2f263eade9246544e88497c586c7f01ff31cb221 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 7 Dec 2022 04:54:40 +0100
+Subject: [PATCH] Avoid ambigous definition of mmtf's is_polymer
+
+is_polymer can be found with ADL lookup in the mmtf namespace (due to
+mmtf::Entity) and via ordinary lookup in the enclosing namespace,
+making it ambigous.
+
+Remove the copied definition is mmtf is recent enough.
+
+Fixes #1185.
+---
+ avogadro/io/mmtfformat.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/avogadro/io/mmtfformat.cpp b/avogadro/io/mmtfformat.cpp
+index fb77491..e58369f 100644
+--- a/avogadro/io/mmtfformat.cpp
++++ b/avogadro/io/mmtfformat.cpp
+@@ -33,8 +33,10 @@ MMTFFormat::MMTFFormat() = default;
+ 
+ MMTFFormat::~MMTFFormat() = default;
+ 
++namespace {
+ // from latest MMTF code, under the MIT license
+ // https://github.com/rcsb/mmtf-cpp/blob/master/include/mmtf/structure_data.hpp
++#if MMTF_SPEC_VERSION_MAJOR <= 1 && MMTF_SPEC_VERSION_MINOR < 1
+ bool is_polymer(const unsigned int chain_index,
+                 const std::vector<mmtf::Entity>& entity_list)
+ {
+@@ -48,6 +50,8 @@ bool is_polymer(const unsigned int chain_index,
+   }
+   return false;
+ }
++#endif
++} // namespace
+ 
+ bool MMTFFormat::read(std::istream& file, Molecule& molecule)
+ {
+-- 
+2.38.1
+

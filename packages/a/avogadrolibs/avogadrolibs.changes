@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  7 03:55:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with mmtf-cpp 1.1.0, add
+  0001-Avoid-ambigous-definition-of-mmtf-s-is_polymer.patch
+
+-------------------------------------------------------------------
 Sun Sep 11 18:39:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.97.0
