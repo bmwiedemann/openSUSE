@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 14:39:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.6.53 
+  Released: 2022-11-18
+  Summary:
+  * Reformat pyproject.toml to be most compatible with 'pip install'
+  * Several internal project-level optimizations...
+  * git changes committed on 2022-11-09... somehow 1.6.53 wasn't pushed to pypi on 9-Nov-2022. It was pushed to pypi on 18-Nov-2022
+
+-------------------------------------------------------------------
 Fri Dec  2 00:57:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.6.52

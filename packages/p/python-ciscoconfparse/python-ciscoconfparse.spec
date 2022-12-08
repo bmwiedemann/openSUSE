@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ciscoconfparse
-Version:        1.6.52
+Version:        1.6.53
 Release:        0
 Summary:        Library for parsing, querying and modifying Cisco IOS-style configurations
 License:        GPL-3.0-or-later
