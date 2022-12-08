@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  7 14:05:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v15.3.4 - 2022-11-30
+  * Fix it_IT SSN generation with latin chars in name or surname. Thanks @panicofr.
+
+- Update to v15.3.3 - 2022-11-22
+  * Fix seeding with multiple locales. Thanks @johntmyers.
+
+- Update to v15.3.2 - 2022-11-14
+  * Fix implicit Optional issues. Thanks @palfrey.
+
+-------------------------------------------------------------------
 Thu Dec  1 17:52:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v15.3.1 - 2022-11-07
