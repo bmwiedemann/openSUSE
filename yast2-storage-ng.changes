@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  7 14:26:51 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Allow reusing LVM volume groups
+- 4.5.15
+
+-------------------------------------------------------------------
+Tue Nov 29 15:07:25 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Proposal: new setting to prevent reusing LVM volume groups
+  (related to gh#yast/d-installer#264).
+
+-------------------------------------------------------------------
 Mon Nov 21 11:33:52 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - GuidedProposal: support for LUKS2 encryption with a configurable
