@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Dec  4 11:06:00 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.0.2:
+  * fix resize cancel not working in some cases
+  * fix fileattr stream command format and add workaround when it
+    cannot be applied
+  * properly handle degraded raid56 reads
+  * fi defrag: fix verbosity, don't print file names by default
+  * receive: fix silent data loss after fall back from encoded
+    write
+  * fi mkswapfile: new command to create a formatted swapfile in
+    one go
+- includes changes from 6.0.1:
+  * send: minor speed up for v2 due to increased buffer size
+  * resize: invalid command line options fail with error code
+  * quota rescan:
+    * add long options --status and --wait
+    * new option to wait but don't start rescan
+  * qgroup show: print path by default, updated format
+  * qgroup: new subcommand clear-stale, remove qgroups without
+    their subvolumes
+  * experimental:
+    * add warnings to commands that have it enabled (mkfs, image,
+      btrfstune)
+  * other:
+    * documentation, help text, error message updates
+
+-------------------------------------------------------------------
 Wed Nov  2 00:00:00 CET 2022 - dsterba@suse.cz
 
 - update to 6.0
