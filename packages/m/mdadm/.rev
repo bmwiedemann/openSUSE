@@ -1441,4 +1441,12 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>1039445</requestid>
   </revision>
+  <revision rev="138" vrev="3">
+    <srcmd5>73f24eb36850e00ae0ed913ed0b6bdd8</srcmd5>
+    <version>4.2</version>
+    <time>1670514614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040907</requestid>
+  </revision>
 </revisionlist>

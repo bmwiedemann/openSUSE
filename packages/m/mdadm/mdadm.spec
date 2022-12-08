@@ -86,7 +86,6 @@ Patch41:        0041-Grow-Split-Grow_reshape-into-helper-function.patch
 Patch42:        0042-Assemble-check-if-device-is-container-before-schedul.patch
 Patch43:        0043-super1-report-truncated-device.patch
 Patch44:        0044-mdadm-Correct-typos-punctuation-and-grammar-in-man.patch
-Patch45:        0045-Manage-Block-unsafe-member-failing.patch
 Patch46:        0046-Monitor-Fix-statelist-memory-leaks.patch
 Patch47:        0047-mdadm-added-support-for-Intel-Alderlake-RST-on-VMD-p.patch
 Patch48:        0048-mdadm-Add-Documentation-entries-to-systemd-services.patch
@@ -150,7 +149,6 @@ mdadm is a program that can be used to control Linux md devices.
 %patch42 -p1
 %patch43 -p1
 %patch44 -p1
-%patch45 -p1
 %patch46 -p1
 %patch47 -p1
 %patch48 -p1

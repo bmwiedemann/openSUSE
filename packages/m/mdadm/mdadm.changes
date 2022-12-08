@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 08:42:17 UTC 2022 - Coly Li <colyli@suse.com>
+
+- Drop the patch which is reported as regression by upstream developer
+  (bsc#1206139)
+  0045-Manage-Block-unsafe-member-failing.patch
+- Add jsc#PED-947 together with jsc#PED-1009 in mdadm.changes, they
+  are both the requirement to update mdadm to latest upstream state
+  via different requestors.
+
+-------------------------------------------------------------------
 Thu Nov 24 06:23:28 UTC 2022 - Coly Li <colyli@suse.com>
 
 - Call mdadm_env.sh from /usr/libexec/mdadm (bsc#1111960, bsc#1202090)
@@ -17,7 +27,7 @@ Thu Nov 24 05:57:50 UTC 2022 - Coly Li <colyli@suse.com>
 Thu Nov  3 15:58:38 UTC 2022 - Coly Li <colyli@suse.com>
 
 - Update mdadm package to latest mdadm since mdadm-4.2
-  (jsc#PED-1009)
+  (jsc#PED-1009, jsc#PED-947)
   * Only patches directly change runtime programs included,
   - Unify error message.
     0001-Unify-error-message.patch
@@ -129,7 +139,7 @@ Thu Nov  3 15:58:38 UTC 2022 - Coly Li <colyli@suse.com>
 - Rename 0000-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
   to 1004-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch. 
 
-- Update mdadm package to mdadm-4.2 (jsc#PED-1009)
+- Update mdadm package to mdadm-4.2 (jsc#PED-1009, jsc#PED-947)
   All important modifications since previous update to mdadm-4.2
   are listed here.
   * The patches about Intel Matrix Storage Manager (including
