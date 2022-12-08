@@ -27,7 +27,7 @@
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
