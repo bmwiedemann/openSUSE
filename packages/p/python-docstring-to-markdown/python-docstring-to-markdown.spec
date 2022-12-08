@@ -17,7 +17,7 @@
 
 
 Name:           python-docstring-to-markdown
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        On the fly conversion of Python docstrings to markdown
 License:        LGPL-2.1-only
