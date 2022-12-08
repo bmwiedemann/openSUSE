@@ -47,4 +47,34 @@
     <comment></comment>
     <requestid>976024</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4100efd297d06a62882f1a7ebc3acb17</srcmd5>
+    <version>0.2.2+gite67d0ea</version>
+    <time>1670514646</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to the new libkrun1 library and devel package as dependencies
+- Fix build on all distros by explicitly requiring zstd
+- Update to version 0.2.2+gite67d0ea:
+  * Bump version to v0.2.2
+  * Restrict the number of values of &quot;-p&quot; and &quot;-v&quot;
+  * Bump version to v0.2.1
+  * macos: fix root ownership and mode
+  * Bump version to v0.2.0
+  * Avoid overriding PATH
+  * Use krun_set_env to set env vars
+  * macos: Add missing BuildahCommand
+  * Export container config on microVM creation
+  * Remove command and workdir defaults
+  * Bump version to 0.1.6
+  * Cargo: add description and repository
+  * ci: Add a step to install asciidoctor
+  * Fix some clippy warnings
+  * Replace &quot;lightweight VM&quot; with &quot;microVM&quot;
+  * Add manual pages
+  * README.md: Replace lightweight VMs with microVMs
+  * README.md: remove &quot;Limitations&quot; section
+  * Rename Security.md to SECURITY.md
+</comment>
+    <requestid>1041193</requestid>
+  </revision>
 </revisionlist>

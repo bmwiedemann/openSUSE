@@ -17,7 +17,7 @@
 
 
 Name:           krunvm
-Version:        0.1.5+giteedd405
+Version:        0.2.2+gite67d0ea
 Release:        0
 Summary:        Manage lightweight VMs created from OCI images
 License:        Apache-2.0
@@ -27,9 +27,11 @@ Source1:        vendor.tar.zst
 Source2:        cargo_config
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo-packaging
-BuildRequires:  libkrun >= 0.1.7
+BuildRequires:  libkrun-devel
+BuildRequires:  zstd
+BuildRequires:  rubygem(asciidoctor)
 Requires:       buildah
-Conflicts:      libkrun-devel
+Requires:       libkrun1 >= 1.4.4
 Conflicts:      libkrun0
 
 %description

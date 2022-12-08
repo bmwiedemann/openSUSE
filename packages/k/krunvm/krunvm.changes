@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep 30 13:15:57 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to the new libkrun1 library and devel package as dependencies
+- Fix build on all distros by explicitly requiring zstd
+
+-------------------------------------------------------------------
+Wed Sep 28 18:00:50 UTC 2022 - dfaggioli@suse.com
+
+- Update to version 0.2.2+gite67d0ea:
+  * Bump version to v0.2.2
+  * Restrict the number of values of "-p" and "-v"
+  * Bump version to v0.2.1
+  * macos: fix root ownership and mode
+  * Bump version to v0.2.0
+  * Avoid overriding PATH
+  * Use krun_set_env to set env vars
+  * macos: Add missing BuildahCommand
+  * Export container config on microVM creation
+  * Remove command and workdir defaults
+  * Bump version to 0.1.6
+  * Cargo: add description and repository
+  * ci: Add a step to install asciidoctor
+  * Fix some clippy warnings
+  * Replace "lightweight VM" with "microVM"
+  * Add manual pages
+  * README.md: Replace lightweight VMs with microVMs
+  * README.md: remove "Limitations" section
+  * Rename Security.md to SECURITY.md
+
+-------------------------------------------------------------------
 Fri May  6 12:45:10 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 0.1.5+giteedd405:
