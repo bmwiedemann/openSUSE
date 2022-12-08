@@ -152,4 +152,16 @@
  - Other minor fixes.</comment>
     <requestid>827032</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3ab9eb4c0d5998a5f6d6e3055b6e12a6</srcmd5>
+    <version>1.4.4</version>
+    <time>1670514714</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4:
+  * Option to invert colors in image viewer.
+  * Character picker now remembers up to 24 last used symbols, in usage order.
+  * Fixed a possible crash when filtering out activities from the minor feed.
+  * Fixed some minor visual issues.</comment>
+    <requestid>1041252</requestid>
+  </revision>
 </revisionlist>

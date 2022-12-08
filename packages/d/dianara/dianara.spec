@@ -1,7 +1,7 @@
 #
 # spec file for package dianara
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   Dianara
 Name:           dianara
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Pump.io social network desktop client
 License:        GPL-2.0-or-later

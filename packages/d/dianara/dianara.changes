@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  7 21:48:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Option to invert colors in image viewer.
+  * Character picker now remembers up to 24 last used symbols, in usage order.
+  * Fixed a possible crash when filtering out activities from the minor feed.
+  * Fixed some minor visual issues.
+
+-------------------------------------------------------------------
 Sun Aug 16 13:30:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.4.3:
