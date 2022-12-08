@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:32:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Read gl.symbols when generating stubs for libGL.so
+  * Update GL headers and XML files
+  * Add support for loongarch64
+  * GLX: Fix assembly stubs for x32
+  * Fix pthreads lookup on FreeBSD
+
+-------------------------------------------------------------------
 Sat Oct  1 11:15:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

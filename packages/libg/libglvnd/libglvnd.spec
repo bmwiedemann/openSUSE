@@ -19,7 +19,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 Name:           libglvnd
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        The GL Vendor-Neutral Dispatch library
 License:        MIT
