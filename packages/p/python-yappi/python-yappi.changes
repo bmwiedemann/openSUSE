@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:13:58 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Skip test_context_cbks_reset_to_default under qemu
+
+-------------------------------------------------------------------
 Wed Nov  9 19:54:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.4.0 

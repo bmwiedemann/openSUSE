@@ -62,6 +62,10 @@ skip_tests="not test_basic_old_style and not test_basic"
     # this test relies on asyncio.run method
     skip_tests="$skip_tests and not test_asyncio_context_vars"
 %endif
+%if 0%{?qemu_user_space_build}
+# qemu linux-user emulation always creates an additional thread
+skip_tests="$skip_tests and not test_context_cbks_reset_to_default"
+%endif
 # yappi binary is not available (only yappi-%python_version)
 skip_tests="$skip_tests and not test_run_as_script"
 %pytest_arch -k "$skip_tests"
