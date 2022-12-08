@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>021798d6c0def8d9c3fcddf2af290ef2</srcmd5>
+    <version>0.4.0</version>
+    <time>1670514740</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry, Dominique!
+
+2nd attempt:
+
+This package will be required by Blender 3.4.0, that was released yesterday, and I plan to submit today
+
+it's x86_64 exclusive for the time being</comment>
+    <requestid>1041355</requestid>
+  </revision>
+</revisionlist>

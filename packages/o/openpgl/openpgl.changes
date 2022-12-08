@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Thu Dec  8 09:54:51 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Make it x86_64 exclusive
+
+-------------------------------------------------------------------
+Thu Nov  3 08:04:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove embree build dependency, build uses an integrated embree copy
+
+-------------------------------------------------------------------
+Sat Oct 22 17:01:06 UTC 2022 - hpj@urpla.net
+
+- Update to version 0.4.0:
+  * [pathsegmentstorage] Deleting copy constructor and assignment operator for PathSegmentDataStorage
+  * [cleanup] Fixing some truncation compiler warnings
+  * [alloc] Fixing linking problem with embree::alignedMalloc
+  * [pathsegmentstorage] Fixing memory leak
+  * [vmm] Fixing phase function look-up for abs(meanCosine) > 0.99
+  * [KNN] Adding explicit reset functionality to the KNNSearchTree
+  * [kdtree] Adding function to calculate the max. depth of the current tree
+  * [ci] Find TBB for static-analysis
+  * [ci] Fix GHA Workflows
+  * [doc] updated some comments
+  * [tpp] Adding nanoflann to the tpp file
+  * [ci] Updating version number
+  * [cmake] Adding OPENPGL_LIBRARY_NAME option to set the filename of the library
+  * [api] removing GetTotalSPP() from the Field and adding GetnumSegments() and GetNumSamples() to the PathSegmentStorage
+  * [KNN] Fixing bug when we have less then 8 nodes
+  * [deterministic] Setting default value to false
+  * [alignment] testing some alignment stuff
+  * [compiler] fixing some compiler warnings
+  * [python] Removing old python binding code
+  * [alloc] Added the Embree aligned allocator code
+  * [embree] Added missing AVX-512 functions (e.g., isvalid and xchg)
+  * [ci] Adding Ubuntu 22.04 builds to the CI
+  * [ci] Adding Mac ARM builds to the CI
+  * [superbuild] Adding option to build TBB from source
+  * [kdtree] Using merges samples statistics of the previous and the new samples to determine the splitting dim and pos
+  * [pavmm] Fixing bug during the update of the per component distances
+  * [doc] Updating CHANGELOG.md and README.md
+  * [cmake] Removing Embree dependencies
+  * [KNN] Removing Embree dependency in KNN.h in favor of header-only nanoFLANN
+  * [ci] Updating runner names and switching to main branch of re-usable workflows
+  * [vmm] Optimizing performance for VMM sampling by using approx::log instead of std::log
+  * [pathsegmentstorage] Adding a max_distance attribute to clamp the distance of a generated SampleData.
+  * [deterministic] Switching from std::sort to tbb::parallel_sort
+  * [deterministic] Adding an option to PGLFieldArguments to enable deterministic training behavior
+  * [doc] Updating the CHANGELOG.md and README.md
+  * [KNN] SIMD vectorization of the stochastic KNN lookup
+  * [Device] parameterize FIeld over Vecsize
+  * [io] Disiabling strict version checking when loading files
+  * [KNN] Adding precomputed approximated KNN lookup
+  * [vmm] Optimized cosine product
+  * [cmake] Fixing use of CMake Option to enable AVX512 support
+  * [kd-tree] some performance upgrades to the kd-tree lookup
+  * [ci] Updating CI - Refactoring binary scan interface - Add release job for testing binary analysis - Test binary analysis scanning
+  * [github] adding example .yml file for github actions
+  * [fix] Fixing missing return value for SurfaceSamplingDistribution::SupportsApplyCosineProduct
+  * Build system options to control ISAs to build, add Arm ISAs
+  * Update Embree sources to latest master
+
+-------------------------------------------------------------------
+Sat Oct 22 16:07:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- v0.3.1: Initial package
