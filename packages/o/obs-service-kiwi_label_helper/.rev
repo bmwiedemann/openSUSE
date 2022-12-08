@@ -23,4 +23,12 @@
     <comment>- Add explicit fallback for chroot builds</comment>
     <requestid>819506</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>803cb38715f1a15383af372e2496a78c</srcmd5>
+    <version>0.0</version>
+    <time>1670514613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040883</requestid>
+  </revision>
 </revisionlist>

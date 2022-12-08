@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-kiwi_label_helper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ This service can be used during buildtime to implement the
 suse_label_helper:add_prefix element useful for building containers.
 
 %prep
-%setup -q -D -T -n .
+%setup -q -D -T -c
 cp %{SOURCE2} .
 
 %build
