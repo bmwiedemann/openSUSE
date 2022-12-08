@@ -1,0 +1,79 @@
+diff --git a/scipy/_lib/tests/test_bunch.py b/scipy/_lib/tests/test_bunch.py
+index 6525568b099..1af6f2d5fab 100644
+--- a/scipy/_lib/tests/test_bunch.py
++++ b/scipy/_lib/tests/test_bunch.py
+@@ -16,7 +16,7 @@ class TestMakeTupleBunch:
+     # Tests with Result
+     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 
+-    def setup(self):
++    def setup_method(self):
+         # Set up an instance of Result.
+         self.result = Result(x=1, y=2, z=3, w=99, beta=0.5)
+ 
+diff --git a/scipy/optimize/tests/test_minpack.py b/scipy/optimize/tests/test_minpack.py
+index c88095351c6..64aafbb63b9 100644
+--- a/scipy/optimize/tests/test_minpack.py
++++ b/scipy/optimize/tests/test_minpack.py
+@@ -203,10 +203,12 @@ def deriv_func(*args):
+         assert_array_almost_equal(final_flows, np.ones(4))
+ 
+     def test_concurrent_no_gradient(self):
+-        return sequence_parallel([self.test_pressure_network_no_gradient] * 10)
++        v = sequence_parallel([self.test_pressure_network_no_gradient] * 10)
++        assert all([result is None for result in v])
+ 
+     def test_concurrent_with_gradient(self):
+-        return sequence_parallel([self.test_pressure_network_with_gradient] * 10)
++        v = sequence_parallel([self.test_pressure_network_with_gradient] * 10)
++        assert all([result is None for result in v])
+ 
+ 
+ class TestRootHybr:
+@@ -386,10 +388,12 @@ def deriv_func(*args):
+         assert_array_almost_equal(params_fit, self.abc, decimal=2)
+ 
+     def test_concurrent_no_gradient(self):
+-        return sequence_parallel([self.test_basic] * 10)
++        v = sequence_parallel([self.test_basic] * 10)
++        assert all([result is None for result in v])
+ 
+     def test_concurrent_with_gradient(self):
+-        return sequence_parallel([self.test_basic_with_gradient] * 10)
++        v = sequence_parallel([self.test_basic_with_gradient] * 10)
++        assert all([result is None for result in v])
+ 
+     def test_func_input_output_length_check(self):
+ 
+diff --git a/scipy/stats/tests/test_hypotests.py b/scipy/stats/tests/test_hypotests.py
+index 129b3fffc67..e5780df6572 100644
+--- a/scipy/stats/tests/test_hypotests.py
++++ b/scipy/stats/tests/test_hypotests.py
+@@ -169,7 +169,7 @@ def test_callable_cdf(self):
+ 
+ 
+ class TestMannWhitneyU:
+-    def setup(self):
++    def setup_method(self):
+         _mwu_state._recursive = True
+ 
+     # All magic numbers are from R wilcox.test unless otherwise specied
+@@ -616,15 +616,15 @@ def test_gh_2118(self, x, y, alternative, expected):
+                            method="asymptotic")
+         assert_allclose(res, expected, rtol=1e-12)
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         _mwu_state._recursive = None
+ 
+ 
+ class TestMannWhitneyU_iterative(TestMannWhitneyU):
+-    def setup(self):
++    def setup_method(self):
+         _mwu_state._recursive = False
+ 
+-    def teardown(self):
++    def teardown_method(self):
+         _mwu_state._recursive = None
+ 
+ 

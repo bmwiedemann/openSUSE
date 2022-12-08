@@ -1130,4 +1130,14 @@ bsc#1130564: Apply update from the openSUSE package
 </comment>
     <requestid>1039620</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>0cbc01bf40de7a9caf4aa7e15884598e</srcmd5>
+    <version>1.9.3</version>
+    <time>1670514615</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-pytest72.patch to fix the tests that fails with pytest 7
+  gh#scipy/scipy#17296
+</comment>
+    <requestid>1040954</requestid>
+  </revision>
 </revisionlist>

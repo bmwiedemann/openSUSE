@@ -100,6 +100,8 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#scipy/scipy#16926#issuecomment-1287507634
 Patch1:         fix-tests.patch
+# PATCH-FIX-UPSTREAM fix-tests-pytest72.patch gh#scipy/scipy#17296
+Patch2:         fix-tests-pytest72.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module meson-python >= 0.9.0}
