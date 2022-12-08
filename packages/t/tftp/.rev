@@ -343,4 +343,12 @@
     <comment></comment>
     <requestid>934586</requestid>
   </revision>
+  <revision rev="45" vrev="26">
+    <srcmd5>3c707b4ac5ad9ccd253aadda40d9edf1</srcmd5>
+    <version>5.2</version>
+    <time>1670514625</time>
+    <user>dimstar_suse</user>
+    <comment>- source url -&gt; https</comment>
+    <requestid>1041170</requestid>
+  </revision>
 </revisionlist>

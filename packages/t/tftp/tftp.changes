@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:28:52 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- source url -> https
+
+-------------------------------------------------------------------
 Wed Nov 24 14:39:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

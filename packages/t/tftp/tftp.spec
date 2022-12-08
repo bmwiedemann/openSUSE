@@ -1,7 +1,7 @@
 #
 # spec file for package tftp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        Trivial File Transfer Protocol (TFTP)
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://www.kernel.org/pub/software/network/tftp/
-Source:         http://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-%{version}.tar.bz2
+Source:         https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-%{version}.tar.bz2
 Source3:        tftp.service
 Source4:        tftp.socket
 Source5:        tftp.sysconfig
