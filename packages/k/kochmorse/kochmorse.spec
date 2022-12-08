@@ -1,7 +1,7 @@
 #
 # spec file for package kochmorse
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           kochmorse
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        A simple morse tutor using the Koch method
 License:        GPL-2.0-or-later

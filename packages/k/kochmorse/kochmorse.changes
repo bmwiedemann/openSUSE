@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:29:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v3.5.1:
+  * font-size settings
+  * wrong word-count in random tutor.
+  * fixed dependencies for DEB packages.
+  * fixed some typos.
+  * delayed detection of sound devices
+
+-------------------------------------------------------------------
 Fri Jan 10 20:05:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.5.0
