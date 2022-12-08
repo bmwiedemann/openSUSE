@@ -42,24 +42,25 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version a89b84221c85
-%define git_commit_epoch 1654554758
+%define real_version 20.10.21
+%define git_version 3056208812eb
+%define git_commit_epoch 1666698255
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
 # networking. All other key runtime dependencies (containerd, runc) are stable
 # enough that this isn't necessary.
-%define libnetwork_version f6ccccb1c082a432c2a5814aaedaca56af33d9ea
+%define libnetwork_version 0dde5c895075df6e3630e76f750a447cf63f4789
 
 %define dist_builddir  %{_builddir}/dist-suse
 %define cli_builddir   %{dist_builddir}/src/github.com/docker/cli
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.17_ce
+Version:        %{real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.17-ce
+%define nice_version %{real_version}-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -117,8 +118,8 @@ BuildRequires:  go-go-md2man
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.17' here, so just require 1.17 exactly. bsc#1172608
-BuildRequires:  go1.17
+# for 'golang(API) >= 1.18' here, so just require 1.18 exactly. bsc#1172608
+BuildRequires:  go1.18
 Requires:       (apparmor-parser or container-selinux)
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
@@ -128,7 +129,7 @@ Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
 Requires:       runc >= 1.1.2
-Requires:       containerd >= 1.6.6
+Requires:       containerd >= 1.6.9
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit

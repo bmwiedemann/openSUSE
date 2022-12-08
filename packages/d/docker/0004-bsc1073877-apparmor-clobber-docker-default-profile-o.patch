@@ -1,7 +1,7 @@
-From 5d2f7a37a37547663aae1538b2d3fd48dd7277c8 Mon Sep 17 00:00:00 2001
+From bc52d15141402d94eeaee618f1df0b540f527b98 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/6] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 4/7] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -69,10 +69,10 @@ index e3dc18b32b5e..9c7723056268 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 2a2fbbd52e19..0999ac3186b7 100644
+index f15a4b038498..2f0c23bc62c9 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -855,8 +855,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+@@ -857,8 +857,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
  		logrus.Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
@@ -85,5 +85,5 @@ index 2a2fbbd52e19..0999ac3186b7 100644
  	}
  
 -- 
-2.36.1
+2.38.1
 

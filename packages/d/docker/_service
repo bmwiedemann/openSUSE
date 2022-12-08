@@ -3,16 +3,16 @@
     <param name="url">https://github.com/moby/moby.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">20.10.17_ce_%h</param>
-    <param name="revision">v20.10.17</param>
+    <param name="versionformat">20.10.21_ce_%h</param>
+    <param name="revision">v20.10.21</param>
     <param name="filename">docker</param>
   </service>
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/docker/cli.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">20.10.17_ce</param>
-    <param name="revision">v20.10.17</param>
+    <param name="versionformat">20.10.21_ce</param>
+    <param name="revision">v20.10.21</param>
     <param name="filename">docker-cli</param>
   </service>
   <service name="tar_scm" mode="disabled">
@@ -20,7 +20,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">%H</param>
-    <param name="revision">f6ccccb1c082a432c2a5814aaedaca56af33d9ea</param>
+    <param name="revision">0dde5c895075df6e3630e76f750a447cf63f4789</param>
     <param name="filename">docker-libnetwork</param>
   </service>
   <service name="recompress" mode="disabled">

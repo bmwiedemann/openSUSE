@@ -1,7 +1,7 @@
-From cf3c6ccefda39c60dc656404674628ac48b55de9 Mon Sep 17 00:00:00 2001
+From 0fe6aba9612d2b483b29192c0605b1311b77a92b Mon Sep 17 00:00:00 2001
 From: Valentin Rothberg <vrothberg@suse.com>
 Date: Mon, 2 Jul 2018 13:37:34 +0200
-Subject: [PATCH 3/6] PRIVATE-REGISTRY: add private-registry mirror support
+Subject: [PATCH 3/7] PRIVATE-REGISTRY: add private-registry mirror support
 
 NOTE: This is a backport/downstream patch of the upstream pull-request
       for Moby, which is still subject to changes.  Please visit
@@ -72,12 +72,12 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  distribution/pull.go           |   2 +-
  distribution/pull_v2.go        |   2 +-
  distribution/push.go           |   2 +-
- registry/config.go             | 126 ++++++++++++++++++++++++++++-
+ registry/config.go             | 133 +++++++++++++++++++++++++++++-
  registry/config_test.go        | 142 ++++++++++++++++++++++++++++++++
  registry/registry_test.go      |  99 ++++++++++++++++++++---
  registry/service.go            |  43 +++++++---
- registry/service_v2.go         |  64 +++++++++++----
- 12 files changed, 710 insertions(+), 46 deletions(-)
+ registry/service_v2.go         |  63 +++++++++++----
+ 12 files changed, 716 insertions(+), 46 deletions(-)
 
 diff --git a/api/types/registry/registry.go b/api/types/registry/registry.go
 index 53e47084c8d5..b4bb9ef805d3 100644
@@ -444,10 +444,10 @@ index c8ddd4c5cfcd..b17e9d25d6c2 100644
  		return err
  	}
 diff --git a/distribution/pull_v2.go b/distribution/pull_v2.go
-index 123abf6b497a..097ead45d0fd 100644
+index 5abd18b6cf7c..0796e7ea1d52 100644
 --- a/distribution/pull_v2.go
 +++ b/distribution/pull_v2.go
-@@ -432,7 +432,7 @@ func (p *v2Puller) pullV2Tag(ctx context.Context, ref reference.Named, platform
+@@ -433,7 +433,7 @@ func (p *v2Puller) pullV2Tag(ctx context.Context, ref reference.Named, platform
  	// the other side speaks the v2 protocol.
  	p.confirmedV2 = true
  
@@ -470,7 +470,7 @@ index 5617a4c95f49..0a24aebed968 100644
  		return err
  	}
 diff --git a/registry/config.go b/registry/config.go
-index 54b83fa40aab..e1ba24b83bdd 100644
+index 54b83fa40aab..5adc913e4344 100644
 --- a/registry/config.go
 +++ b/registry/config.go
 @@ -14,11 +14,12 @@ import (
@@ -512,7 +512,7 @@ index 54b83fa40aab..e1ba24b83bdd 100644
  	config := &serviceConfig{
  		ServiceConfig: registrytypes.ServiceConfig{
  			InsecureRegistryCIDRs: make([]*registrytypes.NetIPNet, 0),
-@@ -78,10 +92,106 @@ func newServiceConfig(options ServiceOptions) (*serviceConfig, error) {
+@@ -78,10 +92,113 @@ func newServiceConfig(options ServiceOptions) (*serviceConfig, error) {
  	if err := config.LoadInsecureRegistries(options.InsecureRegistries); err != nil {
  		return nil, err
  	}
@@ -530,6 +530,13 @@ index 54b83fa40aab..e1ba24b83bdd 100644
 +// one of its mirrors differ.
 +func (config *serviceConfig) checkRegistries() error {
 +	inUse := make(map[string]string) // key: host, value: user
++
++	if len(config.Registries) > 0 {
++		logrus.Errorf("[SUSE] You are currently using an unsupported and out-of-tree Docker feature intended for internal SUSE only.")
++		logrus.Errorf("[SUSE] If you see this warning (and you are not using CaaSP) please open a SUSE bug report to alert us of this.")
++		logrus.Errorf("[SUSE] This feature (registry mirrors) will be removed in a future Docker release on SUSE.")
++		logrus.Errorf("[SUSE] Please DO NOT submit an upstream bug report about this warning!")
++	}
 +
 +	// make sure that each mirror serves only one registry
 +	for _, reg := range config.Registries {
@@ -619,7 +626,7 @@ index 54b83fa40aab..e1ba24b83bdd 100644
  // LoadAllowNondistributableArtifacts loads allow-nondistributable-artifacts registries into config.
  func (config *serviceConfig) LoadAllowNondistributableArtifacts(registries []string) error {
  	cidrs := map[string]*registrytypes.NetIPNet{}
-@@ -122,6 +232,10 @@ func (config *serviceConfig) LoadAllowNondistributableArtifacts(registries []str
+@@ -122,6 +239,10 @@ func (config *serviceConfig) LoadAllowNondistributableArtifacts(registries []str
  // LoadMirrors loads mirrors to config, after removing duplicates.
  // Returns an error if mirrors contains an invalid mirror.
  func (config *serviceConfig) LoadMirrors(mirrors []string) error {
@@ -630,7 +637,7 @@ index 54b83fa40aab..e1ba24b83bdd 100644
  	mMap := map[string]struct{}{}
  	unique := []string{}
  
-@@ -151,6 +265,10 @@ func (config *serviceConfig) LoadMirrors(mirrors []string) error {
+@@ -151,6 +272,10 @@ func (config *serviceConfig) LoadMirrors(mirrors []string) error {
  
  // LoadInsecureRegistries loads insecure registries to config
  func (config *serviceConfig) LoadInsecureRegistries(registries []string) error {
@@ -1042,10 +1049,10 @@ index 3b08e39da2c2..62556ba1ba70 100644
  		for _, endpoint := range allEndpoints {
  			if !endpoint.Mirror {
 diff --git a/registry/service_v2.go b/registry/service_v2.go
-index 3e3a5b41ffbd..451a6f874bc1 100644
+index 154ac7c93e80..06f7d20de8f9 100644
 --- a/registry/service_v2.go
 +++ b/registry/service_v2.go
-@@ -1,39 +1,71 @@
+@@ -1,42 +1,73 @@
  package registry // import "github.com/docker/docker/registry"
  
  import (
@@ -1060,17 +1067,7 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
 -func (s *DefaultService) lookupV2Endpoints(hostname string) (endpoints []APIEndpoint, err error) {
 +func (s *DefaultService) lookupV2Endpoints(reference string) (endpoints []APIEndpoint, err error) {
  	tlsConfig := tlsconfig.ServerDefault()
--	if hostname == DefaultNamespace || hostname == IndexHostname {
--		for _, mirror := range s.config.Mirrors {
--			if !strings.HasPrefix(mirror, "http://") && !strings.HasPrefix(mirror, "https://") {
--				mirror = "https://" + mirror
--			}
--			mirrorURL, err := url.Parse(mirror)
--			if err != nil {
--				return nil, err
--			}
--			mirrorTLSConfig, err := s.tlsConfigForMirror(mirrorURL)
-+
+ 
 +	// extraxt the hostname from the reference
 +	refURL := reference
 +	if !strings.HasPrefix(refURL, "http://") && !strings.HasPrefix(refURL, "https://") {
@@ -1085,6 +1082,18 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
 +		return nil, fmt.Errorf("SUSE PATCH [lookupV2Endpoints]: cannot determine hostname of reference %s", reference)
 +	}
 +
+ 	ana := allowNondistributableArtifacts(s.config, hostname)
+ 
+-	if hostname == DefaultNamespace || hostname == IndexHostname {
+-		for _, mirror := range s.config.Mirrors {
+-			if !strings.HasPrefix(mirror, "http://") && !strings.HasPrefix(mirror, "https://") {
+-				mirror = "https://" + mirror
+-			}
+-			mirrorURL, err := url.Parse(mirror)
+-			if err != nil {
+-				return nil, err
+-			}
+-			mirrorTLSConfig, err := s.tlsConfigForMirror(mirrorURL)
 +	// create endpoints for official and configured registries
 +	official := false
 +	if hostname == "docker.io" {
@@ -1131,8 +1140,8 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
 +			Official:     official,
  			TrimHostname: true,
  			TLSConfig:    tlsConfig,
- 		})
-@@ -45,7 +77,7 @@ func (s *DefaultService) lookupV2Endpoints(hostname string) (endpoints []APIEndp
+ 
+@@ -48,7 +79,7 @@ func (s *DefaultService) lookupV2Endpoints(hostname string) (endpoints []APIEndp
  
  	tlsConfig, err = s.tlsConfig(hostname)
  	if err != nil {
@@ -1142,5 +1151,5 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
  
  	endpoints = []APIEndpoint{
 -- 
-2.36.1
+2.38.1
 

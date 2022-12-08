@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  6 11:49:32 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.21-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/#201021>. bsc#1206065
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+  * 0006-bsc1193930-vendor-update-golang.org-x-crypto.patch
+  * 0007-bsc1200022-fifo.Close-prevent-possible-panic-if-fifo.patch
+- The PRIVATE-REGISTRY patch will now output a warning if it is being used (in
+  preparation for removing the feature). This feature was never meant to be
+  used by users directly (and is only available in the -kubic/CaaSP version of
+  the package anyway) and thus should not affect any users.
+
+-------------------------------------------------------------------
 Mon Oct 24 09:45:20 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Fix wrong After: in docker.service, fixes bsc#1188447

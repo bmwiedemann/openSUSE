@@ -1,4 +1,4 @@
-From 078fbd36b8fecab42ac7faad973a16aed10ab28c Mon Sep 17 00:00:00 2001
+From 6451aa1559ce5a135f599682ab33721e116925bd Mon Sep 17 00:00:00 2001
 From: Sebastiaan van Stijn <github@gone.nl>
 Date: Fri, 29 Jan 2021 14:55:08 +0100
 Subject: [PATCH 7/7] bsc1200022: fifo.Close(): prevent possible panic if fifo
@@ -52,5 +52,5 @@ index 96c214f270bf..c3eec295b578 100644
  		case <-f.closed:
  			f.handle.Close()
 -- 
-2.36.1
+2.38.1
 
