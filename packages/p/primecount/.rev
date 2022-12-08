@@ -89,4 +89,12 @@ The initial package submission request was: https://build.opensuse.org/request/s
     <comment>Update to primesieve-7.4</comment>
     <requestid>987964</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dee797116a0303eedbd731cd111252d5</srcmd5>
+    <version>7.6</version>
+    <time>1670514724</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-7.6</comment>
+    <requestid>1041326</requestid>
+  </revision>
 </revisionlist>
