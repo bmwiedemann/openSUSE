@@ -40,7 +40,7 @@ This service can be used during buildtime to gain access to various variables
 in build recipes.
 
 %prep
-%setup -q -D -T -n .
+%setup -q -D -T -c
 cp %{SOURCE2} .
 
 %build
