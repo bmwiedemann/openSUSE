@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 19:54:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 6.0.3: 
+  * Features
+    Declared the official support for Python 3.11 — by @mlegner. (#872)
+
+-------------------------------------------------------------------
 Thu Feb 24 08:14:48 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to 6.0.2:

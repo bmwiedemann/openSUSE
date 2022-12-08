@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-multidict
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
