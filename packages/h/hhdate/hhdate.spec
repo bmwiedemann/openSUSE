@@ -1,7 +1,7 @@
 #
-# spec file for package specRPM_CREATION_NAME
+# spec file for package hhdate
 #
-# Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,42 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%global somajor 3
+%global libname libdate-tz%{somajor}
 Name:           hhdate
 Version:        3.0.1
 Release:        0
-Summary:        A date and time library based on the C++11/14/17 header
+Summary:        Date and time library based on the C++11/14/17 chrono header
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/HowardHinnant/date
+URL:            https://github.com/HowardHinnant/date
 Source:         hhdate-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 
 %description
-A date and time library based on the C++11/14/17 header. Mostly a header-only library.
+A date and time library based on the C++11/14/17 chrono header.
 
-%package -n %{name}-devel
+%package  -n    %{libname}
 Summary:        Development files for the hhdate library
-Requires:       %{name} = %{version}
-BuildArch:      noarch
+Group:          Development/Libraries/C and C++
 
-%description -n %{name}-devel
-A date and time library based on the C++11/14/17 header. Mostly a header-only library.
+%description    -n %{libname}
+A date and time library based on the C++11/14/17 chrono header.
+
+%package        devel
+Summary:        Development files for the hhdate library
+Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
+Conflicts:      %{name} <= %{version}
+
+%description    devel
+A date and time library based on the C++11/14/17 chrono header.
 
 %prep
 %setup -q
@@ -47,16 +57,19 @@ A date and time library based on the C++11/14/17 header. Mostly a header-only li
 %cmake_build
 
 %install
-install -D -m 0644 include/date/*   -t %{buildroot}/%{_includedir}/date/
-install -D -m 0755 build/libdate-tz.so %{buildroot}/%{_libdir}/libdate-tz.so
+%cmake_install
 
-%files
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
+
+%files -n %{libname}
+%{_libdir}/libdate-tz.so.%{somajor}*
 %license LICENSE.txt
-%{_libdir}/libdate-tz.so
 
-%files -n hhdate-devel
+%files devel
 %license LICENSE.txt
 %{_includedir}/date/
+%{_libdir}/cmake/date/
+%{_libdir}/libdate-tz.so
 
 %changelog
-
