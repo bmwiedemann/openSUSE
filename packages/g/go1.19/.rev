@@ -112,4 +112,29 @@
   * go#56106 internal/fuzz: array literal initialization causes ICE &quot;unhandled stmt ASOP&quot; while fuzzing (forwarded request 1032742 from jfkw)</comment>
     <requestid>1032744</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ac89743719fd3ff87447e79d098b06c6</srcmd5>
+    <version>1.19.4</version>
+    <time>1670514601</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19.4 (released 2022-12-06) includes security fixes to the
+  net/http and os packages, as well as bug fixes to the compiler,
+  the runtime, and the crypto/x509, os/exec, and sync/atomic
+  packages.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2022-41717 CVE-2022-41720
+  * go#57009 boo#1206135 security: fix CVE-2022-41717 net/http: limit canonical header cache by bytes, not entries
+  * go#57006 boo#1206134 security: fix CVE-2022-41720 os, net/http: avoid escapes from os.DirFS and http.Dir on Windows
+  * go#56752 runtime,cmd/compile: apparent memory corruption in compress/flate
+  * go#56710 net: builders failing TestLookupDotsWithRemoteSource and TestLookupGoogleSRV due to missing host for _xmpp-server._tcp.google.com
+  * go#56672 crypto/tls: boringcrypto restricts RSA key sizes to 2048 and 3072
+  * go#56638 sync/atomic: atomic.Pointer[T] can be misused with type conversions.
+  * go#56636 runtime: traceback stuck in runtime.systemstack
+  * go#56557 cmd/compile: some x/sys versions no longer build due to &quot;go:linkname must refer to declared function or variable&quot;
+  * go#56551 os/exec: Plan 9 build has been broken by a Windows security fix (also breaks 1.19.3 and 1.18.8)
+  * go#56438 crypto/x509: respect GODEBUG changes during program lifetime
+  * go#56397 runtime: on linux/PPC64, usleep computes incorrect tv_nsec parameter
+  * go#56360 cmd/compile: panic: offset too large (forwarded request 1041233 from jfkw)</comment>
+    <requestid>1041235</requestid>
+  </revision>
 </revisionlist>
