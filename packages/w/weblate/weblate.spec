@@ -22,12 +22,12 @@
 %define _name Weblate
 %define skip_python310 1
 Name:           weblate
-Version:        4.14.1
+Version:        4.14.2
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
 URL:            https://weblate.org/
-Source0:        http://dl.cihar.com/weblate/%{_name}-%{version}.tar.xz
+Source0:        https://dl.cihar.com/weblate/%{_name}-%{version}.tar.xz
 Source1:        https://dl.cihar.com/weblate/%{_name}-%{version}.tar.xz.asc
 # GPG key from Michal Čihař
 # Fingerprint 63CB 1DF1 EF12 CF2A C0EE 5A32 9C27 B313 42B7 511D
@@ -61,7 +61,7 @@ BuildRequires:  python3-boto3 >= 1.15.0
 BuildRequires:  python3-celery >= 5.0.3
 BuildRequires:  python3-chardet
 BuildRequires:  python3-charset-normalizer >= 2.0.12
-BuildRequires:  python3-cssselect >= 1.0.0
+BuildRequires:  python3-cssselect >= 1.2
 BuildRequires:  python3-dbm
 BuildRequires:  python3-diff_match_patch = 20200713
 BuildRequires:  python3-django-appconf >= 1.0.3
@@ -135,7 +135,7 @@ Requires:       python3-Pygments >= 2.6.0
 Requires:       python3-bleach >= 3.1.1
 Requires:       python3-celery >= 5.0.3
 Requires:       python3-charset-normalizer >= 2.0.12
-Requires:       python3-cssselect >= 1.0.0
+Requires:       python3-cssselect >= 1.2
 Requires:       python3-diff_match_patch = 20200713
 Requires:       python3-django-appconf >= 1.0.3
 Requires:       python3-django-crispy-forms >= 1.9.0
