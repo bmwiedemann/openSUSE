@@ -37,7 +37,7 @@ An OBS service which expands LABEL instructions in Dockerfile with prefixes.
 Useful for implementing https://en.opensuse.org/Building_derived_containers#Labels.
 
 %prep
-%setup -q -D -T -n .
+%setup -q -D -T -c
 cp %{SOURCE2} .
 
 %build

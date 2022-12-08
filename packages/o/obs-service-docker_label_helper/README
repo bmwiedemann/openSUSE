@@ -23,7 +23,7 @@ FROM opensuse/tumbleweed
 LABEL org.opencontainers.image.title="Example container"
 LABEL org.opencontainers.image.description="This contains nano"
 # endlabelprefix
-LABEL not.expanded.label="example
+LABEL not.expanded.label="example"
 ```
 
 expands to
