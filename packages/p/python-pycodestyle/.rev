@@ -96,4 +96,11 @@
     <comment></comment>
     <requestid>1040743</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>677843edc628a86dc2d463f17e1b730f</srcmd5>
+    <version>2.9.1</version>
+    <time>1670505228</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
+  </revision>
 </revisionlist>
