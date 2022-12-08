@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:07:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v3.12.0 
+  * Feature
+  Add support for SAML group links (#2367) (1020ce9)
+  groups: Add LDAP link manager and deprecate old API endpoints (3a61f60)
+  groups: Add support for listing ldap_group_links (#2371) (ad7c8fa)
+  Implement secure files API (d0a0348)
+  ci: Re-Run Tests on PR Comment workflow (034cde3)
+  api: Add support for getting a project's pull mirror details (060cfe1)
+  api: Add support for remote project import from AWS S3 (#2357) (892281e)
+  api: Add support for remote project import (#2348) (e5dc72d)
+  api: Add application statistics (6fcf3b6)
+  * Fix
+  cli: Enable debug before doing auth (65abb85)
+  cli: Expose missing mr_default_target_self project attribute (12aea32)
+  Use POST method and return dict in cancel_merge_when_pipeline_succeeds() (#2350) (bd82d74)
+  * Documentation
+  Use the term "log file" for getting a job log file (9d2b1ad)
+  groups: Describe GitLab.com group creation limitation (9bd433a)
+  api: Pushrules remove saying None is returned when not found (c3600b4)
+
+-------------------------------------------------------------------
 Wed Nov  9 18:41:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.11.0 
