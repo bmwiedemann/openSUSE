@@ -656,4 +656,14 @@ Latest changes:
 - require sudo command/package (github issue#91)</comment>
     <requestid>1039126</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ff9f3b0a6fc15b20f0ac96693969a26a</srcmd5>
+    <version>0.8.12</version>
+    <time>1670514716</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.12
+  * prime-select.sh: fix 'user_logout_waiter' for lightdm
+    autologin (issue#92)</comment>
+    <requestid>1041276</requestid>
+  </revision>
 </revisionlist>

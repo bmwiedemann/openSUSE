@@ -23,7 +23,7 @@
 %global modprobe_d_files 09-nvidia-modprobe-bbswitch-G04.conf 09-nvidia-modprobe-pm-G05.conf
 
 Name:           suse-prime
-Version:        0.8.10
+Version:        0.8.12
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 License:        SUSE-Public-Domain

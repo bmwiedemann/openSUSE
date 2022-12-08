@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:20:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.12
+  * prime-select.sh: fix 'user_logout_waiter' for lightdm
+    autologin (issue#92) 
+
+-------------------------------------------------------------------
 Wed Nov 30 13:53:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.10
