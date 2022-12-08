@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  7 20:52:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.2.2 
+  * Update bundled bundled capnp to 0.8.1 due to CVE-2022-46149
+  * This only affects pycapnp if you're using bundled capnp (otherwise
+  just update libcapnp)
+  * pypi packages are affected
+
+-------------------------------------------------------------------
 Fri Oct 28 20:02:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.2.1 

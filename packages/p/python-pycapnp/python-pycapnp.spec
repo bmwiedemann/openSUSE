@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pycapnp
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Cython wrapping of the C++ Cap'n Proto library
 License:        BSD-2-Clause
