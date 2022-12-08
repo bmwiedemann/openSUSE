@@ -110,4 +110,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1001234</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e60ced3b5455476a99f1b2c0d92464f2</srcmd5>
+    <version>0.9.4</version>
+    <time>1670514724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041328</requestid>
+  </revision>
 </revisionlist>
