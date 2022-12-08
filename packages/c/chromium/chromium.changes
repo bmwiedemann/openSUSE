@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  7 20:43:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 108.0.5359.98
+  * Fix regression in computing <select> visibility
+
+-------------------------------------------------------------------
 Sat Dec  3 09:40:02 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 108.0.5359.94:
