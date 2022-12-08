@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-verify_file
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           obs-service-verify_file
 Version:        0.1.1
 Release:        0
-Url:            http://build.opensuse.org
+URL:            http://build.opensuse.org
 Summary:        An OBS source service: file verification
 License:        MIT
 Group:          Development/Tools/Building
@@ -39,7 +39,7 @@ This is a source service for openSUSE Build Service.
 It allows to verify a file with a given sha256sum
 
 %prep
-%setup -q -D -T 0 -n .
+%setup -q -D -T 0 -c
 cp %{SOURCE2} .
 
 %build
