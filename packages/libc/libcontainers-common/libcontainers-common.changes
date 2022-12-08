@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:23:07 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Remove registry.suse.com from search unqualified-search-registries:
+  registry.suse.com responds very slowly to pagination repository listings
+  (https://docs.docker.com/registry/spec/api/#pagination) and thereby causes
+  every `podman search` to take over 90s. We have to remove it until this
+  regression is fixed.
+
+-------------------------------------------------------------------
 Mon Nov 28 09:08:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add requires on util-linux-systemd for findmnt in profile script
