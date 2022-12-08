@@ -47,10 +47,10 @@ Name:           corosync
 Summary:        The Corosync Cluster Engine and Application Programming Interfaces
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/HA
-Version:        2.4.5+git.5d625cef
+Version:        2.4.6
 Release:        0
 URL:            http://corosync.github.io/corosync/
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch1:         upstream-afd97d7884940_coroapi-Use-size_t-for-private_data_size.patch
 Patch2:         Fix-compile-warnings-with-GCC-7.2.1.patch
