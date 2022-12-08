@@ -138,4 +138,12 @@
     <comment></comment>
     <requestid>1039099</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c957b5b7481bc868f903718ba2269543</srcmd5>
+    <version>10.8.4</version>
+    <time>1670514738</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-CVE-2022-40704.patch that fixes boo#1206079.</comment>
+    <requestid>1041351</requestid>
+  </revision>
 </revisionlist>

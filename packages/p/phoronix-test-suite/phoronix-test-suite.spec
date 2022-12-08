@@ -28,6 +28,7 @@ Patch0:         harden_phoromatic-client.service.patch
 Patch1:         harden_phoromatic-server.service.patch
 Patch2:         harden_phoronix-result-server.service.patch
 Patch3:         fix-shebang.patch
+Patch4:         fix-CVE-2022-40704.patch
 # https://github.com/phoronix-test-suite/phoronix-test-suite/issues/505 [bsc#1175508]
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

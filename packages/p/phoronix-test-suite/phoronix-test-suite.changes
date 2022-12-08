@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  8 09:35:32 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add fix-CVE-2022-40704.patch that fixes boo#1206079.
+
+-------------------------------------------------------------------
 Wed Nov 30 12:04:35 UTC 2022 - pgajdos@suse.com
 
 - require php8 in TW
