@@ -23,8 +23,10 @@
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
+%bcond_with    verdict
 %else
 %bcond_without pugixml
+%bcond_without verdict
 %endif
 
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
@@ -123,6 +125,9 @@ BuildRequires:  pkgconfig(proj)
 %endif
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml) >= 1.11
+%endif
+%if %{with verdict}
+BuildRequires:  verdict-devel
 %endif
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 BuildRequires:  cli11-devel
@@ -236,7 +241,7 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=%{?with_proj:ON}%{!?with_proj:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=OFF \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
        %{nil}
 
 %cmake_build
