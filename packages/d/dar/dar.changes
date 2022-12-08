@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:27:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.8:
+  * updating code and man page about the way to solve the conflict of
+  sequentially reading the archive of reference when binary delta is
+  implicitly present for differential/incremental backups
+  * added -avc option to surface libcurl verbose messages
+  * fixed bug in dar where a sanity check about slice min digit detection
+  was applied to the local filesystem when the backup was stored
+  remotely, this prevented the reading or remote backups
+  * exposing libcurl version to the version output (new API call added
+  * remove extra slash (/) found after hostname in URL passed to libcurl
+  * fixed self test reported error about mycurl_easyhandle_node.cpp
+  * improved error message when libcurl fails to connect to an sftp server
+  * fixed bug in libdar in the way libcurl is called for reading a file
+  using ftp protocol
+  * fixed bug in libdar when asking libcurl the size of the file we are
+  writing (libcurl segfaults with ftp protocol). In addition, we now
+  record this info during the write process (faster and more efficient).
+  * fixed bug met when creating a backup on very close and/or high
+  bandwidth ftp and sftp repos with the --hash option set, triggering a
+  race condition that led dar to sometime hang unexpectedly.
+
+-------------------------------------------------------------------
 Mon Aug  8 21:01:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.7:
