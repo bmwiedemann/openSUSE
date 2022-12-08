@@ -20,7 +20,7 @@
 %global unicodedir %{_datadir}/unicode
 %global ucddir %{unicodedir}/ucd
 Name:           unicode-ucd
-Version:        14.0.0
+Version:        15.0.0
 Release:        0
 Summary:        Unicode Character Database
 # FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"

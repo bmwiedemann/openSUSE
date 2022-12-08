@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:17:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.0.0:
+  * Unicode 15.0 adds 4,489 characters, for a total of 149,186 characters. These
+    additions include 2 new scripts, for a total of 161 scripts, along with 20 new
+    emoji characters, and 4,193 CJK (Chinese, Japanese, and Korean) ideographs.
+  See https://www.unicode.org/versions/Unicode15.0.0/
+
+-------------------------------------------------------------------
 Tue May 17 09:39:16 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 14.0.0
