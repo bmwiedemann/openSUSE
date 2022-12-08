@@ -17,7 +17,7 @@
 
 
 Name:           ART
-Version:        1.16.4
+Version:        1.17.2
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only

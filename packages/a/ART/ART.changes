@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec  7 15:58:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.17.2:
+  * fixed bad interaction between film negative and dehaze or dynamic range compression
+  * fixed regression in loading pixel-shift raw files
+  * draw the crop guides in the batch queue thumbnails
+  * spot removal: fixed history messages
+  * PDAF lines filter: fixed oob accesses
+  * added script to import wb presets from darktable
+  * added DCP profiles from RT
+  * film negative: show deprecation warning for "color space"
+  * grain: removed redundant "scale" parameter
+  * metadata: write star rating to the output image
+  * highlight recovery: fixed crash due to typo
+  * camconst: added raw_crop for Fuji X-H2
+  * support camconst raw_crop when using the libraw decoder
+  * dcraw: reject RGBA tiff files
+  * replaced "balanced" highlight recovery with "inpaint opposed" from darktable
+
+-------------------------------------------------------------------
 Wed Nov  2 09:37:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.16.4:

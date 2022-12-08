@@ -79,4 +79,28 @@
 </comment>
     <requestid>1032813</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c25637917c12b6507b4d6fb82bdedf05</srcmd5>
+    <version>1.17.2</version>
+    <time>1670514641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.2:
+  * fixed bad interaction between film negative and dehaze or dynamic range compression
+  * fixed regression in loading pixel-shift raw files
+  * draw the crop guides in the batch queue thumbnails
+  * spot removal: fixed history messages
+  * PDAF lines filter: fixed oob accesses
+  * added script to import wb presets from darktable
+  * added DCP profiles from RT
+  * film negative: show deprecation warning for &quot;color space&quot;
+  * grain: removed redundant &quot;scale&quot; parameter
+  * metadata: write star rating to the output image
+  * highlight recovery: fixed crash due to typo
+  * camconst: added raw_crop for Fuji X-H2
+  * support camconst raw_crop when using the libraw decoder
+  * dcraw: reject RGBA tiff files
+  * replaced &quot;balanced&quot; highlight recovery with &quot;inpaint opposed&quot; from darktable
+</comment>
+    <requestid>1041164</requestid>
+  </revision>
 </revisionlist>
