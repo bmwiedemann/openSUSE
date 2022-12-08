@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec  6 12:05:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.12:
+  * Better handling of CookieJar Runtime Exception
+  * Fixes #5216
+  * Fixes #5220
+  * Fixes #5233
+  * Fixes #5232
+  * Fixes #5240
+  * Fixes #5242
+  * Fixes #5252 
+
+-------------------------------------------------------------------
+Sun Dec  4 13:58:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.11:
+  * Fixes #5190
+  * Fixes #5191
+  * Fixes #5192
+  * Implement --csrf-data
+  * Fix --cookie-del
+  * Fixes #5216 
+
+-------------------------------------------------------------------
 Mon Oct 10 08:15:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.10:
