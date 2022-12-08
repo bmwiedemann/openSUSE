@@ -17,7 +17,7 @@
 
 
 Name:           k4dirstat
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only

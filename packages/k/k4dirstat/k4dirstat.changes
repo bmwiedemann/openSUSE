@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:23:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.2:
+  * Remove inode/directory MIME type (#47)
+  * Fix a floating point exception with go-mtpfs
+
+-------------------------------------------------------------------
 Thu Jan  6 11:05:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.4.0

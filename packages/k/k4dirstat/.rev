@@ -88,4 +88,12 @@
     (i.e. no longer under estimate folders with many small files).</comment>
     <requestid>944217</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c87e69707a24d9319c9e624fc21fa72</srcmd5>
+    <version>3.4.2</version>
+    <time>1670514643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041174</requestid>
+  </revision>
 </revisionlist>
