@@ -1,7 +1,7 @@
 #
 # spec file for package python-plaster
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plaster
-Version:        1.0
+Version:        1.1.2
 Release:        0
 Summary:        A loader interface around multiple config file formats
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://docs.pylonsproject.org/projects/plaster/en/latest
+URL:            http://docs.pylonsproject.org/projects/plaster/en/latest
 # Wheels lack files with problematic noncommercial license
 Source:         https://files.pythonhosted.org/packages/py2.py3/p/plaster/plaster-%{version}-py2.py3-none-any.whl
 BuildRequires:  %{python_module pip}

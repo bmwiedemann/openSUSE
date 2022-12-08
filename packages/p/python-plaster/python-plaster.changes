@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  7 20:07:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.1.2 
+  Fix a bug in which plaster would crash harder than expected if a URI is specified to a distribution that does not have the specified entry points.
+  Now a LoaderNotFound exception will be raised instead of a bad unpacking of tuples.
+
+- Update to version 1.1.1
+  * Add support for Python 3.11.
+  * Fix an bug introduced in 1.1 on some systems where plaster.exceptions.MultipleLoadersFound would be raised due to lib and lib64 being symlinked
+    to each other and both added to the sys.path. See https://github.com/Pylons/plaster/pull/27
+
+- Update to version 1.1
+  * Drop support for Python 2.7, 3.4, 3.5, 3.6.
+  * Add support for Python 3.8, 3.9, 3.10.
+  * Drop runtime dependency on setuptools / pkg_resources by switching to importlib.metadata.
+
+-------------------------------------------------------------------
 Sat Jan 11 14:06:14 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)
