@@ -19,7 +19,7 @@
 %define modname zdaemon
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        Daemon process control library and tools
 License:        ZPL-2.1
