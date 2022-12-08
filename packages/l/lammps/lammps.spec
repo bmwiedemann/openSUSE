@@ -1,7 +1,7 @@
 #
 # spec file for package lammps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,6 @@ Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{n
 Source1:        https://github.com/google/googletest/archive/release-1.10.0.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
-BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  gsl-devel
@@ -42,7 +41,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  voro++-devel
 BuildRequires:  zlib-devel
 %ifnarch ppc64 %ix86 %{arm}
@@ -50,7 +49,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  kokkos-devel >= 3.2
 %endif
 Requires:       %{name}-data
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
@@ -105,12 +103,15 @@ designed to be easy to modify or extend with new functionality.
 
 This package contains development headers and libraries for LAMMPS.
 
-%package -n python-%{name}
+%package -n python3-%{name}
 Summary:        LAMMPS python module
 Group:          Development/Languages/Python
 Requires:       liblammps0 = %{version}
+# File conflict, old package contained python3 module
+Conflicts:      python-%{name} <= %{version}
+Provides:       python-%{name}:%{python3_sitearch}/%{name}.py
 
-%description -n python-%{name}
+%description -n python3-%{name}
 LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
 Atomic/Molecular Massively Parallel Simulator.
 
@@ -165,7 +166,7 @@ This subpackage contains LAMMPS's potential files
   -DPKG_VORONOI=ON \
   -DPKG_GPU=ON -DGPU_API=OpenCL \
   -DFFT=FFTW3 \
-  -DPYTHON_INSTDIR=%{python_sitearch} \
+  -DPYTHON_INSTDIR=%{python3_sitearch} \
   -DCMAKE_INSTALL_SYSCONFDIR=/etc \
 %ifnarch x86_64 %ix86
   -DPKG_USER-INTEL=OFF \
@@ -184,10 +185,11 @@ rm -rf %{buildroot}%{_datadir}/{applications,icons}/
 
 # https://github.com/lammps/lammps/issues/2383, inject -msse2 on %ix86 to make test pass
 %ifarch %ix86
-%global testargs --exclude-regex AtomStyle
+%ctest --exclude-regex 'AtomStyle|Fortran' || true
+%ctest --tests-regex 'AtomStyle|Fortran' || true
+%else
+%ctest
 %endif
-
-%ctest %{?testargs}
 
 %post -n liblammps0 -p /sbin/ldconfig
 %postun -n liblammps0 -p /sbin/ldconfig
@@ -212,8 +214,8 @@ rm -rf %{buildroot}%{_datadir}/{applications,icons}/
 %{_libdir}/pkgconfig/liblammps.pc
 %{_libdir}/cmake/LAMMPS
 
-%files -n python-%{name}
-%{python_sitearch}/%{name}.py
+%files -n python3-%{name}
+%{python3_sitearch}/%{name}.py
 
 %files data
 %license LICENSE
