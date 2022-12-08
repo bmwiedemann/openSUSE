@@ -74,4 +74,12 @@
   * Change qDebug to qInfo</comment>
     <requestid>1000251</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5f70601d59830345af9d71cdf14a73f</srcmd5>
+    <version>5.12.12</version>
+    <time>1670514751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041324</requestid>
+  </revision>
 </revisionlist>

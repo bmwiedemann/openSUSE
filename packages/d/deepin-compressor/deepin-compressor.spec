@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-compressor
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
@@ -23,33 +24,33 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.12.8
+Version:        5.12.12
 Release:        0
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Summary:        Archive Manager for Deepin Desktop
-Url:            https://github.com/linuxdeepin/deepin-compressor
+URL:            https://github.com/linuxdeepin/deepin-compressor
 Group:          Productivity/Archiving/Compression
 Source0:        https://github.com/linuxdeepin/deepin-compressor/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 002-install-compressor-ChardetDetector.patch hillwood@opensuse.org 
+# PATCH-FIX-UPSTREAM 002-install-compressor-ChardetDetector.patch hillwood@opensuse.org
 # Install libcompressor-ChardetDetector.so
 Patch1:         002-install-compressor-ChardetDetector.patch
 BuildRequires:  fdupes
 BuildRequires:  gtest
-BuildRequires:  libqt5-linguist
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(dtkwidget)
-BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(minizip)
-BuildRequires:  pkgconfig(libzip)
-BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  libqt5-linguist
 BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(dtkwidget)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(minizip)
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -63,7 +64,7 @@ extracting archives.
 %autosetup -p1
 sed -i 's/lrelease/lrelease-qt5/g' src/translate_generation.sh
 sed -i 's|/usr/lib/|%{_libdir}/|g' src/source/common/pluginmanager.cpp
-%ifarch armv6l armv7l aarch64 
+%ifarch armv6l armv7l aarch64
 sed -i '/#include <map>/a#include <cstdint>' tests/UnitTest/include/gtest/src/stub.h
 %endif
 
@@ -99,4 +100,3 @@ chmod -x %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/translations
 
 %changelog
-
