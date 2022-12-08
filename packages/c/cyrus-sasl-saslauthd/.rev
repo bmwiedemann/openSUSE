@@ -156,4 +156,11 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="26" vrev="20">
+    <srcmd5>d7c2d549d64f77dcac3d015d8126441c</srcmd5>
+    <version>unknown</version>
+    <time>1670514794</time>
+    <user>dimstar_suse</user>
+    <comment>updated by OSRT tools (host zeus)</comment>
+  </revision>
 </revisionlist>
