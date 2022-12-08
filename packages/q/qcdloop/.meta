@@ -1,0 +1,11 @@
+<package name="qcdloop" project="openSUSE:Factory">
+  <title>An object-oriented one-loop scalar Feynman integrals framework</title>
+  <description>QCDLoop is a library of one-loop scalar Feynman integrals, evaluated close to
+four dimensions. QCDLoop can compute one-loop integrals for tadpole, bubble,
+triangle and box topologies. See  arXiv:0712.1851 and arXiv:1605.03181 for
+references.
+
+</description>
+  <devel project="science" package="qcdloop"/>
+  <url>https://qcdloop.web.cern.ch/qcdloop/</url>
+</package>

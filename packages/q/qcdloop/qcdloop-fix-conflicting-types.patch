@@ -1,0 +1,13 @@
+Index: qcdloop-2.0.5b1/src/types.cc
+===================================================================
+--- qcdloop-2.0.5b1.orig/src/types.cc
++++ qcdloop-2.0.5b1/src/types.cc
+@@ -13,7 +13,7 @@ namespace std
+   {
+      char buf[200];
+      std::ostringstream format;
+-     format << "%." << (std::min)(190L, out.precision()) << "Qe";
++     format << "%." << (std::min)(190L, (long int)out.precision()) << "Qe";
+      quadmath_snprintf(buf, 200, format.str().c_str(), f);
+      out << buf;
+      return out;
