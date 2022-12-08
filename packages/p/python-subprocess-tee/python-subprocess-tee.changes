@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:28:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- * Update to version 0.4.0 
+  * Minor Changes
+  Enable support for py311 (#72) @ssbarnea
+  * Bugfixes
+  Remove support for py37 (#70) @ssbarnea
+  Remove support for py36 (#65) @ssbarnea
+  Mark test test_rich_console_ex as broken (#64) @ssbarnea
+-------------------------------------------------------------------
 Sun Sep 11 08:51:09 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Temporarily disable the failing test test_rich_console_ex to prevent a build fail

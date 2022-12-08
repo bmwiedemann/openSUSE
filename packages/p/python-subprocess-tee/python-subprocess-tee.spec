@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-subprocess-tee
-Version:        0.3.5
+Version:        0.4.0
 Release:        0
 Summary:        Captures the output of subprocesses in real-time
 License:        MIT
