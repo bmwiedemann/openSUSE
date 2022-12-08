@@ -1,7 +1,7 @@
 #
 # spec file for package hmcfgusb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Andreas Vetter
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           hmcfgusb
-Version:        0.103
+Version:        0.103+git23.g7157286
 Release:        0
 Summary:        Hmland and utilities to use the HM-CFG-USB(2)
 License:        MIT AND SUSE-Public-Domain
 Group:          System/Monitoring
 URL:            https://git.zerfleddert.de/cgi-bin/gitweb.cgi/hmcfgusb
-Source:         https://git.zerfleddert.de/hmcfgusb/releases/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        hmland.service
 Source2:        sysconfig.hmland
 BuildRequires:  libusb-1_0-devel

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec  8 09:30:14 UTC 2022 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Update to HEAD (git 715728607ae77bebf3ac50fdbdb46639551995e4, 15 Sep 2020)
+  * firmware: fix maximum size master 
+  * flash-ota: add support for directly flashing AsksinPP... 
+  * Suppress warnings about non-literal format strings 
+  * Allow the user to specify the compiler via environment... 
+  * Cleanup: Use := for assignment 
+  * Cleanup: Use size_t for len 
+  * Cleanup: Use correct format string 
+  * Add missing case in switch 
+  * Cleanup: Cast explicitly where integers of different... 
+  * Cleanup: Add missing 'void' 
+  * Cleanup: Improve const correctness 
+  * Add support for printing the transfer status 
+  * enable-hmmodiprf: add small script to enable a tty... 
+  * consistency in state names 
+  * hmuartlgw: add a bit of support for HmIP-RFUSB-TK 
+  * hmland.init: try hmland-location from Fhem-wiki, too 
+  * README: change clone-URL to https 
+  * hmuartlgw: Add timeout during module initialization 
+  * hmuartlgw: Add minimal support for DualCoPro-firmware 
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
