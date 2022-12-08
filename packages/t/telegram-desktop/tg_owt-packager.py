@@ -63,7 +63,7 @@ def load_submodules(repo):
 
 def compress_package(repo_dir):
     basename = os.path.basename(repo_dir)
-    zipname = f"{basename}.zip"
+    zipname = basename + ".zip"
     path = Path(repo_dir).parent
     command = ['zip', zipname, '-r', basename, '-x', '*.git*']
     subprocess.check_call(command, cwd=path)

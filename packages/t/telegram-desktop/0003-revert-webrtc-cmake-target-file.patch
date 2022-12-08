@@ -1,7 +1,8 @@
-diff -Nur tdesktop-3.7.3-full/cmake/external/webrtc/CMakeLists.txt new/cmake/external/webrtc/CMakeLists.txt
---- tdesktop-3.7.3-full/cmake/external/webrtc/CMakeLists.txt	2022-04-19 14:57:00.000000000 +0200
-+++ new/cmake/external/webrtc/CMakeLists.txt	2022-05-02 18:53:40.393350191 +0200
-@@ -93,11 +93,8 @@
+Index: tdesktop-4.4.0-full/cmake/external/webrtc/CMakeLists.txt
+===================================================================
+--- tdesktop-4.4.0-full.orig/cmake/external/webrtc/CMakeLists.txt
++++ tdesktop-4.4.0-full/cmake/external/webrtc/CMakeLists.txt
+@@ -94,11 +94,8 @@ INTERFACE
      ${webrtc_libs_list}
      $<LINK_ONLY:desktop-app::external_openssl>
      $<LINK_ONLY:desktop-app::external_jpeg>

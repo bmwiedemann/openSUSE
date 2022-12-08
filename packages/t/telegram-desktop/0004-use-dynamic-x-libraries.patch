@@ -1,6 +1,8 @@
---- a/cmake/external/webrtc/CMakeLists.txt
-+++ b/cmake/external/webrtc/CMakeLists.txt
-@@ -105,7 +105,7 @@
+Index: tdesktop-4.4.0-full/cmake/external/webrtc/CMakeLists.txt
+===================================================================
+--- tdesktop-4.4.0-full.orig/cmake/external/webrtc/CMakeLists.txt
++++ tdesktop-4.4.0-full/cmake/external/webrtc/CMakeLists.txt
+@@ -110,7 +110,7 @@ elseif (APPLE)
      )
  else()
      # Required for desktop_capture

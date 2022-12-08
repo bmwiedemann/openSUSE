@@ -36,7 +36,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.3.4
+Version:        4.4.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -63,6 +63,8 @@ Patch4:         0004-use-dynamic-x-libraries.patch
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
 # that would affect all ILP32 platforms.
+# PATCH-FIX-OPENSUSE
+Patch5:         0005-qt6-fixes.patch
 ExcludeArch:    %ix86 aarch64_ilp32 ppc riscv32
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
@@ -209,6 +211,7 @@ The service also provides APIs to independent developers.
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p0
 mkdir ../Libraries
 
 # If not TW, unpack rnnoise source

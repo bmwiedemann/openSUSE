@@ -913,4 +913,12 @@
   * Other bug fixes and minor improvements. (forwarded request 1038950 from 13ilya)</comment>
     <requestid>1039827</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>28fe50d338a451ddbe3db3ea23ef34e8</srcmd5>
+    <version>4.4.1</version>
+    <time>1670514666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.1</comment>
+    <requestid>1041353</requestid>
+  </revision>
 </revisionlist>

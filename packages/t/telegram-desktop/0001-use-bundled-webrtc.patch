@@ -1,5 +1,7 @@
---- a/cmake/external/webrtc/CMakeLists.txt
-+++ b/cmake/external/webrtc/CMakeLists.txt
+Index: tdesktop-4.4.0-full/cmake/external/webrtc/CMakeLists.txt
+===================================================================
+--- tdesktop-4.4.0-full.orig/cmake/external/webrtc/CMakeLists.txt
++++ tdesktop-4.4.0-full/cmake/external/webrtc/CMakeLists.txt
 @@ -7,7 +7,7 @@
  add_library(external_webrtc INTERFACE IMPORTED GLOBAL)
  add_library(desktop-app::external_webrtc ALIAS external_webrtc)
