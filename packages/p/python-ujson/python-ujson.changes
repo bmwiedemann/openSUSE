@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:34:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.6.0 
+  * Added
+  Update vendored double-conversion to 3.2.1 (#570) @joemarshall
+  * Fixed
+  Fix len integer overflow issue (#567) @marioga
+
+-------------------------------------------------------------------
 Sat Sep 17 15:58:07 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.5.0:
