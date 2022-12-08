@@ -28,7 +28,7 @@
 %define skip_python2 1
 %define modname path
 Name:           python-path%{psuffix}
-Version:        16.5.0
+Version:        16.6.0
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT

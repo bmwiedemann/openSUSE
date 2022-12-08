@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  7 20:00:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 16.6.0 
+  * .mtime and .atime are now settable.
+
+-------------------------------------------------------------------
 Wed Oct 12 13:55:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 16.5.0 
