@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:16:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.1.8 
+  * Added request headers to debug log output
+  * Added redacting of 'Password' properties from request bodies from debug logs
+
+-------------------------------------------------------------------
 Sat Oct 29 00:30:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.1.7: 
