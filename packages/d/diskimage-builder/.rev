@@ -252,4 +252,41 @@
     <comment></comment>
     <requestid>959734</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b71d968965b791c045ad52969067696f</srcmd5>
+    <version>3.25.0</version>
+    <time>1670514716</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.25.0:
+  * Start running dib-lint again
+  * Install Fedora ifcfg NM compat package
+  * added elrepo element
+  * changed release check logic in lvm element
+  * Allow flake8 version 5
+  * Support LVM thin provisioning
+  * Add thin provisioning support to growvols
+  * rocky : create machine-id in 9
+  * Allow setting ROOT\_LABEL from environment
+  * Do dmsetup remove device in rollback
+  * Add Rockylinux 9 build configuration and update jobs for 8 and 9
+  * Add subscription-manager repo names for RHEL-9
+  * Disable the opensuse functest
+  * Upgrade openEuler to 22.03 LTS
+  * rockylinux : create machine-id early
+  * cache-url: turn off -x by default
+  * opensuse: better report checksum errors
+  * ubuntu: more exact match on squashfs file, containerfile: use focal
+  * Allow Gentoo to manage python versions by itself
+  * Parse block device lvm lvs size attributes
+  * update default python for gentoo to 3.10
+  * Removing old grub removal step
+  * Use internal dhcp client for centos 9-stream and beyond
+  * Fix BLS entries for /boot partitions
+  * Add Fedora 36 support
+  * containerfile: warn if we don't have a Dockerfile
+  * Add support for Python 3.10
+  * Revert &quot;CentOS 9-stream : work around selinux permissions issue&quot;
+  * Fix backward regex match</comment>
+    <requestid>1041266</requestid>
+  </revision>
 </revisionlist>

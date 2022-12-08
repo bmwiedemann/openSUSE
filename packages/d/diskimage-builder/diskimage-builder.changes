@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:07:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.25.0:
+  * Start running dib-lint again
+  * Install Fedora ifcfg NM compat package
+  * added elrepo element
+  * changed release check logic in lvm element
+  * Allow flake8 version 5
+  * Support LVM thin provisioning
+  * Add thin provisioning support to growvols
+  * rocky : create machine-id in 9
+  * Allow setting ROOT\_LABEL from environment
+  * Do dmsetup remove device in rollback
+  * Add Rockylinux 9 build configuration and update jobs for 8 and 9
+  * Add subscription-manager repo names for RHEL-9
+  * Disable the opensuse functest
+  * Upgrade openEuler to 22.03 LTS
+  * rockylinux : create machine-id early
+  * cache-url: turn off -x by default
+  * opensuse: better report checksum errors
+  * ubuntu: more exact match on squashfs file, containerfile: use focal
+  * Allow Gentoo to manage python versions by itself
+  * Parse block device lvm lvs size attributes
+  * update default python for gentoo to 3.10
+  * Removing old grub removal step
+  * Use internal dhcp client for centos 9-stream and beyond
+  * Fix BLS entries for /boot partitions
+  * Add Fedora 36 support
+  * containerfile: warn if we don't have a Dockerfile
+  * Add support for Python 3.10
+  * Revert "CentOS 9-stream : work around selinux permissions issue"
+  * Fix backward regex match
+  * Add a warning in satellite configuration
+  * Use plain tox jobs instead of openstack ones
+  * Stop using openstack upper constraints
+  * CentOS 9-stream : work around selinux permissions issue
+  * Revert "Remove py 3.6 support and update jobs"
+  * Drop tumbleweed job
+  * Remove py 3.6 support and update jobs
+  * Check and mount boot volume for data extraction with nouuid
+  * Fix openssl example command in dynamic-login
+  * Fix grub setup on Gentoo
+  * Adopted dkms element to work on Ubuntu Jammy and nvidia drivers
+  * Switch to the CentOS 9 IPA job
+  * Ensure cloud-init is configured to generated host keys
+  * Add Jammy functesting to dib
+  * Ensure passwd is installed on RH and derivatives
+  * Revert "Temporarily stop running OpenSUSE functtests"
+  * yum-minimal: workaround missing $releasedir variable
+  * Temporarily stop running OpenSUSE functtests
+  * Make centos reset-bls-entries behave the same as rhel
+  * Switch to release-notes-jobs-python3
+  * Revert "Fallback to persistent netifs names with systemd"
+  * Fix dhcp-all-interfaces on debuntu systems
+  * centos: avoid head pipe failure
+  * containerfile: update test to jammy
+  * Add a job to test building jammy
+  * Move reset-bls-entries to post-install
+  * Set machine-id to uninitialized to trigger first boot
+  * yum-minimal: clean up release package installs
+  * source-repositories : use explicit sudo/-C args when in REPO\_DEST
+  * Update gentoo python version to 3.9
+  * CentOS Stream 9 has EPEL now
+  * Add interpolation note for dynamic-login password
+  * Move grub-install to the end, and skip for partition images
+  * Use https for downloading ubuntu images
+  * containerfile: Add support for setting network driver
+  * Update fedora element testing to F35
+  * containerfile: add support for Docker
+  * Handle btrfs root subvolume for fedora extract-image
+  * Correctly create DIB\_ENV variable and dib\_environment file
+  * Revert "Revert "Detect boot and EFI partitions in extract-image""
+
+-------------------------------------------------------------------
 Fri Mar  4 07:19:58 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.19.1
