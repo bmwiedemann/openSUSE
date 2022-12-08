@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:25:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.6:
+  * Fix horizontal scroll to be by character not pixels
+  * Update window when ending selection mode.
+
+-------------------------------------------------------------------
 Fri Mar  4 08:49:54 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.9.5
