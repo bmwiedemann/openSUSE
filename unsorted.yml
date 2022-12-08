@@ -548,6 +548,7 @@ unsorted:
   - ansible-core 
   - ansible-lint 
   - ansible-runner 
+  - ansible-test 
   - ansifilter 
   - ansifilter-gui 
   - ansilove 
@@ -7003,7 +7004,6 @@ unsorted:
   - hfst-devel 
   - hfst-ospell 
   - hfst-ospell-devel 
-  - hhdate 
   - hhdate-devel 
   - hiawatha 
   - hiawatha-letsencrypt 
@@ -10622,6 +10622,7 @@ unsorted:
   - libdat2-2 
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
+  - libdate-tz3 
   - libdatovka 
   - libdatovka-devel 
   - libdatovka2 
@@ -12961,6 +12962,7 @@ unsorted:
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
   - libopenmpt_modplug1 
+  - libopenpgl0: [x86_64] 
   - libopenraw-devel 
   - libopenraw9 
   - libopenraw9-32bit: [x86_64] 
@@ -13464,6 +13466,7 @@ unsorted:
   - libqb-tools 
   - libqb100-32bit: [x86_64] 
   - libqca-qt6-2 
+  - libqcdloop2 
   - libqcow-devel 
   - libqcow-tools 
   - libqcow1 
@@ -18678,6 +18681,8 @@ unsorted:
   - openocd 
   - openocd-data 
   - openomf 
+  - openpgl-devel: [x86_64] 
+  - openpgl-doc: [x86_64] 
   - openpgm-devel 
   - openqa-mon 
   - openrct2 
@@ -21743,7 +21748,6 @@ unsorted:
   - python-keystoneauth1-doc 
   - python-keystoneclient-doc 
   - python-keystonemiddleware-doc 
-  - python-lammps 
   - python-libcomps-doc 
   - python-logutils-doc 
   - python-logzero-doc 
@@ -21970,6 +21974,7 @@ unsorted:
   - python3-keystonemiddleware 
   - python3-kiwi 
   - python3-ktoblzcheck 
+  - python3-lammps 
   - python3-lash 
   - python3-lasso 
   - python3-ldb-32bit: [x86_64] 
@@ -32155,6 +32160,7 @@ unsorted:
   - qca-qt6 
   - qca-qt6-devel 
   - qca-qt6-plugins 
+  - qcdloop-devel 
   - qcoro-qt5-devel 
   - qcoro-qt6-devel 
   - qcustomplot-devel 
@@ -32828,6 +32834,7 @@ unsorted:
   - rbd-nbd: [x86_64] 
   - rbenv 
   - rbenv-bash-completion 
+  - rbenv-bundle-exec 
   - rbenv-zsh-completion 
   - rbutil 
   - rcc-runtime 
@@ -43613,6 +43620,7 @@ unsorted:
   - uthash-devel 
   - util-macros-devel: [i586] 
   - utils-libnfs 
+  - utmp-cli 
   - utox 
   - utsushi 
   - utsushi-lang 
