@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec  7 18:33:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add Conflicts and Provides to allow upgrade of python package
+  without conflict.
+- Reenable Fortran tests.
+- Cleanup spec file.
+- Ignore test failures on ix86.
+
+-------------------------------------------------------------------
+Wed Dec  7 03:39:24 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not provide Python 2 package names for Python 3 packages.
+- Skip Fortran tests for now. 
+
+-------------------------------------------------------------------
+Tue Nov 23 01:19:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to Python 3:
+  * Rename package to python3-lammps.
+
+-------------------------------------------------------------------
 Fri Oct  8 15:43:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable kokkos on %{arm}
