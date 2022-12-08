@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:49:04 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.9 (released 2022-12-06) includes security fixes to the
+  net/http and os packages, as well as bug fixes to cgo, the
+  compiler, the runtime, and the crypto/x509 and os/exec packages.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-41717 CVE-2022-41720
+  * go#57008 boo#1206135 security: fix CVE-2022-41717 net/http: limit canonical header cache by bytes, not entries
+  * go#57005 boo#1206134 security: fix CVE-2022-41720 os, net/http: avoid escapes from os.DirFS and http.Dir on Windows
+  * go#56751 runtime,cmd/compile: apparent memory corruption in compress/flate
+  * go#56709 net: builders failing TestLookupDotsWithRemoteSource and TestLookupGoogleSRV due to missing host for _xmpp-server._tcp.google.com
+  * go#56675 x/net/http2/h2c: ineffective mitigation for unsafe io.ReadAll
+  * go#56635 runtime: traceback stuck in runtime.systemstack
+  * go#56556 cmd/compile: some x/sys versions no longer build due to "go:linkname must refer to declared function or variable"
+  * go#56550 os/exec: Plan 9 build has been broken by a Windows security fix (also breaks 1.19.3 and 1.18.8)
+  * go#56437 crypto/x509: respect GODEBUG changes during program lifetime
+  * go#56396 runtime: on linux/PPC64, usleep computes incorrect tv_nsec parameter
+  * go#56359 cmd/compile: panic: offset too large
+
+-------------------------------------------------------------------
 Tue Nov  1 17:18:30 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.8 (released 2022-11-01) includes security fixes to the
