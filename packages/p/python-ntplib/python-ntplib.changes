@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 19:56:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.4.0 - 2021-05-28
+  - flake8 conformance
+  - Add ROA Reference ID
+
+- Update to version 0.3.4 - 2020-04-28
+  - Re-release of 0.3.3 (0.3.3 was mistakenly deleted from PyPI) 
+
+-------------------------------------------------------------------
 Thu Oct  1 12:45:57 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - Use the local file in Source, not the full url on pypi.
