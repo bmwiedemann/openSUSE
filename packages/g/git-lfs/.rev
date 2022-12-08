@@ -96,4 +96,16 @@
   again (5054.patch)</comment>
     <requestid>993917</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2de96a6df074eb1c3bf186d986244d92</srcmd5>
+    <version>3.3.0</version>
+    <time>1670514651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.0:
+  https://github.com/git-lfs/git-lfs/releases/tag/v3.3.0
+- drop 5054.patch:
+  included in update
+- we need a vendor tarball now</comment>
+    <requestid>1041187</requestid>
+  </revision>
 </revisionlist>
