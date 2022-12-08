@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:28:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-pytest72.patch to fix tests failing with pytest 7.2
+  gh#matplotlib/matplotlib#24173
+
+-------------------------------------------------------------------
 Fri Nov 11 11:40:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove also setuptools_scm_git_archive dependency as it's suggested in the

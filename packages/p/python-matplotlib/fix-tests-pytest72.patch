@@ -1,0 +1,35 @@
+Index: matplotlib-3.5.3/lib/matplotlib/tests/test_cbook.py
+===================================================================
+--- matplotlib-3.5.3.orig/lib/matplotlib/tests/test_cbook.py
++++ matplotlib-3.5.3/lib/matplotlib/tests/test_cbook.py
+@@ -52,7 +52,7 @@ class Test_delete_masked_points:
+ 
+ 
+ class Test_boxplot_stats:
+-    def setup(self):
++    def setup_method(self):
+         np.random.seed(937)
+         self.nrows = 37
+         self.ncols = 4
+@@ -178,7 +178,7 @@ class Test_boxplot_stats:
+ 
+ 
+ class Test_callback_registry:
+-    def setup(self):
++    def setup_method(self):
+         self.signal = 'test'
+         self.callbacks = cbook.CallbackRegistry()
+ 
+Index: matplotlib-3.5.3/lib/matplotlib/tests/test_mlab.py
+===================================================================
+--- matplotlib-3.5.3.orig/lib/matplotlib/tests/test_mlab.py
++++ matplotlib-3.5.3/lib/matplotlib/tests/test_mlab.py
+@@ -92,7 +92,7 @@ def test_window():
+ 
+ 
+ class TestDetrend:
+-    def setup(self):
++    def setup_method(self):
+         np.random.seed(0)
+         n = 1000
+         x = np.linspace(0., 100, n)

@@ -41,6 +41,8 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests-pytest72.patch gh#matplotlib/matplotlib#24173
+Patch1:         fix-tests-pytest72.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module FontTools >= 4.22.0}
 BuildRequires:  %{python_module devel}
@@ -233,7 +235,7 @@ This package includes the wxWidgets-based wxagg backend
 for %{name} plotting package
 
 %prep
-%autosetup -n matplotlib-%{version}
+%autosetup -p1 -n matplotlib-%{version}
 #copy freetype to the right location, so that matplotlib will not try to download it
 mkdir -p ~/.cache/matplotlib/
 SHA=($(sha256sum %{SOURCE98}))

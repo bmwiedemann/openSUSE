@@ -850,4 +850,14 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
 - Allow build with setuptools_scm&gt;=7</comment>
     <requestid>1035220</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>62f62d93886bb87795985ccd44025497</srcmd5>
+    <version>3.5.3</version>
+    <time>1670514617</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-pytest72.patch to fix tests failing with pytest 7.2
+  gh#matplotlib/matplotlib#24173
+</comment>
+    <requestid>1041050</requestid>
+  </revision>
 </revisionlist>
