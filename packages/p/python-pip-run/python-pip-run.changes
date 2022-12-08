@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 04:22:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v8.8.2 
+  * Packaging refresh.
+  * Merge https://github.com/jaraco/skeleton
+
+-------------------------------------------------------------------
 Fri Aug  5 09:14:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add pip-run-suse-ring1-no-nbformat.patch for removal of nbformat

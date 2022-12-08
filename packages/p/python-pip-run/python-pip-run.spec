@@ -28,7 +28,7 @@
 %bcond_with ringdisabled
 
 Name:           python-pip-run%{psuffix}
-Version:        8.8.1
+Version:        8.8.2
 Release:        0
 Summary:        Install packages and run Python with them
 License:        MIT
