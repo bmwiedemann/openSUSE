@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/johnkerl/miller</param>
-    <param name="revision">main</param>
     <param name="scm">git</param>
+    <param name="revision">main</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <!--

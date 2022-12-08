@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 30 17:33:12 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 6.5.0+git20221130.636ca8873:
+  * Fix typos (#1135)
+  * Release notes
+  * Post-6.5.0
+  * Miller 6.5.0 (#1134)
+  * Miller 6.5.0
+  * Convert mlrval polymorphism from struct to unionish interface (#1133)
+  * Clarify locations of performance info
+  * More mlrval size-reduction (#1132)
+  * More mlrval size-reduction
+  * Exclude median from summary default (#1131)
+  * Exclude median from summary default
+  * Bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (#1113)
+  * Bump actions/upload-artifact from 3.1.0 to 3.1.1 (#1112)
+  * Bump actions/cache from 3 to 3.0.11 (#1109)
+  * Bump github/codeql-action from 2.1.28 to 2.1.33 (#1126)
+  * Use int8 for mvtype (memory reduction) (#1130)
+  * make fmt
+  * forgot to set between-releases version to 6.4.0-dev after 6.4.0
+  * Bump github.com/pkg/profile from 1.6.0 to 1.7.0 (#1110)
+  * [StepSecurity] ci: Harden GitHub Actions (#1107)
+  * fix an old typo
+
+-------------------------------------------------------------------
+Thu Oct 13 23:36:39 UTC 2022 - scott.bradnick@suse.com
+
+- Renaming buildmode-pie.patch to buildmode-pie.diff
+- Update to version 6.4.0+git20221003.39286923d:
+  * Don't double-quote a CSV field only for having a leading space (#1101)
+
+-------------------------------------------------------------------
 Sun Oct 02 16:57:42 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 6.4.0+git20220929.36d0ed760:

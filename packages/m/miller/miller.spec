@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        6.4.0+git20220929.36d0ed760
+Version:        6.5.0+git20221130.636ca8873
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
@@ -26,7 +26,7 @@ Group:          Productivity/Text/Utilities
 URL:            http://johnkerl.org/miller/doc
 Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         buildmode-pie.patch
+Patch0:         buildmode-pie.diff
 #BuildRequires:  golang
 BuildRequires:  golang-packaging
 BuildRequires:  gcc
