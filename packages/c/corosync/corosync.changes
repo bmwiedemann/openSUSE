@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Nov 21 19:56:53 UTC 2022 - Emil Penchev <emil.penchev@suse.com>
+
+- Update to version 2.4.6:
+  * totemsrp: More informative messages
+  * icmap: fix the icmap_get_*_r functions
+  * stats: Add basic schedule-miss stats to needle
+  * icmap: icmap_init_r() leaks if trie_create() fails
+  * test: Fix cpgtest
+  * pkgconfig: Add libqb dependency
+  * man: votequorum.5: use proper single quotes
+  * cpg: Change downlist log level
+  * totem: Increase ring_id seq after load
+  * totempg: Check sanity (length) of received message
+  * totemsrp: Reduce MTU to left room second mcast
+  * qnetd: Rename qnetd-log.c to log.c
+  * qnetd: Fix double -d description
+  * qnetd: Check log initialization error
+  * qnetd: Add function to set log target
+  * qdevice: Use log instead of libqb log
+  * qdevice: Import log instead of qdevice-log
+  * qdevice: Merge msg_decode_error functions
+  * qnetd: Use log-common for nodelist debug dump
+  * qdevice: Configurable log priority bump
+  * tests: Add utils_parse_bool_str test
+  * qdevice: Free memory used by log
+  * qdevice: Add log test
+  * qdevice: Add header files to list of test sources
+  * qdevice: Add chk variant of vsyslog to test-log
+  * qdevice: Add prototype of __vsyslog_chk
+  * votequorum: Ignore the icmap_get_* return value
+  * logconfig: Remove double free of value
+  * cmap: Assert copied string length
+  * sync: Assert sync_callbacks.name length
+  * votequorum: Assert copied strings length
+  * cpghum: Remove unused time variables and functions
+  * cfgtool: Remove unused callbacks
+  * cmapctl: Free bin_value on error
+  * quorumtool: Assert copied string length
+  * votequorum: Reflect runtime change of 2Node to WFA
+  * main: Add schedmiss timestamp into message
+  * votequorum: Change check of expected_votes
+  * quorumtool: Fix exit status codes
+  * quorumtool: exit on invalid expected votes
+  * votequorum: set wfa status only on startup
+  * Revert "totemip: Add support for sin6_scope_id"
+  * Revert "totemip: compare sin6_scope_id and interface_num"
+  * main: Make schedmiss in cmap and log equal
+  * totemip: Add support for sin6_scope_id
+  * qnetd: Do not call ffsplit_do on shutdown
+  * qdevice: Fix connect heuristics result callback
+  * qdevice: Fix connect heuristics result callback
+  * qdevice: Log adds newline automatically
+  * qnetd: Fix dpd timer
+  * qnetd: Add support for keep active partition vote
+  * common_lib: Remove trailing spaces in cs_strerror
+  * totemsrp: Move token received callback
+  * tests: Use CS_DISPATCH_BLOCKING instead of cycle
+  * qnetd: Fix NULL dereference of client
+  * qnetd: Simplify KAP Tie-breaker logic
+  * totem: Add cancel_hold_on_retransmit config option
+  * logsys: Unlock config mutex on error
+  * totemsrp: Switch totempg buffers at the right time
+  * totemudpu: Don't block local socketpair
+  * configure.ac: fix pkgconfig issue of rdma
+  * totemip: Add support for sin6_scope_id
+  * totemip: compare sin6_scope_id and interface_num
+  * qdevice: Change log level to NOTICE on PASS
+  * cfgtool: output error messages to stderr
+  * tools: use util_strtonum for options checking
+  * cmapctl: return EXIT_FAILURE on failure
+  * quorumtool: Help shouldn't require running service
+  * quorumtool: strict check for -o option
+  * cmapctl: check NULL for key type and value for -p
+  * man: adjust description about interface section
+  * qnetd: sort by node_id when add new client
+  * man: replace votequorum_poll for actually used fn
+
+-------------------------------------------------------------------
 Mon Apr 11 16:06:20 UTC 2022 - Emil Penchev <emil.penchev@suse.com>
 
 - Update to version corosync-2.4.5+git.5d625cef:
