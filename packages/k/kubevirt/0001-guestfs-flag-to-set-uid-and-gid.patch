@@ -1,0 +1,914 @@
+From d1453961bccb953943133dbe510326b4991fa7b0 Mon Sep 17 00:00:00 2001
+From: Vasiliy Ulyanov <vulyanov@suse.de>
+Date: Mon, 17 Oct 2022 14:17:00 +0200
+Subject: [PATCH 01/12] Drop RunAsGroup from the libguestfs pod manifest
+
+Same as 0821a5c900. Specifying RunAsGroup without RunAsUser violates
+the specification:
+
+  run_as_group should only be specified when run_as_user is specified;
+  otherwise, the runtime MUST error.
+
+Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
+---
+ cmd/libguestfs/BUILD.bazel     |  1 +
+ pkg/virtctl/guestfs/guestfs.go | 13 ++++++-------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/cmd/libguestfs/BUILD.bazel b/cmd/libguestfs/BUILD.bazel
+index 9f98e4f9c..0e850606c 100644
+--- a/cmd/libguestfs/BUILD.bazel
++++ b/cmd/libguestfs/BUILD.bazel
+@@ -27,6 +27,7 @@ container_image(
+         "//:get-version",
+     ],
+     tars = [
++        "//:passwd-tar",
+         "//rpm:libguestfs-tools",
+         ":appliance_layer",
+         ":entrypoint",
+diff --git a/pkg/virtctl/guestfs/guestfs.go b/pkg/virtctl/guestfs/guestfs.go
+index d79d85db0..09a0c61b0 100644
+--- a/pkg/virtctl/guestfs/guestfs.go
++++ b/pkg/virtctl/guestfs/guestfs.go
+@@ -53,7 +53,7 @@ var (
+ 	kvm           bool
+ 	podName       string
+ 	root          bool
+-	group         string
++	fsGroup       string
+ )
+ 
+ type guestfsCommand struct {
+@@ -78,7 +78,7 @@ func NewGuestfsShellCommand(clientConfig clientcmd.ClientConfig) *cobra.Command
+ 	cmd.PersistentFlags().BoolVar(&kvm, "kvm", true, "Use kvm for the libguestfs-tools container")
+ 	cmd.PersistentFlags().BoolVar(&root, "root", false, "Set uid 0 for the libguestfs-tool container")
+ 	cmd.SetUsageTemplate(templates.UsageTemplate())
+-	cmd.PersistentFlags().StringVar(&group, "group", "", "Set the gid and fsgroup for the libguestfs-tool container")
++	cmd.PersistentFlags().StringVar(&fsGroup, "fsGroup", "", "Set the fsgroup for the libguestfs-tool container")
+ 
+ 	return cmd
+ }
+@@ -369,11 +369,11 @@ func (client *K8sClient) getPodsForPVC(pvcName, ns string) ([]corev1.Pod, error)
+ }
+ 
+ func setGroupLibguestfs() (*int64, error) {
+-	if root && group != "" {
+-		return nil, fmt.Errorf("cannot set group id with root")
++	if root && fsGroup != "" {
++		return nil, fmt.Errorf("cannot set fsGroup id with root")
+ 	}
+-	if group != "" {
+-		n, err := strconv.ParseInt(group, 10, 64)
++	if fsGroup != "" {
++		n, err := strconv.ParseInt(fsGroup, 10, 64)
+ 		if err != nil {
+ 			return nil, err
+ 		}
+@@ -418,7 +418,6 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 	securityContext := &corev1.PodSecurityContext{
+ 		RunAsNonRoot: &nonRoot,
+ 		RunAsUser:    uid,
+-		RunAsGroup:   g,
+ 		FSGroup:      g,
+ 		SeccompProfile: &corev1.SeccompProfile{
+ 			Type: corev1.SeccompProfileTypeRuntimeDefault,
+-- 
+2.38.1
+
+
+From 0335eebaa330984e00bc49eaf2a243e0f73c3fbe Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Mon, 22 Aug 2022 08:31:59 +0200
+Subject: [PATCH 02/12] allow user to set the pod uid
+
+Add a new flag uid if the cluster defaults don't work. This flag enables the
+users to specify the uid for running the pod.
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ pkg/virtctl/guestfs/BUILD.bazel |  1 +
+ pkg/virtctl/guestfs/guestfs.go  | 38 +++++++++++++++++++++++++--------
+ 2 files changed, 30 insertions(+), 9 deletions(-)
+
+diff --git a/pkg/virtctl/guestfs/BUILD.bazel b/pkg/virtctl/guestfs/BUILD.bazel
+index 0ee11f549..ee9a66354 100644
+--- a/pkg/virtctl/guestfs/BUILD.bazel
++++ b/pkg/virtctl/guestfs/BUILD.bazel
+@@ -18,6 +18,7 @@ go_library(
+         "//vendor/k8s.io/client-go/rest:go_default_library",
+         "//vendor/k8s.io/client-go/tools/clientcmd:go_default_library",
+         "//vendor/k8s.io/client-go/tools/remotecommand:go_default_library",
++        "//vendor/k8s.io/utils/pointer:go_default_library",
+     ],
+ )
+ 
+diff --git a/pkg/virtctl/guestfs/guestfs.go b/pkg/virtctl/guestfs/guestfs.go
+index 09a0c61b0..23cec45e4 100644
+--- a/pkg/virtctl/guestfs/guestfs.go
++++ b/pkg/virtctl/guestfs/guestfs.go
+@@ -22,6 +22,8 @@ import (
+ 
+ 	"kubevirt.io/client-go/kubecli"
+ 
++	"k8s.io/utils/pointer"
++
+ 	"kubevirt.io/kubevirt/pkg/virtctl/templates"
+ 	"kubevirt.io/kubevirt/pkg/virtctl/utils"
+ )
+@@ -54,6 +56,7 @@ var (
+ 	podName       string
+ 	root          bool
+ 	fsGroup       string
++	uid           string
+ )
+ 
+ type guestfsCommand struct {
+@@ -77,6 +80,7 @@ func NewGuestfsShellCommand(clientConfig clientcmd.ClientConfig) *cobra.Command
+ 	cmd.PersistentFlags().StringVar(&pullPolicy, "pull-policy", string(pullPolicyDefault), "pull policy for the libguestfs image")
+ 	cmd.PersistentFlags().BoolVar(&kvm, "kvm", true, "Use kvm for the libguestfs-tools container")
+ 	cmd.PersistentFlags().BoolVar(&root, "root", false, "Set uid 0 for the libguestfs-tool container")
++	cmd.PersistentFlags().StringVar(&uid, "uid", "", "Set uid for the libguestfs-tool container. It doesn't work with root")
+ 	cmd.SetUsageTemplate(templates.UsageTemplate())
+ 	cmd.PersistentFlags().StringVar(&fsGroup, "fsGroup", "", "Set the fsgroup for the libguestfs-tool container")
+ 
+@@ -386,6 +390,26 @@ func setGroupLibguestfs() (*int64, error) {
+ 	return nil, nil
+ }
+ 
++// setUIDLibugestfs returns the guestfs uid
++func setUIDLibugestfs() (*int64, error) {
++	switch {
++	case root:
++		var zero int64
++		if uid != "" {
++			return nil, fmt.Errorf("cannot set uid if root is true")
++		}
++		return &zero, nil
++	case uid != "":
++		n, err := strconv.ParseInt(uid, 10, 64)
++		if err != nil {
++			return nil, err
++		}
++		return &n, nil
++	default:
++		return nil, nil
++	}
++}
++
+ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock bool) (*corev1.Pod, error) {
+ 	var resources corev1.ResourceRequirements
+ 	podName = fmt.Sprintf("%s-%s", podNamePrefix, pvc)
+@@ -396,12 +420,9 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 			},
+ 		}
+ 	}
+-	nonRoot := true
+-	var uidRoot int64 = 0
+-	var uid *int64
+-	if root {
+-		nonRoot = false
+-		uid = &uidRoot
++	u, err := setUIDLibugestfs()
++	if err != nil {
++		return nil, err
+ 	}
+ 	g, err := setGroupLibguestfs()
+ 	if err != nil {
+@@ -414,10 +435,9 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 			Drop: []corev1.Capability{"ALL"},
+ 		},
+ 	}
+-
+ 	securityContext := &corev1.PodSecurityContext{
+-		RunAsNonRoot: &nonRoot,
+-		RunAsUser:    uid,
++		RunAsNonRoot: pointer.Bool(!root),
++		RunAsUser:    u,
+ 		FSGroup:      g,
+ 		SeccompProfile: &corev1.SeccompProfile{
+ 			Type: corev1.SeccompProfileTypeRuntimeDefault,
+-- 
+2.38.1
+
+
+From 1ebc15d9785f4cf8d6f757095424adeca528f15c Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Tue, 23 Aug 2022 11:32:00 +0200
+Subject: [PATCH 03/12] add unit test
+
+Verify that root and uid flags cannot be used together
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ pkg/virtctl/guestfs/guestfs_test.go | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/pkg/virtctl/guestfs/guestfs_test.go b/pkg/virtctl/guestfs/guestfs_test.go
+index 5ceb10476..0990e7cd2 100644
+--- a/pkg/virtctl/guestfs/guestfs_test.go
++++ b/pkg/virtctl/guestfs/guestfs_test.go
+@@ -148,6 +148,14 @@ var _ = Describe("Guestfs shell", func() {
+ 			Expect(err).To(HaveOccurred())
+ 			Expect(err.Error()).Should(Equal(fmt.Sprintf("The PVC %s doesn't exist", pvcName)))
+ 		})
++
++		It("UID cannot be used with root", func() {
++			guestfs.SetClient(fakeCreateClientPVC)
++			cmd := virtctlcmd.NewRepeatableVirtctlCommand(commandName, pvcName, "--root=true", "--uid=1001")
++			err := cmd()
++			Expect(err).To(HaveOccurred())
++			Expect(err.Error()).Should(Equal(fmt.Sprintf("cannot set uid if root is true")))
++		})
+ 	})
+ 
+ 	Context("URL authenticity", func() {
+-- 
+2.38.1
+
+
+From a72e5ff9ee553e8074cc413787f32f68445be677 Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Tue, 23 Aug 2022 11:35:53 +0200
+Subject: [PATCH 04/12] add functional test
+
+Verify that guestfs command can be run under another uid
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ tests/storage/guestfs.go | 41 ++++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 18 deletions(-)
+
+diff --git a/tests/storage/guestfs.go b/tests/storage/guestfs.go
+index fcb19cb61..acdb1a509 100644
+--- a/tests/storage/guestfs.go
++++ b/tests/storage/guestfs.go
+@@ -107,6 +107,18 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 
+ 	}
+ 
++	verifyCanRunOnFSPVC := func(podName string) {
++		stdout, stderr, err := execCommandLibguestfsPod(podName, []string{"qemu-img", "create", "/disk/disk.img", "500M"})
++		Expect(stderr).To(Equal(""))
++		Expect(stdout).To(ContainSubstring("Formatting"))
++		Expect(err).ToNot(HaveOccurred())
++		stdout, stderr, err = execCommandLibguestfsPod(podName, []string{"guestfish", "-a", "/disk/disk.img", "run"})
++		Expect(stderr).To(BeEmpty())
++		Expect(stdout).To(BeEmpty())
++		Expect(err).ToNot(HaveOccurred())
++
++	}
++
+ 	Context("Run libguestfs on PVCs", func() {
+ 		BeforeEach(func() {
+ 			var err error
+@@ -142,15 +154,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			podName := libguestsTools + pvcClaim
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim)
+-			stdout, stderr, err := execCommandLibguestfsPod(podName, []string{"qemu-img", "create", "/disk/disk.img", "500M"})
+-			Expect(stderr).To(Equal(""))
+-			Expect(stdout).To(ContainSubstring("Formatting"))
+-			Expect(err).ToNot(HaveOccurred())
+-			stdout, stderr, err = execCommandLibguestfsPod(podName, []string{"guestfish", "-a", "/disk/disk.img", "run"})
+-			Expect(stderr).To(Equal(""))
+-			Expect(stdout).To(Equal(""))
+-			Expect(err).ToNot(HaveOccurred())
+-
++			verifyCanRunOnFSPVC(podName)
+ 		})
+ 
+ 		It("[posneg:negative][test_id:6480]Should fail to run the guestfs command on a PVC in use", func() {
+@@ -179,6 +183,15 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			Expect(err).ToNot(HaveOccurred())
+ 
+ 		})
++		It("Should successfully run guestfs command on a filesystem-based PVC setting the uid", func() {
++			f := createFakeAttacher()
++			defer f.closeChannel()
++			pvcClaim = "pvc-fs-with-different-uid"
++			podName := libguestsTools + pvcClaim
++			createPVCFilesystem(pvcClaim)
++			runGuestfsOnPVC(pvcClaim, "--uid", "1002")
++			verifyCanRunOnFSPVC(podName)
++		})
+ 	})
+ 	Context("Run libguestfs on PVCs with root", func() {
+ 		BeforeEach(func() {
+@@ -199,15 +212,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			podName := libguestsTools + pvcClaim
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim, "--root")
+-			stdout, stderr, err := execCommandLibguestfsPod(podName, []string{"qemu-img", "create", "/disk/disk.img", "500M"})
+-			Expect(stderr).To(Equal(""))
+-			Expect(stdout).To(ContainSubstring("Formatting"))
+-			Expect(err).ToNot(HaveOccurred())
+-			stdout, stderr, err = execCommandLibguestfsPod(podName, []string{"guestfish", "-a", "/disk/disk.img", "run"})
+-			Expect(stderr).To(Equal(""))
+-			Expect(stdout).To(Equal(""))
+-			Expect(err).ToNot(HaveOccurred())
+-
++			verifyCanRunOnFSPVC(podName)
+ 		})
+ 	})
+ 
+-- 
+2.38.1
+
+
+From 6b7dd4c6a4773c5240810d929e5bedf10a62601b Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Thu, 20 Oct 2022 10:50:03 +0200
+Subject: [PATCH 05/12] adjust variables/function names
+
+Rename functions and variables to match with the fsgroup.
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ pkg/virtctl/guestfs/guestfs.go | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/pkg/virtctl/guestfs/guestfs.go b/pkg/virtctl/guestfs/guestfs.go
+index 23cec45e4..bac418409 100644
+--- a/pkg/virtctl/guestfs/guestfs.go
++++ b/pkg/virtctl/guestfs/guestfs.go
+@@ -372,7 +372,7 @@ func (client *K8sClient) getPodsForPVC(pvcName, ns string) ([]corev1.Pod, error)
+ 	return pods, nil
+ }
+ 
+-func setGroupLibguestfs() (*int64, error) {
++func setFSGroupLibguestfs() (*int64, error) {
+ 	if root && fsGroup != "" {
+ 		return nil, fmt.Errorf("cannot set fsGroup id with root")
+ 	}
+@@ -384,8 +384,8 @@ func setGroupLibguestfs() (*int64, error) {
+ 		return &n, nil
+ 	}
+ 	if root {
+-		var rootGID int64 = 0
+-		return &rootGID, nil
++		var rootFsID int64 = 0
++		return &rootFsID, nil
+ 	}
+ 	return nil, nil
+ }
+@@ -424,7 +424,7 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 	if err != nil {
+ 		return nil, err
+ 	}
+-	g, err := setGroupLibguestfs()
++	f, err := setFSGroupLibguestfs()
+ 	if err != nil {
+ 		return nil, err
+ 	}
+@@ -438,7 +438,7 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 	securityContext := &corev1.PodSecurityContext{
+ 		RunAsNonRoot: pointer.Bool(!root),
+ 		RunAsUser:    u,
+-		FSGroup:      g,
++		FSGroup:      f,
+ 		SeccompProfile: &corev1.SeccompProfile{
+ 			Type: corev1.SeccompProfileTypeRuntimeDefault,
+ 		},
+-- 
+2.38.1
+
+
+From e7a5056ba3b83cfd18991f8b801a977becc635fb Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Thu, 20 Oct 2022 10:37:13 +0200
+Subject: [PATCH 06/12] guestfs: add gid flag
+
+The gid flags set the group for the container. This flag can be used
+only combined wit the uid flag. See comment:
+  https://github.com/kubernetes/cri-api/blob/2b5244cefaeace624cb160d6b3d85dd3fd14baea/pkg/apis/runtime/v1/api.proto#L307-L309
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ pkg/virtctl/guestfs/guestfs.go | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/pkg/virtctl/guestfs/guestfs.go b/pkg/virtctl/guestfs/guestfs.go
+index bac418409..3c757b6ad 100644
+--- a/pkg/virtctl/guestfs/guestfs.go
++++ b/pkg/virtctl/guestfs/guestfs.go
+@@ -57,6 +57,7 @@ var (
+ 	root          bool
+ 	fsGroup       string
+ 	uid           string
++	gid           string
+ )
+ 
+ type guestfsCommand struct {
+@@ -81,6 +82,7 @@ func NewGuestfsShellCommand(clientConfig clientcmd.ClientConfig) *cobra.Command
+ 	cmd.PersistentFlags().BoolVar(&kvm, "kvm", true, "Use kvm for the libguestfs-tools container")
+ 	cmd.PersistentFlags().BoolVar(&root, "root", false, "Set uid 0 for the libguestfs-tool container")
+ 	cmd.PersistentFlags().StringVar(&uid, "uid", "", "Set uid for the libguestfs-tool container. It doesn't work with root")
++	cmd.PersistentFlags().StringVar(&gid, "gid", "", "Set gid for the libguestfs-tool container. This works only combined when the uid is manually set")
+ 	cmd.SetUsageTemplate(templates.UsageTemplate())
+ 	cmd.PersistentFlags().StringVar(&fsGroup, "fsGroup", "", "Set the fsgroup for the libguestfs-tool container")
+ 
+@@ -410,6 +412,29 @@ func setUIDLibugestfs() (*int64, error) {
+ 	}
+ }
+ 
++func setGIDLibguestfs() (*int64, error) {
++	// The GID can only be specified together with the uid. See comment at: https://github.com/kubernetes/cri-api/blob/2b5244cefaeace624cb160d6b3d85dd3fd14baea/pkg/apis/runtime/v1/api.proto#L307-L309
++	if gid != "" && uid == "" {
++		return nil, fmt.Errorf("gid requires the uid to be set")
++	}
++
++	if root && gid != "" {
++		return nil, fmt.Errorf("cannot set gid id with root")
++	}
++	if gid != "" {
++		n, err := strconv.ParseInt(gid, 10, 64)
++		if err != nil {
++			return nil, err
++		}
++		return &n, nil
++	}
++	if root {
++		var rootGID int64 = 0
++		return &rootGID, nil
++	}
++	return nil, nil
++}
++
+ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock bool) (*corev1.Pod, error) {
+ 	var resources corev1.ResourceRequirements
+ 	podName = fmt.Sprintf("%s-%s", podNamePrefix, pvc)
+@@ -424,6 +449,10 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 	if err != nil {
+ 		return nil, err
+ 	}
++	g, err := setGIDLibguestfs()
++	if err != nil {
++		return nil, err
++	}
+ 	f, err := setFSGroupLibguestfs()
+ 	if err != nil {
+ 		return nil, err
+@@ -438,6 +467,7 @@ func createLibguestfsPod(pvc, image, cmd string, args []string, kvm, isBlock boo
+ 	securityContext := &corev1.PodSecurityContext{
+ 		RunAsNonRoot: pointer.Bool(!root),
+ 		RunAsUser:    u,
++		RunAsGroup:   g,
+ 		FSGroup:      f,
+ 		SeccompProfile: &corev1.SeccompProfile{
+ 			Type: corev1.SeccompProfileTypeRuntimeDefault,
+-- 
+2.38.1
+
+
+From c77ccabeabffcb99bc84da854696046f68eb4acc Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Thu, 20 Oct 2022 11:19:42 +0200
+Subject: [PATCH 07/12] add unit test for gid
+
+Verify that the gid can be only used together with the uid.
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ pkg/virtctl/guestfs/guestfs_test.go | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/pkg/virtctl/guestfs/guestfs_test.go b/pkg/virtctl/guestfs/guestfs_test.go
+index 0990e7cd2..dcce3f71d 100644
+--- a/pkg/virtctl/guestfs/guestfs_test.go
++++ b/pkg/virtctl/guestfs/guestfs_test.go
+@@ -156,6 +156,13 @@ var _ = Describe("Guestfs shell", func() {
+ 			Expect(err).To(HaveOccurred())
+ 			Expect(err.Error()).Should(Equal(fmt.Sprintf("cannot set uid if root is true")))
+ 		})
++		It("GID can be use only together with the uid flag", func() {
++			guestfs.SetClient(fakeCreateClientPVC)
++			cmd := virtctlcmd.NewRepeatableVirtctlCommand(commandName, pvcName, "--gid=1001")
++			err := cmd()
++			Expect(err).To(HaveOccurred())
++			Expect(err.Error()).Should(Equal(fmt.Sprintf("gid requires the uid to be set")))
++		})
+ 	})
+ 
+ 	Context("URL authenticity", func() {
+-- 
+2.38.1
+
+
+From 62bc70cf34751f19fc4a19dc66ee46c56172d802 Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Thu, 20 Oct 2022 16:01:01 +0200
+Subject: [PATCH 08/12] fix fsgrouo flag in the test case
+
+Change flag from group to fsGroup.
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ tests/storage/guestfs.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/storage/guestfs.go b/tests/storage/guestfs.go
+index acdb1a509..91d36fbe7 100644
+--- a/tests/storage/guestfs.go
++++ b/tests/storage/guestfs.go
+@@ -77,7 +77,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 		podName := libguestsTools + pvcClaim
+ 		o := append([]string{"guestfs", pvcClaim, "--namespace", util.NamespaceTestDefault}, options...)
+ 		if setGroup {
+-			o = append(o, "--group", testGroup)
++			o = append(o, "--fsGroup", testGroup)
+ 		}
+ 		guestfsCmd := clientcmd.NewVirtctlCommand(o...)
+ 		go func() {
+-- 
+2.38.1
+
+
+From d8b43890688deb3f92d2325b31b08a03a32827f2 Mon Sep 17 00:00:00 2001
+From: Maya Rashish <mrashish@redhat.com>
+Date: Wed, 9 Nov 2022 08:45:09 +0200
+Subject: [PATCH 09/12] Use a unique pvc/pod name for guestfs test
+
+We have a flake where the pod is terminating -- this is likely due to
+the name conflict with another test. This name is more appropriate, too.
+
+Signed-off-by: Maya Rashish <mrashish@redhat.com>
+---
+ tests/storage/guestfs.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/storage/guestfs.go b/tests/storage/guestfs.go
+index 91d36fbe7..5e5d40d2c 100644
+--- a/tests/storage/guestfs.go
++++ b/tests/storage/guestfs.go
+@@ -208,7 +208,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 		It("Should successfully run guestfs command on a filesystem-based PVC with root", func() {
+ 			f := createFakeAttacher()
+ 			defer f.closeChannel()
+-			pvcClaim = "pvc-fs-with-different-uid"
++			pvcClaim = "pvc-fs-with-root"
+ 			podName := libguestsTools + pvcClaim
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim, "--root")
+-- 
+2.38.1
+
+
+From 433d92489b305048d1fe5d9c297b5a23f887ad42 Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Fri, 11 Nov 2022 09:50:50 +0100
+Subject: [PATCH 10/12] Get guestfs pod name with getGuestfsPodName
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ tests/storage/guestfs.go | 23 +++++++++++------------
+ 1 file changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/tests/storage/guestfs.go b/tests/storage/guestfs.go
+index 5e5d40d2c..022bd0ace 100644
+--- a/tests/storage/guestfs.go
++++ b/tests/storage/guestfs.go
+@@ -20,8 +20,6 @@ import (
+ 	"kubevirt.io/kubevirt/tests/util"
+ )
+ 
+-const libguestsTools = "libguestfs-tools-"
+-
+ type fakeAttacher struct {
+ 	done chan bool
+ }
+@@ -43,6 +41,11 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 		setGroup   bool
+ 		testGroup  string
+ 	)
++
++	getGuestfsPodName := func(pvc string) string {
++		return "libguestfs-tools-" + pvc
++	}
++
+ 	execCommandLibguestfsPod := func(podName string, c []string) (string, string, error) {
+ 		pod, err := virtClient.CoreV1().Pods(util.NamespaceTestDefault).Get(context.Background(), podName, metav1.GetOptions{})
+ 		Expect(err).ToNot(HaveOccurred())
+@@ -74,7 +77,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 	}
+ 
+ 	runGuestfsOnPVC := func(pvcClaim string, options ...string) {
+-		podName := libguestsTools + pvcClaim
++		podName := getGuestfsPodName(pvcClaim)
+ 		o := append([]string{"guestfs", pvcClaim, "--namespace", util.NamespaceTestDefault}, options...)
+ 		if setGroup {
+ 			o = append(o, "--fsGroup", testGroup)
+@@ -141,7 +144,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			pvcClaim = "pvc-verify"
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim)
+-			output, _, err := execCommandLibguestfsPod(libguestsTools+pvcClaim, []string{"libguestfs-test-tool"})
++			output, _, err := execCommandLibguestfsPod(getGuestfsPodName(pvcClaim), []string{"libguestfs-test-tool"})
+ 			Expect(err).ToNot(HaveOccurred())
+ 			Expect(output).To(ContainSubstring("===== TEST FINISHED OK ====="))
+ 
+@@ -151,10 +154,9 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			f := createFakeAttacher()
+ 			defer f.closeChannel()
+ 			pvcClaim = "pvc-fs"
+-			podName := libguestsTools + pvcClaim
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim)
+-			verifyCanRunOnFSPVC(podName)
++			verifyCanRunOnFSPVC(getGuestfsPodName(pvcClaim))
+ 		})
+ 
+ 		It("[posneg:negative][test_id:6480]Should fail to run the guestfs command on a PVC in use", func() {
+@@ -174,10 +176,9 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			defer f.closeChannel()
+ 
+ 			pvcClaim = "pvc-block"
+-			podName := libguestsTools + pvcClaim
+ 			libstorage.CreateBlockPVC(pvcClaim, "500Mi")
+ 			runGuestfsOnPVC(pvcClaim)
+-			stdout, stderr, err := execCommandLibguestfsPod(podName, []string{"guestfish", "-a", "/dev/vda", "run"})
++			stdout, stderr, err := execCommandLibguestfsPod(getGuestfsPodName(pvcClaim), []string{"guestfish", "-a", "/dev/vda", "run"})
+ 			Expect(stderr).To(Equal(""))
+ 			Expect(stdout).To(Equal(""))
+ 			Expect(err).ToNot(HaveOccurred())
+@@ -187,10 +188,9 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			f := createFakeAttacher()
+ 			defer f.closeChannel()
+ 			pvcClaim = "pvc-fs-with-different-uid"
+-			podName := libguestsTools + pvcClaim
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim, "--uid", "1002")
+-			verifyCanRunOnFSPVC(podName)
++			verifyCanRunOnFSPVC(getGuestfsPodName(pvcClaim))
+ 		})
+ 	})
+ 	Context("Run libguestfs on PVCs with root", func() {
+@@ -209,10 +209,9 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			f := createFakeAttacher()
+ 			defer f.closeChannel()
+ 			pvcClaim = "pvc-fs-with-root"
+-			podName := libguestsTools + pvcClaim
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim, "--root")
+-			verifyCanRunOnFSPVC(podName)
++			verifyCanRunOnFSPVC(getGuestfsPodName(pvcClaim))
+ 		})
+ 	})
+ 
+-- 
+2.38.1
+
+
+From 70822e28f08fa399a514f1814d9433755b76f369 Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Mon, 14 Nov 2022 16:30:31 +0100
+Subject: [PATCH 11/12] Set setGroup also for the second guestfs pod
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ tests/storage/guestfs.go | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/storage/guestfs.go b/tests/storage/guestfs.go
+index 022bd0ace..e1245ba7d 100644
+--- a/tests/storage/guestfs.go
++++ b/tests/storage/guestfs.go
+@@ -165,9 +165,13 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			pvcClaim = "pvc-fail-to-run-twice"
+ 			createPVCFilesystem(pvcClaim)
+ 			runGuestfsOnPVC(pvcClaim)
+-			guestfsCmd := clientcmd.NewVirtctlCommand("guestfs",
++			options := []string{"guestfs",
+ 				pvcClaim,
+-				"--namespace", util.NamespaceTestDefault)
++				"--namespace", util.NamespaceTestDefault}
++			if setGroup {
++				options = append(options, "--fsGroup", testGroup)
++			}
++			guestfsCmd := clientcmd.NewVirtctlCommand(options...)
+ 			Expect(guestfsCmd.Execute()).To(HaveOccurred())
+ 		})
+ 
+-- 
+2.38.1
+
+
+From c232a312b02685e1081326dbb8e834faee1b0b4f Mon Sep 17 00:00:00 2001
+From: Alice Frosi <afrosi@redhat.com>
+Date: Wed, 9 Nov 2022 17:53:35 +0100
+Subject: [PATCH 12/12] Solve flakiness for guestfs tests
+
+Sometimes, the libguestfs pod is deleted by the test clean-up but the
+function runGuestfsOnPVC hasn't gracefully terminated yet. The function
+runGuestfsOnPVC has a goroutine that returns when the channel of the
+fakeCreateAttacher is closed.
+
+With the new refactoring, a new channel has been added to select between
+an error in the guestfs routine and to gracefully terminates the test.
+
+Signed-off-by: Alice Frosi <afrosi@redhat.com>
+---
+ tests/storage/BUILD.bazel |  1 +
+ tests/storage/guestfs.go  | 69 +++++++++++++++++++++------------------
+ 2 files changed, 39 insertions(+), 31 deletions(-)
+
+diff --git a/tests/storage/BUILD.bazel b/tests/storage/BUILD.bazel
+index 76fff5109..fd4efd846 100644
+--- a/tests/storage/BUILD.bazel
++++ b/tests/storage/BUILD.bazel
+@@ -61,6 +61,7 @@ go_library(
+         "//vendor/github.com/onsi/gomega/types:go_default_library",
+         "//vendor/github.com/openshift/api/route/v1:go_default_library",
+         "//vendor/github.com/pborman/uuid:go_default_library",
++        "//vendor/github.com/spf13/cobra:go_default_library",
+         "//vendor/k8s.io/api/admissionregistration/v1:go_default_library",
+         "//vendor/k8s.io/api/core/v1:go_default_library",
+         "//vendor/k8s.io/api/networking/v1:go_default_library",
+diff --git a/tests/storage/guestfs.go b/tests/storage/guestfs.go
+index e1245ba7d..971c87822 100644
+--- a/tests/storage/guestfs.go
++++ b/tests/storage/guestfs.go
+@@ -6,6 +6,7 @@ import (
+ 
+ 	. "github.com/onsi/ginkgo/v2"
+ 	. "github.com/onsi/gomega"
++	"github.com/spf13/cobra"
+ 
+ 	corev1 "k8s.io/api/core/v1"
+ 	"k8s.io/apimachinery/pkg/api/resource"
+@@ -21,17 +22,20 @@ import (
+ )
+ 
+ type fakeAttacher struct {
+-	done chan bool
++	// Channel to unblock the fake attacher for the console
++	doneAttacher chan bool
++	// Channel to unblock the goroutine for the guestfs command
++	doneGuestfs chan bool
+ }
+ 
+ // fakeCreateAttacher simulates the attacher to the pod console. It has to block until the test terminates.
+ func (f *fakeAttacher) fakeCreateAttacher(client *guestfs.K8sClient, p *corev1.Pod, command string) error {
+-	<-f.done
++	<-f.doneAttacher
+ 	return nil
+ }
+ 
+ func (f *fakeAttacher) closeChannel() {
+-	f.done <- true
++	f.doneGuestfs <- true
+ }
+ 
+ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+@@ -71,22 +75,35 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 
+ 	createFakeAttacher := func() *fakeAttacher {
+ 		f := &fakeAttacher{}
+-		f.done = make(chan bool, 1)
++		f.doneAttacher = make(chan bool, 1)
++		f.doneGuestfs = make(chan bool, 1)
+ 		guestfs.SetAttacher(f.fakeCreateAttacher)
+ 		return f
+ 	}
+ 
+-	runGuestfsOnPVC := func(pvcClaim string, options ...string) {
++	guestfsWithSync := func(f *fakeAttacher, guestfsCmd *cobra.Command) {
++		defer GinkgoRecover()
++		errChan := make(chan error)
++		go func() {
++			errChan <- guestfsCmd.Execute()
++		}()
++		select {
++		case <-f.doneGuestfs:
++		case err := <-errChan:
++			Expect(err).ToNot(HaveOccurred())
++		}
++		// Unblock the fake attacher
++		f.doneAttacher <- true
++	}
++
++	runGuestfsOnPVC := func(f *fakeAttacher, pvcClaim string, options ...string) {
+ 		podName := getGuestfsPodName(pvcClaim)
+ 		o := append([]string{"guestfs", pvcClaim, "--namespace", util.NamespaceTestDefault}, options...)
+ 		if setGroup {
+ 			o = append(o, "--fsGroup", testGroup)
+ 		}
+ 		guestfsCmd := clientcmd.NewVirtctlCommand(o...)
+-		go func() {
+-			defer GinkgoRecover()
+-			Expect(guestfsCmd.Execute()).ToNot(HaveOccurred())
+-		}()
++		go guestfsWithSync(f, guestfsCmd)
+ 		// Waiting until the libguestfs pod is running
+ 		Eventually(func() bool {
+ 			pod, _ := virtClient.CoreV1().Pods(util.NamespaceTestDefault).Get(context.Background(), podName, metav1.GetOptions{})
+@@ -123,6 +140,7 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 	}
+ 
+ 	Context("Run libguestfs on PVCs", func() {
++		var f *fakeAttacher
+ 		BeforeEach(func() {
+ 			var err error
+ 			virtClient, err = kubecli.GetKubevirtClient()
+@@ -130,41 +148,34 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 			// TODO: Always setGroup to true until we have the ability to control how virtctl guestfs is run
+ 			setGroup = true
+ 			testGroup = "2000"
++			f = createFakeAttacher()
+ 		})
+ 
+ 		AfterEach(func() {
+-			err := virtClient.CoreV1().PersistentVolumeClaims(util.NamespaceTestDefault).Delete(context.Background(), pvcClaim, metav1.DeleteOptions{})
+-			Expect(err).ToNot(HaveOccurred())
++			f.closeChannel()
+ 		})
+ 
+ 		// libguestfs-test-tool verifies the setup to run libguestfs-tools
+ 		It("Should successfully run libguestfs-test-tool", func() {
+-			f := createFakeAttacher()
+-			defer f.closeChannel()
+ 			pvcClaim = "pvc-verify"
+ 			createPVCFilesystem(pvcClaim)
+-			runGuestfsOnPVC(pvcClaim)
++			runGuestfsOnPVC(f, pvcClaim)
+ 			output, _, err := execCommandLibguestfsPod(getGuestfsPodName(pvcClaim), []string{"libguestfs-test-tool"})
+ 			Expect(err).ToNot(HaveOccurred())
+ 			Expect(output).To(ContainSubstring("===== TEST FINISHED OK ====="))
+-
+ 		})
+ 
+ 		It("[posneg:positive][test_id:6480]Should successfully run guestfs command on a filesystem-based PVC", func() {
+-			f := createFakeAttacher()
+-			defer f.closeChannel()
+ 			pvcClaim = "pvc-fs"
+ 			createPVCFilesystem(pvcClaim)
+-			runGuestfsOnPVC(pvcClaim)
++			runGuestfsOnPVC(f, pvcClaim)
+ 			verifyCanRunOnFSPVC(getGuestfsPodName(pvcClaim))
+ 		})
+ 
+ 		It("[posneg:negative][test_id:6480]Should fail to run the guestfs command on a PVC in use", func() {
+-			f := createFakeAttacher()
+-			defer f.closeChannel()
+ 			pvcClaim = "pvc-fail-to-run-twice"
+ 			createPVCFilesystem(pvcClaim)
+-			runGuestfsOnPVC(pvcClaim)
++			runGuestfsOnPVC(f, pvcClaim)
+ 			options := []string{"guestfs",
+ 				pvcClaim,
+ 				"--namespace", util.NamespaceTestDefault}
+@@ -176,12 +187,9 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 		})
+ 
+ 		It("[posneg:positive][test_id:6479]Should successfully run guestfs command on a block-based PVC", func() {
+-			f := createFakeAttacher()
+-			defer f.closeChannel()
+-
+ 			pvcClaim = "pvc-block"
+ 			libstorage.CreateBlockPVC(pvcClaim, "500Mi")
+-			runGuestfsOnPVC(pvcClaim)
++			runGuestfsOnPVC(f, pvcClaim)
+ 			stdout, stderr, err := execCommandLibguestfsPod(getGuestfsPodName(pvcClaim), []string{"guestfish", "-a", "/dev/vda", "run"})
+ 			Expect(stderr).To(Equal(""))
+ 			Expect(stdout).To(Equal(""))
+@@ -189,32 +197,31 @@ var _ = SIGDescribe("[rfe_id:6364][[Serial]Guestfs", func() {
+ 
+ 		})
+ 		It("Should successfully run guestfs command on a filesystem-based PVC setting the uid", func() {
+-			f := createFakeAttacher()
+-			defer f.closeChannel()
+ 			pvcClaim = "pvc-fs-with-different-uid"
+ 			createPVCFilesystem(pvcClaim)
+-			runGuestfsOnPVC(pvcClaim, "--uid", "1002")
++			runGuestfsOnPVC(f, pvcClaim, "--uid", "1002")
+ 			verifyCanRunOnFSPVC(getGuestfsPodName(pvcClaim))
+ 		})
+ 	})
+ 	Context("Run libguestfs on PVCs with root", func() {
++		var f *fakeAttacher
+ 		BeforeEach(func() {
+ 			var err error
+ 			virtClient, err = kubecli.GetKubevirtClient()
+ 			Expect(err).ToNot(HaveOccurred())
+ 			setGroup = false
++			f = createFakeAttacher()
+ 		})
+ 
+ 		AfterEach(func() {
+-			err := virtClient.CoreV1().PersistentVolumeClaims(util.NamespaceTestDefault).Delete(context.Background(), pvcClaim, metav1.DeleteOptions{})
+-			Expect(err).ToNot(HaveOccurred())
++			f.closeChannel()
+ 		})
+ 		It("Should successfully run guestfs command on a filesystem-based PVC with root", func() {
+ 			f := createFakeAttacher()
+ 			defer f.closeChannel()
+ 			pvcClaim = "pvc-fs-with-root"
+ 			createPVCFilesystem(pvcClaim)
+-			runGuestfsOnPVC(pvcClaim, "--root")
++			runGuestfsOnPVC(f, pvcClaim, "--root")
+ 			verifyCanRunOnFSPVC(getGuestfsPodName(pvcClaim))
+ 		})
+ 	})
+-- 
+2.38.1
+

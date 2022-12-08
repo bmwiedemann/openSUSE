@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  8 07:14:45 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix libguestfs pod startup error
+  0001-guestfs-flag-to-set-uid-and-gid.patch
+
+-------------------------------------------------------------------
 Thu Dec  1 09:16:49 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Ensure RPMs and containers are built against the same distro
