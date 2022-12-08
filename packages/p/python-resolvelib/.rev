@@ -104,4 +104,11 @@
     <comment></comment>
     <requestid>1040739</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>75112e53bed408f0a38030e1904bc643</srcmd5>
+    <version>0.8.1</version>
+    <time>1670503706</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
+  </revision>
 </revisionlist>

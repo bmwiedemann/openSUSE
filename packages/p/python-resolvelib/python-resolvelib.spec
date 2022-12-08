@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-resolvelib
-Version:        0.9.0
+Version:        0.8.1
 Release:        0
 Summary:        Module to resolve abstract dependencies into concrete ones
 License:        ISC
