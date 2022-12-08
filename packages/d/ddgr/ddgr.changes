@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:34:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * Change user agent
+  * Remove python 3.6 support
+  * Minor documentation changes
+
+-------------------------------------------------------------------
 Sat Sep 24 09:00:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0:
