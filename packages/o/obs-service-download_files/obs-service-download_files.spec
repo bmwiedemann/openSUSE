@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %define build_pkg_name build
 %endif
 Name:           obs-service-%{service}
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        An OBS source service: download files
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  bzip2
 BuildRequires:  tar

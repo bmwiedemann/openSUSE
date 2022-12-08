@@ -264,4 +264,12 @@ error masked by || : (forwarded request 141981 from dimstar)</comment>
   * added section 'clean' to Makefile</comment>
     <requestid>925241</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6604dbb3c7f747f1bf4e8c89f09c1488</srcmd5>
+    <version>0.9.2</version>
+    <time>1670514753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041652</requestid>
+  </revision>
 </revisionlist>
