@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 06:34:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.2.1:
+  * Fixed:
+    - Allow root in raw-options
+- drop patch fix-tests-setuptools-scm7.patch
+
+-------------------------------------------------------------------
 Fri Nov 11 12:02:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests-setuptools-scm7.patch upstream patch to support setuptools_scm

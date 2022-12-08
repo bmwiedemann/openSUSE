@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-hatch_vcs
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Hatch plugin for versioning with your preferred VCS
 License:        MIT
 URL:            https://github.com/ofek/hatch-vcs
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_vcs/hatch_vcs-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests-setuptools-scm7.patch gh#ofek/hatch-vcs#9
-Patch0:         fix-tests-setuptools-scm7.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-hatchling >= 0.21.0
@@ -49,7 +47,7 @@ BuildRequires:  git
 This provides a plugin for Hatch that uses your preferred version control system (like Git) to determine project versions.
 
 %prep
-%autosetup -p1 -n hatch_vcs-%{version}
+%autosetup -n hatch_vcs-%{version}
 
 %build
 %pyproject_wheel
