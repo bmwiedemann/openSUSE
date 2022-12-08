@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:35:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.6 (API & ABI are backwards compatible).
+- Requires latest primesieve-11.0 library.
+- Fix missing header include in print.hpp.
+
+-------------------------------------------------------------------
 Fri Jul  8 18:10:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.4 (API & ABI are backwards compatible).
