@@ -518,7 +518,10 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 %attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/01-%{name}
 %{_datadir}/%{name}-init/version
 %attr(0544,root,root) %{_libexecdir}/%{name}-init/ifupdown
+%dir %{_sysconfdir}/sysconfig/network
+%dir %{_sysconfdir}/sysconfig/network/if-down.d
 %attr(0544,root,root) %{_sysconfdir}/sysconfig/network/if-down.d/%{name}
+%dir %{_sysconfdir}/sysconfig/network/if-up.d
 %attr(0755,root,root) %{_sysconfdir}/sysconfig/network/if-up.d/%{name}
 %{_mandir}/man8/%{name}-init.8*
 %dir %{_distconfdir}

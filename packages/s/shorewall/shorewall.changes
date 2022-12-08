@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  8 13:22:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /etc/sysconfig/network hierachy, as this don't exist by
+  default anymore
+
+-------------------------------------------------------------------
 Sat Sep  3 12:27:13 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Add %dir %{_distconfdir} stop build failing on Leap
