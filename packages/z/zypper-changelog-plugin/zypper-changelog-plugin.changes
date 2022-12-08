@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  8 06:20:17 UTC 2022 - Zoltan Balogh <zbalogh@suse.com>
+
+- Fixing bsc#1206081 -  The zypper changelog plugin fails for packages not installed
+
+-------------------------------------------------------------------
 Wed Nov 16 06:35:11 UTC 2022 - Zoltan Balogh <zbalogh@suse.com>
 
 - Update with few fixes after testing on Leap and SLES
