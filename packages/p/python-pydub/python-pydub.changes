@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 23:23:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_libopenh264-7.patch which skips failing tests when
+  libopenh264 is not available (which is always, because the
+  library is in Packman). gh#jiaaro/pydub#700
+
+-------------------------------------------------------------------
 Wed Mar 10 20:05:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.25.1

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydub
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pydub
 Version:        0.25.1
 Release:        0
@@ -25,6 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jiaaro/pydub
 Source:         https://github.com/jiaaro/pydub/archive/v%{version}.tar.gz#/pydub-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE skip_libopenh264-7.patch gh#jiaaro/pydub#700 mcepl@suse.com
+# We don't have libopenh264-7 on the plain openSUSE
+Patch0:         skip_libopenh264-7.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg
@@ -41,7 +43,7 @@ BuildArch:      noarch
 A Python module to manipulate audio with a high level interface.
 
 %prep
-%setup -q -n pydub-%{version}
+%autosetup -p1 -n pydub-%{version}
 
 %build
 %python_build
@@ -51,10 +53,12 @@ A Python module to manipulate audio with a high level interface.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export NO_OPENH264=1
 %pyunittest -v test.test
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pydub-%{version}*-info
+%{python_sitelib}/pydub
 
 %changelog
