@@ -1,25 +1,4 @@
 -------------------------------------------------------------------
-Tue Dec  6 04:25:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
-
-- Update to 1.4.0 
-  ## Added
-  * The PEP 517 metadata_directory is now respected as an input to
-    the build_wheel hook (#487).
-  ## Changed
-  * Sources are now considered more carefully when dealing with
-    dependencies with environment markers (#497).
-  * EmptyConstraint is now hashable (#513).
-  * ParseConstraintError is now raised on version and constraint
-    parsing errors, and includes information on the package that
-    caused the error (#514).
-  ## Fixed
-  * Fix an issue where invalid PEP 508 requirements were generated
-    due to a missing space before semicolons (#510).
-  * Fix an issue where relative paths were encoded into package
-    requirements, instead of a file:// URL as required by PEP 508
-    (#512).
-
--------------------------------------------------------------------
 Tue Oct 11 12:48:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - adjust to lark-parser -> lark rename
