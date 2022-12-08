@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-covdefaults
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        Python coverage plugin to provide default settings
 License:        MIT

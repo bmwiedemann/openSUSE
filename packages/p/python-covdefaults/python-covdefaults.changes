@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  7 15:57:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.2.2 
+  * Merge pull request #97 from sobolevn/patch-1
+  * Do not report class level `if TYPE_CHECKING` as uncovered
+
+- Update to v2.2.1
+  * A coverage plugin to provide sensible default settings
+
+-------------------------------------------------------------------
 Tue Sep 27 00:03:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v2.2.0 
