@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 17:14:38 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Changed default of KDUMP_AUTO_RESIZE to "no" as documented in
+  https://github.com/openSUSE/kdump/blob/SLE-15-SP5/sysconfig.kdump.in#L57-L65
+  (bsc#1205816)
+- 4.5.6
+
+-------------------------------------------------------------------
 Tue Sep 20 08:23:03 UTC 2022 - Michal Filka <mfilka@suse.com>
 
 - bsc#1202575
