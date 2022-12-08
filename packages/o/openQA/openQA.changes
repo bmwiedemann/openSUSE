@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 07 18:11:48 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1670432877.32837b1:
+  * Protect second asset size update from possible deadlocks
+  * Support use-case of "local" worker when detecting worker address
+  * Extract code for determining whether a host is local
+  * tests: Consume expected fake error from web socket
+  * Condense scheduling debug output to single line
+  * Fix missing `wait_for_ajax` call in comments test
+  * Catch error and return 404 for module_fails with non existing test
+  * Protect one asset size update from possible deadlocks
+  * Avoid running jobs with undetermined worker address
+  * Add signatures in OpenQA::Task::Bug::Limit
+  * Add signatures in OpenQA::Task::Job::Limit
+  * Add signatures in OpenQA::Task::Job::FinalizeResults
+  * Add signatures in OpenQA::WebAPI::Controller::Admin::Needle
+  * Add signatures in OpenQA::WebAPI::Controller::API::V1::Bug
+  * Add signatures in OpenQA::WebAPI::Auth::Fake
+  * t: Add signatures in cache-service
+  * t: Add signatures in build_tagging
+  * t: Add signatures in grutasks
+  * t: Bump timeout of ui/21-admin-needles.t based on local runtime
+  * Simplify _create_clones with post-for
+  * Extract methods for creating clones with right dependency
+
+-------------------------------------------------------------------
 Sat Dec 03 02:16:29 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1669922159.5e076a0:
