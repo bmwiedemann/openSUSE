@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  5 13:53:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.7 
+  * Release to rebuild full set of binary wheels.
+
+- Update to version 5.6 
+  * Add support for building arm64 wheels on macOS.
+
+-------------------------------------------------------------------
 Tue Nov  8 12:06:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 5.5
