@@ -15,31 +15,31 @@ This reverts commit cb4985b00dc2d1a1e27850dcd672093426aafd8b.
  src/option/k3bexternalbinwidget.h            |  2 ++
  8 files changed, 42 insertions(+), 1 deletion(-)
 
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/CMakeLists.txt
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/CMakeLists.txt
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/CMakeLists.txt	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/CMakeLists.txt	2022-02-26 08:11:04.551478263 +0100
-@@ -35,6 +35,7 @@
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/CMakeLists.txt
++++ k3b-19.11.70git.20221104T020145~62f96f82f/CMakeLists.txt
+@@ -35,6 +35,7 @@ option(K3B_ENABLE_MUSICBRAINZ "Support f
  option(K3B_ENABLE_DVD_RIPPING "Support for ripping Video DVDs with optional decryption." ON)
  option(K3B_ENABLE_TAGLIB "Support for reading audio file metadata using Taglib." ON)
  option(K3B_BUILD_API_DOCS "Build the API documentation for the K3b libs." OFF)
 +option(K3B_ENABLE_PERMISSION_HELPER "Build the permissions helper program" OFF)
  
  # plugin options
- option(K3B_BUILD_OGGVORBIS_DECODER_PLUGIN "Build Ogg-Vorbis decoder plugin" ON)
-@@ -204,6 +205,7 @@
+ option(K3B_BUILD_FFMPEG_DECODER_PLUGIN "Build FFmpeg decoder plugin" ON)
+@@ -268,6 +269,7 @@ set(BUILD_EXTERNAL_ENCODER_PLUGIN "${K3B
  
  set(ENABLE_HAL_SUPPORT "${K3B_ENABLE_HAL_SUPPORT}")
  set(ENABLE_AUDIO_PLAYER "${QT_QTMULTIMEDIA_FOUND}")
 +set(ENABLE_PERMISSION_HELPER "${K3B_ENABLE_PERMISSION_HELPER}")
  
- if(IS_ABSOLUTE ${DATA_INSTALL_DIR})
-   set(K3B_DATA_INSTALL_DIR ${DATA_INSTALL_DIR}/k3b)
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/INSTALL.txt
+ if(IS_ABSOLUTE ${KDE_INSTALL_DATADIR})
+   set(K3B_DATA_INSTALL_DIR ${KDE_INSTALL_DATADIR}/k3b)
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/INSTALL.txt
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/INSTALL.txt	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/INSTALL.txt	2022-02-26 08:11:04.551478263 +0100
-@@ -42,6 +42,7 @@
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/INSTALL.txt
++++ k3b-19.11.70git.20221104T020145~62f96f82f/INSTALL.txt
+@@ -44,6 +44,7 @@ For debug:
      -DKDE_INSTALL_LIBEXECDIR=lib    \
      -DKDE_INSTALL_USE_QT_SYS_PATHS=ON   \
      -DK3B_BUILD_API_DOCS=ON \
@@ -47,7 +47,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/INSTALL.txt
      -DK3B_DEBUG=ON
  
    dynamic analyzer and fuzzer:
-@@ -54,6 +55,7 @@
+@@ -56,6 +57,7 @@ For debug:
      -DKDE_INSTALL_LIBEXECDIR=lib    \
      -DKDE_INSTALL_USE_QT_SYS_PATHS=ON   \
      -DK3B_BUILD_API_DOCS=ON \
@@ -55,10 +55,10 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/INSTALL.txt
      -DK3B_DEBUG=ON
  
  If the cmake run was successful you are presented with a list of configure results that shows
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/config-k3b.h.cmake
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/config-k3b.h.cmake
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/config-k3b.h.cmake	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/config-k3b.h.cmake	2022-02-26 08:11:04.551478263 +0100
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/config-k3b.h.cmake
++++ k3b-19.11.70git.20221104T020145~62f96f82f/config-k3b.h.cmake
 @@ -20,6 +20,8 @@
  
  #cmakedefine ENABLE_AUDIO_PLAYER
@@ -68,10 +68,10 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/config-k3b.h.cmake
  #cmakedefine HAVE_BYTESWAP_H
  
  #cmakedefine WORDS_BIGENDIAN
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/CMakeLists.txt
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/src/CMakeLists.txt
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/src/CMakeLists.txt	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/src/CMakeLists.txt	2022-02-26 08:11:04.551478263 +0100
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/src/CMakeLists.txt
++++ k3b-19.11.70git.20221104T020145~62f96f82f/src/CMakeLists.txt
 @@ -1,5 +1,7 @@
  
 -add_subdirectory( helper )
@@ -81,11 +81,11 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/CMakeLists.txt
  
  add_subdirectory( icons )
  add_subdirectory( pics )
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bdevicewidget.cpp
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bdevicewidget.cpp
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/src/option/k3bdevicewidget.cpp	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bdevicewidget.cpp	2022-02-26 08:11:04.551478263 +0100
-@@ -55,7 +55,9 @@
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/src/option/k3bdevicewidget.cpp
++++ k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bdevicewidget.cpp
+@@ -55,7 +55,9 @@ K3b::DeviceWidget::DeviceWidget( K3b::De
      m_messageWidget = new KMessageWidget( this );
      m_messageWidget->hide();
      m_messageWidget->setWordWrap( true );
@@ -95,7 +95,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bdevicewidget.cpp
  
      // buttons
      // ------------------------------------------------
-@@ -92,7 +94,9 @@
+@@ -92,7 +94,9 @@ K3b::DeviceWidget::DeviceWidget( K3b::De
      // ------------------------------------------------
      connect( buttonRefreshDevices, SIGNAL(clicked()), SIGNAL(refreshButtonClicked()) );
      connect( m_deviceManager, SIGNAL(changed()), SLOT(init()) );
@@ -105,7 +105,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bdevicewidget.cpp
      // ------------------------------------------------
  }
  
-@@ -241,10 +245,16 @@
+@@ -241,10 +245,16 @@ void K3b::DeviceWidget::updateDeviceList
  
              if (!groupNames.contains(m_deviceGroup)) {
  		QString messageText = i18n("In order to give K3b full access to the writer device the current user needs be added to a group <em>%1</em>.", m_deviceGroup);
@@ -122,7 +122,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bdevicewidget.cpp
                  m_messageWidget->animatedShow();
              }
          }
-@@ -253,6 +263,7 @@
+@@ -253,6 +263,7 @@ void K3b::DeviceWidget::updateDeviceList
  
  void K3b::DeviceWidget::addUserToGroup()
  {
@@ -130,17 +130,17 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bdevicewidget.cpp
      QVariantMap args;
      args["groupName"] = m_deviceGroup;
      args["userName"] = QString::fromLocal8Bit(getpwuid(getuid())->pw_name);
-@@ -276,4 +287,5 @@
+@@ -276,4 +287,5 @@ void K3b::DeviceWidget::addUserToGroup()
          }
      } );
      job->start();
 +#endif
  }
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinpermissionmodel.cpp
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bexternalbinpermissionmodel.cpp
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/src/option/k3bexternalbinpermissionmodel.cpp	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinpermissionmodel.cpp	2022-02-26 08:11:04.551478263 +0100
-@@ -341,6 +341,7 @@
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/src/option/k3bexternalbinpermissionmodel.cpp
++++ k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bexternalbinpermissionmodel.cpp
+@@ -341,6 +341,7 @@ QModelIndex ExternalBinPermissionModel::
  
  void ExternalBinPermissionModel::setBurningGroup( const QString& burningGroup )
  {
@@ -148,7 +148,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinpermis
      if( burningGroup != d->burningGroup ) {
          beginResetModel();
          d->burningGroup = burningGroup;
-@@ -357,6 +358,7 @@
+@@ -357,6 +358,7 @@ void ExternalBinPermissionModel::setBurn
          }
          endResetModel();
      }
@@ -156,11 +156,11 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinpermis
  }
  
  void ExternalBinPermissionModel::update()
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget.cpp
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bexternalbinwidget.cpp
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/src/option/k3bexternalbinwidget.cpp	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget.cpp	2022-02-26 08:11:04.551478263 +0100
-@@ -109,7 +109,12 @@
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/src/option/k3bexternalbinwidget.cpp
++++ k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bexternalbinwidget.cpp
+@@ -109,7 +109,12 @@ K3b::ExternalBinWidget::ExternalBinWidge
      // setup permissions tab
      // ------------------------------------------------------------
      QWidget* permissionsTab = new QWidget( m_mainTabWidget );
@@ -173,7 +173,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget
      permissionsLabel->setWordWrap( true );
      m_permissionModel = new ExternalBinPermissionModel( *manager, permissionsTab );
      m_permissionView = new QTreeView( permissionsTab );
-@@ -117,11 +122,15 @@
+@@ -117,11 +122,15 @@ K3b::ExternalBinWidget::ExternalBinWidge
      m_permissionView->setAllColumnsShowFocus( true );
      m_permissionView->setRootIsDecorated( false );
      m_permissionView->header()->setSectionResizeMode( ExternalBinPermissionModel::ProgramColumn, QHeaderView::ResizeToContents );
@@ -189,7 +189,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget
      m_mainTabWidget->addTab( permissionsTab, i18n("Permissions") );
  
  
-@@ -140,14 +149,17 @@
+@@ -140,14 +149,17 @@ K3b::ExternalBinWidget::ExternalBinWidge
  
      m_mainTabWidget->addTab( searchPathTab, i18n("Search Path") );
  
@@ -207,7 +207,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget
      while (::group *g = ::getgrent()) {
          const QString groupName = QString::fromLocal8Bit(g->gr_name);
          if (groupName == "cdrom" ||
-@@ -157,6 +169,7 @@
+@@ -157,6 +169,7 @@ K3b::ExternalBinWidget::ExternalBinWidge
          }
      }
      ::endgrent();
@@ -215,7 +215,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget
  }
  
  
-@@ -203,12 +216,15 @@
+@@ -203,12 +216,15 @@ void K3b::ExternalBinWidget::saveSearchP
  
  void K3b::ExternalBinWidget::slotPermissionModelChanged()
  {
@@ -231,7 +231,7 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget
      KAuth::Action action("org.kde.k3b.updatepermissions");
      action.setHelperId("org.kde.k3b");
      action.setParentWidget(this);
-@@ -250,6 +266,7 @@
+@@ -250,6 +266,7 @@ void K3b::ExternalBinWidget::slotChangeP
          }
      } );
      job->start();
@@ -239,11 +239,11 @@ Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget
  }
  
  
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget.h
+Index: k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bexternalbinwidget.h
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/src/option/k3bexternalbinwidget.h	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/src/option/k3bexternalbinwidget.h	2022-02-26 08:11:04.551478263 +0100
-@@ -57,7 +57,9 @@
+--- k3b-19.11.70git.20221104T020145~62f96f82f.orig/src/option/k3bexternalbinwidget.h
++++ k3b-19.11.70git.20221104T020145~62f96f82f/src/option/k3bexternalbinwidget.h
+@@ -57,7 +57,9 @@ namespace K3b {
          QTreeView* m_permissionView;
          KEditListWidget* m_searchPathBox;
  

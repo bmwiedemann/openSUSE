@@ -13,11 +13,11 @@ People who want to use cdrskin instead can still install it.
  src/k3bsystemproblemdialog.cpp | 6 ------
  1 file changed, 6 deletions(-)
 
-Index: k3b-19.11.70git.20220224T154741~d20c6fb5f/src/k3bsystemproblemdialog.cpp
+Index: k3b-19.11.70git.20220916T165241~5c732af86/src/k3bsystemproblemdialog.cpp
 ===================================================================
---- k3b-19.11.70git.20220224T154741~d20c6fb5f.orig/src/k3bsystemproblemdialog.cpp	2022-02-24 16:47:41.000000000 +0100
-+++ k3b-19.11.70git.20220224T154741~d20c6fb5f/src/k3bsystemproblemdialog.cpp	2022-02-26 08:10:54.275445434 +0100
-@@ -285,13 +285,6 @@
+--- k3b-19.11.70git.20220916T165241~5c732af86.orig/src/k3bsystemproblemdialog.cpp
++++ k3b-19.11.70git.20220916T165241~5c732af86/src/k3bsystemproblemdialog.cpp
+@@ -287,13 +287,6 @@ void K3b::SystemProblemDialog::checkSyst
  #endif
          }
  

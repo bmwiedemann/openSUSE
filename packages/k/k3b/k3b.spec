@@ -21,11 +21,10 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/CD/Record
 URL:            https://apps.kde.org/k3b
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -36,8 +35,6 @@ Source2:        applications.keyring
 Patch0:         Don-t-suggest-to-install-libburn.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Enable-the-k3b-helper-by-default.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-remove-unnecessary-and-incorrect-version-check.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flac-devel
@@ -109,7 +106,6 @@ complicated tasks such as audiovisual encoding and decoding.
 
 %package devel
 Summary:        Development files for k3b
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -127,10 +123,9 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %suse_update_desktop_file -r org.kde.k3b Qt KDE AudioVideo DiscBurning
 
@@ -142,7 +137,6 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %files
 %license LICENSES/*
 %doc ChangeLog FAQ.txt PERMISSIONS.txt README.txt
-%{_kf5_knsrcfilesdir}/k3btheme.knsrc
 %dir %{_kf5_plugindir}/k3b_plugins/
 %dir %{_kf5_plugindir}/k3b_plugins/kcms
 %dir %{_kf5_plugindir}/kf5/
@@ -159,6 +153,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_bindir}/k3b
 %{_kf5_iconsdir}/hicolor/*/apps/k3b.*
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-k3b.*
+%{_kf5_knsrcfilesdir}/k3btheme.knsrc
 %{_kf5_kxmlguidir}/k3b
 %{_kf5_libdir}/libk3bdevice.so.*
 %{_kf5_libdir}/libk3blib.so.*
@@ -178,8 +173,6 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_libdir}/libk3bdevice.so
 %{_kf5_libdir}/libk3blib.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
