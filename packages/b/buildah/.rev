@@ -514,4 +514,12 @@
 - Only build targets that we install</comment>
     <requestid>1038708</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>7a4787e888eaf71b819c0818bfbda236</srcmd5>
+    <version>1.28.2</version>
+    <time>1670588159</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1041847</requestid>
+  </revision>
 </revisionlist>

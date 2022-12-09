@@ -76,7 +76,7 @@ Fri Oct 07 08:53:06 UTC 2022 - dcermak@suse.com
   * build(deps): bump github.com/onsi/gomega from 1.20.0 to 1.20.1
   * Cirrus: use image with fewer downloaded dependencies
   * build(deps): bump github.com/opencontainers/runc from 1.1.3 to 1.1.4
-  * run: add container gid to additional groups
+  * run: add container gid to additional groups (CVE-2022-2990 / bsc#1202812)
   * buildah: support for --retry and --retry-delay for push/pull failures
   * Makefile: always call $(GO) instead of `go`
   * build(deps): bump github.com/fsouza/go-dockerclient from 1.8.2 to 1.8.3
@@ -2009,7 +2009,7 @@ Fri Mar 27 07:46:03 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
   * Update unshare man page to fix script example
   * Fix compilation errors on non linux platforms
   * Preserve volume uid and gid through subsequent commands
-  * Fix potential CVE in tarfile w/ symlink
+  * Fix potential CVE in tarfile w/ symlink (CVE-2020-10696 / bsc#1167864)
   * Fix .dockerignore with globs and ! commands
 
 -------------------------------------------------------------------
