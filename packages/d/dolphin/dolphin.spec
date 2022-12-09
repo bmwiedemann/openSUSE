@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
-Group:          Productivity/File utilities
 URL:            https://apps.kde.org/dolphin
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -76,7 +75,6 @@ This package contains the default file manager of KDE Workspaces.
 
 %package part
 Summary:        KDE File Manager
-Group:          Productivity/File utilities
 %requires_ge    kio
 Obsoletes:      dolphin5-part
 
@@ -85,14 +83,12 @@ This package contains the libraries used by Dolphin and Konqueror.
 
 %package -n libdolphinvcs5
 Summary:        KDE File Manager
-Group:          Productivity/File utilities
 
 %description -n libdolphinvcs5
 This package contains the libraries used by Dolphin and Konqueror.
 
 %package devel
 Summary:        KDE File Manager
-Group:          Productivity/File utilities
 Requires:       libdolphinvcs5 = %{version}
 Obsoletes:      dolphin5-devel < %{version}
 Provides:       dolphin5-devel = %{version}
@@ -100,10 +96,8 @@ Provides:       dolphin5-devel = %{version}
 %description devel
 This package contains the libraries used by Dolphin and Konqueror.
 
-%if %{with released}
 %package -n %{name}-part-lang
 Summary:        Translations for package %{name}
-Group:          System/Localization
 Requires:       %{name}-part = %{version}
 Supplements:    (bundle-lang-other and %{name}-part)
 Provides:       %{name}-lang = %{version}
@@ -113,31 +107,29 @@ BuildArch:      noarch
 
 %description -n %{name}-part-lang
 Provides translations for the "%{name}" package.
-%endif
 
 %prep
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
 
-  install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
-  %suse_update_desktop_file org.kde.dolphin System FileManager
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
-%post part -p /sbin/ldconfig
-%postun part -p /sbin/ldconfig
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
+%suse_update_desktop_file org.kde.dolphin System FileManager
+
 %post -n libdolphinvcs5 -p /sbin/ldconfig
+%post -p /sbin/ldconfig
+%post part -p /sbin/ldconfig
 %postun -n libdolphinvcs5 -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+%postun part -p /sbin/ldconfig
 
 %files
 %license COPYING*
@@ -167,8 +159,8 @@ Provides translations for the "%{name}" package.
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/dolphinpart.so
-%{_kf5_servicesdir}/dolphinpart.desktop
-%{_kf5_servicetypesdir}/fileviewversioncontrolplugin.desktop
+%dir %{_kf5_sharedir}/dolphin
+%{_kf5_sharedir}/dolphin/dolphinpartactions.desktop
 
 %files -n libdolphinvcs5
 %{_kf5_libdir}/libdolphinvcs.so.*
@@ -180,10 +172,9 @@ Provides translations for the "%{name}" package.
 %{_kf5_prefix}/include/Dolphin/
 %{_kf5_prefix}/include/dolphin_export.h
 
-%if %{with released}
 %files part-lang -f %{name}.lang
+# Not detected by find-lang.sh
 %dir %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/
 %lang(fi) %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/dolphin/
-%endif
 
 %changelog
