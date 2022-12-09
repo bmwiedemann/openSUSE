@@ -1,7 +1,7 @@
 #
 # spec file for package kdenetwork-filesharing
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/System
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -67,9 +66,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -80,13 +78,12 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/propertiesdialog
 %{_kf5_plugindir}/kf5/propertiesdialog/sambausershareplugin.so
+%{_kf5_plugindir}/kf5/propertiesdialog/SambaAcl.so
 %{_kf5_dbuspolicydir}/org.kde.filesharing.samba.conf
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.filesharing.samba.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.filesharing.samba.policy
 %{_libexecdir}/kauth/authhelper
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
