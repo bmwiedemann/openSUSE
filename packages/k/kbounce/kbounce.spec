@@ -1,7 +1,7 @@
 #
 # spec file for package kbounce
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kbounce
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
-Group:          Amusements/Games/Action/Other
 URL:            https://apps.kde.org/kbounce
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -83,16 +82,16 @@ finding new and advanced strategies to catch as many balls as possible.
 %autosetup -p1 -n kbounce-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.kbounce Game LogicGame
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.kbounce Game LogicGame
 
 %files
 %license LICENSES/*
@@ -104,8 +103,6 @@ finding new and advanced strategies to catch as many balls as possible.
 %{_kf5_iconsdir}/hicolor/*/apps/kbounce.*
 %{_kf5_sharedir}/kbounce/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
