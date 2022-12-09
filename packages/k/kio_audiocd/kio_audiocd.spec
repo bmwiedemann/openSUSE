@@ -1,7 +1,7 @@
 #
 # spec file for package kio_audiocd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio_audiocd
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ This package contains an KIO slave to access audio CDs.
 %package devel
 Summary:        Development package for kio_audiocd
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 
 %description devel
@@ -65,15 +63,14 @@ This package contains the development files for the audiocd kio slave
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -104,8 +101,6 @@ This package contains the development files for the audiocd kio slave
 %{_includedir}/audiocdplugins_export.h
 %{_kf5_libdir}/libaudiocdplugins.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
