@@ -1,7 +1,7 @@
 #
 # spec file for package ktp-approver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-approver
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Channel Approver for KDE Telepathy implementation
 License:        LGPL-2.1-or-later
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -54,16 +53,15 @@ A channel approver for KDE's Telepathy implementation.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
 
-  %fdupes %{buildroot}
+%find_lang %{name} --with-man --all-name
+
+%fdupes %{buildroot}
 
 %files
 %license COPYING*
@@ -73,8 +71,6 @@ A channel approver for KDE's Telepathy implementation.
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Telepathy.Client.KTp.Approver.service
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
