@@ -1,7 +1,7 @@
 #
 # spec file for package ktp-accounts-kcm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-accounts-kcm
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Configuration module to set up Telepathy accounts
 License:        LGPL-2.1-or-later
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -74,7 +73,6 @@ ConnectionManager-Protocol combinations where no plugin exists.
 
 %package -n libktpaccountskcminternal9
 Summary:        Library for KDE Telepathy accounts kcm
-Group:          System/Libraries
 
 %description -n libktpaccountskcminternal9
 This is a KControl Module which handles adding/editing/removing Telepathy
@@ -91,20 +89,19 @@ ConnectionManager-Protocol combinations where no plugin exists.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 # remove no longer supported/working providers and services
-  rm %{buildroot}%{_kf5_sharedir}/accounts/providers/kde/ktp-haze-yahoo.provider
-  rm %{buildroot}%{_kf5_sharedir}/accounts/services/kde/ktp-haze-yahoo-im.service
+rm %{buildroot}%{_kf5_sharedir}/accounts/providers/kde/ktp-haze-yahoo.provider
+rm %{buildroot}%{_kf5_sharedir}/accounts/services/kde/ktp-haze-yahoo-im.service
 
-  %fdupes %{buildroot}
+%fdupes %{buildroot}
 
 %post   -n libktpaccountskcminternal9 -p /sbin/ldconfig
 %postun -n libktpaccountskcminternal9 -p /sbin/ldconfig
@@ -121,8 +118,6 @@ ConnectionManager-Protocol combinations where no plugin exists.
 %{_kf5_sharedir}/accounts/
 %{_kf5_sharedir}/telepathy/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
