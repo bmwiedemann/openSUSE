@@ -1,7 +1,7 @@
 #
 # spec file for package kiriki
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kiriki
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Yahtzee-like Game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Board/Other
 URL:            https://apps.kde.org/kiriki
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -73,16 +72,16 @@ to get higher scores in several combinations
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.kiriki Game BoardGame
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.kiriki Game BoardGame
 
 %files
 %license COPYING*
@@ -93,8 +92,6 @@ to get higher scores in several combinations
 %{_kf5_bindir}/kiriki
 %{_kf5_iconsdir}/hicolor/*/apps/kiriki.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
