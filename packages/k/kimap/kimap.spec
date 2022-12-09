@@ -1,7 +1,7 @@
 #
 # spec file for package kimap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kimap
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE PIM Libraries: IMAP library
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -47,7 +46,6 @@ IMAP mail servers.
 
 %package -n libKF5IMAP5
 Summary:        KDE PIM Libraries: IMAP APIs
-Group:          Development/Libraries/KDE
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 # Modules used for authentication
@@ -63,7 +61,6 @@ IMAP mail servers.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       cyrus-sasl-devel
 Requires:       libKF5IMAP5 = %{version}
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
@@ -79,15 +76,14 @@ applications.
 %autosetup -p1 -n kimap-%{version}
 
 %build
-  %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5IMAP5 -p /sbin/ldconfig
 %postun -n libKF5IMAP5 -p /sbin/ldconfig
@@ -106,8 +102,6 @@ applications.
 %{_kf5_libdir}/libkimaptest.a
 %{_kf5_mkspecsdir}/qt_KIMAP.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
