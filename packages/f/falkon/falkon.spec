@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           falkon
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Web/Browsers
 URL:            https://www.falkon.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -84,7 +83,6 @@ It was previously known as QupZilla.
 
 %package kde
 Summary:        Plugin for tighter integration of KDE technologies
-Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
 Requires:       kwalletd5
 Supplements:    (%{name} and kwalletd5)
@@ -121,9 +119,7 @@ sed -i 's/VERSION 3.18/VERSION 3.17/' CMakeLists.txt
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name} --all-name --with-qt
-%endif
 
 %suse_update_desktop_file org.kde.falkon
 %fdupes %{buildroot}%{_kf5_sharedir}/
@@ -147,8 +143,6 @@ sed -i 's/VERSION 3.18/VERSION 3.17/' CMakeLists.txt
 %files kde
 %{_kf5_plugindir}/falkon/KDEFrameworksIntegration.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
