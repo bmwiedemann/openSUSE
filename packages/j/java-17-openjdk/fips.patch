@@ -1,5 +1,5 @@
---- jdk17u/make/autoconf/libraries.m4	2022-10-19 11:43:15.575123274 +0200
-+++ jdk17u/make/autoconf/libraries.m4	2022-10-19 11:43:33.827267862 +0200
+--- jdk17u/make/autoconf/libraries.m4	2022-12-08 13:28:36.419134701 +0100
++++ jdk17u/make/autoconf/libraries.m4	2022-12-08 13:32:03.640407555 +0100
 @@ -33,6 +33,7 @@
  m4_include([lib-x11.m4])
  m4_include([lib-fontconfig.m4])
@@ -17,7 +17,7 @@
    BASIC_JDKLIB_LIBS=""
    if test "x$TOOLCHAIN_TYPE" != xmicrosoft; then
 --- jdk17u/make/autoconf/lib-sysconf.m4	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/make/autoconf/lib-sysconf.m4	2022-10-19 11:43:33.827267862 +0200
++++ jdk17u/make/autoconf/lib-sysconf.m4	2022-12-08 13:32:03.640407555 +0100
 @@ -0,0 +1,84 @@
 +#
 +# Copyright (c) 2021, Red Hat, Inc.
@@ -103,9 +103,9 @@
 +  fi
 +  AC_SUBST(USE_SYSCONF_NSS)
 +])
---- jdk17u/make/autoconf/spec.gmk.in	2022-10-19 11:43:15.575123274 +0200
-+++ jdk17u/make/autoconf/spec.gmk.in	2022-10-19 11:43:33.827267862 +0200
-@@ -841,6 +841,10 @@
+--- jdk17u/make/autoconf/spec.gmk.in	2022-12-08 13:28:36.419134701 +0100
++++ jdk17u/make/autoconf/spec.gmk.in	2022-12-08 13:32:03.640407555 +0100
+@@ -840,6 +840,10 @@
  # Libraries
  #
  
@@ -116,8 +116,8 @@
  USE_EXTERNAL_LCMS:=@USE_EXTERNAL_LCMS@
  LCMS_CFLAGS:=@LCMS_CFLAGS@
  LCMS_LIBS:=@LCMS_LIBS@
---- jdk17u/make/modules/java.base/Lib.gmk	2022-10-19 11:43:15.671124035 +0200
-+++ jdk17u/make/modules/java.base/Lib.gmk	2022-10-19 11:43:33.827267862 +0200
+--- jdk17u/make/modules/java.base/Lib.gmk	2022-12-08 13:28:36.919137772 +0100
++++ jdk17u/make/modules/java.base/Lib.gmk	2022-12-08 13:32:03.640407555 +0100
 @@ -168,6 +168,29 @@
  endif
  
@@ -148,308 +148,8 @@
  # Create the symbols file for static builds.
  
  ifeq ($(STATIC_BUILD), true)
---- jdk17u/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2022-10-19 11:43:15.795125017 +0200
-+++ jdk17u/src/java.base/share/classes/com/sun/crypto/provider/HmacPKCS12PBECore.java	2022-10-19 11:43:33.831267894 +0200
-@@ -25,13 +25,12 @@
- 
- package com.sun.crypto.provider;
- 
--import java.util.Arrays;
--
- import javax.crypto.SecretKey;
- import javax.crypto.spec.SecretKeySpec;
--import javax.crypto.spec.PBEParameterSpec;
-+import javax.crypto.spec.PBEKeySpec;
- import java.security.*;
- import java.security.spec.*;
-+import sun.security.util.PBEUtil;
- 
- /**
-  * This is an implementation of the HMAC algorithms as defined
-@@ -108,79 +107,15 @@
-      */
-     protected void engineInit(Key key, AlgorithmParameterSpec params)
-         throws InvalidKeyException, InvalidAlgorithmParameterException {
--        char[] passwdChars;
--        byte[] salt = null;
--        int iCount = 0;
--        if (key instanceof javax.crypto.interfaces.PBEKey) {
--            javax.crypto.interfaces.PBEKey pbeKey =
--                (javax.crypto.interfaces.PBEKey) key;
--            passwdChars = pbeKey.getPassword();
--            salt = pbeKey.getSalt(); // maybe null if unspecified
--            iCount = pbeKey.getIterationCount(); // maybe 0 if unspecified
--        } else if (key instanceof SecretKey) {
--            byte[] passwdBytes;
--            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
--                    (passwdBytes = key.getEncoded()) == null) {
--                throw new InvalidKeyException("Missing password");
--            }
--            passwdChars = new char[passwdBytes.length];
--            for (int i=0; i<passwdChars.length; i++) {
--                passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
--            }
--            Arrays.fill(passwdBytes, (byte)0x00);
--        } else {
--            throw new InvalidKeyException("SecretKey of PBE type required");
--        }
--
-+        PBEKeySpec keySpec = PBEUtil.getPBAKeySpec(key, params);
-         byte[] derivedKey;
-         try {
--            if (params == null) {
--                // should not auto-generate default values since current
--                // javax.crypto.Mac api does not have any method for caller to
--                // retrieve the generated defaults.
--                if ((salt == null) || (iCount == 0)) {
--                    throw new InvalidAlgorithmParameterException
--                            ("PBEParameterSpec required for salt and iteration count");
--                }
--            } else if (!(params instanceof PBEParameterSpec)) {
--                throw new InvalidAlgorithmParameterException
--                        ("PBEParameterSpec type required");
--            } else {
--                PBEParameterSpec pbeParams = (PBEParameterSpec) params;
--                // make sure the parameter values are consistent
--                if (salt != null) {
--                    if (!Arrays.equals(salt, pbeParams.getSalt())) {
--                        throw new InvalidAlgorithmParameterException
--                                ("Inconsistent value of salt between key and params");
--                    }
--                } else {
--                    salt = pbeParams.getSalt();
--                }
--                if (iCount != 0) {
--                    if (iCount != pbeParams.getIterationCount()) {
--                        throw new InvalidAlgorithmParameterException
--                                ("Different iteration count between key and params");
--                    }
--                } else {
--                    iCount = pbeParams.getIterationCount();
--                }
--            }
--            // For security purpose, we need to enforce a minimum length
--            // for salt; just require the minimum salt length to be 8-byte
--            // which is what PKCS#5 recommends and openssl does.
--            if (salt.length < 8) {
--                throw new InvalidAlgorithmParameterException
--                        ("Salt must be at least 8 bytes long");
--            }
--            if (iCount <= 0) {
--                throw new InvalidAlgorithmParameterException
--                        ("IterationCount must be a positive number");
--            }
--            derivedKey = PKCS12PBECipherCore.derive(passwdChars, salt,
--                    iCount, engineGetMacLength(), PKCS12PBECipherCore.MAC_KEY,
--                    algorithm, bl);
-+            derivedKey = PKCS12PBECipherCore.derive(
-+                    keySpec.getPassword(), keySpec.getSalt(),
-+                    keySpec.getIterationCount(), engineGetMacLength(),
-+                    PKCS12PBECipherCore.MAC_KEY, algorithm, bl);
-         } finally {
--            Arrays.fill(passwdChars, '\0');
-+            keySpec.clearPassword();
-         }
-         SecretKey cipherKey = new SecretKeySpec(derivedKey, "HmacSHA1");
-         super.engineInit(cipherKey, null);
---- jdk17u/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java	2022-10-19 11:43:15.795125017 +0200
-+++ jdk17u/src/java.base/share/classes/com/sun/crypto/provider/PBES2Core.java	2022-10-19 11:43:33.831267894 +0200
-@@ -27,10 +27,11 @@
- 
- import java.security.*;
- import java.security.spec.*;
--import java.util.Arrays;
- import javax.crypto.*;
- import javax.crypto.spec.*;
- 
-+import sun.security.util.PBEUtil;
-+
- /**
-  * This class represents password-based encryption as defined by the PKCS #5
-  * standard.
-@@ -54,9 +55,8 @@
-     private final PBKDF2Core kdf;
-     private final String pbeAlgo;
-     private final String cipherAlgo;
--    private int iCount = DEFAULT_COUNT;
--    private byte[] salt = null;
--    private IvParameterSpec ivSpec = null;
-+    private final PBEUtil.PBES2Helper pbes2Helper = new PBEUtil.PBES2Helper(
-+            DEFAULT_SALT_LENGTH, DEFAULT_COUNT);
- 
-     /**
-      * Creates an instance of PBE Scheme 2 according to the selected
-@@ -129,32 +129,8 @@
-     }
- 
-     protected AlgorithmParameters engineGetParameters() {
--        AlgorithmParameters params = null;
--        if (salt == null) {
--            // generate random salt and use default iteration count
--            salt = new byte[DEFAULT_SALT_LENGTH];
--            SunJCE.getRandom().nextBytes(salt);
--            iCount = DEFAULT_COUNT;
--        }
--        if (ivSpec == null) {
--            // generate random IV
--            byte[] ivBytes = new byte[blkSize];
--            SunJCE.getRandom().nextBytes(ivBytes);
--            ivSpec = new IvParameterSpec(ivBytes);
--        }
--        PBEParameterSpec pbeSpec = new PBEParameterSpec(salt, iCount, ivSpec);
--        try {
--            params = AlgorithmParameters.getInstance(pbeAlgo,
--                SunJCE.getInstance());
--            params.init(pbeSpec);
--        } catch (NoSuchAlgorithmException nsae) {
--            // should never happen
--            throw new RuntimeException("SunJCE called, but not configured");
--        } catch (InvalidParameterSpecException ipse) {
--            // should never happen
--            throw new RuntimeException("PBEParameterSpec not supported");
--        }
--        return params;
-+        return pbes2Helper.getAlgorithmParameters(
-+                blkSize, pbeAlgo, SunJCE.getInstance(), SunJCE.getRandom());
-     }
- 
-     protected void engineInit(int opmode, Key key, SecureRandom random)
-@@ -174,105 +150,8 @@
-                               SecureRandom random)
-         throws InvalidKeyException, InvalidAlgorithmParameterException {
- 
--        if (key == null) {
--            throw new InvalidKeyException("Null key");
--        }
--
--        byte[] passwdBytes = key.getEncoded();
--        char[] passwdChars = null;
--        PBEKeySpec pbeSpec;
--        try {
--            if ((passwdBytes == null) ||
--                    !(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3))) {
--                throw new InvalidKeyException("Missing password");
--            }
--
--            // TBD: consolidate the salt, ic and IV parameter checks below
--
--            // Extract salt and iteration count from the key, if present
--            if (key instanceof javax.crypto.interfaces.PBEKey) {
--                salt = ((javax.crypto.interfaces.PBEKey)key).getSalt();
--                if (salt != null && salt.length < 8) {
--                    throw new InvalidAlgorithmParameterException(
--                            "Salt must be at least 8 bytes long");
--                }
--                iCount = ((javax.crypto.interfaces.PBEKey)key).getIterationCount();
--                if (iCount == 0) {
--                    iCount = DEFAULT_COUNT;
--                } else if (iCount < 0) {
--                    throw new InvalidAlgorithmParameterException(
--                            "Iteration count must be a positive number");
--                }
--            }
--
--            // Extract salt, iteration count and IV from the params, if present
--            if (params == null) {
--                if (salt == null) {
--                    // generate random salt and use default iteration count
--                    salt = new byte[DEFAULT_SALT_LENGTH];
--                    random.nextBytes(salt);
--                    iCount = DEFAULT_COUNT;
--                }
--                if ((opmode == Cipher.ENCRYPT_MODE) ||
--                        (opmode == Cipher.WRAP_MODE)) {
--                    // generate random IV
--                    byte[] ivBytes = new byte[blkSize];
--                    random.nextBytes(ivBytes);
--                    ivSpec = new IvParameterSpec(ivBytes);
--                }
--            } else {
--                if (!(params instanceof PBEParameterSpec)) {
--                    throw new InvalidAlgorithmParameterException
--                            ("Wrong parameter type: PBE expected");
--                }
--                // salt and iteration count from the params take precedence
--                byte[] specSalt = ((PBEParameterSpec) params).getSalt();
--                if (specSalt != null && specSalt.length < 8) {
--                    throw new InvalidAlgorithmParameterException(
--                            "Salt must be at least 8 bytes long");
--                }
--                salt = specSalt;
--                int specICount = ((PBEParameterSpec) params).getIterationCount();
--                if (specICount == 0) {
--                    specICount = DEFAULT_COUNT;
--                } else if (specICount < 0) {
--                    throw new InvalidAlgorithmParameterException(
--                            "Iteration count must be a positive number");
--                }
--                iCount = specICount;
--
--                AlgorithmParameterSpec specParams =
--                        ((PBEParameterSpec) params).getParameterSpec();
--                if (specParams != null) {
--                    if (specParams instanceof IvParameterSpec) {
--                        ivSpec = (IvParameterSpec)specParams;
--                    } else {
--                        throw new InvalidAlgorithmParameterException(
--                                "Wrong parameter type: IV expected");
--                    }
--                } else if ((opmode == Cipher.ENCRYPT_MODE) ||
--                        (opmode == Cipher.WRAP_MODE)) {
--                    // generate random IV
--                    byte[] ivBytes = new byte[blkSize];
--                    random.nextBytes(ivBytes);
--                    ivSpec = new IvParameterSpec(ivBytes);
--                } else {
--                    throw new InvalidAlgorithmParameterException(
--                            "Missing parameter type: IV expected");
--                }
--            }
--
--            passwdChars = new char[passwdBytes.length];
--            for (int i = 0; i < passwdChars.length; i++)
--                passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
--
--            pbeSpec = new PBEKeySpec(passwdChars, salt, iCount, keyLength);
--            // password char[] was cloned in PBEKeySpec constructor,
--            // so we can zero it out here
--        } finally {
--            if (passwdChars != null) Arrays.fill(passwdChars, '\0');
--            if (passwdBytes != null) Arrays.fill(passwdBytes, (byte)0x00);
--        }
-+        PBEKeySpec pbeSpec = pbes2Helper.getPBEKeySpec(blkSize, keyLength,
-+                opmode, key, params, random);
- 
-         PBKDF2KeyImpl s;
- 
-@@ -291,22 +170,14 @@
-         SecretKeySpec cipherKey = new SecretKeySpec(derivedKey, cipherAlgo);
- 
-         // initialize the underlying cipher
--        cipher.init(opmode, cipherKey, ivSpec, random);
-+        cipher.init(opmode, cipherKey, pbes2Helper.getIvSpec(), random);
-     }
- 
-     protected void engineInit(int opmode, Key key, AlgorithmParameters params,
-                               SecureRandom random)
-         throws InvalidKeyException, InvalidAlgorithmParameterException {
--        AlgorithmParameterSpec pbeSpec = null;
--        if (params != null) {
--            try {
--                pbeSpec = params.getParameterSpec(PBEParameterSpec.class);
--            } catch (InvalidParameterSpecException ipse) {
--                throw new InvalidAlgorithmParameterException(
--                    "Wrong parameter type: PBE expected");
--            }
--        }
--        engineInit(opmode, key, pbeSpec, random);
-+        engineInit(opmode, key, PBEUtil.PBES2Helper.getParameterSpec(params),
-+                random);
-     }
- 
-     protected byte[] engineUpdate(byte[] input, int inputOffset, int inputLen) {
---- jdk17u/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2022-10-19 11:43:15.795125017 +0200
-+++ jdk17u/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2022-12-08 13:28:37.167139294 +0100
++++ jdk17u/src/java.base/share/classes/com/sun/crypto/provider/SunJCE.java	2022-12-08 13:32:03.640407555 +0100
 @@ -31,6 +31,7 @@
  import java.security.PrivilegedAction;
  import java.util.HashMap;
@@ -1296,8 +996,8 @@
      }
  
      // Return the instance of this class or create one if needed.
---- jdk17u/src/java.base/share/classes/java/security/Security.java	2022-10-19 11:43:15.815125175 +0200
-+++ jdk17u/src/java.base/share/classes/java/security/Security.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/java/security/Security.java	2022-12-08 13:28:37.199139491 +0100
++++ jdk17u/src/java.base/share/classes/java/security/Security.java	2022-12-08 13:32:03.640407555 +0100
 @@ -32,6 +32,7 @@
  
  import jdk.internal.event.EventHelper;
@@ -1306,7 +1006,16 @@
  import jdk.internal.access.SharedSecrets;
  import jdk.internal.util.StaticProperty;
  import sun.security.util.Debug;
-@@ -56,6 +57,11 @@
+@@ -47,12 +48,20 @@
+  * implementation-specific location, which is typically the properties file
+  * {@code conf/security/java.security} in the Java installation directory.
+  *
++ * <p>Additional default values of security properties are read from a
++ * system-specific location, if available.</p>
++ *
+  * @author Benjamin Renaud
+  * @since 1.1
+  */
  
  public final class Security {
  
@@ -1318,7 +1027,7 @@
      /* Are we debugging? -- for developers */
      private static final Debug sdebug =
                          Debug.getInstance("properties");
-@@ -74,6 +80,19 @@
+@@ -67,6 +76,19 @@
      }
  
      static {
@@ -1338,7 +1047,7 @@
          // doPrivileged here because there are multiple
          // things in initialize that might require privs.
          // (the FileInputStream call and the File.exists call,
-@@ -91,6 +110,7 @@
+@@ -84,6 +106,7 @@
          props = new Properties();
          boolean loadedProps = false;
          boolean overrideAll = false;
@@ -1346,7 +1055,15 @@
  
          // first load the system properties file
          // to determine the value of security.overridePropertiesFile
-@@ -228,6 +248,61 @@
+@@ -99,6 +122,7 @@
+                 if (sdebug != null) {
+                     sdebug.println("reading security properties file: " +
+                                 propFile);
++                    sdebug.println(props.toString());
+                 }
+             } catch (IOException e) {
+                 if (sdebug != null) {
+@@ -193,6 +217,61 @@
              }
          }
  
@@ -1373,16 +1090,16 @@
 +        // ensure it has loaded first
 +        if (loadedProps && systemSecPropsEnabled) {
 +            boolean shouldEnable;
-+            String sysProp = System.getProperty("com.suse.fips");
++            String sysProp = System.getProperty("com.redhat.fips");
 +            if (sysProp == null) {
 +                shouldEnable = true;
 +                if (sdebug != null) {
-+                    sdebug.println("com.suse.fips unset, using default value of true");
++                    sdebug.println("com.redhat.fips unset, using default value of true");
 +                }
 +            } else {
 +                shouldEnable = Boolean.valueOf(sysProp);
 +                if (sdebug != null) {
-+                    sdebug.println("com.suse.fips set, using its value " + shouldEnable);
++                    sdebug.println("com.redhat.fips set, using its value " + shouldEnable);
 +                }
 +            }
 +            if (shouldEnable) {
@@ -1409,7 +1126,7 @@
  
      /*
 --- jdk17u/src/java.base/share/classes/java/security/SystemConfigurator.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/java.base/share/classes/java/security/SystemConfigurator.java	2022-10-19 11:43:33.831267894 +0200
++++ jdk17u/src/java.base/share/classes/java/security/SystemConfigurator.java	2022-12-08 13:32:03.640407555 +0100
 @@ -0,0 +1,249 @@
 +/*
 + * Copyright (c) 2019, 2021, Red Hat, Inc.
@@ -1572,7 +1289,7 @@
 +                }
 +                loadedProps = true;
 +                systemFipsEnabled = true;
-+                String plainKeySupport = System.getProperty("com.suse.fips.plainKeySupport",
++                String plainKeySupport = System.getProperty("com.redhat.fips.plainKeySupport",
 +                                                            "true");
 +                plainKeySupportEnabled = !"false".equals(plainKeySupport);
 +                if (sdebug != null) {
@@ -1615,7 +1332,7 @@
 +     * Returns {@code true} if system FIPS alignment is enabled
 +     * and plain key support is allowed.  Plain key support is
 +     * enabled by default but can be disabled with
-+     * {@code -Dcom.suse.fips.plainKeySupport=false}.
++     * {@code -Dcom.redhat.fips.plainKeySupport=false}.
 +     *
 +     * @return a boolean indicating whether plain key support
 +     *         should be enabled.
@@ -1631,7 +1348,7 @@
 +     * FIPS mode.
 +     *
 +     * Calls to this method only occur if the system property
-+     * com.suse.fips is not set to false.
++     * com.redhat.fips is not set to false.
 +     *
 +     * There are 2 possible ways in which OpenJDK detects that the system
 +     * is in FIPS mode: 1) if the NSS SECMOD_GetSystemFIPSEnabled API is
@@ -1661,7 +1378,7 @@
 +    }
 +}
 --- jdk17u/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	2022-10-19 11:43:33.831267894 +0200
++++ jdk17u/src/java.base/share/classes/jdk/internal/access/JavaSecuritySystemConfiguratorAccess.java	2022-12-08 13:32:03.640407555 +0100
 @@ -0,0 +1,31 @@
 +/*
 + * Copyright (c) 2020, Red Hat, Inc.
@@ -1694,8 +1411,8 @@
 +    boolean isSystemFipsEnabled();
 +    boolean isPlainKeySupportEnabled();
 +}
---- jdk17u/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2022-10-19 11:43:15.855125492 +0200
-+++ jdk17u/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2022-12-08 13:28:37.239139739 +0100
++++ jdk17u/src/java.base/share/classes/jdk/internal/access/SharedSecrets.java	2022-12-08 13:32:03.644407581 +0100
 @@ -39,6 +39,7 @@
  import java.io.ObjectInputStream;
  import java.io.RandomAccessFile;
@@ -1728,8 +1445,8 @@
 +        return javaSecuritySystemConfiguratorAccess;
 +    }
  }
---- jdk17u/src/java.base/share/classes/module-info.java	2022-10-19 11:43:15.795125017 +0200
-+++ jdk17u/src/java.base/share/classes/module-info.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/module-info.java	2022-12-08 13:28:37.167139294 +0100
++++ jdk17u/src/java.base/share/classes/module-info.java	2022-12-08 13:32:03.644407581 +0100
 @@ -152,6 +152,8 @@
          java.naming,
          java.rmi,
@@ -1739,8 +1456,8 @@
          jdk.jartool,
          jdk.jlink,
          jdk.net,
---- jdk17u/src/java.base/share/classes/sun/security/provider/SunEntries.java	2022-10-19 11:43:15.879125682 +0200
-+++ jdk17u/src/java.base/share/classes/sun/security/provider/SunEntries.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/sun/security/provider/SunEntries.java	2022-12-08 13:28:37.463141113 +0100
++++ jdk17u/src/java.base/share/classes/sun/security/provider/SunEntries.java	2022-12-08 13:32:03.644407581 +0100
 @@ -30,6 +30,7 @@
  import java.util.*;
  import java.security.*;
@@ -2031,8 +1748,8 @@
  
          /*
           * Certificates
---- jdk17u/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2022-10-19 11:43:15.879125682 +0200
-+++ jdk17u/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2022-12-08 13:28:37.471141163 +0100
++++ jdk17u/src/java.base/share/classes/sun/security/rsa/SunRsaSignEntries.java	2022-12-08 13:32:03.644407581 +0100
 @@ -27,6 +27,7 @@
  
  import java.util.*;
@@ -2147,8 +1864,8 @@
          addA(p, "AlgorithmParameters", "RSASSA-PSS",
                  "sun.security.rsa.PSSParameters", null);
      }
---- jdk17u/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2022-10-19 11:43:15.883125714 +0200
-+++ jdk17u/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2022-12-08 13:28:37.475141188 +0100
++++ jdk17u/src/java.base/share/classes/sun/security/ssl/SSLContextImpl.java	2022-12-08 13:32:03.644407581 +0100
 @@ -32,6 +32,7 @@
  import java.util.*;
  import java.util.concurrent.locks.ReentrantLock;
@@ -2157,310 +1874,124 @@
  import sun.security.action.GetPropertyAction;
  import sun.security.provider.certpath.AlgorithmChecker;
  import sun.security.validator.Validator;
---- jdk17u/src/java.base/share/classes/sun/security/util/PBEUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/java.base/share/classes/sun/security/util/PBEUtil.java	2022-10-19 11:43:33.831267894 +0200
-@@ -0,0 +1,297 @@
-+/*
-+ * Copyright (c) 2022, Red Hat, Inc.
-+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-+ *
-+ * This code is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License version 2 only, as
-+ * published by the Free Software Foundation.  Oracle designates this
-+ * particular file as subject to the "Classpath" exception as provided
-+ * by Oracle in the LICENSE file that accompanied this code.
-+ *
-+ * This code is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-+ * version 2 for more details (a copy is included in the LICENSE file that
-+ * accompanied this code).
-+ *
-+ * You should have received a copy of the GNU General Public License version
-+ * 2 along with this work; if not, write to the Free Software Foundation,
-+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-+ *
-+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-+ * or visit www.oracle.com if you need additional information or have any
-+ * questions.
-+ */
+@@ -536,22 +537,40 @@
+         private static final List<CipherSuite> serverDefaultCipherSuites;
+ 
+         static {
+-            supportedProtocols = Arrays.asList(
+-                ProtocolVersion.TLS13,
+-                ProtocolVersion.TLS12,
+-                ProtocolVersion.TLS11,
+-                ProtocolVersion.TLS10,
+-                ProtocolVersion.SSL30,
+-                ProtocolVersion.SSL20Hello
+-            );
+-
+-            serverDefaultProtocols = getAvailableProtocols(
+-                    new ProtocolVersion[] {
+-                ProtocolVersion.TLS13,
+-                ProtocolVersion.TLS12,
+-                ProtocolVersion.TLS11,
+-                ProtocolVersion.TLS10
+-            });
++            if (SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
++                    .isSystemFipsEnabled()) {
++                // RH1860986: TLSv1.3 key derivation not supported with
++                // the Security Providers available in system FIPS mode.
++                supportedProtocols = Arrays.asList(
++                    ProtocolVersion.TLS12,
++                    ProtocolVersion.TLS11,
++                    ProtocolVersion.TLS10
++                );
 +
-+package sun.security.util;
-+
-+import java.security.AlgorithmParameters;
-+import java.security.InvalidAlgorithmParameterException;
-+import java.security.InvalidKeyException;
-+import java.security.Key;
-+import java.security.NoSuchAlgorithmException;
-+import java.security.Provider;
-+import java.security.SecureRandom;
-+import java.security.spec.AlgorithmParameterSpec;
-+import java.security.spec.InvalidParameterSpecException;
-+import java.util.Arrays;
-+import javax.crypto.Cipher;
-+import javax.crypto.SecretKey;
-+import javax.crypto.spec.IvParameterSpec;
-+import javax.crypto.spec.PBEKeySpec;
-+import javax.crypto.spec.PBEParameterSpec;
-+
-+public final class PBEUtil {
-+
-+    // Used by SunJCE and SunPKCS11
-+    public final static class PBES2Helper {
-+        private int iCount;
-+        private byte[] salt;
-+        private IvParameterSpec ivSpec;
-+        private final int defaultSaltLength;
-+        private final int defaultCount;
-+
-+        public PBES2Helper(int defaultSaltLength, int defaultCount) {
-+            this.defaultSaltLength = defaultSaltLength;
-+            this.defaultCount = defaultCount;
-+        }
-+
-+        public IvParameterSpec getIvSpec() {
-+            return ivSpec;
-+        }
-+
-+        public AlgorithmParameters getAlgorithmParameters(
-+                int blkSize, String pbeAlgo, Provider p, SecureRandom random) {
-+            AlgorithmParameters params = null;
-+            if (salt == null) {
-+                // generate random salt and use default iteration count
-+                salt = new byte[defaultSaltLength];
-+                random.nextBytes(salt);
-+                iCount = defaultCount;
-+            }
-+            if (ivSpec == null) {
-+                // generate random IV
-+                byte[] ivBytes = new byte[blkSize];
-+                random.nextBytes(ivBytes);
-+                ivSpec = new IvParameterSpec(ivBytes);
-+            }
-+            PBEParameterSpec pbeSpec = new PBEParameterSpec(
-+                    salt, iCount, ivSpec);
-+            try {
-+                params = (p == null) ?
-+                        AlgorithmParameters.getInstance(pbeAlgo) :
-+                        AlgorithmParameters.getInstance(pbeAlgo, p);
-+                params.init(pbeSpec);
-+            } catch (NoSuchAlgorithmException nsae) {
-+                // should never happen
-+                throw new RuntimeException("AlgorithmParameters for "
-+                        + pbeAlgo + " not configured");
-+            } catch (InvalidParameterSpecException ipse) {
-+                // should never happen
-+                throw new RuntimeException("PBEParameterSpec not supported");
-+            }
-+            return params;
-+        }
-+
-+        public PBEKeySpec getPBEKeySpec(
-+                int blkSize, int keyLength, int opmode, Key key,
-+                AlgorithmParameterSpec params, SecureRandom random)
-+            throws InvalidKeyException, InvalidAlgorithmParameterException {
-+
-+            if (key == null) {
-+                throw new InvalidKeyException("Null key");
-+            }
-+
-+            byte[] passwdBytes = key.getEncoded();
-+            char[] passwdChars = null;
-+            PBEKeySpec pbeSpec;
-+            try {
-+                if ((passwdBytes == null) || !(key.getAlgorithm().regionMatches(
-+                        true, 0, "PBE", 0, 3))) {
-+                    throw new InvalidKeyException("Missing password");
-+                }
-+
-+                // TBD: consolidate the salt, ic and IV parameter checks below
-+
-+                // Extract salt and iteration count from the key, if present
-+                if (key instanceof javax.crypto.interfaces.PBEKey) {
-+                    salt = ((javax.crypto.interfaces.PBEKey)key).getSalt();
-+                    if (salt != null && salt.length < 8) {
-+                        throw new InvalidAlgorithmParameterException(
-+                                "Salt must be at least 8 bytes long");
-+                    }
-+                    iCount = ((javax.crypto.interfaces.PBEKey)key)
-+                            .getIterationCount();
-+                    if (iCount == 0) {
-+                        iCount = defaultCount;
-+                    } else if (iCount < 0) {
-+                        throw new InvalidAlgorithmParameterException(
-+                                "Iteration count must be a positive number");
-+                    }
-+                }
-+
-+                // Extract salt, iteration count and IV from the params,
-+                // if present
-+                if (params == null) {
-+                    if (salt == null) {
-+                        // generate random salt and use default iteration count
-+                        salt = new byte[defaultSaltLength];
-+                        random.nextBytes(salt);
-+                        iCount = defaultCount;
-+                    }
-+                    if ((opmode == Cipher.ENCRYPT_MODE) ||
-+                            (opmode == Cipher.WRAP_MODE)) {
-+                        // generate random IV
-+                        byte[] ivBytes = new byte[blkSize];
-+                        random.nextBytes(ivBytes);
-+                        ivSpec = new IvParameterSpec(ivBytes);
-+                    }
-+                } else {
-+                    if (!(params instanceof PBEParameterSpec)) {
-+                        throw new InvalidAlgorithmParameterException
-+                                ("Wrong parameter type: PBE expected");
-+                    }
-+                    // salt and iteration count from the params take precedence
-+                    byte[] specSalt = ((PBEParameterSpec) params).getSalt();
-+                    if (specSalt != null && specSalt.length < 8) {
-+                        throw new InvalidAlgorithmParameterException(
-+                                "Salt must be at least 8 bytes long");
-+                    }
-+                    salt = specSalt;
-+                    int specICount = ((PBEParameterSpec) params)
-+                            .getIterationCount();
-+                    if (specICount == 0) {
-+                        specICount = defaultCount;
-+                    } else if (specICount < 0) {
-+                        throw new InvalidAlgorithmParameterException(
-+                                "Iteration count must be a positive number");
-+                    }
-+                    iCount = specICount;
-+
-+                    AlgorithmParameterSpec specParams =
-+                            ((PBEParameterSpec) params).getParameterSpec();
-+                    if (specParams != null) {
-+                        if (specParams instanceof IvParameterSpec) {
-+                            ivSpec = (IvParameterSpec)specParams;
-+                        } else {
-+                            throw new InvalidAlgorithmParameterException(
-+                                    "Wrong parameter type: IV expected");
-+                        }
-+                    } else if ((opmode == Cipher.ENCRYPT_MODE) ||
-+                            (opmode == Cipher.WRAP_MODE)) {
-+                        // generate random IV
-+                        byte[] ivBytes = new byte[blkSize];
-+                        random.nextBytes(ivBytes);
-+                        ivSpec = new IvParameterSpec(ivBytes);
-+                    } else {
-+                        throw new InvalidAlgorithmParameterException(
-+                                "Missing parameter type: IV expected");
-+                    }
-+                }
-+
-+                passwdChars = new char[passwdBytes.length];
-+                for (int i = 0; i < passwdChars.length; i++)
-+                    passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
-+
-+                pbeSpec = new PBEKeySpec(passwdChars, salt, iCount, keyLength);
-+                // password char[] was cloned in PBEKeySpec constructor,
-+                // so we can zero it out here
-+            } finally {
-+                if (passwdChars != null) Arrays.fill(passwdChars, '\0');
-+                if (passwdBytes != null) Arrays.fill(passwdBytes, (byte)0x00);
-+            }
-+            return pbeSpec;
-+        }
-+
-+        public static AlgorithmParameterSpec getParameterSpec(
-+                AlgorithmParameters params)
-+                throws InvalidAlgorithmParameterException {
-+            AlgorithmParameterSpec pbeSpec = null;
-+            if (params != null) {
-+                try {
-+                    pbeSpec = params.getParameterSpec(PBEParameterSpec.class);
-+                } catch (InvalidParameterSpecException ipse) {
-+                    throw new InvalidAlgorithmParameterException(
-+                            "Wrong parameter type: PBE expected");
-+                }
-+            }
-+            return pbeSpec;
-+        }
-+    }
-+
-+    // Used by SunJCE and SunPKCS11
-+    public static PBEKeySpec getPBAKeySpec(Key key, AlgorithmParameterSpec params)
-+            throws InvalidKeyException, InvalidAlgorithmParameterException {
-+        char[] passwdChars;
-+        byte[] salt = null;
-+        int iCount = 0;
-+        if (key instanceof javax.crypto.interfaces.PBEKey) {
-+            javax.crypto.interfaces.PBEKey pbeKey =
-+                (javax.crypto.interfaces.PBEKey) key;
-+            passwdChars = pbeKey.getPassword();
-+            salt = pbeKey.getSalt(); // maybe null if unspecified
-+            iCount = pbeKey.getIterationCount(); // maybe 0 if unspecified
-+        } else if (key instanceof SecretKey) {
-+            byte[] passwdBytes;
-+            if (!(key.getAlgorithm().regionMatches(true, 0, "PBE", 0, 3)) ||
-+                    (passwdBytes = key.getEncoded()) == null) {
-+                throw new InvalidKeyException("Missing password");
-+            }
-+            passwdChars = new char[passwdBytes.length];
-+            for (int i=0; i<passwdChars.length; i++) {
-+                passwdChars[i] = (char) (passwdBytes[i] & 0x7f);
-+            }
-+            Arrays.fill(passwdBytes, (byte)0x00);
-+        } else {
-+            throw new InvalidKeyException("SecretKey of PBE type required");
-+        }
-+
-+        try {
-+            if (params == null) {
-+                // should not auto-generate default values since current
-+                // javax.crypto.Mac api does not have any method for caller to
-+                // retrieve the generated defaults.
-+                if ((salt == null) || (iCount == 0)) {
-+                    throw new InvalidAlgorithmParameterException
-+                            ("PBEParameterSpec required for salt and iteration count");
-+                }
-+            } else if (!(params instanceof PBEParameterSpec)) {
-+                throw new InvalidAlgorithmParameterException
-+                        ("PBEParameterSpec type required");
++                serverDefaultProtocols = getAvailableProtocols(
++                        new ProtocolVersion[] {
++                    ProtocolVersion.TLS12,
++                    ProtocolVersion.TLS11,
++                    ProtocolVersion.TLS10
++                });
 +            } else {
-+                PBEParameterSpec pbeParams = (PBEParameterSpec) params;
-+                // make sure the parameter values are consistent
-+                if (salt != null) {
-+                    if (!Arrays.equals(salt, pbeParams.getSalt())) {
-+                        throw new InvalidAlgorithmParameterException
-+                                ("Inconsistent value of salt between key and params");
-+                    }
++                supportedProtocols = Arrays.asList(
++                    ProtocolVersion.TLS13,
++                    ProtocolVersion.TLS12,
++                    ProtocolVersion.TLS11,
++                    ProtocolVersion.TLS10,
++                    ProtocolVersion.SSL30,
++                    ProtocolVersion.SSL20Hello
++                );
++
++                serverDefaultProtocols = getAvailableProtocols(
++                        new ProtocolVersion[] {
++                    ProtocolVersion.TLS13,
++                    ProtocolVersion.TLS12,
++                    ProtocolVersion.TLS11,
++                    ProtocolVersion.TLS10
++                });
++            }
+ 
+             supportedCipherSuites = getApplicableSupportedCipherSuites(
+                     supportedProtocols);
+@@ -842,12 +861,23 @@
+             ProtocolVersion[] candidates;
+             if (refactored.isEmpty()) {
+                 // Client and server use the same default protocols.
+-                candidates = new ProtocolVersion[] {
+-                        ProtocolVersion.TLS13,
+-                        ProtocolVersion.TLS12,
+-                        ProtocolVersion.TLS11,
+-                        ProtocolVersion.TLS10
+-                    };
++                if (SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
++                        .isSystemFipsEnabled()) {
++                    // RH1860986: TLSv1.3 key derivation not supported with
++                    // the Security Providers available in system FIPS mode.
++                    candidates = new ProtocolVersion[] {
++                            ProtocolVersion.TLS12,
++                            ProtocolVersion.TLS11,
++                            ProtocolVersion.TLS10
++                        };
 +                } else {
-+                    salt = pbeParams.getSalt();
++                    candidates = new ProtocolVersion[] {
++                            ProtocolVersion.TLS13,
++                            ProtocolVersion.TLS12,
++                            ProtocolVersion.TLS11,
++                            ProtocolVersion.TLS10
++                        };
 +                }
-+                if (iCount != 0) {
-+                    if (iCount != pbeParams.getIterationCount()) {
-+                        throw new InvalidAlgorithmParameterException
-+                                ("Different iteration count between key and params");
-+                    }
-+                } else {
-+                    iCount = pbeParams.getIterationCount();
-+                }
-+            }
-+            // For security purpose, we need to enforce a minimum length
-+            // for salt; just require the minimum salt length to be 8-byte
-+            // which is what PKCS#5 recommends and openssl does.
-+            if (salt.length < 8) {
-+                throw new InvalidAlgorithmParameterException
-+                        ("Salt must be at least 8 bytes long");
-+            }
-+            if (iCount <= 0) {
-+                throw new InvalidAlgorithmParameterException
-+                        ("IterationCount must be a positive number");
-+            }
-+            return new PBEKeySpec(passwdChars, salt, iCount);
-+        } finally {
-+            Arrays.fill(passwdChars, '\0');
+             } else {
+                 // Use the customized TLS protocols.
+                 candidates =
+--- jdk17u/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2022-12-08 13:28:37.475141188 +0100
++++ jdk17u/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2022-12-08 13:32:03.644407581 +0100
+@@ -27,6 +27,8 @@
+ 
+ import java.security.*;
+ import java.util.*;
++
++import jdk.internal.access.SharedSecrets;
+ import static sun.security.util.SecurityConstants.PROVIDER_VER;
+ 
+ /**
+@@ -102,8 +104,13 @@
+             "sun.security.ssl.SSLContextImpl$TLS11Context", null, null);
+         ps("SSLContext", "TLSv1.2",
+             "sun.security.ssl.SSLContextImpl$TLS12Context", null, null);
+-        ps("SSLContext", "TLSv1.3",
+-            "sun.security.ssl.SSLContextImpl$TLS13Context", null, null);
++        if (!SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
++                .isSystemFipsEnabled()) {
++            // RH1860986: TLSv1.3 key derivation not supported with
++            // the Security Providers available in system FIPS mode.
++            ps("SSLContext", "TLSv1.3",
++                "sun.security.ssl.SSLContextImpl$TLS13Context", null, null);
 +        }
-+    }
-+}
---- jdk17u/src/java.base/share/conf/security/java.security	2022-10-19 11:43:15.891125777 +0200
-+++ jdk17u/src/java.base/share/conf/security/java.security	2022-10-19 11:43:33.831267894 +0200
-@@ -81,6 +81,16 @@
- #security.provider.tbd=SunPKCS11 ${java.home}/lib/security/nss.cfg
+         ps("SSLContext", "TLS",
+             "sun.security.ssl.SSLContextImpl$TLSContext",
+             List.of("SSL"), null);
+--- jdk17u/src/java.base/share/conf/security/java.security	2022-12-08 13:28:37.491141287 +0100
++++ jdk17u/src/java.base/share/conf/security/java.security	2022-12-08 13:32:03.644407581 +0100
+@@ -80,6 +80,16 @@
+ security.provider.tbd=SunPKCS11
  
  #
 +# Security providers used when FIPS mode support is active
@@ -2476,20 +2007,34 @@
  # A list of preferred providers for specific algorithms. These providers will
  # be searched for matching algorithms before the list of registered providers.
  # Entries containing errors (parsing, etc) will be ignored. Use the
-@@ -291,6 +301,11 @@
+@@ -290,6 +300,11 @@
  keystore.type=pkcs12
  
  #
 +# Default keystore type used when global crypto-policies are set to FIPS.
 +#
-+fips.keystore.type=pkcs12
++fips.keystore.type=PKCS11
 +
 +#
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
  # When set to 'true', both JKS and PKCS12 keystore types support loading
---- jdk17u/src/java.base/share/lib/security/default.policy	2022-10-19 11:43:15.891125777 +0200
-+++ jdk17u/src/java.base/share/lib/security/default.policy	2022-10-19 11:43:33.831267894 +0200
+@@ -327,6 +342,13 @@
+ security.overridePropertiesFile=true
+ 
+ #
++# Determines whether this properties file will be appended to
++# using the system properties file stored at
++# /etc/crypto-policies/back-ends/java.config
++#
++security.useSystemPropertiesFile=false
++
++#
+ # Determines the default key and trust manager factory algorithms for
+ # the javax.net.ssl package.
+ #
+--- jdk17u/src/java.base/share/lib/security/default.policy	2022-12-08 13:28:37.491141287 +0100
++++ jdk17u/src/java.base/share/lib/security/default.policy	2022-12-08 13:32:03.644407581 +0100
 @@ -121,6 +121,7 @@
  grant codeBase "jrt:/jdk.crypto.ec" {
      permission java.lang.RuntimePermission
@@ -2507,7 +2052,7 @@
      permission java.lang.RuntimePermission
                     "accessClassInPackage.sun.security.*";
 --- jdk17u/src/java.base/share/native/libsystemconf/systemconf.c	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/java.base/share/native/libsystemconf/systemconf.c	2022-10-19 11:43:33.831267894 +0200
++++ jdk17u/src/java.base/share/native/libsystemconf/systemconf.c	2022-12-08 13:32:03.644407581 +0100
 @@ -0,0 +1,236 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -2746,7 +2291,7 @@
 +
 +#endif
 --- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	2022-10-19 11:43:33.831267894 +0200
++++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/FIPSKeyImporter.java	2022-12-08 13:32:03.644407581 +0100
 @@ -0,0 +1,461 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
@@ -3209,8 +2754,8 @@
 +        }
 +    }
 +}
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2022-10-19 11:43:33.831267894 +0200
+--- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2022-12-08 13:28:38.223145781 +0100
++++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Key.java	2022-12-08 13:32:03.644407581 +0100
 @@ -37,6 +37,8 @@
  import javax.crypto.interfaces.*;
  import javax.crypto.spec.*;
@@ -3230,18 +2775,7 @@
      private static final long serialVersionUID = -2575874101938349339L;
  
      private static final String PUBLIC = "public";
-@@ -136,9 +141,7 @@
-         this.tokenObject = tokenObject;
-         this.sensitive = sensitive;
-         this.extractable = extractable;
--        char[] tokenLabel = this.token.tokenInfo.label;
--        boolean isNSS = (tokenLabel[0] == 'N' && tokenLabel[1] == 'S'
--                && tokenLabel[2] == 'S');
-+        boolean isNSS = P11Util.isNSS(this.token);
-         boolean extractKeyInfo = (!DISABLE_NATIVE_KEYS_EXTRACTION && isNSS &&
-                 extractable && !tokenObject);
-         this.keyIDHolder = new NativeKeyHolder(this, keyID, session,
-@@ -379,7 +382,9 @@
+@@ -379,7 +384,9 @@
              new CK_ATTRIBUTE(CKA_SENSITIVE),
              new CK_ATTRIBUTE(CKA_EXTRACTABLE),
          });
@@ -3252,7 +2786,7 @@
              return new P11PrivateKey
                  (session, keyID, algorithm, keyLength, attributes);
          } else {
-@@ -461,7 +466,8 @@
+@@ -461,7 +468,8 @@
          }
          public String getFormat() {
              token.ensureValid();
@@ -3262,539 +2796,8 @@
                  return null;
              } else {
                  return "RAW";
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Mac.java	2022-10-19 11:43:33.835267926 +0200
-@@ -29,14 +29,17 @@
- 
- import java.security.*;
- import java.security.spec.AlgorithmParameterSpec;
-+import java.security.spec.InvalidKeySpecException;
- 
- import javax.crypto.MacSpi;
-+import javax.crypto.spec.PBEKeySpec;
- 
- import sun.nio.ch.DirectBuffer;
- 
- import sun.security.pkcs11.wrapper.*;
- import static sun.security.pkcs11.wrapper.PKCS11Constants.*;
- import static sun.security.pkcs11.wrapper.PKCS11Exception.*;
-+import sun.security.util.PBEUtil;
- 
- /**
-  * MAC implementation class. This class currently supports HMAC using
-@@ -202,12 +205,23 @@
-     // see JCE spec
-     protected void engineInit(Key key, AlgorithmParameterSpec params)
-             throws InvalidKeyException, InvalidAlgorithmParameterException {
--        if (params != null) {
--            throw new InvalidAlgorithmParameterException
--                ("Parameters not supported");
-+        if (algorithm.startsWith("HmacPBE")) {
-+            PBEKeySpec pbeSpec = PBEUtil.getPBAKeySpec(key, params);
-+            reset(true);
-+            try {
-+                p11Key = P11SecretKeyFactory.derivePBEKey(
-+                        token, pbeSpec, algorithm);
-+            } catch (InvalidKeySpecException e) {
-+                throw new InvalidKeyException(e);
-+            }
-+        } else {
-+            if (params != null) {
-+                throw new InvalidAlgorithmParameterException
-+                    ("Parameters not supported");
-+            }
-+            reset(true);
-+            p11Key = P11SecretKeyFactory.convertKey(token, key, algorithm);
-         }
--        reset(true);
--        p11Key = P11SecretKeyFactory.convertKey(token, key, algorithm);
-         try {
-             initialize();
-         } catch (PKCS11Exception e) {
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11PBECipher.java	2022-10-19 11:43:33.835267926 +0200
-@@ -0,0 +1,200 @@
-+/*
-+ * Copyright (c) 2022, Red Hat, Inc.
-+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-+ *
-+ * This code is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License version 2 only, as
-+ * published by the Free Software Foundation.  Oracle designates this
-+ * particular file as subject to the "Classpath" exception as provided
-+ * by Oracle in the LICENSE file that accompanied this code.
-+ *
-+ * This code is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-+ * version 2 for more details (a copy is included in the LICENSE file that
-+ * accompanied this code).
-+ *
-+ * You should have received a copy of the GNU General Public License version
-+ * 2 along with this work; if not, write to the Free Software Foundation,
-+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-+ *
-+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-+ * or visit www.oracle.com if you need additional information or have any
-+ * questions.
-+ */
-+
-+package sun.security.pkcs11;
-+
-+import java.security.AlgorithmParameters;
-+import java.security.Key;
-+import java.security.InvalidAlgorithmParameterException;
-+import java.security.InvalidKeyException;
-+import java.security.NoSuchAlgorithmException;
-+import java.security.SecureRandom;
-+import java.security.spec.AlgorithmParameterSpec;
-+import java.security.spec.InvalidKeySpecException;
-+import javax.crypto.BadPaddingException;
-+import javax.crypto.CipherSpi;
-+import javax.crypto.IllegalBlockSizeException;
-+import javax.crypto.NoSuchPaddingException;
-+import javax.crypto.ShortBufferException;
-+import javax.crypto.spec.PBEKeySpec;
-+
-+import static sun.security.pkcs11.wrapper.PKCS11Constants.*;
-+import sun.security.jca.JCAUtil;
-+import sun.security.pkcs11.wrapper.PKCS11Exception;
-+import sun.security.util.PBEUtil;
-+
-+final class P11PBECipher extends CipherSpi {
-+
-+    private static final int DEFAULT_SALT_LENGTH = 20;
-+    private static final int DEFAULT_COUNT = 4096;
-+
-+    private final Token token;
-+    private final String pbeAlg;
-+    private final P11Cipher cipher;
-+    private final int blkSize;
-+    private final int keyLen;
-+    private final PBEUtil.PBES2Helper pbes2Helper = new PBEUtil.PBES2Helper(
-+            DEFAULT_SALT_LENGTH, DEFAULT_COUNT);
-+
-+    P11PBECipher(Token token, String pbeAlg, long cipherMech)
-+                    throws PKCS11Exception, NoSuchAlgorithmException {
-+        super();
-+        String cipherTrans;
-+        if (cipherMech == CKM_AES_CBC_PAD || cipherMech == CKM_AES_CBC) {
-+            cipherTrans = "AES/CBC/PKCS5Padding";
-+        } else {
-+            throw new NoSuchAlgorithmException(
-+                    "Cipher transformation not supported.");
-+        }
-+        cipher = new P11Cipher(token, cipherTrans, cipherMech);
-+        blkSize = cipher.engineGetBlockSize();
-+        assert P11Util.kdfDataMap.get(pbeAlg) != null;
-+        keyLen = P11Util.kdfDataMap.get(pbeAlg).keyLen;
-+        this.pbeAlg = pbeAlg;
-+        this.token = token;
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected void engineSetMode(String mode)
-+            throws NoSuchAlgorithmException {
-+        cipher.engineSetMode(mode);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected void engineSetPadding(String padding)
-+            throws NoSuchPaddingException {
-+        cipher.engineSetPadding(padding);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected int engineGetBlockSize() {
-+        return cipher.engineGetBlockSize();
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected int engineGetOutputSize(int inputLen) {
-+        return cipher.engineGetOutputSize(inputLen);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected byte[] engineGetIV() {
-+        return cipher.engineGetIV();
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected AlgorithmParameters engineGetParameters() {
-+        return pbes2Helper.getAlgorithmParameters(
-+                blkSize, pbeAlg, null, JCAUtil.getSecureRandom());
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected void engineInit(int opmode, Key key,
-+            SecureRandom random) throws InvalidKeyException {
-+        try {
-+            engineInit(opmode, key, (AlgorithmParameterSpec) null, random);
-+        } catch (InvalidAlgorithmParameterException e) {
-+            throw new InvalidKeyException("requires PBE parameters", e);
-+        }
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected void engineInit(int opmode, Key key,
-+            AlgorithmParameterSpec params, SecureRandom random)
-+                    throws InvalidKeyException,
-+                    InvalidAlgorithmParameterException {
-+
-+        PBEKeySpec pbeSpec = pbes2Helper.getPBEKeySpec(blkSize, keyLen,
-+                opmode, key, params, random);
-+
-+        Key derivedKey;
-+        try {
-+            derivedKey = P11SecretKeyFactory.derivePBEKey(
-+                    token, pbeSpec, pbeAlg);
-+        } catch (InvalidKeySpecException e) {
-+            throw new InvalidKeyException(e);
-+        }
-+        cipher.engineInit(opmode, derivedKey, pbes2Helper.getIvSpec(), random);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected void engineInit(int opmode, Key key,
-+            AlgorithmParameters params, SecureRandom random)
-+                    throws InvalidKeyException,
-+                    InvalidAlgorithmParameterException {
-+        engineInit(opmode, key, PBEUtil.PBES2Helper.getParameterSpec(params),
-+                random);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected byte[] engineUpdate(byte[] input, int inputOffset,
-+            int inputLen) {
-+        return cipher.engineUpdate(input, inputOffset, inputLen);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected int engineUpdate(byte[] input, int inputOffset,
-+            int inputLen, byte[] output, int outputOffset)
-+                    throws ShortBufferException {
-+        return cipher.engineUpdate(input, inputOffset, inputLen,
-+                output, outputOffset);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected byte[] engineDoFinal(byte[] input, int inputOffset,
-+            int inputLen)
-+                    throws IllegalBlockSizeException, BadPaddingException {
-+        return cipher.engineDoFinal(input, inputOffset, inputLen);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected int engineDoFinal(byte[] input, int inputOffset,
-+            int inputLen, byte[] output, int outputOffset)
-+                    throws ShortBufferException, IllegalBlockSizeException,
-+                    BadPaddingException {
-+        return cipher.engineDoFinal(input, inputOffset, inputLen, output,
-+                outputOffset);
-+    }
-+
-+    // see JCE spec
-+    @Override
-+    protected int engineGetKeySize(Key key)
-+            throws InvalidKeyException {
-+        return cipher.engineGetKeySize(key);
-+    }
-+
-+}
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11SecretKeyFactory.java	2022-10-19 11:43:33.835267926 +0200
-@@ -31,6 +31,7 @@
- import java.security.spec.*;
- 
- import javax.crypto.*;
-+import javax.crypto.interfaces.PBEKey;
- import javax.crypto.spec.*;
- 
- import static sun.security.pkcs11.TemplateManager.*;
-@@ -194,6 +195,128 @@
-         return p11Key;
-     }
- 
-+    static P11Key derivePBEKey(Token token, PBEKeySpec keySpec, String algo)
-+            throws InvalidKeySpecException {
-+        token.ensureValid();
-+        if (keySpec == null) {
-+            throw new InvalidKeySpecException("PBEKeySpec must not be null");
-+        }
-+        Session session = null;
-+        try {
-+            session = token.getObjSession();
-+            P11Util.KDFData kdfData = P11Util.kdfDataMap.get(algo);
-+            CK_MECHANISM ckMech;
-+            char[] password = keySpec.getPassword();
-+            byte[] salt = keySpec.getSalt();
-+            int itCount = keySpec.getIterationCount();
-+            int keySize = keySpec.getKeyLength();
-+            if (kdfData.keyLen != -1) {
-+                if (keySize == 0) {
-+                    keySize = kdfData.keyLen;
-+                } else if (keySize != kdfData.keyLen) {
-+                    throw new InvalidKeySpecException(
-+                            "Key length is invalid for " + algo);
-+                }
-+            }
-+
-+            if (kdfData.kdfMech == CKM_PKCS5_PBKD2) {
-+                CK_VERSION p11Ver = token.p11.getInfo().cryptokiVersion;
-+                if (P11Util.isNSS(token) || p11Ver.major < 2 ||
-+                        p11Ver.major == 2 && p11Ver.minor < 40) {
-+                    // NSS keeps using the old structure beyond PKCS #11 v2.40
-+                    ckMech = new CK_MECHANISM(kdfData.kdfMech,
-+                            new CK_PKCS5_PBKD2_PARAMS(password, salt,
-+                                    itCount, kdfData.prfMech));
-+                } else {
-+                    ckMech = new CK_MECHANISM(kdfData.kdfMech,
-+                            new CK_PKCS5_PBKD2_PARAMS2(password, salt,
-+                                    itCount, kdfData.prfMech));
-+                }
-+            } else {
-+                // PKCS #12 "General Method" PBKD (RFC 7292, Appendix B.2)
-+                if (P11Util.isNSS(token)) {
-+                    // According to PKCS #11, "password" in CK_PBE_PARAMS has
-+                    // a CK_UTF8CHAR_PTR type. This suggests that it is encoded
-+                    // in UTF-8. However, NSS expects the password to be encoded
-+                    // as BMPString with a NULL terminator when C_GenerateKey
-+                    // is called for a PKCS #12 "General Method" derivation
-+                    // (see RFC 7292, Appendix B.1).
-+                    //
-+                    // The char size in Java is 2 bytes. When a char is
-+                    // converted to a CK_UTF8CHAR, the high-order byte is
-+                    // discarded (see jCharArrayToCKUTF8CharArray in
-+                    // p11_util.c). In order to have a BMPString passed to
-+                    // C_GenerateKey, we need to account for that and expand:
-+                    // the high and low parts of each char are split into 2
-+                    // chars. As an example, this is the transformation for
-+                    // a NULL terminated password "a":
-+                    // char[]    =>        [   0x0061,          0x0000     ]
-+                    //                          /    \           /    \
-+                    // Expansion =>       [0x0000, 0x0061, 0x0000, 0x0000]
-+                    //                         |       |       |       |
-+                    // BMPString =>       [  0x00,   0x61,   0x00,   0x00]
-+                    //
-+                    int inputLength = (password == null) ? 0 : password.length;
-+                    char[] expPassword = new char[inputLength * 2 + 2];
-+                    for (int i = 0, j = 0; i < inputLength; i++, j += 2) {
-+                        expPassword[j] = (char) ((password[i] >>> 8) & 0xFF);
-+                        expPassword[j + 1] = (char) (password[i] & 0xFF);
-+                    }
-+                    password = expPassword;
-+                }
-+                ckMech = new CK_MECHANISM(kdfData.kdfMech,
-+                        new CK_PBE_PARAMS(password, salt, itCount));
-+            }
-+
-+            long keyType = getKeyType(kdfData.keyAlgo);
-+            CK_ATTRIBUTE[] attrs = new CK_ATTRIBUTE[
-+                    switch (kdfData.op) {
-+                        case ENCRYPTION, AUTHENTICATION -> 4;
-+                        case GENERIC -> 5;
-+                    }];
-+            attrs[0] = new CK_ATTRIBUTE(CKA_CLASS, CKO_SECRET_KEY);
-+            attrs[1] = new CK_ATTRIBUTE(CKA_VALUE_LEN, keySize >> 3);
-+            attrs[2] = new CK_ATTRIBUTE(CKA_KEY_TYPE, keyType);
-+            switch (kdfData.op) {
-+                case ENCRYPTION -> attrs[3] = CK_ATTRIBUTE.ENCRYPT_TRUE;
-+                case AUTHENTICATION -> attrs[3] = CK_ATTRIBUTE.SIGN_TRUE;
-+                case GENERIC -> {
-+                    attrs[3] = CK_ATTRIBUTE.ENCRYPT_TRUE;
-+                    attrs[4] = CK_ATTRIBUTE.SIGN_TRUE;
-+                }
-+            }
-+            CK_ATTRIBUTE[] attr = token.getAttributes(
-+                    O_GENERATE, CKO_SECRET_KEY, keyType, attrs);
-+            long keyID = token.p11.C_GenerateKey(session.id(), ckMech, attr);
-+            return (P11Key)P11Key.secretKey(
-+                    session, keyID, kdfData.keyAlgo, keySize, attr);
-+        } catch (PKCS11Exception e) {
-+            throw new InvalidKeySpecException("Could not create key", e);
-+        } finally {
-+            token.releaseSession(session);
-+        }
-+    }
-+
-+    static P11Key derivePBEKey(Token token, PBEKey key, String algo)
-+            throws InvalidKeyException {
-+        token.ensureValid();
-+        if (key == null) {
-+            throw new InvalidKeyException("PBEKey must not be null");
-+        }
-+        P11Key p11Key = token.secretCache.get(key);
-+        if (p11Key != null) {
-+            return p11Key;
-+        }
-+        try {
-+            p11Key = derivePBEKey(token, new PBEKeySpec(key.getPassword(),
-+                    key.getSalt(), key.getIterationCount()), algo);
-+        } catch (InvalidKeySpecException e) {
-+            throw new InvalidKeyException(e);
-+        }
-+        token.secretCache.put(key, p11Key);
-+        return p11Key;
-+    }
-+
-     static void fixDESParity(byte[] key, int offset) {
-         for (int i = 0; i < 8; i++) {
-             int b = key[offset] & 0xfe;
-@@ -320,6 +443,9 @@
-                 keySpec = new SecretKeySpec(keyBytes, "DESede");
-                 return engineGenerateSecret(keySpec);
-             }
-+        } else if (keySpec instanceof PBEKeySpec) {
-+            return (SecretKey)derivePBEKey(token,
-+                    (PBEKeySpec)keySpec, algorithm);
-         }
-         throw new InvalidKeySpecException
-                 ("Unsupported spec: " + keySpec.getClass().getName());
-@@ -373,6 +499,9 @@
-     // see JCE spec
-     protected SecretKey engineTranslateKey(SecretKey key)
-             throws InvalidKeyException {
-+        if (key instanceof PBEKey) {
-+            return (SecretKey)derivePBEKey(token, (PBEKey)key, algorithm);
-+        }
-         return (SecretKey)convertKey(token, key, algorithm);
-     }
- 
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/P11Util.java	2022-10-19 11:43:33.835267926 +0200
-@@ -27,6 +27,10 @@
- 
- import java.math.BigInteger;
- import java.security.*;
-+import java.util.HashMap;
-+import java.util.Map;
-+
-+import static sun.security.pkcs11.wrapper.PKCS11Constants.*;
- 
- /**
-  * Collection of static utility methods.
-@@ -40,10 +44,106 @@
- 
-     private static volatile Provider sun, sunRsaSign, sunJce;
- 
-+    // Used by PBE
-+    static final class KDFData {
-+        public enum Operation {ENCRYPTION, AUTHENTICATION, GENERIC}
-+        public long kdfMech;
-+        public long prfMech;
-+        public String keyAlgo;
-+        public int keyLen;
-+        public Operation op;
-+        KDFData(long kdfMech, long prfMech, String keyAlgo,
-+                int keyLen, Operation op) {
-+            this.kdfMech = kdfMech;
-+            this.prfMech = prfMech;
-+            this.keyAlgo = keyAlgo;
-+            this.keyLen = keyLen;
-+            this.op = op;
-+        }
-+
-+        public static void addPbkdf2Data(String algo, long kdfMech,
-+                                         long prfMech) {
-+            kdfDataMap.put(algo, new KDFData(kdfMech, prfMech,
-+                    "Generic", -1, Operation.GENERIC));
-+        }
-+
-+        public static void addPbkdf2AesData(String algo, long kdfMech,
-+                                            long prfMech, int keyLen) {
-+            kdfDataMap.put(algo, new KDFData(kdfMech, prfMech,
-+                    "AES", keyLen, Operation.ENCRYPTION));
-+        }
-+
-+        public static void addPkcs12KDData(String algo, long kdfMech,
-+                                         int keyLen) {
-+            kdfDataMap.put(algo, new KDFData(kdfMech, -1,
-+                    "Generic", keyLen, Operation.AUTHENTICATION));
-+        }
-+    }
-+
-+    static final Map<String, KDFData> kdfDataMap = new HashMap<>();
-+
-+    static {
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA1AndAES_128",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA1, 128);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA224AndAES_128",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA224, 128);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA256AndAES_128",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA256, 128);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA384AndAES_128",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA384, 128);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA512AndAES_128",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA512, 128);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA1AndAES_256",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA1, 256);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA224AndAES_256",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA224, 256);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA256AndAES_256",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA256, 256);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA384AndAES_256",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA384, 256);
-+        KDFData.addPbkdf2AesData("PBEWithHmacSHA512AndAES_256",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA512, 256);
-+
-+        KDFData.addPbkdf2Data("PBKDF2WithHmacSHA1",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA1);
-+        KDFData.addPbkdf2Data("PBKDF2WithHmacSHA224",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA224);
-+        KDFData.addPbkdf2Data("PBKDF2WithHmacSHA256",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA256);
-+        KDFData.addPbkdf2Data("PBKDF2WithHmacSHA384",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA384);
-+        KDFData.addPbkdf2Data("PBKDF2WithHmacSHA512",
-+                CKM_PKCS5_PBKD2, CKP_PKCS5_PBKD2_HMAC_SHA512);
-+
-+        KDFData.addPkcs12KDData("HmacPBESHA1",
-+                CKM_PBA_SHA1_WITH_SHA1_HMAC, 160);
-+        KDFData.addPkcs12KDData("HmacPBESHA224",
-+                CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN, 224);
-+        KDFData.addPkcs12KDData("HmacPBESHA256",
-+                CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN, 256);
-+        KDFData.addPkcs12KDData("HmacPBESHA384",
-+                CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN, 384);
-+        KDFData.addPkcs12KDData("HmacPBESHA512",
-+                CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN, 512);
-+        KDFData.addPkcs12KDData("HmacPBESHA512/224",
-+                CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN, 512);
-+        KDFData.addPkcs12KDData("HmacPBESHA512/256",
-+                CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN, 512);
-+    }
-+
-     private P11Util() {
-         // empty
-     }
- 
-+    static boolean isNSS(Token token) {
-+        char[] tokenLabel = token.tokenInfo.label;
-+        if (tokenLabel != null && tokenLabel.length >= 3) {
-+            return (tokenLabel[0] == 'N' && tokenLabel[1] == 'S'
-+                    && tokenLabel[2] == 'S');
-+        }
-+        return false;
-+    }
-+
-     static Provider getSunProvider() {
-         Provider p = sun;
-         if (p == null) {
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2022-10-19 11:43:33.835267926 +0200
+--- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2022-12-08 13:28:38.223145781 +0100
++++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java	2022-12-08 13:32:03.644407581 +0100
 @@ -26,6 +26,9 @@
  package sun.security.pkcs11;
  
@@ -3851,7 +2854,7 @@
      private static final long serialVersionUID = -1354835039035306505L;
  
      static final Debug debug = Debug.getInstance("sunpkcs11");
-@@ -331,10 +366,19 @@
+@@ -320,10 +355,19 @@
              // request multithreaded access first
              initArgs.flags = CKF_OS_LOCKING_OK;
              PKCS11 tmpPKCS11;
@@ -3872,7 +2875,7 @@
              } catch (PKCS11Exception e) {
                  if (debug != null) {
                      debug.println("Multi-threaded initialization failed: " + e);
-@@ -350,11 +394,12 @@
+@@ -339,7 +383,8 @@
                      initArgs.flags = 0;
                  }
                  tmpPKCS11 = PKCS11.getInstance(library,
@@ -3882,12 +2885,7 @@
              }
              p11 = tmpPKCS11;
  
--            CK_INFO p11Info = p11.C_GetInfo();
-+            CK_INFO p11Info = p11.getInfo();
-             if (p11Info.cryptokiVersion.major < 2) {
-                 throw new ProviderException("Only PKCS#11 v2.0 and later "
-                 + "supported, library version is v" + p11Info.cryptokiVersion);
-@@ -390,6 +435,24 @@
+@@ -379,6 +424,24 @@
              if (nssModule != null) {
                  nssModule.setProvider(this);
              }
@@ -3912,635 +2910,8 @@
          } catch (Exception e) {
              if (config.getHandleStartupErrors() == Config.ERR_IGNORE_ALL) {
                  throw new UnsupportedOperationException
-@@ -428,14 +491,19 @@
-         final String className;
-         final List<String> aliases;
-         final int[] mechanisms;
-+        final int[] requiredMechs;
- 
-+        // mechanisms is a list of possible mechanisms that implement the
-+        // algorithm, at least one of them must be available. requiredMechs
-+        // is a list of auxiliary mechanisms, all of them must be available
-         private Descriptor(String type, String algorithm, String className,
--                List<String> aliases, int[] mechanisms) {
-+                List<String> aliases, int[] mechanisms, int[] requiredMechs) {
-             this.type = type;
-             this.algorithm = algorithm;
-             this.className = className;
-             this.aliases = aliases;
-             this.mechanisms = mechanisms;
-+            this.requiredMechs = requiredMechs;
-         }
-         private P11Service service(Token token, int mechanism) {
-             return new P11Service
-@@ -469,18 +537,29 @@
- 
-     private static void d(String type, String algorithm, String className,
-             int[] m) {
--        register(new Descriptor(type, algorithm, className, null, m));
-+        register(new Descriptor(type, algorithm, className, null, m, null));
-     }
- 
-     private static void d(String type, String algorithm, String className,
-             List<String> aliases, int[] m) {
--        register(new Descriptor(type, algorithm, className, aliases, m));
-+        register(new Descriptor(type, algorithm, className, aliases, m, null));
-+    }
-+
-+    private static void d(String type, String algorithm, String className,
-+            int[] m, int[] requiredMechs) {
-+        register(new Descriptor(type, algorithm, className, null, m,
-+                requiredMechs));
-+    }
-+    private static void dA(String type, String algorithm, String className,
-+                           int[] m, int[] requiredMechs) {
-+        register(new Descriptor(type, algorithm, className,
-+                getAliases(algorithm), m, requiredMechs));
-     }
- 
-     private static void dA(String type, String algorithm, String className,
-             int[] m) {
-         register(new Descriptor(type, algorithm, className,
--                getAliases(algorithm), m));
-+                getAliases(algorithm), m, null));
-     }
- 
-     private static void register(Descriptor d) {
-@@ -536,6 +615,7 @@
-         String P11Cipher           = "sun.security.pkcs11.P11Cipher";
-         String P11RSACipher        = "sun.security.pkcs11.P11RSACipher";
-         String P11AEADCipher       = "sun.security.pkcs11.P11AEADCipher";
-+        String P11PBECipher        = "sun.security.pkcs11.P11PBECipher";
-         String P11Signature        = "sun.security.pkcs11.P11Signature";
-         String P11PSSSignature     = "sun.security.pkcs11.P11PSSSignature";
- 
-@@ -598,6 +678,30 @@
-         d(MAC, "SslMacSHA1",    P11Mac,
-                 m(CKM_SSL3_SHA1_MAC));
- 
-+        if (systemFipsEnabled) {
-+            /*
-+             * PBA HMacs
-+             *
-+             * KeyDerivationMech must be supported
-+             * for these services to be available.
-+             *
-+             */
-+            d(MAC, "HmacPBESHA1",       P11Mac, m(CKM_SHA_1_HMAC),
-+                    m(CKM_PBA_SHA1_WITH_SHA1_HMAC));
-+            d(MAC, "HmacPBESHA224",     P11Mac, m(CKM_SHA224_HMAC),
-+                    m(CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN));
-+            d(MAC, "HmacPBESHA256",     P11Mac, m(CKM_SHA256_HMAC),
-+                    m(CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN));
-+            d(MAC, "HmacPBESHA384",     P11Mac, m(CKM_SHA384_HMAC),
-+                    m(CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN));
-+            d(MAC, "HmacPBESHA512",     P11Mac, m(CKM_SHA512_HMAC),
-+                    m(CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN));
-+            d(MAC, "HmacPBESHA512/224", P11Mac, m(CKM_SHA512_224_HMAC),
-+                    m(CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN));
-+            d(MAC, "HmacPBESHA512/256", P11Mac, m(CKM_SHA512_256_HMAC),
-+                    m(CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN));
-+        }
-+
-         d(KPG, "RSA",           P11KeyPairGenerator,
-                 getAliases("PKCS1"),
-                 m(CKM_RSA_PKCS_KEY_PAIR_GEN));
-@@ -696,6 +800,66 @@
-         d(SKF, "ChaCha20",      P11SecretKeyFactory,
-                 m(CKM_CHACHA20_POLY1305));
- 
-+        if (systemFipsEnabled) {
-+            /*
-+             * PBE Secret Key Factories
-+             *
-+             * KeyDerivationPrf must be supported for these services
-+             * to be available.
-+             *
-+             */
-+            d(SKF, "PBEWithHmacSHA1AndAES_128",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA_1_HMAC));
-+            d(SKF, "PBEWithHmacSHA224AndAES_128",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA224_HMAC));
-+            d(SKF, "PBEWithHmacSHA256AndAES_128",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA256_HMAC));
-+            d(SKF, "PBEWithHmacSHA384AndAES_128",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA384_HMAC));
-+            d(SKF, "PBEWithHmacSHA512AndAES_128",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA512_HMAC));
-+            d(SKF, "PBEWithHmacSHA1AndAES_256",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA_1_HMAC));
-+            d(SKF, "PBEWithHmacSHA224AndAES_256",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA224_HMAC));
-+            d(SKF, "PBEWithHmacSHA256AndAES_256",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA256_HMAC));
-+            d(SKF, "PBEWithHmacSHA384AndAES_256",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA384_HMAC));
-+            d(SKF, "PBEWithHmacSHA512AndAES_256",
-+                    P11SecretKeyFactory, m(CKM_PKCS5_PBKD2), m(CKM_SHA512_HMAC));
-+            /*
-+             * PBA Secret Key Factories
-+             */
-+            d(SKF, "HmacPBESHA1",       P11SecretKeyFactory,
-+                    m(CKM_PBA_SHA1_WITH_SHA1_HMAC));
-+            d(SKF, "HmacPBESHA224",     P11SecretKeyFactory,
-+                    m(CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN));
-+            d(SKF, "HmacPBESHA256",     P11SecretKeyFactory,
-+                    m(CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN));
-+            d(SKF, "HmacPBESHA384",     P11SecretKeyFactory,
-+                    m(CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN));
-+            d(SKF, "HmacPBESHA512",     P11SecretKeyFactory,
-+                    m(CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN));
-+            d(SKF, "HmacPBESHA512/224", P11SecretKeyFactory,
-+                    m(CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN));
-+            d(SKF, "HmacPBESHA512/256", P11SecretKeyFactory,
-+                    m(CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN));
-+            /*
-+             * PBKDF2 Secret Key Factories
-+             */
-+            dA(SKF, "PBKDF2WithHmacSHA1",  P11SecretKeyFactory,
-+                    m(CKM_PKCS5_PBKD2), m(CKM_SHA_1_HMAC));
-+            d(SKF, "PBKDF2WithHmacSHA224", P11SecretKeyFactory,
-+                    m(CKM_PKCS5_PBKD2), m(CKM_SHA224_HMAC));
-+            d(SKF, "PBKDF2WithHmacSHA256", P11SecretKeyFactory,
-+                    m(CKM_PKCS5_PBKD2), m(CKM_SHA256_HMAC));
-+            d(SKF, "PBKDF2WithHmacSHA384", P11SecretKeyFactory,
-+                    m(CKM_PKCS5_PBKD2), m(CKM_SHA384_HMAC));
-+            d(SKF, "PBKDF2WithHmacSHA512", P11SecretKeyFactory,
-+                    m(CKM_PKCS5_PBKD2), m(CKM_SHA512_HMAC));
-+        }
-+
-         // XXX attributes for Ciphers (supported modes, padding)
-         dA(CIP, "ARCFOUR",                      P11Cipher,
-                 m(CKM_RC4));
-@@ -765,6 +929,46 @@
-         d(CIP, "RSA/ECB/NoPadding",             P11RSACipher,
-                 m(CKM_RSA_X_509));
- 
-+        if (systemFipsEnabled) {
-+            /*
-+             * PBE Ciphers
-+             *
-+             * KeyDerivationMech and KeyDerivationPrf must be supported
-+             * for these services to be available.
-+             *
-+             */
-+            d(CIP, "PBEWithHmacSHA1AndAES_128",   P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA_1_HMAC));
-+            d(CIP, "PBEWithHmacSHA224AndAES_128", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA224_HMAC));
-+            d(CIP, "PBEWithHmacSHA256AndAES_128", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA256_HMAC));
-+            d(CIP, "PBEWithHmacSHA384AndAES_128", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA384_HMAC));
-+            d(CIP, "PBEWithHmacSHA512AndAES_128", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA512_HMAC));
-+            d(CIP, "PBEWithHmacSHA1AndAES_256",   P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA_1_HMAC));
-+            d(CIP, "PBEWithHmacSHA224AndAES_256", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA224_HMAC));
-+            d(CIP, "PBEWithHmacSHA256AndAES_256", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA256_HMAC));
-+            d(CIP, "PBEWithHmacSHA384AndAES_256", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA384_HMAC));
-+            d(CIP, "PBEWithHmacSHA512AndAES_256", P11PBECipher,
-+                    m(CKM_AES_CBC_PAD, CKM_AES_CBC),
-+                    m(CKM_PKCS5_PBKD2, CKM_SHA512_HMAC));
-+        }
-+
-         d(SIG, "RawDSA",        P11Signature,
-                 List.of("NONEwithDSA"),
-                 m(CKM_DSA));
-@@ -1155,9 +1359,21 @@
-             if (ds == null) {
-                 continue;
-             }
-+            descLoop:
-             for (Descriptor d : ds) {
-                 Integer oldMech = supportedAlgs.get(d);
-                 if (oldMech == null) {
-+                    if (d.requiredMechs != null) {
-+                        // Check that other mechanisms required for the
-+                        // service are supported before listing it as
-+                        // available for the first time.
-+                        for (int requiredMech : d.requiredMechs) {
-+                            if (token.getMechanismInfo(
-+                                    requiredMech & 0xFFFFFFFFL) == null) {
-+                                continue descLoop;
-+                            }
-+                        }
-+                    }
-                     supportedAlgs.put(d, integerMech);
-                     continue;
-                 }
-@@ -1255,6 +1471,8 @@
-                 } else if (algorithm.endsWith("GCM/NoPadding") ||
-                            algorithm.startsWith("ChaCha20-Poly1305")) {
-                     return new P11AEADCipher(token, algorithm, mechanism);
-+                } else if (algorithm.startsWith("PBE")) {
-+                    return new P11PBECipher(token, algorithm, mechanism);
-                 } else {
-                     return new P11Cipher(token, algorithm, mechanism);
-                 }
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS.java	2022-10-19 11:43:33.835267926 +0200
-@@ -100,9 +100,9 @@
-     }
- 
-     /**
--     * Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
-+     * Returns the string representation of CK_ECDH1_DERIVE_PARAMS.
-      *
--     * @return the string representation of CK_PKCS5_PBKD2_PARAMS
-+     * @return the string representation of CK_ECDH1_DERIVE_PARAMS
-      */
-     public String toString() {
-         StringBuilder sb = new StringBuilder();
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_MECHANISM.java	2022-10-19 11:43:33.835267926 +0200
-@@ -160,6 +160,18 @@
-         init(mechanism, params);
-     }
- 
-+    public CK_MECHANISM(long mechanism, CK_PBE_PARAMS params) {
-+        init(mechanism, params);
-+    }
-+
-+    public CK_MECHANISM(long mechanism, CK_PKCS5_PBKD2_PARAMS params) {
-+        init(mechanism, params);
-+    }
-+
-+    public CK_MECHANISM(long mechanism, CK_PKCS5_PBKD2_PARAMS2 params) {
-+        init(mechanism, params);
-+    }
-+
-     // For PSS. the parameter may be set multiple times, use the
-     // CK_MECHANISM(long) constructor and setParameter(CK_RSA_PKCS_PSS_PARAMS)
-     // methods instead of creating yet another constructor
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PBE_PARAMS.java	2022-10-19 11:43:33.835267926 +0200
-@@ -50,15 +50,15 @@
- 
- 
- /**
-- * class CK_PBE_PARAMS provides all of the necessary information required byte
-+ * class CK_PBE_PARAMS provides all the necessary information required by
-  * the CKM_PBE mechanisms and the CKM_PBA_SHA1_WITH_SHA1_HMAC mechanism.<p>
-  * <B>PKCS#11 structure:</B>
-  * <PRE>
-  * typedef struct CK_PBE_PARAMS {
-- *   CK_CHAR_PTR pInitVector;
-- *   CK_CHAR_PTR pPassword;
-+ *   CK_BYTE_PTR pInitVector;
-+ *   CK_UTF8CHAR_PTR pPassword;
-  *   CK_ULONG ulPasswordLen;
-- *   CK_CHAR_PTR pSalt;
-+ *   CK_BYTE_PTR pSalt;
-  *   CK_ULONG ulSaltLen;
-  *   CK_ULONG ulIteration;
-  * } CK_PBE_PARAMS;
-@@ -72,15 +72,15 @@
-     /**
-      * <B>PKCS#11:</B>
-      * <PRE>
--     *   CK_CHAR_PTR pInitVector;
-+     *   CK_BYTE_PTR pInitVector;
-      * </PRE>
-      */
--    public char[] pInitVector;
-+    public byte[] pInitVector;
- 
-     /**
-      * <B>PKCS#11:</B>
-      * <PRE>
--     *   CK_CHAR_PTR pPassword;
-+     *   CK_UTF8CHAR_PTR pPassword;
-      *   CK_ULONG ulPasswordLen;
-      * </PRE>
-      */
-@@ -89,11 +89,11 @@
-     /**
-      * <B>PKCS#11:</B>
-      * <PRE>
--     *   CK_CHAR_PTR pSalt
-+     *   CK_BYTE_PTR pSalt
-      *   CK_ULONG ulSaltLen;
-      * </PRE>
-      */
--    public char[] pSalt;
-+    public byte[] pSalt;
- 
-     /**
-      * <B>PKCS#11:</B>
-@@ -103,6 +103,12 @@
-      */
-     public long ulIteration;
- 
-+    public CK_PBE_PARAMS(char[] pPassword, byte[] pSalt, long ulIteration) {
-+         this.pPassword = pPassword;
-+         this.pSalt = pSalt;
-+         this.ulIteration = ulIteration;
-+     }
-+
-     /**
-      * Returns the string representation of CK_PBE_PARAMS.
-      *
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java	1970-01-01 01:00:00.000000000 +0100
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2.java	2022-10-19 11:43:33.835267926 +0200
-@@ -0,0 +1,156 @@
-+/*
-+ * Copyright (c) 2022, Red Hat, Inc.
-+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
-+ *
-+ * This code is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License version 2 only, as
-+ * published by the Free Software Foundation.  Oracle designates this
-+ * particular file as subject to the "Classpath" exception as provided
-+ * by Oracle in the LICENSE file that accompanied this code.
-+ *
-+ * This code is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-+ * version 2 for more details (a copy is included in the LICENSE file that
-+ * accompanied this code).
-+ *
-+ * You should have received a copy of the GNU General Public License version
-+ * 2 along with this work; if not, write to the Free Software Foundation,
-+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-+ *
-+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
-+ * or visit www.oracle.com if you need additional information or have any
-+ * questions.
-+ */
-+
-+package sun.security.pkcs11.wrapper;
-+
-+import static sun.security.pkcs11.wrapper.PKCS11Constants.*;
-+
-+/**
-+ * class CK_PKCS5_PBKD2_PARAMS2 provides the parameters to the CKM_PKCS5_PBKD2
-+ * mechanism.<p>
-+ * <b>PKCS#11 structure:</b>
-+ * <pre>
-+ * typedef struct CK_PKCS5_PBKD2_PARAMS2 {
-+ *   CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE saltSource;
-+ *   CK_VOID_PTR pSaltSourceData;
-+ *   CK_ULONG ulSaltSourceDataLen;
-+ *   CK_ULONG iterations;
-+ *   CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE prf;
-+ *   CK_VOID_PTR pPrfData;
-+ *   CK_ULONG ulPrfDataLen;
-+ *   CK_UTF8CHAR_PTR pPassword;
-+ *   CK_ULONG ulPasswordLen;
-+ * } CK_PKCS5_PBKD2_PARAMS2;
-+ * </pre>
-+ *
-+ */
-+public class CK_PKCS5_PBKD2_PARAMS2 {
-+
-+    /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE saltSource;
-+     * </pre>
-+     */
-+    public long saltSource;
-+
-+    /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_VOID_PTR pSaltSourceData;
-+     *   CK_ULONG ulSaltSourceDataLen;
-+     * </pre>
-+     */
-+    public byte[] pSaltSourceData;
-+
-+    /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_ULONG iterations;
-+     * </pre>
-+     */
-+    public long iterations;
-+
-+    /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE prf;
-+     * </pre>
-+     */
-+    public long prf;
-+
-+    /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_VOID_PTR pPrfData;
-+     *   CK_ULONG ulPrfDataLen;
-+     * </pre>
-+     */
-+    public byte[] pPrfData;
-+
-+    /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_UTF8CHAR_PTR pPassword
-+     *   CK_ULONG ulPasswordLen;
-+     * </pre>
-+     */
-+    public char[] pPassword;
-+
-+    public CK_PKCS5_PBKD2_PARAMS2(char[] pPassword, byte[] pSalt,
-+            long iterations, long prf) {
-+        this.pPassword = pPassword;
-+        this.pSaltSourceData = pSalt;
-+        this.iterations = iterations;
-+        this.prf = prf;
-+        this.saltSource = CKZ_SALT_SPECIFIED;
-+    }
-+
-+    /**
-+     * Returns the string representation of CK_PKCS5_PBKD2_PARAMS2.
-+     *
-+     * @return the string representation of CK_PKCS5_PBKD2_PARAMS2
-+     */
-+    public String toString() {
-+        StringBuilder sb = new StringBuilder();
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("saltSource: ");
-+        sb.append(saltSource);
-+        sb.append(Constants.NEWLINE);
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("pSaltSourceData: ");
-+        sb.append(Functions.toHexString(pSaltSourceData));
-+        sb.append(Constants.NEWLINE);
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("ulSaltSourceDataLen: ");
-+        sb.append(pSaltSourceData.length);
-+        sb.append(Constants.NEWLINE);
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("iterations: ");
-+        sb.append(iterations);
-+        sb.append(Constants.NEWLINE);
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("prf: ");
-+        sb.append(prf);
-+        sb.append(Constants.NEWLINE);
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("pPrfData: ");
-+        sb.append(Functions.toHexString(pPrfData));
-+        sb.append(Constants.NEWLINE);
-+
-+        sb.append(Constants.INDENT);
-+        sb.append("ulPrfDataLen: ");
-+        sb.append(pPrfData.length);
-+
-+        return sb.toString();
-+    }
-+
-+}
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java	2022-10-19 11:43:16.199128217 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS.java	2022-10-19 11:43:33.835267926 +0200
-@@ -47,7 +47,7 @@
- 
- package sun.security.pkcs11.wrapper;
- 
--
-+import static sun.security.pkcs11.wrapper.PKCS11Constants.*;
- 
- /**
-  * class CK_PKCS5_PBKD2_PARAMS provides the parameters to the CKM_PKCS5_PBKD2
-@@ -55,13 +55,15 @@
-  * <B>PKCS#11 structure:</B>
-  * <PRE>
-  * typedef struct CK_PKCS5_PBKD2_PARAMS {
-- *   CK_PKCS5_PBKD2_SALT_SOURCE_TYPE saltSource;
-+ *   CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE saltSource;
-  *   CK_VOID_PTR pSaltSourceData;
-  *   CK_ULONG ulSaltSourceDataLen;
-  *   CK_ULONG iterations;
-  *   CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE prf;
-  *   CK_VOID_PTR pPrfData;
-  *   CK_ULONG ulPrfDataLen;
-+ *   CK_UTF8CHAR_PTR pPassword;
-+ *   CK_ULONG_PTR ulPasswordLen;
-  * } CK_PKCS5_PBKD2_PARAMS;
-  * </PRE>
-  *
-@@ -113,6 +115,24 @@
-     public byte[] pPrfData;
- 
-     /**
-+     * <b>PKCS#11:</b>
-+     * <pre>
-+     *   CK_UTF8CHAR_PTR pPassword
-+     *   CK_ULONG_PTR ulPasswordLen;
-+     * </pre>
-+     */
-+    public char[] pPassword;
-+
-+    public CK_PKCS5_PBKD2_PARAMS(char[] pPassword, byte[] pSalt,
-+            long iterations, long prf) {
-+        this.pPassword = pPassword;
-+        this.pSaltSourceData = pSalt;
-+        this.iterations = iterations;
-+        this.prf = prf;
-+        this.saltSource = CKZ_SALT_SPECIFIED;
-+    }
-+
-+    /**
-      * Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
-      *
-      * @return the string representation of CK_PKCS5_PBKD2_PARAMS
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/CK_X9_42_DH1_DERIVE_PARAMS.java	2022-10-19 11:43:33.835267926 +0200
-@@ -94,9 +94,9 @@
-     public byte[] pPublicData;
- 
-     /**
--     * Returns the string representation of CK_PKCS5_PBKD2_PARAMS.
-+     * Returns the string representation of CK_X9_42_DH1_DERIVE_PARAMS.
-      *
--     * @return the string representation of CK_PKCS5_PBKD2_PARAMS
-+     * @return the string representation of CK_X9_42_DH1_DERIVE_PARAMS
-      */
-     public String toString() {
-         StringBuilder sb = new StringBuilder();
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11Constants.java	2022-10-19 11:43:33.835267926 +0200
-@@ -1104,17 +1104,6 @@
-     public static final long  CKD_BLAKE2B_384_KDF      = 0x00000019L;
-     public static final long  CKD_BLAKE2B_512_KDF      = 0x0000001aL;
- 
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA1        = 0x00000001L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_GOSTR3411   = 0x00000002L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA224      = 0x00000003L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA256      = 0x00000004L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA384      = 0x00000005L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA512      = 0x00000006L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA512_224  = 0x00000007L;
--    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA512_256  = 0x00000008L;
--
--    public static final long  CKZ_SALT_SPECIFIED      = 0x00000001L;
--
-     public static final long  CK_OTP_VALUE            = 0x00000000L;
-     public static final long  CK_OTP_PIN              = 0x00000001L;
-     public static final long  CK_OTP_CHALLENGE        = 0x00000002L;
-@@ -1150,12 +1139,23 @@
-     public static final long  CKF_HKDF_SALT_KEY    = 0x00000004L;
-     */
- 
-+    // PBKDF2 support, used in P11Util
-+    public static final long  CKZ_SALT_SPECIFIED      = 0x00000001L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA1        = 0x00000001L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_GOSTR3411   = 0x00000002L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA224      = 0x00000003L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA256      = 0x00000004L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA384      = 0x00000005L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA512      = 0x00000006L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA512_224  = 0x00000007L;
-+    public static final long  CKP_PKCS5_PBKD2_HMAC_SHA512_256  = 0x00000008L;
-+
-     // private NSS attribute (for DSA and DH private keys)
-     public static final long  CKA_NETSCAPE_DB         = 0xD5A0DB00L;
- 
-     // base number of NSS private attributes
-     public static final long  CKA_NETSCAPE_BASE /*0x80000000L + 0x4E534350L*/
--                                                      = 0xCE534350L;
-+    /*          now known as CKM_NSS ^        */      = 0xCE534350L;
- 
-     // object type for NSS trust
-     public static final long  CKO_NETSCAPE_TRUST      = 0xCE534353L;
-@@ -1180,4 +1180,14 @@
-                                                              = 0xCE534355L;
-     public static final long  CKT_NETSCAPE_VALID             = 0xCE53435AL;
-     public static final long  CKT_NETSCAPE_VALID_DELEGATOR   = 0xCE53435BL;
-+
-+    // Additional PKCS #12 PBE key derivation algorithms defined in NSS v3.29
-+    public static final long  CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN
-+                                        /* (CKM_NSS + 29) */ = 0xCE53436DL;
-+    public static final long  CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN
-+                                        /* (CKM_NSS + 30) */ = 0xCE53436EL;
-+    public static final long  CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN
-+                                        /* (CKM_NSS + 31) */ = 0xCE53436FL;
-+    public static final long  CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN
-+                                        /* (CKM_NSS + 32) */ = 0xCE534370L;
- }
---- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2022-10-19 11:43:33.835267926 +0200
+--- jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2022-12-08 13:28:38.227145804 +0100
++++ jdk17u/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/wrapper/PKCS11.java	2022-12-08 13:32:03.644407581 +0100
 @@ -49,6 +49,9 @@
  
  import java.io.File;
@@ -4551,26 +2922,10 @@
  import java.util.*;
  
  import java.security.AccessController;
-@@ -113,6 +116,8 @@
- 
-     private long pNativeData;
- 
-+    private CK_INFO pInfo;
-+
-     /**
-      * This method does the initialization of the native library. It is called
-      * exactly once for this class.
-@@ -145,23 +150,49 @@
-      * @postconditions
-      */
-     PKCS11(String pkcs11ModulePath, String functionListName)
--            throws IOException {
-+            throws IOException, PKCS11Exception {
-         connect(pkcs11ModulePath, functionListName);
+@@ -150,18 +153,43 @@
          this.pkcs11ModulePath = pkcs11ModulePath;
-+        pInfo = C_GetInfo();
-+    }
-+
+     }
+ 
 +    /*
 +     * Compatibility wrapper to allow this method to work as before
 +     * when FIPS mode support is not active.
@@ -4580,8 +2935,8 @@
 +           boolean omitInitialize) throws IOException, PKCS11Exception {
 +        return getInstance(pkcs11ModulePath, functionList,
 +                           pInitArgs, omitInitialize, null, null);
-     }
- 
++    }
++
      public static synchronized PKCS11 getInstance(String pkcs11ModulePath,
              String functionList, CK_C_INITIALIZE_ARGS pInitArgs,
 -            boolean omitInitialize) throws IOException, PKCS11Exception {
@@ -4614,31 +2969,7 @@
              }
              if (omitInitialize == false) {
                  try {
-@@ -180,6 +211,14 @@
-     }
- 
-     /**
-+     * Returns the CK_INFO structure fetched at initialization with
-+     * C_GetInfo. This structure represent Cryptoki library information.
-+     */
-+    public CK_INFO getInfo() {
-+        return pInfo;
-+    }
-+
-+    /**
-      * Connects this object to the specified PKCS#11 library. This method is for
-      * internal use only.
-      * Declared private, because incorrect handling may result in errors in the
-@@ -1625,7 +1664,7 @@
- static class SynchronizedPKCS11 extends PKCS11 {
- 
-     SynchronizedPKCS11(String pkcs11ModulePath, String functionListName)
--            throws IOException {
-+            throws IOException, PKCS11Exception {
-         super(pkcs11ModulePath, functionListName);
-     }
- 
-@@ -1911,4 +1950,194 @@
+@@ -1911,4 +1939,194 @@
          super.C_GenerateRandom(hSession, randomData);
      }
  }
@@ -4652,7 +2983,7 @@
 +    private MethodHandle hC_GetAttributeValue;
 +    FIPSPKCS11(String pkcs11ModulePath, String functionListName,
 +            MethodHandle fipsKeyImporter, MethodHandle fipsKeyExporter)
-+                    throws IOException, PKCS11Exception {
++                    throws IOException {
 +        super(pkcs11ModulePath, functionListName);
 +        this.fipsKeyImporter = fipsKeyImporter;
 +        this.fipsKeyExporter = fipsKeyExporter;
@@ -4704,7 +3035,7 @@
 +    private MethodHandle hC_GetAttributeValue;
 +    SynchronizedFIPSPKCS11(String pkcs11ModulePath, String functionListName,
 +            MethodHandle fipsKeyImporter, MethodHandle fipsKeyExporter)
-+                    throws IOException, PKCS11Exception {
++                    throws IOException {
 +        super(pkcs11ModulePath, functionListName);
 +        this.fipsKeyImporter = fipsKeyImporter;
 +        this.fipsKeyExporter = fipsKeyExporter;
@@ -4833,376 +3164,8 @@
 +    }
 +}
  }
---- jdk17u/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c	2022-10-19 11:43:33.835267926 +0200
-@@ -1515,6 +1515,10 @@
-         case CKM_PBE_SHA1_DES3_EDE_CBC:
-         case CKM_PBE_SHA1_DES2_EDE_CBC:
-         case CKM_PBA_SHA1_WITH_SHA1_HMAC:
-+        case CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN:
-+        case CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN:
-+        case CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN:
-+        case CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN:
-             ckpParamPtr = jPbeParamToCKPbeParamPtr(env, jParam, ckpLength);
-             break;
-         case CKM_PKCS5_PBKD2:
-@@ -1658,13 +1662,13 @@
-     // retrieve java values
-     jPbeParamsClass = (*env)->FindClass(env, CLASS_PBE_PARAMS);
-     if (jPbeParamsClass == NULL) { return NULL; }
--    fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "pInitVector", "[C");
-+    fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "pInitVector", "[B");
-     if (fieldID == NULL) { return NULL; }
-     jInitVector = (*env)->GetObjectField(env, jParam, fieldID);
-     fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "pPassword", "[C");
-     if (fieldID == NULL) { return NULL; }
-     jPassword = (*env)->GetObjectField(env, jParam, fieldID);
--    fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "pSalt", "[C");
-+    fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "pSalt", "[B");
-     if (fieldID == NULL) { return NULL; }
-     jSalt = (*env)->GetObjectField(env, jParam, fieldID);
-     fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "ulIteration", "J");
-@@ -1680,15 +1684,15 @@
- 
-     // populate using java values
-     ckParamPtr->ulIteration = jLongToCKULong(jIteration);
--    jCharArrayToCKCharArray(env, jInitVector, &(ckParamPtr->pInitVector), &ckTemp);
-+    jByteArrayToCKByteArray(env, jInitVector, &(ckParamPtr->pInitVector), &ckTemp);
-     if ((*env)->ExceptionCheck(env)) {
-         goto cleanup;
-     }
--    jCharArrayToCKCharArray(env, jPassword, &(ckParamPtr->pPassword), &(ckParamPtr->ulPasswordLen));
-+    jCharArrayToCKUTF8CharArray(env, jPassword, &(ckParamPtr->pPassword), &(ckParamPtr->ulPasswordLen));
-     if ((*env)->ExceptionCheck(env)) {
-         goto cleanup;
-     }
--    jCharArrayToCKCharArray(env, jSalt, &(ckParamPtr->pSalt), &(ckParamPtr->ulSaltLen));
-+    jByteArrayToCKByteArray(env, jSalt, &(ckParamPtr->pSalt), &(ckParamPtr->ulSaltLen));
-     if ((*env)->ExceptionCheck(env)) {
-         goto cleanup;
-     }
-@@ -1767,31 +1771,59 @@
-     }
- }
- 
-+#define PBKD2_PARAM_SET(member, value)                              \
-+    do {                                                            \
-+        if(ckParamPtr->version == PARAMS) {                         \
-+            ckParamPtr->params.v1.member = value;                   \
-+        } else {                                                    \
-+            ckParamPtr->params.v2.member = value;                   \
-+        }                                                           \
-+    } while(0)
-+
-+#define PBKD2_PARAM_ADDR(member)                                    \
-+    (                                                               \
-+        (ckParamPtr->version == PARAMS) ?                           \
-+        (void*) &ckParamPtr->params.v1.member :                     \
-+        (void*) &ckParamPtr->params.v2.member                       \
-+    )
-+
- /*
-- * converts the Java CK_PKCS5_PBKD2_PARAMS object to a CK_PKCS5_PBKD2_PARAMS
-+ * converts a Java CK_PKCS5_PBKD2_PARAMS object to a CK_PKCS5_PBKD2_PARAMS
-+ * pointer, or a Java CK_PKCS5_PBKD2_PARAMS2 object to a CK_PKCS5_PBKD2_PARAMS2
-  * pointer
-  *
-- * @param env - used to call JNI funktions to get the Java classes and objects
-- * @param jParam - the Java CK_PKCS5_PBKD2_PARAMS object to convert
-+ * @param env - used to call JNI functions to get the Java classes and objects
-+ * @param jParam - the Java object to convert
-  * @param pLength - length of the allocated memory of the returned pointer
-- * @return pointer to the new CK_PKCS5_PBKD2_PARAMS structure
-+ * @return pointer to the new structure
-  */
--CK_PKCS5_PBKD2_PARAMS_PTR
-+CK_VOID_PTR
- jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
- {
--    CK_PKCS5_PBKD2_PARAMS_PTR ckParamPtr;
-+    VersionedPbkd2ParamsPtr ckParamPtr;
-+    ParamVersion paramVersion;
-+    CK_ULONG_PTR pUlPasswordLen;
-     jclass jPkcs5Pbkd2ParamsClass;
-     jfieldID fieldID;
-     jlong jSaltSource, jIteration, jPrf;
--    jobject jSaltSourceData, jPrfData;
-+    jobject jSaltSourceData, jPrfData, jPassword;
- 
-     if (pLength != NULL) {
-         *pLength = 0L;
-     }
- 
-     // retrieve java values
--    jPkcs5Pbkd2ParamsClass = (*env)->FindClass(env, CLASS_PKCS5_PBKD2_PARAMS);
--    if (jPkcs5Pbkd2ParamsClass == NULL) { return NULL; }
-+    if ((jPkcs5Pbkd2ParamsClass =
-+            (*env)->FindClass(env, CLASS_PKCS5_PBKD2_PARAMS)) != NULL
-+            && (*env)->IsInstanceOf(env, jParam, jPkcs5Pbkd2ParamsClass)) {
-+        paramVersion = PARAMS;
-+    } else if ((jPkcs5Pbkd2ParamsClass =
-+            (*env)->FindClass(env, CLASS_PKCS5_PBKD2_PARAMS2)) != NULL
-+            && (*env)->IsInstanceOf(env, jParam, jPkcs5Pbkd2ParamsClass)) {
-+        paramVersion = PARAMS2;
-+    } else {
-+        return NULL;
-+    }
-     fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "saltSource", "J");
-     if (fieldID == NULL) { return NULL; }
-     jSaltSource = (*env)->GetLongField(env, jParam, fieldID);
-@@ -1807,36 +1839,60 @@
-     fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "pPrfData", "[B");
-     if (fieldID == NULL) { return NULL; }
-     jPrfData = (*env)->GetObjectField(env, jParam, fieldID);
-+    fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "pPassword", "[C");
-+    if (fieldID == NULL) { return NULL; }
-+    jPassword = (*env)->GetObjectField(env, jParam, fieldID);
- 
--    // allocate memory for CK_PKCS5_PBKD2_PARAMS pointer
--    ckParamPtr = calloc(1, sizeof(CK_PKCS5_PBKD2_PARAMS));
-+    // allocate memory for VersionedPbkd2Params and store the structure version
-+    ckParamPtr = calloc(1, sizeof(VersionedPbkd2Params));
-     if (ckParamPtr == NULL) {
-         throwOutOfMemoryError(env, 0);
-         return NULL;
-     }
-+    ckParamPtr->version = paramVersion;
- 
-     // populate using java values
--    ckParamPtr->saltSource = jLongToCKULong(jSaltSource);
--    jByteArrayToCKByteArray(env, jSaltSourceData, (CK_BYTE_PTR *)
--            &(ckParamPtr->pSaltSourceData), &(ckParamPtr->ulSaltSourceDataLen));
-+    PBKD2_PARAM_SET(saltSource, jLongToCKULong(jSaltSource));
-+    jByteArrayToCKByteArray(env, jSaltSourceData,
-+            (CK_BYTE_PTR *) PBKD2_PARAM_ADDR(pSaltSourceData),
-+            PBKD2_PARAM_ADDR(ulSaltSourceDataLen));
-     if ((*env)->ExceptionCheck(env)) {
-         goto cleanup;
-     }
--    ckParamPtr->iterations = jLongToCKULong(jIteration);
--    ckParamPtr->prf = jLongToCKULong(jPrf);
--    jByteArrayToCKByteArray(env, jPrfData, (CK_BYTE_PTR *)
--            &(ckParamPtr->pPrfData), &(ckParamPtr->ulPrfDataLen));
-+    PBKD2_PARAM_SET(iterations, jLongToCKULong(jIteration));
-+    PBKD2_PARAM_SET(prf, jLongToCKULong(jPrf));
-+    jByteArrayToCKByteArray(env, jPrfData,
-+            (CK_BYTE_PTR *) PBKD2_PARAM_ADDR(pPrfData),
-+            PBKD2_PARAM_ADDR(ulPrfDataLen));
-+    if ((*env)->ExceptionCheck(env)) {
-+        goto cleanup;
-+    }
-+    if (ckParamPtr->version == PARAMS) {
-+        pUlPasswordLen = calloc(1, sizeof(CK_ULONG));
-+        if (pUlPasswordLen == NULL) {
-+            throwOutOfMemoryError(env, 0);
-+            goto cleanup;
-+        }
-+        ckParamPtr->params.v1.ulPasswordLen = pUlPasswordLen;
-+    } else {
-+        pUlPasswordLen = &ckParamPtr->params.v2.ulPasswordLen;
-+    }
-+    jCharArrayToCKUTF8CharArray(env, jPassword,
-+            (CK_CHAR_PTR *) PBKD2_PARAM_ADDR(pPassword),
-+            pUlPasswordLen);
-     if ((*env)->ExceptionCheck(env)) {
-         goto cleanup;
-     }
- 
-     if (pLength != NULL) {
--        *pLength = sizeof(CK_PKCS5_PBKD2_PARAMS);
-+        *pLength = (ckParamPtr->version == PARAMS ?
-+            sizeof(ckParamPtr->params.v1) :
-+            sizeof(ckParamPtr->params.v2));
-     }
-+    // VersionedPbkd2ParamsPtr is equivalent to CK_PKCS5_PBKD2_PARAMS[2]_PTR
-     return ckParamPtr;
- cleanup:
--    free(ckParamPtr->pSaltSourceData);
--    free(ckParamPtr->pPrfData);
-+    FREE_VERSIONED_PBKD2_MEMBERS(ckParamPtr);
-     free(ckParamPtr);
-     return NULL;
- 
---- jdk17u/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c	2022-10-19 11:43:33.835267926 +0200
-@@ -410,11 +410,27 @@
-                  case CKM_CAMELLIA_CTR:
-                      // params do not contain pointers
-                      break;
-+                 case CKM_PKCS5_PBKD2:
-+                     // get the versioned structure from behind memory
-+                     TRACE0(((VersionedPbkd2ParamsPtr)tmp)->version == PARAMS ?
-+                             "[ CK_PKCS5_PBKD2_PARAMS ]\n" :
-+                             "[ CK_PKCS5_PBKD2_PARAMS2 ]\n");
-+                     FREE_VERSIONED_PBKD2_MEMBERS((VersionedPbkd2ParamsPtr)tmp);
-+                     break;
-+                 case CKM_PBA_SHA1_WITH_SHA1_HMAC:
-+                 case CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN:
-+                 case CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN:
-+                 case CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN:
-+                 case CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN:
-+                     free(((CK_PBE_PARAMS_PTR)tmp)->pInitVector);
-+                     free(((CK_PBE_PARAMS_PTR)tmp)->pPassword);
-+                     free(((CK_PBE_PARAMS_PTR)tmp)->pSalt);
-+                     break;
-                  default:
-                      // currently unsupported mechs by SunPKCS11 provider
-                      // CKM_RSA_PKCS_OAEP, CKM_ECMQV_DERIVE,
-                      // CKM_X9_42_*, CKM_KEA_DERIVE, CKM_RC2_*, CKM_RC5_*,
--                     // CKM_SKIPJACK_*, CKM_KEY_WRAP_SET_OAEP, CKM_PKCS5_PBKD2,
-+                     // CKM_SKIPJACK_*, CKM_KEY_WRAP_SET_OAEP,
-                      // PBE mechs, WTLS mechs, CMS mechs,
-                      // CKM_EXTRACT_KEY_FROM_KEY, CKM_OTP, CKM_KIP,
-                      // CKM_DSA_PARAMETER_GEN?, CKM_GOSTR3410_*
-@@ -517,12 +533,11 @@
-     jboolean* jpTemp;
-     CK_ULONG i;
- 
--    if(jArray == NULL) {
-+    *ckpLength = jArray == NULL ? 0L : (*env)->GetArrayLength(env, jArray);
-+    if(*ckpLength == 0L) {
-         *ckpArray = NULL_PTR;
--        *ckpLength = 0L;
-         return;
-     }
--    *ckpLength = (*env)->GetArrayLength(env, jArray);
-     jpTemp = (jboolean*) calloc(*ckpLength, sizeof(jboolean));
-     if (jpTemp == NULL) {
-         throwOutOfMemoryError(env, 0);
-@@ -559,12 +574,11 @@
-     jbyte* jpTemp;
-     CK_ULONG i;
- 
--    if(jArray == NULL) {
-+    *ckpLength = jArray == NULL ? 0L : (*env)->GetArrayLength(env, jArray);
-+    if(*ckpLength == 0L) {
-         *ckpArray = NULL_PTR;
--        *ckpLength = 0L;
-         return;
-     }
--    *ckpLength = (*env)->GetArrayLength(env, jArray);
-     jpTemp = (jbyte*) calloc(*ckpLength, sizeof(jbyte));
-     if (jpTemp == NULL) {
-         throwOutOfMemoryError(env, 0);
-@@ -606,12 +620,11 @@
-     jlong* jTemp;
-     CK_ULONG i;
- 
--    if(jArray == NULL) {
-+    *ckpLength = jArray == NULL ? 0L : (*env)->GetArrayLength(env, jArray);
-+    if(*ckpLength == 0L) {
-         *ckpArray = NULL_PTR;
--        *ckpLength = 0L;
-         return;
-     }
--    *ckpLength = (*env)->GetArrayLength(env, jArray);
-     jTemp = (jlong*) calloc(*ckpLength, sizeof(jlong));
-     if (jTemp == NULL) {
-         throwOutOfMemoryError(env, 0);
-@@ -648,12 +661,11 @@
-     jchar* jpTemp;
-     CK_ULONG i;
- 
--    if(jArray == NULL) {
-+    *ckpLength = jArray == NULL ? 0L : (*env)->GetArrayLength(env, jArray);
-+    if(*ckpLength == 0L) {
-         *ckpArray = NULL_PTR;
--        *ckpLength = 0L;
-         return;
-     }
--    *ckpLength = (*env)->GetArrayLength(env, jArray);
-     jpTemp = (jchar*) calloc(*ckpLength, sizeof(jchar));
-     if (jpTemp == NULL) {
-         throwOutOfMemoryError(env, 0);
-@@ -690,12 +702,11 @@
-     jchar* jTemp;
-     CK_ULONG i;
- 
--    if(jArray == NULL) {
-+    *ckpLength = jArray == NULL ? 0L : (*env)->GetArrayLength(env, jArray);
-+    if(*ckpLength == 0L) {
-         *ckpArray = NULL_PTR;
--        *ckpLength = 0L;
-         return;
-     }
--    *ckpLength = (*env)->GetArrayLength(env, jArray);
-     jTemp = (jchar*) calloc(*ckpLength, sizeof(jchar));
-     if (jTemp == NULL) {
-         throwOutOfMemoryError(env, 0);
---- jdk17u/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/pkcs11wrapper.h	2022-10-19 11:43:33.835267926 +0200
-@@ -68,6 +68,7 @@
- /* extra PKCS#11 constants not in the standard include files */
- 
- #define CKA_NETSCAPE_BASE                       (0x80000000 + 0x4E534350)
-+/*             ^ now known as CKM_NSS   (CKM_VENDOR_DEFINED | NSSCK_VENDOR_NSS) */
- #define CKA_NETSCAPE_TRUST_BASE                 (CKA_NETSCAPE_BASE + 0x2000)
- #define CKA_NETSCAPE_TRUST_SERVER_AUTH          (CKA_NETSCAPE_TRUST_BASE + 8)
- #define CKA_NETSCAPE_TRUST_CLIENT_AUTH          (CKA_NETSCAPE_TRUST_BASE + 9)
-@@ -76,6 +77,12 @@
- #define CKA_NETSCAPE_DB                         0xD5A0DB00
- #define CKM_NSS_TLS_PRF_GENERAL                 0x80000373
- 
-+/* additional PKCS #12 PBE key derivation algorithms defined in NSS v3.29 */
-+#define CKM_NSS_PKCS12_PBE_SHA224_HMAC_KEY_GEN  (CKA_NETSCAPE_BASE + 29)
-+#define CKM_NSS_PKCS12_PBE_SHA256_HMAC_KEY_GEN  (CKA_NETSCAPE_BASE + 30)
-+#define CKM_NSS_PKCS12_PBE_SHA384_HMAC_KEY_GEN  (CKA_NETSCAPE_BASE + 31)
-+#define CKM_NSS_PKCS12_PBE_SHA512_HMAC_KEY_GEN  (CKA_NETSCAPE_BASE + 32)
-+
- /*
- 
-  Define the PKCS#11 functions to include and exclude. Reduces the size
-@@ -265,6 +272,7 @@
- #define CLASS_PBE_PARAMS "sun/security/pkcs11/wrapper/CK_PBE_PARAMS"
- #define PBE_INIT_VECTOR_SIZE 8
- #define CLASS_PKCS5_PBKD2_PARAMS "sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS"
-+#define CLASS_PKCS5_PBKD2_PARAMS2 "sun/security/pkcs11/wrapper/CK_PKCS5_PBKD2_PARAMS2"
- #define CLASS_EXTRACT_PARAMS "sun/security/pkcs11/wrapper/CK_EXTRACT_PARAMS"
- 
- #define CLASS_ECDH1_DERIVE_PARAMS "sun/security/pkcs11/wrapper/CK_ECDH1_DERIVE_PARAMS"
-@@ -378,7 +386,7 @@
- CK_RSA_PKCS_OAEP_PARAMS_PTR jRsaPkcsOaepParamToCKRsaPkcsOaepParamPtr(JNIEnv *env,
-     jobject jParam, CK_ULONG* pLength);
- CK_PBE_PARAMS_PTR jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
--CK_PKCS5_PBKD2_PARAMS_PTR jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
-+CK_VOID_PTR jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
- CK_SSL3_MASTER_KEY_DERIVE_PARAMS_PTR jSsl3MasterKeyDeriveParamToCKSsl3MasterKeyDeriveParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
- CK_SSL3_KEY_MAT_PARAMS_PTR jSsl3KeyMatParamToCKSsl3KeyMatParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
- CK_KEY_DERIVATION_STRING_DATA jKeyDerivationStringDataToCKKeyDerivationStringData(JNIEnv *env, jobject jParam);
-@@ -388,6 +396,31 @@
- CK_X9_42_DH1_DERIVE_PARAMS_PTR jX942Dh1DeriveParamToCKX942Dh1DeriveParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
- CK_X9_42_DH2_DERIVE_PARAMS_PTR jX942Dh2DeriveParamToCKX942Dh2DeriveParamPtr(JNIEnv *env, jobject jParam, CK_ULONG* pLength);
- 
-+/* handling of CK_PKCS5_PBKD2_PARAMS and CK_PKCS5_PBKD2_PARAMS2 */
-+typedef enum {PARAMS=0, PARAMS2} ParamVersion;
-+
-+typedef struct {
-+    union {
-+        CK_PKCS5_PBKD2_PARAMS v1;
-+        CK_PKCS5_PBKD2_PARAMS2 v2;
-+    } params;
-+    ParamVersion version;
-+} VersionedPbkd2Params, *VersionedPbkd2ParamsPtr;
-+
-+#define FREE_VERSIONED_PBKD2_MEMBERS(verParamsPtr)                  \
-+    do {                                                            \
-+        if ((verParamsPtr)->version == PARAMS) {                    \
-+            free((verParamsPtr)->params.v1.pSaltSourceData);        \
-+            free((verParamsPtr)->params.v1.pPrfData);               \
-+            free((verParamsPtr)->params.v1.pPassword);              \
-+            free((verParamsPtr)->params.v1.ulPasswordLen);          \
-+        } else {                                                    \
-+            free((verParamsPtr)->params.v2.pSaltSourceData);        \
-+            free((verParamsPtr)->params.v2.pPrfData);               \
-+            free((verParamsPtr)->params.v2.pPassword);              \
-+        }                                                           \
-+    } while(0)
-+
- /* functions to copy the returned values inside CK-mechanism back to Java object */
- 
- void copyBackPBEInitializationVector(JNIEnv *env, CK_MECHANISM *ckMechanism, jobject jMechanism);
---- jdk17u/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2022-10-19 11:43:16.203128248 +0200
-+++ jdk17u/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2022-10-19 11:43:33.835267926 +0200
+--- jdk17u/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2022-12-08 13:28:38.231145830 +0100
++++ jdk17u/src/jdk.crypto.ec/share/classes/sun/security/ec/SunEC.java	2022-12-08 13:32:03.648407605 +0100
 @@ -38,6 +38,7 @@
  import java.util.Iterator;
  import java.util.List;

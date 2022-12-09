@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec  8 13:19:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * system-crypto-policy.patch
+    + folded into the fips.patch, since they are patching the same
+      places
+- Modified patches:
+  * fips.patch
+    + revert to the version used with 17.0.4.0, since the newest
+      changes are buggy (bsc#1205916)
+    + fold in the system-crypto-policy.patch
+  * nss-security-provider.patch
+    + apply after the fips.patch and thus rediff the hunk to changed
+      context.
+
+-------------------------------------------------------------------
 Tue Nov  1 15:59:11 UTC 2022 - Javier Llorente <javier@opensuse.org>
 
 - Fix jconsole.desktop icon 

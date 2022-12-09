@@ -169,9 +169,8 @@ Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
-Patch16:        system-crypto-policy.patch
+Patch16:        fips.patch
 Patch17:        nss-security-provider.patch
-Patch18:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -441,7 +440,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch16 -p1
 %patch17 -p1
-%patch18 -p1
 
 %patch20 -p1
 
