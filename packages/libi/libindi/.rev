@@ -553,4 +553,12 @@
     <comment>Update to 1.9.8</comment>
     <requestid>1006837</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b0efebb3ee7e2b9542dd87c208c4b2f6</srcmd5>
+    <version>1.9.9</version>
+    <time>1670588303</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1041803</requestid>
+  </revision>
 </revisionlist>

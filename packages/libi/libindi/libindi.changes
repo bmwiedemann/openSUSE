@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 30 13:28:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.9:
+  * Driver for OpenAstroTech mounts
+  * DRIVER_INFO also present for F2 focuser so that the device is detected
+  * DeepSkyDad AF3: Mark as OK after backlash compensation
+  * Add Excalibur Driver
+  * Improved star brightness handling for higher gain
+  * Add Gemini L6 Flip Point
+  * lx200_OnStep minor fix
+  * Add missing rule for switch
+  * Fix client disconnect event
+  * Update weather interface to define update period, refresh and override 
+
+-------------------------------------------------------------------
 Thu Sep 29 06:23:45 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.8:

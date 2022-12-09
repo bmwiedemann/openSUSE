@@ -19,7 +19,7 @@
 %define so_ver 1
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.9.8
+Version:        1.9.9
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -62,6 +62,8 @@ Requires:       glibc-devel
 Requires:       libindiAlignmentDriver%{so_ver} = %{version}
 Requires:       libindidriver%{so_ver} = %{version}
 Requires:       libindilx200-%{so_ver} = %{version}
+Requires:       libindiclient%{so_ver} = %{version}
+Requires:       libindiclientqt%{so_ver} = %{version}
 
 %description devel
 This package contains development files for libindi.
@@ -109,6 +111,30 @@ use the device drivers are completely unaware of the device
 capabilities and communicate with the device drivers and build a
 completely dynamic GUI based on the services provided by the device.
 
+%package -n libindiclient%{so_ver}
+Summary:        Instrument Neutral Distributed Interface
+Group:          System/Libraries
+
+%description -n libindiclient%{so_ver}
+INDI is an Instrument Neutral Distributed Interface control protocol
+for astronomical devices, which provides a framework that decouples low
+level hardware drivers from high level front end clients. Clients that
+use the device drivers are completely unaware of the device
+capabilities and communicate with the device drivers and build a
+completely dynamic GUI based on the services provided by the device.
+
+%package -n libindiclientqt%{so_ver}
+Summary:        Instrument Neutral Distributed Interface
+Group:          System/Libraries
+
+%description -n libindiclientqt%{so_ver}
+INDI is an Instrument Neutral Distributed Interface control protocol
+for astronomical devices, which provides a framework that decouples low
+level hardware drivers from high level front end clients. Clients that
+use the device drivers are completely unaware of the device
+capabilities and communicate with the device drivers and build a
+completely dynamic GUI based on the services provided by the device.
+
 %prep
 %setup -q -n indi-%{version}
 %autopatch -p1
@@ -116,13 +142,11 @@ completely dynamic GUI based on the services provided by the device.
 %build
 %define _lto_cflags %{nil}
 
-# libindi doesn't check whether CMAKE_INSTALL_LIBDIR is relative or not...
-sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}|${CMAKE_INSTALL_LIBDIR}|' libs/indibase/alignment/CMakeLists.txt
-
 export CFLAGS="%(echo %{optflags}) -Wno-stringop-truncation"
 export CXXFLAGS="$CFLAGS"
 
 %cmake \
+    -DINDI_BUILD_STATIC=OFF \
     -DUDEVRULES_INSTALL_DIR=%{_udevdir}/rules.d \
     -DINDI_BUILD_QT5_CLIENT=ON \
     -DINDI_BUILD_WEBSOCKET=ON \
@@ -139,6 +163,10 @@ export CXXFLAGS="$CFLAGS"
 %postun -n libindidriver%{so_ver} -p /sbin/ldconfig
 %post -n libindilx200-%{so_ver} -p /sbin/ldconfig
 %postun -n libindilx200-%{so_ver} -p /sbin/ldconfig
+%post -n libindiclient%{so_ver} -p /sbin/ldconfig
+%postun -n libindiclient%{so_ver} -p /sbin/ldconfig
+%post -n libindiclientqt%{so_ver} -p /sbin/ldconfig
+%postun -n libindiclientqt%{so_ver} -p /sbin/ldconfig
 
 %files
 %license COPYING.* COPYRIGHT LICENSE
@@ -157,6 +185,14 @@ export CXXFLAGS="$CFLAGS"
 %files plugins
 %license COPYING.* LICENSE
 %{_libdir}/indi/
+
+%files -n libindiclient%{so_ver}
+%{_libdir}/libindiclient.so.1
+%{_libdir}/libindiclient.so.1.9.9
+
+%files -n libindiclientqt%{so_ver}
+%{_libdir}/libindiclientqt.so.1
+%{_libdir}/libindiclientqt.so.1.9.9
 
 %files -n libindiAlignmentDriver%{so_ver}
 %{_libdir}/libindiAlignmentDriver.so.%{so_ver}*
