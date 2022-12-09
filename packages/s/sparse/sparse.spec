@@ -17,19 +17,20 @@
 
 
 Name:           sparse
-Version:        0.6.4
+Version:        0.6.4+20220627
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://sparse.docs.kernel.org/
-Source:         https://mirrors.edge.kernel.org/pub/software/devel/sparse/dist/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(sqlite3)
 %if 0%{?suse_version} > 1320 || 0%{?is_opensuse}
 %ifarch         x86_64
 BuildRequires:  clang
@@ -78,6 +79,7 @@ LLVM backend for sparse, including sparsec
   MANDIR=%{_mandir} \
   PKGCONFIGDIR=%{_libdir}/pkgconfig \
   CFLAGS="%{optflags}" \
+  LDFLAGS="%{optflags}" \
   V=1
 
 %install
@@ -95,8 +97,10 @@ make \
 %doc README FAQ
 %{_bindir}/cgcc
 %{_bindir}/c2xml
+%{_bindir}/semind
 %{_bindir}/sparse
 %{_mandir}/man1/cgcc.1%{?ext_man}
+%{_mandir}/man1/semind.1%{?ext_man}
 %{_mandir}/man1/sparse.1%{?ext_man}
 
 %if 0%{?suse_version} > 1320 || 0%{?is_opensuse}

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 09 07:55:17 UTC 2022 - jslaby@suse.cz
+
+- As per previous entry, switch to _service
+- Propagate optflags to LDFLAGS too
+- Enable semind
+
+-------------------------------------------------------------------
+Wed Dec  7 01:49:00 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Development of sparse no longer results in a new tarball, but it is
+  contained in a repo at git://git.kernel.org/pub/scm/devel/sparse/sparse.git.
+  As a result, the openSUSE package has gotten out of date. In particular,
+  it shows lots of ./arch/x86/include/asm/bitops.h:239:9: warning: unreplaced symbol 'return'
+  for inlined routines. These obscure any actual problems with the code being
+  checked. In the future, the package should be maintained from the git repo, but
+  in the interim to provide a useful version of sparse, I cloned the git repo, converted
+  it into a tarball, and modified the spec file.
+
+  The last several commits are summarized as follows:
+    * fix "unreplaced" warnings caused by using typeof() on inline functions
+    * cleanup related to inlining of variadic functions
+    * inline: free symbol list after use
+    * inline: allocate statement after guards
+    * inline: avoid needless intermediate vars
+    * inline: declaration of the variadic vars is useless
+    * inline: comment about creating node of node on variadics
+    * inline: add testcases for inlining of variadics
+    * fix "unreplaced" warnings caused by using typeof() on inline functions
+
+-------------------------------------------------------------------
 Wed Jan  5 21:19:42 UTC 2022 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to version 0.6.4:
