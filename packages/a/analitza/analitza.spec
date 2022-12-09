@@ -1,7 +1,7 @@
 #
 # spec file for package analitza
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %define soversion 8
-%define kf5_version 5.60.0
+%define kf5_version 5.90.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           analitza
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://invent.kde.org/education/analitza
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -59,7 +58,6 @@ The Analitza library lets developers add mathematical features to programs.
 
 %package -n libAnalitza%{soversion}
 Summary:        A library to add mathematical features to programs
-Group:          System/Libraries
 Requires:       analitza = %{version}
 # Mistakenly contained libAnalitza6, 7 and 8
 %if %{soversion} == 8
@@ -71,7 +69,6 @@ The Analitza library lets developers add mathematical features to programs.
 
 %package devel
 Summary:        Development files for analitza, a mathematical feature library
-Group:          Development/Libraries/C and C++
 Requires:       libAnalitza%{soversion} = %{version}
 Obsoletes:      analitza5-devel < %{version}
 
@@ -85,14 +82,13 @@ add mathematical features to programs.
 %autosetup -p1 -n analitza-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --with-qt --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --with-qt --all-name
 
 %post -n libAnalitza%{soversion} -p /sbin/ldconfig
 %postun -n libAnalitza%{soversion} -p /sbin/ldconfig
@@ -110,8 +106,6 @@ add mathematical features to programs.
 %{_kf5_qmldir}/
 %{_kf5_sharedir}/libanalitza/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
