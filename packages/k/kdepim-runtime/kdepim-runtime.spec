@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-runtime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdepim-runtime
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -108,11 +107,10 @@ use PIM applications.
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -136,12 +134,9 @@ use PIM applications.
 %{_kf5_notifydir}/
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}
 %{_kf5_sharedir}/akonadi/
 %{_kf5_sharedir}/mime/packages/kdepim-mime.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
