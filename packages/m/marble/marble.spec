@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,11 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           marble
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
 License:        LGPL-2.1-or-later
-Group:          Amusements/Teaching/Other
 URL:            https://apps.kde.org/marble
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -86,7 +85,6 @@ Marble is a viewer of map data.
 
 %package qt
 Summary:        Qt Frontend for Marble
-Group:          Amusements/Teaching/Other
 Requires:       %{name} = %{version}
 Conflicts:      marble-frontend
 Provides:       marble-frontend = %{version}
@@ -96,7 +94,6 @@ The Qt frontend for the Marble map viewer
 
 %package kde
 Summary:        The KDE optimized frontend for Marble and several Plasmoids/Wallpapers
-Group:          Amusements/Teaching/Other
 Requires:       %{name} = %{version}
 Supplements:    (marble and plasma5-desktop)
 Conflicts:      marble-frontend
@@ -107,7 +104,6 @@ The KDE frontend for the Marble map viewer. It also includes several plasmoids a
 
 %package data
 Summary:        Generic map viewer: data
-Group:          Amusements/Teaching/Other
 Requires:       %{name} = %{version}
 Obsoletes:      marble5-data < %{version}
 Provides:       marble5-data < %{version}
@@ -118,7 +114,6 @@ Marble is a viewer of map data. This package contains its data.
 
 %package devel
 Summary:        Generic map viewer: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
 Requires:       cmake(Qt5Widgets)
@@ -134,7 +129,6 @@ Development headers and libraries for Marble.
 
 %package doc
 Summary:        Marble documentation
-Group:          Amusements/Teaching/Other
 Requires:       %{name} = %{version}
 Obsoletes:      marble5-doc < %{version}
 Provides:       marble5-doc = %{version}
@@ -145,14 +139,12 @@ Marble is a viewer of map data. This package contains its documentation.
 
 %package -n libmarblewidget-qt5%{_so}
 Summary:        Generic map viewer: Shared Library
-Group:          Development/Libraries/KDE
 
 %description -n libmarblewidget-qt5%{_so}
 The shared library for the MarbleWidget shared library.
 
 %package -n libastro%{_so_astro}
 Summary:        Astronomy: Shared Library
-Group:          Development/Libraries/KDE
 Requires:       libmarblewidget-qt5%{_so}
 Obsoletes:      libastro-qt5-%{_so_astro} < %{version}
 Provides:       libastro-qt5-%{_so_astro} = %{version}
@@ -174,12 +166,12 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name --with-qt
-    %{kf5_find_htmldocs}
-  %endif
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name --with-qt
+%{kf5_find_htmldocs}
+
+%fdupes %{buildroot}
 
 %post   -n libmarblewidget-qt5%{_so} -p /sbin/ldconfig
 %postun -n libmarblewidget-qt5%{_so} -p /sbin/ldconfig
@@ -250,8 +242,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_datadir}/plasma/plasmoids/
 %{_datadir}/plasma/wallpapers/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
