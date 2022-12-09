@@ -1,7 +1,7 @@
 #
 # spec file for package pimcommon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,21 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pimcommon
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-pimcommon-CMake.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-devel
@@ -79,7 +76,6 @@ applications.
 %package devel
 Summary:        Development package for pimcommon
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5PimCommon5 = %{version}
 Requires:       libKF5PimCommonAkonadi5 = %{version}
 Requires:       cmake(KF5Akonadi)
@@ -87,6 +83,7 @@ Requires:       cmake(KF5AkonadiContact)
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5IMAP)
+Requires:       cmake(KF5KIO)
 Requires:       cmake(KF5PimTextEdit)
 
 %description devel
@@ -95,16 +92,23 @@ The development package for the pimcommon libraries
 %package -n libKF5PimCommon5
 Summary:        The PimCommon Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKF5PimCommon5
 The PimCommon library
 
+%package -n libKF5PimCommonAutoCorrection5
+Summary:        Text autocorrection library for PimCommon
+License:        LGPL-2.1-or-later
+Requires:       %{name} >= %{version}
+
+%description -n libKF5PimCommonAutoCorrection5
+This package provides a library for text autocorrection as part
+of the PIM libraries by KDE.
+
 %package -n libKF5PimCommonAkonadi5
 Summary:        The PimCommon Akonadi Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKF5PimCommonAkonadi5
@@ -122,12 +126,13 @@ The PimCommon Akonadi library
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5PimCommon5  -p /sbin/ldconfig
 %postun -n libKF5PimCommon5 -p /sbin/ldconfig
+%post -n libKF5PimCommonAutoCorrection5  -p /sbin/ldconfig
+%postun -n libKF5PimCommonAutoCorrection5 -p /sbin/ldconfig
 %post -n libKF5PimCommonAkonadi5  -p /sbin/ldconfig
 %postun -n libKF5PimCommonAkonadi5 -p /sbin/ldconfig
 
@@ -137,12 +142,16 @@ The PimCommon Akonadi library
 
 %files devel
 %{_kf5_cmakedir}/KF5PimCommon/
+%{_kf5_cmakedir}/KF5PimCommonAutoCorrection/
 %{_kf5_cmakedir}/KF5PimCommonAkonadi/
 %{_kf5_includedir}/PimCommon/
+%{_kf5_includedir}/PimCommonAutoCorrection/
 %{_kf5_includedir}/PimCommonAkonadi
 %{_kf5_libdir}/libKF5PimCommon.so
 %{_kf5_libdir}/libKF5PimCommonAkonadi.so
+%{_kf5_libdir}/libKF5PimCommonAutoCorrection.so
 %{_kf5_mkspecsdir}/qt_PimCommon.pri
+%{_kf5_mkspecsdir}/qt_PimCommonAutoCorrection.pri
 %{_kf5_mkspecsdir}/qt_PimCommonAkonadi.pri
 %{_kf5_plugindir}/designer/
 
@@ -150,11 +159,12 @@ The PimCommon Akonadi library
 %license LICENSES/*
 %{_libdir}/libKF5PimCommon.so.*
 
+%files -n libKF5PimCommonAutoCorrection5
+%{_libdir}/libKF5PimCommonAutoCorrection.so.*
+
 %files -n libKF5PimCommonAkonadi5
 %{_libdir}/libKF5PimCommonAkonadi.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
