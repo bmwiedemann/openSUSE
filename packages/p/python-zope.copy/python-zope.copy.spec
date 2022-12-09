@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.copy
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Pluggable object copying mechanism
 License:        ZPL-2.1

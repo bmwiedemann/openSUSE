@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:50:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 4.3 
+  * Add support for Python 3.8, 3.9, 3.10, 3.11.
+  * Drop support for Python 3.4.
+
+-------------------------------------------------------------------
 Thu Oct 13 07:21:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls
