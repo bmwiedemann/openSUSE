@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  8 14:07:02 UTC 2022 - pgajdos@suse.com
+
+- skip testMultiTiledPartThreading for ppc64le [bsc#1205885]
+
+-------------------------------------------------------------------
 Sat Nov  5 11:16:42 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add _constraints: 6000 MiB memory

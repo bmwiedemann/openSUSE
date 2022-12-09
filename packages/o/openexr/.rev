@@ -756,4 +756,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>- Add _constraints: 6000 MiB memory (forwarded request 1033680 from frispete)</comment>
     <requestid>1033911</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>ed608feff95801db4c93fbfec7b465b5</srcmd5>
+    <version>3.1.5</version>
+    <time>1670588206</time>
+    <user>dimstar_suse</user>
+    <comment>- skip testMultiTiledPartThreading for ppc64le [bsc#1205885] (forwarded request 1041641 from pgajdos)</comment>
+    <requestid>1041642</requestid>
+  </revision>
 </revisionlist>

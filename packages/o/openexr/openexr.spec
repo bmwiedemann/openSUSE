@@ -168,7 +168,11 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 %global __ctest %{__ctest} --timeout 3600
 %ctest
 %else
-%ctest --timeout 3600
+%ifarch ppc64le
+# bsc#1205885
+EXCLUDE_REGEX='testMultiTiledPartThreading'
+%endif
+%ctest --exclude-regex "$EXCLUDE_REGEX" --timeout 3600
 %endif
 %endif
 
