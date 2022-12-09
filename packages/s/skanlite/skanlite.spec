@@ -1,7 +1,7 @@
 #
 # spec file for package skanlite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           skanlite
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Image Scanner Application
 License:        LGPL-2.1-or-later
-Group:          Hardware/Scanner
 URL:            https://www.kde.org/applications/graphics/skanlite/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -58,10 +57,8 @@ Skanlite is an image scanner application by KDE.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name} --all-name
 %{kf5_find_htmldocs}
-%endif
 
 # Fix rpmlint warning "script-without-shebang"
 chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
@@ -75,8 +72,6 @@ chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
 %{_kf5_bindir}/skanlite
 %{_kf5_iconsdir}/hicolor/48x48/apps/org.kde.skanlite.svg
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
