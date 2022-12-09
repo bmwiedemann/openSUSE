@@ -1,7 +1,7 @@
 #
 # spec file for package mailimporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mailimporter
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,7 +54,6 @@ KMail or Kontact.
 %package devel
 Summary:        Development package for mailimporter
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libKF5MailImporter5 = %{version}
 Requires:       libKF5MailImporterAkonadi5 = %{version}
 Requires:       cmake(KF5Archive)
@@ -66,7 +64,6 @@ This package provides the development headers of the mailimporter library.
 %package -n libKF5MailImporter5
 Summary:        MailImporter library for kdepim
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKF5MailImporter5
@@ -76,7 +73,6 @@ to import data from other mail formats (such as mbox, Maildir...).
 %package -n libKF5MailImporterAkonadi5
 Summary:        MailImporter Akonadi based library for kdepim
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKF5MailImporterAkonadi5
@@ -96,9 +92,8 @@ used by KDE PIM applications to import data from other mail formats
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post  -n libKF5MailImporter5 -p /sbin/ldconfig
 %postun -n libKF5MailImporter5 -p /sbin/ldconfig
@@ -126,8 +121,6 @@ used by KDE PIM applications to import data from other mail formats
 %{_kf5_debugdir}/mailimporter.categories
 %{_kf5_debugdir}/mailimporter.renamecategories
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
