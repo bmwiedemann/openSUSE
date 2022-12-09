@@ -1,7 +1,7 @@
 #
 # spec file for package libksieve
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libksieve
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -76,7 +75,6 @@ the Sieve server-side mail filtering protocol in KDE PIM applications.
 
 %package devel
 Summary:        Development package for libksieve
-Group:          Development/Libraries/KDE
 Requires:       libksieve%{soversion} = %{version}
 
 %description devel
@@ -93,20 +91,17 @@ This package contains development headers of libksieve.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post   -n libksieve%{soversion} -p /sbin/ldconfig
 %postun -n libksieve%{soversion} -p /sbin/ldconfig
 
 %files
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
 %{_kf5_debugdir}/libksieve.categories
 %{_kf5_debugdir}/libksieve.renamecategories
 %{_kf5_knsrcfilesdir}/ksieve_script.knsrc
-%{_kf5_plugindir}/kf5/kio/sieve.so
 %{_kf5_sharedir}/sieve/
 
 %files -n libksieve%{soversion}
@@ -126,8 +121,6 @@ This package contains development headers of libksieve.
 %{_kf5_mkspecsdir}/qt_KManageSieve.pri
 %{_kf5_mkspecsdir}/qt_KSieveUi.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
