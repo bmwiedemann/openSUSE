@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  8 14:32:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.1.0:
+  Ansible 7.1.0 will include ansible-core 2.14.1 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+
+-------------------------------------------------------------------
 Fri Nov 25 07:03:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - rework spec file to define %ansible_python version, which is the
