@@ -1,7 +1,7 @@
 #
 # spec file for package kig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kig
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Math
 URL:            https://apps.kde.org/kig
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,15 +64,14 @@ drawing mathematical figures and including them in other documents.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DBoost_NO_BOOST_CMAKE=ON
-  %cmake_build
+%cmake_kf5 -d build -- -DBoost_NO_BOOST_CMAKE=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*
@@ -92,8 +90,6 @@ drawing mathematical figures and including them in other documents.
 %{_kf5_sharedir}/kig/
 %{_kf5_sharedir}/kxmlgui5/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
