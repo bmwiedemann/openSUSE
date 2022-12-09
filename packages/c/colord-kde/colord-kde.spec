@@ -1,7 +1,7 @@
 #
 # spec file for package colord-kde
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,26 @@
 #
 
 
+%bcond_without released
 Name:           colord-kde
-Version:        0.5.0
+Version:        22.12.0
 Release:        0
 Summary:        KDE interfaces and session daemon to colord
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://invent.kde.org/graphics/colord-kde
-Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Core)
@@ -57,7 +56,7 @@ Colord-kde provides KCM module and KDE daemon module for colord support.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -71,12 +70,12 @@ Colord-kde provides KCM module and KDE daemon module for colord support.
 %files
 %license COPYING
 %doc MAINTAINERS TODO
-%{_kf5_bindir}/%{name}-icc-importer
+%dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_applicationsdir}/colordkdeiccimporter.desktop
-%{_kf5_plugindir}/*.so
+%{_kf5_bindir}/colord-kde-icc-importer
+%{_kf5_plugindir}/kcm_colord.so
 %{_kf5_servicesdir}/kcm_colord.desktop
-%dir %{_kf5_servicesdir}/kded
-%{_kf5_servicesdir}/kded/colord.desktop
+%{_kf5_plugindir}/kf5/kded/colord.so
 
 %files lang -f %{name}.lang
 

@@ -46,4 +46,12 @@
 - Spec cleanup</comment>
     <requestid>887507</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1806e78123ae4a4d28cbb3f77a2bba0e</srcmd5>
+    <version>22.12.0</version>
+    <time>1670601588</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.0</comment>
+    <requestid>1041628</requestid>
+  </revision>
 </revisionlist>
