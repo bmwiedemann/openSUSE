@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:42:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.65:
+  + correct case where there is no unified-context.
+  + trim trailing '/' from pathnames, e.g., to handle
+    "diff -ru FOO/ BAR/ | diffstat -K"
+
+-------------------------------------------------------------------
 Sun Jan 24 18:43:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.64:

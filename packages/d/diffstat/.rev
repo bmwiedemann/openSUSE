@@ -268,4 +268,15 @@
   &quot;git log -p --binary&quot; formatted files (report by Faheem Mitha). (forwarded request 866405 from dirkmueller)</comment>
     <requestid>866492</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>07ce0f73ca5077bee288e361953901af</srcmd5>
+    <version>1.65</version>
+    <time>1670588186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.65:
+  + correct case where there is no unified-context.
+  + trim trailing '/' from pathnames, e.g., to handle
+    &quot;diff -ru FOO/ BAR/ | diffstat -K&quot; (forwarded request 1041283 from dirkmueller)</comment>
+    <requestid>1041320</requestid>
+  </revision>
 </revisionlist>
