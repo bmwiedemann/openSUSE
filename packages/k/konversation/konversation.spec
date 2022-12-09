@@ -1,7 +1,7 @@
 #
 # spec file for package konversation
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.71.0
+%define kf5_version 5.91.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konversation
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/IRC
 URL:            https://konversation.kde.org/
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -93,9 +92,7 @@ Features:
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name}
-%endif
 
 %files
 %license LICENSES/*
@@ -114,11 +111,9 @@ Features:
 %{_kf5_sharedir}/konversation/
 %{_kf5_sharedir}/dbus-1/services/org.kde.konversation.service
 
-%if %{with released}
 %files lang -f %{name}.lang
 %dir %{_kf5_htmldir}/pt_BR/
 %doc %{_kf5_htmldir}/*/konversation/
 %exclude %{_kf5_htmldir}/en/konversation
-%endif
 
 %changelog
