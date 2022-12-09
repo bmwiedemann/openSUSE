@@ -1,7 +1,7 @@
 #
 # spec file for package kopeninghours
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kopeninghours
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
@@ -66,9 +66,7 @@ library.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang %{name} --with-man
-%endif
+%find_lang %{name} --with-man
 
 %check
 export QT_QPA_PLATFORM=offscreen
@@ -94,8 +92,6 @@ export QT_QPA_PLATFORM=offscreen
 %{_kf5_cmakedir}/KOpeningHours/
 %{_kf5_libdir}/libKOpeningHours.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
