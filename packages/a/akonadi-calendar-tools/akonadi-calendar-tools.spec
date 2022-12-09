@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-calendar-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-calendar-tools
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -62,10 +61,9 @@ Console applications and utilities for managing calendars in Akonadi.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*
@@ -77,8 +75,6 @@ Console applications and utilities for managing calendars in Akonadi.
 %{_kf5_debugdir}/console.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/konsolekalendar.png
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
