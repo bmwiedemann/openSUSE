@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:42:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.1:
+  * Fixed --resolve-symlinks when mountpoint name starts
+    with source dir name
+
+-------------------------------------------------------------------
 Fri Jul 29 10:26:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.17.0

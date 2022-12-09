@@ -192,4 +192,12 @@ no _service here, yo stupid bot</comment>
     <comment>- Update to release 1.17.0</comment>
     <requestid>991699</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b1ece66dc6c15be23bcfd03f099b44ad</srcmd5>
+    <version>1.17.1</version>
+    <time>1670588210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.1:</comment>
+    <requestid>1041651</requestid>
+  </revision>
 </revisionlist>
