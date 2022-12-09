@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.location
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,12 +27,12 @@
 %bcond_with test
 %endif
 Name:           python-zope.location%{psuffix}
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-Url:            http://www.python.org/pypi/zope.location
+URL:            http://www.python.org/pypi/zope.location
 Source:         https://files.pythonhosted.org/packages/source/z/zope.location/zope.location-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.schema >= 4.2.2}
