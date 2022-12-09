@@ -1,7 +1,7 @@
 #
 # spec file for package kpimtextedit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpimtextedit
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -58,7 +57,6 @@ particular those related to editing text, like email messages.
 
 %package -n libKF5PimTextEdit5
 Summary:        KDE PIM Libraries: Text editing functionality
-Group:          Development/Libraries/KDE
 Requires:       %{name}
 
 %description  -n libKF5PimTextEdit5
@@ -66,7 +64,6 @@ This package provides text editing functionality for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       libKF5PimTextEdit5 = %{version}
 Requires:       cmake(KF5SyntaxHighlighting)
 Requires:       cmake(KF5TextWidgets)
@@ -81,14 +78,13 @@ to develop KDE PIM applications.
 %autosetup -p1 -n kpimtextedit-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5PimTextEdit5 -p /sbin/ldconfig
 %postun -n libKF5PimTextEdit5 -p /sbin/ldconfig
@@ -107,8 +103,6 @@ to develop KDE PIM applications.
 %{_kf5_mkspecsdir}/qt_KPIMTextEdit.pri
 %{_kf5_plugindir}/designer/kpimtexteditwidgets.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
