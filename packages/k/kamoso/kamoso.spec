@@ -1,7 +1,7 @@
 #
 # spec file for package kamoso
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kamoso
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
 URL:            https://apps.kde.org/kamoso
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -74,10 +73,8 @@ YouTube.
 %kf5_makeinstall -C build
 %suse_update_desktop_file -r org.kde.kamoso Qt KDE AudioVideo Recorder
 
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*
@@ -92,8 +89,6 @@ YouTube.
 %{_kf5_sharedir}/sounds/kamoso-shutter.wav
 %{_libdir}/gstreamer-%{gstnum}/gstkamosoqt5videosink.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
