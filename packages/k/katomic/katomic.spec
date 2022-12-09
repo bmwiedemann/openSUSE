@@ -1,7 +1,7 @@
 #
 # spec file for package katomic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           katomic
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Sokoban-like logic game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Board/Puzzle
 URL:            https://apps.kde.org/katomic
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,16 +64,16 @@ can move each atom in a labyrinth.
 %autosetup -p1 -n katomic-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.katomic Game LogicGame
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.katomic Game LogicGame
 
 %files
 %license LICENSES/*
@@ -88,8 +87,6 @@ can move each atom in a labyrinth.
 %{_kf5_iconsdir}/hicolor/*/apps/katomic.*
 %{_kf5_knsrcfilesdir}/katomic.knsrc
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
