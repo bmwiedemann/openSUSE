@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           cantor
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
-Group:          Amusements/Teaching/Mathematics
 URL:            https://apps.kde.org/cantor
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -80,7 +79,6 @@ those backends and is not targeted to kids but to scientists.
 
 %package devel
 Summary:        Worksheet GUI for mathematical software
-Group:          Development/Libraries/KDE
 Requires:       libcantorlibs%{libMAJOR} = %{version}
 Requires:       libpoppler-qt5-devel
 Requires:       libspectre-devel
@@ -101,7 +99,6 @@ those backends and is not targeted to kids but to scientists.
 
 %package -n libcantorlibs%{libMAJOR}
 Summary:        Shared libraries for Cantor
-Group:          System/Libraries
 
 %description -n libcantorlibs%{libMAJOR}
 Shared libraries for package cantor.
@@ -130,11 +127,10 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
   %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post -n libcantorlibs%{libMAJOR} -p /sbin/ldconfig
 %postun -n libcantorlibs%{libMAJOR} -p /sbin/ldconfig
@@ -209,8 +205,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %license LICENSES/*
 %{_kf5_libdir}/libcantorlibs.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
