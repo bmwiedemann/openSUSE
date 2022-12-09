@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-calendar
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ This library provides calendar integration for Akonadi based Applications.
 
 %package -n libKF5AkonadiCalendar5
 Summary:        KDE PIM Libraries: AkonadiCalendar
-Group:          Development/Libraries/KDE
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
@@ -62,7 +60,6 @@ This library provides calendar integration for Akonadi based Applications.
 
 %package -n akonadi-plugin-calendar
 Summary:        Akonadi calendar integration - serializer plugin
-Group:          System/Libraries
 Requires:       libKF5AkonadiCalendar5 = %{version}
 
 %description -n akonadi-plugin-calendar
@@ -78,7 +75,6 @@ Kalendarac is a reminder daemon client for calendar events.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       libKF5AkonadiCalendar5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5CalendarCore)
@@ -96,14 +92,13 @@ Development package for akonadi-calendar.
 %autosetup -p1 -n akonadi-calendar-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5AkonadiCalendar5 -p /sbin/ldconfig
 %postun -n libKF5AkonadiCalendar5 -p /sbin/ldconfig
@@ -138,8 +133,6 @@ Development package for akonadi-calendar.
 %{_kf5_libdir}/libKF5AkonadiCalendar.so
 %{_kf5_mkspecsdir}/qt_AkonadiCalendar.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
