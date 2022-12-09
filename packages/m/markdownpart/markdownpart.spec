@@ -1,7 +1,7 @@
 #
 # spec file for package markdownpart
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%define kf5_version 5.66.0
+%define kf5_version 5.91.0
 %define qt5_version 5.15.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           markdownpart
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -56,9 +55,7 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name}
-%endif
 
 %files
 %license LICENSES/LGPL-2.1-or-later.txt
@@ -69,8 +66,6 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %{_kf5_plugindir}/kf5/parts/markdownpart.so
 %{_kf5_servicesdir}/markdownpart.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
