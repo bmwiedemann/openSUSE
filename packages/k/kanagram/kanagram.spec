@@ -1,7 +1,7 @@
 #
 # spec file for package kanagram
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kanagram
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later
-Group:          Amusements/Teaching/Language
 URL:            https://apps.kde.org/kanagram
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -60,15 +59,14 @@ Kanagram is a letter order game.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license COPYING*
@@ -85,8 +83,6 @@ Kanagram is a letter order game.
 %{_kf5_knsrcfilesdir}/kanagram.knsrc
 %{_kf5_sharedir}/kanagram/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
