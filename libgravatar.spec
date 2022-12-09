@@ -1,7 +1,7 @@
 #
 # spec file for package libgravatar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libgravatar
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -49,7 +48,6 @@ This package contains the debug categories for the libgravatar library.
 %package -n libKF5Gravatar5
 Summary:        Libgravatar library for KDE PIM applications
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name}
 
 %description -n libKF5Gravatar5
@@ -62,7 +60,6 @@ applications.
 %package devel
 Summary:        Development package for libgravatar
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5Gravatar5 = %{version}
 
 %description devel
@@ -80,9 +77,8 @@ The development package for the libgravatar library.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %files
 %{_kf5_debugdir}/libgravatar.categories
@@ -98,8 +94,6 @@ The development package for the libgravatar library.
 %{_kf5_libdir}/libKF5Gravatar.so
 %{_kf5_mkspecsdir}/qt_Gravatar.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
