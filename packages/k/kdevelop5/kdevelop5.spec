@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 59
+%define libkdev_major 510
 %bcond_without released
 Name:           kdevelop5
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
-Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -112,7 +111,6 @@ with further external plugins supporting e.g. PHP or Python.
 
 %package -n kdevplatform
 Summary:        Base Package for Integrated Development Environments
-Group:          Development/Tools/IDE
 Requires:       libkdevplatform%{libkdev_major} = %{version}
 %requires_eq    grantlee5
 Conflicts:      kdevplatform4
@@ -124,7 +122,6 @@ environment based on the KDevelop framework.
 
 %package -n libkdevplatform%{libkdev_major}
 Summary:        Libraries for Integrated Development Environments
-Group:          Development/Tools/IDE
 Requires:       kdevplatform
 Obsoletes:      libkdevplatform10 < %{version}
 
@@ -134,7 +131,6 @@ environments based on the KDevelop framework.
 
 %package -n kdevplatform-devel
 Summary:        Base Package for Integrated Development Environments: Build Environment
-Group:          Development/Tools/IDE
 Requires:       libkdevplatform%{libkdev_major} = %{version}
 # Not installed automatically
 Requires:       cmake(KF5TextEditor)
@@ -145,10 +141,8 @@ Conflicts:      libkdevplatform4-devel
 This package contains the development files for building integrated
 developments environments based on the KDevelop framework.
 
-%if %{with released}
 %package lang
 Summary:        Translations for package %{name}
-Group:          System/Localization
 Requires:       %{name} = %{version}
 Provides:       %{name}-lang-all = %{version}
 Conflicts:      kdevelop4-lang
@@ -162,7 +156,6 @@ Provides translations for the "kdevelop" package.
 
 %package -n kdevplatform-lang
 Summary:        Translations for package kdevplatform
-Group:          System/Localization
 Requires:       kdevplatform = %{version}
 Conflicts:      kdevplatform4-lang
 Provides:       kdevplatform-lang-all = %{version}
@@ -170,40 +163,37 @@ BuildArch:      noarch
 
 %description -n kdevplatform-lang
 Provides translations for the "kdevplatform" package.
-%endif
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %make_jobs
+%cmake_kf5 -d build
+%make_jobs
 
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
-  names="kdevandroid kdevappwizard kdevastyle kdevbazaar kdevclang kdevclassbrowser \
-         kdevclangtidy kdevclazy kdevcmake kdevcmakebuilder kdevcodeutils kdevcompileanalyzercommon \
-         kdevcontextbrowser kdevcppcheck kdevcustombuildsystem kdevcustomdefinesandincludes \
-         kdevcustommake kdevcustomscript kdevdebuggercommon kdevdocker kdevdocumentswitcher \
-         kdevdocumentview kdevelop kdevexecute kdevexecuteplasmoid kdevexecutescript \
-         kdevexternalscript kdevfilemanager kdevfiletemplates kdevflatpak kdevgdb \
-         kdevghprovider kdevgit kdevgrepview kdevheaptrack kdevkonsole kdevlldb \
-         kdevmakebuilder kdevmanpage kdevmesonmanager kdevninja kdevokteta kdevopenwith
-         kdevpatchreview kdevperforce kdevproblemreporter kdevprojectfilter kdevprojectmanagerview \
-         kdevqmakebuilder kdevqmakemanager kdevqmljs kdevqthelp kdevquickopen kdevscratchpad \
-         kdevsourceformatter kdevoutlineview kdevstandardoutputview kdevsubversion  \
-         kdevswitchtobuddy kdevtestview kdevvcsprojectintegration kdevwelcomepage \
-         plasma_applet_kdevelopsessions plasma_runner_kdevelopsessions"
+names="kdevandroid kdevappwizard kdevastyle kdevbazaar kdevclang kdevclassbrowser \
+      kdevclangtidy kdevclazy kdevcmake kdevcmakebuilder kdevcodeutils kdevcompileanalyzercommon \
+      kdevcontextbrowser kdevcppcheck kdevcustombuildsystem kdevcustomdefinesandincludes \
+      kdevcustommake kdevcustomscript kdevdebuggercommon kdevdocker kdevdocumentswitcher \
+      kdevdocumentview kdevelop kdevexecute kdevexecuteplasmoid kdevexecutescript \
+      kdevexternalscript kdevfilemanager kdevfiletemplates kdevflatpak kdevgdb \
+      kdevghprovider kdevgit kdevgrepview kdevheaptrack kdevkonsole kdevlldb \
+      kdevmakebuilder kdevmanpage kdevmesonmanager kdevninja kdevokteta kdevopenwith
+      kdevpatchreview kdevperforce kdevproblemreporter kdevprojectfilter kdevprojectmanagerview \
+      kdevqmakebuilder kdevqmakemanager kdevqmljs kdevqthelp kdevquickopen kdevscratchpad \
+      kdevsourceformatter kdevoutlineview kdevstandardoutputview kdevsubversion  \
+      kdevswitchtobuddy kdevtestview kdevvcsprojectintegration kdevwelcomepage \
+      plasma_applet_kdevelopsessions plasma_runner_kdevelopsessions"
 
-  for name in $names; do
-    %find_lang $name %{name}.lang
-  done
+for name in $names; do
+  %find_lang $name %{name}.lang
+done
 
-  %find_lang kdevplatform kdevplatform.lang
-  %{kf5_find_htmldocs}
-%endif
+%find_lang kdevplatform kdevplatform.lang
+%{kf5_find_htmldocs}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -280,10 +270,8 @@ Provides translations for the "kdevplatform" package.
 %{_kf5_libdir}/libKDevPlatform*.so
 %{_kf5_prefix}/include/kdevplatform/
 
-%if %{with released}
 %files lang -f %{name}.lang
 
 %files -n kdevplatform-lang -f kdevplatform.lang
-%endif
 
 %changelog
