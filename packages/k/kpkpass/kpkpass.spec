@@ -1,7 +1,7 @@
 #
 # spec file for package kpkpass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           kpkpass
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -42,7 +41,6 @@ commonly used for hotel and flight reservations.
 
 %package -n libKPimPkPass5
 Summary:        Library to parse Passbook files
-Group:          System/GUI/KDE
 %if %{pkg_vcmp shared-mime-info < 2.2}
 Requires:       %{name}
 %endif
@@ -54,7 +52,6 @@ library itself.
 
 %package devel
 Summary:        Development files for kpkpass
-Group:          Development/Libraries/KDE
 Requires:       libKPimPkPass5 = %{version}
 Requires:       cmake(KF5Archive)
 
