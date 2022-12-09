@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.4.0
+%define sover 9.4.1
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -84,7 +84,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.4.0
+Version:        9.4.1
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
