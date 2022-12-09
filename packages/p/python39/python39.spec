@@ -93,7 +93,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.15
+Version:        3.9.16
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -158,18 +158,9 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
 Patch35:        support-expat-CVE-2022-25236-patched.patch
-# PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
-# avoid the command injection in the mailcap module.
-Patch36:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
-# PATCH-FIX-UPSTREAM CVE-2022-42919-loc-priv-mulitproc-forksrv.patch bsc#1204886 mcepl@suse.com
-# Avoid Linux specific local privilege escalation via the multiprocessing forkserver start method
-Patch38:        CVE-2022-42919-loc-priv-mulitproc-forksrv.patch
-# PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
-# Avoid DoS by decoding IDNA for too long domain names
-Patch39:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -428,10 +419,7 @@ other applications.
 %patch05 -p1
 %endif
 %patch35 -p1
-%patch36 -p1
 %patch37 -p1
-%patch38 -p1
-%patch39 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

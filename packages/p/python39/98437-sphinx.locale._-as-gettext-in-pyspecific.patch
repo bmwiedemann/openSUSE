@@ -30,7 +30,7 @@ Subject: [PATCH 1/2] fix(doc-tools): use sphinx.locale._ as gettext() for
          content = self.content
          add_text = nodes.strong(label, label)
          if self.arguments:
-@@ -266,7 +266,7 @@ class AuditEvent(Directive):
+@@ -179,7 +179,7 @@ class AuditEvent(Directive):
          else:
              args = []
  
@@ -39,7 +39,7 @@ Subject: [PATCH 1/2] fix(doc-tools): use sphinx.locale._ as gettext() for
          text = label.format(name="``{}``".format(name),
                              args=", ".join("``{}``".format(a) for a in args if a))
  
-@@ -445,7 +445,7 @@ class DeprecatedRemoved(Directive):
+@@ -358,7 +358,7 @@ class DeprecatedRemoved(Directive):
          else:
              label = self._removed_label
  

@@ -752,4 +752,53 @@
 </comment>
     <requestid>1034968</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>548aa2492076ca7b8a7fb467cf006806</srcmd5>
+    <version>3.9.16</version>
+    <time>1670588209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.16:
+  - python -m http.server no longer allows terminal control
+    characters sent within a garbage request to be printed to the
+    stderr server log.
+    This is done by changing the http.server
+    BaseHTTPRequestHandler .log_message method to replace control
+    characters with a \xHH hex escape before printing.
+  - Avoid publishing list of active per-interpreter audit hooks
+    via the gc module
+  - The IDNA codec decoder used on DNS hostnames by socket or
+    asyncio related name resolution functions no longer involves
+    a quadratic algorithm. This prevents a potential CPU denial
+    of service if an out-of-spec excessive length hostname
+    involving bidirectional characters were decoded. Some
+    protocols such as urllib http 3xx redirects potentially allow
+    for an attacker to supply such a name (CVE-2015-20107).
+  - Update bundled libexpat to 2.5.0
+  - Port XKCP’s fix for the buffer overflows in SHA-3
+    (CVE-2022-37454).
+  - On Linux the multiprocessing module returns to using
+    filesystem backed unix domain sockets for communication with
+    the forkserver process instead of the Linux abstract socket
+    namespace. Only code that chooses to use the “forkserver”
+    start method is affected.
+    Abstract sockets have no permissions and could allow any
+    user on the system in the same network namespace (often
+    the whole system) to inject code into the multiprocessing
+    forkserver process. This was a potential privilege
+    escalation. Filesystem based socket permissions restrict this
+    to the forkserver process user as was the default in Python
+    3.8 and earlier.
+    This prevents Linux CVE-2022-42919.
+  - The deprecated mailcap module now refuses to inject unsafe
+    text (filenames, MIME types, parameters) into shell
+    commands. Instead of using such text, it will warn and act
+    as if a match was not found (or for test commands, as if the
+    test failed).
+- Removed upstreamed patches:
+  - CVE-2015-20107-mailcap-unsafe-filenames.patch
+  - CVE-2022-42919-loc-priv-mulitproc-forksrv.patch
+  - CVE-2022-45061-DoS-by-IDNA-decode.patch
+</comment>
+    <requestid>1041648</requestid>
+  </revision>
 </revisionlist>
