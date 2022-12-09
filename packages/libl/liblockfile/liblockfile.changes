@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  8 20:32:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 1.17:
+  * dotlockfile: '-i interval' option.
+  * dotlockfile: document -q
+  * add L_RMSTALE return status (failed to remove stale lock)
+  * remove cistron.nl email address 
+
+-------------------------------------------------------------------
 Fri May 22 17:38:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.16

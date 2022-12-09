@@ -1,6 +1,7 @@
 #
 # spec file for package liblockfile
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,13 +16,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global sover   1
 %global libname liblockfile%{sover}
 Name:           liblockfile
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Library with NFS-safe locking functions
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/miquels/liblockfile
 Source:         https://github.com/miquels/liblockfile/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
