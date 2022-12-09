@@ -1,7 +1,7 @@
 #
 # spec file for package kgeography
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kgeography
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Geography Trainer
 License:        GPL-2.0-or-later
-Group:          Amusements/Teaching/Other
 URL:            https://apps.kde.org/kgeography
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -61,16 +60,16 @@ KGeography is a geography learning program.
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %fdupes -s %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%fdupes -s %{buildroot}
 
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/kgeography/
@@ -82,9 +81,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_iconsdir}/hicolor/*/apps/kgeography.*
 %{_kf5_kxmlguidir}/kgeography/
 
-%if %{with released}
 %files lang -f %{name}.lang
 %license COPYING*
+# The files below aren't detected by find-lang.sh
 %dir %{_kf5_sharedir}/locale/fi/LC_SCRIPTS
 %dir %{_kf5_sharedir}/locale/fr/LC_SCRIPTS
 %dir %{_kf5_sharedir}/locale/ja/LC_SCRIPTS
@@ -97,6 +96,5 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %lang (ml) %{_kf5_sharedir}/locale/ml/LC_SCRIPTS/kgeography
 %lang (pl) %{_kf5_sharedir}/locale/pl/LC_SCRIPTS/kgeography
 %lang (uk) %{_kf5_sharedir}/locale/uk/LC_SCRIPTS/kgeography
-%endif
 
 %changelog
