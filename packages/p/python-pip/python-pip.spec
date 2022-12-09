@@ -41,7 +41,7 @@
 %endif
 %global skip_python2 1
 Name:           python-pip%{psuffix}
-Version:        22.0.4
+Version:        22.3.1
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -78,6 +78,7 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module csv23}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest}
@@ -140,18 +141,9 @@ rm -f %{buildroot}%{_bindir}/pip3-2*
 %if %{with test}
 %check
 export PYTHONPATH=$(pwd)/build/lib
-# no network on OBS
-donttest="test_network or test_remote_reqs_parse"
-# incompatible virtualenv version
-donttest+=" or test_build_env_allow_only_one_install"
-donttest+=" or test_build_env_isolation"
-donttest+=" or test_build_env_requirements_check"
-donttest+=" or test_build_env_overlay_prefix_has_priority"
-donttest+=" or test_should_cache_git_sha"
-# incompatible virtualenv version and no coverage wheel in common_wheels
-donttest+=" or test_from_link_vcs_with_source_dir_obtains_commit_id"
-donttest+=" or test_from_link_vcs_without_source_dir"
-%pytest -k "not ($donttest)" tests/unit
+# Looks broken with 22.3.1
+donttest="test_pip_self_version_check_calls_underlying_implementation"
+%pytest -m "not network" -k "not ($donttest)" tests/unit
 %endif
 
 %pre

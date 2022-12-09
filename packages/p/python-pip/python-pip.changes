@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Dec  8 04:10:03 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 22.3.1: (bsc#1205478)
+  * Deprecations and Removals
+    + Deprecate installation with setup.py install when no-binary is enabled
+      for source distributions without pyproject.toml. (#11452)
+    + Deprecate installation with setup.py install when the wheel package is
+      absent for source distributions without pyproject.toml. (#8559)
+    + Drop --use-deprecated=out-of-tree-build. (#11001)
+  * Features
+    + Use the data-dist-info-metadata attribute from PEP 658 to resolve
+      distribution metadata without downloading the dist yet. (#11111)
+    + Add --dry-run option to pip install, to let it print what it would
+     install but not actually make changes in the target environment. (#11096)
+    + Add pip inspect command to obtain the list of installed distributions
+     and other information about the Python environment, in JSON. (#11245)
+    + Add option to install and uninstall commands to opt-out from
+      running-as-root warning. (#10556)
+    + Add a user interface for supplying config settings to build backends.
+      (#11059)
+    + Explains why specified version cannot be retrieved when Requires-Python
+      is not satisfied. (#9615)
+    + Validate build dependencies when using --no-build-isolation. (#9794)
+  * Bug Fixes
+    + Fix entry point generation of pip.X, pipX.Y, and easy_install-X.Y to
+      correctly account for multi-digit Python version segments. (#11547)
+    + Fix --no-index when --index-url or --extra-index-url is specified
+      inside a requirements file. (#11276)
+    + Ignore distributions with invalid Name in metadata instead of crashing,
+      when using the importlib.metadata backend. (#11352)
+    + Raise RequirementsFileParseError when parsing malformed requirements
+      options that can’t be sucessfully parsed by shlex. (#11491)
+    + Show pip deprecation warnings by default. (#11330)
+    + Send the pip upgrade prompt to stderr. (#11282)
+    + Ensure that things work correctly in environments where
+      setuptools-injected distutils is available by default. (#11298)
+    + pip config now normalizes names by converting underscores into
+      dashes. (#9330)
+    + Fallback to pyproject.toml-based builds if setup.py is present in a
+      project, but setuptools cannot be imported. (#10717)
+    + When checking for conflicts in the build environment, correctly skip
+      requirements containing markers that do not match the current
+      environment. (#10883)
+    + Fix pip install issues using a proxy due to an inconsistency in how
+      Requests is currently handling variable precedence in session. (#9691)
+- Refresh all patches.
+- Stop skipping a lot of tests, no longer required.
+- Add installer to BuildRequires for the test flavor.
+
+-------------------------------------------------------------------
 Wed Aug 10 10:33:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip subversion tests, not that relevant to pull in

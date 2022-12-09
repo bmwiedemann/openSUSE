@@ -2,9 +2,11 @@
  src/pip/_vendor/distlib/wheel.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/src/pip/_vendor/distlib/wheel.py
-+++ b/src/pip/_vendor/distlib/wheel.py
-@@ -538,7 +538,7 @@ class Wheel(object):
+Index: pip-22.3.1/src/pip/_vendor/distlib/wheel.py
+===================================================================
+--- pip-22.3.1.orig/src/pip/_vendor/distlib/wheel.py
++++ pip-22.3.1/src/pip/_vendor/distlib/wheel.py
+@@ -567,7 +567,7 @@ class Wheel(object):
              maker.source_dir = workdir
              maker.target_dir = None
              try:
