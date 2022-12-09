@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-scripts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdesdk-scripts
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
-Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -46,7 +45,6 @@ This package contains scripts useful for development of KDE software.
 
 %package kf5-porting
 Summary:        Scripts for porting applications to KF5
-Group:          System/GUI/KDE
 Obsoletes:      kdesdk4-scripts-kf5-porting < %{version}
 Provides:       kdesdk4-scripts-kf5-porting = %{version}
 
@@ -70,10 +68,11 @@ export CFLAGS="%{optflags} -fPIC"
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
+
 %{kf5_post_install}
+
 # Copy the KF5 porting scripts
 mkdir -p %{buildroot}%{_datadir}/kf5-port-scripts
 cp kf5/* %{buildroot}%{_datadir}/kf5-port-scripts/
@@ -90,8 +89,6 @@ cp kf5/* %{buildroot}%{_datadir}/kf5-port-scripts/
 %doc README
 %{_datadir}/kf5-port-scripts/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
