@@ -1,7 +1,7 @@
 #
 # spec file for package konsole
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konsole
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
-Group:          System/X11/Terminals
 URL:            https://apps.kde.org/konsole
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -41,6 +40,7 @@ Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Completion)
@@ -72,9 +72,11 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(icu-i18n)
 %if 0%{?suse_version} <= 1500
 # std::for_each_n is not available in GCC7
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 Requires:       %{name}-part = %{version}
 Obsoletes:      %{name}5 < %{version}
@@ -85,7 +87,6 @@ Konsole is a terminal emulator for the K Desktop Environment.
 
 %package part
 Summary:        KDE Terminal
-Group:          System/GUI/KDE
 Recommends:     %{name}-part-lang
 Obsoletes:      konsole5-part < %{version}
 
@@ -93,10 +94,8 @@ Obsoletes:      konsole5-part < %{version}
 Konsole is a terminal emulator for the K Desktop Environment.
 This package provides KPart of the Konsole application.
 
-%if %{with released}
 %package -n %{name}-part-lang
 Summary:        Translations for package %{name}
-Group:          System/Localization
 Requires:       %{name}-part = %{version}
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
@@ -105,31 +104,30 @@ BuildArch:      noarch
 
 %description -n %{name}-part-lang
 Provides translations for the "konsole-part" package.
-%endif
 
 %prep
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  install -D -m 0644 %{SOURCE3}  "%{buildroot}%{_kf5_sharedir}/konsole/Root Shell.profile"
-  install -D -m 0644 %{SOURCE4}  %{buildroot}%{_kf5_applicationsdir}/
-  install -D -m 0644 %{SOURCE21} %{buildroot}%{_kf5_iconsdir}/hicolor/16x16/apps/utilities-terminal_su.png
-  install -D -m 0644 %{SOURCE22} %{buildroot}%{_kf5_iconsdir}/hicolor/22x22/apps/utilities-terminal_su.png
-  install -D -m 0644 %{SOURCE23} %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/utilities-terminal_su.png
-  install -D -m 0644 %{SOURCE24} %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/utilities-terminal_su.png
-  install -D -m 0644 %{SOURCE25} %{buildroot}%{_kf5_iconsdir}/hicolor/64x64/apps/utilities-terminal_su.png
-  install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf5_iconsdir}/hicolor/128x128/apps/utilities-terminal_su.png
-  %suse_update_desktop_file org.kde.konsole TerminalEmulator
-  %fdupes -s %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+install -D -m 0644 %{SOURCE3}  "%{buildroot}%{_kf5_sharedir}/konsole/Root Shell.profile"
+install -D -m 0644 %{SOURCE4}  %{buildroot}%{_kf5_applicationsdir}/
+install -D -m 0644 %{SOURCE21} %{buildroot}%{_kf5_iconsdir}/hicolor/16x16/apps/utilities-terminal_su.png
+install -D -m 0644 %{SOURCE22} %{buildroot}%{_kf5_iconsdir}/hicolor/22x22/apps/utilities-terminal_su.png
+install -D -m 0644 %{SOURCE23} %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/utilities-terminal_su.png
+install -D -m 0644 %{SOURCE24} %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/utilities-terminal_su.png
+install -D -m 0644 %{SOURCE25} %{buildroot}%{_kf5_iconsdir}/hicolor/64x64/apps/utilities-terminal_su.png
+install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf5_iconsdir}/hicolor/128x128/apps/utilities-terminal_su.png
+%suse_update_desktop_file org.kde.konsole TerminalEmulator
+%fdupes -s %{buildroot}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -168,8 +166,6 @@ Provides translations for the "konsole-part" package.
 %{_kf5_servicetypesdir}/terminalemulator.desktop
 %{_kf5_sharedir}/konsole/
 
-%if %{with released}
 %files part-lang -f %{name}.lang
-%endif
 
 %changelog
