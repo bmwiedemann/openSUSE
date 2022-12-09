@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1094987: '20221026'
   boo#1172073: '20220918'
-  boo#1183454: '20221207'
+  boo#1183454: '20221208'
   boo#1190434: '20221208'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
@@ -173,7 +173,7 @@
   poo#120315: '20221110'
   poo#120318: '20221110'
   poo#120345: '20221114'
-  poo#120459: '20221207'
+  poo#120459: '20221208'
   poo#120693: '20221116'
   poo#120832: '20221207'
   poo#120834: '20221208'
@@ -181,6 +181,7 @@
   poo#120984: '20221129'
   poo#120985: '20221128'
   poo#121198: '20221208'
+  poo#121708: '20221208'
   poo#63397: '20220921'
   poo#80628: '20221208'
   poo#99312: '20220502'
@@ -226,11 +227,11 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20221208</value>
+    <value>20221209</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
-jobs_num: 313
+jobs_num: 312
 openqa_group: openSUSE Tumbleweed
 openqa_server: https://openqa.opensuse.org
 product_repo: images
@@ -552,9 +553,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20221208'
-published: '20221206'
-publishing: '20221206'
+    <value>failed: ''
+published: '20221208'
+publishing: '20221208'
 testing: '20221208'
 </value>
   </attribute>
