@@ -1,7 +1,7 @@
 #
 # spec file for package libksane
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libksane
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE scanning library
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,9 +52,11 @@ scanners and other imaging devices supported by SANE.
 
 %package devel
 Summary:        Development files for the KDE scanning library
-Group:          Development/Libraries/KDE
 Requires:       %{lname}%{_so} = %{version}
-Requires:       cmake(KSaneCore)
+Requires:       pkgconfig
+Requires:       sane-backends-devel
+Requires:       cmake(KF5Wallet)
+Requires:       cmake(KF5WidgetsAddons)
 Requires:       cmake(Qt5Widgets)
 Obsoletes:      libksane-kf5-devel < %{version}
 Provides:       libksane-kf5-devel = %{version}
@@ -66,7 +67,6 @@ applications.
 
 %package -n %{lname}%{_so}
 Summary:        KDE scan library
-Group:          System/Libraries
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
@@ -80,14 +80,13 @@ scanners and other imaging devices supported by SANE.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n %{lname}%{_so} -p /sbin/ldconfig
 %postun -n %{lname}%{_so} -p /sbin/ldconfig
@@ -105,8 +104,6 @@ scanners and other imaging devices supported by SANE.
 %{_kf5_includedir}/ksane_version.h
 %{_kf5_libdir}/%{lname}.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
