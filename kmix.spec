@@ -1,7 +1,7 @@
 #
 # spec file for package kmix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmix
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Sound Mixer
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Mixers
 URL:            https://apps.kde.org/kmix
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -69,16 +68,16 @@ KMix is a fully featured audio mixer by KDE.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
-  %suse_update_desktop_file org.kde.kmix AudioVideo Mixer
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.kmix AudioVideo Mixer
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -101,8 +100,6 @@ KMix is a fully featured audio mixer by KDE.
 %{_kf5_sharedir}/kmix/
 %{_libdir}/libkmixcore.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
