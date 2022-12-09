@@ -1,7 +1,7 @@
 #
 # spec file for package kapptemplate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kapptemplate
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
-Group:          Development/Tools/IDE
 URL:            https://apps.kde.org/kapptemplate
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -58,16 +57,16 @@ application/part/plugin.
 sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;|g' src/application/org.kde.kapptemplate.desktop
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.kapptemplate
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.kapptemplate
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -83,8 +82,6 @@ sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE
 %{_kf5_iconsdir}/hicolor/*/apps/kapptemplate.*
 %{_kf5_sharedir}/kdevappwizard/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
