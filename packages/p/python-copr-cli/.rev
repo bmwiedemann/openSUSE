@@ -51,4 +51,15 @@
     <comment></comment>
     <requestid>1006372</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32a9ecac5792c1daf6be78426c406348</srcmd5>
+    <version>1.104</version>
+    <time>1670588287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.104: 
+  - move to GitHub home page
+  - add parameter for custom method repos 
+</comment>
+    <requestid>1041747</requestid>
+  </revision>
 </revisionlist>

@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr-cli
-Version:        1.103
+Version:        1.104
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
@@ -76,6 +75,7 @@ sed -i '1{/#!/d}' copr_cli/package_build_order.py
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/copr-cli
-%{python_sitelib}/*
+%{python_sitelib}/copr_cli
+%{python_sitelib}/copr_cli-%{version}*-info
 
 %changelog
