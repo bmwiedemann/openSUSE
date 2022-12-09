@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-extras5
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -84,7 +83,6 @@ Additional KIO-slaves for KDE applications.
 
 %package -n libkioarchive5
 Summary:        The archiver base class library
-Group:          System/Libraries
 
 %description -n libkioarchive5
 The archiver base class, used by specific archive formats, is made
@@ -93,7 +91,6 @@ archive formats can be built outside the kio-extras source tree.
 
 %package -n libkioarchive-devel
 Summary:        Development package for libkioarchive5
-Group:          Development/Libraries/C and C++
 Requires:       libkioarchive5 = %{version}
 
 %description -n libkioarchive-devel
@@ -105,15 +102,14 @@ This is the development package for libkioarchive
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=share/locale/kf5
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=share/locale/kf5
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %{kf5_find_lang}
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%{kf5_find_lang}
+%{kf5_find_htmldocs}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -148,8 +144,6 @@ This is the development package for libkioarchive
 %license LICENSES/*
 %{_libdir}/libkioarchive.so.5*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
