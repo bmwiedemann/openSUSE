@@ -1,7 +1,7 @@
 #
 # spec file for package kidentitymanagement
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kidentitymanagement
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ associated settings.
 
 %package -n libKF5IdentityManagement5
 Summary:        KDE PIM Libraries: Identity Management - core library
-Group:          Development/Libraries/KDE
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
@@ -63,7 +61,6 @@ associated settings.
 
 %package -n libKF5IdentityManagementWidgets5
 Summary:        KDE PIM Libraries: Identity Management - widgets library
-Group:          Development/Libraries/KDE
 Recommends:     %{name}-lang
 Requires:       libKF5IdentityManagement5 = %{version}
 
@@ -73,7 +70,6 @@ and associated settings.
 
 %package devel
 Summary:        KDE PIM Libraries: Identity Management - development files
-Group:          Development/Libraries/KDE
 Requires:       libKF5IdentityManagement5 = %{version}
 Requires:       libKF5IdentityManagementWidgets5 = %{version}
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
@@ -89,18 +85,16 @@ to develop applications that make use of multiple email identities.
 %autosetup -p1 -n kidentitymanagement-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5IdentityManagement5 -p /sbin/ldconfig
 %postun -n libKF5IdentityManagement5 -p /sbin/ldconfig
-
 %post -n libKF5IdentityManagementWidgets5 -p /sbin/ldconfig
 %postun -n libKF5IdentityManagementWidgets5 -p /sbin/ldconfig
 
@@ -124,8 +118,6 @@ to develop applications that make use of multiple email identities.
 %{_kf5_mkspecsdir}/qt_KIdentityManagement.pri
 %{_kf5_mkspecsdir}/qt_KIdentityManagementWidgets.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
