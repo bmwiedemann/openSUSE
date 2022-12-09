@@ -1,7 +1,7 @@
 #
 # spec file for package ksystemlog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ksystemlog
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://apps.kde.org/ksystemlog
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -57,20 +56,20 @@ want to quickly see problems occurring on their server.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.ksystemlog System Monitor
-  for i in {16,22,32,48,64,128}; do
-     mkdir -p %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
-     cp %{_datadir}/icons/oxygen/base/"$i"x"$i"/apps/utilities-log-viewer.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps/;
-  done
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.ksystemlog System Monitor
+for i in {16,22,32,48,64,128}; do
+    mkdir -p %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps
+    cp %{_datadir}/icons/oxygen/base/"$i"x"$i"/apps/utilities-log-viewer.png %{buildroot}%{_datadir}/icons/hicolor/"$i"x"$i"/apps/;
+done
 
 %files
 %license LICENSES/*
@@ -82,8 +81,6 @@ want to quickly see problems occurring on their server.
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_sharedir}/kxmlgui5/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
