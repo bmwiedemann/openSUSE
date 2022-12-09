@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           partitionmanager
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
 License:        GPL-3.0-or-later
-Group:          Productivity/File utilities
 URL:            https://apps.kde.org/partitionmanager
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -32,6 +31,7 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules >= 5.73
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -76,10 +76,9 @@ systems.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang partitionmanager
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang partitionmanager
+%{kf5_find_htmldocs}
 
 %suse_update_desktop_file org.kde.partitionmanager
 
@@ -97,8 +96,6 @@ systems.
 %{_kf5_kxmlguidir}/partitionmanager/
 %{_kf5_sharedir}/solid/actions/open_in_partitionmanager.desktop
 
-%if %{with released}
 %files lang -f partitionmanager.lang
-%endif
 
 %changelog
