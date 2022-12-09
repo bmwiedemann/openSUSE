@@ -1,7 +1,7 @@
 #
 # spec file for package okular
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,11 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           okular
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://okular.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -46,6 +45,7 @@ BuildRequires:  libepub-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmarkdown-devel
 BuildRequires:  libpoppler-qt5-devel
+BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libqca-qt5-devel
 BuildRequires:  libspectre-devel
 BuildRequires:  libtiff-devel
@@ -93,7 +93,6 @@ many other formats.
 
 %package spectre
 Summary:        PostScript support for the Okular document viewer
-Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}-%{release}
 
 %description spectre
@@ -103,7 +102,6 @@ to display PostScript documents and images.
 
 %package mobile
 Summary:        Document Viewer, Mobile UI
-Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}-%{release}
 Requires:       kirigami2
 
@@ -114,8 +112,8 @@ touch screen.
 
 %package devel
 Summary:        Development files for the Okular document viewer
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
+%requires_eq    libQt5Core-private-headers-devel
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(KF5XmlGui)
@@ -143,10 +141,8 @@ Document viewing program; supports document in various formats
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -258,8 +254,6 @@ Document viewing program; supports document in various formats
 %{_kf5_libdir}/libOkular5Core.so
 %{_kf5_prefix}/include/okular/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
