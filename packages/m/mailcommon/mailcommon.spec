@@ -1,7 +1,7 @@
 #
 # spec file for package mailcommon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mailcommon
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -84,14 +83,12 @@ framework to build applications which handle e-mail.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %package -n libKF5MailCommon5
 Summary:        Common Mail library for KDE PIM applications
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name}
 
 %description -n libKF5MailCommon5
@@ -104,7 +101,6 @@ to build email-handling applications.
 %package devel
 Summary:        Development package for mailcommon
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5MailCommon5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiMime)
@@ -132,8 +128,6 @@ This package contains the development headers for the mailcommon library.
 %{_kf5_mkspecsdir}/qt_MailCommon.pri
 %{_kf5_plugindir}/designer/mailcommonwidgets.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
