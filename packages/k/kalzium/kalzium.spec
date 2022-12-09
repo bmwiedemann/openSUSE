@@ -1,7 +1,7 @@
 #
 # spec file for package kalzium
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalzium
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Chemistry
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -64,7 +63,6 @@ Kalzium shows a periodic table of the elements.
 
 %package devel
 Summary:        Periodic Table of Elements
-Group:          Development/Libraries/KDE
 Requires:       kalzium = %{version}
 
 %description devel
@@ -79,16 +77,16 @@ Kalzium shows a periodic table of the elements.
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %fdupes -s %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%fdupes -s %{buildroot}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -103,7 +101,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/kalzium.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kalzium.*
-%{_kf5_kxmlguidir}/kalzium/
 %{_kf5_libdir}/libscience.so.*
 %{_kf5_mandir}/man1/kalzium.1%{ext_man}
 %{_kf5_sharedir}/kalzium/
@@ -113,8 +110,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_includedir}/libkdeedu/
 %{_kf5_libdir}/libscience.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
