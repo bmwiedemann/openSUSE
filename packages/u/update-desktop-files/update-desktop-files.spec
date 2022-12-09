@@ -1,7 +1,7 @@
 #
 # spec file for package update-desktop-files
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,9 +64,7 @@ Extract translations from all desktop files, polkit actions, mimetype descriptio
 and AppStream metainfo found in build root
 
 %prep
-%setup -q -n . -D -T 0
-mkdir %name
-cd %name
+%setup -q -D -T 0 -c
 # supi hack
 sed -e '/awk/d' < %SOURCE4 > brp-extract-translations
 
@@ -77,7 +75,7 @@ mkdir -p $RPM_BUILD_ROOT%_rpmconfigdir
 install -m0755 %SOURCE0 %SOURCE1 $RPM_BUILD_ROOT%_rpmconfigdir
 install -m0644 -D %SOURCE2 $RPM_BUILD_ROOT%_rpmmacrodir/macros.%name
 install -m0755 -D %SOURCE4 $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d/brp-70-trim-translations
-install -m0755 -D %name/brp-extract-translations $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d/brp-70-extract-translations
+install -m0755 -D brp-extract-translations $RPM_BUILD_ROOT/usr/lib/rpm/brp-suse.d/brp-70-extract-translations
 
 %files
 %defattr(-,root,root)
