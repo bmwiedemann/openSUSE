@@ -1,7 +1,7 @@
 #
 # spec file for package dragonplayer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dragonplayer
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://apps.kde.org/dragonplayer
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -65,16 +64,16 @@ Dragon Player is a simple video player.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.dragonplayer Video
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.dragonplayer Video
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -101,8 +100,6 @@ Dragon Player is a simple video player.
 %{_kf5_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
 %{_kf5_sharedir}/solid/actions/dragonplayer-opendvd.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
