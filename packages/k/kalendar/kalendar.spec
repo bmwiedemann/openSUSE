@@ -1,7 +1,7 @@
 #
 # spec file for package kalendar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%global __requires_exclude qmlimport\\(org\\.kde\\.kalendar.*
-%define kf5_version 5.91.0
+%global __requires_exclude qmlimport\\((org\\.kde\\.kalendar\\.1|org\\.kde\\.raven).*
+%define kf5_version 5.96.0
 %bcond_without released
 Name:           kalendar
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Akonadi) >= 5.19.0
 BuildRequires:  cmake(KF5AkonadiContact) >= 5.19.0
 BuildRequires:  cmake(KF5CalendarCore)
@@ -44,6 +45,9 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5MailCommon)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
@@ -53,6 +57,8 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(gpgme)
 Requires:       kalendarac
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
@@ -63,12 +69,20 @@ Requires:       qt5qmlimport(QtLocation.5)
 Requires:       qt5qmlimport(QtQuick.Dialogs.1)
 Requires:       qt5qmlimport(org.kde.kitemmodels.1)
 # Got vendored for now
-#Requires:       qt5qmlimport(org.kde.kirigamiaddons.treeview.1)
-# it only briefly existed in the devel project, no need for Provides/Obsoletes
-Conflicts:      kalendar-imports
+# Requires:       qt5qmlimport(org.kde.kirigamiaddons.treeview.1)
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 Calendar application using Akonadi to sync with external services (NextCloud, GMail, ...).
+
+%package plasmoid
+Summary:        Plasma widget to view address book contacts
+Supplements:    (%{name} and plasma5-workspace)
+Requires:       %{name} = %{version}
+
+%description plasmoid
+This package provides a Plasma widget to view address book contacts.
 
 %lang_package
 
@@ -81,9 +95,8 @@ Calendar application using Akonadi to sync with external services (NextCloud, GM
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %files
 %license LICENSES/*
@@ -97,9 +110,13 @@ Calendar application using Akonadi to sync with external services (NextCloud, GM
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kalendar.svg
 %{_kf5_qmldir}/org/kde/akonadi/
 %{_kf5_qmldir}/org/kde/kalendar/contact/
+%{_kf5_qmldir}/org/kde/kalendar/mail/
 
-%if %{with released}
+%files plasmoid
+%dir %{_kf5_plasmadir}/plasmoids
+%{_kf5_appstreamdir}/org.kde.kalendar.contact.appdata.xml
+%{_kf5_plasmadir}/plasmoids/org.kde.kalendar.contact
+
 %files lang -f %{name}.lang
-%endif
 
 %changelog

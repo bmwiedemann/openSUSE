@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec  9 13:30:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use qmlimport dependencies for public org.kde.kalendar.*
+- Drop requires on nonexisting -import subpackage
+- Install the plasmoid with kalendar if plasma5-workspace is installed
+
+-------------------------------------------------------------------
+Fri Dec  2 12:24:51 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:44:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:53:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
 Tue Nov  1 11:20:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.08.3
