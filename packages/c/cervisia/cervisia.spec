@@ -1,7 +1,7 @@
 #
 # spec file for package cervisia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           cervisia
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
-Group:          Development/Tools/Version Control
 URL:            https://apps.kde.org/cervisia
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,12 +64,12 @@ export CFLAGS="%{optflags} -fPIC"
   %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.cervisia Development RevisionControl
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.cervisia Development RevisionControl
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -98,8 +97,6 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_servicesdir}/org.kde.cervisiapart5.desktop
 %{_kf5_servicesdir}/org.kde.cvsservice5.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
