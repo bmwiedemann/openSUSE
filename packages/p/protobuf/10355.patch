@@ -7,16 +7,16 @@ Subject: [PATCH 1/2] Use release version instead of libtool version
  src/Makefile.am | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-Index: protobuf-21.10/src/Makefile.am
+Index: protobuf-21.11/src/Makefile.am
 ===================================================================
---- protobuf-21.10.orig/src/Makefile.am
-+++ protobuf-21.10/src/Makefile.am
+--- protobuf-21.11.orig/src/Makefile.am
++++ protobuf-21.11/src/Makefile.am
 @@ -18,7 +18,7 @@ else
  PTHREAD_DEF =
  endif
  
--PROTOBUF_VERSION = 32:10:0
-+PROTOBUF_VERSION = 3.21.10
+-PROTOBUF_VERSION = 32:11:0
++PROTOBUF_VERSION = 3.21.11
  
  if GCC
  # Turn on all warnings except for sign comparison (we ignore sign comparison
@@ -47,10 +47,10 @@ Index: protobuf-21.10/src/Makefile.am
  if HAVE_LD_VERSION_SCRIPT
  libprotoc_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libprotoc.map
  EXTRA_libprotoc_la_DEPENDENCIES = libprotoc.map
-Index: protobuf-21.10/cmake/libprotobuf-lite.cmake
+Index: protobuf-21.11/cmake/libprotobuf-lite.cmake
 ===================================================================
---- protobuf-21.10.orig/cmake/libprotobuf-lite.cmake
-+++ protobuf-21.10/cmake/libprotobuf-lite.cmake
+--- protobuf-21.11.orig/cmake/libprotobuf-lite.cmake
++++ protobuf-21.11/cmake/libprotobuf-lite.cmake
 @@ -112,7 +112,6 @@ if(protobuf_BUILD_SHARED_LIBS)
  endif()
  set_target_properties(libprotobuf-lite PROPERTIES
@@ -59,10 +59,10 @@ Index: protobuf-21.10/cmake/libprotobuf-lite.cmake
      OUTPUT_NAME ${LIB_PREFIX}protobuf-lite
      DEBUG_POSTFIX "${protobuf_DEBUG_POSTFIX}")
  add_library(protobuf::libprotobuf-lite ALIAS libprotobuf-lite)
-Index: protobuf-21.10/cmake/libprotobuf.cmake
+Index: protobuf-21.11/cmake/libprotobuf.cmake
 ===================================================================
---- protobuf-21.10.orig/cmake/libprotobuf.cmake
-+++ protobuf-21.10/cmake/libprotobuf.cmake
+--- protobuf-21.11.orig/cmake/libprotobuf.cmake
++++ protobuf-21.11/cmake/libprotobuf.cmake
 @@ -128,7 +128,6 @@ if(protobuf_BUILD_SHARED_LIBS)
  endif()
  set_target_properties(libprotobuf PROPERTIES
@@ -71,10 +71,10 @@ Index: protobuf-21.10/cmake/libprotobuf.cmake
      OUTPUT_NAME ${LIB_PREFIX}protobuf
      DEBUG_POSTFIX "${protobuf_DEBUG_POSTFIX}")
  add_library(protobuf::libprotobuf ALIAS libprotobuf)
-Index: protobuf-21.10/cmake/libprotoc.cmake
+Index: protobuf-21.11/cmake/libprotoc.cmake
 ===================================================================
---- protobuf-21.10.orig/cmake/libprotoc.cmake
-+++ protobuf-21.10/cmake/libprotoc.cmake
+--- protobuf-21.11.orig/cmake/libprotoc.cmake
++++ protobuf-21.11/cmake/libprotoc.cmake
 @@ -130,7 +130,6 @@ endif()
  set_target_properties(libprotoc PROPERTIES
      COMPILE_DEFINITIONS LIBPROTOC_EXPORTS
