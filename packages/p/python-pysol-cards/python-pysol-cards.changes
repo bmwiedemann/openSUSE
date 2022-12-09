@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec  8 10:07:54 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.14.2
+  0.14.2
+  * Avoid requiring optional deps - https://github.com/shlomif/pysol_cards/issues/4 .
+  0.14.1
+  * Avoid comments in requirements.txt - https://github.com/shlomif/pysol_cards/issues/4 .
+  0.14.0
+  * Convert from pbr to https://pypi.org/project/pydistman/ .
+  0.12.0
+  * bump ver
+  * enhance the README
+  * 'id' is a builtin
+  * add a test using named arguments
+  * optimize into a class var
+  * optimize
+  * add an integration test
+- added patches
+  fix https://github.com/shlomif/pysol_cards/issues/6
+  + python-pysol-cards-no-six.patch
+
+-------------------------------------------------------------------
 Mon Jun  7 12:37:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only build for python3- flavor, as -oslotest is only built for

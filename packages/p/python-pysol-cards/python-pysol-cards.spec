@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysol-cards
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pythons python3
 Name:           python-pysol-cards
-Version:        0.10.1
+Version:        0.14.2
 Release:        0
 Summary:        Python module for pysol-cards
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/pysol-cards/
 Source:         https://files.pythonhosted.org/packages/source/p/pysol_cards/pysol_cards-%{version}.tar.gz
+# https://github.com/shlomif/pysol_cards/issues/6
+Patch0:         python-pysol-cards-no-six.patch
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module pytest}
@@ -49,6 +51,7 @@ Freecell Pro deals.
 
 %prep
 %setup -q -n pysol_cards-%{version}
+%patch0 -p1
 # Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
 find . -name "*.py" -exec sed -i 's|#! %{_bindir}/env python|#!%{_bindir}/python3|' {} ";"
 
@@ -62,10 +65,11 @@ export LC_ALL=en_US.utf8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
+sed -i '/^addopts/d' setup.cfg
 %pytest
 
 %files %{python_files}
-%doc AUTHORS ChangeLog CONTRIBUTING.rst HACKING.rst
+%doc AUTHORS CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/*
 
