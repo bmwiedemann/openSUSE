@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover   4
 %define libname %{name}%{sover}
 # BRs would expand rings
@@ -22,7 +23,7 @@
 Name:           librist
 Version:        0.2.7
 Release:        0
-Summary:        Easily add the RIST protocol to your application
+Summary:        Reliable Internet Stream Transport protocol
 License:        BSD-2-Clause
 URL:            https://code.videolan.org/rist/librist
 Source0:        https://code.videolan.org/rist/librist/-/archive/v%{version}/librist-v%{version}.tar.gz
@@ -32,20 +33,21 @@ BuildRequires:  meson >= 0.47
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 %if %{with unbundle}
-BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  mbedtls-devel
+BuildRequires:  pkgconfig(libcjson)
 %endif
 
 %description
-A library that can be used to easily add the RIST protocol to your application.
+A library that can be used to speak the RIST protocol (as defined by Video
+Services Forum (VSF) Technical Recommendations TR-06-1 and TR-06-2).
 
 %package -n %{libname}
-Summary:        Development files for %{name}
+Summary:        Reliable Internet Stream Transport protocol
 Group:          System/Libraries
 
 %description -n %{libname}
-The package which contains the shared library for the RIST
-protocol library.
+A library that can be used to speak the RIST protocol (as defined by Video
+Services Forum (VSF) Technical Recommendations TR-06-1 and TR-06-2).
 
 %package devel
 Summary:        Development files for %{name}
@@ -58,7 +60,7 @@ developing applications that use %{name}.
 
 %package -n rist-tools
 Summary:        User tools for %{name}
-Group:          Development/Libraries/C and C++
+Group:          Productivity/Multimedia/Video/Editors and Convertors
 
 %description -n rist-tools
 This package contains the user tools for the RIST protocol library.
