@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  8 01:28:48 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.6.12 to fix CVE-2022-23471. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.6.11>
+
+-------------------------------------------------------------------
+Tue Dec  6 22:41:50 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.6.11. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.6.11>
+
+-------------------------------------------------------------------
 Tue Dec  6 04:48:06 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.6.9 for Docker v20.10.21-ce. Also includes a fix for
