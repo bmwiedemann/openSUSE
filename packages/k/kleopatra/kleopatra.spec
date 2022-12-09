@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kleopatra
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/kleopatra
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -35,6 +34,7 @@ BuildRequires:  extra-cmake-modules
 # c++-20 required
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  libboost_headers-devel
 BuildRequires:  update-desktop-files
@@ -83,10 +83,9 @@ export CXX=g++-10
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %suse_update_desktop_file org.kde.kleopatra Utility Security
 
@@ -124,8 +123,6 @@ export CXX=g++-10
 %{_kf5_sharedir}/kio/servicemenus/kleopatra_signencryptfolders.desktop
 %{_kf5_sharedir}/mime/packages/application-vnd-kde-kleopatra.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
