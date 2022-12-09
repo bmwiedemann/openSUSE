@@ -1,7 +1,7 @@
 #
 # spec file for package libkexiv2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkexiv2
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -47,7 +46,6 @@ metadata.
 
 %package -n %{lname}-%{_so}
 Summary:        Library to manipulate picture meta data
-Group:          System/Libraries
 
 %description -n %{lname}-%{_so}
 Libkexiv2 is a wrapper around Exiv2 library to manipulate pictures
@@ -55,7 +53,6 @@ metadata.
 
 %package devel
 Summary:        Build environment for libkexiv2, a library to manipulate picture meta data
-Group:          Development/Libraries/KDE
 Requires:       %{lname}-%{_so} = %{version}
 Obsoletes:      libkexiv2-kf5-devel < %{version}
 Provides:       libkexiv2-kf5-devel = %{version}
