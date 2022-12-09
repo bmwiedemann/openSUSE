@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-cryptography%{psuffix}
-Version:        38.0.3
+Version:        38.0.4
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -46,6 +46,7 @@ Patch3:         remove_python_3_6_deprecation_warning.patch
 %endif
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cargo >= 1.41.0
