@@ -1,10 +1,10 @@
-Index: ktorrent-19.11.70git.20220609T020421~88ed88d5/ktorrent/org.kde.ktorrent.desktop
+Index: ktorrent-19.11.70git.20220828T004538~df49a0fa/ktorrent/org.kde.ktorrent.desktop
 ===================================================================
---- ktorrent-19.11.70git.20220609T020421~88ed88d5.orig/ktorrent/org.kde.ktorrent.desktop	2022-06-09 04:04:21.000000000 +0200
-+++ ktorrent-19.11.70git.20220609T020421~88ed88d5/ktorrent/org.kde.ktorrent.desktop	2022-06-09 05:52:25.113221096 +0200
+--- ktorrent-19.11.70git.20220828T004538~df49a0fa.orig/ktorrent/org.kde.ktorrent.desktop	2022-08-28 02:45:38.000000000 +0200
++++ ktorrent-19.11.70git.20220828T004538~df49a0fa/ktorrent/org.kde.ktorrent.desktop	2022-08-31 22:37:26.760423058 +0200
 @@ -124,6 +124,7 @@
  X-DocPath=ktorrent/index.html
- SingleMainWindow=True
+ SingleMainWindow=true
  MimeType=application/x-bittorrent;application/x-torrent;x-scheme-handler/magnet;
 +InitialPreference=5
  X-DBUS-StartupType=Unique
