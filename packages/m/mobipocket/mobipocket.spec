@@ -1,7 +1,7 @@
 #
 # spec file for package mobipocket
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mobipocket
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        E-book plugin and library
 License:        GPL-2.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -42,7 +41,6 @@ Mobipocket E-book support for Okular.
 
 %package devel
 Summary:        E-book plugin and library
-Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 
 %description devel
