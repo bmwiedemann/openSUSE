@@ -1,7 +1,7 @@
 #
 # spec file for package ktuberling
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktuberling
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Potato drawing editor
 License:        GPL-2.0-or-later
-Group:          Amusements/Toys/Other
 URL:            https://apps.kde.org/ktuberling
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,19 +64,19 @@ face and goodies can be attached onto a potato-like guy.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.ktuberling Game KidsGame
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.ktuberling Game KidsGame
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/ktuberling/
 %{_kf5_applicationsdir}/org.kde.ktuberling.desktop
 %{_kf5_appsdir}/ktuberling/
@@ -85,10 +84,7 @@ face and goodies can be attached onto a potato-like guy.
 %{_kf5_bindir}/ktuberling
 %{_kf5_debugdir}/ktuberling.categories
 %{_kf5_iconsdir}/hicolor/*/*/*tuberling.png
-%{_kf5_kxmlguidir}/ktuberling/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
