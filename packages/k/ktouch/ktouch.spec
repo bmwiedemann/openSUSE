@@ -1,7 +1,7 @@
 #
 # spec file for package ktouch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktouch
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Touch Typing Tutor
 License:        GPL-2.0-or-later
-Group:          Amusements/Teaching/Other
 URL:            https://apps.kde.org/ktouch
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -80,16 +79,16 @@ A KDE program that helps you to learn and practice touch typing.
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.ktouch X-KDE-Edu-Teaching
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.ktouch X-KDE-Edu-Teaching
 
 %files
 %license LICENSES/*
@@ -103,8 +102,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_iconsdir}/hicolor/*/apps/ktouch.*
 %{_kf5_mandir}/man1/ktouch.1.gz
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
