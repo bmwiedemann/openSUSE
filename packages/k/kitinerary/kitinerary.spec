@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           kitinerary
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -31,7 +30,12 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  libopenssl-devel
+BuildRequires:  libphonenumber-devel
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  libxml2-devel
@@ -44,11 +48,8 @@ BuildRequires:  cmake(KPimPkPass)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
-Requires:       libKPimItinerary5 = %{version}
-%if 0%{?suse_version} > 1500
-BuildRequires:  libphonenumber-devel
 BuildRequires:  cmake(ZXing)
-%endif
+Requires:       libKPimItinerary5 = %{version}
 
 %description
 Kitinerary is a library which provides a data model and a system to extract information
@@ -56,7 +57,6 @@ from travel reservations. The model can then be reused in other applications.
 
 %package -n libKPimItinerary5
 Summary:        Data model and extraction system for travel reservations
-Group:          System/Libraries
 Recommends:     %{name}
 Recommends:     libKPimItinerary5-lang
 
@@ -67,7 +67,6 @@ This package contains the library itself.
 
 %package devel
 Summary:        Development files for kitinerary
-Group:          Development/Libraries/KDE
 Requires:       libKPimItinerary5 = %{version}
 Requires:       libqt5-qtdeclarative-private-headers-devel
 Requires:       cmake(KF5CalendarCore)
@@ -86,15 +85,17 @@ to build programs that use the kitinerary library.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang %{name} --with-man --with-qt --all-name
-%endif
+%find_lang %{name} --with-man --with-qt --all-name
 
 %check
 %ctest
@@ -119,8 +120,6 @@ to build programs that use the kitinerary library.
 %{_kf5_cmakedir}/KPimItinerary/
 %{_kf5_libdir}/libKPimItinerary.so
 
-%if %{with released}
 %files -n libKPimItinerary5-lang -f %{name}.lang
-%endif
 
 %changelog
