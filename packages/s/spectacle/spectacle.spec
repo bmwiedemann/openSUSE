@@ -1,7 +1,7 @@
 #
 # spec file for package spectacle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.90.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
-Group:          Productivity/Graphics/Other
 URL:            https://apps.kde.org/spectacle
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -82,7 +81,6 @@ online services.
 
 %package doc
 Summary:        Documentation for Spectacle
-Group:          Productivity/Graphics/Other
 Requires:       %{name}
 
 %description doc
@@ -95,16 +93,16 @@ screenshot capture program by KDE.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.spectacle Utility DesktopUtility
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.spectacle Utility DesktopUtility
 
 %post
 %systemd_user_post
@@ -144,8 +142,6 @@ screenshot capture program by KDE.
 %doc %lang(en) %{_kf5_htmldir}/en/spectacle/
 
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
