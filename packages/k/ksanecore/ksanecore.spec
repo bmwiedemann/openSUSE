@@ -22,11 +22,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ksanecore
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -46,7 +45,6 @@ KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 
 %package devel
 Summary:        Development files for KSaneCore, a Qt library for scanner hardware
-Group:          Development/Libraries/KDE
 Requires:       %{lname}%{_so} = %{version}
 Requires:       pkgconfig
 Requires:       sane-backends-devel
@@ -61,7 +59,6 @@ applications.
 
 %package -n %{lname}%{_so}
 Summary:        Qt interface for the SANE library for scanner hardware
-Group:          System/Libraries
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
@@ -79,9 +76,8 @@ KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post -n %{lname}%{_so} -p /sbin/ldconfig
 %postun -n %{lname}%{_so} -p /sbin/ldconfig
@@ -95,8 +91,6 @@ KSaneCore is a Qt-based interface for SANE library to control scanner hardware.
 %{_includedir}/KSaneCore/
 %{_kf5_libdir}/%{lname}.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
