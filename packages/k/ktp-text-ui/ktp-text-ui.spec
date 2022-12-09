@@ -1,7 +1,7 @@
 #
 # spec file for package ktp-text-ui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-text-ui
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Telepathy chat handler by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -76,17 +75,18 @@ a chat plasmoid, and a chat log viewer application.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
-  %fdupes %{buildroot}
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
-  cp %{_kf5_iconsdir}/breeze/apps/48/kde-im-log-viewer.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+
+%fdupes %{buildroot}
+
+mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
+cp %{_kf5_iconsdir}/breeze/apps/48/kde-im-log-viewer.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
 
 %files
 %license COPYING*
@@ -106,8 +106,6 @@ a chat plasmoid, and a chat log viewer application.
 %{_libexecdir}/ktp-adiumxtra-protocol-handler
 %{_libexecdir}/ktp-text-ui
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
