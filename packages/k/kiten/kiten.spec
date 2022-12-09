@@ -1,7 +1,7 @@
 #
 # spec file for package kiten
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,11 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kiten
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Japanese Reference/Study Tool
 # Data files are under CC-BY-SA-3.0 (edict) and CC-BY-SA-4.0 ("kanjidic"/SKIP numbers therein)
 License:        GPL-2.0-or-later AND CC-BY-SA-3.0 AND CC-BY-SA-4.0
-Group:          Amusements/Teaching/Language
 URL:            https://apps.kde.org/kiten
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -59,7 +58,6 @@ Kiten is a tool to learn Japanese.
 %package devel
 Summary:        Development files for kiten
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/KDE
 Requires:       kiten = %{version}
 
 %description devel
@@ -70,7 +68,6 @@ This package contains files for developing applications using kiten.
 %package -n fonts-KanjiStrokeOrders
 Summary:        Font for learning Japanese Kanji
 License:        BSD-3-Clause
-Group:          System/X11/Fonts
 BuildRequires:  fontpackages-devel
 Provides:       kdeedu4:%{_kde4_datadir}/fonts/kanjistrokeorders/KanjiStrokeOrders.ttf
 BuildArch:      noarch
@@ -95,15 +92,14 @@ stroke order used in other languages that use Chinese characters.
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %reconfigure_fonts_scriptlets -n fonts-KanjiStrokeOrders
 
@@ -138,8 +134,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_sharedir}/fonts/kanjistrokeorders/
 %{_kf5_sharedir}/fonts/kanjistrokeorders/KanjiStrokeOrders.ttf
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
