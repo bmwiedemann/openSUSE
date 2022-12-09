@@ -1,7 +1,7 @@
 #
 # spec file for package kdenlive
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdenlive
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://www.kdenlive.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -68,6 +67,7 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiPlugin)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
@@ -110,10 +110,10 @@ work.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %fdupes -s %{buildroot}
 rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 
@@ -133,14 +133,14 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %{_kf5_kxmlguidir}/kdenlive/
 %{_kf5_mandir}/man1/kdenlive*
 %{_kf5_plugindir}/mltpreview.so
+%dir %{_kf5_plugindir}/designer
+%{_kf5_plugindir}/designer/kdenlivewidgets.so
 %{_kf5_servicesdir}/mltpreview.desktop
 %{_kf5_sharedir}/kdenlive/
 %{_kf5_sharedir}/knotifications5/kdenlive.notifyrc
 %{_kf5_sharedir}/mime/packages/org.kde.kdenlive.xml
 %{_kf5_sharedir}/mime/packages/westley.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
