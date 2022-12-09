@@ -17,10 +17,10 @@
 
 
 %define qt5_version 5.15.2
-%define kf5_version 5.87
+%define kf5_version 5.94.0
 %bcond_without released
 Name:           skanpage
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Multi-Page Scanning Application
 License:        GPL-2.0-or-later
@@ -76,9 +76,7 @@ Features:
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name}
-%endif
 
 %files
 %license LICENSES/*
@@ -89,8 +87,6 @@ Features:
 %{_kf5_debugdir}/skanpage.categories
 %{_kf5_iconsdir}/hicolor/*/apps/skanpage.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
