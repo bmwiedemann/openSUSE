@@ -31,7 +31,6 @@ URL:            https://humdi.net/vnstat
 Source:         https://humdi.net/vnstat/vnstat-%{version}.tar.gz
 Source98:       https://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring
-Source1:        vnstat-if.sh
 Source2:        vnstat-cgi.conf
 Source3:        vnstat-create-db.sh
 Source4:        vnstat.init
@@ -88,12 +87,6 @@ make %{?_smp_mflags}
 %make_install
 mkdir -p %{buildroot}%{_localstatedir}/lib/vnstat/
 
-install -Dm 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/network/scripts/vnstat
-for state in up down; do
-    mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/network/if-${state}.d/
-    ln -s ../scripts/vnstat %{buildroot}%{_sysconfdir}/sysconfig/network/if-${state}.d/20-vnstat
-done
-
 install -Dm 0755 examples/vnstat.cgi %{buildroot}/srv/vnstat/vnstat.cgi
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/apache2/conf.d/vnstat.conf
 
@@ -145,9 +138,6 @@ make check
 %doc CHANGES FAQ README UPGRADE
 %license COPYING
 %config(noreplace) %{_sysconfdir}/vnstat.conf
-%{_sysconfdir}/sysconfig/network/scripts/vnstat
-%{_sysconfdir}/sysconfig/network/if-up.d/20-vnstat
-%{_sysconfdir}/sysconfig/network/if-down.d/20-vnstat
 %{_bindir}/vnstat-create-db
 %{_bindir}/vnstat
 %{_sbindir}/vnstatd
