@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Dec  8 09:53:36 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.0
+  * matomo-org/matomo
+    - #19917 Harden check for valid redirect urls in logme method
+    - #19887 Ensure Tag Manager update are run on updates
+    - #19957 Detect GA3, GA4 or GTM during installation and suggest migration guides
+    - #19903 Prevent exception possibilities in retrieving columns from previous data row
+    - #19909 Add help icon ability to subcategories in the Twig nav menu template
+    - #9969 Hide widget when not found (goals, custom dimensions, custom reports)
+    - #18550 Fix SQL syntax error due to incorrect parameter
+    - #19512 Improve / fix handling of best converting page on goal overview
+    - #19867 Add exception for invalid limit before grouping in API request
+    - #19879 Fix for opt-out toggling on page load and incorrect default state
+    - #19899 Avoid escaping of characters other than ”
+    - #19914 Handle invalid variable type sent to Period/Range.php
+    - #19970 Avoid double formatting of conversion rate in comparison mode
+    - #19992 Correctly escape email addresses in mailto links
+    - #17371 Ensure performance timings are sent as integer values
+    - #19626 Handle encoding in translation files
+    - #19846 Update Semver dependency
+    - #19872 Update autocomplete values
+    - #19968 Fix flat lines in Sparklines when comparing segments
+    - #19919 Fix value of delete_logs_enable not displayed correctly in UI
+    - #19922 Add help link Vue component
+    - #19948 Allow calls to opcache_reset to be disabled in config
+    - #19960 Fix incomplete tool tip for best converting entry page in goals conversion overview
+    - #19973 Resolve inaccurate charts when comparing 2 segments with week period in the visits overview
+    - #20017 Resolve incorrect archiving error notification
+  * matomo-org/tag-manager
+    - #563 Add custom visitor cookie timeout setting
+    - #568 Add translations for tags,triggers and variables
+    - #559 Resolve translation key is not loaded error on “Versions” page
+    - #311 Update ecommerce tracking in etracker
+    - #560 Fix a translation key not being registered with the client
+    - #571 Update etracker source URL
+    - #574 Add escaping for percent sign for ScrollReachTriggerPercentageDescription key
+  * matomo-org/device-detector
+    - #7268 Detect new brands : UE, Hykker
+    - #7273 Detect new brands : Hiberg, Hartens and detect existing brand : Infinix
+    - #7275 Identify Microsoft Office user agent
+    - #7276 Improved detection of office apps and detect ZorinOS
+    - #7277 Detect existing brand : Vivo, Zebra, Oppo, Xiaomi, Tecno, Samsung
+    - #7280 Detect new brands : AMA, OSCAL and detect existing brand :
+      Philips, Stylo, DEXP, X96, H96, Gionee, Wiko
+    - #7282 Detect new brands : Fluo, Quatro and detect existing brand :
+      iLife, Nvidia, Toshiba, Smooth Mobile, Samsung, Allwinner, China Mobile
+    - #7283 Change client family to null instead of empty string for consistency
+    - #7284 Adds detection for various libraries and improve detection for iPadOS
+    - #7286 Detect new brands : ALLINmobile and detect existing brand : Dell, Coolpad, Mint, Tecno Mobile
+    - #7287 Detect new brands : Uniden and detect existing brand : Vivo, Infinix
+    - #7289 Detect new brands : TETC, Vizmo and detect existing brand :
+      Oppo, Google. Samsung, Huawei, Sony, Cherry, Evercoss
+    - #7290 Adds client hints test for Brave browser
+    - #7291 Detect new brand : 10moons and detect existing brand : iBrit, iVooMi, Samsung, LG
+    - #7292 Detect new brands : Farassoo, Ophone, XWave and detect existing brand : InFone
+    - #7294 Detect new brands : Foxxd, K-Lite and Detect devices for existing brand: Hotwav
+  * matomo-org/component-ini
+    - #21 Avoid escaping of characters other than ”
+  * matomo-org/matomo-php-tracker
+    - #108 Fix possible notices on PHP 8.1
+
+-------------------------------------------------------------------
 Thu Oct 27 19:49:51 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.12.3
