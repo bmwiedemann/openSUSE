@@ -1,7 +1,7 @@
 #
 # spec file for package pim-sieve-editor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pim-sieve-editor
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Sieve scripts editor for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/sieveeditor
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -71,10 +70,10 @@ in KDE PIM applications.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.sieveeditor Network Email
 
 %post -p /sbin/ldconfig
@@ -91,8 +90,6 @@ in KDE PIM applications.
 %{_kf5_debugdir}/sieveeditor.renamecategories
 %{_kf5_libdir}/libsieveeditor.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
