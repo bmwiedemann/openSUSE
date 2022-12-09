@@ -15,7 +15,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 
 --- a/Doc/library/ensurepip.rst
 +++ b/Doc/library/ensurepip.rst
-@@ -57,8 +57,9 @@ is at least as recent as the one availab
+@@ -59,8 +59,9 @@ is at least as recent as the one availab
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
  active virtual environment). The installation location can be controlled
@@ -26,7 +26,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  * ``--root <dir>``: Installs ``pip`` relative to the given root directory
    rather than the root of the currently active virtual environment (if any)
    or the default root for the current Python installation.
-@@ -90,7 +91,7 @@ Module API
+@@ -92,7 +93,7 @@ Module API
     Returns a string specifying the available version of pip that will be
     installed when bootstrapping an environment.
  
@@ -35,7 +35,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
                          altinstall=False, default_pip=False, \
                          verbosity=0)
  
-@@ -100,6 +101,8 @@ Module API
+@@ -102,6 +103,8 @@ Module API
     If *root* is ``None``, then installation uses the default install location
     for the current environment.
  
@@ -44,7 +44,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     *upgrade* indicates whether or not to upgrade an existing installation
     of an earlier version of ``pip`` to the available version.
  
-@@ -120,6 +123,8 @@ Module API
+@@ -122,6 +125,8 @@ Module API
     *verbosity* controls the level of output to :data:`sys.stdout` from the
     bootstrapping operation.
  
@@ -139,7 +139,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1751,7 +1751,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
+@@ -1756,7 +1756,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -148,7 +148,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  altinstall: commoninstall
-@@ -1761,7 +1761,7 @@ altinstall: commoninstall
+@@ -1766,7 +1766,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \

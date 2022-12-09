@@ -4,7 +4,7 @@
 
 --- a/Lib/test/test_subprocess.py
 +++ b/Lib/test/test_subprocess.py
-@@ -272,7 +272,8 @@ class ProcessTestCase(BaseTestCase):
+@@ -278,7 +278,8 @@ class ProcessTestCase(BaseTestCase):
                       "time.sleep(3600)"],
                      # Some heavily loaded buildbots (sparc Debian 3.x) require
                      # this much time to start and print.

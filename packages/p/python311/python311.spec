@@ -67,7 +67,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define tarversion %{version}
 %endif
 # We don't process beta signs well
-%define         folderversion 3.11.0
+%define         folderversion %{tarversion}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -166,12 +166,6 @@ Patch35:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
 Patch36:        support-expat-CVE-2022-25236-patched.patch
-# PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
-# this patch makes things totally awesome
-Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
-# PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
-# Avoid DoS by decoding IDNA for too long domain names
-Patch38:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -438,8 +432,6 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
-%patch37 -p1
-%patch38 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

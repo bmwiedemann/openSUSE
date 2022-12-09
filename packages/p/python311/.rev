@@ -321,4 +321,368 @@ C API
 </comment>
     <requestid>1034963</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>97dcc0bca46310f15b47cb64cf3ce1f5</srcmd5>
+    <version>3.11.1</version>
+    <time>1670588280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.1:
+  - python -m http.server no longer allows terminal control
+    characters sent within a garbage request to be printed
+    to the stderr server lo This is done by changing the
+    http.server BaseHTTPRequestHandler .log_message method to
+    replace control characters with a \xHH hex escape before
+    printin
+  - Avoid publishing list of active per-interpreter audit hooks
+    via the gc module
+  - The IDNA codec decoder used on DNS hostnames by socket or
+    asyncio related name resolution functions no longer involves
+    a quadratic algorithm. This prevents a potential CPU denial
+    of service if an out-of-spec excessive length hostname
+    involving bidirectional characters were decoded. Some
+    protocols such as urllib http 3xx redirects potentially allow
+    for an attacker to supply such a name (CVE-2022-45061).
+  - Update bundled libexpat to 2.5.0
+  - Fix a shell code injection vulnerability in the
+    get-remote-certificate.py example script. The script no
+    longer uses a shell to run openssl commands. Issue reported
+    and initial fix by Caleb Shortt. Patch by Victor Stinner.
+  - Fix a crash when an object which does not have a dictionary
+    frees its instance values.
+  - Fix a bug in the tokenizer that could cause infinite
+    recursion when showing syntax warnings that happen in the
+    first line of the source. Patch by Pablo Galindo
+  - Fix an issue that could cause frames to be visible to Python
+    code as they are being torn down, possibly leading to memory
+    corruption or hard crashes of the interpreter.
+  - Fix a reference bug in _imp.create_builtin() after the
+    creation of the first sub-interpreter for modules builtins
+    and sys. Patch by Victor Stinner.
+  - Fixed a bug that was causing a buffer overflow if the
+    tokenizer copies a line missing the newline caracter from a
+    file that is as long as the available tokenizer buffer. Patch
+    by Pablo galindo
+  - Fix bug where an ExceptionGroup subclass can wrap a
+    BaseException.
+  - Fix zip path for venv created from a non-installed python on
+    POSIX platforms.
+  - Fix an issue that could potentially cause incorrect error
+    handling for some bytecode instructions.
+  - Fix an issue that prevented PyThreadState and
+    PyInterpreterState memory from being freed properly.
+  - Fix failure in except* with unhashable exceptions.
+  - Fix calculation of sys._base_executable when inside a POSIX
+    virtual environment using copies of the python binary when
+    the base installation does not provide the executable name
+    used by the venv. Calculation will fall back to alternative
+    names (“python&lt;MAJOR&gt;”, “python&lt;MAJOR&gt;.&lt;MINOR&gt;”).
+  - Update faulthandler to emit an error message with the proper
+    unexpected signal number. Patch by Dong-hee Na.
+  - Fix location of SyntaxError for a try block with both except
+    and except*.
+  - Fix the error reporting positions of specialized traceback
+    anchors when the source line contains Unicode characters.
+  - Fix subscription of type aliases containing bare generic
+    types or types like TypeVar: for example tuple[A, T][int] and
+    tuple[TypeVar, T][int], where A is a generic type, and T is a
+    type variable.
+  - Lower the recursion depth for marshal on WASI to support
+    wasmtime 2.0/main.
+  - Fix multiple crashes in debug mode when str subclasses are
+    used instead of str itself.
+  - Fix an issue where member descriptors (such as those for
+    __slots__) could behave incorrectly or crash instead of
+    raising a TypeError when accessed via an instance of an
+    invalid type.
+  - Suppress ImportError for invalid query for help()
+    command. Patch by Dong-hee Na.
+  - Fix detection of MAC addresses for uuid on certain OSs. Patch
+    by Chaim Sanders
+  - Print exception class name instead of its string
+    representation when raising errors from ctypes calls.
+  - os.sched_yield() now release the GIL while calling
+    sched_yield(2). Patch by Dong-hee Na.
+  - Fix an issue that could delay the specialization of PRECALL
+    instructions.
+  - Bugfix: PyFunction_GetAnnotations() should return a borrowed
+    reference. It was returning a new reference.
+  - Ensure that all Python frame objects are backed by “complete”
+    frames.
+  - Fixed a missing incref/decref pair in
+    Exception.__setstate__(). Patch by Ofey Chan.
+  - Fix the Python path configuration used to initialized
+    sys.path at Python startup. Paths are no longer encoded
+    to UTF-8/strict to avoid encoding errors if it contains
+    surrogate characters (bytes paths are decoded with the
+    surrogateescape error handler). Patch by Victor Stinner.
+  - Fix overly-broad source position information for chained
+    comparisons used as branching conditions.
+  - At Python exit, sometimes a thread holding the GIL can
+    wait forever for a thread (usually a daemon thread) which
+    requested to drop the GIL, whereas the thread already
+    exited. To fix the race condition, the thread which requested
+    the GIL drop now resets its request before exiting. Issue
+    discovered and analyzed by Mingliang ZHAO. Patch by Victor
+    Stinner.
+  - Fix a possible assertion failure, fatal error, or SystemError
+    if a line tracing event raises an exception while opcode
+    tracing is enabled.
+  - Fix undefined behaviour in C code of null pointer arithmetic.
+  - Make sure that all frame objects created are created from
+    valid interpreter frames. Prevents the possibility of invalid
+    frames in backtraces and signal handlers.
+  - Disable incorrect pickling of the C implemented classmethod
+    descriptors.
+  - On WASI ENOTCAPABLE is now mapped to PermissionError. The
+    errno modules exposes the new error number. getpath.py now
+    ignores PermissionError when it cannot open landmark files
+    pybuilddir.txt and pyenv.cfg.
+  - Allow pdb to locate source for frozen modules in the standard
+    library.
+  - Raise ValueError instead of SystemError when methods of
+    uninitialized io.IncrementalNewlineDecoder objects are
+    called. Patch by Oren Milman.
+  - Fix a possible assertion failure in io.FileIO when the opener
+    returns an invalid file descriptor.
+  - Also escape s in the http.server
+    BaseHTTPRequestHandler.log_message so that it is technically
+    possible to parse the line and reconstruct what the original
+    data was. Without this a xHH is ambiguious as to if it is a
+    hex replacement we put in or the characters r”x” came through
+    in the original request line.
+  - asyncio.get_event_loop() now only emits a deprecation warning
+    when a new event loop was created implicitly. It no longer
+    emits a deprecation warning if the current event loop was
+    set.
+  - Fix bug when calling trace.CoverageResults with valid infile.
+  - Fix a bug in handling class cleanups in
+    unittest.TestCase. Now addClassCleanup() uses separate lists
+    for different TestCase subclasses, and doClassCleanups() only
+    cleans up the particular class.
+  - Release the GIL when calling termios APIs to avoid blocking
+    threads.
+  - Fix ast.increment_lineno() to also cover ast.TypeIgnore when
+    changing line numbers.
+  - Fix bug in urllib.parse.urlparse() that causes URL schemes
+    that begin with a digit, a plus sign, or a minus sign to be
+    parsed incorrectly.
+  - Check the number of arguments in substitution in user
+    generics containing a TypeVarTuple and one or more TypeVar.
+  - Fix substitution of ParamSpec followed by TypeVarTuple in
+    generic aliases.
+  - Fix substitution of TypeVarTuple and ParamSpec together in
+    user generics.
+  - Fixed bug where inspect.signature() reported incorrect
+    arguments for decorated methods.
+  - Fix SystemError in ctypes when exception was not set during
+    __initsubclass__.
+  - Remove older version of
+    _SSLProtocolTransport.get_write_buffer_limits in
+    asyncio.sslproto
+  - fix negative numbers failing in verify()
+  - Fix statistics.NormalDist pickle with 0 and 1 protocols.
+  - enum.auto() is now correctly activated when combined with
+    other assignment values. E.g. ONE = auto(), 'some text' will
+    now evaluate as (1, 'some text').
+  - Update the bundled copy of pip to version 22.3.1.
+  - Clean up refleak on failed module initialisation in _zoneinfo
+  - Clean up refleaks on failed module initialisation in in
+    _pickle
+  - Clean up refleak on failed module initialisation in _io.
+  - Fix memory leak in math.dist() when both points don’t have
+    the same dimension. Patch by Kumar Aditya.
+  - [3.11] Applied changes from importlib_metadata 4.11.4
+    through 4.13, including compatibility and robustness
+    fixes for Distribution objects without _normalized_name,
+    disallowing invalid inputs to Distribution.from_name, and
+    refined behaviors in PathDistribution._name_from_stem and
+    PathDistribution._normalized_name.
+  - Fix argument typechecks in _overlapped.WSAConnect() and
+    _overlapped.Overlapped.WSASendTo() functions.
+  - Prevent crashing in traceback when retrieving the byte-offset
+    for some source files that contain certain unicode
+    characters.
+  - Fix internal error in the re module which in very rare
+    circumstances prevented compilation of a regular expression
+    containing a conditional expression without the “else”
+    branch.
+  - Fix asyncio.StreamWriter.drain() to call
+    protocol.connection_lost callback only once on Windows.
+  - Add a mutex to unittest.mock.NonCallableMock to protect
+    concurrent access to mock attributes.
+  - Fix hang on Windows in subprocess.wait_closed() in asyncio
+    with ProactorEventLoop. Patch by Kumar Aditya.
+  - Fix infinite loop in unittest when a self-referencing chained
+    exception is raised
+  - tkinter.Text.count() raises now an exception for options
+    starting with “-” instead of silently ignoring them.
+  - On uname_result, restored expectation that _fields and
+    _asdict would include all six properties including processor.
+  - A createSocket() method was added to SysLogHandler.
+  - Fix bug in urllib.parse.urlparse() that causes certain port
+    numbers containing whitespace, underscores, plus and minus
+    signs, or non-ASCII digits to be incorrectly accepted.
+  - Allow venv to pass along PYTHON* variables to ensurepip and
+    pip when they do not impact path resolution
+  - On macOS, fix a crash in syslog.syslog() in multi-threaded
+    applications. On macOS, the libc syslog() function is not
+    thread-safe, so syslog.syslog() no longer releases the GIL to
+    call it. Patch by Victor Stinner.
+  - Allow BUILTINS to be a valid field name for frozen
+    dataclasses.
+  - Wrap network errors consistently in urllib FTP support, so
+    the test suite doesn’t fail when a network is available but
+    the public internet is not reachable.
+  - Make sure patch.dict() can be applied on async functions.
+  - Earlier in 3.11 we deprecated
+    asyncio.Task.cancel(&quot;message&quot;). We realized we were too
+    harsh, and have undeprecated it.
+  - Change deprecate warning message in unittest from It is
+    deprecated to return a value!=None to It is deprecated to
+    return a value that is not None from a test case
+  - Fixes AttributeError when subprocess.check_output() is used
+    with argument input=None and either of the arguments encoding
+    or errors are used.
+  - Fix is_private properties in the ipaddress module. Previously
+    non-private networks (0.0.0.0/0) would return True from this
+    method; now they correctly return False.
+  - Avoid spurious tracebacks from asyncio when default executor
+    cleanup is delayed until after the event loop is closed (e.g.
+    as the result of a keyboard interrupt).
+  - Avoid a crash in the C version of
+    asyncio.Future.remove_done_callback() when an evil argument
+    is passed.
+  - Remove tokenize.NL check from tabnanny.
+  - Fix generation of the default name of
+    tkinter.Checkbutton. Previously, checkbuttons in different
+    parent widgets could have the same short name and share
+    the same state if arguments “name” and “variable” are not
+    specified. Now they are globally unique.
+  - Update bundled libexpat to 2.4.9
+  - Fix race condition in asyncio where process_exited() called
+    before the pipe_data_received() leading to inconsistent
+    output. Patch by Kumar Aditya.
+  - Fixed check in multiprocessing.resource_tracker that
+    guarantees that the length of a write to a pipe is not
+    greater than PIPE_BUF.
+  - Corrected type annotation for dataclass attribute
+    pstats.FunctionProfile.ncalls to be str.
+  - Fix repr of Any subclasses.
+  - Work around missing socket functions in socket’s __repr__.
+  - In inspect, fix overeager replacement of “typing.” in
+    formatting annotations.
+  - Fix handling of bytes path-like objects in os.ismount().
+  - Fix handling compiler warnings (SyntaxWarning and
+    DeprecationWarning) in codeop.compile_command() when checking
+    for incomplete input. Previously it emitted warnings and
+    raised a SyntaxError. Now it always returns None for
+    incomplete input without emitting any warnings.
+  - To avoid apparent memory leaks when asyncio.open_connection()
+    raises, break reference cycles generated by local exception
+    and future instances (which has exception instance as its
+    member var). Patch by Dong Uk, Kang.
+  - Fixed flickering of the turtle window when the tracer is
+    turned off. Patch by Shin-myoung-serp.
+  - Fix asyncio subprocess transport to kill process cleanly
+    when process is blocked and avoid RuntimeError when loop is
+    closed. Patch by Kumar Aditya.
+  - Prevent error when activating venv in nested fish instances.
+  - TarFile.next() now returns None when called on an empty
+    tarfile.
+  - Document the optional callback parameter of WeakMethod. Patch
+    by Géry Ogam.
+  - Restrict use of sockets instead of pipes for stdin of
+    subprocesses created by asyncio to AIX platform only.
+  - shutil.copytree() now applies the ignore_dangling_symlinks
+    argument recursively.
+  - Fix IndexError in argparse.ArgumentParser when a store_true
+    action is given an explicit argument.
+  - Document that calling variadic functions with ctypes requires
+    special care on macOS/arm64 (and possibly other platforms).
+  - Remove extra row
+  - Clarified the conflicting advice given in the ast
+    documentation about ast.literal_eval() being “safe” for use
+    on untrusted input while at the same time warning that it
+    can crash the process. The latter statement is true and is
+    deemed unfixable without a large amount of work unsuitable
+    for a bugfix. So we keep the warning and no longer claim that
+    literal_eval is safe.
+  - Restructured the documentation for the os.wait* family of
+    functions, and improved the docs for os.waitid() with more
+    explanation of the possible argument constants.
+  - Skip test_normalization() of test_unicodedata if it
+    fails to download NormalizationTest.txt file from
+    pythontest.net. Patch by Victor Stinner.
+  - Correct test_marsh on (32 bit) x86: test_deterministic sets
+    was failing.
+  - Optional big memory tests in test_sqlite3 now catch the
+    correct sqlite.DataError exception type in case of too large
+    strings and/or blobs passed.
+  - Fix a bug in the typing tests where a test relying
+    on CPython-specific implementation details was not
+    decorated with @cpython_only and was not skipped on other
+    implementations.
+  - Add tests for star-unpacking with PEP 646, and some other
+    miscellaneous PEP 646 tests.
+  - Added explicit coverage of Py_Initialize (and hence
+    Py_InitializeEx) back to the embedding tests (all other
+    embedding tests migrated to Py_InitializeFromConfig in Python
+    3.11)
+  - Some C API tests were moved into the new Lib/test/test_capi/
+    directory.
+  - Fix -Wimplicit-int, -Wstrict-prototypes, and
+    -Wimplicit-function-declaration compiler warnings in
+    configure checks.
+  - Fix a compilation issue with GCC 12 on macOS.
+  - Fix -Wimplicit-int compiler warning in configure check for
+    PTHREAD_SCOPE_SYSTEM.
+  - Fix a possible fd leak in Programs/_freeze_module.c
+    introduced in Python 3.11.
+  - Fix build with PYTHON_FOR_REGEN=python3.8.
+  - Specify the full path to the source location for make
+    docclean (needed for cross-builds).
+  - Don’t use vendored libmpdec headers if --with-system-libmpdec
+    is passed to configure. Don’t use vendored libexpat headers
+    if --with-system-expat is passed to !configure.
+  - Fix the build process of clang compiler for _bootstrap_python
+    if LTO optimization is applied. Patch by Matthias Görgens and
+    Dong-hee Na.
+  - wasm32-emscripten builds for browsers now include
+    concurrent.futures for asyncio and unittest.mock.
+  - wasm32-emscripten platform no longer builds resource module,
+    getresuid(), getresgid(), and their setters. The APIs are
+    stubs and not functional.
+  - Updated pegen regeneration script on Windows to find and
+    use Python 3.9 or higher. Prior to this, pegen regeneration
+    already required 3.9 or higher, but the script may have used
+    lower versions of Python.
+  - Fix a bug in the previous bugfix that caused IDLE to
+    not start when run with 3.10.8, 3.12.0a1, and at least
+    Microsoft Python 3.10.2288.0 installed without the Lib/test
+    package. 3.11.0 was never affected.
+  - The wasm_build.py script now pre-builds Emscripten ports,
+    checks for broken EMSDK versions, and warns about pkg-config
+    env vars.
+  - The new tool Tools/wasm/wasm_builder.py automates configure,
+    compile, and test steps for building CPython on WebAssembly
+    platforms.
+  - Fix handling of module docstrings in Tools/i18n/pygettext.py.
+  - PyBUF_* constants were marked as part of Limited API
+    of Python 3.11+. These were available in 3.11.0 with
+    Py_LIMITED_API defined for 3.11, and are necessary to use the
+    buffer API.
+  - Fix use-after-free in Py_SetPythonHome(NULL),
+    Py_SetProgramName(NULL) and _Py_SetProgramFullPath(NULL)
+    function calls. Issue reported by Benedikt Reinartz. Patch by
+    Victor Stinner.
+  - Py_InitializeEx now correctly calls PyConfig_Clear after
+    initializing the interpreter (the omission didn’t cause a
+    memory leak only because none of the dynamically allocated
+    config fields are populated by the wrapper function)
+- Removed upstreamed patches:
+  - 98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+  - CVE-2022-45061-DoS-by-IDNA-decode.patch
+</comment>
+    <requestid>1041729</requestid>
+  </revision>
 </revisionlist>
