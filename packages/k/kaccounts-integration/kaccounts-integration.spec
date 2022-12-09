@@ -1,7 +1,7 @@
 #
 # spec file for package kaccounts-integration
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kaccounts-integration
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
@@ -60,7 +59,6 @@ Facebook, Owncloud, IMAP, Jabber and others.
 
 %package -n libkaccounts%{sover}
 Summary:        KDE Accounts Providers - System Library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libkaccounts%{sover}
@@ -70,7 +68,6 @@ Facebook, Owncloud, IMAP, Jabber and others.
 
 %package devel
 Summary:        KDE Accounts Providers - Development Files
-Group:          Development/Libraries/KDE
 Requires:       libkaccounts%{sover} = %{version}
 Requires:       libsignon-qt5-devel
 Requires:       cmake(AccountsQt5)
@@ -91,14 +88,13 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post   -n libkaccounts%{sover} -p /sbin/ldconfig
 %postun -n libkaccounts%{sover} -p /sbin/ldconfig
@@ -108,7 +104,6 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
-%{_kf5_servicesdir}/
 %{_kf5_sharedir}/kpackage/kcms/kcm_kaccounts/
 
 %files -n libkaccounts%{sover}
@@ -120,8 +115,6 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %{_kf5_libdir}/libkaccounts.so
 %{_kf5_prefix}/include/KAccounts/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
