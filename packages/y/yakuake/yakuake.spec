@@ -1,7 +1,7 @@
 #
 # spec file for package yakuake
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           yakuake
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/yakuake
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -30,6 +29,11 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1550
+# c++-20 required
+BuildRequires:  gcc10-PIE
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
@@ -64,16 +68,19 @@ Yakuake is a Drop-down terminal emulator based on Konsole technologies.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%if 0%{?suse_version} < 1550
+  export CXX=g++-10
+%endif
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %suse_update_desktop_file -G "Terminal Program" org.kde.yakuake System TerminalEmulator
-%if %{with released}
-  %find_lang %{name}
-%endif
-  %fdupes -s %{buildroot}
+%kf5_makeinstall -C build
+%suse_update_desktop_file -G "Terminal Program" org.kde.yakuake System TerminalEmulator
+
+%find_lang %{name}
+
+%fdupes -s %{buildroot}
 
 %files
 %license LICENSES/*
@@ -89,8 +96,6 @@ Yakuake is a Drop-down terminal emulator based on Konsole technologies.
 %{_kf5_sharedir}/yakuake/
 %{_kf5_sharedir}/dbus-1/services/org.kde.yakuake.service
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
