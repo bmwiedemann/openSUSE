@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  8 07:22:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop vnstat-if.sh, the used options are not supported anymore by
+  vnstat and only create error messages
+
+-------------------------------------------------------------------
 Sat Oct 22 13:06:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10:
