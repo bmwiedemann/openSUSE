@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5-plugin-python3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,16 @@
 
 %define rname kdev-python
 %if 0%{suse_version} >= 1550
-# Not compatible with Python 3.10 rh#1898116 #bpo40939
-# https://invent.kde.org/kdevelop/kdev-python/-/issues/4
-%define mypython python39
+%define mypython python310
 %else 
 %define mypython python3
 %endif
 %bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
-Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -64,10 +61,8 @@ ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 %description
 A KDevelop plugin which provides Python language support, including code completion and debugging using PDB.
 
-%if %{with released}
 %package lang
 Summary:        Translations for package %{name}
-Group:          System/Localization
 Requires:       %{name} = %{version}
 Supplements:    (bundle-lang-other and %{name})
 Conflicts:      kdevelop4-plugin-python-lang
@@ -76,7 +71,6 @@ BuildArch:      noarch
 
 %description lang
 Provides translations to the package %{name}
-%endif
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -89,9 +83,7 @@ Provides translations to the package %{name}
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang kdevpython %{name}.lang
-%endif
 
 %fdupes -s %{buildroot}
 
@@ -108,8 +100,6 @@ Provides translations to the package %{name}
 %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevpythonsupport/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
