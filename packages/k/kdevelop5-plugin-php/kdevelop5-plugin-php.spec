@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop5-plugin-php
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %define rname   kdev-php
 %bcond_without released
 Name:           kdevelop5-plugin-php
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
-Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -56,24 +55,24 @@ web applications in PHP using Kdevelop5.
 
   * PHP built-in functions, classes, constants, superglobals
   * user-defined functions, classes, constants, superglobals, variables, etc.
-  * proper code completion for objects which respects access modifiers (private, public, protected) and differentiates between static/non-static members and methods
+  * proper code completion for objects which respects access modifiers (private,
+    public, protected) and differentiates between static/non-static members and
+    methods
   * code completion for overridable and implementable functions inside classes
   * hints in the argument list of function- and method class
-  * sane code completion after keywords such as extends, implements, catch(), new, throw and some more
+  * sane code completion after keywords such as extends, implements, catch(),
+    new, throw and some more
 
 %package devel
 Summary:        Development package for kdevelop5-plugin-php
-Group:          Development/Tools/IDE
 Requires:       kdevelop5-plugin-php = %{version}
 
 %description devel
 This package contains the development files needed in order to use the
 kdevelop5-plugin-php API.
 
-%if %{with released}
 %package lang
 Summary:        Translations for package %{name}
-Group:          System/Localization
 Requires:       %{name} = %{version}
 Supplements:    packageand(bundle-lang-other:%{name})
 # Language file conflicts
@@ -84,7 +83,6 @@ BuildArch:      noarch
 
 %description lang
 Provides translations to the package %{name}
-%endif
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -96,9 +94,7 @@ Provides translations to the package %{name}
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang kdevphp %{name}.lang
-%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -117,8 +113,6 @@ Provides translations to the package %{name}
 %{_includedir}/kdev-php/
 %{_kf5_cmakedir}/KDevPHP/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
