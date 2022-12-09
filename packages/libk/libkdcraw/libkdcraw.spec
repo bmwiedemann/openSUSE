@@ -1,7 +1,7 @@
 #
 # spec file for package libkdcraw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkdcraw
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ programs.
 
 %package -n %{lname}%{_so}
 Summary:        Shared library interface around dcraw
-Group:          Development/Libraries/KDE
 
 %description -n %{lname}%{_so}
 Libkdcraw is a C++ interface around dcraw binary program used to decode
@@ -65,7 +63,6 @@ programs.
 
 %package devel
 Summary:        Shared library interface around dcraw
-Group:          Development/Libraries/KDE
 Requires:       %{lname}%{_so} = %{version}
 Obsoletes:      libkdcraw-kf5-devel < %{version}
 Provides:       libkdcraw-kf5-devel = %{version}
