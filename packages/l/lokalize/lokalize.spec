@@ -1,7 +1,7 @@
 #
 # spec file for package lokalize
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           lokalize
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/lokalize
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -67,17 +66,17 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 export CXXFLAGS="%{optflags} -fPIC"
 export CFLAGS="%{optflags} -fPIC"
-  %cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
-  %cmake_build
+%cmake_kf5 -d build -- -DCMAKE_CXXFLAGS="%{optflags}" -DCMAKE_CFLAGS="%{optflags}"
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.lokalize Development Translation
-  %fdupes -s %{buildroot}%{_kf5_sharedir}/lokalize
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.lokalize Development Translation
+%fdupes -s %{buildroot}%{_kf5_sharedir}/lokalize
 
 %files
 %license LICENSES/*
@@ -92,8 +91,6 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_notifydir}/lokalize.notifyrc
 %{_kf5_sharedir}/lokalize/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
