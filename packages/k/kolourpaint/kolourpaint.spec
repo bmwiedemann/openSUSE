@@ -1,7 +1,7 @@
 #
 # spec file for package kolourpaint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kolourpaint
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
 # GPL-2.0 is the license of the Bulgarian translation
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND GFDL-1.2-or-later AND GPL-2.0-only
-Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://apps.kde.org/kolourpaint
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -54,17 +53,17 @@ Paint program by KDE
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.kolourpaint RasterGraphics
-  %fdupes -s %{buildroot}%{_datadir}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.kolourpaint RasterGraphics
+%fdupes -s %{buildroot}%{_datadir}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -81,8 +80,6 @@ Paint program by KDE
 %{_kf5_libdir}/libkolourpaint_lgpl.so*
 %{_kf5_sharedir}/kolourpaint/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
