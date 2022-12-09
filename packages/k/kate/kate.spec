@@ -1,7 +1,7 @@
 #
 # spec file for package kate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kate
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
-Group:          Productivity/Text/Editors
 URL:            https://kate-editor.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -66,6 +65,7 @@ BuildRequires:  cmake(Qt5Widgets)
 %if 0%{?suse_version} <= 1500
 # <charconv> is not available in GCC7
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 Requires:       %{name}-plugins = %{version}
 Obsoletes:      %{name}5 < %{version}
@@ -76,7 +76,6 @@ Kate is an advanced text editor by KDE.
 
 %package -n kwrite
 Summary:        KDE Text Editor
-Group:          Productivity/Text/Editors
 Requires:       %{name}-plugins = %{version}
 Obsoletes:      kwrite5 < %{version}
 
@@ -85,7 +84,6 @@ KWrite is a text editor by KDE.
 
 %package plugins
 Summary:        KDE Text Editor plugins
-Group:          Productivity/Text/Editors
 Obsoletes:      kate5-plugins < %{version}
 Provides:       ktexteditorpreviewplugin = %{version}
 Obsoletes:      ktexteditorpreviewplugin < %{version}
@@ -109,10 +107,9 @@ plugins and data files for Kate and KWrite editors.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %doc README*
@@ -134,6 +131,9 @@ plugins and data files for Kate and KWrite editors.
 %{_kf5_bindir}/kate
 %{_kf5_iconsdir}/hicolor/*/apps/kate.*
 %{_kf5_libdir}/libkateprivate.so.*
+%dir %{_kf5_sharedir}/kconf_update/
+%{_kf5_sharedir}/kconf_update/katesession_migration.upd
+%{_kf5_sharedir}/kconf_update/migrate_kate_sessions_applet_to_kdeplasma-addons.sh
 
 %files -n kwrite
 %doc README*
@@ -146,17 +146,10 @@ plugins and data files for Kate and KWrite editors.
 %files plugins
 %license LICENSES/*
 %doc README*
-%if 0%{?_appstreamkpackage}
-%{_kf5_appstreamdir}/org.kde.plasma.katesessions.appdata.xml
-%endif
 %{_kf5_plugindir}/
-%{_kf5_servicesdir}/
 %{_kf5_sharedir}/kateproject/
 %{_kf5_sharedir}/katexmltools/
-%{_kf5_sharedir}/plasma/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
