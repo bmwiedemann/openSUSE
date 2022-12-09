@@ -17,14 +17,13 @@
 
 
 Name:           audacity
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
-%define pkg_version 3.2.1
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://audacityteam.org/
-Source:         https://github.com/audacity/audacity/archive/Audacity-%{pkg_version}.tar.gz
+Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
 Source3:        vst3sdk-3.7.6_build_18.tar.xz
@@ -105,7 +104,7 @@ physical memory size can be edited.
 %lang_package
 
 %prep
-%setup -q -n %{name}-Audacity-%{pkg_version}
+%setup -q -n %{name}-Audacity-%{version}
 %autopatch -p1
 
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
@@ -145,7 +144,7 @@ export CXXFLAGS="$CFLAGS -std=gnu++17"
 
 # Workaround for an old cmake in Leap 15.3
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-export LD_LIBRARY_PATH=%{_builddir}/%{name}-Audacity-%{pkg_version}/build/utils/
+export LD_LIBRARY_PATH=%{_builddir}/%{name}-Audacity-%{version}/build/utils/
 %endif
 
 %cmake_build
