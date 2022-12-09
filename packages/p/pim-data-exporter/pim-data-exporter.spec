@@ -1,7 +1,7 @@
 #
 # spec file for package pim-data-exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pim-data-exporter
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Data exporter for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/pimdataexporter
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -79,10 +78,9 @@ for backup and archival.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -99,8 +97,6 @@ for backup and archival.
 %{_kf5_debugdir}/pimdataexporter.renamecategories
 %{_kf5_libdir}/libpimdataexporterprivate.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
