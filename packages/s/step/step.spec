@@ -1,7 +1,7 @@
 #
 # spec file for package step
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           step
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        An interactive physics simulator
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Physics
 URL:            https://apps.kde.org/step
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -47,6 +46,7 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Plotting)
 BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
@@ -70,20 +70,20 @@ experiment may be changed, even during simulation.
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name --with-qt
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.%{name} X-KDE-Edu-Teaching
-  %fdupes -s %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name --with-qt
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.%{name} X-KDE-Edu-Teaching
+%fdupes -s %{buildroot}
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc AUTHORS ChangeLog README
 %doc %lang(en) %{_kf5_htmldir}/en/step/
 %{_kf5_applicationsdir}/org.kde.step.desktop
@@ -93,15 +93,12 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/step.kcfg
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_knsrcfilesdir}/step.knsrc
-%dir %{_kf5_kxmlguidir}/step/
-%{_kf5_kxmlguidir}/step/stepui.rc
 %{_kf5_sharedir}/mime/packages/org.kde.step.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
+# Not detected by find-lang.sh
 %dir %{_kf5_sharedir}/locale/nn/LC_SCRIPTS/
 %dir %{_kf5_sharedir}/locale/nn/LC_SCRIPTS/step
 %lang(nn) %{_kf5_sharedir}/locale/nn/LC_SCRIPTS/step/step.js
-%endif
 
 %changelog
