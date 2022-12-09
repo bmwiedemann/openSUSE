@@ -1,7 +1,7 @@
 #
 # spec file for package zanshin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
-Group:          Productivity/Office/Organizers
 URL:            https://zanshin.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -60,9 +59,8 @@ job and personal life. You will never forget anything anymore.
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file org.kde.zanshin Utility TimeUtility
-%if %{with released}
-  %find_lang %{name}
-%endif
+
+%find_lang %{name}
 
 %files
 %license LICENSES/*
@@ -81,12 +79,9 @@ job and personal life. You will never forget anything anymore.
 %{_kf5_plugindir}/pim5/kontact/kontact_zanshinplugin.so
 %{_kf5_plugindir}/krunner_zanshin.so
 %{_kf5_plugindir}/zanshin_part.so
-%{_kf5_servicesdir}/kontact/
 %{_kf5_servicesdir}/plasma-runner-zanshin.desktop
 %{_kf5_servicesdir}/zanshin_part.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
