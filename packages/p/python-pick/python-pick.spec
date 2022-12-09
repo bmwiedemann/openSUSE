@@ -17,7 +17,7 @@
 
 
 Name:           python-pick
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Curses-based interactive selection list module
 License:        MIT
