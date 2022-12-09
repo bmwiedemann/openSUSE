@@ -1,7 +1,7 @@
 #
 # spec file for package libkdegames
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkdegames
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -69,7 +68,6 @@ This package contains data which is required by the KDE games library.
 %package qt5-imports
 Summary:        QML modules for KDE games
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 Conflicts:      libkf5kdegames6 < %{version}
 
 %description qt5-imports
@@ -78,7 +76,6 @@ This package contains QML modules for KDE games.
 %package -n libKF5KDEGames%{sover}
 Summary:        Library for KDE Games
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 Requires:       libkdegames >= %{version}
 Requires:       %{name}-qt5-imports >= %{version}
 # libkf5kdegames6 actually contained libKF5KDEGames.so.7 at some point,
@@ -92,7 +89,6 @@ This package contains the KDE games library.
 %package devel
 Summary:        Library for KDE Games: Build Environment
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5KDEGames%{sover} = %{version}
 Requires:       libsndfile-devel
 Requires:       openal-soft-devel
@@ -116,7 +112,6 @@ develop KDE games.
 %package -n kdegames-carddecks-other
 Summary:        Further Card Decks for KDE Games
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 Requires:       kdegames-carddecks-default = %{version}
 BuildArch:      noarch
 
@@ -126,7 +121,6 @@ This package contains several further card deck set for KDE games.
 %package -n kdegames-carddecks-default
 Summary:        Default Card Decks for KDE Games
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 BuildArch:      noarch
 
 %description -n kdegames-carddecks-default
@@ -143,15 +137,15 @@ This package contains the default card deck set for KDE games.
 rm -r src/carddecks/svg-konqi-modern
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang libkdegames5
-  %endif
-  %fdupes %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang libkdegames5
+
+%fdupes %{buildroot}
 
 %post -n libKF5KDEGames%{sover} -p /sbin/ldconfig
 %postun -n libKF5KDEGames%{sover} -p /sbin/ldconfig
@@ -177,7 +171,7 @@ rm -r src/carddecks/svg-konqi-modern
 
 %files devel
 %{_kf5_cmakedir}/KF5KDEGames/
-%{_kf5_includedir}/KF5KDEGames/
+%{_kf5_includedir}/KDEGames/
 %{_kf5_libdir}/libKF5KDEGames.so
 %{_kf5_libdir}/libKF5KDEGamesPrivate.so
 
@@ -192,8 +186,6 @@ rm -r src/carddecks/svg-konqi-modern
 %doc README
 %{_kf5_sharedir}/carddecks/svg-oxygen-air
 
-%if %{with released}
 %files lang -f libkdegames5.lang
-%endif
 
 %changelog
