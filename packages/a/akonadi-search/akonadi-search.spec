@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-search
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 %define soversion 5
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-search
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -56,7 +55,6 @@ AkonadiSearch is a framework for searching and managing PIM metadata
 
 %package -n libKF5AkonadiSearch%{soversion}
 Summary:        Core libraries for AkonadiSearch
-Group:          System/Libraries
 Provides:       libKF5AkonadiSearch = 22.04.0
 Obsoletes:      libKF5AkonadiSearch < 22.04.0
 
@@ -66,7 +64,6 @@ This package contains the core libraries
 
 %package devel
 Summary:        Development package for baloo5
-Group:          Development/Libraries/KDE
 Requires:       libKF5AkonadiSearch%{soversion} = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiMime)
@@ -89,10 +86,9 @@ Development files for the AkonadiSearch library.
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5AkonadiSearch%{soversion} -p /sbin/ldconfig
 %postun -n libKF5AkonadiSearch%{soversion} -p /sbin/ldconfig
@@ -127,8 +123,6 @@ Development files for the AkonadiSearch library.
 %{_kf5_libdir}/libKF5AkonadiSearchPIM.so
 %{_kf5_libdir}/libKF5AkonadiSearchXapian.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
