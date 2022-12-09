@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  8 11:30:00 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/man-group/pytest-plugins/issues/209
+  + python-pytest-listener-no-six.patch
+
+-------------------------------------------------------------------
 Sat May 15 10:08:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix a prolem with our version of setuptools not finding the

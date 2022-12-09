@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-listener
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,16 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-listener/pytest-listener-%{version}.tar.gz
+# https://github.com/man-group/pytest-plugins/issues/209
+Patch0:         python-pytest-listener-no-six.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest-server-fixtures
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-server-fixtures}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module six}
 Simple JSON listener using TCP that listens for data and stores it in a queue for later retrieval.
 
 %prep
-%setup -q -n pytest-listener-%{version}
+%autosetup -p1 -n pytest-listener-%{version}
 # required to find the one file in the topdir
 sed -i "/packages=find_packages/ a \        py_modules=['pytest_listener']," setup.py
 
