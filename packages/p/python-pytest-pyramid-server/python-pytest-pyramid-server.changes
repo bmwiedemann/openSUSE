@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  8 12:05:36 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/man-group/pytest-plugins/issues/209
+  + python-pytest-pyramid-server-no-six.patch
+
+-------------------------------------------------------------------
 Wed Sep 18 12:06:12 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.7.0

@@ -1,0 +1,13 @@
+Index: pytest-pyramid-server-1.7.0/pytest_pyramid_server.py
+===================================================================
+--- pytest-pyramid-server-1.7.0.orig/pytest_pyramid_server.py
++++ pytest-pyramid-server-1.7.0/pytest_pyramid_server.py
+@@ -4,7 +4,7 @@ Created on 25 Apr 2012
+ @author: eeaston
+ '''
+ import os
+-from six.moves import configparser
++import configparser
+ import sys
+ import socket
+ import glob

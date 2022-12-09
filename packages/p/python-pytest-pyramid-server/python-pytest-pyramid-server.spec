@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-pyramid-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-pyramid-server/pytest-pyramid-server-%{version}.tar.gz
+# https://github.com/man-group/pytest-plugins/issues/209
+Patch0:         python-pytest-pyramid-server-no-six.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +49,7 @@ BuildRequires:  %{python_module waitress}
 Pyramid server fixture for py.test.
 
 %prep
-%setup -q -n pytest-pyramid-server-%{version}
+%autosetup -p1 -n pytest-pyramid-server-%{version}
 
 %build
 %python_build
