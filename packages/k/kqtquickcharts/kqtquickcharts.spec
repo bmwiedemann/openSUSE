@@ -1,7 +1,7 @@
 #
 # spec file for package kqtquickcharts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kqtquickcharts
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Plugin to render beautiful and interactive graphs
 License:        LGPL-2.1-or-later
-Group:          Amusements/Teaching/Other
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
