@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:22:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.0.1 
+  * Robot Framework 6.0.1 is the first bug fix release in the RF 6.0 series.
+    It mainly fixes a bug in using localized BDD prefixes consisting of more than one word (#4515) as well as a regression
+    related to the library search order (#4516).
+    Questions and comments related to the release can be sent to the robotframework-users mailing list or to Robot Framework Slack,
+    and possible bugs submitted to the issue tracker.
+    If you have pip installed, just run
+      pip install --pre --upgrade robotframework
+    to install the latest available release or use
+      pip install robotframework==6.0.1
+    to install exactly this version. Alternatively you can download the source distribution from PyPI and install it manually.
+    For more details and other installation approaches, see the installation instructions.
+    Robot Framework 6.0.1 was released on Thursday November 3, 2022.
+    Full list of fixes and enhancements
+    ID	        Type	Priority	Summary
+    #4515	bug	high	Localized BDD prefixes consisting of more than one word don't work
+    #4516	bug	high	Set Library Search Order doesn't work if there are two matches and one is from standard libraries
+    #4519	bug	medium	Libdoc's DocumentationBuilder doesn't anymore work with resource files with .robot extension
+    #4520	enhancement	medium	Document Libdoc's public API better
+    #4521	enhancement	medium	Enhance robot.utils.timestr_to_secs so that it works with timedelta objects
+    #4523	bug	low	Unit test test_parse_time_with_now_and_utc fails around DST change
+    #4525	bug	low	Wrong version numbers used in the User Guide and in a deprecation warning
+
+-------------------------------------------------------------------
 Sat Oct 29 00:32:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 6.0.0 
