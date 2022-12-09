@@ -1,7 +1,7 @@
 #
 # spec file for package grantleetheme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           grantleetheme
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -51,7 +50,6 @@ the grantleetheme library adds Grantlee theme support for PIM applications.
 %package -n libKF5GrantleeTheme5
 Summary:        GrantleeTheme library for KDE PIM applications
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       grantleetheme = %{version}
 
 %description -n libKF5GrantleeTheme5
@@ -60,7 +58,6 @@ The GrantleeTheme library
 %package devel
 Summary:        Development package for grantleetheme
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5GrantleeTheme5 = %{version}
 
 %description devel
@@ -78,9 +75,10 @@ The development package for the grantleetheme library
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
+
+%global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
 %post -n libKF5GrantleeTheme5  -p /sbin/ldconfig
 %postun -n libKF5GrantleeTheme5 -p /sbin/ldconfig
@@ -92,16 +90,16 @@ The development package for the grantleetheme library
 %{_kf5_mkspecsdir}/qt_GrantleeTheme.pri
 
 %files
+%dir %{_kf5_libdir}/grantlee/
+%dir %{_kf5_libdir}/grantlee/%{grantlee_shortver}
 %{_kf5_debugdir}/grantleetheme.categories
 %{_kf5_debugdir}/grantleetheme.renamecategories
-%{_kf5_libdir}/grantlee/
+%{_kf5_libdir}/grantlee/%{grantlee_shortver}/kde_grantlee_plugin.so
 
 %files -n libKF5GrantleeTheme5
 %license LICENSES/*
 %{_kf5_libdir}/libKF5GrantleeTheme.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
