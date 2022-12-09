@@ -1,7 +1,7 @@
 #
 # spec file for package eventviews
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           eventviews
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,7 +54,6 @@ calendar events in agenda, list, month view or timeline fashion.
 %package -n libKF5EventViews5
 Summary:        Eventviews Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name}
 
 %description -n libKF5EventViews5
@@ -65,7 +63,6 @@ calendar events in agenda, list, month view or timeline fashion.
 %package devel
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libKF5EventViews5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiCalendar)
@@ -88,9 +85,8 @@ The development package for the eventviews libraries
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post  -n libKF5EventViews5 -p /sbin/ldconfig
 %postun -n libKF5EventViews5 -p /sbin/ldconfig
@@ -99,7 +95,6 @@ The development package for the eventviews libraries
 %license LICENSES/*
 %{_kf5_debugdir}/eventviews.categories
 %{_kf5_debugdir}/eventviews.renamecategories
-%{_kf5_servicetypesdir}/calendardecoration.desktop
 
 %files devel
 %{_kf5_cmakedir}/KF5EventViews/
@@ -110,8 +105,6 @@ The development package for the eventviews libraries
 %files -n libKF5EventViews5
 %{_kf5_libdir}/libKF5EventViews.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
