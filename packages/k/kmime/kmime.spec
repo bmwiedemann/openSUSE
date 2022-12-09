@@ -1,7 +1,7 @@
 #
 # spec file for package kmime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmime
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE PIM libraries MIME support
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -43,7 +42,6 @@ This package contains the basic packages for KDE PIM applications.
 
 %package -n libKF5Mime5
 Summary:        KDE PIM libraries MIME Support
-Group:          Development/Libraries/KDE
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 
@@ -52,7 +50,6 @@ This package provides MIME support for KDE PIM applications
 
 %package devel
 Summary:        Build environment for the KDE PIM MIME libraries
-Group:          Development/Libraries/KDE
 Requires:       libKF5Mime5 = %{version}
 Requires:       cmake(KF5Codecs)
 
@@ -66,14 +63,13 @@ to develop KDE PIM applications.
 %autosetup -p1 -n kmime-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5Mime5 -p /sbin/ldconfig
 %postun -n libKF5Mime5 -p /sbin/ldconfig
@@ -89,8 +85,6 @@ to develop KDE PIM applications.
 %{_kf5_libdir}/libKF5Mime.so
 %{_kf5_mkspecsdir}/qt_KMime.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
