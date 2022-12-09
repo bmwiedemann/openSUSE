@@ -169,4 +169,12 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment></comment>
     <requestid>965764</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>28d43d4e8e9fc92d7863a9e122b8c57b</srcmd5>
+    <version>4.5.2</version>
+    <time>1670588200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041387</requestid>
+  </revision>
 </revisionlist>

@@ -36,7 +36,6 @@ BuildRequires:  %{python_module pytest > 5.4.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools_scm >= 5.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  sqlite3
