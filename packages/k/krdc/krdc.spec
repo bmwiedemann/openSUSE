@@ -1,7 +1,7 @@
 #
 # spec file for package krdc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krdc
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://apps.kde.org/krdc
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -60,7 +59,6 @@ Krdc allows to connect to VNC and RDP compatible servers.
 
 %package devel
 Summary:        Development files for krdc
-Group:          Development/Libraries/KDE
 Requires:       krdc = %{version}
 
 %description devel
@@ -75,21 +73,22 @@ Development libraries and headers needed to build software using krdc
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  for i in 128 16 22 32 48 64
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+for i in 128 16 22 32 48 64
   do
      mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps
      cp %{_kf5_iconsdir}/oxygen/base/${i}x${i}/apps/krdc.png %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps/
   done
-  %suse_update_desktop_file -r org.kde.krdc System RemoteAccess
+
+%suse_update_desktop_file -r org.kde.krdc System RemoteAccess
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -114,8 +113,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_includedir}/krdccore_export.h
 %{_kf5_libdir}/libkrdccore.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
