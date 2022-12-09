@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug  9 09:56:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
+Tue Aug  2 19:18:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.32.0:
+  * Overwrite existing X authority files to avoid corruption
+  * Change logind-check-graphical default config value to true
+  * Block autologin if shell in nologin or false
+  * Fix failure if with greeters sending two login requests quickly.
+  * Drop Qt 4 support, it's been unsupported since 2015
+  * Fix lightdm_set_layout
+  * Improve method of determining a session is Wayland
+  * Don't call setenv with a NULL value - the behaviour is undefined
+  * Replace deprecated QAbstractItemModel::setRoleNames
+  * Move D-Bus conf file to $(datadir)/dbus-1/system.d (bsc#1205939)
+  * Fix tests failing when compiled with --with-greeter-user
+  * Use Python 3 in tests
+  * Disable compiler optimizations for test programs
+  * Compilation fix for glibc 2.33
+  * Remove deprecated use of G_TYPE_INSTANCE_GET_PRIVATE, G_PARAM_PRIVATE
+  * Fix compile failure due to use of clearenv on FreeBSD
+  * Use a size_t to resolve a compile warning
+  * Fix DesktopManager typo in man page
+- drop lightdm-glibc-2.33-fix.patch (upstream) 
+
+-------------------------------------------------------------------
 Fri Dec 31 23:02:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers

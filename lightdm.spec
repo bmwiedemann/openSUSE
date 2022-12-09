@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,14 +33,14 @@
 %define typelibname     typelib-1_0-LightDM-1
 %define rundir          /run
 Name:           lightdm
-Version:        1.30.0
+Version:        1.32.0
 Release:        0
 Summary:        Lightweight, Cross-desktop Display Manager
 License:        GPL-3.0-or-later
 Group:          System/X11/Displaymanagers
 URL:            https://freedesktop.org/wiki/Software/LightDM
 Source:         https://github.com/CanonicalLtd/lightdm/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/CanonicalLtd/lightdm/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+#Source1:        https://github.com/CanonicalLtd/lightdm/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-greeter.pamd
 Source4:        X11-displaymanagers-%{name}
@@ -62,7 +62,6 @@ Patch3:         lightdm-disable-utmp-handling.patch
 Patch4:         lightdm-use-run-dir.patch
 # PATCH-FIX-OPENSUSE ignore-known-symlink-sessions.patch boo#1030873 -- Ignore known synlink sessions.
 Patch5:         lightdm-ignore-known-symlink-sessions.patch
-Patch6:         lightdm-glibc-2.33-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -233,10 +232,10 @@ rm %{buildroot}%{_sysconfdir}/pam.d/lightdm \
    %{buildroot}%{_sysconfdir}/pam.d/lightdm-autologin \
    %{buildroot}%{_sysconfdir}/pam.d/lightdm-greeter
 %if 0%{?suse_version} >= 1550
-  mkdir -p %{buildroot}%{_distconfdir}/pam.d
-  install %{SOURCE8} %{buildroot}%{_distconfdir}/pam.d/lightdm
-  install %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/lightdm-autologin
-  install -Dpm 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/lightdm-greeter
+  mkdir -p %{buildroot}%{_pam_vendordir}
+  install %{SOURCE8} %{buildroot}%{_pam_vendordir}/lightdm
+  install %{SOURCE9} %{buildroot}%{_pam_vendordir}/lightdm-autologin
+  install -Dpm 0644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/lightdm-greeter
 %else
   install %{SOURCE8} %{buildroot}%{_sysconfdir}/pam.d/lightdm
   install %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/lightdm-autologin
@@ -333,15 +332,15 @@ fi
 %config(noreplace) %{_sysconfdir}/lightdm/users.conf
 %config(noreplace) %{_sysconfdir}/lightdm/keys.conf
 %if 0%{?suse_version} >= 1550
-%{_distconfdir}/pam.d/lightdm
-%{_distconfdir}/pam.d/lightdm-autologin
-%{_distconfdir}/pam.d/lightdm-greeter
+%{_pam_vendordir}/lightdm
+%{_pam_vendordir}/lightdm-autologin
+%{_pam_vendordir}/lightdm-greeter
 %else
 %config %{_sysconfdir}/pam.d/lightdm
 %config %{_sysconfdir}/pam.d/lightdm-autologin
 %config %{_sysconfdir}/pam.d/lightdm-greeter
 %endif
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.DisplayManager.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.DisplayManager.conf
 %dir %{_prefix}/lib/X11/displaymanagers/
 %{_prefix}/lib/X11/displaymanagers/lightdm
 %{_prefix}/lib/X11/displaymanagers/default-displaymanager
