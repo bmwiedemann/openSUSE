@@ -1,7 +1,7 @@
 #
 # spec file for package kmail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmail
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
-Group:          Productivity/Networking/Email/Clients
 URL:            https://apps.kde.org/kmail2
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -123,14 +122,12 @@ KMail is the KDE mail client.
 
 %package application-icons
 Summary:        mail client icon
-Group:          Productivity/Networking/Email/Clients
 
 %description application-icons
 The KMail application icon that is shared with a number of applications
 
 %package -n ktnef
 Summary:        Viewer for email attachments in TNEF format
-Group:          Productivity/Networking/Email/Clients
 Requires:       kdepim-runtime
 Obsoletes:      ktnef5 < %{version}
 Provides:       ktnef5 = %{version}
@@ -149,10 +146,9 @@ KTNEF is a viewer for email attachments in the TNEF format.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -229,8 +225,6 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_iconsdir}/hicolor/scalable/apps/kmail.svg
 %{_kf5_iconsdir}/breeze-dark/*/emblems/gpg-key-trust-level-*.svg
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
