@@ -1,7 +1,7 @@
 #
 # spec file for package ark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ark
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/ark
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -71,7 +70,6 @@ This is a KDE application to work with compressed archives.
 
 %package -n libkerfuffle%{SOMAJOR}
 Summary:        KDE Archiver Tool
-Group:          System/Libraries
 
 %description -n libkerfuffle%{SOMAJOR}
 This is a KDE application to work with compressed archives.
@@ -82,16 +80,16 @@ This is a KDE application to work with compressed archives.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.ark System Archiving
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.ark System Archiving
 
 %post -n libkerfuffle%{SOMAJOR} -p /sbin/ldconfig
 %postun -n libkerfuffle%{SOMAJOR} -p /sbin/ldconfig
@@ -107,6 +105,10 @@ This is a KDE application to work with compressed archives.
 %{_kf5_appstreamdir}/org.kde.ark.appdata.xml
 %{_kf5_bindir}/ark
 %{_kf5_configkcfgdir}/ark.kcfg
+%{_kf5_configdir}/arkrc
+%dir %{_kf5_sharedir}/kconf_update
+%{_kf5_sharedir}/kconf_update/ark.upd
+%{_kf5_sharedir}/kconf_update/ark_add_hamburgermenu_to_toolbar.sh
 %{_kf5_debugdir}/ark.categories
 %{_kf5_iconsdir}/hicolor/*/apps/*
 %{_kf5_plugindir}/kf5/parts/arkpart.so
@@ -114,16 +116,12 @@ This is a KDE application to work with compressed archives.
 %{_kf5_plugindir}/kf5/kfileitemaction/compressfileitemaction.so
 %{_kf5_plugindir}/kf5/kfileitemaction/extractfileitemaction.so
 %{_kf5_plugindir}/kf5/kio_dnd/extracthere.so
-%{_kf5_servicesdir}/ark_part.desktop
-%{_kf5_servicetypesdir}/kerfufflePlugin.desktop
 
 %files -n libkerfuffle%{SOMAJOR}
 %license COPYING*
 %{_kf5_libdir}/libkerfuffle.so.%{SOMAJOR}
 %{_kf5_libdir}/libkerfuffle.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
