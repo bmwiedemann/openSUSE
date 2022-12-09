@@ -720,4 +720,12 @@
     <comment>- Don't hardcode the grantlee short version.</comment>
     <requestid>1035764</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>609d3bf99690a6a95cc3d42634c9a51a</srcmd5>
+    <version>22.12.0</version>
+    <time>1670588229</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
+    <requestid>1041453</requestid>
+  </revision>
 </revisionlist>

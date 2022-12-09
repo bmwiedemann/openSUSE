@@ -1,7 +1,7 @@
 #
 # spec file for package kcalutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcalutils
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -54,7 +53,6 @@ applications access and use calendar data via the KCalCore library.
 
 %package -n libKF5CalendarUtils5
 Summary:        Library with utility functions for handling calendar data
-Group:          System/Libraries
 Requires:       %{name} = %{version}
 
 %description  -n libKF5CalendarUtils5
@@ -63,7 +61,6 @@ applications access and use calendar data via the KCalCore library.
 
 %package devel
 Summary:        Development files for kcalutils
-Group:          Development/Libraries/KDE
 Requires:       libKF5CalendarUtils5
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
@@ -75,9 +72,7 @@ Provides:       kcalutils5-devel = %{version}
 This package contains necessary include files and libraries needed
 to develop applications wanting to use kcalutils.
 
-%if %{with released}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1 -n kcalutils-%{version}
@@ -88,9 +83,8 @@ to develop applications wanting to use kcalutils.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
@@ -114,8 +108,6 @@ to develop applications wanting to use kcalutils.
 %dir %{_kf5_libdir}/grantlee/%{grantlee_shortver}
 %{_kf5_libdir}/grantlee/%{grantlee_shortver}/kcalendar_grantlee_plugin.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
