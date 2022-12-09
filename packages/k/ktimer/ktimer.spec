@@ -1,7 +1,7 @@
 #
 # spec file for package ktimer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktimer
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Countdown Launcher
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/ktimer
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -58,10 +57,10 @@ Countdown launching tool by KDE
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.ktimer Utility TimeUtility
 
 %files
@@ -72,8 +71,6 @@ Countdown launching tool by KDE
 %{_kf5_iconsdir}/hicolor/*/apps/ktimer.png
 %{_kf5_appstreamdir}/org.kde.ktimer.appdata.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
