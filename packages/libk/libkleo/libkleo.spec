@@ -1,7 +1,7 @@
 #
 # spec file for package libkleo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkleo
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,7 +54,6 @@ and certificate management.
 %package -n libKF5Libkleo5
 Summary:        LibKleo library for kdepim
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       libkleo = %{version}
 
 %description -n libKF5Libkleo5
@@ -65,7 +63,6 @@ applications to handle cryptographic key and certificate management.
 %package devel
 Summary:        Development package for libkleo
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5Libkleo5 = %{version}
 Requires:       libgpgmepp-devel
 Requires:       cmake(QGpgme)
@@ -84,9 +81,8 @@ The development package for the libkleo libraries.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5Libkleo5 -p /sbin/ldconfig
 %postun -n libKF5Libkleo5 -p /sbin/ldconfig
@@ -107,8 +103,6 @@ The development package for the libkleo libraries.
 %{_kf5_libdir}/libKF5Libkleo.so
 %{_kf5_mkspecsdir}/qt_Libkleo.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
