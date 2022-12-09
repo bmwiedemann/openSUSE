@@ -17,7 +17,7 @@
 
 
 Name:           python-yarl
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
