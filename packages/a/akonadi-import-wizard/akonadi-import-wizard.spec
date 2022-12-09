@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-import-wizard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %define lname libKPimImportWizard5
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-import-wizard
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -68,7 +67,6 @@ KDE PIM applications.
 
 %package -n %{lname}
 Summary:        Assistant to import PIM data
-Group:          System/GUI/KDE
 Recommends:     %{name} = %{version}
 
 %description -n %{lname}
@@ -77,7 +75,6 @@ wizard functionality to KDE PIM applications.
 
 %package devel
 Summary:        Development files for the PIM data import assistant
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 
@@ -96,10 +93,10 @@ KDE PIM applications.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file -u org.kde.akonadiimportwizard Network Email
 
 %post -n %{lname} -p /sbin/ldconfig
@@ -134,8 +131,6 @@ KDE PIM applications.
 %{_kf5_includedir}/KPim/importwizard/
 %{_kf5_libdir}/libKPimImportWizard.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
