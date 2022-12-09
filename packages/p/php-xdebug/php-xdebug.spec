@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.1.5
+Version:        3.2.0
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
@@ -39,12 +39,13 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://xdebug.org
 Source0:        https://xdebug.org/files/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
-BuildRequires:  %{php_name}-devel >= 7.2
+BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-soap
-Provides:       php-%{pkg_name} = %{version}
-Obsoletes:      php-%{pkg_name} < %{version}
+BuildRequires:  autoconf
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
+Provides:       php-%{pkg_name} = %{version}
+Obsoletes:      php-%{pkg_name} < %{version}
 
 %description
 The Xdebug extension helps debugging scripts by providing
