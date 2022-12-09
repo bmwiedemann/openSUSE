@@ -52,4 +52,26 @@
   * Fix formatting in release notes (forwarded request 984250 from dirkmueller)</comment>
     <requestid>984410</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90c9a4259b6a5fd0ecca614b1ad99869</srcmd5>
+    <version>3.1.6</version>
+    <time>1670588185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * Patch release with miscellaneous bug/doc/build fixes.
+  * [#269] fix memory leak in V3fArrayFromBuffer
+  * [#268] Add &lt;cstdint&gt; for int64_t
+  * [#263] Initialize x in testRoots.cpp:solve() to suppress compiler
+    warning
+  * [#262] Fix gcc compiler warning in testFun.cpp
+  * [#261] Test return value of extractSHRT to avoid uninitialized reference
+  * [#260] Fix example code so it compiles as is
+  * [#259] Cuda safety in several headers
+  * [#256] Fix markdown and typos in README.md
+  * [#255] Do not warn if half.h has already being included
+  * [#250] Fix compiler warnings on windows
+  * [#249] Remove irrelevant cvs ignore files
+  * [#248] Update sphinx version (forwarded request 1040797 from dirkmueller)</comment>
+    <requestid>1041319</requestid>
+  </revision>
 </revisionlist>

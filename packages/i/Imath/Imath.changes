@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:47:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.6:
+  * Patch release with miscellaneous bug/doc/build fixes.
+  * [#269] fix memory leak in V3fArrayFromBuffer
+  * [#268] Add <cstdint> for int64_t
+  * [#263] Initialize x in testRoots.cpp:solve() to suppress compiler
+    warning
+  * [#262] Fix gcc compiler warning in testFun.cpp
+  * [#261] Test return value of extractSHRT to avoid uninitialized reference
+  * [#260] Fix example code so it compiles as is
+  * [#259] Cuda safety in several headers
+  * [#256] Fix markdown and typos in README.md
+  * [#255] Do not warn if half.h has already being included
+  * [#250] Fix compiler warnings on windows
+  * [#249] Remove irrelevant cvs ignore files
+  * [#248] Update sphinx version
+
+-------------------------------------------------------------------
 Tue Jun 21 20:25:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.5:
