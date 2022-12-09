@@ -1,7 +1,7 @@
 #
 # spec file for package kio-gdrive
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-gdrive
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,10 +64,8 @@ This can be Dolphin or Gwenview or Konqueror.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang kio5_gdrive %{name}.lang
 %kf5_find_htmldocs
-%endif
 
 %files
 %license COPYING
@@ -82,8 +79,6 @@ This can be Dolphin or Gwenview or Konqueror.
 %{_kf5_sharedir}/accounts/
 %{_kf5_sharedir}/remoteview/gdrive-network.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
