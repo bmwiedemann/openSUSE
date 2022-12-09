@@ -1,7 +1,7 @@
 #
 # spec file for package palapeli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           palapeli
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Board/Puzzle
 URL:            https://apps.kde.org/palapeli
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -61,7 +60,6 @@ your disk immediately.
 
 %package data
 Summary:        Palapeli's standard puzzle files
-Group:          System/GUI/KDE
 Requires:       palapeli = %{version}
 BuildArch:      noarch
 
@@ -70,7 +68,6 @@ This package contains the standard puzzle files for Palapeli.
 
 %package devel
 Summary:        Development package for Palapeli
-Group:          Development/Libraries/KDE
 Requires:       palapeli = %{version}
 
 %description devel
@@ -88,10 +85,8 @@ This package contains the development files for Palapeli.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %suse_update_desktop_file -r org.kde.palapeli Game BoardGame
 
@@ -116,7 +111,10 @@ This package contains the development files for Palapeli.
 %dir %{_kf5_iconsdir}/hicolor/64x64
 %dir %{_kf5_iconsdir}/hicolor/64x64/apps
 %dir %{_kf5_iconsdir}/hicolor/64x64/mimetypes
-%dir %{_kf5_servicesdir}/ServiceMenus
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/thumbcreator
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %{_kf5_applicationsdir}/org.kde.palapeli.desktop
 %{_kf5_appstreamdir}/org.kde.palapeli.appdata.xml
 %{_kf5_bindir}/palapeli
@@ -126,9 +124,9 @@ This package contains the development files for Palapeli.
 %{_kf5_libdir}/libpala.so.*
 %{_kf5_notifydir}/palapeli.notifyrc
 %{_kf5_plugindir}/pala*
-%{_kf5_servicesdir}/palathumbcreator.desktop
-%{_kf5_servicesdir}/ServiceMenus/palapeli_servicemenu.desktop
 %{_kf5_sharedir}/mime/packages/palapeli-mimetypes.xml
+%{_kf5_plugindir}/kf5/thumbcreator/palathumbcreator.so
+%{_kf5_sharedir}/kio/servicemenus/palapeli_servicemenu.desktop
 
 %files data
 %{_kf5_appsdir}/palapeli/
@@ -139,8 +137,6 @@ This package contains the development files for Palapeli.
 %{_kf5_libdir}/libpala.so
 %{_kf5_cmakedir}/Pala/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
