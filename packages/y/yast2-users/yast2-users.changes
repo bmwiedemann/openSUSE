@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  8 15:26:35 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use a fallback if CHARACTER_CLASS cannot be read from /etc/login.defs
+  or /usr/etc/login.defs (bsc#1205783)
+- 4.5.3
+
+-------------------------------------------------------------------
 Fri Aug 19 08:37:53 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - AY: Fix writing ssh keys for user without specified home
