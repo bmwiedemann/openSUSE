@@ -1,7 +1,7 @@
 #
 # spec file for package kirigami-gallery
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           kirigami-gallery
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
-Group:          Development/Tools/Other
 URL:            https://apps.kde.org/kirigami2.gallery
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,9 +64,7 @@ code examples on cgit
 %kf5_makeinstall -C build
 %suse_update_desktop_file -G "Kirigami Gallery" org.kde.kirigami2.gallery GUIDesigner
 
-%if %{with released}
 %find_lang kirigamigallery %{name}.lang --with-qt
-%endif
 
 %files
 %license LICENSE.LGPL-2
@@ -75,8 +72,6 @@ code examples on cgit
 %{_kf5_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
 %{_kf5_bindir}/kirigami2gallery
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
