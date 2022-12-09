@@ -1,7 +1,7 @@
 #
 # spec file for package libkomparediff2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkomparediff2
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -52,7 +51,6 @@ A library to compare files and strings, used in Kompare and KDevelop.
 
 %package devel
 Summary:        Development package for libkomparediff2
-Group:          Development/Libraries/KDE
 Requires:       %{name}-%{soname} = %{version}
 Obsoletes:      %{name}-kf5-devel < %{version}
 Provides:       %{name}-kf5-devel = %{version}
@@ -62,7 +60,6 @@ Development package for libkomparediff2.
 
 %package %{soname}
 Summary:        A library to compare files and strings
-Group:          System/Libraries
 Provides:       %{name} = %{version}
 Recommends:     %{name}-lang
 
@@ -75,14 +72,14 @@ A library to compare files and strings, used in Kompare and KDevelop.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+
 
 %post %{soname} -p /sbin/ldconfig
 %postun %{soname} -p /sbin/ldconfig
@@ -97,8 +94,6 @@ A library to compare files and strings, used in Kompare and KDevelop.
 %{_kf5_libdir}/libkomparediff2.so
 %{_kf5_prefix}/include/libkomparediff2/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
