@@ -1,7 +1,7 @@
 #
 # spec file for package filelight
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           filelight
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/filelight
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -70,10 +69,10 @@ and the sizes of files and directories on the system.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.filelight System Filesystem
 
 %files
@@ -88,8 +87,6 @@ and the sizes of files and directories on the system.
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/filelight/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
