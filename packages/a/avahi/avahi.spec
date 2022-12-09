@@ -62,14 +62,10 @@ License:        LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://www.avahi.org/
 Source:         https://avahi.org/download/%{_name}-%{version}.tar.gz
-# From http://packages.debian.org/sid/avahi-daemon http://ftp.debian.org/debian/pool/main/a/avahi/avahi_0.8-3.debian.tar.xz
-Source1:        avahi-daemon-check-dns.sh
 # Copy of glib-2.0.m4 from glib2-devel to not depend on glib2-devel.
 Source4:        avahi-glib-gettext.m4
 Source5:        avahi.sysconfig
 Source6:        avahi-autoipd.sysconfig
-# From http://packages.debian.org/sid/avahi-daemon http://ftp.debian.org/debian/pool/main/a/avahi/avahi_0.6.31-1.debian.tar.gz
-Source7:        avahi-daemon.if-up
 Source9:        avahi-autoipd.README.SUSE
 Source10:       avahi-autoipd.if-up
 Source11:       avahi-autoipd.if-down
@@ -85,8 +81,6 @@ Source103:      avahi-rpmlintrc
 Patch0:         avahi-gacdir.patch
 # PATCH-FIX-UPSTREAM avahi-desktop.patch bnc254654 Avahi#365 -- sbrabec@suse.cz
 Patch1:         avahi-desktop.patch
-# PATCH-FEATURE-OPENSUSE avahi-daemon-check-dns-suse.patch bnc431704 sbrabec@suse.cz -- Port Debian avahi-daemon-check-dns.sh to SUSE, see also http://avahi.org/wiki/AvahiAndUnicastDotLocal
-Patch4:         avahi-daemon-check-dns-suse.patch
 # PATCH-FIX-OPENSUSE avahi-add-resolv-conf-to-inotify.patch bsc#982317 boo#1194561 mgorse@suse.com -- reconfigure when resolv.conf changes.
 Patch19:        avahi-add-resolv-conf-to-inotify.patch
 # PATCH-FIX-UPSTREAM add-IT_PROG_INTLTOOL.patch alarrosa@suse.com -- add IT_PROG_INTLTOOL so intltool works
@@ -420,6 +414,9 @@ DNS specifications for Zeroconf Computing.
 
 
 
+
+
+
 # This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
@@ -495,7 +492,6 @@ specifications for Zeroconf Computing.
 
 %prep
 %setup -q -n %{_name}-%{version}
-cp -a %{SOURCE1} %{SOURCE7} .
 cp -a %{SOURCE5} sysconfig.avahi
 sed "s:@docdir@:%{_docdir}:g" <%{SOURCE6} >sysconfig.avahi-autoipd
 cp -a %{SOURCE9} avahi-autoipd/README.SUSE
@@ -505,7 +501,6 @@ sed -ie "s/libevent-[0-9\.]*/libevent/" avahi-libevent.pc.in
 cp -a %{SOURCE12} service-type-database/build-db
 %patch0
 %patch1 -p1
-%patch4
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
@@ -637,14 +632,7 @@ install -d %{buildroot}/%{_localstatedir}/run/avahi-daemon
 ln -s avahi-compat-libdns_sd/dns_sd.h %{buildroot}/%{_includedir}/
 ln -s avahi-compat-howl.pc %{buildroot}/%{_libdir}/pkgconfig/howl.pc
 install -d %{buildroot}/%{_prefix}/lib/avahi
-install avahi-daemon-check-dns.sh %{buildroot}/%{_prefix}/lib/avahi/
 install -d %{buildroot}%{_sysconfdir}/sysconfig/network/if-{up,down}.d
-# Note: We do not install the script to if-down.d. Only very obscure use
-# cases may fail. (And Debian does the same.)
-# (You would have an AUTOIP-only fallback network, then connect network
-# to network with .local in DNS without disconnecting from the fallback,
-# then disconnect from network with .local in DNS.)
-install avahi-daemon.if-up %{buildroot}%{_sysconfdir}/sysconfig/network/if-up.d/avahi-daemon
 install avahi-autoipd/avahi-autoipd.if-up %{buildroot}%{_sysconfdir}/sysconfig/network/if-up.d/avahi-autoipd
 install avahi-autoipd/avahi-autoipd.if-down %{buildroot}%{_sysconfdir}/sysconfig/network/if-down.d/avahi-autoipd
 install -d %{buildroot}/%{_localstatedir}/lib/avahi-autoipd
@@ -810,7 +798,6 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Avahi.*.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.Avahi.service
 %dir %{_prefix}/lib/avahi
-%{_prefix}/lib/avahi/avahi-daemon-check-dns.sh
 %{_unitdir}/avahi-daemon.service
 %{_unitdir}/avahi-daemon.socket
 %{_unitdir}/avahi-dnsconfd.service
@@ -818,7 +805,6 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 # Common file for avahi-utils-gtk and python3-avahi-gtk:
 %dir %{_datadir}/avahi/
 %{_datadir}/avahi/interfaces
-%{_sysconfdir}/sysconfig/network/*/avahi-daemon
 %{_fillupdir}/sysconfig.avahi
 
 %files lang -f %{name}.lang
@@ -854,6 +840,8 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %attr(-,avahi-autoipd,avahi-autoipd)%{_localstatedir}/lib/avahi-autoipd
 %{_sbindir}/avahi-autoipd
 %{_sysconfdir}/avahi/avahi-autoipd.action
+%dir %{_sysconfdir}/sysconfig/network
+%dir %{_sysconfdir}/sysconfig/network/if-{down,up}.d
 %{_sysconfdir}/sysconfig/network/*/avahi-autoipd
 %{_fillupdir}/sysconfig.avahi-autoipd
 %{_sysusersdir}/avahi-autoipd.conf

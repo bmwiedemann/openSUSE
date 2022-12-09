@@ -1198,4 +1198,12 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
   by anything. this makes the spec file slightly more readable.</comment>
     <requestid>1040260</requestid>
   </revision>
+  <revision rev="155" vrev="21">
+    <srcmd5>27752cae069aa42acd4b80d30a1151c1</srcmd5>
+    <version>0.8</version>
+    <time>1670588211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041666</requestid>
+  </revision>
 </revisionlist>

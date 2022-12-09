@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  8 15:23:06 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove avahi-daemon-check-dns.sh, avahi-daemon-check-dns-suse.patch
+  and avahi-daemon.if-up
+  Doesn't work since about 9 years and will not be executed on a 
+  fresh default installation anymore
+
+-------------------------------------------------------------------
 Mon Dec  5 12:35:55 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
