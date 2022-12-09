@@ -1,7 +1,7 @@
 #
 # spec file for package knotes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knotes
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/knotes
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -94,10 +93,10 @@ KNotes is a note taking application by KDE.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.knotes Utility DesktopUtility
 
 %post   -p /sbin/ldconfig
@@ -141,8 +140,6 @@ KNotes is a note taking application by KDE.
 %{_libdir}/libknotesprivate.so.*
 %{_libdir}/libnotesharedprivate.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
