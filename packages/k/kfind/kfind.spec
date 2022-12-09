@@ -1,7 +1,7 @@
 #
 # spec file for package kfind
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kfind
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
-Group:          Productivity/File utilities
 URL:            https://apps.kde.org/kfind
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,17 +54,16 @@ KFind allows you to search for directories and files.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
 
-  %suse_update_desktop_file org.kde.kfind System Filesystem core
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.kfind System Filesystem core
 
 %files
 %license LICENSES/*
@@ -77,8 +75,6 @@ KFind allows you to search for directories and files.
 %{_kf5_debugdir}/kfind.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kfind.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
