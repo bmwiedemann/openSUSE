@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libktorrent
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/File-Sharing
 URL:            https://apps.kde.org/ktorrent
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ libktorrent is a torrent downloading library.
 
 %package devel
 Summary:        Development files for libktorrent
-Group:          Development/Libraries/C and C++
 Requires:       gmp-devel
 Requires:       libKF5Torrent%{sonum} = %{version}
 Requires:       libboost_headers-devel
@@ -70,7 +68,6 @@ This package includes the necessary files for development using libktorrent.
 
 %package -n libKF5Torrent%{sonum}
 Summary:        Torrent Downloading Library
-Group:          System/Libraries
 Recommends:     %{name}-lang = %{version}
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -97,9 +94,7 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang libktorrent5 %{name}.lang
-%endif
 
 %post -n libKF5Torrent%{sonum} -p /sbin/ldconfig
 %postun -n libKF5Torrent%{sonum} -p /sbin/ldconfig
@@ -114,8 +109,6 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %doc ChangeLog RoadMap
 %{_kf5_libdir}/libKF5Torrent.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
