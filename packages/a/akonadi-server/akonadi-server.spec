@@ -17,16 +17,15 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-server
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://akonadi-project.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -70,11 +69,8 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Requires:       ((akonadi-server-sqlite or (libqt5-sql-mysql and mysql)) if branding-SLE)
-Requires:       (libqt5-sql-mysql or branding-SLE)
-Requires:       (mysql or branding-SLE)
-Recommends:     libqt5-sql-mysql
-Recommends:     mysql
+Requires:       libqt5-sql-mysql
+Requires:       mysql
 # FIXME: Check if it's worth it
 Recommends:     kaccounts-integration
 Recommends:     kaccounts-providers
@@ -91,7 +87,6 @@ service.
 
 %package -n libKF5AkonadiCore5
 Summary:        Core Akonadi Server library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libKF5AkonadiCore5
@@ -99,7 +94,6 @@ This package includes the core Akonadi library, the KDE PIM storage service.
 
 %package -n libKF5AkonadiAgentBase5
 Summary:        Akonadi Agent base library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libKF5AkonadiAgentBase5
@@ -107,7 +101,6 @@ This package includes the agent library for Akonadi, the KDE PIM storage service
 
 %package -n libKF5AkonadiWidgets5
 Summary:        Akonadi Agent base library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libKF5AkonadiWidgets5
@@ -115,7 +108,6 @@ This package provides the basic GUI widgets for Akonadi, the KDE PIM storage ser
 
 %package -n libKF5AkonadiPrivate5
 Summary:        Akonadi Private Server library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libKF5AkonadiPrivate5
@@ -123,7 +115,6 @@ This package includes the Private Akonadi library for Akonadi, the KDE PIM stora
 
 %package -n libKF5AkonadiXml5
 Summary:        Akonadi Xml library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libKF5AkonadiXml5
@@ -131,7 +122,6 @@ This package includes the Akonadi Xml library for Akonadi, the KDE PIM storage s
 
 %package sqlite
 Summary:        akonadi server's SQlite plugin
-Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and sqlite3)
 
@@ -140,7 +130,6 @@ Akonadi server's SQlite plugin.
 
 %package devel
 Summary:        Akonadi Framework: Build Environment
-Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 Requires:       libKF5AkonadiAgentBase5 = %{version}
 Requires:       libKF5AkonadiCore5 = %{version}
@@ -180,14 +169,13 @@ This package contains AppArmor profiles for Akonadi.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
-  %cmake_build
+%cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -251,6 +239,8 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_plugindir}/sqldrivers/
 
 %files devel
+%dir %{_kf5_sharedir}/kdevappwizard
+%dir %{_kf5_sharedir}/kdevappwizard/templates
 %{_kf5_bindir}/akonadi2xml
 %{_kf5_cmakedir}/KF5Akonadi
 %{_kf5_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
@@ -269,6 +259,8 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_mkspecsdir}/qt_AkonadiWidgets.pri
 %{_kf5_mkspecsdir}/qt_AkonadiXml.pri
 %{_kf5_plugindir}/designer/
+%{_kf5_sharedir}/kdevappwizard/templates/akonadiresource.tar.bz2
+%{_kf5_sharedir}/kdevappwizard/templates/akonadiserializer.tar.bz2
 
 %files apparmor
 %config(noreplace) %{_sysconfdir}/apparmor.d/mariadbd_akonadi
@@ -276,8 +268,6 @@ This package contains AppArmor profiles for Akonadi.
 %config(noreplace) %{_sysconfdir}/apparmor.d/postgresql_akonadi
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
