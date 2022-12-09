@@ -1,7 +1,7 @@
 #
 # spec file for package kdeconnect-kde
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://community.kde.org/KDEConnect
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -92,7 +91,6 @@ https://f-droid.org/en/packages/org.kde.kdeconnect_tp/
 
 %package zsh-completion
 Summary:        ZSH completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    packageand(%{name}:zsh)
 BuildArch:      noarch
@@ -112,12 +110,10 @@ ZSH command line completion support for %{name}.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 for translation_file in kdeconnect-{app,cli,core,fileitemaction,indicator,interfaces,kcm,kded,kio,nautilus-extension,plugins,settings,sms,urlhandler} plasma_applet_org.kde.kdeconnect; do
     %find_lang $translation_file %{name}.lang
 done
 %kf5_find_htmldocs
-%endif
 
 %if 0%{?suse_version} < 1550
 # susefirewall config file
@@ -184,12 +180,11 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_sharedir}/kdeconnect/kdeconnect_runcommand_config.qml
 %{_kf5_sharedir}/kdeconnect/kdeconnect_sendnotifications_config.qml
 %{_kf5_sharedir}/kdeconnect/kdeconnect_share_config.qml
+%{_kf5_sharedir}/kdeconnect/kdeconnect_clipboard_config.qml
 %{_kf5_sharedir}/plasma/
 %{_libexecdir}/kdeconnectd
 %{_prefix}/lib/firewalld/services/%{name}.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
