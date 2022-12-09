@@ -1,7 +1,7 @@
 #
 # spec file for package kipi-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           kipi-plugins
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -78,14 +77,12 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" common/libkipiplugins/tools/kpversion.
 # Not needed, the package doesn't actually provide any shared libraries
 rm -f %{buildroot}%{_kf5_libdir}/libKF5kipiplugins.so
 
-%if %{with released}
 %find_lang kipiplugins %{name}.lang
 
 for i in dropbox facebook flickr googleservices imageshack imgur jalbum kmlexport mediawiki piwigo printimages rajce remotestorage sendimages smug yandexfotki
 do
   %find_lang kipiplugin_$i %{name}.lang
 done
-%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -104,8 +101,6 @@ done
 %{_kf5_servicesdir}/kipiplugin_*.desktop
 %{_kf5_sharedir}/kipiplugin_*/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
