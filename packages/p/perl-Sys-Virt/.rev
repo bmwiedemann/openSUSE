@@ -947,4 +947,16 @@ new request.</comment>
   - jsc#PED-620, jsc#PED-1540</comment>
     <requestid>1035318</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d4a0767d87c0a802361ad0e7bbb306ca</srcmd5>
+    <version>8.10.0</version>
+    <time>1670588279</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 8.10.0
+
+- Update to 8.10.0
+  - Add all new APIs and constants in libvirt 8.10.0
+  - jsc#PED-1472</comment>
+    <requestid>1041673</requestid>
+  </revision>
 </revisionlist>

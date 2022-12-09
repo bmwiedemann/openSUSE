@@ -2,10 +2,10 @@ Add migration constraint parameters to libvirt perl bindings
 
 References: fate#316614, bsc#859868
 
-Index: Sys-Virt-8.9.0/lib/Sys/Virt/Domain.pm
+Index: Sys-Virt-8.10.0/lib/Sys/Virt/Domain.pm
 ===================================================================
---- Sys-Virt-8.9.0.orig/lib/Sys/Virt/Domain.pm
-+++ Sys-Virt-8.9.0/lib/Sys/Virt/Domain.pm
+--- Sys-Virt-8.10.0.orig/lib/Sys/Virt/Domain.pm
++++ Sys-Virt-8.10.0/lib/Sys/Virt/Domain.pm
 @@ -1184,6 +1184,18 @@ omitted libvirt will auto-generate suita
  only necessary to specify this URI if the destination host has multiple
  interfaces and a specific interface is required to transmit storage data.
@@ -25,10 +25,10 @@ Index: Sys-Virt-8.9.0/lib/Sys/Virt/Domain.pm
  =back
  
  =item $ddom = $dom->migrate(destcon, flags=0, dname=undef, uri=undef, bandwidth=0)
-Index: Sys-Virt-8.9.0/lib/Sys/Virt.xs
+Index: Sys-Virt-8.10.0/lib/Sys/Virt.xs
 ===================================================================
---- Sys-Virt-8.9.0.orig/lib/Sys/Virt.xs
-+++ Sys-Virt-8.9.0/lib/Sys/Virt.xs
+--- Sys-Virt-8.10.0.orig/lib/Sys/Virt.xs
++++ Sys-Virt-8.10.0/lib/Sys/Virt.xs
 @@ -5729,7 +5729,7 @@ _migrate(dom, destcon, newparams, flags=
      virTypedParameterPtr params;
      int nparams;
