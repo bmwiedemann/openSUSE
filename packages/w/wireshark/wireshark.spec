@@ -28,7 +28,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

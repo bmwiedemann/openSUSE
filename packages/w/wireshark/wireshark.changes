@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  8 07:55:00 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.2:
+  * Multiple dissector infinite loops (boo#1206189).
+  * Kafka dissector memory exhaustion (boo#1206190).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.2.html
+
+-------------------------------------------------------------------
 Thu Oct 27 08:25:40 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.1:
