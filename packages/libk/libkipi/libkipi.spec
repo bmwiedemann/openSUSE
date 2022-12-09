@@ -1,7 +1,7 @@
 #
 # spec file for package libkipi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkipi
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Image Plugin Interface
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -48,7 +47,6 @@ kipi-plugins package.
 
 %package -n libKF5Kipi%{_soversion}
 Summary:        KDE Image Plug-In Interface
-Group:          System/Libraries
 Requires:       libkipi-data >= %{version}
 Recommends:     kipi-plugins
 
@@ -59,7 +57,6 @@ kipi-plugins package.
 
 %package data
 Summary:        KDE Image Plug-In Interface - data files
-Group:          System/Libraries
 Conflicts:      libKF5Kipi30_0_0
 
 %description data
@@ -67,7 +64,6 @@ This package contains data files needed by the KDE image plug-in library.
 
 %package devel
 Summary:        KDE Image Plugin Interface
-Group:          Development/Libraries/KDE
 Requires:       libKF5Kipi%{_soversion} = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5I18n)
@@ -110,7 +106,6 @@ kipi-plugins package.
 %doc README
 %{_kf5_cmakedir}/KF5Kipi/
 %{_kf5_includedir}/KIPI/
-%{_kf5_includedir}/libkipi_version.h
 %{_kf5_libdir}/libKF5Kipi.so
 
 %changelog
