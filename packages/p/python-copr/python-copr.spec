@@ -16,16 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr
-Version:        1.123
+Version:        1.124
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later
-URL:            https://pagure.io/copr/copr
+URL:            https://github.com/fedora-copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr/copr-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-marshmallow
+Requires:       python-munch
+Requires:       python-requests
+Requires:       python-requests-toolbelt
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module future}
@@ -36,12 +41,6 @@ BuildRequires:  %{python_module requests-gssapi}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-marshmallow
-Requires:       python-munch
-Requires:       python-requests
-Requires:       python-requests-toolbelt
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -62,6 +61,7 @@ Python client for copr service.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/copr
+%{python_sitelib}/copr-%{version}*-info
 
 %changelog

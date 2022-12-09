@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 15:53:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.124 
+  - move to GitHub home page
+  - add external repos for custom build
+  - don't play with sessions if using ApiToken
+
+-------------------------------------------------------------------
 Wed Oct 12 02:50:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.123 
