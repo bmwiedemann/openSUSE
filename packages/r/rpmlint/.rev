@@ -4185,4 +4185,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Remove shared-library-without-dependency and library-not-linked-against-libc</comment>
     <requestid>1039296</requestid>
   </revision>
+  <revision rev="427" vrev="1">
+    <srcmd5>1657da4b50ff0e3044ce819a590eae42</srcmd5>
+    <version>2.4.0+git20221206.f05dc9c</version>
+    <time>1670588272</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221206.f05dc9c:
+  * dbus-services: /etc -&gt; /usr move for lightdm whitelisting (bsc#1205939)</comment>
+    <requestid>1040918</requestid>
+  </revision>
 </revisionlist>

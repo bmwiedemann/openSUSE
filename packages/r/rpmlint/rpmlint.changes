@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 07 10:04:19 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221206.f05dc9c:
+  * dbus-services: /etc -> /usr move for lightdm whitelisting (bsc#1205939)
+
+-------------------------------------------------------------------
 Thu Dec 01 11:12:36 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221201.82b8b0c:
