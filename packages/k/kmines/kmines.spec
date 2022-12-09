@@ -1,7 +1,7 @@
 #
 # spec file for package kmines
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmines
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Minesweeper-like game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Board/Puzzle
 URL:            https://apps.kde.org/kmines
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -58,16 +57,16 @@ by logical deduction.
 %autosetup -p1 -n kmines-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.kmines Game LogicGame
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.kmines Game LogicGame
 
 %files
 %license LICENSES/*
@@ -79,8 +78,6 @@ by logical deduction.
 %{_kf5_iconsdir}/hicolor/*/apps/kmines.*
 %{_kf5_sharedir}/kmines/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
