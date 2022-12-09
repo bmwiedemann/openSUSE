@@ -1524,4 +1524,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
     <requestid>1033416</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>fb54ce506e87111bf705101c65d44de7</srcmd5>
+    <version>22.12.0</version>
+    <time>1670601586</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
+    <requestid>1041623</requestid>
+  </revision>
 </revisionlist>
