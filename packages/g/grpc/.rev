@@ -444,4 +444,12 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment>- Update to release 1.51</comment>
     <requestid>1037183</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>cec77bc28f48c2ef55ca5cf957901784</srcmd5>
+    <version>1.51.1</version>
+    <time>1670588290</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1041753</requestid>
+  </revision>
 </revisionlist>
