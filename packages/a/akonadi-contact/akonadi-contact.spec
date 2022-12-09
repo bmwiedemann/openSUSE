@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-contact
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %define rname akonadi-contacts
 %define sonum   5
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-contact
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -69,7 +68,6 @@ as part of the KDE Personal Information Management (PIM) software.
 
 %package -n libKF5AkonadiContact5
 Summary:        Library for personal contact handling
-Group:          System/Libraries
 Requires:       akonadi-contact >= %{version}
 Obsoletes:      akonadi-socialutils
 Obsoletes:      akonadi-socialutils-devel
@@ -82,7 +80,6 @@ as part of the KDE Personal Information Management (PIM) software.
 
 %package -n libKF5ContactEditor5
 Summary:        Library for personal contact handling
-Group:          System/Libraries
 Requires:       akonadi-contact >= %{version}
 
 %description -n libKF5ContactEditor5
@@ -91,7 +88,6 @@ as part of the KDE Personal Information Management (PIM) software.
 
 %package -n akonadi-plugin-contacts
 Summary:        Plugins for personal contact handling
-Group:          System/Libraries
 Requires:       akonadi-contact >= %{version}
 
 %description -n akonadi-plugin-contacts
@@ -99,7 +95,6 @@ This package provides plugins required by PIM applications to read and write con
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       akonadi-contact = %{version}
 Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
@@ -127,10 +122,9 @@ to develop KDE PIM applications.
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5AkonadiContact5 -p /sbin/ldconfig
 %postun -n libKF5AkonadiContact5 -p /sbin/ldconfig
@@ -175,8 +169,6 @@ to develop KDE PIM applications.
 %{_kf5_mkspecsdir}/qt_AkonadiContact.pri
 %{_kf5_mkspecsdir}/qt_ContactEditor.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
