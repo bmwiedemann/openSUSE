@@ -1,7 +1,7 @@
 #
 # spec file for package blinken
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.90.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           blinken
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Simon Says Game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Other
 URL:            https://apps.kde.org/blinken
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -66,10 +65,10 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.blinken X-KDE-Edu-Teaching
 
 %files
@@ -82,8 +81,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/apps/blinken.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
