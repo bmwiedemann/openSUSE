@@ -92,7 +92,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.15
+Version:        3.8.16
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -176,13 +176,6 @@ Patch37:        platlibdir-in-sys.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
-# PATCH-FIX-UPSTREAM CVE-2022-37454-sha3-buffer-overflow.patch bsc#1204577 mcepl@suse.com
-# Fix original buffer overflow
-# Originally from gh#python/cpython#98528
-Patch39:        CVE-2022-37454-sha3-buffer-overflow.patch
-# PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
-# Avoid DoS by decoding IDNA for too long domain names
-Patch40:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -451,8 +444,6 @@ other applications.
 %patch36 -p1
 %patch37 -p1
 %patch38 -p1
-%patch39 -p1
-%patch40 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

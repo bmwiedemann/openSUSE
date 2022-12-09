@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Dec  8 10:32:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.16:
+  - python -m http.server no longer allows terminal
+    control characters sent within a garbage request to be
+    printed to the stderr server log.
+    This is done by changing the http.server
+    BaseHTTPRequestHandler .log_message method to replace control
+    characters with a \xHH hex escape before printing.
+  - Avoid publishing list of active per-interpreter
+    audit hooks via the gc module
+  - The IDNA codec decoder used on DNS hostnames by
+    socket or asyncio related name resolution functions no
+    longer involves a quadratic algorithm. This prevents a
+    potential CPU denial of service if an out-of-spec excessive
+    length hostname involving bidirectional characters were
+    decoded. Some protocols such as urllib http 3xx redirects
+    potentially allow for an attacker to supply such a
+    name (CVE-2022-45061).
+  - Update bundled libexpat to 2.5.0
+  - Port XKCP’s fix for the buffer overflows in SHA-3
+    (CVE-2022-37454).
+  - The deprecated mailcap module now refuses to inject
+    unsafe text (filenames, MIME types, parameters) into shell
+    commands. Instead of using such text, it will warn and act
+    as if a match was not found (or for test commands, as if the
+    test failed).
+- Removed upstream patches:
+  - CVE-2022-37454-sha3-buffer-overflow.patch
+  - CVE-2022-45061-DoS-by-IDNA-decode.patch
+
+-------------------------------------------------------------------
 Wed Nov  9 18:31:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
