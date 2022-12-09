@@ -1,7 +1,7 @@
 #
 # spec file for package libkgapi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkgapi
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -50,7 +49,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPIBlogger5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIBlogger5
@@ -59,7 +57,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPICalendar5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPICalendar5
@@ -68,7 +65,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPIContacts5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIContacts5
@@ -77,7 +73,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPICore5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 Provides:       %{name} = %{version}
 Requires:       sasl2-kdexoauth2 >= %{version}
@@ -88,7 +83,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPIDrive5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIDrive5
@@ -97,7 +91,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPILatitude5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPILatitude5
@@ -106,7 +99,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPIMaps5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIMaps5
@@ -115,7 +107,6 @@ Google Contacts and Google tasks.
 
 %package -n libKPimGAPITasks5
 Summary:        Extension for accessing Google data
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPITasks5
@@ -124,7 +115,6 @@ Google Contacts and Google tasks.
 
 %package -n sasl2-kdexoauth2
 Summary:        Cyrus SASL plugin for using Google's XOAUTH
-Group:          System/GUI/KDE
 Conflicts:      kdepim-runtime < %{_kapp_version}
 Provides:       sasl2-kdexoauth2-3 = %{version}
 Obsoletes:      sasl2-kdexoauth2-3 < %{version}
@@ -135,7 +125,6 @@ for receiving and sending mail through Google servers.
 
 %package devel
 Summary:        Build environment for libkgapi
-Group:          Development/Libraries/KDE
 Requires:       libKPimGAPIBlogger5 = %{version}
 Requires:       libKPimGAPICalendar5 = %{version}
 Requires:       libKPimGAPIContacts5 = %{version}
@@ -161,14 +150,13 @@ to develop KDE PIM applications.
 %build
 # workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
 %define _lto_cflags %{nil}
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --with-qt --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --with-qt --all-name
 
 %post -n libKPimGAPIBlogger5 -p /sbin/ldconfig
 %postun -n libKPimGAPIBlogger5 -p /sbin/ldconfig
@@ -237,8 +225,6 @@ to develop KDE PIM applications.
 %{_kf5_mkspecsdir}/qt_KGAPIMaps.pri
 %{_kf5_mkspecsdir}/qt_KGAPITasks.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
