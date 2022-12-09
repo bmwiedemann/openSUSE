@@ -1,7 +1,7 @@
 #
 # spec file for package kpat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
+%bcond_without black-hole-solver
+%endif
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpat
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Board/Card
 URL:            https://apps.kde.org/kpat
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -33,7 +35,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freecell-solver-devel
-%if 0%{?suse_version} > 1500
+%if %{with black-hole-solver}
 BuildRequires:  pkgconfig(libblack-hole-solver)
 %endif
 BuildRequires:  update-desktop-files
@@ -77,20 +79,21 @@ more. The game has nice graphics and many different carddecks.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} > 1500
+%if %{with black-hole-solver}
   %cmake_kf5 -d build
 %else
   %cmake_kf5 -d build -- -DWITH_BH_SOLVER=OFF
 %endif
-  %cmake_build
+
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.kpat Game CardGame
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.kpat Game CardGame
 
 %files
 %license COPYING COPYING.DOC
@@ -114,8 +117,6 @@ more. The game has nice graphics and many different carddecks.
 %{_kf5_mandir}/man6/kpat.6.gz
 %{_kf5_sharedir}/mime/packages/kpatience.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
