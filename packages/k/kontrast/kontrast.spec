@@ -1,7 +1,7 @@
 #
 # spec file for package kontrast
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kontrast
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
@@ -33,6 +33,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
@@ -60,21 +61,19 @@ used together.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang %{name}
-%endif
+%{kf5_find_htmldocs}
 
 %suse_update_desktop_file -r org.kde.kontrast Qt KDE Utility Accessibility
 
 %files
 %license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/kontrast/
 %{_kf5_applicationsdir}/org.kde.kontrast.desktop
 %{_kf5_appstreamdir}/org.kde.kontrast.appdata.xml
 %{_kf5_bindir}/kontrast
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kontrast.svg
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
