@@ -1,7 +1,7 @@
 #
 # spec file for package libkdepim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           libkdepim
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -67,14 +66,12 @@ This package contains the libkdepim library.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %package -n libKF5Libkdepim5
 Summary:        libkdepim library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKF5Libkdepim5
@@ -83,7 +80,6 @@ The libkdepim library
 %package -n libKF5LibkdepimAkonadi5
 Summary:        libkdepim Akonadi library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKF5LibkdepimAkonadi5
@@ -97,7 +93,6 @@ The libkdepim library for Akonadi related functions
 %package devel
 Summary:        Development package for libkdepim
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5Libkdepim5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5AkonadiContact)
@@ -123,8 +118,6 @@ The development package for the libkdepim libraries
 %{_kf5_libdir}/libKF5Libkdepim.so
 %{_kf5_mkspecsdir}/qt_Libkdepim.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
