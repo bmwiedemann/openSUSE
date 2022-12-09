@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-thumbnailers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdesdk-thumbnailers
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Translation file thumbnail generators
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -49,26 +48,24 @@ and previews of po files.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %license LICENSES/*
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/thumbcreator
 %{_kf5_configkcfgdir}/pocreatorsettings.kcfg
-%{_kf5_plugindir}/pothumbnail.so
-%{_kf5_servicesdir}/pothumbnail.desktop
+%{_kf5_plugindir}/kf5/thumbcreator/pothumbnail.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
