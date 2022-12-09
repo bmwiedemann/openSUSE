@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  8 22:02:12 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update to PostfixAdmin 3.3.13
+  - Fix two MySQL issues in upgrade.php
+
+-------------------------------------------------------------------
 Sun Dec  4 21:02:50 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to PostfixAdmin 3.3.12
