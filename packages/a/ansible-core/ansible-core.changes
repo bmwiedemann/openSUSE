@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  7 06:27:06 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.14.1:
+  Full changelog https://github.com/ansible/ansible/blob/v2.14.1/changelogs/CHANGELOG-v2.14.rst
+  * Minor Changes
+    - ansible-test - Improve consistency of executed pylint commands by making the plugins ordered.
+  * Bugfixes
+    - Fixes leftover _valid_attrs usage.
+    - ansible-galaxy - make initial call to Galaxy server on-demand only when installing, getting info about, and listing roles.
+    - copy module will no longer move 'non files' set as src when remote_src=true.
+    - display - reduce risk of post-fork output deadlocks (#79522)
+    - jinja2_native: preserve quotes in strings (#79083)
+    - updated error messages to include 'acl' and not just mode changes when failing to set required permissions on remote.
+
+-------------------------------------------------------------------
 Sat Nov 26 20:48:55 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix boo#1204320
