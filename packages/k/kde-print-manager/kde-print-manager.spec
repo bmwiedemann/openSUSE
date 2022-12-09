@@ -1,7 +1,7 @@
 #
 # spec file for package kde-print-manager
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 24.9.90 Raymond Wooninck <tittiatcoke@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,11 +22,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kde-print-manager
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -75,16 +74,16 @@ kde-print-manager provides tools for managing print jobs and printers.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCUPS_INCLUDE_DIR=%{_includedir}/cups
-  %cmake_build
+%cmake_kf5 -d build -- -DCUPS_INCLUDE_DIR=%{_includedir}/cups
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
-  %suse_update_desktop_file -r org.kde.PrintQueue Utility DesktopUtility
-  %suse_update_desktop_file -r org.kde.kde-add-printer Utility DesktopUtility
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+
+%suse_update_desktop_file -r org.kde.PrintQueue Utility DesktopUtility
+%suse_update_desktop_file -r org.kde.kde-add-printer Utility DesktopUtility
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -114,8 +113,6 @@ kde-print-manager provides tools for managing print jobs and printers.
 %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_printer_manager.so
 %{_kf5_qmldir}/org/kde/plasma/printmanager/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
