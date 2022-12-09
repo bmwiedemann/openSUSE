@@ -1444,6 +1444,7 @@
     <package name="libKF5Parts5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5PimCommon5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5PimCommonAkonadi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF5PimCommonAutoCorrection5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5PimTextEdit5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Plasma5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Plotting5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1676,7 +1677,6 @@
     <package name="libbd_part2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_swap2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_utils2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libblack_hole_solver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libblas3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libblockdev" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2176,7 +2176,7 @@
     <package name="libkdegames-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkdevplatform59" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libkdevplatform510" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkdsoap2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkeduvocdocument-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libkerfuffle22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2443,8 +2443,8 @@
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite3_21_10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf3_21_10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf-lite3_21_11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf3_21_11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1-config-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2858,7 +2858,7 @@
     <package name="libxslt-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libxslt1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxtables12" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libyaml-cpp0_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

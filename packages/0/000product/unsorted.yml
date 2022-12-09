@@ -8140,6 +8140,7 @@ unsorted:
   - kalarm-lang 
   - kalendar 
   - kalendar-lang 
+  - kalendar-plasmoid 
   - kalgebra-mobile 
   - kalzium 
   - kalzium-devel 
@@ -10056,6 +10057,7 @@ unsorted:
   - libbitmask-devel 
   - libbitmask1 
   - libbitstream2: [x86_64] 
+  - libblack_hole_solver1 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -10678,10 +10680,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_4_0: [x86_64] 
-  - libdeal_II9_4_0-openmpi2: [x86_64] 
-  - libdeal_II9_4_0-openmpi3: [x86_64] 
-  - libdeal_II9_4_0-openmpi4: [x86_64] 
+  - libdeal_II9_4_1: [x86_64] 
+  - libdeal_II9_4_1-openmpi2: [x86_64] 
+  - libdeal_II9_4_1-openmpi3: [x86_64] 
+  - libdeal_II9_4_1-openmpi4: [x86_64] 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -10710,7 +10712,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore7_8_0 
+  - libdigikamcore7_9_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit: [x86_64] 
   - libdirac_encoder0 
@@ -11906,6 +11908,8 @@ unsorted:
   - libindicator3-7 
   - libindicator3-devel 
   - libindicator7 
+  - libindiclient1 
+  - libindiclientqt1 
   - libindidriver1 
   - libindilx200-1 
   - libinfinipath4 
@@ -13377,13 +13381,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite3_21_10-32bit: [x86_64] 
+  - libprotobuf-lite3_21_11-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf3_21_10-32bit: [x86_64] 
-  - libprotoc3_21_10 
-  - libprotoc3_21_10-32bit: [x86_64] 
+  - libprotobuf3_21_11-32bit: [x86_64] 
+  - libprotoc3_21_11 
+  - libprotoc3_21_11-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -20827,7 +20831,6 @@ unsorted:
   - php7-tidy 
   - php7-tokenizer 
   - php7-uuid 
-  - php7-xdebug 
   - php7-xmlreader 
   - php7-xmlrpc 
   - php7-xmlwriter 
