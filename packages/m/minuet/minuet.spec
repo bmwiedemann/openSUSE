@@ -1,7 +1,7 @@
 #
 # spec file for package minuet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           minuet
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        A KDE Software for Music Education
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/minuet
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -62,7 +61,6 @@ experienced musicians.
 
 %package devel
 Summary:        Minuet: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       minuet = %{version}
 
 %description devel
@@ -74,16 +72,16 @@ Development headers and libraries for Minuet.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.minuet Music
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.minuet Music
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -104,8 +102,6 @@ Development headers and libraries for Minuet.
 %{_includedir}/minuet/
 %{_kf5_libdir}/libminuetinterfaces.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
