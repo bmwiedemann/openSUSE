@@ -1,7 +1,7 @@
 #
 # spec file for package kcharselect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcharselect
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Character Selector
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://apps.kde.org/kcharselect
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -54,16 +53,16 @@ KCharSelect is the KDE character selector tool.
 %autosetup -p1 -n kcharselect-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file org.kde.kcharselect Utility Accessibility
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file org.kde.kcharselect Utility Accessibility
 
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/*/
@@ -71,9 +70,7 @@ KCharSelect is the KDE character selector tool.
 %{_kf5_appstreamdir}/org.kde.kcharselect.appdata.xml
 %{_kf5_bindir}/kcharselect
 
-%if %{with released}
 %files lang -f %{name}.lang
 %license COPYING*
-%endif
 
 %changelog
