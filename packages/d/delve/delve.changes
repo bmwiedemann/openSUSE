@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Dec 08 20:51:03 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.20.0:
+  * *: CHANGELOG and bump to version 1.20.0 (#3209)
+  * Test windows/arm64 pipeline (#3200)
+  * proc: extend macOS workaround to amd64 (#3204)
+  * proc/gdbserver: set child process pgrp as foreground group (#3205)
+  * *: early fixes for go1.20 (#3180)
+  * Run CI tests on windows/arm64 agents (#3198)
+  * cmd/dlv: Include hidden flag -c for coredumpctl support (#3195)
+  * G struct offset is a pointer to an offset since go1.20 (#3196)
+  * proc: prefer addresses when setting a breakpoint (#3193)
+  * pkg/proc: fix arm64 linux cgo stacktrace (#3192)
+  * Two fixes to type cast evaluation (#3186)
+  * bininfo: Log when the file listed in .gnu_debuglink is not found (#3188)
+  * service/debugger: allow setting a breakpoint with a specific ID (#3185)
+  * proc/gdbserial/gdbserver: Don't pass DYLD_INSERT_LIBRARIES to debugserver (#3181)
+  * proc: fix index access to already-loaded string values (#3184)
+  * service/debugger: Assume current dir for exec (#3167)
+  * pkg/terminal: Improve error when unable to read history file (#3169)
+  * Add type to call evaluation and expression evaluation (#3172)
+  * proc/native: acquire debug programs privilege on Windows (#3162)
+  * pkg: fix a few function names on comments
+  * service/dap: fix nil ptr deref when current addr is not in a func (#3157)
+  * proc: disable TestCGONext on darwin/amd64 (#3160)
+  * proc: remove import "C" for linux/386 backend (#3159)
+  * proc,terminal: allow setting suspended breakpoints (#3154)
+  * Documentation: add homebrew installation instructions back again
+  * cmd/dlv: disable TestTraceMultipleGoroutines on FreeBSD (#3144)
+  * proc: allow type casts between compatible types (#3149)
+  * proc: remove old method to resolve the type of an interface to a DIE (#3150)
+  * proc,service/debugger: track how breakpoints were originally set (#3148)
+  * proc,service: change FindLocation to work with multiple targets (#3103)
+  * service/dap: show full value when evaluating log messages (#3141)
+  * proc,_scripts/rtype.go: add rtype annotations for g.atomicstatus (#3143)
+  * proc: fix openSeparateDebugInfo backwards compatibility path (#3145)
+  * proc: fix cast to empty interface type (#3146)
+  * proc/native: fix support_sentinel_darwin.go name (#3147)
+  * Add support for windows/arm64 (#3063)
+  * service/debugger: merge attachErrorMessage, verifyBinaryFormat (#3142)
+  * terminal: do not use WaitSince as unix time (#3139)
+  * proc: fix hang caused by g.atomicstatus has change to atomic.Uint32 (#3129)
+  * go.mod,proc: upgrade golang.org/x/sys/unix (#3134)
+  * proc: reduntant type conversion (#3131)
+  * terminal: remove leftover GOPATH references (#3117)
+  * Add Debugger to UIs list in EditorIntegration (#3127)
+  * Documentation: reverse step, next and stepout (#3119)
+
+-------------------------------------------------------------------
 Tue Aug 23 16:22:46 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.9.1:
