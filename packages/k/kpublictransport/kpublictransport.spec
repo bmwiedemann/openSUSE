@@ -1,7 +1,7 @@
 #
 # spec file for package kpublictransport
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpublictransport
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -50,7 +50,6 @@ ransport journey queries. QML imports.
 
 %package -n %{lname}
 Summary:        Library for querying public transport data
-Group:          System/GUI/KDE
 
 %description -n %{lname}
 A library for access realtime public transport data and for performing public
@@ -58,7 +57,6 @@ ransport journey queries.
 
 %package devel
 Summary:        Library for querying public transport data
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Gui)
