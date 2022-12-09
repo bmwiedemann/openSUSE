@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-trove-classifiers
-Version:        2022.10.19
+Version:        2022.12.1
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
 License:        Apache-2.0
