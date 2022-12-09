@@ -1,7 +1,7 @@
 #
 # spec file for package kalgebra
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalgebra
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -67,7 +66,6 @@ KAlgebra is a math expression solver and plotter.
 
 %package mobile
 Summary:        Math Expression Solver and Plotter - mobile version
-Group:          Productivity/Scientific/Math
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang
@@ -82,16 +80,16 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %fdupes -s %{buildroot}
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%fdupes -s %{buildroot}
 
 %files
 %license COPYING*
@@ -111,8 +109,6 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 %{_kf5_bindir}/kalgebramobile
 %{_kf5_appstreamdir}/org.kde.kalgebramobile.appdata.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
