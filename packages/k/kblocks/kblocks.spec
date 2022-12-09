@@ -1,7 +1,7 @@
 #
 # spec file for package kblocks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kblocks
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        A classic falling blocks game
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Strategy/Real Time
 URL:            https://apps.kde.org/kblocks
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,15 +64,14 @@ KBlocks is the KDE version of the classic falling blocks game.
 %autosetup -p1 -n kblocks-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license COPYING COPYING.DOC
@@ -87,8 +85,6 @@ KBlocks is the KDE version of the classic falling blocks game.
 %{_kf5_iconsdir}/hicolor/*/*/kblocks.*
 %{_kf5_knsrcfilesdir}/kblocks.knsrc
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
