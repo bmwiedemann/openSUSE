@@ -1,7 +1,7 @@
 #
 # spec file for package kross-interpreters
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kross-interpreters
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Diverse bindings for KROSS
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
@@ -45,7 +44,6 @@ The kross interpreter for Ruby
 
 %package -n kross-ruby
 Summary:        Ruby Bindings for kross
-Group:          Development/Libraries/KDE
 
 %description -n kross-ruby
 The Ruby bindings which can be used with KROSS
