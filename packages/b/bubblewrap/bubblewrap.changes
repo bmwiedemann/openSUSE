@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  7 21:50:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.7.0:
+  * --size option controls the size of a subsequent --tmpfs (#509)
+  * Better error messages if a mount operation fails (#472)
+  * Better error message if creating the new user namespace fails with
+    ENOSPC (#487)
+  * When building as a Meson subproject, a RUNPATH can be set on the
+    executable to make it easier to bundle its libcap dependency
+  * Fix test failures when running as uid 0 but with limited capabilities
+    (#510)
+  * Use POSIX command -v in preference to non-standard which (#527)
+  * Fix a copy/paste error in --help (#531)
+
+-------------------------------------------------------------------
 Wed May 18 12:43:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.6.2:

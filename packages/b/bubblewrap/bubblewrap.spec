@@ -17,12 +17,12 @@
 
 
 Name:           bubblewrap
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
 Group:          Productivity/Security
-URL:            https://github.com/projectatomic/bubblewrap
+URL:            https://github.com/containers/bubblewrap
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
