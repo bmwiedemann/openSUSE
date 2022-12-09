@@ -17,16 +17,15 @@
 
 
 %define rname gwenview
-%define kf5_version 5.43.0
+%define kf5_version 5.100.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           gwenview5
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://apps.kde.org/gwenview
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -87,10 +86,9 @@ list window, providing navigation of file hierarchies.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %suse_update_desktop_file -r org.kde.gwenview Graphics RasterGraphics Viewer KDE
 
@@ -122,8 +120,6 @@ list window, providing navigation of file hierarchies.
 %{_kf5_sharedir}/kconf_update/gwenview.upd
 %{_kf5_sharedir}/solid/actions/gwenview_*.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
