@@ -1,7 +1,7 @@
 #
 # spec file for package killbots
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           killbots
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Robots-like game by KDE
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/killbots
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,15 +64,14 @@ and can optionally use teleportation to a random location.
 %autosetup -p1 -n killbots-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*
@@ -86,8 +84,6 @@ and can optionally use teleportation to a random location.
 %{_kf5_iconsdir}/hicolor/*/apps/killbots.*
 %{_kf5_sharedir}/killbots/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
