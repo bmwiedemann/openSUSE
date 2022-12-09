@@ -1,7 +1,7 @@
 #
 # spec file for package kgpg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kgpg
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
-Group:          Productivity/Security
 URL:            https://apps.kde.org/kgpg
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -70,16 +69,17 @@ Kgpg is a simple GUI for gpg
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %files
 %license LICENSES/*
 %doc AUTHORS
 %config %{_kf5_configdir}/autostart/org.kde.kgpg.desktop
 %doc %lang(en) %{_kf5_htmldir}/en/kgpg/
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %{_kf5_applicationsdir}/org.kde.kgpg.desktop
 %{_kf5_appstreamdir}/org.kde.kgpg.appdata.xml
 %{_kf5_bindir}/kgpg
@@ -88,11 +88,11 @@ Kgpg is a simple GUI for gpg
 %{_kf5_debugdir}/kgpg.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/kgpg/
-%{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_sharedir}/kgpg/
+%{_kf5_sharedir}/kio/servicemenus/kgpg_encryptfile.desktop
+%{_kf5_sharedir}/kio/servicemenus/kgpg_encryptfolder.desktop
+%{_kf5_sharedir}/kio/servicemenus/kgpg_viewdecrypted.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
