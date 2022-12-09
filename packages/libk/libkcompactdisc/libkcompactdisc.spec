@@ -1,7 +1,7 @@
 #
 # spec file for package libkcompactdisc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkcompactdisc
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -47,7 +46,6 @@ the KDE Platform to interface with the CD drives for audio CDs.
 
 %package -n libKF5CompactDisc5
 Summary:        CD drive library for KDE Platform
-Group:          System/Libraries
 Provides:       %{name} = %{version}
 Recommends:     %{name}-lang
 
@@ -57,7 +55,6 @@ the KDE Platform to interface with the CD drives for audio CDs.
 
 %package devel
 Summary:        Development files for the KDE CD drive library
-Group:          Development/Libraries/C and C++
 Requires:       libKF5CompactDisc5 = %{version}
 
 %description devel
@@ -71,14 +68,13 @@ FAKE_BUILDDATE=$(LC_ALL=C date -r %{_sourcedir}/%{name}.changes '+%{b} %{e} %{Y}
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/wmlib/wm_helpers.c
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post  -n libKF5CompactDisc5 -p /sbin/ldconfig
 %postun -n libKF5CompactDisc5 -p /sbin/ldconfig
@@ -93,8 +89,6 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/wmlib/wm_helpers.c
 %{_kf5_includedir}/kcompactdisc_version.h
 %{_kf5_libdir}/libKF5CompactDisc.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
