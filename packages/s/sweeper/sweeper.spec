@@ -1,7 +1,7 @@
 #
 # spec file for package sweeper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           sweeper
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Privacy Utility
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/sweeper
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -63,10 +62,10 @@ Helps clean unwanted traces the user leaves on the system.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.sweeper Utility Security
 mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/actions
 mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
@@ -84,8 +83,6 @@ cp %{_kf5_iconsdir}/breeze/apps/48/sweeper.svg %{buildroot}%{_kf5_iconsdir}/hico
 %{_kf5_kxmlguidir}/sweeper/
 %{_kf5_sharedir}/dbus-1/interfaces/*.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
