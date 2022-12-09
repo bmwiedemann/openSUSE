@@ -1,7 +1,7 @@
 #
 # spec file for package kdebugsettings
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdebugsettings
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/kdebugsettings
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -64,9 +63,8 @@ from verbose to completely silent.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %suse_update_desktop_file org.kde.kdebugsettings Utility DesktopUtility
 
@@ -82,8 +80,6 @@ from verbose to completely silent.
 %{_kf5_libdir}/libkdebugsettings.so.5
 %{_kf5_sharedir}/kdebugsettings/groups/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
