@@ -21,11 +21,10 @@
 %bcond_without released
 %global sover 12
 Name:           kpmcore
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-only
-Group:          Productivity/Office/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -35,6 +34,7 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -55,7 +55,6 @@ other projects.
 
 %package devel
 Summary:        Development package for KDE Partition Manager core library
-Group:          Development/Languages/C and C++
 Requires:       libkpmcore%{sover} = %{version}
 
 %description devel
@@ -66,7 +65,6 @@ Development package for kpmcore.
 
 %package -n libkpmcore%{sover}
 Summary:        KDE Partition Manager core library
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libkpmcore%{sover}
@@ -90,9 +88,8 @@ Main kpmcore library.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang kpmcore --all-name
-%endif
+
+%find_lang kpmcore --all-name
 
 %post -n libkpmcore%{sover} -p /sbin/ldconfig
 %postun -n libkpmcore%{sover} -p /sbin/ldconfig
@@ -114,8 +111,6 @@ Main kpmcore library.
 %{_kf5_cmakedir}/KPMcore/
 %{_kf5_libdir}/libkpmcore.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
