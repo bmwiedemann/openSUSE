@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:49:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 38.0.4 
+  * Fixed compilation when using LibreSSL 3.6.0.
+  * Fixed error when using py2app to build an application with a cryptography dependency.
+
+-------------------------------------------------------------------
 Thu Nov  3 19:17:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - update to 38.0.3:
