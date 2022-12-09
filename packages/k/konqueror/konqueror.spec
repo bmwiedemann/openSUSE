@@ -1,7 +1,7 @@
 #
 # spec file for package konqueror
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konqueror
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
 # but it is neither built nor installed in our package.
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/konqueror
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -75,14 +74,12 @@ unified interface.
 
 %package -n webenginepart
 Summary:        KDE WebEngine web browser component
-Group:          System/GUI/KDE
 
 %description -n webenginepart
 This package contains a HTML rendering engine for Konqueror that is based on QtWebEngine.
 
 %package -n konqueror-plugins
 Summary:        KDE File Manager and Browser
-Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
 Obsoletes:      fsview5 < %{version}
 Provides:       fsview5 = %{version}
@@ -94,7 +91,6 @@ These plugins extend the functionality of Konqueror.
 
 %package  devel
 Summary:        KDE Konqueror Libraries: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Obsoletes:      kdebase4-devel
 # FIXME 4.x variants of DBus interfaces need to go to devel package
@@ -119,10 +115,9 @@ Development package for the konqueror libraries.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -282,8 +277,6 @@ Development package for the konqueror libraries.
 %{_kf5_includedir}/
 %{_includedir}/konqsidebarplugin.h
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
