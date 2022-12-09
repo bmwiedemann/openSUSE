@@ -16,11 +16,11 @@
 #
 
 
-%define soversion 7_8_0
+%define soversion 7_9_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.8.0
+Version:        7.9.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -248,9 +248,9 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %files -n libdigikamcore%{soversion}
 %license COPYING*
-%{_kf5_libdir}/libdigikamcore.so.7.8.0
-%{_kf5_libdir}/libdigikamdatabase.so.7.8.0
-%{_kf5_libdir}/libdigikamgui.so.7.8.0
+%{_kf5_libdir}/libdigikamcore.so.7.9.0
+%{_kf5_libdir}/libdigikamdatabase.so.7.9.0
+%{_kf5_libdir}/libdigikamgui.so.7.9.0
 
 %if %{with released}
 %files lang -f %{name}.lang

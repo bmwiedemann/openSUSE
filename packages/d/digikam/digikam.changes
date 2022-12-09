@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  8 11:18:22 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.9.0:
+  * Fix of Google photo login and remote album management.
+  * Better management of faces location from metadata.
+  * Database schema migration backward compatibility.
+  * Better support of coordinates import from metadata.
+  * Better ISO date format support from metadata.
+  * Better performance with album management from a remote database.
+  * Fix application window positions under Microsoft Windows.
+  * Better Tags import and merge with items metadata.
+
+-------------------------------------------------------------------
 Mon Nov  7 07:49:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly use FFmpeg 4 to build Digikam for the moment
