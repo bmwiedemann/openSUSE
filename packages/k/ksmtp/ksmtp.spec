@@ -1,7 +1,7 @@
 #
 # spec file for package ksmtp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           ksmtp
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -44,7 +43,6 @@ KSMTP is a job based library to send email through an SMTP server.
 
 %package -n libKPimSMTP5
 Summary:        Job-based library to send email through an SMTP server
-Group:          System/GUI/KDE
 Requires:       %{name}
 Recommends:     %{name}-lang = %{version}
 
@@ -54,7 +52,6 @@ package contains the KSMTP library itself.
 
 %package devel
 Summary:        Development files for KSMTP
-Group:          Development/Libraries/KDE
 Requires:       libKPimSMTP5 = %{version}
 Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(KF5I18n)
@@ -71,14 +68,13 @@ to build programs that use the KSMTP library.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --with-qt --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --with-qt --all-name
 
 %post -n libKPimSMTP5 -p /sbin/ldconfig
 %postun -n libKPimSMTP5 -p /sbin/ldconfig
@@ -96,8 +92,6 @@ to build programs that use the KSMTP library.
 %{_kf5_libdir}/libKPimSMTP.so
 %{_kf5_mkspecsdir}/qt_KSMTP.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
