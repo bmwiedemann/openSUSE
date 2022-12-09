@@ -1,7 +1,7 @@
 #
 # spec file for package kmail-account-wizard
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmail-account-wizard
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -79,9 +78,8 @@ An application which assists you with the configuration of accounts in KMail.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %files
 %license LICENSES/*
@@ -95,8 +93,6 @@ An application which assists you with the configuration of accounts in KMail.
 %{_kf5_sharedir}/akonadi/accountwizard/
 %{_kf5_sharedir}/mime/packages/accountwizard-mime.xml
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
