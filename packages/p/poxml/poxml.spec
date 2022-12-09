@@ -1,7 +1,7 @@
 #
 # spec file for package poxml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           poxml
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Tools for translating DocBook XML files with Gettext
 License:        GPL-2.0-only AND GFDL-1.2-only
-Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -45,7 +44,6 @@ files using Gettext message files (PO files).
 
 %package -n kde-l10n-devel
 Summary:        Tools for translating DocBook XML files with Gettext
-Group:          System/GUI/KDE
 Recommends:     %{name}-lang
 Obsoletes:      kde4-l10n-devel < %{version}
 Provides:       kde4-l10n-devel = %{version}
@@ -70,10 +68,9 @@ export CFLAGS="%{optflags} -fPIC"
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n kde-l10n-devel -p /sbin/ldconfig
 %postun -n kde-l10n-devel -p /sbin/ldconfig
@@ -86,8 +83,6 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_bindir}/xml2pot
 %{_kf5_mandir}/man1/*.*%{ext_man}
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
