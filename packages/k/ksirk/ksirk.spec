@@ -1,7 +1,7 @@
 #
 # spec file for package ksirk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ksirk
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Risk-like game by KDE
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://apps.kde.org/ksirk
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -72,16 +71,16 @@ KsirK is a computerized version of a well known strategy game.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
-  rm %{buildroot}%{_kf5_libdir}/libiris_ksirk.so
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+rm %{buildroot}%{_kf5_libdir}/libiris_ksirk.so
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -105,8 +104,6 @@ KsirK is a computerized version of a well known strategy game.
 %{_kf5_sharedir}/ksirk/
 %{_kf5_sharedir}/ksirkskineditor/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
