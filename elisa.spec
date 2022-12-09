@@ -1,7 +1,7 @@
 #
 # spec file for package elisa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 %define qt5_version 5.15.0
-%define kf5_version 5.64.0
+%define kf5_version 5.98.0
 %bcond_without released
 Name:           elisa
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://apps.kde.org/elisa
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -83,12 +82,12 @@ built and played.
   %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.elisa Qt KDE AudioVideo Audio Player
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.elisa Qt KDE AudioVideo Audio Player
 
 %files
 %license COPYING*
@@ -103,8 +102,6 @@ built and played.
 %{_kf5_qmldir}/org/kde/elisa/
 %{_kf5_sharedir}/dbus-1/services/org.kde.elisa.service
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
