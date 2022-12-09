@@ -1,7 +1,7 @@
 #
 # spec file for package kwave
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwave
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://apps.kde.org/kwave
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -88,16 +87,16 @@ and scroll capability.
 perl -pi -e "s|X-SuSE-translate=true||" kwave/org.kde.kwave.desktop.in
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file -r org.kde.%{name} Qt KDE AudioVideo Audio Recorder AudioVideoEditing
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file -r org.kde.%{name} Qt KDE AudioVideo Audio Recorder AudioVideoEditing
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -111,11 +110,8 @@ perl -pi -e "s|X-SuSE-translate=true||" kwave/org.kde.kwave.desktop.in
 %{_kf5_iconsdir}/hicolor/*/*/*.svgz
 %{_kf5_libdir}/libkwave*.so.*
 %{_kf5_plugindir}/kwave/
-%{_kf5_servicetypesdir}/kwave-plugin.desktop
 %{_kf5_sharedir}/kwave/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
