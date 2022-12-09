@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  8 11:56:08 UTC 2022 - pgajdos@suse.com
+
+- do not require mock
+- use -p1 as quilt refresh does not like higher ones
+- modified patches
+  % pytest-fixtures-pr171-remove-mock.patch (refreshed)
+- added patches
+  fix https://github.com/man-group/pytest-plugins/issues/209
+  + python-pytest-profiling-no-six.patch
+
+-------------------------------------------------------------------
 Thu Apr 21 21:34:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix fallout from SUSE's crusade against mock because mock was

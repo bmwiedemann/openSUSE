@@ -28,20 +28,20 @@ URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-profiling/pytest-profiling-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
 Patch0:         pytest-fixtures-pr171-remove-mock.patch
+# https://github.com/man-group/pytest-plugins/issues/209
+Patch1:         python-pytest-profiling-no-six.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-gprof2dot
 Requires:       python-pytest
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gprof2dot}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 %if %{with python2}
 BuildRequires:  python2-mock
 %endif
@@ -52,7 +52,7 @@ BuildRequires:  python2-mock
 Profiling plugin for py.test
 
 %prep
-%autosetup -p2 -n pytest-profiling-%{version}
+%autosetup -p1 -n pytest-profiling-%{version}
 # Unpin
 sed -i 's/more-itertools==5.0.0/more-itertools/' tests/integration/test_profile_integration.py
 

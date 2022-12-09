@@ -1,7 +1,7 @@
 diff --git a/pytest-profiling/tests/unit/test_profile.py b/pytest-profiling/tests/unit/test_profile.py
 index 616c4c6..614422e 100644
---- a/pytest-profiling/tests/unit/test_profile.py
-+++ b/pytest-profiling/tests/unit/test_profile.py
+--- a/tests/unit/test_profile.py
++++ b/tests/unit/test_profile.py
 @@ -8,7 +8,12 @@
  reload_module(pytest_profiling)
  
