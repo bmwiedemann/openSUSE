@@ -1,7 +1,7 @@
 #
 # spec file for package svgpart
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           svgpart
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        SVG viewer component
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://invent.kde.org/graphics/svgpart
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,9 +52,8 @@ An SVG viewer component (KPart).
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -68,8 +66,6 @@ An SVG viewer component (KPart).
 %{_kf5_plugindir}/kf5/parts/svgpart.so
 %{_kf5_servicesdir}/svgpart.desktop
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
