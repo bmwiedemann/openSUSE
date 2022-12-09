@@ -1,7 +1,7 @@
 #
 # spec file for package kalarm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalarm
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
-Group:          Productivity/Other
 URL:            https://apps.kde.org/kalarm
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -93,10 +92,10 @@ Personal alarm message, command and email scheduler by KDE.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.kalarm Utility TimeUtility
 
 %files
@@ -125,8 +124,6 @@ Personal alarm message, command and email scheduler by KDE.
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kalarm.rtcwake.policy
 %{_libexecdir}/kauth/kalarm_helper
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
