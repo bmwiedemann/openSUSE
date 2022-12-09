@@ -1,7 +1,7 @@
 #
 # spec file for package itinerary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           itinerary
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://apps.kde.org/itinerary
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -61,6 +60,7 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} <= 1500
 # variadic macro causes build issues
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 # QML imports
 Requires:       kirigami2
@@ -100,13 +100,9 @@ install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
 %ctest
 %endif
 
-%if %{with released}
 %find_lang %{name} --all-name
-%endif
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %files
 %license LICENSES/*
