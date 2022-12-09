@@ -1,7 +1,7 @@
 #
 # spec file for package kosmindoormap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kosmindoormap
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        OSM indoor map QML component
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -80,15 +80,13 @@ This package contains development files for the KOSM and KOSMIndoorMap libraries
 %install
 %kf5_makeinstall -C build
 
+%find_lang %{name}
+
 %check
 # Two tests fail on i586 (one minor floating point issue and a color one).
 # Upstream is investigating
 %ifnarch i586
 %ctest
-%endif
-
-%if %{with released}
-%find_lang %{name}
 %endif
 
 %post -n libKOSM%{soversion} -p /sbin/ldconfig
@@ -120,8 +118,6 @@ This package contains development files for the KOSM and KOSMIndoorMap libraries
 %{_kf5_libdir}/libKOSM.so
 %{_kf5_libdir}/libKOSMIndoorMap.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
