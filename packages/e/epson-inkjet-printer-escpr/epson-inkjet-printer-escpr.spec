@@ -1,7 +1,7 @@
 #
 # spec file for package epson-inkjet-printer-escpr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,19 @@
 
 
 Name:           epson-inkjet-printer-escpr
+Version:        1.7.22
+Release:        0
+Summary:        Epson ESC/P-R Inkjet Printer Driver
+License:        GPL-2.0-only
+Group:          Hardware/Printing
+URL:            https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
+# Example URL to download Source0: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
+Source0:        epson-inkjet-printer-escpr-%{version}-1lsb3.2.tar.gz
+# PATCH-FIX-UPSTREAM bug_x86_64.patch -- fix a segfault on x64_64 (probably manifested with GCC7 use)
+# https://aur.archlinux.org/cgit/aur.git/plain/bug_x86_64.patch?h=epson-inkjet-printer-escpr
+Patch0:         bug_x86_64.patch
+# This software is a filter program used with CUPS:
+Requires:       cups
 # SLE12 needs special BuildRequires.
 # For suse_version values see https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
 %if 0%{?suse_version} == 1315
@@ -34,21 +47,6 @@ BuildRequires:  cups154-devel
 BuildRequires:  cups
 BuildRequires:  cups-devel
 %endif
-Version:        1.7.15
-Release:        0
-URL:            http://avasys.jp/english/linux_e/
-Summary:        Epson ESC/P-R Inkjet Printer Driver
-# Example URL to download Source0: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
-License:        GPL-2.0-only
-Group:          Hardware/Printing
-Source0:        epson-inkjet-printer-escpr-%{version}-1lsb3.2.tar.gz
-# PATCH-FIX-UPSTREAM bug_x86_64.patch -- fix a segfault on x64_64 (probably manifested with GCC7 use)
-# https://aur.archlinux.org/cgit/aur.git/plain/bug_x86_64.patch?h=epson-inkjet-printer-escpr
-Patch0:         bug_x86_64.patch
-# This software is a filter program used with CUPS:
-Requires:       cups
-# Install into this non-root directory (required when norootforbuild is used):
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The ESC/P-R driver works as a filter program
@@ -63,18 +61,13 @@ support the Epson ESC/P-R language.
 For a list of supported printers by a currently
 installed package see the PPD files in this directory:
 
-/usr/share/cups/model/manufacturer-PPDs/epson-inkjet-printer-escpr
-
+%{_datadir}/cups/model/manufacturer-PPDs/epson-inkjet-printer-escpr
 
 %prep
-# Be quiet when unpacking:
 %setup -q
 %patch0 -p1
 
 %build
-# Set our preferred architecture-specific flags for the compiler and linker:
-export CFLAGS="$RPM_OPT_FLAGS"
-export CXXFLAGS="$RPM_OPT_FLAGS"
 # Specify location of CUPS filter and ppd files explicitly.
 # Use the explicite value 'epson-inkjet-printer-escpr' and not the RPM macro 'name'
 # so that it could be built as well with a different package name
@@ -83,18 +76,18 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 #  version as 'epson-inkjet-printer-escpr-only4me') because the installed PPDs
 # must match exactly to the installed epson-escpr filter and the libescpr library:
 %configure \
-        --with-cupsfilterdir=/usr/lib/cups/filter \
+        --with-cupsfilterdir=%{_prefix}/lib/cups/filter \
         --with-cupsppddir=%{_datadir}/cups/model/manufacturer-PPDs
-make
+%make_build
 
 %install
 # See lsb/lsb-rpm.spec
 # Make directories:
-install -d %{buildroot}/usr/lib/cups/filter
+install -d %{buildroot}%{_prefix}/lib/cups/filter
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_datadir}
 install -d %{buildroot}%{_defaultdocdir}/%{name}
-make install DESTDIR=%{buildroot}
+%make_install
 install -m 644 README README.ja COPYING AUTHORS NEWS %{buildroot}%{_defaultdocdir}/%{name}
 rm -f %{buildroot}%{_libdir}/libescpr.a
 rm -f %{buildroot}%{_libdir}/libescpr.la
@@ -133,12 +126,11 @@ popd
 # the build fails intentionally if a mandatory file was not built
 # which ensures that already existing correctly built binary RPMs
 # are not overwritten by broken RPMs where mandatory files are missing.
-%defattr(-,root,root)
 %{_libdir}/libescpr.*
-%dir /usr/lib/cups
-%dir /usr/lib/cups/filter
-/usr/lib/cups/filter/epson-escpr
-/usr/lib/cups/filter/epson-escpr-wrapper
+%dir %{_prefix}/lib/cups
+%dir %{_prefix}/lib/cups/filter
+%{_prefix}/lib/cups/filter/epson-escpr
+%{_prefix}/lib/cups/filter/epson-escpr-wrapper
 %dir %{_datadir}/cups
 %dir %{_datadir}/cups/model
 %dir %{_datadir}/cups/model/manufacturer-PPDs
