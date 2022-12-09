@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-mime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %define sonum   5
-%define kf5_version 5.79.0
+%define kf5_version 5.99.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akonadi-mime
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -54,7 +53,6 @@ messages.
 
 %package -n libKF5AkonadiMime5
 Summary:        MIME email parser for KDE PIM - core library
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description  -n libKF5AkonadiMime5
@@ -63,7 +61,6 @@ messages.
 
 %package -n akonadi-plugin-mime
 Summary:        MIME email parser for KDE PIM - runtime plugins
-Group:          System/Libraries
 Requires:       libKF5AkonadiMime5 >= %{version}
 
 %description -n akonadi-plugin-mime
@@ -72,7 +69,6 @@ email data.
 
 %package devel
 Summary:        MIME email parser for KDE PIM - development files
-Group:          Development/Libraries/KDE
 Requires:       libKF5AkonadiMime5 = %{version}
 Requires:       cmake(KF5Akonadi)
 
@@ -90,10 +86,9 @@ in KDE PIM applications.
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5AkonadiMime5 -p /sbin/ldconfig
 %postun -n libKF5AkonadiMime5 -p /sbin/ldconfig
@@ -120,8 +115,6 @@ in KDE PIM applications.
 %{_kf5_includedir}/AkonadiMime/
 %{_kf5_libdir}/libKF5AkonadiMime.so
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
