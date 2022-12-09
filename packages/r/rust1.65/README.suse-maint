@@ -1,20 +1,23 @@
 # Automatic updating via _service
 
-Edit the spec file, and update the variables related with the version
-(in format X.YY.Z):
+Edit the rustX.YY.spec file, and update the variables related with the
+version:
 
-- *version_current*: for the new version of Rust
-- *version_previous*: for the previous version of Rust
-- *version_bootstrap*: for the version used to compile Rust, it
-  recommended to use the same version that *version_previous*
-- *rustfmt_version*: for the version of rustfmt cli, check the tarball
-   to find the correct version
-- *clippy_version*: for the version of clippy, check the tarball to
-   find the correct version
+- *version_suffix*: for the new version of Rust, in X.YY format
+- *version_current*: for the new version of Rust, in X.YY.Z format
+- *version_previous*: for the previous version of Rust, in X.YY.X
+   format
+
+Generate the spec files for the different bootstrap compilers.  This
+will take the version from the main spec file.
+
+  ./update-bootstrap.sh
 
 After that, we can execute the service file:
 
   osc service disabledrun
+
+This will download the new bootstrap compilers and the signature file.
 
 If `osc` complains about a missing service component, double check
 that the components are installed. For example, for Tumbleweed:

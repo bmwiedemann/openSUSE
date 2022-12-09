@@ -31,6 +31,8 @@
 %global gcc_version 11
 %endif
 
+#KEEP NOSOURCE DEBUGINFO
+
 %define obsolete_rust_versioned() \
 Obsoletes:      %{1}1.64%{?2:-%{2}} \
 Obsoletes:      %{1}1.63%{?2:-%{2}} \
@@ -206,25 +208,45 @@ Source1:        rust.keyring
 Source99:       %{name}-rpmlintrc
 %endif
 Source100:      %{dl_url}/rust-%{version_current}-x86_64-unknown-linux-gnu.tar.xz
+NoSource:       100
 Source101:      %{dl_url}/rust-%{version_current}-i686-unknown-linux-gnu.tar.xz
+NoSource:       101
 Source102:      %{dl_url}/rust-%{version_current}-aarch64-unknown-linux-gnu.tar.xz
+NoSource:       102
 Source103:      %{dl_url}/rust-%{version_current}-armv7-unknown-linux-gnueabihf.tar.xz
+NoSource:       103
 Source104:      %{dl_url}/rust-%{version_current}-arm-unknown-linux-gnueabihf.tar.xz
+NoSource:       104
 Source105:      %{dl_url}/rust-%{version_current}-powerpc64-unknown-linux-gnu.tar.xz
+NoSource:       105
 Source106:      %{dl_url}/rust-%{version_current}-powerpc64le-unknown-linux-gnu.tar.xz
+NoSource:       106
 Source107:      %{dl_url}/rust-%{version_current}-s390x-unknown-linux-gnu.tar.xz
+NoSource:       107
 Source108:      %{dl_url}/rust-%{version_current}-powerpc-unknown-linux-gnu.tar.xz
+NoSource:       108
 Source109:      %{dl_url}/rust-%{version_current}-riscv64gc-unknown-linux-gnu.tar.xz
+NoSource:       109
 Source200:      %{dl_url}/rust-%{version_current}-x86_64-unknown-linux-gnu.tar.xz.asc
+NoSource:       200
 Source201:      %{dl_url}/rust-%{version_current}-i686-unknown-linux-gnu.tar.xz.asc
+NoSource:       201
 Source202:      %{dl_url}/rust-%{version_current}-aarch64-unknown-linux-gnu.tar.xz.asc
+NoSource:       202
 Source203:      %{dl_url}/rust-%{version_current}-armv7-unknown-linux-gnueabihf.tar.xz.asc
+NoSource:       203
 Source204:      %{dl_url}/rust-%{version_current}-arm-unknown-linux-gnueabihf.tar.xz.asc
+NoSource:       204
 Source205:      %{dl_url}/rust-%{version_current}-powerpc64-unknown-linux-gnu.tar.xz.asc
+NoSource:       205
 Source206:      %{dl_url}/rust-%{version_current}-powerpc64le-unknown-linux-gnu.tar.xz.asc
+NoSource:       206
 Source207:      %{dl_url}/rust-%{version_current}-s390x-unknown-linux-gnu.tar.xz.asc
+NoSource:       207
 Source208:      %{dl_url}/rust-%{version_current}-powerpc-unknown-linux-gnu.tar.xz.asc
+NoSource:       208
 Source209:      %{dl_url}/rust-%{version_current}-riscv64gc-unknown-linux-gnu.tar.xz.asc
+NoSource:       209
 # Make factory-auto stop complaining...
 Source1000:     README.suse-maint
 # PATCH-FIX-OPENSUSE: edit src/librustc_llvm/build.rs to ignore GCC incompatible flag

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  2 10:29:03 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add NoSource for the bootstrap compilers.  This generate a nosrc.rpm
+  that contains only the src.tar.xz
+
+  + According to the documentation NoSource can be a list of
+    space-separated numbers, but the source code of the RPM
+    parseUnsignedNum (buid/misc.c) should that this is not the case.
+
+-------------------------------------------------------------------
 Wed Nov  9 07:51:57 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop .cargo/config creation as a workaround for vendored components
