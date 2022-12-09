@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  7 20:54:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.34 
+  * Remove the auth and authconfig commands (pbrezina)
+  The parse method is expected to return a value (vponcova)
+  tests: unittest isn't used in handle_unicode anymore (bcl)
+  Add RHEL 9 handler (mkolman)
+  Resolves: rhbz#1966730
+  Add RHEL 9 version for commands that had a RHEL version in the past (mkolman)
+  Add RHEL 9 version for BTRFS related commands (mkolman)
+
+-------------------------------------------------------------------
 Sun Jan 31 00:07:23 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Adapt for new singlespec style

@@ -1,6 +1,7 @@
 #
-# spec file for package python-pykickstart
+# spec file
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,24 +22,23 @@
 # Python 2 isn't supported...
 %global skip_python2 1
 
-
 Name:           python-%{mod_name}
-Version:        3.30
+Version:        3.43
 Release:        0
 Summary:        Python module for parsing and writing kickstart files
 Group:          Development/Libraries/Python
-License:        GPL-2.0 AND MIT
+License:        GPL-2.0-only AND MIT
 URL:            http://fedoraproject.org/wiki/pykickstart
 Source0:        https://github.com/pykickstart/pykickstart/releases/download/r%{version}/%{mod_name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
-BuildRequires:  fdupes
-BuildRequires:  gettext
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  fdupes
+BuildRequires:  gettext
+BuildRequires:  python-rpm-macros
 
 Requires:       python-requests
 Requires:       python-six
@@ -53,13 +53,11 @@ and a writer to generate kickstart files.
 %prep
 %autosetup -n %{mod_name}-%{version} -p1
 
-
 %build
 # Build all the translations and such
 %make_build PYTHON=%{__python3}
 
 %python_build
-
 
 %install
 %python_install
@@ -78,20 +76,17 @@ and a writer to generate kickstart files.
 %check
 %python_expand PYTHONPATH=.. $python -m unittest discover -v
 
-
 %post
 %python_install_alternative ksflatten ksflatten.1%{?ext_man}
 %python_install_alternative ksshell ksshell.1%{?ext_man}
 %python_install_alternative ksvalidator ksvalidator.1%{?ext_man}
 %python_install_alternative ksverdiff ksverdiff.1%{?ext_man}
 
-
 %postun
 %python_uninstall_alternative ksflatten ksflatten.1%{?ext_man}
 %python_uninstall_alternative ksshell ksshell.1%{?ext_man}
 %python_uninstall_alternative ksvalidator ksvalidator.1%{?ext_man}
 %python_uninstall_alternative ksverdiff ksverdiff.1%{?ext_man}
-
 
 %files %{python_files}
 %license COPYING
@@ -110,6 +105,5 @@ and a writer to generate kickstart files.
 %python_alternative %{_mandir}/man1/ksvalidator.1%{?ext_man}
 %python_alternative %{_bindir}/ksverdiff
 %python_alternative %{_mandir}/man1/ksverdiff.1%{?ext_man}
-
 
 %changelog
