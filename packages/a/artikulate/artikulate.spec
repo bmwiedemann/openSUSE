@@ -1,7 +1,7 @@
 #
 # spec file for package artikulate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define kf5_version 5.60.0
+%define kf5_version 5.90.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           artikulate
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
-Group:          Amusements/Teaching/Other
 URL:            https://apps.kde.org/artikulate
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -68,15 +67,14 @@ Improve your pronunciation by listening to native speakers.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -94,10 +92,7 @@ Improve your pronunciation by listening to native speakers.
 %{_kf5_libdir}/libartikulatecore.so.*
 %{_kf5_libdir}/libartikulatelearnerprofile.so.*
 %{_kf5_libdir}/libartikulatesound.so.*
-%{_kf5_plugindir}/artikulate/
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
