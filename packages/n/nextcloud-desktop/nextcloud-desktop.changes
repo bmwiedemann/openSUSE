@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  8 13:26:29 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.4
+  - desktop#5254 [stable-3.6] do not create GUI from a random thread and show error on real error
+
+-------------------------------------------------------------------
+Thu Dec  8 10:08:24 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.3
+  - desktop#5171 [stable-3.6] Fix typo of connector
+  - desktop#5186 [stable-3.6] fix renaming of folders with a deep hierarchy inside them
+  - desktop#5213 [stable-3.6] Make user status selector modal, show user header
+  - desktop#5225 [stable-3.6] Prevent bad encrypting of folder if E2EE has not been correctly set up
+  - desktop#5237 [stable-3.6] Feature/edit file locally restart sync
+  - desktop#5239 Add forcefoldersync method to folder manager
+  - desktop#5240 [stable-3.6] Make use of plain text-enforcing qml labels
+  - desktop#5246 [stable-3.6] Lock file when editing locally
+  - desktop#5249 [stable-3.6] Format some QLabels as plain text
+
+-------------------------------------------------------------------
 Thu Nov 10 18:58:04 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.6.2
