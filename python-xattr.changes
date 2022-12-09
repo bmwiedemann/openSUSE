@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:43:52 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.10.1 
+  * Update github actions
+  * https://github.com/xattr/xattr/issues/112
+  * Updated README to add reference to osxmetadata
+  * https://github.com/xattr/xattr/pull/110
+
+-------------------------------------------------------------------
 Sat Oct 29 17:58:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.10.0 
