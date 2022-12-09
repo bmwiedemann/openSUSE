@@ -1,7 +1,7 @@
 #
 # spec file for package rocs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           rocs
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
-Group:          Amusements/Teaching/Mathematics
 URL:            https://apps.kde.org/rocs
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -70,7 +69,6 @@ reflected on the drawn one.
 
 %package -n librocsgraphtheory0
 Summary:        ROCS Graph Theory IDE main component library
-Group:          System/Libraries
 
 %description -n librocsgraphtheory0
 Rocs is a Graph Theory IDE for helping professors to show the results
@@ -82,7 +80,6 @@ reflected on the drawn one.
 
 %package devel
 Summary:        Development files for Rocs
-Group:          Development/Libraries/KDE
 Requires:       librocsgraphtheory0 = %{version}
 
 %description devel
@@ -103,10 +100,10 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
+
 %suse_update_desktop_file org.kde.%{name} Math
 %fdupes -s %{buildroot}
 
@@ -134,8 +131,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files -n librocsgraphtheory0
 %{_kf5_libdir}/librocsgraphtheory.so.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
