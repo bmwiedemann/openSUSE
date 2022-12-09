@@ -1,7 +1,7 @@
 #
 # spec file for package kmbox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmbox
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -41,14 +40,12 @@ This package contains the basic packages for KDE PIM applications.
 
 %package -n libKF5Mbox5
 Summary:        KDE PIM Libraries: Mailbox functionality
-Group:          Development/Libraries/KDE
 
 %description  -n libKF5Mbox5
 This package provides the mailbox functionality for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       libKF5Mbox5 = %{version}
 Requires:       cmake(KF5Mime)
 
