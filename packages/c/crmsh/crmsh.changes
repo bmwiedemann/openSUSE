@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 07 02:27:46 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221207.84e6ea16:
+  * Dev: parse: Don't set timeout value when is not set by user meanwhile no value is advised in the metadata
+  * Dev: parse: complete advised operation values for other actions beside monitor
+  * Dev: unittest: Add unit test for utils.compatible_role
+  * Dev: parse: Consider compatibility for role when complete operation actions with advised values
+
+-------------------------------------------------------------------
+Tue Dec 06 09:17:16 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221206.b25bc04c:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: qdevice: Refactor qdevice validation code
+
+-------------------------------------------------------------------
 Sat Dec 03 15:05:11 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221203.9bb5442e:
