@@ -17,7 +17,7 @@
 
 
 Name:           python-xattr
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Python wrapper for extended filesystem attributes
 License:        MIT
