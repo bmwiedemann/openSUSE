@@ -54,6 +54,7 @@ Dale series or Planescape: Torment to play.
 
 %prep
 %autosetup -p1
+sed -ie 's,\(#!/usr/bin/python\)$,\13,' admin/extend2da.py
 
 %build
 rm -Rf CMakeCache.txt CMakeFiles/

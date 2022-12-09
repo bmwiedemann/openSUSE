@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  9 05:38:07 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change shebang of a shipped script to use Python 3. 
+
+-------------------------------------------------------------------
 Wed Dec  7 08:36:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.9.1.1:
