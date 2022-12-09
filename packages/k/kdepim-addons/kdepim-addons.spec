@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-addons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdepim-addons
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
-Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -98,18 +97,15 @@ themes, and plugins providing extra or advanced functionality.
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-man --all-name
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/mailtransport
 %dir %{_kf5_qmldir}/org/kde/plasma
 %dir %{_kf5_sharedir}/qtcreator
 %dir %{_kf5_sharedir}/qtcreator/templates/
@@ -150,11 +146,11 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libscamconfiguresettings.so.5.*
 %{_kf5_libdir}/libopenurlwithconfigure.so.5
 %{_kf5_libdir}/libopenurlwithconfigure.so.5.*
-%{_kf5_plugindir}/kf5/mailtransport/mailtransport_sendplugin.so
 %dir %{_kf5_plugindir}/pim5/
 %dir %{_kf5_plugindir}/pim5/contacteditor/
 %dir %{_kf5_plugindir}/pim5/korganizer/
 %dir %{_kf5_plugindir}/pim5/kmail/
+%dir %{_kf5_plugindir}/pim5/mailtransport/
 %dir %{_kf5_plugindir}/pim5/messageviewer/
 %dir %{_kf5_plugindir}/pim5/messageviewer/grantlee
 %dir %{_kf5_plugindir}/pim5/messageviewer/grantlee/5.0
@@ -164,18 +160,19 @@ themes, and plugins providing extra or advanced functionality.
 %dir %{_kf5_plugindir}/pim5/libksieve/
 %dir %{_kf5_plugindir}/pim5/webengineviewer/
 %{_kf5_plugindir}/pim5/akonadi/
+%{_kf5_plugindir}/pim5/contacteditor/editorpageplugins
 %{_kf5_plugindir}/pim5/importwizard/
 %{_kf5_plugindir}/pim5/kaddressbook/importexportplugin/
 %{_kf5_plugindir}/pim5/kaddressbook/mainview/
 %{_kf5_plugindir}/pim5/kmail/mainview/
-%{_kf5_plugindir}/pim5/contacteditor/editorpageplugins
+%{_kf5_plugindir}/pim5/mailtransport/mailtransport_sendplugin.so
 %{_kf5_plugindir}/pim5/messageviewer/bodypartformatter/
+%{_kf5_plugindir}/pim5/messageviewer/checkbeforedeleting/
+%{_kf5_plugindir}/pim5/messageviewer/configuresettings/
 %{_kf5_plugindir}/pim5/messageviewer/configuresettings/
 %{_kf5_plugindir}/pim5/messageviewer/headerstyle/
 %{_kf5_plugindir}/pim5/messageviewer/viewercommonplugin/
 %{_kf5_plugindir}/pim5/messageviewer/viewerplugin/
-%{_kf5_plugindir}/pim5/messageviewer/checkbeforedeleting/
-%{_kf5_plugindir}/pim5/messageviewer/configuresettings/
 %{_kf5_plugindir}/pim5/templateparser/
 %{_kf5_plugindir}/pim5/pimcommon/customtools/
 %{_kf5_plugindir}/pim5/pimcommon/shorturlengine/
@@ -208,8 +205,6 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugineditor.*
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorplugins/plugineditorinterface.*
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
