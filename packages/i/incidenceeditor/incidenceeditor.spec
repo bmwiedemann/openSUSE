@@ -1,7 +1,7 @@
 #
 # spec file for package incidenceeditor
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           incidenceeditor
-Version:        22.08.3
+Version:        22.12.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -59,7 +58,6 @@ This package contains the incidenceeditor library.
 %package -n libKF5IncidenceEditor5
 Summary:        Incidenceeditor Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 Obsoletes:      libKF5IncidenceEditorsng5 < %{version}
 Provides:       libKF5IncidenceEditorsng5 = %{version}
@@ -70,7 +68,6 @@ The IncidenceEditor library for KDE PIM applications.
 %package devel
 Summary:        Development package for incidenceeditor
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       libKF5IncidenceEditor5 = %{version}
 Requires:       cmake(KChart)
 Requires:       cmake(KF5CalendarCore)
@@ -95,9 +92,8 @@ The development package for the incidenceeditor libraries.
 
 %install
 %kf5_makeinstall -C build
-%if %{with released}
-  %find_lang %{name} --with-man --all-name
-%endif
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5IncidenceEditor5  -p /sbin/ldconfig
 %postun -n libKF5IncidenceEditor5 -p /sbin/ldconfig
@@ -116,8 +112,6 @@ The development package for the incidenceeditor libraries.
 %{_kf5_debugdir}/incidenceeditor.categories
 %{_kf5_debugdir}/incidenceeditor.renamecategories
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
