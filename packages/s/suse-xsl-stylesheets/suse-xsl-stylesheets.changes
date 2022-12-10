@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Dec  9 13:16:30 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.88.0
+
+- Update 2.88.0
+  * Changes for both formats:
+    - Base TRD stylesheets on SBP
+    - Supports affiliation/jobtitle and affiliation/orgname in author,
+      editor, and othercredit. Distinguish between a personname and an
+      orgname
+    - Detects meta[@name='series'] and meta[@name='type'].
+      Still possible to use meta[@name='platform']
+    - For SBP, we use <meta name="category">, but TRD needs
+      <meta name="type">
+
+  * FO output
+    - Use jungle color for productname and add space
+    - Change article titlepage for FO
+      - upper right shows seris and type
+      - title, optional subtitle, and SVG separator
+      - Platforms and authors (first authors, then editors and
+        othercredits)
+      - Shows max 5 company logos from right to left
+      - Don't hyphenate titles
+    - Shows title and subtitle on page 2
+      - Shows date(s)
+      - Shows abstract(s)
+
+  * HTML output
+    - Change article titlepage for XHTML
+      - Starts with productname
+      - Shows title & subtitle followed by d:meta[@name='series'] and
+        d:meta[@name='type']. Don't hyphenate titles
+      - Shows authors and contributors
+      - Shows optional company logos
+      - Shows date(s)
+      - Shows abstract(s)
+
+  * SBP: Introduce titlepage.logo.image
+
+-------------------------------------------------------------------
 Mon Nov 28 15:31:59 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.87.1
 
 - Update 2.87.1

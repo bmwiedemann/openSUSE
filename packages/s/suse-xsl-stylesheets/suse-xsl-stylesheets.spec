@@ -22,7 +22,7 @@
 %define suse_styles_dir   %{db_xml_dir}/stylesheet
 #
 Name:           suse-xsl-stylesheets
-Version:        2.87.1
+Version:        2.88.0
 Release:        0
 Summary:        SUSE-Branded Stylesheets for DocBook
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -174,6 +174,7 @@ exit 0
 %dir %{suse_styles_dir}/suse2021-ns
 %dir %{suse_styles_dir}/suse2022-ns
 %dir %{suse_styles_dir}/sbp
+%dir %{suse_styles_dir}/trd
 
 %dir %{_ttfontsdir}
 
@@ -191,6 +192,7 @@ exit 0
 %{suse_styles_dir}/suse2021-ns/*
 %{suse_styles_dir}/suse2022-ns/*
 %{suse_styles_dir}/sbp/*
+%{suse_styles_dir}/trd/*
 
 # catalogs
 %config %{_sysconfdir}/xml/catalog.d/%{name}.xml
