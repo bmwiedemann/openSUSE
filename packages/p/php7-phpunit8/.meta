@@ -1,5 +1,0 @@
-<package name="php7-phpunit8" project="openSUSE:Factory">
-  <title>Testing framework for PHP</title>
-  <description>PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks.</description>
-  <devel project="server:php:applications" package="php7-phpunit8"/>
-</package>
