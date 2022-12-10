@@ -18,7 +18,7 @@
 
 %define libname librvngabw-0_0-0
 Name:           librvngabw
-Version:        0.0.1
+Version:        0.0.3
 Release:        0
 Summary:        An AbiWord document generator library
 License:        LGPL-2.1-or-later AND MPL-2.0
@@ -28,10 +28,9 @@ Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(librevenge-0.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 %{name} is a library for generating AbiWord documents. It is directly
@@ -72,10 +71,10 @@ This package contains documentation for the librvngabw API.
 	--disable-static \
 	--docdir=%{_docdir}/%{name}-devel/html \
 	--with-sharedptr=c++11
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %fdupes -s %{buildroot}
@@ -84,21 +83,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 %doc ChangeLog
-%doc COPYING.LGPL
-%doc COPYING.MPL
+%license COPYING.LGPL
+%license COPYING.MPL
 %doc NEWS
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/librvngabw*.pc
 %{_includedir}/librvngabw*
 
 %files devel-doc
-%defattr(-,root,root,-)
 %dir %{_docdir}/%{name}-devel
 %doc %{_docdir}/%{name}-devel/html/
 
