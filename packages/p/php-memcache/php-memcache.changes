@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
+
+-------------------------------------------------------------------
 Wed Nov 30 17:47:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust to memcached now being installed in /usr/bin instead of

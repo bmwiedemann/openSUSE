@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package php-memcache
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,17 +16,19 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%nil
-%if "%{flavor}" == ""
+%define pkg_name    memcache
+
+%define flavor @BUILD_FLAVOR@%nil
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
 %define php_name %flavor
 %endif
-
+%if 0%{?suse_version} <= 1500
 %define php_extdir  %(%{__php_config} --extension-dir)
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
-%define pkg_name    memcache
+%endif
 
 Name:           %{php_name}-%{pkg_name}
 %if "%{php_name}" == "php8"
