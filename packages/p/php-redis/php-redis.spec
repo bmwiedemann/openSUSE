@@ -17,8 +17,9 @@
 
 
 %define pkg_name    redis
+
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
@@ -28,6 +29,7 @@ ExclusiveArch:  do-not-build
 %define php_extdir  %(%{__php_config} --extension-dir)
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %endif
+
 Name:           %{php_name}-%{pkg_name}
 Version:        5.3.7
 Release:        0

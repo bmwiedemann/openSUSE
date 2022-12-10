@@ -52,4 +52,12 @@
   * Fixed LZF decompression logic.</comment>
     <requestid>955734</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>82475922c40830e3112795024b84f51f</srcmd5>
+    <version>5.3.7</version>
+    <time>1670703527</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)</comment>
+    <requestid>1041991</requestid>
+  </revision>
 </revisionlist>
