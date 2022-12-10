@@ -19,7 +19,7 @@
 %define sover 2
 
 Name:           libpaper
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
