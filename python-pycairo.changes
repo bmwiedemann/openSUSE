@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  7 20:50:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.23.0 
+  * Reminder to distro packagers: Building/installing pycairo using setup.py is deprecated, please use meson instead.
+  * git: changed default branch from “master” to “main”
+  * Windows: Update the cairo version included in the wheels from 1.17.2 to 1.17.6 #pr-243
+  * docs: Document how to look up pycairo headers without loading the module #pr-300
+  * tests: don’t error out if cairo wasn’t built with all features #pr-293
+  New APIs:
+  * Status.DWRITE_ERROR #pr-294
+  * Format.RGB96F, Format.RGBA128F #pr-295
+  * PDFVersion.VERSION_1_6, PDFVersion.VERSION_1_7 #pr-296
+  * HAS_DWRITE_FONT #pr-297
+  * Context.set_hairline(), Context.get_hairline() #pr-298
+  * PDFSurface.set_custom_metadata() #pr-299
+
+-------------------------------------------------------------------
 Mon Nov 28 12:32:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Updtae to version 1.22.0:
