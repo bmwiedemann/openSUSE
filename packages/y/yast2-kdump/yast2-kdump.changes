@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  9 09:53:31 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Support fadump values in output of kdumptools calibrate
+  (jsc#PED-1927)
+- drop support for older kdumptools
+- remove limits when kdumptools calibrate failed to allow user
+  enter anything
+- 4.5.7
+
+-------------------------------------------------------------------
 Wed Dec  7 17:14:38 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Changed default of KDUMP_AUTO_RESIZE to "no" as documented in
