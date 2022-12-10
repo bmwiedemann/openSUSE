@@ -79,4 +79,13 @@
     <comment>- Update to release 5.4.2</comment>
     <requestid>979163</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ed40d536a6fa465e909ffe7872b6bc17</srcmd5>
+    <version>5.4.2</version>
+    <time>1670703518</time>
+    <user>dimstar_suse</user>
+    <comment>- Limit build parallelism with limit_build macro to avoid
+  occasional build failure due to OOM. (forwarded request 1041919 from StefanBruens)</comment>
+    <requestid>1041938</requestid>
+  </revision>
 </revisionlist>

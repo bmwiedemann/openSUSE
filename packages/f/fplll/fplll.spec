@@ -29,6 +29,7 @@ URL:            https://github.com/dstehle/fplll
 Source:         https://github.com/fplll/fplll/releases/download/%version/fplll-%version.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  memory-constraints
 BuildRequires:  mpfr-devel
 BuildRequires:  pkg-config
 
@@ -74,8 +75,9 @@ applications that want to make use of libfplll.
 %setup -q
 
 %build
+%limit_build -m 1700
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -85,18 +87,16 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
+%doc NEWS README.md
+%license COPYING
 %_bindir/fplll
 %_bindir/latticegen
 %_datadir/fplll/
-%doc COPYING NEWS README.md
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libfplll.so.*
 
 %files -n fplll-devel
-%defattr(-,root,root)
 %_includedir/fplll*
 %_libdir/libfplll.so
 %_libdir/pkgconfig/*.pc
