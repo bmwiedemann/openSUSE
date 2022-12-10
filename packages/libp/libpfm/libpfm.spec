@@ -21,12 +21,12 @@
 %define vname   libpfm4
 %bcond_without python2
 Name:           libpfm
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        Library to encode performance events
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://perfmon2.sourceforge.net/
+URL:            https://perfmon2.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/perfmon2/libpfm4/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 
@@ -89,6 +89,7 @@ Requires:       %{vname} = %{version}
 This package provides python bindings for the libpfm4 package and the perf_event_open system call.
 
 %else
+
 %package -n     python2-%{name}
 Summary:        Python bindings for libpfm and perf_event_open system call
 Group:          Development/Libraries/Python
@@ -145,6 +146,7 @@ pushd python
 popd
 
 %post -n %{vname} -p /sbin/ldconfig
+
 %postun	-n %{vname} -p /sbin/ldconfig
 
 %files -n %{vname}
