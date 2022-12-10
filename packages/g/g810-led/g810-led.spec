@@ -1,7 +1,7 @@
 #
 # spec file for package g810-led
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           g810-led
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Controller for Logitech LED keyboards
 License:        GPL-3.0-only
 Group:          Hardware/Other
 URL:            https://github.com/MatMoul/g810-led/wiki
 Source0:        https://github.com/MatMoul/g810-led/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:	harden_g810-led-reboot.service.patch
-Patch1:	harden_g810-led.service.patch
+Patch0:         harden_g810-led-reboot.service.patch
+Patch1:         harden_g810-led.service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libhidapi-devel
 BuildRequires:  pkgconfig

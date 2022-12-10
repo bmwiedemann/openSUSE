@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 15:26:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Rely on uaccess to control device access
+  * Add error context to failures to open devices
+  * Add new key for ABNT keyboards 
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
