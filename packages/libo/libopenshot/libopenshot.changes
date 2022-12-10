@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:06:45 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.0:
+  * Part of the OpenShot Video Editor v3.0.0 Release
+  * Huge PTS-related improvements (smoother playback, better at finding missing frames, better video compatibility)
+  * Reduce # of threads during video decoding (fixed big regression)
+  * Better handling of invalid durations (return last image with no audio)
+  * Better handling around EOF detection (return all frames)
+  * Improved Support for AV1 videos
+  * Fixed wipe / mask support for contrast (fixed algorithm)
+  * Improved ability to extract audio waveforms (improved data and algorithm)
+  * Added support for many image formats with FFmpegReader
+  * Better thread safety around AddClip/AddEffect and related operations
+  * Many new unit tests to verify thread safety (reducing crashes)
+  * Improved performance and caching for GetMaxTime()
+  * Improved clean-up of allocated readers (FFmpegReader and FrameMapper)
+  * Huge caching optimizations (for improved real-time playback)
+  * Fix to multi-line captions (captions effect)
+  * Improvements to caption effect (background only behind text, text centering)
+  * Better detection for video length and duration
+  * Improved snapping precision for clips and transitions
+  * Improved QImage copying and buffer clean-up
+  * Fix invalid frame mapping calculation (causing some frames to be skipped)
+  * Switch to Catch2 unit tests (from cppunittest)
+  * Added ability to pause video cache (extremely useful in UI when making rapid changes)
+  * Improvements in real-time video & audio playback (sample rate & audio device detection, correct timing)
+  * Adding pre-roll to VideoCacheThread (for smoother playback)
+  * Huge memory leak fixed, related to decoding video
+  * Improved resvg support & performance
+  * Added support for babl color library (improved chroma key effect - many new keying methods)
+  * Added support for anamorphic profiles
+  * Many new unit tests
+
+-------------------------------------------------------------------
 Mon Nov  1 14:21:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - python3_sitearch is defined in python-rpm-macros, BuildRequire

@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/OpenShot/libopenshot.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.2.7</param>
+    <param name="revision">v0.3.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

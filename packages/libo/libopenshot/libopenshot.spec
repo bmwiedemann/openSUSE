@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 21
+%define sover 23
 
 Name:           libopenshot
-Version:        0.2.7
+Version:        0.3.0
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
@@ -33,13 +33,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  ruby-devel
 BuildRequires:  swig
-BuildRequires:  cmake(OpenShotAudio) >= 0.2.1
+BuildRequires:  cmake(OpenShotAudio) >= 0.3.0
 # Disabled as cmake does not detect it
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(UnitTest++)
 BuildRequires:  pkgconfig(alsa)
@@ -123,7 +124,7 @@ export CXXFLAGS="%{optflags} -Wno-return-type"
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS
 %{_libdir}/%{name}.so.*
 
