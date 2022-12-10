@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 10 10:50:44 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.1.2
+  * Fixed `Phalcon\Support\Debug` to correctly calculate the documents
+    URL for the hyperlinks [#16223]
+  * Fixed `Phalcon\Html\TagFactory` docblock for autocompletion
+  * Fixed `Phalcon\Db\Profiler` by correctly calculating the seconds
+    (reapplied changes) [#15822]
+  * Added `Phalcon\Html\TagFactory` to the
+    `Phalcon\Di\FactoryDefault\Cli` [#16233]
+
+-------------------------------------------------------------------
+Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
+
+-------------------------------------------------------------------
 Mon Nov 28 21:49:29 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.1.1

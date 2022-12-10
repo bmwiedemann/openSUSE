@@ -19,7 +19,7 @@
 %define pkg_name    phalcon
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
@@ -45,13 +45,9 @@ BuildRequires:  %{php_name}-pdo
 BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
 %if "%{php_name}" == "php7"
-BuildRequires:  %{php_name}-json
 BuildRequires:  %{php_name} >= 7.4.1
+BuildRequires:  %{php_name}-json
 %endif
-%if "%{php_name}" == "php8"
-BuildRequires:  %{php_name} < 8.2.0
-%endif
-
 Requires:       %{php_name}-mysql
 
 %description
