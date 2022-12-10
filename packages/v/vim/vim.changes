@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Dec  9 13:54:59 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1040, fixes the following problems
+  * Build errors without the +channel feature. (John Marriott)
+  * ch_log() text can be hard to find in the log file.
+  * The keyboard state response may end up in a shell command.
+  * Build error in tiny version.
+  * 'cursorline' not drawn before virtual text below.
+  * Stray characters displayed when starting the GUI.
+  * GUI: remote_foreground() does not always work. (Ron Aaron)
+  * When using kitty keyboard protocol function keys may not work. (Kovid
+  Goyal)
+  * Build failure with tiny version.
+  * File missing from list of distributed files.
+  * Using feedkeys() does not show up in a channel log.
+  * Popupwin test is more flaky on MacOS.
+  * Callback name argument is changed by setqflist().
+  * Crash when reading help index with various options set. (Marius Gedminas)
+  * Vim9 script: get E1096 when comment follows return.
+  * Display errors when adding or removing text property type.
+  * Tests for empty prop type name fail.
+  * Padding before virtual text below is highlighted when 'number' and
+  'nowrap' are set.
+  * If 'keyprotocol' is empty "xterm" still uses modifyOtherKeys.
+  * Coverity warns for dead code.
+  * "gk" may reset skipcol when not needed.
+  * Memory may leak.
+  * With 'smoothscroll' skipcol may be reset unnecessarily.
+  * Classes are not documented or implemented yet.
+  * Command list test fails.
+  * Tiny build fails.
+  * Suspend test sometimes fails on MacOS.
+  * A failed test may leave a swap file behind.
+  * Suspend test still sometimes fails on MacOS.
+  * There is no way to get a list of swap file names.
+  * Test for swapfilelist() fails on MS-Windows.
+  * Test for catch after interrupt is flaky on MS-Windows.
+  * Stray warnings for existing swap files.
+  * ml_get error when using screenpos().
+  * Tests may get stuck in buffer with swap file.
+  * Suspend test often fails on Mac OS.
+  * Zir files are not recognized.
+  * Without /dev/urandom srand() seed is too predictable.
+  * screenpos() does not count filler lines for diff mode.
+  * 'smoothscroll' and virtual text above don't work together. (Yee Cheng Chin)
+  * Tests call GetSwapFileList() before it is defined.
+  * Test trips over g:name.
+  * Suspend test fails on Mac OS when suspending Vim.
+  * WinScrolled is not triggered when filler lines change.
+  * type of w_last_topfill is wrong.
+  * LGTM is soon shutting down.
+  * Mouse shape test is flaky, especially on Mac OS.
+  * Autoload directory missing from distribution.
+  * Using freed memory with the cmdline popup menu.
+  * Vim9 class is not implemented yet.
+  * Test fails when terminal feature is missing.
+  * Tiny build fails because of conflicting typedef.
+  * Reporting swap file when windows are split.
+  * Object members are not being marked as used, garbage collection may
+  free them.
+  * Undo misbehaves when writing from an insert mode mapping.
+  * lalloc(0) error for a class without members.
+  * Function name does not match what it is used for.
+  * Using a <Cmd> mapping CmdlineChanged may be triggered twice.
+  * Test for <Cmd> mapping with CmdlineChanged fails.
+
+-------------------------------------------------------------------
 Thu Dec  1 11:06:29 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -Updated to version 9.0.0978, fixes the following problems

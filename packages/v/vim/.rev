@@ -6560,4 +6560,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Part of making search more efficient is missing.</comment>
     <requestid>1039295</requestid>
   </revision>
+  <revision rev="330" vrev="1">
+    <srcmd5>b291063b4b9d3936fcfafcb180dfeb16</srcmd5>
+    <version>9.0.1040</version>
+    <time>1670703462</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1040, fixes the following problems
+  * Build errors without the +channel feature. (John Marriott)
+  * ch_log() text can be hard to find in the log file.
+  * The keyboard state response may end up in a shell command.
+  * Build error in tiny version.
+  * 'cursorline' not drawn before virtual text below.
+  * Stray characters displayed when starting the GUI.
+  * GUI: remote_foreground() does not always work. (Ron Aaron)
+  * When using kitty keyboard protocol function keys may not work. (Kovid
+  Goyal)
+  * Build failure with tiny version.
+  * File missing from list of distributed files.
+  * Using feedkeys() does not show up in a channel log.
+  * Popupwin test is more flaky on MacOS.
+  * Callback name argument is changed by setqflist().
+  * Crash when reading help index with various options set. (Marius Gedminas)
+  * Vim9 script: get E1096 when comment follows return.
+  * Display errors when adding or removing text property type.
+  * Tests for empty prop type name fail.
+  * Padding before virtual text below is highlighted when 'number' and
+  'nowrap' are set.
+  * If 'keyprotocol' is empty &quot;xterm&quot; still uses modifyOtherKeys.
+  * Coverity warns for dead code.
+  * &quot;gk&quot; may reset skipcol when not needed.
+  * Memory may leak.
+  * With 'smoothscroll' skipcol may be reset unnecessarily.
+  * Classes are not documented or implemented yet.
+  * Command list test fails.
+  * Tiny build fails.
+  * Suspend test sometimes fails on MacOS.</comment>
+    <requestid>1041886</requestid>
+  </revision>
 </revisionlist>
