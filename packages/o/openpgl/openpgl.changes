@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  9 19:45:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable aarch64, allow lax vector conversion (uint/int) for the
+  bundled embree sources.
+
+-------------------------------------------------------------------
 Thu Dec  8 09:54:51 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Make it x86_64 exclusive

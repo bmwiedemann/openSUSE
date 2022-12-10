@@ -29,10 +29,10 @@ URL:            https://github.com/OpenPathGuidingLibrary/openpgl
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig
+BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(zlib)
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 Open Path Guiding Library (Intel® Open PGL) implements a set of representations
@@ -72,6 +72,8 @@ Documentation files for the Open Path Guiding library.
 %autosetup
 
 %build
+# https://github.com/embree/embree/issues/410
+%global optflags %{optflags} -flax-vector-conversions
 %cmake
 %cmake_build
 

@@ -13,4 +13,12 @@ This package will be required by Blender 3.4.0, that was released yesterday, and
 it's x86_64 exclusive for the time being</comment>
     <requestid>1041355</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>478aea21c0885ddfa98df1655183fd23</srcmd5>
+    <version>0.4.0</version>
+    <time>1670703523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041966</requestid>
+  </revision>
 </revisionlist>
