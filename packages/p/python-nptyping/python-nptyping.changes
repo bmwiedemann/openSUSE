@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec  9 11:44:19 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.4.1:
+  * Fixed compatibility with mypy==0.991.
+- 2.4.0 (2022-11-14)
+  * Added hint for pandas DataFrame.
+  * Fixed bug for checking against a Structure where a different number of
+    fields did not fail the check.
+  * Changed nptyping.Int pointing to the more generic numpy.integer rather than
+    numpy.int32.
+  * Added support for Python 3.11 with the exception of pandas.DataFrame.
+- 2.3.1 (2022-08-30)
+  * Fixed mypy error of inheriting final dtype as of numpy==1.23.1.
+  * Allowed for quotes in shape expressions to appease PyCharm.
+- 2.3.0 (2022-08-28)
+  * Added support for subarrays with shape expressions inside structure
+    expressions.
+  * Added support for wildcards in structure expressions.
+
+-------------------------------------------------------------------
 Thu Aug 25 20:59:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.0

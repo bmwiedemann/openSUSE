@@ -15,4 +15,28 @@
     <comment></comment>
     <requestid>999363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5006371d8a5404cad985801967ab5752</srcmd5>
+    <version>2.4.1</version>
+    <time>1670703485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Fixed compatibility with mypy==0.991.
+- 2.4.0 (2022-11-14)
+  * Added hint for pandas DataFrame.
+  * Fixed bug for checking against a Structure where a different number of
+    fields did not fail the check.
+  * Changed nptyping.Int pointing to the more generic numpy.integer rather than
+    numpy.int32.
+  * Added support for Python 3.11 with the exception of pandas.DataFrame.
+- 2.3.1 (2022-08-30)
+  * Fixed mypy error of inheriting final dtype as of numpy==1.23.1.
+  * Allowed for quotes in shape expressions to appease PyCharm.
+- 2.3.0 (2022-08-28)
+  * Added support for subarrays with shape expressions inside structure
+    expressions.
+  * Added support for wildcards in structure expressions.
+</comment>
+    <requestid>1041858</requestid>
+  </revision>
 </revisionlist>

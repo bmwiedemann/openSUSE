@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname nptyping
 Name:           python-nptyping
-Version:        2.2.0
+Version:        2.4.1
 Release:        0
 Summary:        Type hints for NumPy
 License:        MIT
@@ -49,6 +48,7 @@ BuildRequires:  %{python_module beartype}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module numpy >= 1.20.0}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module typeguard}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.10}
 # /SECTION
@@ -71,7 +71,8 @@ Type hints for NumPy.
 # wheel in dist/ used by test/test_wheel.py
 mkdir -p dist/
 cp build/nptyping-%{version}-py3-none-any.whl dist/
-%pyunittest -v
+# There's no python-pandas-stubs package in Factory yet
+%pyunittest -v -k 'not test_mypi'
 
 %files %{python_files}
 %doc README.md
