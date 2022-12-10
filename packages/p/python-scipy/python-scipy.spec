@@ -60,7 +60,11 @@
 %{?with_hpc:%{hpc_requires}}
 %bcond_with ringdisabled
 %if %{without hpc}
+%if "%{flavor}" == ""
 %define package_name %{pname}
+%else
+%define package_name %{pname}-%{flavor}
+%endif
 # for file section
 %define p_python_sitearch %{python_sitearch}
 # for inside python_expand

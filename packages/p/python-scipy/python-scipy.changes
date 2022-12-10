@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  8 17:07:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure the test flavor has a different source name than the main
+  flavor: OBS uses the source names to create the dep-chain. With
+  the test package having the same name as the mani flavor, all
+  builds behind python-scipy are blocked until the test suite
+  passed.
+
+-------------------------------------------------------------------
 Wed Dec  7 11:11:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests-pytest72.patch to fix the tests that fails with pytest 7
