@@ -1,0 +1,103 @@
+Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
+===================================================================
+--- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/base.py
++++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
+@@ -14,8 +14,6 @@ import logging
+ import random
+ import errno
+ 
+-from six import string_types
+-
+ from pytest_server_fixtures import CONFIG
+ from pytest_shutil.workspace import Workspace
+ 
+@@ -109,7 +107,7 @@ class ProcessReader(threading.Thread):
+     def run(self):
+         while self.process.poll() is None:
+             l = self.stream.readline()
+-            if not isinstance(l, string_types):
++            if not isinstance(l, str):
+                 l = l.decode('utf-8')
+ 
+             if l.strip():
+Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
+===================================================================
+--- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/http.py
++++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
+@@ -9,7 +9,6 @@ import sys
+ import pytest
+ import requests
+ from contextlib import contextmanager
+-from six.moves import http_client
+ 
+ from pytest_shutil.env import unset_env
+ from pytest_server_fixtures import CONFIG
+@@ -83,7 +82,7 @@ class HTTPTestServer(TestServer):
+                 with self.handle_proxy():
+                     returned = requests.get('http://%s:%d/%s' % (self.hostname, self.port, path))
+                 return returned.json() if as_json else returned
+-            except (http_client.BadStatusLine, requests.ConnectionError) as e:
++            except (http.client.BadStatusLine, requests.ConnectionError) as e:
+                 time.sleep(int(i) / 10)
+                 pass
+         raise e
+@@ -107,7 +106,7 @@ class HTTPTestServer(TestServer):
+                 with self.handle_proxy():
+                     returned = requests.post('http://%s:%d/%s' % (self.hostname, self.port, path), data=data)
+                 return returned.json() if as_json else returned
+-            except (http_client.BadStatusLine, requests.ConnectionError) as e:
++            except (http.client.BadStatusLine, requests.ConnectionError) as e:
+                 time.sleep(int(i) / 10)
+                 pass
+         raise e
+Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/jenkins.py
+===================================================================
+--- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/jenkins.py
++++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/jenkins.py
+@@ -9,7 +9,6 @@ import os.path
+ import shutil
+ 
+ import pytest
+-import six
+ 
+ from pytest_server_fixtures import CONFIG
+ from pytest_fixture_config import yield_requires_config
+@@ -95,7 +94,7 @@ class JenkinsTestServer(HTTPTestServer):
+         if plugins is None:
+             plugins = available_plugins.keys()
+         else:
+-            if isinstance(plugins, six.string_types):
++            if isinstance(plugins, str):
+                 plugins = [plugins]
+ 
+             errors = []
+Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/postgres.py
+===================================================================
+--- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/postgres.py
++++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/postgres.py
+@@ -8,7 +8,6 @@ import subprocess
+ 
+ import errno
+ import pytest
+-from six import text_type
+ 
+ from pytest_server_fixtures import CONFIG
+ from pytest_fixture_config import requires_config
+@@ -65,7 +64,7 @@ class PostgresServer(TestServer):
+         try:
+             self.pg_bin = subprocess.check_output([CONFIG.pg_config_executable, "--bindir"]).decode('utf-8').rstrip()
+         except OSError as e:
+-            msg = "Failed to get pg_config --bindir: " + text_type(e)
++            msg = "Failed to get pg_config --bindir: " + str(e)
+             print(msg)
+             self._fail(msg)
+         initdb_path = self.pg_bin + '/initdb'
+@@ -76,7 +75,7 @@ class PostgresServer(TestServer):
+         try:
+             subprocess.check_call([initdb_path, str(self.workspace / 'db')])
+         except OSError as e:
+-            msg = "Failed to launch postgres: " + text_type(e)
++            msg = "Failed to launch postgres: " + str(e)
+             print(msg)
+             self._fail(msg)
+ 

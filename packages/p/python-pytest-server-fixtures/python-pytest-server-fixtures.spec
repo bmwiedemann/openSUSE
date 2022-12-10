@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pytest-server-fixtures
 Version:        1.7.0
@@ -27,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-server-fixtures/pytest-server-fixtures-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pytest-plugins-pr186-fix-psycopg29.patch -- gh#man-group/pytest-plugins#186
-Patch0:         https://github.com/man-group/pytest-plugins/pull/186.patch#/pytest-plugins-pr186-fix-psycopg29.patch
+Patch0:         pytest-plugins-pr186-fix-psycopg29.patch
 # PATCH-FEATURE-UPSTREAM remove-mock.patch -- gh#man-group#pytest-plugins#171
 Patch1:         remove-mock.patch
+# https://github.com/man-group/pytest-plugins/issues/209
+Patch2:         python-pytest-server-fixtures-no-six.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +46,6 @@ Requires:       python-pytest-fixture-config
 Requires:       python-pytest-shutil
 Requires:       python-requests
 Requires:       python-retry
-Requires:       python-six
 Suggests:       apache2
 Suggests:       postgresql-server-devel
 Suggests:       python-boto3
@@ -77,7 +77,6 @@ BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module rethinkdb}
 BuildRequires:  %{python_module retry}
-BuildRequires:  %{python_module six}
 %if %{with python2}
 BuildRequires:  python2-mock
 %endif
@@ -96,7 +95,7 @@ BuildRequires:  xorg-x11-server
 Extensible server fixtures for pytest
 
 %prep
-%autosetup -p2 -n pytest-server-fixtures-%{version}
+%autosetup -p1 -n pytest-server-fixtures-%{version}
 
 # Tests requiring a server
 rm tests/integration/test_mongo_server.py

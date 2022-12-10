@@ -11,9 +11,9 @@ https://github.com/psycopg/psycopg2/issues/941
  1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/pytest-server-fixtures/pytest_server_fixtures/postgres.py b/pytest-server-fixtures/pytest_server_fixtures/postgres.py
-index 7c6ea33..aeab36a 100644
---- a/pytest-server-fixtures/pytest_server_fixtures/postgres.py
-+++ b/pytest-server-fixtures/pytest_server_fixtures/postgres.py
+index 7c6ea33d..aeab36ad 100644
+--- a/pytest_server_fixtures/postgres.py
++++ b/pytest_server_fixtures/postgres.py
 @@ -103,18 +103,22 @@ def run_cmd(self):
  
      def check_server_up(self):

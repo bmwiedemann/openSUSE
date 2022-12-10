@@ -1,7 +1,7 @@
-Index: a/pytest-server-fixtures-1.7.0/tests/integration/test_xvfb_server.py
+Index: a/tests/integration/test_xvfb_server.py
 ===================================================================
---- a/pytest-server-fixtures-1.7.0/tests/integration/test_xvfb_server.py
-+++ b/pytest-server-fixtures-1.7.0/tests/integration/test_xvfb_server.py
+--- a/tests/integration/test_xvfb_server.py
++++ b/tests/integration/test_xvfb_server.py
 @@ -4,7 +4,11 @@ import time
  
  from itertools import chain, repeat
@@ -15,10 +15,10 @@ Index: a/pytest-server-fixtures-1.7.0/tests/integration/test_xvfb_server.py
  import pytest
  from pytest import raises
  
-Index: a/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_docker_unit.py
+Index: a/tests/unit/serverclass/test_docker_unit.py
 ===================================================================
---- a/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_docker_unit.py
-+++ b/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_docker_unit.py
+--- a/tests/unit/serverclass/test_docker_unit.py
++++ b/tests/unit/serverclass/test_docker_unit.py
 @@ -1,4 +1,8 @@
 -from mock import sentinel, patch, Mock
 +try:
@@ -29,10 +29,10 @@ Index: a/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_docker_unit.py
  
  from pytest_server_fixtures.serverclass.docker import DockerServer
  
-Index: a/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_thread_unit.py
+Index: a/tests/unit/serverclass/test_thread_unit.py
 ===================================================================
---- a/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_thread_unit.py
-+++ b/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_thread_unit.py
+--- a/tests/unit/serverclass/test_thread_unit.py
++++ b/tests/unit/serverclass/test_thread_unit.py
 @@ -1,4 +1,8 @@
 -from mock import sentinel, patch, Mock
 +try:
@@ -43,10 +43,10 @@ Index: a/pytest-server-fixtures-1.7.0/tests/unit/serverclass/test_thread_unit.py
  
  from pytest_server_fixtures import CONFIG
  from pytest_server_fixtures.serverclass.thread import ThreadServer
-Index: a/pytest-server-fixtures-1.7.0/tests/unit/test_server_unit.py
+Index: a/tests/unit/test_server_unit.py
 ===================================================================
---- a/pytest-server-fixtures-1.7.0/tests/unit/test_server_unit.py
-+++ b/pytest-server-fixtures-1.7.0/tests/unit/test_server_unit.py
+--- a/tests/unit/test_server_unit.py
++++ b/tests/unit/test_server_unit.py
 @@ -1,4 +1,8 @@
 -from mock import create_autospec, sentinel, call, patch, Mock
 +try:
@@ -57,10 +57,10 @@ Index: a/pytest-server-fixtures-1.7.0/tests/unit/test_server_unit.py
  
  from pytest_server_fixtures.base import TestServer as _TestServer  # So that pytest doesnt think this is a test case
  
-Index: pytest-server-fixtures-1.7.0/tests/unit/test_server_v2_unit.py
+Index: tests/unit/test_server_v2_unit.py
 ===================================================================
---- a/pytest-server-fixtures-1.7.0/tests/unit/test_server_v2_unit.py
-+++ b/pytest-server-fixtures-1.7.0/tests/unit/test_server_v2_unit.py
+--- a/tests/unit/test_server_v2_unit.py
++++ b/tests/unit/test_server_v2_unit.py
 @@ -1,4 +1,8 @@
 -from mock import create_autospec, sentinel, call, patch, Mock
 +try:

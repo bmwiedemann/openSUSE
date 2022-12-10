@@ -56,4 +56,23 @@
     <comment></comment>
     <requestid>971975</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>a803c7fbd2fba99e7137141e1d9e2cae</srcmd5>
+    <version>1.7.0</version>
+    <time>1670703478</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove remote path for pytest-plugins-pr186-fix-psycopg29.patch to avoid
+  download that patch from github
+- Update source pytest-plugins-pr186-fix-psycopg29.patch
+- do not require six
+- use -p1 as quilt does not like higher
+- modified patches
+  % pytest-plugins-pr186-fix-psycopg29.patch (refreshed)
+  % remove-mock.patch (refreshed)
+- added patches
+  fix https://github.com/man-group/pytest-plugins/issues/209
+  + python-pytest-server-fixtures-no-six.patch
+</comment>
+    <requestid>1041859</requestid>
+  </revision>
 </revisionlist>
