@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 09 13:20:10 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221209.975098b:
+  * dbus-services: whitelist transaction-update-notifier (bsc#1206163)
+  * Remove for now LGTM badges as it will be closed.
+
+-------------------------------------------------------------------
 Wed Dec 07 10:04:19 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221206.f05dc9c:

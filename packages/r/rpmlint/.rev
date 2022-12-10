@@ -4194,4 +4194,12 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: /etc -&gt; /usr move for lightdm whitelisting (bsc#1205939)</comment>
     <requestid>1040918</requestid>
   </revision>
+  <revision rev="428" vrev="1">
+    <srcmd5>e2f0288260b8b1d6570758fc05260a0b</srcmd5>
+    <version>2.4.0+git20221209.975098b</version>
+    <time>1670703452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041868</requestid>
+  </revision>
 </revisionlist>
