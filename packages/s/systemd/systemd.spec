@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.29.ge7e931b07e
+%define archive_version +suse.40.gbf3fef9988
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        252.2
+Version:        252.3
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -216,7 +216,6 @@ Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed
 # quickly. But even in these cases, the patches are temporary and should be
 # removed as soon as a fix is merged by upstream.
-Patch6000:      6000-Revert-tmpfiles-whenever-creating-an-inode-immediate.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB

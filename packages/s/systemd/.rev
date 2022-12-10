@@ -6237,4 +6237,28 @@ handle manual pages that consist only of a .so directive such as
   pam_env(8), which is included by 'systemd-user' PAM service anyway.</comment>
     <requestid>1040361</requestid>
   </revision>
+  <revision rev="374" vrev="1">
+    <srcmd5>05e1911e86c3f904127e9a7030e1e5dc</srcmd5>
+    <version>252.3</version>
+    <time>1670703456</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit bf3fef99886bd977a1c7a51d20087bc8977fff44
+  6372fb0cc4 btrfs-util: convert O_PATH if necessary, in btrfs quota call (bsc#1205560)
+  12e68eb0e5 blockdev-util: move O_PATH fd conversion into btrfs_get_block_device_fd() to shorten things
+  bb2bafdc9d btrfs-util: convert to fd_reopen_condition()
+  1323232948 fd-util: add new helper fd_reopen_conditional()
+- Drop 6000-Revert-tmpfiles-whenever-creating-an-inode-immediate.patch
+  It's no more needed as a fix for bsc#1205560 has been queued, see above.
+
+- Import commit 82898a14f5b0a965ba9c1efc1913fcdf29d446a8 (merge of v252.3)
+  It includes the following fixes:
+    9410eb20eb cryptsetup: retry TPM2 unseal operation if it fails with TPM2_RC_PCR_CHANGED (bsc#1204944)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/e7e931b07edd786dc6ca1dae6c23ff7b785f8efd...82898a14f5b0a965ba9c1efc1913fcdf29d446a8
+  Additionally, it also includes the following backports:
+  - 17b2f9f196 utmp-wtmp: fix error in case isatty() fails
+  - 8d5c487c87 sd-bus: handle -EINTR return from bus_poll() (bsc#1201982)
+  - 2dd217c8b5 tree-wide: modernizations with RET_NERRNO()</comment>
+    <requestid>1041834</requestid>
+  </revision>
 </revisionlist>
