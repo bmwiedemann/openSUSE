@@ -17,14 +17,9 @@
 
 
 %define _lto_cflags %{nil}
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64le
 %bcond_without  test
-%else
-# ppc ppc64 s390x
-%bcond_with     test
-%endif
 Name:           tpm2.0-tools
-Version:        5.2
+Version:        5.4
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
@@ -35,12 +30,8 @@ Source1:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{
 # git show william-roberts-pub javier-martinez-pub joshua-lock-pub idesai-pub > tpm2-tools.keyring
 Source2:        tpm2-tools.keyring
 Patch0:         fix_bogus_warning.patch
-# PATCH-FIX-UPSTREAM 0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch -- based on PR#3041
-Patch1:         0001-tests-getekcertificate.sh-Skip-the-test-if-curl-is-n.patch
-# PATCH-FIX-UPSTREAM add_missing_shut_down_call_on_cleanup.patch -- based on PR#3047
-Patch2:         add_missing_shut_down_call_on_cleanup.patch
-# PATCH-FIX-UPSTREAM fix_check_of_qualifying_data.patch -- already merged
-Patch3:         fix_check_of_qualifying_data.patch
+# PATCH-FIX-UPSTREAM add_missing_shut_down_call_on_cleanup.patch -- based on PR#3176
+Patch1:         echo_tcti_call_python3_binary.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
@@ -97,8 +88,8 @@ export PATH=$PATH:/usr/sbin:/usr/libexec/ibmtss
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
-%doc doc/README.md doc/CHANGELOG.md
-%license doc/LICENSE
+%doc docs/README.md docs/CHANGELOG.md
+%license docs/LICENSE
 %{_bindir}/tpm2*
 %{_bindir}/tss2*
 %{_mandir}/man1/tpm2*

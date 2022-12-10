@@ -1,0 +1,23 @@
+From d191b1f3cd66e9334d000c622bc6cc4bdc63304e Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 8 Dec 2022 15:23:50 +0100
+Subject: [PATCH] echo_tcti: call python3 binary
+
+Most distributions are now in Python3.  The binary for Python3 is still
+called `python3`.
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ test/scripts/echo_tcti.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/scripts/echo_tcti.py b/test/scripts/echo_tcti.py
+index 3e4c1f462..325e35315 100755
+--- a/test/scripts/echo_tcti.py
++++ b/test/scripts/echo_tcti.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ #
+ # This TCTI is designed to use with the subprocess TCTI and echo the contents
