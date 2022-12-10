@@ -72,9 +72,11 @@ BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libncurses5
 BuildRequires:  pkgconfig(libffi)
+BuildRequires:  libffi8 >= 3.4.4
 Requires:       gmp-devel
 Requires:       libncurses5
 Requires:       pkgconfig(libffi)
+Requires:       libffi8 >= 3.4.4
 # This package is not meant to be used outside OBS
 Requires:       this-is-only-for-build-envs
 Provides:       ghc-bootstrap-devel

@@ -241,4 +241,12 @@ Add support for ppc64le.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>986171</requestid>
   </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>2877fb3735f97ae8c82cd1b69d155d17</srcmd5>
+    <version>8.10.1</version>
+    <time>1670703488</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing dependency on libffi8.so to fix jsc#PED-1151.</comment>
+    <requestid>1041880</requestid>
+  </revision>
 </revisionlist>
