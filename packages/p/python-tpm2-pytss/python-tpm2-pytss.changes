@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 08 10:33:50 UTC 2022 - aplanas@suse.com
+
+- Update to version 2.0.0:
+  * CHANGELOG: update for 2.0 release
+  * CHANGELOG: move breaking items to changed
+  * Revert "ci: publish_pkg update to tss 4.0.0-rc0"
+  * ci: publish_pkg update to tss 4.0.0-rc0
+  * ci: update publish script to py3.7
+  * README: Update mailing list
+  * CHANGELOG: update for 2.0-rc0
+  * docs: add PyTCTI to docs
+  * README: add newest libraries
+  * FAPI: drop unused import Dict
+- Drop patch 0001-test_crypto-fix-test_ecc_bad_curves-assert.patch
+
+-------------------------------------------------------------------
 Mon Jul 11 07:35:34 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Initial package for 1.2.0

@@ -1,5 +1,5 @@
 #
-# spec file for package python-tpm2-pytss
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -21,13 +21,12 @@
 %define srcname tpm2-pytss
 %bcond_with     test
 Name:           python-%{srcname}
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        Python bindings for TSS
 License:        BSD-2-Clause
 URL:            https://github.com/tpm2-software/tpm2-pkcs11
 Source:         %{srcname}-%{version}.tar.gz
-Patch0:         0001-test_crypto-fix-test_ecc_bad_curves-assert.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cffi}
@@ -35,6 +34,7 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pkgconfig}
+BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -76,7 +76,7 @@ files.
 # Provides a PKG-INFO with "version" for setuptools_scm
 cat <<EOF > PKG-INFO
 Metadata-Version: 1.1
-Version: %{version}
+Version:        %{version}
 EOF
 export CFLAGS="%{optflags}"
 %python_build

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">tpm2-pytss</param>
-    <param name="revision">1.2.0</param>
+    <param name="revision">2.0.0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/tpm2-software/tpm2-pytss.git</param>
