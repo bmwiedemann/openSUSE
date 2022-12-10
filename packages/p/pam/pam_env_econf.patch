@@ -1,7 +1,38 @@
-diff -Naur org/configure.ac patch/configure.ac
---- org/configure.ac	2022-10-11 12:35:53.558193223 +0200
-+++ patch/configure.ac	2022-10-11 12:36:32.502192985 +0200
-@@ -511,7 +511,11 @@
+From 4b427724082fa2b77cccfa572881c5d2940c754e Mon Sep 17 00:00:00 2001
+From: Stefan Schubert <schubi@suse.de>
+Date: Fri, 3 Dec 2021 14:33:20 +0100
+Subject: [PATCH] pam_env: Use vendor specific pam_env.conf and environment as
+ fallback
+
+Use the vendor directory as fallback for a distribution provided default
+config if there is no one in /etc.
+
+* Makefile.am: Add libeconf setting.
+* pam_env.c: Take care about the fallback configuration in the vendor directory.
+* tst-pam_env-retval.c: Added tests for libeconf.
+* configure.ac: Added ECONF settings for building man pages.
+---
+ configure.ac                         |   7 +-
+ modules/pam_env/.gitignore           |   1 +
+ modules/pam_env/Makefile.am          |   4 +-
+ modules/pam_env/pam_env.c            | 298 +++++++++++++++++++++++----
+ modules/pam_env/tst-pam_env-retval.c |  60 ++++++
+ 7 files changed, 394 insertions(+), 44 deletions(-)
+ create mode 100644 modules/pam_env/.gitignore
+
+diff --git a/configure.ac b/configure.ac
+index 2f74d1b49..51ca0ad25 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -523,6 +523,7 @@ if test "$WITH_ECONF" = "yes" ; then
+   PKG_CHECK_MODULES([ECONF], [libeconf], [],
+   [AC_CHECK_LIB([econf],[econf_readDirs],[ECONF_LIBS="-leconf"],[ECONF_LIBS=""])])
+   if test -n "$ECONF_LIBS" ; then
++    AC_CHECK_LIB([econf],[econf_errLocation], [], [AC_MSG_ERROR([Please update libeconf])])
+     ECONF_CFLAGS="-DUSE_ECONF=1 $ECONF_CFLAGS"
+   fi
+ fi
+@@ -535,7 +536,11 @@ if test -n "$enable_vendordir"; then
  		     [Directory for distribution provided configuration files])
    AC_DEFINE_UNQUOTED([VENDOR_SCONFIGDIR], ["$enable_vendordir/security"],
  		     [Directory for PAM modules distribution provided configuration files])
@@ -14,17 +45,18 @@ diff -Naur org/configure.ac patch/configure.ac
  else
    STRINGPARAM_VENDORDIR="--stringparam profile.condition 'without_vendordir'"
  fi
-diff -Naur org/modules/pam_env/Makefile.am patch/modules/pam_env/Makefile.am
---- org/modules/pam_env/Makefile.am	2022-10-11 12:35:53.574193223 +0200
-+++ patch/modules/pam_env/Makefile.am	2022-10-11 12:36:32.518192985 +0200
-@@ -12,20 +12,23 @@
- endif
- XMLS = README.xml pam_env.conf.5.xml pam_env.8.xml
- dist_check_SCRIPTS = tst-pam_env
--TESTS = $(dist_check_SCRIPTS)
-+TESTS = $(dist_check_SCRIPTS) $(check_PROGRAMS)
- 
- securelibdir = $(SECUREDIR)
+diff --git a/modules/pam_env/.gitignore b/modules/pam_env/.gitignore
+new file mode 100644
+index 000000000..4c5b234b1
+--- /dev/null
++++ b/modules/pam_env/.gitignore
+@@ -0,0 +1 @@
++tst-pam_env-retval
+diff --git a/modules/pam_env/Makefile.am b/modules/pam_env/Makefile.am
+index 02cd9d375..b99a83ecb 100644
+--- a/modules/pam_env/Makefile.am
++++ b/modules/pam_env/Makefile.am
+@@ -18,14 +18,14 @@ securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
  
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
@@ -38,91 +70,13 @@ diff -Naur org/modules/pam_env/Makefile.am patch/modules/pam_env/Makefile.am
  securelib_LTLIBRARIES = pam_env.la
 -pam_env_la_LIBADD = $(top_builddir)/libpam/libpam.la
 +pam_env_la_LIBADD = $(top_builddir)/libpam/libpam.la $(ECONF_LIBS)
-+
-+check_PROGRAMS = tst-pam_env-retval
-+tst_pam_env_retval_LDADD = $(top_builddir)/libpam/libpam.la
  
- dist_secureconf_DATA = pam_env.conf
- dist_sysconf_DATA = environment
-diff -Naur org/modules/pam_env/pam_env.8.xml patch/modules/pam_env/pam_env.8.xml
---- org/modules/pam_env/pam_env.8.xml	2022-10-11 12:35:53.574193223 +0200
-+++ patch/modules/pam_env/pam_env.8.xml	2022-10-11 12:36:32.518192985 +0200
-@@ -52,13 +52,55 @@
-       variables as well as <emphasis>PAM_ITEM</emphasis>s such as
-       <emphasis>PAM_RHOST</emphasis>.
-     </para>
--    <para>
-+    <para condition="with_vendordir_and_with_econf">
-+      Rules for (un)setting of variables can be defined in an own config
-+      file. The path to this file can be specified with the
-+      <emphasis>conffile</emphasis> option.
-+      If this file does not exist, the default rules are taken from the
-+      config files <filename>/etc/security/pam_env.conf</filename> and
-+      <filename>/etc/security/pam_env.conf.d/*.conf</filename>.
-+      If the file <filename>/etc/security/pam_env.conf</filename> does not
-+      exist, the rules are taken from the files
-+      <filename>%vendordir%/security/pam_env.conf</filename>,
-+      <filename>%vendordir%/security/pam_env.conf.d/*.conf</filename> and
-+      <filename>/etc/security/pam_env.conf.d/*.conf</filename> in that order.
-+    </para>
-+    <para condition="with_vendordir_and_without_econf">
-+      By default rules for (un)setting of variables are taken from the
-+      config file <filename>/etc/security/pam_env.conf</filename>.
-+      If this file does not exist <filename>%vendordir%/security/pam_env.conf</filename> is used.
-+      An alternate file can be specified with the <emphasis>conffile</emphasis>
-+      option, which overrules all other files.
-+    </para>
-+    <para condition="without_vendordir">
-       By default rules for (un)setting of variables are taken from the
-       config file <filename>/etc/security/pam_env.conf</filename>. An
-       alternate file can be specified with the <emphasis>conffile</emphasis>
-       option.
-     </para>
--    <para>
-+    <para condition="with_vendordir_and_with_econf">
-+      Environment variables can be defined in a file with simple <emphasis>KEY=VAL</emphasis>
-+      pairs on separate lines. The path to this file can be specified with the
-+      <emphasis>envfile</emphasis> option.
-+      If this file has not been defined, the settings are read from the
-+      files <filename>/etc/security/environment</filename> and
-+      <filename>/etc/security/environment.d/*</filename>.
-+      If the file <filename>/etc/environment</filename> does not exist, the
-+      settings are read from the files <filename>%vendordir%/environment</filename>,
-+      <filename>%vendordir%/environment.d/*</filename> and
-+      <filename>/etc/environment.d/*</filename> in that order.
-+      And last but not least, with the <emphasis>readenv</emphasis> option this mechanism can
-+      be completely disabled.
-+    </para>
-+    <para condition="with_vendordir_and_without_econf">
-+      Second a file (<filename>/etc/environment</filename> by default) with simple
-+      <emphasis>KEY=VAL</emphasis> pairs on separate lines will be read.
-+      If this file does not exist, <filename>%vendordir%/etc/environment</filename> is used.
-+      With the <emphasis>envfile</emphasis> option an alternate file can be specified,
-+      which overrules all other files.
-+      And with the <emphasis>readenv</emphasis> option this can be completely disabled.
-+    </para>
-+    <para condition="without_vendordir">
-       Second a file (<filename>/etc/environment</filename> by default) with simple
-       <emphasis>KEY=VAL</emphasis> pairs on separate lines will be read.
-       With the <emphasis>envfile</emphasis> option an alternate file can be specified.
-@@ -224,12 +266,14 @@
-     <title>FILES</title>
-     <variablelist>
-       <varlistentry>
-+        <term condition="with_vendordir"><filename>/usr/etc/security/pam_env.conf</filename></term>
-         <term><filename>/etc/security/pam_env.conf</filename></term>
-         <listitem>
-           <para>Default configuration file</para>
-         </listitem>
-       </varlistentry>
-       <varlistentry>
-+        <term condition="with_vendordir"><filename>/usr/etc/environment</filename></term>
-         <term><filename>/etc/environment</filename></term>
-         <listitem>
-           <para>Default environment file</para>
-diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
---- org/modules/pam_env/pam_env.c	2022-10-11 12:35:53.574193223 +0200
-+++ patch/modules/pam_env/pam_env.c	2022-10-11 12:36:32.518192985 +0200
+ check_PROGRAMS = tst-pam_env-retval
+ tst_pam_env_retval_LDADD = $(top_builddir)/libpam/libpam.la
+diff --git a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
+index 64a586454..aabab7992 100644
+--- a/modules/pam_env/pam_env.c
++++ b/modules/pam_env/pam_env.c
 @@ -7,6 +7,9 @@
   */
  
@@ -143,7 +97,7 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
  
  #include <security/pam_modules.h>
  #include <security/pam_modutil.h>
-@@ -42,6 +48,9 @@
+@@ -42,6 +48,9 @@ typedef struct var {
  } VAR;
  
  #define DEFAULT_CONF_FILE	(SCONFIGDIR "/pam_env.conf")
@@ -153,19 +107,7 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
  
  #define BUF_SIZE 8192
  #define MAX_ENV  8192
-@@ -53,18 +62,19 @@
- #define UNDEFINE_VAR 102
- #define ILLEGAL_VAR  103
- 
--static int  _assemble_line(FILE *, char *, int);
--static int  _parse_line(const pam_handle_t *, const char *, VAR *);
--static int  _check_var(pam_handle_t *, VAR *);           /* This is the real meat */
--static void _clean_var(VAR *);
--static int  _expand_arg(pam_handle_t *, char **);
--static const char * _pam_get_item_byname(pam_handle_t *, const char *);
--static int  _define_var(pam_handle_t *, int, VAR *);
--static int  _undefine_var(pam_handle_t *, int, VAR *);
--
+@@ -56,6 +65,16 @@ typedef struct var {
  /* This is a special value used to designate an empty string */
  static char quote='\0';
  
@@ -182,7 +124,7 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
  /* argument parsing */
  
  #define PAM_DEBUG_ARG       0x01
-@@ -77,10 +87,10 @@
+@@ -68,10 +87,10 @@ _pam_parse (const pam_handle_t *pamh, int argc, const char **argv,
      int ctrl=0;
  
      *user_envfile = DEFAULT_USER_ENVFILE;
@@ -195,31 +137,15 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
  
      /* step through arguments */
      for (; argc-- > 0; ++argv) {
-@@ -128,166 +138,145 @@
+@@ -119,6 +138,148 @@ _pam_parse (const pam_handle_t *pamh, int argc, const char **argv,
      return ctrl;
  }
  
--static int
--_parse_config_file(pam_handle_t *pamh, int ctrl, const char *file)
--{
--    int retval;
--    char buffer[BUF_SIZE];
--    FILE *conf;
--    VAR Var, *var=&Var;
--
--    D(("Called."));
--
--    var->name=NULL; var->defval=NULL; var->override=NULL;
 +#ifdef USE_ECONF
- 
--    D(("Config file name is: %s", file));
++
 +#define ENVIRONMENT "environment"
 +#define PAM_ENV "pam_env"
- 
--    /*
--     * Lets try to open the config file, parse it and process
--     * any variables found.
--     */
++
 +static int
 +isDirectory(const char *path) {
 +   struct stat statbuf;
@@ -227,10 +153,7 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +       return 0;
 +   return S_ISDIR(statbuf.st_mode);
 +}
- 
--    if ((conf = fopen(file,"r")) == NULL) {
--      pam_syslog(pamh, LOG_ERR, "Unable to open config file: %s: %m", file);
--      return PAM_IGNORE;
++
 +static int
 +econf_read_file(const pam_handle_t *pamh, const char *filename, const char *delim,
 +			   const char *name, const char *suffix, const char *subpath,
@@ -260,23 +183,7 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +            return PAM_ABORT;
 +	}
 +      }
-     }
--
--    /* _pam_assemble_line will provide a complete line from the config file,
--     * with all comments removed and any escaped newlines fixed up
--     */
--
--    while (( retval = _assemble_line(conf, buffer, BUF_SIZE)) > 0) {
--      D(("Read line: %s", buffer));
--
--      if ((retval = _parse_line(pamh, buffer, var)) == GOOD_LINE) {
--	retval = _check_var(pamh, var);
--
--	if (DEFINE_VAR == retval) {
--	  retval = _define_var(pamh, ctrl, var);
--
--	} else if (UNDEFINE_VAR == retval) {
--	  retval = _undefine_var(pamh, ctrl, var);
++    }
 +    if (filename == NULL || base_dir[0] != '\0') {
 +      /* Read and merge all setting in e.g. /usr/etc and /etc */
 +      char *vendor_dir = NULL, *sysconf_dir;
@@ -303,95 +210,33 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +	  pam_syslog(pamh, LOG_ERR, "Cannot allocate memory.");
 +	  free(vendor_dir);
 +	  return PAM_BUF_ERR;
- 	}
-       }
--      if (PAM_SUCCESS != retval && ILLEGAL_VAR != retval
--	  && BAD_LINE != retval && PAM_BAD_ITEM != retval) break;
--
--      _clean_var(var);
--
--    }  /* while */
--
--    (void) fclose(conf);
--
--    /* tidy up */
--    _clean_var(var);        /* We could have got here prematurely,
--			     * this is safe though */
--    D(("Exit."));
--    return (retval != 0 ? PAM_ABORT : PAM_SUCCESS);
--}
- 
--static int
--_parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
--{
--    int retval=PAM_SUCCESS, i, t;
--    char buffer[BUF_SIZE], *key, *mark;
--    FILE *conf;
--
--    D(("Env file name is: %s", file));
--
--    if ((conf = fopen(file,"r")) == NULL) {
--      pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
--      return PAM_IGNORE;
++	}
++      }
++
 +      D(("Read configuration from directory %s and %s", vendor_dir, sysconf_dir));
 +      error = econf_readDirs (&key_file, vendor_dir, sysconf_dir, name, suffix,
 +			      delim, "#");
 +      free(vendor_dir);
 +      free(sysconf_dir);
 +      if (error != ECONF_SUCCESS) {
-+	pam_syslog(pamh, LOG_ERR, "Unable to read configuration in different directories: %s",
-+		   econf_errString(error));
-+        if (error == ECONF_NOFILE)
++        if (error == ECONF_NOFILE) {
++	  pam_syslog(pamh, LOG_ERR, "Configuration file not found: %s%s", name, suffix);
 +          return PAM_IGNORE;
-+        else
++        } else {
++          char *error_filename = NULL;
++          uint64_t error_line = 0;
++
++          econf_errLocation(&error_filename, &error_line);
++          pam_syslog(pamh, LOG_ERR, "Unable to read configuration file %s line %ld: %s",
++                     error_filename,
++                     error_line,
++                     econf_errString(error));
++          free(error_filename);
 +          return PAM_ABORT;
++	}
 +      }
-     }
- 
--    while (_assemble_line(conf, buffer, BUF_SIZE) > 0) {
--	D(("Read line: %s", buffer));
--	key = buffer;
--
--	/* skip leading white space */
--	key += strspn(key, " \n\t");
--
--	/* skip blanks lines and comments */
--	if (key[0] == '#')
--	    continue;
--
--	/* skip over "export " if present so we can be compat with
--	   bash type declarations */
--	if (strncmp(key, "export ", (size_t) 7) == 0)
--	    key += 7;
--
--	/* now find the end of value */
--	mark = key;
--	while(mark[0] != '\n' && mark[0] != '#' && mark[0] != '\0')
--	    mark++;
--	if (mark[0] != '\0')
--	    mark[0] = '\0';
--
--       /*
--	* sanity check, the key must be alphanumeric
--	*/
--
--	if (key[0] == '=') {
--		pam_syslog(pamh, LOG_ERR,
--		           "missing key name '%s' in %s', ignoring",
--		           key, file);
--		continue;
--	}
--
--	for ( i = 0 ; key[i] != '=' && key[i] != '\0' ; i++ )
--	    if (!isalnum(key[i]) && key[i] != '_') {
--		pam_syslog(pamh, LOG_ERR,
--		           "non-alphanumeric key '%s' in %s', ignoring",
--		           key, file);
--		break;
--	    }
--	/* non-alphanumeric key, ignore this line */
--	if (key[i] != '=' && key[i] != '\0')
--	    continue;
++    }
++
 +    error = econf_getKeys(key_file, NULL, &key_number, &keys);
 +    if (error != ECONF_SUCCESS && error != ECONF_NOKEY) {
 +      pam_syslog(pamh, LOG_ERR, "Unable to read keys: %s",
@@ -399,18 +244,7 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +      econf_freeFile(key_file);
 +      return PAM_ABORT;
 +    }
- 
--	/* now we try to be smart about quotes around the value,
--	   but not too smart, we can't get all fancy with escaped
--	   values like bash */
--	if (key[i] == '=' && (key[++i] == '\"' || key[i] == '\'')) {
--	    for ( t = i+1 ; key[t] != '\0' ; t++)
--		if (key[t] != '\"' && key[t] != '\'')
--		    key[i++] = key[t];
--		else if (key[t+1] != '\0')
--		    key[i++] = key[t];
--	    key[i] = '\0';
--	}
++
 +    *lines = malloc((key_number +1)* sizeof(char**));
 +    if (*lines == NULL) {
 +      pam_syslog(pamh, LOG_ERR, "Cannot allocate memory.");
@@ -418,26 +252,12 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +      econf_freeFile(key_file);
 +      return PAM_BUF_ERR;
 +    }
- 
--	/* if this is a request to delete a variable, check that it's
--	   actually set first, so we don't get a vague error back from
--	   pam_putenv() */
--	for (i = 0; key[i] != '=' && key[i] != '\0'; i++);
++
 +    (*lines)[key_number] = 0;
- 
--	if (key[i] == '\0' && !pam_getenv(pamh,key))
--	    continue;
++
 +    for (size_t i = 0; i < key_number; i++) {
 +      char *val;
- 
--	/* set the env var, if it fails, we break out of the loop */
--	retval = pam_putenv(pamh, key);
--	if (retval != PAM_SUCCESS) {
--	    D(("error setting env \"%s\"", key));
--	    break;
--	} else if (ctrl & PAM_DEBUG_ARG) {
--	    pam_syslog(pamh, LOG_DEBUG,
--		       "pam_putenv(\"%s\")", key);
++
 +      error = econf_getStringValue (key_file, NULL, keys[i], &val);
 +      if (error != ECONF_SUCCESS) {
 +	pam_syslog(pamh, LOG_ERR, "Unable to get string from key %s: %s",
@@ -451,35 +271,22 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +	  free_string_array(*lines);
 +	  free (val);
 +	  return PAM_BUF_ERR;
- 	}
++	}
 +	free (val);
 +      }
-     }
- 
--    (void) fclose(conf);
--
--    /* tidy up */
--    D(("Exit."));
--    return retval;
++    }
++
 +    econf_free(keys);
 +    econf_free(key_file);
 +    return PAM_SUCCESS;
- }
- 
++}
++
 +#else
 +
  /*
   * This is where we read a line of the PAM config file. The line may be
   * preceded by lines of comments and also extended with "\\\n"
-  */
--
--static int _assemble_line(FILE *f, char *buffer, int buf_len)
-+static int
-+_assemble_line(FILE *f, char *buffer, int buf_len)
- {
-     char *p = buffer;
-     char *s, *os;
-@@ -375,8 +364,54 @@
+@@ -212,6 +373,52 @@ _assemble_line(FILE *f, char *buffer, int buf_len)
      return used;
  }
  
@@ -530,294 +337,24 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +#endif
 +
  static int
--_parse_line (const pam_handle_t *pamh, const char *buffer, VAR *var)
-+_parse_line(const pam_handle_t *pamh, const char *buffer, VAR *var)
+ _parse_line(const pam_handle_t *pamh, const char *buffer, VAR *var)
  {
-   /*
-    * parse buffer into var, legal syntax is
-@@ -471,75 +506,57 @@
-   return GOOD_LINE;
- }
- 
--static int _check_var(pam_handle_t *pamh, VAR *var)
-+static const char *
-+_pam_get_item_byname(pam_handle_t *pamh, const char *name)
+@@ -626,34 +833,38 @@ static int
+ _parse_config_file(pam_handle_t *pamh, int ctrl, const char *file)
  {
-   /*
--   * Examine the variable and determine what action to take.
--   * Returns DEFINE_VAR, UNDEFINE_VAR depending on action to take
--   * or a PAM_* error code if passed back from other routines
--   *
--   * if no DEFAULT provided, the empty string is assumed
--   * if no OVERRIDE provided, the empty string is assumed
--   * if DEFAULT=  and OVERRIDE evaluates to the empty string,
--   *    this variable should be undefined
--   * if DEFAULT=""  and OVERRIDE evaluates to the empty string,
--   *    this variable should be defined with no value
--   * if OVERRIDE=value   and value turns into the empty string, DEFAULT is used
--   *
--   * If DEFINE_VAR is to be returned, the correct value to define will
--   * be pointed to by var->value
-+   * This function just allows me to use names as given in the config
-+   * file and translate them into the appropriate PAM_ITEM macro
-    */
- 
--  int retval;
-+  int item;
-+  const void *itemval;
- 
-   D(("Called."));
+     int retval;
+-    char buffer[BUF_SIZE];
+-    FILE *conf;
+     VAR Var, *var=&Var;
 -
--  /*
--   * First thing to do is to expand any arguments, but only
--   * if they are not the special quote values (cause expand_arg
--   * changes memory).
--   */
--
--  if (var->defval && (&quote != var->defval) &&
--      ((retval = _expand_arg(pamh, &(var->defval))) != PAM_SUCCESS)) {
--      return retval;
--  }
--  if (var->override && (&quote != var->override) &&
--      ((retval = _expand_arg(pamh, &(var->override))) != PAM_SUCCESS)) {
--    return retval;
-+  if (strcmp(name, "PAM_USER") == 0 || strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0) {
-+    item = PAM_USER;
-+  } else if (strcmp(name, "PAM_USER_PROMPT") == 0) {
-+    item = PAM_USER_PROMPT;
-+  } else if (strcmp(name, "PAM_TTY") == 0) {
-+    item = PAM_TTY;
-+  } else if (strcmp(name, "PAM_RUSER") == 0) {
-+    item = PAM_RUSER;
-+  } else if (strcmp(name, "PAM_RHOST") == 0) {
-+    item = PAM_RHOST;
-+  } else {
-+    D(("Unknown PAM_ITEM: <%s>", name));
-+    pam_syslog (pamh, LOG_ERR, "Unknown PAM_ITEM: <%s>", name);
-+    return NULL;
-   }
- 
--  /* Now its easy */
--
--  if (var->override && *(var->override)) {
--    /* if there is a non-empty string in var->override, we use it */
--    D(("OVERRIDE variable <%s> being used: <%s>", var->name, var->override));
--    var->value = var->override;
--    retval = DEFINE_VAR;
--  } else {
-+  if (pam_get_item(pamh, item, &itemval) != PAM_SUCCESS) {
-+    D(("pam_get_item failed"));
-+    return NULL;     /* let pam_get_item() log the error */
-+  }
- 
--    var->value = var->defval;
--    if (&quote == var->defval) {
--      /*
--       * This means that the empty string was given for defval value
--       * which indicates that a variable should be defined with no value
--       */
--      D(("An empty variable: <%s>", var->name));
--      retval = DEFINE_VAR;
--    } else if (var->defval) {
--      D(("DEFAULT variable <%s> being used: <%s>", var->name, var->defval));
--      retval = DEFINE_VAR;
--    } else {
--      D(("UNDEFINE variable <%s>", var->name));
--      retval = UNDEFINE_VAR;
-+  if (itemval && (strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0)) {
-+    struct passwd *user_entry;
-+    user_entry = pam_modutil_getpwnam (pamh, itemval);
-+    if (!user_entry) {
-+      pam_syslog(pamh, LOG_ERR, "No such user!?");
-+      return NULL;
-     }
-+    return (strcmp(name, "SHELL") == 0) ?
-+      user_entry->pw_shell :
-+      user_entry->pw_dir;
-   }
- 
-   D(("Exit."));
--  return retval;
-+  return itemval;
- }
- 
--static int _expand_arg(pam_handle_t *pamh, char **value)
-+static int
-+_expand_arg(pam_handle_t *pamh, char **value)
- {
-   const char *orig=*value, *tmpptr=NULL;
-   char *ptr;       /*
-@@ -679,55 +696,96 @@
-   return PAM_SUCCESS;
- }
- 
--static const char * _pam_get_item_byname(pam_handle_t *pamh, const char *name)
-+static int
-+_check_var(pam_handle_t *pamh, VAR *var)
- {
-   /*
--   * This function just allows me to use names as given in the config
--   * file and translate them into the appropriate PAM_ITEM macro
-+   * Examine the variable and determine what action to take.
-+   * Returns DEFINE_VAR, UNDEFINE_VAR depending on action to take
-+   * or a PAM_* error code if passed back from other routines
-+   *
-+   * if no DEFAULT provided, the empty string is assumed
-+   * if no OVERRIDE provided, the empty string is assumed
-+   * if DEFAULT=  and OVERRIDE evaluates to the empty string,
-+   *    this variable should be undefined
-+   * if DEFAULT=""  and OVERRIDE evaluates to the empty string,
-+   *    this variable should be defined with no value
-+   * if OVERRIDE=value   and value turns into the empty string, DEFAULT is used
-+   *
-+   * If DEFINE_VAR is to be returned, the correct value to define will
-+   * be pointed to by var->value
-    */
- 
--  int item;
--  const void *itemval;
-+  int retval;
- 
-   D(("Called."));
--  if (strcmp(name, "PAM_USER") == 0 || strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0) {
--    item = PAM_USER;
--  } else if (strcmp(name, "PAM_USER_PROMPT") == 0) {
--    item = PAM_USER_PROMPT;
--  } else if (strcmp(name, "PAM_TTY") == 0) {
--    item = PAM_TTY;
--  } else if (strcmp(name, "PAM_RUSER") == 0) {
--    item = PAM_RUSER;
--  } else if (strcmp(name, "PAM_RHOST") == 0) {
--    item = PAM_RHOST;
--  } else {
--    D(("Unknown PAM_ITEM: <%s>", name));
--    pam_syslog (pamh, LOG_ERR, "Unknown PAM_ITEM: <%s>", name);
--    return NULL;
--  }
- 
--  if (pam_get_item(pamh, item, &itemval) != PAM_SUCCESS) {
--    D(("pam_get_item failed"));
--    return NULL;     /* let pam_get_item() log the error */
-+  /*
-+   * First thing to do is to expand any arguments, but only
-+   * if they are not the special quote values (cause expand_arg
-+   * changes memory).
-+   */
-+
-+  if (var->defval && (&quote != var->defval) &&
-+      ((retval = _expand_arg(pamh, &(var->defval))) != PAM_SUCCESS)) {
-+      return retval;
-+  }
-+  if (var->override && (&quote != var->override) &&
-+      ((retval = _expand_arg(pamh, &(var->override))) != PAM_SUCCESS)) {
-+    return retval;
-   }
- 
--  if (itemval && (strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0)) {
--    struct passwd *user_entry;
--    user_entry = pam_modutil_getpwnam (pamh, itemval);
--    if (!user_entry) {
--      pam_syslog(pamh, LOG_ERR, "No such user!?");
--      return NULL;
-+  /* Now its easy */
-+
-+  if (var->override && *(var->override)) {
-+    /* if there is a non-empty string in var->override, we use it */
-+    D(("OVERRIDE variable <%s> being used: <%s>", var->name, var->override));
-+    var->value = var->override;
-+    retval = DEFINE_VAR;
-+  } else {
-+
-+    var->value = var->defval;
-+    if (&quote == var->defval) {
-+      /*
-+       * This means that the empty string was given for defval value
-+       * which indicates that a variable should be defined with no value
-+       */
-+      D(("An empty variable: <%s>", var->name));
-+      retval = DEFINE_VAR;
-+    } else if (var->defval) {
-+      D(("DEFAULT variable <%s> being used: <%s>", var->name, var->defval));
-+      retval = DEFINE_VAR;
-+    } else {
-+      D(("UNDEFINE variable <%s>", var->name));
-+      retval = UNDEFINE_VAR;
-     }
--    return (strcmp(name, "SHELL") == 0) ?
--      user_entry->pw_shell :
--      user_entry->pw_dir;
-   }
- 
-   D(("Exit."));
--  return itemval;
-+  return retval;
- }
- 
--static int _define_var(pam_handle_t *pamh, int ctrl, VAR *var)
-+static void
-+_clean_var(VAR *var)
-+{
-+    if (var->name) {
-+      free(var->name);
-+    }
-+    if (var->defval && (&quote != var->defval)) {
-+      free(var->defval);
-+    }
-+    if (var->override && (&quote != var->override)) {
-+      free(var->override);
-+    }
-+    var->name = NULL;
-+    var->value = NULL;    /* never has memory specific to it */
-+    var->defval = NULL;
-+    var->override = NULL;
-+    return;
-+}
-+
-+static int
-+_define_var(pam_handle_t *pamh, int ctrl, VAR *var)
- {
-   /* We have a variable to define, this is a simple function */
- 
-@@ -749,7 +807,8 @@
-   return retval;
- }
- 
--static int _undefine_var(pam_handle_t *pamh, int ctrl, VAR *var)
-+static int
-+_undefine_var(pam_handle_t *pamh, int ctrl, VAR *var)
- {
-   /* We have a variable to undefine, this is a simple function */
- 
-@@ -760,25 +819,176 @@
-   return pam_putenv(pamh, var->name);
- }
- 
--static void   _clean_var(VAR *var)
-+static int
-+_parse_config_file(pam_handle_t *pamh, int ctrl, const char *file)
- {
--    if (var->name) {
--      free(var->name);
--    }
--    if (var->defval && (&quote != var->defval)) {
--      free(var->defval);
--    }
--    if (var->override && (&quote != var->override)) {
--      free(var->override);
--    }
--    var->name = NULL;
--    var->value = NULL;    /* never has memory specific to it */
--    var->defval = NULL;
--    var->override = NULL;
--    return;
-+    int retval;
-+    VAR Var, *var=&Var;
+-    D(("Called."));
 +    char **conf_list = NULL;
-+
-+    var->name=NULL; var->defval=NULL; var->override=NULL;
-+
+ 
+     var->name=NULL; var->defval=NULL; var->override=NULL;
+ 
+-    D(("Config file name is: %s", file));
 +    D(("Called."));
-+
+ 
 +#ifdef USE_ECONF
 +    /* If "file" is not NULL, only this file will be parsed. */
 +    retval = econf_read_file(pamh, file, " \t", PAM_ENV, ".conf", "security", &conf_list);
@@ -826,51 +363,66 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +    if (file == NULL) /* No filename has been set via argv. */
 +      file = DEFAULT_CONF_FILE;
 +#ifdef VENDOR_DEFAULT_CONF_FILE
-+    /*
+     /*
+-     * Lets try to open the config file, parse it and process
+-     * any variables found.
+-     */
+-
+-    if ((conf = fopen(file,"r")) == NULL) {
+-      pam_syslog(pamh, LOG_ERR, "Unable to open config file: %s: %m", file);
+-      return PAM_IGNORE;
 +    * Check whether file is available.
 +    * If it does not exist, fall back to VENDOR_DEFAULT_CONF_FILE file.
 +    */
 +    struct stat stat_buffer;
 +    if (stat(file, &stat_buffer) != 0 && errno == ENOENT) {
 +      file = VENDOR_DEFAULT_CONF_FILE;
-+    }
+     }
 +#endif
 +    retval = read_file(pamh, file, &conf_list);
 +#endif
-+
+ 
+-    /* _pam_assemble_line will provide a complete line from the config file,
+-     * with all comments removed and any escaped newlines fixed up
+-     */
+-
+-    while (( retval = _assemble_line(conf, buffer, BUF_SIZE)) > 0) {
+-      D(("Read line: %s", buffer));
 +    if (retval != PAM_SUCCESS)
 +      return retval;
-+
+ 
+-      if ((retval = _parse_line(pamh, buffer, var)) == GOOD_LINE) {
 +    for (char **conf = conf_list; *conf != NULL; ++conf) {
 +      if ((retval = _parse_line(pamh, *conf, var)) == GOOD_LINE) {
-+	retval = _check_var(pamh, var);
-+
-+	if (DEFINE_VAR == retval) {
-+	  retval = _define_var(pamh, ctrl, var);
-+
-+	} else if (UNDEFINE_VAR == retval) {
-+	  retval = _undefine_var(pamh, ctrl, var);
-+	}
-+      }
-+      if (PAM_SUCCESS != retval && ILLEGAL_VAR != retval
-+	  && BAD_LINE != retval && PAM_BAD_ITEM != retval) break;
-+
-+      _clean_var(var);
-+
-+    }  /* for */
-+
-+    /* tidy up */
-+    free_string_array(conf_list);
-+    _clean_var(var);        /* We could have got here prematurely,
-+			     * this is safe though */
-+    D(("Exit."));
-+    return (retval != 0 ? PAM_ABORT : PAM_SUCCESS);
- }
+ 	retval = _check_var(pamh, var);
  
-+static int
-+_parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
-+{
-+    int retval=PAM_SUCCESS, i, t;
+ 	if (DEFINE_VAR == retval) {
+@@ -668,11 +879,10 @@ _parse_config_file(pam_handle_t *pamh, int ctrl, const char *file)
+ 
+       _clean_var(var);
+ 
+-    }  /* while */
+-
+-    (void) fclose(conf);
++    }  /* for */
+ 
+     /* tidy up */
++    free_string_array(conf_list);
+     _clean_var(var);        /* We could have got here prematurely,
+ 			     * this is safe though */
+     D(("Exit."));
+@@ -683,19 +893,33 @@ static int
+ _parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
+ {
+     int retval=PAM_SUCCESS, i, t;
+-    char buffer[BUF_SIZE], *key, *mark;
+-    FILE *conf;
+-
+-    D(("Env file name is: %s", file));
+-
+-    if ((conf = fopen(file,"r")) == NULL) {
+-      pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
+-      return PAM_IGNORE;
 +    char *key, *mark;
 +    char **env_list = NULL;
 +
@@ -888,132 +440,137 @@ diff -Naur org/modules/pam_env/pam_env.c patch/modules/pam_env/pam_env.c
 +    struct stat stat_buffer;
 +    if (stat(file, &stat_buffer) != 0 && errno == ENOENT) {
 +      file = VENDOR_DEFAULT_ETC_ENVFILE;
-+    }
+     }
 +#endif
 +    retval = read_file(pamh, file, &env_list);
 +#endif
-+
+ 
+-    while (_assemble_line(conf, buffer, BUF_SIZE) > 0) {
+-	D(("Read line: %s", buffer));
+-	key = buffer;
 +    if (retval != PAM_SUCCESS)
 +        return retval == PAM_IGNORE ? PAM_SUCCESS : retval;
 +
 +    for (char **env = env_list; *env != NULL; ++env) {
 +        key = *env;
-+
-+	/* skip leading white space */
-+	key += strspn(key, " \n\t");
-+
-+	/* skip blanks lines and comments */
-+	if (key[0] == '#')
-+	    continue;
-+
-+	/* skip over "export " if present so we can be compat with
-+	   bash type declarations */
-+	if (strncmp(key, "export ", (size_t) 7) == 0)
-+	    key += 7;
-+
-+	/* now find the end of value */
-+	mark = key;
-+	while(mark[0] != '\n' && mark[0] != '#' && mark[0] != '\0')
-+	    mark++;
-+	if (mark[0] != '\0')
-+	    mark[0] = '\0';
-+
-+       /*
-+	* sanity check, the key must be alphanumeric
-+	*/
-+
-+	if (key[0] == '=') {
-+		pam_syslog(pamh, LOG_ERR,
-+		           "missing key name '%s' in %s', ignoring",
-+		           key, file);
-+		continue;
-+	}
-+
-+	for ( i = 0 ; key[i] != '=' && key[i] != '\0' ; i++ )
-+	    if (!isalnum(key[i]) && key[i] != '_') {
-+		pam_syslog(pamh, LOG_ERR,
-+		           "non-alphanumeric key '%s' in %s', ignoring",
-+		           key, file);
-+		break;
-+	    }
-+	/* non-alphanumeric key, ignore this line */
-+	if (key[i] != '=' && key[i] != '\0')
-+	    continue;
-+
-+	/* now we try to be smart about quotes around the value,
-+	   but not too smart, we can't get all fancy with escaped
-+	   values like bash */
-+	if (key[i] == '=' && (key[++i] == '\"' || key[i] == '\'')) {
-+	    for ( t = i+1 ; key[t] != '\0' ; t++)
-+		if (key[t] != '\"' && key[t] != '\'')
-+		    key[i++] = key[t];
-+		else if (key[t+1] != '\0')
-+		    key[i++] = key[t];
-+	    key[i] = '\0';
-+	}
-+
-+	/* if this is a request to delete a variable, check that it's
-+	   actually set first, so we don't get a vague error back from
-+	   pam_putenv() */
-+	for (i = 0; key[i] != '=' && key[i] != '\0'; i++);
-+
-+	if (key[i] == '\0' && !pam_getenv(pamh,key))
-+	    continue;
-+
-+	/* set the env var, if it fails, we break out of the loop */
-+	retval = pam_putenv(pamh, key);
-+	if (retval != PAM_SUCCESS) {
-+	    D(("error setting env \"%s\"", key));
-+	    break;
-+	} else if (ctrl & PAM_DEBUG_ARG) {
-+	    pam_syslog(pamh, LOG_DEBUG,
-+		       "pam_putenv(\"%s\")", key);
-+	}
+ 
+ 	/* skip leading white space */
+ 	key += strspn(key, " \n\t");
+@@ -767,11 +991,11 @@ _parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
+ 	    pam_syslog(pamh, LOG_DEBUG,
+ 		       "pam_putenv(\"%s\")", key);
+ 	}
 +	free(*env);
-+    }
+     }
  
-+    /* tidy up */
+-    (void) fclose(conf);
+-
+     /* tidy up */
 +    free(env_list);
-+    D(("Exit."));
-+    return retval;
-+}
+     D(("Exit."));
+     return retval;
+ }
+diff --git a/modules/pam_env/tst-pam_env-retval.c b/modules/pam_env/tst-pam_env-retval.c
+index 6b9b3065a..99e2e2a54 100644
+--- a/modules/pam_env/tst-pam_env-retval.c
++++ b/modules/pam_env/tst-pam_env-retval.c
+@@ -17,11 +17,18 @@
  
- /* --- authentication management functions (only) --- */
+ #define MODULE_NAME "pam_env"
+ #define TEST_NAME "tst-" MODULE_NAME "-retval"
++#define TEST_NAME_DIR TEST_NAME ".dir"
  
-diff -Naur org/modules/pam_env/pam_env.conf.5.xml patch/modules/pam_env/pam_env.conf.5.xml
---- org/modules/pam_env/pam_env.conf.5.xml	2022-10-11 12:35:53.574193223 +0200
-+++ patch/modules/pam_env/pam_env.conf.5.xml	2022-10-11 12:36:32.518192985 +0200
-@@ -20,7 +20,15 @@
-   <refsect1 id='pam_env.conf-description'>
-     <title>DESCRIPTION</title>
+ static const char service_file[] = TEST_NAME ".service";
+ static const char missing_file[] = TEST_NAME ".missing";
++static const char dir[] = TEST_NAME_DIR;
++static const char dir_usr[] = TEST_NAME_DIR "/usr";
++static const char dir_usr_etc[] = TEST_NAME_DIR "/usr/etc";
++static const char dir_usr_etc_security[] = TEST_NAME_DIR "/usr/etc/security";
+ static const char my_conf[] = TEST_NAME ".conf";
+ static const char my_env[] = TEST_NAME ".env";
++static const char usr_env[] = TEST_NAME_DIR "/usr/etc/environment";
++static const char usr_conf[] = TEST_NAME_DIR "/usr/etc/security/pam_env.conf";
  
--    <para>
-+    <para condition="with_vendordir">
-+      The <filename>/usr/etc/security/pam_env.conf</filename> and
-+      <filename>/etc/security/pam_env.conf</filename> files specify
-+      the environment variables to be set, unset or modified by
-+      <citerefentry><refentrytitle>pam_env</refentrytitle><manvolnum>8</manvolnum></citerefentry>.
-+      When someone logs in, these files are read and the environment
-+      variables are set according.
-+    </para>
-+    <para condition="without_vendordir">
-       The <filename>/etc/security/pam_env.conf</filename> file specifies
-       the environment variables to be set, unset or modified by
-       <citerefentry><refentrytitle>pam_env</refentrytitle><manvolnum>8</manvolnum></citerefentry>.
-@@ -61,7 +69,15 @@
-       at front) can be used to mark this line as a comment line.
-     </para>
+ static struct pam_conv conv;
  
--    <para>
-+    <para condition="with_vendordir">
-+      The <filename>/usr/etc/environment</filename> and <filename>/etc/environment</filename> files specify
-+      the environment variables to be set. These files must consist of simple
-+      <emphasis>NAME=VALUE</emphasis> pairs on separate lines.
-+      The <citerefentry><refentrytitle>pam_env</refentrytitle><manvolnum>8</manvolnum></citerefentry>
-+      module will read these files after the <filename>pam_env.conf</filename>
-+      file.
-+    </para>
-+    <para condition="without_vendordir">
-       The <filename>/etc/environment</filename> file specifies
-       the environment variables to be set. The file must consist of simple
-       <emphasis>NAME=VALUE</emphasis> pairs on separate lines.
+@@ -30,6 +37,11 @@ setup(void)
+ {
+ 	FILE *fp;
+ 
++	ASSERT_EQ(0, mkdir(dir, 0755));
++	ASSERT_EQ(0, mkdir(dir_usr, 0755));
++	ASSERT_EQ(0, mkdir(dir_usr_etc, 0755));
++	ASSERT_EQ(0, mkdir(dir_usr_etc_security, 0755));
++
+ 	ASSERT_NE(NULL, fp = fopen(my_conf, "w"));
+ 	ASSERT_LT(0, fprintf(fp,
+ 			     "EDITOR\tDEFAULT=vim\n"
+@@ -41,6 +53,18 @@ setup(void)
+ 			     "test_value=foo\n"
+ 			     "test2_value=bar\n"));
+ 	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_NE(NULL, fp = fopen(usr_env, "w"));
++	ASSERT_LT(0, fprintf(fp,
++			     "usr_etc_test=foo\n"
++			     "usr_etc_test2=bar\n"));
++	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_NE(NULL, fp = fopen(usr_conf, "w"));
++	ASSERT_LT(0, fprintf(fp,
++			     "PAGER		DEFAULT=emacs\n"
++			     "MANPAGER		DEFAULT=less\n"));
++	ASSERT_EQ(0, fclose(fp));
+ }
+ 
+ static void
+@@ -48,6 +72,12 @@ cleanup(void)
+ {
+ 	ASSERT_EQ(0, unlink(my_conf));
+ 	ASSERT_EQ(0, unlink(my_env));
++	ASSERT_EQ(0, unlink(usr_env));
++	ASSERT_EQ(0, unlink(usr_conf));
++	ASSERT_EQ(0, rmdir(dir_usr_etc_security));
++	ASSERT_EQ(0, rmdir(dir_usr_etc));
++	ASSERT_EQ(0, rmdir(dir_usr));
++	ASSERT_EQ(0, rmdir(dir));
+ }
+ 
+ static void
+@@ -191,6 +221,36 @@ main(void)
+ 	const char *env2[] = { "test_value=foo", "test2_value=bar", NULL };
+ 	check_env(env2);
+ 
++#if defined (USE_ECONF)	&& defined (VENDORDIR)
++
++	/* envfile is a directory. So values will be read from {TEST_NAME_DIR}/usr/etc and {TEST_NAME_DIR}/etc */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "#%%PAM-1.0\n"
++			     "session required %s/.libs/%s.so"
++			     " conffile=%s envfile=%s/%s/\n",
++			     cwd, MODULE_NAME,
++			     "/dev/null",
++			     cwd, dir));
++	ASSERT_EQ(0, fclose(fp));
++
++	const char *env3[] = {"usr_etc_test=foo", "usr_etc_test2=bar", NULL};
++	check_env(env3);
++
++	/* conffile is a directory. So values will be read from {TEST_NAME_DIR}/usr/etc and {TEST_NAME_DIR}/etc */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "#%%PAM-1.0\n"
++			     "session required %s/.libs/%s.so"
++			     " conffile=%s/%s/ envfile=%s\n",
++			     cwd, MODULE_NAME,
++			     cwd, dir,
++			     "/dev/null"));
++	ASSERT_EQ(0, fclose(fp));
++
++	const char *env4[] = {"PAGER=emacs", "MANPAGER=less", NULL};
++	check_env(env4);
++
++#endif
++
+ 	/* cleanup */
+ 	cleanup();
+ 	ASSERT_EQ(0, unlink(service_file));

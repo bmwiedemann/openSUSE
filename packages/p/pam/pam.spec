@@ -64,14 +64,14 @@ Source12:       pam-login_defs-check.sh
 Source13:       pam.tmpfiles
 Source14:       Linux-PAM-%{version}-docs.tar.xz.asc
 Source15:       Linux-PAM-%{version}.tar.xz.asc
-Source16:       tst-pam_env-retval.c
 Patch1:         pam-limit-nproc.patch
-Patch2:         pam-hostnames-in-access_conf.patch
 Patch3:         pam-xauth_ownership.patch
 Patch4:         pam-bsc1177858-dont-free-environment-string.patch
 Patch10:        pam_xauth_data.3.xml.patch
 Patch11:        pam-git.diff
 Patch12:        pam_env_econf.patch
+Patch13:        pam_pwhistory-docu.patch
+Patch14:        docbook5.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -147,7 +147,7 @@ Summary:        Manualpages for Pluggable Authentication Modules
 Group:          Documentation/HTML
 Provides:       pam:/%{_mandir}/man8/PAM.8.gz
 BuildArch:      noarch
-BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  elinks
 BuildRequires:  xmlgraphics-fop
 
@@ -177,14 +177,16 @@ building both PAM-aware applications and modules for use with PAM.
 %prep
 %setup -q -n Linux-PAM-%{version} -b 1
 cp -a %{SOURCE12} .
-cp %{SOURCE16} ./modules/pam_env
+%patch11 -p1
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch10 -p1
-%patch11 -p1
 %patch12 -p1
+%if %{build_doc}
+%patch13 -p1
+%patch14 -p1
+%endif
 
 %build
 bash ./pam-login_defs-check.sh
@@ -343,6 +345,7 @@ done
 %config(noreplace) %{_pam_secconfdir}/time.conf
 %config(noreplace) %{_pam_secconfdir}/namespace.conf
 %config(noreplace) %{_pam_secconfdir}/namespace.init
+%config(noreplace) %{_pam_secconfdir}/pwhistory.conf
 %dir %{_pam_secconfdir}/namespace.d
 %{_libdir}/libpam.so.0
 %{_libdir}/libpam.so.%{libpam_so_version}

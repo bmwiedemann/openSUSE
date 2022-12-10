@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  6 16:43:49 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam_pwhistory-docu.patch, docbook5.patch: convert docu to
+  docbook5 
+
+-------------------------------------------------------------------
+Thu Dec  1 13:51:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam-git.diff: update to current git
+  - obsoletes pam-hostnames-in-access_conf.patch
+  - obsoletes tst-pam_env-retval.c
+- pam_env_econf.patch refresh
+
+-------------------------------------------------------------------
 Tue Nov 22 15:24:12 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move pam_env config files below /usr/etc

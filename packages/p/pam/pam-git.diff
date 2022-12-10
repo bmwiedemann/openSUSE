@@ -3,28 +3,66 @@ index 21af8c4c..aa99927e 100644
 --- a/README
 +++ b/README
 @@ -6,7 +6,7 @@ NOTES:
- 
+
  How to use it is as follows:
- 
+
 -Please look at the ci/install_dependencies.sh for the necessary
 +Please look at the ci/install-dependencies.sh for the necessary
  prerequisite packages to be able to build the Linux-PAM. The script
  is targeted at Debian based Linux distributions so the package
  names and availability might differ on other distributions.
 diff --git a/configure.ac b/configure.ac
-index c06bc7dd..639fc1ad 100644
+index c06bc7dd..2f74d1b4 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -259,6 +259,8 @@ AC_MSG_RESULT([Defining \$ISA to "$ISA"])
+@@ -243,6 +243,29 @@ if test x"$enable_debug" = x"yes" ; then
+ 		[lots of stuff gets written to /var/run/pam-debug.log])
+ fi
+
++AC_ARG_ENABLE(html_stylesheet,
++	AS_HELP_STRING([--enable-html-stylesheet=FILE],[html stylesheet path @<:@default=http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl@:>@]),
++	HTML_STYLESHEET=$enableval, HTML_STYLESHEET=http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl)
++AC_SUBST(HTML_STYLESHEET)
++
++AC_ARG_ENABLE(txt_stylesheet,
++	AS_HELP_STRING([--enable-txt-stylesheet=FILE],[text stylesheet path @<:@default=http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl@:>@]),
++	TXT_STYLESHEET=$enableval, TXT_STYLESHEET=http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl)
++AC_SUBST(TXT_STYLESHEET)
++# It has to be TXT_STYLESHEET otherwise a html tree will be generated while generating all README files.
++sed "s+HTML_STYLESHEET+$TXT_STYLESHEET+g" <doc/custom-html.xsl.in >doc/custom-html.xsl
++
++AC_ARG_ENABLE(pdf_stylesheet,
++	AS_HELP_STRING([--enable-pdf-stylesheet=FILE],[pdf stylesheet path @<:@default=http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl@:>@]),
++	PDF_STYLESHEET=$enableval, PDF_STYLESHEET=http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl)
++AC_SUBST(PDF_STYLESHEET)
++
++AC_ARG_ENABLE(man_stylesheet,
++	AS_HELP_STRING([--enable-man-stylesheet=FILE],[man stylesheet path @<:@default=http://docbook.sourceforge.net/release/xsl/current/manpages/profile-docbook.xsl@:>@]),
++	MAN_STYLESHEET=$enableval, MAN_STYLESHEET=http://docbook.sourceforge.net/release/xsl/current/manpages/profile-docbook.xsl)
++AC_SUBST(MAN_STYLESHEET)
++sed "s+MAN_STYLESHEET+$MAN_STYLESHEET+g" <doc/custom-man.xsl.in >doc/custom-man.xsl
++
+ AC_ARG_ENABLE(securedir,
+ 	AS_HELP_STRING([--enable-securedir=DIR],[path to location of PAMs @<:@default=$libdir/security@:>@]),
+ 	SECUREDIR=$enableval, SECUREDIR=$libdir/security)
+@@ -259,6 +282,8 @@ AC_MSG_RESULT([Defining \$ISA to "$ISA"])
  AC_ARG_ENABLE(sconfigdir,
  	AS_HELP_STRING([--enable-sconfigdir=DIR],[path to module conf files @<:@default=$sysconfdir/security@:>@]),
  	SCONFIGDIR=$enableval, SCONFIGDIR=$sysconfdir/security)
 +AC_DEFINE_UNQUOTED([SCONFIGDIR], ["$SCONFIGDIR"],
 +		   [Directory for PAM modules system configuration files])
  AC_SUBST(SCONFIGDIR)
- 
+
  AC_ARG_ENABLE(pamlocking,
-@@ -507,9 +509,11 @@ AC_ARG_ENABLE([vendordir],
+@@ -295,6 +320,7 @@ if test x$with_mailspool != x ; then
+ else
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <paths.h>
++#include <stdlib.h>
+ int main() {
+ #ifdef _PATH_MAILDIR
+ exit(0);
+@@ -507,9 +533,11 @@ AC_ARG_ENABLE([vendordir],
  if test -n "$enable_vendordir"; then
    AC_DEFINE_UNQUOTED([VENDORDIR], ["$enable_vendordir"],
  		     [Directory for distribution provided configuration files])
@@ -37,7 +75,81 @@ index c06bc7dd..639fc1ad 100644
 +  STRINGPARAM_VENDORDIR="--stringparam profile.condition 'without_vendordir'"
  fi
  AC_SUBST([STRINGPARAM_VENDORDIR])
- 
+
+@@ -628,11 +656,6 @@ test -n "$opt_uidmin" ||
+           opt_uidmin=1000
+ AC_DEFINE_UNQUOTED(PAM_USERTYPE_UIDMIN, $opt_uidmin, [Minimum regular user uid.])
+
+-AC_ARG_WITH([sysuidmin], AS_HELP_STRING([--with-sysuidmin=<number>],[default value for system user min uid (101)]), opt_sysuidmin=$withval)
+-test -n "$opt_sysuidmin" ||
+-          opt_sysuidmin=101
+-AC_DEFINE_UNQUOTED(PAM_USERTYPE_SYSUIDMIN, $opt_sysuidmin, [Minimum system user uid.])
+-
+ AC_ARG_WITH([kernel-overflow-uid], AS_HELP_STRING([--with-kernel-overflow-uid=<number>],[kernel overflow uid, default (uint16_t)-2=65534]), opt_kerneloverflowuid=$withval)
+ test -n "$opt_kerneloverflowuid" ||
+           opt_kerneloverflowuid=65534
+diff --git a/doc/adg/Makefile.am b/doc/adg/Makefile.am
+index 77bd7a99..b795b1a4 100644
+--- a/doc/adg/Makefile.am
++++ b/doc/adg/Makefile.am
+@@ -21,7 +21,7 @@ if ENABLE_GENERATE_PDF
+ 	  --stringparam section.autolabel 1 \
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 3 --xinclude --nonet \
+-	http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl $< > Linux-PAM_ADG.fo
++	$(PDF_STYLESHEET) $< > Linux-PAM_ADG.fo
+ 	$(FO2PDF) Linux-PAM_ADG.fo $@
+ else
+ 	echo "No fo2pdf processor installed, skip PDF generation"
+@@ -33,7 +33,7 @@ Linux-PAM_ADG.txt: $(XMLS) $(DEP_XMLS)
+ 	  --stringparam section.autolabel 1 \
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 3 --xinclude --nonet \
+-	  http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl $< | $(BROWSER) > $@
++	  $(TXT_STYLESHEET) $< | $(BROWSER) > $@
+
+ html/Linux-PAM_ADG.html: $(XMLS) $(DEP_XMLS)
+ 	@test -d html || mkdir -p html
+@@ -46,7 +46,7 @@ html/Linux-PAM_ADG.html: $(XMLS) $(DEP_XMLS)
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 3 --xinclude --nonet \
+ 	  --stringparam chunker.output.encoding UTF-8 \
+-	  http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl $<
++	  $(HTML_STYLESHEET) $<
+
+ distclean-local:
+ 	-rm -rf html Linux-PAM_ADG.txt Linux-PAM_ADG.pdf
+diff --git a/doc/custom-html.xsl b/doc/custom-html.xsl.in
+similarity index 87%
+rename from doc/custom-html.xsl
+rename to doc/custom-html.xsl.in
+index fdd5df7d..b2eaf150 100644
+--- a/doc/custom-html.xsl
++++ b/doc/custom-html.xsl.in
+@@ -3,7 +3,7 @@
+   xmlns:ss="http://docbook.sf.net/xmlns/string.subst/1.0"
+   xmlns:exsl="http://exslt.org/common" version="1.0">
+
+-  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl"/>
++  <xsl:import href="HTML_STYLESHEET"/>
+   <xsl:param name="vendordir"/>
+
+   <xsl:template match="filename">
+diff --git a/doc/custom-man.xsl b/doc/custom-man.xsl.in
+similarity index 77%
+rename from doc/custom-man.xsl
+rename to doc/custom-man.xsl.in
+index a3408e6c..258627bf 100644
+--- a/doc/custom-man.xsl
++++ b/doc/custom-man.xsl.in
+@@ -1,6 +1,6 @@
+ <?xml version='1.0'?>
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ss="http://docbook.sf.net/xmlns/string.subst/1.0" version="1.0">
+-  <xsl:import href="http://docbook.sourceforge.net/release/xsl/current/manpages/profile-docbook.xsl"/>
++  <xsl:import href="MAN_STYLESHEET"/>
+   <xsl:param name="vendordir"/>
+
+   <xsl:param name="man.string.subst.map.local.pre">
 diff --git a/doc/man/Makefile.am b/doc/man/Makefile.am
 index 78c891df..c6fd73db 100644
 --- a/doc/man/Makefile.am
@@ -48,7 +160,7 @@ index 78c891df..c6fd73db 100644
  	misc_conv.3.xml pam_misc_paste_env.3.xml pam_misc_drop_env.3.xml \
 -	pam_misc_setenv.3.xml
 +	pam_misc_setenv.3.xml pam_xauth_data.3.xml
- 
+
  if ENABLE_REGENERATE_MAN
  PAM.8: pam.8
 diff --git a/doc/man/pam.8.xml b/doc/man/pam.8.xml
@@ -73,6 +185,81 @@ index 464af0e5..8eef665a 100644
            </para>
          </listitem>
        </varlistentry>
+diff --git a/doc/mwg/Makefile.am b/doc/mwg/Makefile.am
+index 2bbb2d0b..688e6cb3 100644
+--- a/doc/mwg/Makefile.am
++++ b/doc/mwg/Makefile.am
+@@ -21,7 +21,7 @@ if ENABLE_GENERATE_PDF
+ 	  --stringparam section.autolabel 1 \
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 3 --xinclude --nonet \
+-	http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl $< > Linux-PAM_MWG.fo
++	$(PDF_STYLESHEET) $< > Linux-PAM_MWG.fo
+ 	$(FO2PDF) Linux-PAM_MWG.fo $@
+ else
+ 	echo "No fo2pdf processor installed, skip PDF generation"
+@@ -33,7 +33,7 @@ Linux-PAM_MWG.txt: $(XMLS) $(DEP_XMLS)
+ 	  --stringparam section.autolabel 1 \
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 3 --xinclude --nonet \
+-	  http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl $< | $(BROWSER) > $@
++	  $(TXT_STYLESHEET) $< | $(BROWSER) > $@
+
+ html/Linux-PAM_MWG.html: $(XMLS) $(DEP_XMLS)
+ 	@test -d html || mkdir -p html
+@@ -46,7 +46,7 @@ html/Linux-PAM_MWG.html: $(XMLS) $(DEP_XMLS)
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 3 --xinclude --nonet \
+ 	  --stringparam chunker.output.encoding UTF-8 \
+-	  http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl $<
++	  $(HTML_STYLESHEET) $<
+
+ distclean-local:
+ 	-rm -rf html Linux-PAM_MWG.txt Linux-PAM_MWG.pdf
+diff --git a/doc/sag/Linux-PAM_SAG.xml b/doc/sag/Linux-PAM_SAG.xml
+index 0f33e0f6..2adaef7d 100644
+--- a/doc/sag/Linux-PAM_SAG.xml
++++ b/doc/sag/Linux-PAM_SAG.xml
+@@ -408,6 +408,8 @@ session   required   pam_warn.so
+      href="pam_exec.xml"/>
+     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="pam_faildelay.xml"/>
++    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
++     href="pam_faillock.xml"/>
+     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+      href="pam_filter.xml"/>
+     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+diff --git a/doc/sag/Makefile.am b/doc/sag/Makefile.am
+index 31816aa0..84fd383f 100644
+--- a/doc/sag/Makefile.am
++++ b/doc/sag/Makefile.am
+@@ -22,7 +22,7 @@ if ENABLE_GENERATE_PDF
+ 	  --stringparam section.autolabel 1 \
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 2 --xinclude --nonet \
+-	http://docbook.sourceforge.net/release/xsl/current/fo/docbook.xsl $< > Linux-PAM_SAG.fo
++	$(PDF_STYLESHEET) $< > Linux-PAM_SAG.fo
+ 	$(FO2PDF) Linux-PAM_SAG.fo $@
+ else
+ 	echo "No fo2pdf processor installed, skip PDF generation"
+@@ -34,7 +34,7 @@ Linux-PAM_SAG.txt: $(XMLS) $(DEP_XMLS)
+ 	  --stringparam section.autolabel 1 \
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 2 --xinclude --nonet \
+-	  http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl $< | $(BROWSER) > $@
++	  $(TXT_STYLESHEET) $< | $(BROWSER) > $@
+
+ html/Linux-PAM_SAG.html: $(XMLS) $(DEP_XMLS)
+ 	@test -d html || mkdir -p html
+@@ -47,7 +47,7 @@ html/Linux-PAM_SAG.html: $(XMLS) $(DEP_XMLS)
+ 	  --stringparam section.label.includes.component.label 1 \
+ 	  --stringparam toc.max.depth 2 --xinclude --nonet \
+ 	  --stringparam chunker.output.encoding UTF-8 \
+-	  http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl $<
++	  $(HTML_STYLESHEET) $<
+
+ distclean-local:
+ 	-rm -rf html Linux-PAM_SAG.txt Linux-PAM_SAG.pdf
 diff --git a/examples/Makefile.am b/examples/Makefile.am
 index 722ec686..c4c3c261 100644
 --- a/examples/Makefile.am
@@ -80,7 +267,7 @@ index 722ec686..c4c3c261 100644
 @@ -11,4 +11,4 @@ AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
  LDADD = $(top_builddir)/libpam/libpam.la \
  	$(top_builddir)/libpam_misc/libpam_misc.la
- 
+
 -noinst_PROGRAMS = xsh vpass blank check_user
 +noinst_PROGRAMS = xsh vpass blank check_user tty_conv
 diff --git a/examples/tty_conv.c b/examples/tty_conv.c
@@ -278,27 +465,128 @@ index ef4dca0c..5b34fc17 100644
 +	     bail_out(pamh,1,retcode,"pam_set_item(PAM_TTY)");
  	 }
       }
- 
+
 diff --git a/libpam/Makefile.am b/libpam/Makefile.am
 index 55222afc..389d5d02 100644
 --- a/libpam/Makefile.am
 +++ b/libpam/Makefile.am
 @@ -21,7 +21,7 @@ noinst_HEADERS = pam_prelude.h pam_private.h pam_tokens.h \
  		include/pam_inline.h include/test_assert.h
- 
+
  libpam_la_LDFLAGS = -no-undefined -version-info 85:1:85
 -libpam_la_LIBADD = @LIBAUDIT@ $(LIBPRELUDE_LIBS) $(ECONF_LIBS) @LIBDL@
 +libpam_la_LIBADD = @LIBAUDIT@ $(LIBPRELUDE_LIBS) $(ECONF_LIBS) @LIBDL@ @LTLIBINTL@
- 
+
  if HAVE_VERSIONING
    libpam_la_LDFLAGS += -Wl,--version-script=$(srcdir)/libpam.map
+diff --git a/libpam/include/security/pam_modutil.h b/libpam/include/security/pam_modutil.h
+index 33f87b90..c2578323 100644
+--- a/libpam/include/security/pam_modutil.h
++++ b/libpam/include/security/pam_modutil.h
+@@ -147,7 +147,16 @@ pam_modutil_sanitize_helper_fds(pam_handle_t *pamh,
+ 				enum pam_modutil_redirect_fd redirect_stdout,
+ 				enum pam_modutil_redirect_fd redirect_stderr);
+
+-/* lookup a value for key in login.defs file or similar key value format */
++/**************************************************
++ * @brief Lookup a value for the key in the file (i.e. login.defs or a similar
++ * key-value format file).
++ *
++ * @param[in] pamh The pam handle structure
++ * @param[in] file_name Configuration file name
++ * @param[in] key Lookup key
++ *
++ * @return value, or NULL if key was not found.
++ **************************************************/
+ extern char * PAM_NONNULL((1,2,3))
+ pam_modutil_search_key(pam_handle_t *pamh,
+ 		       const char *file_name,
+diff --git a/libpam/pam.pc.in b/libpam/pam.pc.in
+index a7cf852d..c3fafe4b 100644
+--- a/libpam/pam.pc.in
++++ b/libpam/pam.pc.in
+@@ -1,3 +1,5 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+
+diff --git a/libpam/pam_handlers.c b/libpam/pam_handlers.c
+index ffa5e4ae..12ebb8fc 100644
+--- a/libpam/pam_handlers.c
++++ b/libpam/pam_handlers.c
+@@ -889,8 +889,8 @@ int _pam_add_handler(pam_handle_t *pamh
+ 	handler_p = &((*handler_p)->next);
+     }
+
+-    if ((*handler_p = malloc(sizeof(struct handler))) == NULL) {
+-	pam_syslog(pamh, LOG_CRIT, "cannot malloc struct handler #1");
++    if ((*handler_p = calloc(1, sizeof(struct handler))) == NULL) {
++	pam_syslog(pamh, LOG_CRIT, "cannot allocate struct handler #1");
+ 	return (PAM_ABORT);
+     }
+
+@@ -904,8 +904,6 @@ int _pam_add_handler(pam_handle_t *pamh
+     (*handler_p)->argv = argv;                       /* not a copy */
+     if (((*handler_p)->mod_name = extract_modulename(mod_path)) == NULL)
+ 	return PAM_ABORT;
+-    (*handler_p)->grantor = 0;
+-    (*handler_p)->next = NULL;
+
+     /* some of the modules have a second calling function */
+     if (handler_p2) {
+@@ -914,8 +912,8 @@ int _pam_add_handler(pam_handle_t *pamh
+ 	    handler_p2 = &((*handler_p2)->next);
+ 	}
+
+-	if ((*handler_p2 = malloc(sizeof(struct handler))) == NULL) {
+-	    pam_syslog(pamh, LOG_CRIT, "cannot malloc struct handler #2");
++	if ((*handler_p2 = calloc(1, sizeof(struct handler))) == NULL) {
++	    pam_syslog(pamh, LOG_CRIT, "cannot allocate struct handler #2");
+ 	    return (PAM_ABORT);
+ 	}
+
+@@ -933,13 +931,9 @@ int _pam_add_handler(pam_handle_t *pamh
+ 		return (PAM_ABORT);
+ 	    }
+ 	    memcpy((*handler_p2)->argv, argv, argvlen);
+-	} else {
+-	    (*handler_p2)->argv = NULL;              /* no arguments */
+ 	}
+ 	if (((*handler_p2)->mod_name = extract_modulename(mod_path)) == NULL)
+ 	    return PAM_ABORT;
+-	(*handler_p2)->grantor = 0;
+-	(*handler_p2)->next = NULL;
+     }
+
+     D(("_pam_add_handler: returning successfully"));
+diff --git a/libpam_misc/pam_misc.pc.in b/libpam_misc/pam_misc.pc.in
+index 0c8898cd..c3e03c4f 100644
+--- a/libpam_misc/pam_misc.pc.in
++++ b/libpam_misc/pam_misc.pc.in
+@@ -1,3 +1,5 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+
+diff --git a/libpamc/pamc.pc.in b/libpamc/pamc.pc.in
+index 25a63854..2d841ebb 100644
+--- a/libpamc/pamc.pc.in
++++ b/libpamc/pamc.pc.in
+@@ -1,3 +1,5 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+
 diff --git a/modules/pam_access/Makefile.am b/modules/pam_access/Makefile.am
 index 5723dd59..b9fbefdb 100644
 --- a/modules/pam_access/Makefile.am
 +++ b/modules/pam_access/Makefile.am
 @@ -18,8 +18,7 @@ securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
 -	-DPAM_ACCESS_CONFIG=\"$(SCONFIGDIR)/access.conf\" \
 -	-DACCESS_CONF_GLOB=\"$(SCONFIGDIR)/access.d/*.conf\" $(WARN_CFLAGS)
@@ -306,103 +594,2101 @@ index 5723dd59..b9fbefdb 100644
  AM_LDFLAGS =  -no-undefined -avoid-version -module
  if HAVE_VERSIONING
    AM_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
+diff --git a/modules/pam_access/pam_access.8.xml b/modules/pam_access/pam_access.8.xml
+index 9a6556cc..db853410 100644
+--- a/modules/pam_access/pam_access.8.xml
++++ b/modules/pam_access/pam_access.8.xml
+@@ -53,7 +53,7 @@
+       or on terminal line names, X <varname>$DISPLAY</varname> values,
+       or PAM service names in case of non-networked logins.
+     </para>
+-    <para>
++    <para condition="without_vendordir">
+       By default rules for access management are taken from config file
+       <filename>/etc/security/access.conf</filename> if you don't specify
+       another file.
+@@ -66,6 +66,26 @@
+       If a config file is explicitly specified with the <option>accessfile</option>
+       option the files in the above directory are not parsed.
+     </para>
++    <para condition="with_vendordir">
++      By default rules for access management are taken from config file
++      <filename>/etc/security/access.conf</filename> or, if that one is not
++      present, the file <filename>%vendordir%/security/access.conf</filename>.
++      These settings can be overruled by setting in a config file explicitly
++      specified with the <option>accessfile</option> option.
++      Then individual <filename>*.conf</filename> files from the
++      <filename>/etc/security/access.d/</filename> and
++      <filename>%vendordir%/security/access.d</filename> directories are read.
++      If <filename>/etc/security/access.d/@filename@.conf</filename> exists, then
++      <filename>%vendordir%/security/access.d/@filename@.conf</filename> will not be used.
++      All <filename>access.d/*.conf</filename> files are sorted by their
++      <filename>@filename@.conf</filename> in lexicographic order regardless of which
++      of the directories they reside in.
++      The effect of the individual files is the same as if all the files were
++      concatenated together in the order of parsing. This means that once
++      a pattern is matched in some file no further files are parsed.
++      If a config file is explicitly specified with the <option>accessfile</option>
++      option the files in the above directories are not parsed.
++    </para>
+     <para>
+       If Linux PAM is compiled with audit support the module will report
+       when it denies access based on origin (host, tty, etc.).
+@@ -233,6 +253,13 @@
+           <para>Default configuration file</para>
+         </listitem>
+       </varlistentry>
++      <varlistentry condition="with_vendordir">
++        <term><filename>%vendordir%/security/access.conf</filename></term>
++        <listitem>
++          <para>Default configuration file if
++	  <filename>/etc/security/access.conf</filename> does not exist.</para>
++        </listitem>
++      </varlistentry>
+     </variablelist>
+   </refsect1>
+
 diff --git a/modules/pam_access/pam_access.c b/modules/pam_access/pam_access.c
-index 277192b9..0d033aa2 100644
+index 277192b9..f7b47227 100644
 --- a/modules/pam_access/pam_access.c
 +++ b/modules/pam_access/pam_access.c
-@@ -56,6 +56,9 @@
+@@ -56,6 +56,13 @@
  #include "pam_cc_compat.h"
  #include "pam_inline.h"
- 
+
 +#define PAM_ACCESS_CONFIG	(SCONFIGDIR "/access.conf")
 +#define ACCESS_CONF_GLOB	(SCONFIGDIR "/access.d/*.conf")
++#ifdef VENDOR_SCONFIGDIR
++#define VENDOR_PAM_ACCESS_CONFIG (VENDOR_SCONFIGDIR "/access.conf")
++#define VENDOR_ACCESS_CONF_GLOB  (VENDOR_SCONFIGDIR "/access.d/*.conf")
++#endif
 +
  /* login_access.c from logdaemon-5.6 with several changes by A.Nogin: */
- 
+
   /*
+@@ -151,6 +158,95 @@ parse_args(pam_handle_t *pamh, struct login_info *loginfo,
+     return 1;  /* OK */
+ }
+
++/* --- evaluting all files in VENDORDIR/security/access.d and /etc/security/access.d --- */
++static const char *base_name(const char *path)
++{
++    const char *base = strrchr(path, '/');
++    return base ? base+1 : path;
++}
++
++static int
++compare_filename(const void *a, const void *b)
++{
++	return strcmp(base_name(* (const char * const *) a),
++		        base_name(* (const char * const *) b));
++}
++
++/* Evaluating a list of files which have to be parsed in the right order:
++ *
++ * - If etc/security/access.d/@filename@.conf exists, then
++ *   %vendordir%/security/access.d/@filename@.conf should not be used.
++ * - All files in both access.d directories are sorted by their @filename@.conf in
++ *   lexicographic order regardless of which of the directories they reside in. */
++static char **read_access_dir(pam_handle_t *pamh)
++{
++	glob_t globbuf;
++	size_t i=0;
++	int glob_rv = glob(ACCESS_CONF_GLOB, GLOB_ERR | GLOB_NOSORT, NULL, &globbuf);
++	char **file_list;
++	size_t file_list_size = glob_rv == 0 ? globbuf.gl_pathc : 0;
++
++#ifdef VENDOR_ACCESS_CONF_GLOB
++	glob_t globbuf_vendor;
++	int glob_rv_vendor = glob(VENDOR_ACCESS_CONF_GLOB, GLOB_ERR | GLOB_NOSORT, NULL, &globbuf_vendor);
++	if (glob_rv_vendor == 0)
++	    file_list_size += globbuf_vendor.gl_pathc;
++#endif
++	file_list = malloc((file_list_size + 1) * sizeof(char*));
++	if (file_list == NULL) {
++	    pam_syslog(pamh, LOG_ERR, "Cannot allocate memory for file list: %m");
++#ifdef VENDOR_ACCESS_CONF_GLOB
++            if (glob_rv_vendor == 0)
++                globfree(&globbuf_vendor);
++#endif
++            if (glob_rv == 0)
++                globfree(&globbuf);
++	    return NULL;
++	}
++
++	if (glob_rv == 0) {
++	    for (i = 0; i < globbuf.gl_pathc; i++) {
++	        file_list[i] = strdup(globbuf.gl_pathv[i]);
++		if (file_list[i] == NULL) {
++		    pam_syslog(pamh, LOG_ERR, "strdup failed: %m");
++		    break;
++		}
++	    }
++	}
++#ifdef VENDOR_ACCESS_CONF_GLOB
++	if (glob_rv_vendor == 0) {
++	    for (size_t j = 0; j < globbuf_vendor.gl_pathc; j++) {
++		if (glob_rv == 0 && globbuf.gl_pathc > 0) {
++		    int double_found = 0;
++		    for (size_t k = 0; k < globbuf.gl_pathc; k++) {
++		        if (strcmp(base_name(globbuf.gl_pathv[k]),
++				   base_name(globbuf_vendor.gl_pathv[j])) == 0) {
++				double_found = 1;
++				break;
++			}
++		    }
++		    if (double_found)
++			continue;
++		}
++		file_list[i] = strdup(globbuf_vendor.gl_pathv[j]);
++		if (file_list[i] == NULL) {
++		    pam_syslog(pamh, LOG_ERR, "strdup failed: %m");
++		    break;
++		}
++		i++;
++	    }
++	    globfree(&globbuf_vendor);
++	}
++#endif
++	file_list[i] = NULL;
++	qsort(file_list, i, sizeof(char *), compare_filename);
++
++	if (glob_rv == 0)
++	    globfree(&globbuf);
++
++	return file_list;
++}
++
+ /* --- static functions for checking whether the user should be let in --- */
+
+ typedef int match_func (pam_handle_t *, char *, struct login_info *);
+@@ -637,7 +733,7 @@ remote_match (pam_handle_t *pamh, char *tok, struct login_info *item)
+       if ((str_len = strlen(string)) > tok_len
+ 	  && strcasecmp(tok, string + str_len - tok_len) == 0)
+ 	return YES;
+-    } else if (tok[tok_len - 1] == '.') {
++    } else if (tok[tok_len - 1] == '.') {       /* internet network numbers (end with ".") */
+       struct addrinfo hint;
+
+       memset (&hint, '\0', sizeof (hint));
+@@ -678,7 +774,7 @@ remote_match (pam_handle_t *pamh, char *tok, struct login_info *item)
+       return NO;
+     }
+
+-    /* Assume network/netmask with an IP of a host.  */
++    /* Assume network/netmask, IP address or hostname.  */
+     return network_netmask_match(pamh, tok, string, item);
+ }
+
+@@ -696,7 +792,7 @@ string_match (pam_handle_t *pamh, const char *tok, const char *string,
+     /*
+      * If the token has the magic value "ALL" the match always succeeds.
+      * Otherwise, return YES if the token fully matches the string.
+-	 * "NONE" token matches NULL string.
++     * "NONE" token matches NULL string.
+      */
+
+     if (strcasecmp(tok, "ALL") == 0) {		/* all: always matches */
+@@ -714,7 +810,8 @@ string_match (pam_handle_t *pamh, const char *tok, const char *string,
+
+ /* network_netmask_match - match a string against one token
+  * where string is a hostname or ip (v4,v6) address and tok
+- * represents either a single ip (v4,v6) address or a network/netmask
++ * represents either a hostname, a single ip (v4,v6) address
++ * or a network/netmask
+  */
+ static int
+ network_netmask_match (pam_handle_t *pamh,
+@@ -723,10 +820,12 @@ network_netmask_match (pam_handle_t *pamh,
+     char *netmask_ptr;
+     char netmask_string[MAXHOSTNAMELEN + 1];
+     int addr_type;
++    struct addrinfo *ai = NULL;
+
+     if (item->debug)
+-    pam_syslog (pamh, LOG_DEBUG,
++      pam_syslog (pamh, LOG_DEBUG,
+ 		"network_netmask_match: tok=%s, item=%s", tok, string);
++
+     /* OK, check if tok is of type addr/mask */
+     if ((netmask_ptr = strchr(tok, '/')) != NULL)
+       {
+@@ -760,54 +859,108 @@ network_netmask_match (pam_handle_t *pamh,
+ 	    netmask_ptr = number_to_netmask(netmask, addr_type,
+ 		netmask_string, MAXHOSTNAMELEN);
+ 	  }
+-	}
++
++        /*
++         * Construct an addrinfo list from the IP address.
++         * This should not fail as the input is a correct IP address...
++         */
++	if (getaddrinfo (tok, NULL, NULL, &ai) != 0)
++	  {
++	    return NO;
++	  }
++      }
+     else
+-	/* NO, then check if it is only an addr */
+-	if (isipaddr(tok, NULL, NULL) != YES)
++      {
++        /*
++	 * It is either an IP address or a hostname.
++	 * Let getaddrinfo sort everything out
++	 */
++	if (getaddrinfo (tok, NULL, NULL, &ai) != 0)
+ 	  {
++	    pam_syslog(pamh, LOG_ERR, "cannot resolve hostname \"%s\"", tok);
++
+ 	    return NO;
+ 	  }
++	netmask_ptr = NULL;
++      }
+
+     if (isipaddr(string, NULL, NULL) != YES)
+       {
+-	/* Assume network/netmask with a name of a host.  */
+ 	struct addrinfo hint;
+
++	/* Assume network/netmask with a name of a host.  */
+ 	memset (&hint, '\0', sizeof (hint));
+ 	hint.ai_flags = AI_CANONNAME;
+ 	hint.ai_family = AF_UNSPEC;
+
+ 	if (item->gai_rv != 0)
++	  {
++	    freeaddrinfo(ai);
+ 	    return NO;
++	  }
+ 	else if (!item->res &&
+ 		(item->gai_rv = getaddrinfo (string, NULL, &hint, &item->res)) != 0)
++	  {
++	    freeaddrinfo(ai);
+ 	    return NO;
++	  }
+         else
+ 	  {
+ 	    struct addrinfo *runp = item->res;
++	    struct addrinfo *runp1;
+
+ 	    while (runp != NULL)
+ 	      {
+ 		char buf[INET6_ADDRSTRLEN];
+
+-		DIAG_PUSH_IGNORE_CAST_ALIGN;
+-		inet_ntop (runp->ai_family,
+-			runp->ai_family == AF_INET
+-			? (void *) &((struct sockaddr_in *) runp->ai_addr)->sin_addr
+-			: (void *) &((struct sockaddr_in6 *) runp->ai_addr)->sin6_addr,
+-			buf, sizeof (buf));
+-		DIAG_POP_IGNORE_CAST_ALIGN;
++		if (getnameinfo (runp->ai_addr, runp->ai_addrlen, buf, sizeof (buf), NULL, 0, NI_NUMERICHOST) != 0)
++		  {
++		    freeaddrinfo(ai);
++		    return NO;
++		  }
+
+-		if (are_addresses_equal(buf, tok, netmask_ptr))
++		for (runp1 = ai; runp1 != NULL; runp1 = runp1->ai_next)
+ 		  {
+-		    return YES;
++                    char buf1[INET6_ADDRSTRLEN];
++
++                    if (runp->ai_family != runp1->ai_family)
++                      continue;
++
++                    if (getnameinfo (runp1->ai_addr, runp1->ai_addrlen, buf1, sizeof (buf1), NULL, 0, NI_NUMERICHOST) != 0)
++		      {
++			freeaddrinfo(ai);
++			return NO;
++		      }
++
++                    if (are_addresses_equal (buf, buf1, netmask_ptr))
++                      {
++                        freeaddrinfo(ai);
++                        return YES;
++                      }
+ 		  }
+ 		runp = runp->ai_next;
+ 	      }
+ 	  }
+       }
+     else
+-      return (are_addresses_equal(string, tok, netmask_ptr));
++      {
++       struct addrinfo *runp1;
++
++       for (runp1 = ai; runp1 != NULL; runp1 = runp1->ai_next)
++         {
++           char buf1[INET6_ADDRSTRLEN];
++
++           (void) getnameinfo (runp1->ai_addr, runp1->ai_addrlen, buf1, sizeof (buf1), NULL, 0, NI_NUMERICHOST);
++
++           if (are_addresses_equal(string, buf1, netmask_ptr))
++             {
++               freeaddrinfo(ai);
++               return YES;
++             }
++         }
++      }
++
++  freeaddrinfo(ai);
+
+   return NO;
+ }
+@@ -828,7 +981,6 @@ pam_sm_authenticate (pam_handle_t *pamh, int flags UNUSED,
+     char hostname[MAXHOSTNAMELEN + 1];
+     int rv;
+
+-
+     /* set username */
+
+     if (pam_get_user(pamh, &user, NULL) != PAM_SUCCESS) {
+@@ -853,6 +1005,18 @@ pam_sm_authenticate (pam_handle_t *pamh, int flags UNUSED,
+ 	return PAM_ABORT;
+     }
+
++#ifdef VENDOR_PAM_ACCESS_CONFIG
++    if (loginfo.config_file == default_config) {
++      /* Check whether PAM_ACCESS_CONFIG file is available.
++       * If it does not exist, fall back to VENDOR_PAM_ACCESS_CONFIG file. */
++      struct stat buffer;
++      if (stat(loginfo.config_file, &buffer) != 0 && errno == ENOENT) {
++	default_config = VENDOR_PAM_ACCESS_CONFIG;
++	loginfo.config_file = default_config;
++      }
++    }
++#endif
++
+     /* remote host name */
+
+     if (pam_get_item(pamh, PAM_RHOST, &void_from)
+@@ -916,23 +1080,18 @@ pam_sm_authenticate (pam_handle_t *pamh, int flags UNUSED,
+     rv = login_access(pamh, &loginfo);
+
+     if (rv == NOMATCH && loginfo.config_file == default_config) {
+-	glob_t globbuf;
+-	int i, glob_rv;
+-
+-	/* We do not manipulate locale as setlocale() is not
+-	 * thread safe. We could use uselocale() in future.
+-	 */
+-	glob_rv = glob(ACCESS_CONF_GLOB, GLOB_ERR, NULL, &globbuf);
+-	if (!glob_rv) {
+-	    /* Parse the *.conf files. */
+-	    for (i = 0; globbuf.gl_pathv[i] != NULL; i++) {
+-		loginfo.config_file = globbuf.gl_pathv[i];
+-		rv = login_access(pamh, &loginfo);
+-		if (rv != NOMATCH)
+-		    break;
+-	    }
+-	    globfree(&globbuf);
+-	}
++        char **filename_list = read_access_dir(pamh);
++        if (filename_list != NULL) {
++            for (int i = 0; filename_list[i] != NULL; i++) {
++                loginfo.config_file = filename_list[i];
++                rv = login_access(pamh, &loginfo);
++                if (rv != NOMATCH)
++                    break;
++            }
++            for (int i = 0; filename_list[i] != NULL; i++)
++                free(filename_list[i]);
++            free(filename_list);
++        }
+     }
+
+     if (loginfo.gai_rv == 0 && loginfo.res)
 diff --git a/modules/pam_env/Makefile.am b/modules/pam_env/Makefile.am
-index c66112d6..beca8e1a 100644
+index c66112d6..02cd9d37 100644
 --- a/modules/pam_env/Makefile.am
 +++ b/modules/pam_env/Makefile.am
-@@ -18,7 +18,7 @@ securelibdir = $(SECUREDIR)
+@@ -12,13 +12,13 @@ dist_man_MANS = pam_env.conf.5 pam_env.8 environment.5
+ endif
+ XMLS = README.xml pam_env.conf.5.xml pam_env.8.xml
+ dist_check_SCRIPTS = tst-pam_env
+-TESTS = $(dist_check_SCRIPTS)
++TESTS = $(dist_check_SCRIPTS) $(check_PROGRAMS)
+
+ securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
 -	-DDEFAULT_CONF_FILE=\"$(SCONFIGDIR)/pam_env.conf\" $(WARN_CFLAGS)
 +	    $(WARN_CFLAGS)
  AM_LDFLAGS = -no-undefined -avoid-version -module
  if HAVE_VERSIONING
    AM_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
+@@ -27,6 +27,9 @@ endif
+ securelib_LTLIBRARIES = pam_env.la
+ pam_env_la_LIBADD = $(top_builddir)/libpam/libpam.la
+
++check_PROGRAMS = tst-pam_env-retval
++tst_pam_env_retval_LDADD = $(top_builddir)/libpam/libpam.la
++
+ dist_secureconf_DATA = pam_env.conf
+ dist_sysconf_DATA = environment
+
 diff --git a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
-index f5f8cead..c03ec3a3 100644
+index f5f8cead..66fbe240 100644
 --- a/modules/pam_env/pam_env.c
 +++ b/modules/pam_env/pam_env.c
 @@ -41,6 +41,8 @@ typedef struct var {
    char *override;
  } VAR;
- 
+
 +#define DEFAULT_CONF_FILE	(SCONFIGDIR "/pam_env.conf")
 +
  #define BUF_SIZE 8192
  #define MAX_ENV  8192
- 
+
+@@ -51,15 +53,6 @@ typedef struct var {
+ #define UNDEFINE_VAR 102
+ #define ILLEGAL_VAR  103
+
+-static int  _assemble_line(FILE *, char *, int);
+-static int  _parse_line(const pam_handle_t *, const char *, VAR *);
+-static int  _check_var(pam_handle_t *, VAR *);           /* This is the real meat */
+-static void _clean_var(VAR *);
+-static int  _expand_arg(pam_handle_t *, char **);
+-static const char * _pam_get_item_byname(pam_handle_t *, const char *);
+-static int  _define_var(pam_handle_t *, int, VAR *);
+-static int  _undefine_var(pam_handle_t *, int, VAR *);
+-
+ /* This is a special value used to designate an empty string */
+ static char quote='\0';
+
+@@ -126,166 +119,12 @@ _pam_parse (const pam_handle_t *pamh, int argc, const char **argv,
+     return ctrl;
+ }
+
+-static int
+-_parse_config_file(pam_handle_t *pamh, int ctrl, const char *file)
+-{
+-    int retval;
+-    char buffer[BUF_SIZE];
+-    FILE *conf;
+-    VAR Var, *var=&Var;
+-
+-    D(("Called."));
+-
+-    var->name=NULL; var->defval=NULL; var->override=NULL;
+-
+-    D(("Config file name is: %s", file));
+-
+-    /*
+-     * Lets try to open the config file, parse it and process
+-     * any variables found.
+-     */
+-
+-    if ((conf = fopen(file,"r")) == NULL) {
+-      pam_syslog(pamh, LOG_ERR, "Unable to open config file: %s: %m", file);
+-      return PAM_IGNORE;
+-    }
+-
+-    /* _pam_assemble_line will provide a complete line from the config file,
+-     * with all comments removed and any escaped newlines fixed up
+-     */
+-
+-    while (( retval = _assemble_line(conf, buffer, BUF_SIZE)) > 0) {
+-      D(("Read line: %s", buffer));
+-
+-      if ((retval = _parse_line(pamh, buffer, var)) == GOOD_LINE) {
+-	retval = _check_var(pamh, var);
+-
+-	if (DEFINE_VAR == retval) {
+-	  retval = _define_var(pamh, ctrl, var);
+-
+-	} else if (UNDEFINE_VAR == retval) {
+-	  retval = _undefine_var(pamh, ctrl, var);
+-	}
+-      }
+-      if (PAM_SUCCESS != retval && ILLEGAL_VAR != retval
+-	  && BAD_LINE != retval && PAM_BAD_ITEM != retval) break;
+-
+-      _clean_var(var);
+-
+-    }  /* while */
+-
+-    (void) fclose(conf);
+-
+-    /* tidy up */
+-    _clean_var(var);        /* We could have got here prematurely,
+-			     * this is safe though */
+-    D(("Exit."));
+-    return (retval != 0 ? PAM_ABORT : PAM_SUCCESS);
+-}
+-
+-static int
+-_parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
+-{
+-    int retval=PAM_SUCCESS, i, t;
+-    char buffer[BUF_SIZE], *key, *mark;
+-    FILE *conf;
+-
+-    D(("Env file name is: %s", file));
+-
+-    if ((conf = fopen(file,"r")) == NULL) {
+-      pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
+-      return PAM_IGNORE;
+-    }
+-
+-    while (_assemble_line(conf, buffer, BUF_SIZE) > 0) {
+-	D(("Read line: %s", buffer));
+-	key = buffer;
+-
+-	/* skip leading white space */
+-	key += strspn(key, " \n\t");
+-
+-	/* skip blanks lines and comments */
+-	if (key[0] == '#')
+-	    continue;
+-
+-	/* skip over "export " if present so we can be compat with
+-	   bash type declarations */
+-	if (strncmp(key, "export ", (size_t) 7) == 0)
+-	    key += 7;
+-
+-	/* now find the end of value */
+-	mark = key;
+-	while(mark[0] != '\n' && mark[0] != '#' && mark[0] != '\0')
+-	    mark++;
+-	if (mark[0] != '\0')
+-	    mark[0] = '\0';
+-
+-       /*
+-	* sanity check, the key must be alphanumeric
+-	*/
+-
+-	if (key[0] == '=') {
+-		pam_syslog(pamh, LOG_ERR,
+-		           "missing key name '%s' in %s', ignoring",
+-		           key, file);
+-		continue;
+-	}
+-
+-	for ( i = 0 ; key[i] != '=' && key[i] != '\0' ; i++ )
+-	    if (!isalnum(key[i]) && key[i] != '_') {
+-		pam_syslog(pamh, LOG_ERR,
+-		           "non-alphanumeric key '%s' in %s', ignoring",
+-		           key, file);
+-		break;
+-	    }
+-	/* non-alphanumeric key, ignore this line */
+-	if (key[i] != '=' && key[i] != '\0')
+-	    continue;
+-
+-	/* now we try to be smart about quotes around the value,
+-	   but not too smart, we can't get all fancy with escaped
+-	   values like bash */
+-	if (key[i] == '=' && (key[++i] == '\"' || key[i] == '\'')) {
+-	    for ( t = i+1 ; key[t] != '\0' ; t++)
+-		if (key[t] != '\"' && key[t] != '\'')
+-		    key[i++] = key[t];
+-		else if (key[t+1] != '\0')
+-		    key[i++] = key[t];
+-	    key[i] = '\0';
+-	}
+-
+-	/* if this is a request to delete a variable, check that it's
+-	   actually set first, so we don't get a vague error back from
+-	   pam_putenv() */
+-	for (i = 0; key[i] != '=' && key[i] != '\0'; i++);
+-
+-	if (key[i] == '\0' && !pam_getenv(pamh,key))
+-	    continue;
+-
+-	/* set the env var, if it fails, we break out of the loop */
+-	retval = pam_putenv(pamh, key);
+-	if (retval != PAM_SUCCESS) {
+-	    D(("error setting env \"%s\"", key));
+-	    break;
+-	} else if (ctrl & PAM_DEBUG_ARG) {
+-	    pam_syslog(pamh, LOG_DEBUG,
+-		       "pam_putenv(\"%s\")", key);
+-	}
+-    }
+-
+-    (void) fclose(conf);
+-
+-    /* tidy up */
+-    D(("Exit."));
+-    return retval;
+-}
+-
+ /*
+  * This is where we read a line of the PAM config file. The line may be
+  * preceded by lines of comments and also extended with "\\\n"
+  */
+-
+-static int _assemble_line(FILE *f, char *buffer, int buf_len)
++static int
++_assemble_line(FILE *f, char *buffer, int buf_len)
+ {
+     char *p = buffer;
+     char *s, *os;
+@@ -374,7 +213,7 @@ static int _assemble_line(FILE *f, char *buffer, int buf_len)
+ }
+
+ static int
+-_parse_line (const pam_handle_t *pamh, const char *buffer, VAR *var)
++_parse_line(const pam_handle_t *pamh, const char *buffer, VAR *var)
+ {
+   /*
+    * parse buffer into var, legal syntax is
+@@ -469,75 +308,57 @@ _parse_line (const pam_handle_t *pamh, const char *buffer, VAR *var)
+   return GOOD_LINE;
+ }
+
+-static int _check_var(pam_handle_t *pamh, VAR *var)
++static const char *
++_pam_get_item_byname(pam_handle_t *pamh, const char *name)
+ {
+   /*
+-   * Examine the variable and determine what action to take.
+-   * Returns DEFINE_VAR, UNDEFINE_VAR depending on action to take
+-   * or a PAM_* error code if passed back from other routines
+-   *
+-   * if no DEFAULT provided, the empty string is assumed
+-   * if no OVERRIDE provided, the empty string is assumed
+-   * if DEFAULT=  and OVERRIDE evaluates to the empty string,
+-   *    this variable should be undefined
+-   * if DEFAULT=""  and OVERRIDE evaluates to the empty string,
+-   *    this variable should be defined with no value
+-   * if OVERRIDE=value   and value turns into the empty string, DEFAULT is used
+-   *
+-   * If DEFINE_VAR is to be returned, the correct value to define will
+-   * be pointed to by var->value
++   * This function just allows me to use names as given in the config
++   * file and translate them into the appropriate PAM_ITEM macro
+    */
+
+-  int retval;
++  int item;
++  const void *itemval;
+
+   D(("Called."));
+-
+-  /*
+-   * First thing to do is to expand any arguments, but only
+-   * if they are not the special quote values (cause expand_arg
+-   * changes memory).
+-   */
+-
+-  if (var->defval && (&quote != var->defval) &&
+-      ((retval = _expand_arg(pamh, &(var->defval))) != PAM_SUCCESS)) {
+-      return retval;
+-  }
+-  if (var->override && (&quote != var->override) &&
+-      ((retval = _expand_arg(pamh, &(var->override))) != PAM_SUCCESS)) {
+-    return retval;
++  if (strcmp(name, "PAM_USER") == 0 || strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0) {
++    item = PAM_USER;
++  } else if (strcmp(name, "PAM_USER_PROMPT") == 0) {
++    item = PAM_USER_PROMPT;
++  } else if (strcmp(name, "PAM_TTY") == 0) {
++    item = PAM_TTY;
++  } else if (strcmp(name, "PAM_RUSER") == 0) {
++    item = PAM_RUSER;
++  } else if (strcmp(name, "PAM_RHOST") == 0) {
++    item = PAM_RHOST;
++  } else {
++    D(("Unknown PAM_ITEM: <%s>", name));
++    pam_syslog (pamh, LOG_ERR, "Unknown PAM_ITEM: <%s>", name);
++    return NULL;
+   }
+
+-  /* Now its easy */
+-
+-  if (var->override && *(var->override)) {
+-    /* if there is a non-empty string in var->override, we use it */
+-    D(("OVERRIDE variable <%s> being used: <%s>", var->name, var->override));
+-    var->value = var->override;
+-    retval = DEFINE_VAR;
+-  } else {
++  if (pam_get_item(pamh, item, &itemval) != PAM_SUCCESS) {
++    D(("pam_get_item failed"));
++    return NULL;     /* let pam_get_item() log the error */
++  }
+
+-    var->value = var->defval;
+-    if (&quote == var->defval) {
+-      /*
+-       * This means that the empty string was given for defval value
+-       * which indicates that a variable should be defined with no value
+-       */
+-      D(("An empty variable: <%s>", var->name));
+-      retval = DEFINE_VAR;
+-    } else if (var->defval) {
+-      D(("DEFAULT variable <%s> being used: <%s>", var->name, var->defval));
+-      retval = DEFINE_VAR;
+-    } else {
+-      D(("UNDEFINE variable <%s>", var->name));
+-      retval = UNDEFINE_VAR;
++  if (itemval && (strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0)) {
++    struct passwd *user_entry;
++    user_entry = pam_modutil_getpwnam (pamh, itemval);
++    if (!user_entry) {
++      pam_syslog(pamh, LOG_ERR, "No such user!?");
++      return NULL;
+     }
++    return (strcmp(name, "SHELL") == 0) ?
++      user_entry->pw_shell :
++      user_entry->pw_dir;
+   }
+
+   D(("Exit."));
+-  return retval;
++  return itemval;
+ }
+
+-static int _expand_arg(pam_handle_t *pamh, char **value)
++static int
++_expand_arg(pam_handle_t *pamh, char **value)
+ {
+   const char *orig=*value, *tmpptr=NULL;
+   char *ptr;       /*
+@@ -677,55 +498,96 @@ static int _expand_arg(pam_handle_t *pamh, char **value)
+   return PAM_SUCCESS;
+ }
+
+-static const char * _pam_get_item_byname(pam_handle_t *pamh, const char *name)
++static int
++_check_var(pam_handle_t *pamh, VAR *var)
+ {
+   /*
+-   * This function just allows me to use names as given in the config
+-   * file and translate them into the appropriate PAM_ITEM macro
++   * Examine the variable and determine what action to take.
++   * Returns DEFINE_VAR, UNDEFINE_VAR depending on action to take
++   * or a PAM_* error code if passed back from other routines
++   *
++   * if no DEFAULT provided, the empty string is assumed
++   * if no OVERRIDE provided, the empty string is assumed
++   * if DEFAULT=  and OVERRIDE evaluates to the empty string,
++   *    this variable should be undefined
++   * if DEFAULT=""  and OVERRIDE evaluates to the empty string,
++   *    this variable should be defined with no value
++   * if OVERRIDE=value   and value turns into the empty string, DEFAULT is used
++   *
++   * If DEFINE_VAR is to be returned, the correct value to define will
++   * be pointed to by var->value
+    */
+
+-  int item;
+-  const void *itemval;
++  int retval;
+
+   D(("Called."));
+-  if (strcmp(name, "PAM_USER") == 0 || strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0) {
+-    item = PAM_USER;
+-  } else if (strcmp(name, "PAM_USER_PROMPT") == 0) {
+-    item = PAM_USER_PROMPT;
+-  } else if (strcmp(name, "PAM_TTY") == 0) {
+-    item = PAM_TTY;
+-  } else if (strcmp(name, "PAM_RUSER") == 0) {
+-    item = PAM_RUSER;
+-  } else if (strcmp(name, "PAM_RHOST") == 0) {
+-    item = PAM_RHOST;
+-  } else {
+-    D(("Unknown PAM_ITEM: <%s>", name));
+-    pam_syslog (pamh, LOG_ERR, "Unknown PAM_ITEM: <%s>", name);
+-    return NULL;
+-  }
+
+-  if (pam_get_item(pamh, item, &itemval) != PAM_SUCCESS) {
+-    D(("pam_get_item failed"));
+-    return NULL;     /* let pam_get_item() log the error */
++  /*
++   * First thing to do is to expand any arguments, but only
++   * if they are not the special quote values (cause expand_arg
++   * changes memory).
++   */
++
++  if (var->defval && (&quote != var->defval) &&
++      ((retval = _expand_arg(pamh, &(var->defval))) != PAM_SUCCESS)) {
++      return retval;
++  }
++  if (var->override && (&quote != var->override) &&
++      ((retval = _expand_arg(pamh, &(var->override))) != PAM_SUCCESS)) {
++    return retval;
+   }
+
+-  if (itemval && (strcmp(name, "HOME") == 0 || strcmp(name, "SHELL") == 0)) {
+-    struct passwd *user_entry;
+-    user_entry = pam_modutil_getpwnam (pamh, itemval);
+-    if (!user_entry) {
+-      pam_syslog(pamh, LOG_ERR, "No such user!?");
+-      return NULL;
++  /* Now its easy */
++
++  if (var->override && *(var->override)) {
++    /* if there is a non-empty string in var->override, we use it */
++    D(("OVERRIDE variable <%s> being used: <%s>", var->name, var->override));
++    var->value = var->override;
++    retval = DEFINE_VAR;
++  } else {
++
++    var->value = var->defval;
++    if (&quote == var->defval) {
++      /*
++       * This means that the empty string was given for defval value
++       * which indicates that a variable should be defined with no value
++       */
++      D(("An empty variable: <%s>", var->name));
++      retval = DEFINE_VAR;
++    } else if (var->defval) {
++      D(("DEFAULT variable <%s> being used: <%s>", var->name, var->defval));
++      retval = DEFINE_VAR;
++    } else {
++      D(("UNDEFINE variable <%s>", var->name));
++      retval = UNDEFINE_VAR;
+     }
+-    return (strcmp(name, "SHELL") == 0) ?
+-      user_entry->pw_shell :
+-      user_entry->pw_dir;
+   }
+
+   D(("Exit."));
+-  return itemval;
++  return retval;
++}
++
++static void
++_clean_var(VAR *var)
++{
++    if (var->name) {
++      free(var->name);
++    }
++    if (var->defval && (&quote != var->defval)) {
++      free(var->defval);
++    }
++    if (var->override && (&quote != var->override)) {
++      free(var->override);
++    }
++    var->name = NULL;
++    var->value = NULL;    /* never has memory specific to it */
++    var->defval = NULL;
++    var->override = NULL;
++    return;
+ }
+
+-static int _define_var(pam_handle_t *pamh, int ctrl, VAR *var)
++static int
++_define_var(pam_handle_t *pamh, int ctrl, VAR *var)
+ {
+   /* We have a variable to define, this is a simple function */
+
+@@ -747,7 +609,8 @@ static int _define_var(pam_handle_t *pamh, int ctrl, VAR *var)
+   return retval;
+ }
+
+-static int _undefine_var(pam_handle_t *pamh, int ctrl, VAR *var)
++static int
++_undefine_var(pam_handle_t *pamh, int ctrl, VAR *var)
+ {
+   /* We have a variable to undefine, this is a simple function */
+
+@@ -758,25 +621,159 @@ static int _undefine_var(pam_handle_t *pamh, int ctrl, VAR *var)
+   return pam_putenv(pamh, var->name);
+ }
+
+-static void   _clean_var(VAR *var)
++static int
++_parse_config_file(pam_handle_t *pamh, int ctrl, const char *file)
+ {
+-    if (var->name) {
+-      free(var->name);
++    int retval;
++    char buffer[BUF_SIZE];
++    FILE *conf;
++    VAR Var, *var=&Var;
++
++    D(("Called."));
++
++    var->name=NULL; var->defval=NULL; var->override=NULL;
++
++    D(("Config file name is: %s", file));
++
++    /*
++     * Lets try to open the config file, parse it and process
++     * any variables found.
++     */
++
++    if ((conf = fopen(file,"r")) == NULL) {
++      pam_syslog(pamh, LOG_ERR, "Unable to open config file: %s: %m", file);
++      return PAM_IGNORE;
+     }
+-    if (var->defval && (&quote != var->defval)) {
+-      free(var->defval);
++
++    /* _pam_assemble_line will provide a complete line from the config file,
++     * with all comments removed and any escaped newlines fixed up
++     */
++
++    while (( retval = _assemble_line(conf, buffer, BUF_SIZE)) > 0) {
++      D(("Read line: %s", buffer));
++
++      if ((retval = _parse_line(pamh, buffer, var)) == GOOD_LINE) {
++	retval = _check_var(pamh, var);
++
++	if (DEFINE_VAR == retval) {
++	  retval = _define_var(pamh, ctrl, var);
++
++	} else if (UNDEFINE_VAR == retval) {
++	  retval = _undefine_var(pamh, ctrl, var);
++	}
++      }
++      if (PAM_SUCCESS != retval && ILLEGAL_VAR != retval
++	  && BAD_LINE != retval && PAM_BAD_ITEM != retval) break;
++
++      _clean_var(var);
++
++    }  /* while */
++
++    (void) fclose(conf);
++
++    /* tidy up */
++    _clean_var(var);        /* We could have got here prematurely,
++			     * this is safe though */
++    D(("Exit."));
++    return (retval != 0 ? PAM_ABORT : PAM_SUCCESS);
++}
++
++static int
++_parse_env_file(pam_handle_t *pamh, int ctrl, const char *file)
++{
++    int retval=PAM_SUCCESS, i, t;
++    char buffer[BUF_SIZE], *key, *mark;
++    FILE *conf;
++
++    D(("Env file name is: %s", file));
++
++    if ((conf = fopen(file,"r")) == NULL) {
++      pam_syslog(pamh, LOG_ERR, "Unable to open env file: %s: %m", file);
++      return PAM_IGNORE;
+     }
+-    if (var->override && (&quote != var->override)) {
+-      free(var->override);
++
++    while (_assemble_line(conf, buffer, BUF_SIZE) > 0) {
++	D(("Read line: %s", buffer));
++	key = buffer;
++
++	/* skip leading white space */
++	key += strspn(key, " \n\t");
++
++	/* skip blanks lines and comments */
++	if (key[0] == '#')
++	    continue;
++
++	/* skip over "export " if present so we can be compat with
++	   bash type declarations */
++	if (strncmp(key, "export ", (size_t) 7) == 0)
++	    key += 7;
++
++	/* now find the end of value */
++	mark = key;
++	while(mark[0] != '\n' && mark[0] != '#' && mark[0] != '\0')
++	    mark++;
++	if (mark[0] != '\0')
++	    mark[0] = '\0';
++
++       /*
++	* sanity check, the key must be alphanumeric
++	*/
++
++	if (key[0] == '=') {
++		pam_syslog(pamh, LOG_ERR,
++		           "missing key name '%s' in %s', ignoring",
++		           key, file);
++		continue;
++	}
++
++	for ( i = 0 ; key[i] != '=' && key[i] != '\0' ; i++ )
++	    if (!isalnum(key[i]) && key[i] != '_') {
++		pam_syslog(pamh, LOG_ERR,
++		           "non-alphanumeric key '%s' in %s', ignoring",
++		           key, file);
++		break;
++	    }
++	/* non-alphanumeric key, ignore this line */
++	if (key[i] != '=' && key[i] != '\0')
++	    continue;
++
++	/* now we try to be smart about quotes around the value,
++	   but not too smart, we can't get all fancy with escaped
++	   values like bash */
++	if (key[i] == '=' && (key[++i] == '\"' || key[i] == '\'')) {
++	    for ( t = i+1 ; key[t] != '\0' ; t++)
++		if (key[t] != '\"' && key[t] != '\'')
++		    key[i++] = key[t];
++		else if (key[t+1] != '\0')
++		    key[i++] = key[t];
++	    key[i] = '\0';
++	}
++
++	/* if this is a request to delete a variable, check that it's
++	   actually set first, so we don't get a vague error back from
++	   pam_putenv() */
++	for (i = 0; key[i] != '=' && key[i] != '\0'; i++);
++
++	if (key[i] == '\0' && !pam_getenv(pamh,key))
++	    continue;
++
++	/* set the env var, if it fails, we break out of the loop */
++	retval = pam_putenv(pamh, key);
++	if (retval != PAM_SUCCESS) {
++	    D(("error setting env \"%s\"", key));
++	    break;
++	} else if (ctrl & PAM_DEBUG_ARG) {
++	    pam_syslog(pamh, LOG_DEBUG,
++		       "pam_putenv(\"%s\")", key);
++	}
+     }
+-    var->name = NULL;
+-    var->value = NULL;    /* never has memory specific to it */
+-    var->defval = NULL;
+-    var->override = NULL;
+-    return;
+-}
+
++    (void) fclose(conf);
+
++    /* tidy up */
++    D(("Exit."));
++    return retval;
++}
+
+ /* --- authentication management functions (only) --- */
+
+diff --git a/modules/pam_env/tst-pam_env-retval.c b/modules/pam_env/tst-pam_env-retval.c
+new file mode 100644
+index 00000000..6b9b3065
+--- /dev/null
++++ b/modules/pam_env/tst-pam_env-retval.c
+@@ -0,0 +1,199 @@
++/*
++ * Check pam_env return values.
++ *
++ * Copyright (c) 2020-2022 Dmitry V. Levin <ldv@altlinux.org>
++ * Copyright (c) 2022 Stefan Schubert <schubi@suse.de>
++ */
++
++#include "test_assert.h"
++
++#include <limits.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/stat.h>
++#include <security/pam_appl.h>
++
++#define MODULE_NAME "pam_env"
++#define TEST_NAME "tst-" MODULE_NAME "-retval"
++
++static const char service_file[] = TEST_NAME ".service";
++static const char missing_file[] = TEST_NAME ".missing";
++static const char my_conf[] = TEST_NAME ".conf";
++static const char my_env[] = TEST_NAME ".env";
++
++static struct pam_conv conv;
++
++static void
++setup(void)
++{
++	FILE *fp;
++
++	ASSERT_NE(NULL, fp = fopen(my_conf, "w"));
++	ASSERT_LT(0, fprintf(fp,
++			     "EDITOR\tDEFAULT=vim\n"
++			     "PAGER\tDEFAULT=more\n"));
++	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_NE(NULL, fp = fopen(my_env, "w"));
++	ASSERT_LT(0, fprintf(fp,
++			     "test_value=foo\n"
++			     "test2_value=bar\n"));
++	ASSERT_EQ(0, fclose(fp));
++}
++
++static void
++cleanup(void)
++{
++	ASSERT_EQ(0, unlink(my_conf));
++	ASSERT_EQ(0, unlink(my_env));
++}
++
++static void
++check_array(const char **array1, char **array2)
++{
++	for (const char **a1 = array1; *a1 != NULL; ++a1) {
++		char **a2;
++		for (a2 = array2; *a2 != NULL; ++a2) {
++			if (strcmp(*a1, *a2) == 0)
++				break;
++		}
++		ASSERT_NE(NULL, *a2);
++	}
++}
++
++static void
++check_env(const char **list)
++{
++	pam_handle_t *pamh = NULL;
++
++	ASSERT_EQ(PAM_SUCCESS,
++		  pam_start_confdir(service_file, "", &conv, ".", &pamh));
++	ASSERT_NE(NULL, pamh);
++
++	ASSERT_EQ(PAM_SUCCESS, pam_open_session(pamh, 0));
++
++	char **env_list = pam_getenvlist(pamh);
++	ASSERT_NE(NULL, env_list);
++
++	check_array(list, env_list);
++
++	for (char **e = env_list; *e != NULL; ++e)
++		free(*e);
++	free(env_list);
++
++	ASSERT_EQ(PAM_SUCCESS, pam_close_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_end(pamh, 0));
++}
++
++int
++main(void)
++{
++	pam_handle_t *pamh = NULL;
++	FILE *fp;
++	char cwd[PATH_MAX];
++
++	ASSERT_NE(NULL, getcwd(cwd, sizeof(cwd)));
++
++	setup();
++
++	/*
++	 * When conffile= specifies a missing file, all methods except
++	 * pam_sm_acct_mgmt and pam_sm_chauthtok return PAM_IGNORE.
++	 * The return code of the stack where every module returns PAM_IGNORE
++	 * is PAM_PERM_DENIED.
++	 */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "#%%PAM-1.0\n"
++			     "auth required %s/.libs/%s.so conffile=%s/%s\n"
++			     "account required %s/.libs/%s.so conffile=%s/%s\n"
++			     "password required %s/.libs/%s.so conffile=%s/%s\n"
++			     "session required %s/.libs/%s.so conffile=%s/%s\n",
++			     cwd, MODULE_NAME, cwd, missing_file,
++			     cwd, MODULE_NAME, cwd, missing_file,
++			     cwd, MODULE_NAME, cwd, missing_file,
++			     cwd, MODULE_NAME, cwd, missing_file));
++	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_EQ(PAM_SUCCESS,
++		  pam_start_confdir(service_file, "", &conv, ".", &pamh));
++	ASSERT_NE(NULL, pamh);
++	ASSERT_EQ(PAM_PERM_DENIED, pam_authenticate(pamh, 0));
++	ASSERT_EQ(PAM_PERM_DENIED, pam_setcred(pamh, 0));
++	ASSERT_EQ(PAM_SERVICE_ERR, pam_acct_mgmt(pamh, 0));
++	ASSERT_EQ(PAM_SERVICE_ERR, pam_chauthtok(pamh, 0));
++	ASSERT_EQ(PAM_PERM_DENIED, pam_open_session(pamh, 0));
++	ASSERT_EQ(PAM_PERM_DENIED, pam_close_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_end(pamh, 0));
++	pamh = NULL;
++
++	/*
++	 * When conffile= specifies a missing file, all methods except
++	 * pam_sm_acct_mgmt and pam_sm_chauthtok return PAM_IGNORE.
++	 * pam_permit is added after pam_env to convert PAM_IGNORE to PAM_SUCCESS.
++	 */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "#%%PAM-1.0\n"
++			     "auth required %s/.libs/%s.so conffile=%s/%s\n"
++			     "auth required %s/../pam_permit/.libs/pam_permit.so\n"
++			     "account required %s/.libs/%s.so conffile=%s/%s\n"
++			     "account required %s/../pam_permit/.libs/pam_permit.so\n"
++			     "password required %s/.libs/%s.so conffile=%s/%s\n"
++			     "password required %s/../pam_permit/.libs/pam_permit.so\n"
++			     "session required %s/.libs/%s.so conffile=%s/%s\n"
++			     "session required %s/../pam_permit/.libs/pam_permit.so\n",
++			     cwd, MODULE_NAME, cwd, missing_file, cwd,
++			     cwd, MODULE_NAME, cwd, missing_file, cwd,
++			     cwd, MODULE_NAME, cwd, missing_file, cwd,
++			     cwd, MODULE_NAME, cwd, missing_file, cwd));
++	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_EQ(PAM_SUCCESS,
++		  pam_start_confdir(service_file, "", &conv, ".", &pamh));
++	ASSERT_NE(NULL, pamh);
++	ASSERT_EQ(PAM_SUCCESS, pam_authenticate(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_setcred(pamh, 0));
++	ASSERT_EQ(PAM_SERVICE_ERR, pam_acct_mgmt(pamh, 0));
++	ASSERT_EQ(PAM_SERVICE_ERR, pam_chauthtok(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_open_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_close_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_end(pamh, 0));
++	pamh = NULL;
++
++	/*
++	 * conffile= specifies an existing file,
++	 * envfile= specifies an empty file.
++	 */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "#%%PAM-1.0\n"
++			     "session required %s/.libs/%s.so"
++			     " conffile=%s/%s envfile=%s\n",
++			     cwd, MODULE_NAME,
++			     cwd, my_conf, "/dev/null"));
++	ASSERT_EQ(0, fclose(fp));
++
++	const char *env1[] = { "EDITOR=vim", "PAGER=more", NULL };
++	check_env(env1);
++
++	/*
++	 * conffile= specifies an empty file,
++	 * envfile= specifies an existing file.
++	 */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "#%%PAM-1.0\n"
++			     "session required %s/.libs/%s.so"
++			     " conffile=%s envfile=%s/%s\n",
++			     cwd, MODULE_NAME,
++			     "/dev/null", cwd, my_env));
++	ASSERT_EQ(0, fclose(fp));
++
++	const char *env2[] = { "test_value=foo", "test2_value=bar", NULL };
++	check_env(env2);
++
++	/* cleanup */
++	cleanup();
++	ASSERT_EQ(0, unlink(service_file));
++
++	return 0;
++}
+diff --git a/modules/pam_exec/pam_exec.c b/modules/pam_exec/pam_exec.c
+index 05dec167..aeb98cdc 100644
+--- a/modules/pam_exec/pam_exec.c
++++ b/modules/pam_exec/pam_exec.c
+@@ -48,6 +48,7 @@
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <signal.h>
+
+ #include <security/pam_modules.h>
+ #include <security/pam_modutil.h>
+@@ -105,6 +106,7 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+   FILE *stdout_file = NULL;
+   int retval;
+   const char *name;
++  struct sigaction newsa, oldsa;
+
+   if (argc < 1) {
+     pam_syslog (pamh, LOG_ERR,
+@@ -226,6 +228,13 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+     return PAM_SERVICE_ERR;
+   }
+
++  memset(&newsa, '\0', sizeof(newsa));
++  newsa.sa_handler = SIG_DFL;
++  if (sigaction(SIGCHLD, &newsa, &oldsa) == -1) {
++    pam_syslog(pamh, LOG_ERR, "failed to reset SIGCHLD handler: %m");
++    return PAM_SYSTEM_ERR;
++  }
++
+   pid = fork();
+   if (pid == -1)
+     return PAM_SYSTEM_ERR;
+@@ -263,6 +272,7 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+
+       while ((rc = waitpid (pid, &status, 0)) == -1 &&
+ 	     errno == EINTR);
++      sigaction(SIGCHLD, &oldsa, NULL);   /* restore old signal handler */
+       if (rc == (pid_t)-1)
+ 	{
+ 	  pam_syslog (pamh, LOG_ERR, "waitpid returns with -1: %m");
+@@ -305,9 +315,9 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+     }
+   else /* child */
+     {
+-      char **arggv;
++      const char **arggv;
+       int i;
+-      char **envlist, **tmp;
++      char **envlist;
+       int envlen, nitems;
+       char *envstr;
+       enum pam_modutil_redirect_fd redirect_stdin =
+@@ -418,7 +428,7 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+ 	_exit (ENOMEM);
+
+       for (i = 0; i < (argc - optargc); i++)
+-	arggv[i] = strdup(argv[i+optargc]);
++        arggv[i] = argv[i+optargc];
+       arggv[i] = NULL;
+
+       /*
+@@ -430,14 +440,12 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+         /* nothing */ ;
+       nitems = PAM_ARRAY_SIZE(env_items);
+       /* + 2 because of PAM_TYPE and NULL entry */
+-      tmp = realloc(envlist, (envlen + nitems + 2) * sizeof(*envlist));
+-      if (tmp == NULL)
++      envlist = realloc(envlist, (envlen + nitems + 2) * sizeof(*envlist));
++      if (envlist == NULL)
+       {
+-        free(envlist);
+         pam_syslog (pamh, LOG_CRIT, "realloc environment failed: %m");
+         _exit (ENOMEM);
+       }
+-      envlist = tmp;
+       for (i = 0; i < nitems; ++i)
+       {
+         const void *item;
+@@ -446,7 +454,6 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+           continue;
+         if (asprintf(&envstr, "%s=%s", env_items[i].name, (const char *)item) < 0)
+         {
+-          free(envlist);
+           pam_syslog (pamh, LOG_CRIT, "prepare environment failed: %m");
+           _exit (ENOMEM);
+         }
+@@ -456,7 +463,6 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+
+       if (asprintf(&envstr, "PAM_TYPE=%s", pam_type) < 0)
+         {
+-          free(envlist);
+           pam_syslog (pamh, LOG_CRIT, "prepare environment failed: %m");
+           _exit (ENOMEM);
+         }
+@@ -466,10 +472,11 @@ call_exec (const char *pam_type, pam_handle_t *pamh,
+       if (debug)
+ 	pam_syslog (pamh, LOG_DEBUG, "Calling %s ...", arggv[0]);
+
+-      execve (arggv[0], arggv, envlist);
++      DIAG_PUSH_IGNORE_CAST_QUAL;
++      execve (arggv[0], (char **) arggv, envlist);
++      DIAG_POP_IGNORE_CAST_QUAL;
+       i = errno;
+       pam_syslog (pamh, LOG_ERR, "execve(%s,...) failed: %m", arggv[0]);
+-      free(envlist);
+       _exit (i);
+     }
+   return PAM_SYSTEM_ERR; /* will never be reached. */
 diff --git a/modules/pam_faillock/Makefile.am b/modules/pam_faillock/Makefile.am
-index 44a49660..16d9f8bc 100644
+index 44a49660..ca73bd05 100644
 --- a/modules/pam_faillock/Makefile.am
 +++ b/modules/pam_faillock/Makefile.am
-@@ -15,7 +15,7 @@ endif
+@@ -15,12 +15,12 @@ endif
  XMLS = README.xml pam_faillock.8.xml faillock.8.xml faillock.conf.5.xml
- 
+
  dist_check_SCRIPTS = tst-pam_faillock
 -TESTS = $(dist_check_SCRIPTS)
 +TESTS = $(dist_check_SCRIPTS) $(check_PROGRAMS)
- 
+
  securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
+
+-noinst_HEADERS = faillock.h
++noinst_HEADERS = faillock.h faillock_config.h
+
+ AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
+ 	$(WARN_CFLAGS)
 @@ -33,6 +33,9 @@ if HAVE_VERSIONING
    pam_faillock_la_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
  endif
- 
+
 +check_PROGRAMS = tst-pam_faillock-retval
 +tst_pam_faillock_retval_LDADD = $(top_builddir)/libpam/libpam.la
 +
  faillock_LDFLAGS = @EXE_LDFLAGS@
  faillock_LDADD = $(top_builddir)/libpam/libpam.la $(LIBAUDIT)
- 
+
+@@ -41,8 +44,8 @@ dist_secureconf_DATA = faillock.conf
+ securelib_LTLIBRARIES = pam_faillock.la
+ sbin_PROGRAMS = faillock
+
+-pam_faillock_la_SOURCES = pam_faillock.c faillock.c
+-faillock_SOURCES = main.c faillock.c
++pam_faillock_la_SOURCES = pam_faillock.c faillock.c faillock_config.c
++faillock_SOURCES = main.c faillock.c faillock_config.c
+
+ if ENABLE_REGENERATE_MAN
+ dist_noinst_DATA = README
+diff --git a/modules/pam_faillock/faillock.8.xml b/modules/pam_faillock/faillock.8.xml
+index 6c20593c..81d2107c 100644
+--- a/modules/pam_faillock/faillock.8.xml
++++ b/modules/pam_faillock/faillock.8.xml
+@@ -55,14 +55,31 @@
+
+     <title>OPTIONS</title>
+          <variablelist>
++            <varlistentry>
++              <term>
++                <option>--conf <replaceable>/path/to/config-file</replaceable></option>
++              </term>
++              <listitem>
++                <para>
++                  The file where the configuration is located. The default is
++                  <filename>/etc/security/faillock.conf</filename>.
++                </para>
++              </listitem>
++            </varlistentry>
+             <varlistentry>
+               <term>
+                 <option>--dir <replaceable>/path/to/tally-directory</replaceable></option>
+               </term>
+               <listitem>
+                 <para>
+-                  The directory where the user files with the failure records are kept. The
+-                  default is <filename>/var/run/faillock</filename>.
++                  The directory where the user files with the failure records are kept.
++                </para>
++                <para>
++                  The priority to set this option is to use the value provided
++                  from the command line. If this isn't provided, then the value
++                  from the configuration file is used. Finally, if neither of
++                  them has been provided, then
++                  <filename>/var/run/faillock</filename> is used.
+                 </para>
+               </listitem>
+             </varlistentry>
+diff --git a/modules/pam_faillock/faillock.conf.5.xml b/modules/pam_faillock/faillock.conf.5.xml
+index 04a84107..8faa5915 100644
+--- a/modules/pam_faillock/faillock.conf.5.xml
++++ b/modules/pam_faillock/faillock.conf.5.xml
+@@ -44,6 +44,10 @@
+                   The directory where the user files with the failure records are kept. The
+                   default is <filename>/var/run/faillock</filename>.
+                 </para>
++                <para>
++                  Note: These files will disappear after reboot on systems configured with
++                  directory <filename>/var/run/faillock</filename> mounted on virtual memory.
++                </para>
+               </listitem>
+             </varlistentry>
+             <varlistentry>
 diff --git a/modules/pam_faillock/faillock.h b/modules/pam_faillock/faillock.h
-index b22a9dfb..c3f157ef 100644
+index b22a9dfb..0ea0ffba 100644
 --- a/modules/pam_faillock/faillock.h
 +++ b/modules/pam_faillock/faillock.h
-@@ -67,7 +67,10 @@ struct tally_data {
+@@ -67,7 +67,6 @@ struct tally_data {
  };
- 
+
  #define FAILLOCK_DEFAULT_TALLYDIR "/var/run/faillock"
 -#define FAILLOCK_DEFAULT_CONF "/etc/security/faillock.conf"
+
+ int open_tally(const char *dir, const char *user, uid_t uid, int create);
+ int read_tally(int fd, struct tally_data *tallies);
+diff --git a/modules/pam_faillock/faillock_config.c b/modules/pam_faillock/faillock_config.c
+new file mode 100644
+index 00000000..0d14aad1
+--- /dev/null
++++ b/modules/pam_faillock/faillock_config.c
+@@ -0,0 +1,266 @@
++/*
++ * Copyright (c) 2022 Tomas Mraz <tm@t8m.info>
++ * Copyright (c) 2022 Iker Pedrosa <ipedrosa@redhat.com>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, and the entire permission notice in its entirety,
++ *    including the disclaimer of warranties.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The name of the author may not be used to endorse or promote
++ *    products derived from this software without specific prior
++ *    written permission.
++ *
++ * ALTERNATIVELY, this product may be distributed under the terms of
++ * the GNU Public License, in which case the provisions of the GPL are
++ * required INSTEAD OF the above restrictions.  (This clause is
++ * necessary due to a potential bad interaction between the GPL and
++ * the restrictions contained in a BSD-style copyright.)
++ *
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
++ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
++ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
++ * OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#include "config.h"
++
++#include <ctype.h>
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <syslog.h>
++
++#include <security/pam_modules.h>
++
++#include "faillock_config.h"
++#include "faillock.h"
++
 +#define FAILLOCK_DEFAULT_CONF SCONFIGDIR "/faillock.conf"
 +#ifdef VENDOR_SCONFIGDIR
 +#define VENDOR_FAILLOCK_DEFAULT_CONF VENDOR_SCONFIGDIR "/faillock.conf"
 +#endif
- 
- int open_tally(const char *dir, const char *user, uid_t uid, int create);
- int read_tally(int fd, struct tally_data *tallies);
++
++static void PAM_FORMAT((printf, 3, 4)) PAM_NONNULL((3))
++config_log(const pam_handle_t *pamh, int priority, const char *fmt, ...)
++{
++	va_list args;
++
++	va_start(args, fmt);
++	if (pamh) {
++		pam_vsyslog(pamh, priority, fmt, args);
++	} else {
++		char *buf = NULL;
++
++		if (vasprintf(&buf, fmt, args) < 0) {
++			fprintf(stderr, "vasprintf: %m");
++			va_end(args);
++			return;
++		}
++		fprintf(stderr, "%s\n", buf);
++		free(buf);
++	}
++	va_end(args);
++}
++
++/* parse a single configuration file */
++int
++read_config_file(pam_handle_t *pamh, struct options *opts, const char *cfgfile)
++{
++	char linebuf[FAILLOCK_CONF_MAX_LINELEN+1];
++	const char *fname = (cfgfile != NULL) ? cfgfile : FAILLOCK_DEFAULT_CONF;
++	FILE *f = fopen(fname, "r");
++
++#ifdef VENDOR_FAILLOCK_DEFAULT_CONF
++	if (f == NULL && errno == ENOENT && cfgfile == NULL) {
++		/*
++		 * If the default configuration file in /etc does not exist,
++		 * try the vendor configuration file as fallback.
++		 */
++		f = fopen(VENDOR_FAILLOCK_DEFAULT_CONF, "r");
++	}
++#endif /* VENDOR_FAILLOCK_DEFAULT_CONF */
++
++	if (f == NULL) {
++		/* ignore non-existent default config file */
++		if (errno == ENOENT && cfgfile == NULL)
++			return PAM_SUCCESS;
++		return PAM_SERVICE_ERR;
++	}
++
++	while (fgets(linebuf, sizeof(linebuf), f) != NULL) {
++		size_t len;
++		char *ptr;
++		char *name;
++		int eq;
++
++		len = strlen(linebuf);
++		/* len cannot be 0 unless there is a bug in fgets */
++		if (len && linebuf[len - 1] != '\n' && !feof(f)) {
++			(void) fclose(f);
++			return PAM_SERVICE_ERR;
++		}
++
++		if ((ptr=strchr(linebuf, '#')) != NULL) {
++			*ptr = '\0';
++		} else {
++			ptr = linebuf + len;
++		}
++
++		/* drop terminating whitespace including the \n */
++		while (ptr > linebuf) {
++			if (!isspace(*(ptr-1))) {
++				*ptr = '\0';
++				break;
++			}
++			--ptr;
++		}
++
++		/* skip initial whitespace */
++		for (ptr = linebuf; isspace(*ptr); ptr++);
++		if (*ptr == '\0')
++			continue;
++
++		/* grab the key name */
++		eq = 0;
++		name = ptr;
++		while (*ptr != '\0') {
++			if (isspace(*ptr) || *ptr == '=') {
++				eq = *ptr == '=';
++				*ptr = '\0';
++				++ptr;
++				break;
++			}
++			++ptr;
++		}
++
++		/* grab the key value */
++		while (*ptr != '\0') {
++			if (*ptr != '=' || eq) {
++				if (!isspace(*ptr)) {
++					break;
++				}
++			} else {
++				eq = 1;
++			}
++			++ptr;
++		}
++
++		/* set the key:value pair on opts */
++		set_conf_opt(pamh, opts, name, ptr);
++	}
++
++	(void)fclose(f);
++	return PAM_SUCCESS;
++}
++
++void
++set_conf_opt(pam_handle_t *pamh, struct options *opts, const char *name,
++			 const char *value)
++{
++	if (strcmp(name, "dir") == 0) {
++		if (value[0] != '/') {
++			config_log(pamh, LOG_ERR,
++					"Tally directory is not absolute path (%s); keeping value",
++					value);
++		} else {
++			free(opts->dir);
++			opts->dir = strdup(value);
++			if (opts->dir == NULL) {
++				opts->fatal_error = 1;
++				config_log(pamh, LOG_CRIT, "Error allocating memory: %m");
++			}
++		}
++	}
++	else if (strcmp(name, "deny") == 0) {
++		if (sscanf(value, "%hu", &opts->deny) != 1) {
++			config_log(pamh, LOG_ERR,
++				"Bad number supplied for deny argument");
++		}
++	}
++	else if (strcmp(name, "fail_interval") == 0) {
++		unsigned int temp;
++		if (sscanf(value, "%u", &temp) != 1 ||
++			temp > MAX_TIME_INTERVAL) {
++			config_log(pamh, LOG_ERR,
++				"Bad number supplied for fail_interval argument");
++		} else {
++			opts->fail_interval = temp;
++		}
++	}
++	else if (strcmp(name, "unlock_time") == 0) {
++		unsigned int temp;
++
++		if (strcmp(value, "never") == 0) {
++			opts->unlock_time = 0;
++		}
++		else if (sscanf(value, "%u", &temp) != 1 ||
++			temp > MAX_TIME_INTERVAL) {
++			config_log(pamh, LOG_ERR,
++				"Bad number supplied for unlock_time argument");
++		}
++		else {
++			opts->unlock_time = temp;
++		}
++	}
++	else if (strcmp(name, "root_unlock_time") == 0) {
++		unsigned int temp;
++
++		if (strcmp(value, "never") == 0) {
++			opts->root_unlock_time = 0;
++		}
++		else if (sscanf(value, "%u", &temp) != 1 ||
++			temp > MAX_TIME_INTERVAL) {
++			config_log(pamh, LOG_ERR,
++				"Bad number supplied for root_unlock_time argument");
++		} else {
++			opts->root_unlock_time = temp;
++		}
++	}
++	else if (strcmp(name, "admin_group") == 0) {
++		free(opts->admin_group);
++		opts->admin_group = strdup(value);
++		if (opts->admin_group == NULL) {
++			opts->fatal_error = 1;
++			config_log(pamh, LOG_CRIT, "Error allocating memory: %m");
++		}
++	}
++	else if (strcmp(name, "even_deny_root") == 0) {
++		opts->flags |= FAILLOCK_FLAG_DENY_ROOT;
++	}
++	else if (strcmp(name, "audit") == 0) {
++		opts->flags |= FAILLOCK_FLAG_AUDIT;
++	}
++	else if (strcmp(name, "silent") == 0) {
++		opts->flags |= FAILLOCK_FLAG_SILENT;
++	}
++	else if (strcmp(name, "no_log_info") == 0) {
++		opts->flags |= FAILLOCK_FLAG_NO_LOG_INFO;
++	}
++	else if (strcmp(name, "local_users_only") == 0) {
++		opts->flags |= FAILLOCK_FLAG_LOCAL_ONLY;
++	}
++	else if (strcmp(name, "nodelay") == 0) {
++		opts->flags |= FAILLOCK_FLAG_NO_DELAY;
++	}
++	else {
++		config_log(pamh, LOG_ERR, "Unknown option: %s", name);
++	}
++}
++
++const char *get_tally_dir(const struct options *opts)
++{
++	return (opts->dir != NULL) ? opts->dir : FAILLOCK_DEFAULT_TALLYDIR;
++}
+diff --git a/modules/pam_faillock/faillock_config.h b/modules/pam_faillock/faillock_config.h
+new file mode 100644
+index 00000000..04bc699b
+--- /dev/null
++++ b/modules/pam_faillock/faillock_config.h
+@@ -0,0 +1,90 @@
++/*
++ * Copyright (c) 2022 Tomas Mraz <tm@t8m.info>
++ * Copyright (c) 2022 Iker Pedrosa <ipedrosa@redhat.com>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, and the entire permission notice in its entirety,
++ *    including the disclaimer of warranties.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The name of the author may not be used to endorse or promote
++ *    products derived from this software without specific prior
++ *    written permission.
++ *
++ * ALTERNATIVELY, this product may be distributed under the terms of
++ * the GNU Public License, in which case the provisions of the GPL are
++ * required INSTEAD OF the above restrictions.  (This clause is
++ * necessary due to a potential bad interaction between the GPL and
++ * the restrictions contained in a BSD-style copyright.)
++ *
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
++ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
++ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
++ * OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++/*
++ * faillock_config.h - load configuration options from file
++ *
++ */
++
++#ifndef _FAILLOCK_CONFIG_H
++#define _FAILLOCK_CONFIG_H
++
++#include <limits.h>
++#include <stdint.h>
++#include <sys/types.h>
++
++#include <security/pam_ext.h>
++
++#define FAILLOCK_FLAG_DENY_ROOT		0x1
++#define FAILLOCK_FLAG_AUDIT			0x2
++#define FAILLOCK_FLAG_SILENT		0x4
++#define FAILLOCK_FLAG_NO_LOG_INFO	0x8
++#define FAILLOCK_FLAG_UNLOCKED		0x10
++#define FAILLOCK_FLAG_LOCAL_ONLY	0x20
++#define FAILLOCK_FLAG_NO_DELAY		0x40
++
++#define FAILLOCK_CONF_MAX_LINELEN 	1023
++#define MAX_TIME_INTERVAL			604800 /* 7 days */
++
++struct options {
++	unsigned int action;
++	unsigned int flags;
++	unsigned short deny;
++	unsigned int fail_interval;
++	unsigned int unlock_time;
++	unsigned int root_unlock_time;
++	char *dir;
++	const char *user;
++	char *admin_group;
++	int failures;
++	uint64_t latest_time;
++	uid_t uid;
++	int is_admin;
++	uint64_t now;
++	int fatal_error;
++
++	unsigned int reset;
++	const char *progname;
++	int legacy_output; /* show failure info in pam_tally2 style */
++};
++
++int read_config_file(pam_handle_t *pamh, struct options *opts,
++					 const char *cfgfile);
++void set_conf_opt(pam_handle_t *pamh, struct options *opts, const char *name,
++		  const char *value);
++const char *get_tally_dir(const struct options *opts);
++
++#endif /* _FAILLOCK_CONFIG_H */
 diff --git a/modules/pam_faillock/main.c b/modules/pam_faillock/main.c
-index f62e1bb2..ea6329ca 100644
+index f62e1bb2..136be834 100644
 --- a/modules/pam_faillock/main.c
 +++ b/modules/pam_faillock/main.c
-@@ -174,6 +174,11 @@ do_user(struct options *opts, const char *user)
- 			time_t when = tallies.records[i].time;
- 
- 			tm = localtime(&when);
-+			if(tm == NULL) {
-+				fprintf(stderr, "%s: Invalid timestamp in the tally record\n",
-+					opts->progname);
-+				continue;
+@@ -51,32 +51,40 @@
+ #define AUDIT_NO_ID     ((unsigned int) -1)
+ #endif
+
++#include "pam_inline.h"
+ #include "faillock.h"
+-
+-struct options {
+-	unsigned int reset;
+-	const char *dir;
+-	const char *user;
+-	const char *progname;
+-};
++#include "faillock_config.h"
+
+ static int
+ args_parse(int argc, char **argv, struct options *opts)
+ {
+ 	int i;
++	int rv;
++	const char *dir = NULL;
++	const char *conf = NULL;
++
+ 	memset(opts, 0, sizeof(*opts));
+
+-	opts->dir = FAILLOCK_DEFAULT_TALLYDIR;
+ 	opts->progname = argv[0];
+
+ 	for (i = 1; i < argc; ++i) {
+-		if (strcmp(argv[i], "--dir") == 0) {
++		if (strcmp(argv[i], "--conf") == 0) {
++			++i;
++			if (i >= argc || strlen(argv[i]) == 0) {
++				fprintf(stderr, "%s: No configuration file supplied.\n",
++						argv[0]);
++				return -1;
 +			}
- 			strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M:%S", tm);
- 			printf("%-19s %-5s %-52.52s %s\n", timebuf,
- 				status & TALLY_STATUS_RHOST ? "RHOST" : (status & TALLY_STATUS_TTY ? "TTY" : "SVC"),
++			conf = argv[i];
++		}
++		else if (strcmp(argv[i], "--dir") == 0) {
+ 			++i;
+ 			if (i >= argc || strlen(argv[i]) == 0) {
+-				fprintf(stderr, "%s: No directory supplied.\n", argv[0]);
++				fprintf(stderr, "%s: No records directory supplied.\n",
++						argv[0]);
+ 				return -1;
+ 			}
+-			opts->dir = argv[i];
++			dir = argv[i];
+ 		}
+ 		else if (strcmp(argv[i], "--user") == 0) {
+ 			++i;
+@@ -89,19 +97,113 @@ args_parse(int argc, char **argv, struct options *opts)
+ 		else if (strcmp(argv[i], "--reset") == 0) {
+ 			opts->reset = 1;
+ 		}
++		else if (!strcmp(argv[i], "--legacy-output")) {
++			opts->legacy_output = 1;
++		}
+ 		else {
+ 			fprintf(stderr, "%s: Unknown option: %s\n", argv[0], argv[i]);
+ 			return -1;
+ 		}
+ 	}
++
++	if ((rv = read_config_file(NULL, opts, conf)) != PAM_SUCCESS) {
++		fprintf(stderr, "Configuration file missing or broken");
++		return rv;
++	}
++
++	if (dir != NULL) {
++		free(opts->dir);
++		opts->dir = strdup(dir);
++		if (opts->dir == NULL) {
++			fprintf(stderr, "Error allocating memory: %m");
++			return -1;
++		}
++	}
++
+ 	return 0;
+ }
+
+ static void
+ usage(const char *progname)
+ {
+-	fprintf(stderr, _("Usage: %s [--dir /path/to/tally-directory] [--user username] [--reset]\n"),
+-		progname);
++	fprintf(stderr,
++		_("Usage: %s [--dir /path/to/tally-directory]"
++		  " [--user username] [--reset] [--legacy-output]\n"), progname);
++
++}
++
++static int
++get_local_time(time_t when, char *timebuf, size_t timebuf_size)
++{
++	struct tm *tm;
++
++	tm = localtime(&when);
++	if (tm == NULL) {
++		return -1;
++	}
++	strftime(timebuf, timebuf_size, "%Y-%m-%d %H:%M:%S", tm);
++	return 0;
++}
++
++static void
++print_in_new_format(struct options *opts, const struct tally_data *tallies, const char *user)
++{
++	uint32_t i;
++
++	printf("%s:\n", user);
++	printf("%-19s %-5s %-48s %-5s\n", "When", "Type", "Source", "Valid");
++
++	for (i = 0; i < tallies->count; i++) {
++		uint16_t status;
++		char timebuf[80];
++
++		if (get_local_time(tallies->records[i].time, timebuf, sizeof(timebuf)) != 0) {
++			fprintf(stderr, "%s: Invalid timestamp in the tally record\n",
++				opts->progname);
++			continue;
++		}
++
++		status = tallies->records[i].status;
++
++		printf("%-19s %-5s %-52.52s %s\n", timebuf,
++			status & TALLY_STATUS_RHOST ? "RHOST" : (status & TALLY_STATUS_TTY ? "TTY" : "SVC"),
++			tallies->records[i].source, status & TALLY_STATUS_VALID ? "V":"I");
++	}
++}
++
++static void
++print_in_legacy_format(struct options *opts, const struct tally_data *tallies, const char *user)
++{
++	uint32_t tally_count;
++	static uint32_t pr_once;
++
++	if (pr_once == 0) {
++		printf(_("Login           Failures    Latest failure         From\n"));
++		pr_once = 1;
++	}
++
++	printf("%-15.15s ", user);
++
++	tally_count = tallies->count;
++
++	if (tally_count > 0) {
++		uint32_t i;
++		char timebuf[80];
++
++		i = tally_count - 1;
++
++		if (get_local_time(tallies->records[i].time, timebuf, sizeof(timebuf)) != 0) {
++			fprintf(stderr, "%s: Invalid timestamp in the tally record\n",
++				opts->progname);
++			return;
++		}
++
++		printf("%5u %25s    %s\n",
++			tally_count, timebuf, tallies->records[i].source);
++	}
++	else {
++		printf("%5u\n", tally_count);
++	}
+ }
+
+ static int
+@@ -111,10 +213,15 @@ do_user(struct options *opts, const char *user)
+ 	int rv;
+ 	struct tally_data tallies;
+ 	struct passwd *pwd;
++	const char *dir = get_tally_dir(opts);
+
+ 	pwd = getpwnam(user);
++	if (pwd == NULL) {
++	    fprintf(stderr, "%s: Error no such user: %s\n", opts->progname, user);
++	    return 1;
++	}
+
+-	fd = open_tally(opts->dir, user, pwd != NULL ? pwd->pw_uid : 0, 0);
++	fd = open_tally(dir, user, pwd->pw_uid, 1);
+
+ 	if (fd == -1) {
+ 		if (errno == ENOENT) {
+@@ -153,8 +260,6 @@ do_user(struct options *opts, const char *user)
+ 		}
+ 	}
+ 	else {
+-		unsigned int i;
+-
+ 		memset(&tallies, 0, sizeof(tallies));
+ 		if (read_tally(fd, &tallies) == -1) {
+ 			fprintf(stderr, "%s: Error reading the tally file for %s:",
+@@ -164,21 +269,13 @@ do_user(struct options *opts, const char *user)
+ 			return 5;
+ 		}
+
+-		printf("%s:\n", user);
+-		printf("%-19s %-5s %-48s %-5s\n", "When", "Type", "Source", "Valid");
+-
+-		for (i = 0; i < tallies.count; i++) {
+-			struct tm *tm;
+-			char timebuf[80];
+-			uint16_t status = tallies.records[i].status;
+-			time_t when = tallies.records[i].time;
+-
+-			tm = localtime(&when);
+-			strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M:%S", tm);
+-			printf("%-19s %-5s %-52.52s %s\n", timebuf,
+-				status & TALLY_STATUS_RHOST ? "RHOST" : (status & TALLY_STATUS_TTY ? "TTY" : "SVC"),
+-				tallies.records[i].source, status & TALLY_STATUS_VALID ? "V":"I");
++		if (opts->legacy_output == 0) {
++			print_in_new_format(opts, &tallies, user);
+ 		}
++		else {
++			print_in_legacy_format(opts, &tallies, user);
++		}
++
+ 		free(tallies.records);
+ 	}
+ 	close(fd);
+@@ -190,8 +287,9 @@ do_allusers(struct options *opts)
+ {
+ 	struct dirent **userlist;
+ 	int rv, i;
++	const char *dir = get_tally_dir(opts);
+
+-	rv = scandir(opts->dir, &userlist, NULL, alphasort);
++	rv = scandir(dir, &userlist, NULL, alphasort);
+ 	if (rv < 0) {
+ 		fprintf(stderr, "%s: Error reading tally directory: %m\n", opts->progname);
+ 		return 2;
 diff --git a/modules/pam_faillock/pam_faillock.8.xml b/modules/pam_faillock/pam_faillock.8.xml
-index 58c16442..79bcbbd0 100644
+index 58c16442..b7b7b0db 100644
 --- a/modules/pam_faillock/pam_faillock.8.xml
 +++ b/modules/pam_faillock/pam_faillock.8.xml
 @@ -134,10 +134,17 @@
@@ -424,7 +2710,20 @@ index 58c16442..79bcbbd0 100644
                 </listitem>
              </varlistentry>
          </variablelist>
-@@ -328,6 +335,15 @@ session  required       pam_selinux.so open
+@@ -320,6 +327,12 @@ session  required       pam_selinux.so open
+         <term><filename>/var/run/faillock/*</filename></term>
+         <listitem>
+           <para>the files logging the authentication failures for users</para>
++          <para>
++            Note: These files will disappear after reboot on systems configured with
++            directory <filename>/var/run/faillock</filename> mounted on virtual memory.
++            For persistent storage use the option <emphasis>dir=</emphasis> in
++            file <filename>/etc/security/faillock.conf</filename>.
++          </para>
+         </listitem>
+       </varlistentry>
+       <varlistentry>
+@@ -328,6 +341,15 @@ session  required       pam_selinux.so open
            <para>the config file for pam_faillock options</para>
          </listitem>
        </varlistentry>
@@ -439,27 +2738,327 @@ index 58c16442..79bcbbd0 100644
 +      </varlistentry>
      </variablelist>
    </refsect1>
- 
+
 diff --git a/modules/pam_faillock/pam_faillock.c b/modules/pam_faillock/pam_faillock.c
-index 8328fbae..932d4281 100644
+index 8328fbae..ca1c7035 100644
 --- a/modules/pam_faillock/pam_faillock.c
 +++ b/modules/pam_faillock/pam_faillock.c
-@@ -192,6 +192,15 @@ read_config_file(pam_handle_t *pamh, struct options *opts, const char *cfgfile)
- 	char linebuf[FAILLOCK_CONF_MAX_LINELEN+1];
- 
- 	f = fopen(cfgfile, "r");
-+#ifdef VENDOR_FAILLOCK_DEFAULT_CONF
-+	if (f == NULL && errno == ENOENT && cfgfile == default_faillock_conf) {
-+	  /*
-+	   * If the default configuration file in /etc does not exist,
-+	   * try the vendor configuration file as fallback.
-+	   */
-+	  f = fopen(VENDOR_FAILLOCK_DEFAULT_CONF, "r");
-+	}
-+#endif
- 	if (f == NULL) {
- 		/* ignore non-existent default config file */
- 		if (errno == ENOENT && cfgfile == default_faillock_conf)
+@@ -38,7 +38,6 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <stdint.h>
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <time.h>
+@@ -56,55 +55,12 @@
+
+ #include "pam_inline.h"
+ #include "faillock.h"
++#include "faillock_config.h"
+
+ #define FAILLOCK_ACTION_PREAUTH  0
+ #define FAILLOCK_ACTION_AUTHSUCC 1
+ #define FAILLOCK_ACTION_AUTHFAIL 2
+
+-#define FAILLOCK_FLAG_DENY_ROOT		0x1
+-#define FAILLOCK_FLAG_AUDIT		0x2
+-#define FAILLOCK_FLAG_SILENT		0x4
+-#define FAILLOCK_FLAG_NO_LOG_INFO	0x8
+-#define FAILLOCK_FLAG_UNLOCKED		0x10
+-#define FAILLOCK_FLAG_LOCAL_ONLY	0x20
+-#define FAILLOCK_FLAG_NO_DELAY		0x40
+-
+-#define MAX_TIME_INTERVAL 604800 /* 7 days */
+-#define FAILLOCK_CONF_MAX_LINELEN 1023
+-
+-static const char default_faillock_conf[] = FAILLOCK_DEFAULT_CONF;
+-
+-struct options {
+-	unsigned int action;
+-	unsigned int flags;
+-	unsigned short deny;
+-	unsigned int fail_interval;
+-	unsigned int unlock_time;
+-	unsigned int root_unlock_time;
+-	char *dir;
+-	const char *user;
+-	char *admin_group;
+-	int failures;
+-	uint64_t latest_time;
+-	uid_t uid;
+-	int is_admin;
+-	uint64_t now;
+-	int fatal_error;
+-};
+-
+-static int read_config_file(
+-	pam_handle_t *pamh,
+-	struct options *opts,
+-	const char *cfgfile
+-);
+-
+-static void set_conf_opt(
+-	pam_handle_t *pamh,
+-	struct options *opts,
+-	const char *name,
+-	const char *value
+-);
+-
+ static int
+ args_parse(pam_handle_t *pamh, int argc, const char **argv,
+ 		int flags, struct options *opts)
+@@ -112,11 +68,10 @@ args_parse(pam_handle_t *pamh, int argc, const char **argv,
+ 	int i;
+ 	int config_arg_index = -1;
+ 	int rv;
+-	const char *conf = default_faillock_conf;
++	const char *conf = NULL;
+
+ 	memset(opts, 0, sizeof(*opts));
+
+-	opts->dir = strdup(FAILLOCK_DEFAULT_TALLYDIR);
+ 	opts->deny = 3;
+ 	opts->fail_interval = 900;
+ 	opts->unlock_time = 600;
+@@ -174,185 +129,11 @@ args_parse(pam_handle_t *pamh, int argc, const char **argv,
+ 	if (flags & PAM_SILENT)
+ 		opts->flags |= FAILLOCK_FLAG_SILENT;
+
+-	if (opts->dir == NULL) {
+-		pam_syslog(pamh, LOG_CRIT, "Error allocating memory: %m");
+-		opts->fatal_error = 1;
+-	}
+-
+ 	if (opts->fatal_error)
+ 		return PAM_BUF_ERR;
+ 	return PAM_SUCCESS;
+ }
+
+-/* parse a single configuration file */
+-static int
+-read_config_file(pam_handle_t *pamh, struct options *opts, const char *cfgfile)
+-{
+-	FILE *f;
+-	char linebuf[FAILLOCK_CONF_MAX_LINELEN+1];
+-
+-	f = fopen(cfgfile, "r");
+-	if (f == NULL) {
+-		/* ignore non-existent default config file */
+-		if (errno == ENOENT && cfgfile == default_faillock_conf)
+-			return PAM_SUCCESS;
+-		return PAM_SERVICE_ERR;
+-	}
+-
+-	while (fgets(linebuf, sizeof(linebuf), f) != NULL) {
+-		size_t len;
+-		char *ptr;
+-		char *name;
+-		int eq;
+-
+-		len = strlen(linebuf);
+-		/* len cannot be 0 unless there is a bug in fgets */
+-		if (len && linebuf[len - 1] != '\n' && !feof(f)) {
+-			(void) fclose(f);
+-			return PAM_SERVICE_ERR;
+-		}
+-
+-		if ((ptr=strchr(linebuf, '#')) != NULL) {
+-			*ptr = '\0';
+-		} else {
+-			ptr = linebuf + len;
+-		}
+-
+-		/* drop terminating whitespace including the \n */
+-		while (ptr > linebuf) {
+-			if (!isspace(*(ptr-1))) {
+-				*ptr = '\0';
+-				break;
+-			}
+-			--ptr;
+-		}
+-
+-		/* skip initial whitespace */
+-		for (ptr = linebuf; isspace(*ptr); ptr++);
+-		if (*ptr == '\0')
+-			continue;
+-
+-		/* grab the key name */
+-		eq = 0;
+-		name = ptr;
+-		while (*ptr != '\0') {
+-			if (isspace(*ptr) || *ptr == '=') {
+-				eq = *ptr == '=';
+-				*ptr = '\0';
+-				++ptr;
+-				break;
+-			}
+-			++ptr;
+-		}
+-
+-		/* grab the key value */
+-		while (*ptr != '\0') {
+-			if (*ptr != '=' || eq) {
+-				if (!isspace(*ptr)) {
+-					break;
+-				}
+-			} else {
+-				eq = 1;
+-			}
+-			++ptr;
+-		}
+-
+-		/* set the key:value pair on opts */
+-		set_conf_opt(pamh, opts, name, ptr);
+-	}
+-
+-	(void)fclose(f);
+-	return PAM_SUCCESS;
+-}
+-
+-static void
+-set_conf_opt(pam_handle_t *pamh, struct options *opts, const char *name, const char *value)
+-{
+-	if (strcmp(name, "dir") == 0) {
+-		if (value[0] != '/') {
+-			pam_syslog(pamh, LOG_ERR,
+-				"Tally directory is not absolute path (%s); keeping default", value);
+-		} else {
+-			free(opts->dir);
+-			opts->dir = strdup(value);
+-		}
+-	}
+-	else if (strcmp(name, "deny") == 0) {
+-		if (sscanf(value, "%hu", &opts->deny) != 1) {
+-			pam_syslog(pamh, LOG_ERR,
+-				"Bad number supplied for deny argument");
+-		}
+-	}
+-	else if (strcmp(name, "fail_interval") == 0) {
+-		unsigned int temp;
+-		if (sscanf(value, "%u", &temp) != 1 ||
+-			temp > MAX_TIME_INTERVAL) {
+-			pam_syslog(pamh, LOG_ERR,
+-				"Bad number supplied for fail_interval argument");
+-		} else {
+-			opts->fail_interval = temp;
+-		}
+-	}
+-	else if (strcmp(name, "unlock_time") == 0) {
+-		unsigned int temp;
+-
+-		if (strcmp(value, "never") == 0) {
+-			opts->unlock_time = 0;
+-		}
+-		else if (sscanf(value, "%u", &temp) != 1 ||
+-			temp > MAX_TIME_INTERVAL) {
+-			pam_syslog(pamh, LOG_ERR,
+-				"Bad number supplied for unlock_time argument");
+-		}
+-		else {
+-			opts->unlock_time = temp;
+-		}
+-	}
+-	else if (strcmp(name, "root_unlock_time") == 0) {
+-		unsigned int temp;
+-
+-		if (strcmp(value, "never") == 0) {
+-			opts->root_unlock_time = 0;
+-		}
+-		else if (sscanf(value, "%u", &temp) != 1 ||
+-			temp > MAX_TIME_INTERVAL) {
+-			pam_syslog(pamh, LOG_ERR,
+-				"Bad number supplied for root_unlock_time argument");
+-		} else {
+-			opts->root_unlock_time = temp;
+-		}
+-	}
+-	else if (strcmp(name, "admin_group") == 0) {
+-		free(opts->admin_group);
+-		opts->admin_group = strdup(value);
+-		if (opts->admin_group == NULL) {
+-			opts->fatal_error = 1;
+-			pam_syslog(pamh, LOG_CRIT, "Error allocating memory: %m");
+-		}
+-	}
+-	else if (strcmp(name, "even_deny_root") == 0) {
+-		opts->flags |= FAILLOCK_FLAG_DENY_ROOT;
+-	}
+-	else if (strcmp(name, "audit") == 0) {
+-		opts->flags |= FAILLOCK_FLAG_AUDIT;
+-	}
+-	else if (strcmp(name, "silent") == 0) {
+-		opts->flags |= FAILLOCK_FLAG_SILENT;
+-	}
+-	else if (strcmp(name, "no_log_info") == 0) {
+-		opts->flags |= FAILLOCK_FLAG_NO_LOG_INFO;
+-	}
+-	else if (strcmp(name, "local_users_only") == 0) {
+-		opts->flags |= FAILLOCK_FLAG_LOCAL_ONLY;
+-	}
+-	else if (strcmp(name, "nodelay") == 0) {
+-		opts->flags |= FAILLOCK_FLAG_NO_DELAY;
+-	}
+-	else {
+-		pam_syslog(pamh, LOG_ERR, "Unknown option: %s", name);
+-	}
+-}
+-
+ static int
+ check_local_user (pam_handle_t *pamh, const char *user)
+ {
+@@ -406,10 +187,11 @@ check_tally(pam_handle_t *pamh, struct options *opts, struct tally_data *tallies
+ 	unsigned int i;
+ 	uint64_t latest_time;
+ 	int failures;
++	const char *dir = get_tally_dir(opts);
+
+ 	opts->now = time(NULL);
+
+-	tfd = open_tally(opts->dir, opts->user, opts->uid, 0);
++	tfd = open_tally(dir, opts->user, opts->uid, 0);
+
+ 	*fd = tfd;
+
+@@ -483,9 +265,10 @@ static void
+ reset_tally(pam_handle_t *pamh, struct options *opts, int *fd)
+ {
+ 	int rv;
++	const char *dir = get_tally_dir(opts);
+
+ 	if (*fd == -1) {
+-		*fd = open_tally(opts->dir, opts->user, opts->uid, 1);
++		*fd = open_tally(dir, opts->user, opts->uid, 1);
+ 	}
+ 	else {
+ 		while ((rv=ftruncate(*fd, 0)) == -1 && errno == EINTR);
+@@ -504,9 +287,10 @@ write_tally(pam_handle_t *pamh, struct options *opts, struct tally_data *tallies
+ 	unsigned int oldest;
+ 	uint64_t oldtime;
+ 	const void *source = NULL;
++	const char *dir = get_tally_dir(opts);
+
+ 	if (*fd == -1) {
+-		*fd = open_tally(opts->dir, opts->user, opts->uid, 1);
++		*fd = open_tally(dir, opts->user, opts->uid, 1);
+ 	}
+ 	if (*fd == -1) {
+ 		if (errno == EACCES) {
+@@ -590,9 +374,11 @@ write_tally(pam_handle_t *pamh, struct options *opts, struct tally_data *tallies
+ 		}
+ 		close(audit_fd);
+ #endif
+-		if (!(opts->flags & FAILLOCK_FLAG_NO_LOG_INFO)) {
+-			pam_syslog(pamh, LOG_INFO, "Consecutive login failures for user %s account temporarily locked",
+-				opts->user);
++		if (!(opts->flags & FAILLOCK_FLAG_NO_LOG_INFO) &&
++		    ((opts->flags & FAILLOCK_FLAG_DENY_ROOT) || (opts->uid != 0))) {
++			pam_syslog(pamh, LOG_INFO,
++				   "Consecutive login failures for user %s account temporarily locked",
++				   opts->user);
+ 		}
+ 	}
+
 diff --git a/modules/pam_faillock/tst-pam_faillock-retval.c b/modules/pam_faillock/tst-pam_faillock-retval.c
 new file mode 100644
 index 00000000..133026cb
@@ -591,7 +3190,7 @@ index a9a0a1ef..fd88b952 100644
 +++ b/modules/pam_group/Makefile.am
 @@ -18,7 +18,7 @@ securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
 -	-DPAM_GROUP_CONF=\"$(SCONFIGDIR)/group.conf\" $(WARN_CFLAGS)
 +	    $(WARN_CFLAGS)
@@ -622,23 +3221,23 @@ index d9a35ea6..c49358a1 100644
  #include <syslog.h>
  #include <string.h>
 +#include <errno.h>
- 
+
  #include <grp.h>
  #include <sys/types.h>
 @@ -23,6 +24,10 @@
  #include <fcntl.h>
  #include <netdb.h>
- 
+
 +#define PAM_GROUP_CONF		SCONFIGDIR "/group.conf"
 +#ifdef VENDOR_SCONFIGDIR
 +# define VENDOR_PAM_GROUP_CONF	VENDOR_SCONFIGDIR "/group.conf"
 +#endif
  #define PAM_GROUP_BUFLEN        1000
  #define FIELD_SEPARATOR         ';'   /* this is new as of .02 */
- 
+
 @@ -70,7 +75,8 @@ trim_spaces(char *buf, char *from)
  #define STATE_EOF      3 /* end of file or error */
- 
+
  static int
 -read_field(const pam_handle_t *pamh, int fd, char **buf, int *from, int *state)
 +read_field(const pam_handle_t *pamh, int fd, char **buf, int *from, int *state,
@@ -683,31 +3282,31 @@ index d9a35ea6..c49358a1 100644
 +	conf_filename = VENDOR_PAM_GROUP_CONF;
 +    }
 +#endif
- 
+
      /*
       * first we get the current list of groups - the application
 @@ -611,7 +629,7 @@ static int check_account(pam_handle_t *pamh, const char *service,
- 
+
  	/* here we get the service name field */
- 
+
 -	fd = read_field(pamh, fd, &buffer, &from, &state);
 +	fd = read_field(pamh, fd, &buffer, &from, &state, conf_filename);
  	if (!buffer || !buffer[0]) {
  	    /* empty line .. ? */
  	    continue;
 @@ -621,7 +639,7 @@ static int check_account(pam_handle_t *pamh, const char *service,
- 
+
  	if (state != STATE_FIELD) {
  	    pam_syslog(pamh, LOG_ERR,
 -		       "%s: malformed rule #%d", PAM_GROUP_CONF, count);
 +		       "%s: malformed rule #%d", conf_filename, count);
  	    continue;
  	}
- 
+
 @@ -630,10 +648,10 @@ static int check_account(pam_handle_t *pamh, const char *service,
- 
+
  	/* here we get the terminal name field */
- 
+
 -	fd = read_field(pamh, fd, &buffer, &from, &state);
 +	fd = read_field(pamh, fd, &buffer, &from, &state, conf_filename);
  	if (state != STATE_FIELD) {
@@ -718,9 +3317,9 @@ index d9a35ea6..c49358a1 100644
  	}
  	good &= logic_field(pamh,tty, buffer, count, is_same);
 @@ -641,10 +659,10 @@ static int check_account(pam_handle_t *pamh, const char *service,
- 
+
  	/* here we get the username field */
- 
+
 -	fd = read_field(pamh, fd, &buffer, &from, &state);
 +	fd = read_field(pamh, fd, &buffer, &from, &state, conf_filename);
  	if (state != STATE_FIELD) {
@@ -731,9 +3330,9 @@ index d9a35ea6..c49358a1 100644
  	}
  	/* If buffer starts with @, we are using netgroups */
 @@ -663,20 +681,20 @@ static int check_account(pam_handle_t *pamh, const char *service,
- 
+
  	/* here we get the time field */
- 
+
 -	fd = read_field(pamh, fd, &buffer, &from, &state);
 +	fd = read_field(pamh, fd, &buffer, &from, &state, conf_filename);
  	if (state != STATE_FIELD) {
@@ -742,10 +3341,10 @@ index d9a35ea6..c49358a1 100644
 +		       "%s: malformed rule #%d", conf_filename, count);
  	    continue;
  	}
- 
+
  	good &= logic_field(pamh,&here_and_now, buffer, count, check_time);
  	D(("with time: %s", good ? "passes":"fails" ));
- 
+
 -	fd = read_field(pamh, fd, &buffer, &from, &state);
 +	fd = read_field(pamh, fd, &buffer, &from, &state, conf_filename);
  	if (state == STATE_FIELD) {
@@ -754,14 +3353,442 @@ index d9a35ea6..c49358a1 100644
 +		       "%s: poorly terminated rule #%d", conf_filename, count);
  	    continue;
  	}
- 
+
+diff --git a/modules/pam_issue/pam_issue.c b/modules/pam_issue/pam_issue.c
+index 5b6a4669..2f53440f 100644
+--- a/modules/pam_issue/pam_issue.c
++++ b/modules/pam_issue/pam_issue.c
+@@ -36,98 +36,6 @@
+
+ static int _user_prompt_set = 0;
+
+-static int read_issue_raw(pam_handle_t *pamh, FILE *fp, char **prompt);
+-static int read_issue_quoted(pam_handle_t *pamh, FILE *fp, char **prompt);
+-
+-/* --- authentication management functions (only) --- */
+-
+-int
+-pam_sm_authenticate (pam_handle_t *pamh, int flags UNUSED,
+-		     int argc, const char **argv)
+-{
+-    int retval = PAM_SERVICE_ERR;
+-    FILE *fp;
+-    const char *issue_file = NULL;
+-    int parse_esc = 1;
+-    const void *item = NULL;
+-    const char *cur_prompt;
+-    char *issue_prompt = NULL;
+-
+-   /* If we've already set the prompt, don't set it again */
+-    if(_user_prompt_set)
+-	return PAM_IGNORE;
+-
+-    /* We set this here so if we fail below, we won't get further
+-       than this next time around (only one real failure) */
+-    _user_prompt_set = 1;
+-
+-    for ( ; argc-- > 0 ; ++argv ) {
+-	const char *str;
+-
+-	if ((str = pam_str_skip_prefix(*argv, "issue=")) != NULL) {
+-	    issue_file = str;
+-	    D(("set issue_file to: %s", issue_file));
+-	} else if (!strcmp(*argv,"noesc")) {
+-	    parse_esc = 0;
+-	    D(("turning off escape parsing by request"));
+-	} else
+-	    D(("unknown option passed: %s", *argv));
+-    }
+-
+-    if (issue_file == NULL)
+-	issue_file = "/etc/issue";
+-
+-    if ((fp = fopen(issue_file, "r")) == NULL) {
+-	pam_syslog(pamh, LOG_ERR, "error opening %s: %m", issue_file);
+-	return PAM_SERVICE_ERR;
+-    }
+-
+-    if ((retval = pam_get_item(pamh, PAM_USER_PROMPT, &item)) != PAM_SUCCESS) {
+-	fclose(fp);
+-	return retval;
+-    }
+-
+-    cur_prompt = item;
+-    if (cur_prompt == NULL)
+-	cur_prompt = "";
+-
+-    if (parse_esc)
+-	retval = read_issue_quoted(pamh, fp, &issue_prompt);
+-    else
+-	retval = read_issue_raw(pamh, fp, &issue_prompt);
+-
+-    fclose(fp);
+-
+-    if (retval != PAM_SUCCESS)
+-	goto out;
+-
+-    {
+-	size_t size = strlen(issue_prompt) + strlen(cur_prompt) + 1;
+-	char *new_prompt = realloc(issue_prompt, size);
+-
+-	if (new_prompt == NULL) {
+-	    pam_syslog(pamh, LOG_CRIT, "out of memory");
+-	    retval = PAM_BUF_ERR;
+-	    goto out;
+-	}
+-	issue_prompt = new_prompt;
+-    }
+-
+-    strcat(issue_prompt, cur_prompt);
+-    retval = pam_set_item(pamh, PAM_USER_PROMPT,
+-			      (const void *) issue_prompt);
+-  out:
+-    _pam_drop(issue_prompt);
+-    return (retval == PAM_SUCCESS) ? PAM_IGNORE : retval;
+-}
+-
+-int
+-pam_sm_setcred (pam_handle_t *pamh UNUSED, int flags UNUSED,
+-		int argc UNUSED, const char **argv UNUSED)
+-{
+-     return PAM_IGNORE;
+-}
+-
+ static int
+ read_issue_raw(pam_handle_t *pamh, FILE *fp, char **prompt)
+ {
+@@ -303,4 +211,91 @@ read_issue_quoted(pam_handle_t *pamh, FILE *fp, char **prompt)
+     return PAM_SUCCESS;
+ }
+
+-/* end of module definition */
++/* --- authentication management functions (only) --- */
++
++int
++pam_sm_authenticate(pam_handle_t *pamh, int flags UNUSED,
++		    int argc, const char **argv)
++{
++    int retval = PAM_SERVICE_ERR;
++    FILE *fp;
++    const char *issue_file = NULL;
++    int parse_esc = 1;
++    const void *item = NULL;
++    const char *cur_prompt;
++    char *issue_prompt = NULL;
++
++   /* If we've already set the prompt, don't set it again */
++    if(_user_prompt_set)
++	return PAM_IGNORE;
++
++    /* We set this here so if we fail below, we won't get further
++       than this next time around (only one real failure) */
++    _user_prompt_set = 1;
++
++    for ( ; argc-- > 0 ; ++argv ) {
++	const char *str;
++
++	if ((str = pam_str_skip_prefix(*argv, "issue=")) != NULL) {
++	    issue_file = str;
++	    D(("set issue_file to: %s", issue_file));
++	} else if (!strcmp(*argv,"noesc")) {
++	    parse_esc = 0;
++	    D(("turning off escape parsing by request"));
++	} else
++	    D(("unknown option passed: %s", *argv));
++    }
++
++    if (issue_file == NULL)
++	issue_file = "/etc/issue";
++
++    if ((fp = fopen(issue_file, "r")) == NULL) {
++	pam_syslog(pamh, LOG_ERR, "error opening %s: %m", issue_file);
++	return PAM_SERVICE_ERR;
++    }
++
++    if ((retval = pam_get_item(pamh, PAM_USER_PROMPT, &item)) != PAM_SUCCESS) {
++	fclose(fp);
++	return retval;
++    }
++
++    cur_prompt = item;
++    if (cur_prompt == NULL)
++	cur_prompt = "";
++
++    if (parse_esc)
++	retval = read_issue_quoted(pamh, fp, &issue_prompt);
++    else
++	retval = read_issue_raw(pamh, fp, &issue_prompt);
++
++    fclose(fp);
++
++    if (retval != PAM_SUCCESS)
++	goto out;
++
++    {
++	size_t size = strlen(issue_prompt) + strlen(cur_prompt) + 1;
++	char *new_prompt = realloc(issue_prompt, size);
++
++	if (new_prompt == NULL) {
++	    pam_syslog(pamh, LOG_CRIT, "out of memory");
++	    retval = PAM_BUF_ERR;
++	    goto out;
++	}
++	issue_prompt = new_prompt;
++    }
++
++    strcat(issue_prompt, cur_prompt);
++    retval = pam_set_item(pamh, PAM_USER_PROMPT,
++			      (const void *) issue_prompt);
++  out:
++    _pam_drop(issue_prompt);
++    return (retval == PAM_SUCCESS) ? PAM_IGNORE : retval;
++}
++
++int
++pam_sm_setcred(pam_handle_t *pamh UNUSED, int flags UNUSED,
++	       int argc UNUSED, const char **argv UNUSED)
++{
++     return PAM_IGNORE;
++}
+diff --git a/modules/pam_keyinit/pam_keyinit.c b/modules/pam_keyinit/pam_keyinit.c
+index 92e4953b..df9804b9 100644
+--- a/modules/pam_keyinit/pam_keyinit.c
++++ b/modules/pam_keyinit/pam_keyinit.c
+@@ -21,6 +21,7 @@
+ #include <security/pam_modutil.h>
+ #include <security/pam_ext.h>
+ #include <sys/syscall.h>
++#include <stdatomic.h>
+
+ #define KEY_SPEC_SESSION_KEYRING	-3 /* ID for session keyring */
+ #define KEY_SPEC_USER_KEYRING		-4 /* ID for UID-specific keyring */
+@@ -31,12 +32,12 @@
+ #define KEYCTL_REVOKE			3 /* revoke a key */
+ #define KEYCTL_LINK			8 /* link a key into a keyring */
+
+-static int my_session_keyring = 0;
+-static int session_counter = 0;
+-static int do_revoke = 0;
+-static uid_t revoke_as_uid;
+-static gid_t revoke_as_gid;
+-static int xdebug = 0;
++static _Thread_local int my_session_keyring = 0;
++static _Atomic int session_counter = 0;
++static _Thread_local int do_revoke = 0;
++static _Thread_local uid_t revoke_as_uid;
++static _Thread_local gid_t revoke_as_gid;
++static _Thread_local int xdebug = 0;
+
+ static void debug(pam_handle_t *pamh, const char *fmt, ...)
+ 	__attribute__((format(printf, 2, 3)));
+@@ -64,6 +65,33 @@ static void error(pam_handle_t *pamh, const char *fmt, ...)
+ 	va_end(va);
+ }
+
++static int pam_setreuid(uid_t ruid, uid_t euid)
++{
++#if defined(SYS_setreuid32)
++    return syscall(SYS_setreuid32, ruid, euid);
++#else
++    return syscall(SYS_setreuid, ruid, euid);
++#endif
++}
++
++static int pam_setregid(gid_t rgid, gid_t egid)
++{
++#if defined(SYS_setregid32)
++    return syscall(SYS_setregid32, rgid, egid);
++#else
++    return syscall(SYS_setregid, rgid, egid);
++#endif
++}
++
++static int pam_setresuid(uid_t ruid, uid_t euid, uid_t suid)
++{
++#if defined(SYS_setresuid32)
++    return syscall(SYS_setresuid32, ruid, euid, suid);
++#else
++    return syscall(SYS_setresuid, ruid, euid, suid);
++#endif
++}
++
+ /*
+  * initialise the session keyring for this process
+  */
+@@ -140,14 +168,14 @@ static int kill_keyrings(pam_handle_t *pamh, int error_ret)
+
+ 		/* switch to the real UID and GID so that we have permission to
+ 		 * revoke the key */
+-		if (revoke_as_gid != old_gid && setregid(-1, revoke_as_gid) < 0) {
++		if (revoke_as_gid != old_gid && pam_setregid(-1, revoke_as_gid) < 0) {
+ 			error(pamh, "Unable to change GID to %d temporarily\n", revoke_as_gid);
+ 			return error_ret;
+ 		}
+
+-		if (revoke_as_uid != old_uid && setresuid(-1, revoke_as_uid, old_uid) < 0) {
++		if (revoke_as_uid != old_uid && pam_setresuid(-1, revoke_as_uid, old_uid) < 0) {
+ 			error(pamh, "Unable to change UID to %d temporarily\n", revoke_as_uid);
+-			if (getegid() != old_gid && setregid(-1, old_gid) < 0)
++			if (getegid() != old_gid && pam_setregid(-1, old_gid) < 0)
+ 				error(pamh, "Unable to change GID back to %d\n", old_gid);
+ 			return error_ret;
+ 		}
+@@ -157,12 +185,12 @@ static int kill_keyrings(pam_handle_t *pamh, int error_ret)
+ 		}
+
+ 		/* return to the original UID and GID (probably root) */
+-		if (revoke_as_uid != old_uid && setreuid(-1, old_uid) < 0) {
++		if (revoke_as_uid != old_uid && pam_setreuid(-1, old_uid) < 0) {
+ 			error(pamh, "Unable to change UID back to %d\n", old_uid);
+ 			ret = error_ret;
+ 		}
+
+-		if (revoke_as_gid != old_gid && setregid(-1, old_gid) < 0) {
++		if (revoke_as_gid != old_gid && pam_setregid(-1, old_gid) < 0) {
+ 			error(pamh, "Unable to change GID back to %d\n", old_gid);
+ 			ret = error_ret;
+ 		}
+@@ -215,14 +243,14 @@ static int do_keyinit(pam_handle_t *pamh, int argc, const char **argv, int error
+
+ 	/* switch to the real UID and GID so that the keyring ends up owned by
+ 	 * the right user */
+-	if (gid != old_gid && setregid(gid, -1) < 0) {
++	if (gid != old_gid && pam_setregid(gid, -1) < 0) {
+ 		error(pamh, "Unable to change GID to %d temporarily\n", gid);
+ 		return error_ret;
+ 	}
+
+-	if (uid != old_uid && setreuid(uid, -1) < 0) {
++	if (uid != old_uid && pam_setreuid(uid, -1) < 0) {
+ 		error(pamh, "Unable to change UID to %d temporarily\n", uid);
+-		if (setregid(old_gid, -1) < 0)
++		if (pam_setregid(old_gid, -1) < 0)
+ 			error(pamh, "Unable to change GID back to %d\n", old_gid);
+ 		return error_ret;
+ 	}
+@@ -230,12 +258,12 @@ static int do_keyinit(pam_handle_t *pamh, int argc, const char **argv, int error
+ 	ret = init_keyrings(pamh, force, error_ret);
+
+ 	/* return to the original UID and GID (probably root) */
+-	if (uid != old_uid && setreuid(old_uid, -1) < 0) {
++	if (uid != old_uid && pam_setreuid(old_uid, -1) < 0) {
+ 		error(pamh, "Unable to change UID back to %d\n", old_uid);
+ 		ret = error_ret;
+ 	}
+
+-	if (gid != old_gid && setregid(old_gid, -1) < 0) {
++	if (gid != old_gid && pam_setregid(old_gid, -1) < 0) {
+ 		error(pamh, "Unable to change GID back to %d\n", old_gid);
+ 		ret = error_ret;
+ 	}
+diff --git a/modules/pam_lastlog/pam_lastlog.c b/modules/pam_lastlog/pam_lastlog.c
+index abd048df..797a61ce 100644
+--- a/modules/pam_lastlog/pam_lastlog.c
++++ b/modules/pam_lastlog/pam_lastlog.c
+@@ -57,14 +57,13 @@ struct lastlog {
+ # define PATH_LOGIN_DEFS "/etc/login.defs"
+ #endif
+
+-/* XXX - time before ignoring lock. Is 1 sec enough? */
+-#define LASTLOG_IGNORE_LOCK_TIME     1
+-
+ #define DEFAULT_HOST     ""  /* "[no.where]" */
+ #define DEFAULT_TERM     ""  /* "tt???" */
+
+ #define DEFAULT_INACTIVE_DAYS 90
+ #define MAX_INACTIVE_DAYS 100000
++#define LOCK_RETRIES           3  /* number of file lock retries */
++#define LOCK_RETRY_DELAY       1  /* seconds to wait between lock attempts */
+
+ #include <security/pam_modules.h>
+ #include <security/_pam_macros.h>
+@@ -266,6 +265,7 @@ last_login_read(pam_handle_t *pamh, int announce, int last_fd, uid_t uid, time_t
+ {
+     struct flock last_lock;
+     struct lastlog last_login;
++    int lock_retries = LOCK_RETRIES;
+     int retval = PAM_SUCCESS;
+     char the_time[256];
+     char *date = NULL;
+@@ -278,11 +278,19 @@ last_login_read(pam_handle_t *pamh, int announce, int last_fd, uid_t uid, time_t
+     last_lock.l_start = sizeof(last_login) * (off_t) uid;
+     last_lock.l_len = sizeof(last_login);
+
+-    if (fcntl(last_fd, F_SETLK, &last_lock) < 0) {
++    while (fcntl(last_fd, F_SETLK, &last_lock) < 0) {
++        if (0 == --lock_retries) {
++            /* read lock failed, proceed anyway to avoid possible DoS */
++            D(("locking %s failed", _PATH_LASTLOG));
++            pam_syslog(pamh, LOG_INFO,
++                       "file %s is locked/read, proceeding anyway",
++                       _PATH_LASTLOG);
++            break;
++        }
+         D(("locking %s failed..(waiting a little)", _PATH_LASTLOG));
+-	pam_syslog(pamh, LOG_WARNING,
+-		   "file %s is locked/read", _PATH_LASTLOG);
+-	sleep(LASTLOG_IGNORE_LOCK_TIME);
++        pam_syslog(pamh, LOG_INFO,
++                   "file %s is locked/read, retrying", _PATH_LASTLOG);
++        sleep(LOCK_RETRY_DELAY);
+     }
+
+     if (pam_modutil_read(last_fd, (char *) &last_login,
+@@ -380,6 +388,7 @@ last_login_write(pam_handle_t *pamh, int announce, int last_fd,
+     int setrlimit_res;
+     struct flock last_lock;
+     struct lastlog last_login;
++    int lock_retries = LOCK_RETRIES;
+     time_t ll_time;
+     const void *void_remote_host = NULL;
+     const char *remote_host;
+@@ -426,10 +435,17 @@ last_login_write(pam_handle_t *pamh, int announce, int last_fd,
+     last_lock.l_start = sizeof(last_login) * (off_t) uid;
+     last_lock.l_len = sizeof(last_login);
+
+-    if (fcntl(last_fd, F_SETLK, &last_lock) < 0) {
++    while (fcntl(last_fd, F_SETLK, &last_lock) < 0) {
++	if (0 == --lock_retries) {
++	    D(("locking %s failed", _PATH_LASTLOG));
++	    pam_syslog(pamh, LOG_ERR,
++		       "file %s is locked/write", _PATH_LASTLOG);
++	    return PAM_SERVICE_ERR;
++	}
+ 	D(("locking %s failed..(waiting a little)", _PATH_LASTLOG));
+-	pam_syslog(pamh, LOG_WARNING, "file %s is locked/write", _PATH_LASTLOG);
+-        sleep(LASTLOG_IGNORE_LOCK_TIME);
++	pam_syslog(pamh, LOG_INFO,
++		   "file %s is locked/write, retrying", _PATH_LASTLOG);
++	sleep(LOCK_RETRY_DELAY);
+     }
+
+     /*
+@@ -573,12 +589,12 @@ last_login_failed(pam_handle_t *pamh, int announce, const char *user, time_t llt
+ 	    time_t lf_time;
+
+ 	    lf_time = utuser.ut_tv.tv_sec;
+-	    tm = localtime_r (&lf_time, &tm_buf);
+-	    strftime (the_time, sizeof (the_time),
+-	        /* TRANSLATORS: "strftime options for date of last login" */
+-		_(" %a %b %e %H:%M:%S %Z %Y"), tm);
+-
+-	    date = the_time;
++	    if ((tm = localtime_r (&lf_time, &tm_buf)) != NULL) {
++	        strftime (the_time, sizeof (the_time),
++	            /* TRANSLATORS: "strftime options for date of last login" */
++	                  _(" %a %b %e %H:%M:%S %Z %Y"), tm);
++	        date = the_time;
++	    }
+ 	}
+
+ 	/* we want & have the host? */
 diff --git a/modules/pam_limits/Makefile.am b/modules/pam_limits/Makefile.am
 index 911b07b3..9ae1794d 100644
 --- a/modules/pam_limits/Makefile.am
 +++ b/modules/pam_limits/Makefile.am
 @@ -19,8 +19,8 @@ secureconfdir = $(SCONFIGDIR)
  limits_conf_dir = $(SCONFIGDIR)/limits.d
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
 -	-DLIMITS_FILE_DIR=\"$(limits_conf_dir)/*.conf\" \
 -	-DLIMITS_FILE=\"$(SCONFIGDIR)/limits.conf\" $(WARN_CFLAGS)
@@ -771,120 +3798,898 @@ index 911b07b3..9ae1794d 100644
  if HAVE_VERSIONING
    AM_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
 diff --git a/modules/pam_limits/pam_limits.8.xml b/modules/pam_limits/pam_limits.8.xml
-index bc46cbf4..08c6fc4d 100644
+index bc46cbf4..422924fe 100644
 --- a/modules/pam_limits/pam_limits.8.xml
 +++ b/modules/pam_limits/pam_limits.8.xml
-@@ -57,6 +57,11 @@
+@@ -48,7 +48,7 @@
+       obtained in a user-session. Users of <emphasis>uid=0</emphasis> are affected
+       by this limits, too.
+     </para>
+-    <para>
++    <para condition="without_vendordir">
+       By default limits are taken from the <filename>/etc/security/limits.conf</filename>
+       config file. Then individual *.conf files from the <filename>/etc/security/limits.d/</filename>
+       directory are read. The files are parsed one after another in the order of "C" locale.
+@@ -57,6 +57,23 @@
        If a config file is explicitly specified with a module option then the
        files in the above directory are not parsed.
      </para>
 +    <para condition="with_vendordir">
-+      If there is no explicitly specified configuration file and
-+      <filename>/etc/security/limits.conf</filename> does not exist,
-+      <filename>%vendordir%/security/limits.conf</filename> is used.
++      By default limits are taken from the <filename>/etc/security/limits.conf</filename>
++      config file or, if that one is not present, the file
++      <filename>%vendordir%/security/limits.conf</filename>.
++      Then individual <filename>*.conf</filename> files from the
++      <filename>/etc/security/limits.d/</filename> and
++      <filename>%vendordir%/security/limits.d</filename> directories are read.
++      If <filename>/etc/security/limits.d/@filename@.conf</filename> exists, then
++      <filename>%vendordir%/security/limits.d/@filename@.conf</filename> will not be used.
++      All <filename>limits.d/*.conf</filename> files are sorted by their
++      <filename>@filename@.conf</filename> in lexicographic order regardless of which
++      of the directories they reside in.
++      The effect of the individual files is the same as if all the files were
++      concatenated together in the order of parsing.
++      If a config file is explicitly specified with the <option>config</option>
++      option the files in the above directories are not parsed.
 +    </para>
      <para>
        The module must not be called by a multithreaded application.
      </para>
+@@ -211,6 +228,13 @@
+           <para>Default configuration file</para>
+         </listitem>
+       </varlistentry>
++      <varlistentry condition="with_vendordir">
++        <term><filename>%vendordir%/security/limits.conf</filename></term>
++        <listitem>
++          <para>Default configuration file if
++	  <filename>/etc/security/limits.conf</filename> does not exist.</para>
++        </listitem>
++      </varlistentry>
+     </variablelist>
+   </refsect1>
+
 diff --git a/modules/pam_limits/pam_limits.c b/modules/pam_limits/pam_limits.c
-index 7cc45d77..6fbe95fc 100644
+index 7cc45d77..f9489dbe 100644
 --- a/modules/pam_limits/pam_limits.c
 +++ b/modules/pam_limits/pam_limits.c
 @@ -47,6 +47,10 @@
  #include <libaudit.h>
  #endif
- 
+
 +#ifndef PR_SET_NO_NEW_PRIVS
 +# define PR_SET_NO_NEW_PRIVS 38 /* from <linux/prctl.h> */
 +#endif
 +
  /* Module defines */
  #define LINE_LENGTH 1024
- 
-@@ -119,9 +123,10 @@ struct pam_limit_s {
+
+@@ -119,9 +123,14 @@ struct pam_limit_s {
  #define PAM_SET_ALL         0x0010
- 
+
  /* Limits from globbed files. */
 -#define LIMITS_CONF_GLOB LIMITS_FILE_DIR
 +#define LIMITS_CONF_GLOB	(LIMITS_FILE_DIR "/*.conf")
- 
--#define CONF_FILE (pl->conf_file != NULL)?pl->conf_file:LIMITS_FILE
++
 +#define LIMITS_FILE	(SCONFIGDIR "/limits.conf")
-+#define CONF_FILE	((pl->conf_file != NULL) ? pl->conf_file : LIMITS_FILE)
- 
+
+-#define CONF_FILE (pl->conf_file != NULL)?pl->conf_file:LIMITS_FILE
++#ifdef VENDOR_SCONFIGDIR
++#define VENDOR_LIMITS_FILE (VENDOR_SCONFIGDIR "/limits.conf")
++#define VENDOR_LIMITS_CONF_GLOB  (VENDOR_SCONFIGDIR "/limits.d/*.conf")
++#endif
+
  static int
  _pam_parse (const pam_handle_t *pamh, int argc, const char **argv,
-@@ -811,14 +816,30 @@ parse_config_file(pam_handle_t *pamh, const char *uname, uid_t uid, gid_t gid,
+@@ -806,18 +815,22 @@ parse_uid_range(pam_handle_t *pamh, const char *domain,
+
+ static int
+ parse_config_file(pam_handle_t *pamh, const char *uname, uid_t uid, gid_t gid,
+-			     int ctrl, struct pam_limit_s *pl)
++		  int ctrl, struct pam_limit_s *pl, const int conf_file_set_by_user)
+ {
      FILE *fil;
      char buf[LINE_LENGTH];
- 
+
 -    /* check for the LIMITS_FILE */
-+    /* check for the CONF_FILE */
++    /* check for the conf_file */
      if (ctrl & PAM_DEBUG_ARG)
-         pam_syslog(pamh, LOG_DEBUG, "reading settings from '%s'", CONF_FILE);
-     fil = fopen(CONF_FILE, "r");
+-        pam_syslog(pamh, LOG_DEBUG, "reading settings from '%s'", CONF_FILE);
+-    fil = fopen(CONF_FILE, "r");
++        pam_syslog(pamh, LOG_DEBUG, "reading settings from '%s'", pl->conf_file);
++    fil = fopen(pl->conf_file, "r");
      if (fil == NULL) {
 -        pam_syslog (pamh, LOG_WARNING,
 -		    "cannot read settings from %s: %m", CONF_FILE);
--        return PAM_SERVICE_ERR;
-+      int err = errno;
++        if (errno == ENOENT && !conf_file_set_by_user)
++            return PAM_SUCCESS; /* file is not there and it has not been set by the conf= argument */
 +
-+#ifdef VENDOR_SCONFIGDIR
-+      /* if the specified file does not exist, and it is not provided by
-+         the user, try the vendor file as fallback. */
-+      if (pl->conf_file == NULL && err == ENOENT)
-+        fil = fopen(VENDOR_SCONFIGDIR "/limits.conf", "r");
-+
-+      if (fil == NULL)
-+#endif
-+        {
-+          if (err == ENOENT)
-+            return PAM_SUCCESS;
-+
-+          pam_syslog (pamh, LOG_WARNING,
-+                      "cannot read settings from %s: %s", CONF_FILE,
-+                      strerror(err));
-+          return PAM_SERVICE_ERR;
-+        }
++        pam_syslog(pamh, LOG_WARNING,
++                   "cannot read settings from %s: %s", pl->conf_file,
++                   strerror(errno));
+         return PAM_SERVICE_ERR;
      }
- 
-     /* start the show */
+
+@@ -1074,33 +1087,132 @@ static int setup_limits(pam_handle_t *pamh,
+     return retval;
+ }
+
++/* --- evaluting all files in VENDORDIR/security/limits.d and /etc/security/limits.d --- */
++static const char *
++base_name(const char *path)
++{
++    const char *base = strrchr(path, '/');
++    return base ? base+1 : path;
++}
++
++static int
++compare_filename(const void *a, const void *b)
++{
++	return strcmp(base_name(* (const char * const *) a),
++		      base_name(* (const char * const *) b));
++}
++
++/* Evaluating a list of files which have to be parsed in the right order:
++ *
++ * - If etc/security/limits.d/@filename@.conf exists, then
++ *   %vendordir%/security/limits.d/@filename@.conf should not be used.
++ * - All files in both limits.d directories are sorted by their @filename@.conf in
++ *   lexicographic order regardless of which of the directories they reside in. */
++static char **
++read_limits_dir(pam_handle_t *pamh)
++{
++	glob_t globbuf;
++	size_t i=0;
++	int glob_rv = glob(LIMITS_CONF_GLOB, GLOB_ERR | GLOB_NOSORT, NULL, &globbuf);
++	char **file_list;
++	size_t file_list_size = glob_rv == 0 ? globbuf.gl_pathc : 0;
++
++#ifdef VENDOR_LIMITS_CONF_GLOB
++	glob_t globbuf_vendor;
++	int glob_rv_vendor = glob(VENDOR_LIMITS_CONF_GLOB, GLOB_ERR | GLOB_NOSORT, NULL, &globbuf_vendor);
++	if (glob_rv_vendor == 0)
++	    file_list_size += globbuf_vendor.gl_pathc;
++#endif
++	file_list = malloc((file_list_size + 1) * sizeof(char*));
++	if (file_list == NULL) {
++	    pam_syslog(pamh, LOG_ERR, "Cannot allocate memory for file list: %m");
++#ifdef VENDOR_ACCESS_CONF_GLOB
++            if (glob_rv_vendor == 0)
++                globfree(&globbuf_vendor);
++#endif
++            if (glob_rv == 0)
++                globfree(&globbuf);
++	    return NULL;
++	}
++
++	if (glob_rv == 0) {
++	    for (i = 0; i < globbuf.gl_pathc; i++) {
++	        file_list[i] = strdup(globbuf.gl_pathv[i]);
++		if (file_list[i] == NULL) {
++		    pam_syslog(pamh, LOG_ERR, "strdup failed: %m");
++		    break;
++		}
++	    }
++	}
++#ifdef VENDOR_LIMITS_CONF_GLOB
++	if (glob_rv_vendor == 0) {
++	    for (size_t j = 0; j < globbuf_vendor.gl_pathc; j++) {
++		if (glob_rv == 0 && globbuf.gl_pathc > 0) {
++		    int double_found = 0;
++		    for (size_t k = 0; k < globbuf.gl_pathc; k++) {
++			if (strcmp(base_name(globbuf.gl_pathv[k]),
++				   base_name(globbuf_vendor.gl_pathv[j])) == 0) {
++				double_found = 1;
++				break;
++			}
++		    }
++		    if (double_found)
++			continue;
++		}
++		file_list[i] = strdup(globbuf_vendor.gl_pathv[j]);
++		if (file_list[i] == NULL) {
++		    pam_syslog(pamh, LOG_ERR, "strdup failed: %m");
++		    break;
++		}
++		i++;
++	    }
++	    globfree(&globbuf_vendor);
++	}
++#endif
++	file_list[i] = NULL;
++	qsort(file_list, i, sizeof(char *), compare_filename);
++        if (glob_rv == 0)
++	    globfree(&globbuf);
++
++	return file_list;
++}
++
+ /* now the session stuff */
+ int
+ pam_sm_open_session (pam_handle_t *pamh, int flags UNUSED,
+ 		     int argc, const char **argv)
+ {
+-    int retval;
+-    int i;
+-    int glob_rc;
++    int retval, i;
+     char *user_name;
+     struct passwd *pwd;
+     int ctrl;
+     struct pam_limit_s plstruct;
+     struct pam_limit_s *pl = &plstruct;
+-    glob_t globbuf;
+-    const char *oldlocale;
+
+     D(("called."));
+
+     memset(pl, 0, sizeof(*pl));
+-    memset(&globbuf, 0, sizeof(globbuf));
+
+     ctrl = _pam_parse(pamh, argc, argv, pl);
+     retval = pam_get_item( pamh, PAM_USER, (void*) &user_name );
+     if ( user_name == NULL || retval != PAM_SUCCESS ) {
+         pam_syslog(pamh, LOG_ERR, "open_session - error recovering username");
+         return PAM_SESSION_ERR;
+-     }
++    }
++
++    int conf_file_set_by_user = (pl->conf_file != NULL);
++    if (pl->conf_file == NULL) {
++        pl->conf_file = LIMITS_FILE;
++#ifdef VENDOR_LIMITS_FILE
++        /*
++         * Check whether LIMITS_FILE file is available.
++         * If it does not exist, fall back to VENDOR_LIMITS_FILE file.
++         */
++        struct stat buffer;
++        if (stat(pl->conf_file, &buffer) != 0 && errno == ENOENT)
++            pl->conf_file = VENDOR_LIMITS_FILE;
++#endif
++    }
+
+     pwd = pam_modutil_getpwnam(pamh, user_name);
+     if (!pwd) {
+@@ -1116,46 +1228,39 @@ pam_sm_open_session (pam_handle_t *pamh, int flags UNUSED,
+         return PAM_ABORT;
+     }
+
+-    retval = parse_config_file(pamh, pwd->pw_name, pwd->pw_uid, pwd->pw_gid, ctrl, pl);
++    retval = parse_config_file(pamh, pwd->pw_name, pwd->pw_uid, pwd->pw_gid,
++			       ctrl, pl, conf_file_set_by_user);
+     if (retval == PAM_IGNORE) {
+-	D(("the configuration file ('%s') has an applicable '<domain> -' entry", CONF_FILE));
++	D(("the configuration file ('%s') has an applicable '<domain> -' entry", pl->conf_file));
+ 	return PAM_SUCCESS;
+     }
+-    if (retval != PAM_SUCCESS || pl->conf_file != NULL)
++    if (retval != PAM_SUCCESS || conf_file_set_by_user)
+ 	/* skip reading limits.d if config file explicitly specified */
+ 	goto out;
+
+     /* Read subsequent *.conf files, if they exist. */
+-
+-    /* set the LC_COLLATE so the sorting order doesn't depend
+-	on system locale */
+-
+-    oldlocale = setlocale(LC_COLLATE, "C");
+-    glob_rc = glob(LIMITS_CONF_GLOB, GLOB_ERR, NULL, &globbuf);
+-
+-    if (oldlocale != NULL)
+-	setlocale (LC_COLLATE, oldlocale);
+-
+-    if (!glob_rc) {
+-	/* Parse the *.conf files. */
+-	for (i = 0; globbuf.gl_pathv[i] != NULL; i++) {
+-	    pl->conf_file = globbuf.gl_pathv[i];
+-	    retval = parse_config_file(pamh, pwd->pw_name, pwd->pw_uid, pwd->pw_gid, ctrl, pl);
+-	    if (retval == PAM_IGNORE) {
+-		D(("the configuration file ('%s') has an applicable '<domain> -' entry", pl->conf_file));
+-		globfree(&globbuf);
+-		return PAM_SUCCESS;
+-	    }
+-	    if (retval != PAM_SUCCESS)
+-		goto out;
++    char **filename_list = read_limits_dir(pamh);
++    if (filename_list != NULL) {
++        for (i = 0; filename_list[i] != NULL; i++) {
++            pl->conf_file = filename_list[i];
++            retval = parse_config_file(pamh, pwd->pw_name, pwd->pw_uid, pwd->pw_gid, ctrl, pl, 0);
++            if (retval != PAM_SUCCESS)
++                break;
+         }
++        for (i = 0; filename_list[i] != NULL; i++)
++            free(filename_list[i]);
++        free(filename_list);
++    }
++
++    if (retval == PAM_IGNORE) {
++        D(("the configuration file ('%s') has an applicable '<domain> -' entry", pl->conf_file));
++        return PAM_SUCCESS;
+     }
+
+ out:
+-    globfree(&globbuf);
+     if (retval != PAM_SUCCESS)
+     {
+-	pam_syslog(pamh, LOG_ERR, "error parsing the configuration file: '%s' ",CONF_FILE);
++	pam_syslog(pamh, LOG_ERR, "error parsing the configuration file: '%s' ", pl->conf_file);
+ 	return retval;
+     }
+
+diff --git a/modules/pam_mail/pam_mail.c b/modules/pam_mail/pam_mail.c
+index 17383c7b..7eb94fc7 100644
+--- a/modules/pam_mail/pam_mail.c
++++ b/modules/pam_mail/pam_mail.c
+@@ -286,7 +286,7 @@ report_mail(pam_handle_t *pamh, int ctrl, int type, const char *folder)
+ 	  switch (type)
+ 	    {
+ 	    case HAVE_NO_MAIL:
+-	      retval = pam_info (pamh, "%s", _("You have no mail."));
++	      retval = pam_info (pamh, "%s", _("You do not have any new mail."));
+ 	      break;
+ 	    case HAVE_NEW_MAIL:
+ 	      retval = pam_info (pamh, "%s", _("You have new mail."));
+diff --git a/modules/pam_mkhomedir/pam_mkhomedir.c b/modules/pam_mkhomedir/pam_mkhomedir.c
+index 48e578fa..6ddcd5a8 100644
+--- a/modules/pam_mkhomedir/pam_mkhomedir.c
++++ b/modules/pam_mkhomedir/pam_mkhomedir.c
+@@ -125,15 +125,6 @@ create_homedir (pam_handle_t *pamh, options_t *opt,
+
+    D(("called."));
+
+-   /*
+-    * This code arranges that the demise of the child does not cause
+-    * the application to receive a signal it is not expecting - which
+-    * may kill the application or worse.
+-    */
+-   memset(&newsa, '\0', sizeof(newsa));
+-   newsa.sa_handler = SIG_DFL;
+-   sigaction(SIGCHLD, &newsa, &oldsa);
+-
+    if (opt->ctrl & MKHOMEDIR_DEBUG) {
+         pam_syslog(pamh, LOG_DEBUG, "Executing mkhomedir_helper.");
+    }
+@@ -153,6 +144,15 @@ create_homedir (pam_handle_t *pamh, options_t *opt,
+       login_homemode = _pam_conv_str_umask_to_homemode(opt->umask);
+    }
+
++   /*
++    * This code arranges that the demise of the child does not cause
++    * the application to receive a signal it is not expecting - which
++    * may kill the application or worse.
++    */
++   memset(&newsa, '\0', sizeof(newsa));
++   newsa.sa_handler = SIG_DFL;
++   sigaction(SIGCHLD, &newsa, &oldsa);
++
+    /* fork */
+    child = fork();
+    if (child == 0) {
+diff --git a/modules/pam_motd/pam_motd.c b/modules/pam_motd/pam_motd.c
+index 6ac8cba2..5ca486e4 100644
+--- a/modules/pam_motd/pam_motd.c
++++ b/modules/pam_motd/pam_motd.c
+@@ -166,11 +166,6 @@ static int compare_strings(const void *a, const void *b)
+     }
+ }
+
+-static int filter_dirents(const struct dirent *d)
+-{
+-    return (d->d_type == DT_REG || d->d_type == DT_LNK);
+-}
+-
+ static void try_to_display_directories_with_overrides(pam_handle_t *pamh,
+ 	char **motd_dir_path_split, unsigned int num_motd_dirs, int report_missing)
+ {
+@@ -199,8 +194,7 @@ static void try_to_display_directories_with_overrides(pam_handle_t *pamh,
+
+     for (i = 0; i < num_motd_dirs; i++) {
+ 	int rv;
+-	rv = scandir(motd_dir_path_split[i], &(dirscans[i]),
+-		filter_dirents, alphasort);
++	rv = scandir(motd_dir_path_split[i], &(dirscans[i]), NULL, NULL);
+ 	if (rv < 0) {
+ 	    if (errno != ENOENT || report_missing) {
+ 		pam_syslog(pamh, LOG_ERR, "error scanning directory %s: %m",
+@@ -215,6 +209,41 @@ static void try_to_display_directories_with_overrides(pam_handle_t *pamh,
+     if (dirscans_size_total == 0)
+         goto out;
+
++    /* filter out unwanted names, directories, and complement data with lstat() */
++    for (i = 0; i < num_motd_dirs; i++) {
++	struct dirent **d = dirscans[i];
++	for (unsigned int j = 0; j < dirscans_sizes[i]; j++) {
++	    int rc;
++	    char *fullpath;
++	    struct stat s;
++
++	    switch(d[j]->d_type) {    /* the filetype determines how to proceed */
++	    case DT_REG:              /* regular files and     */
++	    case DT_LNK:              /* symlinks              */
++		continue;             /* are good.             */
++	    case DT_UNKNOWN:   /* for file systems that do not provide */
++			       /* a filetype, we use lstat()           */
++		if (join_dir_strings(&fullpath, motd_dir_path_split[i],
++				     d[j]->d_name) <= 0)
++		    break;
++		rc = lstat(fullpath, &s);
++		_pam_drop(fullpath);  /* free the memory alloc'ed by join_dir_strings */
++		if (rc != 0)          /* if the lstat() somehow failed */
++		    break;
++
++		if (S_ISREG(s.st_mode) ||          /* regular files and  */
++		    S_ISLNK(s.st_mode)) continue;  /* symlinks are good  */
++		break;
++	    case DT_DIR:          /* We don't want directories     */
++	    default:              /* nor anything else             */
++		break;
++	    }
++	    _pam_drop(d[j]);  /* free memory                   */
++	    d[j] = NULL;      /* indicate this one was dropped */
++	    dirscans_size_total--;
++	}
++    }
++
+     /* Allocate space for all file names found in the directories, including duplicates. */
+     if ((dirnames_all = calloc(dirscans_size_total, sizeof(*dirnames_all))) == NULL) {
+ 	pam_syslog(pamh, LOG_CRIT, "failed to allocate dirname array");
+@@ -225,8 +254,10 @@ static void try_to_display_directories_with_overrides(pam_handle_t *pamh,
+ 	unsigned int j;
+
+ 	for (j = 0; j < dirscans_sizes[i]; j++) {
+-	    dirnames_all[i_dirnames] = dirscans[i][j]->d_name;
+-	    i_dirnames++;
++	    if (NULL != dirscans[i][j]) {
++	        dirnames_all[i_dirnames] = dirscans[i][j]->d_name;
++	        i_dirnames++;
++	    }
+ 	}
+     }
+
 diff --git a/modules/pam_namespace/Makefile.am b/modules/pam_namespace/Makefile.am
 index 47cc38e1..33375857 100644
 --- a/modules/pam_namespace/Makefile.am
 +++ b/modules/pam_namespace/Makefile.am
 @@ -21,7 +21,7 @@ namespaceddir = $(SCONFIGDIR)/namespace.d
  servicedir = $(systemdunitdir)
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
 -        -DSECURECONF_DIR=\"$(SCONFIGDIR)/\" $(WARN_CFLAGS)
 +	    $(WARN_CFLAGS)
  AM_LDFLAGS =  -no-undefined -avoid-version -module
  if HAVE_VERSIONING
    AM_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
+diff --git a/modules/pam_namespace/namespace.conf.5.xml b/modules/pam_namespace/namespace.conf.5.xml
+index a94b49e2..67f8c043 100644
+--- a/modules/pam_namespace/namespace.conf.5.xml
++++ b/modules/pam_namespace/namespace.conf.5.xml
+@@ -30,13 +30,29 @@
+       directory path and the instance directory path as its arguments.
+     </para>
+
+-    <para>
++    <para condition="without_vendordir">
+       The <filename>/etc/security/namespace.conf</filename> file specifies
+       which directories are polyinstantiated, how they are polyinstantiated,
+       how instance directories would be named, and any users for whom
+       polyinstantiation would not be performed.
+     </para>
+
++    <para condition="with_vendordir">
++      The <filename>/etc/security/namespace.conf</filename> file
++      ( or <filename>%vendordir%/security/namespace.conf</filename> if it does
++      not exist) specifies which directories are polyinstantiated, how they are
++      polyinstantiated, how instance directories would be named, and any users
++      for whom polyinstantiation would not be performed.
++      Then individual <filename>*.conf</filename> files from the
++      <filename>/etc/security/namespace.d/</filename> and
++      <filename>%vendordir%/security/namespace.d</filename> directories are taken too.
++      If <filename>/etc/security/namespace.d/@filename@.conf</filename> exists, then
++      <filename>%vendordir%/security/namespace.d/@filename@.conf</filename> will not be used.
++      All <filename>namespace.d/*.conf</filename> files are sorted by their
++      <filename>@filename@.conf</filename> in lexicographic order regardless of which
++      of the directories they reside in.
++    </para>
++
+     <para>
+       When someone logs in, the file <filename>namespace.conf</filename> is
+       scanned. Comments are marked by <emphasis>#</emphasis> characters.
+diff --git a/modules/pam_namespace/pam_namespace.8.xml b/modules/pam_namespace/pam_namespace.8.xml
+index 57c44c4b..ddaa00b4 100644
+--- a/modules/pam_namespace/pam_namespace.8.xml
++++ b/modules/pam_namespace/pam_namespace.8.xml
+@@ -74,6 +74,12 @@
+       and the user name as its arguments.
+     </para>
+
++    <para condition="with_vendordir">
++      If <filename>/etc/security/namespace.init</filename> does not exist,
++      <filename>%vendordir%/security/namespace.init</filename> is the
++      alternative to be used for it.
++    </para>
++
+     <para>
+       The pam_namespace module disassociates the session namespace from
+       the parent namespace. Any mounts/unmounts performed in the parent
+@@ -313,6 +319,14 @@
+         </listitem>
+       </varlistentry>
+
++      <varlistentry condition="with_vendordir">
++        <term><filename>%vendordir%/security/namespace.conf</filename></term>
++        <listitem>
++          <para>Default configuration file if
++	  <filename>/etc/security/namespace.conf</filename> does not exist.</para>
++        </listitem>
++      </varlistentry>
++
+       <varlistentry>
+         <term><filename>/etc/security/namespace.d</filename></term>
+         <listitem>
+@@ -320,12 +334,28 @@
+         </listitem>
+       </varlistentry>
+
++      <varlistentry condition="with_vendordir">
++        <term><filename>%vendordir%/security/namespace.d</filename></term>
++        <listitem>
++          <para>Directory for additional vendor specific configuration files.</para>
++        </listitem>
++      </varlistentry>
++
+       <varlistentry>
+         <term><filename>/etc/security/namespace.init</filename></term>
+         <listitem>
+           <para>Init script for instance directories</para>
+         </listitem>
+       </varlistentry>
++
++      <varlistentry condition="with_vendordir">
++        <term><filename>%vendordir%/security/namespace.init</filename></term>
++        <listitem>
++          <para>Vendor init script for instance directories if
++	  /etc/security/namespace.init does not exist.
++	  </para>
++        </listitem>
++      </varlistentry>
+     </variablelist>
+   </refsect1>
+
+diff --git a/modules/pam_namespace/pam_namespace.c b/modules/pam_namespace/pam_namespace.c
+index 4d4188d0..f34ce934 100644
+--- a/modules/pam_namespace/pam_namespace.c
++++ b/modules/pam_namespace/pam_namespace.c
+@@ -39,6 +39,94 @@
+ #include "pam_namespace.h"
+ #include "argv_parse.h"
+
++/* --- evaluting all files in VENDORDIR/security/namespace.d and /etc/security/namespace.d --- */
++static const char *base_name(const char *path)
++{
++    const char *base = strrchr(path, '/');
++    return base ? base+1 : path;
++}
++
++static int
++compare_filename(const void *a, const void *b)
++{
++	return strcmp(base_name(* (char * const *) a),
++		      base_name(* (char * const *) b));
++}
++
++/* Evaluating a list of files which have to be parsed in the right order:
++ *
++ * - If etc/security/namespace.d/@filename@.conf exists, then
++ *   %vendordir%/security/namespace.d/@filename@.conf should not be used.
++ * - All files in both namespace.d directories are sorted by their @filename@.conf in
++ *   lexicographic order regardless of which of the directories they reside in. */
++static char **read_namespace_dir(struct instance_data *idata)
++{
++	glob_t globbuf;
++	size_t i=0;
++	int glob_rv = glob(NAMESPACE_D_GLOB, GLOB_ERR | GLOB_NOSORT, NULL, &globbuf);
++	char **file_list;
++	size_t file_list_size = glob_rv == 0 ? globbuf.gl_pathc : 0;
++
++#ifdef VENDOR_NAMESPACE_D_GLOB
++	glob_t globbuf_vendor;
++	int glob_rv_vendor = glob(VENDOR_NAMESPACE_D_GLOB, GLOB_ERR | GLOB_NOSORT, NULL, &globbuf_vendor);
++	if (glob_rv_vendor == 0)
++	    file_list_size += globbuf_vendor.gl_pathc;
++#endif
++	file_list = malloc((file_list_size + 1) * sizeof(char*));
++	if (file_list == NULL) {
++	    pam_syslog(idata->pamh, LOG_ERR, "Cannot allocate memory for file list: %m");
++#ifdef VENDOR_NAMESPACE_D_GLOB
++	    if (glob_rv_vendor == 0)
++		globfree(&globbuf_vendor);
++#endif
++	    if (glob_rv == 0)
++		globfree(&globbuf);
++	    return NULL;
++	}
++
++	if (glob_rv == 0) {
++	    for (i = 0; i < globbuf.gl_pathc; i++) {
++		file_list[i] = strdup(globbuf.gl_pathv[i]);
++		if (file_list[i] == NULL) {
++		    pam_syslog(idata->pamh, LOG_ERR, "strdup failed: %m");
++		    break;
++		}
++	    }
++	}
++#ifdef VENDOR_NAMESPACE_D_GLOB
++	if (glob_rv_vendor == 0) {
++	    for (size_t j = 0; j < globbuf_vendor.gl_pathc; j++) {
++		if (glob_rv == 0 && globbuf.gl_pathc > 0) {
++		    int double_found = 0;
++		    for (size_t k = 0; k < globbuf.gl_pathc; k++) {
++			if (strcmp(base_name(globbuf.gl_pathv[k]),
++				   base_name(globbuf_vendor.gl_pathv[j])) == 0) {
++				double_found = 1;
++				break;
++			}
++		    }
++		    if (double_found)
++			continue;
++		}
++		file_list[i] = strdup(globbuf_vendor.gl_pathv[j]);
++		if (file_list[i] == NULL) {
++		    pam_syslog(idata->pamh, LOG_ERR, "strdup failed: %m");
++		    break;
++		}
++		i++;
++	    }
++	    globfree(&globbuf_vendor);
++	}
++#endif
++	file_list[i] = NULL;
++	qsort(file_list, i, sizeof(char *), compare_filename);
++	if (glob_rv == 0)
++	    globfree(&globbuf);
++
++	return file_list;
++}
++
+ /*
+  * Adds an entry for a polyinstantiated directory to the linked list of
+  * polyinstantiated directories. It is called from process_line() while
+@@ -624,8 +712,6 @@ static int parse_config_file(struct instance_data *idata)
+     char *line;
+     int retval;
+     size_t len = 0;
+-    glob_t globbuf;
+-    const char *oldlocale;
+     size_t n;
+
+     /*
+@@ -664,13 +750,16 @@ static int parse_config_file(struct instance_data *idata)
+      * process_line to process each line.
+      */
+
+-    memset(&globbuf, '\0', sizeof(globbuf));
+-    oldlocale = setlocale(LC_COLLATE, "C");
+-    glob(NAMESPACE_D_GLOB, 0, NULL, &globbuf);
+-    if (oldlocale != NULL)
+-	setlocale(LC_COLLATE, oldlocale);
+-
+     confname = PAM_NAMESPACE_CONFIG;
++#ifdef VENDOR_PAM_NAMESPACE_CONFIG
++    /* Check whether PAM_NAMESPACE_CONFIG file is available.
++     * If it does not exist, fall back to VENDOR_PAM_NAMESPACE_CONFIG file. */
++    struct stat buffer;
++    if (stat(confname, &buffer) != 0 && errno == ENOENT) {
++	confname = VENDOR_PAM_NAMESPACE_CONFIG;
++    }
++#endif
++    char **filename_list = read_namespace_dir(idata);
+     n = 0;
+     for (;;) {
+ 	if (idata->flags & PAMNS_DEBUG)
+@@ -680,7 +769,6 @@ static int parse_config_file(struct instance_data *idata)
+ 	if (fil == NULL) {
+ 	    pam_syslog(idata->pamh, LOG_ERR, "Error opening config file %s",
+ 		confname);
+-            globfree(&globbuf);
+ 	    free(rhome);
+ 	    free(home);
+ 	    return PAM_SERVICE_ERR;
+@@ -698,7 +786,6 @@ static int parse_config_file(struct instance_data *idata)
+ 		"Error processing conf file %s line %s", confname, line);
+ 	        fclose(fil);
+ 	        free(line);
+-	        globfree(&globbuf);
+ 	        free(rhome);
+ 	        free(home);
+ 	        return PAM_SERVICE_ERR;
+@@ -707,14 +794,18 @@ static int parse_config_file(struct instance_data *idata)
+ 	fclose(fil);
+ 	free(line);
+
+-	if (n >= globbuf.gl_pathc)
++	if (filename_list == NULL || filename_list[n] == NULL)
+ 	    break;
+
+-	confname = globbuf.gl_pathv[n];
+-	n++;
++	confname = filename_list[n++];
++    }
++
++    if (filename_list != NULL) {
++	for (size_t i = 0; filename_list[i] != NULL; i++)
++	    free(filename_list[i]);
++	free(filename_list);
+     }
+
+-    globfree(&globbuf);
+     free(rhome);
+     free(home);
+
+@@ -1250,16 +1341,17 @@ static int inst_init(const struct polydir_s *polyptr, const char *ipath,
+ 	   struct instance_data *idata, int newdir)
+ {
+ 	pid_t rc, pid;
+-	struct sigaction newsa, oldsa;
+ 	int status;
+ 	const char *init_script = NAMESPACE_INIT_SCRIPT;
+
+-	memset(&newsa, '\0', sizeof(newsa));
+-        newsa.sa_handler = SIG_DFL;
+-	if (sigaction(SIGCHLD, &newsa, &oldsa) == -1) {
+-		pam_syslog(idata->pamh, LOG_ERR, "Cannot set signal value");
+-		return PAM_SESSION_ERR;
++#ifdef VENDOR_NAMESPACE_INIT_SCRIPT
++	/* Check whether NAMESPACE_INIT_SCRIPT file is available.
++	 * If it does not exist, fall back to VENDOR_NAMESPACE_INIT_SCRIPT file. */
++	struct stat buffer;
++	if (stat(init_script, &buffer) != 0 && errno == ENOENT) {
++		init_script = VENDOR_NAMESPACE_INIT_SCRIPT;
+ 	}
++#endif
+
+ 	if ((polyptr->flags & POLYDIR_ISCRIPT) && polyptr->init_script)
+ 		init_script = polyptr->init_script;
+@@ -1269,9 +1361,17 @@ static int inst_init(const struct polydir_s *polyptr, const char *ipath,
+ 			if (idata->flags & PAMNS_DEBUG)
+ 				pam_syslog(idata->pamh, LOG_ERR,
+ 						"Namespace init script not executable");
+-			rc = PAM_SESSION_ERR;
+-			goto out;
++			return PAM_SESSION_ERR;
+ 		} else {
++			struct sigaction newsa, oldsa;
++
++			memset(&newsa, '\0', sizeof(newsa));
++			newsa.sa_handler = SIG_DFL;
++			if (sigaction(SIGCHLD, &newsa, &oldsa) == -1) {
++				pam_syslog(idata->pamh, LOG_ERR, "failed to reset SIGCHLD handler");
++				return PAM_SESSION_ERR;
++			}
++
+ 			pid = fork();
+ 			if (pid == 0) {
+ 				static char *envp[] = { NULL };
+@@ -1309,13 +1409,13 @@ static int inst_init(const struct polydir_s *polyptr, const char *ipath,
+ 				rc = PAM_SESSION_ERR;
+ 				goto out;
+ 			}
++			rc = PAM_SUCCESS;
++out:
++			(void) sigaction(SIGCHLD, &oldsa, NULL);
++			return rc;
+ 		}
+ 	}
+-	rc = PAM_SUCCESS;
+-out:
+-   (void) sigaction(SIGCHLD, &oldsa, NULL);
+-
+-   return rc;
++	return PAM_SUCCESS;
+ }
+
+ static int create_polydir(struct polydir_s *polyptr,
 diff --git a/modules/pam_namespace/pam_namespace.h b/modules/pam_namespace/pam_namespace.h
-index b51f2841..169bd59f 100644
+index b51f2841..0b974ea7 100644
 --- a/modules/pam_namespace/pam_namespace.h
 +++ b/modules/pam_namespace/pam_namespace.h
-@@ -90,14 +90,10 @@
+@@ -90,15 +90,17 @@
  /*
   * Module defines
   */
 -#ifndef SECURECONF_DIR
 -#define SECURECONF_DIR "/etc/security/"
--#endif
--
--#define PAM_NAMESPACE_CONFIG (SECURECONF_DIR "namespace.conf")
--#define NAMESPACE_INIT_SCRIPT (SECURECONF_DIR "namespace.init")
--#define NAMESPACE_D_DIR (SECURECONF_DIR "namespace.d/")
--#define NAMESPACE_D_GLOB (SECURECONF_DIR "namespace.d/*.conf")
 +#define PAM_NAMESPACE_CONFIG (SCONFIGDIR "/namespace.conf")
 +#define NAMESPACE_INIT_SCRIPT (SCONFIGDIR "/namespace.init")
 +#define NAMESPACE_D_DIR (SCONFIGDIR "/namespace.d/")
 +#define NAMESPACE_D_GLOB (SCONFIGDIR "/namespace.d/*.conf")
- 
++#ifdef VENDOR_SCONFIGDIR
++#define VENDOR_NAMESPACE_INIT_SCRIPT (VENDOR_SCONFIGDIR "/namespace.init")
++#define VENDOR_PAM_NAMESPACE_CONFIG (VENDOR_SCONFIGDIR "/namespace.conf")
++#define VENDOR_NAMESPACE_D_DIR (VENDOR_SCONFIGDIR "/namespace.d/")
++#define VENDOR_NAMESPACE_D_GLOB (VENDOR_SCONFIGDIR "/namespace.d/*.conf")
+ #endif
+
+-#define PAM_NAMESPACE_CONFIG (SECURECONF_DIR "namespace.conf")
+-#define NAMESPACE_INIT_SCRIPT (SECURECONF_DIR "namespace.init")
+-#define NAMESPACE_D_DIR (SECURECONF_DIR "namespace.d/")
+-#define NAMESPACE_D_GLOB (SECURECONF_DIR "namespace.d/*.conf")
+-
  /* module flags */
  #define PAMNS_DEBUG           0x00000100 /* Running in debug mode */
+ #define PAMNS_SELINUX_ENABLED 0x00000400 /* SELinux is enabled */
+diff --git a/modules/pam_nologin/pam_nologin.c b/modules/pam_nologin/pam_nologin.c
+index b7f9bab0..d7f83e0c 100644
+--- a/modules/pam_nologin/pam_nologin.c
++++ b/modules/pam_nologin/pam_nologin.c
+@@ -79,7 +79,6 @@ static int perform_check(pam_handle_t *pamh, struct opt_s *opts)
+
+     if (fd >= 0) {
+
+-	char *mtmp=NULL;
+ 	int msg_style = PAM_TEXT_INFO;
+ 	struct passwd *user_pwd;
+ 	struct stat st;
+@@ -99,21 +98,25 @@ static int perform_check(pam_handle_t *pamh, struct opt_s *opts)
+ 	    goto clean_up_fd;
+ 	}
+
+-	mtmp = malloc(st.st_size+1);
+-	if (!mtmp) {
+-	    pam_syslog(pamh, LOG_CRIT, "out of memory");
+-	    retval = PAM_BUF_ERR;
+-	    goto clean_up_fd;
+-	}
+-
+-	if (pam_modutil_read(fd, mtmp, st.st_size) == st.st_size) {
+-		mtmp[st.st_size] = '\0';
+-		(void) pam_prompt (pamh, msg_style, NULL, "%s", mtmp);
++	/* Don't print anything if the message is empty, will only
++	   disturb the output with empty lines */
++	if (st.st_size > 0) {
++	    char *mtmp = malloc(st.st_size+1);
++	    if (!mtmp) {
++	        pam_syslog(pamh, LOG_CRIT, "out of memory");
++	        retval = PAM_BUF_ERR;
++	        goto clean_up_fd;
++	    }
++
++	    if (pam_modutil_read(fd, mtmp, st.st_size) == st.st_size) {
++	        mtmp[st.st_size] = '\0';
++	        (void) pam_prompt (pamh, msg_style, NULL, "%s", mtmp);
++	    }
++	    else
++	        retval = PAM_SYSTEM_ERR;
++
++	    free(mtmp);
+ 	}
+-	else
+-	    retval = PAM_SYSTEM_ERR;
+-
+-	free(mtmp);
+
+     clean_up_fd:
+
+diff --git a/modules/pam_pwhistory/Makefile.am b/modules/pam_pwhistory/Makefile.am
+index 8a4dbcb2..c29a8e11 100644
+--- a/modules/pam_pwhistory/Makefile.am
++++ b/modules/pam_pwhistory/Makefile.am
+@@ -26,12 +27,14 @@ if HAVE_VERSIONING
+   pam_pwhistory_la_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
+ endif
+
+-noinst_HEADERS = opasswd.h
++noinst_HEADERS = opasswd.h pwhistory_config.h
++
++dist_secureconf_DATA = pwhistory.conf
+
+ securelib_LTLIBRARIES = pam_pwhistory.la
+ pam_pwhistory_la_CFLAGS = $(AM_CFLAGS)
+ pam_pwhistory_la_LIBADD = $(top_builddir)/libpam/libpam.la @LIBCRYPT@ @LIBSELINUX@
+-pam_pwhistory_la_SOURCES = pam_pwhistory.c opasswd.c
++pam_pwhistory_la_SOURCES = pam_pwhistory.c opasswd.c pwhistory_config.c
+
+ sbin_PROGRAMS = pwhistory_helper
+ pwhistory_helper_CFLAGS = $(AM_CFLAGS) -DHELPER_COMPILE=\"pwhistory_helper\" @EXE_CFLAGS@
 diff --git a/modules/pam_pwhistory/opasswd.c b/modules/pam_pwhistory/opasswd.c
 index a6cd3d2a..1d3242ca 100644
 --- a/modules/pam_pwhistory/opasswd.c
@@ -900,15 +4705,15 @@ index a6cd3d2a..1d3242ca 100644
 @@ -74,8 +75,7 @@
  #define RANDOM_DEVICE "/dev/urandom"
  #endif
- 
+
 -#define OLD_PASSWORDS_FILE "/etc/security/opasswd"
 -#define TMP_PASSWORDS_FILE OLD_PASSWORDS_FILE".tmpXXXXXX"
 +#define DEFAULT_OLD_PASSWORDS_FILE SCONFIGDIR "/opasswd"
- 
+
  #define DEFAULT_BUFLEN 4096
- 
+
 @@ -142,7 +142,7 @@ compare_password(const char *newpass, const char *oldpass)
- 
+
  /* Check, if the new password is already in the opasswd file.  */
  PAMH_ARG_DECL(int
 -check_old_pass, const char *user, const char *newpass, int debug)
@@ -919,7 +4724,7 @@ index a6cd3d2a..1d3242ca 100644
 @@ -156,10 +156,13 @@ check_old_pass, const char *user, const char *newpass, int debug)
      return PAM_PWHISTORY_RUN_HELPER;
  #endif
- 
+
 -  if ((oldpf = fopen (OLD_PASSWORDS_FILE, "r")) == NULL)
 +  const char *opasswd_file =
 +	  (filename != NULL ? filename : DEFAULT_OLD_PASSWORDS_FILE);
@@ -931,10 +4736,10 @@ index a6cd3d2a..1d3242ca 100644
 +	pam_syslog (pamh, LOG_ERR, "Cannot open %s: %m", opasswd_file);
        return PAM_SUCCESS;
      }
- 
+
 @@ -242,9 +245,8 @@ check_old_pass, const char *user, const char *newpass, int debug)
  }
- 
+
  PAMH_ARG_DECL(int
 -save_old_pass, const char *user, int howmany, int debug UNUSED)
 +save_old_pass, const char *user, int howmany, const char *filename, int debug UNUSED)
@@ -946,7 +4751,7 @@ index a6cd3d2a..1d3242ca 100644
 @@ -256,6 +258,15 @@ save_old_pass, const char *user, int howmany, int debug UNUSED)
    struct passwd *pwd;
    const char *oldpass;
- 
+
 +  /* Define opasswd file and temp file for opasswd */
 +  const char *opasswd_file =
 +	  (filename != NULL ? filename : DEFAULT_OLD_PASSWORDS_FILE);
@@ -962,7 +4767,7 @@ index a6cd3d2a..1d3242ca 100644
 @@ -285,24 +296,22 @@ save_old_pass, const char *user, int howmany, int debug UNUSED)
    if (oldpass == NULL || *oldpass == '\0')
      return PAM_SUCCESS;
- 
+
 -  if ((oldpf = fopen (OLD_PASSWORDS_FILE, "r")) == NULL)
 +  if ((oldpf = fopen (opasswd_file, "r")) == NULL)
      {
@@ -1028,7 +4833,7 @@ index a6cd3d2a..1d3242ca 100644
 @@ -550,12 +555,20 @@ save_old_pass, const char *user, int howmany, int debug UNUSED)
        goto error_opasswd;
      }
- 
+
 -  unlink (OLD_PASSWORDS_FILE".old");
 -  if (link (OLD_PASSWORDS_FILE, OLD_PASSWORDS_FILE".old") != 0 &&
 +  char opasswd_backup[PATH_MAX];
@@ -1057,74 +4862,39 @@ index 3f257288..19a4062c 100644
 @@ -57,10 +57,10 @@ void
  helper_log_err(int err, const char *format, ...);
  #endif
- 
+
 -PAMH_ARG_DECL(int
 -check_old_pass, const char *user, const char *newpass, int debug);
 +PAMH_ARG_DECL(int check_old_pass, const char *user, const char *newpass,
 +              const char *filename, int debug);
- 
+
 -PAMH_ARG_DECL(int
 -save_old_pass, const char *user, int howmany, int debug);
 +PAMH_ARG_DECL(int save_old_pass, const char *user, int howmany,
 +              const char *filename, int debug);
- 
+
  #endif /* __OPASSWD_H__ */
-diff --git a/modules/pam_pwhistory/pam_pwhistory.8.xml b/modules/pam_pwhistory/pam_pwhistory.8.xml
-index d88115c2..df16a776 100644
---- a/modules/pam_pwhistory/pam_pwhistory.8.xml
-+++ b/modules/pam_pwhistory/pam_pwhistory.8.xml
-@@ -36,6 +36,9 @@
-       <arg choice="opt">
-         authtok_type=<replaceable>STRING</replaceable>
-       </arg>
-+      <arg choice="opt">
-+	      file=<replaceable>/path/filename</replaceable>
-+      </arg>
- 
-     </cmdsynopsis>
-   </refsynopsisdiv>
-@@ -137,6 +140,19 @@
-           </listitem>
-         </varlistentry>
- 
-+        <varlistentry>
-+          <term>
-+            <option>file=<replaceable>/path/filename</replaceable></option>
-+          </term>
-+          <listitem>
-+            <para>
-+              Store password history in file <filename>/path/filename</filename>
-+              rather than the default location. The default location is
-+	      <filename>/etc/security/opasswd</filename>.
-+            </para>
-+          </listitem>
-+        </varlistentry>
-+
-     </variablelist>
-   </refsect1>
- 
-@@ -213,7 +229,7 @@ password     required       pam_unix.so        use_authtok
-       <varlistentry>
-         <term><filename>/etc/security/opasswd</filename></term>
-         <listitem>
--          <para>File with password history</para>
-+          <para>Default file with password history</para>
-         </listitem>
-       </varlistentry>
-     </variablelist>
 diff --git a/modules/pam_pwhistory/pam_pwhistory.c b/modules/pam_pwhistory/pam_pwhistory.c
-index ce2c21f5..9c1bdd87 100644
+index ce2c21f5..5a7fb811 100644
 --- a/modules/pam_pwhistory/pam_pwhistory.c
 +++ b/modules/pam_pwhistory/pam_pwhistory.c
-@@ -69,6 +69,7 @@ struct options_t {
-   int enforce_for_root;
-   int remember;
-   int tries;
-+  const char *filename;
- };
- typedef struct options_t options_t;
- 
-@@ -104,13 +105,23 @@ parse_option (pam_handle_t *pamh, const char *argv, options_t *options)
+@@ -63,14 +63,8 @@
+
+ #include "opasswd.h"
+ #include "pam_inline.h"
++#include "pwhistory_config.h"
+
+-struct options_t {
+-  int debug;
+-  int enforce_for_root;
+-  int remember;
+-  int tries;
+-};
+-typedef struct options_t options_t;
+
+
+ static void
+@@ -104,13 +98,23 @@ parse_option (pam_handle_t *pamh, const char *argv, options_t *options)
      options->enforce_for_root = 1;
    else if (pam_str_skip_icase_prefix(argv, "authtok_type=") != NULL)
      { /* ignore, for pam_get_authtok */; }
@@ -1141,7 +4911,7 @@ index ce2c21f5..9c1bdd87 100644
    else
      pam_syslog (pamh, LOG_ERR, "pam_pwhistory: unknown option: %s", argv);
  }
- 
+
  static int
  run_save_helper(pam_handle_t *pamh, const char *user,
 -		int howmany, int debug)
@@ -1149,16 +4919,16 @@ index ce2c21f5..9c1bdd87 100644
  {
    int retval, child;
    struct sigaction newsa, oldsa;
-@@ -123,7 +134,7 @@ run_save_helper(pam_handle_t *pamh, const char *user,
+@@ -123,7 +127,7 @@ run_save_helper(pam_handle_t *pamh, const char *user,
    if (child == 0)
      {
        static char *envp[] = { NULL };
 -      char *args[] = { NULL, NULL, NULL, NULL, NULL, NULL };
 +      char *args[] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL };
- 
+
        if (pam_modutil_sanitize_helper_fds(pamh, PAM_MODUTIL_PIPE_FD,
            PAM_MODUTIL_PIPE_FD,
-@@ -137,9 +148,10 @@ run_save_helper(pam_handle_t *pamh, const char *user,
+@@ -137,9 +141,10 @@ run_save_helper(pam_handle_t *pamh, const char *user,
        args[0] = (char *)PWHISTORY_HELPER;
        args[1] = (char *)"save";
        args[2] = (char *)user;
@@ -1171,8 +4941,8 @@ index ce2c21f5..9c1bdd87 100644
          {
            pam_syslog(pamh, LOG_ERR, "asprintf: %m");
            _exit(PAM_SYSTEM_ERR);
-@@ -185,7 +197,7 @@ run_save_helper(pam_handle_t *pamh, const char *user,
- 
+@@ -185,7 +190,7 @@ run_save_helper(pam_handle_t *pamh, const char *user,
+
  static int
  run_check_helper(pam_handle_t *pamh, const char *user,
 -		 const char *newpass, int debug)
@@ -1180,16 +4950,16 @@ index ce2c21f5..9c1bdd87 100644
  {
    int retval, child, fds[2];
    struct sigaction newsa, oldsa;
-@@ -202,7 +214,7 @@ run_check_helper(pam_handle_t *pamh, const char *user,
+@@ -202,7 +207,7 @@ run_check_helper(pam_handle_t *pamh, const char *user,
    if (child == 0)
      {
        static char *envp[] = { NULL };
 -      char *args[] = { NULL, NULL, NULL, NULL, NULL };
 +      char *args[] = { NULL, NULL, NULL, NULL, NULL, NULL };
- 
+
        /* reopen stdin as pipe */
        if (dup2(fds[0], STDIN_FILENO) != STDIN_FILENO)
-@@ -223,8 +235,9 @@ run_check_helper(pam_handle_t *pamh, const char *user,
+@@ -223,8 +228,9 @@ run_check_helper(pam_handle_t *pamh, const char *user,
        args[0] = (char *)PWHISTORY_HELPER;
        args[1] = (char *)"check";
        args[2] = (char *)user;
@@ -1200,38 +4970,263 @@ index ce2c21f5..9c1bdd87 100644
          {
            pam_syslog(pamh, LOG_ERR, "asprintf: %m");
            _exit(PAM_SYSTEM_ERR);
-@@ -323,10 +336,10 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
+@@ -299,6 +305,8 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
+   options.remember = 10;
+   options.tries = 1;
+
++  parse_config_file(pamh, argc, argv, &options);
++
+   /* Parse parameters for module */
+   for ( ; argc-- > 0; argv++)
+     parse_option (pamh, *argv, &options);
+@@ -306,7 +314,6 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
+   if (options.debug)
+     pam_syslog (pamh, LOG_DEBUG, "pam_sm_chauthtok entered");
+
+-
+   if (options.remember == 0)
+     return PAM_IGNORE;
+
+@@ -323,10 +330,10 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
        return PAM_SUCCESS;
      }
- 
+
 -  retval = save_old_pass (pamh, user, options.remember, options.debug);
 +  retval = save_old_pass (pamh, user, options.remember, options.filename, options.debug);
- 
+
    if (retval == PAM_PWHISTORY_RUN_HELPER)
 -      retval = run_save_helper(pamh, user, options.remember, options.debug);
 +      retval = run_save_helper(pamh, user, options.remember, options.filename, options.debug);
- 
+
    if (retval != PAM_SUCCESS)
      return retval;
-@@ -358,9 +371,9 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
+@@ -358,9 +365,9 @@ pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
        if (options.debug)
  	pam_syslog (pamh, LOG_DEBUG, "check against old password file");
- 
+
 -      retval = check_old_pass (pamh, user, newpass, options.debug);
 +      retval = check_old_pass (pamh, user, newpass, options.filename, options.debug);
        if (retval == PAM_PWHISTORY_RUN_HELPER)
 -	  retval = run_check_helper(pamh, user, newpass, options.debug);
 +	  retval = run_check_helper(pamh, user, newpass, options.filename, options.debug);
- 
+
        if (retval != PAM_SUCCESS)
  	{
+diff --git a/modules/pam_pwhistory/pwhistory.conf b/modules/pam_pwhistory/pwhistory.conf
+new file mode 100644
+index 00000000..070b7197
+--- /dev/null
++++ b/modules/pam_pwhistory/pwhistory.conf
+@@ -0,0 +1,21 @@
++# Configuration for remembering the last passwords used by a user.
++#
++# Enable the debugging logs.
++# Enabled if option is present.
++# debug
++#
++# root account's passwords are also remembered.
++# Enabled if option is present.
++# enforce_for_root
++#
++# Number of passwords to remember.
++# The default is 10.
++# remember = 10
++#
++# Number of times to prompt for the password.
++# The default is 1.
++# retry = 1
++#
++# The directory where the last passwords are kept.
++# The default is /etc/security/opasswd.
++# file = /etc/security/opasswd
+diff --git a/modules/pam_pwhistory/pwhistory_config.c b/modules/pam_pwhistory/pwhistory_config.c
+new file mode 100644
+index 00000000..b21879c6
+--- /dev/null
++++ b/modules/pam_pwhistory/pwhistory_config.c
+@@ -0,0 +1,115 @@
++/*
++ * Copyright (c) 2022 Iker Pedrosa <ipedrosa@redhat.com>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, and the entire permission notice in its entirety,
++ *    including the disclaimer of warranties.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The name of the author may not be used to endorse or promote
++ *    products derived from this software without specific prior
++ *    written permission.
++ *
++ * ALTERNATIVELY, this product may be distributed under the terms of
++ * the GNU Public License, in which case the provisions of the GPL are
++ * required INSTEAD OF the above restrictions.  (This clause is
++ * necessary due to a potential bad interaction between the GPL and
++ * the restrictions contained in a BSD-style copyright.)
++ *
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
++ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
++ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
++ * OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#include "config.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <syslog.h>
++
++#include <security/pam_modutil.h>
++
++#include "pam_inline.h"
++#include "pwhistory_config.h"
++
++#define PWHISTORY_DEFAULT_CONF SCONFIGDIR "/pwhistory.conf"
++
++void
++parse_config_file(pam_handle_t *pamh, int argc, const char **argv,
++                  struct options_t *options)
++{
++    const char *fname = NULL;
++    int i;
++    char *val;
++
++    for (i = 0; i < argc; ++i) {
++        const char *str = pam_str_skip_prefix(argv[i], "conf=");
++
++        if (str != NULL) {
++            fname = str;
++        }
++    }
++
++    if (fname == NULL) {
++        fname = PWHISTORY_DEFAULT_CONF;
++    }
++
++    val = pam_modutil_search_key (pamh, fname, "debug");
++    if (val != NULL) {
++        options->debug = 1;
++        free(val);
++    }
++
++    val = pam_modutil_search_key (pamh, fname, "enforce_for_root");
++    if (val != NULL) {
++        options->enforce_for_root = 1;
++        free(val);
++    }
++
++    val = pam_modutil_search_key (pamh, fname, "remember");
++    if (val != NULL) {
++        unsigned int temp;
++        if (sscanf(val, "%u", &temp) != 1) {
++            pam_syslog(pamh, LOG_ERR,
++                "Bad number supplied for remember argument");
++        } else {
++            options->remember = temp;
++        }
++        free(val);
++    }
++
++    val = pam_modutil_search_key (pamh, fname, "retry");
++    if (val != NULL) {
++        unsigned int temp;
++        if (sscanf(val, "%u", &temp) != 1) {
++            pam_syslog(pamh, LOG_ERR,
++                "Bad number supplied for retry argument");
++        } else {
++            options->tries = temp;
++        }
++        free(val);
++    }
++
++    val = pam_modutil_search_key (pamh, fname, "file");
++    if (val != NULL) {
++        if (*val != '/') {
++            pam_syslog (pamh, LOG_ERR,
++                "File path should be absolute: %s", val);
++        } else {
++            options->filename = val;
++        }
++    }
++}
+diff --git a/modules/pam_pwhistory/pwhistory_config.h b/modules/pam_pwhistory/pwhistory_config.h
+new file mode 100644
+index 00000000..e2b3bc83
+--- /dev/null
++++ b/modules/pam_pwhistory/pwhistory_config.h
+@@ -0,0 +1,54 @@
++/*
++ * Copyright (c) 2022 Iker Pedrosa <ipedrosa@redhat.com>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, and the entire permission notice in its entirety,
++ *    including the disclaimer of warranties.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The name of the author may not be used to endorse or promote
++ *    products derived from this software without specific prior
++ *    written permission.
++ *
++ * ALTERNATIVELY, this product may be distributed under the terms of
++ * the GNU Public License, in which case the provisions of the GPL are
++ * required INSTEAD OF the above restrictions.  (This clause is
++ * necessary due to a potential bad interaction between the GPL and
++ * the restrictions contained in a BSD-style copyright.)
++ *
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++ * DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
++ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
++ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
++ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
++ * OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#ifndef _PWHISTORY_CONFIG_H
++#define _PWHISTORY_CONFIG_H
++
++#include <security/pam_ext.h>
++
++struct options_t {
++    int debug;
++    int enforce_for_root;
++    int remember;
++    int tries;
++    const char *filename;
++};
++typedef struct options_t options_t;
++
++void
++parse_config_file(pam_handle_t *pamh, int argc, const char **argv,
++                  struct options_t *options);
++
++#endif /* _PWHISTORY_CONFIG_H */
 diff --git a/modules/pam_pwhistory/pwhistory_helper.c b/modules/pam_pwhistory/pwhistory_helper.c
 index b08a14a7..7a61ae53 100644
 --- a/modules/pam_pwhistory/pwhistory_helper.c
 +++ b/modules/pam_pwhistory/pwhistory_helper.c
 @@ -51,7 +51,7 @@
- 
- 
+
+
  static int
 -check_history(const char *user, const char *debug)
 +check_history(const char *user, const char *filename, const char *debug)
@@ -1241,15 +5236,15 @@ index b08a14a7..7a61ae53 100644
 @@ -68,7 +68,7 @@ check_history(const char *user, const char *debug)
        return PAM_AUTHTOK_ERR;
      }
- 
+
 -  retval = check_old_pass(user, pass, dbg);
 +  retval = check_old_pass(user, pass, filename, dbg);
- 
+
    memset(pass, '\0', PAM_MAX_RESP_SIZE);	/* clear memory of the password */
- 
+
 @@ -76,13 +76,13 @@ check_history(const char *user, const char *debug)
  }
- 
+
  static int
 -save_history(const char *user, const char *howmany, const char *debug)
 +save_history(const char *user, const char *filename, const char *howmany, const char *debug)
@@ -1257,10 +5252,10 @@ index b08a14a7..7a61ae53 100644
    int num = atoi(howmany);
    int dbg = atoi(debug); /* no need to be too fancy here */
    int retval;
- 
+
 -  retval = save_old_pass(user, num, dbg);
 +  retval = save_old_pass(user, num, filename, dbg);
- 
+
    return retval;
  }
 @@ -92,13 +92,14 @@ main(int argc, char *argv[])
@@ -1268,23 +5263,23 @@ index b08a14a7..7a61ae53 100644
    const char *option;
    const char *user;
 +  const char *filename;
- 
+
    /*
     * we establish that this program is running with non-tty stdin.
     * this is to discourage casual use.
     */
- 
+
 -  if (isatty(STDIN_FILENO) || argc < 4)
 +  if (isatty(STDIN_FILENO) || argc < 5)
      {
        fprintf(stderr,
              "This binary is not designed for running in this way.\n");
 @@ -107,11 +108,12 @@ main(int argc, char *argv[])
- 
+
    option = argv[1];
    user = argv[2];
 +  filename = argv[3];
- 
+
 -  if (strcmp(option, "check") == 0 && argc == 4)
 -    return check_history(user, argv[3]);
 -  else if (strcmp(option, "save") == 0 && argc == 5)
@@ -1293,9 +5288,9 @@ index b08a14a7..7a61ae53 100644
 +    return check_history(user, filename, argv[4]);
 +  else if (strcmp(option, "save") == 0 && argc == 6)
 +    return save_history(user, filename, argv[4], argv[5]);
- 
+
    fprintf(stderr, "This binary is not designed for running in this way.\n");
- 
+
 diff --git a/modules/pam_rootok/pam_rootok.c b/modules/pam_rootok/pam_rootok.c
 index dd374c53..9bc15abf 100644
 --- a/modules/pam_rootok/pam_rootok.c
@@ -1306,11 +5301,11 @@ index dd374c53..9bc15abf 100644
  {
 -    int audit_fd;
      va_list ap;
- 
+
  #ifdef HAVE_LIBAUDIT
 -    audit_fd = audit_open();
 +    int audit_fd = audit_open();
- 
+
      if (audit_fd >= 0) {
  	char *buf;
 diff --git a/modules/pam_sepermit/Makefile.am b/modules/pam_sepermit/Makefile.am
@@ -1323,27 +5318,27 @@ index 18a89b60..bed3b149 100644
  dist_check_SCRIPTS = tst-pam_sepermit
 -TESTS = $(dist_check_SCRIPTS)
 +TESTS = $(dist_check_SCRIPTS) $(check_PROGRAMS)
- 
+
  securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
 @@ -21,7 +21,6 @@ sepermitlockdir = ${localstatedir}/run/sepermit
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
  	-I$(top_srcdir)/libpam_misc/include \
 -	-D SEPERMIT_CONF_FILE=\"$(SCONFIGDIR)/sepermit.conf\" \
  	-D SEPERMIT_LOCKDIR=\"$(sepermitlockdir)\" $(WARN_CFLAGS)
- 
+
  pam_sepermit_la_LIBADD = $(top_builddir)/libpam/libpam.la @LIBSELINUX@
 @@ -33,6 +32,9 @@ endif
  dist_secureconf_DATA = sepermit.conf
  securelib_LTLIBRARIES = pam_sepermit.la
- 
+
 +check_PROGRAMS = tst-pam_sepermit-retval
 +tst_pam_sepermit_retval_LDADD = $(top_builddir)/libpam/libpam.la
 +
  install-data-local:
  	mkdir -p $(DESTDIR)$(sepermitlockdir)
- 
+
 diff --git a/modules/pam_sepermit/pam_sepermit.8.xml b/modules/pam_sepermit/pam_sepermit.8.xml
 index 30d9cc54..5763c346 100644
 --- a/modules/pam_sepermit/pam_sepermit.8.xml
@@ -1359,16 +5354,16 @@ index 30d9cc54..5763c346 100644
 +      <filename>%vendordir%/security/sepermit.conf</filename> is used.
 +    </para>
    </refsect1>
- 
+
    <refsect1 id="pam_sepermit-options">
 diff --git a/modules/pam_sepermit/pam_sepermit.c b/modules/pam_sepermit/pam_sepermit.c
 index f7d98d5b..5fbc8fdd 100644
 --- a/modules/pam_sepermit/pam_sepermit.c
 +++ b/modules/pam_sepermit/pam_sepermit.c
 @@ -61,6 +61,12 @@
- 
+
  #include <selinux/selinux.h>
- 
+
 +#include "pam_inline.h"
 +
 +#define SEPERMIT_CONF_FILE	(SCONFIGDIR "/sepermit.conf")
@@ -1377,14 +5372,14 @@ index f7d98d5b..5fbc8fdd 100644
 +#endif
  #define MODULE "pam_sepermit"
  #define OPT_DELIM ":"
- 
+
 @@ -370,16 +376,31 @@ pam_sm_authenticate(pam_handle_t *pamh, int flags UNUSED,
  	const char *user = NULL;
  	char *seuser = NULL;
  	char *level = NULL;
 -	const char *cfgfile = SEPERMIT_CONF_FILE;
 +	const char *cfgfile = NULL;
- 
+
  	/* Parse arguments. */
  	for (i = 0; i < argc; i++) {
 +		const char *str;
@@ -1412,7 +5407,7 @@ index f7d98d5b..5fbc8fdd 100644
 +		cfgfile = SEPERMIT_CONF_FILE;
 +#endif
  	}
- 
+
  	if (debug)
 diff --git a/modules/pam_sepermit/tst-pam_sepermit-retval.c b/modules/pam_sepermit/tst-pam_sepermit-retval.c
 new file mode 100644
@@ -1579,42 +5574,221 @@ index 00000000..321bd6d1
 +	return 0;
 +}
 diff --git a/modules/pam_time/Makefile.am b/modules/pam_time/Makefile.am
-index 833d51a6..f34f8dce 100644
+index 833d51a6..ad53f1cc 100644
 --- a/modules/pam_time/Makefile.am
 +++ b/modules/pam_time/Makefile.am
-@@ -18,7 +18,7 @@ securelibdir = $(SECUREDIR)
+@@ -12,13 +12,13 @@ dist_man_MANS = time.conf.5 pam_time.8
+ endif
+ XMLS = README.xml time.conf.5.xml pam_time.8.xml
+ dist_check_SCRIPTS = tst-pam_time
+-TESTS = $(dist_check_SCRIPTS)
++TESTS = $(dist_check_SCRIPTS) $(check_PROGRAMS)
+
+ securelibdir = $(SECUREDIR)
  secureconfdir = $(SCONFIGDIR)
- 
+
  AM_CFLAGS = -I$(top_srcdir)/libpam/include -I$(top_srcdir)/libpamc/include \
 -	-DPAM_TIME_CONF=\"$(SCONFIGDIR)/time.conf\" $(WARN_CFLAGS)
 +	    $(WARN_CFLAGS)
  AM_LDFLAGS = -no-undefined -avoid-version -module
  if HAVE_VERSIONING
    AM_LDFLAGS += -Wl,--version-script=$(srcdir)/../modules.map
+@@ -28,6 +28,9 @@ pam_time_la_LIBADD = $(top_builddir)/libpam/libpam.la
+ securelib_LTLIBRARIES = pam_time.la
+ dist_secureconf_DATA = time.conf
+
++check_PROGRAMS = tst-pam_time-retval
++tst_pam_time_retval_LDADD = $(top_builddir)/libpam/libpam.la
++
+ if ENABLE_REGENERATE_MAN
+ dist_noinst_DATA = README
+ -include $(top_srcdir)/Make.xml.rules
+diff --git a/modules/pam_time/pam_time.8.xml b/modules/pam_time/pam_time.8.xml
+index 4708220c..a33744ea 100644
+--- a/modules/pam_time/pam_time.8.xml
++++ b/modules/pam_time/pam_time.8.xml
+@@ -51,6 +51,11 @@
+       <filename>/etc/security/time.conf</filename>.
+       An alternative file can be specified with the <emphasis>conffile</emphasis> option.
+     </para>
++    <para condition="with_vendordir">
++      If there is no explicitly specified configuration file and
++      <filename>/etc/security/time.conf</filename> does not exist,
++      <filename>%vendordir%/security/time.conf</filename> is used.
++    </para>
+     <para>
+       If Linux PAM is compiled with audit support the module will report
+       when it denies access.
 diff --git a/modules/pam_time/pam_time.c b/modules/pam_time/pam_time.c
-index 089ae22d..8eebc914 100644
+index 089ae22d..9092597a 100644
 --- a/modules/pam_time/pam_time.c
 +++ b/modules/pam_time/pam_time.c
-@@ -33,6 +33,8 @@
+@@ -33,6 +33,11 @@
  #include <libaudit.h>
  #endif
- 
+
 +#define PAM_TIME_CONF	(SCONFIGDIR "/time.conf")
++#ifdef VENDOR_SCONFIGDIR
++#define VENDOR_PAM_TIME_CONF (VENDOR_SCONFIGDIR "/time.conf")
++#endif
 +
  #define PAM_TIME_BUFLEN        1000
  #define FIELD_SEPARATOR        ';'   /* this is new as of .02 */
- 
+
+@@ -53,7 +58,7 @@ _pam_parse (const pam_handle_t *pamh, int argc, const char **argv, const char **
+ {
+     int ctrl = 0;
+
+-    *conffile = PAM_TIME_CONF;
++    *conffile = NULL;
+     /* step through arguments */
+     for (; argc-- > 0; ++argv) {
+ 	const char *str;
+@@ -77,6 +82,20 @@ _pam_parse (const pam_handle_t *pamh, int argc, const char **argv, const char **
+ 	}
+     }
+
++    if (*conffile == NULL) {
++	*conffile = PAM_TIME_CONF;
++#ifdef VENDOR_PAM_TIME_CONF
++	/*
++	 * Check whether PAM_TIME_CONF file is available.
++	 * If it does not exist, fall back to VENDOR_PAM_TIME_CONF file.
++	 */
++	struct stat buffer;
++	if (stat(*conffile, &buffer) != 0 && errno == ENOENT) {
++	    *conffile = VENDOR_PAM_TIME_CONF;
++	}
++#endif
++    }
++
+     return ctrl;
+ }
+
+diff --git a/modules/pam_time/tst-pam_time-retval.c b/modules/pam_time/tst-pam_time-retval.c
+new file mode 100644
+index 00000000..281ac80d
+--- /dev/null
++++ b/modules/pam_time/tst-pam_time-retval.c
+@@ -0,0 +1,107 @@
++/*
++ * Check pam_time return values.
++ *
++ * Copyright (c) 2020-2022 Dmitry V. Levin <ldv@altlinux.org>
++ * Copyright (c) 2022 Stefan Schubert <schubi@suse.de>
++ */
++
++#include "test_assert.h"
++
++#include <limits.h>
++#include <stdio.h>
++#include <string.h>
++#include <unistd.h>
++#include <security/pam_appl.h>
++
++#define MODULE_NAME "pam_time"
++#define TEST_NAME "tst-" MODULE_NAME "-retval"
++
++static const char service_file[] = TEST_NAME ".service";
++static const char config_file[] = TEST_NAME ".conf";
++static struct pam_conv conv;
++
++int
++main(void)
++{
++	pam_handle_t *pamh = NULL;
++	FILE *fp;
++	char cwd[PATH_MAX];
++
++	ASSERT_NE(NULL, getcwd(cwd, sizeof(cwd)));
++
++	/* PAM_USER_UNKNOWN */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0,
++		  fprintf(fp, "#%%PAM-1.0\n"
++			      "auth required %s/.libs/%s.so\n"
++			      "account required %s/.libs/%s.so\n"
++			      "password required %s/.libs/%s.so\n"
++			      "session required %s/.libs/%s.so\n",
++			  cwd, MODULE_NAME,
++			  cwd, MODULE_NAME,
++			  cwd, MODULE_NAME,
++			  cwd, MODULE_NAME));
++	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_EQ(PAM_SUCCESS,
++		  pam_start_confdir(service_file, "", &conv, ".", &pamh));
++	ASSERT_NE(NULL, pamh);
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_authenticate(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_setcred(pamh, 0));
++	ASSERT_EQ(PAM_USER_UNKNOWN, pam_acct_mgmt(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_chauthtok(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_open_session(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_close_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_end(pamh, 0));
++	pamh = NULL;
++
++	ASSERT_NE(NULL, fp = fopen(config_file, "w"));
++	ASSERT_LT(0, fprintf(fp, "# only root can access %s\n"
++				 "%s ; * ; !root ; !Al0000-2400\n",
++			     service_file, service_file));
++	ASSERT_EQ(0, fclose(fp));
++
++	/* conffile= specifies an existing file */
++	ASSERT_NE(NULL, fp = fopen(service_file, "w"));
++	ASSERT_LT(0,
++		  fprintf(fp, "#%%PAM-1.0\n"
++			      "auth required %s/.libs/%s.so conffile=%s\n"
++			      "account required %s/.libs/%s.so conffile=%s\n"
++			      "password required %s/.libs/%s.so conffile=%s\n"
++			      "session required %s/.libs/%s.so conffile=%s\n",
++			  cwd, MODULE_NAME, config_file,
++			  cwd, MODULE_NAME, config_file,
++			  cwd, MODULE_NAME, config_file,
++			  cwd, MODULE_NAME, config_file));
++	ASSERT_EQ(0, fclose(fp));
++
++	ASSERT_EQ(PAM_SUCCESS,
++		  pam_start_confdir(service_file, "root", &conv, ".", &pamh));
++	ASSERT_NE(NULL, pamh);
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_authenticate(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_setcred(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_acct_mgmt(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_chauthtok(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_open_session(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_close_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_end(pamh, 0));
++	pamh = NULL;
++
++	ASSERT_EQ(PAM_SUCCESS,
++		  pam_start_confdir(service_file, "noone", &conv, ".", &pamh));
++	ASSERT_NE(NULL, pamh);
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_authenticate(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_setcred(pamh, 0));
++	ASSERT_EQ(PAM_PERM_DENIED, pam_acct_mgmt(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_chauthtok(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_open_session(pamh, 0));
++	ASSERT_EQ(PAM_MODULE_UNKNOWN, pam_close_session(pamh, 0));
++	ASSERT_EQ(PAM_SUCCESS, pam_end(pamh, 0));
++	pamh = NULL;
++
++	/* cleanup */
++	ASSERT_EQ(0, unlink(config_file));
++	ASSERT_EQ(0, unlink(service_file));
++
++	return 0;
++}
 diff --git a/modules/pam_unix/passverify.c b/modules/pam_unix/passverify.c
 index f2474a5b..c8ab49f3 100644
 --- a/modules/pam_unix/passverify.c
 +++ b/modules/pam_unix/passverify.c
 @@ -334,7 +334,7 @@ PAMH_ARG_DECL(int check_shadow_expiry,
- 
+
  #define PW_TMPFILE              "/etc/npasswd"
  #define SH_TMPFILE              "/etc/nshadow"
 -#define OPW_TMPFILE             "/etc/security/nopasswd"
 +#define OPW_TMPFILE             SCONFIGDIR "/nopasswd"
- 
+
  /*
   * i64c - convert an integer to a radix 64 character
 diff --git a/modules/pam_unix/passverify.h b/modules/pam_unix/passverify.h
@@ -1622,20 +5796,135 @@ index c07037d2..463ef185 100644
 --- a/modules/pam_unix/passverify.h
 +++ b/modules/pam_unix/passverify.h
 @@ -8,7 +8,7 @@
- 
+
  #define PAM_UNIX_RUN_HELPER PAM_CRED_INSUFFICIENT
- 
+
 -#define OLD_PASSWORDS_FILE      "/etc/security/opasswd"
 +#define OLD_PASSWORDS_FILE      SCONFIGDIR "/opasswd"
- 
+
  int
  is_pwd_shadowed(const struct passwd *pwd);
+diff --git a/modules/pam_usertype/pam_usertype.8.xml b/modules/pam_usertype/pam_usertype.8.xml
+index 7651da6e..d9307ba3 100644
+--- a/modules/pam_usertype/pam_usertype.8.xml
++++ b/modules/pam_usertype/pam_usertype.8.xml
+@@ -31,7 +31,7 @@
+       pam_usertype.so is designed to succeed or fail authentication
+       based on type of the account of the authenticated user.
+       The type of the account is decided with help of
+-      <emphasis>SYS_UID_MIN</emphasis> and <emphasis>SYS_UID_MAX</emphasis>
++      <emphasis>SYS_UID_MAX</emphasis>
+       settings in <emphasis>/etc/login.defs</emphasis>. One use is to select
+       whether to load other modules based on this test.
+     </para>
+diff --git a/modules/pam_usertype/pam_usertype.c b/modules/pam_usertype/pam_usertype.c
+index d03b73b5..cfd9c8bb 100644
+--- a/modules/pam_usertype/pam_usertype.c
++++ b/modules/pam_usertype/pam_usertype.c
+@@ -194,7 +194,6 @@ static int
+ pam_usertype_is_system(pam_handle_t *pamh, uid_t uid)
+ {
+     uid_t uid_min;
+-    uid_t sys_min;
+     uid_t sys_max;
+
+     if (uid == (uid_t)-1) {
+@@ -202,21 +201,19 @@ pam_usertype_is_system(pam_handle_t *pamh, uid_t uid)
+         return PAM_USER_UNKNOWN;
+     }
+
+-    if (uid <= 99) {
+-        /* Reserved. */
+-        return PAM_SUCCESS;
+-    }
+-
+     if (uid == PAM_USERTYPE_OVERFLOW_UID) {
+         /* nobody */
+         return PAM_SUCCESS;
+     }
+
+     uid_min = pam_usertype_get_id(pamh, "UID_MIN", PAM_USERTYPE_UIDMIN);
+-    sys_min = pam_usertype_get_id(pamh, "SYS_UID_MIN", PAM_USERTYPE_SYSUIDMIN);
+     sys_max = pam_usertype_get_id(pamh, "SYS_UID_MAX", uid_min - 1);
+
+-    return uid >= sys_min && uid <= sys_max ? PAM_SUCCESS : PAM_AUTH_ERR;
++    if (uid <= sys_max && uid < uid_min) {
++        return PAM_SUCCESS;
++    }
++
++    return PAM_AUTH_ERR;
+ }
+
+ static int
+@@ -253,7 +250,7 @@ pam_usertype_evaluate(struct pam_usertype_opts *opts,
+
+ /**
+  * Arguments:
+- * - issystem: uid in <SYS_UID_MIN, SYS_UID_MAX>
++ * - issystem: uid less than SYS_UID_MAX
+  * - isregular: not issystem
+  * - use_uid: use user that runs application not that is being authenticate (same as in pam_succeed_if)
+  * - audit: log unknown users to syslog
+diff --git a/modules/pam_xauth/pam_xauth.c b/modules/pam_xauth/pam_xauth.c
+index 03f8dc78..bbb7743b 100644
+--- a/modules/pam_xauth/pam_xauth.c
++++ b/modules/pam_xauth/pam_xauth.c
+@@ -52,6 +52,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <syslog.h>
++#include <signal.h>
+
+ #include <security/pam_modules.h>
+ #include <security/_pam_macros.h>
+@@ -99,6 +100,7 @@ run_coprocess(pam_handle_t *pamh, const char *input, char **output,
+ 	char *buffer = NULL;
+ 	size_t buffer_size = 0;
+ 	va_list ap;
++	struct sigaction newsa, oldsa;
+
+ 	*output = NULL;
+
+@@ -114,6 +116,17 @@ run_coprocess(pam_handle_t *pamh, const char *input, char **output,
+ 		return -1;
+ 	}
+
++	memset(&newsa, '\0', sizeof(newsa));
++	newsa.sa_handler = SIG_DFL;
++	if (sigaction(SIGCHLD, &newsa, &oldsa) == -1) {
++		pam_syslog(pamh, LOG_ERR, "failed to reset SIGCHLD handler: %m");
++		close(ipipe[0]);
++		close(ipipe[1]);
++		close(opipe[0]);
++		close(opipe[1]);
++		return -1;
++	}
++
+ 	/* Fork off a child. */
+ 	child = fork();
+ 	if (child == -1) {
+@@ -209,6 +222,7 @@ run_coprocess(pam_handle_t *pamh, const char *input, char **output,
+ 			}
+ 			close(opipe[0]);
+ 			waitpid(child, NULL, 0);
++			sigaction(SIGCHLD, &oldsa, NULL);   /* restore old signal handler */
+ 			return -1;
+ 		}
+ 		/* Save the new buffer location, copy the newly-read data into
+@@ -225,6 +239,7 @@ run_coprocess(pam_handle_t *pamh, const char *input, char **output,
+ 	close(opipe[0]);
+ 	*output = buffer;
+ 	waitpid(child, NULL, 0);
++	sigaction(SIGCHLD, &oldsa, NULL);   /* restore old signal handler */
+ 	return 0;
+ }
+
 diff --git a/xtests/run-xtests.sh b/xtests/run-xtests.sh
 index 14f585d9..ff9a4dc1 100755
 --- a/xtests/run-xtests.sh
 +++ b/xtests/run-xtests.sh
 @@ -18,10 +18,12 @@ all=0
- 
+
  mkdir -p /etc/security
  for config in access.conf group.conf time.conf limits.conf ; do
 -	cp /etc/security/$config /etc/security/$config-pam-xtests
@@ -1646,7 +5935,7 @@ index 14f585d9..ff9a4dc1 100755
 -mv /etc/security/opasswd /etc/security/opasswd-pam-xtests
 +[ -f /etc/security/opasswd ] &&
 +	mv /etc/security/opasswd /etc/security/opasswd-pam-xtests
- 
+
  for testname in $XTESTS ; do
  	  for cfg in "${SRCDIR}"/$testname*.pamd ; do
 @@ -47,11 +49,15 @@ for testname in $XTESTS ; do
@@ -1670,3 +5959,56 @@ index 14f585d9..ff9a4dc1 100755
  if test "$failed" -ne 0; then
  	  echo "==================="
  	  echo "$failed of $all tests failed"
+--- /dev/null	2022-12-04 11:36:15.304093045 +0100
++++ a/doc/man/pam.conf.5.xml	2022-12-06 17:06:03.623994042 +0100
+@@ -0,0 +1,50 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
++                   "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
++<refentry id='pam.conf'>
++
++  <refmeta>
++    <refentrytitle>pam.conf</refentrytitle>
++    <manvolnum>5</manvolnum>
++    <refmiscinfo class='setdesc'>Linux-PAM Manual</refmiscinfo>
++  </refmeta>
++
++  <refnamediv id='pam.conf-name'>
++    <refname>pam.conf</refname>
++    <refname>pam.d</refname>
++    <refpurpose>PAM configuration files</refpurpose>
++  </refnamediv>
++
++<!-- body begins here -->
++
++  <refsect1 id='pam.conf-description'>
++    <title>DESCRIPTION</title>
++    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
++     href="pam.conf-desc.xml"
++     xpointer='xpointer(//section[@id = "pam.conf-desc"]/*)' />
++
++    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
++     href="pam.conf-syntax.xml"
++     xpointer='xpointer(//section[@id = "pam.conf-syntax"]/*)' />
++
++    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
++     href="pam.conf-dir.xml"
++     xpointer='xpointer(//section[@id = "pam.conf-dir"]/*)' />
++  </refsect1>
++
++  <refsect1 id='pam.conf-see_also'>
++    <title>SEE ALSO</title>
++    <para>
++      <citerefentry>
++        <refentrytitle>pam</refentrytitle><manvolnum>3</manvolnum>
++      </citerefentry>,
++      <citerefentry>
++        <refentrytitle>PAM</refentrytitle><manvolnum>8</manvolnum>
++      </citerefentry>,
++      <citerefentry>
++        <refentrytitle>pam_start</refentrytitle><manvolnum>3</manvolnum>
++      </citerefentry>
++    </para>
++
++  </refsect1>
++</refentry>
