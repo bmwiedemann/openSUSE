@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  8 13:18:34 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/man-group/pytest-plugins/issues/209
+  + python-pytest-verbose-parametrize-no-six.patch
+
+-------------------------------------------------------------------
 Thu Apr 21 20:58:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add pytest-fixtures-pr171-remove-mock.patch because mock WAS

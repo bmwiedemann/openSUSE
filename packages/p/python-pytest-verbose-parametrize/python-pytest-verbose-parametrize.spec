@@ -31,18 +31,18 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-verbose-
 Patch0:         Iterable-collections.patch
 # PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
 Patch1:         pytest-fixtures-pr171-remove-mock.patch
+# https://github.com/man-group/pytest-plugins/issues/209
+Patch2:         python-pytest-verbose-parametrize-no-six.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 %if %{with python2}
 BuildRequires:  python2-mock
 %endif
