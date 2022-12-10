@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 09:20:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not ever use "%setup -n .": rpm 4.18 tries to be cleaner and
+  remove stuff it extraced, which would lead to 'rm -rf .', which
+  rm does not like. Use "%setup -c" instead, which creates the
+  appropriate %{name}-%{version} directory expected.
+
+-------------------------------------------------------------------
 Tue Jul 12 22:29:12 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - encodings 1.0.6

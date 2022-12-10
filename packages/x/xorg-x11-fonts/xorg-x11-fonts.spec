@@ -138,9 +138,8 @@ This package contains the original Type1 and bitmap fonts that are converted
 to truetype format in the xorg-x11-fonts-converted package
 
 %prep
-%setup -n . -T -D
+%setup -T -D -c
 %if "%{flavor}" != "converted"
-rm -rf $RPM_BUILD_DIR/*
 for i in $RPM_SOURCE_DIR/*.tar.{bz2,xz}; do tar xf $i; done
 %else
 cp %{SOURCE100} .
@@ -254,10 +253,8 @@ for dir in encodings-* $(ls | grep -v -e encodings -e alias) font-alias-* ; do
     make -C $dir install DESTDIR=$RPM_BUILD_ROOT "${option}"
 done
 rm -f $RPM_BUILD_ROOT/usr/share/fonts/*/fonts.cache*
-pushd $RPM_BUILD_ROOT
-find usr/share/fonts/75dpi -type f -iname \*.pcf.gz | sed 's+^usr+/usr+g' | \
-  grep -v -e ISO8859 >> $RPM_BUILD_DIR/files.%{name}-core
-popd
+find $RPM_BUILD_ROOT/usr/share/fonts/75dpi -type f -iname \*.pcf.gz | sed -e "s+$RPM_BUILD_ROOT++g" -e 's+^usr+/usr+g' | \
+  grep -v -e ISO8859 >> files.%{name}-core
 rm -rf $RPM_BUILD_ROOT/usr/etc
 rm -f $RPM_BUILD_ROOT/fonts.{dir,scale}
 rm -f $RPM_BUILD_ROOT/usr/share/fonts/encodings/{,large}/encodings.dir
