@@ -386,4 +386,13 @@
     <comment>Comment out alternate Source0: statement due to build check false positive in lilypond's doc build</comment>
     <requestid>1040525</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>8b0419e8d70a1be8a01ae85ebb85e993</srcmd5>
+    <version>2.23.82</version>
+    <time>1670703470</time>
+    <user>dimstar_suse</user>
+    <comment>Fix doc package %description Sort translated docs into individual packages again.
+</comment>
+    <requestid>1041857</requestid>
+  </revision>
 </revisionlist>

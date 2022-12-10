@@ -145,15 +145,14 @@ export GUILE_FLAVOR=guile-3.0
 %configure \
     GUILE_FLAVOR=guile-3.0 \
 	--disable-checking
-make bytecode
 # Build sometimes fails with multiple threads.
-make %{_smp_mflags} --trace
+make --trace %{_smp_mflags} bytecode
 #|| make -j1
 
 %install
 vimver=$(vim --version | head -n1 | grep -Po "\d\.\d" | sed 's|\.||')
 %make_install package_infodir=%{_infodir} \
-	vimdir="%{_datadir}/vim/vim$vimver"
+	vimdir="%{_datadir}/vim/vim$vimver" bytecode
 
 # Symlink lilypond-init.el in emacs' site-start.d directory
 pushd %{buildroot}%{_datadir}/emacs/site-lisp

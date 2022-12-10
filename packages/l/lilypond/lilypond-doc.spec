@@ -108,7 +108,8 @@ BuildRequires:  texinfo
 %endif
 
 %description
-Common and english documentation files for the GNU LilyPond music typesetter.
+Common and english documentation files for the
+GNU LilyPond music typesetter.
 
 %global rlversion %{version}
 %define usrsrcp %{buildroot}
@@ -278,14 +279,22 @@ find %{buildroot}%{_docdir}/lilypond/ -type f -empty -delete -print
 %fdupes -s %{buildroot}%{_datadir}/locale
 # remove info pages, they are part of lilypond package
 rm %{buildroot}%{_infodir}/*
+%else
+mkdir -p %{buildroot}%{_docdir}/%{name}
+# lilypond main package provides info and man pages
+rm -rf share/info
+rm -rf share/man
+cp -vr share/doc/lilypond/html %{buildroot}%{_docdir}/%{name}/
+%endif
+rm -f files-*
 # create file lists for individual subpackages
-for f in `find %{buildroot}/%{_datadir}`; do
+for f in `find %{buildroot}%{_docdir}`; do
   for l in cs de es fr hu it ja nl zh; do
     if [[ $f =~ \.$l\. ]]; then
       if [ -d $f ]; then
         f="%%dir $f"
       fi
-      echo "$f" | sed "s:%{buildroot}/::" >> files-$l
+      echo "$f" | sed "s:%{buildroot}::" >> files-$l
       f=""
       break
     fi
@@ -298,72 +307,65 @@ for f in `find %{buildroot}/%{_datadir}`; do
   if [ -d $f ]; then
     f="%%dir $f"
   fi
-  echo "$f" | sed "s:%{buildroot}/::" >> files-en
+  echo "$f" | sed "s:%{buildroot}::" >> files-en
 done
 for d in '.usr.share' '.usr.share.doc' '.usr.share.info' '.usr.share.doc.packages'; do
   sed -i "/^%%dir $d$/d" files-en
 done
+%if %{with docbuild}
 for f in DEDICATION \
          HACKING ROADMAP VERSION AUTHORS.txt NEWS.txt; do
   echo "%%exclude %{_docdir}/lilypond/$f" >> files-en
 done
 echo "%%exclude %{_datadir}/lilypond/%{rlversion}/ls-R" >> files-en
+%else
+%fdupes -s share/doc/lilypond/html/Documentation
+%endif
 
-#rm %%{_infodir}/lilypond || :
 %post
-ln -sf %{_docdir}/lilypond/Documentation %{_infodir}/lilypond
+ln -sf %{_docdir}/lilypond-doc/html/Documentation %{_infodir}/lilypond
 
 %postun
 rm -f %{_infodir}/lilypond
 
 %files cs -f files-cs
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files de -f files-de
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files es -f files-es
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files fr -f files-fr
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files hu -f files-hu
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files it -f files-it
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files ja -f files-ja
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files nl -f files-nl
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files zh -f files-zh
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %files -f files-en
 %defattr(-,root,root)
-%license LICENSE LICENSE.DOCUMENTATION COPYING
-
-%else
-mkdir -p %{buildroot}
-%fdupes -s share/doc/lilypond/html/Documentation
-
-%files
-%license share/doc/lilypond/html/COPYING*
-%doc share/doc/lilypond/html/Documentation
-
-%endif
+%license share/doc/lilypond/html/LICENSE.DOCUMENTATION
 
 %changelog
