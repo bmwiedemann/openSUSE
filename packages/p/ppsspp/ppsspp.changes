@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 10 09:20:01 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build on Factory: Does not build with FFmpeg 5.0 yet
+
+-------------------------------------------------------------------
 Wed Nov 23 22:27:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - switch to stable tarball for next Leap and to fix build

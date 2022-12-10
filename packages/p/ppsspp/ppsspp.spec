@@ -33,6 +33,9 @@ BuildRequires:  glslang-devel
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  unzip
+# Does not build with FFmpeg 5.0 yet
+# https://github.com/hrydgard/ppsspp/issues/15308
+BuildRequires:  libavcodec-devel < 5
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -84,7 +87,7 @@ PPSSPP build using the Qt framework
 %package common
 Summary:        PPSSPP assets
 Group:          System/Emulators/Other
-BuildArch: noarch
+BuildArch:      noarch
 
 %description common
 Required assets for PPSSPP GUI and assorted configuration files
