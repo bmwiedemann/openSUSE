@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 24 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.07051
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07051 - 2022-11-23
+          - Make defaulting primary key columns retrieve_on_insert for Pg (GH#28)
+
+  0.07050 - 2022-11-20
+
+          - Revert inlining of String::CamelCase::wordsplit() (RT#125929)
+          - Do not require MooseX::MarkAsMethods with only_autoclean=1 (GH#21)
+          - Exclude tables in the Oracle Recycle Bin (RT#128149)
+
+-------------------------------------------------------------------
 Thu Mar 22 06:11:35 UTC 2018 - coolo@suse.com
 
 - updated to 0.07049
