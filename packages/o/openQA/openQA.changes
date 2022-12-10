@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 10 02:16:34 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1670600800.c750f3b:
+  * Use signatures in OpenQA::Schema
+  * Fix race-condition reading job module details files
+  * Inform about dependencies before running tests
+  * Increase timeouts of tests api/14 and ui/13
+
+-------------------------------------------------------------------
 Wed Dec 07 18:11:48 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1670432877.32837b1:
