@@ -6098,4 +6098,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.0.10 &amp; 6.0.9 &amp; other fixes</comment>
     <requestid>1038553</requestid>
   </revision>
+  <revision rev="668" vrev="1">
+    <srcmd5>5da66b8c7921b92b1712cfa8a3e0429d</srcmd5>
+    <version>6.0.12</version>
+    <time>1670703453</time>
+    <user>dimstar_suse</user>
+    <comment>couple of CVE fixes &amp; 6.0.12 &amp; 6.0.11 &amp; other fixes</comment>
+    <requestid>1041367</requestid>
+  </revision>
 </revisionlist>

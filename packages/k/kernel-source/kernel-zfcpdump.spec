@@ -18,12 +18,13 @@
 
 
 %define srcversion 6.0
-%define patchversion 6.0.10
+%define patchversion 6.0.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
 %define compress_vmlinux xz
 %define livepatch livepatch%{nil}
+%define livepatch_rt %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
@@ -110,9 +111,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.0.10
+Version:        6.0.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g582305b
+Release:        <RELEASE>.g523a283
 %else
 Release:        0
 %endif
@@ -239,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-582305bccdfc1795e772934922f6af0bcd95fca6
-Provides:       kernel-srchash-582305bccdfc1795e772934922f6af0bcd95fca6
+Provides:       kernel-%build_flavor-base-srchash-523a28391cc881ac34d76adabac8ee282f6e1013
+Provides:       kernel-srchash-523a28391cc881ac34d76adabac8ee282f6e1013
 # END COMMON DEPS
-Provides:       %name-srchash-582305bccdfc1795e772934922f6af0bcd95fca6
+Provides:       %name-srchash-523a28391cc881ac34d76adabac8ee282f6e1013
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1456,7 +1457,7 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && "%variant" == "" && %build_default
+%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%variant" == "-rt" && 0%livepatch_rt))
 %if "%livepatch" == "kgraft"
 %define patch_package %{livepatch}-patch
 %else
@@ -1466,12 +1467,14 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 Summary:        Metapackage to pull in matching %patch_package package
 Group:          System/Kernel
 Requires:       %{patch_package}-%(echo %{version}-%{source_rel} | sed 'y/\./_/')-%{build_flavor}
+Provides:       multiversion(kernel)
+%if "%variant" != "-rt"
 Provides:	kernel-default-kgraft = %version
 Provides:	kernel-xen-kgraft = %version
-Provides:       multiversion(kernel)
 %if "%livepatch" != "kgraft"
 Obsoletes:	kernel-default-kgraft < %version
 Obsoletes:	kernel-xen-kgraft < %version
+%endif
 %endif
 
 %description %{livepatch}
