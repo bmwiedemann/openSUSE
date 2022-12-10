@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>949535</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d782990200cf0a6eb23916f412b7316</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1670703528</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)</comment>
+    <requestid>1041992</requestid>
+  </revision>
 </revisionlist>
