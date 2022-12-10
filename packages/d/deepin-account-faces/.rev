@@ -17,4 +17,12 @@
 - No need to install the empty changelog file (forwarded request 900408 from hillwood)</comment>
     <requestid>901174</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e30ff0d6d09b1d775c219217abe7652c</srcmd5>
+    <version>1.0.12.1</version>
+    <time>1670703469</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix conflict with accountsservice (forwarded request 1041895 from hillwood)</comment>
+    <requestid>1041896</requestid>
+  </revision>
 </revisionlist>

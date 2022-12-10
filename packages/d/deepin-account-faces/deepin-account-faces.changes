@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  9 14:28:44 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix conflict with accountsservice 
+
+-------------------------------------------------------------------
+Wed Dec  7 22:03:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.12.1
+  * packaging files updates, no code change 
+
+-------------------------------------------------------------------
 Tue Jun  8 10:12:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.0.12
