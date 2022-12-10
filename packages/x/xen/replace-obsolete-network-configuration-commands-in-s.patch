@@ -16,11 +16,11 @@ brctl. Replace them by commands from iproute2 package.
  .../i386-dm/qemu-ifup-Linux                                |  5 +++--
  9 files changed, 26 insertions(+), 26 deletions(-)
 
-Index: xen-4.16.0-testing/README
+Index: xen-4.17.0-testing/README
 ===================================================================
---- xen-4.16.0-testing.orig/README
-+++ xen-4.16.0-testing/README
-@@ -60,8 +60,7 @@ provided by your OS distributor:
+--- xen-4.17.0-testing.orig/README
++++ xen-4.17.0-testing/README
+@@ -61,8 +61,7 @@ provided by your OS distributor:
      * Development install of GLib v2.0 (e.g. libglib2.0-dev)
      * Development install of Pixman (e.g. libpixman-1-dev)
      * pkg-config
@@ -30,10 +30,10 @@ Index: xen-4.16.0-testing/README
      * GNU bison and GNU flex
      * ACPI ASL compiler (iasl)
  
-Index: xen-4.16.0-testing/tools/hotplug/Linux/remus-netbuf-setup
+Index: xen-4.17.0-testing/tools/hotplug/Linux/remus-netbuf-setup
 ===================================================================
---- xen-4.16.0-testing.orig/tools/hotplug/Linux/remus-netbuf-setup
-+++ xen-4.16.0-testing/tools/hotplug/Linux/remus-netbuf-setup
+--- xen-4.17.0-testing.orig/tools/hotplug/Linux/remus-netbuf-setup
++++ xen-4.17.0-testing/tools/hotplug/Linux/remus-netbuf-setup
 @@ -76,6 +76,7 @@
  #specific setup code such as renaming.
  dir=$(dirname "$0")
@@ -60,10 +60,10 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/remus-netbuf-setup
          check_ifb "$ifb" || continue
          REMUS_IFB="$ifb"
          break
-Index: xen-4.16.0-testing/tools/hotplug/Linux/vif-bridge
+Index: xen-4.17.0-testing/tools/hotplug/Linux/vif-bridge
 ===================================================================
---- xen-4.16.0-testing.orig/tools/hotplug/Linux/vif-bridge
-+++ xen-4.16.0-testing/tools/hotplug/Linux/vif-bridge
+--- xen-4.17.0-testing.orig/tools/hotplug/Linux/vif-bridge
++++ xen-4.17.0-testing/tools/hotplug/Linux/vif-bridge
 @@ -42,7 +42,8 @@ if [ -z "$bridge" ]; then
      if which brctl >&/dev/null; then
          bridge=$(brctl show | awk 'NR==2{print$1}')
@@ -74,10 +74,10 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/vif-bridge
      fi
    if [ -z "$bridge" ]
    then
-Index: xen-4.16.0-testing/tools/hotplug/Linux/vif-nat
+Index: xen-4.17.0-testing/tools/hotplug/Linux/vif-nat
 ===================================================================
---- xen-4.16.0-testing.orig/tools/hotplug/Linux/vif-nat
-+++ xen-4.16.0-testing/tools/hotplug/Linux/vif-nat
+--- xen-4.17.0-testing.orig/tools/hotplug/Linux/vif-nat
++++ xen-4.17.0-testing/tools/hotplug/Linux/vif-nat
 @@ -172,7 +172,11 @@ case "$command" in
          ;;
      offline)
@@ -91,10 +91,10 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/vif-nat
          ;;
  esac
  
-Index: xen-4.16.0-testing/tools/hotplug/Linux/vif-route
+Index: xen-4.17.0-testing/tools/hotplug/Linux/vif-route
 ===================================================================
---- xen-4.16.0-testing.orig/tools/hotplug/Linux/vif-route
-+++ xen-4.16.0-testing/tools/hotplug/Linux/vif-route
+--- xen-4.17.0-testing.orig/tools/hotplug/Linux/vif-route
++++ xen-4.17.0-testing/tools/hotplug/Linux/vif-route
 @@ -23,13 +23,23 @@ main_ip=$(dom0_ip)
  
  case "${command}" in
@@ -121,10 +121,10 @@ Index: xen-4.16.0-testing/tools/hotplug/Linux/vif-route
          ipcmd='del'
          cmdprefix='do_without_error'
          ;;
-Index: xen-4.16.0-testing/tools/hotplug/Linux/xen-network-common.sh
+Index: xen-4.17.0-testing/tools/hotplug/Linux/xen-network-common.sh
 ===================================================================
---- xen-4.16.0-testing.orig/tools/hotplug/Linux/xen-network-common.sh
-+++ xen-4.16.0-testing/tools/hotplug/Linux/xen-network-common.sh
+--- xen-4.17.0-testing.orig/tools/hotplug/Linux/xen-network-common.sh
++++ xen-4.17.0-testing/tools/hotplug/Linux/xen-network-common.sh
 @@ -15,6 +15,12 @@
  #
  

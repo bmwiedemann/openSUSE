@@ -1,16 +1,16 @@
-Index: xen-4.8.0-testing/tools/console/client/main.c
+Index: xen-4.17.0-testing/tools/console/client/main.c
 ===================================================================
---- xen-4.8.0-testing.orig/tools/console/client/main.c
-+++ xen-4.8.0-testing/tools/console/client/main.c
-@@ -101,6 +101,7 @@ static int get_pty_fd(struct xs_handle *
+--- xen-4.17.0-testing.orig/tools/console/client/main.c
++++ xen-4.17.0-testing/tools/console/client/main.c
+@@ -100,6 +100,7 @@ static int get_pty_fd(struct xs_handle *
   * Assumes there is already a watch set in the store for this path. */
  {
  	struct timeval tv;
 +	struct flock lock;
  	fd_set watch_fdset;
  	int xs_fd = xs_fileno(xs), pty_fd = -1;
- 	int start, now;
-@@ -124,6 +125,14 @@ static int get_pty_fd(struct xs_handle *
+ 	time_t start, now;
+@@ -123,6 +124,14 @@ static int get_pty_fd(struct xs_handle *
  				pty_fd = open(pty_path, O_RDWR | O_NOCTTY);
  				if (pty_fd == -1)
  					warn("Could not open tty `%s'", pty_path);

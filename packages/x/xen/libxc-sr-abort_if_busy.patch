@@ -36,7 +36,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 
 --- a/docs/man/xl.1.pod.in
 +++ b/docs/man/xl.1.pod.in
-@@ -508,6 +508,14 @@ low, the guest is suspended and the domU
+@@ -507,6 +507,14 @@ low, the guest is suspended and the domU
  This allows the host admin to control for how long the domU will likely
  be suspended during transit.
  
@@ -53,7 +53,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1763,6 +1763,7 @@ typedef struct {
+@@ -1778,6 +1778,7 @@ typedef struct {
  } libxl_domain_suspend_suse_properties;
  #define LIBXL_SUSPEND_DEBUG 1
  #define LIBXL_SUSPEND_LIVE 2
@@ -93,7 +93,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -3647,9 +3647,11 @@ struct libxl__domain_save_state {
+@@ -3653,9 +3653,11 @@ struct libxl__domain_save_state {
      libxl_domain_type type;
      int live;
      int debug;

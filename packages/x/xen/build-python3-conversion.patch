@@ -1,7 +1,7 @@
-Index: xen-4.16.0-testing/Config.mk
+Index: xen-4.17.0-testing/Config.mk
 ===================================================================
---- xen-4.16.0-testing.orig/Config.mk
-+++ xen-4.16.0-testing/Config.mk
+--- xen-4.17.0-testing.orig/Config.mk
++++ xen-4.17.0-testing/Config.mk
 @@ -73,7 +73,7 @@ EXTRA_INCLUDES += $(EXTRA_PREFIX)/includ
  EXTRA_LIB += $(EXTRA_PREFIX)/lib
  endif
@@ -11,11 +11,11 @@ Index: xen-4.16.0-testing/Config.mk
  PYTHON_PREFIX_ARG ?= --prefix="$(prefix)"
  # The above requires that prefix contains *no spaces*. This variable is here
  # to permit the user to set PYTHON_PREFIX_ARG to '' to workaround this bug:
-Index: xen-4.16.0-testing/tools/configure
+Index: xen-4.17.0-testing/tools/configure
 ===================================================================
---- xen-4.16.0-testing.orig/tools/configure
-+++ xen-4.16.0-testing/tools/configure
-@@ -7276,15 +7276,15 @@ if test x"${PYTHONPATH}" = x"no"
+--- xen-4.17.0-testing.orig/tools/configure
++++ xen-4.17.0-testing/tools/configure
+@@ -7343,15 +7343,15 @@ if test x"${PYTHONPATH}" = x"no"
  then
      as_fn_error $? "Unable to find $PYTHON, please install $PYTHON" "$LINENO" 5
  fi
@@ -35,11 +35,11 @@ Index: xen-4.16.0-testing/tools/configure
  else
      { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
  $as_echo "yes" >&6; }
-Index: xen-4.16.0-testing/tools/configure.ac
+Index: xen-4.17.0-testing/tools/configure.ac
 ===================================================================
---- xen-4.16.0-testing.orig/tools/configure.ac
-+++ xen-4.16.0-testing/tools/configure.ac
-@@ -357,7 +357,7 @@ PYTHONPATH=$PYTHON
+--- xen-4.17.0-testing.orig/tools/configure.ac
++++ xen-4.17.0-testing/tools/configure.ac
+@@ -361,7 +361,7 @@ PYTHONPATH=$PYTHON
  PYTHON=`basename $PYTHONPATH`
  
  AX_PATH_PROG_OR_FAIL([PYTHONPATH], [$PYTHON])
@@ -48,10 +48,10 @@ Index: xen-4.16.0-testing/tools/configure.ac
  
  AS_IF([test "$cross_compiling" != yes], [
      AX_CHECK_PYTHON_DEVEL()
-Index: xen-4.16.0-testing/tools/libs/light/idl.py
+Index: xen-4.17.0-testing/tools/libs/light/idl.py
 ===================================================================
---- xen-4.16.0-testing.orig/tools/libs/light/idl.py
-+++ xen-4.16.0-testing/tools/libs/light/idl.py
+--- xen-4.17.0-testing.orig/tools/libs/light/idl.py
++++ xen-4.17.0-testing/tools/libs/light/idl.py
 @@ -271,7 +271,7 @@ class KeyedUnion(Aggregate):
          if not isinstance(keyvar_type, Enumeration):
              raise ValueError
@@ -79,30 +79,30 @@ Index: xen-4.16.0-testing/tools/libs/light/idl.py
          if isinstance(t, Type):
              globs[n] = t
          elif isinstance(t,type(object)) and issubclass(t, Type):
-Index: xen-4.16.0-testing/tools/libs/light/gentest.py
+Index: xen-4.17.0-testing/tools/libs/light/gentest.py
 ===================================================================
---- xen-4.16.0-testing.orig/tools/libs/light/gentest.py
-+++ xen-4.16.0-testing/tools/libs/light/gentest.py
+--- xen-4.17.0-testing.orig/tools/libs/light/gentest.py
++++ xen-4.17.0-testing/tools/libs/light/gentest.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  from __future__ import print_function
  
-Index: xen-4.16.0-testing/tools/libs/light/gentypes.py
+Index: xen-4.17.0-testing/tools/libs/light/gentypes.py
 ===================================================================
---- xen-4.16.0-testing.orig/tools/libs/light/gentypes.py
-+++ xen-4.16.0-testing/tools/libs/light/gentypes.py
+--- xen-4.17.0-testing.orig/tools/libs/light/gentypes.py
++++ xen-4.17.0-testing/tools/libs/light/gentypes.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  from __future__ import print_function
  
-Index: xen-4.16.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
+Index: xen-4.17.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
 ===================================================================
---- xen-4.16.0-testing.orig/tools/ocaml/libs/xentoollog/genlevels.py
-+++ xen-4.16.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
+--- xen-4.17.0-testing.orig/tools/ocaml/libs/xentoollog/genlevels.py
++++ xen-4.17.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
 @@ -89,7 +89,7 @@ def gen_c(level):
  def autogen_header(open_comment, close_comment):
      s = open_comment + " AUTO-GENERATED FILE DO NOT EDIT " + close_comment + "\n"
@@ -112,60 +112,60 @@ Index: xen-4.16.0-testing/tools/ocaml/libs/xentoollog/genlevels.py
      s += "%s" % " ".join(sys.argv)
      s += "\n " + close_comment + "\n\n"
      return s
-Index: xen-4.16.0-testing/tools/include/xen-foreign/mkheader.py
+Index: xen-4.17.0-testing/tools/include/xen-foreign/mkheader.py
 ===================================================================
---- xen-4.16.0-testing.orig/tools/include/xen-foreign/mkheader.py
-+++ xen-4.16.0-testing/tools/include/xen-foreign/mkheader.py
+--- xen-4.17.0-testing.orig/tools/include/xen-foreign/mkheader.py
++++ xen-4.17.0-testing/tools/include/xen-foreign/mkheader.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
- import sys, re;
- from structs import unions, structs, defines;
-Index: xen-4.16.0-testing/tools/include/xen-foreign/mkchecker.py
+ from __future__ import print_function
+ 
+Index: xen-4.17.0-testing/tools/include/xen-foreign/mkchecker.py
 ===================================================================
---- xen-4.16.0-testing.orig/tools/include/xen-foreign/mkchecker.py
-+++ xen-4.16.0-testing/tools/include/xen-foreign/mkchecker.py
+--- xen-4.17.0-testing.orig/tools/include/xen-foreign/mkchecker.py
++++ xen-4.17.0-testing/tools/include/xen-foreign/mkchecker.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
  
  import sys;
  from structs import structs, compat_arches;
-Index: xen-4.16.0-testing/xen/tools/gen-cpuid.py
+Index: xen-4.17.0-testing/xen/tools/gen-cpuid.py
 ===================================================================
---- xen-4.16.0-testing.orig/xen/tools/gen-cpuid.py
-+++ xen-4.16.0-testing/xen/tools/gen-cpuid.py
+--- xen-4.17.0-testing.orig/xen/tools/gen-cpuid.py
++++ xen-4.17.0-testing/xen/tools/gen-cpuid.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  
  import sys, os, re
-Index: xen-4.16.0-testing/xen/tools/compat-build-source.py
+Index: xen-4.17.0-testing/xen/tools/compat-build-source.py
 ===================================================================
---- xen-4.16.0-testing.orig/xen/tools/compat-build-source.py
-+++ xen-4.16.0-testing/xen/tools/compat-build-source.py
+--- xen-4.17.0-testing.orig/xen/tools/compat-build-source.py
++++ xen-4.17.0-testing/xen/tools/compat-build-source.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  import re,sys
  
-Index: xen-4.16.0-testing/xen/tools/compat-build-header.py
+Index: xen-4.17.0-testing/xen/tools/compat-build-header.py
 ===================================================================
---- xen-4.16.0-testing.orig/xen/tools/compat-build-header.py
-+++ xen-4.16.0-testing/xen/tools/compat-build-header.py
+--- xen-4.17.0-testing.orig/xen/tools/compat-build-header.py
++++ xen-4.17.0-testing/xen/tools/compat-build-header.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  
  import re,sys
  
-Index: xen-4.16.0-testing/tools/misc/xensymoops
+Index: xen-4.17.0-testing/tools/misc/xensymoops
 ===================================================================
---- xen-4.16.0-testing.orig/tools/misc/xensymoops
-+++ xen-4.16.0-testing/tools/misc/xensymoops
+--- xen-4.17.0-testing.orig/tools/misc/xensymoops
++++ xen-4.17.0-testing/tools/misc/xensymoops
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3

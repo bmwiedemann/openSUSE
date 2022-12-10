@@ -30,7 +30,7 @@ v02:
  #include <stdlib.h>
  #include <string.h>
  
-@@ -77,4 +78,31 @@ static inline void bitmap_or(void *_dst,
+@@ -81,4 +82,31 @@ static inline void bitmap_or(void *_dst,
          dst[i] |= other[i];
  }
  

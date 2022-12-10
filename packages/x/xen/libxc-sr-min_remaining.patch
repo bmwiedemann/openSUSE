@@ -34,7 +34,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 
 --- a/docs/man/xl.1.pod.in
 +++ b/docs/man/xl.1.pod.in
-@@ -500,6 +500,14 @@ possible to use this option for a 'local
+@@ -499,6 +499,14 @@ possible to use this option for a 'local
  
  Number of copy iterations before final suspend+move (default: 5)
  
@@ -51,7 +51,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1759,6 +1759,7 @@ static inline int libxl_retrieve_domain_
+@@ -1774,6 +1774,7 @@ static inline int libxl_retrieve_domain_
  typedef struct {
      uint32_t flags; /* LIBXL_SUSPEND_* */
      uint32_t max_iters;
@@ -82,7 +82,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -3649,6 +3649,7 @@ struct libxl__domain_save_state {
+@@ -3655,6 +3655,7 @@ struct libxl__domain_save_state {
      int debug;
      int checkpointed_stream;
      uint32_t max_iters;

@@ -22,7 +22,7 @@ v02:
 
 --- a/docs/man/xl.1.pod.in
 +++ b/docs/man/xl.1.pod.in
-@@ -481,7 +481,9 @@ domain.
+@@ -480,7 +480,9 @@ domain.
  
  =item B<--debug>
  

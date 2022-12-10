@@ -8,16 +8,16 @@ But, having an unbound value (of 128k) may have a negative effect on XSA-344.
 
 Therefore, just let the built-in default depend on the number of vcpus.
 
-Index: xen-4.16.0-testing/tools/libs/light/libxl_create.c
+Index: xen-4.17.0-testing/tools/libs/light/libxl_create.c
 ===================================================================
---- xen-4.16.0-testing.orig/tools/libs/light/libxl_create.c
-+++ xen-4.16.0-testing/tools/libs/light/libxl_create.c
-@@ -262,7 +262,7 @@ int libxl__domain_build_info_setdefault(
+--- xen-4.17.0-testing.orig/tools/libs/light/libxl_create.c
++++ xen-4.17.0-testing/tools/libs/light/libxl_create.c
+@@ -263,7 +263,7 @@ int libxl__domain_build_info_setdefault(
              b_info->iomem[i].gfn = b_info->iomem[i].start;
  
      if (!b_info->event_channels)
 -        b_info->event_channels = 1023;
 +        b_info->event_channels = max(1023, 8 * b_info->max_vcpus + 511);
  
-     libxl__arch_domain_build_info_setdefault(gc, b_info);
-     libxl_defbool_setdefault(&b_info->dm_restrict, false);
+     rc = libxl_get_physinfo(CTX, &info);
+     if (rc) {

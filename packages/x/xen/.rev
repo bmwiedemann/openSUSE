@@ -2758,4 +2758,12 @@
     <comment></comment>
     <requestid>1000665</requestid>
   </revision>
+  <revision rev="323" vrev="1">
+    <srcmd5>6bb498362ba301a1337b14d23f05d476</srcmd5>
+    <version>4.17.0_02</version>
+    <time>1670703467</time>
+    <user>dimstar_suse</user>
+    <comment>Update Xen to version 4.17.0 (jsc#PED-1858)</comment>
+    <requestid>1041918</requestid>
+  </revision>
 </revisionlist>

@@ -7,13 +7,13 @@ https://bugzilla.novell.com/show_bug.cgi?id=879425
  tools/libxl/libxlu_disk_l.l |    1 +
  5 files changed, 18 insertions(+), 1 deletion(-)
 
-Index: xen-4.16.2-testing/docs/man/xl-disk-configuration.5.pod.in
+Index: xen-4.17.0-testing/docs/man/xl-disk-configuration.5.pod.in
 ===================================================================
---- xen-4.16.2-testing.orig/docs/man/xl-disk-configuration.5.pod.in
-+++ xen-4.16.2-testing/docs/man/xl-disk-configuration.5.pod.in
-@@ -344,6 +344,32 @@ can be used to disable "hole punching" f
- were intentionally created non-sparse to avoid fragmentation of the
- file.
+--- xen-4.17.0-testing.orig/docs/man/xl-disk-configuration.5.pod.in
++++ xen-4.17.0-testing/docs/man/xl-disk-configuration.5.pod.in
+@@ -337,6 +337,32 @@ No
+ 
+ discard
  
 +=item B<suse-diskcache-disable-flush>
 +
@@ -43,13 +43,13 @@ Index: xen-4.16.2-testing/docs/man/xl-disk-configuration.5.pod.in
 +
  =back
  
- 
-Index: xen-4.16.2-testing/tools/include/libxl.h
+ An advisory setting for the backend driver, specifying whether to
+Index: xen-4.17.0-testing/tools/include/libxl.h
 ===================================================================
---- xen-4.16.2-testing.orig/tools/include/libxl.h
-+++ xen-4.16.2-testing/tools/include/libxl.h
-@@ -528,6 +528,21 @@
- #define LIBXL_HAVE_MAX_GRANT_VERSION 1
+--- xen-4.17.0-testing.orig/tools/include/libxl.h
++++ xen-4.17.0-testing/tools/include/libxl.h
+@@ -543,6 +543,21 @@
+ #define LIBXL_HAVE_DEVICE_DISK_SPECIFICATION 1
  
  /*
 + * The libxl_device_disk has no way to indicate that cache=unsafe is
@@ -70,23 +70,23 @@ Index: xen-4.16.2-testing/tools/include/libxl.h
   * libxl ABI compatibility
   *
   * The only guarantee which libxl makes regarding ABI compatibility
-Index: xen-4.16.2-testing/tools/libs/light/libxl_disk.c
+Index: xen-4.17.0-testing/tools/libs/light/libxl_disk.c
 ===================================================================
---- xen-4.16.2-testing.orig/tools/libs/light/libxl_disk.c
-+++ xen-4.16.2-testing/tools/libs/light/libxl_disk.c
-@@ -387,6 +387,8 @@ static void device_disk_add(libxl__egc *
+--- xen-4.17.0-testing.orig/tools/libs/light/libxl_disk.c
++++ xen-4.17.0-testing/tools/libs/light/libxl_disk.c
+@@ -422,6 +422,8 @@ static void device_disk_add(libxl__egc *
          flexarray_append_pair(back, "discard-enable",
                                libxl_defbool_val(disk->discard_enable) ?
                                "1" : "0");
 +        if (LIBXL_SUSE_IS_CACHE_UNSAFE(disk->readwrite))
 +            flexarray_append_pair(back, "suse-diskcache-disable-flush", "1");
- 
-         flexarray_append(front, "backend-id");
-         flexarray_append(front, GCSPRINTF("%d", disk->backend_domid));
-Index: xen-4.16.2-testing/tools/libs/light/libxl_dm.c
+         flexarray_append(back, "specification");
+         flexarray_append(back, libxl__device_disk_string_of_specification(disk->specification));
+         if (disk->specification == LIBXL_DISK_SPECIFICATION_VIRTIO) {
+Index: xen-4.17.0-testing/tools/libs/light/libxl_dm.c
 ===================================================================
---- xen-4.16.2-testing.orig/tools/libs/light/libxl_dm.c
-+++ xen-4.16.2-testing/tools/libs/light/libxl_dm.c
+--- xen-4.17.0-testing.orig/tools/libs/light/libxl_dm.c
++++ xen-4.17.0-testing/tools/libs/light/libxl_dm.c
 @@ -1019,14 +1019,27 @@ enum {
      LIBXL__COLO_SECONDARY,
  };
@@ -164,7 +164,7 @@ Index: xen-4.16.2-testing/tools/libs/light/libxl_dm.c
          break;
      default:
           abort();
-@@ -1981,8 +1996,8 @@ static int libxl__build_device_model_arg
+@@ -1998,8 +2013,8 @@ static int libxl__build_device_model_arg
                          return ERROR_INVAL;
                      }
                      flexarray_vappend(dm_args, "-drive",
@@ -175,10 +175,10 @@ Index: xen-4.16.2-testing/tools/libs/light/libxl_dm.c
                          "-device", GCSPRINTF("ide-hd,bus=ahci0.%d,unit=0,drive=ahcidisk-%d",
                          disk, disk), NULL);
                      continue;
-Index: xen-4.16.2-testing/tools/libs/util/libxlu_disk.c
+Index: xen-4.17.0-testing/tools/libs/util/libxlu_disk.c
 ===================================================================
---- xen-4.16.2-testing.orig/tools/libs/util/libxlu_disk.c
-+++ xen-4.16.2-testing/tools/libs/util/libxlu_disk.c
+--- xen-4.17.0-testing.orig/tools/libs/util/libxlu_disk.c
++++ xen-4.17.0-testing/tools/libs/util/libxlu_disk.c
 @@ -78,6 +78,8 @@ int xlu_disk_parse(XLU_Config *cfg,
          if (!disk->pdev_path || !strcmp(disk->pdev_path, ""))
              disk->format = LIBXL_DISK_FORMAT_EMPTY;
@@ -188,10 +188,10 @@ Index: xen-4.16.2-testing/tools/libs/util/libxlu_disk.c
  
      if (!disk->vdev) {
          xlu__disk_err(&dpc,0, "no vdev specified");
-Index: xen-4.16.2-testing/tools/libs/util/libxlu_disk_i.h
+Index: xen-4.17.0-testing/tools/libs/util/libxlu_disk_i.h
 ===================================================================
---- xen-4.16.2-testing.orig/tools/libs/util/libxlu_disk_i.h
-+++ xen-4.16.2-testing/tools/libs/util/libxlu_disk_i.h
+--- xen-4.17.0-testing.orig/tools/libs/util/libxlu_disk_i.h
++++ xen-4.17.0-testing/tools/libs/util/libxlu_disk_i.h
 @@ -10,7 +10,7 @@ typedef struct {
      void *scanner;
      YY_BUFFER_STATE buf;
@@ -201,15 +201,15 @@ Index: xen-4.16.2-testing/tools/libs/util/libxlu_disk_i.h
      const char *spec;
  } DiskParseContext;
  
-Index: xen-4.16.2-testing/tools/libs/util/libxlu_disk_l.l
+Index: xen-4.17.0-testing/tools/libs/util/libxlu_disk_l.l
 ===================================================================
---- xen-4.16.2-testing.orig/tools/libs/util/libxlu_disk_l.l
-+++ xen-4.16.2-testing/tools/libs/util/libxlu_disk_l.l
-@@ -207,6 +207,7 @@ colo-port=[^,]*,?	{ STRIP(','); setcolop
+--- xen-4.17.0-testing.orig/tools/libs/util/libxlu_disk_l.l
++++ xen-4.17.0-testing/tools/libs/util/libxlu_disk_l.l
+@@ -216,6 +216,7 @@ colo-port=[^,]*,?	{ STRIP(','); setcolop
  colo-export=[^,]*,?	{ STRIP(','); SAVESTRING("colo-export", colo_export, FROMEQUALS); }
  active-disk=[^,]*,?	{ STRIP(','); SAVESTRING("active-disk", active_disk, FROMEQUALS); }
  hidden-disk=[^,]*,?	{ STRIP(','); SAVESTRING("hidden-disk", hidden_disk, FROMEQUALS); }
 +suse-diskcache-disable-flush,? { DPC->suse_diskcache_disable_flush = 1; }
  
-  /* the target magic parameter, eats the rest of the string */
- 
+ trusted,?		{ libxl_defbool_set(&DPC->disk->trusted, true); }
+ untrusted,?		{ libxl_defbool_set(&DPC->disk->trusted, false); }

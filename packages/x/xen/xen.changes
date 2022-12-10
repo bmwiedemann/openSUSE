@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Dec  8 10:54:29 MST 2022 - carnold@suse.com
+
+- Update to Xen 4.17.0 FCS release (jsc#PED-1858)
+  xen-4.17.0-testing-src.tar.bz2
+  * On x86 "vga=current" can now be used together with GrUB2's gfxpayload setting. Note that
+    this requires use of "multiboot2" (and "module2") as the GrUB commands loading Xen.
+  * The "gnttab" option now has a new command line sub-option for disabling the
+    GNTTABOP_transfer functionality.
+  * The x86 MCE command line option info is now updated.
+  * Out-of-tree builds for the hypervisor now supported.
+  * __ro_after_init support, for marking data as immutable after boot.
+  * The project has officially adopted 4 directives and 24 rules of MISRA-C,
+    added MISRA-C checker build integration, and defined how to document
+    deviations.
+  * IOMMU superpage support on x86, affecting PV guests as well as HVM/PVH ones
+    when they don't share page tables with the CPU (HAP / EPT / NPT).
+  * Support for VIRT_SSBD and MSR_SPEC_CTRL for HVM guests on AMD.
+  * Improved TSC, CPU, and APIC clock frequency calibration on x86.
+  * Support for Xen using x86 Control Flow Enforcement technology for its own
+    protection. Both Shadow Stacks (ROP protection) and Indirect Branch
+    Tracking (COP/JOP protection).
+  * Add mwait-idle support for SPR and ADL on x86.
+  * Extend security support for hosts to 12 TiB of memory on x86.
+  * Add command line option to set cpuid parameters for dom0 at boot time on x86.
+  * Improved static configuration options on Arm.
+  * cpupools can be specified at boot using device tree on Arm.
+  * It is possible to use PV drivers with dom0less guests, allowing statically
+    booted dom0less guests with PV devices.
+  * On Arm, p2m structures are now allocated out of a pool of memory set aside at
+    domain creation.
+  * Improved mitigations against Spectre-BHB on Arm.
+  * Support VirtIO-MMIO devices device-tree binding creation in toolstack on Arm.
+  * Allow setting the number of CPUs to activate at runtime from command line
+    option on Arm.
+  * Grant-table support on Arm was improved and hardened by implementing
+    "simplified M2P-like approach for the xenheap pages"
+  * Add Renesas R-Car Gen4 IPMMU-VMSA support on Arm.
+  * Add i.MX lpuart and i.MX8QM support on Arm.
+  * Improved toolstack build system.
+  * Add Xue - console over USB 3 Debug Capability.
+  * gitlab-ci automation: Fixes and improvements together with new tests.
+  * dropped support for the (x86-only) "vesa-mtrr" and "vesa-remap" command line options
+- Drop patches contained in new tarball or invalid
+  62fde97e-tools-libxl-Replace-deprecated-soundhw-on-QEMU-command-line.patch
+  xsa410-01.patch
+  xsa410-02.patch
+  xsa410-03.patch
+  xsa410-04.patch
+  xsa410-05.patch
+  xsa410-06.patch
+  xsa410-07.patch
+  xsa410-08.patch
+  xsa410-09.patch
+  xsa410-10.patch
+  xsa411.patch
+
+-------------------------------------------------------------------
+Wed Sep 28 10:14:10 MDT 2022 - carnold@suse.com
+
+- bsc#1203806 - VUL-0: CVE-2022-33746: xen: P2M pool freeing may
+  take excessively long (XSA-410)
+  xsa410-01.patch
+  xsa410-02.patch
+  xsa410-03.patch
+  xsa410-04.patch
+  xsa410-05.patch
+  xsa410-06.patch
+  xsa410-07.patch
+  xsa410-08.patch
+  xsa410-09.patch
+  xsa410-10.patch
+- bsc#1203807 - VUL-0: CVE-2022-33748: xen: lock order inversion in
+  transitive grant copy handling (XSA-411)
+  xsa411.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 06:21:39 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
@@ -21,6 +97,7 @@ Thu Aug 18 14:18:46 MDT 2022 - carnold@suse.com
 
 - Update to Xen 4.16.2 bug fix release (bsc#1027519)
   xen-4.16.2-testing-src.tar.bz2
+  * No upstream changelog found in sources or webpage
 - Drop patches contained in new tarball
   625fca42-VT-d-reserved-CAP-ND.patch
   626f7ee8-x86-MSR-handle-P5-MC-reads.patch

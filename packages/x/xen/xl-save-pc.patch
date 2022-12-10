@@ -29,7 +29,7 @@ Keep going if the event type and shutdown reason remains the same.
  $(XL_OBJS): CFLAGS += $(CFLAGS_XL)
  $(XL_OBJS): CFLAGS += -include $(XEN_ROOT)/tools/config.h # libxl_json.h needs it.
  
-@@ -38,7 +39,7 @@ $(XL_OBJS): _paths.h
+@@ -33,7 +34,7 @@ $(XL_OBJS): CFLAGS += -include $(XEN_ROO
  all: xl
  
  xl: $(XL_OBJS)
@@ -40,7 +40,7 @@ Keep going if the event type and shutdown reason remains the same.
  install: all
 --- a/tools/xl/xl.h
 +++ b/tools/xl/xl.h
-@@ -301,6 +301,7 @@ typedef enum {
+@@ -299,6 +299,7 @@ typedef enum {
      DOMAIN_RESTART_SOFT_RESET,   /* Soft reset should be performed */
  } domain_restart_type;
  

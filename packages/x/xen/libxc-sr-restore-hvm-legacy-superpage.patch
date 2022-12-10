@@ -44,7 +44,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/guest/xg_private.h
 +++ b/tools/libs/guest/xg_private.h
-@@ -179,4 +179,9 @@ struct xc_cpu_policy {
+@@ -180,4 +180,9 @@ struct xc_cpu_policy {
  };
  #endif /* x86 */
  

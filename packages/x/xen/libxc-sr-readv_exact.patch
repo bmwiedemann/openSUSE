@@ -93,7 +93,7 @@ v2:
      struct iovec *local_iov = NULL;
 --- a/tools/libs/ctrl/xc_private.h
 +++ b/tools/libs/ctrl/xc_private.h
-@@ -408,6 +408,7 @@ int xc_flush_mmu_updates(xc_interface *x
+@@ -394,6 +394,7 @@ int xc_flush_mmu_updates(xc_interface *x
  
  /* Return 0 on success; -1 on error setting errno. */
  int read_exact(int fd, void *data, size_t size); /* EOF => -1, errno=0 */

@@ -60,7 +60,7 @@ v02:
      dss->sws.dss = dss;
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -124,6 +124,8 @@
+@@ -123,6 +123,8 @@
  #define DOMID_XS_PATH "domid"
  #define PVSHIM_BASENAME "xen-shim"
  #define PVSHIM_CMDLINE "pv-shim console=xen,pv"

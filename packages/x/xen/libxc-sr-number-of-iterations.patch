@@ -13,7 +13,7 @@ iterations for dirty memory, and a final copy iteration prior move.
 
 --- a/tools/libs/light/libxl_internal.h
 +++ b/tools/libs/light/libxl_internal.h
-@@ -124,7 +124,7 @@
+@@ -123,7 +123,7 @@
  #define DOMID_XS_PATH "domid"
  #define PVSHIM_BASENAME "xen-shim"
  #define PVSHIM_CMDLINE "pv-shim console=xen,pv"

@@ -8,11 +8,11 @@ at native speed. Otherwise TSC access will be emulated. It is up to
 the hostadmin to decide how much tolerance all running domUs can
 actually handle. The default is zero tolerance.
 
-Index: xen-4.16.0-testing/xen/arch/x86/time.c
+Index: xen-4.17.0-testing/xen/arch/x86/time.c
 ===================================================================
---- xen-4.16.0-testing.orig/xen/arch/x86/time.c
-+++ xen-4.16.0-testing/xen/arch/x86/time.c
-@@ -46,6 +46,9 @@
+--- xen-4.17.0-testing.orig/xen/arch/x86/time.c
++++ xen-4.17.0-testing/xen/arch/x86/time.c
+@@ -47,6 +47,9 @@
  static char __initdata opt_clocksource[10];
  string_param("clocksource", opt_clocksource);
  
@@ -22,7 +22,7 @@ Index: xen-4.16.0-testing/xen/arch/x86/time.c
  unsigned long __read_mostly cpu_khz;  /* CPU clock frequency in kHz. */
  DEFINE_SPINLOCK(rtc_lock);
  unsigned long pit0_ticks;
-@@ -2486,6 +2489,7 @@ int tsc_set_info(struct domain *d,
+@@ -2581,6 +2584,7 @@ int tsc_set_info(struct domain *d,
  
      switch ( tsc_mode )
      {
@@ -30,7 +30,7 @@ Index: xen-4.16.0-testing/xen/arch/x86/time.c
      case TSC_MODE_DEFAULT:
      case TSC_MODE_ALWAYS_EMULATE:
          d->arch.vtsc_offset = get_s_time() - elapsed_nsec;
-@@ -2499,8 +2503,26 @@ int tsc_set_info(struct domain *d,
+@@ -2594,8 +2598,26 @@ int tsc_set_info(struct domain *d,
           * When a guest is created, gtsc_khz is passed in as zero, making
           * d->arch.tsc_khz == cpu_khz. Thus no need to check incarnation.
           */

@@ -62,7 +62,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/ctrl/xc_private.h
 +++ b/tools/libs/ctrl/xc_private.h
-@@ -43,6 +43,15 @@
+@@ -41,6 +41,15 @@
  
  #include <xen-tools/libs.h>
  

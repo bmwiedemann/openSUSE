@@ -10,11 +10,11 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  xen/include/public/arch-arm.h | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Index: xen-4.16.0-testing/xen/include/public/arch-arm.h
+Index: xen-4.17.0-testing/xen/include/public/arch-arm.h
 ===================================================================
---- xen-4.16.0-testing.orig/xen/include/public/arch-arm.h
-+++ xen-4.16.0-testing/xen/include/public/arch-arm.h
-@@ -375,13 +375,13 @@ typedef uint64_t xen_callback_t;
+--- xen-4.17.0-testing.orig/xen/include/public/arch-arm.h
++++ xen-4.17.0-testing/xen/include/public/arch-arm.h
+@@ -359,13 +359,13 @@ typedef uint64_t xen_callback_t;
  
  /* 64 bit modes */
  #define PSR_MODE_BIT  0x10 /* Set iff AArch32 */
@@ -33,5 +33,5 @@ Index: xen-4.16.0-testing/xen/include/public/arch-arm.h
 +#define PSR_MODE_EL1t 0x00000004
 +#define PSR_MODE_EL0t 0x00000000
  
- #define PSR_GUEST32_INIT  (PSR_ABT_MASK|PSR_FIQ_MASK|PSR_IRQ_MASK|PSR_MODE_SVC)
- #define PSR_GUEST64_INIT (PSR_ABT_MASK|PSR_FIQ_MASK|PSR_IRQ_MASK|PSR_MODE_EL1h)
+ /*
+  * We set PSR_Z to be able to boot Linux kernel versions with an invalid

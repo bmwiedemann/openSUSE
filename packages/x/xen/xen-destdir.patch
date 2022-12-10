@@ -1,19 +1,19 @@
-Index: xen-4.16.0-testing/tools/xenstore/Makefile
+Index: xen-4.17.0-testing/tools/xenstore/Makefile
 ===================================================================
---- xen-4.16.0-testing.orig/tools/xenstore/Makefile
-+++ xen-4.16.0-testing/tools/xenstore/Makefile
-@@ -76,7 +76,7 @@ xenstored.a: $(XENSTORED_OBJS)
- 	$(AR) cr $@ $^
+--- xen-4.17.0-testing.orig/tools/xenstore/Makefile
++++ xen-4.17.0-testing/tools/xenstore/Makefile
+@@ -42,7 +42,7 @@ xenstored: $(XENSTORED_OBJS-y)
+ 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@ $(APPEND_LDFLAGS)
  
  $(CLIENTS): xenstore
 -	ln -f xenstore $@
 +	ln -sf xenstore $@
  
  xenstore: xenstore_client.o xs_lib.o
- 	$(CC) $^ $(LDFLAGS) $(LDLIBS_libxenstore) $(LDLIBS_libxentoolcore) $(SOCKET_LIBS) -o $@ $(APPEND_LDFLAGS)
-@@ -113,11 +113,12 @@ ifeq ($(XENSTORE_XENSTORED),y)
+ 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@ $(APPEND_LDFLAGS)
+@@ -70,11 +70,12 @@ install: all
+ ifeq ($(XENSTORE_XENSTORED),y)
  	$(INSTALL_DIR) $(DESTDIR)$(sbindir)
- 	$(INSTALL_DIR) $(DESTDIR)$(XEN_LIB_STORED)
  	$(INSTALL_PROG) xenstored $(DESTDIR)$(sbindir)
 +	$(INSTALL_DIR) $(DESTDIR)$(bindir)
  endif
