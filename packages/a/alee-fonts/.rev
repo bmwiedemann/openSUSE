@@ -86,4 +86,12 @@
   * improved glyphs, new glyphs (forwarded request 1040447 from dirkmueller)</comment>
     <requestid>1040450</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a078c68bc47d0baff50ad076427a100</srcmd5>
+    <version>13.3</version>
+    <time>1670703479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041849</requestid>
+  </revision>
 </revisionlist>

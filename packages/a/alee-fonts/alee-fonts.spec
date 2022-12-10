@@ -17,7 +17,7 @@
 
 
 Name:           alee-fonts
-Version:        13.1
+Version:        13.3
 Release:        0
 Summary:        Korean TrueType fonts
 License:        Artistic-1.0+
