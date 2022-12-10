@@ -39,7 +39,6 @@ BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
 BuildRequires:  %{python_module pytest >= 4.6.0}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
 %endif
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  8 10:28:35 UTC 2022 - pgajdos@suse.com
+
+- six is not required for build
+
+-------------------------------------------------------------------
 Wed Nov 30 08:16:55 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable test_dist_boxed, broken with latest version of pytest-xdist,
