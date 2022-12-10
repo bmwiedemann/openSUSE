@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  8 15:07:28 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Version 3.0.0
+  + Fixed
+    * A bug in special command processing in TPM2_GetCapability when
+      an audit session is in use cuased tpm2-abrmd to abort.
+  + Added
+    * New SELinux interfaces for communication with keylime
+  + Changed
+    * DBUS permissions in tpm2-abrmd.conf to match the in-kernel RM,
+      ie /dev/tpmrm0, permissions. Now users MUST be in the tss group
+      to send to tpm2-abrmd over DBUS.
+- Drop dbus-access.patch (merged in PR#805)
+
+-------------------------------------------------------------------
 Fri Jul  8 08:43:16 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Version 2.4.1

@@ -29,7 +29,7 @@
 %bcond_with selinux
 %endif
 Name:           tpm2.0-abrmd
-Version:        2.4.1
+Version:        3.0.0
 Release:        0
 Summary:        Intel's TCG Software Stack Access Broker & Resource Manager for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -37,12 +37,11 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-abrmd
 Source0:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz
 Source1:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz.asc
-# curl https://github.com/flihp.gpg > tpm2-abrmd.keyring
+# curl https://github.com/williamcroberts.gpg > tpm2-abrmd.keyring
 Source2:        tpm2-abrmd.keyring
 Source3:        tpm2.0-abrmd.rpmlintrc
 Source4:        README.SUSE
 Patch0:         harden_tpm2-abrmd.service.patch
-Patch1:         dbus-access.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  checkpolicy
