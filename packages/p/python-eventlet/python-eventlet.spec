@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-eventlet
 Version:        0.33.2
@@ -38,11 +37,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python2-monotonic >= 1.4
 %endif
 BuildRequires:  fdupes
-BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 # SECTION TEST requirements
 # eventlet parses /etc/protocols which is not available in normal build envs
-BuildRequires:  sysconfig-netconfig
+BuildRequires:  netcfg
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module greenlet >= 0.3}
 %if 0%{?suse_version} >= 1550

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  9 10:16:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Reove unecessary sysconfig-netconfig BuildRequires
+
+-------------------------------------------------------------------
 Sat Dec  3 05:14:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v0.33.2 
