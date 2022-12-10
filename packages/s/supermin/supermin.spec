@@ -56,7 +56,9 @@ BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(rpm)
 Requires:       distribution-release
+%if 0%{?suse_version} < 1599
 Requires:       sysconfig-netconfig
+%endif
 Requires:       tar
 Requires:       xmlstarlet
 Requires:       zypper

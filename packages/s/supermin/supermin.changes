@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  9 09:22:50 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Include sysconfig-netconfig only until SLE15, newer versions
+  don't use it anymore [jsc#PED-1734]
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen

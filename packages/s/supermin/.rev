@@ -143,4 +143,12 @@
     <comment>Sync changelog with SLE15-SP5. No code change.</comment>
     <requestid>1031596</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b95285f931b249a4b2e398b1ef48c2dc</srcmd5>
+    <version>5.2.2</version>
+    <time>1670703486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041863</requestid>
+  </revision>
 </revisionlist>
