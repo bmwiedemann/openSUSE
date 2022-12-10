@@ -26,9 +26,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/saghul/pycares
 Source:         https://files.pythonhosted.org/packages/source/p/pycares/pycares-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM cleanup_tests.patch bsc#[0-9]+ mcepl@suse.com
+# Make the test suite slightly more normal
+Patch0:         cleanup_tests.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  c-ares-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
@@ -42,7 +46,8 @@ c-ares. c-ares is a C library that performs DNS requests and name
 resolutions asynchronously
 
 %prep
-%setup -q -n pycares-%{version}
+%autosetup -p1 -n pycares-%{version}
+
 rm -Rf
 
 %build
@@ -51,6 +56,11 @@ rm -Rf
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+# Test suite is broken anywhere else outside of the upstream CI,
+# and upstream doesn't care.
+# %%pyunittest_arch -v tests.tests
 
 %files %{python_files}
 %license LICENSE

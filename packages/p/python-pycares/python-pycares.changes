@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  8 22:21:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add cleanup_tests.patch to make the test suite slightly more sane.
+- No, the test suite is just broken, and the upstream doesn't care.
+
+-------------------------------------------------------------------
 Tue Oct  4 23:59:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 4.2.2 
