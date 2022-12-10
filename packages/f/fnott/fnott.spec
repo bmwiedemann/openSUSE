@@ -25,6 +25,11 @@ Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/fnott
 Source0:        https://codeberg.org/dnkl/fnott/archive/%{version}.tar.gz
 BuildRequires:  meson >= 0.58
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc11
+%else
+BuildRequires:  gcc >= 8
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
@@ -55,11 +60,11 @@ Requires:       zsh
 Zsh command-line completion support for %{name}
 
 %build
+%meson \
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
-%meson -Db_lto=true -Dc_std=none
-%else
-%meson -Db_lto=true
+  -Dc_std=c11 \
 %endif
+  -Db_lto=true
 %meson_build
 
 %install
