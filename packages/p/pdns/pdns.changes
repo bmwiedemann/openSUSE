@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  9 14:18:39 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.7.3
+  * Improvements
+    - API: slightly clearer message when a backend cannot create domains PR#12296
+  * Bug Fixes
+    - lmdb: make outgoing notifications work PR#12299
+    - lmdb: implement alsoNotifies PR#12266
+    - API: do not create SOA and NS records for consumer zones PR#12291
+    - API: fix newly created zone not rectified PR#12273
+    - fix invalid catalog zone sql query for gpgsqlbackend PR#12272
+    - fix pdns_control list-zones PR#12181
+
+-------------------------------------------------------------------
 Tue Nov  1 18:54:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.7.2

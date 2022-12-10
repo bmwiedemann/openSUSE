@@ -834,4 +834,21 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
     <comment></comment>
     <requestid>1032793</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>5bbabc2491b6edd6b81e41db6bce5441</srcmd5>
+    <version>4.7.3</version>
+    <time>1670703511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.7.3
+  * Improvements
+    - API: slightly clearer message when a backend cannot create domains PR#12296
+  * Bug Fixes
+    - lmdb: make outgoing notifications work PR#12299
+    - lmdb: implement alsoNotifies PR#12266
+    - API: do not create SOA and NS records for consumer zones PR#12291
+    - API: fix newly created zone not rectified PR#12273
+    - fix invalid catalog zone sql query for gpgsqlbackend PR#12272
+    - fix pdns_control list-zones PR#12181</comment>
+    <requestid>1041916</requestid>
+  </revision>
 </revisionlist>
