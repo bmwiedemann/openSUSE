@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Dec  4 03:08:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.013
+   see /usr/share/doc/packages/perl-Net-Server/Changes
+
+  2.013  Dec 03 2022
+          - Update MANIFEST for missing file
+
+  2.012  Dec 02 2022
+          - More code/documentation typo fixes
+          - Add /simple routes to HTTP and PSGI echo handlers for doing static request samples.
+          - Fix PSGI header handling that was broken in 2.011
+
+  2.011  Dec 01 2022
+          - Default to IO::Socket::IP with continued fallback to IO::Socket::INET6
+          - Add double_reverse_lookups configuration and code
+          - Cleanup hostname lookup under both IO::Socket::IP and IO::Socket::INET6
+          - Change SSL to use IO::Socket::SSL SSL_startHandshake
+          - Fix semaphore release
+          - Update various POD issues
+          - Finally add register_child method called if a child process is started.
+          - Bugfix Net::Server::PSGI
+          - Allow groups to be separated by ,
+          - Allow . in usernames and groups
+          - Allow space in config file values
+          - Retro-actively acknowlege that 2.008 changed default Net::Server::HTTP type to PreFork (and update docs)
+          - Fix Location bounce with other status set
+          - Return status 400 under request_denied_hook in Net::Server::HTTP
+
+-------------------------------------------------------------------
 Tue Mar 23 03:07:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.010

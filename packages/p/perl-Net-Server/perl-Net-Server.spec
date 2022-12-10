@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Net-Server
 Name:           perl-Net-Server
-Version:        2.010
+Version:        2.013
 Release:        0
-Summary:        Extensible, general Perl server engine
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Extensible Perl internet server
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RH/RHANDOM/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
