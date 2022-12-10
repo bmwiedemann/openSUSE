@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  9 22:30:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.4.1:
+  * This is a minor release fixing some issues in the build system that
+    should have been included in the last release.
+  * Change -march=avx -> -mavx by @james-d-mitchell in #418
+
+-------------------------------------------------------------------
 Thu Dec  1 20:11:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.0

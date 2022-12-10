@@ -184,4 +184,15 @@
     <comment>- Update to release 2.4.0</comment>
     <requestid>1039393</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>990931cbd8fbcc65ac8ca3bd84432ec5</srcmd5>
+    <version>2.4.1</version>
+    <time>1670703517</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.4.1:
+  * This is a minor release fixing some issues in the build system that
+    should have been included in the last release.
+  * Change -march=avx -&gt; -mavx by @james-d-mitchell in #418 (forwarded request 1041930 from dirkmueller)</comment>
+    <requestid>1041937</requestid>
+  </revision>
 </revisionlist>
