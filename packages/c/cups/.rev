@@ -1249,4 +1249,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment></comment>
     <requestid>990986</requestid>
   </revision>
+  <revision rev="165" vrev="3">
+    <srcmd5>16c9cfa44a7ff8ccbc6126a2989c5b82</srcmd5>
+    <version>2.4.2</version>
+    <time>1670703455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041833</requestid>
+  </revision>
 </revisionlist>

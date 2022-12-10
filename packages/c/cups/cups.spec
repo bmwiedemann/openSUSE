@@ -409,7 +409,14 @@ test -d %{buildroot}%{_libdir}/pkgconfig || mv %{buildroot}/usr/lib/pkgconfig %{
 install -d -m755 %{buildroot}%{_datadir}/cups/drivers
 install -d -m755 %{buildroot}%{_localstatedir}/cache/cups
 # Add conf/pam.suse regarding support for PAM (see Patch100: cups-pam.diff):
+%if 0%{?suse_version} > 1500
+install -d -m755 %{buildroot}%{_distconfdir}/pam.d
+install -m 644 -D conf/pam.suse %{buildroot}%{_distconfdir}/pam.d/cups
+# remove /etc/pam.d/cups from conf/pam.std
+rm -rf %{buildroot}%{_sysconfdir}/pam.d
+%else
 install -m 644 -D conf/pam.suse %{buildroot}%{_sysconfdir}/pam.d/cups
+%endif
 # Add missing usual documentation.
 install -d -m755 %{buildroot}/%{_defaultdocdir}/cups
 for f in CHANGES.md CREDITS.md INSTALL.md LICENSE README.md
@@ -490,6 +497,12 @@ echo "TEST: skipped 'make test', cf. https://github.com/OpenPrinting/cups/issues
 %endif
 
 %pre -p /bin/bash
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/cups ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 %service_add_pre cups.service cups-lpd.socket cups.socket
 
@@ -558,6 +571,10 @@ for u in cups.service cups.socket cups.path; do
         systemctl --quiet disable $u 2>/dev/null || :
    fi
 done
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/cups ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 exit 0
 
 %post   -n libcups2 -p /sbin/ldconfig
@@ -590,7 +607,11 @@ exit 0
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cups-files.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cupsd.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/snmp.conf
+%if 0%{?suse_version} > 1500
+%config %{_distconfdir}/pam.d/cups
+%else
 %config %{_sysconfdir}/pam.d/cups
+%endif
 %dbus_config %{dbus_dir}/system.d/cups.conf
 %config %{_sysconfdir}/cups/cupsd.conf.default
 %config %{_sysconfdir}/cups/cups-files.conf.default

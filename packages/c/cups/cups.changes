@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  8 14:30:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration PAM settings to /usr/etc: Saving user changed
+  configuration files in /etc and restoring them while an RPM
+  update.
+
+-------------------------------------------------------------------
 Sat Jul  9 12:32:40 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move the dbus-1 system.d file to /usr (bsc#1201346)
