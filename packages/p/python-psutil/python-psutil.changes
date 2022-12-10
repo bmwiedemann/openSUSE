@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  8 19:55:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Require unittest2 only for python2: make this suitable for
+  the 15.4_py39 target in devel:languages:python:backports.
+- Merge skip-obs.patch into skip_failing_tests.patch and add
+  test_linux.py::test_cpu_affinity because it depends on the
+  obs vm-type or worker CPU.
+
+-------------------------------------------------------------------
 Mon Nov  7 20:52:52 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to version 5.9.4:

@@ -30,7 +30,6 @@ Summary:        A process utilities module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
-Patch1:         skip-obs.patch
 # PATCH-FIX-UPSTREAM skip_failing_tests.patch gh#giampaolo/psutil#1635 mcepl@suse.com
 # skip tests failing because of incomplete emulation of the environment in osc build
 Patch2:         skip_failing_tests.patch
@@ -46,12 +45,10 @@ Requires:       procps
 %if %{with test}
 BuildRequires:  net-tools
 BuildRequires:  procps
-%if 0%{?suse_version} < 1550
-BuildRequires:  %{python_module unittest2}
-%endif
 %if %{with python2}
 BuildRequires:  python-ipaddress
 BuildRequires:  python-mock
+BuildRequires:  python-unittest2
 %endif
 %endif
 %ifpython2
