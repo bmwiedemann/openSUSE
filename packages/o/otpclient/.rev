@@ -198,4 +198,18 @@
 </comment>
     <requestid>1039157</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>79cce920c3343a6c1d77ba970b40bb6c</srcmd5>
+    <version>3.0.0</version>
+    <time>1670703510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * NEW: OTPClient is now translatable (#263). If you wish to translate it in your language,
+    you can find two templates (.pot) in the po/ directory. When you are done translating, either open a PR or send me an email so I can add the translation.
+  * NEW: secret is now editable too (#258)
+  * NEW: an About dialog has been added in the settings menu.
+  * CHANGED: removed Authenticator Plus support (#257)
+</comment>
+    <requestid>1041889</requestid>
+  </revision>
 </revisionlist>

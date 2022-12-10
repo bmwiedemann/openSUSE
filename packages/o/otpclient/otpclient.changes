@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  9 14:01:32 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0:
+  * NEW: OTPClient is now translatable (#263). If you wish to translate it in your language,
+    you can find two templates (.pot) in the po/ directory. When you are done translating, either open a PR or send me an email so I can add the translation.
+  * NEW: secret is now editable too (#258)
+  * NEW: an About dialog has been added in the settings menu.
+  * CHANGED: removed Authenticator Plus support (#257)
+
+-------------------------------------------------------------------
 Wed Nov 30 16:31:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.6.4:
