@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:48:58 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.8.5:
+  * Relative paths for cover art file names no longer work
+  * PICARD-2593 - Toolbar icon text disappears when saving options
+  * PICARD-2596 - "Show icons in menus" option is applied without saving options
+
+-------------------------------------------------------------------
 Tue Nov 29 18:57:35 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.8.4:
