@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  7 18:47:08 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Moving DB files from /etc/iscsi/* to /var/lib/iscsi/* for
+  SLE-15-SP5 and forward, as is done in Tumbleweed.
+- Added /etc/iscsi/README.DB-files-moved, and added SPEC file
+  changes to support this, including a post-install script to
+  move the DB files, only installed if DB files are moved.
+- Renamed shared library from libopeniscsiusr0_2_0 to
+  libopeniscsiusr0, to correctly match SONAME in library.
+
+-------------------------------------------------------------------
 Wed Nov 16 17:14:36 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream. Changes:
-  * scsid/iscsiuio: fix OOM adjustment (github issue #377)
+  * iscsid/iscsiuio: fix OOM adjustment (github issue #377)
 
 -------------------------------------------------------------------
 Mon Sep 26 21:15:57 UTC 2022 - Lee Duncan <lduncan@suse.com>

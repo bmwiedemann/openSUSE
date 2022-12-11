@@ -16,6 +16,8 @@
 #
 
 
+%define _home_dir %{_sysconfdir}/iscsi
+
 # Ensure usr-merge does not effect existing SLE. Cannot use _sbindir
 # directly since meson macros pass that on, and meson does not like
 # setting it to "/sbin".  Also and move DB root to /var/lib/iscsi and
@@ -23,18 +25,31 @@
 %if ! 0%{?is_opensuse}
 # sle
 %define _iscsi_sbindir /sbin
-%define _dbroot %{_sysconfdir}/iscsi
-%define _lockdir %{_sysconfdir}/iscsi
+%define _lockdir %{_home_dir}
+%if 0%{?suse_version} <= 1540
+%define _dbroot %{_home_dir}
+%else
+%define _dbroot %{_sharedstatedir}/iscsi
+%define _dbroot_new 1
+%endif
 %else
 # opensuse
 %define _iscsi_sbindir /usr/sbin
-%define _dbroot %{_sharedstatedir}/iscsi
 %define _lockdir %{_rundir}/lock/iscsi
+%define _dbroot %{_sharedstatedir}/iscsi
+%define _dbroot_new 1
+%endif
+%if 0%{?_dbroot_new}
+%define _install_dbdir_move_readme_value true
+%else
+%define _install_dbdir_move_readme_value false
 %endif
 
 %define iscsi_minor_release 1
 %define iscsi_patch_release 8
 %define iscsi_patch_release_suse %{iscsi_patch_release}-suse
+%define libname libopeniscsiusr0
+%define libversion 0.2.0
 Name:           open-iscsi
 Version:        2.1.8
 Release:        0
@@ -60,7 +75,7 @@ BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Requires(post): coreutils
-Requires:       libopeniscsiusr0_2_0 = %{version}
+Requires:       %{libname} = %{libversion}
 %{?systemd_requires}
 
 %description
@@ -78,14 +93,16 @@ connection-level error processing, Nop-In and Nop-Out handling. It
 comes with a daemon process called iscsid, and a management utility,
 iscsiadm.
 
-%package -n libopeniscsiusr0_2_0
-Version:        2.%{iscsi_minor_release}.%{iscsi_patch_release}
+%package -n %{libname}
+Version:        0.2.0
 Release:        0
 Summary:        The iSCSI User-level Library
 Group:          System/Libraries
-Obsoletes:      libopeniscsiusr0_1_0 < %{version}
+Obsoletes:      libopeniscsiusr0_1_0
+Obsoletes:      libopeniscsiusr0_2_0
+Conflicts:      libopeniscsiusr0_2_0
 
-%description -n libopeniscsiusr0_2_0
+%description -n %{libname}
 The iSCSI user-space API from the open-iscsi project.
 
 %package -n iscsiuio
@@ -115,8 +132,8 @@ Version:        2.%{iscsi_minor_release}.%{iscsi_patch_release}
 Release:        0
 Summary:        The iSCSI User-level Library Development Library and Include files
 Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{libversion}
 Requires:       %{name} = %{version}
-Requires:       libopeniscsiusr0_2_0 = %{version}
 Conflicts:      libopeniscsiusr0_1_0
 
 %description devel
@@ -133,6 +150,7 @@ the libopeniscsiusr library.
 %meson --libdir=%{_libdir} \
 	-Dc_flags="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED" \
 	-Discsi_sbindir=%{_iscsi_sbindir} -Ddbroot=%{_dbroot} -Drulesdir=%{_udevrulesdir} -Dlockdir=%{_lockdir} \
+	-Dinstall_dbdir_move_readme=%{_install_dbdir_move_readme_value} \
 	--strip
 %meson_build
 
@@ -149,7 +167,7 @@ ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsiuio
 ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsi-init
 (cd %{buildroot}/etc; ln -sf iscsi/iscsid.conf iscsid.conf)
 # create an empty initiatorname file, as a package place holder
-echo > %{buildroot}%{_sysconfdir}/iscsi/initiatorname.iscsi
+echo > %{buildroot}%{_home_dir}/initiatorname.iscsi
 # rename iscsiuio logrotate file to proper name
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -159,28 +177,40 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 %endif
 %fdupes %{buildroot}/%{_prefix}
 
+%pre
+%service_add_pre iscsi.service iscsid.service iscsid.socket iscsi-init.service
+
 %post
 %{?regenerate_initrd_post}
-if [ ! -f %{_sysconfdir}/iscsi/initiatorname.iscsi ] ; then
+if [ ! -f %{_home_dir}/initiatorname.iscsi ] ; then
     %{_iscsi_sbindir}/iscsi-gen-initiatorname
 fi
+%if 0%{?_dbroot_new}
+# move DB files if and only if not present in new location
+for d in ifaces send_targets fw nodes static isns slp; do
+    if [ -d %{_home_dir}/$d ]; then
+	if [ -d %{_dbroot}/$d ]; then
+	    echo "Warning: cannot copy DB directory %{_home_dir}/$d to %{_dbroot}/$d: already present" 1>&2
+	else
+	    cp -a %{_home_dir}/$d %{_dbroot}
+	fi
+    fi
+done
+%endif
 %service_add_post iscsi.service iscsid.service iscsid.socket iscsi-init.service
 
 %posttrans
 %{?regenerate_initrd_posttrans}
 
+%preun
+%service_del_preun iscsi.service iscsid.service iscsid.socket iscsi-init.service
+
 %postun
 %service_del_postun_without_restart iscsi.service
 %service_del_postun iscsi.service iscsid.service iscsid.socket iscsi-init.service
 
-%pre
-%service_add_pre iscsi.service iscsid.service iscsid.socket iscsi-init.service
-
-%preun
-%service_del_preun iscsi.service iscsid.service iscsid.socket iscsi-init.service
-
-%post   -n libopeniscsiusr0_2_0 -p %{run_ldconfig}
-%postun -n libopeniscsiusr0_2_0 -p %{run_ldconfig}
+%post   -n %{libname} -p %{run_ldconfig}
+%postun -n %{libname} -p %{run_ldconfig}
 
 %post -n iscsiuio
 %service_add_post iscsiuio.service iscsiuio.socket
@@ -195,10 +225,13 @@ fi
 %service_del_preun iscsiuio.service iscsiuio.socket
 
 %files
-%dir %{_sysconfdir}/iscsi
+%dir %{_home_dir}
 %{_sysconfdir}/iscsid.conf
-%attr(0600,root,root) %config(noreplace) %{_sysconfdir}/iscsi/iscsid.conf
-%ghost %{_sysconfdir}/iscsi/initiatorname.iscsi
+%attr(0600,root,root) %config(noreplace) %{_home_dir}/iscsid.conf
+%ghost %{_home_dir}/initiatorname.iscsi
+%if 0%{?_dbroot_new}
+%config %{_home_dir}/README.DB-files-moved
+%endif
 %dir %{_dbroot}
 %dir %{_dbroot}/ifaces
 %{_dbroot}/ifaces/iface.example
@@ -229,7 +262,7 @@ fi
 %{_mandir}/man8/iscsi-gen-initiatorname.8%{ext_man}
 %{_udevrulesdir}/50-iscsi-firmware-login.rules
 
-%files -n libopeniscsiusr0_2_0
+%files -n %{libname}
 %{_libdir}/libopeniscsiusr.so.*
 
 %files -n iscsiuio
