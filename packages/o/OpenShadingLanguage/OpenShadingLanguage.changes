@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 10 21:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.7.1:
+  * Add clangSupport library as dependency to fix linker error on some
+  platforms. #1613
+  * Test against OpenColorIO 2.2. #1616
+  * Build: Fix how version overrides work to reduce the chance of user
+    mistakes.
+
+-------------------------------------------------------------------
 Fri Nov  4 16:54:56 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 1.12.7.0 -- 1 Nov 2022:

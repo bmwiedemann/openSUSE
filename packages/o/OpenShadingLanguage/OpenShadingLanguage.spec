@@ -23,7 +23,7 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.12.7.0
+Version:        1.12.7.1
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
