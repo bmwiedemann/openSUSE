@@ -20818,7 +20818,6 @@ unsorted:
   - php7-pgsql 
   - php7-phar 
   - php7-posix 
-  - php7-psr 
   - php7-readline 
   - php7-shmop 
   - php7-smbclient 
@@ -23619,7 +23618,7 @@ unsorted:
   - python310-infinity 
   - python310-inflect 
   - python310-inflection 
-  - python310-influxdb 
+  - python310-influxdb: [x86_64] 
   - python310-ini2toml 
   - python310-ini2toml-all 
   - python310-ini2toml-full 
@@ -26934,7 +26933,7 @@ unsorted:
   - python38-infinity 
   - python38-inflect 
   - python38-inflection 
-  - python38-influxdb 
+  - python38-influxdb: [x86_64] 
   - python38-ini2toml 
   - python38-ini2toml-all 
   - python38-ini2toml-full 
@@ -30299,7 +30298,7 @@ unsorted:
   - python39-infinity 
   - python39-inflect 
   - python39-inflection 
-  - python39-influxdb 
+  - python39-influxdb: [x86_64] 
   - python39-ini2toml 
   - python39-ini2toml-all 
   - python39-ini2toml-full 
@@ -33664,6 +33663,7 @@ unsorted:
   - slurm-node: [x86_64] 
   - slurm-openlava: [x86_64] 
   - slurm-pam_slurm: [x86_64] 
+  - slurm-plugin-ext-sensors-rrd: [x86_64] 
   - slurm-plugins: [x86_64] 
   - slurm-rest: [x86_64] 
   - slurm-seff: [x86_64] 
