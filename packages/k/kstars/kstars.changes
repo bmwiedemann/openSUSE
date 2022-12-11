@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  9 13:07:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.2:
+  * See https://invent.kde.org/education/kstars/-/blob/stable-3.6.2/ChangeLog
+- Remove lower_qt_version.patch
+
+-------------------------------------------------------------------
 Fri Sep 30 07:33:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update constraints. Newer kstar versions need more disk space

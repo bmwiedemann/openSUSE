@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -33,8 +33,6 @@ URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM https://invent.kde.org/education/kstars/-/merge_requests/758
-Patch0:         lower_qt_version.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -70,7 +68,7 @@ BuildRequires:  cmake(StellarSolver) >= 2.2
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(libindi)
+BuildRequires:  pkgconfig(libindi) >= 1.9.9
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(wcslib)
 Requires:       libqt5-qtquickcontrols
