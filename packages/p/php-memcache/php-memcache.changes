@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 11 12:32:55 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build issues for PHP 8.2
+  + trivial-minimal-fix-for-PHP-8.2.patch
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
