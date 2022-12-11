@@ -1494,4 +1494,13 @@ Removal of SuSEfirewall2 service.
     <comment></comment>
     <requestid>1031423</requestid>
   </revision>
+  <revision rev="178" vrev="3">
+    <srcmd5>5771f066f13fe01bd1b595e25c329535</srcmd5>
+    <version>2.6.3</version>
+    <time>1670775384</time>
+    <user>dimstar_suse</user>
+    <comment>- add reproducible.patch to avoid using compile-time specific date/time
+  constructs (forwarded request 1041971 from dirkmueller)</comment>
+    <requestid>1041973</requestid>
+  </revision>
 </revisionlist>

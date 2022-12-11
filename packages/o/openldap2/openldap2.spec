@@ -52,6 +52,7 @@ Source21:       slapd-ldif-update-crc.sh
 Source22:       update-crc.sh
 Source23:       slapd.conf
 Source24:       slapd.conf.olctemplate
+Patch1:         reproducible.patch
 Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
@@ -239,6 +240,7 @@ Servers
 
 %prep
 %setup -q -a 9 -n openldap-%{version_main}
+%patch1 -p1
 %patch3 -p1
 %patch5 -p1
 %patch8 -p1
