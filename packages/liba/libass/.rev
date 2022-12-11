@@ -437,4 +437,12 @@ I suggest a &quot;osc copypac -r &lt;last revision that builds&gt; multimedia:li
     <comment></comment>
     <requestid>977969</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>11c1235b9d85870d753740ebe3630367</srcmd5>
+    <version>0.17.0</version>
+    <time>1670775383</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.17.0, fixup sr#1041850</comment>
+    <requestid>1041972</requestid>
+  </revision>
 </revisionlist>

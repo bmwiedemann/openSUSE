@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Dec  7 16:34:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * This release’s major feature is the addition of a new ASS ScriptInfo
+    header pair: LayoutResX and LayoutResY. The introduction has been
+    coordinated with active VSFilters and will soon be available in xy-
+    VSFilter and XySubFilter as well.
+  * Since the beginning, many features in ASS scale relative to or are
+    otherwise affected by the storage resolution of the video file the subs
+    are bundled with. Adjusting subs for different video resolutions
+    traditionally took non-trivial effort. Of course this behavior must be
+    kept by default to preserve compatibility with existing files. But now,
+    setting both of the new headers to a positive, non-zero value will
+    replace the video storage resolution with the specified resolution for
+    the whole file, allowing easy reuse across all encodes of the same
+    display aspect ratio. This includes PAR effects, so reuse across
+    anamorphic and non-anamorphic releases is possible too.
+  * Detailed Changes:
+  * Fix various parts relating to automatic linebreaking
+  * Fix rendering when hinting was enabled and fontsizes or scales are zero
+  * Switch build to a non-recursive setup for improved parallelism
+  * Improve quality of SSA Effects movement
+  * Further documentation improvements
+  * Completely invalid Events are now discarded during parsing
+  * Introduction of LayoutRes{X,Y} script headers
+  * New AlphaLevel style override to set all alpha values while keeping the
+    color
+  * Add ASS_FEATURE_WRAP_UNICODE to allow automatic linebreaks in accordance
+    with the Unicode line breaking algorithm instead of ASS' much stricter
+    breaking rules. For the feature to be available at runtime, libass must
+    be linked against the new optional dependency libunibreak.
+  * Improve VSFilter compatibility:
+
+  * Fix premature truncation of animated alphas (was a 0.15.0 regression)
+  * Fix handling of small delay parameters for legacy SSA Effects
+  * Fix x-scaling with PlayResX
+  * Fix x-scaling for anamorphic video (except for \be whose scaling remains
+    buggy in general)
+  * Support SSA's AlphaLevel style field
+  * Support the \kt override tag from VSFilter's v4++ set
+  * Parse ScriptType headers
+  * Parse integer header, style and event field values like VSFilter
+  * Ignore trailing whitespace in an event's text
+
+-------------------------------------------------------------------
 Wed May 18 15:21:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.16.0:

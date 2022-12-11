@@ -18,7 +18,7 @@
 
 %define sover   9
 Name:           libass
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Library for SSA/ASS-formatted subtitle rendering
 License:        ISC
