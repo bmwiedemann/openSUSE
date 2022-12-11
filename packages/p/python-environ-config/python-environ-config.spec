@@ -1,7 +1,7 @@
 #
 # spec file for package python-environ-config
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-environ-config
-Version:        20.1.0
+Version:        22.1.0
 Release:        0
 Summary:        Boilerplate-free configuration with env variables
 License:        MIT
@@ -33,6 +33,8 @@ Conflicts:      python-django-environ
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 17.4.0}
+BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

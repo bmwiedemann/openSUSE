@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec  9 16:48:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 22.1.0 (2022-04-02)
+  * Deprecations:
+  Python 2.7, 3.5, and 3.6 support has been dropped. environ-config now requires Python 3.7 or later.
+  * Changes:
+  Lazily init the AWS SecretsManager client to make unit testing easier. #25
+
+- Update to 21.2.0 (2021-05-17)
+  * Deprecations:
+  This is the last release supporting Python versions older than 3.7.
+  * Changes:
+  Added AWS SecretsManager support. #23
+
+- Update to 21.1.0 (2021-04-14)
+  * Backward-incompatible changes:
+  none
+  * Deprecations:
+  none
+  * Changes:
+  Fixed environment variables’ names when prefix is empty. #14
+  Added the optional keyword argument to environ.group() #17
+  Added DirectorySecrets secret reader, which can read secrets from a directory of files.
+  Useful for Docker or Kubernetes mounted secrets inside a container. #19
+
+-------------------------------------------------------------------
 Fri Jul 24 13:51:16 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Conflict with python-django-environ
