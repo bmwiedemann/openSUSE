@@ -16,16 +16,20 @@
 #
 
 
+%define pkg_name    psr
+
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
 %define php_name %{flavor}
 %endif
+%if 0%{?suse_version} <= 1500
 %define php_extdir  %(%{__php_config} --extension-dir)
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
-%define pkg_name    psr
+%endif
+
 Name:           %{php_name}-%{pkg_name}
 Version:        1.2.0
 Release:        0
