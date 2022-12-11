@@ -19,7 +19,7 @@
 
 %define modname onionshare
 Name:           python-%{modname}
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
