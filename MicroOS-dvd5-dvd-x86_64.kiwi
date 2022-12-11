@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221210" schemaversion="4.1">
+<image name="OBS__MicroOS___20221211" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221210</productvar>
+      <productvar name="VERSION">20221211</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221210,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221211,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221210/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221211/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1473,7 +1473,7 @@
       <repopackage name="libopenblas_pthreads0" arch="x86_64"/>
       <repopackage name="libopencc1_1"/>
       <repopackage name="libOpenEXR-3_1-30"/>
-      <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
+      <repopackage name="libopeniscsiusr0" arch="x86_64"/>
       <repopackage name="libopenjp2-7"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenssl1_1"/>
