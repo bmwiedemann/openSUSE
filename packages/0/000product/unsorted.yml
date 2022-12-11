@@ -2440,7 +2440,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - crash-kmp-default 
   - crash-kmp-pae: [i586] 
   - crash-trace 
   - crawl 
@@ -12973,9 +12973,9 @@ unsorted:
   - libopenscap25 
   - libopenscap_sce25 
   - libopenshot-audio-devel 
-  - libopenshot-audio8 
+  - libopenshot-audio9 
   - libopenshot-devel 
-  - libopenshot21 
+  - libopenshot23 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -15416,6 +15416,15 @@ unsorted:
   - lilv 
   - lilypond: [x86_64] 
   - lilypond-doc: [x86_64] 
+  - lilypond-doc-cs: [x86_64] 
+  - lilypond-doc-de: [x86_64] 
+  - lilypond-doc-es: [x86_64] 
+  - lilypond-doc-fr: [x86_64] 
+  - lilypond-doc-hu: [x86_64] 
+  - lilypond-doc-it: [x86_64] 
+  - lilypond-doc-ja: [x86_64] 
+  - lilypond-doc-nl: [x86_64] 
+  - lilypond-doc-zh: [x86_64] 
   - lilypond-emmentaler-fonts: [x86_64] 
   - lilypond-fonts-common: [x86_64] 
   - lime-devel 
@@ -20788,7 +20797,6 @@ unsorted:
   - php7-ftp 
   - php7-gd 
   - php7-gettext 
-  - php7-gmagick 
   - php7-gmp 
   - php7-ice 
   - php7-iconv 
@@ -20796,10 +20804,8 @@ unsorted:
   - php7-intl 
   - php7-json 
   - php7-ldap 
-  - php7-lzf 
   - php7-maxminddb 
   - php7-mbstring 
-  - php7-memcache 
   - php7-memcached 
   - php7-mysql 
   - php7-odbc 
@@ -20810,13 +20816,10 @@ unsorted:
   - php7-pear 
   - php7-pecl 
   - php7-pgsql 
-  - php7-phalcon 
   - php7-phar 
-  - php7-phpunit8 
   - php7-posix 
   - php7-psr 
   - php7-readline 
-  - php7-redis 
   - php7-shmop 
   - php7-smbclient 
   - php7-snmp 
@@ -43015,7 +43018,7 @@ unsorted:
   - totem-pl-parser-devel 
   - totem-plugin-gnome-dvb-daemon 
   - touchegg 
-  - tp_smapi-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - tp_smapi-kmp-default 
   - tp_smapi-kmp-pae: [i586] 
   - tpm-quote-tools 
   - tpm-tools 
