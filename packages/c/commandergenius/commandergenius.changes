@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 10 20:44:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  * More collision fixes, especially relevant in Keen 2.
+  * Improved the Video engine a bit. Changing resolutions on the
+    fly now work better.
+  * Fixed some ledge grabbing issues.
+
+-------------------------------------------------------------------
 Mon Jul  4 08:01:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.3
