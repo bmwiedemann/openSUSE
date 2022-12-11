@@ -414,6 +414,18 @@ Requires:       pmix
 %description plugins
 This package contains the SLURM plugins (loadable shared objects)
 
+%package plugin-ext-sensors-rrd
+Summary:        SLURM ext_sensors/rrd Plugin (loadable shared objects)
+Group:          Productivity/Clustering/Computing
+%{?upgrade:Provides: %{pname}-plugin-ext-sensors-rrd = %{version}}
+%{?upgrade:Conflicts: %{pname}-plugin-ext-sensors-rrd}
+Requires:       %{name}-plugins = %{version}
+
+%description plugin-ext-sensors-rrd
+This package contains the ext_sensors/rrd plugin used to read data
+using RRD, a tool that creates and manages a linear database for
+sampling and logging data.
+
 %package torque
 Summary:        Wrappers for transitition from Torque/PBS to SLURM
 Group:          Productivity/Clustering/Computing
@@ -1377,8 +1389,10 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %endif
 %{_libdir}/slurm/node_features_knl_generic.so
 %{_libdir}/slurm/acct_gather_profile_influxdb.so
-%{_libdir}/slurm/ext_sensors_rrd.so
 %{_libdir}/slurm/jobcomp_elasticsearch.so
+
+%files plugin-ext-sensors-rrd
+%{_libdir}/slurm/ext_sensors_rrd.so
 
 %files lua
 %{?comp_at}

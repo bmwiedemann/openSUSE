@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  2 16:39:45 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Move the ext_sensors/rrd plugin to a separate package: this
+  plugin requires librrd which in turn requires huge parts of
+  the client side X Window System stack.
+  There is probably no use in cluttering up a system for a
+  plugin that probably only used by a few.
+
+-------------------------------------------------------------------
 Fri Oct 21 15:14:30 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Test Suite fixes:
