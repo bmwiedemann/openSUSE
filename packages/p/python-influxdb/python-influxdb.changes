@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  9 16:05:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Sync ExcludeArch with influxdb. By definition, this package is no
+  longer noarch, as it's not usable/installable on all
+  architectures (missing deps).
+
+-------------------------------------------------------------------
 Thu Apr 15 14:29:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36: Extensive use of pandas in the test suite
 - Add influxdb-pr845-pandas-future.patch
-  gh#influxdb/influxdb-python#845 
+  gh#influxdb/influxdb-python#845
 - Skip tests failing with pandas -- #influxdb/influxdb-python#884
 - Don't use extra mock
 

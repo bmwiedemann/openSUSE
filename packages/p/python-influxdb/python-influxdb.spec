@@ -1,7 +1,7 @@
 #
 # spec file for package python-influxdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Requires:       python-python-dateutil >= 2.6.0
 Requires:       python-pytz
 Requires:       python-requests >= 2.17.0
 Requires:       python-six >= 1.10.0
-BuildArch:      noarch
+ExcludeArch:    %ix86 %arm ppc
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pandas}
