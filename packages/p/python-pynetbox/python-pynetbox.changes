@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 10 20:46:27 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.0
+  BREAKING CHANGE
+  * Due to changes for a_terminations, b_terminations this version
+    only supports NetBox 3.3 and later.
+  Changes
+  * Enable available_ips for ip_ranges.
+  * Remove all Python2 related code.
+  * Do not skip plugins in endpoint URLs.
+  * Fix pickling exception with custom errors.
+  * Support NetBox 3.3 cabling models (breaking change).
+
+-------------------------------------------------------------------
 Wed Oct  5 14:22:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 6.6.2 
