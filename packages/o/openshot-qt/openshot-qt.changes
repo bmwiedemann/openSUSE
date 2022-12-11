@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:13:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0:
+  * Part of the OpenShot Video Editor v3.0.0 Release
+  * Huge improvements to User-Guide
+  * Fix to About->Changelog dialog (correctly parse logs)
+  * Updated AppStream XML metadata
+  * Many fixes to translations and our entire translation pipeline
+  * Support for many new languages
+  * Huge caching improvements (and new cache preferences)
+  * New Location preferences (for default folders - recent vs project)
+  * Added support for Blender 3.3.x (and many other blender-related improvements)
+  * Fixes to the build-in tutorial system (when hiding/showing widgets)
+  * Many fixes to sorting, including ability to manually sort lists (especially useful when using translations)
+  * Huge improvement to audio waveform support (faster waveforms, improved algorithm, more accurate, caching, and optimizations)
+
+-------------------------------------------------------------------
 Sun Jul 10 09:49:05 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add openshot-qt-disable-sending-metrics.patch: disable the use

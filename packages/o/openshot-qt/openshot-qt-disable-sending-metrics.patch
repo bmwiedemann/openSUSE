@@ -1,7 +1,8 @@
-diff -Nur openshot-qt-2.6.1/src/settings/_default.settings new/src/settings/_default.settings
---- openshot-qt-2.6.1/src/settings/_default.settings	2021-09-05 01:16:20.000000000 +0200
-+++ new/src/settings/_default.settings	2022-07-10 11:36:30.694748033 +0200
-@@ -340,7 +340,7 @@
+Index: openshot-qt-3.0.0/src/settings/_default.settings
+===================================================================
+--- openshot-qt-3.0.0.orig/src/settings/_default.settings
++++ openshot-qt-3.0.0/src/settings/_default.settings
+@@ -385,7 +385,7 @@
      "restart": true
    },
    {
