@@ -16,18 +16,17 @@
 #
 
 
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdesignerplugin
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Framework for integration of KDE frameworks widgets with Qt Designer
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -51,7 +50,6 @@ from ini-style description files.
 
 %package devel
 Summary:        Build environment for kdesignerplugin, a framework for integration of KDE frameworks widgets
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Core) >= 5.15.0
