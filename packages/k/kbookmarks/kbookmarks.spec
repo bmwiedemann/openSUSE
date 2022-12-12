@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5Bookmarks5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kbookmarks
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Framework for manipulating bookmarks in XBEL format
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,7 +54,6 @@ the XBEL format.
 
 %package -n %{lname}
 Summary:        Framework for manipulating bookmarks in XBEL format
-Group:          System/GUI/KDE
 
 %description -n %{lname}
 This is a framework for accessing and manipulating bookmarks using
@@ -63,7 +61,6 @@ the XBEL format.
 
 %package devel
 Summary:        Development files for kbookmarks, a XBEL format bookmark manipulation framework
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
