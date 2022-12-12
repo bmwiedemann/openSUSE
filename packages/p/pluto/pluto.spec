@@ -31,6 +31,33 @@ BuildRequires:  go >= 1.17
 %description
 Pluto is a utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
 %prep
 %setup -q
 %setup -q -T -D -a 1
@@ -45,10 +72,32 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%files bash-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
+
+%files fish-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog
