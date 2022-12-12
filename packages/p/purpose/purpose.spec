@@ -20,18 +20,17 @@
 %global __requires_exclude qmlimport\\((Ubuntu\\.OnlineAccounts|org\\.kde\\.kdeconnect).*
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           purpose
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -72,7 +71,6 @@ can receive all the information they need.
 
 %package -n %{lname}
 Summary:        Framework to integrate services and actions - core library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n %{lname}
@@ -86,7 +84,6 @@ This package contains the core library files of the package.
 
 %package -n libKF5PurposeWidgets5
 Summary:        Framework to integrate services and actions - GUI library
-Group:          System/Libraries
 Recommends:     %{name}
 
 %description -n libKF5PurposeWidgets5
@@ -100,7 +97,6 @@ This package contains the library files of the package needed to use GUI widgets
 
 %package devel
 Summary:        Framework to integrate services and actions - Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
