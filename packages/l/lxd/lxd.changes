@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 12 04:12:54 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 5.9. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-9-has-been-released/15907
+  boo#1206296
+
+ + Network zones project feature
+
+-------------------------------------------------------------------
 Tue Nov 22 06:34:14 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 5.8. The full upstream changelog is available from:
