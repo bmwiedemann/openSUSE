@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 10 16:53:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.7:
+  * Bugfixes
+    - Restore offline more functionality (#201) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Dec  1 05:48:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.2.6:
