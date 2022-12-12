@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5Su5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdesu
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        User interface for running shell commands with root privileges
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,7 +54,6 @@ kdessh use it to interface with su and ssh respectively.
 
 %package -n %{lname}
 Summary:        User interface for running shell commands with root privileges
-Group:          System/GUI/KDE
 Obsoletes:      libKF5Su4
 
 %description -n %{lname}
@@ -65,7 +63,6 @@ kdessh use it to interface with su and ssh respectively.
 
 %package devel
 Summary:        User interface for running shell commands with root privileges
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5Pty) >= %{_kf5_bugfix_version}
