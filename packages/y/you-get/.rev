@@ -377,4 +377,69 @@
     <comment>- Update to version 0.4.1612 (no changelog)</comment>
     <requestid>986333</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3b60819f9cd955a61168058ecd6c7b92</srcmd5>
+    <version>0.4.1650</version>
+    <time>1670863166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1650
+  * Twitter: support tweets with multiple videos and NSFW tweets.
+  * TikTok: fix extraction.
+  * YouTube: improve extractor.
+- Update to version 0.4.1620
+  * Instagram: fix extraction.
+  * YouTube: fix extraction.
+  * set the oldest supported python version to 3.7.4
+- Update to version 0.4.1612 (no changelog)
+- Update to version 0.4.1602 (no changelog)
+- Update to version 0.4.1555 (no changelog)
+- Update to version 0.4.1545 (no changelog)
+- Update to version 0.4.1536 (no changelog)
+- Update to version 0.4.1527 (no changelog supplied)
+- Update to version 0.4.1525 (no changelog supplied)
+- Update to version 0.4.1520 (no changelog supplied)
+- Update to version 0.4.1500 (no changelog supplied)
+- Update to version 0.4.1488 (no changelog supplied)
+- Update to version 0.4.1475 (no changelog supplied)
+- Update to version 0.4.1456 (no changelog supplied)
+- Update to version 0.4.1432 (no changelog supplied)
+- Update to version 0.4.1423 (no changelog supplied)
+- Update to version 0.4.1410 (no changelog supplied)
+- Update to version 0.4.1403 (no changelog supplied)
+- Removed groups 
+- Update to version 0.4.1388 (no changelog supplied)
+- Update to version 0.4.1355 (no changelog supplied)
+- Update to version 0.4.1347 (no changelog supplied)
+- Update to version 0.4.1328 (no changelog supplied)
+- Update to version 0.4.1314 (no changelog supplied) 
+- Update to version 0.4.1302 (no changelog supplied)
+- Update to version 0.4.1295 (no changelog supplied)
+- Update to version 0.4.1270 (no changelog supplied)
+- Update to version 0.4.1256 (no changelog supplied)
+- Update to version 0.4.1210 (no changelog supplied)
+- Update to version 0.4.1205 (no changelog supplied)
+- Update to version 0.4.1193 (no changelog supplied)
+- Update to version 0.4.1181 (no changelog supplied)
+- Update to version 0.4.1167 (no changelog supplied)
+- Update to version 0.4.1164 (no changelog supplied)
+- Use upstream exe script to avoid runtime dependency on
+  setuptools
+- Update to version 0.4.1148 (no changelog supplied) 
+- Update to version 0.4.1140 (no changelog supplied)
+- Update to version 0.4.1128 (no changelog supplied) 
+- Update to version 0.4.1120 (no changelog supplied)
+- Update to version 0.4.1099 (no changelog supplied)
+- Update to version 0.4.1077 (no changelog supplied)
+- Update to version 0.4.1060 (no changelog supplied)
+- Update to version 0.4.1040 (no changelog supplied)
+- Update to version 0.4.1025 (no changelog supplied)
+- Update to version 0.4.1011 (no changelog supplied)
+- Update RPM groups. Fix size estimate in description.
+- Update to version 0.4.995 (no changelog supplied)
+- Update to version 0.4.990 (no changelog supplied)
+- Update to version 0.4.985
+- Initial package (0.4.964)
+</comment>
+    <requestid>1042216</requestid>
+  </revision>
 </revisionlist>

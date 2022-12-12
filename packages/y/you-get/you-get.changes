@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 11 21:35:31 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.1650
+  * Twitter: support tweets with multiple videos and NSFW tweets.
+  * TikTok: fix extraction.
+  * YouTube: improve extractor.
+
+-------------------------------------------------------------------
 Sat Jul  2 07:11:20 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
-- Update to version 0.4.1612 (no changelog)
+- Update to version 0.4.1620
+  * Instagram: fix extraction.
+  * YouTube: fix extraction.
+  * set the oldest supported python version to 3.7.4
 
 -------------------------------------------------------------------
 Mon May 30 03:58:14 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
