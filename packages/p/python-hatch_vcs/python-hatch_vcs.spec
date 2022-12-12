@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-hatch_vcs
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Hatch plugin for versioning with your preferred VCS
 License:        MIT
