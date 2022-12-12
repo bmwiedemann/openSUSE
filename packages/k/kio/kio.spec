@@ -16,18 +16,17 @@
 #
 
 
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -95,7 +94,6 @@ file dialog also uses this to provide its network-enabled file management.
 
 %package core
 Summary:        Network transparent access to files and data
-Group:          System/GUI/KDE
 
 # core subpackage created with 5.9.0
 Conflicts:      kio <= 5.8.0
@@ -108,7 +106,6 @@ KIO core libraries, ioslave and daemons.
 
 %package devel
 Summary:        Network transparent access to files and data
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       %{name}-core = %{version}
 Requires:       extra-cmake-modules
