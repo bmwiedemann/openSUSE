@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:55:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.2:
+  * fix AST comparison
+  * fix handling of n-ary comparisons in AST
+  * fix symbolic atom iterator
+  * build wheels using cibuildwheel
+  * add support for parsing files in ASPIF format
+  * add theory related functions to backend
+  * add support for comparisons with more than one relation
+  * extend safety by computing intervals from comparisons
+  * add and ground base part by default in Python API
+  * remove experimental CSP extensions
+  * require at least MSVC 15.0 to build on Windows
+  * large code refactoring
+  * replace internal hash set implementation by external one
+  * fix `parse_files` in C++ API
+  * fix adding clauses during enumeration
+  * fix incremental projection with backend
+  * update to clasp version 3.3.8
+  * extend theory class to get version information
+  * improve performance of `Model.symbol`
+  * tidy up `clingo.hh` header regarding C++17 deprecations
+  * fix error handling while solving in Python API
+  * fix various outher bugs
+
+-------------------------------------------------------------------
 Thu Sep  1 00:13:39 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not use python_module macro, which requires other macros to fire

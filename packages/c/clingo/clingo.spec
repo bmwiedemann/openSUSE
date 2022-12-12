@@ -18,7 +18,7 @@
 
 %define major 4
 Name:           clingo
-Version:        5.5.0
+Version:        5.6.2
 Release:        1.1
 Summary:        A grounder and solver for logic programs
 Group:          Development/Tools/Other
