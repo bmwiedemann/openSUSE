@@ -18,7 +18,7 @@
 
 %define cpan_name Curses
 Name:           perl-Curses
-Version:        1.41
+Version:        1.43
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Terminal screen handling and optimization
@@ -44,9 +44,9 @@ how your system's curses(3) library works.
 %autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
-sed -i '1s|../../perl|%{__perl}|' test.syms
 sed -i '1s| /usr//bin/perl|%{__perl}|' demo.form
-sed -i '1s| /usr/bin/perl|%{__perl}|' demo* gdc
+sed -i '1s| /usr/bin/perl|%{__perl}|' demo* gdc testsyms
+chmod +x makeConfig
 # MANUAL END
 
 %build
@@ -64,7 +64,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog demo demo2 demo.form demo.menu demo.panel gdc gen.tar HISTORY list.syms MAINTENANCE README testcurses test.syms
+%doc ChangeLog demo demo2 demo.form demo.menu demo.panel HISTORY MAINTENANCE README
 %license Artistic Copying
 
 %changelog

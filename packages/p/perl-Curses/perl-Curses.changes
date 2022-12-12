@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  8 03:06:50 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Curses/ChangeLog
+
+  New in 1.43 (Released December 08, 2022)
+    Fix missing file introduced in 1.42 that prevents all builds from working.
+  New in 1.42 (Released December 07, 2022)
+    Add missing return type declarations so it works with modern C compilers.
+    Fix build failure with newer compilers: test compiles to find Curses library
+    capabilities fail because necessary header files are not included because
+    C_PANELFUNCTION etc are not defined because the test compiles do not include
+    CursesFun.h, which they can't because the test compiles are part of creating
+    CursesFun.h.  Solution: put C_PANELFUNCTION, etc in new config.h.
+    Rename test.syms program to testsyms, because it is a more conventional
+    name format.
+
+-------------------------------------------------------------------
 Fri Aug 19 03:06:56 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.41
