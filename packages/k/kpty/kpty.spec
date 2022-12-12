@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5Pty5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpty
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Primitives to interface with pseudo terminal devices
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -51,7 +50,6 @@ communicating with them using a pty.
 
 %package -n %{lname}
 Summary:        Interfacing with pseudo terminal devices
-Group:          System/GUI/KDE
 
 %description -n %{lname}
 This library provides primitives to interface with pseudo terminal devices
@@ -60,7 +58,6 @@ communicating with them using a pty.
 
 %package devel
 Summary:        Development files for kpty, a pseudo terminal device interface
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5CoreAddons) >= %{_tar_path}
