@@ -272,4 +272,12 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1039608</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c55a754bc412d828521dc95b154117a1</srcmd5>
+    <version>0.1.65</version>
+    <time>1670863208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042353</requestid>
+  </revision>
 </revisionlist>

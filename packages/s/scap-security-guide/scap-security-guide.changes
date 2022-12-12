@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:44:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.65 (jsc#ECO-3319)
+   - Introduce cui profile for OL9
+   - Remove Support for OVAL 5.10
+   - Rename account_passwords_pam_faillock_audit
+   - CI ansible hardening and rename of existing Bash hardening
+   - Update contributors list for v0.1.65 release
+   - various SUSE profile specific fixes
+
+-------------------------------------------------------------------
 Fri Nov 25 13:16:15 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - require sudo, as remediations touch sudo config or use sudo.

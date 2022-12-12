@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.64
+Version:        0.1.65
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -55,14 +55,13 @@ Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.
 Patch0:         scap-security-guide-UnicodeEncodeError-character-fix.patch
 
 # explicit require what is needed by the detection logic in the scripts
-Requires:	gawk
-Requires:	sed
-Requires:	grep
-Requires:	findutils
-Requires:	coreutils
-Requires:	zypper
-Requires:	sudo
-
+Requires:       coreutils
+Requires:       findutils
+Requires:       gawk
+Requires:       grep
+Requires:       sed
+Requires:       sudo
+Requires:       zypper
 
 BuildRequires:  cmake
 
@@ -233,6 +232,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
          -DSSG_PRODUCT_EKS=OFF \
          -DSSG_PRODUCT_WRLINUX8=OFF \
          -DSSG_PRODUCT_WRLINUX1019=OFF \
+         -DSSG_PRODUCT_ANOLIS8=OFF \
          ../
 make
 
