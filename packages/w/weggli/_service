@@ -6,6 +6,6 @@
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">hellorust</param>
+     <param name="srcdir">weggli-0.2.4</param>
   </service>
 </services>

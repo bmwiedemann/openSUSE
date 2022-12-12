@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1008720</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>623c637f93bb872ab4388ec7713895af</srcmd5>
+    <version>0.2.4</version>
+    <time>1670863162</time>
+    <user>dimstar_suse</user>
+    <comment>- fix typo in _service file</comment>
+    <requestid>1042198</requestid>
+  </revision>
 </revisionlist>
