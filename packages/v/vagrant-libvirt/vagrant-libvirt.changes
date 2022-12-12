@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 12 09:48:39 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.11.2
+
+* Handle pmsuspended resume and add state translation message by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1686
+* Include resume domain spec missed by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1689
+* Ensure iommu XML is only set for virtio nics by @electrofelix in https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1690
+
+-------------------------------------------------------------------
 Fri Dec  2 09:36:07 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.11.1
