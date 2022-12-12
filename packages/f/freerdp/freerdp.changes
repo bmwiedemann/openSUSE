@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 11 06:01:28 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Disable VAAPI feature due bug https://bugzilla.opensuse.org/show_bug.cgi?id=1205595
+
+-------------------------------------------------------------------
 Thu Nov 17 08:42:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Ugraded to freerdp 2.9.0

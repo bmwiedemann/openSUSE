@@ -248,7 +248,6 @@ export CFLAGS="%{optflags} -fPIE -pie"
         -DWITH_ZLIB=ON \
 %ifarch x86_64
         -DWITH_SSE2=ON \
-        -DWITH_VAAPI=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
 %else
         -DWITH_SSE2=OFF \
 %endif
