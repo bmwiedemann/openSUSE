@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Sat Dec 10 19:13:00 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.1
+  Bug fixes
+  * Fixed a crash that could occur in level 1 of episode 2, in
+    theory also in other levels but it was so far only observed in
+    E2L1.
+  * Fixed being able to shoot destructible walls through 4-tile
+    wide walls using the regular shot.
+- Update to version 0.9.0
+  New features
+  * Added a "Classic" gameplay style/mode. It doesn't support
+    widescreen mode or smooth motion, but is 100% accurate to the
+    original. Quick-saving and high-resolution mods are still
+    supported. See Classic Mode vs. Enhanced Mode for more details.
+  * Implemented the gameplay demo (plays during the attract mode
+    loop at the beginning of the game or after waiting for
+    30 seconds in the main menu).
+  * Implemented the original game's cloak effect, replacing the
+    previously used alpha transparency.
+  * Implemented the original game's slide-in animation when
+    showing message boxes.
+  * Added an option to disable the radar overlay when using the
+    "Remixed 1" HUD style.
+  * Added an option to disable aspect ratio correction when using
+    pixel-perfect upscaling (aka integer scaling). This is to
+    allow running RigelEngine on a 4:3 CRT at original (or close
+    to) resolution.
+  * It's now possible to confirm quitting by pressing enter instead
+    of Y (but the latter also still works).
+  * Pressing ESC while in-game now brings up the in-game menu (this
+    was previously only accessible by using a gamepad). Pressing Q
+    now does what ESC used to do, i.e. bringing up the "Quit"
+    dialog without going through the menu.
+  Parity improvements
+  * Fixed (very) minor discrepancies in the color palette.
+  * Added missing horizontal parallax for vertically autoscrolling
+    backdrops.
+  * Fixed oversight in player movement: In the original, Duke cannot
+    move left/right when hanging from a pipe as long as the fire
+    button is held down.
+  * It was possible for an enemy to get hit by multiple player shots
+    per frame, but this isn't possible in the original. Now Rigel
+    doesn't allow that anymore either.
+  * Hint machine messages cannot be interrupted by other messages
+    in the original game, but this was possible in Rigel-now fixed.
+  * Handling of shootable walls now matches the original.
+  * The watchbot (jumpy robot with a big eye) was jumping too
+    frequently, it now matches the original.
+  * Fixed discrepancies in behavior for the wall walker enemy.
+  * Fixed discrepancies in behavior for the green cat/dog creature.
+  * Fixed discrepancies in behavior for the spiked dragon/lizard
+    creature.
+  * Fixed discrepancy in the cooldown period for manual scrolling
+    after firing a shot.
+  * Fixed player starting location being off by one in levels where
+    the player starts out facing left.
+  * Fixed incorrect animation speeds for Rigelatin space ship
+    engine fire, shallow water, and rotating floor spikes.
+  * After being released from their box, certain items have a brief
+    period during which they can't be picked up yet. This was
+    missing in RigelEngine.
+  Bug fixes
+  * Fixed graphical glitches (bright lines appearing next to certain
+    sprites) that could occur on some systems when high-res graphic
+    replacements were used.
+  * Fixed being able to walk through walls under specific
+    circumstances.
+  * In widescreen mode, when using one of the remixed HUD options,
+    the classic HUD will be shown as fallback in case the current
+    screen resolution's aspect ratio is not wide enough for the
+    selected HUD style. In that case, it was possible to walk
+    behind the right side of the HUD (i.e., the gameplay area
+    extended beyond the HUD). This is now fixed.
+  * Framerate drops could cause the game to advance a few frames
+    into the future without respecting player input. This is now
+    improved.
+- Drop patch
+  * fix-build.patch
+
+-------------------------------------------------------------------
 Sun May 29 12:43:47 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.5

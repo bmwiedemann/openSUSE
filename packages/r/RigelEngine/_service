@@ -2,8 +2,8 @@
         <service name="tar_scm" mode="disabled">
                 <param name="scm">git</param>
                 <param name="url">https://github.com/lethal-guitar/RigelEngine.git</param>
-                <param name="revision">v0.8.5</param>
-                <param name="versionformat">v0.8.5beta</param>
+                <param name="revision">v0.9.1</param>
+                <param name="versionformat">v0.9.1</param>
 		<param name="versionrewrite-pattern">v(.*)</param>
         </service>
         <service name="recompress" mode="disabled">

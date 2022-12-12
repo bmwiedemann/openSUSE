@@ -18,15 +18,13 @@
 
 
 Name:           RigelEngine
-Version:        0.8.5beta
+Version:        0.9.1
 Release:        0
 Summary:        A modern reimplementation of the game Duke Nukem II
 License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/lethal-guitar/RigelEngine
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-build.patch -- https://github.com/lethal-guitar/RigelEngine/pull/860
-Patch0:         fix-build.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
@@ -47,7 +45,6 @@ available shareware version.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %if 0%{?sle_version} >= 150100 && 0%{?is_opensuse}
