@@ -15,7 +15,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 
 --- a/Doc/library/ensurepip.rst
 +++ b/Doc/library/ensurepip.rst
-@@ -56,8 +56,9 @@ is at least as recent as the one availab
+@@ -58,8 +58,9 @@ is at least as recent as the one availab
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
  active virtual environment). The installation location can be controlled
@@ -26,7 +26,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  * ``--root <dir>``: Installs ``pip`` relative to the given root directory
    rather than the root of the currently active virtual environment (if any)
    or the default root for the current Python installation.
-@@ -89,7 +90,7 @@ Module API
+@@ -91,7 +92,7 @@ Module API
     Returns a string specifying the available version of pip that will be
     installed when bootstrapping an environment.
  
@@ -35,7 +35,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
                          altinstall=False, default_pip=False, \
                          verbosity=0)
  
-@@ -99,6 +100,8 @@ Module API
+@@ -101,6 +102,8 @@ Module API
     If *root* is ``None``, then installation uses the default install location
     for the current environment.
  
@@ -44,7 +44,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     *upgrade* indicates whether or not to upgrade an existing installation
     of an earlier version of ``pip`` to the available version.
  
-@@ -119,6 +122,8 @@ Module API
+@@ -121,6 +124,8 @@ Module API
     *verbosity* controls the level of output to :data:`sys.stdout` from the
     bootstrapping operation.
  

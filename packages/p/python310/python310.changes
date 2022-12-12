@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Thu Dec  8 14:42:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.9:
+  - python -m http.server no longer allows terminal
+    control characters sent within a garbage request to be
+    printed to the stderr server lo This is done by changing
+    the http.server BaseHTTPRequestHandler .log_message method
+    to replace control characters with a \xHH hex escape before
+    printin
+  - Avoid publishing list of active per-interpreter
+    audit hooks via the gc module
+  - The IDNA codec decoder used on DNS hostnames by
+    socket or asyncio related name resolution functions no
+    longer involves a quadratic algorithm. This prevents a
+    potential CPU denial of service if an out-of-spec excessive
+    length hostname involving bidirectional characters were
+    decoded. Some protocols such as urllib http 3xx redirects
+    potentially allow for an attacker to supply such a name.
+  - Update bundled libexpat to 2.5.0
+  - Port XKCP’s fix for the buffer overflows in SHA-3
+    (CVE-2022-37454).
+  - On Linux the multiprocessing module returns
+    to using filesystem backed unix domain sockets for
+    communication with the forkserver process instead of the
+    Linux abstract socket namespace. Only code that chooses
+    to use the “forkserver” start method is affected Abstract
+    sockets have no permissions and could allow any user
+    on the system in the same network namespace (often the
+    whole system) to inject code into the multiprocessing
+    forkserver process. This was a potential privilege
+    escalation. Filesystem based socket permissions restrict
+    this to the forkserver process user as was the default in
+    Python 3.8 and earlier This prevents Linux CVE-2022-42919
+  - Fix a reference bug in _imp.create_builtin()
+    after the creation of the first sub-interpreter for modules
+    builtins and sys. Patch by Victor Stinner.
+  - Fixed a bug that was causing a buffer overflow if
+    the tokenizer copies a line missing the newline caracter
+    from a file that is as long as the available tokenizer
+    buffer. Patch by Pablo galindo
+  - Update faulthandler to emit an error message with
+    the proper unexpected signal number. Patch by Dong-hee Na.
+  - Fix subscription of types.GenericAlias instances
+    containing bare generic types: for example tuple[A, T][int],
+    where A is a generic type, and T is a type variable.
+  - Fix detection of MAC addresses for uuid on certain
+    OSs. Patch by Chaim Sanders
+  - Print exception class name instead of its string
+    representation when raising errors from ctypes calls.
+  - Allow pdb to locate source for frozen modules in
+    the standard library.
+  - Raise ValueError instead of SystemError when
+    methods of uninitialized io.IncrementalNewlineDecoder objects
+    are called. Patch by Oren Milman.
+  - Fix a possible assertion failure in io.FileIO when
+    the opener returns an invalid file descriptor.
+  - Also escape s in the http.server
+    BaseHTTPRequestHandler.log_message so that it is technically
+    possible to parse the line and reconstruct what the original
+    data was. Without this a xHH is ambiguious as to if it is a
+    hex replacement we put in or the characters r”x” came through
+    in the original request line.
+  - asyncio.get_event_loop() now only emits a
+    deprecation warning when a new event loop was created
+    implicitly. It no longer emits a deprecation warning if the
+    current event loop was set.
+  - Fix bug when calling trace.CoverageResults with
+    valid infile.
+  - Fix a bug in handling class cleanups in
+    unittest.TestCase. Now addClassCleanup() uses separate lists
+    for different TestCase subclasses, and doClassCleanups() only
+    cleans up the particular class.
+  - Release the GIL when calling termios APIs to avoid
+    blocking threads.
+  - Fix ast.increment_lineno() to also cover
+    ast.TypeIgnore when changing line numbers.
+  - Fixed bug where inspect.signature() reported
+    incorrect arguments for decorated methods.
+  - Fix SystemError in ctypes when exception was not
+    set during __initsubclass__.
+  - Fix statistics.NormalDist pickle with 0 and 1
+    protocols.
+  - Update the bundled copy of pip to version 22.3.1.
+  - Apply bugfixes from importlib_metadata 4.11.4,
+    namely: In PathDistribution._name_from_stem, avoid
+    including parts of the extension in the result. In
+    PathDistribution._normalized_name, ensure names loaded from
+    the stem of the filename are also normalized, ensuring
+    duplicate entry points by packages varying only by
+    non-normalized name are hidden.
+  - Clean up refleak on failed module initialisation in
+    _zoneinfo
+  - Clean up refleaks on failed module initialisation
+    in in _pickle
+  - Clean up refleak on failed module initialisation in
+    _io.
+  - Fix memory leak in math.dist() when both points
+    don’t have the same dimension. Patch by Kumar Aditya.
+  - Fix argument typechecks in _overlapped.WSAConnect()
+    and _overlapped.Overlapped.WSASendTo() functions.
+  - Fix internal error in the re module which in
+    very rare circumstances prevented compilation of a regular
+    expression containing a conditional expression without the
+    “else” branch.
+  - Fix asyncio.StreamWriter.drain() to call
+    protocol.connection_lost callback only once on Windows.
+  - Add a mutex to unittest.mock.NonCallableMock to
+    protect concurrent access to mock attributes.
+  - Fix hang on Windows in subprocess.wait_closed() in
+    asyncio with ProactorEventLoop. Patch by Kumar Aditya.
+  - Fix infinite loop in unittest when a
+    self-referencing chained exception is raised
+  - tkinter.Text.count() raises now an exception for
+    options starting with “-” instead of silently ignoring them.
+  - On uname_result, restored expectation that _fields
+    and _asdict would include all six properties including
+    processor.
+  - Update the bundled copies of pip and setuptools to
+    versions 22.3 and 65.5.0 respectively.
+  - Fix bug in urllib.parse.urlparse() that causes
+    certain port numbers containing whitespace, underscores,
+    plus and minus signs, or non-ASCII digits to be incorrectly
+    accepted.
+  - Allow venv to pass along PYTHON* variables to
+    ensurepip and pip when they do not impact path resolution
+  - On macOS, fix a crash in syslog.syslog() in
+    multi-threaded applications. On macOS, the libc syslog()
+    function is not thread-safe, so syslog.syslog() no longer
+    releases the GIL to call it. Patch by Victor Stinner.
+  - Allow BUILTINS to be a valid field name for frozen
+    dataclasses.
+  - Make sure patch.dict() can be applied on async
+    functions.
+  - To avoid apparent memory leaks when
+    asyncio.open_connection() raises, break reference cycles
+    generated by local exception and future instances (which has
+    exception instance as its member var). Patch by Dong Uk,
+    Kang.
+  - Prevent error when activating venv in nested fish
+    instances.
+  - Restrict use of sockets instead of pipes for stdin
+    of subprocesses created by asyncio to AIX platform only.
+  - shutil.copytree() now applies the
+    ignore_dangling_symlinks argument recursively.
+  - Fix IndexError in argparse.ArgumentParser when a
+    store_true action is given an explicit argument.
+  - Document that calling variadic functions with
+    ctypes requires special care on macOS/arm64 (and possibly
+    other platforms).
+  - Skip test_normalization() of test_unicodedata
+    if it fails to download NormalizationTest.txt file from
+    pythontest.net. Patch by Victor Stinner.
+  - Some C API tests were moved into the new
+    Lib/test/test_capi/ directory.
+  - Fix -Wimplicit-int, -Wstrict-prototypes, and
+    -Wimplicit-function-declaration compiler warnings in
+    configure checks.
+  - Fix -Wimplicit-int compiler warning in configure
+    check for PTHREAD_SCOPE_SYSTEM.
+  - Specify the full path to the source location for
+    make docclean (needed for cross-builds).
+  - Fix NO_MISALIGNED_ACCESSES being not defined
+    for the SHA3 extension when HAVE_ALIGNED_REQUIRED is
+    set. Allowing builds on hardware that unaligned memory
+    accesses are not allowed.
+  - Fix handling of module docstrings in
+    Tools/i18n/pygettext.py.
+
+- Remove upstreamed patches:
+  - 98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+  - CVE-2015-20107-mailcap-unsafe-filenames.patch
+  - CVE-2022-42919-loc-priv-mulitproc-forksrv.patch
+  - CVE-2022-45061-DoS-by-IDNA-decode.patch
+
+-------------------------------------------------------------------
 Wed Nov  9 18:31:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
@@ -955,7 +1130,7 @@ Thu Mar 24 18:55:46 UTC 2022 - David Anes <david.anes@suse.com>
 Tue Feb 22 05:53:06 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-expat-245.patch:
-  * Support Expat >= 2.4.5 
+  * Support Expat >= 2.4.5
 
 -------------------------------------------------------------------
 Tue Feb 15 23:05:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
@@ -1145,7 +1320,7 @@ Sat Jun  5 21:21:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Jun  4 21:36:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- allow build with Sphinx >= 3.x 
+- allow build with Sphinx >= 3.x
 
 -------------------------------------------------------------------
 Wed Jun  2 13:12:04 UTC 2021 - Dan Čermák <dcermak@suse.com>
@@ -1697,7 +1872,7 @@ Sat Dec 12 14:29:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
 Thu Dec 10 00:26:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Last try before this results in an editwar:
-  * remove importlib_resources and importlib-metadata 
+  * remove importlib_resources and importlib-metadata
     provides/obsoletes
   * import importlib_resources is not the same as
     import importlib.resources, same for metadata
@@ -1814,54 +1989,54 @@ Tue Jul 21 09:53:06 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 - Removed CVE-2019-20907_tarfile-inf-loop.patch: fixed in upstream
 - Removed recursion.tar: contained in upstream
 - Update to 3.9.0b5:
-  - bpo-41304: Fixes python3x._pth being ignored on Windows, caused 
+  - bpo-41304: Fixes python3x._pth being ignored on Windows, caused
     by the fix for bpo-29778 (CVE-2020-15801).
   - bpo-41162: Audit hooks are now cleared later during
     finalization to avoid missing events.
-  - bpo-29778: Ensure python3.dll is loaded from correct locations 
+  - bpo-29778: Ensure python3.dll is loaded from correct locations
     when Python is embedded (CVE-2020-15523).
-  - bpo-39603: Prevent http header injection by rejecting control 
+  - bpo-39603: Prevent http header injection by rejecting control
     characters in http.client.putrequest(…).
   - bpo-41295: Resolve a regression in CPython 3.8.4 where defining
-    “__setattr__” in a multi-inheritance setup and 
+    “__setattr__” in a multi-inheritance setup and
     calling up the hierarchy chain could fail if builtins/extension
     types were involved in the base types.
-  - bpo-41247: Always cache the running loop holder when running 
+  - bpo-41247: Always cache the running loop holder when running
     asyncio.set_running_loop.
-  - bpo-41252: Fix incorrect refcounting in 
+  - bpo-41252: Fix incorrect refcounting in
     _ssl.c’s _servername_callback().
-  - bpo-41215: Use non-NULL default values in the PEG parser 
+  - bpo-41215: Use non-NULL default values in the PEG parser
     keyword list to overcome a bug that was '
     preventing Python from being properly compiled when using the
     XLC compiler. Patch by Pablo Galindo.
-  - bpo-41218: Python 3.8.3 had a regression where compiling with 
-    ast.PyCF_ALLOW_TOP_LEVEL_AWAIT would 
+  - bpo-41218: Python 3.8.3 had a regression where compiling with
+    ast.PyCF_ALLOW_TOP_LEVEL_AWAIT would
     aggressively mark list comprehension with CO_COROUTINE. Now only
     list comprehension making use of async/await will tagged as so.
-  - bpo-41175: Guard against a NULL pointer dereference within 
+  - bpo-41175: Guard against a NULL pointer dereference within
     bytearrayobject triggered by the bytearray() + bytearray() operation.
-  - bpo-39960: The “hackcheck” that prevents sneaking around a type’s 
-    __setattr__() by calling the superclass method was 
+  - bpo-39960: The “hackcheck” that prevents sneaking around a type’s
+    __setattr__() by calling the superclass method was
     rewritten to allow C implemented heap types.
-  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the 
+  - bpo-41288: Unpickling invalid NEWOBJ_EX opcode with the
     C implementation raises now UnpicklingError instead of crashing.
-  - bpo-39017: Avoid infinite loop when reading specially crafted 
+  - bpo-39017: Avoid infinite loop when reading specially crafted
     TAR files using the tarfile module (CVE-2019-20907, bsc#1174091).
   - bpo-41235: Fix the error handling in ssl.SSLContext.load_dh_params().
-  - bpo-41207: In distutils.spawn, restore expectation that 
+  - bpo-41207: In distutils.spawn, restore expectation that
     DistutilsExecError is raised when the command is not found.
   - bpo-39168: Remove the __new__ method of typing.Generic.
-  - bpo-41194: Fix a crash in the _ast module: it can no longer be 
+  - bpo-41194: Fix a crash in the _ast module: it can no longer be
     loaded more than once. It now uses a global state rather than a module state.
-  - bpo-39384: Fixed email.contentmanager to allow set_content() to set a 
+  - bpo-39384: Fixed email.contentmanager to allow set_content() to set a
     null string.
-  - bpo-41300: Save files with non-ascii chars. 
+  - bpo-41300: Save files with non-ascii chars.
     Fix regression released in 3.9.0b4 and 3.8.4.
-  - bpo-37765: Add keywords to module name completion list. 
+  - bpo-37765: Add keywords to module name completion list.
     Rewrite Completions section of IDLE doc.
-  - bpo-40170: Revert PyType_HasFeature() change: it reads 
-    again directly the PyTypeObject.tp_flags 
-    member when the limited C API is not used, rather than always calling 
+  - bpo-40170: Revert PyType_HasFeature() change: it reads
+    again directly the PyTypeObject.tp_flags
+    member when the limited C API is not used, rather than always calling
     PyType_GetFlags() which hides implementation details.
 
 -------------------------------------------------------------------
@@ -2382,7 +2557,7 @@ Wed Jun  5 12:19:09 CEST 2019 - Matej Cepl <mcepl@suse.com>
     pickling costs between processes
   - typed_ast is merged back to CPython
   - LOAD_GLOBAL is now 40% faster
-  - pickle now uses Protocol 4 by default, improving performance 
+  - pickle now uses Protocol 4 by default, improving performance
 - Remove patches which were included in the upstream:
   - 00251-change-user-install-location.patch
   - 00316-mark-bdist_wininst-unsupported.patch
@@ -2527,7 +2702,7 @@ Mon Dec 17 17:24:49 CET 2018 - mcepl@suse.com
 
 - Upgrade to 3.7.2rc1:
     * bugfix release, for the full list of all changes see
-      https://docs.python.org/3.7/whatsnew/changelog.html#changelog 
+      https://docs.python.org/3.7/whatsnew/changelog.html#changelog
 - Make run of the test suite more verbose
 
 -------------------------------------------------------------------
@@ -2954,7 +3129,7 @@ Mon Mar 13 14:04:22 UTC 2017 - jmatejek@suse.com
 Sat Feb 25 20:55:57 UTC 2017 - bwiedemann@suse.com
 
 - Add 0001-allow-for-reproducible-builds-of-python-packages.patch
-  upstream https://github.com/python/cpython/pull/296 
+  upstream https://github.com/python/cpython/pull/296
 
 -------------------------------------------------------------------
 Wed Feb  8 12:30:20 UTC 2017 - jmatejek@suse.com
@@ -3020,7 +3195,7 @@ Mon Mar  7 20:38:11 UTC 2016 - toddrme2178@gmail.com
 
 - Add  Python-3.5.1-fix_lru_cache_copying.patch
   Fix copying the lru_cache() wrapper object.
-  Fixes deep-copying lru_cache regression, which worked on 
+  Fixes deep-copying lru_cache regression, which worked on
   previous versions of python but fails on python 3.5.
   This fixes a bunch of packages in devel:languages:python3.
   See: https://bugs.python.org/issue25447
@@ -3158,7 +3333,7 @@ Sun Jan 11 13:01:30 UTC 2015 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Sat Oct 18 20:14:54 UTC 2014 - crrodriguez@opensuse.org
 
-- Only pkgconfig(x11) is required for build, not the whole 
+- Only pkgconfig(x11) is required for build, not the whole
   set of packages provided by xorg-x11-devel metapackage.
 
 -------------------------------------------------------------------
@@ -3218,7 +3393,7 @@ Wed Mar 26 15:24:46 UTC 2014 - jmatejek@suse.com
 -------------------------------------------------------------------
 Mon Mar 24 17:29:31 UTC 2014 - dmueller@suse.com
 
-- remove blacklisting of test_posix on aarch64: qemu bug is fixed 
+- remove blacklisting of test_posix on aarch64: qemu bug is fixed
 
 -------------------------------------------------------------------
 Mon Mar 17 18:26:58 UTC 2014 - jmatejek@suse.com
@@ -3321,7 +3496,7 @@ Tue Nov 19 14:28:41 UTC 2013 - jmatejek@suse.com
 -------------------------------------------------------------------
 Tue Oct 15 17:44:08 UTC 2013 - crrodriguez@opensuse.org
 
-- build with -DOPENSSL_LOAD_CONF for the same reasons 
+- build with -DOPENSSL_LOAD_CONF for the same reasons
   described in the python2 package.
 
 -------------------------------------------------------------------
@@ -3333,7 +3508,7 @@ Fri Aug 16 11:35:15 UTC 2013 - jmatejek@suse.com
 -------------------------------------------------------------------
 Thu Aug  8 14:54:49 UTC 2013 - dvaleev@suse.com
 
-- Exclue test_faulthandler from tests on powerpc due to bnc#831629 
+- Exclue test_faulthandler from tests on powerpc due to bnc#831629
 
 -------------------------------------------------------------------
 Thu Jun 13 15:05:34 UTC 2013 - jmatejek@suse.com
@@ -3392,7 +3567,7 @@ Fri Mar  1 07:42:21 UTC 2013 - dmueller@suse.com
 
 - add ctypes-libffi-aarch64.patch:
   * import aarch64 support for libffi in _ctypes module
-- add aarch64 to the list of lib64 based archs 
+- add aarch64 to the list of lib64 based archs
 - add movetogetdents64.diff:
   * port to getdents64, as SYS_getdents is not implemented everywhere
 
@@ -3446,9 +3621,9 @@ Mon Oct 29 18:21:45 UTC 2012 - dmueller@suse.com
 -------------------------------------------------------------------
 Thu Oct 25 08:14:36 UTC 2012 - Rene.vanPaassen@gmail.com
 
-- exclude test_math for SLE 11; math library fails on negative 
+- exclude test_math for SLE 11; math library fails on negative
   gamma function values close to integers and 0, probably
-  due to imprecision in -lm on SLE_11_SP2. 
+  due to imprecision in -lm on SLE_11_SP2.
 
 -------------------------------------------------------------------
 Tue Oct 16 12:15:34 UTC 2012 - coolo@suse.com
@@ -3472,7 +3647,7 @@ Mon Oct  1 08:53:03 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Thu Sep 27 12:35:01 UTC 2012 - idonmez@suse.com
 
-- Correct dependency for python3-testsuite, 
+- Correct dependency for python3-testsuite,
   python3-tkinter -> python3-tk
 
 -------------------------------------------------------------------
@@ -3505,7 +3680,7 @@ Fri Aug  3 12:09:34 UTC 2012 - jmatejek@suse.com
 -------------------------------------------------------------------
 Fri Jul 27 09:02:41 UTC 2012 - dvaleev@suse.com
 
-- skip test_io on ppc 
+- skip test_io on ppc
 - drop test_io ppc patch
 
 -------------------------------------------------------------------
@@ -3554,8 +3729,8 @@ Wed Jan 18 15:49:47 UTC 2012 - jmatejek@suse.com
 -------------------------------------------------------------------
 Sun Dec 25 13:25:01 UTC 2011 - idonmez@suse.com
 
-- Use system ffi, included one is broken see 
-  http://bugs.python.org/issue11729 and 
+- Use system ffi, included one is broken see
+  http://bugs.python.org/issue11729 and
   http://bugs.python.org/issue12081
 
 -------------------------------------------------------------------
