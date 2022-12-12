@@ -267,7 +267,7 @@ def fetch_ethercodes():
     else:
         vout(1, 'code file {outfile} up to date already')
 
-    timestamp = time.strftime('%Y%m%d_%H%M%S', ouidate)
+    timestamp = time.strftime('%Y%m%d', ouidate)
     if gpar.timestamp:
         vout(0, 'timestamp: {}'.format(timestamp))
 
