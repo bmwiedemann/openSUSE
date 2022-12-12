@@ -1,0 +1,6 @@
+<package name="kubelogin" project="openSUSE:Factory">
+  <title>Kubernetes client credential plugin implementing Azure authentication</title>
+  <description>A client-go credential (exec) plugin implementing azure authentication. This plugin provides features that are not available in kubectl. It is supported on kubectl v1.11+</description>
+  <devel project="devel:kubic" package="kubelogin"/>
+  <url>https://github.com/Azure/kubelogin</url>
+</package>

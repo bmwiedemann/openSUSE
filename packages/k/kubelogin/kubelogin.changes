@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Mon Dec 12 12:52:13 UTC 2022 - Robert Munteanu <rombert@apache.org>
+
+- Ensure the downloaded archive is identical with the one generated
+  by `osc service runall download_files`
+
+-------------------------------------------------------------------
+Mon Dec 12 12:46:56 UTC 2022 - rombert@apache.org
+
+- Update to version 0.0.24:
+  * Revert following commits as the original assumption where devicelogin shouldn't work in non-interactive mode is invalid (#155)
+  * Close code block (#154)
+  * Enable kubectl version lower than 1.22 to work though without triggering exit under devicelogin mode (#152)
+  * fixed a bug where kubelogin get-token always expects KUBERNETES_EXEC_INFO env var (#151)
+  * Implemented web browser interactive login flow (#135)
+  * Gaojing/devicelogin exit when interactivemode never (#145)
+  * support client.authentication.k8s.io/v1
+  * remove token cache for azurecli login (#142)
+  * Add appending slash to oidc-issuer-url (#138)
+  * Update objectId to id on Line 90 (#133)
+  * Add how to write secret permantly into kubeconfig (#132)
+  * Support encrypted client certificates for service principal login (#126)
+  * Update README.md - Added Windows setup instructions (#128)
+  * disregard tenantID from input kubeconfig when convert to azurecli (#124)
+  * pass in tenantID to azurecli (#122)
+  * Add platform information to `--version` (#117)
+  * unit tests no longer touch default kubeconfig (#113)
+  * update dependency and go1.18 (#97)
+  * feat: Add ability to use env names of TF Azure provider (#110)
+  * fixed a bug where token cache dir isn't effective (#111)
+  * added --token-cache-dir support in convert-kubeconfig (#105)
+  * add support of the rest of login methods to exec input (#103)
+  * refactor the convert.go and added some unit tests
+
+-------------------------------------------------------------------
+Tue Jul 12 14:59:44 UTC 2022 - Robert Munteanu <rombert@apache.org>
+
+- Initial packaging of version 0.0.14 
