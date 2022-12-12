@@ -17,18 +17,17 @@
 
 
 %define sonum   5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           sonnet
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -59,7 +58,6 @@ HSpell, Enchant, ASpell and HUNSPELL.
 
 %package -n libKF5SonnetCore%{sonum}
 Summary:        KDE spell checking library
-Group:          System/GUI/KDE
 Requires:       %{name} >= %{_kf5_bugfix_version}
 %requires_ge    libQt5Core5
 Obsoletes:      libKF5SonnetCore4
@@ -71,7 +69,6 @@ HSpell, Enchant, ASpell and HUNSPELL.
 
 %package -n libKF5SonnetUi%{sonum}
 Summary:        KDE spell checking library
-Group:          System/GUI/KDE
 %requires_ge    libKF5SonnetCore5
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5Widgets5
@@ -96,7 +93,6 @@ QtQuick based applications.
 
 %package devel
 Summary:        KDE spell checking library: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       extra-cmake-modules
 Requires:       libKF5SonnetCore%{sonum} = %{version}
 Requires:       libKF5SonnetUi%{sonum} = %{version}
@@ -109,7 +105,6 @@ HSpell, Enchant, ASpell and HUNSPELL. Development files.
 
 %package voikko
 Summary:        KDE spell checking library: Support for Voikko
-Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Provides:       locale(sonnet:fi)
 
