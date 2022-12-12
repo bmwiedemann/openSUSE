@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 12 14:15:39 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add BuildRequires for libhdf5[_hl]-<compiler_family>[-<mpi_flavor>-hpc
+  explicitly so that %%{requires_eq ..} is able to find the package and
+  obtain the version number (boo#1206334).
+
+-------------------------------------------------------------------
 Sat Feb 26 19:18:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Correct Source: URL

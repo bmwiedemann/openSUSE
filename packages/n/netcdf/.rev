@@ -610,4 +610,14 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
     <comment></comment>
     <requestid>957823</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>be22d152442f74d611e1df29f1b35ffc</srcmd5>
+    <version>4.8.1</version>
+    <time>1670863226</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires for libhdf5[_hl]-&lt;compiler_family&gt;[-&lt;mpi_flavor&gt;-hpc
+  explicitly so that %%{requires_eq ..} is able to find the package and
+  obtain the version number (boo#1206334).</comment>
+    <requestid>1042403</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package netcdf
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -525,6 +525,9 @@ BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  hdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel
+# Install libhdf5*-<compiler_family>-hpc explicitly for %%requires_eq:
+BuildRequires:  libhdf5-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc
+BuildRequires:  libhdf5_hl-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
  %if %{with mpi}
