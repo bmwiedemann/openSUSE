@@ -17,14 +17,13 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.100
+%define _tar_path 5.101
 %bcond_without released
 Name:           solid
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -59,7 +58,6 @@ interacting with hardware independently of the underlying operating system.
 
 %package -n %{lname}
 Summary:        KDE Desktop hardware abstraction
-Group:          System/GUI/KDE
 Recommends:     %{name}-imports = %{version}
 Recommends:     %{name}-tools = %{version}
 Recommends:     media-player-info
@@ -72,7 +70,6 @@ interacting with hardware independently of the underlying operating system.
 
 %package tools
 Summary:        KDE Desktop hardware abstraction
-Group:          System/GUI/KDE
 
 %description tools
 Solid is a device integration framework.  It provides a way of querying and
@@ -81,7 +78,6 @@ CLI utilities.
 
 %package imports
 Summary:        KDE Desktop hardware abstraction
-Group:          System/GUI/KDE
 
 %description imports
 Solid is a device integration framework.  It provides a way of querying and
@@ -90,7 +86,6 @@ QML imports.
 
 %package devel
 Summary:        KDE Desktop hardware abstraction: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Core) >= 5.15.0
