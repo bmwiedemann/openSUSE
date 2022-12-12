@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec 10 19:55:57 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.20
+  - Various improvements to the menu. This includes updates to the
+    menu framework itself, to the game controller menu, the
+    savegame menu and the video menus.
+    0lvin)
+  - A lot of fixes and improvements to the controller support.
+    Support for gyro aiming, more precise stick handling and rumble
+    improvements.
+  - Implement faster weapon switching with the new 'cycleweap'
+    command.
+  - Fixes pusher delta yaw manipulation. This fixes the infamous
+    bug were a player standing on a blocked elevator gets turned
+    around
+  - Add a command 'spawnentity' to spawn entities at the given
+    coordinates. Can be used for debugging.
+  - Ported monster footstep sounds from SkacikPLs Q2RTX fork. Needs
+    a pak file with assets to work, see the documentation for
+    details.
+  - Ported reverb effects from SkacikPLs Q2RTX fork.
+  - Fix several coop related bugs with the powercubes.
+  - A way better fix for dead bodys obstructing elevators or
+    falling through the worldmodel.
+  - Fix items already in water playing a splash sound at level
+    start.
+  - Pause the game when getting minimized or hidden.
+  - Fix Bugs related to 'ogg_ignoretrack0'.
+  - Share model loading code between renderers.
+  - Restore stair step smoothing for step sizes other than 16.
+  - Fix playback of long audio samples (>10 seconds) through
+    OpenAL.
+
+-------------------------------------------------------------------
 Wed Nov  9 05:52:13 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - BuildRequre sdl2 stuff via pkgconfig(*).
