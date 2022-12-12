@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5DBusAddons5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdbusaddons
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Convenience classes for QtDBus
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -49,7 +48,6 @@ create KDED modules.
 
 %package -n %{lname}
 Summary:        Convenience classes for QtDBus
-Group:          System/GUI/KDE
 %requires_ge    libQt5DBus5
 Recommends:     %{name}-tools = %{version}
 
@@ -59,7 +57,6 @@ create KDED modules.
 
 %package tools
 Summary:        Convenience classes for QtDBus: CLI tools
-Group:          Development/Tools/Debuggers
 
 %description tools
 KDBusAddons provides convenience classes on top of QtDBus, as well as an API to
@@ -67,7 +64,6 @@ create KDED modules. Aditional CLI tools.
 
 %package devel
 Summary:        Convenience classes for QtDBus: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5DBus) >= 5.15.0
