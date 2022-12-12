@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Tue Dec  6 13:39:40 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.73.0
+  Please note that legacy Prometheus metric names have been removed
+  in this release; see the upgrade notes for more details.
+
+  https://github.com/matrix-org/synapse/blob/release-v1.73/docs/upgrade.md#legacy-prometheus-metric-names-have-now-been-removed
+  
+  - Features
+    - Speed-up /messages with filter_events_for_client
+      optimizations. (#14527)
+    - Improve DB performance by reducing amount of data that gets
+      read in device_lists_changes_in_room. (#14534)
+    - Adds support for handling avatar in SSO OIDC login.
+      Contributed by @ashfame. (#13917)
+    - Move MSC3030 /timestamp_to_event endpoints to stable v1
+      location
+      (/_matrix/client/v1/rooms/<roomID>/timestamp_to_event?ts=<timestamp>&dir=<direction>,
+      /_matrix/federation/v1/timestamp_to_event/<roomID>?ts=<timestamp>&dir=<direction>).
+      (#14471)
+    - Reduce database load of Client-Server endpoints which return
+      bundled aggregations. (#14491, #14508, #14510)
+    - Add unstable support for an Extensible Events room version
+      (org.matrix.msc1767.10) via MSC1767, MSC3931, MSC3932, and
+      MSC3933. (#14520, #14521, #14524)
+    - Prune user's old devices on login if they have too many.
+      (#14038, #14580)
+  - Bugfixes
+    - Fix a regression in Synapse 1.73.0rc1 where Synapse's main
+      process would stop responding to HTTP requests when a user
+      with a large number of devices logs in. (#14582)
+    - Fix a long-standing bug where paginating from the start of a
+      room did not work. Contributed by @gnunicorn. (#14149)
+    - Fix a bug introduced in Synapse 1.58.0 where a user with
+      presence state org.matrix.msc3026.busy would mistakenly be
+      set to online when calling /sync or /events on a worker
+      process. (#14393)
+    - Fix a bug introduced in Synapse 1.70.0 where a receipt's
+      thread ID was not sent over federation. (#14466)
+    - Fix a long-standing bug where the List media admin API would
+      fail when processing an image with broken thumbnail
+      information. (#14537)
+    - Fix a bug introduced in Synapse 1.67.0 where two logging
+      context warnings would be logged on startup. (#14574)
+    - In application service transactions that include the
+      experimental org.matrix.msc3202.device_one_time_key_counts
+      key, include a duplicate key of
+      org.matrix.msc3202.device_one_time_keys_count to match the
+      name proposed by MSC3202. (#14565)
+    - Fix a bug introduced in Synapse 0.9 where Synapse would fail
+      to fetch server keys whose IDs contain a forward slash.
+      (#14490)
+  - Improved Documentation
+    - Fixed link to 'Synapse administration endpoints'. (#14499)
+  - Deprecations and Removals
+    - Remove legacy Prometheus metrics names. They were deprecated
+      in Synapse v1.69.0 and disabled by default in Synapse
+      v1.71.0. (#14538)
+  - Internal Changes
+    - Improve type hinting throughout Synapse. (#14055, #14412,
+      #14529, #14452).
+    - Remove old stream ID tracking code. Contributed by Nick
+      @beeper (@Fizzadar). (#14376, #14468)
+    - Remove the worker_main_http_uri configuration setting. This
+      is now handled via internal replication. (#14400, #14476)
+    - Refactor federation_sender and pusher configuration loading.
+      (#14496)
+    - (#14509, #14573)
+    - Faster joins: do not wait for full state when creating events
+      to send. (#14403)
+    - Faster joins: filter out non local events when a room doesn't
+      have its full state. (#14404)
+    - Faster joins: send events to initial list of servers if we
+      don't have the full state yet. (#14408)
+    - Faster joins: use servers list approximation received during
+      send_join (potentially updated with received membership
+      events) in assert_host_in_room. (#14515)
+    - Fix type logic in TCP replication code that prevented
+      correctly ignoring blank commands. (#14449)
+    - Remove option to skip locking of tables when performing
+      emulated upserts, to avoid a class of bugs in future.
+      (#14469)
+    - scripts-dev/federation_client: Fix routing on servers with
+      .well-known files. (#14479)
+    - Reduce default third party invite rate limit to 216 invites
+      per day. (#14487)
+    - Refactor conversion of device list changes in room to
+      outbound pokes to track unconverted rows using a (stream ID,
+      room ID) position instead of updating the
+      converted_to_destinations flag on every row. (#14516)
+    - Add more prompts to the bug report form. (#14522)
+    - Extend editorconfig rules on indent and line length to .pyi
+      files. (#14526)
+    - Run Rust CI when Cargo.lock changes. This is particularly
+      useful for dependabot updates. (#14571)
+    - Fix a possible variable shadow in create_new_client_event.
+      (#14575)
+    - Bump various dependencies in the poetry.lock file and in CI
+      scripts. (#14557, #14559, #14560, #14500, #14501, #14502,
+      #14503, #14504, #14505).
+- Bump dependencies to follow poetry bumps:
+  phonenumbers 8.12.44 -> 8.13.00
+  sentry-sdk 1.10.1 -> 1.11.0
+
+-------------------------------------------------------------------
 Tue Nov 22 13:18:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.72.0

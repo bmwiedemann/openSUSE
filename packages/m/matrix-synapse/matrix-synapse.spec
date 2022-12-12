@@ -38,7 +38,7 @@
 %global matrix_common_max_version     2
 %global msgpack_version               1.0.3
 %global netaddr_version               0.8.0
-%global phonenumbers_version          8.12.44
+%global phonenumbers_version          8.13.00
 %global prometheus_client_version     0.15.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             22.0.0
@@ -59,7 +59,7 @@
 %global pysaml2_version               7.2.1
 %global Authlib_version               0.15.5
 %global lxml_version                  4.8.0
-%global sentry_sdk_version            1.10.1
+%global sentry_sdk_version            1.11.0
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -153,7 +153,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.72.0
+Version:        1.73.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

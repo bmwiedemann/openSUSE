@@ -643,4 +643,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>1040550</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fabb3f4fc5d5427f794e568930ced9d1</srcmd5>
+    <version>1.73.0</version>
+    <time>1670863176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042241</requestid>
+  </revision>
 </revisionlist>
