@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 11 17:35:34 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- re 2.10.0:
+  * h264: add STAP-A
+  * h265: add missing NAL types
+  * rtpext: move from baresip to re
+  * dns: fix dnsc_conf_set memory leak
+  * developer visible fixes
+
+-------------------------------------------------------------------
+Sun Dec  4 19:57:12 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- re 2.9.0:
+  * general maintenance and bugfix release
+
+-------------------------------------------------------------------
 Sat Oct  1 08:43:14 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to release 2.8.0
