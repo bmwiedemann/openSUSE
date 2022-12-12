@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 10 20:13:48 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 43.2:
+  + vnc-pipewire-stream:
+    - Don't pass NULL as frame to on_frame_ready
+    - Assert buffer types to be either MemFds or DmaBufs
+  + rdp-pipewire-stream: Assert buffer types to be either MemFds or
+    DmaBufs
+  + rdp-server: Remove stray new line
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 24 09:16:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
