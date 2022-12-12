@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5NewStuff5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knewstuff
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -67,7 +66,6 @@ specification.
 
 %package -n %{lname}
 Summary:        Framework for downloading and sharing additional application data
-Group:          System/GUI/KDE
 Requires:       %{name}
 Obsoletes:      libKF5NewStuff4
 
@@ -78,7 +76,6 @@ specification.
 
 %package -n libKF5NewStuffCore5
 Summary:        Framework for downloading and sharing additional application data
-Group:          System/GUI/KDE
 
 %description -n libKF5NewStuffCore5
 The KNewStuff library implements collaborative data sharing for
@@ -95,7 +92,6 @@ specification.
 
 %package imports
 Summary:        Framework for downloading and sharing additional application data
-Group:          System/GUI/KDE
 
 %description imports
 The KNewStuff library implements collaborative data sharing for
@@ -104,7 +100,6 @@ specification.
 
 %package core-devel
 Summary:        Framework for downloading and sharing additional application data
-Group:          Development/Libraries/KDE
 Requires:       extra-cmake-modules
 Requires:       libKF5NewStuffCore5 = %{version}
 Requires:       cmake(KF5Attica) >= %{_kf5_bugfix_version}
@@ -116,7 +111,6 @@ specification. Development files.
 
 %package quick-devel
 Summary:        Framework for downloading and sharing additional application data
-Group:          Development/Libraries/KDE
 Requires:       %{name}-core-devel = %{version}
 Requires:       %{name}-imports = %{version}
 Requires:       extra-cmake-modules
@@ -128,7 +122,6 @@ specification. Development files.
 
 %package devel
 Summary:        Framework for downloading and sharing additional application data
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name}-core-devel = %{version}
 Requires:       extra-cmake-modules
