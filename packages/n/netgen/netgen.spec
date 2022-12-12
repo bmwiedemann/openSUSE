@@ -199,6 +199,8 @@ echo "v%{version}-0-0" > ./version.txt
 %install
 # Stubgen imports the just created netgen bindings -- https://github.com/NGSolve/netgen/issues/132
 export PYTHONPATH=%{buildroot}%{python3_sitearch}
+# Avoid creating invalid bytecode fails via stubgen
+export PYTHONDONTWRITEBYTECODE=1
 %cmake_install
 rm -Rf %{buildroot}%{_datadir}/%{name}/doc
 # https://github.com/NGSolve/netgen/issues/126
@@ -210,6 +212,7 @@ find %{buildroot}%{python3_sitearch} -iname \*.pyi -exec sed -i -e '/^_[^_].*=/ 
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}/%{name}
+export PYTHONDONTWRITEBYTECODE=1
 %ctest %{!?with_pytest: --exclude-regex pytest}
 
 %files

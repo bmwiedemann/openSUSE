@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 11 18:26:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Don't write python bytecode during stubgen or test execution,
+  make python bindings subpackage reproducible.
+
+-------------------------------------------------------------------
 Thu Oct 20 20:07:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use Catch2 < 3.0. Unfortunately Catch2 3.x is API
