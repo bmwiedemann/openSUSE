@@ -537,4 +537,41 @@
 </comment>
     <requestid>1034962</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a9aa8958eba1bccddd6aff4e4823729e</srcmd5>
+    <version>3.10.9</version>
+    <time>1670867950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.9:
+  - python -m http.server no longer allows terminal
+    control characters sent within a garbage request to be
+    printed to the stderr server lo This is done by changing
+    the http.server BaseHTTPRequestHandler .log_message method
+    to replace control characters with a \xHH hex escape before
+    printin
+  - Avoid publishing list of active per-interpreter
+    audit hooks via the gc module
+  - The IDNA codec decoder used on DNS hostnames by
+    socket or asyncio related name resolution functions no
+    longer involves a quadratic algorithm. This prevents a
+    potential CPU denial of service if an out-of-spec excessive
+    length hostname involving bidirectional characters were
+    decoded. Some protocols such as urllib http 3xx redirects
+    potentially allow for an attacker to supply such a name.
+  - Update bundled libexpat to 2.5.0
+  - Port XKCP’s fix for the buffer overflows in SHA-3
+    (CVE-2022-37454).
+  - On Linux the multiprocessing module returns
+    to using filesystem backed unix domain sockets for
+    communication with the forkserver process instead of the
+    Linux abstract socket namespace. Only code that chooses
+    to use the “forkserver” start method is affected Abstract
+    sockets have no permissions and could allow any user
+    on the system in the same network namespace (often the
+    whole system) to inject code into the multiprocessing
+    forkserver process. This was a potential privilege
+    escalation. Filesystem based socket permissions restrict
+    this to the forkserver process user as was the default in</comment>
+    <requestid>1041730</requestid>
+  </revision>
 </revisionlist>

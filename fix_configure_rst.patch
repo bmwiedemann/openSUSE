@@ -29,7 +29,7 @@
     Create a Python.framework rather than a traditional Unix install. Optional
 --- a/Misc/NEWS
 +++ b/Misc/NEWS
-@@ -2979,7 +2979,7 @@ C API
+@@ -3254,7 +3254,7 @@ C API
  -----
  
  - bpo-43795: The list in :ref:`stable-abi-list` now shows the public name
