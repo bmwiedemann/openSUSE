@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec  9 11:11:04 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.20.3:
+  * Prevent DeprecationWarning to bubble up on CPython 3.10.9 and 3.11.1. #460 
+
+-------------------------------------------------------------------
+Wed Nov 30 07:13:34 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.20.2:
+  * Fixes an issue with async fixtures that are defined as methods on a test
+    class not being rebound to the actual test instance. #197
+  * Replaced usage of deprecated @pytest.mark.tryfirst with
+    @pytest.hookimpl(tryfirst=True) #438
+- 0.20.1 (22-10-21)
+  * Fixes an issue that warned about using an old version of pytest, even
+    though the most recent version was installed. #430
+- 0.20.0 (22-10-21)
+  * BREAKING: Removed legacy mode. If you're upgrading from v0.19 and you
+    haven't configured asyncio_mode = legacy, you can upgrade without taking
+    any additional action. If you're upgrading from an earlier version or you
+    have explicitly enabled legacy mode, you need to switch to auto or strict
+    mode before upgrading to this version.
+  * Deprecate use of pytest v6.
+  * Fixed an issue which prevented fixture setup from being cached. #404
+
+-------------------------------------------------------------------
 Fri Aug  5 04:57:24 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to 0.19.0

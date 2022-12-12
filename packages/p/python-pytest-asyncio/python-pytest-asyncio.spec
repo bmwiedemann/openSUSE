@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest-asyncio
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.19.0
+Version:        0.20.3
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
@@ -83,8 +83,8 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pytest_asyncio/
-%{python_sitelib}/pytest_asyncio-%{version}*-info/
+%{python_sitelib}/pytest_asyncio
+%{python_sitelib}/pytest_asyncio-%{version}*-info
 %endif
 
 %changelog

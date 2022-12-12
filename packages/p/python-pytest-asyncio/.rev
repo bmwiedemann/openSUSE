@@ -113,4 +113,30 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>993601</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f3f699d64dfb65c57b1a428addaa80d</srcmd5>
+    <version>0.20.3</version>
+    <time>1670867952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.3:
+  * Prevent DeprecationWarning to bubble up on CPython 3.10.9 and 3.11.1. #460 
+- Update to 0.20.2:
+  * Fixes an issue with async fixtures that are defined as methods on a test
+    class not being rebound to the actual test instance. #197
+  * Replaced usage of deprecated @pytest.mark.tryfirst with
+    @pytest.hookimpl(tryfirst=True) #438
+- 0.20.1 (22-10-21)
+  * Fixes an issue that warned about using an old version of pytest, even
+    though the most recent version was installed. #430
+- 0.20.0 (22-10-21)
+  * BREAKING: Removed legacy mode. If you're upgrading from v0.19 and you
+    haven't configured asyncio_mode = legacy, you can upgrade without taking
+    any additional action. If you're upgrading from an earlier version or you
+    have explicitly enabled legacy mode, you need to switch to auto or strict
+    mode before upgrading to this version.
+  * Deprecate use of pytest v6.
+  * Fixed an issue which prevented fixture setup from being cached. #404
+</comment>
+    <requestid>1041848</requestid>
+  </revision>
 </revisionlist>
