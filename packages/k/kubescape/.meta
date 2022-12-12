@@ -1,6 +1,0 @@
-<package name="kubescape" project="openSUSE:Factory">
-  <title>kubescape</title>
-  <description>Kubescape is a K8s open-source tool providing a multi-cloud K8s single pane of glass, including risk analysis, security compliance, RBAC visualizer and image vulnerabilities scanning</description>
-  <devel project="devel:kubic" package="kubescape"/>
-  <url>https://github.com/armosec/kubescape</url>
-</package>
