@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,11 +24,10 @@
 %bcond_without ffmpeg
 %bcond_without released
 Name:           kfilemetadata5
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         kfilemetadata-%{version}.tar.xz
 %if %{with released}
@@ -61,7 +60,6 @@ A library for extracting file metadata.
 
 %package devel
 Summary:        Development package for kfilemetadata
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules >= %{_kf5_bugfix_version}
 Requires:       cmake(Qt5Core) >= 5.15.0
