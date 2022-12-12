@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:10:21 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Update CMakeLists.txt - The majority of frameworks use KF_VERSION to indicate current version.
+
+-------------------------------------------------------------------
 Tue Nov  8 08:34:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
