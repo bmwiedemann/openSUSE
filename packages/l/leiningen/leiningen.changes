@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:01:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.0:
+  * Update to nREPL 1.0.0
+  * Fix a bug where :eval-in :leiningen could suppress test exit code.
+  * Add the ability to sign deployed files using SSH keys, not just GPG.
+  * Fix a bug where uberjar splices profiles into target path
+    incorrectly.
+
+-------------------------------------------------------------------
 Thu Aug 11 06:14:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.10:

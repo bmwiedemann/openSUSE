@@ -143,4 +143,17 @@
   * Avoid illegal reflective access doing XML parsing in uberjar/search.</comment>
     <requestid>994444</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bc973830d69ddbcb67b32d024777e3ce</srcmd5>
+    <version>2.10.0</version>
+    <time>1670863182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0:
+  * Update to nREPL 1.0.0
+  * Fix a bug where :eval-in :leiningen could suppress test exit code.
+  * Add the ability to sign deployed files using SSH keys, not just GPG.
+  * Fix a bug where uberjar splices profiles into target path
+    incorrectly.</comment>
+    <requestid>1042277</requestid>
+  </revision>
 </revisionlist>
