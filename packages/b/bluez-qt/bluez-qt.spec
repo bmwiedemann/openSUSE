@@ -18,7 +18,7 @@
 
 %define sonum   6
 %define _libname KF5BluezQt
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -26,11 +26,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           bluez-qt
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Async Bluez wrapper library
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ Async Bluez wrapper library.
 
 %package -n lib%{_libname}%{sonum}
 Summary:        Async Bluez wrapper library - development files
-Group:          System/GUI/KDE
 
 # KUF only due to version number overlapping
 Obsoletes:      lib%{_libname}5
@@ -63,7 +61,6 @@ Async Bluez wrapper library.
 
 %package imports
 Summary:        Async Bluez wrapper library
-Group:          System/GUI/KDE
 %requires_ge    libQtQuick5
 Supplements:    packageand(lib%{_libname}%{sonum}:libQtQuick5)
 
@@ -73,7 +70,6 @@ QML imports.
 
 %package udev
 Summary:        bluez-qt integration with udev
-Group:          System/Base
 Requires:       udev
 
 %description udev
@@ -82,7 +78,6 @@ Udev rules.
 
 %package devel
 Summary:        Async Bluez wrapper library - development files
-Group:          Development/Libraries/C and C++
 Requires:       lib%{_libname}%{sonum} = %{version}
 Requires:       cmake(Qt5Core) >= 5.15.0
 
