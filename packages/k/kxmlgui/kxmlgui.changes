@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:11:06 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Better/corrected wording as suggested by Felix Ernst
+  * Added a doc note how to get a menu's action
+  * Perform initialization in initialization list
+
+-------------------------------------------------------------------
 Tue Nov  8 08:35:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
