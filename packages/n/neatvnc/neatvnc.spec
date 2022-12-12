@@ -16,6 +16,8 @@
 #
 
 
+%define libsoname libneatvnc0
+
 Name:           neatvnc
 Version:        0.5.4
 Release:        0
@@ -23,20 +25,20 @@ Summary:        A VNC server library
 License:        ISC
 Group:          System/GUI/Other
 URL:            https://github.com/any1/neatvnc
-Source0:        https://github.com/any1/neatvnc/archive/v%{version}.tar.gz
-BuildRequires:  aml-devel
-BuildRequires:  cmake
-BuildRequires:  ffmpeg-4-libavcodec-devel
-BuildRequires:  ffmpeg-4-libavfilter-devel
-BuildRequires:  libdrm-devel
-BuildRequires:  libgbm-devel
-BuildRequires:  libgnutls-devel
-BuildRequires:  libjpeg8-devel
-BuildRequires:  libpixman-1-0-devel
-BuildRequires:  libuv-devel
+Source0:        %url/archive/v%{version}.tar.gz
+
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(aml)
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libturbojpeg)
+BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 This is a VNC server library.
@@ -44,16 +46,16 @@ This is a VNC server library.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libneatvnc0 = %{version}
+Requires:       %libsoname = %{version}
 
 %description    devel
 Development files and headers for %{name}.
 
-%package -n     libneatvnc0
+%package -n     %libsoname
 Summary:        A VNC server library
 Group:          System/Libraries
 
-%description -n libneatvnc0
+%description -n %libsoname
 A VNC server library.
 
 %prep
@@ -67,8 +69,7 @@ A VNC server library.
 %install
 %meson_install
 
-%post -n libneatvnc0 -p /sbin/ldconfig
-%postun -n libneatvnc0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %libsoname
 
 %files devel
 %license COPYING
@@ -77,8 +78,7 @@ A VNC server library.
 %{_libdir}/libneatvnc.so
 %{_libdir}/pkgconfig/neatvnc.pc
 
-%files -n libneatvnc0
-%{_libdir}/libneatvnc.so.0
-%{_libdir}/libneatvnc.so.0.0.0
+%files -n %libsoname
+%{_libdir}/libneatvnc.so.*
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 11:00:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- "Pkgconfigify" BuildRequires, align with what meson checks for.
+- Modernize spec.
+
+-------------------------------------------------------------------
 Mon Nov  7 22:50:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.4:
