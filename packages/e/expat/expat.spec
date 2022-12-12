@@ -28,6 +28,9 @@ Source0:        https://github.com/libexpat/libexpat/releases/download/R_%{unver
 Source1:        https://github.com/libexpat/libexpat/releases/download/R_%{unversion}/expat-%{version}.tar.xz.asc
 Source2:        baselibs.conf
 Source3:        %{name}faq.html
+# https://www.gentoo.org/inside-gentoo/developers/index.html#sping
+# https://keys.gentoo.org/pks/lookup?op=get&search=0x1F9B0E909AF37285#/%{name}.keyring
+Source4:        %{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

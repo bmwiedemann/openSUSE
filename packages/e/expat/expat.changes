@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 11 20:35:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
 Wed Oct 26 06:19:38 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 2.5.0: (bsc#1204708)
