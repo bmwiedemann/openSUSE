@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5Wallet5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwallet
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Safe desktop-wide storage for passwords
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         kwallet-%{version}.tar.xz
 %if %{with released}
@@ -64,7 +63,6 @@ This framework contains two main components:
 
 %package -n %{lname}
 Summary:        Safe desktop-wide storage for passwords
-Group:          System/GUI/KDE
 
 %description -n %{lname}
 This framework contains two main components:
@@ -73,7 +71,6 @@ This framework contains two main components:
 
 %package -n libkwalletbackend5-5
 Summary:        Safe desktop-wide storage for passwords
-Group:          System/GUI/KDE
 
 %description -n libkwalletbackend5-5
 This framework contains two main components:
@@ -82,7 +79,6 @@ This framework contains two main components:
 
 %package -n kwalletd5
 Summary:        Safe desktop-wide storage for passwords
-Group:          System/GUI/KDE
 Recommends:     %{name}-tools
 
 %description -n kwalletd5
@@ -92,7 +88,6 @@ This framework contains two main components:
 
 %package tools
 Summary:        Safe desktop-wide storage for passwords
-Group:          System/GUI/KDE
 
 %description tools
 This framework contains two main components:
@@ -101,7 +96,6 @@ This framework contains two main components:
 
 %package tools-lang
 Summary:        Safe desktop-wide storage for passwords
-Group:          System/GUI/KDE
 Requires:       %{name}-tools = %{version}
 
 %description tools-lang
@@ -109,7 +103,6 @@ Provides translations to the package %{name}-tools-lang
 
 %package devel
 Summary:        Safe desktop-wide storage for passwords
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       libkwalletbackend5-5 = %{version}
