@@ -30,6 +30,8 @@
 %define soversion 2
 %endif
 
+%bcond_with     systemtap
+
 Name:           zlib-ng%{?compat_suffix}
 Version:        2.0.6
 Release:        0
@@ -42,7 +44,9 @@ Source1:        baselibs.conf
 Patch0:         1297.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
+%if %{with systemtap}
 BuildRequires:  systemtap-sdt-devel
+%endif
 
 %description
 zlib-ng is a zlib replacement with support for CPU intrinsics (SSSE3,

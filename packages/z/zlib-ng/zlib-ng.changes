@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 10:15:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- make systemtap dependency optional - it is only used in the s390
+  case and entirely optional (just for profiling hooks)
+
+-------------------------------------------------------------------
 Mon Aug  1 09:52:31 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Add baselibs.conf
 
 -------------------------------------------------------------------
