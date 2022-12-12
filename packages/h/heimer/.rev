@@ -95,4 +95,27 @@
   * Save immediately when autosave enabled</comment>
     <requestid>1035536</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de6c07fc41b53027ddba5ee4646c2020</srcmd5>
+    <version>3.6.3</version>
+    <time>1670863181</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.3:
+  New features:
+  * Fix Issue #229: Add option to automatically open the last
+    used file on application start
+  * Autoload can be now enabled in edit settings
+  * Implement asynchronous file save for autosave
+  * Fixes stuttering user experience on large files
+  Bug fixes:
+  * Didn't launch due to Wayland issues
+  * Forced to X11 for now
+  Other:
+  * Initialize a new mind map to avoid an undefined state if the mind map
+    fails to load
+  * Apply autosave only when settings dialog is accepted
+  * Increase edge with step to 0.25
+  * Update Dutch and Italian translations</comment>
+    <requestid>1042276</requestid>
+  </revision>
 </revisionlist>
