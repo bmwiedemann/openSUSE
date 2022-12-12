@@ -19,15 +19,18 @@
 %global sover   3
 %global libname lib%{name}%{sover}
 Name:           rem
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 Summary:        Audio and Video processing media library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/rem
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libre) >= 2.4.0
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Librem is a generic library for real-time audio
@@ -66,24 +69,21 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of librem.
 
 %prep
-%autosetup -p1
-sed -e 's|@$(CC)|$(CC)|g' \
-    -e 's|@$(LD)|$(LD)|g' \
-    -e 's|@$(AR)|$(AR)|g' \
-    -e 's|@rm -rf|rm -rf|g' -i Makefile
+%setup -q
 
 %build
-CFLAGS="%optflags" %make_build RELEASE=1
+%cmake
+%cmake_build
 
 %install
-%make_install LIBDIR=%{_libdir}
-rm %{buildroot}/%{_libdir}/librem.a
+%cmake_install
+rm -v %{buildroot}/%{_libdir}/librem.a
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%license docs/COPYING
+%license LICENSE
 %doc CHANGELOG.md README.md
 %{_libdir}/librem.so.%{sover}*
 
