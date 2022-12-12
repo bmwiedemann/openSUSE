@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec  2 15:01:05 CET 2022 - mls@suse.de
+
+- update to rpm-4.18.0
+  * documentation updates
+  * fix query arguments containing ^ not working
+  * add downgrade (--oldpackage) support to --freshe
+  * add --path query for support for stateless file information
+  * add --shell option for interactive macro shell to rpmspec
+  * add --justdb counterpart --nodb option and matching API flag
+  * fix intermediate symlinks not verified (CVE-2021-35939)
+  * fix unowned directories created unsafely (bsc#1157880)
+    (CVE-2021-35938)
+  * fix %posttrans argument on upgrade
+  * fix package build tree not getting removed on successful build
+  * add new %conf spec section for build configuration
+  * add %bcond macro as a nicer way of defining build conditionals
+  * add new rpmuncompress cli tool
+  * deprecate implicit "%patch number zero" syntax
+- refreshed patches:
+  * brp-compress-no-img.patch
+  * brp.diff
+  * brpcompress.diff
+  * db_conversion.diff
+  * findsupplements.diff
+  * headeradddb.diff
+  * nextiteratorheaderblob.diff
+  * posttrans.diff
+  * rpmqpack.diff
+  * rpmrc.diff
+  * selinux_transactional_update.patch
+- removed patches:
+  * dbrointerruptable.diff
+  * leave-malloc-check-set.diff
+
+-------------------------------------------------------------------
 Tue Oct 25 12:15:12 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Add selinux_transactional_update.patch to ignore errors when setting

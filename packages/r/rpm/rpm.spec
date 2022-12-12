@@ -58,7 +58,7 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.17.1.1
+Version:        4.18.0
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
@@ -72,7 +72,6 @@ Source13:       rpmconfigcheck.service
 Patch5:         usr-lib-sysimage-rpm.patch
 Patch13:        ignore-auxv.diff
 Patch12:        localetag.diff
-Patch16:        dbrointerruptable.diff
 Patch18:        refreshtestarch.diff
 Patch24:        brp.diff
 Patch25:        brpcompress.diff
@@ -97,7 +96,6 @@ Patch71:        nomagiccheck.diff
 Patch73:        assumeexec.diff
 Patch77:        langnoc.diff
 Patch78:        headerchk2.diff
-Patch79:        leave-malloc-check-set.diff
 Patch85:        brp-compress-no-img.patch
 Patch93:        weakdepscompat.diff
 Patch94:        checksepwarn.diff
@@ -211,20 +209,19 @@ Provides and requires generator for .pl files and modules.
 %setup -q -n rpm-%{version}
 
 rm -rf sqlite
-%patch -P  5      -P 12 -P 13             -P 16       -P 18
+%patch -P  5      -P 12 -P 13                         -P 18
 %patch                         -P 24 -P 25 -P 26             -P 29
 %patch -P 30       -P 32 -P 33 -P 34       -P 36       -P 38
 %patch                   -P 43             -P 46
 %patch       -P 51
 %patch -P 60 -P 61                         -P 66 -P 67       -P 69
-%patch -P 70 -P 71       -P 73                   -P 77 -P 78 -P 79
+%patch -P 70 -P 71       -P 73                   -P 77 -P 78
 %patch                               -P 85
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123               -P 131        -P 133 -P 134
-%patch -p1 -P 135
-%patch -P 180
+%patch -P 135 -P 180
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -400,6 +397,7 @@ fi
 	%{_bindir}/rpmdb
 	%{_bindir}/rpmgraph
 	%{_bindir}/rpmkeys
+	%{_bindir}/rpmlua
 	%{_bindir}/rpmqpack
 	%{_bindir}/rpmquery
 	%{_bindir}/rpmsign
@@ -415,6 +413,8 @@ fi
 	/usr/lib/rpm/rpmpopt-*
 	/usr/lib/rpm/rpmrc
 	/usr/lib/rpm/rpmsort
+	/usr/lib/rpm/rpmuncompress
+	/usr/lib/rpm/rpm_macros_provides.sh
 	/usr/lib/rpm/suse
 	/usr/lib/rpm/tgpg
 	%{_libdir}/rpm-plugins

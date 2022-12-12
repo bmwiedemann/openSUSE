@@ -1,6 +1,6 @@
---- Makefile.am.orig	2021-06-21 12:00:44.552611187 +0000
-+++ Makefile.am	2021-09-23 19:17:54.619555392 +0000
-@@ -175,6 +175,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
+--- Makefile.am.orig	2022-08-30 11:42:23.754853580 +0000
++++ Makefile.am	2022-12-02 13:15:01.631426573 +0000
+@@ -186,6 +186,10 @@ rpmgraph_LDADD =	lib/librpm.la rpmio/lib
  
  dist_bin_SCRIPTS =	scripts/gendiff
  
@@ -11,19 +11,19 @@
  rpmconfig_DATA = rpmrc
  rpmrc: $(top_srcdir)/rpmrc.in
  	@$(SED) \
---- docs/man/Makefile.am.orig	2021-08-20 08:44:56.263259000 +0000
-+++ docs/man/Makefile.am	2021-09-23 19:17:54.619555392 +0000
+--- docs/man/Makefile.am.orig	2022-04-07 11:13:18.958517604 +0000
++++ docs/man/Makefile.am	2022-12-02 13:16:00.071289072 +0000
 @@ -9,7 +9,7 @@ EXTRA_DIST += gendiff.1.md
  
  man_man8dir = $(mandir)/man8
  man_man8_DATA = rpm.8 rpm-misc.8 rpmbuild.8 rpmdeps.8 rpmgraph.8 rpm2cpio.8
--man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8
-+man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmqpack.8
+-man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmlua.8
++man_man8_DATA += rpmdb.8 rpmkeys.8 rpmsign.8 rpmspec.8 rpmlua.8 rpmqpack.8
  
  EXTRA_DIST += rpm.8.md rpm-misc.8.md rpmbuild.8.md rpmdeps.8.md rpmgraph.8.md
  EXTRA_DIST += rpm2cpio.8.md rpmdb.8.md rpmkeys.8.md rpmsign.8.md rpmspec.8.md
---- docs/man/rpmqpack.8.orig	2021-09-23 19:17:54.619555392 +0000
-+++ docs/man/rpmqpack.8	2021-09-23 19:17:54.619555392 +0000
+--- docs/man/rpmqpack.8.orig	2022-12-02 13:15:01.635426563 +0000
++++ docs/man/rpmqpack.8	2022-12-02 13:15:01.635426563 +0000
 @@ -0,0 +1,25 @@
 +.TH RPMQPACK 8 "Mar 2002"
 +.SH NAME
@@ -50,8 +50,8 @@
 +
 +.SH AUTHOR
 +Michael Schroeder <mls@suse.de>
---- rpmqpack.c.orig	2021-09-23 19:17:54.619555392 +0000
-+++ rpmqpack.c	2021-09-23 19:17:54.619555392 +0000
+--- rpmqpack.c.orig	2022-12-02 13:15:01.635426563 +0000
++++ rpmqpack.c	2022-12-02 13:15:01.635426563 +0000
 @@ -0,0 +1,60 @@
 +#include <sys/types.h>
 +#include <limits.h>

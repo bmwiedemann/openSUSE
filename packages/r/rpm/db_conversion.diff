@@ -1,6 +1,6 @@
---- lib/backend/bdb_ro.c.orig	2020-05-28 10:04:25.027136631 +0000
-+++ lib/backend/bdb_ro.c	2021-01-07 15:24:08.866776792 +0000
-@@ -790,6 +790,7 @@ static unsigned int bdbro_pkgdbKey(dbiIn
+--- lib/backend/bdb_ro.c.orig	2022-04-07 11:13:18.994517848 +0000
++++ lib/backend/bdb_ro.c	2022-12-02 13:22:16.726408071 +0000
+@@ -793,6 +793,7 @@ static unsigned int bdbro_pkgdbKey(dbiIn
  struct rpmdbOps_s bdbro_dbops = {
      .name       = "bdb_ro",
      .path       = "Packages",
@@ -8,9 +8,9 @@
  
      .open       = bdbro_Open,
      .close      = bdbro_Close,
---- lib/backend/dbi.c.orig	2020-08-31 09:14:07.991087349 +0000
-+++ lib/backend/dbi.c	2021-01-07 15:24:08.866776792 +0000
-@@ -119,11 +119,20 @@ exit:
+--- lib/backend/dbi.c.orig	2022-04-07 11:13:18.994517848 +0000
++++ lib/backend/dbi.c	2022-12-02 13:22:16.726408071 +0000
+@@ -138,11 +138,20 @@ exit:
      }
  
      rdb->db_descr = rdb->db_ops->name;
@@ -31,9 +31,9 @@
  const char * dbiName(dbiIndex dbi)
  {
      return dbi->dbi_file;
---- lib/backend/dbi.h.orig	2021-01-07 15:23:56.122812108 +0000
-+++ lib/backend/dbi.h	2021-01-07 15:24:08.866776792 +0000
-@@ -11,6 +11,7 @@ enum rpmdbFlags {
+--- lib/backend/dbi.h.orig	2022-04-07 11:13:18.994517848 +0000
++++ lib/backend/dbi.h	2022-12-02 13:22:16.726408071 +0000
+@@ -13,6 +13,7 @@ enum rpmdbFlags {
      RPMDB_FLAG_REBUILD		= (1 << 1),
      RPMDB_FLAG_VERIFYONLY	= (1 << 2),
      RPMDB_FLAG_SALVAGE		= (1 << 3),
@@ -41,7 +41,7 @@
  };
  
  typedef enum dbCtrlOp_e {
-@@ -63,6 +64,7 @@ struct rpmdb_s {
+@@ -53,6 +54,7 @@ struct rpmdb_s {
      int		db_buildindex;	/*!< Index rebuild indicator */
  
      const struct rpmdbOps_s * db_ops;	/*!< backend ops */
@@ -49,7 +49,7 @@
  
      /* dbenv and related parameters */
      void * db_dbenv;		/*!< Backend private handle */
-@@ -209,6 +211,14 @@ RPM_GNUC_INTERNAL
+@@ -197,6 +199,14 @@ RPM_GNUC_INTERNAL
  const char * dbiName(dbiIndex dbi);
  
  /** \ingroup dbi
@@ -64,7 +64,7 @@
   * Open a database cursor.
   * @param dbi		index database handle
   * @param flags		DBC_WRITE if writing, or 0 (DBC_READ) for reading
-@@ -252,6 +262,7 @@ const void * idxdbKey(dbiIndex dbi, dbiC
+@@ -240,6 +250,7 @@ const void * idxdbKey(dbiIndex dbi, dbiC
  struct rpmdbOps_s {
      const char *name; /* backend name */
      const char *path; /* main database name */
@@ -72,8 +72,8 @@
  
      int (*open)(rpmdb rdb, rpmDbiTagVal rpmtag, dbiIndex * dbip, int flags);
      int (*close)(dbiIndex dbi, unsigned int flags);
---- lib/backend/ndb/rpmpkg.c.orig	2021-01-07 15:24:37.266698082 +0000
-+++ lib/backend/ndb/rpmpkg.c	2021-01-07 15:27:46.678173133 +0000
+--- lib/backend/ndb/rpmpkg.c.orig	2022-04-07 11:13:18.997517869 +0000
++++ lib/backend/ndb/rpmpkg.c	2022-12-02 13:22:16.726408071 +0000
 @@ -1116,11 +1116,12 @@ static int rpmpkgPutInternal(rpmpkgdb pk
      if (rpmpkgWriteBlob(pkgdb, pkgidx, blkoff, blkcnt, blob, blobl, pkgdb->generation)) {
  	return RPMRC_FAIL;
@@ -90,24 +90,23 @@
      if (rpmpkgWriteslot(pkgdb, slotno, pkgidx, blkoff, blkcnt)) {
  	free(pkgdb->slots);
  	pkgdb->slots = 0;
---- lib/rpmdb.c.orig	2021-01-07 15:23:56.122812108 +0000
-+++ lib/rpmdb.c	2021-01-07 15:24:08.866776792 +0000
-@@ -516,7 +516,13 @@ static int openDatabase(const char * pre
- 	    rpmsqActivate(1);
- 	}
- 
+--- lib/rpmdb.c.orig	2022-09-20 12:08:27.197920294 +0000
++++ lib/rpmdb.c	2022-12-02 13:24:02.830159868 +0000
+@@ -469,7 +469,12 @@ static int openDatabase(const char * pre
+ 	/* Open just bare minimum when rebuilding a potentially damaged db */
+ 	int justPkgs = (db->db_flags & RPMDB_FLAG_REBUILD) &&
+ 		       ((db->db_mode & O_ACCMODE) == O_RDONLY);
 -	rc = doOpen(db, justPkgs);
 +	if (!db->db_pkgs && !justCheck && (mode & O_ACCMODE) == O_RDWR && dbiNeedConversion(db)) {
 +	    rc = rpmdbRebuild(prefix, NULL, NULL, RPMDB_REBUILD_FLAG_CONVERT);
 +	    db->db_ops = NULL;		/* force re-detection of backend */
 +	}
-+
 +	if (!rc)
 +	    rc = doOpen(db, justPkgs);
  
  	if (!db->db_descr)
  	    db->db_descr = "unknown db";
-@@ -2311,6 +2317,15 @@ int rpmdbAdd(rpmdb db, Header h)
+@@ -2228,6 +2233,15 @@ int rpmdbAdd(rpmdb db, Header h)
      if (db == NULL)
  	return 0;
  
@@ -123,7 +122,7 @@
      hdrBlob = headerExport(h, &hdrLen);
      if (hdrBlob == NULL || hdrLen == 0) {
  	ret = -1;
-@@ -2506,7 +2521,22 @@ int rpmdbRebuild(const char * prefix, rp
+@@ -2423,7 +2437,22 @@ int rpmdbRebuild(const char * prefix, rp
      }
      rootdbpath = rpmGetPath(prefix, dbpath, NULL);
  
@@ -147,7 +146,7 @@
      if (rstreq(newdbpath, "") || rstreq(newdbpath, dbpath)) {
  	newdbpath = _free(newdbpath);
  	rasprintf(&newdbpath, "%srebuilddb.%d", dbpath, (int) getpid());
-@@ -2532,7 +2562,9 @@ int rpmdbRebuild(const char * prefix, rp
+@@ -2449,7 +2478,9 @@ int rpmdbRebuild(const char * prefix, rp
  	goto exit;
      }
      if (openDatabase(prefix, newdbpath, &newdb,
@@ -158,8 +157,8 @@
  	rc = 1;
  	goto exit;
      }
---- lib/rpmdb_internal.h.orig	2020-05-28 10:04:25.037136686 +0000
-+++ lib/rpmdb_internal.h	2021-01-07 15:24:08.866776792 +0000
+--- lib/rpmdb_internal.h.orig	2022-04-07 11:13:19.014517984 +0000
++++ lib/rpmdb_internal.h	2022-12-02 13:22:16.726408071 +0000
 @@ -25,6 +25,7 @@ extern "C" {
  
  enum rpmdbRebuildFlags_e {

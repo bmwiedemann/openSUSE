@@ -49,8 +49,8 @@
  char *rpmdbCookie(rpmdb db)
  {
      void *cookie = NULL;
---- lib/rpmdb.h.orig	2020-11-27 13:09:17.968992873 +0000
-+++ lib/rpmdb.h	2020-11-27 13:09:36.352942782 +0000
+--- include/rpm/rpmdb.h.orig	2020-11-27 13:09:17.968992873 +0000
++++ include/rpm/rpmdb.h	2020-11-27 13:09:36.352942782 +0000
 @@ -253,6 +253,14 @@ int rpmdbStat(const char *prefix, struct
   */
  int rpmdbFStat(rpmdb db, struct stat *statbuf);

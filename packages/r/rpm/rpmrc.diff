@@ -1,5 +1,5 @@
---- rpmrc.in.orig	2019-06-26 14:17:31.451985635 +0000
-+++ rpmrc.in	2019-10-02 11:24:49.601403844 +0000
+--- rpmrc.in.orig	2022-04-07 11:13:19.072518377 +0000
++++ rpmrc.in	2022-12-02 13:14:27.719506789 +0000
 @@ -12,16 +12,16 @@
  # "fat" binary with both archs, for Darwin
  optflags: fat -O2 -g -arch i386 -arch ppc
@@ -67,7 +67,7 @@
  optflags: armv7hnl -O2 -g -march=armv7-a -mfloat-abi=hard -mfpu=neon
  optflags: armv8l -O2 -g -march=armv8-a
  optflags: armv8hl -O2 -g -march=armv8-a -mfloat-abi=hard -mfpu=vfpv4
-@@ -95,8 +96,8 @@ optflags: atariclone -O2 -g -fomit-frame
+@@ -93,8 +94,8 @@ optflags: atariclone -O2 -g -fomit-frame
  optflags: milan -O2 -g -fomit-frame-pointer
  optflags: hades -O2 -g -fomit-frame-pointer
  
@@ -112,9 +112,9 @@
  buildarchtranslate: ppc8260: ppc
  buildarchtranslate: ppc8560: ppc
  buildarchtranslate: ppc32dy4: ppc
-@@ -398,6 +400,15 @@ buildarchtranslate: arm64: aarch64
- buildarchtranslate: riscv: riscv64
- buildarchtranslate: riscv64: riscv64
+@@ -397,6 +399,15 @@ buildarchtranslate: riscv64: riscv64
+ 
+ buildarchtranslate: loongarch64: loongarch64
  
 +buildarchtranslate: parisc: hppa
 +buildarchtranslate: hppa2.0: hppa
@@ -128,7 +128,7 @@
  #############################################################
  # Architecture compatibility
  
-@@ -462,16 +473,20 @@ arch_compat: mips64r6el: mipsr6el
+@@ -461,16 +472,20 @@ arch_compat: mips64r6el: mipsr6el
  arch_compat: hppa2.0: hppa1.2
  arch_compat: hppa1.2: hppa1.1
  arch_compat: hppa1.1: hppa1.0
@@ -151,7 +151,7 @@
  arch_compat: armv4tl: armv4l
  arch_compat: armv4l: armv3l
  arch_compat: armv3l: noarch
-@@ -497,7 +512,7 @@ arch_compat: i370: noarch
+@@ -493,7 +508,7 @@ arch_compat: i370: noarch
  arch_compat: s390: noarch
  arch_compat: s390x: s390 noarch
  
@@ -160,7 +160,7 @@
  
  arch_compat: x86_64: amd64 em64t athlon noarch
  arch_compat: amd64: x86_64 em64t athlon noarch
-@@ -623,7 +638,8 @@ buildarch_compat: armv6hl: noarch
+@@ -619,7 +634,8 @@ buildarch_compat: armv6hl: noarch
  buildarch_compat: hppa2.0: hppa1.2
  buildarch_compat: hppa1.2: hppa1.1
  buildarch_compat: hppa1.1: hppa1.0

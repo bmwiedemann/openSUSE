@@ -2398,4 +2398,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment></comment>
     <requestid>1035056</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>28a7d0afff4e40766c1cf41edf5a601b</srcmd5>
+    <version>4.18.0</version>
+    <time>1670863023</time>
+    <user>dimstar_suse</user>
+    <comment>update to rpm-4.18.0</comment>
+    <requestid>1040201</requestid>
+  </revision>
 </revisionlist>

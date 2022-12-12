@@ -1,10 +1,11 @@
---- scripts/brp-compress.orig	2020-09-30 13:09:28.846434576 +0000
-+++ scripts/brp-compress	2020-09-30 13:09:34.514422459 +0000
-@@ -51,6 +51,7 @@ do
-     find $d -type f ! -name dir | while read f
-     do
-         [ -f "$f" ] || continue
-+	case $(file "$f") in *"image data"*) continue;; esac
+--- scripts/brp-compress.orig	2022-12-02 13:18:54.498881077 +0000
++++ scripts/brp-compress	2022-12-02 13:20:00.038727777 +0000
+@@ -52,6 +52,8 @@ do
+     while IFS= read -r -d '' f; do
+ 		[ -f "$f" ] || continue
  
- 	case "$f" in
- 	 *.gz|*.Z)    gunzip  -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
++    case $(file "$f") in *"image data"*) continue;; esac
++
+     case "$f" in
+      *.gz|*.Z)    gunzip  -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
+      *.bz2)       bunzip2 -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;

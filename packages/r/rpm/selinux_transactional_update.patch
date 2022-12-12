@@ -1,8 +1,6 @@
-Index: rpm-4.17.1.1/plugins/selinux.c
-===================================================================
---- rpm-4.17.1.1.orig/plugins/selinux.c
-+++ rpm-4.17.1.1/plugins/selinux.c
-@@ -7,6 +7,7 @@
+--- plugins/selinux.c.orig	2022-04-07 11:13:19.027518072 +0000
++++ plugins/selinux.c	2022-12-02 13:59:42.185032111 +0000
+@@ -8,6 +8,7 @@
  #include <rpm/rpmlog.h>
  #include <rpm/rpmts.h>
  #include "lib/rpmplugin.h"
@@ -10,20 +8,17 @@ Index: rpm-4.17.1.1/plugins/selinux.c
  
  #include "debug.h"
  
-@@ -165,9 +166,15 @@ static rpmRC selinux_fsm_file_prepare(rp
- 	char *scon = NULL;
- 	if (selabel_lookup_raw(sehandle, &scon, dest, file_mode) == 0) {
- 	    int conrc = lsetfilecon(path, scon);
--
+@@ -173,6 +174,13 @@ static rpmRC selinux_fsm_file_prepare(rp
+ 
  	    if (conrc == 0 || (conrc < 0 && errno == EOPNOTSUPP))
  		rc = RPMRC_OK;
 +	    else {
 +		char *tup = getenv("TRANSACTIONAL_UPDATE");
-+		if ( tup != NULL && ! strncmp( tup, "true", 4 ) ) {
++		if (tup != NULL && !strncmp(tup, "true", 4)) {
 +		    rpmlog(RPMLOG_DEBUG, "lsetfilecon failed, will be healed upon reboot (transactional update): (%s, %s)\n", path, scon);
 +		    rc = RPMRC_OK;
 +		}
 +	    }
  
- 	    rpmlog(loglvl(rc != RPMRC_OK), "lsetfilecon: (%s, %s) %s\n",
- 		       path, scon, (conrc < 0 ? strerror(errno) : ""));
+ 	    rpmlog(loglvl(rc != RPMRC_OK), "lsetfilecon: (%d %s, %s) %s\n",
+ 		       fd, path, scon, (conrc < 0 ? strerror(errno) : ""));

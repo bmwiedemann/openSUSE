@@ -1,15 +1,15 @@
---- scripts/Makefile.am.orig	2021-09-23 20:01:42.554113780 +0000
-+++ scripts/Makefile.am	2021-09-23 20:02:13.466049945 +0000
-@@ -17,7 +17,7 @@ EXTRA_DIST = \
- 	rpmdb_dump rpmdb_load \
+--- scripts/Makefile.am.orig	2022-04-07 11:13:19.072518377 +0000
++++ scripts/Makefile.am	2022-12-02 13:21:08.886566747 +0000
+@@ -18,7 +18,7 @@ EXTRA_DIST = \
  	rpm.daily rpm.log rpm.supp rpm2cpio.sh \
+ 	rpm_macros_provides.sh \
  	tgpg vpkg-provides.sh \
 -	find-requires find-provides \
 +	find-requires find-provides find-supplements \
  	ocamldeps.sh \
  	pkgconfigdeps.sh \
  	fontconfig.prov script.req
-@@ -29,7 +29,7 @@ rpmconfig_SCRIPTS = \
+@@ -30,7 +30,7 @@ rpmconfig_SCRIPTS = \
  	brp-remove-la-files \
  	check-files check-prereqs \
  	check-buildroot check-rpaths check-rpaths-worker \
@@ -18,8 +18,8 @@
  	perl.prov perl.req \
  	pkgconfigdeps.sh \
  	ocamldeps.sh \
---- scripts/find-supplements.orig	2021-09-23 20:01:42.554113780 +0000
-+++ scripts/find-supplements	2021-09-23 20:01:42.554113780 +0000
+--- scripts/find-supplements.orig	2022-12-02 13:21:08.886566747 +0000
++++ scripts/find-supplements	2022-12-02 13:21:08.886566747 +0000
 @@ -0,0 +1,3 @@
 +#!/bin/sh
 +

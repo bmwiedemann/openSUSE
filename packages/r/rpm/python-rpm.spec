@@ -21,7 +21,7 @@
 %global with_python 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpm
-Version:        4.17.1.1
+Version:        4.18.0
 Release:        0
 Summary:        Python Bindings for Manipulating RPM Packages
 License:        GPL-2.0-or-later

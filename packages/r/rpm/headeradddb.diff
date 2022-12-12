@@ -28,8 +28,8 @@ convertdb1 will build again.
  /* keyp might no be defined. */
  rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmDbiTagVal rpmtag,
  			const void * keyp, size_t keylen)
---- lib/rpmts.h.orig	2011-05-12 13:21:11.000000000 +0000
-+++ lib/rpmts.h	2011-05-12 13:28:32.000000000 +0000
+--- include/rpm/lib/rpmts.h.orig	2011-05-12 13:21:11.000000000 +0000
++++ include/rpm/rpmts.h	2011-05-12 13:28:32.000000000 +0000
 @@ -264,6 +264,22 @@ int rpmtsRebuildDB(rpmts ts);
  int rpmtsVerifyDB(rpmts ts);
  

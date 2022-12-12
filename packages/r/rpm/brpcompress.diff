@@ -1,5 +1,5 @@
---- scripts/brp-compress.orig	2020-05-28 10:04:25.075136894 +0000
-+++ scripts/brp-compress	2020-10-27 15:23:57.970737863 +0000
+--- scripts/brp-compress.orig	2022-04-07 11:13:19.072518377 +0000
++++ scripts/brp-compress	2022-12-02 13:12:31.239774558 +0000
 @@ -5,6 +5,9 @@ if [ -z "$RPM_BUILD_ROOT" ] || [ "$RPM_B
  	exit 0
  fi
@@ -39,61 +39,42 @@
 +}
 +
  for d in .${PREFIX}/man/man* .${PREFIX}/man/*/man* .${PREFIX}/info \
- 	.${PREFIX}/share/man/man* .${PREFIX}/share/man/*/man* \
- 	.${PREFIX}/share/info .${PREFIX}/kerberos/man \
-@@ -21,40 +48,40 @@ for d in .${PREFIX}/man/man* .${PREFIX}/
- 	.${PREFIX}/share/fish/man/man*
- do
-     [ -d $d ] || continue
--    for f in `find $d -type f ! -name dir`
-+    find $d -type f ! -name dir | while read f
-     do
-         [ -f "$f" ] || continue
+     .${PREFIX}/share/man/man* .${PREFIX}/share/man/*/man* \
+     .${PREFIX}/share/info .${PREFIX}/kerberos/man \
+@@ -26,10 +53,10 @@ do
+ 		[ -f "$f" ] || continue
  
- 	case "$f" in
--	 *.gz|*.Z)    gunzip  -f $f; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
--	 *.bz2)       bunzip2 -f $f; b=`echo $f | sed -e 's/\.bz2$//'`;;
--	 *.xz|*.lzma) unxz    -f $f; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
--	 *.zst|*.zstd) unzstd -f --rm $f; b=`echo $f | sed -e 's/\.\(zst\|zstd\)$//'`;;
-+	 *.gz|*.Z)    gunzip  -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(gz\|Z\)$//'`;;
-+	 *.bz2)       bunzip2 -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.bz2$//'`;;
-+	 *.xz|*.lzma) unxz    -f "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(xz\|lzma\)$//'`;;
-+	 *.zst|*.zstd) unzstd -f --rm "$f" || check_for_hard_link $d "$f"; b=`echo $f | sed -e 's/\.\(zst\|zstd\)$//'`;;
- 	 *) b=$f;;
- 	esac
+     case "$f" in
+-     *.gz|*.Z)    gunzip  -f "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
+-     *.bz2)       bunzip2 -f "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;
+-     *.xz|*.lzma) unxz    -f "$f"; b=`echo "$f" | sed -e 's/\.\(xz\|lzma\)$//'`;;
+-     *.zst|*.zstd) unzstd -f --rm $f; b=`echo "$f" | sed -e 's/\.\(zst\|zstd\)$//'`;;
++     *.gz|*.Z)    gunzip  -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(gz\|Z\)$//'`;;
++     *.bz2)       bunzip2 -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.bz2$//'`;;
++     *.xz|*.lzma) unxz    -f "$f"; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(xz\|lzma\)$//'`;;
++     *.zst|*.zstd) unzstd -f --rm $f; check_for_hard_link $d "$f"; b=`echo "$f" | sed -e 's/\.\(zst\|zstd\)$//'`;;
+      *) b="$f";;
+     esac
  
--	$COMPRESS $b </dev/null 2>/dev/null || {
-+	$COMPRESS "$b" </dev/null 2>/dev/null || {
- 	    inode=`ls -i $b | awk '{ print $1 }'`
- 	    others=`find $d -type f -inum $inode`
- 	    if [ -n "$others" ]; then
+@@ -38,7 +65,7 @@ do
+ 		others="`find $d -type f -inum $inode`"
+ 		if [ -n "$others" ]; then
  		for afile in $others ; do
 -		    [ "$afile" != "$b" ] && rm -f $afile
 +		    [ "$afile" != "$b" ] && rm -f "$afile"
  		done
--		$COMPRESS -f $b
-+		$COMPRESS -f "$b"
+ 		$COMPRESS -f "$b"
  		for afile in $others ; do
--		    [ "$afile" != "$b" ] && ln $b$COMPRESS_EXT $afile$COMPRESS_EXT
-+		    [ "$afile" != "$b" ] && ln "$b$COMPRESS_EXT" "$afile$COMPRESS_EXT"
- 		done
- 	    else
--		$COMPRESS -f $b
-+		$COMPRESS -f "$b"
- 	    fi
- 	}
-     done
+@@ -52,9 +79,9 @@ do
  
--    for f in `find $d -type l`
-+    find $d -type l | while read f
-     do
--	l=`ls -l $f | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
--	rm -f $f
--	b=`echo $f | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
--	ln -sf $l$COMPRESS_EXT $b$COMPRESS_EXT
-+	l=`ls -l "$f" | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
-+	rm -f "$f"
-+	b=`echo "$f" | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
-+	ln -sf "$l$COMPRESS_EXT" "$b$COMPRESS_EXT"
+     find $d -type l -print0 |
+     while IFS= read -r -d '' f; do
+-    l=`ls -l $f | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
+-    rm -f $f
+-    b=`echo $f | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
++    l=`ls -l "$f" | sed -e 's/.* -> //' -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
++    rm -f "$f"
++    b=`echo "$f" | sed -e 's/\.\(gz\|Z\|bz2\|xz\|lzma\|zst\|zstd\)$//'`
+     ln -sf "$l$COMPRESS_EXT" "$b$COMPRESS_EXT"
      done
  done
