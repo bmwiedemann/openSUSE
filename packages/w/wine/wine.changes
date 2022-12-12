@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 10 08:02:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 8.0 rc1 release candidate
+  - Bundled vkd3d upgraded to version 1.6.
+  - Vulkan and OpenGL thunking optimizations.
+  - More support for print processors.
+  - Improved joystick control panel.
+  - Long types printf format conversion finished.
+  - Various bug fixes.
+- update staging to 8.0 rc1 release
+
+-------------------------------------------------------------------
 Sat Nov 26 08:52:37 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.22 development release

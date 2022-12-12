@@ -4627,4 +4627,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1040232</requestid>
   </revision>
+  <revision rev="394" vrev="1">
+    <srcmd5>dcaad5c9dd2fc84b4bb48060757b9493</srcmd5>
+    <version>8.0~rc1</version>
+    <time>1670863183</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0 rc1 release candidate
+  - Bundled vkd3d upgraded to version 1.6.
+  - Vulkan and OpenGL thunking optimizations.
+  - More support for print processors.
+  - Improved joystick control panel.
+  - Long types printf format conversion finished.
+  - Various bug fixes.
+- update staging to 8.0 rc1 release</comment>
+    <requestid>1042298</requestid>
+  </revision>
 </revisionlist>

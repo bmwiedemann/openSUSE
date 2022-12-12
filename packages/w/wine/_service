@@ -3,7 +3,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="url">https://github.com/wine-staging/wine-staging.git</param>
-    <param name="revision">refs/tags/v7.22</param>
+    <param name="revision">refs/tags/v8.0-rc1</param>
     <param name="match-tag">v*.*</param>
     <param name="scm">git</param>
   </service>
