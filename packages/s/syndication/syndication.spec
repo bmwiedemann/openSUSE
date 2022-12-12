@@ -17,18 +17,17 @@
 
 
 %define lname libKF5Syndication5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           syndication
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        RSS/Atom parsing library
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -48,7 +47,6 @@ also provides an API to fetch feeds from the network.
 
 %package -n %{lname}
 Summary:        RSS/Atom parsing library
-Group:          System/Libraries
 
 %description  -n libKF5Syndication5
 KF5Syndication is an RSS/Atom parsing library, which
@@ -57,7 +55,6 @@ This package contains the base library.
 
 %package devel
 Summary:        RSS/Atom parsing library - development headers
-Group:          Development/Libraries/KDE
 Requires:       libKF5Syndication5 = %{version}
 
 %description devel
