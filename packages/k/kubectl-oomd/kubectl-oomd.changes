@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Dec 12 06:12:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.0.7:
+  * release: 0.0.7 (#18)
+  * fix: request/limits mismatch with many containers in a pod (#21)
+  * refactor: table format to constants (#19)
+  * feat: sort by termination timestamp (#17)
+  * feat: integration test/better testing (#16)
+
+-------------------------------------------------------------------
+Mon Dec  5 14:26:56 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubectl-oomd

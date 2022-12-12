@@ -1,0 +1,5 @@
+<package name="kubectl-oomd" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="kubectl-oomd"/>
+</package>
