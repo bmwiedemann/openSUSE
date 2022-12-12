@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Dec  8 12:38:49 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- Small adjustments in a spec file for dirs and files
+- Add documentation to be build in setroubleshoot-doc
+
+-------------------------------------------------------------------
+Wed Nov 30 15:07:07 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- Fix dbus conf file location to /usr/share/dbus-1
+
+-------------------------------------------------------------------
+Thu Oct 20 11:15:39 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
+
+- Update to version 3.3.30 (bnc#1204344)
+
+  Summary of changes from 3.3.26 to 3.3.30:
+  * sedispatch: check read_size
+  * SafeConfigParser is deprecated and will be dropped
+  * Fix typos in --help, man pages and developer's guide
+  * Improve DSP module reporting
+  * Look for modules in /usr/share/selinux/packages
+  * Always use rpm source package for reporting
+  * Improve after_first email filter behavior
+  * Set right ownership on /var/lib/setroubleshoot
+  * Install systemd-sysusers config
+  * Remove Requires(pre) useradd & groupadd
+  * Introduce email.use_sendmail option
+  * Update translations
+  * Miscellaneous python and build system changes
+  * Fix couple of typos
+  * Drop Python2 support
+  * Use inspect.signature() instead of instead.getargspec()
+
+  Spec file modification to reflect openSUSE dependencies and paths.
+  Removed old patches
+  * setroubleshoot-Stop-SetroubleshootFixit-after-10-seconds-of-inactiv.patch
+  * setroubleshoot-Do-not-use-Python-slip-package.patch
+  * setroubleshoot-Gracefully-handle-unavailable-libreport.patch
+
+  
+-------------------------------------------------------------------
 Sun May  8 16:40:53 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Switch runtime requirement of server package from ancient
