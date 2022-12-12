@@ -20,14 +20,13 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.100
+%define _tar_path 5.101
 %bcond_without released
 Name:           ktexteditor
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -65,7 +64,6 @@ applications, either as a KPart or using the KF5::TextEditor library.
 
 %package devel
 Summary:        Header files for ktexteditor, an embeddable text editor component
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5Parts) >= %{_kf5_bugfix_version}
