@@ -21,7 +21,7 @@
 %global pkg_suffix -doc
 %endif
 
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -30,11 +30,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           extra-cmake-modules%{?pkg_suffix}
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
-Group:          Development/Tools/Other
 URL:            https://www.kde.org
 Source:         extra-cmake-modules-%{version}.tar.xz
 %if %{with released}
