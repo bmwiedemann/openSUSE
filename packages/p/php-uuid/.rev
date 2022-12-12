@@ -7,4 +7,12 @@
     <comment>Rename php7-uuid to php-uuid</comment>
     <requestid>873894</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a2546a62937d880e25c87d48a21a5463</srcmd5>
+    <version>1.2.0</version>
+    <time>1670863218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042381</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
+
+-------------------------------------------------------------------
 Wed Feb 17 19:52:41 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use _multibuild to also build for php8
