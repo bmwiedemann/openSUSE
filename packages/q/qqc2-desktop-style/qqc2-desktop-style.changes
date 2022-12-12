@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:11:11 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * TextArea: allow touch scrolling even when tablet mode is off
+  * Redraw KQuickStyleItem when DPR changes
+  * Switch: Improve background contrast when in unchecked state
+  * styleitem: Don't destroy and recreate the style on every instance creation
+  * Fix blurry controls in QQuickWidget
+  * DislogButtonBox: Fix url value comparison with non-strict ==
+  * switch: Improve it
+  * ToolTip: Do not show tooltips without text
+  * BusyIndicator: Synchronize to implementation in PlasmaComponents3
+
+-------------------------------------------------------------------
 Tue Nov  8 08:35:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
