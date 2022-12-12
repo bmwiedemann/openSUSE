@@ -1,7 +1,7 @@
 #
-# spec file for package netcdf-cxx4
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,8 @@ BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
 BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}-hpc-devel
+# Install libnetcdf-<compiler_family>-hpc explicitly for %%requires_eq
+BuildRequires:  libnetcdf-%{compiler_family}%{?c_f_ver}-hpc
 BuildRequires:  suse-hpc
 %endif
 

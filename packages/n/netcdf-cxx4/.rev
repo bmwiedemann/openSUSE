@@ -141,4 +141,14 @@
   * Remove the *-tools package (bsc1187910).</comment>
     <requestid>906201</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>e5ae6523c41f824492b0fb5bfd9cbfa0</srcmd5>
+    <version>4.3.1</version>
+    <time>1670863228</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires for libnetcdf-&lt;compiler_family&gt;-hpc explicitly
+  so that %%{requires_eq ..} is able to find the package and obtain
+  the version number (boo#1206334).</comment>
+    <requestid>1042404</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 12 13:31:42 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add BuildRequires for libnetcdf-<compiler_family>-hpc explicitly
+  so that %%{requires_eq ..} is able to find the package and obtain
+  the version number (boo#1206334).
+
+-------------------------------------------------------------------
 Thu Jul  1 15:36:35 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Move ncxx4-config to the netcdf-cxx4.
