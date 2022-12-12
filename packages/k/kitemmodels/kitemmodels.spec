@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ItemModels5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -26,11 +26,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kitemmodels
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Set of item models extending the Qt model-view framework
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -55,7 +54,6 @@ KItemModels provides a set of item models extending the Qt model-view framework.
 
 %package -n %{lname}
 Summary:        Set of item models extending the Qt model-view framework
-Group:          System/GUI/KDE
 %requires_ge    libQt5Core5
 
 %description -n %{lname}
@@ -63,7 +61,6 @@ KItemModels provides a set of item models extending the Qt model-view framework.
 
 %package imports
 Summary:        Set of item models extending the Qt model-view framework
-Group:          System/GUI/KDE
 Requires:       %{lname} = %{version}
 
 %description imports
@@ -72,7 +69,6 @@ provides support to use KItemModels with the QtQuick framework.
 
 %package devel
 Summary:        Set of item models extending the Qt model-view framework
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Core) >= 5.15.0
@@ -84,7 +80,6 @@ Development files.
 %if %{with python}
 %package -n python-%{name}
 Summary:        Set of item models extending the Qt model-view framework
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 %requires_python3_sip_api
 
