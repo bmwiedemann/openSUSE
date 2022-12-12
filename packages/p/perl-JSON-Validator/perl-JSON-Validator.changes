@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  9 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.13
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.13 2022-12-09T09:55:24
+   - Fix not coercing body parameter for OpenAPIv2
+
+-------------------------------------------------------------------
 Thu Oct 27 03:08:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.12
