@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.7.4
+Version:        2.8.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
@@ -622,6 +622,7 @@ done
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_localauth_plugin.8*
+%_mandir/??/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
 # cifs idmap plugin
 %dir %_sysconfdir/cifs-utils

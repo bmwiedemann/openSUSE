@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Dec 11 14:17:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.2
+  * New mapping template for serial number, subject key id, SID,
+    certificate hashes and DN components are added to
+    libsss_certmap.
+
+-------------------------------------------------------------------
+Fri Nov  4 12:28:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.1
+  * A regression when running sss_cache when no SSSD domain is
+    enabled would produce a syslog critical message was fixed.
+
+-------------------------------------------------------------------
+Fri Oct  7 12:05:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.0
+  * Introduced the dbus function
+    org.freedesktop.sssd.infopipe.Users.ListByAttr(attr, value,
+    limit) listing upto limit users matching the filter
+    attr=value.
+  * sssctl is now able to create, list and delete indexes on the
+    local caches. Indexes are useful for the new D-Bus
+    ListByAttr() function.
+  * sssctl is now able to read and set each component's debug
+    level independently.
+  * A number of new configuration options are available,
+    cf. https://sssd.io/release-notes/sssd-2.8.0.html .
+
+-------------------------------------------------------------------
 Thu Sep  1 13:45:36 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
