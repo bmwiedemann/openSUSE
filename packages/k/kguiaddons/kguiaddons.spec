@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kguiaddons
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -59,7 +58,6 @@ of colors, fonts, text, images, keyboard input.
 
 %package -n %{lname}
 Summary:        Utilities for graphical user interfaces
-Group:          System/GUI/KDE
 Recommends:     %{name}
 %requires_ge    libQt5Gui5
 
@@ -69,7 +67,6 @@ of colors, fonts, text, images, keyboard input.
 
 %package devel
 Summary:        Utilities for graphical user interfaces: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Gui) >= 5.15.0
