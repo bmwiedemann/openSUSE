@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5GlobalAccel5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kglobalaccel
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Global desktop keyboard shortcuts
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -61,7 +60,6 @@ need focus for them to be activated.
 
 %package -n %{lname}
 Summary:        Global desktop keyboard shortcuts
-Group:          System/GUI/KDE
 %requires_ge    libQt5DBus5
 %requires_ge    libQt5Widgets5
 Recommends:     kglobalaccel5
@@ -73,7 +71,6 @@ need focus for them to be activated.
 
 %package -n libKF5GlobalAccelPrivate5
 Summary:        Global desktop keyboard shortcuts
-Group:          System/GUI/KDE
 
 %description -n libKF5GlobalAccelPrivate5
 KGlobalAccel allows you to have global accelerators that are independent of
@@ -82,7 +79,6 @@ need focus for them to be activated.
 
 %package devel
 Summary:        Global desktop keyboard shortcuts: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       libKF5GlobalAccelPrivate5 = %{version}
@@ -96,7 +92,6 @@ need focus for them to be activated. Development files.
 
 %package -n kglobalaccel5
 Summary:        Configurable global shortcut support
-Group:          System/GUI/KDE
 
 %description -n kglobalaccel5
 KGlobalAccel allows you to have global accelerators that are independent
