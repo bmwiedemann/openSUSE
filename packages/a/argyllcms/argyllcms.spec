@@ -124,7 +124,7 @@ install -d -m 0755 %{buildroot}%{_udevrulesdir}
 install -p -m 0644 usb/55-Argyll.rules \
         %{buildroot}%{_udevrulesdir}
 chmod a-x *.txt
-chmod a-x doc/*
+find doc -type f -exec chmod a-x {} \;
 
 %files
 %doc *.txt
