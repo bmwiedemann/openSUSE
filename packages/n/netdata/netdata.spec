@@ -20,7 +20,7 @@
 %define netdata_group   netdata
 %define godplugin_version 0.45.0
 Name:           netdata
-Version:        1.37.0
+Version:        1.37.1
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -66,7 +66,7 @@ Suggests:       logrotate
 Suggests:       nodejs
 # suse_version is set to 1500 even for 15.2
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
-BuildRequires:  go >= 1.13
+BuildRequires:  go >= 1.19
 BuildRequires:  python3
 %else
 BuildRequires:  python2

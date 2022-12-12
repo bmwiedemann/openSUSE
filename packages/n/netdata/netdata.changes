@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  7 07:51:08 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.37.1:
+  * Parent agent crash when many children instances (re)connect at
+    the same time, causing simultaneous SSL re-initialization.
+  * Agent crash during dbengine database file rotation while a page
+    is being read while being deleted.
+  * Agent crash on metrics page alignment when metrics were stopped
+    being collected for a long time and then started again.
+  * Broken Fedora native packages.
+  * Fix dbengine backfilling statistics.
+
+-------------------------------------------------------------------
 Thu Dec  1 23:06:05 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.37.0 (go.d.plugin 0.45.0)
