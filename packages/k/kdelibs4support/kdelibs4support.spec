@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5KDELibs4Support5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdelibs4support
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -99,7 +98,6 @@ KDEDIRS environment variable correctly.
 %package -n kssl
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 
 %description -n kssl
 This package includes CMake macros and C++
@@ -120,7 +118,6 @@ KDEDIRS environment variable correctly.
 %package -n %{lname}
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 Requires:       kded >= %{_kf5_bugfix_version}
 
 %description -n %{lname}
@@ -142,7 +139,6 @@ KDEDIRS environment variable correctly.
 %package devel
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       extra-cmake-modules
