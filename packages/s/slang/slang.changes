@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:51:04 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- slang 2.3.3:
+  * This version includes a number of backward-compatible enhancements to
+    the interpreter and its modules, as well as support for so-called
+    user-defined terminfo extensions.  It is also binary compatible with
+    prior 2.x.y versions of the library. 
+  * See changes.txt
+- obsolete overflow.patch and rebase autoconf.patch
+
+-------------------------------------------------------------------
 Mon Apr  6 12:17:00 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - slang 2.3.2:

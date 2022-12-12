@@ -1,7 +1,7 @@
 #
 # spec file for package slang
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           slang
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Programming Library and Embeddable Extension Language
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.jedsoft.org/
+URL:            http://www.jedsoft.org/
 Source0:        http://www.jedsoft.org/releases/slang/slang-%{version}.tar.bz2
 Source1:        http://www.jedsoft.org/releases/slang/slang-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
@@ -30,8 +30,6 @@ Source3:        baselibs.conf
 Patch0:         slang.patch
 Patch1:         slang-autoconf.patch
 Patch2:         slang-fsuid.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         overflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pcre-devel
@@ -91,7 +89,6 @@ develop applications that require it.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch6 -p1
 
 %build
 # %%global _lto_cflags %%{_lto_cflags} -ffat-lto-objects
@@ -113,7 +110,7 @@ make --jobs 1
 
 %install
 make DESTDIR=%{buildroot} install
-# install-static 
+# install-static
 
 rm -rf %{buildroot}%{_datadir}/doc/
 

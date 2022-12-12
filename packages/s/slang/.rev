@@ -283,4 +283,12 @@
 - slang-fsuid.patch: refreshed</comment>
     <requestid>791795</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9dfa6a7a55be2cbc6ffd26343eed1f5c</srcmd5>
+    <version>2.3.3</version>
+    <time>1670863032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042088</requestid>
+  </revision>
 </revisionlist>

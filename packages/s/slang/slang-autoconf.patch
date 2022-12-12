@@ -1,8 +1,8 @@
-Index: slang-2.3.0/autoconf/aclocal.m4
+Index: slang-2.3.3/autoconf/aclocal.m4
 ===================================================================
---- slang-2.3.0.orig/autoconf/aclocal.m4
-+++ slang-2.3.0/autoconf/aclocal.m4
-@@ -358,8 +358,11 @@ then
+--- slang-2.3.3.orig/autoconf/aclocal.m4
++++ slang-2.3.3/autoconf/aclocal.m4
+@@ -362,8 +362,11 @@ then
    if test -n "$gcc_warnings"
    then
      CFLAGS="$CFLAGS -Wall -W -pedantic -Winline -Wmissing-prototypes \
@@ -16,7 +16,7 @@ Index: slang-2.3.0/autoconf/aclocal.m4
      # Now trim excess whitespace
      CFLAGS=`echo $CFLAGS`
    fi
-@@ -572,7 +575,7 @@ dnl # Check for dynamic linker
+@@ -578,7 +581,7 @@ dnl # Check for dynamic linker
  dnl #-------------------------------------------------------------------------
  DYNAMIC_LINK_LIB=""
  
@@ -25,19 +25,10 @@ Index: slang-2.3.0/autoconf/aclocal.m4
  
  AC_CHECK_HEADER(dlfcn.h,[
    AC_DEFINE(HAVE_DLFCN_H,1,[Define if you have the dlfcn.h header])
-@@ -613,7 +616,7 @@ case "$host_os" in
-   *linux*|*gnu*|k*bsd*-gnu )
-     DYNAMIC_LINK_FLAGS="-Wl,-export-dynamic"
-     ELF_CC="\$(CC)"
--    ELF_CFLAGS="\$(CFLAGS) -fPIC"
-+    ELF_CFLAGS="$ELF_CFLAGS -fPIC"
-     ELF_LINK="\$(CC) \$(LDFLAGS) -shared -Wl,-O1 -Wl,--version-script,\$(VERSION_SCRIPT) -Wl,-soname,\$(ELFLIB_MAJOR)"
-     ELF_DEP_LIBS="\$(DL_LIB) -lm -lc"
-     CC_SHARED_FLAGS="-shared -fPIC"
-Index: slang-2.3.0/autoconf/configure.ac
+Index: slang-2.3.3/autoconf/configure.ac
 ===================================================================
---- slang-2.3.0.orig/autoconf/configure.ac
-+++ slang-2.3.0/autoconf/configure.ac
+--- slang-2.3.3.orig/autoconf/configure.ac
++++ slang-2.3.3/autoconf/configure.ac
 @@ -17,6 +17,62 @@ dnl# fi
  AC_CONFIG_AUX_DIR(autoconf)
  AC_CANONICAL_HOST
@@ -101,7 +92,7 @@ Index: slang-2.3.0/autoconf/configure.ac
  JD_INIT
  JD_ANSI_CC
  
-@@ -284,7 +340,7 @@ else
+@@ -308,7 +364,7 @@ else
  fi
  AC_SUBST(ZLIB_MODULE)
  
