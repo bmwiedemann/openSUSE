@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 12 11:14:17 UTC 2022 - pgajdos@suse.com
+
+- don't build php7 flavor for Factory (php7 is EOL upstream)
+
+-------------------------------------------------------------------
 Mon Jun 13 16:34:08 UTC 2022 - Mariusz Laczak <mruz@poczta.onet.pl>
 
 - Ice 1.9.0

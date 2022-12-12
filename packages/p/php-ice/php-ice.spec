@@ -1,5 +1,5 @@
 #
-# spec file for package php-ice
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %define pkg_name   ice
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
