@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           oxygen5-icon-theme
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         oxygen-icons5-%{version}.tar.xz
 %if %{with released}
@@ -103,7 +102,6 @@ popd
 
 %package scalable
 Summary:        Oxygen Icon Theme
-Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Provides:       oxygen-icon-theme-scalable = 15.08
 Obsoletes:      oxygen-icon-theme-scalable < 15.08
@@ -116,7 +114,6 @@ This package contains the scalable icons of the Oxygen icon theme.
 
 %package large
 Summary:        Oxygen Icon Theme
-Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Provides:       oxygen-icon-theme-large = 15.08
 Obsoletes:      oxygen-icon-theme-large < 15.08
