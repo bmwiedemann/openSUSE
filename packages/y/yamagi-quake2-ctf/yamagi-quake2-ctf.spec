@@ -1,8 +1,8 @@
 #
 # spec file for package yamagi-quake2-ctf
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           yamagi-quake2-ctf
-Version:        1.08
+Version:        1.09
 Release:        0
 Summary:        Quake II - Three Wave Capture The Flag for yamagi-quake2
 License:        GPL-2.0-or-later
