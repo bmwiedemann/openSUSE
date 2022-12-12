@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5MediaPlayer5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kmediaplayer
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Interface for media player KParts
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -51,7 +50,6 @@ KParts that can play media files.
 
 %package -n %{lname}
 Summary:        Interface for media player KParts
-Group:          System/GUI/KDE
 Obsoletes:      libKF5MediaPlayer4
 
 %description -n %{lname}
@@ -60,7 +58,6 @@ KParts that can play media files.
 
 %package devel
 Summary:        Interface for media player KParts: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5I18n) >= %{_kf5_bugfix_version}
