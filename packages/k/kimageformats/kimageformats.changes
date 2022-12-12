@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:10:44 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Fix missing DCI-P3 color space set
+  * minor tweaks in HEIF and AVIF plugins
+  * raw: LibRaw_QIODevice::read: fixed possible partial reading of an item
+  * PSD multichannel testcases
+  * Support to MCH with 4+ channels (treat as CMYK)
+  * avif: Check if encoder/decoder is available in capabilities()
+  * Fix condition for installing desktop files
+
+-------------------------------------------------------------------
 Tue Nov  8 08:35:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
