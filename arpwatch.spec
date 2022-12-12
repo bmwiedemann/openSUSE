@@ -33,6 +33,7 @@ Source11:       sysconfig.arpwatch
 Source12:       arpwatch.service
 Patch0:         arpwatch-2.1a11-chrootbuild.diff
 Patch1:         arpwatch-no-source-zero.dif
+Patch2:         arpwatch.ETHERCODES.patch
 Patch5:         arpwatch-2.1a11-drop-privs-manpage.dif
 Patch6:         arpwatch-2.1a11-drop-privs.dif
 # PATCH-Fix-Upstream -- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=625796#20 -- seife+obs@b1-systems.com
@@ -65,7 +66,10 @@ needed if you want to build the arpwatch-ethercodes package.
 
 %build
 %configure
-%make_build ARPDIR=%{_localstatedir}/lib/arpwatch
+%make_build \
+	ARPDIR=%{_localstatedir}/lib/arpwatch \
+	ETHERCODES=%{_datadir}/arpwatch/ethercodes.dat \
+	%nil
 
 %install
 mkdir -p \
