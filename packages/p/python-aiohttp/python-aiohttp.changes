@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec 12 16:16:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update py3109-compat.patch to work with python <= 3.10.8 too.
+
+-------------------------------------------------------------------
+Mon Dec 12 11:26:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py3109-compat.patch to make tests compatible with python 3.10.9. These
+  tests are not present anymore in upstream master version so this patch could
+  be removed in future releases.
+
+-------------------------------------------------------------------
 Mon Nov  7 17:49:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Drop ignore-pytest-deprecationwarning.patch

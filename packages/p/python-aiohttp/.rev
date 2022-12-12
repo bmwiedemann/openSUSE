@@ -272,4 +272,16 @@
     <comment></comment>
     <requestid>1034428</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>19a772fbd516b53f1c2192e7ec6da05b</srcmd5>
+    <version>3.8.3</version>
+    <time>1670867952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update py3109-compat.patch to work with python &lt;= 3.10.8 too.
+- Add py3109-compat.patch to make tests compatible with python 3.10.9. These
+  tests are not present anymore in upstream master version so this patch could
+  be removed in future releases.
+</comment>
+    <requestid>1042420</requestid>
+  </revision>
 </revisionlist>

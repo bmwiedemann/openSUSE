@@ -28,6 +28,8 @@ URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM aiohttp-pr7057-bump-charset-normalizer.patch gh#aio-libs/aiohttp#7057
 Patch0:         aiohttp-pr7057-bump-charset-normalizer.patch
+# PATCH-FIX-OPENSUSE py3109-compat.patch
+Patch1:         py3109-compat.patch
 # SECTION build requirements
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
