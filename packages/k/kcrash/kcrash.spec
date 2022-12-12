@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Crash5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kcrash
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        An application crash handler
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -52,7 +51,6 @@ KCrash provides support for intercepting and handling application crashes.
 
 %package -n %{lname}
 Summary:        An application crash handler
-Group:          System/GUI/KDE
 Recommends:     drkonqi5
 
 %description -n %{lname}
@@ -60,7 +58,6 @@ KCrash provides support for intercepting and handling application crashes.
 
 %package devel
 Summary:        Build environment for the KCrash application crash handler
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Core) >= 5.15.0
