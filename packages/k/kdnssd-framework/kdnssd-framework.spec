@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5DNSSD5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdnssd-framework
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Network service discovery using Zeroconf
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         kdnssd-%{version}.tar.xz
 %if %{with released}
@@ -51,7 +50,6 @@ centralized infrastructure.
 
 %package -n %{lname}
 Summary:        Network service discovery using Zeroconf
-Group:          System/GUI/KDE
 %requires_ge    libQt5DBus5
 %requires_ge    libQt5Network5
 Recommends:     nss-mdns
@@ -64,7 +62,6 @@ centralized infrastructure.
 
 %package devel
 Summary:        Network service discovery using Zeroconf
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Network) >= 5.15.0
