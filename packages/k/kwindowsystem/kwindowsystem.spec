@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5WindowSystem5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwindowsystem
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        KDE Access to window manager
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -58,7 +57,6 @@ interface than the NETWinInfo/NETRootInfo low-level classes.
 
 %package -n %{lname}
 Summary:        KDE Access to window manager
-Group:          System/GUI/KDE
 %requires_ge    libQt5Widgets5
 %requires_ge    libQt5X11Extras5
 
@@ -71,7 +69,6 @@ interface than the NETWinInfo/NETRootInfo low-level classes.
 
 %package devel
 Summary:        KDE Access to window manager: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Core) >= 5.15.0
