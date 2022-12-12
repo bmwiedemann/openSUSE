@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Style5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           frameworkintegration
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -61,7 +60,6 @@ Applications do not need to link to this directly.
 
 %package -n %{lname}
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
-Group:          System/GUI/KDE
 Obsoletes:      %{lname}-lang < %{version}
 Obsoletes:      libKF5Style4
 
@@ -74,7 +72,6 @@ Applications do not need to link to this directly.
 
 %package plugin
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
-Group:          System/GUI/KDE
 Requires:       plasma5-integration-plugin
 Conflicts:      %{lname} < 5.6.0
 
@@ -87,7 +84,6 @@ Applications do not need to link to this directly.
 
 %package devel
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5ConfigWidgets) >= %{_kf5_bugfix_version}
