@@ -19,18 +19,17 @@
 %global __requires_exclude qmlimport\\(org\\.kde\\.kcmutils\\.private.*\\)
 
 %define lname   libKF5KCMUtils5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcmutils
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Classes to work with KCModules
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -66,7 +65,6 @@ KCMUtils provides various classes to work with KCModules. This package provides 
 
 %package -n %{lname}
 Summary:        Classes to work with KCModules
-Group:          System/GUI/KDE
 Obsoletes:      libKF5KCMUtils4
 
 %description -n %{lname}
@@ -85,7 +83,6 @@ for the KCMUtils libraries.
 
 %package devel
 Summary:        Build environment for kcmutils, a set of classes to work with KCModules
-Group:          Development/Libraries/KDE
 Requires:       libKF5KCMUtilsCore5 = %{version}
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
