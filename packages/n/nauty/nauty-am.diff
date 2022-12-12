@@ -19,8 +19,8 @@ Index: nauty27r4/Makefile.am
 +	countg cubhamg deledgeg delptg directg dretodot dretog genbg genbgL \
 +	geng genquarticg genrang genspecialg gentourng gentreeg hamheuristic \
 +	labelg linegraphg listg multig newedgeg NRswitchg pickg planarg \
-+	ranlabg shortg showg subdivideg twohamg vcolg watercluster2 blisstog \
-+	checks6 sumlines underlyingg assembleg gengL edgetransg
++	ranlabg shortg showg subdivideg twohamg vcolg watercluster2 \
++	checks6 underlyingg assembleg gengL edgetransg
 +
 +nautyA1_flavor_CPPFLAGS = -DMAXN=WORDSIZE
 +nautyS0_flavor_CPPFLAGS = -DWORDSIZE=16
@@ -126,8 +126,7 @@ Index: nauty27r4/configure.ac
 +++ nauty27r4/configure.ac
 @@ -1,6 +1,12 @@
  # Process this file with autoconf to produce a configure script.
--AC_INIT
-+AC_INIT([nauty], [2.7.4])
+ AC_INIT([nauty],[2.8.6])
  AC_CONFIG_SRCDIR([nauty-h.in])
 +AC_CONFIG_AUX_DIR([build-aux])
 +AC_CONFIG_MACRO_DIR([m4])
@@ -147,12 +146,12 @@ Index: nauty27r4/configure.ac
  
  dnl Check for thread-local attribute
  AC_DEFUN([AX_TLS], [
-@@ -451,7 +457,7 @@ AC_SUBST(edit_msg)
- AC_PROG_MKDIR_P
- AC_PROG_INSTALL
+@@ -471,7 +477,7 @@ AC_SUBST(edit_msg)
+ AS_IF([test "$gunzip_prog" = "gunzip"],[have_gunzip=1],[have_gunzip=0])
+ AC_SUBST(have_gunzip)
  
 -AC_CONFIG_FILES([makefile:makefile.in nauty.h:nauty-h.in
 +AC_CONFIG_FILES([Makefile nauty.h:nauty-h.in
      naututil.h:naututil-h.in gtools.h:gtools-h.in
-     nauty.pc:nauty.pc.in])
+     nauty.pc:nauty-pc.in])
  AC_OUTPUT

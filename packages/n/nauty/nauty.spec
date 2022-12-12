@@ -17,9 +17,9 @@
 
 
 Name:           nauty
-%define lname   libnauty-2_7_4
-%define fuv      27r4
-Version:        2.7.4
+%define lname   libnauty-2_8_6
+%define fuv      2_8_6
+Version:        2.8.6
 Release:        0
 Summary:        Tools for computing automorphism groups of graphs
 License:        Apache-2.0
@@ -30,6 +30,7 @@ Source:         http://pallini.di.uniroma1.it/nauty%fuv.tar.gz
 Patch1:         nauty-am.diff
 Patch2:         nauty-uninitialized.diff
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libtool >= 2
 BuildRequires:  zlib-devel
@@ -67,29 +68,30 @@ This subpackage contains the header files for developing
 applications that want to make use of libnauty.
 
 %prep
-%autosetup -p1 -n nauty%fuv
+%autosetup -v -p1 -n nauty%fuv
 
 %build
 rm -f makefile
 autoreconf -fi
 export CFLAGS="%optflags -Wno-unused"
-%configure --disable-popcnt --disable-clz
+%configure --enable-generic
 %make_build
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
+%fdupes %{buildroot}/${_bindir}
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files
 %_bindir/*
-%doc changes24-27.txt
+%doc changes24-28.txt
 %license COPYRIGHT
 
 %files -n %lname
-%_libdir/libnauty*-2.7.4.so
+%_libdir/libnauty*-2.8.6.so
 
 %files devel
 %_includedir/nauty/

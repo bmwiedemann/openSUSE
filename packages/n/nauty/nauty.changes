@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec 11 19:13:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 2.8.6
+  * New utilities:
+  * addptg: add additional vertices in various ways
+  * ancestorg: removes a specified number of final vertices
+  * productg: product of two graphs
+  * genposetg: generate posets
+  * dimacs2g: read files of graphs in DIMACS format
+  * For a detailed list of changes, see included changes24-28.txt
+  * Changes to existing utilities:
+  * geng got sigificantly faster for connected graphs with a
+    small number of edges. However, if you want trees the program
+    gentreeg is still much faster. There are also new options:
+  * -k: generate graphs without K4
+  * -T: generate chordal graphs
+  * -S: generate split graphs
+  * -P: generate perfect graphs
+  * -F: generate claw-free graphs
+- Rebase nauty-uninitialized.diff and nauty-am.diff.
+
+-------------------------------------------------------------------
 Sat Jul 16 22:20:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7.4

@@ -18,10 +18,10 @@ Index: nauty27rc2/checks6.c
 --- nauty27rc2.orig/checks6.c
 +++ nauty27rc2/checks6.c
 @@ -121,6 +121,7 @@ seemsbad(char *s)
-             else
-                 return FALSE;
-         }
-+        return FALSE;
+         else
+             return FALSE;
+     }
++   return FALSE;
  }
  
  /***********************************************************************/
