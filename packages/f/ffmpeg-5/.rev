@@ -73,4 +73,13 @@
   out of bounds read in update_block_in_prev_frame() (bsc#1205388).</comment>
     <requestid>1036209</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>ce7e30129ee7f5358b761a886568e35c</srcmd5>
+    <version>5.1.2</version>
+    <time>1670863036</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable librist support on TW: enables usage of RIST encoded MPEG-TS
+  streams and is used by OBS Studio (forwarded request 1041371 from gmbr3)</comment>
+    <requestid>1042185</requestid>
+  </revision>
 </revisionlist>

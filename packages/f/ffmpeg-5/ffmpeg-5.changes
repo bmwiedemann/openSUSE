@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  8 11:27:56 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable librist support on TW: enables usage of RIST encoded MPEG-TS
+  streams and is used by OBS Studio
+
+-------------------------------------------------------------------
+Tue Dec  6 16:01:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequire on SDL2 to break a dependency loop; with this,
+  /usr/bin/ffplay is no longer built.
+
+-------------------------------------------------------------------
 Wed Nov 16 01:32:19 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix

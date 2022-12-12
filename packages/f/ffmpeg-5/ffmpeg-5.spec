@@ -163,6 +163,7 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(librist)
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(rav1e)
@@ -170,7 +171,6 @@ BuildRequires:  pkgconfig(rav1e)
 %if %{with rubberband}
 BuildRequires:  pkgconfig(rubberband)
 %endif
-BuildRequires:  pkgconfig(sdl2)
 %if %{with smbclient}
 BuildRequires:  pkgconfig(smbclient)
 %endif
@@ -589,6 +589,7 @@ LDFLAGS="%_lto_cflags" \
 	--enable-libjack \
 %if 0%{?suse_version} >= 1550
 	--enable-libjxl \
+	--enable-librist \
 %endif
 	--enable-libmp3lame \
 %if %{with mysofa}
