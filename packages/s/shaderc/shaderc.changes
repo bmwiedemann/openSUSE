@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:50:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.4:
+  * Add Cmake BUNDLE DESTINATION option for target install
+
+-------------------------------------------------------------------
 Fri Nov 25 10:20:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Drop pkgconfig files for not provided static libraries
