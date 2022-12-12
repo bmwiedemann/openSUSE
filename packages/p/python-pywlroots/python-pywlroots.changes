@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:24:15 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Fix build: pick up a compatible verison of wlroots boo#1206305
+
+-------------------------------------------------------------------
+Sun Dec 11 09:58:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.15.24:
+  * Drag.icon can also return None if clients don't provide icons to render
+  * Drag.icon can also return None if clients don't provide icons to render
+  * Add handlers for wlr_pointer_gestures_v1 
+
+-------------------------------------------------------------------
+Mon Nov 21 23:08:50 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove libwlroots10. Not needed since library is provided already
+  from wlroots-devel with pkg-config.
+
+-------------------------------------------------------------------
 Sat Sep 24 07:36:20 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add libdrm in BuildRequires for the spec
