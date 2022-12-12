@@ -219,7 +219,7 @@ export MOCQT5='%{_libqt5_bindir}/moc'
 export MOCQT52='%{_libqt5_bindir}/moc'
 %endif
 %if 0%{?suse_version} < 1550
-export CXX=g++-11
+export CXX=g++-12
 %endif
 
 # make introspection scanner (g-ir-scanner) work with older build envs

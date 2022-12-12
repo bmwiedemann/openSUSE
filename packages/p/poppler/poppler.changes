@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  9 14:13:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Configure $CXX to the correct compiler version on codestreams
+  that have gcc12, such as SLE-15-SP5. [bsc#1206019]
+
+-------------------------------------------------------------------
 Mon Dec  5 08:28:08 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
 
 - The development compiler in SLE 15 has been updated to gcc12 via
   maintenance update. Therefore adjusting the compiler version for
   SLE 15 in the spec file, to not build with gcc11 anymore. This
-  resolves bsc#1206019
+  resolves bsc#1206019.
 
 -------------------------------------------------------------------
 Sat Dec  3 20:23:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
