@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:11:14 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * TOML: add number prefix, inf, nan and more datetime format ; fix multi-strings closing (kde#462178)
+  * Python: add pyi extension (python interface)
+  * Javascript: remove previousDibling keyword (probably a typo for previousSibling)
+  * Add GPS Exchange Format (GPX) type
+  * CSS family: add properties, functions and fr unit ; remove FPWD and old proposed properties
+  * install a index.katesyntax when QRC_SYNTAX is OFF
+  * Make the Rust language mode use the cstyle indenter
+  * C23: missing wN length modifiers with d and i in printf_like
+  * CMake: remove duplicate <list> and <context>
+  * CMake: optimize by adding DetectIdentifier and DetectSpaces (~20% faster)
+  * CMake: replace some <WordDetect> with <keyword>
+  * CMake: more IncludeRules
+  * CMake: remove unused rule and moves the substitution end rule to first
+  * Add syntax definition for CSV and TSV
+  * JSON: small optimization on number regex
+  * Go: improved support for literal numbers, add unicode escape characters and new predefined type (kde#459291)
+  * dynamic RegExpr has its own type (~2.2% faster)
+  * XML: replace a dynamic StringDetect with DetectIdentifier contextually equivalent
+  * XML: character < in an ENTITY is highlighted as an error
+  * Fix generating index.katesyntax when QRC_SYNTAX is off
+
+-------------------------------------------------------------------
 Tue Nov  8 08:35:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
