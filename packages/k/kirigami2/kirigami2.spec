@@ -17,18 +17,17 @@
 
 
 %define lname libKF5Kirigami2-5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kirigami2
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -36,6 +35,10 @@ Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
@@ -55,7 +58,6 @@ QtQuick plugins to build user interfaces based on the KDE UX guidelines.
 
 %package -n %{lname}
 Summary:        Set of QtQuick components
-Group:          System/Libraries
 Recommends:     %{name} = %{version}
 
 %description -n %{lname}
@@ -64,7 +66,6 @@ Based on Qt Quick Controls 2. This package contains the base shared libraries.
 
 %package devel
 Summary:        Development package for kirigami
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 
@@ -78,6 +79,10 @@ Development files.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build
 %cmake_build
 
