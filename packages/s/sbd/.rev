@@ -519,4 +519,18 @@ the sources.</comment>
 - test: a few tweaks regarding setup of test-environment (forwarded request 1002776 from yan_gao)</comment>
     <requestid>1002779</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>64f4997c2e76f9adbf304522bc8603af</srcmd5>
+    <version>1.5.1+20221128.8ec8e01</version>
+    <time>1670863202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1+20221128.8ec8e01:
+- sbd-inquisitor: fail startup if pacemaker integration is disabled while SBD_SYNC_RESOURCE_STARTUP is conflicting (bsc#1204319)
+- sbd-inquisitor: do not warn about startup syncing if pacemaker integration is even intentionally disabled (bsc#1204319)
+- sbd-inquisitor: log a warning if SBD_PACEMAKER is overridden by -P or -PP option (bsc#1204319)
+- sbd-inquisitor: ensure a log info only tells the fact about how SBD_PACEMAKER is set (bsc#1204319)
+- Rebase:
+  * bsc#1180966-0001-Log-sbd-inquisitor-downgrade-the-warning-about-SBD_S.patch (forwarded request 1042333 from yan_gao)</comment>
+    <requestid>1042335</requestid>
+  </revision>
 </revisionlist>

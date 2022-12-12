@@ -8,19 +8,16 @@ Subject: [PATCH] Log: sbd-inquisitor: downgrade the warning about
  src/sbd-inquisitor.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/sbd-inquisitor.c b/src/sbd-inquisitor.c
-index c943030..b527218 100644
---- a/src/sbd-inquisitor.c
-+++ b/src/sbd-inquisitor.c
-@@ -1122,7 +1122,7 @@ int main(int argc, char **argv, char **envp)
+Index: sbd-1.5.1+20221128.8ec8e01/src/sbd-inquisitor.c
+===================================================================
+--- sbd-1.5.1+20221128.8ec8e01.orig/src/sbd-inquisitor.c
++++ sbd-1.5.1+20221128.8ec8e01/src/sbd-inquisitor.c
+@@ -1304,7 +1304,7 @@ int main(int argc, char **argv, char **e
          }
  #else
-         if (!sync_resource_startup) {
+         if (check_pcmk && !sync_resource_startup) {
 -            cl_log(LOG_WARNING, "SBD built against pacemaker supporting "
 +            cl_log(LOG_NOTICE, "SBD built against pacemaker supporting "
                               "pacemakerd-API. Should think about enabling "
                               "SBD_SYNC_RESOURCE_STARTUP.");
-         }
--- 
-2.26.2
-
+ 

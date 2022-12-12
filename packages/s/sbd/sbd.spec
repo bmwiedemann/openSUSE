@@ -47,7 +47,7 @@
 %global sync_resource_startup_sysconfig ""
 
 Name:           sbd
-Version:        1.5.1+20220716.c43276f
+Version:        1.5.1+20221128.8ec8e01
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
