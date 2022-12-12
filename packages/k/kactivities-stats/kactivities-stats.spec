@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ActivitiesStats1
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kactivities-stats
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        LGPL-2.0-or-later
-Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         kactivities-stats-%{version}.tar.xz
 %if %{with released}
@@ -51,14 +50,12 @@ Kactivities provides an API for using and interacting with the Plasma Activities
 
 %package -n %{lname}
 Summary:        Library for KDE's Plasma Activities support
-Group:          System/Libraries
 
 %description -n %{lname}
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.
 
 %package devel
 Summary:        KDE Plasma Activities support
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules >= 1.7.0
 Requires:       cmake(Qt5Core) >= 5.15.0
