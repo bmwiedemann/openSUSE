@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 12 16:30:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update py3109-compat.patch to work with python 3.10.8 and lower.
+
+-------------------------------------------------------------------
+Mon Dec 12 12:34:49 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py3109-compat.patch to make it work with python 3.10.9. 
+
+-------------------------------------------------------------------
 Tue Jun 28 18:51:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 7.3.4

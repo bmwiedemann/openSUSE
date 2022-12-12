@@ -34,6 +34,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE py3109-compat.patch
+Patch0:         py3109-compat.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

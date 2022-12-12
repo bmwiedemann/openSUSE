@@ -219,4 +219,14 @@ Update to 5.3.4</comment>
     <comment></comment>
     <requestid>986713</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e144dfd9bb260073d07ca96f955aa3fc</srcmd5>
+    <version>7.3.4</version>
+    <time>1670867953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update py3109-compat.patch to work with python 3.10.8 and lower.
+- Add py3109-compat.patch to make it work with python 3.10.9. 
+</comment>
+    <requestid>1042422</requestid>
+  </revision>
 </revisionlist>
