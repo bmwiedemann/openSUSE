@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5JsEmbed5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kjsembed
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Method for binding Javascript objects to QObjects
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -53,7 +52,6 @@ so you can script your applications.
 
 %package -n %{lname}
 Summary:        Method for binding Javascript objects to QObjects
-Group:          System/GUI/KDE
 
 %description -n %{lname}
 KSJEmbed provides a method of binding JavaScript objects to QObjects,
@@ -61,7 +59,6 @@ so you can script your applications.
 
 %package devel
 Summary:        Build environment for kjsembed
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5I18n) >= %{_kf5_bugfix_version}
