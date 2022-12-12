@@ -21,7 +21,7 @@
 %define skip_python2 1
 
 Name:           python-rq
-Version:        1.10.1
+Version:        1.11.1
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module click >= 5.0.0}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 3.5.0}
+BuildRequires:  %{python_module sentry-sdk}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
@@ -62,17 +63,9 @@ integrated into web stacks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/rq/rq/issues/1646
-sed -i -e 's:import mock:from unittest import mock:' \
-       -e 's:from mock.mock:from unittest.mock:' \
-       -e 's:from mock import:from unittest.mock import:' \
-       tests/test_*.py
-# test_failure_capture - circular dependency on sentry-sdk
-# test_worker - update-alternatives: only rqworker-%{python_version} is
-#               available, skip test for simplicity
 export PATH="$PATH:%{buildroot}%{_bindir}"
 %{_sbindir}/redis-server --port 6379 &
-%pytest -k 'not (test_failure_capture or test_worker)'
+%pytest
 killall redis-server
 
 %post
