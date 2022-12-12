@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5IdleTime5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,11 +25,10 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kidletime
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        User and system idle time reporting singleton
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -56,7 +55,6 @@ notified upon idle time events, such as custom timeouts, or user activity.
 
 %package -n %{lname}
 Summary:        User and system idle time reporting singleton
-Group:          System/GUI/KDE
 %requires_ge    libQt5Core5
 %requires_ge    libQt5Widgets5
 %requires_ge    libQt5X11Extras5
@@ -68,7 +66,6 @@ notified upon idle time events, such as custom timeouts, or user activity.
 
 %package devel
 Summary:        Build environment for kidletime, an idle time singleton
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Core) >= 5.15.0
