@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5Declarative5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeclarative
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -63,7 +62,6 @@ KDeclarative provides integration of QML and KDE workspaces.
 Summary:        Integration of QML and KDE workspaces
 # QQmlPropertyMap leaks private but exported QObjectPrivate symbol
 # https://bugreports.qt.io/browse/QTBUG-46433 and https://bugs.launchpad.net/bugs/1426335
-Group:          System/GUI/KDE
 %requires_eq    libQt5Core5
 
 %description -n %{lname}
@@ -71,21 +69,18 @@ KDeclarative provides integration of QML and KDE workspaces.
 
 %package -n libKF5QuickAddons5
 Summary:        Integration of QML and KDE workspaces
-Group:          System/GUI/KDE
 
 %description -n libKF5QuickAddons5
 KDeclarative provides integration of QML and KDE workspaces.
 
 %package -n libKF5CalendarEvents5
 Summary:        Integration of QML and KDE workspaces
-Group:          System/GUI/KDE
 
 %description -n libKF5CalendarEvents5
 KDeclarative provides integration of QML and KDE workspaces.
 
 %package components
 Summary:        KDeclarative QML components
-Group:          System/GUI/KDE
 Requires:       kirigami2 >= %{_kf5_bugfix_version}
 
 %description components
@@ -93,14 +88,12 @@ KDeclarative provides integration of QML and KDE workspaces.
 
 %package tools
 Summary:        KDeclarative tools
-Group:          System/GUI/KDE
 
 %description tools
 KDeclarative provides integration of QML and KDE workspaces.
 
 %package devel
 Summary:        Integration of QML and KDE workspaces: Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name}-components = %{version}
 Requires:       extra-cmake-modules

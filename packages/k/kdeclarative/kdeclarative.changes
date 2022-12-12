@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  6 20:10:32 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Deprecate unused parts of KWindowSystem import
+  * tests: add test for multiple KeySequenceItems
+  * Fixed KF 5.100 compilation
+  * SimpleKCM: Account for flickable's margins when deciding to show separators
+  * SimpleKCM: Clean up a bit
+  * Fix build
+  * Deprecate QIconItem
+  * Use const/let for JS variables as appropriate
+  * Sync header and footer separator code to SimpleKCM (kde#461435)
+  * AbstractKCM: remove KF6 TODO
+
+-------------------------------------------------------------------
 Tue Nov  8 08:35:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
