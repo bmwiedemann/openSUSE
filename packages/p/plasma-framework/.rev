@@ -1241,4 +1241,12 @@
     <comment>Update to 5.100.1</comment>
     <requestid>1036486</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>3acafa2f1cfd36d3248d63ac42c8e318</srcmd5>
+    <version>5.101.0</version>
+    <time>1670863144</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.101.0 (forwarded request 1041798 from krop)</comment>
+    <requestid>1042164</requestid>
+  </revision>
 </revisionlist>

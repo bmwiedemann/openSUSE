@@ -17,18 +17,17 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma-framework
-Version:        5.100.1
+Version:        5.101.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -90,7 +89,6 @@ Plasma library and runtime components based upon KF5 and Qt5
 
 %package -n %{lname}
 Summary:        Plasma framework - core libraries
-Group:          System/GUI/KDE
 Conflicts:      %{name} < 5.49
 Conflicts:      %{name}-private < 5.49
 Provides:       qt5qmlimport(org.kde.plasma.configuration.2) = 0
@@ -101,7 +99,6 @@ This package contains the core libraries needed by the Plasma framework.
 
 %package components
 Summary:        Plasma QML components
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       %{name}-private = %{version}
 Requires:       libqt5-qtquickcontrols
@@ -113,7 +110,6 @@ Plasma QML and runtime components based upon KF5 and Qt5
 
 %package devel
 Summary:        Plasma library and runtime components
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       %{name}-components = %{version}
