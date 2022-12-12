@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon Dec 12 09:17:57 UTC 2022 - Jan Baier <jbaier@suse.com>
+
+- Update to version 13.11.1
+   * dh_installchangelogs: Ensure that at least four old entries are preserved
+     (Closes: #1021467)
+   * meson.pm: Use `meson setup` in the configure step rather than just `meson`.
+   * Put newest compat level first in documentation
+   * Rename debhelper config files to include package name
+   * dh_installdebconf: Fix typo in manual page
+   * Dh_Lib.pm: `qx_cmd` support env/chdir changes like `doit` (Closes: #1016354)
+   * Remove obsolete compat checks in the code
+   * dh_dwz: Ensure dwz multifile is owned by root:root when root should be used
+   * dh_builddeb: Always pass `--root-owner-group` to `dpkg-deb` for dbgsym packages.
+   * Dh_Lib.pm: Provide `mkdirs` to create (non-package) directories.
+   * Dh_Lib.pm: Make `install_dir` chown created directories when root should be
+     used for debhelper's own commands.  This fixes #1024261 for packages that only
+     use debhelper itself. However, third-party debhelper tools may still cause
+     packages with incorrect ownership for now if they are run after `dh_fixperms`
+     (or `dh_fixperms` is omitted).
+   * Dh_Lib.pm: Ensure `install_{file,prog,lib}` uses chown when root should be used.
+     Previously, they would skip the `chown` call and rely on `dh_fixperms`
+     or `dpkg-deb` to fix the ownership.  However, that could cause issues
+     when the helper was run after `dh_fixperms` and install files that
+     `dpkg-deb` would not reset ownership of.
+   * Install `installsysusers` sequence (to match the provide).
+   * dh_installchangelogs: Trim old Debian changelog entries
+     automatically.  Distributions can disable this by using
+     `DEB_BUILD_OPTIONS=notrimdch`.
+   * dh_installchangelogs.t: Force locale to be `C.UTF-8` to
+     avoid generating invalid changelog entries under
+     non-default locales.
+   * meson.pm: Stop providing `MESON_TESTTHREADS` environment
+     variable for the install target.  Said variable only
+     applies for testing.
+   * cmake.pm: Use `cmake --install` in compat 14.
+     (Closes: #1020732)
+   * docs/PROGRAMMING{,.md}: Rewrite PROGRAMMING into markdown.
+   * dh_installsystemduser: Stop masking user units on package
+     removal.  They should never have been masked in the first
+     place.  See #1021027.
+   * dh_installinit: Remove executable bit of init scripts on
+     package removal (via preinst).  Related to #1021027.
+   * dh_installsystemd: Stop masking system units on package
+     removal.  This is no longer necessary with the init scripts
+     getting their exec bit cleared on package removal.
+     (Closes: #1021027)
+   * Dh_Lib.pm: Add `package_type` as a function (extracted
+     from `is_udeb`).
+   * Dh_Getopt.pm: Fix duplicated `warning` in output for a
+     particular warning.
+   * dh_assistant: Provide a new `detect-hook-targets` command.
+   * dh: Recommend using `dh_assistant detect-hook-targets` for
+     checking whether hook targets are correct.
+   * dh: Hoist `nodoc` and `nocheck` from `DEB_BUILD_PROFILES`
+     into `DEB_BUILD_OPTIONS` when they are present in the former
+     and absent in the latter.  Emit a warning when doing so to
+     aid the user, so they know why this does not work when they
+     are later building a package that does not use dh.
+     (Closes: #979401)
+   * dh: Provide a warning when cross building an `nocheck` is
+     absent from `DEB_BUILD_OPTIONS` to cross builders, who are
+     not experienced with Debian's requirements for
+     cross-building.  The warning also recommends activating the
+     `cross` build profile and provides a way to disable the
+     warning without using `nocheck` (for the special case, where
+     people have a system that can run host binaries).
+   * Dh_Lib.pm: Fix bug where `addsubstvars` would not respect
+     the `--no-act` parameter.
+   * dh_perl: For scripts that are detected as perl scripts
+     that would trigger a dependency, normalize the shebang line to
+     use the same perl as debhelper is run under (/usr/bin/perl
+     in Debian, YMMV in derivatives).  (Closes: #904409)
+   * dh_assistant: Provide new `log-installed-files` command to
+     help users and third-party tools record which files they have
+     installed.  Third-party tools should use the
+     `--on-behalf-of-cmd` to have their tool name recorded.
+     (Closes: #972724)
+   * dh_installexamples: Explicitly recommend `examples/*` over
+     `examples` as content for the `debian/<pkg>.examples` file
+     to avoid the triggering `.../examples/examples` case.
+     (Closes: #1000384)
+   * debhelper.pod: Clarify the documentation around `-v` +
+     `--verbose` vs. `DH_VERBOSE` vs. `DH_QUIET` and `terse`
+     from `DEB_BUILD_OPTIONS`.  Notably, clarify that `-v`
+     and `DH_VERBOSE` provides the same functionality and
+     that they do not cause *all* commands to be shown.
+     (Closes: #1002464)
+   * Update Portuguese translation (Américo Monteiro)
+     (Closes: #1019231)
+   * autoscripts/postinst-init-tmpfiles: Re-instate runtime check
+     before running `systemd-tmpfiles`. However, explicitly check
+     for `systemd-tmpfiles` rather than asserting the system was
+     booted by systemd. This resolves #1013969 without requiring
+     a strict dependency as originally suggested by Guilhem Moulin
+     in #1013969.
+   * dh_installtmpfiles: Remove the `systemd | systemd-tmpfiles`
+     dependency as it is no longer required.  (Closes: #1017441)
+   * dh_installsystemd: Ditto.
+   * dh_installinit: Ditto.
+   * autoscripts/postinst-init-tmpfiles: Only pass `--root` to systemd
+     when `DPKG_ROOT` is present (as `--root=/` is different from
+     omitting `--root` entirely).
+   * autoscripts/postinst-sysusers: Ditto
+
+-------------------------------------------------------------------
 Mon Aug 15 09:02:09 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - Update to version 13.9
