@@ -16,18 +16,17 @@
 #
 
 
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           baloo5
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         baloo-%{version}.tar.xz
 %if %{with released}
@@ -61,7 +60,6 @@ Baloo is a framework for searching and managing metadata.
 
 %package -n libKF5Baloo5
 Summary:        Core library for Baloo Framework
-Group:          System/GUI/KDE
 
 # The -lang package was split into components
 Provides:       %{name}-lang = %{version}
@@ -75,7 +73,6 @@ package contains Baloo's core library.
 
 %package -n libKF5BalooEngine5
 Summary:        Baloo Engine library
-Group:          System/GUI/KDE
 Recommends:     libKF5BalooEngine5-lang
 
 %description -n libKF5BalooEngine5
@@ -84,7 +81,6 @@ package contains Baloo's Engine library.
 
 %package file
 Summary:        Filesearch components for Baloo Framework
-Group:          System/GUI/KDE
 Requires:       libQt5Sql5-sqlite
 Recommends:     %{name}-file-lang
 Provides:       baloo-file = %{version}
@@ -96,7 +92,6 @@ package contains filesearch components.
 
 %package kioslaves
 Summary:        KIO slave components for Baloo Framework
-Group:          System/GUI/KDE
 Requires:       kded
 Recommends:     %{name}-kioslaves-lang
 
@@ -106,7 +101,6 @@ package contains KIO slave components.
 
 %package tools
 Summary:        Aditional components for Baloo Framework
-Group:          System/GUI/KDE
 Recommends:     %{name}-tools-lang
 Provides:       baloo-tools = %{version}
 Obsoletes:      baloo-tools < %{version}
@@ -117,7 +111,6 @@ package contains aditional command line utilities.
 
 %package imports
 Summary:        QML components for Baloo Framework
-Group:          System/GUI/KDE
 Recommends:     %{name}-imports-lang
 
 %description imports
@@ -126,7 +119,6 @@ package contains QML imports.
 
 %package devel
 Summary:        Development package for baloo5
-Group:          Development/Libraries/KDE
 Requires:       libKF5Baloo5 = %{version}
 Requires:       libKF5BalooEngine5 = %{version}
 Requires:       lmdb-devel
