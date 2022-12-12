@@ -1,14 +1,16 @@
-Index: arpwatch-3.1/arpwatch.c
-===================================================================
---- arpwatch-3.1.orig/arpwatch.c
-+++ arpwatch-3.1/arpwatch.c
-@@ -481,6 +481,12 @@ process_ether(u_char *u, const struct pc
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -481,6 +481,16 @@ process_ether(u_char *u, const struct pc
  	if (toskip(sia))
  		return;
  
 +	/* dhcp broadcasts source from 0.0.0.0 - ignore */
 +	if (sia == 0) {
-+		dosyslog(LOG_INFO, "0-source", sia, sea, sha);
++		static u_char old_sea[6];
++		if (memcmp(old_sea, sea, 6)) {
++			dosyslog(LOG_INFO, "0-source", sia, sea, sha);
++			memcpy(old_sea, sea, 6);
++		}
 +		return;
 +	}
 +

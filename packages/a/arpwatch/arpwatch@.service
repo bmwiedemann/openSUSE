@@ -1,3 +1,4 @@
+# vim: syntax=systemd
 [Unit]
 Description=Arpwatch daemon which keeps track of ethernet/ip address pairings
 After=network.target

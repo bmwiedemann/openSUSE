@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  6 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- Enable loading of ethercodes.dat with arpwatch.ETHERCODES.patch
+- Log useless 0-source only once for each MAC
+
+-------------------------------------------------------------------
 Wed Apr 27 11:06:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.3:
