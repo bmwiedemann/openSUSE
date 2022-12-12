@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5Auth5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kauth
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        Framework which lets applications perform actions as a privileged user
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -49,7 +48,6 @@ KAuth is a framework to let applications perform actions as a privileged user.
 
 %package -n libKF5AuthCore5
 Summary:        Framework which lets applications perform actions as a privileged user
-Group:          System/GUI/KDE
 Recommends:     %{lname}-lang = %{version}
 
 %description -n libKF5AuthCore5
@@ -57,7 +55,6 @@ KAuth is a framework to let applications perform actions as a privileged user.
 
 %package -n %{lname}
 Summary:        Framework which lets applications perform actions as a privileged user
-Group:          System/GUI/KDE
 Requires:       libKF5AuthCore5 = %{version}
 Obsoletes:      libKF5Auth4
 
@@ -66,7 +63,6 @@ KAuth is a framework to let applications perform actions as a privileged user.
 
 %package devel
 Summary:        Framework which lets applications perform actions as a privileged user
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
