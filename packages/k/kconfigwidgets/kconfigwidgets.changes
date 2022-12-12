@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 11 11:39:11 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to add missing kf5_entry.desktop files (kde#413123):
+  * 0001-Copy-kf5_entry.desktop-to-their-respective-locale.patch
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:28 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * KHamburgerMenu: Reset when menu bar contents change
+  * [KRecentFilesAction] Fix broken recent files list (kde#461448)
+
+-------------------------------------------------------------------
 Tue Nov  8 08:34:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0
