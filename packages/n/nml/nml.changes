@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 11 18:17:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Fix action0properties.py
+  * Minor improvements to examples
+  * Change: use an array of cargoes for cargo_random_triggers
+  * Change: disabled_platforms/length is now bitmask(1-8)>>1
+  * Change: replace nearby_tile_platform_type with nearby_tile_tile_type.
+  * Fix: Station animation triggers every 250 ticks, not 256.
+  * Fix #256: Objects have a 'colour' in var 47.
+  * Change: allow any expression for station (purchase_)prepare_layout
+  * Update: changelog for 0.7.1
+  * Fix: [Actions] release workflow issues
+  * More issues in release workflow
+
+-------------------------------------------------------------------
 Mon Nov 14 16:11:33 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 0.7.0
