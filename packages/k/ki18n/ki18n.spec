@@ -17,18 +17,17 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.100
+%define _tar_path 5.101
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ki18n
-Version:        5.100.0
+Version:        5.101.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         %{name}-%{version}.tar.xz
 %if %{with released}
@@ -56,7 +55,6 @@ and translators can use the familiar Gettext tools and workflows.
 
 %package -n %{lname}
 Summary:        KDE Gettext-based UI text internationalization
-Group:          System/GUI/KDE
 %requires_ge    libQt5Core5
 Obsoletes:      libKF5I18n4
 Requires:       iso-codes
@@ -77,7 +75,6 @@ This package contains QML imports for the ki18n framework.
 
 %package devel
 Summary:        KDE Gettext-based UI text internationalization
-Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       gettext-runtime
