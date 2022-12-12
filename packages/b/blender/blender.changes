@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 10 09:42:51 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Enable openpgl for aarch64 as well
+
+-------------------------------------------------------------------
+Thu Dec  8 09:12:57 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.4.0:
+  way to many to be listed here, check:
+  https://wiki.blender.org/wiki/Reference/Release_Notes/3.4
+  https://www.blender.org/download/releases/3-4/
+- Add a couple of new dependencies and a openpgl build conditional
+- Assorted spec clean-ups and fixes
+
+-------------------------------------------------------------------
 Thu Nov  3 07:58:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Use .so build of embree

@@ -19,12 +19,19 @@
 
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
+
 %ifarch x86_64
 %bcond_without embree
 %bcond_without oidn
 %else
 %bcond_with embree
 %bcond_with oidn
+%endif
+
+%ifarch x86_64 aarch64
+%bcond_without openpgl
+%else
+%bcond_with openpgl
 %endif
 
 %bcond_with optix
@@ -49,6 +56,7 @@
 %define py3ver 3.10
 %define py3pkg python310
 
+# Blender version: source/blender/blenkernel/BKE_blender_version.h
 # blender has versions like x.xxy which have x.xx (notice the missing
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
@@ -62,12 +70,12 @@
 %bcond_without osl
 %bcond_with    system_audaspace
 %bcond_without system_glew
-# TBD
+# TBD: contributions welcome
 %bcond_with usd
 %bcond_with openxr
 
 Name:           blender
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -137,6 +145,7 @@ BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  cmake(pugixml)
 BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
@@ -147,14 +156,18 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libdecor-0)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(python-%{py3ver})
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-scanner)
 %ifarch x86_64
 # oneVPL only available on x86_64 atm
 BuildRequires:  pkgconfig(vpl)
@@ -162,6 +175,7 @@ BuildRequires:  pkgconfig(vpl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
@@ -177,7 +191,6 @@ Provides:       %{name}-%{_suffix} = %{version}
 BuildRequires:  pkgconfig(OpenEXR)
 %if %{with clang}
 BuildRequires:  clang
-BuildRequires:  clang-devel
 %if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
 BuildRequires:  libomp9-devel
 %else
@@ -213,6 +226,9 @@ BuildRequires:  embree-devel
 %endif
 %if %{with oidn}
 BuildRequires:  OpenImageDenoise-devel
+%endif
+%if %{with openpgl}
+BuildRequires:  openpgl-devel
 %endif
 %if %{with opensubdiv}
 BuildRequires:  OpenSubdiv-devel
@@ -365,7 +381,6 @@ cmake ../ \
       -DWITH_CYCLES_EMBREE:BOOL=OFF \
 %endif
 %endif
-      -DWITH_HARU:BOOL=ON \
       -DWITH_DRACO:BOOL=ON \
       -DWITH_FFTW3:BOOL=ON \
       -DWITH_FREESTYLE:BOOL=ON \
@@ -466,7 +481,6 @@ echo "release version = %{_version}"
 %cmake_install
 
 # tidy some .dot {files,dirs} installation
-rm -r %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/.git*
 rm %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/addons/rigify/.pep8
 # Fix any .py files with shebangs and wrong permissions.
 find %{buildroot} -name "*.py" -perm 0644 -print0 | \
@@ -487,6 +501,8 @@ install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
 # GPU and OptiX rendering texts
 install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
+
+chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 
 %fdupes %{buildroot}%{_datadir}/%{name}/%{_version}/
 %find_lang %{name} %{?no_lang_C}
