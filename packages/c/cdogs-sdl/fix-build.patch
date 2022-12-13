@@ -1,8 +1,8 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8429585..94f80aa 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -148,6 +148,9 @@ if(NOT DEFINED CDOGS_DATA_DIR)
+Index: cdogs-sdl-1.4.0/CMakeLists.txt
+===================================================================
+--- cdogs-sdl-1.4.0.orig/CMakeLists.txt
++++ cdogs-sdl-1.4.0/CMakeLists.txt
+@@ -147,6 +147,9 @@ if(NOT DEFINED CDOGS_DATA_DIR)
  	endif()
  endif()
  message("Data dir is ${CDOGS_DATA_DIR}")
@@ -12,7 +12,7 @@ index 8429585..94f80aa 100644
  if(WIN32)
  	set(CDOGS_CFG_DIR "C-Dogs SDL/")
  else()
-@@ -200,7 +203,6 @@ elseif(APPLE)
+@@ -199,7 +202,6 @@ elseif(APPLE)
  	set(INSTALL_PREFIX "cdogs-sdl")
  else()
  	set(LIB_EXTENSION ".so")

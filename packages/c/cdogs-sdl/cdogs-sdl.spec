@@ -1,7 +1,7 @@
 #
 # spec file for package cdogs-sdl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,18 @@
 
 
 Name:           cdogs-sdl
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        BSD-2-Clause AND GPL-2.0-only AND CC-BY-3.0 AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Shoot
 URL:            https://cxong.github.io/cdogs-sdl
 Source:         https://github.com/cxong/cdogs-sdl/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        cdogs-sdl.rpmlintrc
 Patch0:         fix-build.patch
 # PATCH-FIX-UPSTREAM fix-source-file-directory.patch -- https://github.com/cxong/cdogs-sdl/issues/729
-Patch1:         fix-source-file-directory.patch
+#Patch1:         fix-source-file-directory.patch
+Patch1:         fix-env-script-interpreter.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
@@ -63,6 +65,7 @@ rm -rf src/cdogs/enet
 %cmake_install
 rm %{buildroot}%{_datadir}/cdogs-sdl/README.md
 %fdupes %{buildroot}%{_datadir}
+find %{buildroot}%{_datadir}/cdogs-sdl/ -name '*.sh' | xargs chmod a+x
 
 %check
 %ctest

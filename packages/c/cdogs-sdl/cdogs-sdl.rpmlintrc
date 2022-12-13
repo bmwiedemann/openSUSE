@@ -1,0 +1,2 @@
+# game requires data in this hidden folder
+addFilter("W: hidden-file-or-dir /usr/share/cdogs-sdl/data/.wolf3d")

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 13 11:15:38 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.4.0 
+  * Fix Spear of Destiny compatibility with steam Wolfenstein 3D
+  * Improve several campaigns with auto-melee weapons (Doom, Wolf3D+SoD)
+
+- Update to version 1.3.1
+  * Persistent lives, fix gas bomb poison lasting forever
+
+- Update to version 1.3.0
+  * Fix missing controls in editor, and some animation effects and sounds
+
+- Add fix-env-script-interpreter.patch
+- Add cdogs-sdl.rpmlintrc to filter out warning on hidden data directory
+- Remove fix-source-file-directory.patch
+
+-------------------------------------------------------------------
 Fri Dec  3 15:08:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.0
