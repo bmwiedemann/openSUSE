@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 12 20:20:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.713
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.713     2022-12-12 12:44:52-06:00 America/Chicago
+    [Fixed]
+    - Fixed tests failing due to missing Devel::Stacktrace. This is an
+      optional module, so we do not explicitly depend on it. Thanks
+      @dbevans and @perlpunk for reporting this issue! (Github #93)
+  1.712     2022-12-09 11:05:10-06:00 America/Chicago
+    [Added]
+    - Added `Log::Any::Proxy::WithStackTrace` to provide a stack trace at
+      the caller site. Thanks @larryl and @GrantStreetGroup for providing
+      this feature!
+    [Other]
+    - Removed Travis, as they stopped supporting free Github repos :(
+
+-------------------------------------------------------------------
 Wed Nov 23 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.711
