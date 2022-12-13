@@ -18,7 +18,7 @@
 
 %define cpan_name experimental
 Name:           perl-experimental
-Version:        0.029
+Version:        0.030
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Experimental features made easy

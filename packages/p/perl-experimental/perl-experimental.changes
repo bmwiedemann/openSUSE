@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 11 03:07:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.030
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.030     2022-12-10 13:02:15+01:00 Europe/Amsterdam
+            - Adapt to future deprecation of smartmatch
+
+-------------------------------------------------------------------
 Wed Oct 26 03:10:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.029
