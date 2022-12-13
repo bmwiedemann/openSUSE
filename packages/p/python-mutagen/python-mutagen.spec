@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutagen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Exception: Python 2 no longer supported
 %define skip_python2 1
 Name:           python-mutagen
-Version:        1.45.1
+Version:        1.46.0
 Release:        0
 Summary:        Python module to Handle Audio Metadata
 License:        GPL-2.0-or-later
@@ -36,6 +36,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
 %python_subpackages
 
 %description
@@ -73,8 +75,6 @@ done
 
 %check
 export LANG=en_US.UTF-8
-#~ setup.py test --no-quality
-rm -r tests/quality
 %pytest
 
 %files %{python_files}
