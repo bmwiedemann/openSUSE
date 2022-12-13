@@ -29,7 +29,7 @@
 %global import_path     %{provider_prefix}/%{repo}
 
 Name:           clash
-Version:        1.9.0
+Version:        1.12.0
 Release:        0
 Summary:        A rule-based tunnel in Go
 License:        GPL-3.0-only

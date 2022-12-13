@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  8 16:26:54 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.0:
+  * add tunnels (like SSH local forwarding)
+  * fix fake ip pool offset calculated 
+  * migration to go1.19
+  * reduce dhcp dns client cost
+  * fix: query string parse on ws-opts
+  * fix: handle parse socks5 udp address correctly
+  * satisfy RFC4343 - DNS case insensitivity
+  * custom-specific interface can be set on nameserver
+  * support snell v3
+  * ignore empty dns server error
+
+-------------------------------------------------------------------
 Mon Jan 03 14:54:25 UTC 2022 - Orville Q. Song <orville@anislet.dev>
 
 - Update to version 1.9.0:
