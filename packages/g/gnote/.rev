@@ -720,4 +720,13 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment></comment>
     <requestid>1008622</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>ce39330ef967dc61707149df2992a33a</srcmd5>
+    <version>43.0</version>
+    <time>1670954165</time>
+    <user>dimstar_suse</user>
+    <comment>- The shell provider dbus service file must be in the main package
+  due to being referenced in the .desktop file (forwarded request 1042512 from gmbr3)</comment>
+    <requestid>1042555</requestid>
+  </revision>
 </revisionlist>

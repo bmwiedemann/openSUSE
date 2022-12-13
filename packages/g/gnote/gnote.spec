@@ -99,6 +99,7 @@ search results from documents.
 # Splitting does not make sense as it's just a lib for gnote itself (and it's plugins)
 %{_libdir}/libgnote-%{base_version}.so*
 %{_datadir}/applications/org.gnome.Gnote.desktop
+%{_datadir}/dbus-1/services/org.gnome.Gnote.service
 %{_datadir}/glib-2.0/schemas/org.gnome.gnote.gschema.xml
 %{_datadir}/gnote/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gnote*
@@ -107,7 +108,6 @@ search results from documents.
 %{_datadir}/metainfo/org.gnome.Gnote.appdata.xml
 
 %files -n gnome-shell-search-provider-%{name}
-%{_datadir}/dbus-1/services/org.gnome.Gnote.service
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Gnote.search-provider.ini
