@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pg
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 %define mod_name pg
 %define mod_full_name %{mod_name}-%{version}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:29:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.5
+ see installed History.rdoc
+
+  == v1.4.5 [2022-11-17] Lars Kanis <lars@greiz-reinsdorf.de>
+  
+  - Return the libpq default port when blank in conninfo. #492
+  - Add PG::DEF_PGPORT constant and use it in specs. #492
+  - Fix name resolution when empty or `nil` port is given.
+  - Update error codes to PostgreSQL-15.
+  - Update Windows fat binary gem to PostgreSQL-15.1 AND OpenSSL-1.1.1s.
+  
+  
+
+-------------------------------------------------------------------
 Fri Oct 28 05:03:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.4
