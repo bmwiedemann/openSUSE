@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-faraday-net_http
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 %define mod_name faraday-net_http
 %define mod_full_name %{mod_name}-%{version}
