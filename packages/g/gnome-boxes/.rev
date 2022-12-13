@@ -762,4 +762,13 @@
     <comment>New stable release (forwarded request 1031524 from iznogood)</comment>
     <requestid>1032380</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>c7050106fb9145d8f6cceba1d6337a88</srcmd5>
+    <version>43.1</version>
+    <time>1670954167</time>
+    <user>dimstar_suse</user>
+    <comment>- The standard .service file should be in the main package - it's
+  not related to the GNOME search provider (forwarded request 1042447 from gmbr3)</comment>
+    <requestid>1042553</requestid>
+  </revision>
 </revisionlist>

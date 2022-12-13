@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 18:40:00 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- The standard .service file should be in the main package - it's
+  not related to the GNOME search provider
+
+-------------------------------------------------------------------
 Thu Oct 27 11:02:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

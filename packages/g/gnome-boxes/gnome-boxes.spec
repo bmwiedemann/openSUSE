@@ -133,6 +133,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Boxes.deskt
 %{_datadir}/metainfo/org.gnome.Boxes.appdata.xml
 %{_datadir}/applications/org.gnome.Boxes.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.boxes.gschema.xml
+%{_datadir}/dbus-1/services/org.gnome.Boxes.service
 %dir %{_datadir}/gnome-boxes
 %dir %{_datadir}/gnome-boxes/sources
 %dir %{_datadir}/gnome-boxes/unattended
@@ -162,7 +163,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Boxes.deskt
 
 %files -n gnome-shell-search-provider-boxes
 %{_datadir}/dbus-1/services/org.gnome.Boxes.SearchProvider.service
-%{_datadir}/dbus-1/services/org.gnome.Boxes.service
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Boxes.SearchProvider.ini
