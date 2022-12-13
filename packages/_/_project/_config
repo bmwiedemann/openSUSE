@@ -483,6 +483,9 @@ Prefer: -python38-magic -python39-magic -python310-magic
 # have choice for gcr-ssh-agent needed by libgcr-3-1: gcr-ssh-agent gcr3-ssh-agent
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
+
+Prefer: -procps4
+
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
 Prefer: -python310-PyQt6 -python39-PyQt6 -python38-PyQt6 -python3-pyside2
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
