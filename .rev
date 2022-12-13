@@ -63,4 +63,21 @@
     <comment></comment>
     <requestid>1037166</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8e5194cc8a0478c29fcab89052d38399</srcmd5>
+    <version>2.1</version>
+    <time>1670954229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1:
+  * stafd: Add zeroconf-connections-persistence conf. parameter
+  * Avahi: Handle upper/lower case 'NQN/nqn' in TXT attribute
+    (bsc#1205873)
+  * stafd: Add &quot;origin&quot; parameter to DC controller objects
+  * staslib: Trim whitespaces at the source (bsc#1204975)
+  * udev: Throttle EnvironmentError exception messages
+  * del patch: 0001-meson-disable-subproject.patch (not necessary any more)
+
+  * add patch: 0001-meson-disable-subproject.patch (to fix build in OBS) (forwarded request 1042700 from mwilck)</comment>
+    <requestid>1042702</requestid>
+  </revision>
 </revisionlist>
