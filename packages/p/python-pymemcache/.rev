@@ -166,4 +166,33 @@
 - add python-pymemcache-no-mock.patch, do not require python-mock for build</comment>
     <requestid>967531</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9c565ae2a1abedc48261f68b76ad3a66</srcmd5>
+    <version>4.0.0</version>
+    <time>1670954109</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests in i586.
+- Fix launch of memcached for tests
+- Remove python-pymemcache-no-mock.patch
+- More specific python_sitelib in %files
+- Remove python_module macro definition
+- Update to 4.0.0:
+  * Drop python support for 2.7, 3.4 and 3.5 by @jogo in #321
+  * Use default for get ignore_exc by @jogo in #351
+  * Return default from hash client by @Pankrat in #352
+  * Return default from hash client when using positional argument by @Pankrat
+    in #354
+  * Support noreply for hash flush_all by @jogo in #361
+  * Drop support for Python 3.6 by @jparise in #363
+  * Add official support for Python 3.10 by @jparise in #365
+  * Handle a blank stat value by @liquidpele in #388
+  * Small buffer pass optimization as discussed in #395. by @martinnj in #402
+  * Expand Client with a method for sending arbitrary commands. by @martinnj in
+    #395
+  * add pluggable compression serde by @sontek in #407
+  * Start to add type hints by @jogo in #415
+  * Add py.typed file by @jogo in #421
+  * Fix key_prefix issue with stats and cache_memlimit by @jogo in #433</comment>
+    <requestid>1042435</requestid>
+  </revision>
 </revisionlist>

@@ -17,30 +17,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pymemcache
-Version:        3.5.2
+Version:        4.0.0
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
-# https://github.com/pinterest/pymemcache/commit/0bf1baa4f539dedf8e4e4b2e48f8da5d66ed57b5
-Patch0:         python-pymemcache-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-memcached}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module zstd}
 # /SECTION
 %if %{with python2}
 BuildRequires:  python-future
@@ -74,14 +71,32 @@ sed -i 's/tool:pytest/tool:ignore-pytest-cov/' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{_sbindir}/memcached &
+if [ -f %{_sbindir}/memcached ]; then
+  %{_sbindir}/memcached &
+elif [ -f %{_bindir}/memcached ]; then
+  %{_bindir}/memcached &
+fi
+
+cat << EOF > pytest.ini
+[pytest]
+markers =
+	unit
+	integration
+	benchmark
+EOF
+
 # TLS tests depend on setting up a memcached equivalent to
 # https://github.com/scoriacorp/docker-tls-memcached
-%pytest -rs -k 'not tls'
+donttest="tls"
+# In i586 zlib.compress doesn't compress the CustomInt instance so these tests
+# fails
+donttest+=" or test_compressed_complex"
+%pytest -rs -k "not (${donttest})" -m "unit or integration"
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pymemcache
+%{python_sitelib}/pymemcache-%{version}*-info
 
 %changelog

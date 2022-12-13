@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Dec 12 17:10:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests in i586.
+
+-------------------------------------------------------------------
+Wed Dec  7 13:33:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix launch of memcached for tests
+
+-------------------------------------------------------------------
+Wed Dec  7 13:11:08 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-pymemcache-no-mock.patch
+- More specific python_sitelib in %files
+- Remove python_module macro definition
+- Update to 4.0.0:
+  * Drop python support for 2.7, 3.4 and 3.5 by @jogo in #321
+  * Use default for get ignore_exc by @jogo in #351
+  * Return default from hash client by @Pankrat in #352
+  * Return default from hash client when using positional argument by @Pankrat
+    in #354
+  * Support noreply for hash flush_all by @jogo in #361
+  * Drop support for Python 3.6 by @jparise in #363
+  * Add official support for Python 3.10 by @jparise in #365
+  * Handle a blank stat value by @liquidpele in #388
+  * Small buffer pass optimization as discussed in #395. by @martinnj in #402
+  * Expand Client with a method for sending arbitrary commands. by @martinnj in
+    #395
+  * add pluggable compression serde by @sontek in #407
+  * Start to add type hints by @jogo in #415
+  * Add py.typed file by @jogo in #421
+  * Fix key_prefix issue with stats and cache_memlimit by @jogo in #433
+
+-------------------------------------------------------------------
 Thu Apr  7 09:31:23 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.5.2
