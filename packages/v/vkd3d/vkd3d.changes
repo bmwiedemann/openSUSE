@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 21:52:23 UTC 2022 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.6:
+  - Initial support for HLSL compute shaders.
+  - More support for HLSL features and intrinsics.
+  - Miscellaneous bug fixes.
+
+-------------------------------------------------------------------
 Thu Oct 27 16:51:39 UTC 2022 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to version 1.5:

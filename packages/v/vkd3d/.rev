@@ -64,4 +64,15 @@
     <comment></comment>
     <requestid>1035884</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bfab940301257ecfc6faf7bede035a8e</srcmd5>
+    <version>1.6</version>
+    <time>1670954173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6:
+  - Initial support for HLSL compute shaders.
+  - More support for HLSL features and intrinsics.
+  - Miscellaneous bug fixes. (forwarded request 1042502 from tobijk)</comment>
+    <requestid>1042562</requestid>
+  </revision>
 </revisionlist>
