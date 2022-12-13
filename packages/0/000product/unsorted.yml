@@ -12786,9 +12786,10 @@ unsorted:
   - libnng1 
   - libnormaliz3 
   - libnoson2 
-  - libnotcurses++2 
-  - libnotcurses-core2 
-  - libnotcurses2 
+  - libnotcurses++3 
+  - libnotcurses-core3 
+  - libnotcurses-ffi3 
+  - libnotcurses3 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
   - libnotify4-32bit: [x86_64] 
@@ -20779,7 +20780,6 @@ unsorted:
   - php-pear-Net_Socket 
   - php-pear-XML_Parser 
   - php7 
-  - php7-APCu 
   - php7-bcmath 
   - php7-bz2 
   - php7-calendar 
@@ -20804,7 +20804,6 @@ unsorted:
   - php7-json 
   - php7-ldap 
   - php7-mbstring 
-  - php7-memcached 
   - php7-mysql 
   - php7-odbc 
   - php7-opcache 
@@ -21454,6 +21453,7 @@ unsorted:
   - procmeter-devel 
   - procmon: [x86_64] 
   - procps-devel 
+  - procps4-devel 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
   - profanity 
@@ -33165,7 +33165,9 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
+  - ruby3.1-rubygem-gettext_i18n_rails_js 
   - ruby3.1-rubygem-grpc 
+  - ruby3.1-rubygem-rails-7.0 
   - ruby3.1-rubygem-slim 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
@@ -44682,6 +44684,7 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
+  - yarn 
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 

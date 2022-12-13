@@ -2442,7 +2442,8 @@
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite3_21_11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3512,8 +3513,10 @@
     <package name="prison-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="procinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="procmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="procps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psmisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3878,7 +3881,6 @@
     <package name="ruby3.1-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.1-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-google-protobuf" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4017,7 +4019,6 @@
     <package name="ruby3.1-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.1-rubygem-rails-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4746,7 +4747,6 @@
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yakuake-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="yarn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
