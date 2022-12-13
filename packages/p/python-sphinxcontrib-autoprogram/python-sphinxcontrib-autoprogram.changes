@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  8 09:33:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add skip-failing-test.patch skipping failing test
+  gh#sphinx-contrib/autoprogram#54.
+
+-------------------------------------------------------------------
 Tue Feb 22 11:19:17 UTC 2022 - pgajdos@suse.com
 
 - fix build and introduced doc build flavor

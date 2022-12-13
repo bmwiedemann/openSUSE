@@ -1,7 +1,9 @@
-Index: autoprogram-0.1.7/sphinxcontrib/autoprogram.py
-===================================================================
---- autoprogram-0.1.7.orig/sphinxcontrib/autoprogram.py	2022-02-18 13:57:19.100334018 +0100
-+++ autoprogram-0.1.7/sphinxcontrib/autoprogram.py	2022-02-18 13:57:56.028550128 +0100
+---
+ sphinxcontrib/autoprogram.py |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+--- a/sphinxcontrib/autoprogram.py
++++ b/sphinxcontrib/autoprogram.py
 @@ -476,7 +476,11 @@ class ScannerTestCase(unittest.TestCase)
          # section: default optionals
          program, options, group = sections[1]

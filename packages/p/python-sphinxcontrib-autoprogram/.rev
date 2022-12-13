@@ -31,4 +31,14 @@
     <comment>Add patch to support building with python 3.10</comment>
     <requestid>956940</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e5d51d929f99ae003bc7d74278a568a7</srcmd5>
+    <version>0.1.7</version>
+    <time>1670954230</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip-failing-test.patch skipping failing test
+  gh#sphinx-contrib/autoprogram#54.
+</comment>
+    <requestid>1042701</requestid>
+  </revision>
 </revisionlist>
