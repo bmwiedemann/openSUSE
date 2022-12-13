@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 12 07:40:28 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to openafs-1.8.9pre2
+  * Support mainline kernels up to 6.0
+  * Support for building with more recent compilers
+  * some bugfixes, more see RELNOTES
+- remove obsolete patches:
+  * 79f03c2.diff 
+
+-------------------------------------------------------------------
 Wed Oct 12 16:19:20 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to openafs-1.8.9pre1 

@@ -1,3 +1,150 @@
+commit f812d1125f785df05bf1028f665d22c608006bae
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Thu Nov 3 15:59:04 2022 +0100
+
+    Make OpenAFS 1.8.9pre2
+    
+    Update version strings for the second 1.8.9 prerelease.
+    
+    Change-Id: Ic45d60180097f85263b2bd81b0beb039c36ad51f
+    Reviewed-on: https://gerrit.openafs.org/15192
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit e8ead732246d7bd9c1e38fa806b19dfd9e38cf6a
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Thu Nov 3 16:11:30 2022 +0100
+
+    Update NEWS for 1.8.9pre2
+    
+    Release notes for the second 1.8.9 prerelease.
+    
+    Change-Id: I564ee4f4348ca3574a52c75fea30c55dac5e33a4
+    Reviewed-on: https://gerrit.openafs.org/15193
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Tested-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit fdf38483c7765270c24a01b65fc3d1173509136e
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Thu Sep 22 13:04:59 2022 -0600
+
+    Linux-6.0: Replace add_to_page_cache
+    
+    Linux 6.0 removed the add_to_page_cache function in the Linux commit:
+        'filemap: Remove add_to_page_cache() and add_to_page_cache_locked()'
+        (2bb876b58d593d7f2522ec0f41f20a74fde76822)
+    
+    The replacement function, filemap_add_folio function is exported as GPL,
+    but a non-GPL wrapper was provided in the Linux 5.15 commit:
+        'mm/filemap: Add filemap_add_folio()'
+        (9dd3d069406cea073fc633e77bc59abbfde8c6c4)
+    which changed the GPL exported function add_to_page_cache_lru to a
+    non-GPL exported function.
+    
+    The function add_to_page_cache_lru functionally combines the
+    add_to_page_cache with lru_cache_add.  Within afs, all the calls to
+    add_to_page_cache follow the pattern of calling the lru_cache_add
+    via the wrapper afs_lru_cache_add immediately after (except in one case
+    noted below).
+    
+    Add an autoconf check to see if add_to_page_cache_lru is available.
+    
+    Introduce a new wrapper function afs_add_to_page_cache_lru that handles
+    calling either add_to_page_cache/afs_lru_cache_add or
+    add_to_page_cache_lru.
+    
+    As noted above there is one function, afs_linux_bypass_readpages, that
+    calls add_to_page_cache but does not immediately call afs_lru_cache_add.
+    This function is only used in Linux kernels prior to 5.18, see the
+    commit:
+        'Linux-5.18: replace readpages with readahead' (7a181415db)
+    Since this code path is only built for a Linux kernel level where
+    add_to_page_cache should also exists, we do not replace this call.
+    
+    NOTE:
+    The add_to_page_cache_lru was moved into mm/folio-compat.c which has a
+    comment indicating that callers of these functions should migrate to
+    folio calls.  However the replacement folio call that is needed by afs,
+    filemap_add_folio, is exported as GPL.
+    
+    Reviewed-on: https://gerrit.openafs.org/15132
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 0ce315f0cee1cff7e19e6ebcc0e0e82e03719c20)
+    
+    Change-Id: Ic0496c2fba00e7be467dbbcf52d9854495e1ad9f
+    Reviewed-on: https://gerrit.openafs.org/15148
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Harish Sharma <Harish.Sharma1@ibm.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 79a04c3448541bd8299598c5d87b404d8d2219a5
+Author: Michael Meffie <mmeffie@sinenomine.net>
+Date:   Mon Sep 26 11:34:57 2022 -0400
+
+    afs: Avoid unbounded string copy in SRXAFSCB_GetLock()
+    
+    Use strlcpy() instead of strcpy() when filling in the lock name to avoid
+    string buffer overflows of the AFSDBLock name arrays.
+    
+    This is a 1.8.x specific commit, derived from 419f0cd7aa (afs: Replace
+    strcpy &co by safer alternatives)
+    
+    Change-Id: Ia59f6dccdeab1c0b6f267254bd264842568b7582
+    Reviewed-on: https://gerrit.openafs.org/15151
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Harish Sharma <Harish.Sharma1@ibm.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 119cea2f49af08f0f24711d1398a739beef1e359
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Wed Sep 7 19:03:50 2022 -0600
+
+    Remove gssapi in autoconf and configuration
+    
+    The 1.8.x specific commit in gerrit 12681, "Remove src/rxgk" (7c2ce4040)
+    removed rxgk from the build, however the probe for GSSAPI is still
+    place.
+    
+    If there is no gssapi library available, configure fails:
+        checking for gss_import_name in -lgssapi_krb5... no
+        checking for gss_import_name in -lgss... no
+        configure: error: cannot find usable GSS-API library
+    
+    There are no references to gssapi other than the probe in autoconf and
+    2 defines in src/config/Makefile.config.in
+    
+    Remove the autoconf check for GSSAPI via the RAA_LIB_GSSAPI call.
+    Remove the 2 GSSAPI related defines from Makefile.config.in
+    Update the INSTALL document to remove references to gssapi.
+    
+    Change-Id: I873e46bfccfbf538740e8bf5e28a3ca8c3cd3744
+    Reviewed-on: https://gerrit.openafs.org/15137
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
 commit a2c1f9dc21b9e17aa8b075e4507f07def3275c2a
 Author: Stephan Wiesand <stephan.wiesand@desy.de>
 Date:   Thu Sep 23 20:20:44 2021 +0200
