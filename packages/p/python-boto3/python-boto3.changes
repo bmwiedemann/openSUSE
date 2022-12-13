@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Dec  9 13:27:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.26.26
+  * enhancement:Endpoint Provider Standard Library: [``botocore``] Correct spelling of 'library' in
+    ``StandardLibrary`` class
+  * api-change:``autoscaling``: [``botocore``] Adds support for metric math for target tracking
+    scaling policies, saving you the cost and effort of publishing a custom metric to CloudWatch. Also
+    adds support for VPC Lattice by adding the Attach/Detach/DescribeTrafficSources APIs and a new
+    health check type to the CreateAutoScalingGroup API.
+  * api-change:``iottwinmaker``: [``botocore``] This release adds the following new features: 1) New
+    APIs for managing a continuous sync of assets and asset models from AWS IoT SiteWise. 2) Support
+    user friendly names for component types (ComponentTypeName) and properties (DisplayName).
+  * api-change:``migrationhubstrategy``: [``botocore``] This release adds known application
+    filtering, server selection for assessments, support for potential recommendations, and indications
+    for configuration and assessment status. For more information, see the AWS Migration Hub
+    documentation at https://docs.aws.amazon.com/migrationhub/index.html
+- from version 1.26.25
+  * api-change:``ce``: [``botocore``] This release adds the LinkedAccountName field to the
+    GetAnomalies API response under RootCause
+  * api-change:``cloudfront``: [``botocore``] Introducing UpdateDistributionWithStagingConfig that
+    can be used to promote the staging configuration to the production.
+  * api-change:``eks``: [``botocore``] Adds support for EKS add-ons configurationValues fields and
+    DescribeAddonConfiguration function
+  * api-change:``kms``: [``botocore``] Updated examples and exceptions for External Key Store (XKS).
+- from version 1.26.24
+  * api-change:``billingconductor``: [``botocore``] This release adds the Tiering Pricing Rule
+    feature.
+  * api-change:``connect``: [``botocore``] This release provides APIs that enable you to
+    programmatically manage rules for Contact Lens conversational analytics and third party
+    applications. For more information, see
+    https://docs.aws.amazon.com/connect/latest/APIReference/rules-api.html
+  * api-change:``dynamodb``: [``botocore``] Endpoint Ruleset update: Use http instead of https for
+    the "local" region.
+  * api-change:``dynamodbstreams``: [``botocore``] Update dynamodbstreams client to latest version
+  * api-change:``rds``: [``botocore``] This release adds the BlueGreenDeploymentNotFoundFault to the
+    AddTagsToResource, ListTagsForResource, and RemoveTagsFromResource operations.
+  * api-change:``sagemaker-featurestore-runtime``: [``botocore``] For online + offline Feature
+    Groups, added ability to target PutRecord and DeleteRecord actions to only online store, or only
+    offline store. If target store parameter is not specified, actions will apply to both stores.
+- from version 1.26.23
+  * api-change:``ce``: [``botocore``] This release introduces two new APIs that offer a 1-click
+    experience to refresh Savings Plans recommendations. The two APIs are
+    StartSavingsPlansPurchaseRecommendationGeneration and
+    ListSavingsPlansPurchaseRecommendationGeneration.
+  * api-change:``ec2``: [``botocore``] Documentation updates for EC2.
+  * api-change:``ivschat``: [``botocore``] Adds PendingVerification error type to messaging APIs to
+    block the resource usage for accounts identified as being fraudulent.
+  * api-change:``rds``: [``botocore``] This release adds the InvalidDBInstanceStateFault to the
+    RestoreDBClusterFromSnapshot operation.
+  * api-change:``transcribe``: [``botocore``] Amazon Transcribe now supports creating custom language
+    models in the following languages: Japanese (ja-JP) and German (de-DE).
+- from version 1.26.22
+  * api-change:``appsync``: [``botocore``] Fixes the URI for the evaluatecode endpoint to include the
+    /v1 prefix (ie. "/v1/dataplane-evaluatecode").
+  * api-change:``ecs``: [``botocore``] Documentation updates for Amazon ECS
+  * api-change:``fms``: [``botocore``] AWS Firewall Manager now supports Fortigate Cloud Native
+    Firewall as a Service as a third-party policy type.
+  * api-change:``mediaconvert``: [``botocore``] The AWS Elemental MediaConvert SDK has added support
+    for configurable ID3 eMSG box attributes and the ability to signal them with InbandEventStream tags
+    in DASH and CMAF outputs.
+  * api-change:``medialive``: [``botocore``] Updates to Event Signaling and Management (ESAM) API and
+    documentation.
+  * api-change:``polly``: [``botocore``] Add language code for Finnish (fi-FI)
+  * api-change:``proton``: [``botocore``] CreateEnvironmentAccountConnection RoleArn input is now
+    optional
+  * api-change:``redshift-serverless``: [``botocore``] Add Table Level Restore operations for Amazon
+    Redshift Serverless. Add multi-port support for Amazon Redshift Serverless endpoints. Add Tagging
+    support to Snapshots and Recovery Points in Amazon Redshift Serverless.
+  * api-change:``sns``: [``botocore``] This release adds the message payload-filtering feature to the
+    SNS Subscribe, SetSubscriptionAttributes, and GetSubscriptionAttributes API actions
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Dec  2 11:15:16 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.26.21
