@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:27:49 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 0.21.3
+  * Fixed
+    - Only stop receiving stream on body_stream if body is empty on i
+      the BaseHTTPMiddleware.
+
+- Update to 0.21.0
+  * Added
+    - Add headers parameter to the TestClient.
+  * Deprecated
+    - Deprecate Starlette and Router decorators.
+  * Fixed
+    - Fix bug on FloatConvertor regex.
+
+- Fix test package by adding 'exceptiongroup' python module as a 
+  build dependency.
+
+-------------------------------------------------------------------
 Sun Nov 27 22:53:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.22.0

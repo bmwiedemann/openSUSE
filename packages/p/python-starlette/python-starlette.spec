@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-starlette%{psuffix}
-Version:        0.22.0
+Version:        0.23.1
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -53,6 +53,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module databases}
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module graphene}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
