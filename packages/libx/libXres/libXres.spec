@@ -1,7 +1,7 @@
 #
 # spec file for package libXres
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libXRes1
 Name:           libXres
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        X Resource extension client library
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXRes
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXRes/
-Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(resourceproto) >= 1.0

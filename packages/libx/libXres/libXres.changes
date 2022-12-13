@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:28:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Reformat code to X.Org standard style
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Variable scope reductions
+  * Resolve -Wsign-compare warnings from gcc
+  * Handle implicit conversion warnings from clang
+  * Use calloc instead of malloc to allocate arrays
+
+-------------------------------------------------------------------
 Tue Apr  6 02:03:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 
