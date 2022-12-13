@@ -23,7 +23,7 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        22.09.0
+Version:        22.11.1
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  rsvg-convert
 BuildRequires:  rsvg-view
 %endif
 BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-devel >= 3.2
+BuildRequires:  wxGTK3-devel >= 3.1.5
 # gnuplot is needed for plotting
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
@@ -54,11 +54,7 @@ Recommends:     %{name}-lang
 # SECTION For tests
 %if %{with tests}
 BuildRequires:  appstream-glib
-%if 0%{?suse_version} >= 1550
-BuildRequires:  xorg-x11-server-Xvfb
-%else
-BuildRequires:  xorg-x11-server
-%endif
+BuildRequires:  xvfb-run
 %endif
 # /SECTION
 ExcludeArch:    ppc64 ppc64le
@@ -106,14 +102,11 @@ rm %{buildroot}%{_datadir}/doc/%{tarname}/{COPYING,GPL.txt}
 
 %if %{with tests}
 %check
-export DISPLAY="%{X_display}"
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 5
-
 # Needed, otherwise maxima tries to write to a dir without permissions
 export MAXIMA_USERDIR=./
-%ctest
+pushd ./%{__builddir}
+xvfb-run ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags}
+popd
 
 %endif
 
