@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:26:16 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.5.2
+ see installed CHANGES
+
+  1.5.2
+  
+  * Proxy - handle returning config when the adapter does not use config
+  * Avoid calling `supports?(:expires)` when expiry isn't needed
+  * Adapters::Mongo - fix `merge!` behaviour when no values are inserted
+  
+
+-------------------------------------------------------------------
 Thu Apr 28 05:36:40 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.5.1
