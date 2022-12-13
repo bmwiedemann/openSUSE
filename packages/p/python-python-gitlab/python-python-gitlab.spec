@@ -34,7 +34,6 @@ Requires:       python-argcomplete >= 1.10.0
 Requires:       python-requests >= 2.22.0
 Requires:       python-requests-toolbelt >= 0.9.1
 Requires:       python-setuptools
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httmock}
@@ -42,7 +41,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module six}
 # /SECTION
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
