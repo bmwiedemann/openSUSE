@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  7 03:07:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.002
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.002     2022-12-06 09:49:34-05:00 America/New_York
+          - restore v5.20 compatibility by turning on "postderef" feature
+            explicitly
+
+  3.001     2022-12-01 11:55:43-05:00 America/New_York
+          - no changes, just stable
+
+  3.000     2022-11-03 21:29:21-04:00 America/New_York (TRIAL RELEASE)
+          - Log::Dispatchouli now requires v5.20, for pair slices
+          - structured event logging with ->log_event -- read the docs, and Log::Fmt
+
+-------------------------------------------------------------------
 Sat Jun 19 03:08:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.023

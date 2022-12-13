@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Dispatchouli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        2.023
+Version:        3.002
 Release:        0
-Summary:        Simple wrapper around Log::Dispatch
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
+BuildRequires:  perl(JSON::MaybeXS)
 BuildRequires:  perl(Log::Dispatch)
 BuildRequires:  perl(Log::Dispatch::Array)
 BuildRequires:  perl(Log::Dispatch::File)
@@ -43,6 +44,7 @@ BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Try::Tiny) >= 0.04
+BuildRequires:  perl(experimental)
 Requires:       perl(Log::Dispatch)
 Requires:       perl(Log::Dispatch::Array)
 Requires:       perl(Log::Dispatch::File)
@@ -54,6 +56,7 @@ Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Exporter::GlobExporter) >= 0.002
 Requires:       perl(Sys::Syslog) >= 0.16
 Requires:       perl(Try::Tiny) >= 0.04
+Requires:       perl(experimental)
 %{perl_requires}
 
 %description
