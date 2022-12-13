@@ -16,10 +16,11 @@
 #
 
 
-%define schemaversions 5.0 5.1 5.2b12
+%define schemaversions 5.0 5.1 5.2CR3
+%define realversion 5.2CR3
 #
 Name:           docbook_5
-Version:        5.2b12
+Version:        5.2cr3
 Release:        0
 Summary:        DocBook Schemas (DTD, RELAX NG, W3C Schema) for Version 5.x
 License:        SUSE-Oasis-Specification-Notice
@@ -36,16 +37,18 @@ Source6:        Makefile
 Source500:      docbook-5.0.tar.bz2
 # DB 5.1
 Source510:      docbook-5.1.tar.bz2
-#
-Source520:      docbook-%{version}.tar.bz2
+# DB 5.2
+Source520:      docbook-%{realversion}.zip
 # PATCH-FIX-OPENSUSE docbook_5-nvdl.patch change path to schema files
 Patch501:       %{name}-nvdl.patch
 #
 BuildRequires:  fdupes
+BuildRequires:  libxml2-tools
 BuildRequires:  sgml-skel
+BuildRequires:  unzip
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 BuildArch:      noarch
 
 %description
@@ -81,13 +84,14 @@ The documentation for the DocBook 5.x specification (%{schemaversions})
 
 %prep
 %setup -q -n %{name} -c -T
+sed -i 's_@VERSION@_%{realversion}_g' %{SOURCE1}
 # Copy catalog, README, and Makefile
 cp -p %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 
 # Unpack the sources:
 tar -xf %{SOURCE500}
 tar -xf %{SOURCE510}
-tar -xf %{SOURCE520}
+unzip %{SOURCE520}
 # Unpack the documentation:
 tar -xf %{SOURCE3}
 tar -xf %{SOURCE4}
@@ -113,9 +117,20 @@ update-xml-catalog
 %postun
 update-xml-catalog
 
+%check
+%define catalog %{buildroot}%{xml_sysconf_dir}/catalog.d/docbook_5.xml
+if [ -e %{catalog} ]; then
+  xmlcatalog %{catalog} http://www.oasis-open.org/docbook/xml/5.2/rng/docbook.rnc
+  exit 0
+else
+  exit 10
+fi
+
 %files
 %config %{xml_sysconf_dir}/catalog.d/docbook_5.xml
 %doc *README*
+%doc docbook-%{realversion}/release-notes
+
 #
 %dir %{xml_docbook_dir}/schema
 %dir %{xml_docbook_dtd_dir}
@@ -134,10 +149,10 @@ update-xml-catalog
 %{xml_docbook_rng_dir}/5.1
 %{xml_docbook_sch_dir}/5.1
 %{xml_docbook_nvdl_dir}/5.1
-#5.2b10a2
-%{xml_docbook_sch_dir}/%{version}
-%{xml_docbook_rng_dir}/%{version}
-%{xml_docbook_nvdl_dir}/%{version}
+#5.2*
+%{xml_docbook_sch_dir}/%{realversion}
+%{xml_docbook_rng_dir}/%{realversion}
+%{xml_docbook_nvdl_dir}/%{realversion}
 #5.2
 %{xml_docbook_sch_dir}/5.2
 %{xml_docbook_rng_dir}/5.2

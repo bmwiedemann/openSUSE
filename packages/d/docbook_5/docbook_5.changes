@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Dec  8 13:36:14 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR3
+
+- Update to version 5.2CR3
+  - PR #237 Allow namespace qualified attributes in non-DB namespaces
+  - Add <modifier> after the main names in many OO classes
+  - Some improvements for tests
+
+- Update to version 5.2CR2
+  - Added many new elements, for example meta, danger, enumsynopsis
+  - Added otherclass attribute to article
+  - Added otherclass attribute to section elements to support other values.
+  - Added optional type attribute (text) to procedure element.
+  - Added a type attribute to table and informaltable elements (CALS and HTML
+    table syntax)
+  - Added trans:idfixup, trans:suffix, and trans:linkscope to common attributes.
+  - Changed abstract content from db.para.blocks+ to db.all.blocks+ to expand
+    its content model
+
+  Find the complete list in the release-notes folder
+
+- Package changes
+  - Add the release-notes folder in the spec file
+  - Add %check section in spec file for a minimal test
+  - Correct version information in Makefile to create the correct link
+  - Add @VERSION@ placeholder in XML catalog file docbook_5.xml which is
+    replaced during build time
+  - Add https://cdn.docbook.org/schema/<VERSION> in the XML catalog file
+    docbook_5.xml
+  - Update docbook_5-README.SUSE
+
+-------------------------------------------------------------------
+Mon May 30 09:16:33 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2CR1
+
+- Update to version 5.2CR1
+  - #230: Add packageref attribute for all *synopsis elements
+ 
+  no changes from the 5.2b13 reviewed by the TC
+
+
+-------------------------------------------------------------------
 Wed Mar 16 15:17:56 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2b12
 
 - Update to version 5.2b12:

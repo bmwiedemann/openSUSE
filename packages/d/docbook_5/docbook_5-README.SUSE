@@ -1,10 +1,66 @@
-README.SUSE (2017-10-12)
-=====================================
+README.SUSE (2022-12-08)
+========================
 
-XML CATALOG File
+XML Catalog File
 ----------------
 
-The main DocBook catalog is located in /etc/xml/catalog.d/docbook_5.xml
+The main DocBook catalog is located in `/etc/xml/catalog.d/docbook_5.xml`.
+However, in most cases you will point your catalog resolver to the file
+`/etc/xml/catalog`.
+
+The following URIs are supported and point to the same local path:
+
+* http://www.oasis-open.org/docbook/xml/<DB_VERSION>/
+* http://www.docbook.org/xml/<DB_VERSION>/
+* http://docbook.org/xml/<DB_VERSION>/
+* https://cdn.docbook.org/schema/<DB_VERSION>/
+
+The structure of the DocBook schemas are shown in the following overview:
+
+/usr/share/xml/docbook/schema/
+├── dtd
+│   ├── 4.1.2
+│   ├── 4.2
+│   ├── 4.3
+│   ├── 4.4
+│   ├── 4.5
+│   └── 5.0
+├── nvdl
+│   ├── 5.0
+│   ├── 5.1
+│   └── 5.2
+├── rng
+│   ├── 4.2
+│   ├── 4.3
+│   ├── 4.4
+│   ├── 4.5
+│   ├── 5.0
+│   ├── 5.1
+│   └── 5.2
+├── sch
+│   ├── 5.0
+│   ├── 5.1
+│   └── 5.2
+└── xsd
+    ├── 4.2
+    ├── 4.3
+    ├── 4.4
+    ├── 4.5
+    └── 5.0
+
+
+DocBook V5.2
+------------
+
+The significant differences from 5.1 to 5.2 are:
+
+* Many new synopsis elements for programming languages.
+* New danger admonition element.
+* New formalgroup element to support subfigures, etc.
+* New transclusion fixup attributes.
+* New class attribute on sectioning elements support legal sections.
+* New meta element added to info.
+* Added XInclude-enabled schema versions of Assembly and BITS schemas.
 
 
 DocBook V5.1

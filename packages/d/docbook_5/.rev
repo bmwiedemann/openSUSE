@@ -254,4 +254,43 @@ See any of the files in the docs/ subdirectory (section on notices and ip toward
     <comment></comment>
     <requestid>962331</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>041e77a51fadbdb07222e8a761d52e5b</srcmd5>
+    <version>5.2cr3</version>
+    <time>1670954099</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct version from CR3 -&gt; cr3
+  This change was necessary to make it possible to update from 5.2b12 to 5.2cr3 smoothly.
+
+- Update to version 5.2CR3
+  - PR #237 Allow namespace qualified attributes in non-DB namespaces
+  - Add &lt;modifier&gt; after the main names in many OO classes
+  - Some improvements for tests
+- Update to version 5.2CR2
+  - Added many new elements, for example meta, danger, enumsynopsis
+  - Added otherclass attribute to article
+  - Added otherclass attribute to section elements to support other values.
+  - Added optional type attribute (text) to procedure element.
+  - Added a type attribute to table and informaltable elements (CALS and HTML
+    table syntax)
+  - Added trans:idfixup, trans:suffix, and trans:linkscope to common attributes.
+  - Changed abstract content from db.para.blocks+ to db.all.blocks+ to expand
+    its content model
+  Find the complete list in the release-notes folder
+- Package changes
+  - Add the release-notes folder in the spec file
+  - Add %check section in spec file for a minimal test
+  - Correct version information in Makefile to create the correct link
+  - Add @VERSION@ placeholder in XML catalog file docbook_5.xml which is
+    replaced during build time
+  - Add https://cdn.docbook.org/schema/&lt;VERSION&gt; in the XML catalog file
+    docbook_5.xml
+  - Update docbook_5-README.SUSE
+- Update to version 5.2CR1
+  - #230: Add packageref attribute for all *synopsis elements
+ 
+  no changes from the 5.2b13 reviewed by the TC
+</comment>
+    <requestid>1042495</requestid>
+  </revision>
 </revisionlist>
