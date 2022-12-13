@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 10 19:47:54 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.9
+  https://github.com/dankamongmen/notcurses/releases/tag/v3.0.9
+
+-------------------------------------------------------------------
+Tue Dec  6 10:33:27 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- Update to version 3.0.8
+  https://github.com/dankamongmen/notcurses/releases/tag/v3.0.8 
+- Remove patch:
+  * notcurses-2.3.12-skip-xray.diff
+- Add patch:
+  * notcurses-3.0.8-skip-xray.diff
+
+-------------------------------------------------------------------
 Mon Oct 25 20:19:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.8
