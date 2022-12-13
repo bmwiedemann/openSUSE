@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           wezterm
-Version:        20221119.145034.49b9839f
+Version:        20221119.145034.49b9839f+g16
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
