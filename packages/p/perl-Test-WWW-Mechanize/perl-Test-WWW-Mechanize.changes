@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Dec  6 03:07:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-Test-WWW-Mechanize/Changes
+
+  1.60 Sun Dec  4 10:18:28 PM CST 2022
+  ------------------------------------
+  [ENHANCMENTS]
+  Added default test messages for button_exists_ok and lacks_button_ok
+  methods.  Thanks, Daniel Böhmer (GH#70)
+  get_ok(), post_ok(), head_ok(), put_ok() and delete_ok() now all fail
+  if an undef URL is passed, rather than passing the undef URL into the
+  underlying LWP functions. Thanks, Jess Robinson. (GH #40)
+  [FIXES]
+  Disable proxies in some of the tests that look at a local test server.
+  (GH#55, GH#74)
+  [DOCUMENTATION]
+  Clarified some wording.  Thanks, Daniel Böhmer (GH#70)
+
+-------------------------------------------------------------------
 Sat Apr 30 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.58

@@ -18,7 +18,7 @@
 
 %define cpan_name Test-WWW-Mechanize
 Name:           perl-Test-WWW-Mechanize
-Version:        1.58
+Version:        1.60
 Release:        0
 License:        Artistic-2.0
 Summary:        Testing-specific WWW::Mechanize subclass
@@ -45,13 +45,8 @@ Requires:       perl(Carp::Assert::More) >= 1.16
 Requires:       perl(HTML::Form)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTTP::Message) >= 6.29
-Requires:       perl(HTTP::Server::Simple) >= 0.42
-Requires:       perl(HTTP::Server::Simple::CGI)
 Requires:       perl(LWP) >= 6.02
-Requires:       perl(Test::Builder::Tester) >= 1.09
 Requires:       perl(Test::LongString) >= 0.15
-Requires:       perl(Test::More) >= 0.96
-Requires:       perl(URI::file)
 Requires:       perl(WWW::Mechanize) >= 1.68
 Requires:       perl(parent)
 %{perl_requires}
