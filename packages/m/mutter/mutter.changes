@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 10 08:41:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Fix edge resistance and window snapping regression.
+  + Handle stage view updates without allocation more gracefully.
+  + Fix window screenshots being cut off at the bottom right.
+  + Implement wl_output v3 and v4.
+  + Fix recalculating viewport after window resize.
+  + Set LOD bias for sharper mipmaps.
+  + Don't disable KMS modifiers on newer i915 systems.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop clutter-actor-Show-on-all-stage-views-when-actors-ha.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Nov 24 11:26:23 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Fix window freezes when maximized on Xorg (boo#1205714,

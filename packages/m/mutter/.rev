@@ -1686,4 +1686,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   * add clutter-actor-Show-on-all-stage-views-when-actors-ha.patch</comment>
     <requestid>1040255</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>a53d245b3577a0ff42c16a469e288b86</srcmd5>
+    <version>43.2</version>
+    <time>1670954086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042339</requestid>
+  </revision>
 </revisionlist>

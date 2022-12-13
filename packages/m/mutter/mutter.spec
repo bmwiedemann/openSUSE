@@ -22,7 +22,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -40,8 +40,6 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-crash-meta_context_terminate.patch bsc#1199382 glgo#GNOME/mutter#2267 xwang@suse.com -- Fix SIGSEGV in meta_context_terminate
 Patch3:         mutter-crash-meta_context_terminate.patch
-# PATCH-FIX-UPSTREAM clutter-actor-Show-on-all-stage-views-when-actors-ha.patch boo#1205714 glgo#GNOME/mutter!2694 glgo#GNOME/gnome-shell#6054
-Patch4:         clutter-actor-Show-on-all-stage-views-when-actors-ha.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -150,7 +148,6 @@ applications that want to make use of the mutter library.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}
