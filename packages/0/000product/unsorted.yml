@@ -8617,9 +8617,12 @@ unsorted:
   - kube-no-trouble 
   - kube-prometheus-k8s-yaml 
   - kube-prometheus-sources 
+  - kubectl-foreach 
   - kubectl-neat 
+  - kubectl-oomd 
   - kubectl-who-can: [x86_64] 
   - kubectx 
+  - kubelogin 
   - kubens 
   - kuberlr 
   - kubernetes-apiserver: [x86_64] 
@@ -8685,7 +8688,6 @@ unsorted:
   - kubernetes1.24-kubelet-common: [x86_64] 
   - kubernetes1.24-proxy: [x86_64] 
   - kubernetes1.24-scheduler: [x86_64] 
-  - kubescape 
   - kubeseal 
   - kubetap 
   - kubeval 
@@ -12640,7 +12642,7 @@ unsorted:
   - libmysqlcppconn8-devel 
   - libmysqlcppconn9 
   - libnanomsg6 
-  - libnauty-2_7_4 
+  - libnauty-2_8_6 
   - libnbcompat-devel 
   - libnbcompat0 
   - libnbd 
@@ -13727,7 +13729,7 @@ unsorted:
   - librdkafka-devel 
   - librdmacm-utils 
   - librdmacm1-32bit: [x86_64] 
-  - libre10 
+  - libre12 
   - libre2-10-32bit: [x86_64] 
   - libreadline-java 
   - libreadline-java-32bit: [x86_64] 
@@ -13909,7 +13911,6 @@ unsorted:
   - librime-private-devel 
   - librime1 
   - librist-devel 
-  - librist4 
   - librist4-32bit: [x86_64] 
   - librk0 
   - librlog-devel 
@@ -20798,13 +20799,10 @@ unsorted:
   - php7-gd 
   - php7-gettext 
   - php7-gmp 
-  - php7-ice 
   - php7-iconv 
-  - php7-imagick 
   - php7-intl 
   - php7-json 
   - php7-ldap 
-  - php7-maxminddb 
   - php7-mbstring 
   - php7-memcached 
   - php7-mysql 
@@ -20832,7 +20830,6 @@ unsorted:
   - php7-test 
   - php7-tidy 
   - php7-tokenizer 
-  - php7-uuid 
   - php7-xmlreader 
   - php7-xmlrpc 
   - php7-xmlwriter 
@@ -21102,6 +21099,9 @@ unsorted:
   - pluma-devel 
   - pluma-lang 
   - pluto 
+  - pluto-bash-completion 
+  - pluto-fish-completion 
+  - pluto-zsh-completion 
   - plymouth-branding-upstream 
   - plymouth-devel 
   - plymouth-plugin-fade-throbber 
