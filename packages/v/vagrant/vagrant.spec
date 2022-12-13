@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 12 09:01:56 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.3.4
+
+## 2.3.4 (December 9, 2022)
+
+IMPROVEMENTS:
+
+- host/darwin: Isolate loading incompatible libraries to support EOL platforms [GH-13022]
+- provider/virtualbox: Detect network type when not provided [GH-13024]
+
+BUG FIXES:
+
+- host/windows: Add fix for Powershell 7.3.0 [GH-13006]
+- provider/virtualbox: Adjust hostnet DHCP configuration, ignore invalid devices [GH-13004]
+- provisioner/ansible: Fix install package names on older debian (and derivatives) versions [GH-13017]
+
+-------------------------------------------------------------------
 Wed Nov 16 15:15:03 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.3.3
