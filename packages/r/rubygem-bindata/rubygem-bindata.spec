@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bindata
-Version:        2.4.13
+Version:        2.4.14
 Release:        0
 %define mod_name bindata
 %define mod_full_name %{mod_name}-%{version}
