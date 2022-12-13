@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:32:31 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.6.1
+ see installed CHANGELOG.md
+
+  ## [2.6.1] - 2022-11-16 - [Janosch Müller](mailto:janosch84@gmail.com)
+  
+  ### Fixed
+  
+  - fixed scanning of two negative lookbehind edge cases
+    * `(?<!x)y>` used to raise a ScannerError
+    * `(?<!x>)y` used to be misinterpreted as a named group
+    * thanks to [Sergio Medina](https://github.com/serch) for the report
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 13:18:09 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.6.0

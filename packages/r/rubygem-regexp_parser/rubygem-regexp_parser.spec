@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-regexp_parser
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 %define mod_name regexp_parser
 %define mod_full_name %{mod_name}-%{version}
