@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-debase-ruby_core_source
-Version:        0.10.17
+Version:        0.10.18
 Release:        0
 %define mod_name debase-ruby_core_source
 %define mod_full_name %{mod_name}-%{version}

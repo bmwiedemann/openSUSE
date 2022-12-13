@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:17:11 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.10.18
+ see installed CHANGELOG.md
+
+  ## [0.10.18](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.17...v0.10.18)
+  
+  * ruby-3.2.0-preview3 added
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 13:02:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.10.17
