@@ -21,7 +21,7 @@
 %define modname authlib
 
 Name:           python-Authlib
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause

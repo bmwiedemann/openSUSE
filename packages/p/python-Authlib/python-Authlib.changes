@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 13 03:19:54 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.2.0 
+  * Not passing request.body to ResourceProtector, #485.
+  * Use flask.g instead of _app_ctx_stack, #482.
+  * Add headers parameter back to ClientSecretJWT, #457.
+  * Always passing realm parameter in OAuth 1 clients, #339.
+  * Implemented RFC7592 Dynamic Client Registration Management Protocol, #505`
+  * Add default_timeout for requests OAuth2Session and AssertionSession.
+  * Deprecate jwk.loads and jwk.dumps
+
+-------------------------------------------------------------------
 Tue Oct 11 23:14:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Version 1.1.0
