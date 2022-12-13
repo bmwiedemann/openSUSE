@@ -18,7 +18,7 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.40
+Version:        10.42
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
