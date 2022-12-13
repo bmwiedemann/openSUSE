@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 12 20:19:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.42:
+  * Fix 10.41 regression that added the default definition of
+    PCRE2_CALL_CONVENTION to pcre2posix.c instead of pcre2posix.h,
+    which meant that programs including pcre2posix.h but not pcre2.h
+    couldn't compile
+  * Fix an intermittent JIT fault and minor issues
+
+-------------------------------------------------------------------
+Tue Dec  6 21:30:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.41:
+  * pcre2grep behaves more like GNU grep for multiple patterns that
+    match more than once on a line
+
+-------------------------------------------------------------------
 Sun Jul 31 06:54:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Fix the profiling call to be non-parallel again (fighting spec cleaner)

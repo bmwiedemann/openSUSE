@@ -220,4 +220,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>992166</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c4d1773edf7de57c6dd96d8659940aec</srcmd5>
+    <version>10.42</version>
+    <time>1670954070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042473</requestid>
+  </revision>
 </revisionlist>
