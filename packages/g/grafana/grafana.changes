@@ -3,7 +3,7 @@ Fri Nov 18 10:52:52 UTC 2022 - witold.bedyk@suse.com
 
 - Update to version 8.5.15 (jsc#PED-2617):
   * Security: Fix for privilege escalation
-    (bsc#1205225, CVE-2022-3930)
+    (bsc#1205225, CVE-2022-39306)
   * Security: Omit error from http response when user does not
     exists (bsc#1205227, CVE-2022-39307)
 
