@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 10 09:03:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Fix screencast UI being erroneously disabled.
+  + Properly apply saved shortcuts inhibition permissions.
+  + Fix IM candidate popup getting closed when switching pages.
+  + Fix unresponsive screen area when quick settings are opened.
+  + Ensure completions are disabled when hiding on-screen keyboard.
+  + Fix missing name in wired network quick settings button.
+  + Don't let wayland popovers block overview.
+  + Fix repeated entries in volume device menu.
+  + Fix input source switching with focus on password entry.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  2 01:44:58 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch:
