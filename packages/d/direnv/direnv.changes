@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:44:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32.2:
+  * doc: Add stdlib's layout_pyenv to docs
+  * doc: Fix broken link
+  * doc: Minor typo fix
+  * doc: `$XDG_CONFIG_HOME/direnv/direnv.toml` => add (typically
+    ~/.config/direnv/direnv.toml)
+  * doc: add quickenv to Related projects
+  * feat: Update layout anaconda to accept a path to a yml file
+  * feat: install.sh: can specify direnv version
+  * fix: elvish: replace deprecated `except` with `catch`
+  * fix: installer.sh: make direnv executable for all
+  * fix: path escaping
+  * fix: stdlib: only use ANSI escape on TTY
+  * fix: test: remove mentions of DIRENV_MTIME
+  * fix: test: use lowercase -d flag for base64 decoding of DIRENV_DIFF
+
+-------------------------------------------------------------------
 Thu Nov 24 15:48:26 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.32.1
