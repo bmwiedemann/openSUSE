@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-haml
-Version:        6.0.7
+Version:        6.0.12
 Release:        0
 %define mod_name haml
 %define mod_full_name %{mod_name}-%{version}

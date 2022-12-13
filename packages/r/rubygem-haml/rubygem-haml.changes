@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:22:53 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.12
+ see installed CHANGELOG.md
+
+  ## 6.0.12
+  
+  * Fix a whitespace removal with `>` and an `if`-`else` statement [#1114](https://github.com/haml/haml/issues/1114)
+  
+  ## 6.0.11
+  
+  * Fix a whitespace removal with `>` and an `if` statement [#1114](https://github.com/haml/haml/issues/1114)
+  
+  ## 6.0.10
+  
+  * Evaluate :erb filter in the template context like Haml 5
+  
+  ## 6.0.9
+  
+  * Support sass-embedded [#1112](https://github.com/haml/haml/issues/1112)
+  
+  ## 6.0.8
+  
+  * Support interpolation in HTML comments, which has not been working since 6.0.0
+    [#1107](https://github.com/haml/haml/issues/1107)
+  
+
+-------------------------------------------------------------------
 Fri Oct 28 04:58:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.7
