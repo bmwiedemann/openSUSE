@@ -24,6 +24,9 @@ License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://spek.cc/
 Source:         https://github.com/alexkay/spek/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 232.patch -- Replace deprecated FFmpeg APIs to support FFmpeg 5.x
+Patch0:         https://patch-diff.githubusercontent.com/raw/alexkay/spek/pull/232.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -33,9 +36,9 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK-devel
-BuildRequires:  pkgconfig(libavcodec) <= 58.134.100
-BuildRequires:  pkgconfig(libavformat) <= 58.76.100
-BuildRequires:  pkgconfig(libavutil) <= 56.70.100
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 
 %description
 Spek helps to analyse your audio files by showing their spectrogram.
