@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:32:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.0:
+  * Work around kernel bug with blocking FAN_REPORT_FID with btrfs
+  * Improve event formatting
+  * Avoid ELOOP errors when monitoring symlinks
+  * Monitor ZFS volumes; thanks achims311
+ 
+-------------------------------------------------------------------
 Mon Dec 20 22:02:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.3:

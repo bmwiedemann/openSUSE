@@ -1,7 +1,7 @@
 #
 # spec file for package fatrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Philipp Thomas <pth@suse.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_with tests
 Name:           fatrace
-Version:        0.16.3
+Version:        0.17.0
 Release:        0
 Summary:        System wide file access event reporting utility
 License:        GPL-3.0-or-later
