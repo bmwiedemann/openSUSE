@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:34:30 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.19.2
+ see installed History.rdoc
+
+  === 3.19.2 / 2022-12-03
+  
+  * 5 bug fixes:
+  
+    * Fixed bug parsing array patterns using %w, %i, etc.
+    * Fixed dedenting when heredoc has only empty line and interpolation. (mvz)
+    * Fixed dsym unescaping. (mvz)
+    * Fixed vars in pattern matching that should be lasgn, not lvar.
+    * find_pat mid-patterns are now splatted inline, not wrapped in an array_pat.
+  
+
+-------------------------------------------------------------------
 Thu Apr 28 05:48:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.19.1
