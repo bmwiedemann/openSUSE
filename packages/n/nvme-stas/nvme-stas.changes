@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 13 14:38:10 UTC 2022 - mwilck@suse.com
+
+- Update to version 2.1:
+  * stafd: Add zeroconf-connections-persistence conf. parameter
+  * Avahi: Handle upper/lower case 'NQN/nqn' in TXT attribute
+    (bsc#1205873)
+  * stafd: Add "origin" parameter to DC controller objects
+  * staslib: Trim whitespaces at the source (bsc#1204975)
+  * udev: Throttle EnvironmentError exception messages
+  * del patch: 0001-meson-disable-subproject.patch (not necessary any more)
+
+-------------------------------------------------------------------
 Mon Nov 21 17:10:55 UTC 2022 - mwilck@suse.com
 
 - Update to version 2.0 (jsc#PED-2487)
@@ -9,7 +21,7 @@ Mon Nov 21 17:10:55 UTC 2022 - mwilck@suse.com
   * "blacklist" is replaced by "exclude" (but still supported)
   * better udev support / coexistence
   * support for new kernel "src_addr" attribute
-  add patch: 0001-meson-disable-subproject.patch (to fix build in OBS)
+  * add patch: 0001-meson-disable-subproject.patch (to fix build in OBS)
 
 -------------------------------------------------------------------
 Tue Nov 15 14:51:56 UTC 2022 - mwilck@suse.com

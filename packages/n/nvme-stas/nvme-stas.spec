@@ -17,13 +17,12 @@
 
 
 Name:           nvme-stas
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        NVMe STorage Appliance Services
 License:        Apache-2.0
 URL:            https://github.com/linux-nvme/nvme-stas
 Source0:        nvme-stas-%{version}.tar.gz
-Patch01:        0001-meson-disable-subproject.patch
 BuildRequires:  gobject-introspection
 BuildRequires:  libnvme-devel >= 1.0~8
 BuildRequires:  meson >= 0.52.0
