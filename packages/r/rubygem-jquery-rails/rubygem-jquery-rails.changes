@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:23:38 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.5.1
+ see installed CHANGELOG.md
+
+  ## unreleased
+  
+  - update jquery to 3.6.1
+  - update jquery-usj to 1.2.3
+  
+
+-------------------------------------------------------------------
 Mon Jun 13 17:02:31 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 4.5.0
