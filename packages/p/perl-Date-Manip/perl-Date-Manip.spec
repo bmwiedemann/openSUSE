@@ -18,7 +18,7 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.89
+Version:        6.90
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
