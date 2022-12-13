@@ -1,7 +1,7 @@
 #
 # spec file for package black-hole-solver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Missing perl(Env::Path), should also skip some tests like build-process
 %global run_tests 0
 Name:           black-hole-solver
-Version:        1.10.1
+Version:        1.12.0
 Release:        0
 Summary:        The Black Hole Solver Executable
 License:        MIT
@@ -30,16 +30,16 @@ Source:         https://sourceforge.net/projects/fc-solve/files/fc-solve/%{name}
 # PATCH-FIX-OPENSUSE fix-pkgconfig-libdir.patch -- https://sourceforge.net/p/fc-solve/tickets/1/
 Patch0:         fix-pkgconfig-libdir.patch
 BuildRequires:  cmake
-BuildRequires:  cmake(Rinutils)
 BuildRequires:  gcc-c++
-BuildRequires:  perl(Path::Tiny)
 BuildRequires:  xxhash-devel
+BuildRequires:  cmake(Rinutils)
+BuildRequires:  perl(Path::Tiny)
 %if %{run_tests}
 # For testing
 BuildRequires:  perl(Getopt::Long)
 BuildRequires:  perl(Env::Path)
-BuildRequires:  perl(Test::Some)
 BuildRequires:  perl(Test::More)
+BuildRequires:  perl(Test::Some)
 %endif
 
 %description

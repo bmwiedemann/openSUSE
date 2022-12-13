@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  5 14:41:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Convert to cmake/rinutils_bootstrap.cmake
+  * Minor refactorings
+
+-------------------------------------------------------------------
 Thu Apr 29 11:35:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.10.1:
