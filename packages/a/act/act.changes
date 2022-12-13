@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Sat Dec 10 07:43:56 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.2.34
+
+- Update to version 0.2.34:
+  * feat: interpolate the step names (#1422)
+  * feat: GITHUB_STATE and GITHUB_OUTPUT file commands (#1391)
+  * feat: Host environment (#1293)
+  * feat: parse types of reusable workflows (#1414)
+  * fix: handle subdirectors and exclusions (#1012) (#1446)
+  * fix: keep path to event json file in composite actions (#1428)
+  * fix: nil pointer access ( workflow_dispatch )
+  * build(deps): bump megalinter/megalinter from 6.14.0 to 6.15.0 (#1475)
+  * act -j -W example (#1471)
+  * Fix shellcommand error on sh shell (#1464)
+  * fix typo (#1456)
+  * build(deps): bump github.com/creack/pty from 1.1.17 to 1.1.18 (#1447)
+  * Remove dead code (#1425)
+  * build(deps): bump github.com/moby/buildkit from 0.10.5 to 0.10.6 (#1437)
+  * build(deps): bump golangci/golangci-lint-action from 3.3.0 to 3.3.1 (#1436)
+  * Update number of approvers required from 3 to 2
+  * build(deps): bump megalinter/megalinter from 6.13.0 to 6.14.0 (#1426)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.21 to 1.6.22 (#1427)
+
+-------------------------------------------------------------------
+Sat Dec 10 07:41:36 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.2.33
+
+- Update to version 0.2.33:
+  * fix: ci is failing since 2022-10-17 (#1397)
+  * fix: re-evaluate env for remote composite actions (#1385)
+  * fix: interpolate action input defaults (#1376)
+  * fix: support docker create arguments from container.options (#1022) (#1351)
+  * fix: handle go closure iteration (#1374)
+  * build(deps): bump github.com/spf13/cobra from 1.6.0 to 1.6.1 (#1420)
+  * build(deps): bump github.com/docker/docker (#1418)
+  * build(deps): bump github.com/docker/cli (#1419)
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (#1404)
+  * refactor: move from io/ioutil to io and os packages (#1417)
+  * Add user level Docker socket to common paths (#1416)
+  * build(deps): bump megalinter/megalinter from 6.12.0 to 6.13.0 (#1407)
+  * build(deps): bump golangci/golangci-lint-action from 3.2.0 to 3.3.0 (#1408)
+  * build(deps): bump github.com/docker/docker (#1403)
+  * build(deps): bump github.com/docker/cli (#1405)
+  * build(deps): bump github.com/moby/buildkit from 0.10.4 to 0.10.5 (#1406)
+  * Fixes #1387 (#1388)
+  * build(deps): bump megalinter/megalinter from 6.11.1 to 6.12.0 (#1395)
+  * build(deps): bump github.com/docker/cli (#1393)
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0 (#1394)
+  * build(deps): bump github.com/docker/docker (#1392)
+  * Mapping workflow_dispatch inputs into the Expression inputs context (#1363)
+  * test: add test for networking setup in act (#1375)
+  * build(deps): bump megalinter/megalinter from 6.11.0 to 6.11.1 (#1381)
+  * build(deps): bump gotest.tools/v3 from 3.0.3 to 3.4.0 (#1379)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.20 to 1.6.21 (#1380)
+  * build(deps): bump github.com/imdario/mergo from 0.3.12 to 0.3.13 (#1378)
+  * Fix composite input handling (#1345)
+  * build(deps): bump megalinter/megalinter from 5 to 6.11.0 (#1370)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.19 to 1.6.20 (#1371)
+  * build(deps): bump github.com/opencontainers/selinux (#1372)
+
+-------------------------------------------------------------------
+Sat Dec 10 07:39:36 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.2.32
+
+- Update to version 0.2.32:
+  * feat: pass current matrix information to job logger (#1364)
+  * fix: show workflow info even if on.push is not defined (#1329) (#1335)
+  * fix: restore the job logger setup after job cancelation (#1365)
+  * fix: align github.ref to GitHub Action (#1362)
+  * fix: crash on invalid docker credentials (#1348)
+  * fix: missing defaults in nodejs pre (#1349)
+  * fix: support expression for step's continue-on-error field (#900) (#1331)
+  * fix: show workflow name when get error on yml parsing (#1133) (#1328)
+  * build(deps): bump codecov/codecov-action from 3.1.0 to 3.1.1 (#1359)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.18 to 1.6.19 (#1360)
+  * build(deps): bump actions/stale from 5 to 6 (#1357)
+  * Arch best practice is to not run partial upgrades (#1355)
+  * Improve hint for inserting secrets securely (#1354)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.17 to 1.6.18 (#1352)
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.5 to 2.3.6 (#1341)
+  * build(deps): bump github.com/docker/cli (#1340)
+  * build(deps): bump github.com/docker/docker (#1339)
+
+-------------------------------------------------------------------
+Sat Dec 10 07:37:19 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.2.31
+
+- Update to version 0.2.31:
+  * fix: CI is unstable due to new linting rules (#1292)
+  * help output: use consistent terminology between -j & -l (#1326)
+  * support runner.arch (#1290)
+  * build(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#1322)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.16 to 1.6.17 (#1321)
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16 (#1312)
+  * build(deps): bump github.com/rhysd/actionlint from 1.6.15 to 1.6.16 (#1311)
+  * build(deps): bump github.com/go-ini/ini from 1.66.6 to 1.67.0 (#1305)
+  * refactor: ignore already closed error (#1285)
+
+-------------------------------------------------------------------
 Wed Aug 10 03:15:57 UTC 2022 - jayvdb@gmail.com
 
 - Update to version 0.2.30:

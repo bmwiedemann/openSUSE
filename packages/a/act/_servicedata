@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/nektos/act.git</param>
-              <param name="changesrevision">3364f95569d8a39d440b18af69d29421fcc77b55</param></service></servicedata>
+ <service name="tar_scm">
+    <param name="url">https://github.com/nektos/act.git</param>
+    <param name="changesrevision">3364f95569d8a39d440b18af69d29421fcc77b55</param>
+ </service>
+</servicedata>
