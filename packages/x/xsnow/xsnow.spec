@@ -17,7 +17,7 @@
 
 
 Name:           xsnow
-Version:        3.5.3
+Version:        3.6.0
 Release:        0
 Summary:        A Christmas Animation
 License:        GPL-3.0-or-later

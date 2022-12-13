@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 11 19:59:56 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.6.0
+  * implement xinerama-awareness
+  * implement -outline
+  * introduce usage of libxdo, make it g++ compliant, fix some
+    non-fatal issues
+  * fallensnow.c: fix bug that causes crash when snowing on a window
+    less than 10 pixels width
+  * birds.c: fix bug that caused a hang when using -doublebuffer 0
+  * docs.c: update window manager/desktop issues
+  * main.c: print info when snow window changes size
+  * configure.ac: chack for availability of gsl_interp_steffen, 
+    gsl_interp_akima, gsl_interp_cspline and gsl_interp_linear
+  * utils.c: somewhat nicer print-out of version
+- Rebase xsnow-desktop_file.patch
+
+-------------------------------------------------------------------
 Wed Nov  9 18:34:11 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.5.3
