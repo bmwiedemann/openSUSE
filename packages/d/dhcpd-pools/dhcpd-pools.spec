@@ -1,7 +1,7 @@
 #
 # spec file for package dhcpd-pools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           dhcpd-pools
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        ISC DHCP pool analysis
 License:        BSD-2-Clause

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 21:38:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2:
+  * contrib: snmptest.pl SNMPwalk can't access to all variables/wrong sort
+  * contrib: point out where one can find zabbix template
+  * config: remove unnecessary padding
+
+-------------------------------------------------------------------
 Tue Apr 21 18:38:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use correct name for the changes file
