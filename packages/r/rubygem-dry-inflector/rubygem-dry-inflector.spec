@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-dry-inflector
-Version:        0.3.0
+Version:        1.0.0
 Release:        0
 %define mod_name dry-inflector
 %define mod_full_name %{mod_name}-%{version}
