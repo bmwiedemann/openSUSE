@@ -194,4 +194,13 @@
   * pt-All: Update Portugal channels</comment>
     <requestid>974371</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fd347023826a4067c310fd603184a3e3</srcmd5>
+    <version>20221125</version>
+    <time>1670954177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221125:
+  * dtv-scan-tables: hu-Digikabel changes</comment>
+    <requestid>1042572</requestid>
+  </revision>
 </revisionlist>
