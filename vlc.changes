@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 11:00:12 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Do not apply vlc.a52.patch if liba52 is < 0.8.0
+- Avoid ugly _FORTIFY_SOURCE redefinition warnings
+
+-------------------------------------------------------------------
 Fri Nov 25 15:22:01 UTC 2022 - Niklas Haas <obs@haasn.xyz>
 
 - Add vlc-libplacebo-5.patch: Backport fix for building with libplacebo v5
