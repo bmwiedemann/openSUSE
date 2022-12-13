@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec 11 23:58:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.11
+  * BGP roles (RFC 9234)
+  * BGP: Keepalive time scaling
+  * BGP: New 'min hold time' and 'min keepalive time' options
+  * BGP: New 'next hop prefer global' option
+  * Filter: For loops and direct recursion
+  * Filter: Mixed declarations of local variables
+  * Filter: Improved static type checks
+  * Filter: Literal [] for empty set
+  * Linux: Netlink KRT improvements
+  * Memory management improvements
+  * Many bugfixes
+
+-------------------------------------------------------------------
 Mon Jun 27 09:13:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.10

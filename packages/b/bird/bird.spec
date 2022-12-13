@@ -21,7 +21,7 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
