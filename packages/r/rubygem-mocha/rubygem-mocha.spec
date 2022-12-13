@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-mocha
-Version:        1.16.0
+Version:        2.0.2
 Release:        0
 %define mod_name mocha
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9}
+BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://mocha.jamesmead.org
