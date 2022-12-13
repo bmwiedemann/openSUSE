@@ -55,9 +55,8 @@ Requires:       nfs-kernel-server
 Requires:       quota = %{version}
 # Require the services needed to be present for quotad service: portmap, nfsserver, network
 Requires:       rpcbind
-Requires:       sysconfig
 Requires(post): %fillup_prereq
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description nfs
 The quotad init script, which provides quota support on NFS mounts.

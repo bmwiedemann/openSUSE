@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  9 08:30:21 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove outdated sysconfig Requires
+- Weaken up systemd requires, it's not a hard requirement
+
+-------------------------------------------------------------------
 Thu Nov 17 17:43:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 4.09:
