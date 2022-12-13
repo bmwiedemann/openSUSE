@@ -1,0 +1,127 @@
+Index: python-multipart-0.0.5/multipart/multipart.py
+===================================================================
+--- python-multipart-0.0.5.orig/multipart/multipart.py
++++ python-multipart-0.0.5/multipart/multipart.py
+@@ -1,11 +1,5 @@
+ from __future__ import with_statement, absolute_import, print_function
+ 
+-from six import (
+-    binary_type,
+-    text_type,
+-    PY3,
+-)
+-
+ from .decoders import *
+ from .exceptions import *
+ 
+@@ -74,14 +68,9 @@ NULL = b'\x00'[0]
+ # str on Py2, and bytes on Py3.  Same with getting the ordinal value of a byte,
+ # and joining a list of bytes together.
+ # These functions abstract that.
+-if PY3:                         # pragma: no cover
+-    lower_char = lambda c: c | 0x20
+-    ord_char = lambda c: c
+-    join_bytes = lambda b: bytes(list(b))
+-else:                           # pragma: no cover
+-    lower_char = lambda c: c.lower()
+-    ord_char = lambda c: ord(c)
+-    join_bytes = lambda b: b''.join(list(b))
++lower_char = lambda c: c | 0x20
++ord_char = lambda c: c
++join_bytes = lambda b: bytes(list(b))
+ 
+ # These are regexes for parsing header values.
+ SPECIAL_CHARS = re.escape(b'()<>@,;:\\"/[]?={} \t')
+@@ -104,7 +93,7 @@ def parse_options_header(value):
+ 
+     # If we are passed a string, we assume that it conforms to WSGI and does
+     # not contain any code point that's not in latin-1.
+-    if isinstance(value, text_type):            # pragma: no cover
++    if isinstance(value, str):            # pragma: no cover
+         value = value.encode('latin-1')
+ 
+     # If we have no options, return the string as-is.
+@@ -454,13 +443,13 @@ class File(object):
+             options = {}
+             if keep_extensions:
+                 ext = self._ext
+-                if isinstance(ext, binary_type):
++                if isinstance(ext, bytes):
+                     ext = ext.decode(sys.getfilesystemencoding())
+ 
+                 options['suffix'] = ext
+             if file_dir is not None:
+                 d = file_dir
+-                if isinstance(d, binary_type):
++                if isinstance(d, bytes):
+                     d = d.decode(sys.getfilesystemencoding())
+ 
+                 options['dir'] = d
+@@ -478,7 +467,7 @@ class File(object):
+             fname = tmp_file.name
+ 
+             # Encode filename as bytes.
+-            if isinstance(fname, text_type):
++            if isinstance(fname, str):
+                 fname = fname.encode(sys.getfilesystemencoding())
+ 
+         self._actual_file_name = fname
+@@ -1037,7 +1026,7 @@ class MultipartParser(BaseParser):
+         # self.skip = tuple(skip)
+ 
+         # Save our boundary.
+-        if isinstance(boundary, text_type):         # pragma: no cover
++        if isinstance(boundary, str):         # pragma: no cover
+             boundary = boundary.encode('latin-1')
+         self.boundary = b'\r\n--' + boundary
+ 
+Index: python-multipart-0.0.5/multipart/tests/test_multipart.py
+===================================================================
+--- python-multipart-0.0.5.orig/multipart/tests/test_multipart.py
++++ python-multipart-0.0.5/multipart/tests/test_multipart.py
+@@ -14,7 +14,6 @@ from .compat import (
+     unittest,
+ )
+ from io import BytesIO
+-from six import binary_type, text_type
+ 
+ try:
+     from unittest.mock import MagicMock, Mock, patch
+@@ -29,7 +28,7 @@ curr_dir = os.path.abspath(os.path.dirna
+ 
+ 
+ def force_bytes(val):
+-    if isinstance(val, text_type):
++    if isinstance(val, str):
+         val = val.encode(sys.getfilesystemencoding())
+ 
+     return val
+@@ -799,7 +798,7 @@ class TestFormParser(unittest.TestCase):
+     def test_http(self, param):
+         # Firstly, create our parser with the given boundary.
+         boundary = param['result']['boundary']
+-        if isinstance(boundary, text_type):
++        if isinstance(boundary, str):
+             boundary = boundary.encode('latin-1')
+         self.make(boundary)
+ 
+Index: python-multipart-0.0.5/multipart/exceptions.py
+===================================================================
+--- python-multipart-0.0.5.orig/multipart/exceptions.py
++++ python-multipart-0.0.5/multipart/exceptions.py
+@@ -1,7 +1,5 @@
+ import binascii
+ 
+-from six import PY3
+-
+ 
+ class FormParserError(ValueError):
+     """Base error class for our form parser."""
+@@ -52,7 +50,4 @@ else:                           # pragma
+ 
+ # We check which version of Python we're on to figure out what error we need
+ # to catch for invalid Base64.
+-if PY3:                         # pragma: no cover
+     Base64Error = binascii.Error
+-else:                           # pragma: no cover
+-    Base64Error = TypeError

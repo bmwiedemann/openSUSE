@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 16:51:23 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/andrew-d/python-multipart/commit/c54ad6006bacc77623864ec8e5c96bfd32230e01
+  + python-python-multipart-no-six.patch
+
+-------------------------------------------------------------------
 Fri Apr  8 09:51:38 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

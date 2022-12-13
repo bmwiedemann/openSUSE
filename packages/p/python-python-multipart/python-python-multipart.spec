@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-python-multipart
 Version:        0.0.5
 Release:        0
@@ -27,7 +25,10 @@ URL:            http://github.com/andrew-d/python-multipart
 Source:         https://files.pythonhosted.org/packages/source/p/python-multipart/python-multipart-%{version}.tar.gz
 Patch0:         support-pyyaml-6.patch
 # https://github.com/andrew-d/python-multipart/commit/8cff1aac7479fbb69087e355f66315b21640bab0
+# https://github.com/andrew-d/python-multipart/commit/2c7e95c7236fcecdb5660823936403d1359fdb85
 Patch1:         python-python-multipart-no-mock.patch
+# https://github.com/andrew-d/python-multipart/commit/c54ad6006bacc77623864ec8e5c96bfd32230e01
+Patch2:         python-python-multipart-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -60,6 +61,7 @@ A streaming multipart parser for Python.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/multipart
+%{python_sitelib}/python_multipart-*.egg-info
 
 %changelog
