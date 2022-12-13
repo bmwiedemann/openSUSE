@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.9pre1
+%define upstream_version 1.8.9pre2
 
 Name:           openafs
 
-Version:        1.8.9~pre1
+Version:        1.8.9~pre2
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -103,11 +103,6 @@ Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
 
-# PATCH-FIX-UPSTREAM KMP build and gcc
-# required patches for Linux-5.18 as mentionend on
-# https://wiki.openafs.org/devel/Whiteboard/ (June 2022)
-# PATCH-FIX-KMP-BUILDING
-Patch1:         79f03c2.diff
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         4cf7a9a.diff
 
@@ -319,7 +314,6 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
-%patch1 -p1
 %patch4 -p1
 
 ./regen.sh

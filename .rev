@@ -512,4 +512,18 @@
 </comment>
     <requestid>1010499</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>09ab91c47bda5188bdab01d0cc67483c</srcmd5>
+    <version>1.8.9~pre2</version>
+    <time>1670954111</time>
+    <user>dimstar_suse</user>
+    <comment>- update to openafs-1.8.9pre2
+  * Support mainline kernels up to 6.0
+  * Support for building with more recent compilers
+  * some bugfixes, more see RELNOTES
+- remove obsolete patches:
+  * 79f03c2.diff 
+</comment>
+    <requestid>1042678</requestid>
+  </revision>
 </revisionlist>
