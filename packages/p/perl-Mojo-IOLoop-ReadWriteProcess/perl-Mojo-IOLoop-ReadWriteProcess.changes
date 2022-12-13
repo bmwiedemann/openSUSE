@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 12 20:21:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.33 2022-12-12T12:22:13Z
+   - Apply perltidy v20221112
+   - remove hard-coding of OABI syscall entry point
+   - Fix typos detected by lintian (Debian) (#47)
+   - tests: Check executable, before using it in tests
+   - Fix sporadic 01_run.t failure -- "process is still running"
+   - Fix all .perltidyrc violations
+   - Run perltidy for pull requests
+   - Add test for SIG_CHLD handler in spawned process
+
+-------------------------------------------------------------------
 Mon Dec 13 16:23:13 UTC 2021 - Oliver Kurz <okurz@suse.com>
 
 - Enable previously unstable build-tests again

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-IOLoop-ReadWriteProcess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojo-IOLoop-ReadWriteProcess
 Name:           perl-Mojo-IOLoop-ReadWriteProcess
-Version:        0.32
+Version:        0.33
 Release:        0
-Summary:        Execute external programs or internal code blocks as separate process
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Execute external programs or internal code blocks as separate process
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZARATE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
