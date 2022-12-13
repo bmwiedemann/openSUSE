@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-dry-types
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 %define mod_name dry-types
 %define mod_full_name %{mod_name}-%{version}

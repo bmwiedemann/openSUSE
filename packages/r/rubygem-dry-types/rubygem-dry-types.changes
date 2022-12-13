@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:18:42 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.7.0
+ see installed CHANGELOG.md
+
+  ## 1.7.0 2022-11-04
+  
+  
+  ### Changed
+  
+  - This version is compatible with recently released dry-rb dependencies (@flash-gordon)
+  - Updated to dry-core 1.0 (@flash-gordon + @solnic)
+  - Dependency on dry-container was dropped (@flash-gordon)
+  
+  [Compare v1.6.1...v1.7.0](https://github.com/dry-rb/dry-types/compare/v1.6.1...v1.7.0)
+  
+
+-------------------------------------------------------------------
 Fri Oct 28 04:55:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.6.1
