@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 09:09:04 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.9
+  * Simplified handling of SSH keys (fixes #114)
+  * Replaced `Request.cmd` with `Request.update` (fixes #113)
+  * Added a comment parameter to project and package `set_meta`
+
+-------------------------------------------------------------------
 Wed Nov  2 12:07:32 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.7
