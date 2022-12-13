@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 12 17:27:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.0
+  * New features:
+  * Added Ed25519 support both as a primitive and via OpenSSL's
+    EVP interfaces.
+  * X25519 is now also supported via EVP.
+  * The OpenSSL 1.1 raw public and private key API is available
+    with support for EVP_PKEY_ED25519, EVP_PKEY_HMAC and
+    EVP_PKEY_X25519. Poly1305 is not currently supported via this
+    interface.
+  * Bug fixes:
+  * Add EVP_chacha20_poly1305() to the list of all ciphers.
+  * Avoid signed overflow in i2c_ASN1_BIT_STRING().
+
+-------------------------------------------------------------------
 Tue Nov  1 12:35:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.6.1

@@ -527,4 +527,12 @@
     <comment>- Update to release 3.6.1</comment>
     <requestid>1032685</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>c7172d540902a009c1ce55b200a31f8b</srcmd5>
+    <version>3.7.0</version>
+    <time>1670954176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.7.0</comment>
+    <requestid>1042566</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 Name:           libressl
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
