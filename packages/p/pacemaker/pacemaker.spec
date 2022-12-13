@@ -104,7 +104,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.4+20220615.dc6eb4362
+Version:        2.1.5+20221208.a3f44794f
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -213,6 +213,7 @@ resource health.
 %package cli
 Summary:        Command line tools for controlling Pacemaker clusters
 Group:          Productivity/Clustering/HA
+Requires:       %{name}-libs = %{version}-%{release}
 Requires:       logrotate
 Requires:       perl-TimeDate
 Requires:       procps
@@ -237,10 +238,10 @@ Requires(pre):  shadow
 # sbd 1.4.0+ supports the libpe_status API for pe_working_set_t
 # sbd 1.4.2+ supports startup/shutdown handshake via pacemakerd-api
 #            and handshake defaults to enabled for rhel builds
-# sbd 1.5.0+ handshake defaults to enabled with upstream sbd-release
+# sbd 1.5.1+ handshake defaults to enabled with upstream sbd-release
 #            implicitly supports handshake defaults to enabled in this spec
-Conflicts:      sbd < 1.5.0
-Provides:      libpacemaker3 = %version-%release
+Conflicts:      sbd < 1.5.1
+Provides:       libpacemaker3 = %version-%release
 Obsoletes:      libpacemaker3 < %version-%release
 
 %description libs
@@ -299,7 +300,7 @@ Requires:       %{name}-cluster-libs = %{version}-%{release}
 # builds; this is supposed to be disabled for shipping code.
 Requires:       pacemaker
 %endif
-Provides:      libpacemaker-devel = %version-%release
+Provides:       libpacemaker-devel = %version-%release
 Obsoletes:      libpacemaker-devel < %version-%release
 
 %description devel
@@ -316,6 +317,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       procps
 Requires:       psmisc
 Requires:       python3
+Requires:       python3-psutil
 BuildArch:      noarch
 #Requires:       python3-systemd
 Recommends:     python3-systemd
@@ -531,7 +533,8 @@ fi
 %doc %{_datadir}/pacemaker/alerts
 
 #%license licenses/GPLv2
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/cib
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/pengine
@@ -598,7 +601,8 @@ fi
 %exclude %{_mandir}/man8/pacemaker-remoted.*
 
 #%license licenses/GPLv2
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/blackbox
@@ -616,14 +620,16 @@ fi
 %{_libdir}/libpacemaker.so.*
 %{_libdir}/libstonithd.so.*
 #%license licenses/LGPLv2.1
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 %{_libdir}/libcrmcluster.so.*
 
 %if %{enable_cluster_libs_pkg}
 %files cluster-libs
 %{_libdir}/libcrmcluster.so.*
 #%license licenses/LGPLv2.1
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 %endif
 
 %files remote
@@ -634,7 +640,8 @@ fi
 %{_sbindir}/pacemaker_remoted
 %{_mandir}/man8/pacemaker-remoted.8%{ext_man}
 #%license licenses/GPLv2
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 
 %if %{with doc}
 %files doc
@@ -650,13 +657,15 @@ fi
 %{_libexecdir}/pacemaker/cts-support
 
 #%license licenses/GPLv2
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 
 %files devel
 %{_includedir}/pacemaker
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 #%license licenses/LGPLv2.1
-%doc COPYING ChangeLog
+%license COPYING
+%doc ChangeLog
 
 %changelog

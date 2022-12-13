@@ -1,17 +1,17 @@
-Index: pacemaker-2.1.1+20211028.7ee8b5bdd/daemons/execd/execd_commands.c
+Index: pacemaker-2.1.4+20220912.7bce48ad0/daemons/execd/execd_commands.c
 ===================================================================
---- pacemaker-2.1.1+20211028.7ee8b5bdd.orig/daemons/execd/execd_commands.c
-+++ pacemaker-2.1.1+20211028.7ee8b5bdd/daemons/execd/execd_commands.c
-@@ -208,7 +208,7 @@ action_matches(lrmd_cmd_t *cmd, const ch
+--- pacemaker-2.1.4+20220912.7bce48ad0.orig/daemons/execd/execd_commands.c
++++ pacemaker-2.1.4+20220912.7bce48ad0/daemons/execd/execd_commands.c
+@@ -210,7 +210,7 @@ action_matches(const lrmd_cmd_t *cmd, co
  static void
- log_finished(lrmd_cmd_t *cmd, int exec_time_ms, int queue_time_ms)
+ log_finished(const lrmd_cmd_t *cmd, int exec_time_ms, int queue_time_ms)
  {
 -    int log_level = LOG_INFO;
 +    int log_level = LOG_NOTICE;
      GString *str = g_string_sized_new(100); // reasonable starting size
  
      if (pcmk__str_eq(cmd->action, "monitor", pcmk__str_casei)) {
-@@ -248,7 +248,7 @@ log_finished(lrmd_cmd_t *cmd, int exec_t
+@@ -250,7 +250,7 @@ log_finished(const lrmd_cmd_t *cmd, int
  static void
  log_execute(lrmd_cmd_t * cmd)
  {

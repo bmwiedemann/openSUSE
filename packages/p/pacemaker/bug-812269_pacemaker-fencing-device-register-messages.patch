@@ -4,11 +4,11 @@ Date:   Thu Apr 18 16:00:02 2013 +0800
 
     Log: fencing: Drop the severity of the messages on registering a stonith device
 
-Index: pacemaker-2.0.5+20210104.8ae19fdf9/daemons/fenced/fenced_commands.c
+Index: pacemaker-2.1.4+20220615.ce53c2c3f/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-2.0.5+20210104.8ae19fdf9.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-2.0.5+20210104.8ae19fdf9/daemons/fenced/fenced_commands.c
-@@ -1194,7 +1194,7 @@ stonith_device_register(xmlNode * msg, c
+--- pacemaker-2.1.4+20220615.ce53c2c3f.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-2.1.4+20220615.ce53c2c3f/daemons/fenced/fenced_commands.c
+@@ -1398,7 +1398,7 @@ stonith_device_register(xmlNode *dev, gb
          g_hash_table_replace(device_list, device->id, device);
  
          ndevices = g_hash_table_size(device_list);
@@ -16,12 +16,12 @@ Index: pacemaker-2.0.5+20210104.8ae19fdf9/daemons/fenced/fenced_commands.c
 +        crm_info("Added '%s' to device list (%d active device%s)",
                     device->id, ndevices, pcmk__plural_s(ndevices));
      }
-     if (desc) {
-Index: pacemaker-2.0.5+20210104.8ae19fdf9/daemons/fenced/pacemaker-fenced.c
+ 
+Index: pacemaker-2.1.4+20220615.ce53c2c3f/daemons/fenced/pacemaker-fenced.c
 ===================================================================
---- pacemaker-2.0.5+20210104.8ae19fdf9.orig/daemons/fenced/pacemaker-fenced.c
-+++ pacemaker-2.0.5+20210104.8ae19fdf9/daemons/fenced/pacemaker-fenced.c
-@@ -1029,7 +1029,7 @@ update_cib_cache_cb(const char *event, x
+--- pacemaker-2.1.4+20220615.ce53c2c3f.orig/daemons/fenced/pacemaker-fenced.c
++++ pacemaker-2.1.4+20220615.ce53c2c3f/daemons/fenced/pacemaker-fenced.c
+@@ -1165,7 +1165,7 @@ update_cib_cache_cb(const char *event, x
                  break;
              case -pcmk_err_diff_resync:
              case -pcmk_err_diff_failed:

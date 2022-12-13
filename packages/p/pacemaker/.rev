@@ -2016,4 +2016,12 @@
     <comment></comment>
     <requestid>1006410</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>fd1badd31d6f5dc3c83d0d6684931c33</srcmd5>
+    <version>2.1.5+20221208.a3f44794f</version>
+    <time>1670954092</time>
+    <user>dimstar_suse</user>
+    <comment>+Conflicts:      sbd &lt; 1.5.1 (forwarded request 1042377 from yan_gao)</comment>
+    <requestid>1042378</requestid>
+  </revision>
 </revisionlist>

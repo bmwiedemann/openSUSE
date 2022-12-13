@@ -4,31 +4,31 @@ Date:   Thu Sep 6 15:14:58 2012 +0800
 
     Medium: stonith: Expose IDs of stonith resources to stonith agents through "$CRM_meta_st_device_id" environment variable
 
-Index: pacemaker-2.1.2+20211124.91f4bad83/daemons/fenced/fenced_commands.c
+Index: pacemaker-2.1.4+20220928.4690461db/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-2.1.2+20211124.91f4bad83.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-2.1.2+20211124.91f4bad83/daemons/fenced/fenced_commands.c
-@@ -1071,6 +1071,7 @@ build_device_from_xml(xmlNode * msg)
-                  "on target", device->id, device->on_target_actions);
+--- pacemaker-2.1.4+20220928.4690461db.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-2.1.4+20220928.4690461db/daemons/fenced/fenced_commands.c
+@@ -1096,6 +1096,7 @@ build_device_from_xml(xmlNode *dev)
+                  (const char *) device->on_target_actions->str);
      }
  
 +    g_hash_table_insert(device->params, strdup(CRM_META "_" F_STONITH_DEVICE), strdup(device->id));
      device->work = mainloop_add_trigger(G_PRIORITY_HIGH, stonith_device_dispatch, device);
      /* TODO: Hook up priority */
  
-Index: pacemaker-2.1.2+20211124.91f4bad83/lib/fencing/st_actions.c
+Index: pacemaker-2.1.4+20220928.4690461db/lib/fencing/st_actions.c
 ===================================================================
---- pacemaker-2.1.2+20211124.91f4bad83.orig/lib/fencing/st_actions.c
-+++ pacemaker-2.1.2+20211124.91f4bad83/lib/fencing/st_actions.c
+--- pacemaker-2.1.4+20220928.4690461db.orig/lib/fencing/st_actions.c
++++ pacemaker-2.1.4+20220928.4690461db/lib/fencing/st_actions.c
 @@ -31,6 +31,7 @@ struct stonith_action_s {
+     char *agent;
      char *action;
-     char *victim;
      GHashTable *args;
 +    char *dev_id;
      int timeout;
-     int async;
+     bool async;
      void *userdata;
-@@ -213,6 +214,7 @@ stonith__destroy_action(stonith_action_t
+@@ -226,6 +227,7 @@ stonith__destroy_action(stonith_action_t
              services_action_free(action->svc_action);
          }
          pcmk__reset_result(&(action->result));
@@ -36,16 +36,16 @@ Index: pacemaker-2.1.2+20211124.91f4bad83/lib/fencing/st_actions.c
          free(action);
      }
  }
-@@ -261,6 +263,8 @@ stonith_action_create(const char *agent,
+@@ -286,6 +288,8 @@ stonith__action_create(const char *agent
      if (device_args) {
          char buffer[512];
          const char *value = NULL;
 +        const char *st_dev_id_key = CRM_META "_" F_STONITH_DEVICE;
 +        const char *st_dev_id_value = NULL;
  
-         snprintf(buffer, sizeof(buffer), "pcmk_%s_retries", _action);
+         snprintf(buffer, sizeof(buffer), "pcmk_%s_retries", action_name);
          value = g_hash_table_lookup(device_args, buffer);
-@@ -268,6 +272,11 @@ stonith_action_create(const char *agent,
+@@ -293,6 +297,11 @@ stonith__action_create(const char *agent
          if (value) {
              action->max_retries = atoi(value);
          }
@@ -57,7 +57,7 @@ Index: pacemaker-2.1.2+20211124.91f4bad83/lib/fencing/st_actions.c
      }
  
      return action;
-@@ -605,6 +614,10 @@ internal_stonith_action_execute(stonith_
+@@ -630,6 +639,10 @@ internal_stonith_action_execute(stonith_
                                             SVC_ACTION_NON_BLOCKED,
                                             "SVC_ACTION_NON_BLOCKED");
  
@@ -68,10 +68,10 @@ Index: pacemaker-2.1.2+20211124.91f4bad83/lib/fencing/st_actions.c
      /* keep retries from executing out of control and free previous results */
      if (is_retry) {
          pcmk__reset_result(&(action->result));
-Index: pacemaker-2.1.2+20211124.91f4bad83/lib/services/services_linux.c
+Index: pacemaker-2.1.4+20220928.4690461db/lib/services/services_linux.c
 ===================================================================
---- pacemaker-2.1.2+20211124.91f4bad83.orig/lib/services/services_linux.c
-+++ pacemaker-2.1.2+20211124.91f4bad83/lib/services/services_linux.c
+--- pacemaker-2.1.4+20220928.4690461db.orig/lib/services/services_linux.c
++++ pacemaker-2.1.4+20220928.4690461db/lib/services/services_linux.c
 @@ -29,6 +29,9 @@
  #include "crm/services.h"
  #include "crm/services_internal.h"

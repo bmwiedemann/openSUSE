@@ -4,16 +4,16 @@ Date:   Wed Mar 27 22:03:56 2013 +0800
 
     Build: lrmd: Change the default directory for nagios plugins
 
-Index: pacemaker-2.0.5+20210224.63d2fa7c2/configure.ac
+Index: pacemaker-2.1.4+20220720.3b57f9b58/configure.ac
 ===================================================================
---- pacemaker-2.0.5+20210224.63d2fa7c2.orig/configure.ac
-+++ pacemaker-2.0.5+20210224.63d2fa7c2/configure.ac
-@@ -1416,7 +1416,7 @@ AC_DEFINE_UNQUOTED([SUPPORT_NAGIOS], [$w
+--- pacemaker-2.1.4+20220720.3b57f9b58.orig/configure.ac
++++ pacemaker-2.1.4+20220720.3b57f9b58/configure.ac
+@@ -1523,7 +1523,7 @@ AC_DEFINE_UNQUOTED([SUPPORT_NAGIOS], [$w
  AM_CONDITIONAL([BUILD_NAGIOS], [test $with_nagios -eq $REQUIRED])
  
- if test x"$NAGIOS_PLUGIN_DIR" = x""; then
--    NAGIOS_PLUGIN_DIR="${libexecdir}/nagios/plugins"
-+    NAGIOS_PLUGIN_DIR="${prefix}/lib/nagios/plugins"
- fi
+ AS_IF([test x"$NAGIOS_PLUGIN_DIR" = x""],
+-      [NAGIOS_PLUGIN_DIR="${libexecdir}/nagios/plugins"])
++      [NAGIOS_PLUGIN_DIR="${prefix}/lib/nagios/plugins"])
  
  AC_DEFINE_UNQUOTED(NAGIOS_PLUGIN_DIR, "$NAGIOS_PLUGIN_DIR", Directory for nagios plugins)
+ AC_SUBST(NAGIOS_PLUGIN_DIR)

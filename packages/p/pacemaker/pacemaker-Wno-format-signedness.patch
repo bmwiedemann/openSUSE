@@ -1,15 +1,15 @@
-Index: pacemaker-2.0.5+20210111.c600d9092/configure.ac
+Index: pacemaker-2.1.4+20220825.b676a8701/configure.ac
 ===================================================================
---- pacemaker-2.0.5+20210111.c600d9092.orig/configure.ac
-+++ pacemaker-2.0.5+20210111.c600d9092/configure.ac
-@@ -1638,10 +1638,10 @@ dnl otherwise none of both
+--- pacemaker-2.1.4+20220825.b676a8701.orig/configure.ac
++++ pacemaker-2.1.4+20220825.b676a8701/configure.ac
+@@ -1778,10 +1778,10 @@ dnl otherwise none of both
            [
-               AC_DEFINE([GCC_FORMAT_NONLITERAL_CHECKING_ENABLED], [],
+               AC_DEFINE([HAVE_FORMAT_NONLITERAL], [],
                          [gcc can complain about nonliterals in format])
 -              EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2 -Wformat-nonliteral"
 +              EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2 -Wformat-nonliteral -Wno-format-signedness"
            ],
-           [test "x$gcc_format_nonliteral" = "xyes"],
+           [test x"$gcc_format_nonliteral" = x"yes"],
 -          [EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2"])
 +          [EXTRA_FLAGS="$EXTRA_FLAGS -Wformat=2 -Wno-format-signedness"])
  
