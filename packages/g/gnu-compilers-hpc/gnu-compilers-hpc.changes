@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 13 15:31:07 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc12 (jsc#PED-2834).
+
+-------------------------------------------------------------------
 Mon Dec 13 16:45:02 UTC 2021 - Antoine Ginies <aginies@suse.com>
 
 - fix _multibuild with a correct list of gcc version

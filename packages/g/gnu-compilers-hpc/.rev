@@ -137,4 +137,12 @@
   versions, this may fail as newer compilers do not resolve. Oh, well. (forwarded request 944496 from eeich)</comment>
     <requestid>944497</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>2edbabca1bc179618e5d83ef1486ce3d</srcmd5>
+    <version>1.4</version>
+    <time>1670954249</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc12 (jsc#PED-2834). (forwarded request 1042732 from eeich)</comment>
+    <requestid>1042733</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package gnu
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -49,10 +49,14 @@ ExclusiveArch:  do_not_build
 
 %if "%flavor" == "gnu10-hpc"
 %define c_f_ver 10
-%endif 
+%endif
 
 %if "%flavor" == "gnu11-hpc"
 %define c_f_ver 11
+%endif
+
+%if "%flavor" == "gnu12-hpc"
+%define c_f_ver 12
 %endif
 
 # For Factory only build the default
@@ -116,12 +120,12 @@ BuildArch:      noarch
 Provides:       %{compiler_family}%{?hpc_prov_version}-compilers-hpc-devel = %version-%release
 }
 Requires:       %{name} = %{version}
-Requires:       gcc%{hpc_cf_pack_version} 
-Requires:       gcc%{hpc_cf_pack_version}-c++ 
+Requires:       gcc%{hpc_cf_pack_version}
+Requires:       gcc%{hpc_cf_pack_version}-c++
 Requires:       gcc%{hpc_cf_pack_version}-fortran
 %if 0%{?hpc_rolling_release_version:1}
-Requires:       gcc%{hpc_rolling_release_version} 
-Requires:       gcc%{hpc_rolling_release_version}-c++ 
+Requires:       gcc%{hpc_rolling_release_version}
+Requires:       gcc%{hpc_rolling_release_version}-c++
 Requires:       gcc%{hpc_rolling_release_version}-fortran
 %endif
 
@@ -151,7 +155,7 @@ echo "hpc_gnu_bin_version: %hpc_gnu_bin_version"
 %{!?c_f_ver:echo "hpc_prov_version: %hpc_prov_version"}
 
 %{__cat} <<EOF > %{meta}
-%{name}-devel is a meta package to ensure installation of the 
+%{name}-devel is a meta package to ensure installation of the
 gnu toolchain.
 EOF
 
