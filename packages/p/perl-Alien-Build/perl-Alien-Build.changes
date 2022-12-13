@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 28 03:06:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.74
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.74      2022-11-27 08:26:06 -0700
+    - Patches to Test::Alien to make it safe for C99
+      (gh#383, Florian Weimer++)
+
+-------------------------------------------------------------------
 Mon Nov 21 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.73
