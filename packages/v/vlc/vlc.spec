@@ -401,13 +401,17 @@ OpenCV based video filters and a face detection example.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 %patch4 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
 %patch103 -p1
+
+# a52_init() < 0.8.0 doesn't take any arguments
+if pkg-config --max-version 0.8 liba52; then
+%patch0 -p1
+fi
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
@@ -510,6 +514,11 @@ autoreconf -fiv
 # continuously republish packages -- seife
 ### ONLY REMOVE THIS IF YOU KNOW WHAT YOU ARE DOING!
 sed -i 's/^#define.*VLC_COMPILE_HOST.*/#define VLC_COMPILE_HOST "obs-build"/' config.h
+
+# avoid ugly warnings
+if echo "%{optflags}" | grep -q -- '-D_FORTIFY_SOURCE'; then
+    sed -i '/#define _FORTIFY_SOURCE/d' config.h
+fi
 
 %make_build
 
