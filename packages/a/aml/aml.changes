@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec  4 11:25:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.2.2:
+  * aml: Don't put the same item onto the event queue more than once
+
+-------------------------------------------------------------------
 Thu Oct 21 14:52:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.2.1
