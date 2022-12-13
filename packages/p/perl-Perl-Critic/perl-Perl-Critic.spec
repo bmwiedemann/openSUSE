@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-Critic
 Name:           perl-Perl-Critic
-Version:        1.140
+Version:        1.144
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Critique Perl source code for best-practices
@@ -34,7 +34,7 @@ BuildRequires:  perl(Exception::Class) >= 1.23
 BuildRequires:  perl(Exporter) >= 5.63
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(IO::String)
-BuildRequires:  perl(List::MoreUtils) >= 0.19
+BuildRequires:  perl(List::SomeUtils) >= 0.55
 BuildRequires:  perl(Module::Build) >= 0.420400
 BuildRequires:  perl(Module::Pluggable) >= 3.1
 BuildRequires:  perl(PPI) >= 1.265
@@ -66,8 +66,7 @@ Requires:       perl(Exception::Class) >= 1.23
 Requires:       perl(Exporter) >= 5.63
 Requires:       perl(File::Which)
 Requires:       perl(IO::String)
-Requires:       perl(List::MoreUtils) >= 0.19
-Requires:       perl(Module::Build) >= 0.420400
+Requires:       perl(List::SomeUtils) >= 0.55
 Requires:       perl(Module::Pluggable) >= 3.1
 Requires:       perl(PPI) >= 1.265
 Requires:       perl(PPI::Document) >= 1.265

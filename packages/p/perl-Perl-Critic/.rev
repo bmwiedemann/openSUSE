@@ -325,4 +325,12 @@
   on Tumbleweed</comment>
     <requestid>1008328</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>83b8595500b84372cba086927a0c3653</srcmd5>
+    <version>1.144</version>
+    <time>1670954185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042614</requestid>
+  </revision>
 </revisionlist>

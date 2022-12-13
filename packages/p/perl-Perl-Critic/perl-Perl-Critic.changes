@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Dec 12 03:10:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.144
+   see /usr/share/doc/packages/perl-Perl-Critic/Changes
+
+  1.144 Mon Dec  5 09:44:04 PM CST 2022
+      Perl::Critic now requires Perl 5.10.1.
+      [New features]
+      The ProhibitAugmentedAssignmentInDeclaration policy now allows augmented
+      assignments to "our" variables, if the allow_our option is enabled.
+      Thanks, Graham Knop. (GH #993)
+      ProhibitExplicitISA now recommends "use parent" instead of "use base".
+      (GH #987)
+      RequireUseWarnings now recognizes that "use v5.36" implies warnings.
+      Thanks, Andrew Grechkin. (GH #984)
+      Subroutines::ProhibitNestedSubs now allows lexical subroutines can
+      now be inside of other subroutines. Thanks, TOYAMA Nao. (GH #946,
+      #971, #972)
+      RequireUseStrict now knows that Test::Spec enables it. (GH #906)
+      ProhibitUnusedCapture now understands @{^CAPTURE} and %{^CAPTURE_ALL} that
+      were added in Perl 5.26.0. Thanks, Tom Wyant. (GH #778)
+      Allow numeric operators on special number strings 'NaN' and 'inf'. Thanks,
+      Omer Gazit. (GH #803)
+      [Fixes]
+      Miscellanea::ProhibitUselessNoCritic no longer filters out errors about
+      itself, just as Miscellanea::ProhibitUnrestrictedNoCritic cannot. Thanks,
+      Bernhard Schmalhofer. (GH #939)
+      Fixed GH #878: bareword filehandle dies on `open(CHECK, '/foo');`. Thanks,
+      Tom Wyant.
+      [Internals]
+      Updated to using Perl 5.10.1. Starting migrating to Perl 5.10-isms like
+      defined-or. Thanks, James Raspass.
+      [Documentation]
+      Updated some outdated docs in Perl::Critic::Utils. Thanks, Slaven Rezić.
+      (GH #951)
+  1.142 Mon Nov 28 08:12:14 PM CST 2022
+      This is the last version of Perl::Critic that will run on Perl 5.6.1.  The
+      next release will require Perl 5.10.1.
+      [New Features]
+      Add new policy InputOutput::ProhibitBarewordDirHandles, comparable to
+      ProhibitBarewordFilehanles.  Thanks, raf. (GH #912)
+      References::ProhibitDoubleSigils policy now allows for Perl's
+      postfix dereference syntax and does not report a policy violation.
+      Thanks to Ilya Rassadin (GH #578)
+      Added Test::Class::Moose and MooseX::MethodAttributes::Role to the
+      list of modules that are equivalent to "use strict".  (GH #808, GH #886)
+      Subroutines::RequireArgUnpacking now detects anonymous subroutines with
+      attributes, prototypes or signatures.  Thanks, Tom Wyant. (GH #684)
+      ProhibitVoidMap and ProhibitVoidGrep now detect void context inside subs,
+      such as:
+          sub { map { foo($_) } @list; return }
+      Thanks, James Raspass. (GH #905)
+      RequireArgUnpacking now allows a closure to be recognized as a way that
+      subroutine arguments can be unpacked.  This is specified with an optional
+      allow_closures configuration option.  Thanks, Tom Wyant. (GH #737)
+      ProhibitTwoArgOpen now disallows one-arg opens as well. Also, it
+      no longer allows two-arg opening of STDIN/STDOUT/STDERR.  Thanks,
+      Dan Book. (GH #652, #653)
+      [Fixes]
+      ProhibitLeadingZeros would not handle sysopen and lexical variables
+      correctly. This has been fixed. Thanks, Tom Wyant. (GH #789)
+      [Documentation]
+      We note that the any() function is available in both List::MoreUtils and
+      List::SomeUtils.
+      Added instructions to perlcritic on how to integrate with Visual Studio
+      Code.  Thanks, sigzero.
+      [Internals]
+      Switch to using List::SomeUtils instead of List::MoreUtils.
+
+-------------------------------------------------------------------
 Thu Oct  6 05:42:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Add 3 more Pod::* requires to make it build (and reverse dependencies).
