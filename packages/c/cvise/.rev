@@ -907,4 +907,22 @@
   * tweak logic in clangbinarysearch.py</comment>
     <requestid>1039101</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>eb67ac7b7183ee29de04ed9f7678c57e</srcmd5>
+    <version>2.6.0+git.20221213.c01d287</version>
+    <time>1670954247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221213.c01d287:
+  * Transformation instantiate-template-param did not support replacement of all types (e.g. pointer, reference, arrays were not working)
+  * Bugfix: instantiate-template-param transformation used always the type of the first template parameter
+  * LLVM 16: stop using deprecated llvm::None.
+  * Remove LGTM badges as it will be closed.
+
+- Update to version 2.6.0+git.20221209.b337b9a:
+  * Use ubuntu:rolling container
+  * Use ubuntu-latest.
+  * Improve error message for bad value of `--start-with-pass`.
+  * Use -Wno-error=mismatched-new-delete conditionally.</comment>
+    <requestid>1042718</requestid>
+  </revision>
 </revisionlist>
