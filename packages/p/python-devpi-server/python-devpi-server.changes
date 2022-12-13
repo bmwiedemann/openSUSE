@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 13 04:54:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.8.0 
+  * Features
+  - Fix #929: Cache normalized project names per transaction on mirror index instances.
+  * Bug Fixes
+  - Fix #914: add locking to list_projects_perstage of mirror indexes to
+    prevent multiple slow concurrent updates of the full project name list.
+  - Catch exceptions in async_httpget analog to httpget.
+  - Add locking to mirror name cache to prevent race condition on updates.
+
+-------------------------------------------------------------------
 Fri Oct 21 07:47:48 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Version update to 6.7.0
