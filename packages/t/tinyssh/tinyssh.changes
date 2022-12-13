@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 13:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220801:
+  * tinyssh/getln.c don't close fd in case of error
+  * use null fields in utmpx calls for logout
+  * do not reverse the argument order in LIBS
+  * fill utmp(x)'s ut_addr_v6 field when it exists
+  * updated crypto/crypto_onetimeauth_poly1305.c 
+
+-------------------------------------------------------------------
 Thu May  5 07:05:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 20220311:
