@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 11 18:19:52 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.2.0:
+  * Port CLI to clap v3
+  * start: provide useful hint for parent with wrong case
+  * tests: Add ability to test error messages
+  * tests: extract function for checking pass/fail expectations
+  * MDev::create() does not need to be public
+  * Fix new clippy warning
+
+-------------------------------------------------------------------
 Mon Mar 14 19:32:53 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - spec: BuildRequires python3-docutils instead of all python

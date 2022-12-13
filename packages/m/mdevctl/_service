@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">mdevctl</param>
-    <param name="revision">13084d837490f6c0671e2ab9a275cbe3611750c5</param>
+    <param name="revision">v1.2.0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mdevctl/mdevctl</param>
@@ -14,4 +14,12 @@
     <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="disabled"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">mdevctl-1.2.0</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">mdevctl-1.2.0</param>
+  </service>
 </services>

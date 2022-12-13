@@ -17,16 +17,18 @@
 
 
 Name:           mdevctl
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Mediated device management and persistence utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/mdevctl/mdevctl
 Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
+Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  python3-docutils
 BuildRequires:  rust
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(udev)
 
 %description
