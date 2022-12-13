@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma
-Version:        5.6.5
+Version:        6.0.0
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ Release:        0
 BuildRequires:  openssl-devel
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.2}
+BuildRequires:  %{rubydevel >= 2.4}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
