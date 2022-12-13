@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-pythonfinder
 Version:        1.3.1
 Release:        0
@@ -32,7 +31,6 @@ Requires:       python-attrs
 Requires:       python-cached-property
 Requires:       python-click
 Requires:       python-packaging
-Requires:       python-six
 Requires:       python-vistir >= 0.2.5
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -44,7 +42,6 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module crayons}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vistir >= 0.2.5}
 # /SECTION
 %python_subpackages
