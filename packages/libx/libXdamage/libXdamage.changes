@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  5 10:25:43 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Variable scope reduction as recommended by cppcheck
+  * Mark two dpy parameters const as suggested by cppcheck
+  * XDamageCloseDisplay: Mark codes as unused
+  * Remove unnecessary casts from malloc() and free() calls
+  * Handle -Wconversion warnings from clang
+  * Handle -Wshorten-64-to-32 warnings from clang
+
+-------------------------------------------------------------------
 Mon Mar 11 14:01:03 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.5:
