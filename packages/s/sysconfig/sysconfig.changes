@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 12 07:23:12 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- spec: Add network/scripts directory to filelist, no longer
+  in the default filelist in a cleaned up filesystem package
+  (https://github.com/openSUSE/sysconfig/pull/47).
+
+-------------------------------------------------------------------
 Mon Jun 27 11:33:50 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.90.0

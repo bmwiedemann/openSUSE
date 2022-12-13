@@ -1769,4 +1769,14 @@ also obs request: #660553
 - netconfig: move scripts to a FHS conform libexec</comment>
     <requestid>985326</requestid>
   </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>59cc0dda2937b8e96369e71befb197db</srcmd5>
+    <version>0.90.0</version>
+    <time>1670954073</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Add network/scripts directory to filelist, no longer
+  in the default filelist in a cleaned up filesystem package
+  (https://github.com/openSUSE/sysconfig/pull/47).</comment>
+    <requestid>1042261</requestid>
+  </revision>
 </revisionlist>

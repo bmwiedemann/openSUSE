@@ -171,6 +171,7 @@ EOF
 %dir %{_libexecdir}/netconfig/netconfig.d
 %{_libexecdir}/netconfig/netconfig.d/*
 %{_libexecdir}/netconfig/functions.netconfig
+%dir %{_sysconfdir}/sysconfig/network/scripts
 %{_sysconfdir}/sysconfig/network/scripts/functions.netconfig
 %{_sbindir}/netconfig
 %if !0%{?usrmerged}
