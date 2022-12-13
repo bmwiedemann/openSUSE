@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 21:28:36 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.4.6
+  * Fix PHP 8.1 deprecation warnings
+
+-------------------------------------------------------------------
 Sat Jun  5 17:21:16 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - New upstream release 1.4.5
