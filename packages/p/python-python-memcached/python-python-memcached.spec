@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-python-memcached
 Version:        1.59
@@ -29,6 +28,7 @@ Source:         https://github.com/linsomniac/python-memcached/archive/%{version
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  fdupes
 BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
 BuildRequires:  util-linux
@@ -53,28 +53,29 @@ for more information.
 %prep
 %setup -q -n python-memcached-%{version}
 sed -i \
-    -e 's:#!/usr/bin/env python::' \
+    -e 's:#!%{_bindir}/env python::' \
     memcache.py
 sed -i 's/import mock/import unittest.mock as mock/' tests/test_memcache.py
+# gh#linsomniac/python-memcached#185
+sed -i -e '/__version__/s/[0-9.]\+/%{version}/' memcache.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if 0%{?fedora} || 0%{?rhel}
-/usr/bin/memcached -dv -P $PWD/memcached.pid
-%else
-/usr/sbin/memcached -dv -P $PWD/memcached.pid
-%endif
+%{_bindir}/memcached -dv -P $PWD/memcached.pid
 %pytest
 kill -9 $(cat $PWD/memcached.pid)
 
 %files %{python_files}
 %license PSF.LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/memcache.py
+%pycache_only %{python_sitelib}/__pycache__/memcache.*.pyc
+%{python_sitelib}/python_memcached-%{version}*-info
 
 %changelog

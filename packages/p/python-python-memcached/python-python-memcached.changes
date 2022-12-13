@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 13 00:36:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix incorrect version number in `__version__`
+  (gh#linsomniac/python-memcached#185).
+- Fix build: memcached moved their binaries to /usr/bin.
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Mon Apr 11 13:02:07 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - do not use mock

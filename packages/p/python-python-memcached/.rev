@@ -179,4 +179,15 @@
     <comment></comment>
     <requestid>969217</requestid>
   </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>f67e40d815272d5f06489fe3b715c4de</srcmd5>
+    <version>1.59</version>
+    <time>1670954161</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix incorrect version number in `__version__`
+  (gh#linsomniac/python-memcached#185).
+- Fix build: memcached moved their binaries to /usr/bin.
+- Clean up SPEC file.</comment>
+    <requestid>1042575</requestid>
+  </revision>
 </revisionlist>
