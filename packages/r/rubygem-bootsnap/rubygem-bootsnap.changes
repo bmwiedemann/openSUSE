@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:13:46 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.15.0
+ see installed CHANGELOG.md
+
+  # 1.15.0
+  
+  * Add a readonly mode, for environments in which the updated cache wouldn't be persisted. See #428 and #423.
+  
+  # 1.14.0
+  
+  * Require Ruby 2.6.
+  * Add a way to skip directories during load path scanning.
+    If you have large non-ruby directories in the middle of your load path, it can severely slow down scanning.
+    Typically this is a problem with `node_modules`. See #277.
+  * Fix `Bootsnap.unload_cache!`, it simply wouldn't work at all becaue of a merge mistake. See #421.
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 12:59:41 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.13.0

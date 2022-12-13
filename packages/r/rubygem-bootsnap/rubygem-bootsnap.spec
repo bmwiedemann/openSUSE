@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-bootsnap
-Version:        1.13.0
+Version:        1.15.0
 Release:        0
 %define mod_name bootsnap
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel >= 2.5.0}
+BuildRequires:  %{rubydevel >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
