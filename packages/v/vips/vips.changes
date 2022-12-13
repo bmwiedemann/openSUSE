@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 10 18:02:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.3:
+  * improve rules for 16-bit heifsave [johntrunc]
+  * improve libspng pallette write [kleisauke]
+  * improve libspng pallette sort [DarthSim]
+  * ensure EXIF has prefix before parsing [lovell]
+  * fix low bit depth pallette spng save [DarthSim]
+  * fix thumbnail of non-sRGB images with an export profile [kleisauke]
+
+-------------------------------------------------------------------
 Sat Oct  1 11:34:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.13.2:
