@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:20:54 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221213.6e4f7dfd:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: behave: Add functional test for -x option to skip csync2
+  * Dev: bootstrap: Add option -x to skip csync2 initialization stage during the whole cluster bootstrap
+
+-------------------------------------------------------------------
 Wed Dec 07 02:27:46 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221207.84e6ea16:
