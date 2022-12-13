@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           rss2email
-Version:        3.13.1
+Version:        3.14
 Release:        0
 Summary:        Receive RSS feeds by email
 License:        GPL-2.0-only OR GPL-3.0-only
