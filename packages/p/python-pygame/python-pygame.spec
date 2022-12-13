@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-pygame
 Version:        2.1.2
@@ -25,6 +24,8 @@ Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pygame/pygame
 Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM adjust-surface-mask.patch gh#pygame/pygame#3577
+Patch0:         adjust-surface-mask.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -89,8 +90,7 @@ Provides:       %{python_module pygame-doc = %{version}}
 This package contains documentation and example programs for Pygame.
 
 %prep
-%setup -q -n pygame-%{version}
-%autopatch -p1
+%autosetup -p1 -n pygame-%{version}
 
 sed -i 's/\r$//' docs/reST/ref/code_examples/draw_module_example.py
 sed -i 's/\r$//' docs/reST/ref/code_examples/joystick_calls.py

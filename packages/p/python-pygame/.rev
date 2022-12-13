@@ -261,4 +261,14 @@
     <comment></comment>
     <requestid>995122</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>6038ef76e1c18f75655339439b22980a</srcmd5>
+    <version>2.1.2</version>
+    <time>1670954114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add adjust-surface-mask.patch gh#pygame/pygame#3577, to fix tests with SDL
+  2.26.0.
+</comment>
+    <requestid>1042426</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 16:41:18 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add adjust-surface-mask.patch gh#pygame/pygame#3577, to fix tests with SDL
+  2.26.0.
+
+-------------------------------------------------------------------
 Fri Aug 12 19:46:06 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add build dependency on libmpg123 because it is required for the tests
