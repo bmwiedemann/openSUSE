@@ -1,0 +1,33 @@
+---
+ Makefile.am  |    2 +-
+ configure.ac |    8 ++++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+--- Makefile.am
++++ Makefile.am	2022-10-20 13:21:37.505517043 +0000
+@@ -189,7 +189,7 @@ if CYGWIN
+ src_top_top_SOURCES += local/strverscmp.c
+ endif
+ 
+-src_top_top_LDADD = $(LDADD) @NCURSES_LIBS@ $(DL_LIB)
++src_top_top_LDADD = $(LDADD) @TOP_NCURSES_LIBS@ $(DL_LIB)
+ endif
+ 
+ if BUILD_SKILL
+--- configure.ac
++++ configure.ac	2022-10-20 13:23:50.707138810 +0000
+@@ -260,6 +260,14 @@ fi
+ #  else
+ #    WATCH_NCURSES_LIBS="$NCURSES_LIBS"
+ #  fi
++cf_tinfo=""
++AC_CHECK_LIB(tinfo, setupterm, [cf_tinfo="tinfo"])
++if test x$cf_tinfo = xtinfo ; then
++  TOP_NCURSES_LIBS="-ltinfo"
++else
++  TOP_NCURSES_LIBS="$NCURSES_LIBS"
++fi
++AC_SUBST([TOP_NCURSES_LIBS])
+ 
+ AC_ARG_WITH([systemd],
+   [AS_HELP_STRING([--with-systemd], [enable systemd support])],

@@ -1,0 +1,51 @@
+---
+ man/sysctl.8 |    2 ++
+ src/sysctl.c |   12 ++++++++++++
+ 2 files changed, 14 insertions(+)
+
+--- man/sysctl.8
++++ man/sysctl.8	2022-03-29 10:21:47.926686046 +0000
+@@ -117,6 +117,8 @@ will read files from directories in the
+ order from top to bottom. Once a file of a given filename is loaded, any
+ file of the same name in subsequent directories is ignored.
+ 
++/boot/sysctl.conf-<kernelversion>
++.br
+ /etc/sysctl.d/*.conf
+ .br
+ /run/sysctl.d/*.conf
+--- src/sysctl.c
++++ src/sysctl.c	2022-03-29 10:20:51.795708321 +0000
+@@ -40,6 +40,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/utsname.h>
+ #include <unistd.h>
+ #include <ctype.h>
+ 
+@@ -806,6 +807,7 @@ static int sortpairs(const void *A, cons
+ static int PreloadSystem(SettingList *setlist)
+ {
+ 	unsigned di, i;
++	struct utsname uts;
+ 	const char *dirs[] = {
+ 		"/etc/sysctl.d",
+ 		"/run/sysctl.d",
+@@ -870,6 +872,16 @@ static int PreloadSystem(SettingList *se
+ 	}
+ 	qsort(cfgs, ncfgs, sizeof(struct cfg *), sortpairs);
+ 
++	if (uname(&uts) == 0) {
++		char buf[PATH_MAX];
++		snprintf(buf, sizeof(buf), "/boot/sysctl.conf-%s", uts.release);
++		if (access(buf, R_OK) == 0) {
++			if (!Quiet)
++				printf("* Applying %s ...\n", buf);
++			Preload(setlist, buf);
++		}
++	}
++
+ 	for (i = 0; i < ncfgs; ++i) {
+ 		if (!Quiet)
+ 			printf(_("* Applying %s ...\n"), cfgs[i]->value);

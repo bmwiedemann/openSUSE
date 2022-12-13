@@ -1,0 +1,23 @@
+From: Takashi Iwai <tiwai@suse.de>
+Subject: Ignore scan_unevictable_pages entry in sysctl, too
+References: bnc#868888
+
+scan_unevictable_pages sysctl is deprecated in the recent kernel.
+Ignore it for avoiding the kernel warning message.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+
+---
+ src/sysctl.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/sysctl.c
++++ b/src/sysctl.c
+@@ -58,6 +58,7 @@ static const char DEFAULT_PRELOAD[] = "/
+ static const char *DEPRECATED[] = {
+ 	"base_reachable_time",
+ 	"retrans_time",
++	"scan_unevictable_pages",
+ 	""
+ };
+ static bool IgnoreDeprecated;

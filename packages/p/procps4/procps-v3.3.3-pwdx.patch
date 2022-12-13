@@ -1,0 +1,14 @@
+---
+ src/pwdx.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- src/pwdx.c
++++ src/pwdx.c	2016-07-11 13:17:16.154313659 +0000
+@@ -109,6 +109,7 @@ int main(int argc, char *argv[])
+ 		buflen = 10 + strlen(argv[i]) + 1;
+ 		buf = xmalloc(buflen);
+ 
++		errno = 0;
+ 		if (check_pid_argument(argv[i]))
+ 			xerrx(EXIT_FAILURE, _("invalid process id: %s"),
+ 			     argv[i]);

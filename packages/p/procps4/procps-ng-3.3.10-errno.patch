@@ -1,0 +1,48 @@
+setlocale() sets errno to ENOENT ...
+
+open("/usr/lib/locale/de_DE.UTF-8/LC_NUMERIC", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/de_DE.utf8/LC_NUMERIC", O_RDONLY|O_CLOEXEC) = 3
+
+and this causes a problem later on (bsc#908516)
+
+---
+ src/free.c |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- src/free.c
++++ src/free.c	2022-10-20 13:33:28.880818112 +0000
+@@ -209,6 +209,7 @@ int main(int argc, char **argv)
+ 	int c, flags = 0, unit_set = 0, rc = 0;
+ 	struct commandline_arguments args;
+ 	struct meminfo_info *mem_info = NULL;
++	int errsv;
+ 
+ 	/*
+ 	 * For long options that have no equivalent short option, use a
+@@ -260,10 +261,12 @@ int main(int argc, char **argv)
+ #ifdef HAVE_PROGRAM_INVOCATION_NAME
+ 	program_invocation_name = program_invocation_short_name;
+ #endif
++	errsv = errno;
+ 	setlocale (LC_ALL, "");
+ 	bindtextdomain(PACKAGE, LOCALEDIR);
+ 	textdomain(PACKAGE);
+ 	atexit(close_stdout);
++	errno = errsv;
+ 
+ 	while ((c = getopt_long(argc, argv, "bkmghltvCc:ws:V", longopts, NULL)) != -1)
+ 		switch (c) {
+@@ -333,11 +336,13 @@ int main(int argc, char **argv)
+ 			break;
+ 		case 's':
+ 			flags |= FREE_REPEAT;
++			errsv = errno;
+ 			errno = 0;
+             args.repeat_interval = (1000000 * strtod_nol_or_err(optarg, "seconds argument failed"));
+ 			if (args.repeat_interval < 1)
+ 				xerrx(EXIT_FAILURE,
+ 				     _("seconds argument `%s' is not positive number"), optarg);
++			errno = errsv;
+ 			break;
+ 		case 'c':
+ 			flags |= FREE_REPEAT;

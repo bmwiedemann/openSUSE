@@ -1,0 +1,66 @@
+---
+ library/readproc.c |   20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+--- library/readproc.c
++++ library/readproc.c	2022-03-28 11:51:04.751862744 +0000
+@@ -731,7 +731,7 @@ static int file2str(const char *director
+     }
+     len = snprintf(path, sizeof path, "%s/%s", directory, what);
+     if (len <= 0 || (size_t)len >= sizeof path) return -1;
+-    if (-1 == (fd = open(path, O_RDONLY, 0))) return -1;
++    if (-1 == (fd = open(path, O_RDONLY, O_NOATIME))) return -1;
+     while (0 < (num = read(fd, ub->buf + tot_read, ub->siz - tot_read))) {
+         tot_read += num;
+         if (tot_read < ub->siz) break;
+@@ -755,25 +755,25 @@ static int file2str(const char *director
+ static char **file2strvec(const char *directory, const char *what) {
+     char buf[2048];     /* read buf bytes at a time */
+     char *p, *rbuf = 0, *endbuf, **q, **ret, *strp;
+-    int fd, tot = 0, n, c, end_of_file = 0;
+-    int align;
++    int fd, c, end_of_file = 0;
++    ssize_t n, align, tot = 0;
+ 
+     const int len = snprintf(buf, sizeof buf, "%s/%s", directory, what);
+     if(len <= 0 || (size_t)len >= sizeof buf) return NULL;
+-    fd = open(buf, O_RDONLY, 0);
++    fd = open(buf, O_RDONLY, O_NOATIME);
+     if(fd==-1) return NULL;
+ 
+     /* read whole file into a memory buffer, allocating as we go */
+     while ((n = read(fd, buf, sizeof buf - 1)) >= 0) {
+-        if (n < (int)(sizeof buf - 1))
++        if (n < (sizeof(buf) - 1))
+             end_of_file = 1;
+-        if (n <= 0 && tot <= 0) {  /* nothing read now, nothing read before */
++        if (n <= 0 && tot <= 0)    /* nothing read now, nothing read before */
+             break;                 /* process died between our open and read */
+-        }
++
+         /* ARG_LEN is our guesstimated median length of a command-line argument
+            or environment variable (the minimum is 1, the maximum is 131072) */
+         #define ARG_LEN 64
+-        if (tot >= INT_MAX / (ARG_LEN + (int)sizeof(char*)) * ARG_LEN - n) {
++        if (tot >= INT_MAX / (ARG_LEN + sizeof(char*)) * ARG_LEN - n) {
+             end_of_file = 1;       /* integer overflow: null-terminate and break */
+             n = 0;                 /* but tot > 0 */
+         }
+@@ -807,7 +807,7 @@ static char **file2strvec(const char *di
+     c = sizeof(char*);             /* one extra for NULL term */
+     for (p = rbuf; p < endbuf; p++) {
+         if (!*p || *p == '\n') {
+-            if (c >= INT_MAX - (tot + (int)sizeof(char*) + align)) break;
++            if (c >= INT_MAX - (tot + sizeof(char*) + align)) break;
+             c += sizeof(char*);
+         }
+         if (*p == '\n')
+@@ -820,7 +820,7 @@ static char **file2strvec(const char *di
+     q = ret = (char**) (endbuf+align);          /* ==> free(*ret) to dealloc */
+     for (strp = p = rbuf; p < endbuf; p++) {
+         if (!*p) {                              /* NUL char implies that */
+-            if (c < 2 * (int)sizeof(char*)) break;
++            if (c < 2 * sizeof(char*)) break;
+             c -= sizeof(char*);
+             *q++ = strp;                        /* point ptrs to the strings */
+             strp = p+1;                         /* next string -> next char */

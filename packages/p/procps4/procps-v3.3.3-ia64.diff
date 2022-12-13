@@ -1,0 +1,13 @@
+--- library/devname.c
++++ library/devname.c	2012-06-01 13:35:43.452010553 +0000
+@@ -47,6 +47,10 @@
+ #define minor(d) ( ((unsigned)(d)&0xffu) | (((unsigned)(d)&0xfff00000u)>>12u) )
+ #endif
+ 
++#ifndef PAGE_SIZE
++# define PAGE_SIZE	(sysconf(_SC_PAGESIZE))
++#endif
++
+ typedef struct tty_map_node {
+   struct tty_map_node *next;
+   unsigned short devfs_type;  // bool

@@ -1,0 +1,5 @@
+<package name="procps4" project="openSUSE:Factory">
+  <title>https://sf.net/projects/procps-ng/</title>
+  <description>The ps utilities for /proc</description>
+  <devel project="Base:System" package="procps4"/>
+</package>

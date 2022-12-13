@@ -1,0 +1,61 @@
+---
+ ps/global.c |   13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+--- src/ps/global.c
++++ src/ps/global.c	2022-03-29 09:31:24.242140877 +0000
+@@ -258,8 +258,11 @@ static void set_screen_size(void){
+   screen_cols = ws.ws_col;  // hmmm, NetBSD subtracts 1
+   screen_rows = ws.ws_row;
+ 
+-  // TODO: delete this line
+-  if(!isatty(STDOUT_FILENO)) screen_cols = OUTBUF_SIZE;
++  if(!isatty(STDOUT_FILENO)){
++    screen_cols = OUTBUF_SIZE;
++    screen_rows = OUTBUF_SIZE;
++    if (personality&PER_UNIX_COLS) return; // SysV/UNIX98 based personality
++  }
+ 
+   columns = getenv("COLUMNS");
+   if(columns && *columns){
+@@ -401,6 +404,7 @@ static const char *set_personality(void)
+     return NULL;
+ 
+   case_aix:
++    personality |= PER_UNIX_COLS;
+     bsd_j_format = "FB_j";
+     bsd_l_format = "FB_l";
+     /* bsd_s_format not used */
+@@ -428,6 +432,7 @@ static const char *set_personality(void)
+ 
+   case_sunos4:
+     personality = PER_NO_DEFAULT_g;
++    personality |= PER_UNIX_COLS;
+     prefer_bsd_defaults = 1;
+     bsd_j_format = "FB_j";
+     bsd_l_format = "FB_l";
+@@ -453,12 +458,14 @@ static const char *set_personality(void)
+   case_hp:
+   case_hpux:
+     personality = PER_HPUX_x;
++    personality |= PER_UNIX_COLS;
+     return NULL;
+ 
+   case_svr4:
+   case_sysv:
+   case_sco:
+     personality = PER_SVR4_x;
++    personality |= PER_UNIX_COLS;
+     return NULL;
+ 
+   case_posix:
+@@ -499,8 +506,8 @@ void reset_global(void){
+   }
+ // --- <pids> interface --------------------------------------------------
+ 
+-  set_screen_size();
+   set_personality();
++  set_screen_size();
+ 
+   all_processes         = 0;
+   bsd_c_option          = 0;

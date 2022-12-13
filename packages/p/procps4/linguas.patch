@@ -1,0 +1,49 @@
+---
+ po-man/Makefile.am |    6 ++----
+ po-man/Makefile.in |    6 ++----
+ 2 files changed, 4 insertions(+), 8 deletions(-)
+
+--- po-man/Makefile.am
++++ po-man/Makefile.am	2022-12-05 14:44:51.399710239 +0000
+@@ -73,8 +73,7 @@ install-data-local:
+ 	    done; \
+ 	    $(MAKE) -C .. install-man \
+ 	            mandir="$(mandir)/$$lang" \
+-		    man_MANS="" \
+-		    src_MANS="$$files"; \
++		    dist_man_MANS="$$files"; \
+ 	done
+ 
+ uninstall-local:
+@@ -89,8 +88,7 @@ uninstall-local:
+ 		done; \
+ 		$(MAKE) -C .. uninstall-man \
+ 			mandir="$(mandir)/$$lang" \
+-			man_MANS="" \
+-			src_MANS="$$files"; \
++			dist_man_MANS="$$files"; \
+ 	done
+ 
+ dist-hook: man.stamp
+--- po-man/Makefile.in
++++ po-man/Makefile.in	2022-12-05 14:45:46.522706338 +0000
+@@ -542,8 +542,7 @@ install-data-local:
+ 	    done; \
+ 	    $(MAKE) -C .. install-man \
+ 	            mandir="$(mandir)/$$lang" \
+-		    man_MANS="" \
+-		    src_MANS="$$files"; \
++		    dist_man_MANS="$$files"; \
+ 	done
+ 
+ uninstall-local:
+@@ -558,8 +557,7 @@ uninstall-local:
+ 		done; \
+ 		$(MAKE) -C .. uninstall-man \
+ 			mandir="$(mandir)/$$lang" \
+-			man_MANS="" \
+-			src_MANS="$$files"; \
++			dist_man_MANS="$$files"; \
+ 	done
+ 
+ dist-hook: man.stamp

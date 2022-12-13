@@ -1,0 +1,28 @@
+Commit: 82d8e3faf320e6aed41fe3cf18d99d79ce48bb70
+Subject: tests: Fix type for check_fatal_proc_unmounted
+Craig Small authored 6 days ago
+
+While ps used the correct type for PIDS_VM_RSS the test
+did not. For some reason this only appeared to be an issue
+for s390x
+
+References:
+ https://bugs.debian.org/1025495
+
+Signed-off-by: Craig Small's avatarCraig Small <csmall@dropbear.xyz>
+
+---
+ library/tests/test_pids.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- library/tests/test_pids.c
++++ library/tests/test_pids.c	2022-12-12 13:25:07.172786569 +0000
+@@ -57,7 +57,7 @@ int check_fatal_proc_unmounted(void *dat
+     return ( (procps_pids_new(&info, items2, 2) == 0) &&
+ 	    ( (stack = fatal_proc_unmounted(info, 1)) != NULL) &&
+ 	    ( PIDS_VAL(0, s_int, stack, info) > 0) &&
+-	    ( PIDS_VAL(1, u_int, stack, info) > 0));
++	    ( PIDS_VAL(1, ul_int, stack, info) > 0));
+ }
+ 
+ TestFunction test_funcs[] = {

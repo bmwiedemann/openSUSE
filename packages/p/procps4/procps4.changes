@@ -1,0 +1,2362 @@
+-------------------------------------------------------------------
+Mon Dec 12 13:28:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit as patch 82d8e3fa.patch to make it build on s390x
+
+-------------------------------------------------------------------
+Mon Dec  5 15:05:52 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.2
+  * library revision - 0:1:0
+    Handle absent 'core_id' in /proc/cpuinfo
+  * w: Show time with D_TIME_BITS=64 on 32bit env          issue #256
+- Drop patch upstram now
+  0001-library-adapted-for-absent-core-id-in-proc-cpuinfo.patch
+- Add patch linguas.patch to really install different manual
+  page locale
+
+-------------------------------------------------------------------
+Tue Oct 25 13:28:08 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Do not use %lang_package macro as it does not allow to set
+  a Conflict in its %package section
+- Add a conflict for procps4-lang to procps-lang < 4.0.0
+  and provide procps-lang with new version
+
+-------------------------------------------------------------------
+Tue Oct 25 10:59:09 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- An upstream updated version of
+  0001-library-adapted-for-absent-core-id-in-proc-cpuinfo.patch 
+
+-------------------------------------------------------------------
+Tue Oct 25 08:59:12 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Replace path procps-ng-4.0.1-threadless.patch with upstream patch
+  0001-library-adapted-for-absent-core-id-in-proc-cpuinfo.patch 
+
+-------------------------------------------------------------------
+Mon Oct 24 13:31:51 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.1-threadless.patch
+  * Avoid error on threadless CPU systems 
+
+-------------------------------------------------------------------
+Thu Oct 20 13:52:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.1
+  * library
+    Re-add elogind support                                 merge #151
+    Used memory is Total - Available
+    Renaming, it is now libproc2
+  * free: Use --kilo when only specifying --si             merge #163
+  * pgrep: Add -A to ignore ancestors                      merge #160
+  * pidwait: Better warning if pidfd_open not implemented
+  * pmap: Dont reuse stdin filehandle                      issue #231
+  * ps: threads again display when -L is used with -q      issue #234
+  * ps: proper aix format string behavior was restored
+  * sysctl: print dotted keys again
+  * top: fix 'smaps' bug preventing build under clang      issue #235
+  * top: column highlighting allowed under 'L' or 'O'
+  * top: can alter autogroup nice value (like 'r' renice)
+  * top: can display the following with no need to scroll
+  *      cmdline, control groups, environment,
+         supplimentary groups, namespaces
+  * top: adds a 'message log' recall capability
+  * top: will accept utf8 multi-byte input with support
+         for full line editing and previous line recall
+  * top: can show more than 2 abreast in summary display
+  * top: can distinguish P-Core and E-core cpus
+  * top: can filter both P-Core and E-core cpus
+  * watch: Add equexit no-change and exit option           merge #153
+- Rename this tree of procps to procps4
+- Remove patches now upstream
+  * 0001-top-update-one-function-prologue-after-rcfile-change.patch
+  * 0002-ps-restore-aix-behavior-while-keeping-an-original-fi.patch
+  * 0003-ps-restore-thread-display-when-using-a-pidlist-optio.patch
+  * procps-ng-3.3.8-bnc634840.patch
+  * procps-ng-4.0.0-accuracy.dif
+  * procps-ng-3.3.10-large_pcpu.patch
+- Port patches
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.8-vmstat-terabyte.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-ng-4.0.0-floats.dif
+  * procps-ng-4.0.0-integer-overflow.patch
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-ia64.diff
+  * procps-v3.3.3-pwdx.patch
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+- Add keyring and signature on tar ball
+
+-------------------------------------------------------------------
+Thu Mar 31 07:45:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Drop patch procps-ng-4.0.0-aix_sortformats.dif as replaced by
+  upstream patch 0002-ps-restore-aix-behavior-while-keeping-an-original-fi.patch
+- Add upstream patches
+  * 0001-top-update-one-function-prologue-after-rcfile-change.patch
+  * 0003-ps-restore-thread-display-when-using-a-pidlist-optio.patch
+
+-------------------------------------------------------------------
+Wed Mar 30 09:52:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Drop not needed patch procps-ng-3.3.9-watch.patch as the API
+  has changed here 
+
+-------------------------------------------------------------------
+Wed Mar 30 09:23:58 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.0-floats.dif to avoid float errors on
+  32bit architectures
+
+-------------------------------------------------------------------
+Wed Mar 30 09:12:42 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.0-aix_sortformats.dif to restore AIX sort
+  format support as well
+
+-------------------------------------------------------------------
+Tue Mar 29 12:49:48 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.0
+  + Warning: new shared library interface with libproc-2
+  * Rename pwait to pidwait
+  * free: Add committed line option                        merge #25
+  * free: Fix -h --si combined options                     issue #133, #223
+  * free: Fix first column justification                   issue #229, #204, #206, Debian #1001689
+  * free: Better spacing for Chinese language              issue #213
+  * library: renamed to libproc-2 and reset to 0:0:0
+  * library: add support for accessing smaps_rollup        issue #112, #201
+  * library: add support for accessing autogroups
+  * library: add support for LIBPROC_HIDE_KERNEL env var   merge #147
+  * library: add support for cpu utilization to pids i/f
+  * pkill: Check for lt- variants of program name          issue #192
+  * pgrep: Add newline after regex error message           merge #91
+  * pgrep: Fix selection where uid/gid > 2^31              merge !146
+  * pgrep: Select on cgroup v2 paths                       issue #168
+  * ps: Add OOM and OOMADJ fields                          issue #198
+  * ps: Add IO Accounting fields                           issue #184
+  * ps: Add PSS and USS fields                             issue #112
+  * ps: Add two new autogroup fields
+  * ps: Ignore SIGURG                                      merge !142
+  * slabtop: Don't combine d and o options                 issue #160
+  * sysctl: Add support for systemd glob patterns          issue #191
+  * sysctl: Check resolved path to be under /proc/sys      issue #179
+  * sysctl: return non-zero if EINVAL return for write     merge #76
+  * sysctl.conf.5: Note max line length                    issue #77
+  * top: added LOGID similar to 3.3.13 ps LUID
+  * top: added EXE identical to 3.3.17 ps EXE
+  * top: exploit some library smaps_rollup provisions      issue #112
+  * top: added four new IO accounting fields               issue #184
+  * top: 'F' key is now a new forest view 'focus' toggle
+  * top: summary area memory lines can print two abreast
+  * top: added two new autogroup fields
+  * top: added long versions of command line options
+  * top: added cpu utilization & 2 time related fields
+  * top: the time related fields can now be user scaled
+  * uptime: print short/pretty format correctly            issue #217
+  * vmstat: add -y option to remove first line             merge !72
+- Remove patch now upstream fixed
+  * procps-3.3.17-bsc1181976.patch
+  * procps-ng-3.3.10-bnc634071_procstat2.diff
+  * procps-ng-3.3.10-fdleak.dif
+  * bsc1195468-23da4f40.patch
+- Port patches 
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-large_pcpu.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-bnc634840.patch
+  * procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.8-vmstat-terabyte.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-ia64.diff
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+- Port and rename patch
+  * procps-ng-3.3.8-accuracy.dif becomes procps-ng-4.0.0-accuracy.dif
+  * procps-ng-3.3.10-integer-overflow.patch becomes procps-ng-4.0.0-integer-overflow.patch
+
+-------------------------------------------------------------------
+Fri Feb  4 09:21:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bsc1195468-23da4f40.patch to fix bsc#1195468 that is
+  ignore SIGURG
+
+-------------------------------------------------------------------
+Thu Jan 20 13:17:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Correct used URLs 
+
+-------------------------------------------------------------------
+Fri Jul  2 13:24:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Skip test suite on emulated riscv64 systems as the qemu process
+  is unexpected on the command lines of processes 
+
+-------------------------------------------------------------------
+Wed Mar 31 10:18:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch procps-3.3.17-bsc1181976.patch based on
+  commit 3dd1661a to fix bsc#1181976 that is change descripton
+  of psr, which is for 39th field of /proc/[pid]/stat
+
+-------------------------------------------------------------------
+Wed Mar 10 21:34:06 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Don't install translated man pages for non-installed binaries
+  (uptime, kill).
+
+-------------------------------------------------------------------
+Mon Feb 22 18:57:37 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Remove /usr/share/man/uk dir to file list for lang sub package:
+  It's now provided by filesystem.
+
+-------------------------------------------------------------------
+Thu Feb 11 08:46:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add /usr/share/man/uk dir to file list for lang sub package 
+
+-------------------------------------------------------------------
+Wed Feb 10 17:32:06 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix directory for Ukrainian man pages translations.
+- Move localized man pages to lang package.
+- Remove obsolete conditionals.
+- Remove obsolete --enable-oomem option.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Feb 10 10:09:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-3.3.17
+  * library: Incremented to 8:3:0
+    (no removals or additions, internal changes only)
+  * all: properly handle utf8 cmdline translations         issue #176
+  * kill: Pass int to signalled process                    merge #32
+  * pgrep: Pass int to signalled process                   merge #32
+  * pgrep: Check sanity of SG_ARG_MAX                      issue #152
+  * pgrep: Add older than selection                        merge #79
+  * pidof: Quiet mode                                      merge #83
+  * pidof: show worker threads                             Redhat #1803640
+  * ps.1: Mention stime alias                              issue #164
+  * ps: check also match on truncated 16 char comm names
+  * ps: Add exe output option                              Redhat #1399206
+  * ps: A lot more sorting available                       merge #99
+  * pwait: New command waits for a process                 merge #97
+  * sysctl: Match systemd directory order                  Debian #950788
+  * sysctl: Document directory order                       Debian #951550
+  * top: ensure config file backward compatibility         Debian #951335
+  * top: add command line 'e' for symmetry with 'E'        issue #165
+  * top: add '4' toggle for two abreast cpu display        issue #172
+  * top: add '!' toggle for combining multiple cpus
+  * top: fix potential SEGV involving -p switch            merge #114
+  * vmstat: Wide mode gives wider proc columns             merge #48
+  * watch: Add environment variable for interval           merge #62
+  * watch: Add no linewrap option                          issue #182
+  * watch: Support more colors                             merge #106,#109
+  * free,uptime,slabtop: complain about extra ops          issue #181
+- Remove now obsolete upstream patches
+  * procps-check-sanity-of-SC_ARG_MAX.patch
+  * procps-ng-3e1c00d0.patch
+- Port patches
+  * procps-ng-3.3.10-integer-overflow.patch
+  * procps-ng-3.3.10-large_pcpu.patch
+  * procps-ng-3.3.8-accuracy.dif
+  * procps-ng-3.3.8-bnc634840.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+
+-------------------------------------------------------------------
+Tue Feb  2 21:44:58 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Package translations in procps-lang.
+
+-------------------------------------------------------------------
+Fri Oct 16 10:17:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Wed Oct  7 08:53:42 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add upstream procps-check-sanity-of-SC_ARG_MAX.patch in order to fix
+  pgrep: cannot allocate 4611686018427387903 bytes when ulimit -s is unlimited.
+
+-------------------------------------------------------------------
+Thu Sep 24 15:24:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Replace patch procps-ng-3.3.16-comm_len.patch with upstream
+  commitment patch procps-ng-3e1c00d0.patch (bsc#1158830)
+
+-------------------------------------------------------------------
+Wed Aug 26 12:01:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable pidof by default
+
+-------------------------------------------------------------------
+Wed Dec 11 13:53:07 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-3.3.16
+  * library: Increment to 8:2:0
+    No removals or functions
+    Internal changes only, so revision is incremented.
+    Previous version should have been 8:1:0 not 8:0:1
+  * docs: Use correct symbols for -h option in free.1      Debian #898774
+  * docs: ps.1 now warns about command name length         issue #101
+  * docs: install translated man pages                     issue #146
+  * pgrep: Match on runstate                               issue #109, Debian #919381
+  * snice: Fix matching on pid                             merge #89
+  * top: can now exploit 256-color terminals               issue #96
+  * top: preserves 'other filters' in configuration file   issue #99
+  * top: can now collapse/expand forest view children      issue #99
+  * top: parent %CPU time includes collapsed children
+  * top: improve xterm support for vim navigation keys     issue #135
+  * top: avoid segmentation fault at program termination   Redhat #1737552
+- Port patches (mostly changed offsets of the hunks)
+  * procps-ng-3.3.10-fdleak.dif
+  * procps-ng-3.3.10-large_pcpu.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.8-bnc634840.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.8-vmstat-terabyte.dif
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+- Delete patches now upstream
+  * procps-ng-3.3.15-typo.patch
+  * procps-ng-3.3.8-top.1.diff
+- Add aptch procps-ng-3.3.16-comm_len.patch
+  * "ps -C" does not allow anymore an argument longer than 15
+     characters (bsc#1158830)
+
+-------------------------------------------------------------------
+Wed Jun  6 10:56:31 UTC 2018 - werner@suse.de
+
+- Reference patch procps-ng-3.3.15-typo.patch this patch add a
+  missed parenthesis for a nroff macro that is \*We become \*(We
+  in line 2186 of top/top.1
+
+-------------------------------------------------------------------
+Tue Jun  5 09:24:20 UTC 2018 - werner@suse.de
+
+- Update to procps-ng-3.3.15 (bsc#1092100)
+  * library: Increment to 8:0:1
+    No removals, no new functions
+    Changes: slab and pid structures
+  * library: Just check for SIGLOST and don't delete it    issue #93
+  * library: Fix integer overflow and LPE in file2strvec   CVE-2018-1124
+  * library: Use size_t for alloc functions                CVE-2018-1126
+  * library: Increase comm size to 64
+  * pgrep: Fix stack-based buffer overflow                 CVE-2018-1125
+  * pgrep: Remove >15 warning as comm can be longer        issue #92
+  * ps: Fix buffer overflow in output buffer, causing DOS  CVE-2018-1123
+  * ps: Increase command name selection field to 64
+  * top: Don't use cwd for location of config              CVE-2018-1122
+- Increase so major number
+
+-------------------------------------------------------------------
+Thu Apr 12 09:26:45 UTC 2018 - werner@suse.de
+
+- Update to procps-ng-3.3.14
+  * update translations
+  * library: build on non-glibc systems
+  * free: fix scaling on 32-bit systems
+  * Revert "Support running with child namespaces"
+
+-------------------------------------------------------------------
+Thu Apr  5 17:52:38 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Apr  5 09:03:49 UTC 2018 - werner@suse.de
+
+- Remove sysvinit boot script
+- Add procps-rpmlintrc
+
+-------------------------------------------------------------------
+Wed Apr  4 13:16:25 UTC 2018 - werner@suse.de
+
+- Update to procps-ng-3.3.13
+  * library: Increment to 7:0:1
+    No changes, no removals
+    New fuctions: numa_init, numa_max_node, numa_node_of_cpu,
+      numa_uninit, xalloc_err_handler
+  * doc: Document I idle state in ps.1 and top.1           Debian #886967
+  * free: fix some of the SI multiples                     issue #45
+  * kill: -l space between name parses correctly           Debian #854407
+  * library: dont use vm_min_free on non Linux             Debian #831396
+  * library: dont use SIGPWR on FreeBSD                    Debian #832148
+  * library: don't strip off wchan prefixes (ps & top)     Redhat #1322111
+  * pgrep: warn about 15+ char name only if -f not used
+  * pgrep/pkill: only match in same namespace by default   merge #41
+  * pidof: specify separator between pids                  merge #58
+  * pkill: Return 0 only if we can kill process            Debian #852758
+  * pmap: fix duplicate output line under '-x' option      Redhat #1374061
+  * ps: avoid eip/esp address truncations                  Debian #846361
+  * ps: recognizes SCHED_DEADLINE as valid CPU scheduler
+  * ps: display NUMA node under which a thread ran         issue #58
+  * ps: Add seconds display for cputime and time           merge #43
+  * ps: Add LUID field                                     merge #57 Redhat #1518986
+  * sysctl: Permit empty string for value                  issue #74
+  * sysctl: Don't segv when file not available             issue #76
+  * sysctl: Read and write large buffers                   merge #56
+  * top: add config file support for XDG specification
+  * top: eliminated minor libnuma memory leak
+  * top: show fewer memory decimal places (configurable)   issue #50
+  * top: provide command line switch for memory scaling    Redhat #1034466, issue #53
+  * top: provide command line switch for CPU States        issue #55
+  * top: provides more accurate cpu usage at startup       Redhat #1182327
+  * top: display NUMA node under which a thread ran        issue #58
+  * top: fix argument parsing quirk resulting in SEGV      Redhat #1450429
+  * top: delay interval accepts non-locale radix point     Redhat #1182248
+  * top: address a wishlist man page NLS suggestion        Debian #865689
+  * top: fix potential distortion in 'Mem' graph display   issue #64
+  * top: provide proper multi-byte string handling         issue #68
+  * top: startup defaults are fully customizable           Redhat #1153049, #1499410, issues #6, #78
+  *      see man page 6c. SYSTEM Configuration File
+  * watch: define HOST_NAME_MAX where not defined          Debian #830734
+  * vmstat: Fix alignment for disk partition format        issue #69
+  * watch: Support ANSI 39,49 reset sequences              issue #73
+- Removed now patch now upstream
+    0001-Preload-sysctl-lines-even-if-longer-than-stdio-buffe.patch
+    0002-Add-flexible-buffered-I-O-based-on-fopencookie-3.patch
+    0003-Use-new-standard-I-O-for-reading-writing-sysctl-valu.patch
+    procps-ng-3.3.12-stable_secret.patch
+    procps-ng-3.3.12-strtod.patch
+    procps-ng-3.3.12-sysctl-a.patch
+    procps-ng-3.3.12-sysctl-iobuf.patch
+- Port patches
+    procps-ng-3.3.10-bnc634071_procstat2.diff
+    procps-ng-3.3.10-errno.patch
+    procps-ng-3.3.10-fdleak.dif
+    procps-ng-3.3.10-integer-overflow.patch
+    procps-ng-3.3.10-large_pcpu.patch
+    procps-ng-3.3.10-slab.patch
+    procps-ng-3.3.11-pmap4suse.patch
+    procps-ng-3.3.8-accuracy.dif
+    procps-ng-3.3.8-bnc634840.patch
+    procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+    procps-ng-3.3.8-petabytes.patch
+    procps-ng-3.3.8-readeof.patch
+    procps-ng-3.3.8-tinfo.dif
+    procps-ng-3.3.8-top.1.diff
+    procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:44 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Tue Jan 30 09:39:14 UTC 2018 - werner@suse.de
+
+- Remove patch procps-ng-3.3.12-sysctl-iobuf-write.patch (bsc#1077746)
+- Add patches
+   0001-Preload-sysctl-lines-even-if-longer-than-stdio-buffe.patch
+   0002-Add-flexible-buffered-I-O-based-on-fopencookie-3.patch
+   0003-Use-new-standard-I-O-for-reading-writing-sysctl-valu.patch
+  from my project https://gitlab.com/bitstreamout/procps/tree/procio 
+  which implements a flexible buffer for reading and writing values
+  below /proc/sys (bsc#1039941)
+
+-------------------------------------------------------------------
+Tue Dec 19 15:58:21 UTC 2017 - werner@suse.de
+
+- Add patch procps-ng-3.3.12-sysctl-iobuf-write.patch to use
+  increased buffer on writing /proc/sys/net/ipv4/ip_local_reserved_ports
+
+-------------------------------------------------------------------
+Wed Aug  2 16:49:08 UTC 2017 - schwab@linux-m68k.org
+
+- procps-ng-3.3.12-sysctl-iobuf.patch: fix crash
+
+-------------------------------------------------------------------
+Thu Jul  6 09:13:36 UTC 2017 - werner@suse.de
+
+- Add patch procps-ng-3.3.12-sysctl-iobuf.patch to increase I/O
+  buffer for reading and writing values below /proc/sys (bsc#1039941)
+- Add patch procps-ng-3.3.12-stable_secret.patch to avoid messages
+  on unset /proc/sys/net/ipv6/conf/*/stable_secret due EIO
+
+-------------------------------------------------------------------
+Fri Jun 16 07:44:49 UTC 2017 - mpluskal@suse.com
+
+- Drop support for xinetd (systat.xinetd)
+  * xinetd is being obsoleted
+  * provided service is considered unsecure and is unlikely to be
+    used anyways
+- Small packaging cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon May 22 08:25:17 UTC 2017 - werner@suse.de
+
+- Add patch procps-ng-3.3.12-sysctl-a.patch (bsc#1039941, had been
+  accepted upstream) that is allow content lines below /proc/sys
+  longer than 1024 characters
+
+-------------------------------------------------------------------
+Wed Apr 26 12:45:15 UTC 2017 - werner@suse.de
+
+- Explain option --no-truncate of command w 
+
+-------------------------------------------------------------------
+Thu Jan 19 12:20:06 UTC 2017 - werner@suse.de
+
+- Remove -L option on screen call dues API change, now we depend
+  on environment variables only.
+
+-------------------------------------------------------------------
+Mon Dec 12 13:42:04 UTC 2016 - dimstar@opensuse.org
+
+- Only buildrequire pkgconfig(libsystemd) instead of
+  pkgconfig(libsystemd-login): The latter was merged into
+  libsystemd in version 209.
+
+-------------------------------------------------------------------
+Tue Aug  9 16:08:03 UTC 2016 - werner@suse.de
+
+- Avoid fillup and insserv on modern systems (bsc#992845) 
+
+-------------------------------------------------------------------
+Tue Jul 12 16:01:19 UTC 2016 - werner@suse.de
+
+- Use test suite but avoid the w command due dummy utmp 
+  * This requires dejagnu for the runtest command
+  * This requires screen to be able to provide a tty
+- Add patch procps-ng-3.3.12-strtod.patch to fix missed extern
+  declaration of strtod_nol_or_err()
+
+-------------------------------------------------------------------
+Mon Jul 11 13:28:02 UTC 2016 - werner@suse.de
+
+- Update to procps-ng-3.3.12
+  * libprocps API 6:0:0
+  * build: formerly optional --enable-oomem unconditional
+  * free: man document rewritten for shared                Debian #755233
+  * free: interpret intervals in non-locale way            Debian #692113
+  * kill: report error if cannot kill process              Debian #733172
+  * library: refine calculation of 'cached' memory
+  * library: find tty quicker                              Debian #770215
+  * library: eliminate threads display inconsistencies     Redhat #1284091
+  * pidof: check cmd if space found in argv0
+  * pmap: fixed detail parsing on long mapping lines
+  * pmap: fix occasional incorrect memory usage values     Redhat #1262864
+  * ps: sort by cgroup                                     Debian #692279
+  * ps: display control group name with -o cgname
+  * ps: fallback to attr/current for context               Debian #786956
+  * ps: enabled broken 'thcount' option                    Redhat #1174313
+  * tests: conditionally add prctl                         Debian #816237
+  * top: displays the 3 new linux-4.5 RES memory fields
+  * top: man page memory fields corrected + new narrative
+  * top: added display of CGNAME (control group name)
+  * top: is now more responsive to cpus brought online
+  * top: namespace cols use suppressible zero
+  * top: zero suppress ('0') includes out-of-memory & nice
+  * top: better 'i' toggle management when scrolled
+  * top: the '=' key now includes active locate requests
+  * vmstat: devices exceeding 15 chars now displayed       Redhat #586078
+  * watch: hostname added to header
+  * watch: better handling ANSI including esc[m            Debian #830313
+  * watch: use locale-independent float                    Debian #692113
+
+-------------------------------------------------------------------
+Mon May 30 11:44:59 UTC 2016 - werner@suse.de
+
+- Avoid line doubling of pmap output due new SwapPss entry (boo#982090)
+
+-------------------------------------------------------------------
+Wed Jan 27 10:01:13 UTC 2016 - werner@suse.de
+
+- Remove SUSE version of pmap as this stumble over new entries
+  in processes smaps files (boo#962275)
+- Add patch procps-ng-3.3.11-pmap4suse.patch to let upstream pmap
+  behave similar to old suse pmap
+
+-------------------------------------------------------------------
+Tue Nov 10 11:56:23 UTC 2015 - werner@suse.de
+
+- Pmap: support "SwapPss" which shows proportional swap share
+  of a process similar to the PSS (proportional set size)
+  of a process which is the count of pages it has in memory.
+
+-------------------------------------------------------------------
+Fri Sep 18 12:41:05 UTC 2015 - werner@suse.de
+
+- Update to procps-ng-3.3.11
+  * libprocps API 5:0:0
+  * pgrep: don't crash with -a -w flags. Merge 33, Debian #768190
+  * skill: command line with signal number interpreted correctly
+  * pmap: print process name even if smaps is unreadable Debian #775624
+  * ps: sort by etimes column, uses etime Debian #794619
+  * ps, top: Add support for LXC containers. Ubuntu #1174911
+  * w: work with smaller window sizes Debian #183394
+  * w: correctly find "best" proc with pid wrap
+  * library: use merged systemd library Debian #731256
+  * kill,skill,pkill: fix option parsing
+  * top once again will fully honor a saved rcfile,
+    without requiring --disable-modern-top. Debian #762928, #762947
+  * vmstat: Not crash if partition appears before disk Debian #736628
+  * free: -s without -c works Debian #733758
+- Remove the patch procps-v3.3.4-w-simply-work.diff as now upstream
+- Port our legacy pmap to new procps-ng-3.3.11
+
+-------------------------------------------------------------------
+Fri Jul 10 07:32:20 UTC 2015 - werner@suse.de
+
+- Make it build with every ncurses library ABI
+
+-------------------------------------------------------------------
+Tue Jun  2 06:43:46 UTC 2015 - werner@suse.de
+
+- Reintroduce the corrected patch procps-ng-3.3.9-w-notruncate.diff
+  to have a working --no-truncat option back for `w' (boo#932950)
+
+-------------------------------------------------------------------
+Wed May 20 13:33:02 UTC 2015 - lnussel@suse.de
+
+- restore original top defaults. The new ones result in half of the display
+  occupied with cpu information and the other half with systemd children.
+
+-------------------------------------------------------------------
+Sun Mar 15 17:18:57 UTC 2015 - jengelh@inai.de
+
+- Remove redundant ldconfig requires
+
+-------------------------------------------------------------------
+Tue Feb  3 15:24:19 UTC 2015 - werner@suse.de
+
+- Update to procps-ng-3.3.10
+  * sysctl --system loads default config file - Debian #732920
+  * ps doesn't exit on SIGCONT
+  * top better accommodates discontinuous NUMA nodes
+  * ps cmdline trailing spaces suppressed under zsh, redhat #1057600
+  * kill restores the '-HUP -1' functionality
+  * vmstat -d / -p segfault eliminated when /sys is not mounted
+  * pgrep properly shows full command line when -au are combined
+  * vmstat supports timestamps with -t/--timestamp option
+  * top is now immune to distortions when system time is reset
+  * top standardized the <Esc> key support with prompted input
+  * top missing summary area info added to man document, ubuntu #574624
+  * top properly responds to the current locale LC_NUMERIC setting
+  * top provides alternate graph modes for cpu states and memory usage
+  * top offers new startup defaults, plus ./configure --disable-modern-top
+  * top exploits MemAvailable field and offers improved memory statistics
+  * ps new --quick-pid option, a more efficient alternative to --pid option
+  * usernames up to 32 characters now accommodated (up from 19), redhat #1112734
+  * free exploits MemAvailable field and offers improved memory statistics
+  * free considers slabs in displayed totals, debian #565518, ubuntu #126329
+  * watch supports new ANSI styles and background colors
+- Remove the patches now upstream
+  0023-top-do-not-forget-the-fscanf-s-terminating-null-byte.patch
+  0024-sysctl-system-loads-default-config-file.patch
+  0025-Split-help-lines-to-help-translators.patch
+  0026-library-fixing-uninitialized-variable-pos-in-whattim.patch
+  0027-pgrep-Fixing-memory-leak-in-do_regcomp.patch
+  0028-sysctl-Fixing-memory-leaks-in-PreloadSystem.patch
+  0029-ps-ignore-SIGCONT.patch
+  0031-vmstat-wide-output-still-not-wide-enough.patch
+  0032-library-skip-replacement-of-trailing-0-in-read_unvec.patch
+  0033-kill-for-PID-1-restored.patch
+  0034-Check-for-presence-of-disks-in-vmstat.patch
+  0035-PID-2-to-9-for-kill-too.patch
+  0035-top-provide-for-discontinuous-not-active-NUMA-nodes.patch
+  0036-pgrep-fails-to-show-full-command-line-with-au.patch
+  0036-top-restore-the-former-behavior-after-stderr-redirec.patch
+  0037-fail-on-null-string-for-arguments.patch
+  0037-top-avoid-name-conflict-in-the-next-version-of-stdli.patch
+  0038-Update-help-files.patch
+  0038-top-protect-against-distortion-when-system-time-rese.patch
+  0039-vmstat-Support-for-timestamps-with-t-fix-for-wd.patch
+  0040-watch-Don-t-leak-extra-fds-to-the-child.patch
+  0041-vmstat-Fixing-format-security-flaws.patch
+  0043-Added-get-trans-target-to-Makefile.patch
+  0044-top-avoid-a-nan-when-the-delay-interval-is-very-low.patch
+  0045-library-properly-handle-memory-used-by-tmpfs.patch
+  0045-top-standardize-Esc-key-support-with-prompted-input.patch
+  0046-Minor-i18n-fixes.patch
+  0046-top-miscellaneous-accumulated-changes-to-program-cod.patch
+  0047-sysctl-increase-max-supported-line-length-of-the-con.patch
+  0049-fix-url-for-rsync.patch
+  0051-top-update-copyright-dates-plus-1-preprocessor-chang.patch
+  0052-top-refactor-man-document-so-as-to-allow-translation.patch
+  0053-top-minimize-the-usage-of-apostrophes-in-man-documen.patch
+  0054-top-swap-opening-quotes-for-back-tics-in-man-documen.patch
+  0055-misc-fix-man-doc-spelling-and-grammar-for-translatio.patch
+  0058-library-reverting-tmpfs-subtraction-from-cached-18-F.patch
+  0060-top-miscellaneous-accumulated-changes-to-man-documen.patch
+  bsc901202-add-better-help-output.patch
+  procps-ng-3.3.8-selinux.patch
+  procps-v3.3.3-buffersize.diff
+- Modify and rename patches
+  procps-ng-3.3.8-bnc634071_procstat2.diff becomes procps-ng-3.3.10-bnc634071_procstat2.diff
+  procps-ng-3.3.9-errno.patch becomes procps-ng-3.3.10-errno.patch
+  procps-v3.3.3-fdleak.dif becomes procps-ng-3.3.10-fdleak.dif
+  procps-v3.3.3-integer-overflow.patch becomes procps-ng-3.3.10-integer-overflow.patch
+  procps-v3.3.4-large_pcpu.patch becomes procps-ng-3.3.10-large_pcpu.patch
+  procps-v3.3.3-slab.patch becomes procps-ng-3.3.10-slab.patch
+  procps-v3.3.4-xen.dif becomes procps-ng-3.3.10-xen.dif
+
+-------------------------------------------------------------------
+Fri Jan 23 15:53:29 UTC 2015 - werner@suse.de
+
+- Modify patch procps-v3.3.3-slab.patch to be able to make the adding
+  further cache lines to cache output of the free command switchable.
+- This requires modifing the patches
+  0045-library-properly-handle-memory-used-by-tmpfs.patch
+  0058-library-reverting-tmpfs-subtraction-from-cached-18-F.patch
+  procps-ng-3.3.9-errno.patch
+  procps-v3.3.3-integer-overflow.patch
+  procps-v3.3.3-slab.patch
+
+-------------------------------------------------------------------
+Tue Dec 16 15:32:40 UTC 2014 - werner@suse.de
+
+- Add upstream patch bsc901202-add-better-help-output.patch
+  which includes the commits 
+  0f649e2cd2eef94075f1975248953f8c5b85d9f4
+  4ba9ff5c0df7e94d03a555ac4cec947f6fac2ba6
+  b4951bfea367eef551b053e9f0240d717c353c11
+  to fix the bug bsc#901202
+
+-------------------------------------------------------------------
+Fri Dec  5 10:07:22 UTC 2014 - werner@suse.de
+
+- Add patch procps-ng-3.3.9-errno.patch to avoid leftover errno
+  from setlocale() (bsc#908516)
+
+-------------------------------------------------------------------
+Thu Sep 11 20:36:54 UTC 2014 - jengelh@inai.de
+
+- Correct package name in descriptions: procps, not props
+
+-------------------------------------------------------------------
+Thu Jun 26 07:17:08 UTC 2014 - werner@suse.de
+
+- Remove patches
+  procps-v3.3.3-chroot.diff
+  procps-v3.3.5-top-locale.patch
+  as already included in upstream code (bnc#884502)
+
+-------------------------------------------------------------------
+Wed May 21 13:39:58 UTC 2014 - werner@suse.de
+
+- Require the systemd libraries for build to allow the move
+  of systemd.pc back to systemd
+
+-------------------------------------------------------------------
+Fri May 16 09:44:19 UTC 2014 - werner@suse.de
+
+- Update to procps-ng-3.3.9
+  * kernel namespaces support added to skill, pgrep, ps and top
+  * pidof was reimplemented from scratch (replacing sysvinit pidof)
+  * ps has configurable libselinux support (--enable-libselinux)
+  * ps provides for display of systemd slice unit (--with-systemd)
+  * free can once again report non-zero 'shared' memory
+  * sysctl provides '--system' to ignore missing /etc/sysctl.conf
+  * watch interval capacity was increased - debian #720445
+  * pwdx no longer fails in a nonexistent locale - debian #718766
+  * top clarified summary area Mem/Swap stats - debian #718670
+  * top batch mode -w (width) abend fixed - debian #721204
+  * top man page removed 'Bd/Ed' mdoc macros - debian #725713
+  * top no longer clears screen at exit - redhat #977561
+  * top adapted to potential libnuma stderr message - redhat #998678
+  * top added missing batch mode newline - redhat #1008674
+- Modify patches
+  procps-ng-3.3.8-watch.patch becomes procps-ng-3.3.9-watch.patch
+  procps-v3.3.4-w-notruncate.diff becomes procps-ng-3.3.9-w-notruncate.diff
+  procps-ng-3.3.8-top.1.diff
+  procps-ng-3.3.8-top.1.diff
+  procps-v3.3.4-large_pcpu.patch
+  procps-ng-3.3.8-bnc634071_procstat2.diff
+- Remove patches now upstream
+  procps-v3.3.4-stealtime.patch is upstream
+  procps-ng-3.3.8-libselinux.patch
+  procps-ng-3.3.8-shmem.patch
+  0001-top-add-the-major-version-to-dlopen-of-libnuma-sonam.patch
+  0002-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+  0003-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+  0004-top-enable-screen-contents-preservation-at-end-of-jo.patch
+  0005-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+  0006-top-cursor-repositioning-includes-line-oriented-inpu.patch
+  0007-top-correct-improve-or-otherwise-tweak-some-comments.patch
+  0008-top-tweak-cursor-state-code-to-swat-an-obscure-bugle.patch
+  0009-top-correct-cursor-positioning-for-all-Z-or-C-cases.patch
+  0010-ps-address-a-potential-newline-quirk-the-libselinux.patch
+  0012-top-hint-that-Summary-Area-cached-is-Mem-not-Swap.patch
+  0013-top-modest-efficiency-change-to-message-line-handlin.patch
+  0014-top-correct-improve-and-otherwise-tweak-configs_read.patch
+  0015-top-swat-bug-affecting-batch-mode-and-width-provisio.patch
+  0018-top-restore-the-lost-final-newline-when-in-Batch-mod.patch
+  0019-top-swat-bug-impacting-idle-mode-user-filtering.patch
+  0021-top-address-some-potential-libnuma-display-corruptio.patch
+  0022-top-fix-miscellaneous-spelling-errors-in-man-documen.patch
+  0023-top-expand-on-column-highlight-quirks-in-man-documen.patch
+  0024-top-add-some-flexibility-to-dlopen-for-numa-support.patch
+  0025-top-minimize-the-statistics-overhead-for-numa-suppor.patch
+  0026-top-eliminate-yet-more-gcc-subscript-resolution-bloa.patch
+  0032-top-do-not-lie-about-purported-alphabetical-ordering.patch
+  0033-top-follow-usual-name-conventions-for-global-variabl.patch
+- Add patches from upstream
+  0023-top-do-not-forget-the-fscanf-s-terminating-null-byte.patch
+  0024-sysctl-system-loads-default-config-file.patch
+  0025-Split-help-lines-to-help-translators.patch
+  0026-library-fixing-uninitialized-variable-pos-in-whattim.patch
+  0027-pgrep-Fixing-memory-leak-in-do_regcomp.patch
+  0028-sysctl-Fixing-memory-leaks-in-PreloadSystem.patch
+  0029-ps-ignore-SIGCONT.patch
+  0031-vmstat-wide-output-still-not-wide-enough.patch
+  0032-library-skip-replacement-of-trailing-0-in-read_unvec.patch
+  0033-kill-for-PID-1-restored.patch
+  0034-Check-for-presence-of-disks-in-vmstat.patch
+  0035-PID-2-to-9-for-kill-too.patch
+  0036-pgrep-fails-to-show-full-command-line-with-au.patch
+  0037-fail-on-null-string-for-arguments.patch
+  0038-Update-help-files.patch
+  0039-vmstat-Support-for-timestamps-with-t-fix-for-wd.patch
+  0040-watch-Don-t-leak-extra-fds-to-the-child.patch
+  0041-vmstat-Fixing-format-security-flaws.patch
+  0043-Added-get-trans-target-to-Makefile.patch
+  0045-library-properly-handle-memory-used-by-tmpfs.patch
+  0046-Minor-i18n-fixes.patch
+  0047-sysctl-increase-max-supported-line-length-of-the-con.patch
+  0049-fix-url-for-rsync.patch
+  0051-top-update-copyright-dates-plus-1-preprocessor-chang.patch
+  0052-top-refactor-man-document-so-as-to-allow-translation.patch
+  0053-top-minimize-the-usage-of-apostrophes-in-man-documen.patch
+  0054-top-swap-opening-quotes-for-back-tics-in-man-documen.patch
+  0055-misc-fix-man-doc-spelling-and-grammar-for-translatio.patch
+  0058-library-reverting-tmpfs-subtraction-from-cached-18-F.patch
+  0060-top-miscellaneous-accumulated-changes-to-man-documen.patch
+
+-------------------------------------------------------------------
+Thu May 15 11:50:39 UTC 2014 - werner@suse.de
+
+- Fix missing job in D states in idle mode of top, therefore
+  update to latest top of procps-ng git HEAD
+  * Rename the patches
+    0001-top-enable-screen-contents-preservation-at-endofjob.patch
+    0001-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+    0001-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+    0002-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+    0002-top-cursor-repositioning-includes-line-oriented-inpu.patch
+    to
+    0002-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+    0003-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+    0004-top-enable-screen-contents-preservation-at-end-of-jo.patch
+    0005-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+    0006-top-cursor-repositioning-includes-line-oriented-inpu.patch
+  * Add upstream patches
+    0002-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+    0003-library-for-atexit-support-fix-fileutils-for-EPIPE.patch
+    0004-top-enable-screen-contents-preservation-at-end-of-jo.patch
+    0005-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+    0006-top-cursor-repositioning-includes-line-oriented-inpu.patch
+    0007-top-correct-improve-or-otherwise-tweak-some-comments.patch
+    0008-top-tweak-cursor-state-code-to-swat-an-obscure-bugle.patch
+    0009-top-correct-cursor-positioning-for-all-Z-or-C-cases.patch
+    0010-ps-address-a-potential-newline-quirk-the-libselinux.patch
+    0012-top-hint-that-Summary-Area-cached-is-Mem-not-Swap.patch
+    0013-top-modest-efficiency-change-to-message-line-handlin.patch
+    0014-top-correct-improve-and-otherwise-tweak-configs_read.patch
+    0015-top-swat-bug-affecting-batch-mode-and-width-provisio.patch
+    0018-top-restore-the-lost-final-newline-when-in-Batch-mod.patch
+    0019-top-swat-bug-impacting-idle-mode-user-filtering.patch
+    0021-top-address-some-potential-libnuma-display-corruptio.patch
+    0022-top-fix-miscellaneous-spelling-errors-in-man-documen.patch
+    0023-top-expand-on-column-highlight-quirks-in-man-documen.patch
+    0024-top-add-some-flexibility-to-dlopen-for-numa-support.patch
+    0025-top-minimize-the-statistics-overhead-for-numa-suppor.patch
+    0026-top-eliminate-yet-more-gcc-subscript-resolution-bloa.patch
+    0032-top-do-not-lie-about-purported-alphabetical-ordering.patch
+    0033-top-follow-usual-name-conventions-for-global-variabl.patch
+    0035-top-provide-for-discontinuous-not-active-NUMA-nodes.patch
+    0036-top-restore-the-former-behavior-after-stderr-redirec.patch
+    0037-top-avoid-name-conflict-in-the-next-version-of-stdli.patch
+    0038-top-protect-against-distortion-when-system-time-rese.patch
+    0044-top-avoid-a-nan-when-the-delay-interval-is-very-low.patch
+    0045-top-standardize-Esc-key-support-with-prompted-input.patch
+    0046-top-miscellaneous-accumulated-changes-to-program-cod.patch
+  * Modify patches
+    0001-top-add-the-major-version-to-dlopen-of-libnuma-sonam.patch
+    procps-ng-3.3.8-libselinux.patch
+
+-------------------------------------------------------------------
+Tue Mar 25 12:43:12 CET 2014 - tiwai@suse.de
+
+- Ignore scan_unevictable_pages sysctl entry (bnc#868888)
+  procps-ng-3.3.8-ignore-scan_unevictable_pages.patch
+
+-------------------------------------------------------------------
+Tue Dec 17 13:17:36 UTC 2013 - werner@suse.de
+
+- Change patch procps-ng-3.3.8-accuracy.dif to really use finally
+  jiffies to calculate %CPU output (bnc#855861) 
+
+-------------------------------------------------------------------
+Mon Oct  7 13:35:36 UTC 2013 - werner@suse.de
+
+- Be aware of new VmFlags entry in /proc/<pid>/smaps
+
+-------------------------------------------------------------------
+Mon Sep 30 13:06:55 UTC 2013 - werner@suse.de
+
+- Enable legacy pmap
+- Fix crash of legacy pmap (bnc#842340)
+
+-------------------------------------------------------------------
+Fri Aug 30 14:58:48 UTC 2013 - werner@suse.de
+
+- Add patch procps-ng-3.3.8-shmem.patch to show shared memory in
+  'free' again
+- Add patch procps-ng-3.3.8-libselinux.patch to be able to enable
+  selinux
+
+-------------------------------------------------------------------
+Fri Aug  2 13:00:57 UTC 2013 - werner@suse.de
+
+- Add patch procps-ng-3.3.8-vmstat-terabyte.dif to readd last
+  trifle rest of the old terabyte patch (is this really required?)
+
+-------------------------------------------------------------------
+Thu Jul 25 11:31:34 UTC 2013 - werner@suse.de
+
+- Add three upstream patches
+  0001-top-enable-screen-contents-preservation-at-endofjob.patch
+  0001-top-refine-some-miscellaneous-signals-interrupt-stuf.patch
+  0002-top-cursor-repositioning-includes-line-oriented-inpu.patch
+
+-------------------------------------------------------------------
+Wed Jun 26 14:17:34 UTC 2013 - werner@suse.de
+
+- Add tow upstream patches
+  0001-top-trade-two-groff_mdoc-macros-for-groff-equivalent.patch
+  0002-library-for-atexit-support-fix-fileutils-for-EPIPE.patch 
+
+-------------------------------------------------------------------
+Fri Jun 21 11:45:19 UTC 2013 - werner@suse.de
+
+- Add upstream patch to use pecific libnuma.so.1 shared libray for
+  top instead of the devel version libnuma.so
+
+-------------------------------------------------------------------
+Wed May 29 13:55:41 UTC 2013 - werner@suse.de
+
+- Update to procps-ng-3.3.8
+  * top adds extensions for linux NUMA/Node capability
+  * top has reverted to former %CPU and %MEM precision
+    but also provides a '--enable-wide-percent' option
+    Debian #707648
+  * eliminate the potential library segmentation fault
+    Debian #706259, RedHat #951391
+  * top now accomodates a window manager like 'screen'
+    RedHat #962022
+  * ps shows systemd unit and user unit for a process
+- Update to procps-ng-3.3.7
+  * top adds a powerful new filter feature wherein any
+    window can include or exlude selected fields which
+    contain specific values - Debian #682082 & #682083
+  * top preserves user input for later recall and edit
+  * top provides true input editing vs. just backspace
+  * top user filtering with exclusion - Debian #682086
+  * top field management resize errors no longer fatal
+  * top is more responsive to window resize (SIGWINCH)
+  * top will now preserve user's context when signaled
+- Update to procps-ng-3.3.6
+  * top adds a powerful new feature where the contents
+    of some file or output from a program, pipeline or
+    shell script can be viewed in its own scrollable &
+    searchable window while pausing the normal display
+  * top highlights matches with 'locate/next' commands
+  * top adds summary/task area memory scaling commands
+  * top adds a command to suppress insignificant zeros
+  * top adds a command line sort field override switch
+  * top provides a default PID for kill, nice commands
+  * top allows core dump generation, if a signal would
+  * pmap adds 2 new options based on smaps, -X and -XX
+  * Adjusted pmap pidlist storage Debian #688180
+  * programs will permit core-dumps RedHat #87825, 512857
+  * receiving a signal is not a crash RedHat #871824, 441656
+  * ps: Fixed negative etime RedHat #871819, #433266
+  * pkill -c option returns Debian #693783
+  * pmap uses correct types for memory allocation Debian #688180
+  * expose freeproc, adds function to API Debian #681653
+
+-------------------------------------------------------------------
+Mon May 27 11:07:58 UTC 2013 - lnussel@suse.de
+
+- move sysctl defaults to aaa_base (bnc#820443)
+
+-------------------------------------------------------------------
+Fri May 24 09:32:38 UTC 2013 - lnussel@suse.de
+
+- enable hard- and symlink protection (bnc#821585)
+
+-------------------------------------------------------------------
+Sun Feb 10 21:24:36 UTC 2013 - crrodriguez@opensuse.org
+
+- boot.sysctl is not suitable for distros with systemd, this
+  task is performed by systemd-sysctl(8) now.
+ - the "ad-hoc" test for pmap does not work in all systems, remove it.
+
+-------------------------------------------------------------------
+Tue Jan 15 11:11:48 UTC 2013 - werner@suse.de
+
+- Make rpmlint happy 
+
+-------------------------------------------------------------------
+Fri Jan 11 16:35:15 UTC 2013 - jengelh@inai.de
+
+- Remove redundant tags/sections
+- Update homepage URLs
+
+-------------------------------------------------------------------
+Tue Dec 18 17:47:48 UTC 2012 - werner@suse.de
+
+- Add procps-v3.3.5-top-locale.patch (bnc#794678)
+
+-------------------------------------------------------------------
+Tue Oct 30 14:34:52 UTC 2012 - werner@suse.de
+
+- Update to procps-ng-3.3.5 
+  * Stop SIGFPE on vmstat at times
+  * Added debian patch for kfreebsd bug, Debian #674785
+  * Bump the soname
+
+-------------------------------------------------------------------
+Tue Oct 30 12:35:12 UTC 2012 - werner@suse.de
+
+- Update to procps-ng-3.3.4
+  * Removed ps -aux bogus message
+  * w get -i option to display IP addresses
+  * watch 8bit fixes Debian #675069
+  * Fixed FTBFS for non-linux Debian #677055
+  * pkill -u <uid> doesn't need space Debian #676239
+  * top enables intra-column horizontal scrolling
+  * top can display a task's environment
+  * top can display major/minor pg fault deltas, Debian #84992
+  * top provides additional control over column widths
+  * top offers user controlled left/right justification 
+
+-------------------------------------------------------------------
+Thu Jul  5 08:13:42 UTC 2012 - werner@suse.de
+
+- Allow numeric user ids in top even if it does not exist in passwd
+  as such an id may listed due an uid from an chroot environment
+
+-------------------------------------------------------------------
+Wed Jun  6 12:00:54 UTC 2012 - werner@suse.de
+
+- Avoid to be fooled by a former errno due not existing system
+  file as this might cause failing pwdx 
+
+-------------------------------------------------------------------
+Wed Jun  6 11:43:55 UTC 2012 - werner@suse.de
+
+- Avoid UNKNOWN version due git checkout, use tag version
+
+-------------------------------------------------------------------
+Wed Jun  6 11:17:37 UTC 2012 - werner@suse.de
+
+- Make our w-notruncate patch file lines dynamically that is use
+  the string and not the umtp field lengths
+
+-------------------------------------------------------------------
+Wed Jun  6 10:35:41 UTC 2012 - werner@suse.de
+
+- Make /bin -> /usr/bin a %bcond 
+
+-------------------------------------------------------------------
+Wed Jun  6 09:44:35 UTC 2012 - werner@suse.de
+
+- Allow SUSE specific pmap to list results for more than one pid 
+
+-------------------------------------------------------------------
+Wed Jun  6 09:30:13 UTC 2012 - werner@suse.de
+
+- Make SUSE specific pmap smart, that is detect only new entries
+  in smaps if environment variable  MALLOC_CHECK_ is set, for
+  older kernels ignore entries which are not found.
+
+-------------------------------------------------------------------
+Tue Jun  5 12:35:19 UTC 2012 - werner@suse.de
+
+- For legacy readd SUSE specific pmap
+
+-------------------------------------------------------------------
+Mon Jun  4 14:17:34 UTC 2012 - werner@suse.de
+
+- Update to procps-ng-3.3.3
+  * watch -g command repeats until something changes
+  * Changed labels of kB etc to KiB Debian #662786
+  * top supports hotplugged memory and cpus Debian #351934, #459287
+  * top %cpu not distorted when switch to/from threads Debian #441166
+  * top can read old toprc configuration files Debian #651213, #651863
+  * top supports input paste once again Debian #663334
+  * top -p avoids SEGV when pid doesn't exist Debian 668335
+  * Various DejaGNU test cases fixed
+  * pgrep.1 graoff syntax fix Debian #665425
+  * sysctl avoid crash when -p file has unexpected input
+  * sysctl .conf off-by-one error Debian #669128
+  * libprocps: protect locale env getting overwrite RedHat #548711
+  * Documentation catch up (fixed prior to 3.3.3)
+    . top repeating "%" wastes space Debian #322984
+    . top -U user name parse error Debian #623200
+    . top memory leaks Debian #627257
+    . top impossible task swap statistics Debian #628462
+    . top forest view segfault Debian #650864
+- Update to procps-ng-3.3.2
+  * Redefined library to use version-info
+  * NLS added! Programs can use po files to localise the output to suite
+    any supported languages.
+  * Imported a bunch of distribution patches:
+      watch: support unicode
+      watch: add precision wait time option -p
+      watch: interpret ANSI color code sequences
+      watch: add -exec and -beep flags and has better quoting
+      w: use environment to set user and from/host column widths
+      w: use COLUMNS environment if TIOCGWINSZ fails
+      w: bassman emulation with -o option
+      vmstat: do not scale si/so just like bi/bo
+      libprocps-ng: sysinfo.c: truncate the vmstat figure to 32 bits
+      tload: remote unneeded optarg and optind variables
+      sysctl: fix up some option processing
+      skill: kill prints perror
+      skill: do not treat skill null parameter as 0
+      skill: fix too greedy option parser
+      libprocps-ng: readproc.c: some type conversion help
+      ps: rename SZ to SIZE
+      ps: add sorting to %mem for ps
+      pmap: provide information for -x option
+      pgrep: distinguish between invalid commandline parameters and '-?'
+      pgrep: fix compiler warning saved_start_time might be used uninitialized
+      pgrep: add -c option for counting number of matched proceesses
+      pwdx & libprocps-ng: Hurd does not have MAX_PATH defined
+      ps: --sort does not work with time argument
+      skill: add CR to warning line
+      contrib: minimal ps: define mips PAGE_SIZE
+      libproc-ng: prettyfy proc mount messages
+      ps: add build option to disable ps option warning
+      libproc-ng: support building without WCHAR support
+      sysctl: remove index() for buildroot
+  * top now has a search capability
+  * User import is validated better to stop negative values for intervals etc
+- Update to procps-ng-3.3.1
+  * Added DejaGNU regression testing
+  * Fixed pgrep -u not finding processes Debian#649591
+  * Fixed pgrep crashing
+  * vmstat -p <part> finds partitions. Was Debian patch vmstat_part_format
+    fixes closed bugs RH#485243 and Debian#588677
+  * watch 8-bit clean, Was Debian patch watch_8bitchar
+  * slabtop prints plain ASCII in once mode
+- Update to procps-ng-3.3.0
+  * Debian, Fedora and openSUSE fork of procps.
+    https://gitorious.org/procps
+  * environment/build changes:
+    . autotools integrated
+    . procps-ng specific options
+        --enable-oomem  (add out-of-memory flds)
+        --disable-kill  (do not build kill pgm)
+        --enable-w-from (from as default for w)
+  * library changes:
+    . added control groups support
+    . added supplementary groups support
+    . introduced proc_t memory management
+    . enabled hot-plugged cpu support
+    . introduced new api's
+        readeither   (readproc.c)
+        readproctab3 (readproc.c)
+        escaped_copy (escape.c)
+  * free changes:
+    . rewritten/modernized
+        improved help
+        includes long options
+        added new processing options
+    . updated manual page
+  * ps changes:
+    . added new fields
+        cgroups,etimes,supgid,supgrp,tgid
+    . exploited new library api's
+  * top changes:
+    . redesigned fields management
+    . added new fields
+        cgroups,gid,nmin,nth,pgrp,ruid,
+        sid,suid,supgids,supgrps,suser,
+        tgid,tpgid
+    . added horizontal/vertical scrolling
+    . added flexible output override via -w
+    . added COMMAND column forest view via V
+    . added hot-plugged cpu/memory support
+    . improved user filtering via u|U
+    . improved signal handling
+    . restored zero delay functionality
+    . introduced true line input editing
+    . exploited new library api's
+    . improved performance up to 300%
+
+-------------------------------------------------------------------
+Tue Dec 20 10:51:18 UTC 2011 - werner@suse.de
+
+- Avoid segfault with top when /proc is not readable (bnc#733753)
+
+-------------------------------------------------------------------
+Tue Nov 22 16:57:06 UTC 2011 - werner@suse.de
+
+- Work around stupid build system
+
+-------------------------------------------------------------------
+Tue Nov 22 13:43:26 UTC 2011 - werner@suse.de
+
+- Add patch to use libtinfo if available
+
+-------------------------------------------------------------------
+Thu Oct 20 09:38:08 UTC 2011 - idonmez@suse.com
+
+- Disable auto-closing of cd tray bnc#659153
+
+-------------------------------------------------------------------
+Fri Sep 30 15:59:27 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Fri Aug 26 12:41:30 UTC 2011 - lnussel@suse.de
+
+- add some docu to /etc/sysctl.conf (bnc#700174)
+
+-------------------------------------------------------------------
+Fri Aug 26 09:36:03 UTC 2011 - lnussel@suse.de
+
+- make --system switch compatible with udev/systemd scheme
+
+-------------------------------------------------------------------
+Wed Aug 24 10:09:36 UTC 2011 - werner@suse.de
+
+- Add large (p)cpu patch from Tony Ernst (bnc#713482) 
+- Add petabytes patch from Tony Ernst (bnc#713482)
+
+-------------------------------------------------------------------
+Fri Jul 22 15:43:44 UTC 2011 - werner@suse.de
+
+-  Ignore new smaps entries AnonHugePages and Locked (bnc#706942)
+
+-------------------------------------------------------------------
+Tue May 17 14:42:31 UTC 2011 - lnussel@suse.de
+
+- load sysctls earlier (bnc#664550)
+- move distro defaults to /lib/sysctl.d to avoid .rpmnew files
+- enable IPv6 privacy by default (bnc#678066)
+
+-------------------------------------------------------------------
+Thu May  5 17:49:30 CEST 2011 - jeffm@suse.de
+
+- boot.sysctl: Add support for loading defaults from
+  /boot/sysctl.conf-$(uname -r) before loading /etc/sysctl.conf
+  to allow each kernel flavor to adjust defaults without
+  different kernel configuration options.
+
+-------------------------------------------------------------------
+Tue Mar 22 17:31:22 UTC 2011 - idoenmez@novell.com
+
+- Fix procps-3.2.8.dif: use -Wl for linker options 
+
+-------------------------------------------------------------------
+Fri Dec  3 17:56:27 CET 2010 - werner@suse.de
+
+- pmap: get and ignore Anonymous tag in smaps (bnc#656826)
+
+-------------------------------------------------------------------
+Fri Oct 29 12:17:40 CEST 2010 - werner@suse.de
+
+- Fix race in parallel make
+
+-------------------------------------------------------------------
+Fri Oct 29 11:47:52 CEST 2010 - werner@suse.de
+
+- On IA64 the priorities from 0 upto 100 are reserved for the
+  implementation
+
+-------------------------------------------------------------------
+Fri Oct 29 10:14:51 CEST 2010 - werner@suse.de
+
+- Avoid running HZ initialization twice by using priority for
+  the constructors for excuting before main()
+- Add test on "Unknown HZ value!"
+
+-------------------------------------------------------------------
+Thu Oct 28 14:06:16 UTC 2010 - seife@b1-systems.de
+
+- fix "Unknown HZ value!" error (bnc#649501)
+
+-------------------------------------------------------------------
+Mon Oct  4 18:58:50 CEST 2010 - werner@suse.de
+
+- Fix build on newer systems
+
+-------------------------------------------------------------------
+Mon Sep 20 12:30:21 CEST 2010 - werner@suse.de
+
+- Ignore SIGHUP within batch mode of top (bnc#634840)
+
+-------------------------------------------------------------------
+Tue Sep  7 18:34:50 CEST 2010 - werner@suse.de
+
+- Add change to avoid repeated read of /proc/stat (bnc#634071)
+- Add change to avoid repeated call of sysconf() (bnc#634071)
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Wed Jun 23 10:11:18 CEST 2010 - mszeredi@suse.cz
+
+- Avoid integer overflows in free(1) [bnc#411002]
+
+-------------------------------------------------------------------
+Tue Mar  2 16:24:46 CET 2010 - werner@suse.de
+
+- Add three changes from SLES11-SP1 (change for bnc#576073 is
+  the same as for bnc#513542)
+- Include patch for fate##307524 into major patch of pmap
+- Inlcude patch for gcc 4.5 into major patch for accuracy
+
+-------------------------------------------------------------------
+Mon Feb 22 22:25:48 CET 2010 - seife@opensuse.org
+
+- fix build with gcc 4.5 ("=>" is no nonger valid, now it's ">=")
+
+-------------------------------------------------------------------
+Thu Feb 18 12:12:04 CET 2010 - werner@suse.de
+
+- Modify accuracy for %CPU calculation to avoid apperent CPU load
+  above 100% (bnc#496705)
+
+-------------------------------------------------------------------
+Wed Feb  3 11:22:54 CET 2010 - kukuk@suse.de
+
+- Adjust pmap for new kernel [bnc#576073]
+
+-------------------------------------------------------------------
+Fri Jan 29 15:24:32 CET 2010 - werner@suse.de
+
+- Sysctl: ignore not existing directories in case of -e (bnc#559866)
+- Ps: Ignore the environment variable $COLUMS if stdout is not a
+      terminal but only for $PS_PERSONALITY="posix" (bnc#497087)
+
+-------------------------------------------------------------------
+Wed Jan 20 13:58:43 CET 2010 - mmarek@suse.cz
+
+- Tune some kernel.sched_* variables on s390(x) (bnc#557307).
+
+-------------------------------------------------------------------
+Tue Dec 15 00:26:38 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Wed Nov 25 13:23:10 CET 2009 - werner@suse.de
+
+- Add a commented line to sysctl.conf how to disable IPv6 (bnc#558325)
+
+-------------------------------------------------------------------
+Thu Sep 10 10:13:00 CEST 2009 - werner@suse.de
+
+- Yet an other fd leak found by	David Binderman (bnc#536207)
+
+-------------------------------------------------------------------
+Thu Aug 27 15:28:22 UTC 2009 - garloff@novell.com
+
+- Add support for displaying oom_score (fate##307524).
+
+-------------------------------------------------------------------
+Wed Aug 19 14:45:52 CEST 2009 - werner@suse.de
+
+- Be aware that on XEN and VMware systems Div can become zero (bnc#529981)
+
+-------------------------------------------------------------------
+Thu Aug 13 11:24:10 CEST 2009 - mt@suse.de
+
+- Moved /usr/bin/pgrep and pkill to /bin with symlinks in
+  /usr/bin to make it possible to use them at boot time.
+
+-------------------------------------------------------------------
+Tue Jun 16 16:31:45 CEST 2009 - werner@suse.de
+
+- The kernel people forgotten to inform me about new smaps layout
+  * ignore KernelPageSize and MMUPageSize in pmap (bnc#513542)
+
+-------------------------------------------------------------------
+Mon May 11 12:42:59 CEST 2009 - werner@suse.de
+
+- Update to procps-3.2.8
+  * ps: allow "+" in sort specifications, as in man page
+  * ps: recognize SCHED_ISO and SCHED_IDLE
+  * ps: document SCHED_BATCH and add a "see also" for stime
+  * ps: man page less ambiguous
+  * top: normal exit code should be 0
+  * top: misc fixes
+  * pgrep: usage error should exit with 2
+  * vmstat: use EXIT_FAILURE -- thanks Yoshio Nakamura
+  * sysctl: fix crash -- thanks Steinar Gunderson
+  * watch: tolerate umlauts
+  * pmap: range limits with -A low,high
+  * update /dev/tty* info to May 2009 devices.txt
+  * don't read off end of string const
+- Adapt our patches
+
+-------------------------------------------------------------------
+Fri May  8 15:51:36 CEST 2009 - werner@suse.de
+
+- top: shows correct values on 32bit arch (bnc#497544)
+
+-------------------------------------------------------------------
+Wed Mar 11 15:52:42 CET 2009 - werner@suse.de
+
+- top: show MB in case of TB of physical memory (bnc#484271)
+
+-------------------------------------------------------------------
+Mon Feb  9 11:38:54 CET 2009 - werner@suse.de
+
+- boot.sysctl: be more quiet (bnc#473729)
+
+-------------------------------------------------------------------
+Mon Dec 15 17:56:31 CET 2008 - werner@suse.de
+
+- Add c option patch to pgrep for counting matches (bnc#459081)
+
+-------------------------------------------------------------------
+Wed Dec 10 13:38:35 CET 2008 - werner@suse.de
+
+- Make steal time part in vmstat active (bnc#457383)
+- Modify the patch for bnc#435544 to show summary CPU even on
+  big irons (bnc#457980)
+
+-------------------------------------------------------------------
+Wed Oct 22 13:07:41 CEST 2008 - werner@suse.de
+
+- Add patch for support of cgroups of processes (fate#305346)
+
+-------------------------------------------------------------------
+Wed Oct 15 15:44:02 CEST 2008 - werner@suse.de
+
+- Do not crash if terminal is not big enough (bnc#435544)
+
+-------------------------------------------------------------------
+Wed Oct  8 12:04:21 CEST 2008 - werner@suse.de
+
+- pmap: seek also for Swap entry in smaps (bnc#433146)
+
+-------------------------------------------------------------------
+Tue Sep 16 19:04:31 CEST 2008 - werner@suse.de
+
+- Increase accuracy for %CPU calculation (bnc#426229)
+
+-------------------------------------------------------------------
+Mon Aug 25 14:43:02 CEST 2008 - prusnak@suse.cz
+
+- enabled SELinux support [Fate#303662]
+
+-------------------------------------------------------------------
+Wed Jul 30 16:04:30 CEST 2008 - werner@suse.de
+
+- Make boot script know about new upcoming startpar and insserv
+
+-------------------------------------------------------------------
+Thu Jul 10 18:24:14 CEST 2008 - werner@suse.de
+
+- Annoying change in /proc/meminfo makes info about free memory
+  useless ... thanks Bart Van Assche for spotting (bnc#405246)
+
+-------------------------------------------------------------------
+Fri Mar 28 11:42:02 CET 2008 - werner@suse.de
+
+- Handle new Pss entry in smaps (bnc#374236)
+
+-------------------------------------------------------------------
+Thu Feb 14 12:06:17 CET 2008 - werner@suse.de
+
+- Also ignore empty proc files in sysctl (bnc #347322, #361049)
+
+-------------------------------------------------------------------
+Wed Feb  6 16:54:05 CET 2008 - werner@suse.de
+
+- Do not delete secondary IPs on deleting primary IP (bnc#212053)
+
+-------------------------------------------------------------------
+Thu Jan 17 19:08:42 CET 2008 - werner@suse.de
+
+- Use ASCII quote instead of acute accent (bug #354407)
+
+-------------------------------------------------------------------
+Wed Dec 12 12:11:39 CET 2007 - werner@suse.de
+
+- Add workaround for change in glibc 2.6.1 which is that a dir can
+  not be opened with both open(2) and opendir(2)  (bug #347322)
+
+-------------------------------------------------------------------
+Fri Oct 26 10:47:06 CEST 2007 - jdelvare@suse.de
+
+- Read the time of system boot from /proc/stat (entry: btime)
+  instead of computing it as the difference between the current
+  time and the uptime. This avoids getting inconsistent results
+  from one run to the next. [#304596]
+
+-------------------------------------------------------------------
+Mon Jun 11 17:23:52 CEST 2007 - werner@suse.de
+
+- Handle new Referenced entry in smaps (bug #281770)
+
+-------------------------------------------------------------------
+Wed Jun  6 18:21:02 CEST 2007 - werner@suse.de
+
+- increase the number of possible inotify(7) watches [#281147]
+
+-------------------------------------------------------------------
+Thu Mar 29 12:24:25 CEST 2007 - rguenther@suse.de
+
+- Add ncurses-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Jan 12 19:07:33 CET 2007 - werner@suse.de
+
+- Add missing Required-Start to boot.sysctl [#231677]
+
+-------------------------------------------------------------------
+Thu Aug  3 14:41:54 CEST 2006 - werner@suse.de
+
+- Read upto EOF [#194598]
+
+-------------------------------------------------------------------
+Fri Jul 28 13:31:56 CEST 2006 - werner@suse.de
+
+- Don't stop reading if the read buffer boundary is reached [#194598]
+
+-------------------------------------------------------------------
+Fri Jul 28 13:21:45 CEST 2006 - olh@suse.de
+
+- remove unneeded boot.ldconfig from boot.sysctl
+  boot.sysctl should depend on boot.localfs (#181972)
+
+-------------------------------------------------------------------
+Mon Jun 26 17:07:41 CEST 2006 - werner@suse.de
+
+- Update to version 3.2.7
+
+-------------------------------------------------------------------
+Thu May 18 18:37:56 CEST 2006 - werner@suse.de
+
+- Add stealtime patch (bug #86394)
+
+-------------------------------------------------------------------
+Mon Mar 20 16:40:36 CET 2006 - hvogel@suse.de
+
+- fix %CPU column format [#159480]
+
+-------------------------------------------------------------------
+Thu Mar 16 17:39:47 CET 2006 - hvogel@suse.de
+
+- make CPU states consistent [#158572]
+
+-------------------------------------------------------------------
+Wed Mar 15 12:15:48 CET 2006 - hvogel@suse.de
+
+- fix last patch to not lead to constant CPU usage [#156395]
+
+-------------------------------------------------------------------
+Mon Feb 20 11:59:10 CET 2006 - hvogel@suse.de
+
+- dont crash if a CPU is hotplugged [#151285] 
+
+-------------------------------------------------------------------
+Wed Feb  8 17:04:55 CET 2006 - hvogel@suse.de
+
+- fix ~/.toprc handling [#140319]
+
+-------------------------------------------------------------------
+Fri Jan 27 02:20:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 24 17:14:57 CET 2006 - mmj@suse.de
+
+- Add support for terabytes of memory [#145014]
+
+-------------------------------------------------------------------
+Wed Jan  4 10:43:06 CET 2006 - mmj@suse.de
+
+- Document 'H' - Threads in top.1 (thanks Tony Ernst)
+
+-------------------------------------------------------------------
+Mon Oct 31 10:07:43 CET 2005 - mmj@suse.de
+
+- Update to 3.2.6:
+  o vmstat: /proc/stat buffer big enough for 1024 CPUs
+  o dietlibc needs termios.h for struct winsize
+  o top: can do per-task display
+  o more MIPS crud
+  o begin prep for setuid
+  o top: fix %CPU max on 2..9 CPU SMP
+  o ps: fix crash related to realloc
+  o ps: man page more detailed
+  o spelling fixes
+  o top: crash on resize fixed
+  o vmstat: -p handles /dev/ and does not overflow
+
+-------------------------------------------------------------------
+Thu Oct 13 10:52:43 CEST 2005 - mmj@suse.de
+
+- Updated patch from rml
+
+-------------------------------------------------------------------
+Wed Oct 12 01:44:50 CEST 2005 - mmj@suse.de
+
+- Add patch from Chris Rivera for "smaps" that provides per-mapping
+  RSS information.
+
+-------------------------------------------------------------------
+Mon Apr 18 19:09:43 CEST 2005 - mmj@suse.de
+
+- Fix potential bufferoverflow in pwdx [#78074]
+
+-------------------------------------------------------------------
+Tue Feb  8 10:23:05 CET 2005 - mmj@suse.de
+
+- Update to 3.2.5:
+  * display problem on 64-bit systems fixed
+  * top: variable-width PID and PPID
+  * top: variable-width %CPU
+  * sysctl: better error messages
+  * ps: security labels can contain any printable ASCII
+  * top: help and version message on stdout, with exit(0)
+  * ps: SIGTSTP and SIGTTOU shouldn't print bug email address
+  * slabtop: compile with glibc 2.2.17 (and older, likely)
+  * slabtop: fix overflow on huge NUMA boxes
+  * slabtop: accept any slabinfo 2.x format
+  * ps: alignment after WCHAN fixed
+  * pmap: when no -x or -d option, show full path
+
+-------------------------------------------------------------------
+Tue Jan 11 12:47:11 CET 2005 - mmj@suse.de
+
+- Make our CFLAGS and RPM_OPT_FLAGS actually get used [#49378]
+
+-------------------------------------------------------------------
+Tue Dec  7 19:36:33 CET 2004 - mmj@suse.de
+
+- Update to procps-3.2.4:
+  * support 64-bit MIPS with n32 binary
+  * sparc32 optimized for sparc32 again
+  * pwdx: new command
+  * ps: UTF-8 username + command
+  * ps: more room for some columns
+  * ps: tolerate SubDomain security module CONTEXT/LABEL data
+  * watch: passes COLUMNS and LINES in environment
+  * top: in batch mode, tolerate unknown $TERM
+  * pkill: quiet about processes that die before kill()
+
+-------------------------------------------------------------------
+Wed Oct 27 10:29:29 CEST 2004 - mmj@suse.de
+
+- Increase buffer size for reading proc files. [#44776]
+
+-------------------------------------------------------------------
+Thu Sep 23 17:21:49 CEST 2004 - lmuelle@suse.de
+
+- Ensure to activate boot.sysctl if we do a first installation, [#44481].
+
+-------------------------------------------------------------------
+Wed Sep 15 13:36:30 CEST 2004 - lmuelle@suse.de
+
+- Add default sysctl.conf file.
+
+-------------------------------------------------------------------
+Mon Aug 16 10:38:12 CEST 2004 - garloff@suse.de
+
+- Update to procps-3.2.3:
+  * avoid truncating long usernames
+  * avoid warning about -lncurses when not linking (more)
+  * new names for shared libraries (packagers: watch out!)
+  * build fixes and manpages updates
+  * wchan now '*' for multi-threaded processes
+  * ps: STAT shows l for multi-threaded processes
+  * vmstat: some overflow problems fixed -- thanks Holger Kiehl
+- Use ps manpage from from the package.
+
+-------------------------------------------------------------------
+Tue Aug  3 22:45:52 CEST 2004 - garloff@suse.de
+
+- Update to procps-3.2.2:
+  * build tweaks and docu updates
+  * ps: k option and personality-specific -x support
+  * sysctl: -a and -N options, better error handling
+  * top: tolerate sparse CPU numbering, cope with terminals
+    lacking ram & sram, avoid xterm clear-to-eol at eol
+  * vmstat: fix -d
+  * watch: sub-second intervals
+- Rediff patches.
+
+-------------------------------------------------------------------
+Wed Jun  2 14:05:27 CEST 2004 - uli@suse.de
+
+- fixed crash in small terminal (bug #37651) 
+
+-------------------------------------------------------------------
+Tue Mar 30 13:19:14 CEST 2004 - stepan@suse.de
+
+- Fix ps.1 [#35584]
+- update to 3.2.1 to get rid of incompatible SE Linux patches.
+  3.2.1 is a bugfix release:
+   * ps: STAT flags for fg process group and session leader
+   * ps: STAT flags for swapped out process dropped (was broken)
+   * ps: new -M and Z options for security data (SE Linux, etc.)
+   * slabtop: detect broken /proc/slabinfo -- thanks to Fabian 
+     Frederick
+   * slabtop: ensure that error messages show up on the screen -- 
+     FF again
+
+-------------------------------------------------------------------
+Mon Mar 29 17:40:23 CEST 2004 - mmj@suse.de
+
+- Fix top.1 man page and include pmap.1 [#35584]
+
+-------------------------------------------------------------------
+Sun Mar 21 10:12:44 CET 2004 - adrian@suse.de
+
+- show the result of w also with line wrapps, like in good old times.
+  (ok'ed by stepan)
+
+-------------------------------------------------------------------
+Wed Mar  3 17:00:29 CET 2004 - stepan@suse.de
+
+- add notruncate option to w (for powermanagement code)
+
+-------------------------------------------------------------------
+Mon Mar  1 15:37:23 CET 2004 - stepan@suse.de
+
+- fix handling of many CPUs in top (#34347)
+
+-------------------------------------------------------------------
+Tue Feb 24 11:56:33 CET 2004 - stepan@suse.de
+
+- update to procps 3.2.0
+  * build on IA-64 again
+  * pmap: output like Solaris 9, not Solaris 7
+  * ps: also handle SELinux on the 2.4.xx kernels
+  * top: during a ^Z, the terminal was messed up
+  * future-proof the tty handling
+  * add slabtop
+  * pmap: detect the primary stack
+  * pmap: -d format
+  * free: report high and low memory
+
+-------------------------------------------------------------------
+Fri Feb 20 16:19:00 CET 2004 - ro@suse.de
+
+- boot.sysctl: do nothing for stop case
+
+-------------------------------------------------------------------
+Sun Feb 15 14:35:29 CET 2004 - kukuk@suse.de
+
+- Disable some tests not working on all architectures
+
+-------------------------------------------------------------------
+Sat Feb 14 17:07:56 CET 2004 - kukuk@suse.de
+
+- Rename package to procps
+- Move procinfo and psmisc into seperate packages
+- Update to 3.1.15 (includes SELinux support)
+
+-------------------------------------------------------------------
+Fri Jan 23 19:19:20 CET 2004 - bk@suse.de
+
+- pstree: UTF-8: never draw >1 '+' at end of line(no change for ASCII)
+- pstree: Fix -G which uses VT100 line drawing: use the full width
+
+-------------------------------------------------------------------
+Mon Nov 17 11:37:15 CET 2003 - stepan@suse.de
+
+- fix package to build as user. Thanks to olh.
+
+-------------------------------------------------------------------
+Thu Oct 23 14:39:16 CEST 2003 - stepan@suse.de
+
+- update to procps 3.1.14
+  * ps fully supports thread display (H, -L, m, -m, and -T)
+  * top can show CPU usage for IO-wait, IRQ, and softirq
+  * can set $PS_FORMAT to choose your own default ps format
+  * better width control ("ps -o pid,wchan:42,args")
+  * width of ps PID column adjusts to your system
+  * vmstat lets you choose units you like: 1000, 1024, 1000000...
+  * top can sort by any column (old sort keys available too)
+  * top can select a single user to display
+  * top can be put in multi-window mode and/or color mode
+  * vmstat has the -s option, as found on UNIX and BSD systems
+  * vmstat has the -f option, as found on UNIX and BSD systems
+  * watch doesn't eat the first blank line by mistake
+  * vmstat uses a fast O(1) algorithm on 2.5.xx kernels
+  * pmap command is SunOS-compatible
+  * vmstat shows IO-wait time
+  * pgrep and pkill can find the oldest matching process
+  * sysctl handles the Linux 2.5.xx VLAN interfaces
+  * ps has a new "-F" format (very nice, like DYNIX/ptx has)
+  * ps with proper BSD process selection
+  * better handling of very long uptimes
+
+-------------------------------------------------------------------
+Tue Oct 14 16:14:31 CEST 2003 - stepan@suse.de
+
+- fix 32bit build on AMD64
+
+-------------------------------------------------------------------
+Wed Oct  1 12:23:58 CEST 2003 - stepan@suse.de
+
+- update to procps 3.1.13
+
+-------------------------------------------------------------------
+Sat Sep 20 15:18:56 CEST 2003 - schwab@suse.de
+
+- Handle EOF from terminal [#31126].
+
+-------------------------------------------------------------------
+Mon Sep 15 11:30:19 CEST 2003 - stepan@suse.de
+
+- fix "#C" display problem with more than 99 CPUs. (#28163)
+
+-------------------------------------------------------------------
+Fri Sep  5 19:06:37 CEST 2003 - stepan@suse.de
+
+- top: fix 4G overflow on 64bit platforms (bug #28539)
+  (procps-3.1.11-bigproc.diff)
+
+-------------------------------------------------------------------
+Fri Aug  8 22:10:18 CEST 2003 - stepan@suse.de
+
+- update procps to version 3.1.11:
+  * compile with gcc 2.95 again (C99 issue)
+- fix sysctl insertion (bug #28593)
+
+-------------------------------------------------------------------
+Mon Jul 14 10:15:14 CEST 2003 - stepan@suse.de
+
+- update procps to version 3.1.10
+  * handle GPLONLY_ symbols
+  * kill: better man page
+  * skill: better man page
+  * ps: PID-like columns change width as needed
+  * top: COMMAND instead of Command
+  * vmstat: -m displays slabinfo
+  * vmstat: -d displays disk stats
+- update psmisc to 21.3 (has our patch included)
+  * SELinux SID selection uses -d instead of -S to stop the 
+    confusion of signal names.
+  * Doesnt segfault on long cmdnames, thanks Ben Low
+  * More fixes for types, also some GCC 3.2 fixes
+  * Changed a long to a long long in pstree. 
+
+-------------------------------------------------------------------
+Fri Jul  4 13:50:34 CEST 2003 - stepan@suse.de
+
+- update to version 3.1.9
+  * memory sizes fixed for 64-bit w/ gcc 3.x
+  * ps: detect broken OS install w/o /proc mounted
+  * top: fix suspend/resume behavior
+  * top: ditch warning until a _good_ interface is found
+  * kill: more info in the man page
+  * ps: document the -o, o, -O, and O options
+  * vmstat: choose units you like: 1000, 1024, 1000000...
+
+-------------------------------------------------------------------
+Fri Jun 13 08:37:07 CEST 2003 - coolo@suse.de
+
+- fixing cwd
+
+-------------------------------------------------------------------
+Thu Jun 12 13:24:50 CEST 2003 - coolo@suse.de
+
+- use %find_lang
+
+-------------------------------------------------------------------
+Tue Jun  3 10:48:56 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+- use %_mandir
+
+-------------------------------------------------------------------
+Wed May 14 16:03:13 CEST 2003 - stepan@suse.de
+
+- drop XConsole and xcpustate as there are the almost identical
+  tools xconsole and xosview. This drops X11 dependencies of this
+  package completely.
+- fix default permissions of locale directories (bug #26120)
+
+-------------------------------------------------------------------
+Thu Mar 27 16:28:26 CET 2003 - stepan@suse.de
+
+- fix truncating bug in pstree when specifying -al
+- merge psmisc diffs
+
+-------------------------------------------------------------------
+Fri Mar 21 14:01:41 CET 2003 - stepan@suse.de
+
+- update procps to 3.1.8
+- update xcpustate to 2.6beta
+- fix build on itanium 
+
+-------------------------------------------------------------------
+Wed Mar  5 17:25:45 CET 2003 - stepan@suse.de
+
+- add xinetd config file for systat service
+
+-------------------------------------------------------------------
+Tue Mar  4 18:52:40 CET 2003 - stepan@suse.de
+
+- update procps to 3.1.6
+  * includes discontig mem fixes
+  * includes fix for missing processes (bug #23526)
+
+-------------------------------------------------------------------
+Mon Feb 24 17:16:26 CET 2003 - stepan@suse.de
+
+- new, working discontig patch
+
+-------------------------------------------------------------------
+Wed Feb 19 13:54:58 CET 2003 - stepan@suse.de
+
+- fix broken ps with discontig kernel (bug #23788)
+
+-------------------------------------------------------------------
+Mon Feb  3 15:41:43 CET 2003 - schwab@suse.de
+
+- Don't package uptime, now part of coreutils.
+
+-------------------------------------------------------------------
+Wed Nov 27 15:07:40 CET 2002 - stepan@suse.de
+
+- fix newlines in string again, to satisfy compiler (killall)
+
+-------------------------------------------------------------------
+Fri Nov 22 16:09:01 CET 2002 - stepan@suse.de
+
+- make x utility build triggerable by %{build_with_x}
+
+-------------------------------------------------------------------
+Thu Nov 14 14:55:13 CET 2002 - werner@suse.de
+
+- Stupid compiler does not accept newlines in strings.
+
+-------------------------------------------------------------------
+Tue Oct 15 15:41:18 CEST 2002 - werner@suse.de
+
+- Fix bug #20604: new procps version 2.0.10
+- port all required patches to 2.0.10
+- Update psmisc to 21.2
+- port all required patches to 21.2
+
+-------------------------------------------------------------------
+Tue Sep 10 23:22:10 CEST 2002 - adrian@suse.de
+
+- fix split alias
+  -Obsoletes:     ps:/usr/X11R6/bin/xcpustate
+  +Provides:      ps:/usr/X11R6/bin/xcpustate
+
+-------------------------------------------------------------------
+Thu Aug 22 10:05:16 CEST 2002 - kukuk@suse.de
+
+- fix PreRequires.
+
+-------------------------------------------------------------------
+Fri Aug 16 13:54:35 CEST 2002 - werner@suse.de
+
+- Add PreReq (bug #17963)
+
+-------------------------------------------------------------------
+Thu Aug 15 23:24:08 CEST 2002 - ro@suse.de
+
+- modify required-start in boot.sysctl: boot.setup is gone 
+
+-------------------------------------------------------------------
+Tue Aug  6 13:49:58 CEST 2002 - werner@suse.de
+
+- Statistics of cpu usage: no negative averages (bug #17449)
+
+-------------------------------------------------------------------
+Mon Aug  5 09:38:42 CEST 2002 - kukuk@suse.de
+
+- boot.sysclt: rename serial to setserial, setserial and 
+  boot.isapnp are "should-start".
+
+-------------------------------------------------------------------
+Wed Mar 20 14:57:38 CET 2002 - ro@suse.de
+
+- boot.sysctl: don't write out sysctl.conf if it doesn't exist
+  sysctl can't read the file of a complete dump 
+
+-------------------------------------------------------------------
+Fri Feb 22 17:03:16 CET 2002 - werner@suse.de
+
+- Fix bug #12816: generate signal list with signal cpp macros
+  to get it correct on all architectures.  Make SIG prefix
+  work of signal names.
+
+-------------------------------------------------------------------
+Fri Feb  1 12:50:25 CET 2002 - ro@suse.de
+
+- added stop/status for sysctl boot script 
+
+-------------------------------------------------------------------
+Mon Jan 21 17:47:45 CET 2002 - ro@suse.de
+
+- added boot-script for sysctl (inactive by default) 
+
+-------------------------------------------------------------------
+Mon Jan  7 17:11:39 CET 2002 - ro@suse.de
+
+- fixed segfault (thanks to andreas) 
+
+-------------------------------------------------------------------
+Thu Dec 20 16:41:52 CET 2001 - werner@suse.de
+
+- Make it compile
+
+-------------------------------------------------------------------
+Thu Dec 20 15:28:58 CET 2001 - werner@suse.de
+
+- Sometimes it happens that /proc can not be open, then we have
+  to exit gratefully :^)
+
+-------------------------------------------------------------------
+Fri Nov  9 16:34:53 CET 2001 - schwab@suse.de
+
+- Fix idle time overflow in vmstat.
+- Fix missing declarations.
+
+-------------------------------------------------------------------
+Mon Sep 17 16:28:26 CEST 2001 - werner@suse.de
+
+- Fix lsdev from procinfo
+- Use the correct type for uptime integers (procinfo)
+
+-------------------------------------------------------------------
+Tue Sep  4 18:33:49 CEST 2001 - werner@suse.de
+
+- Move fuser from /usr/bin/ to /bin/
+
+-------------------------------------------------------------------
+Tue Sep  4 17:38:38 CEST 2001 - werner@suse.de
+
+- Fix bug #9797: update to psmisc-20.1
+- Update procinfo to procinfo-18
+- Add bigbuff, retcode, sysctl-error, and biguid patch frm RH
+  (last one should fix bug #9933)
+
+-------------------------------------------------------------------
+Tue Apr 24 19:19:07 CEST 2001 - werner@suse.de
+
+- Package split (#7078)
+
+-------------------------------------------------------------------
+Fri Apr 20 18:37:14 CEST 2001 - werner@suse.de
+
+- tty in proc's stat is an int
+
+-------------------------------------------------------------------
+Thu Mar 29 18:47:33 CEST 2001 - ro@suse.de
+
+- initialize page_size before first use 
+
+-------------------------------------------------------------------
+Wed Mar 28 11:40:36 CEST 2001 - schwab@suse.de
+
+- Kill improper use of PAGE_SIZE.
+
+-------------------------------------------------------------------
+Tue Mar 27 20:53:17 CEST 2001 - werner@suse.de
+
+- Make it work again
+- Make w know about locale
+
+-------------------------------------------------------------------
+Tue Mar 13 11:14:37 CET 2001 - schwab@suse.de
+
+- Use getpagesize instead of PAGE_SHIFT.
+- Don't compile with -fwritable-strings.
+
+-------------------------------------------------------------------
+Mon Mar 12 19:17:11 CET 2001 - werner@suse.de
+
+- Skip oldps
+
+-------------------------------------------------------------------
+Fri Mar  9 15:49:40 CET 2001 - werner@suse.de
+
+- Make it run on a IA64
+
+-------------------------------------------------------------------
+Mon Feb 19 11:51:53 CET 2001 - werner@suse.de
+
+- Make program watch recognize locale environment (bug#6395)
+
+-------------------------------------------------------------------
+Thu Jan 25 16:08:13 CET 2001 - werner@suse.de
+
+- Make `fuser -s -k' work (bug#6143)
+
+-------------------------------------------------------------------
+Mon Jan 22 17:13:52 CET 2001 - werner@suse.de
+
+- Avoid segfaults on mmap'ed buffer by adding '\0'
+
+-------------------------------------------------------------------
+Wed Jan 10 13:12:59 CET 2001 - werner@suse.de
+
+- Fix format handling (bug#5386)
+
+-------------------------------------------------------------------
+Wed Dec 20 17:33:39 CET 2000 - werner@suse.de
+
+- Reset locale during sscanf calls to POSIX
+
+-------------------------------------------------------------------
+Tue Dec 19 20:05:24 MET 2000 - werner@suse.de
+
+- Use %llu for input (sscanf) and output (printf) format of
+  unsigned long long (free.c, top.c, and sysinfo.c).
+
+-------------------------------------------------------------------
+Wed Dec 13 15:58:47 CET 2000 - werner@suse.de
+
+- Update to procps 2.0.7: now SMP should be visible in top
+- Remove sessreg from file list
+- Add pgrep and pkill to file list
+
+-------------------------------------------------------------------
+Mon Dec  4 09:11:51 CET 2000 - ro@suse.de
+
+- don't try to strip man-pages 
+
+-------------------------------------------------------------------
+Wed Nov 22 18:50:56 CET 2000 - uli@suse.de
+
+- fixed to build on PPC
+
+-------------------------------------------------------------------
+Fri Nov 17 09:44:00 CET 2000 - ro@suse.de
+
+- compile-fix for old sessreg (glibc/X11 clash atexit)
+
+-------------------------------------------------------------------
+Sat May 27 11:56:10 CEST 2000 - kukuk@suse.de
+
+- Add Group tag
+- Use docdir macro 
+
+-------------------------------------------------------------------
+Mon May  8 15:16:39 CEST 2000 - ro@suse.de
+
+- procinfo fixed for smp/alpha 
+
+-------------------------------------------------------------------
+Mon Feb 28 18:44:11 CET 2000 - werner@suse.de
+
+- Install some docus (closes bug #1509)
+
+-------------------------------------------------------------------
+Fri Feb 25 10:57:01 CET 2000 - kukuk@suse.de
+
+- Fix problem that glibc and ncurses uses the same define for
+  different things.
+
+-------------------------------------------------------------------
+Thu Feb 24 17:24:30 CET 2000 - schwab@suse.de
+
+- procps: fix scanf format string
+
+-------------------------------------------------------------------
+Fri Feb  4 14:53:50 CET 2000 - kasal@suse.cz
+
+- remove smp_num_cpus -- it's done in 2.0.6
+
+-------------------------------------------------------------------
+Wed Jan 19 15:06:13 MET 2000 - ro@suse.de
+
+- usr/man -> usr/share/man 
+
+-------------------------------------------------------------------
+Wed Jan 19 12:52:12 CET 2000 - kasal@suse.de
+
+- fixed "ps u" -- ie. fixed read_total_main()
+
+-------------------------------------------------------------------
+Mon Dec  6 16:01:23 CET 1999 - werner@suse.de
+
+- Argh: fix Makefile to install sysctl.conf.5 man page
+
+-------------------------------------------------------------------
+Mon Dec  6 15:02:02 CET 1999 - werner@suse.de
+
+- Install sysctl tool of procps 2.0.6
+
+-------------------------------------------------------------------
+Fri Dec  3 18:52:38 CET 1999 - kasal@suse.de
+
+- upgraded procps to 2.0.6, to get the package compiled on sparc
+
+-------------------------------------------------------------------
+Wed Nov 24 17:09:50 CET 1999 - kettner@suse.de
+
+- fixed bug in procinfo on AXP 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep  7 16:20:07 CEST 1999 - werner@suse.de
+
+- Avoid SEGV if /proc isn't mounted (e.g. in single user mode)
+
+-------------------------------------------------------------------
+Tue Sep  7 00:28:33 CEST 1999 - werner@suse.de
+
+- Fix some maunal page (missed tbl mark, some nasty .TH's)
+
+-------------------------------------------------------------------
+Wed Aug 18 14:09:14 CEST 1999 - werner@suse.de
+
+- Update procinfo (ver 17), procps (ver 2.0.2) but hold
+  ver 1.2.11 (sessreg, XConsole, libproc for xcpustate),
+  update psmisc (ver 18)
+- Patch procps 2.0.2 with debian diff and make ps
+  usable again (select bits should be 0x0a0a to see
+  all ttys if ps is called).
+
+-------------------------------------------------------------------
+Wed Apr 14 11:26:45 MEST 1999 - bk@suse.de
+
+- updated procinfo patckage from version 15 to 16
+  * annoying interrupt warning("recompile me!") is gone
+  * display on SMP has been fixed
+
+-------------------------------------------------------------------
+Tue Apr  6 17:45:53 MEST 1999 - bk@suse.de
+
+- update to procps-1.2.11
+- fixed segfault in /usr/bin/w
+
+-------------------------------------------------------------------
+Mon Mar 22 17:35:00 MET 1999 - florian@suse.de
+
+- update to procps-1.2.10
+
+-------------------------------------------------------------------
+Fri Oct 30 16:03:32 MET 1998 - ro@suse.de
+
+- update to procinfo-15 and procps-1.2.9
+- extra source for xcpustate-2.5 (no more in procps)
+- patched xcpustate to display mem,swap,net for linux 
+
+-------------------------------------------------------------------
+Thu May  7 09:52:22 MEST 1998 - florian@suse.de
+
+- add "-g" option to killall to kill a complete process group
+- update to procps 1.2.7
+- update to procinfo 13
+
+-------------------------------------------------------------------
+Fri Mar 13 11:44:00 MET 1998 - bs@suse.de
+
+- switched version to `date` (problem with version for update).
+
+-------------------------------------------------------------------
+Mon Mar  2 16:26:13 MET 1998 - florian@suse.de
+
+- update to psmisc 17
+- update to procps 1.2.6
+- update to procinfo 12
+
+-------------------------------------------------------------------
+Fri Oct 17 12:57:28 MEST 1997 - ro@suse.de
+
+- ready for autobuild 
+
+-------------------------------------------------------------------
+Sat Jul  5 10:08:27 MEST 1997 - florian@suse.de
+
+
+- updated to 1.12.2 again (with fixes)
+
+- fix output of free
+
+- top with wrong options won't destroy the display
+
+- XConsole is not suid-root anymore as "xconsole" can be used without
+  being suid root
+
+
+-------------------------------------------------------------------
+Mon Jun 30 20:41:43 MEST 1997 - bs@suse.de
+
+- switched back to version 1.11.6
+
+-------------------------------------------------------------------
+Sun Jun 22 18:57:49 MEST 1997 - florian@suse.de
+
+
+- update to version 1.12.2
+
+- add procinfo 0.11
+
+
+-------------------------------------------------------------------
+Tue May 20 14:10:37 MEST 1997 - florian@suse.de
+
+
+- update to version 1.11.6
+
+
+-------------------------------------------------------------------
+Sun Apr 13 23:04:29 MEST 1997 - florian@suse.de
+
+
+- update to new version 1.11.3
+
+- update to psmisc 12a
+
+
+-------------------------------------------------------------------
+Wed Jan 22 22:24:11 CET 1997 - florian@suse.de
+
+
+- update to version 1.11.1
+
+
+-------------------------------------------------------------------
+Sun Aug 25 19:28:50 MET DST 1996 - florian@suse.de
+
+
+
+new version 1.01
+'top' is completely new
+people might get a much faster 'ps', if they delete '/etc/psdevtab'
+and call 'ps' as root...
