@@ -524,6 +524,9 @@ fi
 %attr(0644, root, root) %config %{_sysconfdir}/openldap/schema/dhcp.schema
 %dir %{_sysconfdir}/slp.reg.d
 %config(noreplace) %{_sysconfdir}/slp.reg.d/dhcp.reg
+%dir %{_sysconfdir}/sysconfig/network
+%dir %{_sysconfdir}/sysconfig/network/scripts
+%dir %{_sysconfdir}/sysconfig/network/if-up.d
 %{_sysconfdir}/sysconfig/network/scripts/dhcpd-restart-hook
 %{_sysconfdir}/sysconfig/network/if-up.d/60-dhcpd-restart-hook
 %{_fillupdir}/sysconfig.dhcpd

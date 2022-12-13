@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  9 07:42:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add /etc/sysconfig/network hierachy to server file list 
+
+-------------------------------------------------------------------
 Thu Oct 27 15:30:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_rundir

@@ -1227,4 +1227,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035207</requestid>
   </revision>
+  <revision rev="137" vrev="13">
+    <srcmd5>fee6f31850b6afb8332ba3ea89f05cb8</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1670954089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042365</requestid>
+  </revision>
 </revisionlist>
