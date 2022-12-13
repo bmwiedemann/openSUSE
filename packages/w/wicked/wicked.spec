@@ -400,6 +400,7 @@ fi
 %_unitdir/wickedd.service
 %_unitdir/wicked.service
 %_unitdir/wickedd-pppd@.service
+%dir /etc/sysconfig/network
 %attr(0600,root,root) %config /etc/sysconfig/network/ifcfg-lo
 %_sbindir/ifup
 %if !0%{?usrmerged}

@@ -1672,4 +1672,14 @@
 - systemd: Remove systemd-udev-settle dependency (bsc#1186787)</comment>
     <requestid>1030243</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>4f227db9715da388687e74811500f84d</srcmd5>
+    <version>0.6.70</version>
+    <time>1670954074</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Add /etc/sysconfig/network to file list, no longer
+  in the default list of a cleaned up filesystem package
+  (https://github.com/openSUSE/wicked/pull/939).</comment>
+    <requestid>1042275</requestid>
+  </revision>
 </revisionlist>
