@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-fog-libvirt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-fog-libvirt
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 %define mod_name fog-libvirt
 %define mod_full_name %{mod_name}-%{version}
