@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:17:57 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.0.1
+ see installed CHANGELOG.md
+
+  ## 1.0.1 2022-11-16
+  
+  
+  ### Changed
+  
+  - Renamed `@config` and `@_settings` internal instance variables to `@__config__` and `@__settings__` in order to avoid clashes with user-defined instance variables (#159 by @timriley)
+  
+  [Compare v1.0.0...v1.0.1](https://github.com/dry-rb/dry-configurable/compare/v1.0.0...v1.0.1)
+  
+  ## 1.0.0 2022-11-04
+  
+  
+  ### Changed
+  
+  - Dependency on `dry-core` was updated to ~> 1.0 (@solnic)
+  
+  [Compare v0.16.1...v1.0.0](https://github.com/dry-rb/dry-configurable/compare/v0.16.1...v1.0.0)
+  
+
+-------------------------------------------------------------------
 Fri Oct 28 04:55:07 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.16.1
