@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypsexec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,9 @@ URL:            https://github.com/jborean93/pypsexec
 Source:         https://github.com/jborean93/pypsexec/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module smbprotocol}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires:       python-smbprotocol
 BuildArch:      noarch
 %python_subpackages
