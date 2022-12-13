@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           vkbasalt
-Version:        0.3.2.5
+Version:        0.3.2.6
 Release:        0
 Summary:        Vulkan post processing layer
 License:        Zlib
