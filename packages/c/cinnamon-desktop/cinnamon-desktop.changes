@@ -1,12 +1,12 @@
 -------------------------------------------------------------------
 Tue Dec  6 12:51:16 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
-- Remove fix_return_value_void.patch as it's no longer needed.
+- Remove (fix_return_value_void.patch) as it's no longer needed.
 
 -------------------------------------------------------------------
 Tue Dec  6 12:12:06 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
--Update to 5.6.0.
+- Update to 5.6.0.
   * Fix some introspection problems.
   * Use github instead of circleci.
   * Keybindings: Add a default keybinding for 'switch-panels-backward'.
