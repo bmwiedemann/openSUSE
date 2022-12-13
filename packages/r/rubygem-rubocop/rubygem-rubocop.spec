@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rubocop
-Version:        1.37.1
+Version:        1.39.0
 Release:        0
 %define mod_name rubocop
 %define mod_full_name %{mod_name}-%{version}
