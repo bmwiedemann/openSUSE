@@ -35,7 +35,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 %endif
 %if 0%{?fedora_version}
 BuildRequires:  gcc

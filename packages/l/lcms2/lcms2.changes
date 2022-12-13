@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:50:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) for alternative providers support
+
+-------------------------------------------------------------------
 Wed Nov 16 07:39:44 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Removed reverse-0001-fix-memory-leaks-on-testbed.patch and added
