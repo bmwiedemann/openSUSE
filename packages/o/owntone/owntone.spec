@@ -32,7 +32,7 @@ Name:           owntone
 Version:        28.5
 Release:        0
 URL:            https://github.com/owntone/owntone-server
-Source0:        https://github.com/owntone/owntone-server/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %url/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        owntone_logrotate
 Patch0:         harden_owntone.service.patch
 
@@ -41,7 +41,6 @@ Obsoletes:      forked-daapd < 28
 
 BuildRequires:  antlr3-tool
 BuildRequires:  antlr3c-devel
-BuildRequires:  ffmpeg-4-libavfilter-devel
 BuildRequires:  gperf
 BuildRequires:  libgcrypt-devel >= 1.2.0
 BuildRequires:  libgpg-error-devel >= 1.6

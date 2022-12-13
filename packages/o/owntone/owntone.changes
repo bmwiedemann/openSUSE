@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 12 11:35:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop explicit ffmpeg-4-libavfilter-devel BuildRequires: we
+  already have pkgconfig(libavfilter) covering this dependency, and
+  package builds fine with ffmpeg-5.
+
+-------------------------------------------------------------------
 Sun Nov  6 09:33:57 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 28.5

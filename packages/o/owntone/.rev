@@ -69,4 +69,12 @@ and a version update</comment>
   * fix slow shutdown with some libwebsocket versions</comment>
     <requestid>1033831</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0e4f61514a85f1097afad910a0a1887f</srcmd5>
+    <version>28.5</version>
+    <time>1670954128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042466</requestid>
+  </revision>
 </revisionlist>
