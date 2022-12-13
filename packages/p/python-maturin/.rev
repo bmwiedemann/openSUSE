@@ -659,4 +659,31 @@
     gh#PyO3/maturin#1314</comment>
     <requestid>1039390</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c25f45a4e86a5022a4218c0b08f3dc23</srcmd5>
+    <version>0.14.5</version>
+    <time>1670954115</time>
+    <user>dimstar_suse</user>
+    <comment>- Manually override outdated ahash dependency of chumsky crate
+  in vendor tarball to hopefully facilitate reproducible builds
+  Adds vendor-update-ahash-dependency.patch
+  boo#1206342
+- Update to v0.14.5:
+  * Support SOURCE_DATE_EPOCH environment variable in wheel building
+    gh#PyO3/maturin#1334
+  * Fix sdist when all Cargo workspace members are excluded
+    gh#PyO3/maturin#1343
+- Changes in v0.14.4:
+  * Bump sigstore/gh-action-sigstore-python from 0.0.11 to 0.1.0
+    gh#PyO3/maturin#1317
+  * Refactor Target::get_platform_tag to use standard osname-release-machine fallback representation
+    gh#PyO3/maturin#1318
+  * Better error message when upload failed with status code 403
+    gh#PyO3/maturin#1323
+  * Warn about patchelf version requirement
+    gh#PyO3/maturin#1327
+  * Refactor compile to take cargo targets with bridge model
+    gh#PyO3/maturin#1328</comment>
+    <requestid>1042453</requestid>
+  </revision>
 </revisionlist>

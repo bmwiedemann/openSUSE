@@ -1,0 +1,134 @@
+diff -ru vendor/vendor/chumsky/.cargo-checksum.json vendor.new/vendor/chumsky/.cargo-checksum.json
+--- vendor/vendor/chumsky/.cargo-checksum.json	2022-12-12 20:24:01.634338100 +0100
++++ vendor.new/vendor/chumsky/.cargo-checksum.json	2022-12-12 20:12:59.648304580 +0100
+@@ -1 +1 @@
+-{"files":{"CHANGELOG.md":"9c0c8b828885d376d9bfb96cd076edb1f6cdc544ff8bb1c4eabce98f9c065e2e","Cargo.lock":"aa2a848b8f1f6c5610eeaec07cfef673dc184e1847c9e24ca58f280cdff851c0","Cargo.toml":"090c96d9a0d43f335356ec49a25e44568148d167cce30d541abd7f0fd26aa0e0","LICENSE":"88f7ddf73afcffee97e0a19211ddeecd7d178ecb5c09bbfe472ce4cfcceb6269","README.md":"25e8d58974b0d92e0111a1e2f5ea9eb1fdbe5538ab6d9d000a5f0288ae3b2b54","examples/brainfuck.rs":"c10b4c29190211fb3c3e5739a5a0c2380cd0430bf27a660c8e5cf8d24782370b","examples/foo.rs":"8a81b1dbd7ce9e0101e30bad0fcdfd3c681ed4387684c0149a867e73abcd304e","examples/json.rs":"d473c938c5c735ce20b882dd010de87bff6dfd26d32ee96bd02f6ddb08d0bb7f","examples/nano_rust.rs":"2fbaa3afb72e2f4d42efe3b3c5c5b5592e1f381fa948376c28121e1109d64a92","examples/sample.bf":"824a423496b3847b635d8da95d183867115318e671f731149c3603c732dbed77","examples/sample.foo":"f0c3345067c4716498e0c37d142254c6eb8edbb600b3fedd16a90c1031a6fbdf","examples/sample.json":"caa8622c94afa7402e166d1db53a262af17f74f72573a06a8e47cf655e863032","examples/sample.nrs":"d05c03a0da9e1bb46ecb8da880e087a1580324d443139ff3aa59c7f6b5358c61","src/chain.rs":"434d82a2f281ebef044f4e5a95c894955ae06b047828f05f8836f71ead335ca8","src/combinator.rs":"07dd0935d606935c86073b16c3705c5635cb816b6c925ff46b86285a8e5582ea","src/debug.rs":"0d15d99af4a9dfb796685aae239d0fd683a84d2e902a5e64bf784ebd9db65f5a","src/error.rs":"23a1beaa1d31c9f3a8d134e731a782c9f32a0d1b85c6264a66a50478380e4657","src/lib.rs":"3e3db6bd4aa0f3ffbaf231a3a537fefb865d0179a753f0ed398ad313c9d5465e","src/primitive.rs":"ecd3230a402d3763f3f0fc759eb6a24a9c6063b4cdbc17acdd5f3e43f517b170","src/recovery.rs":"29a95d08fe91981cbd94fc70705fdb1eb4751b560a3a8373906ab6b30eaf5627","src/recursive.rs":"361373ae0a4c788004113c5387626f6091f88b63d084ec143941bf23d53b6c99","src/span.rs":"cee0f45fa29b7753d2c328d156ecd795bb282df233bb8c531e0415d7aae55670","src/stream.rs":"bd4637a893ecf6e94b7b3408a1f6f7e35dbe5065ce22673c51a3f8d5ed2240cc","src/text.rs":"45cf8726dcb52db00d0b1c9d576090149755f06e226f83c35ceb4a7413f7b218","tutorial.md":"5ba58fd5a5223e89a3320ecf5a67b5519de49237d3b7537e6a51decd025b7408"},"package":"8d02796e4586c6c41aeb68eae9bfb4558a522c35f1430c14b40136c3706e09e4"}
+\ No newline at end of file
++{"files":{"CHANGELOG.md":"9c0c8b828885d376d9bfb96cd076edb1f6cdc544ff8bb1c4eabce98f9c065e2e","Cargo.lock":"4f641d59af6fac16c28ddadd0e40f4501f22a392c36879ec36c3aad8050551cf","Cargo.toml":"005f06855e892df71995a4e7edcb0703e565e17da90fe37ad76393bfd5f8ef67","LICENSE":"88f7ddf73afcffee97e0a19211ddeecd7d178ecb5c09bbfe472ce4cfcceb6269","README.md":"25e8d58974b0d92e0111a1e2f5ea9eb1fdbe5538ab6d9d000a5f0288ae3b2b54","examples/brainfuck.rs":"c10b4c29190211fb3c3e5739a5a0c2380cd0430bf27a660c8e5cf8d24782370b","examples/foo.rs":"8a81b1dbd7ce9e0101e30bad0fcdfd3c681ed4387684c0149a867e73abcd304e","examples/json.rs":"d473c938c5c735ce20b882dd010de87bff6dfd26d32ee96bd02f6ddb08d0bb7f","examples/nano_rust.rs":"2fbaa3afb72e2f4d42efe3b3c5c5b5592e1f381fa948376c28121e1109d64a92","examples/sample.bf":"824a423496b3847b635d8da95d183867115318e671f731149c3603c732dbed77","examples/sample.foo":"f0c3345067c4716498e0c37d142254c6eb8edbb600b3fedd16a90c1031a6fbdf","examples/sample.json":"caa8622c94afa7402e166d1db53a262af17f74f72573a06a8e47cf655e863032","examples/sample.nrs":"d05c03a0da9e1bb46ecb8da880e087a1580324d443139ff3aa59c7f6b5358c61","src/chain.rs":"434d82a2f281ebef044f4e5a95c894955ae06b047828f05f8836f71ead335ca8","src/combinator.rs":"07dd0935d606935c86073b16c3705c5635cb816b6c925ff46b86285a8e5582ea","src/debug.rs":"0d15d99af4a9dfb796685aae239d0fd683a84d2e902a5e64bf784ebd9db65f5a","src/error.rs":"23a1beaa1d31c9f3a8d134e731a782c9f32a0d1b85c6264a66a50478380e4657","src/lib.rs":"3e3db6bd4aa0f3ffbaf231a3a537fefb865d0179a753f0ed398ad313c9d5465e","src/primitive.rs":"ecd3230a402d3763f3f0fc759eb6a24a9c6063b4cdbc17acdd5f3e43f517b170","src/recovery.rs":"29a95d08fe91981cbd94fc70705fdb1eb4751b560a3a8373906ab6b30eaf5627","src/recursive.rs":"361373ae0a4c788004113c5387626f6091f88b63d084ec143941bf23d53b6c99","src/span.rs":"cee0f45fa29b7753d2c328d156ecd795bb282df233bb8c531e0415d7aae55670","src/stream.rs":"bd4637a893ecf6e94b7b3408a1f6f7e35dbe5065ce22673c51a3f8d5ed2240cc","src/text.rs":"45cf8726dcb52db00d0b1c9d576090149755f06e226f83c35ceb4a7413f7b218","tutorial.md":"5ba58fd5a5223e89a3320ecf5a67b5519de49237d3b7537e6a51decd025b7408"},"package":"8d02796e4586c6c41aeb68eae9bfb4558a522c35f1430c14b40136c3706e09e4"}
+diff -ru vendor/vendor/chumsky/Cargo.lock vendor.new/vendor/chumsky/Cargo.lock
+--- vendor/vendor/chumsky/Cargo.lock	2022-12-12 20:24:01.634338100 +0100
++++ vendor.new/vendor/chumsky/Cargo.lock	2022-12-12 20:01:38.911052854 +0100
+@@ -4,11 +4,13 @@
+ 
+ [[package]]
+ name = "ahash"
+-version = "0.3.8"
++version = "0.7.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e8fd72866655d1904d6b0997d0b07ba561047d070fbe29de039031c641b61217"
++checksum = "fcb51a0695d8f838b1ee009b3fbf66bda078cd64590202a864a8f3e8c4315c47"
+ dependencies = [
+- "const-random",
++ "getrandom",
++ "once_cell",
++ "version_check",
+ ]
+ 
+ [[package]]
+@@ -36,38 +38,10 @@
+ ]
+ 
+ [[package]]
+-name = "const-random"
+-version = "0.1.13"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f590d95d011aa80b063ffe3253422ed5aa462af4e9867d43ce8337562bac77c4"
+-dependencies = [
+- "const-random-macro",
+- "proc-macro-hack",
+-]
+-
+-[[package]]
+-name = "const-random-macro"
+-version = "0.1.13"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "615f6e27d000a2bffbc7f2f6a8669179378fa27ee4d0a509e985dfc0a7defb40"
+-dependencies = [
+- "getrandom",
+- "lazy_static",
+- "proc-macro-hack",
+- "tiny-keccak",
+-]
+-
+-[[package]]
+-name = "crunchy"
+-version = "0.2.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7a81dae078cea95a014a339291cec439d2f232ebe854a9d672b796c6afafa9b7"
+-
+-[[package]]
+ name = "getrandom"
+-version = "0.2.3"
++version = "0.2.8"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7fcd999463524c52659517fe2cea98493cfe485d10565e7b0fb07dbba7ad2753"
++checksum = "c05aeb6a22b8f62540c194aac980f2115af067bfe15a0734d7277a768d396b31"
+ dependencies = [
+  "cfg-if",
+  "libc",
+@@ -75,16 +49,16 @@
+ ]
+ 
+ [[package]]
+-name = "lazy_static"
+-version = "1.4.0"
++name = "libc"
++version = "0.2.138"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
++checksum = "db6d7e329c562c5dfab7a46a2afabc8b987ab9a4834c9d1ca04dc54c1546cef8"
+ 
+ [[package]]
+-name = "libc"
+-version = "0.2.105"
++name = "once_cell"
++version = "1.16.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "869d572136620d55835903746bcb5cdc54cb2851fd0aeec53220b4bb65ef3013"
++checksum = "86f0b0d4bf799edbc74508c1e8bf170ff5f41238e5f8225603ca7caaae2b7860"
+ 
+ [[package]]
+ name = "pom"
+@@ -93,25 +67,16 @@
+ checksum = "07e2192780e9f8e282049ff9bffcaa28171e1cb0844f49ed5374e518ae6024ec"
+ 
+ [[package]]
+-name = "proc-macro-hack"
+-version = "0.5.19"
++name = "version_check"
++version = "0.9.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "dbf0c48bc1d91375ae5c3cd81e3722dff1abcf81a30960240640d223f59fe0e5"
+-
+-[[package]]
+-name = "tiny-keccak"
+-version = "2.0.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2c9d3793400a45f954c52e73d068316d76b6f4e36977e3fcebb13a2721e80237"
+-dependencies = [
+- "crunchy",
+-]
++checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+ 
+ [[package]]
+ name = "wasi"
+-version = "0.10.2+wasi-snapshot-preview1"
++version = "0.11.0+wasi-snapshot-preview1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fd6fbd9a79829dd1ad0cc20627bf1ed606756a7f77edff7b66b7064f9cb327c6"
++checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+ 
+ [[package]]
+ name = "yansi"
+diff -ru vendor/vendor/chumsky/Cargo.toml vendor.new/vendor/chumsky/Cargo.toml
+--- vendor/vendor/chumsky/Cargo.toml	2022-12-12 20:24:01.634338100 +0100
++++ vendor.new/vendor/chumsky/Cargo.toml	2022-12-12 20:01:34.533961770 +0100
+@@ -21,7 +21,7 @@
+ license = "MIT"
+ repository = "https://github.com/zesterer/chumsky"
+ [dependencies.ahash]
+-version = "^0.3"
++version = "^0.7"
+ optional = true
+ [dev-dependencies.ariadne]
+ version = "0.1.2"
