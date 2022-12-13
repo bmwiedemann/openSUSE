@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.20.3
+Version:        1.22.3
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.ta
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
+Patch0:         fix-aarch64-build.patch
 BuildRequires:  pkgconfig
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(flac)
@@ -67,12 +68,10 @@ sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" Quake/host.c
     USE_CODEC_MIKMOD=1 \
     USE_CODEC_UMX=1 \
     USE_CODEC_MP3=0
-%make_build -C Misc/vq_pak
 strip Quake/vkquake
 
 %install
 install -Dm755 Quake/vkquake %{buildroot}%{_bindir}/%{name}
-install -Dm644 Misc/vq_pak/vkquake.pak %{buildroot}%{_datadir}/games/%{name}/%{name}.pak
 install -D -p -m 644 Misc/vkQuake_512.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -D -p -m 644 %{SOURCE100} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 install -D -p -m 644 %{SOURCE101} %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -80,11 +79,9 @@ install -D -p -m 644 %{SOURCE101} %{buildroot}%{_datadir}/applications/%{name}.d
 %files
 %license LICENSE.txt
 %doc readme.md Misc/fitzquake080.txt Misc/fitzquake080sdl.txt Misc/fitzquake085.txt
-%dir %{_datadir}/games/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/games/%{name}/%{name}.pak
 %{_datadir}/pixmaps/%{name}.png
 
 %changelog
