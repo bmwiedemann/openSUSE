@@ -17,7 +17,7 @@
 
 
 Name:           tiny
-Version:        0.10.0+git13
+Version:        0.10.0+git14
 Release:        0
 Summary:        Terminal IRC client written in Rust
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MIT
