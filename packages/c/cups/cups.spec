@@ -410,8 +410,8 @@ install -d -m755 %{buildroot}%{_datadir}/cups/drivers
 install -d -m755 %{buildroot}%{_localstatedir}/cache/cups
 # Add conf/pam.suse regarding support for PAM (see Patch100: cups-pam.diff):
 %if 0%{?suse_version} > 1500
-install -d -m755 %{buildroot}%{_distconfdir}/pam.d
-install -m 644 -D conf/pam.suse %{buildroot}%{_distconfdir}/pam.d/cups
+install -d -m755 %{buildroot}%{_pam_vendordir}
+install -m 644 -D conf/pam.suse %{buildroot}%{_pam_vendordir}/cups
 # remove /etc/pam.d/cups from conf/pam.std
 rm -rf %{buildroot}%{_sysconfdir}/pam.d
 %else
@@ -571,10 +571,12 @@ for u in cups.service cups.socket cups.path; do
         systemctl --quiet disable $u 2>/dev/null || :
    fi
 done
+%if 0%{?suse_version} > 1500
 # Migration to /usr/etc, restore just created .rpmsave
 for i in pam.d/cups ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
+%endif
 exit 0
 
 %post   -n libcups2 -p /sbin/ldconfig
@@ -608,7 +610,7 @@ exit 0
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cupsd.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/snmp.conf
 %if 0%{?suse_version} > 1500
-%config %{_distconfdir}/pam.d/cups
+%{_pam_vendordir}/cups
 %else
 %config %{_sysconfdir}/pam.d/cups
 %endif

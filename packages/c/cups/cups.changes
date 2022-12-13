@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 12 12:23:49 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
+Sat Dec 10 15:14:42 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove invalid %config directive on %_distconfdir/pam.d/cups
+
+-------------------------------------------------------------------
+Fri Dec  9 16:58:55 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration PAM settings to /usr/etc: Fixed posttrans.
+  Should only be used for TW.
+
+-------------------------------------------------------------------
 Thu Dec  8 14:30:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration PAM settings to /usr/etc: Saving user changed
