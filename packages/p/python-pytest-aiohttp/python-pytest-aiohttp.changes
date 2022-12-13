@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 07:21:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pytest72.patch to make it compatible with pytest 7.2.0
+  gh#aio-libs/pytest-aiohttp#49
+
+-------------------------------------------------------------------
 Sat Oct 15 09:17:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies: pytest-asyncio missing

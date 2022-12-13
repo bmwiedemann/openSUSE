@@ -25,11 +25,13 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/pytest-aiohttp
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-aiohttp/pytest-aiohttp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest72.patch gh#aio-libs/pytest-aiohttp#49
+Patch0:         pytest72.patch
 BuildRequires:  %{python_module aiohttp >= 3.8.1}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.1.0}
-BuildRequires:  %{python_module pytest-asyncio >= 0.17.2}
+BuildRequires:  %{python_module pytest-asyncio >= 0.20.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.8.1
 Requires:       python-pytest >= 6.1.0
-Requires:       python-pytest-asyncio >= 0.17.2
+Requires:       python-pytest-asyncio >= 0.20.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,7 +47,7 @@ BuildArch:      noarch
 A library that provides fixtures for creation test aiohttp server and client.
 
 %prep
-%setup -q -n %{pyname}-%{version}
+%autosetup -p1 -n %{pyname}-%{version}
 
 %build
 %pyproject_wheel

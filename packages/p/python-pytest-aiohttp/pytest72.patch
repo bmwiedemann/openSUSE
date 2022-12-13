@@ -1,0 +1,33 @@
+From d7f142e8ee73fa50096e5e9ed00458ea7e874845 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Wed, 30 Nov 2022 08:01:19 +0100
+Subject: [PATCH] Use pytest.hookimpl in pytest_configure
+
+pytest.PytestDeprecationWarning: The hookimpl pytest_configure uses
+old-style configuration options (marks or attributes).
+
+Please use the pytest.hookimpl(tryfirst=True) decorator instead to
+configure the hooks.
+See https://docs.pytest.org/en/latest/deprecations.html#configuring-hook-specs-impls-using-markers
+
+Fix https://github.com/aio-libs/pytest-aiohttp/issues/47
+---
+ pytest_aiohttp/plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pytest_aiohttp/plugin.py b/pytest_aiohttp/plugin.py
+index d4854d8..68c8ad8 100644
+--- a/pytest_aiohttp/plugin.py
++++ b/pytest_aiohttp/plugin.py
+@@ -18,7 +18,7 @@ LEGACY_MODE = DeprecationWarning(
+ )
+ 
+ 
+-@pytest.mark.tryfirst
++@pytest.hookimpl(tryfirst=True)
+ def pytest_configure(config) -> None:
+     val = config.getoption("asyncio_mode")
+     if val is None:
+-- 
+2.38.1
+

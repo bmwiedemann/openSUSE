@@ -36,4 +36,14 @@
     <comment></comment>
     <requestid>1012119</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>18b83d63dff0ef3f4e6e257b600078dc</srcmd5>
+    <version>1.0.4</version>
+    <time>1670954107</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest72.patch to make it compatible with pytest 7.2.0
+  gh#aio-libs/pytest-aiohttp#49
+</comment>
+    <requestid>1039049</requestid>
+  </revision>
 </revisionlist>
