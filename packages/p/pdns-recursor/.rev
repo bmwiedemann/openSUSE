@@ -693,4 +693,28 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1040841</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>25573a0dd701360e491c40aa810b9729</srcmd5>
+    <version>4.8.0</version>
+    <time>1670954163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.0 with these major changes:
+  * Structured Logging has been implemented for almost all
+    subsystems.
+  * Optional Serve Stale functionality has been implemented,
+    providing resilience against connectivity problems towards
+    authoritative servers.
+  * Optional Record Locking has been implemented, providing an extra
+    layer of protection against spoofing attempts at the price of
+    reduced cache efficiency.
+  * Internal tables used to track information about authoritative
+    servers are now shared instead of per-thread, resulting in
+    better performance and lower memory usage.
+  * EDNS padding of outgoing DoT queries has been implemented,
+    providing better privacy protection.
+  * Metrics have been added about the protobuf and dnstap logging
+    subsystems and the rcodes received from authoritative
+    servers.</comment>
+    <requestid>1042523</requestid>
+  </revision>
 </revisionlist>

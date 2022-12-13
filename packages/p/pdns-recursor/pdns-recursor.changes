@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 12 13:20:47 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.8.0 with these major changes:
+  * Structured Logging has been implemented for almost all
+    subsystems.
+  * Optional Serve Stale functionality has been implemented,
+    providing resilience against connectivity problems towards
+    authoritative servers.
+  * Optional Record Locking has been implemented, providing an extra
+    layer of protection against spoofing attempts at the price of
+    reduced cache efficiency.
+  * Internal tables used to track information about authoritative
+    servers are now shared instead of per-thread, resulting in
+    better performance and lower memory usage.
+  * EDNS padding of outgoing DoT queries has been implemented,
+    providing better privacy protection.
+  * Metrics have been added about the protobuf and dnstap logging
+    subsystems and the rcodes received from authoritative
+    servers.
+
+-------------------------------------------------------------------
 Fri Nov 25 16:50:07 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.7.4
