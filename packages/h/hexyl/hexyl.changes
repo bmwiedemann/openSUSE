@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec 10 19:51:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Updat eto version 0.12.0
+  Features
+  * Only show one panel by default if the terminal width is not
+    wide enough for two panels.
+  * Respect the NO_COLOR environment variable.
+  Bugfixes
+  * Do not fail with an error if --panels=auto is used and the
+    output is piped.
+  Changes
+  * Breaking: For xxd-compatibility reasons, --group_bytes has
+    been renamed to --group-size (with an --groupsize alias).
+
+-------------------------------------------------------------------
 Mon Dec  5 18:32:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.11.0

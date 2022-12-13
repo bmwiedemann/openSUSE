@@ -18,7 +18,7 @@
 
 
 Name:           hexyl
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        A command-line hex viewer
 License:        Apache-2.0
