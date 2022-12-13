@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 06 10:29:56 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 1.5.1:
+  * 27 newly introduced functions
+  * another 16, which have been fixed or upgraded with missing features
+- Removed obsolete patch fix-pkgadd.patch
+  Reason: Fixed upstream
+
+-------------------------------------------------------------------
 Tue Nov  8 17:15:18 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.5.0:
