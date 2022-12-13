@@ -1,7 +1,7 @@
 #
 # spec file for package goxel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goxel
-Version:        0.10.8
+Version:        0.11.0
 Release:        0
 Summary:        Voxel graphics editor
 License:        GPL-3.0-only

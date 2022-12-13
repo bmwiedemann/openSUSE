@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 09:24:33 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to 0.11.0
+  * Improve vlx import.
+  * Add support for plane at non 90 deg angles.
+  * Add basic support for selection mask, so that we can add or subtract from the current selection.
+
+-------------------------------------------------------------------
 Mon Dec 13 15:00:29 UTC 2021 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Update to 0.10.8
