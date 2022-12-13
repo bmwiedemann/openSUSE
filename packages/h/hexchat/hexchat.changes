@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 11:46:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix execution on i586: the migration script is installed in
+  /usr/lib there (boo#1206323).
+
+-------------------------------------------------------------------
 Sun Feb 13 12:46:40 UTC 2022 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 2.16.1

@@ -97,6 +97,7 @@ The HexChat plugin providing the Python 3 scripting interface.
 
 %prep
 %autosetup -p1
+sed -i "s|@@LIBDIR@@|%{_libdir}|g" src/common/cfgfiles.c
 
 %build
 %meson \

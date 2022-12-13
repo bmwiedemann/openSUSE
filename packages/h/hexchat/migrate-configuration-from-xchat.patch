@@ -17,7 +17,7 @@ index 4bf2f47..b2a4525 100644
 +		g_warning("fork failed ");
 +		return;
 +	    case 0:
-+		execl("/bin/sh","sh", "-c", "/usr/lib64/hexchat/hexchat-migrate-sh",NULL);
++		execl("/bin/sh","sh", "-c", "@@LIBDIR@@/hexchat/hexchat-migrate-sh",NULL);
 +		_exit(0);
 +	    default:
 +		return;
