@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 13 07:43:32 UTC 2022 - pgajdos@suse.com
+
+- disable flaky test_timeout_generator
+
+-------------------------------------------------------------------
+Mon Dec 12 15:15:16 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.4.5
+  * no upstream changelog, see
+  https://github.com/wolph/python-utils/commits/develop 
+- python-six is not required
+
+-------------------------------------------------------------------
 Wed Dec  8 09:03:34 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-utils
-Version:        2.5.6
+Version:        3.4.5
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause
@@ -29,10 +28,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module loguru}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
-Requires:       python-six
+Requires:       python-loguru
 BuildArch:      noarch
 
 %python_subpackages
@@ -53,7 +52,8 @@ classes which make common patterns shorter and easier.
 
 %check
 mv pytest.ini{,.hide}
-%pytest
+skip='test_timeout_generator' # obs rq#1042418
+%pytest -k "not $skip"
 mv pytest.ini{.hide,}
 
 %files %{python_files}
