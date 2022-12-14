@@ -51,4 +51,16 @@
 </comment>
     <requestid>1006091</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c7c36e294f62a0b097529de4a95c4ba</srcmd5>
+    <version>0.9.3</version>
+    <time>1671023473</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+
+- Update to version 0.9.3 
+  * What's Changed
+  Pass &quot;strict&quot; flag down to copies, so strict remains strict. By @justvanrossum in #305, as required to fix googlefonts/fontmake#961</comment>
+    <requestid>1042823</requestid>
+  </revision>
 </revisionlist>

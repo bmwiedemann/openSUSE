@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-fontMath
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A set of objects for performing math operations on font data
 License:        MIT
