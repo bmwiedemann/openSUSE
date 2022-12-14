@@ -22,7 +22,7 @@
 %define typelib_minor 0
 
 Name:           cheese
-Version:        43.alpha
+Version:        43.0
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
@@ -100,6 +100,7 @@ party applications to include parts of cheese functionality.
 %package -n libcheese-common
 Summary:        Common data files for the Cheese webcam booth
 Group:          System/Libraries
+BuildArch:      noarch
 
 %description -n libcheese-common
 Cheese is an application to take photos and videos with your webcam,

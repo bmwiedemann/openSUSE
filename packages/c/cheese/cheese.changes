@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 13 09:53:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Remove glibc debug environment variables.
+  + Updated translations.
+- Build libcheese-common as noarch.
+
+-------------------------------------------------------------------
 Wed Jul 27 16:18:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.alpha:

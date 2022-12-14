@@ -872,4 +872,12 @@
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002606 from dimstar)</comment>
     <requestid>1003138</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>0142bd0bdc3d71e3458c03dfc147b865</srcmd5>
+    <version>43.0</version>
+    <time>1671023452</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1042594 from iznogood)</comment>
+    <requestid>1042676</requestid>
+  </revision>
 </revisionlist>
