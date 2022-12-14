@@ -2,7 +2,15 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
 ===================================================================
 --- fedora-policy-20221019.orig/policy/modules/contrib/networkmanager.te
 +++ fedora-policy-20221019/policy/modules/contrib/networkmanager.te
-@@ -275,6 +275,9 @@ userdom_read_home_certs(NetworkManager_t
+@@ -259,6 +259,7 @@ sysnet_search_dhcp_state(NetworkManager_
+ sysnet_manage_config(NetworkManager_t)
+ sysnet_filetrans_named_content(NetworkManager_t)
+ sysnet_filetrans_net_conf(NetworkManager_t)
++sysnet_watch_config(NetworkManager_t)
+ 
+ systemd_login_watch_pid_dirs(NetworkManager_t)
+ systemd_login_watch_session_dirs(NetworkManager_t)
+@@ -275,6 +276,9 @@ userdom_read_home_certs(NetworkManager_t
  userdom_read_user_home_content_files(NetworkManager_t)
  userdom_dgram_send(NetworkManager_t)
  
@@ -12,7 +20,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  tunable_policy(`use_nfs_home_dirs',`
      fs_read_nfs_files(NetworkManager_t)
  ')
-@@ -284,6 +287,10 @@ tunable_policy(`use_samba_home_dirs',`
+@@ -284,6 +288,10 @@ tunable_policy(`use_samba_home_dirs',`
  ')
  
  optional_policy(`
@@ -23,7 +31,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  	avahi_domtrans(NetworkManager_t)
  	avahi_kill(NetworkManager_t)
  	avahi_signal(NetworkManager_t)
-@@ -292,6 +299,14 @@ optional_policy(`
+@@ -292,6 +300,14 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -38,7 +46,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  	bind_domtrans(NetworkManager_t)
  	bind_manage_cache(NetworkManager_t)
  	bind_kill(NetworkManager_t)
-@@ -419,6 +434,8 @@ optional_policy(`
+@@ -419,6 +435,8 @@ optional_policy(`
  	nscd_kill(NetworkManager_t)
  	nscd_initrc_domtrans(NetworkManager_t)
  	nscd_systemctl(NetworkManager_t)
@@ -47,7 +55,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  ')
  
  optional_policy(`
-@@ -606,6 +623,7 @@ files_manage_etc_files(NetworkManager_di
+@@ -606,6 +624,7 @@ files_manage_etc_files(NetworkManager_di
  
  init_status(NetworkManager_dispatcher_cloud_t)
  init_status(NetworkManager_dispatcher_ddclient_t)
@@ -55,7 +63,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  init_append_stream_sockets(networkmanager_dispatcher_plugin)
  init_ioctl_stream_sockets(networkmanager_dispatcher_plugin)
  init_stream_connect(networkmanager_dispatcher_plugin)
-@@ -621,6 +639,10 @@ optional_policy(`
+@@ -621,6 +640,10 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -107,3 +115,13 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.fc
  /usr/lib/NetworkManager/dispatcher\.d/20-chrony-dhcp	--	gen_context(system_u:object_r:NetworkManager_dispatcher_chronyc_script_t,s0)
  /usr/lib/NetworkManager/dispatcher\.d/20-chrony-onoffline	--	gen_context(system_u:object_r:NetworkManager_dispatcher_chronyc_script_t,s0)
  /usr/lib/NetworkManager/dispatcher\.d/30-winbind	--	gen_context(system_u:object_r:NetworkManager_dispatcher_winbind_script_t,s0)
+@@ -37,6 +38,9 @@
+ 
+ /usr/libexec/nm-dispatcher --	gen_context(system_u:object_r:NetworkManager_dispatcher_exec_t,s0)
+ /usr/libexec/nm-priv-helper  -- gen_context(system_u:object_r:NetworkManager_priv_helper_exec_t,s0)
++# bsc#1206355
++/usr/lib/nm-dispatcher --	gen_context(system_u:object_r:NetworkManager_dispatcher_exec_t,s0)
++/usr/lib/nm-priv-helper  -- gen_context(system_u:object_r:NetworkManager_priv_helper_exec_t,s0)
+ 
+ /usr/bin/NetworkManager	--	gen_context(system_u:object_r:NetworkManager_exec_t,s0)
+ /usr/bin/wpa_cli	--	gen_context(system_u:object_r:wpa_cli_exec_t,s0)

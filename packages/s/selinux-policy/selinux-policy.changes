@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:36:01 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated fix_networkmanager.patch to fixe labeling of nm-dispatcher and
+  nm-priv-helper until the packaging is adjusted (bsc#1206355)
+- Update fix_chronyd.patch to allow  sendto towards
+  NetworkManager_dispatcher_custom_t. Added new interface
+  networkmanager_dispatcher_custom_dgram_send for this (bsc#1206357)
+- Update fix_dbus.patch to allow dbus to watch lib directories (bsc#1205895)
+
+-------------------------------------------------------------------
+Tue Dec  6 15:02:42 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated fix_networkmanager.patch to allow NetworkManager to watch
+  net_conf_t (bsc#1206109)
+
+-------------------------------------------------------------------
 Wed Nov 30 19:28:58 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add fix_irqbalance.patch: support netlink socket operations (bsc#1205434)

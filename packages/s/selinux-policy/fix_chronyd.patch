@@ -2,11 +2,12 @@ Index: fedora-policy-20221019/policy/modules/contrib/chronyd.te
 ===================================================================
 --- fedora-policy-20221019.orig/policy/modules/contrib/chronyd.te
 +++ fedora-policy-20221019/policy/modules/contrib/chronyd.te
-@@ -144,6 +144,14 @@ systemd_exec_systemctl(chronyd_t)
+@@ -144,6 +144,15 @@ systemd_exec_systemctl(chronyd_t)
  userdom_dgram_send(chronyd_t)
  
  optional_policy(`
 +	networkmanager_read_pid_files(chronyd_t)
++	networkmanager_dispatcher_custom_dgram_send(chronyd_t)
 +')
 +
 +optional_policy(`
@@ -30,3 +31,30 @@ Index: fedora-policy-20221019/policy/modules/contrib/chronyd.fc
  
  /usr/bin/chronyc	--	gen_context(system_u:object_r:chronyc_exec_t,s0)
  
+Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.if
+===================================================================
+--- fedora-policy-20221019.orig/policy/modules/contrib/networkmanager.if
++++ fedora-policy-20221019/policy/modules/contrib/networkmanager.if
+@@ -684,3 +684,22 @@ template(`networkmanager_dispatcher_plug
+ 
+ 	domtrans_pattern(NetworkManager_dispatcher_t, NetworkManager_dispatcher_$1_script_t, NetworkManager_dispatcher_$1_t)
+ ')
++
++########################################
++## <summary>
++##      Send a message to NetworkManager_dispatcher_custom
++##      over a unix domain datagram socket.
++## </summary>
++## <param name="domain">
++##      <summary>
++##      Domain allowed access.
++##      </summary>
++## </param>
++#
++interface(`networkmanager_dispatcher_custom_dgram_send',`
++        gen_require(`
++                type NetworkManager_dispatcher_custom_t;
++        ')
++
++        allow $1 NetworkManager_dispatcher_custom_t:unix_dgram_socket sendto;
++')
