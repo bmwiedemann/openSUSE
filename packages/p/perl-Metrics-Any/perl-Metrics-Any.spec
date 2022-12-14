@@ -18,7 +18,7 @@
 
 %define cpan_name Metrics-Any
 Name:           perl-Metrics-Any
-Version:        0.08
+Version:        0.09
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Abstract collection of monitoring metrics

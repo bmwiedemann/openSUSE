@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 29 03:07:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Metrics-Any/Changes
+
+  0.09    2022-11-28
+          [CHANGES]
+           * Define a new API for optional high-performance batch mode
+             collection of counter and gauge metrics
+
+-------------------------------------------------------------------
 Wed Oct 12 03:06:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.08
