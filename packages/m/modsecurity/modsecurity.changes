@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug 14 12:34:25 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to version 3.0.7
+  * Support PCRE2
+  * Support SecRequestBodyNoFilesLimit
+  * Add ctl:auditEngine action support
+  * Move PCRE2 match block from member variable
+  * Add SecArgumentsLimit, 200007 to modsecurity.conf-recommended
+  * Fix memory leak when concurrent log includes REMOTE_USER
+  * Fix LMDB initialization issues
+  * Fix initcol error message wording
+  * Tolerate other parameters after boundary in multipart C-T
+  * Add DebugLog message for bad pattern in rx operator
+  * Fix misuses of LMDB API
+  * Fix duplication typo in code comment
+  * Fix multiMatch msg, etc, population in audit log
+  * Fix some name handling for ARGS_*NAMES: regex SecRuleUpdateTargetById, etc.
+  * Adjust confusing variable name in setRequestBody method
+  * Multipart names/filenames may include single quote if double-quote enclosed
+  * Add SecRequestBodyJsonDepthLimit to modsecurity.conf-recommended
+
+-------------------------------------------------------------------
 Fri Feb 25 12:15:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.0.6
