@@ -18,7 +18,7 @@
 
 %define _piddir /run
 Name:           prosody
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        Communications server for Jabber/XMPP
 License:        MIT

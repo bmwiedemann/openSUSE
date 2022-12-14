@@ -551,4 +551,39 @@
   * mod_external_services: Move error message to correct place (fix #1725: mod_external_services: Misplaced textual error message)</comment>
     <requestid>981547</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b34e4aab2db08aac441aadb91045e140</srcmd5>
+    <version>0.12.2</version>
+    <time>1671023466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.2:
+  Fixes and improvements:
+  * util.stanza: Allow U+7F when constructing stazas
+  * net.unbound: Preserve built-in defaults and Prosodys settings for
+    luaunbound (fixes #1763: luaunbound not reading resolv.conf)
+  * mod_smacks: Disable not implemented resumption behavior on s2s
+  * mod_http: Allow disabling CORS in the http_cors_override option and by default
+  Minor changes:
+  * util.json: Accept empty arrays with whitespace (fixes #1782: util.json
+    fails to parse empty array with whitespace)
+  * util.stanza: Adjust number of return values to handle change in
+    dependency of test suite (fix test with luassert &gt;=1.9)
+  * util.startup: Ensure import() is available in prosodyctl
+  * mod_storage_sql: Fix initialization when called from prosodyctl
+  * mod_storage_sql: Fix the summary API with Postgres (#1766)
+  * mod_admin_shell: Fixes for showing data related to disconnected sessions (fixes #1777)
+  * core.s2smanager: Don’t remove unrelated session on close of bidi session
+  * mod_smacks: Don’t send redundant requests for acknowledgement (#1761)
+  * mod_admin_shell: Rename commands user:roles() to user:setroles()
+    and user:showroles() to user:roles()
+  * mod_smacks: Bounce unhandled stanzas from local origin (fix #1759)
+  * mod_bookmarks: Reduce log level of message about not having any bookmarks
+  * mod_s2s: Fix firing buffer drain events
+  * mod_http_files: Log warning about legacy modules using mod_http_files
+  * util.startup: Wait for last shutdown steps
+  * util.datamapper: Improve handling of schemas with non-obvious “type”
+  * util.jsonschema: Fix validation to not assume presence of “type” field
+  * util.jsonschema: Use same integer/float logic on Lua 5.2 and 5.3</comment>
+    <requestid>1042817</requestid>
+  </revision>
 </revisionlist>
