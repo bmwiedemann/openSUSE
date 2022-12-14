@@ -24,11 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-fontParts%{psuffix}
-Version:        0.10.8
+Version:        0.11.0
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT

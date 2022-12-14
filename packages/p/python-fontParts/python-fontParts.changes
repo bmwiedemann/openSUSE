@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 14 08:43:29 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
+Tue Dec 13 15:27:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.11.0 
+  * Expose the mathGlyph options. Thanks @typesupply! See #672
+  * Set defaultLayer to "public.default" when its available. Fixes issue #674. Thanks @typemytype! See #675.
+  * Add info.update to the info object. Thanks @typesupply! See #676
+
+-------------------------------------------------------------------
 Wed Sep 28 15:36:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 0.10.8 
