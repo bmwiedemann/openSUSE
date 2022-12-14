@@ -53,6 +53,7 @@ Development package that contains the pkgconfig file for at-spi-sharp.
 
 %build
 %configure --disable-tests --libdir=%{_prefix}/lib
+mkdir -p at-spi/bin # work around Makefile parallelism issue
 %make_build
 
 %install

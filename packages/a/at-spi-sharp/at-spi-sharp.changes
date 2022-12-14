@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 30 03:41:58 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- work around a Makefile parallelism issue
+
+-------------------------------------------------------------------
 Sat Mar 14 07:41:52 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 1.1.1
