@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:12:21 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.351.ge78c8ff6:
+  * feat(kernel-modules): exclude USB drivers in strict hostonly mode (bsc#1186056)
+  * feat(multipath): warn if included with no multipath devices and no user conf (bsc#1069169)
+  * fix(fips): check for fipscheck in libexec
+  * fix(fips): install required sed binary
+
+-------------------------------------------------------------------
 Tue Nov 15 13:25:56 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.344.g021aead9:
