@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:23:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.0:
+  + Introduce a new background monitoring service. This allows
+    desktop environments to list applications that are running in
+    background, that is, sandboxed applications running without a
+    visible window. Desktop environments can display these
+    background running applications in their interfaces, and allow
+    users to control their execution.
+  + Introduce the Global Shortcuts portal. This portal allows
+    applications to register and receive keyboard shortcuts even
+    when they're not focused. This was a highly requested feature,
+    especially on Wayland desktops. There are improvements to come,
+    but portal backends can now implement this new portal.
+  + Various CI improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Aug 12 06:46:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.15.0:

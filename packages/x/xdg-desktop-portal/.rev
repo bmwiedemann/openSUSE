@@ -333,4 +333,12 @@
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002696 from dimstar)</comment>
     <requestid>1003220</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b4c1f4786d6276c318f7b9a3a1ce221d</srcmd5>
+    <version>1.16.0</version>
+    <time>1671023452</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1042570 from iznogood)</comment>
+    <requestid>1042675</requestid>
+  </revision>
 </revisionlist>
