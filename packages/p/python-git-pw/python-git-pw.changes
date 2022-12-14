@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 14 08:47:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
+Tue Dec 13 15:29:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.4.0 
+  * Replace implicit optional typedefs
+
+-------------------------------------------------------------------
 Fri May  6 10:28:55 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.3.0

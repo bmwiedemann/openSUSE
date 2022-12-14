@@ -45,4 +45,15 @@
     <comment></comment>
     <requestid>975403</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ee88cd001e2fc2e577342b095f63a88</srcmd5>
+    <version>2.4.0</version>
+    <time>1671023475</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+
+- Update to version 2.4.0 
+  * Replace implicit optional typedefs</comment>
+    <requestid>1042826</requestid>
+  </revision>
 </revisionlist>
