@@ -36,6 +36,8 @@ Suggests:       mariadb
 Suggests:       mariadb-client
 Suggests:       openSUSE-build-key
 Suggests:       openssl-1_1
+# https://progress.opensuse.org/issues/121960
+Suggests:       procps < 4
 Conflicts:      core-release <= 10
 Conflicts:      distribution-release
 Conflicts:      sled-release <= 10
