@@ -1,42 +1,24 @@
-Index: xscreensaver-6.02/driver/prefsw.c
+Index: xscreensaver-6.05/driver/dialog.c
 ===================================================================
---- xscreensaver-6.02.orig/driver/prefsw.c
-+++ xscreensaver-6.02/driver/prefsw.c
-@@ -1520,36 +1520,5 @@ senescent_p (void)
-      security-critical software that they are running is dangerously out
-      of date.
-   */
--
--  time_t now = time ((time_t *) 0);				/*   d   */
--  struct tm *tm = localtime (&now);				/*   o   */
--  const char *s = screensaver_id;				/*   n   */
--  char mon[4], year[5];						/*   '   */
--  int m, y, mrnths;						/*   t   */
--  s = strchr (s, ' '); if (!s) abort(); s++;			/*       */
--  s = strchr (s, '('); if (!s) abort(); s++;			/*   d   */
--  s = strchr (s, '-'); if (!s) abort(); s++;			/*   o   */
--  strncpy (mon, s, 3);						/*   o   */
--  mon[3] = 0;							/*       */
--  s = strchr (s, '-'); if (!s) abort(); s++;			/*   e   */
--  strncpy (year, s, 4);						/*   e   */
--  year[4] = 0;							/*   t   */
--  y = atoi (year);						/*   ,   */
--  if      (!strcmp(mon, "Jan")) m = 0;				/*       */
--  else if (!strcmp(mon, "Feb")) m = 1;				/*   s   */
--  else if (!strcmp(mon, "Mar")) m = 2;				/*   t   */
--  else if (!strcmp(mon, "Apr")) m = 3;				/*   o   */
--  else if (!strcmp(mon, "May")) m = 4;				/*   p   */
--  else if (!strcmp(mon, "Jun")) m = 5;				/*   ,   */
--  else if (!strcmp(mon, "Jul")) m = 6;				/*       */
--  else if (!strcmp(mon, "Aug")) m = 7;				/*   s   */
--  else if (!strcmp(mon, "Sep")) m = 8;				/*   t   */
--  else if (!strcmp(mon, "Oct")) m = 9;				/*   a   */
--  else if (!strcmp(mon, "Nov")) m = 10;				/*   a   */
--  else if (!strcmp(mon, "Dec")) m = 11;				/*   a   */
--  else abort();							/*   h   */
--  mrnths = ((((tm->tm_year + 1900) * 12) + tm->tm_mon) -	/*   h   */
--            (y * 12 + m));					/*   h   */
--							  	/*   p   */
--  return (mrnths >= 17);					/*   .   */
-+return False;
- }
+--- xscreensaver-6.05.orig/driver/dialog.c
++++ xscreensaver-6.05/driver/dialog.c
+@@ -1372,18 +1372,7 @@ window_draw (window_state *ws)
+   lines[i].align = CENTER;
+   i++;
+ 
+-  if (time ((time_t *) 0) - XSCREENSAVER_RELEASED > 60*60*24*30*17)
+-    {
+-      lines[i].text  = _("Update available!\nThis version is very old.\n");
+-      lines[i].font  = ws->error_font;
+-      lines[i].fg    = ws->xft_error_foreground;
+-      lines[i].fg2   = lines[i].fg;
+-      lines[i].bg    = ws->background;
+-      lines[i].type  = LABEL;
+-      lines[i].align = CENTER;
+-      i++;
+-    }
+-  else if (strstr (ws->version, "a") ||
++  if (strstr (ws->version, "a") ||
+       strstr (ws->version, "b"))
+     {
+       lines[i].text  = _("PRE-RELEASE VERSION");
