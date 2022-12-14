@@ -993,4 +993,12 @@ nicer version with try-reload-or-restart</comment>
     <comment>tor 0.4.7.11 boo#1205307 (forwarded request 1035139 from AndreasStieger)</comment>
     <requestid>1035228</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>448ded428b476c63332c1022fcc4a370</srcmd5>
+    <version>0.4.7.12</version>
+    <time>1671023552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:10:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.7.12:
+  * new key for moria1
+  * new metrics are exported on the MetricsPort for the congestion
+    control subsystem
+
+-------------------------------------------------------------------
 Thu Nov 10 19:14:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.11:
