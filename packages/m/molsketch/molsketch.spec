@@ -20,7 +20,7 @@
 %define sover 1
 %define soname %{sover}
 Name:           molsketch
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  rsvg-convert
 BuildRequires:  rsvg-view
 %endif
 BuildRequires:  update-desktop-files
+BuildRequires:  (pkgconfig(openbabel-2.0) or pkgconfig(openbabel-3))
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -48,7 +49,6 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  (pkgconfig(openbabel-2.0) or pkgconfig(openbabel-3))
 
 %description
 The purpose of this editor to help drawing molecules.

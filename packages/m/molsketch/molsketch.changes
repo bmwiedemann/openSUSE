@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:12:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.3:
+  * New bond types 
+
+-------------------------------------------------------------------
 Sun Aug 14 18:21:28 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Allow build against Open Babel 3: It is supported since 0.7.0.
