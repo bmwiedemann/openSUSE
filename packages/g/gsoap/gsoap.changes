@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 13 10:51:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.124
+  * Added C++17 `std::optional` member variable serialization.
+  * Updated wsdl2h to automatically generates `std::optional`
+    member variables for optional schemas when typedef.dat
+    defines `$OPTIONAL = std::optional`. Only primitive type
+    member variables are made `std::optional`, not classes,
+    because optional types must be defined before referenced when
+    in fact cyclic data structure relationships may exist among
+    classes.
+  * Added missing `std::vector<xsd__anyType>` deep copy of vector
+    of DOM trees generated with soapcpp2 option `-Ec`.
+
+-------------------------------------------------------------------
 Mon Oct 24 13:23:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.123
