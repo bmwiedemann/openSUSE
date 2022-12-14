@@ -18,7 +18,7 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.028
+Version:        6.029
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
@@ -192,7 +192,7 @@ published, released code, it can do much more than those tools, and is free
 to make much more ludicrous demands in terms of prerequisites.
 
 If you have access to the web, you can learn more and find an interactive
-tutorial at *at http://dzil.org/*. If not, try Dist::Zilla::Tutorial.
+tutorial at *at https://dzil.org/*. If not, try Dist::Zilla::Tutorial.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
