@@ -1,7 +1,6 @@
-Index: pipewire-0.3.61/doc/meson.build
-===================================================================
---- pipewire-0.3.61.orig/doc/meson.build
-+++ pipewire-0.3.61/doc/meson.build
+diff -Naur pipewire-0.3.62/doc/meson.build pipewire-0.3.62.new/doc/meson.build
+--- pipewire-0.3.62/doc/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/doc/meson.build	2022-12-10 13:39:45.122679346 +0000
 @@ -1,8 +1,8 @@
  doxyfile_conf = configuration_data()
  doxyfile_conf.set('PACKAGE_NAME', meson.project_name())
@@ -13,7 +12,7 @@ Index: pipewire-0.3.61/doc/meson.build
  
  dot_found = find_program('dot', required: false).found()
  summary({'dot (used with doxygen)': dot_found}, bool_yn: true, section: 'Optional programs')
-@@ -48,35 +48,35 @@ extra_docs = [
+@@ -48,35 +48,35 @@
  
  inputs = []
  foreach extra : extra_docs
@@ -62,7 +61,7 @@ Index: pipewire-0.3.61/doc/meson.build
  ]
  
  # Example files (in order from simple to esoteric)
-@@ -116,13 +116,25 @@ input_dirs += [ 'doc/examples.dox' ]
+@@ -116,13 +116,25 @@
  
  man_doxygen = []
  man_subpages = []
@@ -91,7 +90,7 @@ Index: pipewire-0.3.61/doc/meson.build
    manfile = configure_file(input: 'manpage.dox.in',
                             output: filename,
                             configuration: manconf)
-@@ -141,8 +153,8 @@ input_dirs += [ 'doc/pipewire-tools.dox'
+@@ -141,8 +153,8 @@
  doxyfile_conf.set('inputs', ' '.join(inputs + input_dirs))
  doxyfile_conf.set('cssfiles', ' '.join(cssfiles))
  doxyfile_conf.set('path_prefixes', ' '.join(path_prefixes))
@@ -102,11 +101,10 @@ Index: pipewire-0.3.61/doc/meson.build
  
  doxyfile = configure_file(input: 'Doxyfile.in',
                            output: 'Doxyfile',
-Index: pipewire-0.3.61/man/meson.build
-===================================================================
---- pipewire-0.3.61.orig/man/meson.build
-+++ pipewire-0.3.61/man/meson.build
-@@ -21,7 +21,7 @@ manpages = [
+diff -Naur pipewire-0.3.62/man/meson.build pipewire-0.3.62.new/man/meson.build
+--- pipewire-0.3.62/man/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/man/meson.build	2022-12-10 13:39:45.126679340 +0000
+@@ -21,7 +21,7 @@
    'pw-top.1.rst.in',
  ]
  
@@ -115,20 +113,19 @@ Index: pipewire-0.3.61/man/meson.build
    manpages += 'pw-jack.1.rst.in'
  endif
  
-Index: pipewire-0.3.61/meson.build
-===================================================================
---- pipewire-0.3.61.orig/meson.build
-+++ pipewire-0.3.61/meson.build
+diff -Naur pipewire-0.3.62/meson.build pipewire-0.3.62.new/meson.build
+--- pipewire-0.3.62/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/meson.build	2022-12-10 13:41:33.450512558 +0000
 @@ -1,7 +1,7 @@
  project('pipewire', ['c' ],
-   version : '0.3.61',
+   version : '0.3.62',
    license : [ 'MIT', 'LGPL-2.1-or-later', 'GPL-2.0-only' ],
 -  meson_version : '>= 0.59.0',
 +  meson_version : '>= 0.54.0',
    default_options : [ 'warning_level=3',
                        'c_std=gnu11',
                        'cpp_std=c++17',
-@@ -236,8 +236,8 @@ includes_inc = include_directories('incl
+@@ -236,8 +236,8 @@
  pipewire_inc = include_directories('src')
  
  makedata = configuration_data()
@@ -139,7 +136,7 @@ Index: pipewire-0.3.61/meson.build
  makedata.set('VERSION', pipewire_version)
  if version_arr.length() == 4
    makedata.set('TAG', 'HEAD')
-@@ -334,7 +334,7 @@ endforeach
+@@ -337,7 +337,7 @@
  gst_dp_found = gst_dep.length() > 0
  summary({'gstreamer-device-provider': gst_dp_found}, bool_yn: true, section: 'Backend')
  
@@ -148,7 +145,7 @@ Index: pipewire-0.3.61/meson.build
  
  webrtc_dep = dependency('webrtc-audio-processing',
    version : ['>= 0.2', '< 1.0'],
-@@ -397,10 +397,10 @@ endforeach
+@@ -400,10 +400,10 @@
  
  installed_tests_metadir = pipewire_datadir / 'installed-tests' / pipewire_name
  installed_tests_execdir = pipewire_libexecdir / 'installed-tests' / pipewire_name
@@ -161,7 +158,7 @@ Index: pipewire-0.3.61/meson.build
    gstack = find_program('gstack', required : false)
    cdata.set('HAVE_GSTACK', gstack.found())
  endif
-@@ -409,17 +409,17 @@ subdir('po')
+@@ -412,17 +412,17 @@
  subdir('spa')
  subdir('src')
  
@@ -182,7 +179,7 @@ Index: pipewire-0.3.61/meson.build
    subdir('pipewire-v4l2')
  endif
  
-@@ -430,7 +430,7 @@ if alsa_dep.found()
+@@ -433,7 +433,7 @@
  endif
  
  generate_manpages = false
@@ -191,7 +188,7 @@ Index: pipewire-0.3.61/meson.build
    rst2man = find_program('rst2man', required: false)
    if not rst2man.found()
      rst2man = find_program('rst2man.py', required: get_option('man'))
-@@ -451,20 +451,20 @@ endif
+@@ -454,20 +454,20 @@
  setenv = find_program('pw-uninstalled.sh')
  run_target('pw-uninstalled',
    command : [setenv,
@@ -219,7 +216,7 @@ Index: pipewire-0.3.61/meson.build
  
  devenv.set('GST_PLUGIN_PATH', builddir / 'src'/ 'gst')
  
-@@ -476,4 +476,6 @@ devenv.set('LD_LIBRARY_PATH', builddir /
+@@ -479,4 +479,6 @@
  
  devenv.set('PW_UNINSTALLED', '1')
  
@@ -227,11 +224,10 @@ Index: pipewire-0.3.61/meson.build
 +if meson.version().version_compare('>=0.58.0')
 +  meson.add_devenv(devenv)
 +endif
-Index: pipewire-0.3.61/spa/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/meson.build
-+++ pipewire-0.3.61/spa/meson.build
-@@ -31,7 +31,7 @@ pkgconfig.generate(filebase : 'lib@0@'.f
+diff -Naur pipewire-0.3.62/spa/meson.build pipewire-0.3.62.new/spa/meson.build
+--- pipewire-0.3.62/spa/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/meson.build	2022-12-10 13:39:45.126679340 +0000
+@@ -31,7 +31,7 @@
  
  subdir('include')
  
@@ -240,7 +236,7 @@ Index: pipewire-0.3.61/spa/meson.build
    udevrulesdir = get_option('udevrulesdir')
    if udevrulesdir == ''
      # absolute path, otherwise meson prepends the prefix
-@@ -66,7 +66,7 @@ if get_option('spa-plugins').allowed()
+@@ -66,7 +66,7 @@
      summary({'Opus': opus_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
      lc3_dep = dependency('lc3', required : get_option('bluez5-codec-lc3'))
      summary({'LC3': lc3_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
@@ -249,7 +245,7 @@ Index: pipewire-0.3.61/spa/meson.build
        mm_dep = dependency('ModemManager', version : '>= 1.10.0', required : get_option('bluez5-backend-native-mm'))
        summary({'ModemManager': mm_dep.found()}, bool_yn: true, section: 'Bluetooth backends')
      endif
-@@ -90,6 +90,6 @@ endif
+@@ -90,6 +90,6 @@
  
  subdir('tools')
  subdir('tests')
@@ -257,11 +253,10 @@ Index: pipewire-0.3.61/spa/meson.build
 +if not get_option('examples').disabled()
    subdir('examples')
  endif
-Index: pipewire-0.3.61/spa/plugins/audioconvert/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/plugins/audioconvert/meson.build
-+++ pipewire-0.3.61/spa/plugins/audioconvert/meson.build
-@@ -148,7 +148,7 @@ foreach a : test_apps
+diff -Naur pipewire-0.3.62/spa/plugins/audioconvert/meson.build pipewire-0.3.62.new/spa/plugins/audioconvert/meson.build
+--- pipewire-0.3.62/spa/plugins/audioconvert/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/plugins/audioconvert/meson.build	2022-12-10 13:39:45.130679334 +0000
+@@ -148,7 +148,7 @@
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir / 'audioconvert'),
        env : [
@@ -270,7 +265,7 @@ Index: pipewire-0.3.61/spa/plugins/audioconvert/meson.build
          ])
  
      if installed_tests_enabled
-@@ -178,7 +178,7 @@ foreach a : benchmark_apps
+@@ -178,7 +178,7 @@
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir / 'audioconvert'),
        env : [
@@ -279,11 +274,10 @@ Index: pipewire-0.3.61/spa/plugins/audioconvert/meson.build
          ])
  
      if installed_tests_enabled
-Index: pipewire-0.3.61/spa/plugins/audiomixer/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/plugins/audiomixer/meson.build
-+++ pipewire-0.3.61/spa/plugins/audiomixer/meson.build
-@@ -81,7 +81,7 @@ foreach a : test_apps
+diff -Naur pipewire-0.3.62/spa/plugins/audiomixer/meson.build pipewire-0.3.62.new/spa/plugins/audiomixer/meson.build
+--- pipewire-0.3.62/spa/plugins/audiomixer/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/plugins/audiomixer/meson.build	2022-12-10 13:39:45.130679334 +0000
+@@ -81,7 +81,7 @@
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir / 'audiomixer'),
        env : [
@@ -292,7 +286,7 @@ Index: pipewire-0.3.61/spa/plugins/audiomixer/meson.build
          ])
  
      if installed_tests_enabled
-@@ -110,7 +110,7 @@ foreach a : benchmark_apps
+@@ -110,7 +110,7 @@
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir / 'audiomixer'),
        env : [
@@ -301,11 +295,10 @@ Index: pipewire-0.3.61/spa/plugins/audiomixer/meson.build
          ])
  
      if installed_tests_enabled
-Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/plugins/bluez5/meson.build
-+++ pipewire-0.3.61/spa/plugins/bluez5/meson.build
-@@ -6,13 +6,13 @@ foreach dep: bluez5_deps
+diff -Naur pipewire-0.3.62/spa/plugins/bluez5/meson.build pipewire-0.3.62.new/spa/plugins/bluez5/meson.build
+--- pipewire-0.3.62/spa/plugins/bluez5/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/plugins/bluez5/meson.build	2022-12-10 13:39:45.130679334 +0000
+@@ -6,13 +6,13 @@
  endforeach
  
  cdata.set('HAVE_BLUEZ_5_BACKEND_NATIVE',
@@ -326,7 +319,7 @@ Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
  cdata.set('HAVE_BLUEZ_5_HCI', dependency('bluez', version: '< 6', required: false).found())
  
  bluez5_sources = [
-@@ -35,7 +35,7 @@ bluez5_data = ['bluez-hardware.conf']
+@@ -35,7 +35,7 @@
  
  install_data(bluez5_data, install_dir : spa_datadir / 'bluez5')
  
@@ -335,7 +328,7 @@ Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
    if libusb_dep.found()
      bluez5_deps += libusb_dep
    endif
-@@ -46,11 +46,11 @@ if get_option('bluez5-backend-hsp-native
+@@ -46,11 +46,11 @@
    bluez5_sources += ['backend-native.c', 'upower.c']
  endif
  
@@ -349,7 +342,7 @@ Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
    bluez5_sources += ['backend-hsphfpd.c']
  endif
  
-@@ -115,7 +115,7 @@ if ldac_dep.found()
+@@ -115,7 +115,7 @@
      install_dir : spa_plugindir / 'bluez5')
  endif
  
@@ -358,7 +351,7 @@ Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
    bluez_codec_lc3plus = shared_library('spa-codec-bluez5-lc3plus',
      [ 'a2dp-codec-lc3plus.c', 'media-codecs.c' ],
      include_directories : [ configinc ],
-@@ -125,7 +125,7 @@ if get_option('bluez5-codec-lc3plus').al
+@@ -125,7 +125,7 @@
      install_dir : spa_plugindir / 'bluez5')
  endif
  
@@ -367,7 +360,7 @@ Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
    opus_args = codec_args
    opus_dep = [ opus_dep ]
    bluez_codec_opus = shared_library('spa-codec-bluez5-opus',
-@@ -137,7 +137,7 @@ if get_option('bluez5-codec-opus').allow
+@@ -137,7 +137,7 @@
      install_dir : spa_plugindir / 'bluez5')
  endif
  
@@ -376,10 +369,9 @@ Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
    bluez_codec_lc3 = shared_library('spa-codec-bluez5-lc3',
      [ 'bap-codec-lc3.c', 'media-codecs.c' ],
      include_directories : [ configinc ],
-Index: pipewire-0.3.61/spa/plugins/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/plugins/meson.build
-+++ pipewire-0.3.61/spa/plugins/meson.build
+diff -Naur pipewire-0.3.62/spa/plugins/meson.build pipewire-0.3.62.new/spa/plugins/meson.build
+--- pipewire-0.3.62/spa/plugins/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/plugins/meson.build	2022-12-10 13:39:45.130679334 +0000
 @@ -1,19 +1,22 @@
  if alsa_dep.found()
    subdir('alsa')
@@ -408,7 +400,7 @@ Index: pipewire-0.3.61/spa/plugins/meson.build
    subdir('audiotestsrc')
  endif
  if bluez_dep.found()
-@@ -25,19 +28,19 @@ endif
+@@ -25,19 +28,19 @@
  if jack_dep.found()
    subdir('jack')
  endif
@@ -433,11 +425,10 @@ Index: pipewire-0.3.61/spa/plugins/meson.build
    subdir('volume')
  endif
  if vulkan_headers
-Index: pipewire-0.3.61/spa/plugins/support/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/plugins/support/meson.build
-+++ pipewire-0.3.61/spa/plugins/support/meson.build
-@@ -23,7 +23,7 @@ spa_support_lib = shared_library('spa-su
+diff -Naur pipewire-0.3.62/spa/plugins/support/meson.build pipewire-0.3.62.new/spa/plugins/support/meson.build
+--- pipewire-0.3.62/spa/plugins/support/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/plugins/support/meson.build	2022-12-10 13:39:45.130679334 +0000
+@@ -23,7 +23,7 @@
    install_dir : spa_plugindir / 'support')
  spa_support_dep = declare_dependency(link_with: spa_support_lib)
  
@@ -446,11 +437,10 @@ Index: pipewire-0.3.61/spa/plugins/support/meson.build
    evl_inc = include_directories('/usr/evl/include')
    evl_lib = cc.find_library('evl',
                              dirs: ['/usr/evl/lib/'],
-Index: pipewire-0.3.61/spa/tests/meson.build
-===================================================================
---- pipewire-0.3.61.orig/spa/tests/meson.build
-+++ pipewire-0.3.61/spa/tests/meson.build
-@@ -5,7 +5,7 @@ find = find_program('find', required: fa
+diff -Naur pipewire-0.3.62/spa/tests/meson.build pipewire-0.3.62.new/spa/tests/meson.build
+--- pipewire-0.3.62/spa/tests/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/spa/tests/meson.build	2022-12-10 13:39:45.130679334 +0000
+@@ -5,7 +5,7 @@
  summary({'find (for header testing)': find.found()}, bool_yn: true, section: 'Optional programs')
  if find.found()
    spa_headers = run_command(find,
@@ -459,7 +449,7 @@ Index: pipewire-0.3.61/spa/tests/meson.build
                              '-name', '*.h',
                              '-not', '-name', 'type-info.h',
                              '-type', 'f',
-@@ -41,7 +41,7 @@ foreach a : benchmark_apps
+@@ -41,7 +41,7 @@
        install_dir : installed_tests_execdir,
      ),
      env : [
@@ -468,11 +458,10 @@ Index: pipewire-0.3.61/spa/tests/meson.build
      ]
    )
  
-Index: pipewire-0.3.61/src/daemon/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/daemon/meson.build
-+++ pipewire-0.3.61/src/daemon/meson.build
-@@ -18,9 +18,9 @@ conf_config.set('pulse_comment', '#')
+diff -Naur pipewire-0.3.62/src/daemon/meson.build pipewire-0.3.62.new/src/daemon/meson.build
+--- pipewire-0.3.62/src/daemon/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/daemon/meson.build	2022-12-10 13:39:45.130679334 +0000
+@@ -18,9 +18,9 @@
  
  conf_config_uninstalled = conf_config
  conf_config_uninstalled.set('pipewire_path',
@@ -484,7 +473,7 @@ Index: pipewire-0.3.61/src/daemon/meson.build
  conf_config_uninstalled.set('pulse_comment', '')
  
  build_ms = 'media-session' in get_option('session-managers')
-@@ -116,7 +116,7 @@ custom_target('pipewire-uninstalled',
+@@ -116,7 +116,7 @@
    install: false,
    input: pipewire_exec,
    output: 'pipewire-uninstalled',
@@ -493,10 +482,9 @@ Index: pipewire-0.3.61/src/daemon/meson.build
  )
  
  #desktop_file = i18n.merge_file(
-Index: pipewire-0.3.61/src/daemon/systemd/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/daemon/systemd/meson.build
-+++ pipewire-0.3.61/src/daemon/systemd/meson.build
+diff -Naur pipewire-0.3.62/src/daemon/systemd/meson.build pipewire-0.3.62.new/src/daemon/systemd/meson.build
+--- pipewire-0.3.62/src/daemon/systemd/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/daemon/systemd/meson.build	2022-12-10 13:39:45.130679334 +0000
 @@ -1,6 +1,6 @@
 -if get_option('systemd-system-service').allowed()
 +if not get_option('systemd-system-service').disabled()
@@ -506,21 +494,19 @@ Index: pipewire-0.3.61/src/daemon/systemd/meson.build
 +if not get_option('systemd-user-service').disabled()
    subdir('user')
  endif
-Index: pipewire-0.3.61/src/daemon/systemd/user/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/daemon/systemd/user/meson.build
-+++ pipewire-0.3.61/src/daemon/systemd/user/meson.build
+diff -Naur pipewire-0.3.62/src/daemon/systemd/user/meson.build pipewire-0.3.62.new/src/daemon/systemd/user/meson.build
+--- pipewire-0.3.62/src/daemon/systemd/user/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/daemon/systemd/user/meson.build	2022-12-10 13:39:45.134679328 +0000
 @@ -1,4 +1,4 @@
 -systemd_user_services_dir = systemd.get_variable('systemduserunitdir', pkgconfig_define : [ 'prefix', prefix])
 +#systemd_user_services_dir = systemd.get_variable('systemduserunitdir', pkgconfig_define : [ 'prefix', prefix])
  if get_option('systemd-user-unit-dir') != ''
    systemd_user_services_dir = get_option('systemd-user-unit-dir')
  endif
-Index: pipewire-0.3.61/src/gst/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/gst/meson.build
-+++ pipewire-0.3.61/src/gst/meson.build
-@@ -8,7 +8,7 @@ pipewire_gst_sources = [
+diff -Naur pipewire-0.3.62/src/gst/meson.build pipewire-0.3.62.new/src/gst/meson.build
+--- pipewire-0.3.62/src/gst/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/gst/meson.build	2022-12-10 13:39:45.134679328 +0000
+@@ -8,7 +8,7 @@
    'gstpipewiresrc.c',
  ]
  
@@ -529,11 +515,10 @@ Index: pipewire-0.3.61/src/gst/meson.build
    pipewire_gst_sources += [ 'gstpipewiredeviceprovider.c' ]
  endif
  
-Index: pipewire-0.3.61/src/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/meson.build
-+++ pipewire-0.3.61/src/meson.build
-@@ -3,10 +3,10 @@ subdir('pipewire')
+diff -Naur pipewire-0.3.62/src/meson.build pipewire-0.3.62.new/src/meson.build
+--- pipewire-0.3.62/src/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/meson.build	2022-12-10 13:39:45.134679328 +0000
+@@ -3,10 +3,10 @@
  subdir('daemon')
  subdir('tools')
  subdir('modules')
@@ -546,11 +531,10 @@ Index: pipewire-0.3.61/src/meson.build
    subdir('tests')
  endif
  
-Index: pipewire-0.3.61/src/modules/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/modules/meson.build
-+++ pipewire-0.3.61/src/modules/meson.build
-@@ -393,9 +393,9 @@ test('pw-test-protocol-native',
+diff -Naur pipewire-0.3.62/src/modules/meson.build pipewire-0.3.62.new/src/modules/meson.build
+--- pipewire-0.3.62/src/modules/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/modules/meson.build	2022-12-10 13:39:45.134679328 +0000
+@@ -401,9 +401,9 @@
      install_dir : installed_tests_execdir,
    ),
    env : [
@@ -563,7 +547,7 @@ Index: pipewire-0.3.61/src/modules/meson.build
    ]
  )
  
-@@ -552,8 +552,11 @@ pipewire_module_fallback_sink = shared_l
+@@ -560,8 +560,11 @@
    dependencies : [mathlib, dl_lib, rt_lib, pipewire_dep],
  )
  
@@ -576,11 +560,10 @@ Index: pipewire-0.3.61/src/modules/meson.build
  pipewire_module_avb = shared_library('pipewire-module-avb',
    [ 'module-avb.c',
      'module-avb/avb.c',
-Index: pipewire-0.3.61/src/tests/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/tests/meson.build
-+++ pipewire-0.3.61/src/tests/meson.build
-@@ -14,9 +14,9 @@ foreach a : test_apps
+diff -Naur pipewire-0.3.62/src/tests/meson.build pipewire-0.3.62.new/src/tests/meson.build
+--- pipewire-0.3.62/src/tests/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/tests/meson.build	2022-12-10 13:39:45.134679328 +0000
+@@ -14,9 +14,9 @@
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir),
      env : [
@@ -593,11 +576,10 @@ Index: pipewire-0.3.61/src/tests/meson.build
        ])
  
    if installed_tests_enabled
-Index: pipewire-0.3.61/src/tools/meson.build
-===================================================================
---- pipewire-0.3.61.orig/src/tools/meson.build
-+++ pipewire-0.3.61/src/tools/meson.build
-@@ -32,7 +32,7 @@ if ncurses_dep.found()
+diff -Naur pipewire-0.3.62/src/tools/meson.build pipewire-0.3.62.new/src/tools/meson.build
+--- pipewire-0.3.62/src/tools/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/src/tools/meson.build	2022-12-10 13:39:45.134679328 +0000
+@@ -32,7 +32,7 @@
  endif
  
  build_pw_cat = false
@@ -606,11 +588,10 @@ Index: pipewire-0.3.61/src/tools/meson.build
    build_pw_cat = true
  
    pwcat_sources = [
-Index: pipewire-0.3.61/test/meson.build
-===================================================================
---- pipewire-0.3.61.orig/test/meson.build
-+++ pipewire-0.3.61/test/meson.build
-@@ -14,8 +14,8 @@ pwtest_deps = [
+diff -Naur pipewire-0.3.62/test/meson.build pipewire-0.3.62.new/test/meson.build
+--- pipewire-0.3.62/test/meson.build	2022-12-09 10:28:24.000000000 +0000
++++ pipewire-0.3.62.new/test/meson.build	2022-12-10 13:39:45.134679328 +0000
+@@ -14,8 +14,8 @@
  ]
  
  pwtest_c_args = [

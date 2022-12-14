@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.61
+Version:        0.3.62
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -124,7 +124,6 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sbc)
-BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
@@ -393,6 +392,7 @@ export CXX=g++-9
     -Dx11-xfixes=disabled \
 %endif
     -Dsession-managers="[]" \
+    -Dsdl2=disabled \
     %{nil}
 %meson_build
 
@@ -564,7 +564,6 @@ fi
 %{_libdir}/spa-%{spa_ver}/avb/
 %{_libdir}/spa-%{spa_ver}/bluez5/
 %{_libdir}/spa-%{spa_ver}/control/
-%{_libdir}/spa-%{spa_ver}/volume/
 %{_libdir}/spa-%{spa_ver}/ffmpeg/
 %{_libdir}/spa-%{spa_ver}/jack/
 %if %{with libcamera}
