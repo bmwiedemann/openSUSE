@@ -1394,4 +1394,17 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.0. (forwarded request 1032263 from AndreasSchwab)</comment>
     <requestid>1032264</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>8596c3a0c093ae6147ae79cf52a352cc</srcmd5>
+    <version>6.1</version>
+    <time>1671023433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 6.1
+  * Enhanced decoding of terminal ioctl commands.
+  * Updated decoding of statx syscall.
+  * Updated lists of ABS_*, BPF_*, BTRFS_*, COUNTER_*, ETH_P_*, IFLA_*,
+    KVM_*, MADV_*, NLMSGERR_*, PERF_*, STATX_*, and TLS_* constants.
+  * Updated lists of ioctl commands from Linux 6.1. (forwarded request 1042510 from AndreasSchwab)</comment>
+    <requestid>1042511</requestid>
+  </revision>
 </revisionlist>

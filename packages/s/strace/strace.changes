@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 12 20:52:29 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 6.1
+  * Enhanced decoding of terminal ioctl commands.
+  * Updated decoding of statx syscall.
+  * Updated lists of ABS_*, BPF_*, BTRFS_*, COUNTER_*, ETH_P_*, IFLA_*,
+    KVM_*, MADV_*, NLMSGERR_*, PERF_*, STATX_*, and TLS_* constants.
+  * Updated lists of ioctl commands from Linux 6.1.
+
+-------------------------------------------------------------------
 Sat Oct 29 18:44:10 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 6.0
