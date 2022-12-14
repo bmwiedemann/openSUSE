@@ -6,6 +6,17 @@ Fri Jun  3 18:06:48 UTC 2022 - Simone Pilia <pilia.simone96@gmail.com>
   fix-deprecated-acpi_bus_get_device-in-5.18.patch 
 
 -------------------------------------------------------------------
+Mon Mar  7 16:36:07 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Add code for safe modprobe.d migration
+  (https://en.opensuse.org/openSUSE:Packaging_UsrEtc) 
+
+-------------------------------------------------------------------
+Fri Mar  4 17:37:59 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+
+-------------------------------------------------------------------
 Wed Mar 10 12:33:49 CET 2021 - tiwai@suse.de
 
 - Fix build with Leap 15.3 kernel due to the missing header

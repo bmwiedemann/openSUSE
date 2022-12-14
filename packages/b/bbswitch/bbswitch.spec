@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
+# systemd-rpm-macros is wrong in 15.3 and below
+%define _modprobedir /lib/modprobe.d
+%endif
+%global modprobe_d_files 50-bbswitch.conf
+
 Name:           bbswitch
 Version:        0.8
 Release:        0
@@ -73,13 +79,27 @@ for flavor in %{flavors_to_build}; do
 done
 install -dm755 %{buildroot}%{_prefix}/lib/modules-load.d
 echo "bbswitch" >> %{buildroot}%{_prefix}/lib/modules-load.d/bbswitch.conf
-install -dm755 %{buildroot}%{_sysconfdir}/modprobe.d/
-echo "options bbswitch load_state=0 unload_state=1" >> %{buildroot}%{_sysconfdir}/modprobe.d/50-bbswitch.conf
+install -dm755 %{buildroot}%{_modprobedir}/
+echo "options bbswitch load_state=0 unload_state=1" >> %{buildroot}%{_modprobedir}/50-bbswitch.conf
+
+%pre
+# Avoid restoring outdated stuff in posttrans
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+done
+
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+for _f in %{?modprobe_d_files}; do
+    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+done
 
 %files
 %doc source/COPYING source/README.md source/NEWS
 %dir %{_prefix}/lib/modules-load.d
 %{_prefix}/lib/modules-load.d/bbswitch.conf
-%config %{_sysconfdir}/modprobe.d/50-bbswitch.conf
+%{_modprobedir}/50-bbswitch.conf
 
 %changelog
