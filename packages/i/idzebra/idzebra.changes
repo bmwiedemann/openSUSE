@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:19:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.5:
+  * Fix buffer overflow in dictionary insert handling. Could lead to
+  * assert failures in some cases. All users should upgrade.
+  * Upgrade configure.ac to version 2.69
+  * Make memMax a size_t type ZEB-694 #34
+  * Fix sample XSLT for Libxslt 1.1.35 ZEB-693
+  * Fix #26: Index contents not shown when using "zebra::index" elements
+  * in ICU mode.
+  * Update XSL in example/marcxml. Thx to Jaider A. F.
+  * zebra.pc fixes. Add Requires directive (so we don't have to
+  * guess YAZ flags here). Simplify value for Libs, but add
+  * all libs in Libs.private. Cflags: No need for I${includedir}
+  * Fix #24: Do not tokenize in ICU phrase rule.
+
+-------------------------------------------------------------------
 Mon May 31 15:16:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.2.2

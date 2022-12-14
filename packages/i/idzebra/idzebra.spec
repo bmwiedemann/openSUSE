@@ -1,7 +1,7 @@
 #
 # spec file for package idzebra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           idzebra
-Version:        2.2.2
+Version:        2.2.5
 Release:        0
 Summary:        Fielded Free Text Engine with a Z39.50 Frontend
 License:        GPL-2.0-or-later
