@@ -17,14 +17,13 @@
 
 
 Name:           CoreFreq
-Version:        1.92.4
+Version:        1.93.1
 Release:        0
 Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         harden_corefreqd.service.patch
-Patch1:         modprobe_corefreqd.service.patch
+Source100:      corefreqd.service
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -41,8 +40,6 @@ Dhyana).
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p0
 
 %build
 %make_build
@@ -51,6 +48,8 @@ Dhyana).
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
 PREFIX=%{buildroot}%{_prefix} make install
+
+cp %{SOURCE100} %{buildroot}%{_unitdir}
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rccorefreqd

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Dec 13 22:58:21 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed modprobe_corefreqd.service.patch and harden_corefreqd.service.patch
+  now included in new corefreqd.service file replacing stock one  
+- update to 1.93.1
+  * [PRJ] CoreFreq version 1.93.1
+  * [ACPI/CPPC/EPP] Preview of AMD/Zen Energy Preference (CONFIG_CACHY)
+  * [UI] Changed the HWP or CPPC ratio bounds.
+  * [FIX] Putting `corefreqd` in the root cgroup (issue #379) Thanks to gel-crabs
+  * [DOC] Parameters to blacklist the amd_pstate since kernel 6.0.11
+  * [AMD][Zen4] Apply a voltage formula based on Rembrandt's. (#378)
+  * [AMD][Zen4/Raphael] Attempting temperature per CCD from TCTL+0x308
+  * [AMD][Zen4] Changed Timer loop
+  * [CR] CLI code review and UI optimizations
+  * [UI] Auto refresh the Topology items when off/online
+  * [CR] Conditionally build with additional PMC Counters
+  * [Intel] Adding Z8000 System Memory Controller Registers
+  * [CR] Transformed global variable in cells padding
+  * [UI] Windows re-scaling fix
+  * [UI] Apply color theming to the CPPC capabilities list.
+  * [AMD][Raphael] Adding device DIDs to probe UMC and IOMMU
+  * [CPPC/FMW] Computes value bounds while Enabling/Disabling firmware
+  * [CR] CPPC lib errors are now raised to Debug level
+  * [AMD][Zen4] Increased the UMC size to 12 channels.
+  * [CPPC] Handles the OffLine CPU case.
+  * [CLI] Refactoring HWP/CPPC to print all capabilities per CPU
+  * [ACPI] Computes the CPPC Bounds
+  * [Intel] Linear Address Masking (LAM)
+  * [CLI] EFER: Left aligned labels
+  * [AMD] Reports UAIE and AIBRSE bits from EFER system register
+  * [CLI] Changed mitigation mechanisms incapability labels
+  * [AMD][Zen2] Mitigation Mechanism BTC-NOBR * ACPI/OSPM documentation
+  * [CR] Code review on bit masks
+  * [CPPC][ACPI] Kernel may decode the Guaranteed Performance Register
+  * [UI] Optimize the cycles to clear the time bar.
+  * [CR] Code review for extra compiler warnings
+  * [UI] Time of the day displayed in the right side of menu
+  * [UI] Display the current date and time in menu bar
+  * [Kernel] Introducing support of `CONFIG_SCHED_BORE`
+  * [CLI] Fixing ambiguous CPPC report: hardware vs firmware
+  * [CLI] Surrounds _CPC feature with square brackets
+  * [CPPC] Provides the ACPI _CPC object state.
+  * [UI] Colors the task being tracked in the tracking list
+  * [UI] Display the current time in the menu bar
+  * [CLI] Reserve the programmable TDP section to Intel processors.
+  * [AMD/Zen3+] Improving the DIMM geometry of Rembrandt UMC
+
+-------------------------------------------------------------------
 Mon Dec  5 08:53:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.92.4:
