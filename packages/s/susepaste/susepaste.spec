@@ -27,6 +27,7 @@ Source0:        susepaste-script-%{version}.tar.bz2
 Patch0:         0001-susepaste-Fix-parsing-of-returned-Location-header.patch
 # PATCH-FIX-OPENSUSE 0002-susepaste-add-image-paste-info.patch malcolmlewis@opensuse.org boo#1193400-- Add info on posting an image to susepaste in the man page.
 Patch1:         0002-susepaste-add-image-paste-info.patch
+Patch2:         0003-susepaste-use-paste-opensuse.org.patch
 Requires:       bash
 Requires:       curl
 BuildArch:      noarch
@@ -52,6 +53,7 @@ You can paste screenshot of the window or whole desktop.
 %setup -q -n susepaste-script-%{version}
 %patch0 -p2
 %patch1 -p1
+%patch2 -p2
 mv gpl-3.0.txt COPYING
 
 %build
