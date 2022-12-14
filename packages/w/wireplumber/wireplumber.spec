@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.12
+Version:        0.4.13
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -32,10 +32,6 @@ Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
 # PATCH-FIX-OPENSUSE reduce-meson-required-version.patch
 Patch0:         reduce-meson-required-version.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-alsa.lua-remove-the-disabled-entities-from-the-names-table.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-policy-node-wait-for-unactivated-links-instead-of-removing.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -141,11 +137,9 @@ the wireplumber shared library.
 
 %prep
 %autosetup -N
-%if 0%{?sle_version} <= 150300
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}

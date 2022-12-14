@@ -4,20 +4,20 @@ Subject: Reduce the minimum required meson version
 With this, we can build wireplumber in SLE 15 SP3/Leap 15.3
 which only have meson 0.54
 
-Index: wireplumber-0.4.12/meson.build
+Index: wireplumber-0.4.13/meson.build
 ===================================================================
---- wireplumber-0.4.12.orig/meson.build
-+++ wireplumber-0.4.12/meson.build
+--- wireplumber-0.4.13.orig/meson.build
++++ wireplumber-0.4.13/meson.build
 @@ -1,7 +1,7 @@
  project('wireplumber', ['c'],
-   version : '0.4.12',
+   version : '0.4.13',
    license : 'MIT',
 -  meson_version : '>= 0.59.0',
 +  meson_version : '>= 0.54.0',
    default_options : [
      'warning_level=1',
      'buildtype=debugoptimized',
-@@ -42,7 +42,17 @@ spa_dep = dependency('libspa-0.2', versi
+@@ -52,7 +52,17 @@ spa_dep = dependency('libspa-0.2', versi
  pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.3.52')
  mathlib = cc.find_library('m')
  threads_dep = dependency('threads')
@@ -34,9 +34,9 @@ Index: wireplumber-0.4.12/meson.build
 +  endif
 +endif
  
- system_lua = get_option('system-lua')
- if system_lua
-@@ -129,8 +139,13 @@ if get_option('tests')
+ if build_modules
+   system_lua = get_option('system-lua')
+@@ -145,8 +155,13 @@ if get_option('tests')
    subdir('tests')
  endif
  
@@ -52,7 +52,7 @@ Index: wireplumber-0.4.12/meson.build
  
  conf_uninstalled = configuration_data()
  conf_uninstalled.set('MESON', '')
-@@ -150,10 +165,12 @@ wireplumber_uninstalled = custom_target(
+@@ -166,10 +181,12 @@ wireplumber_uninstalled = custom_target(
    command : ['cp', '@INPUT@', '@OUTPUT@'],
  )
  

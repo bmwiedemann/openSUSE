@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/wireplumber.git</param>
-    <param name="revision">0.4.12</param>
+    <param name="revision">0.4.13</param>
     <param name="versionformat">@PARENT_TAG@</param>
 <!--
     <param name="revision">master</param>

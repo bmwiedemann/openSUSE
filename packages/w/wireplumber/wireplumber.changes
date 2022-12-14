@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Dec 13 14:43:46 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.4.13:
+  * Additions
+    - Add bluetooth SCO (HSP/HFP) hardware offload support,
+      together with an example script that enables this
+      functionality on the PinePhone.
+    - Encoded audio (mp3, aac, etc...) can now be passed through,
+      if this mode is supported by both the application and the
+      device.
+    - The v4l2 monitor now also respects the ``node.disabled`` and
+      ``device.disabled`` properties inside rules.
+    - Add "Firefox Developer Edition" to the list of applications
+      that are allowed to trigger a bluetooth profile auto-switch.
+    - Add support in the portal access script to allow newly
+      plugged cameras to be immediately visible to the portal
+      applications.
+  * Fixes
+    - Work around an issue that would prevent streams from properly
+      linking when using effects software like EasyEffects and
+      JamesDSP.
+    - Fix destroying pavucontrol-qt monitor streams after the node
+      that was being monitored is destroyed.
+    - Fix a crash in the alsa.lua monitor that could happen when a
+      disabled device was removed and re-added.
+    - Fix a rare crash in the metadata object.
+    - Fix a bug where a restored node target would override the
+      node target set by the application on the node's properties.
+  * Packaging
+    - Add build options to compile wireplumber's library, daemon
+      and tools independently.
+    - Add a build option to disable unit tests that require the
+      dbus daemon.
+    - Stop using fakesink/fakesrc in the unit tests to be able to
+      run them on default pipewire installations. Compiling the spa
+      ``test`` plugin is no longer necessary.
+    - Add pkg-config and header information in the gir file.
+- Rebase reduce-meson-required-version.patch
+- Drop patches already upstream:
+  * 0001-alsa.lua-remove-the-disabled-entities-from-the-names-table.patch
+  * 0001-policy-node-wait-for-unactivated-links-instead-of-removing.patch
+
+-------------------------------------------------------------------
 Tue Nov 15 08:21:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to work around a problem when a link is
