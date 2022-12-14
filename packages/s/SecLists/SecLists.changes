@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  7 19:09:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip zipbombs as they break the testing and legal checks
+
+-------------------------------------------------------------------
+Tue Dec  6 11:40:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix last change 
+
+-------------------------------------------------------------------
+Mon Dec  5 21:45:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.4:
+  * includes multiple updates from the community 
+
+-------------------------------------------------------------------
 Thu Jun 24 16:04:29 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Removed Payloads/Zip-Bombs/*.gz and Payloads/Zip-Bombs/*.zip causing rpmlint

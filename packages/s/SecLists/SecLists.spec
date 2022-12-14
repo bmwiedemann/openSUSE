@@ -1,7 +1,7 @@
 #
-# spec file for package SecLists-2021.2.tar.gz
+# spec file for package SecLists
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           SecLists
-Version:        2021.2
+Version:        2022.4
 Release:        0
 Summary:        SecLists is the security tester's companion
 License:        MIT
 URL:            https://github.com/danielmiessler/SecLists
-Source:         SecLists-2021.2.tar.gz
+Source:         https://github.com/danielmiessler/SecLists/archive/refs/tags/%{version}.tar.gz
 
 %description
 
@@ -37,16 +37,17 @@ This project is maintained by Daniel Miessler, Jason Haddix, and g0tmi1k.
 
 %prep
 
-%setup -q -n SecLists-2021.2
+%setup -q
 
 %install
 
-mkdir -p %{buildroot}/usr/share/seclists
-cp -a * %{buildroot}/usr/share/seclists
-
+mkdir -p %{buildroot}%{_datadir}/seclists
+cp -a * %{buildroot}%{_datadir}/seclists
 
 %files
 %license LICENSE
-/usr/share/seclists
+%{_datadir}/seclists
+# 2022-12: This currently breaks cavil and rpmlint
+%exclude %{_datadir}/seclists/Payloads/Zip-Bombs
 
 %changelog
