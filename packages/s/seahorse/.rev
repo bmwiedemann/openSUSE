@@ -894,4 +894,13 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment></comment>
     <requestid>1012088</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>04393fbe4d439be4abe5e18e797a57e6</srcmd5>
+    <version>43.0</version>
+    <time>1671023437</time>
+    <user>dimstar_suse</user>
+    <comment>- The shell provider dbus service file must be in the main package
+  due to being referenced in the .desktop file (forwarded request 1042513 from gmbr3)</comment>
+    <requestid>1042554</requestid>
+  </revision>
 </revisionlist>

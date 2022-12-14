@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 22:49:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- The shell provider dbus service file must be in the main package
+  due to being referenced in the .desktop file
+
+-------------------------------------------------------------------
 Fri Oct 14 08:10:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

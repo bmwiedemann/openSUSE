@@ -103,6 +103,7 @@ search results from seahorse.
 %{_bindir}/seahorse
 %{_libexecdir}/seahorse/
 %{_datadir}/applications/org.gnome.seahorse.Application.desktop
+%{_datadir}/dbus-1/services/org.gnome.seahorse.Application.service
 %{_datadir}/glib-2.0/schemas/org.gnome.seahorse.*xml
 %{_datadir}/icons/hicolor/
 %{_datadir}/metainfo/org.gnome.seahorse.Application.appdata.xml
@@ -110,7 +111,6 @@ search results from seahorse.
 %{_mandir}/man1/seahorse.1%{?ext_man}
 
 %files -n gnome-shell-search-provider-seahorse
-%{_datadir}/dbus-1/services/org.gnome.seahorse.Application.service
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/seahorse-search-provider.ini
