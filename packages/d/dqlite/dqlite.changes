@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  4 18:42:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12.0:
+  * support more than 255 statement parameters
+  * requires libraft 0.16.0
+
+-------------------------------------------------------------------
 Sat Jul 23 11:29:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.11.1:
