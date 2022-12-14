@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Dec 12 20:08:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.39.0:
+  * "git grep" learned to expand the sparse-index more lazily and
+    on demand in a sparse checkout.
+  * By default, use of fsmonitor on a repository on networked
+    filesystem is disabled.
+  * After checking out a "branch" that is a symbolic-ref that points at
+    another branch, "git symbolic-ref HEAD" reports the underlying
+    branch, not the symbolic-ref the user gave checkout as argument.
+    The command learned the "--no-recurse" option to stop after
+    dereferencing a symbolic-ref only once.
+  * "git branch --edit-description @{-1}" is now a way to edit branch
+    description of the branch you were on before switching to the
+    current branch.
+  * "git merge-tree --stdin" is a new way to request a series of merges
+    and report the merge results.
+  * "git shortlog" learned to group by the "format" string.
+  * A new "--include-whitespace" option is added to "git patch-id", and
+    existing bugs in the internal patch-id logic that did not match
+    what "git patch-id" produces have been corrected.
+  * Enable gc.cruftpacks by default for those who opt into
+    feature.experimental setting.
+  * "git repack" learns to send cruft objects out of the way into
+    packfiles outside the repository.
+  * 'scalar reconfigure -a' is taught to automatically remove
+    scalar.repo entires which no longer exist.
+  * Redact headers from cURL's h2h3 module in GIT_CURL_VERBOSE and
+    others.
+  * 'git maintenance register' is taught to write configuration to an
+    arbitrary path, and 'git for-each-repo' is taught to expand tilde
+    characters in paths.
+  * When creating new notes, the template used to get a stray empty
+    newline, which has been removed.
+  * "git receive-pack" used to use all the local refs as the boundary for
+    checking connectivity of the data "git push" sent, but now it uses
+    only the refs that it advertised to the pusher. In a repository with
+    the .hideRefs configuration, this reduces the resources needed to
+    perform the check.
+  * With '--recurse-submodules=on-demand', all submodules are
+    recursively pushed.
+  * developer visible fixes
+
+-------------------------------------------------------------------
+Mon Dec 12 19:48:34 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.38.2, a general maintenance release:
+  * Fix unaligned memory access for reads from the index v4
+  * "git remote rename" failed to rename a remote without fetch
+    refspec, which has been corrected.
+  * "git clone" did not like to see the "--bare" and the "--origin"
+    options used together without a good reason.
+  * "git fsck" failed to release contents of tree objects already
+    used from the memory
+  * "git rebase -i" can mistakenly attempt to apply a fixup to
+    commit itself, which has been corrected.
+  * Fix segfault with "git merge-tree" on read-only repositories
+  * Fix a logic in "mailinfo -b" that miscomputed the length of a
+    substring, which lead to an out-of-bounds access.
+  * The codepath to sign learned to report errors when it fails to
+    read from "ssh-keygen".
+  * "GIT_EDITOR=: git branch --edit-description" resulted in failure
+  * "git multi-pack-index repack/expire" used to repack unreachable
+    cruft into a new pack, which have been corrected.
+  * The code to clean temporary object directories (used for
+    quarantine) tried to remove them inside its signal handler
+  * "git branch --edit-description" on an unborh branch misleadingly
+    said that no such branch exists
+  * `git rebase --update-refs` would delete references when all
+    `update-ref` commands in the sequencer were removed
+
+-------------------------------------------------------------------
 Tue Nov  1 20:55:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - disable tests on s390x (check-chainlint)
