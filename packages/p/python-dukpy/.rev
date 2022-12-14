@@ -53,4 +53,22 @@
     <comment></comment>
     <requestid>973773</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9af807007d78f9313fb68e68afec957b</srcmd5>
+    <version>0.3.0</version>
+    <time>1671023472</time>
+    <user>dimstar_suse</user>
+    <comment> - Remove python_module macro definition
+ - Use %pytest_arch instead of custom command
+ - More specific python_sitelib in %files
+- Update to version 0.3.0 
+  * Upgrade to duktape engine 2.7.0
+  * Support for installing nodejs modules where the root distribution directory is not named package.
+  * Better error message when a Python function is not found
+  * GitHub Actions based release workflow, wheels are now automatically generated for more versions.
+  * Wheels for Apple Silicon (M1) are now provided.
+  * Support for Python 2.7, 3.5 and 3.6 is deprecated. DukPy might still work, but it's untested.
+</comment>
+    <requestid>1042819</requestid>
+  </revision>
 </revisionlist>

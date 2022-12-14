@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dukpy
-Version:        0.2.3
+Version:        0.3.0
 Release:        0
 Summary:        JavaScript interpreter for Python
 License:        MIT
@@ -68,7 +67,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitearch}/dukpy" py.test-%{$python_bin_suffix} -v
+%pytest_arch -v
 
 %post
 %python_install_alternative dukpy
@@ -83,6 +82,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %python_alternative %{_bindir}/dukpy-install
 %python_alternative %{_bindir}/dukpy
-%{python_sitearch}/*
+%{python_sitearch}/dukpy
+%{python_sitearch}/dukpy-%{version}*-info
 
 %changelog
