@@ -228,4 +228,11 @@
     <comment></comment>
     <requestid>1042797</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>88a5a3d28621bbbf0a05bf22bbd8863c</srcmd5>
+    <version>4.1.0</version>
+    <time>1671026896</time>
+    <user>dimstar_suse</user>
+    <comment>breaks python-astropy, lst, kstars, …</comment>
+  </revision>
 </revisionlist>

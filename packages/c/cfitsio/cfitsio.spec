@@ -16,9 +16,9 @@
 #
 
 
-%define so_ver 10
+%define so_ver 9
 Name:           cfitsio
-Version:        4.2.0
+Version:        4.1.0
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        ISC
@@ -28,7 +28,6 @@ BuildRequires:  gcc-fortran
 BuildRequires:  libcurl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(bzip2)
 
 %description
 CFITSIO is a library of C and Fortran subroutines for reading and writing data
@@ -43,8 +42,10 @@ This package contains some FITS image compression and decompression utilities.
 %package devel
 Summary:        Headers required when building programs against cfitsio library
 Requires:       libcfitsio%{so_ver} = %{version}
+Requires:       pkgconfig
 Suggests:       cfitsio-devel-doc = %{version}
 # libcfitsio-devel was last used in openSUSE 13.1 (version 3.350)
+Provides:       libcfitsio-devel = %{version}
 Obsoletes:      libcfitsio-devel <= 3.350
 
 %description devel
@@ -75,23 +76,18 @@ in FITS files.
 
 %prep
 %setup -q
-# Disable build of static library
-sed -i -e 's/\(.*:.*\)lib${PACKAGE}.a/\1/' Makefile.in
 
 %build
-%configure \
-  --enable-reentrant \
-  --with-bzip2 \
-%ifarch x86_64
-  --enable-sse2 \
-%endif
-  %{nil}
+# lines bellow contain fixes for pkgconfig file bnc#546004, some of them are already fixed by upstream
+# so please drop them if they are not needed (in next round of updates)
+# Add include dir, multithreading support, zlib dependency
+sed -i 's|Cflags: -I${includedir}|Cflags: -D_REENTRANT -I${includedir} -I${includedir}/%{name}|' cfitsio.pc.in
+sed -i 's|Libs.private: -lm @LIBS@|Libs.private: -lz -lm @LIBS@|' cfitsio.pc.in
 
+%configure --enable-reentrant
 %make_build shared
-%make_build fpack funpack fitscopy
-
-%install
-%make_install CFITSIO_INCLUDE=%{buildroot}%{_includedir}/%{name}
+%make_build fpack
+%make_build funpack
 
 %check
 # testsuite
@@ -100,13 +96,18 @@ LD_LIBRARY_PATH=. ./testprog > testprog.lis
 diff testprog.lis testprog.out
 cmp testprog.fit testprog.std ; echo $?
 
+%install
+make DESTDIR=%{buildroot} CFITSIO_INCLUDE=%{buildroot}%{_includedir}/%{name} install
+
+# Remove static libraries
+rm -f %{buildroot}%{_libdir}/libcfitsio.a
+
 %post -n libcfitsio%{so_ver} -p /sbin/ldconfig
 %postun -n libcfitsio%{so_ver} -p /sbin/ldconfig
 
 %files
 %doc README docs/{changes.txt,fpackguide.pdf}
 %license License.txt
-%{_bindir}/fitscopy
 %{_bindir}/fpack
 %{_bindir}/funpack
 
