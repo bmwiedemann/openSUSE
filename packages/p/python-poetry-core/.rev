@@ -124,4 +124,29 @@
     <user>dimstar_suse</user>
     <comment>Incomplete stack</comment>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>48812d5d7c508a0962733e1082f2138f</srcmd5>
+    <version>1.4.0</version>
+    <time>1671023458</time>
+    <user>dimstar_suse</user>
+    <comment>- Update devendored requirements
+- Update to version 1.4.0 
+  * Added
+  The PEP 517 metadata_directory is now respected as an input to the build_wheel hook (#487).
+  * Changed
+  Sources are now considered more carefully when dealing with dependencies with environment markers (#497).
+  EmptyConstraint is now hashable (#513).
+  ParseConstraintError is now raised on version and constraint parsing errors, and includes information on the package that caused the error (#514).
+  * Fixed
+  Fix an issue where invalid PEP 508 requirements were generated due to a missing space before semicolons (#510).
+  Fix an issue where relative paths were encoded into package requirements, instead of a file:// URL as required by PEP 508 (#512).
+  * Vendoring
+  jsonschema==4.17.0
+  lark==1.1.14
+  pyrsistent==0.19.2
+  tomlkit==0.11.6
+  typing-extensions==4.4.0
+</comment>
+    <requestid>1042763</requestid>
+  </revision>
 </revisionlist>
