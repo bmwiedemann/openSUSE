@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 14 01:15:26 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to v1.79
+  + Fix Fedora 39 key
+  + Add openEuler GPG key
+  + Add Oracle Linux 9 key
+  + Add Fedora 10 key
+  + Add f37 to releasers
+  + Add Fedora 38 and 39 keys
+  + Add Amazon Linux 2022 GPG key
+  + Add Anolis OS GPG keys
+  + Remove F34 from releasers
+  + Add Circle Linux GPG keys
+  + Add Rocky Linux 9 keys and refresh 8
+
+-------------------------------------------------------------------
 Tue May 24 12:29:55 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to v1.71

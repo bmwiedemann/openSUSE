@@ -1,7 +1,7 @@
 #
 # spec file for package distribution-gpg-keys
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Nicolas FORMICHELLA <stigpro@outlook.fr>
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -22,7 +22,7 @@
 %global origrel 1
 
 Name:           distribution-gpg-keys
-Version:        1.71
+Version:        1.79
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages

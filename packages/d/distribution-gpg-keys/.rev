@@ -82,4 +82,12 @@
   + Add RPM Fusion keys for EL 9</comment>
     <requestid>978957</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c4473a9a4efc72834d05e6b36c7bc4e</srcmd5>
+    <version>1.79</version>
+    <time>1671023500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042852</requestid>
+  </revision>
 </revisionlist>
