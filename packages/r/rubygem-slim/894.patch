@@ -1,0 +1,40 @@
+From 1176de67cfe70049e0d2556cabfc5e538ca92263 Mon Sep 17 00:00:00 2001
+From: Takashi Kokubun <takashikkbn@gmail.com>
+Date: Tue, 25 Oct 2022 01:19:59 -0700
+Subject: [PATCH] Support temple 0.9.1+
+
+---
+ slim.gemspec               | 2 +-
+ test/core/test_commands.rb | 6 +++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+Index: slim-4.1.0/slim-4.1.0.gemspec
+===================================================================
+--- slim-4.1.0.orig/slim-4.1.0.gemspec
++++ slim-4.1.0/slim-4.1.0.gemspec
+@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
+   end
+ 
+   if s.respond_to? :add_runtime_dependency then
+-    s.add_runtime_dependency(%q<temple>.freeze, [">= 0.7.6", "< 0.9"])
++    s.add_runtime_dependency(%q<temple>.freeze, [">= 0.7.6", "!= 0.9.0"])
+     s.add_runtime_dependency(%q<tilt>.freeze, [">= 2.0.6", "< 2.1"])
+   else
+     s.add_dependency(%q<temple>.freeze, [">= 0.7.6", "< 0.9"])
+Index: slim-4.1.0/test/core/test_commands.rb
+===================================================================
+--- slim-4.1.0.orig/test/core/test_commands.rb
++++ slim-4.1.0/test/core/test_commands.rb
+@@ -58,7 +58,11 @@ class TestSlimCommands < Minitest::Test
+     prepare_common_test DYNAMIC_TEMPLATE, '--rails' do |out, err|
+       assert err.empty?
+ 
+-      assert out.include? %Q{@output_buffer = ActiveSupport::SafeBuffer.new;}
++      if Gem::Version.new(Temple::VERSION) >= Gem::Version.new('0.9')
++        assert out.include? %Q{@output_buffer = output_buffer || ActionView::OutputBuffer.new;}
++      else
++        assert out.include? %Q{@output_buffer = ActiveSupport::SafeBuffer.new;}
++      end
+       assert out.include? %Q{@output_buffer.safe_concat(("<p>Hello "#{STRING_FREEZER}));}
+       assert out.include? %Q{@output_buffer.safe_concat(((::Temple::Utils.escape_html((name))).to_s));}
+       assert out.include? %Q{@output_buffer.safe_concat(("!</p>"#{STRING_FREEZER}));}

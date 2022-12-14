@@ -68,3 +68,7 @@
 #     :post: |-
 #       /bin/echo foo
 #
+:patches:
+  894.patch: -p1
+:sources:
+  - series

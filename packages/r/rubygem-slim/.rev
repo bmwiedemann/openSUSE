@@ -54,4 +54,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838083</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ea151ddcb01d3ede52797777d2d788f3</srcmd5>
+    <version>4.1.0</version>
+    <time>1671023478</time>
+    <user>dimstar_suse</user>
+    <comment>- apply a modified version of the patch from PR 894 (894.patch)
+  to allow newer temple versions</comment>
+    <requestid>1042829</requestid>
+  </revision>
 </revisionlist>

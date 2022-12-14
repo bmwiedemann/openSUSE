@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-slim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,11 @@ BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
 URL:            http://slim-lang.com/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        series
+Source2:        gem2rpm.yml
+# MANUAL
+Patch0:         894.patch
+# /MANUAL
 Summary:        Slim is a template language
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -46,6 +50,10 @@ Slim is a template language whose goal is reduce the syntax to the essential
 parts without becoming cryptic.
 
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
