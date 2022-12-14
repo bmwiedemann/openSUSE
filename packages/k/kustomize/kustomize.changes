@@ -1,4 +1,743 @@
 -------------------------------------------------------------------
+Tue Dec 13 20:30:28 UTC 2022 - Robert Munteanu <rombert@apache.org>
+
+- Add completions 
+
+-------------------------------------------------------------------
+Tue Dec 13 20:24:31 UTC 2022 - rombert@apache.org
+
+- Update to version 4.5.7:
+  * pin api to v0.12.1
+  * pin to cmd/config 0.10.9
+  * pin to kyaml v0.13.9
+  * prevent testing lib from being compiled in (#4742)
+  * update latest release number to 4.5.6
+  * pin to api v0.12.0
+  * pin cmd/config 0.10.8
+  * pin to kyaml v0.13.8
+  * Update netlify config (#4732)
+  * update statik
+  * merge go.sum files
+  * Emit a warning when env loading bug is being relied on
+  * allow colon in filenames
+  * Option to customize NamespaceTransfomer role binding subject handling
+  * Update hack/install_kustomize.sh
+  * Update error message for m1 mac users trying to fetch older versions
+  * replacements: fix issue with `create: true` option when there is an existing field (#4667)
+  * delete ./functionsfor .dockerignore
+  * Option to customize NamespaceTransformer overwrite behaviour (#4708)
+  * Fix flakey test
+  * appendCsVAnnotation must mutate the annotations RNode in place
+  * update release tools for go workspace mode
+  * NameReferenceTransformer misses self references in annotations
+  * restore require sigs.k8s.io/kustomize/* in go.mod
+  * Correctly detect ambiguity between potential referrers when targeting a name+namespace reference
+  * go work sync
+  * fix from lint error
+  * restore cloudbuild.yaml
+  * update go 1.18
+  * update e2econtainerconfig
+  * update kyaml in functions/examples
+  * rerun ci
+  * remove 'replace sigs.k8s.io/kustomize/*' and cleanup
+  * fix error handling and delete comment to e2econtainerconfig/main.go
+  * refactor cmd/config/internal/commands/e2e
+  * Address nits on `localize` proposal and correct mistakes (#4668)
+  * update to go 1.18 in github-action
+  * add missing test case
+  * fix ci error
+  * try to fix e2econtainer test
+  * restore ./cmd/config/internal/commands/e2e/e2econtainerconfig
+  * go work sync
+  * Move demandDirectoryRoot into kyaml/filesys (#4677)
+  * Add kustomization with remote reference
+  * try to update cmd/config/internal/commands/e2e/e2econtainerconfig code
+  * update functions/examples/template-go-nginx code and update go1.18
+  * update functions/examples/injection-tshirt-sizes code
+  * update all go.mod to go1.18
+  * add many pkgs for go.work
+  * add support for go workspace mode
+  * doc(first_kustomization): change the wrong command (I think)
+  * Adds commentary on expected/unexpected test output
+  * Implements TestNamedspacedServiceAccounts with and without overlap
+  * Switch github.com/xlab/treeprint to release tag : v1.1.0 (#4675)
+  * Update broken links to glossary terms
+  * Allow tests to only run locally (#4664)
+  * Replace lengthy t.Fatalf with require
+  * unpin modules and update latest release to 4.5.5
+  * increase vm size for cloud build
+  * Update api to v0.11.5
+  * Update cmd/config to v0.10.7
+  * Update kyaml to v0.13.7
+  * Proposal for new command "kustomize localize" (#4590)
+  * Migrate site content: overview and installation
+  * Document urls cannot specify ports
+  * Skip more flaky tests
+  * Update testing_test.go
+  * Rename testing.go to testing_test.go
+  * Fix comments
+  * Update copyright to match k8s docs site
+  * Document remote files in remoteBuild.md (#4624)
+  * Add test directory for command localize
+  * Configure wrapcheck linter to recognize wrapping done by kyaml's errors package
+  * Fix TODO comment syntax
+  * Skip flaky tests
+  * [Address #3937] Add labels to template/metadata if includeTemplates is true (#4209)
+  * Skip ssh tests
+  * Address feedback
+  * Add url tests
+  * Added code for fields with dots(.) in their names work as needed (#4591)
+  * Configuring hugo settings to match cli-experimental
+  * fix kustomize 4.5.3+ breaking remote resources (4559)
+  * Regression test and fix for APIs that satisfy ValidationSchemaProvider but not Validator
+  * Configurable extensions for template parser
+  * Add tests for remote OpenAPI schema
+  * Add support for remote OpenAPI schema
+  * fix containerized function mounts issue (#4489)
+  * openapi parsing performance improvement with protobuffer (#4568)
+  * test: use `T.TempDir` to create temporary test directory (#4587)
+  * add tagsuffix to take image tag suffix (#4364)
+  * fix lint error to nolint:goerr113
+  * fix lint error
+  * fix lint error
+  * fix error message
+  * fix lint error
+  * fix errror message using replacement wildcard and create option
+  * Bump actions/setup-go from 2 to 3
+  * Raise error for external generators or transformers (#4565)
+  * Install goreleaser into go 1.18 image for build
+  * Use verbose mode in all test runs
+  * Ignore XML in license header script
+  * more makefile cleanup
+  * Make sure build targets all install into Go bin
+  * Base makefile and root makefile target for functions/examples
+  * More makefile cleanup
+  * less redundancy in presubmit
+  * rever meaning of verify kustomize target
+  * Test other modules on all platforms
+  * Run all non plugin module builds
+  * Do not run ineffective targets, do run all module tests
+  * add kustomize module to tests that run on master
+  * More makefile cleanup
+  * Add missing boilerplate
+  * Add helpful error message to license check
+  * Add latest to go install commands
+  * Fix root var and add sanity check
+  * Lint needs goimports
+  * Delete duplicate copies of the license template
+  * Do not change what the presubmit does yet
+  * Run license check in CI
+  * Add permissions to GitHub actions
+  * Makefiles for all modules
+  * Makefile cleanup
+  * Enable linting from specific rev in CI
+  * Enable more linters for new code
+  * Update full linter list and enable some easily resolved new ones
+  * Refactor to fix gocyclo complaint
+  * cmd/config linter updates
+  * Replace protobuf dep flagged by linter as deprecated
+  * Address new linter complaints
+  * Replace deprecated linters
+  * Go 1.18 compatibility updates
+  * unpin modules and test against latest release
+  * Copy of go 1.18 created version mismatch, reverting for now
+  * Debug exit 141 failure
+  * Update api to api/v0.11.4
+  * Update cmd/config to v0.10.6
+  * Improve logging for changelong builder
+  * Update kyaml to v0.13.6
+  * Copy newer Go into goreleaser image
+  * Add more name refs to PodTemplate for ConfigMap and Secret
+  * Make Goreleaser use the tag passed to the script
+  * Converge local and cloud gorelease scripts, improve release notes
+  * Included githubactions in the dependabot config
+  * move to google/gnostic v0.5.7-v3refs
+  * Added test for bug 4487: cannot parse keys with dots
+  * Test examples against latest release
+  * Back to development mode; unpin the modules
+  * Add git to image build docker step
+  * Pin to api v0.11.3
+  * Pin to cmd/config v0.10.5
+  * Update release instructions for kubectl integration
+  * Pin to kyaml v0.13.4
+  * retain quotes in namespace transformer filter (#4421)
+  * bump dependency cobra to pick up latest vulnerability solution
+  * Fix error during expansion of `!!merge <<:` anchor tags (#4383)
+  * Initial commit for a tutorial on getting started with kustomize (#4516)
+  * Update valueAdd.md
+  * Exclude site directory from go.mod search
+  * Remove license and background image and moinitor wording changes
+  * Preserve scalar types when using the replacement filter
+  * fix broken link
+  * Add the kustomize.io docsy template
+  * support for multiple replacements in a single file
+  * added images folder to images that would break in README and additionally updated overlays.jpg to remove the reference to 'bases'
+  * Remove site folder
+  * Remove docs folder
+  * Remove more links to defunct site
+  * Replace links to removed site
+  * fix: broken reference to roadmap objectives
+  * Test case updated
+  * test case added
+  * Error message corrected
+  * misspell corrected
+  * Error type MalformedYamlError created. api.internal.target.kusttarget.accumulateResources checks for this new error type
+  * Enable validation using function config schema from KRMFunctionDefinition
+  * Fix image name parsing with tag and digest (#4406)
+  * Test examples against latest release
+  * Pin to api v0.11.2
+  * Pin to cmd/config v0.10.4
+  * Fix pseudo git HTTP urls broken since 59c82659 (#4453)
+  * rename IsMatchEveryIndex to IsWildcard
+  * Updating with 'uname -m'
+  * Commit 2022 roadmap presented to SIG-CLI
+  * replacements allow to replace multi values
+  * Test examples against latest release
+  * Pin to api v0.11.1
+  * Pin to cmd/config v0.10.4
+  * Update release instructions to check for blockers
+  * Pin to kyaml v0.13.3
+  * Fix regression 4388
+  * Test examples against latest release
+  * Back to development mode; unpin the modules
+  * Pin to api v0.11.0
+  * Pin to cmd/config v0.10.3
+  * Add missing header
+  * Commit missing go.sum updates
+  * Update year in all the addlicense targets
+  * Pin to kyaml v0.13.2
+  * fix test-unit-kustomize-api
+  * add replacements every element match test
+  * Install arch appropriate build if the 'arch' command is present
+  * feat: implement TrackableFilter for suffix
+  * feat: implement TrackableFilter for replicacount
+  * feat: implement TrackableFilter for prefix
+  * feat: implement TrackableFilter for namespace
+  * test: add testutil for mutation tracker
+  * new command `kustomize edit add buildmetadata` (#4413)
+  * fix: set FieldPath for SequenceNode elements
+  * Allow setting every array element in replacements
+  * Add benchmark test for parsing openapi in protobuf format
+  * implement TrackableFilter interface with imagetag
+  * refactor: use SetScalar in imagetag filter
+  * Add TrackableFilter interface (#4410)
+  * fix deprecated command on run-fns help docs
+  * move origin to be an attribute of KustTarget
+  * set transformer annotation when the option is specified
+  * deprecate enable-managedby-label flag in favor of a field
+  * Update owners file to reflect active contributors
+  * Update supported URLs in remoteBuild.md
+  * Remove exclude statements
+  * Revert "[fix] configMapGenerator: extra space in end of line gives "\n" instead of line breaks"
+  * Fix helm globals
+  * Improved error message and test cases for 4240
+  * feat: add SetEntryCallback to labels filter
+  * instructions for how to upgrade kustomize in kubectl
+  * add kustomize edit add generator command
+  * Throwing error instead of silently ignoring invalid input
+  * helper methods, types, and unit tests for transformer annotations
+  * test coverage for origin annotations for generated resources
+  * Upgrade cobra for better zsh support
+  * add origin annotation for resources generated by generators (#4341)
+  * don't surface entire node content in error message
+  * Refactor the PrefixSuffixTransformer into separate prefix- and suffix transformers (#4318)
+  * Update test demonstrating bug to pass, update comments
+  * ConfigMapGenerator should not update unrelated ClusterRole rule
+  * improve gvk and resid strings for error messages
+  * Minor updates and clarifications
+  * Add ARCHITECTURE.md
+  * remove multi-module check
+  * collect origin data only when the option is set
+  * proposal for transformer annotations option
+  * Test HTTP Error thrown by the file loader
+  * Error on HTTP resources are not nescessarly protocol related
+  * Do not try to load HTTP resources from FS when error occurs
+  * Handle HTTP error codes in file loader
+  * fix issue with multiline configmap data with extra space
+  * add regression tests for multiline configmap with space
+  * Remove the deprecation warning for a few RNode helpers
+  * update test for cmd/config
+  * update tests for api
+  * use internal.config.kubernetes.io prefix instead of internal.config.k8s.io
+  * deprecate stringprefixer and dateprefixer
+  * feat: Add Sort method to kyaml fn Results
+  * feat: Add SetEntryCallback to annotations filter
+  * fixes 4240; added null check on namespace when resource is a RoleBinding
+  * Move api/builtin to internal
+  * improve docs with examples for nameReference
+  * add to BuildAnnotations
+  * update tests for cmd/config module
+  * update tests for api module
+  * use custom id as key of the mapping and make kio.Pipeline behave the same as framework.Execute
+  * default result.severity to info when formatting string
+  * address comments
+  * kyaml/fn/framework ensures the annotation output format matches the input
+  * fix: prevent read file from throwing away OpenAPI config
+  * fix typo
+  * Test examples against latest release
+  * Back to development mode; unpin the modules
+  * Handle kyaml Filter errors type Result as non-breaking errors and store in ResourceList
+  * Pin to api v0.10.1
+  * Pin to cmd/config v0.10.2
+  * Also pin patch and patchjson transformers
+  * Pin to kyaml v0.13.0
+  * Add s390x and ppc64le binaries to releases
+  * Step 2 of 2: Adding windows build back and added ability to reproduce goreleaser builds locally (localbuild.sh) in a way exactly consistent with Cloud Build (cloudbuild.sh) but as a *build* only, without being coupled to Cloud Build or it's dependencies (like Cloud KMS, GitHub, etc).
+  * Step 1 of 2: Renaming localbuild.sh to cloudbuild-local.sh (preserve commit history) to make way for new localbuild.sh which will actually be entirely local, since this script is still very specific to Cloud Build.
+  * fix build annotations getting lost after applying JSON 6902 patch
+  * add test to demonstrate internal annotations getting lost (#4111)
+  * Fixes 4108; remove hidden files in kustomize edit command to correctly mimic shell globbing behaviour (#4170)
+  * fix function spec example
+  * Make ResourceList follow k8s api conventions
+  * add omitempty tag to replacement sources and targets
+  * modify edit test for null replacements fields
+  * Move kio.ByteRW tests from framework_test to byteio_readwriter_test
+  * only override wrapping kind if it wasn't set already
+  * test cases for framework wrapping/unwrapping bug
+  * support label and annotation selection in replacement targets
+  * update results field of ResourceList to implement function spec v1
+  * provide utility helpers for preserving internal annotations
+  * docs: Update example for patching multiple objects
+  * bump ResourceList from v1alpha1 to v1
+  * fix issue with quote being dropped in configmap generation
+  * test for dropped quote in configmap generation
+  * fix bug with migrating annotations
+  * Update documents from 'configuration' to 'fn'
+  * Update CI go version 1.16
+  * test to demonstrate broken annotation selection
+  * separate custom openapi test from the others
+  * docs: Update plugin links
+  * update the dockerfile gen command
+  * fix issue with openapi schema from components
+  * test to demonstrate issue with openapi from components (#4179)
+  * Small improvements to release instructions
+  * Test examples against latest release
+  * Back to development mode; unpin the modules
+  * add link to k8s-staging-kustomize project to releasing instructions
+  * Add consistency to ConfigMap spelling
+  * Updated README to use 'resources' instead of 'bases' in overlays example.
+  * Add go 1.17 build tags, which go fmt auto-synchronizes
+  * Use keyring from kustomize GCP project with new token
+  * Pin to api v0.10.0
+  * Pin to cmd/config v0.10.1
+  * Pin to kyaml v0.12.0
+  * fix tests for reader annotations
+  * Add AnchorsAweigh option to ByteReader to toggle YAML alias/anchor expansion
+  * Clean up bare sequence node wrapping
+  * support krm spec v1 and legacy path, index, and id annotations
+  * Handle parsing of bare sequence yaml nodes
+  * support multiple gvks in custom openapi schema
+  * deprecate some fn commands
+  * [fix 4124] Skip local resource until all transformations have completed.
+  * [Fix 4124] Add unittest with the given example.
+  * Clean up factor_test before adding DeAnchor call
+  * Use standard Kubernetes project roles for ownership
+  * Upgrade Helm v3 to v3.6.3
+  * fixes 4123; added length check on originalFields of kustomizationFile to prevent panic when kustomization file began with a comment(or a blank line) followed by a document separator
+  * Precompute IsNamespaceScoped to avoid expensive schema reads (#4152)
+  * Copy reference nodes before copying comments and syncing order
+  * Cache the OrgId for nameReferenceTransformer
+  * api/krusty: fix typo fileystem -> filesystem
+  * throw error instead of panic when replacements source.fieldPath doesn't exist (#4166)
+  * update name references after kind change
+  * return a meaningful message if we hit the rate-limiter of GitHub
+  * Revert "Return a meaningful message if we hit the rate-limiter of GitHub"
+  * return a meaningful message if we hit the rate-limiter of GitHub
+  * Enable real release after dry run without manual cleanup
+  * Update release instructions
+  * Proposal template feedback
+  * Back to development mode; unpin the modules
+  * Pin to api v0.9.0
+  * Pin to cmd/config v0.10.0
+  * Pin to kyaml v0.11.1
+  * Add test for null value
+  * move check for working dir for exec functions
+  * exec function working dir is the kustomization that referenced it (#4125)
+  * Introduce in-repo proposal process
+  * Add YAML anchor/alias expansion.
+  * Skip in-memory tests for Windows and generate temporary directories correctly for Windows tests.
+  * Add FileSystem interface to LocalPackageReadWriter and hook to LocalPackageWriter
+  * Adapt tests to new FileSystem field
+  * Added FileSystem field to kio.LocalPackageWriter
+  * support for darwin and linux (#4122)
+  * kyaml presubmit formatting
+  * ContainerPatch supports all common workload paths
+  * Filter helper for fallback field lookup
+  * option for origin data as annotation
+  * Feature: Add edit set annotation (#4073)
+  * update openapi to v1.21.2
+  * Update openapi updater scripts
+  * Kyaml anchor failure test.
+  * Add unit tests for current behavior of strategic merge patch
+  * Add unit tests for current behavior of three way merge
+  * replace genargs with two separate annotations
+  * remove annotations added by the kyaml reader
+  * Avoid testing in memory for Windows tests
+  * Update kustomize-in-kubectl chart for 1.22
+  * Automated changes under go 1.16.6
+  * replace Resource.options with annotations (#4061)
+  * Unset CDPATH to restore default cd behavior.
+  * Make UpdateExpectedFromActual work with hierarchical testdata directories
+  * deprecate some cfg commands
+  * Add FileSystem interface to LocalPackageReadWriter and hook to LocalPackageReader
+  * Avoid aliasing in fsnode by forcing copies for file contents and add a test
+  * Simplified tests with helper func
+  * Replace os.Stat call with FileSystem.Exists
+  * All LocalPackageReader tests adapted, one fails
+  * Adapt more LocalPackageReader tests
+  * Add FileSystem field to LocalPackageReader and one of its tests
+  * revert 'fix kyaml issue with multiline scalars'
+  * support yaml formatted openapi schema (#4017)
+  * fix multiline scalar value issue
+  * Update fork updater script
+  * fix kyaml issue with multiline scalars
+  * demonstrate line break preservation issue in kyaml
+  * Handle comments for seq indent derivation (#4064)
+  * Expand documentation of annotations used in manifests and KRM functions API (#3995)
+  * fix: Allow custom MYGOBIN in mdrip invokations
+  * Suggested changes
+  * First sequence indent wins
+  * add additional replacement transformer test with todos for failures
+  * add replacement test failures
+  * make replacement transformer test pass and add todo
+  * Change annotation name, error if conflicting options
+  * Update comments, tests, not expose indent option
+  * Add options, keep seqindent annotation equivalent to index annotation
+  * Suggested changes
+  * Make seq indent configurable and add retain seq indent functionality
+  * replace Resource.refBy with annotations
+  * Retain field order after running any arbitrary functions on resources (#4021)
+  * iampolicygenerator: update module name
+  * api/internal/git: handle .git suffix in repospec
+  * Unpin modules
+  * Fix broken KEP link in README
+  * add failing test for replacements
+  * Temporarily remove windows build.
+  * release process: upgrade to goreleaser v0.172.1 calling go go1.16.5
+  * Pin to api v0.8.11
+  * Pin to cmd/config v0.9.13
+  * add missing json tags
+  * Pin to kyaml  (#4020)
+  * Comment out part of script that is likely only needed on first run
+  * Remove pinning to external fork
+  * fix affected cmd/config tests
+  * fix affected kyaml tests
+  * compact sequence indent
+  * remove serialization hack after bump
+  * point to natasha's fork
+  * Internalize forked code
+  * fix leading newline issue
+  * tests for compactSeqIndent
+  * add defaultSeqIndent method
+  * compact sequence indentation option
+  * Internal copy of go-yaml at 496545a6307b2a7d7a710fd516e5e16e8ab62dbc
+  * Instructions and script for go-yaml fork
+  * Use the forked go-yaml module
+  * Handle null values while formatting
+  * Updated ByteReader to allow white space and comments on the same line after --- and throw an error if anything else is detected
+  * fix openapi command help page
+  * Update repospec_test.go
+  * Add error when datamap is nil
+  * Update argument name
+  * change marshal indent to 2 (#4005)
+  * Add documentation
+  * Add GetValidatedDataMap to rnode
+  * Add filesys.FileSystem to ignoreFileMatcher (#3994)
+  * Update kubectl kustomize section of readme
+  * Test api for all platforms and skip those breaking on Windows
+  * Move api/filesys to kyaml/filesys (#3997)
+  * Remove debug fmt.Println breaking kpt Starlark output
+  * expose --as-current-user via AddFunctionBasicsFlags
+  * expose --as-current-user via GetRunFnRunner
+  * append AsCurrentUser to FnPluginLoadingOptions
+  * Allow the Handle function of the ResourceHandler interface to return an error
+  * convert vars to replacements: mapping value with dot
+  * Allow users to customize handling of deleted resources for merge3
+  * Ensure 'not exist' errors wrap os.ErrNotExist (#3982)
+  * Updating go.sum
+  * convert vars to replacements
+  * Gather some string slice utils.
+  * support mapping values with '.' in replacements fieldpaths
+  * test for '.' in replacement mapping value
+  * Renaming to better name
+  * Add a new type that defaults to FsOnDisk for convenience
+  * Commit roadmap presented to SIG-CLI
+  * upgrade json-patch 4.11.0
+  * Update OWNERS_ALIASES
+  * Document contributor roles
+  * copy method for selector
+  * omitempty for replacement type
+  * ReadDir method for filesys
+  * address comments
+  * handle comments in list correctly
+  * Don't run helm inflator test against released version.
+  * Update byteio_writer.go
+  * Remove bad TODO
+  * Handle errors
+  * Update README.md
+  * Update README.md
+  * PR feedback - more tests and some cleanup
+  * remove metadata field from resourceRef schema
+  * replacements should be able to use previous IDs
+  * Fix kyaml tests
+  * plugin/builtin/iampolicygenerator/go.sum tidy
+  * Fixing cmd/config/internal/commands/e2e/e2e_test.go
+  * Check for empty GKNN when formatting results
+  * comments
+  * comments
+  * smarter path splitter for replacements
+  * code review
+  * add an option to include local configs
+  * copy target rnode in replacements
+  * test to demonstrate '.' in list element path issue
+  * test to demonstrate multiple fieldpaths issue in replacements
+  * Make frameworktestutil assertions configurable
+  * Improve frameworktestutil usability with complex error messages
+  * Only encoding non-wrapped single .json items as JSON
+  * Mark updated tests as skipped instead of passed
+  * Sink: Force JSON encoding for .json files
+  * add IAMPolicyGenerator
+  * Demonstrate issue 3929
+  * Fully specify KRM Functions Spec and graduate it to v1.
+  * Consolidate scripts into k8s-traditional hack dir.
+  * Back to development mode; unpin the modules
+  * cleanup tempfiles for runfn_test
+  * cleanup tempfiles for fmtr_test
+  * Handle errors
+  * Pin to api v0.8.10
+  * No more plugin pinning.
+  * Update README.md
+  * Pin to cmd/config v0.9.12
+  * Update README.md
+  * Fix go.mod in plugins.
+  * Pin to kyaml v0.10.20
+  * Update README.md
+  * Update go.mod
+  * Fix makefile install-tools for Go 1.16
+  * Fix repospec test
+  * Update HelmChartInflationGenerator.go
+  * URL based configuration for git exec timeouts and git submodule cloning
+  * Replace pkger with embed.FS compatibility
+  * Reset openapi in Filter and show use of pkger with filepath
+  * TemplateProcessor can add custom resource schemas to openapi
+  * Apply suggestions from code review
+  * Add includeCRDs Field to HelmChart
+  * use assert statements for kustomize edit tests
+  * Fix api tests on MacOS
+  * Remove delegation to RNode in Resource.
+  * Introduce resmap.ApplyFilter.
+  * Simplify kind and name change code.
+  * Update go.mod
+  * skip tests instead of comment out
+  * Fix linter error
+  * Disable tests that use non-exist image
+  * make result public in function filter
+  * Update go.mod
+  * Update README.md
+  * Add a dependency debugging directory.
+  * fix test
+  * add new fields to ordered fields
+  * Simplify gvk, speed up cluster-scoped checks.
+  * Run e2e tests against 4.1.2
+  * Update plugin go.mod, go.sum w/r to kyaml.
+  * Unpin everything.
+  * Move resid package from api to kyaml
+  * More pinning.
+  * Pin the plugins.
+  * Establish pin state.
+  * Pin to cmd/config v0.9.11
+  * In module lists, handle allowed replacements.
+  * Update README.md
+  * Pin to kyaml/v0.10.18
+  * When releasing, allow certain replacements.
+  * update openapi fetch command
+  * Fix golint warning
+  * Update merge3 with deafult GVKNN matcher
+  * Support multiple implementations for IsSameResource
+  * Update go.sum in replacements.
+  * remove go-openapi/spec,validate,strfmt from plugins
+  * remove go-openapi/spec,validate,strfmt from kustomize/
+  * remove go-openapi/spec,validate,strfmt from cmd/config/
+  * remove go-openapi/spec,validate,strfmt from kyaml/
+  * remove go-openapi/spec,validate,strfmt from api/
+  * Delete internal/crawl.
+  * Add another last mile helm example.
+  * Add testharness mkdir function.
+  * Use resid.ResId in replacements.
+  * modify Error log info
+  * Update OWNER_ALIASES
+  * Pin plugins to v0.0.0
+  * Make fsNode handle correctly consecutive reads and writes (#3820)
+  * Add ability to set target namespace for helm chart template
+  * Fix typo
+  * Back to dev mode; unpin the modules.
+  * add replacement transformer
+  * Pin to api v0.8.8
+  * Back to mergo v0.3.5
+  * Update args.go
+  * Back to development mode; unpin the modules
+  * Fix typo
+  * Pin to api v0.8.7
+  * Update remoteBuild.md
+  * Unpin the api
+  * Downgrade mergo to v0.3.7
+  * Pin to api v0.8.6
+  * Pin to cmd/config v0.9.10
+  * Fix go.sum nit
+  * Pin to kyaml@v0.10.17
+  * Support immutable attribute on generators
+  * Add flag --enable-helm
+  * Add check of UpdateExpectedFromActual before skipping test
+  * Fix nits, add internal GetRoot func.
+  * Enhance test harness.
+  * upgrade to helm 3.5.4 and imdario/mergo v0.3.12
+  * use field options to refine replacements
+  * add natasha to maintainers
+  * add use of rejects field in replacement filter
+  * Enable LocalPackageReader to ignore specific path
+  * Update README.md
+  * Fix go sum files.
+  * add more tests for replacement filter
+  * add replacement filter to support replacmenttransformer
+  * Pin to kyaml v0.10.16
+  * Don't print Kustomization file in tree output
+  * Loader FS and empty env fix
+  * Fix indentation
+  * add conflict check
+  * Fix init command in wordpress example
+  * Check if value is provided
+  * remove old untested replacement transformer
+  * Do no require exec/go plugin home to use fn plugins
+  * Add labels field to kustomization
+  * Fix nits in 3731
+  * Make dir optional for tree command
+  * added comment referring test to issue 3732
+  * Remove dead merge conflict code.
+  * api/konfig/builtinpluginconsts/namespace: Add CustomResourceDefinition webhook namespace transformer
+  * added test showing broken namespace reference when combining resources from two different bases
+  * Type alias for spec.Schema
+  * handle helm output properly
+  * Update resource.go
+  * Allow patch removal of emptyDir {}
+  * add example of using custom schema
+  * Drop uses of 'unstructured' terminology.
+  * Remove the wrappy layer.
+  * updated formatting
+  * support new version string in helm
+  * allow general name and kind changes via an options field in patches
+  * parse custom schema only once when necessary
+  * updated krusty tests for custom schema
+  * Remove branching on kyaml enablement
+  * Unpin all modules (back to dev mode).
+  * HelmChartInflationGenerator: inherit environment variables to helm command
+  * Take provenance version into account for build test
+  * fixed disappearing ports issue
+  * Pin to api v0.8.5
+  * Update README.md
+  * Update go.sum
+  * Pin to cmd/config v0.9.7
+  * Pin to kyaml v0.10.15
+  * add env to kustomization openapi spec
+  * cleanup image transformer
+  * Add PodTemplate field to namereference config.
+  * Use portable method to emulate 'readlink -f' behavior
+  * Reinstate configmap/secret generator env field.
+  * Fix go.sum
+  * Pin to cmd/config v0.9.6
+  * Pin to kyaml v0.10.14
+  * Undo kyaml/go.mod lint replacements.
+  * check if version exists
+  * Extract flags that enable alpha function features.
+  * Full tree go mod tidy.
+  * add test for multibyte string
+  * allow most recent release with specific path
+  * return error for duplicate keys rather than panicking
+  * regression test for panic on duplicate keys
+  * Update unpinned pluginator to new framework
+  * Improvements to kyaml fn framework
+  * Add benchmarks to measure impact of swagger parsing
+  * upgraded to yaml.v2 v2.4.0
+  * updated go version to 1.16
+  * fix lint error
+  * update openapi version to v1.20.4
+  * Back to development mode; unpin the modules
+  * Pin to api v0.8.4
+  * Pin to cmd/config v0.9.5
+  * Update go.sum
+  * Pin to kyaml v0.10.13
+  * Unpin kyaml, cmd/config and api.
+  * Update generated files under cmd/config.
+  * Update generated files under kyaml.
+  * k8scopy should rename zz_generated.foo.go
+  * feat: Reduce docker image size
+  * Delete older releasing program (replaced by gorepomod).
+  * Pin to api api/v0.8.3
+  * Update kustomize/api/internal/crawl/go.sum
+  * Pin to cmd/config v0.9.4
+  * Pin to kyaml v0.10.12
+  * Drop regeneration directives from copied code.
+  * Drop commands replacement from go.mod
+  * Pin to api v0.8.2
+  * Pin to cmd/config v0.9.3
+  * More go sum changes.
+  * Pin to kyaml v0.10.11
+  * More go tidy adjustments.
+  * Remove tool deps from shippable modules.
+  * Change paths for krusty tests to relative, and have top level be '.' instead of 'app'
+  * kustomization openapi data should be parsed for custom schema
+  * Fork starlib/util for serialization libs.
+  * Simplify paths and rename objects
+  * moved common resource definitions to separate function
+  * Add makeKubectlPr.sh
+  * add openapi/path field to use custom openapi schema document
+  * added openapi fetch command to get schema from local cluster
+  * fixed panic on patch delete for objects
+  * fn framework support for legacy kustomize plugin io
+  * List setters default false for recurse-subpackages
+  * fix test
+  * fix edit commands remove metadata
+  * update links
+  * Adds repeatbase_test
+  * add doc for releasing image
+  * Add name reference for fastcgi-params-configmap
+  * Update makeKubectlPr.sh
+  * Add 4.0.1 to example tests and unpin.
+  * Pin for kustomize/v4.0.1 release.
+  * Hyphenate flags and add more build command tests.
+  * Create makeKubectlPr.sh
+  * test examples against kustomize 4.0
+  * Back to development mode; unpin the modules
+  * Increment major version from v3 to v4
+  * Pin to api v0.8.1
+  * Pin to cmd/config v0.9.2
+  * Pin to kyaml v0.10.10
+  * Update README.md
+  * Make more high level build methods public.
+  * Delete --enable_kyaml flag.
+  * Tidy go.sum after dropping go-getter.
+  * Drop the go-getter dependence.
+  * support binaryData merge
+  * add functions for binaryData
+  * Simplify gorepomod manager
+  * Run: gorepomod unpin kyaml api --doIt
+  * Modify gorepomod to unpin conditionally.
+  * Kustomize file should be ignored when adding resources and components
+  * Drop hashicorp multierror due to MPL
+  * Support fnframework to write expected testdata based on observed results
+  * kyaml: set proper GOBIN
+  * functions/examples: set proper GOBIN
+  * cmd: set proper GOBIN
+  * Makefile/scripts: check and use GOBIN environment variable  first
+  * Unpin everything, back to development mode.
+  * Fix #3571 with a -V
+  * api/internal/crawl/index/elasticsearch: Fix ineffectual assignment to err
+
+-------------------------------------------------------------------
+Tue Dec 13 17:04:50 UTC 2022 - rombert@apache.org
+
+- switch to services
+
+-------------------------------------------------------------------
 Mon May  2 08:35:46 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove dependency on binutils-gold as the package will be removed
