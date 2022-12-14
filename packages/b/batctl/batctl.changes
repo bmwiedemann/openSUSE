@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  7 21:57:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.3:
+  - drop additional delay after the ping packet
+  * manpage cleanups
+  * add various commands to print generic netlink replies as JSON
+  * coding style cleanups and refactoring
+
+-------------------------------------------------------------------
 Thu May 13 00:26:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2021.0

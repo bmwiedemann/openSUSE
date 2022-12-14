@@ -1,7 +1,7 @@
 #
 # spec file for package batctl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           batctl
-Version:        2021.0
+Version:        2022.3
 Release:        0
 Summary:        B.A.T.M.A.N. advanced control and management tool
 License:        GPL-2.0-only AND MIT
 Group:          Productivity/Networking/Other
-Url:            http://www.open-mesh.org/projects/batctl
-Source0:        http://downloads.open-mesh.org/batman/stable/sources/batctl/%{name}-%{version}.tar.gz
-Source1:        http://downloads.open-mesh.org/batman/stable/sources/batctl/%{name}-%{version}.tar.gz.asc
+URL:            https://www.open-mesh.org/projects/batctl
+Source0:        https://downloads.open-mesh.org/batman/stable/sources/batctl/%{name}-%{version}.tar.gz
+Source1:        https://downloads.open-mesh.org/batman/stable/sources/batctl/%{name}-%{version}.tar.gz.asc
 Source2:        batctl.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnl-3.0)
@@ -51,6 +51,7 @@ install -m 644 man/%{name}.8 %{buildroot}%{_mandir}/man8
 install -m 755 %{name} %{buildroot}%{_bindir}
 
 %files
+%license LICENSES/preferred/GPL-2.0 LICENSES/preferred/MIT
 %doc CHANGELOG.rst README.rst
 %{_bindir}/%{name}
 %{_mandir}/man8/%{name}.8%{ext_man}
