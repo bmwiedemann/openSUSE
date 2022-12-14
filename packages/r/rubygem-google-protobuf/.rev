@@ -46,4 +46,12 @@
   * wrapping memcpy caused loading 'google/protobuf' to hang</comment>
     <requestid>1033041</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a27718beb381cb3333cd63a5434eab81</srcmd5>
+    <version>3.21.10</version>
+    <time>1671023449</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042639</requestid>
+  </revision>
 </revisionlist>
