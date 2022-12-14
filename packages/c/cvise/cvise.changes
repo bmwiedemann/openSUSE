@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 14 08:12:38 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221214.96f841e:
+  * Pass instantiate-template-param learned to remove template arguments and parameters
+
+-------------------------------------------------------------------
 Tue Dec 13 15:44:44 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221213.c01d287:

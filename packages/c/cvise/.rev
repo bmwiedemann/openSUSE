@@ -925,4 +925,13 @@
   * Use -Wno-error=mismatched-new-delete conditionally.</comment>
     <requestid>1042718</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3aa8825da71667f53570d5d430031763</srcmd5>
+    <version>2.6.0+git.20221214.96f841e</version>
+    <time>1671023479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221214.96f841e:
+  * Pass instantiate-template-param learned to remove template arguments and parameters</comment>
+    <requestid>1042816</requestid>
+  </revision>
 </revisionlist>
