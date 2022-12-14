@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Validate-IP
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Data-Validate-IP
 Name:           perl-Data-Validate-IP
-Version:        0.30
+Version:        0.31
 Release:        0
-Summary:        IPv4 and IPv6 validation methods
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        IPv4 and IPv6 validation methods
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -43,6 +43,7 @@ to a specific network or whether an address is public or private
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -57,7 +58,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md test-vars-ignore
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md precious.toml README.md
 %license LICENSE
 
 %changelog

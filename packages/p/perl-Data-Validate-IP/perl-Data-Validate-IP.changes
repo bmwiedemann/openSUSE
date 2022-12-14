@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 29 03:06:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+  0.31  2022-11-28
+
+  - Fixed handling of the ::0/128 subnet. This is a special subnet(/address)
+    that is called the "unspecified address". It is not public or
+    routable. Reported by Dan Sherry. GH #13.
+
+-------------------------------------------------------------------
 Tue Mar 30 03:06:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.30
