@@ -52,4 +52,12 @@
   - shorter appdata summary, to comply with guidelines</comment>
     <requestid>970821</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7d5b5c5c543b511a381af4eff51947e5</srcmd5>
+    <version>1.0.1</version>
+    <time>1671023506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042886</requestid>
+  </revision>
 </revisionlist>
