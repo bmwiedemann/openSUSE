@@ -1741,7 +1741,7 @@
     <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcelt0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libcfg6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libcfitsio9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libcfitsio9" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-gtk25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2442,8 +2442,8 @@
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite3_21_11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3513,10 +3513,10 @@
     <package name="prison-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="procinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="procmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="procps" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psmisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4081,6 +4081,7 @@
     <package name="ruby3.1-rubygem-simplecov-html" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-simplecov_json_formatter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-simpleidn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby3.1-rubygem-slim" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-slop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-snaky_hash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-spring" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

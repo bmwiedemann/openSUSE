@@ -8617,6 +8617,7 @@ unsorted:
   - kube-no-trouble 
   - kube-prometheus-k8s-yaml 
   - kube-prometheus-sources 
+  - kubeconform 
   - kubectl-foreach 
   - kubectl-neat 
   - kubectl-oomd 
@@ -8722,6 +8723,9 @@ unsorted:
   - kuserfeedback-server 
   - kuserfeedback-tools 
   - kustomize: [x86_64] 
+  - kustomize-bash-completion: [x86_64] 
+  - kustomize-fish-completion: [x86_64] 
+  - kustomize-zsh-completion: [x86_64] 
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
@@ -11463,7 +11467,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_123 
+  - libgsoap-2_8_124 
   - libgssapi3 
   - libgssdp-1_6-0-32bit: [x86_64] 
   - libgssdp-devel 
@@ -33168,7 +33172,6 @@ unsorted:
   - ruby3.1-rubygem-gettext_i18n_rails_js 
   - ruby3.1-rubygem-grpc 
   - ruby3.1-rubygem-rails-7.0 
-  - ruby3.1-rubygem-slim 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
