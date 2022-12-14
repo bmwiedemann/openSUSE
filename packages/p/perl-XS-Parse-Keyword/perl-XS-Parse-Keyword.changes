@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Dec  4 03:10:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.30    2022-12-03
+          [CHANGES]
+           * Added XPK_STAGED_ANONSUB; inspired a bit by XS::Parse::Sublike for
+             customising the parsing of anonmethod
+  0.29    2022-12-01
+          [CHANGES]
+           * Added XPK_PREFIXED_TERMEXPR_ENTERLEAVE
+          [BUGFIXES]
+           * Don't try to call `SvPVX()` on a `newSV(0)` because -DDEBUGGING
+             perls get upset (RT145278)
+           * Remember to `break` out of switch block cases when testing for
+             `KEYWORD_PLUGIN_*` return values
+  0.28    2022-11-25
+          [CHANGES]
+           * Include a XSParseInfixClassification field in the XSParseInfixInfo
+             structure
+           * Do not permit mixed identifier/non characters in the names of
+             registered infix operators
+           * No longer supports XSParseInfix ABI version 0
+          [BUGFIXES]
+           * When parsing an infix operator name, make sure not to be confused
+             by additional identifier characters immediately after it
+
+-------------------------------------------------------------------
 Tue Nov  1 03:08:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.27
