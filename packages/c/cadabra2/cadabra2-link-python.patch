@@ -1,7 +1,7 @@
-Index: cadabra2-2.3.9.3/core/CMakeLists.txt
+Index: cadabra2-2.4.3.2/core/CMakeLists.txt
 ===================================================================
---- cadabra2-2.3.9.3.orig/core/CMakeLists.txt
-+++ cadabra2-2.3.9.3/core/CMakeLists.txt
+--- cadabra2-2.4.3.2.orig/core/CMakeLists.txt
++++ cadabra2-2.4.3.2/core/CMakeLists.txt
 @@ -284,7 +284,7 @@ target_link_libraries(cadabra2 PRIVATE
     ${GMPXX_LIBRARIES}
     ${GMP_LIBRARIES}   
@@ -11,14 +11,15 @@ Index: cadabra2-2.3.9.3/core/CMakeLists.txt
  #  ${GLIBMM3_LIBRARIES}    
     )
  
-Index: cadabra2-2.3.9.3/core/packages/CMakeLists.txt
+Index: cadabra2-2.4.3.2/core/packages/CMakeLists.txt
 ===================================================================
---- cadabra2-2.3.9.3.orig/core/packages/CMakeLists.txt
-+++ cadabra2-2.3.9.3/core/packages/CMakeLists.txt
-@@ -62,7 +62,7 @@ foreach(PACKAGE ${COMPILED_PACKAGES})
-   pybind11_add_module(${PNAME} SHARED ${SOURCE_PACKAGEDIR}/${PACKAGE})
+--- cadabra2-2.4.3.2.orig/core/packages/CMakeLists.txt
++++ cadabra2-2.4.3.2/core/packages/CMakeLists.txt
+@@ -66,8 +66,7 @@ foreach(PACKAGE ${COMPILED_PACKAGES})
    set_target_properties(${PNAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/cdb/${PINSTALL}")
    set_target_properties(${PNAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/cdb/${PINSTALL}")
+   set_target_properties(${PNAME} PROPERTIES SUFFIX ".${PYTHON_MOD_SUFFIX}")
+-
 -  target_link_libraries(${PNAME} PUBLIC cadabra2 ${GMPXX_LIBRARIES})
 +  target_link_libraries(${PNAME} PUBLIC cadabra2 ${PYTHON_LIBRARIES} ${GMPXX_LIBRARIES} ${GMP_LIBRARIES})
    target_include_directories(${PNAME} PUBLIC ${CADABRA_CORE_DIR})

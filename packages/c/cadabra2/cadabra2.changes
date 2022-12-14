@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Dec  7 08:00:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.3.2:
+  * Add missing canonicalisation of rationals when simplifying
+    powers.
+
+-------------------------------------------------------------------
+Tue Dec  6 12:54:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.2.4:
+  * Minor update to fix issues with Python 3.11.
+- Changes from version 2.4.2.0:
+  * Added package cdb.graphics.plot for easy plotting.
+  * Added package cdb.sympy.calculus for use of SymPy calculus
+    functions on Cadabra expressions.
+  * Expanded nevaluate to numerically evaluate more expressions.
+  * Various small bug fixes and enhancements.
+- For %check, set working dir as HOME to allow tests that try to
+  write config files to home dir to work without perm issues.
+
+-------------------------------------------------------------------
 Sun Oct  9 16:35:12 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.0.2:

@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.4.0.2
+Version:        2.4.3.2
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -178,10 +178,10 @@ ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/la
 %check
 export PATH=${PATH}:%{buildroot}%{_bindir}
 export PYTHONDONTWRITEBYTECODE=1
-# Exclude tests that try to write config files to home dir; %%ctest does not accept additional options, go the manual way
-pushd %__builddir
-ctest %{?_smp_mflags} -E "packages|manip|modules|meld"
-popd
+# Set HOME to current dir to allow tests that try to
+# write config files to home dir to run without perm issues
+export HOME=`pwd`
+%ctest
 %endif
 
 %files
