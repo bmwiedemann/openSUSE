@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:01:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 23.6:
+  * buildsys: Fix DEJAGNU work-around Debian #1015089
+  * killall: Use kill if pidfd_send_signal fails Debian #1015228
+  * fuser: Do not mention nonexistent - reset option #42
+  * fuser: Use modern statn where possible
+  * pstree: Better AppArmor support !30
+  * killall: Check truncated names !28
+  * killall: Use openat and pidfd_send_signal #37
+  * killall: Don't check paths of sockets #35
+  * pstree: Check for process with show_parents #38
+  * pstree: Don't disable compaction with show pgids #34
+  * pstree: Fix storage leak !29
+- Enable new apparmor support
+- Remove patch now upstream
+  0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+- Port patch psmisc-22.21-pstree.patch
+- Port patch psmisc-v23.4.dif which now becomes psmisc-v23.6.dif
+- Merge patch socket-fix.patch with ported patch
+  0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
+
+-------------------------------------------------------------------
 Fri Nov 25 11:48:39 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch socket-fix.patch

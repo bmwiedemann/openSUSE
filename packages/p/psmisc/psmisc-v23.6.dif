@@ -1,0 +1,51 @@
+---
+ configure.ac |    2 +-
+ src/fuser.c  |    5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+--- configure.ac
++++ configure.ac	2022-12-13 07:57:11.751636898 +0000
+@@ -162,7 +162,7 @@ AC_CHECK_MEMBERS([struct user_regs_struc
+ 		struct user_regs_struct.rdi,
+ 		struct user_regs_struct.rsi,
+ 		struct user_regs_struct.rdx], [],[],
+-    [#include <bits/types.h>
++    [#include <sys/types.h>
+      #include <sys/user.h>])
+ AC_CHECK_MEMBERS([struct pt_regs.orig_gpr3,
+ 		struct pt_regs.gpr], [],[], [#include <linux/ptrace.h>])
+--- src/fuser.c
++++ src/fuser.c	2022-12-13 07:59:50.896670010 +0000
+@@ -1223,6 +1223,7 @@ int main(int argc, char *argv[])
+     struct option *optr;
+     char *nsptr;
+     int skip_argv;
++    int seen_file;
+ 
+     struct option options[] = {
+         {"all", 0, NULL, 'a'},
+@@ -1266,6 +1267,7 @@ int main(int argc, char *argv[])
+ #endif
+     atexit(atexit_free_lists);
+ 
++    seen_file = 0;
+     for (argc_cnt = 1; argc_cnt < argc; argc_cnt++)
+     {
+         current_argv = argv[argc_cnt];
+@@ -1416,6 +1418,7 @@ int main(int argc, char *argv[])
+             }
+         }
+         this_name->matched_procs = NULL;
++        seen_file = 1;
+         if (opts & (OPT_MOUNTS | OPT_ISMOUNTPOINT)
+             && this_name->name_space != NAMESPACE_FILE)
+         {
+@@ -1467,7 +1470,7 @@ int main(int argc, char *argv[])
+             names_tail->next = this_name;
+         names_tail = this_name;
+     }            /* for across the argvs */
+-    if (names_head == NULL)
++    if (names_head == NULL && !seen_file)
+         usage(_("No process specification given"));
+ 
+     /* Check if -M flag was used and if so check mounts */

@@ -814,4 +814,30 @@
   create a named socket on the fly</comment>
     <requestid>1038188</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>377d86f1307511d3646d21a3400b7df3</srcmd5>
+    <version>23.6</version>
+    <time>1671023440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.6:
+  * buildsys: Fix DEJAGNU work-around Debian #1015089
+  * killall: Use kill if pidfd_send_signal fails Debian #1015228
+  * fuser: Do not mention nonexistent - reset option #42
+  * fuser: Use modern statn where possible
+  * pstree: Better AppArmor support !30
+  * killall: Check truncated names !28
+  * killall: Use openat and pidfd_send_signal #37
+  * killall: Don't check paths of sockets #35
+  * pstree: Check for process with show_parents #38
+  * pstree: Don't disable compaction with show pgids #34
+  * pstree: Fix storage leak !29
+- Enable new apparmor support
+- Remove patch now upstream
+  0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+- Port patch psmisc-22.21-pstree.patch
+- Port patch psmisc-v23.4.dif which now becomes psmisc-v23.6.dif
+- Merge patch socket-fix.patch with ported patch
+  0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch</comment>
+    <requestid>1042561</requestid>
+  </revision>
 </revisionlist>

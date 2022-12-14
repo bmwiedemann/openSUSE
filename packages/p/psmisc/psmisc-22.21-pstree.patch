@@ -1,10 +1,10 @@
 ---
- src/pstree.c |   37 ++++++++++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 7 deletions(-)
+ src/pstree.c |   38 +++++++++++++++++++++++++++++++-------
+ 1 file changed, 31 insertions(+), 7 deletions(-)
 
 --- src/pstree.c
-+++ src/pstree.c	2022-01-20 13:27:44.175949055 +0000
-@@ -72,6 +72,7 @@ extern const char *__progname;
++++ src/pstree.c	2022-12-13 07:46:58.243076344 +0000
+@@ -79,6 +79,7 @@ extern const char *__progname;
  #define UTF_HD        "\342\224\254"        /* U+252C, Horizontal and down */
  
  #define VT_BEG        "\033(0\017"        /* use graphic chars */
@@ -12,8 +12,8 @@
  #define VT_END        "\033(B"        /* back to normal char set */
  #define VT_V        "x"                /* see UTF definitions above */
  #define VT_VR        "t"
-@@ -522,6 +523,27 @@ static void out_scontext(const PROC *cur
-     }
+@@ -578,6 +579,28 @@ static void out_scontext(const PROC *cur
+     out_string("'");
  }
  
 +/*
@@ -23,24 +23,25 @@
 +static void
 +out_sym (const char *str)
 +{
-+  int seq = 0;
-+  if (sym == &sym_vt100 && *str == '\033') {
-+    seq = 1;
-+    if (cur_x <= output_width || !trunc)
-+      cur_x -= VT_LEN;
-+  }
-+  out_string(str);
-+  if (seq) {
-+      str = VT_END;
-+      while (*str)
-+        putchar (*str++);
-+  }
++    int seq = 0;
++    if (sym == &sym_vt100 && *str == '\033') {
++        seq = 1;
++        if (cur_x <= output_width || !trunc)
++            cur_x -= VT_LEN;
++    }
++    out_string(str);
++    if (seq) {
++        str = VT_END;
++        while (*str)
++            putchar (*str++);
++    }
 +}
++
 +
  static void out_newline(void)
  {
      if (last_char && cur_x == output_width)
-@@ -761,11 +783,12 @@ dump_tree(PROC * current, int level, int
+@@ -817,11 +840,12 @@ dump_tree(PROC * current, int level, int
          for (lvl = 0; lvl < level; lvl++) {
              for (i = width[lvl] + 1; i; i--)
                  out_char(' ');
@@ -58,7 +59,7 @@
          }
  
      if (rep < 2)
-@@ -875,7 +898,7 @@ dump_tree(PROC * current, int level, int
+@@ -931,7 +955,7 @@ dump_tree(PROC * current, int level, int
      }
      width[level] = comm_len + cur_x - offset + add;
      if (cur_x >= output_width && trunc) {
@@ -67,7 +68,7 @@
          out_string("+");
          out_newline();
          return;
-@@ -899,7 +922,7 @@ dump_tree(PROC * current, int level, int
+@@ -955,7 +979,7 @@ dump_tree(PROC * current, int level, int
                  }
          }
          if (first) {

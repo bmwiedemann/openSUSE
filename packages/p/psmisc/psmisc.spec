@@ -27,8 +27,9 @@ BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
 BuildRequires:  netcat-openbsd
+BuildRequires:  pkgconfig(libapparmor)
 URL:            https://gitlab.com/psmisc/psmisc/
-Version:        23.4
+Version:        23.6
 Release:        0
 Provides:       ps:/usr/bin/killall
 Summary:        Utilities for managing processes on your system
@@ -40,8 +41,6 @@ Patch2:         %{name}-22.21-pstree.patch
 # PATCH-ADD-SUSE boo#908068, boo#1046237, boo#1046237
 # https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
 Patch3:         0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
-Patch4:         0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
-Patch5:         socket-fix.patch
 
 %define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64
 
@@ -59,8 +58,6 @@ processes that are using specified files or filesystems.
 %setup -q -n %{name}-v%{version}
 %patch2 -p0 -b .pstree
 %patch3 -p0 -b .mntinf
-%patch4 -p0 -b .statx
-%patch5 -p0 -b .sk
 %patch0 -p0 -b .p0
 
 %build
