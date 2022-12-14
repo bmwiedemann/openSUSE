@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Dec 12 12:33:04 UTC 2022 - rombert@apache.org
+
+- Update to version 0.5.0:
+  * Allow to skip resources using the GVK notation (#92)
+  * Update goreleaser (#137)
+  * Do not expose internal CPU profiling option as flag (#136)
+  * Validate JUnit output against Jenkins JUnit XSD (#134)
+  * Add debug information to help understand failures finding schemas (#133)
+  * Update fixture file to use no hash function
+  * Upgrade hash to sha256. (#126)
+  * remove link to dead project (#125)
+  * add {{ .Group }} variable to schema location options (#120)
+  * Forbid duplicate keys in strict mode (#121)
+  * fix: change flag parse error handling to return errors instead of exiting (#107)
+  * Adds info about installation via built in Go package manger (#116)
+  * Fix grammar in  README.md (#114)
+  * add constructor to handle equal sign (=) (#104)
+  * chore: print the url of failed download (#96)
+  * remove accidentally commited binary
+  * Improve handling of cmdline errors (#91)
+  * Minor css updates
+  * Update website
+  * Add cname to website
+  * Publish site
+  * Fixes acceptance test with new TAP output
+  * feat(output/tap): Output qualified resource name
+  * add horizontal line
+  * set hero image width
+  * scripts: Add tests for options
+  * scripts: Optionally disallow additionalProperties at the root
+  * Update Readme.md
+  * Move version to main package
+  * Update README
+  * Add -v to output version number
+  * Fix broken release notes
+
+-------------------------------------------------------------------
+Tue Oct 19 09:15:12 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Initial package
