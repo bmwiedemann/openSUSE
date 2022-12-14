@@ -18,7 +18,7 @@
 
 %define cpan_name Chart
 Name:           perl-Chart
-Version:        2.403.8
+Version:        2.403.9
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Series of charting modules

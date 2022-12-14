@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 29 03:06:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.403.9
+   see /usr/share/doc/packages/perl-Chart/Changes
+
+  2.403.9 2022-12-11 lichtkind
+  --------
+      * = minor feature add
+      * + add_datafile now reads CSV
+      * & added test for loading data files
+
+-------------------------------------------------------------------
 Sun Oct 23 03:06:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.403.8
