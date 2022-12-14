@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  9 03:09:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.28    2022-12-08
+          [CHANGES]
+           * Account for the new structure of ->cop_warnings in perl v5.37.6
+           * Updated to latest hax/ support files; accounting for newPADxVOP in
+             latest bleadperl
+
+-------------------------------------------------------------------
 Mon Feb 21 03:13:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.27
