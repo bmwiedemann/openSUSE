@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec  1 05:48:08 UTC 2022 - Bob Haley <fawz@use.startmail.com>
+
+- Update to v1.00.1
+
+    credential fetching bug fix
+
+- Changelog from v1.00.0
+
+    Matches bundle v12 release
+    Built with QT6 on Mac & Windows
+
+    * All devices changelog:
+    minimize on cmd+q on MacOS
+
+    * Mini BLE changelog:
+    change BLE name
+    credential mirroring feature
+    multiple domain support
+    TOTP setting bug fix
+    monospaced font for notes
+    allow reprogramming of "soft serial numbers" for non programmed units
+    hide save button for clean categories
+    bug fix: preventing continuous queries when the card is suddenly removed
+    fix Qt6 MMM filter remove display issue
+    fix xenial/bionic Qt related build issue
+    notes not fetched bug fix
+
+    * New settings:
+    on-screen OTP display after login into website
+    login menu: start from last used service
+    switch off after BLE disconnect
+    sort favorites by last used date
+    allocated for MC, specify subdomain status on device
+    custom delay between enter key and password for unlock
+    screen brightness setting
+    subdomain setting enforcement
+    get TOTP message
+    category enforcement
+    Invert Login And Favorites Icons
+
+
+-------------------------------------------------------------------
 Thu Oct 13 12:15:54 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Add README.SUSE to make users aware of potential security issues
