@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:04:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 42.5:
+  + This version fixes the pairing dialogue misbehaving for some
+    Bluetooth Classic keyboards, with the passkey disappearing
+    after the first digit is typed.
+- Add missing ldconfig_scriptlets macro for
+  libgnome-bluetooth-ui-3_0-13.
+
+-------------------------------------------------------------------
 Tue Sep  6 06:23:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.4:

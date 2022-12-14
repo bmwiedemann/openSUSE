@@ -850,4 +850,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>New stable rel (forwarded request 1001358 from iznogood)</comment>
     <requestid>1001369</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>13881f1fc1cbf8d776e3ac50ccc70919</srcmd5>
+    <version>42.5</version>
+    <time>1671023459</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1042752 from iznogood)</comment>
+    <requestid>1042770</requestid>
+  </revision>
 </revisionlist>
