@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 21:29:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add reproducible.patch to avoid timestamp patching in the build
+  section and allowing it to build with -Werror=date-time 
+
+-------------------------------------------------------------------
 Thu Apr 15 15:15:15 UTC 2021 - olaf@aepfle.de
 
 - prep section should just extract and patch,

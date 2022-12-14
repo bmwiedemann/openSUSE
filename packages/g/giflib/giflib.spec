@@ -1,7 +1,7 @@
 #
 # spec file for package giflib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        5.2.1
 Release:        0
 Summary:        A Library for Working with GIF Images
 License:        MIT
-URL:            http://giflib.sf.net/
-Source:         http://downloads.sf.net/giflib/%{name}-%{version}.tar.gz
+URL:            https://giflib.sourceforge.net/
+Source:         https://downloads.sf.net/giflib/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch1:         PIE.patch
+Patch2:         reproducible.patch
 BuildRequires:  libtool >= 2
 
 %description
@@ -59,21 +60,8 @@ have expired, giflib can again be used instead of libungif.
 %autosetup -p1
 
 %build
-for file in `find util -name "*.c"`; do
-	touch -r $file $file.stamp
-done
-
-# USE __TIMESTAMP__ instead of __DATE__ , __TIME__
-# this change is pointless unless we preserve the original
-# file modification time
-for file in `find util -name "*.c"`; do
-	sed -i -e s@'__DATE__ ",   " __TIME__'@__TIMESTAMP__@g $file;
-    touch -r $file.stamp $file;
-    rm -v $file.stamp
-done
-
-export CFLAGS="%optflags"
-make %{?_smp_mflags}
+export CFLAGS="%{optflags}"
+%make_build
 
 %install
 %make_install PREFIX="%{_prefix}" LIBDIR="%{_libdir}"
