@@ -26,6 +26,8 @@ URL:            https://github.com/google/pyu2f/
 Source:         https://github.com/google/pyu2f/archive/refs/tags/%{version}.tar.gz#/pyu2f-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/google/pyu2f/pull/32 fix DeprecationWarning for logging and fake_filesystem
 Patch:          fix-deprecation-warning.patch
+# https://github.com/google/pyu2f/issues/34
+Patch1:         python-pyu2f-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements

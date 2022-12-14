@@ -1,0 +1,71 @@
+Index: pyu2f-0.1.5a/pyu2f/convenience/localauthenticator.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/convenience/localauthenticator.py
++++ pyu2f-0.1.5a/pyu2f/convenience/localauthenticator.py
+@@ -13,7 +13,6 @@
+ # limitations under the License.
+ 
+ """Convenience class for U2F signing with local security keys."""
+-import six
+ import base64
+ import sys
+ 
+@@ -36,7 +35,7 @@ class LocalAuthenticator(baseauthenticat
+       device = u2f.GetLocalU2FInterface(origin=self.origin)
+     except errors.NoDeviceFoundError:
+       print_callback('Please insert your security key and press enter...')
+-      six.moves.input()
++      input()
+       device = u2f.GetLocalU2FInterface(origin=self.origin)
+ 
+     print_callback('Please touch your security key.\n')
+Index: pyu2f-0.1.5a/pyu2f/hid/macos.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/hid/macos.py
++++ pyu2f-0.1.5a/pyu2f/hid/macos.py
+@@ -13,8 +13,7 @@
+ # limitations under the License.
+ 
+ """Implements HID device interface on MacOS using IOKit and HIDManager."""
+-from six.moves import queue
+-from six.moves import range
++import queue
+ import ctypes
+ import ctypes.util
+ import logging
+Index: pyu2f-0.1.5a/pyu2f/tests/apdu_test.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/tests/apdu_test.py
++++ pyu2f-0.1.5a/pyu2f/tests/apdu_test.py
+@@ -14,7 +14,6 @@
+ 
+ """Tests for pyu2f.apdu."""
+ 
+-from six.moves import range
+ import sys
+ 
+ from pyu2f import apdu
+Index: pyu2f-0.1.5a/pyu2f/tests/hidtransport_test.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/tests/hidtransport_test.py
++++ pyu2f-0.1.5a/pyu2f/tests/hidtransport_test.py
+@@ -14,7 +14,6 @@
+ 
+ """Tests for pyu2f.hidtransport."""
+ 
+-from six.moves import range
+ import sys
+ 
+ import mock
+Index: pyu2f-0.1.5a/pyu2f/tests/util_test.py
+===================================================================
+--- pyu2f-0.1.5a.orig/pyu2f/tests/util_test.py
++++ pyu2f-0.1.5a/pyu2f/tests/util_test.py
+@@ -14,7 +14,6 @@
+ 
+ """Tests for pyu2f.tests.lib.util."""
+ 
+-from six.moves import range
+ import sys
+ 
+ from pyu2f.tests.lib import util

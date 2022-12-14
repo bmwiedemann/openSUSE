@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 14:56:04 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/google/pyu2f/issues/34
+  + python-pyu2f-no-six.patch
+
+-------------------------------------------------------------------
 Tue Nov  1 09:26:18 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream fix-deprecation-warning.patch to fix compatibility
