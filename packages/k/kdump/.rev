@@ -1115,4 +1115,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment></comment>
     <requestid>1038255</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>6d56bc2edf5335ea07bae72d04c1fad9</srcmd5>
+    <version>1.0.2+git27.gb9718ae</version>
+    <time>1671023455</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042730</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  6 15:17:08 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- maintain the spec file in git
+
+-------------------------------------------------------------------
 Fri Nov 25 17:54:45 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - Make the kdump-save.service reboot after kdump-save is finished

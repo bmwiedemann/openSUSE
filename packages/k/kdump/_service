@@ -8,6 +8,10 @@
     <param name="versionrewrite-replacement">\1\2</param>
   </service>
   <service name="tar" mode="manual" />
+  <service name="extract_file" mode="manual">
+    <param name="archive">*.tar</param>
+    <param name="files">*/packaging/suse/kdump.spec</param>
+  </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
