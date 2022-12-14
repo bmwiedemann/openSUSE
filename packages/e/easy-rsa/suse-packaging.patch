@@ -1,11 +1,13 @@
---- easyrsa.orig	2022-09-05 18:43:38.396956744 +0200
-+++ easyrsa	2022-06-15 2022-09-05 18:44:14.154777676 +0200
-@@ -2972,7 +2972,7 @@
+Index: easyrsa
+===================================================================
+--- easyrsa.orig
++++ easyrsa
+@@ -4012,7 +4012,7 @@ vars_setup() {
  	# Removed for basic sanity - To re-enable provide a REASON
  	#prog_file2="$(which -- "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
  	#prog_file2="$(readlink -f "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
 -	prog_dir="${prog_file%/*}"
 +	prog_dir="/etc/easy-rsa"
- 	if [ "$prog_dir" = . ]; then prog_in_pwd=1; else unset -v prog_in_pwd; fi
- 
- 	# Program dir vars - This location is least wanted.
+ 	if [ "$prog_dir" = . ] || [ "$prog_dir" = "$PWD" ]; then
+ 		prog_in_pwd=1
+ 	else
