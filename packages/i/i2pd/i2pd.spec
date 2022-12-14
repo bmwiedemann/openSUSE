@@ -1,7 +1,7 @@
 #
 # spec file for package i2pd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2022 PurpleI2P team
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.42.1
+Version:        2.44.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
