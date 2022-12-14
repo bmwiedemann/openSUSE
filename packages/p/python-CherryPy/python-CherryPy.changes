@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 13 00:25:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix Recommends: it is python-python-memcached, not just
+  python-memcached.
+
+-------------------------------------------------------------------
 Tue Aug  2 11:32:54 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 18.8.0

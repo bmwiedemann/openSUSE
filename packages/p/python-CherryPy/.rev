@@ -269,4 +269,14 @@
     <comment></comment>
     <requestid>992333</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>00cde4fa4fb7adf338fa399b1c2c64a7</srcmd5>
+    <version>18.8.0</version>
+    <time>1671023434</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Recommends: it is python-python-memcached, not just
+  python-memcached.
+</comment>
+    <requestid>1042526</requestid>
+  </revision>
 </revisionlist>

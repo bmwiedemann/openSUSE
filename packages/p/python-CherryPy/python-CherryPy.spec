@@ -49,8 +49,8 @@ Requires(postun):update-alternatives
 %endif
 Recommends:     python-Routes >= 2.3.1
 Recommends:     python-flup
-Recommends:     python-memcached >= 1.58
 Recommends:     python-pyOpenSSL
+Recommends:     python-python-memcached >= 1.58
 Recommends:     python-simplejson
 BuildArch:      noarch
 # SECTION test requirements
