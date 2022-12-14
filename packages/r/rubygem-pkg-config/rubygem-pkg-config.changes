@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  7 11:29:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.5.1
+ see installed NEWS
+
+  == 1.5.1 - 2022-11-23
+  
+  === Improvements
+  
+    * Improved the default search path. "/usr" in "/usr/bin/pkg-config"
+      isn't used for buidling the default search path if "pkg-config
+      --variable=pc_path pkg-config" is available.
+      [Reported by Watson][GitHub:#22]
+  
+  == 1.5.0 - 2022-11-23
+  
+  === Improvements
+  
+    * Improved the default search path. "pkg-config --variable=pc_path
+      pkg-config" is used as the default search path if it's available.
+      [Reported by Watson][GitHub:#22]
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 13:22:51 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.9
