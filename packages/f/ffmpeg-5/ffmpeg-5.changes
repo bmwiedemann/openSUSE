@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 12 21:18:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build for x86_64 subarchs the same way like for baseline 
+
+-------------------------------------------------------------------
 Thu Dec  8 11:27:56 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Enable librist support on TW: enables usage of RIST encoded MPEG-TS

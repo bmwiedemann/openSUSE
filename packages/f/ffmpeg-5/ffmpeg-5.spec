@@ -117,7 +117,7 @@ BuildRequires:  libmysofa-devel
 %endif
 BuildRequires:  nasm
 BuildRequires:  pkg-config
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(SvtAv1Enc) >= 0.8.4
 %endif
@@ -198,7 +198,7 @@ BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 BuildRequires:  pkgconfig(libmfx)
 %endif
 %endif
@@ -606,7 +606,7 @@ LDFLAGS="%_lto_cflags" \
 %if %{with rubberband}
 	--enable-librubberband \
 %endif
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 %if 0%{?suse_version} >= 1550
 	--enable-libsvtav1 \
 %endif
@@ -636,7 +636,7 @@ LDFLAGS="%_lto_cflags" \
 %endif
 	--enable-lv2 \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 	--enable-libmfx \
 %endif
 %endif
