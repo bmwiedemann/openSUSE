@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  3 19:44:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * enable the highlighter by default (#458)
+  * less intrusive "what's new" message dialog (#504)
+  * non-linear zooming speed profile (to zoom faster when using extreme values) (#499)
+  * slower scrolling speed to have a better precision with higher zoom levels (#499)
+  * require itstool as a dependency even though it's some useless bloat
+  * fix the adaptivity of the elementaryOS layout (#502)
+  * better keep the image centered on the mouse pointer when changing the zoom (#499)
+  * avoid —again— insane attempts to open the binary as an image (#500)
+  * update several translations
+- drop meson_build.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr  7 22:48:00 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Fixed translation and help file locations.  

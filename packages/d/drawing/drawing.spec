@@ -18,7 +18,7 @@
 
 %define _name com.github.maoschanz.drawing
 Name:           drawing
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A simple drawing application for Linux.
 License:        GPL-3.0-only
@@ -26,9 +26,6 @@ Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/maoschanz/drawing
 Source:         https://github.com/maoschanz/drawing/archive/refs/tags/%{version}.tar.gz
 Source2:        drawing-rpmlintrc
-
-Patch0:         meson_build.patch
-
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  itstool
@@ -70,15 +67,14 @@ It should also be compatible with the Pinephone and Librem 5 smartphones.
 %fdupes -s %{buildroot}
 
 %files
+%license LICENSE
+%doc CONTRIBUTING.md README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/glib-2.0/schemas/%{_name}.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/metainfo/%{_name}.appdata.xml
-
-%doc CONTRIBUTING.md README.md
-%license LICENSE
 
 %files lang -f %{name}.lang
 
