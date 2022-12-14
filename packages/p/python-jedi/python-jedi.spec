@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jedi
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0

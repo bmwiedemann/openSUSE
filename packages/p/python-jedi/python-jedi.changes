@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec  6 03:49:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.18.2 
+  * Added dataclass-equivalent for attrs.define
+  * Find fixtures from Pytest entrypoints; Examples of pytest plugins installed like this are pytest-django, pytest-sugar and Faker.
+  * Fixed Project.search, when a venv was involved, which is why for example :Pyimport django.db did not work in some cases in jedi-vim.
+  * And many smaller bugfixes 
+
+-------------------------------------------------------------------
 Sun Mar 27 18:44:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip two test failing with pytest 7.1 -- gh#davidhalter/jedi#1846
