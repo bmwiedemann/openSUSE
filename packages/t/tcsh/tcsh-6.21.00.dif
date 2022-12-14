@@ -221,7 +221,7 @@
      if ((utmpfd = xopen(TCSH_PATH_UTMP, O_RDONLY|O_LARGEFILE)) < 0) {
 --- tcsh.man.in
 +++ tcsh.man.in	2021-04-27 07:41:53.196829900 +0000
-@@ -1001,7 +1001,7 @@ much like
+@@ -1012,7 +1012,7 @@ much like
  .Ic history-search-backward
  does.
  .

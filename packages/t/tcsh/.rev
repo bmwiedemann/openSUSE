@@ -966,4 +966,15 @@
 - Correct offset and port patch tcsh-6.17.06-dspmbyte.dif</comment>
     <requestid>1040341</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>507d47695d20d3f3c56584703d4bf646</srcmd5>
+    <version>6.24.06</version>
+    <time>1671023436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh 6.24.06
+  16. V6.24.06 - 2022-12-12
+    This is a maintenance release to make all the recent manual page,
+    documentation, and build improvements available to all.</comment>
+    <requestid>1042552</requestid>
+  </revision>
 </revisionlist>
