@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 14 09:01:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 108.0.5359.124:
+  * CVE-2022-4436: Use after free in Blink Media
+  * CVE-2022-4437: Use after free in Mojo IPC
+  * CVE-2022-4438: Use after free in Blink Frames
+  * CVE-2022-4439: Use after free in Aura
+  * CVE-2022-4440: Use after free in Profiles
+
+-------------------------------------------------------------------
 Wed Dec  7 20:43:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 108.0.5359.98

@@ -4373,4 +4373,18 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1041228</requestid>
   </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>0df4e8b176385581187b748a4ca6d991</srcmd5>
+    <version>108.0.5359.124</version>
+    <time>1671023480</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 108.0.5359.124:
+  * CVE-2022-4436: Use after free in Blink Media
+  * CVE-2022-4437: Use after free in Mojo IPC
+  * CVE-2022-4438: Use after free in Blink Frames
+  * CVE-2022-4439: Use after free in Aura
+  * CVE-2022-4440: Use after free in Profiles
+</comment>
+    <requestid>1042847</requestid>
+  </revision>
 </revisionlist>
