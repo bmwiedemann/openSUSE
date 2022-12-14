@@ -18,9 +18,8 @@
 
 
 %define pname   EasyRSA
-
 Name:           easy-rsa
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        CLI utility to build and manage a PKI CA
 License:        GPL-2.0-or-later
@@ -30,8 +29,8 @@ Source:         https://github.com/OpenVPN/%{name}/releases/download/v%{version}
 Source1:        https://github.com/OpenVPN/%{name}/releases/download/v%{version}/%{pname}-%{version}.tgz.sig
 # https://github.com/OpenVPN/easy-rsa/tree/master/release-keys
 Source2:        %{name}.keyring
+Patch1:         fix-747.patch
 Patch100:       suse-packaging.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -41,6 +40,7 @@ certificates, including sub-CAs, and create Certificate Revokation Lists (CRL).
 
 %prep
 %setup -q -n %{pname}-%{version}
+%patch1 -p2
 %patch100
 
 %build
@@ -54,14 +54,9 @@ install -Dm0644 x509-types/* %{buildroot}/%{_sysconfdir}/%{name}/x509-types/
 install -Dm0755 easyrsa %{buildroot}/%{_bindir}/easyrsa
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog README.md README.quickstart.md
 %doc doc/*
-%if 0%{?sle_version} == 11 || 0%{?sle_version} <= 120400
-%doc COPYING.md gpl-2.0.txt
-%else
 %license COPYING.md gpl-2.0.txt
-%endif
 %{_bindir}/easyrsa
 %config(noreplace) %{_sysconfdir}/%{name}
 

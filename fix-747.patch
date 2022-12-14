@@ -1,0 +1,42 @@
+commit 4472516e24b068542cfd1ff5c3e51c3b89eb38b1
+Author: Richard T Bonhomme <tincantech@protonmail.com>
+Date:   Mon Oct 31 00:34:42 2022 +0000
+
+    Reset option flag check 'number_only' per option
+    
+    Squashed commit of the following:
+    
+    commit 4aada5ffcd8cff893618bbbfe24f589f33665352
+    Merge: 439cdc1 6f8ba1e
+    Author: Richard T Bonhomme <tincantech@protonmail.com>
+    Date:   Mon Oct 31 00:31:56 2022 +0000
+    
+        Merge branch 'bugfix-number-only' of ssh://github.com/TinCanTech/easy-rsa into TinCanTech-bugfix-number-only
+    
+        Signed-off-by: Richard T Bonhomme <tincantech@protonmail.com>
+    
+    commit 6f8ba1e608d5223efa9dd296ed2c61418da991aa
+    Author: Richard T Bonhomme <tincantech@protonmail.com>
+    Date:   Sun Oct 30 23:56:46 2022 +0000
+    
+        Reset option flag check 'number_only' per option
+    
+        Closes: #747
+    
+        Signed-off-by: Richard T Bonhomme <tincantech@protonmail.com>
+    
+    Signed-off-by: Richard T Bonhomme <tincantech@protonmail.com>
+
+diff --git a/easyrsa3/easyrsa b/easyrsa3/easyrsa
+index 6ee8f73..8909977 100755
+--- a/easyrsa3/easyrsa
++++ b/easyrsa3/easyrsa
+@@ -4897,7 +4897,7 @@ unset -v die_error_exit easyrsa_error_exit \
+ # Parse options
+ while :; do
+ 	# Separate option from value:
+-	unset -v opt val is_empty empty_ok
++	unset -v opt val is_empty empty_ok number_only
+ 	opt="${1%%=*}"
+ 	val="${1#*=}"
+ 
