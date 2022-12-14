@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Dec 07 21:22:40 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.11.0:
+  * Packaging
+    - Minimum Rust version has been bumped to 1.57.0
+    - Renamed io.alacritty.Alacritty.appdata.xml to org.alacritty.Alacritty.appdata.xml
+    - Renamed io.alacritty to org.alacritty for Alacritty.app
+  * Fixed
+    - Creating the IPC socket failing if WAYLAND_DISPLAY contains an absolute path
+    - Crash when resetting the terminal while in vi mode
+    - font.glyph_offset not live reloading
+    - Failure when running on 10-bit color system
+    - The colors being slightly different when using srgb displays on macOS
+    - Vi cursor blinking not reset when navigating in search
+    - Scrolling and middle-clicking modifying the primary selection
+    - Bottom gap for certain builtin box drawing characters
+    - Incorrect built-in glyphs for U+2567 and U+2568
+    - Character mappings in the DEC special graphics character set (line drawing)
+    - Window flickering on resize on Wayland
+    - Unnecessary config reload when using /dev/null as a config file
+    - Windows Open Alacritty Here on root of drive displaying error
+    - On macOS, font.use_thin_strokes did not work since Big Sur
+    - On macOS, trying to load a disabled font would crash
+    - On macOS, Alacritty sessions did not appear in the list of tty sessions for w and who
+    - Cursor not hiding on GNOME Wayland
+    - Font having different scale factor after monitor powering off/on on X11
+    - Viewport not updating after opening a new tabbed window on macOS
+    - Terminal not exiting sometimes after closing all windows on macOS
+    - CPU usage spikes due to mouse movements for unfocused windows on X11/Windows
+    - First window on macOS not tabbed with system prefer tabs setting
+    - Window being treaten as focused by default on Wayland
+  * Removed
+    - font.use_thin_strokes config field; to use thin strokes on macOS, set
+    - AppleFontSmoothing to 0 with $ defaults write -g AppleFontSmoothing -int 0
+- Add _constraints file. 8GB of RAM to build alacritty
+
+-------------------------------------------------------------------
 Mon Jun 20 03:29:18 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies

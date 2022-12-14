@@ -6,9 +6,12 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/alacritty/alacritty.git</param>
-    <param name="revision">13b6248dd92b823bc90e86c77e367b77c27ed4a0</param>
-    <param name="version">0.10.1</param>
-
+    <param name="revision">8dbaa0bbd308a72075910ff32d8ffcca09ae3529</param>
+    <param name="match-tag">*</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
     <param name="exclude">.builds</param>
     <param name="exclude">.github</param>
     <param name="exclude">.agignore</param>
@@ -31,13 +34,12 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
+  <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">alacritty</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">alacritty</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
 
