@@ -30,7 +30,7 @@
 %define min 0
 
 Name:           csound
-Version:        6.17.0
+Version:        6.18.1
 Release:        0
 Summary:        Computer Sound Synthesis and Composition Program
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
