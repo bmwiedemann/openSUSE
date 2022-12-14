@@ -17,7 +17,7 @@
 
 
 Name:           i3
-Version:        4.21
+Version:        4.21.1
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
@@ -36,9 +36,9 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cairo) >= 1.14.4
 BuildRequires:  pkgconfig(libev)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8) >= 10
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(xcb)

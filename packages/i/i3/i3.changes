@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Nov 26 10:35:25 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- spec: explicit BuildRequires versions based on meson.build
+
+-------------------------------------------------------------------
+Sat Nov 26 10:07:38 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to 4.21.1:
+  * Changes
+  * tiling drag: allow configuration
+  * tiling drag: allow click immediately, to focus on decoration click
+  * tiling drag: fix cursor (wrong argument passed)
+  * tiling drag: increase drag threshold, run it through logical_px
+  * tiling drag: left-click needs threshold, mod-click doesn’t
+  * tiling drag: ignore scratchpad windows when locating drop targets
+  * tiling drag: only start when there are drop targets
+  * Raise floating windows when their border is clicked
+  * Bugfixes
+  * docs/ipc: document sticky field of GET_TREE
+  * man/i3-config-wizard: escape ~ to prevent interpretation as subscript
+  * Motif hints: respect maximum border style configuration set by user
+  * i3-dmenu-desktop: fix quoting bug
+  * Fix segfault during config validation
+
+-------------------------------------------------------------------
 Fri Sep 30 23:30:24 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Updated to version 4.21:
