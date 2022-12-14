@@ -148,33 +148,33 @@ touch %{buildroot}%{_localstatedir}/spool/anacron/cron.daily
 touch %{buildroot}%{_localstatedir}/spool/anacron/cron.weekly
 touch %{buildroot}%{_localstatedir}/spool/anacron/cron.monthly
 
-%pre -n cron
-# Check if we are doing update from 4.1 vixie-cron.
-# The -h does report garbage on vixie cron.
-check_cron_mail_feature=`%{_sbindir}/cron -h 2>&1 | %{_bindir}/grep mail`
-if [ -e %{_sbindir}/cron -a -z "${check_cron_mail_feature}" ]; then
-	touch %{_localstatedir}/run/update_from_old_cron
-	for conf in %{cron_configs} ; do
-		cp "$conf" "$conf.rpmbk"
-	done
-fi
-exit 0
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}/pam.d
+mv %{buildroot}%{_sysconfdir}/pam.d/crond %{buildroot}%{_distconfdir}/pam.d/
+%endif
 
 %pre
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/crond ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 %service_add_pre cron.service
 
 %post
-# Move the old cron configurations back if we were updating
-if [ -e %{_localstatedir}/run/update_from_old_cron ]; then
-	for conf in %{cron_configs} ; do
-		mv "$conf.rpmbk" "$conf"
-	done
-	rm %{_localstatedir}/run/update_from_old_cron
-fi
 %set_permissions %{_sysconfdir}/crontab %{_bindir}/crontab
 %{fillup_only -n cron}
 %service_add_post cron.service
 exit 0
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/crond ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %verifyscript
 %verify_permissions -e %{_sysconfdir}/crontab -e %{_bindir}/crontab
@@ -210,7 +210,11 @@ exit 0
 %dir %attr(700,root,root) %{_localstatedir}/spool/cron
 %dir %attr(700,root,root) %{_localstatedir}/spool/cron/tabs
 %dir %{_localstatedir}/spool/cron/lastrun
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/pam.d/crond
+%else
 %config %{_sysconfdir}/pam.d/crond
+%endif
 %verify(not mode) %config(noreplace) %{_sysconfdir}/crontab
 %config(noreplace) %{_sysconfdir}/cron.deny
 %{_mandir}/man1/crontab.1%{?ext_man}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  7 10:11:32 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration PAM settings to /usr/etc: Saving user changed
+  configuration files in /etc and restoring them while an RPM
+  update.
+- Removed update support from 4.1 vixie-cron which is really old.
+
+-------------------------------------------------------------------
 Wed May 11 09:17:27 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.6.1:
