@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-installer%{pkg_suffix}
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        A library for installing Python wheels
 License:        MIT
