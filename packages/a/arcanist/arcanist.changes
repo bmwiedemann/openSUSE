@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Dec 13 18:15:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Correctly replace shebangs from php to php8 after the move away
+  from php7.
+
+-------------------------------------------------------------------
+Wed Nov 30 12:50:42 UTC 2022 - pgajdos@suse.com
+
+- Update to version 0.0~git.20220517T162014~85c953e:
+  * Fix a PHP 8.1 repository marker issue in Mercurial
+  * Straggling fixes for PhutilURI under PHP 8.1
+  * Add "pht_list()", a translation wrapper for lists of items
+  * Return STDIN, STDOUT, and STDERR file descriptors from parent process
+  * Add an ArgumentParser helper for integers
+  * Fix more PHP 8.1 "strlen(null)" callsites in PhutilURI
+  * Mostly remove "STDERR" and "STDOUT" constants from Arcanist
+  * Catch more product names in "pht()", and replace newly matched Arcanist product names
+  * Remove all product name literals in "pht()" in Arcanist
+  * Add a "product name literal in pht()" linter
+  * Introduce PHP8.1 replacement functions for string tests which may take multiple types
+  * Fix a PHP 8.1 issue with "phutil_console_strlen()"
+  * Fix a PHP 8.1 issue in lint rendering
+  * Update arc-hg to support mercurial 6.1
+  * Provide additional Arcanist PHP 8.1 fixes
+  * Add a lint rule forbidding use of "each()"
+  * Correct some Arcanist behaviors under PHP8.1
+  * Update the extracted cURL SSL CA bundle
+  * Provide an API for parsing swap information from "/proc/meminfo"
+  * Allow "PhutilAWSException" to identify "EBS: Not Found" errors
+  * Make corrections to the "arc amend" workflow in Mercurial repositories to be compatible with PHP 5+
+  * Update ArcanistMercurialAPI to support getting the current commit ref
+  * Update "arc liberate" to fix error with PHP 8 and add "--verbose" argument to adjust it
+  * Provide "MethodCallFuture" to fix exception semantics in mixed-future contexts
+  * Name extension as "arc-hg", not "arg-hg"
+  * Update other usages of "hg rebase" to use the new extension-enabling function
+  * Remove "phutil_deprecated()"
+  * Deprecate "PhutilExecPassthru->execute()" in favor of "resolve()"
+  * Refactor how Mercurial runs commands that require extensions
+  * Fix an ExecFuture typo, "preprebuilt"
+  * Display informative message when arc launches an editor
+  * Update "arc diff" to amend non-head commits with Mercurial
+  * An assortment of fixes and updates to using arc-land with mercurial
+  * Update templates used with mercurial to remove '--debug'
+  * Force all mercurial commands to use UTF-8 encoding
+  * Correct an issue when winning "arc anoid" with certain terminal dimensions
+  * Avoid leaving stdin in nonblocking mode after a modern prompt
+  * On Windows, implement "Filesystem::copyFile()" with "copy()"
+  * Update Paste help to include missing "--"
+  * Correct a mistaken Phurl link in the "missing symbol" exception
+  * Improve "PhutilJSON" handling of PHP-object JSON values
+  * In Arcanist, when trying to write to a file configuration source, create missing directories
+  * In "arc land", if rebasing a range fails, attempt to "reduce" it
+  * Add a character marker to the "IMPLICIT COMMITS" warning in "arc land"
+  * Temporarily disable all logfile writability checks
+  * Add a simple primitive for managing PHP runtime error logs
+  * Apply "pcre.*_limit" config options at startup in CLI environments
+  * Provide some "preg_*" wrappers which raise exceptions on failure
+  * Update golint install instructions
+  * In "array_mergev()", guarantee the "call_user_func_array()" parameter list is a natrual list
+  * Add a lint check for catching "Exception" without catching "Throwable"
+  * Annotate the unusual use of "$callback()" in "xsprintf()"
+  * Detect and correct "final private" methods in lint
+  * Allow lint to correct the spelling of builtin symbols
+  * When lint identifies an unknown symbol, attempt to correct it if it is miscapitalized
+  * Provide "gitsprintf(...)" and disambiguate Git ref selectors
+  * Fix pyflakes tests for recent pyflakes versions
+  * Fix ArcanistJSHintLinterTestCase::testLinter for recent JSHint
+  * Fix PhutilOAuth1FutureTestCase::testOAuth1SigningWithJIRAExamples for PHP 8
+  * Fix PhutilUTF8TestCase::testUTF8Convert for PHP 8
+  * Fix ArcanistFormattedStringXHPASTLinterRule on older PHP after D21500
+  * Fix ArcanistFormattedStringXHPASTLinterRule for PHP 8
+  * Fix PhutilTypeSpec's regex handling for PHP 8
+  * Fix error handler on PHP 8
+  * Suppress PHP 8 deprecation warning in __arcanist_init_script__
+  * Remove final from private functions for PHP 8 compatibility
+- add arcanist-default-error_reporting.patch, do not no E_STRICT and E_DEPRECATED
+
+-------------------------------------------------------------------
 Sun Nov 14 16:48:24 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Replace bundled certificates with symlink to the system

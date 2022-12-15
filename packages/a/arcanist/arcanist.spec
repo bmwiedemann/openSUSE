@@ -1,7 +1,7 @@
 #
 # spec file for package arcanist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           arcanist
-Version:        0.0~git.20201026T090106~f713656a
+Version:        0.0~git.20220517T162014~85c953e
 Release:        0
 Summary:        Command-line interface to Phabricator
 License:        Apache-2.0
@@ -25,14 +25,14 @@ URL:            https://secure.phabricator.com/diffusion/ARC/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE remove-arc-upgrade.patch -- Remove workflow/ArcanistUpgradeWorkflow.php
 Patch0:         remove-arc-upgrade.patch
+# https://secure.phabricator.com/D21746
+Patch1:         arcanist-default-error_reporting.patch
 BuildRequires:  ca-certificates
-BuildRequires:  php7-curl
-BuildRequires:  php7-json
+BuildRequires:  php8-curl
 BuildRequires:  xz
 Requires:       ca-certificates
-Requires:       php7
-Requires:       php7-curl
-Requires:       php7-json
+Requires:       php8
+Requires:       php8-curl
 Recommends:     bash-completion
 # /usr/bin/arc binary name conflicts
 Conflicts:      arc
@@ -51,6 +51,7 @@ For more information, visit http://www.phabricator.com/docs/arcanist/
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 rm -f scripts/breakout.py
 # Remove 'arc upgrade'
@@ -60,7 +61,7 @@ rm -f src/workflow/ArcanistUpgradeWorkflow.php
 find src -name __tests__ -type d -print0 | xargs -0 rm -rf
 
 # Generate bash completion
-bin/arc shell-complete --generate
+bin/arc shell-complete --generate --
 
 %build
 
@@ -71,7 +72,7 @@ cp -a bin/ support/ resources/ scripts/ src/ externals/ %{buildroot}%{_datadir}/
 
 find %{buildroot}%{_datadir}/phabricator/%{name}/bin \
      %{buildroot}%{_datadir}/phabricator/%{name}/scripts -type f | \
-    xargs sed -i '1 s|%{_bindir}/env\ php|%{_bindir}/php7|'
+    xargs sed -i '1 s|%{_bindir}/env\ php|%{_bindir}/php8|'
 
 find %{buildroot}%{_datadir}/phabricator/%{name}/bin -type f | \
     xargs sed -i '1 s|%{_bindir}/env\ bash|/bin/bash|'
