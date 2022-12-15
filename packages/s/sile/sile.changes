@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 15 00:18:40 UTC 2022 - pirateclip@protonmail.com
+
+- Update to version 0.14.6:
+  * chore(release): 0.14.6
+  * fix(tooling): Exempt LuaJIT from external bit32 library requirement (#1654)
+  * fix(shapers): Apply tracking settings even in font-fallback shaper
+  * refactor(shapers): Move fallback shaper to dedicated module
+  * fix(packages): Use casting to restore shaper state after fallbacks
+  * docs(manual): Fix grid docs by actually loading the module for use
+  * chore(tooling): Update commitlint rules for current module types
+  * test(typesetters): Update expectations for bugs squashed during refactor
+  * refactor(typesetters): Move tate typesetter functions to class
+  * fix(packages): Fix \cite{key} in bibtex package (#1655)
+  * fix(debug): Correct filename in debug info after includes (#1652)
+
+-------------------------------------------------------------------
 Sat Nov 19 19:09:36 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.14.4 -> 0.14.5

@@ -41,4 +41,23 @@
     <comment></comment>
     <requestid>1036836</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1adeb6a813ebccfb274532da9a0bdc3a</srcmd5>
+    <version>0.14.6</version>
+    <time>1671128734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.6:
+  * chore(release): 0.14.6
+  * fix(tooling): Exempt LuaJIT from external bit32 library requirement (#1654)
+  * fix(shapers): Apply tracking settings even in font-fallback shaper
+  * refactor(shapers): Move fallback shaper to dedicated module
+  * fix(packages): Use casting to restore shaper state after fallbacks
+  * docs(manual): Fix grid docs by actually loading the module for use
+  * chore(tooling): Update commitlint rules for current module types
+  * test(typesetters): Update expectations for bugs squashed during refactor
+  * refactor(typesetters): Move tate typesetter functions to class
+  * fix(packages): Fix \cite{key} in bibtex package (#1655)
+  * fix(debug): Correct filename in debug info after includes (#1652)</comment>
+    <requestid>1043025</requestid>
+  </revision>
 </revisionlist>
