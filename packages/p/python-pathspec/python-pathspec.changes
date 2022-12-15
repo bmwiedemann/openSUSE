@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 13 15:46:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.10.3 
+  * New features:
+  Added utility function pathspec.util.append_dir_sep() to aid in distinguishing between directories and files on the file-system. See Issue #65.
+  * Bug fixes:
+  Issue #66/Pull #67: Package not marked as py.typed.
+  Issue #68: Exports are considered private.
+  Issue #70/Pull #71: 'Self' string literal type is Unknown in pyright.
+  * Improvements:
+  Issue #65: Checking directories via match_file() does not work on Path objects.
+
+-------------------------------------------------------------------
 Sat Dec  3 19:55:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.10.2: 
