@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/product-builder.git</param>
-    <param name="revision">1.4.6</param>
-    <param name="version">1.4.6</param>
+    <param name="revision">1.4.12</param>
+    <param name="version">1.4.12</param>
     <param name="scm">git</param>
     <param name="extract">rpm/product-builder.spec</param>
   </service>

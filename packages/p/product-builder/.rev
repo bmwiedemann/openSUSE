@@ -395,4 +395,12 @@ as requested by Michel</comment>
   * fixed package tracking regression</comment>
     <requestid>921794</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>19d86d6733ab222fa71f35734cb06240</srcmd5>
+    <version>1.4.12</version>
+    <time>1671128660</time>
+    <user>dimstar_suse</user>
+    <comment>This version has nothing important for Factory, but contains quite some changes, so let's try to follow git master ....</comment>
+    <requestid>1042919</requestid>
+  </revision>
 </revisionlist>

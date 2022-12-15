@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 14 12:39:26 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.12
+  * RedHat media support
+  * SLSA provenance file support
+  * support to set DVD volumeid manual
+  * fix hybrid ISO creation
+  * support modulemd filtering
+
+-------------------------------------------------------------------
 Mon Sep 27 13:02:28 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.6

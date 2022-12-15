@@ -1,7 +1,7 @@
 #
 # spec file for package product-builder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ URL:            http://github.com/openSUSE/product-builder
 Name:           product-builder
 Conflicts:      kiwi
 Conflicts:      kiwi-instsource
-Version:        1.4.6
+Version:        1.4.12
 Release:        0
 Provides:       kiwi-schema = 6.2
 Source:         product-builder-%version.tar.xz
