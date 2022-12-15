@@ -20,7 +20,7 @@
 %define skip_python2 1
 %bcond_with x265
 Name:           python-pyheif
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Python 3.6+ interface to libheif library
 License:        Apache-2.0
