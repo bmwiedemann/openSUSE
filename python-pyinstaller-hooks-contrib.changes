@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:33:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2022.14 
+  Add hook for cf_units. (#521)
+  Add hook for cftime. (#521)
+  Add hook for compliance_checker. (#521)
+  Updated hooks
+  Update netCDF4 hook for compatibility with v1.4.0 and later, where netcdftime has been renamed to cftime. (#521)
+  Update pydantic hook to include dotenv optional dependency. (#524)
+
+-------------------------------------------------------------------
 Fri Dec  2 22:48:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2022.13 
