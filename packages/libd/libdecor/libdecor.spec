@@ -15,16 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define commit 81adf91d27620e20bcc5f6b9b312d768
 
+%define commit ee5ef0f2c3a4743e8501a855d61cb397
 Name:           libdecor
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Wayland client side decoration library
-Group:          System/GUI/Other
 License:        MIT
+Group:          System/GUI/Other
 URL:            https://gitlab.gnome.org/jadahl/libdecor
-Source:         https://gitlab.gnome.org/jadahl/libdecor/uploads/%commit/%{name}-%{version}.tar.xz
+Source:         https://gitlab.gnome.org/jadahl/libdecor/uploads/%{commit}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  gcc
 BuildRequires:  meson
