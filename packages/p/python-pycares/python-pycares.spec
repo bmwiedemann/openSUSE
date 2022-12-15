@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pycares
-Version:        4.2.2
+Version:        4.3.0
 Release:        0
 Summary:        Python interface for c-ares
 License:        MIT

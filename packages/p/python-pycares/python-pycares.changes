@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:24:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 4.3.0 
+  * Bump cibuildwheel to build for Python 3.11 + CI total time speedups by @Jackenmen in #174
+   Fix tests that depended on external sites by @Jackenmen in #180
+   Complete the Python 3.11 support by @Jackenmen in #179
+   Drop CPython 3.6 by @saghul in #181
+   Improve test compatibility with pytest by @saghul in #182
+   Update c-ares submodule to 1.18.1 by @saghul in #183
+
+-------------------------------------------------------------------
 Thu Dec  8 22:21:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add cleanup_tests.patch to make the test suite slightly more sane.
