@@ -4621,4 +4621,34 @@ I cannot test locally unfortunately.
     to block remote content</comment>
     <requestid>1039407</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>7d82666780166210d027a925953985e0</srcmd5>
+    <version>102.6.0</version>
+    <time>1671128620</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.6.0
+  https://www.thunderbird.net/en-US/thunderbird/102.6.0/releasenotes/
+  MFSA 2022-53 (bsc#1206242)
+  * CVE-2022-46880 (bmo#1749292)
+    Use-after-free in WebGL
+  * CVE-2022-46872 (bmo#1799156)
+    Arbitrary file read from a compromised content process
+  * CVE-2022-46881 (bmo#1770930)
+    Memory corruption in WebGL
+  * CVE-2022-46874 (bmo#1746139)
+    Drag and Dropped Filenames could have been truncated to
+    malicious extensions
+  * CVE-2022-46875 (bmo#1786188)
+    Download Protections were bypassed by .atloc and .ftploc
+    files on Mac OS
+  * CVE-2022-46882 (bmo#1789371)
+    Use-after-free in WebGL
+  * CVE-2022-46878 (bmo#1782219, bmo#1797370, bmo#1797685,
+    bmo#1801102, bmo#1801315, bmo#1802395)
+    Memory safety bugs fixed in Thunderbird 102.6
+- removed obsolete patches
+  mozilla-newer-cbindgen.patch
+  mozilla-glibc236.patch</comment>
+    <requestid>1042791</requestid>
+  </revision>
 </revisionlist>

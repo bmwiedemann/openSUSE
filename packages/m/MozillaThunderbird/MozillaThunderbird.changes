@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 13 13:49:09 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.6.0
+  https://www.thunderbird.net/en-US/thunderbird/102.6.0/releasenotes/
+  MFSA 2022-53 (bsc#1206242)
+  * CVE-2022-46880 (bmo#1749292)
+    Use-after-free in WebGL
+  * CVE-2022-46872 (bmo#1799156)
+    Arbitrary file read from a compromised content process
+  * CVE-2022-46881 (bmo#1770930)
+    Memory corruption in WebGL
+  * CVE-2022-46874 (bmo#1746139)
+    Drag and Dropped Filenames could have been truncated to
+    malicious extensions
+  * CVE-2022-46875 (bmo#1786188)
+    Download Protections were bypassed by .atloc and .ftploc
+    files on Mac OS
+  * CVE-2022-46882 (bmo#1789371)
+    Use-after-free in WebGL
+  * CVE-2022-46878 (bmo#1782219, bmo#1797370, bmo#1797685,
+    bmo#1801102, bmo#1801315, bmo#1802395)
+    Memory safety bugs fixed in Thunderbird 102.6
+- removed obsolete patches
+  mozilla-newer-cbindgen.patch
+  mozilla-glibc236.patch
+
+-------------------------------------------------------------------
 Wed Nov 30 20:49:28 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.5.1
