@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.31.5
+Version:        0.31.7
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -31,28 +31,28 @@ BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.7
 BuildRequires:  libraw-devel-static
-BuildRequires:  meson
+BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-ui-3)
-BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10.0
 BuildRequires:  pkgconfig(gexiv2) >= 0.12.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.20
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.20
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.0.0
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.20
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 145
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libgphoto2) >= 2.4.2
+BuildRequires:  pkgconfig(libgphoto2) >= 2.5.0
+BuildRequires:  pkgconfig(libportal-gtk3) > 0.5
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebp)
@@ -74,7 +74,6 @@ mode, and export them to share with others.
 %build
 %meson \
 	-D unity_support=false \
-	-D extra_plugins=true \
 	-D dupe_detection=false \
 	-D install_apport_hook=false \
 	%{nil}
@@ -92,15 +91,15 @@ mode, and export them to share with others.
 %license COPYING
 %doc AUTHORS NEWS THANKS
 %doc %{_datadir}/help/C/%{name}/
-%{_mandir}/man1/shotwell.1%{?ext_man}
 %{_bindir}/shotwell
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
-%{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
 %{_datadir}/applications/org.gnome.Shotwell.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.shotwell.gschema.xml
+%{_datadir}/applications/org.gnome.Shotwell-Profile-Browser.desktop
+%{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell-extras.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.shotwell.gschema.xml
 %{_datadir}/icons/hicolor/*/*/org.gnome.Shotwell*
+%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
 %{_libdir}/shotwell/
 # This is not split as the only consumer is shotwell itself.
 %{_libdir}/libshotwell-authenticator.so
@@ -114,6 +113,7 @@ mode, and export them to share with others.
 %{_libdir}/libshotwell-plugin-dev-1.0.so.%{version}
 %dir %{_libexecdir}/shotwell
 %{_libexecdir}/shotwell/shotwell-video-thumbnailer
+%{_mandir}/man1/shotwell.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

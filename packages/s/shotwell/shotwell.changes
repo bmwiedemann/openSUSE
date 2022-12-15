@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec 15 07:07:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.31.7:
+  + Actually run database upgrade necessary for date/time changes.
+  + Fix comparing unset date/time values.
+- Changes from version 0.31.6:
+  + Improved interaction when exporting files that end up with a
+    similar name.
+  + Google Photos: Fix batch uploading.
+  + Tumblr: Fix not remembering login credentials.
+  + Improve handling of images that do not have a GPS altitude.
+  + Have import from folder follow symlinks.
+  + Add an user interface to interact with the new profile feature.
+  + Make a couple of UI strings clearer.
+  + Remove video interpreter state handling - completely broken
+    and potentially responsible for causing indefinite re-checking
+    of video files.
+  + Improve touchpad scaling vs scrolling.
+  + Always enable face tagging. Face detection and recognition is
+    still opt-in on compile time due to the rather large OpenCV
+    dependency.
+  + Support creating hierarchical tags by using
+    /a/sytax/with/slashes.
+  + Use libportal to implement SendTo and Wallpaper settings.
+  + Initial support for having multiple accounts per publishing
+    service. So far only works for Piwigo instances.
+  + Create a new plugin preferences panel (prepare for account
+    management).
+  + Convert all publishing processes to async libsoup3. With
+    HTTPS/2 becoming more prominent, the old method broke really
+    hard and was a bad habit anyway.
+  + Fix an issue with the Saturation slider.
+  + Remove a bunch of deprecated calls.
+  + Remove deprecated date/time handling. Use DateTime more or less
+    everywhere.
+  + Allow media to have exposure dates before 1.1.1970 00:00.
+  + Updated translations.
+- Drop -Dextra_plugins=true meson parameter: no longer supported.
+- Drop pkgconfig(gdk-3.0) BuildRequires: no longer needed.
+- Add pkgconfig(libportal-gtk3) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Wed Sep  7 17:50:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.31.5:
