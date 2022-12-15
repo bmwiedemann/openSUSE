@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-ps
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define realname zathura-ps
 Name:           zathura-plugin-ps
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        PS support for zathura via libspectre
 License:        Zlib
