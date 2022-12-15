@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:03:48 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2212.0
+  * 2022-12-05: testbench: make python http server based tests more reliable
+  * 2022-12-05: omprog bugfix: invalid status handling at called program startup
+  * 2022-11-29: testbench bugfix: wrong message injection object of instance 1
+  * 2022-11-21: rsyslog.conf man page bugfix: description of selectors
+  * 2022-11-18: imtcp bugfix: legacy config directives did no longer work
+  * 2022-11-16: ksi bugfix: sending of too many signing requests fixed.
+  * 2022-11-14: bugfix: prevent potential segfault when switchung to queue emergency mode
+  * 2022-11-02: imjournal: add second fallback to _COMM
+  * 2022-10-25: core bugfix: local hostname invalid if no global() config object given
+  * 2022-10-25: testbench bugfix: fixed timing issue that sometimes lead to test failure
+
+-------------------------------------------------------------------
 Tue Oct 18 19:54:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2210.0
