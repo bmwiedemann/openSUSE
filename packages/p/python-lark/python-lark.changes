@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 13 15:41:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.1.5 
+  * What's Changed
+  setup.cfg: Replace deprecated license_file with license_files by @mgorny in #1209
+  Fix Github shenanigans by @erezsh in #1220
+  Fix AmbiguousExpander (Issue #1214) by @chanicpanic in #1216
+  Fix EOF line information in InteractiveParser.resume_parse() by @erezsh in #1224
+  Use generator instead of list expand or add method by @jmishra01 in #1225
+
+-------------------------------------------------------------------
 Fri Dec  2 18:23:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.1.4 
