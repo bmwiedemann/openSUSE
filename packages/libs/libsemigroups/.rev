@@ -195,4 +195,12 @@
   * Change -march=avx -&gt; -mavx by @james-d-mitchell in #418 (forwarded request 1041930 from dirkmueller)</comment>
     <requestid>1041937</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8ee3e90c40db508c20d35be0b065518d</srcmd5>
+    <version>2.5.0</version>
+    <time>1671128762</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.5.0:</comment>
+    <requestid>1043145</requestid>
+  </revision>
 </revisionlist>

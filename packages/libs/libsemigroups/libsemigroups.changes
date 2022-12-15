@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 15 10:29:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.5.0:
+  * In this release a small number of issues are resolved, and
+    one major new feature is added. The features added in this
+    release are:
+  * Add order_preserving_monoid presentation
+  * Add presentations for the cyclic inverse monoid, and its order-
+    preserving part
+
+-------------------------------------------------------------------
 Fri Dec  9 22:30:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.4.1:

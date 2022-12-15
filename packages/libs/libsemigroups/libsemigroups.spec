@@ -18,7 +18,7 @@
 
 Name:           libsemigroups
 %define lname	libsemigroups2
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
