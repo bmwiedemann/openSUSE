@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 11 16:41:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build zlib with optflags again 
+
+-------------------------------------------------------------------
 Mon Oct 10 10:08:02 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Add Power8 optimizations:

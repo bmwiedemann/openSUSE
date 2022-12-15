@@ -164,7 +164,7 @@ cp %{SOURCE4} .
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export LDFLAGS="-Wl,-z,relro,-z,now"
 # For sure not autotools build
-CC="cc" ./configure \
+CC="cc" CFLAGS="%{optflags}" ./configure \
     --shared \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
@@ -177,12 +177,12 @@ CC="cc" ./configure \
 # Profiling flags breaks tests, as of 1.2.12
 # In particular, gzseek does not work as intended
 #%if %{do_profiling}
-#  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-#  make check %{?_smp_mflags}
-#  make %{?_smp_mflags} clean
-#  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+#  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+#  %make_build check
+#  %make_build clean
+#  %make_build %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
 #%else
-  make %{?_smp_mflags}
+  %make_build
 #%endif
 
 # And build minizip
@@ -191,10 +191,10 @@ autoreconf -fvi
 %configure \
     --disable-static \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 mkdir -p %{buildroot}%{_libdir}
