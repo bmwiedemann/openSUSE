@@ -55,9 +55,8 @@ BuildRequires:  pkgconfig(sqlite3) >= 3.7.17
 BuildRequires:  pkgconfig(systemd)
 Requires:       debuginfod-client = %{version}
 Requires:       elfutils = %{version}
-Requires:       sysconfig
 Requires(post): %fillup_prereq
-%{?systemd_requires}
+%{?systemd_ordering}
 %sysusers_requires
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  9 08:34:19 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dependency to not used sysconfig package
+- Weaken systemd dependency, no hard requires necessary 
+
+-------------------------------------------------------------------
 Wed Nov  9 15:31:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - align patches section
