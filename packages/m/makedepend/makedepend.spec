@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Tools/Building
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
+Patch0:         issue2-mr7.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 # This was part of the xorg-x11-util-devel package up to version 7.6
@@ -41,6 +42,7 @@ has changed.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
