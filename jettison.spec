@@ -17,7 +17,7 @@
 
 
 Name:           jettison
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        A JSON StAX implementation
 License:        Apache-2.0
