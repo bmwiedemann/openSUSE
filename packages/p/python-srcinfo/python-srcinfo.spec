@@ -1,7 +1,7 @@
 #
 # spec file for package python-srcinfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-srcinfo
-Version:        0.0.8
+Version:        0.1.1
 Release:        0
 Summary:        Python library to parse Arch SRCINFO files
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/kyrias/python-srcinfo
-Source:         https://github.com/kyrias/python-srcinfo/archive/%{version}.tar.gz#/srcinfo-%{version}.tar.gz
-# Backport of https://github.com/kyrias/python-srcinfo/pull/10
-Patch0:         pr_10.patch
+Source:         https://files.pythonhosted.org/packages/source/s/srcinfo/srcinfo-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-parse
+Requires:       python-parse >= 1.19.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module parse}
+BuildRequires:  %{python_module parse >= 1.19.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -44,13 +41,8 @@ BuildRequires:  %{python_module pytest}
 Python library to parse Arch .SRCINFO files.
 
 %prep
-%setup -q -n python-srcinfo-%{version}
-%patch0 -p1
+%setup -q -n srcinfo-%{version}
 mv test/__init__.py test_srcinfo.py
-
-# Only needed until 0.0.9 is released
-# https://github.com/kyrias/python-srcinfo/pull/8
-sed -i '/nose/d' setup.py
 
 %build
 %python_build
@@ -73,6 +65,6 @@ sed -i '/nose/d' setup.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/parse_srcinfo
-%{python_sitelib}/*
+%{python_sitelib}/srcinfo*/
 
 %changelog

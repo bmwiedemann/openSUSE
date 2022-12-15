@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 14 23:16:31 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove pr_10.patch merged upstream
+- Update to v0.1.1
+
+-------------------------------------------------------------------
 Mon Nov 23 12:56:19 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Use pytest instead of nose during check
