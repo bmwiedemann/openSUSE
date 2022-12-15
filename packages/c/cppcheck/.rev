@@ -310,4 +310,12 @@
     detail including source backtraces</comment>
     <requestid>1004372</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>24855ffc9e55f3d1124c3b0d0da5d008</srcmd5>
+    <version>2.9.3</version>
+    <time>1671128729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043016</requestid>
+  </revision>
 </revisionlist>
