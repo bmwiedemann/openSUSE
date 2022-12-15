@@ -17,15 +17,13 @@
 
 
 Name:           torbrowser-launcher
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/micahflee/torbrowser-launcher
 Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM torbrowser-launcher-gui-move-argtype.patch badshah400@gmail.com -- Ensure arguments to gui-move are integers, not floats
-Patch0:         https://patch-diff.githubusercontent.com/raw/micahflee/torbrowser-launcher/pull/646.patch#/torbrowser-launcher-gui-move-argtype.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
