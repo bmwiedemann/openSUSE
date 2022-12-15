@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 14 22:47:22 UTC 2022 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Fix timers target to avoid systemd ordering cycle
+
+-------------------------------------------------------------------
 Tue Nov  1 18:23:41 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Bump version requirement for python3-authheaders
