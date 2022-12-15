@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  2 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.144
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.144     2022-12-01 11:36:19-05:00 America/New_York
+      - No changes from 0.143-TRIAL
+  0.143     2022-11-26 17:46:59-05:00 America/New_York (TRIAL RELEASE)
+      [Testing]
+      - Fixed tilde expansion tests where ~root expands to '/'.
+
+-------------------------------------------------------------------
 Thu Nov 10 03:07:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.142

@@ -18,7 +18,7 @@
 
 %define cpan_name Path-Tiny
 Name:           perl-Path-Tiny
-Version:        0.142
+Version:        0.144
 Release:        0
 License:        Apache-2.0
 Summary:        File path utility
