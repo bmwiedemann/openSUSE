@@ -199,4 +199,12 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <comment></comment>
     <requestid>898193</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4b11ff1caf7404d978413e589b804250</srcmd5>
+    <version>1.0.128</version>
+    <time>1671128730</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043017</requestid>
+  </revision>
 </revisionlist>

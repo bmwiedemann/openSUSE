@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:28:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.128:
+  * Make gbp tag produce the right tag format
+  * Add (PureOS) byzantium as a symlink to amber
+  * Add (PureOS) crimson as a symlink to amber
+  * Support Packages files which are not ordered alphabetically by Package field
+  * Apply "EXCLUDE_DEPENDENCY" during "resolve_deps"
+  * debootstrap: optionally exclude specific dependencies
+  * debian-common: exclude usrmerge when installing usr-is-merged
+  * Enable usrmerge on hurd-i386 too.
+  * add usrmerge support loongarch64.
+  * Avoid duplicate components in `sources.list`.
+  * Mount /dev/fd if the host is FreeBSD.
+  * Update renamed lintian tag names in lintian overrides.
+  * Update standards version to 4.6.0.1, no changes needed.
+  * setup_merged_usr: create skip flag when merged-usr is disabled on bookworm+
+  * Add usr-is-merged to the required set on testing/unstable
+  * Ensure bookworm+ suites are set up with merged-usr.
+  * functions (download_main): Let the loops try the different components and
+    suites when the checksum doesn't match. This is needed when several of
+    them contain the same package name.
+  * Fix auto proxy discovery
+  * Fix detection of docker container for cgroup v2
+  * functions: define link_dir before using it.
+  * Add (Debian) trixie as a symlink to sid.
+
+-------------------------------------------------------------------
 Mon Jun  7 18:46:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.0.124

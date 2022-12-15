@@ -1,7 +1,7 @@
 #
 # spec file for package debootstrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           debootstrap
-Version:        1.0.124
+Version:        1.0.128
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
