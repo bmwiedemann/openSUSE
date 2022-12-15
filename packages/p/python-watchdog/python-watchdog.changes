@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:42:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.2.0 
+  * 2022-12-05 • full history
+    [build] Wheels are now available for Python 3.11 (#932)
+    [documentation] HTML documentation builds are now tested for errors (#902)
+    [documentation] Fix typos here, and there (#910)
+    [fsevents2] The fsevents2 observer is now deprecated (#909)
+    [tests] The error message returned by musl libc for error code -1 is now allowed (#923)
+    [utils] Remove unnecessary code in dirsnapshot.py (#930)
+    [watchmedo] Handle shutdown events from SIGHUP (#912)
+    Thanks to our beloved contributors: @kurtmckee, @babymastodon, @QuantumEnergyE, @timgates42, @BoboTiG
+
+-------------------------------------------------------------------
 Sat Jul 23 11:29:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.9:

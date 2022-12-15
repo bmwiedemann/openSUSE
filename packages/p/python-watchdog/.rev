@@ -161,4 +161,12 @@
   * [watchmedo] ``PyYAML`` is loaded only when strictly necessary.</comment>
     <requestid>990798</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c4ed80a500efd0888eb3d6b181beb52a</srcmd5>
+    <version>2.2.0</version>
+    <time>1671128751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043116</requestid>
+  </revision>
 </revisionlist>
