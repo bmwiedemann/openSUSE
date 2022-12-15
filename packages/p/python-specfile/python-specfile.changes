@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:20:36 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Add config.cfg improvements to remove deprecation warnings
+  * python-specfile-improve-setup-cfg.patch
+
+- Update to version 0.11.1
+  * Tags enclosed in conditional macro expansions are not ignored 
+    anymore.
+  * Fixed context managers being shared between Specfile instances. 1q
+
+- Update to version 0.11.0 
+  * Context managers (Specfile.sections(), Specfile.tags() etc.) can
+    now be nested and combined together (with one exception - 
+    Specfile.macro_definitions()), and it is also possible to use 
+    tag properties (e.g. Specfile.version, Specfile.license) inside 
+    them. It is also possible to access the data directly, avoiding 
+    the with statement, by using the content property 
+    (e.g. Specfile.tags().content), but be aware that no 
+    modifications done to such data will be preserved. You must use 
+    with to make changes.
+
+-------------------------------------------------------------------
 Wed Nov 30 17:15:22 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to version 0.10.0 

@@ -1,0 +1,14 @@
+Index: specfile-0.11.1/setup.cfg
+===================================================================
+--- specfile-0.11.1.orig/setup.cfg
++++ specfile-0.11.1/setup.cfg
+@@ -7,7 +7,8 @@ url = https://github.com/packit/specfile
+ author = Red Hat
+ author_email = user-cont-team@redhat.com
+ license = MIT
+-license_file = LICENSE
++license_files =
++	LICENSE
+ classifiers = 
+ 	Development Status :: 4 - Beta
+ 	Environment :: Console
