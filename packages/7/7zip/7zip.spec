@@ -33,7 +33,7 @@ Patch0:         fix-compatib-with-p7zip.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%ifarch x86_64 %ix86
+%ifarch x86_64 %ix86 %x86_64
 BuildRequires:  uasm
 %endif
 Conflicts:      p7zip
@@ -63,13 +63,13 @@ sed -i -e 's/-Waddress-of-packed-member//' -e 's/-Wcast-align=strict//' C/warn_g
 # Inject CFLAGS
 sed -i 's/^ -fPIC/ -fPIC %{optflags}/' CPP/7zip/7zip_gcc.mak
 sed -i 's/LFLAGS_ALL = -s/LFLAGS_ALL =/' CPP/7zip/7zip_gcc.mak
-%ifarch x86_64 %ix86
+%ifarch x86_64 %ix86 %x86_64
 sed -i 's/$(CXX) -o $(PROGPATH)/$(CXX) -Wl,-z,noexecstack -o $(PROGPATH)/' CPP/7zip/7zip_gcc.mak
 %endif
 
 %build
 cd CPP/7zip/Bundles/Alone2
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 %make_build -f ../../cmpl_gcc_x64.mak MY_ASM=uasm
 %else
 %ifarch %ix86
@@ -80,7 +80,7 @@ cd CPP/7zip/Bundles/Alone2
 %endif
 
 %install
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x64/7zz %{buildroot}%{_bindir}/7zz
 %else
 %ifarch %ix86

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 12 21:18:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build for x86_64 subarchs the same way like for baseline 
+
+-------------------------------------------------------------------
 Wed Nov 30 10:47:14 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Enable ASM to increase performance in compression and decompression
