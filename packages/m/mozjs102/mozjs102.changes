@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 14 10:31:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.6.0:
+  + Various stability, functionality, and security fixes.
+  + CVE-2022-46880: Use-after-free in WebGL.
+  + CVE-2022-46872: Arbitrary file read from a compromised content
+    process.
+  + CVE-2022-46881: Memory corruption in WebGL.
+  + CVE-2022-46874: Drag and Dropped Filenames could have been
+    truncated to malicious extensions.
+  + CVE-2022-46875: Download Protections were bypassed by .atloc
+    and .ftploc files on Mac OS.
+  + CVE-2022-46882: Use-after-free in WebGL.
+  + CVE-2022-46878: Memory safety bugs fixed in Firefox 108 and
+    Firefox ESR 102.6.
+
+-------------------------------------------------------------------
 Fri Nov 18 18:04:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 102.5.0:
