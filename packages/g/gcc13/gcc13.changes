@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Tue Dec 13 10:34:35 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Bump to 0a43f7b1a73c8e3b9cefffe430274d0a3d6d3291, git197351.
+- Bump libgo SONAME to libgo22.
+- Do not package libhwasan for biarch (32-bit architecture)
+  as the extension depends on 64-bit pointers.
+- Sync cross.spec.in changes from gcc12 package.
+
+-------------------------------------------------------------------
+Mon Dec  5 08:01:00 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Bump to 380d62c14c99d8df13b7a86660e7ee67d01ad827, git197210.
+- Adjust floatn fixincludes guard to work with SLE12 and earlier
+  SLE15.
+
+-------------------------------------------------------------------
+Thu Dec  1 22:09:49 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to de144fdab17dbbb64ccb540056ab78b4ffb3fbbc, git197173.
+
+-------------------------------------------------------------------
+Thu Dec  1 13:59:05 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Depend on at least LLVM 13 for GCN cross compiler.
+
+-------------------------------------------------------------------
+Thu Dec  1 05:34:47 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 4304e09a1617bcf1c87f5bc96017ae5017379d75, git197155.
+
+-------------------------------------------------------------------
+Thu Dec  1 05:33:14 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Rebase gcc44-rename-info-files.patch.
+
+-------------------------------------------------------------------
+Wed Nov 30 22:09:37 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to d13c359a49291f0a1206adbad4065677010b7e4b, git197143.
+
+-------------------------------------------------------------------
+Tue Nov 29 07:06:11 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Sync changes from gcc12 package
+- Update embedded newlib to version 4.2.0
+  * includes newlib-4.1.0-aligned_alloc.patch
+- Allow cross-pru-gcc12-bootstrap for armv7l architecture.
+  PRU architecture is used for real-time MCUs embedded into TI
+  armv7l and aarch64 SoCs. We need to have cross-pru-gcc12 for
+  armv7l in order to build both host applications and PRU firmware
+  during the same build.
+
+-------------------------------------------------------------------
+Mon Nov 28 22:09:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 2b0ae7fb91f64fb005abf7d7903fd4c0764bb45c, git197102.
+
+-------------------------------------------------------------------
+Tue Nov 22 07:14:27 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Handle new libstdc++exp.a lib.
+
+-------------------------------------------------------------------
+Mon Nov 21 22:09:43 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 5c0d171f67d082c353ddc319859111d3b9126c17, git196938.
+
+-------------------------------------------------------------------
+Tue Nov  8 11:32:46 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add 2 new headers.
+
+-------------------------------------------------------------------
+Mon Nov  7 23:58:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to b457b779427b0f7b3fbac447811c9c52db5bc79e, git196485.
+
+-------------------------------------------------------------------
+Tue Sep 27 15:32:26 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Revert --disable-fixincludes due to float128 needed fix.
+
+-------------------------------------------------------------------
+Tue Sep 27 15:14:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 0b2706ac0e6d6b990d789325f9e081dfe4501f4f, git195623.
+
+-------------------------------------------------------------------
+Wed Aug 31 20:04:10 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to be9dd80f9334800300a80268dbb92cf3fafcfcf8, git195041.
+
+-------------------------------------------------------------------
+Wed Aug 31 20:02:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Start using --disable-fixincludes.
+
+-------------------------------------------------------------------
+Mon Aug  8 18:33:26 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Fix workaround for obs-service-format_spec_file.
+- Bump version in gcc.spec.in.
+
+-------------------------------------------------------------------
+Fri Aug  5 21:07:30 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to cc01a27db5411a4fe354a97b7c86703c5bc81243, git194700.
+
+-------------------------------------------------------------------
+Thu Apr 28 15:36:41 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- New package, inherits from gcc12
+- Take patches inherited from GCC 12.
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with
+    earlier mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with
+    host gcc 4.3
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
+  * gcc9-reproducible-builds-buildid-for-checksum.patch
+  * gcc9-reproducible-builds.patch
+  * gcc10-amdgcn-llvm-as.patch

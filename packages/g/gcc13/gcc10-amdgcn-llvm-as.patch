@@ -1,0 +1,31 @@
+varasm.c: Always output flags in merged .section for LLVM assembler compatibility [PR97827]
+
+For compatibility with LLVM 11's 'mc' assembler, the flags have to be
+repeated every time. See also LLVM Bug 48201 for this issue and
+https://reviews.llvm.org/D73999 for the patch causing the issue.
+
+gcc/
+	PR target/97827
+	* varasm.c (default_elf_asm_named_section): Always output all
+	flags if SECTION_MERGE, even if already declared before.
+
+diff --git a/gcc/varasm.cc b/gcc/varasm.cc
+index 21be03aeba2..9cb46885aa5 100644
+--- a/gcc/varasm.cc
++++ b/gcc/varasm.cc
+@@ -6792,10 +6792,13 @@ default_elf_asm_named_section (const char *name, unsigned int flags,
+   /* If we have already declared this section, we can use an
+      abbreviated form to switch back to it -- unless this section is
+      part of a COMDAT groups or with SHF_GNU_RETAIN or with SHF_LINK_ORDER,
+-     in which case GAS requires the full declaration every time.  */
++     in which case GAS requires the full declaration every time.
++     LLVM's MC linker requires that the
++     flags are identical, thus avoid the abbreviated form with MERGE.  */
+   if (!(HAVE_COMDAT_GROUP && (flags & SECTION_LINKONCE))
+       && !(flags & (SECTION_RETAIN | SECTION_LINK_ORDER))
+-      && (flags & SECTION_DECLARED))
++      && (flags & SECTION_DECLARED)
++      && !(flags & SECTION_MERGE))
+     {
+       fprintf (asm_out_file, "\t.section\t%s\n", name);
+       return;

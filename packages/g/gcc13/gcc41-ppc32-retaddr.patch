@@ -1,0 +1,91 @@
+2005-11-28  Jakub Jelinek  <jakub@redhat.com>
+
+	* config/rs6000/rs6000.c (rs6000_return_addr): If COUNT == 0,
+	read word RETURN_ADDRESS_OFFSET bytes above arg_pointer_rtx
+	instead of doing an extran indirection from frame_pointer_rtx.
+
+	* gcc.dg/20051128-1.c: New test.
+
+#Index: gcc/config/rs6000/rs6000.cc
+#===================================================================
+#--- gcc/config/rs6000/rs6000.cc.orig	2013-11-26 15:42:33.000000000 +0100
+#+++ gcc/config/rs6000/rs6000.cc	2013-11-26 16:44:14.566089231 +0100
+#@@ -20878,18 +20878,22 @@ rs6000_return_addr (int count, rtx frame
+   if (count != 0
+       || ((DEFAULT_ABI == ABI_V4 || DEFAULT_ABI == ABI_DARWIN) && flag_pic))
+     {
++      rtx x;
+       cfun->machine->ra_needs_full_frame = 1;
+ 
+-      return
+-	gen_rtx_MEM
+-	  (Pmode,
+-	   memory_address
+-	   (Pmode,
+-	    plus_constant (Pmode,
+-			   copy_to_reg
+-			   (gen_rtx_MEM (Pmode,
+-					 memory_address (Pmode, frame))),
+-			   RETURN_ADDRESS_OFFSET)));
++      if (count == 0)
++	{
++	  gcc_assert (frame == frame_pointer_rtx);
++	  x = arg_pointer_rtx;
++	}
++      else
++	{
++	  x = memory_address (Pmode, frame);
++	  x = copy_to_reg (gen_rtx_MEM (Pmode, x));
++	}
++
++      x = plus_constant (Pmode, x, RETURN_ADDRESS_OFFSET);
++      return gen_rtx_MEM (Pmode, memory_address (Pmode, x));
+     }
+ 
+   cfun->machine->ra_need_lr = 1;
+Index: gcc/testsuite/gcc.dg/20051128-1.c
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gcc/testsuite/gcc.dg/20051128-1.c	2013-11-26 16:44:14.566089231 +0100
+@@ -0,0 +1,41 @@
++/* { dg-do run } */
++/* { dg-options "-O2 -fpic" } */
++
++extern void exit (int);
++extern void abort (void);
++
++int b;
++
++struct A
++{
++  void *pad[147];
++  void *ra, *h;
++  long o;
++};
++
++void
++__attribute__((noinline))
++foo (struct A *a, void *x)
++{
++  __builtin_memset (a, 0, sizeof (a));
++  if (!b)
++    exit (0);
++}
++
++void
++__attribute__((noinline))
++bar (void)
++{
++  struct A a;
++
++  __builtin_unwind_init ();
++  foo (&a, __builtin_return_address (0));
++}
++
++int
++main (void)
++{
++  bar ();
++  abort ();
++  return 0;
++}

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6b8ef001a4db45b2cbde95adc15d7ac</srcmd5>
+    <version>13.0.0+git197351</version>
+    <time>1671128681</time>
+    <user>dimstar_suse</user>
+    <comment>you need to add the following for the libgo SONAME bump in 13
+
+%product_libs_gcc_ver_libgo21 12</comment>
+    <requestid>1042666</requestid>
+  </revision>
+</revisionlist>

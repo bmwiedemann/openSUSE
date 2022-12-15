@@ -1,0 +1,6 @@
+<package name="gcc13" project="openSUSE:Factory">
+  <title></title>
+  <description>The GNU Compiler Collection (GCC) version 13 is an optimizing compiler produced by the GNU Project supporting various programming languages, hardware architectures and operating systems.</description>
+  <devel project="devel:gcc" package="gcc13"/>
+  <url>https://gcc.gnu.org/</url>
+</package>

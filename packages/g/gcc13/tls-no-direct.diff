@@ -1,0 +1,20 @@
+For i?86 negative offsets to %fs segment accesses cause a hypervisor
+trap for Xen.  Avoid this by making accesses indirect.
+
+???  Note that similar to the behavior on SLE11 this only affects
+the compiler built on %ix86, not that on x86_64, even with -m32.
+
+Index: gcc/config/i386/linux.h
+===================================================================
+--- gcc/config/i386/linux.h.orig	2015-12-17 15:07:37.785650062 +0100
++++ gcc/config/i386/linux.h	2015-12-17 15:08:06.393983290 +0100
+@@ -24,3 +24,9 @@ along with GCC; see the file COPYING3.
+ 
+ #undef MUSL_DYNAMIC_LINKER
+ #define MUSL_DYNAMIC_LINKER "/lib/ld-musl-i386.so.1"
++
++/* This slows down Xen, so take a very small general performance hit
++   for not accessing the %fs segment with negative offsets by making
++   GCC not emit direct accesses to %fs at all.  */
++#undef TARGET_TLS_DIRECT_SEG_REFS_DEFAULT
++#define TARGET_TLS_DIRECT_SEG_REFS_DEFAULT 0

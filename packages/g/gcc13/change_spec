@@ -1,0 +1,133 @@
+#!/bin/bash
+
+do_crosses=1
+do_optional_compiler_languages=0
+rm -f gcc*-testresults.spec gcc*-testresults.changes gcc*.spec cross*.spec cross*.changes
+
+# Default is to generate the normal gcc package
+# unless a parameter is given.  In case that it is '-*',
+# that parameter will be used as suffix for the package name
+# and as suffix for the install path (/opt/gccSUFFIX)
+# In case that it is '[0-9]*', that parameter will be used
+# as a suffix for a versioned package name.
+
+if [ $# -lt 1 ]; then
+	echo No package suffix given
+	outfile=gcc.spec
+else
+	case $1 in
+	[0-9]*)
+	  base_ver=$1
+	  outfile=gcc$1.spec
+	;;
+	*)
+	  echo Invalid package suffix
+	  exit 1
+	;;
+	esac
+fi
+
+	: > $outfile
+	if test "$do_optional_compiler_languages" = "1"; then
+	    echo '%define build_optional_compiler_languages 1' >> $outfile
+	fi
+	sed -e 's%@base_ver@%'$base_ver'%g' \
+	    gcc.spec.in \
+	| sed -n -e '{
+/^# PACKAGE-BEGIN/h
+/^# PACKAGE-BEGIN/,/^# PACKAGE-END/H
+/^# PACKAGE-BEGIN/,/^# PACKAGE-END/!p
+/^# PACKAGE-END/{g
+s/@variant@//g
+p
+g
+s/@variant@/-32bit/g
+p
+g
+s/@variant@/-64bit/g
+p
+}
+}' >> $outfile
+
+	echo '%define building_testsuite 1' > gcc$base_ver-testresults.spec
+	echo '%define run_tests 1' >> gcc$base_ver-testresults.spec
+	sed -e '/^# GCC-TESTSUITE-DELETE-BEGIN/,/^# GCC-TESTSUITE-DELETE-END/d;s/-n gcc@base_ver@-testresults$//g;s/^Name:[[:space:]]*gcc@base_ver@/Name: gcc@base_ver@-testresults/g' \
+	    gcc.spec.in \
+	| sed -e 's%@base_ver@%'$base_ver'%g' \
+>> gcc$base_ver-testresults.spec
+
+echo '<multibuild>' > _multibuild
+echo '<flavor>'gcc$base_ver-testresults'</flavor>' >> _multibuild
+
+add_cross() {
+  local pkgname="$1"; shift
+  local rpmtarget="$1"; shift
+  local triplet="$1"; shift
+
+  echo "%define pkgname $pkgname" > $pkgname.spec
+  echo "%define cross_arch $rpmtarget" >> $pkgname.spec
+  echo "%define gcc_target_arch $triplet" >> $pkgname.spec
+  echo "$@" >> $pkgname.spec
+  { sed -n -e '1,/SRC-COMMON-BEGIN/p' cross.spec.in
+    sed -n -e '/SRC-COMMON-BEGIN/,/SRC-COMMON-END/p' $outfile
+    sed -n -e '/SRC-COMMON-END/,/BUILD-COMMON-BEGIN/p' cross.spec.in
+    sed -n -e '/BUILD-COMMON-BEGIN/,/BUILD-COMMON-END/p' $outfile
+    sed -n -e '/BUILD-COMMON-END/,$p' cross.spec.in; } |
+    sed -e "s#@base_ver@#$base_ver#" \
+	-e "s/^\(ExclusiveArch.*\) $rpmtarget[^ \r]*/\1 /" \
+      >> $pkgname.spec
+
+  echo '<flavor>'$pkgname'</flavor>' >> _multibuild
+}
+
+add_newlib_cross() {
+  add_cross $1-bootstrap $2 $3 "%define gcc_target_newlib 1
+%define gcc_libc_bootstrap 1"
+  add_cross $1           $2 $3 "%define gcc_target_newlib 1"
+}
+
+add_glibc_cross() {
+  add_cross $1-bootstrap $2 $3 "%define gcc_libc_bootstrap 1"
+  add_cross $1           $2 $3 "%define gcc_target_glibc 1"
+}
+
+# We now support "proper" cross-compilers to suse targets via a
+# cross-glibc package, enable that via for example
+#
+# add_cross cross-aarch64-gcc$base_ver aarch64 aarch64-suse-linux
+#
+# For now keep the old way of doing things
+if test "$do_crosses" = 1 ; then
+add_glibc_cross cross-aarch64-gcc$base_ver aarch64 aarch64-suse-linux
+add_glibc_cross cross-riscv64-gcc$base_ver riscv64 riscv64-suse-linux
+add_cross cross-arm-gcc$base_ver arm arm-suse-linux-gnueabi %define gcc_icecream 1
+add_cross cross-avr-gcc$base_ver-bootstrap avr avr "%define gcc_libc_bootstrap 1"
+add_cross cross-avr-gcc$base_ver avr avr
+add_cross cross-x86_64-gcc$base_ver x86_64 x86_64-suse-linux %define gcc_icecream 1
+add_cross cross-s390x-gcc$base_ver s390x s390x-suse-linux %define gcc_icecream 1
+add_cross cross-sparc-gcc$base_ver sparcv9 sparc-suse-linux %define gcc_icecream 1
+add_cross cross-sparc64-gcc$base_ver sparc64 sparc64-suse-linux %define gcc_icecream 1
+add_cross cross-ppc64-gcc$base_ver ppc64 powerpc64-suse-linux %define gcc_icecream 1
+add_cross cross-ppc64le-gcc$base_ver ppc64le powerpc64le-suse-linux %define gcc_icecream 1
+add_cross cross-m68k-gcc$base_ver m68k m68k-suse-linux %define gcc_icecream 1
+add_cross cross-mips-gcc$base_ver mips mips-suse-linux %define gcc_icecream 1
+add_cross cross-hppa-gcc$base_ver-bootstrap hppa hppa-suse-linux %define gcc_libc_bootstrap 1
+add_cross cross-hppa-gcc$base_ver hppa hppa-suse-linux %define gcc_icecream 1
+add_newlib_cross cross-arm-none-gcc$base_ver arm-none arm-none-eabi
+add_newlib_cross cross-epiphany-gcc$base_ver epiphany epiphany-elf
+#add_newlib_cross cross-nds32le-gcc$base_ver nds32le nds32le-elf
+add_newlib_cross cross-riscv64-elf-gcc$base_ver riscv64 riscv64-elf
+#add_newlib_cross cross-rl78-gcc$base_ver rl78 rl78-elf
+add_newlib_cross cross-rx-gcc$base_ver rx rx-elf
+fi
+# the nvptx and amdgcn crosses are used for offloading
+add_cross cross-nvptx-gcc$base_ver nvptx nvptx-none %define gcc_accel 1
+add_cross cross-amdgcn-gcc$base_ver amdgcn amdgcn-amdhsa %define gcc_accel 1
+
+for f in *.spec; do
+  sed -i -e '/^# .*-\(BEGIN\|END\)$/d' $f
+done
+
+echo '</multibuild>' >> _multibuild
+
+osc service localrun format_spec_file
