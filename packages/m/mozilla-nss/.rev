@@ -2777,4 +2777,32 @@
   * bmo#1792103 - Add a flag to disable building libnssckbi.</comment>
     <requestid>1035465</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>9d6f77030c022157cd3e40245f219b5a</srcmd5>
+    <version>3.85</version>
+    <time>1671128617</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.85
+  * bmo#1792821 - Modification of the primes.c and dhe-params.c in
+                  order to have better looking tables
+  * bmo#1796815 - Update zlib in NSS to 1.2.13
+  * bmo#1796504 - Skip building modutil and shlibsign when building
+                  in Firefox
+  * bmo#1796504 - Use __STDC_VERSION__ rather than __STDC__ as a guard
+  * bmo#1796407 - Fix -Wunused-but-set-variable warning from clang 15
+  * bmo#1796308 - Fix -Wtautological-constant-out-of-range-compare
+                  and -Wtype-limits warnings
+  * bmo#1796281 - Followup: add missing stdint.h include
+  * bmo#1796281 - Fix -Wint-to-void-pointer-cast warnings
+  * bmo#1796280 - Fix -Wunused-{function,variable,but-set-variable}
+                  warnings on Windows
+  * bmo#1796079 - Fix -Wstring-conversion warnings
+  * bmo#1796075 - Fix -Wempty-body warnings
+  * bmo#1795242 - Fix unused-but-set-parameter warning
+  * bmo#1795241 - Fix unreachable-code warnings
+  * bmo#1795222 - Mark _nss_version_c unused on clang-cl
+  * bmo#1795668 - Remove redundant variable definitions in lowhashtest
+  * Add note about python executable to build instructions.</comment>
+    <requestid>1042789</requestid>
+  </revision>
 </revisionlist>
