@@ -27,8 +27,8 @@ Group:          System/Management
 URL:            https://github.com/google/go-containerregistry
 Source:         https://github.com/google/go-containerregistry/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.17
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.17
 Conflicts:      distribution-registry
 
 %description
@@ -79,12 +79,18 @@ export CGO_ENABLED=0
 
 %install
 %{goinstall}
+# "only one tool per thing" SLE15 policy conflicts
+%if 0%{?suse_version} && %{?suse_version} < 1550
+rm -v %{buildroot}/%{_bindir}/{registry,help}
+%endif
 
+%if %{?suse_version} > 1500
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/registry
 %exclude %{_bindir}/help
+%endif
 
 %files -n crane
 %license LICENSE

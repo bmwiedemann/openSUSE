@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1030322</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65357eb7eb5c8e6f46dc8b44e48aef26</srcmd5>
+    <version>0.12.0</version>
+    <time>1671128750</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid file conflict on SLE15 and other older distributions</comment>
+    <requestid>1043106</requestid>
+  </revision>
 </revisionlist>
