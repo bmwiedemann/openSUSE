@@ -18,7 +18,7 @@
 
 %define realname zathura-pdf-mupdf
 Name:           zathura-plugin-pdf-mupdf
-Version:        0.3.9
+Version:        0.4.0
 Release:        0
 Summary:        Zathura PDF support through MuPDF
 License:        Zlib
@@ -35,9 +35,9 @@ BuildRequires:  pkgconfig(girara-gtk3)
 BuildRequires:  pkgconfig(jbig2dec)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(zathura) >= 0.3.9
+BuildRequires:  pkgconfig(zathura) >= 0.5.2
 Requires:       mupdf >= 1.20
-Requires:       zathura >= 0.2.0
+Requires:       zathura >= 0.5.2
 Conflicts:      zathura-plugin-pdf-poppler
 Provides:       zathura-pdf-mupdf-plugin
 
