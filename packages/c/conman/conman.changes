@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 12 13:33:27 UTC 2022 - Antoine Ginies <aginies@suse.com>
+
+- update to version 0.3.1:
+  * Fixed username/password use in libipmiconsole.conf. (e59f5e4)
+  * Added more console logfile conversion specifiers. (96ede96, 5a189f6)
+  * Added conmen '-T' cmdline opt to specify terminal emulator. (a11c6f4)
+  * Added rpm source file verification. (f86c123)
+  * Revamped autotools config. (547db3c)
+  * Added configure opts for systemd/sysvinit. (3e303e6)
+  * Added configure runstatedir support. (bb415e0)
+  * Fixed installation directory variable substitution. (7642609)
+  * Removed autotools-generated files from version control. (44168a4)
+  * general move of files from /usr/lib/conman to /usr/share/conman
+
+-------------------------------------------------------------------
 Fri Oct 15 16:11:42 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Typo fix to sysuser file. 

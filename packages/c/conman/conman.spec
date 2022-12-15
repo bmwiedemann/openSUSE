@@ -1,7 +1,7 @@
 #
 # spec file for package conman
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@
 %endif
 
 Name:           conman
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 
 Summary:        The Console Manager
@@ -63,13 +63,15 @@ BuildRequires:  freeipmi-devel
 Source0:        https://github.com/dun/conman/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}.service.in
 %if 0%{?have_systemd}
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 %{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_requires}
 Requires(pre):  shadow
 Requires(post): %fillup_prereq sed
-Requires(postun): coreutils
+Requires(postun):coreutils
 %endif
 
 Patch1:         conman-suse-fix-expect-scripts.patch
@@ -99,6 +101,7 @@ Its features include:
 %patch1 -p1
 
 %build
+./bootstrap
 %configure --with-tcp-wrappers \
 %if 0%{?have_freeipmi}
            --with-freeipmi \
@@ -123,9 +126,9 @@ ln -s %{_sysconfdir}/init.d/conman %{buildroot}%{_sbindir}/rcconman
 chmod u+x %{buildroot}%{_sysconfdir}/init.d/conman
 %endif
 mkdir -p %{buildroot}%{_fillupdir}
-mv %{buildroot}%{_sysconfdir}/sysconfig/conman \
+mv etc/conman.sysconfig \
     %{buildroot}%{_fillupdir}/sysconfig.conman
-for i in $(find %{buildroot}/usr/lib/conman) ; do
+for i in $(find %{buildroot}/usr/share/conman) ; do
   if [ -f $i -a -x $i ]; then
      if ! head -1 $i | grep "^#!"; then
 	 echo "#!/usr/bin/expect -f" > /tmp/$(basename $i)
@@ -218,9 +221,9 @@ touch %_localstatedir/lib/conman/%migrated || :
 %endif
 
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
-%define files_license %license 
-%else 
-%define files_license %doc 
+%define files_license %license
+%else
+%define files_license %doc
 %endif
 
 %files
@@ -243,7 +246,7 @@ touch %_localstatedir/lib/conman/%migrated || :
 %{_fillupdir}/sysconfig.conman
 %{_bindir}/*
 %{_sbindir}/*
-%{_prefix}/lib/conman
+%{_prefix}/share/conman
 %if 0%{?have_systemd}
 %{_prefix}/lib/systemd/*
 %else

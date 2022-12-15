@@ -1,7 +1,7 @@
-Index: conman-0.2.7/lib/exec/ssh.exp
+Index: conman-0.2.7/scripts/exec/ssh.exp
 ===================================================================
---- conman-0.2.7.orig/lib/exec/ssh.exp
-+++ conman-0.2.7/lib/exec/ssh.exp
+--- conman-0.2.7.orig/scripts/exec/ssh.exp
++++ conman-0.2.7/scripts/exec/ssh.exp
 @@ -166,7 +166,7 @@ expect {
      }
      exp_continue -continue_timer
