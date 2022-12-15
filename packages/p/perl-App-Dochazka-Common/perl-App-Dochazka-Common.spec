@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Dochazka-Common
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-App-Dochazka-Common
-Version:        0.209
+Version:        0.210
 Release:        0
 %define cpan_name App-Dochazka-Common
 Summary:        Dochazka Attendance and Time Tracking System shared modules
 License:        BSD-3-Clause
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/App-Dochazka-Common/
-Source0:        App-Dochazka-Common-0.209.tar.gz
+URL:            http://search.cpan.org/dist/App-Dochazka-Common/
+Source0:        App-Dochazka-Common-0.210.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
