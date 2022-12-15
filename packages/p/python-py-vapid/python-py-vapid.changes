@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:23:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.9.0 
+  * chore: Jul 2022 update
+    Now that this is one of the Critical Projects (thanks?) I should
+    update it to be more modern, clean up some of the crap, and
+    run it through flake8 at least.
+  * Add a rst version of the README
+  * update rust version to 0.6.0
+
+-------------------------------------------------------------------
 Tue Apr 12 09:03:27 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - do not use mock

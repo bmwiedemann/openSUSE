@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py-vapid
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        VAPID header generation library
 License:        MPL-2.0
