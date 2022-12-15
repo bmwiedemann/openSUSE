@@ -17,7 +17,7 @@
 
 
 Name:           python-poetry-core
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Python poetry core utilities
 License:        MIT
@@ -27,24 +27,24 @@ URL:            https://github.com/python-poetry/poetry-core
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
 BuildRequires:  %{python_module attrs >= 22.1.0}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jsonschema >= 4.1.0}
-BuildRequires:  %{python_module lark >= 1.1.2}
+BuildRequires:  %{python_module jsonschema >= 4.16.0}
+BuildRequires:  %{python_module lark >= 1.1.3}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing >= 3.0.9}
 BuildRequires:  %{python_module pyrsistent >= 0.18.1}
-BuildRequires:  %{python_module tomlkit >= 0.11.3}
-BuildRequires:  %{python_module typing-extensions >= 4.3.0}
+BuildRequires:  %{python_module tomlkit >= 0.11.5}
+BuildRequires:  %{python_module typing-extensions >= 4.4.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 22.1.0
-Requires:       python-jsonschema >= 4.1.0
-Requires:       python-lark >= 1.1.2
+Requires:       python-jsonschema >= 4.16.0
+Requires:       python-lark >= 1.1.3
 Requires:       python-packaging >= 21.3
 Requires:       python-pyparsing >= 3.0.9
 Requires:       python-pyrsistent >= 0.18.1
-Requires:       python-tomlkit >= 0.11.3
-Requires:       python-typing-extensions >= 4.3.0
+Requires:       python-tomlkit >= 0.11.5
+Requires:       python-typing-extensions >= 4.4.0
 BuildArch:      noarch
 # SECTION these are all test dependencies, including devel and git
 BuildRequires:  %{python_module devel}
