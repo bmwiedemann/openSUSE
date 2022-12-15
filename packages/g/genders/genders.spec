@@ -81,8 +81,6 @@ genders headers and libraries files needed for development
 %package -n python3-%{name}
 Summary:        Python bindings for genders
 Group:          Development/Languages/Python
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name}
 Requires:       %{name} = %{version}
 
 %description -n python3-%{name}

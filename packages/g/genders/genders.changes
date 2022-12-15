@@ -5,6 +5,11 @@ Tue Dec  6 12:14:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Build Bindings for *both* python2 and python3 
 
 -------------------------------------------------------------------
+Tue Dec  6 03:46:15 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not Provides/Obsoletes Python 2 packages with Python 3 ones. 
+
+-------------------------------------------------------------------
 Thu Dec  1 02:13:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually move Python plugin to building with Python 3, and rename the
