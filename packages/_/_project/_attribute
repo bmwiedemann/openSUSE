@@ -214,7 +214,7 @@ nocleanup-packages = 000product 000release-packages bootstrap-copy
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils patterns-kde-devel_qt6
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc12,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary,python-packaging:primary,python-pyparsing:primary,python310:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,update-alternatives,utempter,util-linux,which,xxhash,xz,zlib,zstd,
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,crypto-policies,debugedit,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc12,gcc13,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua54,m4,make,makedepend,meson,mpc,mpdecimal,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre2,perl,perl-Text-Unidecode,perl-gettext,permissions,pkgconf,popt,python-rpm-macros,python-rpm-packaging,python-flit-core:primary,python-packaging:primary,python-pyparsing:primary,python310:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tclap,tcpd,texinfo,timezone,update-alternatives,utempter,util-linux,which,xxhash,xz,zlib,zstd,
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
@@ -562,7 +562,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20221213'
 publishing: '20221213'
-testing: '20221213'
+testing: '20221214'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
