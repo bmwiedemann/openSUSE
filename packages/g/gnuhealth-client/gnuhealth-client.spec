@@ -19,7 +19,7 @@
 
 %define majorver 4.0
 Name:           gnuhealth-client
-Version:        %{majorver}.1
+Version:        %{majorver}.2
 Release:        0
 Summary:        The client of the GNU Health Hospital system
 License:        GPL-3.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 14 22:37:03 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.0.2
+  * Fix bug #63518: TypeError: unhashable type: 'dict'
+  * bug #62849: Top Diseases report crashes on DemoServer
+  * Implement REUSE Initiative on GTK Client. 
+  * Apply various Tryton client patches
+   
+-------------------------------------------------------------------
 Wed Oct 12 10:48:25 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - explicit dependency on pydot and graphviz removed (maintainer error)
