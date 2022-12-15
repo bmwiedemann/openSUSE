@@ -1,7 +1,7 @@
 #
 # spec file for package kst
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Christian Trippe ctrippe@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,6 @@ BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gsl-devel
-BuildRequires:  libcfitsio-devel
 BuildRequires:  libmatio-devel
 BuildRequires:  libnetcdf
 BuildRequires:  libnetcdf_c++-devel
@@ -49,6 +48,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(cfitsio)
 Requires:       libnetcdf
 Obsoletes:      python-kst < %{version}
 

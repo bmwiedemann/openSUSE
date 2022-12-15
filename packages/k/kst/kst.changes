@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 15 07:37:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace libcfitsio-devel with pkgconfig(cfitsio): the devel
+  package was renamed 8 years ago. Instead of caring for the name,
+  we care for the symbol CMake is looking for.
+
+-------------------------------------------------------------------
 Wed May 12 05:29:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with CMake 3.20:

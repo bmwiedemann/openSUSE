@@ -441,4 +441,14 @@
   * 0001-Fix-build-with-CMake-3.20.patch</comment>
     <requestid>892343</requestid>
   </revision>
+  <revision rev="52" vrev="13">
+    <srcmd5>d0b5025254a1e98a57b93eed7329af94</srcmd5>
+    <version>2.0.8</version>
+    <time>1671128755</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace libcfitsio-devel with pkgconfig(cfitsio): the devel
+  package was renamed 8 years ago. Instead of caring for the name,
+  we care for the symbol CMake is looking for. (forwarded request 1043128 from dimstar)</comment>
+    <requestid>1043134</requestid>
+  </revision>
 </revisionlist>
