@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 06:47:56 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-memcached.
+- Clean up python 2 gubbins.
+
+-------------------------------------------------------------------
 Mon Dec 12 17:10:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests in i586.

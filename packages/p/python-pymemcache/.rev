@@ -195,4 +195,13 @@
   * Fix key_prefix issue with stats and cache_memlimit by @jogo in #433</comment>
     <requestid>1042435</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ec07beeec973b160c013f005b7850f01</srcmd5>
+    <version>4.0.0</version>
+    <time>1671128735</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on python-memcached.
+- Clean up python 2 gubbins.</comment>
+    <requestid>1043051</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,6 @@ Version:        4.0.0
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -36,15 +35,8 @@ BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module zstd}
 # /SECTION
-%if %{with python2}
-BuildRequires:  python-future
-%endif
-%ifpython2
-Requires:       python-future
-%endif
 %python_subpackages
 
 %description
