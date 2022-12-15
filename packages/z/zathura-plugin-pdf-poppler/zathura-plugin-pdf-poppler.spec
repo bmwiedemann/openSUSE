@@ -1,7 +1,7 @@
 #
 # spec file for package zathura-plugin-pdf-poppler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define realname zathura-pdf-poppler
 Name:           zathura-plugin-pdf-poppler
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        PDF support for zathura via poppler
 License:        Zlib
@@ -29,9 +29,9 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara-gtk3)
-BuildRequires:  pkgconfig(poppler-glib)
-BuildRequires:  pkgconfig(zathura)
-Requires:       zathura
+BuildRequires:  pkgconfig(poppler-glib) >= 0.18
+BuildRequires:  pkgconfig(zathura) >= 0.5.2
+Requires:       zathura >= 0.5.2
 Provides:       zathura-pdf-poppler-plugin
 
 %description
