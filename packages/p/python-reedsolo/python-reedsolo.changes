@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:54:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.6.0 
+  Annual Christmas maintenance!
+  * Changelog:
+  Fix major issue preventing pip install when both Cython and a C compiler was installed (thanks to @m-rossi for the fix!)
+  Fix minor inconsistency in reporting errata positions (thanks to @jbosboom!)
+  Migrate continuous integration unit testing from Travis-CI (now only paid plans are offered since 2020) to GitHub Actions.
+  Add CI unit testing for Python 3.7 up to 3.12 alpha 3, and PyPy 3.
+  Drop CI unit testing and support for Python 3.3 to 3.6 included.
+  fixes #34 uncaught error when RSCodec initialized with too many ECC symbols
+  fixes #46 support for bytes input for higher galois fields (thanks to @another-pjohnson!)
+  fix erasures correction for chunked messages (thanks to @another-pjohnson!)
+  Fixes #44 Cythonized implementation chunking was not implemented in check method (thanks to @henla464!)
+  Add note about limitation to galois field 8 of C implementation, fixes #29
+  update install instructions in README.rst
+  Add mention of other contributors
+  If you are interested in knowing the future of this module, please read this announcement.
+  Merry Christmas to everyone, may all your wishes come true!
+
+-------------------------------------------------------------------
 Tue Jun 28 17:41:57 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Initial release 1.5.4
