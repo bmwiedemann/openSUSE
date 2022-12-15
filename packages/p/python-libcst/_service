@@ -1,0 +1,10 @@
+<services>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">libcst-0.4.9/native</param>
+     <param name="compression">xz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">libcst-0.4.9/native</param>
+  </service>
+</services>

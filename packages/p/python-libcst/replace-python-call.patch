@@ -1,0 +1,22 @@
+Index: libcst-0.4.9/libcst/codemod/tests/test_codemod_cli.py
+===================================================================
+--- libcst-0.4.9.orig/libcst/codemod/tests/test_codemod_cli.py
++++ libcst-0.4.9/libcst/codemod/tests/test_codemod_cli.py
+@@ -4,7 +4,7 @@
+ # LICENSE file in the root directory of this source tree.
+ #
+ 
+-
++import sys
+ import subprocess
+ from pathlib import Path
+ 
+@@ -16,7 +16,7 @@ class TestCodemodCLI(UnitTest):
+     def test_codemod_formatter_error_input(self) -> None:
+         rlt = subprocess.run(
+             [
+-                "python",
++                sys.executable,
+                 "-m",
+                 "libcst.tool",
+                 "codemod",

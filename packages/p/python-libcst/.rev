@@ -47,4 +47,41 @@
     <comment></comment>
     <requestid>894419</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ecb40b338e9e317d7020e01ddf7eca0</srcmd5>
+    <version>0.4.9</version>
+    <time>1671128700</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove 650-sorting-in-test_ordering.patch not needed anymore
+- Remove skip_failing_test.patch not needed anymore
+- Add remove-ufmt-dep.patch, python-ufmt is not in tumbleweed
+- Add replace-python-call.patch, wrong executable call when outside of venv
+  (gh#Instagram/LibCST#468)
+- Update to 0.4.9:
+  - Bump setuptools-rust version by @zsol in #809
+- 0.4.8
+  - Fix parse error message for number parsing by @zzl0 in #724
+  - Fix problematic doc build, due to the new builder image provided by
+    readthedocs doesn't has the graphviz-dev package pre-installed any more by
+    @MapleCCC in #751
+  - Fix docstring of FullRepoManager by @MapleCCC in #750
+  - Fix bug when TypeOf is one of options in OneOf / AllOf by @MapleCCC in #756
+  - Tighten the metadata type of ExpressionContextProvider by @MapleCCC in #760
+  - Fix the bug that the use of formatter in codemods has undetermined target
+    Python version, resulting in hard-to-reason-with behavior by @MapleCCC in
+    #771
+  - Python 3.11 rutime support
+    - test using python 3.11 beta versions by @zsol in #723
+    - Python 3.11 wheels by @vfazio in #801
+  - Raise informative exception when metadata is unresolved in a metadata-based
+    match by @MapleCCC in #757
+  - Add AccessorProvider by @matthewshaer in #807
+- 0.4.7 - 2022-07-12
+  - Fix get_qualified_names_for matching on prefixes of the given name by
+    @lpetre in #719
+  - Implement lazy loading mechanism for expensive metadata providers by
+    @Chenguang-Zhu in #720
+- 0.4.6 - 2022-07-04</comment>
+    <requestid>1042920</requestid>
+  </revision>
 </revisionlist>
