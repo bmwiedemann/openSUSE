@@ -19,4 +19,12 @@ It should be legally okay, as it only links FFmpeg and contains no support for p
     <comment></comment>
     <requestid>841051</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>01a57314adbc6534b0189a859d8bd10f</srcmd5>
+    <version>2.40+44</version>
+    <time>1671128733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042998</requestid>
+  </revision>
 </revisionlist>
