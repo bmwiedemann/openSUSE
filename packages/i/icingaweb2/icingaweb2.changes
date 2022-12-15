@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 14 15:20:58 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.3
+  This is a security release.
+  * Minor to Medium Vulnerabilities
+    - Open Redirects for logged in users #4945
+    - SSH Resource Configuration form XSS Bug #4947
+    - Dashlets allow the user to run Javascript code #4959
+    - Role member suggestion endpoint is reachable for unauthorized
+      users #4961
+  * The More Usual Dose of Fixes
+    - Browser print dialog result broken #4957
+    - Shared navigation items are not accessible #4953
+    - While using dropdown filter menu it gets closed automatically
+      due to autorefresh #4942
+   
+-------------------------------------------------------------------
 Tue Nov  8 10:42:22 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.11.2
