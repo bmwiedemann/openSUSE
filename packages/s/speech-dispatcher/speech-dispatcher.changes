@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Dec 13 19:23:02 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.11.4:
+  - Update CLDR to version 42 and symbols from NVDA.
+  - Fix audio plugin loading with dlopen.
+  - Fix atomicity of getting reply in threaded mode.
+- Changes from 0.11.3:
+  - Fix back DefaultModule configuration.
+  - pico: Avoid falling to english when passed a bogus voice name.
+  - espeak: Fix setting voice type.
+- Changes from 0.11.2:
+  - Fix loading xx-yy locales.
+  - Various memory leaks fixes.
+  - Add mimic3 configuration file.
+  - pico: Fix setting language vs voice.
+  - Make sure that modules report a list of voices.
+  - Update CLDR to version 41, symbols from NVDA and orca.
+  - Allow building without ltdl.
+  - Re-enable SSML in espeak-ng-mbrola module.
+- Changes from 0.11.1:
+  - Add SPEECHD_PLUGIN_DIR environment variable.
+  - Fix listing voices of the default module.
+- Changes from 0.11
+  - Support playing audio through the server.
+  - modules: Add support for loading from user's
+    .local/libexec/speech-dispatcher.
+  - symbols: Process symbols.dic before emojis.dic.
+  - symbols: Enable speechd symbols processing by default.
+  - modules: Moved speech dispatcher modules to
+    /usr/libexec/speech-dispatcher-modules
+  - espeak-ng: Add support for mbrola voices.
+  - mary: Add auto-detection.
+  - mary: Add newer voices.
+  - mary: Add volume, pitch, and rate support.
+  - ivona: Add auto-detection.
+  - festival: Strip head silence.
+  - generic: Add DefaultVoice option.
+  - es_ES: Add some gender neutral rules.
+  - Add SPEECHD_CMD environment variable.
+  - modules: Rewrite main functions with BSD licence, to let
+    proprietary modules easily reuse this as a basis.
+  - modules: Add skeletons ready for use as a basis for new
+    modules.
+  - Add script to run speechd from the build tree.
+  - Update CLDR to version 39, symbols from NVDA and orca.
+  - Add Esperanto translation.
+  - Sort modules by quality, let the best quality module be the
+    default.
+- Rebase harden_speech-dispatcherd.service.patch.
+
+-------------------------------------------------------------------
+Tue Dec 13 19:23:02 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
+Tue Dec 13 19:23:02 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_speech-dispatcherd.service.patch
+
+-------------------------------------------------------------------
 Tue Jun 21 13:32:22 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d

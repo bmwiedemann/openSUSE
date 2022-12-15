@@ -24,7 +24,7 @@
 %define espeakdev espeak-devel
 %endif
 Name:           speech-dispatcher
-Version:        0.10.2
+Version:        0.11.4
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # The API and bindings are LGPL-2.1-or-later, other parts are
@@ -33,8 +33,8 @@ Summary:        Device independent layer for speech synthesis
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
 URL:            https://devel.freebsoft.org/speechd
-#Source0:        https://download-mirror.savannah.gnu.org/releases/speechd/%%{name}-%%{version}.tar.gz
 Source0:        https://github.com/brailcom/speechd/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:         harden_speech-dispatcherd.service.patch
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
 Source99:       baselibs.conf
@@ -173,6 +173,7 @@ sed -i "s/#AddModule \"dummy\"/AddModule \"dummy\"/" -i config/speechd.conf
 # you must enable at least one module (except dummy), otherwise it will load
 # all available modules and may cause huge cpu usage!
 sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.conf
+%patch0 -p1
 
 %build
 %global optflags %{optflags} -fcommon
@@ -204,7 +205,6 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/speech-disp
 # Remove config files for modules we don't support
 rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/flite.conf
 rm -f %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
-rm %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ivona.conf
 # Remove config files that we don't need a second time
 # but then user can not create its own configuration, because here is default, while in /etc is system-wide
 # %%{__rm} -r %%{buildroot}%%{_datadir}/speech-dispatcher/conf/
@@ -225,6 +225,12 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd
 
 %pre
 %service_add_pre speech-dispatcherd.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/speech-dispatcher ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %preun
 %service_del_preun speech-dispatcherd.service
@@ -234,6 +240,14 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/spd-say.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/ssip.info.gz
 %service_del_postun speech-dispatcherd.service
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/speech-dispatcher ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n libspeechd2 -p /sbin/ldconfig
 
@@ -255,11 +269,11 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd
 %dir %{_libdir}/speech-dispatcher
 %{_libdir}/speech-dispatcher/spd_*.so
 # When adding a module, also stop removing its config file in %%install
-%dir %{_libdir}/speech-dispatcher-modules
-%{_libdir}/speech-dispatcher-modules/sd_cicero
-%{_libdir}/speech-dispatcher-modules/sd_dummy
-%{_libdir}/speech-dispatcher-modules/sd_festival
-%{_libdir}/speech-dispatcher-modules/sd_generic
+%dir %{_libexecdir}/speech-dispatcher-modules
+%{_libexecdir}/speech-dispatcher-modules/sd_cicero
+%{_libexecdir}/speech-dispatcher-modules/sd_dummy
+%{_libexecdir}/speech-dispatcher-modules/sd_festival
+%{_libexecdir}/speech-dispatcher-modules/sd_generic
 %{_infodir}/%{name}*.info.gz
 %{_infodir}/spd-say.info.gz
 %{_infodir}/ssip.info.gz
@@ -281,7 +295,8 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd
 
 %files module-espeak
 %config(noreplace) %{_sysconfdir}/speech-dispatcher/modules/espeak.conf
-%{_libdir}/speech-dispatcher-modules/sd_%{espeak}
+%{_libexecdir}/speech-dispatcher-modules/sd_%{espeak}
+%{_libexecdir}/speech-dispatcher-modules/sd_%{espeak}-mbrola
 
 %files -n libspeechd2
 %{_libdir}/libspeechd.so.*

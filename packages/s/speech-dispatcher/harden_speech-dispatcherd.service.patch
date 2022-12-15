@@ -1,0 +1,21 @@
+diff -urp speech-dispatcher-0.11.4.orig/speech-dispatcherd.service.in speech-dispatcher-0.11.4/speech-dispatcherd.service.in
+--- speech-dispatcher-0.11.4.orig/speech-dispatcherd.service.in	2022-09-19 11:01:23.000000000 -0500
++++ speech-dispatcher-0.11.4/speech-dispatcherd.service.in	2022-12-13 13:30:58.425482368 -0600
+@@ -17,6 +17,17 @@
+ Description=Speech-Dispatcher, common interface to speech synthesizers
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ ExecStart=@bindir@/speech-dispatcher -d -t 0
+ ExecReload=/bin/kill -HUP $MAINPID
