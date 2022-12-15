@@ -1,7 +1,7 @@
 #
 # spec file for package dmd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,18 @@
 #
 
 
-%define bootstrap_version 2.078.0
-%define sover	0_98
-%define auto_bootstrap 1
+%define sover	0_101
+%define bootstrap_with_gdmd 1
 Name:           dmd
-Version:        2.098.1
+Version:        2.101.0
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
 Group:          Development/Languages/Other
 URL:            https://dlang.org/
 Source:         https://github.com/D-Programming-Language/dmd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/D-Programming-Language/druntime/archive/v%{version}.tar.gz#/druntime-%{version}.tar.gz
 Source2:        https://github.com/D-Programming-Language/phobos/archive/v%{version}.tar.gz#/phobos-%{version}.tar.gz
-Source8:        http://downloads.dlang.org/releases/2.x/%{bootstrap_version}/dmd.%{bootstrap_version}.linux.tar.xz
 Source9:        dmd.conf
-# PATCH-FIX-OPENSUSE dmd_use_tarball_bootstrap.diff So the tarball is not downloaded
-Patch0:         dmd_use_tarball_bootstrap.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -43,7 +38,13 @@ ExclusiveArch:  %{ix86} x86_64
 %ifarch i586
 #!BuildIgnore:  gcc-PIE
 %endif
-%if !%{auto_bootstrap}
+%if %{bootstrap_with_gdmd}
+%if 0%{?suse_version} < 1550
+%global gdc_version 10
+%global gdc_suffix -%{gdc_version}
+%endif
+BuildRequires:  gdmd%{?gdc_suffix}
+%else
 BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
@@ -90,36 +91,37 @@ this, unless you link statically, which is highly discouraged.
 
 %prep
 %setup -q
-%setup -q -T -D -a 1
 %setup -q -T -D -a 2
-%patch0 -p1
-echo %{version} > phobos-%{version}/VERSION
+
 cd %{_builddir}
 ln -s dmd-%{version} dmd
-ln -s druntime-%{version} druntime
 ln -s phobos-%{version} phobos
-mv dmd-%{version}/druntime-%{version} .
 mv dmd-%{version}/phobos-%{version} .
+
+echo %{version} > phobos/VERSION
 
 %build
 # dmd
 cd ..
-pushd dmd
-	make %{?_smp_mflags} -f posix.mak \
-	%if %{auto_bootstrap}
-		AUTO_BOOTSTRAP=1 \
-		HOST_DMD_VER=%{bootstrap_version} \
-	%endif
-		BUILD=release \
-		PIC=1 \
-		ENABLE_RELEASE=1
+export AUTO_BOOTSTRAP=0
+export ENABLE_RELEASE=1
+export PIC=1
+%if %{bootstrap_with_gdmd}
+export HOST_DMD=%{_bindir}/gdmd%{?gdc_suffix}
+%else
+export HOST_DMD=%{_bindir}/dmd
+%endif
+
+pushd dmd/compiler/src
+	$HOST_DMD -O build.d
+	./build dmd
 popd
 
 # druntime
-pushd druntime
+pushd dmd/druntime
 	make %{?_smp_mflags} -f posix.mak \
 		BUILD=release \
-		DMD="../dmd/generated/linux/release/*/dmd" \
+		DMD="../generated/linux/release/*/dmd" \
 		PIC=1 \
 		ENABLE_RELEASE=1
 popd
@@ -133,6 +135,20 @@ pushd phobos
 		ENABLE_RELEASE=1
 popd
 
+%if %{bootstrap_with_gdmd}
+# dmd was built with gdmd, now build dmd with that dmd
+pushd dmd/compiler/src
+	mv ../../generated/linux/release/*/ gdmd-built-dmd/
+	cat gdmd-built-dmd/dmd.conf
+	sed -i 's#P%/..#P%#g' gdmd-built-dmd/dmd.conf
+	export HOST_DMD=$PWD/gdmd-built-dmd/dmd
+	cat gdmd-built-dmd/dmd.conf
+
+	$HOST_DMD -O build.d
+	./build dmd
+popd
+%endif
+
 %install
 # install files manually since the install script distributed put files all over the place
 # dmd
@@ -143,13 +159,13 @@ install -dm755 %{buildroot}%{_sysconfdir}
 install -Dm644 %{_sourcedir}/dmd.conf %{buildroot}%{_sysconfdir}/dmd.conf
 
 install -dm755 %{buildroot}%{_mandir}
-cp -r %{_builddir}/dmd/docs/man/* %{buildroot}%{_mandir}/
+cp -r %{_builddir}/dmd/compiler/docs/man/* %{buildroot}%{_mandir}/
 
 install -dm755 %{buildroot}%{_datadir}/licenses/dmd
 install -Dm644 %{_builddir}/dmd/LICENSE.txt %{buildroot}%{_datadir}/licenses/dmd/LICENSE.txt
 
 install -dm755 %{buildroot}%{_datadir}/%{name}/samples
-cp -r %{_builddir}/dmd/samples/* %{buildroot}%{_datadir}/dmd/samples/
+cp -r %{_builddir}/dmd/compiler/samples/* %{buildroot}%{_datadir}/dmd/samples/
 
 # phobos
 install -dm755 %{buildroot}%{_libdir}
@@ -157,7 +173,7 @@ cp -a $(find %{_builddir}/phobos/generated/linux/release/ \( -iname "*.a" -a \! 
 
 install -dm755 %{buildroot}%{_includedir}/dlang/dmd
 cp -r %{_builddir}/phobos/{*.d,etc,std} %{buildroot}%{_includedir}/dlang/dmd
-cp -r %{_builddir}/druntime/import/* %{buildroot}%{_includedir}/dlang/dmd/
+cp -r %{_builddir}/dmd/druntime/import/* %{buildroot}%{_includedir}/dlang/dmd/
 
 %fdupes %{buildroot}
 

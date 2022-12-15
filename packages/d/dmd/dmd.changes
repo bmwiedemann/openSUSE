@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Thu Dec  1 11:03:47 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Bootstrap using gdmd instead of prebuilt binaries
+
+-------------------------------------------------------------------
+Wed Nov 16 16:55:52 UTC 2022 - Chris Josten <chris+suse@netsoj.nl>
+
+- Build using the build.d script, as opposed to the deprecated 
+  posix.mak
+- Remove dmd_use_tarball_bootstrap.diff patch as it is no longer
+  needed
+- Update to version 2.101.0
+  * Compiler changes
+     * Add bit fields to D
+     * Added __traits(classInstanceAlignment)
+     * Relaxed pragma(crt_constructor) / pragma(crt_destructor) 
+	   linkage check
+     * Add predefined version D_Optimized when compiling with -O
+     * Throwing from contracts of nothrow functions has been 
+	   deprecated
+     * Using integers for version or debug conditions has been 
+	   deprecated
+     * Print deprecations for scope pointer errors
+     * Improvements for the C++ header generation
+     * -preview=fixImmmutableConv has been added
+     * Returning a discarded void value from a function is now 
+	   deprecated
+     * ImportC now recognizes the typeof(...) operator
+     * Removed the -transition=markdown and -revert=markdown 
+	   switches
+     * new can now allocate an associative array
+     * -preview=in can now be used with extern(C++), disabled for 
+	   other non-D linkage
+     * The shortened method syntax is now available by default.
+     * Source files may no longer contain Unicode directionality 
+	   overrides
+  * Runtime changes
+     * Added avx512f detection to core.cpuid
+     * --DRT-oncycle=deprecate is removed
+     * Posix (excl. Darwin): Switch default GC signals from 
+	   SIGUSR1/2 to SIGRTMIN/SIGRTMIN+1
+  * Library changes
+     * Added SafeRefCounted, that can be used in @safe with 
+	   -preview=dip1000.
+     * Move logger out of experimental.
+     * remove std.experimental.logger's capability to set the minimal 
+	   LogLevel at compile time
+     * Change std.experimental.logger.core.sharedLog to return 
+	   shared(Logger)
+     * std.experimental.typecons has been removed
+     * std.digest.digest has been removed
+     * std.xml has been removed
+     * std.socket.Socket methods now accept only scope arrays.
+     * Add custom fill value to std.outbuffer.OutBuffer class
+
+- Update to version 2.100.2
+  * Compiler changes
+     * scope(failure) blocks that contain return statements are 
+	   now deprecated
+
+- Update to version 2.100.1
+  * Compiler changes
+     * scope(failure) blocks that contain return statements are 
+	   now deprecated
+
+- Update to version 2.100.0
+  * Compiler changes
+    * End deprecation period for using alias this for partial 
+	  assignment.
+    * The deprecation period for D1-style operators has ended.
+    * scope as a type constraint on class, struct, and enum 
+	  declarations is deprecated.
+    * The deprecation period of unannotated asm blocks has been 
+	  ended.
+    * The deprecation period of the delete keyword has been ended.
+    * Improvements for the C++ header generation
+    * The deprecation period for scope as a type constraint on 
+	  interface declarations has ended.
+    * The inout attribute no longer implies the return attribute
+    * Support contract invariant version identifier.
+    * Implement DIP 1038: @mustuse
+    * Added .tupleof property for static arrays
+    * Usage of this and super as types has been removed
+    * A missed case of switch case fallthrough has been deprecated
+
+  * Library changes
+    * New function bind in std.functional
+    * Nullable in std.typecons can now act as a range
+    * Zlib updated to 1.2.12
+
+  * Tools changes
+    * rdmd now supports specifying the D compiler using the RDMD_DMD 
+	  environment variable
+
+- Update to version 2.099.1
+  * Compiler changes
+    * Special case for __traits(parameters) in foreach loops 
+	  was removed
+  * Library changes
+    * std.experimental.logger default level changed to info instead 
+	  of warning
+
+- Update to version 2.099.0
+  * Compiler changes
+    * When ref scope return attributes are used on a parameter, 
+	  and return scope appears, the return applies to the scope, 
+	  not the ref.
+    * __traits(parameters) has been added to the compiler.
+    * Add ability to import modules to ImportC
+    * Casting between compatible sequences
+    * New command line switch -vasm which outputs assembler code 
+	  per function
+    * The '-preview=intpromote' switch is now set by default.
+    * -m32 now produces MS Coff objects when targeting windows
+    * Ignore unittests in non-root modules
+    * main can now return type noreturn and supports return inference
+    * Falling through switch cases is now an error
+    * Throw expression as proposed by DIP 1034 have been implemented
+    * Added __traits(initSymbol) to obtain aggregate initializers
+
+  * Runtime changes
+    * Add support for @safe class opEquals
+
+  * Library changes
+    * Move checkedint out of experimental.
+    * chunkBy @safe with forward ranges and splitWhen fully @safe
+    * std.csv can now optionally handle csv files with variable 
+	  number of columns.
+    * Change default log level for std.experimental.logger to 
+	  LogLevel.warning
+    * std.conv.to accepts std.typecons tuples
+
+-------------------------------------------------------------------
 Mon Dec 27 15:03:23 UTC 2021 - Chris Josten <chris+suse@netsoj.nl>
 
 - Update to version 2.098.1
