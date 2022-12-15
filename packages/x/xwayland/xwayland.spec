@@ -33,6 +33,13 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
+Patch1205874:   U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
+Patch1205875:   U_0002-Xi-return-an-error-from-XI-property-changes-if-verif.patch
+Patch1205876:   U_0003-Xi-avoid-integer-truncation-in-length-check-of-ProcX.patch
+Patch1205877:   U_0004-Xi-disallow-passive-grabs-with-a-detail-255.patch
+Patch1205878:   U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
+Patch1205879:   U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
+Patch1206017:   U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
