@@ -174,4 +174,60 @@
     only reported in a debug message instead of a warning (#6730). (forwarded request 1009616 from bnavigator)</comment>
     <requestid>1009617</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6a46adb4e8a2592b1dd50531fe7a2f1e</srcmd5>
+    <version>1.3.1</version>
+    <time>1671132540</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python-tomli requirement, there's no release &gt; 2.0.1 yet.
+- Update to 1.3.1 
+  * Fix an issue where an explicit dependency on lockfile was
+    missing, resulting in a broken Poetry in rare circumstances
+    (7169).
+- Catch up with upstream dependencies changed in previous updates
+- Update to 1.3.0 
+  Added
+  * Mark the lock file with an @generated comment as used by common tooling (#2773).
+  * poetry check validates trove classifiers and warns for deprecations (#2881).
+  * Introduce a top level -C, --directory option to set the working path (#6810).
+  Changed
+  * New lock file format (version 2.0) (#6393).
+  * Path dependency metadata is unconditionally re-locked (#6843).
+  * URL dependency hashes are locked (#7121).
+  * poetry update and poetry lock should now resolve dependencies more similarly (#6477).
+  * poetry publish will report more useful errors when a file does not exist (#4417).
+  * poetry add will check for duplicate entries using canonical names (#6832).
+  * Wheels are preferred to source distributions when gathering metadata (#6547).
+  * Git dependencies of extras are only fetched if the extra is requested (#6615).
+  * Invoke pip with --no-input to prevent hanging without feedback (#6724, #6966).
+  * Invoke pip with --isolated to prevent the influence of user configuration (#6531).
+  * Interrogate environments with Python in isolated (-I) mode (#6628).
+  * Raise an informative error when multiple version constraints overlap and are incompatible (#7098).
+  Fixed
+  * Fix an issue where concurrent instances of Poetry would corrupt the artifact cache (#6186).
+  * Fix an issue where Poetry can hang after being interrupted due to stale locking in cache (#6471).
+  * Fix an issue where the output of commands executed with --dry-run contained duplicate entries (#4660).
+  * Fix an issue where requests’s pool size did not match the number of installer workers (#6805).
+  * Fix an issue where poetry show --outdated failed with a runtime error related to direct origin dependencies (#6016).
+  * Fix an issue where only the last command of an ApplicationPlugin is registered (#6304).
+  * Fix an issue where git dependencies were fetched unnecessarily when running poetry lock --no-update (#6131).
+  * Fix an issue where stdout was polluted with messages that should go to stderr (#6429).
+  * Fix an issue with poetry shell activation and zsh (#5795).
+  * Fix an issue where a url dependencies were shown as outdated (#6396).
+  * Fix an issue where the source field of a dependency with extras was ignored (#6472).
+  * Fix an issue where a package from the wrong source was installed for a multiple-constraints dependency with different sources (#6747).
+  * Fix an issue where dependencies from different sources where merged during dependency resolution (#6679).
+  * Fix an issue where experimental.system-git-client could not be used via environment variable (#6783).
+  * Fix an issue where Poetry fails with an AssertionError due to distribution.files being None (#6788).
+  * Fix an issue where poetry env info did not respect virtualenvs.prefer-active-python (#6986).
+  * Fix an issue where poetry env list does not list the in-project environment (#6979).
+  * Fix an issue where poetry env remove removed the wrong environment (#6195).
+  * Fix an issue where the return code of a script was not relayed as exit code (#6824).
+  * Fix an issue where the solver could silently swallow ValueError (#6790).
+  Docs
+  * Improve documentation of package sources (#5605).
+  * Correct the default cache path on Windows (#7012). 
+</comment>
+    <requestid>1042957</requestid>
+  </revision>
 </revisionlist>

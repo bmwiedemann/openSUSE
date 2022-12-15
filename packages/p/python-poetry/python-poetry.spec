@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-poetry
-Version:        1.2.2
+Version:        1.3.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -36,33 +36,38 @@ URL:            https://python-poetry.org/
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core = 1.3.2}
+BuildRequires:  %{python_module poetry-core = 1.4.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.9
 Requires:       python-cachy >= 0.3.0
-Requires:       python-cleo >= 1.0.0~a5
-Requires:       python-crashtest >= 0.3.0
+Requires:       python-cleo >= 2.0.0
+Requires:       python-crashtest >= 0.4.1
 Requires:       python-dulwich >= 0.20.46
+Requires:       python-filelock >= 3.8.0
 Requires:       python-html5lib >= 1.0
-Requires:       python-jsonschema >= 4.10.0
-Requires:       python-keyring >= 21.2.0
-Requires:       python-poetry-core = 1.3.2
-Requires:       python-poetry-plugin-export >= 1.1.2
-Requires:       python-urllib3 >= 1.26.0
-# cachecontrol[filecache]
-Requires:       python-lockfile >= 0.9
-Requires:       python-packaging >= 20.4
-Requires:       python-pexpect >= 4.7.0
-Requires:       python-pkginfo >= 1.5
-Requires:       python-requests >= 2.18
-Requires:       python-requests-toolbelt >= 0.9.1
-Requires:       python-shellingham >= 1.5
-Requires:       python-tomlkit >= 0.11.4
-Requires:       python-virtualenv >= 20.4.7
+Requires:       python-poetry-core = 1.4.0
+Requires:       python-poetry-plugin-export >= 1.2.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
+Requires:       python-jsonschema >= 4.10.0
+Requires:       python-keyring >= 23.9.0
+Requires:       python-lockfile >= 0.12.2
+Requires:       python-packaging >= 20.4
+Requires:       python-pexpect >= 4.7.0
+Requires:       python-pkginfo >= 1.5
+Requires:       python-platformdirs >= 2.5.2
+Requires:       python-requests >= 2.18
+Requires:       python-shellingham >= 1.5
+Requires:       (python-requests-toolbelt >= 0.9.1 with python-requests-toolbelt < 0.11.0)
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli >= 2.0.1
+%endif
+Requires:       python-trove-classifiers >= 2022.5.19
+Requires:       python-urllib3 >= 1.26.0
+Requires:       python-virtualenv >= 20.4.7
+Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     git-core
