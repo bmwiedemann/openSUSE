@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 14 14:35:37 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.8
+
+- Update to 2.3.8
+  - Export detected shell environment in pyenv-init by @ianchen-tw in #2540
+  - Add CPython 3.12.0a3 by @saaketp in #2545
+  - Add CPython 3.11.1 by @anton-petrov in #2549
+  - Add CPython 3.10.9 by @rudisimo in #2544
+  - Add 3.7.16, 3.8.16, 3.9.16 by @chadac in #2550
+
+-------------------------------------------------------------------
 Sat Dec  3 17:56:56 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.7
 
 - Update to 2.3.7
