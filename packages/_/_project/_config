@@ -19,8 +19,18 @@ BuildFlags: vmfstype:ext4
 # nodirindex enabled 2020-12-31 - https://github.com/openSUSE/obs-build/pull/634
 BuildFlags: vmfsoptions:nodirindex
 
-# Help with the switch to the gcc9 provided libs:
-Prefer: libasan6 libasan6-32bit libubsan1 libubsan1-32bit libgfortran5
+# Help with the switch to the gcc<n> provided libs:
+# Do not use the -gcc11 variants if different providers exist
+Prefer: -libgfortran5-gcc11
+Prefer: -libubsan1-gcc11
+Prefer: -libubsan1-gcc11-32bit
+# Do not use the -gcc12 variants if different providers exist
+Prefer: -libasan8-gcc12
+Prefer: -libasan8-gcc12-32bit
+Prefer: -libgfortran5-gcc12
+Prefer: -libtsan2-gcc12
+Prefer: -libubsan1-gcc12
+Prefer: -libubsan1-gcc12-32bit
 
 Patterntype: rpm-md ymp
 %if "%_repository" == "images"
@@ -1562,6 +1572,10 @@ Macros:
 %product_libs_gcc_ver_libgo19 11
 %product_libs_gcc_ver_libgphobos2 11
 %product_libs_gcc_ver_libgdruntime2 11
+# The following shlibs have the latest version build from GCC 12 sources
+%product_libs_gcc_ver_libgo21 12
+%product_libs_gcc_ver_libgphobos3 12
+%product_libs_gcc_ver_libgdruntime3 12
 %gcc_version 12
 
 %ext_info .gz
