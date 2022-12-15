@@ -31,4 +31,12 @@
     <comment>security fixes</comment>
     <requestid>1008138</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>048bc45796cda13b54024b7c244f7444</srcmd5>
+    <version>1.5.3</version>
+    <time>1671128697</time>
+    <user>dimstar_suse</user>
+    <comment>Misc. security fixes</comment>
+    <requestid>1042912</requestid>
+  </revision>
 </revisionlist>

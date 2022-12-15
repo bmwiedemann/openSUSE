@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 14 12:11:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.5.3
+  * Fixes:
+    + Backslash escaping. Throw syntax exception on invalid json
+      sooner
+    + Adding another test for backslashes
+    + Introducing new static methods to set the recursion depth
+      limit
+    + Incorrect recursion depth check in JSONTokener
+    + Fixing StackOverflow error (bsc#1206400, CVE-2022-45685,
+      bsc#1206401, CVE-2022-45693)
+
+-------------------------------------------------------------------
 Wed Oct  5 08:33:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.5.1
