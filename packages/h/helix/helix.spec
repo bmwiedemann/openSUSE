@@ -19,7 +19,7 @@
 %global _helix_runtimedir %{_sharedstatedir}/%{name}/runtime
 
 Name:           helix
-Version:        22.08.1
+Version:        22.12
 Release:        0
 Summary:        A post-modern modal text editor written in Rust
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0+ AND Zlib AND MPL-2.0
@@ -27,11 +27,12 @@ URL:            https://github.com/helix-editor/helix
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}-source.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Source3:        helix-rpmlintrc
-Source4:        README-suse-maint.md
+Source3:        README-suse-maint.md
+Source4:        helix-rpmlintrc
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
+BuildRequires:  hicolor-icon-theme
 Suggests:       %{name}-runtime
 ExclusiveArch:  %{rust_arches}
 
@@ -72,7 +73,12 @@ Zsh command-line completion support for %{name}.
 %prep
 %autosetup -a1 -c -n %{name}-%{version}
 mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
+cp %{SOURCE2} .cargo/config.toml
+
+for shell in bash fish zsh 
+do 
+  sed -i "s|\#\!\/usr\/bin\/env ${shell}||g" contrib/completion/hx.${shell}
+done
 
 %package        runtime
 Summary:        Runtime files for %{name}
@@ -103,7 +109,7 @@ cp -rv "runtime/queries" %{buildroot}%{_helix_runtimedir}
 cp -rv "runtime/themes" %{buildroot}%{_helix_runtimedir}
 find "%{_builddir}/%{name}-%{version}/runtime/grammars" -type f -name '*.so' -exec \
     install --verbose -Dm 755 {} -t "%{buildroot}%{_helix_runtimedir}/grammars" \;
-install -Dm644 runtime/tutor.txt -t %{buildroot}%{_helix_runtimedir}
+install -Dm644 runtime/tutor -t %{buildroot}%{_helix_runtimedir}
 ln -sv %{_helix_runtimedir} %{buildroot}%{_libdir}/%{name}/runtime
 install -D -d -m 0755 %{buildroot}%{_bindir}
 ln -sv %{_libdir}/%{name}/hx %{buildroot}%{_bindir}/%{name}
@@ -112,7 +118,7 @@ ln -sv %{_libdir}/%{name}/hx %{buildroot}%{_bindir}/%{name}
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/Helix.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # Icon
-install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -Dm644 -T %{_builddir}/%{name}-%{version}/logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 # Shell completions
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
@@ -126,7 +132,7 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{bu
 %dir %{_libdir}/%{name}
 
 # Desktop application file
-%{_datadir}/pixmaps/*
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/*
 
 # hx symlinked as helix
@@ -136,7 +142,7 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{bu
 %{_libdir}/%{name}/hx
 
 # Tutor
-%{_helix_runtimedir}/tutor.txt
+%{_helix_runtimedir}/tutor
 
 %files runtime
 # Runtimes and runtime files

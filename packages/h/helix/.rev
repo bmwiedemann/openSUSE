@@ -73,4 +73,12 @@ This will increase possible helix users.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1030522</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7351ce071053a171c4fdd1be5fd4b55a</srcmd5>
+    <version>22.12</version>
+    <time>1671128703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042927</requestid>
+  </revision>
 </revisionlist>

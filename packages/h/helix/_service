@@ -1,11 +1,10 @@
 <services>
+  <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">helix</param>
+     <param name="srctar">helix-22.12.tar.xz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">helix</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
 
