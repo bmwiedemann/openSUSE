@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 14 22:48:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Implement some python packaging best practices
+- Prevent failing builds for Python < 3.7
+- Remove pytest: python unittest is enough
+
+-------------------------------------------------------------------
+Thu Dec  1 17:50:20 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- version update to 0~20220925
+  * no upstream changelog file found
+  * multiple fixes
+  * Required by plaso v20220930
+
+-------------------------------------------------------------------
 Fri Sep 23 11:52:09 UTC 2022 - pgajdos@suse.com
 
 - does not need python-six for build

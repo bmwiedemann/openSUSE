@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define timestamp 20220131
-%define skip_python2 1
+%define timestamp 20220925
 %define modname dfdatetime
 Name:           python-dfdatetime
 Version:        0~%{timestamp}
@@ -27,8 +25,8 @@ Summary:        Digital Forensics date and time (dfDateTime)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/log2timeline/dfdatetime
-Source:         https://files.pythonhosted.org/packages/source/d/%{modname}/%{modname}-%{timestamp}.tar.gz
-BuildRequires:  %{python_module pytest}
+Source:         https://github.com/log2timeline/%{modname}//releases/download/%{timestamp}/%{modname}-%{timestamp}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,11 +51,12 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{modname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/*.py
+%pyunittest -v tests/*.py
 
 %files %{python_files}
 %license LICENSE
 %doc ACKNOWLEDGEMENTS AUTHORS README
-%{python_sitelib}/*
+%{python_sitelib}/dfdatetime
+%{python_sitelib}/dfdatetime-%{timestamp}*info
 
 %changelog
