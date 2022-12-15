@@ -51,7 +51,8 @@
 %bcond_with armnn_extra_tests
 %endif
 # flatbuffers-devel is available on Leap 15.2+/SLE15SP2+
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# But tensorflow-lite >= 2.10 is only avaialble on Tumbleweed
+%if 0%{?suse_version} > 1500
 %bcond_without armnn_flatbuffers
 %else
 %bcond_with armnn_flatbuffers
@@ -80,6 +81,8 @@ Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/711
 Patch1:         armnn-gh711.patch
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/712
+Patch2:         armnn-281e97b.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -374,6 +377,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 %prep
 %setup -q -n armnn-%{version}
 %patch1 -p1
+%patch2 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -485,8 +489,6 @@ cp $CP_ARGS ./build/samples/SimpleSample %{buildroot}%{_bindir}
 %endif
 # Drop static libs - https://github.com/ARM-software/armnn/issues/514
 rm -f  %{buildroot}%{_libdir}/*.a
-# Drop unneeded files - https://github.com/ARM-software/armnn/issues/711
-rm -rf %{buildroot}%{_libdir}/objects-RelWithDebInfo
 
 # openCL UnitTests are failing in OBS due to the lack of openCL device
 %if %{without compute_cl} && %{with armnn_tests}

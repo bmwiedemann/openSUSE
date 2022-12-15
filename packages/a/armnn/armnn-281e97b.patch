@@ -1,0 +1,122 @@
+From 281e97b415ec429b6878aec7635cb74b8ed7ebca Mon Sep 17 00:00:00 2001
+From: Francis Murtagh <francis.murtagh@arm.com>
+Date: Tue, 13 Dec 2022 17:21:55 +0000
+Subject: [PATCH] Github #712: Use static libraries not object libraries for support library
+
+ * .o files were being installed by cmake.
+
+Change-Id: Ie2056e09b4800fe208d784a90f3908d508b8cadf
+Signed-off-by: Francis Murtagh <francis.murtagh@arm.com>
+---
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fc4207b..51c4cf2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ #
+-# Copyright © 2022 Arm Ltd and Contributors. All rights reserved.
++# Copyright © 2018-2022 Arm Ltd and Contributors. All rights reserved.
+ # Copyright 2020 NXP
+ # SPDX-License-Identifier: MIT
+ #
+@@ -109,7 +109,6 @@
+     src/armnnUtils/Transpose.cpp
+     )
+ 
+-add_library(armnnUtilsObj OBJECT ${armnnUtils_sources})
+ add_library_ex(armnnUtils STATIC ${armnnUtils_sources})
+ 
+ target_include_directories(armnnUtils PRIVATE src/backends)
+@@ -839,7 +838,7 @@
+         list(APPEND unittest_sources $<TARGET_OBJECTS:${lib}>)
+     endforeach()
+ 
+-    add_executable(UnitTests ${unittest_sources}  $<TARGET_OBJECTS:armnnUtilsObj>)
++    add_executable(UnitTests ${unittest_sources})
+     target_include_directories(UnitTests PRIVATE src/armnn)
+     target_include_directories(UnitTests PRIVATE src/armnnUtils)
+     target_include_directories(UnitTests PRIVATE src/armnnTestUtils)
+@@ -1004,14 +1003,6 @@
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
+ 
+-install(
+-   TARGETS armnnUtilsObj
+-   EXPORT  armnn-targets
+-   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-   OBJECTS DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-)
+-
+ ####################################################
+ ## Set export alias
+ set_target_properties(armnn
+diff --git a/shim/sl/CMakeLists.txt b/shim/sl/CMakeLists.txt
+index 6912640..e54101c 100644
+--- a/shim/sl/CMakeLists.txt
++++ b/shim/sl/CMakeLists.txt
+@@ -489,9 +489,9 @@
+         canonical/SystemPropertiesUtils.hpp
+         support_library_service.cpp)
+ 
+-list(APPEND armnn_support_library_sources "$<TARGET_OBJECTS:Armnn::armnnUtilsObj>")
+-list(APPEND armnn_support_library_sources "$<TARGET_OBJECTS:Armnn::armnnSerializerObj>")
+ add_library(armnn_support_library SHARED ${armnn_support_library_sources})
++target_link_libraries(armnn_support_library PUBLIC Armnn::armnnUtils)
++target_link_libraries(armnn_support_library PUBLIC Armnn::armnnSerializer-static)
+ 
+ target_link_libraries(armnn_support_library PUBLIC Armnn::Armnn)
+ target_link_libraries(armnn_support_library PUBLIC profiling_library_headers)
+diff --git a/src/armnnSerializer/CMakeLists.txt b/src/armnnSerializer/CMakeLists.txt
+index b7e65ad..5e94f33 100755
+--- a/src/armnnSerializer/CMakeLists.txt
++++ b/src/armnnSerializer/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ #
+-# Copyright © 2017 Arm Ltd. All rights reserved.
++# Copyright © 2017, 2018-2021, 2022 Arm Ltd and Contributors. All rights reserved.
+ # SPDX-License-Identifier: MIT
+ #
+ if(BUILD_ARMNN_SERIALIZER)
+@@ -39,34 +39,33 @@
+     if(BUILD_BARE_METAL)
+         add_library_ex(armnnSerializer STATIC ${armnn_serializer_sources})
+     else()
+-        # We're going to export both an OBJECT library and a SHARED library here.
++        # We're going to export both a STATIC library and a SHARED library here.
+         # In some instances it's easier to include the serializer directly into
+         # the target executable or library rather than have yet another .so.
+-        add_library(armnnSerializerObj OBJECT ${armnn_serializer_sources})
++        add_library(armnnSerializer-static STATIC ${armnn_serializer_sources})
+         add_library_ex(armnnSerializer SHARED ${armnn_serializer_sources})
+     endif()
+ 
+     include_directories(SYSTEM "${FLATBUFFERS_INCLUDE_PATH}")
+ 
+     set_target_properties(armnnSerializer PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+-    target_include_directories(armnnSerializerObj PRIVATE ../armnn)
+-    target_include_directories(armnnSerializerObj PRIVATE ../armnnUtils)
+     target_include_directories(armnnSerializer PRIVATE ../armnn)
+     target_include_directories(armnnSerializer PRIVATE ../armnnUtils)
+     target_include_directories(armnnSerializer PRIVATE ../../generated)
+-    target_include_directories(armnnSerializerObj PRIVATE ../../generated)
++    target_include_directories(armnnSerializer-static PRIVATE ../armnn)
++    target_include_directories(armnnSerializer-static PRIVATE ../armnnUtils)
++    target_include_directories(armnnSerializer-static PRIVATE ../../generated)
+ 
+     list(APPEND armnn_serializer_sources
+         ArmnnSchema_generated.h
+         )
+ 
+     # System include to suppress warnings for flatbuffers generated files
+-    target_include_directories(armnnSerializerObj SYSTEM PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+     target_include_directories(armnnSerializer SYSTEM PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+ 
+     target_link_libraries(armnnSerializer armnn ${FLATBUFFERS_LIBRARY})
+ 
+-    install(TARGETS armnnSerializerObj
++    install(TARGETS armnnSerializer-static
+             EXPORT  armnn-targets
+             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}

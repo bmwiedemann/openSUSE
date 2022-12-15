@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 14 15:41:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- tensorflow-lite >= 2.10 is only avaialble on Tumbleweed
+
+-------------------------------------------------------------------
+Wed Dec 14 15:38:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to use static libraries not object libraries for
+  support library:
+  * armnn-281e97b.patch
+
+-------------------------------------------------------------------
 Mon Nov 28 07:40:40 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 22.11:
