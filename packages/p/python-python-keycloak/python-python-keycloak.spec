@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname python-keycloak
 %define skip_python2 1
 Name:           python-%{modname}
-Version:        0.27.0
+Version:        2.6.0
 Release:        0
 Summary:        Python package providing access to the Keycloak API
 License:        MIT
@@ -30,6 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-keycloak
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -59,7 +59,10 @@ Python package providing access to the Keycloak API
 
 %files %{python_files}
 %doc README.md
-%license LICENSE
+%doc %{python_sitelib}/CHANGELOG.md
+%doc %{python_sitelib}/CONTRIBUTING.md
+%doc %{python_sitelib}/CODEOWNERS
+%license %{python_sitelib}/LICENSE
 %{python_sitelib}/keycloak
 %{python_sitelib}/python_keycloak-%{version}*-info
 

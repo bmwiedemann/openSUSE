@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Dec 13 18:49:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v2.6.0 (2022-10-03)
+  Feat
+  * attack detection API implementation
+
+- Update to v2.5.0 (2022-08-19)
+  No changelog
+
+- Update to v2.4.0 (2022-08-19)
+  Feat
+  * add client scope-mappings client roles operations
+  * added missing functionality to include attributes when returning realm roles according to specifications
+
+- Update to v2.3.0 (2022-08-13)
+  Feat
+  * Add token_type/scope to token exchange api
+
+- Update to v2.2.0 (2022-08-12)
+  Feat
+  * add client scope-mappings realm roles operations
+
+- Update to v2.1.1 (2022-07-19)
+  Fix
+  * removed whitespace from urls
+  Refactor
+  * applied linting
+
+-Update to v2.1.0 (2022-07-18)
+ Feat
+  * add unit tests
+  * add docstrings
+  * add functions covering some missing REST API calls
+ Fix
+  * linting
+  * now get_required_action_by_alias now returns None if action does not exist
+  * moved imports at the top of the file
+  * remove duplicate function
+  * applied tox -e docs
+  * applied flake linting checks
+  * applied tox linting check
+
+-Update to v2.0.0 (2022-07-17)
+ BREAKING CHANGE
+  * Renamed parameter client_name to client_id in get_client_id method
+ Fix
+ * check client existence based on clientId 
+
+-------------------------------------------------------------------
 Sat Apr 30 09:26:19 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Enable tests
