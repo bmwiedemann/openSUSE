@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname param
 Name:           python-param
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause

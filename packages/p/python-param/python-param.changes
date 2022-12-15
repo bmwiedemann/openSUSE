@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 13 15:45:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.12.3: 
+  The 1.12.3 release adds support for Python 3.11. Many thanks to @musicinmybrain (first contribution!) and @maximlt for contributing to this release.
+  Enhancements:
+  * Preserve existing Random seed behavior in Python 3.11 (#638)
+  * Add support for Python 3.11 (#658)
+
+-------------------------------------------------------------------
 Wed Jun 22 00:34:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.12.2:
