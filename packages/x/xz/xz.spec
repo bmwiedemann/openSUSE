@@ -74,17 +74,19 @@ Obsoletes:      lzma-alpha-devel < %{version}
 This package contains the header files and libraries needed for
 compiling programs using the LZMA library.
 
-%package static-devel
+%package devel-static
 Summary:        Static version of LZMA library
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 Requires:       lzma-devel = %{version}
+Obsoletes:      xz-static-devel < %{version}-%{release}
+Provides:       xz-static-devel = %{version}-%{release}
 
-%description static-devel
+%description devel-static
 Static library for the LZMA library
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -182,7 +184,7 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_libdir}/liblzma.so
 %{_libdir}/pkgconfig/liblzma.pc
 
-%files static-devel
+%files devel-static
 %{_libdir}/liblzma.a
 
 %changelog

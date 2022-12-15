@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  1 09:33:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename xz-static-devel -> xz-devel-static to follow the general
+  naming used in openSUSE.
+
+-------------------------------------------------------------------
 Fri Nov 18 10:56:35 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 5.2.8:
