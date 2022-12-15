@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:00:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.6.0 
+  * warning Removed support for Typer warning
+  * Please use the native Typer functionality instead.
+  * Added self-updating automated readme screengrabs using rich-codex
+  * Fix AssertionError when using click command call #94
+
+-------------------------------------------------------------------
 Thu Sep  1 00:48:20 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.5.2

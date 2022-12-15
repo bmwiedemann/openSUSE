@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rich-click
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Format click help output nicely with rich
 License:        MIT

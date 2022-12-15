@@ -7,4 +7,12 @@
     <comment>new dep of django-codemod. c.f. https://build.opensuse.org/package/show/home:jayvdb:branches:devel:languages:python:django/python-django-codemod</comment>
     <requestid>1000584</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>322685841af68878e54f4f6e20eb6176</srcmd5>
+    <version>1.6.0</version>
+    <time>1671128688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042866</requestid>
+  </revision>
 </revisionlist>
