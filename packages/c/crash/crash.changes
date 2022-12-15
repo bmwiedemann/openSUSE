@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:47:43 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- BuildRequire %kernel_module_package_buildreqs (boo#1205149)
+
+-------------------------------------------------------------------
 Fri Nov 18 14:43:30 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - Require zlib-devel for crash-devel.

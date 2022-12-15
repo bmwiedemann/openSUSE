@@ -1599,4 +1599,13 @@
 </comment>
     <requestid>1036703</requestid>
   </revision>
+  <revision rev="182" vrev="3">
+    <srcmd5>4c60c8b88c400226ef2164234eec205b</srcmd5>
+    <version>7.3.1</version>
+    <time>1671128712</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire %kernel_module_package_buildreqs (boo#1205149)
+</comment>
+    <requestid>1042983</requestid>
+  </revision>
 </revisionlist>

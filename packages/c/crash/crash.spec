@@ -129,6 +129,7 @@ BuildRequires:  kernel-syms-rt
 %if 0%{?suse_version} >= 1130
 BuildRequires:  kernel-devel
 %endif
+BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  module-init-tools
 
 %if 0%{?build_kmp}
