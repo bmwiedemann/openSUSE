@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 14 14:17:22 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1671027435.2e911c9:
+  * t: Mark fake isotovideo fork as uncoverable
+  * t: Mark errors about missing backend docs as uncoverable
+  * t: Drop unused fake command responses
+  * Add subtest for search_for_expected_serial_failures
+  * Resume directly after failure in case `assert_script_run` fails
+
+-------------------------------------------------------------------
 Sat Dec 03 02:29:09 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1669996116.7d465c7:
