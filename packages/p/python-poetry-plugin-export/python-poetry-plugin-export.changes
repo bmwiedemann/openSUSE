@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 14 16:06:49 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Bump requirements
+
+-------------------------------------------------------------------
+Wed Dec 14 13:07:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.2.0
+  * Drop some compatibility code and bump minimum required poetry version to
+    1.2.2 (#143).
+  * Ensure compatibility with upcoming Poetry releases (#151).
+
+-------------------------------------------------------------------
 Mon Oct 10 20:04:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.2

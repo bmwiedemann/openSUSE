@@ -9,4 +9,17 @@
 fix multibuild</comment>
     <requestid>1011037</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c52acfdf71803032c894e8e354c91d6d</srcmd5>
+    <version>1.2.0</version>
+    <time>1671132541</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump requirements
+- Update to 1.2.0
+  * Drop some compatibility code and bump minimum required poetry version to
+    1.2.2 (#143).
+  * Ensure compatibility with upcoming Poetry releases (#151).
+</comment>
+    <requestid>1042959</requestid>
+  </revision>
 </revisionlist>

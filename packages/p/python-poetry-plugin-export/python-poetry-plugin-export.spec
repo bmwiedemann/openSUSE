@@ -1,5 +1,5 @@
 #
-# spec file for package python-poetry-plugin-export
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -26,23 +26,25 @@
 %endif
 
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
 URL:            https://python-poetry.org/
-Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry-plugin-export-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry_plugin_export-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.1.0}
+BuildRequires:  %{python_module poetry-core >= 1.3.0}
+# No buildtime requirement of poetry: avoid build dep cycles!
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module poetry-plugin-export = %{version}}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildRequires:  fdupes
-Requires:       python-poetry >= 1.2.0
-Requires:       python-poetry-core >= 1.1.0
+Requires:       python-poetry >= 1.2.2
+Requires:       python-poetry-core >= 1.3.0
 Provides:       python-poetry_plugin_export = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
@@ -51,7 +53,7 @@ BuildArch:      noarch
 Poetry plugin to export the dependencies to various formats
 
 %prep
-%setup -q -n poetry-plugin-export-%{version}
+%setup -q -n poetry_plugin_export-%{version}
 
 %if !%{with test}
 %build
