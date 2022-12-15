@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  5 12:58:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.6:
+  -  Removed the error check in sub vmstatInit
+     It was erroneous and that option is seldom used.
+     Reported-by Bill Torpey
+  -  Add default collection for Cepg rbd devices to the conf file
+  - Add patch for dskopts=F to allow double digit precision on playback
+
+-------------------------------------------------------------------
 Mon May  2 17:37:21 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.3.3

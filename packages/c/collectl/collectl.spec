@@ -16,13 +16,16 @@
 #
 
 
+%if ! %{defined _fillupdir}
+%define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
 Name:           collectl
-Version:        4.3.3
+Version:        4.3.6
 Release:        0
 Summary:        System status data collection utility
 License:        Artistic-1.0 AND GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://collectl.sourceforge.net
+URL:            https://collectl.sourceforge.net
 Source0:        http://sourceforge.net/projects/collectl/files/collectl/%{name}-%{version}/%{name}-%{version}.src.tar.gz
 Source1:        collectl.service
 Source2:        collectl.sysconfig
@@ -31,10 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  systemd-rpm-macros
 BuildArch:      noarch
 %{?systemd_requires}
-
-%if ! %{defined _fillupdir}
-%define _fillupdir /var/adm/fillup-templates
-%endif
 
 %description
 Similar to the "sar" program, collectl does collection of device performance
@@ -100,8 +99,8 @@ install -d -m 0755 %{buildroot}%{_var}/log/%{name}
 %{_sbindir}/collectl
 %{_sbindir}/rccollectl
 %{_datadir}/collectl
-%{_mandir}/man1/collectl.1.gz
-%{_mandir}/man1/colmux.1.gz
+%{_mandir}/man1/collectl.1%{?ext_man}
+%{_mandir}/man1/colmux.1%{?ext_man}
 %dir %{_var}/log/%{name}
 
 %changelog
