@@ -1,0 +1,77 @@
+From c91dc77bb5218049c9904b43e217d7a89e1ddc99 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Tue, 13 Dec 2022 23:29:29 +0800
+Subject: [PATCH] OvmfPkg/PlatformInitLib: Fix integrity checking failed of
+ NvVarStore in some cases
+
+In the commit 4f173db8b4 "OvmfPkg/PlatformInitLib: Add functions for EmuVariableNvStore"
+, it introduced a PlatformValidateNvVarStore() function for checking the
+integrity of NvVarStore.
+
+In some cases when the VariableHeader->StartId is VARIABLE_DATA, the VariableHeader->State
+is not just one of the four primary states: VAR_IN_DELETED_TRANSITION, VAR_DELETED,
+VAR_HEADER_VALID_ONLY, VAR_ADDED. The state may combined two or three
+states, e.g.
+    0x3C = (VAR_IN_DELETED_TRANSITION & VAR_ADDED) & VAR_DELETED
+or
+    0x3D = VAR_ADDED & VAR_DELETED
+
+When the variable store has those variables, then system booting/rebooting will
+hangs in a ASSERT:
+
+NvVarStore Variable header State was invalid.
+ASSERT
+/mnt/working/source_code-git/edk2/OvmfPkg/Library/PlatformInitLib/Platform.c(819):
+((BOOLEAN)(0==1))
+
+Adding more log to UpdateVariable() and PlatformValidateNvVarStore(), we
+can see there have some variables have 0x3C or 0x3D state in store.
+e.g.
+
+UpdateVariable(), VariableName=BootOrder
+L1871, State=0000003F			<-- VAR_ADDED
+State &= VAR_DELETED=0000003D
+FlushHobVariableToFlash(), VariableName=BootOrder
+...
+UpdateVariable(), VariableName=InitialAttemptOrder
+L1977, State=0000003F
+State &= VAR_IN_DELETED_TRANSITION=0000003E
+L2376, State=0000003E
+State &= VAR_DELETED=0000003C
+FlushHobVariableToFlash(), VariableName=InitialAttemptOrder
+...
+UpdateVariable(), VariableName=ConIn
+L1977, State=0000003F
+State &= VAR_IN_DELETED_TRANSITION=0000003E
+L2376, State=0000003E
+State &= VAR_DELETED=0000003C
+FlushHobVariableToFlash(), VariableName=ConIn
+...
+
+So, only allowing the four primary states is not enough. This patch adds
+two more combined states to the valid states list:
+
+    (VAR_IN_DELETED_TRANSITION & VAR_ADDED) & VAR_DELETED = 0x3c
+
+    VAR_ADDED & VAR_DELETED = 0x3d
+
+Signed-off-by: "Lee, Chun-Yi" <jlee@suse.com>
+---
+ OvmfPkg/Library/PlatformInitLib/Platform.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: edk2-edk2-stable202211/OvmfPkg/Library/PlatformInitLib/Platform.c
+===================================================================
+--- edk2-edk2-stable202211.orig/OvmfPkg/Library/PlatformInitLib/Platform.c
++++ edk2-edk2-stable202211/OvmfPkg/Library/PlatformInitLib/Platform.c
+@@ -704,7 +704,9 @@ PlatformValidateNvVarStore (
+       if (!((VariableHeader->State == VAR_IN_DELETED_TRANSITION) ||
+             (VariableHeader->State == VAR_DELETED) ||
+             (VariableHeader->State == VAR_HEADER_VALID_ONLY) ||
+-            (VariableHeader->State == VAR_ADDED)))
++            (VariableHeader->State == VAR_ADDED) ||
++            (VariableHeader->State == (VAR_ADDED & VAR_DELETED)) ||
++            (VariableHeader->State == (VAR_ADDED & VAR_IN_DELETED_TRANSITION & VAR_DELETED))))
+       {
+         DEBUG ((DEBUG_ERROR, "NvVarStore Variable header State was invalid.\n"));
+         return FALSE;

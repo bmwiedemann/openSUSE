@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  8 12:16:49 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-OvmfPkg-PlatformInitLib-Fix-integrity-checking-faile.patch
+  to avoid "NvVarStore Variable header State was invalid" issue when
+  rebooting or booting second time. System hangs when booting. (bsc#1206078)
+
+  The error message in ovmf log:
+	Select Item: 0x19
+	Select Item: 0x25
+	Reserved variable store memory: 0x7FF7C000; size: 528kb
+	NvVarStore Variable header State was invalid.  
+	ASSERT /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/OvmfPkg/Library/PlatformInitLib/Platform.c(807): ((BOOLEAN)(0==1)) 
+
+-------------------------------------------------------------------
 Fri Dec  2 12:27:15 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch

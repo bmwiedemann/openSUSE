@@ -60,6 +60,8 @@ Patch11:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.pat
 Patch12:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
 # Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
 Patch13:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
+# Bug 1206078 - qemu-ovmf-x86_64-202211 is broken: NvVarStore Variable header State was invalid
+Patch14:        %{name}-OvmfPkg-PlatformInitLib-Fix-integrity-checking-faile.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -184,6 +186,7 @@ rm -rf $PKG_TO_REMOVE
 %patch12 -p1
 %endif
 %patch13 -p1
+%patch14 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
