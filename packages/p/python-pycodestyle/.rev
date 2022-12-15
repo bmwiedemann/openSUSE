@@ -103,4 +103,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ae19358aa9a46228b3ea0a8063e044b5</srcmd5>
+    <version>2.10.0</version>
+    <time>1671128691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042870</requestid>
+  </revision>
 </revisionlist>
