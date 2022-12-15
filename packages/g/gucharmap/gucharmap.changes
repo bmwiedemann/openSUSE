@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 14 14:33:13 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 15.0.2:
+  + metainfo: Add screenshots and link them from metainfo.
+  + build: Use GNOME module post_install().
+  + all: Update to unicode 15.0.0.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed May 18 14:51:50 UTC 2022 - dimstar@opensuse.org
 
 - Update to version 14.0.3:

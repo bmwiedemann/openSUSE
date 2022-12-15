@@ -3,7 +3,7 @@
     <param name="url">https://gitlab.gnome.org/GNOME/gucharmap.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">14.0.3</param>
+    <param name="revision">15.0.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>
