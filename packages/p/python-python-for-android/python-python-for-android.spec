@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define version_with_zeros 2020.06.02
-%define skip_python2 1
+%define version_with_zeros 2022.09.04
 Name:           python-python-for-android
 Version:        2022.9.4
 Release:        0
@@ -27,8 +25,6 @@ License:        MIT
 URL:            https://github.com/kivy/python-for-android
 Source:         https://github.com/kivy/python-for-android/archive/v%{version_with_zeros}.tar.gz#/python-for-android-%{version}.tar.gz
 Source1:        python-python-for-android-rpmlintrc
-# https://github.com/kivy/python-for-android/pull/2355
-Patch0:         arch-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,7 +32,6 @@ Requires:       python-Jinja2
 Requires:       python-appdirs
 Requires:       python-colorama >= 0.3.3
 Requires:       python-pep517
-Requires:       python-six
 Requires:       python-toml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -54,7 +49,6 @@ BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sh >= 1.10}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  autoconf
@@ -74,8 +68,7 @@ BuildRequires:  unzip
 Android APK packager for Python scripts and apps
 
 %prep
-%setup -q -n python-for-android-%{version_with_zeros}
-%patch0 -p1
+%autosetup -p1 -n python-for-android-%{version_with_zeros}
 
 sed -i "1{s:#!.*$:#!%{_bindir}/bash:}" pythonforandroid/bootstraps/common/build/gradlew
 
@@ -117,7 +110,7 @@ export PYTHONPATH=${PWD}:${PWD}/tests/
 # Five failures due to venv attempting download of pip, wheel, setuptools
 skip_tests="test_get_dep_names_of_package or test_get_package_dependencies or test_venv or test_get_package_as_folder or test_extract_metainfo_files_from_package"
 # Unable to download NDK
-skip_tests="$skip_tests or (TestToolchainCL and test_create)"
+skip_tests="$skip_tests or (TestToolchainCL and test_create) or test_create_python_bundle"
 
 %pytest -rs tests -k "not ($skip_tests)"
 
