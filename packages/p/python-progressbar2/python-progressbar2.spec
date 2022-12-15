@@ -1,7 +1,7 @@
 #
 # spec file for package python-progressbar2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-progressbar2
-Version:        3.51.4
+Version:        4.2.0
 Release:        0
 Summary:        Python library to provide visual text-based progress to long running operations
 License:        BSD-3-Clause

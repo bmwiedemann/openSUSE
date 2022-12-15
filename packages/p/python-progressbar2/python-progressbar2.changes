@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:11:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 4.2.0 
+  * Added increment() method for easy usage as callback from libraries such as boto
+
+- Update to version 4.1.1
+  * Fixed backwards compatibility with original progressbar library
+
+- Update to version 4.1.0 
+  * Delegate unknown attrs to target in WrappingIO thanks to @william-andre. Added threaded progress bar example
+
+- Update to version 4.0.0
+  * Updated to Python 3.10 including type hinting
+
+- Update to version 3.54.0
+  * Release created with GPGit 1.5.0
+  https://github.com/NicoHood/gpgit
+  * 
+-------------------------------------------------------------------
 Thu Jul 30 11:06:51 UTC 2020 - Duncan Mac-Vicar <dmacvicar@suse.com>
 
 - Remove unnecessary python_module devel BuildRequires
