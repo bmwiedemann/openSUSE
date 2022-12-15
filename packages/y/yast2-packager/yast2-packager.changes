@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 14 10:25:42 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Merged PR https://github.com/yast/yast-packager/pull/623
+  by Christopher Yeleighton <giecrilj@stegny.2a.pl>:
+  Do not call [Install done] on aborted packages (boo#1203302)
+- 4.5.9
+
+-------------------------------------------------------------------
 Mon Nov  7 10:06:19 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Do not add an empty repository to the system when upgrading
