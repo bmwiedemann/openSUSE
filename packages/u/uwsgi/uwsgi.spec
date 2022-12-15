@@ -16,6 +16,17 @@
 #
 
 
+%define with_php 1
+%if 0%{?suse_version} > 1320
+%if 0%{?suse_version} >= 1550
+%define php  php8
+%else
+%define php  php7
+%endif
+%else
+%define with_php 0
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           uwsgi
 Version:        2.0.20
@@ -86,9 +97,9 @@ BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
-%if 0%{?suse_version} > 1320
-BuildRequires:  php7-devel
-BuildRequires:  php7-embed
+%if %{with_php}
+BuildRequires:  %{php}-devel
+BuildRequires:  %{php}-embed
 %endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module greenlet-devel}
@@ -407,14 +418,14 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for rendering XML content using XSLT.
 
-%if 0%{?suse_version} > 1320
-%package php7
+%if %{with_php}
+%package %{php}
 Summary:        PHP7 Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
-Requires:       php7-embed
+Requires:       %{php}-embed
 
-%description php7
+%description %{php}
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for PHP version 7.
@@ -534,9 +545,9 @@ python3 uwsgiconfig.py --plugin plugins/python opensuse python3
 %endif
 %{apache_apxs} -c apache2/mod_uwsgi.c
 
-# Build php7 plugin
-%if 0%{?suse_version} > 1320
-python3 uwsgiconfig.py --plugin plugins/php opensuse php7
+# Build php plugin
+%if %{with_php}
+python3 uwsgiconfig.py --plugin plugins/php opensuse %{php}
 %endif
 
 %install
@@ -788,7 +799,7 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %{_libdir}/uwsgi/xslt_plugin.so
 
 %if 0%{?suse_version} > 1320
-%files php7
+%files %{php}
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/php*_plugin.so
 %endif
