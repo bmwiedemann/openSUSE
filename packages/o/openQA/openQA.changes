@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 14 18:16:35 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1671027455.dda1de5:
+  * container: Install tessseract so we can test OCR
+  * Dependency cron 2022-12-14
+  * Split big transaction in stale job detection
+  * Remove unused function `set_running`
+
+-------------------------------------------------------------------
 Mon Dec 12 10:16:37 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1670662257.ab43bbd:
