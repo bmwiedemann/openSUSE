@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 13 15:37:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v5.10.1 
+  * v5.10.1
+  #274: Fixed ResourceWarning in _common.
+
+-------------------------------------------------------------------
 Fri Oct 28 17:45:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v5.10.0

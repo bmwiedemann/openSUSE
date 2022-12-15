@@ -71,4 +71,12 @@ It does NOT conflict with python38 standard library.</comment>
     <comment></comment>
     <requestid>1032378</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad5d2dcf5f3d9df60b3662b8838bfb6f</srcmd5>
+    <version>5.10.1</version>
+    <time>1671128652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042891</requestid>
+  </revision>
 </revisionlist>

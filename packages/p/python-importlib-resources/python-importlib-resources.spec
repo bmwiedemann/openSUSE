@@ -19,7 +19,7 @@
 %{?!python_module:%define python3-%{**}}
 %define skip_python2 1
 Name:           python-importlib-resources
-Version:        5.10.0
+Version:        5.10.1
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0
