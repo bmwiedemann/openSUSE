@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:16:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.0.36 
+  * Fixes:
+  - Another Python 3.6 fix for a bug that was introduced in 3.0.34.
+
+- Update to version 3.0.35
+  Fixes:
+  - Fix bug introduced in 3.0.34 for Python 3.6. Use asynccontextmanager
+  implementation from prompt_toolkit itself.
+
+- Update to version 3.0.34
+  Fixes:
+  - Improve completion performance in various places.
+  - Improve renderer performance.
+  - Handle `KeyboardInterrupt` when the stacktrace of an unhandled error is
+  displayed.
+  - Use correct event loop in `Application.create_background_task()`.
+  - Fix `show_cursor` attribute in `ScrollablePane`.
+
+-------------------------------------------------------------------
 Tue Dec  6 04:28:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.0.33: 
