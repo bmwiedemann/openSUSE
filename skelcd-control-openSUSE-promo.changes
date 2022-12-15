@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 12 13:35:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Define i586 as an external port: openSUSE:Factory is giving up on
+  i586 (boo#1206406).
+- 20221212
+
+-------------------------------------------------------------------
 Thu Sep 29 13:03:17 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable kdump for %arm - boo#1203888
