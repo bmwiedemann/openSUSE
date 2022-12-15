@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Add packages to be able to build on Fedora
+
+-------------------------------------------------------------------
 Sun Sep 26 19:39:54 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.0.2
 
 - add fix-build-when-SIGSTKSZ-is-no-longer-a-constant.patch

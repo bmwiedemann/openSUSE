@@ -30,7 +30,11 @@ Source:         https://github.com/SOCI/%{name}/archive/refs/tags/v%{version}.ta
 Patch0:         fix-build-when-SIGSTKSZ-is-no-longer-a-constant.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+%if 0%{?suse_version}
 BuildRequires:  libboost_headers-devel
+%else
+BuildRequires:  boost-devel
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmariadb)
 BuildRequires:  pkgconfig(libpq)
@@ -57,7 +61,11 @@ standard.
 Summary:        Development files for soci
 Group:          Development/Tools/Other
 Requires:       lib%{name}_core%{sover} = %{version}
+%if 0%{?suse_version}
 Requires:       libboost_headers-devel
+%else
+Requires:       boost-devel
+%endif
 
 %description    devel
 soci is a C++ database access library that provides the illusion of
