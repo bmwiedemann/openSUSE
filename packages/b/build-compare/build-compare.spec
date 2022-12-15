@@ -17,7 +17,7 @@
 
 
 Name:           build-compare
-Version:        20220926T095347.40c240f
+Version:        20221206T204012.bb70754
 Release:        0
 Summary:        Build Result Compare Script
 License:        GPL-2.0-or-later

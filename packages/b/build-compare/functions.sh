@@ -122,6 +122,8 @@ QF_FILELIST="[%{FILENAMES} %{FILEFLAGS} %{FILESTATES} %{FILEMODES:octal} %{FILEU
 
 QF_CHECKSUM="[%{FILENAMES} %{FILEMD5S} %{FILEFLAGS}\n]\\n"
 
+QF_SOURCERPM="%{SOURCERPM}\\n"
+
 QF_ALL="\n___QF_NAME___\n${QF_NAME}\n___QF_NAME___\n"
 QF_ALL="$QF_ALL\n___QF_TAGS___\n${QF_TAGS}\n___QF_TAGS___\n"
 QF_ALL="$QF_ALL\n___QF_VER_REL___\n${QF_VER_REL}\n___QF_VER_REL___\n"
@@ -130,6 +132,7 @@ QF_ALL="$QF_ALL\n___QF_PROVIDES___\n${QF_PROVIDES}\n___QF_PROVIDES___\n"
 QF_ALL="$QF_ALL\n___QF_SCRIPT___\n${QF_SCRIPT}\n___QF_SCRIPT___\n"
 QF_ALL="$QF_ALL\n___QF_FILELIST___\n${QF_FILELIST}\n___QF_FILELIST___\n"
 QF_ALL="$QF_ALL\n___QF_CHECKSUM___\n${QF_CHECKSUM}\n___QF_CHECKSUM___\n"
+QF_ALL="$QF_ALL\n___QF_SOURCERPM___\n${QF_SOURCERPM}\n___QF_SOURCERPM___\n"
 }
 
 check_header()
@@ -286,6 +289,17 @@ function set_regex() {
   name_ver_rel_new_regex_l=${name_ver_rel_new//./\\.}
 }
 
+# Trim a block starting with a keyword and ending with an empty line
+# $1: enable
+# $2: keyword
+function trim_section() {
+  if test "${1}" -gt 0 ; then
+    sed -e "/^${2}$/,/^$/d"
+  else
+    cat
+  fi
+}
+
 # Compare just the rpm meta data of two rpms
 # Returns:
 # 0 in case of same content
@@ -365,8 +379,12 @@ function cmp_rpm_meta ()
       esac
     fi
 
-    get_value QF_PROVIDES $rpm_meta_old | trim_release_old | sort > $file1
-    get_value QF_PROVIDES $rpm_meta_new | trim_release_new | sort > $file2
+    # Built packages provide the sourcerpm, for the sourcerpm itself it is "(none)"
+    [ "x$(get_value QF_SOURCERPM $rpm_meta_new)" == "x(none)" ] && is_sourcerpm=1 || is_sourcerpm=0
+
+    # FIXME: PROVIDE needs to be handled independent from the other tags
+    get_value QF_PROVIDES $rpm_meta_old | trim_section ${is_sourcerpm} 'PROVIDE' | trim_release_old | sort > $file1
+    get_value QF_PROVIDES $rpm_meta_new | trim_section ${is_sourcerpm} 'PROVIDE' | trim_release_new | sort > $file2
     if ! comp_file PROVIDES $file1 $file2 $rpm_meta_old $rpm_meta_new; then
       rm -rf "$tmpdir"
       return 1

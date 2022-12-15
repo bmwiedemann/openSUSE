@@ -95,7 +95,7 @@ if test ! -f "$nsrpm"; then
 fi
 
 echo "compare $osrpm $nsrpm"
-if bash $SCMPSCRIPT "$osrpm" "$nsrpm"
+if bash $SCMPSCRIPT $check_all "$osrpm" "$nsrpm"
 then
   : src.rpm identical
 else

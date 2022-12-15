@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 23:51:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Trim "PROVIDES" from source rpms (#59, bsc#1205998)
+
+-------------------------------------------------------------------
 Mon Sep 19 08:02:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - move license to licensedir
