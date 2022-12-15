@@ -449,4 +449,16 @@ See changelog in:
   * Readiness &amp; liveness probes correct port</comment>
     <requestid>1035138</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0b6cf865cac7b2a1acb5e65540aabfd0</srcmd5>
+    <version>3.10.3</version>
+    <time>1671128706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.10.3:
+  * Fix backwards compatibility
+  * Update string handling
+  * Update repo handling
+  * Update schema validation handling</comment>
+    <requestid>1042954</requestid>
+  </revision>
 </revisionlist>

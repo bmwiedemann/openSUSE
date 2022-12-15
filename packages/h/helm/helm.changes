@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 14 15:50:30 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.3:
+  * Fix backwards compatibility
+  * Update string handling
+  * Update repo handling
+  * Update schema validation handling
+
+-------------------------------------------------------------------
 Thu Nov 10 18:17:06 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.10.2:
