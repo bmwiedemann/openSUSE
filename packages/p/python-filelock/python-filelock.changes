@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 13 15:23:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.8.2 
+  * What's Changed
+    Bump pypa/gh-action-pypi-publish from 1.5.1 to 1.6.1 by @dependabot in #178
+    Update the license classifier to "Unlicense" by @jond01 in #180
+
+- Update to version 3.8.1
+  * What's Changed
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #166
+    link to flufl.lock by @dholth in #167
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #168
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #169
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #170
+    fix BaseFileLock.timeout's getter/setter being obscured by itself by @dearfl in #172
+    Fix mypy fails understanding FileLock by @gaborbernat in #177
+
+-------------------------------------------------------------------
 Wed Oct 12 03:17:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.8.0 

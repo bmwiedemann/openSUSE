@@ -48,4 +48,27 @@
     <comment></comment>
     <requestid>1010146</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c70330ce3cd7e00f968e5d07622b1b9f</srcmd5>
+    <version>3.8.2</version>
+    <time>1671128636</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Update to version 3.8.2 
+  * What's Changed
+    Bump pypa/gh-action-pypi-publish from 1.5.1 to 1.6.1 by @dependabot in #178
+    Update the license classifier to &quot;Unlicense&quot; by @jond01 in #180
+- Update to version 3.8.1
+  * What's Changed
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #166
+    link to flufl.lock by @dholth in #167
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #168
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #169
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #170
+    fix BaseFileLock.timeout's getter/setter being obscured by itself by @dearfl in #172
+    Fix mypy fails understanding FileLock by @gaborbernat in #177
+</comment>
+    <requestid>1042822</requestid>
+  </revision>
 </revisionlist>

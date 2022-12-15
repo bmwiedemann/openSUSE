@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-filelock
-Version:        3.8.0
+Version:        3.8.2
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
