@@ -24,6 +24,7 @@ Group:          System/Kernel
 Url:            https://github.com/linux-thinkpad/tp_smapi
 Source:         tp_smapi-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  module-init-tools

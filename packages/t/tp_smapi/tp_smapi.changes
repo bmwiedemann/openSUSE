@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 14 19:50:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: use %kernel_module_package_buildreqs.
+
+-------------------------------------------------------------------
 Sun Apr  3 08:47:40 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - branched from home:schaats / tp_smapi-kmp
