@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fedora-messaging
 Version:        3.2.0
 Release:        0
@@ -36,7 +35,6 @@ Requires:       python-pika >= 1.0.1
 Requires:       python-pyOpenSSL
 Requires:       python-pytz
 Requires:       python-service_identity
-Requires:       python-six
 Requires:       python-toml
 BuildArch:      noarch
 # SECTION test requirements
@@ -53,11 +51,12 @@ BuildRequires:  %{python_module pytest-twisted}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module service_identity}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module towncrier}
 BuildRequires:  %{python_module treq}
 # /SECTION
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -96,6 +95,7 @@ sed -i 's:. Perhaps you forgot a comma?::' fedora_messaging/tests/unit/test_cli.
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/fedora-messaging
-%{python_sitelib}/*
+%{python_sitelib}/fedora_messaging
+%{python_sitelib}/fedora_messaging-%{version}*-info
 
 %changelog
