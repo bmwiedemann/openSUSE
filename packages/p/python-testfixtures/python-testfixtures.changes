@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:36:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 7.0.4 
+  * Remove py.typed file: neither mypy nor testfixtures are ready for this file to be present.  
+
+-------------------------------------------------------------------
 Wed Nov  9 19:29:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 7.0.3 (3 Nov 2022)

@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-testfixtures
-Version:        7.0.3
+Version:        7.0.4
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
