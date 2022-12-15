@@ -55,4 +55,19 @@
     <comment></comment>
     <requestid>1009273</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b47f6b20a7c368b446b7ed9b0da97826</srcmd5>
+    <version>2.0.1</version>
+    <time>1671128701</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1
+  - Relax poetry-core requirement for PEP 517 builds (#291).
+- 2.0.0 - 2022-11-21
+  - No source code changes.
+  - This is a version-only release to replace 1.0.0, which was yanked on the
+    grounds that it was incompatible with real dependents (i.e. Poetry) based
+    on their version specifiers, which explicitly included 1.0.0 pre-releases.
+</comment>
+    <requestid>1042921</requestid>
+  </revision>
 </revisionlist>

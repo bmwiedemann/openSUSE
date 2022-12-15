@@ -16,15 +16,14 @@
 #
 
 
-%define pyversion 1.0.0a5
 Name:           python-cleo
-Version:        1.0.0~a5
+Version:        2.0.1
 Release:        0
 Summary:        Python module for creating testable command-line interfaces
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/cleo
-Source:         https://github.com/sdispater/cleo/archive/%{pyversion}.tar.gz#/cleo-%{pyversion}.tar.gz
+Source:         https://github.com/sdispater/cleo/archive/%{version}.tar.gz#/cleo-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module crashtest >= 0.3.1}
 BuildRequires:  %{python_module pip}
@@ -32,18 +31,20 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pylev >= 1.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rapidfuzz}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-crashtest >= 0.3.1
 Requires:       python-pylev >= 1.3
+Requires:       python-rapidfuzz >= 2.2.0
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Cleo allows creating testable command-line interfaces.
+Cleo allows you to create beautiful and testable command-line interfaces.
 
 %prep
-%setup -q -n cleo-%{pyversion}
+%setup -q -n cleo-%{version}
 
 %build
 %pyproject_wheel
@@ -59,6 +60,6 @@ Cleo allows creating testable command-line interfaces.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/cleo
-%{python_sitelib}/cleo-%{pyversion}*info
+%{python_sitelib}/cleo-%{version}*info
 
 %changelog
