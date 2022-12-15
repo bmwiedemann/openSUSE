@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 09:38:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-six dependency
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
 Tue Sep 28 20:24:30 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - udpate to version 2.0.0:

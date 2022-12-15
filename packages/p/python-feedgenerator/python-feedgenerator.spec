@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedgenerator
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-feedgenerator
 Version:        2.0.0
 Release:        0
@@ -29,11 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/f/feedgenerator/f
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytz
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 

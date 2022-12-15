@@ -49,4 +49,14 @@
     <comment></comment>
     <requestid>922186</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cd517fb015da8c4926033b354eb1cf33</srcmd5>
+    <version>2.0.0</version>
+    <time>1671128742</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six dependency
+- Remove python_module macro definition
+</comment>
+    <requestid>1043079</requestid>
+  </revision>
 </revisionlist>
