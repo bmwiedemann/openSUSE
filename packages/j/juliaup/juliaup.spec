@@ -16,8 +16,12 @@
 #
 
 
+# We will keep this for now
+%global oldest_supported_julia_version 0.7.0
+%global latest_julia_version 1.8.3
+
 Name:           juliaup
-Version:        1.6.4
+Version:        1.8.12
 Release:        0
 Summary:        Julia installer and version multiplexer
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND ISC AND MIT AND MPL-2.0 AND MIT
@@ -26,14 +30,20 @@ URL:            https://github.com/JuliaLang/juliaup
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Conflicts:      julia
 BuildRequires:  cargo-packaging
+BuildRequires:  rust+cargo
+
+# It doesn't make sense to do this anyway.
+# Provides:       julia = %%{latest_julia_version}
+# Obsoletes:      julia < %%{latest_julia_version}
 
 %description
 A cross-platform installer for the Julia programming language.
 
 The installer also bundles a full Julia version manager called juliaup.
-One can use juliaup to install specific Julia versions, it alerts users when new Julia versions are released and provides a convenient Julia release channel abstraction.
+One can use juliaup to install specific Julia versions, it alerts users
+when new Julia versions are released and provides a convenient Julia
+release channel abstraction.
 
 %prep
 %autosetup -a1
@@ -41,18 +51,18 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build}
+%{cargo_build} --no-default-features
 
 %install
-%{cargo_install}
-ln -sv "%{_bindir}/julialauncher" "%{buildroot}/%{_bindir}/julia"
+%{cargo_install} --no-default-features
+ln -sfv "%{_bindir}/julialauncher" "%{buildroot}/%{_bindir}/julia"
 
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/julia
 %{_bindir}/juliainstaller
 %{_bindir}/julialauncher
 %{_bindir}/juliaup
+%{_bindir}/julia
 
 %changelog

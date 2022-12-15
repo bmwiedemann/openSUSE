@@ -72,4 +72,106 @@
     <comment></comment>
     <requestid>981351</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6537f51e02e0a03371f2a94b2bb11a6</srcmd5>
+    <version>1.8.12</version>
+    <time>1671128683</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix juliaup.changes file. 
+- Update to version 1.8.12:
+  * Fix typo
+  * Fix a typo
+  * Add a check phase to test workflow that runs on all platforms
+  * Fix some platform specific errors and warnings
+  * chore: Release juliaup version 1.8.11
+  * Fix cond compile on macos
+  * Unfix wrong target family
+  * Fix typo on merge
+  * Use more borrowed types where possible
+  * Reset some functions return values back to Result
+  * Change default versions db update interval to 24 hours
+  * Add versions db update to add and update command
+  * Update deps
+  * Bump peter-evans/create-pull-request from 3 to 4
+  * Various lints and minor improvements
+  * Configure for target_os, not nonexistant family
+  * Make 60 the default versions db update interval
+  * Make the update interval between versions db updates a config
+  * Update versions db on self update
+  * Add a powerpoint schematic in devdocs
+  * Update version db
+  * Add alpha versions
+  * Document releasepreview usage
+  * Also add musl fix for release action.
+  * Use sudo.
+  * Fix quotes.
+  * Musl build can't find gcc-musl.
+  * chore: Release juliaup version 1.8.10
+  * Enable second part of musl tests
+  * Properly disable musl tests
+  * Unify some output
+  * Fix some unit tests
+  * Update version db
+  * Fix parse_versionstring
+  * Generate better arch strings in semver
+  * Enable ci tests of musl build
+  * Disable musl tests for now
+  * Use cross on Linux for tests
+  * Add Juliaup version to juliaup info
+  * Add musl build to tests
+  * chore: Release juliaup version 1.8.9
+  * Change shell script to serve musl on Linux
+  * Add triplet to juliaup info
+  * chore: Release juliaup version 1.8.8
+  * Add info command
+  * change to a redirect for developers to the wiki
+  * add source build notes to the readme
+- Update to version 1.8.7:
+  * Fix bug in release workflow
+  * Fix typo
+  * In the &quot;Update Version DB&quot; PRs, add a note that the user must close and reopen the PR to trigger CI
+  * Update version db
+  * chore: Release juliaup version 1.8.5
+  * Add musl builds
+  * Fix some final things for the CI update story
+  * Use local version db if newer than bundled
+  * Fix a renaming bug
+  * Update version db
+  * Tweak cache update algorithm
+  * Fix a bug
+  * Trigger version db update from launcher
+  * Add download of version db
+  * Track latest structure in build.rs
+  * Update version db (#468)
+  * Delete tempfile
+  * Update version db
+  * Add tempfile
+  * Use correct platform strings
+  * Update version db workflow
+  * chore: Release juliaup version 1.8.1
+  * Remove diagnostic output
+  * chore: Release juliaup version 1.8.0
+  * Move LTS version to top in version udpate script
+  * Delete versions.json
+  * Replace build.rs logic
+  * Update version db
+  * New updatedb script
+  * Fix typo
+  * Update version db
+  * Fix bug
+  * Add versiondb folder
+  * Progress version db
+  * Progress on version db update
+  * Fix bug in version db upload
+  * Progress on update version db
+  * Update versiondb process
+  * Fix versiondb update
+  * Add update version db script
+  * Fix an error message
+  * Add app installer info to README
+- Update specfile. Remove the update-alternatives requirement
+  It does not make sense since juliaup can have multiple julia versions.
+- Add _constraints file to fix out of memory issues.</comment>
+    <requestid>1042899</requestid>
+  </revision>
 </revisionlist>

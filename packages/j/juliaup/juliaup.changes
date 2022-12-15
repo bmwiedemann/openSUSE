@@ -1,5 +1,319 @@
 -------------------------------------------------------------------
-Wed Jun 08 15:12:48 UTC 2022 - socvirnyl.estela@gmail.com
+Sat Dec 03 13:06:55 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.8.12:
+  * Fix typo
+  * Fix a typo
+  * Add a check phase to test workflow that runs on all platforms
+  * Fix some platform specific errors and warnings
+  * chore: Release juliaup version 1.8.11
+  * Fix cond compile on macos
+  * Unfix wrong target family
+  * Fix typo on merge
+  * Use more borrowed types where possible
+  * Reset some functions return values back to Result
+  * Change default versions db update interval to 24 hours
+  * Add versions db update to add and update command
+  * Update deps
+  * Bump peter-evans/create-pull-request from 3 to 4
+  * Various lints and minor improvements
+  * Configure for target_os, not nonexistant family
+  * Make 60 the default versions db update interval
+  * Make the update interval between versions db updates a config
+  * Update versions db on self update
+  * Add a powerpoint schematic in devdocs
+  * Update version db
+  * Add alpha versions
+  * Document releasepreview usage
+  * Also add musl fix for release action.
+  * Use sudo.
+  * Fix quotes.
+  * Musl build can't find gcc-musl.
+  * chore: Release juliaup version 1.8.10
+  * Enable second part of musl tests
+  * Properly disable musl tests
+  * Unify some output
+  * Fix some unit tests
+  * Update version db
+  * Fix parse_versionstring
+  * Generate better arch strings in semver
+  * Enable ci tests of musl build
+  * Disable musl tests for now
+  * Use cross on Linux for tests
+  * Add Juliaup version to juliaup info
+  * Add musl build to tests
+  * chore: Release juliaup version 1.8.9
+  * Change shell script to serve musl on Linux
+  * Add triplet to juliaup info
+  * chore: Release juliaup version 1.8.8
+  * Add info command
+  * change to a redirect for developers to the wiki
+  * add source build notes to the readme
+
+-------------------------------------------------------------------
+Fri Nov 25 09:08:07 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.8.7:
+  * Fix bug in release workflow
+  * Fix typo
+  * In the "Update Version DB" PRs, add a note that the user must close and reopen the PR to trigger CI
+  * Update version db
+  * chore: Release juliaup version 1.8.5
+  * Add musl builds
+  * Fix some final things for the CI update story
+  * Use local version db if newer than bundled
+  * Fix a renaming bug
+  * Update version db
+  * Tweak cache update algorithm
+  * Fix a bug
+  * Trigger version db update from launcher
+  * Add download of version db
+  * Track latest structure in build.rs
+  * Update version db (#468)
+  * Delete tempfile
+  * Update version db
+  * Add tempfile
+  * Use correct platform strings
+  * Update version db workflow
+  * chore: Release juliaup version 1.8.1
+  * Remove diagnostic output
+  * chore: Release juliaup version 1.8.0
+  * Move LTS version to top in version udpate script
+  * Delete versions.json
+  * Replace build.rs logic
+  * Update version db
+  * New updatedb script
+  * Fix typo
+  * Update version db
+  * Fix bug
+  * Add versiondb folder
+  * Progress version db
+  * Progress on version db update
+  * Fix bug in version db upload
+  * Progress on update version db
+  * Update versiondb process
+  * Fix versiondb update
+  * Add update version db script
+  * Fix an error message
+  * Add app installer info to README
+
+- Update specfile. Remove the update-alternatives requirement
+  It does not make sense since juliaup can have multiple julia versions.
+
+- Add _constraints file to fix out of memory issues.
+
+-------------------------------------------------------------------
+Thu Nov 24 13:59:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.35:
+  * Delete another file at self uninstall
+  * Document self uninstall
+  * Only delete own files with self uninstall
+  * Add link to second Juliacon talk
+  * Fix escaping in MSIX manifest
+  * Describe using `expect` to automate install
+  * Use correct secret name
+  * Update Julia Computing cert info
+  * Update deps
+  * Go back to ~/.juliaup as the default install location
+  * Use system certificates on Linux
+
+-------------------------------------------------------------------
+Thu Nov 24 13:56:57 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove strip option for debuginfo creation
+
+-------------------------------------------------------------------
+Mon Nov 21 14:00:13 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.27:
+  * Remove release.toml
+  * Fix versions
+  * fix cargo lock (#442)
+  * (cargo-release) version 1.7.26 (#441)
+  * Add Julia 1.8.3 (#437)
+  * Fix tiny typo in README (#423)
+  * (cargo-release) start next development iteration 1.7.26-alpha.0
+
+- Strip debug symbols through cargo_config.
+- Set to no default features. We don't use self update and Windows.
+
+-------------------------------------------------------------------
+Sat Oct 15 08:57:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.25:
+  * Update deps
+  * (cargo-release) start next development iteration 1.7.25-alpha.0
+
+-------------------------------------------------------------------
+Sat Oct 01 09:48:17 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.24:
+  * Add Julia 1.8.2
+  * Update README.md (#398)
+  * Update deps
+
+-------------------------------------------------------------------
+Wed Sep 14 22:06:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.23:
+  * Add Julia 1.8.1
+  * (cargo-release) start next development iteration 1.7.23-alpha.0
+
+-------------------------------------------------------------------
+Fri Aug 19 03:24:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.22:
+  * Switch release channel to aarch64 on Mac
+
+-------------------------------------------------------------------
+Thu Aug 18 03:15:42 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.21:
+  * Add Julia 1.8.0
+  * Update deps (#383)
+  * Include` juliaup list` in README (#376)
+
+-------------------------------------------------------------------
+Wed Aug 17 12:42:08 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add fedora or rhel7 to specfile
+
+-------------------------------------------------------------------
+Sun Aug 14 06:21:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.7.20:
+  * Add Julia 1.8.0-rc4
+  * Fix another bug
+  * Fix typo
+  * Fix a bug
+  * Fix typo
+  * Fix a bug
+  * Fix a typo
+  * Compile different msix files
+  * Fix a name in the app installer
+  * Updates
+  * Add VCLibs to app installer
+  * Fix naming mismatch
+  * Turn off some debug output
+  * Update deps
+  * Fix aws s3 sync call
+  * Use aws cli directly on Windows
+  * Fix workflow bugs
+  * Fix things
+  * Restructure deployment
+  * Disable all deploy to GitHub releases
+  * Don't run test workflow on version tags
+  * Use concurrency for test workflow
+  * Split workflow into test and build
+  * Add tenant id for sign tool
+  * Sign on Windows
+  * Fix typo
+  * Add Win AppInstaller (#371)
+  * Update script that downloads bundled Julia versions
+  * Fix typo
+  * Fix bug
+  * Bump indicatif
+  * Move MSIX and store stuff to deploy folder
+  * Don't compile get_proxy on Windows
+  * Add debugger launch config
+  * Use HttpClient for downloads on Windows
+  * add missing 'url' argument to 'get_ureq_agent' calls
+  * add trace-level logging regarding proxy resolution
+  * implement proxy handling using environment variables
+  * add env_proxy dependency in Cargo.toml
+  * Fix a bug during remove of PATH on Mac
+  * Update deps
+  * Improve a "failed to open file" error message by printing the file path that we failed to open
+  * Add minor channels for prerelease
+  * Prepare for different build configs per target
+  * Fixed typo about auto-update interval being in seconds, but actually meaning minutes.
+  * Use previous windows version
+  * Update deps
+  * highlight and expand usage in readme
+  * add usage tip on accessing channels
+
+-------------------------------------------------------------------
+Sat Aug 06 00:36:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.6.12:
+  * (cargo-release) version 1.6.12
+  * Update deps
+  * Do not use native certs on Linux
+  * (cargo-release) start next development iteration 1.6.12-alpha.0
+  * (cargo-release) version 1.6.11
+  * Add Julia 1.6.7
+  * (cargo-release) start next development iteration 1.6.11-alpha.0
+  * (cargo-release) version 1.6.10
+  * Remove diagnostic code
+  * Add diagnostic code
+  * Fix config settings
+  * Fix conditional compilation errors
+  * Fix conditional compilation
+  * (cargo-release) start next development iteration 1.6.10-alpha.0
+  * (cargo-release) version 1.6.9
+  * Update CI to use main as branch name
+  * Use JULIAUP_SERVER in install scripts
+  * Update CI to use main as branch name
+  * Try to fix config again
+  * Fix config handling
+  * Use JULIAUP_SERVER in install scripts
+  * Fix config error
+  * Fix another bug
+  * Fix bug
+  * Remove config options
+  * Use tls-native with native certs by default
+  * Fix small bug
+  * Simplify tls selection code
+  * Undo unrelated stuff
+  * Use valid semver identifiers for available_versions
+  * Change the default self-install location
+  * Check for same path deletion on self uninstall
+  * Bump deps
+  * Update deps
+  * (cargo-release) start next development iteration 1.6.9-alpha.0
+  * Bump actions/download-artifact from 2 to 3
+  * Bump actions/upload-artifact from 2 to 3
+  * remove useless default feature
+  * fix; add native-certs feature as well
+  * add native TLS support
+
+-------------------------------------------------------------------
+Thu Jul 21 05:53:04 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- use alternatives instead
+- provide versioned julia
+- conflicts other julia so use update-alternatives
+
+-------------------------------------------------------------------
+Tue Jul 19 15:31:47 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.6.8:
+  * (cargo-release) version 1.6.8
+  * Make aarch64 default on Mac starting with 1.8.0-rc3
+  * (cargo-release) start next development iteration 1.6.8-alpha.0
+  * (cargo-release) version 1.6.7
+  * (cargo-release) start next development iteration 1.6.7-alpha.0
+  * (cargo-release) version 1.6.6
+  * (cargo-release) start next development iteration 1.6.6-alpha.0
+
+-------------------------------------------------------------------
+Sat Jul 16 05:31:01 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.6.5:
+  * (cargo-release) version 1.6.5
+  * Add Julia 1.8.0-rc3
+  * (cargo-release) start next development iteration 1.6.5-alpha.0
+  * (cargo-release) version 1.6.4
+  * Fix a version bug
+  * Update to Rust 2021 edition
+  * Update window crate
+  * Update deps
+  * (cargo-release) start next development iteration 1.6.4-alpha.0
+  * (cargo-release) version 1.6.3
+
+-------------------------------------------------------------------
+Wed Jun 08 15:12:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.6.4:
   * (cargo-release) version 1.6.4
@@ -10,7 +324,7 @@ Wed Jun 08 15:12:48 UTC 2022 - socvirnyl.estela@gmail.com
   * (cargo-release) start next development iteration 1.6.4-alpha.0
 
 -------------------------------------------------------------------
-Fri Jun 03 15:51:01 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Jun 03 15:51:01 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.6.3:
   * (cargo-release) version 1.6.3
@@ -25,7 +339,7 @@ Fri Jun 03 15:51:01 UTC 2022 - socvirnyl.estela@gmail.com
   * Add Julia 1.6.6 support
 
 -------------------------------------------------------------------
-Thu May 26 08:00:27 UTC 2022 - socvirnyl.estela@gmail.com
+Thu May 26 08:00:27 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.6.2:
   * (cargo-release) version 1.6.2
@@ -40,7 +354,7 @@ Thu May 26 08:00:27 UTC 2022 - socvirnyl.estela@gmail.com
   * (cargo-release) start next development iteration 1.6.1-alpha.0
 
 -------------------------------------------------------------------
-Sat Apr 02 01:08:25 UTC 2022 - socvirnyl.estela@gmail.com
+Sat Apr 02 01:08:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.6.1~0:
   * (cargo-release) version 1.6.1
@@ -51,7 +365,7 @@ Sat Apr 02 01:08:25 UTC 2022 - socvirnyl.estela@gmail.com
   * (cargo-release) start next development iteration 1.6.1-alpha.0
 
 -------------------------------------------------------------------
-Tue Mar 29 12:01:47 UTC 2022 - socvirnyl.estela@gmail.com
+Tue Mar 29 12:01:47 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.6.0~0:
   * (cargo-release) version 1.6.0
