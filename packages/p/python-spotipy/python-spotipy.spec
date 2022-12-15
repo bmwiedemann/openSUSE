@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spotipy
-Version:        2.21.0
+Version:        2.22.0
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
