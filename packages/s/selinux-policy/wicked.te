@@ -33,6 +33,20 @@ files_type(wicked_var_lib_t)
 type wicked_var_run_t;
 files_pid_file(wicked_var_run_t)
 
+
+# Wicked scripts
+
+attribute wicked_plugin;
+attribute wicked_script;
+type wicked_script_t, wicked_script;
+type wicked_custom_t, wicked_plugin;
+role system_r types wicked_custom_t;
+application_domain(wicked_custom_t, wicked_script_t)
+domtrans_pattern(wicked_t, wicked_script_t, wicked_custom_t)
+
+wicked_script_template(winbind);
+wicked_script_template(dhcp);
+
 #type wpa_cli_t;
 #type wpa_cli_exec_t;
 #init_system_domain(wpa_cli_t, wpa_cli_exec_t)
@@ -239,6 +253,20 @@ hostname_exec(wicked_t)
 wicked_systemctl(wicked_t)
 
 sysnet_manage_config_dirs(wicked_t)
+
+
+# Wicked scripts
+
+list_dirs_pattern(wicked_t, wicked_script_t, wicked_script)
+read_files_pattern(wicked_t, wicked_script_t, wicked_script)
+read_lnk_files_pattern(wicked_t, wicked_script_t, wicked_script)
+list_dirs_pattern(wicked_plugin, wicked_script_t, wicked_script_t)
+read_lnk_files_pattern(wicked_plugin, wicked_script_t, wicked_script)
+
+auth_read_passwd(wicked_plugin)
+
+corecmd_exec_bin(wicked_plugin)
+corecmd_exec_shell(wicked_winbind_t)
 
 #tunable_policy(`use_nfs_home_dirs',`
 #    fs_read_nfs_files(wicked_t)
@@ -496,6 +524,26 @@ optional_policy(`
 
 optional_policy(`
 	networkmanager_dbus_chat(wicked_t)
+')
+
+optional_policy(`
+	logging_send_syslog_msg(wicked_winbind_t)
+')
+
+optional_policy(`
+	sysnet_exec_ifconfig(wicked_plugin)
+	sysnet_read_config(wicked_plugin)
+')
+
+optional_policy(`
+	systemd_exec_systemctl(wicked_winbind_t)
+	systemd_exec_systemctl(wicked_dhcp_t)
+')
+
+optional_policy(`
+	samba_domtrans_smbcontrol(wicked_winbind_t)
+	samba_read_config(wicked_winbind_t)
+	samba_service_status(wicked_winbind_t)
 ')
 
 #tunable_policy(`use_ecryptfs_home_dirs',`

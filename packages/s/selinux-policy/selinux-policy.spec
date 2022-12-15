@@ -146,6 +146,7 @@ Patch061:       fix_userdomain.patch
 Patch062:       fix_cloudform.patch
 Patch063:       fix_alsa.patch
 Patch064:       dontaudit_interface_kmod_tmpfs.patch
+Patch065:       fix_sendmail.patch
 
 Patch100:       sedoctool.patch
 

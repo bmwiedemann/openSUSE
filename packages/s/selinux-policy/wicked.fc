@@ -45,3 +45,6 @@
 #/etc/dbus-1/system.d/org.opensuse.Network.Nanny.conf
 #/etc/dbus-1/system.d/org.opensuse.Network.conf
 
+/etc/sysconfig/network/scripts(/.*)?	gen_context(system_u:object_r:wicked_script_t,s0)
+/etc/sysconfig/network/scripts/samba-winbindd	--	gen_context(system_u:object_r:wicked_winbind_script_t,s0)
+/etc/sysconfig/network/scripts/dhcpd-restart-hook	--	gen_context(system_u:object_r:wicked_dhcp_script_t,s0)

@@ -1,0 +1,32 @@
+Index: fedora-policy-20221019/policy/modules/contrib/sendmail.fc
+===================================================================
+--- fedora-policy-20221019.orig/policy/modules/contrib/sendmail.fc
++++ fedora-policy-20221019/policy/modules/contrib/sendmail.fc
+@@ -1,8 +1,9 @@
+ 
+ /etc/rc\.d/init\.d/sendmail --  gen_context(system_u:object_r:sendmail_initrc_exec_t,s0)
++/etc/mail/system/sm-client.pre --  gen_context(system_u:object_r:sendmail_initrc_exec_t,s0)
+ 
+ /var/log/sendmail\.st.*		--	gen_context(system_u:object_r:sendmail_log_t,s0)
+ /var/log/mail(/.*)?			gen_context(system_u:object_r:sendmail_log_t,s0)
+ 
+-/var/run/sendmail\.pid		--	gen_context(system_u:object_r:sendmail_var_run_t,s0)
++/var/run/sendmail(/.*)?                 gen_context(system_u:object_r:sendmail_var_run_t,s0)
+ /var/run/sm-client\.pid		--	gen_context(system_u:object_r:sendmail_var_run_t,s0)
+Index: fedora-policy-20221019/policy/modules/contrib/sendmail.te
+===================================================================
+--- fedora-policy-20221019.orig/policy/modules/contrib/sendmail.te
++++ fedora-policy-20221019/policy/modules/contrib/sendmail.te
+@@ -60,8 +60,10 @@ manage_dirs_pattern(sendmail_t, sendmail
+ manage_files_pattern(sendmail_t, sendmail_tmp_t, sendmail_tmp_t)
+ files_tmp_filetrans(sendmail_t, sendmail_tmp_t, { file dir })
+ 
+-allow sendmail_t sendmail_var_run_t:file manage_file_perms;
+-files_pid_filetrans(sendmail_t, sendmail_var_run_t, file)
++manage_dirs_pattern(sendmail_t, sendmail_var_run_t, sendmail_var_run_t)
++manage_files_pattern(sendmail_t, sendmail_var_run_t, sendmail_var_run_t)
++manage_sock_files_pattern(sendmail_t, sendmail_var_run_t, sendmail_var_run_t)
++files_pid_filetrans(sendmail_t, sendmail_var_run_t,  { file dir })
+ 
+ kernel_read_network_state(sendmail_t)
+ kernel_read_kernel_sysctls(sendmail_t)

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 14 15:40:12 UTC 2022 - Hu <cathy.hu@suse.com>
+
+- Added policy for wicked scripts under /etc/sysconfig/network/scripts
+  (bnc#1205770)
+
+-------------------------------------------------------------------
+Wed Dec 14 09:16:26 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add fix_sendmail.patch 
+  * fix context of custom sendmail startup helper
+  * fix context of /var/run/sendmail and add necessary rules to manage
+    content in there
+
+-------------------------------------------------------------------
 Tue Dec 13 08:36:01 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Updated fix_networkmanager.patch to fixe labeling of nm-dispatcher and

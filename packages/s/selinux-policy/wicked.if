@@ -652,3 +652,27 @@ interface(`wicked_filetrans_named_content',`
 	files_etc_filetrans($1, wicked_var_lib_t, file, "state-8.xml")
 	files_etc_filetrans($1, wicked_var_lib_t, file, "state-9.xml")
 ')
+
+########################################
+## <summary>
+##	Create a set of derived types for various wicked scripts
+## </summary>
+## <param name="prefix">
+##	<summary>
+##	The name to be used for deriving type names.
+##	</summary>
+## </param>
+#
+template(`wicked_script_template',`
+	gen_require(`
+		attribute wicked_plugin, wicked_script;
+		type wicked_t;
+	')
+
+	type wicked_$1_t, wicked_plugin;
+	type wicked_$1_script_t, wicked_script;
+	application_domain(wicked_$1_t, wicked_$1_script_t)
+	role system_r types wicked_$1_t;
+
+	domtrans_pattern(wicked_t, wicked_$1_script_t, wicked_$1_t)
+')
