@@ -32,11 +32,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0}
 BuildRequires:  %{python_module pyfakefs >= 3.4}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.6
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,6 +60,7 @@ implement higher level device operations.
 %files %{python_files}
 %doc NEWS* README*
 %license COPYING*
-%{python_sitelib}/*
+%{python_sitelib}/fido2
+%{python_sitelib}/fido2-%{version}*-info
 
 %changelog

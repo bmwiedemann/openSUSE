@@ -109,4 +109,14 @@
     <comment></comment>
     <requestid>1040395</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3dba4117281f593b62733e30e112302a</srcmd5>
+    <version>1.1.0</version>
+    <time>1671128742</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six dependency
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1043084</requestid>
+  </revision>
 </revisionlist>
