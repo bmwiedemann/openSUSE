@@ -3849,4 +3849,33 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment>- Release 21.1 covers bugfixes and JIRA tickets for bsc#1176015,bsc#1182510,bsc#1182884,bsc#1184072,bsc#1184543,bsc#1184906,bsc#1186092,bsc#1188970,bsc#1194159,bsc#1196577,bsc#1197046,bsc#1197269,bsc#1200076,fdo#574,jsc#SLE-18653,jsc#SLE-8470</comment>
     <requestid>1034269</requestid>
   </revision>
+  <revision rev="414" vrev="6">
+    <srcmd5>3652770b5055fe052eb34fa3a3aa9c02</srcmd5>
+    <version>21.1.4</version>
+    <time>1671128654</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
+  * XkbGetKbdByName use-after-free (ZDI-CAN-19530, CVE-2022-4283,
+    bsc#1206017)
+
+- U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
+  * Server XTestSwapFakeInput stack overflow (ZDI-CAN 19265,
+    CVE-2022-46340, bsc#1205874)
+- U_0002-Xi-return-an-error-from-XI-property-changes-if-verif.patch
+  * Xi: return an error from XI property changes if verification
+    failed (no ZDI-CAN id, no CVE id, bsc#1205875)
+- U_0003-Xi-avoid-integer-truncation-in-length-check-of-ProcX.patch
+  * Server XIChangeProperty out-of-bounds access (ZDI-CAN 19405,
+    CVE-2022-46344, bsc#1205876)
+- U_0004-Xi-disallow-passive-grabs-with-a-detail-255.patch
+  * Server XIPassiveUngrabDevice out-of-bounds access (ZDI-CAN 19381,
+    CVE-2022-46341, bsc#1205877)
+- U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
+  * Server ScreenSaverSetAttributes use-after-free (ZDI-CAN 19404,
+    CVE-2022-46343, bsc#1205878)
+- U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
+  * Server XvdiSelectVideoNotify use-after-free (ZDI-CAN 19400,
+    CVE-2022-46342, bsc#1205879)</comment>
+    <requestid>1042895</requestid>
+  </revision>
 </revisionlist>

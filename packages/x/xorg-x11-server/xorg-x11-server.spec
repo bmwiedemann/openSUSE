@@ -249,6 +249,14 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 Patch1204412:   U_xkb-proof-GetCountedString-against-request-length-at.patch
 Patch1204416:   U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
 
+Patch1205874:   U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
+Patch1205875:   U_0002-Xi-return-an-error-from-XI-property-changes-if-verif.patch
+Patch1205876:   U_0003-Xi-avoid-integer-truncation-in-length-check-of-ProcX.patch
+Patch1205877:   U_0004-Xi-disallow-passive-grabs-with-a-detail-255.patch
+Patch1205878:   U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
+Patch1205879:   U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
+Patch1206017:   U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -408,6 +416,13 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1960 -p1
 %patch1204412 -p1
 %patch1204416 -p1
+%patch1205874 -p1
+%patch1205875 -p1
+%patch1205876 -p1
+%patch1205877 -p1
+%patch1205878 -p1
+%patch1205879 -p1
+%patch1206017 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
