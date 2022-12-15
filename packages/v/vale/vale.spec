@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           vale
-Version:        2.21.2
+Version:        2.21.3
 Release:        0
 Summary:        CLI tool to lint prose text with syntax awareneness and extensible markup format support
 License:        MIT

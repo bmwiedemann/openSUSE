@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 14 19:43:59 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.21.3:
+  * refactor: remove debug message
+  * fix: always use last `StylesPath` loaded
+  * feat(config): expand ~ to home directory (#530)
+  * refactor: remove `ioutil`
+  * fix: don't treat `span` as a block
+
+-------------------------------------------------------------------
 Thu Nov 24 19:56:21 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.21.2:

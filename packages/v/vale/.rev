@@ -101,4 +101,17 @@
   * feat: enable access to `os` module in `script` (forwarded request 1037990 from jfkw)</comment>
     <requestid>1037991</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>284c50cd65a32d101fd547ebd7ec3724</srcmd5>
+    <version>2.21.3</version>
+    <time>1671128717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.21.3:
+  * refactor: remove debug message
+  * fix: always use last `StylesPath` loaded
+  * feat(config): expand ~ to home directory (#530)
+  * refactor: remove `ioutil`
+  * fix: don't treat `span` as a block (forwarded request 1042990 from jfkw)</comment>
+    <requestid>1042991</requestid>
+  </revision>
 </revisionlist>

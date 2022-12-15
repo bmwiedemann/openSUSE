@@ -3,7 +3,7 @@
     <param name="url">https://github.com/errata-ai/vale.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.21.2</param>
+    <param name="revision">v2.21.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
