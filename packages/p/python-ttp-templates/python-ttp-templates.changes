@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 14 12:30:56 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro defintion
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
+Tue Dec 13 17:38:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.3.2 
+  * Added misc/Netbox folder with templates for Junos, IOS-XR and Arista devices configuration
+
+-------------------------------------------------------------------
 Fri Oct 21 10:42:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use github source to get tests

@@ -16,22 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ttp-templates
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Template Text Parser Templates collections
 License:        MIT
 URL:            https://github.com/dmulyalin/ttp_templates
 Source:         https://github.com/dmulyalin/ttp_templates/archive/refs/tags/%{version}.tar.gz#/ttp_templates-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  fdupes
+BuildRequires:  %{python_module netmiko}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ttp}
-BuildRequires:  %{python_module netmiko}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,6 +58,7 @@ popd
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ttp_templates
+%{python_sitelib}/ttp_templates-%{version}*-info
 
 %changelog

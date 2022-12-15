@@ -7,4 +7,16 @@
     <comment>Initial packaging (v0.3.1) needed by python-napalm</comment>
     <requestid>1030398</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cfb80a92e494ec6b5a9769108a0a4e8</srcmd5>
+    <version>0.3.2</version>
+    <time>1671128699</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro defintion
+- More specific python_sitelib in %files
+
+- Update to version 0.3.2 
+  * Added misc/Netbox folder with templates for Junos, IOS-XR and Arista devices configuration</comment>
+    <requestid>1042915</requestid>
+  </revision>
 </revisionlist>
