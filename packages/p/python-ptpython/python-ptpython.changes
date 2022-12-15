@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:19:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.0.22 
+  * New features:
+  - Improve rendering performance when there are many completions.
+
+-------------------------------------------------------------------
 Tue Dec  6 04:31:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.0.21: 
