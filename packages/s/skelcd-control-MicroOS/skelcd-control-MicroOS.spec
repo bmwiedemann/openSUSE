@@ -34,8 +34,8 @@ BuildRequires:  libxml2-tools
 BuildRequires:  yast2-installation-control >= 4.4.3
 
 # xsltproc - for building control.TWMicroOS.xml from control.MicroOS.xml
-BuildRequires:  diffutils
 BuildRequires:  libxslt-tools
+BuildRequires:  diffutils
 # we need to copy some parts from the openSUSE control.xml to MicroOS
 BuildRequires:  skelcd-control-openSUSE
 
@@ -46,8 +46,8 @@ BuildRequires:  skelcd-control-openSUSE
 #
 
 # branding
-Requires:       yast2-qt-branding-openSUSE
 Requires:       yast2-theme
+Requires:       yast2-qt-branding-openSUSE
 
 # Generic Yast packages needed for the installer
 Requires:       autoyast2
@@ -122,7 +122,7 @@ Requires:       yast2-vm
 
 URL:            https://github.com/yast/skelcd-control-MicroOS
 AutoReqProv:    off
-Version:        20221027
+Version:        20221205
 Release:        0
 Summary:        The MicroOS control file needed for installation
 License:        MIT

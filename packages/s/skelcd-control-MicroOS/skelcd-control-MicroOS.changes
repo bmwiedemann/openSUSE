@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 14:50:49 UTC 2022 - Shawn W Dunn <sfalken@cloverleaf-linux.org>
+
+- Desktop-KDE: Changed polkit profile to match Gnome, for continuity
+  (boo#1205348)
+- 20221205
+
+-------------------------------------------------------------------
 Thu Oct 27 14:25:35 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Desktop-GNOME: Use easy polkit profile (boo#1204792)
