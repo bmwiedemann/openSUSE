@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 15 13:47:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0.1
+  * A few potential crash fixes for xwm and ivi-shell have been
+    pre-emptively addressed as well some warnings seen with
+    ivi-shell when closing down weston.
+
+-------------------------------------------------------------------
 Thu Sep 22 21:48:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11

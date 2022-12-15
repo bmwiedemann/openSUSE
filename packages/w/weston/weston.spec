@@ -19,7 +19,7 @@
 Name:           weston
 %define lname	libweston0
 %define major   11
-%define realver	11.0.0
+%define realver	11.0.1
 Version:        11
 Release:        0
 Summary:        Wayland Reference Compositor
@@ -28,9 +28,8 @@ Group:          System/X11/Servers
 URL:            https://wayland.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/wayland/weston
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
-Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%realver/downloads/weston-%realver.tar.xz
-Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%realver/downloads/weston-%realver.tar.xz.sig
-Source3:        %name.keyring
+Source:         https://gitlab.freedesktop.org/wayland/weston/uploads/f5648c818fba5432edc3ea63c4db4813/weston-11.0.1.tar.xz
+Source2:        https://gitlab.freedesktop.org/wayland/weston/uploads/bb54e28b5ee47aaccb30a8ffbc31f977/weston-11.0.1.tar.xz.sig
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake >= 1.11

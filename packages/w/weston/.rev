@@ -238,4 +238,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Update to release 11</comment>
     <requestid>1005500</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>67f57389d5a9b18cefba507dc7e44054</srcmd5>
+    <version>11</version>
+    <time>1671128760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.0.1</comment>
+    <requestid>1043154</requestid>
+  </revision>
 </revisionlist>
