@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:21:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.3.0 
+  * Add support for Python 3.11 (#525).
+  * ODS export: integers/floats/decimals are exported as numbers (#527).
+
+-------------------------------------------------------------------
 Tue Oct 11 07:35:41 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.2.1

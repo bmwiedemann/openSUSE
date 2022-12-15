@@ -24,7 +24,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-tablib
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
