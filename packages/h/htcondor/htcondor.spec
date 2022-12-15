@@ -16,11 +16,10 @@
 #
 
 
-%define vers 9.0.11
-%define _vers 9_0_11
+%define _vers 9_0_16
 
 Name:           htcondor
-Version:        %vers
+Version:        9.0.16
 Release:        0
 Summary:        HTCondor is a Distributed High Throughput Computing system
 License:        Apache-2.0
@@ -68,6 +67,7 @@ HTCondor.
 
 
 
+
 #######################
 %package doc
 Summary:        Man pages and exmamples for htcondor
@@ -75,6 +75,7 @@ Group:          Applications/System
 
 %description doc
 This package contains the man pages and addional exmples for htcondor
+
 
 
 
@@ -90,6 +91,7 @@ Development files for HTCondor
 
 
 
+
 #######################
 %package procd
 Summary:        HTCondor Process tracking Daemon
@@ -98,6 +100,7 @@ Group:          Applications/System
 %description procd
 A daemon for tracking child processes started by a parent.
 Part of HTCondor, but able to be stand-alone
+
 
 
 
@@ -117,6 +120,7 @@ determine console idle time.
 
 
 
+
 #######################
 %package vm-gahp
 Summary:        HTCondor's VM Gahp
@@ -129,6 +133,7 @@ Requires:       libvirt
 The condor_vm-gahp enables the Virtual Machine Universe feature of
 HTCondor. The VM Universe uses libvirt to start and control VMs under
 HTCondor's Startd.
+
 
 
 
@@ -162,6 +167,7 @@ compatibility of jobs and workstations where they may be run.
 
 
 
+
 #######################
 %package classads-devel
 Summary:        Headers for HTCondor's classified advertisement language
@@ -177,6 +183,7 @@ semi-structured representation of data.
 
 
 
+
 #######################
 %package test
 Summary:        HTCondor Self Tests
@@ -186,6 +193,7 @@ Requires:       %name-classads = %{version}-%{release}
 
 %description test
 A collection of tests to verify that HTCondor is operating properly.
+
 
 
 
@@ -207,6 +215,7 @@ host as the DedicatedScheduler.
 
 
 
+
 #######################
 %package -n python3-condor
 Summary:        Python bindings for HTCondor.
@@ -216,6 +225,7 @@ Requires:       python3
 %description -n python3-condor
 The python bindings allow one to directly invoke the C++ implementations of
 the ClassAd library and HTCondor from python
+
 
 
 
@@ -232,6 +242,7 @@ Conflicts:      %name-credmon-oauth
 %description credmon-vault
 The Vault credmon allows users to obtain credentials from Vault using
 htgettoken and to use those credentials securely inside running jobs.
+
 
 
 
@@ -258,6 +269,7 @@ multiple clusters.
 
 
 
+
 #######################
 %package -n minicondor
 Summary:        Configuration for a single-node HTCondor
@@ -270,6 +282,7 @@ Requires:       python3-condor = %version-%release
 This example configuration is good for trying out HTCondor for the first time.
 It only configures the IPv4 loopback address, turns on basic security, and
 shortens many timers to be more responsive.
+
 
 
 
@@ -288,6 +301,7 @@ Requires:       python3-condor = %version-%release
 
 %description all
 Include dependencies for all condor packages in a typical installation
+
 
 
 

@@ -52,4 +52,12 @@
     restores the behavior in versions 9.0.1 and prior. (HTCONDOR-904)</comment>
     <requestid>967367</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f36984845424b22968dc15c90b6a05e5</srcmd5>
+    <version>9.0.16</version>
+    <time>1671128744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043083</requestid>
+  </revision>
 </revisionlist>
