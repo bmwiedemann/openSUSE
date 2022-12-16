@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Dec  6 12:46:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Add missing build dependency.
+  * Use github actions for CI builds.
+  * xapp-sn-watcher: Use /dev/shm for temp files if it's available, and clean them up when exiting.
+  * Add XAppVisibilityGroup.
+  * xapp-debug: Print the topic name in logging output.
+  * sn-item: Don't update the icon name if the tooltip was also updated.
+  * sn-item: Don't update the id property unless it has changed.
+  * xapp-status-icon.c: Update all icons when we lose or regain our identity on dbus.
+  * xapp-sn-watcher: Add a debug key to specify flags.
+  * sn-item: Silence warning caused when an app exits without notice.
+  * Use G_LOG_LEVEL_MESSAGE for debugging messages.
+  * favorites: Try to use a file's display name from file attributes when different than the its basename.
+  * favorite-vfs-file.c: Fix memory leak.
+  * build: Use gnome.mkenums_simple() to generate enum types.
+  * sn-item.c: Clean up temp files when finalizing.
+  * sn-item.c: Don't unref the menu during cleanup.
+  * xapp (2.2.15) vanessa; urgency=medium
+  * libxapp: add missing gio-unix-2.0 dependency
+  * xapp-status-icon-monitor.c: Fix copy/paste error.
+  * xapp-status-icon.c: Make XAppStatusIconState per-process.
+  * xapp (2.2.14) vanessa; urgency=medium
+  * mate status applet: Adjust icon relative sizes to the panel height.
+  * xapp (2.2.13) vanessa; urgency=medium
+  * xapp-icon-chooser-dialog: Don't lower-case paths.
+  * xapp (2.2.12) vanessa; urgency=medium
+  * l10n: Update translations
+  * xapp (2.2.11) vanessa; urgency=medium
+  * Update documentation
+  * CI: Fix target names
+  * Add a new icon xapp-edit-symbolic
+  * xapp (2.2.10) vanessa; urgency=medium
+  * xapp (2.2.9) vanessa; urgency=medium
+  * Implement scroll events with the fallback icon (GtkStatusIcon).
+  * sn-item.c: Handle Id property updates.
+  * xapp-icon-chooser-dialog.c: Don't be case-sensitive when searching.
+ 
+-------------------------------------------------------------------
 Sun Jan  2 21:36:28 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 2.2.8.
