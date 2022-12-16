@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  7 22:09:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.8:
+  * rules: Drop using register keyword
+  * add exec perms
+  * translation updates
+  * Use what's in the build environment and use a current autoconf
+  * util/Makefile.am: fix link with lintl
+  * Force grep to treat the input as text when formatting word files
+
+-------------------------------------------------------------------
 Thu Nov  4 13:45:06 UTC 2021 - pgajdos@suse.com
 
 - %check: really test the package [bsc#1191736]

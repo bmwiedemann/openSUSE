@@ -1,7 +1,7 @@
 #
 # spec file for package cracklib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           cracklib
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
 Summary:        Library to crack passwords using dictionaries
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-URL:            http://sourceforge.net/projects/cracklib
+URL:            https://github.com/cracklib/cracklib
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE (should be upstreamed)
@@ -105,9 +105,9 @@ sed "s,%{_libexecdir}/cracklib_dict,%{_datadir}/cracklib/pw_dict,g" lib/crack.h 
 ln -s cracklib-format %{buildroot}/%{_sbindir}/mkdict
 ln -s cracklib-packer %{buildroot}/%{_sbindir}/packer
 rm -f %{buildroot}/%{_datadir}/cracklib/cracklib-small
-ln -sf %{_datadir}/cracklib/pw_dict.hwm %{buildroot}/usr/lib/cracklib_dict.hwm
-ln -sf %{_datadir}/cracklib/pw_dict.pwd %{buildroot}/usr/lib/cracklib_dict.pwd
-ln -sf %{_datadir}/cracklib/pw_dict.pwi %{buildroot}/usr/lib/cracklib_dict.pwi
+ln -sf %{_datadir}/cracklib/pw_dict.hwm %{buildroot}%{_prefix}/lib/cracklib_dict.hwm
+ln -sf %{_datadir}/cracklib/pw_dict.pwd %{buildroot}%{_prefix}/lib/cracklib_dict.pwd
+ln -sf %{_datadir}/cracklib/pw_dict.pwi %{buildroot}%{_prefix}/lib/cracklib_dict.pwi
 #
 # using zip'ed dict takes too long for a check. But the support
 # for this is still in the lib.
@@ -120,7 +120,7 @@ nm -C -D %{buildroot}%{_libdir}/libcrack.so.2 | grep ' T '
 %endif
 
 %check
-sed -i 's:\(util/cracklib-check\):\1 %{buildroot}/usr/lib/cracklib_dict:' Makefile
+sed -i 's:\(util/cracklib-check\):\1 %{buildroot}%{_prefix}/lib/cracklib_dict:' Makefile
 %make_build test
 
 %post -n libcrack2 -p /sbin/ldconfig
@@ -132,7 +132,8 @@ sed -i 's:\(util/cracklib-check\):\1 %{buildroot}/usr/lib/cracklib_dict:' Makefi
 
 %files -f %{name}.lang
 %license COPYING.LIB
-%doc README README-WORDS NEWS README-LICENSE README-DAWG AUTHORS
+%license README-LICENSE
+%doc README README-WORDS NEWS README-DAWG AUTHORS
 %{_sbindir}/create-cracklib-dict
 %{_sbindir}/mkdict
 %{_sbindir}/packer
@@ -142,9 +143,9 @@ sed -i 's:\(util/cracklib-check\):\1 %{buildroot}/usr/lib/cracklib_dict:' Makefi
 %{_sbindir}/cracklib-unpacker
 %dir %{_datadir}/cracklib
 %{_datadir}/cracklib/cracklib.magic
-/usr/lib/cracklib_dict.hwm
-/usr/lib/cracklib_dict.pwd
-/usr/lib/cracklib_dict.pwi
+%{_prefix}/lib/cracklib_dict.hwm
+%{_prefix}/lib/cracklib_dict.pwd
+%{_prefix}/lib/cracklib_dict.pwi
 
 %files devel
 %{_includedir}/crack.h
