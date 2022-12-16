@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 16 10:12:42 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.14:
+  * Add basic vim bindings #314
+  * Make pkg-config configurable #316
+  * improve exit code docs #320
+  * Fix --filter #322
+
+-------------------------------------------------------------------
 Tue Oct 11 07:56:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.13:

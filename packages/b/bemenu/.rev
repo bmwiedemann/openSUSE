@@ -262,4 +262,16 @@
   * fix dangling pointer state on wayland #310</comment>
     <requestid>1009679</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9ce91160dd1234687a5260c715f34939</srcmd5>
+    <version>0.6.14</version>
+    <time>1671209534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.14:
+  * Add basic vim bindings #314
+  * Make pkg-config configurable #316
+  * improve exit code docs #320
+  * Fix --filter #322</comment>
+    <requestid>1043312</requestid>
+  </revision>
 </revisionlist>
