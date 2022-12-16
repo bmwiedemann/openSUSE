@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 16:35:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- limit to openssl < 3.0 as this version is not compatible (bsc#1205042)
+  next version update will fix it
+
+-------------------------------------------------------------------
 Thu Nov 10 02:18:08 UTC 2022 - Hans Petter Jansson <hpj@suse.com>
 
 - Update openssh-8.1p1-audit.patch: Merge fix for race condition

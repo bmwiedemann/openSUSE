@@ -116,7 +116,7 @@ BuildRequires:  groff
 BuildRequires:  libedit-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  openldap2-devel
-BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(openssl) < 3
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
