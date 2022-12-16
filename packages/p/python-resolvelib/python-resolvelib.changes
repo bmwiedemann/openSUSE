@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 15 21:03:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add comment on why we need to stay with < 0.9.0 (bsc#1206225)
+
+-------------------------------------------------------------------
 Sun Jul 17 08:24:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:

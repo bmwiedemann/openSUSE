@@ -111,4 +111,12 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5e7de02d43c3369a83ed368fe81fc2db</srcmd5>
+    <version>0.8.1</version>
+    <time>1671209506</time>
+    <user>dimstar_suse</user>
+    <comment>- add comment on why we need to stay with &lt; 0.9.0 (bsc#1206225)</comment>
+    <requestid>1043226</requestid>
+  </revision>
 </revisionlist>
