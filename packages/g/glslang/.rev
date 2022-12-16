@@ -310,4 +310,12 @@
     <comment>- Update to release 11.12</comment>
     <requestid>1030978</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7f5da9bb0995da82efeb53ae756fc660</srcmd5>
+    <version>11.13.0</version>
+    <time>1671209489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.13</comment>
+    <requestid>1043176</requestid>
+  </revision>
 </revisionlist>

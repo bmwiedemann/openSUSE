@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 15 14:11:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.13
+  * Fix incorrect parse message of mesh shader
+  * Test for spv1.6 + memory model HelperInvocation
+  * Add EliminateDeadOutputStores to API.
+  * GL_ARM_shader_core_builtins support
+
+-------------------------------------------------------------------
 Mon Oct 24 19:30:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.12

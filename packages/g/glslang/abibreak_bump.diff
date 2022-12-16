@@ -5,70 +5,65 @@ References: https://github.com/KhronosGroup/glslang/issues/3052
 The ABI break in commit 11.12.0~18^2 causes programs to no longer run.
 Induce a SONAME change.
 ---
- SPIRV/CMakeLists.txt      |    4 ++--
- StandAlone/CMakeLists.txt |    2 +-
- glslang/CMakeLists.txt    |    2 +-
- hlsl/CMakeLists.txt       |    2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ SPIRV/CMakeLists.txt      |    2 ++
+ StandAlone/CMakeLists.txt |    1 +
+ glslang/CMakeLists.txt    |    1 +
+ hlsl/CMakeLists.txt       |    1 +
+ 4 files changed, 5 insertions(+)
 
-Index: glslang-11.12.0/SPIRV/CMakeLists.txt
+Index: glslang-11.13.0/SPIRV/CMakeLists.txt
 ===================================================================
---- glslang-11.12.0.orig/SPIRV/CMakeLists.txt
-+++ glslang-11.12.0/SPIRV/CMakeLists.txt
-@@ -70,7 +70,7 @@ set(SPVREMAP_HEADERS
-     doc.h)
+--- glslang-11.13.0.orig/SPIRV/CMakeLists.txt
++++ glslang-11.13.0/SPIRV/CMakeLists.txt
+@@ -72,6 +72,7 @@ set(SPVREMAP_HEADERS
  
  add_library(SPIRV ${LIB_TYPE} ${SOURCES} ${HEADERS})
--set_target_properties(SPIRV PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
-+set_target_properties(SPIRV PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}.${GLSLANG_VERSION_MINOR}")
+ set_target_properties(SPIRV PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
++set_target_properties(SPIRV PROPERTIES LINK_FLAGS "-Wl,--version-script=/tmp/z.sym")
  set_property(TARGET SPIRV PROPERTY FOLDER glslang)
  set_property(TARGET SPIRV PROPERTY POSITION_INDEPENDENT_CODE ON)
  target_include_directories(SPIRV PUBLIC
-@@ -81,7 +81,7 @@ glslang_add_build_info_dependency(SPIRV)
- 
+@@ -83,6 +84,7 @@ glslang_add_build_info_dependency(SPIRV)
  if (ENABLE_SPVREMAPPER)
      add_library(SPVRemapper ${LIB_TYPE} ${SPVREMAP_SOURCES} ${SPVREMAP_HEADERS})
--    set_target_properties(SPVRemapper PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
-+    set_target_properties(SPVRemapper PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}.${GLSLANG_VERSION_MINOR}")
+     set_target_properties(SPVRemapper PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
++    set_target_properties(SPVRemapper PROPERTIES LINK_FLAGS "-Wl,--version-script=/tmp/z.sym")
      set_property(TARGET SPVRemapper PROPERTY FOLDER glslang)
      set_property(TARGET SPVRemapper PROPERTY POSITION_INDEPENDENT_CODE ON)
  endif()
-Index: glslang-11.12.0/StandAlone/CMakeLists.txt
+Index: glslang-11.13.0/StandAlone/CMakeLists.txt
 ===================================================================
---- glslang-11.12.0.orig/StandAlone/CMakeLists.txt
-+++ glslang-11.12.0/StandAlone/CMakeLists.txt
-@@ -50,7 +50,7 @@ add_custom_command(
- add_library(glslang-default-resource-limits
+--- glslang-11.13.0.orig/StandAlone/CMakeLists.txt
++++ glslang-11.13.0/StandAlone/CMakeLists.txt
+@@ -51,6 +51,7 @@ add_library(glslang-default-resource-lim
              ${CMAKE_CURRENT_SOURCE_DIR}/ResourceLimits.cpp
              ${CMAKE_CURRENT_SOURCE_DIR}/resource_limits_c.cpp)
--set_target_properties(glslang-default-resource-limits PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
-+set_target_properties(glslang-default-resource-limits PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}.${GLSLANG_VERSION_MINOR}")
+ set_target_properties(glslang-default-resource-limits PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
++set_target_properties(glslang-default-resource-limits PROPERTIES LINK_FLAGS "-Wl,--version-script=/tmp/z.sym")
  set_property(TARGET glslang-default-resource-limits PROPERTY FOLDER glslang)
  set_property(TARGET glslang-default-resource-limits PROPERTY POSITION_INDEPENDENT_CODE ON)
  
-Index: glslang-11.12.0/glslang/CMakeLists.txt
+Index: glslang-11.13.0/glslang/CMakeLists.txt
 ===================================================================
---- glslang-11.12.0.orig/glslang/CMakeLists.txt
-+++ glslang-11.12.0/glslang/CMakeLists.txt
-@@ -169,7 +169,7 @@ set_target_properties(glslang PROPERTIES
-     FOLDER glslang
+--- glslang-11.13.0.orig/glslang/CMakeLists.txt
++++ glslang-11.13.0/glslang/CMakeLists.txt
+@@ -172,6 +172,7 @@ set_target_properties(glslang PROPERTIES
      POSITION_INDEPENDENT_CODE ON
      VERSION   "${GLSLANG_VERSION}"
--    SOVERSION "${GLSLANG_VERSION_MAJOR}")
-+    SOVERSION "${GLSLANG_VERSION_MAJOR}.${GLSLANG_VERSION_MINOR}")
+     SOVERSION "${GLSLANG_VERSION_MAJOR}")
++set_target_properties(glslang PROPERTIES LINK_FLAGS "-Wl,--version-script=/tmp/z.sym")
  target_link_libraries(glslang PRIVATE OGLCompiler OSDependent MachineIndependent)
  target_include_directories(glslang PUBLIC
      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
-Index: glslang-11.12.0/hlsl/CMakeLists.txt
+Index: glslang-11.13.0/hlsl/CMakeLists.txt
 ===================================================================
---- glslang-11.12.0.orig/hlsl/CMakeLists.txt
-+++ glslang-11.12.0/hlsl/CMakeLists.txt
-@@ -40,7 +40,7 @@
- add_library(HLSL ${LIB_TYPE} "stub.cpp")
+--- glslang-11.13.0.orig/hlsl/CMakeLists.txt
++++ glslang-11.13.0/hlsl/CMakeLists.txt
+@@ -41,6 +41,7 @@ add_library(HLSL ${LIB_TYPE} "stub.cpp")
  set_property(TARGET HLSL PROPERTY FOLDER hlsl)
  set_property(TARGET HLSL PROPERTY POSITION_INDEPENDENT_CODE ON)
--set_target_properties(HLSL PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
-+set_target_properties(HLSL PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}.${GLSLANG_VERSION_MINOR}")
+ set_target_properties(HLSL PROPERTIES VERSION "${GLSLANG_VERSION}" SOVERSION "${GLSLANG_VERSION_MAJOR}")
++set_target_properties(HLSL PROPERTIES LINK_FLAGS "-Wl,--version-script=/tmp/z.sym")
  
  if(WIN32 AND BUILD_SHARED_LIBS)
      set_target_properties(HLSL PROPERTIES PREFIX "")

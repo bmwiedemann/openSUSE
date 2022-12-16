@@ -16,9 +16,9 @@
 #
 
 
-%define lname libglslang11_12
+%define lname libglslang11
 Name:           glslang
-Version:        11.12.0
+Version:        11.13.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -72,6 +72,7 @@ compressor's dictionary can find better cross module commonality.
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+echo "V_%version { global: *; };" >/tmp/z.sym
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 %make_build
