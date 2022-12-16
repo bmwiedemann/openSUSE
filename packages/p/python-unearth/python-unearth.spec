@@ -17,7 +17,7 @@
 
 
 Name:           python-unearth
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT

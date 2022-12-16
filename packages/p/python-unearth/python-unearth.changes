@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 15 23:14:43 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to version 0.7.0
+  * Features
+    + Suppress warnings for insecure requests  -  by @frostming (419df)
+    + Support PEP 691: JSON simple API and PEP 658: static metadata in API  -  by @frostming in #28 (6dadc)
+  * Bug Fixes
+    + Fix the logger name to be zipapp friendly  -  by @frostming in #29 (5d930)
+- Version 0.6.3
+  * Bug Fixes
+    + Skip invalid versions rejected by packaging 22.0  -  by @pdm-project in #26 (8fc2a)
+  * Documentation
+    + Update the version in docs  -  by @pdm-project (f2a02)
+
+-------------------------------------------------------------------
 Tue Dec  6 17:07:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.6.2 
