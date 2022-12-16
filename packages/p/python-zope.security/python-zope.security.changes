@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:46:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.8 
+  * The extra untrustedpython now for Python 3, too, installs zope.untrustedpython.
+
+-------------------------------------------------------------------
 Mon Dec  5 13:53:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.7 

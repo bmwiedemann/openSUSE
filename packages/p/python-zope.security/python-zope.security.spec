@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.security%{psuffix}
-Version:        5.7
+Version:        5.8
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
