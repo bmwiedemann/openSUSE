@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 15 21:10:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Add official support for python 3.10 and 3.11. [gforcada] [michael-k]
+  * Update options handling. [gforcada]
+  * Mark support for python 3.9. [lovetoburnswhen]
+  * Drop python 2.7 and 3.6. [gforcada]
+  * Overhaul GitHub actions to test on actual supported python versions.
+  * New flake8 option `--builtins-ignorelist` to specify a list of builtins
+    to ignore. [gsingh93]
+
+-------------------------------------------------------------------
 Thu Sep 17 11:10:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.5.3:

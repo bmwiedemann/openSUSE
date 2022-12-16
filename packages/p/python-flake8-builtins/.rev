@@ -37,4 +37,19 @@
   - Change messages to have shorter text</comment>
     <requestid>835163</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a05238a084becdad61b2e112c495a701</srcmd5>
+    <version>2.0.1</version>
+    <time>1671209505</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Add official support for python 3.10 and 3.11. [gforcada] [michael-k]
+  * Update options handling. [gforcada]
+  * Mark support for python 3.9. [lovetoburnswhen]
+  * Drop python 2.7 and 3.6. [gforcada]
+  * Overhaul GitHub actions to test on actual supported python versions.
+  * New flake8 option `--builtins-ignorelist` to specify a list of builtins
+    to ignore. [gsingh93]</comment>
+    <requestid>1043223</requestid>
+  </revision>
 </revisionlist>

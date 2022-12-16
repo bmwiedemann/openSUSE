@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-builtins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flake8-builtins
-Version:        1.5.3
+Version:        2.0.1
 Release:        0
 Summary:        Flake8 Builtins plugin
 License:        GPL-2.0-only
 URL:            https://github.com/gforcada/flake8-builtins
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-builtins/flake8-builtins-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-flake8
+Requires:       python-flake8 >= 6.0.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module flake8 >= 6.0.0}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module pytest}
