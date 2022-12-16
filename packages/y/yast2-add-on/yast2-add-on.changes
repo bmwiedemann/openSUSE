@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 15 12:50:41 UTC 2022 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed failure with the "media_url" element in AutoYaST profile
+  containing CDATA block with spaces (bsc#1205928)
+- 4.5.3
+
+-------------------------------------------------------------------
 Tue Oct 25 08:37:56 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
 
 - support 'repo' scheme for add-ons (jsc#SLE-22578, jsc#SLE-24584)
