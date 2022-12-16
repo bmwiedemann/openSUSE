@@ -86,8 +86,8 @@ BuildRequires:  makeinfo
 BuildRequires:  p11-kit-devel >= 0.23.1
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(autoopts)
+BuildRequires:  pkgconfig(zlib)
 %if %{with kcapi}
 BuildRequires:  pkgconfig(libkcapi)
 %endif

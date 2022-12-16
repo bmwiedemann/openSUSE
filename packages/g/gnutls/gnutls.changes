@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Tue Nov  8 12:52:18 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Verify only the libgnutls library HMAC [bsc#1199881]
