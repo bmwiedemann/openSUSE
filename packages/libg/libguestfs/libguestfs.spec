@@ -17,7 +17,7 @@
 
 
 Name:           libguestfs
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
 Version:        1.48.6
 Release:        0
 Summary:        Access and modify virtual machine disk images
@@ -103,6 +103,9 @@ sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
 %endif
 %ifarch ppc64
 %define kvm_binary %{_bindir}/qemu-system-ppc64
+%endif
+%ifarch riscv64
+%define kvm_binary %{_bindir}/qemu-system-riscv64
 %endif
 %ifarch s390x
 %define kvm_binary %{_bindir}/qemu-system-s390x
@@ -255,6 +258,10 @@ cat > %{buildroot}%{_libdir}/guestfs/supermin.d/zz-packages-winsupport << EOF
 libfuse2
 hwinfo
 EOF
+
+# do some cleanup so that rpm can properly empty directories without permission denie
+# The winsupport directory has already been tar'ed up, so we don't care much
+find winsupport -type d -exec chmod 755 {} \;
 
 mkdir -p %{buildroot}/tmp/usr/bin
 cp %{S:100} %{buildroot}/tmp/usr/bin

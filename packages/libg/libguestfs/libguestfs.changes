@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 16 09:08:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.18: rpm wants to do a proper cleanup, and
+  fails on the design choice to have /usr/lib65 without write
+  permission. As we already tar'ed the content up, we can simply
+  change the permissions of winsupport's content to allow proper
+  erasing.
+
+-------------------------------------------------------------------
+Wed Nov 30 14:34:58 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Tue Nov 29 11:45:36 MST 2022 - carnold@suse.com
 
 - Update to version 1.48.6

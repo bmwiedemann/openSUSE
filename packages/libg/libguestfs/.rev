@@ -990,4 +990,12 @@
     <comment>Update to libguestfs version 1.48.6</comment>
     <requestid>1039017</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>1621ec85f1889986ec4c788f37913c99</srcmd5>
+    <version>1.48.6</version>
+    <time>1671222365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043374</requestid>
+  </revision>
 </revisionlist>
