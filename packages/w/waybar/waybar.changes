@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 13 20:58:47 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix: actually use the date library dependency provided by hhdate
+  * add 0001-require-date-dependency.patch
+
+-------------------------------------------------------------------
 Mon Dec  5 19:10:20 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix: do not require versioned branding (bsc#1205950)

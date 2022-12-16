@@ -1,0 +1,12 @@
+diff --git a/meson.build b/meson.build
+index 9354ca8..e61ee70 100644
+--- a/meson.build
++++ b/meson.build
+@@ -120,7 +120,6 @@ gtk_layer_shell = dependency('gtk-layer-shell-0',
+         fallback : ['gtk-layer-shell', 'gtk_layer_shell_dep'])
+ systemd = dependency('systemd', required: get_option('systemd'))
+ tz_dep = dependency('date',
+-    required: false,
+     default_options : [ 'use_system_tzdb=true' ],
+     modules : [ 'date::date', 'date::date-tz' ],
+     fallback: [ 'date', 'tz_dep' ])

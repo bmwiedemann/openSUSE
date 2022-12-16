@@ -25,6 +25,7 @@ Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         0000-replace-gethostbyname-getaddrinfo.patch
+Patch1:         0001-require-date-dependency.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++
@@ -38,7 +39,7 @@ BuildRequires:  pkgconfig
 # test dependency
 BuildRequires:  pkgconfig(catch2) >= 3.0
 BuildRequires:  sndio-devel >= 1.7.0
-# date module
+# clock module
 BuildRequires:  hhdate-devel
 # optional: man pages
 BuildRequires:  scdoc

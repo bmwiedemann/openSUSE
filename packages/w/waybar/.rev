@@ -686,4 +686,14 @@
     <comment></comment>
     <requestid>1040461</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>e0ed5f49486691f29b0f6ea72ab2f921</srcmd5>
+    <version>0.9.16</version>
+    <time>1671209496</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix: actually use the date library dependency provided by hhdate
+  * add 0001-require-date-dependency.patch
+</comment>
+    <requestid>1043178</requestid>
+  </revision>
 </revisionlist>
