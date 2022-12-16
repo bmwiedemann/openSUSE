@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 15 00:13:46 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 0.2.2
+  * Added pyproject.toml to source distribution
+  * Published precompiled wheels for Python 3.11 
+
+- version 0.2.1
+  * [zopfli.png] Only print debug info to console output when -v/--verbose flag is used.
+
+- version 0.2.0
+  * Dropped support for EOL Python 2.7 and 3.6, require Python 3.7+ (#16).
+  * Added support for compressing PNGs via zopfli.png.optimize method. Also available from 
+   the command line as python -m zopfli.png; mimics the upstream's zopflipng c++ executable (#17).
+
+- version 0.1.9
+  * Allow to link against system installed zopfli library by setting
+    USE_SYSTEM_ZOPFLI environment variable (#9).
+  * Added wheels for Python 3.10, universal2 macos "fat" (x86_64 + arm64)
+    architecture, Linux aarch64 and pypy3 (#10, #11).
+  * Determine package version automatically from latest git tag using setuptools_scm.
+
+-------------------------------------------------------------------
 Mon Jul 12 11:54:56 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.1.8

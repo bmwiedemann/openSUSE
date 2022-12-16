@@ -1,7 +1,7 @@
 #
 # spec file for package python-zopfli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zopfli
-Version:        0.1.8
+Version:        0.2.2
 Release:        0
 Summary:        Zopfli module for python
 License:        Apache-2.0
 URL:            https://github.com/obp/py-zopfli
 Source:         https://files.pythonhosted.org/packages/source/z/zopfli/zopfli-%{version}.zip
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  libzopfli-devel >= 1.0.3
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 %python_subpackages
@@ -38,19 +42,20 @@ Zopfli module for python
 %setup -q -n zopfli-%{version}
 
 %build
-export CFLAGS="%{optflags}"
-%python_build
+export USE_SYSTEM_ZOPFLI=1
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pyunittest_arch
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitearch}/*
+%{python_sitearch}/zopfli
+%{python_sitearch}/zopfli-%{version}*-info
 
 %changelog
