@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 15 20:56:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0 (bsc#1206225):
+  * https://flake8.pycqa.org/en/latest/release-notes/6.0.0.html
+  * Require python >= 3.8.1 (See also #1633, #1741).
+  * List available formatters in for --format option in --help (See also #223, #1624).
+  * Improve multiprocessing performance (See also #1723).
+  * Enable multiprocessing on non-fork platforms (See also #1723).
+  * Ensure results are sorted when discovered from files (See also #1670, #1726).
+
+-------------------------------------------------------------------
 Sat Aug 27 09:12:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Pin to upstream's ranges in dependendcies in order to not break

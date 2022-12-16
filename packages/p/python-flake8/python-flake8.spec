@@ -17,34 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-flake8
-Version:        5.0.4
+Version:        6.0.0
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
 URL:            https://flake8.pycqa.org
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
 # workaround for https://github.com/PyCQA/flake8/pull/1669
-Source2:        https://raw.githubusercontent.com/PyCQA/flake8/5.0.4/bin/gen-pycodestyle-plugin
+Source2:        https://raw.githubusercontent.com/PyCQA/flake8/%{version}/bin/gen-pycodestyle-plugin
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata >= 1.1.0 if %python-version < 3.8}
 BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
-BuildRequires:  %{python_module pycodestyle >= 2.9.0 with %python-pycodestyle < 2.10.0}
-BuildRequires:  %{python_module pyflakes >= 2.5.0 with %python-pyflakes < 2.6.0}
+BuildRequires:  %{python_module pycodestyle >= 2.10.0 with %python-pycodestyle < 2.11.0}
+BuildRequires:  %{python_module pyflakes >= 3.0.0 with %python-pyflakes < 3.1.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildArch:      noarch
 # https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
 Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       (python-pycodestyle >= 2.9.0 with python-pycodestyle < 2.10.0)
-Requires:       (python-pyflakes >= 2.5.0 with python-pyflakes < 2.6.0)
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 1.1.0
-%endif
+Requires:       (python-pycodestyle >= 2.10.0 with python-pycodestyle < 2.11.0)
+Requires:       (python-pyflakes >= 3.0.0 with python-pyflakes < 3.1.0)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages

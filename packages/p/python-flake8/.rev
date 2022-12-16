@@ -398,4 +398,18 @@
     <comment></comment>
     <requestid>999905</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>566ee3a2ed44958b6af4c7586e4c595e</srcmd5>
+    <version>6.0.0</version>
+    <time>1671209501</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0 (bsc#1206225):
+  * https://flake8.pycqa.org/en/latest/release-notes/6.0.0.html
+  * Require python &gt;= 3.8.1 (See also #1633, #1741).
+  * List available formatters in for --format option in --help (See also #223, #1624).
+  * Improve multiprocessing performance (See also #1723).
+  * Enable multiprocessing on non-fork platforms (See also #1723).
+  * Ensure results are sorted when discovered from files (See also #1670, #1726).</comment>
+    <requestid>1043219</requestid>
+  </revision>
 </revisionlist>
