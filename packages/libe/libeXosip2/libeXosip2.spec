@@ -1,7 +1,7 @@
 #
 # spec file for package libeXosip2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,24 @@
 #
 
 
-%define soname libeXosip2-12
+%define soname libeXosip2-15
 
 Name:           libeXosip2
-Version:        5.1.0
+Version:        5.3.0
 Release:        0
 Summary:        Extended osip2 library
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://savannah.nongnu.org/projects/exosip/
 Source:         http://download.savannah.nongnu.org/releases/exosip/libexosip2-%{version}.tar.gz
+Source1:        http://download.savannah.nongnu.org/releases/exosip/libexosip2-%{version}.tar.gz.sig
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=3960#/%{name}.keyring
 BuildRequires:  c-ares-devel
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libosip2) >= 5.1.0
+BuildRequires:  pkgconfig(libosip2) >= 5.3.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -50,7 +52,7 @@ Summary:        Extended osip2 library
 Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %{version}
 Requires:       glibc-devel
-Requires:       libosip2-devel >= 5.1.0
+Requires:       libosip2-devel >= 5.3.0
 Requires:       openssl-devel
 Provides:       %{soname}-devel = %{version}
 
@@ -76,7 +78,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %defattr(-,root,root)
+%{_bindir}/sip_monitor
 %{_bindir}/sip_reg
+%{_bindir}/sip_storm
 
 %files -n %{soname}
 %defattr(-,root,root)

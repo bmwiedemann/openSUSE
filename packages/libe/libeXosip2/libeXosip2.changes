@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Sep  5 19:05:29 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 5.3.0:
+  * rewrite socket error management in order to apply them to all
+    pending ICT and NICT transactions
+  * add time information in cb_xixt_kill_transaction callback for
+    debugging
+  * eXosip_lock will now include read on sockets
+  * [TLS] allow to accept wildcard with a new bit in
+    tls_verify_client_certificate
+  * [TLS] disable loading OS certifiate with a new bit in
+    tls_verify_client_certificate
+  * [TLS] I beleive there is no reason to cut packet in 500 bytes
+    chunks on ios
+  * [EXOSIP_OPT_SET_CONTACT_DIALOG_EXTRA_PARAMS] new option to set
+    Contact parameters in request/answers dialogs
+  * [AMSIP_OPTION_SET_SIP_INSTANCE] allow any value inside
+    +sip.instance instead of only urn:uuid
+  * [epoll] fix eXosip_event_wait when using epoll implementation
+    where events are distributed in the next eXosip_event_wait call
+- additional changes from 5.2.1:
+  * [ENABLE_MAIN_SOCKET] fix epoll mechanism for server socket with
+    TCP and TLS
+  * [crash] check scheme upon processing 3xx
+  * [ssl] fix to be compatible with libressl
+  * [ssl] https://savannah.nongnu.org/patch/?10046 compatibility
+    with openssl below 1.1.0
+  * fix when Content-Type indicates application/sdp, but there is
+    no body
+  * [TLS] modify the code for TLS validation in order to improve
+    logs and details on the connection
+  * use time_t instead of int for r_retry_after_delay variable
+    [fix 1367a34ca commited on March 1st]
+  * eXosip_default_action will return OSIP_RETRY_LIMIT when limit
+    is reached
+  * make sure to obey the Retry-After header from REGISTER reply
+  * use newer osip_timersub MACRO
+  * [bug#60024] fix openssl usage to always use callback mode for
+    private key password, even when missing
+  * eXosip_reset_transports was not effective any more since [5.1.2]
+    [commit 705643fa  2020-07-07] [do not use unless you understand
+    it]
+  * [windows] a HANDLE is leaked when loading trusted certificates
+  * dp layer: handle WSAEMSGSIZE when buffer is too short for
+    complete incoming message
+  * cleaner code to retreive an SDP from a SIP message
+  * fix crash when ENABLE_MAIN_SOCKET is defined and epoll is used
+- additional changes from 5.2.0:
+  * fix memory and socket leak [major] [affected TCP, TLS, UDP:
+    since 5.1.2, need update asap]
+  * fix to make sure a non yet established TLS descriptor with read
+    descriptor set will be processed when no outgoing transaction
+    is in a state to handle it [since 5.1.2]
+  * fix SRV rotation for TLS [was rotating TCP records instead of
+    TLS] [since 5.1.2]
+  * fix duplicate packets for TCP and TLS when several outgoing
+    NICT are happening at the same time [since 5.1.2]
+  * add outbound proxy parameter in sip_monitor tool
+  * ABI update: modification of "eXosip_tls_ctx_t"
+- additional changes from 5.1.3:
+  * EXOSIP_OPT_FORCE_CONNECTIONREUSE; new option to force reusing
+    established socket for ACK and dialog message
+  * tls: fix building DH parameter with 5.1.2 and openssl < 1.1.0
+- additional changes from 5.1.2:
+  * tls: use RFC 5114 dh param with 2048 bits size.
+  * tls: use 2048 bits for ephemeral RSA key genearation.
+  * tls: use SSL_OP_NO_COMPRESSION to make sure it's disabled.
+  * tls: use SSL_OP_NO_TICKET to disable ticket.
+  * tls: use HIGH:!COMPLEMENTOFDEFAULT:!kRSA:!PSK:!SRP cipher list
+    for higher security and less ciphers
+  * fix possible race condition in sample code [sip_reg and
+    sip_monitor]
+  * new format style using clang-format.
+  * reduce and rewrite logs for readability.
+  * fix broken epoll implementation. (DO NOT USE 5.1.1 with epoll)
+  * rewrite UDP/TCP/TLS (and DTLS untested) for both select and
+    epoll mode.
+  * Fix NAPTR/SRV on windows when CARES is not used. (not advised)
+  * ACK sent out of transaction with no existing connection may be
+    sent later. (TCP/TLS)
+  * Upon TLS loss, try to use domain or NAPTR SNI when TLS
+    connection is not initiated by an outgoing transaction.
+  * sip_monitor: new tool to monitor sip service
+  * add support for authentication using SHA-256 (openssl required)
+  * only use first supported proposed authentication when same
+    realm is used
+  * fix: upon UDP errors, like ICMP buffer size may reach abnormal
+    values (avoid useless reallocation)
+- additional changes from 5.1.1:
+  * new API:
+    int eXosip_hexa_generate_random(char *val, int val_size)
+    int eXosip_byte_generate_random(char *val, int val_size)
+  * provide more entropy with eXosip_byte_generate_random (with
+    openssl when available).
+  * fix TLS security issue reported by Alexander Traud regarding
+    hostname validation when using NAPTR/SRV.
+  * add support for epoll (detected by configured) // becomes the
+    default on linux platforms with autotools
+  * fix bug #56839: The cnonce should not be static -this is
+    identified as replay attack by some services-.
+  * fix tcp and tls connection failure detection (accelerate error
+    detection and recovery)
+  * fix: fixed a crash with DTLS
+- update soname to libeXosip2-15
+- add source archive signature and author keyring
+- add new binaries sip_monitor and sip_storm
+
+-------------------------------------------------------------------
 Wed Feb  5 19:14:45 UTC 2020 - David Sugar <tychosoft@gmail.com>
 
 - Update to 5.1.0
