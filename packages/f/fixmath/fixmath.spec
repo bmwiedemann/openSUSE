@@ -24,6 +24,10 @@ Summary:        Fixed point math operations library
 License:        MIT
 URL:            https://github.com/PetteriAimonen/libfixmath
 Source0:        %{url}/archive/refs/heads/master.tar.gz#:/%{name}-%{version}.tar.gz
+# PATCH-FIX-SUSE build shared lib instead of static one
+Patch0:         build-shared-library.patch
+# PATCH-FIX-SUSE use cmake for installation
+Patch1:         cmake-install.patch
 BuildRequires:  gcc-c++
 # Use cmake3 package on SLE12 because cmake is too old (version 3.5)
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
@@ -46,7 +50,7 @@ fixmath is fix point math operations library.
 This package contains the headers and the static library.
 
 %prep
-%autosetup -n lib%{name}-master
+%autosetup -n lib%{name}-master -p1
 
 %build
 # Fix lto-no-text-in-archive rpmlint error
@@ -60,15 +64,12 @@ sed -e '/set(sanitizer_opts/d' -i tests/tests.cmake
 %cmake_build
 
 %install
-mkdir -p %{buildroot}%{_libdir}
-cp build/liblibfixmath.a %{buildroot}%{_libdir}
-mkdir -p %{buildroot}%{_includedir}/libfixmath
-cp libfixmath/*.h libfixmath/*.hpp %{buildroot}%{_includedir}/libfixmath
+%cmake_install
 
 %files devel
 %doc README.md
 %license LICENSE
 %{_includedir}/libfixmath
-%{_libdir}/*.a
+%{_libdir}/lib%{name}.so
 
 %changelog

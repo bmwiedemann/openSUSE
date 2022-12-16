@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1004673</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>775b11071ef0ec79665814ffa1d827bc</srcmd5>
+    <version>2022.07.20</version>
+    <time>1671209470</time>
+    <user>dimstar_suse</user>
+    <comment>- Build shared library instead of static one
+  * build-shared-library.patch
+- Use cmake to install files
+  * cmake-install.patch</comment>
+    <requestid>1043164</requestid>
+  </revision>
 </revisionlist>

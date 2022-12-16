@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 13 16:58:46 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Build shared library instead of static one
+  * build-shared-library.patch
+- Use cmake to install files
+  * cmake-install.patch
+
+-------------------------------------------------------------------
 Thu Sep 15 10:09:53 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix build on SLE-12-SP5

@@ -1,0 +1,31 @@
+Index: libfixmath-master/CMakeLists.txt
+===================================================================
+--- libfixmath-master.orig/CMakeLists.txt
++++ libfixmath-master/CMakeLists.txt
+@@ -10,6 +10,8 @@ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wextra -Werror=return-type")
+ 
++include(GNUInstallDirs)
++
+ include(libfixmath/libfixmath.cmake)
+ include(tests/tests.cmake)
+ 
+Index: libfixmath-master/libfixmath/libfixmath.cmake
+===================================================================
+--- libfixmath-master.orig/libfixmath/libfixmath.cmake
++++ libfixmath-master/libfixmath/libfixmath.cmake
+@@ -3,4 +3,11 @@ file(GLOB libfixmath-srcs libfixmath/*.c
+ add_library(fixmath SHARED ${libfixmath-srcs})
+ 
+ target_include_directories(fixmath INTERFACE
+-  ${CMAKE_CURRENT_SOURCE_DIR})
+\ No newline at end of file
++  ${CMAKE_CURRENT_SOURCE_DIR})
++
++install(TARGETS fixmath
++        DESTINATION ${CMAKE_INSTALL_LIBDIR})
++
++file(GLOB libfixmath-headers libfixmath/*.h libfixmath/*.hpp)
++install(FILES ${libfixmath-headers}
++        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libfixmath)
