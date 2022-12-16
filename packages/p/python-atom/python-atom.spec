@@ -1,7 +1,7 @@
 #
 # spec file for package python-atom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-atom
-Version:        0.7.0
+Version:        0.8.2
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/nucleic/atom
-Source:         https://github.com/nucleic/atom/archive/%{version}.tar.gz
-BuildRequires:  %{python_module cppy}
-BuildRequires:  %{python_module devel}
+Source:         https://files.pythonhosted.org/packages/source/a/atom/atom-%{version}.tar.gz
+BuildRequires:  %{python_module cppy >= 1.2.0}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,18 +47,19 @@ model binding behaviour for the Enaml UI framework.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} py.test-%{$python_bin_suffix} -v
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/atom
+%{python_sitearch}/atom-%{version}*-info
 
 %changelog
