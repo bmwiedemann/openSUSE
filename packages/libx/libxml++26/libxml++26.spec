@@ -26,7 +26,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libxmlplusplus.github.io/libxmlplusplus
 Source:         https://download.gnome.org/sources/libxml++/2.42/%{_name}-%{version}.tar.xz
-Source1:        baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes

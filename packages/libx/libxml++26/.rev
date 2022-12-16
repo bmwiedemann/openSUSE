@@ -58,4 +58,12 @@
 - Use ldconfig_scriptlets macro for post(un) handling. (forwarded request 1002499 from iznogood)</comment>
     <requestid>1003130</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1b28adc185109d4bcde17f5d9f3734e7</srcmd5>
+    <version>2.42.2</version>
+    <time>1671222370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043382</requestid>
+  </revision>
 </revisionlist>
