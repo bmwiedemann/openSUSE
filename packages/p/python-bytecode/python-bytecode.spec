@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-bytecode
 Version:        0.14.0
 Release:        0
@@ -26,14 +24,15 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/vstinner/bytecode
 Source:         https://files.pythonhosted.org/packages/source/b/bytecode/bytecode-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aenum >= 2.0
+Requires:       (python-typing-extensions if python-base < 3.10)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -57,6 +56,7 @@ Python module to generate and modify bytecode
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/bytecode
+%{python_sitelib}/bytecode-%{version}*-info
 
 %changelog
