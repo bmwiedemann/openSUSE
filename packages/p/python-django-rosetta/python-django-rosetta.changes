@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 16 07:04:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-python-memcached. 
+
+-------------------------------------------------------------------
 Mon Nov 28 12:10:58 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

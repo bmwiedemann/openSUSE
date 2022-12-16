@@ -37,7 +37,6 @@ BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module polib >= 1.1.0}
 BuildRequires:  %{python_module pymemcache}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module vcrpy}
 BuildRequires:  memcached

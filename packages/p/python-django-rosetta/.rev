@@ -35,4 +35,12 @@
 </comment>
     <requestid>1038669</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>478a26640cdd59b1d1568579697de5f3</srcmd5>
+    <version>0.9.8</version>
+    <time>1671209525</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on python-python-memcached.</comment>
+    <requestid>1043274</requestid>
+  </revision>
 </revisionlist>
