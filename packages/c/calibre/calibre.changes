@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec 16 06:38:45 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.10.0
+  * New features
+    - Content server: Add support for searching the full text of
+      books. Simply click the FTS link on the search page to start
+      a full text search.
+    - Content server: When using user accounts, the homepage now
+      shows recently read books from any device not just the current
+      device
+    - Kobo driver: Bump the max supported firmware version
+    - Conversion: New Output profile for the Kindle Scribe
+    - Check library: Allow ignoring folder names as well as files
+      names
+  * Bug fixes
+    - Edit book: Fix various formatting operations not inserting
+      the tags in the correct place in the presence of non-BMP
+      characters
+    - Edit book: Use instead of for strikethrough
+    - Edit book: Fix export saved search to search panel not
+      preserving the wrap checkbox state
+    - Content server: Redirect the index page to always have
+      trailing slash when using URL prefixes
+    - Book list: Workaround for change in Qt 6 behavior where
+      clicking on an already selected row does not deselect other
+      rows
+    - Windows: Fix a regression in calibre 6 causing Open With to
+      not extract icons from EXE files
+  
+-------------------------------------------------------------------
 Fri Nov 25 06:32:34 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.9.0
