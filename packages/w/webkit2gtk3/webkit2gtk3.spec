@@ -83,6 +83,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
 Patch0:         no-forced-sse.patch
+# PATCH-FIX-UPSTREAM b7ac5d0c.patch dimstar@opensuse.org -- Fix build with Ruby 3.2
+Patch1:         https://github.com/WebKit/WebKit/commit/b7ac5d0c.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

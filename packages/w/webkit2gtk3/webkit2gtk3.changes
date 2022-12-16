@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 14 16:45:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add upstream patch b7ac5d0c.patch: Fix build with Ruby 3.2.
+
+-------------------------------------------------------------------
 Thu Nov 17 13:29:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for webkit2gtk3:gtk3-soup2 on aarch64 to
