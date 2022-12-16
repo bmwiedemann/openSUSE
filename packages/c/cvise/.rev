@@ -934,4 +934,22 @@
   * Pass instantiate-template-param learned to remove template arguments and parameters</comment>
     <requestid>1042816</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d4f3bcc19df3921ae28119e5b1bde825</srcmd5>
+    <version>2.6.0+git.20221216.1423ed5</version>
+    <time>1671209497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221216.1423ed5:
+  * Split remove-base-class transformation into remove-base-class and merge-base-class and supporting templated base classes
+  * Update reason comment.
+  * Improve LLVM version detection.
+  * Add support for skipIf get_llvm_version.
+
+- Update to version 2.6.0+git.20221215.2f76b4f:
+  * Added getDescribedTemplateParams for backwards compatibility
+  * The move-function-body transformation learned to move class methods, templated functions and methods within templated classes
+  * testing: quit if we cannot create bug report
+  * Fixed crash in reduce-class-template-param</comment>
+    <requestid>1043346</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 16 14:46:32 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221216.1423ed5:
+  * Split remove-base-class transformation into remove-base-class and merge-base-class and supporting templated base classes
+  * Update reason comment.
+  * Improve LLVM version detection.
+  * Add support for skipIf get_llvm_version.
+
+-------------------------------------------------------------------
+Thu Dec 15 17:37:53 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221215.2f76b4f:
+  * Added getDescribedTemplateParams for backwards compatibility
+  * The move-function-body transformation learned to move class methods, templated functions and methods within templated classes
+  * testing: quit if we cannot create bug report
+  * Fixed crash in reduce-class-template-param
+
+-------------------------------------------------------------------
 Wed Dec 14 08:12:38 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221214.96f841e:
