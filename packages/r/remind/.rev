@@ -504,4 +504,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1030445</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>69ef3f3a10b59bc915e6dc94d0053d29</srcmd5>
+    <version>4.2.1</version>
+    <time>1671209532</time>
+    <user>dimstar_suse</user>
+    <comment>- VERSION 4.2 Patch 1 - 2022-12-15
+- MINOR IMPROVEMENT: TkRemind: If &quot;Extra Remind Options&quot; contains -m, make
+  TkRemind start the calendar with Monday instead of Sunday.
+- MINOR IMPROVEMENT: Sample files: Add French holidays courtesy of
+  Clément Bœsch.
+- MINOR IMPROVEMENT: A few performance fixes, likely not even noticeable in
+  most cases.
+- MINOR FIXES: Fix misleading comments in the source code.
+- MINOR FIX: Remove a bunch of dead code in the moon-phase routines.
+- MINOR FIX: Remove unnecessary %&quot;...%&quot; markers in holidays/us.rem
+- MINOR FIX: Don't use the -ffat-lto-objects if we're compiling with Clang.
+- MINOR FIX: Remind: Fix a broken printf-format string (need to double up on %
+  to get a literal % in the output.)
+- BUG FIX: Make test suite pass regardless of the date on which it is run.
+  D'oh!!!
+- BUG FIX: Make sure the banner gets printed each time through a &quot;*N&quot;
+  command-line option loop.</comment>
+    <requestid>1043298</requestid>
+  </revision>
 </revisionlist>
