@@ -30,9 +30,8 @@ URL:            https://github.com/M0ses/kanku
 Group:          Productivity/Networking/Web/Utilities
 Source:         %{name}-%{version}.tar.xz
 BuildArch:      noarch
-# Thanks to pallavides@gmail.com
-# Cannot build s390x as it cannot find 'etc/templates/default-vm.tt2.s390x'
-ExcludeArch:    s390x
+# Build only for supported arch. See 'etc/templates/default-vm.tt2.$ARCH'
+ExclusiveArch:  aarch64 x86_64 %{ix86}
 BuildRequires:  fdupes
 BuildRequires:  perl-macros
 BuildRequires:  systemd-rpm-macros
