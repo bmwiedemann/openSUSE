@@ -381,4 +381,16 @@ It is a dependency of the spyder python graphical environment, besides by a usef
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>3f77f90e5cb6a0dff8bdbe93853ffcb0</srcmd5>
+    <version>3.0.1</version>
+    <time>1671209502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1 (bsc#1206225):
+  * Detect undefined name in variable defined by an annotated assignment
+  * Add a new error for names which are annotated but unused
+  * Remove handling of python 2.x ``# type:`` comments.  Use annotations
+    instead</comment>
+    <requestid>1043220</requestid>
+  </revision>
 </revisionlist>

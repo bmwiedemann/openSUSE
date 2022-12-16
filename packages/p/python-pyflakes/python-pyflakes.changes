@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 15 20:50:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1 (bsc#1206225):
+  * Detect undefined name in variable defined by an annotated assignment
+  * Add a new error for names which are annotated but unused
+  * Remove handling of python 2.x ``# type:`` comments.  Use annotations
+    instead
+
+-------------------------------------------------------------------
 Thu Aug 18 08:27:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:

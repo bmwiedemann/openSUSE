@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyflakes
-Version:        2.5.0
+Version:        3.0.1
 Release:        0
 Summary:        Passive checker of Python programs
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/pyflakes
 Source:         https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
