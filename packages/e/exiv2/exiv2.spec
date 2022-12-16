@@ -36,7 +36,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libxslt
 BuildRequires:  python3-base
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-lang = %{version}
 %if %{with docs}
 BuildRequires:  doxygen

@@ -706,4 +706,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1040336</requestid>
   </revision>
+  <revision rev="69" vrev="9">
+    <srcmd5>28cb3ceee8a1c0895d86cd33fd1f880a</srcmd5>
+    <version>0.27.5</version>
+    <time>1671209465</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to pkgconfig(zlib) so that alternative providers can be
+  used</comment>
+    <requestid>1043123</requestid>
+  </revision>
 </revisionlist>
