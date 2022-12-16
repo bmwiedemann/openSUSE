@@ -1,5 +1,0 @@
-# Channel files in metadata_dir
-addFilter("hidden-file-or-dir /var/lib/pear/.")
-addFilter("zero-length /var/lib/pear/.")
-# Forgot to add category?
-addFilter("non-standard-group Development/Libraries/PHP")
