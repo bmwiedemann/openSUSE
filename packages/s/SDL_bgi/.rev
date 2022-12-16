@@ -191,4 +191,12 @@
     <comment>- Update to release 2.6.0</comment>
     <requestid>980337</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bbfc890406a16f4a2a9230ab02f61c3f</srcmd5>
+    <version>3.0.0</version>
+    <time>1671209518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.0.0</comment>
+    <requestid>1043225</requestid>
+  </revision>
 </revisionlist>

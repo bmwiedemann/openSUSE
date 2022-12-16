@@ -17,9 +17,9 @@
 
 
 Name:           SDL_bgi
-%define sover   8
-%define lname	libSDL_bgi-suse%sover
-Version:        2.6.0
+%define sover   suse9
+%define lname	libSDL_bgi-%sover
+Version:        3.0.0
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
 License:        GPL-2.0-or-later AND Zlib
@@ -82,7 +82,7 @@ rm -v "%buildroot/%_includedir/graphics.h"
 
 %files -n %lname
 %license LICENSE
-%_libdir/libSDL_bgi.so.suse%sover
+%_libdir/libSDL_bgi.so.*
 
 %files -n libSDL_bgi-devel
 %_defaultdocdir/%name/

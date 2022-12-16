@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 15 18:02:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.0
+  * fixed compatibility bugs in detectgraph(), gettextsettings(),
+    getfillsettings(), drawpoly(), fillpoly(), setcolor(), lastkey(),
+  * changed definition of `struct palettetype` (compatibility)
+  * added colorname(), kdelay()
+
+-------------------------------------------------------------------
 Wed Jun  1 10:32:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.0
