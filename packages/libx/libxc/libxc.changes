@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Dec 14 20:03:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Move xc-info binary to devel package and make devel pkg conflict
+  with older libxc5 to work around SLPP guideline violation from
+  older shared lib versions.
+
+-------------------------------------------------------------------
+Fri Dec  9 05:47:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.0:
+  * Changes to the internal handling of derivatives
+  * Improvements in array access, resulting in significant
+    speedups on GPUs.
+  * Bug fix: LDA_C_KARASIEV and LDA_C_KARASIEV_MOD were
+    implemented incorrectly.
+  * Added:
+    - GGA functionals: XC_B97_3C, X_PBE_GAUSSIAN, C_PBE_GAUSSIAN,
+      X_PBE_MOD, X_NCAPR
+    - HYB_GGA functionals: XC_B3P86_NWCHEM
+    - MGGA functionals: C_TPSS_GAUSSIAN, C_CC, C_CCALDA, X_VCML,
+      XC_VCML_RVV10
+    - HYB_MGGA functionals: XC_BR3P86
+    - functions to extract BibTeX reference keys from functionals
+- Specfile clean up.
+- Bump so version.
+- Drop unnecessary autotools BuildRequires (automake, autoconf,
+  libtool).
+- Update source URL.
+
+-------------------------------------------------------------------
 Tue Jan  1 10:19:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim time-sensitive wording from description.

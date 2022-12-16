@@ -42,4 +42,17 @@
 </comment>
     <requestid>662741</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8885592028a55d9a63f77af33e250f5</srcmd5>
+    <version>6.0.0</version>
+    <time>1671209493</time>
+    <user>dimstar_suse</user>
+    <comment>- Move xc-info binary to devel package and make devel pkg conflict with older libxc5 to work around SLPP guideline violation from older shared lib versions.
+- Update to version 6.0.0
+- Specfile clean up.
+- Bump so version.
+- Drop unnecessary autotools BuildRequires (automake, autoconf, libtool).
+- Update source URL.</comment>
+    <requestid>1043190</requestid>
+  </revision>
 </revisionlist>

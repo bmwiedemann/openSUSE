@@ -1,7 +1,7 @@
 #
-# spec file for package votca-xtp
+# spec file for package libxc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name: libxc
-Summary: Library of exchange and correlation functionals to be used in DFT codes
-Version: 4.2.3
-%define sover 5
-Release: 1
-License: MPL-2.0
-Group: Productivity/Scientific/Physics
-BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
-Source: http://www.tddft.org/programs/octopus/down.php?file=%{name}/%{version}/%{name}-%{version}.tar.gz
-URL: http://www.tddft.org/programs/libxc/
 
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gcc
+%define sover 12
+Name:           libxc
+Version:        6.0.0
+Release:        0
+Summary:        Library of exchange and correlation functionals to be used in DFT codes
+License:        MPL-2.0
+Group:          Productivity/Scientific/Physics
+URL:            https://www.tddft.org/programs/libxc/
+Source:         https://www.tddft.org/programs/libxc/down.php?file=%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
-
-%description 
+%description
 Libxc is a library of exchange and correlation functionals. Its
 purpose is to be used in codes that implement density-functional
 theory. The library includes most of the local density
@@ -46,7 +40,9 @@ meta-GGAs. The library provides values for the energy density and its
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Other
-Requires:       libxc%sover = %{version}
+Requires:       libxc%{sover} = %{version}
+# Work-around for incorrectly packaging a binary with the shared lib package
+Conflicts:      libxc5 <= 4.2.3
 
 %description devel
 Libxc is a library of exchange and correlation functionals. Its
@@ -58,11 +54,11 @@ meta-GGAs. The library provides values for the energy density and its
 
 This package contains development headers and libraries for libxc.
 
-%package -n libxc%sover
+%package -n libxc%{sover}
 Summary:        Library of exchange and correlation functionals to be used in DFT codes
 Group:          System/Libraries
 
-%description -n libxc%sover
+%description -n libxc%{sover}
 Libxc is a library of exchange and correlation functionals. Its
 purpose is to be used in codes that implement density-functional
 theory. The library includes most of the local density
@@ -83,19 +79,19 @@ This package contains the library of libxc.
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libxc%sover -p /sbin/ldconfig
-%postun -n libxc%sover -p /sbin/ldconfig
+%post -n libxc%{sover} -p /sbin/ldconfig
+%postun -n libxc%{sover} -p /sbin/ldconfig
 
-%files -n libxc%sover
+%files -n libxc%{sover}
+%license COPYING
+%{_libdir}/*.so.*
+
+%files devel
 %doc README NEWS AUTHORS ChangeLog
 %license COPYING
 %{_bindir}/xc-info
-%{_bindir}/xc-threshold
-%{_libdir}/*.so.%{sover}*
-
-%files devel
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
