@@ -27,7 +27,7 @@ ExcludeArch:    i586
 ExcludeArch:    i586 aarch64 ppc64le s390x
 %endif
 Name:           lilypond-doc
-Version:        2.23.82
+Version:        2.24.0
 Release:        0
 Summary:        Documentation for the LilyPond Typesetter
 License:        GFDL-1.3-only
@@ -36,7 +36,7 @@ URL:            http://lilypond.org/
 %if %{without docbuild}
 Source0:        https://gitlab.com/lilypond/lilypond/-/releases/v%{version}/downloads/lilypond-%{version}-documentation.tar.xz
 %else
-#Source0:        lilypond-%{version}.tar.gz
+#Source0:        lilypond-%%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.

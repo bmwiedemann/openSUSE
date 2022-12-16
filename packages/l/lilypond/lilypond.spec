@@ -23,13 +23,13 @@
 ExcludeArch:    i586
 
 Name:           lilypond
-Version:        2.23.82
+Version:        2.24.0
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            http://www.lilypond.org
-Source0:        https://lilypond.org/download/sources/v2.23/lilypond-%{version}.tar.gz
+Source0:        https://gitlab.com/%{name}/%{name}/-/archive/v%{version}/lilypond-v%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
@@ -38,6 +38,7 @@ Patch2:         add_dircategories_to_documentation.patch
 Patch4:         use_cstring_and_ctype_includes.patch
 Patch5:         lilypond-missing-lgc.patch
 BuildRequires:  ImageMagick
+BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  dblatex
 BuildRequires:  dejavu-fonts
@@ -129,7 +130,7 @@ files.
 This contains the directory common to all lilypond fonts.
 
 %prep
-%setup -q
+%setup -q -n lilypond-v%{version}
 %autopatch -p1
 
 pushd scripts
@@ -142,6 +143,7 @@ for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3
 %build
 export LIBS="$LIBS  -lglib-2.0 -lgobject-2.0"
 export GUILE_FLAVOR=guile-3.0
+./autogen.sh --noconfigure
 %configure \
     GUILE_FLAVOR=guile-3.0 \
 	--disable-checking
@@ -180,8 +182,8 @@ ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS.txt DEDICATION NEWS.txt
-%license COPYING LICENSE*
+%doc README.md DEDICATION
+%license COPYING* LICENSE*
 %{_bindir}/*
 %{_datadir}/lilypond
 %{_datadir}/emacs/site-lisp

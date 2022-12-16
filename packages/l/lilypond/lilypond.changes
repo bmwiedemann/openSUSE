@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 16 06:58:26 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 2.24.0
+- Upstream changes:
+  *This version includes improvements and fixes since the branching of the
+   previous stable release in October 2020. A list of added features and
+   other user-visible changes can be found at
+   https://lilypond.org/doc/v2.24/Documentation/changes/
+
+-------------------------------------------------------------------
 Sun Dec  4 14:29:30 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to 2.23.82 to fix build against guile-3
