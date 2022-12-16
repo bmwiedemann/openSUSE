@@ -17,7 +17,6 @@
 
 
 %define base_ver 2.36
-# Update baselibs.conf when changing the version here
 %define libname  lib%{name}-2_36-1
 
 Name:           atkmm
@@ -28,7 +27,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
