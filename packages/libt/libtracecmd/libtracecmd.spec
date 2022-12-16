@@ -18,7 +18,7 @@
 
 Name:           libtracecmd
 %define lname   libtracecmd1
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Library for creating and reading trace-cmd data files
 License:        LGPL-2.1-only
@@ -29,7 +29,7 @@ Patch1:         static-assign.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel
-BuildRequires:  libtracefs-devel
+BuildRequires:  libtracefs-devel >= 1.6
 BuildRequires:  libzstd-devel
 BuildRequires:  source-highlight
 BuildRequires:  xmlto

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 16 14:59:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * Only set trace-cmd log level (not libtracefs nor libtraceevent)
+  * Fix function graph plugin updating the next record
+  * Use libtracefs tracefs_cpu() interface for recording
+    (requires libtracefs 1.6)
+
+-------------------------------------------------------------------
 Sat Dec  3 13:04:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0
