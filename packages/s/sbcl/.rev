@@ -1338,4 +1338,13 @@ Thanks</comment>
     <comment></comment>
     <requestid>1032537</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>1fe6ced5df7bdf80ad211126e832439a</srcmd5>
+    <version>2.2.10</version>
+    <time>1671209536</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject -D_GNU_SOURCE to CFLAGS: fixes Fixes build issue due to
+  O_LARGEFILE hiding behind feature test macro. (forwarded request 1043321 from dimstar)</comment>
+    <requestid>1043327</requestid>
+  </revision>
 </revisionlist>

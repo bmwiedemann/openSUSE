@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 11:59:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Inject -D_GNU_SOURCE to CFLAGS: fixes Fixes build issue due to
+  O_LARGEFILE hiding behind feature test macro.
+
+-------------------------------------------------------------------
 Mon Oct 31 14:36:47 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.10

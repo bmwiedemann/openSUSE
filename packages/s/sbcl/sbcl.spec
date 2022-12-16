@@ -133,7 +133,7 @@ cp %{S:3} .
 sed -i -e "s|\"%version\"|\"%version-%release-%_vendor\"|" version.lisp-expr
 
 %build
-CFLAGS="%optflags"
+export CFLAGS="%optflags -D_GNU_SOURCE"
 %if %{with bootstrap}
 %{?sbcl_arch:export SBCL_ARCH=%{sbcl_arch}}
 %if 0%{?with_clisp}
