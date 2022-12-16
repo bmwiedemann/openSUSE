@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 16 18:57:35 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Upstream libyal/plaso is only supporting python 3.7 or newer
+  - Add BuildRequires:  %{python_module base >= 3.7}
+
+-------------------------------------------------------------------
+Thu Dec  1 18:11:16 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20220917
+  - Changes for empty APFS volumes
+  - Changes to expose extended attribute extents
+  - Added empty volume support to file system searcher
+  - Added APFS number of links support 
+  - Extended StatAttribute with device number 
+  - Changes to ZIP file entry for latest dfDateTime 
+  - Added ISO9660 test file and tests 
+- add BuildRequires python-libcaes
+- add BuildRequires python-libfsfat
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 23 15:11:11 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- remove Requires:  python-six
+   - This is untested as it is difficult to have an opensuse release without python-six at this point
+
+-------------------------------------------------------------------
 Tue Jun  7 22:38:44 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - allow multiple python packages to be built (eg. python38, python39, python310)
