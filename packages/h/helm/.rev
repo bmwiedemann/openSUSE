@@ -461,4 +461,14 @@ See changelog in:
   * Update schema validation handling</comment>
     <requestid>1042954</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>0d31b77ae4103ab016d69b046be5b94f</srcmd5>
+    <version>3.10.3</version>
+    <time>1671209466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.10.3 (bsc#1206467, CVE-2022-23524,
+      bsc#1206469, CVE-2022-23525,
+      bsc#1206471, CVE-2022-23526):</comment>
+    <requestid>1043303</requestid>
+  </revision>
 </revisionlist>

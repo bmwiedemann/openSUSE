@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
 Wed Dec 14 15:50:30 UTC 2022 - dmueller@suse.com
 
-- Update to version 3.10.3:
+- Update to version 3.10.3 (bsc#1206467, CVE-2022-23524,
+      bsc#1206469, CVE-2022-23525,
+      bsc#1206471, CVE-2022-23526):
   * Fix backwards compatibility
   * Update string handling
   * Update repo handling
