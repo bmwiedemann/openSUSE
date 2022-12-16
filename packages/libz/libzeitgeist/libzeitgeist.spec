@@ -1,7 +1,7 @@
 #
 # spec file for package libzeitgeist
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 Federico Mena Quintero
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Other
 URL:            https://launchpad.net/libzeitgeist
 Source0:        %{name}-%{version}.tar.gz
-Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 
