@@ -64,7 +64,7 @@ saver until a password is entered.
 %define _xorg7bin bin
 %define _xorg7_mandir %{_mandir}
 %define _xorg7pixmaps include
-%define _xorg7libshare share
+%define _xorg7libshare lib
 %define _xorg7_xkb %{_datadir}/X11/xkb
 %define _xorg7_termcap %{_prefix}/lib/X11%{_sysconfdir}
 %define _xorg7_serverincl %{_includedir}/xorg
