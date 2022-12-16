@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:25:49 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use fixmath shared library
+  * use-fixmath-shared-library.patch
+
+-------------------------------------------------------------------
 Wed Nov 23 15:44:20 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.4.3.2:

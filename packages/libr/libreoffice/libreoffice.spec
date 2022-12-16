@@ -111,6 +111,8 @@ Patch11:        fix_webp_on_sle12_sp5.patch
 Patch12:        fix_harfbuzz_on_sle12_sp5.patch
 # PATCH-FIX-UPSTREAM remove egrep/fgrep calls
 Patch13:        libreoffice-7.4.1.2-grep.patch
+# PATCH-FIX-SUSE use fixmath shared library
+Patch14:        use-fixmath-shared-library.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1034,6 +1036,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch101 -p1
 %endif
 %patch13 -p1
+%patch14 -p1
 %patch990 -p1
 %patch991 -p1
 
