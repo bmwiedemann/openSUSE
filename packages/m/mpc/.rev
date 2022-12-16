@@ -248,4 +248,29 @@
     <comment>mpc 1.2.1 (forwarded request 844916 from AndreasStieger)</comment>
     <requestid>844997</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>75cd92f7db5e8b12d1243f3efdcee085</srcmd5>
+    <version>1.3.0</version>
+    <time>1671209445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mpc-1.3.0-gmpdep.patch to avoid dependence on stdio.h when
+  including mpc.h
+
+- Update to version 1.3.0.
+  * New function: mpc_agm
+  * New rounding modes &quot;away from zero&quot;, indicated by the letter &quot;A&quot;
+    and corresponding to MPFR_RNDA on the designated real or imaginary part.
+  * New experimental ball arithmetic.
+  * New experimental function: mpc_eta_fund
+  * Bug fixes:
+    - mpc_asin for asin(z) with small |Re(z)| and tiny |Im(z)|
+    - mpc_pow_fr: sign of zero part of result when the base has up to sign
+      the same real and imaginary part, and the exponent is an even
+      positive integer
+    - mpc_fma: the returned int value was incorrect in some cases
+      (indicating whether the rounded real/imaginary parts were
+      smaller/equal/greater than the exact values), but the computed
+      complex value was correct.</comment>
+    <requestid>1043056</requestid>
+  </revision>
 </revisionlist>

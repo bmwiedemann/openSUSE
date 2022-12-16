@@ -1,7 +1,7 @@
 #
 # spec file for package mpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           mpc
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
-Summary:        MPC multiple-precision complex shared library
+Summary:        multiple-precision complex shared library
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.multiprecision.org/mpc/
@@ -27,6 +27,7 @@ Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch:          mpc-1.3.0-gmpdep.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmp) >= 5.0.0
 BuildRequires:  pkgconfig(mpfr) >= 4.1.0
@@ -52,13 +53,14 @@ Requires:       libmpc3 = %{version}
 Requires:       pkgconfig(gmp) >= 5.0.0
 Requires:       pkgconfig(mpfr) >= 4.1.0
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description devel
 MPC multiple-precision complex library development files.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -73,10 +75,12 @@ MPC multiple-precision complex library development files.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libmpc3 -p /sbin/ldconfig
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %postun -n libmpc3 -p /sbin/ldconfig
+
 %preun devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
