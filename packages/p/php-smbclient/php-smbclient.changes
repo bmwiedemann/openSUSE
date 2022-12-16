@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
+
+-------------------------------------------------------------------
 Sun Feb 28 22:52:22 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - ftruncate implemented on smb_streams

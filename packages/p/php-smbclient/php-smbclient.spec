@@ -1,7 +1,7 @@
 #
 # spec file for package php-smbclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pkg_name smbclient
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
