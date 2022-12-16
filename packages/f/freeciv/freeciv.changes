@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 16 13:36:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.5:
+  * 3.0.5 is a generic bugfix release.
+  * See https://freeciv.fandom.com/wiki/NEWS-3.0.5
+
+-------------------------------------------------------------------
 Sun Dec  4 15:57:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:
@@ -10,21 +17,21 @@ Fri Aug 19 07:56:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.3 (bsc#1202548, CVE-2022-6083):
   * 3.0.3 is a bugfix release
-  * see https://freeciv.fandom.com/wiki/NEWS-3.0.3 
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.3
 
 -------------------------------------------------------------------
 Mon Jul 18 19:44:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:
   * 3.0.2 is a generic bugfix release
-  * see https://freeciv.fandom.com/wiki/NEWS-3.0.2 
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.2
 
 -------------------------------------------------------------------
 Fri Apr 22 21:01:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:
   * 3.0.1 is a generic bugfix release
-  * see https://freeciv.fandom.com/wiki/NEWS-3.0.1 
+  * see https://freeciv.fandom.com/wiki/NEWS-3.0.1
 
 -------------------------------------------------------------------
 Wed Mar 23 22:18:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -47,7 +54,7 @@ Fri Jul 16 19:16:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 2.6.5:
   * https://freeciv.fandom.com/wiki/NEWS-2.6.5
   * 2.6.5 is a bugfix release. Notably it fixes regression in 2.6.4 gtk3-client
-    that present units in city dialog had no overlays drawn at all. 
+    that present units in city dialog had no overlays drawn at all.
 
 -------------------------------------------------------------------
 Sun Apr 11 05:54:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -107,12 +114,12 @@ Tue Dec 22 09:03:17 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.2.1:
   * Fixed server crash when unit with zero move_rate is transformed
-  * Fixed crashes when using Direction objects in lua scripts 
+  * Fixed crashes when using Direction objects in lua scripts
   * Fixed crash when chatline text had opening tag without closing tag
   * Fixes to the Qt client
   * Updated translations
   * Fixed Qt-client build against Qt-5.15 (removes freeciv-qt-5.15.patch )
-  * Documentation updates 
+  * Documentation updates
 
 -------------------------------------------------------------------
 Thu Jun  4 15:47:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -200,8 +207,8 @@ Sat Jul 30 19:12:17 UTC 2016 - astieger@suse.com
   * general bug fixes
   * New 'persistent' metaserver connection mode, where one failure
     to talk to the metaserver does not prevent future attempts.
-    Enabled with the '--keep' server option or the 
-    '/metaconnection persistent' server command. 
+    Enabled with the '--keep' server option or the
+    '/metaconnection persistent' server command.
 - for a full list of upstream changes, see
   http://freeciv.wikia.com/wiki/NEWS-2.5.5
 
@@ -233,7 +240,7 @@ Mon Aug 24 02:30:01 UTC 2015 - astieger@suse.com
 
 - update to version 2.5.1:
   * fixes for rules for national borders
-  * fixes for rules for happiness for very large empires. 
+  * fixes for rules for happiness for very large empires.
 - for a full list of changes, see
   http://freeciv.wikia.com/wiki/NEWS-2.5.1
 
@@ -283,7 +290,7 @@ Sun Feb  9 20:21:59 UTC 2014 - andreas.stieger@gmx.de
   This is mostly a bug-fix release; it includes an important fix to
   air unit pathfinding, as well as fixes for server and client
   crashes.
-- for a full list of changes, see 
+- for a full list of changes, see
   http://freeciv.wikia.com/wiki/NEWS-2.4.2
 - fix SLE build, remove no locale
 
@@ -296,52 +303,52 @@ Fri Dec 20 19:32:21 UTC 2013 - opensuse@dstoecker.de
 Mon Feb 18 12:49:11 UTC 2013 - andreas.stieger@gmx.de
 
 - update to 2.3.4
-  * When a unit was automatically moved to a transporter to save it 
+  * When a unit was automatically moved to a transporter to save it
     from drowning or running out of fuel, the transporter could
     continue to appear empty
   * Bug fixes in unit conversion and upgrade:
-    + Prevent cases where units could be converted or upgraded to a 
+    + Prevent cases where units could be converted or upgraded to a
       type only capable of carrying different cargo to the current
       cargo
-    + Prevent conversion of a unit to a type that could not exist 
+    + Prevent conversion of a unit to a type that could not exist
       on the current tile
-  * Units of types the owner cannot build are no longer prevented 
+  * Units of types the owner cannot build are no longer prevented
     from upgrade
-  * quell spurious "No diplomat action possible" message when an 
+  * quell spurious "No diplomat action possible" message when an
     ordinary attempt to move a diplomatic unit failed
-  * Following on from a fix in 2.3.3, when a border source such as 
-    a fortress is occupied by a unit of a nation other than the 
-    owner when a ceasefire runs out, ownership now transfers to 
+  * Following on from a fix in 2.3.3, when a border source such as
+    a fortress is occupied by a unit of a nation other than the
+    owner when a ceasefire runs out, ownership now transfers to
     that of the occupying unit.
-  * When acquiring a technology such as Philosophy which gives 
-    further techs by an unusual route (such as through a hut), all 
-    progress toward the current research target was lost. Now it is 
+  * When acquiring a technology such as Philosophy which gives
+    further techs by an unusual route (such as through a hut), all
+    progress toward the current research target was lost. Now it is
     preserved (although 'freecost' is applied)
-  * when a city is traded and hence units change ownership, it wasn't 
-    checked whether those units provided diplomatic contact to a new 
+  * when a city is traded and hence units change ownership, it wasn't
+    checked whether those units provided diplomatic contact to a new
     nation
-  * assertion failure during map generation when no unit in the ruleset 
+  * assertion failure during map generation when no unit in the ruleset
     satisfied the first role in 'startunits'
-  * the tech upkeep with tech_cost_style 2 or 4 was much lower than 
-    intended; it only took into account a single tech rather than all 
-    preceding techs. As a result, tech upkeep in such rulesets will 
+  * the tech upkeep with tech_cost_style 2 or 4 was much lower than
+    intended; it only took into account a single tech rather than all
+    preceding techs. As a result, tech upkeep in such rulesets will
     greatly increase
-    + The currently downloadable 'civ2-3' modpack (2.3-2c) thus has 
-     tech upkeep disabled. You may want to update your copy. 
+    + The currently downloadable 'civ2-3' modpack (2.3-2c) thus has
+     tech upkeep disabled. You may want to update your copy.
   * An unknown effect requirement type in a ruleset now causes a loading
     error rather than being silently interpreted as "None"
   * When a new nation is created in the editor, city style and leader
     sex are now set appropriately (previously they were always European
     and male)
-  * A hardcoded year of -4000 is no longer sent to the metaserver in 
-    pregame, as it is ruleset-dependent. 
-  * The client could crash when your name was mentioned in chat but you 
-    had set the 'highlight your player/user name' setting to no color. 
+  * A hardcoded year of -4000 is no longer sent to the metaserver in
+    pregame, as it is ruleset-dependent.
+  * The client could crash when your name was mentioned in chat but you
+    had set the 'highlight your player/user name' setting to no color.
     This could also prevent any connection to a server with the event
-    cache enabled if your player name had been mentioned in the past. 
+    cache enabled if your player name had been mentioned in the past.
   * Fix possible instability when loading some tilesets.
-  * Fix some incorrect inferences about the ability of transported units 
-    or units in cities to defend; these are most likely to affect unusual 
+  * Fix some incorrect inferences about the ability of transported units
+    or units in cities to defend; these are most likely to affect unusual
     rulesets (e.g., those with ocean cities).
   * The Spanish, Polish, and French translations are once more complete.
 
@@ -409,7 +416,7 @@ Fri Jul 29 12:11:21 UTC 2011 - andreas.stieger@gmx.de
        difficult/impossible to change to a new government type when it became available. GNA#18323
      * Minor corrections to the Polish translation.
 
-  changes in 2.2.6 since 2.2.5 
+  changes in 2.2.6 since 2.2.5
 
     Server / General
 
@@ -478,21 +485,21 @@ Thu Jul 15 09:55:23 UTC 2010 - mseben@novell.com
 - renamed client/server binaries to freeciv-gtk2 freeciv-server
 - update to 2.2.0 : changes since 2.1.x
     * Built-in editor
-    * Expanded ruleset format: 
+    * Expanded ruleset format:
         * Unit classes
-        * Movement restrictions 
+        * Movement restrictions
             * Can limit which terrains a unit can enter
             * River-boats
             * Wheeled units
-            * Which units another unit can transport 
+            * Which units another unit can transport
         * Migration
         * Plague
         * Bases
-        * Calendar effects 
-    * Changes to gameplay with default ruleset: 
+        * Calendar effects
+    * Changes to gameplay with default ruleset:
         * New terrains:
               o Deep Ocean (as Ocean but no specials and cannot be transformed)
-              o Lake (as Ocean but no Whales special; inland water below a certain size is generated as Lake) 
+              o Lake (as Ocean but no Whales special; inland water below a certain size is generated as Lake)
         * Triremes are not restricted to tiles next to land, but to (shallow) Ocean tiles; they now cannot even attempt to enter unsafe tiles
         * Triremes no longer get the +1 movement bonus from Nuclear Power that other sea units get
         * Triremes and Carriers can no longer attack land units
@@ -506,25 +513,25 @@ Thu Jul 15 09:55:23 UTC 2010 - mseben@novell.com
         * No restrictions on specialists in small cities
         * Terrain within working range of a city can no longer remain unknown
         * Units in fortresses now regain 25% HP per turn (as in 2.0.x) instead of 100%
-        * New nations 
+        * New nations
     * AI difficulty level: Cheating
-    * New server options: 
+    * New server options:
         * foggedborders: visibility of borders is subject to fog of war
         * borders gains new modes where player can see all tiles inside borders, and borders extend to unknown tiles revealing them
         * endspaceship controls whether spaceship reaching Alpha Cen ends the game
         * trademindist controls the minimum distance for trade routes between your cities
         * Times now specified in turns instead of years (endyear becomes endturn, onsetbarbs expressed in turns)
-        * simultaneousphases renamed to phasemode and gains new options 
-    * Client interface changes: 
+        * simultaneousphases renamed to phasemode and gains new options
+    * Client interface changes:
         * Menus and shortcut keys revamped; notable changes include:
               o Connect with Road/Rail/Irrigation changes from Ctrl+Shift+R/L/I to Shift+R/L/I
               o City Report: F1 to F4
               o Go/Airlift to City: Shift+L to T
               o Wake up Others (Shift+W) becomes Unsentry all on tile (Shift+S)
-              o Orders menu split into Select, Unit, Work, and Combat; Reports becomes Civilization 
+              o Orders menu split into Select, Unit, Work, and Combat; Reports becomes Civilization
     * Scripting improvements
     * Event cache: messages from the last few turns can be replayed to clients on connection and saved in savegames
-    * Featured text in Gtk client, including colour coding and clickable links to mentioned cities/units/tiles 
+    * Featured text in Gtk client, including colour coding and clickable links to mentioned cities/units/tiles
 
 -------------------------------------------------------------------
 Sat Feb 20 12:00:00 CEST 2010 - freespacer@gmx.de
@@ -543,7 +550,7 @@ Sat Feb 20 12:00:00 CEST 2010 - freespacer@gmx.de
     * Fixed a crash in the SDL client when user tries to buy the production of a city. GNA#15061
     * Initial diplomatic state between allies of your allies is now peace. GNA#15057
     * Fixed a bug where it was sometimes impossible to cancel a unit order. GNA#15041
-    * Fixed usage of pathes and file names with local characters encoding. GNA#15000 
+    * Fixed usage of pathes and file names with local characters encoding. GNA#15000
 - Update to release 2.1.10
     * Added commandline parameter to set hostname visible on metaserver. PR#40755
     * Restored http://meta.freeciv.org/metaserver.phtml as default metaserver. GNA#13407
@@ -593,7 +600,7 @@ Sat Feb 20 12:00:00 CEST 2010 - freespacer@gmx.de
     * Display trade route lines at map and infos in city dialog even if the trade route doesn't give trade bonus. GNA#14745
     * Added support for Haiku OS. GNA#14715
     * Fixed clicking of technologies on research report. GNA#14812
-    * Updated translations: ca.po da.po de.po es.po fi.po 
+    * Updated translations: ca.po da.po de.po es.po fi.po
 - clean up the SPEC-file
 - remove old manuals, because freeciv bring up own manuals
 - add a link to official manuals in the web
@@ -620,7 +627,7 @@ Wed Jan 14 10:37:09 CET 2009 - dominique-obs@leuenberger.net
     * Send connection info when cmdlevel is changed. (#40479)
     * Send information about lost connections not attached to players. (#39613)
     * Fix longstanding connection freezing bug. (#39131)
-    * Updated German, Korean, Catalan translations. 
+    * Updated German, Korean, Catalan translations.
   Includes fixes from release 2.1.7
     * Fixed a couple of AI crashes related to ocean cities. (#40422)
     * Fixed separatepoles option. (#40417)
@@ -647,7 +654,7 @@ Wed Jan 14 10:37:09 CET 2009 - dominique-obs@leuenberger.net
     * Remove a hack causing an inconsistent turn done button state. (#40550)
     * Fixed detection of libpng for win32 and xaw clients. (#40555)
     * Minor fixes relating to the take command. (#40529)
-    * Updated German, Finnish, Danish translations. 
+    * Updated German, Finnish, Danish translations.
 
 -------------------------------------------------------------------
 Thu Sep 11 15:48:09 CEST 2008 - sndirsch@suse.de
@@ -699,23 +706,23 @@ Thu Sep 11 15:48:09 CEST 2008 - sndirsch@suse.de
   * Fixed bug causing false tax rate exceeded messages.
   * Already built great wonders show "never" instead of "1" for
     turns-to-build.
-  * Added Esperanto translation. 
+  * Added Esperanto translation.
 
 -------------------------------------------------------------------
 Sat Jul 19 22:31:26 CEST 2008 - sndirsch@suse.de
 
 - update to release 2.1.5
-  * Fixes for bootstrap and compilation issues. 
-  * Fixes for rulesets, for example making Civ1 ruleset playable 
-  * Fixes for several bugs concerning player handling and game 
+  * Fixes for bootstrap and compilation issues.
+  * Fixes for rulesets, for example making Civ1 ruleset playable
+  * Fixes for several bugs concerning player handling and game
     loading
   * Fixes for a number of corner case crashers.
   * Fix a memory leak in the readline code.
   * Fix for bug that prevented the adding of items to the top of
     global worklists.
   * Fix citybar view options.
-  * Updates to Estonian, Korean, Greek, Turkish, Catalan, Swedish, 
-    Spanish, and German translations. 
+  * Updates to Estonian, Korean, Greek, Turkish, Catalan, Swedish,
+    Spanish, and German translations.
 
 -------------------------------------------------------------------
 Sun Apr 27 10:04:42 CEST 2008 - sndirsch@suse.de
@@ -747,81 +754,81 @@ Tue Jan 29 11:18:11 CET 2008 - sndirsch@suse.de
   * Improve client robustness and error logging.
   * More GTK2 client support for saving server settings, add
     buttons on dialogs.
-  * Updated sentence fragments, plurals, text, and translations; 
-    specifically Catalan, Czech, Estonian, Finnish, German, 
+  * Updated sentence fragments, plurals, text, and translations;
+    specifically Catalan, Czech, Estonian, Finnish, German,
     Lithuanian, Russian, Swedish, and Turkish.
 
 -------------------------------------------------------------------
 Mon Jan 28 07:36:53 CET 2008 - sndirsch@suse.de
 
-- make rpmlint happy 
+- make rpmlint happy
 
 -------------------------------------------------------------------
 Thu Dec 27 22:38:29 CET 2007 - sndirsch@suse.de
 
 - update to release 2.1.2
-  * Improved support for GGZ Gaming Zone. 
+  * Improved support for GGZ Gaming Zone.
   * Fix support for Leave and Load in the same client session.
-  * Add GTK2 client support for saving server settings. 
-  * Add realistic terrain requirements for three default wonders, 
-    as well a number of missing ones to civ1 and civ2. 
+  * Add GTK2 client support for saving server settings.
+  * Add realistic terrain requirements for three default wonders,
+    as well a number of missing ones to civ1 and civ2.
   * Improve startup speed, reducing duplicate internal messages
-    sent. 
+    sent.
   * Updated GTK2 hotkeys, menus, text, and translations, especially
-    Catalan, Finnish, Korean, Lithuanian, Turkish, and Ukrainian. 
+    Catalan, Finnish, Korean, Lithuanian, Turkish, and Ukrainian.
 
 -------------------------------------------------------------------
 Thu Nov 29 16:52:42 CET 2007 - sndirsch@suse.de
 
 - update to release 2.1.1
-  * Turn off full screen mode by default. (PR#12119) 
-  * Fix city dialog. (PR#39825) 
-  * Fix goto and patrol. (PR#3980, PR#39817, PR#39852, PR#39868) 
-  * Fix reported border and vision bugs. (PR#39828, PR#39829, 
-    PR#39830, PR#39858) 
-  * Modified Eiffel Tower. (PR#39826, PR#39874) 
-  * SDL client much improved and usable. (PR#39859) 
-  * Improved support for GGZ Gaming Zone. (PR#39611) 
-  * Updated menus, text, and translations. (PR#9347, PR#23078, 
-    PR#39541, PR#39723, PR#39748, PR#39818, PR#39884) 
+  * Turn off full screen mode by default. (PR#12119)
+  * Fix city dialog. (PR#39825)
+  * Fix goto and patrol. (PR#3980, PR#39817, PR#39852, PR#39868)
+  * Fix reported border and vision bugs. (PR#39828, PR#39829,
+    PR#39830, PR#39858)
+  * Modified Eiffel Tower. (PR#39826, PR#39874)
+  * SDL client much improved and usable. (PR#39859)
+  * Improved support for GGZ Gaming Zone. (PR#39611)
+  * Updated menus, text, and translations. (PR#9347, PR#23078,
+    PR#39541, PR#39723, PR#39748, PR#39818, PR#39884)
 
 -------------------------------------------------------------------
 Sat Nov  3 11:14:46 CET 2007 - sndirsch@suse.de
 
 - update to final release 2.1.0. Changes since 2.0.9:
-  * Significantly improved features for modmakers. 
-  * New default tileset: Amplio. 
-  * Hex-2 overhead hexagonal tileset. 
-  * Flags rendered from SVG vector images. 
+  * Significantly improved features for modmakers.
+  * New default tileset: Amplio.
+  * Hex-2 overhead hexagonal tileset.
+  * Flags rendered from SVG vector images.
   * High-res building and wonder icons plus brand new tech icon
     set.
-  * New city tab on main map. 
-  * City outlines. 
-  * Added lua as scripting language. New tutorial scenario. 
-  * Many new nations, flags and nation information and options. 
-  * New /surrender command to yield in multiplayer games. 
-  * Score now shown in player dialog. 
-  * Reputation removed from the game. 
+  * New city tab on main map.
+  * City outlines.
+  * Added lua as scripting language. New tutorial scenario.
+  * Many new nations, flags and nation information and options.
+  * New /surrender command to yield in multiplayer games.
+  * Score now shown in player dialog.
+  * Reputation removed from the game.
   * New borders rules. Borders are static, fortresses expand
     borders and cities expand more borders with city size growth.
   * New diplomacy rules. Neutral state replaced with Armistice.
     You now start in War state, and cannot cross borders with
-    military units except in War or Alliance states. 
-  * SDL client much improved and usable. 
-  * GTK+ 1.2 clients removed. 
+    military units except in War or Alliance states.
+  * SDL client much improved and usable.
+  * GTK+ 1.2 clients removed.
   * Votes need over 50% of votes to pass. Voting is now only during
-    game. 
+    game.
   * First player to join becomes game organizer and sets all
-    options. 
+    options.
   * Many AI changes. Improved AI diplomacy. Novice AI easier to
-    beat. 
+    beat.
   * Palace has a production bonus of +75% under Despotism and +50%
-    under Monarchy. 
-  * New animated cursors. 
-  * Support for GGZ Gaming Zone. 
-  * Multiple units may be moved at once as a battlegroup. 
+    under Monarchy.
+  * New animated cursors.
+  * Support for GGZ Gaming Zone.
+  * Multiple units may be moved at once as a battlegroup.
   * Built-in theme support. GTK+ and SDL clients shipped with
-    unique Freeciv themes. 
+    unique Freeciv themes.
   * As usual, tons of changes under the hood.
 
 -------------------------------------------------------------------
@@ -833,7 +840,7 @@ Mon Sep 24 12:36:27 CEST 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Wed Sep 12 14:12:18 CEST 2007 - sndirsch@suse.de
 
-- only compile client/gui-gtk-2.0/wldlg.c with "-O1" (Bug #300410) 
+- only compile client/gui-gtk-2.0/wldlg.c with "-O1" (Bug #300410)
 
 -------------------------------------------------------------------
 Wed Sep 12 12:37:33 CEST 2007 - sndirsch@suse.de
@@ -850,7 +857,7 @@ Mon Sep 10 04:31:24 CEST 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Sun Jul  8 12:59:38 CEST 2007 - sndirsch@suse.de
 
-- removed dupes (Bug #200911) 
+- removed dupes (Bug #200911)
 
 -------------------------------------------------------------------
 Thu Jun 21 15:55:05 CEST 2007 - adrian@suse.de
@@ -861,7 +868,7 @@ Thu Jun 21 15:55:05 CEST 2007 - adrian@suse.de
 Thu May 10 23:03:07 CEST 2007 - sndirsch@suse.de
 
 - updated to release 2.1.0-beta4
-  * Don't bounce land units from ocean cities when loading saved 
+  * Don't bounce land units from ocean cities when loading saved
     game.
   * Fix bug that walls get drawn when city has no walls but has
     other defence bonuses.
@@ -872,7 +879,7 @@ Thu May 10 23:03:07 CEST 2007 - sndirsch@suse.de
   * Fix crash when city cannot build any kind of defending unit.
   * GTK2: Tweaked colors in the technology report.
   * SDL: Corrected a number of dialogs that didn't close properly.
-  * SDL: Remapped some keyboard shortcuts to be more intuitive: 
+  * SDL: Remapped some keyboard shortcuts to be more intuitive:
     right-clicking on the minimap moves the map; change the options
     menu shortcut to ESC and the chatline shortcut to TAB; change
     the "turn done" shortcut to Shift+Return; assign the help dialog
@@ -896,14 +903,14 @@ Sun Feb 18 17:42:51 CET 2007 - sndirsch@suse.de
 -------------------------------------------------------------------
 Fri Sep  8 20:49:02 CEST 2006 - sndirsch@suse.de
 
-- fixed build for SUSE 9.3 
+- fixed build for SUSE 9.3
 
 -------------------------------------------------------------------
 Tue Sep  5 02:34:51 CEST 2006 - sndirsch@suse.de
 
 - updated to release 2.1.0-beta2
 - fixed data/locale dir
-- cleanup 
+- cleanup
 
 -------------------------------------------------------------------
 Sat Apr 15 18:45:32 CEST 2006 - sndirsch@suse.de
