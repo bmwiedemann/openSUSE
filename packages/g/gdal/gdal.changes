@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec 15 16:17:22 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix 3.6.1 (critical)
+  Important: GDAL 3.6.1 officially retracts GDAL 3.6.0 
+  which cause corruption of the spatial index of GeoPackage files
+  it created (in tables with 100 000 features or more): cf 
+  https://github.com/qgis/QGIS/issues/51188 and 
+  https://github.com/OSGeo/gdal/pull/6911. 
+  GDAL 3.6.1 fixes that issue. 
+  Setting OGR_GPKG_ALLOW_THREADED_RTREE=NO environment variable
+ (at generation time) also works around the issue with GDAL 3.6.0.
+ Users who have generated corrupted GeoPackage files with 3.6.0 
+ can regnerate them with 3.6.1 with: 
+ "ogr2ogr out_ok.gpkg in_corrupted.gpkg" 
+ (assuming a GeoPackage file with vector content only)
+ Consult the release notes for the list of issues addressed :
+   https://github.com/OSGeo/gdal/blob/v3.6.1/NEWS.md 
+
+-------------------------------------------------------------------
 Sat Nov 26 19:19:19 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Improve packaging
