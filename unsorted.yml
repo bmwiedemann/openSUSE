@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -94,7 +94,7 @@ unsorted:
   - Mesa-KHR-devel 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
-  - Mesa-dri-devel: [i586] # devel package of common_locks:Mesa-libGL1 
+  - Mesa-dri-devel: [i586] # devel package of common_locks:libgbm1 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
@@ -2399,6 +2399,7 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp11 
+  - cpp13 
   - cpp7 
   - cppcheck-gui: [x86_64] 
   - cpphs: [x86_64] 
@@ -4274,6 +4275,7 @@ unsorted:
   - gcc12-objc 
   - gcc12-objc-32bit: [x86_64] 
   - gcc12-testresults 
+  - gcc13 
   - gcc13-32bit: [x86_64] 
   - gcc13-PIE 
   - gcc13-ada 
@@ -4287,6 +4289,8 @@ unsorted:
   - gcc13-fortran-32bit: [x86_64] 
   - gcc13-go 
   - gcc13-go-32bit: [x86_64] 
+  - gcc13-info 
+  - gcc13-locale 
   - gcc13-obj-c++ 
   - gcc13-obj-c++-32bit: [x86_64] 
   - gcc13-objc 
@@ -10429,10 +10433,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -11280,11 +11284,11 @@ unsorted:
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
   - libgccjit-devel 
+  - libgccjit0 
   - libgccjit0-devel-gcc11 
   - libgccjit0-devel-gcc12 
   - libgccjit0-devel-gcc13 
   - libgccjit0-gcc11 
-  - libgccjit0-gcc12 
   - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
@@ -11902,6 +11906,7 @@ unsorted:
   - libhugetlbfs-devel 
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit: [x86_64] 
+  - libhwasan0: [x86_64] 
   - libhwloc15 
   - libhx509-5 
   - libhydrogen-core-1_1_1 
@@ -13781,8 +13786,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13805,7 +13810,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib420 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13992,7 +13997,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -15232,7 +15237,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of common_locks:libxcb-present0 
+  - libxcb-devel: [i586] # devel package of common_locks:libxcb-shape0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -32889,7 +32894,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
