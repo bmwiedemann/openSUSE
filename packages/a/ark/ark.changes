@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Fri Dec  2 12:24:30 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.0

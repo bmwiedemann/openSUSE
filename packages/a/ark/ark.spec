@@ -41,7 +41,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
@@ -59,6 +58,7 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(zlib)
 # Recommend the most used compression programs (bnc#872010)
 Recommends:     xz
 Obsoletes:      ark-devel

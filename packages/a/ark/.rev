@@ -1259,4 +1259,13 @@
     <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
     <requestid>1041404</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>2e317c1659b8e64ca70d1f13ef253a1f</srcmd5>
+    <version>22.12.0</version>
+    <time>1671209469</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to pkgconfig(zlib) so that alternative providers can be
+  used (forwarded request 1043126 from dirkmueller)</comment>
+    <requestid>1043135</requestid>
+  </revision>
 </revisionlist>
