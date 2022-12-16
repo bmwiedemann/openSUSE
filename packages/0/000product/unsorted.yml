@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -94,7 +94,7 @@ unsorted:
   - Mesa-KHR-devel 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
-  - Mesa-dri-devel: [i586] # devel package of common_locks:libgbm1 
+  - Mesa-dri-devel: [i586] # devel package of common_locks:Mesa-libGL1 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
@@ -10433,10 +10433,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -13786,8 +13786,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13810,7 +13810,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib420 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13997,7 +13997,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -15237,7 +15237,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of common_locks:libxcb-shape0 
+  - libxcb-devel: [i586] # devel package of common_locks:libxcb-present0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -32894,7 +32894,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
