@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Dec 15 19:22:07 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#64
+- much improved usrmerge kernel support (bsc#1206181)
+- 2.9
+
+--------------------------------------------------------------------
 Wed Dec 7 16:03:59 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#63
