@@ -325,7 +325,6 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp12"/>
-      <repopackage name="cpp13"/>
       <repopackage name="cppcheck" arch="x86_64"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-bash-completion"/>
@@ -564,9 +563,6 @@
       <repopackage name="gcc12"/>
       <repopackage name="gcc12-info"/>
       <repopackage name="gcc12-locale"/>
-      <repopackage name="gcc13"/>
-      <repopackage name="gcc13-info"/>
-      <repopackage name="gcc13-locale"/>
       <repopackage name="gcin"/>
       <repopackage name="gcin-branding-openSUSE"/>
       <repopackage name="gcin-gtk2"/>
@@ -1751,7 +1747,7 @@
       <repopackage name="libgcab-1_0-0"/>
       <repopackage name="libgcc_s1"/>
       <repopackage name="libgcc_s1-32bit" arch="x86_64"/>
-      <repopackage name="libgccjit0"/>
+      <repopackage name="libgccjit0-gcc12"/>
       <repopackage name="libgcin-im-client1"/>
       <repopackage name="libgck-1-0"/>
       <repopackage name="libgck-2-0_0_0"/>
@@ -1943,7 +1939,6 @@
       <repopackage name="libhogweed6-32bit" arch="x86_64"/>
       <repopackage name="libhugetlbfs"/>
       <repopackage name="libhunspell-1_7-0"/>
-      <repopackage name="libhwasan0" arch="x86_64"/>
       <repopackage name="libhwy1"/>
       <repopackage name="libHX32"/>
       <repopackage name="libHX32-32bit" arch="x86_64"/>
