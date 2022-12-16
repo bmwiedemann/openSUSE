@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20221202
+ExpandFlags: macroserial:20221215
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1542,7 +1542,7 @@ Macros:
 %product_libs_llvm_ver 15
 
 # define which gcc package builds the system libraries
-%product_libs_gcc_ver 12
+%product_libs_gcc_ver 13
 # The following shlibs have latest versions built from GCC 6 sources
 %product_libs_gcc_ver_libasan3 6
 %product_libs_gcc_ver_libgo9 6
