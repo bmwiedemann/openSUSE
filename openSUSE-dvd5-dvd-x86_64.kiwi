@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221214" schemaversion="4.1">
+<image name="OBS__openSUSE___20221215" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221214</productvar>
+      <productvar name="VERSION">20221215</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221214,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221215,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221214/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221215/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -325,12 +325,14 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp12"/>
+      <repopackage name="cpp13"/>
       <repopackage name="cppcheck" arch="x86_64"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-bash-completion"/>
       <repopackage name="cpupower-lang"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
+      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo_c"/>
       <repopackage name="cron"/>
@@ -562,6 +564,9 @@
       <repopackage name="gcc12"/>
       <repopackage name="gcc12-info"/>
       <repopackage name="gcc12-locale"/>
+      <repopackage name="gcc13"/>
+      <repopackage name="gcc13-info"/>
+      <repopackage name="gcc13-locale"/>
       <repopackage name="gcin"/>
       <repopackage name="gcin-branding-openSUSE"/>
       <repopackage name="gcin-gtk2"/>
@@ -1938,6 +1943,7 @@
       <repopackage name="libhogweed6-32bit" arch="x86_64"/>
       <repopackage name="libhugetlbfs"/>
       <repopackage name="libhunspell-1_7-0"/>
+      <repopackage name="libhwasan0" arch="x86_64"/>
       <repopackage name="libhwy1"/>
       <repopackage name="libHX32"/>
       <repopackage name="libHX32-32bit" arch="x86_64"/>
@@ -4725,6 +4731,7 @@
       <repopackage name="totem-pl-parser"/>
       <repopackage name="totem-pl-parser-lang"/>
       <repopackage name="totem-plugins"/>
+      <repopackage name="tp_smapi-kmp-default" arch="x86_64"/>
       <repopackage name="traceroute"/>
       <repopackage name="tracker"/>
       <repopackage name="tracker-data-files"/>

@@ -316,6 +316,7 @@
     <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpp12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cpp13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cpupower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -539,6 +540,9 @@
     <package name="gcc12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="gcc12-info" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gcc12-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="gcc13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="gcc13-info" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="gcc13-locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gcin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcin-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcin-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4923,6 +4927,7 @@
     <package name="bison" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5061,6 +5066,7 @@
     <package name="libguestfs0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libharfbuzz0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libhwasan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libibus-1_0-5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libidn2-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libjansson4-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5199,6 +5205,7 @@
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="systemd-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="tp_smapi-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
