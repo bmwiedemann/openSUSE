@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 15 21:07:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Handle subscripts in method calls, thanks to @The-Compiler for the
+    report. [gforcada]
+  * Test the code in all python versions supported on GitHub actions.
+    [gforcada]
+  * Pin dependencies, to ensure reproducible builds. [gforcada]
+  * Drop python 2.7 and only support 3.7+. [gforcada]
+  * Ensure all deprecation aliases work. [gforcada]
+  * Check decorators as well. [gforcada]
+
+-------------------------------------------------------------------
 Wed May 19 07:00:15 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro

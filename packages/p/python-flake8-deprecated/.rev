@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>894281</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>32994a70199c6ff8d737d721710dd224</srcmd5>
+    <version>2.0.1</version>
+    <time>1671209504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Handle subscripts in method calls, thanks to @The-Compiler for the
+    report. [gforcada]
+  * Test the code in all python versions supported on GitHub actions.
+    [gforcada]
+  * Pin dependencies, to ensure reproducible builds. [gforcada]
+  * Drop python 2.7 and only support 3.7+. [gforcada]
+  * Ensure all deprecation aliases work. [gforcada]
+  * Check decorators as well. [gforcada]</comment>
+    <requestid>1043222</requestid>
+  </revision>
 </revisionlist>
