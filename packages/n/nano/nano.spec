@@ -18,7 +18,7 @@
 
 %define _version 7
 Name:           nano
-Version:        7.0
+Version:        7.1
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
