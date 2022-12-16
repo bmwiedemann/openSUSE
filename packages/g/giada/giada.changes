@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 13:16:54 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- update to version 0.23.2
+  * 2nd bugfix release for version 0.23 Catoblepas
+
+-------------------------------------------------------------------
 Mon Sep 19 09:34:22 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
 
 - remove giada-gcc12.patch and giada-findFLTK.patch (obsolete by upstream changes)

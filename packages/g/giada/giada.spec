@@ -19,7 +19,7 @@
 
 
 Name:           giada
-Version:        0.23.0
+Version:        0.23.2
 Release:        0
 Summary:        Sampler Audio Tool
 License:        GPL-3.0-or-later

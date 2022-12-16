@@ -3,7 +3,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/monocasual/giada.git</param>
     <param name="submodules">enable</param>
-    <param name="versionformat">0.23.0</param>
+    <param name="versionformat">0.23.2</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
