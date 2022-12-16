@@ -1,7 +1,0 @@
-<multibuild>
-  <package>apache2</package>
-  <package>embed</package>
-  <package>fastcgi</package>
-  <package>fpm</package>
-  <package>test</package>
-</multibuild>
