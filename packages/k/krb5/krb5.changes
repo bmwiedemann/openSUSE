@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 13 10:49:47 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Drop 0009-Fix-KDC-null-deref-on-TGS-inner-body-null-server.patch,
+  already fixed in release 1.20.0
+
+-------------------------------------------------------------------
 Wed Nov 16 07:49:09 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.20.1; (bsc#1205126); (CVE-2022-42898);

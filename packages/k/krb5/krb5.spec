@@ -42,7 +42,6 @@ Patch5:         0005-krb5-1.6.3-ktutil-manpage.patch
 Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
-Patch9:         0009-Fix-KDC-null-deref-on-TGS-inner-body-null-server.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
