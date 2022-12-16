@@ -1,7 +1,19 @@
 ---
+ free.1         |    2 +-
  proc/sysinfo.c |    9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
+--- free.1
++++ free.1	2022-12-15 09:40:32.807087343 +0000
+@@ -19,7 +19,7 @@ columns are:
+ Total installed memory (MemTotal and SwapTotal in /proc/meminfo)
+ .TP
+ \fBused\fR
+-Used memory (calculated as \fBtotal\fR - \fBfree\fR - \fBbuffers\fR - \fBcache\fR)
++Used memory (calculated as \fBtotal\fR - \fBavailable\fR)
+ .TP
+ \fBfree\fR
+ Unused memory (MemFree and SwapFree in /proc/meminfo)
 --- proc/sysinfo.c
 +++ proc/sysinfo.c	2022-06-22 11:29:39.240066488 +0000
 @@ -794,10 +794,6 @@ nextline:

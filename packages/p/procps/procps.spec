@@ -79,6 +79,7 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(libsystemd)
 Provides:       ps = %{version}-%{release}
 Obsoletes:      ps < %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 %ifarch ia64 x86_64 ppc64 ppc %{sparc}
 BuildRequires:  libnuma-devel
 %endif

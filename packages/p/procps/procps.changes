@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 09:45:46 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Extend patch procps-3.3.17-library-bsc1181475.patch (bsc#1206412) 
+- Make sure that correct library version is installed (bsc#1206412)
+
+-------------------------------------------------------------------
 Thu Jun 23 11:28:42 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Some older products do not know about /usr/share/man/uk 

@@ -1332,4 +1332,13 @@ There are also man pages translations but they doesn't get installed automatical
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>986057</requestid>
   </revision>
+  <revision rev="130" vrev="11">
+    <srcmd5>9fed61c2da7024dba41778928627904d</srcmd5>
+    <version>3.3.17</version>
+    <time>1671209462</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend patch procps-3.3.17-library-bsc1181475.patch (bsc#1206412) 
+- Make sure that correct library version is installed (bsc#1206412)</comment>
+    <requestid>1043109</requestid>
+  </revision>
 </revisionlist>
