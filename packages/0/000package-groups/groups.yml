@@ -30,6 +30,7 @@ common_locks:
   - libLLVM13: [locked]
   - libLLVM14: [locked]
   - gnome-backgrounds: [locked]
+  - gcc13: [locked]
 
 dvd:
   # We add the kernel-firmware-* packages
