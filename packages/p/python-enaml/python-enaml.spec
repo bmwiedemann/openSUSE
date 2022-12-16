@@ -1,7 +1,7 @@
 #
 # spec file for package python-enaml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# python-cppy, python-bytecode is python3 only (at least)
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-enaml
-Version:        0.14.0
+Version:        0.15.2
 Release:        0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
@@ -29,36 +25,40 @@ Summary:        Declarative DSL for building rich user interfaces in Python
 License:        BSD-3-Clause AND LGPL-2.1-only
 URL:            https://github.com/nucleic/enaml
 Source:         https://files.pythonhosted.org/packages/source/e/enaml/enaml-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module cppy >= 1.2.0}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-QtPy >= 1.3
-Requires:       python-atom >= 0.7.0
-Requires:       python-bytecode >= 0.11.0
+Requires:       python-atom >= 0.8.0
+Requires:       python-bytecode >= 0.13.0
 Requires:       python-kiwisolver >= 1.2.0
-Requires:       python-ply >= 3.4
+Requires:       python-ply
+# SECTION The Qt variants are optional variants in the python metadata, but probably either one is required and they all require QtPy
+Requires:       python-QtPy >= 2.1.0
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-# pyside is python3 only
-Requires:       (%python_flavor-qt5 or python3-pyside2)
+# pyside is python3 only, PyQt5 (-qt5) and PyQt6 are multiflavored
+Requires:       (python-qt5 or python-PyQt6 >= 6.3.1 or python3-pyside2 or python3-pyside6 >= 6.2.3)
 %else
-Requires:       python-qt5
+Requires:       (python-qt5 or python-PyQt6 >= 6.3.1)
 %endif
+# /SECTION
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # SECTION test requirements
-BuildRequires:  %{python_module QtPy >= 1.3}
-BuildRequires:  %{python_module atom >= 0.7.0}
-BuildRequires:  %{python_module bytecode}
-BuildRequires:  %{python_module cppy >= 1.1.0}
+BuildRequires:  %{python_module QtPy >= 2.1.0}
+BuildRequires:  %{python_module atom >= 0.8.0}
+BuildRequires:  %{python_module bytecode >= 0.13.0}
 BuildRequires:  %{python_module kiwisolver >= 1.2.0}
-BuildRequires:  %{python_module ply >= 3.4}
+BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  xauth
 BuildRequires:  xorg-x11-fonts
 # /SECTION
@@ -78,10 +78,10 @@ Python and Qt.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/enaml-compileall
 %python_clone -a %{buildroot}%{_bindir}/enaml-run
@@ -92,13 +92,12 @@ export CFLAGS="%{optflags}"
 # https://github.com/nucleic/enaml/issues/397
 %python_expand cp -r %{buildroot}%{$python_sitearch} build/testlib
 export PYTHONPATH=$PWD/build/testlib
-# not sure why these two are failing
-donttest="test_focus_tracking or test_focus_traversal or test_displaying_no_image"
-# Switching off temporarily the tests gh#nucleic/enaml#449
+# See the skipif mark of the tests: 'Skip on linux CI where setting up a windows manager is a nightmare'
+donttest="test_focus_tracking or test_focus_traversal"
 %pytest_arch tests -k "not ($donttest)"
 
 %post
-%{python_install_alternative enaml-compileall enaml-run}
+%python_install_alternative enaml-compileall enaml-run
 
 %postun
 %python_uninstall_alternative enaml-compileall
@@ -109,6 +108,6 @@ donttest="test_focus_tracking or test_focus_traversal or test_displaying_no_imag
 %python_alternative %{_bindir}/enaml-compileall
 %python_alternative %{_bindir}/enaml-run
 %{python_sitearch}/enaml
-%{python_sitearch}/enaml-*-info
+%{python_sitearch}/enaml-%{version}*-info
 
 %changelog

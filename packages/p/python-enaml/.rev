@@ -85,4 +85,12 @@
 - Update BuildRequires and Requires from setup.py</comment>
     <requestid>936086</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a3adbc9d1c15bc4dba7b905aa580276</srcmd5>
+    <version>0.15.2</version>
+    <time>1671209524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043287</requestid>
+  </revision>
 </revisionlist>
