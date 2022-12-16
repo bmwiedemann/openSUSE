@@ -50,15 +50,15 @@ Index: driver/XScreenSaver_ad.h
  "*textLiteral:		XScreenSaver",
  "*textFile:		",
  "*textProgram:		fortune",
-@@ -323,7 +323,7 @@
-   GL: 				gleidescope -root			    \\n\
-   GL: 				glknots -root				    \\n\
-   GL: 				glmatrix -root				    \\n\
--- GL: 				glslideshow -root			    \\n\
-+- GL: 				glslideshow -root -root -duration 21 -zoom 84 -pan 30 -titles    \\n\
-   GL: 				hypertorus -root			    \\n\
- - GL: 				jigglypuff -root			    \\n\
- 				metaballs -root				    \\n\
+@@ -322,7 +322,7 @@
+   GL: 				gleidescope --root			    \\n\
+   GL: 				glknots --root				    \\n\
+   GL: 				glmatrix --root				    \\n\
+-- GL: 				glslideshow --root			    \\n\
++- GL: 				glslideshow --root --duration 21 --zoom 84 --pan 30 --titles    \\n\
+   GL: 				hypertorus --root			    \\n\
+ - GL: 				jigglypuff --root			    \\n\
+ 				metaballs --root			    \\n\
 Index: driver/XScreenSaver.ad.in
 ===================================================================
 --- driver/XScreenSaver.ad.in.orig
@@ -106,12 +106,12 @@ Index: driver/XScreenSaver.ad.in
  *textLiteral:		XScreenSaver
  *textFile:		@DEFAULT_TEXT_FILE@
  *textProgram:		fortune
-@@ -468,7 +468,7 @@ XScreenSaver.bourneShell:		/bin/sh
- @GL_KLUDGE@ GL: 				gleidescope -root			    \n\
- @GL_KLUDGE@ GL: 				glknots -root				    \n\
- @GL_KLUDGE@ GL: 				glmatrix -root				    \n\
--- GL: 				glslideshow -root			    \n\
-+- GL: 				glslideshow -root -duration 30 -zoom 60 -pan 30 -fade 5			    \n\
- @GL_KLUDGE@ GL: 				hypertorus -root			    \n\
- - GL: 				jigglypuff -root			    \n\
- 				metaballs -root				    \n\
+@@ -467,7 +467,7 @@ XScreenSaver.bourneShell:		/bin/sh
+ @GL_KLUDGE@ GL: 				gleidescope --root			    \n\
+ @GL_KLUDGE@ GL: 				glknots --root				    \n\
+ @GL_KLUDGE@ GL: 				glmatrix --root				    \n\
+-- GL: 				glslideshow --root			    \n\
++- GL: 				glslideshow --root --duration 30 --zoom 60 --pan 30 --fade 5			    \n\
+ @GL_KLUDGE@ GL: 				hypertorus --root			    \n\
+ - GL: 				jigglypuff --root			    \n\
+ 				metaballs --root			    \n\
