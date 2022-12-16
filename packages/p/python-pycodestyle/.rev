@@ -118,4 +118,17 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e3cb1ccd4eee191b74d8dd18c536f2aa</srcmd5>
+    <version>2.10.0</version>
+    <time>1671209503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0  (bsc#1206225)
+  * Changes:
+  E231: allow trailing comma inside 1-tuples in []. PR #1108.
+  W601, W602, W603, W604: removed (no longer relevant in python 3). PR #1111.
+  E741: also apply to lambdas. PR #1106.
+  E741: fix false positive for comparison operators. PR #1118.</comment>
+    <requestid>1043221</requestid>
+  </revision>
 </revisionlist>
