@@ -48,6 +48,8 @@ Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
 # use openssl3.cnf
 Patch9:         openssl-use-versioned-config.patch
 Patch10:        fix-config-in-tests.patch
+# PATCH-FIX-UPSTREAM bsc#1206374 CVE-2022-3996 X.509 Policy Constraints Double Locking
+Patch11:        openssl-3-Fix-double-locking-problem.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 # Add requires for ct_log_list.cnf{,.dist}

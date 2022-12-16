@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 14 16:38:05 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Fix X.509 Policy Constraints Double Locking [bsc#1206374, CVE-2022-3996]
+  * Add patch: openssl-3-Fix-double-locking-problem.patch
+
+-------------------------------------------------------------------
 Tue Nov  1 18:29:41 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Temporary disable tests test_ssl_new and test_sslapi because they are
