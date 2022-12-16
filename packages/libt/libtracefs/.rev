@@ -71,4 +71,12 @@
     <comment>- Update to release 1.6.1</comment>
     <requestid>1037999</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>172e985da61d17ee09dcbdcf407b4d31</srcmd5>
+    <version>1.6.3</version>
+    <time>1671222368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.3</comment>
+    <requestid>1043363</requestid>
+  </revision>
 </revisionlist>

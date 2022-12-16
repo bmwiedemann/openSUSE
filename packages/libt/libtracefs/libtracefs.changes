@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 16 15:06:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.3
+  * Fix a regression of where tracefs_tracing_dir() did not mount
+    the tracefs file system if it was not already mounted.
+    Same for mounting debugfs with tracefs_debug_dir().
+  * Have tracefs_tracing_dir() and tracefs_debug_dir() check if the
+    cached directory still exists and is mounted.
+
+-------------------------------------------------------------------
 Fri Nov 25 00:14:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.1
