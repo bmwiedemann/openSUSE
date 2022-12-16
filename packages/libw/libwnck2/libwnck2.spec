@@ -1,7 +1,7 @@
 #
 # spec file for package libwnck2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 Source:         http://download.gnome.org/sources/libwnck/2.31/%{_name}-%{version}.tar.xz
 Source1:        %{name}_spec-update.sh
-Source99:       baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk2-devel

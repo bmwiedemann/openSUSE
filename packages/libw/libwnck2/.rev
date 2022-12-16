@@ -121,4 +121,12 @@
   (jsc#SLE-21105). (forwarded request 920429 from sbrabec)</comment>
     <requestid>920589</requestid>
   </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>21ea94244407fc16e5a22d40ecafcc95</srcmd5>
+    <version>2.31.0</version>
+    <time>1671222373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043385</requestid>
+  </revision>
 </revisionlist>
