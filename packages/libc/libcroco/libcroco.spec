@@ -1,7 +1,7 @@
 #
 # spec file for package libcroco
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.gnome.org/GNOME/libcroco
 Source:         https://download.gnome.org/sources/libcroco/0.6/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM libcroco-CVE-2017-8834.patch boo#1043898 boo#1043899 mgorse@suse.com -- fix infinite loop on invalid UTF-8.
 Patch0:         libcroco-CVE-2017-8834.patch

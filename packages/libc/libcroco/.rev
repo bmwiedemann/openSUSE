@@ -407,4 +407,12 @@ No indication of GPL-2.0 licensed files in the package (forwarded request 175739
 - Move doc files mainly developers care for to devel package. (forwarded request 929771 from iznogood)</comment>
     <requestid>930078</requestid>
   </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>7f7f9d8f337359c9f256008028bd0fff</srcmd5>
+    <version>0.6.13</version>
+    <time>1671222374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043391</requestid>
+  </revision>
 </revisionlist>
