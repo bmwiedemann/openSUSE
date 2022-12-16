@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 15 14:33:39 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221215.752a541a:
+  * Fix: behave: cleanup is not applied to nodes that have been removed from cluster
+  * Dev: behave: add behave test for `crm -F node delete`
+  * Dev: ui_cluster: unused code removal
+  * Dev: unittest: adjust unit test based on previous changes
+  * Dev: ui_node: redirect `node delete` to `cluster remove`
+
+-------------------------------------------------------------------
+Thu Dec 15 09:42:11 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221215.9fa76957:
+  * Dev: behave: Add functional test for cluster API
+
+-------------------------------------------------------------------
 Tue Dec 13 08:20:54 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221213.6e4f7dfd:
