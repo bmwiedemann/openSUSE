@@ -74,7 +74,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 Requires:       git-core = %{version}
 Requires:       perl-Git = %{version}
 Recommends:     git-email

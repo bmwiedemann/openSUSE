@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 12:01:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Mon Dec 12 20:08:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.39.0:

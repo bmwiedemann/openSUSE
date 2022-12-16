@@ -2562,4 +2562,13 @@ git 2.12.3
     <comment></comment>
     <requestid>1042474</requestid>
   </revision>
+  <revision rev="292" vrev="2">
+    <srcmd5>8bb3e47a28a1207ba3a06357ff0dbf4a</srcmd5>
+    <version>2.39.0</version>
+    <time>1671209463</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to pkgconfig(zlib) so that alternative providers can be
+  used</comment>
+    <requestid>1043115</requestid>
+  </revision>
 </revisionlist>
