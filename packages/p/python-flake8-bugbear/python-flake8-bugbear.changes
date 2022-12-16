@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 15 20:59:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.12.6 (bsc#1206225):
+  * Add B905: `zip()` without an explicit `strict=` parameter. (#314)
+  * B027: ignore @overload when typing is imported with other names (#309)
+
+-------------------------------------------------------------------
 Thu Oct 27 07:26:17 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 22.10.27:

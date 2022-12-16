@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>1031467</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eeb6d02776cf333e59625347bbd37f89</srcmd5>
+    <version>22.12.6</version>
+    <time>1671209500</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.12.6 (bsc#1206225):
+  * Add B905: `zip()` without an explicit `strict=` parameter. (#314)
+  * B027: ignore @overload when typing is imported with other names (#309)</comment>
+    <requestid>1043218</requestid>
+  </revision>
 </revisionlist>
