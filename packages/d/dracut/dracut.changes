@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 15:30:21 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.353.g6dab83eb:
+  * revert(fips): check for fipscheck in libexec (bsc#1206431)
+
+-------------------------------------------------------------------
 Tue Dec 13 08:12:21 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.351.ge78c8ff6:
