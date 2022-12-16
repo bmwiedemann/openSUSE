@@ -25,7 +25,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           galera-4
-Version:        26.4.12
+Version:        26.4.13
 Release:        0
 Summary:        Galera: a synchronous multi-master wsrep provider (replication engine)
 License:        GPL-2.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  7 17:13:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 26.4.13:
+  - Complete IO for client handshake before starting an
+    asynchronous read to fix an occasional connection failure when
+    establishing new cluster connections
+  - EOF-while-reading errors now suppressed when using OpenSSL 3.0
+
+-------------------------------------------------------------------
 Thu Jun  9 14:11:09 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 26.4.12:
