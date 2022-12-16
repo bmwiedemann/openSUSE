@@ -600,4 +600,27 @@
     <comment></comment>
     <requestid>1041154</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c65be85d56d7a18b0c14bffbc369499e</srcmd5>
+    <version>2.25.0</version>
+    <time>1671209544</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 2.25.0 (jsc#PED-627)
+  * __v2.25.0 (2022-12-12)__
+  For Linux kernel version: 6.1
+  Changes of existing tools:
+  - ap_tools: Use new mdevctl installation location
+  - lsdasd/tunedasd/zdev: Add support to handle copy pair relations presented by the DASD driver
+  - zdev: Add --shell command line switch to generate output suitable for shell environments
+  - zipl: Add List-Directed IPL from ECKD DASD to support secure boot
+  Bug Fixes:
+  - ipl_tools: Fix chreipl node for NVMes with CONFIG_NVME_MULTIPATH
+  - libdasd: Fix bug that prevented positive ioctl return codes
+- Updated s390-tools-sles15sp5-fix-chown-commands-syntax.patch to fit the current version
+- Removed obsolete Patch002, and Patch003
+  # Patch002:       s390-tools-sles15sp5-util_lockfile-fix-includes.patch
+  # Patch003:       s390-tools-sles15sp5-ap_tools-ap-check-use-new-mdevctl-install-location.patch
+</comment>
+    <requestid>1043348</requestid>
+  </revision>
 </revisionlist>

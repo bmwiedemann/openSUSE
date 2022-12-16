@@ -19,7 +19,7 @@ diff --git a/fdasd/fdasd.c b/fdasd/fdasd.c
 index 4503d3e..f04dc3d 100644
 --- a/fdasd/fdasd.c
 +++ b/fdasd/fdasd.c
-@@ -1229,10 +1229,12 @@
+@@ -1231,10 +1231,12 @@
   */
  static void fdasd_reread_partition_table(fdasd_anchor_t *anc)
  {

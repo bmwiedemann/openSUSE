@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -130,8 +130,6 @@ Source99:       zfcp_host_configure.8
 
 # IBM patches
 Patch001:       s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
-Patch002:       s390-tools-sles15sp5-util_lockfile-fix-includes.patch
-Patch003:       s390-tools-sles15sp5-ap_tools-ap-check-use-new-mdevctl-install-location.patch
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
