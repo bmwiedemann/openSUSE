@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/vmware/open-vm-tools.git</param>
+    <param name="revision">stable-12.1.5</param>
+    <param name="filename">open-vm-tools</param>
+    <param name="versionformat">12.1.5</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

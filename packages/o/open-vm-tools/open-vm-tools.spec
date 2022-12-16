@@ -38,16 +38,13 @@
 %define with_X 1
 
 Name:           open-vm-tools
-%define subname open-vm-tools
-%define tarname open-vm-tools
-%define bldnum  20219665
-Version:        12.1.0
+Version:        12.1.5
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Emulators/PC
 URL:            https://github.com/vmware/open-vm-tools
-Source:         %{tarname}-%{version}-%{bldnum}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        vmtoolsd
 Source2:        vmtoolsd.service
 Source3:        vmware-user-autostart.desktop
@@ -74,8 +71,12 @@ BuildRequires:  pcre-devel
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+BuildRequires:  containerd-devel
 BuildRequires:  glibc >= 2.27
+BuildRequires:  grpc-devel
+BuildRequires:  libcurl-devel
 BuildRequires:  libtirpc-devel
+BuildRequires:  protobuf-devel
 BuildRequires:  rpcgen
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0) >= 2.21.0
 BuildRequires:  pkgconfig(sm)
@@ -86,9 +87,11 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
+%define         arg_containerinfo --enable-containerinfo=yes
 %else
 BuildRequires:  glibc >= 2.12
 BuildRequires:  xorg-x11-devel
+%define         arg_containerinfo --enable-containerinfo=no
 %endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
@@ -151,6 +154,7 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
+Patch1:         detect-suse-location.patch
 
 %if 0%{?suse_version} >= 1500
 %systemd_ordering
@@ -233,8 +237,18 @@ Requires:       libvmtools0 = %{version}
 Those are the development headers for libvmtools. They are needed
 if you intend to create own plugins for vmtoolsd.
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%package        containerinfo
+Summary:        Container Info Plugin
+Group:          System Environment/Libraries
+Requires:       %{name}%{?_isa} = %{version}-%{release}, curl
+
+%description    containerinfo
+This package interfaces with the container runtime to retrieve a list of containers running on a Linux guest
+%endif
+
 %prep
-%setup -q -n %{tarname}-%{version}-%{bldnum}
+%setup -q -n %{name}-%{version}/%{name}
 
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
@@ -242,6 +256,7 @@ sed -i -e "s/\r//" README
 
 #SUSE specific patches
 %patch0 -p2
+%patch1 -p2
 
 %build
 %if %{with_X}
@@ -256,10 +271,14 @@ sed -i -e "s/\r//" README
 # (this is because of 'g_static_mutex_init' usage which is now deprecated)
 export CFLAGS="%{optflags} -Wno-unused-local-typedefs -Wno-unused-but-set-variable -Wno-deprecated-declarations -Wno-sizeof-pointer-memaccess -Wno-cpp -fPIE"
 export CXXFLAGS="%{optflags} -Wno-unused-local-typedefs -Wno-unused-but-set-variable -Wno-deprecated-declarations -Wno-sizeof-pointer-memaccess -Wno-cpp -fPIE"
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} > 1500
+export LDFLAGS="-pie -ltirpc -labsl_synchronization -lgpr"
+%else
+%if 0%{?sle_version} >= 150300
 export LDFLAGS="-pie -ltirpc"
 %else
 export LDFLAGS="-pie"
+%endif
 %endif
 # Required for version 9.4.0
 export CUSTOM_PROCPS_NAME=procps
@@ -281,7 +300,8 @@ chmod 755 configure
     --enable-servicediscovery \
     %{arg_with_fuse} \
     --enable-salt-minion \
-    --disable-static
+    --disable-static \
+    %{?arg_containerinfo}
 make
 
 %install
@@ -412,6 +432,14 @@ systemctl try-restart vmtoolsd.service || :
 
 %postun -n libvmtools0 -p /sbin/ldconfig
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%post containerinfo
+systemctl try-restart vmtoolsd.service || :
+
+%postun containerinfo
+systemctl try-restart vmtoolsd.service || :
+%endif
+
 %files
 %defattr(-, root, root)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
@@ -536,5 +564,10 @@ systemctl try-restart vmtoolsd.service || :
 %{_libdir}/pkgconfig/vmguestlib.pc
 %{_includedir}/libDeployPkg
 %{_libdir}/pkgconfig/libDeployPkg.pc
+
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%files containerinfo
+%{_libdir}/%{name}/plugins/vmsvc/libcontainerInfo.so
+%endif
 
 %changelog
