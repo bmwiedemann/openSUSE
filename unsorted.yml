@@ -716,7 +716,6 @@ unsorted:
   - apache2-mod_nss 
   - apache2-mod_perl 
   - apache2-mod_perl-devel 
-  - apache2-mod_php7 
   - apache2-mod_security2 
   - apache2-mod_uwsgi 
   - apache2-mod_wsgi 
@@ -936,7 +935,6 @@ unsorted:
   - atinject-tck 
   - atinout 
   - atkmm-devel 
-  - atkmm-devel-32bit: [x86_64] 
   - atkmm-doc 
   - atkmm1_6-devel 
   - atkmm1_6-devel-32bit: [x86_64] 
@@ -9613,7 +9611,7 @@ unsorted:
   - libSDL2_ttf-2_0-0 
   - libSDL_Pango1 
   - libSDL_bgi-devel 
-  - libSDL_bgi-suse8 
+  - libSDL_bgi-suse9 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
@@ -9983,7 +9981,6 @@ unsorted:
   - libatk-bridge-2_0-0-32bit: [x86_64] 
   - libatkmm-1_6-1-32bit: [x86_64] 
   - libatkmm-2_36-1 
-  - libatkmm-2_36-1-32bit: [x86_64] 
   - libatlascpp-0_6-3 
   - libatomic1-32bit: [x86_64] 
   - libatomic1-gcc11 
@@ -10618,7 +10615,6 @@ unsorted:
   - libcreg1 
   - libcriu2: [x86_64] 
   - libcroco 
-  - libcroco-0_6-3-32bit: [x86_64] 
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
@@ -10892,7 +10888,7 @@ unsorted:
   - libe131-1 
   - libe131-devel 
   - libeXosip2 
-  - libeXosip2-12 
+  - libeXosip2-15 
   - libeXosip2-devel 
   - libeantic1 
   - libeb16 
@@ -11423,7 +11419,7 @@ unsorted:
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
-  - libglslang11_12-32bit: [x86_64] 
+  - libglslang11-32bit: [x86_64] 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterd0 
@@ -15063,7 +15059,6 @@ unsorted:
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
   - libwnck-1-22 
-  - libwnck-1-22-32bit: [x86_64] 
   - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
@@ -15231,7 +15226,7 @@ unsorted:
   - libxbrz-1_8 
   - libxbsql0 
   - libxc-devel 
-  - libxc5 
+  - libxc12 
   - libxcam-devel 
   - libxcam1 
   - libxcb-composite0-32bit: [x86_64] 
@@ -15320,7 +15315,6 @@ unsorted:
   - libxlsreader8 
   - libxmi0 
   - libxml++-2_6-2 
-  - libxml++-2_6-2-32bit: [x86_64] 
   - libxml++-3_0-1 
   - libxml++-3_0-1-32bit: [x86_64] 
   - libxml++-4_0-1 
@@ -15443,7 +15437,6 @@ unsorted:
   - libzbc5 
   - libzck-devel 
   - libzeitgeist-1_0-1 
-  - libzeitgeist-1_0-1-32bit: [x86_64] 
   - libzeitgeist-devel 
   - libzen-devel 
   - libzen0 
@@ -18540,6 +18533,7 @@ unsorted:
   - open-isns-devel 
   - open-lldp: [i586] 
   - open-lldp-devel 
+  - open-vm-tools-containerinfo 
   - open-vm-tools-salt-minion: [x86_64] 
   - open-vm-tools-sdmp 
   - openCryptoki 
@@ -18662,6 +18656,7 @@ unsorted:
   - opengost-otf-fonts 
   - opengost-ttf-fonts 
   - opengreedy 
+  - openhantek 
   - openhpi 
   - openhpi-clients 
   - openhpi-daemon 
@@ -20882,62 +20877,6 @@ unsorted:
   - php-pear-Net_Sieve 
   - php-pear-Net_Socket 
   - php-pear-XML_Parser 
-  - php7 
-  - php7-bcmath 
-  - php7-bz2 
-  - php7-calendar 
-  - php7-cli 
-  - php7-ctype 
-  - php7-curl 
-  - php7-dba 
-  - php7-devel 
-  - php7-dom 
-  - php7-embed 
-  - php7-enchant 
-  - php7-exif 
-  - php7-fastcgi 
-  - php7-fileinfo 
-  - php7-fpm 
-  - php7-ftp 
-  - php7-gd 
-  - php7-gettext 
-  - php7-gmp 
-  - php7-iconv 
-  - php7-intl 
-  - php7-json 
-  - php7-ldap 
-  - php7-mbstring 
-  - php7-mysql 
-  - php7-odbc 
-  - php7-opcache 
-  - php7-openssl 
-  - php7-pcntl 
-  - php7-pdo 
-  - php7-pear 
-  - php7-pecl 
-  - php7-pgsql 
-  - php7-phar 
-  - php7-posix 
-  - php7-readline 
-  - php7-shmop 
-  - php7-smbclient 
-  - php7-snmp 
-  - php7-soap 
-  - php7-sockets 
-  - php7-sodium 
-  - php7-sqlite 
-  - php7-sysvmsg 
-  - php7-sysvsem 
-  - php7-sysvshm 
-  - php7-test 
-  - php7-tidy 
-  - php7-tokenizer 
-  - php7-xmlreader 
-  - php7-xmlrpc 
-  - php7-xmlwriter 
-  - php7-xsl 
-  - php7-zip 
-  - php7-zlib 
   - php8-APCu 
   - php8-bcmath 
   - php8-bz2 
