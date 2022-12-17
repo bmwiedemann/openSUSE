@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 12:45:32 UTC 2022 - pgajdos@suse.com
+
+- set doc-default-operating-system and doc-volume-operating-system
+  to $PRETTY_NAME [bsc#1185613]
+
+-------------------------------------------------------------------
 Mon Feb  7 20:17:31 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Do not fail with rpm --excludedocs (bsc#1192195).
