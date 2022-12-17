@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Dec 15 17:20:35 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.0.71
+  * fix the fix for Date::Manip
+- Changes in 2.0.70
+  * plugins/http_loadtime: enable saving cookies between requests
+  * UpdateWorker: prevent use of uninitialized value $first_epoch
+  * fix html_strategy to point to munin-cgi-html
+  * plugin fail2ban: allow configuration of warning/critical
+    thresholds
+  * Plugin haproxy_: handle backends with special characters
+  * [snmp__df_ram] Update title to match the memory plugin
+  * [snmp__cpuload] Update title to match the cpu plugin
+  * Plugin df_inode : Exclude msdosfs on FreeBSD as there's no
+    concept of inode
+  * Plugin bind9: stabilize order of values in graph
+  * Plugin bind9: Author's blog has moved to .no TLD
+  * Plugin bind9: Move 'Other' to bottom of list
+  * Update munin-graph.in
+  * Update munin-cgi-graph.in
+- Run spec-cleaner
+- Fix rpmlint warning: This script uses 'env' as an interpreter.
+
+-------------------------------------------------------------------
+Mon Oct 24 11:04:04 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- UsrMerge: move stuff from /sbin to /usr/sbin (boo#1191080)
+
+-------------------------------------------------------------------
+Sun Feb 20 10:39:50 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 2.0.69
+  * bugfixes
+  * Handle NVME drives in the Linux iostat plugin
+  * munin-run: allow to pass additional arguments to the plugin
+  * use dedicated munin SNMP plugin
+- require the www group (boo#1195732)
+
+-------------------------------------------------------------------
 Mon Nov 29 15:46:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Removed

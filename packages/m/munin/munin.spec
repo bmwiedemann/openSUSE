@@ -1,7 +1,7 @@
 #
 # spec file for package munin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %define	htmldir /srv/www/htdocs/munin
 %define	cgidir /srv/www/cgi-bin
-%define	dbdir /var/lib/munin
-%define	logdir /var/log/munin
-%define plugindir /usr/lib/munin/plugins
+%define	dbdir %{_localstatedir}/lib/munin
+%define	logdir %{_localstatedir}/log/munin
+%define plugindir %{_prefix}/lib/munin/plugins
 %define active_by_default 0
-
 Name:           munin
-Version:        2.0.66
+Version:        2.0.71
 Release:        0
 Summary:        Network-wide graphing framework (grapher/gatherer)
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            http://munin-monitoring.org/
-Source0:        http://downloads.munin-monitoring.org/%{name}/stable/%{version}/%{name}-%{version}.tar.gz
+URL:            https://munin-monitoring.org/
+Source0:        https://codeload.github.com/munin-monitoring/munin/tar.gz/refs/tags/%{version}#/%{name}-%{version}.tar.gz
 Source1:        Makefile.config
 Source2:        munin-node.rc
 Source3:        munin.cron.d
@@ -48,22 +47,22 @@ Source12:       nginx-munin.zip
 Source13:       gsa-munin.zip
 Source14:       munin-cron.timer
 Source15:       munin-cron.service
-Source16:       http://downloads.munin-monitoring.org/%{name}/stable/%{version}/%{name}-%{version}.tar.gz.asc
+# Source16:       http://downloads.munin-monitoring.org/%{name}/stable/%{version}/%{name}-%{version}.tar.gz.asc
 # 0x910846ADEE4C5D67C19B3E6F0A24C05998BA4133
 Source17:       munin.keyring
 Patch1:         perl526.patch
 BuildRequires:  firewall-macros
 BuildRequires:  html2text
+BuildRequires:  htmldoc
 BuildRequires:  perl-HTML-Template
 BuildRequires:  perl-Log-Log4perl
 BuildRequires:  perl-Net-SNMP
 BuildRequires:  perl-Net-SSLeay
 BuildRequires:  perl-Net-Server
+BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  unzip
 BuildRequires:  perl(Module::Build)
-%{?systemd_ordering}
-BuildRequires:  htmldoc
 BuildRequires:  pkgconfig(systemd)
 Requires:       perl-Date-Manip
 Requires:       perl-FastCGI
@@ -82,11 +81,11 @@ Requires:       shadow
 Requires:       spawn-fcgi
 Requires:       perl(Munin::Common::Defaults)
 Recommends:     logrotate
+BuildArch:      noarch
+%{?systemd_ordering}
 %if 0%{?suse_version} <= 1510
 Recommends:     cron
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
 
 %description
 Munin is a highly flexible and powerful solution used to create graphs of
@@ -101,14 +100,12 @@ pages, suitable for viewing with your graphical web browser of choice.
 Munin is written in Perl, and relies heavily on Tobi Oetiker's excellent
 RRDtool.
 
-
 %package node
 Summary:        Network-wide graphing framework (node)
 # some scripts need logtail which is part of package logdigest in openSUSE
 # problem with logdigest is that it installs a cronjob for itself which
 # might be unwanted
 Group:          System/Monitoring
-Recommends:     logdigest
 Requires:       perl-HTML-Template
 Requires:       perl-Log-Log4perl
 Requires:       perl-Net-SNMP
@@ -117,16 +114,18 @@ Requires:       perl-Net-Server
 Requires:       perl-base = %{perl_version}
 Requires:       perl-libwww-perl
 Requires:       ps
-Requires:       shadow
-Requires:       sysstat
 # manual requires from certain plugins using "env ..."
 Requires:       python
 Requires:       ruby
-%{?systemd_ordering}
+Requires:       shadow
+Requires:       sysstat
 Requires(pre):  group(nobody)
+Requires(pre):  group(www)
 Requires(pre):  user(nobody)
+Recommends:     logdigest
 Recommends:     logrotate
 BuildArch:      noarch
+%{?systemd_ordering}
 
 %description node
 Munin is a highly flexible and powerful solution used to create graphs of
@@ -150,7 +149,6 @@ Munin is written in Perl, and relies heavily on Tobi Oetiker's excellent
 RRDtool. To see a real example of Munin in action, take a peek at
 <http://www.linpro.no/projects/munin/example/>.
 
-
 %prep
 %setup -q
 cp %{SOURCE1} .
@@ -166,16 +164,16 @@ unzip %{SOURCE13}
 %__mkdir_p %{buildroot}/%{_sysconfdir}/munin/plugins
 %__mkdir_p %{buildroot}/%{_sysconfdir}/munin/munin-conf.d
 
-%__mkdir_p %{buildroot}/etc/logrotate.d
+%__mkdir_p %{buildroot}%{_sysconfdir}/logrotate.d
 %__install -m0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/logrotate.d/munin
 %__install -m0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/logrotate.d/munin-node
 
 %__install -m0644 %{SOURCE7} %{buildroot}/%{_sysconfdir}/munin/plugin-conf.d/munin-node
 
-%__mkdir_p %{buildroot}/sbin
-%__ln_s /sbin/service $RPM_BUILD_ROOT/sbin/rcmunin-node
-%__ln_s /sbin/service $RPM_BUILD_ROOT/sbin/rcmunin-cgi-graph
-%__ln_s /sbin/service $RPM_BUILD_ROOT/sbin/rcmunin-cgi-html
+%__mkdir_p %{buildroot}%{_sbindir}
+%__ln_s service %{buildroot}%{_sbindir}/rcmunin-node
+%__ln_s service %{buildroot}%{_sbindir}/rcmunin-cgi-graph
+%__ln_s service %{buildroot}%{_sbindir}/rcmunin-cgi-html
 
 %__mkdir_p %{buildroot}/%{_prefix}/lib/tmpfiles.d
 %__install -m0644 %{SOURCE8} %{buildroot}/%{_prefix}/lib/tmpfiles.d/munin.conf
@@ -203,15 +201,25 @@ ln nginx-munin-master/README.org README.nginx
 %__install -m0755 munin-gsa-master/snmp_* %{buildroot}/%{plugindir}
 ln munin-gsa-master/README.md README.gsa
 
+# Fix rpmlint warning: This script uses 'env' as an interpreter.
+for F in \
+	%{buildroot}/%{_prefix}/lib/munin/plugins/ipmi_sensor_ \
+	%{buildroot}/%{_prefix}/lib/munin/plugins/smart_ \
+	; do
+	sed -i -e 's|^#!%{_bindir}/env python|#!%{_bindir}/python|' $F
+done
+for F in \
+	%{buildroot}/%{_prefix}/lib/munin/plugins/tomcat_ \
+	; do
+	sed -i -e 's|^#!%{_bindir}/env ruby|#!%{_bindir}/ruby|' $F
+done
+
 # firewalld
 install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/munin-node.xml
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %pre
-getent group munin >/dev/null || /usr/sbin/groupadd -r munin
-getent passwd munin > /dev/null || /usr/sbin/useradd -r -c "munin monitoring" -d %{dbdir} -g munin munin
+getent group munin >/dev/null || %{_sbindir}/groupadd -r munin
+getent passwd munin > /dev/null || %{_sbindir}/useradd -r -c "munin monitoring" -d %{dbdir} -g munin munin
 %service_add_pre munin-cgi-graph.service
 %service_add_pre munin-cgi-html.service
 %if 0%{?suse_version} > 1510
@@ -257,13 +265,13 @@ fi
 
 ## Node
 %pre node
-getent group munin >/dev/null || /usr/sbin/groupadd -r munin
-getent passwd munin > /dev/null || /usr/sbin/useradd -r -c "munin monitoring" -d %{dbdir} -g munin munin
+getent group munin >/dev/null || %{_sbindir}/groupadd -r munin
+getent passwd munin > /dev/null || %{_sbindir}/useradd -r -c "munin monitoring" -d %{dbdir} -g munin munin
 %service_add_pre munin-node.service
 
 %post node
 if [ $1 = 1 ]; then
-/usr/sbin/munin-node-configure --shell | sh
+%{_sbindir}/munin-node-configure --shell | sh
 fi
 chown -R munin:munin %{dbdir}
 chmod 755 %{dbdir}
@@ -282,7 +290,6 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %service_del_postun munin-node.service
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %doc ChangeLog README UPGRADING
 %{_bindir}/munin-check
@@ -302,8 +309,8 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_prefix}/lib/tmpfiles.d/munin.conf
 %{_unitdir}/munin-cgi-graph.service
 %{_unitdir}/munin-cgi-html.service
-/sbin/rcmunin-cgi-graph
-/sbin/rcmunin-cgi-html
+%{_sbindir}/rcmunin-cgi-graph
+%{_sbindir}/rcmunin-cgi-html
 %if 0%{?suse_version} > 1510
 %{_unitdir}/munin-cron.*
 %else
@@ -350,21 +357,20 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_mandir}/man3/Munin::Master::UpdateWorker.3pm.gz
 %{_mandir}/man3/Munin::Master::Utils.3pm.gz
 %{_mandir}/man3/Munin::Master::Worker.3pm.gz
-%{_mandir}/man5/munin-node.conf.5.gz
-%{_mandir}/man5/munin.conf.5.gz
-%{_mandir}/man8/munin-check.8.gz
-%{_mandir}/man8/munin-cron.8.gz
-%{_mandir}/man8/munin-graph.8.gz
-%{_mandir}/man8/munin-html.8.gz
-%{_mandir}/man8/munin-limits.8.gz
-%{_mandir}/man8/munin-update.8.gz
-%{_mandir}/man8/munin.8.gz
+%{_mandir}/man5/munin-node.conf.5%{?ext_man}
+%{_mandir}/man5/munin.conf.5%{?ext_man}
+%{_mandir}/man8/munin-check.8%{?ext_man}
+%{_mandir}/man8/munin-cron.8%{?ext_man}
+%{_mandir}/man8/munin-graph.8%{?ext_man}
+%{_mandir}/man8/munin-html.8%{?ext_man}
+%{_mandir}/man8/munin-limits.8%{?ext_man}
+%{_mandir}/man8/munin-update.8%{?ext_man}
+%{_mandir}/man8/munin.8%{?ext_man}
 %attr(0750, munin, munin) %dir %{logdir}
 %attr(0755, munin, munin) %dir %{dbdir}
 %ghost /run/munin
 
 %files node
-%defattr(-, root, root)
 %doc README.nginx README.gsa
 %{_sbindir}/munin-run
 %{_sbindir}/munin-node
@@ -376,7 +382,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_prefix}/lib/munin/munin-async
 %{_prefix}/lib/munin/munin-asyncd
 %{_prefix}/lib/munin/plugins/
-/sbin/rcmunin-node
+%{_sbindir}/rcmunin-node
 %dir %{_sysconfdir}/munin/plugin-conf.d
 %dir %{_sysconfdir}/munin/plugins
 %config(noreplace) %{_sysconfdir}/munin/plugin-conf.d/munin-node
@@ -413,11 +419,11 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %dir %{perl_vendorlib}/Munin/Plugin
 %{perl_vendorlib}/Munin/Plugin/Pgsql.pm
 %{perl_vendorlib}/Munin/Plugin/SNMP.pm
-%{_mandir}/man1/munin-node-configure.1.gz
-%{_mandir}/man1/munin-node.1.gz
-%{_mandir}/man1/munin-run.1.gz
-%{_mandir}/man1/munindoc.1.gz
-%{_mandir}/man1/munin-get.1.gz
+%{_mandir}/man1/munin-node-configure.1%{?ext_man}
+%{_mandir}/man1/munin-node.1%{?ext_man}
+%{_mandir}/man1/munin-run.1%{?ext_man}
+%{_mandir}/man1/munindoc.1%{?ext_man}
+%{_mandir}/man1/munin-get.1%{?ext_man}
 %{_mandir}/man3/Munin::Common::Config.3pm.gz
 %{_mandir}/man3/Munin::Common::Daemon.3pm.gz
 %{_mandir}/man3/Munin::Common::Defaults.3pm.gz
