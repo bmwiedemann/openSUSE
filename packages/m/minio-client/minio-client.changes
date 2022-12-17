@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 16 13:11:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221213T002328Z:
+  * Add LDAP policy attach/detach commands (#4390)
+  * mirror: continue operations even if source object goes missing (#4402)
+  * Add full list of call types. (#4401)
+  * trace: Add two validations for passed arguments (#4399)
+  * admin update: Add a prompt for confirmation (#4400)
+  * stat: avoid unix epoch time when printing date (#4398)
+  * Stat: Do not append a slash when --rewind is specified (#4396)
+  * find: Add support of --versions flag (#4394)
+  * Report data usage in `mc stat` of bucket (#4392)
+  * Add staticheck to make lint (#4395)
+  * add HiddenAliases to avoid printing aliases when deprecated (#4393)
+  * Move `mc admin bucket quota` to `mc quota` (#4389)
+  * add support for upload/download limits (#4388)
+  * rename force-delete to purge hidden flag (#4387)
+  * Add staticcheck to CI (#4386)
+
+-------------------------------------------------------------------
 Mon Dec 05 10:20:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221202T234847Z:
