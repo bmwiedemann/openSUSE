@@ -16,7 +16,6 @@
 #
 
 
-# Update baselibs.conf when changing this
 %define so_ver -3_0-1
 %define _name gtkmm
 
@@ -28,7 +27,6 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/gtkmm/3.24/%{_name}-%{version}.tar.xz
-Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE gtkmm3-docs-without-timestamp.patch -- We do not want __DATE__ and __TIME__ in our packages
 Patch0:         gtkmm3-docs-without-timestamp.patch
 

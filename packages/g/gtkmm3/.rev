@@ -412,4 +412,12 @@
     <comment>New upstream release (forwarded request 1003017 from iznogood)</comment>
     <requestid>1003232</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>57a08b43d50d5a298abb061d08b48d29</srcmd5>
+    <version>3.24.7</version>
+    <time>1671305783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043389</requestid>
+  </revision>
 </revisionlist>
