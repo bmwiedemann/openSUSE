@@ -1448,4 +1448,13 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1037900</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>f501e9641ecf6cab2f12de3590367fee</srcmd5>
+    <version>3.40.0</version>
+    <time>1671305757</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1206337, CVE-2022-46908, sqlite-CVE-2022-46908.patch:
+  relying on --safe for execution of an untrusted CLI script</comment>
+    <requestid>1043393</requestid>
+  </revision>
 </revisionlist>
