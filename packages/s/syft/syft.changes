@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:37:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.63.0:
+  * feat: add catalog delete (#1377)
+  * docs: remove file classifier (#1397)
+  * chore: update latest cyclonedx library (#1390)
+  * feat: Add Java binary catalogers (#1392)
+  * chore: Update SPDX license list to 3.19 (#1389)
+  * fix: add manual vendor/product removal to fix false flags (#1070)
+  * Update Stereoscope to c5ff155d72f166e2332e160a75c3ff2b8e9c7e2e (#1395)
+  * chore: fix test busybox image sha (#1393)
+  * fix: go version not properly identified in binary (#1384)
+
+-------------------------------------------------------------------
 Thu Dec 01 05:41:03 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.62.3:
