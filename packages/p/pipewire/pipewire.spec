@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.62
+Version:        0.3.63
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,6 +64,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
+Patch1:         0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -335,6 +337,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
