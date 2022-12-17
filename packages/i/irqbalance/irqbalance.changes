@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:38:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build for x86_64 subarchs the same way like for baseline
+
+-------------------------------------------------------------------
 Fri Nov 11 09:44:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add irqbalance-systemd-netlink.patch (related to bsc#1205308)

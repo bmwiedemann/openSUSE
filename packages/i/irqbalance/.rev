@@ -588,4 +588,12 @@ D proc-interrupts.patch
     <comment>- add irqbalance-systemd-netlink.patch (related to bsc#1205308)</comment>
     <requestid>1035191</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>1248e5c62761999da7647e5dce280661</srcmd5>
+    <version>1.9.2</version>
+    <time>1671305776</time>
+    <user>dimstar_suse</user>
+    <comment>- build for x86_64 subarchs the same way like for baseline</comment>
+    <requestid>1043326</requestid>
+  </revision>
 </revisionlist>

@@ -37,7 +37,7 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
-%ifarch x86_64
+%ifarch x86_64 %{?x86_64}
 BuildRequires:  pkgconfig(libnl-3.0)
 %endif
 Requires(pre):  %fillup_prereq
@@ -67,7 +67,7 @@ Text UI for the IRQ balance daemon.
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure \
-%ifarch x86_64
+%ifarch x86_64 %{?x86_64}
     --enable-thermal
 %endif
 
