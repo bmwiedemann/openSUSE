@@ -1,7 +1,7 @@
 #
 # spec file for package gtkhtml
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            http://www.gnome.org
 Source0:        http://download.gnome.org/sources/gtkhtml/4.10/%{name}-%{version}.tar.xz
-Source1:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 BuildRequires:  intltool

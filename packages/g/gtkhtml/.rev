@@ -340,4 +340,12 @@ Recommended for 12.3</comment>
   (jsc#SLE-21105). (forwarded request 920422 from sbrabec)</comment>
     <requestid>920584</requestid>
   </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>af92beee63c3debcd3eb8a62ec65a1f3</srcmd5>
+    <version>4.10.0</version>
+    <time>1671305781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043387</requestid>
+  </revision>
 </revisionlist>

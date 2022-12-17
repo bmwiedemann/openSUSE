@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 15:19:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:15:47 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
