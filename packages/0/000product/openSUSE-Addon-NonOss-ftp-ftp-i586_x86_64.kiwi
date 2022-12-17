@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE-Addon-NonOss___20221215" schemaversion="4.1">
+<image name="OBS__openSUSE-Addon-NonOss___20221216" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -36,11 +36,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221215</productvar>
+      <productvar name="VERSION">20221216</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20221215,openSUSE NonOSS Addon</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse-addon-nonoss:20221216,openSUSE NonOSS Addon</productinfo>
       <productinfo name="LINGUAS">af ar be_BY bg br ca cy el et ga gl gu_IN he hi_IN hr ka km ko lt mk nn pa_IN rw sk sl sr_CS ss st tg th tr uk ve vi xh zu </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20221215/i586 obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20221215/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20221216/i586 obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20221216/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
