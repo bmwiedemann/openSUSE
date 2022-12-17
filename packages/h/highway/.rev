@@ -47,4 +47,12 @@
     <comment>forwarded 1037782</comment>
     <requestid>1037791</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>d7147ab0687011ffff7ccf751ce4078a</srcmd5>
+    <version>1.0.2</version>
+    <time>1671305756</time>
+    <user>dimstar_suse</user>
+    <comment>I forgot to add baselibs.conf as a source in the .spec file last time, sorry! (forwarded request 1043358 from DarkWav)</comment>
+    <requestid>1043365</requestid>
+  </revision>
 </revisionlist>

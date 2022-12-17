@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz
+Source1:        baselibs.conf
 # see https://github.com/google/highway/issues/834
 # we do not currently require neon on armv7hl
 Patch0:         arm-disable-runtime-dispatch.patch

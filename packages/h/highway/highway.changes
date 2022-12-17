@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 11:32:45 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added missing baselibs.conf so that 32bit library packages
+  become available
+
+-------------------------------------------------------------------
 Wed Nov 23 23:15:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Fix the library being built for incorrect microarchitecture
