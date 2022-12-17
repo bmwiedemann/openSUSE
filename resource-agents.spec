@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.11.0+git72.c1f0a07e
+Version:        4.11.0+git90.c1dd3806
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -65,6 +65,14 @@ A set of scripts to interface with several services to operate in a
 High Availability environment for both Pacemaker and rgmanager
 service managers.
 
+%package zfs
+Summary:        resource-agent for ZFS support
+License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
+Group:          Productivity/Clustering/HA
+Requires:       %{name}
+Provides:       %{name}:%{_mandir}/man7/ocf_heartbeat_ZFS.*
+Provides:       %{name}:%{_prefix}/lib/ocf/resource.d/heartbeat/ZFS
+
 %package -n ldirectord
 Summary:        A Monitoring Daemon for Maintaining High Availability Resources
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -80,6 +88,9 @@ Requires:       perl-libwww-perl
 Obsoletes:      heartbeat-ldirectord
 Provides:       heartbeat-ldirectord
 %{?systemd_requires}
+
+%description zfs
+Containing the resource agent and documentation for ZFS support
 
 %description -n ldirectord
 ldirectord is a stand-alone daemon for monitoring the services on real
@@ -212,6 +223,7 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %{_datadir}/%{name}/ocft/runocft.prereq
 %{_prefix}/lib/ocf/resource.d/suse
 %{_prefix}/lib/ocf/resource.d/heartbeat
+%exclude %{_prefix}/lib/ocf/resource.d/heartbeat/ZFS
 %{_prefix}/lib/ocf/lib/heartbeat
 %{_sbindir}/ocf-tester
 %{_sbindir}/ocft
@@ -226,6 +238,7 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %license COPYING.GPLv3
 %doc %{_datadir}/%{name}/ra-api-1.dtd
 %{_mandir}/man7/*.7*
+%exclude %{_mandir}/man7/ocf_heartbeat_ZFS.*
 %{_mandir}/man8/ocf-tester.8*
 %{_mandir}/man8/sfex_init.8*
 %doc doc/README.webapps
@@ -235,6 +248,10 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %dir %{_libdir}/heartbeat
 %{_libdir}/heartbeat/*
 %{_datadir}/pkgconfig/resource-agents.pc
+
+%files zfs
+%{_prefix}/lib/ocf/resource.d/heartbeat/ZFS
+%{_mandir}/man7/ocf_heartbeat_ZFS.*
 
 %files -n ldirectord
 %defattr(-,root,root)

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 14 10:17:45 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Remove ocf_heartbeat_ZFS (bsc#1205556)
+  A new package resource-agents-zfs will contain ZFS support, which will not be shipped on SLES. 
+- Update to version 4.11.0+git90.c1dd3806:
+  * Please don't suggest /tmp/mysql-proxy.sock, that is bad practice. Use one of the directories where this socket can be provided securely (bsc#1146768)
+  * SAPInstance: be more resilient against broken kill.sap files (#1825) (bsc#1206100)
+  * lvmlockd: add "use_lvmlockd = 1" if it's commented out or missing
+  * nfsserver: add nfsv4_only parameter to make it run without rpc-statd/rpcbind services
+  * mysql-common: return error in stop-action if kill fails to stop the process, so the node can get fenced
+  * configure.ac: Fix bashisms
+  * docker/podman/zabbixserver:replace error log messages with calls to ocf_exit_reason
+  * vdo-vol: dont fail probe action when the underlying device doesnt exist
+  * build: add iface-macvlan
+  * iface-macvlan: new resource agent (#1815)
+
+-------------------------------------------------------------------
 Thu Oct 20 08:40:50 UTC 2022 - varkoly@suse.com
 
 - Update to version 4.11.0+git72.c1f0a07e:
@@ -104,7 +121,7 @@ Thu Mar 31 14:22:18 UTC 2022 - varkoly@suse.com
   * IPsrcaddr: fix indentation in better error message code
   * IPsrcaddr: Better error message when no matching route found
   * IPsrcaddr: Add warning about DHCP
-  * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir
+  * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir (jsc#PED-121)
   * rabbitmq-server-ha: Use ocf_is_true, if applicable
   * Fix SERVER_START_ARGS sname/name use for FQDN
   * LinuxSCSI:replace error log messages with calls to ocf_exit_reason
