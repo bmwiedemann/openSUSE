@@ -658,4 +658,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
     <requestid>1033098</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6bc8586b3e6ecaebfbe42677fc774549</srcmd5>
+    <version>5.15.7+kde25</version>
+    <time>1671305772</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7 + accessibility requested by sitter (forwarded request 1043149 from Vogtinator)</comment>
+    <requestid>1043281</requestid>
+  </revision>
 </revisionlist>

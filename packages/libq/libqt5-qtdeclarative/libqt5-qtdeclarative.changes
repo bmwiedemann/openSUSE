@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 15 12:21:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde25:
+  * Make QaccessibleQuickWidget private API
+  * a11y: track item enabled state
+  * QQuickItem: avoid emitting signals during destruction
+  * Send ObjectShow event for visible components after initialized
+  * Implement accessibility for QQuickWidget
+  * Fix build after 95290f66b806a307b8da1f72f8fc2c69801933d0
+  * Don't convert QByteArray in `startDrag`
+
+-------------------------------------------------------------------
 Thu Nov  3 08:53:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde18, rebased upstream:
