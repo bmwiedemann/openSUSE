@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:36:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add reproducible.patch to avoid use of __DATE__
+
+-------------------------------------------------------------------
 Wed Oct 21 14:02:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.15.05:

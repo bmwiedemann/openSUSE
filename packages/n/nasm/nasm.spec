@@ -1,7 +1,7 @@
 #
 # spec file for package nasm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,8 @@ Summary:        Netwide Assembler (An x86 Assembler)
 License:        BSD-2-Clause
 Group:          Development/Languages/Other
 URL:            https://www.nasm.us/
-Source:         http://www.nasm.us/pub/nasm/releasebuilds/%{version}/%{name}-%{version}.tar.xz
+Source:         https://www.nasm.us/pub/nasm/releasebuilds/%{version}/%{name}-%{version}.tar.xz
+Patch0:         reproducible.patch
 BuildRequires:  fdupes
 
 %description
@@ -31,7 +32,7 @@ NASM is a prototype general-purpose x86 assembler. It can currently output
 several binary formats, including ELF, a.out, Win32, and OS/2.
 
 %prep
-%autosetup
+%autosetup -p0
 
 %build
 %configure \

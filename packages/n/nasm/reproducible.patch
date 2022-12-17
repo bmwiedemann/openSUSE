@@ -1,0 +1,54 @@
+Index: disasm/ndisasm.c
+===================================================================
+--- disasm/ndisasm.c.orig
++++ disasm/ndisasm.c
+@@ -120,8 +120,8 @@ int main(int argc, char **argv)
+                 case 'r':
+                 case 'v':
+                     fprintf(stderr,
+-                            "NDISASM version %s compiled on %s\n",
+-			    nasm_version, nasm_date);
++                            "NDISASM version %s\n",
++			    nasm_version);
+                     return 0;
+                 case 'u':	/* -u for -b 32, -uu for -b 64 */
+ 		    if (bits < 64)
+Index: include/ver.h
+===================================================================
+--- include/ver.h.orig
++++ include/ver.h
+@@ -41,7 +41,6 @@
+ #include "compiler.h"
+ 
+ extern const char nasm_version[];
+-extern const char nasm_date[];
+ extern const char nasm_compile_options[];
+ 
+ extern bool reproducible;
+Index: nasmlib/ver.c
+===================================================================
+--- nasmlib/ver.c.orig
++++ nasmlib/ver.c
+@@ -36,7 +36,6 @@
+ 
+ /* This is printed when entering nasm -v */
+ const char nasm_version[] = NASM_VER;
+-const char nasm_date[] = __DATE__;
+ const char nasm_compile_options[] = ""
+ #ifdef DEBUG
+     " with -DDEBUG"
+Index: asm/nasm.c
+===================================================================
+--- asm/nasm.c.orig
++++ asm/nasm.c
+@@ -977,8 +977,8 @@ static const struct textargs textopts[]
+ 
+ static void show_version(void)
+ {
+-    printf("NASM version %s compiled on %s%s\n",
+-           nasm_version, nasm_date, nasm_compile_options);
++    printf("NASM version %s compiled on %s\n",
++           nasm_version, nasm_compile_options);
+     exit(0);
+ }
+ 
