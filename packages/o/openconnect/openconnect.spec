@@ -18,7 +18,7 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        8.20
+Version:        9.01
 Release:        0
 Summary:        Client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later

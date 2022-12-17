@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 15 11:30:15 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 9.01:
+  * Add support for AnyConnect "Session Token Re-use Anchor Protocol" (STRAP) 
+  * Add support for AnyConnect "external browser" SSO mode
+  * Bugfix RSA SecurID token decryption and PIN entry forms, broken in v8.20
+  * Support Cisco's multiple-certificate authentication
+  * Revert GlobalProtect default route handling change from v8.20
+  * Support split-exclude routes for Fortinet
+  * Add webview callback and SAML/SSO support for AnyConnect, GlobalProtect
+
+-------------------------------------------------------------------
 Mon Apr 18 07:39:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.20:
