@@ -1,0 +1,6 @@
+<package name="conftest" project="openSUSE:Factory">
+  <title>conftest</title>
+  <description>Write tests against structured configuration data using the Open Policy Agent Rego query language</description>
+  <devel project="devel:kubic" package="conftest"/>
+  <url>https://conftest.dev/</url>
+</package>

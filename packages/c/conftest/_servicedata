@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/open-policy-agent/conftest.git</param>
+              <param name="changesrevision">eb7ef1a4d6ed769c8a59264bf1b41e406e2f747d</param></service></servicedata>
