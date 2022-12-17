@@ -139,4 +139,12 @@
 - drop anyio-pytest7.patch (upstream)</comment>
     <requestid>1037186</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1918c3f6e881187817a2ee5423882627</srcmd5>
+    <version>3.6.2</version>
+    <time>1671305777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043354</requestid>
+  </revision>
 </revisionlist>

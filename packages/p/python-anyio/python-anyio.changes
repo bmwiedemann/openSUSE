@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 16 15:06:08 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Skip trio exception tests for now 
+  * https://github.com/agronholm/anyio/issues/508
+  * https://github.com/agronholm/anyio/commit/787cb0c2e53c2a3307873d202fbd49dc5eac4e96
+
+-------------------------------------------------------------------
 Mon Nov 21 21:04:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.2:

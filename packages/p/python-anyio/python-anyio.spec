@@ -84,6 +84,8 @@ donttest+=" or (TestTCPStream and test_connection_refused)"
 %if 0%{?suse_version} < 1550
 donttest+=" or (test_send_eof_not_implemented)"
 %endif
+# anyio 3.6.2 and lower is broken with new trio, some tests fail https://github.com/agronholm/anyio/commit/787cb0c2e53c2a3307873d202fbd49dc5eac4e96
+donttest+=" or (test_exception_group and trio)"
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 
 %files %{python_files}
