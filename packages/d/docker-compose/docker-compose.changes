@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:35:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.14.1:
+  * apply uid/gid when creating secret from environment
+  * load project from explicit --files when set
+  * use recently introduced `withSelectedServicesOnly` to reduce code duplication
+  * introduce --timestamp option on compose up
+  * Address review comments
+  * Add --include-deps to push command
+  * align `--format` flag and UX with docker cli
+  * align `compose ps` output with `docker ps`
+  * use StatusError from docker/cli, not "dockerd"
+  * resolve --env-file as absolute path
+  * fix parsing of repository:tag
+  * distinguish stdout and stderr in `up` logs
+  * ContainerStart must run sequentially for engine to assing distinct ports within configured range
+  * Fix corner case when there's no container to attach to
+  * Don't stop pull for images that can be built
+  * Squashed commit of the following:
+  * build(deps): bump github.com/containerd/containerd from 1.6.10 to 1.6.12
+  * remove go.* from e2e tests directory
+  * added table of contents inside readme
+  * fix race condition collecting pulled images IDs
+  * detect required service are gone to stop watching explicit API to stop the log printer
+  * update to go1.19.4
+  * Cleanup tips from output
+  * check only running containers in after down tests of profiles e2e tests
+  * Update `e2e` mod deps
+  * build(deps): bump go.opentelemetry.io/otel from 1.11.1 to 1.11.2
+  * introduce --parallel to limit concurrent engine calls
+  * port: improve error-handling if port not found (#10039)
+
+-------------------------------------------------------------------
 Mon Dec 05 09:14:05 UTC 2022 - kastl@b1-systems.de
 
 - BuildRequires go1.19
