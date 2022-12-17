@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 15 16:18:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v21.12:
+  * Python
+  * Fix broken enum ranges (#11171)
+  * Stop requiring extension fields to have a sythetic oneof (#11091)
+  * Python runtime 4.21.10 not works generated code can not load valid
+    proto.
+
+-------------------------------------------------------------------
 Thu Dec  8 09:16:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.11:

@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 3_21_11
+%define sover 3_21_12
 %define tarname protobuf
 %define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
@@ -27,7 +27,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        21.11
+Version:        21.12
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -49,7 +49,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 %if %{with check}
 BuildRequires:  libgmock-devel >= 1.7.0
 %endif
