@@ -1,7 +1,7 @@
 #
 # spec file for package gtkglext
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,12 @@ Name:           gtkglext
 Version:        1.2.0git%{git_date}
 Release:        0
 Summary:        OpenGL Extension to GTK
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://projects.gnome.org/gtkglext/
 # git clone git://git.gnome.org/gtkglext
 # git archive %{git_commit} --prefix=gtkglext-git%{git_date}/ | bzip2 > ../gtkglext-git%{git_date}.tar.bz2
 Source:         %{name}-git%{git_date}.tar.bz2
-Source99:       baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  freeglut-devel
