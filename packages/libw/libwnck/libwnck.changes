@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 15:23:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Wed Nov  9 15:34:19 UTC 2022 - Dude <le0nard@posteo.net>
 
 - Add handle-avoid-segfault-in-invalidate-icons.patch to fix a

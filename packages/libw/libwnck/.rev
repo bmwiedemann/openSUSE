@@ -671,4 +671,12 @@
   segmentation fault (boo#1204157)</comment>
     <requestid>1035593</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>f1da69fda0a400761c662c3abd730146</srcmd5>
+    <version>43.0</version>
+    <time>1671305778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043384</requestid>
+  </revision>
 </revisionlist>
