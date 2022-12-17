@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:45:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.3:
+  * Add release notes for version v0.19.3 (#1074)
+  * Update to Go 1.19.4 (#1073)
+  * Bump k8s.io/client-go from 0.25.4 to 0.26.0 (#1071)
+  * Bump golang.org/x/crypto from 0.3.0 to 0.4.0 (#1072)
+  * Bump github.com/onsi/ginkgo/v2 from 2.5.1 to 2.6.0 (#1069)
+  * Bump k8s.io/api from 0.25.4 to 0.26.0 (#1068)
+  * Fix spelling mistakes in readme (#1067)
+  * docs(readme): add kubeseal-convert (#1065)
+  * Bump golang.org/x/crypto from 0.2.0 to 0.3.0 (#1063)
+  * Bump k8s.io/client-go from 0.25.3 to 0.25.4 (#1062)
+  * Bump github.com/onsi/ginkgo/v2 from 2.5.0 to 2.5.1 (#1061)
+  * Release Helm Chart 2.7.1 to use release 0.19.2 (#1059)
+
+-------------------------------------------------------------------
 Fri Nov 18 15:05:26 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.19.2:
