@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 15:18:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:32:39 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
