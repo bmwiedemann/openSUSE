@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:38:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.5:
+  * Fix debug log for GITHUB_TOKEN for tflint (#2395)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:35:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.4:
+  * Expose a token for tflint  (#2387)
+  * Fix typo (#2383)
+  * Add tflint as built-in hook (#2362)
+
+-------------------------------------------------------------------
 Fri Dec 02 12:04:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.42.3:
