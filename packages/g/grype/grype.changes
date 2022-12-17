@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:39:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.54.0:
+  * Update Syft to v0.63.0 (#1037)
+  * fix: Exclude binary packages that have overlap by file ownership relationship (#1024)
+  * docs: update quality gate docs (#1032)
+  * Optionally orient results by CVE (#1020)
+  * chore: bump yardstick to latest commit (#1027)
+  * Update Syft to v0.62.3 (#1026)
+  * chore: change CVE example to official sample (#1028)
+  * fix: Table format sorting (#1023)
+  * fix: update architecture release for to ppc64le (#1021)
+  * Update grype bootstrap tools to latest versions. (#1017)
+  * Update Syft to v0.62.2 (#1018)
+  * chore: update quality gate with latest label data (#1016)
+  * chore: update digest for test fixture dockerfile (#1015)
+  * test: remove presenter tests reliance on docker from unit suite (#1013)
+  * fix: swapped base container images (#1011)
+  * chore: update default packages to read (#1007)
+
+-------------------------------------------------------------------
 Tue Nov 22 07:29:31 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.53.1:
