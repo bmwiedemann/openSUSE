@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Dec 10 08:57:13 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.13.4:
+ - Added:
+  - tests for methods changed in tools.py (is_tok_color_dict)
+  - ``$XDG_CACHE_HOME``, ``$XONSH_CACHE_DIR`` are now available inside ``Xonsh``
+  - #2455 Add `on_command_not_found` event, fired when a command is not found.
+ - Changed:
+  - is_str_str_dict changed to check for Token:style dict
+ - Removed:
+  - ``$COMMANDS_CACHE_SIZE_WARNING`` is removed. When ``$COMMANDS_CACHE_SAVE_INTERMEDIATE`` is enabled,
+    the cache file size is optimized.
+ - Fixed:
+  - #4668 Fix ptk completion stacking when auto-suggest is on and no normal completions are generated.
+  - $XONSH_STYLE_OVERRIDES cannot be assigned dict of {Token: str} #4375
+  - commands_cache: add a configurable value to disable cache. useful for running scripts
+  - fixed stale results when ``$COMMANDS_CACHE_SAVE_INTERMEDIATE`` is enabled.
+  - #4951 Fix gitstatus prompt when rebasing
+  - fixed using aliases to override commands without the file extension on Windows
+  - #3279 Add `XONSH_HISTORY_IGNORE_REGEX` support. You can specify a regular
+    expression in the environment variable `XONSH_HISTORY_IGNORE_REGEX` and any
+    command that matches the expression will not be added to the history.
+
+-------------------------------------------------------------------
+Tue Dec  6 13:02:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.3:
+  * ``pygments`` startup crash when incorrect prepending ``bg:`` to
+    ``noinherit`` style directives
+
+-------------------------------------------------------------------
+Tue Dec  6 08:55:15 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 0.13.2:
+  * When there is no git repository, the values of all ``gitstatus`` prompt
+    fields are now ``None``.
+  * With ``$THREAD_SUBPROCS=False``: When a callable alias is executed with
+    ``![]``, its standard output and standard error are no longer captured.
+    This is because a separate thread is required in order to both capture
+    the output and stream it to the terminal while the alias is running.
+  * Fixed timeit syntax error
+  * When there is no git repository, ``$PROMPT`` format strings like
+    ``{gitstatus: hello {}}`` now work as expected.
+  * With ``$THREAD_SUBPROCS=False``: When ``cd`` is used with an invalid
+    directory, the error message is now correctly displayed.
+  * Fixed case when xpip returns None instead of command.
+
+-------------------------------------------------------------------
 Tue Aug 23 18:56:19 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.13.1:

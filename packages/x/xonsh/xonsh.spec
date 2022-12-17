@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.13.1
+Version:        0.13.4
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -26,8 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://xon.sh/
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  python3-base >= 3.5
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-base >= 3.8
+BuildRequires:  python3-setuptools >= 61
 BuildRequires:  python3-wheel
 Recommends:     python3-Pygments >= 2.2
 Recommends:     python3-distro
