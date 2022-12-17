@@ -1,7 +1,7 @@
-Index: osinfo-db-20220830/os/microsoft.com/win-2k19.xml
+Index: osinfo-db-20221130/os/microsoft.com/win-2k19.xml
 ===================================================================
---- osinfo-db-20220830.orig/os/microsoft.com/win-2k19.xml
-+++ osinfo-db-20220830/os/microsoft.com/win-2k19.xml
+--- osinfo-db-20221130.orig/os/microsoft.com/win-2k19.xml
++++ osinfo-db-20221130/os/microsoft.com/win-2k19.xml
 @@ -36,6 +36,22 @@
      <upgrades id="http://microsoft.com/win/2k16"/>
      <release-date>2018-11-13</release-date>
@@ -22,6 +22,6 @@ Index: osinfo-db-20220830/os/microsoft.com/win-2k19.xml
 +        <l10n-language regex="true" l10n-language-map="http://microsoft.com/win/7/l10n-language">[A-Z0-9]*_([A-Z]*)</l10n-language>
 +      </iso>
 +    </media>
-     <resources arch="x86_64">
-       <minimum>
-         <cpu>1400000000</cpu>
+     <variant id="essentials">
+       <name>Windows Server 2019 Essentials</name>
+       <name xml:lang="uk">Windows Server 2019 Essentials</name>

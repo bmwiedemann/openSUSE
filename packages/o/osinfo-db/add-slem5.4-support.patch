@@ -1,21 +1,19 @@
-Index: osinfo-db-20221130/os/suse.com/slem-5.3.xml
-===================================================================
---- /dev/null
-+++ osinfo-db-20221130/os/suse.com/slem-5.3.xml
+--- /dev/null	2022-12-12 11:59:25.660156211 -0700
++++ osinfo-db-20221130/os/suse.com/slem-5.4.xml	2022-12-15 11:10:12.878262230 -0700
 @@ -0,0 +1,75 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
 +  <!-- Licensed under the GNU General Public License version 2 or later.
 +     See http://www.gnu.org/licenses/ for a copy of the license text -->
-+  <os id="http://suse.com/slem/5.3">
-+    <short-id>slem5.3</short-id>
-+    <name>SUSE Linux Enterprise Micro 5.3</name>
-+    <name xml:lang="ko">&#xC218;&#xC138; &#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC5C5;&#xC6A9; Micro 5.3</name>
-+    <name xml:lang="uk">SUSE Linux Enterprise Micro 5.3</name>
-+    <name xml:lang="tr">SUSE Linux Enterprise Micro 5.3</name>
-+    <name xml:lang="pl">SUSE Linux Enterprise Micro 5.3</name>
-+    <name xml:lang="it">SUSE Linux Enterprise Micro 5.3</name>
-+    <version>5.3</version>
++  <os id="http://suse.com/slem/5.4">
++    <short-id>slem5.4</short-id>
++    <name>SUSE Linux Enterprise Micro 5.4</name>
++    <name xml:lang="ko">&#xC218;&#xC138; &#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC5C5;&#xC6A9; Micro 5.4</name>
++    <name xml:lang="uk">SUSE Linux Enterprise Micro 5.4</name>
++    <name xml:lang="tr">SUSE Linux Enterprise Micro 5.4</name>
++    <name xml:lang="pl">SUSE Linux Enterprise Micro 5.4</name>
++    <name xml:lang="it">SUSE Linux Enterprise Micro 5.4</name>
++    <version>5.4</version>
 +    <vendor>SUSE</vendor>
 +    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
 +    <vendor xml:lang="uk">SUSE</vendor>
@@ -30,12 +28,12 @@ Index: osinfo-db-20221130/os/suse.com/slem-5.3.xml
 +    <vendor xml:lang="ca">SUSE</vendor>
 +    <family>linux</family>
 +    <distro>slem</distro>
-+    <derives-from id="http://suse.com/sle/15.2"/>
++    <derives-from id="http://suse.com/sle/15.3"/>
 +    <release-status>prerelease</release-status>
 +    <media arch="x86_64">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SUSE-MicroOS-5.3-DVD-x86_649.001</volume-id>
++        <volume-id>SUSE-MicroOS-5.4-DVD-x86_649.001</volume-id>
 +      </iso>
 +      <kernel>boot/x86_64/loader/linux</kernel>
 +      <initrd>boot/x86_64/loader/initrd</initrd>
@@ -43,7 +41,7 @@ Index: osinfo-db-20221130/os/suse.com/slem-5.3.xml
 +    <media arch="aarch64">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SUSE-MicroOS-5.3-DVD-aarch64.001</volume-id>
++        <volume-id>SUSE-MicroOS-5.4-DVD-aarch64.001</volume-id>
 +      </iso>
 +      <kernel>boot/aarch64/linux</kernel>
 +      <initrd>boot/aarch64/initrd</initrd>
@@ -51,7 +49,7 @@ Index: osinfo-db-20221130/os/suse.com/slem-5.3.xml
 +    <media arch="ppc64le">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SUSE-MicroOS-5.3-DVD-ppc64le.001</volume-id>
++        <volume-id>SUSE-MicroOS-5.4-DVD-ppc64le.001</volume-id>
 +      </iso>
 +      <kernel>boot/ppc64le/linux</kernel>
 +      <initrd>boot/ppc64le/initrd</initrd>
@@ -59,7 +57,7 @@ Index: osinfo-db-20221130/os/suse.com/slem-5.3.xml
 +    <media arch="s390x">
 +      <iso>
 +        <system-id>LINUX</system-id>
-+        <volume-id>SUSE-MicroOS-5.3-DVD-s390x.001</volume-id>
++        <volume-id>SUSE-MicroOS-5.4-DVD-s390x.001</volume-id>
 +      </iso>
 +      <kernel>boot/s390x/linux</kernel>
 +      <initrd>boot/s390x/initrd</initrd>

@@ -17,7 +17,7 @@
 
 
 Name:           osinfo-db
-Version:        20221018
+Version:        20221130
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -31,6 +31,7 @@ Patch24:        fix-tumbleweed-order.patch
 Patch25:        add-opensuse-leap-15.5-support.patch
 Patch26:        add-sle15sp5-support.patch
 Patch27:        add-slem5.3-support.patch
+Patch28:        add-slem5.4-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch

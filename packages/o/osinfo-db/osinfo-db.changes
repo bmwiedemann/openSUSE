@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 15 11:12:12 MST 2022 - carnold@suse.com
+
+- Update to database version 20221130
+  osinfo-db-20221130.tar.xz
+- Add support for SLE Micro 5.4
+  add-slem5.4-support.patch
+- Fix <derives-from id> value
+  add-slem5.3-support.patch
+
+-------------------------------------------------------------------
 Thu Oct 27 08:46:30 MDT 2022 - carnold@suse.com
 
 - Update to database version 20221018
