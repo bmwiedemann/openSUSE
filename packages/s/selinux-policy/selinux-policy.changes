@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 16:11:15 UTC 2022 - Hu <cathy.hu@suse.com>
+
+- Added fix_ipsec.patch: Allow AF_ALG socket creation for strongswan
+  (bnc#1206445)
+
+-------------------------------------------------------------------
 Wed Dec 14 15:40:12 UTC 2022 - Hu <cathy.hu@suse.com>
 
 - Added policy for wicked scripts under /etc/sysconfig/network/scripts

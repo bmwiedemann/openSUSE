@@ -1,0 +1,20 @@
+Index: fedora-policy-20221019/policy/modules/system/ipsec.te
+===================================================================
+--- fedora-policy-20221019.orig/policy/modules/system/ipsec.te
++++ fedora-policy-20221019/policy/modules/system/ipsec.te
+@@ -87,6 +87,7 @@ allow ipsec_t self:tcp_socket create_str
+ allow ipsec_t self:udp_socket create_socket_perms;
+ allow ipsec_t self:packet_socket create_socket_perms;
+ allow ipsec_t self:key_socket create_socket_perms;
++allow ipsec_t self:alg_socket create_socket_perms;
+ allow ipsec_t self:fifo_file read_fifo_file_perms;
+ allow ipsec_t self:netlink_xfrm_socket { create_netlink_socket_perms nlmsg_write };
+ allow ipsec_t self:netlink_selinux_socket create_socket_perms;
+@@ -269,6 +270,7 @@ allow ipsec_mgmt_t self:unix_stream_sock
+ allow ipsec_mgmt_t self:tcp_socket create_stream_socket_perms;
+ allow ipsec_mgmt_t self:udp_socket create_socket_perms;
+ allow ipsec_mgmt_t self:key_socket create_socket_perms;
++allow ipsec_mgmt_t self:alg_socket create_socket_perms;
+ allow ipsec_mgmt_t self:fifo_file rw_fifo_file_perms;
+ allow ipsec_mgmt_t self:netlink_xfrm_socket { create_netlink_socket_perms nlmsg_read };
+ allow ipsec_mgmt_t self:netlink_route_socket { create_netlink_socket_perms };
