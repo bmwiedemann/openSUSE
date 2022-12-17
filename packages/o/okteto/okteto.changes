@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:37:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.2:
+  * Fix sanitize name (#3263) (#3295)
+  * Fix infer name for "okteto logs" (#3264) (#3274)
+
+-------------------------------------------------------------------
 Thu Dec 01 19:48:54 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.10.1:
