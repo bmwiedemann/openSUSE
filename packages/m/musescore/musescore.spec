@@ -16,22 +16,18 @@
 #
 
 
-%ifarch ppc64 ppc64le
-%define qtwebengine 0
-%else
-%define qtwebengine 1
-%endif
-
 # Internal QML imports
 %global __requires_exclude qmlimport\\((MuseScore|FileIO).*
+# Workaround boo#1189991
+%define    _lto_cflags      %{nil}
 
 %define         rname mscore
-%define         version_lesser 3.6
+%define         version_lesser 4.0
 %define         revision 3224f34
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.6.2
+Version:        4.0
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0
@@ -41,29 +37,21 @@ License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only AND LGPL-3.0
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
 Source0:        https://github.com/musescore/MuseScore/archive/v%{version}/MuseScore-%{version}.tar.gz
-Source1:        %{rname}.desktop
 # MuseScore expect to be able to download the latest version of its soundfonts
 # They are downloaded from the link conteinde in CMakeLists.text
 # They are newer versions than the one included in the MuseScore tarball itself
-Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Changelog.md
-Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_License.md
-Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
-Source5:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
+Source1:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Changelog.md
+Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_License.md
+Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
+Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 # PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
 Patch0:         use-qtmake-qt5.patch
-# PATCH-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
-Patch1:         use-system-qtwebengine-files.patch
-# PATCH-FIX-OPENSUSE: don't use webview in startcentre (boo#1181604)
-Patch2:         no-webview-in-startcentre.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libQt5Help5
-BuildRequires:  libQt5QuickTemplates2-devel
-BuildRequires:  libmp3lame-devel
 BuildRequires:  libqt5-linguist-devel
+BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  portmidi-devel
 BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -71,20 +59,17 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5NetworkAuth)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
+BuildRequires:  pkgconfig(Qt5QuickTemplates2)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
-%if %qtwebengine
-BuildRequires:  pkgconfig(Qt5WebEngine)
-BuildRequires:  pkgconfig(Qt5WebEngineCore)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-%endif
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(alsa)
@@ -117,9 +102,17 @@ BuildArch:      noarch
 %description fonts
 Additional fonts for use by the MuseScore music notation program.
 
+%package devel
+Summary:        MuseScore development files
+License:        GPL-3.0-or-later WITH Font-exception-2.0 AND OFL-1.1
+Group:          Development/Libraries/C and C++
+
+%description devel
+MuseScore files, used for plugin development.
+
 %prep
 %autosetup -p1 -n MuseScore-%{version}
-cp %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} share/sound/
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} share/sound/
 
 # fix EOL encoding
 sed 's/\r$//' fonts/bravura/OFL-FAQ.txt > tmpfile
@@ -134,31 +127,22 @@ sed 's/\r$//' thirdparty/rtf2html/README.ru > tmpfile
 touch -r thirdparty/rtf2html/README.ru tmpfile
 mv -f tmpfile thirdparty/rtf2html/README.ru
 
-sed 's/\r$//' thirdparty/portmidi/README.txt > tmpfile
-touch -r thirdparty/portmidi/README.txt tmpfile
-mv -f tmpfile thirdparty/portmidi/README.txt
-
 %build
 %define __builddir build.release
 %cmake \
        -DCMAKE_BUILD_TYPE=RELEASE \
        -DMUSESCORE_BUILD_CONFIG=release \
-       -DUSE_SYSTEM_FREETYPE="ON" \
-%if %qtwebengine
-       -DBUILD_WEBENGINE="ON" \
-%else
-       -DBUILD_WEBENGINE="OFF" \
-%endif
-       -DBUILD_TELEMETRY_MODULE=OFF \
+       -DBUILD_UNIT_TESTS=OFF \
+       -DUSE_SYSTEM_FREETYPE=ON \
+       -DBUILD_CRASHPAD_CLIENT=OFF \
        -DMUSESCORE_REVISION=%{revision}
-%make_jobs lrelease all
-
-# Put the desktop file in place for the packaging
-cp %{SOURCE1} .
+%make_jobs
 
 %install
 %cmake_install
-strip-nondeterminism -t zip %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/workspaces/*.workspace
+
+# don't package staic libs
+rm %{buildroot}%{_libdir}/*.a
 
 # install fonts
 mkdir -p %{buildroot}%{fontdir}
@@ -174,17 +158,18 @@ install -p -m 644 fonts/petaluma/PetalumaText.otf %{buildroot}/%{fontdir}
 
 # unique names for font docs
 mv fonts/edwin/README.md         fonts/edwin/README.md.edwin
-mv fonts/edwin/GPL_LICENSE.txt   fonts/edwin/GPL_LICENSE.txt.edwin
 mv fonts/edwin/LICENSE.txt       fonts/edwin/LICENSE.txt.edwin
 mv fonts/leland/README.md        fonts/leland/README.md.leland
 mv fonts/leland/LICENSE.txt      fonts/leland/LICENSE.txt.leland
 
-# update desktop file
-%suse_update_desktop_file -n %{rname} AudioVideo AudioVideoEditing
-
 # also package additional demos
 mkdir -p %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 install -p -m 644 demos/*.mscz %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
+
+# Remove opus devel files, they are provided by system
+rm -rf %{buildroot}%{_includedir}/opus
+# Delete crashpad binary
+rm -rf %{buildroot}/usr/bin/crashpad_handler
 
 # collect doc files
 install -d -m 755 %{buildroot}%docdir
@@ -193,37 +178,19 @@ install -p -m 644 thirdparty/beatroot/README.txt      %{buildroot}%docdir/README
 install -p -m 644 thirdparty/dtl/COPYING              %{buildroot}%docdir/COPYING.BSD.dtl
 install -p -m 644 thirdparty/freetype/README          %{buildroot}%docdir/README.freetype
 install -p -m 644 thirdparty/intervaltree/README      %{buildroot}%docdir/README.intervaltree
-install -p -m 644 thirdparty/ofqf/README.md           %{buildroot}%docdir/README.md.ofqf
 install -p -m 644 thirdparty/rtf2html/ChangeLog       %{buildroot}%docdir/ChangeLog.rtf2html
 install -p -m 644 thirdparty/rtf2html/COPYING.LESSER  %{buildroot}%docdir/COPYING.LESSER.rtf2html
 install -p -m 644 thirdparty/rtf2html/README          %{buildroot}%docdir/README.rtf2html
 install -p -m 644 thirdparty/rtf2html/README.mscore   %{buildroot}%docdir/README.mscore.rtf2html
 install -p -m 644 thirdparty/rtf2html/README.ru       %{buildroot}%docdir/README.ru.rtf2html
-install -p -m 644 thirdparty/portmidi/README.txt      %{buildroot}%docdir/README.txt.portmidi
-install -p -m 644 thirdparty/portmidi/license.txt     %{buildroot}%docdir/license.txt.portmidi
-install -p -m 644 thirdparty/qt-google-analytics/README.md         %{buildroot}%docdir/README.md.qt-google-analytics
-install -p -m 644 thirdparty/qt-google-analytics/LICENSE.txt       %{buildroot}%docdir/LICENSE.qt-google-analytics
 install -p -m 644 thirdparty/singleapp/LGPL_EXCEPTION.txt %{buildroot}%docdir/LGPL_EXCEPTION.txt.singleapp
 install -p -m 644 thirdparty/singleapp/LICENSE.GPL3   %{buildroot}%docdir/LICENSE.GPL3.singleapp
 install -p -m 644 thirdparty/singleapp/LICENSE.LGPL   %{buildroot}%docdir/LICENSE.LGPL.singleapp
 install -p -m 644 thirdparty/singleapp/README.TXT     %{buildroot}%docdir/README.TXT.singleapp
 
-# aeolus not included in this build
-#install -p -m 644 aeolus/AUTHORS                     %%{buildroot}%%{docdir}/AUTHORS.aeolus
-#install -p -m 644 aeolus/COPYING                     %%{buildroot}%%{docdir}/COPYING.aeolus
-#install -p -m 644 aeolus/README                      %%{buildroot}%%{docdir}/README.aeolus
-#install -p -m 644 aeolus/README.mscore               %%{buildroot}%%{docdir}/README.mscore.aeolus
-#install -p -m 644 aeolus/README.mscore1              %%{buildroot}%%{docdir}/README.mscore1.aeolus
-
-install -p -m 644 bww2mxml/COPYING                    %{buildroot}%docdir/COPYING.bww2mxml
-install -p -m 644 bww2mxml/README                     %{buildroot}%docdir/README.bww2mxml
-install -p -m 644 effects/chorus/COPYING              %{buildroot}%docdir/COPYING.chorus
-install -p -m 644 effects/chorus/README               %{buildroot}%docdir/README.chorus
-install -p -m 644 effects/compressor/README           %{buildroot}%docdir/README.compressor
-install -p -m 644 share/sound/README.md               %{buildroot}%docdir/README.md.sound
-install -p -m 644 share/locale/README.md              %{buildroot}%docdir/README.md.locale
-install -p -m 644 share/instruments/README.md         %{buildroot}%docdir/README.md.instruments
-install -p -m 644 share/wallpaper/COPYRIGHT           %{buildroot}%docdir/COPYING.wallpaper
+install -p -m 644 tools/bww2mxml/COPYING              %{buildroot}%docdir/COPYING.bww2mxml
+install -p -m 644 tools/bww2mxml/README               %{buildroot}%docdir/README.bww2mxml
+install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYING.wallpaper
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -242,17 +209,16 @@ install -p -m 644 share/wallpaper/COPYRIGHT           %{buildroot}%docdir/COPYIN
 %endif
 
 %files
-%{_bindir}/%{name}
+%license LICENSE.GPL
 %{_bindir}/%{rname}
 %{_datadir}/metainfo/org.musescore.MuseScore.appdata.xml
-%{_datadir}/applications/%{rname}.desktop
+%{_datadir}/applications/org.musescore.MuseScore.desktop
 %{_datadir}/mime/packages/*
 %{_datadir}/icons/hicolor/*
 %dir %{_datadir}/%{rname}-%{version_lesser}
 %{_datadir}/%{rname}-%{version_lesser}/*
 %{_mandir}/man1/*
 %doc README.md
-%license LICENSE.GPL
 %dir %docdir
 %doc %docdir/*
 
@@ -269,9 +235,13 @@ install -p -m 644 share/wallpaper/COPYRIGHT           %{buildroot}%docdir/COPYIN
 
 # see section 'unique names for font docs' above
 %doc fonts/edwin/README.md.edwin
-%doc fonts/edwin/GPL_LICENSE.txt.edwin
 %doc fonts/edwin/LICENSE.txt.edwin
 %doc fonts/leland/README.md.leland
 %doc fonts/leland/LICENSE.txt.leland
+
+%files devel
+%license LICENSE.GPL
+%{_includedir}/kddockwidgets
+%{_libdir}/cmake
 
 %changelog
