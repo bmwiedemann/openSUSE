@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec 15 12:06:32 UTC 2022 - Fabian Vogt <fvogt@ritter-vogt.de>
+
+- Update to version 5.15.7+kde177:
+  * Fix wrong to linear conversion
+  * QKeySequence: Add missing modifier names
+  * Scale BMP color samples with periodic bit expansion
+  * Send accessible focus event after list view has focus
+  * update function argument of SSL_CTX_set_options
+  * Openssl backend: reinsert a missing C in qCDebug
+  * Annotate QMutex with TSAN annotations
+  * Handle allocation failure in QImage rotate 90/180/270 functions
+  * xcb: Replace qCWarning by qCDebug in QXcbConnection::printXcbError()
+  * a11y: support GetAccessibleId for at-spi
+- Drop patches, now upstream:
+  * 0001-Fix-wrong-to-linear-conversion.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 10:37:08 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix text rendering on 16bit X11 surfaces (boo#1205585):
