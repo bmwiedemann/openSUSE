@@ -1,7 +1,7 @@
 #
 # spec file for package librest0_7
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,6 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/GNOME
 URL:            http://git.gnome.org/browse/librest/
 Source0:        http://download.gnome.org/sources/rest/0.8/%{_name}-%{version}.tar.xz
-Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.24
 BuildRequires:  pkgconfig(gobject-introspection-1.0)

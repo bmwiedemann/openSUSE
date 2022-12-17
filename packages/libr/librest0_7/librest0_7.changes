@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 15:16:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Sat Jan 15 15:31:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial packaging of librest 0.7 api compat package.
