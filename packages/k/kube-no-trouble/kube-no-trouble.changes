@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:40:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.0:
+  * dep: Go Bump github.com/rs/zerolog from 1.26.1 to 1.28.0
+  * dep: Go Bump k8s.io/client-go from 0.25.4 to 0.26.0
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.47.1 to 0.47.2
+  * fix: Remove duplicated lines from pre-commit
+  * dep: Go bump github.com/hashicorp/go-version from 1.3.0 to 1.6.0
+  * ci: Closes stale issues and stale prs
+  * dep: Docker Bump golang from 1.19.3-alpine3.16 to 1.19.4-alpine3.16
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.46.1 to 0.47.1
+  * feat: Disable any logging from go-client's klog
+  * ci: Upgrade integration test versions to 1.19-1.25
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.34.2 to 0.46.1
+  * docs: Fix missing newline in changelog w. breaking changes
+  * test: Fix tests after upgrading go-client
+  * docs: Remove Helm v2 references
+  * dep: Update client-go and apimachinery to v0.25.4 and helm to v3.10.2
+  * feat: Remove Helm v2 support
+  * build: Install bash so build script can run in alpine
+  * build: Fix shell selection for Makefile
+  * ci: Fix latest tag issue in nightly builds
+  * dep: Docker Bump golang from 1.19.2-alpine3.16 to 1.19.3-alpine3.16
+  * fix: Ignore empty documents from Helm collectors
+  * chore: Add debug-level logging to Helm collectors
+
+-------------------------------------------------------------------
 Mon Oct 10 06:11:51 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.6.0:

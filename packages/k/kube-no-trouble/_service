@@ -3,7 +3,7 @@
     <param name="url">https://github.com/doitintl/kube-no-trouble</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">0.6.0</param>
+    <param name="revision">0.7.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>
@@ -15,6 +15,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">kube-no-trouble-0.6.0.tar.gz</param>
+    <param name="archive">kube-no-trouble-0.7.0.tar.gz</param>
   </service>
 </services>
