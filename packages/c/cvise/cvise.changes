@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 17 08:53:45 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221217.f1b5a08:
+  * Fixed infinite loop problem with move-definition-to-declaration transformation
+  * move-definition-to-declaration transformation learned to move struct, class, union and variable definitions
+  * Renamed transformation move-function-body to move-definition-to-declaration
+
+-------------------------------------------------------------------
 Fri Dec 16 14:46:32 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221216.1423ed5:
