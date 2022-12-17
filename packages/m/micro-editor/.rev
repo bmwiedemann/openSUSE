@@ -15,4 +15,373 @@
     <comment>Override build date for reproducible builds (boo#1047218) (forwarded request 951851 from bmwiedemann)</comment>
     <requestid>952042</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb263558c72c109fc067d780f3cf3249</srcmd5>
+    <version>2.0.11</version>
+    <time>1671305797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.11:
+  * add: add Pacstall to README.md (#2367)
+  * plugins: load directories that are symlinks (#2214)
+  * Add new python 3.10 keywords (#2243)
+  * Fix gruvbox-tc colorscheme (#2240)
+  * Add Terraform syntax support (#2279)
+  * Fix cursor position change after CopyLine command (#2353)
+  * Added installation instruction for Gentoo distro (#2209)
+  * Fix weird behavior of JumpToMatchingBrace in some ill cases (#1966)
+  * Update README.md (#2109)
+  * Case-insensitive highlighting of hexadecimal constants
+  * Linux clipboard notes reformatted and reordered (#2210)
+  * runtime/help/defaultkeys.md: Fix table (#2376)
+  * help/options.md: reword `hlsearch` help text (#2502)
+  * delete minor unreachable code caused by log.Fatal (#2507)
+  * Only run info plist on darwin
+  * Fix info-plist script
+  * Add livemd to markdown extensions
+  * scala.yaml: add support for .sc extension (#2452)
+  * fix javascript syntax recognizing parts of words as keywords (#2462)
+  * added support for HolyC (#2473)
+  * improve fortran syntax highlighting (#2479)
+  * Adds options for tab bar and tab color reversing (#2480)
+  * Gnuplot Syntax highlighting (#2483)
+  * Add nushell syntax highlighting (#2486)
+  * runtime/syntax/nix: Add support for block comments (#2488)
+  * syntax/git-rebase-todo.yaml: support more commands (#2495)
+  * add new logo with white shadow, change readme title logo (#2497)
+  * PHP: Add enum and keyword, and modify types (#2204)
+  * Fix cross compilation from macOS
+  * Update zyedidia/pty for openbsd support
+  * Use zyedidia/clipper for external clipboard
+  * Update clipboard for WSL support
+  * Add discussions note to readme
+  * Update tcell for OSC 52 fix
+  * Register `Brewfile`s as Ruby files (#2432)
+  * fix: add &quot;unknown&quot; type (#2445)
+  * Julia syntax improvements (#2415)
+  * Lua syntax highlighting: Various fixes (#2426)
+  * Fix syntax highlighting of single-quoted strings (#2425)
+  * Fix Lua number syntax highlighting (#2409)
+  * Update README.md (#2400)
+  * Update minimum required Go version to 1.16
+  * Added lines and percentage statusbar directives (#2055)
+  * Error in documentation of +LINE:COL (#2205)
+  * runtime/syntax: add rudimentary Odin support (#2296)
+  * Made apparent the functionality of the ftoptions plugin (#2321)
+  * Help: mention (un)indent in defaultkeys (#2358)
+  * Perl syntax improvement (#2359)
+  * Detect more file types for git syntax highlighting (#2330)
+  * Bump gopkg.in/yaml.v2 from 2.2.7 to 2.2.8 (#2329)
+  * Update luar import path
+  * Add unofficial discord to readme
+  * Raku syntax: fix comments (#2318)
+  * Raku syntax: Fix strings and comments (#2311)
+  * Fix repo.json info in plugin docs (#2313)
+  * Adjust default keybinding text (#2293)
+  * Fix the syntax for Raku variables. (#2309)
+  * Fix edge case when comment is at start of line (#2237)
+  * add more types for nim (#2284)
+  * Fix
+  * Use abspath for local glob settings
+  * Add support for alternatives system in Debian package (#1935)
+  * Fix linter help formatting (#2280)
+  * Python syntax: multiline string should be constant.string, not comment (#2268)
+  * README: add MacPorts install info (#2265)
+  * Clarified some documentation (#2259)
+  * Fix makefile for cross compilation
+  * Fix regression: non-working direct colors in syntax files (#2252)
+  * Update makefile generation rules
+  * Support for highlighting all search matches (hlsearch) (#1762)
+  * Fix some issues with default colors in colorschemes (#2225)
+  * Make 'make' do the same as 'make build' (#2217)
+  * Fix #2190: Document goto command in commands.md (#2218)
+  * Fix #1943: 'Duplicated line' message being wrong (#2219)
+  * Syntax Highlighting Support for FreeBSD Kernel Configuration Files (#2220)
+  * normalize path - force slash separator to access embed FS (#2197)
+  * Build : using go:generate and go:embed (#2195)
+  * Ignore tool files
+  * More style improvements
+  * Improve comments
+  * remove carriage return from -clean prompt and fix broken logic (#2186)
+  * Update comment filetype when commenting
+  * Fix save with sudo auto-detection and sudo/doas message
+  * Fix formatting
+  * Update install instructions
+  * Add eget to install instructions
+  * plugins.md: update link to the internal documentation (#2191)
+  * Update runtime
+  * Add rust clippy linter and go vet linter
+  * Make yes/no prompts case-insensitive (#2182)
+  * .sbt files also contain Scala code
+- Update to version 2.0.10:
+  * Highlight racket files as lisp (#1931)
+  * Update v.yaml (#1925)
+  * Fixes for syntax and docs
+  * Document that &quot;bubblegum&quot; is a light theme (#2153)
+  * Allow aborting while opening a file with backup
+  * More precise filename detection for shell scripts
+  * Update rust syntax: don't highlight lifetimes (#2164)
+  * Update rust syntax: char literal (#2162)
+  * Fix name collision on linter name (swiftc) (#2158)
+  * Shellcheck as a new shell linter + runtime.go out of git control (#2157)
+  * Add alcritty and foot to the list of OSC 52 supporting terminals (#2154)
+  * Search the last match on line when search back (#2156)
+  * Add default binding for FindLiteral
+  * Update zyedidia/pty from upstream
+  * Add nix language syntax (#2024)
+  * Fix typo in tutorial.md (#2130)
+  * find: select prefilled text (#2127)
+  * Add desktop-id to Appstream Metainfo (#2122)
+  * find: prefill with selection (#2115)
+  * Improve linter performance (#2083)
+  * Add highlighting for user-defined types  (#2107)
+  * Dont take # as comment when preceded by backslash (#2112)
+  * Fix erlang comment syntax
+  * Update tcell
+  * Warn for readonly instead of setting option
+- Update to version 2.0.9:
+  * Update tcell
+  * Handle SIGHUP properly
+  * Fix up X,Y values in BufView
+  * Replace BufWidth &amp; BufHeight with BufView
+  * Don't highlight padding spaces in word wrapping
+  * Implement word wrapping
+  * Simplify LocFromVisual implementation
+  * Implement moving cursor up/down within a wrapped line
+  * Add VLoc, VLocFromLoc and LocFromVLoc
+  * Fix horizontal scrolling with a wide rune at the right edge of window
+  * Fix displaying incomplete tab or wide rune at the right edge of window
+  * Fix horizontal scrolling issue after toggling softwrap on/off
+  * Add BufWidth and BufHeight
+  * Update and rename perl6.yaml to raku.yaml (#1927)
+  * Improve patch file detection by adding a header rule. (#1942)
+  * Add buffer.WordAt (#2070)
+  * Fix softwrap scrolling issues (#1981)
+  * Update runewidth version
+  * Update snap badge
+  * Fix noregex interactive replace
+  * Add ForceQuit action
+  * Fix regressions in buffer settings initialization (#2035)
+  * Remove conf highlighting (too many conflicts)
+  * Fix #2030: warn for invalid pane type
+  * Improve C syntax highlighting (#2015)
+  * Add Gemini syntax file (#2016)
+  * Add .tsx support for Typescript syntax (#2021)
+  * docs: update Arch Linux installation method (#2028)
+  * Only initialize buffer settings once
+  * gofmt
+  * Rename to incsearch
+  * Fix some quality issues (#1914)
+  * fix vue syntax highlight (#1982)
+  * Added multiline strings to the Scala syntax highlighter (#1969)
+  * Fix non-working TryBindKey and UnbindKey (#1970)
+  * add settings option &quot;findontype&quot; to allow disabling search-on-type
+  * Update readme
+  * fix the missing break in JumpToMatchingBrace (#1960)
+  * Only use internal clipboard on error
+  * Don't automatically disable readonly option (#1957)
+  * Fix potential file leaks (#1958)
+  * Update hlint format
+  * Update runtime
+  * Fix stat error detection
+  * Add Dracula colorscheme to defaults
+  * Document undocumented colorscheme groups (#1939)
+  * Improve file permission detection
+  * Remove clipboard error message
+  * Highlight 0 as a constant number in python3
+  * Added a sentence to colors.md clarifying that the truecolor environment variable has to be created by the user. (#1928)
+  * Make more libraries available (#1917)
+  * Clear prompt before callback
+  * Disable fake cursor for Windows Terminal
+  * Fix internal string binding representation
+  * Enable ignorecase by default
+  * Fix buffer.RuneAt (#1895)
+  * Add tabbar.active color group (#1831)
+  * Fix suggestions display (#1825)
+  * update lua.yaml (#1892)
+  * Fix autosave not running by default
+- Update to version 2.0.8:
+  * Update runtime
+  * Update tcell for alacritty and konsole
+  * :pencil2: : Added more Code tags (#1875)
+  * Fixed help topic name (#1876)
+  * Update tcell to 2.0.5
+  * Fix typo
+  * Fix palette colors with tcell v2
+  * Fix Crystal syntax highlighting (#1844)
+  * Fix some left-over details in C++ syntax highlighting (#1865)
+  * groovy highlight (#1866)
+  * Fix quality issues (#1856)
+  * coffeescript syntax fix (#1861)
+  * Enable xterm automatically if screen init fails
+  * Update tcell
+  * Update tcell
+  * Overall syntax highlighting improvements for C++ (#1858)
+  * Remove test option
+  * Don't highlight parens in default theme
+  * Update keybinding docs
+  * Update tcell
+  * Replace meta with alt automatically, update tcell
+  * Update to tcell v2
+  * Never backup closed buffers
+  * Properly close unmodified buffers on sigterm
+  * Update tcell
+  * AddToHistory function for plugins (#1830)
+  * Add improvements to the python3 syntax definitions (#1833)
+  * Minor tweak to the railscast color scheme (#1834)
+  * Add scrollbar color group (#1840)
+  * fix spelling (#1828)
+  * Highlight static as keyword in Javascript files (#1824)
+  * Avoid duplicate entries in history (#1822)
+  * Don't auto-relocate mouse events
+  * Improve showkey command
+  * Improve Rust syntax highlighting (#1820)
+  * Enable registering raw events
+  * Don't overwrite user bindings
+  * Ref #1819
+  * Fix JobSend stdin
+  * Record events in cursor
+  * Allow configuration for info/term bindings
+  * Separate bindings for buffers and command bar
+  * Preliminary support for key sequences
+  * Basic implementation of KeyTree
+  * Improve internal keyevent names
+  * Improve Zig syntax definitions (#1814)
+  * Allow Julia multiline strings and comments (#1813)
+  * Initialize t.release to true
+  * Fix non-working split resize with mouse drag (#1811)
+  * Fix erased vertical dividing line (#1810)
+  * Support reproducible builds (#1802)
+  * Exit gracefully when SIGTERM is received
+  * Solus install instruction
+  * Check error in terminal emulator
+  * Don't update internal plugins
+  * Add syntax support for Renpy (#1789)
+  * Tidy go mod
+  * Update tcell
+  * Add comment support for OCaml (#1776)
+  * Support for multiple modifiers in colorschemes (#1772)
+  * Add flake8 linter, postinit and preinit
+  * Read paste option in screen init
+  * Fix swift linting problem
+  * Update linter to include eslint
+  * Update linter documentation
+  * Name svg micro.svg in tarballs
+  * Add micro icon and desktop file to release zips
+  * Highlight multicharacter escape sequences in C and C++ string literals (#1761)
+  * Update micro.desktop (#1759)
+  * fix
+  * Rename deb file in scripts
+  * Improve deb package
+  * Chmod
+  * Update script
+  * Improve packaging
+  * Update nightly release scripts
+  * Slight performance improvement
+  * Improve comment plugin
+  * Improve multicursor clipboard
+  * Add clipboard support for multicursors
+  * Fix reading clipboard internally for OSC52
+  * Don't set fastdirty base if modified
+  * Update runtime
+  * Add support for copy-paste via OSC 52
+  * Fix README ToC link (#1757)
+  * Fix escape not exiting prompt
+  * Rebind escape to clear info and deselect
+  * Use tcell's CanDisplay instead of Go's IsPrint
+  * Improve php string highlighting
+  * Update clipboard verification
+  * Drop unnecessary Ftoa and FtoaWithDigits function (#1751)
+  * Only lock event handling
+  * Add a lock for plugins to use if using async code
+  * Fix path escaping on Windows
+  * Close file properly in clean and update makefile
+  * Improve Haskell syntax highlighting (#1745)
+- Update to version 2.0.6:
+  * Update plugin documentation
+  * Add more functions to customize status bar
+  * Support month and day names in crontab syntax
+  * Use boundaries in cron syntax rules
+  * Add Search function to BufPane
+  * Update readme
+  * Don't delete user settings if a parse error occurs
+  * Treat CRLF as LF when inserting text
+  * Fix backup call in test
+  * Improve backup system
+  * Don't use make in travis script
+  * Upgrade travis to go 1.13.x
+  * Upgrade Travis Go to 1.12.x
+  * Include windows for travis
+  * Persist plugin options correctly
+  * Add simulation screen tests
+  * Improve message in micro -clean
+  * Fix backspace on Windows
+  * Clean default settings in micro -clean
+  * Bind Ctrl-/ (CtrlUnderscore) in comment plugin
+  * Fix issue with search and replace at the end of a range
+  * Update tcell version
+  * Improve keybinding label consistency
+  * Start replacement search at cursor location
+  * Fix typo in defaultkeys (#1730)
+  * Don't move nightly tag
+  * Edit nightly release instead of replacing
+  * Cross compile binaries in release scripts
+  * Use hub for creating releases
+  * Add support for dozens more languages to the comment plugin (#1729)
+  * Add comment support for Haskell (#1728)
+  * Update go-shellquote for windows
+  * Make determining rune width faster
+  * Update runtime build script
+  * Fix MoveLines on last line of buffer
+  * More consistent key labels in docs
+  * Add note for macOS terminals in docs
+  * Update readme
+  * Add latex support in comment plugin (#1725)
+  * Make determining whether a code point represents a combining mark faster (#1719)
+  * Show key name in raw pane
+  * Don't apply cli options to settings.json
+  * Lower priority of cursorline and colorcolumn highlighting (#1697)
+  * settings.json only contains modified settings
+  * Only start autocompletion for alphanumerics
+  * python.yaml: add async as a keyword (#1713)
+  * Expose ConfigDir and Tabs to plugins
+  * Verify that all settings have correct type
+  * Fix mouse support in command bar
+  * Update tcell to fix escape sequence bug
+  * Fix fileformat for newly created files
+  * Fix highlighting at the end of line (#1705)
+  * Add mksh to the set of supported shells (#1703)
+  * Up arrow on first line brings to start
+  * Add pkgsrc instruction to readme (#1699)
+  * Update readme
+  * Unicode replacement char for non-displayable chars
+  * More fixes for parsecursor
+  * Fix handling of +LINE:COL syntax
+  * Slightly improve performance for very long lines
+  * Only perform save callback if save was successful
+  * Add `parsecursor` option for file:line:col syntax
+  * Always use current pane for keybinding actions
+  * Use &quot;goto -1&quot; to move cursor to end of document. (#1691)
+  * Added hybrid line numbers (#1690)
+  * Update readme
+  * UpdateRules after save is successful
+  * Fix '&gt; save' command
+  * Update readme
+  * Tweak railscast colorscheme to better reflect original (#1297)
+  * README: Add Fedora install instructions (#1671)
+  * Rewrite TOML syntax file (#1681)
+  * set bash-fc file's syntax as shell (#1679)
+- Added _service file to easier handling go.mod
+- Update to version 2.0.4:
+  * Fix dropped redraw events (#1675)
+  * Allow divider customization with divchars option
+  * Improve unicode line array test
+  * Expose CharacterCount to plugins
+  * Use unicode.Mark for combining unicode range
+  * Final touches for combining character support
+  * Use CharacterCount over RuneCount
+  * Use DecodeCharacter over DecodeRune
+  * Add more sophisticated buffer benchmark system
+- Initial version 1.4 (forwarded request 1042855 from illuusio)</comment>
+    <requestid>1043433</requestid>
+  </revision>
 </revisionlist>

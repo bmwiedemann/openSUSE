@@ -1,9 +1,9 @@
 diff --git a/Makefile b/Makefile
-index 91f84bae..d5f1667e 100644
+index fc9601a..e151d65 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,9 +1,9 @@
- .PHONY: runtime
+ .PHONY: runtime build generate build-quick
  
 -VERSION = $(shell GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
 +VERSION ?= $(shell GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
@@ -15,12 +15,12 @@ index 91f84bae..d5f1667e 100644
  	go run tools/build-date.go)
  ADDITIONAL_GO_LINKER_FLAGS = $(shell GOOS=$(shell go env GOHOSTOS) \
  	GOARCH=$(shell go env GOHOSTARCH) \
-@@ -28,7 +28,7 @@ build-all: runtime build
+@@ -16,7 +16,7 @@ VSCODE_TESTS_BASE_URL = 'https://raw.githubusercontent.com/microsoft/vscode/e6a4
+ build: generate build-quick
  
- # Builds micro without checking for dependencies
  build-quick:
 -	go build -trimpath -ldflags "-s -w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
 +	go build $(EXTRAFLAGS) -ldflags "-s -w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
  
- # Same as 'build' but installs to $GOBIN afterward
- install:
+ build-dbg:
+ 	go build -trimpath -ldflags "-s -w $(ADDITIONAL_GO_LINKER_FLAGS) $(DEBUGVAR)" ./cmd/micro

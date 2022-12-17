@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Tue Oct 11 11:13:25 UTC 2022 - tuukka.pasanen@ilmi.fi
+
+- Update to version 2.0.11:
+  * add: add Pacstall to README.md (#2367)
+  * plugins: load directories that are symlinks (#2214)
+  * Add new python 3.10 keywords (#2243)
+  * Fix gruvbox-tc colorscheme (#2240)
+  * Add Terraform syntax support (#2279)
+  * Fix cursor position change after CopyLine command (#2353)
+  * Added installation instruction for Gentoo distro (#2209)
+  * Fix weird behavior of JumpToMatchingBrace in some ill cases (#1966)
+  * Update README.md (#2109)
+  * Case-insensitive highlighting of hexadecimal constants
+  * Linux clipboard notes reformatted and reordered (#2210)
+  * runtime/help/defaultkeys.md: Fix table (#2376)
+  * help/options.md: reword `hlsearch` help text (#2502)
+  * delete minor unreachable code caused by log.Fatal (#2507)
+  * Only run info plist on darwin
+  * Fix info-plist script
+  * Add livemd to markdown extensions
+  * scala.yaml: add support for .sc extension (#2452)
+  * fix javascript syntax recognizing parts of words as keywords (#2462)
+  * added support for HolyC (#2473)
+  * improve fortran syntax highlighting (#2479)
+  * Adds options for tab bar and tab color reversing (#2480)
+  * Gnuplot Syntax highlighting (#2483)
+  * Add nushell syntax highlighting (#2486)
+  * runtime/syntax/nix: Add support for block comments (#2488)
+  * syntax/git-rebase-todo.yaml: support more commands (#2495)
+  * add new logo with white shadow, change readme title logo (#2497)
+  * PHP: Add enum and keyword, and modify types (#2204)
+  * Fix cross compilation from macOS
+  * Update zyedidia/pty for openbsd support
+  * Use zyedidia/clipper for external clipboard
+  * Update clipboard for WSL support
+  * Add discussions note to readme
+  * Update tcell for OSC 52 fix
+  * Register `Brewfile`s as Ruby files (#2432)
+  * fix: add "unknown" type (#2445)
+  * Julia syntax improvements (#2415)
+  * Lua syntax highlighting: Various fixes (#2426)
+  * Fix syntax highlighting of single-quoted strings (#2425)
+  * Fix Lua number syntax highlighting (#2409)
+  * Update README.md (#2400)
+  * Update minimum required Go version to 1.16
+  * Added lines and percentage statusbar directives (#2055)
+  * Error in documentation of +LINE:COL (#2205)
+  * runtime/syntax: add rudimentary Odin support (#2296)
+  * Made apparent the functionality of the ftoptions plugin (#2321)
+  * Help: mention (un)indent in defaultkeys (#2358)
+  * Perl syntax improvement (#2359)
+  * Detect more file types for git syntax highlighting (#2330)
+  * Bump gopkg.in/yaml.v2 from 2.2.7 to 2.2.8 (#2329)
+  * Update luar import path
+  * Add unofficial discord to readme
+  * Raku syntax: fix comments (#2318)
+  * Raku syntax: Fix strings and comments (#2311)
+  * Fix repo.json info in plugin docs (#2313)
+  * Adjust default keybinding text (#2293)
+  * Fix the syntax for Raku variables. (#2309)
+  * Fix edge case when comment is at start of line (#2237)
+  * add more types for nim (#2284)
+  * Fix
+  * Use abspath for local glob settings
+  * Add support for alternatives system in Debian package (#1935)
+  * Fix linter help formatting (#2280)
+  * Python syntax: multiline string should be constant.string, not comment (#2268)
+  * README: add MacPorts install info (#2265)
+  * Clarified some documentation (#2259)
+  * Fix makefile for cross compilation
+  * Fix regression: non-working direct colors in syntax files (#2252)
+  * Update makefile generation rules
+  * Support for highlighting all search matches (hlsearch) (#1762)
+  * Fix some issues with default colors in colorschemes (#2225)
+  * Make 'make' do the same as 'make build' (#2217)
+  * Fix #2190: Document goto command in commands.md (#2218)
+  * Fix #1943: 'Duplicated line' message being wrong (#2219)
+  * Syntax Highlighting Support for FreeBSD Kernel Configuration Files (#2220)
+  * normalize path - force slash separator to access embed FS (#2197)
+  * Build : using go:generate and go:embed (#2195)
+  * Ignore tool files
+  * More style improvements
+  * Improve comments
+  * remove carriage return from -clean prompt and fix broken logic (#2186)
+  * Update comment filetype when commenting
+  * Fix save with sudo auto-detection and sudo/doas message
+  * Fix formatting
+  * Update install instructions
+  * Add eget to install instructions
+  * plugins.md: update link to the internal documentation (#2191)
+  * Update runtime
+  * Add rust clippy linter and go vet linter
+  * Make yes/no prompts case-insensitive (#2182)
+  * .sbt files also contain Scala code
+
+-------------------------------------------------------------------
 Sun Feb  6 08:54:47 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Override build date for reproducible builds (boo#1047218)

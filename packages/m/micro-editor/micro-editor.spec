@@ -1,7 +1,7 @@
 #
 # spec file for package micro-editor
 #
-# Copyright (c) 2018 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global shortcommit     b976385
-%global compiledate     Aug\ 07,\ 2021
+
+%global shortcommit     225927b
+%global compiledate     Aug\ 01,\ 2022
 
 Name:           micro-editor
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 License:        MIT
 Summary:        Micro is a terminal-based text editor that aims to be easy to use and intuitive
-Url:            https://github.com/zyedidia/micro
+URL:            https://github.com/zyedidia/micro
 Group:          Productivity/Text/Editors
-Source0:         micro-%{version}.tar.gz
+Source0:        micro-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         micro-editor-Makefile.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  golang(API) >= 1.15
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.15
 
 %description
 Micro is a terminal-based text editor that aims to be easy to use and intuitive,
