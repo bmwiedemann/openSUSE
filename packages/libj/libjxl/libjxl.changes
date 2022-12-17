@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 15 11:32:45 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added missing baselibs.conf so that 32bit library packages
+  become available
+
+-------------------------------------------------------------------
 Thu Sep 22 07:03:57 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to 0.7.0:

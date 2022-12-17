@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 URL:            https://jpegxl.info/
 #Git-Clone:     https://github.com/libjxl/libjxl
 Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config

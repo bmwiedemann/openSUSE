@@ -15,4 +15,12 @@
     <comment>- Update to 0.7.0:</comment>
     <requestid>1005381</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8ec542fd6134a71e2d4468f557bdd9de</srcmd5>
+    <version>0.7.0</version>
+    <time>1671305759</time>
+    <user>dimstar_suse</user>
+    <comment>I forgot to add baselibs.conf as a source in the .spec file last time, sorry! (forwarded request 1043366 from DarkWav)</comment>
+    <requestid>1043401</requestid>
+  </revision>
 </revisionlist>
