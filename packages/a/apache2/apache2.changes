@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Fri Sep 23 06:06:26 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - The 2.4.54 release brought support for PCRE2, but for that we also

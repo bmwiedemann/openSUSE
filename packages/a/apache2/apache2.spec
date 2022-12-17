@@ -214,9 +214,9 @@ BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(zlib)
 # SECTION test requirements
 %if %{test}
 BuildRequires:  apache-rpm-macros
