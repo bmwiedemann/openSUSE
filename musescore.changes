@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Dec 17 11:19:50 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Do not build crashpad and remove the prebuilt crashpad binary
+
+-------------------------------------------------------------------
+Fri Dec 16 21:35:50 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Remove explicit opus-devel require
+
+-------------------------------------------------------------------
+Fri Dec 16 16:06:45 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Add Qt5QuickTemplate2 to BuildRequires
+- Remove opus devel files and add requires to system files
+
+-------------------------------------------------------------------
+Thu Dec 15 21:46:00 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 4.0:
+  Changes in interface, graving, soundsystem, mixer, everything
+  See https://musescore.org/nl/node/337788
+- Removed unused patches:
+  * no-webview-in-startcentre.patch
+  * use-system-qtwebengine-files.patch
+
+-------------------------------------------------------------------
 Sat Aug 27 20:06:56 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Add soundfont and related files that cmake tries to

@@ -1,7 +1,16 @@
-diff -ur a/build/FindQt5.cmake b/build/FindQt5.cmake
---- a/build/FindQt5.cmake	2021-01-14 14:33:11.000000000 +0100
-+++ b/build/FindQt5.cmake	2021-01-15 13:28:45.346084556 +0100
-@@ -55,7 +47,7 @@
+diff -ur a/build/cmake/FindQt5.cmake b/build/cmake/FindQt5.cmake
+--- a/build/cmake/FindQt5.cmake	2022-12-13 22:58:31.000000000 +0100
++++ b/build/cmake/FindQt5.cmake	2022-12-14 20:37:54.029305951 +0100
+@@ -2,7 +2,7 @@
+ include(GetUtilsFunctions) # library of CMake functions ("fn__" namespace)
+ 
+ # Print Qt version or fail the build if Qt (qmake) is not in PATH.
+-fn__require_program(QMAKE Qt --version "https://musescore.org/en/handbook/developers-handbook/compilation" qmake)
++fn__require_program(QMAKE Qt --version "https://musescore.org/en/handbook/developers-handbook/compilation" qmake-qt5)
+ 
+ set(CMAKE_AUTOUIC ON)
+ set(CMAKE_AUTOMOC ON)
+@@ -52,7 +52,7 @@
  
  include_directories(${QT_INCLUDES})
  
@@ -10,15 +19,3 @@ diff -ur a/build/FindQt5.cmake b/build/FindQt5.cmake
  set(_qmake_vars
      QT_INSTALL_ARCHDATA
      QT_INSTALL_BINS
-diff -ur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2021-01-14 14:33:11.000000000 +0100
-+++ b/CMakeLists.txt	2021-01-15 13:24:07.140841485 +0100
-@@ -25,7 +25,7 @@
- include(build/functions.cmake) # library of CMake functions ("fn__" namespace)
- 
- # Print Qt version or fail the build if Qt (qmake) is not in PATH.
--fn__require_program(QMAKE Qt --version "https://musescore.org/en/handbook/developers-handbook/compilation" qmake)
-+fn__require_program(QMAKE Qt --version "https://musescore.org/en/handbook/developers-handbook/compilation" qmake-qt5)
- 
- # Libraries linked via full path no longer produce linker search paths.
- cmake_policy(SET CMP0003 NEW)
