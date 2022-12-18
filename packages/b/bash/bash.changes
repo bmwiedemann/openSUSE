@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 14 14:52:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash52-013
+    Bash can leak memory when referencing a non-existent associative
+    array element.
+  * bash52-014
+    Bash defers processing additional terminating signals when running
+    the EXIT trap while exiting due to a terminating signal.  This
+    patch allows the new terminating signal to kill the shell immediately.
+  * bash52-015
+    There are several cases where bash is too aggressive when optimizing
+    out forks in subshells. For example, `eval' and traps should never
+    be optimized.
+
+-------------------------------------------------------------------
 Mon Nov 28 11:33:24 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches

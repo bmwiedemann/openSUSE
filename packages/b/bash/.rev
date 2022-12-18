@@ -1882,4 +1882,23 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     leave the `extglob' option enabled.</comment>
     <requestid>1038668</requestid>
   </revision>
+  <revision rev="186" vrev="7">
+    <srcmd5>7c7526d25c05acc085a777eb80225d4f</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1671380539</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches
+  * bash52-013
+    Bash can leak memory when referencing a non-existent associative
+    array element.
+  * bash52-014
+    Bash defers processing additional terminating signals when running
+    the EXIT trap while exiting due to a terminating signal.  This
+    patch allows the new terminating signal to kill the shell immediately.
+  * bash52-015
+    There are several cases where bash is too aggressive when optimizing
+    out forks in subshells. For example, `eval' and traps should never
+    be optimized.</comment>
+    <requestid>1043053</requestid>
+  </revision>
 </revisionlist>
