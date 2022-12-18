@@ -471,4 +471,67 @@
 </comment>
     <requestid>1035072</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fa1d5b098f9c3e27590d6f7fd5f41313</srcmd5>
+    <version>1.1.8</version>
+    <time>1671380553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.8:
+  * release 1.1.8
+  * docs: add description of G903
+  * po: update Polish translation
+  * release 1.1.8rc3
+  * docs: document parameter for thumb wheel rule tests
+  * ui: allow editing of rules with parameters
+  * rules: add argument to thumb_wheel rules
+  * po: fix name of Serbian translation file
+  * Update Polish translation (#1920)
+  * release 1.1.8rc2
+  * release 1.1.8rc1
+  * solaar: improve handling of wheel notifications
+  * settings: only record changes of scroll wheel ratchet
+  * settings: device errors don't eliminiate setting
+  * device: more robust access to keyword exception fields
+  * device: add support for config change feature
+  * solaar: clean up gtk code
+  * docs: add known issue with other device controllers
+  * docs: update mouse gestures rules documentation
+  * dist: update flake8 version
+  * solaar: fix tyop in ping_all
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * misc: update .pre-commit-config.yaml (#1891)
+  * misc: update yapf version
+  * misc: update isort to current version
+  * dist: get Ubuntu version from dpkg-parsechangelog
+  * dist: print Ubuntu PPA environment
+  * dist: get commit from Ubuntu PPA directory name if no git information
+  * dist: update pre-commit versions and python version
+  * dist: use separate data files for version and commit information
+  * Update about.py (Spanish)
+  * dist: use git describe to get git version information
+  * dist: fix flake8 URL
+  * docs: update installation instructions
+  * dist: add 8-character commit hash to version information
+  * dist: update solaar.desktop (#1857)
+  * dist: get release in setup.py by reading lib/solaar/__init__.py
+  * docs: remove version number from doc/_config.yml
+  * Update es.po
+  * misc: Update solaar.desktop (#1847)
+  * po: Update es.po (#1846)
+  * docs: update documentation on several devices
+  * docs: update documentation on several devices
+  * receiver: clarify status of C542 receiver
+  * doc: update devices directory
+  * receiver: show name of disconnecting receiver or device in disconnect warning
+  * docs: add description of several devices
+  * Fixed typo in capcbilities.md
+  * ui: reduce standard size of rule editor window
+  * install: remove unnecessary dependency on typing_extensions
+</comment>
+    <requestid>1043595</requestid>
+  </revision>
 </revisionlist>
