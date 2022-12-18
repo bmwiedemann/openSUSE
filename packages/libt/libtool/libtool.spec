@@ -47,7 +47,7 @@ BuildRequires:  gcc-objc
 BuildRequires:  help2man
 BuildRequires:  lzma
 BuildRequires:  makeinfo
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 Requires:       automake > 1.4
 Requires:       libltdl7 = %{version}
 Requires:       m4 >= 1.4.16

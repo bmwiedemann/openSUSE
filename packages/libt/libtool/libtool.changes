@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Sun Sep  4 19:47:46 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - allow tests to pass with GNU grep 3.8 boo#1203097

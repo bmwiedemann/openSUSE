@@ -499,4 +499,13 @@ insprired by a patch in https://bugs.debian.org/819767 (forwarded request 605522
     <comment></comment>
     <requestid>1001204</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>5d6aa6cf0cfd1ab3867be0cbc684f540</srcmd5>
+    <version>2.4.7</version>
+    <time>1671380541</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to pkgconfig(zlib) so that alternative providers can be
+  used</comment>
+    <requestid>1043127</requestid>
+  </revision>
 </revisionlist>
