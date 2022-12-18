@@ -20,7 +20,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.30.5
+Version:        4.30.6
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Dec 18 13:43:18 UTC 2022 - dmueller@suse.com
+
+- Update to version 4.30.6:
+  * Bumping version
+  * release notes
+  * Fixed xml comment in array of scalars #1465
+  * Bump github.com/magiconair/properties from 1.8.6 to 1.8.7 (#1476)
+  * Bump github.com/goccy/go-yaml from 1.9.6 to 1.9.7 (#1466)
+  * Bump golang from 1.19.3 to 1.19.4 (#1465)
+  * Include blank new lines in leading header preprocessing #1462
+  * Upgraded golang/x/text and golang/x/net to fix trivy scan vulnerabilities (#1461)
+  * Bump github.com/goccy/go-json from 0.9.11 to 0.10.0 (#1455)
+  * updating release notes
+
+-------------------------------------------------------------------
 Sat Dec  3 16:46:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v4.30.5:
