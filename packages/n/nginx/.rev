@@ -951,4 +951,21 @@
     directive did not work when using TLSv1.3 with OpenSSL or BoringSSL.</comment>
     <requestid>1030027</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>3cab633f7ab9128257c3a67a11911215</srcmd5>
+    <version>1.23.3</version>
+    <time>1671380544</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.23.3
+  * Bugfix: an error might occur when reading PROXY protocol version 2
+    header with large number of TLVs.
+  * Bugfix: a segmentation fault might occur in a worker process if SSI
+    was used to process subrequests created by other modules.
+  * Workaround: when a hostname used in the &quot;listen&quot; directive resolves
+    to multiple addresses, nginx now ignores duplicates within these
+    addresses.
+  * Bugfix: nginx might hog CPU during unbuffered proxying if SSL
+    connections to backends were used.</comment>
+    <requestid>1043486</requestid>
+  </revision>
 </revisionlist>

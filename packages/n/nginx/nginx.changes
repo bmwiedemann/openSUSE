@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 17 19:46:30 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Updated to 1.23.3
+  * Bugfix: an error might occur when reading PROXY protocol version 2
+    header with large number of TLVs.
+  * Bugfix: a segmentation fault might occur in a worker process if SSI
+    was used to process subrequests created by other modules.
+  * Workaround: when a hostname used in the "listen" directive resolves
+    to multiple addresses, nginx now ignores duplicates within these
+    addresses.
+  * Bugfix: nginx might hog CPU during unbuffered proxying if SSL
+    connections to backends were used.
+
+-------------------------------------------------------------------
 Wed Oct 19 14:06:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Updated to 1.23.2
