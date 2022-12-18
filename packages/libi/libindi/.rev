@@ -561,4 +561,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1041803</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>682bce4cd0314308eaf506d178bfd038</srcmd5>
+    <version>1.9.9</version>
+    <time>1671380558</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix cfitsio dep on TW
+</comment>
+    <requestid>1043612</requestid>
+  </revision>
 </revisionlist>

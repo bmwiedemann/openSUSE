@@ -30,7 +30,11 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+%if 0%{?suse_version} > 1590
+BuildRequires:  cfitsio-devel
+%else
 BuildRequires:  libcfitsio-devel
+%endif
 BuildRequires:  libnova-devel
 BuildRequires:  libev-devel
 BuildRequires:  pkgconfig
