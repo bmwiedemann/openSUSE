@@ -19,7 +19,7 @@
 
 %define _sover  0_5_6
 Name:           surgescript
-Version:        0.5.6
+Version:        0.5.6.1
 Release:        0
 Summary:        A scripting language for games
 License:        Apache-2.0
@@ -98,6 +98,7 @@ developing applications using %{name}.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}%{_sover}
+%{_libdir}/lib%{name}.so.0.5.6
 %{_libdir}/lib%{name}.so.%{version}
 
 %changelog
