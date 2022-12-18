@@ -17,7 +17,7 @@
 
 
 Name:           global
-Version:        6.6.8
+Version:        6.6.9
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only

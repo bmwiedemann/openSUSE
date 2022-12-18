@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 18 08:35:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.9:
+  * o gtags(C++ parser): did not recognize 'final' keyword. Now it works.
+  * o Fixed a couple of bugs in MinGW.
+  * Fixed unknown type sigset_t error in MinGW.
+  * Fixed pointer to integer cast warnings in MinGW.
+
+-------------------------------------------------------------------
 Sun Dec  4 18:07:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.8:
