@@ -19,7 +19,7 @@
 %bcond_with     valgrind
 
 Name:           courier-imap
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later

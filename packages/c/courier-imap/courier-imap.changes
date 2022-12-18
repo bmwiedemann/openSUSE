@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 18 09:30:09 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.1
+  * Fix a compatibility problem with OpenSSL 3 that results in TLS
+    negotiation failures in some non-default configurations.
+  * Fix an error in courier-imap's installation script that results in
+    creation of absolute, rather than relative, symbolic links.
+
+-------------------------------------------------------------------
 Sun Dec  4 20:16:13 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.0
