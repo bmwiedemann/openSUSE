@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 9.0.0
+%define real_version 9.0.1
 %define short_version 9.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -45,7 +45,7 @@ ExclusiveArch:  do_not_build
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
 Name:           %{pkgname_prefix}-creator
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only

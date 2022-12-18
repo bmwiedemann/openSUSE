@@ -1,4 +1,4 @@
-From 6542ee6bc6ce420dcb2c1967c63132933d2d2f33 Mon Sep 17 00:00:00 2001
+From db56ce96c62aeb35c17fab70e41a83509a933848 Mon Sep 17 00:00:00 2001
 From: Javier Llorente <javier@opensuse.org>
 Date: Tue, 8 Dec 2020 14:08:11 +0100
 Subject: [PATCH] Fix application output
@@ -10,12 +10,12 @@ Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
  1 file changed, 3 insertions(+)
 
 diff --git a/src/app/main.cpp b/src/app/main.cpp
-index e17ef27..fce0595 100644
+index bdd80ed..5dc1646 100644
 --- a/src/app/main.cpp
 +++ b/src/app/main.cpp
-@@ -508,6 +508,9 @@ int main(int argc, char **argv)
-         qputenv("QT_ENABLE_REGEXP_JIT", "0");
-     }
+@@ -499,6 +499,9 @@ int main(int argc, char **argv)
+         // Prevent Qt's GTK3 platform theme plugin from enforcing a dark palette
+         qputenv("GTK_THEME", ":light");
  
 +    // Force Qt to log to stderr
 +    qputenv("QT_FORCE_STDERR_LOGGING", "1");
@@ -23,3 +23,6 @@ index e17ef27..fce0595 100644
  #if defined(QTC_FORCE_XCB)
      if (Utils::HostOsInfo::isLinuxHost() && !qEnvironmentVariableIsSet("QT_QPA_PLATFORM")) {
          // Enforce XCB on Linux/Gnome, if the user didn't override via QT_QPA_PLATFORM
+-- 
+2.38.1
+

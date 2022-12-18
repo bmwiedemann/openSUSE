@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 16 09:59:54 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 9.0.1. Bugfix release:
+  * https://www.qt.io/blog/qt-creator-9.0.1-released
+- Rebase fix-application-output.patch
+
+-------------------------------------------------------------------
 Thu Nov 24 09:30:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 9.0.0. Note: Qt Creator no longer builds with Qt5.
