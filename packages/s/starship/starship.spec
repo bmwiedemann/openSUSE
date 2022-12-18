@@ -17,12 +17,12 @@
 
 
 Name:           starship
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC
 URL:            https://starship.rs/
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging

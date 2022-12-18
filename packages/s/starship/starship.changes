@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Dec 18 09:54:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.12.0:
+  * Features:
+    - add Haxe support
+    - Add operating system module
+    - aws: add a fallback for expiration key
+    - azure: add username to azure module config
+    - bug-report: ask for confirmation before opening issue
+    - directory: add before_repo_root_style
+    - git_commit: support showing lightweight tags
+    - guix_shell: Initial implementation
+    - init: Use which-rs to resolve starship path
+    - localip: use reserved remote address
+    - nu: enable right prompt
+    - Open Policy Agent module
+    - package: added showing gradle version based on the gradle.properties file
+    - preset: Add No Empty Icons preset
+    - preset: Add no-nerd-font preset
+    - release: add chocolatey publishing
+  * Bug Fixes:
+    - aws: enable when using .aws/credentials
+    - buf: broken icon on windows 10
+    - ci: cache after selecting the toolchain
+    - config: unrecognized config properties don't cause config error
+    - container: avoid detecting WSL as a systemd-container
+    - don't attempt to display cmd_duration notification if in TTY
+    - git: check tag_disabled option
+    - java: Improved regex for Java version
+    - nu: remove -c parameter from term size
+    - pwsh: fix error log display on older versions of pwsh
+    - status: replace multiply with cross mark emoji
+
+-------------------------------------------------------------------
 Sun Oct 16 10:44:58 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.11.0:

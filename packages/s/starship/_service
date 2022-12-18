@@ -6,20 +6,20 @@
     <param name="scm">git</param>
     <param name="version">git-master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.11.0</param>
+    <param name="revision">v1.12.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesauthor">dead_mozay@opensuse.org</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
-    <param name="compression">gz</param>
+    <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
   <service name="cargo_vendor" mode="disabled">
     <param name="srcdir">starship</param>
   </service>
   <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">starship</param>
+    <param name="srcdir">starship</param>
   </service>
 </services>
