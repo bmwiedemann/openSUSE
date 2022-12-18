@@ -7,4 +7,12 @@
     <comment>Add kirigami-addons, required by plasma-mobile 5.26</comment>
     <requestid>1008743</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e8f12b20e8ff3fc4bb22ef19c01af31</srcmd5>
+    <version>0.6.1</version>
+    <time>1671380550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043589</requestid>
+  </revision>
 </revisionlist>

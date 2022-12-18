@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 15 13:41:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.6.1. No changelog provided, list of git commits too long, so:
+  * Probably some new features
+  * Probably some new fixes
+  * Probably some new bugs as well
+- Add Carl Schwan's public key to the keyring, rename it to
+  kirigami-addons.keyring
+
+-------------------------------------------------------------------
 Fri Oct  7 08:13:53 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.4

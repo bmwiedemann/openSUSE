@@ -1,7 +1,7 @@
 #
 # spec file for package kirigami-addons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %bcond_without released
 
 Name:           kirigami-addons
-Version:        0.4
+Version:        0.6.1
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
 URL:            https://invent.kde.org/libraries/kirigami-addons
-Source:         https://download.kde.org/unstable/kirigami-addons/%{version}/kirigami-addons-%{version}.tar.xz
+Source:         https://download.kde.org/stable/kirigami-addons/kirigami-addons-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/unstable/kirigami-addons/%{version}/kirigami-addons-%{version}.tar.xz.sig
-Source2:        plasma.keyring
+Source1:        https://download.kde.org/stable/kirigami-addons/kirigami-addons-%{version}.tar.xz.sig
+Source2:        kirigami-addons.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5I18n)
@@ -44,6 +44,8 @@ desktop experiences providing a native experience on both, and
 look native with any QQC2 style (qqc2-desktop-theme, Material
 or Plasma).
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -53,6 +55,7 @@ or Plasma).
 
 %install
 %kf5_makeinstall -C build
+%find_lang %{name}
 
 # No need for CMake exports
 rm -r %{buildroot}%{_kf5_cmakedir}/
@@ -62,5 +65,7 @@ rm -r %{buildroot}%{_kf5_cmakedir}/
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %{_kf5_qmldir}/org/kde/kirigamiaddons/
+
+%files lang -f %{name}.lang
 
 %changelog
