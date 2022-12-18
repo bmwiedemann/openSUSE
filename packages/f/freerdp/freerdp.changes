@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:11:10 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Complement fix for -DBUILTIN_CHANNELS=OFF to fix freerdp-proxy 
+  accessing librdpgfx-client.so: freerdp-fix-rpath-settings.diff
+  Fixes second part of bnc#1205595.
+
+-------------------------------------------------------------------
 Sun Dec 11 06:01:28 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Disable VAAPI feature due bug https://bugzilla.opensuse.org/show_bug.cgi?id=1205595

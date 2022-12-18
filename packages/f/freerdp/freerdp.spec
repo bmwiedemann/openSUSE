@@ -51,6 +51,8 @@ Source1:        freerdp-rpmlintrc
 Patch0:         freerdp-builtin-channels-off-link-fix.diff
 # PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
 Patch1:         0001-Make-H.264-codec-optional-during-runtime.patch
+# PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/8551 -- slightly modified: see -DWITH_PLUGIN_RPATH_ONLY
+Patch2:         freerdp-fix-rpath-settings.diff
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -209,12 +211,12 @@ export CFLAGS="%{optflags} -fPIE -pie"
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
-	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DWITH_ALSA=ON \
 	-DWITH_CAIRO=ON \
 	-DWITH_CUPS=ON \
 	-DWITH_CHANNELS=ON -DBUILTIN_CHANNELS=OFF \
+	-DWITH_PLUGIN_RPATH_ONLY=ON \
         -DWITH_CLIENT=ON \
         -DWITH_DIRECTFB=OFF \
         -DWITH_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \

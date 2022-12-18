@@ -1,27 +1,37 @@
---- FreeRDP-2.4.0/channels/video/client/CMakeLists.txt~	2021-07-27 11:58:27.000000000 +0200
-+++ FreeRDP-2.4.0/channels/video/client/CMakeLists.txt	2021-08-20 10:35:04.496719927 +0200
-@@ -26,7 +26,8 @@ include_directories(..)
+Index: b/channels/video/client/CMakeLists.txt
+===================================================================
+--- a/channels/video/client/CMakeLists.txt
++++ b/channels/video/client/CMakeLists.txt
+@@ -26,7 +26,10 @@ include_directories(..)
  add_channel_client_library(${MODULE_PREFIX} ${MODULE_NAME} ${CHANNEL_NAME} TRUE "DVCPluginEntry")
  
  
 -
-+set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} freerdp-client)
-+set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} rdpgfx-client)
++if (NOT BUILTIN_CHANNELS)
++	set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} freerdp-client)
++	set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} rdpgfx-client)
++endif()
  set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} winpr)
  
  target_link_libraries(${MODULE_NAME} ${${MODULE_PREFIX}_LIBS})
---- FreeRDP-2.4.0/channels/rdpsnd/client/proxy/CMakeLists.txt~	2021-07-27 11:58:27.000000000 +0200
-+++ FreeRDP-2.4.0/channels/rdpsnd/client/proxy/CMakeLists.txt	2021-08-20 13:45:38.459395909 +0200
-@@ -25,6 +25,7 @@ include_directories(..)
+Index: b/channels/rdpsnd/client/proxy/CMakeLists.txt
+===================================================================
+--- a/channels/rdpsnd/client/proxy/CMakeLists.txt
++++ b/channels/rdpsnd/client/proxy/CMakeLists.txt
+@@ -25,6 +25,9 @@ include_directories(..)
  
  add_channel_client_subsystem_library(${MODULE_PREFIX} ${MODULE_NAME} ${CHANNEL_NAME} "" TRUE "")
  
-+list(APPEND ${MODULE_PREFIX}_LIBS freerdp-client)
++if (NOT BUILTIN_CHANNELS)
++	list(APPEND ${MODULE_PREFIX}_LIBS freerdp-client)
++endif()
  list(APPEND ${MODULE_PREFIX}_LIBS freerdp)
  list(APPEND ${MODULE_PREFIX}_LIBS winpr)
  
---- FreeRDP-2.4.0/channels/rdp2tcp/client/CMakeLists.txt~	2021-07-27 11:58:27.000000000 +0200
-+++ FreeRDP-2.4.0/channels/rdp2tcp/client/CMakeLists.txt	2021-08-21 13:15:02.847667180 +0200
+Index: b/channels/rdp2tcp/client/CMakeLists.txt
+===================================================================
+--- a/channels/rdp2tcp/client/CMakeLists.txt
++++ b/channels/rdp2tcp/client/CMakeLists.txt
 @@ -22,6 +22,6 @@ set(${MODULE_PREFIX}_SRCS
  
  add_channel_client_library(${MODULE_PREFIX} ${MODULE_NAME} ${CHANNEL_NAME} TRUE "VirtualChannelEntryEx")
