@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 15 13:33:42 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.2
+  * This is a minor release to add support for a better CMake file
+    which has been in long demand by lots of users.
+
+-------------------------------------------------------------------
 Tue Jan  7 11:47:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix spellos in the descriptions.

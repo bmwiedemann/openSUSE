@@ -1,7 +1,7 @@
 #
 # spec file for package rang
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rang
-Version:        3.1.0
+Version:        3.2
 Release:        0
 Summary:        A C++ library for color emission in the terminal
 # The Unlicense, see LICENSE file
 License:        SUSE-Public-Domain
 URL:            https://agauniyal.github.io/rang
-Source0:        https://github.com/agauniyal/rang/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/agauniyal/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 
 %description
@@ -51,9 +51,9 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/%{_lib}
 includedir=${prefix}/include
 
-Name: %{name}
+Name:           %{name}
 Description: A C++ library for color emission in the terminal
-Version: %{version}
+Version:        %{version}
 Cflags: -I${includedir}
 EOF
 
