@@ -18,7 +18,7 @@
 
 Name:           libclocale
 %define lname	libclocale1
-Version:        20220107
+Version:        20221218
 Release:        0
 Summary:        Library for C locale functions
 License:        LGPL-3.0-or-later
