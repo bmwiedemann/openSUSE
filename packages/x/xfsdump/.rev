@@ -283,4 +283,16 @@
     <comment></comment>
     <requestid>999904</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e34e8cdd8bc755fe9a1c9a34425852f6</srcmd5>
+    <version>3.1.12</version>
+    <time>1671380543</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.12:
+  * xfsrestore: fix on-media inventory media unpacking
+  * xfsrestore: fix on-media inventory stream unpacking
+  * xfsdump: fix on-media inventory stream packing
+  * xfsrestore: untangle inventory unpacking logic</comment>
+    <requestid>1043475</requestid>
+  </revision>
 </revisionlist>

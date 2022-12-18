@@ -17,7 +17,7 @@
 
 
 Name:           xfsdump
-Version:        3.1.11
+Version:        3.1.12
 Release:        0
 Summary:        Administrative Utilities for the XFS File System
 License:        GPL-2.0-or-later
@@ -36,7 +36,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  xfsprogs-devel
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The xfsdump package contains xfsdump, xfsrestore, and a number of other

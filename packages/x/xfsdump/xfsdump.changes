@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 17 18:23:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.12:
+  * xfsrestore: fix on-media inventory media unpacking
+  * xfsrestore: fix on-media inventory stream unpacking
+  * xfsdump: fix on-media inventory stream packing
+  * xfsrestore: untangle inventory unpacking logic 
+
+-------------------------------------------------------------------
 Fri Aug 26 18:26:35 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
 
 - Update to version 3.1.11
