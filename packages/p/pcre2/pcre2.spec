@@ -37,7 +37,7 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 
 %description
 The PCRE2 library is a set of functions that implement regular

@@ -228,4 +228,14 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>1042473</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>64c3d30460d55a0383c61dc072913bdd</srcmd5>
+    <version>10.42</version>
+    <time>1671380540</time>
+    <user>dimstar_suse</user>
+    <comment>------------------------------------------------------------------
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used</comment>
+    <requestid>1043089</requestid>
+  </revision>
 </revisionlist>

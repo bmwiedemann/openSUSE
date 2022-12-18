@@ -1,4 +1,4 @@
--------------------------------------------------------------------
+------------------------------------------------------------------
 Mon Dec 12 20:19:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - pcre2 10.42:
@@ -7,6 +7,12 @@ Mon Dec 12 20:19:14 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
     which meant that programs including pcre2posix.h but not pcre2.h
     couldn't compile
   * Fix an intermittent JIT fault and minor issues
+
+-------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
 
 -------------------------------------------------------------------
 Tue Dec  6 21:30:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
