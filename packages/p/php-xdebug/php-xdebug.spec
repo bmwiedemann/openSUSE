@@ -19,7 +19,7 @@
 %define pkg_name    xdebug
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
+%if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
 ExclusiveArch:  do-not-build
 %else
@@ -31,14 +31,19 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
+%if "%{flavor}" == "php8"
 Version:        3.2.0
+%else
+Version:        3.1.6
+%endif
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://xdebug.org
-Source0:        https://xdebug.org/files/%{pkg_name}-%{version}.tgz
-Source1:        php-%{pkg_name}-rpmlintrc
+Source0:        https://xdebug.org/files/%{pkg_name}-3.2.0.tgz
+Source1:        https://xdebug.org/files/%{pkg_name}-3.1.6.tgz
+Source10:       php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-soap
 BuildRequires:  autoconf
@@ -65,7 +70,11 @@ Xdebug also provides:
   * capabilities to debug your scripts interactively with a debug client
 
 %prep
+%if "%{flavor}" == "php8"
 %setup -q -n %{pkg_name}-%{version}
+%else
+%setup -q -n %{pkg_name}-%{version} -T -b 1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"

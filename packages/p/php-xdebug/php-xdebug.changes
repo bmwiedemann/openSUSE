@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 11 10:03:51 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Restore php7 build for targets that still have it
+  % _multibuild
+
+-------------------------------------------------------------------
 Thu Dec  8 22:40:37 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.2.0
