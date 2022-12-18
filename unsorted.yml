@@ -2283,6 +2283,10 @@ unsorted:
   - compton-conf-lang 
   - conauto 
   - concurrent 
+  - conftest 
+  - conftest-bash-completion 
+  - conftest-fish-completion 
+  - conftest-zsh-completion 
   - conkeror 
   - conky 
   - conky-doc 
@@ -11595,17 +11599,12 @@ unsorted:
   - libgtkdgl-3-0 
   - libgtkdsv-3-0 
   - libgtkglext-x11-1_0-0 
-  - libgtkglext-x11-1_0-0-32bit: [x86_64] 
   - libgtkhex-4-1 
   - libgtkhotkey-devel 
   - libgtkhotkey1 
   - libgtkhtml-4_0-0 
-  - libgtkhtml-4_0-0-32bit: [x86_64] 
   - libgtkhtml-editor-4_0-0 
-  - libgtkhtml-editor-4_0-0-32bit: [x86_64] 
   - libgtkmm-2_4-1 
-  - libgtkmm-2_4-1-32bit: [x86_64] 
-  - libgtkmm-3_0-1-32bit: [x86_64] 
   - libgtkmm-4_0-0 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
@@ -11904,6 +11903,7 @@ unsorted:
   - libhunspell-1_7-0-32bit: [x86_64] 
   - libhwasan0: [x86_64] 
   - libhwloc15 
+  - libhwy1-32bit: [x86_64] 
   - libhx509-5 
   - libhydrogen-core-1_1_1 
   - libhydrogen-core-devel 
@@ -12115,6 +12115,7 @@ unsorted:
   - libjthread1_3_3 
   - libjxl-devel 
   - libjxl-tools 
+  - libjxl0_7-32bit: [x86_64] 
   - libjxrglue0 
   - libjxrglue0-32bit: [x86_64] 
   - libkadm5clnt7 
@@ -13471,13 +13472,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite3_21_11-32bit: [x86_64] 
+  - libprotobuf-lite3_21_12-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf3_21_11-32bit: [x86_64] 
-  - libprotoc3_21_11 
-  - libprotoc3_21_11-32bit: [x86_64] 
+  - libprotobuf3_21_12-32bit: [x86_64] 
+  - libprotoc3_21_12 
+  - libprotoc3_21_12-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -13984,7 +13985,6 @@ unsorted:
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
   - librest-0_7-0 
-  - librest-0_7-0-32bit: [x86_64] 
   - librest-1_0-0-32bit: [x86_64] 
   - librest-devel 
   - librest0_7-devel 
@@ -15059,7 +15059,6 @@ unsorted:
   - libwmf-gnome 
   - libwmf-gnome-32bit: [x86_64] 
   - libwnck-1-22 
-  - libwnck-3-0-32bit: [x86_64] 
   - libwnck-devel 
   - libwnck-tools 
   - libwnck2-devel 
@@ -17278,6 +17277,7 @@ unsorted:
   - musepack 
   - musepack-devel 
   - musescore 
+  - musescore-devel 
   - musescore-fonts 
   - musique 
   - musique-lang 
@@ -32985,6 +32985,7 @@ unsorted:
   - rescue 
   - resolv_wrapper 
   - resource-agents 
+  - resource-agents-zfs 
   - resteasy 
   - resteasy-atom-provider 
   - resteasy-client 
