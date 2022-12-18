@@ -1,0 +1,208 @@
+From 9ab6b64ac856157a31a54c0d12207c2338bfa8e2 Mon Sep 17 00:00:00 2001
+From: Tomas Mraz <tomas@openssl.org>
+Date: Fri, 9 Sep 2022 14:46:24 +0200
+Subject: [PATCH] Fix AES-GCM on Power 8 CPUs
+
+Properly fallback to the default implementation on CPUs
+missing necessary instructions.
+
+Fixes #19163
+
+Reviewed-by: Dmitry Belyavskiy <beldmit@gmail.com>
+Reviewed-by: Paul Dale <pauli@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/19182)
+---
+ crypto/evp/e_aes.c |  146 ++++++++++++++++++++++++++---------------------------
+ 1 file changed, 74 insertions(+), 72 deletions(-)
+
+--- a/crypto/evp/e_aes.c
++++ b/crypto/evp/e_aes.c
+@@ -181,30 +181,16 @@ static void ctr64_inc(unsigned char *cou
+ # define PPC_AES_GCM_CAPABLE (OPENSSL_ppccap_P & PPC_MADD300)
+ # define AES_GCM_ENC_BYTES 128
+ # define AES_GCM_DEC_BYTES 128
+-# if PPC_AES_GCM_CAPABLE
+ size_t ppc_aes_gcm_encrypt(const unsigned char *in, unsigned char *out,
+                            size_t len, const void *key, unsigned char ivec[16],
+                            u64 *Xi);
+ size_t ppc_aes_gcm_decrypt(const unsigned char *in, unsigned char *out,
+                            size_t len, const void *key, unsigned char ivec[16],
+                            u64 *Xi);
+-size_t ppc_aes_gcm_encrypt_wrap(const unsigned char *in, unsigned char *out,
+-                                size_t len, const void *key,
+-                                unsigned char ivec[16], u64 *Xi);
+-size_t ppc_aes_gcm_decrypt_wrap(const unsigned char *in, unsigned char *out,
+-                                size_t len, const void *key,
+-                                unsigned char ivec[16], u64 *Xi);
+-#  define AES_gcm_encrypt ppc_aes_gcm_encrypt_wrap
+-#  define AES_gcm_decrypt ppc_aes_gcm_decrypt_wrap
+-#  define AES_GCM_ASM(gctx) ((gctx)->ctr==aes_p8_ctr32_encrypt_blocks && \
+-                             (gctx)->gcm.ghash==gcm_ghash_p8)
++# define AES_GCM_ASM_PPC(gctx) ((gctx)->ctr==aes_p8_ctr32_encrypt_blocks && \
++                                (gctx)->gcm.ghash==gcm_ghash_p8)
+ void gcm_ghash_p8(u64 Xi[2],const u128 Htable[16],const u8 *inp, size_t len);
+ 
+-extern size_t ppc_aes_gcm_encrypt(const unsigned char *in, unsigned char *out, size_t len,
+-                                  const void *key, unsigned char ivec[16], u64 *Xi);
+-extern size_t ppc_aes_gcm_decrypt(const unsigned char *in, unsigned char *out, size_t len,
+-                                  const void *key, unsigned char ivec[16], u64 *Xi);
+-
+ static inline u32 UTO32(unsigned char *buf)
+ {
+     return ((u32) buf[0] << 24) | ((u32) buf[1] << 16) | ((u32) buf[2] << 8) | ((u32) buf[3]);
+@@ -223,62 +209,6 @@ static inline u32 add32TOU(unsigned char
+     return r;
+ }
+ 
+-static size_t aes_p10_gcm_crypt(const unsigned char *in, unsigned char *out, size_t len,
+-                                const void *key, unsigned char ivec[16], u64 *Xi, int encrypt)
+-{
+-    int s = 0;
+-    int ndone = 0;
+-    int ctr_reset = 0;
+-    u64 blocks_unused;
+-    u64 nb = len / 16;
+-    u64 next_ctr = 0;
+-    unsigned char ctr_saved[12];
+-
+-    memcpy(ctr_saved, ivec, 12);
+-
+-    while (nb) {
+-        blocks_unused = (u64) 0xffffffffU + 1 - (u64) UTO32 (ivec + 12);
+-        if (nb > blocks_unused) {
+-            len = blocks_unused * 16;
+-            nb -= blocks_unused;
+-            next_ctr = blocks_unused;
+-            ctr_reset = 1;
+-        } else {
+-            len = nb * 16;
+-            next_ctr = nb;
+-            nb = 0;
+-        }
+-
+-        s = encrypt ? ppc_aes_gcm_encrypt(in, out, len, key, ivec, Xi)
+-                    : ppc_aes_gcm_decrypt(in, out, len, key, ivec, Xi);
+-
+-        /* add counter to ivec */
+-        add32TOU(ivec + 12, (u32) next_ctr);
+-        if (ctr_reset) {
+-            ctr_reset = 0;
+-            in += len;
+-            out += len;
+-        }
+-        memcpy(ivec, ctr_saved, 12);
+-        ndone += s;
+-    }
+-
+-    return ndone;
+-}
+-
+-size_t ppc_aes_gcm_encrypt_wrap(const unsigned char *in, unsigned char *out, size_t len,
+-                                const void *key, unsigned char ivec[16], u64 *Xi)
+-{
+-    return aes_p10_gcm_crypt(in, out, len, key, ivec, Xi, 1);
+-}
+-
+-size_t ppc_aes_gcm_decrypt_wrap(const unsigned char *in, unsigned char *out, size_t len,
+-                                const void *key, unsigned char ivec[16], u64 *Xi)
+-{
+-    return aes_p10_gcm_crypt(in, out, len, key, ivec, Xi, 0);
+-}
+-
+-# endif
+ #endif
+ 
+ #if     defined(OPENSSL_CPUID_OBJ) &&                   (  \
+@@ -3294,6 +3224,51 @@ static int aes_gcm_tls_cipher(EVP_CIPHER
+     return rv;
+ }
+ 
++#if defined(OPENSSL_CPUID_OBJ) && (defined(__powerpc__) || defined(__ppc__) || defined(_ARCH_PPC))
++static size_t ppc_aes_gcm_crypt(const unsigned char *in, unsigned char *out, size_t len,
++                                const void *key, unsigned char ivec[16], u64 *Xi, int encrypt)
++{
++    int s = 0;
++    int ndone = 0;
++    int ctr_reset = 0;
++    u64 blocks_unused;
++    u64 nb = len / 16;
++    u64 next_ctr = 0;
++    unsigned char ctr_saved[12];
++
++    memcpy(ctr_saved, ivec, 12);
++
++    while (nb) {
++        blocks_unused = (u64) 0xffffffffU + 1 - (u64) UTO32 (ivec + 12);
++        if (nb > blocks_unused) {
++            len = blocks_unused * 16;
++            nb -= blocks_unused;
++            next_ctr = blocks_unused;
++            ctr_reset = 1;
++        } else {
++            len = nb * 16;
++            next_ctr = nb;
++            nb = 0;
++        }
++
++        s = encrypt ? ppc_aes_gcm_encrypt(in, out, len, key, ivec, Xi)
++                    : ppc_aes_gcm_decrypt(in, out, len, key, ivec, Xi);
++
++        /* add counter to ivec */
++        add32TOU(ivec + 12, (u32) next_ctr);
++        if (ctr_reset) {
++            ctr_reset = 0;
++            in += len;
++            out += len;
++        }
++        memcpy(ivec, ctr_saved, 12);
++        ndone += s;
++    }
++
++    return ndone;
++}
++#endif
++
+ static int aes_gcm_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
+                           const unsigned char *in, size_t len)
+ {
+@@ -3325,6 +3300,20 @@ static int aes_gcm_cipher(EVP_CIPHER_CTX
+                                            out + res, len - res,
+                                            gctx->gcm.key, gctx->gcm.Yi.c,
+                                            gctx->gcm.Xi.u);
++
++                    gctx->gcm.len.u[1] += bulk;
++                    bulk += res;
++                }
++#elif defined(AES_GCM_ASM_PPC) && defined(OPENSSL_CPUID_OBJ) && (defined(__powerpc__) || defined(__ppc__) || defined(_ARCH_PPC))
++                if (PPC_AES_GCM_CAPABLE && len >= AES_GCM_ENC_BYTES && AES_GCM_ASM_PPC(gctx)) {
++                    size_t res = (16 - gctx->gcm.mres) % 16;
++
++                    if (CRYPTO_gcm128_encrypt(&gctx->gcm, in, out, res))
++                        return -1;
++
++                    bulk = ppc_aes_gcm_crypt(in + res, out + res, len - res,
++                                             gctx->gcm.key,
++                                             gctx->gcm.Yi.c, gctx->gcm.Xi.u, 1);
+                     gctx->gcm.len.u[1] += bulk;
+                     bulk += res;
+                 }
+@@ -3372,6 +3361,19 @@ static int aes_gcm_cipher(EVP_CIPHER_CTX
+                     gctx->gcm.len.u[1] += bulk;
+                     bulk += res;
+                 }
++#elif defined(AES_GCM_ASM_PPC) && defined(OPENSSL_CPUID_OBJ) && (defined(__powerpc__) || defined(__ppc__) || defined(_ARCH_PPC))
++                if (PPC_AES_GCM_CAPABLE && len >= AES_GCM_DEC_BYTES && AES_GCM_ASM_PPC(gctx)) {
++                    size_t res = (16 - gctx->gcm.mres) % 16;
++
++                    if (CRYPTO_gcm128_decrypt(&gctx->gcm, in, out, res))
++                        return -1;
++
++                    bulk = ppc_aes_gcm_crypt(in + res, out + res, len - res,
++                                             gctx->gcm.key,
++                                             gctx->gcm.Yi.c, gctx->gcm.Xi.u, 0);
++                    gctx->gcm.len.u[1] += bulk;
++                    bulk += res;
++                }
+ #endif
+                 if (CRYPTO_gcm128_decrypt_ctr32(&gctx->gcm,
+                                                 in + bulk,

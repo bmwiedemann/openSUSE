@@ -123,6 +123,14 @@ Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
 Patch73:        openssl-1_1-FIPS-fix-error-reason-codes.patch
 #PATCH-FIX-SUSE bsc#1180995 Default to RFC7919 groups in FIPS mode
 Patch74:        openssl-1_1-paramgen-default_to_rfc7919.patch
+# PATCH-FIX-UPSTREAM jsc#PED-512
+# POWER10 performance enhancements for cryptography
+Patch75:        openssl-1_1-AES-GCM-performance-optimzation-with-stitched-method.patch
+Patch76:        openssl-1_1-Fixed-counter-overflow.patch
+Patch77:        openssl-1_1-chacha20-performance-optimizations-for-ppc64le-with-.patch
+Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes.patch
+Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
+
 Requires:       libopenssl1_1 = %{version}-%{release}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 14 09:04:40 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- POWER10 performance enhancements for cryptography [jsc#PED-512]
+  * openssl-1_1-AES-GCM-performance-optimzation-with-stitched-method.patch
+  * openssl-1_1-Fixed-counter-overflow.patch
+  * openssl-1_1-chacha20-performance-optimizations-for-ppc64le-with-.patch
+  * openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes.patch
+  * openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
+
+-------------------------------------------------------------------
 Wed Nov  2 12:00:40 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Updated openssl.keyring with key A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C
