@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 17 19:43:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * scanner database update
+- add keyring for source validation
+
+-------------------------------------------------------------------
 Sun Oct 16 14:53:41 UTC 2022 - malcolmlewis@opensuse.org
 
 - Updated to version 2.13.0:

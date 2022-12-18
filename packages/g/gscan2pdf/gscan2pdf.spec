@@ -17,13 +17,14 @@
 
 
 Name:           gscan2pdf
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        Easy scan to PDF
 License:        GPL-3.0-only
 URL:            https://sourceforge.net/projects/gscan2pdf/
 Source0:        https://sourceforge.net/projects/gscan2pdf/files/gscan2pdf/%{version}/gscan2pdf-%{version}.tar.xz
 Source1:        https://sourceforge.net/projects/gscan2pdf/files/gscan2pdf/%{version}/gscan2pdf-%{version}.tar.xz.asc
+Source9:        gscan2pdf.keyring
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 Requires:       perl-base = %{perl_version}
