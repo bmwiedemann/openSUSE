@@ -825,4 +825,13 @@
   * shadow-chage-format.patch</comment>
     <requestid>1034857</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>700ff53ff58afec7c86a9a660789cb8f</srcmd5>
+    <version>4.13</version>
+    <time>1671380543</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205502: Fix useradd audit event logging of ID field
+  * Add shadow-audit-no-id.patch</comment>
+    <requestid>1043310</requestid>
+  </revision>
 </revisionlist>

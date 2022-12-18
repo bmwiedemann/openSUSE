@@ -57,6 +57,8 @@ Patch6:         shadow-login_defs-suse.patch
 Patch7:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch8:         disable_new_audit_function.patch
+# PATCH-FIX-UPSTREAM shadow-audit-no-id.patch mvetter@suse.com -- Fix useradd audit event logging of ID field (bsc#1205502) (gh/shadow-maint/shadow#606)
+Patch9:         shadow-audit-no-id.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -126,6 +128,7 @@ Development files for libsubid4.
 %if 0%{?suse_version} < 1330
 %patch8 -p1
 %endif
+%patch9 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO

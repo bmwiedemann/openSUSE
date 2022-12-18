@@ -1,0 +1,36 @@
+From 3cfc7955b33c85472a7cf11a0ecf1c6851db7c26 Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Thu, 15 Dec 2022 11:52:58 +0100
+Subject: [PATCH] Fix useradd audit event logging of ID field
+
+When useradd sends its ADD_USER event, it is filling in the id field. This is not yet written to disk. When auditd sees the event and the log format is enriched, auditd tries to lookup the user name but it does not exist. This causes the event to never be resolvable since ausearch relies on the lookup information attached by auditd.
+
+The fix is to not send the id information for any event until after close_files() is called. Just the acct field is all that is
+
+Patch by Steve Grubb (afaik).
+
+Reported at https://bugzilla.redhat.com/show_bug.cgi?id=1713432
+---
+ src/useradd.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/useradd.c b/src/useradd.c
+index e59e47681..87abd6e33 100644
+--- a/src/useradd.c
++++ b/src/useradd.c
+@@ -2225,9 +2225,14 @@ static void usr_update (unsigned long subuid_count, unsigned long subgid_count)
+ #endif				/* ENABLE_SUBIDS */
+ 
+ #ifdef WITH_AUDIT
++	/*
++	 * Even though we have the ID of the user, we won't send it now
++	 * because its not written to disk yet. After close_files it is
++	 * and we can use the real ID thereafter.
++	 */
+ 	audit_logger (AUDIT_ADD_USER, Prog,
+ 	              "adding user",
+-	              user_name, (unsigned int) user_id,
++	              user_name, AUDIT_NO_ID,
+ 	              SHADOW_AUDIT_SUCCESS);
+ #endif
+ 	/*

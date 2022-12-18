@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 10:04:44 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1205502: Fix useradd audit event logging of ID field
+  * Add shadow-audit-no-id.patch
+
+-------------------------------------------------------------------
 Tue Nov  8 21:15:44 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.13:
