@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 19 09:01:02 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add support-flake8-6.patch in order to support flake8 version 6.
+
+-------------------------------------------------------------------
 Sat Jan 15 15:42:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1

@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/zheller/flake8-quotes/
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-quotes/flake8-quotes-%{version}.tar.gz
+Patch0:         support-flake8-6.patch
 BuildRequires:  %{python_module flake8 >= 3.3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +41,7 @@ Flake8 Extension to lint for quotes.
 
 %prep
 %setup -q -n flake8-quotes-%{version}
+%patch0 -p1
 
 %build
 %python_build
