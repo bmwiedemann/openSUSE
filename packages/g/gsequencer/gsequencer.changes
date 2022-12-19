@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 18 19:14:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.3:
+  * fixed type safety with recent clang
+  * minor improvements
+  * improved thread-safety of AgsSynthGenerator and machines using it like
+    AgsSynth, AgsFMSynth, AgsSyncsynth and AgsFMSyncsynth
+  * improved AgsIndicator applying margin of GtkWidget
+
+-------------------------------------------------------------------
 Sat Sep 17 07:56:00 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v4.4.1 fixed potential SIGSEGV while adjusting
