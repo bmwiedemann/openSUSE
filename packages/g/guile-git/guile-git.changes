@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 18 18:30:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.2:
+  * Fix crash when fetching multiple sub-modules
+    This bug was reported at <https://issues.guix.gnu.org/48855>.  It could
+    lead to crashes via SIGSEGV or SIGILL while fetching multiple
+    sub-modules in a row.
+
+-------------------------------------------------------------------
 Wed Jul  7 16:33:33 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - build non-parallel for reproducible build results (boo#1170378)
