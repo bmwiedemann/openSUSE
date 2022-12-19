@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 18 19:10:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.38:
+  * don't print misleading diagnostic when exiting with failure 
+  * growlight: ignore NCTYPE_RELEASE
+  * adapting notcurses 
+
+-------------------------------------------------------------------
 Mon Oct 25 20:20:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.37
