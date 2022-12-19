@@ -24,7 +24,7 @@
 %define title_version_url %{title_version}
 %define objects_version 1.3.5
 Name:           openrct2
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        An open source re-implementation of Roller Coaster Tycoon 2
 License:        GPL-3.0-only
