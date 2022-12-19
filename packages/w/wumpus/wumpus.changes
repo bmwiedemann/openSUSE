@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 18 12:50:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9:
+  * Fix packaging error.
+  * Numerous small C fixes by Julian Cowley.
+
+-------------------------------------------------------------------
 Fri Mar 27 21:55:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.7:

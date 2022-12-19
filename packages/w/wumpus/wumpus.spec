@@ -1,7 +1,7 @@
 #
 # spec file for package wumpus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   superhack
 Name:           wumpus
-Version:        1.7
+Version:        1.9
 Release:        0
 Summary:        Faithful transcription of the 1974 Atari Wumpus game
 License:        BSD-2-Clause
