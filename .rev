@@ -84,4 +84,14 @@
     <comment></comment>
     <requestid>1029789</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f3a2c69308e3c755f8b691714925afed</srcmd5>
+    <version>1.3.13</version>
+    <time>1671455302</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests with -n1 to avoid race condition in tests
+  gh#xmlsec/python-xmlsec#210
+</comment>
+    <requestid>1043746</requestid>
+  </revision>
 </revisionlist>

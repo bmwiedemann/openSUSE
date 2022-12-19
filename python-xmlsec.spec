@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xmlsec
 Version:        1.3.13
 Release:        0
@@ -30,6 +29,7 @@ BuildRequires:  %{python_module lxml >= 3.8.0}
 BuildRequires:  %{python_module lxml-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -62,12 +62,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%ifarch %ix86
-export skip_tests="not test_reinitialize_module"
-%else
-export skip_tests=""
-%endif
-%pytest_arch -k "$skip_tests" tests/
+# gh#xmlsec/python-xmlsec#244
+donttest="test_sign_case5"
+
+# Run tests with -n 1 to avoid race condition in tests
+# gh#xmlsec/python-xmlsec#210
+%pytest_arch -n 1 -k "not (${donttest})" tests/
 
 %files %{python_files}
 %doc README.rst

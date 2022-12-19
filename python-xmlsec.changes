@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 11:33:28 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests with -n1 to avoid race condition in tests
+  gh#xmlsec/python-xmlsec#210
+
+-------------------------------------------------------------------
 Tue Oct 18 13:13:45 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.13.13
