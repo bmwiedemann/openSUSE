@@ -556,4 +556,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>983894</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>b2a9352abc0c2b7fe90cdd7abeef81f3</srcmd5>
+    <version>6.5</version>
+    <time>1671455273</time>
+    <user>dimstar_suse</user>
+    <comment>- Use tmpfiles_create_package
+- Use sysuser-tools unconditionally (bsc#1205161)</comment>
+    <requestid>1043600</requestid>
+  </revision>
 </revisionlist>

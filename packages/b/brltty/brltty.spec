@@ -21,9 +21,6 @@
 %define api_version 0.8.4
 %define sover 0_8
 %define soname libbrlapi%{sover}
-%if 0%{?suse_version} >= 1550
-%define with_sysusersd 1
-%endif
 Name:           brltty
 Version:        6.5
 Release:        0
@@ -36,6 +33,8 @@ URL:            https://brltty.app/
 Source0:        https://brltty.app/archive/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Patch0:         brltty-udev-dir.patch
+
+Requires(pre):  system-user-brltty = %{version}-%{release}
 
 BuildRequires:  bison
 BuildRequires:  doxygen
@@ -69,9 +68,6 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xt)
-%if 0%{?with_sysusersd}
-BuildRequires:  sysuser-tools
-%endif
 %{?systemd_ordering}
 
 %description
@@ -200,10 +196,8 @@ The xbrlapi utility is a helper to have BrlAPI work on a X system.
 Summary:        Library to use BRLTTY from applications
 Group:          System/Daemons
 Requires(post): coreutils
-%if 0%{?with_sysusersd}
 #!BuildIgnore:  group(brlapi)
-Requires(pre):  group(brlapi)
-%endif
+Requires(post): group(brlapi)
 Requires(post): util-linux
 Recommends:     %{name}
 
@@ -304,9 +298,8 @@ brltty sends to the braille terminal in the application's console is
 ignored, whereas each piece of data coming from the braille terminal is
 sent to the application, rather than to brltty.
 
-%if 0%{?with_sysusersd}
 %package -n system-user-brltty
-Summary:        System user for brltty
+Summary:        System user and group named brltty
 Group:          System/Base
 Requires(pre):  group(pulse-access)
 Requires(pre):  group(root)
@@ -315,11 +308,11 @@ Requires(pre):  group(dialout)
 Requires(pre):  group(audio)
 Requires(pre):  group(input)
 BuildArch:      noarch
+BuildRequires:  sysuser-tools
 %sysusers_requires
 
 %description -n system-user-brltty
 System user for the Braille display driver for Linux/Unix
-%endif
 
 %lang_package
 
@@ -327,9 +320,7 @@ System user for the Braille display driver for Linux/Unix
 %autosetup -p1
 
 %build
-%if 0%{?with_sysusersd}
 %sysusers_generate_pre Autostart/Systemd/sysusers system-user-brltty %{name}.conf
-%endif
 cp %{_sourcedir}/README.SUSE .
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' Documents/Manual-BRLTTY/Portuguese/BRLTTY.txt
@@ -395,14 +386,9 @@ install -Dm0644 Autostart/AppStream/org.a11y.brltty.metainfo.xml \
   mv %{buildroot}%{_libdir}/tcl/brlapi-%{api_version} %{buildroot}%{tcl_sitearch}/
 %endif
 
-%if 0%{?with_sysusersd}
 %pre -n system-user-brltty -f system-user-brltty.pre
-%endif
 
 %post -n %{soname}
-%if !0%{?with_sysusersd}
-getent group brlapi >/dev/null || groupadd -r brlapi >/dev/null
-%endif
 if [ ! -e %{_sysconfdir}/brlapi.key ]; then
  mcookie > %{_sysconfdir}/brlapi.key
  chgrp brlapi %{_sysconfdir}/brlapi.key
@@ -413,12 +399,15 @@ fi
 %postun -n %{soname} -p /sbin/ldconfig
 
 %pre
-%service_add_pre %{name}.path
-%if !0%{?with_sysusersd}
-getent passwd brltty >/dev/null || useradd -r -d %{_localstatedir}/lib/brltty -s /bin/false -c "user account for the brltty daemon" brltty
+%if %{defined tmpfiles_create_package}
+%tmpfiles_create_package %{name} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %endif
+%service_add_pre %{name}.path
 
 %post
+%if ! %{defined tmpfiles_create_package}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
+%endif
 %service_add_post %{name}.path
 
 # Remove any messages that could've been in place about the upgrade
@@ -494,9 +483,6 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_unitdir}/%{name}@.path
 %{_unitdir}/%{name}-device@.service
 %{_unitdir}/%{name}@.service
-%if !0%{?with_sysusersd}
-%{_sysusersdir}/%{name}.conf
-%endif
 %exclude %{_libdir}/brltty/libbrlttybba.so
 %exclude %{_libdir}/brltty/libbrlttyblb.so
 %exclude %{_libdir}/brltty/libbrlttybxw.so
@@ -565,10 +551,8 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %files -n tcl-brlapi
 %{tcl_sitearch}/brlapi-%{api_version}/
 
-%if 0%{?with_sysusersd}
 %files -n system-user-brltty
 %{_sysusersdir}/%{name}.conf
-%endif
 
 %files lang -f %{name}.lang
 %doc Documents/Manual-BRLTTY/French
