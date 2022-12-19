@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 14 09:55:06 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update config.sub from upstream 
+
+-------------------------------------------------------------------
 Mon Dec 5 10:17:43 UTC 2022 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.7:
   * Typed Racket offers Shallow and Optional modes for its gradual
