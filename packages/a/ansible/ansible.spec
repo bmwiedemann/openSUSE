@@ -51,6 +51,10 @@ BuildRequires:  ansible-core >= 2.14.1
 
 Requires:       %{ansible_python}-base >= 3.9
 Requires:       ansible-core >= 2.14.1
+
+# Do not check any files in collections for requires
+%global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
+
 BuildArch:      noarch
 
 %description
@@ -69,13 +73,6 @@ done
 
 # fix for wrong shebang:
 sed -i 's|/Users/kbreit/Documents/Programming/ansible_collections/cisco/meraki/venv/bin/python|%{_bindir}/%{ansible_python_executable}|g' ansible_collections/cisco/meraki/scripts/sublime-build/build.py.generic
-
-# Replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly.
-find ./ -type f -exec \
-    sed -i '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} \;
-
-find ./ -type f -exec \
-    sed -i '1s|python$|%{ansible_python_executable}|' {} \;
 
 # remove .keep and .gitignore files
 find ./ansible_collections/ -iname .gitignore -delete
