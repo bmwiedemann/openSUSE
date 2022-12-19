@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 19 09:11:29 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.24
+  * This is a hotfix release, containing a fix for a common D3D12
+    crash that could happen when analysing a capture using bindless
+    resource access. 
+
+-------------------------------------------------------------------
 Mon Dec  5 11:46:40 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.23
