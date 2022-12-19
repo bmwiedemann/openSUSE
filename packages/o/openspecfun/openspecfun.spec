@@ -1,7 +1,7 @@
 #
 # spec file for package openspecfun
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define so_ver  1
 %define libname lib%{name}%{so_ver}
 Name:           openspecfun
-Version:        0.5.3
+Version:        0.5.5
 Release:        0
 Summary:        A collection of special mathematical functions
 License:        MIT
 Group:          System/Libraries
-URL:            https://github.com/JuliaLang/openspecfun
-Source0:        https://github.com/JuliaLang/openspecfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/JuliaMath/openspecfun
+Source0:        https://github.com/JuliaMath/openspecfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-fortran
 
 %description
