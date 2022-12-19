@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 02:07:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pymemcache.patch:
+  * Use pymemcache rather than other clients. 
+
+-------------------------------------------------------------------
 Mon Feb 21 09:35:23 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Skip building for python2

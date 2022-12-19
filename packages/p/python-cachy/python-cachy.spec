@@ -23,21 +23,21 @@ Version:        0.3.0
 Release:        0
 Summary:        A caching library for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/cachy
 Source:         https://files.pythonhosted.org/packages/source/c/cachy/cachy-%{version}.tar.gz
+Patch0:         support-pymemcache.patch
 BuildRequires:  %{python_module fakeredis >= 0.10.2}
 BuildRequires:  %{python_module flexmock >= 0.10.2}
 BuildRequires:  %{python_module msgpack-python >= 0.5}
+BuildRequires:  %{python_module pymemcache >= 4.0}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module pytest-mock >= 1.9}
-BuildRequires:  %{python_module python-memcached >= 1.59}
 BuildRequires:  %{python_module redis >= 2.10}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-msgpack-python >= 0.5
-Recommends:     python-python-memcached >= 1.59
+Recommends:     python-pymemcache >= 4.0
 Recommends:     python-redis >= 2.10
 BuildArch:      noarch
 %python_subpackages
@@ -46,7 +46,7 @@ BuildArch:      noarch
 Cachy provides a caching library.
 
 %prep
-%setup -q -n cachy-%{version}
+%autosetup -p1 -n cachy-%{version}
 
 %build
 %python_build

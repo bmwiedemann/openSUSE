@@ -1,0 +1,19 @@
+Index: cachy-0.3.0/cachy/stores/memcached_store.py
+===================================================================
+--- cachy-0.3.0.orig/cachy/stores/memcached_store.py
++++ cachy-0.3.0/cachy/stores/memcached_store.py
+@@ -1,12 +1,9 @@
+ # -*- coding: utf-8 -*-
+ 
+ try:
+-    from pylibmc import memcache
++    from pymemcache.client import base as memcache
+ except ImportError:
+-    try:
+-        import memcache
+-    except ImportError:
+-        memcache = None
++    memcache = None
+ 
+ from ..contracts.taggable_store import TaggableStore
+ 
