@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 18 17:25:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.26.1
+    - Fixed the loss of settings on Android.
+    - Fixed the use of non-public or deprecated APIs
+      on macOS to comply with App Store Guidelines.
+  + from version 1.26.0
+    - Support for macOS 13.
+    - Support for Windows Server 2016 (version 1607).
+    - Support for Windows Server 2019.
+    - Support for Windows Server 2022.
+    - A proxy service is now available for multi-user operation in terminal
+      server environments. Details can be found in the document "Guide To
+      Installation In Corporate Networks".
+    - Fixed crashes on Android.
+    - The iOS SDK now supports the arm64 simulator.
+    - Updated OpenSSL to version 3.0.7.
+    - Updated Qt to version 6.4.1.
+
+-------------------------------------------------------------------
 Wed Nov  9 07:46:43 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Add BuildRequires, so it can also build for Leap >= 15.4.
