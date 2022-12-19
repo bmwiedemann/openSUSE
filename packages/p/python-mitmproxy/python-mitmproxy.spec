@@ -16,38 +16,36 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 %define skip_python38 1
 Name:           python-mitmproxy
-Version:        8.1.1
+Version:        9.0.1
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://mitmproxy.org
-Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-big-integer.patch -- based on commit gh#mitmproxy/mitmproxy@780adbaf9b13
-Patch:          fix-big-integer.patch
+Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module asgiref >= 3.2.10}
-BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module certifi >= 2019.9.11}
 BuildRequires:  %{python_module click >= 7.0}
-BuildRequires:  %{python_module cryptography >= 3.3}
+BuildRequires:  %{python_module cryptography >= 38.0}
+BuildRequires:  %{python_module h11 >= 0.11}
 BuildRequires:  %{python_module h2 >= 4.1}
 BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.8}
-BuildRequires:  %{python_module kaitaistruct >= 0.7}
+BuildRequires:  %{python_module kaitaistruct >= 0.10}
 BuildRequires:  %{python_module ldap3 >= 2.8}
+BuildRequires:  %{python_module mitmproxy-wireguard >= 0.1.6}
 BuildRequires:  %{python_module msgpack >= 1.0.0}
 BuildRequires:  %{python_module parver >= 0.1}
 BuildRequires:  %{python_module passlib >= 1.6.5}
 BuildRequires:  %{python_module protobuf >= 3.14}
 BuildRequires:  %{python_module publicsuffix2 >= 2.20190812}
-BuildRequires:  %{python_module pyOpenSSL >= 21.0}
+BuildRequires:  %{python_module pyOpenSSL >= 22.1}
 BuildRequires:  %{python_module pyparsing >= 2.4.2}
 BuildRequires:  %{python_module pyperclip >= 1.6.0}
 BuildRequires:  %{python_module pytest >= 6.1.0}
@@ -57,6 +55,7 @@ BuildRequires:  %{python_module ruamel.yaml >= 0.16}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers >= 2.3}
 BuildRequires:  %{python_module tornado >= 6.1}
+BuildRequires:  %{python_module typing_extensions >= 4.3 if %python-base < 3.10}
 BuildRequires:  %{python_module urwid >= 2.1.1}
 BuildRequires:  %{python_module wsproto >= 1.0}
 BuildRequires:  %{python_module zstandard >= 0.11}
@@ -65,19 +64,20 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Brotli >= 1.0
 Requires:       python-Flask >= 1.1.1
 Requires:       python-asgiref >= 3.2.10
-Requires:       python-blinker >= 1.4
 Requires:       python-certifi >= 2019.9.11
 Requires:       python-click >= 7.0
-Requires:       python-cryptography >= 3.3
+Requires:       python-cryptography >= 38.0
+Requires:       python-h11 >= 0.11
 Requires:       python-h2 >= 4.1
 Requires:       python-hyperframe >= 6.0
-Requires:       python-kaitaistruct >= 0.7
+Requires:       python-kaitaistruct >= 0.10
 Requires:       python-ldap3 >= 2.8
+Requires:       python-mitmproxy-wireguard >= 0.1.6
 Requires:       python-msgpack >= 1.0.0
 Requires:       python-passlib >= 1.6.5
 Requires:       python-protobuf >= 3.14
 Requires:       python-publicsuffix2 >= 2.20190812
-Requires:       python-pyOpenSSL >= 21.0
+Requires:       python-pyOpenSSL >= 22.1
 Requires:       python-pyparsing >= 2.4.2
 Requires:       python-pyperclip >= 1.6.0
 Requires:       python-ruamel.yaml >= 0.16
@@ -86,6 +86,9 @@ Requires:       python-tornado >= 6.1
 Requires:       python-urwid >= 2.1.1
 Requires:       python-wsproto >= 1.0
 Requires:       python-zstandard >= 0.11
+%if 0%{?python_version_nodots} < 310
+Requires:       python-typing_extensions >= 4.3
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -135,7 +138,8 @@ hypothesis.settings.register_profile(
 # test_refresh fails on i586... wrong timestamp type, maybe?
 # test_rollback and test_output[None-expected_out0-expected_err0] just randomly fail on i586
 # test_get_version fails to mock updated git version
-%pytest -k "not (test_refresh or test_rollback or test_output or test_get_version)" --hypothesis-profile="obs"
+# test_wireguard uses a binary client just available for x86_64
+%pytest -k "not (test_refresh or test_rollback or test_output or test_get_version or test_wireguard)" --hypothesis-profile="obs"
 
 %post
 %python_install_alternative mitmdump
@@ -150,7 +154,8 @@ hypothesis.settings.register_profile(
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mitmproxy
+%{python_sitelib}/mitmproxy-%{version}*-info
 %python_alternative %{_bindir}/mitmdump
 %python_alternative %{_bindir}/mitmproxy
 %python_alternative %{_bindir}/mitmweb
