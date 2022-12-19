@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 18 19:02:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.35.1:
+  * Fixed a bug where fzf with `--tiebreak=chunk` crashes on inverse match
+    query
+  * Fixed a bug where clicking above fzf would paste escape sequences
+
+-------------------------------------------------------------------
 Fri Nov 11 16:41:17 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 0.35.0:

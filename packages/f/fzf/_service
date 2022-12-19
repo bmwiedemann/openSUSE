@@ -1,5 +1,7 @@
 <services>
   <service name="download_files" mode="disabled"/>
-  <service name="go_modules" mode="disabled"/>
+  <service name="go_modules" mode="disabled">
+   <param name="compression">zst</param>
+  </service>
 </services>
 

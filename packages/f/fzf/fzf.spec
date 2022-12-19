@@ -17,15 +17,16 @@
 
 
 Name:           fzf
-Version:        0.35.0
+Version:        0.35.1
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/junegunn/fzf
 Source0:        https://github.com/junegunn/fzf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.17
+Source1:        vendor.tar.zst
+BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.19
 
 %description
 fzf is an interactive Unix filter for command-line that can be used with any list; files,
