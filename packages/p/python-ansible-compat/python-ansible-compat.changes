@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Dec 18 20:51:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- ignore deprecation warning for 'There is no current event loop'
+
+-------------------------------------------------------------------
 Sat Dec 10 16:53:30 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.2.7:

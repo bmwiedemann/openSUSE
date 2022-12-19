@@ -69,7 +69,7 @@ Facilitate working with various versions of Ansible 2.9 and newer.
 
 %check
 # excluding tests requiring internet connection
-%pytest -k 'not (test_runtime_example or test_require_collection_no_cache_dir or test_upgrade_collection or test_install_collection_dest or test_install_collection or test_require_collection or test_require_collection_wrong_version or test_prerun_reqs_v2 or test_prerun_reqs_v1 or test_prepare_environment_with_collections or test_runtime_require_module)'
+%pytest -k 'not (test_runtime_example or test_require_collection_no_cache_dir or test_upgrade_collection or test_install_collection_dest or test_install_collection or test_require_collection or test_require_collection_wrong_version or test_prerun_reqs_v2 or test_prerun_reqs_v1 or test_prepare_environment_with_collections or test_runtime_require_module)' -W ignore:'There is no current event loop'
 
 %files %{python_files}
 %{python_sitelib}/ansible_compat*
