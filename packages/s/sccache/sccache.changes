@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Dec 12 23:24:45 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.3.3~20:
+  * Fix azure deps
+  * Force concurrent disk cache by default
+  * Add experimental concurrent cache support
+  * Ignore RPM env vars by default
+  * Relax the assert_cmd dep - Closes: #1465 (#1466)
+  * Update src/config.rs
+  * Update src/config.rs
+  * Fix typo
+  * feat: Migrate azure to opendal based
+  * Implement storage upon opendal Operator
+  * Fix some typos
+  * docs: move local into its own files
+  * docs: move gha into its own files
+  * docs: move azure into its own files
+  * docs: move gcs into its own files
+  * docs: move memcached into its own files
+  * docs: move redis into its own files
+  * docs: move s3 into its own files
+  * docs: Enrich docs for s3 services
+  * refactor: Integrate with opendal for s3 (#1412)
+  * Disable the aarch64-unknown-linux-musl task for now Closes: #1458
+  * update of the version
+  * Remove bash dependency in test scripts
+  * enable gha actions storage for the default feature set
+  * Bump assert_cmd from 2.0.6 to 2.0.7
+  * Bump env_logger from 0.9.3 to 0.10.0
+  * Bump nix from 0.25.0 to 0.26.1
+  * Bump serde from 1.0.148 to 1.0.149
+  * Bump libc from 0.2.137 to 0.2.138
+  * Bump async-trait from 0.1.58 to 0.1.59
+  * Revert changes to cargo toml
+  * Update lockfile
+  * Remove openssl dependency when enabling GCS
+  * Add configurable server timeout
+  * fix https://github.com/mozilla/sccache/issues/1437
+  * better support for toolchains with symlinks
+  * remove unused aws-types
+  * Remove unused sha-1 from dependencies
+  * Update README.md to explain GHA cache behavior
+  * Revert "handle symlinks when hashing the toolchain"
+  * Revert "server: canonicalize path for compiler_info cache"
+  * Revert "add tests for symlinks"
+  * Revert "fix `invalid character in crate name` in test_symlinks"
+  * Revert "fix --stop-server in test_symlinks"
+  * Revert "fix test_symlinks when rustup is in PATH"
+  * Revert "fix compatibility with bash 3 / macos 11 ci"
+  * Bump assert_cmd from 2.0.5 to 2.0.6
+  * Document the sccache process
+  * Bump predicates from 2.1.1 to 2.1.2
+  * Bump chrono from 0.4.22 to 0.4.23
+  * Revert Cargo.lock
+  * Update gha-toolkit and docs
+  * Add support for GitHub Actions cache
+  * Bump sha-1 from 0.10.0 to 0.10.1
+  * Bump serde from 1.0.147 to 1.0.148
+  * Update winapi
+  * Update .github/dependabot.yml
+  * Update .github/dependabot.yml
+  * Update dependabot.yml
+  * Reduce depandapot PR frequency
+  * cargo update -p rouille
+  * cargo update some indirect dependencies
+  * Lower the ubuntu-18.04 version
+  * Require openssl >= 0.10.9
+  * adjust the CI to use 1.60
+  * Fix a chrono warning:
+  * update to Rust 1.60 as minimal version
+  * Bump crossbeam-utils from 0.8.12 to 0.8.14
+  * Revert "add cargo-deny configuration"
+  * Revert "move from sha-1 (unmaintained) => sha1"
+  * Revert "run cargo-deny in the ci"
+  * run cargo-deny in the ci
+  * move from sha-1 (unmaintained) => sha1
+  * add cargo-deny configuration
+  * Bump zstd from 0.11.2+zstd.1.5.2 to 0.12.0+zstd.1.5.2
+  * Enable connection reuse in s3 client
+  * Bump cc from 1.0.76 to 1.0.77
+  * readme: remove `#` from shields.io url
+  * Some minor github updates (#1401)
+  * fix compatibility with bash 3 / macos 11 ci
+  * fix test_symlinks when rustup is in PATH
+  * fix --stop-server in test_symlinks
+  * fix `invalid character in crate name` in test_symlinks
+  * add tests for symlinks
+  * server: canonicalize path for compiler_info cache
+  * handle symlinks when hashing the toolchain
+  * Improve the doc
+  * Make `SCCACHE_S3_USE_SSL` optional
+  * Bring back `SCCACHE_S3_USE_SSL`
+  * Bump uuid from 1.2.1 to 1.2.2
+  * Remove a strayed `cfg(feature = "s3")`
+  * Set executable bit for binaries in release artifacts
+  * Make s3 related tests sequential
+  * Minimize Cargo.lock changes
+  * Add some tests for s3
+  * Update aws-* crates to latest version
+  * New S3 backend
+
+-------------------------------------------------------------------
 Mon Nov 14 00:01:29 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.3.1~3:
