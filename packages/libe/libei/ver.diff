@@ -17,7 +17,7 @@ Index: libei-0.2/meson.build
      gnu_symbol_visibility: 'hidden',
 -    install: true
 +    install: true,
-+    soversion: 'suse2'
++    soversion: 'suse3'
  )
  install_headers('src/libei.h')
  
@@ -27,7 +27,7 @@ Index: libei-0.2/meson.build
      gnu_symbol_visibility: 'hidden',
 -    install: true
 +    install: true,
-+    soversion: 'suse2'
++    soversion: 'suse3'
  )
  install_headers('src/libeis.h')
  
@@ -35,7 +35,7 @@ Index: libei-0.2/meson.build
      gnu_symbol_visibility: 'hidden',
      install: true,
      include_directories: 'src',
-+    soversion: 'suse2'
++    soversion: 'suse3'
  )
  install_headers('src/libreis.h')
  

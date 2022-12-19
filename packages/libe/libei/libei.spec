@@ -17,8 +17,8 @@
 
 
 Name:           libei
-%define lname libei-suse2
-Version:        0.3
+%define lname libei-suse3
+Version:        0.4.1
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT
@@ -28,7 +28,7 @@ URL:            https://gitlab.freedesktop.org/libinput/libei/
 Source:         https://gitlab.freedesktop.org/libinput/libei/-/archive/%version/%name-%version.tar.gz
 Patch1:         system-munit.diff
 Patch2:         ver.diff
-BuildRequires:  meson
+BuildRequires:  meson >= 0.57
 BuildRequires:  ninja
 BuildRequires:  protobuf-c
 BuildRequires:  pkgconfig(libevdev)
@@ -70,7 +70,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 %autosetup -p1
 
 %build
-%meson --includedir="%_includedir/%name"
+%meson --includedir="%_includedir/%name" -Dtests=false
 %meson_build
 
 %install
@@ -80,7 +80,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/lib*.so.suse2
+%_libdir/lib*.so.*
 
 %files devel
 %_bindir/ei-debug-*

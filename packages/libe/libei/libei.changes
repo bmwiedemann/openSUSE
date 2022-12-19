@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 13 10:10:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.1
+  * ei_setup_backend_portal() was removed. The portal it
+    connected to never really existed and all the efforts since
+    have gone into supporting libei connections through the
+    RemoteDesktop and the InputCapture portals. Note that these
+    changes are not yet merged into upstream xdg-desktop-portal.
+  * a new library "liboeffis" takes the place of the above. It is
+    a helper library to connect to the RemoteDesktop portal via
+    DBus with a minimal API and retrieve the EIS socket. This
+    library is intended to be used by tools that cannot easily
+    talk DBus themselves (this includes Xwayland).
+  * the libei/libeis log handlers have a new API which makes
+    handling log messages a bit simpler.
+  * version exchange between client/server make it possible (in
+    the future) to have multiple supported protocol versions.
+
+-------------------------------------------------------------------
 Tue Jun  7 06:44:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3
