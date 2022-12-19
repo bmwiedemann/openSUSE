@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Dec 18 20:10:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Explicitly request xz compression by @dandavison in #1249
+  * Thanks to all contributors for the changes in this release! One
+    particularly exciting contribution is the tweaks to the highlighting
+    algorithm made by @phillipwood in #1244. This is something that has
+    remained more or less the same since delta was first created, but #1244
+    brings several improvements in the details of exactly which characters
+    are highlighted.
+  * Change Rust toolchain in 'Deploy Manual' CI task by @dandavison in #1183
+  * Switch bat to library mode by @tranzystorek-io in #1187
+  * Add sourcehut link parsing by @p00f in #1190
+  * Refactoring ansi/iterator by @zhiburt in #1191
+  * Add codeberg link parsing by @p00f in #1194
+  * Add terminal width fallback via stty if on windows/MSYS2 by @th1000s in
+    #1030
+  * measure_text_width() without constructing a temporary string by @th1000s
+    in #1216
+  * Remove Git 2.37 workaround from install docs by @adamchainz in #1228
+  * Fix clippy warnings by @clnoll in #1236
+  * Remove Provides in Debian package by @baryluk in #1217
+  * Handle quoted filenames in diff header by @th1000s in #1222
+  * ci: improve formatting by @MarcoIeni in #1238
+  * Highlighting improvements by @phillipwood in #1244
+  * ci: release apple arm binary by @MarcoIeni in #1239
+  * try fix bad alignment in unicode (#1144) by @SheldonNico in #1145
+
+-------------------------------------------------------------------
 Thu Sep  1 11:58:39 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 0.14.0:

@@ -17,17 +17,18 @@
 
 
 Name:           git-delta
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
 URL:            https://github.com/dandavison/delta
 Source0:        https://github.com/dandavison/delta/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
-BuildRequires:  git
+BuildRequires:  git-core
+BuildRequires:  zstd
 Conflicts:      sccs
 
 %description

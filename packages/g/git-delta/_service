@@ -1,7 +1,8 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">git-delta-0.14.0.tar.gz</param>
-     <param name="compression">gz</param>
+     <param name="srctar">git-delta-0.15.1.tar.gz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
+  <service name="cargo_audit" mode="disabled"/>
 </services>
