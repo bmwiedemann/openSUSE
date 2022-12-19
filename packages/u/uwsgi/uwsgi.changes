@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Tue Nov 15 10:58:25 UTC 2022 - pgajdos@suse.com
 
 - php8 is supported already

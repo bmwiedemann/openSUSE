@@ -118,7 +118,7 @@ BuildRequires:  v8-devel
 %endif
 %endif
 BuildRequires:  zeromq-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 %{?systemd_requires}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       uwsgi-carbon = %{version}
