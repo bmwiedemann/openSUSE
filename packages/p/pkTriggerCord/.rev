@@ -78,4 +78,33 @@
   groups to uaccess (bnc#1157352) -- dropped setcap mess</comment>
     <requestid>750220</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>63e792681e614246b3c081e976b38687</srcmd5>
+    <version>0.85.00+git.20220806</version>
+    <time>1671455293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.85.00+git.20220806:
+  * handle retval of write()
+  * Makefile: remove external target
+  * comment out dangerous setting
+- remove (they are upstream)
+  * 0001-Makefile-remove-external-target.patch
+  * 0001-comment-out-dangerous-setting.patch
+  * 0001-handle-retval-of-write.patch
+
+- Update to version v0.85.00+git.20220716:
+  * Testing K-3III support
+  * Fixed function name plsr_set_expose_compensation -&gt; pslr Fixed a few sign-unsigned comparison issues
+  * Allow specifying filename counter start in CLI
+  * Introducing pslr_utils
+  * Fixing mistakenly renamed function
+  * Enhance logging
+  * Method renames as preparation for libpktriggercord
+  * Added set_aperture to servermode ( #66 )
+- switch to obs_scm
+- add
+  * 0001-comment-out-dangerous-setting.patch
+  * 0001-handle-retval-of-write.patch</comment>
+    <requestid>1043724</requestid>
+  </revision>
 </revisionlist>

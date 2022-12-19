@@ -1,7 +1,7 @@
 #
 # spec file for package pkTriggerCord
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define sname %(echo %{name}|tr A-Z a-z)
+%define sname pktriggercord
 
 Summary:        Remote control program for Pentax DSLR cameras
 License:        LGPL-3.0-only
 Group:          Hardware/Camera
 Name:           pkTriggerCord
-Version:        0.85.00
+Version:        0.85.00+git.20220806
 Release:        0
-Source:         https://github.com/asalamon74/pktriggercord/releases/download/v%{version}/%{name}-%{version}.src.tar.gz
-Patch0:         0001-Makefile-remove-external-target.patch
+Source:         %{sname}-%{version}.tar.xz
 Patch1:         0001-rules-handle-permissions-by-uaccess.patch
-Url:            http://pktriggercord.melda.info/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://pktriggercord.melda.info/
 BuildRequires:  gcc
 BuildRequires:  gtk2-devel
 BuildRequires:  make
