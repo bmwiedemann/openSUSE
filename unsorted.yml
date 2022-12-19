@@ -10920,7 +10920,7 @@ unsorted:
   - libeditorconfig0-32bit: [x86_64] 
   - libefa1-32bit: [x86_64] 
   - libei-devel 
-  - libei-suse2 
+  - libei-suse3 
   - libeiskaltdcpp2_4 
   - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
@@ -23998,6 +23998,7 @@ unsorted:
   - python310-misaka 
   - python310-mistune 
   - python310-mitmproxy 
+  - python310-mitmproxy-wireguard 
   - python310-mizani 
   - python310-mkdocs 
   - python310-mkdocs-bootstrap 
@@ -27321,6 +27322,7 @@ unsorted:
   - python38-miniupnpc 
   - python38-misaka 
   - python38-mistune 
+  - python38-mitmproxy-wireguard 
   - python38-mizani 
   - python38-mkdocs 
   - python38-mkdocs-bootstrap 
@@ -30689,6 +30691,7 @@ unsorted:
   - python39-misaka 
   - python39-mistune 
   - python39-mitmproxy 
+  - python39-mitmproxy-wireguard 
   - python39-mizani 
   - python39-mkdocs 
   - python39-mkdocs-bootstrap 
