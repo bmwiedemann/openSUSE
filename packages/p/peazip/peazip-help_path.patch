@@ -1,8 +1,8 @@
-Index: peazip-8.6.0.src/dev/peach.pas
+Index: peazip-9.0.0.src/dev/peach.pas
 ===================================================================
---- peazip-8.6.0.src.orig/dev/peach.pas
-+++ peazip-8.6.0.src/dev/peach.pas
-@@ -41307,7 +41307,7 @@ end;
+--- peazip-9.0.0.src.orig/dev/peach.pas
++++ peazip-9.0.0.src/dev/peach.pas
+@@ -43431,7 +43431,7 @@ end;
  
  procedure TForm_peach.baboutlocalhelpClick(Sender: TObject);
  begin
@@ -10,8 +10,8 @@ Index: peazip-8.6.0.src/dev/peach.pas
 +cp_open('/usr/share/doc/packages/peazip/peazip_help.pdf',desk_env);
  end;
  
- procedure TForm_peach.baboutremoveadditionalClick(Sender: TObject);
-@@ -63737,7 +63737,7 @@ end;
+ procedure TForm_peach.baboutplugindirClick(Sender: TObject);
+@@ -66719,7 +66719,7 @@ end;
  
  procedure TForm_peach.mpeahelpofflineClick(Sender: TObject);
  begin

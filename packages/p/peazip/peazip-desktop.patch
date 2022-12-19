@@ -1,7 +1,7 @@
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
 @@ -2,6 +2,8 @@
  Exec=peazip -add2archive %F
  Icon=peazip
@@ -16,10 +16,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Icon=peazip
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipext]
  Exec=peazip -ext2full %F
@@ -36,10 +36,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipext
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipextfolder]
  Exec=peazip -ext2folder %F
@@ -56,10 +56,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipextfolder
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipexthere]
  Exec=peazip -ext2here %F
@@ -76,10 +76,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipexthere
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
 @@ -2,6 +2,8 @@
  Exec=peazip -ext2browse %F
  Icon=peazip
@@ -94,10 +94,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipopen
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
 @@ -2,6 +2,8 @@
  Exec=peazip -add2archive %F
  Icon=peazip
@@ -112,10 +112,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Icon=peazip
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipext]
  Exec=peazip -ext2full %F
@@ -132,10 +132,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipext
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipextfolder]
  Exec=peazip -ext2folder %F
@@ -152,10 +152,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipextfolder
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipexthere]
  Exec=peazip -ext2here %F
@@ -172,10 +172,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipexthere
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
 @@ -2,6 +2,8 @@
  Exec=peazip -ext2browse %F
  Icon=peazip
@@ -190,10 +190,10 @@ Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/KDE-servicemenus
  Name[en_US]=peazipopen
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-8.6.0.src/res/share/batch/freedesktop_integration/peazip.desktop
+Index: peazip-9.0.0.src/res/share/batch/freedesktop_integration/peazip.desktop
 ===================================================================
---- peazip-8.6.0.src.orig/res/share/batch/freedesktop_integration/peazip.desktop
-+++ peazip-8.6.0.src/res/share/batch/freedesktop_integration/peazip.desktop
+--- peazip-9.0.0.src.orig/res/share/batch/freedesktop_integration/peazip.desktop
++++ peazip-9.0.0.src/res/share/batch/freedesktop_integration/peazip.desktop
 @@ -1,14 +1,21 @@
  [Desktop Entry]
  Name=PeaZip

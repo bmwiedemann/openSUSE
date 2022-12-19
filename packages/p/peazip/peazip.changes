@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 19 07:05:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.0:
+  BACKEND:
+  * Pea 1.11.
+  CODE:
+  * Fixes, clean up of legacy code.
+  * Improved speed and memory usage.
+  FILE MANAGER:
+  * GUI better adapts to size and preference changes.
+  * Selecting one of the available tool bars (archive manager, file manager,
+    image manager) restores its visibility if the Tool bar is hidden.
+  EXTRACTION and ARCHIVING:
+  * Added new options for 7z/p7zip backend.
+  * Improved support for TAR format, and for formats used in combination with TAR.
+  * Improved support for ZPAQ and *PAQ formats.
+  * Updated compression preset scripts.
+  * Updated plugin for PeaZip.
+- Rebase all patches.
+
+-------------------------------------------------------------------
 Sun Oct  9 22:15:13 UTC 2022 - C J <c.j@tuta.io>
 
 - Update to 8.9.0:
