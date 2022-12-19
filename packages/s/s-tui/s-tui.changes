@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 18 16:04:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.1.4:
+  * Update psutil dependency to fix frequency being displayed in GHz instead
+    of MHz
+
+-------------------------------------------------------------------
 Tue Aug 17 16:02:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.3
