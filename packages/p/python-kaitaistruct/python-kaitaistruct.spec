@@ -1,7 +1,7 @@
 #
 # spec file for package python-kaitaistruct
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kaitaistruct
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        Python library for kaitaistruct
 License:        MIT
 URL:            https://kaitai.io
 Source:         https://files.pythonhosted.org/packages/source/k/kaitaistruct/kaitaistruct-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,19 +45,20 @@ compiled into a wide range of target languages.
 
 %prep
 %setup -q -n kaitaistruct-%{version}
-rm -rf kaitaistruct.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%doc README.rst
+%defattr(0644,root,root,-)
+%doc README.md
+%license LICENSE
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/kaitaistruct.py*
-%{python_sitelib}/kaitaistruct-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/kaitaistruct-%{version}*-info
 
 %changelog
