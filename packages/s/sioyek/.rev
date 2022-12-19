@@ -15,4 +15,45 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1040145</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e38b2d678d67ffdcbe64d655128e064e</srcmd5>
+    <version>2.0.0</version>
+    <time>1671455287</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix icon path.
+- Update to version 2.0.0:
+  * added super_fast_search
+  * added scrolling between pages in overview window
+  * added search results in overview window
+  * added overview_to_portal
+  * added the ability to define your own macros in prefs_user.config
+  * added the ability to source other configs from different paths
+  * improved the official python module for sioyek for extensions
+  * upgrade to MuPDF 1.20
+  * New keybind parsing method with support for non-standard layouts and unicode 
+    characters
+  * Add a smooth scroll mode.
+  * Add ability to select single words using keyboard_select command
+  * Add a scrollbar which can be enabled using toggle_scrollbar command
+  * Add commands to set configuration options at runtime.
+  * Add prerendered_page_count option which allows to configure how many pages 
+    does sioyek prerender
+  * Add an option to show the closest bookmark in the statusbar
+  * Add an option to indicate whether we are close to a portal in the statusbar
+  * Add an option to highlight using middle click instead of pressing a button. See 
+    https://github.com/ahrm/sioyek/commit/7390a40dec98b829c8beacd5d3997b00d2072ec7.
+  * Add ability to specify colors in config files using hexadecimal strings. 
+    For example instead of 1 1 0 you can now use #ffff00.
+  * Many bug-fixes and quality of life improvements
+- Remove patchsets:
+  * 0000-mupdf-1.20-compat-issue.patch
+  * 0001-parse-mupdf-1.20-links.patch
+  * 0002-improve-xdg-desktop-entry.patch
+  * 0002-fix-desktop-file-error.patch
+  * 0002-improve-desktop-file.patch
+- icon is moved to `/usr/share/pixmaps`. this is to show the desktop
+  entry correctly
+</comment>
+    <requestid>1043676</requestid>
+  </revision>
 </revisionlist>

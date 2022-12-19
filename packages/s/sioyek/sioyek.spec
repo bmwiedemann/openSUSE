@@ -17,18 +17,13 @@
 
 
 Name:           sioyek
-Version:        1.5.0
+Version:        2.0.0
 Release:        0
 Summary:        PDF Viewer for research papers and technical books
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/ahrm/sioyek
 Source0:        https://github.com/ahrm/sioyek/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0000-mupdf-1.20-compat-issue.patch
-Patch1:         0001-parse-mupdf-1.20-links.patch
-Patch2:         0002-improve-xdg-desktop-entry.patch
-Patch3:         0002-fix-desktop-file-error.patch
-Patch4:         0002-improve-desktop-file.patch
 BuildRequires:  binutils
 BuildRequires:  c++_compiler
 BuildRequires:  libQt5Gui-devel
@@ -70,7 +65,7 @@ install -Dm755 %{name} -t "%{buildroot}%{_bindir}/"
 
 install -Dm644 pdf_viewer/prefs.config -t "%{buildroot}%{_sysconfdir}/%{name}/"
 install -Dm644 pdf_viewer/keys.config -t "%{buildroot}%{_sysconfdir}/%{name}/"
-install -Dm644 resources/%{name}-icon-linux.png -t "%{buildroot}%{_datadir}/icons/pixmaps/"
+install -Dm644 resources/%{name}-icon-linux.png -t "%{buildroot}%{_datadir}/icons/"
 install -Dm644 resources/%{name}.desktop -t "%{buildroot}%{_datadir}/applications/"
 install -Dm644 resources/%{name}.1 -t "%{buildroot}%{_mandir}/man1/"
 
@@ -83,8 +78,7 @@ install -Dm644 tutorial.pdf -t "%{buildroot}%{_datadir}/%{name}/"
 
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%dir %{_datadir}/icons/pixmaps
-%{_datadir}/icons/pixmaps/%{name}-icon-linux.png
+%{_datadir}/icons/%{name}-icon-linux.png
 
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/prefs.config
