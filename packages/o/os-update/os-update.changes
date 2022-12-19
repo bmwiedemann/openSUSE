@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 19 12:23:37 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.7
+ - Fix detection of running rebootmgrd
+ - Add SERVICES_TRIGGERING_REBOOT (#2)
+
+-------------------------------------------------------------------
 Mon Dec  5 13:47:15 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.6
-  - restart systemd if necessary
+  - Restart systemd if necessary
 
 -------------------------------------------------------------------
 Thu Nov 24 13:49:25 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
