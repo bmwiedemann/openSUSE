@@ -39,4 +39,24 @@
 - new_python3.patch, icu721_fixes.patch: upstreamed</comment>
     <requestid>1036443</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d68bcb771efa71d06dba46e9ebfcd6a</srcmd5>
+    <version>19.3.0</version>
+    <time>1671563983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.3.0:
+  * deps : npm updates to 9.2.0
+  * build: disable v8 snapshot compression by default
+  * net: add autoSelectFamily and autoSelectFamilyAttemptTimeout options
+- temporarily require openssl 1.1.1 to build on TW
+- versioned.patch: refreshed
+
+- Update to version 19.2.0:
+  * buffer: introduce `File` class
+  * deps: update V8 to 10.8.168.20
+  * doc: deprecate use of invalid ports in `url.parse`
+  * util: add fast path for utf8 encoding
+For details, see CHANGELOG_V19.md</comment>
+    <requestid>1043680</requestid>
+  </revision>
 </revisionlist>

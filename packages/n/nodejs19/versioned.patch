@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v19.1.0/Makefile
+Index: node-v19.3.0/Makefile
 ===================================================================
---- node-v19.1.0.orig/Makefile
-+++ node-v19.1.0/Makefile
+--- node-v19.3.0.orig/Makefile
++++ node-v19.3.0/Makefile
 @@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v19.1.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v19.1.0/tools/install.py
+Index: node-v19.3.0/tools/install.py
 ===================================================================
---- node-v19.1.0.orig/tools/install.py
-+++ node-v19.1.0/tools/install.py
+--- node-v19.3.0.orig/tools/install.py
++++ node-v19.3.0/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -113,10 +113,10 @@ Index: node-v19.1.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v19.1.0/doc/node.1
+Index: node-v19.3.0/doc/node.1
 ===================================================================
---- node-v19.1.0.orig/doc/node.1
-+++ node-v19.1.0/doc/node.1
+--- node-v19.3.0.orig/doc/node.1
++++ node-v19.3.0/doc/node.1
 @@ -31,24 +31,24 @@
  .Dt NODE 1
  .
@@ -146,75 +146,10 @@ Index: node-v19.1.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v19.1.0/deps/npm/man/man1/npm.1
+Index: node-v19.3.0/src/node_main.cc
 ===================================================================
---- node-v19.1.0.orig/deps/npm/man/man1/npm.1
-+++ node-v19.1.0/deps/npm/man/man1/npm.1
-@@ -1,6 +1,6 @@
- .TH "NPM" "1" "November 2022" "" ""
- .SH "NAME"
--\fBnpm\fR \- javascript package manager
-+\fBnpm19\fR \- javascript package manager
- .SS Synopsis
- .P
- .RS 2
-@@ -21,7 +21,7 @@ It is extremely configurable to support
- commonly, you use it to publish, discover, install, and develop node
- programs\.
- .P
--Run \fBnpm help\fP to get a list of available commands\.
-+Run \fBnpm19 help\fP to get a list of available commands\.
- .SS Important
- .P
- npm comes preconfigured to use npm's public registry at
-@@ -37,14 +37,14 @@ their terms of use\.
- You probably got npm because you want to install stuff\.
- .P
- The very first thing you will most likely want to run in any node
--program is \fBnpm install\fP to install its dependencies\.
-+program is \fBnpm19 install\fP to install its dependencies\.
- .P
--You can also run \fBnpm install blerg\fP to install the latest version of
-+You can also run \fBnpm19 install blerg\fP to install the latest version of
- "blerg"\.  Check out npm help install for more
- info\.  It can do a lot of stuff\.
- .P
--Use the \fBnpm search\fP command to show everything that's available in the
--public registry\.  Use \fBnpm ls\fP to show everything you've installed\.
-+Use the \fBnpm19 search\fP command to show everything that's available in the
-+public registry\.  Use \fBnpm19 ls\fP to show everything you've installed\.
- .SS Dependencies
- .P
- If a package lists a dependency using a git URL, npm will install that
-@@ -175,18 +175,18 @@ https://github\.com/npm/rfcs
- .SS See Also
- .RS 0
- .IP \(bu 2
--npm help help
-+npm19 help help
- .IP \(bu 2
- package\.json \fI/configuring\-npm/package\-json\fR
- .IP \(bu 2
--npm help npmrc
-+npm19 help npmrc
- .IP \(bu 2
--npm help config
-+npm19 help config
- .IP \(bu 2
--npm help install
-+npm19 help install
- .IP \(bu 2
--npm help prefix
-+npm19 help prefix
- .IP \(bu 2
--npm help publish
-+npm19 help publish
- 
- .RE
-Index: node-v19.1.0/src/node_main.cc
-===================================================================
---- node-v19.1.0.orig/src/node_main.cc
-+++ node-v19.1.0/src/node_main.cc
+--- node-v19.3.0.orig/src/node_main.cc
++++ node-v19.3.0/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -223,10 +158,10 @@ Index: node-v19.1.0/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v19.1.0/tools/test.py
+Index: node-v19.3.0/tools/test.py
 ===================================================================
---- node-v19.1.0.orig/tools/test.py
-+++ node-v19.1.0/tools/test.py
+--- node-v19.3.0.orig/tools/test.py
++++ node-v19.3.0/tools/test.py
 @@ -949,7 +949,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -236,14 +171,14 @@ Index: node-v19.1.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v19.1.0/node.gyp
+Index: node-v19.3.0/node.gyp
 ===================================================================
---- node-v19.1.0.orig/node.gyp
-+++ node-v19.1.0/node.gyp
-@@ -22,8 +22,8 @@
-     'node_use_openssl%': 'true',
+--- node-v19.3.0.orig/node.gyp
++++ node-v19.3.0/node.gyp
+@@ -23,8 +23,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
+     'node_enable_v8_vtunejit%': 'false',
 -    'node_core_target_name%': 'node',
 -    'node_lib_target_name%': 'libnode',
 +    'node_core_target_name%': 'node19',
@@ -251,173 +186,3 @@ Index: node-v19.1.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v19.1.0/deps/npm/man/man1/npx.1
-===================================================================
---- node-v19.1.0.orig/deps/npm/man/man1/npx.1
-+++ node-v19.1.0/deps/npm/man/man1/npx.1
-@@ -5,10 +5,10 @@
- .P
- .RS 2
- .nf
--npx \-\- <pkg>[@<version>] [args\.\.\.]
--npx \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
--npx \-c '<cmd> [args\.\.\.]'
--npx \-\-package=foo \-c '<cmd> [args\.\.\.]'
-+npx19 \-\- <pkg>[@<version>] [args\.\.\.]
-+npx19 \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
-+npx19 \-c '<cmd> [args\.\.\.]'
-+npx19 \-\-package=foo \-c '<cmd> [args\.\.\.]'
- .fi
- .RE
- .SS Description
-@@ -57,9 +57,9 @@ no bin entries, or none of them match th
- To run a binary \fIother than\fR the named binary, specify one or more
- \fB\-\-package\fP options, which will prevent npm from inferring the package from
- the first command argument\.
--.SS \fBnpx\fP vs \fBnpm exec\fP
-+.SS \fBnpx19\fP vs \fBnpm exec\fP
- .P
--When run via the \fBnpx\fP binary, all flags and options \fImust\fR be set prior to
-+When run via the \fBnpx19\fP binary, all flags and options \fImust\fR be set prior to
- any positional arguments\.  When run via \fBnpm exec\fP, a double\-hyphen \fB\-\-\fP
- flag can be used to suppress npm's parsing of switches and options that
- should be sent to the executed command\.
-@@ -68,7 +68,7 @@ For example:
- .P
- .RS 2
- .nf
--$ npx foo@latest bar \-\-package=@npmcli/foo
-+$ npx19 foo@latest bar \-\-package=@npmcli/foo
- .fi
- .RE
- .P
-@@ -89,7 +89,7 @@ different:
- .P
- .RS 2
- .nf
--$ npm exec foo@latest bar \-\-package=@npmcli/foo
-+$ npm19 exec foo@latest bar \-\-package=@npmcli/foo
- .fi
- .RE
- .P
-@@ -105,11 +105,11 @@ $ foo@latest bar
- .P
- The double\-hyphen character is recommended to explicitly tell npm to stop
- parsing command line options and switches\.  The following command would
--thus be equivalent to the \fBnpx\fP command above:
-+thus be equivalent to the \fBnpx19\fP command above:
- .P
- .RS 2
- .nf
--$ npm exec \-\- foo@latest bar \-\-package=@npmcli/foo
-+$ npm19 exec \-\- foo@latest bar \-\-package=@npmcli/foo
- .fi
- .RE
- .SS Examples
-@@ -119,8 +119,8 @@ arguments:
- .P
- .RS 2
- .nf
--$ npm exec \-\- tap \-\-bail test/foo\.js
--$ npx tap \-\-bail test/foo\.js
-+$ npm19 exec \-\- tap \-\-bail test/foo\.js
-+$ npx19 tap \-\-bail test/foo\.js
- .fi
- .RE
- .P
-@@ -129,9 +129,9 @@ by specifying a \fB\-\-package\fP option
- .P
- .RS 2
- .nf
--$ npm exec \-\-package=foo \-\- bar \-\-bar\-argument
-+$ npm19 exec \-\-package=foo \-\- bar \-\-bar\-argument
- # ~ or ~
--$ npx \-\-package=foo bar \-\-bar\-argument
-+$ npx19 \-\-package=foo bar \-\-bar\-argument
- .fi
- .RE
- .P
-@@ -139,14 +139,14 @@ Run an arbitrary shell script, in the co
- .P
- .RS 2
- .nf
--$ npm x \-c 'eslint && say "hooray, lint passed"'
--$ npx \-c 'eslint && say "hooray, lint passed"'
-+$ npm19 x \-c 'eslint && say "hooray, lint passed"'
-+$ npx19 \-c 'eslint && say "hooray, lint passed"'
- .fi
- .RE
- .SS Compatibility with Older npx Versions
- .P
--The \fBnpx\fP binary was rewritten in npm v7\.0\.0, and the standalone \fBnpx\fP
--package deprecated at that time\.  \fBnpx\fP uses the \fBnpm exec\fP
-+The \fBnpx19\fP binary was rewritten in npm v7\.0\.0, and the standalone \fBnpx19\fP
-+package deprecated at that time\.  \fBnpx19\fP uses the \fBnpm19 exec\fP
- command instead of a separate argument parser and install process, with
- some affordances to maintain backwards compatibility with the arguments it
- accepted in previous versions\.
-@@ -154,10 +154,10 @@ accepted in previous versions\.
- This resulted in some shifts in its functionality:
- .RS 0
- .IP \(bu 2
--Any \fBnpm\fP config value may be provided\.
-+Any \fBnpm19\fP config value may be provided\.
- .IP \(bu 2
- To prevent security and user\-experience problems from mistyping package
--names, \fBnpx\fP prompts before installing anything\.  Suppress this
-+names, \fBnpx19\fP prompts before installing anything\.  Suppress this
- prompt with the \fB\-y\fP or \fB\-\-yes\fP option\.
- .IP \(bu 2
- The \fB\-\-no\-install\fP option is deprecated, and will be converted to \fB\-\-no\fP\|\.
-@@ -165,13 +165,13 @@ The \fB\-\-no\-install\fP option is depr
- Shell fallback functionality is removed, as it is not advisable\.
- .IP \(bu 2
- The \fB\-p\fP argument is a shorthand for \fB\-\-parseable\fP in npm, but shorthand
--for \fB\-\-package\fP in npx\.  This is maintained, but only for the \fBnpx\fP
-+for \fB\-\-package\fP in npx\.  This is maintained, but only for the \fBnpx19\fP
- executable\.
- .IP \(bu 2
- The \fB\-\-ignore\-existing\fP option is removed\.  Locally installed bins are
- always present in the executed process \fBPATH\fP\|\.
- .IP \(bu 2
--The \fB\-\-npm\fP option is removed\.  \fBnpx\fP will always use the \fBnpm\fP it ships
-+The \fB\-\-npm19\fP option is removed\.  \fBnpx19\fP will always use the \fBnpm19\fP it ships
- with\.
- .IP \(bu 2
- The \fB\-\-node\-arg\fP and \fB\-n\fP options are removed\.
-@@ -179,26 +179,26 @@ The \fB\-\-node\-arg\fP and \fB\-n\fP op
- The \fB\-\-always\-spawn\fP option is redundant, and thus removed\.
- .IP \(bu 2
- The \fB\-\-shell\fP option is replaced with \fB\-\-script\-shell\fP, but maintained
--in the \fBnpx\fP executable for backwards compatibility\.
-+in the \fBnpx19\fP executable for backwards compatibility\.
- 
- .RE
- .SS See Also
- .RS 0
- .IP \(bu 2
--npm help run\-script
-+npm19 help run\-script
- .IP \(bu 2
--npm help scripts
-+npm19 help scripts
- .IP \(bu 2
--npm help test
-+npm19 help test
- .IP \(bu 2
--npm help start
-+npm19 help start
- .IP \(bu 2
--npm help restart
-+npm19 help restart
- .IP \(bu 2
--npm help stop
-+npm19 help stop
- .IP \(bu 2
--npm help config
-+npm19 help config
- .IP \(bu 2
--npm help exec
-+npm19 help exec
- 
- .RE
