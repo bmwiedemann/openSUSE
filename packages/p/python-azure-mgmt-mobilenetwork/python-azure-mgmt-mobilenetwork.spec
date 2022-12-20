@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-mobilenetwork
-Version:        1.0.0b3
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure Mobilenetwork Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-mobilenetwork/azure-mgmt-mobilenetwork-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-mobilenetwork/azure-mgmt-mobilenetwork-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -38,10 +40,11 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.3.1
+Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
+Requires:       python-msrest >= 0.7.1
+Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -54,10 +57,10 @@ This is the Microsoft Azure Mobilenetwork Management Client Library.
 This package has been tested with Python 3.7+.
 
 %prep
-%setup -q -n azure-mgmt-mobilenetwork-%{version}
+%setup -q -n azure-mgmt-mobilenetwork-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-mobilenetwork-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-mobilenetwork-%{realversion}
 %python_build
 
 %install
