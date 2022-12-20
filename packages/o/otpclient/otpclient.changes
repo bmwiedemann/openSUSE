@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 19 13:24:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.0:
+  * New feature (#258): entries can be displayed as a QR-Code
+  * All keyboard shortcuts have been revised, be sure to check them (Ctrl-k)
+  * Updated the artwork credits in the about dialog
+  * Code clean-up 
+
+-------------------------------------------------------------------
 Fri Dec  9 14:01:32 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.0:

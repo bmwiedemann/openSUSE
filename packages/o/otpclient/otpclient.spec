@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  libzbar-devel >= 0.20.0
 BuildRequires:  libzip-devel >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel >= 3.6.0
+BuildRequires:  qrencode-devel >= 4.0.2
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20

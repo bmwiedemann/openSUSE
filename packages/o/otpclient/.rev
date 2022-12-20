@@ -212,4 +212,17 @@
 </comment>
     <requestid>1041889</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>abcd8d71fe3a0395b8de859366f1fae4</srcmd5>
+    <version>3.1.0</version>
+    <time>1671564017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * New feature (#258): entries can be displayed as a QR-Code
+  * All keyboard shortcuts have been revised, be sure to check them (Ctrl-k)
+  * Updated the artwork credits in the about dialog
+  * Code clean-up 
+</comment>
+    <requestid>1043766</requestid>
+  </revision>
 </revisionlist>
