@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 20 12:22:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.8.5:
+  * release v1.8.5 (#5726)
+  * tag v1.8.5-rc.1 (#5718)
+  * Cherry-pick Require predicate type (#5717)
+  * cherry-pick: fix digest and verify logic (#5706)
+  * fix: interface conversion panic (#5708) (#5711)
+  * Delete category all from CRDs (cherry-pick #5557) (#5709)
+
+-------------------------------------------------------------------
 Fri Dec 09 19:49:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.8.4:

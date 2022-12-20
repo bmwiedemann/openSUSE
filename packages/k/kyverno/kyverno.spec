@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           kyverno
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
