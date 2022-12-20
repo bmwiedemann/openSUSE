@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 18 14:54:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Introduce custom actions
+  * Bump dependencies
+  * Replace deprecated functions
+  * Added writability check to screenshot_dir
+  * Include "config.h" before GLib include files
+  * Revert icon name translation
+  * Drop subtitles
+  * Add version check for libxi
+  * Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Bulgarian,
+  Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (United
+  Kingdom), Estonian, Finnish, French, Galician, Georgian, German,
+  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Interlingue,
+  Italian, Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian
+  Bokmål, Occitan (post 1500), Persian (Iran), Polish, Portuguese,
+  Portuguese (Brazil), Russian, Serbian, Slovak, Slovenian, Spanish,
+  Swedish, Thai, Turkish, Ukrainian
+
+-------------------------------------------------------------------
 Fri Aug 12 08:53:37 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.9.11

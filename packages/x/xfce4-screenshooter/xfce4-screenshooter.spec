@@ -22,13 +22,13 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.9.11
+Version:        1.10.0
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://goodies.xfce.org/projects/applications/xfce4-screenshooter
-Source:         https://archive.xfce.org/src/apps/xfce4-screenshooter/1.9/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfce4-screenshooter/1.10/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
