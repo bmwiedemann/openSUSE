@@ -50,4 +50,14 @@
 </comment>
     <requestid>931788</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8f2f998693e957a45ad214a4aed9f5e8</srcmd5>
+    <version>3.4.2</version>
+    <time>1671564084</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest to run tests in %check and disable logging tests that fails in
+  obs.
+</comment>
+    <requestid>1043957</requestid>
+  </revision>
 </revisionlist>

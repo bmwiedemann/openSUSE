@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 17:22:18 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use pytest to run tests in %check and disable logging tests that fails in
+  obs.
+
+-------------------------------------------------------------------
 Tue Nov 16 14:18:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove creation of the unnecessary __init__py, which breaks the test

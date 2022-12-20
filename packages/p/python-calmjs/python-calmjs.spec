@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-calmjs
 Version:        3.4.2
@@ -27,6 +26,8 @@ URL:            https://github.com/calmjs/calmjs/
 Source:         https://github.com/calmjs/calmjs/archive/%{version}.tar.gz
 BuildRequires:  %{python_module calmjs.parse >= 1.0.0}
 BuildRequires:  %{python_module calmjs.types}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +46,7 @@ A Python framework for building toolchains and utilities for working
 with the Node.js ecosystem from within a Python environment.
 
 %prep
-%setup -q -n calmjs-%{version}
+%autosetup -p1 -n calmjs-%{version}
 # needs network and npm
 rm src/calmjs/tests/test_npm.py
 # we don't have yarn binary
@@ -65,9 +66,8 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-# gh#calmjs/calmjs#61
-# %%python_expand rm -v %%{buildroot}%%{$python_sitelib}/calmjs/tests/test_argparse.py
-%pyunittest -v calmjs.tests.make_suite
+# DistLoggerTestCase is not working correctly in obs build environment
+%pytest -v --pyargs calmjs.tests -k 'not DistLoggerTestCase'
 
 %post
 %python_install_alternative calmjs
@@ -79,6 +79,8 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %doc CHANGES.rst
 %python_alternative %{_bindir}/calmjs
-%{python_sitelib}/*
+%{python_sitelib}/calmjs
+%{python_sitelib}/calmjs-%{version}*-nspkg.pth
+%{python_sitelib}/calmjs-%{version}*-info
 
 %changelog
