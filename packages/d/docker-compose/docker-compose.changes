@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 20 12:21:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * build(deps): bump github.com/containerd/containerd from 1.6.12 to 1.6.14
+  * fix race condition on compose logs
+  * update projectOptions to be public by renaming it to ProjectOptions
+  * detect dependency failed to start
+  * set CPU quota
+  * Use `DOCKER_DEFAULT_PLATFORM` to determine platform when creating container
+  * fix regression running pull --ignore-pull-failures
+  * only list running containers when --all=false
+  * volume: fix WCOW volume mounts
+
+-------------------------------------------------------------------
 Fri Dec 16 12:35:22 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.14.1:
