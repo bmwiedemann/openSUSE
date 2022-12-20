@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 19 22:06:13 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- fix i586 build caused by bogus -D_GNU_SOURCE use
+- Update to version 2.2.11
+  * platform support:
+    ** arm64: allow the use of CLISP as a build host. (#1996942,
+       reported by Andrew Patterson) 
+  * enhancement: improvements to constraint propagation around comparison
+    functions.
+  * optimization: conditional move VOPs can work on boxed values and
+    produce less consing.
+  * optimization: NUNION and UNION are generally faster.
+  * bug fix: slot-makunbound-using-class can be redefined without
+    redefining the other slot methods. (#1956621, reported by Michał Herda)
+  * bug fix: GETHASH on a table created without ":synchronized t" when run
+    concurrently in multiple threads could have returned incorrect results.
+  * bug fix: build of contributed modules assumed that 'cat' was always in
+    /bin/cat on POSIX systems. (#1995224, reported by Kasper Gałkowski)
+  * bug fix: INSPECT on an (ARRAY NIL) no longer hangs.
+    (#1995639, reported by Michał Herda)
+  * bug fix: Fix miscompilation of FILE-STRING-LENGTH when the first
+    argument has a known FILE-STREAM type. (#1995881) 
+
+-------------------------------------------------------------------
 Fri Dec 16 11:59:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Inject -D_GNU_SOURCE to CFLAGS: fixes Fixes build issue due to

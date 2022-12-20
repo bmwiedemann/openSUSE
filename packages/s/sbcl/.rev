@@ -1347,4 +1347,13 @@ Thanks</comment>
   O_LARGEFILE hiding behind feature test macro. (forwarded request 1043321 from dimstar)</comment>
     <requestid>1043327</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8effd444e48e98361c28dfb6e922926e</srcmd5>
+    <version>2.2.11</version>
+    <time>1671564043</time>
+    <user>dimstar_suse</user>
+    <comment>- fix i586 build caused by bogus -D_GNU_SOURCE use
+- Update to version 2.2.11 (forwarded request 1043830 from bobbie424242)</comment>
+    <requestid>1043837</requestid>
+  </revision>
 </revisionlist>

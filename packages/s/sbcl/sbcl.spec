@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.2.10
+Version:        2.2.11
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -133,7 +133,7 @@ cp %{S:3} .
 sed -i -e "s|\"%version\"|\"%version-%release-%_vendor\"|" version.lisp-expr
 
 %build
-export CFLAGS="%optflags -D_GNU_SOURCE"
+export CFLAGS="%optflags -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
 %if %{with bootstrap}
 %{?sbcl_arch:export SBCL_ARCH=%{sbcl_arch}}
 %if 0%{?with_clisp}
