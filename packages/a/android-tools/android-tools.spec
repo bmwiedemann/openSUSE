@@ -30,7 +30,7 @@
 %endif
 
 Name:           android-tools
-Version:        33.0.3p1
+Version:        33.0.3p2
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT

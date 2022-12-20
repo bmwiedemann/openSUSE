@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 13 17:27:34 UTC 2022 - munix9@googlemail.com
+
+- Update to version 33.0.3p2
+  * Actually update submodules to 33.0.3 (see #100)
+  * Initial support for MacOS (see #95 and #97)
+
+-------------------------------------------------------------------
 Sat Nov  5 09:36:17 UTC 2022 - munix9@googlemail.com
 
 - Update to version 33.0.3p1
