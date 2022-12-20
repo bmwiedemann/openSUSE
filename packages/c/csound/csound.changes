@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Dec 14 01:02:31 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 6.18.1
+
+  * A long-standing big-endian test failure with score strings has been fixed.
+  * The symbol spillage caused by a build misconfiguration has been resolved.
+  * Plugin ABI compatibility with earlier versions (affecting the FLTK plugin) has been restored
+  * Some left-over tracing in the mod function has been removed.
+
+- Version 6.18.0 Changes:
+  New opcodes
+  
+  * scanmap reads internal state of scanu
+  * elapsedcycles, elapsedtime, eventcycles, and eventtime. See under
+    "bugs fied" for detials.
+
+  Modified Opcodes and Gens
+
+  * fix midi list printing to stdout part of the list.
+
+  Bugs Fixed
+
+  * Fixed bug where fixed-point phase computation (in oscil family) was
+    incorrect resulting in slight freq deviations in very low freq cases.
+
+  * Fixed bug where freeing instr 0 caused memory issues in new
+    compilations. Instr 0 is not freed until reset now.
+
+  * Fixed a bug where opcode directory search was crashing Csound if HOME
+    variable not set.
+
+  * Fixed pol2rect array size setting.
+
+  * OSCsend, OSCsend_lo and OSClisten can now work with OSC messages
+    carrying no payload (as per spec and manual).
+
+  * bug in sum fixed
+
+  * 'pitchamd' opcode causes segmentation fault (macOS) (#1599)
+
+  * fixed crash on channel setting with empty channel name
+
+  * bug in ftloadk fixed (#1611)
+
+  * qnan works even when compiled with fast arithmetic
+
+  * Fix the flanger opcode for sample-accurate mode, where the xdel input was
+    not being correctly offset.
+
+  * elapsedcycles, elapsedtime, eventcycles, and eventtime introducd as
+    fixed versions of timek, times, timeinstk and timeinsts but return
+    the correct values instead of being one cycle late. This prserves
+    backward compatability
+
+  System Changes
+
+  * Fix for issue #1613:
+    Fixes the rtauhal module for all cases of multichannel output. Previously the
+    module would not work correctly with some devices.
+
+  * Csound now supports MP3 files for input and output through libsndfile
+    (version 1.1.0 and higher).
+
+  Platform Specific
+  Bela:
+
+  * Many changes to Bela csound. See bela web site for details
+
+  MacOS:
+
+  * Universal build for x86_64 and arm64, backward compatible to MacOS 10.9
+
+  WASM:
+
+  * fix sampleRate for single-thread worklet
+
+-------------------------------------------------------------------
 Wed Dec  7 21:39:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.18.1:

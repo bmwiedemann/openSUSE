@@ -36,7 +36,7 @@ Summary:        Computer Sound Synthesis and Composition Program
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://www.csounds.com
-Source:         https://github.com/csound/csound/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/csound/csound/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        COPYING_gpl2+.txt
@@ -131,6 +131,7 @@ Csound opcodes for python
 Summary:        Data files for csound
 License:        MIT
 Group:          Productivity/Multimedia/Other
+BuildArch:      noarch
 
 %description samples
 HRTF datafiles and Soundfont for csound
