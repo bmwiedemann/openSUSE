@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-rsync
 #
-# Copyright (c) 2012-2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           monitoring-plugins-rsync
 Summary:        Check rsync servers availability
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
 Version:        1.02
 Release:        0
-Url:            https://www.monitoringexchange.org/inventory/Check-Plugins/Network/check_rsync
+URL:            https://www.monitoringexchange.org/inventory/Check-Plugins/Network/check_rsync
 Source0:        check_rsync
 Source1:        COPYING
 Patch1:         monitoring-plugins-rsync-timeout.patch
 Patch2:         monitoring-plugins-rsync-hidden_modules.patch
+Patch3:         monitoring-plugins-rsync-option_binary.patch
 BuildRequires:  nagios-rpm-macros
 %if 0%{?suse_version} > 1010
 # nagios can execute the script with embedded perl
-Recommends:     perl 
+Recommends:     perl
 %endif
 Requires:       rsync
 Requires:       perl(Getopt::Long)
@@ -53,6 +54,7 @@ list modules on the Rsync server.
 install -m644 %{SOURCE0} .
 %patch1 -p0
 %patch2 -p0
+%patch3 -p0
 
 %build
 
@@ -64,7 +66,7 @@ chmod +x %buildroot/%{nagios_plugindir}/check_rsync
 %clean
 rm -rf %buildroot
 
-%files 
+%files
 %defattr(-,root,root)
 # avoid build dependecy of nagios - own the dirs
 %dir %{nagios_libdir}

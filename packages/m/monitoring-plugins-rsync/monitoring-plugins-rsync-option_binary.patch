@@ -1,0 +1,66 @@
+--- ./check_rsync	2022/12/01 15:42:58	1.1
++++ ./check_rsync	2022/12/01 15:51:40
+@@ -24,7 +24,7 @@
+ use strict;
+ use Getopt::Long;
+ 
+-use vars qw($opt_H $opt_p $opt_m);
++use vars qw($opt_H $opt_p $opt_b $opt_m);
+ use vars qw($PROGNAME %RSYNCMSG $cpid);
+ use lib "/usr/local/nagios/libexec";
+ use utils qw($TIMEOUT %ERRORS);
+@@ -30,7 +30,7 @@
+ use utils qw($TIMEOUT %ERRORS);
+ 
+ $PROGNAME = "check_rsync";
+-$ENV{'PATH'}='';
++# $ENV{'PATH'}='';
+ $ENV{'BASH_ENV'}='';
+ $ENV{'ENV'}='';
+ %RSYNCMSG = (
+@@ -60,15 +60,17 @@
+ GetOptions (
+   "H=s" => \$opt_H, "hostname=s" => \$opt_H,
+   "p=s" => \$opt_p, "port=s" => \$opt_p,
+-  "m=s@" => \$opt_m, "module=s@" => \$opt_m );
++  "b=s" => \$opt_b, "binary=s" => \$opt_b,
++  "m=s@" => \$opt_m, "module=s@" => \$opt_m);
+ 
+ unless (defined($opt_H)){
+-  print "Usage: $PROGNAME -H <host> [-p <port>] [-m <module>[,<user>,<password>] [-m <module>[,<user>,<password>]...]]\n";
++  print "Usage: $PROGNAME -H <host> [-p <port>] [ -b <path_to_rsync> ] [-m <module>[,<user>,<password>] [-m <module>[,<user>,<password>]...]]\n";
+   exit $ERRORS{'UNKNOWN'};
+ }
+ 
+ my $host = $opt_H;
+ my $port = defined($opt_p) ? $opt_p : 873;
++my $binary = defined($opt_b) ? $opt_b : '/usr/bin/rsync';
+ my $verbose = 0; # Not implemented as argument yet
+ 
+ # Create an array for each -m arguments and store them in @modules
+@@ -100,8 +102,15 @@
+ 
+ alarm($TIMEOUT);
+ 
++my $option_cont = "--contimeout=$TIMEOUT";
++my $option_port = "--port=$port";
++if ($binary =~ /rsync-ssl/) {
++    $option_cont = '';
++    $option_port = '' if $port eq 873;
++}
++
+ # Get a list of modules to see if rsync is up
+-my $command = "/usr/bin/rsync --timeout=$TIMEOUT --contimeout=$TIMEOUT --port=$port $source";
++my $command = "$binary --timeout=$TIMEOUT $option_cont $option_port $source";
+ 
+ # Workaround to kill stale rsync processes
+ $cpid = open(RSYNC, "$command|") or report_error("Unable to execute rsync: $!");
+@@ -142,7 +151,7 @@
+   undef $error_code;
+   undef $result;
+   # Get a file listing of the root of the module
+-  $command = "/usr/bin/rsync --port=$port $source";
++  $command = "$binary $option_port $source";
+ 
+   # Workaround to kill stale rsync processes
+   $cpid = open(RSYNC, "$command|") or report_error("Unable to execute rsync: $!");

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:28:14 CET 2022 - ro@suse.de
+
+- add patch monitoring-plugins-rsync-option_binary.patch
+  allow to specify path to rsync via option -b or -binary
+  to be able to use the /usr/bin/rsync-ssl wrapper
+  (leave PATH variable alone to not break the wrapper)
+
+-------------------------------------------------------------------
 Wed Jul 30 10:16:18 UTC 2014 - lars@linux-schulserver.de
 
 - renamed the package to monitoring-plugins-rsync
