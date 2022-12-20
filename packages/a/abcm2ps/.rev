@@ -254,4 +254,22 @@
   * array overflow when wrong duration in voice overlay (CVE-2021-32434, CVE-2021-32436)</comment>
     <requestid>963753</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f6e85e4e6a2b6755960bdd6f4618ca8</srcmd5>
+    <version>8.14.14</version>
+    <time>1671564025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.14.14:
+  * move the single bars 1 point to the left (#109)
+  * fix: lack of error when decoration type 2, 5, 6 or 7 on a note head 
+  * fix: remove lines starting with one '%' instead of removing the
+    character
+  * fix: loss of !tremn! in grace notes since some version 8.xx.xx
+  * fix: remove warnings dealing with accesses to dynamically allocated
+    arrays (#110)
+  * fix: lack of color on multi-rests
+  * fix: %%repeat not working
+  * add %%header2 and %%footer2 for even pages</comment>
+    <requestid>1043786</requestid>
+  </revision>
 </revisionlist>

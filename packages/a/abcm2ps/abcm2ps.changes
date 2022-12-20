@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 19 14:56:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.14:
+  * move the single bars 1 point to the left (#109)
+  * fix: lack of error when decoration type 2, 5, 6 or 7 on a note head 
+  * fix: remove lines starting with one '%' instead of removing the
+    character
+  * fix: loss of !tremn! in grace notes since some version 8.xx.xx
+  * fix: remove warnings dealing with accesses to dynamically allocated
+    arrays (#110)
+  * fix: lack of color on multi-rests
+  * fix: %%repeat not working
+  * add %%header2 and %%footer2 for even pages
+
+-------------------------------------------------------------------
 Tue Feb  1 13:32:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.14.13:
