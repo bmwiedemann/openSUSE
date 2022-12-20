@@ -83,12 +83,6 @@ BuildArch:      i686
 %bcond_with gold
 %endif
 
-# Both BFD and Gold run out of memory on 32-bit.
-%ifarch %ix86 %arm
-%bcond_without lld
-%else
-%bcond_with lld
-%endif
 
 %endif #with clang
 
@@ -115,11 +109,6 @@ BuildArch:      i686
 %bcond_with system_harfbuzz
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
-%bcond_without system_avif
-%else
-%bcond_with system_avif
-%endif
 
 %bcond_without system_freetype
 %bcond_without system_nghttp2
@@ -129,12 +118,14 @@ BuildArch:      i686
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %bcond_without system_aom
+%bcond_without system_avif
 %bcond_without icu_71
 %bcond_without ffmpeg_5
 %bcond_without system_dav1d
 %bcond_without system_spirv
 %else
 %bcond_with system_aom
+%bcond_with system_avif
 %bcond_with icu_71
 %bcond_with ffmpeg_5
 %bcond_with system_dav1d
@@ -537,7 +528,7 @@ BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil)
 %endif
 %if %{with system_avif}
-BuildRequires:  pkgconfig(libavif)
+BuildRequires:  pkgconfig(libavif) >= 0.10
 %endif
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
@@ -779,8 +770,13 @@ export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
 export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 %endif
 
-
-export LDFLAGS="%{?build_ldflags}"
+#The chromium build process passes lots of .o files directly to the linker instead of using static libraries,
+#and relies on the linker eliminating unused sections.
+#Re-add these parameters from build/config/compiler/BUILD.gn.
+export LDFLAGS="%{?build_ldflags} -Wl,-O2 -Wl,--gc-sections "
+%if %{without lld} && %{without gold}
+export LDFLAGS="$LDFLAGS -Wl,--gc-keep-exported"
+%endif
 
 
 %if %{with clang}
@@ -1097,7 +1093,7 @@ myconf_gn+=" v8_symbol_level=1"
 %endif
 %ifarch %ix86 %arm
 #Sorry, no debug on 32bit.
-myconf_gn+=" symbol_level=0" 
+myconf_gn+=" symbol_level=1" 
 myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" v8_symbol_level=0"
 %endif
@@ -1130,6 +1126,9 @@ myconf_gn+=" enable_webui_certificate_viewer=false"
 myconf_gn+=" enable_background_contents=false"
 myconf_gn+=" enable_xz_extractor=false"
 myconf_gn+=" enable_feed_v2=false"
+myconf_gn+=" ozone_platform_headless=false"
+myconf_gn+=" angle_enable_gl_null=false"
+
 
 
 #Do not build Chromecast

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 19 16:16:22 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Pass --gc-sections to linker. Upstream build process expects this to be done,
+  and it MASSIVELY reduces size of non-LTO builds.
+- Switch to GNU bfd linker on ix86 and arm now that it works correctly.
+- Enable debuginfo generation on ix86 and arm now that it works correctly.
+- Fix build on Leap 15.5
+
+-------------------------------------------------------------------
 Tue Dec  6 17:20:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Add backported CVE-2022-43548.patch
   * inspector: DNS rebinding in --inspect via invalid octal IP
