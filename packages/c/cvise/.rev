@@ -963,4 +963,12 @@
   * Renamed transformation move-function-body to move-definition-to-declaration</comment>
     <requestid>1043436</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>57009088f87d7a0fdb02f1cf03da53c0</srcmd5>
+    <version>2.6.0+git.20221217.f1b5a08</version>
+    <time>1671564060</time>
+    <user>dimstar_suse</user>
+    <comment>- Start using mold linker.</comment>
+    <requestid>1043883</requestid>
+  </revision>
 </revisionlist>

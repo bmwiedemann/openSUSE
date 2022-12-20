@@ -31,6 +31,7 @@ BuildRequires:  flex
 BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
+BuildRequires:  mold
 %endif
 BuildRequires:  indent
 BuildRequires:  llvm-devel
@@ -70,7 +71,10 @@ and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 %if %{suse_version} < 1550
 export CC=gcc-11
 export CXX=g++-11
+%else
+%global optflags %{optflags} -fuse-ld=mold
 %endif
+
 %cmake -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
 %cmake_build
 

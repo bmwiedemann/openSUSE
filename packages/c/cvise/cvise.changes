@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 20 09:49:33 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Start using mold linker.
+
+-------------------------------------------------------------------
 Sat Dec 17 08:53:45 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221217.f1b5a08:
