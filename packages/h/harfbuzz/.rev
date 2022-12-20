@@ -907,4 +907,22 @@ https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
   tests. (forwarded request 1030307 from iznogood)</comment>
     <requestid>1030393</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>f2bc9b6645193117a47c2df544da7e2d</srcmd5>
+    <version>6.0.0</version>
+    <time>1671563995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.0:
+  + Add API to pre-process the face and speed up future subsetting
+    operations on that face. Provides up to a 95% reduction in
+    subsetting times when the same face is subset more than once.
+  + Shaping have been speedup by skipping entire lookups when the
+    buffer contents don't intersect with the lookup. Shows up to a
+    10% speedup in shaping some fonts
+  + The HarfBuzz subsetter can now drop axes by pinning them to
+    specific values (also referred to as instancing)
+- Drop harfbuzz-5.3.1-Fix_check-symbols_failure.patch: Fixed
+  upstream. (forwarded request 1043469 from iznogood)</comment>
+    <requestid>1043773</requestid>
+  </revision>
 </revisionlist>
