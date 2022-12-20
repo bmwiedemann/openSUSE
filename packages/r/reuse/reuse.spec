@@ -67,6 +67,8 @@ generates a project's bill of materials.
 %fdupes %{buildroot}%{$python3_sitelib}
 
 %check
+# Lower security requirements of git
+git config --global protocol.file.allow always
 PYTHONDONTWRITEBYTECODE=1 LC_ALL=C.UTF-8 LANG=C.UTF-8 PYTHONPATH=%{buildroot}%{python3_sitelib} py.test tests/
 
 %files

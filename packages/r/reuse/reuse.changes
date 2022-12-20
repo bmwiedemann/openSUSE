@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:02:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow git to use the file: protocol: add "git config --global
+  protocol.file.allow always" to check section.
+
+-------------------------------------------------------------------
 Thu May 19 12:26:50 UTC 2022 - Carmen Bianca Bakker <carmen@carmenbianca.eu>
 
 - update to 1.0.0:
