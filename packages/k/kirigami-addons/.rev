@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1043589</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e39bcd390da8efc46717865eec835fc1</srcmd5>
+    <version>0.6.1</version>
+    <time>1671564064</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't delete the CMake config files, tokodon needs them</comment>
+    <requestid>1043907</requestid>
+  </revision>
 </revisionlist>

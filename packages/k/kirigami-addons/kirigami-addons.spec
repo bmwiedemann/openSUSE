@@ -44,6 +44,18 @@ desktop experiences providing a native experience on both, and
 look native with any QQC2 style (qqc2-desktop-theme, Material
 or Plasma).
 
+%package devel
+Summary: Development files for kirigami-addons
+Requires: %{name} = %{version}
+
+%description devel
+A set of "widgets" i.e visual end user components along with a
+code to support them. Components are usable by both touch and
+desktop experiences providing a native experience on both, and
+look native with any QQC2 style (qqc2-desktop-theme, Material
+or Plasma). This package provides development files to build 
+applications with kirigami-addons.
+
 %lang_package
 
 %prep
@@ -57,14 +69,14 @@ or Plasma).
 %kf5_makeinstall -C build
 %find_lang %{name}
 
-# No need for CMake exports
-rm -r %{buildroot}%{_kf5_cmakedir}/
-
 %files
 %license LICENSES/*
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %{_kf5_qmldir}/org/kde/kirigamiaddons/
+
+%files devel
+%{_kf5_cmakedir}/KF5KirigamiAddons/
 
 %files lang -f %{name}.lang
 
