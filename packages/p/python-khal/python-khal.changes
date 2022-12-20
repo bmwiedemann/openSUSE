@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 11:45:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable test_bogota and test_event_no_dst because are broken with the latests
+  pytz versions
+
+-------------------------------------------------------------------
 Thu Oct  6 07:07:28 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.10.5:

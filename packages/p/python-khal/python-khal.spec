@@ -17,7 +17,6 @@
 
 
 %define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-khal
 Version:        0.10.5
 Release:        0
@@ -81,7 +80,10 @@ calendars with a variety of other programs on a host of different platforms.
 %check
 # Requires /dev/tty working
 # https://github.com/pimutils/khal/issues/683
-%pytest -k "not test_import_from_stdin"
+donttest="test_import_from_stdin"
+# Broken tests with latest pytz versions
+donttest+=" or test_bogota or test_event_no_dst"
+%pytest -k "not (${donttest})"
 
 %post
 %python_install_alternative khal
@@ -94,7 +96,8 @@ calendars with a variety of other programs on a host of different platforms.
 %files %{python_files}
 %license COPYING
 %doc AUTHORS.txt CONTRIBUTING.rst README.rst khal.conf.sample
-%{python_sitelib}/khal*
+%{python_sitelib}/khal
+%{python_sitelib}/khal-%{version}*-info
 %python_alternative %{_bindir}/khal
 %python_alternative %{_bindir}/ikhal
 
