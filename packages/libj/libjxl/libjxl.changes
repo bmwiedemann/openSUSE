@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 19 12:35:30 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch (applied reversed) to revert the requirement for an
+  updated liblcms2 library when we have an older one. This allows
+  libjxl to build in SLE15 SP4/SP5 (and Leap 15.4/15.5):
+  * 0001-Remove-LCMS-mutex.patch
+
+-------------------------------------------------------------------
 Thu Dec 15 11:32:45 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added missing baselibs.conf so that 32bit library packages

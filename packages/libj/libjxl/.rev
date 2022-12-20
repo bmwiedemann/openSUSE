@@ -23,4 +23,23 @@
     <comment>I forgot to add baselibs.conf as a source in the .spec file last time, sorry! (forwarded request 1043366 from DarkWav)</comment>
     <requestid>1043401</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>46d856f9e49887905d4f83a09f5fd921</srcmd5>
+    <version>0.7.0</version>
+    <time>1671563990</time>
+    <user>dimstar_suse</user>
+    <comment>I tested this in a Leap 15.4 system with kimageformats 5.100.0
+and gwenview5 and it could open/save jxl files correctly.
+The test was built in 
+home:alarrosa:branches:openSUSE:Backports:SLE-15-SP4:kimageformats
+
+With this, we can submit jxl support to Backports for SLE15-SP5/
+Leap 15.5
+
+- Add patch (applied reversed) to revert the requirement for an
+  updated liblcms2 library when we have an older one. This allows
+  libjxl to build in SLE15 SP4/SP5 (and Leap 15.4/15.5):
+  * 0001-Remove-LCMS-mutex.patch (forwarded request 1043745 from alarrosa)</comment>
+    <requestid>1043748</requestid>
+  </revision>
 </revisionlist>

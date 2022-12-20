@@ -26,10 +26,11 @@ URL:            https://jpegxl.info/
 #Git-Clone:     https://github.com/libjxl/libjxl
 Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
 Source1:        baselibs.conf
+Patch0:         0001-Remove-LCMS-mutex.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(lcms2) >= 2.10
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
@@ -65,7 +66,13 @@ Summary:        Command-line utilities to convert from/to JPEG XL
 Command-line utilities to convert from/to JPEG XL.
 
 %prep
-%autosetup -p1
+%setup -q
+
+# libjxl 0.7.0 requires lcms2 >= 2.13, so if we have an older version
+# (as in SLE15/Leap) just reverse the patch that adds that dependency
+%if %{pkg_vcmp liblcms2-2 < 2.13}
+%patch0 -p1 -R
+%endif
 
 %build
 %cmake -DJPEGXL_FORCE_SYSTEM_HWY=ON -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
