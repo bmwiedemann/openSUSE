@@ -1,0 +1,148 @@
+From a1089b415a3f5c753aa1b40758ffdaf28d5701b0 Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Fri, 23 Sep 2022 10:41:16 -0300
+Subject: [PATCH] Bug: 'utf8.codes' accepts spurious continuation bytes
+
+---
+ lutf8lib.c      | 27 ++++++++++++++++-----------
+ testes/utf8.lua | 12 +++++++++++-
+ 2 files changed, 27 insertions(+), 12 deletions(-)
+
+diff --git a/lutf8lib.c b/lutf8lib.c
+index e7bf098f6..3a5b9bc38 100644
+--- a/src/lutf8lib.c
++++ b/src/lutf8lib.c
+@@ -25,6 +25,9 @@
+ 
+ #define MAXUTF		0x7FFFFFFFu
+ 
++
++#define MSGInvalid	"invalid UTF-8 code"
++
+ /*
+ ** Integer type for decoded UTF-8 values; MAXUTF needs 31 bits.
+ */
+@@ -35,7 +38,8 @@ typedef unsigned long utfint;
+ #endif
+ 
+ 
+-#define iscont(p)	((*(p) & 0xC0) == 0x80)
++#define iscont(c)	(((c) & 0xC0) == 0x80)
++#define iscontp(p)	iscont(*(p))
+ 
+ 
+ /* from strlib */
+@@ -65,7 +69,7 @@ static const char *utf8_decode (const char *s, utfint *val, int strict) {
+     int count = 0;  /* to count number of continuation bytes */
+     for (; c & 0x40; c <<= 1) {  /* while it needs continuation bytes... */
+       unsigned int cc = (unsigned char)s[++count];  /* read next byte */
+-      if ((cc & 0xC0) != 0x80)  /* not a continuation byte? */
++      if (!iscont(cc))  /* not a continuation byte? */
+         return NULL;  /* invalid byte sequence */
+       res = (res << 6) | (cc & 0x3F);  /* add lower 6 bits from cont. byte */
+     }
+@@ -140,7 +144,7 @@ static int codepoint (lua_State *L) {
+     utfint code;
+     s = utf8_decode(s, &code, !lax);
+     if (s == NULL)
+-      return luaL_error(L, "invalid UTF-8 code");
++      return luaL_error(L, MSGInvalid);
+     lua_pushinteger(L, code);
+     n++;
+   }
+@@ -190,16 +194,16 @@ static int byteoffset (lua_State *L) {
+                    "position out of bounds");
+   if (n == 0) {
+     /* find beginning of current byte sequence */
+-    while (posi > 0 && iscont(s + posi)) posi--;
++    while (posi > 0 && iscontp(s + posi)) posi--;
+   }
+   else {
+-    if (iscont(s + posi))
++    if (iscontp(s + posi))
+       return luaL_error(L, "initial position is a continuation byte");
+     if (n < 0) {
+        while (n < 0 && posi > 0) {  /* move back */
+          do {  /* find beginning of previous character */
+            posi--;
+-         } while (posi > 0 && iscont(s + posi));
++         } while (posi > 0 && iscontp(s + posi));
+          n++;
+        }
+      }
+@@ -208,7 +212,7 @@ static int byteoffset (lua_State *L) {
+        while (n > 0 && posi < (lua_Integer)len) {
+          do {  /* find beginning of next character */
+            posi++;
+-         } while (iscont(s + posi));  /* (cannot pass final '\0') */
++         } while (iscontp(s + posi));  /* (cannot pass final '\0') */
+          n--;
+        }
+      }
+@@ -226,15 +230,15 @@ static int iter_aux (lua_State *L, int strict) {
+   const char *s = luaL_checklstring(L, 1, &len);
+   lua_Unsigned n = (lua_Unsigned)lua_tointeger(L, 2);
+   if (n < len) {
+-    while (iscont(s + n)) n++;  /* skip continuation bytes */
++    while (iscontp(s + n)) n++;  /* go to next character */
+   }
+   if (n >= len)  /* (also handles original 'n' being negative) */
+     return 0;  /* no more codepoints */
+   else {
+     utfint code;
+     const char *next = utf8_decode(s + n, &code, strict);
+-    if (next == NULL)
+-      return luaL_error(L, "invalid UTF-8 code");
++    if (next == NULL || iscontp(next))
++      return luaL_error(L, MSGInvalid);
+     lua_pushinteger(L, n + 1);
+     lua_pushinteger(L, code);
+     return 2;
+@@ -253,7 +257,8 @@ static int iter_auxlax (lua_State *L) {
+ 
+ static int iter_codes (lua_State *L) {
+   int lax = lua_toboolean(L, 2);
+-  luaL_checkstring(L, 1);
++  const char *s = luaL_checkstring(L, 1);
++  luaL_argcheck(L, !iscontp(s), 1, MSGInvalid);
+   lua_pushcfunction(L, lax ? iter_auxlax : iter_auxstrict);
+   lua_pushvalue(L, 1);
+   lua_pushinteger(L, 0);
+diff --git a/testes/utf8.lua b/testes/utf8.lua
+index 461e223c7..7472cfd05 100644
+--- a/testes/utf8.lua
++++ b/testes/utf8.lua
+@@ -97,9 +97,15 @@ do    -- error indication in utf8.len
+     assert(not a and b == p)
+   end
+   check("abc\xE3def", 4)
+-  check("汉字\x80", #("汉字") + 1)
+   check("\xF4\x9F\xBF", 1)
+   check("\xF4\x9F\xBF\xBF", 1)
++  -- spurious continuation bytes
++  check("汉字\x80", #("汉字") + 1)
++  check("\x80hello", 1)
++  check("hel\x80lo", 4)
++  check("汉字\xBF", #("汉字") + 1)
++  check("\xBFhello", 1)
++  check("hel\xBFlo", 4)
+ end
+ 
+ -- errors in utf8.codes
+@@ -112,12 +118,16 @@ do
+   end
+   errorcodes("ab\xff")
+   errorcodes("\u{110000}")
++  errorcodes("in\x80valid")
++  errorcodes("\xbfinvalid")
++  errorcodes("αλφ\xBFα")
+ 
+   -- calling interation function with invalid arguments
+   local f = utf8.codes("")
+   assert(f("", 2) == nil)
+   assert(f("", -1) == nil)
+   assert(f("", math.mininteger) == nil)
++
+ end
+ 
+ -- error in initial position for offset
