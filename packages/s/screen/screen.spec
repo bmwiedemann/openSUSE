@@ -88,7 +88,11 @@ rm -f %{buildroot}%{_bindir}/screen
 mv %{buildroot}%{_bindir}/screen-%{version} %{buildroot}%{_bindir}/screen
 chmod 755 %{buildroot}%{_bindir}/screen
 mkdir -p %{buildroot}%{_sysconfdir}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+%endif
 mkdir -p %{buildroot}%{_prefix}/lib
 mkdir -p %{buildroot}%{_tmpfilesdir}
 mkdir -p %{buildroot}%{rundir}/screens
@@ -96,11 +100,19 @@ chmod 755 %{buildroot}%{rundir}/screens
 mkdir -p %{buildroot}%{rundir}/uscreens
 install -m 644 screenrc %{buildroot}%{_sysconfdir}/screenrc
 install -m 644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}
+%if 0%{?suse_version} > 1500
+install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/screen
+%else
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/screen
+%endif
 
 %files
 %config %{_sysconfdir}/screenrc
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/screen
+%else
 %config %{_sysconfdir}/pam.d/screen
+%endif
 %attr(555,root,root) %{_bindir}/screen
 %dir %{_datadir}/screen
 %{_tmpfilesdir}/screen.conf
@@ -108,6 +120,20 @@ install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/screen
 %{_infodir}/screen.info*%{ext_info}
 %{_mandir}/man1/screen.1%{?ext_man}
 %license COPYING
+
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/screen ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/screen ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %tmpfiles_create %{_tmpfilesdir}/screen.conf
