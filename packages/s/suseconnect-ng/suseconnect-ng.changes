@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 13 12:57:16 UTC 2022 - tschmidt@suse.com
+
+- Update to version 1.0.0~git14.17a7901:
+  * Don't write system_token to service credentials files
+  * Allow non-root users to use --version
+  * Add: ExcludeArch: %ix86 s390 ppc64 to the .spec file, so we skip builds for unsupported architectures.
+  * Update Dockerfile.yast
+  * Use openssl go for SLE and Leap 15.5+ builds
+  * Fix keepalive feature notice during installation
+  * Fix requires for all rhel clone distributions like alma, rocky...
+
+-------------------------------------------------------------------
 Tue Nov 08 13:05:59 UTC 2022 - msabate@suse.com
 
 - Update to version 1.0.0~git0.faee7c196dc1:

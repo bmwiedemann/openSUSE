@@ -23,7 +23,7 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        1.0.0~git0.faee7c196dc1
+Version:        1.0.0~git14.17a7901
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -31,14 +31,23 @@ Summary:        Utility to register a system with the SUSE Customer Center
 Group:          System/Management
 Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
-BuildRequires:  go >= 1.16
 BuildRequires:  golang-packaging
+# use FIPS compliant go version for SLE targets and Leap 15.5+ targets
+%if ( 0%{?is_opensuse} == 0 && 0%{?sle_version} ) || ( 0%{?is_opensuse} == 1 && 0%{?sle_version} >= 150500 )
+# temporary until BuildRequires: go-openssl >= 1.16 works
+BuildRequires:  go1.18-openssl
+%else
+BuildRequires:  go >= 1.16
+%endif
 BuildRequires:  ruby-devel
 BuildRequires:  zypper
+
 %if %{with hwinfo}
 %global test_hwinfo_args -test-hwinfo
+
+ExcludeArch:    %ix86 s390 ppc64
 # packages required only for hwinfo tests
-%ifarch %ix86 ia64 x86_64 %arm aarch64
+%ifarch ia64 x86_64 %arm aarch64
 BuildRequires:  dmidecode
 %endif
 %ifarch s390x
@@ -53,14 +62,14 @@ Obsoletes:      zypper-migration-plugin < 0.99
 Provides:       zypper-migration-plugin = 0.99
 Obsoletes:      zypper-search-packages-plugin < 0.99
 Provides:       zypper-search-packages-plugin = 0.99
-%if 0%{?fedora} || 0%{?rhel} || 0%{?centos_version}
-Requires:       ca-certificates
-%else
+%if 0%{?suse_version}
 Requires:       ca-certificates-mozilla
+%else
+Requires:       ca-certificates
 %endif
 Requires:       coreutils
 # ExclusiveArch from this package
-%ifarch %ix86 ia64 x86_64 %arm aarch64
+%ifarch ia64 x86_64 %arm aarch64
 Requires:       dmidecode
 %endif
 # ExclusiveArch from this package
@@ -69,7 +78,7 @@ Requires:       s390-tools
 %endif
 Requires:       zypper
 # lscpu is only used on those
-%ifarch x86_64 aarch64
+%ifarch aarch64
 Requires:       util-linux
 %endif
 Recommends:     systemd
@@ -146,7 +155,7 @@ rm -rf %buildroot/usr/share/go
 # in pre blocks the old version is still installed. This way we can detect
 # if --keepalive was already present before
 kainfo=0
-helptext=$(SUSEConnect --help)
+helptext=$(test -x "$(type -p SUSEConnect)" && SUSEConnect --help)
 if [ $? -eq 0 ]; then
     echo "$helptext" | grep -q keepalive
     kainfo=$?
