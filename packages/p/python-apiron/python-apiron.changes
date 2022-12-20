@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 19 21:25:05 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.0
+  * Fixed: Ensure py.typed files end up in binary wheel distribution, which may break type checking for consumers
+  * Added:
+    Run tests against Python 3.11
+    Stop ignoring imports during type checking
+
+-------------------------------------------------------------------
 Sun Jan  2 10:35:31 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 6.1.0

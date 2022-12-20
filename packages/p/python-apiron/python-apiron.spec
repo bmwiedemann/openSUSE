@@ -22,18 +22,18 @@
 %define skip_python36 1
 %define modname apiron
 Name:           python-%{modname}
-Version:        6.1.0
+Version:        7.0.0
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT
 URL:            https://github.com/ithaka/apiron
 Source:         https://files.pythonhosted.org/packages/source/a/apiron/%{modname}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.11.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.11.1
 BuildArch:      noarch
 %python_subpackages
