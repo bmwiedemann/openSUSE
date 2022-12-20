@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec 19 14:38:47 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
+Fri Dec 16 15:28:13 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Error in spec file: No "config" tag in "/usr/ should be used.
+
+-------------------------------------------------------------------
+Fri Dec  9 17:12:04 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration PAM settings to /usr/etc: Saving user changed
+  configuration files in /etc and restoring them while an RPM
+  update. 
+
+-------------------------------------------------------------------
 Mon Jul 25 15:07:58 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Add recommends for ausearch binary (bsc#1201043)

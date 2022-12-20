@@ -188,12 +188,25 @@ mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}/sbin
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+%else
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+%endif
 make LSPP_PRIV=y DESTDIR=%{buildroot} install LIBEXECDIR=%{_libexecdir}
+%if 0%{?suse_version} > 1500
+cp -f %{SOURCE13} %{buildroot}%{_pam_vendordir}/newrole
+rm %{buildroot}%{_sysconfdir}/pam.d/newrole
+mv %{buildroot}%{_sysconfdir}/pam.d/run_init %{buildroot}%{_pam_vendordir}/run_init
+%else
+cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
+%endif
 install -D -m 644 %{SOURCE12} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
+%if 0%{?suse_version} < 1500
 install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
 install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
+%endif
 install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux
 install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui
 rm -f %{buildroot}%{_mandir}/ru/man8/genhomedircon.8.gz
@@ -210,9 +223,7 @@ cp %{python3_sitearch}/setools/perm_map %{buildroot}%{_localstatedir}/lib/sepolg
 %fdupes -s %{buildroot}%{_datadir}
 
 %if 0%{?suse_version} >= 1500
-rm %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui \
-   %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux \
-   %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui \
+rm %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui \
    %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux \
    %{buildroot}%{_bindir}/selinux-polgengui \
    %{buildroot}%{_bindir}/system-config-selinux \
@@ -220,8 +231,34 @@ rm %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui \
    %{buildroot}%{_datadir}/applications/system-config-selinux.desktop \
    %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
 %endif
-cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
+
 mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
+
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/run_init ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%pre newrole
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/newrole ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/run_init ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+
+%posttrans newrole
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/newrole ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post newrole
 %set_permissions %{_bindir}/newrole
@@ -250,7 +287,11 @@ mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 %{_sbindir}/run_init
 %{_sbindir}/open_init_pty
 %{_bindir}/secon
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/run_init
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/run_init
+%endif
 %config(noreplace) %{_sysconfdir}/sestatus.conf
 %{_mandir}/man8/fixfiles.8%{?ext_man}
 %{_mandir}/man8/genhomedircon.8%{?ext_man}
@@ -344,7 +385,11 @@ mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 %verify(not mode) %attr(4755,root,root) %{_bindir}/newrole
 %{_mandir}/man1/newrole.1%{?ext_man}
 %{_mandir}/ru/man1/newrole.1%{?ext_man}
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/newrole
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/newrole
+%endif
 
 %if 0%{?suse_version} < 1500
 %files gui
