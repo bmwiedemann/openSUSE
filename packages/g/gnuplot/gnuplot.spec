@@ -78,7 +78,7 @@ BuildRequires:  tex(subfigure.sty)
 BuildRequires:  tex(textgreek.sty)
 %endif
 URL:            https://www.gnuplot.info/
-Version:        5.4.4
+Version:        5.4.5
 Release:        0
 %global         underscore 5_4
 %if "%{flavor}" == ""

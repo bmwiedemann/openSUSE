@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec 17 19:33:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.5:
+  * NEW    "set key offset <dx>, <dy>" tweaks placement of the key
+  * NEW    data-driven histogram colors
+  * CHANGE re-order 3D labels to come after pm3d depthorder surfaces
+  * CHANGE hpgl: add terminal option "fontscale <value>"
+  * CHANGE for nonuniform matrix data, column(0) returns linear position in
+    matrix
+  * CHANGE set pointintervalbox 0 disables drawing the background box Bug
+  * FIX    svg: hypertext font handling
+  * FIX    track columnheaders of multiple data blocks in a single file Bug
+  * FIX    Clean up positioning of polar border, raxis, and theta tics Bug
+  * FIX    Autoscaling of logscaled raxis
+  * FIX    memory corruption if a small plot structure is recycled Bug #2550
+  * FIX    Windows qt terminal:  "pause -1" should not block mousing Bug
+  * FIX    promotion of string to integer should not assume leading 0 means
+    octal
+
+-------------------------------------------------------------------
 Tue Sep 27 18:34:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove warnings with GNU grep 3.8 and fix build with egrep/fgrep

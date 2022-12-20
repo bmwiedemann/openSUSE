@@ -1089,4 +1089,27 @@
 removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
     <requestid>1006580</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>11ccd9cce1756e7f492803428cfaf034</srcmd5>
+    <version>5.4.5</version>
+    <time>1671563986</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.5:
+  * NEW    &quot;set key offset &lt;dx&gt;, &lt;dy&gt;&quot; tweaks placement of the key
+  * NEW    data-driven histogram colors
+  * CHANGE re-order 3D labels to come after pm3d depthorder surfaces
+  * CHANGE hpgl: add terminal option &quot;fontscale &lt;value&gt;&quot;
+  * CHANGE for nonuniform matrix data, column(0) returns linear position in
+    matrix
+  * CHANGE set pointintervalbox 0 disables drawing the background box Bug
+  * FIX    svg: hypertext font handling
+  * FIX    track columnheaders of multiple data blocks in a single file Bug
+  * FIX    Clean up positioning of polar border, raxis, and theta tics Bug
+  * FIX    Autoscaling of logscaled raxis
+  * FIX    memory corruption if a small plot structure is recycled Bug #2550
+  * FIX    Windows qt terminal:  &quot;pause -1&quot; should not block mousing Bug
+  * FIX    promotion of string to integer should not assume leading 0 means
+    octal (forwarded request 1043480 from dirkmueller)</comment>
+    <requestid>1043703</requestid>
+  </revision>
 </revisionlist>
