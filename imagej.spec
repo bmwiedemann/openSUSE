@@ -1,7 +1,7 @@
 #
 # spec file for package imagej
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define SrcVersion 153f
-
+%define SrcVersion 153t
 Name:           imagej
-Version:        1.53f
+Version:        1.53t
 Release:        0
 Summary:        A Java image processing program
 License:        SUSE-Public-Domain
 Group:          Productivity/Graphics/Convertors
-Url:            http://rsbweb.nih.gov/ij/
-Source:         http://rsbweb.nih.gov/ij/download/src/ij%{SrcVersion}-src.zip
+URL:            https://rsbweb.nih.gov/ij/
+Source:         https://rsbweb.nih.gov/ij/download/src/ij%{SrcVersion}-src.zip
 Source1:        %{name}.in
 Source2:        %{name}.desktop
 Patch0:         imagej-nosourcetarget.patch
@@ -35,7 +34,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Requires:       java >= 1.8
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -60,11 +58,11 @@ ImageJ can be extended via Java plugins, and has a built-in editor and
 compiler.
 
 %prep
-%setup -n source
+%setup -q -n source
 %patch0 -p1
 
 %build
-%ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 build
+%{ant} -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 build
 
 %install
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
@@ -97,7 +95,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file %{name}
 
 %files
-%defattr(-,root,root)
 %doc release-notes.html
 %{_bindir}/*
 %{_datadir}/%{name}

@@ -1,11 +1,13 @@
---- source/build.xml	2022-04-08 15:40:02.598001218 +0200
-+++ source/build.xml	2022-04-08 15:43:15.611177038 +0200
-@@ -6,7 +6,7 @@
+Index: source/build.xml
+===================================================================
+--- source.orig/build.xml
++++ source/build.xml
+@@ -14,7 +14,7 @@
      <!-- First, ensure the build directory exists. -->
-     <mkdir dir="build" />
+     <mkdir dir="${build.dir}" />
      <!-- Build everything; add debug="on" to debug -->
--    <javac srcdir="./ij" destdir="build" optimize="on" source="1.6" target="1.6" debug="on" includeantruntime="false" encoding="utf-8">
-+    <javac srcdir="./ij" destdir="build" optimize="on" debug="on" includeantruntime="false" encoding="utf-8">
+-    <javac srcdir="./ij" destdir="${build.dir}" optimize="on" source="1.6" target="1.6" debug="on" includeantruntime="false" encoding="utf-8">
++    <javac srcdir="./ij" destdir="${build.dir}" optimize="on" debug="on" includeantruntime="false" encoding="utf-8">
      </javac>
    </target>
-   
+ 
