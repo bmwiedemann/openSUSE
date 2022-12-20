@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 13 08:42:13 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.7.6+g33:
+  * Nitpick: a flag can start with `-` too
+  * Doc: nitpick `--` has no special meaning to shells
+  * Fix paths to release binary in "publish" action
+  * Fix recursive preview (show file path)
+  * Fix test for replace_into_stdout, since color was added
+  * Fix #94: Do not replace symlink with output file
+
+-------------------------------------------------------------------
 Mon Jun 20 03:35:17 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies

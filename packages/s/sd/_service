@@ -1,9 +1,9 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/chmln/sd</param>
-    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.7.6</param>
+    <param name="revision">ac76b2d897427a682c240a43929fb8a8170e6cc1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -21,8 +21,6 @@
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">sd</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
 

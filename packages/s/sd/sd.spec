@@ -17,7 +17,7 @@
 
 
 Name:           sd
-Version:        0.7.6~0
+Version:        0.7.6+g33
 Release:        0
 Summary:        Intuitive find & replace CLI
 URL:            https://github.com/chmln/sd
