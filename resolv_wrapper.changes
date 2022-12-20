@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 20 15:37:01 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.8
+  * Fix issues with glibc >= 2.34
+  * Move debug messages from error to warning
+- Removed resolv_wrapper_fix_glibc.patch
+
+-------------------------------------------------------------------
 Wed Nov  3 14:12:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own system-directory %{_libdir}/pkgconfig

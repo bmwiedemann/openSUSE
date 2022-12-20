@@ -1,7 +1,7 @@
 #
 # spec file for package resolv_wrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           resolv_wrapper
-Version:        1.1.6
+Version:        1.1.8
 Release:        0
 
 Summary:        A wrapper for DNS name resolving or DNS faking
@@ -34,11 +34,8 @@ URL:            http://cwrap.org/
 
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
-Source2:        %{name}-rpmlintrc
-
-%if 0%{?suse_version} >= 1550
-Patch0:         resolv_wrapper_fix_glibc.patch
-%endif
+Source2:        resolv_wrapper.keyring
+Source3:        %{name}-rpmlintrc
 
 BuildRequires:  cmake
 BuildRequires:  glibc-devel
@@ -59,11 +56,7 @@ This package does not have a devel package, because this project is for
 development/testing.
 
 %prep
-%setup -q
-
-%if 0%{?suse_version} >= 1550
-%patch0 -p1
-%endif
+%autosetup -p1
 
 %build
 %cmake \
