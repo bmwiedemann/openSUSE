@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rapidfuzz
-Version:        2.13.2
+Version:        2.13.6
 Release:        0
 Summary:        Rapid fuzzy string matching
 License:        MIT
@@ -26,8 +26,11 @@ URL:            https://github.com/maxbachmann/RapidFuzz
 Source:         https://files.pythonhosted.org/packages/source/r/rapidfuzz/rapidfuzz-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module PyInstaller}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
@@ -46,11 +49,13 @@ RapidFuzz is a fast string matching library for Python and C++, which is using t
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+# remove devel file
+%python_expand find %{buildroot} -type f -name "rapidfuzz.h" -delete -print
 
 %check
 # tests are a bit unstable
@@ -69,6 +74,6 @@ export skip_tests=""
 %doc README.md
 %license LICENSE
 %{python_sitearch}/rapidfuzz
-%{python_sitearch}/rapidfuzz-*.egg-info
+%{python_sitearch}/rapidfuzz-*.dist-info
 
 %changelog
