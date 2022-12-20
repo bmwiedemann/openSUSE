@@ -1,0 +1,5 @@
+<package name="rust1.66" project="openSUSE:Factory">
+  <title>rust1.66</title>
+  <description></description>
+  <devel project="devel:languages:rust" package="rust1.66"/>
+</package>
