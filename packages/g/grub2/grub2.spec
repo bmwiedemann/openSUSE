@@ -479,6 +479,8 @@ Patch949:       0012-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
 Patch950:       0001-fs-btrfs-Use-full-btrfs-bootloader-area.patch
 Patch951:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 Patch952:       0001-ieee1275-Increase-initially-allocated-heap-from-1-4-.patch
+Patch953:       grub2-increase-crypttab-path-buffer.patch
+Patch954:       0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 19 08:39:05 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Setup multiple device paths for a nvmf boot device (bsc#1205666)
+  * 0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 01:51:45 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Increase the path buffer in the crypttab command for the long
+  volume name (bsc#1206333)
+  * grub2-increase-crypttab-path-buffer.patch
+
+-------------------------------------------------------------------
 Mon Dec  5 08:47:06 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Add tpm to signed grub.elf image (PED-1990) (bsc#1205912) 

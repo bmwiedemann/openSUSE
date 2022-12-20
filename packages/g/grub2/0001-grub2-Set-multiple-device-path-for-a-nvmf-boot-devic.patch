@@ -1,0 +1,175 @@
+From 3e77c5494fd06f430588ae9c304fea370439d531 Mon Sep 17 00:00:00 2001
+From: Wen Xiong <Wen Xiong>
+Date: Thu, 15 Dec 2022 21:33:41 -0500
+Subject: [PATCH] grub2: Set multiple device path for a nvmf boot device
+
+nvmf support native multipath(ANA) by default.
+The patch added the support for setting multiple
+device path for a nvmf boot device.
+
+localhost:~ grub2-install -v /dev/nvme1n1p1
+...
+...
+...
+grub2-install: info: executing nvsetenv boot-device /pci@800000020000132/fibre-channel@0,1/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec /pci@800000020000132/fibre-channel@0/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec /pci@800000020000132/fibre-channel@0/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec /pci@800000020000132/fibre-channel@0,1/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec.
+Installation finished. No error reported.
+
+localhost:~ # bootlist -m normal -o
+nvme7n1
+nvme5n1
+nvme1n1
+nvme4n1
+
+localhost:~ # bootlist -m normal -r
+/pci@800000020000132/fibre-channel@0,1/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec
+/pci@800000020000132/fibre-channel@0/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec
+/pci@800000020000132/fibre-channel@0/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec
+/pci@800000020000132/fibre-channel@0,1/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@ec
+
+Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+---
+ grub-core/osdep/linux/ofpath.c  |  6 ++---
+ grub-core/osdep/unix/platform.c | 48 +++++++++++++++++++++++++++++++++
+ include/grub/util/install.h     |  3 +++
+ include/grub/util/ofpath.h      |  9 +++++++
+ 4 files changed, 63 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/osdep/linux/ofpath.c b/grub-core/osdep/linux/ofpath.c
+index 7d31cfd0f..7129099db 100644
+--- a/grub-core/osdep/linux/ofpath.c
++++ b/grub-core/osdep/linux/ofpath.c
+@@ -209,7 +209,7 @@ find_obppath (const char *sysfs_path_orig)
+     }
+ }
+ 
+-static char *
++char *
+ xrealpath (const char *in)
+ {
+   char *out;
+@@ -224,7 +224,7 @@ xrealpath (const char *in)
+   return out;
+ }
+ 
+-static char *
++char *
+ block_device_get_sysfs_path_and_link(const char *devicenode)
+ {
+   char *rpath;
+@@ -535,7 +535,7 @@ of_path_get_nvme_nsid(const char* devname)
+ 
+ }
+ 
+-static char *
++char *
+ nvme_get_syspath(const char *nvmedev)
+ {
+   char *sysfs_path, *controller_node;
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index 1e2961e00..db8fa4b95 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -19,6 +19,7 @@
+ #include <config.h>
+ 
+ #include <grub/util/install.h>
++#include <grub/util/ofpath.h>
+ #include <grub/emu/hostdisk.h>
+ #include <grub/util/misc.h>
+ #include <grub/misc.h>
+@@ -131,6 +132,51 @@ grub_install_remove_efi_entries_by_distributor (const char *efi_distributor)
+   return rc;
+ }
+ 
++char *
++build_multi_boot_device(const char *install_device)
++{
++  char *sysfs_path;
++  char *nvme_ns;
++  unsigned int nsid;
++  char *ptr;
++  char *boot_device_string;
++  struct dirent *ep;
++  DIR *dp;
++
++  nvme_ns = strchr(install_device, 'n');
++  nsid = of_path_get_nvme_nsid(nvme_ns);
++  sysfs_path = nvme_get_syspath(nvme_ns);
++  strcat(sysfs_path, "/device");
++  sysfs_path = xrealpath(sysfs_path);
++
++  dp = opendir(sysfs_path);
++  ptr = boot_device_string = xmalloc (1000);
++
++  /* We cannot have a boot list with more than five entries */
++  while((ep = readdir(dp)) != NULL){
++    char *nvme_device;
++
++    if (grub_strstr(ep->d_name, "nvme")) {
++      nvme_device = xasprintf ("%s%s%x ",
++                get_ofpathname(ep->d_name),"/namespace@", nsid);
++      if ((strlen(boot_device_string) + strlen(nvme_device)) >= 200*5 - 1) {
++        grub_util_warn (_("More than five entries cannot be specified in the bootlist"));
++        free(nvme_device);
++        break;
++      }
++
++      strncpy(ptr, nvme_device, strlen(nvme_device));
++      ptr += strlen(nvme_device);
++      free(nvme_device);
++    }
++  }
++
++  *--ptr = '\0';
++  closedir(dp);
++
++  return boot_device_string;
++}
++
+ int
+ grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+ 			   const char *efifile_path,
+@@ -242,6 +288,8 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 	}
+       *ptr = '\0';
+     }
++  else if (grub_strstr(install_device, "nvme"))
++	boot_device =  build_multi_boot_device(install_device);
+   else
+     boot_device = get_ofpathname (install_device);
+ 
+diff --git a/include/grub/util/install.h b/include/grub/util/install.h
+index c144f3e4d..15f24efac 100644
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -240,6 +240,9 @@ grub_install_register_efi (const grub_disk_t *efidir_grub_disk,
+ 			   const char *efi_distributor,
+ 			   const char *force_disk);
+ 
++char *
++build_multi_boot_device(const char *install_device);
++
+ void
+ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ 				int partno, const char *relpath);
+diff --git a/include/grub/util/ofpath.h b/include/grub/util/ofpath.h
+index a0ec30620..5b1f6a56d 100644
+--- a/include/grub/util/ofpath.h
++++ b/include/grub/util/ofpath.h
+@@ -32,4 +32,13 @@ void find_file(char* filename, char* directory, struct ofpath_files_list_root* r
+ 
+ char* of_find_fc_host(char* host_wwpn);
+ 
++char* nvme_get_syspath(const char *nvmedev);
++
++char* block_device_get_sysfs_path_and_link(const char *devicenode);
++
++char* xrealpath (const char *in);
++
++unsigned int of_path_get_nvme_nsid(const char* devname);
++
++
+ #endif /* ! GRUB_OFPATH_MACHINE_UTIL_HEADER */
+-- 
+2.35.3
+
