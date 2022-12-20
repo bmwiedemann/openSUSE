@@ -17,14 +17,16 @@
 
 
 Name:           yambar
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Modular statusbar for X11 and Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/yambar
-Source:         https://codeberg.org/dnkl/yambar/archive/%{version}.tar.gz
-BuildRequires:  meson >= 0.58
+Source:         https://codeberg.org/dnkl/yambar/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  bison
+BuildRequires:  flex
+BuildRequires:  meson >= 0.59
 BuildRequires:  ninja
 BuildRequires:  pkg-config
 BuildRequires:  scdoc
@@ -33,6 +35,8 @@ BuildRequires:  pkgconfig(fcft) < 4.0.0
 BuildRequires:  pkgconfig(fcft) >= 3.0.0
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libmpdclient)
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tllist) >= 1.0.1
@@ -76,11 +80,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %build
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
-%{meson} -Dc_std=none
-%else
-%{meson}
-%endif
+%{meson} -Db_lto=true -Dbackend-x11=enabled -Dbackend-wayland=enabled
 %{meson_build}
 
 %install
@@ -90,29 +90,30 @@ Zsh command-line completion support for %{name}.
 %license LICENSE
 %doc README.md
 %{_mandir}/man1/yambar.1%{?ext_man}
+%{_mandir}/man5/yambar.5%{?ext_man}
 %{_mandir}/man5/yambar-decorations.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-alsa.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-backlight.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-battery.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-clock.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-cpu.5%{?ext_man}
+%{_mandir}/man5/yambar-modules-disk-io.5%{?ext_man}
+%{_mandir}/man5/yambar-modules-dwl.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-foreign-toplevel.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-i3.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-label.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-mem.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-mpd.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-network.5%{?ext_man}
+%{_mandir}/man5/yambar-modules-pipewire.5%{?ext_man}
+%{_mandir}/man5/yambar-modules-pulse.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-removables.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-river.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-script.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-sway-xkb.5%{?ext_man}
-%{_mandir}/man5/yambar-modules-sway.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-xkb.5%{?ext_man}
-%{_mandir}/man5/yambar-modules-xwindow.5%{?ext_man}
-%{_mandir}/man5/yambar-modules.5%{?ext_man}
 %{_mandir}/man5/yambar-particles.5%{?ext_man}
 %{_mandir}/man5/yambar-tags.5%{?ext_man}
-%{_mandir}/man5/yambar.5%{?ext_man}
 
 %{_bindir}/yambar
 %{_datadir}/applications/yambar.desktop

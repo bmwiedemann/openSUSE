@@ -16,4 +16,73 @@
 </comment>
     <requestid>999556</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>161ad05f09246f68ec252d0eb26e6b9f</srcmd5>
+    <version>1.9.0</version>
+    <time>1671564033</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify specfile and just use the defined C standard in meson config.
+- Update to version 1.9.0:
+  * Added
+	- Support for specifying number of decimals when printing a float tag.
+	- Support for custom font fallbacks.
+	- overline: new decoration.
+	- i3/sway: boolean option `strip-workspace-numbers`.
+	- font-shaping: new inheritable configuration option, allowing you to
+	- configure whether strings should be _shaped_ using HarfBuzz, or not.
+	- river: support for the new “mode” event present in version 3 of the
+	- river status manager protocol, in the form of a new tag, _”mode”_,
+	- in the `title` particle.
+	- network: request link stats and expose under tags `dl-speed` and
+	- `ul-speed` when `poll-interval` is set.
+	- new module: disk-io.
+	- new module: pulse.
+	- alsa: `dB` tag.
+	- mpd: `file` tag.
+	- pipewire: add a new module for pipewire
+	- on-click: support `next`/`previous` mouse buttons.
+	- dwl: add a new module for DWL
+	- sway: support for workspace ‘rename’ and ‘move’ events.
+  * Changed
+	- All modules are now compile-time optional.
+	- Minimum required meson version is now 0.59.
+	- Float tags are now treated as floats instead of integers when
+	  formatted with the `kb`/`kib`/`mb`/`mib`/`gb`/`gib` string particle
+	  formatters.
+	- network: `tx-bitrate` and `rx-bitrate` are now in bits/s instead of
+	  Mb/s. Use the `mb` string formatter to render these tags as before
+	  (e.g. `string: {text: &quot;{tx-bitrate:mb}&quot;}`).
+	- i3: newly created, and **unfocused** workspaces are now considered
+	  non-empty
+	- alsa: use dB instead of raw volume values, if possible, when
+	  calculating the `percent` tag
+	- cpu: `content` particle is now a template instantiated once for each
+	  core, and once for the total CPU usage. See **yambar-modules-cpu**(5) 
+	  for more information.
+	- **BREAKING CHANGE**: overhaul of the `map` particle. Instead of
+	  specifying a `tag` and then an array of `values`, you must now
+	  simply use an array of `conditions`
+  * Fixed
+	- i3: fixed “missing workspace indicator” (_err: modules/i3.c:94:
+	  workspace reply/event without 'name' and/or 'output', and/or 'focus'
+	  properties_).
+	- Slow/laggy behavior when quickly spawning many `on-click` handlers,
+	  e.g. when handling mouse wheel events.
+	- cpu: don’t error out on systems where SMT has been disabled.
+	- examples/dwl-tags: updated parsing of `output` name.
+	- sway-xkb: don’t crash when Sway sends an _”added”_ event for a
+	  device yambar is already tracking.
+	- Crash when a particle is “too wide”, and tries to render outside the
+	  bar.
+	- string: crash when failing to convert string to UTF-32.
+	- script: only first transaction processed when receiving multiple
+	  transactions in a single batch.
+	- network: missing SSID (recent kernels, or possibly wireless drivers,
+	  no longer provide the SSID in the `NL80211_CMD_NEW_STATION`
+	  response).
+	- sway-xkb: crash when compositor presents multiple inputs with
+	  identical IDs.
+</comment>
+    <requestid>1043791</requestid>
+  </revision>
 </revisionlist>
