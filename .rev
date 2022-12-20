@@ -396,4 +396,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1009686</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>92784c330decd9bbdc5415947d26599d</srcmd5>
+    <version>0.11.0</version>
+    <time>1671564050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0:
+  * b4 prep --compare-to N: shows a range-diff
+  * b4 ty: can be configured to always send mail
+  * b4 send will no longer send the entire series to the addresses found
+    in individual commit Cc: trailers
+  * you can now set extra [PATCH] prefixes permanently
+  * b4 has internal changes to ensure that we generate 7-bit-clean
+    headers for all outgoing mail
+  * b4 send --reflect: prepares the patches but only sends them to
+    yourself
+  * b4 prep --show-info: shows information about your prep-managed
+    branch</comment>
+    <requestid>1043854</requestid>
+  </revision>
 </revisionlist>

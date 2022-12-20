@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 20 05:07:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.11.0:
+  * b4 prep --compare-to N: shows a range-diff
+  * b4 ty: can be configured to always send mail
+  * b4 send will no longer send the entire series to the addresses found
+    in individual commit Cc: trailers
+  * you can now set extra [PATCH] prefixes permanently
+  * b4 has internal changes to ensure that we generate 7-bit-clean
+    headers for all outgoing mail
+  * b4 send --reflect: prepares the patches but only sends them to
+    yourself
+  * b4 prep --show-info: shows information about your prep-managed
+    branch
+
+-------------------------------------------------------------------
 Tue Oct  4 07:32:01 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add git-filter-repo to BuildRequires and update Requires
