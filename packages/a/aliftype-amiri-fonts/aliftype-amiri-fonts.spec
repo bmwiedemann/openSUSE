@@ -17,7 +17,7 @@
 
 
 Name:           aliftype-amiri-fonts
-Version:        0.117
+Version:        1.000
 Release:        0
 Summary:        Amiri is a body text Naskh typeface
 License:        OFL-1.1
@@ -43,7 +43,7 @@ it to the era of digital typesetting, in a publicly available form.
 %build
 
 %install
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} otf/Amiri*.otf
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} Amiri*.ttf
 
 %reconfigure_fonts_scriptlets
 
@@ -51,6 +51,6 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} otf/Amiri*.otf
 %license OFL.txt
 %doc NEWS.md NEWS-Arabic.md
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/Amiri*.otf
+%{_ttfontsdir}/Amiri*.ttf
 
 %changelog

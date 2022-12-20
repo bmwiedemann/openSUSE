@@ -7,4 +7,20 @@
     <comment>I want to submit aliftype-amiri-fonts to factory.</comment>
     <requestid>994635</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f1924461b263fd306d968603ce70370</srcmd5>
+    <version>1.000</version>
+    <time>1671564047</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.117 -&gt; 1.000
+- OTF fonts have been dropped for Frozen Release 1.000, using TTFs now
+- Slanted fonts have been renamed Italic since this is less confusing.
+- Remove zero-width Kashida hack needed for LibreOffice &lt; 7.5, with this release Kashida justification should be enabled for LibreOffice &gt;= 7.5.
+- The font sources are now in Glyphs format, FontForge is no longer used for editing the sources.
+- Remove the uyghur-hyphen PUA glyph.
+- Drop U+030A and U+0325 that were misused for Quranic symbols, and add U+08D1.
+- Localize stylistic set names.
+- Make medial hamza work with lam-alef ligature.</comment>
+    <requestid>1043838</requestid>
+  </revision>
 </revisionlist>

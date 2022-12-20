@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 20 00:37:05 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.117 -> 1.000
+- OTF fonts have been dropped for Frozen Release 1.000, using TTFs now
+- Slanted fonts have been renamed Italic since this is less confusing.
+- Remove zero-width Kashida hack needed for LibreOffice < 7.5, with this release Kashida justification should be enabled for LibreOffice >= 7.5.
+- The font sources are now in Glyphs format, FontForge is no longer used for editing the sources.
+- Remove the uyghur-hyphen PUA glyph.
+- Drop U+030A and U+0325 that were misused for Quranic symbols, and add U+08D1.
+- Localize stylistic set names.
+- Make medial hamza work with lam-alef ligature.
+
+
+-------------------------------------------------------------------
 Tue Aug  9 05:56:20 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 initial commit 
