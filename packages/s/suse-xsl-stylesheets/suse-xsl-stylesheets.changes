@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 12 21:32:09 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.88.2
+
+- Update 2.88.2
+  - Fix #521: SBP(FO): Don't hyphenate title & subtitle
+  - Fix #522: SBP(FO): Small cleanup
+
+-------------------------------------------------------------------
 Mon Dec 12 15:15:28 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.88.1
 
 - Update 2.88.1
