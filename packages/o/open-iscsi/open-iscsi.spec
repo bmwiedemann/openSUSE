@@ -98,9 +98,8 @@ Version:        0.2.0
 Release:        0
 Summary:        The iSCSI User-level Library
 Group:          System/Libraries
-Obsoletes:      libopeniscsiusr0_1_0
-Obsoletes:      libopeniscsiusr0_2_0
-Conflicts:      libopeniscsiusr0_2_0
+Obsoletes:      libopeniscsiusr0_1_0 <= 2.1.7
+Obsoletes:      libopeniscsiusr0_2_0 <= 2.1.7
 
 %description -n %{libname}
 The iSCSI user-space API from the open-iscsi project.
@@ -135,6 +134,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{libversion}
 Requires:       %{name} = %{version}
 Conflicts:      libopeniscsiusr0_1_0
+Conflicts:      libopeniscsiusr0_2_0
 
 %description devel
 This development package contains the open-iscsi user-level library
