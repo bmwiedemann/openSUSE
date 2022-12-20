@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 07 15:01:30 UTC 2022 - michael@stroeder.com
+
+- Update to version 0.6.1:
+  * Add a camera/microphone indicator in the users list, and hide
+    audio-only peers by default.  They can be reenabled in the side menu.
+  * Ensure that autolocked groups are locked on creation.  Thanks to
+    Michael Ströder.
+  * Don't send chat history multiple times.  Thanks to Rémy Nollet.
+  * Fix status display for remote (redirected) groups.
+
+-------------------------------------------------------------------
 Sat Sep 10 17:12:00 UTC 2022 - michael@stroeder.com
 
 - Update to version 0.6:
