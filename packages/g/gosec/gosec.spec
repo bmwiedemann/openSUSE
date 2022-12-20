@@ -21,11 +21,12 @@ Version:        2.14.0
 Release:        0
 Summary:        Golang security checker
 License:        Apache-2.0
+Group:          Development/Languages/Other
 URL:            https://github.com/securego/gosec
-Source:         gosec-%{version}.tar.gz
+Source:         gosec-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.16
+BuildRequires:  golang-packaging
 %{go_nostrip}
 
 %description
@@ -37,9 +38,9 @@ Inspects source code for security problems by scanning the go abstract syntax tr
 %build
 # Native linux build includes version tags but currently works only on x86_64
 %ifarch x86_64
-GOFLAGS="-buildmode=pie" make build-linux
+GOFLAGS="-buildmode=pie" GIT_TAG="v%{version}" make build-linux
 %else
-GOFLAGS="-buildmode=pie" make build
+GOFLAGS="-buildmode=pie" GIT_TAG="v%{version}" make build
 %endif
 
 %check
@@ -58,4 +59,3 @@ install -Dm 755 gosec %{buildroot}/%{_bindir}/gosec
 %{_bindir}/gosec
 
 %changelog
-

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 12 19:31:05 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Switch OBS source service from tar_scm to obs_scm.
+  * Embed version info with go build arg GIT_TAG="v%{version}"
+  * _service obs_scm switch from tar_scm
+  * _service obs_scm switch param revision (branch) to version (tag)
+  * _service tar set to buildtime
+  * _service recompress set to buildtime
+  * _service recompress change tar compression from gz to xz
+
+-------------------------------------------------------------------
 Mon Oct 17 13:45:23 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 * Update to versin 2.14.0

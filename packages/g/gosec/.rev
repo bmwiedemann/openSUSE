@@ -69,4 +69,18 @@
 - chore(deps): update golang.org/x/crypto digest to bc19a97</comment>
     <requestid>1026508</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>368de83e4cc48854eb456feb0e65b61f</srcmd5>
+    <version>2.14.0</version>
+    <time>1671564053</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch OBS source service from tar_scm to obs_scm.
+  * Embed version info with go build arg GIT_TAG=&quot;v%{version}&quot;
+  * _service obs_scm switch from tar_scm
+  * _service obs_scm switch param revision (branch) to version (tag)
+  * _service tar set to buildtime
+  * _service recompress set to buildtime
+  * _service recompress change tar compression from gz to xz (forwarded request 1043862 from jfkw)</comment>
+    <requestid>1043867</requestid>
+  </revision>
 </revisionlist>
