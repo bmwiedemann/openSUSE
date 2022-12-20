@@ -347,4 +347,12 @@
     <comment>Update to version 1.16.1 (forwarded request 903283 from susnux)</comment>
     <requestid>904182</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>ada0e5b1bf1577a9ec3da83d80b9a51a</srcmd5>
+    <version>1.16.1</version>
+    <time>1671564085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043968</requestid>
+  </revision>
 </revisionlist>

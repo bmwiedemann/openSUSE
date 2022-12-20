@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 08:41:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Wed Jun 30 17:18:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.16.1
