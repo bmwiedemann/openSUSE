@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec 20 12:20:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.1:
+  + Features
+    - extmarks: Allow preventing spellchecking with spell = false
+    - spell: Support nospell in treesitter queries
+    - man: Add health check
+    - docs-html: Try to use tags for ToC headings
+  + Bug Fixes
+    - ui: Setting 'cmdheight' with global statusline
+    - ui: Fix highlights not being updated with 'winhl'
+    - Make_filter_cmd for :! powershell
+    - :! pwsh redirection for command not found
+    - Find multibyte file name in line
+    - Avoid unsigned overflow in home_replace()
+    - docs-html: Update parser
+    - folds: Fix fold marker multibyte comparison
+    - health: Correct tmux rgb verification
+    - man.lua: Set modifiable before writing page
+    - mouse: Ensure no scrolling with "ver:0" in 'mousescroll'
+    - paste: Feed keys as typed in cmdline mode
+    - qflist: Avoid read of uninitialized memory
+    - spell: Fix wrong cast
+    - stdpath: Default to /tmp if stdpath('run') cannot be created
+    - tui: Resume main thread if suspending isn't implemented
+
+-------------------------------------------------------------------
 Tue Nov 22 16:18:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix build without luajit
