@@ -1,0 +1,25 @@
+From 841c635bf283e4b023bd98fbff9ebda1f340b024 Mon Sep 17 00:00:00 2001
+From: Sebastian Freundt <freundt@ga-group.nl>
+Date: Mon, 12 Dec 2022 07:53:31 +0000
+Subject: [PATCH] test, follow tzdata's research on past transitions, fixes
+ issue #148
+
+Singapore's 1981-12-31 change was at 16:00 UTC (23:30 local time),
+not 24:00 local time.  (Thanks to Geoff Clare via Robert Elz)
+---
+ test/dzone.008.ctst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/dzone.008.ctst b/test/dzone.008.ctst
+index 94d8017e..758401b5 100644
+--- a/test/dzone.008.ctst
++++ b/test/dzone.008.ctst
+@@ -1,7 +1,7 @@
+ #!/usr/bin/clitosis  ## -*- shell-script -*-
+ 
+ $ dzone --prev Asia/Singapore 2014-02-22
+-1982-01-01T00:00:00+07:30 <- 1982-01-01T00:30:00+08:00	Asia/Singapore
++1981-12-31T23:30:00+07:30 <- 1982-01-01T00:00:00+08:00	Asia/Singapore
+ $
+ 
+ ## dzone.008.ctst ends here

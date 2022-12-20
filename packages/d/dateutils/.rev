@@ -330,4 +330,12 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
     <comment></comment>
     <requestid>979457</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>fba53c9a59d87ae1cc4b14812d038587</srcmd5>
+    <version>0.4.10</version>
+    <time>1671564022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043782</requestid>
+  </revision>
 </revisionlist>

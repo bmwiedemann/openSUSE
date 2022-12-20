@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 19 13:45:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add upstream patches 35041f4d.patch and 841c635b.patch: Do not
+  use Singapore for testing previous transitions, but rather
+  Jakarta. Fixes build with timezone 2022g.
+
+-------------------------------------------------------------------
 Fri May 27 09:45:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.10:
