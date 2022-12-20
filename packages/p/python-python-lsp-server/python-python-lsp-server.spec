@@ -23,6 +23,8 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM python-lsp-server-pr316-flake8v6.patch gh#python-lsp/python-lsp-server#316
+Patch0:         python-lsp-server-pr316-flake8v6.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -34,7 +36,7 @@ BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 1.7.0}
-BuildRequires:  %{python_module flake8 >= 5.0.0 with %python-flake8 < 5.1.0}
+BuildRequires:  %{python_module flake8 >= 5.0.0 with %python-flake8 < 7}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.19.0}
 BuildRequires:  %{python_module matplotlib}
@@ -66,13 +68,13 @@ Suggests:       python-yapf
 Suggests:       python-whatthepatch
 # SECTION flake8 pins
 Suggests:       python-flake8 >= 5.0.0
-Conflicts:      python-flake8 >= 5.1.0
+Conflicts:      python-flake8 >= 7
 Suggests:       python-mccabe >= 0.7.0
 Conflicts:      python-mccabe >= 0.8.0
 Suggests:       python-pycodestyle >= 2.9.0
-Conflicts:      python-pycodestyle >= 2.10.0
+Conflicts:      python-pycodestyle >= 2.11.0
 Suggests:       python-pyflakes >= 2.5.0
-Conflicts:      python-pyflakes >= 2.6.0
+Conflicts:      python-pyflakes >= 3.1.0
 # /SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives
