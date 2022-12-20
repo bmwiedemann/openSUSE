@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-containerservice
-Version:        20.7.0
+Version:        21.0.0
 Release:        0
 Summary:        Microsoft Azure Container Service Management Client Library
 License:        MIT
