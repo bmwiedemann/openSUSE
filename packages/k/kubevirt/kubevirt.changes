@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 10:26:46 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use JSON syntax for slirp device
+  0002-network-Use-JSON-syntax-for-slirp-device.patch
+
+-------------------------------------------------------------------
 Thu Dec  8 07:14:45 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Fix libguestfs pod startup error

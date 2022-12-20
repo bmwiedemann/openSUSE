@@ -29,6 +29,7 @@ Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 Patch0:         0001-guestfs-flag-to-set-uid-and-gid.patch
+Patch1:         0002-network-Use-JSON-syntax-for-slirp-device.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

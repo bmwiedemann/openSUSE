@@ -1,0 +1,82 @@
+From 8c4fa60175c11257b955553a0328b44e86a044d4 Mon Sep 17 00:00:00 2001
+From: Andrea Bolognani <abologna@redhat.com>
+Date: Wed, 19 Oct 2022 19:32:45 +0200
+Subject: [PATCH] network: Use JSON syntax for slirp device
+
+Mixing the key=value syntax with the JSON syntax, which libvirt
+now uses, leads to unpredictable results.
+
+Signed-off-by: Andrea Bolognani <abologna@redhat.com>
+---
+ pkg/network/domainspec/generators.go      |  5 +++--
+ pkg/network/domainspec/generators_test.go | 12 ++++++++----
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/pkg/network/domainspec/generators.go b/pkg/network/domainspec/generators.go
+index bf51be780..367d74fdd 100644
+--- a/pkg/network/domainspec/generators.go
++++ b/pkg/network/domainspec/generators.go
+@@ -230,11 +230,12 @@ func (b *SlirpLibvirtSpecGenerator) Generate() error {
+ 		return fmt.Errorf("failed to find interface %s in vmi spec", b.vmiSpecIface.Name)
+ 	}
+ 
+-	qemuArg := fmt.Sprintf("%s,netdev=%s,id=%s", foundIfaceModelType, b.vmiSpecIface.Name, b.vmiSpecIface.Name)
++	qemuArg := fmt.Sprintf(`{"driver":%q,"netdev":%q,"id":%q`, foundIfaceModelType, b.vmiSpecIface.Name, b.vmiSpecIface.Name)
+ 	if b.vmiSpecIface.MacAddress != "" {
+ 		// We assume address was already validated in API layer so just pass it to libvirt as-is.
+-		qemuArg += fmt.Sprintf(",mac=%s", b.vmiSpecIface.MacAddress)
++		qemuArg += fmt.Sprintf(`,"mac":%q`, b.vmiSpecIface.MacAddress)
+ 	}
++	qemuArg += "}"
+ 	// Add interface configuration to qemuArgs
+ 	b.domain.Spec.QEMUCmd.QEMUArg = append(
+ 		b.domain.Spec.QEMUCmd.QEMUArg,
+diff --git a/pkg/network/domainspec/generators_test.go b/pkg/network/domainspec/generators_test.go
+index 7867b7e25..4d2305d30 100644
+--- a/pkg/network/domainspec/generators_test.go
++++ b/pkg/network/domainspec/generators_test.go
+@@ -20,6 +20,7 @@
+ package domainspec
+ 
+ import (
++	"fmt"
+ 	"io/ioutil"
+ 	"net"
+ 	"os"
+@@ -84,18 +85,21 @@ var _ = Describe("Pod Network", func() {
+ 				Expect(domain.Spec.Devices.Interfaces).To(BeEmpty())
+ 				Expect(domain.Spec.QEMUCmd.QEMUArg).To(HaveLen(2))
+ 				Expect(domain.Spec.QEMUCmd.QEMUArg[0]).To(Equal(api.Arg{Value: "-device"}))
+-				Expect(domain.Spec.QEMUCmd.QEMUArg[1]).To(Equal(api.Arg{Value: "e1000,netdev=default,id=default"}))
++				Expect(domain.Spec.QEMUCmd.QEMUArg[1]).To(Equal(api.Arg{Value: `{"driver":"e1000","netdev":"default","id":"default"}`}))
+ 			})
+ 
+ 			It("Should append MAC address to qemu arguments if set", func() {
+-				vmi.Spec.Domain.Devices.Interfaces[0].MacAddress = "de-ad-00-00-be-af"
++				mac := "de-ad-00-00-be-af"
++				device := fmt.Sprintf(`{"driver":"e1000","netdev":"default","id":"default","mac":%q}`, mac)
++
++				vmi.Spec.Domain.Devices.Interfaces[0].MacAddress = mac
+ 				specGenerator := NewSlirpLibvirtSpecGenerator(&vmi.Spec.Domain.Devices.Interfaces[0], domain)
+ 				Expect(specGenerator.Generate()).To(Succeed())
+ 
+ 				Expect(domain.Spec.Devices.Interfaces).To(BeEmpty())
+ 				Expect(domain.Spec.QEMUCmd.QEMUArg).To(HaveLen(2))
+ 				Expect(domain.Spec.QEMUCmd.QEMUArg[0]).To(Equal(api.Arg{Value: "-device"}))
+-				Expect(domain.Spec.QEMUCmd.QEMUArg[1]).To(Equal(api.Arg{Value: "e1000,netdev=default,id=default,mac=de-ad-00-00-be-af"}))
++				Expect(domain.Spec.QEMUCmd.QEMUArg[1]).To(Equal(api.Arg{Value: device}))
+ 			})
+ 			It("Should create an interface in the qemu command line, remove it from the interfaces and leave the other interfaces inplace", func() {
+ 				domain.Spec.Devices.Interfaces = append(domain.Spec.Devices.Interfaces, api.Interface{
+@@ -114,7 +118,7 @@ var _ = Describe("Pod Network", func() {
+ 				Expect(domain.Spec.Devices.Interfaces).To(HaveLen(1))
+ 				Expect(domain.Spec.QEMUCmd.QEMUArg).To(HaveLen(2))
+ 				Expect(domain.Spec.QEMUCmd.QEMUArg[0]).To(Equal(api.Arg{Value: "-device"}))
+-				Expect(domain.Spec.QEMUCmd.QEMUArg[1]).To(Equal(api.Arg{Value: "e1000,netdev=default,id=default"}))
++				Expect(domain.Spec.QEMUCmd.QEMUArg[1]).To(Equal(api.Arg{Value: `{"driver":"e1000","netdev":"default","id":"default"}`}))
+ 			})
+ 		})
+ 		Context("Macvtap plug", func() {
+-- 
+2.39.0
+
