@@ -19,13 +19,13 @@
 %bcond_with git
 
 Name:           libxfce4ui
-Version:        4.16.1
+Version:        4.18.0
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.16/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.18/%{name}-%{version}.tar.bz2
 # needed until all applications have been ported to xfce_dialog_show_help() or
 # an alternative mechanism
 Source1:        xfhelp4.sh
@@ -122,6 +122,8 @@ BuildArch:      noarch
 
 %description branding-upstream
 This package provides the upstream look and feel for libxfce4ui.
+
+
 
 
 
