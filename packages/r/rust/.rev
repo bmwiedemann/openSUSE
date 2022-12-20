@@ -721,4 +721,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.65.0 - for details see the rust1.65 package</comment>
     <requestid>1034396</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>71355acb1bb9a7adee8c063f3acccffe</srcmd5>
+    <version>1.66.0</version>
+    <time>1671564003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.66.0 - for details see the rust1.66 package</comment>
+    <requestid>1043834</requestid>
+  </revision>
 </revisionlist>
