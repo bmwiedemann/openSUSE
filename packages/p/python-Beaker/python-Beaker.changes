@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec 20 06:34:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.12.0:
+  * Enabled testing on Python 3.10 and 3.11
+  * Fixed issue #122 - Session ignores deserializer json
+  * Remove ID generation fallback for when the uuid module is not found
+  * Port testing from nose to pytest
+  * Fixed issue #180 - KeyError when loading deleted session 
+- Remove Python 2 and Python 3 gubbins.
+- Remove patch denose.patch, merged upstream.
+- Add patch support-pymemcache.patch:
+  * Also support pymemcache.
+- Fiddle BuildRequires as appropiate.
+
+-------------------------------------------------------------------
 Wed Mar 16 08:44:59 UTC 2022 - pgajdos@suse.com
 
 - python-mock is actually not required for build

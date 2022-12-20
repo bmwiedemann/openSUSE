@@ -1,0 +1,26 @@
+Index: beaker-1.12.0/beaker/ext/memcached.py
+===================================================================
+--- beaker-1.12.0.orig/beaker/ext/memcached.py
++++ beaker-1.12.0/beaker/ext/memcached.py
+@@ -39,8 +39,12 @@ def _load_client(name='auto'):
+         import bmemcached
+         return bmemcached
+ 
++    def _pymemcache():
++        from pymemcache.client.base import Client
++        return Client
++
+     def _auto():
+-        for _client in (_pylibmc, _cmemcache, _memcache, _bmemcached):
++        for _client in (_pymemcache, _pylibmc, _cmemcache, _memcache, _bmemcached):
+             try:
+                 return _client()
+             except ImportError:
+@@ -52,6 +56,7 @@ def _load_client(name='auto'):
+ 
+     clients = {
+         'pylibmc': _pylibmc,
++        'pymemcache': _pymemcache,
+         'cmemcache': _cmemcache,
+         'memcache': _memcache,
+         'bmemcached': _bmemcached,

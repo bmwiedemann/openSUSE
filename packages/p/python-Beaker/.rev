@@ -273,4 +273,22 @@
     <comment></comment>
     <requestid>962272</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9323eda6396f720ad33695a03bbd5967</srcmd5>
+    <version>1.12.0</version>
+    <time>1671564048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.0:
+  * Enabled testing on Python 3.10 and 3.11
+  * Fixed issue #122 - Session ignores deserializer json
+  * Remove ID generation fallback for when the uuid module is not found
+  * Port testing from nose to pytest
+  * Fixed issue #180 - KeyError when loading deleted session 
+- Remove Python 2 and Python 3 gubbins.
+- Remove patch denose.patch, merged upstream.
+- Add patch support-pymemcache.patch:
+  * Also support pymemcache.
+- Fiddle BuildRequires as appropiate.</comment>
+    <requestid>1043858</requestid>
+  </revision>
 </revisionlist>
