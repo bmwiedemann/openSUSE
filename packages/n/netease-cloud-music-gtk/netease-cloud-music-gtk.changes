@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 20 09:26:20 UTC 2022 - gmg 137 <gmg137@live.com>
+
+- Release version 2.2.0
+ + Optimize song caching logic to reduce playback delay.
+ + Show and can skip gray songs.
+ + Optimize the way of image loading.
+ + Fix bugs.
+ + Update translation.
+
+-------------------------------------------------------------------
 Fri Nov 11 08:56:19 UTC 2022 - gmg 137 <gmg137@live.com>
 
 - Release version 2.1.0

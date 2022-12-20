@@ -150,4 +150,18 @@
 </comment>
     <requestid>1035184</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>40419356bb06eb74233ac283cf101a67</srcmd5>
+    <version>2.2.0</version>
+    <time>1671564057</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.2.0
+ + Optimize song caching logic to reduce playback delay.
+ + Show and can skip gray songs.
+ + Optimize the way of image loading.
+ + Fix bugs.
+ + Update translation.
+</comment>
+    <requestid>1043882</requestid>
+  </revision>
 </revisionlist>
