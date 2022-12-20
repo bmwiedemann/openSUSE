@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-appfinder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_with git
 Name:           xfce4-appfinder
-Version:        4.16.1
+Version:        4.18.0
 Release:        0
 Summary:        Application Finder for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-appfinder/start
-Source:         https://archive.xfce.org/src/xfce/%{name}/4.16/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/%{name}/4.18/%{name}-%{version}.tar.bz2
 BuildRequires:  appstream-glib
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files

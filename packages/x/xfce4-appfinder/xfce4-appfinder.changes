@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Dec 18 15:21:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.18.0:
+  * build: Bump requirements for Xfce 4.18
+  * Translation Updates:
+  Russian
+  * Update default settings
+  * Fix icon blurriness UI scale > 1
+  * Migration for history cache file
+  * Do not clamp window height in collapsed mode
+  * Update copyright year
+  * Translation Updates:
+  Croatian
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING
+  * Avoid saving duplicate command
+  * Use symbolic icons
+  * Rename icon name macro constants
+  * Do not allow custom action notice to wrap lines
+  * Fix crashes occurring when GLib rejects to parse the command string
+  * Add option to hide window decorations
+  * Include keywords and generic name to search
+  * Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Hong Kong), Chinese
+  (Taiwan), Croatian, Czech, Danish, Dutch, Eastern Armenian, English
+  (Australia), English (Canada), English (United Kingdom), Estonian,
+  Finnish, French, Galician, German, Greek, Hebrew, Hindi, Hungarian,
+  Icelandic, Indonesian, Interlingue, Italian, Japanese, Kazakh,
+  Korean, Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk,
+  Occitan (post 1500), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Telugu, Thai, Turkish, Ukrainian, Uyghur, Vietnamese
+  * Add support to garcon's PrefersNonDefaultGPU property
+  * Handle escaping in desktop file values
+  * Make close and help buttons translatable
+  * Parse environment variables in collapsed mode
+  * Mention that custom actions are only available in collapsed mode
+  * Launch applications as children again
+  * Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Hong Kong), Chinese
+  (Taiwan), Croatian, Czech, Danish, Dutch, Eastern Armenian, English
+  (Australia), English (Canada), English (United Kingdom), Estonian,
+  Finnish, French, Galician, German, Greek, Hebrew, Hindi, Hungarian,
+  Icelandic, Indonesian, Interlingue, Italian, Japanese, Kazakh,
+  Korean, Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk,
+  Occitan (post 1500), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Telugu, Thai, Turkish, Ukrainian, Uyghur, Vietnamese
+
+-------------------------------------------------------------------
 Mon Jan 18 06:24:05 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 4.16.1
