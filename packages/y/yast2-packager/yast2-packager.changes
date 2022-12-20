@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 20 09:30:54 UTC 2022 - Ladislav Slezák <lslezak@suse.com>
+
+- Do not fail when the installation URL contains a space
+  (bsc#1201816)
+- 4.5.10
+
+-------------------------------------------------------------------
 Wed Dec 14 10:25:42 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Merged PR https://github.com/yast/yast-packager/pull/623
