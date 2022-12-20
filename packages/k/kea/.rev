@@ -85,4 +85,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999255</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ccfc0d81a9466bf5f21c5ba1506d2bfe</srcmd5>
+    <version>2.2.0</version>
+    <time>1671564030</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove following packages from BuildRequires
+  * docbook-xsl-stylesheets
+  * elinks
+  * libxslt-tools
+
+AFAICT these packages aren't needed for generating the docs and the official documentation doesn't mention them as requirements. Especially elinks would be nice to remove as it isn't available in Leap/SLE. If there is a reason these are required feel free to decline this request. (forwarded request 1043789 from jcronenberg)</comment>
+    <requestid>1043790</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 14 14:51:33 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Separate documentation into kea-doc package
+- Remove following packages from BuildRequires
+  * docbook-xsl-stylesheets
+  * elinks
+  * libxslt-tools
+
+-------------------------------------------------------------------
 Thu Aug 18 12:53:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.0

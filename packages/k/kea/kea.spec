@@ -73,11 +73,7 @@ BuildRequires:  pkgconfig(libcrypto)
 Requires(pre):  shadow
 Suggests:       %name-hooks = %version
 %if 0%{with regen_files}
-BuildRequires:  bison >= 3.0
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  elinks
 BuildRequires:  flex
-BuildRequires:  libxslt-tools
 %endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libboost_system-devel
@@ -92,6 +88,14 @@ continuation of the DHCP server in the (ended) BIND10 project. The
 objective of this project is to provide a very high-performance,
 extensible DHCP server engine for use by enterprises and service
 providers, either as-is or with extensions and modifications.
+
+%package        doc
+Summary:        Documentation for Kea
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description    doc
+This package contains the documentation for Kea.
 
 %package hooks
 Summary:        Standard Kea DHCP hooks/plugins
@@ -450,7 +454,6 @@ systemd-tmpfiles --create kea.conf || :
 %files
 %dir %_sysconfdir/kea
 %config(noreplace) %_sysconfdir/kea/*.conf
-%_datadir/doc/kea/
 %_mandir/man8/*.8%{?ext_man}
 %_sbindir/rckea
 %_sbindir/kea*
@@ -460,6 +463,10 @@ systemd-tmpfiles --create kea.conf || :
 %dir %_localstatedir/lib/kea
 %_prefix/lib/tmpfiles.d/
 %attr(0775,keadhcp,keadhcp) %_localstatedir/log/kea/
+
+%files doc
+%doc %_datadir/doc/kea/
+%exclude %_datadir/doc/kea/html/.buildinfo
 
 %files hooks
 %dir %_libdir/kea
