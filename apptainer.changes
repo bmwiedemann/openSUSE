@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Dec 20 14:14:43 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- Update to 1.1.4 with following changes:
+  * Make the binaries built in the unprivileged apptainer package relocatable.
+    When moving the binaries to a new location, the /usr at the top of some of
+    the paths needs to be removed. Relocation is disallowed when the
+    starter-suid is present, for security reasons.
+  * Change the warning when an overlay image is not writable, introduced in
+    v1.1.3, back into a (more informative) fatal error because it doesn't
+    actually enter the container environment.
+  * Set the --net flag if --network or --network-args is set rather than
+    silently ignoring them if --net was not set.
+  * Do not hang on pull from http(s) source that doesn't provide a content-length.
+  * Avoid hang on fakeroot cleanup under high load seen on some distributions / kernels.
+  * Remove obsolete pacstrap -d in Arch packer.
+  * Adjust warning message for deprecated environment variables usage.
+  * Enable the --security uid:N and --security gid:N options to work when run
+    in non-suid mode. In non-suid mode they work with any user, not just root.
+    Unlike with root and suid mode, however, only one gid may be set in
+    non-suid mode.
+- Changes from 1.1.3
+  * Prefer the fakeroot-sysv command over the fakeroot command because the
+    latter can be linked to either fakeroot-sysv or fakeroot-tcp, but
+    fakeroot-sysv is much faster.
+  * Update the included squashfuse_ll to have -o uid=N and -o gid=N options and
+    changed the corresponding image driver to use them when available. This
+    makes files inside sif files appear to be owned by the user instead of by
+    the nobody id 65534 when running in non-setuid mode.
+  * Fix the locating of shared libraries when running unsquashfs from a non-standard location.
+  * Properly clean up temporary files if unsquashfs fails.
+  * Fix the creation of missing bind points when using image binding with underlay.
+  * Change the error when an overlay image is not writable into a warning that
+    suggests adding :ro to make it read only or using --fakeroot.
+  * Avoid permission denied errors during unprivileged builds without
+    /etc/subuid-based fakeroot when /var/lib/containers/sigstore is readable
+    only by root.
+  * Avoid failures with --writable-tmpfs in non-setuid mode when using
+    fuse-overlayfs versions 1.8 or greater by adding the fuse-overlayfs noacl
+    mount option to disable support for POSIX Access Control Lists.
+  * Fix the --rocm flag in combination with -c / -C by forwarding all
+    /dri/render* devices into the container.
+
+-------------------------------------------------------------------
 Fri Oct 28 08:54:51 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add Provides: and Obsoletes: to attempt to mark this as a possible
