@@ -216,6 +216,8 @@ Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed
 # quickly. But even in these cases, the patches are temporary and should be
 # removed as soon as a fix is merged by upstream.
+Patch5000:      5000-coredump-adjust-whitespace.patch
+Patch5001:      5001-coredump-do-not-allow-user-to-access-coredumps-with-.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB

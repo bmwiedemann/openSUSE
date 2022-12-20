@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 19 07:50:15 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Fix systemd-coredump to not allow user to access coredumps with changed
+  uid/gid/capabilities (bsc#1205000 CVE-2022-4415)
+
+  Add 5000-coredump-adjust-whitespace.patch
+  Add 5001-coredump-do-not-allow-user-to-access-coredumps-with-.patch
+
+-------------------------------------------------------------------
 Fri Dec  9 08:28:50 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit bf3fef99886bd977a1c7a51d20087bc8977fff44
