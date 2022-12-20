@@ -380,4 +380,12 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860856</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>971ad8354e883222a2c4013915e30a85</srcmd5>
+    <version>4.18.0</version>
+    <time>1671563991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043753</requestid>
+  </revision>
 </revisionlist>

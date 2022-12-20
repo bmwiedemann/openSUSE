@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Dec 18 13:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.18.0:
+  * build: Bump requirements for Xfce 4.18
+  * bump copyright to 2022
+  * docs: Fix return value of xfce_str_replace
+  * Update COPYING
+  * Bump GObject Introspection minim version to 1.66
+  * docs: Add missing index of deprecated symbols
+  * docs: Fix broken links
+  * docs: Fix "unused declarations" warning
+  * docs: Update `.gitignore`
+  * Remove limit on the size of configuration file line
+  * Fix documentation of 'xfce_str_is_empty'
+  * Clean the build system and use the new XDT_VERSION_INIT
+  * Silence `-Wanalyzer-null-dereference` warnings
+  * doc: Fix typo in `xfce_*_append_quoted()`
+  * xfce-miscutils: Fix `deadcode.DeadStores` warning from `scan-build`
+  * i18n: Make sure to set locale according to environment
+  * Translation Updates:
+  Azerbaijani, Chinese (China), Georgian, Greek
+  * Memo for future devs: Deprecate xfce_str_replace
+  * Fix document generation error
+  * Remove duplicate xfce_str_is_empty
+  * Move xfce_append_quoted () to xfce-string
+  * Remove invalid custom ngettext() macro
+  * Fix some GObject introspection warnings
+  * Add missing G_BEGIN_DECLS and G_END_DECLS
+  * Translation Updates:
+  Catalan, Galician, Italian
+  * Create new function xfce_create_shared_thumbnail_path
+  * usage of g_file_peek_path requires glib 2.56
+  * Add xfce_unescape_desktop_entry_value
+  * xfce-gio-extensions - management of gvfs trusted attribute
+  * libxfce4util needs to be first character Capital
+  * Partially revert "Fix (some) GObject introspection warnings"
+  * Fix (some) GObject introspection warnings
+  * Revamp the documentation to uniformize accross components
+  * Translation Updates:
+  Belarusian, Estonian, Norwegian Bokmål, Spanish
+
+-------------------------------------------------------------------
 Wed Dec 23 00:33:10 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 4.16.0

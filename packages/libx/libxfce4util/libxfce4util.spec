@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4util
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %bcond_with git
 %define libname libxfce4util7
 Name:           libxfce4util
-Version:        4.16.0
+Version:        4.18.0
 Release:        0
 Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.xfce.org/
-Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.16/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/libxfce4util/4.18/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
 BuildRequires:  intltool
 BuildRequires:  perl
