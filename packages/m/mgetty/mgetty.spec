@@ -134,9 +134,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/mgetty
 install -D -m 0644  %{SOURCE3} %{buildroot}/%{_unitdir}/mgetty@.service
 install -D -m 0644  %{SOURCE4} %{buildroot}/%{_unitdir}/vgetty@.service
 
-%pre
-%service_add_pre mgetty@.service vgetty@.service
-
 %pre -n sendfax
 %{_sbindir}/useradd -r -o -g uucp -u 33 -s /bin/bash -c "Facsimile agent" -d %{_localstatedir}/spool/fax fax 2> /dev/null || :
 /bin/touch %{_localstatedir}/log/sendfax.log
@@ -151,14 +148,9 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-%service_add_post mgetty@.service vgetty@.service
-
-%preun
-%service_del_preun mgetty@.service vgetty@.service
 
 %postun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-%service_del_postun mgetty@.service vgetty@.service
 
 %files
 %dir %{_sysconfdir}/mgetty+sendfax

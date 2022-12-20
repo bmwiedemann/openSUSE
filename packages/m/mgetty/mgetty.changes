@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 16 10:26:20 UTC 2022 - pgajdos@suse.com
+
+- do not enable/disable parametrized service [bsc#914661c17]
+
+-------------------------------------------------------------------
 Tue Feb 22 21:11:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Restore AutoPPP functionality by properly passing "-DAUTO_PPP"
