@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 20 08:23:21 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.8.0.
+  * Too many changes. Check the ChangeLog file for the full list
+- Drop patch, merged upstream:
+  * 0001-Fixed-non-working-actions-for-create-extract-archive.patch
+
+-------------------------------------------------------------------
 Wed Jun 29 14:04:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
-- Add patch to fix the 'Compress' menu (boo#1198725)
+- Add patch to fix the 'Compress' menu (boo#1198725, boo#1203225, kde#441376)
   * 0001-Fixed-non-working-actions-for-create-extract-archive.patch
 
 -------------------------------------------------------------------

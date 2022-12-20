@@ -479,4 +479,12 @@
 - Spec cleanup</comment>
     <requestid>985850</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>73be5e436c378a2053539f14bd3a0c68</srcmd5>
+    <version>2.8.0</version>
+    <time>1671564054</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.8.0</comment>
+    <requestid>1043874</requestid>
+  </revision>
 </revisionlist>

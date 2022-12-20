@@ -17,18 +17,15 @@
 
 
 Name:           krusader
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
-Summary:        A File Manager
+Summary:        Twin panel file manager for KDE Plasma and other desktops
 License:        GPL-2.0-or-later
-Group:          Productivity/File utilities
 URL:            https://krusader.org/
 Source:         https://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz
 Source1:        krusader_browse_iso.desktop
 Source2:        org.kde.krusader.root-mode.desktop
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fixed-non-working-actions-for-create-extract-archive.patch
-BuildRequires:  extra-cmake-modules >= 1.7.0
+BuildRequires:  extra-cmake-modules >= 5.68.0
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
@@ -53,22 +50,22 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.5.0
-BuildRequires:  cmake(Qt5Core) >= 5.5.0
-BuildRequires:  cmake(Qt5DBus) >= 5.5.0
-BuildRequires:  cmake(Qt5Gui) >= 5.5.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.5.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
-BuildRequires:  cmake(Qt5Xml) >= 5.5.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5DBus) >= 5.12.0
+BuildRequires:  cmake(Qt5Gui) >= 5.12.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.12.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5Xml) >= 5.12.0
 Requires:       kio_iso = %{version}
 Suggests:       %{name}-doc
 
 %description
-An advanced twin panel (commander style) file manager for KDE.
+Krusader is an advanced twin panel (commander style) file manager for KDE Plasma
+and other desktops in the *nix world.
 
 %package -n kio_iso
 Summary:        KIO slave to access ISO images
-Group:          System/GUI/KDE
 Provides:       kde4-kio_iso = 1.80.99
 Obsoletes:      kde4-kio_iso < 1.80.99
 
@@ -77,11 +74,15 @@ KIO slave to access ISO images like zip- or tar.gz-archives in your
 file-browser.
 
 %package doc
-Summary:        A File Manager
-Group:          Productivity/File utilities
+Summary:        Krusader documentation
 
 %description doc
-An advanced twin panel (commander style) file manager for KDE.
+Krusader is an advanced twin panel (commander style) file manager for KDE Plasma
+and other desktops in the *nix world.
+
+This package contains the krusader documentation.
+
+%lang_package
 
 %prep
 %autosetup -p1
@@ -93,25 +94,19 @@ An advanced twin panel (commander style) file manager for KDE.
 %install
 %kf5_makeinstall -C build
 
+%find_lang %{name}
+
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
 cp %{SOURCE1} %{buildroot}%{_kf5_servicesdir}/ServiceMenus/
 cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
 
 %suse_update_desktop_file org.kde.krusader.root-mode FileManager Utility
 
-%find_lang %{name}
-
 %fdupes %{buildroot}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
-%files -f %{name}.lang
-%license COPYING
-%doc README AUTHORS ChangeLog TODO
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_mandir}/uk
-%dir %{_kf5_mandir}/uk/man1
+%files
+%license LICENSES/*
+%doc README AUTHORS ChangeLog
 %exclude %{_kf5_htmldir}/*/krusader
 %{_kf5_applicationsdir}/org.kde.krusader*.desktop
 %{_kf5_appsdir}/krusader
@@ -119,21 +114,20 @@ cp %{SOURCE2} %{buildroot}%{_kf5_applicationsdir}/
 %{_kf5_bindir}/krusader
 %{_kf5_iconsdir}/??color/*/apps/krusader*.png
 %{_kf5_kxmlguidir}/
-%{_kf5_mandir}/*/man1/krusader.1.gz
-%{_kf5_mandir}/man1/krusader.1.gz
-%{_kf5_plugindir}/kio_krarc.so
-%{_kf5_servicesdir}/krarc.protocol
+%doc %lang(en) %{_kf5_mandir}/man1/krusader.1%{?ext_man}
+%{_kf5_plugindir}/kf5/kio/kio_krarc.so
 
 %files -n kio_iso
+%license LICENSES/*
 %config %{_kf5_configdir}/kio_isorc
 %dir %{_kf5_servicesdir}/ServiceMenus
-%{_kf5_plugindir}/kio_iso.so*
+%{_kf5_plugindir}/kf5/kio/kio_iso.so*
 %{_kf5_servicesdir}/ServiceMenus/krusader_browse_iso.desktop
-%{_kf5_servicesdir}/iso.protocol
 
 %files doc
 %doc %lang(en) %{_kf5_htmldir}/en/krusader
-%doc %lang(uk) %{_kf5_htmldir}/uk/krusader
-%doc %lang(sv) %{_kf5_htmldir}/sv/krusader
+
+%files lang -f %{name}.lang
+%{_kf5_mandir}/*/man1/krusader.1%{?ext_man}
 
 %changelog
