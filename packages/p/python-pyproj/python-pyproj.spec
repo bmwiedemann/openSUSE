@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pyproj
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
@@ -39,10 +39,10 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages

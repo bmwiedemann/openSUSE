@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 15 13:58:56 UTC 2022 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.4.1
+  * WHL: Add win32 to build_wheels matrix by @molinav in #1169
+  * BUG: Changed so that the setup.cfg depends on the version
+    code in the init.py by @Scoppio in #1156
+  * REF: Use upper case EPSG code when creating CRS by @snowman2
+    in #1162
+  * BUG: Fix CRS.to_cf for Pole rotation GRIB convention by
+    @snowman2 in #1167
+  * BUG: Fix memory leak in CRS.list_authority by @skogler in
+    #1178
+  * BUG: Fix Transform options array length by @shadchin in #1187
+  * DOC: fix a few typos by @ocefpaf in #1153
+
+-------------------------------------------------------------------
 Fri Sep 16 01:04:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add mandatory runtime dep python-certifi, and remove not
