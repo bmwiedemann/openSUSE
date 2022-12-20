@@ -5,14 +5,13 @@
     <param name="filename">terraform-provider-azurerm</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v3.31.0</param>
+    <param name="revision">v3.35.0</param>
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">jmason@suse.com</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">terraform-provider-azurerm</param>

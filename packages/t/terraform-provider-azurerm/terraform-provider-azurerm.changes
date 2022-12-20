@@ -1,4 +1,318 @@
 -------------------------------------------------------------------
+Mon Dec 12 11:55:45 UTC 2022 - jkohoutek@suse.com
+
+- Update to version 3.35.0:
+  * v3.35.0
+  * updating the changelog
+  * tooling: fixing the github actions
+  * `azurerm_kubernetes_cluster`: Support for `image_cleaner` block (#19368)
+  * Chown 0755 for scripts/run-gradually-deprecated.sh (#19620)
+  * v3.35.0
+  * doc enhancement for `azurerm_site_recovery_replication_policy` (#19547)
+  * CHANGELOG #19162
+  * New resource: `azurerm_sentinel_data_connector_microsoft_threat_protection` (#19162)
+  * `azurerm_spring_cloud_gateway_route_config` - order defaults to -1 to differenciate 0 and not set (#18162)
+  * GHA - Limit CreateUpdate check to newly added files only (#19601)
+  * Doc update for azurerm_databricks_access_connector with identity block (#19618)
+  * pr review: fix nil checks
+  * Update for #19527
+  * `azurerm_kubernetes_cluster` - support for the `network_plugin_mode` `ebpf_data_plane` properties (#19527)
+  * Fix doc of `azurerm_machine_learning_computer_cluster` `ssh`
+  * updating to include #19602
+  * Update for #19546
+  * `azurerm_kubernetes_cluster` `azurerm_kubernetes_cluster_node_pool` - support for the `custom_ca_trust_enabled` property (#19546)
+  * id fix
+  * make whitespace
+  * post mege cleanup
+  * update golangci.yml
+  * fix linting
+  * Update changelog for #19580
+  * `data.azurerm_sentinel_alert_rule_template`: Set custom ID rather than using ID returned from API (#19580)
+  * dependencies: updating to `v0.20221207.1121859` of `github.com/hashicorp/go-azure-sdk`
+  * contributor docs - add section on schema design (#19559)
+  * r/stream_analytics_output_blob: `batch_min_rows` is now an integer
+  * Update changelog for #19586
+  * `azurerm_mssql_elasticpool` - Prevent `license_type` from being configured in specific scenarios (#19586)
+  * dependencies: updating to version `v0.20221202.1180026` of `github.com/hashicorp/go-azure-sdk`
+  * updating to include #19564
+  * updating to include #19537
+  * updating to include #19528
+  * updating to include #19578
+  * Update for 19396
+  * `azurerm_kubernetes_cluster`: Support for CSI arguments (#19396)
+  * CHANGELOG #19576
+  * New resource `azurerm_digital_twins_time_series_database_connection` (#19576)
+  * CHANGELOG #19334
+  * New Resource `azurerm_network_manager` (#19334)
+  * CHANGELOG #19082
+  * New Resource - `azurerm_vmware_netapp_volume_attachment` (#19082)
+  * media: fixing the state migration to parse case-insensitively
+  * Update for #19574
+  * Bug Fix - `azurerm_virtual_desktop_workspace_application_group_association`- Association should not remove the tags (#19574)
+  * Update for #19573
+  * `azurerm_lb_probe` - Support property `probe_threshold`  (#19573)
+  * azurerm_vmware_private_cloud and azurerm_vmware_cluster adding new skus to validation - #19 (#19565)
+  * `azurerm_vpn_server_configuration` - update `nil` check for `radius` (#19566)
+  * Fixes duplicated ForceNew statements in document. (#19570)
+  * Lint
+  * azurerm_spring_cloud_active_deployment - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_container_deployment - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_java_deployment - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_storage - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_service - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_gateway_route_config - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_gateway_custom_domain - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_gateway - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_configuration_service - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_custom_domain - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_certificate - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_build_deployment - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_builder - a  state migration to work around the previously incorrect id casing
+  * Update CHANGELOG.md
+  * `azurerm_firewall_policy` - support for `explicit_proxy` and `auto_learn_private_ranges_mode` properties (#19313)
+  * azurerm_spring_cloud_api_portal_custom_domain - a  state migration to work around the previously incorrect id casing
+  * Lint
+  * azurerm_spring_cloud_api_portal - a  state migration to work around the previously incorrect id casing
+  * Update CHANGELOG.md
+  * `azurerm_spring_cloud_gateway_route_config` - support for the `filters`, `predicates` and `sso_validation_enabled` properties (#19493)
+  * azurerm_spring_cloud_app_*_association - a  state migration to work around the previously incorrect id casing
+  * azurerm_spring_cloud_app - a  state migration to work around the previously incorrect id casing
+  * azurerm_api_management // New property `security.tls_rsa_with_aes256_gcm_sha384_ciphers_enabled` (#19472)
+  * Update CHANGELOG.md
+  * new resource: `azurerm_spring_cloud_application_live_view` (#19495)
+  * Update CHANGELOG.md
+  * `azurerm_key_vault` - fix two kv in different sub issue (#19531)
+  * Update CHANGELOG.md
+  * `azurerm_app_service_connection` - fix the secret type issue. (#19519)
+  * Update CHANGELOG.md
+  * `azurerm_lb` - Fix adding/removing a frontend configuration forces recreation of loadbalancer issue (#19548)
+  * CHANGELOG #19553
+  * `azurerm_mssql_virtual_machine` - support manual schedule `days_of_week` (#19553)
+  * Fix wrong Azure FrontDoor SP name to `Microsoft.Azure.Cdn` (#19560)
+  * Correct field name from `auth_config` to `authentication` on documentation example for `azurerm_postgresql_flexible_server_active_directory_administrator` (#19555)
+  * r/media_services_account: fixing the Resource ID segment to match the validation function (#19557)
+  * Typo in sftp_enabled of `azurerm_storage_account` documentation (#19552)
+  * Update changelog for #19524
+  * `azurerm_iothub_x` - a  state migration to work around the previously incorrect id casing (#19524)
+  * Update changelog for #19513
+  * `azurerm_monitor_smart_detector_alert_rule` - a  state migration to work around the previously incorrect id casing (#19513)
+  * Update changelog for #19512
+  * `azurerm_frontdoor_rules_engine` - a state migration to work around the previously incorrect id casing (#19512)
+  * Update changelog for #19525
+  * `azurerm_kusto_*` - a  state migration to work around the previously incorrect id casing (#19525)
+  * Update changelog for #19511
+  * `azure_healthcare_*` - a  state migration to work around the previously incorrect id casing (#19511)
+  * Update changelog for #19507
+  * `azurerm_container_registry_webhook` - a  state migration to work around the previously incorrect id casing (#19507)
+  * Update changelog for #19506
+  * `azurerm_automation_webhook`/`azurerm_automation_source_control` - a state migration to work around the previously incorrect id casing (#19506)
+  * `dependencies` - update `proximityplacementgroups` to `2022-03-01`
+  * springcloud: adding a state migration for `buildpackBindings` -> `buildPackBindings` (#19482)
+  * Changelog for #19499
+  * Update for #19516
+  * `azurerm_automation_software_update_configuration` - fix nil tag in tagsSetting causes create error (#19516)
+  * Fixes inconsistency `Required`, `Optional` and `ForceNew` properties between code and document. (#19514)
+  * update code
+  * fix deprecated SetId style
+  * fix
+  * fix code
+  * fix
+  * skip purge if purge protect enabled
+  * v3.34.0
+  * Docs: azurerm_redis_cache - private_static_ip_address requires subnet_id (#19518)
+  * Update for #19494
+  * fix issue 19490 (#19494)
+  * Update changelog #19492
+  * `azurerm_monitor_autoscale_setting` - a  state migration to work around the previously incorrect id casing (#19492)
+  * Update changelog for #19489
+  * `azurerm_iot_security_solution` - a  state migration to work around the previously incorrect id casing (#19489)
+  * Update changelog for #19487
+  * `data.azurerm_sentinel_alert_rule_template` and `azurerm_sentinel_automation_rule` - a  state migration to work around the previously incorrect id casing (#19487)
+  * Update changelog for #19486
+  * `azurerm_sql_active_directory_administrator` - a  state migration to work around the previously incorrect id casing (#19486)
+  * Update changelog for #19485
+  * `azurerm_synapse_integration_runtime_*` - a state migration to work around the previously incorrect id casing (#19485)
+  * Update changelog for #19465
+  * `azurerm_windows_virtual_machine_scale_set` Fix crash when upgrading `automatic_os_upgrade_policy` (#19465)
+  * Update for #19458
+  * Support Upload creation_type with uploadSizeBytes (#19458)
+  * `azurerm_stream_analytics_job`: fix `job_storage_account: authentication_mode` unsupported mode issue (#19225)
+  * updating to include #19484
+  * Update for #19382
+  * `azurerm_spring_cloud_gateway_route_config` - support for the `protocol` property (#19382)
+  * Upgrade managedservices.registrationdefinitions API version from 2019-06-01 to 2022-10-01
+  * updating to include #19483
+  * Update changelog for #19477
+  * `azurerm_synapse_linked_service` adding state migration for id (#19477)
+  * synapse: refactoring to use `tombuildstuff/kermit` rather than the embedded sdk
+  * dependencies: updating to `v0.20221129.1175354` of `github.com/hashicorp/go-azure-sdk`
+  * apimgmt: fixing the usage
+  * apimgmt: removing/regenerating
+  * updating to include #19479
+  * dependencies: updating to `v0.20221129.1151133` of `github.com/hashicorp/go-azure-sdk`
+  * Update for #19466 and #19447
+  * add state migrations
+  * `azurerm_kusto_database` - allows underscores in `name` (#19466)
+  * azurerm_stream_analytics_output_eventhub: Fix  issue when it's toggled to Msi (#19447)
+  * Update for #19468
+  * `azurerm_data_factory_linked_service_azure_file_storage` - only pass `host` and `user_id` when they're set (#19468)
+  * Update for #19464
+  * Fix crash around checking for existing azurerm_app_configuration_key (#19464)
+  * `azurerm_site_recovery_replication_policy` - improve existing check (#19391)
+  * dependencies: updating to `v0.20221128.1190504` of `github.com/hashicorp/go-azure-sdk` (#19462)
+  * portal: adding a todo
+  * Update for #19422
+  * `data.azurerm_api_management` - Support  property `tenant_access` (#19422)
+  * Update a standard logic app with correct stack settings (#19399)
+  * updating to include #19453
+  * Update for #19446
+  * `azurerm_storage_management_policy` - Support `rule.actions.base_blob.{tier_to_cool_after_days_since_creation_greater_than|tier_to_archive_after_days_since_creation_greater_than|delete_after_days_since_creation_greater_than}` (#19446)
+  * Update documentation Guide "new resource" (#19413)
+  * Update for #19428
+  * azurerm_storage_account - adds support for enabling SFTP (#19428)
+  * cognitive: removing the old Resource ID since this is no longer used
+  * apimanagement: removing a duplicate Resource ID with the same key
+  * dependencies: updating to `v0.20221128.1124937` of `github.com/hashicorp/go-azure-sdk`
+  * Updating based on eaa2d83b
+  * updating to include #19445
+  * Update for #19395
+  * `streamanalytics` - switch to `hashicorp/go-azure-sdk` (#19395)
+  * Update for #18568
+  * Fix currentStack is being reset when other site_config values are changed. (#18568)
+  * Update for #19425
+  * `azurerm_monitor_activity_log_alert` - fix action webhook (#19425)
+  * Update for #19285
+  * `media`: refactoring to use `hashicorp/go-azure-sdk` (#19285)
+  * `springcloud` - update sdk to 2022-11-01-preview
+  * Fix a typo in service_principal_client_certificate.html
+  * update nginx deployment document (#19434)
+  * v3.33.0
+  * updating changelog
+  * Changelog for #18918
+  * Updating based on c49f7025
+  * update for #19418
+  * `azurerm_storage_account` - Check `blob_properties.0.versioning_enabled` and `is_hns_enabled` (#19418)
+  * Update for #19298
+  * `azurerm_storage_account` - fix crash in multichannel checking (#19298)
+  * Update for #19419
+  * `azurerm_mysql_flexible_server` - expand max value for the `iops` property (#19419)
+  * Update changelog for #19386
+  * `azurerm_spring_cloud_app` - `ingress_settings` (#19386)
+  * Docs : Fix  wrong description of `attachment_status` property for  ` Data Source: azurerm_public_ips` (#19400)
+  * Doc Fix: `azurerm_private_dns_resolver_virtual_network_link`  - `dns_forwarding_ruleset_id` (#19415)
+  * Doc Fix: `azurerm_kubernetes_cluster` - updating `api_server_authorized_ip_ranges` description (#19403)
+  * updating to include #19412
+  * dependencies: updating to `v0.20221122.1115312` of `github.com/hashicorp/go-azure-sdk`
+  * Update changelog for #19378
+  * `azurerm_cdn_frontdoor_rule` - allow `cache_duration` to be `null` if `cache_behavior` is set to `HonorOrigin` (#19378)
+  * `azurerm_sentinel_automation_rule` - improve acctest (#19387)
+  * Docs: `healthcare_dicom` and `healthcare_fhir_service` (#19392)
+  * Docs: Fix wrong description of `azurerm_mssql_database_extended_auditing_policy` (#19390)
+  * Including #19384
+  * Doc: Fix incorrect import spec for azurerm_postgresql_flexible_server_active_directory_administrator
+  * Add placeholder for custom set function
+  * Update changelog for #19371
+  * `azurerm_cognitive_account` - Support property `dynamic_throttling_enabled` (#19371)
+  * updating to include #19325
+  * updating to include #19357
+  * including #19357 fixes #19296
+  * Update golangci-lint
+  * Custom runners for slow/intensive workflow jobs
+  * Disable tflint workflow until https://github.com/bflad/tfproviderlint/issues/255 is fixed
+  * Custom runner for golint workflow
+  * Update & tidy workflows
+  * Ensure tflint exits on error
+  * Update changelog for #19352
+  * `azurerm_servicebus_subscription_rule` - `correlation_filter` with empty attributes no longer crashes (#19352)
+  * `azurerm_mssql_server_resource`, `azurerm_mssql_server_resource`: fix client name spelling (#19363)
+  * Fix build error
+  * Apply suggestions from code review
+  * updating to include #19362
+  * gofmt
+  * tooling: updating to Go 1.19.3
+  * update changelog for #19269
+  * `azurerm_postgresql_flexible_server` - support for `authentication`, `azurerm_postgresql_flexible_server_active_directory_administrator` - add new resource (#19269)
+  * update changelog for #19336
+  * `data.azurerm_databricks_workspace` - support for "storage_account_identity" property (#19336)
+  * updating to include #19303
+  * updating to include #19340
+  * refactor: updating `FluidRelay` to use a MetaClient
+  * updating to include #19344
+  * update kusto_database_principal_assignment.html.markdown (#19354)
+  * Tool: generate typed SDK model for a given resource's schema
+  * Update changelog for #19338
+  * `azurerm_monitor_alert_processing_rule_action_group`, `azurerm_monitor_alert_processing_rule_suppression` - add `monitor_condition` in AtLeastOneOf #19338
+  * v3.32.0
+  * doc: Updated list of Premium SKUs (#19350)
+  * `azurerm_virtual_network_gateway`: fix AccTest for public ip resource with zones (#19305)
+  * update changelog for #19337
+  * fix update for instances (#19337)
+  * serialize tests including `azurerm_security_center_subscription_pricing`
+  * Update for #19348
+  * `azurerm_app_service_public_certificate` - add custom poller to ensure `Create` is complete before `Read` (#19348)
+  * update changelog for #19286
+  * `azurerm_storage_blob_inventory_policy` - support for deleted blobs in inventory policy via include_deleted property on filters (#19286)
+  * fix evaluation_frequency to Required in 4.0 (#19342)
+  * updating to include #19319
+  * upgrade cognitive service sdk to 2022-10-01
+  * adding `azurerm_log_analytics_solution` to acctests of `azurerm_iot_security_solution`
+  * `springcloud` - update sdk to 2022-09-01-preview
+  * `azurerm_security_center_server_vulnerability_assessment` and `azurerm_security_center_server_vulnerability_assessment_virtual_machine` - adding pricing tier in test config
+  * fix app gateway WAF_v2 sku need waf configuration from network 2022-05-01 (#19304)
+  * fix acctet TestAccMariaDbServer_createPointInTimeRestore,TestAccMsSqlDatabase_createPITRMode,TestAccMsSqlDatabase_scaleReplicaSet (#19297)
+  * [Documentation:] `azurerm_databricks_access_connector` - update private preview to public preview (#19288)
+  * change to ResourceSequentialTest for serial test cases (#19314)
+  * dependencies: updating to `v0.20221116.1175352` of `github.com/hashicorp/go-azure-sdk`
+  * Fix workspace_id resource case problem
+  * docs(cosmosdb/mongo): shard_key is optional (#19306)
+  * dependencies: updating to `v0.20221116.1125307` of `github.com/hashicorp/go-azure-sdk`
+  * possible fix for git error
+  * `TestAccSecurityCenterWorkspace` - run acctest in sequence.
+  * `TestAccSecurityCenterSetting` - run acctest in sequence.
+  * Docs: add possible value list of property for 43 resource (#19271)
+  * Docs: Fix document possible value missed of 45 resources (#19270)
+  * `azurerm_security_center_assessment` - adding arguments for acctest
+  * upgrade plugin-sdk/v2 to v2.24.1
+  * Highlight the important `skip_service_principal_aad_check` note (#19295)
+  * Update kubernetes_cluster.html.markdown (#19290)
+  * CHANGELOG #19164
+  * `azurerm_eventhub_namespace` - fix `zone_redundant` property for namespace (#19164)
+  * CHANGELOG #19163
+  * `azurerm_service_fabric_managed_cluster`: update the definition of `active_directory` to List (#19163)
+  * `azurerm_mssql_database` - Fix acctest failure for test case`TestAccMsSqlDatabase_elasticPool` (#19083)
+  * CHANGELOG #19222
+  * `azurerm_storage_account` - Support for `sas_policy` (#19222)
+  * CHANGELOG #19227
+  * `azurerm_synapse_firewall_rule` - ensure the firewall is ready (#19227)
+  * CHANGELOG #19263
+  * `azurerm_orchestrated_virtual_machine_scale_set` - fix issue with no image is specified (#19263)
+  * `azurerm_monitor_aad_diagnostic_setting` - serialize test cases (#19267)
+  * Updating based on bc2c4b32
+  * Update changelog for #19249
+  * add java 17 for windows web app (#19249)
+  * Update for #19273
+  * `azurerm_security_center_subscription_pricing`: Upgrade API, add `subplan` argument (#19273)
+  * Docs: Fix wrong name for forwarding_rule_state of azurerm_private_dns_resolver_forwarding_rule (#19264)
+  * go mod tidy/vendor
+  * storage: refactoring to use api version 2022-05-01
+  * r/data_factory_linked_service_azure_databricks: updating the import
+  * README
+  * updating to include #19265
+  * update explanation
+  * upgrade containerservice sdk to 2022-09-02-preview
+  * adding ISE deprecated
+  * `Maintenance` - fix failed tests (#19247)
+  * Simplify sample for `azurerm_cosmosdb_sql_role_assignment` (#19251)
+  * Fixed the failing test.
+  * Update CHANGELOG.md
+  * `azurerm_federated_identity_credential`: fix docs (#19254)
+  * pass CI
+  * Tool: generate schema snapshot for state migration
+  * `azurerm_postgresql_flexible_server` - remove `Standard_E96ds_v5` and `Standard_E104ids_v5` since they're not ready (#19246)
+  * Added support for auto_rotation of SQL MI CMK key rotation.
+  * Added new resource `azurerm_mssql_managed_instance_transparent_data_encryption` for managing TDE in SQL managed instance. Added `customer_managed_key` in `azurerm_mssql_managed_instance` data source. Added support for UserAssigned identities into `azurerm_mssql_managed_instance` resource and data source.
+
+-------------------------------------------------------------------
 Tue Nov 15 20:13:10 UTC 2022 - Jan Kohoutek <jkohoutek@suse.com>
 
 - Update of the .spec file:
