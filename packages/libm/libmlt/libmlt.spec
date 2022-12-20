@@ -26,9 +26,11 @@
 %define sover_pp 7
 %define lversion_pp 7.12.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
-# Qt 6 is not available in Leap 15.3
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+# Qt 6 is not available in Leap 15.3
 %bcond_without Qt6
+# The glaxnimate module fails to build on 15.3
+%bcond_without glaxnimate
 %endif
 Name:           %{libname}
 Version:        7.12.0
@@ -37,7 +39,7 @@ Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
-Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+Source0:        https://github.com/mltframework/mlt/releases/download/v%{version}/mlt-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -67,6 +69,9 @@ BuildRequires:  pkgconfig(frei0r)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jack)
+%if %{with glaxnimate}
+BuildRequires:  pkgconfig(libarchive)
+%endif
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavdevice) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
@@ -77,7 +82,7 @@ BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(movit)
-%if 0%{?suse_version} > 1501
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(opencv4)
 %endif
 BuildRequires:  pkgconfig(pango)
@@ -216,7 +221,7 @@ export CC=gcc-10 CXX=g++-10
 
 # WARNING: building opencv module causes multicore issues - boo#1068792
 %cmake \
-%if 0%{?suse_version} > 1501
+%if 0%{?suse_version} > 1500
    -DMOD_OPENCV=ON \
 %else
    -DMOD_OPENCV=OFF \
@@ -225,6 +230,9 @@ export CC=gcc-10 CXX=g++-10
    -DGPL3=ON \
    -DSWIG_PYTHON=ON \
    -DCMAKE_SKIP_RPATH=1 \
+%if %{with glaxnimate}
+   -DMOD_GLAXNIMATE=ON \
+%endif
 %if %{with Qt6}
    -DMOD_QT6=ON
 %endif

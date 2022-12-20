@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 20 10:38:23 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Build the glaxnimate module. Kdenlive complains if the plugin
+  is missing (boo#1206127)
+- Change the source URL to get the glaxnimate sources
+
+-------------------------------------------------------------------
 Sun Nov 27 10:18:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 7.12.0
