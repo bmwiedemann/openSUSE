@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 20 10:59:40 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.9
+
+- Update to 2.3.9
+  - Add -latest suffix to miniforge3 by @nwh in #2551
+  - Add PyPy 7.3.10 by @dand-oss in #2553
+  - Add miniforge3 and mambaforge 22.9.0-2 by @smcgivern in #2559
+  - Fix compilation error when building OpenSSL 1.1.1q in MacOS 11+
+    for 3.9.16 by @lisbethw1130 in #2558
+  - Add openssl patches for 3.7.15, 3.7.16, and 3.8.16 by @samdoran in #2564
+  - Add support for Anaconda3-2022.10 by @huypn12 in #2565
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.8...v2.3.9
+
+-------------------------------------------------------------------
 Wed Dec 14 14:35:37 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.8
 
 - Update to 2.3.8
