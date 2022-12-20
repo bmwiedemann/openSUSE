@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Dec 19 10:39:20 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1075, fixes the following problems
+  * refreshed vim-7.4-highlight_fstab.patch
+  * Test for <Cmd> mapping with CmdlineChanged fails.
+  * Cannot define a method in a class.
+  * ASAN gives false alarm about array access.
+  * Macro has confusing name and is duplicated.
+  * Setting window height using Python may cause errors.
+  * In a class object members cannot be initialized.
+  * Class method disassemble test fails on MS-Windows.
+  * Matchparen is slow.
+  * With "screenline" in 'culopt' cursorline highlight is wrong.
+  * Crash when opening a very small terminal window.
+  * Using freed memory when assigning to variable twice.
+  * After a failed CTRL-W ] next command splits window.
+  * Using freed memory on exit when EXITFREE is defined.
+  * Default constructor arguments are not optional.
+  * Object member can't get type from initializer.
+  * Coverity warns for using uninitialized memory.
+  * Leaking memory when disassembling an object method.
+  * Conflict between supercollider and scala filetype detection.
+  * String value of class and object do not have useful information.
+  * Build failure with some compilers that can't handle a declaration directly
+  after a "case" statement.
+  * Cannot display 'showcmd' somewhere else.
+  * Some test function names do not match what they are doing.
+  * When using Kitty a shell command may mess up the key protocol state.
+  * Code for making 'shortmess' temporarily empty is repeated.
+  * A shell command switching screens may still have a problem with the
+  kitty keyboard protocol.
+  * Test function name is wrong.
+  * In diff mode virtual text is highlighted incorrectly. (Rick Howe)
+  * No information about whether requesting term codes has an effect.
+  * Diff mode highlight fails for special characters.
+  * Reading beyond array size.
+  * Codecov action version is too specific.
+  * screenpos() column result in fold may be too small.
+  * Using "xterm-kitty" for 'term' causes problems.
+  * Class members are not supported yet.
+  * build fails if the compiler doesn't allow for a declaration right after
+  "case".
+
+-------------------------------------------------------------------
 Fri Dec  9 13:54:59 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1040, fixes the following problems

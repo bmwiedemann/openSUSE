@@ -6597,4 +6597,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Suspend test sometimes fails on MacOS.</comment>
     <requestid>1041886</requestid>
   </revision>
+  <revision rev="331" vrev="1">
+    <srcmd5>b7d8d5da22c851626fda2ab25932d3e6</srcmd5>
+    <version>9.0.1075</version>
+    <time>1671563988</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1075, fixes the following problems
+  * refreshed vim-7.4-highlight_fstab.patch
+  * Test for &lt;Cmd&gt; mapping with CmdlineChanged fails.
+  * Cannot define a method in a class.
+  * ASAN gives false alarm about array access.
+  * Macro has confusing name and is duplicated.
+  * Setting window height using Python may cause errors.
+  * In a class object members cannot be initialized.
+  * Class method disassemble test fails on MS-Windows.
+  * Matchparen is slow.
+  * With &quot;screenline&quot; in 'culopt' cursorline highlight is wrong.
+  * Crash when opening a very small terminal window.
+  * Using freed memory when assigning to variable twice.
+  * After a failed CTRL-W ] next command splits window.
+  * Using freed memory on exit when EXITFREE is defined.
+  * Default constructor arguments are not optional.
+  * Object member can't get type from initializer.
+  * Coverity warns for using uninitialized memory.
+  * Leaking memory when disassembling an object method.
+  * Conflict between supercollider and scala filetype detection.
+  * String value of class and object do not have useful information.
+  * Build failure with some compilers that can't handle a declaration directly
+  after a &quot;case&quot; statement.
+  * Cannot display 'showcmd' somewhere else.
+  * Some test function names do not match what they are doing.
+  * When using Kitty a shell command may mess up the key protocol state.
+  * Code for making 'shortmess' temporarily empty is repeated.
+  * A shell command switching screens may still have a problem with the
+  kitty keyboard protocol.
+  * Test function name is wrong.</comment>
+    <requestid>1043738</requestid>
+  </revision>
 </revisionlist>
