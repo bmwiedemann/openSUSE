@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec 16 13:15:09 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 7.0.7
+  * Fix regression from Redis 7.0.6 in distance replies
+    of Geo commands (#11631)
+
+-------------------------------------------------------------------
+Thu Dec 15 21:05:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.0.6:
+  * RM_ResetDataset module API should not clear the functions
+  * RM_Call module API used with the "C" flag to run scripts,
+    would now cause the commands in the script to check ACL with
+    the designated user
+  * Geo commands speedups
+  * Fix EVAL command performance regression from Redis 7.0
+  * Reduce EXPIRE commands performance regression from Redis 7.0
+  * Optimize commands returning double values, mainly affecting zset
+    commands
+  * Optimize Lua parsing of some command responses
+  * Optimize client memory usage tracking operation while client
+    eviction is disabled
+  * Multiple bug fixes for crashes, hangs, and incorrect behavior
+- drop cve-2022-3647.patch now upstream
+
+-------------------------------------------------------------------
 Mon Oct 24 14:56:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix CVE-2022-3647, crash in sigsegvHandler debug function
