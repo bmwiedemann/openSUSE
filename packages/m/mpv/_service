@@ -15,7 +15,6 @@
   </service>
 
   <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="disabled"/>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>

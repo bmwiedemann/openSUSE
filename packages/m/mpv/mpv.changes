@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Dec 20 11:26:38 UTC 2022 - mia@0x0.st
+
+- Update to version 0.35+git.20221220.d5c3b9d9:
+  * man/vo: Typo
+  * man/vo: Correct --vo-sixel-buffered
+  * vo_sixel: Implement write() loop
+  * vo_sixel: Rename draw-clear -> config-clear
+  * osdep/terminal.h: Rename screen buffer controls
+  * vo_sixel: Alias/deprecate exit-clear -> alt-screen
+  * vo_sixel: Make buffering optional
+  * man/vo: Fix rendering error due to non-printables
+  * DOCS/interface-changes: Add --vo-sixel-draw-clear
+  * Revert "ao_pipewire: deactivate stream at end of playback"
+  * vo_sixel: Buffer full output sequence
+  * vo_sixel: Use write(2) on POSIX platforms
+  * vo_tct: Use newer options API
+  * vo_sixel: Move user options to struct
+  * vo_sixel: Add option to skip clear while drawing
+  * osdep/terminal: Move common esc codes to terminal.h
+  * vo_sixel: Use the alternate buffer to restore term
+  * vo_tct: Use the alternate buffer to restore term
+  * ao_pipewire: deactivate stream at end of playback
+  * ao_pipewire: clean up when hotplug_init fails
+  * ao_pipewire: destroy context on connection failure
+  * ao_pipewire: free properties on failure
+  * vd_lavc: Set AV_HWACCEL_FLAG_UNSAFE_OUTPUT flag
+  * hwdec_drmprime: support yuv420p format
+  * ao_coreaudio: use device's nominal sample rate for latency properties
+  * player: add window-id property
+  * ffmpeg: update to handle deprecation of `av_init_packet`
+  * sws_utils: update to handle deprecation of `avcodec_enum_to_chroma_pos`
+  * vd_lavc: update to handle deprecation of `pkt_duration`
+  * ffmpeg: increase minimum required version to 4.4
+  * wayland: check for resize/move in touch event first
+  * osc: don't spam window-controls bindings on every render
+  * ao_pipewire: log sample queueing
+  * TOOLS/umpv: prefer $XDG_RUNTIME_DIR
+  * vo_gpu_next: don't flush cache on OSD update
+  * meson: fix stdatomic detection on bsd
+  * lcms: fix validate_3dlut_size_opt
+  * lcms: always parse lcms2-related options
+  * vo_dmabuf_wayland: use single-pixel-buffer-v1
+  * wlbuf_pool.h: add headers for forward declarations
+  * meson: unbreak dl check on BSDs without libdl
+  * meson: prepend MPV_CONFDIR path with prefix
+  * vo_gpu_next: fix undefined behavior on alpha-first formats
+
+-------------------------------------------------------------------
 Sat Nov 19 02:48:45 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Use Meson for build where possible as waf will be dropped in a

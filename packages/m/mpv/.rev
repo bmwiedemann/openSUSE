@@ -1925,4 +1925,41 @@
 </comment>
     <requestid>1036749</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>6e885a6c2653657a73d45fb671d055da</srcmd5>
+    <version>0.35+git.20221220.d5c3b9d9</version>
+    <time>1671564062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.35+git.20221220.d5c3b9d9:
+  * man/vo: Typo
+  * man/vo: Correct --vo-sixel-buffered
+  * vo_sixel: Implement write() loop
+  * vo_sixel: Rename draw-clear -&gt; config-clear
+  * osdep/terminal.h: Rename screen buffer controls
+  * vo_sixel: Alias/deprecate exit-clear -&gt; alt-screen
+  * vo_sixel: Make buffering optional
+  * man/vo: Fix rendering error due to non-printables
+  * DOCS/interface-changes: Add --vo-sixel-draw-clear
+  * Revert &quot;ao_pipewire: deactivate stream at end of playback&quot;
+  * vo_sixel: Buffer full output sequence
+  * vo_sixel: Use write(2) on POSIX platforms
+  * vo_tct: Use newer options API
+  * vo_sixel: Move user options to struct
+  * vo_sixel: Add option to skip clear while drawing
+  * osdep/terminal: Move common esc codes to terminal.h
+  * vo_sixel: Use the alternate buffer to restore term
+  * vo_tct: Use the alternate buffer to restore term
+  * ao_pipewire: deactivate stream at end of playback
+  * ao_pipewire: clean up when hotplug_init fails
+  * ao_pipewire: destroy context on connection failure
+  * ao_pipewire: free properties on failure
+  * vd_lavc: Set AV_HWACCEL_FLAG_UNSAFE_OUTPUT flag
+  * hwdec_drmprime: support yuv420p format
+  * ao_coreaudio: use device's nominal sample rate for latency properties
+  * player: add window-id property
+  * ffmpeg: update to handle deprecation of `av_init_packet`
+  * sws_utils: update to handle deprecation of `avcodec_enum_to_chroma_pos`
+  * vd_lavc: update to handle deprecation of `pkt_duration`</comment>
+    <requestid>1043893</requestid>
+  </revision>
 </revisionlist>
