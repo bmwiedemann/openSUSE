@@ -19,13 +19,13 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.16.5
+Version:        4.18.0
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-settings/start
-Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.16/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/xfce4-settings/4.18/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(exo-2)
@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.1
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.13
 BuildRequires:  pkgconfig(libxklavier)
 BuildRequires:  pkgconfig(upower-glib)

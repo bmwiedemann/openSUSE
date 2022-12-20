@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sun Dec 18 15:55:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.18.0:
+  * build: Bump requirements for Xfce 4.18
+  * Translation Updates:
+  Hungarian, Lithuanian, Russian, Swedish, Turkish
+  * appearance: Sync color scheme to gsettings
+  * appearance: Fix mem leaks
+  * settings-manager: Add padding to embedded dialogs
+  * display-settings: Search for clonable modes only by resolution
+  * Translation Updates:
+  * Chinese
+  * Bumped copyright to 2022
+  * mime-settings: Properly quote command parameters
+  * Revert "Escape characters which do not belong into an URI/URL (Issue
+  * #390)"
+  * Escape characters which do not belong into an URI/URL
+  * mime-helpers: Add Alacritty and kitty
+  * color-settings: Destroy dialog before releasing its GtkBuilder
+  * dialogs: Revert type hint changes
+  * Improve wording
+  * Add binding for /Gtk/DialogsUseHeader in appearance dialog
+  * appearance: Fix theme list selection
+  * xfce-mime-helper: exo_str_is_equal -> g_strcmp0
+  * xfce4-mime-helper: Prefer full command when basic command is env
+  * Add Flatpak binaries
+  * Fix a recursive lock in libX11.
+  * appearance: Code style fixes
+  * appearance: Fix SyncThemes property path and default value
+  * Add addional checks to xfce_settings_editor_box_selection_changed
+  * Fix invalid cast error
+  * Fix $DISPLAY being set to wrong value
+  * build: Fix intltool lock file problem during make distcheck
+  * color-settings: Fix ColorSettings release
+  * Add search bar to search per component
+  * Use 2 decimals for refresh rate
+  * display: Select next preset when minimal dialog is activated
+  * display: Add helper functions
+  * Update COPYING
+  * Replace deprecated spawn_command_line_on_screen with
+  * spawn_command_line
+  * Fix help button action
+  * Updated required libxfce4util version
+  * Remove dependence on exo-string
+  * settings-manager: Always show the search entry, no slider, no button
+  * display: Add 'autoconnect mode' setting
+  * Switch to using xfce_gtk_label_set_a11y_relation
+  * keyboard: Mark system defaults switch as active
+  * Revert "keyboard: Correctly initialize setting (Fixes #310)"
+  * keyboard: Correctly initialize setting
+  * keyboard: Fix icon name in settings dialog
+  * xfsettingsd: Fix setting float array properties
+  * keyboard: Make buttons translatable
+  * mime-settings: Allow filtering by application name
+  * Drop preferences-desktop-default-applications icon name
+  * display: Switch to MessageDialog for confirmation
+  * display: Fix scale by rounding
+  * appearance: Add option to sync xfwm4 theme
+  * display: Add 1.25 and 1.75 ratios to presets
+  * Fix typo
+  * Remove unused variable
+  * Default to using /tmp for temporary directory base if both
+  * XDG_CACHE_HOME and TMPDIR are not defined in the environment.
+  * Also allocate terminating element
+  * Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Asturian, Basque, Belarusian,
+  Belarusian (Tarask), Bengali, Bulgarian, Catalan, Chinese (China),
+  Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (Canada),
+  English (United Kingdom), Estonian, Finnish, French, Galician,
+  Georgian, German, Greek, Hebrew, Hungarian, Icelandic, Indonesian,
+  Interlingue, Italian, Japanese, Kabyle, Kazakh, Korean, Lithuanian,
+  Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500),
+  Polish, Portuguese, Portuguese (Brazil), Romanian, Russian, Serbian,
+  Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Uyghur
+
+-------------------------------------------------------------------
 Wed Nov 16 00:37:06 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.16.5
