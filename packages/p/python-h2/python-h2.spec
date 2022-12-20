@@ -25,6 +25,8 @@ Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
+# Taken from https://github.com/python-hyper/h2/pull/1274
+Patch1:         fix-repr-checks-for-py311.patch
 BuildRequires:  %{python_module hpack >= 2.3}
 BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis >= 5.49}
