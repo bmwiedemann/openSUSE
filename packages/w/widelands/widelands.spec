@@ -1,7 +1,7 @@
 #
 # spec file for package widelands
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           widelands
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
 Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- add missing 'map' include
-Patch0:         316eaea20975436.patch
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -49,6 +47,7 @@ BuildRequires:  optipng
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(asio)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)
@@ -89,7 +88,6 @@ operation.
 
 sed -i '/wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=uninitialized")/d' CMakeLists.txt
 sed -i 's/\(install(TARGETS ${NAME} DESTINATION \)"."\( COMPONENT ExecutableFiles)\)/\1bin\2/' cmake/WlFunctions.cmake
-sed -i 's#../share#share#g' xdg/CMakeLists.txt
 find . -type f -name "*.py" -exec sed -i -E 's/env python[3]?/python3/' {} \;
 
 %build
