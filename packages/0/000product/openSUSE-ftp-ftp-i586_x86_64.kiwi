@@ -414,11 +414,7 @@
       <repopackage name="maven-resources-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="maven-surefire-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="maven-surefire-report-plugin-bootstrap" onlyarch="skipit"/>
-      <repopackage name="MozillaFirefox" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaFirefox-branding-SLED" onlyarch="skipit"/>
-      <repopackage name="MozillaFirefox-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaFirefox-translations-common" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaFirefox-translations-other" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaThunderbird" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaThunderbird-translations-common" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaThunderbird-translations-other" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
