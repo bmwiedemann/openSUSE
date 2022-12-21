@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 09:54:28 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix Caps_Lock mapping for us.map and others (bsc#1202853):
+  * 0001-ckbcomp-Fix-check-for-non-ascii.patch
+
+-------------------------------------------------------------------
 Thu Jan 24 13:39:33 UTC 2019 - sndirsch@suse.com
 
 - u_fix-iso-left-tab.patch
