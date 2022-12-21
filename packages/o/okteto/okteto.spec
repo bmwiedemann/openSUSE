@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           okteto
-Version:        2.10.2
+Version:        2.10.3
 Release:        0
 Summary:        Develop your applications directly in your Kubernetes Cluster
 License:        Apache-2.0
