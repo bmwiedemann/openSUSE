@@ -47,8 +47,8 @@ BuildRequires:  perl-base
 BuildRequires:  popt-devel
 BuildRequires:  rpm-build
 BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  rpmlint-Factory
 Provides:       rpminst
 Requires(post): %fillup_prereq

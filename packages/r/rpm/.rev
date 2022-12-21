@@ -2406,4 +2406,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>update to rpm-4.18.0</comment>
     <requestid>1040201</requestid>
   </revision>
+  <revision rev="305" vrev="2">
+    <srcmd5>9fd5e84fbeb5a7ee549208081c3bf203</srcmd5>
+    <version>4.18.0</version>
+    <time>1671635142</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043727</requestid>
+  </revision>
 </revisionlist>
