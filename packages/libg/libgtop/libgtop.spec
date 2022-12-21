@@ -1,7 +1,7 @@
 #
 # spec file for package libgtop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://developer.gnome.org/libgtop/stable/
 Source:         https://download.gnome.org/sources/libgtop/2.40/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
