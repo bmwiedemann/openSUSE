@@ -138,4 +138,16 @@
     <comment></comment>
     <requestid>1037768</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>909470631ba15a322a32fda64d27c84a</srcmd5>
+    <version>0.5.3</version>
+    <time>1671635237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.3
+  * This patch release updates the build system to be compatible
+    with NumPy 1.24.0 -- gh#python-control/Slycot#187
+- Drop rpmlintc: python-tests-in-package has been dropped
+</comment>
+    <requestid>1044040</requestid>
+  </revision>
 </revisionlist>

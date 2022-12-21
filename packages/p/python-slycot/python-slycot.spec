@@ -17,14 +17,13 @@
 
 
 Name:           python-slycot
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        A wrapper for the SLICOT control and systems library
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/python-control/Slycot
 Source0:        https://files.pythonhosted.org/packages/source/s/slycot/slycot-%{version}.tar.gz
-Source99:       slycot-rpmlintrc
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
