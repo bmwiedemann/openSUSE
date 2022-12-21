@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 08:31:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Tue Dec 22 13:01:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: gtk4 for one depends on this.
