@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Dec 19 20:09:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Introduce imlib_load_image_fde
+      imlib2_load: Tweak load mode handling
+      Introduce Imlib2_Loader.h - all that is needed by loaders
+      image: Change has alpha flag to separate byte
+      loading: Don't look for cached image when not caching
+      loading: New loader infrastructure
+  * loading: Introduce __imlib_ImageFileContextPush/Pop
+      loading: Centralize mmap handling
+  * Introduce imlib_load_image_mem
+  * imlib2_load: Add option to use imlib_load_image_mem
+      api: Remove cast previously dropped everywhere else
+      Hide imlib_get/set_color_usage() if no X11
+      api: Move X11 related functions to separate file
+      api: Move filter functions to separate file
+      Enable disabling filter functions
+      api: Move text functions to separate file
+      Enable disabling text functions
+      J2K loader: Drop showing deprecated item in debug message
+      image: Fix memory leak when cloning images
+      Unify basic X11 functionality in test programs
+      Includes tweaks
+      test: Re-generate test images with recent tool/library versions
+      image: Hide internal ImlibImageFileInfo struct
+      image: Don't munmap external memory
+  * Introduce imlib_get_error
+      api: error_return adjustments
+      imlib2_load: Add option to enable image caching
+      image: Fix potential use of uninitialized time stamps
+      PNG loader: Correct frame delay in zero denominator case
+      PNG loader: Cosmetics
+      PNG loader: Improved handling of animated PNGs
+      multiframe: Support loop count
+      PNG loader: Fix animated PNG loading some more
+      autofoo: Fix trouble with test subdirectory in distributed source
+      autofoo: Rework git tag/release stuff
+      test: test_load: Quit when loading primary image fails
+      SVG loader: Don't reference multiframe stuff
+  * ICO loader: Eliminate ico_load
+      autofoo: Use AC_USE_SYSTEM_EXTENSIONS
+      imlib2_view: Fix single frame update rendering
+      test: test_load_2: Check frame 0/1 loading too
+      PNG loader: Cosmetics
+      PS loader: Cosmetics
+      multiframe: Tweaks around frame number handling
+      multiframe: Centralize handling of frame update offsets
+      multiframe: Move frame info to allocated record
+      multiframe: Allocate frame info only when needed
+      PNG loader: Quit scan when target fdAT is seen
+      PNG loader: Quit after loading first frame
+      PNG loader: Simplify update callback handling
+      imlib2_view: Fix multiframe rendering detail
+      multiframe: Remove frame offset from updates
+      imlib2_view: Fix multiframe after update coordinate change
+      imlib2_view: Deal with all pending X events at once
+      imlib2_view: Properly handle caching vs progress callbacks
+      imlib2_view: Don't load bad images twice if first or last in argument list
+      image: Cosmetics
+  * image: Introduce __imlib_LoadEmbeddedMem
+      Add new ani loader
+  * image: Cosmetics
+      ANI loader: Disable progress in embed loader
+      ANI loader: Multiframe suport
+      v1.10.0
+      Introduce imlib_load_image_frame_mem
+      imlib_load_image_frame_mem(): set nocache
+      TGA loader: fix indexing in tgaflip
+
+-------------------------------------------------------------------
 Mon Aug 22 09:06:37 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - enable loaders for JPEG2000, HEIF, Postscript, SVG, JPEG-XL

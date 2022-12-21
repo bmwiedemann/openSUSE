@@ -25,7 +25,7 @@
 %bcond_with svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.9.1
+Version:        1.10.0
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
@@ -40,6 +40,8 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(x11-xcb)
@@ -47,8 +49,6 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-shm) >= 1.9
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(libpng)
 %if %{with jxl}
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_threads)
@@ -103,6 +103,8 @@ Provides:       imlib2-loader_argb
 Provides:       imlib2-loader_bmp
 Provides:       imlib2-loader_bz2
 Provides:       imlib2-loader_gif
+Provides:       imlib2-loader_heif
+Provides:       imlib2-loader_j2k
 Provides:       imlib2-loader_jpeg
 Provides:       imlib2-loader_png
 Provides:       imlib2-loader_pnm
@@ -110,8 +112,6 @@ Provides:       imlib2-loader_tga
 Provides:       imlib2-loader_tiff
 Provides:       imlib2-loader_xpm
 Provides:       imlib2-loader_zlib
-Provides:       imlib2-loader_j2k
-Provides:       imlib2-loader_heif
 %if %{with jxl}
 Provides:       imlib2-loader_jxl
 %endif
