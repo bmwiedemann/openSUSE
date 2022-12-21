@@ -21,9 +21,9 @@
 %endif
 
 Name:           os-update
-Version:        1.7
+Version:        1.8
 Release:        0
-Summary:        Updates the system regular to stay current and safe
+Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
 URL:            https://github.com/thkukuk/os-update
 Source:         https://github.com/thkukuk/os-update/releases/download/v%{version}/os-update-%{version}.tar.xz
@@ -86,7 +86,11 @@ install -m 644 -D etc/default/systemd-status-mail %{buildroot}%{_distconfdir}/de
 
 %files -n systemd-status-mail
 %license COPYING
+%if 0%{?suse_version} < 1550
+%config(noreplace) %{_sysconfdir}/default/systemd-status-mail
+%else
 %{_distconfdir}/default/systemd-status-mail
+%endif
 %{_libexecdir}/systemd-status-mail
 %{_prefix}/lib/systemd/system/systemd-status-mail@.service
 %{_mandir}/man8/systemd-status-mail.8%{?ext_man}

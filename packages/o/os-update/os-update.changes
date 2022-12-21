@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 21 10:53:22 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.8
+  - Allow to specify additional options for mailx
+
+-------------------------------------------------------------------
+Wed Dec 21 10:17:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- if sysconfdir is being used on older SLES/Leap versions,
+  mark the config file as %config(noreplace)
+
+-------------------------------------------------------------------
 Mon Dec 19 12:23:37 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.7
