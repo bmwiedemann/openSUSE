@@ -16,14 +16,14 @@
 #
 
 
-%define sover  3_10_4
+%define sover  3_10_5
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.4.0
+Version:        3.10.5.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -34,7 +34,6 @@ Source0:        https://github.com/gnuradio/gnuradio/archive/refs/tags/v%{versio
 Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
-Patch1:         fix-build-with-fmt9.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.16.3
 BuildRequires:  codec2-devel
