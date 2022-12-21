@@ -17,7 +17,7 @@
 
 
 Name:           mpc
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        multiple-precision complex shared library
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch:          mpc-1.3.0-gmpdep.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmp) >= 5.0.0
 BuildRequires:  pkgconfig(mpfr) >= 4.1.0
@@ -60,7 +59,6 @@ MPC multiple-precision complex library development files.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
