@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 19 22:33:34 UTC 2022 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.1
+  * Feature: update link mode tables
+  * Feature: register dump for NXP ENETC driver (-d)
+  * Feature: report TCP header-data split (-g)
+  * Feature: support new message types in pretty print
+  * Fix: man page syntax fixes
+
+-------------------------------------------------------------------
 Mon Oct 10 16:59:14 UTC 2022 - Michal Kubeček <mkubecek@suse.cz>
 
 - update to upstream release 6.0
