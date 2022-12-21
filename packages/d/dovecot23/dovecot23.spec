@@ -58,6 +58,11 @@ Release:        0
 %bcond_with    argon
 %bcond_with    lz4
 %endif
+%if 0%{?suse_version} >= 1110
+%bcond_without zstd
+%else
+%bcond_with    zstd
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -72,6 +77,9 @@ BuildRequires:  xz-devel
 %endif
 %if %{with lz4}
 BuildRequires:  liblz4-devel
+%endif
+%if %{with zstd}
+BuildRequires:  libzstd-devel
 %endif
 %if %{with argon}
 BuildRequires:  libsodium-devel
@@ -152,6 +160,7 @@ Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dove
 Source12:       dovecot23.keyring
 Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
+Patch2:         dovecot-2.3.19-fix-doveadm-sync-special-folders.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers
@@ -377,6 +386,9 @@ export LIBS="-pie"
 %endif
 %if %{with lz4}
     --with-lz4                                      \
+%endif
+%if %{with zstd}
+    --with-zstd                                     \
 %endif
     --with-libcap                                   \
     --with-libwrap                                  \

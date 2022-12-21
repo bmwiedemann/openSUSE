@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 20 22:30:25 UTC 2022 - Thiago Macieira <thiago@kde.org>
+
+- Add suppor for Zstandard (zstd) to the compression (zlib) plugin: zstd has a
+  better compression ratio than gzip for the same amount of CPU work, or takes
+  less CPU to compress the same. It's also faster to decompress.
+- Add dovecot-2.3.19-fix-doveadm-sync-special-folders.patch:
+  Patches from the release-2.3 branch that fix issues importing the INBOX
+  folder from a Cyrus IMAP server and dealing with auto-creating folders that
+  haven't yet been created
+
+-------------------------------------------------------------------
 Tue Jun 14 14:17:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.3.19.1
