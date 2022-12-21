@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 21 13:17:54 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- moved run dir from /var/lib/apptainer to /var/apptainer to be closer
+  to upstream
+
+-------------------------------------------------------------------
 Tue Dec 20 14:14:43 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - Update to 1.1.4 with following changes:
