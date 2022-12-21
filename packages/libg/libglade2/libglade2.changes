@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 08:39:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Fri May 14 19:58:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Normalize patch tag line.

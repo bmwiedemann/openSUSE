@@ -182,4 +182,12 @@
     <comment>- Normalize patch tag line. (forwarded request 893971 from dimstar)</comment>
     <requestid>893989</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>858887b753e801a799ebb46ad0c54d59</srcmd5>
+    <version>2.6.4</version>
+    <time>1671635179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043970</requestid>
+  </revision>
 </revisionlist>
