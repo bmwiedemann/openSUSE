@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 17 17:46:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.49.3:
+  * Cleanup whitespace in po-texi/help2man-texi.pot.
+  * Add Korean translation (thanks to Seong-ho Cho).
+
+-------------------------------------------------------------------
 Fri Apr 15 00:36:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.49.2:
