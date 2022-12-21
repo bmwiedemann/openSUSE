@@ -1,7 +1,7 @@
 #
 # spec file for package libosip2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 15
 Name:           libosip2
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Implementation of SIP (RFC 3261)
 License:        LGPL-2.1-or-later

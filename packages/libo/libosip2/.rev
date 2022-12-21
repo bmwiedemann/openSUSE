@@ -230,4 +230,12 @@ exosip API: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=709860 (forwarded r
     <comment></comment>
     <requestid>954072</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>70a9579221876de5971b6643859a9dda</srcmd5>
+    <version>5.3.1</version>
+    <time>1671635243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044062</requestid>
+  </revision>
 </revisionlist>
