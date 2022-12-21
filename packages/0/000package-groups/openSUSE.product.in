@@ -262,10 +262,10 @@
   <group name="i686_packages">
     <conditional name="i686_replacement"/>
     <packagelist relationship="requires">
-      <package name="MozillaFirefox"/>
+      <!--package name="MozillaFirefox"/>
       <package name="MozillaFirefox-devel"/>
       <package name="MozillaFirefox-translations-common"/>
-      <package name="MozillaFirefox-translations-other"/>
+      <package name="MozillaFirefox-translations-other"/-->
       <package name="MozillaThunderbird"/>
       <package name="MozillaThunderbird-translations-common"/>
       <package name="MozillaThunderbird-translations-other"/>

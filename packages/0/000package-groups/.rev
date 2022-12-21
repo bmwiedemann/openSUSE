@@ -1547,4 +1547,10 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Lock gcc13 - we are still at gcc12</comment>
   </revision>
+  <revision rev="216" vrev="214">
+    <srcmd5>6519d72bfba9d38303e00149e5d228cf</srcmd5>
+    <version>unknown</version>
+    <time>1671645130</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
