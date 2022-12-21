@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Dec 17 17:23:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.10:
+    * xz: Don't modify argv[] when parsing the --memlimit* and
+      --block-list command line options. This fixes confusing
+      arguments in process listing (like "ps auxf").
+    * GNU/Linux only: Use __has_attribute(__symver__) to detect if
+      that attribute is supported. This fixes build on Mandriva where
+      Clang is patched to define __GNUC__ to 11 by default (instead
+      of 4 as used by Clang upstream).
+    * liblzma:
+        - Fixed an infinite loop in LZMA encoder initialization
+          if dict_size >= 2 GiB.
+        - Fixed two cases of invalid free() that can happen if
+          a tiny allocation fails in encoder re-initialization
+          or in lzma_filters_update(). These bugs had some
+          similarities with the bug fixed in 5.2.7.
+        - Fixed lzma_block_encoder() not allowing the use of
+          LZMA_SYNC_FLUSH with lzma_code() even though it was
+          documented to be supported. The sync-flush code in
+          the Block encoder was already used internally via
+          lzma_stream_encoder(), so this was just a missing flag
+          in the lzma_block_encoder() API function.
+        - GNU/Linux only: Don't put symbol versions into static
+          liblzma as it breaks things in some cases (and even if
+          it didn't break anything, symbol versions in static
+          libraries are useless anyway). The downside of the fix
+          is that if the configure options --with-pic or --without-pic
+          are used then it's not possible to build both shared and
+          static liblzma at the same time on GNU/Linux anymore;
+          with those options --disable-static or --disable-shared
+          must be used too.
+- drop unused xz-devel-static which is no longer supported when using
+  --with-pic (which is needed for shared libs)
+
+-------------------------------------------------------------------
 Thu Dec  1 09:33:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Rename xz-static-devel -> xz-devel-static to follow the general

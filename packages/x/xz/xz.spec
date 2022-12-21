@@ -19,7 +19,7 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.2.8
+Version:        5.2.10
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
@@ -35,7 +35,6 @@ Source5:        xznew.1
 BuildRequires:  pkgconfig
 Provides:       lzma = %{version}
 Obsoletes:      lzma < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The xz command is a program for compressing files.
@@ -74,17 +73,6 @@ Obsoletes:      lzma-alpha-devel < %{version}
 This package contains the header files and libraries needed for
 compiling programs using the LZMA library.
 
-%package devel-static
-Summary:        Static version of LZMA library
-License:        SUSE-Public-Domain
-Group:          Development/Libraries/C and C++
-Requires:       lzma-devel = %{version}
-Obsoletes:      xz-static-devel < %{version}-%{release}
-Provides:       xz-static-devel = %{version}-%{release}
-
-%description devel-static
-Static library for the LZMA library
-
 %prep
 %autosetup
 
@@ -94,7 +82,8 @@ export CFLAGS="%{optflags} -D_REENTRANT -pipe -fPIE"
 export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 %configure \
   --with-pic \
-  --docdir=%{_docdir}/%{name}
+  --docdir=%{_docdir}/%{name} \
+  --disable-static
 %if 0%{?do_profiling}
   %make_build CFLAGS="${CFLAGS} %{cflags_profile_generate}"
   %make_build
@@ -183,8 +172,5 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_includedir}/lzma/*
 %{_libdir}/liblzma.so
 %{_libdir}/pkgconfig/liblzma.pc
-
-%files devel-static
-%{_libdir}/liblzma.a
 
 %changelog
