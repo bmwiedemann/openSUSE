@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname wannier90
@@ -42,6 +43,14 @@
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
+%endif
+
+%if "%{flavor}" == "openmpi5"
+%if 0%{?suse_version} < 1550
+ExclusiveArch:  do_not_build
+%endif
+%global mpi_flavor openmpi
+%define mpi_vers 5
 %endif
 
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
@@ -86,7 +95,6 @@ BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-config
 %endif
 %endif
-
 
 %description
 Wannier90 is a library for generating maximally-localized Wannier functions and
