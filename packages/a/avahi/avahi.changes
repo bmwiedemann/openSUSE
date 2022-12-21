@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 19 12:16:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop %{_sysconfdir}/sysconfig/network/if-{up,down}.d scripts:
+  they are not used, or supported, in a while already.
+
+-------------------------------------------------------------------
 Thu Dec  8 15:23:06 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove avahi-daemon-check-dns.sh, avahi-daemon-check-dns-suse.patch
   and avahi-daemon.if-up
-  Doesn't work since about 9 years and will not be executed on a 
+  Doesn't work since about 9 years and will not be executed on a
   fresh default installation anymore
 
 -------------------------------------------------------------------

@@ -4,7 +4,7 @@ IPv4LL in SUSE Linux
 IPv4LL provides support of peer to peer address assignment from a
 special link local IP range.
 
-SUSE Linux contains three implementations of IPv4LL autoip protocol:
+SUSE Linux contains two implementations of IPv4LL autoip protocol:
 
 
 avahi-autoipd from avahi-autoipd package from avahi project
@@ -57,29 +57,6 @@ Advantage:
 Disadvantage:
 - Some programs don't work well with labeled IP addresses or interface
   aliases.
-
-
-
-autoip from sysconfig package
-=============================
-
-autoip is not bound to sysconfig scripts and it is not called during
-as sysconfig is using an own implementation. To enable you have to
-set AVAHI_AUTOIPD_ENABLE=yes in /etc/sysconfig/avahi. Note, that it
-starts unconditionally then and breaks bridges,vlan,bond, ...
-
-If DHCP adrress is assigned, autoip ends immediately. Only if no DHCP
-address is assigned, it stays running as a daemon and provides IPv4LL
-address.
-
-
-Activate autoip implementation
-------------------------------
-
-- Do not install avahi-autoipd package or set System/Zeroconf
-  AVAHI_AUTOIPD_FORCE_BIND sysconfig key to "no".
-
-- Set Zeroconf the address settings in the YaST network configuration.
 
 
 

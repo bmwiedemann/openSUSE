@@ -67,8 +67,6 @@ Source4:        avahi-glib-gettext.m4
 Source5:        avahi.sysconfig
 Source6:        avahi-autoipd.sysconfig
 Source9:        avahi-autoipd.README.SUSE
-Source10:       avahi-autoipd.if-up
-Source11:       avahi-autoipd.if-down
 Source13:       avahi.sysusers
 Source14:       avahi-autoipd.sysusers
 # File missing from 0.8 tarball
@@ -417,6 +415,8 @@ DNS specifications for Zeroconf Computing.
 
 
 
+
+
 # This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
@@ -495,8 +495,6 @@ specifications for Zeroconf Computing.
 cp -a %{SOURCE5} sysconfig.avahi
 sed "s:@docdir@:%{_docdir}:g" <%{SOURCE6} >sysconfig.avahi-autoipd
 cp -a %{SOURCE9} avahi-autoipd/README.SUSE
-sed "s:@sbindir@:%{_sbindir}:g" <%{SOURCE10} >avahi-autoipd/avahi-autoipd.if-up
-sed "s:@sbindir@:%{_sbindir}:g" <%{SOURCE11} >avahi-autoipd/avahi-autoipd.if-down
 sed -ie "s/libevent-[0-9\.]*/libevent/" avahi-libevent.pc.in
 cp -a %{SOURCE12} service-type-database/build-db
 %patch0
@@ -632,9 +630,6 @@ install -d %{buildroot}/%{_localstatedir}/run/avahi-daemon
 ln -s avahi-compat-libdns_sd/dns_sd.h %{buildroot}/%{_includedir}/
 ln -s avahi-compat-howl.pc %{buildroot}/%{_libdir}/pkgconfig/howl.pc
 install -d %{buildroot}/%{_prefix}/lib/avahi
-install -d %{buildroot}%{_sysconfdir}/sysconfig/network/if-{up,down}.d
-install avahi-autoipd/avahi-autoipd.if-up %{buildroot}%{_sysconfdir}/sysconfig/network/if-up.d/avahi-autoipd
-install avahi-autoipd/avahi-autoipd.if-down %{buildroot}%{_sysconfdir}/sysconfig/network/if-down.d/avahi-autoipd
 install -d %{buildroot}/%{_localstatedir}/lib/avahi-autoipd
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcavahi-daemon
@@ -840,9 +835,6 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %attr(-,avahi-autoipd,avahi-autoipd)%{_localstatedir}/lib/avahi-autoipd
 %{_sbindir}/avahi-autoipd
 %{_sysconfdir}/avahi/avahi-autoipd.action
-%dir %{_sysconfdir}/sysconfig/network
-%dir %{_sysconfdir}/sysconfig/network/if-{down,up}.d
-%{_sysconfdir}/sysconfig/network/*/avahi-autoipd
 %{_fillupdir}/sysconfig.avahi-autoipd
 %{_sysusersdir}/avahi-autoipd.conf
 
