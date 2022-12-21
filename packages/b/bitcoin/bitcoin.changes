@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 20 15:28:42 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 24.0.1
+  changelogs:
+  * https://bitcoincore.org/en/releases/24.0.1/
+  * https://bitcoincore.org/en/releases/23.0/
+  * https://bitcoincore.org/en/releases/22.1/
+
+-------------------------------------------------------------------
 Sun May  8 22:33:43 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
-- fixed upstream version number change: it's not 0.x anymore
+- fixed upstream version number change: it's not 0.x anymore`
 
 -------------------------------------------------------------------
 Fri Apr 22 13:11:18 UTC 2022 - Andrei Dziahel <develop7@develop7.info>

@@ -30,7 +30,7 @@
 %bcond_without tests
 %endif
 Name:           bitcoin
-Version:        22.0
+Version:        24.0.1
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT

@@ -1,8 +1,8 @@
-Index: bitcoin-0.21.1/contrib/init/bitcoind.service
+Index: bitcoin-24.0.1/contrib/init/bitcoind.service
 ===================================================================
---- bitcoin-0.21.1.orig/contrib/init/bitcoind.service
-+++ bitcoin-0.21.1/contrib/init/bitcoind.service
-@@ -69,6 +69,16 @@ NoNewPrivileges=true
+--- bitcoin-24.0.1.orig/contrib/init/bitcoind.service
++++ bitcoin-24.0.1/contrib/init/bitcoind.service
+@@ -74,6 +74,16 @@ NoNewPrivileges=true
  # Use a new /dev namespace only populated with API pseudo devices
  # such as /dev/null, /dev/zero and /dev/random.
  PrivateDevices=true
