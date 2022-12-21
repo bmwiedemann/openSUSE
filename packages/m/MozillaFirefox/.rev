@@ -5978,4 +5978,41 @@
     <comment></comment>
     <requestid>1039406</requestid>
   </revision>
+  <revision rev="384" vrev="1">
+    <srcmd5>769a67be6b1793ba726bc8041d2a4d61</srcmd5>
+    <version>108.0.1</version>
+    <time>1671635148</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 108.0.1 (boo#1206507)
+  * Fixes the default search engine being reset on upgrade for
+    profiles which were previously copied from a different location
+
+- Mozilla Firefox 108.0
+  https://www.mozilla.org/en-US/firefox/108.0/releasenotes/
+  MFSA 2022-51 (bsc#1206242)
+  * CVE-2022-46871 (bmo#1795697)
+    libusrsctp library out of date
+  * CVE-2022-46872 (bmo#1799156)
+    Arbitrary file read from a compromised content process
+  * CVE-2022-46873 (bmo#1644790)
+    Firefox did not implement the CSP directive unsafe-hashes
+  * CVE-2022-46874 (bmo#1746139)
+    Drag and Dropped Filenames could have been truncated to
+    malicious extensions
+  * CVE-2022-46875 (bmo#1786188)
+    Download Protections were bypassed by .atloc and .ftploc
+    files on Mac OS
+  * CVE-2022-46877 (bmo#1795139)
+    Fullscreen notification bypass
+  * CVE-2022-46878 (bmo#1782219, bmo#1797370, bmo#1797685,
+    bmo#1801102, bmo#1801315, bmo#1802395)
+    Memory safety bugs fixed in Firefox 108 and Firefox ESR 102.6
+  * CVE-2022-46879 (bmo#1736224, bmo#1793407, bmo#1794249, bmo#1795845,
+    bmo#1797682, bmo#1797720, bmo#1798494, bmo#1799479)
+    Memory safety bugs fixed in Firefox 108
+- requires
+  NSS &gt;= 3.85
+  rustc/cargo 1.65</comment>
+    <requestid>1043934</requestid>
+  </revision>
 </revisionlist>

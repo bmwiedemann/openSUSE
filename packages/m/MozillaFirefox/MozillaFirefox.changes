@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Dec 20 07:58:58 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 108.0.1 (boo#1206507)
+  * Fixes the default search engine being reset on upgrade for
+    profiles which were previously copied from a different location
+
+-------------------------------------------------------------------
+Tue Dec 13 13:54:35 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 108.0
+  https://www.mozilla.org/en-US/firefox/108.0/releasenotes/
+  MFSA 2022-51 (bsc#1206242)
+  * CVE-2022-46871 (bmo#1795697)
+    libusrsctp library out of date
+  * CVE-2022-46872 (bmo#1799156)
+    Arbitrary file read from a compromised content process
+  * CVE-2022-46873 (bmo#1644790)
+    Firefox did not implement the CSP directive unsafe-hashes
+  * CVE-2022-46874 (bmo#1746139)
+    Drag and Dropped Filenames could have been truncated to
+    malicious extensions
+  * CVE-2022-46875 (bmo#1786188)
+    Download Protections were bypassed by .atloc and .ftploc
+    files on Mac OS
+  * CVE-2022-46877 (bmo#1795139)
+    Fullscreen notification bypass
+  * CVE-2022-46878 (bmo#1782219, bmo#1797370, bmo#1797685,
+    bmo#1801102, bmo#1801315, bmo#1802395)
+    Memory safety bugs fixed in Firefox 108 and Firefox ESR 102.6
+  * CVE-2022-46879 (bmo#1736224, bmo#1793407, bmo#1794249, bmo#1795845,
+    bmo#1797682, bmo#1797720, bmo#1798494, bmo#1799479)
+    Memory safety bugs fixed in Firefox 108
+- requires
+  NSS >= 3.85
+  rustc/cargo 1.65
+
+-------------------------------------------------------------------
+Thu Dec  8 08:42:14 UTC 2022 - Milachew <milachew@mail.lv>
+
+- added translations to .desktop file.
+
+-------------------------------------------------------------------
 Thu Dec  1 21:13:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 107.0.1:

@@ -1,5 +1,5 @@
 #
-# spec file for package MozillaFirefox
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          107
+%define major          108
 %define mainver        %major.0.1
-%define orig_version   107.0.1
+%define orig_version   108.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -99,17 +99,17 @@ BuildRequires:  gcc11-c++
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.61
-BuildRequires:  rust >= 1.61
+BuildRequires:  cargo >= 1.63
+BuildRequires:  rust >= 1.63
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
 # minimal requirement:
-BuildRequires:  rust+cargo >= 1.61
+BuildRequires:  rust+cargo >= 1.63
 # actually used upstream:
-BuildRequires:  cargo1.64
-BuildRequires:  rust1.64
+BuildRequires:  cargo1.65
+BuildRequires:  rust1.65
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -120,7 +120,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.84
+BuildRequires:  mozilla-nss-devel >= 3.85
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -128,6 +128,7 @@ BuildRequires:  python-libxml2
 BuildRequires:  python36
 %else
 BuildRequires:  python3 >= 3.5
+BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 BuildRequires:  rust-cbindgen >= 0.24.3
@@ -249,7 +250,7 @@ Obsoletes:      %{name}-devel < %{version}
 %if 0%{?suse_version} < 1220
 Obsoletes:      libproxy1-pacrunner-mozjs <= 0.4.7
 %endif
-ExcludeArch:    armv6l armv6hl
+ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le %ix86
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -372,7 +373,7 @@ export MOZ_BUILD_DATE=\$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
-export MACH_USE_SYSTEM_PYTHON=1
+export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
 export CC=gcc-11

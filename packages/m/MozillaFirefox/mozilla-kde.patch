@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  36f9c3a81777563ef87663a210b1cd38fdd734d9
+# Parent  e8919158faed3f4a08289fb293dd87ce56bdcc4d
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4849,16 +4850,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4847,16 +4848,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -57,9 +57,9 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
      NS_WARNING("Error parsing application default preferences.");
    }
  
-   // Load jar:$app/omni.jar!/defaults/preferences/*.js
-   // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4923,17 +4935,17 @@ nsresult Preferences::InitInitialObjects
+ #if defined(MOZ_WIDGET_GTK)
+   // Under Flatpak/Snap package, load /etc/firefox/defaults/pref/*.js.
+@@ -4938,17 +4950,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -81,7 +81,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -123,16 +123,20 @@ EXPORTS.mozilla += [
+@@ -122,16 +122,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -151,7 +151,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
  
  if CONFIG["MOZ_PLACES"]:
      EXTRA_JS_MODULES += [
-         "DownloadHistory.jsm",
+         "DownloadHistory.sys.mjs",
      ]
  
  FINAL_LIBRARY = "xul"
@@ -255,8 +255,7 @@ diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downlo
 diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 --- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
 +++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
-@@ -10,16 +10,18 @@
- #include "prnetdb.h"
+@@ -11,16 +11,18 @@
  #include "prenv.h"
  #include "nsInterfaceHashtable.h"
  #include "nsHashtablesFwd.h"
@@ -264,6 +263,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  #include "nsNetUtil.h"
  #include "nsISupportsPrimitives.h"
  #include "nsIGSettingsService.h"
+ #include "nsReadableUtils.h"
 +#include "nsPrintfCString.h"
 +#include "nsKDEUtils.h"
  
@@ -274,7 +274,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
    NS_DECL_ISUPPORTS
    NS_DECL_NSISYSTEMPROXYSETTINGS
  
-@@ -33,16 +35,18 @@ class nsUnixSystemProxySettings final : 
+@@ -34,16 +36,18 @@ class nsUnixSystemProxySettings final : 
    nsCOMPtr<nsIGSettingsCollection> mProxySettings;
    nsInterfaceHashtable<nsCStringHashKey, nsIGSettingsCollection>
        mSchemeProxySettings;
@@ -293,7 +293,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
  nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
    // dbus prevents us from being threadsafe, but this routine should not block
    // anyhow
-@@ -378,21 +382,50 @@ nsresult nsUnixSystemProxySettings::GetP
+@@ -392,21 +396,50 @@ nsresult nsUnixSystemProxySettings::GetP
    return NS_OK;
  }
  
@@ -1785,7 +1785,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
      if CONFIG["MOZ_ENABLE_DBUS"]:
          CXXFLAGS += CONFIG["MOZ_DBUS_GLIB_CFLAGS"]
  
- if CONFIG["MOZ_BACKGROUNDTASKS"]:
+ include("/ipc/chromium/chromium-config.mozbuild")
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
@@ -1807,7 +1807,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2088,20 +2089,29 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2094,20 +2095,29 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1839,7 +1839,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
      ::CFRelease(url);
      return rv;
    }
-@@ -2113,16 +2123,23 @@ nsLocalFile::Reveal() {
+@@ -2119,16 +2129,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {
