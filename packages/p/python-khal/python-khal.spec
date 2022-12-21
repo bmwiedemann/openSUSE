@@ -17,6 +17,7 @@
 
 
 %define skip_python36 1
+%define oldpython python
 Name:           python-khal
 Version:        0.10.5
 Release:        0
@@ -36,6 +37,7 @@ BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module icalendar >= 4.0.3}
 # Test dependency added by Patch0
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
@@ -65,17 +67,55 @@ BuildArch:      noarch
 Khal is a CLI (console), CalDAV based calendar program, allowing syncing of
 calendars with a variety of other programs on a host of different platforms.
 
+%package -n python-khal-bash-completion
+Summary:        Bash completion for khal
+Requires:       bash-completion
+Supplements:    (khal and bash-completion)
+BuildArch:      noarch
+
+%description -n python-khal-bash-completion
+Bash shell completions for khal
+
+%package -n python-khal-fish-completion
+Summary:        Fish completion for khal
+Requires:       fish
+Supplements:    (khal and fish)
+BuildArch:      noarch
+
+%description -n python-khal-fish-completion
+Fish shell completions for khal
+
+%package -n python-khal-zsh-completion
+Summary:        ZSH completion for khal
+Group:          Productivity/File utilities
+Supplements:    (khal and zsh)
+BuildArch:      noarch
+
+%description -n python-khal-zsh-completion
+zsh shell completions for khal
+
 %prep
 %autosetup -p1 -n khal-%{version}
 
 %build
 %python_build
 
+for shell in bash zsh fish; do
+    PYTHONPATH="$PWD" _KHAL_COMPLETE=${shell}_source python3 ./bin/khal >khal.$shell
+done
+
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/khal
 %python_clone -a %{buildroot}%{_bindir}/ikhal
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+install -Dm644 khal.bash \
+    %{buildroot}%{_datadir}/bash-completion/completions/khal
+install -Dm644 khal.zsh \
+    %{buildroot}%{_datadir}/zsh/site-functions/_khal
+install -Dm644 khal.fish \
+    %{buildroot}%{_datadir}/fish/vendor_completions.d/khal.fish
 
 %check
 # Requires /dev/tty working
@@ -100,5 +140,18 @@ donttest+=" or test_bogota or test_event_no_dst"
 %{python_sitelib}/khal-%{version}*-info
 %python_alternative %{_bindir}/khal
 %python_alternative %{_bindir}/ikhal
+
+%files -n python-khal-bash-completion
+%{_datadir}/bash-completion/completions/khal
+
+%files -n python-khal-fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/khal.fish
+
+%files -n python-khal-zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_khal
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 21 00:46:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add generated shell completion scripts.
+
+-------------------------------------------------------------------
 Tue Dec 20 11:45:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable test_bogota and test_event_no_dst because are broken with the latests
