@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 21 08:37:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.4:
+  * Fix crash when trying to copy a group of connected nodes
+  * Update Italian translations
+
+-------------------------------------------------------------------
 Mon Dec 12 07:56:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.3:

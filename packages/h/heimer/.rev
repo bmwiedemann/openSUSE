@@ -118,4 +118,14 @@
   * Update Dutch and Italian translations</comment>
     <requestid>1042276</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6a8f35eadcb08d8a6cb11e1c786de2b0</srcmd5>
+    <version>3.6.4</version>
+    <time>1671635231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.4:
+  * Fix crash when trying to copy a group of connected nodes
+  * Update Italian translations</comment>
+    <requestid>1044029</requestid>
+  </revision>
 </revisionlist>
