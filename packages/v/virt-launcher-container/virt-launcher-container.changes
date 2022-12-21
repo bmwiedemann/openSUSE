@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 21 08:26:09 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Allow qemu/slirp to bind sockets to privileged ports
+- Install ncat, curl, ethtool and gawk (required for network tests)
+
+-------------------------------------------------------------------
 Mon Oct 10 13:49:10 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Ensure /usr/libexec/virtiofsd is present

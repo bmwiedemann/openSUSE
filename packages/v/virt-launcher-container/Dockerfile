@@ -28,12 +28,16 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-launcher:%%PKG_VER
 RUN zypper -n install \
               augeas \
               augeas-lenses \
+              curl \
+              ethtool \
+              gawk \
               iptables \
               kubevirt-container-disk \
               kubevirt-virt-launcher \
               libcap-progs \
               libvirt-client \
               libvirt-daemon-driver-qemu \
+              ncat \
               nftables \
               qemu-hw-usb-redirect \
               qemu-tools \
@@ -56,6 +60,8 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
     fi;
 
 RUN zypper clean -a
+
+RUN ln -s ncat /usr/bin/nc
 
 RUN mkdir -p /usr/share/OVMF
 
@@ -86,6 +92,7 @@ RUN cd /var && rm -rf run && ln -s ../run .
 # Setup permissions and capabilities for non-root VMIs. KubeVirt sets
 # XDG_* directories to /var/run.
 RUN setcap 'cap_net_bind_service,cap_sys_ptrace=+ep' /usr/bin/virt-launcher && \
+    setcap 'cap_net_bind_service=+ep' /usr/bin/qemu-system-$(uname -m) && \
     chmod 0755 /etc/libvirt && \
     chown qemu:qemu /var/run
 
