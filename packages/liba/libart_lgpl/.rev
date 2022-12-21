@@ -207,4 +207,12 @@
     <comment>- Update a valid URL of the Source field in spec. (forwarded request 909646 from yfjiang)</comment>
     <requestid>909735</requestid>
   </revision>
+  <revision rev="31" vrev="25">
+    <srcmd5>753c658be35b19bf5ad680cbd833c7c5</srcmd5>
+    <version>2.3.21</version>
+    <time>1671635181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043971</requestid>
+  </revision>
 </revisionlist>

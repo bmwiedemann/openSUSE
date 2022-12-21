@@ -1,7 +1,7 @@
 #
 # spec file for package libart_lgpl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,11 @@
 Name:           libart_lgpl
 Version:        2.3.21
 Release:        0
-# NOTE: on upgrade to a new upstream version, change the Obsoletes from <= to < (here and in baselibs.conf)
+# NOTE: on upgrade to a new upstream version, change the Obsoletes from <= to <
 Summary:        Libart Components Licensed under the LGPL
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 Source:         https://download.gnome.org/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
-Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 
 %description

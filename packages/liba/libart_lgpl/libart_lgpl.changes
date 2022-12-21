@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 08:36:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Mon Aug  2 01:32:01 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Update a valid URL of the Source field in spec.
