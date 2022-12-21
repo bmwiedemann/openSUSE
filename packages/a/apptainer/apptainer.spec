@@ -112,7 +112,7 @@ tar xzf %{S:9}
         --includedir=%{_includedir} \
         --libdir=%{_libdir} \
         --libexecdir=%{_libexecdir} \
-        --localstatedir=%{_localstatedir}/lib \
+        --localstatedir=%{_localstatedir} \
         --sharedstatedir=%{_sharedstatedir} \
         --mandir=%{_mandir} \
         --infodir=%{_infodir} \
@@ -168,9 +168,9 @@ install -m 755 ../squashfuse-%{squashfuse_version}/squashfuse_ll %{buildroot}%{_
 %config(noreplace) %{_sysconfdir}/apptainer/rocmliblist.conf
 %config(noreplace) %{_sysconfdir}/apptainer/dmtcp-conf.yaml
 %{_datadir}/bash-completion/completions/*
-%dir %{_localstatedir}/lib/apptainer
-%dir %{_localstatedir}/lib/apptainer/mnt
-%dir %{_localstatedir}/lib/apptainer/mnt/session
+%dir %{_localstatedir}/apptainer
+%dir %{_localstatedir}/apptainer/mnt
+%dir %{_localstatedir}/apptainer/mnt/session
 %{_mandir}/man1/*
 
 %changelog

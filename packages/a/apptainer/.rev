@@ -130,4 +130,13 @@
     <comment></comment>
     <requestid>1043931</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8584bf4f56c0c3843c392894a119b670</srcmd5>
+    <version>1.1.4</version>
+    <time>1671635247</time>
+    <user>dimstar_suse</user>
+    <comment>- moved run dir from /var/lib/apptainer to /var/apptainer to be closer
+  to upstream (forwarded request 1044083 from mslacken)</comment>
+    <requestid>1044084</requestid>
+  </revision>
 </revisionlist>
