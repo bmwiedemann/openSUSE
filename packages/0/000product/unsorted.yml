@@ -1722,7 +1722,6 @@ unsorted:
   - cairo-devel-32bit: [x86_64] 
   - cairo-tools 
   - cairomm-devel 
-  - cairomm-devel-32bit: [x86_64] 
   - cairomm-doc 
   - cairomm1_0-devel 
   - cairomm1_0-devel-32bit: [x86_64] 
@@ -1820,6 +1819,7 @@ unsorted:
   - cargo1.63 
   - cargo1.64 
   - cargo1.65 
+  - cargo1.66 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -8311,6 +8311,7 @@ unsorted:
   - kdumpid 
   - kea 
   - kea-devel 
+  - kea-doc 
   - kea-hooks 
   - keditbookmarks 
   - keditbookmarks-lang 
@@ -8454,6 +8455,7 @@ unsorted:
   - kio_perldoc-lang 
   - kirigami 
   - kirigami-addons 
+  - kirigami-addons-devel 
   - kirigami-addons-lang 
   - kirigami-devel 
   - kirigami-gallery 
@@ -10352,7 +10354,6 @@ unsorted:
   - libcairo-script-interpreter2-32bit: [x86_64] 
   - libcairomm-1_0-1-32bit: [x86_64] 
   - libcairomm-1_16-1 
-  - libcairomm-1_16-1-32bit: [x86_64] 
   - libcaja-extension1 
   - libcal3d12 
   - libcalc2_14_1_2 
@@ -16561,7 +16562,7 @@ unsorted:
   - melody 
   - melody-lang 
   - melt 
-  - memcached: [i586] 
+  - memcached 
   - memcached-devel 
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
@@ -24491,7 +24492,7 @@ unsorted:
   - python310-pymarc 
   - python310-pymavlink 
   - python310-pymediainfo 
-  - python310-pymemcache 
+  - python310-pymemcache: [i586] 
   - python310-pymetar 
   - python310-pymilter 
   - python310-pymisp 
@@ -24521,6 +24522,7 @@ unsorted:
   - python310-pyprel 
   - python310-pyprimes 
   - python310-pyproj 
+  - python310-pyproject-hooks 
   - python310-pyproject-metadata 
   - python310-pypsexec 
   - python310-pypubsub 
@@ -24701,7 +24703,7 @@ unsorted:
   - python310-python-lsp-server 
   - python310-python-lzo 
   - python310-python-magic 
-  - python310-python-memcached: [i586] 
+  - python310-python-memcached 
   - python310-python-mpd2 
   - python310-python-mpv 
   - python310-python-multipart 
@@ -27867,6 +27869,7 @@ unsorted:
   - python38-pyprel 
   - python38-pyprimes 
   - python38-pyproj 
+  - python38-pyproject-hooks 
   - python38-pyproject-metadata 
   - python38-pypsexec 
   - python38-pypubsub 
@@ -31238,6 +31241,7 @@ unsorted:
   - python39-pyprel 
   - python39-pyprimes 
   - python39-pyproj 
+  - python39-pyproject-hooks 
   - python39-pyproject-metadata 
   - python39-pypsexec 
   - python39-pypubsub 
@@ -33238,6 +33242,7 @@ unsorted:
   - rust1.63 
   - rust1.64 
   - rust1.65 
+  - rust1.66 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -43035,6 +43040,8 @@ unsorted:
   - toilet 
   - toipe 
   - tokei: [x86_64] 
+  - tokodon 
+  - tokodon-lang 
   - tolua 
   - toluapp-5.1 
   - toluapp-5.3 
