@@ -148,4 +148,61 @@
 </comment>
     <requestid>905578</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>24720f2f8ec3bc9c15ca62eab6836570</srcmd5>
+    <version>0.19.0</version>
+    <time>1671635197</time>
+    <user>dimstar_suse</user>
+    <comment>REQUIRES https://build.opensuse.org/request/show/1043982
+
+- Update to 0.19.0:
+  - Add &quot;shell&quot; password fetch strategy to pass command string to
+    a shell.
+  - Add &quot;description&quot; and &quot;order&quot; as metadata.
+    These fetch the CalDAV: calendar-description,
+    ``CardDAV:addressbook-description`` and
+    ``apple-ns:calendar-order`` properties respectively.
+  - Add a new ``showconfig`` status. This prints *some*
+    configuration values as JSON. This is intended to be used by
+    external tools and helpers that interact with ``vdirsyncer``,
+    and considered experimental.
+  - Update TLS-related tests that were failing due to weak MDs.
+  - ``pytest-httpserver`` and ``trustme`` are now required for
+    tests.
+  - ``pytest-localserver`` is no longer required for tests.
+  - Multithreaded support has been dropped. The
+    ``&quot;--max-workers`` has been removed.
+  - A new ``asyncio`` backend is now used. So far, this shows
+    substantial speed improvements in ``discovery`` and
+    ``metasync``, but little change in `sync`. This will likely
+    continue improving over time. :gh:`906`
+  - The ``google`` storage types no longer
+    require ``requests-oauthlib``, but require
+    ``python-aiohttp-oauthlib`` instead.
+  - Vdirsyncer no longer includes experimental support for
+    `EteSync &lt;https://www.etesync.com/&gt;`_. The existing
+    integration had not been supported for a long time and
+    no longer worked. Support for external storages may be
+    added if anyone is interested in maintaining an EteSync
+    plugin. EteSync users should consider using `etesync-dav`_.
+  - The ``plist`` for macOS has been dropped. It was broken and
+    homebrew generates their own based on package metadata. macOS
+    users are encouraged to use that as a reference.
+  - Changes to SSL configuration:
+    - Support for ``md5`` and ``sha1`` certificate fingerprints
+      has been dropped. If you're validating certificate
+      fingerprints, use ``sha256`` instead.
+    - When using a custom ``verify_fingerprint``, CA validation
+      is always disabled.
+    - If ``verify_fingerprint`` is unset, CA verification is
+      always active. Disabling both features is insecure and no
+      longer supported.
+    - The ``verify`` parameter no longer takes boolean values, it
+      is now optional and only takes a string to a custom CA for
+      verification.
+    - The ``verify`` and ``verify_fingerprint`` will likely be
+      merged into a single parameter in future.
+</comment>
+    <requestid>1043983</requestid>
+  </revision>
 </revisionlist>

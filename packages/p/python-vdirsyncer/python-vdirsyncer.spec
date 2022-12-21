@@ -1,7 +1,7 @@
 #
 # spec file for package python-vdirsyncer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %define skip_python2 1
 %define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-vdirsyncer
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        CalDAV and CardDAV synchronization module
 License:        BSD-3-Clause
@@ -38,6 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
+Requires:       python-aiostream
 Requires:       python-atomicwrites >= 0.1.7
 Requires:       python-click >= 5.0
 Requires:       python-click-log >= 0.3
@@ -49,9 +49,12 @@ Requires(postun):update-alternatives
 Recommends:     python-requests-oauthlib
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module aiostream}
 BuildRequires:  %{python_module click-log >= 0.3}
 BuildRequires:  %{python_module click-threading >= 0.2}
 BuildRequires:  %{python_module hypothesis >= 5.0.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest-subtesthack}
@@ -110,7 +113,8 @@ update-alternatives --auto vdirsyncer
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/vdirsyncer
-%{python_sitelib}/vdirsyncer*
+%{python_sitelib}/vdirsyncer-%{version}*-info
+%{python_sitelib}/vdirsyncer
 %{_userunitdir}/vdirsyncer-%{python_bin_suffix}.service
 %{_userunitdir}/vdirsyncer-%{python_bin_suffix}.timer
 %{_userunitdir}/vdirsyncer.service
