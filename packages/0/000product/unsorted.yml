@@ -126,9 +126,10 @@ unsorted:
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
+  - MozillaFirefox-branding-openSUSE: [i586] 
   - MozillaFirefox-branding-upstream: [x86_64] 
-  - MozillaFirefox-devel 
-  - MozillaFirefox-translations-other 
+  - MozillaFirefox-devel: [x86_64] # devel package of dvd:MozillaFirefox-translations-common 
+  - MozillaFirefox-translations-other: [x86_64] 
   - MozillaThunderbird 
   - MozillaThunderbird-translations-common 
   - MozillaThunderbird-translations-other 
@@ -520,6 +521,7 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
+  - amarok: [i586] # suggested by dvd:suggested:patterns-kde-kde_multimedia 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -1724,7 +1726,6 @@ unsorted:
   - cairomm-devel 
   - cairomm-doc 
   - cairomm1_0-devel 
-  - cairomm1_0-devel-32bit: [x86_64] 
   - cairomm1_0-doc 
   - caja 
   - caja-devel 
@@ -3388,7 +3389,7 @@ unsorted:
   - elementary-xfce-icon-theme 
   - elftoaout 
   - elfutils-debuginfod 
-  - elinks 
+  - elinks: [x86_64] 
   - elisa 
   - elisa-lang 
   - elixir 
@@ -3416,9 +3417,7 @@ unsorted:
   - encfs 
   - encfs-lang 
   - enchant-1-backend-voikko 
-  - enchant-1-backend-voikko-32bit: [x86_64] 
   - enchant-1-backend-zemberek 
-  - enchant-1-backend-zemberek-32bit: [x86_64] 
   - enchant-1-data 
   - enchant-1-devel 
   - enchant-1-tools 
@@ -3591,7 +3590,6 @@ unsorted:
   - exfatprogs 
   - exif 
   - exiftran 
-  - exim: [i586] 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -3646,6 +3644,7 @@ unsorted:
   - farstream-devel 
   - fasd 
   - fasterxml-oss-parent 
+  - fastfetch 
   - fastjar 
   - fastjet-contrib-devel 
   - fastjet-contrib-devel-static 
@@ -6072,6 +6071,7 @@ unsorted:
   - gnome-boxes 
   - gnome-boxes-lang 
   - gnome-branding-MicroOS: [i586] 
+  - gnome-browser-connector: [i586] 
   - gnome-builder 
   - gnome-builder-lang 
   - gnome-calculator-devel 
@@ -8524,6 +8524,7 @@ unsorted:
   - kmime-devel 
   - kmix 
   - kmix-lang 
+  - kmozillahelper: [i586] 
   - kmscon 
   - kmscube 
   - kmymoney 
@@ -9600,7 +9601,7 @@ unsorted:
   - libQtOlm3_0 
   - libQtQuick5-32bit: [x86_64] 
   - libQuotient-devel 
-  - libQuotient0_6 
+  - libQuotient0_7 
   - libRaTools0 
   - libRecast1 
   - libRivet-3_1_6 
@@ -9957,9 +9958,7 @@ unsorted:
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
   - libart_lgpl-devel 
-  - libart_lgpl-devel-32bit: [x86_64] 
   - libart_lgpl_2-2 
-  - libart_lgpl_2-2-32bit: [x86_64] 
   - libasan4 
   - libasan4-32bit: [x86_64] 
   - libasan6 
@@ -10352,7 +10351,6 @@ unsorted:
   - libcaes1 
   - libcairo-gobject2-32bit: [x86_64] 
   - libcairo-script-interpreter2-32bit: [x86_64] 
-  - libcairomm-1_0-1-32bit: [x86_64] 
   - libcairomm-1_16-1 
   - libcaja-extension1 
   - libcal3d12 
@@ -10521,7 +10519,6 @@ unsorted:
   - libclocale-devel 
   - libclocale1 
   - libcloudproviders-devel 
-  - libcloudproviders0-32bit: [x86_64] 
   - libclthreads2 
   - libclucene-core1-32bit: [x86_64] 
   - libclucene-shared1-32bit: [x86_64] 
@@ -10802,7 +10799,6 @@ unsorted:
   - libdlm-devel 
   - libdmapsharing-3_0-2 
   - libdmapsharing-3_0-2-32bit: [x86_64] 
-  - libdmapsharing-4_0-3-32bit: [x86_64] 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
   - libdmlc 
@@ -10932,7 +10928,6 @@ unsorted:
   - libenca0 
   - libenca0-32bit: [x86_64] 
   - libenchant-2-2-32bit: [x86_64] 
-  - libenchant1-32bit: [x86_64] 
   - libenet7 
   - libeot-devel 
   - libeot-tools 
@@ -11406,7 +11401,6 @@ unsorted:
   - libgivaro9 
   - libgjs-devel 
   - libgl2ps1 
-  - libglade-2_0-0-32bit: [x86_64] 
   - libglade2-devel 
   - libglade2-doc 
   - libgladeui-2-13 
@@ -11453,14 +11447,13 @@ unsorted:
   - libgnome-games-support1_3-devel 
   - libgnome-keyring-devel 
   - libgnome-keyring0-32bit: [x86_64] 
-  - libgnome-menu-3-0-32bit: [x86_64] 
   - libgnomekbd-devel 
   - libgnomesu-devel 
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro17 
-  - libgnuradio-3_10_4 
+  - libgnuradio-3_10_5 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
@@ -11522,6 +11515,9 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
+  - libgpod-lang: [i586] 
+  - libgpod-tools: [i586] 
+  - libgpod4: [i586] 
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
@@ -11614,7 +11610,6 @@ unsorted:
   - libgtksourceviewmm-4_0-0 
   - libgtkspell3-3-0 
   - libgtop 
-  - libgtop-2_0-11-32bit: [x86_64] 
   - libgtop-devel 
   - libgtop-doc 
   - libgtp-devel 
@@ -12255,6 +12250,7 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
+  - liblastfm5-1: [i586] 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -12385,7 +12381,7 @@ unsorted:
   - liblttng-ust-python-agent1 
   - liblttng-ust1: [i586] 
   - liblttoolbox3 
-  - liblua5_1-5 
+  - liblua5_1-5: [x86_64] 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
   - liblua5_4-5-32bit: [x86_64] 
@@ -12435,6 +12431,7 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
+  - libmariadbd19: [i586] 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -12719,6 +12716,7 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
+  - libmygpo-qt5-1: [i586] 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -12947,6 +12945,7 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
+  - libofa0: [i586] 
   - libofa0-32bit: [x86_64] 
   - libofx 
   - libofx-devel 
@@ -13233,7 +13232,6 @@ unsorted:
   - libpanel-devel 
   - libpanel-lang 
   - libpanel1-1 
-  - libpangomm-1_4-1-32bit: [x86_64] 
   - libpangomm-2_48-1 
   - libpano-devel 
   - libpano-utils 
@@ -14304,7 +14302,6 @@ unsorted:
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
-  - libspf2-2: [i586] 
   - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
@@ -14526,6 +14523,7 @@ unsorted:
   - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
+  - libtag-extras1: [i586] 
   - libtag1-32bit: [x86_64] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
@@ -21020,6 +21018,8 @@ unsorted:
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
   - plasma-branding-MicroOS: [i586] 
+  - plasma-browser-integration: [i586] 
+  - plasma-browser-integration-lang: [i586] 
   - plasma-framework-devel 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -21797,6 +21797,9 @@ unsorted:
   - python-keystoneauth1-doc 
   - python-keystoneclient-doc 
   - python-keystonemiddleware-doc 
+  - python-khal-bash-completion 
+  - python-khal-fish-completion 
+  - python-khal-zsh-completion 
   - python-libcomps-doc 
   - python-logutils-doc 
   - python-logzero-doc 
@@ -22480,6 +22483,7 @@ unsorted:
   - python310-aiosmtpd 
   - python310-aiosmtplib 
   - python310-aiosqlite 
+  - python310-aiostream 
   - python310-aiounittest 
   - python310-ajsonrpc 
   - python310-akismet 
@@ -25752,6 +25756,7 @@ unsorted:
   - python38-aiosmtpd 
   - python38-aiosmtplib 
   - python38-aiosqlite 
+  - python38-aiostream 
   - python38-aiounittest 
   - python38-ajsonrpc 
   - python38-akismet 
@@ -29122,6 +29127,7 @@ unsorted:
   - python39-aiosmtpd 
   - python39-aiosmtplib 
   - python39-aiosqlite 
+  - python39-aiostream 
   - python39-aiounittest 
   - python39-ajsonrpc 
   - python39-akismet 
@@ -44013,6 +44019,8 @@ unsorted:
   - wannier90-openmpi3-devel 
   - wannier90-openmpi4 
   - wannier90-openmpi4-devel 
+  - wannier90-openmpi5 
+  - wannier90-openmpi5-devel 
   - warewulf-cluster: [x86_64] 
   - warewulf-common: [x86_64] 
   - warewulf-doc: [x86_64] 
@@ -44725,7 +44733,6 @@ unsorted:
   - xyzservices-data 
   - xz-devel 
   - xz-devel-32bit: [x86_64] 
-  - xz-devel-static 
   - xz-java 
   - xz-java-javadoc 
   - yadm 
