@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 08:44:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Thu Apr 18 18:19:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic which has no effect with --disable-static.

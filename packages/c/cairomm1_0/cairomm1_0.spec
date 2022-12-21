@@ -1,7 +1,7 @@
 #
 # spec file for package cairomm1_0
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://cairographics.org
 Source:         http://cairographics.org/releases/%{_name}-%{version}.tar.gz
-Source99:       baselibs.conf
 # needs doxygen for the documentation
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
