@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 18 22:20:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.5
+  * add a temporary check for Cisco Viptela SDWAN
+  * add Huawei wlan controller (not finished yet)
+  * improve arista power supply/cord status checks
+  * fix an uninitialized value in Arista HW check
+
+-------------------------------------------------------------------
 Sun Sep 18 11:02:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.3

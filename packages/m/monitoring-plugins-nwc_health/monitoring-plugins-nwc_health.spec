@@ -19,7 +19,7 @@
 
 %define         realname check_nwc_health
 Name:           monitoring-plugins-nwc_health
-Version:        10.3
+Version:        10.5.1
 Release:        0
 Summary:        This plugin checks the health of network components and interfaces
 # https://github.com/lausser/check_nwc_health
