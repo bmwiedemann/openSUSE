@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  5 13:08:31 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to gnu-efi 3.0.15:
+  * */*.S: add non-executable GNU stack marking on ELF-linux
+  * lib/Makefile: add .o file dependency on libsubdirs targets
+  * Handle __mips64
+- Remove gnu-efi-add-GNU-stack-section.patch: upstreamed
+- Remove un-needed section from
+  gnu-efi-bsc1182057-support-sbat-section.patch now that we have
+  Binutils 2.38
+- Extend gnu-efi-bsc1182057-support-sbat-section.patch for IA-32
+
+-------------------------------------------------------------------
 Tue May  3 13:35:13 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add gnu-efi-add-GNU-stack-section.patch in order to add .note.GNU-stack

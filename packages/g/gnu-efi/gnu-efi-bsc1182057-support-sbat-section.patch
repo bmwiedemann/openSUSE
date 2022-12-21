@@ -71,87 +71,26 @@ index 7be5902..fad1939 100644
    . = ALIGN(4096);
    .dynsym   : { *(.dynsym) }
    . = ALIGN(4096);
+
+--- a/gnuefi/elf_ia32_efi.lds
++++ b/gnuefi/elf_ia32_efi.lds
+@@ -72,6 +72,16 @@ SECTIONS
+     *(.reloc)
+   }
+   . = ALIGN(4096);
++  .sbat :
++  {
++    _sbat = .;
++    *(.sbat)
++    *(.sbat.*)
++  }
++  _esbat = .;
++  _sbat_size = . - _sbat;
++
++  . = ALIGN(4096);
+   .dynsym   : { *(.dynsym) }
+   . = ALIGN(4096);
+   .dynstr   : { *(.dynstr) }
+
 -- 
 2.29.2
-
-
-From 6014f854bd3a083f866a6379c34711bd294202a2 Mon Sep 17 00:00:00 2001
-From: Peter Jones <pjones@redhat.com>
-Date: Thu, 11 Mar 2021 10:08:41 -0500
-Subject: [PATCH 2/2] arm/aarch64: include .sbat in section headers.
-
-Signed-off-by: Peter Jones <pjones@redhat.com>
----
- gnuefi/crt0-efi-aarch64.S | 14 +++++++++++++-
- gnuefi/crt0-efi-arm.S     | 16 +++++++++++++++-
- 2 files changed, 28 insertions(+), 2 deletions(-)
-
-diff --git a/gnuefi/crt0-efi-aarch64.S b/gnuefi/crt0-efi-aarch64.S
-index c300d89..9d4ffcd 100644
---- a/gnuefi/crt0-efi-aarch64.S
-+++ b/gnuefi/crt0-efi-aarch64.S
-@@ -31,7 +31,7 @@ pe_header:
- 	.short 	0
- coff_header:
- 	.short	0xaa64				// AArch64
--	.short	2				// nr_sections
-+	.short	3				// nr_sections
- 	.long	0 				// TimeDateStamp
- 	.long	0				// PointerToSymbolTable
- 	.long	0				// NumberOfSymbols
-@@ -109,6 +109,18 @@ section_table:
- 	.short	0		// NumberOfLineNumbers  (0 for executables)
- 	.long	0xc0000040	// Characteristics (section flags)
- 
-+	.ascii  ".sbat\0\0\0"
-+	.long	_sbat_size		// VirtualSize
-+	.long	_sbat - ImageBase	// VirtualAddress
-+	.long	_sbat_size		// SizeOfRawData
-+	.long	_sbat - ImageBase	// PointerToRawData
-+
-+	.long	0		// PointerToRelocations (0 for executables)
-+	.long	0		// PointerToLineNumbers (0 for executables)
-+	.short	0		// NumberOfRelocations  (0 for executables)
-+	.short	0		// NumberOfLineNumbers  (0 for executables)
-+	.long	0x40400040	// Characteristics (section flags)
-+
- 	.align		12
- _start:
- 	stp		x29, x30, [sp, #-32]!
-diff --git a/gnuefi/crt0-efi-arm.S b/gnuefi/crt0-efi-arm.S
-index c5bb6d4..0189868 100644
---- a/gnuefi/crt0-efi-arm.S
-+++ b/gnuefi/crt0-efi-arm.S
-@@ -31,7 +31,7 @@ pe_header:
- 	.short 	0
- coff_header:
- 	.short	0x1c2				// Mixed ARM/Thumb
--	.short	2				// nr_sections
-+	.short	3				// nr_sections
- 	.long	0 				// TimeDateStamp
- 	.long	0				// PointerToSymbolTable
- 	.long	0				// NumberOfSymbols
-@@ -122,6 +122,20 @@ section_table:
- 	.short	0		// NumberOfLineNumbers  (0 for executables)
- 	.long	0xe0500020	// Characteristics (section flags)
- 
-+
-+	.ascii	".sbat\0\0\0"
-+	.long	_sbat_size		// VirtualSize
-+	.long	_sbat - ImageBase	// VirtualAddress
-+	.long	_sbat_size		// SizeOfRawData
-+	.long	_sbat - ImageBase	// PointerToRawData
-+
-+	.long	0		// PointerToRelocations (0 for executables)
-+	.long	0		// PointerToLineNumbers (0 for executables)
-+	.short	0		// NumberOfRelocations  (0 for executables)
-+	.short	0		// NumberOfLineNumbers  (0 for executables)
-+	.long	0x40400040	// Characteristics (section flags)
-+
-+
- _start:
- 	stmfd		sp!, {r0-r2, lr}
- 
--- 
-2.29.2
-
