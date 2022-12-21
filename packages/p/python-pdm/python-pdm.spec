@@ -26,15 +26,12 @@
 %bcond_with test
 %endif
 Name:           python-pdm%{psuffix}
-Version:        2.2.1
+Version:        2.3.3
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM findpython-022.patch gh#pdm-project/pdm#1516 mcepl@suse.com
-# Makes the module work with findpython 0.2.2
-Patch0:         findpython-022.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pdm-pep517 >= 1.0}
 BuildRequires:  %{python_module pip}
@@ -47,14 +44,14 @@ Requires:       python-findpython >= 0.2.2
 Requires:       python-packaging >= 20.9
 Requires:       python-pep517 >= 0.11.0
 Requires:       python-platformdirs
+Requires:       python-pyproject-hooks
 Requires:       python-python-dotenv >= 0.15
 Requires:       python-requests-toolbelt
 Requires:       python-rich >= 12.3.0
 Requires:       python-shellingham >= 1.3.2
-Requires:       python-unearth >= 0.6.0
+Requires:       python-unearth >= 0.6.3
 Requires:       python-virtualenv >= 20
-Requires:       (python-installer >= 0.5.1 with python-installer < 0.6)
-Requires:       (python-pdm-pep517 >= 1.0.0 with python-pdm-pep517 < 2.0.0)
+Requires:       (python-installer >= 0.6 with python-installer < 0.7)
 Requires:       (python-resolvelib >= 0.8 with python-resolvelib < 0.9)
 Requires:       (python-tomlkit >= 0.8.0 with python-tomlkit < 1)
 # from python-cachecontrol[filecache]
