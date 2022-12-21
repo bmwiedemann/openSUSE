@@ -64,7 +64,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.40.6
+Version:        1.40.8
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -94,7 +94,6 @@ Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
-BuildRequires:  iptables
 BuildRequires:  meson
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -144,8 +143,8 @@ Requires:       sysconfig-netconfig >= 0.80.5
 Requires:       wpa_supplicant >= 0.6.4
 Recommends:     dnsmasq
 Recommends:     iproute2
-Recommends:     iptables
 Recommends:     iputils
+Recommends:     nftables
 Recommends:     org.freedesktop.ModemManager
 # Provides required by sysconfig. The latter is used by older versions.
 Provides:       dhcdbd = 1.14
@@ -313,7 +312,6 @@ export PYTHON=%{_bindir}/python3
     -Dsystemdsystemunitdir=%{_unitdir} \
     -Dudev_dir=%{_udevdir} \
     -Ddbus_conf_dir=%{_dbusconfdir} \
-    -Diptables=%{_sbindir}/iptables \
     -Ddnsmasq=%{_sbindir}/dnsmasq \
     -Ddist_version=%{version} \
     -Dpolkit_agent_helper_1=%{_libexecdir}/polkit-1/polkit-agent-helper-1 \
