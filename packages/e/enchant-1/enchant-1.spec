@@ -1,7 +1,7 @@
 #
 # spec file for package enchant-1
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 URL:            https://abiword.github.io/enchant/
 Source:         https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
-Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM enchant-hunspell-1.4.0.patch dimstar@opensuse.org -- Fix build against hunspell 1.4.0, where WORDMAXLEN is no longer exported
 Patch0:         enchant-hunspell-1.4.0.patch
 BuildRequires:  dbus-1-glib-devel
