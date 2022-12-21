@@ -88,4 +88,12 @@
   occasional build failure due to OOM. (forwarded request 1041919 from StefanBruens)</comment>
     <requestid>1041938</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>416a5c804d41b95109bda3ff5d7d0533</srcmd5>
+    <version>5.4.3</version>
+    <time>1671635202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.3</comment>
+    <requestid>1043990</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 21:30:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.3
+  * Add FP_NR::ceil function
+
+-------------------------------------------------------------------
 Fri Dec  9 18:42:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Limit build parallelism with limit_build macro to avoid
