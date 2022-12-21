@@ -1246,6 +1246,7 @@
     <package name="kruler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kruler-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="krusader" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="krusader-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ksanecore-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
