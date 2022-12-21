@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221220" schemaversion="4.1">
+<image name="OBS__openSUSE___20221221" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221220</productvar>
+      <productvar name="VERSION">20221221</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221220,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221221,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221220/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221221/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -111,7 +111,7 @@
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
-      <repopackage name="amarok"/>
+      <repopackage name="amarok" arch="x86_64"/>
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
@@ -471,7 +471,7 @@
       <repopackage name="evolution-lang"/>
       <repopackage name="evolution-plugin-spamassassin"/>
       <repopackage name="exiftool"/>
-      <repopackage name="exim" arch="x86_64"/>
+      <repopackage name="exim"/>
       <repopackage name="exo-data"/>
       <repopackage name="exo-lang"/>
       <repopackage name="exo-tools"/>
@@ -634,7 +634,7 @@
       <repopackage name="gmenudbusmenuproxy"/>
       <repopackage name="gnome-bluetooth"/>
       <repopackage name="gnome-bluetooth-lang"/>
-      <repopackage name="gnome-browser-connector"/>
+      <repopackage name="gnome-browser-connector" arch="x86_64"/>
       <repopackage name="gnome-calculator"/>
       <repopackage name="gnome-calculator-lang"/>
       <repopackage name="gnome-characters"/>
@@ -1238,7 +1238,7 @@
       <repopackage name="kmousetool-lang"/>
       <repopackage name="kmouth"/>
       <repopackage name="kmouth-lang"/>
-      <repopackage name="kmozillahelper"/>
+      <repopackage name="kmozillahelper" arch="x86_64"/>
       <repopackage name="kmplot"/>
       <repopackage name="kmplot-lang"/>
       <repopackage name="knavalbattle"/>
@@ -1836,9 +1836,9 @@
       <repopackage name="libgphoto2-6-lang"/>
       <repopackage name="libgphoto2_port12"/>
       <repopackage name="libgpm2"/>
-      <repopackage name="libgpod-lang"/>
-      <repopackage name="libgpod-tools"/>
-      <repopackage name="libgpod4"/>
+      <repopackage name="libgpod-lang" arch="x86_64"/>
+      <repopackage name="libgpod-tools" arch="x86_64"/>
+      <repopackage name="libgpod4" arch="x86_64"/>
       <repopackage name="libgps29"/>
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libGraphicsMagick++-Q16-12"/>
@@ -2247,7 +2247,7 @@
       <repopackage name="libkyotocabinet16"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
-      <repopackage name="liblastfm5-1"/>
+      <repopackage name="liblastfm5-1" arch="x86_64"/>
       <repopackage name="liblavfile-2_2-0"/>
       <repopackage name="liblavjpeg-2_2-0"/>
       <repopackage name="liblavplay-2_2-0"/>
@@ -2304,7 +2304,7 @@
       <repopackage name="libmalcontent-ui-0-0"/>
       <repopackage name="libmanette-0_2-0"/>
       <repopackage name="libmariadb3"/>
-      <repopackage name="libmariadbd19"/>
+      <repopackage name="libmariadbd19" arch="x86_64"/>
       <repopackage name="libmarkdown2"/>
       <repopackage name="libmatroska7"/>
       <repopackage name="libmaxminddb0"/>
@@ -2353,7 +2353,7 @@
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
-      <repopackage name="libmygpo-qt5-1"/>
+      <repopackage name="libmygpo-qt5-1" arch="x86_64"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmypaint0"/>
       <repopackage name="libmysofa1"/>
@@ -2405,7 +2405,7 @@
       <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
-      <repopackage name="libofa0"/>
+      <repopackage name="libofa0" arch="x86_64"/>
       <repopackage name="libogg0"/>
       <repopackage name="libogg0-32bit" arch="x86_64"/>
       <repopackage name="liboggkate1"/>
@@ -2762,7 +2762,7 @@
       <repopackage name="libspeechd2"/>
       <repopackage name="libspeex1"/>
       <repopackage name="libspeexdsp1"/>
-      <repopackage name="libspf2-2" arch="x86_64"/>
+      <repopackage name="libspf2-2"/>
       <repopackage name="libspice-client-glib-2_0-8"/>
       <repopackage name="libspice-client-glib-helper"/>
       <repopackage name="libspice-client-gtk-3_0-5"/>
@@ -2807,7 +2807,7 @@
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libsystemd0-32bit" arch="x86_64"/>
-      <repopackage name="libtag-extras1"/>
+      <repopackage name="libtag-extras1" arch="x86_64"/>
       <repopackage name="libtag1"/>
       <repopackage name="libtag_c0"/>
       <repopackage name="libtalloc2"/>
@@ -3305,9 +3305,9 @@
       <repopackage name="mozilla-nss"/>
       <repopackage name="mozilla-nss-certs"/>
       <repopackage name="mozilla-nss-tools" arch="x86_64"/>
-      <repopackage name="MozillaFirefox"/>
-      <repopackage name="MozillaFirefox-branding-openSUSE"/>
-      <repopackage name="MozillaFirefox-translations-common"/>
+      <repopackage name="MozillaFirefox" arch="x86_64"/>
+      <repopackage name="MozillaFirefox-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="MozillaFirefox-translations-common" arch="x86_64"/>
       <repopackage name="mpg123-openal"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
@@ -3751,8 +3751,8 @@
       <repopackage name="pkgconf"/>
       <repopackage name="pkgconf-m4"/>
       <repopackage name="pkgconf-pkg-config"/>
-      <repopackage name="plasma-browser-integration"/>
-      <repopackage name="plasma-browser-integration-lang"/>
+      <repopackage name="plasma-browser-integration" arch="x86_64"/>
+      <repopackage name="plasma-browser-integration-lang" arch="x86_64"/>
       <repopackage name="plasma-framework"/>
       <repopackage name="plasma-framework-components"/>
       <repopackage name="plasma-framework-lang"/>
