@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Dec 21 04:58:08 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * E2EE is the biggest part of this release, 
+    + The following parts of E2EE are known to work:
+      - foundations additional contributions and refactoring.
+      - Olm/Megolm signalling with our parties/devices.
+      - managing device and one-time keys.
+      - sending and receiving (monstrous new encrypted messages.
+      - encrypting/decrypting attachment.
+      - retrieval and decryption of historical messages keys 
+        for which are already in the database.
+      - device verification.
+    + What is not there yet:
+      - historical Megolm sessions are not requested from other 
+        devices/parties, so you will see quite a few undecryptable
+        messages in rooms with past communication - this might be 
+        fixed (if possible without breaking the API) in further 
+        0.7.x releases.
+      - secure server-side storage (SSSS) is not supported at 
+        all for now, and will likely require API breakage so 
+        will come in 0.8.
+      - soft logout is not supported; this is also a subject of 0.8.
+    + Because there's no soft logout the database for a given account 
+      is completely reset upon a successful login attempt. This may 
+      come as a very unpleasant surprise if you don't keep your 
+      login session between client restarts; but this is a necessary
+      trade-off for the current feature set (see #546 for the 
+      discussion). Together with the rest of the above not-there-yet
+      list, this means that you MUST NOT use E2EE with 
+      libQuotient-backed clients as your only device(s) on 
+      the account - there's quite a risk of losing encrypted
+      conversations if anything happens to the database libQuotient
+      keeps key material in, or if you lose your session and have
+      to log in again. Did I mention the whole E2EE functionality
+      is still in beta? Client authors are strongly recommended 
+      to show big scary warnings against E2EE for now.
+  * Read markers -> read receipts + fully read markers.
+
+-------------------------------------------------------------------
 Thu Oct  7 08:37:12 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.11:
