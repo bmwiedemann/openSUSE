@@ -3,7 +3,7 @@
     <param name="url">https://github.com/FairwindsOps/nova</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">3.4.2</param>
+    <param name="revision">3.5.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>
@@ -15,6 +15,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">nova-3.4.2.tar.gz</param>
+    <param name="archive">nova-3.5.0.tar.gz</param>
   </service>
 </services>

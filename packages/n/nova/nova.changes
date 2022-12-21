@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 21 09:08:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 3.5.0:
+  * update dependencies and fix tests (#185)
+  * Allowing filtering by namespace (#177)
+  * Bump k8s.io/client-go from 0.24.2 to 0.25.4 (#174)
+  * Bump alpine from 3.16 to 3.17 (#178)
+  * Update dependencies + `nova find --containers` bug fix from PR #167 (#176)
+
+-------------------------------------------------------------------
 Wed Nov 16 15:50:51 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.4.2:
