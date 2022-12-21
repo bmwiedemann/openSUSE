@@ -258,4 +258,12 @@
     <comment>New upstream rel</comment>
     <requestid>832548</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>49374996514b6b257f039c40b45497fe</srcmd5>
+    <version>3.9.10</version>
+    <time>1671635183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043972</requestid>
+  </revision>
 </revisionlist>

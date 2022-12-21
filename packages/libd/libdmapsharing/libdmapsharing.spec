@@ -1,7 +1,7 @@
 #
 # spec file for package libdmapsharing
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-# NOTE: When bumping these, remember to bump in baselibs too
 %define majorver 4.0
 %define soname 4_0
 %define sover 3
@@ -30,7 +29,6 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.flyn.org/projects/libdmapsharing/
 Source0:        %{url}/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 
 BuildRequires:  pkgconfig
 BuildRequires:  vala
