@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/media/router/media_router_feature.cc b/chrome/browser/media/router/media_router_feature.cc
+index a8d544f..f28f9b0 100644
+--- a/chrome/browser/media/router/media_router_feature.cc
++++ b/chrome/browser/media/router/media_router_feature.cc
+@@ -54,7 +54,7 @@
+ #else
+ BASE_FEATURE(kGlobalMediaControlsCastStartStop,
+              "GlobalMediaControlsCastStartStop",
+-             base::FEATURE_ENABLED_BY_DEFAULT);
++             base::FEATURE_DISABLED_BY_DEFAULT);
+ #endif  // BUILDFLAG(IS_CHROMEOS)
+
+ #endif  // !BUILDFLAG(IS_ANDROID)

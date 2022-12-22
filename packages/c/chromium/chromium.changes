@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 18 17:31:22 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add chromium-disable-GlobalMediaControlsCastStartStop.patch:
+  disable GlobalMediaControlsCastStartStop to fix crashes
+  occurring when interacting with the Media UI (bsc#1198124)
+
+-------------------------------------------------------------------
 Wed Dec 14 09:01:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Chromium 108.0.5359.124:
+- Chromium 108.0.5359.124 (boo#1206403):
   * CVE-2022-4436: Use after free in Blink Media
   * CVE-2022-4437: Use after free in Mojo IPC
   * CVE-2022-4438: Use after free in Blink Frames

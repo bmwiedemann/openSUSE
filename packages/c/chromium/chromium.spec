@@ -130,6 +130,7 @@ Patch201:       chromium-86-fix-vaapi-on-intel.patch
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch204:       chromium-107-system-zlib.patch
+Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel

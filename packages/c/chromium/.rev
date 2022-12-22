@@ -4387,4 +4387,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1042847</requestid>
   </revision>
+  <revision rev="364" vrev="2">
+    <srcmd5>2904d524b3de0cd833e44604c72491b0</srcmd5>
+    <version>108.0.5359.124</version>
+    <time>1671722522</time>
+    <user>dimstar_suse</user>
+    <comment>- Add chromium-disable-GlobalMediaControlsCastStartStop.patch:
+  disable GlobalMediaControlsCastStartStop to fix crashes
+  occurring when interacting with the Media UI (bsc#1198124)</comment>
+    <requestid>1044094</requestid>
+  </revision>
 </revisionlist>
