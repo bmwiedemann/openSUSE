@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-branca
 Version:        0.6.0
 Release:        0
@@ -25,9 +23,13 @@ Summary:        HTML+JS page generator
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-visualization/branca
+# Only the Github archive has the tests. Requires manually setting the version for setuptools_scm below
 Source:         https://github.com/python-visualization/branca/archive/v%{version}.tar.gz#/branca-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 41.2}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -48,19 +50,21 @@ Generate HTML+JS pages with Python.
 %setup -q -n branca-%{version}
 
 %build
-%python_build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_rendering_utf8_iframe and test_rendering_figure_notebook require geckodriver
-%pytest -k 'not (test_rendering_utf8_iframe or test_rendering_figure_notebook)' -v
+%pytest -k 'not (test_rendering_utf8_iframe or test_rendering_figure_notebook)'
 
 %files %{python_files}
 %doc CHANGES.txt README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/branca
+%{python_sitelib}/branca-%{version}.dist-info
 
 %changelog
