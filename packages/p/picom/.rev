@@ -126,4 +126,15 @@ Fixes:
     gh#yshui/picom#932</comment>
     <requestid>1037427</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1feb947c2c22bb6069b0ec63c45a8a7</srcmd5>
+    <version>10.2</version>
+    <time>1671722519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.2
+Fixes:
+  * Window border not being considered when calculating its mask
+    gh#yshui/picom#950</comment>
+    <requestid>1044090</requestid>
+  </revision>
 </revisionlist>
