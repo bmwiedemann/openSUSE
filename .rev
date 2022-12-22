@@ -1385,4 +1385,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1042354</requestid>
   </revision>
+  <revision rev="133" vrev="4">
+    <srcmd5>c70f817c63f0142775e83f0576055eeb</srcmd5>
+    <version>3.0.18</version>
+    <time>1671722503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.18 (CVE-2022-41325, boo#1206142):</comment>
+    <requestid>1044227</requestid>
+  </revision>
 </revisionlist>
