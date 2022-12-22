@@ -686,4 +686,25 @@
     gh#PyO3/maturin#1328</comment>
     <requestid>1042453</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>61ddec3989c37ab3b39b969261d849e1</srcmd5>
+    <version>0.14.7</version>
+    <time>1671722521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.7:
+  * Update uniffi_bindgen to 0.22.0
+    gh#PyO3/maturin#1359
+  * Add workspace lock file to sdist as a fallback
+    gh#PyO3/maturin#1362
+- Changes in v0.14.6:
+  * Allow Rust crate to be placed outside of the directory
+    containing pyproject.toml
+    gh#PyO3/maturin#1347
+  * Disallow uniffi bin bindings
+    gh#PyO3/maturin#1353
+  * Update bundled Python sysconfigs for Linux and macOS
+    gh#PyO3/maturin#1355
+</comment>
+    <requestid>1044089</requestid>
+  </revision>
 </revisionlist>
