@@ -29,7 +29,6 @@ Source2:        %{name}.keyring
 BuildRequires:  djvulibre
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.25
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(poppler) >= 0.62
