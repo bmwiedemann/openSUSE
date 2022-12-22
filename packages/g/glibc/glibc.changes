@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 15 23:25:15 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- floatn.patch: Update _FloatN header support for C++ in GCC 13
+
+-------------------------------------------------------------------
 Thu Nov 10 17:06:18 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - nscd: Convert to systemd-sysusers

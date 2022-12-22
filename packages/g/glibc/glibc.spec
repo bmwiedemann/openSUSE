@@ -201,9 +201,9 @@ BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  makeinfo
 BuildRequires:  python3-base
-BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  systemtap-headers
+BuildRequires:  sysuser-tools
 BuildRequires:  xz
 %if %{build_testsuite}
 BuildRequires:  gcc-c++
@@ -308,6 +308,8 @@ Patch1011:      x86-64-avx2-string-functions.patch
 Patch1012:      nscd-aicache.patch
 # PATCH-FIX-UPSTREAM elf: Reinstate on DL_DEBUG_BINDINGS _dl_lookup_symbol_x
 Patch1013:      dl-debug-bindings.patch
+# PATCH-FIX-UPSTREAM Update _FloatN header support for C++ in GCC 13
+Patch1014:      floatn.patch
 
 ###
 # Patches awaiting upstream approval
@@ -546,6 +548,7 @@ library in a cross compilation setting.
 %patch1011 -p1
 %patch1012 -p1
 %patch1013 -p1
+%patch1014 -p1
 %endif
 
 %patch2000 -p1

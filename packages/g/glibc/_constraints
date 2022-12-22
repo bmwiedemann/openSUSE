@@ -12,6 +12,5 @@
         <size unit="M">5600</size>
       </disk>
     </hardware>
-    <sandbox exclude="true">xen</sandbox>
   </overwrite>
 </constraints>
