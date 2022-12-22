@@ -1,5 +1,5 @@
 #
-# spec file for package python-rq
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,11 +16,19 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %define mod_name rq
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 
-Name:           python-rq
+Name:           python-rq%{psuffix}
 Version:        1.11.1
 Release:        0
 Summary:        Easy Job Queues for Python
@@ -29,10 +37,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/rq/rq
 Source:         https://github.com/rq/rq/archive/v%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0.0}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 3.5.0}
-BuildRequires:  %{python_module sentry-sdk}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
@@ -42,6 +47,15 @@ Requires:       python-click >= 5.0.0
 Requires:       python-redis >= 3.5.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+BuildArch:      noarch
+
+%if %{with test}
+BuildRequires:  %{python_module %{mod_name} = %{version}}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sentry-sdk}
+%endif
+
 %python_subpackages
 
 %description
@@ -50,8 +64,9 @@ them in the background with workers. It is backed by Redis. It can be
 integrated into web stacks.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -p1 -n %{mod_name}-%{version}
 
+%if !%{with test}
 %build
 %python_build
 
@@ -61,13 +76,17 @@ integrated into web stacks.
 %python_clone -a %{buildroot}%{_bindir}/rqinfo
 %python_clone -a %{buildroot}%{_bindir}/rqworker
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 export PATH="$PATH:%{buildroot}%{_bindir}"
 %{_sbindir}/redis-server --port 6379 &
 %pytest
 killall redis-server
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative rq
 %python_install_alternative rqinfo
@@ -81,9 +100,11 @@ killall redis-server
 %files %{python_files}
 %doc README.md CHANGES.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/rq
+%{python_sitelib}/rq-%{version}*-info
 %python_alternative %{_bindir}/rq
 %python_alternative %{_bindir}/rqinfo
 %python_alternative %{_bindir}/rqworker
+%endif
 
 %changelog

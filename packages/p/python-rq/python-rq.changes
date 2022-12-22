@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 22 08:21:10 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Set BuildArch to noarch, this package doesn't have anything that depends on
+  the arch.
+
+-------------------------------------------------------------------
+Thu Dec 22 06:34:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add multibuild for tests to avoid build cycle with python-sentry-sdk.
+  bsc#1206590
+
+-------------------------------------------------------------------
 Mon Dec  5 15:35:13 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.11.1

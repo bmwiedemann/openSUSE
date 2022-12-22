@@ -114,4 +114,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042419</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>af1471ef034fb50e5693a50301c45258</srcmd5>
+    <version>1.11.1</version>
+    <time>1671722584</time>
+    <user>dimstar_suse</user>
+    <comment>- Set BuildArch to noarch, this package doesn't have anything that depends on  the arch.
+- Add multibuild for tests to avoid build cycle with python-sentry-sdk.
+  bsc#1206590
+</comment>
+    <requestid>1044179</requestid>
+  </revision>
 </revisionlist>
