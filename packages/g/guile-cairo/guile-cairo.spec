@@ -1,7 +1,7 @@
 #
 # spec file for package guile-cairo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           guile-cairo
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Guile bindings to Cairo
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source1:        http://download.savannah.gnu.org/releases/guile-cairo/guile-cair
 BuildRequires:  cairo-devel >= 1.10.0
 BuildRequires:  guile-devel
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Requires:       lib%{name}%{sover}
 
 %description

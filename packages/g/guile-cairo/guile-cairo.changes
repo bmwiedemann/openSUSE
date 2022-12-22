@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 21 16:22:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.2:
+  * Include build-aux/git-version-gen in distcheck.
+
+-------------------------------------------------------------------
 Fri Nov  6 17:10:58 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - update to version 1.11.1:
