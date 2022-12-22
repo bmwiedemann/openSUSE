@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Dec 21 19:13:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.4:
+  * fix: resolve issue where skaffold would not add digest when using helm in v1 -> v2 migration case
+  * fix: use python 3.9 in integration-linux.yml
+  * chore: remove hack/check-samples.sh and hack/check-schema-changes.sh from patch releases
+  * fix: remove python2.7 pin from integration-linux.yml
+  * fix: remove kubecontext check warning from kubectl deploy (#8256)
+  * fix: expand namespace with env variables (#8222)
+  * fix: properly wire deploy.kubectl.defaultNamespace field to be set in SKAFFOLD_NAMESPACES (#8129)
+  * fix: new condition to create hydrate-dir only if a kpt renderer or deployer (#8117)
+  * fix: correct issue where skaffold setTemplateValues env vars were in some cases empty (#8261)
+  * fix: support alternative env var naming using support env variable + artifact-name (vs env variable + index)
+  * release: v2.0.2 (#8102)
+  * docs: add detailed information on how to use helm rendering with v2.X.Y as well as how post-renderer usage works (#8093)
+  * fix: correct issues with current upgrade logic for artifactOverrides with helm imageStrategy + multiple-images (#8066)
+  * chore: reduce gcp integration test time (#8080)
+  * feat: completion for the Fish shell (#8097)
+  * refactor: use exclude directives instead of replace directives for pinning (#8056)
+  * chore: remove uncessary server bins (#8092)
+  * fix: add unique tag to test image to avoid collisions with other tests using the same image (#8087)
+  * fix: resolve issue where skaffold filter command did not properly configure the filter allow & deny lists (#8085)
+  * fix: override protocols argument pass to helm post-renderer (#8083)
+  * chore: update changelog.md to include v1.39.4 (#8078)
+  * chore: update examples/* repos to use v3 schema (revert 3f82f13b02117f823694125d7149bca06a8d64f3) (#8079)
+  * chore: update examples/* repos to use v4beta1 schema (#8065)
+
+-------------------------------------------------------------------
 Fri Dec 02 06:43:34 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.3:
