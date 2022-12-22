@@ -28,7 +28,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.webtoolkit.eu/wt/
 Source0:        https://github.com/emweb/wt/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  FastCGI-devel
-BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
 BuildRequires:  apache-rpm-macros
 BuildRequires:  cmake
@@ -139,7 +138,6 @@ code.
     -DWEBGROUP="%{apache_group}" -DWEBUSER="%{apache_user}" \
     -DRUNDIR="%{WTRUNDIR}" \
     -DBUILD_EXAMPLES=ON \
-    -DWT_WRASTERIMAGE_IMPLEMENTATION=GraphicsMagick \
     -DENABLE_POSTGRES=ON \
     -DWT_WITH_SSL=ON \
     -DHTTP_WITH_ZLIB=ON

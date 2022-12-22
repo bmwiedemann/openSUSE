@@ -373,4 +373,12 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment>Fixed compatibility with recent libharu. (forwarded request 1005524 from DarkSS)</comment>
     <requestid>1005556</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>7ff9245d72c7173b36714fbab75aa8c6</srcmd5>
+    <version>4.8.1</version>
+    <time>1671722591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044207</requestid>
+  </revision>
 </revisionlist>
