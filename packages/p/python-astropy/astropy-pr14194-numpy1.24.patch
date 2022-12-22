@@ -1,0 +1,90 @@
+From 505533d3048e9193ea00a4eaae00490cc4f1c74d Mon Sep 17 00:00:00 2001
+From: "P. L. Lim" <2090236+pllim@users.noreply.github.com>
+Date: Mon, 19 Dec 2022 14:41:48 -0500
+Subject: [PATCH] Backport PR #14193: Fix compat with Numpy 1.24
+
+---
+ astropy/units/quantity.py                | 5 +++++
+ astropy/utils/compat/numpycompat.py      | 2 +-
+ astropy/utils/masked/function_helpers.py | 6 +++---
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/astropy/units/quantity.py b/astropy/units/quantity.py
+index b98abfafb09..1a11625ae98 100644
+--- a/astropy/units/quantity.py
++++ b/astropy/units/quantity.py
+@@ -1679,27 +1679,32 @@ def itemset(self, *args):
+         self.view(np.ndarray).itemset(*(args[:-1] + (self._to_own_unit(args[-1]),)))
+ 
+     def tostring(self, order="C"):
++        """Not implemented, use ``.value.tostring()`` instead."""
+         raise NotImplementedError(
+             "cannot write Quantities to string.  Write array with"
+             " q.value.tostring(...)."
+         )
+ 
+     def tobytes(self, order="C"):
++        """Not implemented, use ``.value.tobytes()`` instead."""
+         raise NotImplementedError(
+             "cannot write Quantities to bytes.  Write array with q.value.tobytes(...)."
+         )
+ 
+     def tofile(self, fid, sep="", format="%s"):
++        """Not implemented, use ``.value.tofile()`` instead."""
+         raise NotImplementedError(
+             "cannot write Quantities to file.  Write array with q.value.tofile(...)"
+         )
+ 
+     def dump(self, file):
++        """Not implemented, use ``.value.dump()`` instead."""
+         raise NotImplementedError(
+             "cannot dump Quantities to file.  Write array with q.value.dump()"
+         )
+ 
+     def dumps(self):
++        """Not implemented, use ``.value.dumps()`` instead."""
+         raise NotImplementedError(
+             "cannot dump Quantities to string.  Write array with q.value.dumps()"
+         )
+diff --git a/astropy/utils/compat/numpycompat.py b/astropy/utils/compat/numpycompat.py
+index 0698ef6279f..9b744448668 100644
+--- a/astropy/utils/compat/numpycompat.py
++++ b/astropy/utils/compat/numpycompat.py
+@@ -24,5 +24,5 @@
+ NUMPY_LT_1_22 = not minversion(np, "1.22")
+ NUMPY_LT_1_22_1 = not minversion(np, "1.22.1")
+ NUMPY_LT_1_23 = not minversion(np, "1.23")
+-NUMPY_LT_1_24 = not minversion(np, "1.24dev0")
++NUMPY_LT_1_24 = not minversion(np, "1.24")
+ NUMPY_LT_1_25 = not minversion(np, "1.25.0.dev0+151")
+diff --git a/astropy/utils/masked/function_helpers.py b/astropy/utils/masked/function_helpers.py
+index eefd099ba4a..7440ec5b59f 100644
+--- a/astropy/utils/masked/function_helpers.py
++++ b/astropy/utils/masked/function_helpers.py
+@@ -12,7 +12,7 @@
+ import numpy as np
+ 
+ from astropy.units.quantity_helper.function_helpers import FunctionAssigner
+-from astropy.utils.compat import NUMPY_LT_1_23, NUMPY_LT_1_25
++from astropy.utils.compat import NUMPY_LT_1_23, NUMPY_LT_1_24
+ 
+ # This module should not really be imported, but we define __all__
+ # such that sphinx can typeset the functions with docstrings.
+@@ -587,7 +587,7 @@ def median(a, axis=None, out=None, **kwargs):
+ 
+     a = Masked(a)
+ 
+-    if NUMPY_LT_1_25:
++    if NUMPY_LT_1_24:
+         keepdims = kwargs.pop("keepdims", False)
+         r, k = np.lib.function_base._ureduce(
+             a, func=_masked_median, axis=axis, out=out, **kwargs
+@@ -643,7 +643,7 @@ def quantile(a, q, axis=None, out=None, **kwargs):
+     if not np.lib.function_base._quantile_is_valid(q):
+         raise ValueError("Quantiles must be in the range [0, 1]")
+ 
+-    if NUMPY_LT_1_25:
++    if NUMPY_LT_1_24:
+         keepdims = kwargs.pop("keepdims", False)
+         r, k = np.lib.function_base._ureduce(
+             a, func=_masked_quantile, q=q, axis=axis, out=out, **kwargs

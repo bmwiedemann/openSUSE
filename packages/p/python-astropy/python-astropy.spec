@@ -54,33 +54,38 @@
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.1.1
+Version:        5.2
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
+# SourceRepository: https://github.com/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# https://docs.astropy.org/en/v5.0/install.html#requirements
-BuildRequires:  %{python_module Cython >= 0.29.22}
+# PATCH-FIX-UPSTREAM
+Patch1:         https://github.com/astropy/astropy/pull/14194.patch#/astropy-pr14194-numpy1.24.patch
+# https://docs.astropy.org/en/v5.2/install.html#requirements
+BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.18}
+BuildRequires:  %{python_module numpy-devel >= 1.20}
 BuildRequires:  %{python_module packaging >= 19.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyerfa >= 2.0}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
 Requires:       python-dbm
-Requires:       python-numpy >= 1.18
+Requires:       python-numpy >= 1.20
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0
 Requires(post): update-alternatives
@@ -98,12 +103,13 @@ Recommends:     python-matplotlib >= 3.1
 Recommends:     python-mpmath
 Recommends:     python-pandas
 Recommends:     python-pyarrow >= 5
-Recommends:     python-scipy >= 1.3
+Recommends:     python-scipy >= 1.5
 Recommends:     python-setuptools
 Recommends:     python-sortedcontainers
 Recommends:     python-typing_extensions >= 3.10.0.1
 Conflicts:      perl-Data-ShowTable
 Conflicts:      python-matplotlib = 3.4.0
+Conflicts:      python-matplotlib = 3.5.2
 %if %{with system_cfitsio}
 BuildRequires:  pkgconfig(cfitsio)
 %endif
@@ -142,8 +148,8 @@ BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module sgp4}
-BuildRequires:  %{python_module skyfield}
+BuildRequires:  %{python_module sgp4 >= 2.3}
+BuildRequires:  %{python_module skyfield >= 1.20}
 # /SECTION
 %endif
 %python_subpackages
@@ -159,8 +165,6 @@ managing them.
 %autosetup -p1 -n astropy-%{version}
 # avoid rpmlint zero-length error for empty module
 echo '# empty module' > astropy/samp/setup_package.py
-# Reverse gh#astropy/astropy#13205, patch MPL instead
-sed -i '/matplotlib/ s/,!=3.5.2//' setup.cfg
 
 # Make sure bundled libs are not used
 %if %{with system_cfitsio}
@@ -188,11 +192,11 @@ sed -i 's/--color=yes//' setup.cfg
 
 %build
 %{?unbundle_libs}
-%python_build
+%pyproject_wheel
 
 %install
 %{?unbundle_libs}
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
@@ -209,15 +213,15 @@ donttest+=" or (test_wcs and test_spectra)"
 donttest+=" or (test_standard_profile and test_main)"
 # segfaults on obs, but are okay when run on live system -- gh#astropy/astropy/13286
 donttest+=" or test_celprm or test_prjprm"
-# gh#astropy/astropy#13275
-donttest+=" or (test_precision and (test_day_frac_exact or test_resolution_never_decreases_utc))"
+# gh#astropy/astropy#13805 -- requires fix in matplotlib
+donttest+=" or test_units"
 %ifarch aarch64
 # doctest failure because of precision errors
   donttest+=" or bayesian_info_criterion_lsq"
 %endif
 %ifarch %arm32
   # gh#astropy/astropy#12017
-  donttest+=" or test_stats"  
+  donttest+=" or test_stats"
 %endif
 %ifarch %ix86 %arm
   donttest+=" or (test_models_quantities and test_models_fitting and LevMarLSQFitter)"
@@ -248,7 +252,7 @@ sys.exit(returncode)
 %license LICENSE.rst licenses/*
 %{expand:%(for b in %{binaries}; do echo "%%python_alternative %%{_bindir}/$b"; done)}
 %{python_sitearch}/astropy/
-%{python_sitearch}/astropy-%{version}*-info
+%{python_sitearch}/astropy-%{version}.dist-info
 %endif
 
 %changelog

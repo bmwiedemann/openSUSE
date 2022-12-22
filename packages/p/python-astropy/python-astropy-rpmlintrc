@@ -1,5 +1,3 @@
 addFilter('devel-file-in-non-devel-package .*/wcs/.*')
 addFilter('hidden-file-or-dir .*/tests/data/.*')
 addFilter('zero-length .*/tests/data/.*')
-# https://github.com/rpm-software-management/rpmlint/issues/965, https://docs.astropy.org/en/latest/development/testguide.html#astropy-test
-addFilter('python-tests-in-package .*astropy/.*tests')

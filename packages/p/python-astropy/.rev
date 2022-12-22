@@ -1480,4 +1480,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1038656</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0fb848b9a88b7fb7332c79092863d144</srcmd5>
+    <version>5.2</version>
+    <time>1671722579</time>
+    <user>dimstar_suse</user>
+    <comment>- Add astropy-pr14194-numpy1.24.patch gh#astropy/astropy#14194 (forwarded request 1044140 from bnavigator)</comment>
+    <requestid>1044141</requestid>
+  </revision>
 </revisionlist>

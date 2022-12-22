@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 21 22:56:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.2
+  * Astropy 5.2 is a major release that adds significant new
+    functionality since the 5.1 release.
+  * In particular, this release includes:
+  * Quantity data types
+  * Updates to astropy.cosmology
+  * Topocentric ITRS Frame
+  * Enhanced Fixed Width ASCII Tables
+  * Accessing cloud-hosted FITS files
+  * Drawing the instrument beam and a physical scale bar on
+    celestial images
+  * Interior ticks and tick labels
+  * Support for tilde-prefixed paths
+  * CCDData PSF Image representation
+  * In addition to these major changes, Astropy 5.2 includes a
+    large number of smaller improvements and bug fixes.
+- Move to PEP517 build
+- Revert rpmlintrc: the whitelist error category has been removed
+  from rpmlint
+- Add astropy-pr14194-numpy1.24.patch gh#astropy/astropy#14194
+
+-------------------------------------------------------------------
 Mon Nov 21 11:03:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Whitelist stupid rpmlint error
