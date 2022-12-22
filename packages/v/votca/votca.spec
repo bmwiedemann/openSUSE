@@ -1,7 +1,7 @@
 #
 # spec file for package votca
 #
-# Copyright (c) 2021-2022 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021-2022 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           votca
-Version:        2022
+Version:        2022.1
 Release:        0
 %define         uversion %{version}
 %define         sover 2022
@@ -55,7 +55,7 @@ BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  psmisc
 BuildRequires:  python3-cma
-# only needed for testing 
+# only needed for testing
 %ifarch x86_64
 BuildRequires:  python3-espressomd
 %endif

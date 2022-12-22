@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec 21 22:25:15 UTC 2022 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2022.1
+  - fix PROJECT_VERSION in subdirs ([gh#votca/votca#951])
+  - make csg_resample and csg_stat spacing consistent
+    ([gh#votca/votca#956])
+  - fix build on FreeBSD ([gh#votca/votca#959])
+  - update CI container names ([gh#votca/votca#961])
+  - Fix gw quadrature scheme ([gh#votca/votca#967])
+  - update install guide for spack ([gh#votca/votca#972],
+    [gh#votca/votca#974])
+  - drop gmx-2021 builds from CI ([gh#votca/votca#976])
+  - update syntax for cmake 3.23 ([gh#votca/votca#978])
+  - fix CI build on Ubuntu ([gh#votca/votca#981])
+  - fix CI builds with icpx ([gh#votca/votca#984],
+    [gh#votca/votca#1004])
+  - fix CI builds with ESPResSo 4.2.0 ([gh#votca/votca#993])
+  - fix localization issue ([gh#votca/votca#998],
+    [gh#votca/votca#1000])
+  - update github actions to new versions ([gh#votca/votca#1007],
+    [gh#votca/votca#1013]) 
+
+-------------------------------------------------------------------
 Wed Dec  7 06:21:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Adjust constraints to avoid rejecting too many workers, enable
