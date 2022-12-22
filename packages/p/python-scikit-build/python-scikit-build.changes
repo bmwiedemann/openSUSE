@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 21 22:23:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.4
+  * This releases backports additions for Windows ARM
+    cross-compiling via cibuildwheel from scikit-build-core 0.1.4.
+  * Initial experimental support for Windows ARM cross-compile in
+    #824 and #818
+  * Replace mailing list with GitHub Discussions board in #823
+  * Some CI updates in #811 and #812
+- Version 0.16.3
+  * This release fixes logging issues using setuptools 65.6+
+    affecting our tests. Pytest 7.2+ is now supported. setup.py
+    <command> and setup_requires are deprecated, and tests are
+    marked as such.
+  * Fix typo in usage.rst in #795, thanks to @chohner.
+  * Support pytest 7.2+ in #801.
+  * Change warning filtering in #802.
+  * Handle logging changes in setuptools 65.6+ in #807.
+  * Add deprecated markers to some tests in #807.
+  * Allow known warnings to show up in the tests #807.
+- Version 0.16.2
+  * This addresses one more small regression with the FindPython
+    change from 0.16.0 that was affecting conda. #793
+
+-------------------------------------------------------------------
 Sat Oct 29 15:32:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.16.1

@@ -27,7 +27,7 @@
 
 %define skip_python2 1
 Name:           python-scikit-build%{psuffix}
-Version:        0.16.1
+Version:        0.16.4
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
@@ -53,11 +53,10 @@ Requires:       python-wheel >= 0.32.0
 Requires:       python-typing-extensions >= 3.7
 %endif
 %if %{with test}
+# Note: When tests fail try `osc build ---clean` in order to get rid of remnant numpy typing stubs in $HOME
 BuildRequires:  %{python_module Cython >= 0.25.1}
 BuildRequires:  %{python_module build >= 0.7}
-BuildRequires:  %{python_module flake8 >= 3.0.4}
-BuildRequires:  %{python_module path.py >= 11.5.0}
-BuildRequires:  %{python_module pytest >= 6.0.0 with %python-pytest < 7.2}
+BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.4}
 BuildRequires:  %{python_module pytest-virtualenv >= 1.2.5}
 BuildRequires:  %{python_module requests}
@@ -101,8 +100,6 @@ cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup
 %check
 # test_pep518 needs a wheelhouse with downloaded wheels including platform dependent cmake
 donttest="test_pep518"
-# https://github.com/scikit-build/scikit-build/issues/784
-donttest="$donttest or (test_hide_listing and True and bdist_wheel)"
 %pytest -k "not ($donttest)"
 %endif
 
