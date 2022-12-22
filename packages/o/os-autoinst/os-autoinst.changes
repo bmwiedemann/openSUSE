@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 20 09:13:42 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1671527615.519846f:
+  * log: Print PID
+  * Fix uncoverable comments
+  * Add switch to silence tidy
+  * Mark uncoverable branch in 02-test_ocr.t
+  * Add tesseract-ocr to test OCR in CI
+
+-------------------------------------------------------------------
 Sat Dec 17 02:39:44 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1671186166.693557b:
