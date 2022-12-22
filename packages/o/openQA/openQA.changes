@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 21 12:20:52 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1671625243.c73687c:
+  * Use signatures in WebAPI::Controller::Running
+  * Avoid deadlock when updating asset size during job creation
+  * Improve `t/api/04-jobs.t`
+
+-------------------------------------------------------------------
 Sat Dec 17 02:16:40 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1671158755.972ff1f:
