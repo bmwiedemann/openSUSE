@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 21 18:31:33 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.0:
+  * Inline command editing in the GUI. Press to get started.
+    Only editing the command, its description and the tags are
+    supported for now
+  * Inline command deletion in the GUI. Press to delete a command
+    in the GUI view
+  * Inline command creation in the GUI. Press to create a new
+    command in the GUI view
+
+-------------------------------------------------------------------
 Wed Dec  7 09:20:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of hoard 1.2.0 for openSUSE

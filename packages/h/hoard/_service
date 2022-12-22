@@ -3,7 +3,7 @@
     <param name="url">https://github.com/Hyde46/hoard.git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.2.0</param>
+    <param name="revision">v1.3.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -19,6 +19,9 @@
      <param name="srcdir">hoard</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">hoard</param>
   </service>
 </services>
 
