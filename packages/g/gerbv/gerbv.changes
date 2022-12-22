@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec  4 21:21:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.5:
+  * Replaced — with - to fix charset issue in gerbv --version on wine
+  * Check for NULL schema source default
+  * Changed TinySCHEME version notice from 1.34 to 1.35
+  * Fix draw.h include guard (PR#141 by @ooxi)
+  * Replaced — with - to fix charset issue in gerbv --version on wine
+
+-------------------------------------------------------------------
 Thu Nov 17 14:26:10 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.9.4

@@ -89,4 +89,12 @@ http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
     <comment></comment>
     <requestid>1036820</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7fa0216583185dc5e07f14db09e9c7ff</srcmd5>
+    <version>2.9.5</version>
+    <time>1671722581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044137</requestid>
+  </revision>
 </revisionlist>
