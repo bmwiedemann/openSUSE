@@ -6106,4 +6106,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>couple of CVE fixes &amp; 6.0.12 &amp; 6.0.11 &amp; other fixes</comment>
     <requestid>1041367</requestid>
   </revision>
+  <revision rev="669" vrev="1">
+    <srcmd5>545053488c5f6529cc806ee7bf1050b6</srcmd5>
+    <version>6.1.0</version>
+    <time>1671722517</time>
+    <user>dimstar_suse</user>
+    <comment>6.1 w/ bugs fixed</comment>
+    <requestid>1044103</requestid>
+  </revision>
 </revisionlist>
