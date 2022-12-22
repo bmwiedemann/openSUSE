@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 22 12:11:10 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix hash vs keyword arguments in RSpec expectations (bsc#1204871)
+- 4.5.2
+
+-------------------------------------------------------------------
 Thu Apr 21 14:45:24 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't call 'mkinitrd' in the inst-sys (bsc#1197632)

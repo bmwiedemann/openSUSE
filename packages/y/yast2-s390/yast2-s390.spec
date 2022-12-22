@@ -17,11 +17,11 @@
 
 
 Name:           yast2-s390
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
-Summary:        YaST2 - S/390 Specific Features Configuration
-License:        GPL-2.0-only
 Group:          System/YaST
+License:        GPL-2.0-only
+Summary:        YaST2 - S/390 Specific Features Configuration
 URL:            https://github.com/yast/yast-s390/
 
 Source0:        %{name}-%{version}.tar.bz2
