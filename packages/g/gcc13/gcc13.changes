@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 19 14:59:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update floatn fixinclude pickup to check each header separately (bsc#1206480)
+
+-------------------------------------------------------------------
+Wed Dec 14 07:52:36 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Redo floatn fixinclude pick-up to simply keep what is there. 
+
+-------------------------------------------------------------------
 Tue Dec 13 10:34:35 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Bump to 0a43f7b1a73c8e3b9cefffe430274d0a3d6d3291, git197351.

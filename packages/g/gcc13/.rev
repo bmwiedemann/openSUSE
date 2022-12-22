@@ -9,4 +9,12 @@
 %product_libs_gcc_ver_libgo21 12</comment>
     <requestid>1042666</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5853af8c9cce11ed8517606f7d93a2fc</srcmd5>
+    <version>13.0.0+git197351</version>
+    <time>1671722512</time>
+    <user>dimstar_suse</user>
+    <comment>- update floatn fixinclude pickup to check each header separately (bsc#1206480) (forwarded request 1043820 from dirkmueller)</comment>
+    <requestid>1043900</requestid>
+  </revision>
 </revisionlist>

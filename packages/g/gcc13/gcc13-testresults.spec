@@ -134,15 +134,6 @@
 %define build_jit 0
 %endif
 
-%if 0%{suse_version} >= 1599 || 0%{?sle_version:%sle_version} >= 150300
-# FIXME: more once glibc 2.37 is released
-%define glibc_version %(rpm -q glibc --qf '%%{VERSION}')
-%define floatn_fixed_glibc %(case " %{glibc_version} " in (*9000*) echo 1;; (*) echo 0;; esac)
-%else
-# The headers are not present in earlier glibc
-%define floatn_fixed_glibc 1
-%endif
-
 # Shared library SONAME versions
 %ifarch hppa
 %define libgcc_s 4

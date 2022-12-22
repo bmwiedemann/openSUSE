@@ -113,15 +113,6 @@
 %define build_jit 0
 %endif
 
-%if 0%{suse_version} >= 1599 || 0%{?sle_version:%sle_version} >= 150300
-# FIXME: more once glibc 2.37 is released
-%define glibc_version %(rpm -q glibc --qf '%%{VERSION}')
-%define floatn_fixed_glibc %(case " %{glibc_version} " in (*9000*) echo 1;; (*) echo 0;; esac)
-%else
-# The headers are not present in earlier glibc
-%define floatn_fixed_glibc 1
-%endif
-
 # Shared library SONAME versions
 %ifarch hppa
 %define libgcc_s 4
@@ -2707,6 +2698,23 @@ rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/pthread.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/rseq.h
+echo > ../floatn-fixes.list
+# Whether floatn.h is fixed depends on the glibc version and architecture.
+# For now keep it if it's there but in the end we want to fix glibc itself
+# everywhere.
+if test -f %{buildroot}/%{libsubdir}/include-fixed/bits/floatn.h; then
+  cat >> ../floatn-fixes.list <<EOF
+%dir %{libsubdir}/include-fixed/bits
+%{libsubdir}/include-fixed/bits/floatn.h
+EOF
+fi
+if test -f %{buildroot}/%{libsubdir}/include-fixed/bits/floatn-common.h; then
+  cat >> ../floatn-fixes.list <<EOF
+%dir %{libsubdir}/include-fixed/bits
+%{libsubdir}/include-fixed/bits/floatn-common.h
+EOF
+fi
+
 %if !%{enable_plugins}
 # no plugins
 rm -rf %{buildroot}/%{libsubdir}/plugin
@@ -2800,16 +2808,13 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnat_ugn%{binsuffix}.info.gz
 %endif
 
-%files
+%files -f floatn-fixes.list
 %defattr(-,root,root)
 %dir %{_libdir}/gcc
 %dir %{_libdir}/gcc/%{GCCDIST}
 %dir %{libsubdir}
 %dir %{libsubdir}/include
 %dir %{libsubdir}/include-fixed
-%if !%{floatn_fixed_glibc}
-%dir %{libsubdir}/include-fixed/bits
-%endif
 %if %{biarch}
 %if %{build_primary_64bit}
 %dir %{libsubdir}/32
@@ -2832,11 +2837,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %{libsubdir}/liblto_plugin.so*
 %{libsubdir}/include/limits.h
 %{libsubdir}/include/syslimits.h
-%if !%{floatn_fixed_glibc}
-%{libsubdir}/include-fixed/README
-%{libsubdir}/include-fixed/bits/floatn-common.h
-%{libsubdir}/include-fixed/bits/floatn.h
-%endif
 %{libsubdir}/include-fixed/README
 %{libsubdir}/include/omp.h
 %{libsubdir}/include/float.h
