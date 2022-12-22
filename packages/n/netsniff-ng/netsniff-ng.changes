@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 21 16:15:37 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed build failure caused by make install failing due to make 4.4
+  behavior change in target ordering when parrallelism is enabled.
+  For this, -j1 is passed to make install to disable parrallelism
+
+-------------------------------------------------------------------
 Mon Jan 11 12:05:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.8

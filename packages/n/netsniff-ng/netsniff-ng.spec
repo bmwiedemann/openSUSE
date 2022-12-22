@@ -1,7 +1,7 @@
 #
 # spec file for package netsniff-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -76,7 +76,8 @@ export NACL_INC_DIR=/usr/include/sodium
 make %{?_smp_mflags} ETCDIR=%{_sysconfdir} Q= STRIP=: CFLAGS="%{optflags}"
 
 %install
-make install PREFIX=%{_prefix} ETCDIR=%{_sysconfdir} DESTDIR=%{buildroot}
+# disable parrallel execution with -j1 because it cause an error with make 4.4
+make -j1 install PREFIX=%{_prefix} ETCDIR=%{_sysconfdir} DESTDIR=%{buildroot}
 
 %files
 %license COPYING
