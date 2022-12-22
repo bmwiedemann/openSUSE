@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-flufl.lock
 Version:        7.1.1
 Release:        0
@@ -25,22 +23,20 @@ Summary:        NFS-safe file locking with timeouts for POSIX and Windows
 License:        Apache-2.0
 URL:            https://gitlab.com/warsaw/flufl.lock
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.lock/flufl.lock-%{version}.tar.gz
-BuildRequires:  %{python_module pdm}
+BuildRequires:  %{python_module atpublic >= 2.3}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pdm-pep517}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module psutil >= 5.9}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-atpublic
-Requires:       python-psutil
-Requires:       python-typing_extensions
+Requires:       python-atpublic >= 2.3
+Requires:       python-psutil >= 5.9
+Requires:       (python-typing_extensions if python-base < 3.8)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module atpublic}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sybil}
 # /SECTION
 %python_subpackages
@@ -50,6 +46,7 @@ NFS-safe file locking with timeouts for POSIX and Windows.
 
 %prep
 %autosetup -p1 -n flufl.lock-%{version}
+sed -i 's/--cov=flufl --cov-report=term --cov-report=xml//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -65,7 +62,7 @@ NFS-safe file locking with timeouts for POSIX and Windows.
 %doc README.rst docs/NEWS.rst
 %license LICENSE
 %dir %{python_sitelib}/flufl
-%{python_sitelib}/flufl/lock*
+%{python_sitelib}/flufl/lock
 %{python_sitelib}/flufl.lock-%{version}*info
 
 %changelog
