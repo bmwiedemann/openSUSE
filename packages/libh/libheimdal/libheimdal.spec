@@ -17,7 +17,7 @@
 
 
 Name:           libheimdal
-Version:        7.7.0
+Version:        7.8.0
 Release:        0
 Summary:        The Heimdal implementation of the Kerberos 5 protocol
 License:        BSD-3-Clause
@@ -30,8 +30,6 @@ Source2:        heimdal-patch-source.sh
 Patch0:         heimdal-patched.diff
 # PATCH-FIX-UPSTREAM bmwiedemann -- make build reproducible (boo#1047218)
 Patch1:         reproducible.patch
-# PATCH-FIX-UPSTREAM heimdal-7.7.0-autoconf-2.70.patch -- fix build with autoconf 2.70 (gh#heimdal/heimdal#856)
-Patch2:         heimdal-7.7.0-autoconf-2.70.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  bison
 BuildRequires:  db-devel >= 4.8

@@ -1,15 +1,15 @@
-diff -uNr heimdal-7.7.0/configure.ac heimdal-7.7.0-patched/configure.ac
---- heimdal-7.7.0/configure.ac	2019-06-07 08:21:39.000000000 +0200
-+++ heimdal-7.7.0-patched/configure.ac	2019-06-23 01:05:58.354087165 +0200
+diff -uNr heimdal-7.8.0/configure.ac heimdal-7.8.0-patched/configure.ac
+--- heimdal-7.8.0/configure.ac	2022-11-15 19:56:25.000000000 +0100
++++ heimdal-7.8.0-patched/configure.ac	2022-12-20 16:57:00.506113493 +0100
 @@ -3,7 +3,6 @@
  AC_PREREQ(2.62)
  test -z "$CFLAGS" && CFLAGS="-g"
- AC_INIT([Heimdal],[7.7.0],[https://github.com/heimdal/heimdal/issues])
+ AC_INIT([Heimdal],[7.8.0],[https://github.com/heimdal/heimdal/issues])
 -AC_CONFIG_SRCDIR([kuser/kinit.c])
  AC_CONFIG_HEADERS(include/config.h)
  AC_CONFIG_MACRO_DIR([cf])
  
-@@ -591,7 +590,6 @@
+@@ -594,7 +593,6 @@
  AM_CONDITIONAL(HEIMDAL_DOCUMENTATION, test "$enable_heimdal_documentation" != no)
  
  AC_CONFIG_FILES(Makefile 		\
@@ -17,7 +17,7 @@ diff -uNr heimdal-7.7.0/configure.ac heimdal-7.7.0-patched/configure.ac
  	include/Makefile		\
  	include/gssapi/Makefile		\
  	include/hcrypto/Makefile	\
-@@ -616,35 +614,8 @@
+@@ -619,35 +617,8 @@
  	lib/sqlite/Makefile		\
  	lib/vers/Makefile		\
  	lib/wind/Makefile		\
@@ -53,9 +53,9 @@ diff -uNr heimdal-7.7.0/configure.ac heimdal-7.7.0-patched/configure.ac
  )
  
  AC_OUTPUT
-diff -uNr heimdal-7.7.0/doc/Makefile.am heimdal-7.7.0-patched/doc/Makefile.am
---- heimdal-7.7.0/doc/Makefile.am	2017-03-17 19:19:59.000000000 +0100
-+++ heimdal-7.7.0-patched/doc/Makefile.am	2019-06-23 01:11:42.915659771 +0200
+diff -uNr heimdal-7.8.0/doc/Makefile.am heimdal-7.8.0-patched/doc/Makefile.am
+--- heimdal-7.8.0/doc/Makefile.am	2022-09-16 00:59:25.000000000 +0200
++++ heimdal-7.8.0-patched/doc/Makefile.am	2022-12-20 17:02:32.781246824 +0100
 @@ -10,50 +10,6 @@
  
  info_TEXINFOS = heimdal.texi hx509.texi
@@ -199,9 +199,9 @@ diff -uNr heimdal-7.7.0/doc/Makefile.am heimdal-7.7.0-patched/doc/Makefile.am
 -	ntlm.dxy* \
 -	wind.dxy* \
 -	vars.texi*
-diff -uNr heimdal-7.7.0/kdc/Makefile.am heimdal-7.7.0-patched/kdc/Makefile.am
---- heimdal-7.7.0/kdc/Makefile.am	2016-12-20 15:23:06.000000000 +0100
-+++ heimdal-7.7.0-patched/kdc/Makefile.am	2019-06-23 01:20:05.650281843 +0200
+diff -uNr heimdal-7.8.0/kdc/Makefile.am heimdal-7.8.0-patched/kdc/Makefile.am
+--- heimdal-7.8.0/kdc/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/kdc/Makefile.am	2022-12-20 17:07:05.344492344 +0100
 @@ -6,35 +6,6 @@
  
  lib_LTLIBRARIES = libkdc.la
@@ -315,9 +315,9 @@ diff -uNr heimdal-7.7.0/kdc/Makefile.am heimdal-7.7.0-patched/kdc/Makefile.am
  	libkdc-exports.def \
 -	NTMakefile $(man_MANS) version-script.map
 +	NTMakefile version-script.map
-diff -uNr heimdal-7.7.0/lib/asn1/Makefile.am heimdal-7.7.0-patched/lib/asn1/Makefile.am
---- heimdal-7.7.0/lib/asn1/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/asn1/Makefile.am	2019-06-23 01:21:42.864468490 +0200
+diff -uNr heimdal-7.8.0/lib/asn1/Makefile.am heimdal-7.8.0-patched/lib/asn1/Makefile.am
+--- heimdal-7.8.0/lib/asn1/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/asn1/Makefile.am	2022-12-20 17:08:36.808229786 +0100
 @@ -44,9 +44,7 @@
  gen_files_digest = asn1_digest_asn1.x
  gen_files_kx509 = asn1_kx509_asn1.x
@@ -329,9 +329,9 @@ diff -uNr heimdal-7.7.0/lib/asn1/Makefile.am heimdal-7.7.0-patched/lib/asn1/Make
  
  TESTS = check-der check-gen check-timegm check-ber check-template
  check_PROGRAMS = $(TESTS)
-diff -uNr heimdal-7.7.0/lib/com_err/Makefile.am heimdal-7.7.0-patched/lib/com_err/Makefile.am
---- heimdal-7.7.0/lib/com_err/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/com_err/Makefile.am	2019-06-23 01:23:17.626700892 +0200
+diff -uNr heimdal-7.8.0/lib/com_err/Makefile.am heimdal-7.8.0-patched/lib/com_err/Makefile.am
+--- heimdal-7.8.0/lib/com_err/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/com_err/Makefile.am	2022-12-20 17:14:40.343183718 +0100
 @@ -13,12 +13,8 @@
  
  libcom_err_la_LIBADD = $(LIB_libintl)
@@ -353,9 +353,9 @@ diff -uNr heimdal-7.7.0/lib/com_err/Makefile.am heimdal-7.7.0-patched/lib/com_er
  	libcom_err-version.rc \
  	libcom_err-exports.def \
  	version-script.map
-diff -uNr heimdal-7.7.0/lib/gssapi/Makefile.am heimdal-7.7.0-patched/lib/gssapi/Makefile.am
---- heimdal-7.7.0/lib/gssapi/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/gssapi/Makefile.am	2019-06-23 01:25:34.416149361 +0200
+diff -uNr heimdal-7.8.0/lib/gssapi/Makefile.am heimdal-7.8.0-patched/lib/gssapi/Makefile.am
+--- heimdal-7.8.0/lib/gssapi/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/gssapi/Makefile.am	2022-12-20 17:16:41.706826603 +0100
 @@ -227,8 +227,6 @@
  	$(LIB_hcrypto) \
  	$(LIBADD_roken)
@@ -383,9 +383,9 @@ diff -uNr heimdal-7.7.0/lib/gssapi/Makefile.am heimdal-7.7.0-patched/lib/gssapi/
  	gen-oid.pl \
  	gssapi/gssapi_netlogon.h \
  	krb5/test_acquire_cred.c \
-diff -uNr heimdal-7.7.0/lib/hx509/Makefile.am heimdal-7.7.0-patched/lib/hx509/Makefile.am
---- heimdal-7.7.0/lib/hx509/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/hx509/Makefile.am	2019-06-23 01:28:59.528323408 +0200
+diff -uNr heimdal-7.8.0/lib/hx509/Makefile.am heimdal-7.8.0-patched/lib/hx509/Makefile.am
+--- heimdal-7.8.0/lib/hx509/Makefile.am	2022-11-15 18:24:40.000000000 +0100
++++ heimdal-7.8.0-patched/lib/hx509/Makefile.am	2022-12-20 17:19:57.330257091 +0100
 @@ -141,7 +141,6 @@
  	$(heim_verbose)$(ASN1_COMPILE) $(srcdir)/crmf.asn1 crmf_asn1 || (rm -f crmf_asn1_files ; exit 1)
  
@@ -406,7 +406,7 @@ diff -uNr heimdal-7.7.0/lib/hx509/Makefile.am heimdal-7.7.0-patched/lib/hx509/Ma
 -dist_hxtool_SOURCES = hxtool.c
 -nodist_hxtool_SOURCES = hxtool-commands.c hxtool-commands.h
 -
--$(hxtool_OBJECTS): hxtool-commands.h hx509_err.h
+-$(hxtool_OBJECTS): hxtool-commands.h $(nodist_include_HEADERS)
 -
 -hxtool_LDADD = \
 -	libhx509.la \
@@ -440,10 +440,10 @@ diff -uNr heimdal-7.7.0/lib/hx509/Makefile.am heimdal-7.7.0-patched/lib/hx509/Ma
  	quote.py \
  	ocsp.asn1 \
  	ocsp.opt \
-diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Makefile.am
---- heimdal-7.7.0/lib/kadm5/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/kadm5/Makefile.am	2019-06-23 01:32:40.000210950 +0200
-@@ -13,10 +13,6 @@
+diff -uNr heimdal-7.8.0/lib/kadm5/Makefile.am heimdal-7.8.0-patched/lib/kadm5/Makefile.am
+--- heimdal-7.8.0/lib/kadm5/Makefile.am	2022-11-15 18:06:45.000000000 +0100
++++ heimdal-7.8.0-patched/lib/kadm5/Makefile.am	2022-12-20 17:24:31.273484873 +0100
+@@ -14,10 +14,6 @@
  libkadm5srv_la_LDFLAGS += $(LDFLAGS_VERSION_SCRIPT)$(srcdir)/version-script.map
  endif
  
@@ -454,16 +454,16 @@ diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Ma
  noinst_LTLIBRARIES = sample_passwd_check.la
  
  sample_passwd_check_la_SOURCES = sample_passwd_check.c
-@@ -28,8 +24,6 @@
+@@ -29,8 +25,6 @@
  libkadm5clnt_la_LIBADD = \
  	$(LIB_com_err) ../krb5/libkrb5.la $(LIBADD_roken)
  
 -libexec_PROGRAMS = ipropd-master ipropd-slave
 -
  default_keys_SOURCES = default_keys.c
+ default_keys_CPPFLAGS = -I$(srcdir)/../krb5
  
- kadm5includedir = $(includedir)/kadm5
-@@ -120,15 +114,6 @@
+@@ -122,17 +116,6 @@
  libkadm5srv_la_DEPENDENCIES =			\
  	version-script.map
  
@@ -471,15 +471,17 @@ diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Ma
 -nodist_iprop_log_SOURCES = iprop-commands.c
 -
 -ipropd_master_SOURCES = ipropd_master.c ipropd_common.c iprop.h kadm5_locl.h
+-ipropd_master_CPPFLAGS = -I$(srcdir)/../krb5
 -
 -ipropd_slave_SOURCES = ipropd_slave.c ipropd_common.c iprop.h kadm5_locl.h
+-ipropd_slave_CPPFLAGS = -I$(srcdir)/../krb5
 -
 -man_MANS = kadm5_pwcheck.3 iprop.8 iprop-log.8
 -
  LDADD = \
  	libkadm5srv.la \
  	$(top_builddir)/lib/hdb/libhdb.la \
-@@ -140,26 +125,8 @@
+@@ -144,27 +127,8 @@
  	$(LIB_dlopen) \
  	$(LIB_pidfile)
  
@@ -496,6 +498,7 @@ diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Ma
 -	$(LIB_dlopen) \
 -	$(LIB_pidfile)
 -
+-iprop_log_CPPFLAGS = -I$(srcdir)/../krb5
 -
 -iprop-commands.c iprop-commands.h: iprop-commands.in
 -	$(SLC) $(srcdir)/iprop-commands.in
@@ -506,7 +509,7 @@ diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Ma
  
  client_glue.lo server_glue.lo: $(srcdir)/common_glue.c
  
-@@ -171,12 +138,7 @@
+@@ -176,12 +140,7 @@
  
  ALL_OBJECTS  = $(libkadm5clnt_la_OBJECTS)
  ALL_OBJECTS += $(libkadm5srv_la_OBJECTS)
@@ -519,7 +522,7 @@ diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Ma
  
  $(ALL_OBJECTS): $(srcdir)/kadm5-protos.h $(srcdir)/kadm5-private.h
  $(ALL_OBJECTS): kadm5_err.h
-@@ -208,7 +170,6 @@
+@@ -213,7 +172,6 @@
  	libkadm5srv-exports.def \
  	kadm5_err.et \
  	iprop-commands.in \
@@ -527,9 +530,9 @@ diff -uNr heimdal-7.7.0/lib/kadm5/Makefile.am heimdal-7.7.0-patched/lib/kadm5/Ma
  	check-cracklib.pl \
  	flush.c \
  	sample_passwd_check.c \
-diff -uNr heimdal-7.7.0/lib/kafs/Makefile.am heimdal-7.7.0-patched/lib/kafs/Makefile.am
---- heimdal-7.7.0/lib/kafs/Makefile.am	2016-12-20 15:23:06.000000000 +0100
-+++ heimdal-7.7.0-patched/lib/kafs/Makefile.am	2019-06-23 01:33:33.887205797 +0200
+diff -uNr heimdal-7.8.0/lib/kafs/Makefile.am heimdal-7.8.0-patched/lib/kafs/Makefile.am
+--- heimdal-7.8.0/lib/kafs/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/kafs/Makefile.am	2022-12-20 17:25:26.133332421 +0100
 @@ -74,8 +74,6 @@
  
  EXTRA_DIST = NTMakefile afsl.exp afslib.exp $(man_MANS)
@@ -539,9 +542,9 @@ diff -uNr heimdal-7.7.0/lib/kafs/Makefile.am heimdal-7.7.0-patched/lib/kafs/Make
  # AIX: this almost works with gcc, but somehow it fails to use the
  # correct ld, use ld instead
  afslib.so: afslib.o
-diff -uNr heimdal-7.7.0/lib/krb5/Makefile.am heimdal-7.7.0-patched/lib/krb5/Makefile.am
---- heimdal-7.7.0/lib/krb5/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/krb5/Makefile.am	2019-06-23 01:35:41.372827811 +0200
+diff -uNr heimdal-7.8.0/lib/krb5/Makefile.am heimdal-7.8.0-patched/lib/krb5/Makefile.am
+--- heimdal-7.8.0/lib/krb5/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/krb5/Makefile.am	2022-12-20 17:27:49.080935177 +0100
 @@ -4,8 +4,6 @@
  
  AM_CPPFLAGS += -I../com_err -I$(srcdir)/../com_err $(INCLUDE_sqlite3) $(INCLUDE_libintl) $(INCLUDE_openssl_crypto)
@@ -620,9 +623,9 @@ diff -uNr heimdal-7.7.0/lib/krb5/Makefile.am heimdal-7.7.0-patched/lib/krb5/Make
  	version-script.map \
  	test_config_strings.cfg \
  	krb5.moduli
-diff -uNr heimdal-7.7.0/lib/roken/Makefile.am heimdal-7.7.0-patched/lib/roken/Makefile.am
---- heimdal-7.7.0/lib/roken/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/roken/Makefile.am	2019-06-23 01:37:25.910877865 +0200
+diff -uNr heimdal-7.8.0/lib/roken/Makefile.am heimdal-7.8.0-patched/lib/roken/Makefile.am
+--- heimdal-7.8.0/lib/roken/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/roken/Makefile.am	2022-12-20 17:28:54.084761232 +0100
 @@ -209,8 +209,6 @@
  rokenincludedir = $(includedir)/roken
  nodist_rokeninclude_HEADERS = $(XHEADERS)
@@ -640,9 +643,9 @@ diff -uNr heimdal-7.7.0/lib/roken/Makefile.am heimdal-7.7.0-patched/lib/roken/Ma
  	dirent.c \
  	dirent.hin \
  	dirent-test.c \
-diff -uNr heimdal-7.7.0/lib/sl/Makefile.am heimdal-7.7.0-patched/lib/sl/Makefile.am
---- heimdal-7.7.0/lib/sl/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/lib/sl/Makefile.am	2019-06-23 01:38:29.661688483 +0200
+diff -uNr heimdal-7.8.0/lib/sl/Makefile.am heimdal-7.8.0-patched/lib/sl/Makefile.am
+--- heimdal-7.8.0/lib/sl/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/lib/sl/Makefile.am	2022-12-20 17:30:00.352598492 +0100
 @@ -25,7 +25,7 @@
  
  # install these?
@@ -652,9 +655,9 @@ diff -uNr heimdal-7.7.0/lib/sl/Makefile.am heimdal-7.7.0-patched/lib/sl/Makefile
  
  slc_SOURCES = slc-gram.y slc-lex.l slc.h
  
-diff -uNr heimdal-7.7.0/lib/wind/Makefile.am heimdal-7.7.0-patched/lib/wind/Makefile.am
---- heimdal-7.7.0/lib/wind/Makefile.am	2016-12-20 15:23:06.000000000 +0100
-+++ heimdal-7.7.0-patched/lib/wind/Makefile.am	2019-06-23 01:39:34.124485774 +0200
+diff -uNr heimdal-7.8.0/lib/wind/Makefile.am heimdal-7.8.0-patched/lib/wind/Makefile.am
+--- heimdal-7.8.0/lib/wind/Makefile.am	2022-11-15 18:14:35.000000000 +0100
++++ heimdal-7.8.0-patched/lib/wind/Makefile.am	2022-12-20 17:31:00.324451186 +0100
 @@ -83,12 +83,6 @@
  
  $(test_punycode_OBJECTS): $(built_tests)
@@ -665,12 +668,12 @@ diff -uNr heimdal-7.7.0/lib/wind/Makefile.am heimdal-7.7.0-patched/lib/wind/Make
 -
 -LDADD = libwind.la $(LIB_roken)
 -
- PYTHON = python
- 
  if !MAINTAINER_MODE
-diff -uNr heimdal-7.7.0/Makefile.am heimdal-7.7.0-patched/Makefile.am
---- heimdal-7.7.0/Makefile.am	2019-06-07 08:21:35.000000000 +0200
-+++ heimdal-7.7.0-patched/Makefile.am	2019-06-23 01:40:47.395118733 +0200
+ skip_python = test -f $@ ||
+ endif
+diff -uNr heimdal-7.8.0/Makefile.am heimdal-7.8.0-patched/Makefile.am
+--- heimdal-7.8.0/Makefile.am	2022-09-16 01:54:19.000000000 +0200
++++ heimdal-7.8.0-patched/Makefile.am	2022-12-20 17:32:16.540264008 +0100
 @@ -2,12 +2,7 @@
  
  include $(top_srcdir)/Makefile.am.common
