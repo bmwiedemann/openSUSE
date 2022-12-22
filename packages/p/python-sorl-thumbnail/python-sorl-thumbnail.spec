@@ -35,9 +35,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2
 Recommends:     ImageMagick
 Recommends:     python-dbm
-Suggests:       GraphicsMagick
 Suggests:       python-Wand
-Suggests:       python-pgmagick
+Suggests:       python-ImageMagick
 Suggests:       vips-tools
 BuildArch:      noarch
 # SECTION test requirements
@@ -48,9 +47,7 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{pythons}
-BuildRequires:  GraphicsMagick
 BuildRequires:  ImageMagick
-BuildRequires:  python3-pgmagick
 BuildRequires:  redis
 BuildRequires:  vips-tools
 # /SECTION
@@ -98,8 +95,8 @@ export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
 %pytest -rs -k "not ($skip_tests or test_orientation)"
 export DJANGO_SETTINGS_MODULE=tests.settings.dbm
 %pytest -rs -k "not ($skip_tests)"
-export DJANGO_SETTINGS_MODULE=tests.settings.graphicsmagick
-%pytest -rs -k "not ($skip_tests)"
+export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
+%pytest -rs -k "not ($skip_tests or test_templatetags)"
 export DJANGO_SETTINGS_MODULE=tests.settings.wand
 %pytest -rs -k "not ($skip_tests)"
 
