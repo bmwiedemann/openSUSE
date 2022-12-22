@@ -426,7 +426,7 @@ opensuse_microos:
   - raspberrypi-firmware-dt: [aarch64]  # bsc 1130015
   - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
   - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
-  - kdump # needed by yast when the option to enable it is selected
+  - kdump: [aarch64,ppc64le,s390x,x86_64] # needed by yast when the option to enable it is selected
   - docker: [aarch64,ppc64le,s390x,x86_64]  # container_host tests
 
 opensuse_microos_desktop:
