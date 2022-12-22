@@ -12,7 +12,7 @@ Fri Nov 25 15:22:01 UTC 2022 - Niklas Haas <obs@haasn.xyz>
 -------------------------------------------------------------------
 Fri Nov 25 07:17:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Update to version 3.0.18:
+- Update to version 3.0.18 (CVE-2022-41325, boo#1206142):
   + macOS: Fix audio device listing with non-latin names.
   + Misc: Fix rendering and performance issue with older GPUs.
   + Updated translations.
