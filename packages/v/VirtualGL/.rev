@@ -131,4 +131,41 @@
     <comment></comment>
     <requestid>858448</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>29eb920947528f44636df0e6e832d3ce</srcmd5>
+    <version>3.0.2</version>
+    <time>1671722563</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.2:
+  1. Support for transparent overlay visuals has been retired in this version of
+  VirtualGL.  That feature will continue to be maintained in the 2.6.x branch on
+  a break/fix basis only.  Most applications that once used transparent overlay
+  visuals used them with color index rendering, which was removed in OpenGL 3.1
+  in 2009.  Thus, almost all applications that render overlays now do so using
+  other mechanisms.  Furthermore, the need for VirtualGL to hand off the
+  rendering of transparent overlay visuals to the 2D X server has always limited
+  the usefulness of the feature, and the discontinuation of the VirtualGL Client
+  for Exceed relegated the feature to Un*x clients (with workstation-class GPUs)
+  and the VGL Transport only.  Given that nVidia's implementation of transparent
+  overlay visuals requires disabling the X Composite extension, which cannot be
+  done in many modern Linux distributions, that further limited the feature to
+  the point of uselessness.
+  2. The VirtualGL Faker now assigns various permutations of common OpenGL
+  rendering attributes to the available 2D X server visuals.  This maximizes the
+  chances that &quot;visual hunting&quot; 3D applications (applications that use X11
+  functions to obtain a list of 2D X server visuals, then iterate through the
+  list with `glXGetConfig()` until they find a visual with a desired set of
+  OpenGL rendering attributes) will find a suitable visual.
+  `VGL_DEFAULTFBCONFIG` can still be used to assign a specified set of OpenGL
+  rendering attributes to all 2D X server visuals, although the usefulness of
+  that feature is now very limited.
+  3. The VirtualGL Faker now includes an EGL back end that optionally emulates
+  the GLX API using a combination of the EGL API (with the
+  `EGL_EXT_platform_device` extension) and OpenGL renderbuffer objects (RBOs.)
+  On supported platforms, the EGL back end allows the VirtualGL Faker to be used
+  without a 3D X server.  The EGL back end can be activated by setting the
+  `VGL_DISPLAY` environment variable to the path of a DRI device, such as
+  **/dev/dri/card0**, or by passing that device path to `vglrun` using the `-d`</comment>
+    <requestid>1044106</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package VirtualGL
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           VirtualGL
-Version:        2.6.5
+Version:        3.0.2
 Release:        0
 Summary:        A toolkit for displaying OpenGL applications to thin clients
 License:        LGPL-2.1-only AND SUSE-wxWidgets-3.1
@@ -36,6 +36,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(glu)
@@ -130,6 +131,7 @@ ln -sf ../libvglfaker.so %{buildroot}%{_libdir}/fakelib/libGL.so
 chmod 644 doc/LGPL.txt doc/LICENSE.txt doc/index.html doc/*.png doc/*.gif doc/*.css
 rm -rf %{buildroot}%{_datadir}/doc
 mv -f %{buildroot}%{_bindir}/glxinfo %{buildroot}%{_bindir}/vglxinfo
+mv -f %{buildroot}%{_bindir}/eglinfo %{buildroot}%{_bindir}/veglinfo
 # bsc#1097210 rely on env settings
 rm -rf %{buildroot}/%{_bindir}/.vglrun.*
 
@@ -142,6 +144,7 @@ rm -rf %{buildroot}/%{_bindir}/.vglrun.*
 %{_bindir}/tcbench
 %{_bindir}/nettest
 %{_bindir}/cpustat
+%{_bindir}/veglinfo
 %{_bindir}/vglxinfo
 %{_bindir}/glxspheres
 %{_bindir}/vglclient
