@@ -238,4 +238,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
   used</comment>
     <requestid>1043089</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>dc5d4fdb6ff52f8404fca95261e34951</srcmd5>
+    <version>10.42</version>
+    <time>1671722504</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1044235</requestid>
+  </revision>
 </revisionlist>
