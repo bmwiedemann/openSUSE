@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Tue Dec 13 22:31:14 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.9.4-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.9.4-1
+  * Fixed starting 3.9.3 on Windows #1311
+- Update to version 3.9.3-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.9.3-1
+  * Fixed an old version number in the gnome application metadata #1304
+  * Fixed switching off generals when using crescendo in not override mode #1299
+  * Fixed error messages of GrandOrguePerf #1280
+  * Fixed exit from GrandOrgue with an unhandled exception occurred on loading an organ
+  * Fixed displaying output volume indicators on OSx #1255
+  * Fixed sending midi-off events from generals and another pushbuttons #1291
+  * Fixed crashing on exit in some cases
+
+-------------------------------------------------------------------
+Tue Nov 29 11:53:27 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.9.2-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.9.2-1
+  * Fixed sending incorrect midi values from an enclosure #1267
+  * Fixed not sending midi events from pushbuttons, including GC #1220
+  * Fixed sending a midi event from an enclosure when it's value is not changed #1206
+  * Fixed processing enclosures with high value is less than low value #1266
+
+-------------------------------------------------------------------
+Mon Nov 14 19:46:03 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.9.1-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.9.1-1
+  * Fixed crash on loading an organ without a pedal #1249
+  * Fixed SYSEX Hauptwerk max. length in MIDI event editor #1207
+  * Fixed enclosure value calculation #1203
+  * Fixed controlling stops with a touchscreen on Raspberry Pi #1208
+
+-------------------------------------------------------------------
+Thu Nov  3 10:57:44 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.9.0-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.9.0-1
+  * Fixed playing multitrack midi files with changes of tempo https://github.com/GrandOrgue/grandorgue/discussions/1225
+  * Fixed displaying audio ports on OSx #1216
+  * Added divisional combination banks #708
+  * Renamed audio ports: Pa to PortAudio and Rt to RtAudio #1216
+  * Fixed size of the Organ Selection Dialog #1215
+  * Fixed generals buttons behaviour with the crescendo in add mode #1209
+  * Fixed an empty stop set to a general combination #1212
+
+-------------------------------------------------------------------
+Thu Sep 15 21:29:33 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.8.0-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.8.0-1
+  * Fixed setting an empty stop set to a divisional combination #1068
+  * Added capability of switching between the Override and the Add crescendo mode #1170
+  * Fixed rebuilding the cache every time upon the appimage starts #1174
+  * Fixed building appimage in an ubuntu container
+
+-------------------------------------------------------------------
+Tue Aug 16 11:54:39 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.7.0-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.7.0-1
+  * Fixed packaging for OSx #1135
+  * Deleting an organ in the Organ tab of the Settings dialog causes also deleting it's cache and all it's presets #1049
+  * Reorganised the Organs tab of the Settings dialog #1119
+  * Added capability of restoring organ settings values for all subobjects #1119
+
+-------------------------------------------------------------------
+Sun May 22 12:04:39 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.6.7-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.6.7-1
+  * Added publishing debug symbols on windows builds #853
+
+-------------------------------------------------------------------
+Fri Apr 29 19:41:21 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.6.6-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.6.6-1
+  * Fixed help issues #1066
+  * Fixed saving organ settings on closing an organ or on finishing GrandOrgue #1069
+  * Fixed setting up output midi events for all devices #1097
+
+-------------------------------------------------------------------
+Mon Apr 18 16:01:54 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.6.5-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.6.5-1
+  * Fixed not saving the main window position and size in organ settings #1093
+  * Fixed sound distortion while a reveberation is active #983
+  * Fixed hang on reopening sound device (exit from settings, Panic) while a reveberation is active #983
+  * Added support for building against system-wide ZitaConvolver library #1095
+
+-------------------------------------------------------------------
+Sun Mar 20 16:04:11 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.6.4-1.
+  * Updated the copyright headers in the source code
+  * Switched ZitaConvolver to an external source (github#983)
+  * Added distribution of GrandOrguePerfTest in the GrandOrgue package (github#868)
+  * Added the image file name to messages on loading this image (github#1063)
+  * Fixed allowing to select disabled devices in the Midi Event Dialog (github#1044)
+  * Fixed limits for PGM numbers of the Cx Program Change Range midi event (github#1058)
+  * Clarified the guide how to obtain submodule sources manually in the BUILD.md (github#1062)
+
+-------------------------------------------------------------------
+Sat Mar  5 10:16:11 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.6.3-1.
+
+-------------------------------------------------------------------
+Sat Jan 29 17:47:29 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.6.1-1.
+
+-------------------------------------------------------------------
+Wed Jan 26 11:12:06 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Create package with version 3.6.1-0.

@@ -1,0 +1,5 @@
+<package name="grandorgue" project="openSUSE:Factory">
+  <title>grandorgue</title>
+  <description></description>
+  <devel project="multimedia:apps" package="grandorgue"/>
+</package>
