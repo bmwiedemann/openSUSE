@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221221" schemaversion="4.1">
+<image name="OBS__MicroOS___20221222" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221221</productvar>
+      <productvar name="VERSION">20221222</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221221,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221222,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221221/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221222/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -103,7 +103,7 @@
       <repopackage name="at-spi2-core-lang" arch="x86_64"/>
       <repopackage name="attica-qt5" arch="x86_64"/>
       <repopackage name="attr" arch="x86_64"/>
-      <repopackage name="audit"/>
+      <repopackage name="audit" arch="x86_64"/>
       <repopackage name="augeas" arch="x86_64"/>
       <repopackage name="augeas-lenses" arch="x86_64"/>
       <repopackage name="autofs" arch="x86_64"/>
@@ -160,8 +160,7 @@
       <repopackage name="bubblewrap"/>
       <repopackage name="busybox"/>
       <repopackage name="busybox-coreutils" arch="x86_64"/>
-      <repopackage name="busybox-findutils" arch="x86_64"/>
-      <repopackage name="busybox-gawk"/>
+      <repopackage name="busybox-gawk" arch="x86_64"/>
       <repopackage name="busybox-grep" arch="x86_64"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-hostname" arch="x86_64"/>
@@ -184,7 +183,7 @@
       <repopackage name="chkstat"/>
       <repopackage name="chrony" arch="x86_64"/>
       <repopackage name="chrony-pool-openSUSE" arch="x86_64"/>
-      <repopackage name="cifs-utils"/>
+      <repopackage name="cifs-utils" arch="x86_64"/>
       <repopackage name="cloud-init" arch="x86_64"/>
       <repopackage name="cloud-init-config-MicroOS" arch="x86_64"/>
       <repopackage name="cm-unicode-fonts"/>
@@ -231,7 +230,7 @@
       <repopackage name="cups-filters" arch="x86_64"/>
       <repopackage name="cups-pk-helper" arch="x86_64"/>
       <repopackage name="cups-pk-helper-lang" arch="x86_64"/>
-      <repopackage name="curl"/>
+      <repopackage name="curl" arch="x86_64"/>
       <repopackage name="cyreal-lobster-cyrillic-fonts"/>
       <repopackage name="cyrus-sasl" arch="x86_64"/>
       <repopackage name="cyrus-sasl-gssapi" arch="x86_64"/>
@@ -579,7 +578,7 @@
       <repopackage name="gupnp-dlna" arch="x86_64"/>
       <repopackage name="gvfs"/>
       <repopackage name="gvfs-backend-afc" arch="x86_64"/>
-      <repopackage name="gvfs-backend-samba"/>
+      <repopackage name="gvfs-backend-samba" arch="x86_64"/>
       <repopackage name="gvfs-backends"/>
       <repopackage name="gvfs-fuse"/>
       <repopackage name="gvfs-lang"/>
@@ -703,7 +702,7 @@
       <repopackage name="kdialog-lang" arch="x86_64"/>
       <repopackage name="kdoctools" arch="x86_64"/>
       <repopackage name="kdoctools-lang" arch="x86_64"/>
-      <repopackage name="kdump"/>
+      <repopackage name="kdump" arch="x86_64"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-default-base" arch="x86_64"/>
       <repopackage name="kernel-firmware-all"/>
@@ -739,7 +738,7 @@
       <repopackage name="kernel-firmware-ti"/>
       <repopackage name="kernel-firmware-ueagle"/>
       <repopackage name="kernel-firmware-usb-network"/>
-      <repopackage name="kexec-tools"/>
+      <repopackage name="kexec-tools" arch="x86_64"/>
       <repopackage name="keylime-config" arch="x86_64"/>
       <repopackage name="keylime-firewalld" arch="x86_64"/>
       <repopackage name="keylime-logrotate" arch="x86_64"/>
@@ -747,7 +746,7 @@
       <repopackage name="keylime-tenant" arch="x86_64"/>
       <repopackage name="keylime-tpm_cert_store" arch="x86_64"/>
       <repopackage name="keylime-verifier" arch="x86_64"/>
-      <repopackage name="keyutils"/>
+      <repopackage name="keyutils" arch="x86_64"/>
       <repopackage name="kf5-kcm-fcitx" arch="x86_64"/>
       <repopackage name="kf5-kcm-fcitx-icons" arch="x86_64"/>
       <repopackage name="kfilemetadata5" arch="x86_64"/>
@@ -860,7 +859,7 @@
       <repopackage name="libattr1"/>
       <repopackage name="libaudit1"/>
       <repopackage name="libaugeas0" arch="x86_64"/>
-      <repopackage name="libauparse0"/>
+      <repopackage name="libauparse0" arch="x86_64"/>
       <repopackage name="libavahi-client3"/>
       <repopackage name="libavahi-common3"/>
       <repopackage name="libavahi-core7" arch="x86_64"/>
@@ -1013,7 +1012,7 @@
       <repopackage name="libepub0" arch="x86_64"/>
       <repopackage name="libepubgen-0_1-1"/>
       <repopackage name="liberation-fonts"/>
-      <repopackage name="libesmtp6"/>
+      <repopackage name="libesmtp6" arch="x86_64"/>
       <repopackage name="libespeak-ng1" arch="x86_64"/>
       <repopackage name="libetonyek-0_1-1"/>
       <repopackage name="libev4" arch="x86_64"/>
@@ -1224,7 +1223,7 @@
       <repopackage name="libiw30" arch="x86_64"/>
       <repopackage name="libixion-0_17-0"/>
       <repopackage name="libjack0"/>
-      <repopackage name="libjansson4"/>
+      <repopackage name="libjansson4" arch="x86_64"/>
       <repopackage name="libjavascriptcoregtk-4_1-0"/>
       <repopackage name="libjavascriptcoregtk-5_0-0" arch="x86_64"/>
       <repopackage name="libjaylink" arch="x86_64"/>
@@ -1373,7 +1372,7 @@
       <repopackage name="libldap-data"/>
       <repopackage name="libldap2"/>
       <repopackage name="libldapcpp0" arch="x86_64"/>
-      <repopackage name="libldb2"/>
+      <repopackage name="libldb2" arch="x86_64"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblldp_clif1" arch="x86_64"/>
       <repopackage name="libLLVM15"/>
@@ -1390,7 +1389,7 @@
       <repopackage name="liblvm2cmd2_03"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblzma5"/>
-      <repopackage name="liblzo2-2"/>
+      <repopackage name="liblzo2-2" arch="x86_64"/>
       <repopackage name="libm17n0"/>
       <repopackage name="libmagic1"/>
       <repopackage name="libMagickCore-7_Q16HDRI10" arch="x86_64"/>
@@ -1443,7 +1442,7 @@
       <repopackage name="libnewt0_52" arch="x86_64"/>
       <repopackage name="libnfnetlink0" arch="x86_64"/>
       <repopackage name="libnfs14"/>
-      <repopackage name="libnfsidmap1"/>
+      <repopackage name="libnfsidmap1" arch="x86_64"/>
       <repopackage name="libnftables1" arch="x86_64"/>
       <repopackage name="libnftnl11" arch="x86_64"/>
       <repopackage name="libnghttp2-14"/>
@@ -1457,7 +1456,7 @@
       <repopackage name="libnma0" arch="x86_64"/>
       <repopackage name="libnotify4"/>
       <repopackage name="libnpth0"/>
-      <repopackage name="libnscd1"/>
+      <repopackage name="libnscd1" arch="x86_64"/>
       <repopackage name="libnsl3"/>
       <repopackage name="libnss_usrfiles2"/>
       <repopackage name="libntfs-3g89" arch="x86_64"/>
@@ -1746,13 +1745,13 @@
       <repopackage name="libsynctex2" arch="x86_64"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag1"/>
-      <repopackage name="libtalloc2"/>
+      <repopackage name="libtalloc2" arch="x86_64"/>
       <repopackage name="libtasn1-6"/>
-      <repopackage name="libtdb1"/>
+      <repopackage name="libtdb1" arch="x86_64"/>
       <repopackage name="libtelepathy-glib0" arch="x86_64"/>
       <repopackage name="libtelepathy-logger3" arch="x86_64"/>
       <repopackage name="libtepl-6-1" arch="x86_64"/>
-      <repopackage name="libtevent0"/>
+      <repopackage name="libtevent0" arch="x86_64"/>
       <repopackage name="libtextstyle0" arch="x86_64"/>
       <repopackage name="libthai-data"/>
       <repopackage name="libthai0"/>
@@ -1832,7 +1831,7 @@
       <repopackage name="libWPEBackend-fdo-1_0-1"/>
       <repopackage name="libwpg-0_3-3"/>
       <repopackage name="libwps-0_4-4"/>
-      <repopackage name="libwrap0"/>
+      <repopackage name="libwrap0" arch="x86_64"/>
       <repopackage name="libX11-6"/>
       <repopackage name="libX11-data"/>
       <repopackage name="libX11-xcb1"/>
@@ -1945,7 +1944,7 @@
       <repopackage name="m17n-db"/>
       <repopackage name="m17n-db-lang"/>
       <repopackage name="mailx" arch="x86_64"/>
-      <repopackage name="makedumpfile"/>
+      <repopackage name="makedumpfile" arch="x86_64"/>
       <repopackage name="malcontent" arch="x86_64"/>
       <repopackage name="malcontent-lang" arch="x86_64"/>
       <repopackage name="man" arch="x86_64"/>
@@ -2054,7 +2053,7 @@
       <repopackage name="NetworkManager-openvpn-lang" arch="x86_64"/>
       <repopackage name="NetworkManager-tui" arch="x86_64"/>
       <repopackage name="NetworkManager-wwan" arch="x86_64"/>
-      <repopackage name="nfs-client"/>
+      <repopackage name="nfs-client" arch="x86_64"/>
       <repopackage name="nftables" arch="x86_64"/>
       <repopackage name="nkf"/>
       <repopackage name="notification-daemon"/>
@@ -2082,11 +2081,11 @@
       <repopackage name="OpenPrintingPPDs-hpijs" arch="x86_64"/>
       <repopackage name="OpenPrintingPPDs-postscript" arch="x86_64"/>
       <repopackage name="openslp" arch="x86_64"/>
-      <repopackage name="openssh"/>
-      <repopackage name="openssh-askpass-gnome"/>
-      <repopackage name="openssh-clients"/>
-      <repopackage name="openssh-common"/>
-      <repopackage name="openssh-server"/>
+      <repopackage name="openssh" arch="x86_64"/>
+      <repopackage name="openssh-askpass-gnome" arch="x86_64"/>
+      <repopackage name="openssh-clients" arch="x86_64"/>
+      <repopackage name="openssh-common" arch="x86_64"/>
+      <repopackage name="openssh-server" arch="x86_64"/>
       <repopackage name="openssl" arch="x86_64"/>
       <repopackage name="openssl-1_1" arch="x86_64"/>
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
@@ -2317,14 +2316,14 @@
       <repopackage name="python3-cupshelpers" arch="x86_64"/>
       <repopackage name="python3-firewall" arch="x86_64"/>
       <repopackage name="python3-gedit" arch="x86_64"/>
-      <repopackage name="python3-ldb"/>
+      <repopackage name="python3-ldb" arch="x86_64"/>
       <repopackage name="python3-louis" arch="x86_64"/>
       <repopackage name="python3-nftables" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
       <repopackage name="python3-solv" arch="x86_64"/>
       <repopackage name="python3-speechd" arch="x86_64"/>
-      <repopackage name="python3-talloc"/>
+      <repopackage name="python3-talloc" arch="x86_64"/>
       <repopackage name="python3-tdb" arch="x86_64"/>
       <repopackage name="python3-tevent" arch="x86_64"/>
       <repopackage name="python310"/>
@@ -2454,7 +2453,7 @@
       <repopackage name="rebootmgr" arch="x86_64"/>
       <repopackage name="redis" arch="x86_64"/>
       <repopackage name="rgb" arch="x86_64"/>
-      <repopackage name="rpcbind"/>
+      <repopackage name="rpcbind" arch="x86_64"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
       <repopackage name="rsvg-thumbnailer" arch="x86_64"/>
@@ -2480,11 +2479,11 @@
       <repopackage name="rust-keylime" arch="x86_64"/>
       <repopackage name="sac"/>
       <repopackage name="samba" arch="x86_64"/>
-      <repopackage name="samba-ad-dc-libs"/>
+      <repopackage name="samba-ad-dc-libs" arch="x86_64"/>
       <repopackage name="samba-client" arch="x86_64"/>
-      <repopackage name="samba-client-libs"/>
-      <repopackage name="samba-libs"/>
-      <repopackage name="samba-libs-python3"/>
+      <repopackage name="samba-client-libs" arch="x86_64"/>
+      <repopackage name="samba-libs" arch="x86_64"/>
+      <repopackage name="samba-libs-python3" arch="x86_64"/>
       <repopackage name="samba-python3" arch="x86_64"/>
       <repopackage name="sazanami-fonts"/>
       <repopackage name="sbc" arch="x86_64"/>
@@ -2560,7 +2559,7 @@
       <repopackage name="system-config-printer-common" arch="x86_64"/>
       <repopackage name="system-config-printer-common-lang" arch="x86_64"/>
       <repopackage name="system-config-printer-dbus-service" arch="x86_64"/>
-      <repopackage name="system-group-audit"/>
+      <repopackage name="system-group-audit" arch="x86_64"/>
       <repopackage name="system-group-hardware"/>
       <repopackage name="system-group-kvm"/>
       <repopackage name="system-group-wheel" arch="x86_64"/>
