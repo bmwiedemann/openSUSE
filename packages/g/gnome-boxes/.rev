@@ -771,4 +771,12 @@
   not related to the GNOME search provider (forwarded request 1042447 from gmbr3)</comment>
     <requestid>1042553</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>795878aa696ef32b5b61a6a05fd1cc5d</srcmd5>
+    <version>43.2</version>
+    <time>1671787304</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1044332 from iznogood)</comment>
+    <requestid>1044370</requestid>
+  </revision>
 </revisionlist>

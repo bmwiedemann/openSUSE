@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 22 20:50:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Fix wrong key sent for the tty9 shortcut.
+  + Fix creating VMs from remote disks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec 12 18:40:00 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - The standard .service file should be in the main package - it's
