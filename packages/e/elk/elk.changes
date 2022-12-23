@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Tue Dec 20 07:46:02 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adjust wannier90-devel dependencies so as to build against its
+  correct openmpi flavour and avoid degeneracy between its multiple
+  openmpi flavours when installing.
+- Add rpmlintrc file to suppress false positives that cannot be
+  fixed/worked around:
+  * openmpi-libs Requires: necessary for multiple openmpi flavours.
+  * Requires: wannier90-devel (or its appropriate openmpi flavour
+    in keeping with the first entry of this changeset.
+
+-------------------------------------------------------------------
+Wed Dec 14 06:29:26 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.6.7:
+  * Added dynamical Born effective charges (dynBEC).
+  * Included a dynBEC example of hexagonal boron nitride.
+  * Fixed a problem with spin-unpolarised DFT+U calculations.
+  * Updated to Libxc version 6.
+  * Changed to single-precision orbitals in many routines.
+  * Removed the bundled BLAS/LAPACK and FFTPACK libraries.
+- Adapt configuration of make.inc to conform to new version.
+- Run tests as part of %check.
+
+-------------------------------------------------------------------
+Fri Dec  9 11:14:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.5.10:
+  * Improved OpenMP parallelism.
+  * Added variables to VARIABLES.OUT which are written on
+    completion of geometry optimisation, for example 'engytot
+    (geomopt)'.
+  * Adjusted several default parameters.
+- Drop sources/patches that are no longer used:
+  * make.inc.bz2: make.inc is now generated in specfile
+  * usefftw3.patch.bz2: upstream make.defs takes care of this
+  * Makefile_src.patch.bz2: outdated and not needed any more.
+- Switch to multibuild for multiple openmpi flavours, plus non-
+  mpi flavour, common data, utilities, etc.
+- New BuildRequires: pkgconfig(libxc), pkgconfig(wannier).
+- Numerous specfile cleanups.
+
+-------------------------------------------------------------------
+Fri May 11 05:18:00 UTC 2012 - scorot@free.fr
+
+- remove conditional BuildRequires for blas and lapack since
+  recent lapack now build correctly for all suse version 
+
+-------------------------------------------------------------------
+Sat Apr 14 03:08:11 UTC 2012 - badshah400@gmail.com
+
+- Update BuildRequires in keeping with lapack package changes
+

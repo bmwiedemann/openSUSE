@@ -1,0 +1,5 @@
+# openMPI libs
+addFilter("E: explicit-lib-dependency")
+
+# Break dependency degeneracy due to multiple openmpi flavours
+addFilter("E: devel-dependency")
