@@ -2328,4 +2328,41 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>994553</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>7d639af217c666faf9099f7dc3f3de5e</srcmd5>
+    <version>2.38.1</version>
+    <time>1671787274</time>
+    <user>dimstar_suse</user>
+    <comment>- restore lsblk and lslogins as well
+
+- reinstanciate logger
+
+- Fix /usr/bin/findmnt to be in only one package (bsc#1206347)
+
+- Fix tests not passing when '@' character is in build path: 
+  Fixes rpmbuild %checks fail when @ in the directory path (bsc#1194038).
+- Add util-linux-fix-tests-when-at-symbol-in-path.patch
+
+- Convert the build back to per-parts build, just use multibuild.
+
+- libuuid continuous clock handling for time based UUIDs:
+  Prevent use of the new libuuid ABI by uuidd %post before update
+  of libuuid1 (bsc#1205646).
+
+- Do not set SUID permissions for util-linux-mini.
+
+- Fix pam directory for the staging package.
+- Add util-linux-rpmlintrc removing unneeded warnings.
+
+- Update to version 2.38.1:
+  * column: fix buffer overflow when -l specified, fix greedy mode
+  on -l
+  * dmesg: fix --since and --until
+  * libmount: when moving a mount point, all sub mount entries in
+    utab should also be updated (bsc#1198731)
+  * libuuid: improve cache handling (bsc#1201959, PED-1150)
+  * lsblk: fix JSON output when without --bytes
+  * lsfd:fix crash triggered by an empty filter expression</comment>
+    <requestid>1044107</requestid>
+  </revision>
 </revisionlist>

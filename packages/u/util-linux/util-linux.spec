@@ -16,11 +16,38 @@
 #
 
 
-%if 0%{?suse_version} >= 1330
-%bcond_without  enable_last
-%else
-%bcond_with     enable_last
+%global flavor @BUILD_FLAVOR@%{nil}
+
+# Parts description:
+# core: libraries, all binaries except those dependent on libsystemd
+# systemd: binaries dependent on systemd, man pages (generator is dependent on ruby)
+# python: Python bindings
+
+%if "%{flavor}" == ""
+%define psuffix -core
+%define ulbuild base
+%define ulsubset core
 %endif
+
+%if "%{flavor}" == "systemd"
+%define ulbuild base
+%define ulsubset systemd
+%endif
+
+# All python flavors are build separately. No module can be built together with base.
+# This is a limitation of %%python_subpackages.
+%if "%{flavor}" == "python"
+%define ulbuild python
+%endif
+
+%if !0%{?usrmerged}
+%define ul_extra_bin_sbin 1
+%else
+%define ul_extra_bin_sbin 0
+%endif
+%define ul_suid 4755
+
+%define _name   util-linux
 
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
@@ -28,65 +55,70 @@
 %define no_config 1
 %endif
 
+%define ulprefix %{_prefix}
+%define ulexecprefix %{_exec_prefix}
+%define ulbindir %{_bindir}
+%define ullibdir %{_libdir}
+%define ullibexecdir %{_libexecdir}
+%define ulincludedir %{_includedir}
+%define ulsbindir %{_sbindir}
+%define uldatadir %{_datadir}
+%define ulmandir %{_mandir}
+%define ulinfodir %{_infodir}
+%define uldocdir %{_docdir}
+%define uldistconfdir %{_distconfdir}
+%define ulsysconfdir %{_sysconfdir}
+%define ulpamdir %{_pam_vendordir}
+
+%if "%ulbuild" == "base"
+%if "%ulsubset" == "core"
 Name:           util-linux
-%define _name   util-linux
-# WARNING: After editing this file please call pre_checkin.sh to update spec files:
-%define _name util-linux
-# To prevent dependency loop in automatic build systems, we want to
-# build util-linux in parts.  To build all at once, set build_all to 1.
-#
-# build_util_linux: First stage build builds all except:
-# build_util_linux_systemd: Builds util-linux-systemd and uuidd.
-# build_python_libmount: Builds python-libmount.
-%define build_all 0
-# definitions for the main packages
-# This two level indirect definition of Summary and Group is needed to
-# simplify parsing of spec file by format_spec_file,
-# source_validator and check-in QA scripts).
-%define         summary_ul  A collection of basic system utilities
-%define         summary_uls A collection of basic system utilities
-%define         summary_pl  Python bindings for the libmount library
-%define         group_ul    System/Base
-%define         group_uls   System/Base
-%define         group_pl    Development/Languages/Python
-%if "%{name}" == "python3-libmount"
-%define         build_util_linux 0
-%define         build_util_linux_systemd 0
-%define         build_python_libmount 1
-# To prevent dependency loops, verify signature only in third stage.
-%define         main_summary %summary_pl
-%define         main_group   %group_pl
+Summary:        A collection of basic system utilities (core part)
 %else
-%if "%{name}" == "util-linux-systemd"
-%define         build_util_linux 0
-%define         build_util_linux_systemd 1
-%define         build_python_libmount 0
-%define         main_summary %summary_uls
-%define         main_group   %group_uls
+Name:           util-linux-systemd
+Summary:        A collection of basic system utilities (systemd dependent part)
+%endif
+Group:          System/Base
 %else
-%define         main_summary %summary_ul
-%define         main_group   %group_ul
-%if %build_all
-%define         build_util_linux 1
-%define         build_util_linux_systemd 1
-%define         build_python_libmount 1
-%else
-%define         build_util_linux 1
-%define         build_util_linux_systemd 0
-%define         build_python_libmount 0
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+Name:           python-libmount
+Summary:        Python bindings for the libmount library
+Group:          Development/Languages/Python
 %endif
-%endif
-%endif
-Summary:        %main_summary
+Version:        2.38.1
+Release:        0
 License:        GPL-2.0-or-later
-Group:          %main_group
+URL:            https://www.kernel.org/pub/linux/utils/util-linux/
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-%{version}.tar.xz
+Source2:        util-linux-login_defs-check.sh
+Source3:        util-linux-rpmlintrc
+Source6:        etc_filesystems
+Source7:        baselibs.conf
+Source8:        login.pamd
+Source9:        remote.pamd
+Source10:       su.pamd
+Source11:       su.default
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-%{version}.tar.sign
+Source13:       %{_name}.keyring
+Source14:       runuser.pamd
+Source15:       runuser-l.pamd
+Source16:       su-l.pamd
+Source51:       blkid.conf
+# PATCH-EXTEND-UPSTREAM: Let `su' handle /sbin and /usr/sbin in path
+Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
+Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
+Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
+# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
+Patch4:         util-linux-bash-completion-su-chsh-l.patch
+# PATCH-FIX-SUSE util-linux-fix-tests-when-@-in-path.patch bsc#1194038 -- rpmbuild %checks fail when @ in the directory path
+Patch5:         util-linux-fix-tests-when-at-symbol-in-path.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
+BuildRequires:  file-devel
 BuildRequires:  gettext-devel
 BuildRequires:  libcap-ng-devel
-# It should be %%if %%{defined no_config}, but OBS cannot handle it:
 BuildRequires:  libeconf-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
@@ -103,66 +135,27 @@ BuildRequires:  zlib-devel
 %ifarch ppc ppc64 ppc64le
 BuildRequires:  librtas-devel
 %endif
-%if %build_util_linux_systemd
+%if "%ulsubset" == "systemd"
+BuildRequires:  bash-completion
 BuildRequires:  libudev-devel
 BuildRequires:  socat
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  rubygem(asciidoctor)
+PreReq:         permissions
+Requires:       adjtimex
+Requires:       time
+Requires:       which
+PreReq:         %install_info_prereq
+# man pages were moved to -systemd subpackage with 2.38.x (SLE15 SP6, Leap 15.6)
+Conflicts:      util-linux < 2.38
+%systemd_requires
 %endif
-%if %build_python_libmount
-BuildRequires:  python3-devel
-%endif
-#BEGIN SECOND STAGE DEPENDENCIES
-%if !%build_util_linux
-%if %build_util_linux_systemd
-BuildRequires:  libblkid-devel
-BuildRequires:  libmount-devel
-BuildRequires:  libsmartcols-devel
-BuildRequires:  libuuid-devel
-%endif
-%if %build_python_libmount
-BuildRequires:  libmount-devel
-%endif
-%endif
-#END SECOND STAGE DEPENDENCIES
-Version:        2.37.4
-Release:        0
-URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-%{version}.tar.xz
-Source1:        util-linux-rpmlintrc
-Source2:        util-linux-login_defs-check.sh
-Source6:        etc_filesystems
-Source7:        baselibs.conf
-Source8:        login.pamd
-Source9:        remote.pamd
-Source10:       su.pamd
-Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-%{version}.tar.sign
-Source13:       %{_name}.keyring
-Source14:       runuser.pamd
-Source15:       runuser-l.pamd
-Source16:       su-l.pamd
-Source51:       blkid.conf
-# PATCH-EXTEND-UPSTREAM: Let `su' handle /sbin and /usr/sbin in path
-Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
-Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
-Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
-# PATCH-FIX-SUSE: Avoid sulogin failing on not existing or not functional console devices
-Patch3:         util-linux-sulogin4bsc1175514.patch
-# PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
-Patch4:         util-linux-bash-completion-su-chsh-l.patch
-# PATH-FIX-UPSTREAM linux-fs.patch -- sulogin: fix includes
-Patch5:         linux-fs.patch
-#
-%if %build_util_linux
-Supplements:    filesystem(minix)
-%if 0%{?suse_version} >= 1330
-Requires(pre):  group(tty)
-%endif
+%if "%ulbuild" == "base"
+%if "%ulsubset" == "core"
 Provides:       fsck-with-dev-lock = %{version}
 # bnc#651598:
 Provides:       util-linux(fake+no-canonicalize)
-PreReq:         %install_info_prereq permissions
 Provides:       eject = 2.1.0
 Provides:       login = 4.0
 Provides:       rfkill = 0.5
@@ -172,7 +165,7 @@ Obsoletes:      eject <= 2.1.0
 Obsoletes:      login <= 4.0
 # File conflict (man page) of rfkill (up to Leap 15 and SLE 15).
 Obsoletes:      rfkill <= 0.5
-# util-linux-2.34 integrates hardlink (up to Leap 15.1 and SLE 15.1).
+# util-linux-2.34 integrates hardlink (up to Leap 15.1 and SLE15 SP1).
 # The last version was 1.0+git.e66999f.
 Provides:       hardlink = 1.1
 Obsoletes:      hardlink < 1.1
@@ -181,46 +174,30 @@ Obsoletes:      hardlink < 1.1
 Obsoletes:      s390-32
 Provides:       s390-32
 %endif
-# uuid-runtime appeared in SLE11 SP1 to SLE11 SP3
-Provides:       uuid-runtime = %{version}
-Obsoletes:      uuid-runtime <= 2.19.1
+Supplements:    filesystem(minix)
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 Recommends:     login_defs-support-for-util-linux >= 2.37
+%endif
+Requires(pre):  group(tty)
 # The problem with inconsistent /proc/self/mountinfo read is fixed in kernel 5.8.
 # util-linux >= 2.37 no more contain work-around.
 Conflicts:      kernel < 5.8
-#
-# Using "Requires" here would lend itself to help upgrading, but since
-# util-linux is in the initial bootstrap, that is not a good thing to do:
-#
-Recommends:     adjtimex
-Recommends:     time
-Recommends:     which
-#
-%else
-%if %build_python_libmount
-%else
-%if %build_util_linux_systemd
-Supplements:    packageand(util-linux:systemd)
-# Split-provides for upgrade from SLE < 12 and openSUSE <= 13.1
-Provides:       util-linux:/bin/logger
-# findmnt and lsblk are being migrated during the update from SLE < 12SP3 and openSUSE < Leap 15.3
-Conflicts:      util-linux < 2.36.1
-%systemd_requires
-%else
-# ERROR: No build_* variables are set.
 %endif
-%endif
+%if "%ulbuild" == "python"
+BuildRequires:  %{python_module devel}
+BuildRequires:  rubygem(asciidoctor)
+%python_subpackages
 %endif
 
-%if %build_util_linux
+%if "%ulbuild" == "base"
 %description
 This package contains a large variety of low-level system utilities
 that are necessary for a Linux system to function. It contains the
 mount program, the fdisk configuration tool, and more.
 
+%if "%ulsubset" == "core"
 %package -n libblkid1
 Summary:        Filesystem detection library
 License:        LGPL-2.1-or-later
@@ -249,33 +226,33 @@ Requires:       libblkid-devel = %{version}
 Files needed to develop applications using the library for filesystem
 detection.
 
-%package -n libuuid1
-Summary:        Library to generate UUIDs
-License:        BSD-3-Clause
+%package -n libfdisk1
+Summary:        Filesystem detection library
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n libuuid1
-A library to generate universally unique IDs (UUIDs).
+%description -n libfdisk1
+Library for filesystem detection.
 
-%package -n libuuid-devel
-Summary:        Development files for libuuid
-License:        BSD-3-Clause
+%package -n libfdisk-devel
+Summary:        Development files for the filesystem detection library
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libuuid1 = %{version}
+Requires:       libfdisk1 = %{version}
 
-%description -n libuuid-devel
-Files to develop applications using the library to generate universally
-unique IDs (UUIDs).
+%description -n libfdisk-devel
+Files needed to develop applications using the library for filesystem
+detection.
 
-%package -n libuuid-devel-static
-Summary:        Development files for libuuid
-License:        BSD-3-Clause
+%package -n libfdisk-devel-static
+Summary:        Development files for the filesystem detection library
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libuuid-devel = %{version}
+Requires:       libfdisk-devel = %{version}
 
-%description -n libuuid-devel-static
-Files to develop applications using the library to generate universally
-unique IDs (UUIDs).
+%description -n libfdisk-devel-static
+Files needed to develop applications using the library for filesystem
+detection.
 
 %package -n libmount1
 Summary:        Device mount library
@@ -330,68 +307,53 @@ Requires:       libsmartcols-devel = %{version}
 %description -n libsmartcols-devel-static
 Files to develop applications using the libsmartcols library.
 
-%package -n libfdisk1
-Summary:        Filesystem detection library
-License:        LGPL-2.1-or-later
+%package -n libuuid1
+Summary:        Library to generate UUIDs
+License:        BSD-3-Clause
 Group:          System/Libraries
+# declare presence of the new ABI call __uuid_generate_time_cont
+# Required for seamless update from older versions (SLE15 SP4, Leap 15.4 and older).
+Provides:       libuuid__uuid_generate_time_cont
 
-%description -n libfdisk1
-Library for filesystem detection.
+%description -n libuuid1
+A library to generate universally unique IDs (UUIDs).
 
-%package -n libfdisk-devel
-Summary:        Development files for the filesystem detection library
-License:        LGPL-2.1-or-later
+%package -n libuuid-devel
+Summary:        Development files for libuuid
+License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Requires:       libfdisk1 = %{version}
+Requires:       libuuid1 = %{version}
 
-%description -n libfdisk-devel
-Files needed to develop applications using the library for filesystem
-detection.
+%description -n libuuid-devel
+Files to develop applications using the library to generate universally
+unique IDs (UUIDs).
 
-%package -n libfdisk-devel-static
-Summary:        Development files for the filesystem detection library
-License:        LGPL-2.1-or-later
+%package -n libuuid-devel-static
+Summary:        Development files for libuuid
+License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Requires:       libfdisk-devel = %{version}
+Requires:       libuuid-devel = %{version}
 
-%description -n libfdisk-devel-static
-Files needed to develop applications using the library for filesystem
-detection.
+%description -n libuuid-devel-static
+Files to develop applications using the library to generate universally
+unique IDs (UUIDs).
 
 %lang_package
 %endif
-%if %build_util_linux_systemd
-%if %build_util_linux
-%package systemd
-Summary:        %summary_uls
-License:        GPL-2.0-or-later
-Group:          %group_uls
-Supplements:    packageand(util-linux:systemd)
-# Split-provides for upgrade from SLE < 12 and openSUSE <= 13.1
-Provides:       util-linux:/usr/lib/systemd/system/fstrim.service
-# Service files are being migrated during the update from SLE < 12 and openSUSE <= 13.1
-Conflicts:      util-linux < 2.25
-
-%description systemd
-%else
-
-%description
-%endif
-This package contains low-level util-linux utilities that use systemd.
-
+%if "%ulsubset" == "systemd"
 %package -n uuidd
 Summary:        Helper daemon to guarantee uniqueness of time-based UUIDs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-%if 0%{?suse_version} >= 1330
 Requires(pre):  group(uuidd)
-Requires(pre):  user(uuidd)
-%else
-Requires(pre):  /usr/sbin/groupadd
-Requires(pre):  /usr/sbin/useradd
-%endif
+# uuidd restart requires the ABI of the new libuuid
+# Required for seamless update from older versions (SLE15 SP4, Leap 15.4 and older).
+Requires(post): libuuid__uuid_generate_time_cont
 # uuidd bash-completion moved to a correct package
 Conflicts:      util-linux < 2.25
+# uuid-runtime appeared in SLE11 SP1 to SLE11 SP3
+Provides:       uuid-runtime = %{version}
+Obsoletes:      uuid-runtime <= 2.19.1
 %systemd_requires
 
 %description -n uuidd
@@ -400,34 +362,95 @@ uniqueness of time-based UUID generation even at very high rates on
 SMP systems.
 
 %endif
-%if %build_python_libmount
-%if %build_util_linux
-%package -n python3-libmount
-Summary:        %summary_pl
-License:        GPL-2.0-or-later
-Group:          %group_pl
-
-%description -n python3-libmount
-%else
-
-%description
 %endif
+
+%if "%ulbuild" == "python"
+%description
 This package contains the Python bindings for util-linux libmount
 library.
-
 %endif
 
 %prep
 %setup -q -n %{_name}-%{version}
 cp -a %{S:2} .
 %autopatch -p1
-# This test keeps hanging task inside build chroot
+# This test randomly fails or keeps hanging task inside build chroot (tested on 2.38).
 rm tests/ts/lsns/ioctl_ns
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export SUID_CFLAGS="-fpie"
+export SUID_LDFLAGS="-pie"
+export LDFLAGS="-Wl,-z,relro,-z,now"
+export CFLAGS="%{optflags} -D_GNU_SOURCE"
+export CXXFLAGS="%{optflags} -D_GNU_SOURCE"
+# Here we define a build function. For the base build, we use it as it
+# is. For python build, we use it repeatedly for all flavors.
+function configure_and_build() {
+%if "%ulbuild" == "python"
+%define _configure ../configure
+%endif
+#
+#AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
+# All dirs needs to be specified, as %%configure does not derive them
+# from %%_prefix, and bootstrap build will fall back to /usr.
+%configure\
+	--prefix=%{ulprefix}\
+	--exec-prefix=%{ulexecprefix}\
+	--disable-silent-rules\
+	--bindir=%{ulbindir}\
+	--sbindir=%{ulsbindir}\
+	--sysconfdir=%{ulsysconfdir}\
+	--datadir=%{uldatadir}\
+	--includedir=%{ulincludedir}\
+	--libdir=%{ullibdir}\
+	--libexecdir=%{ullibexecdir}\
+	--mandir=%{ulmandir}\
+	--infodir=%{ulinfodir}\
+	--docdir=%{uldocdir}/%{name}\
+	--disable-makeinstall-chown\
+	--disable-makeinstall-setuid\
+	--with-audit\
+	--with-btrfs\
+	--with-gnu-ld\
+	--with-ncursesw\
+	--with-readline\
+	--with-selinux\
+	--with-utempter\
+	--with-bashcompletiondir=%{uldatadir}/bash-completion/completions\
+	--with-systemdsystemunitdir=%{_unitdir}\
+	--enable-libuuid-force-uuidd\
+	--enable-sulogin-emergency-mount\
+	--disable-use-tty-group\
+	--disable-rpath\
+	--disable-chfn-chsh\
+	--disable-newgrp\
+	--disable-vipw\
+	--disable-pg\
+	--enable-fs-paths-default="/sbin:/usr/sbin"\
+	--enable-static\
+%if "%ulbuild" == "python"
+	--disable-all-programs\
+	--with-python\
+	--enable-pylibmount\
+	--enable-libmount\
+	--enable-libblkid\
+%else
+	--enable-all-programs\
+%if "%ulsubset" == "core"
+	--without-systemd\
+%else
+	--with-systemd\
+%endif
+	--without-python\
+%endif
+	--with-vendordir=%{uldistconfdir}
+make %{?_smp_mflags}
+}
+%if "%ulbuild" == "base"
+configure_and_build
+%if "%ulsubset" == "core"
 bash ./util-linux-login_defs-check.sh
-%if %build_util_linux
 #BEGIN SYSTEMD SAFETY CHECK
 # With systemd, some utilities are built differently. Keep track of these
 # sources to prevent building of systemd-less versions.
@@ -444,165 +467,110 @@ UTIL_LINUX_KNOWN_SYSTEMD_DEPS='$UTIL_LINUX_FOUND_SYSTEMD_DEPS'"
 	exit 1
 fi
 #END SYSTEMD SAFETY CHECK
-#BEGIN FIRST STAGE MODIFICATIONS
-%if ! %build_util_linux_systemd
-sed -i 's/if BUILD_FINDMNT/if FALSE/
-	s/if BUILD_LSBLK/if FALSE/
-	' misc-utils/Makemodule.am
 %endif
-#END FIRST STAGE MODIFICATIONS
-%else
-#BEGIN SECOND STAGE MODIFICATIONS
-# delete all make modules except wanted ones
-sed -i '/^include/{
-%if %build_python_libmount
-		/libmount\/Makemodule.am/b 1
 %endif
-%if %build_util_linux_systemd
-# for lslogins
-		/login-utils/b 1
-# for findmnt, logger, lsblk and uuidd
-		/misc-utils/b 1
-# for fstrim.service and fstrim.timer
-		/sys-utils/b 1
-# for uninstalled libcommon required by uuidd
-		/ lib\//b 1
-# for bash completions
-		/bash-completion/b 1
-# we always want tests (they are smart enough to skip irrelevant parts)
-		/tests/b 1
+%if "%ulbuild" == "python"
+%{python_expand export PYTHON=$python
+mkdir -p build.$python
+cd build.$python
+configure_and_build
+cd ..
+}
 %endif
-%if %build_python_libmount
-		/libmount\/python/b 1
-%endif
-		d
-		:1
-		}' Makefile.am libmount/Makemodule.am
-%if %build_python_libmount
-# trick: we do not want to build libmount, but include subdirs
-# We close prefious if FALSE and open new pairing with endif
-sed -i '/^if BUILD_LIBMOUNT/d
-/^if ENABLE_GTK_DOC/i \
-if BUILD_LIBMOUNT
-' libmount/Makemodule.am
-# Do not install terminal-colors.d.5
-sed -i '/MANPAGES/d' lib/Makemodule.am
-%endif
-# disable all make modules except wanted ones
-sed -i '/^if BUILD_/{
-%if %build_util_linux_systemd
-		/FINDMNT/b 1
-		/LOGGER/b 1
-		/LSBLK/b 1
-		/LSLOGINS/b 1
-		/UUIDD/b 1
-		/BASH_COMPLETION/b 1
-%endif
-		s/BUILD_.*/FALSE/
-	:1
-	}
-	' libmount/Makemodule.am misc-utils/Makemodule.am login-utils/Makemodule.am sys-utils/Makemodule.am bash-completion/Makemodule.am
-%if %build_util_linux_systemd
-# trick: we do not want to build fstrim, but we want to install fstrim systemd connectors
-# We close prefious if FALSE and open new pairing with endif
-sed -i '/^if HAVE_SYSTEMD/i \
-endif\
-if TRUE
-' sys-utils/Makemodule.am
-# Do not install terminal-colors.d.5
-sed -i '/MANPAGES/d' lib/Makemodule.am
-%endif
-# Use installed first stage libraries
-sed -i '
-# extra space to not replace pylibmount.la
-	s/ libmount\.la/ -lmount/g
-	s/libuuid\.la/-luuid/g
-	s/libblkid\.la/-lblkid/g
-	s/libsmartcols\.la/-lsmartcols/g
-	' libmount/python/Makemodule.am misc-utils/Makemodule.am login-utils/Makemodule.am tests/helpers/Makemodule.am
-# Ignore dependencies on optional (and not built in second stage) libraries
-sed -i '
-	s/UL_REQUIRES_BUILD(\[.*\], \[libuuid\])/dnl &/
-	s/UL_REQUIRES_BUILD(\[.*\], \[libsmartcols\])/dnl &/
-	' configure.ac
-sed -i '
-	/SUBDIRS =/s/ po//
-	' Makefile.am
-#END SECOND STAGE MODIFICATIONS
-%endif
-#
-# util-linux itself
-#
-# Version check for libutempter
-#
-uhead=$(find %_includedir -name utempter.h 2>/dev/null)
-if test -n "$uhead" && grep -q utempter_add_record "$uhead"
-then
-    uhead=--with-utempter
-else
-    uhead=--without-utempter
-fi
-export SUID_CFLAGS="-fpie"
-export SUID_LDFLAGS="-pie"
-export LDFLAGS="-Wl,-z,relro,-z,now"
-export CFLAGS="%{optflags} -D_GNU_SOURCE"
-export CXXFLAGS="%{optflags} -D_GNU_SOURCE"
-#
-# SUSE now supports only systemd based system. We do not build
-# sysvinit-only versions of UTIL_LINUX_SYSTEMD_SOURCES utilities.
-AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi
-%configure \
-  --disable-silent-rules \
-  --docdir=%{_docdir}/%{_name} \
-  --disable-makeinstall-chown \
-  --disable-makeinstall-setuid \
-  --with-audit \
-  --with-btrfs \
-  --with-gnu-ld \
-  --with-ncursesw \
-  --with-readline \
-  --with-selinux \
-  $uhead \
-  --with-bashcompletiondir=%{_datadir}/bash-completion/completions \
-  --with-systemdsystemunitdir=%{_unitdir} \
-  --enable-libuuid-force-uuidd \
-  --enable-sulogin-emergency-mount \
-  --disable-use-tty-group \
-  --enable-static \
-  --disable-rpath \
-  --enable-all-programs \
-  --disable-chfn-chsh \
-  --disable-newgrp \
-  --disable-vipw \
-  --disable-pg \
-  --enable-fs-paths-default="/sbin:/usr/sbin" \
-%if %{without enable_last}
-  --disable-last \
-%endif
-%if %build_util_linux_systemd
-  --with-systemd \
-  --enable-logger \
-  --enable-lslogins \
-  --enable-uuidd \
-%else
-  --without-systemd \
-  --disable-logger \
-  --disable-lslogins \
-  --disable-uuidd \
-%endif
-%if %build_python_libmount
-  --with-python \
-%else
-  --without-python \
-%endif
-  --with-vendordir=%{_distconfdir}
 
-#
-# Safety check: HAVE_UUIDD should be always 1:
-grep -q 'HAVE_UUIDD 1' config.h
-make %{?_smp_mflags}
+%install
+%if "%ulbuild" == "base"
+%make_install
+mkdir -p %{buildroot}{%{uldistconfdir}/default,%{ulpamdir},%{ulsysconfdir}/issue.d}
+install -m 644 %{SOURCE51} %{buildroot}%{ulsysconfdir}/blkid.conf
+install -m 644 %{SOURCE8} %{buildroot}%{ulpamdir}/login
+install -m 644 %{SOURCE9} %{buildroot}%{ulpamdir}/remote
+install -m 644 %{SOURCE14} %{buildroot}%{ulpamdir}/runuser
+install -m 644 %{SOURCE15} %{buildroot}%{ulpamdir}/runuser-l
+install -m 644 %{SOURCE10} %{buildroot}%{ulpamdir}/su
+install -m 644 %{SOURCE16} %{buildroot}%{ulpamdir}/su-l
+install -m 644 %{SOURCE11} %{buildroot}%{uldistconfdir}/default/su
+sed 's/\bsu\b/runuser/g' <%{SOURCE11} >runuser.default
+install -m 644 runuser.default %{buildroot}%{uldistconfdir}/default/runuser
+rm -fv "%{buildroot}/%{ulsbindir}/raw" "%{buildroot}/sbin/raw" \
+	"%{buildroot}/%{ulmandir}/man8/raw.8"*
+install -m 644 %{SOURCE6} %{buildroot}%{ulsysconfdir}/filesystems
+echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{ulsbindir}/flushb
+chmod 755 %{buildroot}%{ulsbindir}/flushb
+# arch dependent
+%ifarch s390 s390x
+rm -f %{buildroot}%{ulsysconfdir}/fdprm
+rm -f %{buildroot}%{ulbindir}/setterm
+rm -f %{buildroot}%{ulsbindir}/fdformat
+rm -f %{buildroot}%{ulsbindir}/hwclock
+rm -f %{buildroot}%{ulsbindir}/tunelp
+rm -f %{buildroot}%{ulmandir}/man8/fdformat.8*
+rm -f %{buildroot}%{ulmandir}/man8/hwclock.8*
+rm -f %{buildroot}%{ulmandir}/man8/tunelp.8*
+%endif
+%ifarch ia64 %sparc m68k
+rm -f %{buildroot}%{ulmandir}/man8/cfdisk.8*
+rm -f %{buildroot}%{ulmandir}/man8/sfdisk.8*
+rm -f %{buildroot}%{ulsbindir}/cfdisk
+rm -f %{buildroot}%{ulsbindir}/sfdisk
+%endif
+%ifarch ia64 m68k
+rm -f %{buildroot}%{ulsbindir}/fdisk
+rm -f %{buildroot}%{ulmandir}/man8/fdisk.8*
+%endif
+# create list of setarch(8) symlinks
+find  %{buildroot}%{ulmandir}/man8 -regextype posix-egrep  \
+  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)\.8.*" \
+  -printf "%{ulmandir}/man8/%f*\n" >> %{name}.files
+find  %{buildroot}%{ulbindir}/ -regextype posix-egrep -type l \
+  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
+  -printf "%{ulbindir}/%f\n" >> %{name}.files
+mkdir -p %{buildroot}%{_sharedstatedir}/libuuid
+mkdir -p %{buildroot}/run/uuidd
+# clock.txt from uuidd is a ghost file
+touch %{buildroot}%{_sharedstatedir}/libuuid/clock.txt
+%if %{ul_extra_bin_sbin}
+mkdir -p %{buildroot}{/bin,/sbin}
+for i in dmesg findmnt kill logger lsblk more mount su umount; do
+	if test -f "%{buildroot}%{ulbindir}/$i" ; then
+		ln -s "%{ulbindir}/$i" "%{buildroot}/bin/"
+	fi
+done
+for i in agetty blockdev cfdisk ctrlaltdel fdisk fsck.minix fsck.cramfs\
+ hwclock losetup mkfs mkfs.bfs mkfs.minix mkfs.cramfs mkswap nologin\
+ pivot_root raw sfdisk swapoff swapon blkid findfs fsck switch_root\
+ wipefs fsfreeze swaplabel fstrim chcpu; do
+	if test -f "%{buildroot}%{ulsbindir}/$i" ; then
+		ln -s "%{ulsbindir}/$i" "%{buildroot}/sbin/"
+	fi
+done
+# login is always and only in /bin
+mv %{buildroot}%{ulbindir}/login %{buildroot}/bin/
+%endif
+%if "%ulsubset" == "core"
+%find_lang %{_name} %{name}.lang
+%else
+echo -n "" >%{name}.lang
+ln -sf /sbin/service %{buildroot}%{ulsbindir}/rcuuidd
+ln -sf /sbin/service %{buildroot}%{ulsbindir}/rcfstrim
+%endif
+%endif
+%if "%ulbuild" == "python"
+%{python_expand cd build.$python
+%make_install
+rm %{buildroot}%{$python_sitearch}/libmount/*.*a
+cd ..
+}
+# There is a limitation: python module needs to build much more, and install even more. Delete it.
+rm -r %{buildroot}{%{ulbindir},%{ulmandir},%{uldatadir},%{ulincludedir},%{ullibdir}/{lib,pkg}*}
+%endif
+# Link duplicate manpages or python bindings.
+%fdupes -s %{buildroot}%{ulprefix}
 
+%if "%ulbuild" == "base"
+%if "%ulbuild" != "python"
 %check
+# Perform testsuite with the standard build only.
 # mark some tests "known_fail"
 #
 %if 0%{?qemu_user_space_build}
@@ -623,6 +591,10 @@ export TS_OPT_script_known_fail="yes"
 # may segfault on qemu-user-space
 export TS_OPT_misc_setarch_known_fail="yes"
 %endif
+# Succeeds in local build, fails in OBS.
+export TS_OPT_hardlink_options_known_fail="yes"
+export TS_OPT_lsfd_mkfds_rw_character_device_known_fail="yes"
+export TS_OPT_lsfd_mkfds_symlink_known_fail="yes"
 # This does not work with a chroot build: / is not a mountpoint
 export TS_OPT_misc_mountpoint_known_fail="yes"
 #
@@ -638,128 +610,34 @@ diffs_files="$(find tests/diff -type f | sort)"
 echo "$diffs_files" | xargs -r cat
 exit "$result"
 
-%install
-%if %build_util_linux
-mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_mandir}/man{1,8},/bin,/sbin,%{_bindir},%{_sbindir},%{_infodir},%{_sysconfdir}/issue.d}
-install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/blkid.conf
-install -m 644 %{SOURCE8} %{buildroot}%{_pam_vendordir}/login
-install -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/remote
-install -m 644 %{SOURCE14} %{buildroot}%{_pam_vendordir}/runuser
-install -m 644 %{SOURCE15} %{buildroot}%{_pam_vendordir}/runuser-l
-install -m 644 %{SOURCE10} %{buildroot}%{_pam_vendordir}/su
-install -m 644 %{SOURCE16} %{buildroot}%{_pam_vendordir}/su-l
-install -m 644 %{SOURCE11} %{buildroot}%{_distconfdir}/default/su
-sed 's/\bsu\b/runuser/g' <%{SOURCE11} >runuser.default
-install -m 644 runuser.default %{buildroot}%{_distconfdir}/default/runuser
-%endif
-#
-# util-linux install
-#
-%make_install
-rm -f %{buildroot}%{python3_sitearch}/libmount/*.*a
-%if %build_util_linux
-%if !0%{?usrmerged}
-for i in kill su dmesg more mount umount; do
-	ln -s "%{_bindir}/$i" "%{buildroot}/bin/"
-done
-for i in agetty blockdev cfdisk ctrlaltdel fdisk fsck.minix fsck.cramfs \
-    hwclock losetup mkfs mkfs.bfs mkfs.minix mkfs.cramfs mkswap nologin \
-    pivot_root raw sfdisk swapoff swapon blkid findfs fsck switch_root \
-    wipefs fsfreeze swaplabel fstrim chcpu; do
-	ln -s "%{_sbindir}/$i" "%{buildroot}/sbin/"
-done
-%endif
-rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
-	"%{buildroot}/%{_mandir}/man8/raw.8"*
-install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/filesystems
-echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
-chmod 755 %{buildroot}%{_sbindir}/flushb
-%if !0%{?usrmerged}
-# login is always and only in /bin
-mv %{buildroot}%{_bindir}/login %{buildroot}/bin/
-%endif
-# arch dependent
-%ifarch s390 s390x
-rm -f %{buildroot}%{_sysconfdir}/fdprm
-rm -f %{buildroot}%{_sbindir}/fdformat
-rm -f %{buildroot}%{_sbindir}/hwclock
-%if !0%{?usrmerged}
-rm -f %{buildroot}/sbin/hwclock
-%endif
-rm -f %{buildroot}%{_bindir}/setterm
-rm -f %{buildroot}%{_sbindir}/tunelp
-rm -f %{buildroot}%{_mandir}/man8/fdformat.8*
-rm -f %{buildroot}%{_mandir}/man8/hwclock.8*
-rm -f %{buildroot}%{_mandir}/man8/tunelp.8*
-%endif
-%ifarch ia64 %sparc m68k
-rm -f %{buildroot}%{_mandir}/man8/cfdisk.8*
-rm -f %{buildroot}%{_mandir}/man8/sfdisk.8*
-rm -f %{buildroot}%{_sbindir}/cfdisk
-rm -f %{buildroot}%{_sbindir}/sfdisk
-%if !0%{?usrmerged}
-rm -f %{buildroot}/sbin/cfdisk
-rm -f %{buildroot}/sbin/sfdisk
-%endif
-%endif
-%ifarch ia64 m68k
-rm -f %{buildroot}%{_sbindir}/fdisk
-%if !0%{?usrmerged}
-rm -f %{buildroot}/sbin/fdisk
-%endif
-rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
-%endif
-%find_lang %{name} %{name}.lang
-# create list of setarch(8) symlinks
-find  %{buildroot}%{_bindir}/ -regextype posix-egrep -type l \
-  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
-  -printf "%{_bindir}/%f\n" >> %{name}.files
-find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
-  -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)\.8.*" \
-  -printf "%{_mandir}/man8/%f*\n" >> %{name}.files
-%else
-# install systemd files manually, don't use Makefile that expect build of utilities and its dependencies.
-%endif
-%if %build_util_linux_systemd
-mkdir -p %{buildroot}/bin
-mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}%{_localstatedir}/lib/libuuid
-mkdir -p %{buildroot}/run/uuidd
-%if !0%{?usrmerged}
-ln -s %{_bindir}/findmnt %{buildroot}/bin
-ln -s %{_bindir}/logger %{buildroot}/bin
-ln -s %{_bindir}/lsblk %{buildroot}/bin
-%endif
-# clock.txt from uuidd is a ghost file
-touch %{buildroot}%{_localstatedir}/lib/libuuid/clock.txt
-ln -sf /sbin/service %{buildroot}/usr/sbin/rcuuidd
-ln -sf /sbin/service %{buildroot}/usr/sbin/rcfstrim
-%if !%build_util_linux
-%make_install
-%endif
-%else
-rm -f %{buildroot}%{_mandir}/man8/findmnt.8*
-rm -f %{buildroot}%{_mandir}/man8/lsblk.8*
-%endif
-# link duplicate manpages and python bindings
-%fdupes -s %{buildroot}%{_prefix}
+%if "%ulsubset" == "core"
+%verifyscript
+%verify_permissions -e %{ulbindir}/wall -e %{ulbindir}/write -e %{ulbindir}/mount -e %{ulbindir}/umount
+%verify_permissions -e %{ulbindir}/su
 
-%if %build_util_linux
+%endif
+
 %pre
+%if "%ulsubset" == "core"
 # move outdated pam.d/*.rpmsave files away
 for i in login remote runuser runuser-l su su-l ; do
     test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i}.rpmsave.old ||:
 done
+%endif
+%if "%ulsubset" == "systemd"
+%service_add_pre fstrim.service fstrim.timer
+%endif
 
 %post
-%set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
-%set_permissions %{_bindir}/su
+%if "%ulsubset" == "core"
+%set_permissions %{ulbindir}/wall %{ulbindir}/write %{ulbindir}/mount %{ulbindir}/umount
+%set_permissions %{ulbindir}/su
 %if ! %{defined no_config}
 #
 # If outdated PAM file is detected, issue a warning.
 for PAM_FILE in login remote runuser runuser-l su su-l ; do
-	if test -f %{_sysconfdir}/pam.d/$PAM_FILE.rpmnew ; then
-		echo "Your %{_sysconfdir}/pam.d/$PAM_FILE is outdated. Please check %{_sysconfdir}/pam.d/$PAM_FILE.rpmnew!" >&2
+	if test -f %{ulpamdir}/$PAM_FILE.rpmnew ; then
+		echo "Your %{ulpamdir}/$PAM_FILE is outdated. Please check %{ulpamdir}/$PAM_FILE.rpmnew!" >&2
 	fi
 done
 #
@@ -768,30 +646,36 @@ done
 # Perform one-time config replace.
 # Applies for: Update from SLE11, online update for SLE15 SP1, Leap15.1.
 # Not needed for /etc/default/runuser. It was first packaged after the change.
-if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; then
-	if test -f %{_sysconfdir}/default/su.rpmnew ; then
-		if ! test -f %{_sysconfdir}/default/su.rpmorig ; then
-			cp -a %{_sysconfdir}/default/su %{_sysconfdir}/default/su.rpmorig
+if ! grep -q "^# /etc/default/su is an override" %{ulsysconfdir}/default/su ; then
+	if test -f %{ulsysconfdir}/default/su.rpmnew ; then
+		if ! test -f %{ulsysconfdir}/default/su.rpmorig ; then
+			cp -a %{ulsysconfdir}/default/su %{ulsysconfdir}/default/su.rpmorig
 		fi
-		mv %{_sysconfdir}/default/su.rpmnew %{_sysconfdir}/default/su
-		echo "One time clean-up of %{_sysconfdir}/default/su was performed." >&2
-		echo "Original contents was saved to %{_sysconfdir}/default/su.rpmorig." >&2
-		echo "Please edit %{_sysconfdir}/login.defs or %{_sysconfdir}/default/su to restore your customization." >&2
+		mv %{ulsysconfdir}/default/su.rpmnew %{ulsysconfdir}/default/su
+		echo "One time clean-up of %{ulsysconfdir}/default/su was performed." >&2
+		echo "Original contents was saved to %{ulsysconfdir}/default/su.rpmorig." >&2
+		echo "Please edit %{ulsysconfdir}/login.defs or %{ulsysconfdir}/default/su to restore your customization." >&2
 	fi
 fi
 %endif
+%if "%ulsubset" == "systemd"
+%service_add_post fstrim.service fstrim.timer
 
-%posttrans
+%preun
+%service_del_preun fstrim.service fstrim.timer
+
+%postun
+%service_del_postun fstrim.service fstrim.timer
+%endif
+
+%if "%ulsubset" == "core"
 %if %{defined no_config}
+%posttrans
 # Migration to /usr/etc.
 for i in  login remote runuser runuser-l su su-l; do
   test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
 done
 %endif
-
-%verifyscript
-%verify_permissions -e %{_bindir}/wall -e %{_bindir}/write -e %{_bindir}/mount -e %{_bindir}/umount
-%verify_permissions -e %{_bindir}/su
 
 %post -n libblkid1 -p /sbin/ldconfig
 
@@ -813,24 +697,8 @@ done
 
 %postun -n libfdisk1 -p /sbin/ldconfig
 
-%files lang -f %{name}.lang
 %endif
-
-%if %build_util_linux_systemd
-# fstrim(8) and fstrim.service are from different packages. But it's a oneshot
-# service (timer), no restart needed on binary updates (unless path is changed).
-%pre -n util-linux-systemd
-%service_add_pre fstrim.service fstrim.timer
-
-%post -n util-linux-systemd
-%service_add_post fstrim.service fstrim.timer
-
-%preun -n util-linux-systemd
-%service_del_preun fstrim.service fstrim.timer
-
-%postun -n util-linux-systemd
-%service_del_postun fstrim.service fstrim.timer
-
+%if "%ulsubset" == "systemd"
 %if 0%{?suse_version} >= 1330
 %pre -n uuidd
 %else
@@ -839,7 +707,7 @@ done
 getent group uuidd >/dev/null || /usr/sbin/groupadd -r uuidd
 getent passwd uuidd >/dev/null || \
 	/usr/sbin/useradd -r -g uuidd -c "User for uuidd" \
-	-d /var/run/uuidd uuidd
+	-d %{_localstatedir}/run/uuidd uuidd
 %endif
 %{service_add_pre uuidd.socket uuidd.service}
 
@@ -858,59 +726,56 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{service_del_postun uuidd.socket uuidd.service}
 %endif
 
-%if %build_util_linux
-%files -f %{name}.files
-# Common files for all archs
+%endif
+
+%files -n %{name} -f %{name}.files
 %defattr(-,root,root)
-# util-linux documentation files
+#
+%if "%ulsubset" == "core"
+# Common files for all archs
 %doc AUTHORS ChangeLog README NEWS
 %license README.licensing
 %license COPYING
 %license Documentation/licenses/*
-%doc Documentation/blkid.txt
-%doc Documentation/cal.txt
-%doc Documentation/col.txt
-%doc Documentation/deprecated.txt
-%doc Documentation/getopt.txt
-%doc Documentation/howto-debug.txt
-%doc Documentation/hwclock.txt
-%doc Documentation/modems-with-agetty.txt
-%doc Documentation/mount.txt
-%doc Documentation/pg.txt
-%{_docdir}/%{name}/getopt-example.*
-%config(noreplace) %{_sysconfdir}/filesystems
-%config(noreplace) %{_sysconfdir}/blkid.conf
+%attr(-,uuidd,uuidd) %dir %{_sharedstatedir}/libuuid
+%attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
+%config(noreplace) %{ulsysconfdir}/filesystems
+%config(noreplace) %{ulsysconfdir}/blkid.conf
+%endif
 %if %{defined no_config}
-%{_pam_vendordir}/login
-%{_pam_vendordir}/remote
-%{_pam_vendordir}/runuser
-%{_pam_vendordir}/runuser-l
-%{_pam_vendordir}/su
-%{_pam_vendordir}/su-l
+%{ulpamdir}/login
+%{ulpamdir}/remote
+%{ulpamdir}/runuser
+%{ulpamdir}/runuser-l
+%{ulpamdir}/su
+%{ulpamdir}/su-l
 %if 0%{?suse_version} <= 1520
-%dir %{_distconfdir}/default
+%dir %{uldistconfdir}/default
 %endif
-%{_distconfdir}/default/runuser
-%{_distconfdir}/default/su
+%{uldistconfdir}/default/runuser
+%{uldistconfdir}/default/su
 %else
-%config(noreplace) %{_sysconfdir}/pam.d/login
-%config(noreplace) %{_sysconfdir}/pam.d/remote
-%config(noreplace) %{_sysconfdir}/pam.d/runuser
-%config(noreplace) %{_sysconfdir}/pam.d/runuser-l
-%config(noreplace) %{_sysconfdir}/pam.d/su
-%config(noreplace) %{_sysconfdir}/pam.d/su-l
-%config(noreplace) %{_sysconfdir}/default/runuser
-%config(noreplace) %{_sysconfdir}/default/su
+%config(noreplace) %{ulpamdir}/login
+%config(noreplace) %{ulpamdir}/remote
+%config(noreplace) %{ulpamdir}/runuser
+%config(noreplace) %{ulpamdir}/runuser-l
+%config(noreplace) %{ulpamdir}/su
+%config(noreplace) %{ulpamdir}/su-l
+%config(noreplace) %{ulsysconfdir}/default/runuser
+%config(noreplace) %{ulsysconfdir}/default/su
 %endif
-%config %dir %{_sysconfdir}/issue.d
-%if !0%{?usrmerged}
+%config %dir %{ulsysconfdir}/issue.d
+%if %{ul_extra_bin_sbin}
+%exclude /bin/findmnt
 /bin/kill
-/bin/su
+%verify(not mode) %attr(%ul_suid,root,root) /bin/su
 /bin/dmesg
 /bin/more
-/bin/mount
-/bin/umount
+%verify(not mode) %attr(%ul_suid,root,root) /bin/mount
+%verify(not mode) %attr(%ul_suid,root,root) /bin/umount
 /bin/login
+%exclude /bin/logger
+%exclude /bin/lsblk
 /sbin/agetty
 /sbin/blockdev
 /sbin/ctrlaltdel
@@ -936,410 +801,595 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 /sbin/fstrim
 /sbin/chcpu
 %endif
-%{_bindir}/kill
-%verify(not mode) %{_bindir}/su
-%{_bindir}/eject
-%{_bindir}/cal
-%{_bindir}/chmem
-%{_bindir}/choom
-%{_bindir}/chrt
-%{_bindir}/col
-%{_bindir}/colcrt
-%{_bindir}/colrm
-%{_bindir}/column
-%{_bindir}/dmesg
-%{_bindir}/fallocate
-%{_bindir}/fincore
-%{_bindir}/flock
-%{_bindir}/getopt
-%{_bindir}/hardlink
-%{_bindir}/hexdump
-%{_bindir}/ionice
-%{_bindir}/ipcmk
-%{_bindir}/ipcrm
-%{_bindir}/ipcs
-%{_bindir}/irqtop
-%{_bindir}/isosize
-%if %{with enable_last}
-%{_bindir}/last
-%{_bindir}/lastb
+%{ulbindir}/kill
+%verify(not mode) %attr(%ul_suid,root,root) %{ulbindir}/su
+%{ulbindir}/eject
+%{ulbindir}/cal
+%{ulbindir}/chmem
+%{ulbindir}/choom
+%{ulbindir}/chrt
+%{ulbindir}/col
+%{ulbindir}/colcrt
+%{ulbindir}/colrm
+%{ulbindir}/column
+%{ulbindir}/dmesg
+%{ulbindir}/fallocate
+%{ulbindir}/fincore
+%if "%ulsubset" == "core"
+%exclude %{ulbindir}/findmnt
+%exclude %{ulbindir}/logger
+%exclude %{ulbindir}/lsblk
+%exclude %{ulbindir}/lslogins
 %endif
-%{_bindir}/line
-%{_bindir}/look
-%if 0%{?usrmerged}
-%{_bindir}/login
+%{ulbindir}/flock
+%{ulbindir}/getopt
+%{ulbindir}/hardlink
+%{ulbindir}/hexdump
+%{ulbindir}/ionice
+%{ulbindir}/ipcmk
+%{ulbindir}/ipcrm
+%{ulbindir}/ipcs
+%{ulbindir}/irqtop
+%{ulbindir}/isosize
+%{ulbindir}/last
+%{ulbindir}/lastb
+%{ulbindir}/line
+%{ulbindir}/look
+%if !%{ul_extra_bin_sbin}
+%{ulbindir}/login
 %endif
-%{_bindir}/lscpu
-%{_bindir}/lsipc
-%{_bindir}/lsirq
-%{_bindir}/lslocks
-%{_bindir}/lsmem
-%{_bindir}/lsns
-%{_bindir}/mcookie
-%{_bindir}/mesg
-%{_bindir}/more
-%verify(not mode) %{_bindir}/mount
-%{_bindir}/namei
-%{_bindir}/nsenter
-%{_bindir}/prlimit
-%{_bindir}/rename
-%{_bindir}/renice
-%{_bindir}/rev
-%{_bindir}/script
-%{_bindir}/scriptlive
-%{_bindir}/scriptreplay
-%{_bindir}/setarch
-%{_bindir}/setpriv
-%{_bindir}/setsid
-%{_bindir}/taskset
-%{_bindir}/uclampset
-%{_bindir}/ul
-%verify(not mode) %{_bindir}/umount
-%{_bindir}/unshare
-%{_bindir}/mountpoint
-%{_bindir}/utmpdump
-%{_bindir}/uuidgen
-%{_bindir}/uuidparse
-%{_bindir}/uname26
-%{_bindir}/wdctl
-%{_sbindir}/addpart
-%{_sbindir}/agetty
-%{_sbindir}/blkid
-%{_sbindir}/blkdiscard
+%{ulbindir}/lscpu
+%{ulbindir}/lsfd
+%{ulbindir}/lsipc
+%{ulbindir}/lsirq
+%{ulbindir}/lslocks
+%{ulbindir}/lsmem
+%{ulbindir}/lsns
+%{ulbindir}/mcookie
+%{ulbindir}/mesg
+%{ulbindir}/more
+%verify(not mode) %attr(%ul_suid,root,root) %{ulbindir}/mount
+%{ulbindir}/namei
+%{ulbindir}/nsenter
+%{ulbindir}/prlimit
+%{ulbindir}/rename
+%{ulbindir}/renice
+%{ulbindir}/rev
+%{ulbindir}/script
+%{ulbindir}/scriptlive
+%{ulbindir}/scriptreplay
+%{ulbindir}/setarch
+%{ulbindir}/setpriv
+%{ulbindir}/setsid
+%{ulbindir}/taskset
+%{ulbindir}/uclampset
+%{ulbindir}/ul
+%verify(not mode)%attr(%ul_suid,root,root)  %{ulbindir}/umount
+%{ulbindir}/unshare
+%{ulbindir}/mountpoint
+%{ulbindir}/utmpdump
+%{ulbindir}/uuidgen
+%{ulbindir}/uuidparse
+%{ulbindir}/uname26
+%{ulbindir}/wdctl
+%{ulsbindir}/addpart
+%{ulsbindir}/agetty
+%{ulsbindir}/blkid
+%{ulsbindir}/blkdiscard
 # blkzone depends on linux/blkzoned.h
 %if 0%{?suse_version} >= 1330
-%{_sbindir}/blkzone
+%{ulsbindir}/blkzone
 %endif
-%{_sbindir}/blockdev
-%{_sbindir}/chcpu
-%{_sbindir}/ctrlaltdel
-%{_sbindir}/delpart
-%{_sbindir}/findfs
-%{_sbindir}/fsck
-%{_sbindir}/fsck.minix
-%{_sbindir}/fsck.cramfs
-%{_sbindir}/fsfreeze
-%{_sbindir}/fstrim
-%{_sbindir}/ldattach
-%{_sbindir}/losetup
-%{_sbindir}/mkfs
-%{_sbindir}/mkfs.bfs
-%{_sbindir}/mkfs.minix
-%{_sbindir}/mkfs.cramfs
-%{_sbindir}/mkswap
-%{_sbindir}/nologin
-%{_sbindir}/partx
-%{_sbindir}/pivot_root
-%{_sbindir}/resizepart
-%{_sbindir}/rfkill
-%{_sbindir}/rtcwake
-%{_sbindir}/runuser
-%{_sbindir}/sulogin
-%{_sbindir}/swaplabel
-%{_sbindir}/swapoff
-%{_sbindir}/swapon
-%{_sbindir}/switch_root
-%{_sbindir}/wipefs
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/wall
-%{_bindir}/whereis
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/write
-%{_sbindir}/zramctl
-%{_mandir}/man1/kill.1.gz
-%{_mandir}/man1/su.1.gz
-%{_mandir}/man1/cal.1.gz
-%{_mandir}/man1/choom.1.gz
-%{_mandir}/man1/chrt.1.gz
-%{_mandir}/man1/col.1.gz
-%{_mandir}/man1/colcrt.1.gz
-%{_mandir}/man1/colrm.1.gz
-%{_mandir}/man1/column.1.gz
-%{_mandir}/man1/dmesg.1.gz
-%{_mandir}/man1/eject.1.gz
-%{_mandir}/man1/fallocate.1.gz
-%{_mandir}/man1/fincore.1.gz
-%{_mandir}/man1/flock.1.gz
-%{_mandir}/man1/getopt.1.gz
-%{_mandir}/man1/hardlink.1.gz
-%{_mandir}/man1/hexdump.1.gz
-%{_mandir}/man1/ipcrm.1.gz
-%{_mandir}/man1/ipcs.1.gz
-%if %{with enable_last}
-%{_mandir}/man1/last.1.gz
-%{_mandir}/man1/lastb.1.gz
-%endif
-%{_mandir}/man1/line.1.gz
-%{_mandir}/man1/login.1.gz
-%{_mandir}/man1/look.1.gz
-%{_mandir}/man1/lscpu.1.gz
-%{_mandir}/man1/lsipc.1.gz
-%{_mandir}/man1/lsirq.1.gz
-%{_mandir}/man1/lsmem.1.gz
-%{_mandir}/man1/mcookie.1.gz
-%{_mandir}/man1/mesg.1.gz
-%{_mandir}/man1/more.1.gz
-%{_mandir}/man1/namei.1.gz
-%{_mandir}/man1/nsenter.1.gz
-%{_mandir}/man1/ionice.1.gz
-%{_mandir}/man1/irqtop.1.gz
-%{_mandir}/man1/prlimit.1.gz
-%{_mandir}/man1/rename.1.gz
-%{_mandir}/man1/rev.1.gz
-%{_mandir}/man1/renice.1.gz
-%{_mandir}/man1/setpriv.1.gz
-%{_mandir}/man1/setsid.1.gz
-%{_mandir}/man1/script.1.gz
-%{_mandir}/man1/scriptlive.1.gz
-%{_mandir}/man1/scriptreplay.1.gz
-%{_mandir}/man1/setterm.1.gz
-%{_mandir}/man1/taskset.1.gz
-%{_mandir}/man1/ul.1.gz
-%{_mandir}/man1/unshare.1.gz
-%{_mandir}/man1/wall.1.gz
-%{_mandir}/man1/whereis.1.gz
-%{_mandir}/man1/write.1.gz
-%{_mandir}/man1/ipcmk.1.gz
-%{_mandir}/man1/mountpoint.1.gz
-%{_mandir}/man1/runuser.1.gz
-%{_mandir}/man1/uclampset.1.gz
-%{_mandir}/man1/utmpdump.1.gz
-%{_mandir}/man1/uuidgen.1.gz
-%{_mandir}/man1/uuidparse.1.gz
-%{_mandir}/man5/adjtime_config.5.gz
-%{_mandir}/man5/fstab.5.gz
-%{_mandir}/man5/terminal-colors.d.5.gz
-%{_mandir}/man8/addpart.8.gz
-%{_mandir}/man8/agetty.8.gz
-%if 0%{?suse_version} >= 1330
-%{_mandir}/man8/blkzone.8.gz
-%endif
-%{_mandir}/man8/blockdev.8.gz
-%{_mandir}/man8/chmem.8.gz
-%{_mandir}/man8/ctrlaltdel.8.gz
-%{_mandir}/man8/delpart.8.gz
-%{_mandir}/man8/blkid.8.gz
-%{_mandir}/man8/blkdiscard.8.gz
-%{_mandir}/man8/switch_root.8.gz
-%{_mandir}/man8/mkfs.bfs.8.gz
-%{_mandir}/man8/mkfs.minix.8.gz
-%{_mandir}/man8/findfs.8.gz
-%{_mandir}/man8/fsck.8.gz
-%{_mandir}/man8/fsck.cramfs.8.gz
-%{_mandir}/man8/fsck.minix.8.gz
-%{_mandir}/man8/isosize.8.gz
-%{_mandir}/man8/ldattach.8.gz
-%{_mandir}/man8/losetup.8.gz
-%{_mandir}/man8/lslocks.8.gz
-%{_mandir}/man8/lsns.8.gz
-%{_mandir}/man8/mkfs.8.gz
-%{_mandir}/man8/mkfs.cramfs.8.gz
-%{_mandir}/man8/mkswap.8.gz
-%{_mandir}/man8/mount.8.gz
-%{_mandir}/man8/nologin.8.gz
-%{_mandir}/man8/fsfreeze.8.gz
-%{_mandir}/man8/swaplabel.8.gz
-%{_mandir}/man8/readprofile.8.gz
-%{_mandir}/man8/rfkill.8.gz
-%{_mandir}/man8/chcpu.8.gz
-%{_mandir}/man8/partx.8.gz
-%{_mandir}/man8/pivot_root.8.gz
-%{_mandir}/man8/rtcwake.8.gz
-%{_mandir}/man8/setarch.8.gz
-%{_mandir}/man8/swapoff.8.gz
-%{_mandir}/man8/swapon.8.gz
-%{_mandir}/man8/umount.8.gz
-%{_mandir}/man8/wipefs.8.gz
-%{_mandir}/man8/zramctl.8.gz
-%{_mandir}/man8/fstrim.8.gz
-%{_mandir}/man8/resizepart.8.gz
-%{_mandir}/man8/sulogin.8.gz
-%{_mandir}/man8/wdctl.8.gz
-%{_sbindir}/flushb
-%{_sbindir}/readprofile
+%{ulsbindir}/blockdev
+%{ulsbindir}/chcpu
+%{ulsbindir}/ctrlaltdel
+%{ulsbindir}/delpart
+%{ulsbindir}/findfs
+%{ulsbindir}/fsck
+%{ulsbindir}/fsck.minix
+%{ulsbindir}/fsck.cramfs
+%{ulsbindir}/fsfreeze
+%{ulsbindir}/fstrim
+%{ulsbindir}/ldattach
+%{ulsbindir}/losetup
+%{ulsbindir}/mkfs
+%{ulsbindir}/mkfs.bfs
+%{ulsbindir}/mkfs.minix
+%{ulsbindir}/mkfs.cramfs
+%{ulsbindir}/mkswap
+%{ulsbindir}/nologin
+%{ulsbindir}/partx
+%{ulsbindir}/pivot_root
+%{ulsbindir}/resizepart
+%{ulsbindir}/rfkill
+%{ulsbindir}/rtcwake
+%{ulsbindir}/runuser
+%{ulsbindir}/sulogin
+%{ulsbindir}/swaplabel
+%{ulsbindir}/swapoff
+%{ulsbindir}/swapon
+%{ulsbindir}/switch_root
+%{ulsbindir}/wipefs
+%verify(not mode) %attr(0755,root,tty) %{ulbindir}/wall
+%{ulbindir}/whereis
+%verify(not mode) %attr(0755,root,tty) %{ulbindir}/write
+%{ulsbindir}/zramctl
+%{ulsbindir}/flushb
+%{ulsbindir}/readprofile
 # These directories should be owned by bash-completion. But we don't want to
 # install them on build, so own these two directories:
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/*
-%exclude %{_datadir}/bash-completion/completions/findmnt
-%exclude %{_datadir}/bash-completion/completions/logger
-%exclude %{_datadir}/bash-completion/completions/lsblk
-%exclude %{_datadir}/bash-completion/completions/lslogins
-%exclude %{_datadir}/bash-completion/completions/uuidd
+%dir %{uldatadir}/bash-completion
+%dir %{uldatadir}/bash-completion/completions
+%{uldatadir}/bash-completion/completions/*
+#
+%exclude %{uldatadir}/bash-completion/completions/uuidd
+# util-linux documentation files
+%doc Documentation/blkid.txt
+%doc Documentation/cal.txt
+%doc Documentation/col.txt
+%doc Documentation/deprecated.txt
+%doc Documentation/getopt.txt
+%doc Documentation/howto-debug.txt
+%doc Documentation/hwclock.txt
+%doc Documentation/modems-with-agetty.txt
+%doc Documentation/mount.txt
+%doc Documentation/pg.txt
+%{uldocdir}/%{name}/getopt-example.*
+%exclude %{ulmandir}/man*/*
+%exclude %{ulsbindir}/uuidd
+%endif
+%if "%ulsubset" == "systemd"
+%exclude %attr(-,uuidd,uuidd) %dir %{_sharedstatedir}/libuuid
+%exclude %attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
+%exclude %config(noreplace) %{ulsysconfdir}/filesystems
+%exclude %config(noreplace) %{ulsysconfdir}/blkid.conf
+%if %{defined no_config}
+%exclude %{ulpamdir}/login
+%exclude %{ulpamdir}/remote
+%exclude %{ulpamdir}/runuser
+%exclude %{ulpamdir}/runuser-l
+%exclude %{ulpamdir}/su
+%exclude %{ulpamdir}/su-l
+%if 0%{?suse_version} <= 1520
+%exclude %dir %{uldistconfdir}/default
+%endif
+%exclude %{uldistconfdir}/default/runuser
+%exclude %{uldistconfdir}/default/su
+%else
+%exclude %config(noreplace) %{ulpamdir}/login
+%exclude %config(noreplace) %{ulpamdir}/remote
+%exclude %config(noreplace) %{ulpamdir}/runuser
+%exclude %config(noreplace) %{ulpamdir}/runuser-l
+%exclude %config(noreplace) %{ulpamdir}/su
+%exclude %config(noreplace) %{ulpamdir}/su-l
+%exclude %config(noreplace) %{ulsysconfdir}/default/runuser
+%exclude %config(noreplace) %{ulsysconfdir}/default/su
+%endif
+%exclude %config %dir %{ulsysconfdir}/issue.d
+%if %{ul_extra_bin_sbin}
+%exclude /bin/findmnt
+%exclude /bin/kill
+%exclude %verify(not mode) %attr(%ul_suid,root,root) /bin/su
+%exclude /bin/dmesg
+%exclude /bin/more
+%exclude %verify(not mode) %attr(%ul_suid,root,root) /bin/mount
+%exclude %verify(not mode) %attr(%ul_suid,root,root) /bin/umount
+%exclude /bin/login
+/bin/logger
+/bin/lsblk
+%exclude /sbin/agetty
+%exclude /sbin/blockdev
+%exclude /sbin/ctrlaltdel
+%exclude /sbin/fsck.minix
+%exclude /sbin/fsck.cramfs
+%exclude /sbin/losetup
+%exclude /sbin/mkfs
+%exclude /sbin/mkfs.bfs
+%exclude /sbin/mkfs.minix
+%exclude /sbin/mkfs.cramfs
+%exclude /sbin/mkswap
+%exclude /sbin/nologin
+%exclude /sbin/pivot_root
+%exclude /sbin/swapoff
+%exclude /sbin/swapon
+%exclude /sbin/blkid
+%exclude /sbin/findfs
+%exclude /sbin/fsck
+%exclude /sbin/switch_root
+%exclude /sbin/wipefs
+%exclude /sbin/fsfreeze
+%exclude /sbin/swaplabel
+%exclude /sbin/fstrim
+%exclude /sbin/chcpu
+%endif
+%exclude %{ulbindir}/kill
+%exclude %verify(not mode) %attr(%ul_suid,root,root) %{ulbindir}/su
+%exclude %{ulbindir}/eject
+%exclude %{ulbindir}/cal
+%exclude %{ulbindir}/chmem
+%exclude %{ulbindir}/choom
+%exclude %{ulbindir}/chrt
+%exclude %{ulbindir}/col
+%exclude %{ulbindir}/colcrt
+%exclude %{ulbindir}/colrm
+%exclude %{ulbindir}/column
+%exclude %{ulbindir}/dmesg
+%exclude %{ulbindir}/fallocate
+%exclude %{ulbindir}/fincore
+%{ulbindir}/findmnt
+%exclude %{ulbindir}/flock
+%exclude %{ulbindir}/getopt
+%exclude %{ulbindir}/hardlink
+%exclude %{ulbindir}/hexdump
+%exclude %{ulbindir}/ionice
+%exclude %{ulbindir}/ipcmk
+%exclude %{ulbindir}/ipcrm
+%exclude %{ulbindir}/ipcs
+%exclude %{ulbindir}/irqtop
+%exclude %{ulbindir}/isosize
+%exclude %{ulbindir}/last
+%exclude %{ulbindir}/lastb
+%exclude %{ulbindir}/line
+%{ulbindir}/logger
+%exclude %{ulbindir}/look
+%if !%{ul_extra_bin_sbin}
+%exclude %{ulbindir}/login
+%endif
+%{ulbindir}/lsblk
+%exclude %{ulbindir}/lscpu
+%exclude %{ulbindir}/lsfd
+%exclude %{ulbindir}/lsipc
+%exclude %{ulbindir}/lsirq
+%{ulbindir}/lslocks
+%{ulbindir}/lslogins
+%exclude %{ulbindir}/lsmem
+%exclude %{ulbindir}/lsns
+%exclude %{ulbindir}/mcookie
+%exclude %{ulbindir}/mesg
+%exclude %{ulbindir}/more
+%exclude %verify(not mode) %attr(%ul_suid,root,root) %{ulbindir}/mount
+%exclude %{ulbindir}/namei
+%exclude %{ulbindir}/nsenter
+%exclude %{ulbindir}/prlimit
+%exclude %{ulbindir}/rename
+%exclude %{ulbindir}/renice
+%exclude %{ulbindir}/rev
+%exclude %{ulbindir}/script
+%exclude %{ulbindir}/scriptlive
+%exclude %{ulbindir}/scriptreplay
+%exclude %{ulbindir}/setarch
+%exclude %{ulbindir}/setpriv
+%exclude %{ulbindir}/setsid
+%exclude %{ulbindir}/taskset
+%exclude %{ulbindir}/uclampset
+%exclude %{ulbindir}/ul
+%exclude %verify(not mode)%attr(%ul_suid,root,root)  %{ulbindir}/umount
+%exclude %{ulbindir}/unshare
+%exclude %{ulbindir}/mountpoint
+%exclude %{ulbindir}/utmpdump
+%exclude %{ulbindir}/uuidgen
+%exclude %{ulbindir}/uuidparse
+%exclude %{ulbindir}/uname26
+%exclude %{ulbindir}/wdctl
+%exclude %{ulsbindir}/addpart
+%exclude %{ulsbindir}/agetty
+%exclude %{ulsbindir}/blkid
+%exclude %{ulsbindir}/blkdiscard
+# blkzone depends on linux/blkzoned.h
+%if 0%{?suse_version} >= 1330
+%exclude %{ulsbindir}/blkzone
+%endif
+%exclude %{ulsbindir}/blockdev
+%exclude %{ulsbindir}/chcpu
+%exclude %{ulsbindir}/ctrlaltdel
+%exclude %{ulsbindir}/delpart
+%exclude %{ulsbindir}/findfs
+%exclude %{ulsbindir}/fsck
+%exclude %{ulsbindir}/fsck.minix
+%exclude %{ulsbindir}/fsck.cramfs
+%exclude %{ulsbindir}/fsfreeze
+%exclude %{ulsbindir}/fstrim
+%exclude %{ulsbindir}/ldattach
+%exclude %{ulsbindir}/losetup
+%exclude %{ulsbindir}/mkfs
+%exclude %{ulsbindir}/mkfs.bfs
+%exclude %{ulsbindir}/mkfs.minix
+%exclude %{ulsbindir}/mkfs.cramfs
+%exclude %{ulsbindir}/mkswap
+%exclude %{ulsbindir}/nologin
+%exclude %{ulsbindir}/partx
+%exclude %{ulsbindir}/pivot_root
+%exclude %{ulsbindir}/resizepart
+%exclude %{ulsbindir}/rfkill
+%exclude %{ulsbindir}/rtcwake
+%exclude %{ulsbindir}/runuser
+%exclude %{ulsbindir}/sulogin
+%exclude %{ulsbindir}/swaplabel
+%exclude %{ulsbindir}/swapoff
+%exclude %{ulsbindir}/swapon
+%exclude %{ulsbindir}/switch_root
+%exclude %{ulsbindir}/wipefs
+%verify(not mode) %attr(0755,root,tty) %{ulbindir}/wall
+%exclude %{ulbindir}/whereis
+%verify(not mode) %attr(0755,root,tty) %{ulbindir}/write
+%exclude %{ulsbindir}/zramctl
+%exclude %{ulsbindir}/flushb
+%exclude %{ulsbindir}/readprofile
+# These directories should be owned by bash-completion. But we don't want to
+# install them on build, so own these two directories:
+%exclude %dir %{uldatadir}/bash-completion
+%exclude %dir %{uldatadir}/bash-completion/completions
+%exclude %{uldatadir}/bash-completion/completions/*
+#
+%exclude %{ulsbindir}/uuidd
+%exclude %{uldatadir}/bash-completion/completions/uuidd
+%exclude %{uldatadir}/locale
+%exclude %{ulincludedir}/*
+%exclude %{ullibdir}/lib*.*
+%exclude %{ullibdir}/pkgconfig/*.pc
+%exclude %{uldocdir}/%{name}/getopt-example.*
+%{ulmandir}/man1/kill.1.gz
+%{ulmandir}/man1/su.1.gz
+%{ulmandir}/man1/cal.1.gz
+%{ulmandir}/man1/choom.1.gz
+%{ulmandir}/man1/chrt.1.gz
+%{ulmandir}/man1/col.1.gz
+%{ulmandir}/man1/colcrt.1.gz
+%{ulmandir}/man1/colrm.1.gz
+%{ulmandir}/man1/column.1.gz
+%{ulmandir}/man1/dmesg.1.gz
+%{ulmandir}/man1/eject.1.gz
+%{ulmandir}/man1/fallocate.1.gz
+%{ulmandir}/man1/fincore.1.gz
+%{ulmandir}/man1/flock.1.gz
+%{ulmandir}/man1/getopt.1.gz
+%{ulmandir}/man1/hardlink.1.gz
+%{ulmandir}/man1/hexdump.1.gz
+%{ulmandir}/man1/ipcrm.1.gz
+%{ulmandir}/man1/ipcs.1.gz
+%{ulmandir}/man1/last.1.gz
+%{ulmandir}/man1/lastb.1.gz
+%{ulmandir}/man1/line.1.gz
+%{ulmandir}/man1/login.1.gz
+%{ulmandir}/man1/look.1.gz
+%{ulmandir}/man1/logger.1.gz
+%{ulmandir}/man1/lscpu.1.gz
+%{ulmandir}/man1/lsfd.1.gz
+%{ulmandir}/man1/lsipc.1.gz
+%{ulmandir}/man1/lsirq.1.gz
+%{ulmandir}/man1/lslogins.1.gz
+%{ulmandir}/man8/lsblk.8.gz
+%{ulmandir}/man1/lsmem.1.gz
+%{ulmandir}/man1/mcookie.1.gz
+%{ulmandir}/man1/mesg.1.gz
+%{ulmandir}/man1/more.1.gz
+%{ulmandir}/man1/namei.1.gz
+%{ulmandir}/man1/nsenter.1.gz
+%{ulmandir}/man1/ionice.1.gz
+%{ulmandir}/man1/irqtop.1.gz
+%{ulmandir}/man1/prlimit.1.gz
+%{ulmandir}/man1/rename.1.gz
+%{ulmandir}/man1/rev.1.gz
+%{ulmandir}/man1/renice.1.gz
+%{ulmandir}/man1/setpriv.1.gz
+%{ulmandir}/man1/setsid.1.gz
+%{ulmandir}/man1/script.1.gz
+%{ulmandir}/man1/scriptlive.1.gz
+%{ulmandir}/man1/scriptreplay.1.gz
+%{ulmandir}/man1/setterm.1.gz
+%{ulmandir}/man1/taskset.1.gz
+%{ulmandir}/man1/ul.1.gz
+%{ulmandir}/man1/unshare.1.gz
+%{ulmandir}/man1/wall.1.gz
+%{ulmandir}/man1/whereis.1.gz
+%{ulmandir}/man1/write.1.gz
+%{ulmandir}/man1/ipcmk.1.gz
+%{ulmandir}/man1/mountpoint.1.gz
+%{ulmandir}/man1/runuser.1.gz
+%{ulmandir}/man1/uclampset.1.gz
+%{ulmandir}/man1/utmpdump.1.gz
+%{ulmandir}/man1/uuidgen.1.gz
+%{ulmandir}/man1/uuidparse.1.gz
+%{ulmandir}/man5/adjtime_config.5.gz
+%{ulmandir}/man5/fstab.5.gz
+%{ulmandir}/man5/terminal-colors.d.5.gz
+%{ulmandir}/man8/addpart.8.gz
+%{ulmandir}/man8/agetty.8.gz
+%if 0%{?suse_version} >= 1330
+%{ulmandir}/man8/blkzone.8.gz
+%endif
+%{ulmandir}/man8/blockdev.8.gz
+%{ulmandir}/man8/chmem.8.gz
+%{ulmandir}/man8/ctrlaltdel.8.gz
+%{ulmandir}/man8/delpart.8.gz
+%{ulmandir}/man8/blkid.8.gz
+%{ulmandir}/man8/blkdiscard.8.gz
+%{ulmandir}/man8/switch_root.8.gz
+%{ulmandir}/man8/mkfs.bfs.8.gz
+%{ulmandir}/man8/mkfs.minix.8.gz
+%{ulmandir}/man8/findfs.8.gz
+%{ulmandir}/man8/fsck.8.gz
+%{ulmandir}/man8/fsck.cramfs.8.gz
+%{ulmandir}/man8/fsck.minix.8.gz
+%{ulmandir}/man8/isosize.8.gz
+%{ulmandir}/man8/ldattach.8.gz
+%{ulmandir}/man8/losetup.8.gz
+%{ulmandir}/man8/lslocks.8.gz
+%{ulmandir}/man8/lsns.8.gz
+%{ulmandir}/man8/mkfs.8.gz
+%{ulmandir}/man8/mkfs.cramfs.8.gz
+%{ulmandir}/man8/mkswap.8.gz
+%{ulmandir}/man8/mount.8.gz
+%{ulmandir}/man8/nologin.8.gz
+%{ulmandir}/man8/fsfreeze.8.gz
+%{ulmandir}/man8/swaplabel.8.gz
+%{ulmandir}/man8/readprofile.8.gz
+%{ulmandir}/man8/rfkill.8.gz
+%{ulmandir}/man8/chcpu.8.gz
+%{ulmandir}/man8/partx.8.gz
+%{ulmandir}/man8/pivot_root.8.gz
+%{ulmandir}/man8/rtcwake.8.gz
+%{ulmandir}/man8/setarch.8.gz
+%{ulmandir}/man8/swapoff.8.gz
+%{ulmandir}/man8/swapon.8.gz
+%{ulmandir}/man8/umount.8.gz
+%{ulmandir}/man8/uname26.8.gz
+%{ulmandir}/man8/wipefs.8.gz
+%{ulmandir}/man8/zramctl.8.gz
+%{ulmandir}/man8/findmnt.8.gz
+%{ulmandir}/man8/fstrim.8.gz
+%{ulmandir}/man8/resizepart.8.gz
+%{ulmandir}/man8/sulogin.8.gz
+%{ulmandir}/man8/wdctl.8.gz
+%{ulsbindir}/rcfstrim
+%{_unitdir}/fstrim.service
+%{_unitdir}/fstrim.timer
+%endif
+#
+# Files not common for all architectures
 %ifnarch ia64 m68k
-#XXX: post our patches upstream
-#XXX: call fdupes on /usr/share/man
-%if !0%{?usrmerged}
+%if %{ul_extra_bin_sbin}
 /sbin/fdisk
 %endif
-%{_sbindir}/fdisk
-%{_mandir}/man8/fdisk.8.gz
+%{ulsbindir}/fdisk
+%{ulmandir}/man8/fdisk.8.gz
 %endif
 %ifnarch %sparc ia64 m68k
-%{_mandir}/man8/cfdisk.8.gz
-%{_mandir}/man8/sfdisk.8.gz
-%if !0%{?usrmerged}
+%{ulmandir}/man8/cfdisk.8.gz
+%{ulmandir}/man8/sfdisk.8.gz
+%if %{ul_extra_bin_sbin}
 /sbin/cfdisk
 /sbin/sfdisk
 %endif
-%{_sbindir}/cfdisk
-%{_sbindir}/sfdisk
+%{ulsbindir}/cfdisk
+%{ulsbindir}/sfdisk
 %endif
 %ifnarch s390 s390x
-%{_sbindir}/fdformat
-%if !0%{?usrmerged}
+%{ulsbindir}/fdformat
+%if %{ul_extra_bin_sbin}
 /sbin/hwclock
 %endif
-%{_sbindir}/hwclock
-%{_bindir}/setterm
-%{_sbindir}/tunelp
-%{_mandir}/man8/fdformat.8.gz
-%{_mandir}/man8/hwclock.8.gz
-%{_mandir}/man8/tunelp.8.gz
+%{ulsbindir}/hwclock
+%{ulbindir}/setterm
+%{ulsbindir}/tunelp
+%{ulmandir}/man8/fdformat.8.gz
+%{ulmandir}/man8/hwclock.8.gz
+%{ulmandir}/man8/tunelp.8.gz
 %endif
 
+%if "%ulsubset" == "core"
 %files -n libblkid1
 %defattr(-, root, root)
-%{_libdir}/libblkid.so.1
-%{_libdir}/libblkid.so.1.*
-
-%files -n libblkid-devel
-%defattr(-, root, root)
-%{_libdir}/libblkid.so
-%dir %{_includedir}/blkid
-%{_includedir}/blkid/blkid.h
-%{_libdir}/pkgconfig/blkid.pc
-%{_mandir}/man3/libblkid.3.gz
-
-%files -n libblkid-devel-static
-%defattr(-, root, root)
-%{_libdir}/libblkid.*a
-
-%files -n libmount1
-%defattr(-, root, root)
-%{_libdir}/libmount.so.1
-%{_libdir}/libmount.so.1.*
-
-%files -n libmount-devel
-%defattr(-, root, root)
-%{_libdir}/libmount.so
-%dir %{_includedir}/libmount
-%{_includedir}/libmount/libmount.h
-%{_libdir}/pkgconfig/mount.pc
-
-%files -n libmount-devel-static
-%defattr(-, root, root)
-%{_libdir}/libmount.*a
-
-%files -n libsmartcols1
-%defattr(-, root, root)
-%{_libdir}/libsmartcols.so.1
-%{_libdir}/libsmartcols.so.1.*
-
-%files -n libsmartcols-devel
-%defattr(-, root, root)
-%{_libdir}/libsmartcols.so
-%dir %{_includedir}/libsmartcols
-%{_includedir}/libsmartcols/libsmartcols.h
-%{_libdir}/pkgconfig/smartcols.pc
-
-%files -n libsmartcols-devel-static
-%defattr(-, root, root)
-%{_libdir}/libsmartcols.*a
-
-%files -n libuuid1
-%defattr(-, root, root)
-%{_libdir}/libuuid.so.1
-%{_libdir}/libuuid.so.1.*
-
-%files -n libuuid-devel
-%defattr(-, root, root)
-%{_libdir}/libuuid.so
-%dir %{_includedir}/uuid
-%{_includedir}/uuid/uuid.h
-%{_libdir}/pkgconfig/uuid.pc
-%{_mandir}/man3/uuid*
-
-%files -n libuuid-devel-static
-%defattr(-, root, root)
-%{_libdir}/libuuid.*a
+%{ullibdir}/libblkid.so.1
+%{ullibdir}/libblkid.so.1.*
 
 %files -n libfdisk1
 %defattr(-, root, root)
-%{_libdir}/libfdisk.so.1
-%{_libdir}/libfdisk.so.1.*
+%{ullibdir}/libfdisk.so.1
+%{ullibdir}/libfdisk.so.1.*
+
+%files -n libmount1
+%defattr(-, root, root)
+%{ullibdir}/libmount.so.1
+%{ullibdir}/libmount.so.1.*
+
+%files -n libsmartcols1
+%defattr(-, root, root)
+%{ullibdir}/libsmartcols.so.1
+%{ullibdir}/libsmartcols.so.1.*
+
+%files -n libuuid1
+%defattr(-, root, root)
+%{ullibdir}/libuuid.so.1
+%{ullibdir}/libuuid.so.1.*
+
+#
+# devel, lang and uuidd files are not packaged in staging mode
+# and packaged separately in full mode
+# FIXME: Is it needed?
+# HACK: We have to use "%%files -n" here, otherwise python lua code will
+# issue an error, even if it is inside a false condition.
+%if "%ulsubset" == "core"
+%files -n %{name}-lang -f %{name}.lang
+%endif
+
+%files -n libblkid-devel
+%defattr(-, root, root)
+%{ullibdir}/libblkid.so
+%dir %{ulincludedir}/blkid
+%{ulincludedir}/blkid/blkid.h
+%{ullibdir}/pkgconfig/blkid.pc
+%{ulmandir}/man3/libblkid.3.gz
+
+%files -n libblkid-devel-static
+%defattr(-, root, root)
+%{ullibdir}/libblkid.*a
 
 %files -n libfdisk-devel
 %defattr(-, root, root)
-%{_libdir}/libfdisk.so
-%dir %{_includedir}/libfdisk
-%{_includedir}/libfdisk/libfdisk.h
-%{_libdir}/pkgconfig/fdisk.pc
+%{ullibdir}/libfdisk.so
+%dir %{ulincludedir}/libfdisk
+%{ulincludedir}/libfdisk/libfdisk.h
+%{ullibdir}/pkgconfig/fdisk.pc
 
 %files -n libfdisk-devel-static
 %defattr(-, root, root)
-%{_libdir}/libfdisk.*a
-%endif
+%{ullibdir}/libfdisk.*a
 
-%if %build_util_linux_systemd
-%if %build_util_linux
-%files systemd
-%else
-
-%files
-%endif
+%files -n libmount-devel
 %defattr(-, root, root)
-%if !0%{?usrmerged}
-/bin/findmnt
-/bin/logger
-/bin/lsblk
-%endif
-%{_bindir}/findmnt
-%{_bindir}/logger
-%{_bindir}/lsblk
-%{_bindir}/lslogins
-#BEGIN bootstrap_hack
-%if 0%{?suse_version} < 1330
-# Build images of some products use util-linux that does not come from this
-# spec and does not own bash-completion dir. So we have to own own these two
-# directories in util-linux-systemd as well:
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%endif
-#END bootstrap_hack
-%{_datadir}/bash-completion/completions/findmnt
-%{_datadir}/bash-completion/completions/logger
-%{_datadir}/bash-completion/completions/lsblk
-%{_datadir}/bash-completion/completions/lslogins
-%{_mandir}/man1/logger.1.gz
-%{_mandir}/man1/lslogins.1.gz
-%{_mandir}/man8/lsblk.8.gz
-%{_mandir}/man8/findmnt.8.gz
-%{_sbindir}/rcfstrim
-%{_unitdir}/fstrim.service
-%{_unitdir}/fstrim.timer
+%{ullibdir}/libmount.so
+%dir %{ulincludedir}/libmount
+%{ulincludedir}/libmount/libmount.h
+%{ullibdir}/pkgconfig/mount.pc
 
+%files -n libmount-devel-static
+%defattr(-, root, root)
+%{ullibdir}/libmount.*a
+
+%files -n libsmartcols-devel
+%defattr(-, root, root)
+%{ullibdir}/libsmartcols.so
+%dir %{ulincludedir}/libsmartcols
+%{ulincludedir}/libsmartcols/libsmartcols.h
+%{ullibdir}/pkgconfig/smartcols.pc
+
+%files -n libsmartcols-devel-static
+%defattr(-, root, root)
+%{ullibdir}/libsmartcols.*a
+
+%files -n libuuid-devel
+%defattr(-, root, root)
+%{ullibdir}/libuuid.so
+%dir %{ulincludedir}/uuid
+%{ulincludedir}/uuid/uuid.h
+%{ullibdir}/pkgconfig/uuid.pc
+%{ulmandir}/man3/uuid*
+
+%files -n libuuid-devel-static
+%defattr(-, root, root)
+%{ullibdir}/libuuid.*a
+%endif
+
+%if "%ulsubset" == "systemd"
 %files -n uuidd
 %defattr(-, root, root)
-%{_sbindir}/uuidd
-%attr(-,uuidd,uuidd) %dir %{_localstatedir}/lib/libuuid
-%ghost %{_localstatedir}/lib/libuuid/clock.txt
+%{ulsbindir}/uuidd
+%attr(-,uuidd,uuidd) %dir %{_sharedstatedir}/libuuid
+%attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
 %attr(-,uuidd,uuidd) %ghost %dir /run/uuidd
-%{_datadir}/bash-completion/completions/uuidd
-%{_mandir}/man8/uuidd.8.gz
-%{_sbindir}/rcuuidd
+%{uldatadir}/bash-completion/completions/uuidd
+%{ulmandir}/man8/uuidd.8.gz
+%{ulsbindir}/rcuuidd
 %{_unitdir}/uuidd.service
 %{_unitdir}/uuidd.socket
 %endif
-
-%if %build_python_libmount
-%if %build_util_linux
-%files -n python3-libmount
-%else
-
-%files
 %endif
+
+%if "%ulbuild" == "python"
+%files %{python_files}
 %defattr(-, root, root)
-%{python3_sitearch}/libmount
+%{python_sitearch}/libmount
 %endif
 
 %changelog

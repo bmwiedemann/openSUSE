@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed Dec 21 17:11:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- restore lsblk and lslogins as well
+
+-------------------------------------------------------------------
+Mon Dec 19 19:14:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- reinstanciate logger
+
+-------------------------------------------------------------------
+Wed Dec 14 22:57:15 UTC 2022 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Fix /usr/bin/findmnt to be in only one package (bsc#1206347)
+
+-------------------------------------------------------------------
+Fri Dec  9 17:23:28 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Fix tests not passing when '@' character is in build path: 
+  Fixes rpmbuild %checks fail when @ in the directory path (bsc#1194038).
+- Add util-linux-fix-tests-when-at-symbol-in-path.patch
+
+-------------------------------------------------------------------
+Thu Dec  8 21:02:08 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Convert the build back to per-parts build, just use multibuild.
+
+-------------------------------------------------------------------
+Thu Dec  1 18:36:38 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- libuuid continuous clock handling for time based UUIDs:
+  Prevent use of the new libuuid ABI by uuidd %post before update
+  of libuuid1 (bsc#1205646).
+
+-------------------------------------------------------------------
+Thu Sep 15 12:42:41 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Do not set SUID permissions for util-linux-mini.
+
+-------------------------------------------------------------------
+Mon Sep 12 18:45:58 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix pam directory for the staging package.
+- Add util-linux-rpmlintrc removing unneeded warnings.
+
+-------------------------------------------------------------------
+Mon Aug 29 02:41:41 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.38.1:
+  * column: fix buffer overflow when -l specified, fix greedy mode
+  on -l
+  * dmesg: fix --since and --until
+  * libmount: when moving a mount point, all sub mount entries in
+    utab should also be updated (bsc#1198731)
+  * libuuid: improve cache handling (bsc#1201959, PED-1150)
+  * lsblk: fix JSON output when without --bytes
+  * lsfd:fix crash triggered by an empty filter expression
+  * sulogin: fix includes (obsoletes linux-fs.patch)
+  * Many other fixes, improvements and code cleanup. For the
+    complete list see
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.38/v2.38.1-ReleaseNotes
+- Fix some rpmlintrc warnings and remove util-linux-rpmlintrc.
+
+-------------------------------------------------------------------
+Mon Aug 22 02:59:20 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.38:
+  * first release with translated util-linux man-pages
+  * mount: new options --mkdir as shortcut for X-mount.mkdir
+  * mount, libmount: new mount options X-mount.subdir=
+  * lsfd: new command
+  * dmesg: new option --json to print kernel log in JSON format
+  * libfdisk: improved to set correct CHS addresses in MBR
+  * fstrim: ignores all /ect/fstab entries with X-fstrim.notrim
+    (jsc#SLE-17942)
+  * hardlink: now supports reflinks and new option --method=
+  * hwclock: new command line options --param-get and --param-set
+  * irqtop: new option --cpu-stat
+  * libblkid: supports zoned disks for btrfs
+  * lsblk: new options --noempty to ignore all devices with zero
+    size, and --zoned to print information about zones
+  * mkswap: new option --quiet
+  * nsenter: new option --wdns to change working directory within
+    namespace
+  * rename: new options --all and --last to replace all or last
+    occurrences of expression rather than the first one
+  * su: now resets RLIMIT_AS, RLIMIT_{NICE,RTPRIO}, RLIMIT_FSIZE
+    and RLIMIT_NOFILE reourse limits.
+  * unshare: new options --map-users= and --map-groups= to map
+    block of group IDs; new option --map-auto to map the first
+    block of user IDs owned by the effective user from /etc/subuid
+  * wdctl: new options --setpregovernor to set pre-timeout governor
+    name, and --setpretimeout to set watchdog pre-timeout in
+    seconds
+  * Many other new features and fixes. For the complete list see
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.38/v2.38-ReleaseNotes
+- Changed packaging style from multi spec build to multibuild with
+  python multi-flavor build (PED-1007).
+  Advantages:
+    * Easily prevents bootstrap build loops.
+    * No artificial package splitting needed any more.
+    * Less complicated spec file.
+    * Can run full test suite.
+    * python*-libmount available for more python versions.
+    * Enable asciidoctor to build documentation.
+    * Enable support for libmagic.
+    * Turn technically incorrect Recommends to Requires.
+- Fix rpmling warning by setting attr for clock.txt ghost file.
+- Drop upstreamed util-linux-sulogin4bsc1175514.patch
+
+-------------------------------------------------------------------
 Tue Aug  9 07:51:17 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %_pam_vendordir

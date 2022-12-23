@@ -1,14 +1,7 @@
-addFilter("init-script-without-%stop_on_removal-preun /etc/init.d/raw")
-addFilter("init-script-without-%restart_on_update-postun /etc/init.d/raw")
-addFilter("incoherent-init-script-name raw")
-addFilter("no-reload-entry /etc/init.d/raw")
-# There is no egrep(1) used -> False positive
-addFilter("deprecated-grep")
-# Both pam configs for su and su-l are marked as noreplace 
-addFilter(".*W:.*files-duplicate.*/pam/su.*/pam.d/su-l.*")
-# Useless warning as the /usr/bin variants are known
-addFilter(".*W:.*permissions-symlink.*/bin/su.*")
-addFilter(".*W:.*permissions-symlink.*/bin/umount.*")
-addFilter(".*W:.*permissions-symlink.*/bin/mount.*")
-# UGLY HACK: rpmlint falsely declares problems with files-attr-not-set
-addFilter("W: files-attr-not-set")
+# False positives. Libraries outside LD_LIBRARY_PATH use RPATH to find libraries, not ldconfig.
+addFilter("library-without-ldconfig-postin /usr/libexec/build/staging/.*")
+addFilter("library-without-ldconfig-postun /usr/libexec/build/staging/.*")
+# Not applicable for multi flavor build.
+addFilter("invalid-spec-name")
+# Not important, and it simplifies packaging.
+addFilter("non-etc-or-var-file-marked-as-conffile /usr/libexec/build/staging/.*")

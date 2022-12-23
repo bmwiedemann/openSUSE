@@ -1,0 +1,47 @@
+From 057579455a40d0cc7612938aa3d11a02b279e89c Mon Sep 17 00:00:00 2001
+From: David Anes <david.anes@suse.com>
+Date: Fri, 9 Dec 2022 18:09:31 +0100
+Subject: [PATCH] tests: allow paths in tests to contain '@' char
+
+Tests fail when the build directory contains
+'@' in its path, as its sent to 'sed' unescaped.
+
+This patch allows to build in such environments,
+which typically happen on automated systems (for
+example, when building concurrently with Jenkins).
+---
+ tests/functions.sh  | 4 +++-
+ tests/ts/minix/fsck | 5 ++++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/tests/functions.sh b/tests/functions.sh
+index 22bfc24c93..6975930e33 100644
+--- a/tests/functions.sh
++++ b/tests/functions.sh
+@@ -853,7 +853,9 @@ function ts_fdisk_clean {
+ 
+ 	# remove non comparable parts of fdisk output
+ 	if [ -n "${DEVNAME}" ]; then
+-		sed -i -e "s@${DEVNAME}@<removed>@;" $TS_OUTPUT $TS_ERRLOG
++		# escape "@" with "\@" in $img. This way sed correctly
++		# replaces paths containing "@" characters
++		sed -i -e "s@${DEVNAME//\@/\\\@}@<removed>@;" $TS_OUTPUT $TS_ERRLOG
+ 	fi
+ 
+ 	sed -i \
+diff --git a/tests/ts/minix/fsck b/tests/ts/minix/fsck
+index 335f180dcc..f246a87a76 100755
+--- a/tests/ts/minix/fsck
++++ b/tests/ts/minix/fsck
+@@ -50,7 +50,10 @@ done
+ 
+ rm -f $img
+ 
+-sed -i "s@$img@image@g" $TS_OUTPUT
++# escape "@" with "\@" in $img. This way sed correctly
++# replaces paths containing "@" characters
++sed -i "s@${img//\@/\\\@}@image@g" $TS_OUTPUT
++
+ 
+ ts_finalize
+ 
