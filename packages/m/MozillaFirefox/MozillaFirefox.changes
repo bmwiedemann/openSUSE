@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 21 16:05:26 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- add mozilla-bmo1805809.patch to fix build for x86-32 (boo#1206600)
+
+-------------------------------------------------------------------
 Tue Dec 20 07:58:58 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 108.0.1 (boo#1206507)

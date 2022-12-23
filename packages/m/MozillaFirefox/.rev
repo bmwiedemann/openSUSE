@@ -6015,4 +6015,12 @@
   rustc/cargo 1.65</comment>
     <requestid>1043934</requestid>
   </revision>
+  <revision rev="385" vrev="2">
+    <srcmd5>a40e188372945f2cb50142d26bd35634</srcmd5>
+    <version>108.0.1</version>
+    <time>1671787248</time>
+    <user>dimstar_suse</user>
+    <comment>- add mozilla-bmo1805809.patch to fix build for x86-32 (boo#1206600)</comment>
+    <requestid>1044163</requestid>
+  </revision>
 </revisionlist>

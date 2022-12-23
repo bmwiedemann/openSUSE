@@ -228,6 +228,7 @@ Patch23:        mozilla-bmo531915.patch
 Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
 Patch27:        mozilla-buildfixes.patch
+Patch28:        mozilla-bmo1805809.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -250,7 +251,7 @@ Obsoletes:      %{name}-devel < %{version}
 %if 0%{?suse_version} < 1220
 Obsoletes:      libproxy1-pacrunner-mozjs <= 0.4.7
 %endif
-ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le %ix86
+ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
