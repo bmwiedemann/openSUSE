@@ -1,5 +1,5 @@
 #
-# spec file for package cockpit-machines
+# spec file for package cockpit-d-installer
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -31,10 +31,10 @@ Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
 BuildArch:      noarch
 Requires:       cockpit
+BuildRequires:  appstream-glib
 BuildRequires:  cockpit
 BuildRequires:  cockpit-devel >= 243
 BuildRequires:  local-npm-registry
-BuildRequires:  appstream-glib
 
 %description
 Cockpit module for the experimental YaST D-Installer.

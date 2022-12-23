@@ -7,4 +7,12 @@
     <comment>Add a Cockpit module for D-Installer to Factory</comment>
     <requestid>1041098</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627ac3360dc3cdf0e0f690df7ed60345</srcmd5>
+    <version>0</version>
+    <time>1671787284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1044289</requestid>
+  </revision>
 </revisionlist>
