@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 22 17:15:35 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.28.0:
+  * feat: Add lstat template function
+  * feat: Add --path-style option to managed and unmanaged commands
+  * feat: Add verification of external checksums
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Dec 05 09:46:15 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.27.3:
