@@ -1,25 +1,12 @@
 -------------------------------------------------------------------
-Sat Dec  3 17:13:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+Mon Dec 19 18:58:06 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
-- update to 5.0.0:
-  * Various cleanups and improvements to the API.
-  * Improvements to the handling of YubiKeys and connections.
-  * Command aliases for ykman 3.x (introduced in ykman 4.0) have now been dropped.
-  * Installers for ykman are now provided for Windows (amd64) and MacOS (universal2).
-  * Logging has been improved, and a new TRAFFIC level has been introduced.
-  * The codebase has been improved for scripting usage, either directly as a
-    Python module, or via the new "ykman script" command. 
-  * PIV: Add support for dotted-string OIDs when parsing RFC4514 strings.
-  * PIV: Drop support for signing certificates and CSRs with SHA-1.
-  * FIDO: Credential management commands have been improved to deal with
-    ambiguity in certain cases.
-  * OATH: Access Keys ("remembered" passwords) are now stored in the system
-    keyring.
-  * OpenPGP: Commands have been added to manage PINs.
-- add keyring
+- Keep this version until version 5.0.0 or 
+  yubikey-manager-qt v1.2.4 and yubioath-desktop v5.1.0 was fixed
+- Some small .spec file fixes
 
 -------------------------------------------------------------------
-Thu Oct  6 13:10:53 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+Wed Oct  5 20:03:36 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to version 4.0.9 (released 2022-06-17)
   * Dependency: Add support for python-fido2 1.x

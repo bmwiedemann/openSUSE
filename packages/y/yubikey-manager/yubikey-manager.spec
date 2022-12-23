@@ -17,41 +17,38 @@
 
 
 Name:           yubikey-manager
-Version:        5.0.0
+Version:        4.0.9
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
 Group:          Productivity/Security
 URL:            https://developers.yubico.com/yubikey-manager/Releases
-Source0:        https://developers.yubico.com/yubikey-manager/Releases/yubikey_manager-%{version}.tar.gz
-Source1:        https://developers.yubico.com/yubikey-manager/Releases/yubikey_manager-%{version}.tar.gz.sig
-Source3:        yubikey-manager.keyring
+Source0:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%{version}.tar.gz
+Source1:        https://developers.yubico.com/yubikey-manager/Releases/%{name}-%{version}.tar.gz.sig
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  python3-click >= 8.0
+BuildRequires:  python3-click
 BuildRequires:  python3-cryptography >= 3.0
-BuildRequires:  python3-fido2 >= 1.0
-BuildRequires:  python3-keyring >= 23.4
-BuildRequires:  python3-makefun >= 1.9.5
+BuildRequires:  python3-fido2 >= 0.9
 BuildRequires:  python3-pip
+BuildRequires:  python3-pyscard
+BuildRequires:  python3-setuptools
 # TEST DEPENDENCIES
 BuildRequires:  python3-pyOpenSSL
-BuildRequires:  python3-pyscard >= 2.0
+BuildRequires:  python3-makefun >= 1.9.5
 BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
-Requires:       python3-click >= 8.0
-Requires:       python3-cryptography >= 3.0
-Requires:       python3-fido2 >= 1.0
-Requires:       python3-keyring >= 23.4
-Requires:       python3-pyscard >= 2.0
-Recommends:     python3-pyOpenSSL
-Provides:       python3-yubikey-manager
-BuildArch:      noarch
 %if 0%{?suse_version} <= 1540
 # dataclasses is required for tests if python < 3.7
 BuildRequires:  python3-dataclasses >= 0.8
 Requires:       python3-dataclasses >= 0.8
 %endif
+Requires:       python3-click
+Requires:       python3-cryptography
+Requires:       python3-fido2 >= 0.9
+Requires:       python3-pyscard
+Recommends:     python3-pyOpenSSL
+Provides:       python3-yubikey-manager
+BuildArch:      noarch
 
 %description
 Python 3 library and command line tool for configuring a YubiKey.
@@ -61,7 +58,7 @@ configuring several aspects of a YubiKey, including enabling or disabling
 connection transports an programming various types of credentials.
 
 %prep
-%autosetup -p1 -n yubikey_manager-%{version}
+%autosetup -p1
 
 %build
 %python3_build
@@ -78,7 +75,9 @@ python3 -m pytest
 %license COPYING*
 %doc NEWS*
 %{_bindir}/ykman
-%{python3_sitelib}
+%{python3_sitelib}/ykman
+%{python3_sitelib}/yubikey_manager-*.egg-info
+%{python3_sitelib}/yubikit
 %{_mandir}/man1/*
 
 %changelog
