@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Wed Dec 21 08:19:23 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 7.87.0: 
+  * Security fixes:
+    - CVE-2022-43551, bsc#1206308: another HSTS bypass via IDN
+    - CVE-2022-43552, bsc#1206309: HTTP Proxy deny use-after-free
+  * Changes
+    - curl: add --url-query
+    - CURLOPT_QUICK_EXIT: don't wait for DNS thread on exit
+    - lib: add CURL_WRITEFUNC_ERROR to signal write callback error
+    - openssl: reduce CA certificate bundle reparsing by caching
+    - version: add a feature names array to curl_version_info_data 
+  * Bugfixes
+    - altsvc: fix rejection of negative port numbers
+    - aws_sigv4: consult x-%s-content-sha256 for payload hash
+    - aws_sigv4: fix typos in aws_sigv4.c
+    - base64: better alloc size
+    - base64: encode without using snprintf
+    - base64: faster base64 decoding
+    - build: assume assert.h is always available
+    - build: assume errno.h is always available
+    - c-hyper: CONNECT respones are not server responses
+    - c-hyper: fix multi-request mechanism
+    - CI: Change FreeBSD image from 12.3 to 12.4
+    - CI: LGTM.com will be shut down in December 2022
+    - ci: Remove zuul fuzzing job as it's superseded by CIFuzz
+    - cmake: check for cross-compile, not for toolchain
+    - CMake: fix build with `CURL_USE_GSSAPI`
+    - cmake: really enable warnings with clang
+    - cmake: set the soname on the shared library
+    - cmdline-opts/gen.pl: fix the linkifier
+    - cmdline-opts/page-footer: remove long option nroff formatting
+    - config-mac: define HAVE_SYS_IOCTL_H
+    - config-mac: fix typo: size_T -> size_t
+    - config-mac: remove HAVE_SYS_SELECT_H
+    - config-win32: fix SIZEOF_OFF_T for MSVC and old MinGW
+    - configure: require fork for NTLM-WB
+    - contributors.sh: actually use $CURLWWW instead of just setting it
+    - cookie: compare cookie prefixes case insensitively
+    - cookie: expire cookies at once when max-age is negative
+    - cookie: open cookie jar as a binary file
+    - curl-openssl.m4: do not add $prefix/include/openssl to CPPFLAGS
+    - curl-rustls.m4: on macOS, rustls also needs the Security framework
+    - curl.h: include <sys/select.h> on SerenityOS
+    - curl.h: name all public function parameters
+    - curl.h: reword comment to not use deprecated option
+    - curl: override the numeric locale and set "C" by force
+    - curl: timeout in the read callback
+    - curl_endian: remove Curl_write64_le from header
+    - curl_get_line: allow last line without newline char
+    - curl_path: do not add '/' if homedir ends with one
+    - curl_url_get.3: remove spurious backtick
+    - curl_url_set.3: document CURLU_DISALLOW_USER
+    - curl_url_set.3: fix typo
+    - CURLMOPT_SOCKETFUNCTION.3: clarify CURL_POLL_REMOVE
+    - CURLOPT_COOKIEFILE.3: advice => advise
+    - CURLOPT_DEBUGFUNCTION.3: do not assume nul-termination in example
+    - CURLOPT_DEBUGFUNCTION.3: emphasize that incoming data is "raw"
+    - CURLOPT_POST.3: Explain setting to 0 changes request type
+    - docs/curl_ws_send: Fixed typo in websocket docs
+    - docs/EARLY-RELEASE.md: how to determine an early release
+    - docs/examples: spell correction ('Retrieve')
+    - docs/INSTALL.md: expand on static builds
+    - docs/WEBSOCKET.md: explain the URL use
+    - docs: add missing parameters for --retry flag
+    - docs: add more "SEE ALSO" links to CA related pages
+    - docs: explain the noproxy CIDR notation support
+    - docs: extend the dump-header documentation
+    - docs: remove performance note in CURLOPT_SSL_VERIFYPEER
+    - examples/10-at-a-time: fix possible skipped final transfers
+    - examples: update descriptions
+    - ftp: support growing files with CURLOPT_IGNORE_CONTENT_LENGTH
+    - gen.pl: do not generate CURLHELP bitmask lines > 79 characters
+    - GHA: clarify workflows permissions, set least possible privilege
+    - GHA: NSS use clang instead of clang-9
+    - gnutls: use common gnutls init and verify code for ngtcp2
+    - headers: add endif comments
+    - HTTP-COOKIES.md: mention that http://localhost is a secure context
+    - HTTP-COOKIES.md: update the 6265bis link to draft-11
+    - http: do not send PROXY more than once
+    - http: fix the ::1 comparison for IPv6 localhost for cookies
+    - http: set 'this_is_a_follow' in the Location: logic
+    - http: use the IDN decoded name in HSTS checks
+    - hyper: classify headers as CONNECT and 1XX
+    - hyper: fix handling of hyper_task's when reusing the same address
+    - idn: remove Curl_win32_ascii_to_idn
+    - INSTALL: update operating systems and CPU archs
+    - KNOWN_BUGS: remove eight entries
+    - lib1560: add some basic IDN host name tests
+    - lib: connection filters (cfilter) addition to curl:
+    - lib: feature deprecation warnings in gcc >= 4.3
+    - lib: fix some type mismatches and remove unneeded typecasts
+    - lib: parse numbers with fixed known base 10
+    - lib: remove bad set.opt_no_body assignments
+    - lib: rewind BEFORE request instead of AFTER previous
+    - lib: sync guard for Curl_getaddrinfo_ex() definition and use
+    - lib: use size_t or int etc instead of longs
+    - libcurl-errors.3: remove duplicate word
+    - libssh2: return error when ssh_hostkeyfunc returns error
+    - limit-rate.d: see also --rate
+    - log2changes.pl: wrap long lines at 80 columns
+    - Makefile.mk: address minor issues
+    - Makefile.mk: improve a GNU Make hack
+    - Makefile.mk: portable Makefile.m32
+    - maketgz: set the right version in lib/libcurl.plist
+    - mime: relax easy/mime structures binding
+    - misc: Fix incorrect spelling
+    - misc: remove duplicated include files
+    - misc: typo and grammar fixes
+    - negtelnetserver.py: have it call its close() method
+    - netrc.d: provide mutext info
+    - netware: remove leftover traces
+    - noproxy: also match with adjacent comma
+    - noproxy: guard against empty hostnames in noproxy check
+    - noproxy: tailmatch like in 7.85.0 and earlier
+    - nroff-scan.pl: detect double highlights
+    - ntlm: improve comment for encrypt_des
+    - ntlm: silence ubsan warning about copying from null target_info pointer
+    - openssl/mbedtls: use %d for outputing port with failf (int)
+    - openssl: prefix errors with '[lib]/[version]: '
+    - os400: use platform socklen_t in Curl_getnameinfo_a
+    - page-header: grammar improvement (display transfer rate)
+    - proxy: refactor haproxy protocol handling as connection filter
+    - README.md: remove badges and xmas-tree garnish
+    - rtsp: fix RTSP auth
+    - runtests: --no-debuginfod now disables DEBUGINFOD_URLS
+    - runtests: do CRLF replacements per section only
+    - scripts/checksrc.pl: detect duplicated include files
+    - sendf: change Curl_read_plain to wrap Curl_recv_plain
+    - sendf: remove unnecessary if condition
+    - setup: do not require __MRC__ defined for Mac OS 9 builds
+    - smb/telnet: do not free the protocol struct in *_done()
+    - socks: fix username max size is 255 (0xFF)
+    - spellcheck.words: remove 'github' as an accepted word
+    - ssl-reqd.d: clarify that this is for upgrading connections only
+    - strcase: use curl_str(n)equal for case insensitive matches
+    - styled-output.d: this option does not work on Windows
+    - system.h: fix socklen_t, curl_off_t, long long for Classic Mac OS
+    - system.h: support 64-bit curl_off_t for NonStop 32-bit
+    - test1421: fix typo
+    - test3026: reduce runtime in legacy mingw builds
+    - tests/sshserver.pl: re-enable ssh-rsa while using openssh 8.8+
+    - tests: add authorityInfoAccess to generated certs
+    - tests: add HTTP/3 test case, custom location for proper nghttpx
+    - tls: backends use connection filters for IO, enabling HTTPS-proxy
+    - tool: determine the correct fopen option for -D
+    - tool_cfgable: free the ssl_ec_curves on exit
+    - tool_cfgable: make socks5_gssapi_nec a boolean
+    - tool_formparse: avoid clobbering on function params
+    - tool_getparam: make --no-get work as the opposite of --get
+    - tool_operate: provide better errmsg for -G with bad URL
+    - tool_operate: when aborting, make sure there is a non-NULL error buffer
+    - tool_paramhlp: free the proto strings on exit
+    - url: move back the IDN conversion of proxy names
+    - urlapi: reject more bad letters from the host name: &+()
+    - urldata: change port num storage to int and unsigned short
+    - vms: remove SIZEOF_SHORT
+    - vtls: fix build without proxy support
+    - vtls: localization of state data in filters
+    - WEBSOCKET.md: fix broken link
+    - Websocket: fixes for partial frames and buffer updates
+    - websockets: fix handling of partial frames
+    - windows: fail early with a missing windres in autotools
+    - windows: fix linking .rc to shared curl with autotools
+    - winidn: drop WANT_IDN_PROTOTYPES
+    - ws: if no connection is around, return error
+    - ws: return CURLE_NOT_BUILT_IN when websockets not built in
+    - x509asn1: avoid freeing unallocated pointers 
+
+-------------------------------------------------------------------
 Wed Nov 16 03:09:27 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add 1.50.0 as the minimum libnghttp2 build requirement version as

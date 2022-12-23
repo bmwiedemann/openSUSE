@@ -7,11 +7,11 @@ To make it portable you have to test O_CLOEXEC support at *runtime*
 compile time is not enough.
 
 
-Index: curl-7.85.0/lib/file.c
+Index: curl-7.87.0/lib/file.c
 ===================================================================
---- curl-7.85.0.orig/lib/file.c
-+++ curl-7.85.0/lib/file.c
-@@ -222,7 +222,7 @@ static CURLcode file_connect(struct Curl
+--- curl-7.87.0.orig/lib/file.c
++++ curl-7.87.0/lib/file.c
+@@ -232,7 +232,7 @@ static CURLcode file_connect(struct Curl
      }
    }
    #else
@@ -20,7 +20,7 @@ Index: curl-7.85.0/lib/file.c
    file->path = real_path;
    #endif
  #endif
-@@ -307,7 +307,7 @@ static CURLcode file_upload(struct Curl_
+@@ -318,7 +318,7 @@ static CURLcode file_upload(struct Curl_
    else
      mode = MODE_DEFAULT|O_TRUNC;
  
@@ -29,10 +29,10 @@ Index: curl-7.85.0/lib/file.c
    if(fd < 0) {
      failf(data, "Can't open %s for writing", file->path);
      return CURLE_WRITE_ERROR;
-Index: curl-7.85.0/lib/if2ip.c
+Index: curl-7.87.0/lib/if2ip.c
 ===================================================================
---- curl-7.85.0.orig/lib/if2ip.c
-+++ curl-7.85.0/lib/if2ip.c
+--- curl-7.87.0.orig/lib/if2ip.c
++++ curl-7.87.0/lib/if2ip.c
 @@ -206,7 +206,7 @@ if2ip_result_t Curl_if2ip(int af,
    if(len >= sizeof(req.ifr_name))
      return IF2IP_NOT_FOUND;
@@ -42,11 +42,11 @@ Index: curl-7.85.0/lib/if2ip.c
    if(CURL_SOCKET_BAD == dummy)
      return IF2IP_NOT_FOUND;
  
-Index: curl-7.85.0/lib/connect.c
+Index: curl-7.87.0/lib/connect.c
 ===================================================================
---- curl-7.85.0.orig/lib/connect.c
-+++ curl-7.85.0/lib/connect.c
-@@ -1651,7 +1651,9 @@ CURLcode Curl_socket(struct Curl_easy *d
+--- curl-7.87.0.orig/lib/connect.c
++++ curl-7.87.0/lib/connect.c
+@@ -1559,7 +1559,9 @@ CURLcode Curl_socket(struct Curl_easy *d
    }
    else
      /* opensocket callback not set, so simply create the socket now */
@@ -57,11 +57,11 @@ Index: curl-7.85.0/lib/connect.c
  
    if(*sockfd == CURL_SOCKET_BAD)
      /* no socket, no connection */
-Index: curl-7.85.0/configure.ac
+Index: curl-7.87.0/configure.ac
 ===================================================================
---- curl-7.85.0.orig/configure.ac
-+++ curl-7.85.0/configure.ac
-@@ -335,6 +335,8 @@ AC_DEFINE_UNQUOTED(OS, "${host}", [cpu-m
+--- curl-7.87.0.orig/configure.ac
++++ curl-7.87.0/configure.ac
+@@ -347,6 +347,8 @@ AC_DEFINE_UNQUOTED(OS, "${host}", [cpu-m
  # Silence warning: ar: 'u' modifier ignored since 'D' is the default
  AC_SUBST(AR_FLAGS, [cr])
  
@@ -70,20 +70,19 @@ Index: curl-7.85.0/configure.ac
  dnl This defines _ALL_SOURCE for AIX
  CURL_CHECK_AIX_ALL_SOURCE
  
-Index: curl-7.85.0/lib/hostip.c
+Index: curl-7.87.0/lib/hostip.c
 ===================================================================
---- curl-7.85.0.orig/lib/hostip.c
-+++ curl-7.85.0/lib/hostip.c
-@@ -51,7 +51,7 @@
- #ifdef HAVE_PROCESS_H
- #include <process.h>
+--- curl-7.87.0.orig/lib/hostip.c
++++ curl-7.87.0/lib/hostip.c
+@@ -48,6 +48,7 @@
+ #include <signal.h>
  #endif
--
+ 
 +#include <fcntl.h>
  #include "urldata.h"
  #include "sendf.h"
  #include "hostip.h"
-@@ -551,7 +551,7 @@ bool Curl_ipv6works(struct Curl_easy *da
+@@ -576,7 +577,7 @@ bool Curl_ipv6works(struct Curl_easy *da
    else {
      int ipv6_works = -1;
      /* probe to see if we have a working IPv6 stack */
