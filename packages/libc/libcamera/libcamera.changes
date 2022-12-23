@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Dec 21 08:13:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.0.3:
+  Core:
+   * Fix tracing when built as a subproject
+   * Avoid double map lookups in framebuffer_allocator
+   * Workaround faulty control menus
+   * controls: Change LensPosition units to dioptres
+   * camera_sensor: Add IMX519 sensor properties
+   * Documentation: contributing: Add commit message guidelines
+   * Declare generic converter interface
+  utils:
+   * Add libtuning
+   * Add initial libtuning script support for rkisp1 and raspberrypi.
+   * checkstyle.py: Check new header file on new and renamed meson.build files
+  ipa:
+   * Move IPA sensor controls validation to CameraSensor (IPU3/RKISP1)
+  rkisp1:
+   * Support FrameDurationLimits control for FrameRate management
+   * Support raw capture (IPA, configuration, and runtime)
+   * Add support for manual gain and exposure
+   * Fix stream size validation
+   * Add additional default values to controls
+  imx8-isi:
+   * Enumerate supported stream formats
+   * Set SensorTimestamp metadata
+  Raspberry Pi:
+   * Remove generic "pause" mechanism from Algorithm
+   - Remove enum BuffferMask from the mojom interface
+   - Fix digital gain calculations for manual mode
+   - Fix bug in IPA frame drop logic
+   - imx477: Update tuning file for the latest camera modules
+   - Add a "scientific" tuning for the IMX477
+  Apps:
+   - cam: kms: Avoid 'unused-parameter' warnings
+   - cam: Support parsing array controls in capture scripts
+   - gstreamer: Improve control id lookups
+   - lc-compliance: simple_capture: Free Requests properly
+  python:
+   - Support controls that use an array of Rectangles
+   - Expose the Request Sequence Number in Python Bindings
+
+-------------------------------------------------------------------
 Tue Oct 18 10:15:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.0.1:

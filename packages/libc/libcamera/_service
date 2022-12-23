@@ -3,7 +3,7 @@
 	<service name="obs_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">git://linuxtv.org/libcamera</param>
-		<param name="revision">refs/tags/v0.0.1</param>
+		<param name="revision">refs/tags/v0.0.3</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v([0-9\.]*)</param>
 		<param name="changesgenerate">enable</param>

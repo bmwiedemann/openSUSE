@@ -16,10 +16,10 @@
 #
 
 
-%define lname       libcamera0_0_1
-%define lname_base  libcamera-base0_0_1
+%define lname       libcamera0_0_3
+%define lname_base  libcamera-base0_0_3
 Name:           libcamera
-Version:        0.0.1
+Version:        0.0.3
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
