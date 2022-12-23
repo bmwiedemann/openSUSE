@@ -110,13 +110,14 @@ Patch46:        openssh-whitelist-syscalls.patch
 Patch47:        openssh-8.4p1-vendordir.patch
 Patch48:        openssh-8.4p1-pam_motd.patch
 Patch49:        openssh-do-not-send-empty-message.patch
+Patch50:        openssh-openssl-3.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
 BuildRequires:  libedit-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  openldap2-devel
-BuildRequires:  pkgconfig(openssl) < 3
+BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel

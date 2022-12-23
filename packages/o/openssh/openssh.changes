@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 19 15:41:26 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Adapt OpenSSH to build with OpenSSL 3, use new KDF API (bsc#1205042)
+  Add openssh-openssl-3.patch
+
+-------------------------------------------------------------------
 Thu Dec 15 16:35:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - limit to openssl < 3.0 as this version is not compatible (bsc#1205042)
