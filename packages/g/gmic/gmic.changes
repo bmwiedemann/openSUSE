@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 19 15:49:41 UTC 2022 - pgajdos@suse.com
+
+- GraphicsMagick is not required for build [bsc#1206620]
+
+-------------------------------------------------------------------
 Mon Sep 26 07:35:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use opencv 4 for building gmic on 15.4 and PowerPC

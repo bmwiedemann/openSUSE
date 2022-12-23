@@ -279,4 +279,12 @@
     <comment>- Use opencv 4 for building gmic on 15.4 and PowerPC</comment>
     <requestid>1006005</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d30493ae10f303efee98650a4fb56459</srcmd5>
+    <version>3.1.6</version>
+    <time>1671787298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044323</requestid>
+  </revision>
 </revisionlist>
