@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.5.11
+Version:        4.5.12
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -207,6 +207,9 @@ done
 
 %dir %{yast_moduledir}
 %{yast_moduledir}/AutoinstClass.rb
+
+%dir %{_datadir}/autoinstall/xslt
+%{_datadir}/autoinstall/xslt/*_types.xslt
 
 %{yast_icondir}
 

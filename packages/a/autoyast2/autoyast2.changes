@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 21 14:19:22 UTC 2022 - Ladislav Slezák <lslezak@suse.com>
+
+- Added XSLT transformation for easy conversion of the data types in the
+  AutoYaST XML profiles between the old and the new format. This allows to
+  convert a new profile to the format accepted in SLE15-SP2 or older
+  (bsc#1206597)
+- 4.5.12
+
+-------------------------------------------------------------------
 Thu Dec  1 09:36:51 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Avoid a potential crash when autoinst.ycp file is empty or

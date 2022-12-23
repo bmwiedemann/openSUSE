@@ -2610,4 +2610,12 @@
     <comment>new versions </comment>
     <requestid>1039522</requestid>
   </revision>
+  <revision rev="331" vrev="1">
+    <srcmd5>f5144f0267a6166ff9ea22f9a322cfe1</srcmd5>
+    <version>4.5.12</version>
+    <time>1671787248</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.12</comment>
+    <requestid>1044092</requestid>
+  </revision>
 </revisionlist>
