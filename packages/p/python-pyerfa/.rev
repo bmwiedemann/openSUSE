@@ -68,4 +68,15 @@
     <comment></comment>
     <requestid>894407</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>afd915d52f3f2f994c652bc17ab74e4b</srcmd5>
+    <version>2.0.0.1</version>
+    <time>1671787280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0.1
+  * The underlying universal functions in erfa.ufunc now work with
+    an out argument also if the required output is a structured
+    array. [gh-76] (forwarded request 1044286 from bnavigator)</comment>
+    <requestid>1044287</requestid>
+  </revision>
 </revisionlist>

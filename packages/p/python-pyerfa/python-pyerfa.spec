@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyerfa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,31 +22,31 @@
 %else
 %bcond_without systemlibs
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 %define erfaversion 2.0.0
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-pyerfa
-Version:        2.0.0
+Version:        2.0.0.1
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
 URL:            https://github.com/liberfa/pyerfa
 Source:         https://files.pythonhosted.org/packages/source/p/pyerfa/pyerfa-%{version}.tar.gz
-BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.16}
+BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if %{with systemlibs}
 BuildRequires:  pkgconfig(erfa) >= %{erfaversion}
 %endif
-Requires:       python-numpy >= 1.16
+Requires:       python-numpy >= 1.17
 %python_subpackages
 
 %description
@@ -64,18 +64,20 @@ context of Astropy project, into a standalone package.
 %if %{with systemlibs}
 rm -rf liberfa/
 %endif
+# numpy 1.24 has some new xpass ufunc tests -- https://github.com/liberfa/pyerfa/issues/99
+sed -i '/xfail_strict = true/d' setup.cfg
 
 %build
 %if %{with systemlibs}
 export PYERFA_USE_SYSTEM_LIBERFA=1
 %endif
-%python_build
+%pyproject_wheel
 
 %install
 %if %{with systemlibs}
 export PYERFA_USE_SYSTEM_LIBERFA=1
 %endif
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -86,8 +88,12 @@ export PYERFA_USE_SYSTEM_LIBERFA=1
 %pytest_arch --pyargs erfa %{?skip_embedded_test}
 
 %files %{python_files}
-%license LICENSE.rst licenses/ERFA.rst
+%doc README.rst
+%license LICENSE.rst
+%if !%{with systemlibs}
+%license licenses/ERFA.rst
+%endif
 %{python_sitearch}/erfa
-%{python_sitearch}/pyerfa-%{version}-py*.egg-info
+%{python_sitearch}/pyerfa-%{version}.dist-info
 
 %changelog
