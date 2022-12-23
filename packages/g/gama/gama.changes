@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 22 12:53:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23:
+  * Fixed the bug in gama-local reading sqlite3 database.  The bug was
+    introduced after version 2.10 when testing shell scripts were
+    updated to be generated from templates .sh_ files (testing
+    templates .sh_ use symbolic names like @INPUT_FILES@ or $RES etc).
+  * More readeable output format in check_xml_coordinates.cpp test.
+
+-------------------------------------------------------------------
 Sun Sep  4 08:42:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Gama 2.22:
