@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-filelock
 Version:        3.8.2
 Release:        0
@@ -56,6 +55,7 @@ inter-process communication.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/filelock
+%{python_sitelib}/filelock-%{version}*-info
 
 %changelog
