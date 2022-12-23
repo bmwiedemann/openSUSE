@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 20 08:06:29 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.6.1
+  * Remote content did not load in user-defined signatures
+  * Addons that added new action buttons were not shown for addon
+    upgrades, requiring removal and reinstall
+  * Various stability improvements
+  MFSA 2022-54
+  * CVE-2022-46874 (bmo#1746139)
+    Drag and Dropped Filenames could have been truncated to
+    malicious extensions
+
+-------------------------------------------------------------------
 Tue Dec 13 13:49:09 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.6.0
