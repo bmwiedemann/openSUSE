@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 21 08:41:46 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
+
+- Update to 3.2.0:
+  * Use soon-to-be-required Authorization header for RH bugzilla
+  * Remove cookie auth support
+  * Detect bugzilla.stage.redhat.com as RHBugzilla
+  * Add limit as option to build_query
+- Modified:
+  * 106-basic-auth.diff
+
+-------------------------------------------------------------------
 Tue Oct 26 10:25:23 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix problem with basic-auth patch for version higher than 3.0.0 (bsc#1098219)

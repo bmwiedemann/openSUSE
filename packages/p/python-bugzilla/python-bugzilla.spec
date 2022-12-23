@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzilla
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %define skip_python2 1
 Name:           python-bugzilla
-Version:        3.0.2
+Version:        3.2.0
 Release:        0
 Summary:        Python library for Bugzilla
 License:        GPL-2.0-or-later
@@ -74,10 +73,9 @@ export CFLAGS="%{optflags}"
 %python_uninstall_alternative bugzilla
 
 %check
-%python_expand py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %python_alternative %{_bindir}/bugzilla
 %python_alternative %{_mandir}/man1/bugzilla.1%{ext_man}
 %{python_sitelib}/bugzilla

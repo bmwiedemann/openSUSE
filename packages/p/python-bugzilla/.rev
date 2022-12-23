@@ -285,4 +285,18 @@
     <comment></comment>
     <requestid>927546</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bc7fe9d13ae92d213802a3ee5c4f9403</srcmd5>
+    <version>3.2.0</version>
+    <time>1671787247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Use soon-to-be-required Authorization header for RH bugzilla
+  * Remove cookie auth support
+  * Detect bugzilla.stage.redhat.com as RHBugzilla
+  * Add limit as option to build_query
+- Modified:
+  * 106-basic-auth.diff</comment>
+    <requestid>1044082</requestid>
+  </revision>
 </revisionlist>
