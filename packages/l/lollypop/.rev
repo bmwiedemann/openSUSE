@@ -1834,4 +1834,15 @@
 </comment>
     <requestid>1035714</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>3cef646f143c7a58a3dcc6075fa75380</srcmd5>
+    <version>1.4.37</version>
+    <time>1671787299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.37:
+  * Bug fixes (glgo#World/lollypop#2970, glgo#World/lollypop#2957,
+    glgo#World/lollypop#2779).
+- Remove lollypop-1.4.36-libsoup3.patch: Fixed upstream.</comment>
+    <requestid>1044329</requestid>
+  </revision>
 </revisionlist>

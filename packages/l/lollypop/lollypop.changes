@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 22 19:24:24 UTC 2022 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.37:
+  * Bug fixes (glgo#World/lollypop#2970, glgo#World/lollypop#2957,
+    glgo#World/lollypop#2779).
+- Remove lollypop-1.4.36-libsoup3.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Nov 14 16:07:59 UTC 2022 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.36:

@@ -17,15 +17,13 @@
 
 
 Name:           lollypop
-Version:        1.4.36
+Version:        1.4.37
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://wiki.gnome.org/Apps/Lollypop
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM lollypop-1.4.36-libsoup3.patch -- glgo#World/lollypop#2959
-Patch0:         lollypop-1.4.36-libsoup3.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool
 BuildRequires:  itstool

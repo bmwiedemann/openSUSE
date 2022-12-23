@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="changesgenerate">enable</param>
-    <param name="revision">1.4.36</param>
+    <param name="revision">1.4.37</param>
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/World/lollypop.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
