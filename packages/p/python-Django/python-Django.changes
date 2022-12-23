@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 21 09:39:56 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Recommends python-pymemcache instead of the deprecated
+  python-python-memcached. This is the module used in Django since 3.2
+  https://docs.djangoproject.com/en/3.2/releases/3.2/#pymemcache-support
+
+-------------------------------------------------------------------
 Tue Dec  6 13:30:53 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.1.4

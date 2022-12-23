@@ -1013,4 +1013,15 @@
     <comment></comment>
     <requestid>1040694</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>add734efb1a14605028e7902a6a184bc</srcmd5>
+    <version>4.1.4</version>
+    <time>1671787245</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommends python-pymemcache instead of the deprecated
+  python-python-memcached. This is the module used in Django since 3.2
+  https://docs.djangoproject.com/en/3.2/releases/3.2/#pymemcache-support
+</comment>
+    <requestid>1044061</requestid>
+  </revision>
 </revisionlist>

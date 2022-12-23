@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 # Selenium and memcached are not operational
@@ -69,7 +68,7 @@ Recommends:     python-Jinja2 >= 2.9.2
 Recommends:     python-PyYAML
 Recommends:     python-geoip2
 Recommends:     python-pylibmc
-Recommends:     python-python-memcached >= 1.59
+Recommends:     python-pymemcache
 Provides:       python-django = %{version}
 Obsoletes:      python-django < %{version}
 Provides:       python-South = %{version}
@@ -77,7 +76,7 @@ Obsoletes:      python-South < %{version}
 BuildArch:      noarch
 %if %{with memcached}
 BuildRequires:  %{python_module pylibmc}
-BuildRequires:  %{python_module python-memcached >= 1.59}
+BuildRequires:  %{python_module pymemcache}
 %endif
 %if %{with selenium}
 # python-selenium is supported only on the Intel architecture.
@@ -104,8 +103,7 @@ echo "`grep -e '^[0-9a-f]\{32\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 echo "`grep -e '^[0-9a-f]\{40\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-40`  %{SOURCE0}" | sha1sum -c
 echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-64`  %{SOURCE0}" | sha256sum -c
 
-%setup -q -n Django-%{version}
-%autopatch -p1
+%autosetup -p1 -n Django-%{version}
 
 %build
 %python_build
