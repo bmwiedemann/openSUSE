@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Dec 22 15:05:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.0
+  ## General
+  * Following NEP 29, the minimum required Numpy is now 1.20.
+    [#1442]
+  * The minimum required Matplotlib is now 3.3.0. [#1442]
+  * The minimum required scikit-image is now 0.18.0. [#1442]
+  * The minimum required scikit-learn is now 1.0. [#1442]
+  ## New Features
+  ### photutils.aperture
+  * The ApertureStats class now accepts astropy NDData objects as
+    input. [#1409]
+  * Improved the performance of aperture photometry by 10-25%
+    (depending on the number of aperture positions). [#1438]
+  ### photutils.psf
+  * Added a progress bar for fitting PSF photometry [#1426]
+  * Added a subshape keyword to the PSF-fitting classes to define
+    the shape over which the PSF is subtracted. [#1477]
+  ### photutils.segmentation
+  * Added the ability to slice SegmentationImage objects. [#1413]
+  * Added mode and fill_value keywords to SourceCatalog
+    make_cutouts method. [#1420]
+  * Added segment_area source property and wcs, localbkg_width,
+    apermask_method, and kron_params attributes to SourceCatalog.
+    [#1425]
+  * Added the ability to use Quantity arrays with detect_threshold,
+    detect_sources, deblend_sources, and SourceFinder. [#1436]
+  * The progress bar used when deblending sources now is prepended
+    with “Deblending”. [#1439]
+  * Added “windowed” centroids to SourceCatalog. [#1447, #1468]
+  * Added quadratic centroids to SourceCatalog. [#1467, #1469]
+  * Added a progress_bar option to SourceCatalog for displaying
+    progress bars when calculating some source properties. [#1471]
+  ### photutils.utils
+  * Added xyorigin attribute to CutoutImage. [#1419]
+  * Added ImageDepth class. [#1434]
+  ## Bug Fixes
+  ### photutils.aperture
+  * Fixed a bug in the PixelAperture area_overlap method so that
+    the returned value does not inherit the data units. [#1408]
+  * Fixed an issue in ApertureStats get_ids for the case when the
+    ID numbers are not sorted (due to slicing). [#1423]
+  ### photutils.datasets
+  * Fixed a bug in the various load functions where FITS files were
+    not closed. [#1455]
+  ### photutils.segmentation
+  * Fixed an issue in the SourceCatalog kron_photometry,
+    make_kron_apertures, and plot_kron_apertures methods where the
+    input minimum Kron and circular radii would not be applied.
+    Instead the instance-level minima would always be used. [#1421]
+  * Fixed an issue where the SourceCatalog plot_kron_apertures
+    method would raise an error for a scalar SourceCatalog. [#1421]
+  * Fixed an issue in SourceCatalog get_labels for the case when
+    the labels are not sorted (due to slicing). [#1423]
+  ## API Changes
+  * Deprecated axes keyword in favor of ax for consistency with
+    other packages. [#1432]
+  * Importing tools from all subpackages now requires including the
+    subpackage name.
+  ### photutils.aperture
+  * Inputting PixelAperture positions as an Astropy Quantity in
+    pixel units is no longer allowed. [#1398]
+  * Inputting SkyAperture shape parameters as an Astropy Quantity
+    in pixel units is no longer allowed. [#1398]
+  * Removed the deprecated BoundingBox as_patch method. [#1462]
+  ### photutils.centroids
+  * Removed the deprecated oversampling keyword in centroid_com.
+    [#1398]
+  ### photutils.datasets
+  * Deprecated the load_fermi_image function. [#1455]
+  ### photutils.psf
+  * Removed the deprecated flux_residual_sigclip keyword in
+    EPSFBuilder. Use sigma_clip instead. [#1398]
+  * PSF photometry classes will no longer emit a RuntimeWarning if
+    the fitted parameter variance is negative. [#1458]
+  ### photutils.segmentation
+  * Removed the deprecated sigclip_sigma and sigclip_iters keywords
+    in detect_threshold. Use the sigma_clip keyword instead.
+    [#1398]
+  * Removed the mask_value, sigclip_sigma, and sigclip_iters
+    keywords in detect_threshold. Use the mask or sigma_clip
+    keywords instead. [#1398]
+  * Removed the deprecated the filter_fwhm and filter_size keywords
+    in make_source_mask. Use the kernel keyword instead. [#1398]
+  * If detection_cat is input to SourceCatalog, then the detection
+    catalog source centroids and morphological/shape properties
+    will be returned instead of calculating them from the input
+    data. Also, if detection_cat is input, then the input wcs,
+    apermask_method, and kron_params keywords will be ignored.
+    [#1425]
+- Add photutils-pr1484-no-setuptools.patch
+  gh#astropy/photutils#1484
+
+-------------------------------------------------------------------
 Mon Aug  1 17:22:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.0

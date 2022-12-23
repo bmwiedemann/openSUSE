@@ -1,0 +1,21 @@
+From a7e777279e0b44423cb5a7e641641fcfcb59d2da Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Thu, 22 Dec 2022 16:16:38 +0100
+Subject: [PATCH] remove setuptools from install_requires
+
+---
+ setup.cfg | 1 -
+ 1 file changed, 1 deletion(-)
+
+Index: photutils-1.6.0/setup.cfg
+===================================================================
+--- photutils-1.6.0.orig/setup.cfg
++++ photutils-1.6.0/setup.cfg
+@@ -27,7 +27,6 @@ packages = find:
+ python_requires = >=3.8
+ setup_requires = setuptools_scm
+ install_requires = 
+-	setuptools
+ 	numpy>=1.20
+ 	astropy>=5.0
+ 
