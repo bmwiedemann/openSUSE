@@ -126,10 +126,9 @@ unsorted:
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
-  - MozillaFirefox-branding-openSUSE: [i586] 
   - MozillaFirefox-branding-upstream: [x86_64] 
-  - MozillaFirefox-devel: [x86_64] # devel package of dvd:MozillaFirefox-translations-common 
-  - MozillaFirefox-translations-other: [x86_64] 
+  - MozillaFirefox-devel 
+  - MozillaFirefox-translations-other 
   - MozillaThunderbird 
   - MozillaThunderbird-translations-common 
   - MozillaThunderbird-translations-other 
@@ -1671,7 +1670,6 @@ unsorted:
   - busybox-vlan 
   - busybox-warewulf3 
   - busybox-wget 
-  - busybox-which 
   - busybox-whois 
   - butane 
   - buzztrax 
@@ -1717,6 +1715,7 @@ unsorted:
   - cadabra2-gui 
   - caddy 
   - cadsondemak-fonts 
+  - cadvisor 
   - caffeine 
   - cage 
   - cairo-clock 
@@ -1819,7 +1818,6 @@ unsorted:
   - cargo-packaging 
   - cargo1.62 
   - cargo1.63 
-  - cargo1.64 
   - cargo1.65 
   - cargo1.66 
   - caribou 
@@ -3391,13 +3389,21 @@ unsorted:
   - elementary-xfce-icon-theme 
   - elftoaout 
   - elfutils-debuginfod 
-  - elinks: [x86_64] 
+  - elinks 
   - elisa 
   - elisa-lang 
   - elixir 
   - elixir-doc 
   - elixir-ex_doc 
   - elixir-hex 
+  - elk 
+  - elk-data 
+  - elk-openmpi1 
+  - elk-openmpi2 
+  - elk-openmpi3 
+  - elk-openmpi4 
+  - elk-openmpi5 
+  - elk-utils 
   - ell-devel 
   - elua 
   - emacs-auctex 
@@ -3592,6 +3598,7 @@ unsorted:
   - exfatprogs 
   - exif 
   - exiftran 
+  - exim: [i586] 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -6073,7 +6080,6 @@ unsorted:
   - gnome-boxes 
   - gnome-boxes-lang 
   - gnome-branding-MicroOS: [i586] 
-  - gnome-browser-connector: [i586] 
   - gnome-builder 
   - gnome-builder-lang 
   - gnome-calculator-devel 
@@ -6516,6 +6522,8 @@ unsorted:
   - gramps-lang 
   - granatier 
   - granatier-lang 
+  - grandorgue 
+  - grandorgue-demo 
   - granite-common 
   - granite-demo 
   - granite-devel 
@@ -8526,7 +8534,6 @@ unsorted:
   - kmime-devel 
   - kmix 
   - kmix-lang 
-  - kmozillahelper: [i586] 
   - kmscon 
   - kmscube 
   - kmymoney 
@@ -10361,10 +10368,10 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_0_1-32bit: [x86_64] 
+  - libcamera-base0_0_3-32bit: [x86_64] 
   - libcamera-devel 
   - libcamera-tools 
-  - libcamera0_0_1-32bit: [x86_64] 
+  - libcamera0_0_3-32bit: [x86_64] 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk3-0-32bit: [x86_64] 
@@ -12379,7 +12386,7 @@ unsorted:
   - liblttng-ust-python-agent1 
   - liblttng-ust1: [i586] 
   - liblttoolbox3 
-  - liblua5_1-5: [x86_64] 
+  - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
   - liblua5_4-5-32bit: [x86_64] 
@@ -14297,6 +14304,7 @@ unsorted:
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
+  - libspf2-2: [i586] 
   - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
@@ -21012,8 +21020,6 @@ unsorted:
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
   - plasma-branding-MicroOS: [i586] 
-  - plasma-browser-integration: [i586] 
-  - plasma-browser-integration-lang: [i586] 
   - plasma-framework-devel 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
@@ -22037,7 +22043,6 @@ unsorted:
   - python3-libguestfs: [x86_64] 
   - python3-libixion 
   - python3-libmodulemd 
-  - python3-libmount 
   - python3-libnbd 
   - python3-libnvme 
   - python3-liborcus 
@@ -23875,6 +23880,7 @@ unsorted:
   - python310-liblnk 
   - python310-libluksde 
   - python310-libmodi 
+  - python310-libmount 
   - python310-libmsiecf 
   - python310-libmsym 
   - python310-libnacl 
@@ -27197,6 +27203,7 @@ unsorted:
   - python38-liblnk 
   - python38-libluksde 
   - python38-libmodi 
+  - python38-libmount 
   - python38-libmsiecf 
   - python38-libmsym 
   - python38-libnacl 
@@ -30567,6 +30574,7 @@ unsorted:
   - python39-liblnk 
   - python39-libluksde 
   - python39-libmodi 
+  - python39-libmount 
   - python39-libmsiecf 
   - python39-libmsym 
   - python39-libnacl 
@@ -33222,6 +33230,7 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
+  - ruby3.1-rubygem-d-installer-cli 
   - ruby3.1-rubygem-gettext_i18n_rails_js 
   - ruby3.1-rubygem-grpc 
   - ruby3.1-rubygem-rails-7.0 
@@ -33240,7 +33249,6 @@ unsorted:
   - rust-srpm-macros 
   - rust1.62 
   - rust1.63 
-  - rust1.64 
   - rust1.65 
   - rust1.66 
   - rustscan 
