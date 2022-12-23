@@ -1559,4 +1559,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1671724926</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="218" vrev="216">
+    <srcmd5>791db4e0c16b6994ef327b618daa5cac</srcmd5>
+    <version>unknown</version>
+    <time>1671790013</time>
+    <user>dimstar_suse</user>
+    <comment>Firefox on i586 backj in shape</comment>
+  </revision>
 </revisionlist>
