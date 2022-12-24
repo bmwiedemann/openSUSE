@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 23 10:37:35 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20221223.d9e4a50:
+  * Bump to 2.7.0.
+  * Fix build error with LLVM 16.
+  * enable debuginfo in CMAKE_CXX_FLAGS_RELWITHDEBINFO build type
+  * Remove extra symlink in LLVM nightly build.
+
+-------------------------------------------------------------------
 Tue Dec 20 09:49:33 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Start using mold linker.

@@ -971,4 +971,16 @@
     <comment>- Start using mold linker.</comment>
     <requestid>1043883</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3b83516508f911c42e27eecef9fdab28</srcmd5>
+    <version>2.7.0+git.20221223.d9e4a50</version>
+    <time>1671889905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git.20221223.d9e4a50:
+  * Bump to 2.7.0.
+  * Fix build error with LLVM 16.
+  * enable debuginfo in CMAKE_CXX_FLAGS_RELWITHDEBINFO build type
+  * Remove extra symlink in LLVM nightly build.</comment>
+    <requestid>1044734</requestid>
+  </revision>
 </revisionlist>
