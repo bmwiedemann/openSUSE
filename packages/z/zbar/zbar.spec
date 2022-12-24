@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,7 +31,7 @@ Source98:       baselibs.conf
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(GraphicsMagick)
+BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
