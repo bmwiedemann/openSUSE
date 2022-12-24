@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 23 17:30:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.0
+  * Added ability to detect if another instance of the application
+    is running and self terminate if so.
+  * Added more verbose debug logging.
+
+-------------------------------------------------------------------
 Mon Nov 28 17:54:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2
