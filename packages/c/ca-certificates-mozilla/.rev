@@ -683,4 +683,31 @@
   the %ghost'ed directory proper mode attributes. (forwarded request 1000216 from dimstar)</comment>
     <requestid>1000222</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>7a66a1b5b9424f3a678035ac44af35f4</srcmd5>
+    <version>2.60</version>
+    <time>1671889854</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.60 state of Mozilla SSL root CAs (bsc#1206622)
+  Removed CAs:
+  - Global Chambersign Root
+  - EC-ACC
+  - Network Solutions Certificate Authority
+  - Staat der Nederlanden EV Root CA
+  - SwissSign Platinum CA - G2
+  Added CAs:
+  - DIGITALSIGN GLOBAL ROOT ECDSA CA
+  - DIGITALSIGN GLOBAL ROOT RSA CA
+  - Security Communication ECC RootCA1
+  - Security Communication RootCA3
+  Changed trust:
+  - TrustCor certificates only trusted up to Nov 30 (bsc#1206212)
+- Removed CAs (bsc#1206212) as most code does not handle &quot;valid before nov 30 2022&quot;
+  and it is not clear how many certs were issued for SSL middleware by TrustCor:
+  - TrustCor RootCert CA-1
+  - TrustCor RootCert CA-2
+  - TrustCor ECA-1
+  Patch: remove-trustcor.patch (forwarded request 1044253 from msmeissn)</comment>
+    <requestid>1044255</requestid>
+  </revision>
 </revisionlist>

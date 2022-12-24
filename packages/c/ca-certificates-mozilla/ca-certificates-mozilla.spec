@@ -37,7 +37,7 @@
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
 # http://hg.mozilla.org/projects/nss/file/default/lib/ckfw/builtins/nssckbi.h
-Version:        2.56
+Version:        2.60
 Release:        0
 Summary:        CA certificates for OpenSSL
 License:        MPL-2.0
@@ -59,6 +59,7 @@ Source1:        https://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/bu
 Source10:       certdata2pem.py
 Source11:       %{name}.COPYING
 Source12:       compareoldnew
+Patch0:         remove-trustcor.patch
 BuildRequires:  ca-certificates
 BuildRequires:  openssl
 BuildRequires:  p11-kit-devel
@@ -82,7 +83,10 @@ from MozillaFirefox
 %setup -qcT
 
 mkdir certs
-ln -s %{SOURCE0} certs
+cp %{SOURCE0} certs
+cd certs
+%patch0 -p0
+cd ..
 
 install -m 644 %{SOURCE11} COPYING
 ver=`sed -ne '/NSS_BUILTINS_LIBRARY_VERSION /s/.*"\(.*\)"/\1/p' < "%{SOURCE1}"`

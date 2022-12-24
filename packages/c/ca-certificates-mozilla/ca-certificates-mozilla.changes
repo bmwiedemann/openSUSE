@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Dec 22 10:38:47 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.60 state of Mozilla SSL root CAs (bsc#1206622)
+  Removed CAs:
+  - Global Chambersign Root
+  - EC-ACC
+  - Network Solutions Certificate Authority
+  - Staat der Nederlanden EV Root CA
+  - SwissSign Platinum CA - G2
+
+  Added CAs:
+  - DIGITALSIGN GLOBAL ROOT ECDSA CA
+  - DIGITALSIGN GLOBAL ROOT RSA CA
+  - Security Communication ECC RootCA1
+  - Security Communication RootCA3
+
+  Changed trust:
+  - TrustCor certificates only trusted up to Nov 30 (bsc#1206212)
+
+- Removed CAs (bsc#1206212) as most code does not handle "valid before nov 30 2022"
+  and it is not clear how many certs were issued for SSL middleware by TrustCor:
+  - TrustCor RootCert CA-1
+  - TrustCor RootCert CA-2
+  - TrustCor ECA-1
+  Patch: remove-trustcor.patch
+
+-------------------------------------------------------------------
 Mon Aug 29 11:46:01 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.56 state of Mozilla SSL root CAs (bsc#1202868)
