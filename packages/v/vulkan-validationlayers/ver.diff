@@ -4,15 +4,14 @@ Date: 2020-08-19 13:21:33.156157310 +0200
 We do not want static archives in openSUSE, so need to turn on SHARED mode.
 As a result, a version needs to be added.
 ---
- CMakeLists.txt           |    3 ++-
- layers/vk_layer_config.h |    2 +-
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ CMakeLists.txt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: Vulkan-ValidationLayers-1.3.224/CMakeLists.txt
+Index: Vulkan-ValidationLayers-sdk-1.3.236.0/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-1.3.224.orig/CMakeLists.txt
-+++ Vulkan-ValidationLayers-1.3.224/CMakeLists.txt
-@@ -338,11 +338,12 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/s
+--- Vulkan-ValidationLayers-sdk-1.3.236.0.orig/CMakeLists.txt
++++ Vulkan-ValidationLayers-sdk-1.3.236.0/CMakeLists.txt
+@@ -255,11 +255,12 @@ endif()
  # files directly in layers.
  
  add_library(VkLayer_utils
@@ -24,5 +23,5 @@ Index: Vulkan-ValidationLayers-1.3.224/CMakeLists.txt
              layers/generated/vk_format_utils.cpp)
 +set_target_properties(VkLayer_utils PROPERTIES OUTPUT_NAME "VkLayer_utils-@PACKAGE_VERSION@")
  target_link_libraries(VkLayer_utils PUBLIC Vulkan::Headers)
- set_target_properties(VkLayer_utils PROPERTIES CXX_STANDARD ${VVL_CPP_STANDARD})
  if (VVL_ENABLE_ASAN)
+     target_compile_options(VkLayer_utils PRIVATE -fsanitize=address)

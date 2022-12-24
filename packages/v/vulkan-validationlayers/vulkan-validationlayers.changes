@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 23 08:14:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.236.0
+  * Validate acquire and release full screen exclusive
+  * Validate image barrier access layout combinations
+  * Validate creating image view with video image usage
+  * Validate viewportCount with extended dynamic state
+  * Validate EndRenderPass with transform feedback
+  * Validate copy image usage
+  * Add validation for mesh shader extension, VK_EXT_mesh_shader
+    and VK_EXT_descriptor_buffer
+
+-------------------------------------------------------------------
 Mon Oct 24 19:25:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.231.0
