@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Dec 22 13:33:56 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 4.13
+  + Bugfixes
+    o Bug 760274 - The Statusbar "forgets" when register doesn't 
+      have focus
+    o Bug 798545 - Crash when updating document link on vendor bill
+    o Bug 798614 - Croatia to join the Euro
+    o Bug 798629 - gnucash crashes attempting to import OFX file
+    o Bug 798633 - 4.12 build failure on 32-bit Linux: "No code for 
+      module"
+    o Bug 798640 - Segfault when running saved report
+    o Bug 798649 - Crash when closing Edit Style Sheets dialog while 
+      Style Sheet Properties dialog is still open.
+    o Bug 798653 - Schedule Calendar event description pop up window
+      does not track mouse position
+    o Bug 798657 - Import Summary language is wrong
+    o Bug 798664 - Result of 'gnucash --nofile' is marked dirty
+    o Bug 798669 - Multicolumn Balance Sheet not printing exchange 
+      rates
+    o Bug 798672 - Preferences are not saved nor loaded, ERROR 
+      <GLib-GIO> g_settings_new_full: assertion 'schema != NULL'
+      failed
+    o Bug 798680 - Not able to match a reverse transaction of a 
+      previously matched transaction.
+    o Bug 798681 - Previously imported investment income transactions 
+      may not be filtered.
+    o Bug 798694 - Cursor in the wrong place after pasting with 
+      auto-completion
+  + Enhancements
+    o Include equity accounts in the exchange rate commodities list.
+    o Don't normalize text when pasting from the clipboard or 
+      appending descriptions or notes during imports.
+    o [register] Delay post-ime reset of the selection to work 
+      around bug 798587.
+    o [ofx import] Clean up importing investment transactions for 
+      smoother workflow and better UI behavior.
+    o [account-piecharts] drill-down piechart: tree-depth is at 
+      most 6
+    o Fix numerous memory leaks.
+    o [ifrs-report] From Bug 798004 allow Cr cash to offset Dr fee
+      and remove invalid "dividend reinvestment" during short.
+    o [gtest-qofevent.cpp] Add comprehensive tests for qofevent
+    o [test-qofbook] Test that gnc_features_test_unknown returns 
+      a suitable error message
+    o [test-qofbook.c] add test for gnc_features_set_unused
+    o [gnc-features.cpp] backport gnc_features_set_unused from master
+    o [qofbook.cpp] backport qof_book_unset_feature from master
+    o Moove gnc-euro.[ch] to engine and unit test it.
+    o [test-qofbook] basic features test: Sets a feature and tests 
+      it's set. it's impossible to design a book with unknown 
+      features using the API.
+    o po/README: Remove relics from ancient context forms
+    o [test-ifrs-cost-basis] amend tests to accommodate extra column.
+    o [ifrs-cost-basis] compare register vs calculated capgain per
+      transaction.
+    o Accomodate WebKit package version update to webkit2gtk-4.1.
+    o [assistant-stock-transaction] input positive capgains for 
+      Credit income account.
+
+-------------------------------------------------------------------
 Sat Oct  1 09:27:07 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 4.12

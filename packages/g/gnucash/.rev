@@ -969,4 +969,12 @@
     <comment></comment>
     <requestid>1012060</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>8da9157157f4f14b3fce9e7bf1e883ba</srcmd5>
+    <version>4.13</version>
+    <time>1671889927</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.13</comment>
+    <requestid>1045063</requestid>
+  </revision>
 </revisionlist>
