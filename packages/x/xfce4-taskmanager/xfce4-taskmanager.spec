@@ -17,17 +17,17 @@
 
 
 Name:           xfce4-taskmanager
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Simple Taskmanager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://docs.xfce.org/apps/xfce4-taskmanager
-Source:         https://archive.xfce.org/src/apps/%{name}/1.4/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/%{name}/1.5/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.2.0
+BuildRequires:  pkgconfig(cairo) >= 1.5.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.2
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.14

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 22 16:33:11 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.5
+  * Bump requirements for Xfce 4.18
+  * Stick process view at the top in the absence of user action
+  * Get rid of GtkHeaderBar
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue May 31 19:32:09 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 1.5.4
