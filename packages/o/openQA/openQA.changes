@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 24 02:16:48 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1671708203.c9f8b10:
+  * Dependency cron 2022-12-22
+  * codecov.yml: Introduce specific coverage thresholds
+  * codecov: Remove redundant duplication of default values and range
+  * Avoid jobs from being stuck in state "running"
+
+-------------------------------------------------------------------
 Wed Dec 21 12:20:52 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1671625243.c73687c:
