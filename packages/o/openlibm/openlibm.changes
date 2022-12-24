@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 22 14:13:19 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.8.1:
+  * Fix sqrt function on i387
+  * Fix incorrect results in `hypotl` near underflow
+  * Export `fenv` functions on all platforms 
+- add linker flags to prevent executable stack 
+
+-------------------------------------------------------------------
 Wed Sep 29 22:16:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Exclude riscv64 arch; source currently does not support it.

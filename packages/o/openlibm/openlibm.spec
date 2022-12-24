@@ -1,7 +1,7 @@
 #
 # spec file for package openlibm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define so_ver  3
+%define so_ver  4
 %define libname lib%{name}%{so_ver}
 Name:           openlibm
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        Standalone C mathematical library
 License:        BSD-2-Clause AND MIT
@@ -68,6 +68,7 @@ that use OpenLIBM.
 %make_build \
      FFLAGS="%{optflags}" \
      CFLAGS="%{optflags}" \
+     LDFLAGS="-Wl,-z,noexecstack" \
 %ifarch armv6hl
      MARCH="armv6" \
 %endif
