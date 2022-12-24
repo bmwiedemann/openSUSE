@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-treebeard
 Version:        4.5.1
@@ -26,13 +25,17 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/django-treebeard/django-treebeard/
 Source:         https://files.pythonhosted.org/packages/source/d/django-treebeard/django-treebeard-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM update-tests.patch gh#django-treebeard/django-treebeard#241 mcepl@suse.com
+# update tests to work with the modern versions of libraries
+Patch0:         update-tests.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module pytest-django >= 4.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -47,16 +50,15 @@ for the Django Web Framework:
 - Nested Sets
 
 %prep
-%setup -q -n django-treebeard-%{version}
-%autopatch -p1
+%autosetup -p1 -n django-treebeard-%{version}
 
 sed -i 's/\r//' CHANGES.md README.md UPDATING
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/treebeard/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -74,14 +76,14 @@ EOF
 
 export DJANGO_SETTINGS_MODULE=treebeard.tests.settings
 PYTHONPATH=.
-# Exclusions because of gh#django-treebeard/django-treebeard#241
-%pytest -k 'not (test_result_filtered or test_result_tree or test_result_tree_list or test_result_tree_list_with_action or test_result_tree_list_with_get or test_unicode_result_tree)'
+%pytest
 
 %python_expand rm -r %{buildroot}%{$python_sitelib}/treebeard/tests/
 
 %files %{python_files}
 %doc CHANGES.md README.md UPDATING
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/treebeard
+%{python_sitelib}/django_treebeard-%{version}*-info
 
 %changelog

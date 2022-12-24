@@ -54,4 +54,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>974530</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>0bf18e3fc581a25d7aabe5024e59ec5e</srcmd5>
+    <version>4.5.1</version>
+    <time>1671889952</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-tests.patch to fix
+  gh#django-treebeard/django-treebeard#241.
+</comment>
+    <requestid>1045177</requestid>
+  </revision>
 </revisionlist>

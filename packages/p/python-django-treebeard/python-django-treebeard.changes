@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 24 08:35:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add update-tests.patch to fix
+  gh#django-treebeard/django-treebeard#241.
+
+-------------------------------------------------------------------
 Tue Apr 26 06:43:39 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - do not require pytest-pythonpath, it gets obsolete with pytest7
