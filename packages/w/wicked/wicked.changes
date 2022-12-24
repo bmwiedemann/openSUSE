@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 21 16:15:11 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.6.71
+- dhcp: enable raw-ip support for wwan-qmi interfaces (jsc#PED-90)
+- schema: fix the ip rule to-selector to handle network prefixes
+
+-------------------------------------------------------------------
 Mon Dec 12 07:23:12 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - spec: Add /etc/sysconfig/network to file list, no longer
@@ -24,7 +31,7 @@ Thu Oct 20 14:36:21 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 - client: Add release options to ifdown/ifreload (jsc#SLE-10249)
 - dbus: Clear string array before append (gh#openSUSE/wicked#913)
 - socket: Fix SEGV on heavy socket restart errors (bsc#1192508)
-- systemd: Remove systemd-udev-settle dependency (bsc#1186787) 
+- systemd: Remove systemd-udev-settle dependency (bsc#1186787)
 
 -------------------------------------------------------------------
 Wed Apr 13 11:43:38 UTC 2022 - Marius Tomaschewski <mt@suse.com>

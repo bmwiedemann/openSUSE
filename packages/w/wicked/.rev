@@ -1682,4 +1682,16 @@
   (https://github.com/openSUSE/wicked/pull/939).</comment>
     <requestid>1042275</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>6bfa15681f0c31a833fc1a5182316b34</srcmd5>
+    <version>0.6.71</version>
+    <time>1671889849</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.71
+- dhcp: enable raw-ip support for wwan-qmi interfaces (jsc#PED-90)
+- schema: fix the ip rule to-selector to handle network prefixes
+
+- systemd: Remove systemd-udev-settle dependency (bsc#1186787)</comment>
+    <requestid>1044104</requestid>
+  </revision>
 </revisionlist>
