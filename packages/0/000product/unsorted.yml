@@ -6602,7 +6602,6 @@ unsorted:
   - gsequencer 
   - gsequencer-devel 
   - gsequencer-devel-doc 
-  - gsettings-backend-dconf-32bit: [x86_64] 
   - gsettings-desktop-schemas-devel 
   - gsettings-qt 
   - gsettings-qt-devel 
@@ -9654,7 +9653,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of common_locks:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-2022_4-32bit: [x86_64] 
+  - libSPIRV-Tools-2022_4_sdk236-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -9680,7 +9679,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_231_0 
+  - libVkLayer_utils-1_3_236_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -10753,7 +10752,6 @@ unsorted:
   - libdc1394-devel 
   - libdc1394-tools 
   - libdcmtk17 
-  - libdconf1-32bit: [x86_64] 
   - libddccontrol0 
   - libddcutil-devel 
   - libddcutil4 
@@ -11400,7 +11398,6 @@ unsorted:
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
   - libgit2 
-  - libgit2-1_5-32bit: [x86_64] 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -13045,7 +13042,7 @@ unsorted:
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
-  - libopenlibm3 
+  - libopenlibm4 
   - libopenmpi1-gnu-hpc 
   - libopenmpi2-gnu-hpc 
   - libopenmpi3-gnu-hpc 
@@ -14325,7 +14322,7 @@ unsorted:
   - libspooles2_2-openmpi2 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_39_2-0 
+  - libsqlcipher-3_39_4-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -21015,6 +21012,7 @@ unsorted:
   - plank-theme-adapta 
   - plank-theme-elementary 
   - plank-theme-matcha 
+  - plantri 
   - plantuml 
   - plantuml-javadoc 
   - plasma-applet-weather-widget 
@@ -23664,6 +23662,7 @@ unsorted:
   - python310-imread 
   - python310-imreg 
   - python310-infinity 
+  - python310-inflate64 
   - python310-inflect 
   - python310-inflection 
   - python310-influxdb: [x86_64] 
@@ -24046,6 +24045,7 @@ unsorted:
   - python310-multi_key_dict 
   - python310-multidict 
   - python310-multipledispatch 
+  - python310-multivolumefile 
   - python310-munch 
   - python310-munkres 
   - python310-musicbrainzngs 
@@ -24389,6 +24389,7 @@ unsorted:
   - python310-pyaml 
   - python310-pyannotate 
   - python310-pybars3 
+  - python310-pybcj 
   - python310-pybeam 
   - python310-pybind11 
   - python310-pybind11-devel 
@@ -24523,6 +24524,7 @@ unsorted:
   - python310-pypipegraph 
   - python310-pypiserver 
   - python310-pypng 
+  - python310-pyppmd 
   - python310-pyprel 
   - python310-pyprimes 
   - python310-pyproj 
@@ -24782,6 +24784,7 @@ unsorted:
   - python310-pyyaml_env_tag 
   - python310-pyzmq-devel 
   - python310-pyzo 
+  - python310-pyzstd 
   - python310-q 
   - python310-qcs-api-client 
   - python310-qet_tb_generator 
@@ -26985,6 +26988,7 @@ unsorted:
   - python38-imreg 
   - python38-incremental 
   - python38-infinity 
+  - python38-inflate64 
   - python38-inflect 
   - python38-inflection 
   - python38-influxdb: [x86_64] 
@@ -27373,6 +27377,7 @@ unsorted:
   - python38-multi_key_dict 
   - python38-multidict 
   - python38-multipledispatch 
+  - python38-multivolumefile 
   - python38-munch 
   - python38-munkres 
   - python38-musicbrainzngs 
@@ -27730,6 +27735,7 @@ unsorted:
   - python38-pyasn1 
   - python38-pyasn1-modules 
   - python38-pybars3 
+  - python38-pybcj 
   - python38-pybeam 
   - python38-pybind11 
   - python38-pybind11-devel 
@@ -27872,6 +27878,7 @@ unsorted:
   - python38-pypipegraph 
   - python38-pypiserver 
   - python38-pypng 
+  - python38-pyppmd 
   - python38-pyprel 
   - python38-pyprimes 
   - python38-pyproj 
@@ -28136,6 +28143,7 @@ unsorted:
   - python38-pyzmq 
   - python38-pyzmq-devel 
   - python38-pyzo 
+  - python38-pyzstd 
   - python38-q 
   - python38-qcs-api-client 
   - python38-qet_tb_generator 
@@ -30356,6 +30364,7 @@ unsorted:
   - python39-imreg 
   - python39-incremental 
   - python39-infinity 
+  - python39-inflate64 
   - python39-inflect 
   - python39-inflection 
   - python39-influxdb: [x86_64] 
@@ -30745,6 +30754,7 @@ unsorted:
   - python39-multi_key_dict 
   - python39-multidict 
   - python39-multipledispatch 
+  - python39-multivolumefile 
   - python39-munch 
   - python39-munkres 
   - python39-musicbrainzngs 
@@ -31104,6 +31114,7 @@ unsorted:
   - python39-pyasn1 
   - python39-pyasn1-modules 
   - python39-pybars3 
+  - python39-pybcj 
   - python39-pybeam 
   - python39-pybind11 
   - python39-pybind11-devel 
@@ -31246,6 +31257,7 @@ unsorted:
   - python39-pypipegraph 
   - python39-pypiserver 
   - python39-pypng 
+  - python39-pyppmd 
   - python39-pyprel 
   - python39-pyprimes 
   - python39-pyproj 
@@ -31509,6 +31521,7 @@ unsorted:
   - python39-pyzmq 
   - python39-pyzmq-devel 
   - python39-pyzo 
+  - python39-pyzstd 
   - python39-q 
   - python39-qcs-api-client 
   - python39-qet_tb_generator 
