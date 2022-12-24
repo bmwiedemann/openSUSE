@@ -1,13 +1,17 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">git://github.com/slavfox/Cozette.git</param>
+    <param name="url">https://github.com/slavfox/Cozette.git</param>
     <param name="scm">git</param>
-    <param name="revision">c45933d</param>
-    <param name="versionprefix">1.9.3+git</param>
-    <param name="versionformat">%ct.%h</param>
+    <param name="revision">6fda7d9</param>
+    <param name="match-tag">v.1.19.0</param>
+    <param name="versionrewrite-pattern">v.(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

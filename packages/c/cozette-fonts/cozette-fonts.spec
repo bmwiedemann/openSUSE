@@ -1,7 +1,7 @@
 #
 # spec file for package cozette-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %define fontname    Cozette
-%define fontversion    1.9.3
 Name:           cozette-fonts
-Version:        1.9.3+git.1606064809.c45933d
+Version:        1.19.0
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
 Group:          System/X11/Fonts
 URL:            https://github.com/slavfox/Cozette
 Source0:        Cozette-%{version}.tar.xz
-Source1:        %{url}/releases/download/v.%{fontversion}/CozetteVector.otf
+Source1:        https://github.com/slavfox/Cozette/releases/download/v.%{version}/CozetteVector.otf
 BuildRequires:  %{suseconfig_fonts_prereq}
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
@@ -37,7 +36,7 @@ A bitmap font with great coverage of all the glyphs
 that might encounter in the terminal.
 
 %prep
-%setup -q -n %{fontname}-%{version} 
+%setup -q -n %{fontname}-%{version}
 
 %build
 
