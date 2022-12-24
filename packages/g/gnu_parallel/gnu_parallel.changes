@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 23 11:35:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221222
+  * --results works on more file systems (e.g. fat)
+  * Joblog gives the same exit code as bash
+
+-------------------------------------------------------------------
 Thu Nov 24 00:00:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20221122
