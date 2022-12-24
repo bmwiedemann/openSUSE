@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 24 12:27:06 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Use generic-rv64 cpu on riscv64
+
+-------------------------------------------------------------------
 Mon Dec  5 13:43:13 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to version 3.1

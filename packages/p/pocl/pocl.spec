@@ -100,6 +100,9 @@ This subpackage provides the development files needed for pocl.
 %ifarch aarch64
   -DLLC_HOST_CPU=cortex-a53 \
 %endif
+%ifarch riscv64
+  -DLLC_HOST_CPU=generic-rv64 \
+%endif
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
   -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 %endif
