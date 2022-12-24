@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 22 16:23:43 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 10.5.3
+  Changelog: https://foss.heptapod.net/mercurial/evolve/-/blob/10.5.3/CHANGELOG
+- Temporarily blacklist test-cmdserver.t
+
+-------------------------------------------------------------------
 Tue Jul 19 12:34:38 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 10.5.2

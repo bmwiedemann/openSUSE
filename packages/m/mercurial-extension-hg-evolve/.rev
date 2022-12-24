@@ -23,4 +23,14 @@
     <comment>Update to version 10.5.2 (forwarded request 990251 from develop7)</comment>
     <requestid>990252</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>83dbd2a4e01441ac2a32a153277143f8</srcmd5>
+    <version>10.5.3</version>
+    <time>1671889918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.3
+  Changelog: https://foss.heptapod.net/mercurial/evolve/-/blob/10.5.3/CHANGELOG
+- Temporarily blacklist test-cmdserver.t (forwarded request 1045019 from develop7)</comment>
+    <requestid>1045020</requestid>
+  </revision>
 </revisionlist>
