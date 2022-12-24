@@ -70,7 +70,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.38.2
+Version:        2.38.3
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -83,8 +83,6 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
 Patch0:         no-forced-sse.patch
-# PATCH-FIX-UPSTREAM b7ac5d0c.patch dimstar@opensuse.org -- Fix build with Ruby 3.2
-Patch1:         https://github.com/WebKit/WebKit/commit/b7ac5d0c.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
