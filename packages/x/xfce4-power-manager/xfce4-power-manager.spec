@@ -19,15 +19,14 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.16.0
+Version:        4.18.0
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-power-manager/start
-Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.16/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.18/%{name}-%{version}.tar.bz2
 Source1:        xfce4-power-manager.xml
-Patch0:         inhibit_dpms.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -35,21 +34,22 @@ BuildRequires:  libxslt-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.50
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.50
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
+BuildRequires:  pkgconfig(libnotify) >= 0.4.1
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
-BuildRequires:  pkgconfig(libxfconf-0)
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.100
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrandr) >= 1.2.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Dec 22 14:01:48 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Bump requirements for Xfce 4.18
+  * Translation Updates
+- Remove inhibit_dpms.patch
+
+- Update to version 4.17.1
+  * Bump copyright year to 2022
+  * Do not include `config.h` in headers
+  * autoconf: Use AC_CONFIG_MACRO_DIRS
+
+- Update to version 4.17.0
+  * Allocate dynamic memory to `what` so that it can be `g_free`d later
+  * Connect to polkit signal via GDBusProxy generic signal
+  * Do not log a warning about expected behavior
+  * Fix compilation warnings
+  * Fix icon name in autostart launcher
+  * Fix intltool lock file bug in make distcheck
+  * Fix memory corruption due to incorrect g_ptr_array usage
+  * Fix memory leak and make `while` more efficient
+  * Fix missing-prototypes
+  * Fix va_args usage in get_device_icon_name
+  * Free `eggalarm` after its last use
+  * Increase sleep timeout to 6hrs (gxo#xfce/xfce4-settings#80)
+  * Inhibit DPMS when getting power inhibit request.
+  * Lower minimum inactivity to 5 minutes
+  * Remove GSourceFunc casts
+  * Remove a floating reference
+  * Revert "Lower minimum inactivity to 5 minutes"
+  * Translation Updates
+  * automake: Enable subdir-objects
+  * backlight: always update notification
+  * panel-plugin: Switch percentage and time
+  * remove unused variable show_presentation_indicator
+  * settings: Revert type hint change
+
+-------------------------------------------------------------------
 Mon Aug  8 12:41:26 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add requirement to pkexec for brightness control (boo#1202125)
