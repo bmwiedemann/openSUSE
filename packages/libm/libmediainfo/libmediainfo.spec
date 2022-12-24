@@ -19,7 +19,7 @@
 
 %define sover	0
 Name:           libmediainfo
-Version:        22.09
+Version:        22.12
 Release:        0
 Summary:        Library for supplying technical and tag information about a video or audio file
 License:        BSD-2-Clause
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmms)
-BuildRequires:  pkgconfig(libzen) >= 0.4.37
+BuildRequires:  pkgconfig(libzen) >= 0.4.40
 BuildRequires:  pkgconfig(zlib)
 
 %description
