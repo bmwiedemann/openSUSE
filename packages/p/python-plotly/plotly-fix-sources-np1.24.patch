@@ -1,0 +1,81 @@
+Index: plotly.py-5.11.0/packages/python/plotly/plotly/figure_factory/_streamline.py
+===================================================================
+--- plotly.py-5.11.0.orig/packages/python/plotly/plotly/figure_factory/_streamline.py
++++ plotly.py-5.11.0/packages/python/plotly/plotly/figure_factory/_streamline.py
+@@ -180,11 +180,11 @@ class _Streamline(object):
+         Set up for RK4 function, based on Bokeh's streamline code
+         """
+         if isinstance(xi, np.ndarray):
+-            self.x = xi.astype(np.int)
+-            self.y = yi.astype(np.int)
++            self.x = xi.astype(int)
++            self.y = yi.astype(int)
+         else:
+-            self.val_x = np.int(xi)
+-            self.val_y = np.int(yi)
++            self.val_x = int(xi)
++            self.val_y = int(yi)
+         a00 = a[self.val_y, self.val_x]
+         a01 = a[self.val_y, self.val_x + 1]
+         a10 = a[self.val_y + 1, self.val_x]
+Index: plotly.py-5.11.0/packages/python/plotly/plotly/express/imshow_utils.py
+===================================================================
+--- plotly.py-5.11.0.orig/packages/python/plotly/plotly/express/imshow_utils.py
++++ plotly.py-5.11.0/packages/python/plotly/plotly/express/imshow_utils.py
+@@ -21,7 +21,6 @@ _integer_types = (
+ _integer_ranges = {t: (np.iinfo(t).min, np.iinfo(t).max) for t in _integer_types}
+ dtype_range = {
+     np.bool_: (False, True),
+-    np.bool8: (False, True),
+     np.float16: (-1, 1),
+     np.float32: (-1, 1),
+     np.float64: (-1, 1),
+Index: plotly.py-5.11.0/packages/python/plotly/plotly/figure_factory/_violin.py
+===================================================================
+--- plotly.py-5.11.0.orig/packages/python/plotly/plotly/figure_factory/_violin.py
++++ plotly.py-5.11.0/packages/python/plotly/plotly/figure_factory/_violin.py
+@@ -16,7 +16,7 @@ def calc_stats(data):
+     """
+     Calculate statistics for use in violin plot.
+     """
+-    x = np.asarray(data, np.float)
++    x = np.asarray(data, float)
+     vals_min = np.min(x)
+     vals_max = np.max(x)
+     q2 = np.percentile(x, 50, interpolation="linear")
+@@ -160,7 +160,7 @@ def violinplot(vals, fillcolor="#1f77b4"
+     """
+     Refer to FigureFactory.create_violin() for docstring.
+     """
+-    vals = np.asarray(vals, np.float)
++    vals = np.asarray(vals, float)
+     #  summary statistics
+     vals_min = calc_stats(vals)["min"]
+     vals_max = calc_stats(vals)["max"]
+@@ -231,7 +231,7 @@ def violin_no_colorscale(
+     )
+     color_index = 0
+     for k, gr in enumerate(group_name):
+-        vals = np.asarray(gb.get_group(gr)[data_header], np.float)
++        vals = np.asarray(gb.get_group(gr)[data_header], float)
+         if color_index >= len(colors):
+             color_index = 0
+         plot_data, plot_xrange = violinplot(
+@@ -319,7 +319,7 @@ def violin_colorscale(
+     min_value = min(group_stats_values)
+ 
+     for k, gr in enumerate(group_name):
+-        vals = np.asarray(gb.get_group(gr)[data_header], np.float)
++        vals = np.asarray(gb.get_group(gr)[data_header], float)
+ 
+         # find intermediate color from colorscale
+         intermed = (group_stats[gr] - min_value) / (max_value - min_value)
+@@ -411,7 +411,7 @@ def violin_dict(
+     )
+ 
+     for k, gr in enumerate(group_name):
+-        vals = np.asarray(gb.get_group(gr)[data_header], np.float)
++        vals = np.asarray(gb.get_group(gr)[data_header], float)
+         plot_data, plot_xrange = violinplot(vals, fillcolor=colors[gr], rugplot=rugplot)
+         layout = graph_objs.Layout()
+ 

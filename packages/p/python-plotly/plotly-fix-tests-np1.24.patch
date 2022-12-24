@@ -1,0 +1,50 @@
+Index: plotly.py-5.11.0/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py
+===================================================================
+--- plotly.py-5.11.0.orig/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py
++++ plotly.py-5.11.0/packages/python/plotly/plotly/tests/test_optional/test_px/test_imshow.py
+@@ -9,7 +9,7 @@ import datetime
+ from plotly.express.imshow_utils import rescale_intensity
+ 
+ img_rgb = np.array([[[255, 0, 0], [0, 255, 0], [0, 0, 255]]], dtype=np.uint8)
+-img_gray = np.arange(100, dtype=np.float).reshape((10, 10))
++img_gray = np.arange(100, dtype=float).reshape((10, 10))
+ 
+ 
+ def decode_image_string(image_string):
+@@ -47,7 +47,7 @@ def test_automatic_zmax_from_dtype():
+     dtypes_dict = {
+         np.uint8: 2**8 - 1,
+         np.uint16: 2**16 - 1,
+-        np.float: 1,
++        float: 1,
+         bool: 255,
+     }
+     for key, val in dtypes_dict.items():
+Index: plotly.py-5.11.0/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py
+===================================================================
+--- plotly.py-5.11.0.orig/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py
++++ plotly.py-5.11.0/packages/python/plotly/_plotly_utils/tests/validators/test_integer_validator.py
+@@ -58,7 +58,7 @@ def test_acceptance_min_max(val, validat
+ 
+ 
+ @pytest.mark.parametrize(
+-    "val", [-1.01, -10, 2.1, 3, np.iinfo(np.int).max, np.iinfo(np.int).min]
++    "val", [-1.01, -10, 2.1, 3, np.iinfo(int).max, np.iinfo(int).min]
+ )
+ def test_rejection_min_max(val, validator_min_max):
+     with pytest.raises(ValueError) as validation_failure:
+Index: plotly.py-5.11.0/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
+===================================================================
+--- plotly.py-5.11.0.orig/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
++++ plotly.py-5.11.0/packages/python/plotly/plotly/tests/test_optional/test_utils/test_utils.py
+@@ -414,8 +414,8 @@ class TestNumpyIntegerBaseType(TestCase)
+         import plotly.graph_objects as go
+         from plotly.subplots import make_subplots
+ 
+-        indices_rows = np.array([1], dtype=np.int)
+-        indices_cols = np.array([1], dtype=np.int)
++        indices_rows = np.array([1], dtype=int)
++        indices_cols = np.array([1], dtype=int)
+         fig = make_subplots(rows=1, cols=1)
+         fig.add_trace(go.Scatter(y=[1]), row=indices_rows[0], col=indices_cols[0])
+ 

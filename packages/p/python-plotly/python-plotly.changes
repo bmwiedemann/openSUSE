@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 24 12:18:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.11.0
+  * Add clustering options to scattermapbox [#5827], with thanks to
+    @elben10 for the contribution!
+  * Add bounds to mapbox suplots [6339]
+  * Add angle, angleref and standoff to marker and add backoff to
+    line; also introduce new arrow symbols to facilitate drawing
+    networks [#6297]
+  * Add minreducedwidth and minreducedheight to layout for
+    increasing control over automargin [#6307]
+  * Add entrywidth and entrywidthmode to legend [#6202, #6324]
+- Add patches for compatibility with numpy 1.24
+  * plotly-fix-sources-np1.24.patch
+  * plotly-fix-tests-np1.24.patch
+
+-------------------------------------------------------------------
 Sun Aug 14 14:43:43 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.10.0:
