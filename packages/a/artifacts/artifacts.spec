@@ -30,7 +30,10 @@ Source1:        https://github.com/ForensicArtifacts/artifacts/releases/download
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
+# security:forensics is now only supporting python 3.7 or newer
+BuildRequires:  python3-setuptools > 3.7
+BuildRequires:  python3-packaging > 3.7
+BuildRequires:  %{python_module base >= 3.7}
 BuildArch:      noarch
 
 %description

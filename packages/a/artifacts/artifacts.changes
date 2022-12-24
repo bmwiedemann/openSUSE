@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 16 17:15:35 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- Portions of the libyal family of forensic modules now require python 3.7 or newer. Update spec file as follows
+  - # security:forensics is now only supporting python 3.7 or newer
+  - BuildRequires:  python3-setuptools > 3.7
+  - BuildRequires:  python3-packaging > 3.7
+  - BuildRequires:  %{python_module base >= 3.7}
+
+-------------------------------------------------------------------
 Wed Jun  1 22:33:10 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 -update to v20220429 
