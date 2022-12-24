@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/sharkdp/hyperfine.git</param>
-    <param name="revision">c7e5694</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">4fe8db41a4bd151ad54908762fba635d25ef230b</param>
+    <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
@@ -20,8 +20,6 @@
      <param name="srcdir">hyperfine</param>
      <param name="compression">xz</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">hyperfine</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
 

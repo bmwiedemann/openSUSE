@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 16 13:23:53 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.15.0+g27:
+  * Bump serde_json from 1.0.87 to 1.0.89
+  * Bump once_cell from 1.15.0 to 1.16.0
+  * Update README.md
+  * Improve hints for outlier warnings
+  * remove unneeded var
+  * remove unneeded var
+  * bump msrv to 1.60.0
+  * chore: run fmt
+  * use wrap_help
+  * update to clap 4
+  * use set and settrue
+  * add clap deprecation notices
+  * Bump thiserror from 1.0.35 to 1.0.37
+  * Bump libc from 0.2.133 to 0.2.137
+  * Update CHANGELOG
+  * Fixes #568
+  * Default to $TERM unset = colour on Win32
+  * Revert to prev. sentence
+  * Fix Shell functions and aliases sexion in README
+  * Move information to CITATION.cff file
+  * got names wrong way around :p
+  * Update README.md
+  * Add citing guide, as per issue #566
+  * Fix typo in unit test.
+  * Update indicatif
+  * Updates for indicatif 0.17
+  * Bump indicatif from 0.16.2 to 0.17.0
+
+-------------------------------------------------------------------
 Sat Sep 24 11:58:21 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 1.15.0:
