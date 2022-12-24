@@ -18,12 +18,12 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.33.0
+Version:        0.34.4
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        README.suse-maint.md
@@ -82,7 +82,7 @@ Zsh command-line completion support for %{name}.
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 # Remove prebuilt binaries
-rm assets/plugins/*
+rm -v zellij-utils/assets/plugins/*
 
 %build
 # First rebuilt plugins we just deleted
@@ -101,7 +101,7 @@ cargo --offline build --release --target=wasm32-wasi
 popd
 
 # Move the results to the place they are expected
-mv target/wasm32-wasi/release/*.wasm assets/plugins/
+mv -v target/wasm32-wasi/release/*.wasm zellij-utils/assets/plugins/
 
 # Build zellij proper
 %{cargo_build} --features unstable

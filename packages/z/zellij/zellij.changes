@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec 17 06:21:27 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.34.4:
+  * Fix application crash when resizing with flexible plugin panes in layout
+  * Allow the SHELL variable to contain non-absolute shell paths (e.g. SHELL=sh instead of SHELL=/bin/sh
+
+-------------------------------------------------------------------
+Sun Dec 11 04:13:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.34.3:
+  * Performance: both loading and rendering are significantly faster now and take less HW resources
+  * Loading screen: Zellij now has a minor loading screen (0.5 seconds) before it starts. This is so 
+    that input from STDIN will not be lost while Zellij queries the user's terminal emulator for 
+    pixel/cell ratio and the default colors
+  * We now fall back to /bin/sh if we can't find a $SHELL variable
+  * Users can now directionally decrease pane size and not just increase it - by default these are 
+    bound to HJKL (uppercase letter) in resize mode, but can be bound like anything to other keys.
+  * Lots of stability and bug fixes
+  * BREAKING CHANGES:
+    - performance: change plugin data flow to improve render speed
+    - performance: various render pipeline improvements
+  * Fixes:
+    - server on longer crashes on client crash
+    - preserve pane focus properly when closing panes and switching tabs
+    - missing tokyo-night-dark theme
+- plugin assets are now moved to zellij-utils/assets/plugins. updated specfile accordingly
+
+-------------------------------------------------------------------
 Thu Nov 17 02:24:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update specfile
