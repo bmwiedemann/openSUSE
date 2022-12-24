@@ -1572,4 +1572,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - Update to 5.43 due to Dirk</comment>
     <requestid>1003495</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>2db0e91b9e202105bcefe1e6c3809c5f</srcmd5>
+    <version>5.43</version>
+    <time>1671889847</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1044315</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  findutils
 BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 Requires:       libmagic1
 Provides:       python-file-magic = %{file_magic_version}
 %{expand:%(sed -n -e '/^Source0\?:/,/^BuildRoot:/p' <%{_sourcedir}/file.spec)}

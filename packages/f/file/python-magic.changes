@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to pkgconfig(zlib) so that alternative providers can be
+  used
+
+-------------------------------------------------------------------
 Wed Sep 14 09:00:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 5.43 due to Dirk
