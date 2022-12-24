@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 24 08:26:56 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.13.6
+  * minor bugfixes and improved documentation
+  * Patch release with improved compatibility with ExtendScript
+  * Patch release to address WebPack module federation issue
+  * Patch to add exports.require.module, plus testing updates
+
+-------------------------------------------------------------------
 Thu Apr 15 13:48:22 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.13.1

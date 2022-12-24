@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-underscore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 %define nodejs_modulesdir /usr/lib/node_modules
 %endif
 
-Name:           nodejs-%{_name}
-Version:        1.13.1
+Name:           nodejs-underscore
+Version:        1.13.6
 Release:        0
 Summary:        A utility belt library for JavaScript
 License:        MIT

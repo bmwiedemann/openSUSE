@@ -15,4 +15,16 @@
     <comment> (forwarded request 885680 from hillwood)</comment>
     <requestid>885684</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f8466b63708b066690029e871d34787</srcmd5>
+    <version>1.13.6</version>
+    <time>1671889951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.13.6
+  * minor bugfixes and improved documentation
+  * Patch release with improved compatibility with ExtendScript
+  * Patch release to address WebPack module federation issue
+  * Patch to add exports.require.module, plus testing updates</comment>
+    <requestid>1045172</requestid>
+  </revision>
 </revisionlist>
