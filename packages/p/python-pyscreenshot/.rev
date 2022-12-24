@@ -44,4 +44,13 @@
 </comment>
     <requestid>1039519</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e56d493f9cb4338091643067f529a602</srcmd5>
+    <version>3.0</version>
+    <time>1671901309</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase timeout for running tests
+</comment>
+    <requestid>1044204</requestid>
+  </revision>
 </revisionlist>

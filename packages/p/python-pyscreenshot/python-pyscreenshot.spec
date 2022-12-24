@@ -94,7 +94,7 @@ cd tests/
 # test_maim fails on Leap 15.x
 %{python_expand # Necessary to run configure with all python flavors
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-xvfb-run --server-args "-br -screen 0 900x800x24" $python -m pytest -v -k 'not test_maim'
+xvfb-run --server-args "-br -screen 0 900x800x24" -w 5 $python -m pytest -v -k 'not test_maim'
 rm -rf /tmp/fillscreen*
 }
 %endif

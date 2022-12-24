@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 22 09:54:12 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Increase timeout for running tests
+
+-------------------------------------------------------------------
 Fri Dec  2 09:00:03 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
