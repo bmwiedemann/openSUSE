@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 21 19:29:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Take systemd units off the restart list that have
+  RefuseManualStart=yes [boo#1206592]
+- Add symvers.patch [boo#1206592]
+
+-------------------------------------------------------------------
 Sun Dec 11 14:17:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.2

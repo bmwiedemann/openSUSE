@@ -1090,4 +1090,14 @@ goes in line with 946250</comment>
     <comment>- Update to release 2.8.2</comment>
     <requestid>1042188</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>71c8006b2e95b3989c01a11d90763637</srcmd5>
+    <version>2.8.2</version>
+    <time>1671889850</time>
+    <user>dimstar_suse</user>
+    <comment>- Take systemd units off the restart list that have
+  RefuseManualStart=yes
+- Add symvers.patch</comment>
+    <requestid>1044142</requestid>
+  </revision>
 </revisionlist>

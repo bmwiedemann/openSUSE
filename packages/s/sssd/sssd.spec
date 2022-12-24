@@ -20,7 +20,7 @@ Name:           sssd
 Version:        2.8.2
 Release:        0
 Summary:        System Security Services Daemon
-License:        GPL-3.0-or-later and LGPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/SSSD/sssd
 #Git-Clone:	https://github.com/SSSD/sssd
@@ -29,8 +29,9 @@ Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%v
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff
-Patch2:	harden_sssd-ifp.service.patch
-Patch3:	harden_sssd-kcm.service.patch
+Patch2:         harden_sssd-ifp.service.patch
+Patch3:         harden_sssd-kcm.service.patch
+Patch4:         symvers.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
@@ -40,6 +41,7 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  krb5-devel >= 1.12
 BuildRequires:  libcmocka-devel
+BuildRequires:  libsubid-devel
 BuildRequires:  libtool
 BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
@@ -66,6 +68,7 @@ BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
 BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libsemanage)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ndr_krb5pac)
 BuildRequires:  pkgconfig(ndr_nbt)
@@ -77,11 +80,9 @@ BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(libsemanage)
-BuildRequires:  libsubid-devel
 %{?systemd_ordering}
 Requires:       sssd-ldap = %version-%release
-Requires(postun): pam-config
+Requires(postun):pam-config
 Provides:       libsss_sudo = %version-%release
 Provides:       sssd-client = %version-%release
 Obsoletes:      libsss_sudo < %version-%release
@@ -103,7 +104,7 @@ Obsoletes:      libsss_sudo < %version-%release
 %define cifs_idmap_name         cifs-idmap-plugin
 %define cifs_idmap_priority     10
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 Provides a set of daemons to manage access to remote directories and
@@ -199,7 +200,7 @@ and/or PAM modules to leverage SSSD caching.
 
 %package tools
 Summary:        Commandline tools for sssd
-License:        GPL-3.0-or-later and LGPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Management
 Requires:       python3-sssd-config = %version
 Requires:       sssd = %version
@@ -356,7 +357,7 @@ libsss_nss_idmap can be used by Python applications.
 
 %package -n python3-sssd-config
 Summary:        Python API for configuring sssd
-License:        GPL-3.0-or-later and LGPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 Requires:       python3
 
@@ -426,20 +427,19 @@ ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 %make_build check || :
 
 %pre
-%global services sssd.service sssd-autofs.service sssd-autofs.socket sssd-nss.service sssd-nss.socket sssd-pac.service sssd-pac.socket sssd-pam-priv.socket sssd-pam.service sssd-pam.socket sssd-ssh.service sssd-ssh.socket sssd-sudo.service sssd-sudo.socket
-%service_add_pre %services
+%service_add_pre sssd.service
 
 %post
 /sbin/ldconfig
 # migrate config variable krb5_kdcip to krb5_server (bnc#851048)
 /bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' %_sysconfdir/sssd/sssd.conf
-%service_add_post %services
+%service_add_post sssd.service
 
 # install SSSD cifs-idmap plugin as an alternative
 update-alternatives --install %cifs_idmap_plugin %cifs_idmap_name %cifs_idmap_lib %cifs_idmap_priority
 
 %preun
-%service_del_preun %services
+%service_del_preun sssd.service
 
 %postun
 /sbin/ldconfig
@@ -447,7 +447,7 @@ if [ "$1" = "0" -a -x "%_sbindir/pam-config" ]; then
 	"%_sbindir/pam-config" -d --sss || :
 fi
 # del_postun includes a try-restart
-%service_del_postun %services
+%service_del_postun sssd.service
 
 if [ ! -f "%cifs_idmap_lib" ]; then
 	update-alternatives --remove %cifs_idmap_name %cifs_idmap_lib
