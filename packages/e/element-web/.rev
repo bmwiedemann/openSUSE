@@ -234,4 +234,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <comment>Version 1.11.15</comment>
     <requestid>1039582</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>63b83ed705984676779c3af1c150fc62</srcmd5>
+    <version>1.11.17</version>
+    <time>1671889903</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.11.17</comment>
+    <requestid>1044713</requestid>
+  </revision>
 </revisionlist>

@@ -1,11 +1,11 @@
---- package.json	2022-09-28 17:01:20.000000000 +0200
-+++ package.json	2022-10-05 15:31:15.012971003 +0200
+--- package.json	2022-09-28 15:22:49.000000000 +0200
++++ package.json	2022-12-23 11:10:18.838569341 +0100
 @@ -37,7 +37,7 @@
-     "build:res": "node scripts/copy-res.js",
-     "build:genfiles": "yarn build:res && yarn build:jitsi && yarn build:module_system",
-     "build:modernizr": "modernizr -c .modernizr.json -d src/vector/modernizr.js",
--    "build:bundle": "webpack --progress --bail --mode production",
-+    "build:bundle": "node --max_old_space_size=4000 --optimize_for_size $(which webpack) --progress --bail --mode production",
-     "build:bundle-stats": "webpack --progress --bail --mode production --json > webpack-stats.json",
-     "build:module_system": "tsc --project ./tsconfig.module_system.json && node ./lib/module_system/scripts/install.js",
-     "dist": "scripts/package.sh",
+         "build:res": "node scripts/copy-res.js",
+         "build:genfiles": "yarn build:res && yarn build:jitsi && yarn build:module_system",
+         "build:modernizr": "modernizr -c .modernizr.json -d src/vector/modernizr.js",
+-        "build:bundle": "webpack --progress --bail --mode production",
++        "build:bundle": "node --max_old_space_size=4000 --optimize_for_size $(which webpack) --progress --bail --mode production",
+         "build:bundle-stats": "webpack --progress --bail --mode production --json > webpack-stats.json",
+         "build:module_system": "tsc --project ./tsconfig.module_system.json && node ./lib/module_system/scripts/install.js",
+         "dist": "scripts/package.sh",
