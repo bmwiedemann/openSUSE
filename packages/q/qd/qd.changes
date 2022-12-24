@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  3 22:59:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.23:
+  * Fixed underlinking of libqdmod and libqd_f_main (bug).
+  * Don't set CC=$CXX (fixes a new build issue with autoconf-2.71, bug).
+  * Fixed typo in the rule to build docs/qd.pdf (bug).
+  * Fixed "make dist" rule (built headers cannot be dist'd, bug).
+  * Fixed the build with --disable-inline (bug).
+  * Don't add "-O2" to CXXFLAGS or FCFLAGS when they're empty (portability).
+  * Don't manually search for compilers & flags in configure.ac (portability).
+  * Removed the --enable-warnings and --enable-debug flags (portability).
+  * Modernized all of configure.ac for use with autoconf-2.71 (housekeeping).
+
+-------------------------------------------------------------------
 Mon Feb 25 07:19:04 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to version 2.3.22

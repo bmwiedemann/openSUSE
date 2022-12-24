@@ -1,7 +1,7 @@
 #
 # spec file for package qd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 %define libname libqd0
-
 Name:           qd
-Version:        2.3.22
+Version:        2.3.23
 Release:        0
 Summary:        Quad Double computation package
 License:        BSD-3-Clause-LBNL
 Group:          Development/Libraries/C and C++
-Url:            http://crd-legacy.lbl.gov/~dhbailey/mpdist/
-Source0:        http://crd.lbl.gov/~dhbailey/mpdist/%{name}-%{version}.tar.gz
+URL:            https://www.davidhbailey.com/dhbsoftware/
+Source0:        https://www.davidhbailey.com/dhbsoftware/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkg-config
 
 %description
 qd provides numeric types of twice the precision of IEEE double
@@ -38,11 +37,11 @@ times the precision of IEEE double (212 mantissa bits, or approximately
 overloading, these facilities can be utilized with only minor modifications
 to conventional C++ and Fortran-90 programs.
 
-%package -n %libname
+%package -n %{libname}
 Summary:        A library for nonlinear optimization
 Group:          System/Libraries
 
-%description -n %libname
+%description -n %{libname}
 qd provides numeric types of twice the precision of IEEE double
 (106 mantissa bits, or approximately 32 decimal digits) and four
 times the precision of IEEE double (212 mantissa bits, or approximately
@@ -53,7 +52,7 @@ to conventional C++ and Fortran-90 programs.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %libname = %{version}
+Requires:       %{libname} = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -64,32 +63,27 @@ developing applications that use %{name}.
 
 %build
 %configure --enable-shared --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+find %{buildroot} -type f -name "*.la" -delete -print
 
 rm -rf %{buildroot}%{_datadir}/doc/qd
 
-%clean
-rm -rf %{buildroot}
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%post -n %libname -p /sbin/ldconfig
-
-%postun -n %libname -p /sbin/ldconfig
-
-%files -n %libname
-%defattr(-,root,root,-)
+%files -n %{libname}
 %license COPYING
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING docs/qd.pdf NEWS README
-%license BSD-LBNL-License.doc
+%license COPYING
+%doc AUTHORS docs/qd.pdf NEWS README
 %{_bindir}/%{name}-config
 %{_includedir}/*
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/qd.pc
 
 %changelog
