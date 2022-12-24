@@ -66,6 +66,8 @@ Source99:       baselibs.conf
 Patch0:         reduce-meson-dependency.patch
 # PATCH-FIX-UPSTREAM 0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
 Patch1:         0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-dont-set--1-as-node.target.patch
+Patch2:         0001-alsa-dont-set--1-as-node.target.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -338,6 +340,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}

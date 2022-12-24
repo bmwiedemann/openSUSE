@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 19 11:00:49 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to remember last routing after a reboot
+  (glfo#pipewire/pipewire#2893):
+  * 0001-alsa-dont-set--1-as-node.target.patch
+
+-------------------------------------------------------------------
 Thu Dec 15 17:37:52 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.63:
