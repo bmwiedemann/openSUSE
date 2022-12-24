@@ -90,6 +90,7 @@ Requires:       libexiv2-27 = %{version}
 Requires:       libexiv2-xmp-static
 Requires:       libexpat-devel
 Requires:       libstdc++-devel
+Requires:       pkgconfig(zlib)
 
 %description -n libexiv2-devel
 Exiv2 is a C++ library and a command line utility to access image

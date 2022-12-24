@@ -715,4 +715,12 @@
   used</comment>
     <requestid>1043123</requestid>
   </revision>
+  <revision rev="70" vrev="10">
+    <srcmd5>21870fba17c2fda5bb07bad58d314b3f</srcmd5>
+    <version>0.27.5</version>
+    <time>1671889859</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1044269</requestid>
+  </revision>
 </revisionlist>
