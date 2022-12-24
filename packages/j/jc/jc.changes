@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 23 17:34:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.3:
+  * Add Common Log Format and Combined Log Format file parser (standard and
+    streaming)
+  * Add PostgreSQL password file parser
+  * Add openvpn-status.log file parser
+  * Add `cbt` command parser (Google Big Table)
+  * Enhance `ifconfig` parser with interface lane information on BSD
+  * Enhance `ifconfig` parser with additional IPv6 `scope_id` info for BSD
+  * Fix `ifconfig` parser to capture some IPv6 addresses missed on BSD
+  * Fix `git-log` and `git-log-s` parsers for failure on empty author name
+  * Update `os-prober` parser with split EFI partition fields
+  * Add ISO string attribute (`.iso`) to `jc.utils.timestamp()`
+  * Fix several documentation typos
+
+-------------------------------------------------------------------
 Sun Nov 13 09:09:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.22.2
