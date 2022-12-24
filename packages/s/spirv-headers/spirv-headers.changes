@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 23 07:59:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.1+sdk236 (1d31a10)
+  * Add SPV_INTEL_fpga_invocation_pipelining_attributes,
+    SPV_INTEL_fpga_dsp_control, SPV_INTEL_runtime_aligned
+  * Add headers for SPV_NV_shader_invocation_reorder
+
+-------------------------------------------------------------------
 Mon Oct 24 19:43:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.6.1+sdk231 (85a1ed2)

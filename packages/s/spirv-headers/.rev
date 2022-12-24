@@ -249,4 +249,12 @@
     <comment>- Update to 1.6.1+sdk231 (85a1ed2)</comment>
     <requestid>1030960</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aa253d268ce1308138c9a2c2f3d38965</srcmd5>
+    <version>1.6.1+sdk236</version>
+    <time>1671889882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.1+sdk236 (1d31a10)</comment>
+    <requestid>1045166</requestid>
+  </revision>
 </revisionlist>
