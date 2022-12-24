@@ -284,4 +284,12 @@ join Staging:E</comment>
     <comment>- Update to release 2022.4 (SDK-1.3.231.0)</comment>
     <requestid>1030961</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e6acf770fcb21e4cbc58841b76021163</srcmd5>
+    <version>2022.4+sdk236</version>
+    <time>1671889883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2022.4+sdk236</comment>
+    <requestid>1045167</requestid>
+  </revision>
 </revisionlist>
