@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 18 10:39:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.33.0:
+  * yaz-marcdump: SAX based MARCXML parsing. This is about 3 times faster
+  * than before.
+  * yaz-marcdump: new option -r prints summary of number of records
+    processed.
+  * Document ZOOM option 'rpnCharset'.
+  * Fix cross-compiling with pkg-config.
+
+-------------------------------------------------------------------
 Mon Aug  8 15:37:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.32.0:
