@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 21 13:09:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: there is no known consumer of the -32bit
+  package.
+
+-------------------------------------------------------------------
 Tue Sep 13 06:33:51 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Bring back 0001-gvdb-Restore-permissions-on-changed-files.patch
