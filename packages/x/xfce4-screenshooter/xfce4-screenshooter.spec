@@ -17,12 +17,12 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.16.0
 %define plugin screenshooter
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
@@ -34,17 +34,21 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
-BuildRequires:  pkgconfig(exo-2) >= 0.11.0
+BuildRequires:  pkgconfig(exo-2) >= 0.12.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
+BuildRequires:  pkgconfig(pango) >= 1.44.0
+BuildRequires:  pkgconfig(xext) >= 1.0.0
+BuildRequires:  pkgconfig(xi) >= 1.7.8
+BuildRequires:  pkgconfig(xfixes) >= 4.0.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

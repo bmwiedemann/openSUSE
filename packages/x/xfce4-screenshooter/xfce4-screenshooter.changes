@@ -1,25 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 23 18:57:44 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 1.10.1: 
+ * Fixes capture of screenshots after first time (gxo#apps/xfce4-screenshoter#89)
+ * libsoup: Migrate to 3.0 (gxo#apps/xfce4-screenshoter#88)
+ * Fix typo in NEWS file
+ * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 18 14:54:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.10.0:
+- Update to version 1.10.0:
+  * Bump requirements for Xfce 4.18
   * Introduce custom actions
-  * Bump dependencies
   * Replace deprecated functions
   * Added writability check to screenshot_dir
   * Include "config.h" before GLib include files
   * Revert icon name translation
   * Drop subtitles
   * Add version check for libxi
-  * Translation Updates:
-  Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Bulgarian,
-  Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish,
-  Dutch, Eastern Armenian, English (Australia), English (United
-  Kingdom), Estonian, Finnish, French, Galician, Georgian, German,
-  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Interlingue,
-  Italian, Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian
-  Bokmål, Occitan (post 1500), Persian (Iran), Polish, Portuguese,
-  Portuguese (Brazil), Russian, Serbian, Slovak, Slovenian, Spanish,
-  Swedish, Thai, Turkish, Ukrainian
+  * Translation Updates
 
 -------------------------------------------------------------------
 Fri Aug 12 08:53:37 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
