@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-control
 Version:        0.9.2
 Release:        0
@@ -25,8 +24,12 @@ License:        BSD-3-Clause
 URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM control-pr777-mpl36.patch gh#python-control/python-control#777
+Patch1:         control-pr777-mpl36.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib
@@ -56,10 +59,10 @@ operations for analysis and design of feedback control systems.
 sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +79,6 @@ fi
 %doc ChangeLog README.rst
 %license LICENSE
 %{python_sitelib}/control
-%{python_sitelib}/control-%{version}-py*.egg-info
+%{python_sitelib}/control-%{version}.dist-info
 
 %changelog
