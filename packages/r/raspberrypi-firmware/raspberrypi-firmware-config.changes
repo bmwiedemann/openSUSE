@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 23 13:58:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0a7ea702 (2022-12-12):
+  * firmware: arm_loader: PWM1 is not available on GPIO 45
+  * firmware: power: Always read the uncached voltage for AIN and USB_PD
+    See: https://forums.raspberrypi.com/viewtopic.php?p=2059832#p2059832
+  * firmware: Use new SDHCI controller instead of legacy arasan
+    See: #1763
+
+-------------------------------------------------------------------
 Mon Nov 21 14:58:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to b8a7365 (2022-11-18):

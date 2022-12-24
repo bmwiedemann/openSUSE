@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-config-camera
-Version:        2022.11.18
+Version:        2022.12.12
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT
