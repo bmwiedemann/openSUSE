@@ -149,8 +149,8 @@ touch %{buildroot}%{_localstatedir}/spool/anacron/cron.weekly
 touch %{buildroot}%{_localstatedir}/spool/anacron/cron.monthly
 
 %if 0%{?suse_version} > 1500
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
-mv %{buildroot}%{_sysconfdir}/pam.d/crond %{buildroot}%{_distconfdir}/pam.d/
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/crond %{buildroot}%{_pam_vendordir}/
 %endif
 
 %pre
@@ -211,7 +211,7 @@ done
 %dir %attr(700,root,root) %{_localstatedir}/spool/cron/tabs
 %dir %{_localstatedir}/spool/cron/lastrun
 %if 0%{?suse_version} > 1500
-%{_distconfdir}/pam.d/crond
+%{_pam_vendordir}/crond
 %else
 %config %{_sysconfdir}/pam.d/crond
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 20 16:10:11 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Use %_pam_vendordir
+
+-------------------------------------------------------------------
 Wed Dec  7 10:11:32 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration PAM settings to /usr/etc: Saving user changed
