@@ -1,7 +1,7 @@
 #
 # spec file for package snd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch aarch64
 %define _lto_cflags %{nil}
 %endif
@@ -26,7 +27,7 @@
 %bcond_with jack
 %endif
 Name:           snd
-Version:        20.6
+Version:        23
 Release:        0
 Summary:        Sound File Editor
 License:        LGPL-2.1-or-later
@@ -42,9 +43,11 @@ BuildRequires:  gsl
 BuildRequires:  gsl-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  ladspa-devel
+BuildRequires:  libXpm-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libsamplerate-devel
+BuildRequires:  motif-devel
 BuildRequires:  update-desktop-files
 Requires:       ladspa
 
@@ -61,10 +64,9 @@ find -name "*.png" -type f -exec chmod 0644 "{}" "+"
 
 %build
 %configure \
-  --with-gtk \
+  --with-gui \
   --with-alsa \
   --with-ladspa \
-  --with-static-xm \
   --with-gl \
   %{?with_jack:--with-jack} \
 # feel free to improve following change and please notify upstream

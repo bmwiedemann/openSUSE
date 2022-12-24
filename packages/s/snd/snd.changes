@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 22 08:32:12 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 23.0 (no changelog)
+
+-------------------------------------------------------------------
 Thu Aug 20 13:53:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on aarch64 to fix build
