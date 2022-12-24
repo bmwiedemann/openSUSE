@@ -1,7 +1,7 @@
 #
 # spec file for package libgarcon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,25 @@
 
 %define libname libgarcon-1-0
 Name:           libgarcon
-Version:        4.16.1
+Version:        4.18.0
 Release:        0
 Summary:        Library Implementing the freedesktop.org Desktop Menu Specification
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.xfce.org/dev/garcon
-Source:         https://archive.xfce.org/src/xfce/garcon/4.16/garcon-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/garcon/4.18/garcon-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE libgarcon-x-suse-unimportant-support.patch gber@opensuse.org -- Hide desktop files marked with X-SuSE-Unimportant
 Patch0:         libgarcon-x-suse-unimportant-support.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(libxfce4ui-2)
-BuildRequires:  pkgconfig(libxfce4util-1.0)
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.6
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.6
 
 %description
 Garcon is a library based on GLib and GIO which implements the freedesktop.org
@@ -103,6 +103,7 @@ BuildArch:      noarch
 This package provides the upstream look and feel for garcon.
 
 # this should be replaced by %%lang_package once bnc#513786 is resolved
+
 %package lang
 Summary:        Languages for package %{name}
 Group:          System/Localization
@@ -158,7 +159,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_libdir}/libgarcon-gtk3-1.so
 
 %files doc
-%doc AUTHORS HACKING NEWS README.md STATUS TODO
+%doc AUTHORS NEWS README.md
 %license COPYING
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
