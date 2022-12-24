@@ -1,0 +1,41 @@
+From 4fadf3c49e3dc98c5e1c0b86401324061d951d9f Mon Sep 17 00:00:00 2001
+From: Mika Lindqvist <postmaster@raasu.org>
+Date: Wed, 6 Apr 2022 00:04:45 +0300
+Subject: [PATCH] Add one extra byte to return value of compressBound and
+ deflateBound for small lengths due to shift returning 0. * Treat 0 byte input
+ as 1 byte input when calculating compressBound and deflateBound
+
+---
+ compress.c | 2 ++
+ deflate.c  | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/compress.c b/compress.c
+index db13f6c..44f8dd9 100644
+--- a/compress.c
++++ b/compress.c
+@@ -87,6 +87,8 @@ z_size_t Z_EXPORT PREFIX(compressBound)(z_size_t sourceLen) {
+ 
+ #ifndef NO_QUICK_STRATEGY
+     return sourceLen                       /* The source size itself */
++      + (sourceLen == 0 ? 1 : 0)           /* Always at least one byte for any input */
++      + (sourceLen < 9 ? 1 : 0)            /* One extra byte for lengths less than 9 */
+       + DEFLATE_QUICK_OVERHEAD(sourceLen)  /* Source encoding overhead, padded to next full byte */
+       + DEFLATE_BLOCK_OVERHEAD             /* Deflate block overhead bytes */
+       + ZLIB_WRAPLEN;                      /* zlib wrapper */
+diff --git a/deflate.c b/deflate.c
+index 50c5531..233a629 100644
+--- a/deflate.c
++++ b/deflate.c
+@@ -646,6 +646,8 @@ unsigned long Z_EXPORT PREFIX(deflateBound)(PREFIX3(stream) *strm, unsigned long
+ 
+ #ifndef NO_QUICK_STRATEGY
+     return sourceLen                       /* The source size itself */
++      + (sourceLen == 0 ? 1 : 0)           /* Always at least one byte for any input */
++      + (sourceLen < 9 ? 1 : 0)            /* One extra byte for lengths less than 9 */
+       + DEFLATE_QUICK_OVERHEAD(sourceLen)  /* Source encoding overhead, padded to next full byte */
+       + DEFLATE_BLOCK_OVERHEAD             /* Deflate block overhead bytes */
+       + wraplen;                           /* none, zlib or gzip wrapper */
+-- 
+2.39.0
+

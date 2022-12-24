@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 22 13:22:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Add-one-extra-byte-to-return-value-of-compressBound-.patch
+  fixes a data corruption regression in 2.0.6
+
+-------------------------------------------------------------------
 Mon Dec 12 10:15:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - make systemtap dependency optional - it is only used in the s390

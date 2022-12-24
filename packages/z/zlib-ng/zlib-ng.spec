@@ -42,6 +42,8 @@ Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM - Backport https://github.com/zlib-ng/zlib-ng/pull/1297 to fix boo#1200578
 Patch0:         1297.patch
+# Cherry-pick bisected from develop branch
+Patch1:         0001-Add-one-extra-byte-to-return-value-of-compressBound-.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 %if %{with systemtap}
