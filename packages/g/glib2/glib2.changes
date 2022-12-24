@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 22 13:01:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.74.4:
+  + Fix missing input validation in `GDBusMenuModel`.
+  + Various GVariant security fixes when handling untrusted data.
+  + Bugs fixed: glgo#GNOME/GLib#861, glgo#GNOME/GLib#2121,
+    glgo#GNOME/GLib#2540, glgo#GNOME/GLib#2794,
+    glgo#GNOME/GLib#2797, glgo#GNOME/GLib#2835,
+    glgo#GNOME/GLib#2839, glgo#GNOME/GLib#2840,
+    glgo#GNOME/GLib#2841, glgo#GNOME/GLib#2852,
+    glgo#GNOME/GLib!3114, glgo#GNOME/GLib!3126,
+    glgo#GNOME/GLib!3134, glgo#GNOME/GLib!3138,
+    glgo#GNOME/GLib!3153, glgo#GNOME/GLib!3161,
+    glgo#GNOME/GLib!3164.
+  + Updated translations.
+- Add 1539540.patch: gthread-posix: need to #include <errno.h>.
+
+-------------------------------------------------------------------
 Fri Dec  2 21:18:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.3:
