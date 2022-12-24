@@ -444,4 +444,12 @@
   bgo#758066 bsc#1203344). (forwarded request 1003109 from yfjiang)</comment>
     <requestid>1003235</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>428cdf93accbf866ca02bff469d68611</srcmd5>
+    <version>0.40.0</version>
+    <time>1671889856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044260</requestid>
+  </revision>
 </revisionlist>
