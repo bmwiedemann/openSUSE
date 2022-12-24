@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 15 13:55:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.236.0
+  * Fix cases where OOM was handled wrong
+  * Null check vk_icdGetPhysicalDeviceProcAddr
+
+-------------------------------------------------------------------
 Mon Oct 24 19:14:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.231.0
