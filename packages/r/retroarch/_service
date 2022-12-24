@@ -5,7 +5,7 @@
     <param name="filename">retroarch</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.13.0</param>
+    <param name="revision">v1.14.0</param>
     <param name="exclude">media/icons</param>
     <param name="exclude">ps2</param>
     <param name="exclude">uwp</param>
