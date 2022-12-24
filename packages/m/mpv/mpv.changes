@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 23 18:17:30 UTC 2022 - mia@0x0.st
+
+- Update to version 0.35+git.20221222.657fd280:
+  * audio: reset pull AO at end of file
+  * vo_kitty: Introduce modern sixel alternative
+  * external_files: set log level for potential files to trace
+  * hwdec/d3d11va: fix a possible memory leak
+  * filter_kernels: fix kaiser
+
+-------------------------------------------------------------------
 Tue Dec 20 11:26:38 UTC 2022 - mia@0x0.st
 
 - Update to version 0.35+git.20221220.d5c3b9d9:

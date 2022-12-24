@@ -1962,4 +1962,17 @@
   * vd_lavc: update to handle deprecation of `pkt_duration`</comment>
     <requestid>1043893</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c2c69d6ad8d012894147956aab9f9cb5</srcmd5>
+    <version>0.35+git.20221222.657fd280</version>
+    <time>1671889931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.35+git.20221222.657fd280:
+  * audio: reset pull AO at end of file
+  * vo_kitty: Introduce modern sixel alternative
+  * external_files: set log level for potential files to trace
+  * hwdec/d3d11va: fix a possible memory leak
+  * filter_kernels: fix kaiser</comment>
+    <requestid>1045065</requestid>
+  </revision>
 </revisionlist>
