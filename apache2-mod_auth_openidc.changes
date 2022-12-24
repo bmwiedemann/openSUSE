@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 20 15:24:49 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.12.2
+  * Security
+    - CVE-2022-23527: prevent open redirect in default setup when
+      OIDCRedirectURLsAllowed is not configured
+      see: GHSA-q6f2-285m-gr53
+  * Features
+    - allow overriding the type of lock used at compile time with OIDC_LOCK
+
+-------------------------------------------------------------------
 Tue Nov 15 16:20:35 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.4.12.1
