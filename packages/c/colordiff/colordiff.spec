@@ -17,13 +17,13 @@
 
 
 Name:           colordiff
-Version:        1.0.20
+Version:        1.0.21
 Release:        0
 Summary:        Colour-highlighted 'diff' output
 License:        GPL-2.0-or-later
 URL:            https://www.colordiff.org
-Source0:        http://www.colordiff.org/%{name}-%{version}.tar.gz
-Source1:        http://www.colordiff.org/%{name}-%{version}.tar.gz.sig
+Source0:        https://www.colordiff.org/%{name}-%{version}.tar.gz
+Source1:        https://www.colordiff.org/%{name}-%{version}.tar.gz.sig
 Source2:        https://www.sungate.co.uk/gpgkey_2013.txt#/%{name}.keyring
 BuildArch:      noarch
 

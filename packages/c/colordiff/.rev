@@ -168,4 +168,14 @@
     <comment>colordiff 1.0.20 (forwarded request 957650 from AndreasStieger)</comment>
     <requestid>957892</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2922a5c2f9281344aab90b12cc71913b</srcmd5>
+    <version>1.0.21</version>
+    <time>1671889936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.21:
+  * Support for Windows C:\ProgramData instead of /etc, 
+  * improved documentation for command-line options</comment>
+    <requestid>1045116</requestid>
+  </revision>
 </revisionlist>
