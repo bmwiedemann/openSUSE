@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Sat Dec 24 08:59:31 UTC 2022 - michael@stroeder.com
+
+- Update to version 11.1.4:
+  * Release 11.1.4
+  * security: Prevent access to SSH nodes using SessionJoinPrincipal
+  * security: Purge nonexistent sessions
+  * security: Prevent IP pinning bypass
+  * security: Prevent app access authz bypass
+  * Fix `Too many requests` error in github actions test (#19606) (#19642)
+  * [v11] Bump `gravitational/trace` package version (#19591)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#19639)
+  * [v11] Return the actual IAM errors when configure database IAM policy fails (#19500)
+  * [v11] [buddy] Error if TTL in `tctl auth sign` is too long (#19618)
+  * Use our own fake IdP instead of external one. (#19627)
+  * Added documentation for Access Requests TTLs.
+  * [v11] Track active migrations in Prometheus and `tctl top` (#19625)
+  * Remove TestPasswordTimingAttack (#18940) (#19446)
+  * Add Enterprise installation instructions (#19602)
+  * [v11] Clean up windows desktop access error logs on expected disconnects (#19548)
+  * [v11] Document license file expiration logic (#19604)
+  * Remove the Kubernetes CI/CD guide (#19568)
+  * [v11] [Docs] Refactor Install From Linux Instructions (#19612)
+  * Adjust integration test timeouts (#19452)
+  * [v11] DatabaseService: CRUD and hearbeat (#19453)
+  * Remove Server Access Ansible guide redirect (#19572)
+  * [v11] [Connect] Add server hostnames in access request responses (#19549)
+  * Fix TestExecLongCommand - cleanup unlink (#19577)
+  * Added 12/21 Upcoming Releases Update
+  * [v11] Set OOM score to 0 for child processes (#19521)
+  * [v11] Disable password prompt in desktop access config script (#19241) (#19427)
+  * [v11] Fetch and buffer all entries from LDAP search (#19002) (#19533)
+  * Fixes noisy-square distortions (#19506)
+  * Bump versions in docker images to 11 (#19530)
+  * [v11] Add a guide to deploying an HA cluster (#19567)
+  * [v11] chore: Bump Buf to v1.11.0 (#19555)
+  * Fix web UI host resolution (#19513)
+  * GitHub Enterprise secure joining support (#19330) (#19518)
+  * Added selective prerelease check to container images promotion pipeline (#19121)
+  * [v11] Add a guide to exporting events to Splunk (#19527)
+  * Connection Diagnostics: Postgres Database tester (#18558) (#19338)
+  * Attempt to deflake TestDatabaseAccess/AgentState (#19169) (#19519)
+  * Reduce latency of `tsh ls -R` (#19438) (#19482)
+  * Make bitmaps opaque in Desktop Access (#18985) (#19504)
+  * [v11] Prevent "session.start" from being overwritten by "session.exec" (#19497)
+  * fix(app): clone tls configuration for websocket dialer (#19423)
+  * Add reference links to all required Helm guides (#19431)
+  * spell fixes (#19441)
+  * [v11] Set SNI when `tsh login --format kubernetes` is invoked (#19433)
+  * [v11] Add advisory info on enabling dbs with ACM in helm chart (#19353)
+  * Fix an issue tsh throws assertion error on REDIS_REPLY_STATUS for Redis 7 (#19364) (#19400)
+  * daemon.Service: Rename GetCluster to ResolveFullCluster (#19274)
+  * [v11] Fix `ALPNConnUpgradeDialer` when not in insecure mode (#19410)
+  * Bump cloud version to 11.1.3 (#19407)
+  * [v11] Backports #19044 (#19343)
+  * Added 12/15 Upcoming Releases Update
+  * Improve error handling in Connect gateway integration test (#19391)
+  * Add new prefixes to the "sensitiveBackendPrefixes" list (#19287) (#19368)
+  * Added the ability to supply Access Request TTLs
+  * [v11] Update e ref for usage reporter fix (#19374)
+  * [v11] Add `GetEmitter()` to allow proper emitter wrapping for PreHog (#19371)
+  * Handle empty slice in `tdpMFACodec.decode()` (#19320)
+  * [v11] Allow `cluster_networking_config` to have `defaults` origin (#19325)
+  * [v11] Use Teleport proxy,user references instead of SSH specific (#19350)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#19345)
+  * Move SAML connection validation after auth checks (#19317)
+  * rename recovery codes event mapping (#19341)
+  * Ignore client closing error in `tbot` CA Watcher when certificates renew (#19266) (#19327)
+  * updated video to latest (#19278)
+  * [v11] [Discover] Add ons for database flow (#19116)
+  * Fix loop var capture in a parallel test (#19296)
+  * [v11] Correct teleport start for db getting started (#19280)
+  * Fix issue "redis" engine is not registered (#19239) (#19251)
+  * Connect: Detect & reissue expired db certs (#17950) (#19096)
+  * Update LocalKeyAgent to get signers from the key store and tsh/ssh agents. (#19218)
+  * [v11] Update `examples/systemd/machine-id` to use best practices! (#19141)
+  * Fix desktop access setup docs (#19233)
+  * Update connect your client for Idp and other minor items (#19186) (#19245)
+  * [v11] Drop usage events after too many retries (#19255)
+  * [v11] Improve and unify cache logging (#19252)
+  * Remove ignored user parameter for non-local auth connector examples (#19248)
+  * [v11] Kubernetes Portforward via Websockets (#19181)
+  * [v11] CodeQL: Set a timeout limit to ensure jobs don't hang (#19244)
+  * deps: update gravitational/predicate to v1.3.0 (#19250)
+  * [v11] feat: add login rule protobuf type (#19219)
+  * [v11] Eventually require connection failure in TestTCPCertExpiration tests. (#19200)
+  * Update docs with new location of setup GitHub Action (#19230)
+  * [v11] Add a glossary of Teleport terms (#19207)
+  * Change git clone to use a specific branch version, not the current master (#19229)
+  * Update e ref (#19238)
+  * [v11] Bump Buf to v1.10.0 and protoc to 3.20.3 (#19203)
+  * Add recovery codes flag to modules and web config (#19046) (#19161)
+  * Add `license` and `download` verbs to user context ACL and default editor role (#19049) (#19210)
+  *  Include Teleport Connect reference in installation docs page (#19209)
+  * update webassets (#19222)
+  * [v11] Add listing and playing recorded interactive sessions to tsh docs (#19215)
+  * errors.go: Update link in error message for self signed cert setup (#19173)
+  * [v11] Properly escape maps in log entries (#19195)
+  * [v11] Fixes dissonance between `disconnect_expired_cert` vs `require_session_mfa` (#19178)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#19176)
+  * Bump cloud version to 11.1.2 (#19199)
+  * Organized machine-id docs menu to match other protocols (#19197)
+  * Fix typo in integration/db.SetupDatabaseTest (#19179)
+  * [v11] Optimize trait loop evaluation (#19170)
+  * [v11] Downgrade DNS errors to a warning log when creating MongoDB databases (#18984)
+  * Added logging for audit stream creation.
+  * Fix a link with a long redirect chain (#19160)
+  * [v11] Displays Server Disconnect reason to the user (#19151)
+  * Edit the Database Access introduction (#19128)
+  * Update e/ reference (#19157)
+  * update docs vars for patch release (#19150)
+  * [v11] docs: mention additional GPO that must be configured for desktop auth (#19102)
+  * [v11] Update Go to 1.19.4 (#19127)
+  * [v11] Prevent race from causing remote clients from being closed (#19068)
+
+-------------------------------------------------------------------
+Sat Dec 24 08:49:23 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 11.1.4
+  * Security fixes:
+    - [Critical] RBAC bypass in SSH TCP tunneling
+    - [High] Application Access session hijack
+    - [Medium] SSH IP pinning bypass
+    - [Low] Web API session caching  
+  * Other improvements and bugfixes
+    - Fixed issue with noisy-square distortions in desktop access. #19545
+    - Fixed issue with LDAP search pagination in desktop access. #19533
+    - Fixed issue with SSH sessions inheriting OOM score of the parent process. #19521
+    - Fixed issue with ambiguous host resolution in web UI. #19513
+    - Fixed issue with using desktop access with Windows 10. #19504
+    - Fixed issue with session.start events being overwritten by session.exec events. #19497
+    - Fixed issue with tsh login --format kubernetes not setting SNI info. #19433
+    - Fixed issue with websockets not working via app access if the upstream web server is using HTTP/2. #19423
+    - Fixed TLS routing in insecure mode. #19410
+    - Fixed issue with connecting to ElastiCache 7.0.4 in database access. #19400
+    - Fixed issue with SAML connector validation calling descriptor URL prior to authz checks. #19317
+    - Fixed issue with database access complaining about "redis" engine not being registered. #19251
+    - Fixed issue with disconnect_expired_cert and require_session_mfa settings conflicting with each other. #19178
+    - Fixed startup failure when MongoDB URI is not resolvable. #18984
+    - Added resource names for access requests in Teleport Connect. #19549
+    - Added support for Github Enterprise join method. #19518
+    - Added the ability to supply Access Request TTLs. #19385
+    - Added new instance.join and bot.join audit events. #19343
+    - Added support for port-forward over websocket protocol in Kubernetes access. #19181
+    - Reduced latency of tsh ls -R. #19482
+    - Updated desktop access config script to disable password prompt. #19427
+    - Updated Go to 1.19.4. #19127
+    - Improved performance when converting traits to roles. #19170
+    - Improved handling of expired database certificates in Teleport Connect. #19096
+
+-------------------------------------------------------------------
 Wed Dec 07 06:34:44 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 11.1.2:
