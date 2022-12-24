@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec 23 12:21:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use disabled services so that it can be included in Factory 
+
+-------------------------------------------------------------------
+Fri Dec 23 12:21:44 UTC 2022 - Thomas Wolff <mined@towo.net>
+
+- update to 2022.27:
+  * Update to Unicode 13.0
+
+-------------------------------------------------------------------
+Sun Dec 11 18:29:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.26:
+  * Update to Unicode 13.0
+  * Support for emoji width handling.
+  * Search and replacement patterns can contain substitution references like \1
+    to matching sub-expressions like \(...\) (can be nested).
+  * Tweaked smart undentation (on Backspace) of auto-numbering.
+  * Fixed line split of long lines read from file.
+  * Tweaked menu background colour handling.
+
+-------------------------------------------------------------------
 Tue Mar  3 11:57:26 UTC 2020 - Xu Zhao <i@xuzhao.net>
 
 - Update to 2015.25

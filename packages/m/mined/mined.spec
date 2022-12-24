@@ -1,7 +1,7 @@
 #
 # spec file for package mined
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           mined
-Version:        2015.25
+Version:        2022.27
 Release:        0
 Summary:        Powerful Text Editor with Extensive Unicode and CJK Support
 License:        GPL-3.0-or-later
 Group:          Productivity/Editors/Other
-URL:            http://towo.net/mined/
-Source:         http://towo.net/mined/download/mined-%{version}.tar.gz
+URL:            https://mined.github.io/
+Source:         https://github.com/mined/mined/archive/refs/tags/%{version}.tar.gz
+Source2:        http://unicode.org/Public/UNIDATA/Unihan.zip
 BuildRequires:  fdupes
+BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Mined is a powerful text editor with a comprehensive yet concise and
@@ -69,6 +70,7 @@ sed -i "s/mined.xpm/mined/" ./usrshare/setup_install/mined.desktop
 sed -i s/Utility/Utility\;/ ./usrshare/setup_install/mined.desktop
 
 %build
+cp -p %{SOURCE2} src
 %configure
 make OPT="%{optflags}" USRLIBDIR=%{_libdir} ROOTLIBDIR=/%{_lib} %{?_smp_mflags}
 
