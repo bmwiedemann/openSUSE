@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Dec 23 08:13:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1:
+  * man: ss.8: fix a typo
+  * testsuite: fix build failure
+  * genl: remove unused vars in Makefile
+  * json: do not escape single quotes
+  * ip-monitor: Do not error out when RTNLGRP_STATS is not available
+  * ip-link: man: Document existence of netns argument in add command
+  * macsec: add Extended Packet Number support
+  * macsec: add user manual description for extended packet number feature
+  * ip: xfrm: support "external" (`collect_md`) mode in xfrm interfaces
+  * ip: xfrm: support adding xfrm metadata as lwtunnel info in routes
+  * ip: add NLM_F_ECHO support
+  * libnetlink: add offset for nl_dump_ext_ack_done
+  * tc/tc_monitor: print netlink extack message
+  * rtnetlink: add new function rtnl_echo_talk()
+  * ip: fix return value for rtnl_talk failures
+  * iplink_bridge: Add no_linklocal_learn option support
+  * devlink: use dl_no_arg instead of checking dl_argc == 0
+  * devlink: remove dl_argv_parse_put
+  * mnlg: remove unnused mnlg_socket structure
+  * utils: extract CTRL_ATTR_MAXATTR and save it
+  * devlink: expose nested devlink for a line card object
+  * devlink: load port-ifname map on demand
+  * devlink: fix parallel flash notifications processing
+  * devlink: move use_iec into struct dl
+  * devlink: fix typo in variable name in ifname_map_cb()
+  * devlink: load ifname map on demand from ifname_map_rev_lookup() as well
+  * dcb: unblock mnl_socket_recvfrom if not message received
+  * libnetlink: Fix memory leak in __rtnl_talk_iov()
+  * tc_util: Fix no error return when large parent id used
+  * tc_util: Change datatype for maj to avoid overflow issue
+  * ss: man: add missing entries for MPTCP
+  * ss: man: add missing entries for TIPC
+  * ss: usage: add missing parameters
+  * ss: re-add TIPC query support
+  * devlink: Fix setting parent for 'rate add'
+  * link: display 'allmulti' counter
+  * seg6: add support for flavors in SRv6 End* behaviors
+  * tc: ct: Fix invalid pointer dereference
+  * uapi: update from 6.1 pre rc1
+  * u32: fix json formatting of flowid
+  * tc_stab: remove dead code
+  * uapi: update for in.h and ip.h
+  * remove #if 0 code
+  * tc: add json support to size table
+  * tc: put size table options in json object
+  * tc/basic: fix json output filter
+  * iplink: support JSON in MPLS output
+  * tc: print errors on stderr
+  * ip: print mpls errors on stderr
+  * tc: make prefix const
+  * man: add missing tc class show
+  * iplink_can: add missing `]' of the bitrate, dbitrate and termination arrays
+  * ip link: add sub-command to view and change DSA conduit interface
+
+-------------------------------------------------------------------
 Tue Nov 22 12:47:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace routel program by a non-python version [boo#1205632]

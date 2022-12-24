@@ -1041,4 +1041,41 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Replace routel program by a non-python version [boo#1205632]</comment>
     <requestid>1037901</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>afca6612d0e712dc68bdd9917202e858</srcmd5>
+    <version>6.1</version>
+    <time>1671889879</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1:
+  * man: ss.8: fix a typo
+  * testsuite: fix build failure
+  * genl: remove unused vars in Makefile
+  * json: do not escape single quotes
+  * ip-monitor: Do not error out when RTNLGRP_STATS is not available
+  * ip-link: man: Document existence of netns argument in add command
+  * macsec: add Extended Packet Number support
+  * macsec: add user manual description for extended packet number feature
+  * ip: xfrm: support &quot;external&quot; (`collect_md`) mode in xfrm interfaces
+  * ip: xfrm: support adding xfrm metadata as lwtunnel info in routes
+  * ip: add NLM_F_ECHO support
+  * libnetlink: add offset for nl_dump_ext_ack_done
+  * tc/tc_monitor: print netlink extack message
+  * rtnetlink: add new function rtnl_echo_talk()
+  * ip: fix return value for rtnl_talk failures
+  * iplink_bridge: Add no_linklocal_learn option support
+  * devlink: use dl_no_arg instead of checking dl_argc == 0
+  * devlink: remove dl_argv_parse_put
+  * mnlg: remove unnused mnlg_socket structure
+  * utils: extract CTRL_ATTR_MAXATTR and save it
+  * devlink: expose nested devlink for a line card object
+  * devlink: load port-ifname map on demand
+  * devlink: fix parallel flash notifications processing
+  * devlink: move use_iec into struct dl
+  * devlink: fix typo in variable name in ifname_map_cb()
+  * devlink: load ifname map on demand from ifname_map_rev_lookup() as well
+  * dcb: unblock mnl_socket_recvfrom if not message received
+  * libnetlink: Fix memory leak in __rtnl_talk_iov()
+  * tc_util: Fix no error return when large parent id used (forwarded request 1044377 from dirkmueller)</comment>
+    <requestid>1044599</requestid>
+  </revision>
 </revisionlist>
