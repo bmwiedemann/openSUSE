@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 20 07:17:17 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.2.0.
+  * New MIDI input port dedicated to controlling trigger slots
+  * TouchOSC support improvements
+  * MIDI Lyrics Importing
+  * Fixes for the tempo maps
+  * Fall back to libsndfile if ffmpeg is not available
+  * Consistent Audio/MIDI monitor modes
+  * UX/UI Improvements
+  * Check https://ardour.org/whatsnew.html for the full list of
+    changes
+
+-------------------------------------------------------------------
 Fri Nov  4 15:38:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 7.1.0. Bugfix release

@@ -18,7 +18,7 @@
 
 %define dirbase ardour7
 Name:           ardour
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
