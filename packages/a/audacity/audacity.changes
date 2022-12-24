@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 22:54:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(gtk+-2.0) with pkgconfig(gtk+-3.0)
+  BuildRequires, audacity have moved to gtk-3 several versions ago.
+
+-------------------------------------------------------------------
 Thu Dec  8 12:55:16 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.2.2

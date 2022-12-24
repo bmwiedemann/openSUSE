@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac) >= 1.3.1
 BuildRequires:  pkgconfig(flac++)
-BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
