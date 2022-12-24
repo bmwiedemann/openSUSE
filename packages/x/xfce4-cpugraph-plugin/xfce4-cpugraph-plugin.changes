@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 24 08:15:26 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.7
+  * Bump build requirements for Xfce 4.18.0
+  * Remove code obsoleted by libxfce4util-4.17.2
+  * Fix GLib warnings occurring with newer xfce4-dev-tools
+  * Fix intltool lock file bug in make distcheck
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Wed Feb  2 18:57:09 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.2.6

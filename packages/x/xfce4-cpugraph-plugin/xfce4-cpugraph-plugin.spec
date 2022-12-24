@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.16.0
 %define plugin cpugraph
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        CPU Graph Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -31,9 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
