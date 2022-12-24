@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-session
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.16.0
+Version:        4.18.0
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-session/start
-Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.16/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfce4-session/4.18/%{name}-%{version}.tar.bz2
 %if %{with git}
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts-git.patch bnc#789057 maurizio.galli@gmail.com-- Adapt upstream sessions script to openSUSE.
 Patch0:         xfce4-session-adapt-session-scripts-git.patch
 # PATCH-FIX-OPENSUSE add-light-locker-support.patch  maurizio.galli@gmail.com -- add light-locker to xflock4 script.
-Patch2:         add-light-locker-support-git.patch
 %else
 # PATCH-FIX-OPENSUSE xfce4-session-adapt-session-scripts.patch bnc#789057 gber@opensuse.org -- Adapt upstream sessions script to openSUSE.
 Patch1:         xfce4-session-adapt-session-scripts.patch
 # PATCH-FIX-OPENSUSE add-light-locker-support.patch  -- add light-locker to xflock4 script.
-Patch3:         add-light-locker-support.patch
 %endif
 BuildRequires:  fdupes
 BuildRequires:  iceauth
@@ -45,14 +43,15 @@ BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gnome-keyring-1)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.10
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.1
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.2
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)

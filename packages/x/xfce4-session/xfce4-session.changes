@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec 22 13:18:02 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Bump requirements for Xfce 4.18
+  * Translation Updates
+- Remove add-light-locker-support-git.patch and add-light-locker-support.patch
+
+- Update to version 4.17.2
+  * logout-dialog: New Xfconf property "ShowSave" (!29)
+  * bump copyright year to 2022
+
+- Update to version 4.17.1
+  * Translation Updates
+
+- Update to version 4.17.0
+  * settings: Revert type hint change
+  * Check getgrgid(3) return value to avoid crash
+  * build: Fix intltool lock file problem during make distcheck
+  * Remove pre-defined lockers
+  * Refresh list of screensavers (#17)
+  * Do not mind output of screensaver, if successful
+  * Run custom command in a separate shell
+  * Avoid extra pause by redirecting stdin
+  * Update COPYING
+  * Increase switch user timeout (!25)
+  * xflock4: Apply initial delay before running a screensaver/locker (#29)
+  * xflock4: Update copyrights
+  * xflock4: make the script executable
+  * Add labels to inline toolbar buttons
+  * Use correct icon for Close button
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Dec 23 01:25:05 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 4.16.0
