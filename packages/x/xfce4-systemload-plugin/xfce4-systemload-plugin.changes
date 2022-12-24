@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Dec 22 09:49:28 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add convert-gulong.patch to avoid an otherwise impossible
+  conversion on i586.
+
+-------------------------------------------------------------------
+Sun Dec 18 15:17:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Remove code obsoleted by libxfce4util-4.17.2
+  * Fix GLib warnings occurring with newer xfce4-dev-tools
+  * Fix intltool lock file bug in make distcheck
+  * Code cleanup: Update variable declarations, extend maximum line length
+  * Code cleanup: Replace gboolean with bool where possible
+  * Code cleanup: Remove void from
+  * Code cleanup: Remove typedef keywords
+  * Add BSD-2 license badge to README
+  * Rename all files from C to C++
+  * Bump required Xfce4 libs from 4.12 to 4.16
+  * Update copyright notices, copyright years and author emails
+  * Cleanup Makefile.am
+  * Update configure.ac.in syntax
+  * Document rgba_equal() function
+  * Don't save default colors to Xfconf configuration file
+  * Move swap to be next to mem
+  * Update default colors
+  * Decouple the program order from the visual order of monitors
+  * Bump required XDT version to 4.14
+  * Avoid G_GNUC_FALLTHROUGH to enable compilation with GLib earlier than
+    2.60
+  * Translation Updates:
+  Albanian, Arabic, Basque, Belarusian, Bulgarian, Catalan, Chinese
+  (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch, Eastern
+  Armenian, English (Australia), English (Canada), English (United
+  Kingdom), Estonian, Finnish, French, Galician, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Interlingue, Italian, Japanese,
+  Korean, Lithuanian, Malay, Norwegian Bokmål, Occitan (post 1500),
+  Polish, Portuguese, Russian, Serbian, Slovak, Slovenian, Spanish,
+  Swedish, Thai, Turkish, Ukrainian, Uyghur
+
+-------------------------------------------------------------------
 Tue Mar 23 10:35:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.3.1
