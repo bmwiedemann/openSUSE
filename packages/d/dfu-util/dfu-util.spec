@@ -1,7 +1,7 @@
 #
 # spec file for package dfu-util
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,11 +42,14 @@ to mobile phones.
 
 %install
 %make_install
+install -m 755 dfuse-pack.py %{buildroot}/%{_bindir}/dfuse-pack
+sed -i 's|#!/usr/bin/python|#!/usr/bin/python3|g' %{buildroot}/%{_bindir}/dfuse-pack
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog DEVICES.txt README
 %{_bindir}/dfu-*
+%{_bindir}/dfuse-pack
 %{_mandir}/man1/dfu-util.1%{?ext_man}
 %{_mandir}/man1/dfu-prefix.1%{?ext_man}
 %{_mandir}/man1/dfu-suffix.1%{?ext_man}
