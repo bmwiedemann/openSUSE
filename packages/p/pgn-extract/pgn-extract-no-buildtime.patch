@@ -1,7 +1,8 @@
-diff -Nur pgn-extract/argsfile.c new/argsfile.c
---- pgn-extract/argsfile.c	2021-01-27 12:22:02.000000000 +0100
-+++ new/argsfile.c	2021-04-29 20:11:53.583307686 +0200
-@@ -259,8 +259,8 @@
+Index: pgn-extract/argsfile.c
+===================================================================
+--- pgn-extract.orig/argsfile.c
++++ pgn-extract/argsfile.c
+@@ -277,8 +277,8 @@ usage_and_exit(void)
      const char **data = help_data;
  
      fprintf(GlobalState.logfile,
@@ -10,5 +11,5 @@ diff -Nur pgn-extract/argsfile.c new/argsfile.c
 +            "pgn-extract %s: a Portable Game Notation (PGN) manipulator.\n",
 +            CURRENT_VERSION);
      fprintf(GlobalState.logfile,
-             "Copyright (C) 1994-2021 David J. Barnes (d.j.barnes@kent.ac.uk)\n");
+             "Copyright (C) 1994-2022 David J. Barnes (d.j.barnes@kent.ac.uk)\n");
      fprintf(GlobalState.logfile, "%s\n\n", URL);

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 23 13:42:39 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 22.11
+  * Bug fixes
+  * added --firstgame and --gamelimit 
+  * Regular expressions added to tag matching via -t
+  * added --seventyfive , --repetition5 
+  * Added recognition of some en passant indicators in the input. They are deleted in the output version.
+  * Added recognition of single-line comments. 
+  * Added -Wfen, --deletesamesetup, --addfencastling , --detag
+
+-------------------------------------------------------------------
 Thu Apr 29 17:48:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 20.02

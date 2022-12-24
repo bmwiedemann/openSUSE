@@ -1,7 +1,8 @@
-diff -Nur pgn-extract/argsfile.c new/argsfile.c
---- pgn-extract/argsfile.c	2021-01-27 12:22:02.000000000 +0100
-+++ new/argsfile.c	2021-04-29 20:25:15.746494374 +0200
-@@ -133,7 +133,7 @@
+Index: pgn-extract/argsfile.c
+===================================================================
+--- pgn-extract.orig/argsfile.c
++++ pgn-extract/argsfile.c
+@@ -136,7 +136,7 @@ usage_and_exit(void)
          "-D -- don't output duplicate games.",
          "-eECO_file -- perform ECO classification of games. The optional",
          "      ECO_file should contain a PGN format list of ECO lines",
@@ -10,10 +11,11 @@ diff -Nur pgn-extract/argsfile.c new/argsfile.c
          "-E[123 etc.] -- split output into separate files according to ECO.",
          "      E1 : Produce files from ECO letter, A.pgn, B.pgn, ...",
          "      E2 : Produce files from ECO letter and first digit, A0.pgn, ...",
-diff -Nur pgn-extract/help.html new/help.html
---- pgn-extract/help.html	2021-01-27 12:22:02.000000000 +0100
-+++ new/help.html	2021-04-29 20:27:01.234728770 +0200
-@@ -211,7 +211,7 @@
+Index: pgn-extract/help.html
+===================================================================
+--- pgn-extract.orig/help.html
++++ pgn-extract/help.html
+@@ -243,7 +243,7 @@ of this page before attempting to use pg
        <li>-D - don't output duplicate extracted game scores.
        <li>-eECO_file - perform ECO classification of games. The optional
              ECO_file should contain a PGN format list of ECO lines
@@ -22,7 +24,7 @@ diff -Nur pgn-extract/help.html new/help.html
        <li>-E[123 etc.] - split output into separate files according to ECO.
          <ul>
              <li>E1 : Produce files from ECO letter, A.pgn, B.pgn, ...
-@@ -1501,7 +1501,7 @@
+@@ -1627,7 +1627,7 @@ believe that this was put together by Ew
  others, to whom appropriate thanks is due.  The -e flag requests
  pgn-extract to add/replace ECO classifications in the games it outputs.
  This is done by firstly reading a file of ECO lines in PGN format
@@ -31,9 +33,10 @@ diff -Nur pgn-extract/help.html new/help.html
  resulting positions. As the games are then read they are looked up in
  the table to find a classification. The deepest match is found.
  A match is allowed within six half moves of the length of the ECO line.
-diff -Nur pgn-extract/main.c new/main.c
---- pgn-extract/main.c	2021-01-03 14:43:15.000000000 +0100
-+++ new/main.c	2021-04-29 20:27:25.909847943 +0200
+Index: pgn-extract/main.c
+===================================================================
+--- pgn-extract.orig/main.c
++++ pgn-extract/main.c
 @@ -48,7 +48,7 @@
   * a file of ECO classificiations.
   */
