@@ -1,5 +1,5 @@
 #
-# spec file for package python-py7zr
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,36 +16,55 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-Name:           python-py7zr
-Version:        0.11.3
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-py7zr%{psuffix}
+Version:        0.20.2
 Release:        0
 Summary:        Library and utility to support 7zip
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/miurahr/py7zr
 Source0:        https://files.pythonhosted.org/packages/source/p/py7zr/py7zr-%{version}.tar.gz
-BuildRequires:  %{python_module pep517}
-BuildRequires:  %{python_module pyannotate}
-BuildRequires:  %{python_module pycryptodome}
-BuildRequires:  %{python_module pylzma}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module texttable}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 63}
+BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module wheel}
-# SECTION test requirements
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-Brotli >= 1.0.9
+Requires:       python-multivolumefile >= 0.2.3
+Requires:       python-psutil
+Requires:       python-pybcj >= 0.6.0
+Requires:       python-pycryptodomex >= 3.6.6
+Requires:       python-pyzstd >= 0.14.4
+Requires:       python-texttable
+Requires:       (python-pyppmd >= 0.18.1 with python-pyppmd < 1.1.0)
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib_metadata
+%endif
+%if 0%{?python_version_nodots} > 36
+Requires:       python-inflate64 >= 0.3.1
+%endif
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%if %{with test}
+BuildRequires:  %{python_module py-cpuinfo}
+BuildRequires:  %{python_module py7zr = %{version}}
+BuildRequires:  %{python_module pyannotate}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-remotedata}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
-# /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python-pycryptodome
-Requires:       python-texttable
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,24 +73,23 @@ py7zr is a library and utility to support 7zip archive compression, decompressio
 
 %prep
 %setup -q -n py7zr-%{version}
-find . -type f -name "*.py" -exec sed -i \
-       -e '1s|/usr/bin/env python$|/usr/bin/python3|g' \
-       -e '1s|/usr/bin/python |/usr/bin/python3 |g' \
-       {} \;
+# remove shebangs from source
+sed -i '1{/#!/d}' py7zr/*.py
 
-sed -i -e 's|setuptools-scm>=3.5.0|setuptools-scm|g' setup.cfg
-sed -i -e '/addopts/d' tox.ini
-
+%if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/py7zr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-for i in __init__.py __main__.py archiveinfo.py callbacks.py cli.py compressor.py helpers.py py7zr.py ; do
-  %python_expand chmod +x %{buildroot}%{$python_sitelib}/py7zr/$i
-done
+%endif
+
+%if %{with test}
+%check
+%pytest
+%endif
 
 %post
 %python_install_alternative py7zr
@@ -79,16 +97,13 @@ done
 %postun
 %python_uninstall_alternative py7zr
 
-%check
-# different format of argparse in python3.10
-python310_donttest=("-k" "not (test_cli_help or test_cli_no_subcommand)")
-%pytest -m "not benchmark" "${$python_donttest[@]}"
-
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst Changelog.rst
 %{python_sitelib}/py7zr
 %{python_sitelib}/py7zr-%{version}*-info
 %python_alternative %{_bindir}/py7zr
+%endif
 
 %changelog

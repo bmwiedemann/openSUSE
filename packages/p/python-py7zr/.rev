@@ -23,4 +23,33 @@
     <comment></comment>
     <requestid>989323</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c6ce5a01b5b853de398ff3f3b5c59dc</srcmd5>
+    <version>0.20.2</version>
+    <time>1671889890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.2
+  * Fix error with good path data, when detecting wrong path with
+    new canonical_path(), and drop resolve() call on path.
+- Release 0.20.1
+  ## Security
+  * Fix sanity check for path traversal attack(#480)
+  * Add path checker in writef() and writestr() methods that
+    ignores evil pass.
+    - When pass arcname as evil path such as
+      &quot;../../../../tmp/evil.sh&quot;
+    - it raises ValueError
+  * Check symlink and junction is under target folder when
+    extraction
+- Release 0.20.0
+  * Support enhanced deflate compression.(#472)
+  * Bump setuptools@63 and setuptools_scm@7 (#473)
+  * Deprecate Python 3.6 support (#473)
+- Fixes boo#1206141 CVE-2022-44900
+- Update to version 0.19.0
+  * big changelog
+- Move tests to multibuild
+</comment>
+    <requestid>1044224</requestid>
+  </revision>
 </revisionlist>

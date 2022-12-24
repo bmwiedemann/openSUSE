@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Dec 21 10:02:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.20.2
+  * Fix error with good path data, when detecting wrong path with
+    new canonical_path(), and drop resolve() call on path.
+- Release 0.20.1
+  ## Security
+  * Fix sanity check for path traversal attack(#480)
+  * Add path checker in writef() and writestr() methods that
+    ignores evil pass.
+    - When pass arcname as evil path such as
+      "../../../../tmp/evil.sh"
+    - it raises ValueError
+  * Check symlink and junction is under target folder when
+    extraction
+- Release 0.20.0
+  * Support enhanced deflate compression.(#472)
+  * Bump setuptools@63 and setuptools_scm@7 (#473)
+  * Deprecate Python 3.6 support (#473)
+- Fixes boo#1206141 CVE-2022-44900
+
+-------------------------------------------------------------------
+Fri Jul 15 07:54:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.19.0
+  * big changelog
+- Move tests to multibuild
+
+-------------------------------------------------------------------
 Thu Jul 14 18:23:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove ancient python-pathlib from the build requirements but
