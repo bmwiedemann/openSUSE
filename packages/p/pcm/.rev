@@ -112,4 +112,16 @@
     <comment></comment>
     <requestid>1037863</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cbd5037d0dca185688362408047998ea</srcmd5>
+    <version>202212</version>
+    <time>1671889906</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 202212:
+  * pcm-memory: add SPR HBM support
+  * support multiple hosts for Grafana dashboard with prometheus
+  * fixes for pcm-iio/pcm-accel
+</comment>
+    <requestid>1044811</requestid>
+  </revision>
 </revisionlist>

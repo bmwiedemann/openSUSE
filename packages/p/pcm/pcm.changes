@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 23 11:00:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202212:
+  * pcm-memory: add SPR HBM support
+  * support multiple hosts for Grafana dashboard with prometheus
+  * fixes for pcm-iio/pcm-accel
+
+-------------------------------------------------------------------
 Thu Nov 24 10:00:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
 
 updated to the new upstream repository location and the name

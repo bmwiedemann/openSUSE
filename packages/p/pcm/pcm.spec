@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202211
+Version:        202212
 Release:        0
 Summary:        Intel(r) Performance Counter Monitor
 License:        BSD-3-Clause
