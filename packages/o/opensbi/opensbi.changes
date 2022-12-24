@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 24 15:29:37 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.2
+  * RISC-V AIA v1.0.0 support
+  * Cadence UART driver
+  * Platform specific PMU device operations
+  * Trap handling improvements for platforms with H-extension
+  * Semihosting support
+  * T-HEAD C9XX PMU and CLINT support
+  * FDT based drivers for Andes AE350 platform
+  * Andes AE350 platform improvements
+  * Allow enabling/disabling of SBI extensions via Kconfig
+  * Renesas SCIF serial driver
+  * Renesas RZ/Five platform support
+
+-------------------------------------------------------------------
 Sat Jun 25 07:03:24 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.1

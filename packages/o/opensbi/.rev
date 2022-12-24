@@ -110,4 +110,23 @@
   * SBI v1.0 specification support</comment>
     <requestid>985008</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79a2f2f7ff334070a9359618855747e9</srcmd5>
+    <version>1.2</version>
+    <time>1671901995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 1.2
+  * RISC-V AIA v1.0.0 support
+  * Cadence UART driver
+  * Platform specific PMU device operations
+  * Trap handling improvements for platforms with H-extension
+  * Semihosting support
+  * T-HEAD C9XX PMU and CLINT support
+  * FDT based drivers for Andes AE350 platform
+  * Andes AE350 platform improvements
+  * Allow enabling/disabling of SBI extensions via Kconfig
+  * Renesas SCIF serial driver
+  * Renesas RZ/Five platform support (forwarded request 1045227 from Andreas_Schwab)</comment>
+    <requestid>1045228</requestid>
+  </revision>
 </revisionlist>
