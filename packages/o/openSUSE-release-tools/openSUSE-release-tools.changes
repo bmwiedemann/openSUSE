@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec 16 11:21:11 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221216.84941bd:
+  * gocd: ensure timeout is set for packagelist generation
+
+-------------------------------------------------------------------
+Tue Dec 13 18:58:35 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221213.82ee694:
+  * dashboard: add openQA information to Legacy x86
+
+-------------------------------------------------------------------
+Mon Dec 12 16:47:23 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221212.41dbcc8:
+  * dashboard: Add LegacyX86 port and sort the list
+  * staging_accept: update Factory version in LegacyX86 port on accept
+
+-------------------------------------------------------------------
+Mon Dec 12 13:27:47 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221212.5effc63:
+  * retab the line use spaces instead
+  * publish_distro add  --now to set PUBLISH_DELAY=0
+
+-------------------------------------------------------------------
 Thu Dec 01 08:02:15 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20221130.db5d69f:
