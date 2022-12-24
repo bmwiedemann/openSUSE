@@ -17,7 +17,7 @@
 
 
 Name:           gnucash-docs
-Version:        4.12
+Version:        4.13
 Release:        9.1
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
