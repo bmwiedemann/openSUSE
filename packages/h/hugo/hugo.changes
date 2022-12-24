@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 23 17:54:39 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.109.0:
+  * Adjust "you need the extended version" error message
+  * resource/page: Slight adjustment of Page.Ancestors
+  * resource/page: Add Page.Ancestors
+  * build(deps): bump golang.org/x/tools from 0.3.0 to 0.4.0
+  * Annotate test assertions
+  * hugolib: Exclude non-linkable pages from translations map
+  * Add HUGO_PUBLISHDIR to the Node environment
+  * tpl: Improve template funcs GoDoc
+  * tpl/resources: Fix data race in ToCSS
+  * tocss: Add some more test cases
+  * tocss: Fix unquote case with double quotes
+  * Allow "fast render mode" even if --disableLiveReload is set
+  * tocss: Add vars option
+  * modules: Improve "module workspace" not found error
+  * modules: Adjust watch logic vs workspace use definitions
+  * Add any configured Go Workspace file to the config watcher
+  * modules: Make the module.workspace=off as default (note)
+  * helpers: Allow at signs in UnicodeSanitize (note)
+  * parser/metadecoders: Remove superflous cast in test
+  * parser/metadecoders: Simplify nil check in Unmarshal
+  * parser/metadecoders: Add empty /data JSON file as empty map
+  * Also consider wrapped errors when checking for file IsNotExist errors
+  * tpl/openapi3: Wrap *kopenapi3.T
+  * resources/js: Fix some import discrepancies between Hugo and ESBuild
+  * github: Update to Dart Sass 1.56.2
+  * github: Use ruby/setup-ruby
+  * parser/metadecoders: Fix spelling
+
+-------------------------------------------------------------------
 Tue Dec 06 19:33:19 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.108.0:
