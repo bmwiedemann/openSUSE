@@ -24,7 +24,7 @@
 %bcond_without  apparmor
 
 Name:           mtail
-Version:        3.0.0rc50
+Version:        3.0.0rc51
 Release:        0
 Summary:        Tool for extracting metrics from application logs
 License:        Apache-2.0

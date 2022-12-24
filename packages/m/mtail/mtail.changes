@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Dec 22 14:34:19 UTC 2022 - michael@stroeder.com
+
+- Update to version 3.0.0rc51:
+  * Bump goreleaser/goreleaser-action from 3 to 4
+  * Bump github.com/prometheus/common from 0.37.0 to 0.38.0
+  * Bump github.com/prometheus/client_golang from 1.13.1 to 1.14.0
+  * Bump go.opencensus.io from 0.23.0 to 0.24.0
+  * Bump github.com/prometheus/client_golang from 1.13.0 to 1.13.1
+  * Bump hmarr/auto-approve-action from 3.0.0 to 3.1.0
+  * Bump lewagon/wait-on-check-action from 1.1.2 to 1.2.0
+  * Bump hmarr/auto-approve-action from 2.4.0 to 3.0.0
+  * Bump actions/stale from 5 to 6
+  * Fix linter error
+  * Disables rendering dead links
+  * Add http_info_endpoint to enable and disable info endpoints
+  * Add http_debugging_endpoint flag to allow disabeling http debug endpoint
+    (fixes #305)
+  * Bump github.com/google/go-cmp from 0.5.8 to 0.5.9
+  * Bump hmarr/auto-approve-action from 2.2.1 to 2.4.0
+  * Run gofumpt
+  * Fix memory leak on corrupt unicode character
+  * Bump github.com/prometheus/client_golang from 1.12.2 to 1.13.0
+  * ci: Remove actions/cache in favour of setup-go's cache.
+  * ci: Use the version of go specified in go.mod
+  * Fix missing imports.
+  * ci: Fix typo in name of sha-number file on non pull request.
+
+-------------------------------------------------------------------
 Wed Aug 03 20:23:02 UTC 2022 - michael@stroeder.com
 
 - Update to version 3.0.0rc50:

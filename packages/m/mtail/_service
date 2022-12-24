@@ -3,7 +3,7 @@
     <param name="url">https://github.com/google/mtail.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v3.0.0-rc50</param>
+    <param name="revision">v3.0.0-rc51</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.+)-rc(.+)</param>
