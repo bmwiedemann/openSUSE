@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ffmpeg-python
 Version:        0.2.0
@@ -58,12 +57,14 @@ sed -i 's/collections.Iterable/collections.abc.Iterable/' ffmpeg/_run.py
 
 %check
 # skip some tests since we do not have FFmpeg with mp4-support on the public OBS instance
+# test__probe fails because of missing libopenh264 on plain openSUSE
 # test_pipe - fails on Leap due to too old FFmpeg
-%pytest -k 'not (test__run or test__run__multi_output or test_pipe)'
+%pytest -k 'not (test__run or test__run__multi_output or test_pipe or test__probe)'
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/ffmpeg*
+%{python_sitelib}/ffmpeg
+%{python_sitelib}/ffmpeg_python-%{version}*-info
 
 %changelog
