@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Dec 22 10:30:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Increase hypothesis deadline time for test_fuzzer
+
+-------------------------------------------------------------------
+Wed Dec 21 11:05:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v1.0.0
+- Required by py7zr
