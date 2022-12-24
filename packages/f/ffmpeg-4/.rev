@@ -529,4 +529,13 @@
   out of bounds read in update_block_in_prev_frame() (bsc#1205388). (forwarded request 1035935 from AZhou)</comment>
     <requestid>1036210</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>ab33158be7d69e956c83d2bfb2dee32a</srcmd5>
+    <version>4.4.3</version>
+    <time>1671889877</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2022-3109.patch: Backport from upstream to fix
+  null pointer dereference in vp3_decode_frame() (bsc#1206442). (forwarded request 1044384 from AZhou)</comment>
+    <requestid>1044594</requestid>
+  </revision>
 </revisionlist>

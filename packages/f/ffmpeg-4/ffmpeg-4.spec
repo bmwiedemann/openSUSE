@@ -121,6 +121,7 @@ Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
 Patch12:        ffmpeg-CVE-2022-3964.patch
+Patch13:        ffmpeg-CVE-2022-3109.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

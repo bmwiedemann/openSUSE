@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 23 08:09:25 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2022-3109.patch: Backport from upstream to fix
+  null pointer dereference in vp3_decode_frame() (bsc#1206442).
+
+-------------------------------------------------------------------
 Wed Nov 16 01:31:02 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
