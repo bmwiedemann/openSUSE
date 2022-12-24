@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>973574</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>96b6e35741b872bec7aea8b6f1eac6c1</srcmd5>
+    <version>0.9.5</version>
+    <time>1671889862</time>
+    <user>dimstar_suse</user>
+    <comment>- Add multibuild for tests to avoid package build cycle.
+  flasgger -&gt; flex (testing) -&gt; httpbin -&gt; flasgger
+- Re-activate test suite
+- Also remove the conditional definition of python_module.
+</comment>
+    <requestid>1044191</requestid>
+  </revision>
 </revisionlist>

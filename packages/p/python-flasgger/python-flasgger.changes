@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 22 08:47:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add multibuild for tests to avoid package build cycle.
+  flasgger -> flex (testing) -> httpbin -> flasgger
+
+-------------------------------------------------------------------
+Sun Oct 23 10:03:15 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite
+- Also remove the conditional definition of python_module.
+
+-------------------------------------------------------------------
 Thu Apr 28 07:23:15 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.9.5
