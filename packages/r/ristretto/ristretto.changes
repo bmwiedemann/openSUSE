@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 22 16:58:34 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.12.4
+  * Bump requirements for Xfce 4.18
+  * Appearance Changes:
+    - thumbnailer: Increase thumbnail sizes (#81)
+  * Code Refactoring:
+    - build: Let xdt-depends.m4 macros set GLib macros
+    - flatpak: Update D-Bus permissions after changing file manager method
+    - flatpak: Updates from Flathub
+    - Remove duplicated RsttoMainWindow:device-scale property
+  * Bug Fixes:
+    - use-thunar-properties: Add & improve comments (!37)
+    - thumbnailer: Add a warning if D-Bus proxy creation failed
+    - Allow Xfconf initialization to fail (#19)
+    - thumbnailer: Add missing sanity checks
+    - Use a better-known bus name and object path for D-Bus proxy (#95, !36)
+    - Properly update iterator when browsing a list containing invalid files (#94)
+    - thumbnailer: Remove invalid files after processing thumbnail queue (#94)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Jul 10 17:19:40 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.12.3
