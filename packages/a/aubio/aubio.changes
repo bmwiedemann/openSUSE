@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 13 09:19:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libavresample) with pkgconfig(libswresample)
+  BuildRequires as ffmpeg-5 does not provide libavresample.
+- Add cdfe9ce.patch: [source_avcodec] avoid deprecation warning
+  with latest avcodec api (58.134.100).
+- Add 8a05420.patch: [source_avcodec] define FF_API_LAVF_AVCTX for
+  libavcodec > 59, thx @berolinux (closes gh-353).
+
+-------------------------------------------------------------------
 Sat Apr  9 15:14:06 UTC 2022 - dliw@posteo.net
 
 - Enable fftw3

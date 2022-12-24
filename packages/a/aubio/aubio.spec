@@ -27,6 +27,11 @@ Group:          Development/Libraries/C and C++
 URL:            http://aubio.org
 Source:         http://aubio.org/pub/%{name}-%{version}.tar.bz2
 Source1:        http://aubio.org/pub/%{name}-%{version}.tar.bz2.asc
+# PATCH-FIX-UPSTREAM https://github.com/aubio/aubio/commit/cdfe9ce.patch -- [source_avcodec] avoid deprecation warning with latest avcodec api (58.134.100)
+Patch0:         cdfe9ce.patch
+# PATCH-FIX-UPSTREAM https://github.com/aubio/aubio/commit/8a05420.patch -- [source_avcodec] define FF_API_LAVF_AVCTX for libavcodec > 59, thx @berolinux (closes gh-353)
+Patch1:         8a05420.patch
+
 Source99:       baselibs.conf
 BuildRequires:  alsa-devel
 BuildRequires:  doxygen
@@ -41,7 +46,7 @@ BuildRequires:  txt2man
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavresample)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libavutil)
 %endif
 
@@ -81,7 +86,7 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 This package includes the example programs for aubio library.
 
 %prep
-%setup -q
+%autosetup -p1
 # set proper library dir
 sed -i -e "s#/lib#/%{_lib}#" src/wscript_build
 # set python3 as testrunner
