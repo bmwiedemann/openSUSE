@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 24 10:50:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add sunpy-pr6662-np1.24.patch gh#sunpy/sunpy#6662
+  * Ignore deprecation message from numpy 1.24
+
+-------------------------------------------------------------------
 Mon Nov 21 16:45:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v4.1.0

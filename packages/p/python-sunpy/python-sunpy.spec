@@ -26,6 +26,8 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{v
 Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
+# PATCH-FIX-UPSTREAM sunpy-pr6662-np1.24.patch gh#sunpy/sunpy#6662
+Patch2:         sunpy-pr6662-np1.24.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 4.2.1}
 BuildRequires:  %{python_module base => 3.8}
