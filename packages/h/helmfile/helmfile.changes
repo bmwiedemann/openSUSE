@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Dec 23 15:20:12 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.149.0:
+  New feature
+  * Declare the use of --reuse-values in helmDefaults (#527)
+  * Pass helmfile.yaml via stdin using -f - (#520)
+  * The secrets field now accept go-getter URLs as well (#560)
+  * Declare the use of Helm’s --post-render via Helmfile flags,
+    helmfile.yaml helmDefaults and release fields (#510)
+  * Support helm v3.10.3 (#579)
+
+  What's Changed
+  * Enhance make fmt to cover running gci for golangci-lint compat
+    by @mumoshu in #515
+  * Use log capturing helper in TestApply_hooks by @mumoshu in #516
+  * Use the new log capturing helper in all remaining tests by
+    @mumoshu in #517
+  * declare "reuse values" control mode in helmDefaults by
+    @kkoralsky in #527
+  * Fix getArray function copy error by @xiaomudk in #533
+  * Remove redundant metadata fields from test samples by
+    @xiaomudk in #535
+  * Allow helmfile statefile to passed by stdin by @xiaomudk in #520
+  * Refactor integration tests by @yxxhero in #531
+  * fix ghr badge by @yxxhero in #537
+  * fix unit test by @yxxhero in #538
+  * fix ghcr-badge in docs by @yxxhero in #539
+  * rework dockerfiles by @jouve in #519
+  * use dyff as yamldiff tool by @yxxhero in #542
+  * fix go mod by @yxxhero in #543
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.1.1
+    to 3.2.0 by @dependabot in #551
+  * build(deps): bump github.com/variantdev/vals from 0.19.0 to
+    0.20.0 by @dependabot in #552
+  * rm embrawtest/myapp/foo.yaml.gotmpl by @yxxhero in #554
+  * build(deps): bump github.com/Masterminds/sprig/v3 from 3.2.2
+    to 3.2.3 by @dependabot in #556
+  * typo: fix typo in cmd/apply.go by @yxxhero in #549
+  * build(deps): bump go.uber.org/zap from 1.23.0 to 1.24.0
+    by @dependabot in #557
+  * build(deps): bump golang.org/x/term from 0.2.0 to 0.3.0
+    by @dependabot in #562
+  * Use go-getter with secrets as well by @itscaro in #560
+  * Fix snapshot tests to pass regardless of helm version by
+    @yxxhero in #572
+  * Fix preapply hooks are not called on no diff when run apply
+    subcommand by @xiaomudk in #522
+  * build(deps): bump github.com/variantdev/vals from 0.20.0 to
+    0.21.0 by @dependabot in #570
+  * build(deps): bump github.com/go-test/deep from 1.0.8 to
+    1.1.0 by @dependabot in #569
+  * build(deps): bump k8s.io/apimachinery from 0.25.4 to
+    0.26.0 by @dependabot in #568
+  * Add documentation on go-getter cache by @itscaro in #566
+  * Allow running images with users other than root by @pathob
+    in #546
+  * add xiaomudk as maintainer by @yxxhero in #504
+  * Avoid --skip-refresh on local charts by @indrekj in #541
+  * fea(#507): support assign --post-renderer flags ， helmDefaults
+    config ， release config when use helm v3 by @tanguofu in #510
+  * remove temporary dir as well by @itscaro in #563
+  * build(deps): bump go.uber.org/multierr from 1.6.0 to 1.9.0 by
+    @dependabot in #575
+  * add post render integration test by @yxxhero in #576
+  * clean: optimize post-render code by @yxxhero in #577
+  * build(deps): bump helm.sh/helm/v3 from 3.10.2 to 3.10.3 by
+    @dependabot in #578
+  * bump helm to v3.10.3 by @yxxhero in #579
+  * update postrenderer docs by @yxxhero in #580
+
+-------------------------------------------------------------------
 Tue Nov 15 09:53:14 UTC 2022 - manfred.h@gmx.net
 
 - Remove incorrectly added go_provides and go_nostrip macros
