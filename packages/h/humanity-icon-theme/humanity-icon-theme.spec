@@ -1,7 +1,7 @@
 #
 # spec file for package humanity-icon-theme
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define _name   Humanity
 Name:           humanity-icon-theme
-Version:        0.6.15
+Version:        0.6.16
 Release:        0
 Summary:        Ayatana Humanity icon theme
 License:        GPL-2.0-only
 Group:          System/GUI/Other
-Url:            https://launchpad.net/humanity
+URL:            https://launchpad.net/humanity
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
