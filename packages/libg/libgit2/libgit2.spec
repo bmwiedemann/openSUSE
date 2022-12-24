@@ -26,7 +26,6 @@ License:        GPL-2.0-only WITH GCC-exception-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://libgit2.github.com/
 Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       baselibs.conf
 BuildRequires:  cmake >= 2.8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
