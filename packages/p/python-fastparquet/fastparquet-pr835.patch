@@ -1,0 +1,183 @@
+From f035a2d7b37e2cbdef1a99bc6130be7e4afcf35f Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@alumni.utoronto.ca>
+Date: Thu, 22 Dec 2022 12:57:32 -0500
+Subject: [PATCH 1/5] more print
+
+---
+ fastparquet/cencoding.pyx | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/fastparquet/cencoding.pyx b/fastparquet/cencoding.pyx
+index 4ab48be6..c151aff9 100644
+--- a/fastparquet/cencoding.pyx
++++ b/fastparquet/cencoding.pyx
+@@ -225,6 +225,7 @@ cdef void delta_read_bitpacked(NumpyIO file_obj, uint8_t bitwidth,
+             stop += 8
+         else:
+             o.write_int((data >> stop) & mask)
++            print("bitpack value", (data >> stop) & mask, data, stop, mask)
+             stop -= bitwidth
+             count -= 1
+ 
+@@ -239,11 +240,13 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+         const uint8_t[:] bitwidths
+         uint8_t bitwidth
+     values_per_miniblock = block_size // miniblock_per_block
++    print("\nstart", count, value, values_per_miniblock)
+     while True:
+         min_delta = zigzag_long(read_unsigned_var_int(file_obj))
+         bitwidths = file_obj.read(miniblock_per_block)
+         for i in range(miniblock_per_block):
+             bitwidth = bitwidths[i]
++            print("\n  miniblock", i, "width", bitwidth)
+             if bitwidth:
+                 temp = o.loc
+                 if count > 1:
+@@ -253,6 +256,7 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+                 for j in range(values_per_miniblock):
+                     temp = o.read_int()
+                     o.loc -= 4
++                    print("miniblock value", value)
+                     o.write_int(value)
+                     value += min_delta + temp
+                     count -= 1
+@@ -260,6 +264,7 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+                         return
+             else:
+                 for j in range(values_per_miniblock):
++                    print("miniblock value", value)
+                     o.write_int(value)
+                     value += min_delta
+                     count -= 1
+
+From c453e140355055be1077f2c99b24785444b4ab20 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@alumni.utoronto.ca>
+Date: Thu, 22 Dec 2022 13:02:27 -0500
+Subject: [PATCH 2/5] more
+
+---
+ fastparquet/cencoding.pyx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fastparquet/cencoding.pyx b/fastparquet/cencoding.pyx
+index c151aff9..6c2051c6 100644
+--- a/fastparquet/cencoding.pyx
++++ b/fastparquet/cencoding.pyx
+@@ -256,7 +256,7 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+                 for j in range(values_per_miniblock):
+                     temp = o.read_int()
+                     o.loc -= 4
+-                    print("miniblock value", value)
++                    print("miniblock value (bw)", value)
+                     o.write_int(value)
+                     value += min_delta + temp
+                     count -= 1
+
+From 76b8c4fefe703d980b72ad37841bb2e76b9da590 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@alumni.utoronto.ca>
+Date: Thu, 22 Dec 2022 13:32:27 -0500
+Subject: [PATCH 3/5] more
+
+---
+ fastparquet/cencoding.pyx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fastparquet/cencoding.pyx b/fastparquet/cencoding.pyx
+index 6c2051c6..9335b52a 100644
+--- a/fastparquet/cencoding.pyx
++++ b/fastparquet/cencoding.pyx
+@@ -223,6 +223,7 @@ cdef void delta_read_bitpacked(NumpyIO file_obj, uint8_t bitwidth,
+         if stop < 0:
+             data = ((data & 0X00FFFFFFFFFFFFFF) << 8) | file_obj.read_byte()
+             stop += 8
++            print("bin stop", bin(stop), bin(data))
+         else:
+             o.write_int((data >> stop) & mask)
+             print("bitpack value", (data >> stop) & mask, data, stop, mask)
+
+From bbb32d8ea7f2cb97a817a22c0357f1a023f79b42 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@alumni.utoronto.ca>
+Date: Thu, 22 Dec 2022 13:39:14 -0500
+Subject: [PATCH 4/5] trial
+
+---
+ fastparquet/cencoding.pyx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fastparquet/cencoding.pyx b/fastparquet/cencoding.pyx
+index 9335b52a..1be0a001 100644
+--- a/fastparquet/cencoding.pyx
++++ b/fastparquet/cencoding.pyx
+@@ -18,7 +18,7 @@ cdef extern from "string.h":
+ from cpython cimport (
+     PyBytes_FromStringAndSize, PyBytes_GET_SIZE, PyUnicode_DecodeUTF8,
+ )
+-from libc.stdint cimport uint8_t, uint32_t, int32_t, uint64_t, int64_t
++from libc.stdint cimport int8_t, uint8_t, uint32_t, int32_t, uint64_t, int64_t
+ 
+ 
+ cpdef void read_rle(NumpyIO file_obj, int32_t header, int32_t bit_width, NumpyIO o, int32_t itemsize=4):
+@@ -217,7 +217,7 @@ cdef void delta_read_bitpacked(NumpyIO file_obj, uint8_t bitwidth,
+                                NumpyIO o, uint64_t count, uint8_t itemsize=4):
+     cdef:
+         uint64_t data = 0
+-        char stop = -bitwidth
++        int8_t stop = -bitwidth
+         uint64_t mask = 0XFFFFFFFFFFFFFFFF >> (64 - bitwidth)
+     while count > 0:
+         if stop < 0:
+
+From 43e34e28b2e108f178b05bba8c109e2b131f5fc2 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@alumni.utoronto.ca>
+Date: Thu, 22 Dec 2022 13:43:11 -0500
+Subject: [PATCH 5/5] fix
+
+---
+ fastparquet/cencoding.pyx | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/fastparquet/cencoding.pyx b/fastparquet/cencoding.pyx
+index 1be0a001..90ba15db 100644
+--- a/fastparquet/cencoding.pyx
++++ b/fastparquet/cencoding.pyx
+@@ -223,10 +223,8 @@ cdef void delta_read_bitpacked(NumpyIO file_obj, uint8_t bitwidth,
+         if stop < 0:
+             data = ((data & 0X00FFFFFFFFFFFFFF) << 8) | file_obj.read_byte()
+             stop += 8
+-            print("bin stop", bin(stop), bin(data))
+         else:
+             o.write_int((data >> stop) & mask)
+-            print("bitpack value", (data >> stop) & mask, data, stop, mask)
+             stop -= bitwidth
+             count -= 1
+ 
+@@ -241,13 +239,11 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+         const uint8_t[:] bitwidths
+         uint8_t bitwidth
+     values_per_miniblock = block_size // miniblock_per_block
+-    print("\nstart", count, value, values_per_miniblock)
+     while True:
+         min_delta = zigzag_long(read_unsigned_var_int(file_obj))
+         bitwidths = file_obj.read(miniblock_per_block)
+         for i in range(miniblock_per_block):
+             bitwidth = bitwidths[i]
+-            print("\n  miniblock", i, "width", bitwidth)
+             if bitwidth:
+                 temp = o.loc
+                 if count > 1:
+@@ -257,7 +253,6 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+                 for j in range(values_per_miniblock):
+                     temp = o.read_int()
+                     o.loc -= 4
+-                    print("miniblock value (bw)", value)
+                     o.write_int(value)
+                     value += min_delta + temp
+                     count -= 1
+@@ -265,7 +260,6 @@ cpdef void delta_binary_unpack(NumpyIO file_obj, NumpyIO o):
+                         return
+             else:
+                 for j in range(values_per_miniblock):
+-                    print("miniblock value", value)
+                     o.write_int(value)
+                     value += min_delta
+                     count -= 1

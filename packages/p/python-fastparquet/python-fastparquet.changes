@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 23 09:18:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fox the test test_delta_from_def_2 on 
+  aarch64, armv7 and ppc64le:
+  * fastparquet-pr835.patch
+
+-------------------------------------------------------------------
 Fri Oct 28 15:47:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.3

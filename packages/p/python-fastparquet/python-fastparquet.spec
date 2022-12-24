@@ -25,6 +25,8 @@ URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fastparquet-pr813-updatefixes.patch gh#dask/fastparquet#813
 Patch1:         fastparquet-pr813-updatefixes.patch
+# PATCH-FIX-UPSTREAM fastparquet-pr835.patch gh#dask/fastparquet#835
+Patch2:         fastparquet-pr835.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module cramjam >= 2.3.0}
