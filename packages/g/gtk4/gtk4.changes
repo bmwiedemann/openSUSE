@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 22 20:52:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.8.3:
+  + GtkText:
+    - Claim gestures more selectively.
+    - Prevent unexpected notify::direction emissions.
+  + Accessibility: Remember if we don't find the a11y bus.
+  + DND: Prefer file:// urls over other protocols.
+  + GtkMountOperation: Work on Wayland.
+  + GtkListView: Cancel rubberband if not handling drag.
+  + Wayland: Fix button masks.
+  + Windows: Fix resizes with native decorations.
+  + X11: Fix some ordering problems with surface destruction.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 11 08:49:44 UTC 2022 - Daike Yu <yu.daike@suse.com>
 
 - Update gtk4.spec to align dependency version with meson.build
