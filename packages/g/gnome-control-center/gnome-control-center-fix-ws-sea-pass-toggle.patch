@@ -1,0 +1,28 @@
+From d6d05abeba9dffc4840e52d24dbef871c97ae38c Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Thu, 1 Dec 2022 11:17:38 +0800
+Subject: [PATCH] network: Fix wrong signal of SEA password visibility toggle
+
+Wrong pointer is used because of missing `_swapped`.
+---
+ panels/network/wireless-security/ws-sae.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/panels/network/wireless-security/ws-sae.c b/panels/network/wireless-security/ws-sae.c
+index 83fe0c793..c9e4e5040 100644
+--- a/panels/network/wireless-security/ws-sae.c
++++ b/panels/network/wireless-security/ws-sae.c
+@@ -212,8 +212,8 @@ ws_sae_new (NMConnection *connection)
+                                 (HelperSecretFunc) nm_setting_wireless_security_get_psk);
+ 	  }
+ 
+-  g_signal_connect (self->show_password_check, "toggled",
+-                    G_CALLBACK (show_toggled_cb), self);
++  g_signal_connect_swapped (self->show_password_check, "toggled",
++                            G_CALLBACK (show_toggled_cb), self);
+ 
+   /* Hide WPA/RSN for now since this can be autodetected by NM and the
+    * supplicant when connecting to the AP.
+-- 
+GitLab
+

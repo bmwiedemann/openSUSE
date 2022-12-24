@@ -1860,4 +1860,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206233</comment>
   </revision>
+  <revision rev="220" vrev="4">
+    <srcmd5>d8039475e0c6104d6ed1f093a02728d1</srcmd5>
+    <version>43.1</version>
+    <time>1671889857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044266</requestid>
+  </revision>
 </revisionlist>
