@@ -28,7 +28,6 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/X11
 Url:            https://github.com/linuxdeepin/qt5platform-plugins
 Source0:        https://github.com/linuxdeepin/qt5platform-plugins/archive/%{version}/%{name}-%{version}.tar.gz
-# Source1:        https://download.qt.io/official_releases/qt/5.14/%{qt_version}/submodules/qtbase-everywhere-src-%{qt_version}.tar.xz
 BuildRequires:  libqt5-linguist
 BuildRequires:  wayland-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -104,6 +103,8 @@ elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.12.7" ]; then
 elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.6+kde177" ]; then
     cp -r xcb/libqt5xcbqpa-dev/5.15.5 xcb/libqt5xcbqpa-dev/5.15.6
 elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.7+kde167" ]; then
+    cp -r xcb/libqt5xcbqpa-dev/5.15.5 xcb/libqt5xcbqpa-dev/5.15.7
+elif [ "`rpm -q --queryformat '%%{VERSION}' libQt5Core5`" = "5.15.7+kde177" ]; then
     cp -r xcb/libqt5xcbqpa-dev/5.15.5 xcb/libqt5xcbqpa-dev/5.15.7
 fi
 

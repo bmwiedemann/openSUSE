@@ -99,4 +99,12 @@
 - Fix build on Qt 5.15.7 (forwarded request 1035457 from hillwood)</comment>
     <requestid>1035458</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6fa5810066a21bd23f06428e62a58050</srcmd5>
+    <version>5.0.70</version>
+    <time>1671889947</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed (forwarded request 1045161 from hillwood)</comment>
+    <requestid>1045162</requestid>
+  </revision>
 </revisionlist>
