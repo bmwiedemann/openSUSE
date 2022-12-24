@@ -17,21 +17,19 @@
 
 
 Name:           vulkan-tools
-Version:        1.3.231
+Version:        1.3.236.0
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/KhronosGroup/Vulkan-Tools
-
-Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/v%version.tar.gz
-Patch1:         0001-cubepp-Fix-presentKHR-assert.patch
+Source:         https://github.com/KhronosGroup/Vulkan-Tools/archive/refs/tags/sdk-%version.tar.gz
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel >= 8.13.3743
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  pkgconfig(vulkan) >= 1.3.231
+BuildRequires:  pkgconfig(vulkan) >= 1.3.236
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -46,7 +44,7 @@ graphics applications such as games and interactive media.
 This package contains the Khronos official Vulkan tools and utilities.
 
 %prep
-%autosetup -p1 -n Vulkan-Tools-%version
+%autosetup -p1 -n Vulkan-Tools-sdk-%version
 
 %build
 mkdir -p glslang/bin
