@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 21 23:47:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.6
+  * Fix bytecode generation for concatenation of intervals where
+    selectors use different byteorder datatypes, e.g. IPv4
+    (network byte order).
+  * Fix match of uncommon protocol matches with raw expressions
+  * Unbreak insertion of rules with intervals ("sport {
+    3478-3497, 16384-16387 }")
+
+-------------------------------------------------------------------
 Wed Aug 17 19:21:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:
