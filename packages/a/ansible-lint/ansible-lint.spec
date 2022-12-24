@@ -31,7 +31,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.9.1
+Version:        6.10.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -98,17 +98,23 @@ Checks playbooks for practices and behavior that could potentially be improved.
 
 %prep
 %setup -n %{name}-%{version}
-sed -ri 's/(\[metadata\])/\1\nversion = %{version}/' setup.cfg
+sed -i '/^dynamic/d' pyproject.toml
+sed -i '/^description/a version = "%{version}"' pyproject.toml
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
 
 %build
-%{ansible_python_executable} -mpip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose . -w build/
+%{ansible_python_executable} -mpip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose --wheel-dir ./build/ .
+mkdir -p ./dist
+cp ./build/ansible_lint-*-none-any.whl ./dist/
 
 %install
-%{ansible_python_executable} -mpip install --root %{buildroot} --disable-pip-version-check --no-compile --no-deps --progress-bar off build/ansible_lint-*.whl
+
+%{ansible_python_executable} -mpip install --root %{buildroot} --disable-pip-version-check --no-compile --no-deps --progress-bar off --ignore-installed --no-index --verbose --find-links build/ansible_lint-*.whl ansible_lint==%{version}
 find %{buildroot}/%{ansible_python_sitelib} -name '*.pyc' -delete
 %{ansible_python_executable} -m compileall %{buildroot}/%{ansible_python_sitelib}
 %{ansible_python_executable} -O -m compileall %{buildroot}/%{ansible_python_sitelib}
+cp -vr src/ansiblelint/schemas %{buildroot}/%{ansible_python_sitelib}/%{lib_name}/
+cp -vr src/ansiblelint/data %{buildroot}/%{ansible_python_sitelib}/%{lib_name}/
 
 %fdupes -s %{buildroot}/%{ansible_python_sitelib}
 

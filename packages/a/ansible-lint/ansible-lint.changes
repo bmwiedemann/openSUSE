@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec 16 12:46:39 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- convert from setup.cfg to pyproject.toml
+- update to 6.10.0:
+  * Minor Changes
+    - Add schema for Antsibull changelogs (#2814) @ssbarnea
+    - Add a rule to validate module options (#2749) @ganeshrn
+    - Add meta-unsupported-ansible rule for checking requires_ansible values (#2770) @alisonlhart
+  * Bugfixes
+    - Avoid running lookup filters while evaluating jinja2 (#2821) @ssbarnea
+    - Update schema to accept a list for 'listen' (#2817) @zigarn
+    - Update changelog schema etag (#2818) @ssbarnea
+    - Fix args validation with setup module (#2813) @ssbarnea
+    - Adopt PEP-621 packaging (#2807) @ssbarnea
+    - Restore classic behavior of offline mode (#2806) @ssbarnea
+    - Avoid false positive with name[casing] (#2800) @ssbarnea
+    - Use JSON Schema to validate own config file (#2797) @ssbarnea
+    - Add has_jinja and has_glob to text module (#2794) @ssbarnea
+    - Update schema etags (#2791) @ssbarnea
+    - Fix redirected links (#2790) @ssbarnea
+    - Correct schema refresh logic (#2785) @ssbarnea
+    - Add OracleLinux to supported platforms and include version 8.7 and 9.1 (#2783) @facorazza
+
+-------------------------------------------------------------------
 Mon Dec  5 09:14:15 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.9.1:
