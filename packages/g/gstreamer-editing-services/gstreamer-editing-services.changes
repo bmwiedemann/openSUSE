@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 23 19:41:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + Fix building ges with tools disabled
+  + Fix leaks and minor races in GES
+
+-------------------------------------------------------------------
 Sat Oct 22 09:12:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:
