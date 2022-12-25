@@ -1113,4 +1113,20 @@
     <comment></comment>
     <requestid>1041656</requestid>
   </revision>
+  <revision rev="126" vrev="11">
+    <srcmd5>4aa58a078b41cc7d5d960b3df9cd281d</srcmd5>
+    <version>1.5.2</version>
+    <time>1671977657</time>
+    <user>dimstar_suse</user>
+    <comment>- Also obsolete pam_unix-32bit to have clean upgrade path.
+
+- Merge pam_unix back into pam, seperate package not needed anymore
+
+- Update pam-git.diff to current upstream
+  - pam_env: Use vendor specific pam_env.conf and environment as fallback
+  - pam_shells: Use the vendor directory
+  obsoletes pam_env_econf.patch
+- Refresh docbook5.patch</comment>
+    <requestid>1045205</requestid>
+  </revision>
 </revisionlist>

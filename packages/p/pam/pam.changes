@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Dec 24 13:31:33 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Also obsolete pam_unix-32bit to have clean upgrade path.
+
+-------------------------------------------------------------------
+Fri Dec 16 09:37:15 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Merge pam_unix back into pam, seperate package not needed anymore
+
+-------------------------------------------------------------------
+Thu Dec 15 12:47:53 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update pam-git.diff to current upstream
+  - pam_env: Use vendor specific pam_env.conf and environment as fallback
+  - pam_shells: Use the vendor directory
+  obsoletes pam_env_econf.patch
+- Refresh docbook5.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 16:43:49 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - pam_pwhistory-docu.patch, docbook5.patch: convert docu to

@@ -1,4 +1,4 @@
-From 681e88a5428904b478a37e65154d7cf0ba1a9eb5 Mon Sep 17 00:00:00 2001
+From 55e4d5c4aac39602518dd5d4ce03a4313775180f Mon Sep 17 00:00:00 2001
 From: Stefan Schubert <schubi@suse.de>
 Date: Tue, 25 Oct 2022 16:29:41 +0200
 Subject: [PATCH] doc: Update PAM documentation from DockBook 4 to DocBook 5
@@ -14,7 +14,7 @@ doc/sag/Makefile.am, doc/adg/Makefile.am, doc/mwg/Makefile.am:
 - Using RNG file instead of DTD file for checking XML files.
 
 configure.ac:
-- Added a new option for selecting RNG check file (-enable-docbook-rng)
+- Adding a new option for selecting RNG check file (-enable-docbook-rng)
 - Switching stylesheets to docbook 5
 - Checking DocBook 5 environment instead of DocBook 4 environment
 
@@ -152,7 +152,6 @@ Update from DockBook 4 to DocBook 5
  doc/sag/pam_warn.xml                          |  42 ++--
  doc/sag/pam_wheel.xml                         |  42 ++--
  doc/sag/pam_xauth.xml                         |  42 ++--
- examples/.gitignore                           |   2 +-
  modules/pam_access/README.xml                 |  32 +--
  modules/pam_access/access.conf.5.xml          |  20 +-
  modules/pam_access/pam_access.8.xml           |  63 +++--
@@ -163,7 +162,7 @@ Update from DockBook 4 to DocBook 5
  modules/pam_echo/README.xml                   |  29 +--
  modules/pam_echo/pam_echo.8.xml               |  45 ++--
  modules/pam_env/README.xml                    |  34 +--
- modules/pam_env/pam_env.8.xml                 |  59 +++--
+ modules/pam_env/pam_env.8.xml                 |  63 +++--
  modules/pam_env/pam_env.conf.5.xml            |  19 +-
  modules/pam_exec/README.xml                   |  32 +--
  modules/pam_exec/pam_exec.8.xml               |  65 +++--
@@ -257,7 +256,7 @@ Update from DockBook 4 to DocBook 5
  modules/pam_wheel/pam_wheel.8.xml             |  59 +++--
  modules/pam_xauth/README.xml                  |  35 +--
  modules/pam_xauth/pam_xauth.8.xml             |  65 +++--
- 236 files changed, 3398 insertions(+), 5101 deletions(-)
+ 235 files changed, 3399 insertions(+), 5102 deletions(-)
 
 diff --git a/Make.xml.rules.in b/Make.xml.rules.in
 index 27bb510ec..98beb9ed7 100644
@@ -292,7 +291,7 @@ index 27bb510ec..98beb9ed7 100644
  
  #CLEANFILES += $(man_MANS) README
 diff --git a/configure.ac b/configure.ac
-index 2f74d1b49..84cda219d 100644
+index 538195e55..afa749cf6 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -243,26 +243,35 @@ if test x"$enable_debug" = x"yes" ; then
@@ -339,7 +338,7 @@ index 2f74d1b49..84cda219d 100644
  AC_SUBST(MAN_STYLESHEET)
  sed "s+MAN_STYLESHEET+$MAN_STYLESHEET+g" <doc/custom-man.xsl.in >doc/custom-man.xsl
  
-@@ -605,10 +614,10 @@ if test -z "$XSLTPROC"; then
+@@ -608,10 +617,10 @@ if test -z "$XSLTPROC"; then
       enable_docu=no
  fi
  AC_PATH_PROG([XMLLINT], [xmllint],[/bin/true])
@@ -9561,7 +9560,7 @@ index 21a9b8555..8becf8700 100644
 +</article>
 \ No newline at end of file
 diff --git a/modules/pam_env/pam_env.8.xml b/modules/pam_env/pam_env.8.xml
-index 75ff862be..bcb16036f 100644
+index d7687d6c9..fb172e17b 100644
 --- a/modules/pam_env/pam_env.8.xml
 +++ b/modules/pam_env/pam_env.8.xml
 @@ -1,16 +1,13 @@
@@ -9625,7 +9624,7 @@ index 75ff862be..bcb16036f 100644
      <title>DESCRIPTION</title>
      <para>
        The pam_env PAM module allows the (un)setting of environment
-@@ -77,13 +74,13 @@
+@@ -119,13 +116,13 @@
      </para>
    </refsect1>
  
@@ -9641,7 +9640,7 @@ index 75ff862be..bcb16036f 100644
          </term>
          <listitem>
            <para>
-@@ -96,7 +93,7 @@
+@@ -138,7 +135,7 @@
  
        <varlistentry>
          <term>
@@ -9650,7 +9649,7 @@ index 75ff862be..bcb16036f 100644
          </term>
          <listitem>
            <para>
-@@ -108,7 +105,7 @@
+@@ -150,7 +147,7 @@
  
        <varlistentry>
          <term>
@@ -9659,7 +9658,7 @@ index 75ff862be..bcb16036f 100644
          </term>
          <listitem>
            <para>
-@@ -124,7 +121,7 @@
+@@ -166,7 +163,7 @@
  
        <varlistentry>
          <term>
@@ -9668,7 +9667,7 @@ index 75ff862be..bcb16036f 100644
          </term>
          <listitem>
            <para>
-@@ -137,7 +134,7 @@
+@@ -179,7 +176,7 @@
  
        <varlistentry>
          <term>
@@ -9677,7 +9676,7 @@ index 75ff862be..bcb16036f 100644
          </term>
          <listitem>
            <para>
-@@ -153,7 +150,7 @@
+@@ -195,7 +192,7 @@
  
        <varlistentry>
          <term>
@@ -9686,7 +9685,7 @@ index 75ff862be..bcb16036f 100644
          </term>
          <listitem>
            <para>
-@@ -174,7 +171,7 @@
+@@ -216,7 +213,7 @@
      </variablelist>
    </refsect1>
  
@@ -9695,7 +9694,7 @@ index 75ff862be..bcb16036f 100644
      <title>MODULE TYPES PROVIDED</title>
      <para>
        The <option>auth</option> and <option>session</option> module
-@@ -182,7 +179,7 @@
+@@ -224,7 +221,7 @@
      </para>
    </refsect1>
  
@@ -9704,7 +9703,7 @@ index 75ff862be..bcb16036f 100644
      <title>RETURN VALUES</title>
      <variablelist>
        <varlistentry>
-@@ -220,23 +217,23 @@
+@@ -262,25 +259,25 @@
      </variablelist>
    </refsect1>
  
@@ -9713,14 +9712,18 @@ index 75ff862be..bcb16036f 100644
      <title>FILES</title>
      <variablelist>
        <varlistentry>
+-        <term condition="with_vendordir"><filename>/usr/etc/security/pam_env.conf</filename></term>
 -        <term><filename>/etc/security/pam_env.conf</filename></term>
++        <term condition="with_vendordir">%vendordir%/security/pam_env.conf</term>
 +        <term>/etc/security/pam_env.conf</term>
          <listitem>
            <para>Default configuration file</para>
          </listitem>
        </varlistentry>
        <varlistentry>
+-        <term condition="with_vendordir"><filename>/usr/etc/environment</filename></term>
 -        <term><filename>/etc/environment</filename></term>
++        <term condition="with_vendordir">%vendordir%/environment</term>
 +        <term>/etc/environment</term>
          <listitem>
            <para>Default environment file</para>
@@ -9732,7 +9735,7 @@ index 75ff862be..bcb16036f 100644
          <listitem>
            <para>User specific environment file</para>
          </listitem>
-@@ -244,7 +241,7 @@
+@@ -288,7 +285,7 @@
      </variablelist>
    </refsect1>
  
@@ -9741,7 +9744,7 @@ index 75ff862be..bcb16036f 100644
      <title>SEE ALSO</title>
      <para>
        <citerefentry>
-@@ -262,10 +259,10 @@
+@@ -306,10 +303,10 @@
      </para>
    </refsect1>
  
@@ -9756,7 +9759,7 @@ index 75ff862be..bcb16036f 100644
 +</refentry>
 \ No newline at end of file
 diff --git a/modules/pam_env/pam_env.conf.5.xml b/modules/pam_env/pam_env.conf.5.xml
-index fca046fe3..f88791676 100644
+index 5c0dbcb8c..662ff0a00 100644
 --- a/modules/pam_env/pam_env.conf.5.xml
 +++ b/modules/pam_env/pam_env.conf.5.xml
 @@ -1,13 +1,10 @@
@@ -9784,8 +9787,8 @@ index fca046fe3..f88791676 100644
 +  <refsect1 xml:id="pam_env.conf-description">
      <title>DESCRIPTION</title>
  
-     <para>
-@@ -71,7 +68,7 @@
+     <para condition="with_vendordir">
+@@ -87,7 +84,7 @@
      </para>
    </refsect1>
  
@@ -9794,7 +9797,7 @@ index fca046fe3..f88791676 100644
      <title>EXAMPLES</title>
      <para>
        These are some example lines which might be specified in
-@@ -117,7 +114,7 @@
+@@ -133,7 +130,7 @@
      </programlisting>
    </refsect1>
  
@@ -9803,7 +9806,7 @@ index fca046fe3..f88791676 100644
      <title>SEE ALSO</title>
      <para>
        <citerefentry><refentrytitle>pam_env</refentrytitle><manvolnum>8</manvolnum></citerefentry>,
-@@ -127,10 +124,10 @@
+@@ -143,10 +140,10 @@
      </para>
    </refsect1>
  
@@ -16961,7 +16964,7 @@ index 154b97b51..c4da1a060 100644
 +</article>
 \ No newline at end of file
 diff --git a/modules/pam_shells/pam_shells.8.xml b/modules/pam_shells/pam_shells.8.xml
-index 15f476717..67d8ecf16 100644
+index 73b4855a3..b9f90e94a 100644
 --- a/modules/pam_shells/pam_shells.8.xml
 +++ b/modules/pam_shells/pam_shells.8.xml
 @@ -1,27 +1,24 @@
@@ -16998,7 +17001,7 @@ index 15f476717..67d8ecf16 100644
  
      <title>DESCRIPTION</title>
  
-@@ -35,13 +32,13 @@
+@@ -43,13 +40,13 @@
      </para>
    </refsect1>
  
@@ -17014,7 +17017,7 @@ index 15f476717..67d8ecf16 100644
      <title>MODULE TYPES PROVIDED</title>
      <para>
        The <option>auth</option> and <option>account</option>
-@@ -49,7 +46,7 @@
+@@ -57,7 +54,7 @@
      </para>
    </refsect1>
  
@@ -17023,7 +17026,7 @@ index 15f476717..67d8ecf16 100644
      <title>RETURN VALUES</title>
      <variablelist>
        <varlistentry>
-@@ -80,7 +77,7 @@
+@@ -88,7 +85,7 @@
      </variablelist>
       </refsect1>
  
@@ -17032,7 +17035,7 @@ index 15f476717..67d8ecf16 100644
      <title>EXAMPLES</title>
      <para>
        <programlisting>
-@@ -89,7 +86,7 @@ auth  required  pam_shells.so
+@@ -97,7 +94,7 @@ auth  required  pam_shells.so
      </para>
    </refsect1>
  
@@ -17041,7 +17044,7 @@ index 15f476717..67d8ecf16 100644
      <title>SEE ALSO</title>
      <para>
        <citerefentry>
-@@ -107,11 +104,11 @@ auth  required  pam_shells.so
+@@ -115,11 +112,11 @@ auth  required  pam_shells.so
      </para>
    </refsect1>
  

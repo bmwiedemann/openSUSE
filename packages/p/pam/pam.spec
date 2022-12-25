@@ -67,9 +67,8 @@ Source15:       Linux-PAM-%{version}.tar.xz.asc
 Patch1:         pam-limit-nproc.patch
 Patch3:         pam-xauth_ownership.patch
 Patch4:         pam-bsc1177858-dont-free-environment-string.patch
-Patch10:        pam_xauth_data.3.xml.patch
+Patch5:        pam_xauth_data.3.xml.patch
 Patch11:        pam-git.diff
-Patch12:        pam_env_econf.patch
 Patch13:        pam_pwhistory-docu.patch
 Patch14:        docbook5.patch
 BuildRequires:  audit-devel
@@ -88,8 +87,8 @@ BuildRequires:  pkgconfig(libeconf)
 %if %{enable_selinux}
 BuildRequires:  libselinux-devel
 %endif
-Requires:       pam_unix.so
-Suggests:       pam_unix
+Obsoletes:      pam_unix
+Obsoletes:      pam_unix-nis
 Recommends:     pam-manpages
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(shadow)
@@ -100,18 +99,6 @@ Requires(pre):  user(root)
 PAM (Pluggable Authentication Modules) is a system security tool that
 allows system administrators to set authentication policies without
 having to recompile programs that do authentication.
-
-%package -n pam_unix
-Summary:        PAM module for standard UNIX authentication
-Group:          System/Libraries
-Provides:       pam:/%{_lib}/security/pam_unix.so
-Provides:       pam_unix.so
-Conflicts:      pam_unix-nis
-
-%description -n pam_unix
-This package contains the pam_unix module, which does the standard
-UNIX authentication against the passwd and shadow database. This
-module does not contain NIS support.
 
 %package extra
 Summary:        PAM module to authenticate against a separate database
@@ -181,8 +168,7 @@ cp -a %{SOURCE12} .
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
-%patch10 -p1
-%patch12 -p1
+%patch5 -p1
 %if %{build_doc}
 %patch13 -p1
 %patch14 -p1
@@ -396,6 +382,11 @@ done
 %{_pam_moduledir}/pam_timestamp.so
 %{_pam_moduledir}/pam_tty_audit.so
 %{_pam_moduledir}/pam_umask.so
+%{_pam_moduledir}/pam_unix.so
+%{_pam_moduledir}/pam_unix_acct.so
+%{_pam_moduledir}/pam_unix_auth.so
+%{_pam_moduledir}/pam_unix_passwd.so
+%{_pam_moduledir}/pam_unix_session.so
 %{_pam_moduledir}/pam_usertype.so
 %{_pam_moduledir}/pam_warn.so
 %{_pam_moduledir}/pam_wheel.so
@@ -410,14 +401,6 @@ done
 %attr(0700,root,root) %{_sbindir}/unix_update
 %{_unitdir}/pam_namespace.service
 %{_tmpfilesdir}/pam.conf
-
-%files -n pam_unix
-%defattr(-,root,root,755)
-%{_pam_moduledir}/pam_unix.so
-%{_pam_moduledir}/pam_unix_acct.so
-%{_pam_moduledir}/pam_unix_auth.so
-%{_pam_moduledir}/pam_unix_passwd.so
-%{_pam_moduledir}/pam_unix_session.so
 
 %files extra
 %defattr(-,root,root,755)
