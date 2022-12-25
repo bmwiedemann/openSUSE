@@ -1,7 +1,7 @@
 #
 # spec file for package xfconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.16.0
+Version:        4.18.0
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfconf/start
-Source0:        https://archive.xfce.org/src/xfce/xfconf/4.16/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/xfconf/4.18/%{name}-%{version}.tar.bz2
 Source1:        xfconf-query.1
 Source100:      %{name}-rpmlintrc
 BuildRequires:  intltool
@@ -40,14 +40,14 @@ BuildRequires:  perl(ExtUtils::PkgConfig)
 BuildRequires:  perl(Glib)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.3
 BuildRequires:  pkgconfig(vapigen)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
@@ -89,6 +89,7 @@ Group:          System/Libraries
 GObject introspection bindings for Xfconf
 
 # this should be replaced by %%lang_package once bnc#513786 is resolved
+
 %package lang
 Summary:        Languages for package %{name}
 Group:          System/Localization

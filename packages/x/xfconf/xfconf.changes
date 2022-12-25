@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 18 13:12:34 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.18.0
+  * Bump requirements for Xfce 4.18
+  * xfconf: Prevent Use-After-Free in GClosureNotify 
+
+-------------------------------------------------------------------
 Fri Jan  8 11:54:44 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - %{_sysconfdir}/xdg/xfce4 needs to be owned by the package

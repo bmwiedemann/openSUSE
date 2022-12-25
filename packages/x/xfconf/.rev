@@ -301,4 +301,12 @@
     <comment>Fixed build dependency cycle. Do not require exo-tools as built dependency as it's not supposed to</comment>
     <requestid>861623</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fecd61102d558e03bb29b94898f3479f</srcmd5>
+    <version>4.18.0</version>
+    <time>1671977676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045189</requestid>
+  </revision>
 </revisionlist>
