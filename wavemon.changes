@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Dec 25 07:29:37 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.4
+  Enhancements and Fixes:
+  * Info Screen
+    + fix mis-spelled format identifier
+    + add fields for carrier / link mode,
+    + handle (accidentally) positive signal levels
+    + fix display of bonded interfaces
+    + add more network information
+    + add IPv6 support
+    + use error-checking mutexes
+    + display MCS bitrate information
+  * Scan Screen
+    + do not enable scan if rfkill is enabled
+    + unblock data mutex at end (fixing a deadlock condition)
+    + reset filter when there are no results
+  * History Screen
+    + deprecate threshold actions (were not of much use)
+    + remove support for noise levels
+    + add missing #include
+    + add wide-character support
+    + reset data when switching between interfaces
+  * Menu Bar
+    + improve highlighting of selected entries
+  Miscellaneous:
+  * drop dependency on wireless extensions
+  * build uses correct ncurses flags
+  * build now uses -Wextra by default
+  * build now honours configure CFLAGS
+  * update README
+  * document how to use wavemon within screen
+  * list of wireless interfaces is now also populated via
+    nl80211 (no longer ioctl)
+
+-------------------------------------------------------------------
 Sat Dec 26 20:59:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.3
