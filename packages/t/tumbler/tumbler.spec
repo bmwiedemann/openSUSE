@@ -21,13 +21,13 @@
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        4.16.1
+Version:        4.18.0
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://docs.xfce.org/xfce/thunar/tumbler
-Source:         https://archive.xfce.org/src/xfce/%{name}/4.16/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/%{name}/4.18/%{name}-%{version}.tar.bz2
 Source1:        custom_thumbnailers.tar.gz
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.1
 # GdkPibuxf thumbnailer plugin
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.14
 # FreeType2 font thumbnailer plugin
@@ -168,7 +169,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README.md TODO
+%doc AUTHORS ChangeLog NEWS README.md
 %dir %{_sysconfdir}/xdg/tumbler/
 %config(noreplace) %{_sysconfdir}/xdg/tumbler/tumbler.rc
 %dir %{_libdir}/tumbler-1
@@ -188,9 +189,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150500
 %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
-%endif
 %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
@@ -198,6 +197,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %dir %{_datadir}/thumbnailers
 %dir %{_datadir}/icons/hicolor
 %{_datadir}/icons/hicolor/*
+%{_prefix}/lib/systemd/user/tumblerd.service
 
 %files -n %{name}-folder-thumbnailer
 %{_bindir}/folder-thumbnailer

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec 17 13:53:31 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.18.0
+  * Bump requirements for Xfce 4.18
+  * Performance improvements for the pixbuf-thumbnailer and the scheduler
+  * Implement multiple overwrite options for the desktop-thumbnailer
+  * Add support for the thumbnail sizes x-large and xx-large, which are
+    very useful for high resolution displays
+  * Tumbler and Thunar now support shared thumbnail repositories, like
+    described in the freedesktop.org thumbnail specification. This feature
+    can be used to produce thumbnails for a folder in advance, directly
+    located near the pictures. Like that, the thumbnails don't need to be
+    re-generated for each individual user.
+  * tumbler.rc: Fix typo in explanatory comment
+  * For the full list of changes from the 4.17 development branch see the 
+    packaged NEWS file.
+
+- Restore RAW tumbnailer as issue with libopenraw 0.3 should be fixed
+
+-------------------------------------------------------------------
 Tue Oct 25 08:36:51 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Exclude RAW thumbnailer on Leap 15.5+ as well
