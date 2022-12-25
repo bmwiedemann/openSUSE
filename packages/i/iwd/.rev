@@ -305,4 +305,16 @@
     <comment></comment>
     <requestid>1039823</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>75e0714f5fa653315aa039a3102067d0</srcmd5>
+    <version>2.1</version>
+    <time>1671977688</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1:
+  * Fix issue with handling FT-over-DS action.
+  * Fix issue with handling scan and 6 GHz support check.
+  * Fix issue with handling when periodic scans get aborted.
+  * Add support for using 5 GHz frequencies in AP mode. (forwarded request 1045110 from dirkmueller)</comment>
+    <requestid>1045126</requestid>
+  </revision>
 </revisionlist>
