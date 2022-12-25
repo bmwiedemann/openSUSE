@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Dec 22 08:33:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.01:
+  * Fix the creation of the table of contents in the HTML version
+    of the documentation.
+
+-------------------------------------------------------------------
+Wed Dec 21 08:27:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16:
+  * Support for the rdf format has been discontinued and all the
+    RDOFF utilities has been removed.
+  * The --reproducible option now leaves the filename field in the
+    COFF object format blank. This was always rather useless since it is
+    only 18 characters long; as such debug formats have to carry their own
+    filename information anyway.
+  * Fix handling of MASM-syntax reserved memory (e.g. dw ?) when
+    used in structure definitions.
+  * The preprocessor now supports functions, which can be less verbose
+    and more convenient than the equivalent code implemented using
+    directives. See ppfunc.
+  * Fix the handling of %00 in the preprocessor.
+  * Fix incorrect handling of path names affecting error messages,
+    dependency generation, and debug format output.
+  * Support for the RDOFF output format and the RDOFF tools have been
+    removed. The RDOFF tools had already been broken since at least NASM
+    2.14. For flat code the ELF output format recommended; for segmented
+    code the obj (OMF) output format.
+  * New facility: preprocessor functions. Preprocessor functions, which
+    are expanded similarly to single-line macros, can greatly simplify
+    code that in the past would have required a lengthy list of directives
+    and intermediate macros. See ppfunc.
+  * Single-line macros can now declare parameters (using a &&
+    prefix) that creates a quoted string, but does not requote an
+    already quoted string. See define.
+  * Instruction table updated per public information available as of
+    November 2022.
+  * All warnings in the preprocessor have now been assigned warning
+    classes. See warnings.
+  * Fix the invalid use of RELA-type relocations instead of
+    REL-type relocations when generating DWARF debug information for
+    the elf32 output format.
+  * Fix the handling at in istruc when the structure contains
+    local labels. See istruc.
+  * When assembling with --reproducible, don't encode the filename
+    in the COFF header for the coff}, win32 or win64 output
+    formats. The COFF header only has space for an 18-character filename,
+    which makes this field rather useless in the first place. Debug output
+    data, if enabled, is not affected.
+  * Fix incorrect size calculation when using MASM syntax for non-byte
+    reservations (e.g. dw ?.)
+  * Allow forcing an instruction in 64-bit mode to have a (possibly
+    redundant) REX prefix, using the syntax rex as a prefix.
+  * Add a vex prefix to enforce VEX (AVX) encoding of an
+    instruction, either using the 2- or 3-byte VEX prefixes.
+  * The CPU directive has been augmented to allow control of
+    generation of VEX (AVX) versus EVEX (AVX-512) instruction formats, see
+    CPU.
+  * Some recent instructions that previously have been only available
+    using EVEX encodings are now also encodable using VEX (AVX)
+    encodings. For backwards compatibility these encodings are not enabled
+    by default, but can be generated either via an explicit vex
+    prefix or by specifying either CPU LATEVEX or CPU NOEVEX; see
+    CPU.
+  * Document the already existing unimacro directive. See unmacro.
+  * Fix a code range generation bug in the DWARF debug format
+    (incorrect information in the DW_AT_high_pc field) for the ELF
+    output formats. This bug happened to cancel out with a bug in older
+    versions of the GNU binutils linker, but breaks with other linkers and
+    updated or other linkers that expect the spec to be followed.
+  * Fix segment symbols with addends, e.g. jmp _TEXT+10h:0 in
+    output formats that support segment relocations, e.g. the obj
+    format.
+  * Fix various crashes and hangs on invalid input
+
+-------------------------------------------------------------------
 Fri Dec 16 12:36:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add reproducible.patch to avoid use of __DATE__

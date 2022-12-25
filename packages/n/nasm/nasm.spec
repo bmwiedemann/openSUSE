@@ -17,7 +17,7 @@
 
 
 Name:           nasm
-Version:        2.15.05
+Version:        2.16.01
 Release:        0
 Summary:        Netwide Assembler (An x86 Assembler)
 License:        BSD-2-Clause
@@ -40,7 +40,7 @@ several binary formats, including ELF, a.out, Win32, and OS/2.
 %make_build all
 
 %install
-%make_install rdf_install
+%make_install
 %fdupes %{buildroot}%{_mandir}
 
 %check

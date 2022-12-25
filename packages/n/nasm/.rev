@@ -337,4 +337,41 @@
     <comment></comment>
     <requestid>1043329</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ddc43d324e8285327217d9f9ccd53252</srcmd5>
+    <version>2.16.01</version>
+    <time>1671977656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.01:
+  * Fix the creation of the table of contents in the HTML version
+    of the documentation.
+
+- Update to 2.16:
+  * Support for the rdf format has been discontinued and all the
+    RDOFF utilities has been removed.
+  * The --reproducible option now leaves the filename field in the
+    COFF object format blank. This was always rather useless since it is
+    only 18 characters long; as such debug formats have to carry their own
+    filename information anyway.
+  * Fix handling of MASM-syntax reserved memory (e.g. dw ?) when
+    used in structure definitions.
+  * The preprocessor now supports functions, which can be less verbose
+    and more convenient than the equivalent code implemented using
+    directives. See ppfunc.
+  * Fix the handling of %00 in the preprocessor.
+  * Fix incorrect handling of path names affecting error messages,
+    dependency generation, and debug format output.
+  * Support for the RDOFF output format and the RDOFF tools have been
+    removed. The RDOFF tools had already been broken since at least NASM
+    2.14. For flat code the ELF output format recommended; for segmented
+    code the obj (OMF) output format.
+  * New facility: preprocessor functions. Preprocessor functions, which
+    are expanded similarly to single-line macros, can greatly simplify
+    code that in the past would have required a lengthy list of directives
+    and intermediate macros. See ppfunc.
+  * Single-line macros can now declare parameters (using a &amp;&amp;
+    prefix) that creates a quoted string, but does not requote an
+    already quoted string. See define.</comment>
+    <requestid>1044181</requestid>
+  </revision>
 </revisionlist>
