@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 25 11:39:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Find the license in any installed sitelib: we might not have
+  python3 flavor (:backports)
+
+-------------------------------------------------------------------
 Mon Aug  1 20:29:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.2.2

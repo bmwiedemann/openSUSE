@@ -51,4 +51,14 @@
 - Add labextensions subpackage</comment>
     <requestid>992101</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0476ff5e671c4c0b384c41ae271442cb</srcmd5>
+    <version>0.2.2</version>
+    <time>1671977711</time>
+    <user>dimstar_suse</user>
+    <comment>- Find the license in any installed sitelib: we might not have
+  python3 flavor (:backports)
+</comment>
+    <requestid>1045279</requestid>
+  </revision>
 </revisionlist>

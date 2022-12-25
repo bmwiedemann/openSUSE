@@ -69,7 +69,7 @@ This package contains the Jupyterlab extension files for python-jupyterlab-pygme
 %install
 %pyproject_install %{SOURCE0}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-cp  %{buildroot}%{python3_sitelib}/jupyterlab_pygments-%{version}.dist-info/LICENSE .
+find %{buildroot}%{_prefix} -path '*/site-packages/jupyterlab_pygments-%{version}.dist-info/LICENSE' -exec cp {} . ';' -quit
 %endif
 
 %if %{with test}
@@ -84,7 +84,7 @@ cp  %{buildroot}%{python3_sitelib}/jupyterlab_pygments-%{version}.dist-info/LICE
 %{python_sitelib}/jupyterlab_pygments-%{version}.dist-info
 
 %files -n jupyter-jupyterlab-pygments
-%_jupyter_labextensions_dir3/jupyterlab_pygments
+%{_jupyter_labextensions_dir3}/jupyterlab_pygments
 %endif
 
 %changelog
