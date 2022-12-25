@@ -22,7 +22,11 @@
 %{!?_fillupdir:%global _fillupdir /var/adm/fillup-templates}
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
 %{!?_pam_moduledir:%global _pam_moduledir /%{_lib}/security}
+%if 0%{?suse_version} > 1500
+%global _pam_confdir %{_distconfdir}/pam.d
+%else
 %{!?_pam_confdir:%global _pam_confdir %{_sysconfdir}/pam.d}
+%endif
 %{!?_pam_secconfdir:%global _pam_secconfdir %{_sysconfdir}/security}
 
 %define with_mscat 1
@@ -148,7 +152,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.3+git.283.2157972742b
+Version:        4.17.4+git.300.305b22bfce
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -181,7 +185,6 @@ Provides:       group(ntadmin)
 %define	CONFIGDIR %{_sysconfdir}/samba
 %define	INITDIR %{_sysconfdir}/init.d
 %define	PIDDIR /run/samba
-%define	NET_CFGDIR network
 %define	auth_modules auth_unix,auth_wbc,auth_server,auth_netlogond,auth_script,auth_samba4
 %define	idmap_modules idmap_ad,idmap_adex,idmap_hash,idmap_ldap,idmap_rfc2307,idmap_rid,idmap_tdb2
 %define	pdb_modules pdb_tdbsam,pdb_ldapsam,pdb_smbpasswd,pdb_samba_dsdb
@@ -711,7 +714,6 @@ install -d -m 0755 -p \
 	%{buildroot}/%_pam_confdir \
 	%{buildroot}/%{_sysconfdir}/{xinetd.d,logrotate.d} \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
-	%{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/{if-{down,up}.d,scripts} \
 	%{buildroot}/%{_sysconfdir}/security \
 	%{buildroot}/%{_sysconfdir}/slp.reg.d \
 	%{buildroot}/%{CONFIGDIR} \
@@ -826,18 +828,6 @@ install -m 0644 config/samba.pamd-common %{buildroot}/%_pam_confdir/samba
 install -m 0644 config/dhcp.conf %{buildroot}/%{_fillupdir}/samba-client-dhcp.conf
 install -m 0644 config/sysconfig.dhcp-samba-client %{buildroot}/%{_fillupdir}/sysconfig.dhcp-samba-client
 
-# Network scripts
-NETWORK_SCRIPTS="samba-winbindd"
-for script in ${NETWORK_SCRIPTS}; do
-	install -m 0755 "tools/${script}" "%{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/${script}"
-done
-
-# Create ghosts for the symlinks
-NETWORK_LINKS="55-samba-winbindd"
-for script in ${NETWORK_LINKS}; do
-	touch %{buildroot}/%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-{down,up}.d/${script}
-done
-
 # Add logrotate settings for nmbd and smbd only on systems newer than 8.1.
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -937,7 +927,7 @@ install -m 0644 examples/LDAP/samba-nds.schema %{buildroot}/%{_datadir}/samba/LD
 %service_add_pre nmb.service smb.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/samba ; do
+for i in logrotate.d/samba pam.d/samba; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -945,7 +935,7 @@ done
 %if 0%{?suse_version} > 1500
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/samba ; do
+for i in logrotate.d/samba pam.d/samba; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -1058,17 +1048,6 @@ done
 
 %post winbind
 /sbin/ldconfig
-if test ${1:-0} -eq 1; then
-	ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/samba-winbindd %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-down.d/55-samba-winbindd
-	ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/samba-winbindd %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-up.d/55-samba-winbindd
-else
-	for if_case in if-down.d if-up.d; do
-		test -h %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/samba-winbindd || \
-			continue
-		rm -f %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/samba-winbindd
-		ln -fs %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/samba-winbindd %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/${if_case}/55-samba-winbindd
-	done
-fi
 %service_add_post winbind.service
 %tmpfiles_create samba.conf
 %{fillup_only -ans samba winbind}
@@ -1618,9 +1597,6 @@ exit 0
 %defattr(-,root,root)
 %config(noreplace) %_pam_secconfdir/pam_winbind.conf
 %{_unitdir}/winbind.service
-%ghost %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-down.d/55-samba-winbindd
-%ghost %{_sysconfdir}/sysconfig/%{NET_CFGDIR}/if-up.d/55-samba-winbindd
-%{_sysconfdir}/sysconfig/%{NET_CFGDIR}/scripts/samba-winbindd
 %{_sysusersdir}/samba-winbind.conf
 %{_bindir}/ntlm_auth
 %{_bindir}/wbinfo
