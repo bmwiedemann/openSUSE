@@ -16,35 +16,29 @@
 #
 
 
-%define libname_gtk2 libexo-1-0
-%define libname_gtk3 libexo-2-0
 %bcond_with git
 Name:           exo
-Version:        4.16.4
+Version:        4.18.0
 Release:        0
 Summary:        Application Development Library for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://docs.xfce.org/xfce/exo/start
-Source0:        https://archive.xfce.org/src/xfce/exo/4.16/%{name}-%{version}.tar.bz2
-# icons taken from tango-icon-theme 0.8.90
-Source1:        %{name}-icons.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/exo/4.18/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
-BuildRequires:  perl-URI
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.42
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.42
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.42
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 # Prevent dependency cycle exo -> libxfce4ui-devel -> libxfce4ui-1-0 -> exo-tools
 #!BuildIgnore:  exo-tools
 
@@ -71,35 +65,33 @@ Obsoletes:      exo-branding-upstream
 %description data
 This package provides the helpers data for exo.
 
-%package -n %{libname_gtk3}
+%package -n libexo-2-0
 Summary:        Application Development Library for Xfce
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 Requires:       perl-URI
 Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-tools
-Obsoletes:      %{libname_gtk2} < %{version}
+Obsoletes:      libexo-1-0
 
-%description -n %{libname_gtk3}
+%description -n libexo-2-0
 Exo is an extension library to Xfce which is targeted at application
 development.
 
 %package devel
 Summary:        Development Files for exo
 Group:          Development/Libraries/C and C++
-Requires:       %{libname_gtk3} = %{version}
 Requires:       %{name}-tools = %{version}
+Requires:       libexo-2-0 = %{version}
 
 %description devel
 This package contains development files needed for developing applications
 based on exo.
 
-%lang_package -r %{libname_gtk3}
+%lang_package -r libexo-2-0
 
 %prep
-%setup -q -b1
-find . -name '*.pl' -o -name exo-compose-mail| \
-    xargs sed -i 's|^#! */usr/bin/env *\perl|#!%{_bindir}/perl|'
+%autosetup
 
 %build
 %if %{with git}
@@ -133,10 +125,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # remove unsupported locales
 rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
-%find_lang exo-2 %{?no_lang_C}
+%find_lang exo %{?no_lang_C}
 
-%post -n %{libname_gtk3} -p /sbin/ldconfig
-%postun -n %{libname_gtk3} -p /sbin/ldconfig
+%post -n libexo-2-0 -p /sbin/ldconfig
+%postun -n libexo-2-0 -p /sbin/ldconfig
 
 %files tools
 %dir %{_libdir}/xfce4
@@ -145,16 +137,15 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_bindir}/exo-desktop-item-edit
 %{_bindir}/exo-open
 %{_mandir}/man1/exo-open.1*
-%{_datadir}/icons/hicolor/*/*/*
 
 %files data
 # frame image directly used by the library
 %dir %{_datadir}/pixmaps/exo
 %{_datadir}/pixmaps/exo/*
 
-%files lang -f exo-2.lang
+%files lang -f exo.lang
 
-%files -n %{libname_gtk3}
+%files -n libexo-2-0
 %doc README.md NEWS AUTHORS THANKS
 %license COPYING COPYING.LIB
 %{_libdir}/libexo-2.so.*
@@ -166,3 +157,4 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_datadir}/gtk-doc/html/exo-2/
 
 %changelog
+
