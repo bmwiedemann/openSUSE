@@ -19,13 +19,13 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.16.11
+Version:        4.18.1
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/xfce/thunar/start
-Source:         https://archive.xfce.org/src/xfce/thunar/4.16/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/xfce/thunar/4.18/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -34,14 +34,14 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfconf
-BuildRequires:  pkgconfig(exo-2) >= 4.15.3
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(exo-2) >= 4.17.0
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(ice)
@@ -49,11 +49,12 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
-BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.17.2
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15.3
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.3
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
+BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 %if %{with git}
@@ -195,6 +196,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_libdir}/girepository-1.0/Thunarx-3.0.typelib
 
 %files devel
+%doc %{_datadir}/gtk-doc/html/thunar
 %doc %{_datadir}/gtk-doc/html/thunarx
 %dir %{_includedir}/thunarx-3
 %dir %{_includedir}/thunarx-3/thunarx

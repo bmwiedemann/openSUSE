@@ -1685,4 +1685,12 @@
   * Translation Updates (forwarded request 966763 from mauriziogalli)</comment>
     <requestid>966841</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>add3f8bc9fd4e2bc695394efb4796248</srcmd5>
+    <version>4.18.1</version>
+    <time>1671977693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045183</requestid>
+  </revision>
 </revisionlist>

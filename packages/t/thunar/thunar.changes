@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Dec 22 15:01:45 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.18.1
+  * Fix several thumbnailing issues
+  * 'replace' option fixed for copy with '*.partial~' (gxo#xfce/thunar#974)
+  * Preserve trusted state when launchers are copied
+  * Don't reset zoom-level for directory specific settings (gxo#xfce/thunar#970)
+  * Prevent build failure for NixOS (gxo#xfce/thunar#972)
+  * Prevent location bar crash (gxo#xfce/thunar#968)
+  * Translation Updates 
+
+-------------------------------------------------------------------
+Sun Dec 18 19:28:25 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0:
+  New features: (see https://alexxcons.github.io/blogpost_8.html)
+    - List View
+    - Image Preview
+    - Undo and Redo
+    - File Highlight
+    - Customizable Toolbar
+    - Split View
+    - Statusbar
+    - Recursive Search
+    - Recently used files shown in the side pane
+    - New Bookmark Menu
+    - Trash directory with easy access to `Empty Trash' and `Restore'
+      functionality
+    - Improvements to the Default Applications management
+    - Custom Actions can be arranged in cascading submenus
+    - Preferences dialogs got streamlined
+  Bug fixes:
+  * Dont reset zoom-level for directory specific settings (gxo#xfce/thunar#970)
+  * Prevent build failure for NixOS (gxo#xfce/thunar#972)
+  * Prevent location bar crash (gxo#xfce/thunar#968)
+  * build: Let xdt-depends.m4 macros set GLib macros
+  * Translate the string "Search: " (gxo#xfce/thunar#953)
+  * Fix typo in tooltip
+- Bump build requirements for 4.18.0
+- Remove _service stuff
+
+-------------------------------------------------------------------
 Mon Apr  4 04:24:34 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.16.11
