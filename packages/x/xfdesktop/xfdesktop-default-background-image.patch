@@ -15,7 +15,7 @@ index cfd41e6a..db2862b6 100644
  #include <stdarg.h>
  
  #define XFDESKTOP_CHANNEL        "xfce4-desktop"
--#define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-verticals.png"
+-#define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-shapes.svg"
 +#define DEFAULT_BACKDROP         DATADIR "/wallpapers/xfce/default.wallpaper"
  #define DEFAULT_ICON_FONT_SIZE   12
  #define DEFAULT_ICON_SIZE        48

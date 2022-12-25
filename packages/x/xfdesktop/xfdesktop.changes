@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 21 13:36:12 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Rebase xfdesktop-default-background-image.patch for Xfce 4.18
+- Add *.svg wallpapers to the file list
+
+-------------------------------------------------------------------
+Mon Dec 19 12:54:36 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.18.0
+  * Bump requirements for Xfce 4.18
+  * Add wallpapers of Xfce 4.18 wallpaper contest
+  * Delete" menu entry in the context menu can now be hidden.
+  * On pressing 'rearrange desktop icons', the user is asked for confirmation
+  * Translation Updates
+  * For the complete list of changes from the development branch 4.17 please 
+    see the packaged NEWS file
+
+- Removed unused _service file
+
+-------------------------------------------------------------------
 Sun Aug 21 07:40:01 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.16.1
