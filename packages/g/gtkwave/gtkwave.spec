@@ -1,7 +1,7 @@
 #
 # spec file for package gtkwave
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gtkwave
-Version:        3.3.104
+Version:        3.3.113
 Release:        0
 Summary:        Waveform viewer for Ditital Signals
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
-URL:            http://gtkwave.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+URL:            https://gtkwave.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -35,7 +35,6 @@ BuildRequires:  tk-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Recommends:     %{name}-doc
 
 %description
@@ -76,7 +75,7 @@ This package contains examples for GTKWave
 %configure \
         --disable-mime-update \
         --enable-judy
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -99,8 +98,8 @@ mv %{buildroot}%{_datadir}/%{name}/examples %{buildroot}%{_docdir}/%{name}/
 %fdupes %{buildroot}/%{_datadir}/icons/
 
 %files
-%defattr(-,root,root,-)
-%doc ChangeLog README COPYING LICENSE.TXT
+%license COPYING LICENSE.TXT
+%doc ChangeLog README
 %exclude %{_docdir}/%{name}/gtkwave.odt
 %exclude %{_docdir}/%{name}/examples/
 %{_bindir}/*
@@ -116,11 +115,9 @@ mv %{buildroot}%{_datadir}/%{name}/examples %{buildroot}%{_docdir}/%{name}/
 %{_datadir}/mime/packages/x-gtkwave-extension*.xml
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_docdir}/%{name}/gtkwave.odt
 
 %files examples
-%defattr(-,root,root,-)
 %doc %{_docdir}/%{name}/examples/
 
 %changelog

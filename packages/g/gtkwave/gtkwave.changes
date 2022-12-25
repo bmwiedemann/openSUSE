@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 18 19:05:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.113:
+  * fix scope/var buffer overflows in FST reader
+  * wayland header fixes
+  * CPU usage fix for wayland
+
+-------------------------------------------------------------------
 Mon Feb 24 08:44:00 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3.104: 
