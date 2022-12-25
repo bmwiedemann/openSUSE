@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Dec 23 19:21:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + aesdec:
+    - Fix padding removal for per-buffer-padding=FALSE
+    - Fix test failing in gst-plugins-bad
+  + alphacombine: Add missing query handler for gaps
+  + avfdeviceprovider: do not leak the properties
+  + avfvideosrc: Report latency when doing screen capture
+  + d3d11screencapturesrc: Specify PAR 1/1 to template caps
+  + d3d11videosink:
+    - Fixing focus lost on desktop layout change
+    - Call ShowWindow() from window thread
+    - Fix deadlock when parent window is busy
+    - Always clear back buffer on resize
+  + decklink: reset calculation of time_mapping to fix clipping
+    HDMI video
+  + directshow: Fix build error with glib 2.75 and newer
+  + dvbsubenc:
+    - Forward GAP events as-is if we wouldn't produce an end packet
+    - Write Display Definition Segment if a non-default
+      width/height is used
+  + h265decoder: Do not abort when failed to prepare ref pic set
+  + h264parser: Fix a typo in pred_weight_table parsing.
+  + mediafoundation, d3d11: Fix memory leak and make leak tracer
+    happy
+  + mpegts:
+    - Handle when iconv doesn't support ISO 6937 (e.g. musl libc)
+    - Check continuity counter on section streams
+  + mpegtsdemux: Always clear packetizer on DISCONT push mode
+  + srt: various fixes - improve stats and error handling
+  + rtmp2: Improve error messages
+  + rtmp2sink: Correctly return GST_FLOW_ERROR on error
+  + vulkan: Fix static linking on macOS
+  + webrtcbin: also add rtcp-fb ccm fir for video mlines by default
+  + webrtc/nice: fix small leak of split strings
+
+-------------------------------------------------------------------
 Sat Oct 22 09:19:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:
