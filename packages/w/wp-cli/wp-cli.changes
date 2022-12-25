@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  8 14:41:07 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.7.1
+  * Avoid deleting TinyMCE themes/plugins by using more precise check
+  * Support for docker-compose run
+  * Customizable global parameters
+  * Download WordPress Core files without extracting them
+  * Directly install a specific locale
+  * Clean duplicate meta values
+  * Multiple changes to the i18n support
+  * PHP 8.1 Support
+  * New commands for managing application passwords
+  * New global flag: --context
+  * Configurable WP-CLI cache settings
+  * Use custom names/locations for the wp-config.php file
+  * Generate a dotenv file from your existing wp-config.php file
+  * Allow plugin/theme enumeration without forcing an update check
+  * New flag --strict for adapting the filtering of taxonomies by post type
+
+
+-------------------------------------------------------------------
 Sat Jul 10 11:59:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.5.0
