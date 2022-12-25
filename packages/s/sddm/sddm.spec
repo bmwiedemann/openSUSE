@@ -134,6 +134,7 @@ fi
       -DSESSION_COMMAND="%{_sysconfdir}/X11/xdm/Xsession" \
       -DBUILD_MAN_PAGES=ON \
       -DSTATE_DIR="%{_localstatedir}/lib/sddm" \
+      -DDBUS_CONFIG_DIR=%{_datadir}/dbus-1/system.d \
       -DRUNTIME_DIR="/run/sddm" \
       -DPID_FILE="/run/sddm.pid" \
       -DLOGIN_DEFS_PATH:path="${LOGIN_DEFS_PATH}"
@@ -146,7 +147,7 @@ fi
   # However, we need to package the file so it does not end up being removed.
   echo > %{buildroot}%{_sysconfdir}/sddm.conf
 
-  pushd %{buildroot}%{_sysconfdir}/dbus-1/system.d
+  pushd %{buildroot}%{_datadir}/dbus-1/system.d
   mv org.freedesktop.DisplayManager.conf sddm_org.freedesktop.DisplayManager.conf
   popd
 
@@ -252,7 +253,7 @@ fi
 %config %{_sysconfdir}/pam.d/sddm
 %config %{_sysconfdir}/pam.d/sddm-autologin
 %config %{_sysconfdir}/pam.d/sddm-greeter
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/sddm_org.freedesktop.DisplayManager.conf
+%{_datadir}/dbus-1/system.d/sddm_org.freedesktop.DisplayManager.conf
 %dir %{_prefix}/lib/X11/displaymanagers/
 %{_prefix}/lib/X11/displaymanagers/%{name}
 %{_prefix}/lib/X11/displaymanagers/default-displaymanager

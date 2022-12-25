@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec 12 23:03:50 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d conf file to /usr (bsc#1206348)
+
+-------------------------------------------------------------------
 Tue Oct 25 13:06:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to avoid launching xdg-desktop-portal by accident:
