@@ -25,7 +25,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.20.4
+Version:        1.20.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
