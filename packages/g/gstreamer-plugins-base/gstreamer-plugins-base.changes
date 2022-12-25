@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec 23 18:59:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + audioconvert, audioresample, audiofilter: fix divide by 0 for
+    input buffer without caps
+  + cdparanoia: Ignore compiler warning coming from the cdparanoia
+    header
+  + oggdemux, parsebin: More leak fixes
+  + opengl:
+    - Fix automatic dispmanx detection for rpi4
+    - Fix usage of eglCreate/DestroyImage
+    - Fix static linking on macOS
+  + Bump core requirement in 1.20 branch to 1.20.4
+  + oggdemux: Don't leak incoming EOS event
+  + opusdec: Various channel-related fixes
+  + subparse: Fix non-closed tag handling.
+  + textrender:
+    - Don't blindly forward all events and don't blindly forward
+      all events
+    - Negotiate caps on a GAP event if none were negotiated yet
+  + timeoverlay: fix pad leak
+  + videodecoder: Only post latency message if it changed
+  + videoscale: buffer meta handling fixes (NULL-terminate array of
+    valid meta tags)
+  + videosink: Don't return unknown end-time from get_times()
+
+-------------------------------------------------------------------
 Fri Oct 21 21:22:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:
