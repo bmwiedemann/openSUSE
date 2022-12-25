@@ -4363,7 +4363,6 @@ unsorted:
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
   - gdk-pixbuf-loader-libavif 
-  - gdk-pixbuf-loader-libopenraw 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
   - gdk-pixbuf-xlib-devel 
@@ -6573,7 +6572,7 @@ unsorted:
   - gromacs-data 
   - gromacs-devel 
   - gromacs-doc 
-  - gromacs-openmpi 
+  - gromacs-openmpi: [x86_64] 
   - gromit-mpx 
   - gromox 
   - gron 
@@ -11443,7 +11442,7 @@ unsorted:
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_11 
   - libgmxapi0 
-  - libgmxapi_mpi0 
+  - libgmxapi_mpi0: [x86_64] 
   - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
@@ -11530,7 +11529,7 @@ unsorted:
   - libgraphene-devel 
   - libgravatar-devel 
   - libgromacs7 
-  - libgromacs_mpi7 
+  - libgromacs_mpi7: [x86_64] 
   - libgrpc++1_51 
   - libgrpc29 
   - libgrpc_plugin_support1_51 
@@ -12023,8 +12022,8 @@ unsorted:
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit: [x86_64] 
   - libinstpatch-devel 
-  - libint-devel 
-  - libint2-2 
+  - libint-devel: [x86_64] 
+  - libint2-2: [x86_64] 
   - libiodbc-devel 
   - libiodbc2 
   - libiodbcadm2 
@@ -13059,7 +13058,6 @@ unsorted:
   - libopenmpt_modplug1 
   - libopenpgl0: [x86_64] 
   - libopenraw-devel 
-  - libopenraw9 
   - libopenraw9-32bit: [x86_64] 
   - libopenscap25 
   - libopenscap_sce25 
@@ -19798,7 +19796,6 @@ unsorted:
   - perl-Dumbbench 
   - perl-Email-Abstract 
   - perl-Email-Address 
-  - perl-Email-Address-XS 
   - perl-Email-Date-Format 
   - perl-Email-MIME 
   - perl-Email-MIME-ContentType 
