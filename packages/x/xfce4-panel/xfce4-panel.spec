@@ -17,16 +17,16 @@
 
 
 %bcond_with git
-%define libname_gtk3 libxfce4panel-2_0-4
+%define libname libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.16.5
+Version:        4.18.0
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-panel/start
-Source0:        https://archive.xfce.org/src/xfce/%{name}/4.16/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/xfce/%{name}/4.18/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}-restore-defaults
 Source3:        %{name}-restore-defaults.desktop
@@ -43,8 +43,8 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
 BuildRequires:  pkgconfig(exo-2)
-BuildRequires:  pkgconfig(garcon-1)
-BuildRequires:  pkgconfig(garcon-gtk3-1)
+BuildRequires:  pkgconfig(garcon-1) >= 4.17.0
+BuildRequires:  pkgconfig(garcon-gtk3-1) >= 4.17.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -52,9 +52,9 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.15
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.15
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.1
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.2
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(x11)
@@ -95,12 +95,12 @@ Group:          System/Libraries
 %description -n typelib-1_0-Libxfce4panel-2_0
 GObject introspection bindings for Xfce Panel
 
-%package -n %{libname_gtk3}
+%package -n %{libname}
 Summary:        Xfce Panel Shared Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n %{libname_gtk3}
+%description -n %{libname}
 This package contains GTK 3 variant of the xfce4-panel shared library.
 
 %package branding-upstream
@@ -171,8 +171,8 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %fdupes %{buildroot}%{_includedir}
 
-%post -n %{libname_gtk3} -p /sbin/ldconfig
-%postun -n %{libname_gtk3} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files
 %if %{with git}
@@ -201,7 +201,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %files -n typelib-1_0-Libxfce4panel-2_0
 %{_libdir}/girepository-1.0/Libxfce4panel-2.0.typelib
 
-%files -n %{libname_gtk3}
+%files -n %{libname}
 %license COPYING
 %{_libdir}/libxfce4panel-2.0.so.*
 
