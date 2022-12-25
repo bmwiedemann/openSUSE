@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Dec 22 12:43:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.5:
+  + This release only contains bugfixes and it should be safe to
+    upgrade from 1.20.x.
+  + systemclock waiting fixes for certain 32-bit platforms/libcs
+  + alphacombine: robustness improvements for corner case scenarios
+  + avfvideosrc: Report latency when doing screen capture
+  + d3d11videosink: various thread-safety and stability fixes
+  + decklink: fix performance issue when HDMI signal has been lost
+    for a long time
+  + flacparse: Fix handling of headers advertising 32 bits per
+    sample
+  + mpegts: Handle when iconv doesn't support ISO 6937 (e.g. musl
+    libc)
+  + opengl: fix automatic dispmanx detection for rpi4 and fix usage
+    of eglCreate/DestroyImage
+  + opusdec: Various channel-related fixes
+  + textrender: event handling fixes, esp. for GAP event
+  + subparse: Fix non-closed tag handling
+  + videoscale: fix handling of unknown buffer metas
+  + videosink: reverse playback handling fixes
+  + qtmux: Prefill mode fixes, especially for raw audio
+  + multiudpsink: allow binding to IPv6 address
+  + rtspsrc:
+    - Fix usage of IPv6 connections in SETUP
+    - Only EOS on timeout if all streams are timed out/EOS
+  + splitmuxsrc: fix playback stall if there are unlinked pads
+  + v4l2: Fix SIGSEGV on state change during format changes
+  + wavparse robustness fixes
+  + Fix static linking on macOS (opengl, vulkan)
+  + gstreamer-vaapi: fix headless build against mesa >= 22.3.0
+  + GStreamer Editing Services library: Fix build with tools
+    disabled
+  + webrtc example/demo fixes
+  + unit test fixes for aesdec and rtpjitterbuffer
+  + Cerbero: Fix ios cross-compile with cmake on M1; some recipe
+    updates and other build fixes
+  + Miscellaneous bug fixes, memory leak fixes, and other stability
+    and reliability improvements
+  + Performance improvements
+  + Changes in gstreamer base package:
+    - allocator: Copy allocator name in gst_allocator_register()
+    - concat: Properly propagate EOS seqnum
+    - fakesrc: avoid time overflow with datarate
+    - Fix build of 1.20 branch with Meson 0.64.1 for those who have
+      hotdoc installed on their system.
+    - gst-inspect: Don't leak list
+    - meson: fix check for pthread_setname_np()
+    - miniobject: support higher refcount values
+    - pads: Fix non-serialized sticky event push, e.g. instant
+      change rate events
+    - padtemplate: Fix annotations
+    - systemclock: Use futex_time64 syscall on x32 and other
+      platforms that always...
+    - -Wimplicit-function-declaration in pthread_setname_np check
+      (missing GNUSOURCE)
+
+-------------------------------------------------------------------
 Fri Oct 21 21:16:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:
