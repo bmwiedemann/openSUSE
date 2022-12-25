@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 23 17:21:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip a failing test -- gh#pydata/bottleneck#423
+- Add rpmlintrc
+
+-------------------------------------------------------------------
 Sun Aug 14 15:00:35 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.3.5:
