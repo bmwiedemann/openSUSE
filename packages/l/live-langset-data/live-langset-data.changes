@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 23 14:12:59 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Handle missing files explicitly, particularly useful with empty
+  (unpopulated) /etc
+
+-------------------------------------------------------------------
 Tue Nov 15 10:57:55 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Drop support for /etc/sysconfig/language (12.x), it was activated

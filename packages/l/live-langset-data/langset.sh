@@ -33,8 +33,13 @@ Country=$(echo "$lang" | cut -d_ -f2)
 Language=$(echo "$lang" | cut -d_ -f1)
 
 file="/usr/share/langset/$Language""_$Country"
-if ! test -f "$file"; then
-  file="/usr/share/langset/$Language"
+if ! [ -f "$file" ]; then
+	file="/usr/share/langset/$Language"
+fi
+
+if ! [ -f "$file" ]; then
+	echo "Locale not found"
+	exit 1
 fi
 
 # Read all values of the langset data files
@@ -49,8 +54,9 @@ KEYTABLE="${KEYTABLE%%.map*}"
 
 # set_vconsole_option KEY value
 set_vconsole_option() {
-	# This sed command exits with 1 if no substitution was done
-	sed -i"" -E "/^$1=.*\$/,\${s//$1=$2/;b};\$q1" /etc/vconsole.conf && return
+	# If the file exists, try to change the value. The sed command exits with 1 if no substitution was done.
+	[ -e /etc/vconsole.conf ] && sed -i"" -E "/^$1=.*\$/,\${s//$1=$2/;b};\$q1" /etc/vconsole.conf && return
+	# Otherwise, add a new assignment.
 	echo "$1=$2" >> /etc/vconsole.conf
 }
 
@@ -65,12 +71,16 @@ set_sysconfig_option() {
 }
 
 # Set legacy sysconfig values for backwards-compat
-[ -z "$CONSOLE_FONT" ] || set_sysconfig_option CONSOLE_FONT "$CONSOLE_FONT"
-[ -z "$CONSOLE_SCREENMAP" ] || set_sysconfig_option CONSOLE_SCREENMAP "$CONSOLE_SCREENMAP"
-[ -z "$CONSOLE_UNICODEMAP" ] || set_sysconfig_option CONSOLE_UNICODEMAP "$CONSOLE_UNICODEMAP"
+if [ -e /etc/sysconfig/console ]; then
+	[ -z "$CONSOLE_FONT" ] || set_sysconfig_option CONSOLE_FONT "$CONSOLE_FONT"
+	[ -z "$CONSOLE_SCREENMAP" ] || set_sysconfig_option CONSOLE_SCREENMAP "$CONSOLE_SCREENMAP"
+	[ -z "$CONSOLE_UNICODEMAP" ] || set_sysconfig_option CONSOLE_UNICODEMAP "$CONSOLE_UNICODEMAP"
+fi
 
-[ -z "$KEYTABLE" ] || set_sysconfig_option KEYTABLE "$KEYTABLE"
-[ -z "$COMPOSETABLE" ] || set_sysconfig_option COMPOSETABLE "$COMPOSETABLE"
+if [ -e /etc/sysconfig/keyboard ]; then
+	[ -z "$KEYTABLE" ] || set_sysconfig_option KEYTABLE "$KEYTABLE"
+	[ -z "$COMPOSETABLE" ] || set_sysconfig_option COMPOSETABLE "$COMPOSETABLE"
+fi
 
 # Try the lang-provided keytable first
 [ -z "$KEYTABLE" ] || localectl set-keymap $KEYTABLE

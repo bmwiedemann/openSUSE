@@ -159,4 +159,13 @@
   in staging projects by accident (&quot;Tumbleweed 1&quot;)</comment>
     <requestid>1035815</requestid>
   </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>91232b4c39180a5210b227c9123632da</srcmd5>
+    <version>2.0</version>
+    <time>1671977660</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle missing files explicitly, particularly useful with empty
+  (unpopulated) /etc</comment>
+    <requestid>1045018</requestid>
+  </revision>
 </revisionlist>
