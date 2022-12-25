@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 20 08:33:46 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221220.12af927:
+  * pam-modules: pam_unix: adjust package name to pam (bsc#1206485)
+  * dbus-services: sddm: adjust to configuration file moved from /etc to /usr/share
+  * Start using new ruff linter.
+
+-------------------------------------------------------------------
 Fri Dec 09 13:20:10 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221209.975098b:
