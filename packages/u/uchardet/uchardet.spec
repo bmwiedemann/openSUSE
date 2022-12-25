@@ -1,7 +1,7 @@
 #
 # spec file for package uchardet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define major   0
 Name:           uchardet
-Version:        0.0.7
+Version:        0.0.8
 Release:        0
 Summary:        Universal Charset Detection Library
-License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://www.freedesktop.org/wiki/Software/uchardet/
 Source0:        https://www.freedesktop.org/software/%{name}/releases/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -105,5 +105,6 @@ rm -f %{buildroot}%{_libdir}/libuchardet.a
 %{_includedir}/%{name}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/uchardet
 
 %changelog
