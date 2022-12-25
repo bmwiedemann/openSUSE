@@ -1,7 +1,7 @@
 #
 # spec file for package libint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           libint
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 %define         sover 2
 Summary:        High-performance library for computing Gaussian integrals in quantum mechanics
@@ -28,11 +27,12 @@ Source0:        https://github.com/evaleev/libint/archive/v%{version}.tar.gz#/%{
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libboost_headers-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-
+BuildRequires:  libboost_headers-devel
+# Exclude 32-bits - https://github.com/evaleev/libint/issues/196
+ExcludeArch:    %{ix86} %arm
 # not enough memory for lto
 %global _lto_cflags %nil
 
@@ -40,7 +40,7 @@ BuildRequires:  gmp-devel
 LIBINT computes the Coulomb and exchange integrals, which in electronic
 structure theory are called electron repulsion integrals (ERIs). This is by
 far the most common type of integrals in molecular structure theory.
- 
+
 LIBINT uses recursive schemes that originate in seminal Obara-Saika method and
 Head-Gordon and Pople’s variation thereof. The idea of LIBINT is to optimize
 computer implementation of such methods by implementing an optimizing compiler
@@ -55,7 +55,7 @@ Group:          System/Libraries
 LIBINT computes the Coulomb and exchange integrals, which in electronic
 structure theory are called electron repulsion integrals (ERIs). This is by
 far the most common type of integrals in molecular structure theory.
- 
+
 LIBINT uses recursive schemes that originate in seminal Obara-Saika method and
 Head-Gordon and Pople’s variation thereof. The idea of LIBINT is to optimize
 computer implementation of such methods by implementing an optimizing compiler
@@ -74,7 +74,7 @@ Requires:       libint2-%sover = %{version}
 LIBINT computes the Coulomb and exchange integrals, which in electronic
 structure theory are called electron repulsion integrals (ERIs). This is by
 far the most common type of integrals in molecular structure theory.
- 
+
 LIBINT uses recursive schemes that originate in seminal Obara-Saika method and
 Head-Gordon and Pople’s variation thereof. The idea of LIBINT is to optimize
 computer implementation of such methods by implementing an optimizing compiler
