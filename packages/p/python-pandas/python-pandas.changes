@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec 23 16:22:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.5.2
+  ## Fixed regressions
+  * Fixed regression in MultiIndex.join() for extension array
+    dtypes (GH49277)
+  * Fixed regression in Series.replace() raising RecursionError
+    with numeric dtype and when specifying value=None (GH45725)
+  * Fixed regression in arithmetic operations for DataFrame with
+    MultiIndex columns with different dtypes (GH49769)
+  * Fixed regression in DataFrame.plot() preventing Colormap
+    instance from being passed using the colormap argument if
+    Matplotlib 3.6+ is used (GH49374)
+  * Fixed regression in date_range() returning an invalid set of
+    periods for CustomBusinessDay frequency and start date with
+    timezone (GH49441)
+  * Fixed performance regression in groupby operations (GH49676)
+  * Fixed regression in Timedelta constructor returning object of
+    wrong type when subclassing Timedelta (GH49579)
+  ## Bug fixes
+  * Bug in the Copy-on-Write implementation losing track of views
+    in certain chained indexing cases (GH48996)
+  * Fixed memory leak in Styler.to_excel() (GH49751)
+  ## Other
+  * Reverted color as an alias for c and size as an alias for s in
+    function DataFrame.plot.scatter() (GH49732)
+- Add pandas-pr49886-fix-numpy-deprecations.patch
+  * gh#pandas-dev/pandas#49887
+- Move to PEP518 build
+
+-------------------------------------------------------------------
 Sat Oct 22 16:10:11 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.5.1:

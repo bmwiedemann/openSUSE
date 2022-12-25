@@ -39,64 +39,83 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+
 Name:           python-pandas%{psuffix}
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pandas/pandas-%{version}.tar.gz
+# SourceRepository: https://github.com/pandas-dev/pandas
+# PATCH-FIX-UPSTREAM pandas-pr49886-fix-numpy-deprecations.patch gh#pandas-dev/pandas#49886, gh#pandas-dev/pandas#49887
+Patch1:         pandas-pr49886-fix-numpy-deprecations.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
-BuildRequires:  %{python_module Jinja2 >= 3.0.0}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.20.3}
-BuildRequires:  %{python_module python-dateutil >= 2.8.1}
-BuildRequires:  %{python_module pytz >= 2020.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 51.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.20.3
 Requires:       python-python-dateutil >= 2.8.1
 Requires:       python-pytz >= 2020.1
+# SECTION Optional dependencies
+# https://pandas.pydata.org/docs/getting_started/install.html#optional-dependencies
 Recommends:     python-Bottleneck >= 1.3.2
 Recommends:     python-numexpr >= 2.7.3
-Suggests:       python-Jinja2 >= 3.0.0
-Suggests:       python-PyMySQL >= 1.0.2
-Suggests:       python-SQLAlchemy >= 1.4.16
-Suggests:       python-XlsxWriter >= 1.2.2
-Suggests:       python-beautifulsoup4 >= 4.9.3
-Suggests:       python-blosc >= 1.21.0
-Suggests:       python-fastparquet >= 0.4.0
-Suggests:       python-fsspec >= 0.7.4
-Suggests:       python-gcsfs >= 0.6.0
-Suggests:       python-html5lib >= 1.1
-Suggests:       python-lxml >= 4.6.3
+# Visualization
 Suggests:       python-matplotlib >= 3.3.2
-Suggests:       python-numba >= 0.53.1
-Suggests:       python-openpyxl >= 3.0.7
-Suggests:       python-pandas-gbq >= 0.15.0
-Suggests:       python-psycopg2 >= 2.8.6
-Suggests:       python-pyarrow >= 1.0.1
-Suggests:       python-pyreadstat >= 1.1.2
-Suggests:       python-qt5
-Suggests:       python-s3fs >= 0.4.0
-Suggests:       python-scipy >= 1.7.1
-Suggests:       python-tables >= 3.6.1
+Suggests:       python-Jinja2 >= 3.0.0
 Suggests:       python-tabulate >= 0.8.9
+# Computation
+Suggests:       python-scipy >= 1.7.1
+Suggests:       python-numba >= 0.53.1
 Suggests:       python-xarray >= 0.19.0
+# Excel files
 Suggests:       python-xlrd >= 2.0.1
 Suggests:       python-xlwt >= 1.3.0
+Suggests:       python-XlsxWriter >= 1.2.2
+Suggests:       python-openpyxl >= 3.0.7
+Suggests:       python-pyxlb >= 1.0.8
+# HTML
+Suggests:       python-beautifulsoup4 >= 4.9.3
+Suggests:       python-html5lib >= 1.1
+Suggests:       python-lxml >= 4.6.3
+# SQL databases
+Suggests:       python-PyMySQL >= 1.0.2
+Suggests:       python-SQLAlchemy >= 1.4.16
+Suggests:       python-psycopg2 >= 2.8.6
+# Other data sources
+Suggests:       python-tables >= 3.6.1
+Suggests:       python-blosc >= 1.21.0
 Suggests:       python-zlib
+Suggests:       python-fastparquet >= 0.4.0
+Suggests:       python-pyarrow >= 1.0.1
+Suggests:       python-pyreadstat >= 1.1.2
+# Access data in the cloud
+Suggests:       python-fsspec >= 2021.7.0
+Suggests:       python-gcsfs >= 2021.7.0
+Suggests:       python-pandas-gbq >= 0.15.0
+Suggests:       python-s3fs >= 2021.08.0
+# Clipboard
+Suggests:       python-qt5
+Suggests:       python-QtPy
 Suggests:       xclip
 Suggests:       xsel
+# Compression
+Suggests:       python-Brotli >= 0.7.0
+Suggests:       python-python-snappy >= 0.6.0
+Suggests:       python-zstandard >= 0.15.2
+# /SECTION
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
 %if %{with test}
 BuildRequires:  %{python_module Bottleneck >= 1.3.2}
+BuildRequires:  %{python_module Jinja2 >= 3}
 BuildRequires:  %{python_module SQLAlchemy >= 1.4.16}
 BuildRequires:  %{python_module XlsxWriter >= 1.4.3}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.9.3}
@@ -125,18 +144,18 @@ heterogeneous) and time series data. It is a high-level building
 block for doing data analysis in Python.
 
 %prep
-%setup -q -n pandas-%{version}
+%autosetup -p1 -n pandas-%{version}
 sed -i 's/--strict-data-files//' pyproject.toml
 
 %build
 %if !%{with test}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %{python_expand sed -i -e 's|"python", "-c",|"%{__$python}", "-c",|' %{buildroot}%{$python_sitearch}/pandas/tests/io/test_compression.py
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -163,6 +182,8 @@ export PYTHONHASHSEED=1
 SKIP_TESTS="(test_misc and test_memory_usage and series and empty and index)"
 # pytest-xdist worker crash
 SKIP_TESTS+=" or test_pivot_number_of_levels_larger_than_int32"
+# https://github.com/pandas-dev/pandas/pull/49777 -- removed in pandas 1.6+
+SKIP_TESTS+=" or test_constructor_signed_int_overflow_deprecation"
 
 # --skip-* arguments: Upstream's custom way to skip marked tests. These do not use pytest.mark.
 SKIP_ARGS="--skip-network"
@@ -225,7 +246,7 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} --dist=loadfile \
 %license LICENSE
 %doc README.md RELEASE.md
 %{python_sitearch}/pandas/
-%{python_sitearch}/pandas-%{version}*-info
+%{python_sitearch}/pandas-%{version}.dist-info
 %endif
 
 %changelog
