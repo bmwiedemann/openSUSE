@@ -1,6 +1,8 @@
---- lib/Mail/SpamAssassin/BayesStore/PgSQL.pm	2010-01-21 13:14:34.000000000 +0100
-+++ lib/Mail/SpamAssassin/BayesStore/PgSQL.pm	2010-03-17 08:44:19.000000000 +0100
-@@ -941,7 +941,7 @@
+Index: lib/Mail/SpamAssassin/BayesStore/PgSQL.pm
+===================================================================
+--- lib/Mail/SpamAssassin/BayesStore/PgSQL.pm.orig
++++ lib/Mail/SpamAssassin/BayesStore/PgSQL.pm
+@@ -987,7 +987,7 @@ sub _put_token {
    }
  
    my $escaped_token = _quote_bytea($token);
@@ -9,7 +11,7 @@
  
    unless (defined($sth)) {
      dbg("bayes: _put_token: SQL error: ".$self->{_dbh}->errstr());
-@@ -1004,7 +1004,7 @@
+@@ -1050,7 +1050,7 @@ sub _put_tokens {
  
    my $tokenarray = join(",", map { '"' . _quote_bytea($_) . '"' } sort keys %{$tokens});
  

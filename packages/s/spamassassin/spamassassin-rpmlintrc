@@ -1,3 +1,2 @@
-addFilter("no-dependency-on perl-base")
 addFilter("systemd-service-without-service_.* sa-update.service")
-addFilter("suse-missing-rclink sa-update")
+addFilter("spamassassin.* no-binary")

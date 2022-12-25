@@ -1,36 +1,30 @@
-diff -ur iXhash2-2.05.orig/iXhash2.cf iXhash2-2.05/iXhash2.cf
---- iXhash2-2.05.orig/iXhash2.cf	2012-07-08 13:29:31.000000000 +0200
-+++ iXhash2-2.05/iXhash2.cf	2012-09-26 13:41:11.874466944 +0200
-@@ -1,20 +1,40 @@
+--- Mail-SpamAssassin-4.0.0/iXhash2-4.00/iXhash2.cf.orig	2022-12-22 11:03:27.016843078 +0100
++++ Mail-SpamAssassin-4.0.0/iXhash2-4.00/iXhash2.cf	2022-12-22 11:04:19.045110018 +0100
+@@ -1,15 +1,40 @@
  
  # Note: loadplugin should really go into local.pre or so
 -loadplugin Mail::SpamAssassin::Plugin::iXhash2 iXhash2.pm
-+loadplugin Mail::SpamAssassin::Plugin::iXhash2 
++loadplugin Mail::SpamAssassin::Plugin::iXhash2
  
  ifplugin Mail::SpamAssassin::Plugin::iXhash2
  
--ixhashdnsbl	GENERIC_IXHASH  generic.ixhash.net.
--body		GENERIC_IXHASH  eval:check_ixhash('GENERIC_IXHASH')
--tflags		GENERIC_IXHASH  net
--
--ixhashdnsbl	NIXSPAM_IXHASH  ix.dnsbl.manitu.net.
--body		NIXSPAM_IXHASH  eval:check_ixhash('NIXSPAM_IXHASH')
--tflags		NIXSPAM_IXHASH  net
--
--ixhashdnsbl	SEM_IXHASH  ixhash.spameatingmonkey.net.
--body		SEM_IXHASH  eval:check_ixhash('SEM_IXHASH')
--tflags		SEM_IXHASH  net
-+ixhashdnsbl	__GENERIC_IXHASH  generic.ixhash.net.
-+body		   __GENERIC_IXHASH  eval:check_ixhash('GENERIC_IXHASH')
-+tflags		__GENERIC_IXHASH  net
+-ixhashdnsbl   IXHASH_IX  ix.dnsbl.manitu.net.
+-body          IXHASH_IX  eval:check_ixhash('IXHASH_IX')
+-describe      IXHASH_IX  http://www.ixhash.net/listinfo.html
+-tflags        IXHASH_IX  net
+-score         IXHASH_IX  1.5
+-reuse         IXHASH_IX
++ixhashdnsbl  __GENERIC_IXHASH  generic.ixhash.net.
++body      __GENERIC_IXHASH  eval:check_ixhash('GENERIC_IXHASH')
++tflags   __GENERIC_IXHASH  net
 +
-+ixhashdnsbl	__NIXSPAM_IXHASH  ix.dnsbl.manitu.net.
-+body		   __NIXSPAM_IXHASH  eval:check_ixhash('NIXSPAM_IXHASH')
-+tflags		__NIXSPAM_IXHASH  net
++ixhashdnsbl  __NIXSPAM_IXHASH  ix.dnsbl.manitu.net.
++body      __NIXSPAM_IXHASH  eval:check_ixhash('NIXSPAM_IXHASH')
++tflags   __NIXSPAM_IXHASH  net
 +
-+ixhashdnsbl	__SEM_IXHASH  ixhash.spameatingmonkey.net.
-+body		   __SEM_IXHASH  eval:check_ixhash('SEM_IXHASH')
-+tflags		__SEM_IXHASH  net
++ixhashdnsbl  __SEM_IXHASH  ixhash.spameatingmonkey.net.
++body      __SEM_IXHASH  eval:check_ixhash('SEM_IXHASH')
++tflags   __SEM_IXHASH  net
 +
 +ixhashdnsbl __HOSTEUROPE_IXHASH  hosteurope.ixhash.net.
 +body        __HOSTEUROPE_IXHASH  eval:check_ixhash('HOSTEUROPE_IXHASH')

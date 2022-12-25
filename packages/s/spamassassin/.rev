@@ -683,4 +683,74 @@
     <comment></comment>
     <requestid>947615</requestid>
   </revision>
+  <revision rev="89" vrev="74">
+    <srcmd5>f35a443b655eba4d7d9654a93ae36c6e</srcmd5>
+    <version>unknown</version>
+    <time>1671977679</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires Text::Diff that was accidentally removed from
+  original submission
+- Update known warnings
+  % spamassassin-rpmlintrc
+- Update to spamassissin 4.0.0:
+  * Notable internal changes:
+    - Meta rules no longer use priority values, they are evaluated
+      dynamically when the rules they depend on are finished
+    - DNS and other asynchronous lookups like DCC or Razor2 plugins
+      are now launched when priority -100 is reached. This allows
+      short circuiting at lower priority without sending unneeded
+      DNS queries
+    - New internal Mail::SpamAssassin::GeoDB module supporting
+      RelayCountry and URILocalBL plugins provides a unified
+      interface to Geographic IP modules. These include:
+        MaxMind::DB::Reader (GeoIP2)
+        Geo::IP
+        IP::Country::DB_File
+        IP::Country::Fast.
+  * New plugins:
+    - Mail::SpamAssassin::Plugin::ExtractText
+    - Mail::SpamAssassin::Plugin::DMARC
+    - Mail::SpamAssassin::Plugin::DecodeShortURLs
+  * HashCash module has been removed completely
+  * Full detailed changelog:
+    https://svn.apache.org/repos/asf/spamassassin/trunk/Changes
+- Update to iXhash2 4.00:
+  * Minimum required version: SpamAssassin 4.0.0
+- Update to spampd 2.61:
+  * Performance and diagnostic improvements, quicker startups, and
+    a lot of documentation updates.
+  * Add support for configuration files (examples included in /misc
+    folder and in POD).
+  * Add optional &quot;scalable mode&quot; using Net::Server::PreFork module
+    (16-year TODO!). More info in POD.
+  * Add --logfile option to control logging destination(s) (syslog,
+    stderr, and/or file/device).
+  * Add --logident, --logfacility options for syslog.
+  * Add multiple levels of help, including full &quot;man&quot; output with
+    optional HTML formatting.
+  * Add --show &lt;thing&gt; argument for printing default option values
+    and other debug.
+  * Fix SpamAssassin debug logging with versions 3.1+ (output
+    was going to stderr/wrong syslog/null).
+  * Fix for IPv6 addresses being used on --host and --relayhost
+    options (was not possible due to &quot;:&lt;port&gt;&quot; check).
+  * SIGHUP will now reload SpamAssassin and SpamPD configuration files
+    (and all module code), still with graceful child process shutdown.
+  * Use SpamAssassin::Logger module (with SA 3.1+) for all logging.
+  * Log to stderr by default if running non-daemonized
+  * Child processes are now renamed to &quot;spampd child&quot;
+    to distinguish them from the parent in task lists.
+  * Now requires Net::Server v0.89+ (though latest 2.009 is recommended).
+  * The --auto-whitelist option is no longer allowed with SpamAssassin v3+.
+  * Improve --debug option, adding ability to specify
+    SpamAssassin (v3.1+) debug areas (aka channels/facilities).
+  * All boolean options can take 0/1 argument and be negated
+    with &quot;no-&quot; prefix.
+  * The --children (-c) option is now more formally named
+    --max-servers (-mxs), but still accepted.
+  * IO::Socket::UNIX and ::IP are only required if actually
+    needed for --relaysocket / --relayhost options.
+</comment>
+    <requestid>1045241</requestid>
+  </revision>
 </revisionlist>

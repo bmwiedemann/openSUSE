@@ -1,7 +1,8 @@
-diff -purN a/t/basic_lint_without_sandbox.t b/t/basic_lint_without_sandbox.t
---- a/t/basic_lint_without_sandbox.t	2020-01-25 03:51:14.000000000 +0100
-+++ b/t/basic_lint_without_sandbox.t	2020-11-10 22:58:02.294809138 +0100
-@@ -25,7 +25,7 @@ my $sandboxfile = "log/test_rules_copy/7
+Index: Mail-SpamAssassin-4.0.0/t/basic_lint_without_sandbox.t
+===================================================================
+--- Mail-SpamAssassin-4.0.0.orig/t/basic_lint_without_sandbox.t
++++ Mail-SpamAssassin-4.0.0/t/basic_lint_without_sandbox.t
+@@ -23,7 +23,7 @@ my $sandboxfile = "$localrules/70_sandbo
  # so we can use that to tell if this is the case
  SKIP: {
      skip( "Not on a sandbox", 2 ) unless -f $scoresfile;

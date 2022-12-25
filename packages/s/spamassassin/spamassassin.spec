@@ -18,12 +18,12 @@
 
 %bcond_without test
 
-%define ix_version 2.05
-%define spd_version 2.53
-%define sa_version 3.4.6
+%define ix_version 4.00
+%define spd_version 2.61
+%define sa_version 4.0.0
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
 %define perl_float %(echo %{perl_version} | awk -F. '{ printf "%d.%03d", $1, $2 }')
-%define rules_revision 1888502
+%define rules_revision 1905950
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
@@ -59,7 +59,6 @@ Patch3:         patch-SQL_ASCII_SORT
 Patch6:         bnc#582111.diff
 Patch7:         basic-lint-without-sandbox.patch
 Patch10:        iXhash2-meta-rules.patch
-BuildRequires:  perl(Error)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 # optional, but want them for build (test)
@@ -114,7 +113,7 @@ BuildRequires:  perl(HTML::Parser) >= 3.43
 BuildRequires:  perl(IO::Zlib) >= 1.04
 BuildRequires:  perl(MIME::Base64)
 BuildRequires:  perl(Mail::DKIM) >= 0.37
-BuildRequires:  perl(Net::DNS) >= 0.58
+BuildRequires:  perl(Net::DNS) >= 0.69
 BuildRequires:  perl(Net::SMTP)
 BuildRequires:  perl(NetAddr::IP) >= 4.010
 BuildRequires:  perl(Pod::Usage) >= 1.10
@@ -122,15 +121,23 @@ BuildRequires:  perl(Sys::Hostname)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
 BuildRequires:  perl(Time::Local)
+# required for tests
+BuildRequires:  perl(Devel::Cycle)
+#BuildRequires:  perl(Perl::Critic::Policy::Perlsecret)
+BuildRequires:  perl(Perl::Critic::Policy::TestingAndDebugging::ProhibitNoStrict)
+BuildRequires:  perl(Test::More)
+BuildRequires:  perl(Text::Diff)
 # optional, but want them for build (test)
 BuildRequires:  perl(Archive::Zip)
 BuildRequires:  perl(BSD::Resource)
-BuildRequires:  perl(DBD::mysql)
+BuildRequires:  perl(DBD::SQLite)
 BuildRequires:  perl(DBI)
 BuildRequires:  perl(Devel::Cycle)
-BuildRequires:  perl(Encode::Detect)
+BuildRequires:  perl(Email::Address::XS)
+BuildRequires:  perl(Encode::Detect::Detector)
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(IO::Socket::INET6)
+BuildRequires:  perl(IO::Socket::IP)
 BuildRequires:  perl(IO::Socket::SSL) >= 1.76
 BuildRequires:  perl(IO::String)
 BuildRequires:  perl(IP::Country::Fast)
@@ -138,6 +145,7 @@ BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Mail::SPF) >= 2.001
 BuildRequires:  perl(Net::CIDR::Lite)
 BuildRequires:  perl(Net::Ident)
+BuildRequires:  perl(Net::LibIDN)
 BuildRequires:  perl(Net::Patricia) >= 1.16
 BuildRequires:  perl(Razor2::Client::Agent) >= 2.61
 #
@@ -148,7 +156,7 @@ Requires:       perl(File::Copy) >= 2.02
 Requires:       perl(File::Spec) >= 0.8
 Requires:       perl(HTML::Parser) >= 3.43
 Requires:       perl(Mail::DKIM) >= 0.31
-Requires:       perl(Net::DNS) >= 0.34
+Requires:       perl(Net::DNS) >= 0.69
 Requires:       perl(NetAddr::IP) >= 4.010
 Requires:       perl(Pod::Usage) >= 1.10
 Requires:       perl(Sys::Hostname)
@@ -158,10 +166,12 @@ Recommends:     perl(Archive::Tar) >= 1.23
 Recommends:     perl(BSD::Resource)
 Recommends:     perl(Compress::Zlib)
 Recommends:     perl(DB_File)
-Recommends:     perl(Encode::Detect)
+Recommends:     perl(Email::Address::XS)
+Recommends:     perl(Encode::Detect::Detector)
 Recommends:     perl(Getopt::Long) >= 2.32
 Recommends:     perl(HTTP::Date)
 Recommends:     perl(IO::Socket::INET6)
+Recommends:     perl(IO::Socket::IP)
 Recommends:     perl(IO::Socket::SSL) >= 1.76
 Recommends:     perl(IO::String)
 Recommends:     perl(IO::Zlib) >= 1.04
@@ -173,6 +183,7 @@ Recommends:     perl(Mail::SPF) >= 2.001
 Recommends:     perl(Net::CIDR::Lite)
 Recommends:     perl(Net::DNS) >= 0.58
 Recommends:     perl(Net::Ident)
+Recommends:     perl(Net::LibIDN)
 Recommends:     perl(Net::Patricia) >= 1.16
 Recommends:     perl(Net::SMTP)
 Recommends:     perl(Razor2::Client::Agent) >= 2.61
@@ -220,7 +231,7 @@ tar -zxf %{SOURCE1} -C rules
 %patch3
 %patch6
 %patch7 -p1
-%patch10
+%patch10 -p1
 cp %{SOURCE11} ./
 
 %build

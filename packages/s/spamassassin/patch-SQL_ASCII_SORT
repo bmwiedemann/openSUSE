@@ -1,6 +1,8 @@
---- lib/Mail/SpamAssassin/Conf/SQL.pm	2006-09-29 15:06:39.000000000 +0200
-+++ lib/Mail/SpamAssassin/Conf/SQL.pm 	2007-02-09 16:48:42.000000000 +0100
-@@ -139,9 +139,14 @@
+Index: lib/Mail/SpamAssassin/Conf/SQL.pm
+===================================================================
+--- lib/Mail/SpamAssassin/Conf/SQL.pm.orig
++++ lib/Mail/SpamAssassin/Conf/SQL.pm
+@@ -148,9 +148,14 @@ sub load_with_dbi {
         $sql =~ s/_DOMAIN_/$quoted_domain/g;
       }
       else {
