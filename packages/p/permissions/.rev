@@ -1434,4 +1434,13 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1006712</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>6aa80ab337f0bdbec69b4ab8dd1de2c8</srcmd5>
+    <version>1599_20221220</version>
+    <time>1671977653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221220:
+  * profiles: remove outdated kdesud, apptainer entries</comment>
+    <requestid>1043915</requestid>
+  </revision>
 </revisionlist>

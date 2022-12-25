@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 10:04:33 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 20221220:
+  * profiles: remove outdated kdesud, apptainer entries
+
+-------------------------------------------------------------------
 Wed Sep 21 14:30:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip tests on qemu user builds

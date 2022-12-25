@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20220912
+%define VERSION_DATE 20221220
 
 Name:           permissions
 Version:        %{suse_version}_%{VERSION_DATE}
@@ -28,6 +28,7 @@ Group:          Productivity/Security
 URL:            http://github.com/openSUSE/permissions
 Source:         permissions-%{VERSION_DATE}.tar.xz
 Source1:        fix_version.sh
+Source2:        permissions.rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
@@ -54,9 +55,9 @@ tests/regtest.py --skip-make > /dev/null
 %endif
 
 %description
-Permission settings of files and directories depending on the local
-security settings. The local security setting ("easy", "secure", or "paranoid")
-can be configured in /etc/sysconfig/security.
+File and directory permission settings depending on the local security
+settings. The local security setting ("easy", "secure", or "paranoid") can be
+configured in /etc/sysconfig/security.
 
 This package does not contain files, it just requires the necessary packages.
 
@@ -70,6 +71,7 @@ Requires(post): chkstat
 #!BuildIgnore:  group(trusted)
 Requires(pre):  group(trusted)
 Obsoletes:      permissions-doc <= %{suse_version}_%{VERSION_DATE}
+BuildArch:      noarch
 
 %description config
 The actual permissions configuration files, /usr/share/permissions/permission.*.
