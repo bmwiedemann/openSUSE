@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:02:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.1:
+  * No changelog.
+- Changes from version 3.5.0:
+  * License change to LGPL-3.0-or-later.
+  * No other changelog.
+- Drop Source1: WSRT_Measures_20210502-160001.ztar, no longer
+  available from upstream.
+- Drop tests depending on additional data or writing data to tmp
+  dir.
+- Drop outdated redefinitions of python rpm macros.
+
+-------------------------------------------------------------------
 Thu Jul 15 09:01:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync ExcludeArch with casacore: casacore is not built for %ix86.

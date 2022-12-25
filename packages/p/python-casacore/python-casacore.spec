@@ -1,7 +1,7 @@
 #
 # spec file for package python-casacore
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 # libboost_python3-devel (libbost_python-py3-*) is for the primary python3 flavor only
 %define pythons python3
 %global modname casacore
 Name:           python-casacore
-Version:        3.4.0
+Version:        3.5.1
 Release:        0
 Summary:        A wrapper around CASACORE, the radio astronomy library
-License:        GPL-2.0-or-later
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/casacore/python-casacore
 Source:         https://github.com/casacore/python-casacore/archive/refs/tags/v%{version}.tar.gz#/python-casacore-%{version}-gh.tar.gz
-Source1:        ftp://ftp.astron.nl/outgoing/Measures/WSRT_Measures_20210502-160001.ztar
 BuildRequires:  %{python_module configargparse}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module future}
@@ -68,19 +66,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# don't break installations when running rpmbuild outside of obs chroot
-[ -e ~/.casarc ] && mv  ~/.casarc ~/.casarc.bak || :
-mkdir data
-pushd data
-tar xf %{SOURCE1}
-echo "measures.directory: $PWD" > ~/.casarc
-popd
 # old python-rpm-macros for SLE/Leap: don't import casacore from current source dir
 mv casacore casacore.tmp
-%pytest_arch
+# TestImage needs to use data files that are no longer available upstream
+# TestTable tries to write to tmp dir and fails during build due to perm issues
+%pytest_arch -k 'not (TestImage or TestTable)'
 mv casacore.tmp casacore
-rm ~/.casarc
-[ -e ~/.casarc.bak ] && mv  ~/.casarc.bak ~/.casarc || :
 
 %files %{python_files}
 %doc README.rst
