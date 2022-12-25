@@ -559,6 +559,7 @@
     <package name="gdbm-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-loader-libheif" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gdk-pixbuf-loader-libopenraw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gdk-pixbuf-loader-rsvg" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-query-loaders" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2367,6 +2368,7 @@
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenmpt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenobex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libopenraw9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenssl1_1-hmac" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3294,6 +3296,7 @@
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Email-Address-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->

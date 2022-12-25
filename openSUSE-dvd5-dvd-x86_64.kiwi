@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221224" schemaversion="4.1">
+<image name="OBS__openSUSE___20221225" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221224</productvar>
+      <productvar name="VERSION">20221225</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221224,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221225,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221224/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221225/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -582,6 +582,7 @@
       <repopackage name="gdbm-lang"/>
       <repopackage name="gdk-pixbuf-lang"/>
       <repopackage name="gdk-pixbuf-loader-libheif"/>
+      <repopackage name="gdk-pixbuf-loader-libopenraw"/>
       <repopackage name="gdk-pixbuf-loader-rsvg"/>
       <repopackage name="gdk-pixbuf-query-loaders"/>
       <repopackage name="gdk-pixbuf-query-loaders-32bit" arch="x86_64"/>
@@ -2421,6 +2422,7 @@
       <repopackage name="libopenjp2-7"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenobex2"/>
+      <repopackage name="libopenraw9"/>
       <repopackage name="libopenssl1_1"/>
       <repopackage name="libopenssl1_1-32bit" arch="x86_64"/>
       <repopackage name="libopenssl1_1-hmac"/>
@@ -3613,6 +3615,7 @@
       <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
       <repopackage name="perl-doc"/>
+      <repopackage name="perl-Email-Address-XS"/>
       <repopackage name="perl-Encode-Detect"/>
       <repopackage name="perl-Encode-Locale"/>
       <repopackage name="perl-Error"/>
