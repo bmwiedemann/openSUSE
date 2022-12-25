@@ -26,6 +26,8 @@ Summary:        Read image/video from socket file
 License:        GPL-3.0+
 URL:            https://github.com/linuxdeepin/dareader
 Source0:        https://github.com/linuxdeepin/dareader/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+# PATCH-FOR-OPENSUSE fix-link-library.patch hillwood@opensuse.org - Fix library link
+Patch0:         fix-link-library.patch
 Group:          Productivity/Multimedia/Other
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -36,7 +38,7 @@ Read image/video from socket file
 
 %package -n lib%{name}%{sover}
 Summary:        Read image/video from socket file
-Group:          Development/Libraries
+Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 Read image/video from socket file
@@ -51,6 +53,9 @@ The dareader-devel package contains the header files for dareader.
 
 %prep
 %setup -q -n %{name}-%{commit}
+%if 0%{?suse_version} <= 1500
+%patch0 -p1
+%endif
 
 %build
 %cmake

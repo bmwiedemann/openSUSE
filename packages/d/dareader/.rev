@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1000285</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0d8b690c77b18b67c7174c42aa53a9bf</srcmd5>
+    <version>0.0.0+git20220726.2d7d79c</version>
+    <time>1671977709</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-link-library.patch, fix build on Leap 15.x (forwarded request 1045272 from hillwood)</comment>
+    <requestid>1045273</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  8 14:58:29 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-link-library.patch, fix build on Leap 15.x 
+
+-------------------------------------------------------------------
 Wed Aug 24 13:25:07 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 0.0.0+git20220726.2d7d79c 
