@@ -78,4 +78,25 @@
 </comment>
     <requestid>1037634</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be1bde7e14424e38758347ceedc0e951</srcmd5>
+    <version>0.16.3</version>
+    <time>1671977671</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1045069 from bnavigator
+
+- Update to 0.16.3
+    * Allow ws and wss schemes. Allows us to properly support
+      websocket upgrade connections. (#625)
+    * Forwarding HTTP proxies use a connection-per-remote-host.
+      Required by some proxy implementations. (#637)
+    * Don't raise RuntimeError when closing a connection pool with
+      active connections. Removes some error cases when cancellations
+      are used. (#631)
+    * Lazy import anyio, so that it's no longer a hard dependancy,
+      and isn't imported if unused. (#639)
+  - Add httpcore-allow-deprecationwarnings-test.patch
+    gh#encode/httpcore#511, gh#agronholm/anyio#470</comment>
+    <requestid>1045130</requestid>
+  </revision>
 </revisionlist>

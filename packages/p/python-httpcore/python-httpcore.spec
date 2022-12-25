@@ -26,20 +26,22 @@
 %endif
 
 Name:           python-httpcore%{psuffix}
-Version:        0.15.0
+Version:        0.16.3
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
 URL:            https://github.com/encode/httpcore
 Source:         https://github.com/encode/httpcore/archive/%{version}.tar.gz#/httpcore-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM httpcore-allow-deprecationwarnings-test.patch gh#encode/httpcore#511, gh#agronholm/anyio#470
+Patch1:         httpcore-allow-deprecationwarnings-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3
 Requires:       python-certifi
-Requires:       python-h11 >= 0.11.0
-Requires:       python-sniffio >= 1.0
+Requires:       (python-anyio >= 3 with python-anyio < 5)
+Requires:       (python-h11 >= 0.13.0 with python-h11 < 0.15)
+Requires:       (python-sniffio >= 1.0 with python-sniffio < 2)
 Recommends:     python-h2 >= 3.0
 Recommends:     python-socksio >= 1.0
 BuildArch:      noarch
@@ -52,7 +54,7 @@ BuildRequires:  %{python_module pytest >= 7.0.1}
 BuildRequires:  %{python_module pytest-asyncio >= 0.16.0}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-trio >= 0.7.0}
-BuildRequires:  %{python_module trio >= 0.19.0}
+BuildRequires:  %{python_module trio >= 0.21.0}
 %endif
 # /SECTION
 %python_subpackages
@@ -61,26 +63,24 @@ BuildRequires:  %{python_module trio >= 0.19.0}
 Python minimal low-level HTTP client.
 
 %prep
-%setup -q -n httpcore-%{version}
-#sed -i 's/"localhost"/"127.0.0.1"/' tests/*sync_tests/test_interfaces.py tests/conftest.py
+%autosetup -p1 -n httpcore-%{version}
 
+%if !%{with test}
 %build
 %python_build
 
 %install
-%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
-%check
-# ulimit -n 50000
-# test_no_retries and test_retries are very slow and fails
-# tests/async_tests + tests/sync_tests causes open file limit
-# socks5 -- we don't ship socksio
-# gh#encode/httpcore#622 - test_request_with_content
 %if %{with test}
-%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic or test_request_with_content or socks5)' --asyncio-mode=strict
+%check
+# we don't ship socksio
+donttest="socks5"
+# gh#encode/httpcore#622
+donttest+=" or test_request_with_content"
+%pytest -rsfE --asyncio-mode=strict -p no:unraisableexception -k "not ($donttest)"
 %endif
 
 %if !%{with test}

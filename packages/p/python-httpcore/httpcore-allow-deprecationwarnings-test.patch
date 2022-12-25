@@ -1,0 +1,17 @@
+Index: httpcore-0.16.3/setup.cfg
+===================================================================
+--- httpcore-0.16.3.orig/setup.cfg
++++ httpcore-0.16.3/setup.cfg
+@@ -30,6 +30,12 @@ markers =
+   copied_from(source, changes=None): mark test as copied from somewhere else, along with a description of changes made to accodomate e.g. our test setup
+ filterwarnings =
+     error
++    # requires anyio 4 with trio 0.22: https://github.com/agronholm/anyio/issues/470
++    ignore:trio.MultiError is deprecated
++    # fixed by pytest-httpbin (2.0 not released yet): https://github.com/encode/httpcore/pull/511
++    ignore:unclosed <(socket\.socket|ssl\.SSLSocket) .*:ResourceWarning
++    ignore:ssl\.wrap_socket\(\) is deprecated, use SSLContext\.wrap_socket\(\):DeprecationWarning
++    ignore:ssl\.PROTOCOL_TLS is deprecated:DeprecationWarning
+ 
+ [coverage:run]
+ omit = venv/*, httpcore/_sync/*
