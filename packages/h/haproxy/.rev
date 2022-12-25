@@ -1255,4 +1255,12 @@
   https://www.mail-archive.com/haproxy@formilux.org/msg42914.html</comment>
     <requestid>1039636</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>82a24bc601fa4b7972879860dd71ec48</srcmd5>
+    <version>2.7.1+git0.3e4af0ed7</version>
+    <time>1671977707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.1+git0.3e4af0ed7:</comment>
+    <requestid>1045270</requestid>
+  </revision>
 </revisionlist>

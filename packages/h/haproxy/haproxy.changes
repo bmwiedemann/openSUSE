@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sun Dec 25 06:01:14 UTC 2022 - mrueckert@suse.de
+
+- Update to version 2.7.1+git0.3e4af0ed7:
+  * [RELEASE] Released version 2.7.1
+  * BUG/MEDIUM: stats: Rely on a local trash buffer to dump the stats
+  * BUG/MINOR:: mux-h1: Never handle error at mux level for running connection
+  * BUG/MINOR: mux-h1: Report EOS on parsing/internal error for not running stream
+  * BUG/MEDIUM: tests: use tmpdir to create UNIX socket
+  * REGTESTS: startup: disable automatic_maxconn.vtc
+  * BUG/MINOR: quic: fix crash on PTO rearm if anti-amplification reset
+  * BUG/MINOR: stats: fix show stat json buffer limitation
+  * MINOR: stats: introduce stats field ctx
+  * MINOR: stats: provide ctx for dumping functions
+  * BUG/MINOR: ssl: Fix memory leak of find_chain in ssl_sock_load_cert_chain
+  * MINOR: h3: check return values of htx_add_* on headers parsing
+  * BUG/MINOR: h3: fix memleak on HEADERS parsing failure
+  * BUG/MEDIUM: h3: fix cookie header parsing
+  * BUG/MINOR: mux-h1: Fix test instead a BUG_ON() in h1_send_error()
+  * BUG/MEDIUM: mux-h1: Don't release H1 stream upgraded from TCP on error
+  * LICENSE: wurfl: clarify the dummy library license.
+  * BUG/MINOR: mux-quic: handle properly alloc error in qcs_new()
+  * BUG/MINOR: mux-quic: remove qcs from opening-list on free
+  * CLEANUP: mux-quic: remove unused attribute on qcs_is_close_remote()
+  * BUG/MINOR: quic: handle alloc failure on qc_new_conn() for owned socket
+  * BUG/MINOR: quic: properly handle alloc failure in qc_new_conn()
+  * BUG/MINOR: quic: fix fd leak on startup check quic-conn owned socket
+  * MINOR: quic: reconnect quic-conn socket on address migration
+  * MEDIUM: quic: requeue datagrams received on wrong socket
+  * MINOR: mux-quic: rename duplicate function names
+  * MEDIUM: quic: move receive out of FD handler to quic-conn io-cb
+  * MEDIUM: quic: use quic-conn socket for reception
+  * MINOR: quic: use connection socket for emission
+  * MINOR: quic: allocate a socket per quic-conn
+  * MINOR: quic: define config option for socket per conn
+  * MINOR: quic: test IP_PKTINFO support for quic-conn owned socket
+  * MINOR: quic: startup detect for quic-conn owned socket support
+  * MINOR: quic: ignore address migration during handshake
+  * MINOR: quic: detect connection migration
+  * MINOR: tools: add port for ipcmp as optional criteria
+  * MINOR: quic: extract datagram parsing code
+  * MINOR: quic: complete traces in qc_rx_pkt_handle()
+  * MINOR: quic: remove qc from quic_rx_packet
+  * BUILD: peers: peers-t.h depends on stick-table-t.h
+  * CI: github: split matrix for development and stable branches
+  * CI: github: remove redundant ASAN loop
+  * MINOR: debug: add a balance of alloc - free at the end of the memstats dump
+  * MINOR: debug: support pool filtering on "debug dev memstats"
+  * BUG/MEDIUM: h3: parse content-length and reject invalid messages
+  * MINOR: http: extract content-length parsing from H2
+  * BUG/MEDIUM: h3: reject request with invalid pseudo header
+  * BUG/MEDIUM: h3: reject request with invalid header name
+  * REGTESTS: startup: add alternatives values in automatic_maxconn.vtc
+  * BUG/MEDIUM: resolvers: Use tick_first() to update the resolvers task timeout
+  * BUG/MEDIUM: freq-ctr: Don't compute overshoot value for empty counters
+  * CLEANUP: ssl: remove check on srv->proxy
+  * REGTESTS: startup: activate automatic_maxconn.vtc
+  * CI: github: set ulimit -n to a greater value
+  * REGTESTS: startup: change the expected maxconn to 11000
+  * BUG/MINOR: startup: don't use internal proxies to compute the maxconn
+  * REGTESTS: startup: check maxconn computation
+  * REGTESTS: fix the race conditions in iff.vtc
+  * BUG/MAJOR: fcgi: Fix uninitialized reserved bytes
+  * DOC: promex: Add missing backend metrics
+  * MINOR: promex: introduce haproxy_backend_agg_check_status
+  * BUG/MINOR: promex: create haproxy_backend_agg_server_status
+  * MINOR: pools: make DEBUG_UAF a runtime setting
+  * DEBUG: pool: show a few examples in -dMhelp
+  * CLEANUP: pools: get rid of CONFIG_HAP_POOLS
+  * REORG: pool: move all the OS specific code to pool-os.h
+  * CLEANUP: pool: only include pool-os from pool.c not pool.h
+  * CLEANUP: pools: move the write before free to the uaf-only function
+  * BUG/MEDIUM: httpclient/lua: double LIST_DELETE on end of lua task
+  * BUILD: makefile/da: also clean Os/ in Device Atlas dummy lib dir
+  * BUILD: atomic: atomic.h may need compiler.h on ARMv8.2-a
+  * BUG/MINOR: init/threads: continue to limit default thread count to max per group
+  * BUG/MINOR: checks: restore legacy on-error fastinter behavior
+  * BUG/MEDIUM: mworker: create the mcli_reload socketpairs in case of upgrade
+  * BUG/MEDIUM: mworker: fix segv in early failure of mworker mode with peers
+  * MINOR: mworker: display an alert upon a wait-mode exit
+  * BUG/MINOR: checks: make sure fastinter is used even on forced transitions
+  * BUG/MEDIUM: checks: do not reschedule a possibly running task on state change
+  * CI: github: split ssl lib selection based on git branch
+  * CI: github: reintroduce openssl 1.1.1
+  * BUG/MEDIIM: stconn: Flush output data before forwarding close to write side
+  * BUG/MINOR: ssl: initialize WolfSSL before parsing
+  * BUG/MINOR: ssl: initialize SSL error before parsing
+
+-------------------------------------------------------------------
 Thu Dec 01 15:25:38 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.7.0+git0.437fd289f:
