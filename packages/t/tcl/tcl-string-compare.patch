@@ -1,0 +1,30 @@
+Index: generic/tclCmdMZ.c
+==================================================================
+--- generic/tclCmdMZ.c
++++ generic/tclCmdMZ.c
+@@ -2752,23 +2752,11 @@
+ 		s2 = value2Ptr->bytes;
+ 		memCmpFn = memcmp;
+ 	    } else {
+ 		s1 = (char *) Tcl_GetUnicode(value1Ptr);
+ 		s2 = (char *) Tcl_GetUnicode(value2Ptr);
+-		if (
+-#if defined(WORDS_BIGENDIAN) && (TCL_UTF_MAX != 4)
+-			1
+-#else
+-			checkEq
+-#endif /* WORDS_BIGENDIAN */
+-		        ) {
+-		    memCmpFn = memcmp;
+-		    s1len *= sizeof(Tcl_UniChar);
+-		    s2len *= sizeof(Tcl_UniChar);
+-		} else {
+-		    memCmpFn = (memCmpFn_t) Tcl_UniCharNcmp;
+-		}
++		memCmpFn = (memCmpFn_t) Tcl_UniCharNcmp;
+ 	    }
+ 	}
+     } else {
+ 	/*
+ 	 * Get the string representations, being careful in case we have
+

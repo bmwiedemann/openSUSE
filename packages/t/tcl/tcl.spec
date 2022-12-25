@@ -49,6 +49,7 @@ Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
 Patch0:         tcl-refchan-mode-needed.patch
+Patch1:         tcl-string-compare.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -93,6 +94,7 @@ if ! test -d pkgs/itcl%itclver; then
    exit 1
 fi
 %patch0
+%patch1
 
 # The SQLite extension is provided by the sqlite3 package,
 # so don't build it here.

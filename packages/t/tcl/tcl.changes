@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 23 15:50:47 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1206623, tcl-string-compare.patch: Fix a bug in string
+  comparison on big endian that made test string-2.20.1 fail.
+
+-------------------------------------------------------------------
 Wed Nov 23 16:05:02 UTC 2022 - Reinhard Max <max@suse.com>
 
 - New version 8.6.13:
