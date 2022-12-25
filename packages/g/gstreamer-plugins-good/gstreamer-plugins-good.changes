@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Dec 23 19:09:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + flacparse: Fix handling of headers advertising 32bps
+  + multiudpsink: allow binding to IPv6 address
+  + oss4: Fix debug category initialization
+  + qt5:
+    - Deactivate context if fill_info fails
+    - Initialize GError properly in gst_qt_get_gl_wrapcontext()
+  + qtdemux:
+    - Check return value from gst_structure_get in PIFF box
+    - Use unsigned int types to store result of QT_UINT32
+    - Prefill mode fixes
+  + rtpjitterbuffer tests: Cast drop-messages-interval type
+    properly (fixing it on 32-bit architectures)
+  + rtspsrc:
+    - Don't replace 404 errors with "no auth protocol found"
+    - Fix seek event leaks
+    - Fix usage of IPv6 connections in SETUP
+    - Only EOS on timeout if all streams are timed out/EOS
+  + splitmuxsrc: don't queue data on unlinked pads
+  + v4l2: Fix SIGSEGV on 'change state' during 'format change'
+  + v4l2videodec: Fix activation of internal pool
+  + wavparse:
+    - Avoid occasional crash due to referencing freed buffer.
+    - Fix crash that occurs in push mode when header chunks are
+      corrupted in certain ways.
+
+-------------------------------------------------------------------
 Fri Oct 21 21:29:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:
