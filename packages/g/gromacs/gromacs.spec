@@ -43,7 +43,9 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_with    opencl
 %endif
-%bcond_with tinyxml2
+
+%bcond_with    tinyxml2
+%bcond_without tests
 
 Name:           gromacs%{?with_mpi:-openmpi}
 Version:        2022.3
@@ -56,7 +58,8 @@ URL:            https://www.gromacs.org
 Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
 Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
 Source2:        ftp://ftp.gromacs.org/regressiontests/regressiontests-%{uversion}.tar.gz
-
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.com/gromacs/gromacs/-/commit/0ccdf623928dfe1ce04aa7a8995a5403feaa8a5e.patch#/relax_test_tolerance.patch
 BuildRequires:  cmake >= 3.13.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -77,6 +80,10 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  (pkgconfig(tinyxml2) > 3.0 with pkgconfig(tinyxml2) < 7)
 %endif
 Requires:       gromacs-data = %{version}
+%if %{with mpi}
+# MPI communication fails on 32bit architectures
+ExcludeArch:    %{ix86} %{arm} ppc
+%endif
 
 %description
 GROMACS is a package to perform molecular dynamics computer
@@ -170,8 +177,10 @@ simulations.
 This package contains data files for gromacs.
 
 %prep
-%autosetup -n gromacs-%{uversion}
+%autosetup -n gromacs-%{uversion} -p1
 tar -xzf %{S:2}
+# Force same behavior on 32 and 64 bit archs
+sed -i -e '/set(CMAKE_BUILD_WITH_INSTALL_RPATH/ s@.*@# \0@' CMakeLists.txt
 
 %build
 %if %{with mpi}
@@ -185,8 +194,8 @@ tar -xzf %{S:2}
 %define acce None
 %endif
 
-# regression are currently broken on i686, https://redmine.gromacs.org/issues/2584
-# and cannot be used with GMX_BUILD_MDRUN_ONLY=ON
+# Avoid oversubscription, some tests run with 2 Ranks locally
+export MAX_TEST_THREADS=$(( %_smp_build_ncpus / 2 ))
 %cmake \
   -DGMX_VERSION_STRING_OF_FORK=openSUSE \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -197,7 +206,7 @@ tar -xzf %{S:2}
   -DCMAKE_SKIP_RPATH=OFF \
   -DCMAKE_SKIP_INSTALL_RPATH=ON \
   -DGMX_BUILD_UNITTESTS:BOOL=ON \
-  -DGMX_EXTERNAL_TINYXML2:BOOL=OFF \
+  -DGMX_EXTERNAL_TINYXML2:BOOL=%{?with_tinyxml:ON}%{!?with_tinyxml:OFF} \
   -DGMX_EXTERNAL_ZLIB:BOOL=ON \
   -DGMX_USE_MUPARSER=EXTERNAL \
   -DGMX_SIMD=%{acce} \
@@ -212,10 +221,8 @@ tar -xzf %{S:2}
 %endif
   -DGMX_OPENMP=ON \
   -DGMX_INSTALL_LEGACY_API=ON \
-%ifnarch %{ix86} %{arm}
   -DREGRESSIONTEST_PATH="%{_builddir}/gromacs-%{uversion}/regressiontests-%{uversion}" \
-  -DGMX_TEST_NUMBER_PROCS=$(( %_smp_build_ncpus / 2 )) \
-%endif
+  -DGMX_TEST_NUMBER_PROCS=${MAX_TEST_THREADS} \
   %{nil}
 %cmake_build
 %cmake_build tests
@@ -250,16 +257,22 @@ rm -Rf %{buildroot}%{_datadir}/gromacs/opencl
 
 rm -f %{buildroot}%{_bindir}/gmx-completion*
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}%{_datadir}/gromacs
 
 %check
-#s390x is too slow for tests
-# gmock based tests don't work on i586
-%ifnarch s390x %{ix86}
-%ctest --exclude-regex 'physicalvalidationtests|regression|2Rank|TwoRanks' %{?with_mpi:--parallel 1}
+%if %{with tests}
+%ifarch %{ix86}
+# Precision problems on x86, https://gitlab.com/gromacs/gromacs/-/issues/2584
+export GTEST_FILTER=:-LinearChainDataFixture:Polarize/ListedForcesTest
+%endif
+%ctest --exclude-regex 'physicalvalidationtests|regression|2Rank|TwoRanks'
 # Each OneRank/TwoRanks test pair uses the same temporary files, run separately
-%ctest --tests-regex '2Rank|TwoRanks' %{?with_mpi:--parallel 1}
-%ctest --tests-regex regression --parallel 1
+%ctest --tests-regex '2Rank|TwoRanks'
+%ifarch %{ix86}
+  %ctest --tests-regex regression --exclude-regex regressiontests/complex --parallel 1
+%else
+  %ctest --tests-regex regression --parallel 1
+%endif
 %endif
 
 %post   -n %{libname_gromacs} -p /sbin/ldconfig

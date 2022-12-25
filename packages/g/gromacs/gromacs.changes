@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 25 01:29:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Exclude MPI flavor on 32 bit architectures, as MPI communication
+  does not work correctly.
+
+-------------------------------------------------------------------
+Mon Nov  7 19:15:18 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix aarch64 build on 15.x, add relax_test_tolerance.patch
+- Relax memory and disk constraints
+
+-------------------------------------------------------------------
 Wed Nov  2 02:30:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use system muparser package, drop libmuparser2 subpackage

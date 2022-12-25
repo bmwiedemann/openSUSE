@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
 <constraints>
   <hardware>
-    <physicalmemory>
-      <size unit="G">8</size>
-    </physicalmemory>
+    <memory>
+      <size unit="G">5</size>
+    </memory>
     <disk>
-      <size unit="G">20</size>
+      <size unit="G">4</size>
     </disk>
   </hardware>
-  <sandbox>kvm</sandbox>
-  <hostlabel exclude="true">SLOW_CPU</hostlabel>
 </constraints>
