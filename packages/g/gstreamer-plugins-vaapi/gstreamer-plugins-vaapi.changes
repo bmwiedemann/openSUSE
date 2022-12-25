@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 23 19:34:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + vaapi:
+    - Prefix internal USE_X11 define to fix build with mesa 22.3.0
+    - libs: context: use queried value for attrib
+  + gstreamer-vaapi cannot be built without X11 with recent mesa
+
+-------------------------------------------------------------------
 Thu Nov  3 17:58:47 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Remove unused buildrequires on yasm.
