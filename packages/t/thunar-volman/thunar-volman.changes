@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec 21 12:37:22 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0:
+  * Bump build requirements for Xfce 4.18.0
+
+- Update to 4.17.1:
+  * bump copyright year
+  * Drop subtitle from settings dialog
+
+- Update to 4.17.0:
+  * autoconf: Use AC_CONFIG_MACRO_DIRS
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING
+  * Fix compilation warnings
+  * automake: Enable subdir-objects
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Replace ExoBinding with GBinding
+  * Remove GSourceFunc casts (!5)
+  * Translation Updates:
+    Arabic, Belarusian, Catalan, Croatian, Czech, Estonian, Galician,
+    Greek, Hebrew, Hindi, Norwegian Bokmål, Occitan (post 1500),
+    Romanian, Russian, Spanish, Turkish
+
+-------------------------------------------------------------------
 Thu Jan  7 01:28:24 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed wrong source URL
