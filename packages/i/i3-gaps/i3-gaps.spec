@@ -17,7 +17,7 @@
 
 
 Name:           i3-gaps
-Version:        4.21
+Version:        4.21.1
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause

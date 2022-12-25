@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec  6 21:13:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.21.1:
+  * tiling drag: allow configuration
+  * tiling drag: allow click immediately, to focus on decoration click
+  * tiling drag: fix cursor (wrong argument passed)
+  * tiling drag: increase drag threshold, run it through logical_px
+  * tiling drag: left-click needs threshold, mod-click doesn’t
+  * tiling drag: ignore scratchpad windows when locating drop targets
+  * tiling drag: only start when there are drop targets
+  * Raise floating windows when their border is clicked
+  * docs/ipc: document sticky field of GET_TREE
+  * man/i3-config-wizard: escape ~ to prevent interpretation as subscript
+  * Motif hints: respect maximum border style configuration set by user
+  * i3-dmenu-desktop: fix quoting bug
+  * Fix segfault during config validation
+
+-------------------------------------------------------------------
 Wed Sep 21 19:32:17 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version v4.21:
