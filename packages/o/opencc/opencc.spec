@@ -17,7 +17,7 @@
 
 
 Name:           opencc
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0

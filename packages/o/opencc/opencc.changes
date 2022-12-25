@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 11 19:01:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * FTBFS for MacOS w/ Python 3.11
+  * Support Python 3.11
+  * Automatically name SO files
+  * Add support for Apple silicon build tag
+  * other minor fixes
+
+-------------------------------------------------------------------
 Mon Aug  1 22:04:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.4:
