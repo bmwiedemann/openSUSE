@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 23 19:26:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + avdec_h265: Fix endless renegotiation with alternate
+    interlacing
+  + avviddec: Avoid flushing on framerate changes
+
+-------------------------------------------------------------------
 Wed Nov  2 20:59:24 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Remove unused BuildRequire on yasm. 
+- Remove unused BuildRequire on yasm.
 
 -------------------------------------------------------------------
 Sat Oct 22 09:03:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
