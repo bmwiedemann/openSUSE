@@ -1,0 +1,23 @@
+From da3ff893b9ac161938e11f9bcd5380e09cf03150 Mon Sep 17 00:00:00 2001
+From: warren <warren.weckesser@gmail.com>
+Date: Wed, 23 Nov 2022 16:27:51 -0500
+Subject: [PATCH] BUG: ndimage: Don't use np.int0 (it is the same as np.intp)
+
+---
+ scipy/ndimage/_measurements.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: scipy-1.9.3/scipy/ndimage/_measurements.py
+===================================================================
+--- scipy-1.9.3.orig/scipy/ndimage/_measurements.py
++++ scipy-1.9.3/scipy/ndimage/_measurements.py
+@@ -1524,8 +1524,7 @@ def watershed_ift(input, markers, struct
+     if input.shape != markers.shape:
+         raise RuntimeError('input and markers must have equal shape')
+ 
+-    integral_types = [numpy.int0,
+-                      numpy.int8,
++    integral_types = [numpy.int8,
+                       numpy.int16,
+                       numpy.int32,
+                       numpy.int_,

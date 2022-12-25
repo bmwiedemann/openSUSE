@@ -42,7 +42,9 @@
 %if "%{flavor}" == "test"
 %bcond_with hpc
 %bcond_without test
+%define package_name %{pname}-test
 %else
+%define package_name %{pname}
 %bcond_with test
 %endif
 
@@ -60,11 +62,6 @@
 %{?with_hpc:%{hpc_requires}}
 %bcond_with ringdisabled
 %if %{without hpc}
-%if "%{flavor}" == ""
-%define package_name %{pname}
-%else
-%define package_name %{pname}-%{flavor}
-%endif
 # for file section
 %define p_python_sitearch %{python_sitearch}
 # for inside python_expand
@@ -106,6 +103,8 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{v
 Patch1:         fix-tests.patch
 # PATCH-FIX-UPSTREAM fix-tests-pytest72.patch gh#scipy/scipy#17296
 Patch2:         fix-tests-pytest72.patch
+# PATCH-FIX-UPSTREAM scipy-pr17467-no-np.int0.patch gh#scipy/scipy#17467
+Patch3:         scipy-pr17467-no-np.int0.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module meson-python >= 0.9.0}
@@ -269,6 +268,11 @@ donttest+=" or (test_discrete_basic and test_rv_sample)"
 donttest+=" or (test_distributions and TestLevyStable and nolan_samples and pct_range0-alpha_range0-beta_range0)"
 donttest+=" or (test_distributions and TestLevyStable and test_location_scale and pdf)"
 donttest+=" or (test_data and test_boost and (betainc or btdtr))"
+donttest+=" or (test_mstats_basic and test_skewtest_2D_WithMask)"
+%endif
+%ifarch %ix86
+# illegal instruction (?)
+donttest+=" or (test_fftlog and test_fht_identity)"
 %endif
 %ifarch %arm
 donttest+=" or (test_cython_api and eval_sh_chebyt)"

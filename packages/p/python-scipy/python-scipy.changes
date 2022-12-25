@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 23 16:37:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add scipy-pr17467-no-np.int0.patch gh#scipy/scipy#17467
+- Move the flavored packaganame definition so that quilt does not
+  fail
+
+-------------------------------------------------------------------
 Thu Dec  8 17:07:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure the test flavor has a different source name than the main

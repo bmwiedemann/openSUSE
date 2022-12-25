@@ -1148,4 +1148,16 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1041891</requestid>
   </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>f58f23b00762003da0fd9849ce30c313</srcmd5>
+    <version>1.9.3</version>
+    <time>1671977671</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1045081 from bnavigator
+
+- Add scipy-pr17467-no-np.int0.patch gh#scipy/scipy#17467
+  - Move the flavored packaganame definition so that quilt does not
+    fail</comment>
+    <requestid>1045131</requestid>
+  </revision>
 </revisionlist>
