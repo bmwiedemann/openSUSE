@@ -16,6 +16,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global with_xtp 1
+# libint2 used by xtp is broken on 32-bit archs
+# https://github.com/evaleev/libint/issues/196
+# https://github.com/votca/xtp/issues/652
+%ifarch %ix86 %arm
+%global with_xtp 0
+%endif
 
 Name:           votca
 Version:        2022.1
@@ -34,8 +41,11 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
+# gromacs is not available on 32-bit arm
+%ifnarch %{arm}
 BuildRequires:  gromacs-devel
 BuildRequires:  gromacs-openmpi
+%endif
 BuildRequires:  hdf5-devel
 BuildRequires:  lammps
 BuildRequires:  libboost_filesystem-devel >= 1.71.0
@@ -47,7 +57,9 @@ BuildRequires:  libboost_test-devel >= 1.71.0
 BuildRequires:  libboost_timer-devel >= 1.71.0
 BuildRequires:  libecpint-devel
 BuildRequires:  libexpat-devel
+%if %{with_xtp}
 BuildRequires:  libint-devel
+%endif
 BuildRequires:  libxc-devel
 BuildRequires:  memory-constraints
 BuildRequires:  openmpi-macros-devel
@@ -72,14 +84,6 @@ Obsoletes:      votca-csg-apps <= 2022~rc1
 Provides:       votca-csg-apps = %version-%release
 Obsoletes:      votca-xtp <= 2022~rc1
 Provides:       votca-xtp = %version-%release
-
-%global with_xtp 1
-# libint2 used by xtp is broken on 32-bit archs
-# https://github.com/evaleev/libint/issues/196
-# https://github.com/votca/xtp/issues/652
-%ifarch %ix86 %arm
-%global with_xtp 0
-%endif
 
 %global votca_desc \
 VOTCA is a software package which focuses on the analysis of molecular \

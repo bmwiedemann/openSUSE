@@ -22,6 +22,12 @@ Wed Dec 21 22:25:15 UTC 2022 - Christoph Junghans <junghans@votca.org>
     [gh#votca/votca#1013]) 
 
 -------------------------------------------------------------------
+Thu Dec 15 11:49:02 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable gromacs on 32-bit arm since it is missing
+- Do not requires libint when xtp is disabled
+
+-------------------------------------------------------------------
 Wed Dec  7 06:21:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Adjust constraints to avoid rejecting too many workers, enable
