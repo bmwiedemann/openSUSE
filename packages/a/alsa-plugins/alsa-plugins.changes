@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 10 20:49:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libavresample) with pkgconfig(libswresample)
+  BuildRequires as rate-lav was ported to use the latter.
+
+-------------------------------------------------------------------
 Wed Nov  9 10:52:33 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Add keyring

@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(avtp)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(jack) >= 0.98
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavresample)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.11
 BuildRequires:  pkgconfig(samplerate)
