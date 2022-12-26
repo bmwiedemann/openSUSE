@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 23 20:04:26 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to 1.1:
+  * Fixed non-x11 build which was broken in v1.0.
+  * Fixed out-of-source build regression.
+  * Fixed potential crash in spnav_send_str: made it accept null pointers and send empty strings.
+
+-------------------------------------------------------------------
 Tue Apr  5 14:04:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.0:

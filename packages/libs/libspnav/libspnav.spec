@@ -18,7 +18,7 @@
 
 
 Name:           libspnav
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Library for accessing 3D connexion devices
 License:        BSD-3-Clause
