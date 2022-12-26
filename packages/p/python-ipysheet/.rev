@@ -65,4 +65,14 @@
   gh#quantstack/ipysheet#233</comment>
     <requestid>1010447</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fccdfaee01e9ae4b3fd427acc55c654f</srcmd5>
+    <version>0.7.0</version>
+    <time>1672093676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7
+  * no release note (removes jupyter-server dependency)
+- Move to PEP517 build</comment>
+    <requestid>1045317</requestid>
+  </revision>
 </revisionlist>
