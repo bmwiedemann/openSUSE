@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/eneshecan/whatsapp-for-linux.git</param>
-		<param name="revision">v1.5.0</param>
+		<param name="revision">v1.5.1</param>
 		<param name="match-tag">v*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v(.*)</param>

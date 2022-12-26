@@ -42,4 +42,24 @@
     + Use webkit2gtk-4.1 if webkit2gtk-4.0 is not found #228</comment>
     <requestid>1032367</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bfa42ddd450fa29fcf06215e5a7114a</srcmd5>
+    <version>1.5.1</version>
+    <time>1672093685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * Implemented enhancements:
+    + Introduce Prefer Dark Theme #256
+  * Fixed bugs:
+    + Mic not enabled #252
+    + Flatpak and Nvidia 520.65.01 driver compatibility #227
+  * Closed issues:
+    + High CPU usage when the focus is on the main window #115
+  * Merged pull requests:
+    + Updated Dutch translation #258
+    + Update Italian translation #257
+    + Add Mageia Linux to README.md #247
+    + Add Russian translation (ru.po + desktop.in) #246</comment>
+    <requestid>1045407</requestid>
+  </revision>
 </revisionlist>
