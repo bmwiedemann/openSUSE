@@ -28,6 +28,7 @@ Source:         https://github.com/flacon/flacon/archive/v%{version}.tar.gz#/%{n
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
