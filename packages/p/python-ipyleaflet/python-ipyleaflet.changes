@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 25 18:11:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.17.2
+  * Fix view bounds by @davidbrochart in #1064
+  * Add subitems to layers by @HaudinFlorence in #1011
+- Fix requirements
+
+-------------------------------------------------------------------
 Tue Sep 27 22:31:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.17.1:
