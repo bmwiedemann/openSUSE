@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 23 20:47:37 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 1.2
+  * Fixed incorrect button mappings for the SpaceMouse Pro. The button remapping
+    which was designed to fix this in v1.1 would end up becoming disabled due to
+    an incorrect assumption about reported number of buttons.
+  * Fixed incorrect number of stop bits for serial magellan spacemice. Some devices
+    tolerated that, while others did not work.
+  * Improved compatibility with some serial spaceballs. Relaxed the device matching
+    condition and allowed some time for the device to boot up before initializing it.
+  * Added hardcoded "reasonable" default values for number of axes and buttons in
+    the incomplete FreeBSD USB device handling code, to stop it from reporting 0 axes
+    and freaking clients out.  This is a stop-gap, eventually it needs to be
+    implemented correctly.
+
+-------------------------------------------------------------------
 Sun Sep 25 16:47:35 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Add example files to package

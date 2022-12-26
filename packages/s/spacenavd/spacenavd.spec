@@ -18,7 +18,7 @@
 
 
 Name:           spacenavd
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
