@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Sun Dec 18 08:45:06 UTC 2022 - matwey.kornilov@gmail.com
+
+- Changes for 25.2:
+  * erts: Fix perf/gdb JIT symbols to not contain CodeInfoPrologue
+    for the JIT internal module erts_beamasm.
+  * erts: Fixed minor memory leaks.
+  * erts: Fix bugs in ets:insert and ets:insert_new when called
+    with a list of tuples to insert while a concurrent process
+    either deletes or renames the table. The table deletion could
+    be done with ets:delete/1 or be caused by termination of the
+    table owning process. Symptoms are either VM crash or strange
+    incorrect behavior from the insert operation. The risk of
+    triggering the bugs increases with the length of the list of
+    tuple to insert. Bugs exist since OTP 23.0.
+  * erts: Boost execution of scheduled thread progress jobs. This
+    to prevent memory exhaustion in extremely rapid
+    allocation/deallocation scenarios, such as repeated ETS table
+    creations/deletions.
+  * erts: Fix segv crash during crash dumping an ETS table doing
+    ets:delete_all_objects.
+  * erts: Spec for function net:if_names/0 incorrect
+  * erts: Fix bug in binary_to_term decoding a binary term 2Gbyte
+    or larger.
+  * erts: Documentation of erlang:module_loaded/1 has been
+    adjusted:
+  * erts: Fix list_to_atom/1 for negative code points. Could either
+    return with a positive code point or fail with an incorrect
+    exception.
+  * erts: Fix rare bug causing VM crash when sending to a pid of a
+    spawning process returned from erlang:processes/0. Only seen
+    when provoked by system process literal_area_collector,
+    triggered by a module purge operation, on a VM started with
+    +Meamin (no customized allocators).
+  * erts: gen_udp:open/2 with option(s) add_membership or
+    drop_membership would drop earlier options.
+  * erts: The inet:setopts/2 {reuseaddr, true} option will now be
+    ignored on Windows unless the socket is an UDP socket. For more
+    information see the documentation of the reuseaddr option part
+    of the documentation of inet:setopts/2. Prior to OTP 25 the
+    {reuseaddr, true} option was ignored for all sockets on
+    Windows, but as of OTP 25.0 this was changed so that it was not
+    ignored for any sockets. *** POTENTIAL INCOMPATIBILITY ***
+  * erts: Fix bug in binary_to_term decoding a list of length 1G or
+    longer.
+  * erts: Fix bug in binary_to_term (and distributed receive) when
+    decoding a large map (>32 keys) with unsorted small maps (<=
+    32) as keys of the large map. This was only a problem if the
+    term was encoded by erl_interface, jinterface or otherwise, as
+    the VM itself always encodes small maps with sorted keys. The
+    "binary_to_term" would appear as successful but the created
+    large map was internally inconsistent. The smaller key-maps
+    could not be found with maps:get and friends. Other operations
+    such as map compare and merge could probably also give
+    incorrect results.
+  * erts: Fix Windows bug in open_port({spawn, Command}, ..) when
+    Command is found via the OS search PATH and that directory path
+    contains white spaces. The port program would start but the
+    command line arguments to it could be incorrect.
+  * ftp: fix unexpected result ok when calling ftp:nlist repeatedly
+  * inets: This change allows body requests to httpc:request/5 be
+    an iolist()
+  * inets: addition of type specs in httpc.erl
+  * inets: httpc: Add support for HTTP 308 status code
+  * dialyzer: Dialyzer would crash when attempting to analyze a bit
+    syntax segment size having an literal non-integer size such as
+    [].
+  * dialyzer: Dialyzer could crash when trying to analyze a
+    convoluted nested expression involving funs,
+  * kernel: Fixed shutdown crash in gen_tcp socket backend, when
+    the other end closed the socket.
+  * kernel: erl_tar can now read gzip-compressed tar files that are
+    padded. There is a new option compressed_one for file:open/2
+    that will read a single member from a gzip file,
+  * kernel: Fix os:cmd to not translate all exceptions thrown to
+    badarg. For example emfile from erlang:open_port was translated
+    to badarg. This bug has existed since Erlang/OTP 24.
+  * kernel: Spec for function net:if_names/0 incorrect
+  * kernel: Missing ctrl option name transation for TOS and TTL (on
+    FreeBSD) when using gen_udp with the 'socket' inet_backend.
+  * kernel: gen_udp:open/2 with option(s) add_membership or
+    drop_membership would drop earlier options.
+  * kernel: The inet:setopts/2 {reuseaddr, true} option will now be
+    ignored on Windows unless the socket is an UDP socket. For more
+    information see the documentation of the reuseaddr option part
+    of the documentation of inet:setopts/2. Prior to OTP 25 the
+    {reuseaddr, true} option was ignored for all sockets on
+    Windows, but as of OTP 25.0 this was changed so that it was not
+    ignored for any sockets. *** POTENTIAL INCOMPATIBILITY ***
+  * kernel: The distribution socket option handling in
+    inet_tcp_dist has been cleaned up to clarify which were
+    mandatory and which just had default values.
+  * kernel: Improve warning message format for gen_tcp_socket.
+  * snmp: Explicitly close the socket(s) when terminating
+    (default-) net-if process.
+  * stdlib: erl_tar can now read gzip-compressed tar files that are
+    padded. There is a new option compressed_one for file:open/2
+    that will read a single member from a gzip file,
+  * stdlib: A concurrent call to ets:rename could cause
+    ets:delete_all_objects to fail halfway through with badarg.
+  * stdlib: It is not allowed to call functions from guards. The
+    compiler failed to reject a call in a guard when done by
+    constructing a record with a default initialization expression
+    that called a function.
+  * stdlib: The compiler could crash when using a record with
+    complex field initialization expression as a filter in a list
+    comprehension.
+  * stdlib: unicode:characters_to_binary() could build
+    unnecessarily large call stack.
+  * stdlib: Improve error message for ets:new/2 name clash. Say
+    "name already exists" instead of less specific "invalid
+    options".
+  * mnesia: Fixed crash which could happen during startup if too
+    many decisions where sent from remote nodes.
+  * os_mon: The disk_space_check_interval configuration parameter
+    of disksup can now be set to values smaller than a minute.
+  * ssh: graceful shutdown of ssh_conection_handler when connection
+    is closed by peer
+  * common_test: Fix starting of peer nodes on old releases when
+    the compile server was active and the current Erlang
+    installation contained non-latin1 characters in its path.
+  * public_key: Disregard LDAP URIs when HTTP URIs are expected.
+  * ssl: With this change, tls_sender process is hibernated after
+    sufficient inactivity.
+  * ssl: Correct handling of legacy schemes so that ECDSA certs
+    using sha1 may be used for some TLS-1.3 configurations.
+  * ssl: With this change, tls_sender does not cause logger crash
+    upon key update.
+  * ssl: Enhance warning message
+  * ssl: Provide server option to make certificate_authorities
+    extension in the TLS-1.3 servers certificate request optional.
+    This will allow clients to send incomplete chains that may be
+    reconstructable and thereby verifiable by the server, but that
+    would not adhere to the certificate_authorities extension.
+  * ssl: If the verify_fun handles four arguments the DER cert will
+    be supplied as one of the arguments.
+  * megaco: A very minor improvement to the measurement tool.
+  * observer: A WX event race could causes a crash in when handling
+    socket or port info.
+  * observer: Improve the nodes menu to include more nodes.
+  * compiler: Line number in compiler messages would be truncated
+    to 4 digits for line numbers greater than 9999.
+  * compiler: In rare circumstance, matching a binary as part of a
+    receive clause could cause the compiler to terminate because of
+    an internal consistency check failure.
+  * compiler: Compiling a function with complex bit syntax matching
+    such as f(<<X:0, _:X>>, <<Y:0, _:Y>>) -> ok. could crash the
+    compiler.
+  * compiler: It is not allowed to call functions from guards. The
+    compiler failed to reject a call in a guard when done by
+    constructing a record with a default initialization expression
+    that called a function.
+  * compiler: The compiler could crash when using a record with
+    complex field initialization expression as a filter in a list
+    comprehension.
+  * wx: Added environment variable WX_MACOS_NON_GUI_APP to allow
+    user to override OSXIsGUIApplication behavior.
+
+-------------------------------------------------------------------
 Thu Nov 24 17:37:54 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 25.1.2:
