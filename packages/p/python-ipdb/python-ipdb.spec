@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipdb
-Version:        0.13.9
+Version:        0.13.11
 Release:        0
 Summary:        IPython-enabled pdb
 License:        BSD-3-Clause
@@ -27,14 +26,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/gotcha/ipdb
 Source:         https://files.pythonhosted.org/packages/source/i/ipdb/ipdb-%{version}.tar.gz
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module ipython >= 7.10}
+BuildRequires:  %{python_module ipython >= 7.16.3 if %python-base < 3.7}
+BuildRequires:  %{python_module ipython >= 7.31.1 if %python-base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-decorator
-Recommends:     python-ipython >= 7.10
-Recommends:     python-toml >= 0.10.2
+Requires:       python-decorator
+Requires:       (python-ipython >= 7.16.3 if python-base < 3.7)
+Requires:       (python-ipython >= 7.31.1 if python-base >= 3.7)
+Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-jupyter_ipdb = %{version}
@@ -54,10 +57,10 @@ introspection with the same interface as the `pdb` module.
 %setup -q -n ipdb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ipdb3
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -74,6 +77,7 @@ introspection with the same interface as the `pdb` module.
 %doc AUTHORS HISTORY.txt README.rst
 %license COPYING.txt
 %python_alternative %{_bindir}/ipdb3
-%{python_sitelib}/*
+%{python_sitelib}/ipdb
+%{python_sitelib}/ipdb-%{version}.dist-info
 
 %changelog

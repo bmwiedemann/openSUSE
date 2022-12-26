@@ -81,4 +81,21 @@
     <comment></comment>
     <requestid>920993</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b239d4f8498a8c6fa34c4f206b10ffe3</srcmd5>
+    <version>0.13.11</version>
+    <time>1672093674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.11
+  * Better exception handling when looking for config.
+    [bignose-debian]
+- Release 0.13.10
+  * Better toml support (use tomlib for 3.11, tomli for 3.6 to
+    3.10). [salty-horse, mgorny]
+  * Minimal PEP 517 support. [cpcloud]
+  * 3.11 support for run as module and run as script. [nphilipp,
+    gotcha]
+  * Based on OSV:PYSEC-2022-12 change ipython dependencies</comment>
+    <requestid>1045312</requestid>
+  </revision>
 </revisionlist>
