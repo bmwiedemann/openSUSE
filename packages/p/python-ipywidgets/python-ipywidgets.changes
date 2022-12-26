@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 25 19:30:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.0.4
+  * Fix: slider change event issue with tapping: #3597, #3617
+  * Fix: unintentional deprecation warnings: #3648, #3650
+  * Fix: registry state lookup failed, making is impossible to
+    create widgets from the frontend: #3653
+- Release 8.0.3
+  * Fix: be backwards compatibel with 7.x, where we re-instroduced
+    .widget and .widget_types #3567
+  * Fix: be backwards compatibel with 7.x, revert hold_sync during
+    set_state #3642
+
+-------------------------------------------------------------------
 Thu Sep  8 14:49:13 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 8.0.2:

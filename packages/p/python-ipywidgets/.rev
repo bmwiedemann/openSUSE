@@ -122,4 +122,21 @@ The failing packages have been resolved</comment>
     <comment></comment>
     <requestid>1002374</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6db0a641db6d8cec83f3f8a1c46d257f</srcmd5>
+    <version>8.0.4</version>
+    <time>1672093677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.4
+  * Fix: slider change event issue with tapping: #3597, #3617
+  * Fix: unintentional deprecation warnings: #3648, #3650
+  * Fix: registry state lookup failed, making is impossible to
+    create widgets from the frontend: #3653
+- Release 8.0.3
+  * Fix: be backwards compatibel with 7.x, where we re-instroduced
+    .widget and .widget_types #3567
+  * Fix: be backwards compatibel with 7.x, revert hold_sync during
+    set_state #3642</comment>
+    <requestid>1045321</requestid>
+  </revision>
 </revisionlist>

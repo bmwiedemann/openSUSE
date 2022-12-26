@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ipywidgets
-Version:        8.0.2
+Version:        8.0.4
 Release:        0
 Summary:        IPython HTML widgets for Jupyter
 License:        BSD-3-Clause
@@ -26,16 +25,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/ipywidgets
 Source0:        https://files.pythonhosted.org/packages/source/i/ipywidgets/ipywidgets-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-ipykernel >= 4.5.1
 Requires:       python-ipython >= 6.1.0
 Requires:       python-ipython_genutils >= 0.2
-Requires:       python-jupyterlab_widgets >= 3.0
 Requires:       python-traitlets >= 4.3.1
-Requires:       python-widgetsnbextension >= 4.0
+Requires:       (python-jupyterlab_widgets >= 3.0 with python-jupyterlab_widgets < 4)
+Requires:       (python-widgetsnbextension >= 4.0 with python-widgetsnbextension < 5)
 Provides:       python-jupyter_ipywidgets = %{version}
 Obsoletes:      python-jupyter_ipywidgets < %{version}
 BuildArch:      noarch
@@ -44,11 +45,11 @@ BuildRequires:  %{python_module ipykernel >= 4.5.1}
 BuildRequires:  %{python_module ipython >= 6.1.0}
 BuildRequires:  %{python_module ipython_genutils >= 0.2}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module jupyterlab_widgets >= 3}
+BuildRequires:  %{python_module jupyterlab_widgets >= 3 with %python-jupyterlab_widgets < 4}
 BuildRequires:  %{python_module pytest >= 3.6.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module traitlets >= 4.3.1}
-BuildRequires:  %{python_module widgetsnbextension >= 4.0}
+BuildRequires:  %{python_module widgetsnbextension >= 4.0 with %python-widgetsnbextension < 5}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-ipywidgets = %{version}
@@ -60,12 +61,14 @@ Interactive HTML widgets for Jupyter notebooks and the IPython kernel.
 
 %prep
 %autosetup -p1 -n ipywidgets-%{version}
+# remove shebangs from test modules. Those are not standalone scripts.
+sed -i '1{/env python/d}' ipywidgets/widgets/tests/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
