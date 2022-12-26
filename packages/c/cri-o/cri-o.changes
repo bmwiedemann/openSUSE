@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Dec 19 10:59:59 UTC 2022 - rbrown@suse.com
+
+- Update to version 1.24.3:
+  * version: bump to 1.24.3
+  * set add_inheritable_capabilities to true by default
+  * use AddInheritableCapabilities
+  * config: add field AddInheritableCapabilities
+  * resourcestore: add test for stages
+  * server: update stages according to progress with resource creation
+  * resource store: return stage when a watcher is requested
+  * resource store: introduce stages
+  * build(deps): bump golangci/golangci-lint-action from 2 to 3
+  * Fix nginx based integration tests
+  * Revert "capabilities: drop inheritable"
+  * [1.24] vendor: bump containers/storage to v1.37.2
+  * Adding annotations for image and sandbox name.
+  * migrate image_list to quay.io
+  * server: handle exit files asynchronously
+  * server: remove exit file in exit monitor
+  * server: cleanup exit monitor function
+  * oci: take opLock for UpdateContainer
+  * version: bump to v1.24.2
+  * remove succinct option to fix jenkins
+  * Use a default umask of `0o022`
+  * Fix unit test coverage
+  * Fix release-notes tag determination
+  * Upload release notes for each tag
+  * Fix container status for HostToContainer propagation
+  * bump ocicni to 0.4.0
+  * Fix unit tests
+  * test: set cri stats more idiomatically
+  * utils/RunUnderSystemdScope: fix wrt channel deadlock
+  * oci: kill children of container if it is in the host pid namespace
+
+-------------------------------------------------------------------
 Mon Jul 25 01:47:38 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.24.1:

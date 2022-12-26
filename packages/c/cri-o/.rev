@@ -595,4 +595,12 @@
   * vendor: bump crypto package (forwarded request 990917 from jfkw)</comment>
     <requestid>990918</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>98fbef99cfedfa57ef0c8550c7332312</srcmd5>
+    <version>1.24.3</version>
+    <time>1672093680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045368</requestid>
+  </revision>
 </revisionlist>

@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/cri-o/cri-o.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.24.1</param>
+    <param name="revision">v1.24.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
