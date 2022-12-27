@@ -17,7 +17,7 @@
 
 
 Name:           python-metakernel
-Version:        0.29.2
+Version:        0.29.4
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
@@ -60,15 +60,15 @@ distributed processing, downloads, and much more).
 %setup -q -n metakernel-%{version}
 touch ~/.bashrc
 sed -i s'/--color=yes//' pyproject.toml
+chmod -x metakernel/tests/test_process_metakernel.py
+sed -i '1{/env python/d}' metakernel/tests/test_expect.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/metakernel/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest metakernel/tests

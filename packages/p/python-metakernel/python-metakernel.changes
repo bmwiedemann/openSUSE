@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec 26 22:29:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.29.4
+  * Add back magics tests #261 (@ellert)
+  * Update tests for widgets 8 #260 (@blink1073)
+- Release v0.29.3
+  * Maintenance cleanup #257 (@blink1073)
+  * Use hatch for example projects #256 (@blink1073)
+
+-------------------------------------------------------------------
 Thu Aug 11 13:48:44 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

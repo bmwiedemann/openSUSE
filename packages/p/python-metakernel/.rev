@@ -141,4 +141,17 @@
     <comment></comment>
     <requestid>994554</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2d61257a5d8ed381b87daf325fc6cc8f</srcmd5>
+    <version>0.29.4</version>
+    <time>1672138497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.29.4
+  * Add back magics tests #261 (@ellert)
+  * Update tests for widgets 8 #260 (@blink1073)
+- Release v0.29.3
+  * Maintenance cleanup #257 (@blink1073)
+  * Use hatch for example projects #256 (@blink1073) (forwarded request 1045429 from bnavigator)</comment>
+    <requestid>1045430</requestid>
+  </revision>
 </revisionlist>
