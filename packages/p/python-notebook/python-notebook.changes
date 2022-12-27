@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 26 22:57:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.2
+  * Ensure custom preload is correctly handled #6580 (@echarles)
+  * Fix: jQuery-UI 404 Error by updating dependency path in static
+    template #6578 (@RRosio)
+  * Depend on nbclassic 0.4.7 #6593 (@echarles)
+- Drop upstreamed patch notebook-pr6578+pr6580-404errors.patch
+- Drop dependency on jupyter-nbformat, empty subpackage got removed
+
+-------------------------------------------------------------------
 Thu Oct 27 15:11:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add notebook-pr6578+pr6580-404errors.patch

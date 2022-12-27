@@ -25,8 +25,7 @@
 %bcond_with test
 BuildArch:      noarch
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+
 %define         plainpython python
 #
 %if 0%{?suse_version} > 1500
@@ -35,7 +34,7 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        6.5.1
+Version:        6.5.2
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -43,8 +42,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
-# PATCH-FIX-UPSTREAM notebook-pr6578+pr6580-404errors.patch gh#jupyter/notebook#6578 gh#jupyter/notebook#6580
-Patch1:         notebook-pr6578+pr6580-404errors.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging >= 0.9}
 BuildRequires:  %{python_module nbclassic >= 0.4.0}
 BuildRequires:  %{python_module setuptools}
@@ -57,7 +55,7 @@ Requires:       python-ipykernel
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 5.3.4
 Requires:       python-jupyter-core >= 4.6.1
-Requires:       python-nbclassic
+Requires:       python-nbclassic >= 0.4.7
 Requires:       python-nbconvert >= 5
 Requires:       python-nbformat
 Requires:       python-prometheus_client
@@ -124,7 +122,6 @@ Requires:       jupyter-ipykernel
 Requires:       jupyter-jupyter-client >= 5.3.4
 Requires:       jupyter-jupyter-core >= 4.6.1
 Requires:       jupyter-nbconvert
-Requires:       jupyter-nbformat
 Requires:       jupyter-notebook-filesystem
 Requires:       python3-notebook = %{version}
 Conflicts:      python3-jupyter_notebook < 5.7.8
@@ -167,9 +164,6 @@ This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 
 %prep
 %autosetup -p1 -n notebook-%{version}
-# unpin nbclassic (see https://github.com/jupyter/notebook/pull/6593)
-sed -i 's/nbclassic==/nbclassic>=/' setup.py
-
 # We don't want to run selenium tests
 rm -rf notebook/tests/selenium
 

@@ -207,4 +207,18 @@
   * gh#jupyter/notebook#6578 -- jquery from nbclassic</comment>
     <requestid>1031574</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7070471c3bb3bc123e6fed55b63df5e9</srcmd5>
+    <version>6.5.2</version>
+    <time>1672138498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.2
+  * Ensure custom preload is correctly handled #6580 (@echarles)
+  * Fix: jQuery-UI 404 Error by updating dependency path in static
+    template #6578 (@RRosio)
+  * Depend on nbclassic 0.4.7 #6593 (@echarles)
+- Drop upstreamed patch notebook-pr6578+pr6580-404errors.patch
+- Drop dependency on jupyter-nbformat, empty subpackage got removed (forwarded request 1045435 from bnavigator)</comment>
+    <requestid>1045436</requestid>
+  </revision>
 </revisionlist>
