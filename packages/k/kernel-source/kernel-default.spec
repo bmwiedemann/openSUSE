@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.0
+%define patchversion 6.1.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.1.0
+Version:        6.1.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gab10a11
+Release:        <RELEASE>.ge71748d
 %else
 Release:        0
 %endif
@@ -240,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-ab10a112debd048481eeb4d1d93a7b2366be6072
-Provides:       kernel-srchash-ab10a112debd048481eeb4d1d93a7b2366be6072
+Provides:       kernel-%build_flavor-base-srchash-e71748d44896da2c218a153173fa0504f34836bc
+Provides:       kernel-srchash-e71748d44896da2c218a153173fa0504f34836bc
 # END COMMON DEPS
-Provides:       %name-srchash-ab10a112debd048481eeb4d1d93a7b2366be6072
+Provides:       %name-srchash-e71748d44896da2c218a153173fa0504f34836bc
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
