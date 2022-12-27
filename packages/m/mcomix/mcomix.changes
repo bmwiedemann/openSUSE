@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 26 14:31:45 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- fix wrong attributes in original archived source
+
+-------------------------------------------------------------------
+Sat Dec 24 16:35:16 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.1.0:
+  * Fixed byte/unicode error in library search text field.
+  * Fixed DPI detection for PDFs which cannot be decoded using UTF-8.
+  * Fixed magnifying lens errors when image was rotated
+
+-------------------------------------------------------------------
 Tue Jun 28 02:57:26 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add Requires: typelib-1_0-Gtk-3_0

@@ -17,7 +17,7 @@
 
 
 Name:           mcomix
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        Comics Viewer
 License:        GPL-2.0-only
@@ -44,6 +44,8 @@ Comics Viewer forked from comix.
 
 %prep
 %setup -q
+# remove extra executable flags
+find . -type f | xargs chmod a-x
 
 %build
 
@@ -62,7 +64,7 @@ python3 setup.py install --root %{buildroot} --prefix "%{_prefix}"
 %endif
 
 %files -n %{name} -f %{name}.lang
-%{_bindir}/mcomix
+%attr(755,root,root) %{_bindir}/mcomix
 %{python_sitelib}/mcomix-*
 %dir %{python_sitelib}/mcomix/
 %{python_sitelib}/mcomix/*.py*
