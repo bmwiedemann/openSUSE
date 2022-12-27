@@ -7,4 +7,49 @@
     <comment>LaTeXML is a TeX &amp; LaTeX to XML, HTML, MathML, ePub, JATS, ... converter.</comment>
     <requestid>988697</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01f23325e9da9b6d81083f52da2f98a8</srcmd5>
+    <version>0.8.7</version>
+    <time>1672138493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.7:
+  * This release addresses a large variety of usability, fidelity, robustness,
+    portability and output-quality issues.
+  * MathML (mostly) conforms to MathML Core, with more consistent spacing
+  * More TeX-like dimensions &amp; computation; font metrics used for (approximate)
+    sizing
+  * Improvements to HTML5, ePub, JATS, CSS, frontmatter
+  * Improvements to graphics and SVG
+    * support for \includegraphics alt key
+    * updated schema to SVG 1.1 2nd ed (roughly)
+    * xy now supported, generating SVG
+  * Windows &amp; MacOS related improvements
+  * Support for attributes in foreign namespaces; conversion to data-XXX
+    attributes in html
+  * Default to lang=&quot;en&quot; unless told otherwise
+  * title attributes now use UnicodeMath; also --unicodemath math format option
+  * Enhancements to latexml.sty (see the code for details)
+    * Package keywords
+      - breakuntex, nobreakuntex: control linebreaks in tex attribute
+      - dpi=number, magnify=number, upsample=number, zoomout=number: image
+        conversion controls
+      - tokenlimit=number, iflimit=number, absorblimit=number,
+        pushbacklimit=number: limit execution
+    * \LaTeXMLversion, \LaTeXMLrevision, \LaTeXMLfullversion: show the LaTeXML
+      version
+    * \lxRegisterNamespace{prefix}{uri} : register a namespace w/ prefix
+    * \lxAddAnnotation{keyvals} : add annotation attributes to current node
+    * \lxWithAnnotation{keyvals}{thing} : Typeset thing with annotation attributes
+  * New bindings: amsaddr, atveryend, auxhook, babel, bbding, bezier,
+    bigintcalc, bitset, bookmark, doi, ed, expl3, fancyvrb, feynmf, fixme,
+    gettitlestring, ifetex, ifsym, iftex, ijcai, infwarerr, intcalc,
+    kvdefinekeys, kvoptions, kvsetkeys, l3keys2e, ltxcmds, nomencl, overpic,
+    pdftexcmds, refcount, subeqn, subeqnarray, tcolorbox, tikzbricks, upquote,
+    xurl, xy, xypic  and beamer.cls
+  * Improvements to bindings: algorithm2e, amsmath, amsthm, babel, csquotes,
+    deluxetable, enumitem, glossaries, hyperref, longtable, lstings, mathtools,
+    physics, revtex, svmult, thmtools.
+</comment>
+    <requestid>1045412</requestid>
+  </revision>
 </revisionlist>

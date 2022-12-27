@@ -17,7 +17,7 @@
 
 
 Name:           LaTeXML
-Version:        0.8.6
+Version:        0.8.7
 Release:        1%{?dist}
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Utilities
