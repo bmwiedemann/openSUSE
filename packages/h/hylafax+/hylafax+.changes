@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 26 15:10:02 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.6
+  * add support for libtiff v4.4 (10 Jun 2022)
+  * libtiff44.diff removed
+  * cope with SSL Fax senders who skip Phase C (5 May 2022)
+  * add ability to trace SSL Fax data reception (3 May 2022)
+  * handle timeout OK response to +FRH=3 and +FRM=n (25 Apr 2022)
+  * don't leave the modem waiting for a response when in SSL Fax (25 Apr 2022)
+  * improve recovery from unexpected SSL Fax terminations during ECM (15, 18, 26 Apr 2022)
+  * try to cope with false "no dialtone" results (4, 8 Apr 2022)
+  * add initial support for SSL Fax Proxy servers (4, 23 Feb; 4, 19 Apr; 10, 24 Jun 2022)
+  * buildrequirement for libssl added (Thanks Dimstar)
+
+-------------------------------------------------------------------
 Sat Jun  4 08:57:21 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - Project and download links switched to https

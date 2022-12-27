@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.5
+Version:        7.0.6
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
@@ -41,8 +41,6 @@ Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
 
-Patch0:         libtiff44.diff
-
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
@@ -56,6 +54,7 @@ BuildRequires:  systemd-rpm-macros
 # needed together with devel for proper configure detection
 BuildRequires:  tiff
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
@@ -106,8 +105,6 @@ used to access the server.
 
 %prep
 %setup -q -n hylafax-%{version}
-
-%autopatch -p1
 
 cp %{SOURCE8} .
 cp %{SOURCE9} .
