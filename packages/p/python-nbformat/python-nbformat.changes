@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 26 22:15:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.1
+  * Expose more attributes for typing #337 (@blink1073)
+  * Use base setup dependency type #329 (@blink1073)
+  * Handle warning from jupyter client #322 (@blink1073)
+- Remove empty jupyter-nbformat package
+
+-------------------------------------------------------------------
 Sat Oct 22 03:43:12 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.7.0:

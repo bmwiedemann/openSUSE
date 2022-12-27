@@ -171,4 +171,17 @@
     <comment></comment>
     <requestid>1030493</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7e6e4b24c94f9baeae382357c1018bb7</srcmd5>
+    <version>5.7.1</version>
+    <time>1672138495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.7.1
+  * Expose more attributes for typing #337 (@blink1073)
+  * Use base setup dependency type #329 (@blink1073)
+  * Handle warning from jupyter client #322 (@blink1073)
+- Remove empty jupyter-nbformat package
+</comment>
+    <requestid>1045428</requestid>
+  </revision>
 </revisionlist>

@@ -16,32 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define doc_ver 5.2.0
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.7.0
+Version:        5.7.1
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbformat
-# PyPI sdist has only some schema tests, get the full test suite from GitHub sources
-Source:         https://github.com/jupyter/nbformat/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
+Source:         https://github.com/jupyter/nbformat/releases/download/v%{version}/nbformat-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       jupyter-nbformat = %{version}
 Requires:       python-fastjsonschema
 Requires:       python-jsonschema > 2.6
 Requires:       python-jupyter_core
 Requires:       python-traitlets >= 5.1
-Provides:       python-jupyter_nbformat = %{version}
+Provides:       python-jupyter_nbformat = %{version}-%{release}
 Obsoletes:      python-jupyter_nbformat < %{version}
 BuildArch:      noarch
 %if %{with libalternatives}
@@ -68,21 +63,6 @@ This package contains the base implementation of the Jupyter Notebook format,
 and Python APIs for working with notebooks.
 
 This package provides the python interface.
-
-%package     -n jupyter-nbformat
-Summary:        The Jupyter Notebook format
-Group:          Development/Languages/Python
-Requires:       jupyter-jupyter_core
-Requires:       python3-nbformat = %{version}
-Conflicts:      python3-jupyter_nbformat < 5.0
-Provides:       jupyter-nbformat-doc = %{version}
-Obsoletes:      jupyter-nbformat-doc < %{version}
-
-%description -n jupyter-nbformat
-This package contains the base implementation of the Jupyter Notebook format,
-and Python APIs for working with notebooks.
-
-This package provides the jupyter components.
 
 %prep
 %setup -q -n nbformat-%{version}
@@ -117,8 +97,5 @@ sed -i 's/--color=yes//' pyproject.toml
 %python_alternative jupyter-trust
 %{python_sitelib}/nbformat/
 %{python_sitelib}/nbformat-%{version}.dist-info/
-
-%files -n jupyter-nbformat
-%license COPYING.md
 
 %changelog
