@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec 27 08:52:30 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.5.2 (2022-12-23)
+  * Fix PowerSDR ability to do commands while powered off
+  * Fix TX-500 operations
+  * Fix FTDX5000 to return to MIC input on closing
+  * Fix rig.c calling rig_get_mode when backend does not have get_mode
+  * Fix kenwood_ts890_get_level
+  * Add Prosistel D elevation CBOX az to fix problem with azimuth
+    control
+  * Fix FT736R gpredict usage by adding cached get_freq
+  * Fix get_powerstat problem with Log4OM/Flex and others
+  * Fix -R option to not need argument
+  * Fix -R option to close rig on last rigctld client disconnect
+  * Add FTDX1200 to rigs that need to ensure PTT is off before
+    changing frequency
+  * Add --disable-parallel configure option for mingw builds on Linux
+
+-------------------------------------------------------------------
 Fri Dec  9 22:06:30 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.5.1 (2022-12-08)
