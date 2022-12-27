@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 26 23:06:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.7
+  * Fix Hanging Tests on Linux #1924 (@blink1073)
+- Release 7.2.6
+  * Include all templates in sdist #1916 (@blink1073)
+- Release 7.2.5
+  * Fix for webpdf print margins #1907 (@JWock82)
+- Release 7.2.4
+  * Handle jupyter core warning #1905 (@blink1073)
+  * Add Py-typed marker. #1898 (@Carreau)
+- Release 7.2.3
+  * clean_html: allow SVG tags and SVG attributes #1890 (@akx)
+
+-------------------------------------------------------------------
 Wed Oct 26 10:41:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.2

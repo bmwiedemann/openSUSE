@@ -31,15 +31,12 @@
 %endif
 
 Name:           python-nbconvert%{psuffix}
-Version:        7.2.2
+Version:        7.2.7
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
-# See hatch_build.py
-# License10: MIT
-Source10:       https://cdn.jupyter.org/notebook/5.4.0/style/style.min.css
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}
@@ -98,7 +95,6 @@ This package provides the python interface.
 Summary:        Conversion of Jupyter Notebooks
 Requires:       jupyter-ipykernel
 Requires:       jupyter-jupyter-core
-Requires:       jupyter-nbformat >= 4.4
 Requires:       python3-nbconvert = %{version}
 Conflicts:      python3-jupyter_nbconvert < 5.5.0
 
@@ -132,8 +128,6 @@ for f in nbconvert/nbconvertapp.py nbconvert/filters/filter_links.py; do
   sed -i -e '/^#!\//, 1d' $f
   chmod -x $f
 done
-mkdir share/templates/classic/static
-cp %{SOURCE10} share/templates/classic/static/style.css
 sed -i '/addopts/ s/--color=yes//' pyproject.toml
 
 %build
@@ -153,14 +147,11 @@ sed -i '/addopts/ s/--color=yes//' pyproject.toml
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-# not test_webpdf: no pyppeteer, not even offline
-donttest="test_webpdf"
+export PYTHONDONTWRITEBYTECODE=1
 # requires modules not installed: https://github.com/jupyter/nbconvert/issues/1846
-donttest="$donttest or test_convert_full_qualified_name or test_post_processor"
-# nbformat error
-donttest="$donttest or test_empty_code_cell"
+donttest="test_convert_full_qualified_name or test_post_processor"
 %{python_expand # installed package in :test flavor
-$python -B -m ipykernel.kernelspec --user
+$python -m ipykernel.kernelspec --user
 pytest-%{$python_bin_suffix} -v -m 'not network' -k "not ($donttest)" --pyargs nbconvert
 }
 %endif

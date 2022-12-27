@@ -234,4 +234,22 @@
 - Drop ignore-bleach-deprecation-test.patch</comment>
     <requestid>1031313</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f0850def56f090584ddbd3aeaf865794</srcmd5>
+    <version>7.2.7</version>
+    <time>1672138497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.7
+  * Fix Hanging Tests on Linux #1924 (@blink1073)
+- Release 7.2.6
+  * Include all templates in sdist #1916 (@blink1073)
+- Release 7.2.5
+  * Fix for webpdf print margins #1907 (@JWock82)
+- Release 7.2.4
+  * Handle jupyter core warning #1905 (@blink1073)
+  * Add Py-typed marker. #1898 (@Carreau)
+- Release 7.2.3
+  * clean_html: allow SVG tags and SVG attributes #1890 (@akx) (forwarded request 1045433 from bnavigator)</comment>
+    <requestid>1045434</requestid>
+  </revision>
 </revisionlist>
