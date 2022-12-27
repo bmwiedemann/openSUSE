@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20221215
+ExpandFlags: macroserial:20221227
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1308,7 +1308,7 @@ Macros:
 
 ### And now Ruby 3.2
 
-%rubygemsruby32() rubygem(ruby:3.2.0+3:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsruby32() rubygem(ruby:3.2.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
 %rubygemsxruby32() %{expand:%%{rubygemsx%*}}
 
 %rubyruby32() ruby3.2 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
