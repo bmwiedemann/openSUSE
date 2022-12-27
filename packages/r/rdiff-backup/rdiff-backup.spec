@@ -1,7 +1,7 @@
 #
 # spec file for package rdiff-backup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,8 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
 Name:           rdiff-backup
-Version:        2.0.5
+Version:        2.2.0
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later
@@ -33,6 +32,7 @@ BuildRequires:  librsync-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
+BuildRequires:  rubygem(asciidoctor)
 Recommends:     python3-pylibacl
 Recommends:     python3-xattr
 
@@ -63,12 +63,12 @@ python3 setup.py install --prefix=%{_prefix} --root %{buildroot}
 rm -rf %{buildroot}%{_datadir}/doc/rdiff-backup
 
 %files
-%defattr(-, root, root)
 %license COPYING
-%doc CHANGELOG.md docs/FAQ.md docs/examples.md docs/index.md README.md
+%doc CHANGELOG.adoc docs/FAQ.adoc docs/examples.adoc docs/index.adoc README.adoc
 %{_mandir}/*/*
 %{_bindir}/*
 %{python3_sitearch}/rdiff_backup
+%{python3_sitearch}/rdiffbackup
 %{python3_sitearch}/*.egg-info
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions

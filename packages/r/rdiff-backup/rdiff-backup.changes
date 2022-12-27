@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec 20 10:11:18 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Happy Holidays release v2.2.0
+- Despite all these changes, rdiff-backup 2.2 remains compatible with
+  rdiff-backup 2.0, but you can, and are encouraged to, use the new API
+  using --api-version 201, enabling two additional features:
+  * there is at last a --help parameter
+  * the CLI (Command Line Interface) has been refurbished and modernized
+    (the old one is still present but deprecated)
+  * You can store your parameters in a file, one per line, and call
+    rdiff-backup @myfile to use them
+  * Verbosity levels and error codes have been standardized for clearer
+    interaction with the tool
+  * Last backup can be regressed even if it isn't failed
+  * Locking of repositories has been greatly improved
+
+-------------------------------------------------------------------
 Thu Sep 17 10:16:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 2.0.5: 
