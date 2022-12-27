@@ -11,21 +11,15 @@ Index: scintilla/gtk/makefile
  COMPONENT=$(basedir)/bin/libscintilla.$(SHAREDEXTENSION)
  
  vpath %.h $(srcdir) $(basedir)/src $(basedir)/include
-@@ -84,12 +84,12 @@ DEFINES += -DNO_CXX11_REGEX
+@@ -84,7 +84,7 @@ DEFINES += -DNO_CXX11_REGEX
  endif
  
  DEFINES += -D$(if $(DEBUG),DEBUG,NDEBUG)
--BASE_FLAGS += $(if $(DEBUG),-g,-Os)
+-BASE_FLAGS += $(if $(DEBUG),-g,-O3)
 +BASE_FLAGS += $(if $(DEBUG),-g)
  
  CXX_BASE_FLAGS =--std=c++17 $(BASE_FLAGS)
  CXX_ALL_FLAGS =$(DEFINES) $(INCLUDES) $(CXX_BASE_FLAGS) $(CONFIG_FLAGS)
- 
--CONFIG_FLAGS:=$(shell $(PKG_CONFIG) --cflags $(GTK_VERSION))
-+CONFIG_FLAGS:=$(shell $(PKG_CONFIG) --cflags --libs $(GTK_VERSION))
- CONFIGLIB:=$(shell $(PKG_CONFIG) --libs $(GTK_VERSION) gmodule-no-export-2.0)
- MARSHALLER=scintilla-marshal.o
- 
 @@ -164,6 +164,7 @@ GTK_OBJS = \
  $(COMPLIB): $(SRC_OBJS) $(GTK_OBJS) $(MARSHALLER)
  	$(AR) $(ARFLAGS) $@ $^
