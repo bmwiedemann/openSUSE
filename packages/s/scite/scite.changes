@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 26 17:53:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.2:
+  * Change release compilation optimization option to favour speed
+    over space
+- Minor rebase scite-use-system-scintilla.patch for update.
+
+-------------------------------------------------------------------
 Mon Oct 31 10:37:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.1:

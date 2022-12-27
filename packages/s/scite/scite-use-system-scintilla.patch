@@ -1,7 +1,7 @@
-Index: scite-5.2.2/scite/gtk/makefile
+Index: scite-5.3.2/scite/gtk/makefile
 ===================================================================
---- scite-5.2.2.orig/scite/gtk/makefile
-+++ scite-5.2.2/scite/gtk/makefile
+--- scite-5.3.2.orig/scite/gtk/makefile
++++ scite-5.3.2/scite/gtk/makefile
 @@ -8,6 +8,7 @@
  
  srcdir ?= .
@@ -51,10 +51,10 @@ Index: scite-5.2.2/scite/gtk/makefile
  	rm -f $(DESTDIR)$(libdir)/liblexilla.so
  	rm -rf $(DESTDIR)$(SYSCONF_PATH)
  ifdef gnomeprefix
-Index: scite-5.2.2/lexilla/src/makefile
+Index: scite-5.3.2/lexilla/src/makefile
 ===================================================================
---- scite-5.2.2.orig/lexilla/src/makefile
-+++ scite-5.2.2/lexilla/src/makefile
+--- scite-5.3.2.orig/lexilla/src/makefile
++++ scite-5.3.2/lexilla/src/makefile
 @@ -38,6 +38,7 @@ else
      BASE_FLAGS += -fvisibility=hidden
  endif
@@ -63,22 +63,19 @@ Index: scite-5.2.2/lexilla/src/makefile
  LEXILLA=$(DIR_BIN)/$(SHARED_NAME).$(SHAREDEXTENSION)
  LIBLEXILLA=$(DIR_BIN)/liblexilla.a
  
-@@ -73,15 +74,13 @@ endif
+@@ -75,13 +76,13 @@ RANLIB ?= ranlib
  
- RANLIB ?= ranlib
+ SCINTILLA_INCLUDE = ../../scintilla/include
  
--SCINTILLA_INCLUDE = ../../scintilla/include
--
 -vpath %.h ../src ../include ../../scintilla/include ../lexlib
 +vpath %.h ../src ../include $(SCINTILLA_INCLUDE_DIR) ../lexlib
  vpath %.cxx ../src ../lexlib ../lexers
  
  DEFINES += -D$(if $(DEBUG),DEBUG,NDEBUG)
- BASE_FLAGS += $(if $(DEBUG),-g,-Os)
+ BASE_FLAGS += $(if $(DEBUG),-g,-O3)
  
 -INCLUDES = -I ../include -I $(SCINTILLA_INCLUDE) -I ../src -I ../lexlib
 +INCLUDES = -I ../include -I $(SCINTILLA_INCLUDE_DIR) -I ../src -I ../lexlib
  LDFLAGS += -shared
  
  BASE_FLAGS += $(WARNINGS)
-
