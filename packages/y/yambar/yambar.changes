@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 04:07:01 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix installation of license and docs.
+- Set devel to noarch.
+
+-------------------------------------------------------------------
 Mon Dec 19 16:05:37 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Simplify specfile and just use the defined C standard in meson config.

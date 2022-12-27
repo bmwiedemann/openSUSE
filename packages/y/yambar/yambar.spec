@@ -65,6 +65,7 @@ Simplistic and highly configurable status panel for X and Wayland.
 Summary:        Development files for %{name}
 Group:          Development/Libraries
 Requires:       %{name}
+BuildArch:      noarch
 
 %description devel
 Modules for interacting and modifying yambar.
@@ -86,9 +87,11 @@ Zsh command-line completion support for %{name}.
 %install
 %{meson_install}
 
+# We remove this because the docs are supplemented already
+# from the doc and license macros
+rm -rfv %{buildroot}%{_datadir}/doc/
+
 %files
-%license LICENSE
-%doc README.md
 %{_mandir}/man1/yambar.1%{?ext_man}
 %{_mandir}/man5/yambar.5%{?ext_man}
 %{_mandir}/man5/yambar-decorations.5%{?ext_man}
@@ -119,6 +122,9 @@ Zsh command-line completion support for %{name}.
 %{_datadir}/applications/yambar.desktop
 %{_datadir}/zsh/site-functions/_yambar
 
+%license LICENSE
+%doc README.md CHANGELOG.md
+
 %files devel
 %dir %{_includedir}/%{name}/
 %dir %{_includedir}/%{name}/bar
@@ -135,9 +141,5 @@ Zsh command-line completion support for %{name}.
 %{_includedir}/%{name}/tag.h
 %{_includedir}/%{name}/xcb.h
 %{_includedir}/%{name}/yml.h
-
-%dir %{_datadir}/doc/%{name}/
-%license %{_datadir}/doc/%{name}/LICENSE
-%doc %{_datadir}/doc/%{name}/README.md
 
 %changelog
