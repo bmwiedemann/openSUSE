@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec 27 08:22:09 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221227.bd7d326e:
+  * Dev: upgradeutil: do not ask when running in a background process group
+
+-------------------------------------------------------------------
+Tue Dec 27 06:45:10 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221227.d0ae243b:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: bootstrap: Unset SBD_DELAY_START when running 'crm cluster start' (bsc#1202177)
+
+-------------------------------------------------------------------
+Mon Dec 26 14:05:42 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221226.d38855cb:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: qdevice: Adjust qdevice reload policy
+
+-------------------------------------------------------------------
+Mon Dec 26 08:11:33 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221226.371d6f7a:
+  * Fix: report: Catch read exception (bsc#1206606)
+
+-------------------------------------------------------------------
 Thu Dec 15 14:33:39 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221215.752a541a:
