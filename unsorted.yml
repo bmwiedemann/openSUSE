@@ -8117,6 +8117,7 @@ unsorted:
   - jupyter-ipyleaflet 
   - jupyter-ipyparallel 
   - jupyter-ipyscales 
+  - jupyter-ipysheet 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
@@ -23063,6 +23064,7 @@ unsorted:
   - python310-colorspacious 
   - python310-colour 
   - python310-columnize 
+  - python310-comm 
   - python310-commentjson 
   - python310-compat-patcher-core 
   - python310-compileall2 
@@ -23592,6 +23594,7 @@ unsorted:
   - python310-hashids 
   - python310-hatch 
   - python310-hatch-fancy-pypi-readme 
+  - python310-hatch-jupyter-builder 
   - python310-hatch_nodejs_version 
   - python310-hatch_vcs 
   - python310-hatchling 
@@ -26356,6 +26359,7 @@ unsorted:
   - python38-colorspacious 
   - python38-colour 
   - python38-columnize 
+  - python38-comm 
   - python38-commentjson 
   - python38-compat-patcher-core 
   - python38-compileall2 
@@ -26908,6 +26912,7 @@ unsorted:
   - python38-hashids 
   - python38-hatch 
   - python38-hatch-fancy-pypi-readme 
+  - python38-hatch-jupyter-builder 
   - python38-hatch_nodejs_version 
   - python38-hatch_vcs 
   - python38-hatchling 
@@ -29732,6 +29737,7 @@ unsorted:
   - python39-colorspacious 
   - python39-colour 
   - python39-columnize 
+  - python39-comm 
   - python39-commentjson 
   - python39-compat-patcher-core 
   - python39-compileall2 
@@ -30284,6 +30290,7 @@ unsorted:
   - python39-hashids 
   - python39-hatch 
   - python39-hatch-fancy-pypi-readme 
+  - python39-hatch-jupyter-builder 
   - python39-hatch_nodejs_version 
   - python39-hatch_vcs 
   - python39-hatchling 
