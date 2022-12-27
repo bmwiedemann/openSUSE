@@ -921,7 +921,6 @@
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="pam_unix" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="paratype-pt-mono-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="paratype-pt-sans-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="paratype-pt-serif-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->

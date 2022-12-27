@@ -8144,7 +8144,6 @@ unsorted:
   - jupyter-nbdime-git 
   - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
-  - jupyter-nbformat 
   - jupyter-notebook 
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
@@ -19103,7 +19102,6 @@ unsorted:
   - pam_snapper 
   - pam_ssh_agent_auth 
   - pam_u2f 
-  - pam_unix-32bit: [x86_64] 
   - pam_userpass 
   - pam_userpass-32bit: [x86_64] 
   - pam_wrapper 

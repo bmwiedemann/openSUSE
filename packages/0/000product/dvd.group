@@ -1885,7 +1885,7 @@
     <package name="libfakekey0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libfaxutil7_0_5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libfaxutil7_0_6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfcitx-config4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfcitx-core0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfcitx-gclient1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3176,7 +3176,6 @@
     <package name="pam_mount" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam_ssh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="pam_unix" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="paperkey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="par" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="parallel-printer-support" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
