@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec 23 15:30:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + About: Update distro logo when dark-mode changes.
+  + Applications: Don't recurse into symlinks when clearing cache.
+  + Cellular: Avoid duplicated entries in SIM providers list.
+  + Color: Fix crash when first device row is non-existent.
+  + Common: Make list row switches work when annimations are OFF.
+  + Display: Allow the Night Light error label to wrap for small
+    screens.
+  + Mouse: Fix activation of rows while navigating with keyboard.
+  + Network:
+    - Fix crashes when EAP password is missing.
+    - Fix wrong signal of SEA password visibility toggle.
+  + Notifications: Sync lock screen notification setting string.
+  + Users: Show a missing-avatar image when avatars cannot be
+    loaded.
+  + Updated translations.
+- Drop gnome-control-center-fix-ws-sea-pass-toggle.patch: Fixed
+  upstream.
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
 Mon Dec 19 06:39:59 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Modify gnome-control-center-disable-error-message-for-NM.patch:

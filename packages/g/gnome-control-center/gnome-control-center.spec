@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -39,8 +39,6 @@ Source99:       %{name}-rpmlintrc
 Patch0:         gnome-control-center-network-use-AdwStatusPage.patch
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running Was:PATCH-FIX-OPENSUSE
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
-# PATCH-FIX-UPSTREAM gnome-control-center-fix-ws-sea-pass-toggle.patch glgo#GNOME/gnome-control-center!1520 -- network: Fix wrong signal of SEA password visibility toggle
-Patch2:         gnome-control-center-fix-ws-sea-pass-toggle.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -188,7 +186,6 @@ GNOME control center.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
