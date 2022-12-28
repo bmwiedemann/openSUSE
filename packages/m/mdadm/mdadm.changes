@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 26 05:01:33 UTC 2022 - Coly Li <colyli@suse.com>
+
+- mdadm.spec: create the following symbolic link in /sbin for
+  compatibility,
+  	/sbin/mdadm -> /usr/sbin/mdadm
+  	/sbin/mdmon -> /usr/sbin/mdmon
+  (jsc#PED-1009, jsc#PED-947)
+
+-------------------------------------------------------------------
 Wed Dec  7 08:42:17 UTC 2022 - Coly Li <colyli@suse.com>
 
 - Drop the patch which is reported as regression by upstream developer

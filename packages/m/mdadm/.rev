@@ -1449,4 +1449,16 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>1040907</requestid>
   </revision>
+  <revision rev="139" vrev="4">
+    <srcmd5>8f1a70a3cb95fca338bae3e324f76d1d</srcmd5>
+    <version>4.2</version>
+    <time>1672221266</time>
+    <user>dimstar_suse</user>
+    <comment>- mdadm.spec: create the following symbolic link in /sbin for
+  compatibility,
+  	/sbin/mdadm -&gt; /usr/sbin/mdadm
+  	/sbin/mdmon -&gt; /usr/sbin/mdmon
+  (jsc#PED-1009, jsc#PED-947) (forwarded request 1045353 from colyli)</comment>
+    <requestid>1045464</requestid>
+  </revision>
 </revisionlist>

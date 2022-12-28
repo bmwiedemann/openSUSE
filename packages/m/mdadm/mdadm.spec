@@ -177,6 +177,11 @@ install -m 644 %{S:2} %{buildroot}%{_fillupdir}/
 install -d %{buildroot}%{_systemdshutdowndir}
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
+%if !0%{?usrmerged}
+	mkdir -p %{buildroot}/sbin
+	ln -s %{_sbindir}/mdadm %{buildroot}/sbin/mdadm
+	ln -s %{_sbindir}/mdmon %{buildroot}/sbin/mdmon
+%endif
 
 %define services mdmonitor.service mdcheck_start.service mdcheck_continue.service mdmonitor-oneshot.service
 
@@ -205,6 +210,10 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
+%if !0%{?usrmerged}
+/sbin/mdadm
+/sbin/mdmon
+%endif
 %dir /usr/share/mdadm
 /usr/share/mdadm/*
 %{_fillupdir}/sysconfig.mdadm
