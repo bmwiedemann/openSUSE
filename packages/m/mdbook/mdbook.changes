@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec 20 13:13:01 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.4.25:
+  * Fix test with multiple library paths
+  * Switch to older ubuntu image
+  * upgrade clap to 4.0
+  * Update notify
+  * Update topological-sort
+  * Update select
+  * Update env_logger
+  * Update assert_cmd
+  * Bump MSRV to 1.60
+  * Update dependencies
+  * update for hidden only on clipboard
+
+-------------------------------------------------------------------
 Tue Dec 13 09:28:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update _constraints file

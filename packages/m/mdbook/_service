@@ -1,9 +1,9 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/rust-lang/mdBook</param>
-    <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">36e1f0109126cdf1137326e27bddc0b05a78293b</param>
+    <param name="revision">c640294dbf7c416dd959be9d02436d7055c97293</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
