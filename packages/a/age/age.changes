@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec 26 21:25:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  Plugins support
+  * The age CLI now supports plugins, such as age-plugin-yubikey
+  Breaking changes
+  * If -i is used, passphrase-encrypted files are now rejected.
+  * Empty final chunks are now rejected.
+  Minor changes
+  * PKCS#8-encoded Ed25519 private keys (such as 1Password exports)
+    are now supported as SSH identities.
+  * If an armored file is pasted into the terminal, age will now
+    attempt to wait until the end of the file before prompting for
+    a password.
+  * Some invalid files are now correctly rejected, in particular
+    encrypted files with trailing data.
+  * If /dev/tty is present but can't be opened, age will now
+    fallback to trying to treat stdin as a terminal as if
+    /dev/tty wasn't present.
+  * Input prompts now go to the terminal, even if standard error#
+    is redirected.
+  * Values of the new armor.Error type are now returned wrapped in
+    decryption errors when appropriate.
+  * Documentation and error messages were improved.
+
+-------------------------------------------------------------------
 Sat Oct 16 12:30:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove filler phrases from descriptions.
