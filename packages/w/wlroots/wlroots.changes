@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Dec 25 16:51:41 UTC 2022 - llyyr <llyyr.public@gmail.com>
+
+- Update to 0.16.1:
+  * backend: error out when missing DRM and libinput in wlr_backend_autocreate()
+  * backend/drm: only request page-flip if active
+  * backend/drm: log refresh rate in Hz
+  * backend/drm: log modesetting commits
+  * backend/drm: fix FPE when disabling output
+  * backend/drm: fix VRR test
+  * backend/wayland: ensure buffers are released on shutdown
+  * backend/x11: ensure buffers are released on shutdown
+  * render/egl: fix uninitialized pointers in init_dmabuf_formats
+  * scene/layer_shell_v1.c: set exclusive zone correctly
+  * scene/layer_shell_v1.c: remove redundant comment
+  * types/wlr_seat: finish keyboard_state during wlr_seat_destroy
+  * seat/pointer: Initialize low_res_value
+  * cursor: compare to scaled coords
+  * wlr_drm: Add missing wlr_buffer import
+  * wlr_seat: clear `drag->seat_client` when destroyed
+  * xwayland: fix wlr_xwayland_surface_from_wlr_surface() docs
+  * scene: fix output damage expansion condition
+  * build: exclude <wlr/types/wlr_drm_lease_v1.h> without DRM backend
+
+-------------------------------------------------------------------
 Sat Nov 26 05:58:18 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and validate source signature

@@ -24,7 +24,7 @@
 %bcond_without  xcb_errors
 
 Name:           wlroots
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
