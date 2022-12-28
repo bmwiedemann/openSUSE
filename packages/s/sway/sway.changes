@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Dec 25 16:38:54 UTC 2022 - llyyr <llyyr.public@gmail.com>
+
+- Update to 1.8:
+  New features:
+  * A new bindgesture command can be used to bind actions to touchpad gestures
+  * More robust and secure screen lockers via the new 
+    ext-session-lock-v1 protocol (supported by swaylock)
+  * A new output unplug command has been added to remove virtual outputs
+  * libinput's new "disable while trackpointing" setting and
+    high-resolution scroll wheel events are now supported
+  * xdg-activation-v1 is now used for more reliable workspace matching when
+    launching new clients
+  * Various improvements from wlroots' Vulkan renderer
+  Changes:
+  * On Linux, CAP_SYS_NICE can be set to improve scheduling
+  * Manufacturer names in output identifiers might have changed
+  * SUID-root is no longer supported
+  * The output dpms command has been deprecated (superseded by output power)
+  * The pcre dependency has been replaced with pcre2
+- Remove 6484.patch, resolved upstream.
+- Remove fix-upstream-gcc12-build-issue.patch, resolved upstream.
+
+-------------------------------------------------------------------
 Thu Dec  1 08:31:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build: pick up a compatible verison of wlroots boo#1205766

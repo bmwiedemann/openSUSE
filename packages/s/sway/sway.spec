@@ -17,7 +17,7 @@
 
 
 Name:           sway
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -26,9 +26,6 @@ URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
-Patch0:         https://github.com/swaywm/sway/pull/6484.patch
-# Will be in next release
-Patch1:         fix-upstream-gcc12-build-issue.patch
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
@@ -41,9 +38,9 @@ BuildRequires:  scdoc >= 1.9.2
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(json-c) >= 0.12.1
+BuildRequires:  pkgconfig(json-c) >= 0.13
 BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(libinput) >= 1.6.0
+BuildRequires:  pkgconfig(libinput) >= 1.21.0
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
@@ -51,9 +48,9 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
-BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots) >= 0.15.0
-BuildConflicts: pkgconfig(wlroots) >= 0.16.0
+BuildRequires:  pkgconfig(wayland-server) >= 1.21.0
+BuildRequires:  pkgconfig(wlroots) >= 0.16.0
+BuildConflicts: pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       %{name}-branding
 %if 0%{?suse_version}
