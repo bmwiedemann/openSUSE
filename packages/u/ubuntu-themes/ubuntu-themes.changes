@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 27 16:54:11 UTC 2022 - Jan Ritzerfeld <suse@bugs.jan.ritzerfeld.org>
+
+- Added missing empty directories, e.g.:
+  * /usr/share/icons/ubuntu-mono-dark/apps/48/
+  * /usr/share/icons/ubuntu-mono-light/apps/48/
+
+-------------------------------------------------------------------
 Tue Apr 19 13:28:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20.10

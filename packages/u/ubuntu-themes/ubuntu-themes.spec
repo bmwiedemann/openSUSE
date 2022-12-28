@@ -124,10 +124,11 @@ for theme in Ambiance Radiance; do
 done
 for i in ubuntu-mono-dark ubuntu-mono-light LoginIcons; do
     mkdir -p %{buildroot}%{_datadir}/icons/$i
+    for d in $(find $i -type d); do
+      mkdir -p %{buildroot}%{_datadir}/icons/${d}
+    done
     for icon in $(find $i -type f); do
       real_icon=$(readlink -f $icon)
-      d=$(dirname $icon)
-      mkdir -p %{buildroot}%{_datadir}/icons/${d}
       cp -r ${real_icon} %{buildroot}%{_datadir}/icons/${icon}
     done
 done
