@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Dec 27 16:30:30 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.1.0
+- Usability, bells and whistles
+* The rebase editor was taught to handle stacked branch workflows enabled by
+  ``git rebase --update-refs``. The `git cola rebase` sub-command now has
+  an `--update-refs` option and the menu actions display a prompt that allows
+  you to enable the updating of stacked branches.
+  https://github.com/git-cola/git-cola/pull/1261
+  https://github.com/git-cola/git-cola/issues/571
+* The status widget now respects `diff.ignoreSubmodules`.
+  https://github.com/git-cola/git-cola/issues/1269
+- Packaging and Dependencies
+* PyQt6 is now officially supported.
+  https://github.com/git-cola/git-cola/issues/1211
+  https://github.com/git-cola/git-cola/issues/1273
+* The vendored `qtpy` library was updated to `v2.3.0`.
+- Development
+* Fixes and updates to Git Cola's CI actions.
+  https://github.com/git-cola/git-cola/pull/1278
+  https://github.com/git-cola/git-cola/issues/1277
+
+-------------------------------------------------------------------
 Thu Nov 24 12:09:55 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.0.4
