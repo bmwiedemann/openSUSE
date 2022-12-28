@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 26 10:03:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.4.5:
+  + Minor bug fixes and documentation enhancements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan 17 21:16:26 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add python-rpm-macros to BuildRequires (boo#1194757).

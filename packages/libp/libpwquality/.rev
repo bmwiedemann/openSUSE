@@ -175,4 +175,14 @@ Fixed bugref (forwarded request 922054 from dimstar)</comment>
     <comment></comment>
     <requestid>947477</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>98ddae53a894d510b25e213ded570e4a</srcmd5>
+    <version>1.4.5</version>
+    <time>1672221256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.5:
+  + Minor bug fixes and documentation enhancements.
+  + Updated translations.</comment>
+    <requestid>1045393</requestid>
+  </revision>
 </revisionlist>
