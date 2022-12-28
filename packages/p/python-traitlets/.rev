@@ -115,4 +115,26 @@
 </comment>
     <requestid>1030492</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a61220a9cdc7e651f58330f2275a9d2a</srcmd5>
+    <version>5.8.0</version>
+    <time>1672221254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.0
+  * Shell command-line tab-completion via argcomplete #811 (@azjps)
+  * Define trait.__doc__ = trait.help for better API Docs #816
+    (@minrk)
+  * Expose more attributes for typing #817 (@blink1073)
+  * Fix lint #814 (@blink1073)
+  * Additional Application examples and docs #811 (@azjps)
+- Release 5.7.1
+  * fix: some descriptors raise AttributeError #812
+    (@maartenbreddels)
+- Release 5.7.0
+  * Performance: decrease runtime overhead for constructing
+    HasTraits (up to 20x faster) #777 (@maartenbreddels)
+  * Minor fixes for Application.aliases #810 (@azjps)
+  * Adopt ruff and address lint #809 (@blink1073)</comment>
+    <requestid>1045326</requestid>
+  </revision>
 </revisionlist>
