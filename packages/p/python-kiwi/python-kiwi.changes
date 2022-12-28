@@ -1,4 +1,342 @@
 -------------------------------------------------------------------
+Sun Dec 18 20:33:54 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.54 → 9.24.55
+
+-------------------------------------------------------------------
+Wed Dec 14 16:26:27 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to pass credentials as file reference
+
+-------------------------------------------------------------------
+Tue Dec 13 15:20:41 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed handling of container archive compression
+
+  In kiwi we support handling of the container archive compression
+  via a runtime configuration setting of the following form, eg
+  in /etc/kiwi.yml
+
+  ```yaml
+  container:
+  # Specify compression for container images
+  # Possible values are true, false, xz or none.
+  - compress: true
+  ```
+
+  However, this setting was only taken into account in the kiwi
+  bundler. Meaning if the user calls 'kiwi result bundle ...'
+  after the container image has been created the result bundler
+  will take the compression setting into account. From my perspective
+  this behavior is misleading and also prevents users from
+  creating compressed container archives without a subsequent
+  result bundler call. Therefore this commit moves the place to
+  handle the compression setting into the container classes.
+  The bundler code for containers will no longer operate on it
+  and just takes what it gets, which can be either compressed
+  or not. The default setting was "No compression" and this
+  was not changed. This Fixes #2217
+
+-------------------------------------------------------------------
+Tue Dec 13 14:32:43 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add type hints for OCI and APPX classes
+
+-------------------------------------------------------------------
+Sun Dec 11 20:17:23 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.53 → 9.24.54
+
+-------------------------------------------------------------------
+Sun Dec 11 20:15:24 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix publish to pypi
+
+  bind gh-action module to v1 release
+
+-------------------------------------------------------------------
+Sun Dec 11 19:59:49 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.52 → 9.24.53
+
+-------------------------------------------------------------------
+Sat Dec 10 21:35:19 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use ubuntu-20.04 as github hosted runner
+
+  It seems on ubuntu-latest no python 3.6 is available anymore
+
+-------------------------------------------------------------------
+Sat Dec 10 20:13:15 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow external commands in tox targets
+
+-------------------------------------------------------------------
+Fri Dec 09 21:30:03 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix unit test run for BLS spec base class
+
+  Do not really call blkid as used in get_boot_cmdline
+
+-------------------------------------------------------------------
+Fri Dec 09 15:33:51 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed typo in documentation
+
+  Capitalize at the start of a sentence.
+  This Fixes #2216
+
+-------------------------------------------------------------------
+Fri Dec 02 11:12:30 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix unit tests to run in parallel
+
+  Setting sys.argv and global variables impacts tests such that
+  they cannot run in parallel. The little footprint of excluding
+  the --config global args test from the coverage is beneficial
+  to allow parallel test runs
+
+-------------------------------------------------------------------
+Fri Dec 02 10:01:52 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't show secret parts of an URI
+
+  Using URIs of the form uri://user:pass@location should not be
+  logged or printed including its credential data
+
+-------------------------------------------------------------------
+Fri Dec 02 09:33:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't use split on potential None value
+
+-------------------------------------------------------------------
+Thu Dec 01 12:06:58 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to select partition mapper tool
+
+  The recent change from kpartx to partx caused some appliance
+  builds to break depending on their configuration. I spotted
+  issues when building disks with veritysetup or integritysetup
+  root devices. There are also issues with grub-install on other
+  architectures e.g s390. It seems partx cannot be used as a drop
+  in replacement and so I suggest to make this a runtime
+  configuration option with partx as the new default but also
+  allow for the old method
+
+-------------------------------------------------------------------
+Thu Dec 01 09:49:49 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.51 → 9.24.52
+
+-------------------------------------------------------------------
+Wed Nov 30 22:19:08 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix status indicator in helper/build_status.sh
+
+  colored output only worked for toplevel results
+
+-------------------------------------------------------------------
+Wed Nov 30 15:53:29 CET 2022 - Neal Gompa <neal@gompa.dev>
+
+- Eliminate redundant partx calls for cleaning up loop devices
+
+  partx can clean up all partition loops associated with a loop device
+  when deleting the main loop device. Apparently, sometimes it goes and
+  does this even when only deleting the partition loop, so to avoid
+  this problem, we will just eliminate the redundant call.
+
+  Fixes: 8f2b8fda82a37d7a7ebbf8a6557870cc63b0ae91
+
+-------------------------------------------------------------------
+Wed Nov 30 15:18:12 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support repo URI's with credentials on cmdline
+
+  Specifying a repository as part of the image description
+  allows for credentials via the username and password attributes.
+  Howver, repositories can also be specified on the commandline
+  via the --set-repo / --add-repo options. The options on the
+  commandline did not allow to specify credentials so far.
+  This commit adds the commandline options --set-repo-credentials
+  and --add-repo-credentials to support them
+
+-------------------------------------------------------------------
+Wed Nov 30 11:29:14 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-vagrant
+
+  virtualbox-guest-x11 seems to be deleted from TW
+
+-------------------------------------------------------------------
+Wed Nov 30 11:12:26 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-custom-partitions
+
+  The test was done prior kiwi added the partitions element and
+  demonstrates how to influence the partition table via scripts.
+  These scripts uses kpartx and the device mapper. Due to the
+  recent change from kpartx to partx the scripts must be
+  adapted
+
+-------------------------------------------------------------------
+Tue Nov 29 17:12:59 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.50 → 9.24.51
+
+-------------------------------------------------------------------
+Tue Nov 29 17:10:37 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added code style batch to landing page
+
+-------------------------------------------------------------------
+Tue Nov 29 17:05:17 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete obsolete gitlab pipeline status flag
+
+  Delete obsolete gitlab pipeline status from the project
+  landing page. We do no longer use gitlab since they added
+  that quota thing for their CI system
+
+-------------------------------------------------------------------
+Tue Nov 29 16:51:11 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.49 → 9.24.50
+
+-------------------------------------------------------------------
+Tue Nov 29 16:30:01 CET 2022 - Neal Gompa <neal@gompa.dev>
+
+- Swap from DM kpartx to util-linux partx for creating loop devices
+
+  The device-mapper (DM) based loop devices that kiwi has historically
+  generated creates issues when trying to run kiwi in confined build
+  environments. The DM tools prefer to have a tighter coupling between
+  userspace and kernel interfaces, and we cannot necessarily guarantee
+  that in the variety of build environments that kiwi can be run in.
+  In particular, Koji uses either nspawn containers or chroots through
+  Mock to run kiwi and that is where this fails.
+
+  However, we do not need to use DM for this purpose when util-linux
+  provides a perfectly serviceable alternative. This commit changes
+  kiwi's loop device setup to use partx(8) from util-linux instead.
+
+  As long as the appliance image being created doesn't use a disk
+  scheme that requires DM, it becomes entirely possible to produce
+  an image without needing DM at runtime at all.
+
+-------------------------------------------------------------------
+Tue Nov 29 13:52:13 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added systemd_boot integration test for Rawhide
+
+-------------------------------------------------------------------
+Mon Nov 21 10:39:59 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase btrfs size of orthos integration test
+
+-------------------------------------------------------------------
+Mon Nov 14 16:36:31 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase scope of kernel lookup
+
+  So far kiwi was looking up kernels only on /boot. Including
+  other bootloaders it's no longer required that the kernel
+  packages of the distributions provides the kernel in /boot
+  Thus kiwi's lookup needs to be extended to other places
+  which is done by this commit.
+
+-------------------------------------------------------------------
+Sat Nov 12 21:45:31 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add GRUB_DEFAULT=saved if not set
+
+  If there is no GRUB_DEFAULT setting in etc/default/grub
+  we add GRUB_DEFAULT=saved as the default setting.
+  This Fixes #2198
+
+-------------------------------------------------------------------
+Sat Nov 12 17:20:27 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Disable gitlab CI pipeline
+
+  Unfortunately gitlab decided to allow only eligible
+  projects to use their CI pipeline. Being a member for
+  years seems not to count in this change process.
+  Therefore this commit disables the tests we run on
+  gitlab and I will come up with a simple github action
+  for the parts that we don't want to loose.
+
+-------------------------------------------------------------------
+Fri Nov 11 09:56:50 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added integration test for systemd_boot
+
+  The test build is based on the Tumbleweed distribution
+  and provides a simple non-secure-boot systemd-boot
+  virtual disk image
+
+-------------------------------------------------------------------
+Tue Nov 08 15:27:10 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- no_implicit_optional = False
+
+-------------------------------------------------------------------
+Thu Nov 03 17:05:22 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added --loglevel option
+
+  specify logging level as number. Details about the
+  available log levels can be found at:
+  https://docs.python.org/3/library/logging.html#logging-levels
+  Setting a log level causes all message >= level to be
+  displayed.
+
+-------------------------------------------------------------------
+Wed Nov 02 22:25:32 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Consolidate and cleanup logging
+
+  Make sure all loggers; stream handlers, file and socket
+  handler uses the same logging format. Also make sure that
+  there is only one place for setLogLevel when kiwi is
+  used as application
+
+-------------------------------------------------------------------
+Sat Oct 29 20:36:08 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added support for --logsocket
+
+  Like with --logfile this commit adds support for using
+  an existing Unix Domain Socket for logging. It's required
+  that there is a listener on the given socket otherwise
+  kiwi exits with an appropriate error message from the
+  socket layer. A simple listener could look like the
+  following:
+
+  ```python
+  sock_file = '/tmp/log_socket'
+  buffer = 1024
+  if os.path.exists(sock_file):
+  os.unlink(sock_file)
+  sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+  sock.bind(sock_file)
+  sock.listen(1)
+  while True:
+  connection, client_address = sock.accept()
+  try:
+  while True:
+  data = connection.recv(buffer)
+  if not data:
+  break
+  print(data.decode())
+  finally:
+  connection.close()
+  ```
+
+  With the listener in place kiwi can be called as follows:
+
+  kiwi-ng --logsocket /tmp/log_socket ...
+
+-------------------------------------------------------------------
 Sat Oct 22 22:27:41 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.48 → 9.24.49
@@ -178,6 +516,14 @@ Thu Aug 04 01:27:07 CEST 2022 - J Mixer <j.mixer135@gmail.com>
 Sat Jul 30 17:54:20 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Fixup btrfs based legacy kiwi initrd test
+
+-------------------------------------------------------------------
+Thu Jul 21 13:59:25 CEST 2022 - gmoro <gmoro@suse.com>
+
+- Fix mocking of grub2-install (fix #2124)
+
+  /bin/true was being used from the host machine instead of
+  the chroot
 
 -------------------------------------------------------------------
 Thu Jul 21 13:46:52 CEST 2022 - David Cassany <dcassany@suse.com>
@@ -1572,6 +1918,31 @@ Mon Feb 07 15:40:02 CET 2022 - Neal Gompa <ngompa@centosproject.org>
 - build-tests: Update CentOS 8 test appliance to CentOS Stream 8
 
   CentOS Linux 8 is now EOL, so switch over to CentOS Stream 8.
+
+-------------------------------------------------------------------
+Sat Feb 05 21:43:34 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added API for BLS and systemd-boot support
+
+  Bootloaders implementing the Boot Loader Spec (BLS) are not
+  directly compatible with the original Bootloader Class design
+  in kiwi. Because of that an interface class which translates
+  the original API into calls following BLS was added. This allows
+  us to keep the implementations in the Builder classes and the
+  public BootLoader interface untouched. In addition to the BLS
+  API an implementation to support the systemd-boot loader is
+  part of this commit too.
+
+  An example type definition to use systemd-boot with an EFI
+  disk image type looks like the following:
+
+  <type image="oem" filesystem="xfs" firmware="efi" bootloader="systemd_boot" efipartsize="200"/>
+
+  The implementation uses bootctl and kernel-install tools
+  provided from systemd and expects a proper integration
+  of systemd-boot by the distribution maintainers
+
+  This Fixes #1935
 
 -------------------------------------------------------------------
 Fri Feb 04 09:50:54 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
