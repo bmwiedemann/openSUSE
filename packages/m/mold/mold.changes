@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Dec 27 09:47:12 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.8.0
+  * The --relocatable (or -r) option has been reimplemented to improve its
+    performance and compatibility with the GNU linkers. That option tells the linker
+    to combine input object files into another object file instead of into an
+    executable or a shared library file. mold has been supporting the feature since
+    version 0.9, but until now the output file created with -r looked fairly
+    different from what GNU linkers would produce. GHC (Glasgow Haskell Compiler) in
+    particular uses re-linkable object files as dynamic libraries instead of real
+    .so files, and it didn't work with mold. Now, mold can produce object files that
+    GHC can load. Note that this work was funded by Mercury, so thanks to the
+    company to help us improve the product. (Yes, you can ask us to prioritize your
+    feature request by funding the project.) (c9a7ae7)
+  * --relocatable-merge-sections option has been added. By default, mold keeps
+    original input section names for the --relocatable output and therefore does not
+    merge input sections into a single output sections unless they are of the same
+    name. If --relocatable-merge-sections is given, mold merges input by the usual
+    default merging rule. For example, .text.foo and .text.bar are merged to .text
+    if and only if --relocatable-merge-sections is given for the --relocatable
+    output. (c2a0ae1)
+  * -z [no]dynamic-undefined-weak options have been added. This option controls
+    whether an undefined weak symbol is promoted to a dynamic symbol or not.
+    (ed235f3)
+  * --[no-]undefined-version options have been supported. Now, mold warns on a
+    symbol name in a version script if it does not match with any defined symbol.
+    This change was made so that it is easy to find a typo in a version script.
+    (e2d7353)
+  * mold now warns on symbol type mismatch. If two object files have the same symbol
+    with different symbol types, it usually means your program has a bug. Chances
+    are, you are using the same identifier as a function name in one translation
+    unit and as a global variable name in another. So it makes sense to warn on the
+    mismatch. (b70211e)
+  * mold now merges .gnu.note.property sections for various x86 properties.
+    (d30d743)
+  * The experimental macOS/iOS support has been removed from mold. If you want to
+    use it, please use our sold linker instead.
+  * --wrap now works with LTO. (07d8911)
+  * A global variable initialized with an IFUNC function pointer is now initialized
+    correctly with the function's address. Previously, it was mistakenly initialized
+    to the function resolver's address. (b2858d2)
+  * The filename specified by --version-script or --dynamic-list is now searched
+    from library search paths if it does not exist in the current working directory.
+    This behavior is compatible with GNU linkers. (3c1a055, 8c87f16)
+  * mold now tries to avoid creating copy relocations as much as possible. This
+    change fixed a compatibility issue with GHC. (5866c9e)
+  * Thread-local variables are now correctly aligned even if there's a TLV with a
+    large alignment. (bd46edf)
+  * mold can now handle GCC LTO files created with -ffat-lto-objects. (804b843)
+  * mold now accepts -z nopack-relative-relocs as an alias for
+    --pack-dyn-relocs=none for the sake of compatibility with GNU linkers. (b510588)
+  * mold now recognizes -z start-stop-visibility=hidden but ignores it because it's
+    the default for mold. GNU linkers support this option to control the visibility
+    of linker-synthesized __start_<sectname> and __stop_<sectname> symbols, with
+    global as the default visibility. mold creates these symbols with the hidden
+    visibility by default, which is desirable for almost all cases. (22c9ec8)
+  * [ARM32, i386] mold now emits REL-type relocations instead of RELA-type for the
+    --relocatable output file. (8b373d3)
+
+-------------------------------------------------------------------
 Fri Nov 18 14:08:15 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.7.1

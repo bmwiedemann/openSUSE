@@ -384,4 +384,41 @@
     different output file. (d8dd124)</comment>
     <requestid>1036663</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a9550013594f17477955f2b72ae677ec</srcmd5>
+    <version>1.8.0</version>
+    <time>1672221268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0
+  * The --relocatable (or -r) option has been reimplemented to improve its
+    performance and compatibility with the GNU linkers. That option tells the linker
+    to combine input object files into another object file instead of into an
+    executable or a shared library file. mold has been supporting the feature since
+    version 0.9, but until now the output file created with -r looked fairly
+    different from what GNU linkers would produce. GHC (Glasgow Haskell Compiler) in
+    particular uses re-linkable object files as dynamic libraries instead of real
+    .so files, and it didn't work with mold. Now, mold can produce object files that
+    GHC can load. Note that this work was funded by Mercury, so thanks to the
+    company to help us improve the product. (Yes, you can ask us to prioritize your
+    feature request by funding the project.) (c9a7ae7)
+  * --relocatable-merge-sections option has been added. By default, mold keeps
+    original input section names for the --relocatable output and therefore does not
+    merge input sections into a single output sections unless they are of the same
+    name. If --relocatable-merge-sections is given, mold merges input by the usual
+    default merging rule. For example, .text.foo and .text.bar are merged to .text
+    if and only if --relocatable-merge-sections is given for the --relocatable
+    output. (c2a0ae1)
+  * -z [no]dynamic-undefined-weak options have been added. This option controls
+    whether an undefined weak symbol is promoted to a dynamic symbol or not.
+    (ed235f3)
+  * --[no-]undefined-version options have been supported. Now, mold warns on a
+    symbol name in a version script if it does not match with any defined symbol.
+    This change was made so that it is easy to find a typo in a version script.
+    (e2d7353)
+  * mold now warns on symbol type mismatch. If two object files have the same symbol
+    with different symbol types, it usually means your program has a bug. Chances
+    are, you are using the same identifier as a function name in one translation
+    unit and as a global variable name in another. So it makes sense to warn on the</comment>
+    <requestid>1045468</requestid>
+  </revision>
 </revisionlist>

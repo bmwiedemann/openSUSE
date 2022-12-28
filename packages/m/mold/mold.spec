@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -103,7 +103,6 @@ fi
 %ghost %_sysconfdir/alternatives/ld
 %{_bindir}/mold
 %{_bindir}/ld.mold
-%{_bindir}/ld64.mold
 %dir %{_libdir}/mold
 %{_libexecdir}/mold/ld
 %dir %{_libexecdir}/mold
