@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.17.0
+Version:        6.19.4
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -43,6 +43,7 @@ BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION dependencies
+BuildRequires:  %{python_module comm >= 0.1.1}
 BuildRequires:  %{python_module debugpy >= 1.0}
 BuildRequires:  %{python_module ipython >= 7.23.1}
 BuildRequires:  %{python_module jupyter-client >= 6.1.12}
@@ -53,6 +54,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyzmq >= 17}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 5.1.0}
+Requires:       python-comm >= 0.1.1
 Requires:       python-debugpy >= 1.0
 Requires:       python-ipython >= 7.23.1
 Requires:       python-jupyter-client >= 6.1.12
@@ -62,12 +64,13 @@ Requires:       python-packaging
 Requires:       python-psutil
 Requires:       python-pyzmq >= 17
 Requires:       python-tornado >= 6.1
-Requires:       python-traitlets >= 5.1.0
+Requires:       python-traitlets >= 5.4.0
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest >= 7.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 # we don't want ipyparallel and its dependencies in Ring1, see below
 #BuildRequires:  #{python_module ipyparallel}
@@ -83,8 +86,6 @@ This package provides the IPython kernel for Jupyter.
 
 %prep
 %autosetup -p1 -n ipykernel-%{version}
-# 5 tests out of 116, we don't want ipyparallel and its dependencies in Ring1
-rm ipykernel/tests/test_pickleutil.py
 sed -i -e 's/--color=yes//' pyproject.toml
 
 %build
@@ -113,6 +114,9 @@ $python -m ipykernel install \
 donttest="test_shutdown_subprocesses"
 # fails in obs setups
 ignoretests="--ignore ipykernel/tests/test_debugger.py"
+# we don't want ipyparallel and its dependencies in Ring1
+ignoretests="$ignoretests --ignore ipykernel/tests/test_pickleutil.py"
+donttest="$donttest or test_do_apply"
 %pytest -k "not ($donttest)" $ignoretests
 
 %files %{python_files}

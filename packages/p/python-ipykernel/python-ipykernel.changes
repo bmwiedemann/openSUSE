@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Dec 25 17:46:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.19.4
+  * Don't pass None kernels to logging configurable in Comm #1061
+    (@bollwyvl)
+- Release  6.19.3
+  * format dates as ISO8601 #1057 (@GRcharles)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+  * Fix lint #1058 (@blink1073)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+- Release  6.19.2
+  * Fix error in %edit magic #1053 (@ccordoba12)
+- Release  6.19.1
+  * fix: too many arguments dropped when passing to base comm
+    constructor #1051 (@maartenbreddels)
+- Release 6.19.0
+  * Fix: there can be only one comm_manager #1049
+    (@maartenbreddels)
+  * Adopt ruff and address lint #1046 (@blink1073)
+- Release 6.18.3
+  * Fix Comm interface for downstream users #1042
+    (@maartenbreddels)
+- Release 6.18.2
+  * Configurables needs to be configurable #1037 (@Carreau)
+- Release 6.18.1
+  * fix: use comm package in backwards compatible way #1028
+    (@maartenbreddels)
+  * Add more testing and deprecate the Gtk event loops #1036
+    (@blink1073)
+  * More coverage improvements #1035 (@blink1073)
+  * Add more tests #1034 (@blink1073)
+  * Add more kernel tests #1032 (@blink1073)
+  * Add more coverage and add Readme badges #1031 (@blink1073)
+  * Clean up testing and coverage #1030 (@blink1073)
+  * Use base setup dependency type #1029 (@blink1073)
+- Release 6.18.0
+  * Add terminal color support #1025 (@blink1073)
+  * Extract the Comm Python package #973 (@martinRenou)
+  * Add windows coverage and clean up workflows #1023 (@blink1073)
+  * Increase coverage #1021 (@blink1073)
+  * Allow releasing from repo #1020 (@blink1073)
+- Release 6.17.1
+  * Ignore the new Jupyter_core deprecation warning in CI #1019
+    (@jasongrout)
+  * Bump actions/checkout from 2 to 3 #1018 (@dependabot)
+  * Add dependabot #1017 (@blink1073)
+  * Add pyupgrade to pre-commit #1014 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Nov  5 19:41:17 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

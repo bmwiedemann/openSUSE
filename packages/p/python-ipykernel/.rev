@@ -341,4 +341,41 @@
     <comment></comment>
     <requestid>1033840</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4087a42aa9bd53ee942f6776053292bb</srcmd5>
+    <version>6.19.4</version>
+    <time>1672221251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.19.4
+  * Don't pass None kernels to logging configurable in Comm #1061
+    (@bollwyvl)
+- Release  6.19.3
+  * format dates as ISO8601 #1057 (@GRcharles)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+  * Fix lint #1058 (@blink1073)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+- Release  6.19.2
+  * Fix error in %edit magic #1053 (@ccordoba12)
+- Release  6.19.1
+  * fix: too many arguments dropped when passing to base comm
+    constructor #1051 (@maartenbreddels)
+- Release 6.19.0
+  * Fix: there can be only one comm_manager #1049
+    (@maartenbreddels)
+  * Adopt ruff and address lint #1046 (@blink1073)
+- Release 6.18.3
+  * Fix Comm interface for downstream users #1042
+    (@maartenbreddels)
+- Release 6.18.2
+  * Configurables needs to be configurable #1037 (@Carreau)
+- Release 6.18.1
+  * fix: use comm package in backwards compatible way #1028
+    (@maartenbreddels)
+  * Add more testing and deprecate the Gtk event loops #1036
+    (@blink1073)
+  * More coverage improvements #1035 (@blink1073)
+  * Add more tests #1034 (@blink1073)
+  * Add more kernel tests #1032 (@blink1073)</comment>
+    <requestid>1045315</requestid>
+  </revision>
 </revisionlist>
