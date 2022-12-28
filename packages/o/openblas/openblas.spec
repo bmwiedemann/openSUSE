@@ -191,8 +191,6 @@ Patch101:       Link-library-with-z-noexecstack.patch
 Patch102:       Handle-s390-correctly.patch
 Patch103:       openblas-ppc64be_up2_p8.patch
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 #BuildRequires:  cmake
 BuildRequires:  memory-constraints
 %if 0%{?cc_v:1}
@@ -346,6 +344,10 @@ EOF
 %endif
 %ifarch aarch64
 %global openblas_target %openblas_target TARGET=ARMV8
+%if 0%{?suse_version} < 1550
+# Only enable targets without sve when using GCC < 9
+%global openblas_target %openblas_target DYNAMIC_LIST="ARMV8 CORTEXA53 CORTEXA57 CORTEXA72 CORTEXA73 CORTEXA55 FALKOR THUNDERX THUNDERX2T99 TSV110 EMAG8180 NEOVERSEN1 NEOVERSEV1 THUNDERX3T110"
+%endif
 %define openblas_opt BUILD_BFLOAT16=1
 %endif
 %ifarch s390 s390x

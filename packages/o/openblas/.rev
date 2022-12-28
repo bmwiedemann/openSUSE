@@ -611,4 +611,12 @@
     <comment>- Remove stray comment (forwarded request 1039330 from eeich)</comment>
     <requestid>1039332</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>476eb1b49328b6c1792208b9b10c86a0</srcmd5>
+    <version>0.3.21</version>
+    <time>1672221255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045254</requestid>
+  </revision>
 </revisionlist>

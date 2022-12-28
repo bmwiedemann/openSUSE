@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 25 00:19:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix aarch64 builds with GCC < 9 (i.e. Leap/SLE 15.x), disable
+  NEOVERSEN2 target. See gh#xianyi/OpenBLAS#3874.
+
+-------------------------------------------------------------------
 Wed Nov 30 19:24:20 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Update to v0.3.21:
