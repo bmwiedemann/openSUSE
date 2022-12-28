@@ -1,8 +1,7 @@
-Index: shairport-sync-3.3.8/scripts/shairport-sync.service.in
-===================================================================
---- shairport-sync-3.3.8.orig/scripts/shairport-sync.service.in
-+++ shairport-sync-3.3.8/scripts/shairport-sync.service.in
-@@ -7,6 +7,17 @@ Wants=network-online.target
+diff -Nur shairport-sync-4.1/scripts/shairport-sync.service.in shairport-sync-4.1-new/scripts/shairport-sync.service.in
+--- shairport-sync-4.1/scripts/shairport-sync.service.in	2022-10-28 23:31:18.000000000 +0800
++++ shairport-sync-4.1-new/scripts/shairport-sync.service.in	2022-11-13 22:26:15.785234171 +0800
+@@ -5,6 +5,17 @@
  After=network.target network-online.target
  
  [Service]
@@ -17,6 +16,6 @@ Index: shairport-sync-3.3.8/scripts/shairport-sync.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@prefix@/bin/shairport-sync
+ ExecStart=@prefix@/bin/shairport-sync --log-to-syslog
  User=shairport-sync
  Group=shairport-sync

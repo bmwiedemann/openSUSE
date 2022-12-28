@@ -157,4 +157,17 @@
   * Fix tinysvcmdns: rr_data_len goes beyond packet buffer (forwarded request 952134 from hillwood)</comment>
     <requestid>952135</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e232127df73b9c5be9fb500226e6be52</srcmd5>
+    <version>4.1</version>
+    <time>1672221275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.1
+  * AirPlay 2 support
+  * Improved libao backend for better compatibility with HomeBrew installations
+  * Improved MQTT and D-Bus facilities
+  * Metadata improvements
+  * Automatically-generated Docker images (forwarded request 1045498 from hillwood)</comment>
+    <requestid>1045499</requestid>
+  </revision>
 </revisionlist>

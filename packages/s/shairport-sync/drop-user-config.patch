@@ -1,14 +1,18 @@
-diff -Nur shairport-sync-3.2RC10/Makefile.am shairport-sync-3.2RC10-new/Makefile.am
---- shairport-sync-3.2RC10/Makefile.am	2018-05-26 22:27:11.000000000 +0800
-+++ shairport-sync-3.2RC10-new/Makefile.am	2018-06-11 15:28:37.222509735 +0800
-@@ -146,8 +146,8 @@
- 	[ -f $(DESTDIR)$(sysconfdir)/init.d/shairport-sync ] || cp scripts/shairport-sync $(DESTDIR)$(sysconfdir)/init.d/
- endif
- if INSTALL_SYSTEMD
+diff -Nur shairport-sync-4.1/Makefile.am shairport-sync-4.1-new/Makefile.am
+--- shairport-sync-4.1/Makefile.am	2022-10-28 23:31:18.000000000 +0800
++++ shairport-sync-4.1-new/Makefile.am	2022-11-13 22:24:22.869613507 +0800
+@@ -262,12 +262,12 @@
+ INSTALL_GROUP_TARGET = install-group-local
+ 
+ $(INSTALL_GROUP_TARGET):
 -	getent group shairport-sync &>/dev/null || groupadd -r shairport-sync >/dev/null
--	getent passwd shairport-sync &> /dev/null || useradd -r -M -g shairport-sync -s /usr/bin/nologin -G audio shairport-sync >/dev/null
 +#	getent group shairport-sync &>/dev/null || groupadd -r shairport-sync >/dev/null
-+#	getent passwd shairport-sync &> /dev/null || useradd -r -M -g shairport-sync -s /usr/bin/nologin -G audio shairport-sync >/dev/null
- 	[ -e $(DESTDIR)$(systemdsystemunitdir) ] || mkdir -p $(DESTDIR)$(systemdsystemunitdir)
- 	[ -f $(DESTDIR)$(systemdsystemunitdir)/shairport-sync.service ] || cp scripts/shairport-sync.service $(DESTDIR)$(systemdsystemunitdir)
- endif
+ 
+ INSTALL_USER_TARGET = install-user-local
+ 
+ $(INSTALL_USER_TARGET): $(INSTALL_GROUP_TARGET)
+-	getent passwd shairport-sync &> /dev/null || useradd -r -M -g shairport-sync -s /usr/sbin/nologin -G audio shairport-sync >/dev/null
++#	getent passwd shairport-sync &> /dev/null || useradd -r -M -g shairport-sync -s /usr/sbin/nologin -G audio shairport-sync >/dev/null
+ 
+ if INSTALL_SYSTEMV
+ 
