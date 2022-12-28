@@ -28,6 +28,7 @@ Group:          Productivity/Networking/Security
 URL:            https://www.aircrack-ng.org/
 Source0:        https://download.aircrack-ng.org/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
+Patch1:         s390x-enablement-cpustats.patch
 BuildRequires:  autoconf
 BuildRequires:  ethtool
 BuildRequires:  expect
@@ -60,12 +61,14 @@ for auditing purposes.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 Development files for %{name}.
 
 %prep
 %setup -q
+%patch1 -p1
 find patches/ -type f -exec sed -i 's|\r||g' {} +
 cp "%{SOURCE1}" .
 # Force python3 interpreter
@@ -96,6 +99,7 @@ rm patches/old/ieee80211_inject.patch
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 %if %{with unstable}
 rm %{buildroot}%{_prefix}/local/lib/python3*/site-packages/aircrack-ng/air*-install_files.txt
+rm %{buildroot}%{_datadir}/airgraph-ng/.keepthisfolder
 %endif
 
 %check

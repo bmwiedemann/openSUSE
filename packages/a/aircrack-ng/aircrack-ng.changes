@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 27 18:02:52 UTC 2022 - Holger B. A. Rauch <holger.rauch@posteo.de>
+
+- "Fixed" patch
+  (originally coming from "https://github.com/aircrack-ng/aircrack-ng/pull/2335")
+  * s390x-enablement-cpustats.patch
+- Excluded .keepthisfolder file from being taken into account for RPM packaging
+
+-------------------------------------------------------------------
 Wed May 11 08:06:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7
