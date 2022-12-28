@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 27 22:58:29 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix SourceURL
+
+-------------------------------------------------------------------
+Mon Oct 10 18:17:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7
+  * rtl_sdr optimization
+  * add skip reassembly option
+  * add sublabel and mfi fields to JSON output
+
+-------------------------------------------------------------------
 Tue Jul 19 06:48:35 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)

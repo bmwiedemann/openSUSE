@@ -17,14 +17,15 @@
 #
 
 
+%define srcname %{name}-%{name}-%{version}
 Name:           acarsdec
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        ACARS SDR decoder
 License:        GPL-2.0-or-later
 URL:            https://github.com/TLeconte/acarsdec
 #Git-Clone:     https://github.com/TLeconte/acarsdec.git
-Source:         https://github.com/TLeconte/%{name}/archive/%{name}-%{version}.tar.gz
+Source:         https://github.com/TLeconte/acarsdec/archive/acarsdec-%{version}.tar.gz#/%{srcname}.tar.gz
 Patch0:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -39,7 +40,7 @@ A multi-channels acars decoder with built-in rtl_sdr front end.
 It comes with a database backend : acarsserv to store receved acars messages.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q -n %{srcname}
 %patch0 -p1
 
 %build
