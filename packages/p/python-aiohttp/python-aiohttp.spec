@@ -75,7 +75,7 @@ BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module proxy.py}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module trustme}
 # /SECTION
@@ -137,12 +137,13 @@ donttest+=" or test_client_session_timeout_zero or test_requote_redirect_url_def
 donttest+=" or test_https_proxy_unsupported_tls_in_tls"
 # not running under pytest ?!
 donttest+=" or test_no_warnings"
-%if 0%{?python3_version_nodots} == 36
-donttest+=" or test_read_boundary_with_incomplete_chunk"
-%endif
-# skip functional tests
-# rm -v tests/test_proxy_functional.py
-%pytest_arch tests -rsEf -k "not ($donttest)"
+%{python_expand # Does not work on python <= 3.6
+if [ %{$python_version_nodots} -eq 36 ]; then
+  #See https://github.com/openSUSE/python-rpm-macros#flavor-expansion for an explanation of this hack
+  $python_donttest=" or test_read_boundary_with_incomplete_chunk"
+fi
+}
+%pytest_arch tests -rsEf -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %license LICENSE.txt

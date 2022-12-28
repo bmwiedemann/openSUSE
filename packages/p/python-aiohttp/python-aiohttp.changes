@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 26 21:35:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't assume python3 to be present for d:l:p:backports/15.4_py39
+- Requires pytest 6.2.0 when pytest.TempPathFactory was introduced.
+
+-------------------------------------------------------------------
 Mon Dec 12 16:16:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update py3109-compat.patch to work with python <= 3.10.8 too.
