@@ -1,0 +1,27 @@
+From 390a0e180f69c43bff3dd1fe04695f5c37b4369b Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Sun, 4 Dec 2022 00:44:26 +0800
+Subject: [PATCH] remove pytest
+
+---
+ setup.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 09f121d1..04a517e2 100755
+--- a/setup.py
++++ b/setup.py
+@@ -36,13 +36,11 @@
+ ]
+ 
+ setup_requirements = [
+-    "pytest-runner",
+     "setuptools-scm<7; python_version<='3.6'",
+     "setuptools-scm>=7; python_version>'3.6'",
+ ]
+ 
+ test_requirements = [
+-    "pytest",
+ ]
+ 
+ setup(

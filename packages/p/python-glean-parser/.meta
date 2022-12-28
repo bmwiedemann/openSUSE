@@ -1,0 +1,5 @@
+<package name="python-glean-parser" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-glean-parser"/>
+</package>
