@@ -1,28 +1,28 @@
-diff -Naur FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/gui_generated.cpp FreeFileSync_11.23_Source/FreeFileSync/Source/ui/gui_generated.cpp
---- FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/gui_generated.cpp	2022-07-23 15:18:28.000000000 +0200
-+++ FreeFileSync_11.23_Source/FreeFileSync/Source/ui/gui_generated.cpp	2022-08-26 15:47:40.998770347 +0200
+diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/ui/gui_generated.cpp FreeFileSync_11.29_Source/FreeFileSync/Source/ui/gui_generated.cpp
+--- FreeFileSync_11.29_Source_orig/FreeFileSync/Source/ui/gui_generated.cpp	2022-12-16 20:32:32.000000000 +0100
++++ FreeFileSync_11.29_Source/FreeFileSync/Source/ui/gui_generated.cpp	2022-12-25 16:40:47.704967137 +0100
 @@ -108,13 +108,14 @@
-     m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
-     m_menuHelp->Append( m_menuItemHelp );
+ 	m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
+ 	m_menuHelp->Append( m_menuItemHelp );
  
--    m_menuHelp->AppendSeparator();
-+    // disable update/auto update actions for packaged version (they are only hidden, to not break any code and keep the patch small)
-+    //m_menuHelp->AppendSeparator();
+-	m_menuHelp->AppendSeparator();
++	// disable update/auto update actions for packaged version (they are only hidden, to not break any code and keep the patch small)
++	//m_menuHelp->AppendSeparator();
  
-     m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ), wxEmptyString, wxITEM_NORMAL );
--    m_menuHelp->Append( m_menuItemCheckVersionNow );
-+    //m_menuHelp->Append( m_menuItemCheckVersionNow );
+ 	m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ) , wxEmptyString, wxITEM_NORMAL );
+-	m_menuHelp->Append( m_menuItemCheckVersionNow );
++	//m_menuHelp->Append( m_menuItemCheckVersionNow );
  
-     m_menuItemCheckVersionAuto = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("Check &automatically once a week") ), wxEmptyString, wxITEM_CHECK );
--    m_menuHelp->Append( m_menuItemCheckVersionAuto );
-+    //m_menuHelp->Append( m_menuItemCheckVersionAuto );
-     m_menuItemCheckVersionAuto->Check( true );
+ 	m_menuItemCheckVersionAuto = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("Check &automatically once a week") ) , wxEmptyString, wxITEM_CHECK );
+-	m_menuHelp->Append( m_menuItemCheckVersionAuto );
++	//m_menuHelp->Append( m_menuItemCheckVersionAuto );
+ 	m_menuItemCheckVersionAuto->Check( true );
  
-     m_menuHelp->AppendSeparator();
-diff -Naur FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp FreeFileSync_11.23_Source/FreeFileSync/Source/ui/main_dlg.cpp
---- FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp	2022-07-23 15:18:28.000000000 +0200
-+++ FreeFileSync_11.23_Source/FreeFileSync/Source/ui/main_dlg.cpp	2022-08-26 15:48:40.582681036 +0200
-@@ -928,7 +928,7 @@
+ 	m_menuHelp->AppendSeparator();
+diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp FreeFileSync_11.29_Source/FreeFileSync/Source/ui/main_dlg.cpp
+--- FreeFileSync_11.29_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp	2022-12-16 20:32:32.000000000 +0100
++++ FreeFileSync_11.29_Source/FreeFileSync/Source/ui/main_dlg.cpp	2022-12-25 16:41:36.056820006 +0100
+@@ -929,7 +929,7 @@
      updateGui();
  
      //register regular check for update on next idle event
@@ -31,16 +31,16 @@ diff -Naur FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/main_dlg.cpp Fr
  
      //asynchronous call to wxWindow::Layout(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
      Bind(wxEVT_IDLE, &MainDialog::onLayoutWindowAsync, this);
-diff -Naur FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/version_check.cpp FreeFileSync_11.23_Source/FreeFileSync/Source/ui/version_check.cpp
---- FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ui/version_check.cpp	2022-07-23 15:18:28.000000000 +0200
-+++ FreeFileSync_11.23_Source/FreeFileSync/Source/ui/version_check.cpp	2022-08-26 15:49:30.950625085 +0200
-@@ -77,7 +77,9 @@
+diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/ui/version_check.cpp FreeFileSync_11.29_Source/FreeFileSync/Source/ui/version_check.cpp
+--- FreeFileSync_11.29_Source_orig/FreeFileSync/Source/ui/version_check.cpp	2022-12-16 20:32:32.000000000 +0100
++++ FreeFileSync_11.29_Source/FreeFileSync/Source/ui/version_check.cpp	2022-12-25 16:42:36.580635844 +0100
+@@ -83,7 +83,9 @@
          return false;
  
      const time_t now = std::time(nullptr);
 -    return std::abs(now - lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
 +    //return std::abs(now - lastUpdateCheck) >= 7 * 24 * 3600; //check weekly
-+
++    
 +    return false;
  }
  

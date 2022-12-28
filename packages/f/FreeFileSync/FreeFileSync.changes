@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Dec 25 20:20:12 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.29
+  - Fixed crash after 1-byte file copy from MTP device
+  - Fixed incorrect installer z-order during auto-update (macOS)
+  - Compress copied file only if target folder is marked as NTFS-compressed (Windows)
+  - Show install errors without requiring access to "System Events" (macOS)
+  - Fall back to creation time if modification time is missing on MTP device
+  - Copy/paste filter config via operating system clipboard
+  - Show FreeFileSync startup error message when called from RealTimeSync
+  - Avoid server round trip when preparing summary email
+  - Show path conflict warning aggregated into groups
+  - Don't assume path conflict if single write and multiple ignored items
+  - Fixed CTRL + Insert clipboard copy for some text controls (Windows, Linux)
+- Changes from 11.28
+  - Recover from corrupted database file
+  - Save database files pair-wise as a transaction
+  - Fixed FTP access for Xiaomi "File Manager"
+  - Fixed filter full path detection for root directory (Linux/macOS)
+  - Fixed recycle bin double initialization bug (Windows)
+  - Fixed incorrect case-insensitive string comparison for i and ı
+  - Round progress percentage numbers down
+- Changes from 11.27
+  - Fixed "Some files will be synchronized as part of multiple base folders" false-negative
+  - Fixed "Unexpected size of data stream" for Google Drive
+  - Fixed crash when downloading empty file from Google Drive
+  - RealTimeSync: fixed ffs_batch not accepted as valid configuration
+  - Fixed top buttons vertical GUI layout
+  - Fixed progress dialog font on Ubuntu MATE
+  - Support cut/copy/paste for filter settings
+  - Fixed free disk space calculation if target folder not yet created
+- Changes from 11.26
+  - Faster file copy for SSD-based hard drives (Linux, macOS)
+  - Don't fill the OS file cache during file copy (macOS)
+  - Removed redundant memory buffering during file copy
+  - Fixed ERROR_FILE_EXISTS on Samba share when copying files with NTFS extended attributes
+  - Show warning when recycle bin is not available (macOS, Linux)
+  - Customize config item background colors
+  - Fixed macOS menu bar not showing after app start
+  - Fixed normalizing strings with broken UTF encoding
+  - Fixed sound playback not working (Linux)
+  - Don't allow creating file names ending with dot character (Windows)
+- Changes from 11.25
+  - Fixed crash when normalizing Unicode non-characters
+  - Fixed crash when accesssing Google Drive
+  - Fixed regession for decomposed Unicode comparison
+  - Fixed "exit code 106: --sign is required" error on macOS
+  - Reset icon cache after each comparison
+- Changes from 11.24
+  - Enhanced filter syntax to match files only (append ':')
+  - Fixed "Some files will be synchronized as part of multiple base folders": no more false-positives
+  - Detect full path filter items and convert to relative path
+  - Auto-detect FTP server character encoding (UTF8 or ANSI)
+  - Cancel grid selection via Escape key or second mouse button
+  - Apply conflict preview limit accross all folder pairs
+  - Require config type and file extension to match
+  - Fixed view filter panel vertical layout
+  - Strict validation of UTF encoding
+-------------------------------------------------------------------
 Sat Aug 26 15:03:02 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 11.23

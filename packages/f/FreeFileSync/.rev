@@ -124,4 +124,12 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1000395</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>11b8c094069be49f494bcba09ab40bcd</srcmd5>
+    <version>11.29</version>
+    <time>1672221290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045533</requestid>
+  </revision>
 </revisionlist>

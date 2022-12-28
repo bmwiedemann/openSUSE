@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        11.23
+Version:        11.29
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -66,7 +66,7 @@ mkdir FreeFileSync/Build/Bin
 
 %build
 export TMPDIR=/tmp # necessary since 11.0
-export CXXFLAGS="%{optflags} -fabi-version=2 -fabi-compat-version=2"
+export CXXFLAGS="%{optflags}"
 export CC="gcc"
 export CXX="g++"
 
