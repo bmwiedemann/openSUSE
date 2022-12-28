@@ -149,4 +149,17 @@
   - Delete old CI config files (#2881)</comment>
     <requestid>965220</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3e8e5d35469d0f6058e39c15bb9b3379</srcmd5>
+    <version>3.7</version>
+    <time>1672221279</time>
+    <user>dimstar_suse</user>
+    <comment>- Complete nltk_data.tar.xz for offline testing
+- Fix failing tests (gh#nltk/nltk#2969) by adding patches:
+  - port-2to3.patch
+  - skip-networked-test.patch
+- Clean up the SPEC to get rid of rpmlint warnings.
+</comment>
+    <requestid>1045543</requestid>
+  </revision>
 </revisionlist>

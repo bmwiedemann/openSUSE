@@ -25,7 +25,18 @@ Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
 URL:            http://nltk.org/
-Source:         https://files.pythonhosted.org/packages/source/n/nltk/%{pyname}-%{version}.zip
+Source0:        https://files.pythonhosted.org/packages/source/n/nltk/%{pyname}-%{version}.zip
+# Downloaded NLTK data via python3 -m nltk.downloader,
+# then unzip downloaded zip archive.
+# see https://www.nltk.org/data.html for more details
+Source1:        nltk_data.tar.xz
+Source99:       python-nltk.rpmlintrc
+# PATCH-FIX-UPSTREAM skip-networked-test.patch gh#nltk/nltk#2969 mcepl@suse.com
+# skip tests requiring network connection
+Patch0:         skip-networked-test.patch
+# PATCH-FIX-UPSTREAM port-2to3.patch bsc#[0-9]+ mcepl@suse.com
+# port scripts in nltk_data to Python 3
+Patch1:         port-2to3.patch
 BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -33,6 +44,27 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+# For testing
+BuildRequires:  %{python_module tk}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module pytest}
+# BuildRequires:  %%{python_module gensim}
+BuildRequires:  %{python_module joblib}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module python-crfsuite}
+BuildRequires:  %{python_module regex}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module scikit-learn}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module text-unidecode}
+BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module twython}
+#
 Requires:       python-regex
 Requires:       python-six
 Recommends:     python-gensim
@@ -49,19 +81,49 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
+# changedir = nltk/test
+
 %description
 NLTK -- the Natural Language Toolkit -- is a suite of
 Python modules, data sets and tutorials supporting research and
 development in Natural Language Processing.
 
 %prep
-%autosetup -p1 -n %{pyname}-%{version}
+%autosetup -p1 -a1 -n %{pyname}-%{version}
 
-# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/corpus/reader/knbc.py
-# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/test/runtests.py
-# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/test/unit/test_tgrep.py
-# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tgrep.py
-# sed -i "1,4{/\/usr\/bin\/env/d}" nltk/tokenize/stanford_segmenter.py
+# Remove obsolete scripts
+rm tools/nltk_term_index.py tools/run_doctests.py nltk_data/corpora/semcor/semcor.py
+
+# Fix EOL
+sed -i 's/\r/\n/g; s/\n$//' \
+    README.md \
+    nltk/corpus/reader/knbc.py \
+    nltk/test/unit/test_tgrep.py \
+    nltk/tgrep.py \
+    nltk/tokenize/stanford_segmenter.py \
+    nltk/corpus/reader/knbc.py \
+    nltk/test/unit/test_tgrep.py \
+    nltk/tgrep.py \
+    nltk/tokenize/stanford_segmenter.py \
+    nltk/corpus/reader/knbc.py \
+    nltk/test/unit/test_tgrep.py \
+    nltk/tgrep.py \
+    nltk/tokenize/stanford_segmenter.py
+
+# Remove unrequired shebangs
+sed -E -i "/#![[:space:]]*\/usr\/bin\/env python/d" \
+    nltk/tgrep.py \
+    nltk/tokenize/stanford_segmenter.py \
+    nltk/test/unit/test_tgrep.py \
+    nltk/corpus/reader/knbc.py
+
+# Switch shebangs to the standard Python interpreter
+sed -E -i "s|#![[:space:]]*%{_bindir}/env python|#!%{_bindir}/python3|" \
+    setup.py \
+    tools/global_replace.py \
+    nltk_data/corpora/pl196x/splitter.py \
+    tools/find_deprecated.py \
+    tools/svnmime.py
 
 %build
 %python_build
@@ -75,8 +137,9 @@ chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 }
 
 %check
-# FOLLOWING http://www.nltk.org/install.html
-%python_exec -c "import nltk" || exit 1
+export NLTK_DATA=$(readlink -f ./nltk_data/)
+# export PYTEST_ADDOPTS="--doctest-modules"
+%pytest -k 'not network'
 
 %post
 %python_install_alternative nltk

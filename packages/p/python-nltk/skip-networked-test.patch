@@ -1,0 +1,35 @@
+---
+ nltk/test/unit/test_downloader.py |    4 ++++
+ setup.cfg                         |    4 ++++
+ 2 files changed, 8 insertions(+)
+
+--- a/nltk/test/unit/test_downloader.py
++++ b/nltk/test/unit/test_downloader.py
+@@ -1,6 +1,9 @@
+ from nltk import download
+ 
++import pytest
+ 
++
++@pytest.mark.network
+ def test_downloader_using_existing_parent_download_dir(tmp_path):
+     """Test that download works properly when the parent folder of the download_dir exists"""
+ 
+@@ -9,6 +12,7 @@ def test_downloader_using_existing_paren
+     assert download_status is True
+ 
+ 
++@pytest.mark.network
+ def test_downloader_using_non_existing_parent_download_dir(tmp_path):
+     """Test that download works properly when the parent folder of the download_dir does not exist"""
+ 
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,3 +1,7 @@
++[tool:pytest]
++markers =
++   network: test case requires network connection
++
+ [metadata]
+ license_files = 
+ 	LICENSE.txt

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 26 10:41:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Complete nltk_data.tar.xz for offline testing
+- Fix failing tests (gh#nltk/nltk#2969) by adding patches:
+  - port-2to3.patch
+  - skip-networked-test.patch
+- Clean up the SPEC to get rid of rpmlint warnings.
+
+-------------------------------------------------------------------
 Tue Mar 22 07:48:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.7

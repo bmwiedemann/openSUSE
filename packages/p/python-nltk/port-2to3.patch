@@ -1,0 +1,48 @@
+---
+ nltk_data/corpora/pl196x/splitter.py                 |    4 ++--
+ nltk_data/taggers/universal_tagset/universal_tags.py |    5 -----
+ tools/find_deprecated.py                             |    2 +-
+ 3 files changed, 3 insertions(+), 8 deletions(-)
+
+--- a/nltk_data/corpora/pl196x/splitter.py
++++ b/nltk_data/corpora/pl196x/splitter.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import sys, re
+ 
+@@ -7,7 +7,7 @@ TEXTID = re.compile(r'<text id="(.*)">')
+ 
+ if __name__ == '__main__':
+     if len(sys.argv) != 2:
+-        print 'One argument required: a pl196x corpus to split.'
++        print('One argument required: a pl196x corpus to split.')
+         sys.exit()
+ 
+     inputFileName = sys.argv[1]
+--- a/nltk_data/taggers/universal_tagset/universal_tags.py
++++ b/nltk_data/taggers/universal_tagset/universal_tags.py
+@@ -22,11 +22,6 @@ X - other: foreign words, typos, abbrevi
+ @author: Nathan Schneider (nschneid)
+ @since: 2011-05-06
+ '''
+-
+-# Strive towards Python 3 compatibility
+-from __future__ import print_function, unicode_literals, division
+-from future_builtins import map, filter
+-
+ import re, glob
+ from collections import defaultdict
+ 
+--- a/tools/find_deprecated.py
++++ b/tools/find_deprecated.py
+@@ -29,7 +29,7 @@ import textwrap
+ import tokenize
+ from doctest import DocTestParser, register_optionflag
+ 
+-from cStringIO import StringIO
++from io import StringIO
+ 
+ import nltk.corpus
+ from nltk import defaultdict
