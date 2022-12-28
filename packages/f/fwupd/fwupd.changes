@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 26 14:39:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.8:
+  + This release adds the following features:
+    - Add BIOS rollback protection support for Dell and Lenovo
+      systems
+    - Generate OVAL rules for openSCAP evaluation
+    - Show the signed reports from QA teams in client tools
+  + This release fixes the following bugs:
+    - Add a X-Gpu category for new hardware support
+    - Add more ChromeOS metadata to the report attributes
+    - Ensure the device name is set for Intel USB4 devices
+    - Fix a critical DFU CSR warning when deploying firmware
+    - Fix a Synaptics RMI issue when updating non-secure devices
+    - Match more device properties when using GetDetails
+    - Move AMD platform rollback protection to level 4
+    - Use the correct AppStream ID for the Key Manifest failure
+    - Wait for the Intel GPU to come back after updating
+  + This release adds support for the following hardware:
+    - Logitech Whiteboard cameras
+    - More Goodix MoC devices
+    - Several QSI Docks
+
+-------------------------------------------------------------------
 Thu Nov 10 12:33:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.7:
