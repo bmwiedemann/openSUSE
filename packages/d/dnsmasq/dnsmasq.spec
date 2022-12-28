@@ -22,7 +22,7 @@
 %bcond_with tftp_user_package
 %endif
 Name:           dnsmasq
-Version:        2.87
+Version:        2.88
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only

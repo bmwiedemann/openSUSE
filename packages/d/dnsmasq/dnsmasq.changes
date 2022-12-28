@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 23 07:48:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.88:
+  * Fix bug in --dynamic-host when an interface has /16 IPv4
+  * address.
+  * Add --fast-dns-retry option. This gives dnsmasq the ability
+    to originate retries for upstream DNS queries itself, rather
+    than relying on the downstream client. This is most useful
+    when doing DNSSEC over unreliable upstream networks. It comes
+    with some cost in memory usage and network bandwidth.
+  * Add --use-stale-cache option. When set, if a DNS name exists
+    in the cache, but its time-to-live has expired, dnsmasq will
+    return the data anyway.
+  * handle removal of whole files or entries within files.
+
+-------------------------------------------------------------------
 Wed Oct 26 09:21:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.87 (bsc#1197872, CVE-2022-0934):
