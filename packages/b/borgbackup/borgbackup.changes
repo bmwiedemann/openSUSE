@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Dec 26 13:49:43 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.2.3
+
+  Fixes:
+   * create: fix --list --dry-run output for directories, #7209
+   * diff/recreate: normalize chunker params before comparing them,
+     #7079
+   * check: fix uninitialised variable if repo is completely empty,
+     #7034
+   * xattrs: improve error handling, #6988
+   * fix args.paths related argparsing, #6994
+   * archive.save(): always use metadata from stats (e.g. nfiles,
+     size, ...), #7072
+   * tar_filter: recognize .tar.zst as zstd, #7093
+   * get_chunker: fix missing sparse=False argument, #7056
+   * file_integrity.py: make sure file_fd is always closed on exit
+   * repository: cleanup(): close segment before unlinking
+   * repository: use os.replace instead of os.rename
+
+  Other changes:
+   * remove python < 3.7 compatibility code
+   * do not use version_tuple placeholder in setuptools_scm
+     template
+   * CI: fix tox4 passenv issue, #7199
+   * vagrant: update to python 3.9.16, use the openbsd 7.1 box
+   * misc. test suite and docs fixes / improvements
+   * remove deprecated --prefix from docs, #7109
+   * Windows: use MSYS2 for Github CI, remove Appveyor CI
+
+  More info:
+   * https://github.com/borgbackup/borg/blob/1.2.3/docs/changes.rst#version-123-2022-12-24
+
+-------------------------------------------------------------------
 Sat Sep 17 12:04:02 UTC 2022 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 1.2.2

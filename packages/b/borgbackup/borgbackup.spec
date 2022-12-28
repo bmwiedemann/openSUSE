@@ -41,7 +41,7 @@
 %bcond_with     borg_sysblake2
 %endif
 Name:           borgbackup
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
