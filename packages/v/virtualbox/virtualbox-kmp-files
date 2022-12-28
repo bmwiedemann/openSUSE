@@ -6,4 +6,4 @@
 %{kernel_module_directory}/%2-%1/extra/vboxnetflt.ko
 %{kernel_module_directory}/%2-%1/extra/vboxsf.ko
 %{kernel_module_directory}/%2-%1/extra/vboxguest.ko
-#%{kernel_module_directory}/%2-%1/extra/vboxvideo.ko
+%{kernel_module_directory}/%2-%1/extra/vboxvideo.ko

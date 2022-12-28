@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 23 23:24:21 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+  To eliminate some VM failures while using the kernel version of vboxvideo.ko for Leap 15.4,
+  the build of this module is turned on again. Fixes boo#1206651 - Leap 15.4 guests running
+  VirtualBox 7.0.4 crash when run on hosts with certain Intel graphics cards
+
+  File "virtualbox-snpritnf-buffer-overflow.patch" deleted. 
+  File "vbox_remove_smp_mflags.patch" deleted.
+  File "fixes_for_leap15.5.patch" added to fix chanes needed for backports to the Leap 15.5 kernel
+-------------------------------------------------------------------
 Wed Nov 30 17:22:42 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 Fixes boo#1205868 - VirtualBox 7.0.4 crashes when machine log is requested from GUI

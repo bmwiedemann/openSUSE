@@ -120,8 +120,6 @@ Patch12:        smap.diff
 Patch13:        gcc5-real-support.patch
 # Patch to build with gnu sed correctly
 Patch14:        virtualbox-sed-params.patch
-# Patch to use snprintf correcty and not overflow dst buffer
-Patch15:        virtualbox-snpritnf-buffer-overflow.patch
 # Patch to add code to explain USB Passthru
 Patch16:        vbox-usb-warning.diff
 # Patch to ensure that VirtualBoxVM is SUID
@@ -130,8 +128,6 @@ Patch17:        vbox-suid-warning.diff
 Patch18:        fix_conflict_between_host_and_guest.patch
 # Fix change in kernel API for ttm_bo_move_memcpy()
 Patch19:        modify_for_4_8_bo_move.patch
-# Remove all mention of _smp_mflags
-Patch20:        vbox_remove_smp_mflags.patch
 # Disable experimental and incomplete CLOUD_NET
 Patch21:        turn_off_cloud_net.patch
 # Fix rpmlint error for script /lib/usr/virtualbox/vboxshell.py
@@ -141,7 +137,6 @@ Patch23:        vbox-python-py310.patch
 # fix build of Python and dev package on openSUSE 11.3 (was vbox-detection.diff)
 # use plain python3 interpreter of the distro (part of former switch_to_pyton3.4+.patch),
 Patch24:        vbox-python-selection.patch
-# Use build parameters to control video driver problems
 Patch25:        remove_vbox_video_build.patch
 # Fixes for modified kernel in Leap 42.3
 Patch26:        VirtualBox-5.2.10-xclient.patch
@@ -160,6 +155,8 @@ Patch32:        handle_gsoap_208103.patch
 # Fix for struct file_operations backport in 15.3
 Patch33:        fixes_for_leap15.3.patch
 Patch34:        fix_kmp_build.patch
+# Fix for backports to 15.5
+Patch35:        fixes_for_leap15.5.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -300,6 +297,25 @@ the terms of the GNU Public License (GPL).
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##########################################
 
 %package qt
@@ -320,6 +336,25 @@ This package contains the code for the GUI used to control VMs.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #########################################
 
 %package websrv
@@ -332,6 +367,25 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -359,6 +413,25 @@ VirtualBox guest addition tools.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 
 %package -n python3-%{name}
@@ -380,6 +453,25 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 
 %package devel
@@ -393,6 +485,25 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -429,6 +540,25 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 
 %package guest-desktop-icons
@@ -440,6 +570,25 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -481,12 +630,10 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
-%patch15 -p1
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
-%patch20 -p1
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
@@ -508,6 +655,9 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch33 -p1
 %endif
 %patch34 -p1
+%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+%patch35 -p1
+%endif
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -1182,10 +1332,10 @@ COMMON_KMK_FLAGS="
 #
 # build kernel modules for guest and host (check novel-kmp package as example)
 # host  modules : vboxdrv,vboxnetflt,vboxnetadp
-# guest modules : vboxguest,vboxsf
+# guest modules : vboxguest,vboxsf,vboxvideo
 echo "build kernel modules"
 for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
-           out/linux.*/release/bin/additions/src/vbox{guest,sf}; do
+           out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -1211,7 +1361,7 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
 		  $PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
-        # copy vboxguest (for guest) module symbols which are used by vboxsf km:
+        # copy vboxguest (for guest) module symbols which are used by vboxsf and vboxvideo km's:
 	if [ "$module_name" = "vboxsf" -o \
 	     "$module_name" = "vboxvideo" ] ; then
 	    cp $PWD/modules_build_dir/$flavor/vboxguest/Module.symvers \
@@ -1228,9 +1378,9 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
-for module_name in vbox{drv,netflt,netadp,guest,sf}
+for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do
-	#and through the all flavors
+	#and through all flavors
 	for flavor in %{flavors_to_build}; do
     	    make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
     	done

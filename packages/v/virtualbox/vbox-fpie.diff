@@ -2,7 +2,7 @@ Index: VirtualBox-7.0.4/Config.kmk
 ===================================================================
 --- VirtualBox-7.0.4.orig/Config.kmk
 +++ VirtualBox-7.0.4/Config.kmk
-@@ -6622,6 +6622,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
+@@ -6674,6 +6674,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
  ifeq ($(KBUILD_TARGET),linux)
  # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
  # TEMPLATE_VBOXR3HARDENEDEXE_LIBS += cap
@@ -12,7 +12,7 @@ Index: VirtualBox-7.0.4/Config.kmk
  endif
  ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBOXR3HARDENEDEXE_SDKS          = VBOX_NTDLL $(TEMPLATE_VBOXR3EXE_SDKS)
-@@ -6654,8 +6657,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
+@@ -6706,8 +6709,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
   TEMPLATE_VBOXR3HARDENEDEXE_VBOX_IMPORT_CHECKER.win = noimports
  else ifn1of ($(KBUILD_TARGET), os2)
   ifneq ($(KBUILD_TYPE),asan) # Keep RPATH in asan builds so we can find libasan.so.X and libubsan.so.Y.

@@ -1,0 +1,83 @@
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_drv.h
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -166,9 +166,9 @@
+ # include <drm/drm_device.h>
+ # include <drm/drm_ioctl.h>
+ # include <drm/drm_fourcc.h>
+-# if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_RANGE(8,7, 8,99) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
+-#  include <drm/drm_irq.h>
+-# endif
++//# if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_RANGE(8,7, 8,99) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
++//#  include <drm/drm_irq.h>
++//# endif
+ # include <drm/drm_vblank.h>
+ #else /* < 5.5.0 || RHEL < 8.3 || SLES < 15-SP3 */
+ # include <drm/drmP.h>
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_drv.c
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -52,13 +52,7 @@
+ 
+ /** Detect whether kernel mode setting is OFF. */
+ #if defined(CONFIG_VGA_CONSOLE)
+-# if RTLNX_VER_MIN(5,17,0)
+ #  define VBOX_VIDEO_NOMODESET() drm_firmware_drivers_only() && vbox_modeset == -1
+-# elif RTLNX_VER_MIN(4,7,0)
+-#  define VBOX_VIDEO_NOMODESET() vgacon_text_force() && vbox_modeset == -1
+-# else /* < 4.7.0 */
+-# define VBOX_VIDEO_NOMODESET() 0
+-# endif /* < 4.7.0 */
+ #else /* !CONFIG_VGA_CONSOLE */
+ # define VBOX_VIDEO_NOMODESET() 0
+ #endif /* !CONFIG_VGA_CONSOLE */
+@@ -372,7 +366,7 @@ static struct drm_driver driver = {
+ #endif
+ 
+ 	.fops = &vbox_fops,
+-#if RTLNX_VER_MAX(5,15,0) && !RTLNX_RHEL_RANGE(8,7, 8,99) && !RTLNX_RHEL_MAJ_PREREQ(9,1)
++#if RTLNX_VER_MIN(5,15,0)
+ 	.irq_handler = vbox_irq_handler,
+ #endif
+ 	.name = DRIVER_NAME,
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_irq.c
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/drm/vbox_irq.c
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_irq.c
+@@ -205,21 +205,11 @@ int vbox_irq_init(struct vbox_private *v
+ {
+ 	INIT_WORK(&vbox->hotplug_work, vbox_hotplug_worker);
+ 	vbox_update_mode_hints(vbox);
+-#if RTLNX_VER_MIN(5,15,0) || RTLNX_RHEL_RANGE(8,7, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,1)
+ 	return request_irq(VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq, vbox_irq_handler, IRQF_SHARED, vbox->dev->driver->name, vbox->dev);
+-#elif RTLNX_VER_MIN(3,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)
+-	return drm_irq_install(vbox->dev, VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq);
+-#else
+-	return drm_irq_install(vbox->dev);
+-#endif
+ }
+ 
+ void vbox_irq_fini(struct vbox_private *vbox)
+ {
+-#if RTLNX_VER_MIN(5,15,0) || RTLNX_RHEL_RANGE(8,7, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,1)
+ 	free_irq(VBOX_DRM_TO_PCI_DEV(vbox->dev)->irq, vbox->dev);
+-#else
+-	drm_irq_uninstall(vbox->dev);
+-#endif
+ 	flush_work(&vbox->hotplug_work);
+ }
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_ttm.c
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/drm/vbox_ttm.c
+@@ -320,7 +320,7 @@ static struct ttm_tt *vbox_ttm_tt_create
+ 	if (ttm_tt_init(tt, bdev, size, page_flags, dummy_read_page)) {
+ #elif RTLNX_VER_MAX(5,11,0) && !RTLNX_RHEL_RANGE(8,5, 8,99)
+ 	if (ttm_tt_init(tt, bo, page_flags)) {
+-#elif RTLNX_VER_MAX(5,19,0)
++#elif RTLNX_VER_MAX(5,14,0)
+ 	if (ttm_tt_init(tt, bo, page_flags, ttm_write_combined)) {
+ #else
+ 	if (ttm_tt_init(tt, bo, page_flags, ttm_write_combined, 0)) {
