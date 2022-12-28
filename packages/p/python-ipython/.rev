@@ -1192,4 +1192,17 @@
 </comment>
     <requestid>1033843</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d033782776df2039d1df6934b1dd4c3c</srcmd5>
+    <version>8.7.0</version>
+    <time>1672221253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.7.0
+  * PR #13834 bump the minimum prompt toolkit to 3.0.11.
+  * IPython shipped with the py.typed marker now, and we are
+    progressively adding more types. PR #13831
+  * PR #13817 add configuration of code blacks formatting.
+- Move to PEP517 build</comment>
+    <requestid>1045320</requestid>
+  </revision>
 </revisionlist>

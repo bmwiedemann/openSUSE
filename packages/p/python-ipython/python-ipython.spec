@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.6.0
+Version:        8.7.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -41,15 +41,16 @@ URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 51.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       (python-prompt_toolkit > 3.0.1 with python-prompt_toolkit < 3.1)
+Requires:       (python-prompt_toolkit >= 3.0.11 with python-prompt_toolkit < 3.1)
 # requires the full stdlib including sqlite3
 Requires:       python >= 3.8
 Requires:       python-backcall
-Requires:       python-black
 Requires:       python-decorator
 Requires:       python-jedi >= 0.16
 Requires:       python-matplotlib-inline
@@ -84,7 +85,6 @@ BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pygments >= 2.4.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
@@ -144,7 +144,7 @@ following main features:
 %autosetup -p1 -n ipython-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %if !%{with test}
 %if %{with ico}
@@ -157,10 +157,12 @@ popd
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/ipython
 %python_clone -a %{buildroot}%{_bindir}/ipython3
+# gh#ipython/ipython#13815
+%python_expand cp %{buildroot}%{_bindir}/ipython{-%{$python_bin_suffix },%{$python_bin_suffix}}
 
 # must clone after copy
 cp %{buildroot}%{_mandir}/man1/ipython{,3}.1
@@ -203,6 +205,8 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/IP
 
 %if %{with test}
 %check
+# check our fix for https://github.com/ipython/ipython/issues/13815
+%python_expand ipython%{$python_bin_suffix} --show-config | grep "Python %{$python_version}"
 export PYTHONPATH=$(pwd)
 %pytest
 %endif
@@ -229,10 +233,11 @@ export PYTHONPATH=$(pwd)
 %doc README.rst docs/source/about/license_and_copyright.rst
 %python_alternative %{_bindir}/ipython
 %python_alternative %{_bindir}/ipython3
+%{_bindir}/ipython%{python_bin_suffix}
 %python_alternative %{_mandir}/man1/ipython.1.gz
 %python_alternative %{_mandir}/man1/ipython3.1.gz
 %{python_sitelib}/IPython/
-%{python_sitelib}/ipython-%{version}-py*.egg-info
+%{python_sitelib}/ipython-%{version}.dist-info
 %{_datadir}/applications/ipython-%{python_bin_suffix}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/IPython-%{python_bin_suffix}.svg
 %if %{with ico}
