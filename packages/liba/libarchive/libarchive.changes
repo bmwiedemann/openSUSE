@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 23 07:57:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.2 (bsc#1205629, CVE-2022-36227)
+  * NULL pointer dereference vulnerability in archive_write.c 
+  * include ZSTD in Windows builds (#1688)
+  * SSL fixes on Windows (#1714, #1723, #1724)
+  * rar5 reader: fix possible garbled output with bsdtar -O (#1745)
+  * mtree reader: support reading mtree files with tabs (#1783)
+  * various small fixes for issues found by CodeQL
+
+-------------------------------------------------------------------
 Fri Apr  8 17:01:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.1:
