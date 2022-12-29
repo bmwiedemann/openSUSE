@@ -22,7 +22,7 @@
 %endif
 
 Name:           doxygen
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed

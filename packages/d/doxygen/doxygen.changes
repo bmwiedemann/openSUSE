@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec 28 10:28:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.6: see https://www.doxygen.nl/manual/changelog.html
+  * Adding Python PEP 526 typing support
+  * issue #2580: Formatting-options for $datetime
+  * issue #9702: Add new command \qualifier to add custom tags that would be
+    similar to "inline" and "static" to some functions or classes [view] and [view]
+  * issue #9549: Feature request: Allow to disable Webkit scrollbar styling [view]
+  * NUM_PROC_THREAD!=1 will now process formulas on multiple threads [view]
+  * Treat __name variable as private and _name variables as protected in Python [view]
+  * Add support for multiple <summary> sections inside <details> [view], [view],
+  * WARN_IF_UNDOC_ENUM_VAL to have warnings for undocumented enum values [view],
+
+-------------------------------------------------------------------
 Fri Nov 18 12:21:44 UTC 2022 - pgajdos@suse.com
 
 - fix bsc#1204558, doxygen fails to build on ppc64le - compiler crash? 
