@@ -3,7 +3,7 @@
     <param name="url">https://github.com/wez/wezterm.git</param>
     <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">af9d0efa178cbc70373995ee99af71b9f392942d</param>
+    <param name="revision">91ea1095c9e532070cef29f4e56a64345b9cf704</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
@@ -21,8 +21,6 @@
      <param name="compression">gz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">wezterm</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
 

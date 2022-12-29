@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 21 12:49:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add shell completions for bash, zsh, and fish.
+- Print version to `.tag` file to let `wezterm -V` or `wezterm --version`
+  command show the version. 
+
+-------------------------------------------------------------------
+Fri Dec 16 15:49:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Separate the multiplexer server from wezterm-gui:
+  Reason -> https://github.com/wez/wezterm/blob/main/README-DISTRO-MAINTAINER.md#binaries
+
+-------------------------------------------------------------------
+Fri Dec 16 13:17:45 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f+g21:
+  * Update of vendored dependencies
+
+-------------------------------------------------------------------
 Mon Dec 05 22:40:02 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20221119.145034.49b9839f+g16:

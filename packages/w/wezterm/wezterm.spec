@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           wezterm
-Version:        20221119.145034.49b9839f+g16
+Version:        20221119.145034.49b9839f+g21
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
@@ -63,11 +63,44 @@ Wezterm is a GPU-accelerated terminal emulator written in Rust. It supports
 ligatures, font fallback and true color. It features dynamic color schemes, hyperlinks,
 and multiplex terminal panes.
 
+%package mux-server
+Summary:        Multiplexer server for %{name}
+Recommends:     %{name} = %{version}
+
+%description mux-server
+Multiplexer server for wezterm for running on a headless system.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish completion script for %{name}.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh completion script for %{name}.
+
 %prep
 %autosetup -a1
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
+printf "%{version}" > .tag
 
 %build
 %if 0%{?suse_version} > 1500
@@ -75,7 +108,7 @@ tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
 %else
 export CARGO_FEATURE_VENDORED=1
 export RUSTFLAGS='%{rustflags}'
-cargo build --offline --release --all-features -j$(nproc)
+cargo build --offline --release --all-features
 %endif
 
 %install
@@ -108,26 +141,35 @@ install -D -m 0644 assets/shell-completion/fish %{buildroot}%{_datadir}/fish/ven
 %doc README.md CONTRIBUTING.md
 %{_bindir}/wezterm
 %{_bindir}/wezterm-gui
-%{_bindir}/wezterm-mux-server
 %{_bindir}/strip-ansi-escapes
 %{_datadir}/terminfo/w/wezterm
 %{_datadir}/applications/org.wezfurlong.wezterm.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.wezfurlong.wezterm.svg
 %{_datadir}/metainfo/org.wezfurlong.wezterm.appdata.xml
 %{_datadir}/nautilus-python/extensions/wezterm-nautilus.py
+%config %{_sysconfdir}/profile.d/wezterm.sh
+
+%files mux-server
+%license LICENSE.md
+%doc README.md CONTRIBUTING.md
+%{_bindir}/wezterm-mux-server
+
+%files bash-completion
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/wezterm
 %{_datadir}/bash-completion/completions/wezterm-gui
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_wezterm
-%{_datadir}/zsh/site-functions/_wezterm-gui
+
+%files fish-completion
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_completions.d
 %{_datadir}/fish/vendor_completions.d/wezterm.fish
 %{_datadir}/fish/vendor_completions.d/wezterm-gui.fish
 
-%config %{_sysconfdir}/profile.d/wezterm.sh
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_wezterm
+%{_datadir}/zsh/site-functions/_wezterm-gui
 
 %changelog
