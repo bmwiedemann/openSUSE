@@ -9608,7 +9608,7 @@ unsorted:
   - libQtOlm3_0 
   - libQtQuick5-32bit: [x86_64] 
   - libQuotient-devel 
-  - libQuotient0_7 
+  - libQuotient0_6 
   - libRaTools0 
   - libRecast1 
   - libRivet-3_1_6 
@@ -44130,6 +44130,10 @@ unsorted:
   - weston-devel 
   - wev 
   - wezterm 
+  - wezterm-bash-completion 
+  - wezterm-fish-completion 
+  - wezterm-mux-server 
+  - wezterm-zsh-completion 
   - wf-recorder 
   - wget2 
   - wgetpaste 
