@@ -610,4 +610,17 @@
     <comment></comment>
     <requestid>1030868</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0553a3050e82fbae991b31219a06d19d</srcmd5>
+    <version>1.26.13</version>
+    <time>1672315716</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.13
+  * Deprecated the ``HTTPResponse.getheaders()`` and ``HTTPResponse.getheader()`` methods.
+  * Fixed an issue where parsing a URL with leading zeroes in the port would be rejected
+    even when the port number after removing the zeroes was valid.
+  * Fixed a deprecation warning when using cryptography v39.0.0.
+  * Removed the ``&lt;4`` in the ``Requires-Python`` packaging metadata field. (forwarded request 1039590 from glaubitz)</comment>
+    <requestid>1039604</requestid>
+  </revision>
 </revisionlist>
