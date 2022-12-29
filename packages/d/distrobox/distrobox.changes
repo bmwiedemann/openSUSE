@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Dec 28 22:03:04 UTC 2022 - Ayush Kumar <ayush06feb@gmail.com>
+
+- Update to latest version (1.4.2.1). Some changes:
+  * all: fix setting up default images and names
+  * compatibility: add gentoo docker image
+  * compatibility: change debian 8 image
+  * completion: Remove shebangs from bash completions
+  * completion: add compatibility list flag, add image name
+    autocompletion
+  * create/enter/export: Add home prefix
+  * create: Fix using --home with space in path
+  * create: use --entrypoint to override entrypoint defined by
+    image
+  * distrobox: remove trap from the wrapper
+  * docs: Add resource limitation tips 
+  * docs: Fix example configuration file
+  * docs: Update handler function to support bash scripts
+  * enter/export: handle quotes in arguments in a better way
+  * enter: exclude LANG environment variables
+  * enter: remove detach-keys, work on #398
+  * export/enter: inject container ID at enter-time, in order to be
+    used in export
+  * export: fix variable declaration
+  * export: look at global user services while trying to export a
+    service
+  * export: use realpath on icons
+  * init: Add init and pre-init hook defaults as supported config
+    options
+  * init: add missing findmnt in OpenSUSE
+  * init: better systemd unit cleanup
+  * init: copy skel files only if using custom home
+  * init: fix overriding of SHELL at each start, override default
+    SHELL only the first time
+  * init: fix sudoers spam (missing " in check)
+  * init: fix void-linux package incompatibility error
+  * init: fix vte installation; add --noreplace to prevent repeated
+    builds
+  * init: integrate with kerberos host only if it is installed on
+    the host.
+  * init: skip external mounts when searching for sockets
+  * init: specify package for gentoo
+  * init: use container's path for SHELL instead of host's one
+  * init: use findmnt instead of mountpoint, fixing compatibility
+    with old distributions
+  * install-podman: Fix cni_plugin_dirs
+  * install: do not use scraping, use fixed version
+  * main: Do not open manpager automatically
+  Full list available at: https://github.com/89luca89/distrobox/releases/tag/1.4.2.1 
+
+-------------------------------------------------------------------
 Thu Nov 17 13:49:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend bash-completion subpackage: this triggers
