@@ -85,7 +85,25 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 cp doc/api.html doc/libgnomesu.css %{buildroot}%{_docdir}/%{name}
 # We want only PAM backend.
 rm -f %{buildroot}%{_libexecdir}/%{name}/gnomesu-backend
+%if 0%{?suse_version} > 1500
+install -d %{buildroot}/%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/gnomesu-pam %{buildroot}%{_pam_vendordir}
+%endif
 %fdupes %{buildroot}
+
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/gnomesu-pam ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/gnomesu-pam ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %set_permissions %{_libexecdir}/%{name}/gnomesu-pam-backend
@@ -104,7 +122,11 @@ rm -f %{buildroot}%{_libexecdir}/%{name}/gnomesu-backend
 # NOTE: Original package has 6755.
 # We have only 4755 and for easy and secure profile.
 %verify (not mode) %attr (4755,root,root) %{_libexecdir}/%{name}/gnomesu-pam-backend
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/gnomesu-pam
+%else
 %config %{_sysconfdir}/pam.d/gnomesu-pam
+%endif
 
 %files -n libgnomesu0
 %{_libdir}/libgnomesu.so.*
