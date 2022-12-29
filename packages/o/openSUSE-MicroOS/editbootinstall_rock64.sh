@@ -4,7 +4,7 @@ set -euxo pipefail
 diskname=$1
 devname="$2"
 loopname="${devname%*p?}"
-loopdev=/dev/${loopname#/dev/mapper/*}
+loopdev=${loopname#/dev/mapper/*}
 
 echo "Installing idbloader..."
 

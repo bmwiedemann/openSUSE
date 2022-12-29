@@ -4,7 +4,7 @@ set -euxo pipefail
 diskname=$1
 devname="$2"
 loopname="${devname%*p?}"
-loopdev=/dev/${loopname#/dev/mapper/*}
+loopdev=${loopname#/dev/mapper/*}
 
 #==========================================
 # The GPT spans the first 33 sectors, but we need to write our

@@ -542,4 +542,11 @@
     <comment></comment>
     <requestid>1033073</requestid>
   </revision>
+  <revision rev="57" vrev="57">
+    <srcmd5>4c1abaa51357ee67d94fd82fe43f9fd1</srcmd5>
+    <version>16.0.0</version>
+    <time>1672304295</time>
+    <user>dimstar_suse</user>
+    <comment>- editbootinstall_*.sh: fix loopdev to work with new kiwi.</comment>
+  </revision>
 </revisionlist>

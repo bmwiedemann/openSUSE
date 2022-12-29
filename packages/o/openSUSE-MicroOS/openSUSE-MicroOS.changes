@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 29 08:57:55 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- editbootinstall_*.sh: fix loopdev to work with new kiwi.
+
+-------------------------------------------------------------------
 Tue Nov  1 13:00:31 UTC 2022 - Moritz Volz <momivolz@gmail.com>
 
 - Add SelfInstall flavor without container runtime
