@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Dec 23 18:15:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Try again with 0.22.0 and a fixed httpcore
+
+-------------------------------------------------------------------
+Mon Dec 19 20:55:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- go back to 0.21.0 as it breaks httpcore
+
+-------------------------------------------------------------------
+Wed Dec  7 10:18:12 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.22.0:
+  * MultiError has been deprecated in favor of the standard BaseExceptionGroup
+    (introduced in PEP 654). On Python versions below 3.11, this exception and
+    its derivative ExceptionGroup are provided by the backport. Trio still
+    raises MultiError, but it has been refactored into a subclass of
+    BaseExceptionGroup which users should catch instead of MultiError. Uses of
+    the MultiError.filter() class method should be replaced with
+    BaseExceptionGroup.split(). Uses of the MultiError.catch() class method
+    should be replaced with either except* clauses (on Python 3.11+) or the
+    exceptiongroup.catch() context manager provided by the backport.
+    See the updated documentation for details.
+  # Features
+  * Added support for Datagram TLS, for secure communication over UDP.
+    Currently requires PyOpenSSL. (#2010)
+
+-------------------------------------------------------------------
 Mon Nov 21 16:04:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix rpmlint error python-tests-in-package.
