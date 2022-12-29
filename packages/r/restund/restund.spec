@@ -1,6 +1,7 @@
 #
 # spec file for package restund
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define restund_user restund
 %define restund_group restund
 %define restund_home %{_localstatedir}/lib/restund
@@ -27,6 +29,7 @@ Group:          Productivity/Telephony/Servers
 URL:            http://www.creytiv.com/restund.html
 Source:         http://www.creytiv.com/pub/restund-%{version}.tar.gz
 Source1:        %{name}.service
+Source2:        re.mk
 BuildRequires:  mysql-devel
 BuildRequires:  re-devel
 BuildRequires:  systemd-rpm-macros
@@ -57,11 +60,13 @@ sed -e 's|@$(CC)|$(CC)|g' \
 sed -e 's|/usr/local/lib|%{_libdir}|g' \
     -e 's|%{_sysconfdir}/restund.auth|%{_sysconfdir}/restund/restund.auth|g' \
     -i etc/restund.conf
+mkdir -p ../re/mk
+cp %{SOURCE2} ../re/mk
 
 %build
 export CFLAGS="%optflags -fPIE"
 export EXTRA_LFLAGS="-pie"
-%make_build
+%make_build BUILD=$(pwd)
 
 %install
 make DESTDIR=%{buildroot} LIBDIR=%{_libdir}  install
