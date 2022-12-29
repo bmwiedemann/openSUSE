@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 28 10:36:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.6:
+  * full changes: https://github.com/Andrettin/Wyrmgus/compare/v5.3.5...v5.3.6
+  * Added support for unit types to have different construction animations
+    depending on whether they are built on top of something or not
+
+-------------------------------------------------------------------
 Sun May  1 10:39:45 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.3.5
