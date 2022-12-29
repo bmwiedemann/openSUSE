@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Dec 24 10:41:38 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to release 1.7.0
+  - New APIs:
+    tep_find_function_info() - Returns not only the name of a function from its
+                               address, but also where the function starts and
+			       its size.
+
+    tep_kbuffer() - Returns the kbuffer parser for a tep handle.
+  - Now handles cpumask() macro parsing.
+  - Add SAME_AS_HOST for endian and long size to kbuffer_alloc()
+  - Handle dynamic fields that are not arrays.
+  - Allow function parameters to have operators.
+  - sizeof() parsing for some basic types.
+  - Added man pages for the kbuffer API.
+  - print_field_raw() terminates with '\0'
+  - Fix uninitialized variables
+  - Fix a "check after derer" coverity flaw
+  - Fix testing the dereference pointer instead of the pointer for NULL.
+  - Fix double free
+- Build project with Meson
+  * add 0001-libtraceevent-Add-initial-support-for-meson.patch
+
+-------------------------------------------------------------------
 Mon Aug 29 09:56:33 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.2

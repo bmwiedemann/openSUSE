@@ -22,7 +22,7 @@
 %define sodname %{dname}%{sonum}
 
 Name:           libtraceevent
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Linux kernel trace event library
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -30,9 +30,12 @@ Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/
 Source:         https://git.kernel.org/pub/scm/libs/libtrace/%{name}.git/snapshot/%{name}-%{version}.tar.gz
 Source9:        %name-rpmlintrc
+Patch1:         0001-libtraceevent-Add-initial-support-for-meson.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
+BuildRequires:  meson
+BuildRequires:  source-highlight
 BuildRequires:  xmlto
 
 %description
@@ -67,15 +70,15 @@ The package provides header and other needed development files for the library %
 %prep
 %autosetup -p1
 
-%build
-%make_build -j1 CFLAGS="%{optflags}" prefix=%{_prefix} libdir=%{_libdir} plugin_dir=%{_libdir}/%{sodname}/plugins all doc
+%meson \
+    -Ddocs-build=true \
+    -Dhtmldir=%{_docdir}/%{name} \
+    -Dplugindir=%{_libdir}/%{sodname}/plugins
+%meson_build
 
 %install
-%make_install prefix=%{_prefix} libdir=%{_libdir} \
-	pkgconfig_dir=%{_libdir}/pkgconfig \
-	plugin_dir=%{_libdir}/%{sodname}/plugins \
-	htmldir=%{_docdir}/%{name} pdfdir=%{_docdir}/%{name} doc-install
-rm %{buildroot}/%{_libdir}/%{name}.a
+%meson_install
+
 %fdupes %buildroot/%_prefix
 
 ls -lR %{buildroot}/%{_libdir}
@@ -89,7 +92,8 @@ ls -lR %{buildroot}/%{_libdir}
 %files -n %{soname}-plugins
 %dir %{_libdir}/%{sodname}
 %dir %{_libdir}/%{sodname}/plugins
-%{_libdir}/%{sodname}/plugins/*.so
+%{_libdir}/%{sodname}/plugins/*.so*
+%{_libdir}/%{sodname}/plugins/libtraceevent-dynamic-list
 
 %files devel
 %dir %{_includedir}/%{dname}
