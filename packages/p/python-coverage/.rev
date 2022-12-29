@@ -510,4 +510,12 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
   .. _issue 1449: https://github.com/nedbat/coveragepy/issues/1449</comment>
     <requestid>1007714</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3272f65a7f0c89919a28337e2a905c81</srcmd5>
+    <version>7.0.1</version>
+    <time>1672315728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045546</requestid>
+  </revision>
 </revisionlist>

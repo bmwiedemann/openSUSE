@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Dec 26 12:21:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.1
+  * When checking if a file mapping resolved to a file that exists,
+    we weren’t considering files in .whl files. This is now fixed,
+    closing issue 1511.
+  * File pattern rules were too strict, forbidding plus signs and
+    curly braces in directory and file names. This is now fixed,
+    closing issue 1513.
+  * Unusual Unicode or control characters in source files could
+    prevent reporting. This is now fixed, closing issue 1512.
+  * The PyPy wheel now installs on PyPy 3.7, 3.8, and 3.9, closing
+    issue 1510.
+- Release 7.0.0
+  * Changes to file pattern matching, which might require updating
+    your configuration:
+    - Previously, * would incorrectly match directory separators,
+      making precise matching difficult. This is now fixed, closing
+      issue 1407.
+    - Now ** matches any number of nested directories, including
+      none.
+  * Improvements to combining data files when using the [run]
+    relative_files setting, which might require updating your
+    configuration:
+    - During coverage combine, relative file paths are implicitly
+      combined without needing a [paths] configuration setting.
+      This also fixed issue 991.
+    - A [paths] setting like */foo will now match foo/bar.py so
+      that relative file paths can be combined more easily.
+    - The [run] relative_files setting is properly interpreted in
+      more places, fixing issue 1280.
+  * When remapping file paths with [paths], a path will be remapped
+    only if the resulting path exists. The documentation has long
+    said the prefix had to exist, but it was never enforced. This
+    fixes issue 608, improves issue 649, and closes issue 757.
+  * Reporting operations now implicitly use the [paths] setting to
+    remap file paths within a single data file. Combining multiple
+    files still requires the coverage combine step, but this
+    simplifies some single-file situations. Closes issue 1212 and
+    issue 713.
+  * The coverage report command now has a --format= option. The
+    original style is now --format=text, and is the default.
+    - Using --format=markdown will write the table in Markdown
+      format, thanks to Steve Oswald, closing issue 1418.
+    - Using --format=total will write a single total number to the
+      output. This can be useful for making badges or writing
+      status updates.
+  * Combining data files with coverage combine now hashes the data
+    files to skip files that add no new information. This can
+    reduce the time needed. Many details affect the speed-up, but
+    for coverage.py’s own test suite, combining is about 40%
+    faster. Closes issue 1483.
+  * When searching for completely un-executed files, coverage.py
+    uses the presence of __init__.py files to determine which
+    directories have source that could have been imported. However,
+    implicit namespace packages don’t require __init__.py. A new
+    setting [report] include_namespace_packages tells coverage.py
+    to consider these directories during reporting. Thanks to Felix
+    Horvat for the contribution. Closes issue 1383 and issue 1024.
+  * Fixed environment variable expansion in pyproject.toml files.
+    It was overly broad, causing errors outside of coverage.py
+    settings, as described in issue 1481 and issue 1345. This is
+    now fixed, but in rare cases will require changing your
+    pyproject.toml to quote non-string values that use environment
+    substitution.
+  * An empty file has a coverage total of 100%, but used to fail
+    with --fail-under. This has been fixed, closing issue 1470.
+  * The text report table no longer writes out two separator lines
+    if there are no files listed in the table. One is plenty.
+  * Fixed a mis-measurement of a strange use of wildcard
+    alternatives in match/case statements, closing issue 1421.
+  * Fixed internal logic that prevented coverage.py from running on
+    implementations other than CPython or PyPy (issue 1474).
+  * The deprecated [run] note setting has been completely removed.
+- Make fit for devel:languages:python:backports
+  * Explicit usage of python3 in specfile
+
+-------------------------------------------------------------------
 Mon Oct  3 15:48:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.5.0:
