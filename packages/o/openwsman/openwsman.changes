@@ -1,10 +1,47 @@
 -------------------------------------------------------------------
+Wed Dec 28 14:42:02 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 2.7.2
+  * Security
+    - call setgroups before setuid or setgid (kkaempf)
+    - harden systemd service (https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort)
+  * Bugfixes
+    - wsman-win-client-transport: initialize certificate pointer (Alexander Usyskin)
+    - iniparser: fix buffer size (Alexander Usyskin)
+    - wsman-win-client-transport: plug leak in error path (Alexander Usyskin)
+    - memory.c: fix memory cleanup (Alexander Usyskin)
+    - Improve handling of HTTP 401 Unauthorized (Vitezslav Crhonek)
+    - Fix serialization tests (kkaempf)
+    - Fix Ruby bindings warnings (kkaempf)
+    - Fix Ruby plugin loading test (kkaempf)
+    - Fix rpm packaging (kkaempf)
+    - Allow to run tests from 'build' directory (kkaempf)
+    - Add Python XML test (kkaempf)
+    - Enable CUNIT tests (kkaempf)
+
+- drop openwsman-initscript.patch and harden_openwsman.service.patch
+  (both upstream)
+
+- add openwsman-redhat-initscript.patch
+
+-------------------------------------------------------------------
 Thu Apr 28 00:10:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libwsman3.x86_64: E:
   shlib-policy-name-error SONAME: libwsman.so.1, expected package
   suffix: 1" (packaging bug introduced by the update to v2.6.1 on
   Aug 28 2015)
+
+-------------------------------------------------------------------
+Thu Apr  7 16:25:55 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 2.7.1
+  Bugfix release
+  * msvc build fixes (Alexander Usyskin)
+  * cleanup passwords after use (Alexander Usyskin)
+  * drop RANDFILE in owsmangencert.h (kkaempf)
+  * fix potential NULL pointer dereference (Alexander Usyskin)
+  * MinGW build enablement (Bastian Germann)
 
 -------------------------------------------------------------------
 Wed Oct 13 12:23:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>

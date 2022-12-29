@@ -36,6 +36,7 @@
 
 Name:           openwsman
 BuildRequires:  cmake >= 2.6
+BuildRequires:  cunit-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 BuildRequires:  pam-devel
@@ -142,7 +143,7 @@ BuildRequires:  firewall-macros
 %endif
 
 Requires(pre):  sed coreutils grep /bin/hostname
-Version:        2.7.0
+Version:        2.7.2
 Release:        0
 # Mandriva:
 # Release %%mkrel 1
@@ -154,8 +155,7 @@ Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.rpmlintrc
 Source21:       %{name}.pam.rh
 Source22:       %{name}.pam
-Patch1:         openwsman-initscript.patch
-Patch2:         harden_openwsman.service.patch
+Patch1:         openwsman-redhat-initscript.patch
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %define pamfile %{S:21}
 %else
@@ -361,6 +361,7 @@ Requires:       java
 Requires:       libwsman1 = %{version}
 Summary:        Java bindings for OpenWSMAN client API
 Group:          System/Management
+BuildArch:      noarch
 
 %description java
 This package provides Java bindings to access the OpenWSMAN client API.
@@ -374,6 +375,7 @@ This package provides Java bindings to access the OpenWSMAN client API.
 Summary:        Windows Remote Shell
 Group:          System/Management
 Requires:       openwsman-ruby = %{version}
+BuildArch:      noarch
 
 %description -n winrs
 This is a command line tool for the Windows Remote Shell protocol.
@@ -386,7 +388,6 @@ It can be used to send shell commands to remote Windows hosts.
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %patch1 -p1
 %endif
-%patch2 -p1
 
 %build
 rm -rf build
@@ -426,6 +427,7 @@ cmake \
   -DEXPLICIT_TARGET="$EXPLICIT_TARGET" \
   -DLIB=%{_lib} \
   -DBUILD_RUBY_GEM=no \
+  -DBUILD_CUNIT_TESTS=on \
   ..
 
 make
@@ -528,13 +530,13 @@ rm -f /var/log/wsmand.log
 %license COPYING
 %{_libdir}/libwsman.so.*
 %{_libdir}/libwsman_curl_client_transport.so.*
-%dir %{_sysconfdir}/openwsman
 
 %files -n libwsman_client5
 %defattr(-,root,root)
 %doc AUTHORS
 %license COPYING
 %{_libdir}/libwsman_client.so.*
+%dir %{_sysconfdir}/openwsman
 %config(noreplace) %{_sysconfdir}/openwsman/openwsman_client.conf
 
 %files -n libwsman-devel
@@ -594,6 +596,7 @@ rm -f /var/log/wsmand.log
 
 %files server
 %defattr(-,root,root)
+%dir %{_sysconfdir}/openwsman
 %config(noreplace) %{_sysconfdir}/openwsman/openwsman.conf
 %config(noreplace) %{_sysconfdir}/openwsman/ssleay.cnf
 %attr(0755,root,root) %{_sysconfdir}/openwsman/owsmangencert.sh
