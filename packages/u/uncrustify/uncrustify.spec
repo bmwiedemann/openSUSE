@@ -17,7 +17,7 @@
 
 
 Name:           uncrustify
-Version:        0.75.1
+Version:        0.76.0
 Release:        0
 Summary:        Source Code Beautifier for C, C++, C#, ObjectiveC, D
 License:        GPL-2.0-or-later

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:56:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.76.0:
+     Added   : nl_collapse_empty_body_functions     Apr 29 2022
+     Added   : set_numbering_for_html_output        May 29 2022
+     Added   : mod_infinite_loop                    Jun 22 2022
+     Added   : mod_short_int                        Jun 28 2022
+     Added   : mod_long_int                         Jun 28 2022
+     Added   : mod_unsigned_int                     Jun 28 2022
+     Added   : mod_signed_int                       Jun 28 2022
+     Added   : mod_int_prefer_int_on_left           Jul  6 2022
+     Added   : mod_int_long                         Jul  6 2022
+     Added   : mod_int_signed                       Jul  6 2022
+     Added   : mod_int_unsigned                     Jul  6 2022
+     Added   : mod_int_short                        Jul  6 2022
+     Added   : nl_oc_msg_args_min_params            Jul  9 2022
+     Added   : pp_space_after                       Jul 14 2022
+     Added   : pp_space_before                      Jul 14 2022
+     Removed : pp_space                             Jul 14 2022
+     Added   : nl_throw_expr                        Jul 19 2022
+     Added   : mod_paren_on_throw                   Jul 19 2022
+     Added   : debug_sort_the_tracks                Aug  2 2022
+     Removed : pp_space_before                      Aug  6 2022
+     Added   : nl_var_def_blk_end_func_top          Aug 11 2022
+     Removed : nl_func_var_def_blk                  Aug 11 2022
+     Added   : pp_indent_with_tabs                  Sep  6 2022
+     Added   : pp_multiline_define_body_indent      Sep 15 2022
+     Added   : nl_oc_msg_args_max_code_width        Sep 20 2022
+     Added   : debug_decode_the_flags               Oct  9 2022
+
+-------------------------------------------------------------------
 Tue May 17 09:33:09 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.75.1
