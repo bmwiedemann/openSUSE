@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  2 13:02:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- update to 1.26.13
+  * Deprecated the ``HTTPResponse.getheaders()`` and ``HTTPResponse.getheader()`` methods.
+  * Fixed an issue where parsing a URL with leading zeroes in the port would be rejected
+    even when the port number after removing the zeroes was valid.
+  * Fixed a deprecation warning when using cryptography v39.0.0.
+  * Removed the ``<4`` in the ``Requires-Python`` packaging metadata field.
+
+-------------------------------------------------------------------
 Sun Oct 23 10:39:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix pycache when undbundling six
