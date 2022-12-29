@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:38:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * Update configuration file documentation
+    Rename .tiorc to .tioconfig, tiorc to config, etc.
+  * Add support for $HOME/.tioconfig
+    Replaces what used to be $HOME/.tiorc
+  * Fix double prefix key regression
+  * Better error checking in config file, rename the file
+    Accept "true", "enable", "on", "yes", "1" as true values, their
+    counterparts as false ones. Check integer values for errors and range.
+    Warn about ignored (e.g. misspelled) options.
+    Check getenv() return value for NULL.
+    Rename "tiorc" to "config", as it's a static INI file, not an executable
+    "run commands".
+
+-------------------------------------------------------------------
 Sun Dec  4 14:05:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4:
