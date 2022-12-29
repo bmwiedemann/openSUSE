@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 27 21:16:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.21.2:
+  * Increased internal label size
+  * Fix undefined behavior in library code
+  * Ensure that calls to fopen() and stat() can handle largefiles
+- add multibuild definition
+
+-------------------------------------------------------------------
 Fri Jul 17 08:44:57 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.21.1:

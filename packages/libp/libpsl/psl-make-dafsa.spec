@@ -1,7 +1,7 @@
 #
 # spec file for package psl-make-dafsa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 rpm@cicku.me
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 Name:           psl-make-dafsa
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        Tool to create a binary DAFSA from a Public Suffix List
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://rockdaboot.github.io/libpsl
+URL:            https://rockdaboot.github.io/libpsl
 Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/libpsl-%{version}.tar.gz
 Requires:       python3-base
 BuildArch:      noarch

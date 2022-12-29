@@ -169,4 +169,12 @@ update descriptions and categories</comment>
     <comment>libpsl 0.21.1</comment>
     <requestid>821819</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a3b56a3c8602a1f0bd6441cdbc21e8a0</srcmd5>
+    <version>0.21.2</version>
+    <time>1672315732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045599</requestid>
+  </revision>
 </revisionlist>

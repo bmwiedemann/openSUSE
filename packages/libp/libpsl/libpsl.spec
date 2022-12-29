@@ -1,7 +1,7 @@
 #
 # spec file for package libpsl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 rpm@cicku.me
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %define somajor 5
 Name:           libpsl
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        C library for the Publix Suffix List
-License:        MIT AND MPL-2.0 AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT AND MPL-2.0
 Group:          Development/Libraries/C and C++
-Url:            https://rockdaboot.github.io/libpsl
+URL:            https://rockdaboot.github.io/libpsl
 Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1000:     baselibs.conf
 BuildRequires:  libidn2-devel >= 0.14
@@ -101,7 +101,7 @@ sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/psl-make-dafsa
 	--disable-static \
 	--with-psl-file=%{_datadir}/publicsuffix/public_suffix_list.dat \
 	--with-psl-distfile=%{_datadir}/publicsuffix/public_suffix_list.dafsa
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -111,7 +111,7 @@ make DESTDIR=%{buildroot} install-man
 rm %{buildroot}%{_mandir}/man1/psl-make-dafsa.1
 
 %check
-make %{?_smp_mflags} check || (cat tests/test-suite.log; exit 42)
+%make_build check || (cat tests/test-suite.log; exit 42)
 
 %post -n %{name}%{somajor} -p /sbin/ldconfig
 %postun -n %{name}%{somajor} -p /sbin/ldconfig
