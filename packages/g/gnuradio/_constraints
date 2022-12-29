@@ -2,22 +2,13 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">12</size>
+      <size unit="G">14</size>
     </disk>
     <memoryperjob>
-      <size unit="M">2000</size>
+      <size unit="M">1000</size>
     </memoryperjob>
+    <memory>
+      <size unit="G">4</size>
+    </memory>
   </hardware>
-  <overwrite>
-    <conditions>
-      <arch>armv6l</arch>
-      <arch>armv7l</arch>
-      <arch>aarch64</arch>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="G">8</size>
-      </memory>
-    </hardware>
-  </overwrite>
 </constraints>

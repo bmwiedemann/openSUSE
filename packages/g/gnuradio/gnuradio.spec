@@ -56,6 +56,7 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  libthrift-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  orc
 BuildRequires:  pkgconfig
@@ -182,6 +183,8 @@ This package contains some examples of using GNU Radio.
 find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;
 
 %build
+%limit_build -m 1500
+
 %define __builder ninja
 %cmake \
   -DENABLE_GRC=ON \

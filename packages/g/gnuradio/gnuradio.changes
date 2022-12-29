@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 28 10:04:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Sanitize _constraints, 4GByte of memory is sufficient. Also,
+  2GByte memoryperjob rejects too many workers, so combine it
+  with %limit_build.
+
+-------------------------------------------------------------------
 Mon Dec 19 19:00:26 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.10.5.0
