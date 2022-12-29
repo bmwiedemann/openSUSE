@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 27 23:10:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- explicitly require ourselves in :test flavor
+
+-------------------------------------------------------------------
+Sun Dec 25 12:36:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- contourpy is a now a runtime requirement of matplotlib: avoid
+  buildcycle by _multibuild
+
+-------------------------------------------------------------------
 Mon Oct 31 11:40:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v1.0.6

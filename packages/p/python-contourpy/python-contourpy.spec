@@ -1,5 +1,5 @@
 #
-# spec file for package python-contourpy
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,7 +16,16 @@
 #
 
 
-Name:           python-contourpy
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-contourpy%{psuffix}
 Version:        1.0.6
 Release:        0
 Summary:        Python library for calculating contours of 2D quadrilateral grids
@@ -33,12 +42,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.16
 Suggests:       python-bokeh
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module contourpy = %{version}}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module pytest}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -54,20 +64,28 @@ to include Matplotlib as a dependency.
 %setup -q -n contourpy-%{version}
 
 %build
+%if !%{with test}
 export CFLAGS="%{optflags}"
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if %{with test}
 %check
 %pytest_arch
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitearch}/contourpy
 %{python_sitearch}/contourpy-%{version}*-info
+%endif
 
 %changelog
