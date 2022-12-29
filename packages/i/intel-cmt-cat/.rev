@@ -98,4 +98,12 @@ D    fixsymlink.patch</comment>
     <comment></comment>
     <requestid>828923</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1f7e832d86b92ee05122b955065e2dc2</srcmd5>
+    <version>4.4.1</version>
+    <time>1672315756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045630</requestid>
+  </revision>
 </revisionlist>

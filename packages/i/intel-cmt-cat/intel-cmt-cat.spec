@@ -1,7 +1,7 @@
 #
 # spec file for package intel-cmt-cat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2016 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,13 +22,13 @@
 %define libpqosMajor 4
 %global make_flags EXTRA_CFLAGS="%{optflags}" SHARED=y PREFIX=%{buildroot}/%{_prefix} MAN_DIR=%{buildroot}/%{_mandir}/man8 LIB_INSTALL_DIR=%{buildroot}%{_libdir}/
 Name:           intel-cmt-cat
-Version:        4.0.0
+Version:        4.4.1
 Release:        0
 Summary:        Command line interface to CMT, MBM, CAT and CDP technologies
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/01org/%{name}
-Source0:        https://github.com/intel/intel-cmt-cat/archive/v4.0.0.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/intel/intel-cmt-cat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         fix-bad-env-shebang.patch
 BuildRequires:  doxygen
 ExclusiveArch:  x86_64 %{ix86}
@@ -87,6 +87,8 @@ make %{make_flags} NOLDCONFIG=y install
 %files
 %doc ChangeLog
 %license LICENSE
+%{_bindir}/membw
+%{_mandir}/man8/membw.8%{?ext_man}
 %{_bindir}/pqos
 %{_mandir}/man8/pqos.8%{?ext_man}
 %{_bindir}/rdtset

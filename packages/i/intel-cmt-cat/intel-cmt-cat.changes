@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Dec 23 19:57:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * 1. General:
+        - Bug fixes
+- update to 4.4.0:
+  * 1. Library:
+        - Added LLC references monitoring event
+        - Added uncore monitoring support
+  * 2. PQoS
+        - Added LLC references monitoring event
+        - Added uncore monitoring support
+        - Removed cpu topology limits
+  * 3. App QoS
+        - Added L2 CAT support
+  * 4. General:
+        - Added scan-build static analysis
+        - Bug fixes
+- update to 4.3.0:
+  * 1. Library:
+        - Added Elkhart Lake and Tiger Lake support
+        - Improved CPU topology detection for OS interface
+        - Automatic interface detection
+  * 2. PQoS
+        - Improved library interface selection
+  * 3. rdtset
+        - Improved library interface selection
+  * 4. membw
+        - Added membw to the package
+  * 5. General:
+        - Bug fixes
+- update to 4.2.0:
+  * 1. App QoS:
+        - Added mTLS support
+        - Extended capability information
+  * Support for running AppQoS in docker container
+  * 2. General:
+- update to 4.1.0:
+  * 1. AppQoS:
+        - Added OS interface support
+        - Added MBA CTRL support
+  * 2. PQoS:
+        - Added option to display PQoS tool version
+  * 3. General:
+        - Bug fixes
+
+-------------------------------------------------------------------
 Sun Aug 16 13:51:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.0:
