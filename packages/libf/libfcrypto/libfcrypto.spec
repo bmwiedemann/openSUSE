@@ -18,19 +18,21 @@
 
 Name:           libfcrypto
 %define lname	libfcrypto1
-Version:        20210415
+Version:        20221228
 Release:        0
 Summary:        Library for encryption formats
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libfcrypto
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libfcrypto/releases/download/%version/libfcrypto-alpha-%version.tar.gz.asc
+Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20201121
+BuildRequires:  pkgconfig(libcerror) >= 20220101
 
 %description
 libfcrypto is a library for encryption formats.

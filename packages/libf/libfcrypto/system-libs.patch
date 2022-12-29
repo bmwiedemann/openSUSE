@@ -9,19 +9,19 @@ them as system libs.
  configure.ac |    1 -
  2 files changed, 3 deletions(-)
 
-Index: libfcrypto/Makefile.am
+Index: libfcrypto-20221228/Makefile.am
 ===================================================================
---- libfcrypto.orig/Makefile.am
-+++ libfcrypto/Makefile.am
+--- libfcrypto-20221228.orig/Makefile.am
++++ libfcrypto-20221228/Makefile.am
 @@ -3,7 +3,6 @@ ACLOCAL_AMFLAGS = -I m4
  SUBDIRS = \
  	include \
  	common \
 -	libcerror \
  	libfcrypto \
- 	po \
- 	manuals \
-@@ -53,7 +52,6 @@ lib: library
+ 	pyfcrypto \
+ 	pyfcrypto-python2 \
+@@ -61,7 +60,6 @@ lib: library
  
  library:
  	(cd $(srcdir)/common && $(MAKE) $(AM_MAKEFLAGS))
@@ -29,15 +29,15 @@ Index: libfcrypto/Makefile.am
  	(cd $(srcdir)/libfcrypto && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/po && $(MAKE) $(AM_MAKEFLAGS))
  
-Index: libfcrypto/configure.ac
+Index: libfcrypto-20221228/configure.ac
 ===================================================================
---- libfcrypto.orig/configure.ac
-+++ libfcrypto/configure.ac
-@@ -91,7 +91,6 @@ dnl Generate Makefiles
+--- libfcrypto-20221228.orig/configure.ac
++++ libfcrypto-20221228/configure.ac
+@@ -108,7 +108,6 @@ dnl Generate Makefiles
  AC_CONFIG_FILES([Makefile])
  AC_CONFIG_FILES([include/Makefile])
  AC_CONFIG_FILES([common/Makefile])
 -AC_CONFIG_FILES([libcerror/Makefile])
  AC_CONFIG_FILES([libfcrypto/Makefile])
- AC_CONFIG_FILES([po/Makefile.in])
- AC_CONFIG_FILES([po/Makevars])
+ AC_CONFIG_FILES([pyfcrypto/Makefile])
+ AC_CONFIG_FILES([pyfcrypto-python2/Makefile])
