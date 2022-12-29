@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1044004</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e87778db2bc775c308f4ade93d0bc26d</srcmd5>
+    <version>0.6.11</version>
+    <time>1672315781</time>
+    <user>dimstar_suse</user>
+    <comment>Rollback to version 0.6, because version 0.7 is not compatible yet with quaternion and breaks his build and use.</comment>
+    <requestid>1045705</requestid>
+  </revision>
 </revisionlist>

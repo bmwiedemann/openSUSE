@@ -1,7 +1,7 @@
 #
 # spec file for package libQuotient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define soversion 0_7
-%define sonum 0.7
+%define soversion 0_6
+%define sonum 0.6
 %bcond_with e2ee
 Name:           libQuotient
-Version:        0.7.0
+Version:        0.6.11
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
@@ -30,13 +30,10 @@ Source0:        https://github.com/quotient-im/%{name}/archive/%{version}/%{name
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.9
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.9
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Network)
 %if %{with e2ee}
 BuildRequires:  cmake(Olm)
 %endif
