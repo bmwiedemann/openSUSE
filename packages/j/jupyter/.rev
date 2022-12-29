@@ -80,4 +80,14 @@
 </comment>
     <requestid>945107</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>27279c94070c6a1377bc8b9e3afb33b7</srcmd5>
+    <version>1.0.0</version>
+    <time>1672315720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20221227
+  * Fix %jupyter_move_config
+</comment>
+    <requestid>1045480</requestid>
+  </revision>
 </revisionlist>

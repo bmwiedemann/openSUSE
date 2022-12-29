@@ -6,8 +6,8 @@
 
 %jupyter_move_config \
   if [ "$(dirname %{_prefix}/etc/jupyter/)" != "$(dirname %{_jupyter_confdir})" ]; then \
-    mkdir -p %{buildroot}%{_distconfdir} \
-    mv %{buildroot}%{_prefix}/etc/jupyter %{buildroot}%{_jupyter_confdir} \
-    rm -d %{buildroot}%{_prefix}/etc \
+    mkdir -p %{buildroot}%{_jupyter_confdir} \
+    mv %{buildroot}%{_prefix}/etc/jupyter/* %{buildroot}%{_jupyter_confdir} \
+    rm -d %{buildroot}%{_prefix}/etc/jupyter %{buildroot}%{_prefix}/etc \
   fi \
 %{nil}
