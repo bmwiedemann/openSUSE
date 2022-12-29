@@ -712,6 +712,8 @@ crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197
 crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197C*
 crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197b
 crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197bC*
+crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197c-mxl
+crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197c-mxlC*
 crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197d
 crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip197dC*
 crypto_safexcel: of:N*T*Cinside-secure,safexcel-eip97
@@ -4863,6 +4865,7 @@ rtl8xxxu: usb:v0BDAp818Cd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8724d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApB720d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDApF179d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0DF6p0052d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0DF6p005Cd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0DF6p0061d*dc*dsc*dp*icFFiscFFipFFin*

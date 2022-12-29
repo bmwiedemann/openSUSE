@@ -189,4 +189,5 @@ rvu_cptpf:	platform
 amphion:	platform
 cs35l41_hda:	sound		snd-hda-scodec-cs35l41-i2c snd-hda-scodec-cs35l41-spi
 mtk-sof:	sound		snd-sof-mt8186 snd-sof-mt8195
+nxp-sr1xx:	platform
 ast:		platform
