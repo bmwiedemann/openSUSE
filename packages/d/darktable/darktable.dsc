@@ -4,10 +4,10 @@ Section: graphics
 Priority: optional
 Binary: darktable darktable-tools-basecurve darktable-tools-noise
 Architecture: any-amd64 any-arm64
-Version: 4.0.1-1.1
+Version: 4.2.0-1.1
 Homepage: http://www.darktable.org/
-#               libavif-dev (>= 0.8.2),
-Build-Depends: cmake,
+#               libavif-dev (>= 0.9.1),
+Build-Depends: cmake (>= 3.18),
                debhelper (>= 10),
                intltool,
                iso-codes,
@@ -25,7 +25,7 @@ Build-Depends: cmake,
                libgmic-dev,
                libgphoto2-dev,
                libgraphicsmagick1-dev,
-               libgtk-3-dev (>= 3.22),
+               libgtk-3-dev (>= 3.24.5),
                libheif-dev,
                libjpeg-dev,
                libjson-glib-dev,
@@ -44,8 +44,10 @@ Build-Depends: cmake,
                libsoup2.4-dev,
                libsqlite3-dev,
                libtiff-dev,
+               libtinfo-dev,
                libwebp-dev,
                xsltproc
 Standards-Version: 3.9.8
 Package-List:
  darktable deb graphics optional arch=any-amd64,any-arm64
+DEBTRANSFORM-RELEASE: 1

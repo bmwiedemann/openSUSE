@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec 22 14:14:41 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch rpmbuild from GraphicsMagick to ImageMagick
+
+-------------------------------------------------------------------
+Wed Dec 21 12:24:28 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 4.2.0
+  https://github.com/darktable-org/darktable/releases/tag/release-4.2.0
+- New BuildRequires:
+  pkgconfig(libheif)
+  pkgconfig(libjxl)
+  pkgconfig(tinfo)
+
+-------------------------------------------------------------------
 Mon Sep 12 07:56:36 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 4.0.1
@@ -49,7 +64,7 @@ Mon Jan  3 07:38:51 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 -------------------------------------------------------------------
 Fri Dec 31 23:23:43 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- add SDL2 BR 
+- add SDL2 BR
 
 -------------------------------------------------------------------
 Fri Dec 24 21:47:56 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>

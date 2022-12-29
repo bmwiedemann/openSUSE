@@ -36,12 +36,6 @@
 %bcond_with    cmake_macros
 %endif
 
-%if 0%{?suse_version} || 0%{?fedora}
-%bcond_without cmake_macros
-%else
-%bcond_with    cmake_macros
-%endif
-
 %if 0%{?is_opensuse} || 0%{?fedora}
 %bcond_without osmgpsmap
 %bcond_without flickcurl
@@ -58,10 +52,22 @@
 %bcond_with    avif
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?fedora} >= 37
+%bcond_without jxl
+%else
+%bcond_with    jxl
+%endif
+
 %if 0%{?suse_version} >= 1550
 %bcond_without gmic
 %else
 %bcond_with    gmic
+%endif
+
+%if 0%{?suse_version}
+%bcond_without libheif
+%else
+%bcond_with    libheif
 %endif
 
 %ifarch ppc64le
@@ -103,10 +109,10 @@
 %endif
 
 Name:           darktable
-Version:        4.0.1
+Version:        4.2.0
 Release:        0
-%define pkg_name darktable
-%define pkg_version %{version}
+%global pkg_name darktable
+%global pkg_version %{version}
 URL:            http://www.darktable.org/
 Source0:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz.asc
@@ -121,7 +127,7 @@ Patch0:         darktable-old-glib.patch
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
 BuildRequires:  clang
-BuildRequires:  cmake >= 3.4
+BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  llvm-devel
 %if 0%{?fedora}
@@ -158,7 +164,7 @@ BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(pugixml)
 #
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(GraphicsMagick)
+BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(colord)
@@ -171,13 +177,19 @@ BuildRequires:  pkgconfig(flickcurl)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.5
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(lensfun)
+BuildRequires:  pkgconfig(lensfun) >= 0.3.2
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgphoto2)
+%if %{with libheif}
+BuildRequires:  pkgconfig(libheif)
+%endif
+%if %{with jxl}
+BuildRequires:  pkgconfig(libjxl) >= 0.7.0
+%endif
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libwebp)
@@ -187,6 +199,7 @@ BuildRequires:  pkgconfig(osmgpsmap-1.0)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(tinfo)
 %if %{with opencl}
 BuildRequires:  opencl-headers
 %endif
@@ -199,7 +212,7 @@ BuildRequires:  gmic-devel
 # /gmic
 %endif
 %if %{with avif}
-BuildRequires:  libavif-devel
+BuildRequires:  libavif-devel >= 0.9.0
 %endif
 BuildRequires:  portmidi-devel
 

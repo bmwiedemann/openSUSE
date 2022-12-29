@@ -1503,4 +1503,21 @@ Togan
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1004637</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>bee56bb22e44097d66fe4423d9d58ed4</srcmd5>
+    <version>4.2.0</version>
+    <time>1672315775</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch rpmbuild from GraphicsMagick to ImageMagick
+
+- Update to version 4.2.0
+  https://github.com/darktable-org/darktable/releases/tag/release-4.2.0
+- New BuildRequires:
+  pkgconfig(libheif)
+  pkgconfig(libjxl)
+  pkgconfig(tinfo)
+
+- add SDL2 BR</comment>
+    <requestid>1045657</requestid>
+  </revision>
 </revisionlist>
