@@ -1218,4 +1218,12 @@ Now with build cycle removed.</comment>
   * new TLD .ישראל and SLDs for Israel by ISOC-IL (#1595)</comment>
     <requestid>1003463</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>57a0ee8a54b81a504f66c2b00dbabbb3</srcmd5>
+    <version>20221129</version>
+    <time>1672315735</time>
+    <user>dimstar_suse</user>
+    <comment>Now no longer breaks libpsl with SR#1045599</comment>
+    <requestid>1045608</requestid>
+  </revision>
 </revisionlist>

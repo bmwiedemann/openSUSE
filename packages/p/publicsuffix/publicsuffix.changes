@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 30 11:06:36 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20221129:
+  * util: gTLD data autopull updates for 2022-11-29T15:14:18 UTC (#1658)
+  * Add activetrail.biz (#1655)
+  * Add `cf-ipfs.com`, `cloudflare-ipfs.com`, and `r2.dev` (#1582)
+  * Added mytabit.co.il; mytabit.com; (#1499)
+  * removing tbits.me from public suffix list (#1642)
+
+-------------------------------------------------------------------
+Mon Nov 14 15:26:42 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20221107:
+  * Add myamaze.net (#1602)
+  * Remove gwiddle.co.uk (#1638)
+  * Removing domain that expired and is not used (#1643)
+  * util: gTLD data autopull updates for 2022-11-02T15:17:39 UTC (#1641)
+  * Fix typos in pull request template (#1639)
+  * util: gTLD data autopull updates for 2022-10-29T15:16:24 UTC (#1636)
+  * util: gTLD data autopull updates for 2022-10-20T15:22:14 UTC (#1632)
+  * util: gTLD data autopull updates for 2022-10-15T15:17:50 UTC (#1631)
+  * Use CentralNic model for Amazon suffixes (#1629)
+  * Names.of.London is no longer operating the service (#1630)
+  * Domains from simplesite.com used for  subdomain style webhosting of individual customer websites. (#1623)
+  * Add Fastmail user content domain user.fm (#1601)
+  * util: gTLD data autopull updates for 2022-10-11T15:20:32 UTC (#1626)
+  * util: gTLD data autopull updates for 2022-10-07T15:19:56 UTC (#1624)
+  * Add *.on-acorn.io (#1578)
+  * Update existing Replit entries, add `firewalledreplit.co` (#1568)
+  * Add 2.azurestaticapps.net DNS suffix (#1604)
+  * Update Pull Request Form to address #1619
+  * Add rules for AWS Cloud9 (#1590)
+  * util: gTLD data autopull updates for 2022-09-15T15:17:33 UTC (#1615)
+
+-------------------------------------------------------------------
 Wed Sep 14 07:47:24 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220903:
