@@ -1,7 +1,7 @@
 #
 # spec file for package crosstool-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           crosstool-ng
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Toolchain building framework
 License:        GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-or-later
 Group:          Development/Tools/Building
-Url:            http://crosstool-ng.org
+URL:            http://crosstool-ng.org
 Source0:        http://crosstool-ng.org/download/crosstool-ng/%{name}-%{version}.tar.xz
 Source1:        http://crosstool-ng.org/download/crosstool-ng/%{name}-%{version}.tar.xz.sig
 # Alexey Neyman's public key. See http://crosstool-ng.github.io/docs/install/.
