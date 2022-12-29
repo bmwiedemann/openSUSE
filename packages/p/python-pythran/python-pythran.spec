@@ -127,7 +127,7 @@ sed -i -e 's/-O0/-O1/g' -e 's/-Werror/-w/g' pythran/tests/__init__.py
 export CFLAGS="%{optflags}"
 # crashes the xdist workers
 donttest="test_operator_intersection"
-# gh#serge-sans-paille/pythran#2044
+# gh#serge-sans-paille/pythran#2044 NOT FIXED by gh#serge-sans-paille/pythran#2046
 donttest="$donttest or test_toolchain or test_cli"
 %pytest -n auto -k "not ($donttest)" -m "not module"
 %endif

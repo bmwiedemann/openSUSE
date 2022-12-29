@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 25 11:01:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert. 2046-fix-cli-doc-test.patch did not fix the tests.
+  gh#serge-sans-paille/pythran#2046
+
+-------------------------------------------------------------------
+Sat Dec 17 14:32:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 2046-fix-cli-doc-test.patch to fix failing tests
+  (gh#serge-sans-paille/pythran#2046).
+
+-------------------------------------------------------------------
 Fri Nov 25 01:54:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Skip also failing test_toolchain and test_cli
