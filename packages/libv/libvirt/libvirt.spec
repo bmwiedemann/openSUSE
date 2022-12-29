@@ -326,6 +326,7 @@ Patch207:       lxc-wait-after-eth-del.patch
 Patch208:       suse-libxl-disable-autoballoon.patch
 Patch209:       suse-xen-ovmf-paths.patch
 Patch210:       virt-create-rootfs.patch
+Patch211:       suse-fix-lxc-container-init.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

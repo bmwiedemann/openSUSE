@@ -4202,4 +4202,12 @@ StandardGroups in rpmlint package.
     f81ee7b5-tests-Fix-libxlxml2domconfigtest.patch</comment>
     <requestid>1040374</requestid>
   </revision>
+  <revision rev="366" vrev="2">
+    <srcmd5>5a0cb8232d6dcbb3cbf6e8871eb9d782</srcmd5>
+    <version>8.10.0</version>
+    <time>1672315730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045553</requestid>
+  </revision>
 </revisionlist>

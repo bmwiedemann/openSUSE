@@ -1,0 +1,82 @@
+From 5152717ba78312ec5415ba19ed83bb313b7670f8 Mon Sep 17 00:00:00 2001
+From: Eric van Blokland <mail@ericvanblokland.nl>
+Date: Wed, 7 Dec 2022 21:45:11 +0100
+Subject: [PATCH] Fix lxc container initialization with systemd and hybrid
+ cgroups
+
+In an environment with hybrid cgroups and systemd the v2 backend is not available.
+This causes a few checks to fail during container initialization.
+
+To work around this we retrieve the lxc control process child process pid (the
+process that is registered with machined) and perform the checks using that pid.
+
+Signed-off-by: Eric van Blokland <mail@ericvanblokland.nl>
+---
+ src/lxc/lxc_process.c | 33 +++++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
+
+Index: libvirt-8.10.0/src/lxc/lxc_process.c
+===================================================================
+--- libvirt-8.10.0.orig/src/lxc/lxc_process.c
++++ libvirt-8.10.0/src/lxc/lxc_process.c
+@@ -49,6 +49,9 @@
+ #include "virprocess.h"
+ #include "netdev_bandwidth_conf.h"
+ #include "virutil.h"
++#include "virstring.h"
++#include "vircgroupbackend.h"
++#include "virsystemd.h"
+ 
+ #define VIR_FROM_THIS VIR_FROM_LXC
+ 
+@@ -1200,6 +1203,11 @@ int virLXCProcessStart(virLXCDriver * dr
+     int status;
+     g_autofree char *pidfile = NULL;
+     unsigned int stopFlags = 0;
++    virCgroupBackend **cgroupBackends = virCgroupBackendGetAll();
++    g_autofree char *pidFile = NULL;
++    g_autofree char *pidStr = NULL;
++    g_auto(GStrv) pidList = NULL;
++    pid_t checkPid = 0;
+ 
+     if (virCgroupNewSelf(&selfcgroup) < 0)
+         return -1;
+@@ -1463,7 +1471,28 @@ int virLXCProcessStart(virLXCDriver * dr
+         goto cleanup;
+     }
+ 
+-    priv->machineName = virLXCDomainGetMachineName(vm->def, vm->pid);
++    /* In an environment with hybrid cgroups and systemd the v2 backend is not available.
++     * Systemd however depends on V2 for unit naming. This causes the next two checks to fail.
++     * To work around this issue we retrieve the actual container pid and check on that instead. */
++    if (virSystemdHasMachined() == 0 && cgroupBackends[VIR_CGROUP_BACKEND_TYPE_V2]->available() == false) {
++        pidFile = g_strdup_printf("/proc/%lld/task/%lld/children", (long long int)vm->pid, (long long int)vm->pid);
++        if (virFileReadAll(pidFile, 1024 * 1024, &pidStr) < 0)
++            goto cleanup;
++
++        virTrimSpaces(pidStr, NULL);
++
++        pidList = g_strsplit(pidStr, " ", 2);
++        if (!pidList)
++            goto cleanup;
++
++        if (virStrToLong_i(pidList[0], NULL, 10, &checkPid) < 0)
++            goto cleanup;
++
++    } else {
++        checkPid = vm->pid;
++    }
++
++    priv->machineName = virLXCDomainGetMachineName(vm->def, checkPid);
+     if (!priv->machineName)
+         goto cleanup;
+ 
+@@ -1472,7 +1501,7 @@ int virLXCProcessStart(virLXCDriver * dr
+      * more reliable way to kill everything off if something
+      * goes wrong from here onwards ... */
+     if (virCgroupNewDetectMachine(vm->def->name, "lxc",
+-                                  vm->pid, -1, priv->machineName,
++                                  checkPid, -1, priv->machineName,
+                                   &priv->cgroup) < 0)
+         goto cleanup;
+ 

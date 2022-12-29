@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 27 17:49:38 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Fix lxc container initialization with systemd and hybrid cgroups
+  suse-fix-lxc-container-init.patch
+  boo#1183247
+
+-------------------------------------------------------------------
 Thu Dec  1 18:26:28 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.10.0
