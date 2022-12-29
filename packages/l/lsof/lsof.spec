@@ -17,14 +17,13 @@
 
 
 Name:           lsof
-Version:        4.96.4
+Version:        4.96.5
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
 Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         format.patch
 BuildRequires:  groff
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)

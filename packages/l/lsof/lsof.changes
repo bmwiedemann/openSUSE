@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:08:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.96.5:
+  * Avoid C89-only constructs is Configure
+- drop format.patch, now upstream
+
+-------------------------------------------------------------------
 Tue Nov 22 14:08:48 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - format.patch: Use correct scanf/printf format for uint64_t
