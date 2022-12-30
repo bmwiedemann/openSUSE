@@ -852,4 +852,12 @@
     <comment>Update to 5.15.11 (forwarded request 1008306 from cgiboudeaux)</comment>
     <requestid>1008339</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>4d597dfa24882fb3598c31fa901d5af3</srcmd5>
+    <version>5.15.12</version>
+    <time>1672394900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045739</requestid>
+  </revision>
 </revisionlist>

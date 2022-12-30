@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Dec 29 15:26:07 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.12:
+  * Bump version to 5.15.12
+  * Update Chromium:
+  * Bump V8_PATCH_LEVEL
+  * Fixup for patch for CVE-2022-3200 on OpenSuse 15.1
+  * Fixup the patch for CVE-2022-3200 on 87-based / 5.15
+  * [Backport] CVE-2022-3038: Use after free in Network Service
+  * [Backport] CVE-2022-3040: Use after free in Layout
+  * [Backport] CVE-2022-3041: Use after free in WebSQL
+  * [Backport] CVE-2022-3046: Use after free in Browser Tag
+  * [Backport] CVE-2022-3075: Insufficient data validation in Mojo
+  * [Backport] CVE-2022-3196: Use after free in PDF
+  * [Backport] CVE-2022-3197: Use after free in PDF
+  * [Backport] CVE-2022-3198: Use after free in PDF
+  * [Backport] CVE-2022-3199: Use after free in Frames.
+  * [Backport] CVE-2022-3200: Heap buffer overflow in Internals
+  * [Backport] CVE-2022-3201: Insufficient validation of untrusted
+    input in Developer Tools (1/2)
+  * [Backport] CVE-2022-3201: Insufficient validation of untrusted
+    input in Developer Tools (2/2)
+  * [Backport] CVE-2022-3304: Use after free in CSS
+  * [Backport] CVE-2022-3370: Use after free in Custom Elements
+  * [Backport] CVE-2022-3373: Out of bounds write in V8
+  * [Backport] CVE-2022-3445: Use after free in Skia.
+  * [Backport] CVE-2022-3446 and CVE-2022-35737
+  * [Backport] CVE-2022-3885: Use after free in V8
+  * [Backport] CVE-2022-3887: Use after free in Web Workers
+  * [Backport] CVE-2022-3889: Type Confusion in V8
+  * [Backport] CVE-2022-3890: Heap buffer overflow in Crashpad
+  * [Backport] CVE-2022-4174: Type Confusion in V8
+  * [Backport] CVE-2022-4180: Use after free in Mojo
+  * [Backport] CVE-2022-4181: Use after free in Forms
+  * [Backport] CVE-2022-4262: Type Confusion in V8
+  * [Backport] Security bug 1356308
+  * [Backport] Security bug 1378916
+  * [Backport] Security bugs 1346938 and 1338114
+
+-------------------------------------------------------------------
 Wed Oct 05 17:28:40 UTC 2022 - christophe@krop.fr
 
 - Update to version 5.15.11:

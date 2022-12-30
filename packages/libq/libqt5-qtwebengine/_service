@@ -1,11 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
-   <param name="version">5.15.11</param>
+   <param name="version">5.15.12</param>
    <param name="url">git://code.qt.io/qt/qtwebengine.git</param>
    <param name="scm">git</param>
    <param name="filename">qtwebengine-everywhere-src</param>
-   <param name="revision">v5.15.11-lts</param>
+   <param name="revision">v5.15.12-lts</param>
   </service>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">disable</param>
