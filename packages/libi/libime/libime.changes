@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  8 21:07:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.16:
+  * Use our own hasher for std::string because boost stream may not
+    use a fixed implementation for string hash
+
+-------------------------------------------------------------------
 Sun Nov 20 11:16:37 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 1.0.15
