@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 29 10:36:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.1:
+  + Add GPU symbol.
+  + Change layout of GUIDs from PreferenceGroup to ExpanderRow.
+  + Fix compile failure with -Dsystemd=false.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 13:04:14 UTC 2022 - dead_mozay@opensuse.org
 
 - Update to version 43.0:

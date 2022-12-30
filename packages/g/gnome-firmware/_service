@@ -5,7 +5,7 @@
     <param name="url">https://gitlab.gnome.org/World/gnome-firmware.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">refs/tags/43.0</param>
+    <param name="revision">refs/tags/43.1</param>
   </service>
   <service mode="manual" name="set_version"/>
   <service name="tar" mode="buildtime"/>
