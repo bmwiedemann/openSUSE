@@ -22,7 +22,7 @@
 %endif
 
 %define libname lib%{name}
-%define soname 406
+%define soname 407
 # disabled by default as many fail
 %bcond_with    tests
 %bcond_without gapi
@@ -30,7 +30,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.6.0
+Version:        4.7.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -40,8 +40,6 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Several modules from the opencv_contrib package
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM FFmpeg 5 include fix
-Patch0:         opencv-ffmpeg5.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
