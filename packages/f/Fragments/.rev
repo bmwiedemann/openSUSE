@@ -63,4 +63,27 @@
     <comment>Automatic update of vendored dependencies (forwarded request 983794 from firstyear)</comment>
     <requestid>983862</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>31726fb2d237b9508dc445de469f4dd7</srcmd5>
+    <version>2.1</version>
+    <time>1672399714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1:
+  + Allow changing the location of a single torrent
+  + New menu option to resume all torrents
+  + Torrent errors are now displayed instead of ignoring them
+    silently
+  + Display message when the configured download/incomplete
+    directory is not available
+  + Transmission daemon is only started when necessary, and no
+    longer runs continuously in the background
+  + Application window can now be closed with CTRL+W
+  + Fixed issue that already added magnet links were not recognised
+  + Fixed a crash related to the &quot;Automatically Start Torrents&quot;
+    setting
+  + User interface improvements by using new Libadwaita widgets.
+  + Updated translations.
+- Replace rust-packaging with cargo-packaging BuildRequires. (forwarded request 1045730 from iznogood)</comment>
+    <requestid>1045799</requestid>
+  </revision>
 </revisionlist>

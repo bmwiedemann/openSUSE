@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           Fragments
-Version:        2.0.2
+Version:        2.1
 Release:        0
 Summary:        A GTK4 BitTorrent Client
 License:        GPL-3.0-only
@@ -33,6 +33,7 @@ Source3:        cargo_config
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  git
@@ -40,7 +41,6 @@ BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  openssl-devel >= 0.9.7
 BuildRequires:  pkgconfig
-BuildRequires:  rust-packaging
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66

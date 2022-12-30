@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec 28 21:55:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.1:
+  + Allow changing the location of a single torrent
+  + New menu option to resume all torrents
+  + Torrent errors are now displayed instead of ignoring them
+    silently
+  + Display message when the configured download/incomplete
+    directory is not available
+  + Transmission daemon is only started when necessary, and no
+    longer runs continuously in the background
+  + Application window can now be closed with CTRL+W
+  + Fixed issue that already added magnet links were not recognised
+  + Fixed a crash related to the "Automatically Start Torrents"
+    setting
+  + User interface improvements by using new Libadwaita widgets.
+  + Updated translations.
+- Replace rust-packaging with cargo-packaging BuildRequires.
+
+-------------------------------------------------------------------
 Mon Jun 20 03:30:38 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
