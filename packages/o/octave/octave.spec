@@ -34,8 +34,13 @@
 %bcond_without java
 
 # Image processing library
+%if 0%{suse_version} >= 1550
+# Default variant - ImageMagick
+%bcond_without imagemagick
+%else
 # Default variant - GraphicsMagick
 %bcond_with imagemagick
+%endif
 
 # Sound IO
 %bcond_without sound
@@ -86,7 +91,7 @@ BuildRequires:  lapack-devel
 # required for help/doc called from the tests
 BuildRequires:  makeinfo
 %if %{with imagemagick}
-BuildRequires:  pkgconfig(ImageMagick++)
+BuildRequires:  pkgconfig(Magick++)
 %else
 BuildRequires:  pkgconfig(GraphicsMagick++)
 %endif
