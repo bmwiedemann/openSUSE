@@ -20,7 +20,7 @@
 %define         libname lib%{name}%{sover}
 %define         libchains lib%{name}-chains%{sover}
 Name:           zvbi
-Version:        0.2.38
+Version:        0.2.39
 Release:        0
 Summary:        Linux "VBI proxy"
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

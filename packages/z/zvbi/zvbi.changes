@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:35:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.39:
+  * Updates to remove compiler warnings during tests.
+  * Allow autogen.sh and configure to run separately by default.
+  * Add Georgian language translation po files.
+
+-------------------------------------------------------------------
 Fri Dec  2 22:29:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.38:
