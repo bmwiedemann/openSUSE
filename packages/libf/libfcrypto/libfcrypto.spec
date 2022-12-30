@@ -18,7 +18,7 @@
 
 Name:           libfcrypto
 %define lname	libfcrypto1
-Version:        20221228
+Version:        20221229
 Release:        0
 Summary:        Library for encryption formats
 License:        LGPL-3.0-or-later
