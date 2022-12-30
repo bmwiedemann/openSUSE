@@ -225,4 +225,16 @@
 </comment>
     <requestid>1043766</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b87ab70b8426ab4bb66eaacfd851681c</srcmd5>
+    <version>3.1.1</version>
+    <time>1672394933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Fixed some memory leaks.
+  * Improved error handling.
+  * Use secure functions instead of standard ones .
+</comment>
+    <requestid>1045797</requestid>
+  </revision>
 </revisionlist>

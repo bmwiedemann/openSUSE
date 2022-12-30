@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 30 07:06:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.1:
+  * Fixed some memory leaks.
+  * Improved error handling.
+  * Use secure functions instead of standard ones .
+
+-------------------------------------------------------------------
 Mon Dec 19 13:24:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.0:
