@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 28 09:46:54 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221228.326c28fd:
+  * Dev: report: 'crm report' to collect journal.log in microseconds
+  * Dev: doc: Add deprecated note for 'crm configure erase'
+  * Dev: ui_configure: Deprecate configure erase sub-command
+
+-------------------------------------------------------------------
+Wed Dec 28 04:00:43 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221228.7c16362c:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: ui_cluster: Improve cluster start/stop INFO
+
+-------------------------------------------------------------------
 Tue Dec 27 08:22:09 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221227.bd7d326e:
