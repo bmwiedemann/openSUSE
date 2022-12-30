@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec 29 19:13:15 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to prevent a designer-qt5 crash (boo#1206680):
+  * 0001-Fix-designer-plugin-crash.patch
+
+-------------------------------------------------------------------
 Fri Dec  2 12:25:10 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.0
