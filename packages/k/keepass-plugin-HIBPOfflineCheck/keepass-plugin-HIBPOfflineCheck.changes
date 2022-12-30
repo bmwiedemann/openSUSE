@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Wed Aug 31 19:11:02 UTC 2022 - Matthias Bach <marix@marix.org>
+Fri Dec 30 10:40:46 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7.9
+
+- Update to version 1.7.9
+  * Fixed some incorrect results for online mode.
+
+-------------------------------------------------------------------
+Wed Aug 31 19:11:02 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7.8
 
 - Update to version 1.7.8
   * No longer display "HIBP API error" for some passwords in online

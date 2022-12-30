@@ -19,7 +19,7 @@
 
 %define _plugin_name HIBPOfflineCheck
 Name:           keepass-plugin-%{_plugin_name}
-Version:        1.7.8
+Version:        1.7.9
 Release:        0
 Summary:        A KeePass plugin for Have I been pwned
 License:        GPL-3.0-only

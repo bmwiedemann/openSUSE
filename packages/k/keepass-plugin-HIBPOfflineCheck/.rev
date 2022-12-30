@@ -44,4 +44,13 @@
     mode</comment>
     <requestid>1000515</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>87ff457b71436cbe9bffddbb24266f4e</srcmd5>
+    <version>1.7.9</version>
+    <time>1672402874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.9
+  * Fixed some incorrect results for online mode.</comment>
+    <requestid>1045816</requestid>
+  </revision>
 </revisionlist>
