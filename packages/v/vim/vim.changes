@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Dec 28 17:06:17 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1107, fixes the following problems
+  * build fails if the compiler doesn't allow for a declaration right after
+  "case".
+  * ASAN complains about NULL argument.
+  * Can add text property with negative ID before virtual text property.
+  * With the +vartabs feature indent folding may use wrong 'tabstop'.
+  * Leaking memory when defining a user command fails.
+  * The "kitty" terminfo entry is not widespread, resulting in the kitty
+  terminal not working properly.
+  * Using "->" with split lines does not always work.
+  * Some jsonc files are not recognized.
+  * Empty and comment lines in a class cause an error.
+  * Code handling low level MS-Windows events cannot be tested.
+  * Compiler warns for uninitialized variable.
+  * Display wrong in Windows terminal after exiting Vim.
+  * Autocommand test sometimes fails.
+  * Clang warns for unused variable.
+  * unnessary assignment
+  * FHIR Shorthand files are not recognized.
+  * Assignment to non-existing member causes a crash. (Yegappan Lakshmanan)
+  * Search error message doesn't show used pattern.
+  * Using freed memory of object member. (Yegappan Lakshmanan)
+  * Compiler warning when HAS_MESSAGE_WINDOW is not defined.
+  * Using freed memory when declaration fails. (Yegappan Lakshmanan)
+  * Reallocating hashtab when the size didn't change.
+  * Tests are failing.
+  * Code uses too much indent.
+  * Trying to resize a hashtab may cause a problem.
+
+-------------------------------------------------------------------
 Mon Dec 19 10:39:20 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1075, fixes the following problems
