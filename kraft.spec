@@ -20,7 +20,7 @@
 %bcond_without akonadi
 %bcond_with qpdfview
 Name:           kraft
-Version:        0.98
+Version:        1.0
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(Qt5Core) >= 5.5.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
@@ -95,18 +96,17 @@ chmod 755 %{buildroot}%{_datadir}/kraft/tools/erml2pdf.py
 %endif
 %{_datadir}/applications/de.volle_kraft_voraus.kraft.desktop
 %{_datadir}/metainfo/de.volle_kraft_voraus.kraft.appdata.xml
-%{_datadir}/icons/*/*/*/*.png
-%{_datadir}/icons/*/*/*/*.svg
 %{_datadir}/config.kcfg/*
 %{_datadir}/kraft/
 %{_datadir}/kxmlgui5/kraft/kraftui.rc
 %{_datadir}/kxmlgui5/kraft/katalogview.rc
+%{_datadir}/icons/hicolor/scalable/apps/kraft.svg
 %lang(de) %{_datadir}/locale/de/LC_MESSAGES/kraft.mo
 %lang(nl) %{_datadir}/locale/nl/LC_MESSAGES/kraft.mo
 
 %dir %{_datadir}/config.kcfg
 %dir %{_datadir}/kxmlgui5/kraft
-%doc AUTHORS README.md Changes.txt Releasenotes.txt TODO
+%doc AUTHORS README.md INSTALL.md Changes.txt Releasenotes.txt TODO
 %license COPYING
 
 %changelog
