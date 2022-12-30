@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 22 19:19:28 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to version 1.2.0
+  * Add the ability to add test databases.
+  * Improve url parsing and encoding.
+  * Fix missing parameter conn_health_check in check function.
+- Version 1.1.0
+  * Option for connection health checks parameter.
+  * Update supported version python 3.11.
+  * Code changes, various improvments.
+  * Add project links to setup.py
+
+-------------------------------------------------------------------
+Sun Jul 31 14:37:49 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 1.0.0 
+  * Add support for cockroachdb.
+  * Add support for the offical MSSQL connector.
+  * Update License to be compatible with Jazzband.
+  * Remove support for Python < 3.5 including Python 2.7
+  * Update source code to Black format.
+  * Update CI using pre-commit
+
+-------------------------------------------------------------------
 Wed Nov 18 10:15:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

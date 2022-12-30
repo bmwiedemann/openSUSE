@@ -1,7 +1,7 @@
 #
 # spec file for package python-dj-database-url
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dj-database-url
-Version:        0.5.0
+Version:        1.2.0
 Release:        0
 Summary:        Utility to use database URLs in Django applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/kennethreitz/dj-database-url
-Source:         https://github.com/kennethreitz/dj-database-url/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest}
+URL:            https://github.com/jazzband/dj-database-url
+Source:         https://files.pythonhosted.org/packages/source/d/dj-database-url/dj-database-url-%{version}.tar.gz
+BuildRequires:  %{python_module Django > 3.2}
+BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Django > 3.2
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typing_extensions >= 3.10
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,18 +60,17 @@ Oracle, Oracle (GIS), and SQLite.
 %setup -q -n dj-database-url-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/dj_database_url.py
+%{python_sitelib}/dj_database_url-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
