@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 28 16:50:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.15.1:
+  * Add API support for waiting on network in an event driven
+    manner
+  * OpenPGP API extension and fixes
+- lincense updated to LGPL-2.1-or-later
+
+-------------------------------------------------------------------
 Sat Oct 15 19:32:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.14.5:

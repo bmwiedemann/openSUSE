@@ -37,10 +37,10 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.14.5
+Version:        1.15.1
 Release:        0
 Summary:        Repodata downloading library
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 
 URL:            https://github.com/rpm-software-management/librepo
