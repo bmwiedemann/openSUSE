@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Dec 22 07:08:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.1.0:
+  User space-side features and APIs:
+  * user-space ring buffer (BPF_MAP_TYPE_USER_RINGBUF) support;
+  * new documentation page listing all recognized SEC() definitions;
+  * BTF dedup improvements:
+  * unambiguous fwd declaration resolution for structs and unions;
+  * better handling of some corner cases with identical structs and arrays;
+  * mixed enum and enum64 forward declaration resolution logic;
+  * bpf_{link,btf,pro,mapg}_get_fd_by_id_opts() and bpf_get_fd_by_id_opts()
+    APIs;
+  * libbpf supports loading raw BTF for BPF CO-RE from known search paths;
+  * support for new cgroup local storage (BPF_MAP_TYPE_CGRP_STORAGE);
+  * libbpf will only add BPF_F_MMAPABLE flag for data maps with global
+    (i.e., non-static) vars;
+  * latest Linux UAPI headers with lots of changes synced into
+    include/uapi/linux.
+  BPF-side features and APIs;
+  * BPF_PROG2() macro added that supports struct-by-value arguments;
+  * new BPF helpers:
+  * bpf_user_ringbuf_drain();
+  * cgrp_storage_get() and cgrp_storage_delete().
+  Bug fixes
+  * better handling of padding corner cases;
+  * btf__align_of() determines packed structs better now;
+  * improved handling of enums of non-standard sizes;
+  * USDT spec parsing improvements;
+  * overflow handling fixes for ringbufs;
+  * Makefile fixes to support cross-compilation for 32-bit targets;
+  * fix crash if SEC("freplace") programs don't have attach_prog_fd set;
+  * better handling of file existence checks when running as non-root with
+    enhanced capabilities;
+  * a bunch of small fixes:
+  * ELF handling improvements;
+  * fix memory leak in USDT argument parsing logic;
+  * fix NULL dereferences in few corner cases;
+  * improved netlink attribute iteration handling.
+- drop libbpf-Use-elf_getshdrnum-instead-of-e_shnum.patch,
+  libbpf-Fix-use-after-free-in-btf_dump_name_dups.patch,
+  libbpf-Fix-memory-leak-in-parse_usdt_arg.patch
+  libbpf-Fix-null-pointer-dereference-in-find_prog_by_.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Nov  8 06:03:55 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Fix out-of-bound heap write (boo#1194248 boo#1194249 CVE-2021-45940 CVE-2021-45941)

@@ -19,17 +19,13 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
 URL:            https://github.com/libbpf/libbpf
 Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         libbpf-Fix-use-after-free-in-btf_dump_name_dups.patch
-Patch2:         libbpf-Fix-memory-leak-in-parse_usdt_arg.patch
-Patch3:         libbpf-Use-elf_getshdrnum-instead-of-e_shnum.patch
-Patch4:         libbpf-Fix-null-pointer-dereference-in-find_prog_by_.patch
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
 BuildRequires:  zlib-devel
