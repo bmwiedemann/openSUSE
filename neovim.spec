@@ -26,7 +26,7 @@
 %define luaver 5.1
 %define luaver_nopoint 51
 Name:           neovim
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
