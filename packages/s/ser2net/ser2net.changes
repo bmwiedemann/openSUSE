@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 29 13:59:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.3.11:
+  + Shut off write ready on a network write error.
+  + Shut down device write on a device error.
+- Changes from version 4.3.10:
+  + Retry port startup on gensio allocation failure.
+- Changes from version 4.3.9:
+  + Add link to libgensioosh.
+- Changes from version 4.3.8:
+  + Update ser2net.yaml.5.
+  + Add libgensiomdns if the mdns code is not in libgensio.
+- Changes from version 4.3.7:
+  + Fix issues disabling PAM support.
+- Changes from version 4.3.6:
+  + Add PAM authentication support.
+
+-------------------------------------------------------------------
 Sun Jan 23 15:53:49 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - ser2net 4.3.5:
