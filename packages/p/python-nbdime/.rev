@@ -73,4 +73,13 @@
     of nbdime are affected. (forwarded request 931265 from bnavigator)</comment>
     <requestid>931266</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>a30473ed6529fea5a9c5bb9296f65197</srcmd5>
+    <version>unknown</version>
+    <time>1672394922</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize jupyter packaging: alternatives, config, provides
+</comment>
+    <requestid>1045758</requestid>
+  </revision>
 </revisionlist>

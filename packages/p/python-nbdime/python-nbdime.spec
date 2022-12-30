@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbdime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define         skip_python2 1
 %define mainver 3.1.1
 %define jupver  6.1.2
 %define labver  2.1.1
+%define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
+%define gitbins  git-nbdifftool git-nbmergetool git-nbdiffdriver git-nbmergedriver
+%define hgbins   hg-nbdiff hg-nbdiffweb hg-nbmerge hg-nbmergeweb
 Name:           python-nbdime
 Version:        %{mainver}
 Release:        0
 Summary:        Tools for diffing and merging Jupyter Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbdime
-Source:         https://files.pythonhosted.org/packages/py2.py3/n/nbdime/nbdime-%{mainver}-py2.py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-%{mainver}.tar.gz
 BuildRequires:  %{python_module GitPython >= 2.1.6}
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pygments}
@@ -38,9 +46,11 @@ BuildRequires:  %{python_module jupyter-server}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyterlab-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jupyter-server-test}
@@ -61,12 +71,19 @@ Requires:       python-jupyter-server-mathjax >= 0.2.2
 Requires:       python-nbformat
 Requires:       python-requests
 Requires:       python-tornado
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 Conflicts:      python-jupyter_nbdime-git < 1.0.5
 Conflicts:      python-jupyter_nbdime-hg < 1.0.5
 Recommends:     python-tabulate
 Suggests:       python-notebook
-Provides:       python-jupyter_nbdime = %{mainver}
-Obsoletes:      python-jupyter_nbdime < %{mainver}
+Provides:       python-jupyter_nbdime = %{mainver}-%{release}
+Obsoletes:      python-jupyter_nbdime < %{mainver}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,9 +96,7 @@ This package provides the python interface.
 %package     -n jupyter-nbdime
 Version:        %{jupver}
 Summary:        A JupyterLab extension for showing Notebook diffs
-Requires:       jupyter-nbformat
-Requires:       jupyter-notebook
-Requires:       python3-nbdime = %{mainver}
+Requires:       (%(echo "%{python_module nbdime = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
 Conflicts:      python3-jupyter_nbdime < 1.0.5
 
 %description -n jupyter-nbdime
@@ -95,9 +110,7 @@ Version:        %{labver}
 Release:        0
 Summary:        A JupyterLab extension for showing Notebook diffs
 Requires:       jupyter-jupyterlab
-Requires:       python3-nbdime = %{mainver}
-Provides:       python3-jupyter_nbdime_jupyterlab = %{labver}
-Obsoletes:      python3-jupyter_nbdime_jupyterlab < %{labver}
+Requires:       (%(echo "%{python_module nbdime = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
 
 %description -n jupyter-nbdime-jupyterlab
 The nbdime package provides tools for diffing and merging of
@@ -105,97 +118,169 @@ Jupyter Notebooks.
 
 This package provides the JupyterLab extension.
 
-%package     -n jupyter-nbdime-git
-Version:        %{jupver}
-Summary:        Git integration for jupyter-nbdime
+%package git
+Version:        %{mainver}
+Summary:        Git integration for python-nbdime
 Requires:       git-core
-Requires:       jupyter-nbdime = %{jupver}
-Provides:       python3-jupyter_nbdime-git = %{jupver}
-Obsoletes:      python3-jupyter_nbdime-git < %{jupver}
+Requires:       python-nbdime = %{mainver}
+# python3-jupyter_nbdime-git = JUPVER (!) was provided by a jupyter-nbdime-git package until end of 2022
+Provides:       python-jupyter_nbdime-git = %{jupver}-%{release}
+Obsoletes:      python-jupyter_nbdime-git < %{jupver}-%{release}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       jupyter-nbdime-git = %{jupver}-%{release}
+Obsoletes:      jupyter-nbdime-git < %{jupver}-%{release}
+%else
+Conflicts:      jupyter-nbdime-git < %{jupver}-%{release}
+%endif
+%if %{with libalternatives}
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 
-%description -n jupyter-nbdime-git
+%description git
 The nbdime package provides tools for diffing and merging of
 Jupyter Notebooks.
 
 This package provides git integration.
 
-%package     -n jupyter-nbdime-hg
-Version:        %{jupver}
-Summary:        Mercurial integration for jupyter-nbdime
-Requires:       jupyter-nbdime = %{jupver}
+%package hg
+Version:        %{mainver}
+Summary:        Mercurial integration for python-nbdime
 Requires:       mercurial
-Provides:       python3-jupyter_nbdime-hg = %{jupver}
-Obsoletes:      python3-jupyter_nbdime-hg < %{jupver}
+Requires:       python-nbdime = %{mainver}
+# python3-jupyter_nbdime-hg = JUPVER (!) was provided by a jupyter-nbdime-git package until end of 2022
+Provides:       python-jupyter_nbdime-hg = %{jupver}-%{release}
+Obsoletes:      python-jupyter_nbdime-hg < %{jupver}-%{release}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       jupyter-nbdime-hg = %{jupver}-%{release}
+Obsoletes:      jupyter-nbdime-hg < %{jupver}-%{release}
+%else
+Conflicts:      jupyter-nbdime-hg < %{jupver}-%{release}
+%endif
+%if %{with libalternatives}
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 
-%description -n jupyter-nbdime-hg
+%description hg
 The nbdime package provides tools for diffing and merging of
 Jupyter Notebooks.
 
 This package provides mercurial integration.
 
 %prep
-%setup -q -c -T
+%autosetup -p1 -n nbdime-%{mainver}
+sed -i 's/^import mock/from unittest import mock/' nbdime/tests/test_*.py
+find . -type f -name "*.py" -exec sed -i 's/\r$//' {} +
+find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
+find ./nbdime/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
+rm nbdime/labextension/schemas/nbdime-jupyterlab/package.json.orig
 
 %build
-:
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE0}
-
+%pyproject_install
+for b in %mainbins %gitbins %hgbins; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 %{jupyter_move_config}
-%python_expand sed -i 's/^import mock/from unittest import mock/' %{buildroot}%{$python_sitelib}/nbdime/tests/test_*.py
-%python_expand find %{buildroot}%{$python_sitelib} -type f -name "*.py" -exec sed -i 's/\r$//' {} +
-%python_expand find %{buildroot}%{$python_sitelib} -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
-%python_expand find %{buildroot}%{$python_sitelib}/nbdime/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
-%python_expand rm %{buildroot}%{$python_sitelib}/nbdime/labextension/schemas/nbdime-jupyterlab/package.json.orig
-%python_compileall
-rm %{buildroot}%{_jupyter_prefix}/labextensions/nbdime-jupyterlab/schemas/nbdime-jupyterlab/package.json.orig
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
-cp %{buildroot}%{python3_sitelib}/nbdime-%{mainver}.dist-info/LICENSE.md .
 
 %check
-export PATH=$PATH:%{buildroot}%{_bindir}
+# freshly to be install libalternatives commands are not yet flavorbinned automatically
+%if %{with libalternatives}
+%{python_expand mkdir -p build/flavorbin
+for b in %mainbins %gitbins %hgbins; do
+  ln -s %{buildroot}%{_bindir}/$b-%{$python_bin_suffix} build/flavorbin/$b
+done
+}
+%endif
 git config --global user.email "test@test.com"
 git config --global user.name "tester"
+git config --global init.defaultBranch master
 %pytest --pyargs nbdime
+
+%pre
+# remove any non-symlink bin before installing the alternative links
+for b in %mainbins; do
+  [ -f %{_bindir}/$b -a ! -h %{_bindir}/$b ] && rm %{_bindir}/$b
+done
+%python_libalternatives_reset_alternative nbdime
+
+%post
+%python_install_alternative %mainbins
+
+%postun
+%python_uninstall_alternative nbdime
+
+%pre git
+# remove any non-symlink bin before installing the alternative links
+for b in %gitbins; do
+  [ -f %{_bindir}/$b -a ! -h %{_bindir}/$b ] && rm %{_bindir}/$b
+done
+%python_libalternatives_reset_alternative git-nbdifftool
+
+%post git
+%python_install_alternative %gitbins
+
+%postun git
+%python_uninstall_alternative git-nbdifftool
+
+%pre hg
+# remove any non-symlink bin before installing the alternative links
+for b in %hgbins; do
+  [ -f %{_bindir}/$b -a ! -h %{_bindir}/$b ] && rm %{_bindir}/$b
+done
+%python_libalternatives_reset_alternative hg-nbdiff
+
+%post hg
+%python_install_alternative %hgbins
+
+%postun hg
+%python_uninstall_alternative hg-nbdiff
 
 %files %{python_files}
 %license LICENSE.md
+%python_alternative %{_bindir}/nbdime
+%python_alternative %{_bindir}/nbshow
+%python_alternative %{_bindir}/nbdiff
+%python_alternative %{_bindir}/nbdiff-web
+%python_alternative %{_bindir}/nbmerge
+%python_alternative %{_bindir}/nbmerge-web
 %{python_sitelib}/nbdime/
 %{python_sitelib}/nbdime-%{mainver}.dist-info/
 
+%files %{python_files git}
+%license LICENSE.md
+%python_alternative %{_bindir}/git-nbdiffdriver
+%python_alternative %{_bindir}/git-nbdifftool
+%python_alternative %{_bindir}/git-nbmergedriver
+%python_alternative %{_bindir}/git-nbmergetool
+
+%files %{python_files hg}
+%license LICENSE.md
+%python_alternative %{_bindir}/hg-nbdiff
+%python_alternative %{_bindir}/hg-nbdiffweb
+%python_alternative %{_bindir}/hg-nbmerge
+%python_alternative %{_bindir}/hg-nbmergeweb
+
 %files -n jupyter-nbdime
 %license LICENSE.md
-%{_bindir}/nbdime
-%{_bindir}/nbshow
-%{_bindir}/nbdiff
-%{_bindir}/nbdiff-web
-%{_bindir}/nbmerge
-%{_bindir}/nbmerge-web
 %{_jupyter_nbextension_dir}/nbdime/
-%config %{_jupyter_server_confdir}/nbdime.json
-%config %{_jupyter_servextension_confdir}/nbdime.json
-%config %{_jupyter_nb_notebook_confdir}/nbdime.json
+%_jupyter_config %{_jupyter_server_confdir}/nbdime.json
+%_jupyter_config %{_jupyter_servextension_confdir}/nbdime.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/nbdime.json
 
 %files -n jupyter-nbdime-jupyterlab
 %license LICENSE.md
 %dir %{_jupyter_prefix}/labextensions
-%{_jupyter_prefix}/labextensions/nbdime-jupyterlab
-%{_jupyter_prefix}/lab/extensions/nbdime-jupyterlab-%{labver}.tgz
-
-%files -n jupyter-nbdime-git
-%license LICENSE.md
-%{_bindir}/git-nbdiffdriver
-%{_bindir}/git-nbdifftool
-%{_bindir}/git-nbmergedriver
-%{_bindir}/git-nbmergetool
-
-%files -n jupyter-nbdime-hg
-%license LICENSE.md
-%{_bindir}/hg-nbdiff
-%{_bindir}/hg-nbdiffweb
-%{_bindir}/hg-nbmerge
-%{_bindir}/hg-nbmergeweb
+%{_jupyter_labextensions_dir3}/nbdime-jupyterlab
+%{_jupyter_labextensions_dir}/nbdime-jupyterlab-%{labver}.tgz
 
 %changelog
