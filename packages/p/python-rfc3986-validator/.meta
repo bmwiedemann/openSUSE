@@ -1,0 +1,5 @@
+<package name="python-rfc3986-validator" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-rfc3986-validator"/>
+</package>
