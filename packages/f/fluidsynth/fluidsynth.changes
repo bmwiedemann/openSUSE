@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 29 11:01:45 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.3.1
+  * Prevent MIDI player from finishing prematurely
+  * Fix a crash when enumerating rawmidi ALSA devices
+  * Restore systemd sandboxing options and make it work with user units
+  * Handle conflict with pipewire systemd daemon
+- Fix bsc#1204236 by turning systemd service into user service
+
+-------------------------------------------------------------------
 Sat Sep 24 16:39:05 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.3.0

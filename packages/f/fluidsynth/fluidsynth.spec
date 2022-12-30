@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
@@ -40,10 +40,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 Recommends:     fluid-soundfont-gm
-Requires(pre):  %fillup_prereq
-Requires(pre):  group(audio)
-Requires(pre):  shadow
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 FluidSynth (formerly IIWU Synth) is a real-time software synthesizer
@@ -90,23 +87,21 @@ This package contains the shared library for Fluidsynth.
 %cmake_install
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -Dpm0644 build/fluidsynth.service %{buildroot}%{_unitdir}/%{name}.service
+install -Dpm0644 build/fluidsynth.service %{buildroot}%{_userunitdir}/%{name}.service
 mkdir %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
-getent passwd %{name} >/dev/null || useradd -rc 'FluidSynth GM daemon' -s /bin/false -d %{_localstatedir}/lib/%{name} -g audio %{name}
-%service_add_pre %{name}.service
+%systemd_user_pre %{name}.service
 
 %post
-%fillup_only
-%service_add_post %{name}.service
+%systemd_user_post %{name}.service
 
 %preun
-%service_del_preun %{name}.service
+%systemd_user_preun %{name}.service
 
 %postun
-%service_del_postun %{name}.service
+%systemd_user_postun %{name}.service
 
 %post -n libfluidsynth%{sover} -p /sbin/ldconfig
 %postun -n libfluidsynth%{sover} -p /sbin/ldconfig
@@ -119,7 +114,7 @@ getent passwd %{name} >/dev/null || useradd -rc 'FluidSynth GM daemon' -s /bin/f
 %{_fillupdir}/sysconfig.%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_sbindir}/rc%{name}
-%{_unitdir}/%{name}.service
+%{_userunitdir}/%{name}.service
 
 %files devel
 %{_includedir}/%{name}
