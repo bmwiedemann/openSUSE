@@ -8141,8 +8141,6 @@ unsorted:
   - jupyter-nbconvert 
   - jupyter-nbconvert-latex 
   - jupyter-nbdime 
-  - jupyter-nbdime-git 
-  - jupyter-nbdime-hg 
   - jupyter-nbdime-jupyterlab 
   - jupyter-notebook 
   - jupyter-notebook-filesystem 
@@ -13026,18 +13024,18 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv406 
-  - libopencv_aruco406 
-  - libopencv_face406 
-  - libopencv_gapi406 
-  - libopencv_highgui406 
-  - libopencv_imgcodecs406 
-  - libopencv_objdetect406 
-  - libopencv_optflow406 
-  - libopencv_superres406 
-  - libopencv_videoio406 
-  - libopencv_videostab406 
-  - libopencv_ximgproc406 
+  - libopencv407 
+  - libopencv_aruco407 
+  - libopencv_face407 
+  - libopencv_gapi407 
+  - libopencv_highgui407 
+  - libopencv_imgcodecs407 
+  - libopencv_objdetect407 
+  - libopencv_optflow407 
+  - libopencv_superres407 
+  - libopencv_videoio407 
+  - libopencv_videostab407 
+  - libopencv_ximgproc407 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -19729,6 +19727,7 @@ unsorted:
   - perl-Data-Uniqid 
   - perl-Data-Util 
   - perl-Data-Validate-Domain 
+  - perl-Data-Validate-IP 
   - perl-Data-Visitor 
   - perl-Date-Calc 
   - perl-Date-Holidays-CZ 
@@ -23476,6 +23475,7 @@ unsorted:
   - python310-fontPens 
   - python310-forbiddenfruit 
   - python310-formats 
+  - python310-fqdn 
   - python310-framel 
   - python310-freeipa 
   - python310-freetype-py 
@@ -23702,6 +23702,7 @@ unsorted:
   - python310-iso3166 
   - python310-iso8601 
   - python310-isodate 
+  - python310-isoduration 
   - python310-isort 
   - python310-itemadapter 
   - python310-itemloaders 
@@ -24074,6 +24075,8 @@ unsorted:
   - python310-nbclient 
   - python310-nbconvert 
   - python310-nbdime 
+  - python310-nbdime-git 
+  - python310-nbdime-hg 
   - python310-nbformat 
   - python310-nbindex-jupyter 
   - python310-nbsmoke 
@@ -24882,6 +24885,7 @@ unsorted:
   - python310-retrying 
   - python310-retryrequests 
   - python310-rfc3339-validator 
+  - python310-rfc3986-validator 
   - python310-rfc3987 
   - python310-rfc6555 
   - python310-rich-click 
@@ -26788,6 +26792,7 @@ unsorted:
   - python38-fontPens 
   - python38-forbiddenfruit 
   - python38-formats 
+  - python38-fqdn 
   - python38-framel 
   - python38-freeipa 
   - python38-freetype-py 
@@ -27034,6 +27039,7 @@ unsorted:
   - python38-iso3166 
   - python38-iso8601 
   - python38-isodate 
+  - python38-isoduration 
   - python38-isort 
   - python38-itemadapter 
   - python38-itemloaders 
@@ -27411,6 +27417,8 @@ unsorted:
   - python38-nbclient 
   - python38-nbconvert 
   - python38-nbdime 
+  - python38-nbdime-git 
+  - python38-nbdime-hg 
   - python38-nbformat 
   - python38-nbindex-jupyter 
   - python38-nbsmoke 
@@ -28252,6 +28260,7 @@ unsorted:
   - python38-retryrequests 
   - python38-rfc3339-validator 
   - python38-rfc3986 
+  - python38-rfc3986-validator 
   - python38-rfc3987 
   - python38-rfc6555 
   - python38-rich 
@@ -30168,6 +30177,7 @@ unsorted:
   - python39-fontPens 
   - python39-forbiddenfruit 
   - python39-formats 
+  - python39-fqdn 
   - python39-framel 
   - python39-freeipa 
   - python39-freetype-py 
@@ -30414,6 +30424,7 @@ unsorted:
   - python39-iso3166 
   - python39-iso8601 
   - python39-isodate 
+  - python39-isoduration 
   - python39-isort 
   - python39-itemadapter 
   - python39-itemloaders 
@@ -30792,6 +30803,8 @@ unsorted:
   - python39-nbclient 
   - python39-nbconvert 
   - python39-nbdime 
+  - python39-nbdime-git 
+  - python39-nbdime-hg 
   - python39-nbformat 
   - python39-nbindex-jupyter 
   - python39-nbsmoke 
@@ -31634,6 +31647,7 @@ unsorted:
   - python39-retryrequests 
   - python39-rfc3339-validator 
   - python39-rfc3986 
+  - python39-rfc3986-validator 
   - python39-rfc3987 
   - python39-rfc6555 
   - python39-rich 
