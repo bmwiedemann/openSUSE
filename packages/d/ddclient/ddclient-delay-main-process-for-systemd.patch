@@ -1,12 +1,10 @@
-Index: ddclient
-===================================================================
---- ddclient.orig
-+++ ddclient
-@@ -847,6 +847,7 @@ if (opt('foreground') || opt('force')) {
- 	print STDERR "${program}: can not fork ($!)\n";
- 	exit -1;
-     } elsif ($pid) {
-+	sleep(1);
- 	exit 0;
-     }
-     $SIG{'CHLD'}   = 'DEFAULT';
+--- ddclient-3.10.0/ddclient.in.bak	2022-12-27 12:47:57.318599529 +0100
++++ ddclient-3.10.0/ddclient.in	2022-12-27 12:48:06.902647037 +0100
+@@ -1051,6 +1051,7 @@
+             print STDERR "${program}: can not fork ($!)\n";
+             exit -1;
+         } elsif ($pid) {
++            sleep(1);
+             exit 0;
+         }
+         $SIG{'CHLD'} = 'DEFAULT';

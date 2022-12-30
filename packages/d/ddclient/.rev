@@ -415,4 +415,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment>fix for boo#1191885, merge prepare for SLES maintained pkg (forwarded request 988707 from computersalat)</comment>
     <requestid>988739</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a994181ee06de0c60286e9a2e1f34989</srcmd5>
+    <version>3.10.0</version>
+    <time>1672394928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045767</requestid>
+  </revision>
 </revisionlist>

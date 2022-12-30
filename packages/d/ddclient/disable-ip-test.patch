@@ -1,0 +1,10 @@
+--- ddclient-3.10.0/Makefile.am.bak	2022-12-27 13:47:28.996235989 +0100
++++ ddclient-3.10.0/Makefile.am	2022-12-27 13:47:34.848264936 +0100
+@@ -69,7 +69,6 @@
+ 	-I'$(abs_top_srcdir)'/t/lib \
+ 	-MDevel::Autoflush
+ handwritten_tests = \
+-	t/get_ip_from_if.pl \
+ 	t/geturl_ssl.pl \
+ 	t/is-and-extract-ipv4.pl \
+ 	t/is-and-extract-ipv6.pl \
