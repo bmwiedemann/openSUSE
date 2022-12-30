@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Dec 29 09:59:55 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.7.0, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version470
+  Highlights of this release:
+  * DNN:
+    + New ONNX layers: Scatter and ScatterND, Tile, ReduceL1,
+      ReduceMin and more.
+    + Signinficant performance optimization for convolutions.
+      Winograd algoritm implementation.
+    + Element-wise operation (add, sub, mul, div, ...):
+      Broadcasting.
+    + OpenVino 2022.1 support.
+    + CANN backend support.
+  * Algorithms:
+    + ArUco markers and April tags support including ChAruco and
+      diamond boards detection and calibration.
+    + QR code detection and decoding quality imrovement. Alignment
+      markers support. Benchmark for QR codes: link
+    + Nanotrack v2 tracker based on neural networks.
+    + Stackblur algoruthm implementation.
+  * Multimedia:
+    + FFmpeg 5.x support.
+    + CUDA 12.0 support. Hardware accelerated video codecs support
+      on NVIDIA platforms with modern Video Codec SDK (NVCUVID and
+      NVENCODEAPI).
+    + CV_16UC1 read/write video support with FFmpeg.
+    + Orientation meta support on Mac with native media API.
+    + New iterator-based API for multi-page image formats.
+    + libSPNG support for PNG format.
+    + SIMD acceleration for self-built libJPEG-Turbo
+    + H264/H265 support on Android. Multiple fixes for video
+      decoder, endcoder and camera memory layout.
+  * G-API
+    + Exposed all core APIs to Python, including stateful kernels.
+  * Optimization:
+    + New universal intrinsics backend for scalable vector
+      instructions. The first scalable implementation for
+      RISC-V RVV 1.0.
+    + DNN module patches:
+      - Improved layers / supported more models:
+        *  Scatter and ScatterND #22529, Tile #22809
+        *  Fixes in Slice (support negative step #22898)
+        *  Support some reduce layers of ONNX #21601
+      - Added CANN backend support #22634. Link to the manual:
+        https://github.com/opencv/opencv/wiki/Huawei-CANN-Backend.
+      - Added bacthed NMS for multi-class object detection #22857
+      - Accelerating convolution, especially for ARM CPU.
+      - Winograd's convolution optimization
+  + And many other contributions:
+    +   Added n-dimensional flip to core #22898
+    +   Add StackBlur for imgproc #20379
+- Removed upstream opencv-ffmpeg5.patch
+
+-------------------------------------------------------------------
 Tue Aug 23 11:22:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change to fix include issue with FFmpeg 5:
