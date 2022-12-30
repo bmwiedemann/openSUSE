@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec 29 22:31:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.8.2:
+  - This primarily a bug fix release but some improvements to
+    documentation has been back-ported as well.
+  - Features
+    help: Highlighted codeblocks
+  - Documentation
+    - lua: Add guide to using Lua in Neovim
+    - Mention how to remove the "How-to disable mouse" menu item
+    - Fix order of numbers in syntax.txt
+    - lua: Correct the tags for vim.opt_local and vim.opt_global
+  - Bug Fixes
+    - api: Set correct curbuf when temporarily changing curwin
+    - api: "emsg_silent" should imply "silent" in nvim_cmd
+    - decoration: Do not reset must_redraw after calling
+      providers
+    - diagnostic: Clear stale cache on reset
+    - events: Save v:event for cmdline autocommands separately
+    - float: Fix ml_get error with bufpos
+    - float: Fix crash with bufpos and non-existent window
+    - folds: Use long for number of folded lines
+    - mappings: Use all buckets in second round of unmap
+    - memory: Fix memory alignment for dynamic allocation
+    - options: Fix local 'sidescrolloff' doesn't work for mouse
+    - options: Restore exists() behavior for options
+    - terminal: Fix 'mousescroll' not respected in terminal mode
+    - tui: Set cursor color parameter as string when required
+    - win_close: Remove float grid after closing buffer
+  - Build System Fixes
+    - Restrict git describe to top level source directory
+
+-------------------------------------------------------------------
 Tue Dec 20 12:20:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.8.1:
