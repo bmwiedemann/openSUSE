@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 30 10:30:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.3:
+  * Fix a PCRE2 library-related issues with -P (--perl-regexp)
+    matching binary files
+
+-------------------------------------------------------------------
 Mon Aug 22 05:41:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.9.2:
