@@ -7,4 +7,12 @@
     <comment>New package, announcement: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/K5JGL6R2TMUW7TC2Y3O2UULGC65DQWMJ/</comment>
     <requestid>967608</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bcc9f47799f487ebf43c729de3beee17</srcmd5>
+    <version>0.7</version>
+    <time>1672482182</time>
+    <user>dimstar_suse</user>
+    <comment>&quot;Change build dependency to devel package instead of versioned lib&quot; (forwarded request 1045837 from jlkDE)</comment>
+    <requestid>1045838</requestid>
+  </revision>
 </revisionlist>

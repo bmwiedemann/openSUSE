@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 30 15:55:29 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Change build dependency to devel package instead of versioned lib
+
+-------------------------------------------------------------------
+Sun Nov 13 17:37:23 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.7
+  * Use colon as path separator in sessionPfads string
+  * Make check if running in tty more fuzzy
+  * Drop not needed option when using ln command
+  * runSession: detect DBUS_SESSION_ADDRESS
+- Manual: Add a hint how to add a shell session to the menu
+- Add build-dep libpcre1
+
+-------------------------------------------------------------------
 Thu Apr  7 18:45:59 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Correct source URL
