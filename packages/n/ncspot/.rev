@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1012063</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0d3575b341aae9cc2ace35c48fa14f44</srcmd5>
+    <version>0.12.0</version>
+    <time>1672482179</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.12.0 (forwarded request 1045833 from jlkDE)</comment>
+    <requestid>1045834</requestid>
+  </revision>
 </revisionlist>

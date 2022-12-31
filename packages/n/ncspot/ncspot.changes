@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 30 14:08:30 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.12.0
+  Maintenance
+  * Fix: Handle explicit field from Spotify API
+  * Print "Connecting to Spotify" before setting up Cursive backend
+  * Link to Flatpak image
+  * Make entry point synchronous and switch to global runtime
+    instead
+  * Document queue module
+  Features
+  * Add "save/unsave album" to context menu
+  * Automatically save backtraces to cache folder
+  * Create IPC socket on UNIX platforms for remote control and
+    external track display
+
+-------------------------------------------------------------------
 Mon Oct 17 10:36:29 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.11.2
