@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 30 10:21:23 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.3:
+  * Long list of changes, see
+    https://www.dynare.org/new-dynare-release/dynare-5.3-released/
+- Remove upstream patches:
+  * dynare-5.1-gcc-12.patch
+  * dynare-octave7-compat.patch
+
+-------------------------------------------------------------------
 Mon Jun 27 20:34:53 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add dynare-5.1-gcc-12.patch: Fix build with gcc 12.
