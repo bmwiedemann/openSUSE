@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 30 11:39:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Apply tools-kvm_stat-fix-attack-vector-with-user-controlle.patch
+  only on kernel < 6.1. Starting with 6.1, the fix is included.
+
+-------------------------------------------------------------------
 Fri Oct 28 14:24:29 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix security issue about debugfs described in bsc#1202924

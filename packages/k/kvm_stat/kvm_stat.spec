@@ -87,7 +87,9 @@ There is no reason to install this package.
 %patch07 -p1
 %patch08 -p1
 %endif
+%if %{pkg_vcmp kernel-source < 6.1}
 %patch09 -p1
+%endif
 
 %build
 make -C tools/kvm/kvm_stat %{?_smp_mflags}
