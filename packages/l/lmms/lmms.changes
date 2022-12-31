@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 29 16:36:51 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Reenable the VST plugin integration.
+
+-------------------------------------------------------------------
 Sat Dec  3 15:07:24 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Disable vst until wine build issue is solved
