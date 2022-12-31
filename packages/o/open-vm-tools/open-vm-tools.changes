@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 28 08:18:43 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Wed Dec 14 21:24:00 UTC 2022 - Kirk Allan <kallan@suse.com>
 
 - Don't list libgrpc++, libgrpc, and libprotobuf in the containerinfo Requires

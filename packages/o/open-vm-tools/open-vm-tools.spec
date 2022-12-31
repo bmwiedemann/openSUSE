@@ -311,6 +311,10 @@ mkdir -p  %{buildroot}%{_sbindir}
 
 # Remove exec bit from config files
 chmod a-x %{buildroot}%{_sysconfdir}/pam.d/*
+%if 0%{?suse_version} > 1500
+install -d %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/vmtoolsd %{buildroot}%{_pam_vendordir}
+%endif
 
 # Remove unnecessary files from packaging
 find %{buildroot}%{_libdir} -name '*.la' -delete
@@ -364,6 +368,18 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/modprobe.d/50-vmnics.co
 %service_add_pre vmtoolsd.service
 %service_add_pre vgauthd.service
 %service_add_pre vmblock-fuse.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/vmtoolsd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/vmtoolsd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 /sbin/ldconfig
@@ -475,7 +491,11 @@ systemctl try-restart vmtoolsd.service || :
 %{_bindir}/vmware-xferlogs
 %{_bindir}/vm-support
 %{_bindir}/vmware-alias-import
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/vmtoolsd
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/vmtoolsd
+%endif
 %dir %{_sysconfdir}/vmware-tools
 %dir %{_sysconfdir}/vmware-tools/scripts
 %dir %{_sysconfdir}/vmware-tools/scripts/vmware
