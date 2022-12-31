@@ -1,0 +1,14 @@
+Index: jupyter_client-7.4.8/pyproject.toml
+===================================================================
+--- jupyter_client-7.4.8.orig/pyproject.toml
++++ jupyter_client-7.4.8/pyproject.toml
+@@ -136,6 +136,9 @@ filterwarnings= [
+   # when there is a running event loop.
+   "ignore:There is no current event loop:DeprecationWarning:zmq",
+ 
++  # https://github.com/jupyter/jupyter_client/issues/713
++  "ignore:There is no current event loop:DeprecationWarning",
++
+   # Workaround for jupyter_core warning.
+   "module:Jupyter is migrating its paths to use standard platformdirs:DeprecationWarning",
+ ]

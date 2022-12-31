@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 14 21:10:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.8
+  * Make sure loop is marked with nest_asyncio #893 (@impact27)
+- Release 7.4.7
+  * Fix connection reconciliation to handle restarts #882
+    (@kevin-bates)
+- Release 7.4.6
+  * Reconcile connection information #879 (@kevin-bates)
+- Release 7.4.5
+  * [7.x] Handle Jupyter Core Warning #875 (@blink1073)
+- Release 7.4.4
+  * Workaround for launch bug #861 (@blink1073)
+- Release 7.4.3
+  * Defer creation of ready future #858 (@blink1073)
+- Release 7.4.2
+  * Fix ready promise and session send #852 (@blink1073)
+  * Fix pending kernels backported and reverted: #848 #851
+- Release 7.3.5
+  * add AsyncKernelClient to doc/api/client.rst #819 (@helioz11)
+  * Use tornado 6.2's PeriodicCallback in restarter #822 (@vidartf)
+  * Make _stdin_hook_default async #814 (@davidbrochart)
+- Replace py3109-compat.patch by py310-ignore-deprecation.patch
+  gh#jupyter/jupyter_client#713
+
+-------------------------------------------------------------------
 Mon Dec 12 16:30:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update py3109-compat.patch to work with python 3.10.8 and lower.

@@ -24,18 +24,18 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+
 Name:           python-jupyter-client%{psuffix}
-Version:        7.3.4
+Version:        7.4.8
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE py3109-compat.patch
-Patch0:         py3109-compat.patch
+# PATCH-FIX-UPSTREAM py310-ignore-deprecation.patch gh#jupyter/jupyter_client#713
+Patch0:         py310-ignore-deprecation.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -46,7 +46,7 @@ Requires:       python-jupyter-core >= 4.9.2
 Requires:       python-nest-asyncio >= 1.5.4
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pyzmq >= 23.0
-Requires:       python-tornado >= 6.0
+Requires:       python-tornado >= 6.2
 Requires:       python-traitlets
 Provides:       python-jupyter_client = %{version}
 Obsoletes:      python-jupyter_client < %{version}
