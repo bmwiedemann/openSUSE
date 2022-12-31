@@ -1089,4 +1089,33 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1030466</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2c3b8dc3cbbaa6b67c26bc4fc1fa0200</srcmd5>
+    <version>1.0.11</version>
+    <time>1672482188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.11
+ + Bugfixes:
+ + Capitalize GLib application name so it appears nicely in GNOME and PulseAudio Volume Control (#1066).
+ + Fixed missing application icon for PulseAudio Volume Control (#1066).
+ + Ignore errors for missing albums when updating Tidal collection if there are results (#1061).
+ + Only run periodic collection scan when moitoring collection setting is on.
+ + Fixed an edge case where the context headline text was being cut short (#1067).
+ + Made &quot;Show in file browser&quot; support SpaceFM filemanager (#1073).
+ + Fixed incorrect tab order in edit tag dialog (#1075).
+ + Changed &quot;FMPS_PlayCount&quot; to &quot;FMPS_Playcount&quot; when saving tag (#1074).
+ + Fixed compilation tag read and write for MP4 (#1076).
+ + Removed incorrect use of &quot;TPE1&quot; for performer when reading ID3 tags (#1076).
+ + Disable tag fields for unsupported tags in tag editor.
+ + Don't allow organizing files without unique tags (track or title) for filename (#1077).
+ + Don't remove disc from album title when creating cover hash to allow different covers for each disc on an album (#1069).
+ + Fixed incorrect relative paths for song filenames when saving playlists if the saved playlist location is a symablic link to the song filename (#1071).
+ + Scrobble &quot;Various Artists&quot; as album artist (#1082).
+ + Enhancements:
+ + Use system volume instead of own software volume when available (#1037).
+ + Improved Tidal and Qobuz support with timed requests.
+ + Support MPRIS2 xesam:userRating.
+</comment>
+    <requestid>1045847</requestid>
+  </revision>
 </revisionlist>

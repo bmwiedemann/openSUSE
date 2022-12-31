@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec 30 17:59:24 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.11
+
+ + Bugfixes:
+ + Capitalize GLib application name so it appears nicely in GNOME and PulseAudio Volume Control (#1066).
+ + Fixed missing application icon for PulseAudio Volume Control (#1066).
+ + Ignore errors for missing albums when updating Tidal collection if there are results (#1061).
+ + Only run periodic collection scan when moitoring collection setting is on.
+ + Fixed an edge case where the context headline text was being cut short (#1067).
+ + Made "Show in file browser" support SpaceFM filemanager (#1073).
+ + Fixed incorrect tab order in edit tag dialog (#1075).
+ + Changed "FMPS_PlayCount" to "FMPS_Playcount" when saving tag (#1074).
+ + Fixed compilation tag read and write for MP4 (#1076).
+ + Removed incorrect use of "TPE1" for performer when reading ID3 tags (#1076).
+ + Disable tag fields for unsupported tags in tag editor.
+ + Don't allow organizing files without unique tags (track or title) for filename (#1077).
+ + Don't remove disc from album title when creating cover hash to allow different covers for each disc on an album (#1069).
+ + Fixed incorrect relative paths for song filenames when saving playlists if the saved playlist location is a symablic link to the song filename (#1071).
+ + Scrobble "Various Artists" as album artist (#1082).
+ + Enhancements:
+ + Use system volume instead of own software volume when available (#1037).
+ + Improved Tidal and Qobuz support with timed requests.
+ + Support MPRIS2 xesam:userRating.
+
+-------------------------------------------------------------------
 Fri Oct 21 21:48:08 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.10
