@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Dec 30 08:51:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.3:
+  * Improved speed of vertical interpolation for fields whose
+    most-rapidly-varying dimension is the vertical (not horizontal).
+  * Also fixes an issue in using ncremap to invoke the interpolation.
+- Update to version 5.1.2:
+  * Improved support for horizontal regridding, vertical
+    interpolation, or both, on ultra high-resolution model output.
+- Update to version 5.1.1:
+  * Added features for NCZarr, regridding, and interpolation.
+    All operators now support NCZarr I/O and input filenames via
+    stdin.
+  * ncremap supports two new vertical extrapolation methods, 1D
+    files, and allows flexible masking based on external fields
+    such sub-gridscale extent.
+  * ncclimo outputs regional averages.
+  * Numerous minor fixes improve codec support and regridding
+    control.
+
+-------------------------------------------------------------------
 Tue Sep  6 14:03:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.0:

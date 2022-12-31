@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.1.0
-%define  soname 5_1_0
+Version:        5.1.3
+%define  soname 5_1_3
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -184,6 +184,7 @@ fi
 %{_bindir}/ncremap
 %{_bindir}/ncrename
 %{_bindir}/ncwa
+%{_bindir}/ncz2psx
 %{_mandir}/man1/ncap2.1%{?ext_man}
 %{_mandir}/man1/ncatted.1%{?ext_man}
 %{_mandir}/man1/ncbo.1%{?ext_man}
@@ -199,6 +200,7 @@ fi
 %{_mandir}/man1/ncremap.1%{?ext_man}
 %{_mandir}/man1/ncrename.1%{?ext_man}
 %{_mandir}/man1/ncwa.1%{?ext_man}
+%{_mandir}/man1/ncz2psx.1%{?ext_man}
 %{_infodir}/nco*.info%{?ext_info}
 %{_infodir}/nco.info-*%{?ext_info}
 
