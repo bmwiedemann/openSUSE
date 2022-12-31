@@ -928,6 +928,8 @@ Prefer: -zziplib-devel-32bit
 Prefer: ruby3.1-rubygem-fast_gettext
 Prefer: -ruby3.1-rubygem-public_suffix-3.1
 
+Prefer: -ruby3.1-rubygem-kramdown
+
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
 
