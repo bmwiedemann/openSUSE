@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 30 10:50:46 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- If we don't build the java bindings, we can reduce the minimum 
+  cmake version to a level, that allows building for current Leaps
+
+-------------------------------------------------------------------
 Thu Oct 13 19:25:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.4:

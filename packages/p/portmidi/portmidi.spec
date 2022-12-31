@@ -32,11 +32,13 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://github.com/PortMidi/portmidi
 Source:         https://github.com/PortMidi/portmidi/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  alsa-devel >= 0.9
-BuildRequires:  cmake >= 3.21
 BuildRequires:  gcc-c++
+# we can reduce the minimum cmake version, if not building the java bindings
 %if %{with java}
+BuildRequires:  cmake >= 3.21
 BuildRequires:  java-devel >= 11
 %else
+BuildRequires:  cmake >= 3.20
 Obsoletes:      portmidi-java <= %{version}-%{release}
 %endif
 Requires:       libportmidi%{soname} = %{version}
@@ -81,6 +83,10 @@ This package contains bindings to use %{name} from Java.
 find -type f -iname \*.txt -print0 | xargs -r0 chmod a-x
 find -type f -iname \*.txt -print0 | xargs -r0 perl -p -i -e 's|\r\n|\n|g'
 
+%if ! %{with java}
+sed -i 's|cmake_minimum_required(VERSION 3.21)|cmake_minimum_required(VERSION 3.20)|' CMakeLists.txt
+%endif
+
 %build
 %cmake \
   %if %{with java}
@@ -100,12 +106,14 @@ for binary in $(find pm_test/ -maxdepth 1 -type f -executable) ; do
 done
 popd
 
+%if %{with java}
 install -D -m 0644 pm_java/pmdefaults/pmdefaults.jar %{buildroot}%{_javadir}/pmdefaults.jar
 cat > %{buildroot}%{_bindir}/pmdefaults <<EOF
 #!/bin/bash
 exec java -jar "@@JAVADIR@@/pmdefaults.jar" "$@" >/dev/null
 EOF
 chmod a+rx %{buildroot}%{_bindir}/pmdefaults
+%endif
 
 %post   -n libportmidi%{soname} -p /sbin/ldconfig
 %postun -n libportmidi%{soname} -p /sbin/ldconfig

@@ -54,4 +54,12 @@
   0001-Adding-missing-file-to-repo.patch: upstream</comment>
     <requestid>1011016</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e7d8b3489b38716f1e172ac028fd9b99</srcmd5>
+    <version>2.0.4</version>
+    <time>1672482175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045826</requestid>
+  </revision>
 </revisionlist>
