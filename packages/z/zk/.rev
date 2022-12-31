@@ -7,4 +7,12 @@
     <comment>I want to maintain zk in openSUSE:Factory</comment>
     <requestid>1040242</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ae09fe1890c7e5fa5248dea2def25fa</srcmd5>
+    <version>0.12.0</version>
+    <time>1672482177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045831</requestid>
+  </revision>
 </revisionlist>

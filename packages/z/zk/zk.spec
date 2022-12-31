@@ -26,6 +26,7 @@ URL:            https://github.com/mickael-menu/zk
 Source0:        https://github.com/mickael-menu/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
+Recommends:     fzf
 
 %description
 Zk is a plain text note-taking assistant for markdown.
@@ -44,7 +45,6 @@ It is a command-line tool helping you to maintain a plain text Zettelkasten or p
 %files
 %{_bindir}/%{name}
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc CHANGELOG.md README.md docs/*.md
 
 %changelog
-
