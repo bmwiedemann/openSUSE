@@ -12733,9 +12733,9 @@ unsorted:
   - libnbd-devel 
   - libnbd0: [i586] 
   - libnblib_gmx0 
-  - libnco-5_1_0 
+  - libnco-5_1_3 
   - libnco-devel 
-  - libnco_c++-5_1_0 
+  - libnco_c++-5_1_3 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -15662,6 +15662,7 @@ unsorted:
   - lmdb-devel 
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
+  - lmms-vst: [x86_64] 
   - lnav 
   - lndir 
   - loadlin: [i586] 
