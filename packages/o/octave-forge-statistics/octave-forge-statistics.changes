@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 28 10:29:54 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.5.2:
+  * Important Notice:
+    + mean, median, std, and var shadow core Octave's respective
+      functions
+    + incompatibility with the nan package
+  * News:
+    There are 3 newly introduced functions, which shadow core
+    Octave functions, and another 5, which have been fixed or
+    upgraded with missing features.
+
+-------------------------------------------------------------------
 Tue Dec 06 10:29:56 UTC 2022 - Markus Ebner <info@ebner-markus.de>
 
 - Update to version 1.5.1:
