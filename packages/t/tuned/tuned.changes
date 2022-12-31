@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Dec 27 15:45:40 UTC 2022 - trenn@suse.de
+
+- Update to version 2.19.0.29+git.b894a3e:
+  * Fix for catching exceptions in profile loader.
+  * Add new cpu-partitioning-powersave profile
+  * Add CodeQL workflow for GitHub code scanning
+  * Fixed sysvinit path
+  * systemd: relax polkit requirement
+  * realtime-virtual-*: Tune priority of new ktimers threads
+  * hpc-compute profile: Remove vm.hugepages_treat_as_movable
+  * fix spelling error
+  * Profile openshift: increase fs.aio-max-nr tunable
+  * new release (2.19.0)
+  * packit: s/synced_files/files_to_sync/
+  * packit: metadata field is no longer needed
+  * packit: build SRPM in Copr
+  * profiles: drop sched_ tuning from openshift-control-plane
+  * new release (2.19.0-rc.1)
+  * builtin functions: added calc_isolated_cores function
+  * spec: dropped weak deps where not needed
+  * Update tuned-adm.bash
+  * TuneD plug-in documentation.
+  * Adding mtu command to net plugin
+  * openshift profile: tuning for NVMe devices
+  * Add version/help command automatic complete
+  * Do not hardcode disk name in tuned initrd path.
+  * bootloader: cmdline parser change and fixed escaping
+  * Fix in polkit authorization.
+  * realtime: Set tsc as 'reliable'
+  * recommend: do not ignore syspurpose_role if there is no syspurpose
+  * Fixing arguments in disk plugin method
+  * Default delimiters causing errors in some specific situations, inline comments
+  * gui: fixed possible traceback in the save_profile
+  * Striping quotes	when unpacking cpu list
+  * profiles: improve regexes to match kernel threads
+
+-------------------------------------------------------------------
 Thu Aug 11 20:22:14 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_modprobedir

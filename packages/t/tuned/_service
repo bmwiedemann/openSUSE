@@ -4,9 +4,9 @@
     <param name="url">https://github.com/redhat-performance/tuned</param>
 <!--
     Use this for non rc candidates, -rc is not allowed
-    <param name="versionformat">2.15.0+git.%h</param>
+    <param name="versionformat">2.19.0+git.%h</param>
     <param name="versionformat">@PARENT_TAG@</param>
---> 
+-->
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

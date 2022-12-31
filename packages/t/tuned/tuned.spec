@@ -18,7 +18,7 @@
 
 %define         profile_dir %{_prefix}/lib/%{name}
 Name:           tuned
-Version:        2.18.0.8+git.6f907c9
+Version:        2.19.0.29+git.b894a3e
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -139,7 +139,6 @@ Requires:       %{name} = %{version}
 %description profiles-realtime
 Additional profile(s) for the tuned daemon, targeted to realtime.
 
-
 # Do not ship SAP profiles for SLE and Leap, there are other packages
 # providing these profiles
 %if !0%{?sle_version}
@@ -202,13 +201,13 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %pre
 %service_add_pre %{name}.service
 # Avoid restoring outdated stuff in posttrans
-[ ! -f "/etc/modprobe.d/tuned.conf.rpmsave" ] || \
-  mv -f "/etc/modprobe.d/tuned.conf.rpmsave" "/etc/modprobe.d/tuned.conf.rpmsave.old" || :
-        
+[ ! -f "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave" ] || \
+  mv -f "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave" "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave.old" || :
+
 %posttrans
 # Migration of modprobe.conf files to _modprobedir
-[ ! -f "/etc/modprobe.d/tuned.conf.rpmsave" ] || \
-  mv -fv "/etc/modprobe.d/tuned.conf.rpmsave" "/etc/modprobe.d/tuned.conf" || :
+[ ! -f "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave" ] || \
+  mv -fv "%{_sysconfdir}/modprobe.d/tuned.conf.rpmsave" "%{_sysconfdir}/modprobe.d/tuned.conf" || :
 
 %preun
 %service_del_preun %{name}.service
@@ -243,6 +242,7 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %{profile_dir}/balanced
 %{profile_dir}/balanced
 %{profile_dir}/cpu-partitioning
+%{profile_dir}/cpu-partitioning-powersave
 %{profile_dir}/desktop
 %{profile_dir}/hpc-compute
 %{profile_dir}/intel-sst
@@ -260,6 +260,7 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 # not on a real install -> better do not mark it %%ghost
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/active_profile
 %config(noreplace) %{_sysconfdir}/tuned/cpu-partitioning-variables.conf
+%config(noreplace) %{_sysconfdir}/tuned/cpu-partitioning-powersave-variables.conf
 %config(noreplace) %{_sysconfdir}/tuned/tuned-main.conf
 %config(noreplace) %{_sysconfdir}/tuned/profile_mode
 %config(noreplace) %{_sysconfdir}/tuned/post_loaded_profile
@@ -273,6 +274,7 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %dir %{_sysconfdir}/tuned
 %{_mandir}/man5/tuned*
 %{_mandir}/man7/tuned-profiles-cpu-partitioning.7%{?ext_man}
+%{_mandir}/man7/tuned-profiles-cpu-partitioning-powersave.7%{?ext_man}
 %{_mandir}/man7/tuned-profiles.7%{?ext_man}
 %{_mandir}/man7/tuned-profiles-mssql.7%{?ext_man}
 %{_mandir}/man8/tuned*
