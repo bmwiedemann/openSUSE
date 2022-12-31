@@ -1,7 +1,7 @@
 #
 # spec file for package aegisub
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define version_split 3,3,2
 Name:           aegisub
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Subtitle editor
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.aegisub.org/
-Source0:        https://github.com/wangqr/Aegisub/archive/refs/tags/v3.3.2.tar.gz#/Aegisub-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM ax_boost-files.patch -- https://github.com/wangqr/Aegisub/pull/102
-Patch0:         ax_boost-files.patch
+Source0:        https://github.com/wangqr/Aegisub/archive/refs/tags/v%{version}.tar.gz#/Aegisub-%{version}.tar.gz
+Patch0:         aegisub-buildfix_autotools.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -63,17 +59,12 @@ As upstream is orphaned, this version is the wangqr fork.
 
 %prep
 %autosetup -p1 -n Aegisub-%{version}
-# Add "cached" version (as we do not build from git)
-[ -f "build/version.h" ] || cat > build/git_version.h << EOF
-#define BUILD_GIT_VERSION_NUMBER 0
-#define BUILD_GIT_VERSION_STRING "%{version}"
-#define TAGGED_RELEASE 1
-#define INSTALLER_VERSION "%{version}"
-#define RESOURCE_BASE_VERSION %{version_split}
-EOF
+
+export FORCE_GIT_VERSION=%{version}
+./build/version.sh .
+./autogen.sh
 
 %build
-autoreconf -fiv
 %configure \
     --disable-update-checker \
     --with-player-audio=PulseAudio \

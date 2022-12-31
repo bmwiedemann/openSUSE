@@ -1,2 +1,0 @@
-# this is a false positive
-addFilter(".*macro-in-comment.*%{version}.*")

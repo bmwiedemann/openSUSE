@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 29 22:16:54 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 3.3.3
+  * Pass storage size to libass to fix rendering
+  * This changes how subtitle is rendered in certain cases when using
+    libass as subtitle renderer. The behavior now matches
+	ffmpeg>=5.0.1 and VLC nightly (not included in VLC=3.0.17.4 yet)
+  * Added CoreAudio player for macOS, which supports multi channel output
+  * Allow choosing between wxStyledTextCtrl and wxTextCtrl for subtitle 
+    edit box
+  * wxSTC provides syntax highlighting
+  * wxTextCtrl is the native text editor provided by system, and may 
+    have better support for IME, right-to-left languages, etc.
+  * Shift + right-click gives native context menu when using wxTextCtrl
+  * Support for negative margin (@petzku)
+  * Fix timestamp issue when loading subtitle from MKS
+  * Fix support for embedded font in ass (@Kienyew)
+  * Fix build issues with boost>=1.76, M1 Mac, etc.
+- Add patch: aegisub-buildfix_autotools.patch to fix build with autotools
+- Drop patch: ax_boost-files.patch which is fixed upstream
+- Drop aegisub-rpmlintrc not needed anymore
+
+-------------------------------------------------------------------
 Sun Jun 26 11:31:45 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Disable s390x build, unsupported target architecture.
