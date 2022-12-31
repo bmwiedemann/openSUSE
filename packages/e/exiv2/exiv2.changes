@@ -26,7 +26,8 @@ Sat Nov 13 12:08:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
                     bsc#1189335, CVE-2021-37623,
                     bsc#1189337, CVE-2021-32815, 
                     bsc#1189340, CVE-2021-34335, 
-                    bsc#1189341, CVE-2021-37615):
+                    bsc#1189341, CVE-2021-37615, 
+                    bsc#1185003, CVE-2021-29458):
   * BMFF bug fixes including CR3 previews
   * Security fixes
   * libFuzzer target

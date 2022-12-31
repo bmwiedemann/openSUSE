@@ -47,21 +47,12 @@ BuildRequires:  graphviz-gd
 %else
 Obsoletes:      libexiv2-doc < %{version}-%{release}
 %endif
-# there is a test failure on ARM & PPC
-# upstream issue: https://github.com/Exiv2/exiv2/issues/933
-%ifarch x86_64
-%{bcond_without tests}
-%else
-%{bcond_with tests}
-%endif
-%if %{with tests}
 # testsuite:
 BuildRequires:  dos2unix
 BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  libxml2-tools
 BuildRequires:  which
-%endif
 
 %description
 Exiv2 is a command line utility to access image metadata from tags like
@@ -115,17 +106,12 @@ sed -i -e 's/CXX_STANDARD 98/CXX_STANDARD 11/' cmake/mainSetup.cmake
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CXXFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
-export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
+export CXXFLAGS="%{optflags} $(getconf LFS_CFLAGS) -Wconversion"
+export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -Wconversion"
 %cmake \
         -DCMAKE_INSTALL_DOCDIR="%{_docdir}/libexiv2" \
-%if %{with tests}
         -DEXIV2_BUILD_SAMPLES=ON \
         -DEXIV2_BUILD_UNIT_TESTS=ON \
-%else
-        -DEXIV2_BUILD_SAMPLES=OFF \
-        -DEXIV2_BUILD_UNIT_TESTS=OFF \
-%endif
         -DEXIV2_BUILD_PO=ON \
 %if %{with docs}
         -DEXIV2_BUILD_DOC=ON \
@@ -144,7 +130,6 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %install
 %cmake_install
 
-%if %{with tests}
 %check
 pushd build
 %make_build tests
@@ -188,7 +173,6 @@ for t in \
     rm -f %{buildroot}%{_bindir}/${t}
     rm -f %{buildroot}%{_prefix}/lib/debug%{_bindir}/${t}*
 done
-%endif
 
 %find_lang exiv2
 %fdupes -s %{buildroot}%{_docdir}/libexiv2
