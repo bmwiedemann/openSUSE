@@ -16,21 +16,18 @@
 #
 
 
-Name:           libxshmfence
-Version:        1.3.1
-Release:        0
 %define lname   libxshmfence1
+Name:           libxshmfence
+Version:        1.3.2
+Release:        0
 Summary:        A tiny library that exposes a event API on top of Linux futexes
 License:        HPND
 Group:          Development/Libraries/C and C++
-URL:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libxshmfence
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libxshmfence/
-Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
+Source:         https://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -45,11 +42,11 @@ but the cost of adding two FDs to the X server for every DRI application
 seems excessive, and by using PresentIdleNotify events, to work around
 the limitations of futexes.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        A tiny library that exposes a event API on top of Linux futexes
 Group:          System/Libraries
 
-%description -n %lname
+%description -n %{lname}
 This is a tiny library that exposes a event API on top of Linux
 futexes. There was some discussion about using eventfd instead of this,
 but the cost of adding two FDs to the X server for every DRI application
@@ -59,14 +56,14 @@ the limitations of futexes.
 %package devel
 Summary:        Development files for the X Shm-Fence library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description devel
 This is a tiny library that exposes a event API on top of Linux
 futexes.
 
 This package contains the development headers for the library found
-in %name.
+in %{name}.
 
 %prep
 %setup -q
@@ -74,24 +71,23 @@ in %name.
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libxshmfence.so.1*
+%files -n %{lname}
+%{_libdir}/libxshmfence.so.1*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libxshmfence.so
-%_libdir/pkgconfig/xshmfence.pc
+%license COPYING
+%doc README.md
+%{_includedir}/X11/*
+%{_libdir}/libxshmfence.so
+%{_libdir}/pkgconfig/xshmfence.pc
 
 %changelog
