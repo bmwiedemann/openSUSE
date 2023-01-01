@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec 31 10:31:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't try to generate libvdpau_virtio_gpu package on ppc64le; for
+  some reason this driver doesn't get built on this platform
+
+-------------------------------------------------------------------
+Thu Dec 29 22:21:35 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 22.3.0:
+  * See https://docs.mesa3d.org/relnotes/22.3.0.html
+- Update to version 22.3.1:
+  * See https://docs.mesa3d.org/relnotes/22.3.1.html
+- Update to version 22.3.2:
+  * See https://docs.mesa3d.org/relnotes/22.3.2.html
+- Remove the libXvMC_nouveau and libXvMC_r600 packages as XVMC
+  support was removed.
+- Add libvdpau_virtio_gpu package for VirtIO GPU.
+- Rebase n_drirc-disable-rgb10-for-chromium-on-amd.patch.
+- Rebase u_dep_xcb.patch.
+- Rebase U_fix-mpeg1_2-decode-mesa-20.2.patch.
+- Drop n_buildfix-21.3.0.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Dec  3 09:53:53 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - spefile: removed Release lines from libxatracker2, 

@@ -5106,4 +5106,27 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   builds also on Tumbleweed (boo#1205998)</comment>
     <requestid>1039772</requestid>
   </revision>
+  <revision rev="463" vrev="335">
+    <srcmd5>99cbc71d0172cb1c76c42b574f3265cb</srcmd5>
+    <version>unknown</version>
+    <time>1672562307</time>
+    <user>dimstar_suse</user>
+    <comment>- don't try to generate libvdpau_virtio_gpu package on ppc64le; for
+  some reason this driver doesn't get built on this platform
+
+- Update to version 22.3.0:
+  * See https://docs.mesa3d.org/relnotes/22.3.0.html
+- Update to version 22.3.1:
+  * See https://docs.mesa3d.org/relnotes/22.3.1.html
+- Update to version 22.3.2:
+  * See https://docs.mesa3d.org/relnotes/22.3.2.html
+- Remove the libXvMC_nouveau and libXvMC_r600 packages as XVMC
+  support was removed.
+- Add libvdpau_virtio_gpu package for VirtIO GPU.
+- Rebase n_drirc-disable-rgb10-for-chromium-on-amd.patch.
+- Rebase u_dep_xcb.patch.
+- Rebase U_fix-mpeg1_2-decode-mesa-20.2.patch.
+- Drop n_buildfix-21.3.0.patch: fixed upstream.</comment>
+    <requestid>1045933</requestid>
+  </revision>
 </revisionlist>

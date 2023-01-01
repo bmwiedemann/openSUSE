@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.2.4
+%define _version 22.3.2
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -53,14 +53,14 @@
   %define gallium_loader 0
 %endif
 
-%define xvmc_support 0
 %define vdpau_nouveau 0
 %define vdpau_radeon 0
+%define vdpau_virtio_gpu 0
 
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
-  %define xvmc_support 1
   %define vdpau_nouveau 1
   %define vdpau_radeon 1
+  %define vdpau_virtio_gpu 1
 %endif
 
 %ifarch %{ix86} x86_64 %{arm} aarch64
@@ -71,7 +71,7 @@
   %define with_opencl 1
   %ifarch %{ix86} x86_64
     %define with_vulkan 1
-    %define vulkan_drivers swrast,amd,intel
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk
   %endif
   %ifarch %{arm} aarch64
     %define with_vulkan 1
@@ -111,15 +111,15 @@
   # Not built because nouveau driver is not built.
   %define vdpau_nouveau 0
 
-  # Not built. (Why?)
-  %define xvmc_support 0
+  # Not built because virtio_gpu driver is not built.
+  %define vdpau_virtio_gpu 0
 
   # Vulkan includes radv driver which requires llvm
   %define with_vulkan 0
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.2.4
+Version:        22.3.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -139,9 +139,8 @@ Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
-Patch300:       n_buildfix-21.3.0.patch
-Patch400:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
-Patch500:       n_stop-iris-flicker.patch
+Patch300:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
+Patch400:       n_stop-iris-flicker.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -194,7 +193,6 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xshmfence)
-BuildRequires:  pkgconfig(xvmc)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
 Provides:       Mesa7 = %{version}
@@ -209,6 +207,10 @@ Obsoletes:      Mesa-nouveau3d < %{version}
 Obsoletes:      xorg-x11-Mesa < %{version}
 Provides:       s2tc = %{version}
 Obsoletes:      s2tc < %{version}
+Provides:       libXvMC_nouveau = %{version}
+Obsoletes:      libXvMC_nouveau < %{version}
+Provides:       libXvMC_r600 = %{version}
+Obsoletes:      libXvMC_r600 < %{version}
 Provides:       libtxc_dxtn = %{version}
 Obsoletes:      libtxc_dxtn < %{version}
 %ifarch %{arm} aarch64
@@ -600,26 +602,8 @@ Requires:       Mesa-libd3d = %{version}
 %description -n Mesa-libd3d-devel
 Mesa Direct3D9 state tracker development package
 
-%package -n libXvMC_nouveau
-Summary:        XVMC state tracker for Nouveau
-Group:          System/Libraries
-
-%description -n libXvMC_nouveau
-This package contains the XvMC state tracker for Nouveau. This is
-still "work in progress", i.e. expect poor video quality, choppy
-videos and artefacts all over.
-
-%package -n libXvMC_r600
-Summary:        XVMC state tracker for R600
-Group:          System/Libraries
-
-%description -n libXvMC_r600
-This package contains the XvMC state tracker for R600. This is
-still "work in progress", i.e. expect poor video quality, choppy
-videos and artefacts all over.
-
 %package -n libvdpau_nouveau
-Summary:        XVMC state tracker for Nouveau
+Summary:        VDPAU state tracker for Nouveau
 Group:          System/Libraries
 Supplements:    modalias(pci:v000010DEd*sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v000012D2d*sv*sd*bc03sc*i*)
@@ -628,7 +612,7 @@ Supplements:    modalias(pci:v000012D2d*sv*sd*bc03sc*i*)
 This package contains the VDPAU state tracker for Nouveau.
 
 %package -n libvdpau_r300
-Summary:        XVMC state tracker for R300
+Summary:        VDPAU state tracker for R300
 Group:          System/Libraries
 Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 
@@ -636,7 +620,7 @@ Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 This package contains the VDPAU state tracker for R300.
 
 %package -n libvdpau_r600
-Summary:        XVMC state tracker for R600
+Summary:        VDPAU state tracker for R600
 Group:          System/Libraries
 Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 
@@ -644,12 +628,19 @@ Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 This package contains the VDPAU state tracker for R600.
 
 %package -n libvdpau_radeonsi
-Summary:        XVMC state tracker for radeonsi
+Summary:        VDPAU state tracker for radeonsi
 Group:          System/Libraries
 Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
 
 %description -n libvdpau_radeonsi
 This package contains the VDPAU state tracker for radeonsi.
+
+%package -n libvdpau_virtio_gpu
+Summary:        VDPAU state tracker for VirtIO GPU
+Group:          System/Libraries
+
+%description -n libvdpau_virtio_gpu
+This package contains the VDPAU state tracker for VirtIO GPU.
 
 %package -n Mesa-libOpenCL
 Summary:        Mesa OpenCL implementation
@@ -769,23 +760,16 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch58 -p1
 %patch100 -p1
 %patch200 -p1
-%patch300 -p1
 %ifarch %{ix86}
-%patch400 -p1
+%patch300 -p1
 %endif
-%patch500 -p1
+%patch400 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0
 grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
   mv "%{_sourcedir}/temp" "%{_sourcedir}/baselibs.conf"
-%endif
-
-# Avoid build error for PowerPC
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1171045
-%ifarch ppc64 ppc64le
-sed -i -e s/cpp_std=gnu++11/cpp_std=gnu++14/g meson.build
 %endif
 
 %build
@@ -840,7 +824,6 @@ egl_platforms=x11,wayland
 %endif
 %if %{gallium_loader}
             -Dgallium-vdpau=true \
-            -Dgallium-xvmc=true \
             -Dgallium-va=true \
             -Dgallium-xa=true \
 %endif
@@ -900,7 +883,7 @@ rm -f %{buildroot}/%{_libdir}/libEGL.so*
 # in Mesa-libEGL-devel
 rm %{buildroot}/%{_includedir}/EGL/egl.h
 rm %{buildroot}/%{_includedir}/EGL/eglext.h
-rm %{buildroot}/%{_includedir}/EGL/eglextchromium.h
+rm %{buildroot}/%{_includedir}/EGL/eglext_angle.h
 rm %{buildroot}/%{_includedir}/EGL/eglmesaext.h
 rm %{buildroot}/%{_includedir}/EGL/eglplatform.h
 rm %{buildroot}/%{_libdir}/pkgconfig/egl.pc
@@ -1062,14 +1045,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/pkgconfig/xatracker.pc
 %endif
 
-%if %{xvmc_support}
-%files -n libXvMC_nouveau
-%{_libdir}/libXvMCnouveau.so*
-
-%files -n libXvMC_r600
-%{_libdir}/libXvMCr600.so*
-%endif
-
 %if %{vdpau_nouveau}
 %files -n libvdpau_nouveau
 %{_libdir}/vdpau/libvdpau_nouveau.so
@@ -1098,6 +1073,17 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1.0
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1.0.0
+%endif
+%endif
+
+%if %{vdpau_virtio_gpu}
+# for some reason driver doesn't get built on ppc64le
+%ifnarch ppc64le
+%files -n libvdpau_virtio_gpu
+%{_libdir}/vdpau/libvdpau_virtio_gpu.so
+%{_libdir}/vdpau/libvdpau_virtio_gpu.so.1
+%{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0
+%{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0.0
 %endif
 %endif
 
@@ -1192,6 +1178,8 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %dir %{_datadir}/vulkan/icd.d
 %{_datadir}/vulkan/icd.d/intel_icd.*.json
 %{_libdir}/libvulkan_intel.so
+%{_datadir}/vulkan/icd.d/intel_hasvk_icd.*.json
+%{_libdir}/libvulkan_intel_hasvk.so
 %endif
 
 %files -n libvulkan_radeon

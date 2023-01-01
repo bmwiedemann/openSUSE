@@ -2,15 +2,16 @@
 ---
  src/gallium/drivers/r600/evergreen_state.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
+
 --- a/src/gallium/drivers/r600/evergreen_state.c	
-+++ a/src/gallium/drivers/r600/evergreen_state.c	
-@@ -575,7 +575,8 @@ static void *evergreen_create_sampler_state(struct pipe_context *ctx,
++++ b/src/gallium/drivers/r600/evergreen_state.c	
+@@ -580,7 +580,8 @@ static void *evergreen_create_sampler_st
  						       : state->max_anisotropy;
  	unsigned max_aniso_ratio = r600_tex_aniso_filter(max_aniso);
  	bool trunc_coord = state->min_img_filter == PIPE_TEX_FILTER_NEAREST &&
 -			   state->mag_img_filter == PIPE_TEX_FILTER_NEAREST;
 +			   state->mag_img_filter == PIPE_TEX_FILTER_NEAREST &&
-+			   !state->normalized_coords;
++			   state->unnormalized_coords;
  	float max_lod = state->max_lod;
  
  	if (!ss) {

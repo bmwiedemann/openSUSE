@@ -1,10 +1,10 @@
-Index: mesa-20.2.0/src/util/00-mesa-defaults.conf
+Index: mesa-22.3.2/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-20.2.0.orig/src/util/00-mesa-defaults.conf
-+++ mesa-20.2.0/src/util/00-mesa-defaults.conf
-@@ -633,6 +633,14 @@ TODO: document the other workarounds.
-         <application name="DiRT Rally" executable="DirtRally">
-             <option name="radeonsi_prim_restart_tri_strips_only" value="true"/>
+--- mesa-22.3.2.orig/src/util/00-mesa-defaults.conf
++++ mesa-22.3.2/src/util/00-mesa-defaults.conf
+@@ -863,6 +863,14 @@ TODO: document the other workarounds.
+         <application name="Rocket League" executable="RocketLeague">
+             <option name="radeonsi_zerovram" value="true" />
          </application>
 +        <!-- This is workaround to prevent distorted colors on hardware accelerated video in Chromium. https://bugzilla.opensuse.org/show_bug.cgi?id=1113211 -->
 +        <application name="Chromium" executable="chromium">
