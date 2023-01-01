@@ -15,18 +15,17 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
  src/vesa.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/src/vesa.c b/src/vesa.c
-index b2a1922c2332..53c3d47547c7 100644
---- a/src/vesa.c
-+++ b/src/vesa.c
-@@ -453,6 +453,7 @@ VESAPciProbe(DriverPtr drv, int entity_num, struct pci_device *dev,
+Index: xf86-video-vesa-2.6.0/src/vesa.c
+===================================================================
+--- xf86-video-vesa-2.6.0.orig/src/vesa.c
++++ xf86-video-vesa-2.6.0/src/vesa.c
+@@ -479,7 +479,8 @@ VESAPciProbe(DriverPtr drv, int entity_n
+     ScrnInfoPtr pScrn;
  
  #ifdef __linux__
-     if (access("/sys/devices/platform/efi-framebuffer.0", F_OK) == 0 ||
+-    if (VESAFileExistsPrefix("/dev", "fb") || 
++    if (VESAFileExistsPrefix("/dev", "fb") ||
 +        access("/sys/devices/platform/simple-framebuffer.0", F_OK) == 0 ||
-         access("/sys/devices/platform/efifb.0", F_OK) == 0) {
-         ErrorF("vesa: Refusing to run on UEFI\n");
+         VESAFileExistsPrefix("/dev/dri", "card")) {
+         ErrorF("vesa: Refusing to run, Framebuffer or dri device present\n");
          return FALSE;
--- 
-2.31.1
-

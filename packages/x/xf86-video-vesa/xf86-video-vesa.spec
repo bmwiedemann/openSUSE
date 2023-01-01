@@ -18,14 +18,14 @@
 
 %{?x11_abi_has_dpms_get_capabilities: %{x11_abi_has_dpms_get_capabilities}}
 Name:           xf86-video-vesa
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Generic VESA video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch1:         u_Restore-palette-on-LeaveVT.patch
 Patch2:         u_DPMS-Query-DPMS-capabilites-and-query-current-state-before-changing.patch
@@ -44,7 +44,7 @@ Supplements:    xorg-x11-server
 # This was part of the xorg-x11-driver-video package up to version 7.6
 Conflicts:      xorg-x11-driver-video <= 7.6
 ExcludeArch:    s390 s390x
-%{x11_abi_videodrv_req}
+%{?x11_abi_videodrv_req}
 
 %description
 vesa is an Xorg driver for Generic VESA video cards.

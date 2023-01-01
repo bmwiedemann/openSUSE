@@ -160,4 +160,12 @@
     <comment>- set SUSE_ZNOW to 0 (boo#1197994)</comment>
     <requestid>977222</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f5881420b800985cf11180255bb9e03c</srcmd5>
+    <version>2.6.0</version>
+    <time>1672562302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045915</requestid>
+  </revision>
 </revisionlist>

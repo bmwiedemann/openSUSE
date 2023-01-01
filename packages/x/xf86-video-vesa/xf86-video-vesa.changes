@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 18 15:27:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Refuse to run if framebuffer or dri devices are present
+  * VESAValidMode: remove duplicate call to VESAGetRec
+  * VESADGASetMode: remove unused variable scrnIdx
+  * Build xz tarballs instead of bzip2
+
+-------------------------------------------------------------------
 Sat May 14 10:49:06 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - set SUSE_ZNOW to 0 (boo#1197994)
