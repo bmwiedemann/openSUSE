@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec 31 16:14:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.4
+  * Fix quoting in man page synopsis section
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * Adapt to USB HID header changes on NetBSD-8.99.9.
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Wed Apr 21 09:00:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file:

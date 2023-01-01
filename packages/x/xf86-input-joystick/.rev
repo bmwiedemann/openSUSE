@@ -67,4 +67,24 @@
     <comment></comment>
     <requestid>887234</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>15ffec18f8cff502db585dcea979ff12</srcmd5>
+    <version>1.6.4</version>
+    <time>1672562310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4
+  * Fix quoting in man page synopsis section
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * Adapt to USB HID header changes on NetBSD-8.99.9.
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1045938</requestid>
+  </revision>
 </revisionlist>
