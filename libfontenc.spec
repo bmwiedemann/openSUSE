@@ -18,7 +18,7 @@
 
 Name:           libfontenc
 %define lname	libfontenc1
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        X11 font encoding library
 License:        MIT
