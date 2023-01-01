@@ -108,4 +108,12 @@
   * Fix check for appending '|' character when applying rules</comment>
     <requestid>1029712</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b1c7aad982f5c4d65dfe38751f02897c</srcmd5>
+    <version>1.1.2</version>
+    <time>1672562304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045919</requestid>
+  </revision>
 </revisionlist>

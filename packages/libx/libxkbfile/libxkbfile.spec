@@ -16,21 +16,18 @@
 #
 
 
-Name:           libxkbfile
 %define lname	libxkbfile1
-Version:        1.1.1
+Name:           libxkbfile
+Version:        1.1.2
 Release:        0
 Summary:        X11 keyboard file manipulation library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libxkbfile
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libxkbfile/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -43,56 +40,54 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 libxkbfile is used by the X servers and utilities to parse the XKB
 configuration data files.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        X11 keyboard file manipulation library
 # O/P added for 12.2
 Group:          System/Libraries
-Provides:       xorg-x11-libxkbfile = 7.6_%version-%release
-Obsoletes:      xorg-x11-libxkbfile < 7.6_%version-%release
 Requires:       xkeyboard-config
+Provides:       xorg-x11-libxkbfile = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libxkbfile < 7.6_%{version}-%{release}
 
-%description -n %lname
+%description -n %{lname}
 libxkbfile is used by the X servers and utilities to parse the XKB
 configuration data files.
 
 %package devel
 Summary:        Development files for the X11 keyboard file manipulation library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 # O/P added for 12.2
-Provides:       xorg-x11-libxkbfile-devel = 7.6_%version-%release
-Obsoletes:      xorg-x11-libxkbfile-devel < 7.6_%version-%release
+Provides:       xorg-x11-libxkbfile-devel = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libxkbfile-devel < 7.6_%{version}-%{release}
 
 %description devel
 libxkbfile is used by the X servers and utilities to parse the XKB
 configuration data files.
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libxkbfile.so.1*
+%files -n %{lname}
+%license COPYING
+%{_libdir}/libxkbfile.so.1*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libxkbfile.so
-%_libdir/pkgconfig/xkbfile.pc
+%{_includedir}/X11/*
+%{_libdir}/libxkbfile.so
+%{_libdir}/pkgconfig/xkbfile.pc
 
 %changelog
