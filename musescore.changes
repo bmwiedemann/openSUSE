@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 29 14:17:31 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switch to RelWithDebInfo build
+- Fix Leap build issue (missing -ldl)
+- Add README.SUSE and referring notes
+- Add 8 GB disk contraints
+
+-------------------------------------------------------------------
 Sat Dec 17 11:19:50 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Do not build crashpad and remove the prebuilt crashpad binary
