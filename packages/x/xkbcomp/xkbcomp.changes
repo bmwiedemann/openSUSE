@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 18 12:55:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.6:
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+  * suppress four more warnings when 'warningLevel' is zero
+  * suppress the "Could not resolve" warning when 'warningLevel' is zero
+  * man page: remove out-of-date COPYRIGHT section
+  * Build xz tarballs instead of bzip2
+  * Fix "upercase" typo
+
+-------------------------------------------------------------------
 Sat May  1 18:27:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 
