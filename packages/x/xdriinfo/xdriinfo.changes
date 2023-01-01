@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:44:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * Ensure screenNum is always initialized
+  * Variable scope reduction
+  * Build xz tarballs instead of bzip2
+  * Update configure.ac bug URL for gitlab migration
+  * Update README for gitlab migration
+- spec file modernization
+
+-------------------------------------------------------------------
 Wed Mar  7 11:59:23 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.0.6

@@ -1,7 +1,7 @@
 #
 # spec file for package xdriinfo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xdriinfo
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Query configuration information of DRI drivers
 License:        MIT
 Group:          System/X11/Utilities
-Url:            https://wiki.freedesktop.org/dri/
-Source0:        http://ftp.x.org/pub/individual/app/%{name}-%{version}.tar.bz2
-Source1:        http://ftp.x.org/pub/individual/app/%{name}-%{version}.tar.bz2.sig
+URL:            https://wiki.freedesktop.org/dri/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(x11)
@@ -43,15 +43,15 @@ drivers (DRI).
 %build
 %configure --x-includes=%{_includedir} --x-libraries=%{_libdir}
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/xdriinfo
-%{_mandir}/man1/xdriinfo.1%{ext_man}
+%{_mandir}/man1/xdriinfo.1%{?ext_man}
 
 %changelog
