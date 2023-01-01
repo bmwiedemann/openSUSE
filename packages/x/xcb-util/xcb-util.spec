@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-util
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           xcb-util
 %define lname	libxcb-util1
-Version:        0.4.0
+Name:           xcb-util
+Version:        0.4.1
 Release:        0
 Summary:        XCB utility modules
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xcb.freedesktop.org/
-
+URL:            https://xcb.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xcb/util
 #Git-Web:	http://cgit.freedesktop.org/xcb/util/
-Source:         http://xcb.freedesktop.org/dist/%name-%version.tar.bz2
+Source:         https://xcb.freedesktop.org/dist/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.62, automake, libtool
 BuildRequires:  gperf
 BuildRequires:  pkgconfig
@@ -50,11 +48,11 @@ Included in this package are:
 - aux: Convenient access to connection setup and some core requests.
 - event: Callback X event handling.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        XCB utility modules
 Group:          System/Libraries
 
-%description -n %lname
+%description -n %{lname}
 The XCB util modules provide a number of libraries which sit on top
 of libxcb, the core X protocol library, and some of the extension
 libraries. These experimental libraries provide convenience functions
@@ -71,7 +69,7 @@ Included in this package are:
 %package devel
 Summary:        Development files for the XCB utility modules
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description devel
 The XCB util modules provide a number of libraries which sit on top
@@ -82,31 +80,30 @@ libraries also provide client-side code which is not strictly part of
 the X protocol but which have traditionally been provided by Xlib.
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libxcb-util.so.1*
+%files -n %{lname}
+%{_libdir}/libxcb-util.so.1*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/xcb
-%_libdir/libxcb-util.so
-%_libdir/pkgconfig/xcb-*.pc
+%license COPYING
+%doc README.md
+%{_includedir}/xcb
+%{_libdir}/libxcb-util.so
+%{_libdir}/pkgconfig/xcb-*.pc
 
 %changelog

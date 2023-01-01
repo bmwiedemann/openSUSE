@@ -103,4 +103,12 @@
   + Check submodules before running autoconf.</comment>
     <requestid>256845</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dcac43a5ffd856ee57ab18ab80c15556</srcmd5>
+    <version>0.4.1</version>
+    <time>1672562295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045896</requestid>
+  </revision>
 </revisionlist>
