@@ -16,14 +16,14 @@
 #
 
 
-%define commit 48c9c224cf9f82f0f9f2690b7cc6283d7448480c
+%define commit 8bad821019721b9b72701b495da95656ace5fea5
 Name:           dolphin-emu
-Version:        5.0.17269
+Version:        5.0.17995
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=5.0.17269 && c=48c9c224cf9f82f0f9f2690b7cc6283d7448480c && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=5.0.17995 && c=8bad821019721b9b72701b495da95656ace5fea5 && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-not-discord-presence.patch
 BuildRequires:  cmake

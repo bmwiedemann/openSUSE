@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec 28 20:53:15 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Updated to 5.0.17995 8bad821019721b9b72701b495da95656ace5fea5
+  * Implement Missing Features for WiiConnect24 Support
+  * Netplay: Redesign Wii Remote Data Exchange
+  * Vulkan: Use VMA for memory allocations
+  * Vulkan: Raise number of command buffers
+  * Vulkan: Allocate descriptor pools as needed
+  * Optimize GetVertexSize
+  * Cache Vertex Sizes
+  * Update EFB Peek Cache on Draw Done and Tokens
+  * D3D12: Fix Numerous hangs
+  * Add Dynamic Vertex Loaders for Ubershaders
+  * Add Emulation of Pointsize/Linewidth in Vertex Shaders
+  * Debugging: Add Support for Conditional Breakpoints
+  * Add GBA TAS Window
+  * Improve FPS/VPS Counting and Revamp Appearance
+
+-------------------------------------------------------------------
 Sun Nov 27 17:36:22 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Leap 15.4 using gcc10-c++

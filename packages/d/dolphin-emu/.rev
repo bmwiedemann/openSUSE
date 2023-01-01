@@ -33,4 +33,26 @@
     <comment>- Fix building for openSUSE Leap 15.4 using gcc10-c++</comment>
     <requestid>1038546</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6584a46a64e30c67ecd987abbbb82032</srcmd5>
+    <version>5.0.17995</version>
+    <time>1672562319</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.0.17995 8bad821019721b9b72701b495da95656ace5fea5
+  * Implement Missing Features for WiiConnect24 Support
+  * Netplay: Redesign Wii Remote Data Exchange
+  * Vulkan: Use VMA for memory allocations
+  * Vulkan: Raise number of command buffers
+  * Vulkan: Allocate descriptor pools as needed
+  * Optimize GetVertexSize
+  * Cache Vertex Sizes
+  * Update EFB Peek Cache on Draw Done and Tokens
+  * D3D12: Fix Numerous hangs
+  * Add Dynamic Vertex Loaders for Ubershaders
+  * Add Emulation of Pointsize/Linewidth in Vertex Shaders
+  * Debugging: Add Support for Conditional Breakpoints
+  * Add GBA TAS Window
+  * Improve FPS/VPS Counting and Revamp Appearance</comment>
+    <requestid>1045906</requestid>
+  </revision>
 </revisionlist>
