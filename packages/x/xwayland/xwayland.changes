@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Dec 31 15:51:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.1.7
+  * This release fixes an invalid event type mask in 
+    XTestSwapFakeInput which was inadvertently changed from octal
+    0177 to hexadecimal 0x177 in the fix for CVE-2022-46340.
+
+-------------------------------------------------------------------
+Thu Dec 15 15:15:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.1.6:
+  * Fixes CVE-2022-46340, CVE-2022-46341, CVE-2022-46342,
+    CVE-2022-46343, CVE-2022-46344, CVE-2022-4283.
+  * Xtest: disallow GenericEvents in XTestSwapFakeInput
+  * Xi: disallow passive grabs with a detail > 255
+  * Xext: free the XvRTVideoNotify when turning off from the same
+    client
+  * Xext: free the screen saver resource when replacing it
+  * Xi: return an error from XI property changes if verification
+    failed
+  * Xi: avoid integer truncation in length check of
+    ProcXIChangeProperty
+  * xkb: reset the radio_groups pointer to NULL after freeing it
+- Drop patches fixed upstream:
+  * U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
+  * U_0002-Xi-return-an-error-from-XI-property-changes-if-verif.patch
+  * U_0003-Xi-avoid-integer-truncation-in-length-check-of-ProcX.patch
+  * U_0004-Xi-disallow-passive-grabs-with-a-detail-255.patch
+  * U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
+  * U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
+  * U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 14:30:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
