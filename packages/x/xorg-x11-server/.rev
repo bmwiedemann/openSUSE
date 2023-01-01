@@ -3878,4 +3878,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     CVE-2022-46342, bsc#1205879)</comment>
     <requestid>1042895</requestid>
   </revision>
+  <revision rev="415" vrev="1">
+    <srcmd5>26d1f6a2df65eb94a4c292e5147fb447</srcmd5>
+    <version>21.1.6</version>
+    <time>1672562300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045913</requestid>
+  </revision>
 </revisionlist>

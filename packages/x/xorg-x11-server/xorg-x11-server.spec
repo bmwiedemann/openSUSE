@@ -36,16 +36,14 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.4
+Version:        21.1.6
 Release:        0
 URL:            http://xorg.freedesktop.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 Summary:        X
 # Source URL: http://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        xorg-server-%{version}.tar.xz
+Source0:        xserver-xorg-server-%{version}.tar.xz
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
 Source3:        xorgcfg.tar.bz2
@@ -246,17 +244,6 @@ Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
 
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
-Patch1204412:   U_xkb-proof-GetCountedString-against-request-length-at.patch
-Patch1204416:   U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
-
-Patch1205874:   U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
-Patch1205875:   U_0002-Xi-return-an-error-from-XI-property-changes-if-verif.patch
-Patch1205876:   U_0003-Xi-avoid-integer-truncation-in-length-check-of-ProcX.patch
-Patch1205877:   U_0004-Xi-disallow-passive-grabs-with-a-detail-255.patch
-Patch1205878:   U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
-Patch1205879:   U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
-Patch1206017:   U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
-
 %description
 This package contains the X.Org Server.
 
@@ -362,7 +349,7 @@ Group:          Development/Sources
 This package contains patched sources of X.Org Server.
 
 %prep
-%setup -q -n xorg-server-%{version} -a3
+%setup -q -n xserver-xorg-server-%{version} -a3
 # Early verification if the ABI Defines are correct. Let's not waste build cycles if the Provides are wrong at the end.
 sh %{SOURCE92} --verify . %{SOURCE91}
 
@@ -414,15 +401,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1930 -p1
 %patch1940 -p1
 %patch1960 -p1
-%patch1204412 -p1
-%patch1204416 -p1
-%patch1205874 -p1
-%patch1205875 -p1
-%patch1205876 -p1
-%patch1205877 -p1
-%patch1205878 -p1
-%patch1205879 -p1
-%patch1206017 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

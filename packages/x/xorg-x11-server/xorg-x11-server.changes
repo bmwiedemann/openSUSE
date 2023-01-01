@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Dec 19 19:54:11 UTC 2022 - dmueller@suse.com
+
+- Update to version xorg-server-21.1.6:
+  * xserver 21.1.6
+  * Xext: fix invalid event type mask in XTestSwapFakeInput
+  * xkb: fix some possible memleaks in XkbGetKbdByName
+  * xkb: proof GetCountedString against request length attacks
+  * xquartz: Fix some formatting
+  * XQuartz: stub: Call LSOpenApplication instead of fork()/exec()
+- drop the following upstream patches:
+  U_xkb-proof-GetCountedString-against-request-length-at.patch
+  U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
+
+-------------------------------------------------------------------
+Sat Dec 17 17:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version xorg-server-21.1.5:
+  * xkb: reset the radio_groups pointer to NULL after freeing it
+  * Xi: avoid integer truncation in length check of ProcXIChangeProperty
+  * Xi: return an error from XI property changes if verification failed
+  * Xext: free the screen saver resource when replacing it
+  * Xext: free the XvRTVideoNotify when turning off from the same client
+  * Xi: disallow passive grabs with a detail > 255
+  * Xtest: disallow GenericEvents in XTestSwapFakeInput
+  * meson: Don't build COMPOSITE for XQuartz
+  * xquartz: Move default applications list outside of the main executable
+  * xquartz: Remove unused macro (X11LIBDIR)
+- drop the following upstream patches:
+  U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch
+  U_0002-Xi-return-an-error-from-XI-property-changes-if-verif.patch
+  U_0003-Xi-avoid-integer-truncation-in-length-check-of-ProcX.patch
+  U_0004-Xi-disallow-passive-grabs-with-a-detail-255.patch
+  U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
+  U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
+  U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
+  
+-------------------------------------------------------------------
 Tue Dec  6 14:26:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_0007-xkb-reset-the-radio_groups-pointer-to-NULL-after-fre.patch

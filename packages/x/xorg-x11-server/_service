@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://gitlab.freedesktop.org/xorg/xserver.git</param>
     <param name="scm">git</param>
-    <param name="revision">bc111a2e</param>
+    <param name="revision">xorg-server-21.1.6</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">xorgserver(.*)</param>
     <param name="changesgenerate">enable</param>
