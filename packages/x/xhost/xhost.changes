@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:47:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.9:
+  * Simplify i18n of 'unable to get ... address for ...' error message
+  * Use gettext() to localize messages if available
+  * Recognize raw IPv6 numeric address
+  * Build xz tarballs instead of bzip2
+- add keyring, use https for download
+
+-------------------------------------------------------------------
 Fri Mar 12 21:56:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - refresh spec file (move license files) 
