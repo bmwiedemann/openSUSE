@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec 29 14:23:37 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- Update version to 5.2.0
+  * New Features
+    + uTLS New Security Type uTLS: TLS Client Hello imitation.
+      Only client without transport, or with websocket transport is
+      currently supported.
+    + DNS Support per-client configuration
+    + DNS Support specifying domain matcher
+    + Replace default Health Ping URL to HTTPS
+    + Implement Match and MatchAny for all MatcherGroup, IndexMatcher
+  * Fixes
+    + Fix typo in error message
+    + Support domain string validation
+    + Charset of ACAutomationMatcherGroup should accept all ASCII characters
+    + Fix logic of domain override
+    + Fix HTTP sniff
+    + Fix config merger fixes
+    + Fix selectLeastLoad() returns wrong number of nodes
+    + Fix(freebsd): ReadUDPMsg nil pointer
+    + fix: socks4/4a client handshake
+    + Add transport original name to listen unix
+    + fix Replace "math/rand" with "crypto/rand" in padding generation
+    + Fix remove v2ctl from debian/rules
+    + Fix getting shared flags for balance info command
+    + Fix erroneous prefix checking
+    + Fix json.Reader: fill output bytes as much as possible
+    + Guard against nil pointer dereference of (*NetworkList)
+  * Chores
+    + Add tests for idn support
+    + Refactor: replace netaddr package with netipx
+
+-------------------------------------------------------------------
 Sat Dec 25 14:01:53 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.44.0
