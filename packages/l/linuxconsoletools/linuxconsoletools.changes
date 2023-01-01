@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 26 15:19:58 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.8.1
+  * jscal can be given a specific button to use to confirm calibration
+    at each step.
+
+- update to 1.7.1
+  * inputattach supports the Gunze protocol 
+
+- update to 1.7.0
+  * The udev rules for Stelladaptor devices include more compatible devices 
+  * inputattach supports the FlySky FS-iA6B RC receiver, with kernel 5.4
+    and later 
+  * ffmvforce now needs SDL2 and pkg-config (thanks to Stefan Brüns).
+  * inputattach has a --crtscts/--no-crscts option to control CRTSCTS;
+    it also supports up to four probe-able devices checked in sequence
+  * js-set-enum-leds supports Wii controllers, XBox gamepads, and PS4
+    Dualshock 4 gamepads 
+
+- removed patch 0001-Port-ffmvforce-to-SDL2-some-bugfixes.patch - merged in upstream
+- added patch 0001-fix-bashisms.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 09:43:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

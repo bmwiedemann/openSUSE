@@ -100,4 +100,12 @@ https://build.opensuse.org/request/show/198024</comment>
     <comment></comment>
     <requestid>828013</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9a01ec582fe9b41b4b3bf344ed2a1f0d</srcmd5>
+    <version>1.8.1</version>
+    <time>1672562336</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.8.1</comment>
+    <requestid>1045928</requestid>
+  </revision>
 </revisionlist>

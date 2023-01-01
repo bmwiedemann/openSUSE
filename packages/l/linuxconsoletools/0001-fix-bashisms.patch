@@ -1,0 +1,21 @@
+diff --color -ur linuxconsoletools-1.8.1.orig/utils/js-set-enum-leds linuxconsoletools-1.8.1/utils/js-set-enum-leds
+--- linuxconsoletools-1.8.1.orig/utils/js-set-enum-leds	2019-10-05 22:29:50.000000000 +0200
++++ linuxconsoletools-1.8.1/utils/js-set-enum-leds	2022-12-26 16:15:41.539691275 +0100
+@@ -53,7 +53,7 @@
+ 			shift 1
+ 	        else
+ 			echo "set_gamepad_leds: wrong number of leds or values" 1>&2
+-			exit -1
++			exit 1
+ 		fi
+ 	done
+ }
+@@ -65,7 +65,7 @@
+ 			shift 1
+ 	        else
+ 			echo "set_multicolor_led: wrong number of leds or values" 1>&2
+-			exit -1
++			exit 1
+ 		fi
+ 	done
+ }

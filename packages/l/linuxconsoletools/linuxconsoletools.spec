@@ -1,7 +1,7 @@
 #
 # spec file for package linuxconsoletools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           linuxconsoletools
-Version:        1.6.1
+Version:        1.8.1
 Release:        0
 Summary:        A set of utilities for joysticks
 License:        GPL-2.0-or-later
 Group:          Hardware/Joystick
 URL:            http://sourceforge.net/projects/linuxconsole/
 Source0:        http://sourceforge.net/projects/linuxconsole/files/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Port-ffmvforce-to-SDL2-some-bugfixes.patch
+# PATCH-FIX-OPENSUSE 0001-fix-bashisms.patch
+Patch0:         0001-fix-bashisms.patch
 BuildRequires:  libSDL2-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  pkgconfig
@@ -49,8 +49,7 @@ The following utilities are provided to calibrate and test joysticks:
 * jstest - test joystick devices
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} \
