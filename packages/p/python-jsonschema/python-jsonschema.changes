@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 26 11:13:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Create subpackages for [format] and [format-nongpl] extras
+  * required by the tests for python-jupyter-server
+- Test in _multibuild in order to check that the rpm requirements
+  are set correctly
+
+-------------------------------------------------------------------
 Wed Nov 30 13:41:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.17.3:
