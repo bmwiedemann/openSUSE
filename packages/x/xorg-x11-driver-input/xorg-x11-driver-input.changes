@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 11 12:29:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop recommends on xf86-input-keyboard:
+  xf86-input-keyboard has dropped linux support and recommends
+  libinput or evdev instead. we already require the libinput
+  driver (bsc#1206291)
+
+-------------------------------------------------------------------
 Sun May 29 10:08:48 UTC 2016 - eich@suse.com
 
 - No longer require xf86-input-synaptics on systems later than Leap 42.1.

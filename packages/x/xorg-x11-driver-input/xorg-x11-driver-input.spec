@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-driver-input
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,12 @@ Release:        0
 Summary:        Compatibility metapackage for X.Org input drivers
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
+URL:            https://xorg.freedesktop.org/
 Source0:        README.meta
 ## Requires of packages that we split away from xorg-x11-driver-input
 Requires:       xf86-input-evdev
 ## no longer supported on sle12 (FATE#316785)
 Recommends:     xf86-input-joystick
-Recommends:     xf86-input-keyboard
 Recommends:     xf86-input-mouse
 ## Most drivers can replaced by xf86-input-libinput today. Only keep
 ## the ones with lower priority or very specific device matching rules.
@@ -44,7 +43,6 @@ Requires:       xf86-input-wacom
 ## End Requires of packages that we split away from xorg-x11-driver-input
 Provides:       %{name}-devel = %{version}
 Obsoletes:      %{name}-devel < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 ExcludeArch:    s390 s390x
 
@@ -61,7 +59,6 @@ cp %{SOURCE0} .
 %install
 
 %files
-%defattr(-,root,root)
 %doc README.meta
 
 %changelog
