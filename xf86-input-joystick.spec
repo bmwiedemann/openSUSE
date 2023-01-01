@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-joystick
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xf86-input-joystick
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Joystick input driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inputproto)
 BuildRequires:  pkgconfig(kbproto)
@@ -71,7 +71,7 @@ udevadm trigger --subsystem-match=input --action=change || :
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %dir %{_libdir}/xorg/modules/input
 %{_libdir}/xorg/modules/input/joystick_drv.so
 %{_mandir}/man4/joystick.4%{?ext_man}
