@@ -79,4 +79,12 @@ Sun Feb 12 03:35:24 UTC 2012 - jengelh@medozas.de
   * Fixed out ouf boundary accesses.</comment>
     <requestid>641122</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46694dff83fa8fd2fba8f4af28b96d3d</srcmd5>
+    <version>1.2.4</version>
+    <time>1672562297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045902</requestid>
+  </revision>
 </revisionlist>

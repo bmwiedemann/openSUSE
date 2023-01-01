@@ -1,7 +1,7 @@
 #
 # spec file for package libSM
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           libSM
 %define lname	libSM6
-Version:        1.2.3
+Name:           libSM
+Version:        1.2.4
 Release:        0
 Summary:        X Session Management library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libSM
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libSM/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ice) >= 1.0.5
@@ -49,14 +47,14 @@ that the client will save its state in such a way that the client can
 be restarted at a later time and resume its operation as if it had
 never been terminated.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        X Session Management library
 # O/P added for 12.2
 Group:          System/Libraries
-Provides:       xorg-x11-libSM = 7.6_%version-%release
-Obsoletes:      xorg-x11-libSM < 7.6_%version-%release
+Provides:       xorg-x11-libSM = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libSM < 7.6_%{version}-%{release}
 
-%description -n %lname
+%description -n %{lname}
 The X Session Management Protocol provides a uniform mechanism for
 users to save and restore their sessions. A session is a group of X
 clients (programs), each of which has a particular state. The session
@@ -70,10 +68,10 @@ never been terminated.
 %package devel
 Summary:        Development files for the X Session Management library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 # O/P added for 12.2
-Provides:       xorg-x11-libSM-devel = 7.6_%version-%release
-Obsoletes:      xorg-x11-libSM-devel < 7.6_%version-%release
+Provides:       xorg-x11-libSM-devel = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libSM-devel < 7.6_%{version}-%{release}
 
 %description devel
 The X Session Management Protocol provides a uniform mechanism for
@@ -87,32 +85,31 @@ be restarted at a later time and resume its operation as if it had
 never been terminated.
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
 
 %build
-%configure --docdir=%_docdir/%name --disable-static
-make %{?_smp_mflags}
+%configure --docdir=%{_docdir}/%{name} --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libSM.so.6*
+%files -n %{lname}
+%{_libdir}/libSM.so.6*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libSM.so
-%_libdir/pkgconfig/sm.pc
-%_docdir/%name
+%license COPYING
+%doc README.md
+%{_includedir}/X11/*
+%{_libdir}/libSM.so
+%{_libdir}/pkgconfig/sm.pc
+%{_docdir}/%{name}
 
 %changelog
