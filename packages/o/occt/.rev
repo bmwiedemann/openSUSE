@@ -158,4 +158,12 @@ includes also opencascade</comment>
     <comment></comment>
     <requestid>1002509</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b71babe1e0d43561428219d268163499</srcmd5>
+    <version>7.7.0</version>
+    <time>1672562329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045910</requestid>
+  </revision>
 </revisionlist>

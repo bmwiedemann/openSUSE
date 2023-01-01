@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Dec 29 10:53:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 7.7.0
+  * Details on
+    https://www.opencascade.com/open-cascade-technology-7-7-0-maintenance-release/
+  * General
+    + Improved compatibility with C++17/C++20 compilers
+    + Dropped support of pre-C++11 compilers
+  * Modeling
+    + New functionality is implemented, which could verify the
+      input shape to be placed on a canonical geometry with the
+      given tolerance.
+    + Introduced new tool BRepLib_PointCloudShape generating a
+      point set for a topological shape.
+    + New option in BRepOffsetAPI_MakeOffset - approximation of
+      input contours by ones consisting of 2D circular arcs and
+      2D linear segments only, it provides more stable work of
+      2D offset algorithm.
+  * Visualization
+    + Introduced new interface for creating V3d_View as subviews
+      of another V3d_View.
+    + Added smoothing to row interlaced stereoscopic output.
+    + Added word-wrapping option to Font_TextFormatter.
+    + Added support of a wide color window buffer format (10bit
+      per component / 30bit RGB).
+    + Added MSAA anti-aliasing support when using WebGL 2.0.
+    + Introduced skydome generation feature
+      3d_View::BackgroundSkydome().
+  * Mesh
+    + BRepMesh works too long and produces many free nodes on a
+      valid face problems are resolved.
+    + Meshing the shape no longer takes too long and visualization
+      problems are corrected.
+    + Wrong shading display of thrusections is fixed.
+    + Rendering issue when using deviation coefficient of low
+      value is resolved.
+    + Mesher no longer produce 'bad' result for extruded spline
+      with given deviation coefficient.
+    + Holes in triangulation with large linear deflection are
+      removed.
+    + Broken triangulation on pipe shape is fixed.
+  * Data Exchange
+    + STEP translator now supports tessellated presentations.
+    + Transformation tools BRepBuilderAPI_Transform/
+      BRepBuilderAPI_Copy now handle properly tessellated
+      presentations.
+    + glTF Writer - added support of Draco compression.
+    + Introduced DEWrapper - a unified interface to Data
+      Exchange connectors.
+    + Introduced tool XCAFDoc_Editor::RescaleGeometry() for
+      scaling geometry in XCAF document.
+  * Configuration
+    + SONAME is now configurable in CMake and includes minor
+      version in addition to major by default
+  * Documentation
+    + Improved samples / tutorials documentation.
+    + Introduced new “AIS: Custom Presentation” tutorial.
+- Drop upstream patches:
+  * fix_soversion_minor.patch
+  + fix_build.patch
+- Add fix_missing_limits_header.patch
+- Library package was split up to avoid pulling in unnecessary
+  indirect dependencies.
+
+-------------------------------------------------------------------
 Wed Sep  7 15:07:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 7.6.3

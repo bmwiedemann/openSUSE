@@ -1,0 +1,25 @@
+From b15892da313c8f8e47a4dbf749764105d639a0cf Mon Sep 17 00:00:00 2001
+From: dpasukhi <dpasukhi@opencascade.com>
+Date: Fri, 2 Dec 2022 16:08:06 +0000
+Subject: [PATCH] 0033250: Configuration - Missing Limits header file
+
+Added new include limits to fix build problem
+---
+ src/ViewerTest/ViewerTest_CmdParser.cxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ViewerTest/ViewerTest_CmdParser.cxx b/src/ViewerTest/ViewerTest_CmdParser.cxx
+index 04cb7d4b1c..a8619da144 100644
+--- a/src/ViewerTest/ViewerTest_CmdParser.cxx
++++ b/src/ViewerTest/ViewerTest_CmdParser.cxx
+@@ -21,6 +21,7 @@
+ 
+ #include <algorithm>
+ #include <iostream>
++#include <limits>
+ 
+ namespace
+ {
+-- 
+2.20.1
+
