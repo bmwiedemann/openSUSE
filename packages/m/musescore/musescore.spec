@@ -19,11 +19,10 @@
 # Internal QML imports
 %global __requires_exclude qmlimport\\((MuseScore|FileIO).*
 # Workaround boo#1189991
-%define    _lto_cflags      %{nil}
-
-%define         rname mscore
-%define         version_lesser 4.0
-%define         revision 3224f34
+%define _lto_cflags %{nil}
+%define rname   mscore
+%define version_lesser 4.0
+%define revision 5485621
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
@@ -44,6 +43,7 @@ Source1:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_License.md
 Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
 Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
+Source5:        README.SUSE
 # PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
 Patch0:         use-qtmake-qt5.patch
 BuildRequires:  cmake
@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Designer)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
+BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5NetworkAuth)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
@@ -93,6 +94,9 @@ MuseScore is a graphical music typesetter. It allows for note entry on a
 virtual note sheet. It has an integrated sequencer for immediate playing of the
 score. MuseScore can import and export MusicXml and standard MIDI files.
 
+Regarding Muse-Hub and VSTs, you should really read:
+%{_docdir}/%{name}/README.SUSE.
+
 %package fonts
 Summary:        MuseScore fonts
 License:        GPL-3.0-or-later WITH Font-exception-2.0 AND OFL-1.1
@@ -113,6 +117,7 @@ MuseScore files, used for plugin development.
 %prep
 %autosetup -p1 -n MuseScore-%{version}
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} share/sound/
+cp %{SOURCE5} .
 
 # fix EOL encoding
 sed 's/\r$//' fonts/bravura/OFL-FAQ.txt > tmpfile
@@ -127,10 +132,13 @@ sed 's/\r$//' thirdparty/rtf2html/README.ru > tmpfile
 touch -r thirdparty/rtf2html/README.ru tmpfile
 mv -f tmpfile thirdparty/rtf2html/README.ru
 
+# fix missing -ldl for Leaps
+sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src/main/CMakeLists.txt
+
 %build
 %define __builddir build.release
 %cmake \
-       -DCMAKE_BUILD_TYPE=RELEASE \
+       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIG=release \
        -DBUILD_UNIT_TESTS=OFF \
        -DUSE_SYSTEM_FREETYPE=ON \
@@ -169,10 +177,11 @@ install -p -m 644 demos/*.mscz %{buildroot}%{_datadir}/%{rname}-%{version_lesser
 # Remove opus devel files, they are provided by system
 rm -rf %{buildroot}%{_includedir}/opus
 # Delete crashpad binary
-rm -rf %{buildroot}/usr/bin/crashpad_handler
+rm -rf %{buildroot}%{_bindir}/crashpad_handler
 
 # collect doc files
 install -d -m 755 %{buildroot}%docdir
+install -p -m 644 README.SUSE                         %{buildroot}%docdir/
 install -p -m 644 thirdparty/beatroot/COPYING         %{buildroot}%docdir/COPYING.beatroot
 install -p -m 644 thirdparty/beatroot/README.txt      %{buildroot}%docdir/README.txt.beatroot
 install -p -m 644 thirdparty/dtl/COPYING              %{buildroot}%docdir/COPYING.BSD.dtl
@@ -190,6 +199,8 @@ install -p -m 644 thirdparty/singleapp/README.TXT     %{buildroot}%docdir/README
 
 install -p -m 644 tools/bww2mxml/COPYING              %{buildroot}%docdir/COPYING.bww2mxml
 install -p -m 644 tools/bww2mxml/README               %{buildroot}%docdir/README.bww2mxml
+install -p -m 644 share/sound/README.md               %{buildroot}%docdir/README.md.sound
+install -p -m 644 share/instruments/README.md         %{buildroot}%docdir/README.md.instruments
 install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYING.wallpaper
 
 %fdupes %{buildroot}/%{_prefix}
@@ -218,7 +229,7 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %dir %{_datadir}/%{rname}-%{version_lesser}
 %{_datadir}/%{rname}-%{version_lesser}/*
 %{_mandir}/man1/*
-%doc README.md
+%doc README.md README.SUSE
 %dir %docdir
 %doc %docdir/*
 
@@ -230,14 +241,14 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %doc fonts/bravura/bravura-text.md
 %doc fonts/bravura/OFL-FAQ.txt
 %doc fonts/bravura/OFL.txt
-%doc fonts/campania/LICENSE
+%license fonts/campania/LICENSE
 %doc fonts/gootville/readme.txt
 
 # see section 'unique names for font docs' above
 %doc fonts/edwin/README.md.edwin
-%doc fonts/edwin/LICENSE.txt.edwin
+%license fonts/edwin/LICENSE.txt.edwin
 %doc fonts/leland/README.md.leland
-%doc fonts/leland/LICENSE.txt.leland
+%license fonts/leland/LICENSE.txt.leland
 
 %files devel
 %license LICENSE.GPL
