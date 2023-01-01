@@ -19,7 +19,7 @@
 %global somajor 12
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        22.3.1
+Version:        22.3.2
 Release:        0
 Summary:        Intel Graphics Memory Management Library Package
 License:        MIT
@@ -30,7 +30,7 @@ Source1:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %ix86 x86_64 %x86_64
 
 %description
 The Intel Graphics Memory Management Library provides device specific

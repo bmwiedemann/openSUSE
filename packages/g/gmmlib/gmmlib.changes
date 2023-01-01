@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 15 10:39:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.2:
+  * Fix tiling selection
+  * Align SURFTYPE_3D surfaces
+  * Correct max surface size
+- enable building for x86_64 micro-level architectures
+
+-------------------------------------------------------------------
 Sun Dec  4 20:29:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.1:
