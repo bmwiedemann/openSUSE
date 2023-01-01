@@ -4627,7 +4627,6 @@
     <package name="xen-tools-domU" supportstatus="unsupported"/> <!-- reason: dvd:xen-tools-domU -->
     <package name="xf86-input-evdev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-input-joystick" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="xf86-input-keyboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-input-libinput" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xf86-input-vmmouse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="xf86-input-wacom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5121,6 +5120,7 @@
     <package name="libtsan2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libudev1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libunistring5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libuuid-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libuuid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libv4l2rds0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libvamp-hostsdk3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
