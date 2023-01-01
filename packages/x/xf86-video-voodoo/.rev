@@ -73,4 +73,12 @@
   * fixes build against xorg-server 1.17</comment>
     <requestid>284502</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8ebb86a2b991479e098316ed7f1f69d3</srcmd5>
+    <version>1.2.6</version>
+    <time>1672562321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045914</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 18 15:32:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.6:
+  * Remove miInitializeBackingStore
+    Stop using deprecated xf86PciInfo.h
+    Fix spelling/wording issues
+    Build xz tarballs instead of bzip2
+    Update configure.ac bug URL for gitlab migration
+    autogen: add default patch prefix
+    autogen.sh: use quoted string variables
+    autogen.sh: use exec instead of waiting for configure to finish
+    autogen.sh: Honor NOCONFIGURE=1
+    configure: Drop AM_MAINTAINER_MODE
+    don't use PCITAG in struct anymore
+- drop U_don-t-use-PCITAG-in-struct-anymore.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Feb  6 15:03:35 UTC 2015 - sndirsch@suse.com
 
 - U_don-t-use-PCITAG-in-struct-anymore.patch
