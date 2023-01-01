@@ -1,0 +1,38 @@
+From 9b643070f6b88c5733d525c1eda8a17f9116d7ff Mon Sep 17 00:00:00 2001
+From: Uwe <donovaly@users.noreply.github.com>
+Date: Mon, 12 Dec 2022 11:28:07 +0100
+Subject: [PATCH] Revert unused parameter warning change
+
+This reverts partially commit 38e0f1da25a1826510c68cb10a8731ebef895eaf.
+---
+ src/Mod/PartDesign/App/FeatureSketchBased.cpp | 1 +
+ src/Mod/PartDesign/App/FeatureSketchBased.h   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/Mod/PartDesign/App/FeatureSketchBased.cpp b/src/Mod/PartDesign/App/FeatureSketchBased.cpp
+index 5d35bd08f5..21485b1dee 100644
+--- a/src/Mod/PartDesign/App/FeatureSketchBased.cpp
++++ b/src/Mod/PartDesign/App/FeatureSketchBased.cpp
+@@ -449,6 +449,7 @@ void ProfileBased::getFaceFromLinkSub(TopoDS_Face& upToFace, const App::Property
+ 
+ void ProfileBased::getUpToFace(TopoDS_Face& upToFace,
+                               const TopoDS_Shape& support,
++                              const TopoDS_Face& supportface,
+                               const TopoDS_Shape& sketchshape,
+                               const std::string& method,
+                               const gp_Dir& dir)
+diff --git a/src/Mod/PartDesign/App/FeatureSketchBased.h b/src/Mod/PartDesign/App/FeatureSketchBased.h
+index db892d15f4..62629e288b 100644
+--- a/src/Mod/PartDesign/App/FeatureSketchBased.h
++++ b/src/Mod/PartDesign/App/FeatureSketchBased.h
+@@ -134,6 +134,7 @@ protected:
+     /// Find a valid face to extrude up to
+     static void getUpToFace(TopoDS_Face& upToFace,
+                             const TopoDS_Shape& support,
++                            const TopoDS_Face& supportface,
+                             const TopoDS_Shape& sketchshape,
+                             const std::string& method,
+                             const gp_Dir& dir);
+-- 
+2.38.1
+

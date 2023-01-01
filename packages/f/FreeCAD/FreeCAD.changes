@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 30 00:55:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with OpenCASCADE 7.7.0, add
+  * 0001-Part-OCCError.h-remove-unneeded-includes.patch
+  * 0001-Drawing-add-missing-include.patch
+  * 0001-FEM-add-missing-include.patch
+  * 0001-Revert-unused-parameter-warning-change.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 19:57:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.20.2:

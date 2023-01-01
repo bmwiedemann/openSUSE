@@ -40,6 +40,14 @@ Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Part-OCCError.h-remove-unneeded-includes.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Drawing-add-missing-include.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-FEM-add-missing-include.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         0001-Revert-unused-parameter-warning-change.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
