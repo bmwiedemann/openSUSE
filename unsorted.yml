@@ -9787,10 +9787,6 @@ unsorted:
   - libXvMC-devel 
   - libXvMC-devel-32bit: [x86_64] 
   - libXvMC1-32bit: [x86_64] 
-  - libXvMC_nouveau 
-  - libXvMC_nouveau-32bit: [x86_64] 
-  - libXvMC_r600 
-  - libXvMC_r600-32bit: [x86_64] 
   - libXvnc-devel 
   - libXxf86dga-devel 
   - libXxf86dga-devel-32bit: [x86_64] 
@@ -13018,7 +13014,13 @@ unsorted:
   - libopenblas_serial-devel-32bit: [x86_64] 
   - libopenblas_serial0 
   - libopenblas_serial0-32bit: [x86_64] 
-  - libopencascade7_6 
+  - libopencascade-applicationframework7_7 
+  - libopencascade-dataexchange7_7 
+  - libopencascade-draw7_7 
+  - libopencascade-foundationclasses7_7 
+  - libopencascade-modelingalgorithms7_7 
+  - libopencascade-modelingdata7_7 
+  - libopencascade-visualization7_7 
   - libopencl-clang11: [x86_64] 
   - libopencsd1 
   - libopencsd_c_api1 
@@ -14818,7 +14820,7 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit: [x86_64] 
-  - libuuid-devel 
+  - libuuid-devel: [i586] # devel package of common_locks:util-linux-lang 
   - libuuid-devel-32bit: [x86_64] 
   - libuuid-devel-static 
   - libuv-devel 
@@ -14884,6 +14886,8 @@ unsorted:
   - libvdpau_trace1-32bit: [x86_64] 
   - libvdpau_va_gl1 
   - libvdpau_va_gl1-32bit: [x86_64] 
+  - libvdpau_virtio_gpu 
+  - libvdpau_virtio_gpu-32bit: [x86_64] 
   - libventrilo3-0 
   - libventrilo3-devel 
   - libverdict1_4 
@@ -23759,6 +23763,8 @@ unsorted:
   - python310-jsonref 
   - python310-jsonrpclib-pelix 
   - python310-jsonschema: [i586] 
+  - python310-jsonschema-format 
+  - python310-jsonschema-format-nongpl 
   - python310-jsonschema-spec 
   - python310-jsonslicer 
   - python310-jsonxs 
@@ -24618,6 +24624,9 @@ unsorted:
   - python310-pytest-instafail 
   - python310-pytest-isort 
   - python310-pytest-json-report 
+  - python310-pytest-jupyter 
+  - python310-pytest-jupyter-client 
+  - python310-pytest-jupyter-server 
   - python310-pytest-lazy-fixture 
   - python310-pytest-listener 
   - python310-pytest-localserver 
@@ -27096,6 +27105,8 @@ unsorted:
   - python38-jsonref 
   - python38-jsonrpclib-pelix 
   - python38-jsonschema 
+  - python38-jsonschema-format 
+  - python38-jsonschema-format-nongpl 
   - python38-jsonschema-spec 
   - python38-jsonslicer 
   - python38-jsonxs 
@@ -27982,6 +27993,9 @@ unsorted:
   - python38-pytest-instafail 
   - python38-pytest-isort 
   - python38-pytest-json-report 
+  - python38-pytest-jupyter 
+  - python38-pytest-jupyter-client 
+  - python38-pytest-jupyter-server 
   - python38-pytest-lazy-fixture 
   - python38-pytest-listener 
   - python38-pytest-localserver 
@@ -30481,6 +30495,8 @@ unsorted:
   - python39-jsonref 
   - python39-jsonrpclib-pelix 
   - python39-jsonschema 
+  - python39-jsonschema-format 
+  - python39-jsonschema-format-nongpl 
   - python39-jsonschema-spec 
   - python39-jsonslicer 
   - python39-jsonxs 
@@ -31370,6 +31386,9 @@ unsorted:
   - python39-pytest-instafail 
   - python39-pytest-isort 
   - python39-pytest-json-report 
+  - python39-pytest-jupyter 
+  - python39-pytest-jupyter-client 
+  - python39-pytest-jupyter-server 
   - python39-pytest-lazy-fixture 
   - python39-pytest-listener 
   - python39-pytest-localserver 
