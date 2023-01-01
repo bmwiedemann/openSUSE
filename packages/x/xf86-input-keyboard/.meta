@@ -1,5 +1,0 @@
-<package name="xf86-input-keyboard" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="X11:XOrg" package="xf86-input-keyboard"/>
-</package>
