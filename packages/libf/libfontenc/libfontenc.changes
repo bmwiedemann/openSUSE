@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  9 22:35:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.7:
+  * configure: Use AC_SYS_LARGEFILE to enable large file support
+
+-------------------------------------------------------------------
 Wed Aug 31 09:07:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.6
