@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sat Dec 31 19:48:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.3.post2
+  * Improvements in optimal and flatsys modules, updated passivity
+    module, gain scheduling support, bug fixes
+  * Handle t_eval for static systems in input_output_response by
+    @murrayrm in #743
+  * add GitHub URL for PyPi by @andriyor in #708
+  * Remove Deprecated API calls to Pytest, SciPy <1.3, Python 2 by
+    @bnavigator in #745
+  * Add passivity module, ispassive function, and passivity_test.
+    Introduces optional dependency cvxopt. by @Mark-Yeatman in #739
+  * Slycot source uses setuptools_scm now by @bnavigator in #751
+  * Passivity indices and support for discrete time systems. by
+    @Mark-Yeatman in #750
+  * Switch CI to mambaforge and conda-forge channel by @bnavigator
+    in #757
+  * Fix timebase bug in InterconnectedSystem (issue #754) by
+    @murrayrm in #755
+  * fix issue with slycot balred change in state by @bnavigator in
+    #762
+  * Build system and test suite update by @bnavigator in #759
+  * fix control.matlab.lsim bug for discrete time system by
+    @murrayrm in #765
+  * Add B-splines and solve_flat_ocp to flatsys by @murrayrm in
+    #763
+  * CI: switch slycot and cvxopt installation order by @murrayrm in
+    #769
+  * Fixed a couple of typos in documentation by @fredrhen in #775
+  * Allow new matplotlib 3.6 error message in kwargs tests by
+    @bnavigator in #777
+  * Move sys._update_params(params) before TimeResponseData return
+    when nstate == 0 by @hyumo in #774
+  * Update MANIFEST.in by @bnavigator in #779
+  * Improve compatibility of state space representation using LaTeX
+    by @gonmolina in #780
+  * Fix interconnect type conversion bug for StateSpace systems by
+    @murrayrm in #788
+  * fix _isstatic() to use nstates==0 by @murrayrm in #790
+  * fix error when an IOSystem is combined with a TransferFunction
+    system by @sawyerbfuller in #793
+  * check for and fix mutable keyword defaults by @murrayrm in #794
+  * Fixes for bugs found by pylint by @roryyorke in #795
+  * Support Python 3.11 and drop Python 3.7 by @bnavigator in #796
+  * Fix find_eqpt when y0 is None by @adswid in #798
+  * Preserve signal names upon conversion to discrete-time by
+    @sawyerbfuller in #797
+  * Update benchmarks to help with optimal control tuning by
+    @murrayrm in #800
+  * Update optimal.rst by @htadashi in #802
+  * Add collocation method for optimal control problems by
+    @murrayrm in #799
+  * Update README.rst by @sawyerbfuller in #810
+  * Update docstring for impulse for discrete sys by @sawyerbfuller
+    in #812
+  * Enable scalar division of state-space objects by @roryyorke in
+    #811
+  * fix gain handling in rlocus and sisotool by @sawyerbfuller in
+    #809
+  * Removed epsilon perturbation value in solve_passivity_LMI. Fix
+    associated unit test. by @Mark-Yeatman in #814
+  * docstring improvements by @sawyerbfuller in #804
+  * add zpk() function by @murrayrm in #816
+  * Fix readthedocs to use pip-based install by @murrayrm in #817
+  * Relax comparison of floats in tests by @bnavigator in #818
+  * Add test matrix against operating environments by @murrayrm in
+    #821
+  * Update find_eqpts to handle discrete time systems by @murrayrm
+    in #824
+  * Small fixes and tweaks by @murrayrm in #826
+  * update docs to use use numpydoc + linkcode by @murrayrm in #828
+  * Add gain scheduling to create_statefbk_iosystem() by @murrayrm
+    in #827
+  * continuous time system support for create_estimator_iosystem by
+    @murrayrm in #829
+  * Small docstring fixes for release by @murrayrm in #832 
+- Drop control-pr777-mpl36.patch, upstreamed
+
+-------------------------------------------------------------------
 Fri Dec 23 20:09:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add control-pr777-mpl36.patch

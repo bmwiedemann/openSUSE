@@ -222,4 +222,41 @@
   gh#python-control/python-control#777</comment>
     <requestid>1045112</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2ae08cf5ad179534c5ac374f5c5c3d6e</srcmd5>
+    <version>0.9.3.post2</version>
+    <time>1672562347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3.post2
+  * Improvements in optimal and flatsys modules, updated passivity
+    module, gain scheduling support, bug fixes
+  * Handle t_eval for static systems in input_output_response by
+    @murrayrm in #743
+  * add GitHub URL for PyPi by @andriyor in #708
+  * Remove Deprecated API calls to Pytest, SciPy &lt;1.3, Python 2 by
+    @bnavigator in #745
+  * Add passivity module, ispassive function, and passivity_test.
+    Introduces optional dependency cvxopt. by @Mark-Yeatman in #739
+  * Slycot source uses setuptools_scm now by @bnavigator in #751
+  * Passivity indices and support for discrete time systems. by
+    @Mark-Yeatman in #750
+  * Switch CI to mambaforge and conda-forge channel by @bnavigator
+    in #757
+  * Fix timebase bug in InterconnectedSystem (issue #754) by
+    @murrayrm in #755
+  * fix issue with slycot balred change in state by @bnavigator in
+    #762
+  * Build system and test suite update by @bnavigator in #759
+  * fix control.matlab.lsim bug for discrete time system by
+    @murrayrm in #765
+  * Add B-splines and solve_flat_ocp to flatsys by @murrayrm in
+    #763
+  * CI: switch slycot and cvxopt installation order by @murrayrm in
+    #769
+  * Fixed a couple of typos in documentation by @fredrhen in #775
+  * Allow new matplotlib 3.6 error message in kwargs tests by
+    @bnavigator in #777
+  * Move sys._update_params(params) before TimeResponseData return (forwarded request 1045948 from bnavigator)</comment>
+    <requestid>1045949</requestid>
+  </revision>
 </revisionlist>

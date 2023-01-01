@@ -17,33 +17,33 @@
 
 
 Name:           python-control
-Version:        0.9.2
+Version:        0.9.3.post2
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM control-pr777-mpl36.patch gh#python-control/python-control#777
-Patch1:         control-pr777-mpl36.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib
 Requires:       python-numpy
-Requires:       python-scipy
+Requires:       python-scipy >= 1.3
 Recommends:     python-slycot
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib-qt5}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module slycot}
 BuildRequires:  libjemalloc2
 # /SECTION
@@ -55,7 +55,7 @@ operations for analysis and design of feedback control systems.
 
 %prep
 %autosetup -p1 -n control-%{version}
-#remove shebang
+# remove shebang from testfiles which could be theoretically run standalone, but we don't do this
 sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 
 %build
