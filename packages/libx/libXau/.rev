@@ -103,4 +103,12 @@
   * XauReadAuth: move failure handling code to a common code block</comment>
     <requestid>999539</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>157a824e988ce4b86e12528bccb2626d</srcmd5>
+    <version>1.0.11</version>
+    <time>1672562304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045918</requestid>
+  </revision>
 </revisionlist>

@@ -16,20 +16,18 @@
 #
 
 
-Name:           libXau
 %define lname	libXau6
-Version:        1.0.10
+Name:           libXau
+Version:        1.0.11
 Release:        0
 Summary:        X11 authorization protocol library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXau
 #Git-Web:       http://cgit.freedesktop.org/xorg/lib/libXau/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -44,14 +42,14 @@ specifying authorization data in the connection setup block to
 restrict use of the display to only those clients that show that they
 know a server-specific key called a "magic cookie".
 
-%package -n %lname
+%package -n %{lname}
 Summary:        X11 authorization protocol library
 # O/P added for 12.2
 Group:          System/Libraries
-Provides:       xorg-x11-libXau = 7.6_%version-%release
-Obsoletes:      xorg-x11-libXau < 7.6_%version-%release
+Provides:       xorg-x11-libXau = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libXau < 7.6_%{version}-%{release}
 
-%description -n %lname
+%description -n %{lname}
 libXau provides mechanisms for individual access to an X Window
 System display. It uses existing core protocol and library hooks for
 specifying authorization data in the connection setup block to
@@ -61,10 +59,10 @@ know a server-specific key called a "magic cookie".
 %package devel
 Summary:        Development files for the X11 authorization protocol library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 # O/P added for 12.2
-Provides:       xorg-x11-libXau-devel = 7.6_%version-%release
-Obsoletes:      xorg-x11-libXau-devel < 7.6_%version-%release
+Provides:       xorg-x11-libXau-devel = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libXau-devel < 7.6_%{version}-%{release}
 
 %description devel
 libXau provides mechanisms for individual access to an X Window
@@ -74,33 +72,31 @@ restrict use of the display to only those clients that show that they
 know a server-specific key called a "magic cookie".
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
-%fdupes %buildroot/%_prefix
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
+%fdupes %{buildroot}/%{_prefix}
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libXau.so.6*
+%files -n %{lname}
+%license COPYING
+%{_libdir}/libXau.so.6*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libXau.so
-%_libdir/pkgconfig/xau.pc
-%_mandir/man3/*
+%{_includedir}/X11/*
+%{_libdir}/libXau.so
+%{_libdir}/pkgconfig/xau.pc
+%{_mandir}/man3/*
 
 %changelog

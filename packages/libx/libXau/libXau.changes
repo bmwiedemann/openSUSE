@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  8 20:35:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.11:
+    configure: Use AC_SYS_LARGEFILE to enable large file support
+- modernize spec file, install license into licensedir
+
+-------------------------------------------------------------------
 Sat Aug 27 08:55:26 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.10
