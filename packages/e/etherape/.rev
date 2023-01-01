@@ -300,4 +300,12 @@ Apologies for the delay in fixing it. (forwarded request 212315 from dimstar)</c
 - spec-cleaner (forwarded request 973579 from dirkmueller)</comment>
     <requestid>973580</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>09204f3ab7d8e9b516955d1196c632fe</srcmd5>
+    <version>0.9.20</version>
+    <time>1672562338</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional desktopfile for root. (forwarded request 1045825 from ecsos)</comment>
+    <requestid>1045927</requestid>
+  </revision>
 </revisionlist>

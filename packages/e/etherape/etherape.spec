@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(goocanvas-2.0)
 BuildRequires:  pkgconfig(popt)
 Requires(post): update-desktop-files
 Requires(postun):update-desktop-files
+Requires:       xdg-utils
 Recommends:     %{name}-lang
 %if 0%{?is_opensuse}
 BuildRequires:  autoconf-archive
@@ -63,7 +64,15 @@ show and can read traffic from a file as well as live from the network.
 
 %install
 %make_install
+
+# desktop file
+# additional root desktop file
+cp %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}-su.desktop
+sed -i -e 's|Name=EtherApe|Name=EtherApe - Super User Mode|g' %{buildroot}%{_datadir}/applications/%{name}-su.desktop
+sed -i -e 's|Exec=etherape|Exec=xdg-su -c etherape|g' %{buildroot}%{_datadir}/applications/%{name}-su.desktop
 %suse_update_desktop_file %{name} System Network
+%suse_update_desktop_file %{name}-su System Network
+
 %find_lang %{name}
 %fdupes -s %{buildroot}
 
@@ -80,6 +89,7 @@ show and can read traffic from a file as well as live from the network.
 %doc TODO NEWS README* AUTHORS ABOUT-NLS
 %{_bindir}/etherape
 %{_datadir}/applications/etherape.desktop
+%{_datadir}/applications/etherape-su.desktop
 %{_datadir}/etherape
 %{_mandir}/man1/etherape.1%{?ext_man}
 %{_datadir}/pixmaps/etherape.png
