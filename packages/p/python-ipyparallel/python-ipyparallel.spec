@@ -25,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
 Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
 Source99:       python-ipyparallel-rpmlintrc
-# SECTION build-syste requirements
+# PATCH-FIX-UPSTREAM ipyparallel-pr729+pr753-deprecationfilters.patch gh#ipython/ipyparallel#729, gh#ipython/ipyparallel#753
+Patch1:         ipyparallel-pr729+pr753-deprecationfilters.patch
+# SECTION build-system requirements
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyterlab >= 3}
@@ -108,11 +110,11 @@ Obsoletes:      %{python_module jupyter_ipyparallel-doc < %{version}}
 Documentation and help files for ipyparallel.
 
 %prep
-%setup -q -n ipyparallel-%{version}
+%autosetup -p1 -n ipyparallel-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %pyproject_wheel
-sed -i 's/--color=yes//' pyproject.toml
 
 %install
 %pyproject_install

@@ -1,0 +1,65 @@
+From 7707f25fd6c6e784849fa0ed041b1fd2b30302d4 Mon Sep 17 00:00:00 2001
+From: Mattias Ellert <mattias.ellert@physics.uu.se>
+Date: Sat, 25 Jun 2022 12:22:12 +0200
+Subject: [PATCH] More backward compatibility
+
+---
+ ipyparallel/controller/sqlitedb.py | 7 ++++++-
+ pyproject.toml                     | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/ipyparallel/controller/sqlitedb.py b/ipyparallel/controller/sqlitedb.py
+index 406711c4..473ce008 100644
+--- a/ipyparallel/controller/sqlitedb.py
++++ b/ipyparallel/controller/sqlitedb.py
+@@ -17,7 +17,12 @@
+     sqlite3 = None
+ 
+ from dateutil.parser import parse as dateutil_parse
+-from jupyter_client.jsonutil import json_default
++
++try:
++    from jupyter_client.jsonutil import json_default
++except ImportError:
++    from jupyter_client.jsonutil import date_default as json_default
++
+ from tornado import ioloop
+ from traitlets import Dict, Instance, List, Unicode
+ 
+diff --git a/pyproject.toml b/pyproject.toml
+index 2e75ca99..6c2de676 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -134,6 +134,7 @@ filterwarnings = [
+   "ignore:unclosed file <_io.BufferedRandom>:ResourceWarning",
+   # from older versions of ipykernel
+   "ignore:the imp module is:DeprecationWarning",
++  "ignore:The distutils package is:DeprecationWarning"
+ ]
+ 
+ [tool.tbump]
+
+From 6073ce3da62a899db2481a32caae40245d37d3aa Mon Sep 17 00:00:00 2001
+From: Steven Silvester <steven.silvester@ieee.org>
+Date: Wed, 9 Nov 2022 09:23:15 -0600
+Subject: [PATCH] Handle deprecation in Jupyter Core
+
+---
+ pyproject.toml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 8de7b11d..327c9b12 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -135,7 +135,9 @@ filterwarnings = [
+   "ignore:unclosed file <_io.BufferedRandom>:ResourceWarning",
+   # from older versions of ipykernel
+   "ignore:the imp module is:DeprecationWarning",
+-  "ignore:The distutils package is:DeprecationWarning"
++  "ignore:The distutils package is:DeprecationWarning",
++  # new behavior in Jupyter Core 5.0+
++  "module:Jupyter is migrating its paths to use standard platformdirs:DeprecationWarning",
+ ]
+ 
+ [tool.tbump]

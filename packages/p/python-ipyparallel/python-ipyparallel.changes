@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 31 15:49:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add deprecation warnings filters
+  * ipyparallel-pr729+pr753-deprecationfilters.patch
+  * gh#ipython/ipyparallel#729
+  * gh#ipython/ipyparallel#753
+
+-------------------------------------------------------------------
 Thu Jul  7 18:13:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 8.4.1

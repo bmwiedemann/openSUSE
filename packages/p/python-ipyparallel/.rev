@@ -273,4 +273,16 @@
   jupyter extension package (forwarded request 987744 from bnavigator)</comment>
     <requestid>987745</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a82f30650ae717610b23881cda3a4847</srcmd5>
+    <version>8.4.1</version>
+    <time>1672562345</time>
+    <user>dimstar_suse</user>
+    <comment>- Add deprecation warnings filters
+  * ipyparallel-pr729+pr753-deprecationfilters.patch
+  * gh#ipython/ipyparallel#729
+  * gh#ipython/ipyparallel#753
+</comment>
+    <requestid>1045944</requestid>
+  </revision>
 </revisionlist>
