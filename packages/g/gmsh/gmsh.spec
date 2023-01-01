@@ -22,7 +22,7 @@
 # julia dropped from oS:Factory [2022-06-10 13:57:27]
 %bcond_with julia
 Name:           gmsh
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later

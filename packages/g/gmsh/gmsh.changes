@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 28 10:39:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.11.1
+  * Mesh.TransfiniteTri improvements
+  * small bug fixes
+
+-------------------------------------------------------------------
 Tue Nov  8 17:26:09 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.11.0
