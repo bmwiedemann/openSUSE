@@ -139,4 +139,12 @@ Thu Feb  9 18:26:26 UTC 2012 - jengelh@medozas.de
   * configure: Use AC_SYS_LARGEFILE to enable large file support</comment>
     <requestid>1040585</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d4d512fc4d3bb8d244447b07e23b403b</srcmd5>
+    <version>1.1.1</version>
+    <time>1672562306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045921</requestid>
+  </revision>
 </revisionlist>

@@ -16,21 +16,18 @@
 #
 
 
-Name:           libICE
 %define lname	libICE6
-Version:        1.1.0
+Name:           libICE
+Version:        1.1.1
 Release:        0
 Summary:        X11 Inter-Client Exchange Library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libICE
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libICE/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
+Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch0:         U_ICEmsg-Fix-C-interoperability-error-due-to-static_as.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -49,14 +46,14 @@ framework for building such protocols, allowing them to make use of
 common negotiation mechanisms and to be multiplexed over a single
 transport connection.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        X11 Inter-Client Exchange Library
 # O/P added for 12.2
 Group:          System/Libraries
-Provides:       xorg-x11-libICE = 7.6_%version-%release
-Obsoletes:      xorg-x11-libICE < 7.6_%version-%release
+Provides:       xorg-x11-libICE = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libICE < 7.6_%{version}-%{release}
 
-%description -n %lname
+%description -n %{lname}
 The Inter-Client Exchange (ICE) protocol is intended to provide a
 framework for building such protocols, allowing them to make use of
 common negotiation mechanisms and to be multiplexed over a single
@@ -65,10 +62,10 @@ transport connection.
 %package devel
 Summary:        Development files for the X11 Inter-Client Exchange Library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 # O/P added for 12.2
-Provides:       xorg-x11-libICE-devel = 7.6_%version-%release
-Obsoletes:      xorg-x11-libICE-devel < 7.6_%version-%release
+Provides:       xorg-x11-libICE-devel = 7.6_%{version}-%{release}
+Obsoletes:      xorg-x11-libICE-devel < 7.6_%{version}-%{release}
 
 %description devel
 The Inter-Client Exchange (ICE) protocol is intended to provide a
@@ -77,34 +74,31 @@ common negotiation mechanisms and to be multiplexed over a single
 transport connection.
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 autoreconf -fi
-%configure --docdir=%_docdir/%name --disable-static
-make %{?_smp_mflags}
+%configure --docdir=%{_docdir}/%{name} --disable-static
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libICE.so.6*
+%files -n %{lname}
+%license COPYING
+%{_libdir}/libICE.so.6*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libICE.so
-%_libdir/pkgconfig/ice.pc
-%_docdir/%name
+%{_includedir}/X11/*
+%{_libdir}/libICE.so
+%{_libdir}/pkgconfig/ice.pc
+%{_docdir}/%{name}
 
 %changelog

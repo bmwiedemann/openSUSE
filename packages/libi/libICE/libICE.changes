@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  8 20:57:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * ICEmsg: Fix C++ interoperability error due to static_assert define
+- drop U_ICEmsg-Fix-C-interoperability-error-due-to-static_as.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Dec  6 10:20:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_ICEmsg-Fix-C-interoperability-error-due-to-static_as.patch
