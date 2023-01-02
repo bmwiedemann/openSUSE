@@ -573,4 +573,41 @@
     <comment></comment>
     <requestid>1038587</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb936340e5564b06d5643f086d796f15</srcmd5>
+    <version>0.36.0</version>
+    <time>1672668133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.36.0:
+  * docs: improve compliance docs (#3340)
+  * feat(deps): add yarn lock dependency tree (#3348)
+  * fix: compliance change id and title naming (#3349)
+  * feat: add support for mix.lock files for elixir language (#3328)
+  * feat: add k8s cis bench (#3315)
+  * test: disable SearchLocalStoreByNameOrDigest test for non-amd64 arch (#3322)
+  * revert: cache merged layers (#3334)
+  * feat(cyclonedx): add recommendation (#3336)
+  * feat(ubuntu): added support ubuntu ESM versions (#1893)
+  * fix: change logic to build relative paths for skip-dirs and skip-files (#3331)
+  * chore(deps): bump github.com/hashicorp/golang-lru from 0.5.4 to 2.0.1 (#3265)
+  * feat: Adding support for Windows testing (#3037)
+  * feat: add support for Alpine 3.17 (#3319)
+  * docs: change PodFile.lock to Podfile.lock (#3318)
+  * fix(sbom): support for the detection of old CycloneDX predicate type (#3316)
+  * feat(secret): Use .trivyignore for filtering secret scanning result (#3312)
+  * chore(go): remove experimental FS API usage in Wasm (#3299)
+  * ci: add workflow to add issues to roadmap project (#3292)
+  * fix(vuln): include duplicate vulnerabilities with different package paths in the final report (#3275)
+  * chore(deps): bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#3250)
+  * feat(sbom): better support for third-party SBOMs (#3262)
+  * docs: add information about languages with support for dependency locations (#3306)
+  * feat(vm): add `region` option to vm scan to be able to scan any region's ami and ebs snapshots (#3284)
+  * chore(deps): bump github.com/Azure/azure-sdk-for-go from 66.0.0+incompatible to 67.1.0+incompatible (#3251)
+  * fix(vuln): change severity vendor priority for ghsa-ids and vulns from govuln (#3255)
+  * docs: remove comparisons (#3289)
+  * feat: add support for Wolfi Linux (#3215)
+  * ci: add go.mod to canary workflow (#3288)
+  * feat(python): skip dev dependencies (#3282)</comment>
+    <requestid>1046089</requestid>
+  </revision>
 </revisionlist>

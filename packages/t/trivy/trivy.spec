@@ -1,7 +1,7 @@
 #
 # spec file for package trivy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 
 %global goipath github.com/aquasecurity/trivy
 Name:           trivy
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
