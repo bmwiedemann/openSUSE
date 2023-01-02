@@ -1,7 +1,7 @@
 #
 # spec file for package tcpreplay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.4.1
+Version:        4.4.3
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only

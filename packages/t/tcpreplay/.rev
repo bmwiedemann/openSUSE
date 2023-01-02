@@ -87,4 +87,32 @@
     <comment></comment>
     <requestid>1039845</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ff0e0d0894e6e9c319792a66107abd34</srcmd5>
+    <version>4.4.3</version>
+    <time>1672668141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.3:
+  * upgrade autogen/libopts to version 5.18.16
+  * avoid implicit int in configure.ac
+  * remove invalid assert in tree
+  * program exit after send error
+  * make libpcap version test more robust
+  * looping inflates some packet counters
+
+- update to 4.4.2:
+  * This is Tcpreplay suite 4.4.2
+  * This release contains bug fixes only.
+  * What's Changed
+  * Bug #716 heap-buffer-overflow in get_l2len_protocol()
+  * Bug #721 fixed typo in tcpliveplay.c
+  * Bug #717 avoid assertion in get_layer4_v6
+  * Bug #718 improved heap-overflow protection
+  * Bug #719 better overflow protection in parse_mpls
+  * Bug #725 FORCE_ALIGN on arm
+  * Bug #729 tcpreplay_edit: disallow both -K and -l options
+  * Bug #735 heap-overflow in get_l2len_protocol
+  * Bug #745 remove autogen.sh from distribution tarballs (forwarded request 1046093 from dirkmueller)</comment>
+    <requestid>1046100</requestid>
+  </revision>
 </revisionlist>
