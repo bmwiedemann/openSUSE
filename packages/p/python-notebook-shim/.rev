@@ -21,4 +21,14 @@
 - Remove jupyter subpackage: no config installed anymore</comment>
     <requestid>1031321</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9c09437624eb868f12f51a0ad01cbabe</srcmd5>
+    <version>0.2.2</version>
+    <time>1672668101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.2.2
+  * Add config file
+</comment>
+    <requestid>1045953</requestid>
+  </revision>
 </revisionlist>
