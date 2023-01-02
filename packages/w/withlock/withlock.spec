@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/poeml/withlock
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         fix-use-python3.patch
+Patch1:         withlock-0.5-fixboo864785.patch
 Requires:       python3
 BuildArch:      noarch
 

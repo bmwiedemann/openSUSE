@@ -87,4 +87,12 @@
     <comment>- update to version 0.5 (bsc#1201336)</comment>
     <requestid>987928</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>3b189f0a54509adde43600d891d3b553</srcmd5>
+    <version>0.5</version>
+    <time>1672668130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046095</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  1 13:51:36 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add withlock-0.5-fixboo864785.patch to fix concurrent locking (boo#864785)
+
+-------------------------------------------------------------------
 Thu Oct  3 08:54:21 UTC 2019 - munix9@googlemail.com
 
 - update to version 0.5 (bsc#1201336)

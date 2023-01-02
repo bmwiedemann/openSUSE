@@ -1,0 +1,37 @@
+https://github.com/poeml/withlock/pull/5
+
+From 218831d810b44675c948786d3ce4d3d3180e83e0 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 1 Jan 2023 14:43:26 +0100
+Subject: [PATCH] Re-open lock file before locking
+
+because the previous 'withlock' cleanup function might have deleted
+the file and since we still held a handle to the old deleted file,
+we could run concurrently with a 3rd 'withlock' which creates a new file.
+
+Fixes #1
+Fixes boo#864785
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+---
+ withlock | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/withlock b/withlock
+index 01ef866..9e16f69 100755
+--- a/withlock
++++ b/withlock
+@@ -137,12 +137,11 @@ def main():
+ 
+     prev_umask = os.umask(0o066)
+ 
+-    lock = open(lockfile, 'w')
+-
+     global got_lock
+     while 1 + 1 == 2:
+ 
+         try:
++            lock = open(lockfile, 'w')
+             fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+             got_lock = True
+             break
