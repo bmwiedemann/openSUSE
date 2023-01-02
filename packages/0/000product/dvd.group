@@ -3883,6 +3883,7 @@
     <package name="ruby3.1-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-gli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-google-protobuf" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4010,8 +4011,8 @@
     <package name="ruby3.1-rubygem-public_suffix" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-public_suffix-3.1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-puma" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.1-rubygem-puma-4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-puma-4.1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-puma-5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-puma_worker_killer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-pundit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4021,6 +4022,7 @@
     <package name="ruby3.1-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-rails-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4749,6 +4751,7 @@
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yakuake-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="yarn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

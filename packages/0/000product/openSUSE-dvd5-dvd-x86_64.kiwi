@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230101" schemaversion="4.1">
+<image name="OBS__openSUSE___20230102" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230101</productvar>
+      <productvar name="VERSION">20230102</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230101,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230102,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230101/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230102/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -4211,6 +4211,7 @@
       <repopackage name="ruby3.1-rubygem-get_process_mem"/>
       <repopackage name="ruby3.1-rubygem-gettext"/>
       <repopackage name="ruby3.1-rubygem-gettext_i18n_rails"/>
+      <repopackage name="ruby3.1-rubygem-gettext_i18n_rails_js"/>
       <repopackage name="ruby3.1-rubygem-gli"/>
       <repopackage name="ruby3.1-rubygem-globalid"/>
       <repopackage name="ruby3.1-rubygem-google-protobuf"/>
@@ -4338,8 +4339,8 @@
       <repopackage name="ruby3.1-rubygem-public_suffix"/>
       <repopackage name="ruby3.1-rubygem-public_suffix-3.1"/>
       <repopackage name="ruby3.1-rubygem-puma"/>
-      <repopackage name="ruby3.1-rubygem-puma-4"/>
       <repopackage name="ruby3.1-rubygem-puma-4.1"/>
+      <repopackage name="ruby3.1-rubygem-puma-5"/>
       <repopackage name="ruby3.1-rubygem-puma_worker_killer"/>
       <repopackage name="ruby3.1-rubygem-pundit"/>
       <repopackage name="ruby3.1-rubygem-rack"/>
@@ -4349,6 +4350,7 @@
       <repopackage name="ruby3.1-rubygem-rack-protection"/>
       <repopackage name="ruby3.1-rubygem-rack-proxy"/>
       <repopackage name="ruby3.1-rubygem-rack-test-0_6"/>
+      <repopackage name="ruby3.1-rubygem-rails-7.0"/>
       <repopackage name="ruby3.1-rubygem-rails-dom-testing"/>
       <repopackage name="ruby3.1-rubygem-rails-html-sanitizer"/>
       <repopackage name="ruby3.1-rubygem-rails-i18n"/>
@@ -5117,6 +5119,7 @@
       <repopackage name="xz-lang"/>
       <repopackage name="yakuake"/>
       <repopackage name="yakuake-lang"/>
+      <repopackage name="yarn"/>
       <repopackage name="yast2"/>
       <repopackage name="yast2-add-on"/>
       <repopackage name="yast2-alternatives"/>

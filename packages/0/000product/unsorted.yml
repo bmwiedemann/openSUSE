@@ -1233,6 +1233,7 @@ unsorted:
   - bctoolbox-devel 
   - bcunit-devel 
   - bcunit-doc 
+  - bdf2psf 
   - bdfresize 
   - bdftopcf 
   - bea-stax 
@@ -8146,6 +8147,7 @@ unsorted:
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
+  - jupyter-notebook-shim 
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
@@ -14654,6 +14656,7 @@ unsorted:
   - libtraceevent1 
   - libtraceevent1-plugins 
   - libtracefs-devel 
+  - libtracefs-tools 
   - libtracefs1 
   - libtrampoline1 
   - libtranscript-devel 
@@ -22822,6 +22825,7 @@ unsorted:
   - python310-azure-mgmt-scvmm 
   - python310-azure-mgmt-search 
   - python310-azure-mgmt-security 
+  - python310-azure-mgmt-securitydevops 
   - python310-azure-mgmt-securityinsight 
   - python310-azure-mgmt-serialconsole 
   - python310-azure-mgmt-servermanager 
@@ -23774,6 +23778,7 @@ unsorted:
   - python310-jupyter 
   - python310-jupyter-client 
   - python310-jupyter-core 
+  - python310-jupyter-events 
   - python310-jupyter-jupyterlab-server 
   - python310-jupyter-jupyterlab-server-openapi 
   - python310-jupyter-jupyterlab-server-test 
@@ -23792,6 +23797,9 @@ unsorted:
   - python310-jupyter_nbextensions_configurator 
   - python310-jupyterlab 
   - python310-jupyterlab-pygments 
+  - python310-jupyterlab-server 
+  - python310-jupyterlab-server-openapi 
+  - python310-jupyterlab-server-test 
   - python310-jupyterlab-templates 
   - python310-jupyterlab-widgets 
   - python310-jwcrypto 
@@ -26119,6 +26127,7 @@ unsorted:
   - python38-azure-mgmt-scvmm 
   - python38-azure-mgmt-search 
   - python38-azure-mgmt-security 
+  - python38-azure-mgmt-securitydevops 
   - python38-azure-mgmt-securityinsight 
   - python38-azure-mgmt-serialconsole 
   - python38-azure-mgmt-servermanager 
@@ -27116,6 +27125,7 @@ unsorted:
   - python38-jupyter 
   - python38-jupyter-client 
   - python38-jupyter-core 
+  - python38-jupyter-events 
   - python38-jupyter-jupyterlab-server 
   - python38-jupyter-jupyterlab-server-openapi 
   - python38-jupyter-jupyterlab-server-test 
@@ -27134,6 +27144,9 @@ unsorted:
   - python38-jupyter_nbextensions_configurator 
   - python38-jupyterlab 
   - python38-jupyterlab-pygments 
+  - python38-jupyterlab-server 
+  - python38-jupyterlab-server-openapi 
+  - python38-jupyterlab-server-test 
   - python38-jupyterlab-templates 
   - python38-jupyterlab-widgets 
   - python38-jwcrypto 
@@ -29510,6 +29523,7 @@ unsorted:
   - python39-azure-mgmt-scvmm 
   - python39-azure-mgmt-search 
   - python39-azure-mgmt-security 
+  - python39-azure-mgmt-securitydevops 
   - python39-azure-mgmt-securityinsight 
   - python39-azure-mgmt-serialconsole 
   - python39-azure-mgmt-servermanager 
@@ -30506,6 +30520,7 @@ unsorted:
   - python39-jupyter 
   - python39-jupyter-client 
   - python39-jupyter-core 
+  - python39-jupyter-events 
   - python39-jupyter-jupyterlab-server 
   - python39-jupyter-jupyterlab-server-openapi 
   - python39-jupyter-jupyterlab-server-test 
@@ -30524,6 +30539,9 @@ unsorted:
   - python39-jupyter_nbextensions_configurator 
   - python39-jupyterlab 
   - python39-jupyterlab-pygments 
+  - python39-jupyterlab-server 
+  - python39-jupyterlab-server-openapi 
+  - python39-jupyterlab-server-test 
   - python39-jupyterlab-templates 
   - python39-jupyterlab-widgets 
   - python39-jwcrypto 
@@ -33286,9 +33304,7 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-d-installer-cli 
-  - ruby3.1-rubygem-gettext_i18n_rails_js 
   - ruby3.1-rubygem-grpc 
-  - ruby3.1-rubygem-rails-7.0 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
@@ -44812,7 +44828,6 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
-  - yarn 
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 
