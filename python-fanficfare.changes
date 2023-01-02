@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 07:40:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.19.0:
+  - Fixes for config base_xenforo options
+  - Fix for adapter_quotevcom status
+  - Equalize ok/cancel buttons on user/pass & email pass dialogs
+  - adapter_ficbooknet: Site change for status + remove debug
+  - Tweak for adapter_storiesonlinenet description parsing
+
+-------------------------------------------------------------------
 Tue Nov 22 07:50:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.18.0:
