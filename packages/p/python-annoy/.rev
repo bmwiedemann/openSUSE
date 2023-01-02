@@ -96,4 +96,13 @@
     <comment>- Don't build on Python 3.6 due to no NumPy.</comment>
     <requestid>886513</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>679a089d6dbe4b073b65aadb3256a591</srcmd5>
+    <version>1.17.1</version>
+    <time>1672673904</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.17.1:
+  * Add -fpermissive plus some other minor things</comment>
+    <requestid>1046206</requestid>
+  </revision>
 </revisionlist>

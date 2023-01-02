@@ -1,7 +1,7 @@
 #
 # spec file for package python-annoy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-annoy
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Approximation of Nearest Neighbors
 License:        Apache-2.0

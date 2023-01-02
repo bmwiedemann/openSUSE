@@ -1,7 +1,7 @@
-Index: annoy-1.17.0/test/accuracy_test.py
+Index: annoy-1.17.1/test/accuracy_test.py
 ===================================================================
---- annoy-1.17.0.orig/test/accuracy_test.py
-+++ annoy-1.17.0/test/accuracy_test.py
+--- annoy-1.17.1.orig/test/accuracy_test.py
++++ annoy-1.17.1/test/accuracy_test.py
 @@ -24,7 +24,6 @@ try:
  except ImportError:
      from urllib.request import urlretrieve # Python 3
@@ -10,10 +10,10 @@ Index: annoy-1.17.0/test/accuracy_test.py
  
  class AccuracyTest(unittest.TestCase):
      def _get_index(self, dataset):
-Index: annoy-1.17.0/test/hamming_index_test.py
+Index: annoy-1.17.1/test/hamming_index_test.py
 ===================================================================
---- annoy-1.17.0.orig/test/hamming_index_test.py
-+++ annoy-1.17.0/test/hamming_index_test.py
+--- annoy-1.17.1.orig/test/hamming_index_test.py
++++ annoy-1.17.1/test/hamming_index_test.py
 @@ -12,11 +12,11 @@
  # License for the specific language governing permissions and limitations under
  # the License.
@@ -36,12 +36,12 @@ Index: annoy-1.17.0/test/hamming_index_test.py
      def test_zero_vectors(self):
          # Mentioned on the annoy-user list
          bitstrings = [
-Index: annoy-1.17.0/setup.py
+Index: annoy-1.17.1/setup.py
 ===================================================================
---- annoy-1.17.0.orig/setup.py
-+++ annoy-1.17.0/setup.py
-@@ -84,6 +84,5 @@ setup(name='annoy',
-           'Programming Language :: Python :: 3.6',
+--- annoy-1.17.1.orig/setup.py
++++ annoy-1.17.1/setup.py
+@@ -88,6 +88,5 @@ setup(name='annoy',
+           'Programming Language :: Python :: 3.9',
        ],
        keywords='nns, approximate nearest neighbor search',
 -      setup_requires=['nose>=1.0'],

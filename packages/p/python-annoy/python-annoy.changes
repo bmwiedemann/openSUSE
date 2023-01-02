@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:23:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.17.1:
+  * Add -fpermissive plus some other minor things
+
+-------------------------------------------------------------------
 Mon Apr 19 02:28:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't build on Python 3.6 due to no NumPy. 
