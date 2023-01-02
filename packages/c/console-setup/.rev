@@ -56,4 +56,25 @@ layouts from xkeyboard-config to console keymaps (FATE#318426)</comment>
     <comment></comment>
     <requestid>1043942</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0ed6618092ec3d040130fcdd3d511ec5</srcmd5>
+    <version>1.215</version>
+    <time>1672668097</time>
+    <user>dimstar_suse</user>
+    <comment>- removed buildrequires to kbd to resolve kbd/console-setup build
+  cycle
+
+- Update to version 1.215:
+  * See https://salsa.debian.org/installer-team/console-setup/-/blob/debian/1.215/debian/changelog
+- Make a bdf2psf package like in Fedora.
+- Suggest xkeyboard-config.
+- Replace console-setup-1.76-paths.patch with
+  console-setup-paths.patch.
+- Move the fonts to /usr/share/kbd/ to be discoverable by vconsole.
+- Drop console-setup-1.134-perl526.patch,
+  console-setup-1.134-reproducible.patch, u_fix-iso-left-tab.patch,
+  0001-ckbcomp-Fix-check-for-non-ascii.patch: fixed upstream.
+- Fix the RPM Group.</comment>
+    <requestid>1045985</requestid>
+  </revision>
 </revisionlist>
