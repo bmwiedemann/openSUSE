@@ -1,7 +1,7 @@
 #
 # spec file for package musescore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,8 @@ Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source5:        README.SUSE
 # PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
 Patch0:         use-qtmake-qt5.patch
+# PATCH-FIX-UPSTREAM: fix build with jack on linux.
+Patch1:         0dde64eef84.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -79,6 +81,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
@@ -88,6 +91,8 @@ BuildRequires:  pkgconfig(vorbisfile)
 Requires:       %{name}-fonts = %{version}-%{release}
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
+Requires:       ( alsa-plugins-pulse if pulseaudio )
+Requires:       ( pipewire-alsa      if pipewire )
 
 %description
 MuseScore is a graphical music typesetter. It allows for note entry on a
@@ -137,11 +142,19 @@ sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src
 
 %build
 %define __builddir build.release
+# TODO:
+# find out what those do:
+# BUILD_VIDEOEXPORT_MODULE:BOOL=ON
+# find out how to enable this
+# BUILD_VST:BOOL=ON
+# -DBUILD_UPDATE_MODULE:BOOL=OFF triggers bug  https://github.com/musescore/MuseScore/issues/15617
 %cmake \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIG=release \
        -DBUILD_UNIT_TESTS=OFF \
        -DUSE_SYSTEM_FREETYPE=ON \
+       -DBUILD_JACK:BOOL=ON \
+       -DBUILD_UPDATE_MODULE:BOOL=ON \
        -DBUILD_CRASHPAD_CLIENT=OFF \
        -DMUSESCORE_REVISION=%{revision}
 %make_jobs
