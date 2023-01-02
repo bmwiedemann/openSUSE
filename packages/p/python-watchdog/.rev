@@ -169,4 +169,16 @@
     <comment></comment>
     <requestid>1043116</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>48cabd1a8f7d5178af41d3facd27abcb</srcmd5>
+    <version>2.2.1</version>
+    <time>1672668148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.2.1:
+  * [ci] Set the expected Python version when building release files
+  * [ci] Update actions versions in use
+  * [watchmedo] [regression] Fix usage of missing signal.SIGHUP attribute on
+    non-Unix OSes (#935)</comment>
+    <requestid>1046133</requestid>
+  </revision>
 </revisionlist>
