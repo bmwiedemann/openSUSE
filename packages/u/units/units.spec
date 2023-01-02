@@ -1,7 +1,7 @@
 #
 # spec file for package units
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.21
+Version:        2.22
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later
@@ -26,13 +26,9 @@ Group:          Productivity/Scientific/Physics
 URL:            https://www.gnu.org/software/units/
 Source0:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=units&download=1#/units.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=33238#/%{name}.keyring
 BuildRequires:  bison
 BuildRequires:  readline-devel
-%if 0%{?suse_version} <= 1500
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
-%endif
 %if %{with units_cur}
 BuildRequires:  python3-base
 Requires:       python3-requests
@@ -47,27 +43,20 @@ example) but this needs a slightly different input syntax. See the man
 page for details.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
-%configure PYTHON=/usr/bin/python3
+%configure
 %make_build
 
 %install
 %make_install
+ln -fsv ../../..%{_sharedstatedir}/units/currency.units %{buildroot}%{_datadir}/units
 
 %check
 %make_build check
-
-%if 0%{?suse_version} <= 1500
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-%endif
 
 %files
 %license COPYING
@@ -75,7 +64,7 @@ export LDFLAGS="-pie"
 %{_datadir}/units
 %dir %{_localstatedir}/lib/units
 %{_localstatedir}/lib/units/currency.units
-%doc ChangeLog NEWS README
+%doc NEWS README
 %{_infodir}/units.info%{?ext_info}
 %{_mandir}/man1/units.1%{?ext_man}
 %if %{with units_cur}

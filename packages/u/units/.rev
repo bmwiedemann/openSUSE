@@ -293,4 +293,12 @@
     <comment>- require python3-requests [bsc#1186820]</comment>
     <requestid>898269</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f492fecd9f30fd206c9ad704ef526439</srcmd5>
+    <version>2.22</version>
+    <time>1672668153</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.22 (forwarded request 1045323 from AndreasStieger)</comment>
+    <requestid>1046142</requestid>
+  </revision>
 </revisionlist>

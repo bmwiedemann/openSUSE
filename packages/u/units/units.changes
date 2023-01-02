@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 25 19:58:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- units 2.22:
+  * Fixed bug: segfault on inverse conversions of tables in verbose
+    mode
+  * Added support for ExchangeRate-API in units_cur
+  * Minor unit definition fixes and updates, including updates to
+    planetary data and a change in Rinfinity and hartree to
+    increase accuracy.  
+  * Do not update currency.units at build 
+
+-------------------------------------------------------------------
 Tue Jun  8 07:06:08 UTC 2021 - pgajdos@suse.com
 
 - require python3-requests [bsc#1186820]
