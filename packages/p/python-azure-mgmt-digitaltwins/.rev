@@ -30,4 +30,16 @@
     CHANGELOG.md file provided with this package (forwarded request 986030 from glaubitz)</comment>
     <requestid>986045</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7427d48edac523f90e35a1a446fc0d71</srcmd5>
+    <version>6.3.0</version>
+    <time>1672668164</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1046016 from glaubitz)</comment>
+    <requestid>1046163</requestid>
+  </revision>
 </revisionlist>
