@@ -1,7 +1,7 @@
 #
 # spec file for package rclone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           rclone
-Version:        1.60.1
+Version:        1.61.1
 Release:        0
 Summary:        Rsync for cloud storage
 License:        MIT
@@ -27,7 +27,7 @@ URL:            https://rclone.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.16
+BuildRequires:  go >= 1.17
 BuildRequires:  golang-packaging
 
 %{go_nostrip}

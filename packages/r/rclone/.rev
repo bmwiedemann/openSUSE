@@ -420,4 +420,66 @@ various additional features.</comment>
     <comment></comment>
     <requestid>1040458</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>77fec408b770002033418745325b85d4</srcmd5>
+    <version>1.61.1</version>
+    <time>1672668169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.61.1:
+  * Bug fixes:
+    - lib/http: Shutdown all servers on exit to remove unix socket
+    - rc: Fix --rc-addr flag (which is an alternate for --url)
+    - serve restic:
+      + Don't serve via http if serving via --stdio
+      + Fix immediate exit when not using stdio
+    - serve webdav:
+      + Fix --baseurl handling after lib/http refactor
+      + Fix running duplicate Serve call
+  * Azure: Fix &quot;409 Public access is not permitted on this storage account&quot;
+  * S3: storj: Update endpoints
+- Update to 1.61.0:
+  * Add vulnerability testing using govulncheck
+  * dedupe: Count Checks in the stats while scanning for duplicates 
+  * dedupe: Make dedupe obey the filters
+  * filter: Add metadata filters --metadata-include/exclude/filter and friends
+  * fs: Make all duration flags take y, M, w, d etc suffixes
+  * fs: Add global flag --color to control terminal colors
+  * fspath: Allow unicode numbers and letters in remote names
+  * ncdu: Add support for modification time
+  * ncdu: Fallback to sort by name also for sort by average size
+  * ncdu: Rework to use tcell directly instead of the termbox wrapper
+  * rc: Add commands to set GC Percent &amp; Memory Limit
+  * rcat: Preserve metadata when Copy falls back to Rcat
+  * rcd: Refactor rclone rc server to use lib/http
+  * rcserver: Avoid generating default credentials with htpasswd
+  * vfs: Fix IO Error opening a file with O_CREATE|O_RDONLY in --vfs-cache-mode not full
+  * crypt: Fix compress wrapping crypt giving upload errors
+  * Azure:
+    - Port to new SDK
+    - Add --azureblob-no-check-container to assume container exists
+    - Add --use-server-modtime support
+    - Add support for custom upload headers
+    - Allow emulator account/key override
+    - Support simple &quot;environment credentials&quot;
+    - Ignore AuthorizationFailure when trying to create a create a container
+  * Drive: Handle shared drives with leading/trailing space in name
+  * Onedrive: Document workaround for shared with me files
+  * S3:
+    - Add Liara LOS to provider list
+    - Add DigitalOcean Spaces regions sfo3, fra1, syd1
+    - Avoid privileged GetBucketLocation to resolve s3 region
+    - Stop setting object and bucket ACL to private if it is an empty string
+    - If bucket or object ACL is empty string then don't add X-Amz-Acl: header
+    - Reduce memory consumption for s3 objects
+    - Fix listing loop when using v2 listing on v1 server
+    - Fix nil pointer exception when using Versions
+    - Fix excess memory usage when using versions
+    - Ignore versionIDs from uploads unless using --s3-versions or --s3-versions-at
+  * SFTP:
+    - Add configuration options to set ssh Ciphers / MACs / KeyExchange
+    - Auto-detect shell type for fish
+    - Fix NewObject with leading /
+</comment>
+    <requestid>1046174</requestid>
+  </revision>
 </revisionlist>
