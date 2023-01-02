@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.9.2
+Version:        1.9.4
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
@@ -36,7 +36,6 @@ Patch1:         %{name}-drop-documents-installation.patch
 Patch2:         %{name}-fix-includes.patch
 Patch3:         fix-warning.patch
 # PATCH-FIX-UPSTREAM fix-ffmpeg-5-support.patch -- Fix build against ffmpeg 5.0x
-Patch4:         fix-ffmpeg-5-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -77,13 +76,13 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    %{ix86}
 %if %{with restricted}
 BuildRequires:  libfaad-devel
 Requires:       %{name}-plugins-extra = %{version}-%{release}
 %else
 Recommends:     %{name}-plugins-extra = %{version}
 %endif
-ExcludeArch:    %ix86
 
 %description
 DeaDBeeF is an audio player using GTK+. Through use of the ffmpeg
@@ -139,18 +138,19 @@ export CXXFLAGS="$CFLAGS"
 %endif
 export LDFLAGS="$LDFLAGS -pie"
 
-NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
 %ifarch %{ix86}
         --disable-soundtouch \
 %endif
-        --disable-psf
+        --disable-psf \
+	--docdir=%{_docdir}/%{name}
 %make_build
 
 %install
 %make_install
 rm -rf %{buildroot}%{_libexecdir}/debug/%{_libdir}/%{name}/ddb_soundtouch.so*
+rm -rf %{buildroot}%{_docdir}/%{name}
 install -Dpm 0644 %{name}.appdata.xml \
 %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
 

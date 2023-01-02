@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jan  1 17:43:46 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.4:
+  * Fixed: Deadlock when playing network streams
+  * Fixed: Handling multi-value genre in ID3v2
+  * Fixed: Will fully reinitialize ALSA device when changing output format,
+    to be compatible with more DACs
+  * Fixed: Duplicate playlist menu item was not showing
+  * Fixed: A random crash in visualization code
+  * Added: Customizable visualization background color for GTKUI
+  * Added: 64-bit seeking support in AAC, ALAC, Sndfile, Musepack, MP3, WMA, Vorbis
+  * Added: Embedded album art from OGG files
+  * Added: When double clicking a playlist in Playlist browser,
+    will play the first track in the shuffle queue,
+    according to current settings (pappnu)
+
+  * version 1.9.3
+  * Fixed: OpenBSD compatibility / warnings (Brad Smith)
+  * Fixed: Crash when loading certain malformed cuesheets
+  * Fixed: API behavior change regression causing certain plugins to malfunction
+  * Added: Support for building with FFMPEG 5.0 (xuzhen)
+
+- Removed fix-ffmpeg-5-support.patch: not needed anymore
+- Fixed deadbeef Help menu entries resulting in file not found errors
+
+-------------------------------------------------------------------
 Sun Nov  6 10:56:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-ffmpeg-5-support.patch: Fix build against ffmpeg 5.0x
