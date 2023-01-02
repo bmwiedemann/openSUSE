@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-containerservice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-containerservice
-Version:        21.0.0
+Version:        21.1.0
 Release:        0
 Summary:        Microsoft Azure Container Service Management Client Library
 License:        MIT

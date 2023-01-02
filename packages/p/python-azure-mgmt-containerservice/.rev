@@ -349,4 +349,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1043798 from glaubitz)</comment>
     <requestid>1043809</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7d354c2684327725063bf4657edf44b7</srcmd5>
+    <version>21.1.0</version>
+    <time>1672668165</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 21.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1046094 from glaubitz)</comment>
+    <requestid>1046164</requestid>
+  </revision>
 </revisionlist>
