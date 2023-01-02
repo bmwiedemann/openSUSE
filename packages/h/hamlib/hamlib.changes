@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  1 14:58:19 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.5.3 (2022-12-31)
+  * Fix serial.c for hardware flow control on Linux and MacOSy
+  * Add QRPLabs QCX/QDX rig -- not quite a TS480
+  * Fix QRP QRDX firmware bugs in IF message so PTT works now
+  * FTDX5000 will now remember startup front/read settings and restore it
+  * Fix FTDX5000 write_delay with microham
+
+-------------------------------------------------------------------
 Tue Dec 27 08:52:30 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.5.2 (2022-12-23)
