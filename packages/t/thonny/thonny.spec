@@ -1,7 +1,7 @@
 #
 # spec file for package thonny
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        3.3.14
+Version:        4.0.1
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT
@@ -81,8 +81,6 @@ export LC_ALL=en_US.utf8
 %install
 export LC_ALL=en_US.utf8
 %python_install
-# FIXME Fix permissions
-%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/thonny/plugins/micropython/minipip.py
 # Install desktop file
 mkdir -p %{buildroot}%{_datadir}/applications/
 cp packaging/linux/org.thonny.Thonny.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop

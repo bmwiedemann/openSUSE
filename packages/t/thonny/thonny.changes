@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun Jan  1 15:15:40 UTC 2023 - Thomas Wagner <wagner-thomas@gmx.at>
+
+- Update to 4.0.1
+  * Drop support for Python 3.5, 3.6 and 3.7
+  * Require single click for toggling a breakpoint, #2293
+  * Clear Shell before starting new process (Run, Debug, Stop/Restart, ...) by default. Can be turned off in Tools => Options => Shell, #1681
+  * Rename "Python 3" back-end to "Local Python 3"
+  * Don't SetProcessDpiAwareness for user programs anymore. This means for example, that Tkinter and Pygame programs on Windows run as if they were executed with plain Python (ie they may become blurry on modern displays). For clear picture, start your program with import ctypes; ctypes.OleDLL("shcore").SetProcessDpiAwareness(1), #2159
+  * Drop support for jedi versions below 0.18.1
+  * Add the option for automatically getting completions while typing (Tools => Options => Editor)
+  * Selecting a completion with Tab now replaces the name suffix right of the cursor, #1998
+  * Turn off requesting completions with Tab in editors by default, #2069
+  * Show documentation for the selected completion with another Ctrl-Space or automatically (Tools => Options => Editor)
+  * Add "call-tips" -- a box describing the formal parameters of current method call. Invoke manually with Ctrl-Shift-Space or automatically after typing open parentheses (Tools => Options => Editor)
+  * Enhance Go-to-definition (Ctrl-click). The name is now underlined while ctrl-hovering over it.
+  * Add LEGO® EV3 back-end: "Run => Select interpreter => MicroPython (EV3)"
+  * Support CircuitPython with micro:bit, #2251
+  * Use pipkin for managing packages on MicroPython and CircuitPython devices. This enables proper listing of packages together with version info and proper uninstallation.
+  * Use .local_rtc config parameters instead of (oppositely worded) .utc_clock in MicroPython back-ends, 116aecd
+  * Present MicroPython time options (whether to sync time and whether to use local time) in back-end configuration page, #1638
+  * Automatically interrupt current process when connecting to bare-metal MicroPython or CircuitPython device. This can be turned off at device's settings page, #2059
+  * Don't hide the output when Stop/Restarting MicroPython, #1805
+  * Make internal MicroPython errors less intimidating. In several cases the errors are caused by bugs in MicroPython or USB driver and there is no use of showing the stacktrace. User is now directed to restart the device and stacktrace can be checked from the backend.log, #1799
+  * Make MicroPython back-end advise Ctrl+C also if only whitespace characters get printed, #1755
+  * Allow running MicroPython scripts without soft-rebooting first, #1565, #1716
+  * Add generic "MicroPython (RP2040)" back-end in addition to the more specific "MicroPython (Raspberry Pi Pico)", #2151
+  * Mention the possibility to reconfigure file types when denying opening remote files in a system app, #2148
+  * Refactor MicroPython/CircuitPython flashing dialog, #2344
+  * Add separate "Install ..." items to the back-end switcher menu if a device in UF2 bootloader mode is detected, #2387
+  * Use "Install MicroPython" instead of "Install firmware", #2364
+  * Take OSC commands into account when looking for prompts (relevant for CircuitPython 8), #2349
+  * Disable "Run" command when MicroPython device is disconnected
+  * Update completion stubs for MicroPython and CircuitPython (from @hlovatt and @adafruit)
+  * Make Shell read-only when device is disconnected
+  * Fix various problems with managing files on CircuitPython devices
+  * Don't assume all CircuitPython boards have RTC, #1760
+  * Fix error with evaluating globals() on MicroPython device, #1938
+  * Add MicrobitImage inspector for Object inspector
+  * Add TODO view (by @kr-g), #2067
+  * Add possibility to activate a virtual environment via Files view (by @kr-g), #2381
+  * Add new toolbar button which opens the wiki page describing ways to help Ukraine survive the attack from Russia.
+  * Allow running content of untitled editors without saving, #778
+  * Make stacktrace links to <stdin> and <input> pseudo-files go to the editor containing corresponding source, #778
+  * Ask confirmation for adding .py extension when the user saves the file without any extension to MicroPython/CircuitPython device, #2077
+  * Don't add the .py extension when the user saves a local file and selects "All files" filter.
+  * Add Cut/Copy/Paste to the file browser, #2001 by @kr-g
+  * Make editor remember current line when reloading external changes, #2001 by @kr-g
+  * Add "Edit => Go to line..." command (Ctrl-G), #2001 by @kr-g
+  * Add "Rename" command for the local file browser, #2001 by @kr-g
+  * Add nicer Stop-button for higher resolutions, #1445 by @speedy-10
+  * Improve icon scaling -- use larger icons when Treeview row height is larger than general.large_icon_rowheight_threshold
+  * Use default font in Treeviews (including Files and Variables view). Therefore Treeview's font size is now affected by the scaling factor and is not affected by editor font size.
+  * Use isolated mode for launching Thonny. This includes hiding user-site packages from Thonny's GUI process (not from user programs). Plug-ins now get installed under Thonny's data folder, #2038, #1651
+  * Allow installing packages for remote CPython backend, #1319
+  * Flatten the list of interpreters in the backend-switcher menu (lower-right corner of the main window)
+  * Removed previously deprecated "A special virtual environment". Use regular virtual environments instead.
+  * Merge "The same interpreter which runs Thonny" and "Alternative Python 3 interpreter or virtual environment" back-ends into "Local Python 3"
+  * Back-end switcher now remembers several configurations for remote CPython and MicroPython.
+  * Make package manager work for remote Python 3 (SSH)
+  * Fix "Seed find/replace with currently-selected text" for Linux, #2356
+  * Use "vista" Tk-theme instead of "xpnative" in Windows. Gives nicer combobox, #1663
+  * Automatically reload saved files after external modification (with help from @kr-g), #1589, #1455, #1968
+  * Support OSC sequences for setting terminal title, #2369
+  * Toggle hidden files also via file-browser's context menu, #1039
+  * Seed find/replace with currently-selected text, #2356
+  * Add coloring for match and case soft keywords, #2358
+  * Add Slovenian translation (by cspaier)
+  * Add "Assistant" help page explaining the possibility to omit selected Pylint checks, #1978
+  * Add command "Run => Visualize current script at Python Tutor", #2242
+  * Add options for automatically making uploaded or saved shebang scripts executable (includes changing Windows line breaks to Unix ones). See "Editor" and SSH-backends' config pages.
+  * Allow back-end plugins to modify sys.path, #2281
+  * Warn when environment value is provided with quotes, #2184
+  * Let macOS installer know the bundle is able to run in arm64 mode, #2201
+  * Add Tamil translation, by Kamala Kannan K and அனிச்பிரபு தி, #2211
+  * Add Thai translation, by Tomzt Pimai and Game of
+  * Allow assigning Python coloring for Python-like files, #1927
+  * Many bug-fixes
+
+-------------------------------------------------------------------
 Tue Dec 28 15:59:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove unused unmaintained python3-pytest-black test requirement
