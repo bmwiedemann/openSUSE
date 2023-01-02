@@ -41,12 +41,15 @@ Requires:       python-lxml >= 4.3.0
 Requires:       python-ncclient
 Requires:       python-netaddr
 Requires:       python-netmiko >= 4.0.0
+Requires:       python-netutils >= 1.0.0
 Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyeapi >= 0.8.2
 Requires:       python-requests >= 2.7.0
 Requires:       python-scp
 Requires:       python-setuptools >= 38.4.0
 Requires:       python-textfsm
+Requires:       python-ttp-templates
+Requires:       python-ttp
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

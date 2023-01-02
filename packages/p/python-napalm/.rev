@@ -147,4 +147,13 @@
 </comment>
     <requestid>1031189</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4acd0eda9b2efe9ba239afc94a64e6d2</srcmd5>
+    <version>4.0.0</version>
+    <time>1672668157</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing requirements
+</comment>
+    <requestid>1046173</requestid>
+  </revision>
 </revisionlist>
