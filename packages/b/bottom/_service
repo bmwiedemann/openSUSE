@@ -1,5 +1,27 @@
 <services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/ClementTsang/bottom.git</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">0.7.0</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">opensuse-packages@jlk.one</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">bottom-0.6.8</param>
+    <param name="srcdir">bottom</param>
+    <param name="update">true</param>
+     <param name="compression">zst</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">bottom</param>
   </service>
 </services>

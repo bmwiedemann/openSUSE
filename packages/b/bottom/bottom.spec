@@ -1,7 +1,7 @@
 #
 # spec file for package bottom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,17 @@
 
 
 Name:           bottom
-Version:        0.6.8
+Version:        0.7.0~0
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT
 Group:          System/Monitoring
 URL:            https://github.com/ClementTsang/bottom
-Source:         https://github.com/ClementTsang/bottom/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source:         %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
-BuildRequires:  cargo >= 1.58
-BuildRequires:  rust
+BuildRequires:  cargo-packaging
+BuildRequires:  zstd
 
 %description
 A cross-platform graphical process/system monitor with a
@@ -43,6 +43,9 @@ cargo build --release --locked %{?_smp_mflags}
 
 %install
 cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+
+%check
+%{cargo_test}
 
 %files
 %license LICENSE

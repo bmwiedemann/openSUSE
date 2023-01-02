@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jan  1 16:31:08 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
+
+- Add build dependency to zstd compression tool
+
+-------------------------------------------------------------------
+Sun Jan  1 15:45:48 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
+
+- Apply current rust service template
+- Change source compress algorithm
+- Use cargo test for check stage
+- Update to version 0.7.0:
+  * Bug Fixes
+    + Fix building in Rust beta 1.61 due to `as_ref()` calls
+      causing type inference issues.
+    + Fix clicking on empty space in tables selecting the very last
+      entry of a list in some cases.
+    + Fix panic if battery feature was disabled during compilation.
+    + Fix bottom keeping devices awake in certain scenarios
+    + Use alternative method of getting parent PID in some cases on
+      macOS devices to avoid needing root access.
+    + Fix possible gaps with widget layout spacing.
+    + Fix search scrolling with wider Unicode characters.
+  * Changes
+    + Add some colour to `-h`/`--help` as part of updating to clap
+      3.0.
+    + Add ARM musl binary build tasks.
+    + Add more human friendly temperature sensor names for Linux
+    + Add macOS M1, FreeBSD 12, and FreeBSD 13 binary build tasks.
+    + Improve CPU usage by optimizing draw logic of charts and
+      tables.
+  * Features
+    + Add support for NVIDIA GPU temperature sensors
+    + Add a check for whether bottom is being run in a terminal.
+    + Add FreeBSD support
+    + Add half page scrolling with `ctrl-u` and `ctrl-d`
+    + Add ZFS ARC support
+    + Add GPU memory support for NVIDIA GPUs
+    + Update sysinfo to support M1 macOS temperature sensors.
+    + Add CLI options for GPU memory
+    + Add page up/page down support for the help screen
+    + Make temperature widget sortable.
+    + Make disk widget sortable.
+    + Add pasting to the search bar.
+    + Add custom retention periods for data.
+    + Add non-normalized CPU usage to processes
+    + Add an option to expand the default widget on startup
+  * Other
+    + Fix dead links in docs
+
+-------------------------------------------------------------------
 Mon Jun 20 03:36:55 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
