@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:33:59 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.10
+  * Include the original error message, when an SSH key cannot be read
+  * Added a link to the documentation of `HttpSignatureAuth`
+  * Allow `Package.exists` to raise exceptions
+  * Added methods to get/set the project config
+
+-------------------------------------------------------------------
 Mon Dec 12 09:09:04 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.9
