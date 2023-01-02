@@ -1,5 +1,5 @@
---- src/mrss_generic.c.orig	2010-02-17 20:35:02.000000000 +0100
-+++ src/mrss_generic.c	2010-02-17 20:35:37.000000000 +0100
+--- libmrss-0.19.3/src/mrss_generic.c.orig	2022-12-27 14:28:55.456809643 +0100
++++ libmrss-0.19.3/src/mrss_generic.c	2022-12-27 14:29:07.708871741 +0100
 @@ -25,6 +25,10 @@
  #include "mrss.h"
  #include "mrss_internal.h"
@@ -8,6 +8,6 @@
 +#define curl_easy_strerror(code) "Download error"
 +#endif
 +
- char *
- mrss_strerror (mrss_error_t err)
- {
+ char *mrss_strerror(mrss_error_t err) {
+   switch (err) {
+   case MRSS_OK:
