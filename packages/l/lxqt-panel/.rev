@@ -1183,4 +1183,15 @@
     <comment></comment>
     <requestid>1033801</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f7e596358c8cfc098c91943e6b143455</srcmd5>
+    <version>1.2.1</version>
+    <time>1672670848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Fixed a regression in volume popup.
+  * Added Qeyes plugin.
+  * Avoid covering fullscreen windows.</comment>
+    <requestid>1046190</requestid>
+  </revision>
 </revisionlist>

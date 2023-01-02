@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:20:07 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * Fixed a regression in volume popup.
+  * Added Qeyes plugin.
+  * Avoid covering fullscreen windows.
+
+-------------------------------------------------------------------
 Sat Nov  5 19:56:20 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

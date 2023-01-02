@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -105,7 +105,9 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %config %{_sysconfdir}/xdg/menus/lxqt-applications-compact.menu
 %config %{_sysconfdir}/xdg/menus/lxqt-applications-simple.menu
 %{_libdir}/%{name}
+%{_datadir}/lxqt/panel
 %{_datadir}/lxqt/lxqt-panel
+%{_datadir}/lxqt/panel/qeyes-types
 %{_mandir}/man1/lxqt-panel.1%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-panel.desktop
 %{_datadir}/desktop-directories/lxqt-leave.directory
