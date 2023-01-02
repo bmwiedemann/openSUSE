@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gromacs
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
@@ -48,7 +48,7 @@ ExclusiveArch:  do_not_build
 %bcond_without tests
 
 Name:           gromacs%{?with_mpi:-openmpi}
-Version:        2022.3
+Version:        2022.4
 Release:        0
 %define uversion %{version}
 Summary:        Molecular Dynamics Package
@@ -58,8 +58,6 @@ URL:            https://www.gromacs.org
 Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
 Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
 Source2:        ftp://ftp.gromacs.org/regressiontests/regressiontests-%{uversion}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.com/gromacs/gromacs/-/commit/0ccdf623928dfe1ce04aa7a8995a5403feaa8a5e.patch#/relax_test_tolerance.patch
 BuildRequires:  cmake >= 3.13.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -195,7 +193,7 @@ sed -i -e '/set(CMAKE_BUILD_WITH_INSTALL_RPATH/ s@.*@# \0@' CMakeLists.txt
 %endif
 
 # Avoid oversubscription, some tests run with 2 Ranks locally
-export MAX_TEST_THREADS=$(( %_smp_build_ncpus / 2 ))
+export MAX_TEST_THREADS=$(( %{?_smp_build_ncpus}%{!?_smp_build_ncpus:2} / 2 ))
 %cmake \
   -DGMX_VERSION_STRING_OF_FORK=openSUSE \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \

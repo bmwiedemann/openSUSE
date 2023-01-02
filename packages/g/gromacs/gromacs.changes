@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 28 10:26:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2022.4
+  * Bugfix release, see
+    https://manual.gromacs.org/current/release-notes/2022/2022.4.html
+- Drop ustream relax_test_tolerance.patch
+
+-------------------------------------------------------------------
 Sun Dec 25 01:29:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Exclude MPI flavor on 32 bit architectures, as MPI communication
