@@ -1,0 +1,22 @@
+# ---
+# ## used by gem2rpm
+# :summary: this is a custom summary
+# ## used by gem2rpm
+# :description: |-
+#   this is a custom description
+#
+#   it can be multiline
+# ## used by gem2rpm
+# :license: MIT or Ruby
+# ## used by gem2rpm and gem_packages
+:version_suffix: '-5'
+:preamble: |-
+  BuildRequires:  openssl-devel
+:sources:
+- rubygem-puma-5-rpmlintrc
+
+:post_install: |-
+  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ \( -name "*.rb" -o -name "*.md" \) -exec chmod 644 {} \;
+  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ -name "*.[h|c]" -exec rm {} \;
+
+
