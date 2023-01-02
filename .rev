@@ -415,4 +415,15 @@
     branch</comment>
     <requestid>1043854</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9b0d0c36d649c43aab957484659777d4</srcmd5>
+    <version>0.11.1</version>
+    <time>1672668150</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  * ez: use default web endpoint when in the kernel repo
+  * ez: give better error message when patatt signing fails
+  * ez: don't crash when there's no [sendemail] section</comment>
+    <requestid>1046132</requestid>
+  </revision>
 </revisionlist>
