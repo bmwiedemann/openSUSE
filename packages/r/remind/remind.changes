@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:24:28 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 2 - 2023-01-01
+
+- NEW FEATURE: Remind: Add the NOQUEUE modifier to the REM statement for
+  explicitly telling Remind not to queue a timed reminder.
+
+- NEW FEATURE: Remind: Add soleq() function to return the DATETIME of
+  solstices and equinoxes.  See $SysInclude/seasons.rem for an example
+  of how to use the function.
+
+- MINOR IMPROVEMENT: Update examples/astro to include solstices and equinoxes.
+
+- BUG FIX: TkRemind: Provide better error indication if showing today's
+  reminders fails on startup.
+
+- BUG FIX: Remind: Refuse to read world-writable directories.
+
+- BUG FIX: Tests depended on the actual date of the test run.  This has
+  been fixed.
+
+- INTERNAL CHANGE: Remind: Change inappropriately-named "Julian" variables
+  to "DSE" (= Days Since Epoch) since they weren't really holding true
+  Julian dates.
+
+- INTERNAL CHANGE: Add "SPDX-License-Identifier" tags to most files.
+
+-------------------------------------------------------------------
 Fri Dec 16 08:57:42 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.2 Patch 1 - 2022-12-15

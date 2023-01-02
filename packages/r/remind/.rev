@@ -528,4 +528,27 @@
   command-line option loop.</comment>
     <requestid>1043298</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e3bf6d1e217218d50e2174d131975bb5</srcmd5>
+    <version>4.2.2</version>
+    <time>1672668143</time>
+    <user>dimstar_suse</user>
+    <comment>- VERSION 4.2 Patch 2 - 2023-01-01
+- NEW FEATURE: Remind: Add the NOQUEUE modifier to the REM statement for
+  explicitly telling Remind not to queue a timed reminder.
+- NEW FEATURE: Remind: Add soleq() function to return the DATETIME of
+  solstices and equinoxes.  See $SysInclude/seasons.rem for an example
+  of how to use the function.
+- MINOR IMPROVEMENT: Update examples/astro to include solstices and equinoxes.
+- BUG FIX: TkRemind: Provide better error indication if showing today's
+  reminders fails on startup.
+- BUG FIX: Remind: Refuse to read world-writable directories.
+- BUG FIX: Tests depended on the actual date of the test run.  This has
+  been fixed.
+- INTERNAL CHANGE: Remind: Change inappropriately-named &quot;Julian&quot; variables
+  to &quot;DSE&quot; (= Days Since Epoch) since they weren't really holding true
+  Julian dates.
+- INTERNAL CHANGE: Add &quot;SPDX-License-Identifier&quot; tags to most files.</comment>
+    <requestid>1046107</requestid>
+  </revision>
 </revisionlist>

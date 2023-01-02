@@ -1,7 +1,7 @@
 #
 # spec file for package remind
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
-%define tar_version 04.02.01
+%define tar_version 04.02.02
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -89,6 +89,7 @@ make DESTDIR=%{buildroot} install
 %dir /usr/share/remind/lang
 %dir /usr/share/remind/site
 /usr/share/remind/ansitext.rem
+/usr/share/remind/seasons.rem
 /usr/share/remind/holidays/ca.rem
 /usr/share/remind/holidays/fr.rem
 /usr/share/remind/holidays/jewish.rem
