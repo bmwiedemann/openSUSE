@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:21:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * Corrected the icon for "New Tab".
+  * Corrected some descriptions in Hidden Shortcuts dialog.
+  * Enabled tab DND under Wayland.
+  * Fixed the context menus of tabs and forward/backward buttons under Wayland.
+
+-------------------------------------------------------------------
 Sat Nov  5 17:52:42 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

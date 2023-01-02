@@ -557,4 +557,16 @@
     <comment></comment>
     <requestid>1033816</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d3ed8741c60d7d1de8802a778a473a78</srcmd5>
+    <version>1.2.1</version>
+    <time>1672670849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Corrected the icon for &quot;New Tab&quot;.
+  * Corrected some descriptions in Hidden Shortcuts dialog.
+  * Enabled tab DND under Wayland.
+  * Fixed the context menus of tabs and forward/backward buttons under Wayland.</comment>
+    <requestid>1046191</requestid>
+  </revision>
 </revisionlist>
