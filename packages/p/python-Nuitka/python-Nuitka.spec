@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# https://github.com/Nuitka/Nuitka/issues/1856
+%define skip_python311 1
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -130,7 +132,7 @@ ExclusiveArch:  do-not-build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        1.0.8
+Version:        1.3.5
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -335,13 +337,21 @@ cp -rp %{_libexecdir}/scons-*/ my-scons/
 cp -r %{python3_sitelib}/SCons my-scons/
 %endif
 
-%{python_expand #
+export PYTHONPATH=$PYTHONPATH:$PWD/my-scons/
+
 mkdir build/testbin
 cp -r %{_bindir}/scons* build/testbin/
-sed -i '1 s/python3/$python /' build/testbin/*
-}
+
 export SCONS_LIB_DIR=$PWD/my-scons
 export PATH=$PWD/build/testbin:$PATH
+
+# Seems run-tests is broken, because it explictly adds numpy plugin, which results in
+# +Nuitka-Plugins:WARNING: numpy: This plugin has been deprecated, do not enable it anymore.
+sed -i '/if filename == "GlfwUsing.py"/d' tests/standalone/run_all.py
+sed -i '/plugin_enable:numpy/d' tests/standalone/run_all.py
+
+# https://github.com/Nuitka/Nuitka/issues/1972
+rm tests/standalone/PyQt5*.py
 
 %{python_expand #
 
@@ -365,7 +375,7 @@ if [[ "$python" != "python2" ]]; then
   mv tests/standalone/NumpyUsing.py /tmp
 fi
 
-# OOM
+# OOM (last checked 02-01-2023)
 mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
 
 export NUITKA_EXTRA_OPTIONS="--debug"
@@ -394,7 +404,7 @@ if [[ "$python" == "python2" || "$python" == "python3" ]]; then
   mv tests/standalone/OpenGLUsing.py /tmp
 fi
 
-# OOM
+# OOM (last checked 02-01-2023)
 mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
 
 export NUITKA_EXTRA_OPTIONS=""

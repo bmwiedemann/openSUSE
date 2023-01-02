@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 07:19:58 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip unsupported Python 3.11
+- Update to v1.3.5
+  See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst for changes
+  in 1.1, 1.2 and 1.5
+
+-------------------------------------------------------------------
 Tue Oct 11 23:26:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to Version 1.0.8  
+- Update to v1.0.8  
   * Standalone: Added support for more rapidfuzz implicit dependencies. Fixed in 1.0.8 already.
   * Standalone: Added support for vibora. Fixed in 1.0.8 already.
   * Fix, must not expose module name objects to Python import hooks. Fixed in 1.0.8 already.
@@ -10,7 +18,7 @@ Tue Oct 11 23:26:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Thu Sep 22 19:20:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.0
+- Update to v1.0
   This release contains a large amount of new features, while consolidating what we have with many bug fixes.
   Scalability should be dramatically better, as well as new optimization that will accelerate some code quite
   a bit. See the summary, how this release is paving the way forward.
@@ -110,9 +118,8 @@ Thu Sep 22 19:20:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
       result = types.FunctionType(func.__code__, func.__globals__, name=func.__name__, argdefs=func.__defaults__, closure=func.__closure__)
       result = functools.update_wrapper(result, func)
       result.__kwdefaults__ = func.__kwdefaults__
-
-   result.__name__ = name
-   return result
+    result.__name__ = name
+    return result
   * Plugins: Added explicit deprecation status of a plugin. We now have a few that do nothing, and are just there for compatibility
     with existing users, and this now informs the user properly rather than just saying it is not relevant.
   * Fix, some Python installations crash when attempting to import modules, such as os with a ModuleName object,
