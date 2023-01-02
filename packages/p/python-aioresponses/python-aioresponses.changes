@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:17:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.4:
+  * bump py36 to ubuntu 20.04
+  * restore 3.6
+  * Adjust github actions test workflow
+  * Fix python versions in env list
+  * Add documentation for repeat argument
+  * Add compat module
+  * fix long line by adding line breaks
+  * shorten comment to obey line length limit
+  * split typing and assignment to avoid long line
+  * Avoid type confusion by explicitly typing as \`ClientResponse\`
+  * ignore false positive mypy warning when \`url\_or\_pattern\` is a
+    \`Pattern\`
+  * add \`py.typed\` to MANIFEST.in
+  * add \`py.typed\` file to package data in setup.py
+  * fix version after release was tagged/released
+  * Extend  for arguments
+  * Init assert\_called
+  * Fix type annotations
+
+-------------------------------------------------------------------
 Sat Jan 15 16:37:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.3:

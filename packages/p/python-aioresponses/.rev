@@ -116,4 +116,30 @@
   * adding catch to ignore ValueError when deepcopy is unsuccessful</comment>
     <requestid>946669</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c4593953c09e9be913bc0708c793e2a1</srcmd5>
+    <version>0.7.4</version>
+    <time>1672673903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.4:
+  * bump py36 to ubuntu 20.04
+  * restore 3.6
+  * Adjust github actions test workflow
+  * Fix python versions in env list
+  * Add documentation for repeat argument
+  * Add compat module
+  * fix long line by adding line breaks
+  * shorten comment to obey line length limit
+  * split typing and assignment to avoid long line
+  * Avoid type confusion by explicitly typing as \`ClientResponse\`
+  * ignore false positive mypy warning when \`url\_or\_pattern\` is a
+    \`Pattern\`
+  * add \`py.typed\` to MANIFEST.in
+  * add \`py.typed\` file to package data in setup.py
+  * fix version after release was tagged/released
+  * Extend  for arguments
+  * Init assert\_called
+  * Fix type annotations</comment>
+    <requestid>1046200</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioresponses
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioresponses
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT
