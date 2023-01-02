@@ -323,4 +323,26 @@ Most of the source code files carry a GPL-2.0 notice, not GPL-2.0+ (forwarded re
   * fix use-after-free in iser_conn_free()</comment>
     <requestid>1039848</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3e99aa3986ae2ad2fc0d64eaf02a0ac8</srcmd5>
+    <version>1.0.85</version>
+    <time>1672670844</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.85:
+  * remove duplicate includes
+  * Fix blank documentation line in service file 
+
+- Some cleanup (bsc#1206639):
+  * removed patch setup-tgt-conf-d.patch, since it's upstream,
+    and having it caused duplicated include of user config
+  * renamed setup-tgt-conf-d.patch to
+    tgt-install-examples-in-documentation-dir.patch, to better
+    reflect what it does (since it no longer sets up tgt.conf.d)
+  * removed the sytemd source file we have, since we get
+    tgtd.service from upstream now (with a patch)
+  * added patch tgt-systemd-service-update.patch, to ensure
+    SUSE-specific changes are in the service file
+  * dropped tgt-include-sys-macros-for-major.patch (obsolete)</comment>
+    <requestid>1046187</requestid>
+  </revision>
 </revisionlist>

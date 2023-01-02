@@ -1,7 +1,7 @@
 #
 # spec file for package tgt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,29 +20,34 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+#Compat macro for make_build macro (needed in SLE12-SP5)
+%if ! %{defined make_build}
+  %define make_build %{__make} %{?_smp_mflags}
+%endif
 Name:           tgt
-Version:        1.0.84
+Version:        1.0.85
 Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://github.com/fujita/tgt
 Source:         https://github.com/fujita/tgt/archive/refs/tags/v%{version}.tar.gz
-Source1:        %{name}d.service
-Source4:        sysconfig.%{name}
+Source1:        sysconfig.%{name}
 Patch1:         %{name}-fix-build
-Patch2:         setup-tgt-conf-d.patch
-Patch3:         %{name}-include-sys-macros-for-major.patch
-Patch5:         harden_tgtd.service.patch
+Patch2:         %{name}-install-examples-in-documentation-dir.patch
+Patch3:         harden_tgtd.service.patch
+Patch4:         %{name}-systemd-service-update.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libaio-devel
-BuildRequires:  libxslt
+BuildRequires:  libxslt-tools
+BuildRequires:  libxslt1
 BuildRequires:  openssl-devel
 BuildRequires:  perl-Config-General
 BuildRequires:  systemd-rpm-macros
 Requires:       perl-Config-General
 Requires(pre):  %fillup_prereq
 Obsoletes:      iscsitarget
+%{?systemd_requires}
 
 %description
 Linux target framework (tgt) aims to simplify various SCSI target
@@ -57,7 +62,7 @@ user-space daemon and tools (i.e. they completely runs in user space).
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch5 -p1
+%patch4 -p1
 
 %build
 %ifarch ppc ppc64 ppc64le
@@ -69,8 +74,8 @@ user-space daemon and tools (i.e. they completely runs in user space).
 
 %install
 make DESTDIR=%{buildroot} docdir=%{_docdir}/%{name} install
-install -vD -m 644 %{SOURCE1} %{buildroot}/%{_unitdir}/%{name}d.service
-install -vD %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -vDm644 scripts/tgtd.service %{buildroot}%{_unitdir}/tgtd.service
+install -vD %{S:1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 ln -sf service %{buildroot}/%{_sbindir}/rc%{name}d
 
 %pre

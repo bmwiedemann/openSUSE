@@ -1,7 +1,7 @@
 From 4711fc19b6b83d572fd6eafd64a834559cae8ce2 Mon Sep 17 00:00:00 2001
 From: Hannes Reinecke <hare@suse.de>
 Date: Wed, 26 Feb 2014 12:50:09 +0100
-Subject: [PATCH 2/2] Install examples in documentation directory
+Subject: Install examples in documentation directory
 
 The examples should be installed in the documentation directory,
 not the standard configuration directory.
@@ -9,12 +9,9 @@ not the standard configuration directory.
 Signed-off-by: Dirk Mueller <dmueller@suse.com>
 Acked-by: Hannes Reinecke <hare@suse.de>
 ---
- conf/Makefile     | 6 ++++--
- conf/targets.conf | 5 +++++
- 2 files changed, 9 insertions(+), 2 deletions(-)
+ conf/Makefile |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/conf/Makefile b/conf/Makefile
-index bff222f..abb763e 100644
 --- a/conf/Makefile
 +++ b/conf/Makefile
 @@ -1,4 +1,5 @@
@@ -36,21 +33,3 @@ index bff222f..abb763e 100644
  	done
  	install -d $(DESTDIR)$(sysconfdir)/tgt/conf.d
  
-diff --git a/conf/targets.conf b/conf/targets.conf
-index 1bb4435..70b608a 100644
---- a/conf/targets.conf
-+++ b/conf/targets.conf
-@@ -1,5 +1,10 @@
- # Empty targets configuration file -- please see the package
- # documentation directory for an example.
-+
-+#
-+# Include configuration from directory
-+# 
-+include /etc/tgt/conf.d/*.conf
- #
- # You can drop individual config snippets into /etc/tgt/conf.d
- include /etc/tgt/conf.d/*.conf
--- 
-1.8.1.4
-

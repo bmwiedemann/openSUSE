@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:28:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.85:
+  * remove duplicate includes
+  * Fix blank documentation line in service file 
+
+-------------------------------------------------------------------
+Fri Dec 23 20:01:34 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Some cleanup (bsc#1206639):
+  * removed patch setup-tgt-conf-d.patch, since it's upstream,
+    and having it caused duplicated include of user config
+  * renamed setup-tgt-conf-d.patch to
+    tgt-install-examples-in-documentation-dir.patch, to better
+    reflect what it does (since it no longer sets up tgt.conf.d)
+  * removed the sytemd source file we have, since we get
+    tgtd.service from upstream now (with a patch)
+  * added patch tgt-systemd-service-update.patch, to ensure
+    SUSE-specific changes are in the service file
+  * dropped tgt-include-sys-macros-for-major.patch (obsolete)
+
+-------------------------------------------------------------------
 Sat Dec  3 17:25:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.84:
