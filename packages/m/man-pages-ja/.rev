@@ -318,4 +318,13 @@
   * Improved manual pages (forwarded request 1039994 from dirkmueller)</comment>
     <requestid>1040192</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>372934938857d5cbee286b74fb6c4274</srcmd5>
+    <version>20221215</version>
+    <time>1672668152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221215
+  * Improved and updated manual pages (forwarded request 1045573 from susnux)</comment>
+    <requestid>1046141</requestid>
+  </revision>
 </revisionlist>
