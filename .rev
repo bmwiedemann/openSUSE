@@ -918,4 +918,14 @@ Fix version typo:
     <comment></comment>
     <requestid>998803</requestid>
   </revision>
+  <revision rev="114" vrev="11">
+    <srcmd5>4dba9a6f11f2727619e9404a234430f0</srcmd5>
+    <version>2.4.0</version>
+    <time>1672668096</time>
+    <user>dimstar_suse</user>
+    <comment>- rebased cz-map.patch for console-setup 1.215 update; apparently
+  'U+00b0' needs to be 'dead_abovering' and not 'dead_grave' as we
+  assumed before</comment>
+    <requestid>1045923</requestid>
+  </revision>
 </revisionlist>

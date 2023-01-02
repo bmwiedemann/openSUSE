@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 31 12:29:16 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- rebased cz-map.patch for console-setup 1.215 update; apparently
+  'U+00b0' needs to be 'dead_abovering' and not 'dead_grave' as we
+  assumed before
+
+-------------------------------------------------------------------
 Mon Aug  8 06:54:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %_pam_vendordir
