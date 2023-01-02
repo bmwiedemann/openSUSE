@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan  1 18:22:36 UTC 2023 - Andrey Karepin <egdfree@opensuse.org>
+
+- drop patch pg_cron-32bit-compat.patch
+- update to 1.4.2
+  * Fixes a bug that could lead to privilege escalation if users can
+    trigger CREATE EXTENSION
+  * Add compatibility for PostgreSQL 15 beta
+  * Fixes a bug that could cause unschedule to crash
+  * Ensures that cron.max_running_jobs is not higher than possible
+    connection count
+
+-------------------------------------------------------------------
 Mon Apr  4 13:44:18 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update pg_cron-32bit-compat.patch to be actually the upstream

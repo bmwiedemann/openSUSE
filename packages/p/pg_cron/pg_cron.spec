@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        PostgreSQL module for simple job schedule
 License:        PostgreSQL
 Group:          Productivity/Databases/Servers
 URL:            https://github.com/citusdata/pg_cron
 Source:         https://github.com/citusdata/pg_cron/archive/refs/tags/v%{version}.tar.gz#/%{ext_name}-%{version}.tar.gz
-Patch0:         pg_cron-32bit-compat.patch
 BuildRequires:  %{pg_name}-llvmjit-devel
 %pg_server_requires
 %if "%{pg_name}" == ""

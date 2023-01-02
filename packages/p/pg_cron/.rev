@@ -119,4 +119,20 @@
     <comment></comment>
     <requestid>967240</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a0cc48b37e4246180f83d552233865ca</srcmd5>
+    <version>1.4.2</version>
+    <time>1672668121</time>
+    <user>dimstar_suse</user>
+    <comment>- drop patch pg_cron-32bit-compat.patch
+- update to 1.4.2
+  * Fixes a bug that could lead to privilege escalation if users can
+    trigger CREATE EXTENSION
+  * Add compatibility for PostgreSQL 15 beta
+  * Fixes a bug that could cause unschedule to crash
+  * Ensures that cron.max_running_jobs is not higher than possible
+    connection count
+</comment>
+    <requestid>1046024</requestid>
+  </revision>
 </revisionlist>
