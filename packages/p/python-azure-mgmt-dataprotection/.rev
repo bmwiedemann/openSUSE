@@ -19,4 +19,16 @@
 - Update Requires from setup.py (forwarded request 1037968 from glaubitz)</comment>
     <requestid>1038696</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>150ec643a3777c406fea4bd820384574</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1672668158</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1046124 from glaubitz)</comment>
+    <requestid>1046156</requestid>
+  </revision>
 </revisionlist>
