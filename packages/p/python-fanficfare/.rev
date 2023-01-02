@@ -1098,4 +1098,18 @@
 </comment>
     <requestid>1037251</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4c69ad6d4bc46bbd48e46aa81faa28da</srcmd5>
+    <version>4.19.0</version>
+    <time>1672668137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.19.0:
+  - Fixes for config base_xenforo options
+  - Fix for adapter_quotevcom status
+  - Equalize ok/cancel buttons on user/pass &amp; email pass dialogs
+  - adapter_ficbooknet: Site change for status + remove debug
+  - Tweak for adapter_storiesonlinenet description parsing
+</comment>
+    <requestid>1046102</requestid>
+  </revision>
 </revisionlist>
