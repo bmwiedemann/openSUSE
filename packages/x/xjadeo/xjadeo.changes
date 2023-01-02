@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  1 19:00:19 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 0.8.12:
+  * add compatibility for ffmpeg-5.1
+  * fix UI scale when building on 10.15 or later
+- Drop 973f0046.patch (now upstream)
+
+-------------------------------------------------------------------
 Sun Sep  4 05:13:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 973f0046.patch: ffmpeg 5.1 compatibility.
