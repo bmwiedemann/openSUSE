@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyterlab
-Version:        3.5.0
+Version:        3.5.2
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -58,6 +58,8 @@ BuildRequires:  %{python_module jupyterlab-server-test}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
+BuildRequires:  %{python_module pytest-jupyter >= 0.6}
+BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module virtualenv}
 # /SECTION
@@ -107,7 +109,8 @@ done
 %fdupes %{buildroot}%{$python_sitelib}
 }
 %fdupes %{buildroot}%{_jupyter_prefix}
-cp %{buildroot}%{python3_sitelib}/jupyterlab-%{version}.dist-info/LICENSE .
+# Find any one installed LICENSE and get if for the rpm tagged file
+find %{buildroot}%{_prefix}/lib/python3.* -path '*/jupyterlab-%{version}.dist-info/LICENSE' -exec cp {} . ';' -quit
 
 %check
 # This is only a rudimentary set of tests which we can run offline using pytest directly. The full test
