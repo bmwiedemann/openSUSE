@@ -1,7 +1,7 @@
 #
 # spec file for package libfm-qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libfm-qt
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Library providing components to build desktop file managers
 License:        BSD-3-Clause AND LGPL-2.1-or-later

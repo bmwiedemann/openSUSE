@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:18:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * Specified the parents of context menus for use on Wayland.
+  * Fixed launching XWayland apps under Wayland.
+  * appchooserdialog: do not disable the OK button when Custom Command page is shown.
+  * Increased the minimum width of name column in detailed list view.
+  * Fixed the DND menu position under Wayland.
+  * Fixed crash with DND from outside app under Wayland.
+  * Fixed unresponsive DND menu under Wayland.
+  * Workaround for DND keyboard modifiers under Wayland.
+  * Check mime data of clipboard for nullity (for Wayland).
+  * Fixed drawing of selection rectangle under Wayland.
+
+-------------------------------------------------------------------
 Tue Nov  8 14:17:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Buildrequire lxqt-build-tools >= 0.12.0
