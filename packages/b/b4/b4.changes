@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  2 10:12:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.1:
+  * ez: use default web endpoint when in the kernel repo
+  * ez: give better error message when patatt signing fails
+  * ez: don't crash when there's no [sendemail] section
+
+-------------------------------------------------------------------
 Tue Dec 20 05:07:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 0.11.0:
