@@ -17,19 +17,17 @@
 
 
 Name:           makedepend
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Utility to create dependencies in makefiles
 License:        MIT
 Group:          Development/Tools/Building
-URL:            http://xorg.freedesktop.org/
+URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
-Patch0:         issue2-mr7.patch
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The makedepend program reads each sourcefile in sequence and parses it
@@ -41,19 +39,18 @@ make will know which object files must be recompiled when a dependency
 has changed.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/makedepend
 %{_mandir}/man1/makedepend.1%{?ext_man}
 
