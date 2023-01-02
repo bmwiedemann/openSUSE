@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan  1 11:11:45 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix audio playback support in muse score 
+  https://github.com/musescore/MuseScore/issues/11220#issuecomment-1365822403
+
+  - Fix jack finder by backporting 0dde64eef84.patch:
+    Though the jack code in Musescore seems to be unused and only
+    alsa seems supported
+  - Require alsa-plugins-pulse or pipewire-alsa to make playing out
+    of the box
+
+- prepare disabling the update check but it is currently not
+  possible due to
+  https://github.com/musescore/MuseScore/issues/15617  
+
+- cmake searches for ogg support: add proper BR
+
+-------------------------------------------------------------------
 Thu Dec 29 14:17:31 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Switch to RelWithDebInfo build

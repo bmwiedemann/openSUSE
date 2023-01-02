@@ -1,0 +1,18 @@
+commit 0dde64eef849027d16a0ac83b15bc8789d678564
+Author: Jerry James <loganjerry@gmail.com>
+Date:   Tue Dec 6 13:19:35 2022 -0700
+
+    Fix cmake error when building with jack on Linux
+
+diff --git a/build/cmake/FindJack.cmake b/build/cmake/FindJack.cmake
+index 6713e3aeef..d1676fa82b 100644
+--- a/build/cmake/FindJack.cmake
++++ b/build/cmake/FindJack.cmake
+@@ -28,6 +28,7 @@ IF(BUILD_JACK)
+            set (JACK_LIB "$ENV{${progenv}}/Jack/lib/libjack.a")
+            MESSAGE("JACK support enabled.")
+      ELSE(MINGW OR MSVC)
++           include(UsePkgConfig1)
+            PKGCONFIG1 (jack ${JACK_MIN_VERSION} JACK_INCDIR JACK_LIBDIR JACK_LIB JACK_CPP)
+            IF(JACK_INCDIR)
+                  MESSAGE(STATUS "${JACK_LONGNAME} >= ${JACK_MIN_VERSION} found. jack support enabled.")
