@@ -706,4 +706,22 @@
   * Updated deb build to use the right libncursesw6 dependency.</comment>
     <requestid>1032795</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f120e08a8ebe938723df76dfd48e1ba8</srcmd5>
+    <version>1.7</version>
+    <time>1672670850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7:
+  * Added an option to classify unknown OS and browsers as crawlers using
+    `--unknowns-as-crawlers`.
+  * Added highlighting to certain metrics on the HTML report for readability.
+  * Added support ASN mapping for GeoIP2 and legacy databases.  Great for
+    detecting malicious traffic and block accordingly.
+  * Changed and prioritize user's browsers list over heuristics.
+  * Fixed invalid read when loading the list of agents for an IP.
+  * Fixed issue where a file containing a nul `\0` character would crash the
+    program.
+  * Updated Swedish i18n.</comment>
+    <requestid>1046178</requestid>
+  </revision>
 </revisionlist>

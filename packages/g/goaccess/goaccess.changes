@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:11:41 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7:
+  * Added an option to classify unknown OS and browsers as crawlers using
+    `--unknowns-as-crawlers`.
+  * Added highlighting to certain metrics on the HTML report for readability.
+  * Added support ASN mapping for GeoIP2 and legacy databases.  Great for
+    detecting malicious traffic and block accordingly.
+  * Changed and prioritize user's browsers list over heuristics.
+  * Fixed invalid read when loading the list of agents for an IP.
+  * Fixed issue where a file containing a nul `\0` character would crash the
+    program.
+  * Updated Swedish i18n.
+
+-------------------------------------------------------------------
 Wed Nov  2 08:35:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.5:
