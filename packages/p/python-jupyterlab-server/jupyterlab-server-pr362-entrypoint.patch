@@ -1,0 +1,36 @@
+From ffa00ad788690c35b584a912856b52965a176e71 Mon Sep 17 00:00:00 2001
+From: Steven Silvester <steven.silvester@ieee.org>
+Date: Mon, 26 Dec 2022 19:38:11 -0600
+Subject: [PATCH] make tests more flexible
+
+---
+ jupyterlab_server/process_app.py | 2 +-
+ tests/test_process.py            | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/jupyterlab_server/process_app.py b/jupyterlab_server/process_app.py
+index ba530c6..e108bb6 100644
+--- a/jupyterlab_server/process_app.py
++++ b/jupyterlab_server/process_app.py
+@@ -20,7 +20,7 @@ def get_command(self):
+         """Get the command and kwargs to run with `Process`.
+         This is intended to be overridden.
+         """
+-        return ["python", "--version"], {}
++        return [sys.executable, "--version"], {}
+ 
+     def initialize_settings(self):
+         """Start the application."""
+diff --git a/tests/test_process.py b/tests/test_process.py
+index 75f52b6..c552d06 100644
+--- a/tests/test_process.py
++++ b/tests/test_process.py
+@@ -9,7 +9,7 @@
+ 
+ 
+ def test_which():
+-    assert which("python")
++    assert which("jupyter")
+ 
+ 
+ async def test_process():
