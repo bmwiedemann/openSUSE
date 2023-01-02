@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:33:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230101:
+  * LICENCE update from  public-domain to CC0,
+  * public domain works differently depending on the country,
+  * to avoid it, set explicitly CC0
+  * fixed sysdep tests, tnx Johannes Nixdorf
+
+-------------------------------------------------------------------
 Sun Dec  4 13:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220801:
