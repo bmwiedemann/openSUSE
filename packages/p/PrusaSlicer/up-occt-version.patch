@@ -7,7 +7,7 @@ Index: PrusaSlicer-version_2.5.0/src/occt_wrapper/CMakeLists.txt
  generate_export_header(OCCTWrapper)
  
 -find_package(OpenCASCADE 7.6.2 REQUIRED)
-+find_package(OpenCASCADE 7.6.3 REQUIRED)
++find_package(OpenCASCADE REQUIRED)
  
  set(OCCT_LIBS
      TKXDESTEP

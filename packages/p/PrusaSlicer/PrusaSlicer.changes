@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  1 17:25:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update up-occt-version.patch
+  * Allow any version for openCASCADE
+  * Luckily, the package compiles with recently updated occt v7.7
+
+-------------------------------------------------------------------
 Sat Oct 29 11:35:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.5.0

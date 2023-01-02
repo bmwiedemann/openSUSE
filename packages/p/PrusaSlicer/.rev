@@ -252,4 +252,14 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
 </comment>
     <requestid>1032201</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>0443c750cef1f9dfbfc7aacfecd8ead1</srcmd5>
+    <version>2.5.0</version>
+    <time>1672668118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update up-occt-version.patch
+  * Allow any version for openCASCADE
+  * Luckily, the package compiles with recently updated occt v7.7 (forwarded request 1046020 from bnavigator)</comment>
+    <requestid>1046021</requestid>
+  </revision>
 </revisionlist>
