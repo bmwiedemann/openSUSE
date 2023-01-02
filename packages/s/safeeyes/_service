@@ -4,7 +4,7 @@
     <param name="filename">safeeyes</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.1.3</param>
+    <param name="revision">v2.1.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <!-- tag is vX.Y.Z, we want X.Y.Z -->
     <param name="versionrewrite-pattern">v(.*)</param>

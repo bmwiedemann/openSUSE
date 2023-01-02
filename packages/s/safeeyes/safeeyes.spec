@@ -1,7 +1,7 @@
 #
 # spec file for package safeeyes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2020 opensuse.lietuviu.kalba@gmail.com
 #
@@ -19,7 +19,7 @@
 
 
 Name:           safeeyes
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Tool for reminding the user to take breaks
 License:        GPL-3.0-only

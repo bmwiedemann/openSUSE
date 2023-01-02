@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 22 08:25:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.1.4:
+  * Simplify Debian installation instructions
+  * Ayatana Appindicator library
+  * Add smartpause support for swaywm
+  * Directly track running swayidle process
+  * Use HTTPS where users potentially open the URL in a browser
+  * check if using wayland via WAYLAND_DISPLAY env variable
+  * add support for python without gettext.bindtextdomain
+
+-------------------------------------------------------------------
 Wed Apr 28 15:35:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.1.3:
