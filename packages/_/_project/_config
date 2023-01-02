@@ -1,3 +1,8 @@
+Prefer: -python310-jupyter-jupyterlab-server
+Prefer: -python39-jupyter-jupyterlab-server
+Prefer: -python38-jupyter-jupyterlab-server
+
+
 Prefer: yast2-schema-default
 %define gcc_version 12
 
