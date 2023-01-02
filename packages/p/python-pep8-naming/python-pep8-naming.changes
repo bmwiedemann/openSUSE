@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:42:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.3:
+  * Formally require flake8 5.0.0 or later.
+  * Add support for Python 3.11.
+
+-------------------------------------------------------------------
 Mon Sep 19 08:18:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.2:

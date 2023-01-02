@@ -1,7 +1,7 @@
 #
 # spec file for package python-pep8-naming
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep8-naming
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        Flake8 plugin for checking PEP-8 naming conventions
 License:        MIT
@@ -28,13 +28,13 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-flake8 >= 3.9.1
+Requires:       python-flake8 >= 5.0.0
 Requires:       python-flake8-polyfill >= 1.0.2
 Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module flake8 >= 5.0.0}
 BuildRequires:  %{python_module flake8-polyfill >= 1.0.2}
-BuildRequires:  %{python_module flake8 >= 3.9.1}
 # /SECTION
 %python_subpackages
 
