@@ -7,4 +7,12 @@
     <comment>Add tokodon to openSUSE:Factory</comment>
     <requestid>1043909</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f3e305e65b8ea6f9802b1b51dfd2f57</srcmd5>
+    <version>23.01.0</version>
+    <time>1672668131</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 23.01.0</comment>
+    <requestid>1046097</requestid>
+  </revision>
 </revisionlist>

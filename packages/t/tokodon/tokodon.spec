@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        22.11.2
+Version:        23.01.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -36,7 +36,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.6
+BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem) >= 5.91
@@ -82,8 +82,9 @@ community.
 %{_kf5_appstreamdir}/org.kde.tokodon.appdata.xml
 %{_kf5_bindir}/tokodon
 %{_kf5_debugdir}/tokodon.categories
+%{_kf5_iconsdir}/hicolor/scalable/actions/tokodon-chat-reply.svg
+%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.tokodon.svg
 %{_kf5_notifydir}/tokodon.notifyrc
-%{_kf5_sharedir}/icons/hicolor/scalable/apps/org.kde.tokodon.svg
 
 %files lang -f tokodon.lang
 
