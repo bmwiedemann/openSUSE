@@ -120,4 +120,15 @@ Needed for python3-jupyter_ipython</comment>
 </comment>
     <requestid>1037860</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4e0cc96bf79ec269f0115f983156c06b</srcmd5>
+    <version>0.49</version>
+    <time>1672673905</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.49:
+  * Add Python 3.11 support.
+  * Drop Python 3.6 support.
+- drop python-check-manifest-no-mock.patch (upstream)</comment>
+    <requestid>1046212</requestid>
+  </revision>
 </revisionlist>

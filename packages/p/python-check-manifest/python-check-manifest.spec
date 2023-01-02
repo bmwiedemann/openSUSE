@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-check-manifest%{psuffix}
-Version:        0.48
+Version:        0.49
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-check-manifest-no-mock.patch gh#mgedmin/check-manifest#151 pgajdos@suse.com
-# Replace using mock with unittest.mock.
-Patch0:         python-check-manifest-no-mock.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

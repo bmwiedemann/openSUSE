@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:29:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.49:
+  * Add Python 3.11 support.
+  * Drop Python 3.6 support.
+- drop python-check-manifest-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Nov 24 10:46:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add "git config --global --add protocol.file.allow always" to fix tests,
