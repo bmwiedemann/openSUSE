@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec 25 16:21:02 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.2:
+  * New projection: Equirectangular (fills the screen)
+  * Improved rendering of Milky Way, Zodiacal Light and landscapes
+  * Improved rendering of the Moon
+  * Improved HiDPI behaviour
+  * Use Noto as default font
+  * Added Modern (IAU), Tikuna and Seri sky cultures
+  * Added Chinese and Bahai calendars (Calendars plugin)
+
+-------------------------------------------------------------------
 Mon Oct 31 20:19:48 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.1:

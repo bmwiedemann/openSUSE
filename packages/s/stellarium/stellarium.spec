@@ -23,14 +23,14 @@
 %endif
 
 Name:           stellarium
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://stellarium.org/
-Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.1.tar.gz#/stellarium-%{version}.tar.gz
-Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.1.tar.gz.asc#/stellarium-%{version}.tar.gz.asc
+Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
+Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
