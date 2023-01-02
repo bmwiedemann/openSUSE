@@ -1,8 +1,8 @@
-Index: atop-2.6.0/atopacct.service
+Index: atop-2.8.0/atopacct.service
 ===================================================================
---- atop-2.6.0.orig/atopacct.service
-+++ atop-2.6.0/atopacct.service
-@@ -6,6 +6,19 @@ After=syslog.target
+--- atop-2.8.0.orig/atopacct.service
++++ atop-2.8.0/atopacct.service
+@@ -5,6 +5,19 @@ After=syslog.target
  Before=atop.service
  
  [Service]
@@ -21,4 +21,4 @@ Index: atop-2.6.0/atopacct.service
 +# end of automatic additions 
  Type=forking
  PIDFile=/var/run/atopacctd.pid
- ExecStart=/usr/sbin/atopacctd
+ ExecStartPre=/bin/sh -c 'if systemctl -q is-active acct psacct; then echo "Process accounting already in use by (ps)acct"; exit 1; fi'

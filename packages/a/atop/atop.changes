@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Jan  2 12:55:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.0:
+  * Rename AUTHOR in spec file
+  * Adapt atopconvert for conversion to version 2.8
+  * Atopacct.service verifies if psacct/acct is active (#227)
+    To avoid that the atopacctd daemon and the (ps)acct service both
+    try to activate process accounting continuously, the atopacct.service
+    refuses to start when the (ps)acct service is already active.
+  * Fix LLC output for Json
+  * Solve format-overflow/maybe-uninitialized warnings
+  * Reshuffle counters to ease raw file conversion
+  * Recalculate average queue in parseable output
+  * Corrected the order of inflight/avque
+  * Add inflight and avque counters to parseable data
+  * Fix BDELAY in priphead call to make_proc_prints for schedprocs
+  * Correct the array index used for previous samples per-container CPU values
+  * Reinstate dropped printing of avio msec values between 99.95 and 9995
+  * photosyst: add ceph rbd disk display
+  * photosys.c: correct the numa number for NUM and NUC
+  * Timeout when setting semaphore in atop (#207)
+  * Current CPU set to -1 for terminated process (#201)
+    When a process has terminated (status 'E') the current CPU will be
+    set to -1 (means: unknown) in the parsable output with label PRC.
+  * Typo corrections and correction in man page
+  * Introduce JSON output by '-J xxx'
+  * Add missing counter iInCsumErrors to ICMP counters
+  * supplement inflight I/O requests
+  * Man page: clarify elapsed time in PRG parseable output
+  * Exponent calulation for high counter might exceed column width
+    When a column width was defined of e.g. 4 positions, the value
+    99999 was shown as 100e3 instead of 99e3 (upward rounding caused
+    an extra position).
+  * PID selection can not be undone for same interval When pressing
+    'I' to select particular PIDs and pressing 'I' again within the
+    same interval to deselect by pressing the Enter-key, the deselection
+    is ignored. Solved by reinitializing the input buffer.
+  * Split the MEM line into two lines and add pagetable size Since it was
+    hardly possible to view the values in the MEM line (too many), the memory
+    utilization has been spread over two lines. The amount of memory used
+    for page tables has been added.
+  * Memory usage for TCP/UDP sockets
+  * Add Documentation key to atop-rotate.service/.timer (#206)
+  * Correct typos in man pages (#205)
+  * Add cgroup support (#127) The current cgroup is registered
+    for systems that are based on cgroup v2. Apart from the group name also
+    relevant controller information is maintained, like the cpu.max and the
+    memory.max (for the group itself and the most restrictive value in the
+    parent groups).
+  * Fix compiling error with -DHTTPSTATS
+  * supplement tcpsock and udpsock memory consumption
+  * Store PID width in header of raw log Register the number of positions
+    for PID and TID numbers on the measured system in the raw log. In this
+    way, the viewing of the raw log on another system will use the proper
+    column width for PID/TID.
+  * showhdrline: fix OOB access when COLS is too small
+  * Fix disk busy in man page
+  * Add block I/O delay to processes/threads
+  * Move run_in_guest into various.c
+  * Minor changes to text, column priority and coloring
+  * Support pgin & pgout
+  * Correction on calibration (one too many)
+  * Detect vmmemctl at two locations
+  * Use dup2 instead of close+dup
+  * Fix compiling warning
+  * Calibrate the value of nthr for each process
+  * photosyst.c: fixed path for vmmemctl
+  * Fix typo in man page
+  * Added link
+  * Only print current CPU frequency when supported by CPU architecture
+  * Lower priority of column 'numnode' in MEM line
+  * Support per-second counter for LLC
+  * Reformat status line info in initial screen
+  * Add LLC in atop man page
+  * Support LLC collection
+  * Add OpenRC init scripts (atop, atopacct)
+  * Support LLC collection
+- Refresh patches:
+  * harden_atop-rotate.service.patch
+  * harden_atopacct.service.patch
+
+-------------------------------------------------------------------
 Mon Feb 28 23:24:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.7.1:

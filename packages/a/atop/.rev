@@ -140,4 +140,41 @@
   * Explicit type definition in atop.service (#180)</comment>
     <requestid>958119</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e0e03cff22e91b9fbfb9bf6f27aac0ef</srcmd5>
+    <version>2.8.0</version>
+    <time>1672670852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0:
+  * Rename AUTHOR in spec file
+  * Adapt atopconvert for conversion to version 2.8
+  * Atopacct.service verifies if psacct/acct is active (#227)
+    To avoid that the atopacctd daemon and the (ps)acct service both
+    try to activate process accounting continuously, the atopacct.service
+    refuses to start when the (ps)acct service is already active.
+  * Fix LLC output for Json
+  * Solve format-overflow/maybe-uninitialized warnings
+  * Reshuffle counters to ease raw file conversion
+  * Recalculate average queue in parseable output
+  * Corrected the order of inflight/avque
+  * Add inflight and avque counters to parseable data
+  * Fix BDELAY in priphead call to make_proc_prints for schedprocs
+  * Correct the array index used for previous samples per-container CPU values
+  * Reinstate dropped printing of avio msec values between 99.95 and 9995
+  * photosyst: add ceph rbd disk display
+  * photosys.c: correct the numa number for NUM and NUC
+  * Timeout when setting semaphore in atop (#207)
+  * Current CPU set to -1 for terminated process (#201)
+    When a process has terminated (status 'E') the current CPU will be
+    set to -1 (means: unknown) in the parsable output with label PRC.
+  * Typo corrections and correction in man page
+  * Introduce JSON output by '-J xxx'
+  * Add missing counter iInCsumErrors to ICMP counters
+  * supplement inflight I/O requests
+  * Man page: clarify elapsed time in PRG parseable output
+  * Exponent calulation for high counter might exceed column width
+    When a column width was defined of e.g. 4 positions, the value
+    99999 was shown as 100e3 instead of 99e3 (upward rounding caused</comment>
+    <requestid>1046179</requestid>
+  </revision>
 </revisionlist>

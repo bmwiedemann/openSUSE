@@ -1,9 +1,9 @@
-Index: atop-2.6.0/atop-rotate.service
+Index: atop-2.8.0/atop-rotate.service
 ===================================================================
---- atop-2.6.0.orig/atop-rotate.service
-+++ atop-2.6.0/atop-rotate.service
-@@ -2,5 +2,18 @@
- Description=Restart atop daemon to rotate logs
+--- atop-2.8.0.orig/atop-rotate.service
++++ atop-2.8.0/atop-rotate.service
+@@ -3,5 +3,18 @@ Description=Restart atop daemon to rotat
+ Documentation=man:atop(1)
  
  [Service]
 +# added automatically, for details please see
