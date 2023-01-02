@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  1 17:58:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.2
+  * Compatibility update
+  * Remove `scripts` entry from `setup.py`
+- Move to PEP517
+
+-------------------------------------------------------------------
 Mon Aug  1 18:23:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.4.0

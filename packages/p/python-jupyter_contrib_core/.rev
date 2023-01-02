@@ -49,4 +49,15 @@
 - Drop python-jupyter_contrib_core-remove-nose.patch</comment>
     <requestid>992093</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84fad52ed4a80d9493b3d5a82acf793f</srcmd5>
+    <version>0.4.2</version>
+    <time>1672668116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2
+  * Compatibility update
+  * Remove `scripts` entry from `setup.py`
+- Move to PEP517</comment>
+    <requestid>1046022</requestid>
+  </revision>
 </revisionlist>

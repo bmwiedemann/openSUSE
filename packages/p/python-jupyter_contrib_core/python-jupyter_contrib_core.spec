@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_contrib_core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter_contrib_core
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Common utilities for jupyter-contrib projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-contrib/jupyter_contrib_core
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_contrib_core/jupyter_contrib_core-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -68,11 +69,11 @@ Common utilities for jupyter-contrib projects. Includes:
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter-contrib
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
