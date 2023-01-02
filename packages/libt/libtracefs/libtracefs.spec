@@ -1,7 +1,7 @@
 #
 # spec file for package libtracefs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,15 @@ License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/
 Source:         https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/%name-%version.tar.gz
+Patch1:         0001-libtracefs-Add-initial-support-for-meson.patch
+BuildRequires:  asciidoc
+BuildRequires:  bison
+BuildRequires:  fdupes
+BuildRequires:  flex
+BuildRequires:  meson
 BuildRequires:  pkg-config
+BuildRequires:  source-highlight
+BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libtraceevent) >= 1.3
 
@@ -38,6 +46,16 @@ Group:          System/Libraries
 
 %description -n %lname
 This library provides C APIs to access the kernel trace file system.
+
+%package tools
+Summary:        Tools for libtracefs
+Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
+
+%description tools
+This library provides C APIs to access the kernel trace file system.
+
+This subpackage contains tools.
 
 %package devel
 Summary:        Development files for libtracefs
@@ -53,18 +71,15 @@ This subpackage contains the header files.
 %autosetup -p1
 
 %build
-%make_build V=1 prefix="%_prefix"
+%meson \
+    -Ddocs-build=true \
+    -Dhtmldir="%_docdir/%name"
+%meson_build
 
 %install
-%make_install V=1 prefix="%_prefix" \
-	pkgconfig_dir=%{_libdir}/pkgconfig \
-        %nil
-# always the same issues
-find "%buildroot/%_includedir" -type f -name "*.h" -exec chmod a-x {} +
-rm -f "%buildroot/%_libdir"/*.a
-if ldd -r "%buildroot/%_libdir/libtracefs.so" 2>&1 | grep -q undefined; then
-	exit 1
-fi
+%meson_install
+
+%fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -73,9 +88,15 @@ fi
 %_libdir/libtracefs.so.1*
 %license LICENSES/LGPL-2.1
 
+%files tools
+%_bindir/sqlhist
+%_mandir/man1/*
+
 %files devel
 %_includedir/*
 %_libdir/libtracefs.so
 %_libdir/pkgconfig/*.pc
+%_mandir/man3/*
+%_docdir/%name/
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 27 09:22:13 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use meson to build package
+  * add 0001-libtracefs-Add-initial-support-for-meson.patch
+
+-------------------------------------------------------------------
 Fri Dec 16 15:06:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.3

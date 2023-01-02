@@ -79,4 +79,12 @@
     <comment>- Update to release 1.6.3</comment>
     <requestid>1043363</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>82694920f0f434b725747dcc7fd28246</srcmd5>
+    <version>1.6.3</version>
+    <time>1672668127</time>
+    <user>dimstar_suse</user>
+    <comment>- Use meson to build package</comment>
+    <requestid>1046050</requestid>
+  </revision>
 </revisionlist>
