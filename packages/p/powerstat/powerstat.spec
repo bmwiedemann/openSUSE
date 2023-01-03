@@ -1,7 +1,7 @@
 #
 # spec file for package powerstat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           powerstat
-Version:        0.02.27
+Version:        0.02.28
 Release:        0
 Summary:        Laptop power measuring tool
 License:        GPL-2.0-only

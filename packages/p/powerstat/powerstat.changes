@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:11:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.02.28:
+  * Add hint on how to use powerstat if -R option fails to find RAPL
+  * Widen range of power_domains and thermal_zones, make them signed integers
+  * powerstat: sanity check readdir name
+  * Update copyright year
+  * Clean up some whitespaces
+  * powerstat: add notes on deprecated i915 power interface
+
+-------------------------------------------------------------------
 Sat Sep 24 09:31:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.02.27:
