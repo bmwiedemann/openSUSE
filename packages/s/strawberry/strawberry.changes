@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:21:45 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.12
+
+ + Fixed crash when adjusting volume with mouse wheel (#1089).
+ + Fixed playback stopping in certain cases where the next track was unavailable (#958).
+ + Removed appearance settings for changing palette colors, it was never properly implemented.
+
+-------------------------------------------------------------------
 Fri Dec 30 17:59:24 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.11
