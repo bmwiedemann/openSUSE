@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 20:37:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.6:
+  * zebraidx: Mention -f option when skipping index lines
+  * Fix result-sets not removed in some cases
+
+-------------------------------------------------------------------
 Tue Dec  6 21:19:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.5:

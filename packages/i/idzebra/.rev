@@ -255,4 +255,14 @@
     <comment></comment>
     <requestid>1042876</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>378c468e7ca351eb39857983905bf36a</srcmd5>
+    <version>2.2.6</version>
+    <time>1672754733</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.6:
+  * zebraidx: Mention -f option when skipping index lines
+  * Fix result-sets not removed in some cases</comment>
+    <requestid>1046309</requestid>
+  </revision>
 </revisionlist>

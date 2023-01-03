@@ -1,7 +1,7 @@
 #
 # spec file for package idzebra
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           idzebra
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        Fielded Free Text Engine with a Z39.50 Frontend
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 URL:            https://www.indexdata.com/resources/software/zebra/
-Source:         http://ftp.indexdata.dk/pub/zebra/idzebra-%{version}.tar.gz
+Source:         https://ftp.indexdata.com/pub/zebra/idzebra-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
