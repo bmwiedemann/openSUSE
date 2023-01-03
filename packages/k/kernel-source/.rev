@@ -6122,4 +6122,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.1.1</comment>
     <requestid>1045271</requestid>
   </revision>
+  <revision rev="671" vrev="1">
+    <srcmd5>3bcdac5a1e99f1bbdc1e545ce34870ba</srcmd5>
+    <version>6.1.2</version>
+    <time>1672759614</time>
+    <user>dimstar_suse</user>
+    <comment>6.1.2</comment>
+    <requestid>1046085</requestid>
+  </revision>
 </revisionlist>

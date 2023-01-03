@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-obs-build
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.1.1
+%define patchversion 6.1.2
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-e71748d44896da2c218a153173fa0504f34836bc
+BuildRequires:  kernel%kernel_flavor-srchash-7fea1503395f43e7cb9ca53b28baccb86c858246
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.1.1
+Version:        6.1.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge71748d
+Release:        <RELEASE>.g7fea150
 %else
 Release:        0
 %endif

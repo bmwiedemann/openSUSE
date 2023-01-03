@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-lpae
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.1
+%define patchversion 6.1.2
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.1.1
+Version:        6.1.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge71748d
+Release:        <RELEASE>.g7fea150
 %else
 Release:        0
 %endif
@@ -240,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-e71748d44896da2c218a153173fa0504f34836bc
-Provides:       kernel-srchash-e71748d44896da2c218a153173fa0504f34836bc
+Provides:       kernel-%build_flavor-base-srchash-7fea1503395f43e7cb9ca53b28baccb86c858246
+Provides:       kernel-srchash-7fea1503395f43e7cb9ca53b28baccb86c858246
 # END COMMON DEPS
-Provides:       %name-srchash-e71748d44896da2c218a153173fa0504f34836bc
+Provides:       %name-srchash-7fea1503395f43e7cb9ca53b28baccb86c858246
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc

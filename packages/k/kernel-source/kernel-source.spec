@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-source
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.1
+%define patchversion 6.1.2
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.1.1
+Version:        6.1.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge71748d
+Release:        <RELEASE>.g7fea150
 %else
 Release:        0
 %endif
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-e71748d44896da2c218a153173fa0504f34836bc
+Provides:       %name-srchash-7fea1503395f43e7cb9ca53b28baccb86c858246
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
