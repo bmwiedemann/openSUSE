@@ -1,3 +1,0 @@
-# required by JS, not a backup file
-addFilter("filelist-forbidden .*json.orig")
-addFilter("backup-file-in-package .*json.orig")
