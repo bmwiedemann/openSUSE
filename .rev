@@ -159,4 +159,12 @@
   over-read in ntlm/ntlmstruct.c (bsc#1160462 bsc#1189097). (forwarded request 910456 from yfjiang)</comment>
     <requestid>910457</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>71bef88114f753ec5a8b921a776e6203</srcmd5>
+    <version>1.1.0</version>
+    <time>1672754671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046053</requestid>
+  </revision>
 </revisionlist>

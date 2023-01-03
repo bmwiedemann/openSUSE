@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:32:59 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.1.0: 
+  * CVE-2019-19977: avoid potential stack overflow in NTLM authenticator.
+  * Migrate build system to Meson
+  * Remove GNU libltdl support, assume dlopen() always available.
+  * Use a linker map to restrict public symbols to API only.
+  * Add sentinel and ‘format printf’ attributes to function declarations.
+  * Remove getaddrinfo() implementation.
+  * Use strlcpy() for safer string copies, provide implementation
+    for systems that need it.
+  * Update ‘application data’ APIs
+  * Add ‘smtp_get_server_name()’ API.
+  * Collect replacement functions into missing.c
+  * Prohibit Resent-Reply-To: header.
+  * Use canonic domain name of MTA where known 
+  * Implement rfc2822date() with strftime() if available.
+  * add option for XDG file layout convention instead of ~/.authenticate
+  * OpenSSL
+    + Remove support for OpenSSL versions before v1.1.0
+    + Update OpenSSL API calls used for modern versions
+    + Require TLS v1 or higher
+  * Add add_ntlm.patch
+  * Drop the following patches:
+    + libesmtp-removedecls.diff
+    + libesmtp-1.0.4-bloat.patch
+    + libesmtp-fix-cve-2019-19977.patch
+    + libesmtp-openssl11.patch
+    + libesmtp-tlsv12.patch
+
+-------------------------------------------------------------------
 Fri Aug  6 09:16:53 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add libesmtp-fix-cve-2019-19977.patch: Fix stack-based buffer
