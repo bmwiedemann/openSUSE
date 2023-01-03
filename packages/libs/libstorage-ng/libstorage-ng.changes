@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Tue Jan 3 07:59:29 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#909
+- simplify code
+- 4.5.60
+
+--------------------------------------------------------------------
+Mon Jan 2 15:38:27 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#908
+- use new json output of btrfs-progs if available
+- 4.5.59
+
+--------------------------------------------------------------------
+Mon Jan 2 03:32:25 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Indonesian) (bsc#1149754)
+- 4.5.58
+
+--------------------------------------------------------------------
 Tue Dec 20 06:45:27 UTC 2022 - aschnell@suse.com
 
 - Translated using Weblate (Macedonian) (bsc#1149754)
