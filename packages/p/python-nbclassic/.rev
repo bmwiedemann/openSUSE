@@ -155,4 +155,14 @@
     <comment></comment>
     <requestid>1033839</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2b917feeaa6813252e1be41853121eb6</srcmd5>
+    <version>0.4.8</version>
+    <time>1672754695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest-jupyter to test requirenents. Testing with
+  jupyter-server pulls it in now gh#jupyter/nbclassic#190
+</comment>
+    <requestid>1046207</requestid>
+  </revision>
 </revisionlist>

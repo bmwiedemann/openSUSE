@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 31 13:05:25 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Add pytest-jupyter to test requirenents. Testing with
+  jupyter-server pulls it in now gh#jupyter/nbclassic#190
+
+-------------------------------------------------------------------
 Sat Nov  5 19:48:55 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.4.8:

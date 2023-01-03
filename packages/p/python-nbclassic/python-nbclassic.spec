@@ -71,6 +71,7 @@ BuildRequires:  this-specfile-is-not-functional-without-libalternatives
 %if %{with test}
 BuildRequires:  %{python_module nbclassic = %{version}}
 BuildRequires:  %{python_module pytest-console-scripts}
+BuildRequires:  %{python_module pytest-jupyter}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 %endif
