@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  3 08:19:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.94.1:
+  * [Intel] Gemini Lake
+  * [AMD] Ryzen 5 6600 H SoC, UMC channels
+  * [AMD] Rembrandt: maximum of two UMC channels
+  * [AMD] Raphael: Decodes DIMM geometry from AddrCfg
+  * [AMD] Zen: Aggregation refactored
+  * [AMD] Improved DDR5 clock decoding
+  * Optimized Idle Loop
+
+-------------------------------------------------------------------
 Tue Dec 13 22:58:21 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed modprobe_corefreqd.service.patch and harden_corefreqd.service.patch
