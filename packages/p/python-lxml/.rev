@@ -898,4 +898,20 @@ Send to Staging:E.
     <comment>Add missing bug and CVE references</comment>
     <requestid>1010558</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>a8c43effb9238112df2e0f6738a0a238</srcmd5>
+    <version>4.9.2</version>
+    <time>1672754670</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.9.2
+  * Bugs fixed
+    + CVE-2022-2309: A Bug in libxml2 2.9.1[0-4] could let namespace declarations
+      from a failed parser run leak into later parser runs.  This bug was worked around
+      in lxml and resolved in libxml2 2.10.0.
+      https://gitlab.gnome.org/GNOME/libxml2/-/issues/378
+  * LP#1981760: ``Element.attrib`` now registers as ``collections.abc.MutableMapping``.
+  * lxml now has a static build setup for macOS on ARM64 machines (not used for building wheels).
+    Patch by Quentin Leffray.</comment>
+    <requestid>1045999</requestid>
+  </revision>
 </revisionlist>

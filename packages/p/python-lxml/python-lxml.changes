@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 29 07:46:19 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to version 4.9.2
+  * Bugs fixed
+    + CVE-2022-2309: A Bug in libxml2 2.9.1[0-4] could let namespace declarations
+      from a failed parser run leak into later parser runs.  This bug was worked around
+      in lxml and resolved in libxml2 2.10.0.
+      https://gitlab.gnome.org/GNOME/libxml2/-/issues/378
+  * LP#1981760: ``Element.attrib`` now registers as ``collections.abc.MutableMapping``.
+  * lxml now has a static build setup for macOS on ARM64 machines (not used for building wheels).
+    Patch by Quentin Leffray.
+
+-------------------------------------------------------------------
 Mon Sep 19 11:33:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update BR for libxml2-devel to the current version.

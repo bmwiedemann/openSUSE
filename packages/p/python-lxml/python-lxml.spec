@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lxml
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -26,13 +25,14 @@ Group:          Development/Languages/Python
 URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-4.5.2.pdf
+Source99:       python-lxml.rpmlintrc
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-devel >= 2.10.2
-BuildRequires:  libxslt-devel >= 1.1.23
+BuildRequires:  libxslt-devel >= 1.1.27
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9.1
 %python_subpackages
@@ -59,7 +59,6 @@ This package contains documentation for lxml (HTML and PDF).
 %package devel
 Summary:        Development files for python-lxml
 Group:          Development/Libraries/Python
-BuildRequires:  %{python_module base}
 Requires:       %{name} = %{version}
 
 %description devel
@@ -89,15 +88,21 @@ export CFLAGS="%{optflags}"
 export LANG=en_US.UTF-8
 export PYTHONUNBUFFERED=x
 %if 0%{?have_python2}
+%{python_expand # define python version for test:
+export PYTHON="$python"
 %make_build test
+}
 %endif
 %if 0%{?have_python3}
+%{python_expand # define python version for test:
+export PYTHON3="$python"
 %make_build test3
+}
 %endif
 
 %install
 %python_install
-%fdupes %{buildroot}
+%python_expand %fdupes %{buildroot}
 
 %files %{python_files}
 %license LICENSES.txt
