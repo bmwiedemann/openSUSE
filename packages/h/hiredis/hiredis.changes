@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:57:27 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- hiredis 1.1.0:
+  * better SSL convenience
+  * new async adapters
+  * can now return nan in addition to -inf and inf in a 
+    REDIS_REPLY_DOUBLE. Applications that deal with RESP3 doubles
+    should make sure to account for this.
+
+-------------------------------------------------------------------
 Thu Oct  7 22:40:00 UTC 2021 - Paul Fee <paul.fee@jci.com>
+
 - hiredis 1.0.2
   * Hiredis v1.0.2 is a security release with a fix for CVE-2021-32765.
+    [boo#1191331]
     v1.0.1 erroneously bumped the SONAME so should be skipped.
 
 -------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package hiredis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global libname lib%{name}1_0_0
+%global libname lib%{name}1_1_0
 Name:           hiredis
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Minimalistic C client for Redis
 License:        BSD-3-Clause
@@ -56,10 +56,17 @@ Shared library for %{name}. The %{name}-example and
 %patch0
 
 %build
-%make_build OPTIMIZATION="%{optflags}" PREFIX=%{_prefix} LIBRARY_PATH=%{_lib} USE_SSL=1
+%make_build \
+	OPTIMIZATION="%{optflags}" \
+	PREFIX=%{_prefix} \
+	LIBRARY_PATH=%{_lib} \
+	USE_SSL=1
 
 %install
-make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBRARY_PATH=%{_lib} USE_SSL=1
+%make_install \
+	PREFIX=%{_prefix} \
+	LIBRARY_PATH=%{_lib} \
+	USE_SSL=1
 
 mkdir -p %{buildroot}%{_bindir}
 install -m 0755 %{name}-test %{buildroot}%{_bindir}
@@ -70,13 +77,12 @@ find %{buildroot} -type f -name '*.a' -delete
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%defattr(0644,root,root,0755)
 %license COPYING
 %doc README.md
 %attr(0755,root,root) %{_bindir}/%{name}-test
 
 %files devel
-%defattr(0644,root,root,0755)
+%license COPYING
 %doc CHANGELOG.md
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
@@ -85,7 +91,7 @@ find %{buildroot} -type f -name '*.a' -delete
 %{_libdir}/pkgconfig/%{name}_ssl.pc
 
 %files -n %{libname}
-%defattr(0755,root,root,0755)
+%license COPYING
 %{_libdir}/lib%{name}.so.*
 %{_libdir}/lib%{name}_ssl.so.*
 
