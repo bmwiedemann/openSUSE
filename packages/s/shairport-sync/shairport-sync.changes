@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jan  2 21:20:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * This release consists of enhancements and bug fixes to Version 4.1. For
+    information on the new features of 4.1, including AirPlay 2 support,
+    please refer to the 4.1 Release Note.
+
+  Enhancements
+  * Use the TCP keepalive facility to close a play session if the client
+    connection drops for a minute.
+
+  Metadata Enhancements
+  * Add FramePosition (phbt), FirstFramePosition (phb0), OutputRate (ofps),
+    OutputFormat (ofmt), StreamType (styp), ServiceName (svna), ClientName
+    (snam) properties to the D-Bus interface and to the metadata stream
+    (codes in brackets).
+  * FramePosition/FirstFramePosition metadata is generated only if the
+    progress_interval in the metadata section of the configuration file is
+    non-zero. The progress interval can also be set by a new
+    SetFramePositionUpdateInterval method in the D-Bus interface.
+  * FramePosition/FirstFramePosition metadata is of the form <RTP Frame
+    number>/<Local Time> where the local time, in nanoseconds (a 64-bit
+    number), is the precise time that frame should be played. The metadata
+    is generated when the frame is placed in the output buffer, and is thus
+    generated audio_backend_buffer_desired_length_in_seconds (usually 0.2
+    seconds) before the time in question.
+  * Add xesam:albumArtist and xesam:composer metadata (if available) to the
+    metadata bundle presented in the D-Bus interface.
+  * Add a new metadata item: sps:songdatakind, derived from the asdk
+    metadata token, to the metadata bundle presented in the D-Bus interface.
+    If 0 it seems to indicate an item of a specific duration such as an
+    audio track; if 1 it seems to mean the stream is of unknown duration,
+    for example an internet radio stream.
+
+  Bug Fixes
+  * Fix a bug that prevented multiple classic AirPlay instances being
+    recognised. The bug was that the 12-digit classic AirPlay service name
+    prefixes for each instance were all identically derived from a MAC
+    hardware address. The fix was to modify the generation of  prefixes to
+    depend on the service name as well as the hardware address.
+  * Fix a bug that prevented play to the the PulseAudio backend from
+    resuming after a pause. The bug was due to changes in the way pauses
+    were handled and the fix was to reopen the stream if it is closed
+    whenever a play or latency request was made.
+  * Fix a long-standing bug which didn't close the socket used for the RTSP
+    connection, potentially exhausting the sockets available.
+  * Fix a bug in audio_alsa.c when there is no hardware device name.
+  * Add a configuration check for the xxd program when building for AirPlay
+    2.
+  * Fix a compilation bug on certain platforms by trying to use AC_CHECK_LIB
+    to find libavcodec if the PKG_CHECK_MODULES check fails.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:17:00 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 4.1
