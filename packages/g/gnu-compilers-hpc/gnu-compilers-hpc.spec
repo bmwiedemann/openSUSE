@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,6 @@ ExclusiveArch:  do_not_build
 ExclusiveArch:  do-not-build
 %endif
 
-%{!?_rpmmacrodir:%define _rpmmacrodir %{_sysconfdir}/rpm}
 # Keep in sync with macros.hpc-gnu
 # ab >= 40 - version: a.b to accompodate for old gcc version scheme of gcc < 5
 %global hpc_gnu_bin_version %{?c_f_ver:-%(v=%c_f_ver; [ $v -lt 40 ] && echo $v ||
@@ -84,6 +83,7 @@ ExclusiveArch:  do-not-build
 %endif
 %global hpc_gnu_dir gnu%{hpc_gnu_dep_version}
 %hpc_init -C -c %compiler_family %{?c_f_ver:-v %{c_f_ver}}
+%{!?_rpmmacrodir:%define _rpmmacrodir %{_sysconfdir}/rpm}
 
 Summary:        SUSE HPC GNU Compiler Toolchain environment
 License:        BSD-3-Clause

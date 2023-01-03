@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  2 15:30:36 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix compatibility for SLE-12: define _rpmmacrodir after hpc_init.
+
+-------------------------------------------------------------------
 Tue Dec 13 15:31:07 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add support for gcc12 (jsc#PED-2834).

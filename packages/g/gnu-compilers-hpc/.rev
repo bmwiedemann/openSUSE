@@ -145,4 +145,12 @@
     <comment>- Add support for gcc12 (jsc#PED-2834). (forwarded request 1042732 from eeich)</comment>
     <requestid>1042733</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>0bb00b171757d05c6a19941b17daf866</srcmd5>
+    <version>1.4</version>
+    <time>1672754701</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix compatibility for SLE-12: define _rpmmacrodir after hpc_init. (forwarded request 1046219 from eeich)</comment>
+    <requestid>1046220</requestid>
+  </revision>
 </revisionlist>
