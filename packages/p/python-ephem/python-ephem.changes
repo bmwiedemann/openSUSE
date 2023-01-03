@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:57:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.4:
+  * A memory leak has been resolved, that was failing to free the storage
+  for the satellite name (a Python string) and catalog number (a Python
+  integer) when the satellite object itself was freed.
+  * In previous versions, if you asked for the position of a body
+  (a) whose elliptical or hyperbolic orbit has an eccentricity very
+  close to 1.0 and (b) which is very far from perihelion, then the
+  underlying C library would print a warning ``Near-parabolic orbit:
+  inaccurate result`` but let your Python script continue on unawares.
+  Now, no message is printed directly to the screen, and instead a
+  ``RuntimeError`` will tell you why PyEphem can’t compute the body’s
+  position.
+  * The underlying C library should no longer produce a segmentation fault
+  if given the floating point number ``NaN`` as a date.  The Python
+  rising and setting logic now also watches out for ``NaN`` dates, and
+  raises a ``ValueError`` when one is detected.
+
+-------------------------------------------------------------------
 Mon Jan 17 20:46:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1.3

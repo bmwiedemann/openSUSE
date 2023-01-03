@@ -1,7 +1,7 @@
 #
 # spec file for package python-ephem
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ephem
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
 License:        MIT
