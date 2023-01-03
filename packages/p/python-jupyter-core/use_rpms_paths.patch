@@ -7,31 +7,31 @@ system paths in the .spec file.
 
 ---
 
-Index: jupyter_core-4.11.1/jupyter_core/paths.py
+Index: jupyter_core-5.1.1/jupyter_core/paths.py
 ===================================================================
---- jupyter_core-4.11.1.orig/jupyter_core/paths.py
-+++ jupyter_core-4.11.1/jupyter_core/paths.py
-@@ -130,10 +130,7 @@ if os.name == "nt":
-     else:  # PROGRAMDATA is not defined by default on XP.
-         SYSTEM_JUPYTER_PATH = [os.path.join(sys.prefix, "share", "jupyter")]
- else:
--    SYSTEM_JUPYTER_PATH = [
--        "/usr/local/share/jupyter",
--        "/usr/share/jupyter",
--    ]
-+    SYSTEM_JUPYTER_PATH = ["_datadir_jupyter_"]
+--- jupyter_core-5.1.1.orig/jupyter_core/paths.py
++++ jupyter_core-5.1.1/jupyter_core/paths.py
+@@ -219,10 +219,7 @@ else:
+         else:  # PROGRAMDATA is not defined by default on XP.
+             SYSTEM_JUPYTER_PATH = [os.path.join(sys.prefix, "share", "jupyter")]
+     else:
+-        SYSTEM_JUPYTER_PATH = [
+-            "/usr/local/share/jupyter",
+-            "/usr/share/jupyter",
+-        ]
++        SYSTEM_JUPYTER_PATH = [ @_datadir_jupyter_@ ]
  
- ENV_JUPYTER_PATH = [os.path.join(sys.prefix, "share", "jupyter")]
+ ENV_JUPYTER_PATH: List[str] = [os.path.join(sys.prefix, "share", "jupyter")]
  
-@@ -207,10 +204,7 @@ if os.name == "nt":
-     else:  # PROGRAMDATA is not defined by default on XP.
-         SYSTEM_CONFIG_PATH = []
- else:
--    SYSTEM_CONFIG_PATH = [
--        "/usr/local/etc/jupyter",
--        "/etc/jupyter",
--    ]
-+    SYSTEM_CONFIG_PATH = ["_sysconfdir_jupyter_"]
+@@ -301,10 +298,7 @@ else:
+         else:  # PROGRAMDATA is not defined by default on XP.
+             SYSTEM_CONFIG_PATH = []
+     else:
+-        SYSTEM_CONFIG_PATH = [
+-            "/usr/local/etc/jupyter",
+-            "/etc/jupyter",
+-        ]
++        SYSTEM_CONFIG_PATH = [ @_distconfdir_jupyter_@ ]
+ ENV_CONFIG_PATH: List[str] = [os.path.join(sys.prefix, "etc", "jupyter")]
  
- ENV_CONFIG_PATH = [os.path.join(sys.prefix, "etc", "jupyter")]
  

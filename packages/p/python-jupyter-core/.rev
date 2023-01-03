@@ -120,4 +120,51 @@ Update to 4.6.1</comment>
   * from the git log: merge GHSA-m678-f26j-3hrp</comment>
     <requestid>1031307</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0558d3146f21ab2160df798967ce447b</srcmd5>
+    <version>5.1.1</version>
+    <time>1672754678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.1
+  * Only prefer envs owned by the current user #323 (@minrk)
+  * Don't treat the conda root env as an env #324 (@minrk)
+- Release 5.1.0
+  * Add run_sync and ensure_async functions #315 (@davidbrochart)
+- Release 5.0.0
+  ## Major Changes
+  * Prefer Environment Level Configuration. We now make the
+    assumption that if we are running in a virtual environment, we
+    * should prioritize the environment-level sys.prefix over the
+    user-level paths. Users can opt out of this behavior by setting
+    JUPYTER_PREFER_ENV_PATH, which takes precedence over our
+    autodetection.
+  * Migrate to Standard Platform Directories. In version 5, we
+    introduce a JUPYTER_PLATFORM_DIRS environment variable to opt
+    in   * to using more appropriate platform-specific directories.
+    We raise a deprecation warning if the variable is not set. In
+    version 6, JUPYTER_PLATFORM_DIRS will be opt-out. In version 7,
+    we will remove the environment variable checks and old
+    directory logic.
+  * Drop Support for Python 3.7
+  * We are dropping support for Python 3.7 ahead of its official
+    end of life, to reduce   * maintenance burden as we add support
+    for Python 3.11.
+  * Use platformdirs for path locations #292 (@blink1073)
+  * Try to detect if we are in a virtual environment and change
+    path precedence   * accordingly #286 (@jasongrout)
+  * Add current working directory as first config path #291
+    (@blink1073)
+  * Fix inclusion of jupyter file and check in CI #276 (@blink1073)
+  * Bump github/codeql-action from 1 to 2 #308 (@dependabot)
+  * Bump actions/checkout from 2 to 3 #307 (@dependabot)
+  * Add dependabot #306 (@blink1073)
+  * Adopt jupyter releaser #305 (@blink1073)
+  * Add more typing #304 (@blink1073)
+  * Require Python 3.8+ #302 (@blink1073)
+  * Use hatch backend #265 (@blink1073)
+  * Switch to flit build backend #262 (@blink1073)
+  * is_hidden: Use normalized paths #271 (@martinRenou)
+</comment>
+    <requestid>1045952</requestid>
+  </revision>
 </revisionlist>

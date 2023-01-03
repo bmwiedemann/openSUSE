@@ -31,8 +31,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
 Name:           python-jupyter-core%{psuffix}
-Version:        4.11.2
+Version:        5.1.1
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -40,12 +41,13 @@ URL:            https://github.com/jupyter/jupyter_core
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_core/jupyter_core-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- use_rpms_paths.patch -- change paths so they are easy to replace at build time
 Patch0:         use_rpms_paths.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-traitlets
+Requires:       python-platformdirs >= 2.5
+Requires:       python-traitlets >= 5.3
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -83,8 +85,8 @@ as a dependency by packages that require it.
 %prep
 %autosetup -p1 -n jupyter_core-%{version}
 # Set the appropriate hardcoded paths dynamically
-sed -i "s|\"_datadir_jupyter_\"|\"%{_datadir}/jupyter\"|" jupyter_core/paths.py
-sed -i "s|\"_sysconfdir_jupyter_\"|\"%{_sysconfdir}/jupyter\"|" jupyter_core/paths.py
+sed -i "s|@_datadir_jupyter_@|\"%{_datadir}/jupyter\"|" jupyter_core/paths.py
+sed -i "s|@_distconfdir_jupyter_@|\"%{_distconfdir}/jupyter\"|" jupyter_core/paths.py
 sed -i "/addopts/ s/--color=yes//" pyproject.toml
 
 %if !%{with test}
@@ -107,8 +109,11 @@ sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitel
 
 %if %{with test}
 %check
-# test_jupyter_path_prefer_env does not work outside venvs: gh#jupyter/jupyter_core#208
-%pytest -k "not test_jupyter_path_prefer_env"
+# does not work outside venvs: gh#jupyter/jupyter_core#208
+donttest="test_jupyter_path_prefer_env or test_jupyter_config_path_prefer_env"
+# we changed the xdg path
+donttest="$donttest or test_config_dir_linux"
+%pytest -k "not ($donttest)"
 %endif
 
 %pre
