@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-zlib
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Zlib compression library
 License:        Zlib

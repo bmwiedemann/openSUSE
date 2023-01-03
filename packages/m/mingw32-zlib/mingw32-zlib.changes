@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:14:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.13:
+  * Fix configure issue that discarded provided CC definition
+  * Correct incorrect inputs provided to the CRC functions
+  * Repair prototypes and exporting of new CRC functions
+  * Fix inflateBack to detect invalid input with distances too far
+  * Have infback() deliver all of the available output up to any error
+  * Fix a bug when getting a gzip header extra field with inflate
+  * Fix bug in block type selection when Z_FIXED used
+  * Tighten deflateBound bounds
+  * Remove deleted assembler code references
+  * Various portability and appearance improvements
+
+-------------------------------------------------------------------
 Mon Apr  4 10:15:19 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to 1.2.12
