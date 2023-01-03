@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Date-Format
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Email-Date-Format
 Name:           perl-Email-Date-Format
-Version:        1.006
+Version:        1.007
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Produce RFC 2822 date strings
