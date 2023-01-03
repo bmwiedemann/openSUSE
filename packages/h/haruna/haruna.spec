@@ -1,7 +1,7 @@
 #
 # spec file for package haruna
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -34,7 +34,7 @@ BuildRequires:  yt-dlp
 BuildRequires:  youtube-dl
 %endif
 BuildRequires:  cmake(Breeze)
-BuildRequires:  cmake(KF5Config) >= 5.98.0
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 # not actually optional
