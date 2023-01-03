@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Testing
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Testing
 Version:        0.8.1
 Release:        0
@@ -25,6 +24,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/jarus/flask-testing
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Testing/Flask-Testing-%{version}.tar.gz
 Patch0:         skip-broken-tests.patch
+# PATCH-FIX-OPENSUSE fix-utils.patch gh#jarus/flask-testing#157
+Patch1:         fix-utils.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  3 13:06:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch fix-utils.patch gh#jarus/flask-testing#157
+  In Flask 2.2.0 the order of parameters for templating._render is different,
+  this patch updates the usage in this module to match the new order.
+
+-------------------------------------------------------------------
 Tue Jul 12 05:52:11 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch skip-broken-tests.patch:

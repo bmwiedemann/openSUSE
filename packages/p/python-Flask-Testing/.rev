@@ -40,4 +40,15 @@
   * Skip a broken test class, and 2 tests.</comment>
     <requestid>988526</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>1639d24b4fcf50522857d07bd59687a8</srcmd5>
+    <version>0.8.1</version>
+    <time>1672755702</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fix-utils.patch gh#jarus/flask-testing#157
+  In Flask 2.2.0 the order of parameters for templating._render is different,
+  this patch updates the usage in this module to match the new order.
+</comment>
+    <requestid>1046524</requestid>
+  </revision>
 </revisionlist>
