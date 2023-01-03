@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 18:47:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.0.0:
+  * Add ``OpenSSL.SSL.X509StoreFlags.PARTIAL_CHAIN`` constant to allow for
+    users
+  to perform certificate verification on partial certificate chains.
+  * ``cryptography`` maximum version has been increased to 39.0.x.
+- drop pyOpenSSL-pr1158-conditional-__all__.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Oct 21 14:20:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Upstream post-release doc fix (gh#pyca/pyopenssl#1150)

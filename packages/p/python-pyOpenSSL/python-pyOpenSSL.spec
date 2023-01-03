@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %global skip_python2 1
 Name:           python-pyOpenSSL%{psuffix}
-Version:        22.1.0
+Version:        23.0.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -36,14 +36,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpe
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
 # Mark tests requiring network access
 Patch0:         skip-networked-test.patch
-# PATCH-FIX-UPSTREAM pyOpenSSL-pr1158-conditional-__all__.patch gh#pyca/pyopenssl#1158
-Patch1:         pyOpenSSL-pr1158-conditional-__all__.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module cryptography >= 38.0.0 with %python-cryptography < 39}
+BuildRequires:  %{python_module cryptography >= 38.0.0 with %python-cryptography < 40}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
@@ -52,7 +50,7 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  openssl
 %endif
 Requires:       python-cffi
-Requires:       (python-cryptography >= 38.0.0 with python-cryptography < 39)
+Requires:       (python-cryptography >= 38.0.0 with python-cryptography < 40)
 Provides:       pyOpenSSL = %{version}
 BuildArch:      noarch
 %python_subpackages

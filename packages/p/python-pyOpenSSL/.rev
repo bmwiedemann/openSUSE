@@ -470,4 +470,17 @@
     <comment></comment>
     <requestid>1030954</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ed653127e6be5d31b568337da6803684</srcmd5>
+    <version>23.0.0</version>
+    <time>1672754668</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.0.0:
+  * Add ``OpenSSL.SSL.X509StoreFlags.PARTIAL_CHAIN`` constant to allow for
+    users
+  to perform certificate verification on partial certificate chains.
+  * ``cryptography`` maximum version has been increased to 39.0.x.
+- drop pyOpenSSL-pr1158-conditional-__all__.patch (upstream)</comment>
+    <requestid>1046269</requestid>
+  </revision>
 </revisionlist>
