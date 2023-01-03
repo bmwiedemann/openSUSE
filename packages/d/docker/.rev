@@ -1225,4 +1225,11 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>1040675</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>b7f29c81450bdacb2a25c863b50ac632</srcmd5>
+    <version>20.10.21_ce</version>
+    <time>1672767746</time>
+    <user>tleroy</user>
+    <comment>trigger service run</comment>
+  </revision>
 </revisionlist>
