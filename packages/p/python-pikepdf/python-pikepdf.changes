@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:06:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.7:
+  * Removed a debug message during mmap.
+  * Fixed errors when using AccessMode.mmap
+  * Fixed noisy log message.
+  * Made some flakey tests less flakey.
+  * Fixed deprecated information in setup.cfg. Thanks @mgorny.
+  * Rebuild binary wheels using zlib 1.2.13. Source build unchanged.
+
+-------------------------------------------------------------------
 Wed Oct 12 03:20:48 UTC 2022 - C J <c.j@tuta.io>
 
 - Update to version 6.2.0:

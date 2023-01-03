@@ -148,4 +148,18 @@
     <comment></comment>
     <requestid>1030049</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d8987f7eca6f5a125c77242943017197</srcmd5>
+    <version>6.2.7</version>
+    <time>1672754723</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.7:
+  * Removed a debug message during mmap.
+  * Fixed errors when using AccessMode.mmap
+  * Fixed noisy log message.
+  * Made some flakey tests less flakey.
+  * Fixed deprecated information in setup.cfg. Thanks @mgorny.
+  * Rebuild binary wheels using zlib 1.2.13. Source build unchanged.</comment>
+    <requestid>1046279</requestid>
+  </revision>
 </revisionlist>
