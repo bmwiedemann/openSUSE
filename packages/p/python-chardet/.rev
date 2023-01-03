@@ -242,4 +242,26 @@
     <comment></comment>
     <requestid>988322</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0a1e89f27be40fbfa03af31e4d4ac194</srcmd5>
+    <version>5.1.0</version>
+    <time>1672754665</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * Add should_rename_legacy argument to most functions, which will rename
+    older encodings to their more modern equivalents (e.g., GB2312 becomes
+    GB18030) (#264, @dan-blanchard)
+  * Add capital letter sharp S and ISO-8859-15 support 
+  * Add a prober for MacRoman encoding
+  * Add --minimal flag to chardetect command
+  * Add type annotations to the project and run mypy on CI
+  * Add support for Python 3.11
+  * Clarify LGPL version in License trove classifier (#255, @musicinmybrain)
+  * Remove support for EOL Python 3.6 (#260, @jdufresne)
+  * Remove unnecessary guards for non-falsey values (#259, @jdufresne)
+  * Switch to Python 3.10 release in GitHub actions (#257, @jdufresne)
+  * Remove setup.py in favor of build package (#262, @jdufresne)
+  * Run tests on macos, Windows, and 3.11-dev (#267, @dan-blanchard)</comment>
+    <requestid>1046266</requestid>
+  </revision>
 </revisionlist>

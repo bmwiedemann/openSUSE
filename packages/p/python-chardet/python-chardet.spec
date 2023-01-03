@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,13 +34,15 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-chardet%{psuffix}
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
 URL:            https://github.com/chardet/chardet
 Source0:        https://files.pythonhosted.org/packages/source/c/chardet/chardet-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 %if %{with libalternatives}
@@ -91,11 +93,11 @@ or more files::
 sed -i '1{/^#!/d}' chardet/lang*model.py chardet/metadata/languages.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/chardetect
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif

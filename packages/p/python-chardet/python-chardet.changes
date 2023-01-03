@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  2 18:40:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Add should_rename_legacy argument to most functions, which will rename
+    older encodings to their more modern equivalents (e.g., GB2312 becomes
+    GB18030) (#264, @dan-blanchard)
+  * Add capital letter sharp S and ISO-8859-15 support 
+  * Add a prober for MacRoman encoding
+  * Add --minimal flag to chardetect command
+  * Add type annotations to the project and run mypy on CI
+  * Add support for Python 3.11
+  * Clarify LGPL version in License trove classifier (#255, @musicinmybrain)
+  * Remove support for EOL Python 3.6 (#260, @jdufresne)
+  * Remove unnecessary guards for non-falsey values (#259, @jdufresne)
+  * Switch to Python 3.10 release in GitHub actions (#257, @jdufresne)
+  * Remove setup.py in favor of build package (#262, @jdufresne)
+  * Run tests on macos, Windows, and 3.11-dev (#267, @dan-blanchard)
+
+-------------------------------------------------------------------
 Tue Jul  5 13:21:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to  5.0.0
