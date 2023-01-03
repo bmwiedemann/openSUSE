@@ -231,4 +231,17 @@
     <comment></comment>
     <requestid>1040445</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0f37fbb03ec373eec4071e0edaed4cf6</srcmd5>
+    <version>13.0.4</version>
+    <time>1672754731</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.0.4:
+  * Correct timeout in call to poll.poll
+  * Adding support for reported unknown devices
+  * Add Chromecast Ultra and Chromecast HD to the recognised devices
+  * Fix error with select when python process exceeds 1024 open file descriptors
+  * Include URL and UUID in Home Assistant controller messages</comment>
+    <requestid>1046304</requestid>
+  </revision>
 </revisionlist>
