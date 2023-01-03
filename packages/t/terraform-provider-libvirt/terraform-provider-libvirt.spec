@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-libvirt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           terraform-provider-libvirt
-Version:        0.7.0+git.1665231569.07cb1ec
+Version:        0.7.1
 Release:        0
 Summary:        Terraform provider for kvm hypervisors via libvirt
 License:        MPL-2.0
@@ -54,7 +54,7 @@ BuildRequires:  golang
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.8
+BuildRequires:  golang(API) = 1.18
 %endif
 %endif
 %if 0%{?suse_version}

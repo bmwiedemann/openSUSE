@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>1034130</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d76333ccaf19369326355c681f6b466</srcmd5>
+    <version>0.7.1</version>
+    <time>1672754736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1
+  * tls: fix typo, use clientCertSearchPath for clientcert.pem (#940)
+  * Fix IPv6 subnet size regression (#983)</comment>
+    <requestid>1046317</requestid>
+  </revision>
 </revisionlist>
