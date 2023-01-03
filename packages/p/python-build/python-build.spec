@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
+
 %define skip_python2 1
 Name:           python-build%{psuffix}
 Version:        0.9.0
@@ -39,17 +39,20 @@ Source10:       https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-0.
 Source11:       https://files.pythonhosted.org/packages/py2.py3/f/flit-core/flit_core-2.3.0-py2.py3-none-any.whl
 Source12:       https://files.pythonhosted.org/packages/py2.py3/p/pytoml/pytoml-0.1.21-py2.py3-none-any.whl
 Source13:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
+# PATCH-FIX-UPSTREAM build-pr550-packaging22.patch gh#pypa/build#550
+Patch1:         https://github.com/pypa/build/pull/550.patch#/build-pr550-packaging22.patch
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib-metadata >= 0.22 if %python-base < 3.8}
 BuildRequires:  %{python_module packaging >= 19.0}
 BuildRequires:  %{python_module pep517 >= 0.9.1}
 BuildRequires:  %{python_module setuptools >= 42}
-BuildRequires:  %{python_module tomli >= 1.0.0}
+BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 0.19.0
 Requires:       python-pep517 >= 0.9.1
-Requires:       python-tomli
 Requires:       (python-importlib-metadata >= 0.22 if python-base < 3.8)
+Requires:       (python-tomli if python-base < 3.11)
 Recommends:     python-virtualenv >= 20.0.35
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  1 18:26:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add build-pr550-packaging22.patch
+  * gh#pypa/build#550: tests: fix for PEP 685 in packaging 22
+- Be more specific in requirements
+
+-------------------------------------------------------------------
 Mon Nov  7 20:52:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v0.9.0 
