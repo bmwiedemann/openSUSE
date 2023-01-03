@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 17:38:38 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.23.0
+  * Bugfixes:
+    #8572: Incorrect rescan interval on auto accepted encrypted folder
+    #8646: Perhaps the list of devices contains empty elements
+    #8686: Properly indicate whether a connection is "LAN" or not in the GUI
+
+-------------------------------------------------------------------
 Tue Dec  6 10:33:22 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.22.2

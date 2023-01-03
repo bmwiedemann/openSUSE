@@ -1204,4 +1204,17 @@
 </comment>
     <requestid>1040597</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>a3675aa4333d3ef504db45793ad928f9</srcmd5>
+    <version>1.23.0</version>
+    <time>1672754714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.0
+  * Bugfixes:
+    #8572: Incorrect rescan interval on auto accepted encrypted folder
+    #8646: Perhaps the list of devices contains empty elements
+    #8686: Properly indicate whether a connection is &quot;LAN&quot; or not in the GUI
+</comment>
+    <requestid>1046251</requestid>
+  </revision>
 </revisionlist>
