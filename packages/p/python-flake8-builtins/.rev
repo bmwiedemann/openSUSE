@@ -52,4 +52,13 @@
     to ignore. [gsingh93]</comment>
     <requestid>1043223</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02e2921309a5c66f7cdd4465441c97a0</srcmd5>
+    <version>2.1.0</version>
+    <time>1672754704</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Honor `--builtins` option from flake8</comment>
+    <requestid>1046240</requestid>
+  </revision>
 </revisionlist>

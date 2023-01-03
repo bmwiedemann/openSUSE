@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  2 16:38:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Honor `--builtins` option from flake8
+
+-------------------------------------------------------------------
 Thu Dec 15 21:10:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:
