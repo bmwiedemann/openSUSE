@@ -214,4 +214,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment>- enable user side autostart of drkonqi socket (bsc#1203493). (forwarded request 1036239 from mgerstner)</comment>
     <requestid>1040554</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>61404b0b11cea3a7e6a64298f82aff43</srcmd5>
+    <version>15</version>
+    <time>1672754674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046098</requestid>
+  </revision>
 </revisionlist>

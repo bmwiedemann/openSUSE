@@ -62,3 +62,4 @@ enable man-db.timer
 enable mdcheck_start.timer
 enable mdmonitor-oneshot.timer
 enable unbound-anchor.timer
+enable systemd-pstore.service

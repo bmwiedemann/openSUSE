@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec 15 14:47:15 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Enable systemd-pstore.service by default (jsc#PED-2663) 
+
+-------------------------------------------------------------------
 Wed Nov 16 14:13:44 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - enable user side autostart of drkonqi socket (bsc#1203493).
