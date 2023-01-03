@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageIO
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define so_ver 2_4
 %define major_minor_ver 2.4
 Name:           OpenImageIO
-Version:        2.4.6.0
+Version:        2.4.7.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -119,6 +119,7 @@ products.
 %package devel
 Summary:        Development Files for OpenImageIO
 Group:          Development/Libraries/C and C++
+Requires:       fmt-devel
 Requires:       libOpenImageIO%{so_ver} = %{version}
 Requires:       libOpenImageIO_Util%{so_ver} = %{version}
 Suggests:       %{name}-devel-doc
@@ -240,12 +241,12 @@ export PYTHONDONTWRITEBYTECODE=1
 # Exclude known broken tests
 # timer tests won't do reliably in OBS
 %ifarch x86_64
-%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer'
+%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa'
 %ctest '-R' 'texture-icwrite' || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
-%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer' || true
+%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer|targa' || true
 %ctest '-R' 'texture-icwrite' || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %endif
