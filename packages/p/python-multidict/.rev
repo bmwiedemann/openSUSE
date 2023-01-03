@@ -151,4 +151,15 @@
     <comment></comment>
     <requestid>1041242</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cd9af1b50f44b8e2817ea310dca730ef</srcmd5>
+    <version>6.0.4</version>
+    <time>1672754661</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.4:
+  * Fixed a type annotations regression introduced in v6.0.2 under Python
+    versions &lt;3.10. It was caused by importing certain types only available
+    in newer versions. (:issue:`798`)</comment>
+    <requestid>1046222</requestid>
+  </revision>
 </revisionlist>
