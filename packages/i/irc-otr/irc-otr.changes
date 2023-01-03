@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  5 04:52:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on Python 2. 
+
+-------------------------------------------------------------------
 Thu Dec 22 15:21:34 UTC 2016 - astieger@suse.com
 
 - irssi-otr 1.0.2:

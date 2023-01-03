@@ -1,7 +1,7 @@
 #
 # spec file for package irc-otr
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           irc-otr
 Version:        1.0.2
 Release:        0
 Summary:        Off-The-Record Messaging plugin for irssi
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://github.com/cryptodotis/irssi-otr
+URL:            https://github.com/cryptodotis/irssi-otr
 Source:         https://github.com/cryptodotis/irssi-otr/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -33,7 +33,6 @@ BuildRequires:  libgcrypt-devel >= 1.2.0
 BuildRequires:  libotr-devel >= 4.1.0
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python >= 2.5
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
