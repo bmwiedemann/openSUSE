@@ -1,7 +1,7 @@
 #
 # spec file for package sacad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sacad
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Search and download music album covers
 License:        MPL-2.0
