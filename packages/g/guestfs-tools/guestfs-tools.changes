@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 16:17:44 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2104 [Virt Tools] Refresh Virtualization Tools for Xen

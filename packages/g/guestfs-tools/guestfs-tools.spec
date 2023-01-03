@@ -35,7 +35,7 @@ Release:        0
 License:        GPL-2.0-or-later
 
 # Build only for architectures that have a kernel
-ExclusiveArch:  x86_64 ppc64le s390x aarch64
+ExclusiveArch:  x86_64 ppc64le s390x aarch64 riscv64
 
 # Source and patches.
 URL:            http://libguestfs.org/
