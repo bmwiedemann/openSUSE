@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1010382</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9366896fb4f695728ad0fad1767c217</srcmd5>
+    <version>2.8.0</version>
+    <time>1672754722</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.8.0:
+  * Modify OTP generation to run in constant time
+  * Documentation improvements
+  * Drop Python 3.6 support; introduce Python 3.11 support</comment>
+    <requestid>1046273</requestid>
+  </revision>
 </revisionlist>
