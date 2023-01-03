@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-#
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,42 +24,48 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
+
 Name:           python-jupyter-server%{psuffix}
-Version:        1.21.0
+Version:        2.0.6
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://jupyter-server.readthedocs.io
+# SourceRepository: https://github.com/jupyter-server/jupyter_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server/jupyter_server-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jupyter_packaging}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch-jupyter-builder >= 0.8.1}
+BuildRequires:  %{python_module hatchling >= 1.11}
+BuildRequires:  %{python_module pip}
 # We need the full stdlib
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python >= 3.7
+Requires:       python >= 3.8
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
-Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
-Requires:       python-jupyter-client >= 6.1.12
-Requires:       python-jupyter-core >= 4.7.0
+Requires:       python-jupyter-client >= 7.4.4
+Requires:       python-jupyter_events >= 0.4.0
+Requires:       python-jupyter_server_terminals
 Requires:       python-nbconvert >= 6.4.4
-Requires:       python-nbformat >= 5.2.0
+Requires:       python-nbformat >= 5.3.0
 Requires:       python-packaging
 Requires:       python-prometheus_client
-Requires:       python-pyzmq >= 17
+Requires:       python-pyzmq >= 24
 Requires:       python-terminado >= 0.8.3
-Requires:       python-tornado >= 6.1
-Requires:       python-traitlets >= 5.1
+Requires:       python-tornado >= 6.2
+Requires:       python-traitlets >= 5.6
 Requires:       python-websocket-client
+Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5.0) or python-jupyter-core >= 5.1)
+Requires:       (python-anyio >= 3.1.0 with python-anyio < 4)
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 %if %{with test}
@@ -96,9 +101,8 @@ Requires:       python-ipykernel
 Requires:       python-jupyter-server = %{version}
 Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
-Requires:       python-pytest-mock
+Requires:       python-pytest-jupyter-server >= 0.4
 Requires:       python-pytest-timeout
-Requires:       python-pytest-tornasync
 Requires:       python-requests
 
 %description test
@@ -113,10 +117,10 @@ sed -i pyproject.toml \
 
 %if ! %{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a  %{buildroot}%{_bindir}/jupyter-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif

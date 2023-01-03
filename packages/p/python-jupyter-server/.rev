@@ -287,4 +287,181 @@
     + Fix owasp link #908 (@blink1073)</comment>
     <requestid>1031311</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>15a6f414cb0d25b5881f415cf7add862</srcmd5>
+    <version>2.0.6</version>
+    <time>1672754694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.6
+  * Iterate through set of apps in extension_manager.any_activity
+    method #1157 (@mahendrapaipuri)
+  * Handle flake8-errmsg #1155 (@blink1073)
+  * Add spelling and docstring enforcement #1147 (@blink1073)
+- Update to 2.0.5
+  * Remove end kwarg after migration from print to info #1151
+    (@krassowski)
+  * Import ensure-sync directly from dependence. #1149 (@Carreau)
+  * Update deprecation warning #1148 (@Carreau)
+- Release 2.0.4
+  * Fix handling of extension last activity #1145 (@blink1073)
+- Release 2.0.3
+  * Restore default writing of browser open redirect file, add
+    opt-in to skip #1144 (@bollwyvl)
+- Release 2.0.2
+  * Raise errors on individual problematic extensions when listing
+    extension #1139 (@Zsailer)
+  * Find an available port before starting event loop #1136
+    (@blink1073)
+  * only write browser files if we’re launching the browser #1133
+    (@hhuuggoo)
+  * Logging message used to list sessions fails with template error
+    #1132 (@vindex10)
+  * Include base_url at start of kernelspec resources path #1124
+    (@bloomsa)
+- Release 2.0.1
+  * [Gateway] Remove redundant list kernels request during session
+    poll #1112 (@kevin-bates)
+  * Maintenance and upkeep improvements
+  * Fix jupyter_core pinning #1122 (@ophie200)
+- Major Release 2.0.0
+  ## Enhancements made
+  * Introduce ServerKernelManager class #1101 (@kevin-bates)
+  * New configurable/overridable kernel ZMQ+Websocket connection
+    API #1047 (@Zsailer)
+  * Pass kernel environment to cwd_for_path method #1046
+    (@divyansshhh)
+  * Better Handling of Asyncio #1035 (@blink1073)
+  * Add authorization to AuthenticatedFileHandler #1021
+    (@jiajunjie)
+  * [Gateway] Add support for gateway token renewal #985
+    (@kevin-bates)
+  * Make it easier to pass custom env variables to kernel #981
+    (@divyansshhh)
+  * Accept and manage cookies when requesting gateways #969 (@wjsi)
+  * Emit events from the Contents Service #954 (@Zsailer)
+  * Retry certain errors between server and gateway #944
+    (@kevin-bates)
+  * Allow new file types #895 (@davidbrochart)
+  * Make it easier for extensions to customize the ServerApp #879
+    (@minrk)
+  * Adds anonymous users #863 (@hbcarlos)
+  * switch to jupyter_events #862 (@Zsailer)
+  * consolidate auth config on IdentityProvider #825 (@minrk)
+  ## Bugs fixed
+  * Fix kernel WebSocket protocol #1110 (@davidbrochart)
+  * Defer webbrowser import #1095 (@blink1073)
+  * Use handle_outgoing_message for ZMQ replies #1089 (@Zsailer)
+  * Call ports_changed on the multi-kernel-manager instead of the
+    kernel manager #1088 (@Zsailer)
+  * Add more websocket connection tests and fix bugs #1085
+    (@blink1073)
+  * Tornado WebSocketHandler fixup #1083 (@davidbrochart)
+  * persist userid cookie when auth is disabled #1076 (@minrk)
+  * Fix rename_file and delete_file to handle hidden files properly
+    #1073 (@yacchin1205)
+  * Add more coverage #1069 (@blink1073)
+  * Increase nbconvert and checkpoints coverage #1066 (@blink1073)
+  * Fix min version check again #1049 (@blink1073)
+  * Fallback new file type to file for contents put #1013 (@a3626a)
+  * Fix some typos in release instructions #1003 (@kevin-bates)
+  * Wrap the concurrent futures in an asyncio future #1001
+    (@blink1073)
+  * [Gateway] Fix and deprecate env whitelist handling #979
+    (@kevin-bates)
+  * fix issues with jupyter_events 0.5.0 #972 (@Zsailer)
+  * Correct content-type headers #965 (@epignot)
+  * Don’t validate certs for when stopping server #959 (@Zsailer)
+  * Parse list value for terminado_settings #949 (@krassowski)
+  * Fix bug in api/contents requests for an allowed copy #939
+    (@kiersten-stokes)
+  * Fix error that prevents posting to api/contents endpoint with
+    no body #937 (@kiersten-stokes)
+  * avoid creating asyncio.Lock at import time #935 (@minrk)
+  * Fix get_kernel_path for AsyncFileManagers. #929
+    (@thetorpedodog)
+  * Fix c.GatewayClient.url snippet syntax #917 (@rickwierenga)
+  * Add back support for kernel launch timeout pad #910
+    (@CiprianAnton)
+  * Notify ChannelQueue that the response router thread is
+    finishing #896 (@CiprianAnton)
+  * Make ChannelQueue.get_msg true async #892 (@CiprianAnton)
+  * Check for serverapp for reraise flag #887 (@vidartf)
+  ## Maintenance and upkeep improvements
+  * Make tests less sensitive to default kernel name #1118
+    (@blink1073)
+  * Tweak codecov settings #1113 (@blink1073)
+  * Bump minimatch from 3.0.4 to 3.1.2 #1109 (@dependabot)
+  * Add skip-if-exists config #1108 (@blink1073)
+  * Use pytest-jupyter #1099 (@blink1073)
+  * Clean up release instructions and coverage handling #1098
+    (@blink1073)
+  * Import ensure_async from jupyter_core #1093 (@davidbrochart)
+  * Add more tests #1092 (@blink1073)
+  * Fix coverage upload #1091 (@blink1073)
+  * Add base handler tests #1090 (@blink1073)
+  * Add more websocket connection tests and fix bugs #1085
+    (@blink1073)
+  * Use base setup dependency type #1084 (@blink1073)
+  * Add more serverapp tests #1079 (@blink1073)
+  * Add more gateway tests #1078 (@blink1073)
+  * More cleanup #1077 (@blink1073)
+  * Fix hatch scripts and windows workflow run #1074 (@blink1073)
+  * use recommended github-workflows checker #1071 (@blink1073)
+  * Add more coverage #1069 (@blink1073)
+  * More coverage #1067 (@blink1073)
+  * Increase nbconvert and checkpoints coverage #1066 (@blink1073)
+  * Test downstream jupyter_server_terminals #1065 (@blink1073)
+  * Test notebook prerelease #1064 (@blink1073)
+  * MAINT: remove python 3.4 branch #1061 (@Carreau)
+  * Bump actions/checkout from 2 to 3 #1056 (@dependabot)
+  * Bump actions/setup-python from 2 to 4 #1055 (@dependabot)
+  * Bump pre-commit/action from 2.0.0 to 3.0.0 #1054 (@dependabot)
+  * Add dependabot file #1053 (@blink1073)
+  * Use global env for min version check #1048 (@blink1073)
+  * Clean up handling of synchronous managers #1044 (@blink1073)
+  * Clean up config files #1031 (@blink1073)
+  * Make node optional #1030 (@blink1073)
+  * Use admin github token for releaser #1025 (@blink1073)
+  * CI Cleanup #1023 (@blink1073)
+  * Use mdformat instead of prettier #1022 (@blink1073)
+  * Add pyproject validation #1020 (@blink1073)
+  * Remove hardcoded client install in CI #1019 (@blink1073)
+  * Handle client 8 pending kernels #1014 (@blink1073)
+  * Use releaser v2 tag #1010 (@blink1073)
+  * Use hatch environments to simplify test, coverage, and docs
+    build #1007 (@blink1073)
+  * Update to version2 releaser #1006 (@blink1073)
+  * Do not use dev version yet #999 (@blink1073)
+  * Add workflows for simplified publish #993 (@blink1073)
+  * Remove hardcoded client install #991 (@blink1073)
+  * Test with client 8 updates #988 (@blink1073)
+  * Switch to using hatchling version command #984 (@blink1073)
+  * Run downstream tests in parallel #973 (@blink1073)
+  * Update pytest_plugin with fixtures to test auth in core and
+    extensions #956 (@akshaychitneni)
+  * Fix docs build #952 (@blink1073)
+  * Fix flake8 v5 compat #941 (@blink1073)
+  * Improve logging of bare exceptions and other cleanups. #922
+    (@thetorpedodog)
+  * Use more explicit version template for pyproject #919
+    (@blink1073)
+  * Fix handling of dev version #913 (@blink1073)
+  * Fix owasp link #908 (@blink1073)
+  * default to system node version in precommit #906 (@dlqqq)
+  * Test python 3.11 on ubuntu #839 (@blink1073)
+  ## Documentation improvements
+  * Remove left over from notebook #1117 (@fcollonval)
+  * Fix wording #1037 (@fcollonval)
+  * Fix GitHub actions badge link #1011 (@blink1073)
+  * Pin docutils to fix docs build #1004 (@blink1073)
+  * Update server extension disable instructions #998 (@3coins)
+  * Update index.rst #970 (@razrotenberg)
+  * Fix typo in IdentityProvider documentation #915 (@danielyahn)
+  * docs: document the logging_config trait #844 (@oliver-sanders)
+  ## Deprecated features
+  * [Gateway] Fix and deprecate env whitelist handling #979
+    (@kevin-bates)
+</comment>
+    <requestid>1046204</requestid>
+  </revision>
 </revisionlist>
