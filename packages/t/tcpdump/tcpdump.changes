@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  1 12:50:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.99.2:
+  * Multiple fixes and improvements to BGP, DSA, EAP, 802.11,
+    802.15.4, RRCP, MPLS, ICMP, VQP, Juniper, lwres, Ethernet,
+    IPX, Zephyr, VRRP, DCCP, IPv6, ISAKMP, RADIUS, TCP, RESp,
+    Arista, sFlow, VRRP, OSPF, OSPFv3, ICMPv3, ICMPv6, NFS, PTP,
+    WHOIS, MPTCP, ESP, PPP, ZEP printers
+  * Build system updates, developer visible fixes, documentation
+
+-------------------------------------------------------------------
 Sun Jun 13 09:33:08 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.99.1:
