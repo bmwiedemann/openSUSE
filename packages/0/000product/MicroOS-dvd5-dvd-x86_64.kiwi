@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230102" schemaversion="4.1">
+<image name="OBS__MicroOS___20230103" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230102</productvar>
+      <productvar name="VERSION">20230103</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230102,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230103,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230102/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230103/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1013,7 +1013,7 @@
       <repopackage name="libepub0" arch="x86_64"/>
       <repopackage name="libepubgen-0_1-1"/>
       <repopackage name="liberation-fonts"/>
-      <repopackage name="libesmtp6" arch="x86_64"/>
+      <repopackage name="libesmtp6_2_0" arch="x86_64"/>
       <repopackage name="libespeak-ng1" arch="x86_64"/>
       <repopackage name="libetonyek-0_1-1"/>
       <repopackage name="libev4" arch="x86_64"/>
@@ -1186,7 +1186,7 @@
       <repopackage name="libhd22" arch="x86_64"/>
       <repopackage name="libheif1" arch="x86_64"/>
       <repopackage name="libhidapi-hidraw0"/>
-      <repopackage name="libhiredis1_0_0" arch="x86_64"/>
+      <repopackage name="libhiredis1_1_0" arch="x86_64"/>
       <repopackage name="libhogweed6"/>
       <repopackage name="libhugetlbfs" arch="x86_64"/>
       <repopackage name="libhunspell-1_7-0"/>
@@ -2407,7 +2407,6 @@
       <repopackage name="python310-pymemcache" arch="x86_64"/>
       <repopackage name="python310-pymongo" arch="x86_64"/>
       <repopackage name="python310-pyOpenSSL" arch="x86_64"/>
-      <repopackage name="python310-pyparsing" arch="x86_64"/>
       <repopackage name="python310-pyrsistent" arch="x86_64"/>
       <repopackage name="python310-pyserial" arch="x86_64"/>
       <repopackage name="python310-pysmbc" arch="x86_64"/>

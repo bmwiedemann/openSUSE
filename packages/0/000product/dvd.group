@@ -1861,7 +1861,7 @@
     <package name="libepub0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libepubgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liberation-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libesmtp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libesmtp6_2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libespeak-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libestr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libetonyek-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

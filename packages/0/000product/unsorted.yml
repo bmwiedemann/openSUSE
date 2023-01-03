@@ -94,7 +94,7 @@ unsorted:
   - Mesa-KHR-devel 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
-  - Mesa-dri-devel: [i586] # devel package of common_locks:Mesa-libGL1 
+  - Mesa-dri-devel: [i586] # devel package of common_locks:Mesa-libEGL1 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
@@ -8154,11 +8154,11 @@ unsorted:
   - jupyter-qgrid 
   - jupyter-rpm-macros 
   - jupyter-server-mathjax 
+  - jupyter-server-terminals 
   - jupyter-sidecar-jupyterlab 
   - jupyter-threejs 
   - jupyter-threejs-jupyterlab 
   - jupyter-vispy 
-  - jupyter-voila 
   - jupyter-widgetsnbextension 
   - jvnet-parent 
   - jvyamlb 
@@ -11866,7 +11866,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhiredis1_0_0: [i586] 
+  - libhiredis1_1_0: [i586] 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
@@ -22097,7 +22097,6 @@ unsorted:
   - python3-openstacksdk 
   - python3-openwsman 
   - python3-ortools 
-  - python3-os-api-ref 
   - python3-os-client-config 
   - python3-os-service-types 
   - python3-osc-lib 
@@ -23779,14 +23778,12 @@ unsorted:
   - python310-jupyter-client 
   - python310-jupyter-core 
   - python310-jupyter-events 
-  - python310-jupyter-jupyterlab-server 
-  - python310-jupyter-jupyterlab-server-openapi 
-  - python310-jupyter-jupyterlab-server-test 
   - python310-jupyter-kernel-test 
   - python310-jupyter-nbutils 
   - python310-jupyter-packaging 
   - python310-jupyter-server 
   - python310-jupyter-server-mathjax 
+  - python310-jupyter-server-terminals 
   - python310-jupyter-server-test 
   - python310-jupyter-sphinx 
   - python310-jupyter-telemetry 
@@ -24778,6 +24775,9 @@ unsorted:
   - python310-pytimeparse 
   - python310-pytlv 
   - python310-pytoml 
+  - python310-pytoolconfig 
+  - python310-pytoolconfig-global 
+  - python310-pytoolconfig-validation 
   - python310-pytools 
   - python310-pytricia 
   - python310-pytz-deprecation-shim 
@@ -25332,7 +25332,6 @@ unsorted:
   - python310-visvis 
   - python310-vncdotool 
   - python310-vobject 
-  - python310-voila 
   - python310-volatile 
   - python310-voluptuous 
   - python310-voluptuous-serialize 
@@ -27126,14 +27125,12 @@ unsorted:
   - python38-jupyter-client 
   - python38-jupyter-core 
   - python38-jupyter-events 
-  - python38-jupyter-jupyterlab-server 
-  - python38-jupyter-jupyterlab-server-openapi 
-  - python38-jupyter-jupyterlab-server-test 
   - python38-jupyter-kernel-test 
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
   - python38-jupyter-server 
   - python38-jupyter-server-mathjax 
+  - python38-jupyter-server-terminals 
   - python38-jupyter-server-test 
   - python38-jupyter-sphinx 
   - python38-jupyter-telemetry 
@@ -28153,6 +28150,9 @@ unsorted:
   - python38-pytimeparse 
   - python38-pytlv 
   - python38-pytoml 
+  - python38-pytoolconfig 
+  - python38-pytoolconfig-global 
+  - python38-pytoolconfig-validation 
   - python38-pytools 
   - python38-pytricia 
   - python38-pytz 
@@ -28736,7 +28736,6 @@ unsorted:
   - python38-visvis 
   - python38-vncdotool 
   - python38-vobject 
-  - python38-voila 
   - python38-volatile 
   - python38-volatility3 
   - python38-voluptuous 
@@ -30521,14 +30520,12 @@ unsorted:
   - python39-jupyter-client 
   - python39-jupyter-core 
   - python39-jupyter-events 
-  - python39-jupyter-jupyterlab-server 
-  - python39-jupyter-jupyterlab-server-openapi 
-  - python39-jupyter-jupyterlab-server-test 
   - python39-jupyter-kernel-test 
   - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
   - python39-jupyter-server 
   - python39-jupyter-server-mathjax 
+  - python39-jupyter-server-terminals 
   - python39-jupyter-server-test 
   - python39-jupyter-sphinx 
   - python39-jupyter-telemetry 
@@ -31550,6 +31547,9 @@ unsorted:
   - python39-pytimeparse 
   - python39-pytlv 
   - python39-pytoml 
+  - python39-pytoolconfig 
+  - python39-pytoolconfig-global 
+  - python39-pytoolconfig-validation 
   - python39-pytools 
   - python39-pytricia 
   - python39-pytz 
@@ -32133,7 +32133,6 @@ unsorted:
   - python39-visvis 
   - python39-vncdotool 
   - python39-vobject 
-  - python39-voila 
   - python39-volatile 
   - python39-voluptuous 
   - python39-voluptuous-serialize 
@@ -44934,6 +44933,7 @@ unsorted:
   - yudit 
   - yum 
   - yum-utils 
+  - yuzu: [x86_64] 
   - z 
   - z3 
   - z3-devel 
