@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastparquet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           python-fastparquet
-Version:        0.8.3
+Version:        2022.12.0
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
+# Use GitHub archive, because it containts the test modules and data, requires setting version manuall for setuptools_scm
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fastparquet-pr813-updatefixes.patch gh#dask/fastparquet#813
-Patch1:         fastparquet-pr813-updatefixes.patch
 # PATCH-FIX-UPSTREAM fastparquet-pr835.patch gh#dask/fastparquet#835
 Patch2:         fastparquet-pr835.patch
 BuildRequires:  %{python_module Cython}
@@ -35,12 +34,16 @@ BuildRequires:  %{python_module fsspec >= 2021.6.0}
 BuildRequires:  %{python_module numpy-devel >= 1.20.3}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 1.5.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
+BuildRequires:  %{python_module setuptools_scm > 1.5.4}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam >= 2.3.0
 Requires:       python-fsspec
@@ -65,10 +68,11 @@ sed -i -e "s/^\s*packages=\[/&'fastparquet.test', /" -e "/exclude_package_data/ 
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -v %{buildroot}%{$python_sitearch}/fastparquet/{speedups,cencoding}.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 

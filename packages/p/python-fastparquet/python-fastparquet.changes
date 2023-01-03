@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  2 20:38:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.0
+  * check all int32 values before passing to thrift writer
+  * fix type of num_rows to i64 for big single file
+- Release 2022.11.0
+  * Switch to calver
+  * Speed up loading of nullable types
+  * Allow schema evolution by addition of columns
+  * Allow specifying dtypes of output
+  * update to scm versioning
+  * fixes to row filter, statistics and tests
+  * support pathlib.Paths
+  * JSON encoder options
+- Drop fastparquet-pr813-updatefixes.patch
+
+-------------------------------------------------------------------
 Fri Dec 23 09:18:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fox the test test_delta_from_def_2 on 
