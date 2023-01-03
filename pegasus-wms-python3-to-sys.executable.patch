@@ -1,0 +1,42 @@
+python3 might not be installed in a non-primary python environment
+(15.4_py39 backports)
+
+Index: pegasus-wms.common-gh-5.0.3/test/client/test_client.py
+===================================================================
+--- pegasus-wms.common-gh-5.0.3.orig/test/client/test_client.py
++++ pegasus-wms.common-gh-5.0.3/test/client/test_client.py
+@@ -5,6 +5,7 @@ import subprocess
+ from collections import namedtuple
+ from pathlib import Path
+ from subprocess import Popen
++import sys
+ from tempfile import TemporaryDirectory
+ from textwrap import dedent
+ 
+@@ -81,7 +82,7 @@ class TestClient:
+ 
+         # fork process to print 0\n1\n..4\n"
+         proc = Popen(
+-            ["python3", "-c", 'exec("for i in range(5):\\n\\tprint(i)\\n")'],
++            [sys.executable, "-c", 'exec("for i in range(5):\\n\\tprint(i)\\n")'],
+             stdout=subprocess.PIPE,
+             stderr=subprocess.PIPE,
+         )
+@@ -109,7 +110,7 @@ class TestClient:
+ 
+         # fork process to print 0\n1\n..4\n"
+         proc = Popen(
+-            ["python3", "-c", 'exec("for i in range(5):\\n\\tprint(i)\\n")'],
++            [sys.executable, "-c", 'exec("for i in range(5):\\n\\tprint(i)\\n")'],
+             stdout=subprocess.PIPE,
+             stderr=subprocess.PIPE,
+         )
+@@ -132,7 +133,7 @@ class TestClient:
+ 
+         # fork process to print 0\n1\n..4\n"
+         proc = Popen(
+-            ["python3", "-c", 'exec("for i in range(5):\\n\\tprint(i)\\n")'],
++            [sys.executable, "-c", 'exec("for i in range(5):\\n\\tprint(i)\\n")'],
+             stdout=subprocess.PIPE,
+             stderr=subprocess.PIPE,
+         )
