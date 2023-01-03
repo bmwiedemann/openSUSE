@@ -1,7 +1,7 @@
 #
 # spec file for package tryton
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015-2022 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           tryton
-Version:        %{majorver}.21
+Version:        %{majorver}.22
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-or-later
