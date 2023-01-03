@@ -173,4 +173,21 @@
 </comment>
     <requestid>955104</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>990c3efed073a62d326e2eb00f456931</srcmd5>
+    <version>1.8.0</version>
+    <time>1672754675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * Lowered `LinuxDistribution._distro_release_info` method complexity
+    [#327]
+  * Added official support for Buildroot distribution [#329]
+  * Added official support for Guix distribution [#330]
+  * Added support for `/etc/debian_version` [#333] &amp; [#349]
+  * Fixed a typography in CONTRIBUTING.md [#340]
+  * Improved README.md &quot;Usage&quot; code block [#343]
+  * Bumped black to v22.3.0 in pre-commit.ci configuration [#331]
+  * Enabled GitHub Dependabot to keep GitHub Actions up to date [#335]</comment>
+    <requestid>1046109</requestid>
+  </revision>
 </revisionlist>

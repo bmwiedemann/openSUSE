@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:26:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Lowered `LinuxDistribution._distro_release_info` method complexity
+    [#327]
+  * Added official support for Buildroot distribution [#329]
+  * Added official support for Guix distribution [#330]
+  * Added support for `/etc/debian_version` [#333] & [#349]
+  * Fixed a typography in CONTRIBUTING.md [#340]
+  * Improved README.md "Usage" code block [#343]
+  * Bumped black to v22.3.0 in pre-commit.ci configuration [#331]
+  * Enabled GitHub Dependabot to keep GitHub Actions up to date [#335]
+
+-------------------------------------------------------------------
 Tue Feb 15 19:13:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove shebang from distro.py
