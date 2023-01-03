@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  3 10:22:00 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.34.4
+  * Fix potential tlsport selection collision by using
+    state file as tlsport lock file
+- Use RPM macros for directory paths (bsc#1191055)
+
+-------------------------------------------------------------------
 Fri Dec  2 11:38:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.34.3

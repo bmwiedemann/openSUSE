@@ -1,7 +1,7 @@
 #
 # spec file for package aws-efs-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aws-efs-utils
-Version:        1.34.3
+Version:        1.34.4
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -73,16 +73,15 @@ mkdir -p %{buildroot}%{_sysconfdir}/amazon/efs
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m 644 %{_builddir}/efs-utils-%{version}/dist/amazon-efs-mount-watchdog.service %{buildroot}%{_unitdir}
 
-mkdir -p %{buildroot}/sbin
-mkdir -p %{buildroot}/usr/sbin
 mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_localstatedir}/log/amazon/efs
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/amazon/efs
 
 install -p -m 644 %{_builddir}/efs-utils-%{version}/dist/efs-utils.conf %{buildroot}%{_sysconfdir}/amazon/efs
 install -p -m 444 %{_builddir}/efs-utils-%{version}/dist/efs-utils.crt %{buildroot}%{_sysconfdir}/amazon/efs
-install -p -m 755 %{_builddir}/efs-utils-%{version}/src/mount_efs/__init__.py %{buildroot}/sbin/mount.efs
+install -p -m 755 %{_builddir}/efs-utils-%{version}/src/mount_efs/__init__.py %{buildroot}%{_sbindir}/mount.efs
 install -p -m 755 %{_builddir}/efs-utils-%{version}/src/watchdog/__init__.py %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
 install -p -m 644 %{_builddir}/efs-utils-%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
 
@@ -109,10 +108,10 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_sysconfdir}/amazon
 %config %{_sysconfdir}/amazon/efs/efs-utils.conf
 %config %{_sysconfdir}/amazon/efs/efs-utils.crt
-/sbin/mount.efs
+%{_sbindir}/mount.efs
 %{_bindir}/amazon-efs-mount-watchdog
 %{_sbindir}/rcamazon-efs-mount-watchdog
-/var/log/amazon
+%{_var}/log/amazon
 %{_mandir}/man8/mount.efs.8.gz
 
 %changelog
