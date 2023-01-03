@@ -1,0 +1,13 @@
+diff --git a/pylsp/plugins/pylint_lint.py b/pylsp/plugins/pylint_lint.py
+index 452f45b..222cdb8 100644
+--- a/pylsp/plugins/pylint_lint.py
++++ b/pylsp/plugins/pylint_lint.py
+@@ -85,7 +85,7 @@ class PylintLinter:
+             return cls.last_diags[document.path]
+ 
+         cmd = [
+-            'python',
++            sys.executable,
+             '-c',
+             'import sys; from pylint.lint import Run; Run(sys.argv[1:])',
+             '-f',

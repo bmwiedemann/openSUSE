@@ -169,4 +169,23 @@
     <comment></comment>
     <requestid>1043823</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>497b5aaa376cc13261dfee3cd8050e6a</srcmd5>
+    <version>1.7.0</version>
+    <time>1672765232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0
+  * Add a new plugin to provide autoimport functionality (disabled
+    by default).
+  * Add progress reporting.
+  * Make jedi_definition plugin follow definitions to pyi files.
+  * Add support for flake8 version 6.
+  * Add support for Yapf ignore patterns.
+  * Add mccabe setting to flake8 plugin.
+- Drop python-lsp-server-pr316-flake8v6.patch upstreamed
+  * gh#python-lsp/python-lsp-server#316
+- Add python-lsp-server-pr327-sys-executable.patch
+  * gh#python-lsp/python-lsp-server#327 (forwarded request 1045987 from bnavigator)</comment>
+    <requestid>1045989</requestid>
+  </revision>
 </revisionlist>

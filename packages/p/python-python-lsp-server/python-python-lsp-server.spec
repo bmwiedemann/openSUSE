@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-python-lsp-server
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM python-lsp-server-pr316-flake8v6.patch gh#python-lsp/python-lsp-server#316
-Patch0:         python-lsp-server-pr316-flake8v6.patch
+# PATCH-FIX-UPSTREAM python-lsp-server-pr327-sys-executable.patch gh#python-lsp/python-lsp-server#327
+Patch1:         python-lsp-server-pr327-sys-executable.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module pydocstyle >= 2.0.0}
 BuildRequires:  %{python_module pylint >= 2.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
-BuildRequires:  %{python_module rope >= 0.10.5}
+BuildRequires:  %{python_module rope >= 1.2.0}
 BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module whatthepatch}
 BuildRequires:  %{python_module yapf}
@@ -63,7 +63,7 @@ Suggests:       python-autopep8 >= 1.6.0
 Conflicts:      python-autopep8 >= 1.7.0
 Suggests:       python-pydocstyle >= 2.0.0
 Suggests:       python-pylint >= 2.5.0
-Suggests:       python-rope >= 0.10.5
+Suggests:       python-rope >= 1.2.0
 Suggests:       python-yapf
 Suggests:       python-whatthepatch
 # SECTION flake8 pins
@@ -125,6 +125,6 @@ sed -i '/addopts/d' pyproject.toml
 %license LICENSE
 %python_alternative %{_bindir}/pylsp
 %{python_sitelib}/pylsp
-%{python_sitelib}/python_lsp_server-%{version}*-info
+%{python_sitelib}/python_lsp_server-%{version}.dist-info
 
 %changelog
