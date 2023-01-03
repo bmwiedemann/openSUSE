@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan  3 13:02:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.5:
+  * Fixed a bug where the XML-RPC method ``supervisor.startProcess()`` would
+  return 500 Internal Server Error instead of an XML-RPC fault response
+  if the command could not be parsed.
+  * Fixed a bug on Python 2.7 where a ``UnicodeDecodeError`` may have
+  occurred when using the web interface.
+  * Removed use of ``urllib.parse`` functions ``splithost``, ``splitport``,
+    and ``splittype`` deprecated in Python 3.8.
+  * Removed use of ``asynchat`` and ``asyncore`` deprecated in Python 3.10.
+  * The return value of the XML-RPC method ``supervisor.getAllConfigInfo()``
+  now includes the ``directory``, ``uid``, and ``serverurl`` of the
+  program.
+  * If a subprocess exits with a unexpected exit code (one not listed in
+  ``exitcodes=`` in a ``[program:x]`` section) then the exit will now be logged
+  at the ``WARN`` level instead of ``INFO``.
+  * ``supervisorctl shutdown`` now shows an error message if an argument is
+  given.
+  * File descriptors are now closed using the faster ``os.closerange()``
+    instead
+  of calling ``os.close()`` in a loop.
+
+-------------------------------------------------------------------
 Mon Apr 25 09:50:14 UTC 2022 - pgajdos@suse.com
 
 - version update to 4.2.4
