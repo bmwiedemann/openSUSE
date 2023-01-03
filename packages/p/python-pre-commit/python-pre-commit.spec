@@ -1,7 +1,7 @@
 #
 # spec file for package python-pre-commit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pre-commit
-Version:        2.20.0
+Version:        2.21.0
 Release:        0
 Summary:        Multi-language pre-commit hooks
 License:        MIT
@@ -93,7 +93,8 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_rust_additional_dependencies or te
 EXCLUDED_TESTS="$EXCLUDED_TESTS or conda or test_perl_hook or test_local_perl_additional_dependencies"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or dart or dotnet or r_ or node or ruby"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_lua_additional_dependencies"
-EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_python_repo_python2"
+# rust_tests use rustup which require network
+EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_python_repo_python2 or rust_test"
 
 # Fix issue with git submodule in OBS
 git config --global --add protocol.file.allow always

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan  2 20:10:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.0:
+  * Require new-enough virtualenv to prevent 3.10 breakage
+  * Respect aliases with `SKIP` for environment install.
+  * Allow `pre-commit run --files` against unmerged paths.
+  * Also apply regex warnings to `repo: local` hooks.
+  * `rust` is now a "first class" language -- supporting `language_version`
+  * `r` now uses more-reliable binary installation.
+  * `GIT_ALLOW_PROTOCOL` is now passed through for git operations.
+  * `GIT_ASKPASS` is now passed through for git operations.
+  * Remove `toml` dependency by using `cargo add` directly.
+  * Support `dotnet` hooks which have dotted prefixes.
+  * ### Fixes
+  * Properly adjust `--commit-msg-filename` if run from a sub directory.
+  * Simplify `--intent-to-add` detection by using `git diff`.
+  * Fix `R.exe` selection on windows.
+  * Skip default `nuget` source when installing `dotnet` packages.
+
+-------------------------------------------------------------------
 Mon Nov 28 07:01:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix "/usr/bin/env bash" shebang in hook-tmpl file

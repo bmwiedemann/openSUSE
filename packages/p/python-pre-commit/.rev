@@ -138,4 +138,27 @@
 </comment>
     <requestid>1038582</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9d6381beb09ce35da1bb24a60b0bce73</srcmd5>
+    <version>2.21.0</version>
+    <time>1672754730</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.21.0:
+  * Require new-enough virtualenv to prevent 3.10 breakage
+  * Respect aliases with `SKIP` for environment install.
+  * Allow `pre-commit run --files` against unmerged paths.
+  * Also apply regex warnings to `repo: local` hooks.
+  * `rust` is now a &quot;first class&quot; language -- supporting `language_version`
+  * `r` now uses more-reliable binary installation.
+  * `GIT_ALLOW_PROTOCOL` is now passed through for git operations.
+  * `GIT_ASKPASS` is now passed through for git operations.
+  * Remove `toml` dependency by using `cargo add` directly.
+  * Support `dotnet` hooks which have dotted prefixes.
+  * ### Fixes
+  * Properly adjust `--commit-msg-filename` if run from a sub directory.
+  * Simplify `--intent-to-add` detection by using `git diff`.
+  * Fix `R.exe` selection on windows.
+  * Skip default `nuget` source when installing `dotnet` packages.</comment>
+    <requestid>1046303</requestid>
+  </revision>
 </revisionlist>
