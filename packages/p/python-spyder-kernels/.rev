@@ -552,4 +552,13 @@
 </comment>
     <requestid>1034141</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2c1bbaf5f87b8078dce3825ed5122138</srcmd5>
+    <version>2.4.1</version>
+    <time>1672765234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.1
+  * Make spyder-kernels compatible with IPython 8 (forwarded request 1046012 from bnavigator)</comment>
+    <requestid>1046013</requestid>
+  </revision>
 </revisionlist>
