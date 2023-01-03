@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 17:48:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.23, providing security fixes, feature improvements and
+  bug fixes:
+  * CVE-2022-46169: Unauthenticated Command Injection in Remote
+    Agent (boo#1206185)
+  * Security: Add .htaccess file to scripts folder
+  * When using Single Sign-on Frameworks, revocation was not always
+    detected in callbacks
+  * Fixes to the installer, and compatibility with PHP and MySQL
+  * Performance improvements for certain conditions
+  * Various UI fixes
+  * Bug fixes related to SNMP, RRDtools, and agents
+
+-------------------------------------------------------------------
 Sun Oct  2 18:17:03 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.22, providing one security fix, a number of bug fixes

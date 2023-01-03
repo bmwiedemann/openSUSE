@@ -1,8 +1,8 @@
-Index: cacti-1.2.12/include/config.php
+Index: cacti-1.2.23/include/config.php
 ===================================================================
---- cacti-1.2.12.orig/include/config.php
-+++ cacti-1.2.12/include/config.php
-@@ -44,17 +44,17 @@ $database_ssl_ca   = '';
+--- cacti-1.2.23.orig/include/config.php
++++ cacti-1.2.23/include/config.php
+@@ -45,17 +45,17 @@ $database_persist  = false;
   * must remain commented out.
   */
  
@@ -29,30 +29,30 @@ Index: cacti-1.2.12/include/config.php
 +//#$rdatabase_ssl_cert = '';
 +//#$rdatabase_ssl_ca   = '';
  
- /*
+ /**
   * The poller_id of this system.  set to `1` for the main cacti web server.
-@@ -69,13 +69,13 @@ $poller_id = 1;
+@@ -70,13 +70,13 @@ $poller_id = 1;
   * would be set to `/cacti/`.
   */
  
 -$url_path = '/cacti/';
 +//$url_path = '/cacti/';
  
- /*
+ /**
   * Default session name - session name must contain alpha characters
   */
  
 -$cacti_session_name = 'Cacti';
 +//$cacti_session_name = 'Cacti';
  
- /*
+ /**
   * Default Cookie domain - The cookie domain to be used for Cacti
-@@ -87,7 +87,7 @@ $cacti_session_name = 'Cacti';
+@@ -88,7 +88,7 @@ $cacti_session_name = 'Cacti';
   * Save sessions to a database for load balancing
   */
  
 -$cacti_db_session = false;
 +//$cacti_db_session = false;
  
- /*
+ /**
   * Disable log rotation settings for packagers
