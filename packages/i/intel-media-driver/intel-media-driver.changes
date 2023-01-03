@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan  3 10:41:30 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated Supplements
+
+-------------------------------------------------------------------
+Tue Jan  3 08:26:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to intel-media-22.5.4:
+  * Official quarterly release including some enhancements and key fixes.
+  * Alchemist(DG2)/ATS-M New Features and Enhancement
+  * Enhanced HEVC & AVC decode error handling robustness.
+  * Fixed VP9 dynamic resolution change decode random corruption issue.
+  * Enabled Memory Decompression for ADLS and ADLN.
+  * Fixed MPEG2 decode crash issue.
+  * Fixed AV1 decode film grain hang issue.
+  * Fixed color fill corruption issue.
+  * Fixed first VPP operation color artifacts.
+  * Enhanced I420 and UYVY format support in creating surface and derive
+    image.
+  * Fixed aux table l2 page fault
+
+-------------------------------------------------------------------
 Tue Dec  6 18:49:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.6.4:

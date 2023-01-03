@@ -307,4 +307,26 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>1040826</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>71721c4bdfb2f83efbd52225db455d22</srcmd5>
+    <version>22.6.5</version>
+    <time>1672754766</time>
+    <user>dimstar_suse</user>
+    <comment>- updated Supplements
+
+- update to intel-media-22.5.4:
+  * Official quarterly release including some enhancements and key fixes.
+  * Alchemist(DG2)/ATS-M New Features and Enhancement
+  * Enhanced HEVC &amp; AVC decode error handling robustness.
+  * Fixed VP9 dynamic resolution change decode random corruption issue.
+  * Enabled Memory Decompression for ADLS and ADLN.
+  * Fixed MPEG2 decode crash issue.
+  * Fixed AV1 decode film grain hang issue.
+  * Fixed color fill corruption issue.
+  * Fixed first VPP operation color artifacts.
+  * Enhanced I420 and UYVY format support in creating surface and derive
+    image.
+  * Fixed aux table l2 page fault</comment>
+    <requestid>1046472</requestid>
+  </revision>
 </revisionlist>
