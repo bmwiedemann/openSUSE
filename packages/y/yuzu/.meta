@@ -1,0 +1,6 @@
+<package name="yuzu" project="openSUSE:Factory">
+  <title></title>
+  <description>yuzu is an open-source Nintendo Switch emulator/debugger written in C++ and with portability in mind.</description>
+  <devel project="Emulators" package="yuzu"/>
+  <url>https://yuzu-emu.org/</url>
+</package>
