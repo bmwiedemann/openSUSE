@@ -589,4 +589,33 @@ rename the package from spyder3 to spyder.
 </comment>
     <requestid>1034142</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ec1a2f75a14355fde5f0260e8085285f</srcmd5>
+    <version>5.4.1</version>
+    <time>1672765235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.1
+  ## New features
+  * Support for IPython 8
+  * Improvements for code completion and help offered for
+    scientific modules (Numpy, Pandas, Matplotlib and Scipy)
+  * Improvements to the UX/UI of the FindReplace widget (find and
+    replace functionality)
+  * New PYTHONPATH manager plugin
+  ## Important fixes
+  * Improve/fix errors regarding the New Window and Split window
+    Editor funtionality and general RuntimeErrors on the Editor
+  * Improvements when syncing symbols and folding code
+    functionality for the Editor
+  * Fix PYTHONPATH handling for the IPython console
+  * Some fixes for code completion and code style linting
+    functionality
+  * Some fixes/improvements regarding UX/UI for the IPython console
+    pane, menu and context menu generation
+  * Some improvements regarding UX/UI for the current working
+    directory toolbar
+  ## New API features
+  * Improvements to the way Spyder handles menus sections additions (forwarded request 1046014 from bnavigator)</comment>
+    <requestid>1046015</requestid>
+  </revision>
 </revisionlist>
