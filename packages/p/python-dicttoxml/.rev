@@ -15,4 +15,31 @@
     <comment></comment>
     <requestid>707831</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>059e0c80e3b3b4665547ec9402d2a84b</srcmd5>
+    <version>1.7.16</version>
+    <time>1672754724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.16:
+  * Resolved issue #98 and issue #99
+  * Added `python_requires=&quot;&gt;=3.6&quot;` to `setup.py`
+  * Fixed [issue #43]
+  * Implemented [issue #82]
+  * Small fixes to readme.md
+  * Handle floating point keys as per [issue #61]
+  * Option to return string instead of bytes as per [issue #55]
+  * Reorganized readme.md to have a better flow.
+  * Fixed [issue #53] break in 1.7
+  * Fixed [issue #96], update readme section on debugging
+  * Fixed [issue #95]: changed project.toml to support Python 3.6+ and updated
+    readme documentation.
+  * Simplified solution to issue 94
+  * Fixed [issue #94]
+  * Fixed [issue #67].
+  * Fixed [issue #58] on github: debug is turned off by default, and no longer
+    prints &quot;Debug mode is off&quot; in the console.  Fixed [issue #88] on github.
+  * Made XML encoding attribute optional and editable as per [issue 83] on github.
+  * Fixed [isue #91] on github.</comment>
+    <requestid>1046297</requestid>
+  </revision>
 </revisionlist>

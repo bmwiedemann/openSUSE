@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:52:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.16:
+  * Resolved issue #98 and issue #99
+  * Added `python_requires=">=3.6"` to `setup.py`
+  * Fixed [issue #43]
+  * Implemented [issue #82]
+  * Small fixes to readme.md
+  * Handle floating point keys as per [issue #61]
+  * Option to return string instead of bytes as per [issue #55]
+  * Reorganized readme.md to have a better flow.
+  * Fixed [issue #53] break in 1.7
+  * Fixed [issue #96], update readme section on debugging
+  * Fixed [issue #95]: changed project.toml to support Python 3.6+ and updated
+    readme documentation.
+  * Simplified solution to issue 94
+  * Fixed [issue #94]
+  * Fixed [issue #67].
+  * Fixed [issue #58] on github: debug is turned off by default, and no longer
+    prints "Debug mode is off" in the console.  Fixed [issue #88] on github.
+  * Made XML encoding attribute optional and editable as per [issue 83] on github.
+  * Fixed [isue #91] on github.
+
+-------------------------------------------------------------------
 Wed Jun  5 12:03:06 UTC 2019 - pgajdos@suse.com
 
 - note there is no upstream testsuite

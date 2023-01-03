@@ -1,7 +1,7 @@
 #
 # spec file for package python-dicttoxml
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dicttoxml
-Version:        1.7.4
+Version:        1.7.16
 Release:        0
 Summary:        Python module for converting a dictionary to XML
 License:        GPL-2.0-only
@@ -51,7 +51,7 @@ mv LICENCE.txt LICENSE.txt
 # no testsuite found
 
 %files %{python_files}
-%doc README.markdown
+%doc README.md
 %license LICENSE.txt
 %{python_sitelib}/*
 
