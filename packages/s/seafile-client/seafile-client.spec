@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        8.0.9
+Version:        8.0.10
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
