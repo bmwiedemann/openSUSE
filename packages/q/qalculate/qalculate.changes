@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:00:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+  * Conversion to any type of expression
+    (e.g. "1000 BTC to million USD")
+  * Use current status of limit implicit multiplication setting
+    during parsing of conversion expression
+  * New SI prefixes (R, r, Q, q)
+  * New units: ounce force (ozf), rack unit (U)
+  * Use standard form (sorting) for polynomials
+  * Improve consistency of behaviour when global units are replaced
+  * More consistent addition of units to expression without units
+    for unit conversion
+  * Improvements and fixes for arg() and atan2() functions
+  * Fix interpretation of Myr (megayear) and Gyr (gigayear)
+  * Fix milli- and centimeter of water units
+  * Fix genvector() with for negative step size or expression
+    as step size/number of steps
+  * Fix randuniform() function
+  * Fix automatic/dual fraction format after conversion
+    (e.g. "8 to score")
+  * Fix inconsistently displayed parsing of "7d 5h" and similar
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Thu Nov 10 09:13:50 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.0:
