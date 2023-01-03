@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec 31 15:09:03 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 5.1.4
+  * support new distributions  
+  * monitor specific resolution
+  * UI improvements 
+  * build improvements
+
+-------------------------------------------------------------------
+Mon Sep 27 11:52:41 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 5.0.28
+  * improve translations
+  * UI improvements 
+
+-------------------------------------------------------------------
 Tue Mar  9 14:51:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop Requires(pre): /sbin/chkconfig: there are no pre scripts

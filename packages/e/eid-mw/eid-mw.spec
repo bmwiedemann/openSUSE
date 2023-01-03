@@ -1,7 +1,7 @@
 #
 # spec file for package eid-mw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Philipp Thomas <psmt@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,15 @@
 #
 
 
-%define revision 31.g6af62466
-%define src_name eid-mw-%{version}-v%{version}v.%{revision}
+#define revision 8.g1beb6f2f
+#define src_name eid-mw-%{version}-v%{version}.%{revision}
+
+%define src_name eid-mw-%{version}-v%{version}
 
 Name:           eid-mw
-Version:        5.0.8
+Version:        5.1.4
 Release:        0
-URL:            http://eid.belgium.be/en/using_your_eid/installing_the_eid_software/linux/
+URL:            https://eid.belgium.be/nl
 Summary:        Belgium electronic identity card PKCS#11 module and Firefox plugin
 License:        LGPL-3.0-or-later
 Group:          Productivity/Security
@@ -36,6 +38,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gtk2-devel
+BuildRequires:  libbsd-devel
 BuildRequires:  libtool
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  subversion
@@ -121,7 +124,6 @@ The application verifies the signature of the identity information,
 checks whether it was signed by a government-issued key, and optionally
 checks the certificate against the government's Trust Service.
 
-
 %prep
 %setup -q -n %{src_name}
 
@@ -135,6 +137,7 @@ checks the certificate against the government's Trust Service.
 %{__make} install DESTDIR="%{buildroot}"
 mkdir -p %{buildroot}%{_libdir}/mozilla/
 mv %{buildroot}/usr/lib/mozilla/pkcs11-modules %{buildroot}%{_libdir}/mozilla/ || true
+mv %{buildroot}/usr/lib/mozilla/managed-storage %{buildroot}%{_libdir}/mozilla/ || true
 rm -f %{buildroot}%{_datadir}/applications/eid-viewer.desktop
 desktop-file-install --dir %{buildroot}%{_datadir}/applications --add-category="Office;Viewer;" --vendor fedict plugins_tools/eid-viewer/eid-viewer.desktop || true
 
@@ -151,7 +154,7 @@ elif /usr/bin/pgrep 'iceweasel' &>/dev/null; then
     echo "INFO: You may have to restart Iceweasel for the Belgium eID add-on to work." >&2
 fi
 
-%postun -n eid-mw-libs 
+%postun -n eid-mw-libs
 /sbin/ldconfig
 ### Make pcscd reread configuration and rescan USB bus.
 if /sbin/service pcscd status &>/dev/null; then
@@ -186,9 +189,11 @@ fi
 %defattr(-,root,root)
 %dir %{_datadir}/mozilla/
 %dir %{_libdir}/mozilla/pkcs11-modules
-%{_libdir}/mozilla/pkcs11-modules/beidp11kit.json
+%dir %{_libdir}/mozilla/managed-storage
+%{_libdir}/mozilla/pkcs11-modules/beidpkcs11_alt.json
 %{_libdir}/mozilla/pkcs11-modules/beidpkcs11.json
 %{_datadir}/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be.xpi
+%{_libdir}/mozilla/managed-storage/belgiumeid@eid.belgium.be.json
 
 %files devel
 %defattr(-,root,root)
