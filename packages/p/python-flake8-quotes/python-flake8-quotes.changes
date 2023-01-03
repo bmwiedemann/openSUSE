@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 16:39:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * support flake8 6.0
+- drop support-flake8-6.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Dec 19 09:01:02 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add support-flake8-6.patch in order to support flake8 version 6.
