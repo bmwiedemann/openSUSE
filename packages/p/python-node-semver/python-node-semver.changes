@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  2 15:45:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * fix erroneous parsing of $ component version numbers
+
+-------------------------------------------------------------------
 Mon Mar 30 10:49:12 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.8.0

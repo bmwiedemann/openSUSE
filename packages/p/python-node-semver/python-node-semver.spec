@@ -1,7 +1,7 @@
 #
 # spec file for package python-node-semver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-node-semver
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Port of node-semver
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/podhmo/python-semver
-Source:         https://github.com/podhmo/python-semver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/podhmo/python-node-semver
+Source:         https://github.com/podhmo/python-node-semver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +40,7 @@ BuildArch:      noarch
 python version of node-semver (https://github.com/isaacs/node-semver)
 
 %prep
-%setup -q -n python-semver-%{version}
+%setup -q -n python-node-semver-%{version}
 
 %build
 %python_build
