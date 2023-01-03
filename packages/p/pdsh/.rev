@@ -358,4 +358,26 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
   * No later version of Slurm builds on 32 bit. (forwarded request 1032558 from eeich)</comment>
     <requestid>1033560</requestid>
   </revision>
+  <revision rev="46" vrev="8">
+    <srcmd5>a9a3d35343ad538f6db80f2219165541</srcmd5>
+    <version>2.34</version>
+    <time>1672754749</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport a number of features and fixes from the git master branch
+  (boo#1206795):
+  * Add '-C' option on Slrum plugin to restrict selected nodes to ones
+    with the specified features present:
+     slurm-add-C-features-constraint.patch
+     slurm-add-documentation-for-C.patch
+  * Add option '-k' to the ssh plugin to fail faster on connection failures:
+     fail-fast-on-ssh-errors-or-non-zero-return-code.patch
+     doc-fast-fail-update.patch
+  * Fix use of strchr
+     hostlist-fix-use-of-strchr.patch
+  * Dshbak: Fix uninitialized use of $tag on empty input
+     dshbak-fix-uninitialized-use-of-tag-on-empty-input.patch
+  * Dsh: Release a lock that is no longer used in dsh()
+     Release-a-lock-that-is-no-longer-used-in-dsh.patch (forwarded request 1046437 from eeich)</comment>
+    <requestid>1046438</requestid>
+  </revision>
 </revisionlist>

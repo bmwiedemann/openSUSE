@@ -1,0 +1,69 @@
+From: Jerry Mannil <jmannil@amazon.com>
+Date: Fri Jun 10 00:03:06 2022 -0700
+Subject: fail fast on ssh errors or non-zero return code
+Patch-mainline: Not yet
+Git-repo: https://github.com/chaos/pdsh
+Git-commit: df2c464f246fbc5179f090873214df4c7c16a79b
+References: 
+
+* Added "-k" option to enable fail fast option
+
+* Fail fast on non-zero error code
+
+Fixes #139
+
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/pdsh/dsh.c |  2 +-
+ src/pdsh/opt.c | 10 +++++++---
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/pdsh/dsh.c b/src/pdsh/dsh.c
+index 1957421..cad8d41 100644
+--- a/src/pdsh/dsh.c
++++ b/src/pdsh/dsh.c
+@@ -753,7 +753,7 @@ static void *_rsh_thread(void *args)
+         a->rc = rv;
+ 
+     /* if a single qshell thread fails, terminate whole job */
+-    if (a->kill_on_fail && a->state == DSH_FAILED) {
++    if (a->kill_on_fail && ((a->state == DSH_FAILED) || (a->rc > 0))) {
+         _fwd_signal(SIGTERM);
+         errx("%p: terminating all processes\n");
+     }
+diff --git a/src/pdsh/opt.c b/src/pdsh/opt.c
+index 790fa2d..44b85dc 100644
+--- a/src/pdsh/opt.c
++++ b/src/pdsh/opt.c
+@@ -66,7 +66,8 @@
+ 
+ #define OPT_USAGE_DSH "\
+ Usage: pdsh [-options] command ...\n\
+--S                return largest of remote command return values\n"
++-S                return largest of remote command return values\n\
++-k                fail fast on connect failure or non-zero return code\n"
+ 
+ /* -s option only useful on AIX */
+ #if	HAVE_MAGIC_RSHELL_CLEANUP
+@@ -113,9 +114,9 @@ Usage: rpdcp [-options] src [src2...] dir\n\
+ /* undocumented "-K" option -  keep domain name in output */
+ 
+ #if	HAVE_MAGIC_RSHELL_CLEANUP
+-#define DSH_ARGS	"sS"
++#define DSH_ARGS	"sSk"
+ #else
+-#define DSH_ARGS    "S"
++#define DSH_ARGS    "Sk"
+ #endif
+ #define PCP_ARGS	"pryzZe:"
+ #define GEN_ARGS	"hLNKR:M:t:cqf:w:x:l:u:bI:dVT:Q"
+@@ -691,6 +692,9 @@ void opt_args(opt_t * opt, int argc, char *argv[])
+             else
+                 goto test_module_option;
+             break;
++        case 'k':
++            opt->kill_on_fail = true;
++            break;
+         default: test_module_option:
+             if (mod_process_opt(opt, c, optarg) < 0)
+                _usage(opt);

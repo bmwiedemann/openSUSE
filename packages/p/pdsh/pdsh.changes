@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  3 07:41:31 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Backport a number of features and fixes from the git master branch
+  (boo#1206795):
+  * Add '-C' option on Slrum plugin to restrict selected nodes to ones
+    with the specified features present:
+     slurm-add-C-features-constraint.patch
+     slurm-add-documentation-for-C.patch
+  * Add option '-k' to the ssh plugin to fail faster on connection failures:
+     fail-fast-on-ssh-errors-or-non-zero-return-code.patch
+     doc-fast-fail-update.patch
+  * Fix use of strchr
+     hostlist-fix-use-of-strchr.patch
+  * Dshbak: Fix uninitialized use of $tag on empty input
+     dshbak-fix-uninitialized-use-of-tag-on-empty-input.patch
+  * Dsh: Release a lock that is no longer used in dsh()
+     Release-a-lock-that-is-no-longer-used-in-dsh.patch
+
+-------------------------------------------------------------------
 Mon Oct 31 14:27:36 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Preparing pdsh for Slurm 22.05.
