@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-OptList
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Data-OptList
 Name:           perl-Data-OptList
-Version:        0.112
+Version:        0.113
 Release:        0
-Summary:        Parse and validate simple name/value option pairs
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Parse and validate simple name/value option pairs
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
