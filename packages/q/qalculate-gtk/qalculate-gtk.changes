@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:00:34 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+  * Use history font for RPN stack list (GTK, Qt)
+  * Fix factorization conversion specified in expression, and conversion performed using a separate expression (GTK)
+  * Fix unit names dialog (GTK)
+
+-------------------------------------------------------------------
 Thu Nov 10 09:17:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.0:

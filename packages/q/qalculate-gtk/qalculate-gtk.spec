@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-gtk
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-BuildRequires:  pkgconfig(libqalculate) >= 4.4.0
+BuildRequires:  pkgconfig(libqalculate) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
