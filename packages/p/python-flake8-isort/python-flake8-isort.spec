@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-isort
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-flake8-isort
-Version:        4.2.0
+Version:        6.0.0
 Release:        0
 Summary:        Plugin integrating isort in flake8
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/gforcada/flake8-isort
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-isort/flake8-isort-%{version}.tar.gz
-BuildRequires:  %{python_module flake8 >= 3.2.1}
+BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module isort >= 4.3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-flake8 >= 3.2.1
+Requires:       python-flake8
 Requires:       python-isort >= 4.3.5
 Requires:       python-testfixtures
 BuildArch:      noarch
@@ -54,7 +54,7 @@ Use `isort`_ to check if the imports on your python files are sorted the way you
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest ./run_tests.py
 
 %files %{python_files}
 %doc README.rst CHANGES.rst

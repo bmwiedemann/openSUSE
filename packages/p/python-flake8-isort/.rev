@@ -34,4 +34,26 @@
     <comment></comment>
     <requestid>1010145</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8a4749f30ec9b63ca3c584b015b0f0c</srcmd5>
+    <version>6.0.0</version>
+    <time>1672754707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * Drop isort 4.x support.
+  * Add support for flake8 6.0.0.
+  * Add `--isort-no-skip-gitignore` option to allow temporarily overriding
+    the set
+  value of isort's `skip_gitignore` option with `False`. This can cause
+  flake8-isort to run significantly faster at the cost of making flake8-isort's
+  behavior differ slightly from the behavior of `isort --check`. [gschaffner]
+  * Fix broken `add_options` method [casperdcl]
+  * Improve the config option is added and read back. [gforcada]
+  * Bump plugin version. [gforcada]
+  * Update dependencies. [gforcada]
+  * Revamp GitHub actions. [gforcada]
+  * Drop python 3.6, and add python 3.10. [gforcada]
+  * Use linters and formatters to keep code sane and beautiful. [gforcada]</comment>
+    <requestid>1046243</requestid>
+  </revision>
 </revisionlist>
