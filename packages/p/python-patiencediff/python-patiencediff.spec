@@ -1,7 +1,7 @@
 #
 # spec file for package python-patiencediff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 Name:           python-patiencediff
-Version:        0.2.11
+Version:        0.2.12
 Release:        0
 Summary:        Python implementation of the patiencediff algorithm
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/breezy-team/patiencediff
 Source:         https://files.pythonhosted.org/packages/source/p/patiencediff/patiencediff-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
 %python_subpackages
 
 %description
@@ -44,6 +46,13 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_clone -a %{buildroot}%{_bindir}/patiencediff
+
+%post
+%python_install_alternative patiencediff
+
+%postun
+%python_uninstall_alternative patiencediff
 
 %check
 %pytest
@@ -51,6 +60,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc AUTHORS README.rst
 %license COPYING
+%python_alternative %{_bindir}/patiencediff
 %{python_sitearch}/patiencediff
 %{python_sitearch}/patiencediff-%{version}*-info
 

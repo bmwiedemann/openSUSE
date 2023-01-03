@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 20:02:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.12:
+  * install patiencediff 
+  * drop python 3.6 
+
+-------------------------------------------------------------------
 Tue Dec 13 15:48:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.2.11 
