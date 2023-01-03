@@ -135,4 +135,12 @@
     <comment>- Update to release 2022.11.11</comment>
     <requestid>1035225</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>005223c9bdbeef30df306d5c80d7e2c4</srcmd5>
+    <version>2023.01.02</version>
+    <time>1672754709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2023.01.02</comment>
+    <requestid>1046233</requestid>
+  </revision>
 </revisionlist>

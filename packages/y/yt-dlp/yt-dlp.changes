@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 16:02:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.01.02
+  * Add `--compat-options 2021,2022`
+  * Native progress for aria2c via RPC
+  * Merge youtube-dl: Upto commit/195f22f (2022-11-13)
+  * Add `weba` and `ac4` to the list of recognized codecs
+
+-------------------------------------------------------------------
 Fri Nov 11 11:17:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.11.11
