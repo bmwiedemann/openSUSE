@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1032049</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60c98752411e5c43dde6c1ede50ae8ff</srcmd5>
+    <version>3.8.3</version>
+    <time>1672754729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.3:
+  * `orjson.dumps()` accepts `option=None` per `Optional[int]` type.
+  * Fix tests on 32-bit for `numpy.intp` and `numpy.uintp`.
+  * Build now depends on rustc 1.60 or later.
+  * Support building with maturin 0.13 or 0.14.</comment>
+    <requestid>1046301</requestid>
+  </revision>
 </revisionlist>

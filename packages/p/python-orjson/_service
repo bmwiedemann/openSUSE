@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srctar">orjson-3.8.0.tar.gz</param>
+    <param name="srctar">orjson-3.8.3.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>
