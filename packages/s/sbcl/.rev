@@ -1356,4 +1356,12 @@ Thanks</comment>
 - Update to version 2.2.11 (forwarded request 1043830 from bobbie424242)</comment>
     <requestid>1043837</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c7cd7a9edd963af916d502d161d762c3</srcmd5>
+    <version>2.3.0</version>
+    <time>1672754752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046452</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jan  3 09:13:33 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.0
+  * enhancement: support for SLOT-VALUE and friends has been extended to
+    structure and condition instances.
+  * enhancement: the error message for invalid array index conditions is clearer.
+    (lp#1999337, reported by Hadrien Lacour)
+  * minor incompatible change: COMPILED-FUNCTION-P now returns false for
+    generic functions.
+  * minor incompatible change: the compiler emit STYLE-WARNING conditions for
+    FIND and POSITION where the item sought can never be present in the
+    sequence.
+  * optimization: support computing the remainder of a constant division by
+    multiplication.
+  * optimization: faster out of line float truncation routines.
+  * optimization: faster RATIONAL on 64-bit platforms.
+  * optimization: more compact testing of widetags on x86-64 and arm64.
+  * bug fix: type intersections of RATIONAL ranges with (NOT INTEGER) are
+    computed more consistently.  (lp#1998008)
+  * bug fix: fix miscompilation of integer/fixnum comparisons where both
+    arguments are on the stack.
+
+-------------------------------------------------------------------
 Mon Dec 19 22:06:13 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - fix i586 build caused by bogus -D_GNU_SOURCE use
