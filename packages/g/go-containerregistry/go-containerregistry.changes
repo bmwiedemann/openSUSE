@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 22:05:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Fix context.DeadlineExceeded comparison (#1488)
+  * Fix missing body.Close() in bearer auth (#1482)
+  * bump version of slsa generator (#1468)
+  * crane: add catalog argument use annotation (#1473)
+  * k8schain: Log and proceed if secret or SA are not found 
+
+-------------------------------------------------------------------
 Tue Dec 13 11:01:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid file conflict on SLE15 and other older distributions 
