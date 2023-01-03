@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 24 18:00:39 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 2022.0.0:
+  https://hugin.sourceforge.io/releases/2022.0.0/en.shtml
+- Remove xdg-data.patch (accepted upstream)
+
+-------------------------------------------------------------------
 Wed Nov  2 12:29:44 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add xdg-data.patch: fixes bsc#1204546

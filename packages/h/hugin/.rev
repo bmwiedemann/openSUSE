@@ -621,4 +621,14 @@
     <comment>- Add xdg-data.patch: fixes bsc#1204546 (forwarded request 1032873 from polslinux)</comment>
     <requestid>1033007</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a4d2e2fa9556ecc56d18defc2d57f8e6</srcmd5>
+    <version>2022.0.0</version>
+    <time>1672754771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.0.0:
+  https://hugin.sourceforge.io/releases/2022.0.0/en.shtml
+- Remove xdg-data.patch (accepted upstream) (forwarded request 1045237 from pevik)</comment>
+    <requestid>1046474</requestid>
+  </revision>
 </revisionlist>

@@ -16,14 +16,14 @@
 #
 
 
-%define mversion 2021.0
+%define mversion 2022.0
 %bcond_with hsi
 %bcond_without system_flann
 %bcond_without lapack
 # Cannot use EGL unless glew bug https://github.com/nigels-com/glew/issues/315 is fixed
 %bcond_with egl
 Name:           hugin
-Version:        2021.0.0
+Version:        2022.0.0
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
-Patch1:         xdg-data.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0
