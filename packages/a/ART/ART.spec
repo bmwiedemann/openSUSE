@@ -1,7 +1,7 @@
 #
 # spec file for package ART
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ART
-Version:        1.17.2
+Version:        1.18.0
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ BuildRequires:  glibmm2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libraw-devel
+BuildRequires:  mimalloc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(expat)

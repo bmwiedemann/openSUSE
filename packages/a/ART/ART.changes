@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan  3 14:04:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.18.0:
+  * properly refresh the progress bar when loading thumbnails
+  * fixed bugs with launching external editor on windows when filename is not ASCII or contains spaces
+  * session save: ask before overwriting
+  * imageio: further improvements to ease bundling of image load/save plugins on windows
+  * file catalog: properly update the session when renaming/moving/deleting files
+  * local editing: do not include the effects of "show mask" in output images
+  * file rename: added %# pattern for numeric suffixes of filenames
+  * automatically add ".ars" extension when saving sessions
+  * improved support for sessions
+  * always apply the tone curve when enabled (even if it is an identity)
+  * filecatalog: try to avoid refreshing directories while files are still being modified
+  * metadata: fixed uninitialized value in star rating
+  * film negative: fix behaviour of "pick neutral spots"
+
+-------------------------------------------------------------------
 Wed Dec  7 15:58:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.17.2:

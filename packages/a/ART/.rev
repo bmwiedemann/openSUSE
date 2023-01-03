@@ -103,4 +103,26 @@
 </comment>
     <requestid>1041164</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8237b2aca5701d37eaa9c1ac596a5a99</srcmd5>
+    <version>1.18.0</version>
+    <time>1672765239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.0:
+  * properly refresh the progress bar when loading thumbnails
+  * fixed bugs with launching external editor on windows when filename is not ASCII or contains spaces
+  * session save: ask before overwriting
+  * imageio: further improvements to ease bundling of image load/save plugins on windows
+  * file catalog: properly update the session when renaming/moving/deleting files
+  * local editing: do not include the effects of &quot;show mask&quot; in output images
+  * file rename: added %# pattern for numeric suffixes of filenames
+  * automatically add &quot;.ars&quot; extension when saving sessions
+  * improved support for sessions
+  * always apply the tone curve when enabled (even if it is an identity)
+  * filecatalog: try to avoid refreshing directories while files are still being modified
+  * metadata: fixed uninitialized value in star rating
+  * film negative: fix behaviour of &quot;pick neutral spots&quot;
+</comment>
+    <requestid>1046545</requestid>
+  </revision>
 </revisionlist>
