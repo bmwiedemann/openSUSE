@@ -1,7 +1,7 @@
 #
 # spec file for package python-fake-useragent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fake-useragent
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
-License:        Apache-2.0
 Summary:        Useragent faker package for Python
-URL:            https://github.com/fake-useragent/fake-useragent
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/fake-useragent/fake-useragent
 Source:         https://github.com/fake-useragent/fake-useragent/archive/refs/tags/%{version}.tar.gz#/fake-useragent-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib-resources
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-importlib-resources
-BuildArch:      noarch
-
 %python_subpackages
 
 %description

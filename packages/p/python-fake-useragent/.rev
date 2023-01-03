@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1040545</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>996e7b541948481151224739aca92291</srcmd5>
+    <version>1.1.1</version>
+    <time>1672754703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Remove white spaces from user agent strings, this is a patch release</comment>
+    <requestid>1046239</requestid>
+  </revision>
 </revisionlist>

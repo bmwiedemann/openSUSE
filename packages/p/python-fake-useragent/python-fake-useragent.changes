@@ -1,8 +1,11 @@
 -------------------------------------------------------------------
-Tue Dec  6 03:26:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Mon Jan  2 16:00:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- Update to v1.1.1 
-  * Remove whitespaces from user agent strings, this is a patch release
+- update to 1.1.1:
+  * Remove white spaces from user agent strings, this is a patch release
+
+-------------------------------------------------------------------
+Tue Dec  6 03:26:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.1.0
   * Add pkg_resource as fallback mechanism in trying to retrieve the local JSON data file
