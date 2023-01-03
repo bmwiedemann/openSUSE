@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 17:43:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.23:
+  * Fix unexpected reindexing when using uptime as the reindex
+    method
+  * Spine should prevent the script server from connecting to remote
+    when offline
+  * Improve Script Server Timeout Logging
+  * Add SQL_NO_CACHE to Spine Queries
+
+-------------------------------------------------------------------
 Sun Oct  2 18:13:33 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.22, delivering a number of bug fixes:
