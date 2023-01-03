@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define mod_name pika
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{mod_name}
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Pika Python AMQP Client Library
 License:        BSD-3-Clause
@@ -64,7 +64,7 @@ export PYTHONPATH='.'
 %pytest
 
 %files %{python_files}
-%doc README.rst CHANGELOG.rst
+%doc README.rst CHANGELOG.md
 %license LICENSE
 # You may have to add additional files here (documentation and binaries mostly)
 %{python_sitelib}/%{mod_name}*
