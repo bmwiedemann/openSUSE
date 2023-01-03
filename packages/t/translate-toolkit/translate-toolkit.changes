@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  2 17:54:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- update to 3.8.0
+  * JSON: Fixed serialization for some corner case keys
+  * PO: Wrapping is now compatible with GNU gettext 0.21.1
+  * Fluent: Consolidate error handling to be similar as with other
+    formats
+  * Fluent: Add support for extracting placeables
+  * LISA (XLIFF, Android, ...): Allow to customize behavior of
+    empty XML tags
+  * RC: Added support for MENUEX block and DISCARDABLE attribute
+- Move to PEP517 build
+- Add pyparsing as build requirment for manpage genaration: It is
+  not pulled in automatically anymore (python-packaging 22)
+- Fix alternatives uninstall command: Master ends in 1.gz
+  (%ext_man)
+
+-------------------------------------------------------------------
 Wed Oct 26 16:27:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.3:

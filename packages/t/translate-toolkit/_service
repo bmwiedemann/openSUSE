@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/translate/translate.git</param>
-    <param name="revision">3.7.3</param>
-    <param name="version">3.7.3</param>
+    <param name="revision">3.8.0</param>
+    <param name="version">3.8.0</param>
     <param name="submodules">enable</param>
     <param name="scm">git</param>
   </service>

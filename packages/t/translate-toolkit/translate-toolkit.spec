@@ -26,7 +26,7 @@
 %endif
 %define modname translate-toolkit
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 %define binaries_and_manpages %{shrink:\
     poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
     build_firefox.sh junitmsgfmt pretranslate \
@@ -42,7 +42,7 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.7.3
+Version:        3.8.0
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -53,15 +53,20 @@ Patch1:         sphinx-intersphinx.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module sphinx-bootstrap-theme}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
 # extra modules here are needed for manpages
-BuildRequires:  %{python_module cheroot >= 8.3.0}
+BuildRequires:  %{python_module cheroot >= 9}
 BuildRequires:  %{python_module iniparse >= 0.5}
 BuildRequires:  %{python_module lxml >= 4.6.3}
 BuildRequires:  %{python_module phply >= 1.2.5}
-BuildRequires:  %{python_module ruamel.yaml >= 0.17.17}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module ruamel.yaml >= 0.17.21}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module vobject >= 0.9.6.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
@@ -79,16 +84,16 @@ Recommends:     %{name}-doc
 Recommends:     gaupol
 Recommends:     iso-codes
 Recommends:     python-Levenshtein >= 0.12
-Recommends:     python-aeidon >= 1.10.1
+Recommends:     python-aeidon >= 1.11
 Recommends:     python-beautifulsoup4 >= 4.3
-Recommends:     python-charset-normalizer
-Recommends:     python-cheroot >= 8.3.0
+Recommends:     python-charset-normalizer >= 3.0.1
+Recommends:     python-cheroot >= 9
 Recommends:     python-iniparse >= 0.5
 Recommends:     python-phply >= 1.2.5
-Recommends:     python-pycountry >= 20.7.3
+Recommends:     python-pycountry >= 22.3.5
 Recommends:     python-pyenchant >= 3.2.2
-Recommends:     python-pyparsing >= 3.0.5
-Recommends:     python-ruamel.yaml >= 0.17.17
+Recommends:     python-pyparsing >= 3.0.9
+Recommends:     python-ruamel.yaml >= 0.17.21
 Recommends:     python-vobject >= 0.9.6.1
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       translate-toolkit = %{version}-%{release}
@@ -96,13 +101,13 @@ Obsoletes:      translate-toolkit < %{version}-%{release}
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module aeidon >= 1.10.1}
+BuildRequires:  %{python_module aeidon >= 1.11}
 BuildRequires:  %{python_module chardet >= 3.0.4}
-BuildRequires:  %{python_module pycountry >= 19.8.18}
+BuildRequires:  %{python_module pycountry >= 22.3.5}
 BuildRequires:  %{python_module pyenchant >= 3.2.2}
-BuildRequires:  %{python_module pyparsing >= 3.0.5}
+BuildRequires:  %{python_module pyparsing >= 3.0.9}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module translate-toolkit >= %{version}}
+BuildRequires:  %{python_module translate-toolkit = %{version}}
 BuildRequires:  %{python_module xml}
 BuildRequires:  gaupol
 %endif
@@ -162,7 +167,7 @@ find . -name jquery.js -exec dos2unix '{}' \;
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 
 pushd docs
 # Can't use parallel build here!
@@ -174,7 +179,7 @@ popd
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 
 # create manpages
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -216,7 +221,7 @@ rm -v translate/storage/test_fluent.py
 %python_install_alternative %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(m .. ".1 ") end} %binaries
 
 %postun
-%python_uninstall_alternative translatetoolkit
+%python_uninstall_alternative translatetoolkit.1%{?ext_man}
 
 %if !%{with test}
 %files %{python_files}
@@ -225,7 +230,7 @@ rm -v translate/storage/test_fluent.py
 %{lua: for b in string.gmatch(rpm.expand("%binaries"),"%S+") do print(rpm.expand("%python_alternative %{_bindir}/" .. b) .. "\n") end}
 %{lua: for m in string.gmatch(rpm.expand("%manpages"),"%S+") do print(rpm.expand("%python_alternative %{_mandir}/man1/" .. m .. ".1") .. "\n") end}
 %{python_sitelib}/translate
-%{python_sitelib}/translate_toolkit-%{version}-*.egg-info
+%{python_sitelib}/translate_toolkit-%{version}.dist-info
 
 %files -n %{name}-doc
 %dir %{_defaultdocdir}/%{modname}
