@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_currency
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           trytond_currency
-Version:        %{majorver}.3
+Version:        %{majorver}.4
 Release:        0
 Summary:        The "currency" module for the Tryton ERP system
 License:        GPL-3.0-only
