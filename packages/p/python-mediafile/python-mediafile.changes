@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 15:27:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * List-valued properties now return None instead of an empty list when the
+    underlying tags are missing altogether.
+  * Fix a test failure that arose with Mutagen 1.46.
+  * Require Python 3.7 or later.
+
+-------------------------------------------------------------------
 Fri Oct 28 18:25:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.10.0 

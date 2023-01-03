@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1032502</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ab747c71fa016650cb6df432747779d</srcmd5>
+    <version>0.11.0</version>
+    <time>1672754698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * List-valued properties now return None instead of an empty list when the
+    underlying tags are missing altogether.
+  * Fix a test failure that arose with Mutagen 1.46.
+  * Require Python 3.7 or later.</comment>
+    <requestid>1046221</requestid>
+  </revision>
 </revisionlist>

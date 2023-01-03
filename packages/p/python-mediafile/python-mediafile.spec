@@ -1,7 +1,7 @@
 #
 # spec file for package python-mediafile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mediafile
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Handles low-level interfacing for files' tags Wraps Mutagen to
 License:        MIT
 URL:            https://github.com/beetbox/mediafile
 Source:         https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit >= 2}
 BuildRequires:  %{python_module mutagen >= 1.45}
 BuildRequires:  %{python_module pip}
