@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:20:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * fix homepage url
+  * Parameter for SPI_IOC_WR_LSB_FIRST ioctl is {0, 1}.
+  * Documentation fixes
+
+-------------------------------------------------------------------
 Fri Dec 10 14:38:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 1.0.1:
