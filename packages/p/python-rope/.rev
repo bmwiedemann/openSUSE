@@ -341,4 +341,12 @@
   * #270, #432 Fix rename import statement with dots and as keyword</comment>
     <requestid>956183</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4e1e2d17e547f87718c2bc10c489af9e</srcmd5>
+    <version>1.6.0</version>
+    <time>1672765231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045852</requestid>
+  </revision>
 </revisionlist>
