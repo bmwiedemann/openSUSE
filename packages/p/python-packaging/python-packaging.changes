@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Dec 30 10:16:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v22.0
+  * Fix compatible version specifier incorrectly strip trailing '0'
+    by @kasium in #493
+  * Remove support for Python 3.6 by @abravalheri in #500
+  * Use concurrency limit in ci by @blink1073 in #510
+  * Fix issue link in changelog. by @bdice in #509
+  * chore: test with PyPy 3.8 & 3.9 by @mayeut in #512
+  * Accept locally installed prereleases by @q0w in #515
+  * Always run GHA workflows when they change by @mayeut in #516
+  * Add __hash__/__eq__ to requirements by @abravalheri in #499
+  * Upgrade to setup-python v3 and use caching for GHA by
+    @brettcannon in #521
+  * allow pre-release versions in marker evaluation by @graingert
+    in #523
+  * Error out from workflow on missing interpreter by @mayeut in
+    #525
+  * chore: update pre-commit config to the latest repos' versions
+    by @mayeut in #534
+  * chore: remove Windows PyPy 3.9 workaround on GHA by @mayeut in
+    #533
+  * Use pipx to run nox / build in GHA workflows by @mayeut in #517
+  * Run tests with all PyPy versions locally by @mayeut in #535
+  * Adhere to PEP 685 when evaluating markers with extras by
+    @hroncok in #545
+  * chore: update mypy and move to toml by @henryiii in #547
+  * Normalize extra comparison in markers for output by
+    @brettcannon in #549
+  * Evaluate markers under environment with empty "extra" by
+    @MrMino in #550
+  * Do not set extra in default_environment() by @sbidoul in #554
+  * Update extlinks strings to use a format string by @mayeut in
+    #555
+  * Update CI test workflow to use setup-python@v4 by @mayeut in
+    #556
+  * CI: Update actions/* to their latest major versions by @mayeut
+    in #557
+  * Fix a spelling mistake by @venthur in #558
+  * fix: macOS platform tags with old macOS SDK by @mayeut in #513
+  * Correctly parse ELF for musllinux on Big Endian by @uranusjr in
+    #538
+  * A metadata module with a data class for core metadata by
+    @brettcannon in #518
+  * Document utils.NormalizedName by @brettcannon in #565
+  * Drop LegacySpecifier and LegacyVersion by @pradyunsg in #407
+  * Move metadata, versions and specifiers API documentation to
+    sphinx.ext.autodoc by @pradyunsg in #572
+  * Demonstrate behaviour of SpecifierSet.__iter__ by @hauntsaninja
+    in #575
+  * Handwritten parser for parsing requirements by @hrnciar in #484
+  * Add changelog entry for removal of pyparsing dependency by
+    @hroncok in #581
+  * Use Iterator instead of Iterable for specifier filter methods
+    by @ichard26 in #584
+  * Better output on linter failure by @henryiii in #478
+  * Add a "cpNNN-none-any" tag by @joonis in #541
+  * Document exceptions raised by functions in utils by @MrMino in
+    #544
+  * Refactor ELF parsing logic to standlone class by @uranusjr in
+    #553
+  * Forbid prefix version matching on pre-release/post-release
+    segments by @mayeut in #563
+  * Update coverage to >=5.0.0 by @mayeut in #586
+  * Normalize specifier version for prefix matching by @mayeut in
+    #561
+  * Add python 3.11 by @mayeut in #587
+  * Fix prefix version matching by @mayeut in #564
+  * Remove duplicate namedtuple by @layday in #589
+  * Update changelog by @pradyunsg in #595
+  * Change email-related fields in Metadata to str by @brettcannon
+    in #596
+  * Add versionchanged for 21.3 by @brettcannon in #599
+  * refactor: use flit as a backend by @henryiii in #546
+  * Remove packaging.metadata by @pradyunsg in #603
+  * Refactor nox requirements to use requirements files (#601) by
+    @strokirk in #609
+  * Improve Requirement/Marker parser with context-sensitive
+    tokenisation by @pradyunsg in #624
+- The new usage of the flit-core backend simplifies the bootstrap
+- Remove old-distro shims: This one requires Python 3.7+, thus
+  all non-Tumbleweed backports or future distros must provide the
+  primary_python macro and similar themselves.
+- Drop fix-big-endian-build.patch upstreamed gh#pypa/packaging#538
+
+-------------------------------------------------------------------
 Mon Aug  1 07:44:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - BuildIgnore python3-packaging for primary bootstrap.
