@@ -9,4 +9,16 @@
 Please, put in  openSUSE:Factory:Staging:adi:18 </comment>
     <requestid>989102</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f63788bff173ff4ece2de518b108504a</srcmd5>
+    <version>2.2.2</version>
+    <time>1672754665</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.2:
+  * fix reference to old readme
+  * switch to https in LICENSE
+  * fix out of date patterns in autocommand 
+- drop autocommand-fixtests.patch (upstream)</comment>
+    <requestid>1046265</requestid>
+  </revision>
 </revisionlist>

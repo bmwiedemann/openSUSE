@@ -1,7 +1,7 @@
 #
 # spec file for package python-autocommand
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-autocommand
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        A library to create a command-line program from a function
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 URL:            https://github.com/Lucretiel/autocommand
 Source:         https://files.pythonhosted.org/packages/source/a/autocommand/autocommand-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM autocommand-fixtests.patch gh#Lucretiel/autocommand#20
-Patch1:         https://github.com/Lucretiel/autocommand/commit/031c9750c74e3313b954b09e3027aaa6595649bb.patch#/autocommand-fixtests.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,8 +51,8 @@ called as __main__. In effect, it lets your create a smart main function.
 %pytest
 
 %files %{python_files}
-%doc README.rst
 %license LICENSE
+%doc README.md
 %{python_sitelib}/autocommand
 %{python_sitelib}/autocommand-%{version}*-info
 

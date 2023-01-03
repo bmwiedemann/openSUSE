@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 18:37:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * fix reference to old readme
+  * switch to https in LICENSE
+  * fix out of date patterns in autocommand 
+- drop autocommand-fixtests.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jul 13 14:36:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for v2.2.1
