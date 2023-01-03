@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -839,11 +839,11 @@ egl_platforms=x11,wayland
   %else
   %ifarch %{arm} aarch64
             -Ddri-drivers= \
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,kmsro,v3d \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra \
   %else
   %ifarch ppc64 ppc64le riscv64
             -Ddri-drivers= \
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl \
   %else
             -Ddri-drivers= \
             -Dgallium-drivers=swrast \
@@ -1077,14 +1077,11 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if %{vdpau_virtio_gpu}
-# for some reason driver doesn't get built on ppc64le
-%ifnarch ppc64le
 %files -n libvdpau_virtio_gpu
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1.0.0
-%endif
 %endif
 
 %if "%{flavor}" != "drivers"

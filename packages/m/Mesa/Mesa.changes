@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:37:20 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update list of gallium-drivers to match default list
+
+-------------------------------------------------------------------
 Sat Dec 31 10:31:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - don't try to generate libvdpau_virtio_gpu package on ppc64le; for
