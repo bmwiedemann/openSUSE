@@ -18,7 +18,7 @@
 
 %define cpan_name Search-Elasticsearch
 Name:           perl-Search-Elasticsearch
-Version:        7.717
+Version:        8.00
 Release:        0
 #Upstream:  This is free software, licensed under: The Apache License, Version 2.0, January 2004
 License:        Apache-2.0
