@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 15:45:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.13:
+  * Drop Python 3.6 support
+- includes changes from 1.12.2:
+  * honor ssl_cert_reqs strategy via --verify-ssl or a rediss://
+    URL parameter ssl_cert_reqs 
+
+-------------------------------------------------------------------
 Wed Aug 31 19:09:37 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.12.1:
