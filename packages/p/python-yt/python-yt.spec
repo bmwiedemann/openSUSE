@@ -1,7 +1,7 @@
 #
 # spec file for package python-yt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-yt
-Version:        3.6.1
+Version:        4.1.3
 Release:        0
 Summary:        An analysis and visualization toolkit for volumetric data
 License:        BSD-3-Clause
@@ -30,8 +29,10 @@ Source0:        https://files.pythonhosted.org/packages/source/y/yt/yt-%{version
 Source100:      python-yt-rpmlintrc
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module numpy-devel >= 1.10.4}
-BuildRequires:  %{python_module setuptools >= 19.6}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-ipython >= 1.0
 Requires:       python-matplotlib >= 2.0.2
@@ -65,11 +66,11 @@ unstructured meshes, and discrete or sampled data such as particles.
 sed -i -e '/^#!\//, 1d' yt/utilities/lodgeit.py
 
 %build
-export CFLAGS="%{optflags}"
-%python_build
+export CFLAGS="%{optflags} -freport-bug"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/yt
 %python_clone -a %{buildroot}%{_bindir}/iyt
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -87,6 +88,7 @@ export CFLAGS="%{optflags}"
 %license COPYING.txt
 %python_alternative %{_bindir}/iyt
 %python_alternative %{_bindir}/yt
-%{python_sitearch}/*
+%{python_sitearch}/yt-%{version}*-info
+%{python_sitearch}/yt
 
 %changelog

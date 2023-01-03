@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:12:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 4.1.3:
+  This is the third bugfix release in the yt 4.1.x series. It
+  contains fixes to bugs discovered since the 4.1.2 release. Most
+  importantly, it reverts a unstable patch that was accidentally
+  included in yt 4.1.2 (#4198). EWAH files should now behave as
+  in yt 4.1.1, and we're aiming at re-releasing the new behaviour
+  (with fixes) in yt 4.2.0
+  - Bug fixes
+    - #4231 Fix pixel size calculation for density option in
+      particle projection plots and FITS images, by @jzuhone
+    - #4239 Fix a broken docs example, by @neutrinoceros
+  - Build and testing
+    - #4247 ignore a deprecation warning triggered from cartopy,
+      by @neutrinoceros
+    - #4250 Revert "Backport PR #4198 on branch yt-4.1.x
+      (Automatically find EWAH files with increased
+      index_order2)", by @neutrinoceros
+    - #4258 on branch yt-4.1.x, by @neutrinoceros
+  - There are no new features or deprecations in this version,
+    all users are encouraged to upgrade.
+
+-------------------------------------------------------------------
+Sat Dec  3 09:21:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+DO NOT SUBMIT TO FACTORY, CFLAGS includes "-freport-bug"
+
+- Upgrade to 4.1.2:
+  It contains fixes to bugs discovered since the 4.1.1
+  release. There are no new features or deprecations in this
+  version, all users are encouraged to upgrade.
+- Upgrade to 4.1.1:
+  It contains a couple of critical fixes to bugs discovered since
+  the 4.1.0 release. Most importantly, it resolves a memory leak
+  that was affecting octree-based frontends (RAMSES and ART).
+  There are no new features or deprecations in this version, all
+  users are encouraged to upgrade.
+- Upgrade to 4.1.0:
+  It contains about a year of work by many contributors, with
+  many new features and improvements to the code base. It is also
+  the first release to officially supported Python 3.11.
+  Some deprecations from yt < 4 are now expired, some minor
+  backwards incompatibilities are expected. Anything broken on
+  purpose in this version should correspond to a warning in yt
+  4.0.x, anything beyond that should be considered a regression;
+  please report any unexpected breaking change.
+
+Complete releases changelog is available at
+https://github.com/yt-project/yt/releases.
+
+-------------------------------------------------------------------
 Fri Jul 17 12:57:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 3.6.1
