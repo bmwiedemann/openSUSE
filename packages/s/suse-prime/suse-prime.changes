@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  3 14:21:24 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.13
+  * add "AutoAddGPU" "false" for intel and offload mode (github issue#90)
+    Apparently on some systems this is needed to prevent Nvidia card from
+    being initialized during Xserver startup and crashing with a pixmap
+    failure. 
+
+-------------------------------------------------------------------
 Wed Dec  7 22:20:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.12

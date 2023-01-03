@@ -666,4 +666,16 @@ Latest changes:
     autologin (issue#92)</comment>
     <requestid>1041276</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>007f1e4d17bc41d027c68c46a7c85580</srcmd5>
+    <version>0.8.13</version>
+    <time>1672759617</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.13
+  * add &quot;AutoAddGPU&quot; &quot;false&quot; for intel and offload mode (github issue#90)
+    Apparently on some systems this is needed to prevent Nvidia card from
+    being initialized during Xserver startup and crashing with a pixmap
+    failure.</comment>
+    <requestid>1046542</requestid>
+  </revision>
 </revisionlist>
