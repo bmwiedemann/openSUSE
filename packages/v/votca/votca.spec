@@ -44,7 +44,11 @@ BuildRequires:  gnuplot
 # gromacs is not available on 32-bit arm
 %ifnarch %{arm}
 BuildRequires:  gromacs-devel
+# mpi gromacs is not available on 32-bit intel
+# used for testing only
+%ifnarch %ix86
 BuildRequires:  gromacs-openmpi
+%endif
 %endif
 BuildRequires:  hdf5-devel
 BuildRequires:  lammps

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  2 15:23:48 UTC 2023 - Christoph Junghans <junghans@votca.org>
+
+- don't use mpi gromacs on ix86
+
+-------------------------------------------------------------------
 Wed Dec 21 22:25:15 UTC 2022 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2022.1
