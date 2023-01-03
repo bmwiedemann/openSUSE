@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 %define services drbd.service drbd-lvchange@.service drbd-promote@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
-%if !0%{?usrmerged}
-%define sbindir /sbin
-# see bsc#1203220 & usrmerge_move_lib_to_prefix_lib.patch for %{libdir}
-%define libdir  /usr/lib
+%if 0%{?suse_version} < 1550
+  # for SLEs
+  %define sbindir /sbin
+  # see bsc#1203220 & usrmerge_move_lib_to_prefix_lib.patch for %{libdir}
+  %define libdir  /usr/lib
 %else
-%define sbindir %{_sbindir}
-%define libdir  %{_prefix}/lib
+  # for opensuse
+  %define sbindir %{_sbindir}
+  %define libdir  %{_prefix}/lib
 %endif
 %bcond_without drbdmon
 # Man pages are included in the released tarball.
@@ -111,7 +113,7 @@ PATH=/sbin:$PATH ./configure \
     --with-bashcompletion \
     --with-initscripttype=systemd \
     --with-systemdunitdir=%{_prefix}/lib/systemd/system \
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     --sbindir=/sbin \
 %else
     --sbindir=%{_sbindir} \
@@ -154,8 +156,12 @@ done
 ln -sf drbd.conf-9.0.5.gz %{_mandir}/man5/drbd.conf.5.gz
 ln -sf drbd.conf-9.0.5.gz %{_mandir}/ja/man5/drbd.conf.5.gz
 %if %{with drbdmon}
-ln -sf drbdmon-9.0.8.gz %{_mandir}/man8/drbdmon.8.gz
-ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
+  ln -sf drbdmon-9.0.8.gz %{_mandir}/man8/drbdmon.8.gz
+  ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
+%endif
+%if 0%{?suse_version} < 1550
+  # create symbolic folder for bsc#1206364
+  ln -s /usr/lib/drbd /lib/drbd 
 %endif
 
 %preun
