@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  2 18:19:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 9.0.0
+  * #252 via #339 and #510: Cheroot now requires Python 3.6 or
+    later. Python 3.5 and Python 2.7 are still supported by the
+    maint/8.x branch and stabilizing bugfixes will be accepted to
+    that branch -- by @jaraco
+  * Set worker thread names as str by @jarus in #503
+  * Added types for _compat.py by @kasium in #491
+  * Configured stubtest hook for stub testing by @kasium in #415
+  * Started running Python commands in tox in isolated and strict
+    mode by @webknjaz in #562
+
+-------------------------------------------------------------------
 Wed Nov 16 08:58:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

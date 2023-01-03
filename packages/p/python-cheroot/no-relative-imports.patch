@@ -5,33 +5,39 @@
  cheroot/test/test_ssl.py    |   12 ++++++------
  4 files changed, 18 insertions(+), 18 deletions(-)
 
---- a/cheroot/ssl/builtin.py
-+++ b/cheroot/ssl/builtin.py
-@@ -29,11 +29,11 @@ except ImportError:
- 
- import six
+Index: cheroot-9.0.0/cheroot/ssl/builtin.py
+===================================================================
+--- cheroot-9.0.0.orig/cheroot/ssl/builtin.py
++++ cheroot-9.0.0/cheroot/ssl/builtin.py
+@@ -25,11 +25,11 @@ except ImportError:
+     except ImportError:
+         DEFAULT_BUFFER_SIZE = -1
  
 -from . import Adapter
 -from .. import errors
--from .._compat import IS_ABOVE_OPENSSL10, suppress
+-from .._compat import IS_ABOVE_OPENSSL10
 -from ..makefile import StreamReader, StreamWriter
 -from ..server import HTTPServer
 +from cheroot.ssl import Adapter
 +from cheroot import errors
-+from cheroot._compat import IS_ABOVE_OPENSSL10, suppress
++from cheroot._compat import IS_ABOVE_OPENSSL10
 +from cheroot.makefile import StreamReader, StreamWriter
 +from cheroot.server import HTTPServer
  
- if six.PY2:
-     generic_socket_error = socket.error
---- a/cheroot/test/conftest.py
-+++ b/cheroot/test/conftest.py
-@@ -12,11 +12,11 @@ import time
+ generic_socket_error = OSError
+ 
+Index: cheroot-9.0.0/cheroot/test/conftest.py
+===================================================================
+--- cheroot-9.0.0.orig/cheroot/test/conftest.py
++++ cheroot-9.0.0/cheroot/test/conftest.py
+@@ -9,12 +9,12 @@ import time
  
  import pytest
  
+-from .._compat import IS_MACOS, IS_WINDOWS  # noqa: WPS436
 -from ..server import Gateway, HTTPServer
 -from ..testing import (  # noqa: F401  # pylint: disable=unused-import
++from cheroot._compat import IS_MACOS, IS_WINDOWS  # noqa: WPS436
 +from cheroot.server import Gateway, HTTPServer
 +from cheroot.testing import (  # noqa: F401  # pylint: disable=unused-import
      native_server, wsgi_server,
@@ -41,11 +47,13 @@
  
  
  @pytest.fixture
---- a/cheroot/test/test_server.py
-+++ b/cheroot/test/test_server.py
-@@ -18,10 +18,10 @@ import six
- 
- from six.moves import queue, urllib
+Index: cheroot-9.0.0/cheroot/test/test_server.py
+===================================================================
+--- cheroot-9.0.0.orig/cheroot/test/test_server.py
++++ cheroot-9.0.0/cheroot/test/test_server.py
+@@ -12,10 +12,10 @@ import pytest
+ import requests
+ import requests_unixsocket
  
 -from .._compat import bton, ntob
 -from .._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
@@ -58,10 +66,12 @@
      ANY_INTERFACE_IPV4,
      ANY_INTERFACE_IPV6,
      EPHEMERAL_PORT,
---- a/cheroot/test/test_ssl.py
-+++ b/cheroot/test/test_ssl.py
-@@ -21,11 +21,11 @@ import requests
- import six
+Index: cheroot-9.0.0/cheroot/test/test_ssl.py
+===================================================================
+--- cheroot-9.0.0.orig/cheroot/test/test_ssl.py
++++ cheroot-9.0.0/cheroot/test/test_ssl.py
+@@ -16,11 +16,11 @@ import pytest
+ import requests
  import trustme
  
 -from .._compat import bton, ntob, ntou
@@ -77,7 +87,7 @@
      ANY_INTERFACE_IPV4,
      ANY_INTERFACE_IPV6,
      EPHEMERAL_PORT,
-@@ -33,7 +33,7 @@ from ..testing import (
+@@ -28,7 +28,7 @@ from ..testing import (
      _get_conn_data,
      _probe_ipv6_sock,
  )

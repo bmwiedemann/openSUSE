@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,32 +23,33 @@
 %endif
 
 %define pypi_name cheroot
-%bcond_without python2
+%define skip_python2 1
 %bcond_with ringdisabled
 Name:           python-%{pypi_name}
-Version:        8.6.0
+Version:        9.0.0
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
 URL:            https://github.com/cherrypy/cheroot
 Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source99:       cheroot.rpmlintrc
 # PATCH-FIX-OPENSUSE no-pypytools.patch mcepl@suse.com
 # We don't have PyPy at all, so no need support for it
 Patch0:         no-pypytools.patch
 # PATCH-FIX-UPSTREAM no-relative-imports.patch bsc#[0-9]+ mcepl@suse.com
 Patch1:         no-relative-imports.patch
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module more-itertools >= 2.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 34.4}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools_scm_git_archive >= 1.0}
 BuildRequires:  %{python_module six >= 1.11.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-%if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache
-BuildRequires:  python-selectors2
-%endif
 # SECTION test requirements
 %if ! %{with ringdisabled}
 # This is not in Ring1 for Staging. See check section
@@ -60,6 +61,7 @@ BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-mock >= 1.11.0}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests-unixsocket}
@@ -70,6 +72,9 @@ BuildRequires:  %{python_module urllib3 >= 1.25}
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
 Requires:       python-six >= 1.11.0
+%if 0%{python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -79,13 +84,8 @@ Requires(postun):update-alternatives
 %endif
 # the package and distribution name is lowercase-cheroot,
 # but PyPI claims the name is capital-Cheroot
-# *smacks head against desk*
 Provides:       python-Cheroot = %{version}
 BuildArch:      noarch
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-Requires:       python-selectors2
-%endif
 %python_subpackages
 
 %description
@@ -97,10 +97,10 @@ Cheroot is the pure-Python HTTP server used by CherryPy.
 sed -i -e '/--cov/ d' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cheroot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
