@@ -65,7 +65,7 @@ Requires:       zypper
 Provides:       febootstrap
 %{?ocaml_preserve_bytecode}
 # this must follow libguestfs, which is the only consumer of this pkg
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
 
 %description
 supermin is a tool for building supermin appliances. These are tiny

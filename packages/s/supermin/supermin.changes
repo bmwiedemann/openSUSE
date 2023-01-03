@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 15:59:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Fri Dec  9 09:22:50 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Include sysconfig-netconfig only until SLE15, newer versions
