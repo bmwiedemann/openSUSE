@@ -263,4 +263,13 @@
     <comment></comment>
     <requestid>1007225</requestid>
   </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>44c95967fc37401a55bba7611243d332</srcmd5>
+    <version>1.0.2u</version>
+    <time>1672754663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update further expiring certificates that affect tests [bsc#1201627]
+  * Add openssl-Update-further-expiring-certificates.patch</comment>
+    <requestid>1046230</requestid>
+  </revision>
 </revisionlist>

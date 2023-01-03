@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-1_0_0
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,6 +105,8 @@ Patch86:        CVE-2021-3712-ASN1_STRING-issues.patch
 Patch87:        openssl-CVE-2022-1292.patch
 Patch88:        openssl-1_0_0-Fix-file-operations-in-c_rehash.patch
 Patch89:        openssl-1_0_0-paramgen-default_to_rfc7919.patch
+# PATCH-FIX-UPSTREAM bsc#1201627 Update further expiring certificates that affect tests
+Patch90:        openssl-Update-further-expiring-certificates.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -272,6 +274,7 @@ testing framework and utilities.
 %patch87 -p1
 %patch88 -p1
 %patch89 -p1
+%patch90 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete

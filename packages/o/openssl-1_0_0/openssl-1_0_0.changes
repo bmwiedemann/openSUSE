@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  2 10:43:17 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update further expiring certificates that affect tests [bsc#1201627]
+  * Add openssl-Update-further-expiring-certificates.patch
+
+-------------------------------------------------------------------
 Sat Sep 24 02:40:39 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Added openssl-1_0_0-paramgen-default_to_rfc7919.patch
