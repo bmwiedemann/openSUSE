@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-metadata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,9 @@ file (e.g. `PKG-INFO`).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/FFY00/python-pyproject-metadata/issues/41
+donttest="(test_load and PEP and 508 and definitely)"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

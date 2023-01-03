@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  2 10:18:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip a test failing due to new error strings in packaging 22
+  gh#FFY00/python-pyproject-metadata#41
+
+-------------------------------------------------------------------
 Sat Sep 10 21:25:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v 0.6.1
