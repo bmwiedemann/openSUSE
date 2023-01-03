@@ -142,4 +142,17 @@
     <comment></comment>
     <requestid>1005519</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>af780d3899848bbc8e17acfc0cb1c6a4</srcmd5>
+    <version>2.6.2</version>
+    <time>1672754719</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.2:
+  * optimize `richcompare()` for opposite endianness
+  * improve some docstrings add tests
+  * add documentation on shift operators, #181
+  * fix typo in iterable initializer description, #179
+  * optimize `richcompare()`</comment>
+    <requestid>1046261</requestid>
+  </revision>
 </revisionlist>
