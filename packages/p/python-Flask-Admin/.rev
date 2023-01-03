@@ -105,4 +105,15 @@
 - Add PyYAML and requre to BuildRequires.</comment>
     <requestid>984782</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5d4ebd56ae969b4e05f33606b4194ae9</srcmd5>
+    <version>1.6.0</version>
+    <time>1672754780</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests.patch to make tests compatible with latest Flask release
+ * gh#flask-admin/flask-admin#2309
+ * gh#flask-admin/flask-admin#2316
+</comment>
+    <requestid>1046499</requestid>
+  </revision>
 </revisionlist>

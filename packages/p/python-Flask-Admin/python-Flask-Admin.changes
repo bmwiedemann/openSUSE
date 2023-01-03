@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  3 12:02:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests.patch to make tests compatible with latest Flask release
+ * gh#flask-admin/flask-admin#2309
+ * gh#flask-admin/flask-admin#2316
+
+-------------------------------------------------------------------
 Fri Jun 24 04:28:31 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch redirect-location-assertions.patch:

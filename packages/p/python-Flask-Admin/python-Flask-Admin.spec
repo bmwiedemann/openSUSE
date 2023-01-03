@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Admin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-Flask-Admin
 Version:        1.6.0
@@ -26,6 +25,10 @@ License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
 Patch0:         redirect-location-assertions.patch
+# PATCH-FIX-UPSTREAM fix-tests.patch
+# gh#flask-admin/flask-admin#2309
+# gh#flask-admin/flask-admin#2316
+Patch1:         fix-tests.patch
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
