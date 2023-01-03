@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec 29 03:07:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.24
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.24: Wed 28 Dec 13:06:23 CET 2022
+  	Fixes:
+  	- vnd.gentoo officially took 'tar' and 'tbz2', but 'application/
+  	  x-tar' resp 'x-gtar' prevails.  [Andreas Koenig]
+  version 2.23: Thu 22 Dec 17:20:33 CET 2022
+  	Changes:
+  	- iana updates
+
+-------------------------------------------------------------------
 Thu Oct 28 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.22
