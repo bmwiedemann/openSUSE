@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:00:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+  * Use history font for RPN stack list (GTK, Qt)
+  * Use log() instead of log2() as alternative action on "ln" keypad button (Qt)
+  * Fix completion (including segfaults) and expression tooltip on Wayland (Qt)
+  * Fix RPN mode deactivated after application loses focus (Qt)
+
+-------------------------------------------------------------------
 Fri Nov 11 09:06:56 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix spec file, update QT min version.

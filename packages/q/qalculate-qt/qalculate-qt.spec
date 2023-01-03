@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-qt
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -32,12 +32,12 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 # compilation fails on 5.12.x
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig(libqalculate) >= 4.4.0
+BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libqalculate) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
