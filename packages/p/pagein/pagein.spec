@@ -1,7 +1,7 @@
 #
 # spec file for package pagein
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pagein
-Version:        0.01.08
+Version:        0.01.09
 Release:        0
 Summary:        A tool to force swapped out pages back into memory
 License:        GPL-2.0-only
