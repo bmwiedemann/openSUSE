@@ -1,7 +1,7 @@
 #
 # spec file for package python-Beaker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,9 +32,9 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pylibmc}
+BuildRequires:  %{python_module pymemcache}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

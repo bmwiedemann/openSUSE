@@ -291,4 +291,12 @@
 - Fiddle BuildRequires as appropiate.</comment>
     <requestid>1043858</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>96fd1a0c5107765e64068c0d7c782ce1</srcmd5>
+    <version>1.12.0</version>
+    <time>1672754746</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually correct BuildRequires.</comment>
+    <requestid>1046427</requestid>
+  </revision>
 </revisionlist>
