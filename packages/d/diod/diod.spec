@@ -1,7 +1,7 @@
 #
 # spec file for package diod
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/chaos/diod
 Source0:        %{name}-%{version}.tar.xz
-Patch0:	harden_diod.service.patch
+Patch0:         harden_diod.service.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  c_compiler
@@ -58,7 +58,7 @@ make %{?_smp_mflags}
 mv %{buildroot}%{_sbindir}/diodmount %{buildroot}%{_sbindir}/mount.diod
 mv %{buildroot}%{_mandir}/man8/diodmount.8 %{buildroot}%{_mandir}/man8/mount.diod.8
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdiod
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -s %{_sbindir}/mount.diod %{buildroot}/sbin/mount.diod
 %endif
@@ -79,7 +79,7 @@ ln -s %{_sbindir}/mount.diod %{buildroot}/sbin/mount.diod
 %license COPYING
 %doc README.md AUTHORS NEWS
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %{_sbindir}/*
