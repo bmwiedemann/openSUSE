@@ -7,4 +7,12 @@
     <comment>yuzu is swich emulator</comment>
     <requestid>1043890</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdadd3853ebda03980a535eecd21675b</srcmd5>
+    <version>01290</version>
+    <time>1672851215</time>
+    <user>dimstar_suse</user>
+    <comment>update package</comment>
+    <requestid>1055855</requestid>
+  </revision>
 </revisionlist>

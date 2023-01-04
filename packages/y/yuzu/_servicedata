@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/yuzu-emu/yuzu-mainline.git</param>
-    <param name="changesrevision">4249e238a78ef6771cad5eab7901a03cc8135ee4</param>
+    <param name="changesrevision">7152df12ae3f7678110a16f7cbb9bc91da655012</param>
   </service>
 </servicedata>

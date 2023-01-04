@@ -2,16 +2,16 @@
   <service name="tar_scm" mode="localonly">
     <param name="url">https://github.com/yuzu-emu/yuzu-mainline.git</param>
     <param name="scm">git</param>
-    <param name="version">01273</param>
+    <param name="version">01290</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">yuzu</param>
-    <param name="revision">mainline-0-1273</param>
+    <param name="revision">mainline-0-1290</param>
   </service>
   <service name="recompress" mode="localonly">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="localonly">
-    <param name="version">01273</param>
+    <param name="version">01290</param>
   </service>
 </services>

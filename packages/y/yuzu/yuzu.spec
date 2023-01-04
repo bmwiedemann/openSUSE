@@ -25,13 +25,17 @@
     DESTDIR=%{buildroot} %__builder install/strip -C %__builddir
 
 Name:               yuzu
-Version:            01273
+Version:            01290
 Release:            0
 Summary:            Nintendo Switch emulator/debugger
 License:            GPL-3.0-or-later
 Group:              System/Emulators/Other
 Url:                https://yuzu-emu.org/
 Source0:            %{name}-%{version}.tar.xz
+# wget https://api.yuzu-emu.org/gamedb/ -O compatibility_list.json
+# It is dynamically changed so we should not use source URL in spec,
+# otherwise it will fail source check when submitted to Factory...
+Source1:            compatibility_list.json
 ExclusiveArch:      x86_64
 BuildRequires:      cmake >= 3.15
 BuildRequires:      binutils binutils-gold
@@ -74,6 +78,8 @@ BuildRequires:      pkgconfig(liblz4) >= 1.8
 BuildRequires:      pkgconfig(libzstd) >= 1.5
 BuildRequires:      pkgconfig(libzip) libzip-tools
 
+BuildRequires:      libqt5-linguist-devel
+
 %if 0%{?fedora} || 0%{?centos_version} || 0%{?rhel_version}
 BuildRequires:      ninja-build
 %endif
@@ -93,6 +99,7 @@ yuzu is an open source Nintendo Switch emulator/debugger.
 
 %prep
 %autosetup -p1
+cp %{SOURCE1} dist/compatibility_list/
 
 # Enforce package versioning in GUI
 sed -i \
@@ -110,6 +117,7 @@ sed -i 's|check_submodules_present()||g' CMakeLists.txt
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="%{_prefix}" \
         -DYUZU_USE_QT_WEB_ENGINE=OFF \
+        -DENABLE_QT_TRANSLATION=ON \
         -DBUILD_SHARED_LIBS=OFF \
         -DYUZU_USE_EXTERNAL_SDL2=OFF \
         -DYUZU_USE_BUNDLED_SDL2=OFF \

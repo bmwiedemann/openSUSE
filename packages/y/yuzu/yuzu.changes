@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun Jan 01 00:08:41 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01290:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9518"
+  * ci: Allow setting clang-format binary
+  * core: hid: emulated_console: Avoid a crash if frontend does not configure touch_from_button_maps.
+  * config: Save multiplayer settings only globally Saved multiplayer settings like the nickname, remote address, etc. were reset everytime a game was booted up and the game-specific config files were loaded, as these values will never be set.
+  * cmake: make Vulkan-Headers external the default
+  * cmake: make cubeb and SDL2 optional
+  * cmake: make libusb optional
+  * cmake: ignore missing package finders for packages with submodule fallbacks
+  * cmake: make room server optional
+  * video_core: Implement other missing vulkan topology
+  * video_core: Implement vulkan QuadStrip topology
+  * k_page_table: remove HACK_OpenPages/ClosePages
+  * k_page_group: synchronize
+
+-------------------------------------------------------------------
+Wed Dec 28 14:26:40 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 01286:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9423"
+  * "Merge Tagged PR 9504"
+  * texture_cache: Use Common::ScratchBuffer for swizzle buffers
+  * texture_cache: Use pre-allocated buffer for texture downloads
+  * texture_cache: Use pre-allocated buffer for texture uploads
+  * yuzu: Automatically refresh device list
+
+-------------------------------------------------------------------
+Mon Dec 26 14:39:27 UTC 2022 - i@guoyunhe.me
+
+- Update to version 01284:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9423"
+  * tests: add missing header
+  * TAS: Increase accuracy of Stick inputs
+  * qt: prevent reentrant shutdown
+  * kernel: workaround static shared memory initialization
+  * time: add LockFreeAtomicType
+  * scratch_buffer: Explicitly defing resize and resize_destructive functions
+  * tests: Add ScratchBuffer tests
+  * dma_pusher: Rework command_headers usage
+  * buffer_cache: Use Common::ScratchBuffer for ImmediateBuffer usage
+  * video_core: Add usages of ScratchBuffer
+  * common: Add ScratchBuffer class
+  * common: add make_unique_for_overwrite
+
+-------------------------------------------------------------------
+Mon Dec 26 10:36:59 UTC 2022 - Yunhe Guo <i@guoyunhe.me>
+
+- Add -DENABLE_QT_TRANSLATION build option
+- Add compatibility_list.json
+
+-------------------------------------------------------------------
+Sun Dec 25 00:10:23 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 01281:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9423"
+  * "Merge Tagged PR 9487"
+  * qt: fix 'Pause' menu item (#9497)
+  * Disable automatically opening the console on windows yuzu-cmd builds (#9485)
+  * qt: fix uninitialized memory usage
+  * qt: exit properly on guest-initiated close
+  * qt: use main window as close overlay parent
+  * qt: continue event loop during game close
+  * CMakeLists: bump required Vulkan package version to 1.3.238
+  * externals: update Vulkan-Headers to v1.3.238
+  * overlay_dialog: Avoid starting the input thread if non-interactive
+  * overlay_dialog: Hide button dialog box when both buttons are hidden
+  * kernel: remove TimeManager
+  * kernel: add KHardwareTimer
+  * input_common: Cleanup project
+  * service: nfc: Silence ListDevices
+  * Use execlp instead of execl to avoid failure
+  * yuzu: Remember last selected directory
+  * bootmanager: Use proper camera size
+  * bootmanager: Encapsulate all QCamera code
+  * yuzu: fix device name setting
+  * Enable compiler optimizations and enforce x86-64-v2 on GCC/Clang (#9442)
+  * qt: use _exit instead of exit on SIGINT
+  * EmuThread: refactor
+  * qt: avoid setting WA_DontCreateNativeAncestors on all platforms
+  * input_common: Add virtual gamepad
+  * camera: Use pre-allocated vector for camera data
+  * Remove unimplemented transform feedback geometry spam, it should be implemented
+  * Signal buffer event on audio in/out system stop, and force remove all registered audio buffers
+  * qt: handle wayland-egl platform name
+  * hle_ipc: Refactor ReadBuffer to set buffer size upon initialization
+  * Vulkan: Add support for VK_EXT_depth_clip_control.
+
+-------------------------------------------------------------------
 Sun Dec 18 00:08:39 UTC 2022 - pousaduarte@gmail.com
 
 - Update to version 01273:
