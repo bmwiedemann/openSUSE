@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:44:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.23:
+  * Minor clean-up / add wheels to distro
+  * Issue #43 (0.9.21 Raises TypeError instead of DNSError when failing to parse HTTPS records)
+    Note that we just fix the exception - there still seems to be a problem with parsing HTTPS records
+  * Issue #43: HTTPS reads after RD end (thanks to @robinlandstrom for pull request)
+  * Issue #45: Dnslib fails to handle unknown RR types in NSEC RD type bitmap
+  * Bimap now supports a function to map unknown types which we use to
+    dynamically map from rtype <-> TYPExxxx for unknown record types
+  * RR zone representation updated to match RFC3597
+  * Pull Request #47: Add support for DS, SSHFP, and TLSA records (thanks to @rmbolger)
+
+-------------------------------------------------------------------
 Tue Sep 27 18:30:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 0.9.21: 

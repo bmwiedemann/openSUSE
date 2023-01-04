@@ -1,7 +1,7 @@
 #
 # spec file for package python-dnslib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dnslib
-Version:        0.9.20
+Version:        0.9.23
 Release:        0
 Summary:        Simple library to encode/decode DNS wire-format packets
 License:        BSD-2-Clause
