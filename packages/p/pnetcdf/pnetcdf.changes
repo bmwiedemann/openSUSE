@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:21:41 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.12.3:
+  For details, see
+  https://github.com/Parallel-NetCDF/PnetCDF/blob/checkpoint.1.12.3/RELEASE_NOTES
+  * New optimization
+    + Improve the performance when nonblocking requests contain
+      more than one record.
+  * Update configure options
+    + Retire configure options `--enable-netcdf4` and
+      `--enable-adios`, as there are already options
+      `--with-netcdf4` and `--with-adios`.
+  * Updated utility program
+    + Replace the definition of "difference ratio" used in utility
+      programs `cdfdiff` and `ncmpidiff`.
+    + Utility programs `cdfdiff` and `ncmpidiff` now report only
+      the first variable element that are different or fail to meet
+      the tolerances.
+    + Use the same user-provided tolerant difference and tolerant
+      difference ratio (through command-line option '-t') to check
+      all variables.
+  * Other updates:
+    + Add all PnetCDF I/O hints to the inquired MPI info object
+      returned by API `ncmpi_inq_file_info()`.
+  * Bug fixes
+    + Fix a bug in utility program `ncvalidator` for the case when
+      there is no record written, but both fixed-size and record
+      variables are defined.
+    + Fix configure bug of setting environment variable `SEQ_CC`
+      to the sequential `CC` extracted from `MPICC`.
+    + Fix a bug when C function `truncate` is not available.
+      Argument `fh` of `MPI_File_close` is a pointer.
+    + When using an MPI compiler whose Fortran feature was
+      disabled, the MPI Fortran constants and datatypes may not
+      be defined in the header file `mpi.h`.
+  * Issues with NetCDF library
+    + Test program `test/nc4/tst_rec_vars.c` fails to run when
+      using NetCDF 4.8.0 and 4.8.1.
+  * Clarifications
+    + Nonblocking APIs have yet to support subfiling feature.
+- Let build fail when tests fail
+- Update URL: https://parallel-netcdf.github.io/
+
+-------------------------------------------------------------------
 Fri Feb 26 09:24:33 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Update to version 1.12.2:
@@ -41,7 +85,6 @@ Fri Feb 26 09:24:33 UTC 2021 - Christian Goll <cgoll@suse.com>
     * Fix a bug that limits FLASH-IO to run on less than 16K MPI processes. See
       [1d84fa5](https://github.com/Parallel-NetCDF/PnetCDF/commit/1d84fa5d54ca9179da4a5b1a4ee3b92cc92287ed)
 - enable non HPC openmpi4 builds
-
 
 -------------------------------------------------------------------
 Mon Nov  9 13:21:32 UTC 2020 - Egbert Eich <eich@suse.com>

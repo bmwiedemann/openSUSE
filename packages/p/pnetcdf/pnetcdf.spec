@@ -1,7 +1,7 @@
 #
-# spec file for package %package_name
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname pnetcdf
-%define ver 1.12.2
-%define _ver 1_12_2
+%define ver 1.12.3
+%define _ver 1_12_3
 %define sonum 4
 %define libname libpnetcdf
 # no burst buffering
@@ -412,7 +412,7 @@ Release:        0
 Summary:        High-performance parallel I/O with the NetCDF scientific data format
 License:        NetCDF
 Group:          Productivity/Scientific/Other
-URL:            http://cucis.ece.northwestern.edu/projects/PnetCDF/index.html
+URL:            https://parallel-netcdf.github.io/
 Source0:        https://parallel-netcdf.github.io/Release/%{pname}-%{version}.tar.gz
 BuildRequires:  bison
 %if 0%{?build_doc}
@@ -554,8 +554,9 @@ This package contains the documentation for PnetCDF.
 %build
 %if 0%{?!build_doc:1}
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export FCFLAGS='-std=legacy %optflags'
-export FFLAGS='-std=legacy %optflags'
+export FCFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
+
 %if %{without hpc}
 source %{_bindir}/mpivars.sh
 %configure --prefix=%{_prefix} \
@@ -570,8 +571,11 @@ unset CC CXX F77 F90 FC
 #sed -ie "s@#! /bin/sh@#! /bin/sh -x@" ./configure
 %hpc_configure --with-mpi=$MPI_DIR --enable-shared \
 	       %{?with_b_buff:--enable-burst-buffering}
-%make_build FFLAGS+=-std=legacy
 %endif
+
+%make_build
+# Build tests without executing
+%make_build check TESTS=""
 
 mkdir shared
 pushd shared
@@ -658,7 +662,7 @@ source %{_bindir}/mpivars.sh
 %else
 %{hpc_setup}
 %endif
-%make_build check || exit 0
+%make_build check
 
 %post -n %{lib_name}
 /sbin/ldconfig -N %{_libdir}
@@ -669,12 +673,10 @@ source %{_bindir}/mpivars.sh
 
 %if "%{flavor}" == "openmpi1"
 %files -n %{pname}-devel-data
-%defattr(-,root,root)
 %{_rpmmacrodir}/macros.pnetcdf
 %endif
 
 %files
-%defattr(-,root,root)
 %{_bindir}%{?!with_hpc:/*}
 %{?with_hpc:%dir %hpc_datadir}
 %dir %{_mandir}
