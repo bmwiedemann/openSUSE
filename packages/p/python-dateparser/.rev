@@ -153,4 +153,26 @@
     <comment></comment>
     <requestid>1034462</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0a4b49767d89306b7172cd67463f456f</srcmd5>
+    <version>1.1.5</version>
+    <time>1672851046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.5:
+  * Parse short versions of day, month, and year
+  * Add a test for “in 1d”
+  * Update languages_info
+  * Add a workaround for zipimporter not having exec_module before Python
+    3.10
+  * Stabilize tests at midnight
+  * Add a test case for French
+  * Improved support for languages such as Slovak, Indonesian, Hindi, German
+    and Japanese
+  * Recursively create a model home
+  * Replace regex sub with simple string replace
+  * Add Python 3.10, 3.11 support
+  * Drop support for Python 3.5, 3.6 versions
+- drop incompatible-regex-pattern.patch (upstream)</comment>
+    <requestid>1046277</requestid>
+  </revision>
 </revisionlist>

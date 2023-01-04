@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  2 18:57:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.5:
+  * Parse short versions of day, month, and year
+  * Add a test for “in 1d”
+  * Update languages_info
+  * Add a workaround for zipimporter not having exec_module before Python
+    3.10
+  * Stabilize tests at midnight
+  * Add a test case for French
+  * Improved support for languages such as Slovak, Indonesian, Hindi, German
+    and Japanese
+  * Recursively create a model home
+  * Replace regex sub with simple string replace
+  * Add Python 3.10, 3.11 support
+  * Drop support for Python 3.5, 3.6 versions
+- drop incompatible-regex-pattern.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Nov  7 21:15:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.1.3 

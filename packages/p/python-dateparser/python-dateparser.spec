@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateparser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dateparser
-Version:        1.1.3
+Version:        1.1.5
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
 URL:            https://github.com/scrapinghub/dateparser
 Source:         https://files.pythonhosted.org/packages/source/d/dateparser/dateparser-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM incompatible-regex-pattern.patch gh#scrapinghub/dateparser#1052 mcepl@suse.com
-# use pattern compatible with the modern version of regex
-Patch0:         incompatible-regex-pattern.patch
 # PATCH-FIX-UPSTREAM mark-network-tests.patch gh#scrapinghub/dateparser#1059 mcepl@suse.com
 # mark test requiring network access
 Patch1:         mark-network-tests.patch
