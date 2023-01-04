@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:09:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  1.05    2022-12-31    lichtkind
+  -------
+      * = fixes
+      * + added getters for data hashes
+      * ? cleaned some sentences and comments
+      * ? synopsis cleanup
+
+-------------------------------------------------------------------
 Mon Nov  7 15:01:03 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Initial submission
