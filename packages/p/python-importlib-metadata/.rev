@@ -181,4 +181,19 @@ It does NOT conflict with python38 standard library (see upstream description)</
     #415: Instrument SimplePath with generic support.</comment>
     <requestid>1040692</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0eaf746af8db786223c9125dfe0f5c3d</srcmd5>
+    <version>6.0.0</version>
+    <time>1672851048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * #419: Declared ``Distribution`` as an abstract class, enforcing
+  definition of abstract methods in instantiated subclasses. It's no
+  longer possible to instantiate a ``Distribution`` or any subclasses
+  unless they define the abstract methods.
+  * #371: Deprecated expectation that ``PackageMetadata.__getitem__``
+  will return ``None`` for missing keys. In the future, it will raise a
+  ``KeyError``.</comment>
+    <requestid>1046282</requestid>
+  </revision>
 </revisionlist>

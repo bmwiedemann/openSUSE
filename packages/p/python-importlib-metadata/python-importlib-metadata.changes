@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:12:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * #419: Declared ``Distribution`` as an abstract class, enforcing
+  definition of abstract methods in instantiated subclasses. It's no
+  longer possible to instantiate a ``Distribution`` or any subclasses
+  unless they define the abstract methods.
+  * #371: Deprecated expectation that ``PackageMetadata.__getitem__``
+  will return ``None`` for missing keys. In the future, it will raise a
+  ``KeyError``.
+
+-------------------------------------------------------------------
 Tue Dec  6 03:43:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to versino 5.1.0 
