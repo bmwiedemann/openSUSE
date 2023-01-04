@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:13:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.103006
+   see /usr/share/doc/packages/perl-Pod-Elemental/Changes
+
+  0.103006  2022-12-31 16:28:06-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Sun Jan 26 03:09:18 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.103005
