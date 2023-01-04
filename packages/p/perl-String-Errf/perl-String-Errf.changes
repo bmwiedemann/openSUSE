@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:17:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-String-Errf/Changes
+
+  0.009     2022-12-31 16:43:32-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Wed Jul  6 08:44:43 UTC 2016 - coolo@suse.com
 
 - updated to 0.008
