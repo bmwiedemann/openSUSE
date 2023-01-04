@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 02 15:54:31 UTC 2023 - asn@cryptomilk.org
+
+- Update to version 0.6.2+0:
+  * Prepare for release
+  * Fix new clippy lints for Rust 1.66
+  * Drop BUILT_TIME_UTC
+  * Shorten progress text
+  * Bump built to 0.5.2
+  * Make git2 optional
+  * Simplify the version string
+  * Specify default threads behavior
+  * Fix the capi deps
+- Removed dependency on libgit2
+  * Added rav1e-cargo-no-git-default.patch
+
+-------------------------------------------------------------------
 Thu Dec 01 06:55:58 UTC 2022 - asn@cryptomilk.org
 
 - Update to version 0.6.1+0:

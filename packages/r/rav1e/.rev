@@ -487,4 +487,24 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>1039292</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8463a5597e5266168dbc47a7074ae7c3</srcmd5>
+    <version>0.6.2+0</version>
+    <time>1672851050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2+0:
+  * Prepare for release
+  * Fix new clippy lints for Rust 1.66
+  * Drop BUILT_TIME_UTC
+  * Shorten progress text
+  * Bump built to 0.5.2
+  * Make git2 optional
+  * Simplify the version string
+  * Specify default threads behavior
+  * Fix the capi deps
+- Removed dependency on libgit2
+  * Added rav1e-cargo-no-git-default.patch
+</comment>
+    <requestid>1046283</requestid>
+  </revision>
 </revisionlist>

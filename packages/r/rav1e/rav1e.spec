@@ -1,7 +1,7 @@
 #
 # spec file for package rav1e
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.6.1+0
+Version:        0.6.2+0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
@@ -31,12 +31,11 @@ Source2:        cargo_config
 Source98:       README.suse-maint
 Source99:       baselibs.conf
 #
+Patch0:         rav1e-cargo-no-git-default.patch
+#
 BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging
 BuildRequires:  nasm
-# FIXME: Should not be needed for releases
-# https://github.com/xiph/rav1e/issues/3072
-BuildRequires:  libgit2-devel
 
 %description
 rav1e is an AV1 video encoder.
