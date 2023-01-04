@@ -1,13 +1,14 @@
 -------------------------------------------------------------------
 Thu Dec 22 14:54:41 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.38.3 (boo#1206474):
+- Update to version 2.38.3 (boo#1206474 boo#1206750):
   + Fix runtime critical warnings from media player.
   + Fix network process crash when fetching website data on
     ephemeral session.
   + Fix the build with Ruby 3.2.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2022-42856.
+  + Security fixes: CVE-2022-42852, CVE-2022-42856, CVE-2022-42867,
+    CVE-2022-46692, CVE-2022-46698, CVE-2022-46699, CVE-2022-46700.
 - Drop b7ac5d0c.patch: fixed upstream.
 
 -------------------------------------------------------------------
@@ -50,6 +51,7 @@ Mon Oct 24 17:47:17 UTC 2022 - Michael Gorse <mgorse@suse.com>
     WebSocket in some cases.
   + Fix media player duration calculation.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2022-46691.
 
 -------------------------------------------------------------------
 Fri Sep 16 22:44:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -64,7 +66,7 @@ Fri Sep 16 22:44:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     control using MPRIS.
   + Add support for PDF documents using PDF.js.
 + Security fixes: CVE-2022-32886, CVE-2022-32888, CVE-2022-32912,
-  CVE-2022-32923.
+  CVE-2022-32923, CVE-2022-42863.
 
 -------------------------------------------------------------------
 Mon Sep  5 06:25:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

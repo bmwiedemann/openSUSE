@@ -1372,4 +1372,12 @@
     <comment>- Update to version 2.38.3 (boo#1206474) (forwarded request 1044338 from mgorse)</comment>
     <requestid>1044372</requestid>
   </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>0ea3213ccf0722590e675d4b85d29706</srcmd5>
+    <version>2.38.3</version>
+    <time>1672852223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046552</requestid>
+  </revision>
 </revisionlist>
