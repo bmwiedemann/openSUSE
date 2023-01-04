@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec 29 03:06:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.76
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.76      2022-12-28 18:30:39 -0700
+    - Fix inline_auto_include so that it gives priority to
+      the .runtime.inline_auto_include property
+
+  2.75      2022-12-21 21:03:27 -0700
+    - The Download::Negotiate plugin will no longer pick the
+      Fetch::CurlCommand plugin (unless bootstrap_ssl option is
+      chosen), because it relies on the -J option which is
+      unfortunately not reliable.  When a more reliable method
+      can be used by Fetch::CurlCommand we will likely go back
+      to preferring it (gh#384, gh#385)
+
+-------------------------------------------------------------------
 Mon Nov 28 03:06:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.74
