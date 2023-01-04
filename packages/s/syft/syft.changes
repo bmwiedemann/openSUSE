@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 04 15:47:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.64.0:
+  * fix: unicode output in cyclonedx-json format (#1420)
+  * fix: excessive go binary warnings (#1424)
+  * feat: update spdx format model to produce valid spdx json documents (#1418)
+  * clean package names in python parsers (#1417)
+  * docs: update schema name to 2.3 (#1416)
+  * feat: add h1digest when scanning go.mod (#1405)
+  * feat: Add license parsing for java (#1385)
+  * fix: cyclonedx component type for binaries (#1406)
+  * fix: openjdk detection pattern (#1415)
+  * bug: spdx checksum empty array; allow syft to generate SHA1 for spdx-tag-value documents (#1404)
+  * Add NetBSD support. (#1412)
+
+-------------------------------------------------------------------
 Fri Dec 16 12:37:58 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.63.0:
