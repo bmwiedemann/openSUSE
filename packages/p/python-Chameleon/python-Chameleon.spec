@@ -1,7 +1,7 @@
 #
 # spec file for package python-Chameleon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Chameleon
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Fast HTML/XML Template Compiler
 License:        BSD-3-Clause AND BSD-4-Clause AND Python-2.0 AND ZPL-2.1

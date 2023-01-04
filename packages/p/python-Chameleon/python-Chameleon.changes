@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 15:01:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.2:
+  * Fix handling of eager compilation with subclassing (e.g. Pyramid
+    integration).
+
+-------------------------------------------------------------------
 Tue Aug  2 11:11:29 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - version update to 3.10.1

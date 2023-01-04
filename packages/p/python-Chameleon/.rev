@@ -142,4 +142,14 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>992332</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8262182cefc8cf074b5f3ccbd6819e54</srcmd5>
+    <version>3.10.2</version>
+    <time>1672851232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.2:
+  * Fix handling of eager compilation with subclassing (e.g. Pyramid
+    integration).</comment>
+    <requestid>1055881</requestid>
+  </revision>
 </revisionlist>
