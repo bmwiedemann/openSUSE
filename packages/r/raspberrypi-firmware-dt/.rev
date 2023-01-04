@@ -387,4 +387,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment>- Update to 692039799e78 (2022-10-26) (forwarded request 1031555 from Guillaume_G)</comment>
     <requestid>1031556</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>517f3096e68ea09e87ee7160812ced3f</srcmd5>
+    <version>2022.12.21</version>
+    <time>1672852200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046468</requestid>
+  </revision>
 </revisionlist>
