@@ -101,6 +101,7 @@ media volume.
 Summary:        Development files for libbde, used to access Bitlocker Drive Encrypted Volumes
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
+Requires:       libbfio-devel
 Requires:       %{lname} = %{version}
 
 %description devel
