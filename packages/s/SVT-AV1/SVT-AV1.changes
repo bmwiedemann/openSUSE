@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 21:17:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Fix CRF with maxrate bug causing bitrate to be significantly limited for
+    CRF encodings
+  * Fix command line parsing forcing 1-pass in a 2-pass encoding mode when
+    the --keyint=`x`s format is used
+  * Fix decoder segfault due to assuming aligned buffers in the inverse
+    transform assembly
+
+-------------------------------------------------------------------
 Mon Dec  5 19:55:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

@@ -96,4 +96,18 @@
   * Remove manual prediction structure support (forwarded request 1040418 from dirkmueller)</comment>
     <requestid>1040439</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>87266bb57a9f9f50deffa502ab057cfa</srcmd5>
+    <version>1.4.1</version>
+    <time>1672851060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Fix CRF with maxrate bug causing bitrate to be significantly limited for
+    CRF encodings
+  * Fix command line parsing forcing 1-pass in a 2-pass encoding mode when
+    the --keyint=`x`s format is used
+  * Fix decoder segfault due to assuming aligned buffers in the inverse
+    transform assembly (forwarded request 1046316 from dirkmueller)</comment>
+    <requestid>1046395</requestid>
+  </revision>
 </revisionlist>
