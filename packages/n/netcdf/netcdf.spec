@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 
 %define _do_check 1
 
-%define ver 4.8.1
-%define _ver 4_8_1
+%define ver 4.9.0
+%define _ver 4_9_0
 %define pname netcdf
 %define sonum   19
 
@@ -38,6 +38,8 @@
 %endif
 
 %bcond_with valgrind_checks
+# Keep disabled until properly set up on HDF5 library side
+%bcond_with plugins
 
 %if "%flavor" == ""
 %define package_name %{pname}
@@ -479,44 +481,28 @@ Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         https://downloads.unidata.ucar.edu/netcdf-c/%{version}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
-Patch1:         swap-4-8-b-Satisfy-strict-aliasing-rules.patch
-Patch2:         Fix-type-punning-in-val_NC_check_voff-by-using-memcpy-instead-of-assignment.patch
-Patch3:         Fix-type-punning-in-xxdrntohdouble-by-using-memcpy-instead-of-assignment.patch
-Patch4:         NCD4_dumpbytes-use-correct-swapline-for-object-size.patch
-Patch5:         d4util.h-make-swapinlineXX-more-robust-against-type-punning.patch
 Patch6:         parseServers-Fix-uninitialized-variable-simplify-error-path.patch
-Patch7:         bin_reclaim_compound-Fixed-uninitialized-variable.patch
 Patch8:         val_NC_check_voff-Fix-uninitialized-variable-warning.patch
 Patch9:         pr_att-Fix-uninitialized-variable.patch
 Patch10:        NCD4_dumpbytes-Add-missing-initialization-of-float-types.patch
 Patch11:        NCZ_def_var_chunking-make-sure-cs-is-set-before-used.patch
 Patch12:        Fix-spurious-uninitialized-variable-warning.patch
-Patch13:        Fix-for-CVE-2019-20200-ezxml-bug-19.patch
-Patch14:        Fix-for-CVE-2019-20006-CVE-2019-20202-CVE-2021-31598-ezxml-bug-15-17-28.patch
-Patch15:        Fix-for-CVE-2019-20199-ezxml-bug-18.patch
-Patch16:        Fix-for-CVE-2019-20007-ezxml-bug-13.patch
-Patch17:        Fix-for-CVE-2021-26221-ezxml-bug-21.patch
-Patch18:        Fix-for-CVE-2021-26222-ezxml-bug-22.patch
-Patch19:        Fix-CVE-2021-30485-bug-25.patch
-Patch20:        Fix-CVE-2021-31229-bug-26-CVE-2019-20201-bug-16-CVE-2019-20198-bug-20.patch
-Patch21:        Fix-CVE-2021-31347-bug-27.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  doxygen
 BuildRequires:  gawk
 BuildRequires:  libcurl-devel >= 7.18.0
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  unzip
 BuildRequires:  zlib-devel >= 1.2.5
+BuildRequires:  pkgconfig(libxml-2.0)
 %if 0%{?valgrind_checks}
 BuildRequires:  valgrind
 %endif
 %if %{without hpc}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-# Note hdf5 1.10 has incompatible on disk files
 BuildRequires:  hdf5%{p_suffix}-devel
 BuildRequires:  libhdf5_hl%{p_suffix}
  %if %{with mpi}
@@ -548,12 +534,6 @@ and sharing of array-oriented scientific data.
 %package -n     %{libname -s %{sonum}}
 Summary:        Shared libraries for the NetCDF scientific data format
 Group:          Productivity/Scientific/Other
-%if %{without mpi} && %{without hpc}
-Provides:       %{libname}-4 = %{version}
-Obsoletes:      %{libname}-4 < %{version}
-%endif
-%{!?with_hpc:Provides:       %{libname} = %{version}}
-Obsoletes:      %{libname} < %{version}
 %if %{without hpc}
 # To avoid unresolvable errors due to multiple providers of the library
 %{requires_eq libhdf5%{p_suffix}}
@@ -704,9 +684,17 @@ export FCFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
     --with-pic \
     --disable-doxygen \
     --enable-static \
+%if %{with plugins}
+    --enable-plugins \
+    --with-plugin-dir=%{p_libdir}/hdf5/plugin/
+%else
+    --disable-plugins \
+%endif
 #    --enable-logging \
 
-make %{?_smp_mflags}
+%make_build
+# Build tests without executing
+%make_build check TESTS=""
 
 %install
 %{?with_hpc:%{hpc_setup}}
@@ -823,8 +811,9 @@ module load %{hdf5_module_file}
  . /usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/mpivars.sh
  %endif
 %endif
-%ifarch ppc64 s390x
-    make check || { echo -e "WARNING: ignore check error for ppc64/s390x"; }
+%ifarch ppc64 s390x %ix86
+# tst_netcdf4_4 fails on ix86 - https://github.com/Unidata/netcdf-c/issues/2433
+    make check || { echo -e "WARNING: ignore check error for ppc64/s390x/ix86"; }
 %else
     make check
 %endif

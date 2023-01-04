@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Dec 30 10:06:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.9.0:
+  * [Enhancement] Improve filter installation process to avoid use
+    of an extra shell script. See gh#Unidata/netcdf-c#2348.
+  * [Bug Fix] Get "make distcheck" to work See
+    gh#Unidata/netcdf-c#/2343.
+  * [Enhancement] Allow the read/write of JSON-valued Zarr
+    attributes to allow for domain specific info such as used by
+    GDAL/Zarr. See gh#Unidata/netcdf-c#2278.
+  * [Enhancement] Turn on the XArray convention for NCZarr files by
+    default. WARNING, this means that the mode should explicitly
+    specify nczarr" or "zarr" even if "xarray" or "noxarray" is
+    specified. See gh#Unidata/netcdf-c#2257.
+  * [Enhancement] Update the documentation to match the current
+    filter capabilities See gh#Unidata/netcdf-c#2249.
+  * [Enhancement] Support installation of pre-built standard
+    filters into user-specified location. See
+    gh#Unidata/netcdf-c#2318.
+  * [Enhancement] Improve filter support. More specifically (1)
+    add nc_inq_filter_avail to check if a filter is available, (2)
+    add the notion of standard filters, (3) cleanup szip support
+    to fix interaction with NCZarr. See gh#Unidata/netcdf-c#2245.
+  * [Enhancement] Switch to tinyxml2 as the default xml parser
+    implementation. See gh#Unidata/netcdf-c#2170.
+  * [Bug Fix] Require that the type of the variable in
+    nc_def_var_filter is not variable length.
+    See gh#Unidata/netcdf-c#/2231.
+  * [File Change] Apply HDF5 v1.8 format compatibility when
+    writing to previous files, as well as when creating new files.
+    The superblock version remains at 2 for newly created files.
+    Full backward read/write compatibility for netCDF-4 is
+    maintained in all cases. See gh#Unidata/netcdf-c#2176.
+  * [Enhancement] Add ability to set dataset alignment for
+    netcdf-4/HDF5 files. See gh#Unidata/netcdf-c#2206.
+  * [Bug Fix] Improve UTF8 support on windows so that it can use
+    utf8 natively. See gh#Unidata/netcdf-c#2222.
+  * [Enhancement] Add complete bitgroom support to NCZarr.
+    See gh#Unidata/netcdf-c#2197.
+  * [Bug Fix] Clean up the handling of deeply nested VLEN
+    types. Marks nc_free_vlen() and nc_free_string as deprecated
+    in favor of ncaux_reclaim_data(). See gh#Unidata/netcdf-c#2179.
+  * [Bug Fix] Make sure that netcdf.h accurately defines the flags
+    in the open/create mode flags. See gh#Unidata/netcdf-c#2183.
+  * [Enhancement] Improve support for msys2+mingw platform. See
+    gh#Unidata/netcdf-c#2171.
+  * [Bug Fix] Clean up the various inter-test dependencies in
+    ncdump for CMake. See gh#Unidata/netcdf-c#2168.
+  * [Bug Fix] Fix use of non-aws appliances. See
+    gh#Unidata/netcdf-c#2152.
+  * [Enhancement] Added options to suppress the new behavior from
+    gh#Unidata/netcdf-c#2135.
+  * [Enhancement] Support optional use of libxml2, otherwise
+    default to ezxml. See gh#Unidata/netcdf-c#2135
+  * [Bug Fix] Fix several os related errors. See
+    gh#Unidata/netcdf-c#2138.
+  * [Enhancement] Support byte-range reading of netcdf-3 files
+    stored in private buckets in S3. See gh#Unidata/netcdf-c#2134
+  * [Enhancement] Support Amazon S3 access for NCZarr. Also support
+    use of the existing Amazon SDK credentials system. See
+    gh#Unidata/netcdf-c#2114
+  * [Bug Fix] Fix string allocation error in H5FDhttp.c. See
+    gh#Unidata/netcdf-c#2127.
+  * [Bug Fix] Apply patches for ezxml and for selected oss-fuzz
+    detected errors. See gh#Unidata/netcdf-c#2125.
+  * [Bug Fix] Ensure that internal Fortran APIs are always
+    defined. See gh#Unidata/netcdf-c#2098.
+  * [Enhancement] Support filters for NCZarr. See
+    gh#Unidata/netcdf-c#2101
+  * [Bug Fix] Make PR 2075 long file name be idempotent. See
+    gh#Unidata/netcdf-c#2094.
+- Remove unused doxygen build dependency.
+- Remove some obsolete Provides/Obsoletes from library package.
+- Drop upstream patches:
+  * swap-4-8-b-Satisfy-strict-aliasing-rules.patch
+  * Fix-type-punning-in-val_NC_check_voff-by-using-memcpy-instead-of-assignment.patch
+  * Fix-type-punning-in-xxdrntohdouble-by-using-memcpy-instead-of-assignment.patch
+  * NCD4_dumpbytes-use-correct-swapline-for-object-size.patch
+  * d4util.h-make-swapinlineXX-more-robust-against-type-punning.patch
+  * bin_reclaim_compound-Fixed-uninitialized-variable.patch
+- Drop ezxml patches (replaced by tinyxml2/libxml2):
+  * Fix-for-CVE-2019-20200-ezxml-bug-19.patch
+  * Fix-for-CVE-2019-20006-CVE-2019-20202-CVE-2021-31598-ezxml-bug-15-17-28.patch
+  * Fix-for-CVE-2019-20199-ezxml-bug-18.patch
+  * Fix-for-CVE-2019-20007-ezxml-bug-13.patch
+  * Fix-for-CVE-2021-26221-ezxml-bug-21.patch
+  * Fix-for-CVE-2021-26222-ezxml-bug-22.patch
+  * Fix-CVE-2021-30485-bug-25.patch
+  * Fix-CVE-2021-31229-bug-26-CVE-2019-20201-bug-16-CVE-2019-20198-bug-20.patch
+  * Fix-CVE-2021-31347-bug-27.patch
+
+-------------------------------------------------------------------
 Mon Dec 12 14:15:39 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add BuildRequires for libhdf5[_hl]-<compiler_family>[-<mpi_flavor>-hpc

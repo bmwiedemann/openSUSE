@@ -620,4 +620,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
   obtain the version number (boo#1206334).</comment>
     <requestid>1042403</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fe55c104425895121473e6463f3de005</srcmd5>
+    <version>4.9.0</version>
+    <time>1672851180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1049747</requestid>
+  </revision>
 </revisionlist>
