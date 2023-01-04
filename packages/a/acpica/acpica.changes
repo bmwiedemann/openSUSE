@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Dec 27 23:13:22 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20221020:
+  * Added support for FFH (Fixed Function Hardware) Operation Region
+    special context data.
+  * Reverted commit "executer/exsystem: Warn about sleeps greater than 10 ms."
+    Due to user complaints about valid sleeps greater than 10ms seen
+    in some existing machines -- generating lots of warnings.
+  * Do not touch VGA memory when EBDA < 1KiB.
+  * Check that EBDA pointer is in valid memory.
+  * Completed the existing partial support for the CDAT "table".
+  * Updated support for the IORT table - update to version E.e
+  * Added CXL 3.0 structures (CXIMS & RDPAS) to the CEDT table
+  * iASL: Added CCEL table to both compiler/disassembler.
+  * iASL: NHLT table: Fixed compilation of optional undocumented fields
+  * iASL: Fix iASL compile error due to ACPI_TDEL_OFFSET.
+
+-------------------------------------------------------------------
 Fri Oct 14 13:32:53 UTC 2022 - Thomas Renninger <trenn@suse.de>
 
 - This version includes CEDT table support as requested in feature

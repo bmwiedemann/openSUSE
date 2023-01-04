@@ -606,4 +606,12 @@ You added ec_access.c with a GPL-2.0 (only) license. Now the spec file has to be
   jsc#PED-201</comment>
     <requestid>1010968</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>fda1e8a0cbd29eb9647903187963aa22</srcmd5>
+    <version>20221020</version>
+    <time>1672852218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046533</requestid>
+  </revision>
 </revisionlist>
