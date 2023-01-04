@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing Require on libbfio-devel.
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers

@@ -60,4 +60,12 @@
     <comment>- Add forced symvers</comment>
     <requestid>993983</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>cd27f8df2815881c3b7a5323962a9c3e</srcmd5>
+    <version>20210424</version>
+    <time>1672851088</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046578</requestid>
+  </revision>
 </revisionlist>
