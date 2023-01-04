@@ -1,7 +1,7 @@
 #
 # spec file for package python-cauldron-notebook
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@
 # requires NumPy, seaborn (<-- SciPy), which are dropping Python 3.6 support.
 %define         skip_python36 1
 Name:           python-cauldron-notebook
-Version:        1.0.7
+Version:        1.0.9
 Release:        0
 Summary:        Scientific Analysis Environment
 License:        MIT
 URL:            https://github.com/sernst/cauldron
 Source:         https://github.com/sernst/cauldron/archive/v%{version}.tar.gz#/cauldron-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

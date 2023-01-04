@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:09:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.0.9:
+  * Add 3.10 support.
+  * Remove 3.6 support.
+  * Updates for major dependency changes.
+
+-------------------------------------------------------------------
 Thu Dec  9 08:15:32 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.0.7

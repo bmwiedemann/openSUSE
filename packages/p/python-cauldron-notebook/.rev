@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>938232</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f6e51d5da41ae10f3800d7a55626911</srcmd5>
+    <version>1.0.9</version>
+    <time>1672851225</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.0.9:
+  * Add 3.10 support.
+  * Remove 3.6 support.
+  * Updates for major dependency changes.</comment>
+    <requestid>1055852</requestid>
+  </revision>
 </revisionlist>
