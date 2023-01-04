@@ -191,4 +191,17 @@
 - Drop unzip from BuildRequires (forwarded request 1037476 from glaubitz)</comment>
     <requestid>1037569</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b50a49a5e56f8c21fb9648d9e633358f</srcmd5>
+    <version>0.1.0b2089057</version>
+    <time>1672851194</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b2089057
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Switch source archive format back to ZIP
+- Re-add unzip to BuildRequires (forwarded request 1055441 from glaubitz)</comment>
+    <requestid>1055776</requestid>
+  </revision>
 </revisionlist>
