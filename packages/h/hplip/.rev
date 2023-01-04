@@ -1323,4 +1323,15 @@
     <comment></comment>
     <requestid>1037150</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>906c7feeac7e4d13b386ac6cc1365cb0</srcmd5>
+    <version>3.22.10</version>
+    <time>1672851042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.22.10
+  * drop no-systray-failure-message.patch (fixed upstream)
+  * adapt Use-lsb_release-fallback-code-if-import-distro-fails.patch
+    (code moved to different source file upstream)</comment>
+    <requestid>1046214</requestid>
+  </revision>
 </revisionlist>

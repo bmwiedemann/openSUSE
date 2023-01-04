@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.22.6
+Version:        3.22.10
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -62,8 +62,6 @@ Patch107:       hplip-udev-rules-in-usr.patch
 # Patch108 add_missing_includes_and_define_GNU_SOURCE.patch adds missing '#include <...>'
 # and missing '#define _GNU_SOURCE' see https://bugs.launchpad.net/hplip/+bug/1456590
 Patch108:       add_missing_includes_and_define_GNU_SOURCE.patch
-# PATCH-FIX-SUSE: GNOME no longer provides a system tray, so don't warn the user that we can't find it
-Patch109:       no-systray-failure-message.patch
 Patch110:       hpijs-avoid-segfault-in-DJGenericVIP-DJGenericVIP.patch
 Patch112:       ui5-systemtray-wait-only-10s-for-system-tray.patch
 # Python3 port: cleanup patches
@@ -319,7 +317,6 @@ This sub-package is only required by developers.
 # Patch108 add_missing_includes_and_define_GNU_SOURCE.patch adds missing '#include <...>'
 # and missing '#define _GNU_SOURCE' see https://bugs.launchpad.net/hplip/+bug/1456590
 %patch108 -p1 -b .add_missing_includes_and_define_GNU_SOURCE.orig
-%patch109 -p1 -b .systemtray.py.orig
 %patch110 -p1 -b .boo1094141
 %patch112 -p1
 %patch300 -p1 -b .pcardext-python3

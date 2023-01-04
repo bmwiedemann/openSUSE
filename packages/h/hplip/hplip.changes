@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:08:12 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to 3.22.10
+  * drop no-systray-failure-message.patch (fixed upstream)
+  * adapt Use-lsb_release-fallback-code-if-import-distro-fails.patch
+    (code moved to different source file upstream)
+
+-------------------------------------------------------------------
 Mon Nov 21 16:13:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update disable_hp-upgrade.patch: Log the 'openSUSE disabled this

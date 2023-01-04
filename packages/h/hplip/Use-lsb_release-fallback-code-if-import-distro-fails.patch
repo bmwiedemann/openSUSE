@@ -1,6 +1,6 @@
-From 5ff90c0210be6b9b48f5cc269d2450e85a958ec0 Mon Sep 17 00:00:00 2001
+From ba542439639453148ea804fc4e396534cd99abb9 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
-Date: Mon, 16 Mar 2020 14:33:35 +0100
+Date: Mon, 2 Jan 2023 15:33:07 +0100
 Subject: [PATCH] Use lsb_release fallback code if "import distro" fails
 
 With python 3.8, the standard python "platform" module doesn't
@@ -10,26 +10,32 @@ module by default. Catch the resulting exception, and use the
 already existing fallback code to determine the distribution
 using lsb_release.
 ---
- base/password.py          |  8 ++++++--
- installer/core_install.py | 10 +++++++---
- 2 files changed, 13 insertions(+), 5 deletions(-)
+ base/utils.py | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-Index: hplip-3.22.4/installer/core_install.py
-===================================================================
---- hplip-3.22.4.orig/installer/core_install.py
-+++ hplip-3.22.4/installer/core_install.py
-@@ -651,6 +651,14 @@ class CoreInstall(object):
-                 name = distro.linux_distribution()[0].lower()
-                 ver = distro.linux_distribution()[1]
-                 distro_release_name = distro.distro_release_attr('name')
-+                try:
-+                    import distro
-+                    name = distro.linux_distribution()[0].lower()
-+                    ver = distro.linux_distribution()[1]
-+                    distro_release_name = distro.distro_release_attr('name')
-+                except (ImportError, AttributeError):
-+                    # Use fallback code below
-+                    pass                
-             if not name:
-                 found = False
-                 log.debug("Not able to detect distro")
+diff --git a/base/utils.py b/base/utils.py
+index 94d5c8c..458ddd8 100644
+--- a/base/utils.py
++++ b/base/utils.py
+@@ -2519,10 +2519,14 @@ def get_distro_name(passwordObj = None):
+             name = platform.dist()[0].lower()
+             ver = platform.dist()[1]
+         except AttributeError:
+-            import distro
+-            name = distro.linux_distribution()[0].lower()
+-            ver = distro.linux_distribution()[1]
+-            distro_release_name = distro.distro_release_attr('name')
++            try:
++                import distro
++                name = distro.linux_distribution()[0].lower()
++                ver = distro.linux_distribution()[1]
++                distro_release_name = distro.distro_release_attr('name')
++            except (ImportError, AttributeError):
++                # Use fallback code below
++                pass
+         if not name:
+             found = False
+             log.debug("Not able to detect distro")
+-- 
+2.39.0
+
