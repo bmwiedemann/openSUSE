@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Jan  3 03:14:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.002000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.002000	2023-01-01	Happy Fibonacci Day! 1/1/23
+   [ Bug Fixes ]
+   - When Foo is a parameterized StrMatch type, ensure is_Foo always returns
+     a single boolean value, even in list context.
+     Diab Jerius++
+   [ Documentation ]
+   - Update NEWS.
+   - Update copyright dates to 2023.
+   [ Packaging ]
+   - Repackage as stable.
+  2.001_002	2022-12-03
+   [ Test Suite ]
+   - Test `t/20-modules/Type-Tiny-Enum/exporter_lexical.t` will now run on
+     older versions of Perl, provided Lexical::Sub is installed.
+   [ Packaging ]
+   - Depend on Exporter::Tiny 1.006000 which offers lexical export support
+     for older versions of Perl, provided Lexical::Sub is installed.
+   [ Other ]
+   - If Type::Params signatures receive multiple unrecognized named
+     arguments, the error message now lists them using
+     Type::Utils::english_list() instead of just joining them with commas.
+     This means that the error message will include 'and' before the last
+     unrecognized named argument. If Type::Tiny::AvoidCallbacks is set to
+     true while the signature is compiled, the old behaviour will be
+     retained.
+   - Type::Params no longer attempts to figure out the maximum number of
+     expected arguments to functions which take key-value pairs. This allows
+     `yourfunc(y=>1,y=>2)` to behave more intuitively, with the function just
+     seeing the second value for `y`, instead of it throwing an exception
+     complaining about too many arguments.
+  2.001_001	2022-10-19
+   [ Documentation ]
+   - Typo fix in Type::Tiny::Manual::UsingWithMoo.
+   [ Other ]
+   - Type::Library will better detect if two types result in functions with
+     the same name.
+   - Type::Tiny::XS will now provide XS implementations of some parameterized
+     ArrayLike/HashLike types.
+   - When importing `use Type::Library -util`, Type::Library will now pass
+     some relevant import options to Type::Utils.
+  2.001_000	2022-09-29
+   [ Bug Fixes ]
+   - Avoid uninitialized warnings when creating a union between an Enum type
+     and a non-Enum type.
+     Diab Jerius++
+   [ Documentation ]
+   - Clearer documentation of Types::TypeTiny::to_TypeTiny.
+   [ Test Suite ]
+   - No longer report Type::Tie version at start of test suite, as Type::Tie
+     is now bundled.
+   [ Other ]
+   - Added: Type::Library now has an undocumented, but tested and hopefully
+     stable `_remove_type` method.
+   - Added: Type::Tiny now has a `definition_context` attribute/method
+     indicating the file and line number where a type constraint was first
+     defined.
+   - The list of packages Type::Tiny considers to be 'internal' has been
+     moved from Error::TypeTiny to Type::Tiny.
+   - Type::Tiny will now mark particular parts of its guts as readonly.
+     Currently this is mainly used to prevent people pushing to and popping
+     from type constraints which overload `@{}`.
+
+-------------------------------------------------------------------
 Fri Sep 30 03:06:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.000001
