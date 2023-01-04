@@ -1100,4 +1100,12 @@ goes in line with 946250</comment>
 - Add symvers.patch</comment>
     <requestid>1044142</requestid>
   </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>2ffc1322a2020d2443554bc57a424d97</srcmd5>
+    <version>2.8.2</version>
+    <time>1672852228</time>
+    <user>dimstar_suse</user>
+    <comment>- Migration of PAM settings to /usr/lib/pam.d. (forwarded request 1046514 from schubi2)</comment>
+    <requestid>1046555</requestid>
+  </revision>
 </revisionlist>

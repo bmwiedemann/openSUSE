@@ -1,7 +1,7 @@
 #
 # spec file for package sssd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -408,6 +408,8 @@ install -d "$b/%_unitdir"
 %if 0%{?suse_version} > 1500
 install -d "$b/%_distconfdir/logrotate.d"
 install -m644 src/examples/logrotate "$b/%_distconfdir/logrotate.d/sssd"
+install -d "$b/%_pam_vendordir"
+mv "$b/%_pam_confdir/sssd-shadowutils" "$b/%_pam_vendordir"
 %else
 install -d "$b/%_sysconfdir/logrotate.d"
 install -m644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
@@ -428,6 +430,12 @@ ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 
 %pre
 %service_add_pre sssd.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/sssd-shadowutils ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 /sbin/ldconfig
@@ -497,7 +505,7 @@ done
 %if 0%{?suse_version} > 1500
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/sssd ; do
+for i in logrotate.d/sssd pam.d/sssd-shadowutils ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -595,11 +603,12 @@ done
 %config(noreplace) %_sysconfdir/sssd/sssd.conf
 %if 0%{?suse_version} > 1500
 %_distconfdir/logrotate.d/sssd
+%_pam_vendordir/sssd-shadowutils
 %else
 %config(noreplace) %_sysconfdir/logrotate.d/sssd
+%config(noreplace) %_pam_confdir/sssd-shadowutils
 %endif
 %dir %_sysconfdir/sssd/conf.d
-%config(noreplace) %_pam_confdir/sssd-shadowutils
 %dir %_datadir/%name/
 %_datadir/%name/cfg_rules.ini
 %_datadir/%name/sssd.api.conf
