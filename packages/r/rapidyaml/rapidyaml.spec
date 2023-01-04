@@ -1,7 +1,7 @@
 #
 # spec file for package rapidyaml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rapidyaml
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        A library to parse and emit YAML
 License:        MIT
@@ -32,18 +32,18 @@ BuildRequires:  git
 %description
 ryml is a C++ library to parse and emit YAML.
 
-%package -n libc4core0_1_8
+%package -n libc4core0_1_11
 Summary:        Utility library of rapidyaml
 Group:          System/Libraries
 
-%description -n libc4core0_1_8
+%description -n libc4core0_1_11
 ryml is a C++ library to parse and emit YAML.
 
-%package -n libryml0_4_1
+%package -n libryml0_5_0
 Summary:        A library to parse and emit YAML
 Group:          System/Libraries
 
-%description -n libryml0_4_1
+%description -n libryml0_5_0
 ryml is a C++ library to parse and emit YAML.
 
 ryml parses both read-only and in-situ source buffers; the resulting
@@ -53,8 +53,8 @@ string copies or duplications are done.
 %package devel
 Summary:        Header files for rapidyaml, a library to parse and emit YAML
 Group:          Development/Libraries/C and C++
-Requires:       libc4core0_1_8 = %{version}-%{release}
-Requires:       libryml0_4_1 = %{version}-%{release}
+Requires:       libc4core0_1_11 = %{version}-%{release}
+Requires:       libryml0_5_0 = %{version}-%{release}
 
 %description devel
 ryml is a C++ library to parse and emit YAML.
@@ -71,16 +71,16 @@ This package contains development headers and examples.
 %install
 %cmake_install
 
-%post   -n libc4core0_1_8 -p /sbin/ldconfig
-%postun -n libc4core0_1_8 -p /sbin/ldconfig
-%post   -n libryml0_4_1 -p /sbin/ldconfig
-%postun -n libryml0_4_1 -p /sbin/ldconfig
+%post   -n libc4core0_1_11 -p /sbin/ldconfig
+%postun -n libc4core0_1_11 -p /sbin/ldconfig
+%post   -n libryml0_5_0 -p /sbin/ldconfig
+%postun -n libryml0_5_0 -p /sbin/ldconfig
 
-%files -n libc4core0_1_8
+%files -n libc4core0_1_11
 %license LICENSE.txt
 %{_libdir}/libc4core.so.*
 
-%files -n libryml0_4_1
+%files -n libryml0_5_0
 %{_libdir}/libryml.so.*
 
 %files devel
