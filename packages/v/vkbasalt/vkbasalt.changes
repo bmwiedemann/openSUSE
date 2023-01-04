@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:40:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.3.2.8:
+  * fixed regression with multiple effects enabled
+  * fixed compatibility with newer vkd3d-proton by fixing VK_INCOMPLETE
+    handling in vkGetSwapchainImagesKHR
+
+-------------------------------------------------------------------
 Tue Dec  6 14:58:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.3.2.6:
