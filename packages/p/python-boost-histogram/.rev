@@ -15,4 +15,32 @@
     <comment></comment>
     <requestid>984881</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>248bf04ab9c89bf17b99ed8bd36c3657</srcmd5>
+    <version>1.3.2</version>
+    <time>1672851236</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.3.2:
+  * Added storage_type() as public API #781, with pending deprecation for
+    _storage_type. #786 #790
+  * Better errors generated for missing or incorrect sample to mean storage.
+    #782
+  * Better error message when views are set with an incompatible array. #794
+  * Patch broken sum with fully empty (0 bin) axis. #718
+  * Fix zero range bh.numpy.histogram to match numpy.histogram behavior.
+    #721
+  * Avoid triggering __init__ when copying (better support for subclasses
+    with custom init's). #759
+  * IntCategory now supports numbers larger than 224 (now 253). #792
+  * Pick a subset now supported inside a larger expression. #793
+  * Backend and docs
+  * Minor optimizations for UFuncs. #771
+  * Added Python 3.11 wheels. #789
+  * Include PyPy 3.9 binary wheels. #730
+  * Using pybind11 2.10 #767
+  * Explicit reset() documentation. #783
+  * Minor cleanup and further removal of a little Python 2 back-compat code.
+  * Warnings have better stacklevel settings.</comment>
+    <requestid>1055883</requestid>
+  </revision>
 </revisionlist>
