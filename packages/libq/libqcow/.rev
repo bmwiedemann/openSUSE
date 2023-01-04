@@ -138,4 +138,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038488</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>1cc3866a67e89e7ea292ba2ed8e404ff</srcmd5>
+    <version>20221124</version>
+    <time>1672851122</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046602</requestid>
+  </revision>
 </revisionlist>
