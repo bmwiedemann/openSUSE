@@ -54,7 +54,7 @@ chmod 755 examples/*
 %install
 %make_install
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # compatibility symlink
 install -d -m 755 %{buildroot}/bin
 ln -s %{_bindir}/mawk %{buildroot}/bin/mawk
@@ -68,7 +68,7 @@ ln -s %{_bindir}/mawk %{buildroot}/bin/mawk
 %doc ACKNOWLEDGMENT CHANGES README examples/
 %{_bindir}/mawk
 %{_mandir}/man1/mawk.1%{?ext_man}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/mawk
 %endif
 

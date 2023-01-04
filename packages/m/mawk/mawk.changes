@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:10:01 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Sep 23 14:03:54 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 
 - remove update-alternatives support, as on linux systems GNU software
