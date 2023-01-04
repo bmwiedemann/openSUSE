@@ -1,7 +1,7 @@
 #
 # spec file for package trace-cmd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           trace-cmd
-Version:        3.1.2
+Version:        3.1.5
 Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 Source0:        trace-cmd-v%{version}.tar.gz
-Patch1:         0001-build-Only-consider-trace-cmd-documentation.patch
-Patch2:         0002-build-Obey-package-guidelines-for-bash-completions.patch
+Patch1:         0001-libtracecmd-Add-initial-support-for-meson.patch
+Patch2:         0002-trace-cmd-Add-initial-support-for-meson.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  libtracecmd-devel
 BuildRequires:  libtraceevent-devel
 BuildRequires:  libtracefs-devel
+BuildRequires:  meson
 BuildRequires:  source-highlight
 BuildRequires:  xmlto
 Recommends:     libtraceevent1-plugins
@@ -54,18 +54,14 @@ Python plugin support for trace-cmd
 %autosetup -p1 -n trace-cmd-v%{version}
 
 %build
-%make_build -j1 V=1 prefix=%{_prefix} libdir=%{_libdir} PYTHON_VERS=python3 all_cmd doc
-for i in python/*.py ; do
-    sed -i 's/env python2/python3/g' $i
-done
-%make_build -j1 V=1 MANPAGE_DOCBOOK_XSL=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl doc
+%meson \
+    -Ddocs-build=true \
+    -Dhtmldir=%{_docdir}/%{name}
+%meson_build
 
 %install
-%make_install V=1 libdir=%{_libdir} prefix=%{_prefix} \
-    pkgconfig_dir=%{_libdir}/pkgconfig \
-    htmldir=%{_docdir}/%{name} pdfdir=%{_docdir}/%{name} \
-    PYTHON_VERS=python3 \
-    install install_doc install_python install_bash_completion
+%meson_install
+
 %fdupes %buildroot/%_prefix
 
 %files
@@ -78,8 +74,9 @@ done
 %doc README
 
 %files python3
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/python
+%{python3_sitearch}/%{name}
+%{python3_sitearch}/%{name}/*.so
+%{python3_sitearch}/%{name}/ctracecmd.py
 %doc Documentation/README.PythonPlugin
 
 %changelog

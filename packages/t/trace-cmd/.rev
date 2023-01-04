@@ -146,4 +146,20 @@ through debugfs is tricky.</comment>
     <comment></comment>
     <requestid>1003497</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2673bd0a16d334e28e9c4a15f30573e0</srcmd5>
+    <version>3.1.5</version>
+    <time>1672851182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest upstream version (3.1.5)
+  - Let subcommand &quot;convert&quot; automatically compress if possible
+  - Fix calculation of pipe_size (which defaulted to just page size)
+- Build project with Meson
+  * add 0001-libtracecmd-Add-initial-support-for-meson.patch
+  * add 0002-trace-cmd-Add-initial-support-for-meson.patch
+  * remove 0001-build-Only-consider-trace-cmd-documentation.patch
+  * remove 0002-build-Obey-package-guidelines-for-bash-completions.patch
+</comment>
+    <requestid>1054198</requestid>
+  </revision>
 </revisionlist>

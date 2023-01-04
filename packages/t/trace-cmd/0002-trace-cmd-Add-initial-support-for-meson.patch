@@ -1,0 +1,573 @@
+From e4808fbe0283c701e200c681793e8aa52ff5d013 Mon Sep 17 00:00:00 2001
+From: Daniel Wagner <dwagner@suse.de>
+Date: Wed, 21 Dec 2022 14:15:02 +0100
+Subject: [PATCH 2/2] trace-cmd: Add initial support for meson
+
+Add support for building the project with meson.
+
+trace-cmd depends on a statically linked libtracecmd
+(e.g. trace_perf_open, trace_perf_close, trace_perf_init).
+
+Instead depending libtracecmd to be compiled and installed
+separately add libtracecmd directly to trace-cmd build. This
+avoids an additional step.
+
+We still are able to build libtracecmd as stand alone project.
+The top meson.build file just lives in the lib directory.
+
+Signed-off-by: Daniel Wagner <dwagner@suse.de>
+---
+ Documentation/trace-cmd/install-man.sh.in |  10 ++
+ Documentation/trace-cmd/meson.build       | 167 ++++++++++++++++++++++
+ meson-vcs-tag.sh                          |  17 +++
+ meson.build                               | 144 +++++++++++++++++++
+ meson_options.txt                         |  25 ++++
+ python/meson.build                        |  40 ++++++
+ tracecmd/meson.build                      |  57 ++++++++
+ utest/meson.build                         |  25 ++++
+ 8 files changed, 485 insertions(+)
+ create mode 100755 Documentation/trace-cmd/install-man.sh.in
+ create mode 100644 Documentation/trace-cmd/meson.build
+ create mode 100755 meson-vcs-tag.sh
+ create mode 100644 meson.build
+ create mode 100644 meson_options.txt
+ create mode 100644 python/meson.build
+ create mode 100644 tracecmd/meson.build
+ create mode 100644 utest/meson.build
+
+diff --git a/Documentation/trace-cmd/install-man.sh.in b/Documentation/trace-cmd/install-man.sh.in
+new file mode 100755
+index 000000000000..a69543bd359f
+--- /dev/null
++++ b/Documentation/trace-cmd/install-man.sh.in
+@@ -0,0 +1,10 @@
++#!/bin/bash
++
++for section in 1 2 3 4 5 6 7 8; do
++    for man in $(find @SRCDIR@ -name "*\.${section}" -type f); do
++        [ ! -d ${DESTDIR}/@MANDIR@/man${section}/ ] && install -d ${DESTDIR}/@MANDIR@/man${section}/
++
++        echo Installing $man to ${DESTDIR}/@MANDIR@/man${section}/
++        install -m 0644 $man ${DESTDIR}/@MANDIR@/man${section}/
++    done
++done
+diff --git a/Documentation/trace-cmd/meson.build b/Documentation/trace-cmd/meson.build
+new file mode 100644
+index 000000000000..30ae270e7f1c
+--- /dev/null
++++ b/Documentation/trace-cmd/meson.build
+@@ -0,0 +1,167 @@
++# SPDX-License-Identifier: LGPL-2.1
++#
++# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++
++# input text file: man page section
++sources = {
++    'trace-cmd.1.txt': '1',
++    'trace-cmd-agent.1.txt': '1',
++    'trace-cmd-check-events.1.txt': '1',
++    'trace-cmd-clear.1.txt': '1',
++    'trace-cmd-convert.1.txt': '1',
++    'trace-cmd.dat.v6.5.txt': '5',
++    'trace-cmd.dat.v7.5.txt': '5',
++    'trace-cmd-dump.1.txt': '1',
++    'trace-cmd-extract.1.txt': '1',
++    'trace-cmd-hist.1.txt': '1',
++    'trace-cmd-list.1.txt': '1',
++    'trace-cmd-listen.1.txt': '1',
++    'trace-cmd-mem.1.txt': '1',
++    'trace-cmd-options.1.txt': '1',
++    'trace-cmd-profile.1.txt': '1',
++    'trace-cmd-record.1.txt': '1',
++    'trace-cmd-report.1.txt': '1',
++    'trace-cmd-reset.1.txt': '1',
++    'trace-cmd-restore.1.txt': '1',
++    'trace-cmd-set.1.txt': '1',
++    'trace-cmd-show.1.txt': '1',
++    'trace-cmd-snapshot.1.txt': '1',
++    'trace-cmd-split.1.txt': '1',
++    'trace-cmd-stack.1.txt': '1',
++    'trace-cmd-start.1.txt': '1',
++    'trace-cmd-stat.1.txt': '1',
++    'trace-cmd-stop.1.txt': '1',
++    'trace-cmd-stream.1.txt': '1',
++}
++
++#
++# For asciidoc ...
++#	-7.1.2,	no extra settings are needed.
++#	8.0-,	set ASCIIDOC8.
++#
++
++#
++# For docbook-xsl ...
++#	-1.68.1,	set ASCIIDOC_NO_ROFF? (based on changelog from 1.73.0)
++#	1.69.0,		no extra settings are needed?
++#	1.69.1-1.71.0,	set DOCBOOK_SUPPRESS_SP?
++#	1.71.1,		no extra settings are needed?
++#	1.72.0,		set DOCBOOK_XSL_172.
++#	1.73.0-,	set ASCIIDOC_NO_ROFF
++#
++
++#
++# If you had been using DOCBOOK_XSL_172 in an attempt to get rid
++# of 'the ".ft C" problem' in your generated manpages, and you
++# instead ended up with weird characters around callouts, try
++# using ASCIIDOC_NO_ROFF instead (it works fine with ASCIIDOC8).
++#
++
++if get_option('asciidoctor')
++    asciidoc = find_program('asciidoctor')
++    asciidoc_extra  = ['-a', 'compat-mode']
++    asciidoc_extra += ['-I.']
++    asciidoc_extra += ['-r', 'asciidoctor-extensions']
++    asciidoc_extra += ['-a', 'mansource=libtraceevent']
++    asciidoc_extra += ['-a', 'manmanual="libtraceevent Manual"']
++    asciidoc_html = 'xhtml5'
++else
++    asciidoc = find_program('asciidoc')
++    asciidoc_extra  = ['--unsafe']
++    asciidoc_extra += ['-f', meson.current_source_dir() + '/../asciidoc.conf']
++    asciidoc_html = 'xhtml11'
++
++    r = run_command(asciidoc, '--version', check: true)
++    v = r.stdout().strip()
++    if v.version_compare('>=8.0')
++        asciidoc_extra += ['-a', 'asciidoc7compatible']
++    endif
++endif
++
++manpage_xsl = meson.current_source_dir() + '/../manpage-normal.xsl'
++
++if get_option('docbook-xls-172')
++    asciidoc_extra += ['-a', 'libtraceevent-asciidoc-no-roff']
++    manpage_xsl = meson.current_source_dir() + '/../manpage-1.72.xsl'
++elif get_option('asciidoc-no-roff')
++    # docbook-xsl after 1.72 needs the regular XSL, but will not
++    # pass-thru raw roff codes from asciidoc.conf, so turn them off.
++    asciidoc_extra += ['-a', 'libtraceevent-asciidoc-no-roff']
++endif
++
++xmlto = find_program('xmlto')
++xmlto_extra = []
++
++if get_option('man-bold-literal')
++    xmlto_extra += ['-m ', meson.current_source_dir() + '/../manpage-bold-literal.xsl']
++endif
++
++if get_option('docbook-suppress-sp')
++    xmlto_extra += ['-m ',  meson.current_source_dir() + '/../manpage-suppress-sp.xsl']
++endif
++
++gen = generator(asciidoc,
++                output: '@BASENAME@.xml',
++                arguments: [
++                    '-b', 'docbook',
++                    '-d', 'manpage',
++                    '-a', 'libtraceevent_version=' + meson.project_version(),
++                    '-o', '@OUTPUT@']
++                    + asciidoc_extra
++                    + ['@INPUT@'])
++
++foreach txt, section : sources
++    # build man page(s)
++    xml = gen.process(txt)
++    man = custom_target(txt.underscorify() + '_man',
++                        input: xml,
++                        output: '@BASENAME@.' + section,
++                        command: [xmlto,
++                        '-m', manpage_xsl,
++                        'man',
++                        '-o', '@OUTPUT@']
++                        + xmlto_extra
++                        + ['@INPUT@'],
++                        build_by_default : true)
++
++    # build html pages
++    custom_target(
++       txt.underscorify() + '_html',
++       input: txt,
++       output: '@BASENAME@.html',
++       command: [asciidoc,
++                '-b', asciidoc_html,
++                '-d', 'manpage',
++	        '-a', 'libtraceevent_version=' + meson.project_version(),
++                '-o', '@OUTPUT@']
++                + asciidoc_extra
++                + ['@INPUT@'],
++       install: true,
++       install_dir: htmldir)
++endforeach
++
++# Install path workaround because:
++#
++# - xmlto might generate more than one file and we would to tell meson
++#   about those output files. We could figure out which files are generated
++#   (see sed match in check-manpages.sh).
++#
++# - The man page generation puts all the generated files under sub dirs
++#   and it's not obvious how to tell Meson it should not do this without
++#   causing the install step to fail (confusion where the generated files
++#   are stored)
++#
++# Thus just use a plain old shell script to move the generated files to the
++# right location.
++
++conf = configuration_data()
++conf.set('SRCDIR', meson.current_build_dir())
++conf.set('MANDIR', mandir)
++configure_file(
++    input:         'install-man.sh.in',
++    output:        'install-man.sh',
++    configuration: conf,
++)
++
++meson.add_install_script(
++    join_paths(meson.current_build_dir(), 'install-man.sh'))
+diff --git a/meson-vcs-tag.sh b/meson-vcs-tag.sh
+new file mode 100755
+index 000000000000..8ce692498ada
+--- /dev/null
++++ b/meson-vcs-tag.sh
+@@ -0,0 +1,17 @@
++#!/usr/bin/env bash
++# SPDX-License-Identifier: LGPL-2.1-or-later
++
++set -eu
++set -o pipefail
++
++dir="${1:?}"
++fallback="${2:?}"
++
++# Apparently git describe has a bug where it always considers the work-tree
++# dirty when invoked with --git-dir (even though 'git status' is happy). Work
++# around this issue by cd-ing to the source directory.
++cd "$dir"
++# Check that we have either .git/ (a normal clone) or a .git file (a work-tree)
++# and that we don't get confused if a tarball is extracted in a higher-level
++# git repository.
++[ -e .git ] && git describe --abbrev=7 --dirty=+ 2>/dev/null | sed 's/^v//' || echo "$fallback"
+diff --git a/meson.build b/meson.build
+new file mode 100644
+index 000000000000..8a3579c72458
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,144 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++
++project(
++    'trace-cmd', ['c'],
++    meson_version: '>= 0.50.0',
++    license: 'GPL-2.0',
++    version: '3.1.5',
++    default_options: [
++      'c_std=gnu99',
++      'buildtype=release',
++      'prefix=/usr/local',
++      'warning_level=1',
++    ]
++)
++
++cc = meson.get_compiler('c')
++
++prefixdir = get_option('prefix')
++datadir   = join_paths(prefixdir, get_option('datadir'))
++bindir    = join_paths(prefixdir, get_option('bindir'))
++mandir    = join_paths(prefixdir, get_option('mandir'))
++htmldir   = join_paths(prefixdir, get_option('htmldir'))
++
++conf = configuration_data()
++
++libtraceevent_dep = dependency('libtraceevent', version: '>= 1.5.0', required: true)
++libtracefs_dep = dependency('libtracefs', version: '>= 1.6.0', required: true)
++
++zlib_dep = dependency('zlib', required: false)
++conf.set('HAVE_ZLIB', zlib_dep.found(), description: 'Is zlib avialable?')
++
++libzstd_dep = dependency('libzstd', version: '>= 1.4.0', required: false)
++conf.set('HAVE_ZSTD', libzstd_dep.found(), description: 'Is libzstd available?')
++
++cunit_dep = dependency('cunit', required : false)
++
++vsock_defined = get_option('vsock') and cc.has_header('linux/vm_sockets.h')
++conf.set('VSOCK', vsock_defined, description: 'Is vsock available?')
++
++perf_defined = cc.has_header('linux/perf_event.h')
++conf.set('PERF', perf_defined, description: 'Is perf available?')
++
++have_ptrace = get_option('ptrace') and cc.compiles(
++    '''
++    #include <stdio.h>
++    #include <sys/ptrace.h>
++
++    int main (void)
++    {
++            int ret;
++            ret = ptrace(PTRACE_ATTACH, 0, NULL, 0);
++            ptrace(PTRACE_TRACEME, 0, NULL, 0);
++            ptrace(PTRACE_GETSIGINFO, 0, NULL, NULL);
++            ptrace(PTRACE_GETEVENTMSG, 0, NULL, NULL);
++            ptrace(PTRACE_SETOPTIONS, NULL, NULL,
++                           PTRACE_O_TRACEFORK |
++                           PTRACE_O_TRACEVFORK |
++                           PTRACE_O_TRACECLONE |
++                           PTRACE_O_TRACEEXIT);
++            ptrace(PTRACE_CONT, NULL, NULL, 0);
++            ptrace(PTRACE_DETACH, 0, NULL, NULL);
++            ptrace(PTRACE_SETOPTIONS, 0, NULL,
++                   PTRACE_O_TRACEFORK |
++                   PTRACE_O_TRACEVFORK |
++                   PTRACE_O_TRACECLONE |
++                   PTRACE_O_TRACEEXIT);
++            return ret;
++    }
++    ''',
++    name: 'ptrace')
++if not have_ptrace
++    conf.set10('NO_PTRACE', true, description: 'Is ptrace missing?')
++    conf.set('WARN_NO_PTRACE', true, description: 'Issue no ptrace warning?')
++endif
++
++audit_dep = dependency('audit', required: false)
++if not audit_dep.found()
++    conf.set10('NO_AUDIT', true, description: 'Is audit missing?')
++    conf.set('WARN_NO_AUDIT', true, description: 'Issue no audit warning?')
++endif
++
++config_h = configure_file(
++    output: 'config.h',
++    configuration: conf
++)
++
++version = meson.project_version().split('.')
++
++vconf = configuration_data()
++vconf.set('VERSION_CODE', version[0].to_int() * 256 + version[1].to_int())
++vconf.set('EXTRAVERSION', '"@0@"'.format(version[2]))
++vconf.set('FILE_VERSION', '""')
++vconf.set('VERSION_STRING', '"@0@"'.format(meson.project_version()))
++
++version_tag = get_option('version-tag')
++if version_tag != ''
++    vconf.set('VERSION_GIT', '"@0@"'.format(version_tag))
++else
++    r = run_command('meson-vcs-tag.sh',
++                    meson.current_source_dir(),
++                    meson.project_version(),
++                    check: true)
++    vconf.set('VERSION_GIT', '"@0@"'.format(r.stdout().strip()))
++endif
++version_h = configure_file(
++    output: 'tc_version.h',
++    configuration: vconf
++)
++
++add_project_arguments(
++    [
++      '-D_GNU_SOURCE',
++      '-include', 'config.h',
++    ],
++    language : 'c',
++)
++
++incdir = include_directories(['.', 'include'])
++
++# libtracecmd: trace-cmd currently depends on a statically linked
++# libtracecmd.  libtracecmd is sill very strongly coupled with
++# trace-cmd (or the other way around). To reduce the development setup
++# complexity we add some of the 'top meson.build' from libtracecmd and
++# make it simpler to use.
++library_version = '1.3.0'
++libtracecmd_standalone_build = false
++libtracecmd_ext_incdir = include_directories(['include',
++                                              'include/trace-cmd',
++                                              'tracecmd/include'])
++subdir('lib/trace-cmd/include')
++subdir('lib/trace-cmd/include/private')
++subdir('lib/trace-cmd')
++
++# trace-cmd
++subdir('tracecmd')
++subdir('python')
++if cunit_dep.found()
++    subdir('utest')
++endif
++if get_option('docs-build')
++    subdir('Documentation/trace-cmd')
++endif
+diff --git a/meson_options.txt b/meson_options.txt
+new file mode 100644
+index 000000000000..494684de7fb0
+--- /dev/null
++++ b/meson_options.txt
+@@ -0,0 +1,25 @@
++# -*- mode: meson -*-
++# SPDX-License-Identifier: GPL-2.0
++
++option('version-tag', type : 'string',
++       description : 'override the git version string')
++option('vsock', type : 'boolean', value : true,
++       description : 'build with vsock support')
++option('ptrace', type : 'boolean', value : true,
++       description : 'build with ptrace support')
++option('docs-build', type : 'boolean', value : false,
++       description : 'build documentation')
++option('htmldir', type : 'string', value : '',
++       description : 'directory for HTML documentation')
++option('asciidoctor', type : 'boolean', value: false,
++       description : 'use asciidoctor instead of asciidoc')
++option('docbook-xls-172', type : 'boolean', value : false,
++       description : 'enable docbook XLS 172 workaround')
++option('asciidoc-no-roff', type : 'boolean', value : false,
++       description : 'enable no roff workaround')
++option('man-bold-literal', type : 'boolean', value : false,
++       description : 'enable bold literals')
++option('docbook-suppress-sp', type : 'boolean', value : false,
++       description : 'docbook suppress sp')
++option('python', type : 'combo', choices : ['auto', 'true', 'false'],
++       description : 'Generate trac-cmd Python bindings')
+diff --git a/python/meson.build b/python/meson.build
+new file mode 100644
+index 000000000000..dab3fab72994
+--- /dev/null
++++ b/python/meson.build
+@@ -0,0 +1,40 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++
++want_python = get_option('python')
++if want_python != 'false'
++    python3 = import('python').find_installation('python3')
++    py3_dep = python3.dependency(required: want_python == 'true')
++    swig = find_program('swig', required: want_python == 'true')
++    header_found = cc.has_header('Python.h', dependencies: py3_dep)
++    have_python_support = py3_dep.found() and swig.found() and header_found
++else
++    have_python_support = false
++endif
++
++if have_python_support
++    pymod_swig = custom_target(
++        'ctracecmd.py',
++        input:   ['ctracecmd.i'],
++        output:  ['ctracecmd.py', 'ctracecmd_wrap.c'],
++        command: [swig, '-python',
++                  '-I' + meson.current_source_dir() + '/../include/trace-cmd',
++                  '-I' + libtraceevent_dep.get_pkgconfig_variable('prefix') +
++                         '/include/traceevent',
++                  '-o', '@OUTPUT1@', '@INPUT0@'],
++        install: true,
++        install_dir: [python3.get_install_dir(pure: false, subdir: 'trace-cmd'), false],
++    )
++
++    incdir_py = include_directories(['.', '../include/trace-cmd'])
++
++    pyctracecmd_clib = python3.extension_module(
++        '_ctracecmd',
++        pymod_swig[1],
++        dependencies : [libtraceevent_dep, libtracefs_dep, py3_dep],
++        include_directories: [incdir, incdir_py],
++        install: true,
++        subdir: 'trace-cmd',
++    )
++endif
+diff --git a/tracecmd/meson.build b/tracecmd/meson.build
+new file mode 100644
+index 000000000000..8f2316d5bf3f
+--- /dev/null
++++ b/tracecmd/meson.build
+@@ -0,0 +1,57 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++
++sources = [
++    'trace-agent.c',
++    'trace-check-events.c',
++    'trace-clear.c',
++    'trace-cmd.c',
++    'trace-convert.c',
++    'trace-dump.c',
++    'trace-hist.c',
++    'trace-list.c',
++    'trace-listen.c',
++    'trace-mem.c',
++    'trace-profile.c',
++    'trace-read.c',
++    'trace-record.c',
++    'trace-restore.c',
++    'trace-setup-guest.c',
++    'trace-show.c',
++    'trace-snapshot.c',
++    'trace-split.c',
++    'trace-stack.c',
++    'trace-stat.c',
++    'trace-stream.c',
++    'trace-tsync.c',
++    'trace-usage.c',
++    'trace-vm.c',
++]
++
++if vsock_defined
++    sources += 'trace-vsock.c'
++endif
++
++trace_cmd_incdir = include_directories(['.', 'include'])
++
++executable(
++    'trace-cmd',
++    sources,
++    dependencies: [libtraceevent_dep,
++                   libtracefs_dep,
++                   zlib_dep,
++                   libzstd_dep,
++                   audit_dep],
++    include_directories: [incdir,
++                          trace_cmd_incdir,
++                          libtracecmd_incdir,
++                          libtracecmd_private_incdir,
++                          libtracecmd_ext_incdir],
++    link_with: [static_libtracecmd],
++    install: true,
++    install_dir: bindir,
++)
++
++install_data('trace-cmd.bash',
++             install_dir: datadir + '/bash-completion/completions')
+diff --git a/utest/meson.build b/utest/meson.build
+new file mode 100644
+index 000000000000..4f87515f3d1c
+--- /dev/null
++++ b/utest/meson.build
+@@ -0,0 +1,25 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Copyright (c) 2022 Daniel Wagner, SUSE LLC
++
++sources = [
++    'tracecmd-utest.c',
++    'trace-utest.c',
++]
++
++e = executable(
++   'trace-utest',
++   sources,
++   include_directories: [incdir,
++                         libtracecmd_incdir,
++                         libtracecmd_private_incdir,
++                         libtracecmd_ext_incdir],
++   dependencies: [libtraceevent_dep,
++                  libtracefs_dep,
++                  zlib_dep,
++                  libzstd_dep,
++                  cunit_dep],
++   link_with: [static_libtracecmd],
++)
++
++test('trace-utest', e)
+-- 
+2.39.0
+

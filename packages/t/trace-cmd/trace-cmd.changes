@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec 27 09:28:02 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (3.1.5)
+  - Let subcommand "convert" automatically compress if possible
+  - Fix calculation of pipe_size (which defaulted to just page size)
+- Build project with Meson
+  * add 0001-libtracecmd-Add-initial-support-for-meson.patch
+  * add 0002-trace-cmd-Add-initial-support-for-meson.patch
+  * remove 0001-build-Only-consider-trace-cmd-documentation.patch
+  * remove 0002-build-Obey-package-guidelines-for-bash-completions.patch
+
+-------------------------------------------------------------------
 Wed Aug 24 07:51:55 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (3.1.2)
