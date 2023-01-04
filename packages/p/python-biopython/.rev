@@ -65,4 +65,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>966669</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>22b6b89ce7ff3d8c93e46350e725aca6</srcmd5>
+    <version>1.80</version>
+    <time>1672851227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.80:
+  * This release of Biopython supports Python 3.7, 3.8, 3.9, 3.10, 3.11. It
+    has also been tested on PyPy3.7 v7.3.5.
+  * Functions ``read``, ``parse``, and ``write`` were added to ``Bio.Align``
+    to read and write ``Alignment`` objects.
+  * Because dict retains the item order by default since Python3.6, all
+    instances of ``collections.OrderedDict`` have been replaced by either standard
+    ``dict`` or where appropriate by ``collections.defaultsdict``.
+  * The ``Bio.motifs.jaspar.db`` now returns ``tf_family`` and ``tf_class``
+    as a string array since the JASPAR 2018 release.
+  * The Local Composition Complexity functions from ``Bio.SeqUtils`` now
+    uses base 4 log instead of 2 as stated in the original reference Konopka
+    (2005), * Sequence Complexity and Composition.  https://doi.org/10.1038/npg.els.0005260
+  * Append mode is now supported in ``Bio.bgzf`` (and a bug parsing blocked
+    GZIP files with an internal empty block fixed).
+  * The experimental warning was dropped from ``Bio.phenotype`` (which was
+    new in Biopython 1.67).
+  * Sequences now have a ``defined`` attribute that returns a boolean
+    indicating if the underlying data is defined or not.
+  * The ``Bio.PDB`` module now includes a structural alignment module, using
+    the combinatorial extension algorithm of Shindyalov and Bourne, commonly
+    known as CEAlign. The module allows for two structures to be aligned based solely
+    on their 3D conformation, ie. in a sequence-independent manner. The method
+    is particularly powerful when the structures shared a very low degree of
+    sequence similarity. The new module is available in ``Bio.PDB.CEAligner`` with an
+    interface similar to other 3D superimposition modules.
+  * A new module ``Bio.PDB.qcprot`` implements the QCP superposition
+    algorithm in pure Python, deprecating the existing C implementation. This leads to a
+    slight performance improvement and to much better maintainability. The
+    refactored ``qcprot.QCPSuperimposer`` class has small changes to its API, to better</comment>
+    <requestid>1055870</requestid>
+  </revision>
 </revisionlist>
