@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 22 22:13:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.10
+  * Provide script to create password file
+  * Disable ProtectClock in sispmctl.service
+  * Minor fixes
+
+-------------------------------------------------------------------
 Sat Apr 10 07:59:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.9
