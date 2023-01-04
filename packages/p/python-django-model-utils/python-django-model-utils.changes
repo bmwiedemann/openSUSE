@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:46:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * Confirm support for `Django 4.0`
+  * Add Spanish translation
+  * Add French translation
+  * Drop Django 1.7 workaround from `select_subclasses()`
+  * Drop support for `Django < 3.2`
+  * Drop support for `Python 3.6`
+  * Confirm support for `Django 4.1`
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
