@@ -59,7 +59,7 @@ chmod 644 README* COPYING NEWS
 
 %install
 %make_install
-%if ! 0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 for i in lscfg lsmcode lsvio lsvpd update-lsvpd-db
 do
@@ -88,7 +88,7 @@ exit 0
 %doc README NEWS
 %dir %{_sysconfdir}/lsvpd
 %attr (644,root,root) %config %{_sysconfdir}/lsvpd/*
-%if ! 0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %attr (755,root,root) %{_sbindir}/*
