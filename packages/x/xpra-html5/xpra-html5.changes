@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec 27 20:08:05 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 7.0+git20221227.017148e:
+  * workaround for setuptools breakage in version 61 and later
+  * typo
+  * Linting
+  * firefox cancas flicker
+  * bitmap_options.set() is not defined
+  * throttle fix
+
+-------------------------------------------------------------------
 Tue Nov 29 16:37:27 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 7.0+git20221031.f1e0fa1:
