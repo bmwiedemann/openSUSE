@@ -1,7 +1,7 @@
 #
 # spec file for package adcli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%define filehash 30880d967e79cee789194435e70fbf30
-%define sighash 1075c948917caa32464c15ec9b6c5caf
+%define filehash ea560656ac921b3fe0d455976aaae9be
+%define sighash 429430e8cf4ddac8a95fb90379adc120
 Name:           adcli
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Tool for performing actions on an Active Directory domain
 License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://gitlab.freedesktop.org/realmd/adcli
-Source0:        https://gitlab.freedesktop.org/sbose/adcli/uploads/%{filehash}/%{name}-%{version}.tar.gz
-Source2:        https://gitlab.freedesktop.org/sbose/adcli/uploads/%{sighash}/%{name}-%{version}.tar.gz.sig
-# https://keys.openpgp.org/vks/v1/by-fingerprint/4A21C23848CDC107F487939849236C40EE9D57EB
+Source0:        https://gitlab.freedesktop.org/realmd/adcli/uploads/%{filehash}/%{name}-%{version}.tar.gz
+Source2:        https://gitlab.freedesktop.org/realmd/adcli/uploads/%{sighash}/%{name}-%{version}.tar.gz.sig
+# https://keys.openpgp.org/vks/v1/by-fingerprint/287939DF062AD8C53876A535C2D7B98A934EEC17
 Source3:        %{name}.keyring
-Patch1:         0001-configure-check-for-ns_get16-and-ns_get32-as-well.patch
 BuildRequires:  automake
 BuildRequires:  libxslt-tools
 BuildRequires:  openldap2-devel
