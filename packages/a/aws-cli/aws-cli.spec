@@ -1,7 +1,7 @@
 #
 # spec file for package aws-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.27.26
+Version:        1.27.41
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -35,7 +35,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.0.0
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.29.26
+Requires:       python3-botocore >= 1.29.41
 Requires:       python3-colorama <= 0.5.0
 Requires:       python3-colorama >= 0.2.5
 Requires:       python3-docutils < 0.20
@@ -52,7 +52,7 @@ BuildRequires:  python-setuptools
 Requires:       python
 Requires:       python-PyYAML <= 5.5
 Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.29.26
+Requires:       python-botocore >= 1.29.41
 Requires:       python-colorama <= 0.5.0
 Requires:       python-colorama >= 0.2.5
 Requires:       python-docutils >= 0.10
