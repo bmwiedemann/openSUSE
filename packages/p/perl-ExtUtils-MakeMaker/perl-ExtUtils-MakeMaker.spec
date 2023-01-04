@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-MakeMaker
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name ExtUtils-MakeMaker
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.64
+Version:        7.66
 Release:        0
-Summary:        Create a module Makefile
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Create a module Makefile
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BI/BINGOS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -70,6 +70,7 @@ find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/scrip
 export BUILDING_AS_PACKAGE=1
 %{__perl} Makefile.PL INSTALLDIRS=vendor
 %{__make} %{?_smp_mflags}
+
 %check
 make test
 
