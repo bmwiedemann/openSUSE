@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:06:51 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.200013
+   see /usr/share/doc/packages/perl-Config-MVP/Changes
+
+  2.200013  2022-12-31 13:48:05-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+          - I know, there are still some open issues at this point, but I am
+            mostly looking to get metadata updated on many dists, and not
+            carefully reading bug reports.  Sorry!
+
+-------------------------------------------------------------------
 Sun Jan 10 03:07:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.200012

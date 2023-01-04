@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-MVP
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Config-MVP
 Name:           perl-Config-MVP
-Version:        2.200012
+Version:        2.200013
 Release:        0
-Summary:        Multivalue-property package-oriented configuration
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Multivalue-property package-oriented configuration
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Load) >= 0.17
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Module::Pluggable::Object)
 BuildRequires:  perl(Moose) >= 0.91
 BuildRequires:  perl(Moose::Role)
