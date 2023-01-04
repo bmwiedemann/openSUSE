@@ -55,14 +55,14 @@ make %{?_smp_mflags}
 pushd %{buildroot}/%{_mandir}
 find . -type f -exec chmod -x {} \;
 popd
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -s %{_sbindir}/udhcpc %{buildroot}/sbin
 %endif
 
 %files
 %defattr(-,root,root)
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %{_bindir}/*
