@@ -17,14 +17,14 @@
 
 
 Name:           lapce
-Version:        0.2.4
+Version:        0.2.5+git17
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
 License:        (0BSD OR Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND MIT AND (Artistic-2.0 OR CC0-1.0) AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND MPL-2.0+ AND Zlib AND zlib-acknowledgement AND Apache-2.0
 Group:          Productivity/Text/Editors
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -69,7 +69,7 @@ install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/images/logo.png %{buildro
 
 %files
 %license LICENSE
-%doc README.md docs
+%doc README.md docs/*.md
 %{_bindir}/lapce
 %{_bindir}/lapce-proxy
 %{_datadir}/metainfo/dev.lapce.lapce.metainfo.xml

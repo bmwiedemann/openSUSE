@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Wed Dec 28 03:19:52 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.5+git17:
+  * Update julia queries, fix indent guide (#1862)
+  * Remove a lot small vector allocation for `lapce_core::syntax::find_tag` (#1841)
+  * Rewriting the `Snippet` methods (#1818)
+  * Remove a lot small vector allocation in `find_matching_pair` (#1839)
+  * Implement mouse keybinds (#1835)
+  * Remove unnecessary vector allocation in `LapceTerminalPanelHeaderContent::update` (#1836)
+  * Remove unnecessary Arc<String> indirection in `Document.ime_text` (#1822)
+  * Remove unnecessary vector allocation in `TerminalPanel::update` (#1834)
+  * Don't use the active editor's view id for opening file diff (#1838)
+  * fix: add option to change remote svg icon colour (#1820)
+  * fix: hide language/text details on non-editor tabs (#1776)
+  * Plugin settings shown on right click (#1831)
+  * Add Clojure language support (#1830)
+  * minor fixes to scope and bracket highlight (#1824)
+  * Revert "fix(clippy): clippy::manual_clamp" (#1817)
+  * Apply clippy recommendations (#1815)
+  * updated csharp syntax properties (#1814)
+  * bump version
+  * Add sticky header theming option (#1794)
+  * Use more standardized java indentation (#1808)
+  * Code action change (#1807)
+  * Fix some LSP bugs causing code actions to not show up correctly (#1805)
+  * Fix "Open Keyboard Shortcuts" enum. (#1803)
+  * Updated link to Ropes: An Alternative to Strings (#1800)
+  * highlight scope lines (#1791)
+  * Update entries in file & edit menu (#1788)
+  * add file menu (#1786)
+  * format keybinding name on settings to Capital case. (#1778)
+  * configure dir walker builder instead of default (#1780)
+  * switch terminal tabs (#1777)
+  * terminal tab text color fix
+  * added ctrl+y redo keymap (#1773)
+  * vertical scroll for horizontal only taks effect when there's no horizontal scroll
+  * add terminal tab (#1770)
+  * Add error dialog for invalid syntax highlighting schemes (#1772)
+  * fix: update tree-sitter-bash (#1771)
+  * added cmake support (#1767)
+  * Revert "(band-aid) fix opening some file types crashing lapce (#1764)" (#1768)
+  * (band-aid) fix opening some file types crashing lapce (#1764)
+  * Update C tree-sitter (#1759)
+  * update dlang treesitter (#1758)
+  * Add vim motions cw, ce, cc, S, and QOL modal bind gf (#1760)
+  * Limit search response size (#1753)
+  * ssh user is optional
+  * ssh remote supports port (#1756)
+  * fix recent workspace crash (#1755)
+  * put recent workspaces to db (#1752)
+  * don't send completion request again before response is back (#1746)
+  * Add syntax highlighting for glsl. (#1741)
+  * Fix enclosing parentheses crash (#1745)
+  * ci: use edge branch for alpinelinux (#1743)
+  * fix plugin can't upgrade issue (#1737)
+  * prevent volt loading on files and hidden file/folders (#1724)
+  * Add protobuf language support (#1713)
+  * esc cancel snippet
+  * command palette keymap paint implementation change
+  * signature position change (#1736)
+  * docs: update changelog
+  * Add save without formatting; Allow toggling of formatting for autosave (#1722)
+  * Display the keybinding of a command within the palette (#1723)
+  * lsp response fix
+  * feat: more theme keys (#1726)
+  * Impl displaying signature from LSP (#1720)
+  * bump version
+  * update changelog
+  * add support for plugin request (#1715)
+  * update changelog
+  * Fix visual bug in search panel (#1708)
+  * Use IndexMap to avoid changing search result order (#1709)
+  * add zstd support for plugin (#1711)
+  * Fix autosave trying to save scratch files
+  * chore(deps): bump tree-sitter-md from `e375ba9` to `272e080`
+  * fix: remove useless language tests (#1707)
+  * theme settings fix (#1706)
+  * fix: sort languages
+  * fix: update lockfile
+  * add codelens and sticky headers for Dart (#1690)
+  * add prisma support (#1700)
+  * added queries for svelte (#1702)
+  * bump version
+  * load volts event to tab
+  * ci: fix importing codesign certs (#1673)
+  * render installed plugin icons (#1670)
+  * feat: add status.foreground theme key (#1655)
+  * fix: add schemas, sort base colours, fix light theme (#1667)
+  * remember panels when open folder (#1669)
+  * ci: remove deprecated features (#1630)
+  * feat: use respective icons for extension/settings tabs (#1663)
+  * fix: drop stdin/stdout to not pollute terminal (#1662)
+  * fix: use correct python identation (#1666)
+  * fix: hide terminal window when launching lapce (#1658)
+  * feat: fork by default when started from terminal (#1646)
+  * don't clear icon when search plugin
+  * paint plugin icons (#1653)
+  * Fix: new windows would never be created after closing all (#1651)
+  * add plugin search (#1645)
+  * Implement "Reveal in File Tree" (#1644)
+  * bump to 0.2.2
+  * update changelog
+  * using plugin registry (#1643)
+  * add sticky headers to julia (#1636)
+  * fix(clippy): needless borrow (#1641)
+  * clippy fix (#1640)
+  * fix: update xi_rope import name (#1635)
+  * rustfmt
+  * update lapce-rpc cargo.toml
+  * xi-rope switch to crates.io
+  * safeguard char_at_offset
+  * Fix kts files not being recognized
+  * add config for brackets higlihghting
+  * Highlight matching brackets (#1421)
+  * chore(deps): bump zip from 0.6.2 to 0.6.3 (#1600)
+  * feat: added show hover keyboard shortcut (#1620)
+  * some style tweaks
+  * feat: add tab in/active, add primary button colours (#1619)
+  * fix: stackoverflow on sorting large number of PaletteItems (#1617)
+  * fix(editor): diagnosis cause cursor x calculate error (#1615)
+  * Add syntax highlighting for erlang. (#1609)
+  * add icon to volt meta
+  * Detect the .Containerfile file extension as a Dockerfile (#1603)
+  * fix: use proper colour for symbols (#1613)
+  * bump druid
+  * add icon size
+  * theme key name fix
+  * Plugin tab now accepts keyboard inputs (#1601)
+  * chore(deps): bump smallvec from 1.9.0 to 1.10.0 (#1582)
+  * chore(deps): bump tree-sitter-swift from 0.3.3 to 0.3.4 (#1584)
+  * Add ability to open file/file diff from source control context menu (#1590)
+  * feat: add goto definition var link (#1589)
+  * linux release github action
+  * add g++ in ubuntu
+  * chore(deps): bump serde_json from 1.0.85 to 1.0.87 (#1585)
+  * chore(deps): bump codecov/codecov-action from 2 to 3 (#1579)
+  * load panel infomartion for workspaces with no open folder
+  * Basic Tab Context Menu for #736 (#1570)
+  * show no readme if plugin doesn't have one
+  * ci: remove unmaintained action (#1580)
+  * fix: update rust-cache action (#1578)
+  * Update building-from-source.md
+  * fix: bump required rust-version (#1577)
+  * fix: remove .devcontainer (#1576)
+  * Fix overflow crash when editor is sluggish (#1575)
+  * Add ability to copy active editor remote file url to clipboard (#1560)
+  * Add ability to discard file changes from context menu in source control (#1510)
+  * fix: correct svg icons (#1569)
+  * icon size
+  * fix: rename drag/drop colour, use it for panels (#1568)
+  * icon svg refactor (#1567)
+  * multiple fixes (#1566)
+  * Several fixes to the About modal (#1565)
+  * Clear commands every time we paint which will insert the link rects (#1564)
+  * decide color theme is light or dark
+  * fix: correct icons used (#1561)
+  * about style change
+  * Icon themes (#1459)
+  * feat(tree-sitter): Add XML support (#1554)
+  * fix tree sitter edit once more (#1556)
+  * feat: add option to open plugin directory (#1548)
+  * key binding fix
+  * Add support for empty setting items (#1547)
+  * hover size improvement
+  * order palette items according to last execute time (#1541)
+  * Update CHANGELOG.md
+  * feat(tree-sitter): add sql language (#1472)
+  * github: add github issues config (#1538)
+  * Update release.yml
+
+-------------------------------------------------------------------
 Wed Nov 30 10:07:18 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO which has been enabled in previous commit, since it
@@ -82,7 +253,7 @@ Tue Oct 25 21:46:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 - Change to rust tier 1 arches. Fails on ix86 archs.
 
 -------------------------------------------------------------------
-Sat Oct 15 22:03:51 UTC 2022 - socvirnyl.estela@gmail.com
+Sat Oct 15 22:03:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.2.1+git22:
   * add tests
@@ -145,7 +316,7 @@ Tue Oct 11 13:43:30 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 - Add more memory to avoid memory exhaustion in the _constraints file.
 
 -------------------------------------------------------------------
-Tue Oct 11 12:38:56 UTC 2022 - socvirnyl.estela@gmail.com
+Tue Oct 11 12:38:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.2.0+git321:
   * global search box style change
@@ -240,7 +411,7 @@ Sat Aug  6 03:59:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 - update specfile
 
 -------------------------------------------------------------------
-Fri Jul 15 14:19:28 UTC 2022 - socvirnyl.estela@gmail.com
+Fri Jul 15 14:19:28 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.1.3:
   * bump version
@@ -369,7 +540,7 @@ Fri Jun 17 12:27:37 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
   * Add Fedora build deps
 
 -------------------------------------------------------------------
-Tue May 24 07:21:21 UTC 2022 - socvirnyl.estela@gmail.com
+Tue May 24 07:21:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.1.1~0:
   * fix modifiers
@@ -433,7 +604,7 @@ Tue May 24 07:21:21 UTC 2022 - socvirnyl.estela@gmail.com
   * Removed min window size
 
 -------------------------------------------------------------------
-Tue May 24 07:12:44 UTC 2022 - socvirnyl.estela@gmail.com
+Tue May 24 07:12:44 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.1.0~0:
   * wix version bump
@@ -452,7 +623,7 @@ Tue May 24 05:01:48 UTC 2022 - William Brown <william.brown@suse.com>
 - Automatic update of vendored dependencies
 
 -------------------------------------------------------------------
-Tue May 24 04:30:21 UTC 2022 - socvirnyl.estela@gmail.com
+Tue May 24 04:30:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.1.0~0:
   * wix version bump
@@ -466,7 +637,7 @@ Tue May 24 04:30:21 UTC 2022 - socvirnyl.estela@gmail.com
   * Clean up split
 
 -------------------------------------------------------------------
-Tue May 17 15:46:51 UTC 2022 - socvirnyl.estela@gmail.com
+Tue May 17 15:46:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.1.0~0:
   * wix version bump

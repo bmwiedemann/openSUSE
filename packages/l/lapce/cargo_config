@@ -39,12 +39,21 @@ git = "https://github.com/WhatsApp/tree-sitter-erlang"
 branch = "main"
 replace-with = "vendored-sources"
 
+[source."https://github.com/abreumatheus/tree-sitter-clojure"]
+git = "https://github.com/abreumatheus/tree-sitter-clojure"
+replace-with = "vendored-sources"
+
 [source."https://github.com/elixir-lang/tree-sitter-elixir.git"]
 git = "https://github.com/elixir-lang/tree-sitter-elixir.git"
 replace-with = "vendored-sources"
 
 [source."https://github.com/fwcd/tree-sitter-kotlin"]
 git = "https://github.com/fwcd/tree-sitter-kotlin"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source."https://github.com/ghishadow/tree-sitter-d"]
+git = "https://github.com/ghishadow/tree-sitter-d"
 branch = "main"
 replace-with = "vendored-sources"
 
@@ -116,18 +125,8 @@ git = "https://github.com/panekj/tree-sitter-yaml"
 branch = "master"
 replace-with = "vendored-sources"
 
-[source."https://github.com/syntacti/tree-sitter-bash"]
-git = "https://github.com/syntacti/tree-sitter-bash"
-branch = "master"
-replace-with = "vendored-sources"
-
 [source."https://github.com/syntacti/tree-sitter-css"]
 git = "https://github.com/syntacti/tree-sitter-css"
-branch = "master"
-replace-with = "vendored-sources"
-
-[source."https://github.com/syntacti/tree-sitter-d"]
-git = "https://github.com/syntacti/tree-sitter-d"
 branch = "master"
 replace-with = "vendored-sources"
 
@@ -143,6 +142,16 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/szebniok/tree-sitter-wgsl"]
 git = "https://github.com/szebniok/tree-sitter-wgsl"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/theHamsta/tree-sitter-glsl"]
+git = "https://github.com/theHamsta/tree-sitter-glsl"
+branch = "add-highlights.scm"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-bash"]
+git = "https://github.com/tree-sitter/tree-sitter-bash"
 branch = "master"
 replace-with = "vendored-sources"
 
@@ -185,15 +194,15 @@ replace-with = "vendored-sources"
 git = "https://github.com/vantreeseba/tree-sitter-haxe"
 replace-with = "vendored-sources"
 
-[source."https://github.com/varlad/tree-sitter-julia"]
-git = "https://github.com/varlad/tree-sitter-julia"
-branch = "master"
+[source."https://github.com/varlad/tree-sitter-julia.git"]
+git = "https://github.com/varlad/tree-sitter-julia.git"
+branch = "lapce"
+replace-with = "vendored-sources"
+
+[source."https://github.com/yusdacra/tree-sitter-protobuf"]
+git = "https://github.com/yusdacra/tree-sitter-protobuf"
+branch = "main"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]
 directory = "vendor"
-
-[profile.release]
-lto = false
-codegen-units = 1
-strip = "symbols"
