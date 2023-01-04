@@ -159,4 +159,14 @@
     <comment></comment>
     <requestid>976096</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>42c32d022b798c67f219128d9d467772</srcmd5>
+    <version>3.1.0</version>
+    <time>1672851219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Added testing against Django 3.2 and 4.0.
+  * addressed a packaging issue with 3.0.0</comment>
+    <requestid>1055856</requestid>
+  </revision>
 </revisionlist>

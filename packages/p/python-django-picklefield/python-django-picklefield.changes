@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:13:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Added testing against Django 3.2 and 4.0.
+  * addressed a packaging issue with 3.0.0
+
+-------------------------------------------------------------------
 Tue May 10 12:14:55 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
