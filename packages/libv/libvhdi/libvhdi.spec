@@ -1,7 +1,7 @@
 #
 # spec file for package libvhdi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,7 +93,8 @@ Tools to access the Virtual Hard Disk (VHD) image format.  See libvhdi for addit
 Summary:        Development files for libvhdi, a VHD image format library
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libvhdi is a library to access the Virtual Hard Disk (VHD) image format.  see libvhdi for details.
