@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-screensaver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,6 @@
 
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
-%endif
-%if 0%{?usrmerged}
-%define chkpwd %{_sbindir}/unix2_chkpwd
-%else
-%define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
 Version:        5.1.0+0
