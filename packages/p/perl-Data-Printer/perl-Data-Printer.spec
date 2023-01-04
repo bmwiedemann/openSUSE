@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Printer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Data-Printer
 Name:           perl-Data-Printer
-Version:        1.000004
+Version:        1.001000
 Release:        0
-Summary:        Colored & full-featured pretty print of Perl data structures and objects
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Colored & full-featured pretty print of Perl data structures and objects
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GA/GARU/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
