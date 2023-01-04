@@ -158,4 +158,14 @@
 - More specific python_sitelib in %files</comment>
     <requestid>1037154</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fb3192c26c40558940dcfce99565df41</srcmd5>
+    <version>1.0.5</version>
+    <time>1672851219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Adds testing against latest non-EOL Python and Django versions and
+    updates package metadata accordingly.</comment>
+    <requestid>1055854</requestid>
+  </revision>
 </revisionlist>

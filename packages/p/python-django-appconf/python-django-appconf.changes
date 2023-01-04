@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:11:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Adds testing against latest non-EOL Python and Django versions and
+    updates package metadata accordingly.
+
+-------------------------------------------------------------------
 Mon Nov 21 17:19:34 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six dependency.
