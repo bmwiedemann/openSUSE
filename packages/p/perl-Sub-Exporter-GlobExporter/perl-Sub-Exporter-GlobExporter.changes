@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  3 03:10:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-Sub-Exporter-GlobExporter/Changes
+
+  0.006     2022-12-31 16:56:16-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Wed Nov 11 10:31:21 UTC 2015 - coolo@suse.com
 
 - updated to 0.005
