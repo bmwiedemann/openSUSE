@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:16:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.5:
+  * Fixed a few errors in example and tutorial notebooks
+  * Fixed a typo in requirements.txt
+
+-------------------------------------------------------------------
 Tue Nov 22 17:20:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.4

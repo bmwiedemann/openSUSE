@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1037506</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cdabcd5f9b784044de45594f9f590738</srcmd5>
+    <version>3.0.5</version>
+    <time>1672851226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.5:
+  * Fixed a few errors in example and tutorial notebooks
+  * Fixed a typo in requirements.txt</comment>
+    <requestid>1055859</requestid>
+  </revision>
 </revisionlist>

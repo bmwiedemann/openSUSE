@@ -1,7 +1,7 @@
 #
 # spec file for package python-chartify
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         skip_python2 1
 Name:           python-chartify
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Python library for plotting charts
 License:        Apache-2.0
@@ -52,12 +52,10 @@ rm tox.ini
 # raise bokeh upper limit,
 # unpin selenium (see comment above)
 # unpin Jinja2 (see release notes), but keep a pinning char for the check in setup.py
-# pandas: https://github.com/spotify/chartify/pull/143
 sed -i \
   -e '/bokeh/ s/,<2.3.0/,<2.5/' \
   -e '/selenium/ s/,<=3.8.0//' \
   -e '/Jinja2/ s/<3.1.0/>1/' \
-  -e '/pandas/ s/0<2.0.0/0,<2.0.0/' \
   requirements.txt
 
 %build
