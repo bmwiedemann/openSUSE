@@ -167,4 +167,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>delete system-libs.patch</comment>
     <requestid>1038454</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>7ddd254175c1d7dff0534f3139b2c81f</srcmd5>
+    <version>20221022</version>
+    <time>1672851083</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046575</requestid>
+  </revision>
 </revisionlist>

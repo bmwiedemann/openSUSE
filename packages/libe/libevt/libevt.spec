@@ -1,7 +1,7 @@
 #
 # spec file for package libevt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,7 @@ Summary:        Development files for libevt, a Windows event file parser
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libevt is a library to access the Windows Event Log (EVT) format.
