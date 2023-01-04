@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-rq
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Simple app that provides django integration for RQ (Redis Queue)
 License:        MIT

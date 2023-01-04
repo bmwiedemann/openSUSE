@@ -8,4 +8,15 @@
 already being maintained over a long period by https://build.opensuse.org/users/zombah as needed by netbox</comment>
     <requestid>1009646</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>90d977b15240aec84b3843dc1ed8a780</srcmd5>
+    <version>2.6.0</version>
+    <time>1672859911</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.6.0:
+  * Added --max-jobs argument to rqworker management command.
+  * Remove job from ScheduledJobRegistry if a scheduled job is enqueued from
+    admin. Thanks @robertaistleitner!</comment>
+    <requestid>1055950</requestid>
+  </revision>
 </revisionlist>

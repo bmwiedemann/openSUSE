@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:21:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.6.0:
+  * Added --max-jobs argument to rqworker management command.
+  * Remove job from ScheduledJobRegistry if a scheduled job is enqueued from
+    admin. Thanks @robertaistleitner!
+
+-------------------------------------------------------------------
 Tue Oct 11 01:46:54 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
