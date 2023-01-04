@@ -268,4 +268,17 @@
     <comment></comment>
     <requestid>1040246</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3adf411af285941a56c3f6d3d480aa52</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  * Support for authentication headers with multiple challenges.
+  * Fixed various weaknesses within multipart decoding process.
+  * Fixed endless UDP transaction in a specific scenario.
+  * Fixed various crashes.
+</comment>
+    <requestid>1055795</requestid>
+  </revision>
 </revisionlist>

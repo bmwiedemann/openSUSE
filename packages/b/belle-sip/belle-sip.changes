@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:26:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6:
+  * Support for authentication headers with multiple challenges.
+  * Fixed various weaknesses within multipart decoding process.
+  * Fixed endless UDP transaction in a specific scenario.
+  * Fixed various crashes.
+
+-------------------------------------------------------------------
 Mon Dec  5 10:45:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.72:
