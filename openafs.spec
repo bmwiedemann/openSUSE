@@ -1,7 +1,7 @@
 #
 # spec file for package openafs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.9pre2
+%define upstream_version 1.8.9
 
 Name:           openafs
 
-Version:        1.8.9~pre2
+Version:        1.8.9
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
