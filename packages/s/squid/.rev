@@ -1088,4 +1088,12 @@ and CVE references,
     (bsc#1203680, CVE-2022-41318)</comment>
     <requestid>1006088</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>c9313013a57836b7de9b48dd1e567b0a</srcmd5>
+    <version>5.7</version>
+    <time>1672851230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055875</requestid>
+  </revision>
 </revisionlist>

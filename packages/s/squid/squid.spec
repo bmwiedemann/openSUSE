@@ -1,7 +1,7 @@
 #
 # spec file for package squid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -201,7 +201,12 @@ mv %{buildroot}%{_sbindir}/cachemgr.cgi %{buildroot}/%{_libdir}/%{name}
 
 install -dpm 755 doc/contrib
 install %{SOURCE6} doc/contrib
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -Dpm 644 %{SOURCE5} %{buildroot}%{_pam_vendordir}/%{name}
+%else
 install -Dpm 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/pam.d/%{name}
+%endif
 
 rm -rf %{buildroot}%{squidconfdir}/errors
 for i in errors/*; do
@@ -272,7 +277,7 @@ fi
 %service_add_pre %{name}.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/%{name} ; do
+for i in logrotate.d/%{name} pam.d/%{name} ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -280,7 +285,7 @@ done
 %if 0%{?suse_version} > 1500
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/%{name} ; do
+for i in logrotate.d/%{name} pam.d/%{name} ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -346,7 +351,11 @@ fi
 %config %{squidconfdir}/errorpage.css.default
 %config %{squidconfdir}/%{name}.conf.default
 %config %{squidconfdir}/%{name}.conf.documented
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/%{name}
+%else
 %config %{_sysconfdir}/pam.d/%{name}
+%endif
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/snmp
 %dir %{_datadir}/snmp/mibs

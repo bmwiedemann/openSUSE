@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 08:24:05 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Thu Sep 15 10:41:14 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
