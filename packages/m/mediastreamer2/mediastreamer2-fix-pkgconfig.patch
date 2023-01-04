@@ -1,40 +1,11 @@
-Index: mediastreamer2-5.1.64/CMakeLists.txt
-===================================================================
---- mediastreamer2-5.1.64.orig/CMakeLists.txt
-+++ mediastreamer2-5.1.64/CMakeLists.txt
-@@ -135,6 +135,21 @@ cmake_dependent_option(ENABLE_QRCODE "En
+--- mediastreamer2-5.2.6/CMakeLists.txt.orig	2023-01-04 13:43:30.797983393 +0100
++++ mediastreamer2-5.2.6/CMakeLists.txt	2023-01-04 13:44:42.302354270 +0100
+@@ -136,6 +136,8 @@
+ # * DISABLE_BC_PACKAGE_SEARCH: skip find_package() for every BC package (bctoolbox, ortp, etc.)
  # * DISABLE_SRTP_SEARCH: skip find_package() for SRTP.
  
- 
-+set(MS_PUBLIC_PACKAGES "ortp bctoolbox")
-+set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libbzrtp")
-+set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libavcodec libavutil libswscale")
-+if(ENABLE_FIXED_POINT)
-+       set(MS_PUBLIC_CFLAGS "-DMS_FIXED_POINT")
-+else(ENABLE_FIXED_POINT)
-+       set(MS_PUBLIC_CFLAGS )
-+endif()
-+set(prefix ${CMAKE_INSTALL_PREFIX})
-+set(exec_prefix ${prefix}/bin)
-+set(libdir ${CMAKE_INSTALL_LIBDIR})
-+set(includedir ${prefix}/include)
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
 +install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-+
- set(CMAKE_CXX_STANDARD 14)
+ 
+ set(CMAKE_CXX_STANDARD 17)
  set(CMAKE_CXX_EXTENSIONS NO)
- 
-Index: mediastreamer2-5.1.64/mediastreamer.pc.in
-===================================================================
---- mediastreamer2-5.1.64.orig/mediastreamer.pc.in
-+++ mediastreamer2-5.1.64/mediastreamer.pc.in
-@@ -5,7 +5,8 @@ includedir=@includedir@
- 
- Name: mediastreamer 
- Description: A mediastreaming library for telephony applications
--Requires: ortp bctoolbox
-+Requires: @MS_PUBLIC_PACKAGES@
-+Requires.private: @MS_PRIVATE_PACKAGES@
- Version: @MEDIASTREAMER_VERSION@
- Libs: -L@libdir@ -lmediastreamer_base -lmediastreamer_voip
- Cflags: -I@includedir@ @MS_PUBLIC_CFLAGS@

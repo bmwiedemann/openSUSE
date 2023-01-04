@@ -533,4 +533,29 @@
 </comment>
     <requestid>1012005</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>94d435539f8f73ed621305c2a2c4d95c</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  * Added
+    + Video conferencing features
+    + RFC6464 client-to-mixer
+    + RFC6465 mixer-to-client
+    + Video conference: added CSRC of contributor to active speaker stream.
+    + Add support for post-quantum encryption algorithms within ZRTP protocol.
+  * Changed
+    + Licence becomes AGPL-3.
+    + Improvements to Android bluetooth audio support.
+    + Performance improvements to Android Texture video renderer.
+    + Optimizations to DTLS handshake to be more robust to packet losses.
+    + libyuv used for rescaling and pixel conversion (instead of libswscale).
+  * Fixed
+    + Crash with buffer overflow in GenericPLC filter.
+    + ARM64/linux compilation.
+    + MSVideoRouter algorithm improved.
+</comment>
+    <requestid>1055797</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mediastreamer2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,20 @@
 
 %define sobase  libmediastreamer
 %define sover   11
+%define docuver 5.2.0
+
 Name:           mediastreamer2
-Version:        5.1.64
+Version:        5.2.6
 Release:        0
 Summary:        Audio/Video real-time streaming
-License:        GPL-3.0-or-later
+License:        AGPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 Patch2:         fix-build-ffmpeg5.patch
-BuildRequires:  bcmatroska2-devel >= 0.23.1
+BuildRequires:  bcmatroska2-devel >= 0.23
 BuildRequires:  broadvoice16-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -59,13 +61,13 @@ BuildRequires:  libsqlite3x-devel
 %endif
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
 BuildRequires:  pkgconfig(libbcg729)
-BuildRequires:  pkgconfig(libbzrtp) >= 5.0.0
+BuildRequires:  pkgconfig(libbzrtp) >= 5.2.0
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 5.0.0
+BuildRequires:  pkgconfig(ortp) >= 5.2.0
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(theora)
@@ -146,7 +148,7 @@ export CXXFLAGS="$CFLAGS"
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-5.1.0/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docuver}/ \
   %{buildroot}%{_docdir}/%{name}/
 
 chrpath -d %{buildroot}%{_bindir}/mediastream %{buildroot}%{_bindir}/mkvstream %{buildroot}%{_bindir}/mediastreamer2_tester

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  4 12:45:58 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6:
+  * Added
+    + Video conferencing features
+    + RFC6464 client-to-mixer
+    + RFC6465 mixer-to-client
+    + Video conference: added CSRC of contributor to active speaker stream.
+    + Add support for post-quantum encryption algorithms within ZRTP protocol.
+  * Changed
+    + Licence becomes AGPL-3.
+    + Improvements to Android bluetooth audio support.
+    + Performance improvements to Android Texture video renderer.
+    + Optimizations to DTLS handshake to be more robust to packet losses.
+    + libyuv used for rescaling and pixel conversion (instead of libswscale).
+  * Fixed
+    + Crash with buffer overflow in GenericPLC filter.
+    + ARM64/linux compilation.
+    + MSVideoRouter algorithm improved.
+
+-------------------------------------------------------------------
 Mon Oct 17 07:18:21 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.64 (no changelog).
