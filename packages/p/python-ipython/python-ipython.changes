@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan  3 14:26:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove the ipythonMAJ.MIN entrypoint
+  * gh#ipython/ipyton#13815
+  * gh#ipython/ipyton#13880
+
+-------------------------------------------------------------------
+Tue Jan  3 14:03:46 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.8.0
+  * replace the greedy completer and improve completion, in particular 
+    for dictionary keys
+  * adds py.typed to setup.cfg to make sure it is bundled in wheels
+  * implements tab completions for IPython options in the shell when 
+    using argcomplete 
+  * makes the inspector class of InteractiveShell configurable
+  * makes tests compatible with Pygments >= 2.14
+  * more changes, see upstream 8.8.0 milestone
+
+-------------------------------------------------------------------
 Sun Dec 25 19:08:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.7.0

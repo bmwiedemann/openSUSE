@@ -1205,4 +1205,12 @@
 - Move to PEP517 build</comment>
     <requestid>1045320</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c0eacb04a35c2e3dbea7cb8bd2507cec</srcmd5>
+    <version>8.8.0</version>
+    <time>1672852230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046566</requestid>
+  </revision>
 </revisionlist>

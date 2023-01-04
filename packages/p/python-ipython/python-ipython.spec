@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.7.0
+Version:        8.8.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -161,8 +161,6 @@ popd
 
 %python_clone -a %{buildroot}%{_bindir}/ipython
 %python_clone -a %{buildroot}%{_bindir}/ipython3
-# gh#ipython/ipython#13815
-%python_expand cp %{buildroot}%{_bindir}/ipython{-%{$python_bin_suffix },%{$python_bin_suffix}}
 
 # must clone after copy
 cp %{buildroot}%{_mandir}/man1/ipython{,3}.1
@@ -205,8 +203,6 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/IP
 
 %if %{with test}
 %check
-# check our fix for https://github.com/ipython/ipython/issues/13815
-%python_expand ipython%{$python_bin_suffix} --show-config | grep "Python %{$python_version}"
 export PYTHONPATH=$(pwd)
 %pytest
 %endif
@@ -233,7 +229,6 @@ export PYTHONPATH=$(pwd)
 %doc README.rst docs/source/about/license_and_copyright.rst
 %python_alternative %{_bindir}/ipython
 %python_alternative %{_bindir}/ipython3
-%{_bindir}/ipython%{python_bin_suffix}
 %python_alternative %{_mandir}/man1/ipython.1.gz
 %python_alternative %{_mandir}/man1/ipython3.1.gz
 %{python_sitelib}/IPython/
