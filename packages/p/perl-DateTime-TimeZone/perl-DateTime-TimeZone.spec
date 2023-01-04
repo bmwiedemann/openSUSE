@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.56
+Version:        2.57
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Time zone object base class and factory
