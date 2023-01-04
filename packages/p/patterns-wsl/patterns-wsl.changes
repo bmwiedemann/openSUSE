@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Dec 21 03:04:19 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting how $PREEXISTING_COMMANDS is fed into the while loop for
+  wsl_systemd
+
+-------------------------------------------------------------------
+Wed Dec 21 01:33:32 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 20221221
+  * Improved tests for [boot] section when 'command=.*$' is present so
+    as to not clobber existing commands for wsl_base & wsl_gui
+  * wsl_systemd should clear ping_group_range if present and retain any
+    existing commands
+
+-------------------------------------------------------------------
+Tue Dec 20 03:27:52 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 20221220
+  * Reworked to avoid build race condition where it seemed like there was
+    an issue during 50-check-installtest and what happens with
+    "testing for pre/postinstall scripts that are not idempotent"
+  * Adding true %post section
+
+-------------------------------------------------------------------
+Mon Dec 19 21:16:06 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding [wsl_base,gui,systemd] tags for echo output
+- Changing %post to %pre as there seems to be a problem when
+  50-check-installtest runs as %post
+
+-------------------------------------------------------------------
+Mon Dec 19 17:11:42 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 20221219
+  * Adjusting wsl_systemd %post to remove ping_group_range from wsl.conf
+    when systemd is being enabled.
+
+-------------------------------------------------------------------
+Fri Dec 16 22:33:58 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 20221216
+  * Undoing LoadCredential changes since it's NOT what was breaking WSLg
+    integration
+  * Adjusing %post code for edits to %{_sysconfdir}/wsl.conf for:
+    * wsl_base
+    * wsl_gui
+    * wsl_systemd
+
+-------------------------------------------------------------------
+Tue Dec  6 21:27:06 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 20221206
+  * Updating wsl_systemd to comment out 'LoadCredential=*' for 5 systemd
+    units:
+    * systemd-tmpfiles-setup.service
+    * systemd-tmpfiles-setup-dev.service
+    * systemd-sysctl.service
+    * systemd-tmpfiles-clean.service
+    * systemd-sysusers.service
+
+-------------------------------------------------------------------
+Thu Oct 20 23:56:49 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Moving 'xeyes' from a "Requires" to "Recommends" for wsl_gui pattern
+
+-------------------------------------------------------------------
 Thu Sep 29 15:39:56 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding a patterns-wsl-systemd <-> wsl_systemd pattern to setup 2 things:
@@ -7,7 +73,7 @@ Thu Sep 29 15:39:56 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
     boot.systemd=true entry.
 
 -------------------------------------------------------------------
-Tue Feb 22 19:18:54 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 20220222
+Tue Feb 22 19:18:54 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding lato-fonts as 'Requires' package for wsl_gui.
 
