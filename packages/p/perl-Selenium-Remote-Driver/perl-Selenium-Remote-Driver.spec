@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Selenium-Remote-Driver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Selenium-Remote-Driver
 Name:           perl-Selenium-Remote-Driver
-Version:        1.47
+Version:        1.48
 Release:        0
 License:        Apache-2.0
 Summary:        Perl Client for Selenium Remote Driver

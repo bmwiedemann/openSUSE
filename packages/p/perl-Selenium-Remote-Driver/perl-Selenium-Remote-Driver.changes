@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  3 03:08:37 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.48
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.48 2023-01-01 TEODESIAN
+      - Remove usage of undocumented firefox features for passing profiles
+
+-------------------------------------------------------------------
 Fri May  6 03:08:23 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.47
