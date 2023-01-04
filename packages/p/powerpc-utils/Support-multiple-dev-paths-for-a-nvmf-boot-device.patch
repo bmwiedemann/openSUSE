@@ -1,24 +1,31 @@
-From 32c7dc10498ebc429b1fcb81a9dda449e2814951 Mon Sep 17 00:00:00 2001
+From 3847a1c25a640394c4afd2b8938ad21190bf5dbe Mon Sep 17 00:00:00 2001
 From: Wen Xiong <wenxiong@linux.ibm.com>
-Date: Wed, 26 Oct 2022 22:10:47 -0500
+Date: Fri, 28 Oct 2022 09:20:38 -0500
 Subject: [PATCH] Support multiple dev paths for a nvmf boot device
+
+Upstream: accepted, expected in 1.3.11
+Git-commit: 3847a1c25a640394c4afd2b8938ad21190bf5dbe
 
 This patch adds the support for multiple dev/of paths with a nvmf boot dev
 
+# bootlist -m normal -o nvme1n4
 nvme1n4
 nvme3n4
 nvme5n4
 nvme6n4
+# bootlist -m normal -o
 nvme1n4
 nvme3n4
 nvme5n4
 nvme6n4
+# bootlist -m normal -r
 /pci@800000020000017/fibre-channel@0/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
 /pci@800000020000017/fibre-channel@0/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
 /pci@800000020000017/fibre-channel@0,1/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
 /pci@800000020000017/fibre-channel@0,1/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
 
 Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  scripts/bootlist   | 30 +++++++++++++++---------------
  scripts/ofpathname | 29 +++++++++++++++++++----------
@@ -73,7 +80,7 @@ index 1929f65..cc8718e 100755
                  DEVTYPE="nvme-of"
                  add_nvmf $ctrl_name
 diff --git a/scripts/ofpathname b/scripts/ofpathname
-index 752f8e9..d8b602c 100755
+index 33d7702..c576fb8 100755
 --- a/scripts/ofpathname
 +++ b/scripts/ofpathname
 @@ -1875,19 +1875,28 @@ of2l_nvmf()
@@ -87,7 +94,7 @@ index 752f8e9..d8b602c 100755
 -            cd $dir
 -
 -            local devnsid=`$CAT ./nsid 2>/dev/null`
--            devnsid=$(printf "%x" $devnsid)
+-            devnsid=`echo "obase=16; $devnsid" |bc`
 -            if [[ $devnsid = $nsid ]]; then
 -                found=1
 -                LOGICAL_DEVNAME="${dir##*/}"
@@ -101,7 +108,7 @@ index 752f8e9..d8b602c 100755
 +                for dev_name in `$FIND /sys/block -name "${ana_name##*/}n[0-9]*"`; do
 +                    cd $dev_name
 +                    local devnsid=`$CAT ./nsid 2>/dev/null`
-+                    devnsid=$(printf "%x" $devnsid)
++                    devnsid=`echo "obase=16; $devnsid" |bc`
 +                    if [[ $devnsid = $nsid ]]; then
 +                        found=1
 +                        NS_ID="${dev_name##*n}"
@@ -111,10 +118,10 @@ index 752f8e9..d8b602c 100755
 +                 done
 +            done
          done
-+
++        
      	 if [[ $found -eq 0 ]]; then
              LOGICAL_DEVNAME=""
           fi
 -- 
-2.38.1
+2.39.0
 

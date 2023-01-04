@@ -1,0 +1,35 @@
+From acaf9c45a340f9bb49d6b21ba7ad60c21326ea73 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mmc@linux.vnet.ibm.com>
+Date: Mon, 7 Nov 2022 14:39:02 -0800
+Subject: [PATCH] hcnmgr: Fix setting primary slave across reboots
+
+Upstream: accepted, expected in 1.3.11
+Git-commit: acaf9c45a340f9bb49d6b21ba7ad60c21326ea73
+
+Using nmcli to set bonding of primary slave so that is set correctly
+across reboots.
+
+Signed-off-by: Mingming Cao <mmc@linux.vnet.ibm.com>
+[tyreld: Reworded commit log]
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ scripts/hcnmgr | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 6946ff9..b5a6bfb 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -375,7 +375,8 @@ do_config_vdevice_nm() {
+ 	# if the device is primary, and link is up, force it as primary se
+ 	if [[ $MODE == "primary" ]]; then
+ 		hcnlog INFO "Change bonding primary slave to $DEVNAME"
+-		echo "$DEVNAME" >"$BOND_PATH"/primary
++		nmcli con mod id "$BONDNAME" +bond.options "primary=$DEVNAME"
++		nmcli con up "$BONDNAME"
+ 	fi
+ 
+ 	hcnlog DEBUG "do_config_vdevice: exit"
+-- 
+2.39.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package powerpc-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,11 @@ Patch5:         lsslot-Explicity-declare-that-lmb_address-be-display.patch
 Patch6:         lsslot-Fix-lsslot-c-mem-output-when-using-4GB-LMB-si.patch
 Patch7:         bootlist-Add-install-boot-support-for-nvmf-devices.patch
 Patch8:         ofpathname-Fix-several-issues-in-nvmf-boot-install-s.patch
-Patch9:         ofpathname-Handle-nsid-as-hex-in-nvmf-boot-install-s.patch
-Patch10:        Support-multiple-dev-paths-for-a-nvmf-boot-device.patch
+Patch9:         Support-multiple-dev-paths-for-a-nvmf-boot-device.patch
+Patch10:        ofpathname-Handle-nsid-as-hex-in-nvmf-boot-install-s.patch
+Patch11:        lparstat-Fix-display-of-mode-for-dedicated-donating-.patch
+Patch12:        lparstat-Fix-array-overflow-issue.patch
+Patch13:        hcnmgr-Fix-setting-primary-slave-across-reboots.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

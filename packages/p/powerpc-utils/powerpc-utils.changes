@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 10:27:16 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix lparstat cpu mode display in a dedicated-donating LPAR (bsc#1206518 ltc#200949)
+  + lparstat-Fix-display-of-mode-for-dedicated-donating-.patch
+- Fix cpu utilization display
+  + lparstat-Fix-array-overflow-issue.patch
+- Fix setting primaty HNV link when using NM
+  + hcnmgr-Fix-setting-primary-slave-across-reboots.patch
+
+-------------------------------------------------------------------
 Wed Nov 30 19:39:57 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Support multiple dev paths for a nvmf boot device (bsc#1205696 ltc#200595)

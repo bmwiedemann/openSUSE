@@ -1,0 +1,54 @@
+From b6bd4ddd0c0a24cce97c220ab0cadfd004dd58c4 Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Fri, 15 Jul 2022 14:35:13 +0530
+Subject: [PATCH] lparstat: Fix array overflow issue
+
+Upstream: accepted, expected in 1.3.11
+Git-commit: b6bd4ddd0c0a24cce97c220ab0cadfd004dd58c4
+
+lparstat is trying to read from out of bound file descriptors. Fix
+this by making sure array overflow does not occur.
+
+Without this patch:
+===================================================================
+ltcden8-lp7:/home/sathvika/powerpc-utils # lparstat -E 1 1
+Failed to /sys/devices/system/cpu/cpu1162167776/spurr
+===================================================================
+
+With this patch:
+===================================================================
+ltcden8-lp7:/home/sathvika/powerpc-utils # ./src/lparstat -E 1 1
+
+System Configuration
+type=Dedicated mode=Capped smt=8 lcpu=6 mem=81341376 kB cpus=0 ent=6.00
+
+---Actual---                 -Normalized-
+%busy  %idle   Frequency     %busy  %idle
+------ ------  ------------- ------ ------
+  0.01  99.99  4.00GHz[116%]   0.02 115.98
+====================================================================
+
+Reported-by: Sachin Sant <sachinp@linux.ibm.com>
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Tested-by: Sachin Sant <sachinp@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/lparstat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lparstat.c b/src/lparstat.c
+index e998e8c..31a4ee8 100644
+--- a/src/lparstat.c
++++ b/src/lparstat.c
+@@ -180,7 +180,7 @@ int parse_sysfs_values(void)
+ 
+ 	spurr = idle_spurr = idle_purr = 0UL;
+ 
+-	for (i = 0; cpu_sysfs_fds[i].spurr > 0; i++) {
++	for (i = 0; (i < threads_in_system) && (cpu_sysfs_fds[i].spurr >= 0); i++) {
+ 		rc = pread(cpu_sysfs_fds[i].spurr, (void *)line, sizeof(line), 0);
+ 		if (rc == -1) {
+ 			fprintf(stderr, "Failed to read /sys/devices/system/cpu/cpu%d/spurr\n",
+-- 
+2.39.0
+

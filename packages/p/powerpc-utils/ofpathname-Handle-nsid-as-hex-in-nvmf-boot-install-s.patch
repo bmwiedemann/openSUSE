@@ -1,7 +1,10 @@
-From feea6c60f9dae48d5d270683cc08393b8e21d53e Mon Sep 17 00:00:00 2001
+From 04e5c9646296e1f12048723bba4cee663c3f74ed Mon Sep 17 00:00:00 2001
 From: Wen Xiong <wenxiong@linux.ibm.com>
-Date: Mon, 21 Nov 2022 13:34:15 -0500
+Date: Thu, 1 Dec 2022 05:22:37 -0600
 Subject: [PATCH] ofpathname: Handle nsid as hex in nvmf boot/install support
+
+Upstream: accepted, expected in 1.3.11
+Git-commit: 04e5c9646296e1f12048723bba4cee663c3f74ed
 
 Didn't handle nsid correctly in nvmf boot/install support.
 Need to handle it as hexadecimal number
@@ -13,12 +16,13 @@ For example,
 26c should be a hexadecimal number.
 
 Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  scripts/ofpathname | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/scripts/ofpathname b/scripts/ofpathname
-index 33d7702..752f8e9 100755
+index c576fb8..3abe4d1 100755
 --- a/scripts/ofpathname
 +++ b/scripts/ofpathname
 @@ -809,7 +809,7 @@ l2of_nvmf()
@@ -26,19 +30,19 @@ index 33d7702..752f8e9 100755
              goto_dir $res
              devnsid=`$CAT $PWD/nsid | tr -d '\000'`
 -            devnsid=`echo "obase=16; $devnsid" |bc`
-+            devnsid=$(printf "%x" $devnsid)
++	    devnsid=$(printf "%x" $devnsid)
              OF_PATH="$OF_PATH/namespace@$devnsid"
          fi
      fi
-@@ -1881,7 +1881,7 @@ of2l_nvmf()
-             cd $dir
- 
-             local devnsid=`$CAT ./nsid 2>/dev/null`
--            devnsid=`echo "obase=16; $devnsid" |bc`
-+            devnsid=$(printf "%x" $devnsid)
-             if [[ $devnsid = $nsid ]]; then
-                 found=1
-                 LOGICAL_DEVNAME="${dir##*/}"
+@@ -1886,7 +1886,7 @@ of2l_nvmf()
+                 for dev_name in `$FIND /sys/block -name "${ana_name##*/}n[0-9]*"`; do
+                     cd $dev_name
+                     local devnsid=`$CAT ./nsid 2>/dev/null`
+-                    devnsid=`echo "obase=16; $devnsid" |bc`
++		    devnsid=$(printf "%x" $devnsid)
+                     if [[ $devnsid = $nsid ]]; then
+                         found=1
+                         NS_ID="${dev_name##*n}"
 -- 
-2.38.0
+2.39.0
 

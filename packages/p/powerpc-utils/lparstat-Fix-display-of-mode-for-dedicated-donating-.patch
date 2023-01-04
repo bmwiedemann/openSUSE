@@ -1,0 +1,103 @@
+From f4c2b0d142f623e7dd28a5d685e446d41be75601 Mon Sep 17 00:00:00 2001
+From: "Naveen N. Rao" <naveen.n.rao@linux.vnet.ibm.com>
+Date: Thu, 25 Aug 2022 12:19:27 +0530
+Subject: [PATCH] lparstat: Fix display of mode for dedicated-donating
+ partition
+
+Upstream: accepted, expected in 1.3.11
+Git-commit: f4c2b0d142f623e7dd28a5d685e446d41be75601
+
+ From the lparstat man page:
+  mode
+  Indicates whether the partition processor capacity is capped or uncapped
+  allowing it to consume idle cycles from the shared pool. Dedicated LPAR
+  is capped or donating.
+
+However, on a dedicated partition, lparstat always displays the mode as
+'Capped' today. Fix this by using 'DedDonMode' field from lparcfg for
+determining the cycle donation status of a dedicated partition.
+
+On a dedicated-donating partition:
+  $ grep -e shared -e DedDonMode -e capped /proc/powerpc/lparcfg
+  DedDonMode=1
+  capped=1
+  shared_processor_mode=0
+
+Before this patch:
+  $ lparstat
+
+  System Configuration
+  type=Dedicated mode=Capped smt=8 lcpu=1 mem=3335424 kB cpus=0 ent=1.00
+
+After this patch:
+  $ lparstat
+
+  System Configuration
+  type=Dedicated mode=Donating smt=8 lcpu=1 mem=3335424 kB cpus=0 ent=1.00
+
+Signed-off-by: Naveen N. Rao <naveen.n.rao@linux.vnet.ibm.com>
+Reviewed-by: Nathan Lynch <nathanl@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/lparstat.c | 15 ++++++++++++++-
+ src/lparstat.h |  4 +++-
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/src/lparstat.c b/src/lparstat.c
+index 0b30fc9..e998e8c 100644
+--- a/src/lparstat.c
++++ b/src/lparstat.c
+@@ -718,6 +718,16 @@ void get_capped_mode(struct sysentry *se, char *buf)
+ 	sprintf(buf, "%s", value);
+ }
+ 
++void get_dedicated_mode(struct sysentry *se, char *buf)
++{
++	const char *value = "Capped";
++
++	if (se->value[0] == '1')
++		value = "Donating";
++
++	sprintf(buf, "%s", value);
++}
++
+ void get_percent_entry(struct sysentry *se, char *buf)
+ {
+ 	float value;
+@@ -1057,7 +1067,10 @@ void print_system_configuration(void)
+ 	get_sysdata("shared_processor_mode", &descr, value);
+ 	offset = sprintf(buf, "type=%s ", value);
+ 	sprintf(type, "%s", value);
+-	get_sysdata("capped", &descr, value);
++	if (!strcmp(value, "Dedicated"))
++		get_sysdata("DedDonMode", &descr, value);
++	else
++		get_sysdata("capped", &descr, value);
+ 	offset += sprintf(buf + offset, "mode=%s ", value);
+ 	get_sysdata("smt_state", &descr, value);
+ 	offset += sprintf(buf + offset, "smt=%s ", value);
+diff --git a/src/lparstat.h b/src/lparstat.h
+index 26ed4ba..b7c88e9 100644
+--- a/src/lparstat.h
++++ b/src/lparstat.h
+@@ -47,6 +47,7 @@ typedef struct cpu_sysfs_file_desc cpu_sysfs_fd;
+ 
+ extern void get_smt_state(struct sysentry *, char *);
+ extern void get_capped_mode(struct sysentry *, char *);
++extern void get_dedicated_mode(struct sysentry *, char *);
+ extern void get_memory_mode(struct sysentry *, char *);
+ extern void get_percent_entry(struct sysentry *, char *);
+ extern void get_phys_cpu_percentage(struct sysentry *, char *);
+@@ -110,7 +111,8 @@ struct sysentry system_data[] = {
+ 	{.name = "DesVarCapWt",
+ 	 .descr = "Desired Variable Capacity Weight"},
+ 	{.name = "DedDonMode",
+-	 .descr = "Dedicated Donation Mode"},
++	 .descr = "Dedicated Donation Mode",
++	 .get = &get_dedicated_mode},
+ 	{.name = "partition_entitled_capacity",
+ 	 .descr = "Partition Entitled Capacity"},
+ 	{.name = "system_active_processors",
+-- 
+2.39.0
+
