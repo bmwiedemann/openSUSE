@@ -141,4 +141,15 @@
     README.rst file provided with this package (forwarded request 1004077 from glaubitz)</comment>
     <requestid>1004096</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>69fdfe13e0e3a596080d31fbdb9266b2</srcmd5>
+    <version>1.0.0</version>
+    <time>1672851203</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1055787 from glaubitz)</comment>
+    <requestid>1055791</requestid>
+  </revision>
 </revisionlist>
