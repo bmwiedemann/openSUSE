@@ -1,7 +1,7 @@
 #
 # spec file for package exfat-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Sidlovsky, Yaroslav <zawertun@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -48,7 +48,7 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir  %{buildroot}/sbin
 ln -sf %{_sbindir}/{dumpexfat,exfatfsck,exfatlabel,fsck.exfat,mkexfatfs,mkfs.exfat} %{buildroot}/sbin
 %endif
@@ -60,7 +60,7 @@ popd
 %files
 %defattr(-,root,root)
 %doc ChangeLog COPYING README
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %{_sbindir}/dumpexfat
