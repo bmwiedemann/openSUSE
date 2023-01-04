@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.10:
+  * Add an optional WebTest backend that does not interfere with handling of
+    permissions by custom backends. Accessible via
+    WEBTEST_AUTHENTICATION_BACKEND setting.
+
+-------------------------------------------------------------------
 Mon Dec 27 11:33:49 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove 01d1d59.patch merged upstream

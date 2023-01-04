@@ -60,4 +60,15 @@
     <comment></comment>
     <requestid>942761</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7ad7a9eb27c9b7334384226e4c9e1030</srcmd5>
+    <version>1.9.10</version>
+    <time>1672851222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.10:
+  * Add an optional WebTest backend that does not interfere with handling of
+    permissions by custom backends. Accessible via
+    WEBTEST_AUTHENTICATION_BACKEND setting.</comment>
+    <requestid>1055864</requestid>
+  </revision>
 </revisionlist>
