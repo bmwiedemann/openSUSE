@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan  2 03:14:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.005
+   see /usr/share/doc/packages/perl-Log-Dispatch-Array/Changes
+
+  1.005     2022-12-31 21:24:20-05:00 America/New_York
+          - v1.004 was a little broken, so now this time *really*:
+          - set a policy for what perls to expect will work
+          - as of now, v5.12 is the minimum required perl
+
+  1.004     2022-12-29 19:35:00-05:00 America/New_York
+          - update packaging
+          - set a policy for what perls to expect will work
+          - as of now, v5.12 is the minimum required perl
+
+-------------------------------------------------------------------
 Mon Feb 24 06:10:56 UTC 2014 - coolo@suse.com
 
 - updated to 1.003
