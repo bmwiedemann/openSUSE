@@ -152,4 +152,47 @@ Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)
 </comment>
     <requestid>986660</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d9a04d7fce7304e116b60b5482e4fbec</srcmd5>
+    <version>0.9.15~git0.2d3044b</version>
+    <time>1672851053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.15~git0.2d3044b:
+  * Prepare for release
+  * Update to cargo-0.67 and clap-4
+  * macos: Allow larger install_name entries
+  * Fix the new clippy lints
+  * Don't include version in soname ELF header if versioning is disabled
+  * Use get_many instead of values_of_lossy
+  * Use macos-12 for the macos runner
+  * Add job deps
+  * Generate paths relative to ${prefix} in the pkg-config file even if --libdir or --includedir are given
+  * Compact the main CI
+  * Fix more warnings in the main CI
+  * Use a custom release profile to strip binaries
+  * ci(deploy): Use musl abi for aarch64 linux binary, add i686 linux
+  * Remove msys2 test
+  * Update the example-project CI
+  * Make sure the supported rustc version is evident
+  * Use the default compiler to build a static binary for musl
+  * Save all the linux binaries
+  * Prepare for release
+  * Add pre-built ppc64le and aarch64 linux binaries
+  * Simplify the deploy script
+  * Fix new clippy lints
+  * Update to cargo-0.66
+  * Use dtolnay/rust-toolchain
+  * Remove actions-rs/cargo
+  * Prepare for release
+  * add support for illumos
+  * Bump cargo version
+  * Prepare for release
+  * Bump cargo to 0.64
+  * Install the windows DLL in the libdir if it is custom
+  * Fix typo on readme
+  * Bump the codecov action
+  * Add sonames on musl
+</comment>
+    <requestid>1046285</requestid>
+  </revision>
 </revisionlist>

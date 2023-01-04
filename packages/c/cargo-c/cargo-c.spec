@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           cargo-c
-Version:        0.9.11~git0.41f5562
+Version:        0.9.15~git0.2d3044b
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
