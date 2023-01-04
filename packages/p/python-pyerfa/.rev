@@ -79,4 +79,13 @@
     array. [gh-76] (forwarded request 1044286 from bnavigator)</comment>
     <requestid>1044287</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>59e68765d884f9073883fd6b363b0b13</srcmd5>
+    <version>2.0.0.1</version>
+    <time>1672859912</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent Python 3.6 builds: Requires 3.7+
+</comment>
+    <requestid>1055948</requestid>
+  </revision>
 </revisionlist>

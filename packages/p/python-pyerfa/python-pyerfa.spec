@@ -32,7 +32,7 @@ Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
 URL:            https://github.com/liberfa/pyerfa
 Source:         https://files.pythonhosted.org/packages/source/p/pyerfa/pyerfa-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.7}
