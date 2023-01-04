@@ -1,7 +1,7 @@
 #
 # spec file for package python-easy-thumbnails
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-easy-thumbnails
-Version:        2.8
+Version:        2.8.4
 Release:        0
 Summary:        Easy thumbnails for Django
 License:        BSD-2-Clause
@@ -30,15 +30,15 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 2.2
-Requires:       python-lxml
 Requires:       python-Pillow
+Requires:       python-lxml
 Requires:       python-reportlab
 Requires:       python-svglib
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module cssselect2}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module cssselect2}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module svglib}

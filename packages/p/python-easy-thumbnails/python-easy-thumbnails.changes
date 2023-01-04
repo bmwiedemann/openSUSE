@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:49:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.4:
+  * Fix problem when thumbnailing images of type TIFF. PIL's
+    ``TiffImagePlugin`` doesn't like argument ``quality``.
+  * Replace deprecated Pillow constants against newer counterparts. Check
+  https://pillow.readthedocs.io/en/stable/releasenotes/9.1.0.html#deprecations for details.
+
+-------------------------------------------------------------------
 Fri Dec 24 06:03:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.8

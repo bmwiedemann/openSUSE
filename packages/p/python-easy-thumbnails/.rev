@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>942991</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36205f2e4772a15570d1a9b770ec4600</srcmd5>
+    <version>2.8.4</version>
+    <time>1672859914</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.4:
+  * Fix problem when thumbnailing images of type TIFF. PIL's
+    ``TiffImagePlugin`` doesn't like argument ``quality``.
+  * Replace deprecated Pillow constants against newer counterparts. Check
+  https://pillow.readthedocs.io/en/stable/releasenotes/9.1.0.html#deprecations for details.</comment>
+    <requestid>1055965</requestid>
+  </revision>
 </revisionlist>
