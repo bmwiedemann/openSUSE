@@ -29,19 +29,19 @@
 %global bleach_version                3.3.0
 %global canonicaljson_version         1.6.4
 %global canonicaljson_max_version     2
-%global cryptography_version          38.0.3
+%global cryptography_version          38.0.4
 %global frozendict_version            2.3.3
 %global idna_version                  3.3
 %global ijson_version                 3.1.4
-%global jsonschema_version            4.17.0
+%global jsonschema_version            4.17.3
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 %global msgpack_version               1.0.3
 %global netaddr_version               0.8.0
-%global phonenumbers_version          8.13.00
+%global phonenumbers_version          8.13.2
 %global prometheus_client_version     0.15.0
 %global psutil_version                2.0.0
-%global pyOpenSSL_version             22.0.0
+%global pyOpenSSL_version             22.1.0
 %global pyasn1_version                0.4.8
 %global pyasn1_modules_version        0.2.8
 %global pymacaroons_version           0.13.0
@@ -54,12 +54,13 @@
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.1
+# TODO: bump to 22.0
 %global packaging_version             21.3
 %global psycopg2_version              2.9.5
 %global pysaml2_version               7.2.1
-%global Authlib_version               0.15.5
+%global Authlib_version               1.2.0
 %global lxml_version                  4.8.0
-%global sentry_sdk_version            1.11.0
+%global sentry_sdk_version            1.11.1
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -67,6 +68,7 @@
 %global txredisapi_version            1.4.7
 %global Pympler_version               1.0.1
 %global pydantic_version              1.9.1
+%global pyicu_version                 2.10.2
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
@@ -97,7 +99,7 @@
 %global service_identity_version      18.1.0
 %global signedjson_version            1.1.0
 %global signedjson_max_version        2
-%global sortedcontainers_version      1.4.4
+%global sortedcontainers_version      1.5.2
 %global systemd_version               231
 %global typing_extensions_version     3.10.0
 %global treq_version                  15.1
@@ -116,6 +118,7 @@
 %global txredisapi_version            1.4.7
 %global Pympler_version               1.0.1
 %global pydantic_version              1.7.4
+%global pyicu_version                 2.10.2
 %endif
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
@@ -153,7 +156,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.73.0
+Version:        1.74.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -292,6 +295,8 @@ BuildRequires:  %{use_python}-txredisapi >= %{txredisapi_version}
 %endif
 BuildRequires:  %{use_python}-Pympler >= %{Pympler_version}
 %requires_peq   %{use_python}-Pympler
+BuildRequires:  %{use_python}-PyICU >= %{pyicu_version}
+%requires_peq   %{use_python}-PyICU
 # We only provide/obsolete python2 to ensure that users upgrade.
 Obsoletes:      python2-matrix-synapse < %{version}-%{release}
 Provides:       python2-matrix-synapse = %{version}-%{release}
