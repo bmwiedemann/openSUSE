@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,12 +20,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.10.2
+Version:        1.10.4
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
-URL:            https://github.com/samuelcolvin/pydantic
-Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+URL:            https://github.com/pydantic/pydantic
+Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarning until requests-toolbelt is fixed
 # (Pulled in by email-validator)
 Patch0:         ignore-urllib3-pyopenssl-warning.patch
@@ -35,10 +35,10 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 4.1.0}
+BuildRequires:  %{python_module typing_extensions >= 4.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing_extensions >= 4.1.0
+Requires:       python-typing_extensions >= 4.2.0
 Suggests:       python-email-validator >= 1.0.3
 Suggests:       python-python-dotenv >= 0.10.4
 BuildArch:      noarch
