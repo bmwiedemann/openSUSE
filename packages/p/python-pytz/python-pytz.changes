@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:30:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.7:
+  * In the Mexican state of Chihuahua, the border strip near the US
+    will change to agree with nearby US locations on 2022-11-30.
+    The strip's western part, represented by Ciudad Juárez, switches
+    from -06 all year to -07/-06 with US DST rules, like El Paso, TX.
+    The eastern part, represented by Ojinaga, will observe US DST next
+    year, like Presidio, TX.
+    A new Zone America/Ciudad_Juarez splits from America/Ojinaga.
+  * Much of Greenland, represented by America/Nuuk, stops observing
+    winter time after March 2023, so its daylight saving time becomes
+    standard time.
+  * Changes for pre-1996 northern Canada
+  * Update to past DST transition in Colombia (1993), Singapore
+    (1981)
+
+-------------------------------------------------------------------
 Wed Nov  9 18:43:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2022.6 
