@@ -1,7 +1,7 @@
 #
 # spec file for package python-oci-sdk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.89.0
+Version:        2.90.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -97,6 +96,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/oci
+%{python_sitelib}/oci-%{version}*-info
 
 %changelog
