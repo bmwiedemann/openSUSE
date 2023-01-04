@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Dec 27 23:29:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.00
+  * Updated manual pages and interface documentation
+  * Move definitions of types to separate pages in man2type/ and
+    man3type/.  Previously, they were spread (and duplicated) in other
+    pages, or in system_data_types.7 (with links in man3/).
+  * Add man3head/ for pages that document header files.
+  * Add man3const/ for pages that document constants.
+  * Improve consistency of man(7) source
+  * Manual pages sections:
+    * Title (.TH):
+    * Remove 5th argument to TH (middle-header).
+    * Specify "Linux man-pages" and the version in the 4th argument
+      (left-footer).
+  * Add the LIBRARY section.  This section standardizes a way to
+    document the library that provides a given interface.
+  * Add the CAVEATS section.  BUGS and NOTES were serving that purpose
+    before, but CAVEATS is more appropriate.
+  * Rename the CONFORMING TO section to STANDARDS for consistency with
+    other projects, such as the BSDs.
+  * SYNOPSIS:  Add the ISO C2X [[deprecated]] attribute for functions
+    that have been deprecated or removed.
+  * EXAMPLES:  Improve consistency of C source code.  Also, reduce the
+    number of warnings that several linting tools emit.
+  * COLOPHON:  Remove section (its purpose is now served by the title).
+- Update to version 6.01
+  * Updated interface documentation
+  * Manual pages' sections:
+    * Title (.TH):
+    * Remove the hardcoded date (TH 3rd argument), and replace it by a
+      placeholder that should be changed when creating the tarball.
+      This removes the need for a tstamp commit before each release.
+- Update to version 6.02
+  * Updated manual pages and interface documentation, noteable:
+    * copy_file_range.2: Fix wrong kernel version information
+    * process_madvise.2: Fix capability and ptrace requirements
+    * madvise.2: Update Transparent Huge Pages file/shmem documentation
+      for Linux 5.4+.
+  * Use correct letter case in manual page titles, instead of uppercase.
+  * Use \" t comments when appropriate (Lintian needs this).
+  * SYNOPSIS:
+    * Add _Nullable for functions that receive NULL as a meaningful
+      input.
+    * Use VLA syntax to clarify the meaning of size parameters, rather
+      than hiding it in possibly-confusing text.
+    * Use [[noreturn]] instead of noreturn, which will be deprecated
+      soon.
+- Rebased man-pages-tcp_fack.patch
+- Added keyring and signed source
+
+-------------------------------------------------------------------
 Mon Sep  6 13:40:10 UTC 2021 - pgajdos@suse.com
 
 - version update to 5.13 [bsc#1189908]
