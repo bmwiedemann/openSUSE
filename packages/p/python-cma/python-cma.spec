@@ -1,7 +1,7 @@
 #
 # spec file for package python-cma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 # No numpy on 3.6
 %define skip_python36 1
 Name:           python-cma
-Version:        3.0.3
+Version:        3.2.2
 Release:        0
 Summary:        Covariance Matrix Adaptation Evolution Strategy numerical optimizer
 License:        BSD-3-Clause

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:50:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to r3.2.2:
+  * Smallish fixes and improvements and a constraints use case notebook.
+  * fixes plot of principal axes which were shown squared by mistake
+- update to r3.2.0:
+  * constraints handling via a dynamic unconstrained function instantiated
+    from cma.ConstrainedFitnessAL.
+  * many small improvements and fixes
+- update to r3.1.0:
+  * fix return value of fmin_con and make it more usable, added attribute
+    best_feasible
+  * polish evolution_strategy.py
+  * fix a few smallish bugs
+
+-------------------------------------------------------------------
 Fri Apr 16 11:30:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't build for Python 3.6, due to no NumPy.

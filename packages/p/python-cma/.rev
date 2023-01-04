@@ -15,4 +15,23 @@
     <comment>- Don't build for Python 3.6, due to no NumPy.</comment>
     <requestid>885958</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0d1fe19bc62e71c0514f27b472ba2a2</srcmd5>
+    <version>3.2.2</version>
+    <time>1672859915</time>
+    <user>dimstar_suse</user>
+    <comment>- update to r3.2.2:
+  * Smallish fixes and improvements and a constraints use case notebook.
+  * fixes plot of principal axes which were shown squared by mistake
+- update to r3.2.0:
+  * constraints handling via a dynamic unconstrained function instantiated
+    from cma.ConstrainedFitnessAL.
+  * many small improvements and fixes
+- update to r3.1.0:
+  * fix return value of fmin_con and make it more usable, added attribute
+    best_feasible
+  * polish evolution_strategy.py
+  * fix a few smallish bugs</comment>
+    <requestid>1055966</requestid>
+  </revision>
 </revisionlist>
