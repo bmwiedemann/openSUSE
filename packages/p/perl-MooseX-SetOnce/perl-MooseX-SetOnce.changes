@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  2 03:16:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.203
+   see /usr/share/doc/packages/perl-MooseX-SetOnce/Changes
+
+  0.203     2022-12-31 21:33:33-05:00 America/New_York
+          - update author email contact info (again)
+          - fix how perl version was declared (sorry)
+
+  0.202     2022-12-31 17:07:01-05:00 America/New_York
+          - declare required perl version
+          - update author email contact info (again)
+
+-------------------------------------------------------------------
 Sat Jun 19 03:08:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.201

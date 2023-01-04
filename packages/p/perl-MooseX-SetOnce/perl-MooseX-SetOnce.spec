@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-SetOnce
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name MooseX-SetOnce
 Name:           perl-MooseX-SetOnce
-Version:        0.201
+Version:        0.203
 Release:        0
-Summary:        Write-once, read-many attributes for Moose
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Write-once, read-many attributes for Moose
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
