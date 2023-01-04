@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  3 18:21:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.2
+  * Maintenance release without release notes
+- Update macro usage
+- Remove invalid PEP440 specifier in dev-extra which made
+  pythondistdeps.py choke
+
+-------------------------------------------------------------------
 Sun Nov 14 20:34:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Allow to keep the config in %_distconfdir

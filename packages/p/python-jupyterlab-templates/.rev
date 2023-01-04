@@ -56,4 +56,16 @@
     <comment></comment>
     <requestid>931631</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>43534948a57636118ec499355dbbb536</srcmd5>
+    <version>0.3.2</version>
+    <time>1672851162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2
+  * Maintenance release without release notes
+- Update macro usage
+- Remove invalid PEP440 specifier in dev-extra which made
+  pythondistdeps.py choke</comment>
+    <requestid>1046632</requestid>
+  </revision>
 </revisionlist>
