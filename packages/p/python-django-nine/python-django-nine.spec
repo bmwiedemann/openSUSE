@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-nine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-nine
-Version:        0.2.5
+Version:        0.2.7
 Release:        0
 Summary:        Compatibility library for Django
 License:        GPL-2.0-only OR LGPL-2.1-or-later
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest-django}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-packaging
 BuildArch:      noarch
 
 %python_subpackages

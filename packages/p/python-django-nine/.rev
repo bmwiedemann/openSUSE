@@ -52,4 +52,16 @@
     <comment></comment>
     <requestid>975952</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>395b64bf7575346e11c6163d8ba0b203</srcmd5>
+    <version>0.2.7</version>
+    <time>1672851235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.7:
+  * Added ``packaging`` to the required dependencies.
+  * Remove mentions of Python 2.6, 2.7, 3.4, 3.5 and 3.6 support from README
+  * Fix deprecations.
+  * Test against Python 3.9 and 3.10.</comment>
+    <requestid>1055882</requestid>
+  </revision>
 </revisionlist>
