@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  3 20:01:53 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.5.0
+  * Snapshot: new icon and option to hide GUI
+  * Magnifier: indicate what screen it is on, add circle
+    and ellipse shapes
+  * fix Area keyboard controls
+  * Various other bugfixes and improvements
+  * Translation updates
+
+-------------------------------------------------------------------
 Thu Sep 29 15:31:52 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 3.4.0
