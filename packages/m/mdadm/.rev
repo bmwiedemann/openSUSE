@@ -1461,4 +1461,12 @@ which haven't landed upstream yet
   (jsc#PED-1009, jsc#PED-947) (forwarded request 1045353 from colyli)</comment>
     <requestid>1045464</requestid>
   </revision>
+  <revision rev="140" vrev="5">
+    <srcmd5>8b3ac13aa3c7db28dc1d4bfdb1944272</srcmd5>
+    <version>4.2</version>
+    <time>1672851136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055863</requestid>
+  </revision>
 </revisionlist>

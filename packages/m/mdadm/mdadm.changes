@@ -310,6 +310,11 @@ Thu Nov  3 15:58:38 UTC 2022 - Coly Li <colyli@suse.com>
   - 0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch
   - 0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch
   - 0121-imsm-support-for-third-Sata-controller.patch
+- The patch from SLE15-SP4 is removed because it is in mdadm-4.2
+  upstream already,
+  - Monitor: print message before quit for no array to monitor
+    (bsc#1183229)
+   0120-Monitor-print-message-before-quit-for-no-array-to-mo.patch
 
 -------------------------------------------------------------------
 Mon Sep 19 14:18:41 CST 2022 - Coly Li <colyli@suse.com>
