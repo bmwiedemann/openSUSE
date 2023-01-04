@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan  3 05:02:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.0:
+  * The dual_wheels, alt_python, and check_desc arguments/config options for
+    the invocations.packaging.release module have been removed.
+  * The invocations.travis module has been removed.
+  * Drop Python 2 (and 3.5) support. We now support Python 3.6+ only.
+- Refreshed invocations-no-bundled.patch.
+- Dropped invocations-py3.patch, not required.
+- Dropped python-invocations-no-mock.patch, merged upstream.
+
+-------------------------------------------------------------------
 Thu Sep 29 02:48:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.6.1

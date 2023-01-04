@@ -1,7 +1,7 @@
 #
 # spec file for package python-invocations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-invocations
-Version:        2.6.1
+Version:        3.0.0
 Release:        0
 Summary:        Reusable Invoke tasks
 License:        BSD-2-Clause
 URL:            https://github.com/pyinvoke/invocations
 Source:         https://github.com/pyinvoke/invocations/archive/%{version}.tar.gz#/invocations-%{version}.tar.gz
 Patch0:         invocations-no-bundled.patch
-Patch1:         invocations-py3.patch
-# https://github.com/pyinvoke/invocations/issues/31
-Patch2:         python-invocations-no-mock.patch
 BuildRequires:  %{python_module blessings >= 1.6}
-BuildRequires:  %{python_module invoke >= 1.6}
+BuildRequires:  %{python_module invoke >= 1.7.2}
 BuildRequires:  %{python_module lexicon}
 BuildRequires:  %{python_module pytest-relaxed}
-BuildRequires:  %{python_module releases >= 1.2}
+BuildRequires:  %{python_module releases >= 1.6}
 BuildRequires:  %{python_module semantic_version >= 2.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -44,9 +39,9 @@ BuildRequires:  %{python_module wheel >= 0.24.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blessings >= 1.6
-Requires:       python-invoke >= 1.6
+Requires:       python-invoke >= 1.7.2
 Requires:       python-lexicon
-Requires:       python-releases >= 1.2
+Requires:       python-releases >= 1.6
 Requires:       python-semantic_version >= 2.4
 Requires:       python-six
 Requires:       python-tabulate >= 0.7.5
@@ -54,12 +49,6 @@ Requires:       python-tqdm >= 4.8.1
 Requires:       python-twine >= 1.15
 Requires:       python-wheel >= 0.24.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description

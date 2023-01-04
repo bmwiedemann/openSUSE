@@ -1,27 +1,24 @@
-Index: invocations-1.4.0/tests/packaging/release.py
+Index: invocations-3.0.0/tests/packaging/release.py
 ===================================================================
---- invocations-1.4.0.orig/tests/packaging/release.py
-+++ invocations-1.4.0/tests/packaging/release.py
-@@ -5,8 +5,12 @@ from os import path
+--- invocations-3.0.0.orig/tests/packaging/release.py
++++ invocations-3.0.0/tests/packaging/release.py
+@@ -3,7 +3,10 @@ from os import path
  import re
  import sys
  
--from invoke.vendor.six import PY2
 -from invoke.vendor.lexicon import Lexicon
 +try:
-+    from invoke.vendor.six import PY2
 +    from invoke.vendor.lexicon import Lexicon
 +except ImportError:
-+    from six import PY2
 +    from lexicon import Lexicon
  from invoke import MockContext, Result, Config, Exit
  from docutils.utils import Reporter
- from mock import Mock, patch, call
-Index: invocations-1.4.0/invocations/console.py
+ from unittest.mock import Mock, patch, call
+Index: invocations-3.0.0/invocations/console.py
 ===================================================================
---- invocations-1.4.0.orig/invocations/console.py
-+++ invocations-1.4.0/invocations/console.py
-@@ -6,7 +6,10 @@ from __future__ import unicode_literals,
+--- invocations-3.0.0.orig/invocations/console.py
++++ invocations-3.0.0/invocations/console.py
+@@ -4,7 +4,10 @@ Text console UI helpers and patterns, e.
  
  import sys
  
@@ -33,33 +30,10 @@ Index: invocations-1.4.0/invocations/console.py
  
  
  # NOTE: originally cribbed from fab 1's contrib.console.confirm
-Index: invocations-1.4.0/invocations/packaging/release.py
+Index: invocations-3.0.0/invocations/packaging/semantic_version_monkey.py
 ===================================================================
---- invocations-1.4.0.orig/invocations/packaging/release.py
-+++ invocations-1.4.0/invocations/packaging/release.py
-@@ -19,10 +19,14 @@ import sys
- from glob import glob
- from shutil import rmtree
- 
--from invoke.vendor.six import StringIO
--
--from invoke.vendor.six import text_type, binary_type, PY2
--from invoke.vendor.lexicon import Lexicon
-+try:
-+    from invoke.vendor.six import StringIO
-+    from invoke.vendor.six import text_type, binary_type, PY2
-+    from invoke.vendor.lexicon import Lexicon
-+except ImportError:
-+    from six import StringIO
-+    from six import text_type, binary_type, PY2
-+    from lexicon import Lexicon
- 
- from blessings import Terminal
- from docutils.utils import Reporter
-Index: invocations-1.4.0/invocations/packaging/semantic_version_monkey.py
-===================================================================
---- invocations-1.4.0.orig/invocations/packaging/semantic_version_monkey.py
-+++ invocations-1.4.0/invocations/packaging/semantic_version_monkey.py
+--- invocations-3.0.0.orig/invocations/packaging/semantic_version_monkey.py
++++ invocations-3.0.0/invocations/packaging/semantic_version_monkey.py
 @@ -5,7 +5,10 @@ We never like monkey-patching, but for n
  or distributing our own fork.
  """
@@ -72,10 +46,10 @@ Index: invocations-1.4.0/invocations/packaging/semantic_version_monkey.py
  
  from semantic_version import Version
  
-Index: invocations-1.4.0/invocations/testing.py
+Index: invocations-3.0.0/invocations/testing.py
 ===================================================================
---- invocations-1.4.0.orig/invocations/testing.py
-+++ invocations-1.4.0/invocations/testing.py
+--- invocations-3.0.0.orig/invocations/testing.py
++++ invocations-3.0.0/invocations/testing.py
 @@ -1,8 +1,12 @@
  import sys
  import time
@@ -91,3 +65,19 @@ Index: invocations-1.4.0/invocations/testing.py
  
  from invoke import task
  from tqdm import tqdm
+Index: invocations-3.0.0/invocations/packaging/release.py
+===================================================================
+--- invocations-3.0.0.orig/invocations/packaging/release.py
++++ invocations-3.0.0/invocations/packaging/release.py
+@@ -20,7 +20,10 @@ from glob import glob
+ from io import StringIO
+ from shutil import rmtree
+ 
+-from invoke.vendor.lexicon import Lexicon
++try:
++    from invoke.vendor.lexicon import Lexicon
++except ImportError:
++    from lexicon import Lexicon
+ 
+ from blessings import Terminal
+ from docutils.utils import Reporter

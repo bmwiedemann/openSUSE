@@ -104,4 +104,19 @@
 </comment>
     <requestid>1006935</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>74583967c0411afe47ac10a81d635f74</srcmd5>
+    <version>3.0.0</version>
+    <time>1672852195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * The dual_wheels, alt_python, and check_desc arguments/config options for
+    the invocations.packaging.release module have been removed.
+  * The invocations.travis module has been removed.
+  * Drop Python 2 (and 3.5) support. We now support Python 3.6+ only.
+- Refreshed invocations-no-bundled.patch.
+- Dropped invocations-py3.patch, not required.
+- Dropped python-invocations-no-mock.patch, merged upstream.</comment>
+    <requestid>1046403</requestid>
+  </revision>
 </revisionlist>
