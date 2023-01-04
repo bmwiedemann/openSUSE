@@ -1,22 +1,18 @@
-Index: grub-2.02~beta2/util/grub-mkconfig.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub-mkconfig.in
-+++ grub-2.02~beta2/util/grub-mkconfig.in
-@@ -260,7 +260,8 @@ export GRUB_DEFAULT \
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -295,7 +295,8 @@
+   GRUB_OS_PROBER_SKIP_LIST \
    GRUB_DISABLE_SUBMENU \
    GRUB_CMDLINE_LINUX_RECOVERY \
-   GRUB_USE_LINUXEFI \
 -  SUSE_BTRFS_SNAPSHOT_BOOTING
 +  SUSE_BTRFS_SNAPSHOT_BOOTING \
 +  SUSE_CMDLINE_XENEFI
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
-Index: grub-2.02~beta2/util/grub.d/20_linux_xen.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub.d/20_linux_xen.in
-+++ grub-2.02~beta2/util/grub.d/20_linux_xen.in
-@@ -176,7 +176,7 @@ linux_entry ()
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -216,7 +216,7 @@
      message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
      sed "s/^/$submenu_indentation/" <<-EOF
  	 	echo	'$(echo "$message" | grub_quote)'

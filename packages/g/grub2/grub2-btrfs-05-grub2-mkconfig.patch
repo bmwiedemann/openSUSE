@@ -6,11 +6,9 @@
  util/grub.d/20_linux_xen.in |    4 ++++
  5 files changed, 42 insertions(+), 3 deletions(-)
 
-Index: grub-2.02~beta2/util/grub-mkconfig_lib.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub-mkconfig_lib.in
-+++ grub-2.02~beta2/util/grub-mkconfig_lib.in
-@@ -49,7 +49,11 @@ grub_warn ()
+--- a/util/grub-mkconfig_lib.in
++++ b/util/grub-mkconfig_lib.in
+@@ -49,7 +49,11 @@
  
  make_system_path_relative_to_its_root ()
  {
@@ -22,11 +20,9 @@ Index: grub-2.02~beta2/util/grub-mkconfig_lib.in
  }
  
  is_path_readable_by_grub ()
-Index: grub-2.02~beta2/util/grub.d/00_header.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub.d/00_header.in
-+++ grub-2.02~beta2/util/grub.d/00_header.in
-@@ -27,6 +27,14 @@ export TEXTDOMAINDIR="@localedir@"
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -27,6 +27,14 @@
  
  . "$pkgdatadir/grub-mkconfig_lib"
  
@@ -41,7 +37,7 @@ Index: grub-2.02~beta2/util/grub.d/00_header.in
  # Do this as early as possible, since other commands might depend on it.
  # (e.g. the `loadfont' command might need lvm or raid modules)
  for i in ${GRUB_PRELOAD_MODULES} ; do
-@@ -43,7 +51,9 @@ if [ "x${GRUB_DEFAULT_BUTTON}" = "xsaved
+@@ -43,7 +51,9 @@
  if [ "x${GRUB_TIMEOUT_BUTTON}" = "x" ] ; then GRUB_TIMEOUT_BUTTON="$GRUB_TIMEOUT" ; fi
  
  cat << EOF
@@ -52,7 +48,7 @@ Index: grub-2.02~beta2/util/grub.d/00_header.in
    load_env
  fi
  
-@@ -367,3 +377,15 @@ fi
+@@ -401,3 +411,15 @@
  if [ "x${GRUB_BADRAM}" != "x" ] ; then
    echo "badram ${GRUB_BADRAM}"
  fi
@@ -68,25 +64,21 @@ Index: grub-2.02~beta2/util/grub.d/00_header.in
 +fi
 +EOF
 +fi
-Index: grub-2.02~beta2/util/grub-mkconfig.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub-mkconfig.in
-+++ grub-2.02~beta2/util/grub-mkconfig.in
-@@ -262,7 +262,8 @@ export GRUB_DEFAULT \
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -294,7 +294,8 @@
+   GRUB_BADRAM \
    GRUB_OS_PROBER_SKIP_LIST \
    GRUB_DISABLE_SUBMENU \
-   GRUB_CMDLINE_LINUX_RECOVERY \
--  GRUB_USE_LINUXEFI
-+  GRUB_USE_LINUXEFI \
+-  GRUB_CMDLINE_LINUX_RECOVERY
++  GRUB_CMDLINE_LINUX_RECOVERY \
 +  SUSE_BTRFS_SNAPSHOT_BOOTING
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
-Index: grub-2.02~beta2/util/grub.d/10_linux.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub.d/10_linux.in
-+++ grub-2.02~beta2/util/grub.d/10_linux.in
-@@ -57,10 +57,14 @@ fi
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -69,10 +69,14 @@
  
  case x"$GRUB_FS" in
      xbtrfs)
@@ -101,7 +93,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
  	fi;;
      xzfs)
  	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
-@@ -236,7 +240,12 @@ while [ "x$list" != "x" ] ; do
+@@ -239,7 +243,12 @@
    if [ $PLATFORM != "emu" ]; then
      hotkey=0
    else
@@ -115,11 +107,9 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
    fi
    version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
-Index: grub-2.02~beta2/util/grub.d/20_linux_xen.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub.d/20_linux_xen.in
-+++ grub-2.02~beta2/util/grub.d/20_linux_xen.in
-@@ -71,10 +71,14 @@ fi
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -79,10 +79,14 @@
  
  case x"$GRUB_FS" in
      xbtrfs)

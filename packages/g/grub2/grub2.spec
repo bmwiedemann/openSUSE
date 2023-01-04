@@ -193,11 +193,8 @@ Patch15:        not-display-menu-when-boot-once.patch
 Patch17:        grub2-pass-corret-root-for-nfsroot.patch
 Patch19:        grub2-efi-HP-workaround.patch
 Patch21:        grub2-secureboot-add-linuxefi.patch
-Patch22:        grub2-secureboot-use-linuxefi-on-uefi.patch
 Patch23:        grub2-secureboot-no-insmod-on-sb.patch
-Patch24:        grub2-secureboot-provide-linuxefi-config.patch
 Patch25:        grub2-secureboot-chainloader.patch
-Patch26:        grub2-secureboot-use-linuxefi-on-uefi-in-os-prober.patch
 Patch27:        grub2-linuxefi-fix-boot-params.patch
 Patch35:        grub2-linguas.sh-no-rsync.patch
 Patch37:        grub2-use-Unifont-for-starfield-theme-terminal.patch

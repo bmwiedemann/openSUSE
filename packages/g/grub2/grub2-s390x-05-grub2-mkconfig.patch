@@ -14,11 +14,9 @@ V4:
  util/grub.d/10_linux.in |   63 ++++++++++++++++++++++++++++++++++++++----------
  1 file changed, 51 insertions(+), 12 deletions(-)
 
-Index: grub-2.02~beta2/util/grub.d/10_linux.in
-===================================================================
---- grub-2.02~beta2.orig/util/grub.d/10_linux.in
-+++ grub-2.02~beta2/util/grub.d/10_linux.in
-@@ -51,6 +51,10 @@ else
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -63,6 +63,10 @@
    LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
  fi
  
@@ -29,7 +27,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
  case x"$GRUB_FS" in
      xbtrfs)
  	rootsubvol="`make_system_path_relative_to_its_root /`"
-@@ -67,6 +71,21 @@ esac
+@@ -79,6 +83,21 @@
  
  title_correction_code=
  
@@ -51,7 +49,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
  linux_entry ()
  {
    os="$1"
-@@ -96,9 +115,11 @@ linux_entry ()
+@@ -108,9 +127,11 @@
  	  title_correction_code="${title_correction_code}if [ \"x\$default\" = '$quoted' ]; then default='$(echo "$replacement_title" | grub_quote)'; fi;"
  	  grub_warn "$(gettext_printf "Please don't use old title \`%s' for GRUB_DEFAULT, use \`%s' (for versions before 2.00) or \`%s' (for 2.00 or later)" "$GRUB_ACTUAL_DEFAULT" "$replacement_title" "gnulinux-advanced-$boot_device_id>gnulinux-$version-$type-$boot_device_id")"
        fi
@@ -65,7 +63,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
    fi      
    if [ x$type != xrecovery ] ; then
        save_default_entry | grub_add_tab
-@@ -121,6 +142,7 @@ linux_entry ()
+@@ -133,6 +154,7 @@
  
    echo "	insmod gzio" | sed "s/^/$submenu_indentation/"
  
@@ -73,15 +71,15 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
    if [ x$dirname = x/ ]; then
      if [ -z "${prepare_root_cache}" ]; then
        prepare_root_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE} | grub_add_tab)"
-@@ -132,6 +154,7 @@ linux_entry ()
+@@ -144,6 +166,7 @@
      fi
      printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
    fi
 + fi
    message="$(gettext_printf "Loading Linux %s ..." ${version})"
-   if [ -d /sys/firmware/efi ] && [ "x${GRUB_USE_LINUXEFI}" = "xtrue" ]; then
-     sed "s/^/$submenu_indentation/" << EOF
-@@ -166,17 +189,15 @@ EOF
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+@@ -168,17 +191,15 @@
  
  machine=`uname -m`
  case "x$machine" in
@@ -107,7 +105,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
  
  case "$machine" in
      i?86) GENKERNEL_ARCH="x86" ;;
-@@ -186,6 +207,15 @@ case "$machine" in
+@@ -188,6 +209,15 @@
      *) GENKERNEL_ARCH="$machine" ;;
  esac
  
@@ -123,7 +121,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
  prepare_boot_cache=
  prepare_root_cache=
  boot_device_id=
-@@ -202,6 +232,11 @@ while [ "x$list" != "x" ] ; do
+@@ -204,6 +234,11 @@
    basename=`basename $linux`
    dirname=`dirname $linux`
    rel_dirname=`make_system_path_relative_to_its_root $dirname`
@@ -135,7 +133,7 @@ Index: grub-2.02~beta2/util/grub.d/10_linux.in
    version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
    linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
-@@ -286,7 +321,8 @@ while [ "x$list" != "x" ] ; do
+@@ -319,7 +354,8 @@
  	boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
      fi
      # TRANSLATORS: %s is replaced with an OS name

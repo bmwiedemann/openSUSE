@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec 30 07:58:54 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix inappropriately including commented lines in crypttab (bsc#1206279)
+  * 0010-templates-import-etc-crypttab-to-grub.cfg.patch
+
+-------------------------------------------------------------------
+Fri Dec 23 09:50:42 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Make grub.cfg invariant to efi and legacy platforms (bsc#1205200)
+- Removed patch linuxefi
+  * grub2-secureboot-provide-linuxefi-config.patch
+  * grub2-secureboot-use-linuxefi-on-uefi-in-os-prober.patch
+  * grub2-secureboot-use-linuxefi-on-uefi.patch
+- Rediff
+  * grub2-btrfs-05-grub2-mkconfig.patch
+  * grub2-efi-xen-cmdline.patch
+  * grub2-s390x-05-grub2-mkconfig.patch
+  * grub2-suse-remove-linux-root-param.patch
+
+-------------------------------------------------------------------
 Mon Dec 19 08:39:05 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Setup multiple device paths for a nvmf boot device (bsc#1205666)

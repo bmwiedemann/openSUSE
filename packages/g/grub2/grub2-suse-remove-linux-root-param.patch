@@ -1,10 +1,8 @@
-Index: grub-2.02/util/grub-mkconfig.in
-===================================================================
---- grub-2.02.orig/util/grub-mkconfig.in
-+++ grub-2.02/util/grub-mkconfig.in
-@@ -268,7 +268,8 @@ export GRUB_DEFAULT \
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -296,7 +296,8 @@
+   GRUB_DISABLE_SUBMENU \
    GRUB_CMDLINE_LINUX_RECOVERY \
-   GRUB_USE_LINUXEFI \
    SUSE_BTRFS_SNAPSHOT_BOOTING \
 -  SUSE_CMDLINE_XENEFI
 +  SUSE_CMDLINE_XENEFI \
@@ -12,11 +10,9 @@ Index: grub-2.02/util/grub-mkconfig.in
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
-Index: grub-2.02/util/grub.d/10_linux.in
-===================================================================
---- grub-2.02.orig/util/grub.d/10_linux.in
-+++ grub-2.02/util/grub.d/10_linux.in
-@@ -64,7 +64,7 @@ case x"$GRUB_FS" in
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -74,7 +74,7 @@
  	else
  	rootsubvol="`make_system_path_relative_to_its_root /`"
  	rootsubvol="${rootsubvol#/}"
@@ -25,7 +21,7 @@ Index: grub-2.02/util/grub.d/10_linux.in
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -75,6 +75,10 @@ case x"$GRUB_FS" in
+@@ -85,6 +85,10 @@
  	;;
  esac
  
@@ -36,11 +32,9 @@ Index: grub-2.02/util/grub.d/10_linux.in
  title_correction_code=
  
  hotkey=1
-Index: grub-2.02/util/grub.d/20_linux_xen.in
-===================================================================
---- grub-2.02.orig/util/grub.d/20_linux_xen.in
-+++ grub-2.02/util/grub.d/20_linux_xen.in
-@@ -78,7 +78,7 @@ case x"$GRUB_FS" in
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -98,7 +98,7 @@
  	else
  	rootsubvol="`make_system_path_relative_to_its_root /`"
  	rootsubvol="${rootsubvol#/}"
@@ -49,7 +43,7 @@ Index: grub-2.02/util/grub.d/20_linux_xen.in
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -89,6 +89,10 @@ case x"$GRUB_FS" in
+@@ -109,6 +109,10 @@
  	;;
  esac
  
@@ -60,11 +54,9 @@ Index: grub-2.02/util/grub.d/20_linux_xen.in
  title_correction_code=
  
  grub2_unquote ()
-Index: grub-2.02/util/s390x/zipl2grub.pl.in
-===================================================================
---- grub-2.02.orig/util/s390x/zipl2grub.pl.in
-+++ grub-2.02/util/s390x/zipl2grub.pl.in
-@@ -367,9 +367,13 @@ while ( <IN> ) {
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -384,9 +384,13 @@
      } else {
        $v = "";
      }
