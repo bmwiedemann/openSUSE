@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-MIME-Encodings
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Email-MIME-Encodings
 Name:           perl-Email-MIME-Encodings
-Version:        1.316
+Version:        1.317
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Unified interface to MIME encoding and decoding
