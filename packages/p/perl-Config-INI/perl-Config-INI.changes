@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 03:07:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.028
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.028     2022-12-31 21:02:59-05:00 America/New_York
+          - update author contact info
+          - this library now requires perl v5.12
+
+-------------------------------------------------------------------
 Thu Jun 24 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.027

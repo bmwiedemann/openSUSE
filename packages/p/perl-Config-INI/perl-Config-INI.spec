@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-INI
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Config-INI
 Name:           perl-Config-INI
-Version:        0.027
+Version:        0.028
 Release:        0
-Summary:        Simple .ini-file format
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Simple .ini-file format
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
