@@ -362,4 +362,28 @@
     <comment></comment>
     <requestid>1012077</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>684a2629ab52358e2c49caa808a2777e</srcmd5>
+    <version>8.7.15</version>
+    <time>1672851163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.7.15:
+  User visible changes include:
+  * Add option --miniConfig to report configuration differences from default.
+  * Move cache file location from ~/.lmod.d/.cache/* to ~/.cache/lmod/*
+  * Transitional support for using ~/.config/lmod for collections. Currently collect
+    are written to both ~/.lmod.d/ and ~/.config/lmod.
+  * setenv and pushenv change local environment when running spider (and avail).
+  * Allow bash users to export SUPPORT_KSH=no so that they can avoid bash startup setting FPATH
+  * Add --location option to show to write to stderr the file location.
+  * Only rebuild spider caches if there are any loaded or pending modules.
+    'module avail &lt;name1&gt; &lt;name2&gt; ...' now only prints matching aliases.  Search names are resolved.
+  * Print dataT table when there is an Exception.
+  * New command added: 'module overview'.
+  * Add spiderPathFilter hook so that sites can control what paths are kept or ignored.
+  * Added $LMOD_SITE_MODULEPATH support to prepend to MODULEPATH
+  * Add support for sh_to_modulefile to support zsh, ksh, bash and tcsh with aliases and shell functions
+  * Support for source_sh added. Now support more than one shell script per modulefile. (forwarded request 1046634 from eeich)</comment>
+    <requestid>1046635</requestid>
+  </revision>
 </revisionlist>

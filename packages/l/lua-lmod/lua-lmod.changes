@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan  3 13:55:42 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Update to version 8.7.15:
+  User visible changes include:
+  * Add option --miniConfig to report configuration differences from default.
+  * Move cache file location from ~/.lmod.d/.cache/* to ~/.cache/lmod/*
+  * Transitional support for using ~/.config/lmod for collections. Currently collect
+    are written to both ~/.lmod.d/ and ~/.config/lmod.
+  * setenv and pushenv change local environment when running spider (and avail).
+  * Allow bash users to export SUPPORT_KSH=no so that they can avoid bash startup setting FPATH
+  * Add --location option to show to write to stderr the file location.
+  * Only rebuild spider caches if there are any loaded or pending modules.
+    'module avail <name1> <name2> ...' now only prints matching aliases.  Search names are resolved.
+  * Print dataT table when there is an Exception.
+  * New command added: 'module overview'.
+  * Add spiderPathFilter hook so that sites can control what paths are kept or ignored.
+  * Added $LMOD_SITE_MODULEPATH support to prepend to MODULEPATH
+  * Add support for sh_to_modulefile to support zsh, ksh, bash and tcsh with aliases and shell functions
+  * Support for source_sh added. Now support more than one shell script per modulefile.
+
+-------------------------------------------------------------------
 Thu Sep 15 11:55:03 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Move latex dependencies to the pdf build flavor
