@@ -1,7 +1,7 @@
 #
 # spec file for package libheif
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,21 @@
 #
 
 
-%bcond_with x265
-
 %define gdk_pixbuf_binary_version 2.10.0
-
+%bcond_with x265
 Name:           libheif
-Version:        1.12.0
+Version:        1.14.1
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
-#
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
-#
 Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         https://github.com/strukturag/libheif/commit/0f8496f22d284e1a69df12fe0b72f375aed31315.patch
-#
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -82,7 +77,7 @@ This package contains the header files.
 %package -n gdk-pixbuf-loader-libheif
 Summary:        GDK PixBuf Loader for %{name}
 Group:          System/Libraries
-Supplements:    packageand(libheif1:libgdk_pixbuf-2_0-0)
+Supplements:    (libheif1 and libgdk_pixbuf-2_0-0)
 
 %description -n gdk-pixbuf-loader-libheif
 A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
@@ -99,6 +94,15 @@ Requires:       libheif1 = %{version}-%{release}
 A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 
 This package contains example binary programs for %{name}.
+
+%package -n heif-thumbnailer
+Summary:        Thumbnailer for HEIF/AVIF image files
+Group:          Productivity/Graphics/Other
+Requires:       libheif1 = %{version}-%{release}
+Supplements:    libheif1
+
+%description -n heif-thumbnailer
+Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 %endif
 
 %prep
@@ -108,12 +112,14 @@ This package contains example binary programs for %{name}.
 %if %{with x265}
 %cmake \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=OFF
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=OFF \
+    -DPLUGIN_DIRECTORY=%{_libexecdir}/libheif
 %else
 %cmake \
     -DWITH_LIBDE265=OFF \
     -DWITH_X265=OFF \
-    -DWITH_EXAMPLES=OFF
+    -DWITH_EXAMPLES=OFF \
+    -DPLUGIN_DIRECTORY=%{_libexecdir}/libheif
 %endif
 %cmake_build
 
@@ -130,7 +136,10 @@ for e in heif-convert \
             install -m 0755 build/examples/$e %{buildroot}%{_bindir}/$e
             install -m 0644 examples/$e.1 %{buildroot}%{_mandir}/man1/$e.1
          done
-
+%else
+rm -f %{buildroot}%{_datadir}/mime/packages/avif.xml
+rm -f %{buildroot}%{_datadir}/mime/packages/heif.xml
+rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %endif
 %fdupes -s %{buildroot}%{_includedir}
 
@@ -146,6 +155,7 @@ for e in heif-convert \
 %files -n libheif1
 %license COPYING
 %{_libdir}/libheif.so.*
+%{_libexecdir}/libheif
 
 %files devel
 %doc README.md
@@ -162,10 +172,16 @@ for e in heif-convert \
 %{_bindir}/heif-convert
 %{_bindir}/heif-enc
 %{_bindir}/heif-info
-%{_bindir}/heif-thumbnailer
 %{_mandir}/man1/heif-convert.1%{?ext_man}
 %{_mandir}/man1/heif-enc.1%{?ext_man}
 %{_mandir}/man1/heif-info.1%{?ext_man}
+
+%files -n heif-thumbnailer
+%{_bindir}/heif-thumbnailer
+%{_datadir}/mime/packages/avif.xml
+%{_datadir}/mime/packages/heif.xml
+%dir %{_datadir}/thumbnailers
+%{_datadir}/thumbnailers/heif.thumbnailer
 %{_mandir}/man1/heif-thumbnailer.1%{?ext_man}
 %endif
 

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jan  3 12:43:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.14.1:
+  * various issues is the build system
+  * encoding images smaller than 64x64 with svt-av1
+  * the 'quality' parameter for svt-av1
+  * a potentially wrong image orientation for PNG inputs
+  * crash on non-null terminated XMP input
+  * HDR RGB to YCbCr conversion coefficients for limited range coefficients
+
+-------------------------------------------------------------------
+Sat Dec  3 10:35:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * adds SVT-AV1 encoder as AVIF backend
+  * dynamic plugin interface for installing codecs independently from libheif (currently Unix only)
+  * add XMP header compression (using zlib)
+  * library should now be initialized with heif_init()
+  * heif_convert: extract EXIF and XMP to separate files
+  * heif_enc: add benchmarking function to compare codecs
+  * copy EXIF/XMP between HEIC/AVIF files and JPEG/PNG in all kinds of combinations
+  * remove EXIF orientation tag from input when converting to HEIC/AVIF and
+  * generate irot/imir boxes matching the input orientation 
+
+-------------------------------------------------------------------
+Thu Nov  3 01:53:22 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- The newly added thumbnailer is not only useful for gnome, so
+  rename the sub-package gnome-heif-thumbnailer to heif-thumbnailer
+  before its debut
+- Supplement libeheif1 with heif-thumbnailer
+
+-------------------------------------------------------------------
+Tue Nov  1 18:10:22 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a gnome-heif-thumbnailer sub-package (boo#1204865)
+
+-------------------------------------------------------------------
+Mon Oct 31 08:41:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.0:
+  * pay attention to the correct chroma sample positions
+  * heif_image now holds a list of decoding warnings
+  * use AOM AOM_USAGE_ALL_INTRA mode instead of AOM_USAGE_GOOD_QUALITY
+  * 'strict' decoding mode with more checks for standard conformity of input
+  * support for EXIF data >64k in JPEG output
+  * proper library initialization and cleanup
+  * separate quality settings for alpha channel (AOM)
+  * improve color conversion speed (no lroundf)
+  * build and packaging fixes
+- Remove 0f8496f22d284e1a69df12fe0b72f375aed31315.patch: contained
+- boo#1204865: No HEIC image preview in nautilus fixed by update
+
+-------------------------------------------------------------------
 Fri Aug 26 12:51:15 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Support version 1.0.0 of dav1d
