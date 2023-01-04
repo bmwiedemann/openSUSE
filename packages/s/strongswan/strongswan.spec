@@ -1,7 +1,7 @@
 #
 # spec file for package strongswan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.8
+Version:        5.9.9
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -80,7 +80,7 @@ Patch2:         %{name}_ipsec_service.patch
 Patch3:         %{name}_fipscheck.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
-Patch6:		harden_strongswan.service.patch
+Patch6:         harden_strongswan.service.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
@@ -197,14 +197,15 @@ Provides:       VPN
 Provides:       ipsec
 Provides:       strongswan = %{version}
 Obsoletes:      strongswan < %{version}
-Conflicts:      freeswan openswan
+Conflicts:      freeswan
+Conflicts:      openswan
 
 %description ipsec
 StrongSwan is an IPsec-based VPN solution for Linux.
 
 This package provides the /etc/init.d/ipsec service script and allows
 to maintain both IKEv1 and IKEv2 using the /etc/ipsec.conf and the
-/etc/ipsec.sectes files.
+/etc/ipsec.secrets files.
 
 %package mysql
 Summary:        MySQL plugin for strongSwan
@@ -447,7 +448,7 @@ echo 'd %{_rundir}/%{name} 0770 root root' > %{buildroot}%{_tmpfilesdir}/%{name}
 #
 install -c -m750 _fipscheck %{buildroot}/%{_libexecdir}/ipsec/
 install -c -m644 %{_sourcedir}/fips-enforce.conf \
-                 %{buildroot}/%{strongswan_configs}/charon/zzz_fips-enforce.conf                 
+                 %{buildroot}/%{strongswan_configs}/charon/zzz_fips-enforce.conf
 # disable bypass-lan plugin by default
 sed -i 's/\(load[ ]*=[ ]*\)yes/\1no/g' %{buildroot}/%{strongswan_configs}/charon/bypass-lan.conf
 # create fips hmac hashes _after_ install post run
@@ -947,7 +948,6 @@ fi
 %{strongswan_templates}/config/strongswan.d/swanctl.conf
 %{strongswan_templates}/database/imv/data.sql
 %{strongswan_templates}/database/imv/tables.sql
-
 
 %if %{with nm}
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  3 13:22:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.9
+  * Fixed an issue that could cause OCSP requests to contain an
+    incorrect serial number if the openssl plugin parsed the
+    certificate.
+  * The resolve plugin does not invoke resolvconf(8) with
+    individual interface names for each name server anymore.
+  * The kernel-netlink plugin now logs extended ACK error and
+    warning messages provided by the Linux kernel if e.g. the
+    installation of an SA or policy fails.
+
+-------------------------------------------------------------------
 Mon Oct  3 20:36:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.8
