@@ -1,3 +1,76 @@
+commit 6cb9320825c3617abcb48e7fbd9d0d64f0c2f65b
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Thu Dec 8 18:49:41 2022 +0100
+
+    Make OpenAFS 1.8.9
+    
+    Update version strings for the 1.8.9 release, and add the
+    finishing touch to NEWS.
+    
+    Change-Id: I8185cc177c1150d29d802df522e3b161dac7d75e
+    Reviewed-on: https://gerrit.openafs.org/15215
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 0ad4c50f91c2d322688981b97aa05ba471b848c1
+Author: Benjamin Kaduk <kaduk@mit.edu>
+Date:   Fri Oct 8 20:11:19 2021 -0700
+
+    viced: cope with signed length/position in FetchData
+    
+    For legacy reasons, the "Pos" (initial position) and "Len" (length)
+    inputs to the RXAFS_FetchData and RXAFS_FetchData64 RPCs are represented
+    as signed integers (the corresponding StoreData RPCs use unsigned values).
+    
+    The use of signed values allows for the possibility of negative inputs,
+    and of signed integer overflow (undefined behavior in C), though the latter
+    is unlikely to arise naturally given that the implementation uses a
+    common backend with 64-bit values.
+    
+    In particular, if a negative "Pos" value is supplied, we end up in
+    FetchData_RXStyle() that performs either FDH_PREAD() or FDH_PREADV()
+    with the negative value as the position from which to read, which is
+    an error.  The error handling for those calls treats any error as
+    indicative of a problem with the volume or its underlying storage,
+    and takes the volume offline for salvage.  Furthermore, after the
+    maximum number of automatic salvages the volume is left offline for
+    administrator action.  This presents a simple route for
+    (unauthenticated) denial of service, as root.cell.readonly must be
+    available to all users of the cell, and can be brought offline in this
+    way; rendering root.cell.readonly unavailable would bring essentially
+    all access to the cell to a halt.  (Other volumes could be targeted as
+    well, subject to their corresponding ACLs.)
+    
+    Since there is no valid use for a negative position or length input,
+    reject them outright from the common_FetchData64() implementation.
+    Also check for whether the combination requests a read that would
+    overflow a signed integer and reject that as well.
+    
+    Thanks to Jeffrey Altman and Chaskiel Grundman for collaborating on
+    this change.
+    
+    FIXES 135263
+    
+    Reviewed-on: https://gerrit.openafs.org/15223
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Jeffrey Altman <jaltman@auristor.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 1fbbcbee0183aa7855c0e5d9d38aa89af75902db)
+    
+    Change-Id: I1d634918789dddd5500ab50a0b508c142d83dc84
+    Reviewed-on: https://gerrit.openafs.org/15224
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+
 commit f812d1125f785df05bf1028f665d22c608006bae
 Author: Stephan Wiesand <stephan.wiesand@desy.de>
 Date:   Thu Nov 3 15:59:04 2022 +0100

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 08:14:39 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to offical openafs-1.8.9
+  * all changes as openafs-1.8.9pre2
+  * fix possible DoS attack 
+
+-------------------------------------------------------------------
 Mon Dec 12 07:40:28 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to openafs-1.8.9pre2
