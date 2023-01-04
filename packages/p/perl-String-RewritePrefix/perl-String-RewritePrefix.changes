@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:18:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.009
+   see /usr/share/doc/packages/perl-String-RewritePrefix/Changes
+
+  0.009     2022-12-31 16:30:04-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Sun Jan 26 03:10:47 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.008
