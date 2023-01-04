@@ -79,4 +79,14 @@ It does NOT conflict with python38 standard library.</comment>
     <comment></comment>
     <requestid>1042891</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c2948fa1261d7a413ae65ea3b2b7ec2</srcmd5>
+    <version>5.10.2</version>
+    <time>1672851048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.10.2:
+  * Prefer ``write_bytes`` to context manager as
+  proposed in gh-100586.</comment>
+    <requestid>1046280</requestid>
+  </revision>
 </revisionlist>
