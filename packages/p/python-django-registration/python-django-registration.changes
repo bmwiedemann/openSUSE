@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:15:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3:
+  * This release contains no new features or bugfixes.
+    The supported Python and Django versions are changed to:
+    Django 3.2 and 4.0, on Python 3.7 (Django 3.2 only), 3.8, 3.9, and 3.10.
+
+-------------------------------------------------------------------
 Sat Jul 24 01:52:54 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.2

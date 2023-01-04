@@ -162,4 +162,15 @@
     <comment></comment>
     <requestid>908033</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3540eae534ffef1dfd66092c30a4a0a4</srcmd5>
+    <version>3.3</version>
+    <time>1672851220</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3:
+  * This release contains no new features or bugfixes.
+    The supported Python and Django versions are changed to:
+    Django 3.2 and 4.0, on Python 3.7 (Django 3.2 only), 3.8, 3.9, and 3.10.</comment>
+    <requestid>1055857</requestid>
+  </revision>
 </revisionlist>
