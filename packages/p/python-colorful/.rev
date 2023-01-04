@@ -7,4 +7,16 @@
     <comment>Initial release of 0.5.4</comment>
     <requestid>1009223</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3a6ee65dd0c019ac117c138e7aefa39a</srcmd5>
+    <version>0.5.5</version>
+    <time>1672851217</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.5:
+  * Fix `setup(colormode=NO_COLORS)`
+  * Fix correctnes of `__str__` to return always a str
+  * Drop Python 2 support
+  * Test Python 3.5 - Python 3.11</comment>
+    <requestid>1055865</requestid>
+  </revision>
 </revisionlist>
