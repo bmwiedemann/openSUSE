@@ -1,7 +1,7 @@
 #
 # spec file for package fxload
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -53,7 +53,7 @@ make %{?_smp_mflags} CC="gcc" CFLAGS="%{optflags} -Wall -g -DFXLOAD_VERSION=\"\\
 
 %install
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/fxload %{buildroot}/sbin
 %endif
@@ -62,7 +62,7 @@ ln -sf %{_sbindir}/fxload %{buildroot}/sbin
 %license COPYING
 %doc README.txt
 %defattr(-,root,root)
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %attr(755,root,root) %{_sbindir}/fxload

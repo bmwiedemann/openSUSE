@@ -189,4 +189,12 @@
 - Rebase and rename fxload-2008_10_13-prefer_DEVNAME.patch to fxload-2013_01_03-prefer_DEVNAME.patch</comment>
     <requestid>925432</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>53af18ab4228d6ee7607f61fae9513ed</srcmd5>
+    <version>2013_01_03</version>
+    <time>1672851181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055334</requestid>
+  </revision>
 </revisionlist>

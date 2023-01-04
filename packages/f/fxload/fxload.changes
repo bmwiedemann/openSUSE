@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:37:21 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Oct 12 06:45:04 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v2013_01_03:
