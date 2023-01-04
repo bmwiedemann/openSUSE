@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:19:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Fix Hungarian eID URL
+  * New ATR for OTP Bank Mastercard
+  * new ATRs
+  * pcsc_scan: add "wsvt25" as a color terminal
+
+-------------------------------------------------------------------
 Thu Oct 20 12:18:51 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace the requirement for perl(Gtk2) with perl(Gtk3) which is
