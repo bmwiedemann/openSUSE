@@ -1,7 +1,7 @@
 #
 # spec file for package python-DateTime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-DateTime
-Version:        4.7
+Version:        4.9
 Release:        0
 Summary:        Zope DateTime data type
 License:        ZPL-2.1

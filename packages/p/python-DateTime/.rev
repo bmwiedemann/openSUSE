@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>1032485</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5207f76cd526c42447f8a8afae2dd2db</srcmd5>
+    <version>4.9</version>
+    <time>1672859907</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.9:
+  * Fix regression in 4.7 on Python 2 when calling ``asdatetime``.
+  (`#47 &lt;https://github.com/zopefoundation/DateTime/issues/47&gt;`_)
+  * Fix insidious buildout configuration bug that prevented tests on Python
+    2.7 and 3.5, and fix test code that was incompatible with Python 3.5.
+  * Add support for Python 3.11.</comment>
+    <requestid>1055952</requestid>
+  </revision>
 </revisionlist>
