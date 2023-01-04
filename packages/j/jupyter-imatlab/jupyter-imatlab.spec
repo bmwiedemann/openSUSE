@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-imatlab
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,10 +68,12 @@ mkdir matlab
 echo 'EngineError = MatlabExecutionError = Exception' > matlab/engine.py
 
 %install
-%{python_expand mkdir build; cp -a %{SOURCE0} build/}
-%pyproject_install
+%pyproject_install %{SOURCE0}
 PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m imatlab install --prefix %{buildroot}%{_prefix}
 cp %{buildroot}%{python3_sitelib}/imatlab-%{version}.dist-info/LICENSE.txt .
+# not available during install, not a proper PEP440 version information -- gh#imatlab/imatlab#65
+sed -i '/Requires-Dist: matlabengineforpython.*R/d' \
+   %{buildroot}%{python3_sitelib}/imatlab-%{version}.dist-info/METADATA
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check

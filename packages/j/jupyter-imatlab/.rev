@@ -51,4 +51,13 @@
     <comment></comment>
     <requestid>869694</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5aec1d058f3d1ed099ab5068778a426c</srcmd5>
+    <version>0.4</version>
+    <time>1672851156</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove invalid version requirement from python metadata
+  * gh#imatlab/imatlab#65</comment>
+    <requestid>1046628</requestid>
+  </revision>
 </revisionlist>

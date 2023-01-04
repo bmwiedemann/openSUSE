@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  3 18:11:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove invalid version requirement from python metadata
+  * gh#imatlab/imatlab#65
+
+-------------------------------------------------------------------
 Wed Feb  3 23:26:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix wheel install path for new python-rpm-macros
