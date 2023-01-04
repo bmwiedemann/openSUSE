@@ -1,7 +1,7 @@
 #
 # spec file for package mhvtl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
+Patch1:         %{name}-fix-queuecomand-args.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -78,6 +79,7 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}
+%patch1 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \

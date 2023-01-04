@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  3 17:59:10 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Handle the fact that version 15.5 of our kernel back-ported
+  changes to the SCSI queue command, changing args fromn 2 to
+  1, by adding a patch that helps the code detect the actual
+  number of args (bsc#1206172), adding:
+  * mhvtl-fix-queuecomand-args.patch
+
+-------------------------------------------------------------------
 Wed Jun 08 22:12:53 UTC 2022 - lduncan@suse.com
 
 - Update to version 1.70_release+865.af13081a1ae5:

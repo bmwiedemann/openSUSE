@@ -1,0 +1,88 @@
+From: Lee Duncan <lduncan@suse.com>
+Date: Tue 03 Jan 2023 09:56:47 AM PST
+Subject: [PATCH] mhvtl: fix queuecomand args
+
+The SCSI queue command (locking) recently changed,
+removing the second ("done") argument, in upstream
+5.16, but SUSE backported those changes to SLE 15.5
+(kernel 5.14), so detect the actual number of args,
+rather than guess based on the kernel version.
+---
+diff --git a/kernel/config.sh b/kernel/config.sh
+index 79dd0c32c805..5669e5d3b1a7 100755
+--- a/kernel/config.sh
++++ b/kernel/config.sh
+@@ -75,4 +75,14 @@ else
+     echo "#undef HAVE_UNLOCKED_IOCTL"
+ fi >> "${output}"
+ 
++# check for the scsi queue command taking one or two args
++str=$( grep 'rc = func_name##_lck' ${hdrs}/include/scsi/scsi_host.h )
++if [[ "$str" == *,* ]] ; then
++    echo "#undef QUEUECOMMAND_LCK_ONE_ARG"
++else
++    echo "#ifndef QUEUECOMMAND_LCK_ONE_ARG"
++    echo "#define QUEUECOMMAND_LCK_ONE_ARG"
++    echo "#endif"
++fi >> "${output}"
++
+ printf '\n\n#endif /* _MHVTL_KERNEL_CONFIG_H */\n' >> "${output}"
+diff --git a/kernel/mhvtl.c b/kernel/mhvtl.c
+index 4e8dd39b161b..2674029905ef 100644
+--- a/kernel/mhvtl.c
++++ b/kernel/mhvtl.c
+@@ -278,11 +278,11 @@ static int mhvtl_change_queue_depth(struct scsi_device *sdev, int qdepth,
+ 					int reason);
+ #endif
+ #endif
+-static int mhvtl_queuecommand_lck(struct scsi_cmnd *
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,16,0)
+-		, done_funct_t done
++#ifdef QUEUECOMMAND_LCK_ONE_ARG
++static int mhvtl_queuecommand_lck(struct scsi_cmnd *);
++#else
++static int mhvtl_queuecommand_lck(struct scsi_cmnd *, done_funct_t done);
+ #endif
+-		);
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
+ static int mhvtl_b_ioctl(struct scsi_device *, unsigned int, void __user *);
+@@ -600,15 +600,8 @@ static int mhvtl_q_cmd(struct scsi_cmnd *scp,
+ /**********************************************************************
+  *                Main interface from SCSI mid level
+  **********************************************************************/
+-static int mhvtl_queuecommand_lck(struct scsi_cmnd *SCpnt
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(5,16,0)
+-		, done_funct_t done
+-#endif
+-		)
++static int _mhvtl_queuecommand_lck(struct scsi_cmnd *SCpnt, done_funct_t done)
+ {
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,16,0)
+-	void (*done)(struct scsi_cmnd *) = scsi_done;
+-#endif
+ 	unsigned char *cmd = (unsigned char *) SCpnt->cmnd;
+ 	int errsts = 0;
+ 	struct mhvtl_lu_info *lu = NULL;
+@@ -650,6 +643,21 @@ static int mhvtl_queuecommand_lck(struct scsi_cmnd *SCpnt
+ 	return mhvtl_schedule_resp(SCpnt, lu, done, errsts);
+ }
+ 
++#ifdef QUEUECOMMAND_LCK_ONE_ARG
++static int mhvtl_queuecommand_lck(struct scsi_cmnd *SCpnt)
++{
++	void (*done)(struct scsi_cmnd *) = scsi_done;
++
++	return _mhvtl_queuecommand_lck(SCpnt, done);
++}
++#else
++static int mhvtl_queuecommand_lck(struct scsi_cmnd *SCpnt, done_funct_t done)
++{
++	return _mhvtl_queuecommand_lck(SCpnt, done);
++}
++#endif
++
++
+ /* FIXME: I don't know what version this inline routine was introduced */
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,9)
+ 
