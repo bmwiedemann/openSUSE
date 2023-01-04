@@ -123,4 +123,12 @@
     - don't assume that the source sub isn't blessed in tests (!)</comment>
     <requestid>250222</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bab58f4d8b40ef99d2d2f7b5b9b501b4</srcmd5>
+    <version>0.929</version>
+    <time>1672852211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046506</requestid>
+  </revision>
 </revisionlist>
