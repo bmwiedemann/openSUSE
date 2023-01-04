@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:17:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6:
+  * Crypto: add support for post-quantum algorithms.
+  * Minor changes.
+
+-------------------------------------------------------------------
 Mon Oct 17 07:08:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.64 (no changelog).
