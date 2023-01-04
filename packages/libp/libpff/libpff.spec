@@ -1,7 +1,7 @@
 #
 # spec file for package libpff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Source13:       PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
 Source14:       Personal_Folder_File_PFF_format.pdf
 Source15:       MAPI_definitions.pdf
 Source16:       libpff-libfdata.pdf
-Patch2:         pkgconfig.diff
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
@@ -92,6 +91,7 @@ Summary:        Development files for libpff, a PFF/OFF file format library
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libpff is a library to access the Personal Folder File (PFF) and the
