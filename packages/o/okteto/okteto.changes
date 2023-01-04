@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jan 04 15:47:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.11.0:
+  * feat: add external endpoints when retrieving endpoints (#3314)
+  * fix e2e when call deploy from up cmd e2e (#3316)
+  * refactor: use client provider instead of get client (#3315)
+  * add deploy external resource with okteto deploy cmd (#3303)
+  * refactor: remove force param from delete mutation (#3312)
+  * remove temporarily failing test (#3309)
+  * Okteto namespace delete use destroy all job (#3301)
+  * Fix endpoints name in compose (#3304)
+  * okteto destroy --all option with log stream (#3256)
+  * add external resource parsing (#3298)
+  * Log stream refactor (#3249)
+  * Default to watch for logs (#3299)
+  * update file permission for bin image (#3297)
+  * Refactor divert weaver implementation (#3288)
+  * feat: add namespace to dependencies (#3248)
+  * Fix sanitize name (#3263)
+  * Jlopezbarb/fix last updated not being updated (#3259)
+  * test: add e2e test regarding export cache (#3270)
+  * Ignore concurrent errors when setting divert (#3285)
+  * Add "unable to upgrade connection" to retry logic (#3280)
+  * Don't apply divert transformation if old service was autocreate/headless (#3279)
+  * Set "Ingress.Value" to properly initialize the HeaderID based on the … (#3275)
+  * Fix infer name for "okteto logs" (#3264)
+  * Create a single divert CRD and modify ingress on the client side (#3271)
+  * Add namespace for ctxOptions in UseContext() method (#3195)
+  * Fix inline export when image tag and cache tag are the same (#3261)
+  * Include 'destroy-error' status as a failure in WaitForActionToFinish function. This was provoking that if the pipeline fails, we don't indicate the error in the CLI (#3258)
+  * feat: add dependencies stage (#3251)
+  * Made changes for better readability (#3255)
+  * refactor: added ExportCache to build options (#3252)
+
+-------------------------------------------------------------------
 Wed Dec 21 09:49:29 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.10.3:
