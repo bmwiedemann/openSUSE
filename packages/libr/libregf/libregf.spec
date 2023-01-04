@@ -1,7 +1,7 @@
 #
 # spec file for package libregf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,7 @@ Summary:        Development files for libregf, a Windows REGF-type Registry file
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %{version}
+Requires:       libbfio-devel
 
 %description devel
 libregf is a library to access Windows Registry files of the REGF
