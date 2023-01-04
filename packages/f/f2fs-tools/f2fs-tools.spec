@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ Group:          System/Libraries
 %description -n libf2fs_format8
 This package contains a shared library to format F2 filesystems.
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %package compat
 Summary:        f2fs utility compatibility symlinks
 Group:          System/Filesystems
@@ -87,7 +87,7 @@ find %buildroot -type f -name "*.la" -delete -print
 rm -f "%buildroot/%_sbindir/sg_write_buffer"
 
 mkdir -p "%buildroot/sbin" "%buildroot/%_includedir"
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf "%_sbindir"/{defrag.f2fs,dump.f2fs,f2fstat,fibmap.f2fs,fsck.f2fs,mkfs.f2fs,parse.f2fs,resize.f2fs,sload.f2fs} "%buildroot/sbin/"
 %endif
 # for android-tools… this is of course totally untested.
@@ -111,7 +111,7 @@ cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 %files -n libf2fs_format8
 %_libdir/libf2fs_format.so.*
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %files compat
 /sbin/*
 %endif
