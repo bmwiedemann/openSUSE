@@ -1,7 +1,7 @@
 #
 # spec file for package lime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.1.64
+Version:        5.2.6
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
@@ -37,8 +37,8 @@ BuildRequires:  soci-devel = 4.0.2
 BuildRequires:  soci-sqlite3-devel = 4.0.2
 %endif
 BuildRequires:  chrpath
-BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
-BuildRequires:  pkgconfig(belle-sip) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
+BuildRequires:  pkgconfig(belle-sip) >= 5.2.0
 
 %description
 LIME is an encryption library for one-to-one and group instant
