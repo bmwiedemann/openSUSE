@@ -196,4 +196,16 @@
     <comment></comment>
     <requestid>946103</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd187f66ef83bc99344416cdcbf3844e</srcmd5>
+    <version>3.0.4</version>
+    <time>1672851223</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.4:
+  * Fixed race condition issue with Grunt.
+  * Fixed readonly ID field.
+  * Fixed utf-8 characters in TinyMCE staticfiles.
+  * Fixed changelist actions.</comment>
+    <requestid>1055868</requestid>
+  </revision>
 </revisionlist>

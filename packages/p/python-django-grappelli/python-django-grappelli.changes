@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:26:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * Fixed race condition issue with Grunt.
+  * Fixed readonly ID field.
+  * Fixed utf-8 characters in TinyMCE staticfiles.
+  * Fixed changelist actions.
+
+-------------------------------------------------------------------
 Thu Jan 13 11:23:29 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove tests from runtime package
