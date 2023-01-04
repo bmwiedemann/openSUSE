@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 04 15:48:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20221224T152138Z:
+  * trace: Add input and output filters options (#4353)
+  * upgrade UBI image to 8.7 (#4425)
+  * avoid converting API types to local forms in 'mc' (#4424)
+  * Change formatting of `mc stat` (#4397)
+  * Change `mc replicate add|update` to integrate create remote targets (#4403)
+  * admin-trace: Fix support for tracing scanner calls (#4417)
+  * fix: Correctly print svc accounts list (#4422)
+  * fix: replicate remove show partial operations if any (#4418)
+  * reorganize ILM tier commands (#4385)
+  * Print 'Cancel upon user request' when the global context is cancelled (#4406)
+  * fix: improve the information on retention config (#4411)
+  * show endpoint in the replication status (#4412)
+  * heal: Reword new disks healing summary (#4413)
+  * fix: IDP enable/disable command (#4410)
+  * Upgrade golang.org/x/net (#4405)
+
+-------------------------------------------------------------------
 Fri Dec 16 13:11:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221213T002328Z:
