@@ -1,7 +1,7 @@
 #
 # spec file for package xlockmore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,7 +103,6 @@ export CXXFLAGS="%{optflags}"
 %make_build
 
 %install
-install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
 install -d -m 755 %{buildroot}%{_prefix}/%{_xorg7bin}/
 install -d -m 755 %{buildroot}%{_prefix}/%{_xorg7libshare}/X11/app-defaults/
 install -d -m 755 %{buildroot}%{_xorg7_mandir}/man1/
@@ -111,7 +110,14 @@ install -d -m 755 %{buildroot}%{_prefix}/%{_xorg7libs32}/xlock
 install -m 755 xlock/xlock %{buildroot}%{_prefix}/%{_xorg7libs32}/xlock/xlock
 install -m 644 xlock/XLock.ad %{buildroot}%{_prefix}/%{_xorg7libshare}/X11/app-defaults/XLock
 install -m 644 xlock/xlock.man %{buildroot}%{_xorg7_mandir}/man1/xlock.1x
+%if 0%{?suse_version} > 1500
+install -d -m 755 %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE1} %{buildroot}%{_pam_vendordir}/xlock
+%else
+install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/xlock
+%endif
+
 %if "%(pkg-config --variable prefix x11 || echo %{_prefix}/X11R6)" == "%{_prefix}"
 install -m 755 %{SOURCE2} %{buildroot}%{_prefix}/%{_xorg7bin}/xlock
 %else
@@ -119,10 +125,28 @@ install -m 755 %{SOURCE3} %{buildroot}%{_prefix}/%{_xorg7bin}/xlock
 %endif
 %fdupes %{buildroot}%{_prefix}
 
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/xlock ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/xlock ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %doc %{_xorg7_mandir}/man1/xlock.1x.gz
 %doc README docs/3d.howto docs/Purify docs/Revisions docs/TODO docs/cell_automata
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/xlock
+%else
 %config %{_sysconfdir}/pam.d/xlock
+%endif
 %{_prefix}/%{_xorg7libshare}/X11/app-defaults
 %{_prefix}/%{_xorg7bin}/xlock
 %{_prefix}/%{_xorg7libs32}/xlock
