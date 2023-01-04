@@ -17,12 +17,12 @@
 
 
 Name:           git-cliff
-Version:        0.10.0
+Version:        1.0.0
 Release:        0
 Summary:        Changelog generator for git repositories
 URL:            https://github.com/orhun/git-cliff
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0 AND GPL-3.0-only
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging

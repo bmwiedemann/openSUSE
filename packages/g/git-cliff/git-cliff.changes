@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:57:44 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.0.0:
+  * Bug Fixes
+    - Fix test fixture failures
+  * Documentation
+    - Fix GitHub badges in README.md
+  * Features
+    - [breaking] Replace --date-order by --topo-order
+    - Allow running with --prepend and --output
+    - [breaking] Use current time for --tag argument
+    - Include completions and mangen in binary releases
+    - Publish Debian package via release workflow
+  * Miscellaneous Tasks
+    - Run all test fixtures
+    - Remove deprecated set-output usage
+    - Update actions/checkout to v3
+    - Comment out custom commit preprocessor
+  * Refactor
+    - Apply clippy suggestions
+  * Styling
+    - Update README.md about the styling of footer field
+
+-------------------------------------------------------------------
 Thu Nov 24 23:24:44 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.10.0:

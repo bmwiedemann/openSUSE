@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">v0.10.0.tar.gz</param>
+     <param name="srctar">git-cliff-1.0.0.tar.gz</param>
      <param name="compression">gz</param>
      <param name="update">true</param>
   </service>
