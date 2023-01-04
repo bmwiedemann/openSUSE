@@ -1,8 +1,11 @@
-Index: numba-0.54.0/numba/tests/test_parfors.py
-===================================================================
---- numba-0.54.0.orig/numba/tests/test_parfors.py
-+++ numba-0.54.0/numba/tests/test_parfors.py
-@@ -1146,6 +1146,7 @@ class TestParforNumPy(TestParforsBase):
+---
+ numba/tests/test_parfors.py        |    5 +++--
+ numba/tests/test_parfors_passes.py |    1 +
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+--- a/numba/tests/test_parfors.py
++++ b/numba/tests/test_parfors.py
+@@ -1174,6 +1174,7 @@ class TestParforNumPy(TestParforsBase):
          self.check_variants(test_impl2, data_gen)
          self.count_parfors_variants(test_impl2, data_gen)
  
@@ -10,7 +13,7 @@ Index: numba-0.54.0/numba/tests/test_parfors.py
      def test_ndarray_fill(self):
          def test_impl(x):
              x.fill(7.0)
-@@ -3890,7 +3891,7 @@ class TestParforsVectorizer(TestPrangeBa
+@@ -4396,7 +4397,7 @@ class TestParforsVectorizer(TestPrangeBa
      # to check vsqrtpd operates on zmm
      match_vsqrtpd_on_zmm = re.compile('\n\s+vsqrtpd\s+.*zmm.*\n')
  
@@ -19,7 +22,7 @@ Index: numba-0.54.0/numba/tests/test_parfors.py
      def test_vectorizer_fastmath_asm(self):
          """ This checks that if fastmath is set and the underlying hardware
          is suitable, and the function supplied is amenable to fastmath based
-@@ -3933,7 +3934,7 @@ class TestParforsVectorizer(TestPrangeBa
+@@ -4439,7 +4440,7 @@ class TestParforsVectorizer(TestPrangeBa
              # check no zmm addressing is present
              self.assertTrue('zmm' not in v)
  
@@ -28,10 +31,8 @@ Index: numba-0.54.0/numba/tests/test_parfors.py
      def test_unsigned_refusal_to_vectorize(self):
          """ This checks that if fastmath is set and the underlying hardware
          is suitable, and the function supplied is amenable to fastmath based
-Index: numba-0.54.0/numba/tests/test_parfors_passes.py
-===================================================================
---- numba-0.54.0.orig/numba/tests/test_parfors_passes.py
-+++ numba-0.54.0/numba/tests/test_parfors_passes.py
+--- a/numba/tests/test_parfors_passes.py
++++ b/numba/tests/test_parfors_passes.py
 @@ -516,6 +516,7 @@ class TestConvertLoopPass(BaseTest):
              str(raises.exception),
          )
@@ -40,3 +41,15 @@ Index: numba-0.54.0/numba/tests/test_parfors_passes.py
      def test_init_prange(self):
          def test_impl():
              n = 20
+Index: numba-0.56.2/numba/tests/test_cli.py
+===================================================================
+--- numba-0.56.2.orig/numba/tests/test_cli.py
++++ numba-0.56.2/numba/tests/test_cli.py
+@@ -264,6 +264,7 @@ class TestGDBCLIInfoBrokenGdbs(TestCase)
+             self.assertIn("No such file or directory", stdout)
+             self.assertIn(path, stdout)
+ 
++    @unittest.skip("Fails on type check in OBS")
+     def test_nonsense_gdb_binary(self):
+         # Tests that a nonsense binary specified as gdb it picked up ok
+         env = os.environ.copy()

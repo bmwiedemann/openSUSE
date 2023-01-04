@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jan  3 12:13:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Split out python flavors into testing multibuilds. Depending on
+  the obs worker, the test suite can take almost an hour per
+  flavor.
+- Replace allow-numpy-1.24.patch with an updated
+  numba-pr8620-np1.24.patch to also work with still present numpy
+  1.23 in Factory (discussed upstream in gh#numba/numba#8620)
+- Merge fix-cli-test.patch into skip-failing-tests.patch
+
+-------------------------------------------------------------------
+Mon Jan  2 21:27:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean up the specfile
+  * restore the multibuild
+  * Patch allow-numpy-1.24.patch is the WIP gh#numba/numba#8620
+
+-------------------------------------------------------------------
+Sun Jan  1 11:41:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.56.4:
+  - This is a bugfix release to fix a regression in the CUDA
+    target in relation to the .view() method on CUDA device
+    arrays that is present when using NumPy version 1.23.0 or
+    later.
+  - This is a bugfix release to remove the version restriction
+    applied to the setuptools package and to fix a bug in the
+    CUDA target in relation to copying zero length device arrays
+    to zero length host arrays.
+- Add allow-numpy-1.24.patch to allow work with numpy 1.24
+
+-------------------------------------------------------------------
 Mon Oct 10 10:07:52 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Allow numpy 1.23

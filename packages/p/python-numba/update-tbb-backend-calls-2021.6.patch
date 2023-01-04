@@ -1,7 +1,9 @@
-Index: numba-0.56.2/numba/np/ufunc/tbbpool.cpp
-===================================================================
---- numba-0.56.2.orig/numba/np/ufunc/tbbpool.cpp
-+++ numba-0.56.2/numba/np/ufunc/tbbpool.cpp
+---
+ numba/np/ufunc/tbbpool.cpp |   29 ++++++++++++++++++++++++-----
+ 1 file changed, 24 insertions(+), 5 deletions(-)
+
+--- a/numba/np/ufunc/tbbpool.cpp
++++ b/numba/np/ufunc/tbbpool.cpp
 @@ -12,6 +12,7 @@ Implement parallel vectorize workqueue o
  #undef _XOPEN_SOURCE
  #endif

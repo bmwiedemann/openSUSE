@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,59 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+# Not compatible with Python 3.11 yet. If this changes, and the python311
+# flavor is active, make sure to expand the multibuild test flavors
+# https://github.com/numba/numba/issues/8304
+%define skip_python311 1
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 1.18
-%define max_numpy_ver 1.24
+%define max_numpy_ver 1.25
+
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
+%if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-numba%{psuffix}
-Version:        0.56.2
+%if "%{flavor}" == "test-py38"
+%define psuffix -test-py38
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py39"
+%define psuffix -test-py39
+%define skip_python38 1
+%define skip_python310 1
+%bcond_without test
+%endif
+%if "%{flavor}" == "test-py310"
+%define psuffix -test-py310
+%define skip_python38 1
+%define skip_python39 1
+%bcond_without test
+%endif
+
+Name:           python-numba%{?psuffix}
+Version:        0.56.4
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
 URL:            https://numba.pydata.org/
+# SourceRepository: https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM numba-pr8620-np1.24.patch gh#numba/numba#8620 + raising upper bound in setup.py and numba/__init__.py
+Patch1:         numba-pr8620-np1.24.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
-Patch2:         fix-cli-test.patch
 Patch3:         skip-failing-tests.patch
 # PATCH-FIX-OPENSUSE update-tbb-backend-calls-2021.6.patch, based on gh#numba/numba#7608
 Patch4:         update-tbb-backend-calls-2021.6.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -116,19 +140,18 @@ rm numba/tests/test_typedlist.py
 %build
 %if !%{with test}
 export CFLAGS="%{optflags} -fPIC"
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %{python_expand #
 %fdupes %{buildroot}%{$python_sitearch}
 find %{buildroot}%{$python_sitearch} -name '*.[ch]' > devel-files0-%{$python_bin_suffix}.files
 sed 's|^%{buildroot}||' devel-files0-%{$python_bin_suffix}.files > devel-files-%{$python_bin_suffix}.files
 sed 's|^%{buildroot}|%%exclude |' devel-files0-%{$python_bin_suffix}.files > devel-files-exclude-%{$python_bin_suffix}.files
 }
-
 %python_clone -a %{buildroot}%{_bindir}/numba
 %python_clone -a %{buildroot}%{_bindir}/pycc
 %endif
@@ -139,7 +162,7 @@ sed 's|^%{buildroot}|%%exclude |' devel-files0-%{$python_bin_suffix}.files > dev
 mkdir emptytestdir
 pushd emptytestdir
 %{python_expand # numbatests: check specific tests with `osc build -M test --define="numbatests <testnames>"`
-%{_bindir}/numba-%{$python_bin_suffix} -s
+%{_bindir}/numba-%%{$python_bin_suffix} -s
 $python -m numba.runtests -v -b --exclude-tags='long_running' -m %{_smp_build_ncpus} -- %{?!numbatests:numba.tests}%{?numbatests}
 }
 popd
@@ -158,7 +181,7 @@ popd
 %python_alternative %{_bindir}/numba
 %python_alternative %{_bindir}/pycc
 %{python_sitearch}/numba/
-%{python_sitearch}/numba-%{version}-py*.egg-info
+%{python_sitearch}/numba-%{version}.dist-info
 
 %files %{python_files devel} -f devel-files-%{python_bin_suffix}.files
 %license LICENSE

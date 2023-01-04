@@ -1,0 +1,415 @@
+Index: numba-0.56.4/numba/cuda/tests/cudapy/test_intrinsics.py
+===================================================================
+--- numba-0.56.4.orig/numba/cuda/tests/cudapy/test_intrinsics.py
++++ numba-0.56.4/numba/cuda/tests/cudapy/test_intrinsics.py
+@@ -619,7 +619,7 @@ class TestCudaIntrinsic(CUDATestCase):
+         arg2 = np.float16(4.)
+         compiled[1, 1](ary, arg1, arg2)
+         np.testing.assert_allclose(ary[0], arg2)
+-        arg1 = np.float(5.)
++        arg1 = np.float16(5.)
+         compiled[1, 1](ary, arg1, arg2)
+         np.testing.assert_allclose(ary[0], arg1)
+ 
+@@ -631,7 +631,7 @@ class TestCudaIntrinsic(CUDATestCase):
+         arg2 = np.float16(4.)
+         compiled[1, 1](ary, arg1, arg2)
+         np.testing.assert_allclose(ary[0], arg1)
+-        arg1 = np.float(5.)
++        arg1 = np.float16(5.)
+         compiled[1, 1](ary, arg1, arg2)
+         np.testing.assert_allclose(ary[0], arg2)
+ 
+Index: numba-0.56.4/numba/np/arraymath.py
+===================================================================
+--- numba-0.56.4.orig/numba/np/arraymath.py
++++ numba-0.56.4/numba/np/arraymath.py
+@@ -4177,6 +4177,10 @@ iinfo = namedtuple('iinfo', _iinfo_suppo
+ # This module is imported under the compiler lock which should deal with the
+ # lack of thread safety in the warning filter.
+ def _gen_np_machar():
++    # NumPy 1.24 removed np.MachAr
++    if numpy_version >= (1, 24):
++        return
++
+     np122plus = numpy_version >= (1, 22)
+     w = None
+     with warnings.catch_warnings(record=True) as w:
+Index: numba-0.56.4/numba/np/ufunc/_internal.c
+===================================================================
+--- numba-0.56.4.orig/numba/np/ufunc/_internal.c
++++ numba-0.56.4/numba/np/ufunc/_internal.c
+@@ -285,9 +285,7 @@ static struct _ufunc_dispatch {
+     PyCFunctionWithKeywords ufunc_accumulate;
+     PyCFunctionWithKeywords ufunc_reduceat;
+     PyCFunctionWithKeywords ufunc_outer;
+-#if NPY_API_VERSION >= 0x00000008
+     PyCFunction ufunc_at;
+-#endif
+ } ufunc_dispatch;
+ 
+ static int
+@@ -303,10 +301,8 @@ init_ufunc_dispatch(int *numpy_uses_fast
+             if (strncmp(crnt_name, "accumulate", 11) == 0) {
+                 ufunc_dispatch.ufunc_accumulate =
+                     (PyCFunctionWithKeywords)crnt->ml_meth;
+-#if NPY_API_VERSION >= 0x00000008
+             } else if (strncmp(crnt_name, "at", 3) == 0) {
+                 ufunc_dispatch.ufunc_at = crnt->ml_meth;
+-#endif
+             } else {
+                 result = -1;
+             }
+@@ -326,10 +322,15 @@ init_ufunc_dispatch(int *numpy_uses_fast
+             } else if (strncmp(crnt_name, "reduceat", 9) == 0) {
+                 ufunc_dispatch.ufunc_reduceat =
+                     (PyCFunctionWithKeywords)crnt->ml_meth;
++            } else if (strncmp(crnt_name, "resolve_dtypes", 15) == 0) {
++              /* Ignored */
+             } else {
+                 result = -1;
+             }
+             break;
++        case '_':
++            // We ignore private methods
++            break;
+         default:
+             result = -1; /* Unknown method */
+         }
+@@ -341,6 +342,8 @@ init_ufunc_dispatch(int *numpy_uses_fast
+                 *numpy_uses_fastcall = crnt->ml_flags & METH_FASTCALL;
+             }
+             else if (*numpy_uses_fastcall != (crnt->ml_flags & METH_FASTCALL)) {
++                PyErr_SetString(PyExc_RuntimeError,
++                    "ufunc.at() flags do not match numpy_uses_fastcall");
+                 return -1;
+             }
+         }
+@@ -351,11 +354,13 @@ init_ufunc_dispatch(int *numpy_uses_fast
+                   && (ufunc_dispatch.ufunc_accumulate != NULL)
+                   && (ufunc_dispatch.ufunc_reduceat != NULL)
+                   && (ufunc_dispatch.ufunc_outer != NULL)
+-#if NPY_API_VERSION >= 0x00000008
+                   && (ufunc_dispatch.ufunc_at != NULL)
+-#endif
+                   );
++    } else {
++        char const * const fmt = "Unexpected ufunc method %s()";
++        PyErr_Format(PyExc_RuntimeError, fmt, crnt_name);
+     }
++
+     return result;
+ }
+ 
+@@ -425,13 +430,11 @@ dufunc_outer_fast(PyDUFuncObject * self,
+ }
+ 
+ 
+-#if NPY_API_VERSION >= 0x00000008
+ static PyObject *
+ dufunc_at(PyDUFuncObject * self, PyObject * args)
+ {
+     return ufunc_dispatch.ufunc_at((PyObject*)self->ufunc, args);
+ }
+-#endif
+ 
+ static PyObject *
+ dufunc__compile_for_args(PyDUFuncObject * self, PyObject * args,
+@@ -609,11 +612,9 @@ static struct PyMethodDef dufunc_methods
+     {"outer",
+         (PyCFunction)dufunc_outer,
+         METH_VARARGS | METH_KEYWORDS, NULL},
+-#if NPY_API_VERSION >= 0x00000008
+     {"at",
+         (PyCFunction)dufunc_at,
+         METH_VARARGS, NULL},
+-#endif
+     {"_compile_for_args",
+         (PyCFunction)dufunc__compile_for_args,
+         METH_VARARGS | METH_KEYWORDS,
+@@ -643,11 +644,9 @@ static struct PyMethodDef dufunc_methods
+     {"outer",
+         (PyCFunction)dufunc_outer_fast,
+         METH_FASTCALL | METH_KEYWORDS, NULL},
+-#if NPY_API_VERSION >= 0x00000008
+     {"at",
+         (PyCFunction)dufunc_at,
+         METH_VARARGS, NULL},
+-#endif
+     {"_compile_for_args",
+         (PyCFunction)dufunc__compile_for_args,
+         METH_VARARGS | METH_KEYWORDS,
+@@ -791,9 +790,7 @@ MOD_INIT(_internal)
+     if (PyModule_AddIntMacro(m, PyUFunc_One)
+         || PyModule_AddIntMacro(m, PyUFunc_Zero)
+         || PyModule_AddIntMacro(m, PyUFunc_None)
+-#if NPY_API_VERSION >= 0x00000007
+         || PyModule_AddIntMacro(m, PyUFunc_ReorderableNone)
+-#endif
+         )
+         return MOD_ERROR_VAL;
+ 
+Index: numba-0.56.4/numba/stencils/stencilparfor.py
+===================================================================
+--- numba-0.56.4.orig/numba/stencils/stencilparfor.py
++++ numba-0.56.4/numba/stencils/stencilparfor.py
+@@ -21,6 +21,7 @@ from numba.core.ir_utils import (get_cal
+                             find_callname, require, find_const, GuardException)
+ from numba.core.errors import NumbaValueError
+ from numba.core.utils import OPERATORS_TO_BUILTINS
++from numba.np import numpy_support
+ 
+ 
+ def _compute_last_ind(dim_size, index_const):
+@@ -264,7 +265,11 @@ class StencilPass(object):
+             dtype_g_np_assign = ir.Assign(dtype_g_np, dtype_g_np_var, loc)
+             init_block.body.append(dtype_g_np_assign)
+ 
+-            dtype_np_attr_call = ir.Expr.getattr(dtype_g_np_var, return_type.dtype.name, loc)
++            return_type_name = numpy_support.as_dtype(
++                               return_type.dtype).type.__name__
++            if return_type_name == 'bool':
++                return_type_name = 'bool_'
++            dtype_np_attr_call = ir.Expr.getattr(dtype_g_np_var, return_type_name, loc)
+             dtype_attr_var = ir.Var(scope, mk_unique_var("$np_attr_attr"), loc)
+             self.typemap[dtype_attr_var.name] = types.functions.NumberClass(return_type.dtype)
+             dtype_attr_assign = ir.Assign(dtype_np_attr_call, dtype_attr_var, loc)
+Index: numba-0.56.4/numba/tests/test_array_methods.py
+===================================================================
+--- numba-0.56.4.orig/numba/tests/test_array_methods.py
++++ numba-0.56.4/numba/tests/test_array_methods.py
+@@ -1193,7 +1193,7 @@ class TestArrayMethods(MemoryLeakMixin,
+         pyfunc = array_sum_dtype_kws
+         cfunc = jit(nopython=True)(pyfunc)
+         all_dtypes = [np.float64, np.float32, np.int64, np.int32, np.uint32,
+-                      np.uint64, np.complex64, np.complex128, TIMEDELTA_M]
++                      np.uint64, np.complex64, np.complex128]
+         all_test_arrays = [
+             [np.ones((7, 6, 5, 4, 3), arr_dtype),
+              np.ones(1, arr_dtype),
+@@ -1207,8 +1207,7 @@ class TestArrayMethods(MemoryLeakMixin,
+                       np.dtype('uint32'): [np.float64, np.int64, np.float32],
+                       np.dtype('uint64'): [np.float64, np.int64],
+                       np.dtype('complex64'): [np.complex64, np.complex128],
+-                      np.dtype('complex128'): [np.complex128],
+-                      np.dtype(TIMEDELTA_M): [np.dtype(TIMEDELTA_M)]}
++                      np.dtype('complex128'): [np.complex128]}
+ 
+         for arr_list in all_test_arrays:
+             for arr in arr_list:
+@@ -1216,15 +1215,15 @@ class TestArrayMethods(MemoryLeakMixin,
+                     subtest_str = ("Testing np.sum with {} input and {} output"
+                                    .format(arr.dtype, out_dtype))
+                     with self.subTest(subtest_str):
+-                        self.assertPreciseEqual(pyfunc(arr, dtype=out_dtype),
+-                                                cfunc(arr, dtype=out_dtype))
++                            self.assertPreciseEqual(pyfunc(arr, dtype=out_dtype),
++                                                    cfunc(arr, dtype=out_dtype))
+ 
+     def test_sum_axis_dtype_kws(self):
+         """ test sum with axis and dtype parameters over a whole range of dtypes """
+         pyfunc = array_sum_axis_dtype_kws
+         cfunc = jit(nopython=True)(pyfunc)
+         all_dtypes = [np.float64, np.float32, np.int64, np.int32, np.uint32,
+-                      np.uint64, np.complex64, np.complex128, TIMEDELTA_M]
++                      np.uint64, np.complex64, np.complex128]
+         all_test_arrays = [
+             [np.ones((7, 6, 5, 4, 3), arr_dtype),
+              np.ones(1, arr_dtype),
+@@ -1238,9 +1237,7 @@ class TestArrayMethods(MemoryLeakMixin,
+                       np.dtype('uint32'): [np.float64, np.int64, np.float32],
+                       np.dtype('uint64'): [np.float64, np.uint64],
+                       np.dtype('complex64'): [np.complex64, np.complex128],
+-                      np.dtype('complex128'): [np.complex128],
+-                      np.dtype(TIMEDELTA_M): [np.dtype(TIMEDELTA_M)],
+-                      np.dtype(TIMEDELTA_Y): [np.dtype(TIMEDELTA_Y)]}
++                      np.dtype('complex128'): [np.complex128]}
+ 
+         for arr_list in all_test_arrays:
+             for arr in arr_list:
+Index: numba-0.56.4/numba/tests/test_comprehension.py
+===================================================================
+--- numba-0.56.4.orig/numba/tests/test_comprehension.py
++++ numba-0.56.4/numba/tests/test_comprehension.py
+@@ -11,6 +11,7 @@ from numba import jit, typed
+ from numba.core import types, utils
+ from numba.core.errors import TypingError, LoweringError
+ from numba.core.types.functions import _header_lead
++from numba.np.numpy_support import numpy_version
+ from numba.tests.support import tag, _32bit, captured_stdout
+ 
+ 
+@@ -360,6 +361,7 @@ class TestArrayComprehension(unittest.Te
+         self.check(comp_nest_with_array_conditional, 5,
+                    assert_allocate_list=True)
+ 
++    @unittest.skipUnless(numpy_version < (1, 24), 'Removed in NumPy 1.24')
+     def test_comp_nest_with_dependency(self):
+         def comp_nest_with_dependency(n):
+             l = np.array([[i * j for j in range(i+1)] for i in range(n)])
+Index: numba-0.56.4/numba/tests/test_linalg.py
+===================================================================
+--- numba-0.56.4.orig/numba/tests/test_linalg.py
++++ numba-0.56.4/numba/tests/test_linalg.py
+@@ -1122,6 +1122,32 @@ class TestLinalgSvd(TestLinalgBase):
+     Tests for np.linalg.svd.
+     """
+ 
++    # This checks that A ~= U*S*V**H, i.e. SV decomposition ties out.  This is
++    # required as NumPy uses only double precision LAPACK routines and
++    # computation of SVD is numerically sensitive. Numba uses type-specific
++    # routines and therefore sometimes comes out with a different answer to
++    # NumPy (orthonormal bases are not unique, etc.).
++
++    def check_reconstruction(self, a, got, expected):
++        u, sv, vt = got
++
++        # Check they are dimensionally correct
++        for k in range(len(expected)):
++            self.assertEqual(got[k].shape, expected[k].shape)
++
++        # Columns in u and rows in vt dictates the working size of s
++        s = np.zeros((u.shape[1], vt.shape[0]))
++        np.fill_diagonal(s, sv)
++
++        rec = np.dot(np.dot(u, s), vt)
++        resolution = np.finfo(a.dtype).resolution
++        np.testing.assert_allclose(
++            a,
++            rec,
++            rtol=10 * resolution,
++            atol=100 * resolution  # zeros tend to be fuzzy
++        )
++
+     @needs_lapack
+     def test_linalg_svd(self):
+         """
+@@ -1150,34 +1176,8 @@ class TestLinalgSvd(TestLinalgBase):
+                     # plain match failed, test by reconstruction
+                     use_reconstruction = True
+ 
+-            # if plain match fails then reconstruction is used.
+-            # this checks that A ~= U*S*V**H
+-            # i.e. SV decomposition ties out
+-            # this is required as numpy uses only double precision lapack
+-            # routines and computation of svd is numerically
+-            # sensitive, numba using the type specific routines therefore
+-            # sometimes comes out with a different answer (orthonormal bases
+-            # are not unique etc.).
+             if use_reconstruction:
+-                u, sv, vt = got
+-
+-                # check they are dimensionally correct
+-                for k in range(len(expected)):
+-                    self.assertEqual(got[k].shape, expected[k].shape)
+-
+-                # regardless of full_matrices cols in u and rows in vt
+-                # dictates the working size of s
+-                s = np.zeros((u.shape[1], vt.shape[0]))
+-                np.fill_diagonal(s, sv)
+-
+-                rec = np.dot(np.dot(u, s), vt)
+-                resolution = np.finfo(a.dtype).resolution
+-                np.testing.assert_allclose(
+-                    a,
+-                    rec,
+-                    rtol=10 * resolution,
+-                    atol=100 * resolution  # zeros tend to be fuzzy
+-                )
++                self.check_reconstruction(a, got, expected)
+ 
+             # Ensure proper resource management
+             with self.assertNoNRTLeak():
+@@ -1238,8 +1238,11 @@ class TestLinalgSvd(TestLinalgBase):
+         got = func(X, False)
+         np.testing.assert_allclose(X, X_orig)
+ 
+-        for e_a, g_a in zip(expected, got):
+-            np.testing.assert_allclose(e_a, g_a)
++        try:
++            for e_a, g_a in zip(expected, got):
++                np.testing.assert_allclose(e_a, g_a)
++        except AssertionError:
++            self.check_reconstruction(X, got, expected)
+ 
+ 
+ class TestLinalgQr(TestLinalgBase):
+Index: numba-0.56.4/numba/tests/test_mathlib.py
+===================================================================
+--- numba-0.56.4.orig/numba/tests/test_mathlib.py
++++ numba-0.56.4/numba/tests/test_mathlib.py
+@@ -516,7 +516,7 @@ class TestMathLib(TestCase):
+             with warnings.catch_warnings():
+                 warnings.simplefilter("error", RuntimeWarning)
+                 self.assertRaisesRegexp(RuntimeWarning,
+-                                        'overflow encountered in .*_scalars',
++                                        'overflow encountered in .*scalar',
+                                         naive_hypot, val, val)
+ 
+     def test_hypot_npm(self):
+Index: numba-0.56.4/numba/tests/test_np_functions.py
+===================================================================
+--- numba-0.56.4.orig/numba/tests/test_np_functions.py
++++ numba-0.56.4/numba/tests/test_np_functions.py
+@@ -932,11 +932,11 @@ class TestNPFunctions(MemoryLeakMixin, T
+             yield np.inf, None
+             yield np.PINF, None
+             yield np.asarray([-np.inf, 0., np.inf]), None
+-            yield np.NINF, np.zeros(1, dtype=np.bool)
+-            yield np.inf, np.zeros(1, dtype=np.bool)
+-            yield np.PINF, np.zeros(1, dtype=np.bool)
++            yield np.NINF, np.zeros(1, dtype=np.bool_)
++            yield np.inf, np.zeros(1, dtype=np.bool_)
++            yield np.PINF, np.zeros(1, dtype=np.bool_)
+             yield np.NINF, np.empty(12)
+-            yield np.asarray([-np.inf, 0., np.inf]), np.zeros(3, dtype=np.bool)
++            yield np.asarray([-np.inf, 0., np.inf]), np.zeros(3, dtype=np.bool_)
+ 
+         pyfuncs = [isneginf, isposinf]
+         for pyfunc in pyfuncs:
+@@ -4775,6 +4775,7 @@ def foo():
+         eval(compile(funcstr, '<string>', 'exec'))
+         return locals()['foo']
+ 
++    @unittest.skipIf(numpy_version >= (1, 24), "NumPy < 1.24 required")
+     def test_MachAr(self):
+         attrs = ('ibeta', 'it', 'machep', 'eps', 'negep', 'epsneg', 'iexp',
+                  'minexp', 'xmin', 'maxexp', 'xmax', 'irnd', 'ngrd',
+@@ -4817,7 +4818,8 @@ def foo():
+             cfunc = jit(nopython=True)(iinfo)
+             cfunc(np.float64(7))
+ 
+-    @unittest.skipUnless(numpy_version >= (1, 22), "Needs NumPy >= 1.22")
++    @unittest.skipUnless((1, 22) <= numpy_version < (1, 24),
++                         "Needs NumPy >= 1.22, < 1.24")
+     @TestCase.run_test_in_subprocess
+     def test_np_MachAr_deprecation_np122(self):
+         # Tests that Numba is replaying the NumPy 1.22 deprecation warning
+Index: numba-0.56.4/setup.py
+===================================================================
+--- numba-0.56.4.orig/setup.py
++++ numba-0.56.4/setup.py
+@@ -23,7 +23,7 @@ min_python_version = "3.7"
+ max_python_version = "3.11"  # exclusive
+ min_numpy_build_version = "1.11"
+ min_numpy_run_version = "1.18"
+-max_numpy_run_version = "1.24"
++max_numpy_run_version = "1.25" # exclusive
+ min_llvmlite_version = "0.39.0dev0"
+ max_llvmlite_version = "0.40"
+ 
+Index: numba-0.56.4/numba/__init__.py
+===================================================================
+--- numba-0.56.4.orig/numba/__init__.py
++++ numba-0.56.4/numba/__init__.py
+@@ -142,8 +142,8 @@ def _ensure_critical_deps():
+ 
+     if numpy_version < (1, 18):
+         raise ImportError("Numba needs NumPy 1.18 or greater")
+-    elif numpy_version > (1, 23):
+-        raise ImportError("Numba needs NumPy 1.23 or less")
++    elif numpy_version > (1, 24):
++        raise ImportError("Numba needs NumPy 1.24 or less")
+ 
+     try:
+         import scipy
