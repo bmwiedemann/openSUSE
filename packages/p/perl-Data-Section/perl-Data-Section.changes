@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:07:33 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.200008
+   see /usr/share/doc/packages/perl-Data-Section/Changes
+
+  0.200008  2022-12-31 13:50:15-05:00 America/New_York
+          - fix to some example code (thanks, Graham Ollis)
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Mon Jul 10 05:23:40 UTC 2017 - coolo@suse.com
 
 - updated to 0.200007
