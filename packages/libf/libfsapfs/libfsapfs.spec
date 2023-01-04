@@ -1,7 +1,7 @@
 #
 # spec file for package libfsapfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 Name:           libfsapfs
+%define lname   libfsapfs1
 Version:        20221102
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
@@ -25,6 +26,7 @@ Group:          System/Filesystems
 URL:            https://github.com/libyal/libfsapfs
 Source:         https://github.com/libyal/libfsapfs/releases/download/%version/libfsapfs-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libfsapfs/releases/download/%version/libfsapfs-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
@@ -78,17 +80,18 @@ Unsupported APFS format features:
 %package devel
 Summary:        Development files for libfsapfs
 Group:          Development/Languages/C and C++
-Requires:       libfsapfs1 = %version
+Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 Development files for %{name}.
 
-%package -n libfsapfs1
+%package -n %lname
 Summary:        Library for access the Apple File System (APFS)
 Group:          System/Libraries
 
-%description -n libfsapfs1
-libfsapfs1 is a library for access the Apple File System (APFS).
+%description -n %lname
+%lname is a library for access the Apple File System (APFS).
 
 %prep
 %autosetup -p1
@@ -118,8 +121,8 @@ rm -fv "%buildroot/%_libdir"/*.la
 %check
 make check || /bin/true
 
-%post -n libfsapfs1 -p /sbin/ldconfig
-%postun -n libfsapfs1 -p /sbin/ldconfig
+%post -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
 %files -n %name
 %license COPYING*
@@ -132,7 +135,7 @@ make check || /bin/true
 %{_libdir}/%{name}*.so
 %{_libdir}/pkgconfig/*
 
-%files -n libfsapfs1
+%files -n %lname
 %{_libdir}/%{name}*so.*
 
 %files %python_files
