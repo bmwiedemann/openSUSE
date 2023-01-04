@@ -33,12 +33,10 @@ URL:            https://github.com/liris/websocket-client/releases
 Source0:        https://files.pythonhosted.org/packages/source/w/websocket_client/websocket-client-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 3.4}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sphinx_rtd_theme >= 0.5}
 BuildRequires:  %{python_module websockets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
