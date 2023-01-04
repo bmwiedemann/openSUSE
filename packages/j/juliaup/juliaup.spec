@@ -1,7 +1,7 @@
 #
 # spec file for package juliaup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global latest_julia_version 1.8.3
 
 Name:           juliaup
-Version:        1.8.12
+Version:        1.8.16
 Release:        0
 Summary:        Julia installer and version multiplexer
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND ISC AND MIT AND MPL-2.0 AND MIT
@@ -46,7 +46,7 @@ when new Julia versions are released and provides a convenient Julia
 release channel abstraction.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 

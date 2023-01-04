@@ -3,7 +3,7 @@
     <param name="url">https://github.com/JuliaLang/juliaup</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">f8a03e994dc94cfcd54f932fa950361c371be051</param>
+    <param name="revision">0a42faa</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
