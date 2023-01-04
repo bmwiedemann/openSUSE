@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Dec 23 11:38:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.2.0:
+  * Python 3.5 is not supported anymore.
+  * Python 3.6 is now deprecated and support will be removed in the next
+    release.
+  * `attrs.field()` now supports an *alias* option for explicit `__init__`
+    argument names.
+  * `attrs.NOTHING` is now an enum value, making it possible to use with
+    e.g. `typing.Literal`.
+  * Added missing re-import of `attr.AttrsInstance` to the `attrs`
+    namespace.
+  * Fix slight performance regression in classes with custom `__setattr__`
+    and speedup even more.
+  * Class-creation performance improvements by switching performance-
+    sensitive templating operations to f-strings.
+
+-------------------------------------------------------------------
 Tue Sep 20 10:55:27 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required for build

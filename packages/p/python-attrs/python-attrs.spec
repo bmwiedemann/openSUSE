@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %global skip_python36 1
 Name:           python-attrs%{psuffix}
-Version:        22.1.0
+Version:        22.2.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
@@ -86,7 +86,7 @@ python-attrs is the successor to python-characterstic
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.rst README.rst
+%doc CHANGELOG.md README.md
 %{python_sitelib}/attr*
 %{python_sitelib}/attrs-%{version}-py*.egg-info
 %endif

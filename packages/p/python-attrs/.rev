@@ -212,4 +212,25 @@
     <comment></comment>
     <requestid>1004944</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>575ce561e2f5386f1fd061da7172c8a5</srcmd5>
+    <version>22.2.0</version>
+    <time>1672851055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.2.0:
+  * Python 3.5 is not supported anymore.
+  * Python 3.6 is now deprecated and support will be removed in the next
+    release.
+  * `attrs.field()` now supports an *alias* option for explicit `__init__`
+    argument names.
+  * `attrs.NOTHING` is now an enum value, making it possible to use with
+    e.g. `typing.Literal`.
+  * Added missing re-import of `attr.AttrsInstance` to the `attrs`
+    namespace.
+  * Fix slight performance regression in classes with custom `__setattr__`
+    and speedup even more.
+  * Class-creation performance improvements by switching performance-
+    sensitive templating operations to f-strings.</comment>
+    <requestid>1046288</requestid>
+  </revision>
 </revisionlist>
