@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:15:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Python 3, version 3.5 or later, is required.
+  * Installing from source code using Autotools requires Python 3.5 or
+    later.
+  * dbus.gobject_service, dbus.types.UTF8String and the utf8_strings
+  keyword argument were only usable with Python 2, and therefore have
+  been removed, along with the rest of the special cases for Python 2.
+  * Add methods to Message objects to manipulate the interactive
+  authorization flag
+  * Add licensing information in REUSE format
+  * Raise ValueError instead of crashing with assertion failure when a
+  Unix fd index number is greater than the number of fds actually attached
+  to the message (firewalld#985; Simon McVittie)
+  * Raise ValueError instead of crashing with assertion failure when
+  a negative number is passed to the UnixFd constructor
+  * Fix undefined escape sequences in docstrings
+  * Make `distcheck` compatible with Automake 1.16.4, by forcing an
+  appropriate prefix to be used
+  * Update AX_PYTHON_DEVEL from autoconf-archive for better
+  forwards-compatibility
+  * Avoid various deprecation warnings in the build system
+  - distutils.sysconfig → sysconfig
+  - distutils.util → sysconfig
+
+-------------------------------------------------------------------
 Tue Jul 27 06:30:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.18:

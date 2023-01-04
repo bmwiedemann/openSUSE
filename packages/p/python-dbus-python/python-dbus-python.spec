@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-python
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 # expand separate from Provides/Obsoletes tags, because these are later duplicated by the python_subpackages macro
 %define python_add_provides %{python_provides}
 Name:           python-dbus-python
-Version:        1.2.18
+Version:        1.3.2
 Release:        0
 Summary:        Python bindings for D-Bus
 License:        MIT
@@ -29,7 +29,7 @@ URL:            https://www.freedesktop.org/wiki/Software/DBusBindings/
 Source:         https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz
 Source2:        https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz.asc
 Source99:       python-dbus-python-rpmlintrc
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module xml}
@@ -47,12 +47,6 @@ Obsoletes:      dbus-1-%{python_flavor} < %{version}
 # additional provider for python2 --> python and python38 --> python3
 Provides:       dbus-1-%{python_add_provides} = %{version}
 Obsoletes:      dbus-1-%{python_add_provides} < %{version}
-%else
-# shim for distros with python2 and where python_provides is not yet available
-%if "%{python_flavor}" == "python2"
-Provides:       dbus-1-python = %{version}
-Obsoletes:      dbus-1-python < %{version}
-%endif
 %endif
 %python_subpackages
 
@@ -73,12 +67,6 @@ Obsoletes:      dbus-1-%{python_flavor}-devel < %{version}
 # additional provider for python2 --> python and python38 --> python3
 Provides:       dbus-1-%{python_add_provides}-devel = %{version}
 Obsoletes:      dbus-1-%{python_add_provides}-devel < %{version}
-%else
-# shim for distros with python2 and where python_provides is not yet available
-%if "%{python_flavor}" == "python2"
-Provides:       dbus-1-python-devel = %{version}
-Obsoletes:      dbus-1-python-devel < %{version}
-%endif
 %endif
 
 %description devel
