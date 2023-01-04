@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Uploader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name CPAN-Uploader
 Name:           perl-CPAN-Uploader
-Version:        0.103016
+Version:        0.103017
 Release:        0
-Summary:        Upload things to the CPAN
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Upload things to the CPAN
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
