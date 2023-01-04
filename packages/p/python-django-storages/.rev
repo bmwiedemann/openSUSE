@@ -79,4 +79,39 @@
     <comment></comment>
     <requestid>976562</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ff10e68902cfcf0023e18e6522d4206</srcmd5>
+    <version>1.13.2</version>
+    <time>1672859910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.2:
+  * Add support for Python 3.11 (`#1196`_)
+  * Add support for saving ``pathlib.Path`` names (`#1200`_)
+  * Catch 404 errors when calling ``delete()`` (`#1201`_)
+  * Use ``AZURE_CUSTOM_DOMAIN`` for retrieving blob URLs and storage URL for
+    other operations (`#1176`_)
+  * Use ``DEFAULT_RETRY`` for all upload &amp; delete operations (`#1156`_)
+  * Fix gzipping of content (`#1203`_)
+  * Pass through kwargs to signed URL generator (`#1193`_)
+  * Improve write &amp; memory performance when saving files (`#1194`_)
+  * Strip off the root path when saving files to fix saving with upgraded
+    versions of Django (`#1168`_)
+  * Update ``DropBoxStorage`` constructor parameter order to be backwards
+    compatible (`#1167`_)
+  * Add support for Django 4.0 and 4.1 (`#1093`_)
+  * Drop support for Django 2.2, 3.0 and 3.1 (`#1093`_)
+  * Drop support for Python 3.5 and 3.6 (`#1093`_)
+  * **Breaking**: Update and document the undocumented
+    ``AWS_S3_URL_PROTOCOL`` from ``http:`` to ``https:`` and remove the
+  undocumented ``AWS_S3_SECURE_URLS`` setting. You should only need to update your settings if you had updated either of
+  these previously undocumented settings.  The default behavior of constructing an ``https:`` URL with a custom domain
+  is unchanged (`#1164`_)
+  * Add ``AWS_S3_USE_THREADS`` to disable ``threading`` for compatibility
+    with ``gevent`` (`#1112`_)
+  * Restore support for ``AZURE_ENDPOINT_SUFFIX`` (`#1118`_)
+  * Replace deprecated ``download_to_stream`` with ``readinto`` (`#1113`_)
+  * Add ``AZURE_API_VERSION`` setting (`#1132`_)
+  * Fix ``get_modified_time()`` (`#1134`_)</comment>
+    <requestid>1055944</requestid>
+  </revision>
 </revisionlist>
