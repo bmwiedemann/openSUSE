@@ -239,4 +239,17 @@
     <comment></comment>
     <requestid>1041342</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4cf61794405aa763c215ccab271b884b</srcmd5>
+    <version>1.7.0</version>
+    <time>1672851214</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Add deprecat dependency
+  * Add more Makefile targets
+  * Makefile will successfully ping to internet or fail
+  * Update Makefile to delete poetry.lock file
+  * Correct 'make ping' logic and other tricky Makefile syntax</comment>
+    <requestid>1055824</requestid>
+  </revision>
 </revisionlist>
