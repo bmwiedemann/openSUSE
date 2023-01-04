@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:23:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Add Python 3.11 support
+  * Add Django 4.1 support
+  * Fixed an issue where object caches would not be properly cleared after
+    updating tags, leading
+  to stale reads in cases where ``prefetch_related`` is used.
+  * Change ``TagListSerializerField`` to be a subclass of ``ListField``.
+    This should improve support for API document generation. This change
+    should not affect API behavior, but might affect metaprogramming code,
+    so please procede carefully during this update.
+
+-------------------------------------------------------------------
 Sat Oct 15 08:28:11 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
