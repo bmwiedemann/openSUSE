@@ -135,4 +135,13 @@
 </comment>
     <requestid>1006297</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>777e1ac6b9cc2cdaac4e986aa2e33e07</srcmd5>
+    <version>3.9.1</version>
+    <time>1672851161</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests because of the new year gh#adobe-type-tools/afdko#1589
+</comment>
+    <requestid>1046646</requestid>
+  </revision>
 </revisionlist>

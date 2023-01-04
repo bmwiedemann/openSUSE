@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 16:15:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests because of the new year gh#adobe-type-tools/afdko#1589
+
+-------------------------------------------------------------------
 Mon Sep 26 14:09:08 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable more tests that fails for i586, test_dump_option
