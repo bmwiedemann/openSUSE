@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 24 12:04:53 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Add explicit provides for jpegtran, so it can be installed easier
+
+-------------------------------------------------------------------
 Mon Aug 15 18:07:30 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - update to 2.1.4:
@@ -801,4 +806,3 @@ Fri Dec 10 13:02:58 UTC 2010 - pgajdos@novell.com
 Sun Nov  7 12:53:26 UTC 2010 - prusnak@opensuse.org
 
 - created package based on Fedora one (v 1.0.1)
-

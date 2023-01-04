@@ -47,6 +47,7 @@ Obsoletes:      jpeg = 8.0.1
 Obsoletes:      jpeg = 8.0.2
 Provides:       jpeg = %{version}
 Obsoletes:      jpeg < %{version}
+Provides:       jpegtran = %{version}
 
 %description
 The libjpeg-turbo package contains a library of functions for manipulating

@@ -1001,4 +1001,14 @@
     <comment></comment>
     <requestid>997984</requestid>
   </revision>
+  <revision rev="65" vrev="72">
+    <srcmd5>351c65e2561e041aed9b362bc1fb61f6</srcmd5>
+    <version>unknown</version>
+    <time>1672851033</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit provides for jpegtran, so it can be installed easier
+
+Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work in future instead of having to search which package contains it. I don't consider the other bin-contents important enough, only jpegtran. (forwarded request 1045193 from dstoecker)</comment>
+    <requestid>1046153</requestid>
+  </revision>
 </revisionlist>
