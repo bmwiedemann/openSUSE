@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 03:13:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.111
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.111     2022-12-31 21:15:52-05:00 America/New_York
+          - clean up the required perl version in the code
+          - update author contact info
+
+-------------------------------------------------------------------
 Mon Nov  1 03:07:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.110
