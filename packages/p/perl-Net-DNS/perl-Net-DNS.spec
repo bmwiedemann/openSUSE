@@ -18,7 +18,7 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.35
+Version:        1.36
 Release:        0
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
