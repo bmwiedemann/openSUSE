@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jan  2 10:31:58 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.12.1:
+  * Fixed:
+    + Fix minor regression in the PEP 517/660 function signatures
+      that was discovered by Fedora
+- additional changes from version 1.12.0:
+  * Added:
+    + Improve readability of exceptions
+    + Add extra_metadata build data to the wheel target
+    + Retroactively support License-Expression core metadata
+      starting at version 2.1
+    + Add more type hints
+    + Update the set of known trove classifiers to version
+      2022.12.22
+    + Update SPDX license information to version 3.19
+    + Store Hatchling's metadata in pyproject.toml
+  * Fixed:
+    + Acknowledge the ARCHFLAGS environment variable on macOS for
+      the wheel target when build hooks set the infer_tag build
+      data to true
+    + Fix dependency checking when encountering broken
+      distributions
+    + Remove unnecessary encoding declaration in the default
+      template for the version build hook
+- remove skip_python2: python >= 3.7 is already required
+- drop python_module macro definition: provided by
+  python-rpm-macros
+
+-------------------------------------------------------------------
 Thu Oct 20 19:55:11 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.11.1:
