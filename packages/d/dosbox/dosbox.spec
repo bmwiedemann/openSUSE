@@ -1,7 +1,7 @@
 #
 # spec file for package dosbox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,20 @@
 
 
 Name:           dosbox
-Version:        0.79.1
+Version:        0.80.0
 Release:        0
 Summary:        DOS/x86 emulator to run old DOS games
 License:        GPL-2.0-or-later
 URL:            https://%{name}-staging.github.io
 Source0:        https://github.com/%{name}-staging/%{name}-staging/archive/v%{version}.tar.gz#/%{name}-staging-%{version}.tar.gz
-Patch0:         %{name}-staging-0.79.1-config.patch
-Patch1:         %{name}-staging-0.79.1-name.patch
+Patch0:         %{name}-staging-0.80.0-config.patch
+Patch1:         %{name}-staging-0.80.0-name.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.3.0
@@ -42,6 +43,7 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(slirp) >= 4.7.0
 BuildRequires:  pkgconfig(speexdsp)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     fluid-soundfont-gm
 Provides:       %{name}-translations = %{version}

@@ -1,6 +1,6 @@
-diff -Pdpru dosbox-staging-0.79.1.orig/contrib/icons/meson.build dosbox-staging-0.79.1/contrib/icons/meson.build
---- dosbox-staging-0.79.1.orig/contrib/icons/meson.build	2022-09-30 18:59:10.000000000 +0300
-+++ dosbox-staging-0.79.1/contrib/icons/meson.build	2022-10-04 23:23:51.000000000 +0300
+diff -Pdpru dosbox-staging-0.80.0.orig/contrib/icons/meson.build dosbox-staging-0.80.0/contrib/icons/meson.build
+--- dosbox-staging-0.80.0.orig/contrib/icons/meson.build	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/contrib/icons/meson.build	2023-01-04 09:36:39.234139903 +0300
 @@ -4,7 +4,7 @@ icons_hicolor = data_dir / 'icons' / 'hi
  #
  foreach size : ['16x16', '22x22', '24x24', '32x32']
@@ -18,9 +18,9 @@ diff -Pdpru dosbox-staging-0.79.1.orig/contrib/icons/meson.build dosbox-staging-
 +    'dosbox-staging.svg', rename : 'dosbox.svg',
      install_dir: icons_hicolor / 'scalable' / 'apps',
  )
-diff -Pdpru dosbox-staging-0.79.1.orig/contrib/linux/dosbox-staging.desktop dosbox-staging-0.79.1/contrib/linux/dosbox-staging.desktop
---- dosbox-staging-0.79.1.orig/contrib/linux/dosbox-staging.desktop	2022-09-30 18:59:10.000000000 +0300
-+++ dosbox-staging-0.79.1/contrib/linux/dosbox-staging.desktop	2022-10-04 23:24:58.000000000 +0300
+diff -Pdpru dosbox-staging-0.80.0.orig/contrib/linux/dosbox-staging.desktop dosbox-staging-0.80.0/contrib/linux/dosbox-staging.desktop
+--- dosbox-staging-0.80.0.orig/contrib/linux/dosbox-staging.desktop	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/contrib/linux/dosbox-staging.desktop	2023-01-04 09:38:03.694315037 +0300
 @@ -56,9 +56,9 @@ GenericName[zh_CN]=DOS 模拟器
  GenericName[zh_TW]=DOS 模擬器
  Comment=DOS/x86 emulator focusing on ease of use
@@ -33,25 +33,25 @@ diff -Pdpru dosbox-staging-0.79.1.orig/contrib/linux/dosbox-staging.desktop dosb
  Categories=Game;Emulator;
 -StartupWMClass=dosbox-staging
 +StartupWMClass=dosbox
-diff -Pdpru dosbox-staging-0.79.1.orig/contrib/linux/meson.build dosbox-staging-0.79.1/contrib/linux/meson.build
---- dosbox-staging-0.79.1.orig/contrib/linux/meson.build	2022-09-30 18:59:10.000000000 +0300
-+++ dosbox-staging-0.79.1/contrib/linux/meson.build	2022-10-04 23:28:08.000000000 +0300
+diff -Pdpru dosbox-staging-0.80.0.orig/contrib/linux/meson.build dosbox-staging-0.80.0/contrib/linux/meson.build
+--- dosbox-staging-0.80.0.orig/contrib/linux/meson.build	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/contrib/linux/meson.build	2023-01-04 09:39:44.634473223 +0300
 @@ -1,3 +1,3 @@
 -install_data('dosbox-staging.desktop', install_dir: data_dir / 'applications')
 +install_data('dosbox-staging.desktop', rename : 'dosbox.desktop', install_dir: data_dir / 'applications')
  
 -install_data('dosbox-staging.metainfo.xml', install_dir: data_dir / 'metainfo')
 +install_data('dosbox-staging.metainfo.xml', rename : 'dosbox.metainfo.xml', install_dir: data_dir / 'metainfo')
-diff -Pdpru dosbox-staging-0.79.1.orig/meson.build dosbox-staging-0.79.1/meson.build
---- dosbox-staging-0.79.1.orig/meson.build	2022-09-30 18:59:10.000000000 +0300
-+++ dosbox-staging-0.79.1/meson.build	2022-10-15 01:22:43.668982095 +0300
+diff -Pdpru dosbox-staging-0.80.0.orig/meson.build dosbox-staging-0.80.0/meson.build
+--- dosbox-staging-0.80.0.orig/meson.build	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/meson.build	2023-01-04 09:41:24.630629881 +0300
 @@ -1,5 +1,5 @@
  project(
 -    'dosbox-staging',
 +    'dosbox',
      'c',
      'cpp',
-     version: '0.79.1',
+     version: '0.80.0',
 @@ -32,7 +32,7 @@ project(
  #
  data_dir = get_option('datadir')

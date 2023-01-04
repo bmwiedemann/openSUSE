@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 06:57:54 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to dosbox-staging 0.80.0
+  * Replaced dosbox-staging-0.79.1-config.patch by dosbox-staging-0.80.0-config.patch.
+  * Replaced dosbox-staging-0.79.1-name.patch by dosbox-staging-0.80.0-name.patch.
+  * Added pkgconfig(SDL2_image), pkgconfig(xi) dependencies.
+  * https://dosbox-staging.github.io/v0-80-0/#changes
+
+-------------------------------------------------------------------
 Mon Oct 24 07:11:24 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated pkgconfig(slirp) >= 4.7.0 dependency.

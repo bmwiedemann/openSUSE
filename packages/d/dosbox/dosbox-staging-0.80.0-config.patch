@@ -1,0 +1,57 @@
+diff -Pdpru dosbox-staging-0.80.0.orig/src/dosbox.cpp dosbox-staging-0.80.0/src/dosbox.cpp
+--- dosbox-staging-0.80.0.orig/src/dosbox.cpp	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/src/dosbox.cpp	2023-01-04 09:16:58.859498093 +0300
+@@ -762,7 +762,7 @@ void DOSBOX_Init()
+ 	        "'auto', to use the first working external MIDI player. This\n"
+ 	        "       might be a software synthesizer or physical device.");
+ 
+-	pstring = secprop->Add_string("midiconfig", when_idle, "");
++	pstring = secprop->Add_string("midiconfig", when_idle, "128:0");
+ 	pstring->Set_help(
+ 	        "Configuration options for the selected MIDI interface.\n"
+ 	        "This is usually the id or name of the MIDI synthesizer you want\n"
+diff -Pdpru dosbox-staging-0.80.0.orig/src/gui/sdlmain.cpp dosbox-staging-0.80.0/src/gui/sdlmain.cpp
+--- dosbox-staging-0.80.0.orig/src/gui/sdlmain.cpp	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/src/gui/sdlmain.cpp	2023-01-04 09:22:53.640122664 +0300
+@@ -4249,7 +4249,7 @@ void config_add_sdl() {
+ 	constexpr auto deprecated = Property::Changeable::Deprecated;
+ 	constexpr auto on_start = Property::Changeable::OnlyAtStart;
+ 
+-	Pbool = sdl_sec->Add_bool("fullscreen", always, false);
++	Pbool = sdl_sec->Add_bool("fullscreen", always, true);
+ 	Pbool->Set_help("Start directly in fullscreen.\n"
+ 	                "Run INTRO and see Special Keys for window control hotkeys.");
+ 
+@@ -4261,7 +4261,7 @@ void config_add_sdl() {
+ 	Pstring->Set_help("What resolution to use for fullscreen: 'original', 'desktop'\n"
+ 	                  "or a fixed size (e.g. 1024x768).");
+ 
+-	pstring = sdl_sec->Add_string("windowresolution", on_start, "default");
++	pstring = sdl_sec->Add_string("windowresolution", on_start, "original");
+ 	pstring->Set_help(
+ 	        "Set window size when running in windowed mode:\n"
+ 	        "  default:   Select the best option based on your\n"
+diff -Pdpru dosbox-staging-0.80.0.orig/src/hardware/gus.cpp dosbox-staging-0.80.0/src/hardware/gus.cpp
+--- dosbox-staging-0.80.0.orig/src/hardware/gus.cpp	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/src/hardware/gus.cpp	2023-01-04 09:26:05.992423658 +0300
+@@ -1633,7 +1633,7 @@ void init_gus_dosbox_settings(Section_pr
+ {
+ 	constexpr auto when_idle = Property::Changeable::WhenIdle;
+ 
+-	auto *bool_prop = secprop.Add_bool("gus", when_idle, false);
++	auto *bool_prop = secprop.Add_bool("gus", when_idle, true);
+ 	assert(bool_prop);
+ 	bool_prop->Set_help("Enable Gravis UltraSound emulation.");
+ 
+diff -Pdpru dosbox-staging-0.80.0.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.80.0/src/midi/midi_fluidsynth.cpp
+--- dosbox-staging-0.80.0.orig/src/midi/midi_fluidsynth.cpp	2022-12-21 06:01:22.000000000 +0300
++++ dosbox-staging-0.80.0/src/midi/midi_fluidsynth.cpp	2023-01-04 09:27:06.884518942 +0300
+@@ -49,7 +49,7 @@ static void init_fluid_dosbox_settings(S
+ 
+ 	// Name 'default.sf2' picks the default soundfont if it's installed
+ 	// in the OS. Usually it's Fluid_R3.
+-	auto *str_prop = secprop.Add_string("soundfont", when_idle, "default.sf2");
++	auto *str_prop = secprop.Add_string("soundfont", when_idle, "FluidR3_GM.sf2 25");
+ 	str_prop->Set_help(
+ 	        "Path to a SoundFont file in .sf2 format. You can use an\n"
+ 	        "absolute or relative path, or the name of an .sf2 inside\n"

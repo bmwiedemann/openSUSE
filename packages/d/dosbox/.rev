@@ -330,4 +330,16 @@
     <comment>Updated pkgconfig(slirp) &gt;= 4.7.0 dependency.</comment>
     <requestid>1030665</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c936a3271b6f180e6f660973e4ac59fc</srcmd5>
+    <version>0.80.0</version>
+    <time>1672851174</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to dosbox-staging 0.80.0
+  * Replaced dosbox-staging-0.79.1-config.patch by dosbox-staging-0.80.0-config.patch.
+  * Replaced dosbox-staging-0.79.1-name.patch by dosbox-staging-0.80.0-name.patch.
+  * Added pkgconfig(SDL2_image), pkgconfig(xi) dependencies.
+  * https://dosbox-staging.github.io/v0-80-0/#changes</comment>
+    <requestid>1046685</requestid>
+  </revision>
 </revisionlist>
