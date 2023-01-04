@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 22 04:54:11 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- update to 1.81
+- use %autosetup macro to unpack source and apply patch
+- drop patch for upstream
+  * os-prober-multiple-initrd.patch
+- rediff
+  * Improve-btrfs-handling-on-os-probing-for-grub2.patch
+  * os-prober-linux-distro-avoid-expensive-ld-file-test.patch
+  * os-prober-linux-distro-parse-os-release.patch
+  * os-prober-linux-secure-boot.patch
+
+-------------------------------------------------------------------
 Thu Jul 22 08:17:58 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Update to 1.79:

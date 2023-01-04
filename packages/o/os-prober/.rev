@@ -470,4 +470,12 @@ as it has at least one small patch that depends on new code in grub2. (forwarded
     <comment></comment>
     <requestid>908824</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5a37d0d5b7aaf1f0449204440de55a25</srcmd5>
+    <version>1.81</version>
+    <time>1672852190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046401</requestid>
+  </revision>
 </revisionlist>

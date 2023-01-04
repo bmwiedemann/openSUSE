@@ -1,8 +1,10 @@
-Index: os-prober/os-probes/mounted/common/90linux-distro
-===================================================================
---- os-prober.orig/os-probes/mounted/common/90linux-distro
-+++ os-prober/os-probes/mounted/common/90linux-distro
-@@ -10,7 +10,18 @@ type="$3"
+---
+ os-probes/mounted/common/90linux-distro |   13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+--- a/os-probes/mounted/common/90linux-distro
++++ b/os-probes/mounted/common/90linux-distro
+@@ -10,7 +10,18 @@
  uuid="$4"
  subvol="$5"
  
@@ -21,4 +23,4 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
 +elif [ -e "$dir/etc/os-release" ]; then
  	short="$(grep ^NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g; s/[[:space:]].*//')"
  	long="$(grep ^PRETTY_NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g')"
- elif [ -e "$dir/etc/debian_version" ]; then
+ elif [ -e "$dir/usr/lib/os-release" ]; then

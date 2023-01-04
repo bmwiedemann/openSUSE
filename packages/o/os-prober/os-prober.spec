@@ -1,7 +1,7 @@
 #
 # spec file for package os-prober
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           os-prober
-Version:        1.79
+Version:        1.81
 Release:        0
 Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later
@@ -66,8 +66,6 @@ Patch23:        os-prober-linux-distro-avoid-expensive-ld-file-test.patch
 Patch24:        os-prober-linux-distro-parse-os-release.patch
 # PATCH-FIX-OPENSUSE: Windows 10 is not listed in the grub menu (bsc#1076779)
 Patch25:        os-prober-05efi-blkid.patch
-# PATCH-FIX-OPENSUSE: UEFI Grub does not insert Arch Linux entry correctly (boo#1101942)
-Patch26:        os-prober-multiple-initrd.patch
 # PATCH-FIX-OPENSUSE: os-prober unconditionally pulls btrfsprogs (boo#1118279)
 Patch27:        os-prober-make-btrfsprogs-optional.patch
 # PATCH-FIX-OPENSUSE: os-prober isn't compatible with transactional update (boo#1125729)
@@ -97,33 +95,8 @@ in a generic machine-readable format. Support for new OSes and Linux
 distributions can be added easily.
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE1} .
-%patch0 -p1
-%patch1 -p1
-%patch3 -p1
-%patch5 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
 find . -name \*.orig -delete
 
 %build

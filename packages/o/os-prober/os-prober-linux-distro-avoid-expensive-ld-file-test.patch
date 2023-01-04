@@ -1,8 +1,11 @@
-Index: os-prober/os-probes/mounted/common/90linux-distro
-===================================================================
---- os-prober.orig/os-probes/mounted/common/90linux-distro
-+++ os-prober/os-probes/mounted/common/90linux-distro
-@@ -10,147 +10,133 @@ type="$3"
+---
+ os-prober                               |    5 
+ os-probes/mounted/common/90linux-distro |  280 +++++++++++++++-----------------
+ 2 files changed, 138 insertions(+), 147 deletions(-)
+
+--- a/os-probes/mounted/common/90linux-distro
++++ b/os-probes/mounted/common/90linux-distro
+@@ -10,153 +10,139 @@
  uuid="$4"
  subvol="$5"
  
@@ -19,6 +22,9 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
 -	if [ -e "$dir/etc/os-release" ]; then
 -		short="$(grep ^NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g; s/[[:space:]].*//')"
 -		long="$(grep ^PRETTY_NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g')"
+-	elif [ -e "$dir/usr/lib/os-release" ]; then
+-		short="$(grep ^NAME= "$dir/usr/lib/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g; s/[[:space:]].*//')"
+-		long="$(grep ^PRETTY_NAME= "$dir/usr/lib/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g')"
 -	elif [ -e "$dir/etc/debian_version" ]; then
 -		short="Debian"
 -		long="$(printf "Debian GNU/Linux (%s)\n" "$(cat "$dir/etc/debian_version")")"
@@ -135,6 +141,9 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
 -	elif [ -e "$dir/etc/devuan_version" ]; then
 -		short="Devuan"
 -		long="$(printf "Devuan GNU/Linux (%s)\n" "$(cat "$dir/etc/devuan_version")")"
+-	elif [ -e "$dir/etc/exherbo-release" ]; then
+-		short="Exherbo"
+-		long="Exherbo Linux"
 -	else
 -		short="Linux"
 -		long="unknown Linux distribution"
@@ -150,6 +159,9 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
 +if [ -e "$dir/etc/os-release" ]; then
 +	short="$(grep ^NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g; s/[[:space:]].*//')"
 +	long="$(grep ^PRETTY_NAME= "$dir/etc/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g')"
++elif [ -e "$dir/usr/lib/os-release" ]; then
++	short="$(grep ^NAME= "$dir/usr/lib/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g; s/[[:space:]].*//')"
++	long="$(grep ^PRETTY_NAME= "$dir/usr/lib/os-release" | sed 's/^[^=]*=//; s/^['\''"]\(.*\)['\''"]$/\1/; s/\\\(.\)/\1/g')"
 +elif [ -e "$dir/etc/debian_version" ]; then
 +	short="Debian"
 +	long="$(printf "Debian GNU/Linux (%s)\n" "$(cat "$dir/etc/debian_version")")"
@@ -266,6 +278,9 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
 +elif [ -e "$dir/etc/devuan_version" ]; then
 +	short="Devuan"
 +	long="$(printf "Devuan GNU/Linux (%s)\n" "$(cat "$dir/etc/devuan_version")")"
++elif [ -e "$dir/etc/exherbo-release" ]; then
++	short="Exherbo"
++	long="Exherbo Linux"
  else
  	exit 1
  fi
@@ -277,11 +292,9 @@ Index: os-prober/os-probes/mounted/common/90linux-distro
 +	result "$partition:$long:$label:linux"
 +fi
 +exit 0
-Index: os-prober/os-prober
-===================================================================
---- os-prober.orig/os-prober
-+++ os-prober/os-prober
-@@ -186,6 +186,11 @@ for partition in $(partitions); do
+--- a/os-prober
++++ b/os-prober
+@@ -185,6 +185,11 @@
  	# be handled by 50mounted-tests so we can do a subvol only once.
  	type=$(blkid -o value -s TYPE $mapped || true)
  	if [ "$type" = btrfs ]; then
