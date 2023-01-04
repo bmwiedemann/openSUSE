@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  1 03:13:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.100006
+   see /usr/share/doc/packages/perl-Pod-Coverage-TrustPod/Changes
+
+  0.100006  2022-12-31 14:06:16-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Tue Mar 13 06:42:48 UTC 2018 - coolo@suse.com
 
 - updated to 0.100005
