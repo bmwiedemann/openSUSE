@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  2 03:16:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.101344
+   see /usr/share/doc/packages/perl-MooseX-Types-Perl/Changes
+
+  0.101344  2022-12-31 21:34:32-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Mon Mar 10 06:34:22 UTC 2014 - coolo@suse.com
 
 - updated to 0.101343
