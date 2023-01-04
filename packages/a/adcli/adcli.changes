@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec 29 21:29:52 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 0.9.2:
+  * adenroll: set password via LDAP instead Kerberos
+  * disco: fall back to LDAPS if CLDAP ping was not successful
+  * tools: replace getpass()
+  * adenroll: write SID before secret to Samba's db
+  * doc: add clarification to add-member command on doc/adcli.xml
+  * tools: Set umask before calling mkdtemp()
+  * Avoid undefined behaviour in short option parsing
+  * library: include endian.h for le32toh
+  * man: Fix typos and use consistent upper case for some keywords
+  * doc: avoid gnu-make specific usage of $<
+  * configure: check for ns_get16 and ns_get32 as well
+  * Add setattr and delattr options
+  * entry: add passwd-user sub-command
+  * Add dont-expire-password option
+  * build: add --with-vendor-error-message configure option
+- Remove patch fixed upstream: 0001-configure-check-for-ns_get16-and-ns_get32-as-well.patch
+- Update signing key for source validation
+
+-------------------------------------------------------------------
 Fri Aug 13 08:46:13 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix build with glibc 2.34; (bsc#1189080); Add patch
