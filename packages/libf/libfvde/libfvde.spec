@@ -1,7 +1,7 @@
 #
 # spec file for package libfvde
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,7 +81,8 @@ See libfvde for additional details.
 Summary:        Header files and libraries for developing applications for libfvde
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 Header files and libraries for developing applications for libfvde
