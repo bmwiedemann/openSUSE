@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-rust
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-setuptools-rust
-Version:        1.4.1
+Version:        1.5.2
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause
@@ -66,7 +66,8 @@ were written in C.
 
 %check
 export LANG=en_US.UTF-8
-%pytest tests/
+# network / crates.io access
+%pytest tests/ -k "not test_get_lib_name_namespace_package"
 pushd examples/hello-world
 %{python_expand # See noxfile.py
 # hello-world is the only example which does not need extra rust packages (via cargo_vendor)

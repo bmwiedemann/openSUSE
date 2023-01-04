@@ -56,4 +56,26 @@
     <comment></comment>
     <requestid>990377</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f57921131e9b92094a866e9d86d41cf</srcmd5>
+    <version>1.5.2</version>
+    <time>1672851030</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2:
+  * Fix regression in `dylib` build artifacts not being found since 1.5.0.
+  * Fix regression in sdist missing examples and other supplementary files
+    since 1.5.0. #291
+  * Fix regression in `get_lib_name` crashing since 1.5.0. #280
+  * Fix regression in `Binding.Exec` builds with multiple executables not
+    finding built executables since 1.5.0. #283
+  * Add support for extension modules built for wasm32-unknown-emscripten
+    with Pyodide. #244
+  * Locate cdylib artifacts by handling messages from cargo instead of
+    searching target dir (fixes build on MSYS2). #267
+  * No longer guess cross-compile environment using `HOST_GNU_TYPE` /
+    `BUILD_GNU_TYPE` sysconfig variables. #269
+  * Fix RustBin build without wheel. #273
+  * Fix RustBin setuptools install. #275</comment>
+    <requestid>1046123</requestid>
+  </revision>
 </revisionlist>
