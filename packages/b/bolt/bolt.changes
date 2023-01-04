@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 13:48:42 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- update to 0.9.5:
+  * Fixed several test and build setting issues.
+  * Introduced packit. Packit was used to package rpm to downstream Fedora
+    automatically. Moreover, Koji and bodhi could be triggered by packit
+    automatically.
+
+-------------------------------------------------------------------
 Mon Dec  5 12:33:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.4:

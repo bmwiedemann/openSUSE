@@ -118,4 +118,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1041328</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cba589208987feabc0294f886d9395c2</srcmd5>
+    <version>0.9.5</version>
+    <time>1672851213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055822</requestid>
+  </revision>
 </revisionlist>
