@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 23 08:15:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3 (bsc#1206579, CVE-2022-47629):
+  * Fix another integer overflow in the CRL parser.
+   Release-info: https://dev.gnupg.org/T6304
+
+-------------------------------------------------------------------
 Mon Oct 17 12:45:32 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - libksba 1.6.2: [bsc#1204357, CVE-2022-3515]
