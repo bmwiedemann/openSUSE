@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:29:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 2.1.1:
+  * Interpret ipv4-mapped ipv6 addresses (::ffff:A.B.C.D) as true
+    ipv4
+  * Return back more robust poll(2) loop handling
+
+-------------------------------------------------------------------
 Tue Jan 22 00:29:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim time-sensitive wording from description.
