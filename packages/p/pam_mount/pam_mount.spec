@@ -116,7 +116,7 @@ mkdir -p "$b/%_docdir/%name/examples"
 cp -a doc/bugs.txt doc/news.rst LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
 install -m 755 %SOURCE1 "$b/%_docdir/%name/examples/"
 install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p "$b/sbin"
 ln -s /usr/sbin/mount.crypt "$b/sbin"
 ln -s /usr/sbin/umount.crypt "$b/sbin"
@@ -156,7 +156,7 @@ fi
 %_sbindir/umount.*
 %_sbindir/pmvarrun
 %_sbindir/pmt-ehd
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*mount*
 %endif
 %config(noreplace) %_sysconfdir/security/pam_mount.conf.xml

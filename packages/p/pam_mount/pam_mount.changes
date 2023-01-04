@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:14:00 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Oct 10 18:57:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.19
