@@ -1,7 +1,7 @@
 #
 # spec file for package libwrc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ libwrc is a library to support the Windows Resource Compiler format.
 Summary:        Development files for libwrc, a Windows Resouce Compiler format support library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libwrc is a library to support the Windows Resource Compiler format.
