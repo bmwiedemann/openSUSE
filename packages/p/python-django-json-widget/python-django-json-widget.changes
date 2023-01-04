@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:27:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Fix for issue #51, updates the bundled libs to 9.1.9 and additional
+    notes for Django 3.1 changes
+  * Added functionality to override version of JSONEditor to use
+  * update readme for django 3.1
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

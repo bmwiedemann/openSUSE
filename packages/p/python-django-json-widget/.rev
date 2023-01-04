@@ -45,4 +45,16 @@
     <comment></comment>
     <requestid>944661</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99599e1b5fd6c2f486764344bd9c3ce0</srcmd5>
+    <version>1.1.1</version>
+    <time>1672851224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Fix for issue #51, updates the bundled libs to 9.1.9 and additional
+    notes for Django 3.1 changes
+  * Added functionality to override version of JSONEditor to use
+  * update readme for django 3.1</comment>
+    <requestid>1055869</requestid>
+  </revision>
 </revisionlist>
