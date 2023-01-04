@@ -1,14 +1,13 @@
-Index: man-pages-5.03/man7/tcp.7
-===================================================================
---- man-pages-5.03.orig/man7/tcp.7	2019-10-11 10:56:08.000000000 +0200
-+++ man-pages-5.03/man7/tcp.7	2019-10-25 09:36:55.047041318 +0200
-@@ -458,9 +458,31 @@ When enabled, outgoing ECN-setup SYNs th
+diff -Nur man-pages-6.02/man7/tcp.7 new/man7/tcp.7
+--- man-pages-6.02/man7/tcp.7	2022-12-22 20:25:12.000000000 +0100
++++ new/man7/tcp.7	2022-12-28 00:46:39.396907119 +0100
+@@ -491,9 +491,31 @@
  normal SYN retransmission timeout will be resent with CWR and
  ECE cleared.
  .TP
 -.IR tcp_fack " (Boolean; default: enabled; since Linux 2.2)"
 +.IR tcp_fack " (integer; default: see below; since Linux 2.2)"
- .\" Since 2.1.92
+ .\" Since Linux 2.1.92
  Enable TCP Forward Acknowledgement support.
 +
 +Prior to Linux 4.11, this option was enabled by default.
@@ -34,4 +33,4 @@ Index: man-pages-5.03/man7/tcp.7
 +.RE
  .TP
  .IR tcp_fin_timeout " (integer; default: 60; since Linux 2.2)"
- .\" Since 2.1.53
+ .\" Since Linux 2.1.53

@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        5.13
+Version:        6.02
 Release:        0
 Summary:        Linux  Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -25,13 +25,16 @@ Group:          Documentation/Man
 URL:            https://www.kernel.org/doc/man-pages/download.html
 #Git-Clone:	git://git.kernel.org/pub/scm/docs/man-pages/man-pages
 #Git-Web:	http://git.kernel.org/cgit/docs/man-pages/man-pages.git/
-Source:         https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git/snapshot/man-pages-%{version}.tar.gz
+Source0:        https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-%{version}.tar.xz
+Source1:        https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-%{version}.tar.sign
+# https://lore.kernel.org/all/1257e092-79af-3624-2f6a-fb5fd69e5c18@gmail.com/#t
+Source2:        %{name}.keyring
 Patch0:         %{name}.eal3.diff
-Patch3:         %{name}_gai.conf-reference.patch
+Patch1:         %{name}_gai.conf-reference.patch
 # [bsc#1154701]
-Patch6:         man-pages-tcp_fack.patch
+Patch2:         man-pages-tcp_fack.patch
 BuildRequires:  fdupes
-Supplements:    packageand(man:patterns-base-documentation)
+Supplements:    (man and patterns-base-documentation)
 BuildArch:      noarch
 
 %description
@@ -47,8 +50,8 @@ only).
 %prep
 %setup -q
 %patch0 -p2
-%patch3
-%patch6 -p1
+%patch1
+%patch2 -p1
 find -name "*.orig" | xargs rm -fv
 
 %build
@@ -95,11 +98,13 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc README Changes Changes.old CONTRIBUTING lsm
+%license LICENSES/*.txt
 %dir %{_mandir}/man7mp
+%dir %{_mandir}/man2type
+%dir %{_mandir}/man3const
+%dir %{_mandir}/man3head
+%dir %{_mandir}/man3type
 %{_mandir}/man*/*.gz
-%doc README Changes Changes.old
-%doc man-pages-*.Announce
-%doc man-pages-*.lsm
-%doc Changes
 
 %changelog
