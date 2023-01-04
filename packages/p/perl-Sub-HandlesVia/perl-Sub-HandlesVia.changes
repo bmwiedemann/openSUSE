@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec 17 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.046
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.046	2022-12-16
+
+   - Added: Sub::HandlesVia::HandlerLibrary::Enum module.
+   - Handler libraries can now provide constants for shortcuts.
+   - Updated: Rebuild with latest Mite.
+
+-------------------------------------------------------------------
 Wed Nov  9 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.045
