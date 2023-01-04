@@ -1,7 +1,7 @@
 #
 # spec file for package python-BTrees
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-BTrees
-Version:        4.11.0
+Version:        4.11.3
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1

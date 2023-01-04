@@ -129,4 +129,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035606</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dbf3d498c24a977fca935019bf2ecd4a</srcmd5>
+    <version>4.11.3</version>
+    <time>1672851041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.11.3:
+  * point release to rebuild full set of wheels
+  * We no longer provide 32bit wheels for the Windows platform, only x86_64.</comment>
+    <requestid>1046210</requestid>
+  </revision>
 </revisionlist>

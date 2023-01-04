@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 14:27:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.3:
+  * point release to rebuild full set of wheels
+  * We no longer provide 32bit wheels for the Windows platform, only x86_64.
+
+-------------------------------------------------------------------
 Sun Nov  6 17:30:11 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - version update to 4.11.0 (2022-11-03):
