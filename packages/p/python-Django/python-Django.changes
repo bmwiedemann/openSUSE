@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:07:30 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 4.1.5:
+  + Fixed a long standing bug in the __len lookup for ArrayField 
+    that caused a crash of model validation on Meta.constraints.
+
+- Update keyring file.
+
+-------------------------------------------------------------------
 Wed Dec 21 09:39:56 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Recommends python-pymemcache instead of the deprecated
