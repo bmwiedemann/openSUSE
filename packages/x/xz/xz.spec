@@ -19,7 +19,7 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.2.10
+Version:        5.4.0
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
