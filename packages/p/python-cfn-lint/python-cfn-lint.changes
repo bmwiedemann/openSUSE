@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:15:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.72.6:
+  * Update CloudFormation specs to `105.0.0` (pull #2530)
+  * Use a clean copy of the `cli_value` each time when merging config to
+    avoid leaking config from one template to another (pull #2536)
+  * Update rule W1001 to support `Fn::Sub` (pull #2525)
+  * Update CloudFormation specs to `102.0.0` (pull #2523)
+  * Update `Template` function `get_valid_getatts` to better return None
+    when a property type doesn't exist (pull #2527)
+  * Update rule E2015 to support the `AllowedValues` and `AllowedPattern`
+    attributes for `CommaDelimitedList` parameters (pull #2521)
+  * Update CloudFormation specs to `101.0.0` (pull #2517)
+  * Update `get_valid_getatts` to account for changes in the CloudFormation
+    spec (pull #2520)
+  * Don't validate rule I3042 when using SAM (pull #2513)
+
+-------------------------------------------------------------------
 Wed Dec  7 10:33:01 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.72.2

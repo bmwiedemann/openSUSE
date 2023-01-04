@@ -190,4 +190,25 @@
     <comment></comment>
     <requestid>1041110</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4676e54eca08b80a2fa2d992222eb6b6</srcmd5>
+    <version>0.72.6</version>
+    <time>1672859908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.72.6:
+  * Update CloudFormation specs to `105.0.0` (pull #2530)
+  * Use a clean copy of the `cli_value` each time when merging config to
+    avoid leaking config from one template to another (pull #2536)
+  * Update rule W1001 to support `Fn::Sub` (pull #2525)
+  * Update CloudFormation specs to `102.0.0` (pull #2523)
+  * Update `Template` function `get_valid_getatts` to better return None
+    when a property type doesn't exist (pull #2527)
+  * Update rule E2015 to support the `AllowedValues` and `AllowedPattern`
+    attributes for `CommaDelimitedList` parameters (pull #2521)
+  * Update CloudFormation specs to `101.0.0` (pull #2517)
+  * Update `get_valid_getatts` to account for changes in the CloudFormation
+    spec (pull #2520)
+  * Don't validate rule I3042 when using SAM (pull #2513)</comment>
+    <requestid>1055947</requestid>
+  </revision>
 </revisionlist>
