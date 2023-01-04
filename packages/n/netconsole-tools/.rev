@@ -107,4 +107,12 @@
     <comment>- Move to /usr for UsrMerge (boo#1191081)</comment>
     <requestid>922363</requestid>
   </revision>
+  <revision rev="17" vrev="158">
+    <srcmd5>9cd99a11cddf0486f9a8b30eda01b449</srcmd5>
+    <version>20030909</version>
+    <time>1672851186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055725</requestid>
+  </revision>
 </revisionlist>

@@ -40,7 +40,7 @@ cp -av %{SOURCE2} netlogging.txt
 %build
 
 %install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 install -Dpm 0755 %{SOURCE0} %{buildroot}/sbin/netconsole-server
 %else
 install -Dpm 0755 %{SOURCE0} %{buildroot}%{_sbindir}/netconsole-server
@@ -48,7 +48,7 @@ install -Dpm 0755 %{SOURCE0} %{buildroot}%{_sbindir}/netconsole-server
 
 %files
 %doc netlogging.txt
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/netconsole-server
 %else
 %{_sbindir}/netconsole-server
