@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-Exporter-ForMethods
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name Sub-Exporter-ForMethods
 Name:           perl-Sub-Exporter-ForMethods
-Version:        0.100054
+Version:        0.100055
 Release:        0
-Summary:        Helper routines for using Sub::Exporter to build methods
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Helper routines for using Sub::Exporter to build methods
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Sub::Exporter) >= 0.978
 BuildRequires:  perl(Sub::Util)
 BuildRequires:  perl(Test::More) >= 0.96

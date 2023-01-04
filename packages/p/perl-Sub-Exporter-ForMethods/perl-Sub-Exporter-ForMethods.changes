@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan  3 03:09:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.100055
+   see /usr/share/doc/packages/perl-Sub-Exporter-ForMethods/Changes
+
+  0.100055  2022-12-31 16:54:39-05:00 America/New_York
+          - update packaging and metadata
+          - minimum required Perl is now v5.12
+
+-------------------------------------------------------------------
 Sun Apr 18 03:07:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.100054
