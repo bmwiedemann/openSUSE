@@ -1,7 +1,7 @@
 #
 # spec file for package libvsmbr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ Part of the libyal family of libraries.
 Summary:        Development files for libvsmbr
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libvsmbr is a library to access the MS-DOS volume systems.
