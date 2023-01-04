@@ -1,7 +1,7 @@
 #
 # spec file for package libmodi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,7 @@ Supported formats include:
 Summary:        Development files for libmodi
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libmodi is a library to access the Mac OS disk image formats.
