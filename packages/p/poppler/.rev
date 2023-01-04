@@ -1930,4 +1930,26 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1042086</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>6053ada8273ec434589faf0d4bca615e</srcmd5>
+    <version>23.01.0</version>
+    <time>1672851031</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.01.0:
+  core:
+  * PDFDoc::sign: Fix crash if font can't be found
+  * PDFDoc::sign: Try Arial to sign if Helvetica isn't found
+  * FoFiType1::parse: Be more flexible parsing the encoding content. Issue #1324
+  * Gfx::opBeginMarkedContent: Support Span with Name. Issue #1327
+  * Splash: Avoid color issues due to implicit rounding
+  * Splash: Fix crash on malformed file.
+  * CairoOutputDev: Ignore text rendering mode for type3 fonts
+  * Remove unused FoFiType1::load function
+  build system:
+  * Increase minimum required versions of several dependencies
+  * Improve include path handling
+  qt6:
+  * Use less deprecated functions</comment>
+    <requestid>1046136</requestid>
+  </revision>
 </revisionlist>

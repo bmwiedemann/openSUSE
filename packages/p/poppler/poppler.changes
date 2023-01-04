@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:22:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.01.0:
+  core:
+  * PDFDoc::sign: Fix crash if font can't be found
+  * PDFDoc::sign: Try Arial to sign if Helvetica isn't found
+  * FoFiType1::parse: Be more flexible parsing the encoding content. Issue #1324
+  * Gfx::opBeginMarkedContent: Support Span with Name. Issue #1327
+  * Splash: Avoid color issues due to implicit rounding
+  * Splash: Fix crash on malformed file.
+  * CairoOutputDev: Ignore text rendering mode for type3 fonts
+  * Remove unused FoFiType1::load function
+  build system:
+  * Increase minimum required versions of several dependencies
+  * Improve include path handling
+  qt6:
+  * Use less deprecated functions
+
+-------------------------------------------------------------------
 Fri Dec  9 14:13:59 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Configure $CXX to the correct compiler version on codestreams

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        22.12.0
+Version:        23.01.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -43,11 +43,6 @@ Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
 Source90:       poppler.keyring
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.58
 BuildRequires:  openjpeg2
@@ -73,6 +68,11 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(poppler-data)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 %if 0%{?sle_version} >= 150300
 BuildRequires:  extra-cmake-modules
 %endif
