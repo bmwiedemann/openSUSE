@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  2 11:45:30 UTC 2023 - Michael Ströder <michael@stroeder.com>
+
+- update to 9.4.0
+  * API Additions
+    - Added start position for getmask and getmask2
+    - Added the exact encoding option for WebP
+    - Added signed option when saving JPEG2000
+    - Added IFD, Interop and LightSource ExifTags enums
+    - XMP data can now be decoded for WEBP images through getxmp()
+    - Writing JPEG comments
+  * Security
+    - Fix memory DOS in ImageFont
+    - Null pointer dereference crash in ImageFont
+  * Other Changes
+    - Added support for DDS L and LA images
+    - Formerly deprecated constants are not anymore
+
+-------------------------------------------------------------------
 Sat Oct 29 13:23:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 9.3.0
