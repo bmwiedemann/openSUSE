@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:15:13 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Dec 12 13:28:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream commit as patch 82d8e3fa.patch to make it build on s390x
