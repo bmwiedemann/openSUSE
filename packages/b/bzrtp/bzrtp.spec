@@ -1,7 +1,7 @@
 #
 # spec file for package bzrtp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.1.64
+Version:        5.2.6
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ Patch0:         bzrtp-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 

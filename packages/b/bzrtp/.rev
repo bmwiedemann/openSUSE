@@ -291,4 +291,15 @@
 </comment>
     <requestid>1012002</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ca16d75aea4a0dc192f8da7dbaaff06b</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  * Support for GoClear/ClearACK messages
+  * KEM version and support for Hybrid PostQuantum key agreement algorithms
+</comment>
+    <requestid>1055793</requestid>
+  </revision>
 </revisionlist>

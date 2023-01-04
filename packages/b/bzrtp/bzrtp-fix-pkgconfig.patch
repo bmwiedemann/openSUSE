@@ -1,12 +1,9 @@
-Index: bzrtp-5.1.64/CMakeLists.txt
-===================================================================
---- bzrtp-5.1.64.orig/CMakeLists.txt
-+++ bzrtp-5.1.64/CMakeLists.txt
-@@ -61,6 +61,16 @@ configure_file(${CMAKE_CURRENT_SOURCE_DI
+--- bzrtp-5.2.6/CMakeLists.txt.orig	2023-01-04 12:21:34.984376758 +0100
++++ bzrtp-5.2.6/CMakeLists.txt	2023-01-04 12:21:49.892454977 +0100
+@@ -80,6 +80,14 @@
  set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/config.h PROPERTIES GENERATED ON)
  add_definitions("-DHAVE_CONFIG_H")
  
-+
 +set(PACKAGE_VERSION "${PROJECT_VERSION}")
 +set(prefix ${CMAKE_INSTALL_PREFIX})
 +set(exec_prefix ${prefix}/bin)
@@ -15,7 +12,6 @@ Index: bzrtp-5.1.64/CMakeLists.txt
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libbzrtp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/libbzrtp.pc)
 +install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libbzrtp.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 +
-+
- set(STRICT_OPTIONS_CPP )
- if(NOT MSVC)
- 	list(APPEND STRICT_OPTIONS_CPP "-Wall")
+ bc_init_compilation_flags(STRICT_OPTIONS_CPP STRICT_OPTIONS_C STRICT_OPTIONS_CXX ENABLE_STRICT)
+ if(CMAKE_VERSION VERSION_LESS 3.1 AND NOT APPLE AND NOT MSVC)
+ 	list(APPEND STRICT_OPTIONS_CXX "-std=c++11")

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:18:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6:
+  * Support for GoClear/ClearACK messages
+  * KEM version and support for Hybrid PostQuantum key agreement algorithms
+
+-------------------------------------------------------------------
 Mon Oct 17 07:13:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.64 (no changelog).
