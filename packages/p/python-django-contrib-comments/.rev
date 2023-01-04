@@ -48,4 +48,13 @@
     <comment></comment>
     <requestid>944589</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>07c511cea9206d7012477c79527ab11a</srcmd5>
+    <version>2.2.0</version>
+    <time>1672851222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Confirmed support for Django 4.0.</comment>
+    <requestid>1055867</requestid>
+  </revision>
 </revisionlist>

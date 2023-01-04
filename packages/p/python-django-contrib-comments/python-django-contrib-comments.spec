@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-contrib-comments
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-contrib-comments
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Framework for attaching comments to Django models
 License:        BSD-3-Clause
