@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
+
+- Remove stale references to ocaml_make_testsuite
+
+-------------------------------------------------------------------
 Thu Jul  7 07:07:07 UTC 2022 - ohering@suse.de
 
 - Handle plain ^ and + as values for directory= in findlib META files

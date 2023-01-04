@@ -197,4 +197,12 @@ trim changes file</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989365</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3f027790246ee7daa6a5aac08b497ca1</srcmd5>
+    <version>20230101</version>
+    <time>1672851058</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove stale references to ocaml_make_testsuite</comment>
+    <requestid>1046306</requestid>
+  </revision>
 </revisionlist>

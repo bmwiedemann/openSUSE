@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20220707
+Version:        20230101
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -36,13 +36,6 @@ Source1:        ocaml-findlib.rpm.prov_req.attr.sh
 %define debug_package %nil
 
 %define ocaml_standard_library %_libdir/ocaml
-# macros to be set in prjconf:
-#Macros:
-#_with_ocaml_make_testsuite 1
-#:Macros
-%bcond_with ocaml_make_testsuite
-#
-#
 
 %description
 OCaml is a high-level, strongly-typed, functional and object-oriented
