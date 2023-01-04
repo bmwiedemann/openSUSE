@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 14:10:18 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Thu Dec  8 10:54:29 MST 2022 - carnold@suse.com
 
 - Update to Xen 4.17.0 FCS release (jsc#PED-1858)

@@ -1,7 +1,7 @@
 #
 # spec file for package xen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -269,6 +269,9 @@ Authors:
 Summary:        Xen Virtualization: Control tools for domain 0
 License:        GPL-2.0-only
 Group:          System/Kernel
+%if 0%{?suse_version} > 1500
+BuildRequires:  pam-devel
+%endif
 %ifarch x86_64
 %if 0%{?suse_version} >= 1315
 Requires:       grub2-x86_64-xen
@@ -825,17 +828,17 @@ install -m755 %SOURCE21 %SOURCE22 %SOURCE23 %SOURCE24 %{buildroot}/etc/xen/scrip
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %SOURCE13 %{buildroot}/usr/lib/supportconfig/plugins/xen
 
-# Xen API remote authentication files
-install -d %{buildroot}/etc/pam.d
-install -m644 %SOURCE30 %{buildroot}/etc/pam.d/xen-api
+# Xen API remote authentication files and Logrotate files
 install -m644 %SOURCE31 %{buildroot}/etc/xen/
-
-# Logrotate
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 install -m644 -D %SOURCE14 %{buildroot}%{_distconfdir}/logrotate.d/xen
+install -d %{buildroot}%{_pam_vendordir}
+install -m644 %SOURCE30 %{buildroot}/%{_pam_vendordir}/xen-api
 %else
 install -m644 -D %SOURCE14 %{buildroot}%{_sysconfdir}/logrotate.d/xen
+install -d %{buildroot}/etc/pam.d
+install -m644 %SOURCE30 %{buildroot}/etc/pam.d/xen-api
 %endif
 
 # Directories
@@ -1067,8 +1070,10 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %dir /var/log/xen/console
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/xen
+%{_pam_vendordir}/xen-api
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/xen
+%config /etc/pam.d/xen-api
 %endif
 /etc/xen/auto
 %config /etc/xen/examples
@@ -1076,7 +1081,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %config /etc/xen/vm
 %config(noreplace) /etc/xen/xenapiusers
 %config(noreplace) /etc/xen/xl.conf
-%config /etc/pam.d/xen-api
 %config %{_unitdir}
 %exclude %{_unitdir}/%{name}-vcpu-watch.service
 %exclude %{_unitdir}/xendomains-wait-disks.service
@@ -1170,7 +1174,7 @@ fi
 %service_add_pre xen-qemu-dom0-disk-backend.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/xen ; do
+for i in logrotate.d/xen pam.d/xen-api ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -1178,7 +1182,7 @@ done
 %if 0%{?suse_version} > 1500
 %posttrans tools
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/xen ; do
+for i in logrotate.d/xen pam.d/xen-api ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif

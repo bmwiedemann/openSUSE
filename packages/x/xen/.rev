@@ -2766,4 +2766,12 @@
     <comment>Update Xen to version 4.17.0 (jsc#PED-1858)</comment>
     <requestid>1041918</requestid>
   </revision>
+  <revision rev="324" vrev="2">
+    <srcmd5>fda2fcb0eb4388a354585e480ed96cc6</srcmd5>
+    <version>4.17.0_02</version>
+    <time>1672852231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046568</requestid>
+  </revision>
 </revisionlist>
