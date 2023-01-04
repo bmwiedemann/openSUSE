@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 18:51:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.45.2:
+  * Python 3.9 compatibility for Py_TRASHCAN_SAFE_BEGIN
+  * Add support for CURL_HTTP_VERSION_3
+  * Add CURLOPT_TLS13_CIPHERS and CURLOPT_PROXY_TLS13_CIPHERS options
+  * Added HTTP09_ALLOWED option
+  * Removed use of distutils
+- drop curl-789-error-message.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr 28 06:00:57 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.45.1:

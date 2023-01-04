@@ -369,4 +369,18 @@
   * Handle missing ! in a returned error message.</comment>
     <requestid>973531</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ab86eacb8e90daf675ec87ea466a03c0</srcmd5>
+    <version>7.45.2</version>
+    <time>1672851045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.45.2:
+  * Python 3.9 compatibility for Py_TRASHCAN_SAFE_BEGIN
+  * Add support for CURL_HTTP_VERSION_3
+  * Add CURLOPT_TLS13_CIPHERS and CURLOPT_PROXY_TLS13_CIPHERS options
+  * Added HTTP09_ALLOWED option
+  * Removed use of distutils
+- drop curl-789-error-message.patch (upstream)</comment>
+    <requestid>1046272</requestid>
+  </revision>
 </revisionlist>
