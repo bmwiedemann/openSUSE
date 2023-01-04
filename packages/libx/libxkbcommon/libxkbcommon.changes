@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  2 23:38:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Fix crash in `xkbcli interactive-wayland` under a compositor
+    which supports new versions of the xdg-shell protocol.
+  * New API: XKB_CONTEXT_NO_SECURE_GETENV,
+    RXKB_CONTEXT_NO_SECURE_GETENV
+
+-------------------------------------------------------------------
 Sun May 22 00:09:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.1

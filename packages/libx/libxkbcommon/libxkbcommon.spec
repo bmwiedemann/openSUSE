@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbcommon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
@@ -35,7 +35,7 @@ Source:         https://xkbcommon.org/download/libxkbcommon-%version.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  meson >= 0.49
+BuildRequires:  meson >= 0.51
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libxml-2.0)
