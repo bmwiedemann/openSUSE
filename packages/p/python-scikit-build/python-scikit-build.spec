@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,9 @@ BuildRequires:  %{python_module wheel}
 %if !%{with test}
 # https://github.com/scikit-build/scikit-build/issues/689
 BuildRequires:  %{python_module setuptools_scm}
+%if 0%{?suse_version} < 1550
+BuildRequires:  %{python_module toml}
+%endif
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -86,6 +89,8 @@ cp %{S:99} tests/samples/issue-274-support-default-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-274-support-one-package-without-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup.cfg
 %endif
+# remove toml entries not relevant for us and failing old py3.6 pip in 15.X
+sed -i '/tool.pylint/,/^$/ d' pyproject.toml
 
 %if !%{with test}
 %build
@@ -108,7 +113,7 @@ donttest="test_pep518"
 %doc AUTHORS.rst README.rst CONTRIBUTING.rst HISTORY.rst docs/
 %license LICENSE
 %{python_sitelib}/skbuild
-%{python_sitelib}/scikit_build-%{version}*-info
+%{python_sitelib}/scikit_build-%{version}.dist-info
 %endif
 
 %changelog

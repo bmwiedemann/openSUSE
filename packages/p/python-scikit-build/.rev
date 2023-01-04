@@ -123,4 +123,14 @@
     change from 0.16.0 that was affecting conda. #793 (forwarded request 1044135 from bnavigator)</comment>
     <requestid>1044136</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>36f2207609290440c74ccaf757acb61e</srcmd5>
+    <version>0.16.4</version>
+    <time>1672859913</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pyproject.toml tool.pylint entries not relevant for us and
+  failing old py3.6 pip in 15.X
+- Old setuptools_scm in 15.X does not pull in toml automatically (forwarded request 1055958 from bnavigator)</comment>
+    <requestid>1055959</requestid>
+  </revision>
 </revisionlist>
