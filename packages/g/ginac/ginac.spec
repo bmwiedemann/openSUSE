@@ -1,7 +1,7 @@
 #
 # spec file for package ginac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 
 %define library_version 11
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
@@ -48,7 +48,6 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  graphviz
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -56,6 +55,7 @@ BuildRequires:  readline-devel
 # SECTION Requirements for building documentation
 %if %{with doc}
 BuildRequires:  doxygen
+BuildRequires:  graphviz
 BuildRequires:  texinfo
 BuildRequires:  texlive-courier
 BuildRequires:  texlive-dvips-bin
@@ -68,6 +68,7 @@ BuildRequires:  transfig
 BuildRequires:  tex(adjustbox.sty)
 BuildRequires:  tex(alphalph.sty)
 BuildRequires:  tex(caption.sty)
+BuildRequires:  tex(changepage.sty)
 BuildRequires:  tex(colortbl.sty)
 BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(etoc.sty)
