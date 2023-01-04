@@ -1,7 +1,7 @@
 #
 # spec file for package libewf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,7 +98,8 @@ It contains tools to acquire, verify and export EWF files.
 Summary:        Development files for libewf, an Expert Witness Compression Format library
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %version
+Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libewf is a library for support of the Expert Witness Compression
@@ -112,7 +113,7 @@ applications that want to make use of %{name}.
 
 %prep
 %autosetup -p1 -n libewf-legacy-%version
-cp "%{SOURCE3}" "%{SOURCE4}" .
+cp -av %_sourcedir/*.pdf .
 
 %build
 #export CFLAGS="%optflags -fno-strict-aliasing"
