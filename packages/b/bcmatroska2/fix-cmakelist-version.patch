@@ -1,0 +1,11 @@
+--- bcmatroska2-5.2.1/CMakeLists.txt.orig	2023-01-04 12:40:40.042374227 +0100
++++ bcmatroska2-5.2.1/CMakeLists.txt	2023-01-04 12:40:46.822409717 +0100
+@@ -23,7 +23,7 @@
+ cmake_minimum_required(VERSION 3.1)
+ 
+ project(bcmatroska2
+-	VERSION 0.23
++	VERSION 5.2.1
+ 	LANGUAGES C
+ )
+ 

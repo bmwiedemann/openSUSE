@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:41:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.1 (no changelog).
+- Add fix-cmakelist-version.patch
+- Add remove-file.patch
+- Add fix-libmatroska-cmake.patch
+
+-------------------------------------------------------------------
 Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
 
 - Remove RPATH to be able to build on Fedora

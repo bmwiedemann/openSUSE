@@ -1,0 +1,10 @@
+--- bcmatroska2/corec/corec/CMakeLists.txt.orig	2023-01-04 14:08:11.653653391 +0100
++++ bcmatroska2/corec/corec/CMakeLists.txt	2023-01-04 14:08:24.565720225 +0100
+@@ -52,7 +52,6 @@
+ else()
+ 	list(APPEND COREC_SOURCES
+ 		helpers/date/date_libc.c
+-		helpers/file/file_libc.c
+ 		helpers/file/file_bctbx.c
+ 		multithread/multithread_pthread.c
+ 	)
