@@ -122,4 +122,12 @@ Required by recent python-dfVFS release</comment>
     <comment>- Update to release 20221218</comment>
     <requestid>1043615</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4c141b4c5fc113debef4e727629cd903</srcmd5>
+    <version>20221218</version>
+    <time>1672851126</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046605</requestid>
+  </revision>
 </revisionlist>

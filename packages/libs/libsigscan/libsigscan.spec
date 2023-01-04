@@ -1,7 +1,7 @@
 #
 # spec file for package libsigscan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,7 +67,8 @@ Tools to scan binary files for signatures.
 %package devel
 Summary:        Development files for libigscan
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
+Requires:       libbfio-devel
 
 %description devel
 libsigscan is a library for binary signature scanning
