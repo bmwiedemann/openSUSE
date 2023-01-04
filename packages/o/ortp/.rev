@@ -363,4 +363,13 @@
 </comment>
     <requestid>1012003</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>72a127027fe6850859667ca414bea2e3</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6 (no changelog).
+</comment>
+    <requestid>1055794</requestid>
+  </revision>
 </revisionlist>

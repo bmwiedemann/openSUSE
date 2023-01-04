@@ -1,7 +1,7 @@
 #
 # spec file for package ortp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,8 +19,10 @@
 
 %define soname  libortp
 %define sover   15
+%define docuver 5.2.0
+
 Name:           ortp
-Version:        5.1.64
+Version:        5.2.6
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-3.0-or-later
@@ -35,7 +37,7 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
 
 %description
 oRTP is a C library implementing the RTP protocol (RFC 1889).
@@ -75,7 +77,7 @@ develop programs using the oRTP library.
 
 mkdir -p %{buildroot}%{_docdir}/%{name}
 # manually keeping the version here because upstream doesn't (usually) update the patch version
-mv -T %{buildroot}%{_datadir}/doc/%{name}-5.1.0 %{buildroot}%{_docdir}/%{name}
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docuver} %{buildroot}%{_docdir}/%{name}
 
 # for some reason, pkgconfig file contains wrong libdir
 sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
@@ -87,6 +89,7 @@ chrpath -d %{buildroot}%{_libdir}/%{soname}.so.%{sover}*
 
 %files
 %doc %{_docdir}/%{name}/
+%{_bindir}/ortp_tester
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*
