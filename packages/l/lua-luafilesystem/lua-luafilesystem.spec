@@ -1,7 +1,7 @@
 #
-# spec file for package lua-luafilesystem
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,13 @@
 %define mod_name luafilesystem
 %define pversion 1.8.0
 %define _pversion 1_8_0
+
+%if %{undefined lua_provides}
+%define lua_provides \
+Provides: lua-%{mod_name} = %{version}-%{release} \
+Obsoletes: lua-%{mod_name} < %{version}-%{release}
+%endif
+
 Version:        %{pversion}
 Release:        0
 Summary:        Filesystem support for Lua

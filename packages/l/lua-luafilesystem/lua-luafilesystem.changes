@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 16:52:00 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Handle Leap 15 / SLE-15 where %lua_provides is not supported.
+
+-------------------------------------------------------------------
 Wed Jan 27 15:54:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro
