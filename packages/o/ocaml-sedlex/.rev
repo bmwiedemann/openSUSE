@@ -79,4 +79,13 @@ It is a dependency of the next version of Haxe(4.0.0).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>940223</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>883f9f7203002569f1eec5e68929fedc</srcmd5>
+    <version>3.0</version>
+    <time>1672927258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0
+  Handle newer ppxlib API</comment>
+    <requestid>1056080</requestid>
+  </revision>
 </revisionlist>

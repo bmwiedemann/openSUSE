@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sedlex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-sedlex
-Version:        2.5
+Version:        3.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
 License:        MIT
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/sedlex
-Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20210911
+Source0:        %name-%version.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml-dune >= 3.0
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(gen)
 BuildRequires:  ocamlfind(ppxlib)
 BuildRequires:  ocamlfind(uchar)
@@ -39,13 +39,13 @@ regular OCaml source files.
 
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -62,9 +62,9 @@ dune_release_pkgs='sedlex'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 %doc README.md
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
