@@ -498,6 +498,8 @@ Prefer: -python38-magic -python39-magic -python310-magic
 # have choice for gcr-ssh-agent needed by libgcr-3-1: gcr-ssh-agent gcr3-ssh-agent
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
+# have choice for python3-Cython: python310-Cython python310-Cython3
+Prefer: -python310-Cython3 python39-Cython3 -python38-Cython3
 
 Prefer: -procps4
 
