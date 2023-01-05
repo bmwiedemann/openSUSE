@@ -1,7 +1,7 @@
 #
 # spec file for package davfs2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ cd src
 dav_user="%{name}" \
 dav_group="%{name}" \
 %configure \
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
     ssbindir="%{_sbindir}" \
 %endif
     --disable-static
@@ -108,7 +108,7 @@ rm -rf "%{buildroot}/%{_docdir}"
 %{_sbindir}/umount.davfs
 %{_datadir}/%{name}
 %attr(0750, %{name}, %{name}) %{_localstatedir}/cache/%{name}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/mount.davfs
 /sbin/umount.davfs
 %endif

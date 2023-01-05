@@ -78,4 +78,12 @@
 - Update davfs2.keyring to match the new upstream one.</comment>
     <requestid>1032904</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>00cc57c731958d55638871e18885867d</srcmd5>
+    <version>1.7.0</version>
+    <time>1672927290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056147</requestid>
+  </revision>
 </revisionlist>
