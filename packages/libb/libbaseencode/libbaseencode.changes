@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 08:37:26 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.15:
+ * fix invalid pointer usage in case of memory allocation failure. 
+
+-------------------------------------------------------------------
 Thu May 19 11:41:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.0.14:

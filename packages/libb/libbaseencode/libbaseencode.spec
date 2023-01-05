@@ -1,7 +1,7 @@
 #
 # spec file for package libbaseencode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global debug_package %{nil}
 %endif
 Name:           libbaseencode
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        Base32 and base64 encoding library
 License:        Apache-2.0

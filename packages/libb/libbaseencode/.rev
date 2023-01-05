@@ -62,4 +62,14 @@
 </comment>
     <requestid>978114</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4e9cb346d0b178bbbe243b958f25cfa2</srcmd5>
+    <version>1.0.15</version>
+    <time>1672927289</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.15:
+ * fix invalid pointer usage in case of memory allocation failure. 
+</comment>
+    <requestid>1056145</requestid>
+  </revision>
 </revisionlist>
