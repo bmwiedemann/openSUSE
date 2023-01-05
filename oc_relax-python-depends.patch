@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.21.0.orig/requirements.txt oci-cli-3.21.0/requirements.txt
---- oci-cli-3.21.0.orig/requirements.txt	2022-12-06 09:58:43.000000000 +0100
-+++ oci-cli-3.21.0/requirements.txt	2022-12-07 11:03:34.608778706 +0100
+diff -Nru oci-cli-3.22.0.orig/requirements.txt oci-cli-3.22.0/requirements.txt
+--- oci-cli-3.22.0.orig/requirements.txt	2022-12-13 13:06:31.000000000 +0100
++++ oci-cli-3.22.0/requirements.txt	2023-01-03 10:16:41.463841833 +0100
 @@ -2,41 +2,41 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.21.0.orig/requirements.txt oci-cli-3.21.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.89.0
+-oci==2.90.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -31,7 +31,7 @@ diff -Nru oci-cli-3.21.0.orig/requirements.txt oci-cli-3.21.0/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.89.0
++oci>=2.90.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -74,15 +74,15 @@ diff -Nru oci-cli-3.21.0.orig/requirements.txt oci-cli-3.21.0/requirements.txt
 +PyYAML>=5.4
 +docutils>=0.15.2
 +prompt-toolkit>=3.0.29
-diff -Nru oci-cli-3.21.0.orig/setup.py oci-cli-3.21.0/setup.py
---- oci-cli-3.21.0.orig/setup.py	2022-12-06 09:58:43.000000000 +0100
-+++ oci-cli-3.21.0/setup.py	2022-12-07 11:03:02.728331767 +0100
+diff -Nru oci-cli-3.22.0.orig/setup.py oci-cli-3.22.0/setup.py
+--- oci-cli-3.22.0.orig/setup.py	2022-12-13 13:06:31.000000000 +0100
++++ oci-cli-3.22.0/setup.py	2023-01-03 10:15:58.071299986 +0100
 @@ -29,23 +29,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.89.0',
-+    'oci>=2.89.0',
+-    'oci==2.90.0',
++    'oci>=2.90.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==7.1.2',
