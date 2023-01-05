@@ -86,7 +86,7 @@ install -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_bindir}/rpcinfo %{buildroot}%{_sbindir}/rpcinfo
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 mkdir %{buildroot}/bin
 ln -s %{_bindir}/rpcinfo %{buildroot}/sbin/rpcinfo
@@ -110,7 +110,7 @@ ln -s %{_sbindir}/%{name} %{buildroot}/sbin/%{name}
 %files
 %license COPYING
 %doc AUTHORS README
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/%{name}
 /bin/rpcinfo
 /sbin/rpcinfo
