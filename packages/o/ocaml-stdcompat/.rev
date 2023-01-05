@@ -40,4 +40,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>986060</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ee11beb062774b307c7aab1003c267f3</srcmd5>
+    <version>19</version>
+    <time>1672927259</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream moved the v19 git tag</comment>
+    <requestid>1056082</requestid>
+  </revision>
 </revisionlist>

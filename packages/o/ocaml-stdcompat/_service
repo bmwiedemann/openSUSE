@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-stdcompat</param>
-    <param name="revision">89fe38402acf7bc6d63b32b9da22d9906391d7cb</param>
+    <param name="revision">56a7e25a1101b3d689a8bb23b7c47925e4981381</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/thierry-martinez/stdcompat.git</param>
