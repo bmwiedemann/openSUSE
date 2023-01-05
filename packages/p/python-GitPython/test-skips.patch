@@ -1,20 +1,21 @@
-Index: GitPython-3.1.7.1594621338.176838a3/test/test_base.py
+Index: GitPython-3.1.30.1672298042.141cd65/test/test_base.py
 ===================================================================
---- GitPython-3.1.7.1594621338.176838a3.orig/test/test_base.py
-+++ GitPython-3.1.7.1594621338.176838a3/test/test_base.py
-@@ -111,7 +111,7 @@ class TestBase(TestBase):
+--- GitPython-3.1.30.1672298042.141cd65.orig/test/test_base.py
++++ GitPython-3.1.30.1672298042.141cd65/test/test_base.py
+@@ -104,7 +104,8 @@ class TestBase(_TestBase):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
-         assert osp.isdir(osp.join(rw_repo.working_tree_dir, 'lib'))
+         assert osp.isdir(osp.join(rw_repo.working_tree_dir, "lib"))
  
--    #@skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!  sometimes...")
+-    @skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!  sometimes...")
++    #@skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!  sometimes...")
 +    @skipIf(os.environ.get('SKIP_LOCALHOST', 'false') == 'true', 'git-daemon connection error')
-     @with_rw_and_rw_remote_repo('0.1.6')
+     @with_rw_and_rw_remote_repo("0.1.6")
      def test_with_rw_remote_and_rw_repo(self, rw_repo, rw_remote_repo):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
-Index: GitPython-3.1.7.1594621338.176838a3/test/test_remote.py
+Index: GitPython-3.1.30.1672298042.141cd65/test/test_remote.py
 ===================================================================
---- GitPython-3.1.7.1594621338.176838a3.orig/test/test_remote.py
-+++ GitPython-3.1.7.1594621338.176838a3/test/test_remote.py
+--- GitPython-3.1.30.1672298042.141cd65.orig/test/test_remote.py
++++ GitPython-3.1.30.1672298042.141cd65/test/test_remote.py
 @@ -4,6 +4,7 @@
  # This module is part of GitPython and is released under
  # the BSD License: http://www.opensource.org/licenses/bsd-license.php
@@ -22,60 +23,78 @@ Index: GitPython-3.1.7.1594621338.176838a3/test/test_remote.py
 +import os
  import random
  import tempfile
- from unittest import skipIf
-@@ -408,7 +409,7 @@ class TestRemote(TestBase):
+ import pytest
+@@ -430,7 +431,8 @@ class TestRemote(TestBase):
          TagReference.delete(rw_repo, new_tag, other_tag)
-         remote.push(":%s" % other_tag.path)
+         remote.push(":%s" % other_tag.path, kill_after_timeout=10.0)
  
 -    @skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!")
++    #@skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!")
 +    @skipIf(os.environ.get('SKIP_LOCALHOST', 'false') == 'true', 'git-daemon connection error')
-     @with_rw_and_rw_remote_repo('0.1.6')
+     @with_rw_and_rw_remote_repo("0.1.6")
      def test_base(self, rw_repo, remote_repo):
          num_remotes = 0
-@@ -641,6 +642,7 @@ class TestRemote(TestBase):
+@@ -681,6 +683,7 @@ class TestRemote(TestBase):
          # will raise fatal: Will not delete all non-push URLs
          self.assertRaises(GitCommandError, remote.delete_url, test3)
  
 +    @skipIf(os.environ.get('SKIP_GITHUB', 'false') == 'true', 'GitHub connection error')
      def test_fetch_error(self):
-         rem = self.rorepo.remote('origin')
+         rem = self.rorepo.remote("origin")
          with self.assertRaisesRegex(GitCommandError, "[Cc]ouldn't find remote ref __BAD_REF__"):
-Index: GitPython-3.1.7.1594621338.176838a3/test/test_submodule.py
+Index: GitPython-3.1.30.1672298042.141cd65/test/test_submodule.py
 ===================================================================
---- GitPython-3.1.7.1594621338.176838a3.orig/test/test_submodule.py
-+++ GitPython-3.1.7.1594621338.176838a3/test/test_submodule.py
-@@ -420,12 +420,13 @@ class TestSubmodule(TestBase):
-     def test_base_bare(self, rwrepo):
-         self._do_base_tests(rwrepo)
- 
--    @skipIf(HIDE_WINDOWS_KNOWN_ERRORS and sys.version_info[:2] == (3, 5), """
+--- GitPython-3.1.30.1672298042.141cd65.orig/test/test_submodule.py
++++ GitPython-3.1.30.1672298042.141cd65/test/test_submodule.py
+@@ -453,14 +453,15 @@ class TestSubmodule(TestBase):
+         reason="Cygwin GitPython can't find submodule SHA",
+         raises=ValueError
+     )
+-    @skipIf(
+-        HIDE_WINDOWS_KNOWN_ERRORS,
+-        """
 -        File "C:\\projects\\gitpython\\git\\cmd.py", line 559, in execute
 -        raise GitCommandNotFound(command, err)
 -        git.exc.GitCommandNotFound: Cmd('git') not found due to: OSError('[WinError 6] The handle is invalid')
--        cmdline: git clone -n --shared -v C:\\projects\\gitpython\\.git Users\\appveyor\\AppData\\Local\\Temp\\1\\tmplyp6kr_rnon_bare_test_root_module""")  # noqa E501
-+    #@skipIf(HIDE_WINDOWS_KNOWN_ERRORS and sys.version_info[:2] == (3, 5), """
+-        cmdline: git clone -n --shared -v C:\\projects\\gitpython\\.git Users\\appveyor\\AppData\\Local\\Temp\\1\\tmplyp6kr_rnon_bare_test_root_module""",
+-    )  # noqa E501
++    #@skipIf(
++    #    HIDE_WINDOWS_KNOWN_ERRORS,
++    #    """
 +    #    File "C:\\projects\\gitpython\\git\\cmd.py", line 559, in execute
 +    #    raise GitCommandNotFound(command, err)
 +    #    git.exc.GitCommandNotFound: Cmd('git') not found due to: OSError('[WinError 6] The handle is invalid')
-+    #    cmdline: git clone -n --shared -v C:\\projects\\gitpython\\.git Users\\appveyor\\AppData\\Local\\Temp\\1\\tmplyp6kr_rnon_bare_test_root_module""")  # noqa E501
-     @with_rw_repo(k_subm_current, bare=False)
++    #    cmdline: git clone -n --shared -v C:\\projects\\gitpython\\.git Users\\appveyor\\AppData\\Local\\Temp\\1\\tmplyp6kr_rnon_bare_test_root_module""",
++    #)  # noqa E501
 +    @skipIf(os.environ.get('SKIP_LOCALHOST', 'false') == 'true', 'git-daemon connection error')
+     @with_rw_repo(k_subm_current, bare=False)
      def test_root_module(self, rwrepo):
          # Can query everything without problems
-         rm = RootModule(self.rorepo)
-@@ -750,6 +751,7 @@ class TestSubmodule(TestBase):
+@@ -802,6 +803,7 @@ class TestSubmodule(TestBase):
      #         "FIXME: helper.wrapper fails with: PermissionError: [WinError 5] Access is denied: "
      #         "'C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\test_work_tree_unsupportedryfa60di\\master_repo\\.git\\objects\\pack\\pack-bc9e0787aef9f69e1591ef38ea0a6f566ec66fe3.idx")  # noqa E501
      @with_rw_directory
 +    @skipIf(os.environ.get('SKIP_LOCALHOST', 'false') == 'true', 'git-daemon connection error')
      def test_git_submodule_compatibility(self, rwdir):
-         parent = git.Repo.init(osp.join(rwdir, 'parent'))
-         sm_path = join_path_native('submodules', 'intermediate', 'one')
-@@ -825,6 +827,7 @@ class TestSubmodule(TestBase):
+         parent = git.Repo.init(osp.join(rwdir, "parent"))
+         sm_path = join_path_native("submodules", "intermediate", "one")
+@@ -887,6 +889,7 @@ class TestSubmodule(TestBase):
          # end for each dry-run mode
  
      @with_rw_directory
 +    @skipIf(os.environ.get('SKIP_LOCALHOST', 'false') == 'true', 'git-daemon connection error')
      def test_remove_norefs(self, rwdir):
-         parent = git.Repo.init(osp.join(rwdir, 'parent'))
-         sm_name = 'mymodules/myname'
+         parent = git.Repo.init(osp.join(rwdir, "parent"))
+         sm_name = "mymodules/myname"
+Index: GitPython-3.1.30.1672298042.141cd65/test/test_repo.py
+===================================================================
+--- GitPython-3.1.30.1672298042.141cd65.orig/test/test_repo.py
++++ GitPython-3.1.30.1672298042.141cd65/test/test_repo.py
+@@ -250,6 +250,7 @@ class TestRepo(TestBase):
+             except UnicodeEncodeError:
+                 self.fail("Raised UnicodeEncodeError")
+ 
++    @skipIf(os.environ.get('SKIP_GITHUB', 'false') == 'true', 'Gitlab connection error')
+     @with_rw_directory
+     def test_leaking_password_in_clone_logs(self, rw_dir):
+         password = "fakepassword1234"

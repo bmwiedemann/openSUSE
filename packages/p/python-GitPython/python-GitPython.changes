@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan  4 06:33:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 3.1.30.1672298042.141cd65:
+  * Make injections of command-invocations harder or impossible for clone and
+    others. See #1518 for details. Note that this might constitute a breaking
+    change for some users. (bsc#1206099, CVE-2022-24439)
+  * Prohibit insecure options and protocols by default, which is potentially a
+    breaking change, but a necessary fix for #1515.
+  * Make the git.__version__ re-appear.
+  * Reduced startup time due to optimized imports.
+  * Fix a vulenerability that could cause great slowdowns when encountering
+    long remote path names when pulling/fetching.
+  * Newly added timeout flag is not be enabled by default, and was renamed
+    to kill_after_timeout
+  * drop support for python 3.5 to reduce maintenance burden on typing.
+  * Add more static typing information
+  * git.Commit objects now have a replace method that will return a copy of
+    the commit with modified attributes.
+  * Add python 3.9 support
+  * Drop python 3.4 support
+- Refresh patches.
+
+-------------------------------------------------------------------
 Mon Nov  7 23:35:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Setting proper configuration variable allows to run previously

@@ -372,4 +372,30 @@
 </comment>
     <requestid>1034394</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f156bfff57aa32076e40a539a8f6ddf8</srcmd5>
+    <version>3.1.30.1672298042.141cd65</version>
+    <time>1672927189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.30.1672298042.141cd65:
+  * Make injections of command-invocations harder or impossible for clone and
+    others. See #1518 for details. Note that this might constitute a breaking
+    change for some users. (bsc#1206099, CVE-2022-24439)
+  * Prohibit insecure options and protocols by default, which is potentially a
+    breaking change, but a necessary fix for #1515.
+  * Make the git.__version__ re-appear.
+  * Reduced startup time due to optimized imports.
+  * Fix a vulenerability that could cause great slowdowns when encountering
+    long remote path names when pulling/fetching.
+  * Newly added timeout flag is not be enabled by default, and was renamed
+    to kill_after_timeout
+  * drop support for python 3.5 to reduce maintenance burden on typing.
+  * Add more static typing information
+  * git.Commit objects now have a replace method that will return a copy of
+    the commit with modified attributes.
+  * Add python 3.9 support
+  * Drop python 3.4 support
+- Refresh patches.</comment>
+    <requestid>1046682</requestid>
+  </revision>
 </revisionlist>

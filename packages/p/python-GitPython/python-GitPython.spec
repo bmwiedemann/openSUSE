@@ -1,7 +1,7 @@
 #
 # spec file for package python-GitPython
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-GitPython
-Version:        3.1.12.1610074031.f653af66
+Version:        3.1.30.1672298042.141cd65
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
@@ -51,11 +51,10 @@ implement your own storage mechanisms, the currently available implementations
 are 'cgit' and pure python, which is the default.
 
 %prep
-%setup -q -n GitPython-%{version}
-echo y | ./init-tests-after-clone.sh
-%autopatch -p1
+%autosetup -p1 -n GitPython-%{version}
 # do not pull in extra deps
 sed -i -e '/tox/d' -e '/flake8/d' -e '/coverage/d' test-requirements.txt
+sed -i  -e '/addopts/d' pyproject.toml
 
 %build
 %python_build
@@ -78,7 +77,7 @@ git config --global protocol.file.allow "always"
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
-%pytest -k 'not test_installation' test
+%pytest -k 'not (test_installation or test_rev_parse)'
 
 %files %{python_files}
 %license LICENSE
