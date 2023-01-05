@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1041243</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>040670bdb0327d4dd5eb594f83ff6008</srcmd5>
+    <version>2023.1.1</version>
+    <time>1672927239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.1.1:
+  * Automated updates to the HSTS preload list on 2023-1-1</comment>
+    <requestid>1055992</requestid>
+  </revision>
 </revisionlist>
