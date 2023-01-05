@@ -1,7 +1,7 @@
 #
 # spec file for package iproute2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -123,7 +123,7 @@ chmod -x "$b/%_libdir/libnetlink.a"
 install -pm0644 "include/libnetlink.h" "$b/%_includedir/"
 chmod -x "$b/%_includedir/libnetlink.h"
 install -Dm0644 "%SOURCE3" "$b/%_tmpfilesdir/%name.conf"
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 ln -sf "%_sbindir/ip" "$b/%_bindir/ip"
 %else
 ln -s "%_sbindir/ip" "$b/sbin/"
@@ -158,7 +158,7 @@ EOF
 %_tmpfilesdir/%name.conf
 %ghost %dir %_rundir/netns
 %exclude %_sbindir/arpd
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %_bindir/ip
 %else
 /sbin/*

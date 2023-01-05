@@ -1078,4 +1078,12 @@ require bash-completion for iproute2-bash-completion]</comment>
   * tc_util: Fix no error return when large parent id used (forwarded request 1044377 from dirkmueller)</comment>
     <requestid>1044599</requestid>
   </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>237b25e7d426b2412583bcbc5f20aaf5</srcmd5>
+    <version>6.1</version>
+    <time>1672927199</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1054740 from lnussel)</comment>
+    <requestid>1055736</requestid>
+  </revision>
 </revisionlist>
