@@ -1,7 +1,7 @@
 #
 # spec file for package python-cli-helpers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-cli-helpers
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Helpers for building command-line apps
 License:        BSD-3-Clause

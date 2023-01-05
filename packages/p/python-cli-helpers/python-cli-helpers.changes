@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 20:18:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * don't escape newlines, etc. in ascii tables, and add ascii_escaped table
+    format
+
+-------------------------------------------------------------------
 Tue Mar  8 08:01:06 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.2.1

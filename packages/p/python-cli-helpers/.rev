@@ -62,4 +62,14 @@
     <comment></comment>
     <requestid>960303</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20bf65b65dd293f3bd68574ac5e8a3df</srcmd5>
+    <version>2.3.0</version>
+    <time>1672927243</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * don't escape newlines, etc. in ascii tables, and add ascii_escaped table
+    format</comment>
+    <requestid>1056001</requestid>
+  </revision>
 </revisionlist>
