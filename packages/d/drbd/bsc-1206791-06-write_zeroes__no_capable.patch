@@ -1,0 +1,8 @@
+diff -Nupr drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_req_op_write_zeroes.c b/drbd/drbd-kernel-compat/tests/have_req_op_write_zeroes.c
+--- drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_req_op_write_zeroes.c	2021-11-09 22:43:17.000000000 +0800
++++ b/drbd/drbd-kernel-compat/tests/have_req_op_write_zeroes.c	2023-01-05 10:40:17.383202903 +0800
+@@ -1,3 +1,3 @@
+ #include <linux/blk_types.h>
+ 
+-enum req_opf dummy = REQ_OP_WRITE_ZEROES;
++enum req_op dummy = REQ_OP_WRITE_ZEROES;

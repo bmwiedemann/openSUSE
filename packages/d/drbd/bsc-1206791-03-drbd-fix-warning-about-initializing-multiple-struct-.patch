@@ -1,0 +1,31 @@
+From 1b4b7a945d5191225965d8e79fc6705c1b394e1d Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Mon, 10 Oct 2022 09:20:20 +0200
+Subject: [PATCH] drbd: fix warning about initializing multiple struct members
+ with one memset()
+
+It comes from 6cedeb568b, November 2008
+"proto version 89: support checksum based resyn"
+
+Modern compiler warns about this and warnings might be treated as errors.
+---
+ drbd/drbd_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 84040ed4bfaf..fe8cf60a85fc 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -1150,7 +1150,8 @@ int drbd_send_sync_param(struct drbd_peer_device *peer_device)
+ 		return -EIO;
+ 
+ 	/* initialize verify_alg and csums_alg */
+-	memset(p->verify_alg, 0, 2 * SHARED_SECRET_MAX);
++	memset(p->verify_alg, 0, sizeof(p->verify_alg));
++	memset(p->csums_alg, 0, sizeof(p->csums_alg));
+ 
+ 	rcu_read_lock();
+ 	nc = rcu_dereference(peer_device->connection->transport.net_conf);
+-- 
+2.26.2
+

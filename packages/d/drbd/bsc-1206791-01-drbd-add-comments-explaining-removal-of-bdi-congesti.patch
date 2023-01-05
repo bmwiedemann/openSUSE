@@ -1,0 +1,52 @@
+From c89bb88cde9349b11dbf255e762203c626e70d30 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Mon, 3 Oct 2022 14:49:55 +0200
+Subject: [PATCH] drbd: add comments explaining removal of bdi congestion
+
+The bdi congestion tracking framework was removed, so this leaves a few
+confusing places where we just blindly set a "congested" flag to false.
+Add some comments, briefly explaining the history of why it is like
+that.
+
+---
+by heming.zhao@suse.com:
+bsc-1201335_06-bdi.patch followed upstream patch b807a2c5e0e2, which
+removed s->dev_lower_blocked from device_to_statistics(). But drbd main
+branch latest code still keep s->dev_lower_blocked, I used this patch
+to restore s->dev_lower_blocked.
+
+---
+
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index 020372fdb258..6a2afd184ae6 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -5514,6 +5514,10 @@ static void device_to_statistics(struct device_statistics *s,
+ 		spin_unlock_irq(&md->uuid_lock);
+ 
+ 		s->dev_disk_flags = md->flags;
++		/* originally, this used the bdi congestion framework,
++		 * but that was removed in linux 5.18.
++		 * so just never report the lower device as congested. */
++		s->dev_lower_blocked = false;
+ 		put_ldev(device);
+ 	}
+ 	s->dev_size = get_capacity(device->vdisk);
+diff --git a/drbd/drbd_req.c b/drbd/drbd_req.c
+index e5098bf8b26c..02dbc61946ca 100644
+--- a/drbd/drbd_req.c
++++ b/drbd/drbd_req.c
+@@ -1275,6 +1275,9 @@ static bool remote_due_to_read_balancing(struct drbd_device *device,
+ 
+ 	switch (rbm) {
+ 	case RB_CONGESTED_REMOTE:
++		/* originally, this used the bdi congestion framework,
++		 * but that was removed in linux 5.18.
++		 * so just never report the lower device as congested. */
+ 		return false;
+ 	case RB_LEAST_PENDING:
+ 		return atomic_read(&device->local_cnt) >
+-- 
+2.26.2
+

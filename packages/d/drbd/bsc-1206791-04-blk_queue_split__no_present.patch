@@ -1,0 +1,62 @@
+/* This patch related with below upstream kernel commit */
+
+commit 5a97806f7dc069d9561d9930a2ae108700e222ab
+Author: Christoph Hellwig <hch@lst.de>
+Date:   Wed Jul 27 12:22:55 2022 -0400
+
+    block: change the blk_queue_split calling convention
+    
+    The double indirect bio leads to somewhat suboptimal code generation.
+    Instead return the (original or split) bio, and make sure the
+    request_queue arguments to the lower level helpers is passed after the
+    bio to avoid constant reshuffling of the argument passing registers.
+    
+    Also give it and the helpers used to implement it more descriptive names.
+    
+    Signed-off-by: Christoph Hellwig <hch@lst.de>
+    Link: https://lore.kernel.org/r/20220727162300.3089193-2-hch@lst.de
+    Signed-off-by: Jens Axboe <axboe@kernel.dk>
+
+---
+
+diff -Nupr drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/cocci/bio_split_to_limits__yes_present.cocci b/drbd/drbd-kernel-compat/cocci/bio_split_to_limits__yes_present.cocci
+--- drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/cocci/bio_split_to_limits__yes_present.cocci	1970-01-01 08:00:00.000000000 +0800
++++ b/drbd/drbd-kernel-compat/cocci/bio_split_to_limits__yes_present.cocci	2023-01-05 09:58:43.742081303 +0800
+@@ -0,0 +1,5 @@
++@@
++expression b;
++@@
++- blk_queue_split(&b)
+++ bio_split_to_limits(b)
+diff -Nupr drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+--- drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/gen_patch_names.c	2023-01-05 09:02:53.371032160 +0800
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c	2023-01-05 09:59:24.921772632 +0800
+@@ -92,8 +92,13 @@ int main(int argc, char **argv)
+ 	patch(1, "timer_setup", true, false,
+ 	      COMPAT_HAVE_TIMER_SETUP, "present");
+ 
+-#if defined(COMPAT_HAVE_BLK_QUEUE_SPLIT_BIO)
+-	/* "modern" version (>=5.9) with only 1 argument. nothing to do */
++#if defined(COMPAT_HAVE_BIO_SPLIT_TO_LIMITS)
++	/* since 5a97806f7dc069d9561d9930a2ae108700e222ab, blk_queue_split_bio
++	 * change to bio_split_to_limits */
++	patch(1, "bio_split_to_limits", false, true,
++	      YES, "present");
++#elif defined(COMPAT_HAVE_BLK_QUEUE_SPLIT_BIO)
++	/* "modern" version (>=5.9 && < v6.0-rc1) with only 1 argument. nothing to do */
+ #elif defined(COMPAT_HAVE_BLK_QUEUE_SPLIT_Q_BIO)
+ 	/* older version with 2 arguments */
+ 	patch(1, "blk_queue_split", false, true,
+diff -Nupr a/drbd/drbd-kernel-compat/tests/have_bio_split_to_limits.c b/drbd/drbd-kernel-compat/tests/have_bio_split_to_limits.c
+--- a/drbd/drbd-kernel-compat/tests/have_bio_split_to_limits.c	1970-01-01 08:00:00.000000000 +0800
++++ b/drbd/drbd-kernel-compat/tests/have_bio_split_to_limits.c	2023-01-05 10:08:37.081595899 +0800
+@@ -0,0 +1,9 @@
++/* { "version": "v5.9", "commit": "f695ca3886ce72b027af7aa6040cd420cae2088c", "comment": "In 5.9, blk_queue_split lost its first parameter, since the bio can be derived from the queue", "author": "Christoph Hellwig <hch@lst.de>", "date": "Wed Jul 1 10:59:39 2020 +0200" } */
++
++
++#include <linux/blkdev.h>
++
++void dummy(struct bio *bio)
++{
++	bio_split_to_limits(bio);
++}

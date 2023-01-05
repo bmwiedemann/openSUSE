@@ -1,0 +1,116 @@
+by heming.zhao@suse.com on 20220105
+
+This is SUSE special patch, and this patch cocci codes were partly
+copied from upstream kernel commit 81895a65ec63ee1daec3255dc1a06675d2fbe915
+("treewide: use prandom_u32_max() when possible, part 1").
+
+Because I don't know cocci syntax, so in drbd_state.c this patch
+directly modifies prandom_u32() to prandom_u32_max(U32_MAX). All
+other cases use cocci to modify.
+
+---
+
+diff -Nupr a/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci b/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci
+--- a/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci	2023-01-04 23:15:30.435899748 +0800
++++ b/drbd/drbd-kernel-compat/cocci/prandom_u32__no_present.cocci	2023-01-05 08:58:23.177198823 +0800
+@@ -1,3 +1,76 @@
+-@@ @@
+-- prandom_u32()
+-+ random32()
++@basic@
++expression E;
++type T;
++identifier get_random_u32 =~ "get_random_int|prandom_u32|get_random_u32";
++typedef u64;
++@@
++(
++- ((T)get_random_u32() % (E))
+++ prandom_u32_max(E)
++|
++- ((T)get_random_u32() & ((E) - 1))
+++ prandom_u32_max(E * XXX_MAKE_SURE_E_IS_POW2)
++|
++- ((u64)(E) * get_random_u32() >> 32)
+++ prandom_u32_max(E)
++|
++- ((T)get_random_u32() & ~PAGE_MASK)
+++ prandom_u32_max(PAGE_SIZE)
++)
++
++@multi_line@
++identifier get_random_u32 =~ "get_random_int|prandom_u32|get_random_u32";
++identifier RAND;
++expression E;
++@@
++
++-       RAND = get_random_u32();
++        ... when != RAND
++-       RAND %= (E);
+++       RAND = prandom_u32_max(E);
++
++// Find a potential literal
++@literal_mask@
++expression LITERAL;
++type T;
++identifier get_random_u32 =~ "get_random_int|prandom_u32|get_random_u32";
++position p;
++@@
++
++        ((T)get_random_u32()@p & (LITERAL))
++
++// Add one to the literal.
++@script:python add_one@
++literal << literal_mask.LITERAL;
++RESULT;
++@@
++
++value = None
++if literal.startswith('0x'):
++        value = int(literal, 16)
++elif literal[0] in '123456789':
++        value = int(literal, 10)
++if value is None:
++        print("I don't know how to handle %s" % (literal))
++        cocci.include_match(False)
++elif value == 2**32 - 1 or value == 2**31 - 1 or value == 2**24 - 1 or value == 2**16 - 1 or value == 2**8 - 1:
++        print("Skipping 0x%x for cleanup elsewhere" % (value))
++        cocci.include_match(False)
++elif value & (value + 1) != 0:
++        print("Skipping 0x%x because it's not a power of two minus one" % (value))
++        cocci.include_match(False)
++elif literal.startswith('0x'):
++        coccinelle.RESULT = cocci.make_expr("0x%x" % (value + 1))
++else:
++        coccinelle.RESULT = cocci.make_expr("%d" % (value + 1))
++
++// Replace the literal mask with the calculated result.
++@plus_one@
++expression literal_mask.LITERAL;
++position literal_mask.p;
++expression add_one.RESULT;
++identifier FUNC;
++@@
++
++-       (FUNC()@p & (LITERAL))
+++       prandom_u32_max(RESULT)
+diff -Nupr a/drbd/drbd_state.c b/drbd/drbd_state.c
+--- a/drbd/drbd_state.c	2023-01-05 09:00:01.252434773 +0800
++++ b/drbd/drbd_state.c	2023-01-05 09:02:47.519078927 +0800
+@@ -4488,7 +4488,7 @@ change_cluster_wide_state(bool (*change)
+ 	}
+ 
+ 	do
+-		reply->tid = prandom_u32();
++		reply->tid = prandom_u32_max(U32_MAX);
+ 	while (!reply->tid);
+ 
+ 	request.tid = cpu_to_be32(reply->tid);
+@@ -4716,7 +4716,7 @@ retry:
+ 	*reply = (struct twopc_reply) { 0 };
+ 
+ 	do
+-		reply->tid = prandom_u32();
++		reply->tid = prandom_u32_max(U32_MAX);
+ 	while (!reply->tid);
+ 
+ 	request.tid = cpu_to_be32(reply->tid);

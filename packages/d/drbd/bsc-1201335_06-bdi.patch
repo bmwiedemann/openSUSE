@@ -1,4 +1,4 @@
-/* this patch is related with following 3 upstream kernel commits */
+/* this patch is related with following 4 upstream kernel commits */
 
 commit 8fd6533ef3f7729e4aa29ead83844c042688615a
 Author: Haowen Bai <baihaowen@meizu.com>
@@ -70,6 +70,22 @@ Date:   Mon Aug 9 16:17:43 2021 +0200
     Signed-off-by: Christoph Hellwig <hch@lst.de>
     Reviewed-by: Johannes Thumshirn <johannes.thumshirn@wdc.com>
     Link: https://lore.kernel.org/r/20210809141744.1203023-5-hch@lst.de
+    Signed-off-by: Jens Axboe <axboe@kernel.dk>
+
+---
+commit b807a2c5e0e2e81c96160682977c6f497cfcee96
+Author: Christoph Hellwig <hch@lst.de>
+Date:   Thu Sep 24 08:51:29 2020 +0200
+
+    drbd: remove dead code in device_to_statistics
+
+    Ever since the switch to blk-mq, a lower device not used for VM
+    writeback will not be marked congested, so the check will never
+    trigger.
+
+    Signed-off-by: Christoph Hellwig <hch@lst.de>
+    Reviewed-by: Jan Kara <jack@suse.cz>
+    Reviewed-by: Johannes Thumshirn <johannes.thumshirn@wdc.com>
     Signed-off-by: Jens Axboe <axboe@kernel.dk>
 
 ---

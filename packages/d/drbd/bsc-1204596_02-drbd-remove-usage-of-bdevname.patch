@@ -1,0 +1,38 @@
+From d9a0a8d2c02f7a8da542230bebf0045f24f0fc74 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Thu, 13 Oct 2022 15:00:46 +0200
+Subject: [PATCH] drbd: remove usage of bdevname
+
+See upstream commit 1b70ccecaed4 (drbd: stop using bdevname in
+drbd_report_io_error)
+---
+ drbd/drbd_req.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drbd/drbd_req.c b/drbd/drbd_req.c
+index a6b9723fde42..1ee50f1c1720 100644
+--- a/drbd/drbd_req.c
++++ b/drbd/drbd_req.c
+@@ -868,16 +868,14 @@ static void mod_rq_state(struct drbd_request *req, struct bio_and_error *m,
+ 
+ static void drbd_report_io_error(struct drbd_device *device, struct drbd_request *req)
+ {
+-        char b[BDEVNAME_SIZE];
+-
+ 	if (!drbd_ratelimit())
+ 		return;
+ 
+-	drbd_warn(device, "local %s IO error sector %llu+%u on %s\n",
++	drbd_warn(device, "local %s IO error sector %llu+%u on %pg\n",
+ 		  (req->local_rq_state & RQ_WRITE) ? "WRITE" : "READ",
+ 		  (unsigned long long)req->i.sector,
+ 		  req->i.size >> 9,
+-		  bdevname(device->ldev->backing_bdev, b));
++		  device->ldev->backing_bdev);
+ }
+ 
+ /* Helper for HANDED_OVER_TO_NETWORK.
+-- 
+2.26.2
+

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  5 11:13:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd: fix build error against kernel v6.1.1 (bsc#1206791)
+  * update bsc-1201335_06-bdi.patch commit log (no code change)
+    + bsc-1201335_06-bdi.patch
+  * update bsc-1202600_02-dax-introduce-DAX_RECOVERY_WRITE-dax-access-mode.patch (no code change)
+    + bsc-1202600_02-dax-introduce-DAX_RECOVERY_WRITE-dax-access-mode.patch
+  * using upstream patch to replace exist patch
+    - bsc-1204596_02-drbd-stop-using-bdevname-in-drbd_report_io_error.patch
+    + bsc-1204596_02-drbd-remove-usage-of-bdevname.patch
+  * add new patches
+    + bsc-1206791-01-drbd-add-comments-explaining-removal-of-bdi-congesti.patch
+    + bsc-1206791-02-drbd-fix-static-analysis-warnings.patch
+    + bsc-1206791-03-drbd-fix-warning-about-initializing-multiple-struct-.patch
+    + bsc-1206791-04-blk_queue_split__no_present.patch
+    + bsc-1206791-05-prandom_u32_max.patch
+    + bsc-1206791-06-write_zeroes__no_capable.patch
+    + bsc-1206791-07-drbd-fix-use-after-free-bugs-in-get_initial_state.patch
+    + bsc-1206791-08-lib-lru_cache-Fixed-array-overflow-caused-by-incorre.patch
+    + bsc-1206791-09-pmem-use-fs_dax_get_by_bdev-instead-of-dax_get_by_ho.patch
+
+-------------------------------------------------------------------
 Mon Dec  5 12:47:43 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - BuildRequire %kernel_module_package_buildreqs (boo#1205149)

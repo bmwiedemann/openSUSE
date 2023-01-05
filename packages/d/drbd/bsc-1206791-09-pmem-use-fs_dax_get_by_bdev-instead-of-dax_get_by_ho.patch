@@ -1,0 +1,35 @@
+From 998a1faccbbb7e7b6d1042e7fe841734671ee365 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Wed, 6 Apr 2022 13:39:44 +0200
+Subject: [PATCH] pmem: use fs_dax_get_by_bdev instead of dax_get_by_host
+
+The {fs,}dax_get_by_host helpers went away.
+
+---
+by heming.zhao on 20230105
+
+This patch partly refer code from drbd-9.1 branch commit
+a68200c121de9e17a73a53962697fa32239e99f6
+
+---
+
+--- drbd-9.0.30~1+git.8e9c0812/drbd/drbd_dax_pmem.c	2023-01-05 20:50:39.022187673 +0800
++++ b/drbd/drbd_dax_pmem.c	2023-01-05 20:40:10.878947325 +0800
+@@ -56,14 +56,11 @@ static int map_superblock_for_dax(struct
+  */
+ int drbd_dax_open(struct drbd_backing_dev *bdev)
+ {
+-	const char *disk_name = bdev->md_bdev->bd_disk->disk_name;
+ 	struct dax_device *dax_dev;
+ 	int err;
++	u64 part_off;
+ 
+-	if (!blk_queue_dax(bdev->md_bdev->bd_disk->queue))
+-		return -ENODEV;
+-
+-	dax_dev = dax_get_by_host(disk_name);
++	dax_dev = fs_dax_get_by_bdev(bdev->md_bdev, &part_off, NULL, NULL);
+ 	if (!dax_dev)
+ 		return -ENODEV;
+ 

@@ -1,0 +1,36 @@
+From c2a620949ed609d6e256d1ce4d671a6da6bfeac0 Mon Sep 17 00:00:00 2001
+From: John Sanpe <sanpeqf@gmail.com>
+Date: Sat, 23 Jul 2022 09:59:31 +0200
+Subject: [PATCH] lib/lru_cache: Fixed array overflow caused by incorrect
+ boundary handling.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This problem occurs when malloc element failed on the first time.
+At this time, the counter i is 0. When it's released, we subtract 1
+in advance without checking, which will cause i to become UINT_MAX,
+resulting in array overflow.
+
+Signed-off-by: John Sanpe <sanpeqf@gmail.com>
+Reviewed-by: Christoph Böhmwalder <christoph.boehmwalder@linbit.com>
+---
+ drbd/lru_cache.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drbd/lru_cache.c b/drbd/lru_cache.c
+index 7e604cdc87db..fc640490607a 100644
+--- a/drbd/lru_cache.c
++++ b/drbd/lru_cache.c
+@@ -127,7 +127,7 @@ struct lru_cache *lc_create(const char *name, struct kmem_cache *cache,
+ 		return lc;
+ 
+ 	/* else: could not allocate all elements, give up */
+-	for (i--; i; i--) {
++	while (i--) {
+ 		void *p = element[i];
+ 		kmem_cache_free(cache, (unsigned char *)p - e_off);
+ 	}
+-- 
+2.26.2
+

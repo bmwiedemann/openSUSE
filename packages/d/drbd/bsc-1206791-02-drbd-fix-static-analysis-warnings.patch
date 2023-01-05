@@ -1,0 +1,88 @@
+From f465ef1a70c7b559fcf3924e450bc5e836e448de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Mon, 3 Oct 2022 15:56:44 +0200
+Subject: [PATCH] drbd: fix static analysis warnings
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC now does some pretty impressive static analysis, and it spits out
+some warnings when compiling DRBD. Newer kernels "unfortunately" set
+-Werror, which forces us to stop sweeping these under the rug.
+
+This commits fixes two distinct classes of warning.
+
+First, if a netlink field is declared with DRBD_GENLA_F_MANDATORY, it
+can never be NULL. The compiler catches this and complains:
+
+drbd_nl.c:3490:53: warning: the comparison will always evaluate
+		   as ‘true’ for the address of ‘integrity_alg’
+		   will never be NULL [-Waddress]
+ 3490 | if (!new_net_conf->integrity_alg != !old_net_conf->integrity_alg)
+      |     ^
+
+And similarly for net_conf->name. The fix is simple: just remove the
+checks.
+
+The other warning that is fixed is:
+
+drbd_main.c:421:55: warning: unused variable ‘ddm’ [-Wunused-variable]
+  421 | DEFINE_DYNAMIC_DEBUG_METADATA(ddm, "Bad barrier ack dump");
+      |                               ^~~
+
+Which happens when dynamic debug is not enabled, erasing the
+DYNAMIC_DEBUG_BRANCH(ddm) below.
+This is easily fixed by "accessing" the declared variable by doing a
+dummy cast to void.
+
+Finally, the compiler complains that the DYNAMIC_DEBUG macros are
+redefined in drbd_polymorph_printk.h, so #undef them before #defining
+them.
+---
+ drbd/drbd_nl.c               | 5 +----
+ drbd/drbd_polymorph_printk.h | 5 ++++-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index 6a2afd184ae6..de064215b638 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -3553,9 +3553,6 @@ _check_net_options(struct drbd_connection *connection, struct net_conf *old_net_
+ 		if (new_net_conf->two_primaries != old_net_conf->two_primaries)
+ 			return ERR_NEED_APV_100;
+ 
+-		if (!new_net_conf->integrity_alg != !old_net_conf->integrity_alg)
+-			return ERR_NEED_APV_100;
+-
+ 		if (strcmp(new_net_conf->integrity_alg, old_net_conf->integrity_alg))
+ 			return ERR_NEED_APV_100;
+ 	}
+@@ -5398,7 +5395,7 @@ static int nla_put_drbd_cfg_context(struct sk_buff *skb,
+ 	if (connection) {
+ 		nla_put_u32(skb, T_ctx_peer_node_id, connection->peer_node_id);
+ 		rcu_read_lock();
+-		if (connection->transport.net_conf && connection->transport.net_conf->name)
++		if (connection->transport.net_conf)
+ 			nla_put_string(skb, T_ctx_conn_name, connection->transport.net_conf->name);
+ 		rcu_read_unlock();
+ 	}
+diff --git a/drbd/drbd_polymorph_printk.h b/drbd/drbd_polymorph_printk.h
+index 1ce6cc2e6f74..4e7f2f17014e 100644
+--- a/drbd/drbd_polymorph_printk.h
++++ b/drbd/drbd_polymorph_printk.h
+@@ -2,7 +2,10 @@
+ #define DRBD_POLYMORPH_PRINTK_H
+ 
+ #if !defined(CONFIG_DYNAMIC_DEBUG)
+-#define DEFINE_DYNAMIC_DEBUG_METADATA(D, F) const char *D = F
++#undef DEFINE_DYNAMIC_DEBUG_METADATA
++#undef __dynamic_pr_debug
++#undef DYNAMIC_DEBUG_BRANCH
++#define DEFINE_DYNAMIC_DEBUG_METADATA(D, F) const char *D = F; ((void)D)
+ #define __dynamic_pr_debug(D, F, args...) do { (void)(D); if (0) printk(F, ## args); } while(0)
+ #define DYNAMIC_DEBUG_BRANCH(D) false
+ #endif
+-- 
+2.26.2
+
