@@ -3196,7 +3196,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -7243,6 +7242,7 @@ unsorted:
   - i3lock 
   - i3lock-xlock-compat 
   - i3status 
+  - i3status-rust: [x86_64] 
   - iasimage 
   - ibacm 
   - ibm-data-db2 
@@ -20995,6 +20995,7 @@ unsorted:
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-libjack-0_3-devel 
+  - pipewire-module-x11-0_3 
   - pipewire-modules-0_3-32bit: [x86_64] 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pithos 
@@ -22225,6 +22226,7 @@ unsorted:
   - python310-ConfigUpdater 
   - python310-Cycler 
   - python310-Cython 
+  - python310-Cython3 
   - python310-DataProperty 
   - python310-DataShape 
   - python310-DateTime 
@@ -25515,6 +25517,7 @@ unsorted:
   - python38-ConfigUpdater 
   - python38-Cycler 
   - python38-Cython 
+  - python38-Cython3 
   - python38-DataProperty 
   - python38-DataShape 
   - python38-DateTime 
@@ -28912,6 +28915,7 @@ unsorted:
   - python39-ConfigUpdater 
   - python39-Cycler 
   - python39-Cython 
+  - python39-Cython3 
   - python39-DataProperty 
   - python39-DataShape 
   - python39-DateTime 
