@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="tar_scm">
     <param name="filename">opam</param>
-    <param name="revision">c3a6a0926250c95b2dddf9fca2d322d484b20d44</param>
+    <param name="revision">3dd624a69b1757279c0d04a3866d47facbb56771</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/opam.git</param>

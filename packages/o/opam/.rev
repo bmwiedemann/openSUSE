@@ -106,4 +106,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>998407</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b8c9a6087de75b2f76611ee30b206a38</srcmd5>
+    <version>2.1.4</version>
+    <time>1672927261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.4
+  See included CHANGES for details
+- Remove obsolete opam.patch</comment>
+    <requestid>1056085</requestid>
+  </revision>
 </revisionlist>

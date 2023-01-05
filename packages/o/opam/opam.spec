@@ -1,7 +1,7 @@
 #
 # spec file for package opam
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           opam
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          System/Packages
 URL:            https://opam.ocaml.org/
 Source:         %name-%version.tar.xz
-Patch0:         opam.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
