@@ -6669,4 +6669,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Trying to resize a hashtab may cause a problem.</comment>
     <requestid>1045717</requestid>
   </revision>
+  <revision rev="333" vrev="2">
+    <srcmd5>960618795e8a40c1b32b9b68bdb7dba2</srcmd5>
+    <version>9.0.1107</version>
+    <time>1672927212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055871</requestid>
+  </revision>
 </revisionlist>

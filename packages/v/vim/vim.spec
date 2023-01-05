@@ -374,12 +374,12 @@ done
 
 # compat symlinks
 mkdir %{buildroot}/bin
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/vi
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/vim
 %endif
 ln -s -f vim              %{buildroot}%{_bindir}/edit
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -s -f %{_bindir}/vim   %{buildroot}/bin/ex
 %endif
 
@@ -573,7 +573,7 @@ fi
 %{_bindir}/vim-nox11
 %{_bindir}/vim
 # symlinks
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/vi
 /bin/vim
 /bin/ex
