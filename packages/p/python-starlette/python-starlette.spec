@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
+
 %define skip_python2 1
 Name:           python-starlette%{psuffix}
 Version:        0.23.1
@@ -33,32 +33,32 @@ Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.4.0
-Requires:       python-typing_extensions >= 3.10.0
+Requires:       (python-typing_extensions >= 3.10.0 if python-base < 3.10)
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module aiofiles}
-BuildRequires:  %{python_module aiosqlite}
-BuildRequires:  %{python_module databases}
+BuildRequires:  %{python_module anyio >= 3.4.0}
+# typing_extensions, see below
+# SECTION [full]
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module httpx >= 0.22}
+BuildRequires:  %{python_module itsdangerous}
+BuildRequires:  %{python_module python-multipart}
+# /SECTION
+# SECTION test
 BuildRequires:  %{python_module exceptiongroup}
-BuildRequires:  %{python_module graphene}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module trio}
+# testing requires it for all flavors
+BuildRequires:  %{python_module typing_extensions}
+# /SECITON
 %endif
 %python_subpackages
 

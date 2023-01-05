@@ -190,4 +190,15 @@
     <comment></comment>
     <requestid>1042664</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>32ebe64618cfcc9f9f321f0c50e0c9e3</srcmd5>
+    <version>0.23.1</version>
+    <time>1672930505</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1056060 from bnavigator
+
+- Clean up test dependencies: fastapi pulls this into Staging
+    Ring1, we don't want to pull in more than we want.</comment>
+    <requestid>1056202</requestid>
+  </revision>
 </revisionlist>
