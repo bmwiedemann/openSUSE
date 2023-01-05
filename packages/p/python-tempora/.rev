@@ -133,4 +133,13 @@
     <comment></comment>
     <requestid>1040391</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>54584057637e55f73ce22b56bc0efe47</srcmd5>
+    <version>5.2.0</version>
+    <time>1672927226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.0:
+  * Packaging refresh.</comment>
+    <requestid>1055980</requestid>
+  </revision>
 </revisionlist>

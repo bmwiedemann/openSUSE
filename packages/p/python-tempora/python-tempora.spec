@@ -1,7 +1,7 @@
 #
 # spec file for package python-tempora
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-tempora
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
