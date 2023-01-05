@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  5 12:42:50 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Fix service command: "run" is required in v2ray 5.x
+
+-------------------------------------------------------------------
 Thu Dec 29 14:23:37 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - Update version to 5.2.0
