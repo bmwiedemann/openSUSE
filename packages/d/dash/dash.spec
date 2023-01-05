@@ -1,7 +1,7 @@
 #
 # spec file for package dash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -57,7 +57,7 @@ Use dash as /bin/sh implementation.
 %install
 %make_install
 # compatibility symlink to /bin
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/dash %{buildroot}/bin/dash
 %endif
@@ -67,7 +67,7 @@ ln -sf %{_bindir}/dash %{buildroot}%{_bindir}/sh
 %license COPYING
 %doc ChangeLog
 %{_bindir}/dash
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/dash
 %endif
 %{_mandir}/man1/dash.1%{?ext_man}

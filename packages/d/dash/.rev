@@ -287,4 +287,12 @@
 - drop check-nflag-in-evaltree.patch (upstream)</comment>
     <requestid>1044369</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>832639674bd07224d836c135cfc87e26</srcmd5>
+    <version>0.5.12</version>
+    <time>1672927197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055668</requestid>
+  </revision>
 </revisionlist>
