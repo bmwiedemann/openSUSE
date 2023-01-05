@@ -39,4 +39,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>986059</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>57f2dc6b5a94a892e887dafd6cdfb986</srcmd5>
+    <version>20220905</version>
+    <time>1672927257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220905
+  use _multibuild for testsuite</comment>
+    <requestid>1056078</requestid>
+  </revision>
 </revisionlist>
