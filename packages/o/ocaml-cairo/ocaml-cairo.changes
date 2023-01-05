@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
+
+- Update to version 0.6.4
+  See included CHANGES.md for details
+- Move cairo2-pango+cairo2-gtk to separate pkg to remove dependency to lablgtk2
+
+-------------------------------------------------------------------
 Mon Jun 13 13:13:13 UTC 2022 - ohering@suse.de
 
 - Update to version 0.6.3

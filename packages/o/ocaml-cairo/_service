@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-cairo</param>
-    <param name="revision">cd80c793e3c6406fdc50376201fc1b0a3b4cc5c5</param>
+    <param name="revision">aa096da2aafe6a59ea48ed7b4907e451757b8b91</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/Chris00/ocaml-cairo.git</param>
