@@ -63,4 +63,29 @@
     <comment></comment>
     <requestid>907916</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>896f9765c4c582d2368cb796d43bf997</srcmd5>
+    <version>4.0.0</version>
+    <time>1672927282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Updates for Flask-SQLAlchemy 3.x compatiblity
+  * Enable type comparison and batch mode by default
+  * Option to rename &quot;db&quot; command group to a custom name
+  * Better handling of MetaData instances in templates
+  * Set options correctly when revision --autogenerate is used #463
+  * Documentation section on configuring Alembic
+  * Upgrade build to pypy-3.9
+  * Add Python 3.10 to build
+  * Add Python 3.11 to build
+  * Specify license in project metadata #489
+  * Added list-templates command and support for custom templates
+  * Alembic templates for aioflask
+  * Improved project structure
+- Add patch add-custom-template.patch, include custom template so the
+  testsuite passes.
+- Remove Python 2 gubbins.
+- Switch to %pyunittest macro for running the testsuite.</comment>
+    <requestid>1056124</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan  5 06:44:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * Updates for Flask-SQLAlchemy 3.x compatiblity
+  * Enable type comparison and batch mode by default
+  * Option to rename "db" command group to a custom name
+  * Better handling of MetaData instances in templates
+  * Set options correctly when revision --autogenerate is used #463
+  * Documentation section on configuring Alembic
+  * Upgrade build to pypy-3.9
+  * Add Python 3.10 to build
+  * Add Python 3.11 to build
+  * Specify license in project metadata #489
+  * Added list-templates command and support for custom templates
+  * Alembic templates for aioflask
+  * Improved project structure
+- Add patch add-custom-template.patch, include custom template so the
+  testsuite passes.
+- Remove Python 2 gubbins.
+- Switch to %pyunittest macro for running the testsuite.
+
+-------------------------------------------------------------------
 Wed Jul 21 07:13:43 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.0.1:
