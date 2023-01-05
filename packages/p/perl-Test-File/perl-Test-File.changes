@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan  3 03:12:26 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.993
+   see /usr/share/doc/packages/perl-Test-File/Changes
+
+  1.993 2022-12-31T20:33:55Z
+  	* Try harder to check for symlinks on Windows by stealing some code
+  	from Win32:: (Jean-Damien Durand) GitHub #36
+
+  1.992_01 2022-11-10T21:59:59Z
+  	* Try harder to test Windows symlinks, #36 from Jean-Damien Durand
+
+-------------------------------------------------------------------
 Wed Feb 16 03:08:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.992

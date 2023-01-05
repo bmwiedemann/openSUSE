@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-File
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define cpan_name Test-File
 Name:           perl-Test-File
-Version:        1.992
+Version:        1.993
 Release:        0
 License:        Artistic-2.0
 Summary:        Test file attributes
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
@@ -56,7 +55,7 @@ for the test. If not supplied, a reasonable default will be generated.
 %autosetup  -n %{cpan_name}-%{version}
 
 %build
-perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %make_build
 
 %check
