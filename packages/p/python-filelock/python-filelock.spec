@@ -1,7 +1,7 @@
 #
 # spec file for package python-filelock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,16 @@
 
 
 Name:           python-filelock
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
 URL:            https://github.com/tox-dev/py-filelock
 Source:         https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

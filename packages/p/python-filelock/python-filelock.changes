@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 12:59:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * move to hatchling build backend
+
+-------------------------------------------------------------------
 Wed Dec 14 08:34:14 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
