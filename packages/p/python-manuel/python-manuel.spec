@@ -1,7 +1,7 @@
 #
 # spec file for package python-manuel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013-2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,20 +17,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-manuel
 Version:        1.12.4
 Release:        0
 Summary:        Python module to build tested documentation
 License:        Apache-2.0
 URL:            https://pypi.org/project/manuel/
+# SourceRepository: https://github.com/benji-york/manuel
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
 # add fixed sphinx config <hpj@urpla.net>
 Source1:        conf.py
 # https://github.com/benji-york/manuel/issues/33
 Patch0:         python-manuel-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -59,17 +61,20 @@ This package contains documentation files for %{name}.
 cp %{SOURCE1} .
 
 %build
-%python_build
-%{python_expand # build docs only one time with primary python3 flavor
-if [ $(which $python) -ef $(which python3) ]; then
-  $python setup.py build_sphinx
-  rm build/sphinx/html/.buildinfo
-fi
-}
+%pyproject_wheel
+# build docs only one time
+python3 setup.py build_sphinx
+mv build/sphinx/html docs
+rm docs/.buildinfo
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+%{python_expand #
+%fdupes %{buildroot}%{$python_sitelib}
+mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
+cp -r docs/* %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
+%fdupes %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
+}
 
 %check
 %pytest src/manuel/tests.py
@@ -78,9 +83,9 @@ fi
 %license LICENSE.rst
 %doc CHANGES.rst COPYRIGHT.rst PKG-INFO README.rst
 %{python_sitelib}/manuel
-%{python_sitelib}/manuel-%{version}*-info
+%{python_sitelib}/manuel-%{version}.dist-info
 
 %files %{python_files doc}
-%doc build/sphinx/html
+%doc %{_docdir}/%{python_prefix}-manuel-doc
 
 %changelog

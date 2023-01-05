@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  3 18:56:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix doc build: primary python not in buildset for backports
+  15.4_py39
+- Move to PEP517
+
+-------------------------------------------------------------------
 Mon Oct 17 09:00:30 UTC 2022 - pgajdos@suse.com
 
 - added patches

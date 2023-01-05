@@ -96,4 +96,14 @@
     <comment></comment>
     <requestid>1012058</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>693b683cb2464caeb1cc10760c4af72d</srcmd5>
+    <version>1.12.4</version>
+    <time>1672927187</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix doc build: primary python not in buildset for backports
+  15.4_py39
+- Move to PEP517 (forwarded request 1046638 from bnavigator)</comment>
+    <requestid>1046639</requestid>
+  </revision>
 </revisionlist>
