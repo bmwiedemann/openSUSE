@@ -71,4 +71,22 @@
     <comment></comment>
     <requestid>1038833</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>59532eea62c51a87033e24852d962900</srcmd5>
+    <version>0.88.0</version>
+    <time>1672935102</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1055981 from bnavigator
+
+- Remove flit from build requirements: The real used backend
+    is hatchling
+  - Clean up specfile
+    * remove duplicate copyright header
+    * remove catchall in files section
+  - Drop python-fastapi-disable-broken-tests.patch
+  - Prune the test suite when run in lettered staging projects:
+    python-mocket pulls this into Ring1. Let's make it as painless as
+    possible.</comment>
+    <requestid>1056201</requestid>
+  </revision>
 </revisionlist>

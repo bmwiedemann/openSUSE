@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  4 18:18:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove flit from build requirements: The real used backend
+  is hatchling
+- Clean up specfile
+  * remove duplicate copyright header
+  * remove catchall in files section
+- Drop python-fastapi-disable-broken-tests.patch
+- Prune the test suite when run in lettered staging projects:
+  python-mocket pulls this into Ring1. Let's make it as painless as
+  possible.
+
+-------------------------------------------------------------------
 Mon Nov 14 09:12:12 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Starlette newest version is already supported:
