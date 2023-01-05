@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec 22 12:52:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * NEW: Mangohud - Multigpu support with PCIDEV option
+  * NEW: Mangohud - Vertical and horizontal hud orientation (not in the
+    mangohud stable yet, you need use mangohud-git for it)
+  * NEW: Mangohud - NVME temperature option
+  * New: Goverlay - Transparency trackbar moved to main form
+  * New: Goverlay - Opengl Cube has a widemode to better fit the hud
+    horizontal orientation
+  * FIX: Goverlay - Interface fonts adjustments to improve interface
+    scalling
+  * Fix: Tabs reorder (Visual is the first one now)
+  * FIX: removed message ¨paint" spammed when running from terminal
+  * Change: Some cosmetic changes on the spinning cube
+  * Change: Removed framecount from the "Complete" quick layout
+  * Fix: Removed lsb_release dependency and reimplemented feature through
+    os-release file. by @GloriousEggroll
+  * Removed: Hack option to run steam with deckUI (no longer needed)
+
+-------------------------------------------------------------------
 Sun Mar 13 01:54:25 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 0.9.
