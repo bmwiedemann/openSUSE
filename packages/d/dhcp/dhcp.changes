@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:32:19 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Fri Dec  9 07:42:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /etc/sysconfig/network hierachy to server file list 

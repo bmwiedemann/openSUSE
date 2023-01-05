@@ -1,7 +1,7 @@
 #
 # spec file for package dhcp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define sbindir %{_sbindir}
 %else
 %define sbindir /sbin
@@ -305,7 +305,7 @@ install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/dev
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/%{_lib}
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/run
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/db
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # move the dhclient binary to /sbin
 mv -f %{buildroot}%{_sbindir}/dhclient %{buildroot}/sbin/
 %endif
