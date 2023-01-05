@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtfabric
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modname dtfabric
 %define skip_python2 1
 Name:           python-dtfabric
-Version:        20220219
+Version:        20221218
 Release:        0
 Summary:        Data type fabric (dtfabric)
 License:        Apache-2.0

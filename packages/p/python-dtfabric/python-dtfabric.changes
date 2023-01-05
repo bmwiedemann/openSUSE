@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:47:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221218:
+  * Auto-generated
+
+-------------------------------------------------------------------
 Wed Jun  8 16:41:04 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - rm explict BuildRequires python38 to allow this to build on older releases of openSUSE

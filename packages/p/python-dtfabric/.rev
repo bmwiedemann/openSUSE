@@ -44,4 +44,15 @@
     <comment></comment>
     <requestid>981362</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73fe1da47bb452d58696f99559f5b4a5</srcmd5>
+    <version>20221218</version>
+    <time>1672930503</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1055963 from dirkmueller
+
+- update to 20221218:
+    * Auto-generated</comment>
+    <requestid>1056191</requestid>
+  </revision>
 </revisionlist>
