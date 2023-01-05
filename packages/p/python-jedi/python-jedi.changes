@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan  3 19:08:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Move to PEP517
+- Pin parso like upstream does
+- Skip a test for embedded systems which unexplicably fails on
+  backports 15.4_py39
+
+-------------------------------------------------------------------
 Tue Dec  6 03:49:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.18.2 
