@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Dec 23 03:08:42 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.146
+   see /usr/share/doc/packages/perl-Perl-Critic/Changes
+
+  1.146 Wed Dec 21 21:05:20 CST 2022
+      [New features]
+      ProhibitBarewordDirHandles now checks for sysopen as well as open. Thanks,
+      Tadeusz Sośnierz. (GH #732)
+      Added a Dockerfile in the extras/ directory for those who want to run P::C
+      in a container. Thanks, Isaac Gittins. (GH #832)
+      Subroutines::ProhibitBuiltinHomonyms now can take an "allows" parameter to
+      specify subroutines that won't violate the policy. Thanks, UTAGAWA Kiki.
+      (GH #14, #932)
+      ProhibitStringyEval now allows package declarations in evals when
+      allow_includes = true. This is a common way packages are declared.
+      Thanks, Chris Novakovic. (GH #908)
+      [Bug Fixes]
+      Fixed some problems with how Perl::Critic determined scope. Thanks, Tom
+      Wyant. (GH #793)
+      Fixed improper violation for lexical subroutines in
+      Subroutines::ProhibitBuiltinHomonyms. Thanks, TOYAMA Nao. (GH #973, #955,
+      #546)
+      ValuesAndExpressions::RequireNumberSeparators no longer complains if your
+      version numbers do not have number separators in them. Thanks, Tom Wyant.
+      (GH #856, #904)
+      Fixed a false positive with split() in ProhibitUnusedCapture. Thanks, Tom
+      Wyant. (GH #888)
+      [Internals]
+      We no longer use or need IO::String. Thanks, Graham Knop. (GH #997)
+      Removed requirements and mentions of modules no longer used:
+      * Fatal
+      * IO::String
+      * IPC::Open2
+      * Pod::Parser
+      * Task::Weaken
+
+-------------------------------------------------------------------
 Mon Dec 12 03:10:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.144

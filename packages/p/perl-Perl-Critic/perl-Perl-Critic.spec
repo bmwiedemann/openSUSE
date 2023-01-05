@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-Critic
 Name:           perl-Perl-Critic
-Version:        1.144
+Version:        1.146
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Critique Perl source code for best-practices
@@ -28,67 +28,63 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(B::Keywords) >= 1.05
+BuildRequires:  perl(B::Keywords) >= 1.23
 BuildRequires:  perl(Config::Tiny) >= 2
 BuildRequires:  perl(Exception::Class) >= 1.23
 BuildRequires:  perl(Exporter) >= 5.63
 BuildRequires:  perl(File::Which)
-BuildRequires:  perl(IO::String)
 BuildRequires:  perl(List::SomeUtils) >= 0.55
 BuildRequires:  perl(Module::Build) >= 0.420400
 BuildRequires:  perl(Module::Pluggable) >= 3.1
-BuildRequires:  perl(PPI) >= 1.265
-BuildRequires:  perl(PPI::Document) >= 1.265
-BuildRequires:  perl(PPI::Document::File) >= 1.265
-BuildRequires:  perl(PPI::Node) >= 1.265
-BuildRequires:  perl(PPI::Token::Quote::Single) >= 1.265
-BuildRequires:  perl(PPI::Token::Whitespace) >= 1.265
+BuildRequires:  perl(PPI) >= 1.271
+BuildRequires:  perl(PPI::Document) >= 1.271
+BuildRequires:  perl(PPI::Document::File) >= 1.271
+BuildRequires:  perl(PPI::Node) >= 1.271
+BuildRequires:  perl(PPI::Token::Quote::Single) >= 1.271
+BuildRequires:  perl(PPI::Token::Whitespace) >= 1.271
 BuildRequires:  perl(PPIx::QuoteLike)
 BuildRequires:  perl(PPIx::Regexp) >= 0.027
 BuildRequires:  perl(PPIx::Regexp::Util) >= 0.068
 BuildRequires:  perl(PPIx::Utilities::Node) >= 1.001
 BuildRequires:  perl(PPIx::Utilities::Statement) >= 1.001
 BuildRequires:  perl(Perl::Tidy)
-BuildRequires:  perl(Pod::Parser)
 BuildRequires:  perl(Pod::PlainText)
 BuildRequires:  perl(Pod::Select)
 BuildRequires:  perl(Pod::Spell) >= 1
 BuildRequires:  perl(Readonly) >= 2
 BuildRequires:  perl(String::Format) >= 1.18
-BuildRequires:  perl(Task::Weaken)
 BuildRequires:  perl(Term::ANSIColor) >= 2.02
 BuildRequires:  perl(Test::Builder) >= 0.92
 BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.77
-Requires:       perl(B::Keywords) >= 1.05
+Requires:       perl(B::Keywords) >= 1.23
 Requires:       perl(Config::Tiny) >= 2
 Requires:       perl(Exception::Class) >= 1.23
 Requires:       perl(Exporter) >= 5.63
 Requires:       perl(File::Which)
-Requires:       perl(IO::String)
 Requires:       perl(List::SomeUtils) >= 0.55
 Requires:       perl(Module::Pluggable) >= 3.1
-Requires:       perl(PPI) >= 1.265
-Requires:       perl(PPI::Document) >= 1.265
-Requires:       perl(PPI::Document::File) >= 1.265
-Requires:       perl(PPI::Node) >= 1.265
-Requires:       perl(PPI::Token::Quote::Single) >= 1.265
-Requires:       perl(PPI::Token::Whitespace) >= 1.265
+Requires:       perl(PPI) >= 1.271
+Requires:       perl(PPI::Document) >= 1.271
+Requires:       perl(PPI::Document::File) >= 1.271
+Requires:       perl(PPI::Node) >= 1.271
+Requires:       perl(PPI::Token::Quote::Single) >= 1.271
+Requires:       perl(PPI::Token::Whitespace) >= 1.271
 Requires:       perl(PPIx::QuoteLike)
 Requires:       perl(PPIx::Regexp) >= 0.027
 Requires:       perl(PPIx::Regexp::Util) >= 0.068
 Requires:       perl(PPIx::Utilities::Node) >= 1.001
 Requires:       perl(PPIx::Utilities::Statement) >= 1.001
 Requires:       perl(Perl::Tidy)
-Requires:       perl(Pod::Parser)
 Requires:       perl(Pod::PlainText)
 Requires:       perl(Pod::Select)
 Requires:       perl(Pod::Spell) >= 1
 Requires:       perl(Readonly) >= 2
 Requires:       perl(String::Format) >= 1.18
-Requires:       perl(Task::Weaken)
 Requires:       perl(Term::ANSIColor) >= 2.02
 Requires:       perl(Test::Builder) >= 0.92
+Requires:       perl(parent)
 Requires:       perl(version) >= 0.77
 %{perl_requires}
 
