@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 20:07:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.0.5:
+  * Fix issue with python 3.10
+
+-------------------------------------------------------------------
 Sun Jan 23 16:21:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:
