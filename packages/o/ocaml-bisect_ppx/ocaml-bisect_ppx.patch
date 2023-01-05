@@ -1,0 +1,222 @@
+From 1901191edf2ebd6a9161e4bf828a0d24c2124f3f Mon Sep 17 00:00:00 2001
+From: Patrick Ferris <patrick@sirref.org>
+Date: Fri, 26 Aug 2022 16:57:27 +0100
+Subject: Update to ppxlib 0.27.0
+
+---
+ src/ppx/instrument.ml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/ppx/instrument.ml b/src/ppx/instrument.ml
+index 59c3c01..6d67cf2 100644
+--- a/src/ppx/instrument.ml
++++ b/src/ppx/instrument.ml
+@@ -490,7 +490,7 @@ struct
+         |> List.map (fun (location_trace, p'') ->
+           (location_trace, Pat.alias ~loc ~attrs p'' x))
+ 
+-      | Ppat_construct (c, Some p') ->
++      | Ppat_construct (c, Some (_, p')) ->
+         recur ~enclosing_loc p'
+         |> List.map (fun (location_trace, p'') ->
+           (location_trace, Pat.construct ~loc ~attrs c (Some p'')))
+@@ -708,7 +708,7 @@ struct
+       List.map (fun (_, p') -> bound_variables p') fields
+       |> List.flatten
+ 
+-    | Ppat_construct (_, Some p') | Ppat_variant (_, Some p')
++    | Ppat_construct (_, Some (_, p')) | Ppat_variant (_, Some p')
+     | Ppat_constraint (p', _) | Ppat_lazy p' | Ppat_exception p'
+     | Ppat_open (_, p') ->
+       bound_variables p'
+@@ -725,7 +725,7 @@ struct
+     | Ppat_type _ | Ppat_variant _ ->
+       true
+ 
+-    | Ppat_alias (p', _) | Ppat_construct (_, Some p')
++    | Ppat_alias (p', _) | Ppat_construct (_, Some (_, p'))
+     | Ppat_constraint (p', _) | Ppat_lazy p' | Ppat_exception p'
+     | Ppat_open (_, p') ->
+       has_polymorphic_variant p'
+From cc442a08e3a2e0e18deb48f3a696076ac0986728 Mon Sep 17 00:00:00 2001
+From: Antonio Nuno Monteiro <anmonteiro@gmail.com>
+Date: Thu, 13 Oct 2022 10:24:57 -0700
+Subject: ppxlib 0.28
+
+---
+ src/ppx/instrument.ml  | 50 +++++++++++++++++++++++-------------------
+ src/ppx/instrument.mli |  2 +-
+ 2 files changed, 29 insertions(+), 23 deletions(-)
+
+diff --git a/src/ppx/instrument.ml b/src/ppx/instrument.ml
+index 6d67cf2..23b0cf3 100644
+--- a/src/ppx/instrument.ml
++++ b/src/ppx/instrument.ml
+@@ -1039,24 +1039,24 @@ class instrumenter =
+   let instrument_cases = Generated_code.instrument_cases points in
+ 
+   object (self)
+-    inherit Ppxlib.Ast_traverse.map_with_expansion_context as super
++    inherit Ppxlib.Ast_traverse.map_with_expansion_context_and_errors as super
+ 
+     method! class_expr ctxt ce =
+       let loc = ce.pcl_loc in
+       let attrs = ce.pcl_attributes in
+-      let ce = super#class_expr ctxt ce in
++      let ce, locs = super#class_expr ctxt ce in
+ 
+       match ce.pcl_desc with
+       | Pcl_fun (l, e, p, ce) ->
+-        Cl.fun_ ~loc ~attrs l (Option.map instrument_expr e) p ce
++        Cl.fun_ ~loc ~attrs l (Option.map instrument_expr e) p ce, locs
+ 
+       | _ ->
+-        ce
++        ce, locs
+ 
+     method! class_field ctxt cf =
+       let loc = cf.pcf_loc in
+       let attrs = cf.pcf_attributes in
+-      let cf = super#class_field ctxt cf in
++      let cf, locs = super#class_field ctxt cf in
+ 
+       match cf.pcf_desc with
+       | Pcf_method (name, private_, cf) ->
+@@ -1065,13 +1065,13 @@ class instrumenter =
+           (match cf with
+           | Cfk_virtual _ -> cf
+           | Cfk_concrete (o, e) ->
+-            Cf.concrete o (instrument_expr e))
++            Cf.concrete o (instrument_expr e)), locs
+ 
+       | Pcf_initializer e ->
+-        Cf.initializer_ ~loc ~attrs (instrument_expr e)
++        Cf.initializer_ ~loc ~attrs (instrument_expr e), locs
+ 
+       | _ ->
+-        cf
++        cf, locs
+ 
+     method! expression ctxt e =
+       let is_trivial_function = Parsetree.(function
+@@ -1494,17 +1494,19 @@ class instrumenter =
+                 (f, traverse ~is_in_tail_position:false e)))
+ 
+           | Pexp_letmodule (m, e, e') ->
++            let mexpr', _locs = (self#module_expr ctxt e) in
+             Exp.letmodule ~loc ~attrs
+               m
+-              (self#module_expr ctxt e)
++              mexpr'
+               (traverse ~is_in_tail_position e')
+ 
+           | Pexp_letexception (c, e) ->
+             Exp.letexception ~loc ~attrs c (traverse ~is_in_tail_position e)
+ 
+           | Pexp_open (m, e) ->
++            let oexpr', _locs =  (self#open_declaration ctxt m) in
+             Exp.open_ ~loc ~attrs
+-              (self#open_declaration ctxt m)
++              oexpr'
+               (traverse ~is_in_tail_position e)
+ 
+           | Pexp_newtype (t, e) ->
+@@ -1513,10 +1515,12 @@ class instrumenter =
+           (* Expressions that don't need instrumentation, and where AST
+              traversal leaves the expression language. *)
+           | Pexp_object c ->
+-            Exp.object_ ~loc ~attrs (self#class_structure ctxt c)
++            let cstr, _locs = (self#class_structure ctxt c) in
++            Exp.object_ ~loc ~attrs cstr
+ 
+           | Pexp_pack m ->
+-            Exp.pack ~loc ~attrs (self#module_expr ctxt m)
++            let mexpr', _locs = (self#module_expr ctxt m) in
++            Exp.pack ~loc ~attrs mexpr'
+ 
+           (* Expressions that are not recursively traversed at all. *)
+           | Pexp_extension _ | Pexp_unreachable ->
+@@ -1536,7 +1540,7 @@ class instrumenter =
+ 
+       in
+ 
+-      traverse ~is_in_tail_position:false e
++      traverse ~is_in_tail_position:false e, []
+ 
+     (* Set to [true] upon encountering [[@@@coverage.off]], and back to
+        [false] again upon encountering [[@@@coverage.on]]. *)
+@@ -1548,7 +1552,7 @@ class instrumenter =
+       match si.pstr_desc with
+       | Pstr_value (rec_flag, bindings) ->
+         if structure_instrumentation_suppressed then
+-          si
++          si, []
+ 
+         else
+           let bindings =
+@@ -1580,16 +1584,18 @@ class instrumenter =
+               if do_not_instrument then
+                 binding
+               else
+-                {binding with pvb_expr = self#expression ctxt binding.pvb_expr}
++                let expr', _errs = self#expression ctxt binding.pvb_expr in
++                {binding with pvb_expr = expr'}
+             end
+           in
+-          Str.value ~loc rec_flag bindings
++          Str.value ~loc rec_flag bindings, []
+ 
+       | Pstr_eval (e, a) ->
+         if structure_instrumentation_suppressed then
+-          si
++          si, []
+         else
+-          Str.eval ~loc ~attrs:a (self#expression ctxt e)
++          let expr', errors = self#expression ctxt e in
++          Str.eval ~loc ~attrs:a expr', errors
+ 
+       | Pstr_attribute attribute ->
+         let kind = Coverage_attributes.recognize attribute in
+@@ -1612,17 +1618,17 @@ class instrumenter =
+           Location.raise_errorf
+             ~loc:attribute.attr_loc "coverage exclude_file is not allowed here."
+         end;
+-        si
++        si, []
+ 
+       | _ ->
+         super#structure_item ctxt si
+ 
+     (* Don't instrument payloads of extensions and attributes. *)
+     method! extension _ e =
+-      e
++      e, []
+ 
+     method! attribute _ a =
+-      a
++      a, []
+ 
+     method! structure ctxt ast =
+       let saved_structure_instrumentation_suppressed =
+@@ -1655,7 +1661,7 @@ class instrumenter =
+           ast
+ 
+         else begin
+-          let instrumented_ast = super#structure ctxt ast in
++          let instrumented_ast, _errs = super#structure ctxt ast in
+           let runtime_initialization =
+             Generated_code.runtime_initialization points path in
+           runtime_initialization @ instrumented_ast
+diff --git a/src/ppx/instrument.mli b/src/ppx/instrument.mli
+index 8333343..927cf11 100644
+--- a/src/ppx/instrument.mli
++++ b/src/ppx/instrument.mli
+@@ -5,7 +5,7 @@
+ 
+ 
+ class instrumenter : object
+-   inherit Ppxlib.Ast_traverse.map_with_expansion_context
++   inherit Ppxlib.Ast_traverse.map_with_expansion_context_and_errors
+ 
+    method transform_impl_file:
+       Ppxlib.Expansion_context.Base.t ->

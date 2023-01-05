@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
+
+- add ocaml-bisect_ppx.patch to build with ppxlib 0.28
+
+-------------------------------------------------------------------
 Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
 
 - Update to version 2.8.1

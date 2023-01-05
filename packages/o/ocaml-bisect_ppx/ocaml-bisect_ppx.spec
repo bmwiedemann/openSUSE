@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-bisect_ppx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,9 +37,10 @@ License:        GPL-2.0-only
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/bisect_ppx
 Source0:        %pkg-%version.tar.xz
+Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 %if 1
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(ppxlib)
