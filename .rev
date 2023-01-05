@@ -935,4 +935,12 @@
     <comment>- Release 1.12.0 covers bugfixes for bsc#1197119,bsc#1199477</comment>
     <requestid>1034266</requestid>
   </revision>
+  <revision rev="95" vrev="9">
+    <srcmd5>8dba52bd17260b7e875ecd8f9408306d</srcmd5>
+    <version>1.12.0</version>
+    <time>1672927203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055774</requestid>
+  </revision>
 </revisionlist>

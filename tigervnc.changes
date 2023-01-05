@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  4 09:32:50 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Mon Nov  7 14:58:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Release 1.12.0 covers bugfixes for bsc#1197119,bsc#1199477

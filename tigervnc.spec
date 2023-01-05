@@ -1,7 +1,7 @@
 #
 # spec file for package tigervnc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -331,6 +331,9 @@ install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.
 cp %{SOURCE7} .
 install -D -m 755 %{SOURCE8} %{buildroot}%{_bindir}/vncpasswd.arg
 install -D -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/vnc
+%if 0%{?suse_version} >= 1550
+mv %{buildroot}%{_sysconfdir}/pam.d/tigervnc %{buildroot}%{_pam_vendordir}
+%endif
 install -D -m 644 %{SOURCE11} %{buildroot}%{_datadir}/vnc/classes
 %if 0%{?suse_version} >= 1315
 ln -s -f %{_sysconfdir}/alternatives/vncviewer %{buildroot}%{_bindir}/vncviewer
@@ -376,6 +379,18 @@ fi
 
 %pre -n xorg-x11-Xvnc -f xorg-x11-Xvnc.pre
 %service_add_pre xvnc.socket
+%if 0%{?suse_version} >= 1550
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/vnc pam.d/tigervnc ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans -n xorg-x11-Xvnc
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/vnc pam.d/tigervnc ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n xorg-x11-Xvnc
 %service_add_post xvnc.socket
@@ -480,7 +495,6 @@ fi
 %{_sbindir}/rcxvnc
 
 %dir %{_sysconfdir}/tigervnc
-%config(noreplace) %{_sysconfdir}/pam.d/tigervnc
 %config(noreplace) %{_sysconfdir}/tigervnc/vncserver*
 
 %exclude %{_sharedstatedir}/xkb/compiled/README.compiled
@@ -497,8 +511,10 @@ fi
 
 %if 0%{?suse_version} < 1550
 %config %{_sysconfdir}/pam.d/vnc
+%config(noreplace) %{_sysconfdir}/pam.d/tigervnc
 %else
 %{_pam_vendordir}/vnc
+%{_pam_vendordir}/tigervnc
 %endif
 
 %dir %attr(0755,%{vncuser},%{vncuser}) %{_sysconfdir}/vnc
