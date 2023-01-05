@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jan  2 16:51:25 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.3.3
+  * General:
+    * Add: Cursor scaling implemented
+    * Change: Prevent loading old ~pre-4.x series saves to curb
+      strange and invalid bug reports
+    * Fix: Various potential crashes
+    * Fix: [Audio] Improve stream buffer exhaustion handling to
+      hopefully avoid occasional music resets
+    * Fix: Don't override orders with guard behavior when done
+      repairing unless explicitly ordered to repair
+    * Fix: Load structure and droid limits before loading droids
+      and structures
+    * Remove: "Go Back buttons in options menu" due to causing
+      keymapping instability
+  * Graphics:
+    * Change: Make light/medium half-tracks a bit more distinct
+    * Change: [SDL backend] Windows: Workaround for Nvidia
+      threaded optimization
+  * Campaign:
+    * Change: Rebalance FastPlay to better fit the new campaign
+      balance
+    * Fix: Default initialize the NP artifact group waypoint on
+      Alpha 11 so grabbing the artifact first won't interfere
+      with their movement
+    * Fix: Fix config file not storing the correct color variable
+      when selecting a flag color in the options menu,
+      thus reverting to green after level exit
+  * Multiplayer:
+    * Change: Allow setting up to 20 research labs in the
+      limits menu
+    * Fix: Attempt to improve slot/identity behavior
+  * Balance MP:
+    * Change: Use a new set of experience thresholds for unit and
+      commander ranks; Make EMP/Electronic weapon research depend
+      on Command Turret Upgrade
+    * Change: Reduce splash radius of the EMP Cannon to 1.5 tiles
+      from 2 tiles
+    * Change: Reduce build power of the little scourge cyborg
+      to 233 from 250 and increase range by 1 tile
+    * Change: Reduce Assault Cannon research time by about 1 minute,
+      Twin Assault Cannon still appears at the same time
+    * Change: Make Twin Assault Gun come earlier by about 1 minute
+      so to appear before Twin Assault Cannon
+    * Change: Push Whirlwind further back into the tech tree and
+      depend on Dedicated Synaptic Link Data Analysis Mk3 / move
+      Depleted Uranium Bullets after Dense Composite Alloys Mk3
+  * Other:
+    * Add: Attempt to create an overview document on micro-AI
+      behavior
+    * Change: [CMake] Add -uastc_rdo_m to basis universal to
+      improve reproducible builds
+    * Fix: Improve notifications and exception handling for them
+    * Fix: Do not play attacked sounds from friendly fire
+- Drop warzone2100-fix-curlopts-with-newer-curl-versions.patch,
+  fixed upstream
+
+-------------------------------------------------------------------
+Sat Dec 31 07:05:14 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add warzone2100-fix-curlopts-with-newer-curl-versions.patch, see
+  https://github.com/Warzone2100/warzone2100/issues/3063
+
+-------------------------------------------------------------------
 Thu Nov 10 05:43:44 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.3.2
