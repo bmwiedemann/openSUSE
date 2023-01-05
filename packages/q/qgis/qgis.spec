@@ -1,7 +1,7 @@
 #
 # spec file for package qgis-ltr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.24.1
+Version:        3.28.2
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -40,11 +40,11 @@ Patch2:         qgis-fix-cmake-findpdal.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
-BuildRequires:  cmake >= 3.0.0
+BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  flex >= 2.5.6
-BuildRequires:  geos-devel >= 3.4
+BuildRequires:  geos-devel >= 3.9
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libQt5Sql5-mysql
 BuildRequires:  libQt5Sql5-postgresql
@@ -108,13 +108,13 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(expat) >= 1.95
 # Requires at least gdal 3.1 for GeoTIFF and Proj >= 6 - https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
-BuildRequires:  pkgconfig(gdal) >= 3.1
+BuildRequires:  pkgconfig(gdal) >= 3.2.0
 BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(pdal) >= 2.2.0
-BuildRequires:  pkgconfig(proj) >= 6.3.1
+BuildRequires:  pkgconfig(proj) >= 7.2.0
 BuildRequires:  pkgconfig(python3) >= 3.7
 BuildRequires:  pkgconfig(qca2-qt5)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
@@ -127,11 +127,11 @@ Requires:       proj
 Requires:       pdal
 Requires:       python3-GDAL
 Requires:       python3-Jinja2
-Requires:       python3-numpy
 Requires:       python3-OWSLib
 Requires:       python3-PyYAML
 Requires:       python3-Pygments
 Requires:       python3-future
+Requires:       python3-numpy
 Requires:       python3-psycopg2
 # Those are not picked by obs
 Requires:       python3-qscintilla-qt5

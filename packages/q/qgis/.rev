@@ -287,4 +287,16 @@
 </comment>
     <requestid>1007667</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5378629aba081bb9e38ae5c456172f95</srcmd5>
+    <version>3.28.2</version>
+    <time>1672927228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix-release 3.28.2
+- Update to 3.28.1 (2nd release after 3.24.1, skipping 3.26)
+  https://changelog.qgis.org/en/qgis/version/3.28/
+  https://changelog.qgis.org/en/qgis/version/3.26/
+</comment>
+    <requestid>1055951</requestid>
+  </revision>
 </revisionlist>
