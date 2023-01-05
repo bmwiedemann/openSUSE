@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 17 03:06:44 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.014
+   see /usr/share/doc/packages/perl-File-Slurper/Changes
+
+  0.014     2022-12-16 16:08:16+01:00 Europe/Amsterdam
+            - Always return an empty file as an empty string
+
+-------------------------------------------------------------------
 Sun Dec 26 03:07:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.013
