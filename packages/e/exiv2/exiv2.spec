@@ -1,7 +1,7 @@
 #
 # spec file for package exiv2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libxslt
 BuildRequires:  python3-base
+#BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-lang = %{version}
 %if %{with docs}
@@ -106,8 +107,8 @@ sed -i -e 's/CXX_STANDARD 98/CXX_STANDARD 11/' cmake/mainSetup.cmake
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CXXFLAGS="%{optflags} $(getconf LFS_CFLAGS) -Wconversion"
-export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -Wconversion"
+export CXXFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
+export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %cmake \
         -DCMAKE_INSTALL_DOCDIR="%{_docdir}/libexiv2" \
         -DEXIV2_BUILD_SAMPLES=ON \
@@ -125,15 +126,12 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -Wconversion"
         -DCMAKE_SKIP_RPATH=OFF
 
 %cmake_build
-# make %{?_smp_mflags} doc
 
 %install
 %cmake_install
 
 %check
-pushd build
-%make_build tests
-popd
+%ctest -- -j1
 
 for t in \
     addmoddel \

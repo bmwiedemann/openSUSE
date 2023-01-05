@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  4 13:50:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to ctest for running the testsuite
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be
