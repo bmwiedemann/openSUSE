@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan  5 07:13:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.11.4:
+  * meson.pm: Pass --destdir to `meson install`.  (Closes: #1027014)
+  * Dh_Lib.pm: Have addsubstvars check the value for newlines (Closes: #1026014)
+  * Stop using (fake)root for mkdirs again.
+    Should have been removed as a part of the clean up in the previous
+    upload but was overlooked causing breakage in packages still having
+    `Rules-Requires-Root: binary-targets`. (Closes: #1026125)
+  * PROGRAMMING.md: Fix typos
+  * Dh_Lib.pm: Remove unused third parameter from install_dh_config_file
+  * makefile.pm: Provide hook for subclasses to reuse cross-build support
+  * Dh_Lib.pm: Revert change where `install_{file,prog,lib}` would use chown.
+    The problem that prompted this change was not caused by debhelper but
+    by fakeroot (#1024544) and the change in debhelper would not even
+    function as a work around in this case.  Accordingly, the extra
+    complexity is not worth it and has been reverted.
+  * Dh_Lib.pm: Fix typo in warning message about dherroron
+
+-------------------------------------------------------------------
 Mon Dec 12 09:17:57 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - Update to version 13.11.1

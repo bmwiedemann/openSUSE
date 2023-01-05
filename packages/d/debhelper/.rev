@@ -112,4 +112,12 @@ Resubmit without Source URL</comment>
     <comment>Update to version 13.11.1</comment>
     <requestid>1042328</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4de46b7d1887ef8b91f632a2bae35fc8</srcmd5>
+    <version>13.11.4</version>
+    <time>1672927292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056155</requestid>
+  </revision>
 </revisionlist>
