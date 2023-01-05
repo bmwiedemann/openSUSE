@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 05 12:08:53 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.36.1:
+  * fix(deps): fix errors on yarn.lock files that contain local file reference (#3384)
+  * feat(flag): early fail when the format is invalid (#3370)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.136 to 1.44.171 (#3366)
+  * docs(aws): fix broken links (#3374)
+  * chore(deps): bump actions/stale from 6 to 7 (#3360)
+  * chore(deps): bump helm/kind-action from 1.4.0 to 1.5.0 (#3359)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.6.0 to 0.7.0 (#2974)
+  * chore(deps): bump azure/setup-helm from 3.4 to 3.5 (#3358)
+  * chore(deps): bump github.com/moby/buildkit from 0.10.4 to 0.10.6 (#3173)
+  * chore(deps): bump goreleaser/goreleaser-action from 3 to 4 (#3357)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.8 to 1.6.14 (#3367)
+  * chore(go): updates wazero to v1.0.0-pre.7 (#3355)
+  * chore(deps): bump golang.org/x/text from 0.4.0 to 0.5.0 (#3362)
+  * chore(deps): bump actions/cache from 3.0.11 to 3.2.2 (#3356)
+
+-------------------------------------------------------------------
 Mon Jan 02 08:27:43 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.36.0:
