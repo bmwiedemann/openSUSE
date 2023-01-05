@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:35:20 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d
+
+-------------------------------------------------------------------
 Wed May 18 12:31:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.2.5:

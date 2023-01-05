@@ -83,7 +83,11 @@ autoreconf -fvi
 %sysusers_generate_pre %{SOURCE6} at system-user-at.conf
 
 %install
+%if 0%{?suse_version} > 1500
+install -d %{buildroot}{%{_pam_vendordir},%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8},%{_fillupdir}}
+%else
 install -d %{buildroot}{%{_sysconfdir}/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8},%{_fillupdir}}
+%endif
 
 export CFLAGS="%{?optflags}"
 export SENDMAIL=%{_sbindir}/sendmail
@@ -97,7 +101,11 @@ mv %{buildroot}/%{_prefix}/doc/at/* docs/
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_unitdir}/atd.service
 ln -s service %{buildroot}%{_sbindir}/rcatd
 
+%if 0%{?suse_version} > 1500
+install -m644 %{SOURCE2} %{buildroot}%{_pam_vendordir}/atd
+%else
 install -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/atd
+%endif
 install -m644 %{SOURCE3} %{buildroot}%{_fillupdir}
 
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -105,6 +113,12 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 
 %pre -f at.pre
 %service_add_pre atd.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/atd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %preun
 %service_del_preun atd.service
@@ -120,12 +134,24 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %postun
 %service_del_postun atd.service
 
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/atd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %doc Problems README ChangeLog timespec
 %license COPYING Copyright
 %config(noreplace) %{_sysconfdir}/at.deny
 %{_sbindir}/rcatd
+%if 0%{?suse_version} > 1500
+%attr(644,root,root) %{_pam_vendordir}/atd
+%else
 %config %attr(644,root,root) %{_sysconfdir}/pam.d/atd
+%endif
 %verify(not mode) %attr(4750,root,trusted) %{_bindir}/at
 %{_bindir}/atq
 %{_bindir}/atrm
