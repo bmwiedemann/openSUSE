@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 18:40:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.3:
+  * Workaround https://github.com/pypa/setuptools_scm/issues/727
+  * Add support for Tesseravt 5 + Linux
+  * Fix file descriptor leak (thanks to oda)
+  * Make the dependency on setuptools_scm optional
+
+-------------------------------------------------------------------
 Thu Aug 26 10:41:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8:

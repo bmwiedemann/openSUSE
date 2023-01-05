@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyocr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sha f9f93bbd83ab5814b1c56c3ffe41addc9ec622dc
+%define sha 920b07154e1240efbd16e5b0bfd5fe2b57ac8334
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyocr
-Version:        0.8
+Version:        0.8.3
 Release:        0
 Summary:        Python wrapper for OCR engines
 License:        GPL-3.0-or-later
@@ -29,8 +29,8 @@ URL:            https://gitlab.gnome.org/World/OpenPaperwork/pyocr
 Source:         https://gitlab.gnome.org/World/OpenPaperwork/pyocr/-/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
@@ -47,10 +47,10 @@ That is, it helps using various OCR tools from a Python program.
 %setup -q -n pyocr-%{version}-%{sha}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

@@ -40,4 +40,16 @@
     <comment></comment>
     <requestid>914761</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49ef70f04c338f2236ea2dc64f04d0ec</srcmd5>
+    <version>0.8.3</version>
+    <time>1672927234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.3:
+  * Workaround https://github.com/pypa/setuptools_scm/issues/727
+  * Add support for Tesseravt 5 + Linux
+  * Fix file descriptor leak (thanks to oda)
+  * Make the dependency on setuptools_scm optional</comment>
+    <requestid>1055978</requestid>
+  </revision>
 </revisionlist>
