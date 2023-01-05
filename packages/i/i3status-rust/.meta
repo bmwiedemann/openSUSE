@@ -1,0 +1,5 @@
+<package name="i3status-rust" project="openSUSE:Factory">
+  <title>i3status-rust</title>
+  <description>i3status-rust</description>
+  <devel project="X11:windowmanagers" package="i3status-rust"/>
+</package>
