@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec 17 19:31:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.20.1:
+  * xplr shell will default to $SHELL, using bash as a fallback. oh-my-zsh
+    users please add TRAPEXIT() { echoti rmkx; } in your .zshrc (see #499
+    for more info).
+  * (experiment) xplr will now display full-screen help menu in intermediate
+    modes. Set xplr.config.modes.builtin[mode].layout = nil to disable. e.g.
+    xplr.config.modes.builtin.create.layout = nil
+  * Added new utility functions to work with json and yaml data.
+  * xplr.util.from_json()
+  * xplr.util.to_json()
+  * xplr.util.from_yaml()
+  * xplr.util.to_yaml()
+  * Added new utility function xplr.util.version() to get the currently
+    running binary version (semantic versioning fields).
+  * Fixed displaying multispace characters (Japanese, Chinese...), thanks to
+    @Elvyria for contributing to tui-input.
+  * Fixed a bug causing the creation of a new directory
+  * Minor UI updates.
+
+-------------------------------------------------------------------
 Sat Nov 12 23:20:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Verify signatures from public keyring by adding author's public pgp key.
