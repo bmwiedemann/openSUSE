@@ -2024,4 +2024,41 @@
     <comment>+Conflicts:      sbd &lt; 1.5.1 (forwarded request 1042377 from yan_gao)</comment>
     <requestid>1042378</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>7db8caa9e1bf8f177dad47dbe925183c</srcmd5>
+    <version>2.1.5+20221212.b4db7685a</version>
+    <time>1672927205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.5+20221212.b4db7685a:
+- cts-scheduler: update test for preventing inactive instances from starting if probe is unrunnable on any nodes (bsc#1206263)
+- scheduler: prevent inactive instances from starting if probe is unrunnable on any nodes  (bsc#1206263)
+- libpacemaker: ensure any pending recurring monitor gets updated if it fails (bsc#1206263)
+- cts-scheduler: update test for preventing a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
+- scheduler: prevent a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
+- cts-scheduler: add test for preventing a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
+
+- Update to version 2.1.5+20221212.074e9c860:
+- tools: Support setting transient utilization attrs from crm_attribute.
+- scheduler: Unpack transient utilization attributes.
+- daemons: Add support for transient utilization attributes.
+- libcrmcommon: Add a block attr to an IPC update request.
+- tools: Add a -z option to attrd_updater.
+
+- Update to version 2.1.5+20221208.cd0f91f51:
+- libcrmcommon: Warn if deprecated command line formats are used.
+- controller: Don't nack joining node due to old CIB
+- based: Successful CIB schema upgrade should always force a write
+- based: Don't write to disk if CIB replace failed
+- tools: Fix trivial memory leak in cibadmin
+- based: Fix double free() in pacemaker-based.c
+- libpe_status: avoid memory leak on regular expression error
+- controller: Avoid election storm due to incompatible CIB
+- libpacemaker: don't regfree() if regcomp() failed
+- libpe_status: don't try to use compiled expression if regcomp() failed
+- libcrmcommon: don't regfree() if regcomp() failed
+- controller: Avoid error if a join request is received after fencing
+- controller: Don't double-increment failcount for simulated failures
+- daemons, tools: Unregister formats before exiting (forwarded request 1055788 from yan_gao)</comment>
+    <requestid>1055789</requestid>
+  </revision>
 </revisionlist>

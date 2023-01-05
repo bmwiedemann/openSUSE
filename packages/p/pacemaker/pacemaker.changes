@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Dec 22 12:59:33 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20221212.b4db7685a:
+- cts-scheduler: update test for preventing inactive instances from starting if probe is unrunnable on any nodes (bsc#1206263)
+- scheduler: prevent inactive instances from starting if probe is unrunnable on any nodes  (bsc#1206263)
+- libpacemaker: ensure any pending recurring monitor gets updated if it fails (bsc#1206263)
+- cts-scheduler: update test for preventing a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
+- scheduler: prevent a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
+- cts-scheduler: add test for preventing a leftover pending monitor from causing unexpected stop of other instances (bsc#1206263)
+
+-------------------------------------------------------------------
+Thu Dec 22 12:50:26 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20221212.074e9c860:
+- tools: Support setting transient utilization attrs from crm_attribute.
+- scheduler: Unpack transient utilization attributes.
+- daemons: Add support for transient utilization attributes.
+- libcrmcommon: Add a block attr to an IPC update request.
+- tools: Add a -z option to attrd_updater.
+
+-------------------------------------------------------------------
+Wed Dec 21 11:49:56 UTC 2022 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20221208.cd0f91f51:
+- libcrmcommon: Warn if deprecated command line formats are used.
+- controller: Don't nack joining node due to old CIB
+- based: Successful CIB schema upgrade should always force a write
+- based: Don't write to disk if CIB replace failed
+- tools: Fix trivial memory leak in cibadmin
+- based: Fix double free() in pacemaker-based.c
+- libpe_status: avoid memory leak on regular expression error
+- controller: Avoid election storm due to incompatible CIB
+- libpacemaker: don't regfree() if regcomp() failed
+- libpe_status: don't try to use compiled expression if regcomp() failed
+- libcrmcommon: don't regfree() if regcomp() failed
+- controller: Avoid error if a join request is received after fencing
+- controller: Don't double-increment failcount for simulated failures
+- daemons, tools: Unregister formats before exiting
+- scheduler: Advertise metadata option in scheduler help output
+- fencer: Use formatted output in pacemaker-fenced
+- fencer: Correct refresh logic in update_cib_cache_cb()
+- controller: Reduce CIB deletions during reprobe
+- controller: Don't reprobe remotes when target is only cluster node
+- add zh_cn translation for error (#2957)
+- tools: Validate scope in cibadmin.c
+- tools: Add status as valid cibadmin scope
+- tools: Fix action danger check in cibadmin
+- libcrmcommon: Null-check return value of pcmk__uid2username()
+- daemons: Support cluster-wide sync points for multi IPC messages.
+- tools: Fix scope/xpath parsing in cibadmin
+- libcrmcommon: Bump feature set for daemon formatted output
+- executor: Use formatted output in pacemaker-execd
+- pacemaker-based: Use formatted output in pacemaker-based
+- controller: Use formatted output in pacemaker-controld
+- controller: Node exits fatally in response to join nack
+- libcrmcommon: Retry pcmk_connect_ipc() if EAGAIN
+- controller: Remove CRM_CHECK in update_dc for no current DC
+- Pacemaker Explained: Clarify resource maintenance mode (CLBZ#5382)
+- libpe_status: Node maintenance mode sets resource maintenance flag
+- libpe_status: crm_mon shows "maintenance" for rsc maint meta
+- schemas: resources schema supports maintenance attribute
+- daemons: Check for NULL in attrd_do_not_expect_from_peer.
+- tools: crm_mon fencing history is now in high resolution
+- libpe_status: Use correct guint format specifier for failed action
+- add zh_CN translation for pacemaker-schedulerd libexec
+- daemons: Handle crm_ipc_new returning a NULL.
+- tools: crm_mon now shows last_update origin
+- schema: Add update origin to crm_mon output
+- tools: crm_mon --daemonize should update when disconnected
+- tools: Improve log messages in crm_mon.c
+- tools: Remove an output format-based sleep() call from crm_mon
+- tools: Include Pacemaker status in crm_mon output
+- libcib: Preserve return code in cib__signon_query()
+- libpacemaker: Use correct pcmkd state format in XML message
+- daemons: Avoid infinite confirm loops in attrd.
+- daemons: Handle an attrd client timing out.
+- attrd: Fix removing clients from the waitlist when they disconnect.
+- daemons: Handle cluster-wide sync points in attrd.
+- daemons: Keep track of #attrd-protocol from each peer.
+- daemons: Respond to received attrd confirmation requests.
+- libpacemaker: Show pcmkd status if we can't get native CIB
+- libpacemaker: Check conn status in pcmk__get_fencing_history()
+- libcib: Allow cib client reuse in cib__signon_query()
+- tools: Add --wait=cluster option to attrd_updater.
+- libpacemaker: Improve invalid reply type logging in cluster queries
+- includes: Bump CRM_FEATURE_SET for local sync points.
+- daemons: Add support for local sync points on clearing failures.
+- daemons: If a client disconnects, remove it from the waitlist.
+- daemons: Add support for local sync points on updates.
+- tools: Add --wait= parameter to attrd_updater.
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+
+-------------------------------------------------------------------
 Fri Dec 09 10:57:57 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.5+20221208.a3f44794f (Pacemaker-2.1.5):
@@ -422,7 +517,7 @@ Thu Jul 21 12:35:27 UTC 2022 - Yan Gao <ygao@suse.com>
 Thu Jul 21 12:25:08 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.4+20220719.6bf20e794:
-- tools: Fix a segfault in error handling in crm_resource. (clbz#5496)
+- tools: Fix a segfault in error handling in crm_resource. (clbz#5496, bsc#1206761)
 
 -------------------------------------------------------------------
 Thu Jul 21 12:15:11 UTC 2022 - Yan Gao <ygao@suse.com>
@@ -2052,9 +2147,9 @@ Fri Oct 30 13:45:28 UTC 2020 - Yan Gao <ygao@suse.com>
 - controld: Avoiding Broken pipe when shutdown.
 - Stateful: add ability to return custom rc saved in state file
 - Dummy: add ability to return custom rc saved in state file
-- Use effective OCF rc-code to avoid increasing failcount for DEGRADED statuses
+- Use effective OCF rc-code to avoid increasing failcount for DEGRADED statuses (bsc#1205861)
 - tools: Don't display crm_resource error messages twice.
-- Accept PCMK_OCF_DEGRADED and PCMK_OCF_DEGRADED_MASTER status codes
+- Accept PCMK_OCF_DEGRADED and PCMK_OCF_DEGRADED_MASTER status codes (bsc#1205861)
 - libcrmservice: avoid dangling reference after DBus memory allocation error
 - libcrmservice: avoid double logging an error
 - libcrmservice: improve DBus log messages

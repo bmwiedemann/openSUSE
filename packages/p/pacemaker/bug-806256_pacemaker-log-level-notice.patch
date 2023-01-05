@@ -4,12 +4,12 @@ Date:   Thu Mar 14 09:41:53 2013 +0800
 
     Log: Change some messages to notice level (bnc#806256)
 
-Index: pacemaker-2.1.2+20220126.57e783b4b/daemons/controld/controld_membership.c
+Index: pacemaker-2.1.5+20221208.cd0f91f51/daemons/controld/controld_membership.c
 ===================================================================
---- pacemaker-2.1.2+20220126.57e783b4b.orig/daemons/controld/controld_membership.c
-+++ pacemaker-2.1.2+20220126.57e783b4b/daemons/controld/controld_membership.c
-@@ -410,7 +410,7 @@ crm_update_quorum(gboolean quorum, gbool
-         crm_xml_add(update, XML_ATTR_DC_UUID, fsa_our_uuid);
+--- pacemaker-2.1.5+20221208.cd0f91f51.orig/daemons/controld/controld_membership.c
++++ pacemaker-2.1.5+20221208.cd0f91f51/daemons/controld/controld_membership.c
+@@ -431,7 +431,7 @@ crm_update_quorum(gboolean quorum, gbool
+         crm_xml_add(update, XML_ATTR_DC_UUID, controld_globals.our_uuid);
  
          fsa_cib_update(XML_TAG_CIB, update, call_options, call_id, NULL);
 -        crm_debug("Updating quorum status to %s (call=%d)",
@@ -17,24 +17,24 @@ Index: pacemaker-2.1.2+20220126.57e783b4b/daemons/controld/controld_membership.c
                    pcmk__btoa(quorum), call_id);
          fsa_register_cib_callback(call_id, FALSE, NULL, cib_quorum_update_complete);
          free_xml(update);
-Index: pacemaker-2.1.2+20220126.57e783b4b/daemons/controld/controld_transition.c
+Index: pacemaker-2.1.5+20221208.cd0f91f51/daemons/controld/controld_transition.c
 ===================================================================
---- pacemaker-2.1.2+20220126.57e783b4b.orig/daemons/controld/controld_transition.c
-+++ pacemaker-2.1.2+20220126.57e783b4b/daemons/controld/controld_transition.c
+--- pacemaker-2.1.5+20221208.cd0f91f51.orig/daemons/controld/controld_transition.c
++++ pacemaker-2.1.5+20221208.cd0f91f51/daemons/controld/controld_transition.c
 @@ -182,7 +182,7 @@ do_te_invoke(long long action,
-         transition_graph = pcmk__unpack_graph(graph_data, graph_input);
-         CRM_CHECK(transition_graph != NULL,
-                   transition_graph = create_blank_graph(); return);
--        crm_info("Processing graph %d (ref=%s) derived from %s", transition_graph->id, ref,
-+        crm_notice("Processing graph %d (ref=%s) derived from %s", transition_graph->id, ref,
-                  graph_input);
+         CRM_CHECK(controld_globals.transition_graph != NULL,
+                   controld_globals.transition_graph = create_blank_graph();
+                   return);
+-        crm_info("Processing graph %d (ref=%s) derived from %s",
++        crm_notice("Processing graph %d (ref=%s) derived from %s",
+                  controld_globals.transition_graph->id, ref, graph_input);
  
          te_reset_job_counts();
-Index: pacemaker-2.1.2+20220126.57e783b4b/daemons/fenced/fenced_remote.c
+Index: pacemaker-2.1.5+20221208.cd0f91f51/daemons/fenced/fenced_remote.c
 ===================================================================
---- pacemaker-2.1.2+20220126.57e783b4b.orig/daemons/fenced/fenced_remote.c
-+++ pacemaker-2.1.2+20220126.57e783b4b/daemons/fenced/fenced_remote.c
-@@ -670,7 +670,7 @@ finalize_timed_out_op(remote_fencing_op_
+--- pacemaker-2.1.5+20221208.cd0f91f51.orig/daemons/fenced/fenced_remote.c
++++ pacemaker-2.1.5+20221208.cd0f91f51/daemons/fenced/fenced_remote.c
+@@ -687,7 +687,7 @@ finalize_timed_out_op(remote_fencing_op_
  {
      op->op_timer_total = 0;
  

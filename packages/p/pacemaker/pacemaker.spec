@@ -1,7 +1,7 @@
 #
 # spec file for package pacemaker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,7 +104,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.5+20221208.a3f44794f
+Version:        2.1.5+20221212.b4db7685a
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
