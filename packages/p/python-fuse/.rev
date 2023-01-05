@@ -78,4 +78,13 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
   * fix temporary objects leak</comment>
     <requestid>948239</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>57c65bef3d2679485592e6379eeb095e</srcmd5>
+    <version>1.0.5</version>
+    <time>1672927241</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.0.5:
+  * Fix issue with python 3.10</comment>
+    <requestid>1055996</requestid>
+  </revision>
 </revisionlist>
