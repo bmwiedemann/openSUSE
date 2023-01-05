@@ -102,4 +102,14 @@
   cover ocaml-4.14</comment>
     <requestid>967043</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eeec197e6fd983e462ddf199c66efde3</srcmd5>
+    <version>8.00.04</version>
+    <time>1672927251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.00.04
+  cover ocaml-5.0
+- Allow build with old rpm</comment>
+    <requestid>1056071</requestid>
+  </revision>
 </revisionlist>
