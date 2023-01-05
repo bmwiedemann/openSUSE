@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
+
+- Update to version 3.0.0
+  See included CHANGES for details
+- Remove obsolete ocaml-calendar.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - use release revision and ocaml-calendar.patch

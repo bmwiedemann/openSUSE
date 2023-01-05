@@ -47,4 +47,14 @@
     <comment>- use release revision and ocaml-calendar.patch</comment>
     <requestid>867925</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de23e6400a4cbc31c8424bdc8d343720</srcmd5>
+    <version>3.0.0</version>
+    <time>1672927249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0
+  See included CHANGES for details
+- Remove obsolete ocaml-calendar.patch</comment>
+    <requestid>1056069</requestid>
+  </revision>
 </revisionlist>
