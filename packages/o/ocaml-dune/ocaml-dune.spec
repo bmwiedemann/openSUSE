@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dune
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -34,7 +34,7 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/dune
 Source0:        %pkg-%version.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 %if "%build_flavor" == ""
 Provides:       %name-bootstrap = %version-%release
