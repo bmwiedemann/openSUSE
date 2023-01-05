@@ -522,4 +522,16 @@
   - Imported Translations from Zanata</comment>
     <requestid>1007435</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e19f325b3589294c68c23b4985ba47f7</srcmd5>
+    <version>6.1.0</version>
+    <time>1672927236</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.1.0
+  - [imageutils] Fix __str__ for QemuImgInfo
+  - Update master for stable/zed
+  - Imported Translations from Zanata
+  - Add Python3 antelope unit tests</comment>
+    <requestid>1055986</requestid>
+  </revision>
 </revisionlist>

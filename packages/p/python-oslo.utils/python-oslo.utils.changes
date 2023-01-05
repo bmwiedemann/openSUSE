@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  1 10:44:25 UTC 2022 - cloud-devel@suse.de
+
+- update to version 6.1.0
+  - [imageutils] Fix __str__ for QemuImgInfo
+  - Update master for stable/zed
+  - Imported Translations from Zanata
+  - Add Python3 antelope unit tests
+
+-------------------------------------------------------------------
 Sat Oct  1 12:23:40 UTC 2022 - cloud-devel@suse.de
 
 - update to version 6.0.1
