@@ -17,7 +17,7 @@
 
 
 %define sover 89
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define sbindir %{_sbindir}
 %else
 %define sbindir /sbin
@@ -129,7 +129,7 @@ export LDFLAGS="-pie"
 
 %install
 %make_install
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
 %endif
 rm -v %{buildroot}%{_libdir}/libntfs-3g.la

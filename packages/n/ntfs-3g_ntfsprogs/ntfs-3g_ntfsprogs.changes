@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:13:17 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Oct 31 14:48:19 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - update to 2022.10.3 (bsc#1204734 CVE-2022-40284):
