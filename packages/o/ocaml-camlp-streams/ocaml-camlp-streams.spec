@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp-streams
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Release:        0
 Summary:        Stream and Genlex libraries for use with Camlp5
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
+BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/camlp-streams
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocaml-rpm-macros >= 20230101
 
 %description
 The camlp-streams package provides two library modules:
@@ -56,7 +57,7 @@ developing applications that use %name.
 
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 dune_release_pkgs='camlp-streams'
@@ -71,7 +72,9 @@ dune_release_pkgs='camlp-streams'
 %ocaml_dune_test
 
 %files -f %name.files
+%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
+%defattr(-,root,root,-)
 
 %changelog

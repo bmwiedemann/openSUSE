@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989355</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5f5cbb59fd7683ecf69b95b4e88af926</srcmd5>
+    <version>5.0.1</version>
+    <time>1672927250</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow build with old rpm</comment>
+    <requestid>1056070</requestid>
+  </revision>
 </revisionlist>
