@@ -334,4 +334,13 @@
   * Significant bugfixes and minor improvements</comment>
     <requestid>975714</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ef99a8969ff7ec896814a30c1d828257</srcmd5>
+    <version>2.53.0</version>
+    <time>1672927261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.53.0
+  * Build with GTK3</comment>
+    <requestid>1056086</requestid>
+  </revision>
 </revisionlist>

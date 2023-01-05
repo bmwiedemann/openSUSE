@@ -1,7 +1,7 @@
 #
 # spec file for package unison
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           unison
-Version:        2.52.1
+Version:        2.53.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
@@ -31,9 +31,9 @@ Source1:        unison-2.48.4-manual.html
 Source2:        %name.desktop
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.3
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(findlib)
-BuildRequires:  ocamlfind(lablgtk2)
+BuildRequires:  ocamlfind(lablgtk3)
 BuildRequires:  pkgconfig(ncursesw)
 %if 0%{?suse_version} > 0
 BuildRequires:  update-desktop-files
