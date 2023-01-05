@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20211212d
+Version:        20211212e
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only

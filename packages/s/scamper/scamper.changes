@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 29 09:06:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212e:
+ - scamper:
+  * gracefully handle situations where there is no
+    /etc/resolv.conf, or no nameserver lines in an /etc/resolv.conf
+    but a measurement or scamper-internal task wants to resolve a
+    name
+  * tidy up buggy prinf-like statements in scamper and some drivers.
+ - warts/json:
+  * in JSON output for ping, print the TCP/UDP src/dst ports or
+    ICMP id/seq used in individual probe packets,
+  * fix regression in libscamperfile so that it can read old warts
+    files.
+
+-------------------------------------------------------------------
 Sat Nov 19 07:20:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 20211212d:
