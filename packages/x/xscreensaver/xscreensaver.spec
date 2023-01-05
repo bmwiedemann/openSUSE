@@ -1,7 +1,7 @@
 #
 # spec file for package xscreensaver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -222,7 +222,12 @@ rm -r %{buildroot}/tmp/
 chmod 0755 %{buildroot}%{_bindir}/xscreensaver
 #
 # PAM config.
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_pam_vendordir}/xscreensaver
+%else
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/xscreensaver
+%endif
 #
 # Language files.
 %find_lang %{name}
@@ -251,6 +256,20 @@ for hack in $(grep -v '#' %{SOURCE3}); do
     echo "%{_libexecdir}/xscreensaver/$hack" >> %{name}-data-extra.lst
 done
 
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/xscreensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/xscreensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %doc README
 %{_bindir}/xscreensaver
@@ -278,7 +297,11 @@ done
 %{_mandir}/man6/xscreensaver-gfx.*
 %{_mandir}/man6/xscreensaver-gl-visual.*
 %{_mandir}/man6/xscreensaver-systemd.*
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/xscreensaver
+%else
 %config %{_sysconfdir}/pam.d/xscreensaver
+%endif
 %dir %{_sysconfdir}/xscreensaver/
 %config %{_sysconfdir}/xscreensaver/README
 
