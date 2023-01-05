@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec 14 03:06:36 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.086
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.086		2022-12-13	T. R. Wyant
+      Add width(), which returns the number of characters matched. Note
+      that an indefinite upper boumd is represented as IEEE 754 Inf if
+      that appears to be supported; otherwise by a singleton object
+      overloaded to allow stringification, numification, and numeric
+      tests.
+
+      Use width() to enhance the detection of variable-width look-behinds.
+
+      Serious clean-up on accepts_perl() subsystem.
+
+-------------------------------------------------------------------
 Sun Apr 17 03:06:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.085
