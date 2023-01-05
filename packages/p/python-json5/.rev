@@ -74,4 +74,14 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     when those were supposed to be disallowed by `allow_nan=False`.</comment>
     <requestid>1005760</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b309aa1cede46476c23f74611b51db2</srcmd5>
+    <version>0.9.12</version>
+    <time>1672927239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.12:
+  * fix dump error on python 2
+  * fix GitHub actions</comment>
+    <requestid>1055991</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 19:58:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.12:
+  * fix dump error on python 2
+  * fix GitHub actions 
+
+-------------------------------------------------------------------
 Sat Sep 24 10:54:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.10:
