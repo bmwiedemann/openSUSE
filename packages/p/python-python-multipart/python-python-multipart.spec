@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-multipart
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,15 @@ Patch0:         support-pyyaml-6.patch
 Patch1:         python-python-multipart-no-mock.patch
 # https://github.com/andrew-d/python-multipart/commit/c54ad6006bacc77623864ec8e5c96bfd32230e01
 Patch2:         python-python-multipart-no-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-six >= 1.4.0
 BuildArch:      noarch
 
 %python_subpackages
@@ -49,10 +49,10 @@ A streaming multipart parser for Python.
 %autosetup -p1 -n python-multipart-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +62,6 @@ A streaming multipart parser for Python.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/multipart
-%{python_sitelib}/python_multipart-*.egg-info
+%{python_sitelib}/python_multipart-%{version}.dist-info
 
 %changelog

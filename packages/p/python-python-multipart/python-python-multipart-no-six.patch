@@ -125,3 +125,15 @@ Index: python-multipart-0.0.5/multipart/exceptions.py
      Base64Error = binascii.Error
 -else:                           # pragma: no cover
 -    Base64Error = TypeError
+Index: python-multipart-0.0.5/setup.py
+===================================================================
+--- python-multipart-0.0.5.orig/setup.py
++++ python-multipart-0.0.5/setup.py
+@@ -25,7 +25,6 @@ setup(name='python-multipart',
+       platforms='any',
+       zip_safe=False,
+       install_requires=[
+-          'six>=1.4.0',
+       ],
+       tests_require=[
+           'pytest',

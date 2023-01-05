@@ -33,4 +33,12 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
     <comment></comment>
     <requestid>1042468</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5ead1c8c41c4dde194f5635650b14529</srcmd5>
+    <version>0.0.5</version>
+    <time>1672927262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056062</requestid>
+  </revision>
 </revisionlist>

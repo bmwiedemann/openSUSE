@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 21:17:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Really don't require six
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Mon Dec 12 16:51:23 UTC 2022 - pgajdos@suse.com
 
 - do not require six
