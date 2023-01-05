@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-parmap</param>
-    <param name="revision">289660b0cdc71c0c6e88468ca9fb7ee218f30379</param>
+    <param name="revision">963608763589e03de38e744d359884d491e65460</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/rdicosmo/parmap.git</param>

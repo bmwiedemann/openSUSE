@@ -105,4 +105,13 @@ ocaml 4.03 (fate#320836)</comment>
   fix naked pointers</comment>
     <requestid>967064</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>804a90d34fddc86b14d0ffaa1c88f15e</srcmd5>
+    <version>1.2.5</version>
+    <time>1672927256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  Add support for OCaml 5.0</comment>
+    <requestid>1056076</requestid>
+  </revision>
 </revisionlist>

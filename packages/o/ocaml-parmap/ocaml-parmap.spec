@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-parmap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-parmap
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
@@ -27,7 +27,7 @@ URL:            https://opam.ocaml.org/packages/parmap
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(graphics)
