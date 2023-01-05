@@ -33,4 +33,14 @@
 </comment>
     <requestid>978115</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f625678782033f89ebe2f881359b5e93</srcmd5>
+    <version>1.2.7</version>
+    <time>1672927290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.7:
+  * check return value for gcrypt functions
+</comment>
+    <requestid>1056146</requestid>
+  </revision>
 </revisionlist>

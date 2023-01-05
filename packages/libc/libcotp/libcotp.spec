@@ -1,7 +1,7 @@
 #
 # spec file for package libcotp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %global debug_package %{nil}
 %endif
 Name:           libcotp
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/paolostivanin/%{name}
 Source0:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
-Source1:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz.asc
+Source1:        https://github.com/paolostivanin/libcotp/releases/download/v%{version}/v%{version}.tar.gz.asc
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

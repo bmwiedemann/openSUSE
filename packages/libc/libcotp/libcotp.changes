@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 08:38:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.7:
+  * check return value for gcrypt functions
+
+-------------------------------------------------------------------
 Thu May 19 11:42:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.2.6:
