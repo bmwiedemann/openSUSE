@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 20:11:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Drop support for Python 2.7 (no longer works) and 3.6 (no longer
+    tested).
+
+-------------------------------------------------------------------
 Tue Mar  1 08:25:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - buildrequire glibc-locale for tests 

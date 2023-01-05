@@ -103,4 +103,14 @@
     <comment>- buildrequire glibc-locale for tests</comment>
     <requestid>958217</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>90cbea658d3a1e504246352cd887867a</srcmd5>
+    <version>1.7.0</version>
+    <time>1672927245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Drop support for Python 2.7 (no longer works) and 3.6 (no longer
+    tested).</comment>
+    <requestid>1055999</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define modname agate
 Name:           python-agate
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        Data analysis library optimized for humans instead of machines
 License:        MIT
