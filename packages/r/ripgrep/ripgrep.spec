@@ -30,7 +30,9 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source999:      README.suse-maint.md
 BuildRequires:  cargo
+BuildRequires:  pkgconf
 BuildRequires:  rust >= 1.31
+BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  rubygem(asciidoctor)
 
 %description
@@ -75,7 +77,7 @@ cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}
-cargo build --release %{?_smp_mflags}
+cargo build --release --features 'pcre2' %{?_smp_mflags}
 
 %install
 export RUSTFLAGS=%{rustflags}
@@ -84,9 +86,10 @@ cargo install --path . --root=%{buildroot}%{_prefix}
 # remove residue crate file
 rm -f %{buildroot}%{_prefix}/.crates*
 
-install -Dm 644 target/release/build/ripgrep-*/out/rg.1 %{buildroot}%{_mandir}/man1/rg.1
-install -Dm 644 target/release/build/ripgrep-*/out/rg.bash %{buildroot}%{_datadir}/bash-completion/completions/rg
-install -Dm 644 target/release/build/ripgrep-*/out/rg.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rg.fish
+TARGETDIR=$(ls -d target/release/build/ripgrep-*/out|head -n1)
+install -Dm 644 ${TARGETDIR}/rg.1 %{buildroot}%{_mandir}/man1/rg.1
+install -Dm 644 ${TARGETDIR}/rg.bash %{buildroot}%{_datadir}/bash-completion/completions/rg
+install -Dm 644 ${TARGETDIR}/rg.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rg.fish
 install -Dm 644 complete/_rg %{buildroot}%{_datadir}/zsh/site-functions/_rg
 
 %files

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 24 23:22:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Enable building of the pcre2 feature.
+
+-------------------------------------------------------------------
 Mon Jun 20 03:22:55 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
