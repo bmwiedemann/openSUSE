@@ -1193,4 +1193,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>1040405</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>37f3eed09d8416b38923e63642f24468</srcmd5>
+    <version>6.0.2</version>
+    <time>1672927203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055777</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsprogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -244,7 +244,7 @@ install -m 0755 btrfs-select-super %{buildroot}/%{_sbindir}
 install -m 0755 btrfs-image %{buildroot}/%{_sbindir}
 install -m 0755 btrfstune %{buildroot}/%{_sbindir}
 install -m 0755 btrfs-find-root %{buildroot}/%{_sbindir}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 install -m 0755 -d %{buildroot}/sbin
 ln -s %{_sbindir}/btrfs %{buildroot}/sbin
 ln -s %{_sbindir}/btrfs-convert %{buildroot}/sbin
@@ -308,7 +308,7 @@ done
 %{_datadir}/%{name}/dracut-fsck-help.txt
 %dir %{_dracutmodulesdir}/95suse-btrfs/
 %{_dracutmodulesdir}/95suse-btrfs/module-setup.sh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/fsck.btrfs
 # mkinitrd utils
 /sbin/btrfs
