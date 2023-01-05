@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:26:26 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Sep 14 09:15:05 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 9.65:

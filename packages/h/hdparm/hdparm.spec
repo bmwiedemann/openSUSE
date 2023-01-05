@@ -1,7 +1,7 @@
 #
 # spec file for package hdparm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ install -d "%{buildroot}%{_libexecdir}/hdparm"
 install -m 755 contrib/idectl "%{buildroot}%{_libexecdir}/hdparm"
 install -m 755 contrib/ultrabayd "%{buildroot}%{_libexecdir}/hdparm"
 install -m 755 wiper/wiper.sh "%{buildroot}/%{_sbindir}"
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p "%{buildroot}/sbin"
 ln -sf %{_sbindir}/wiper.sh "%{buildroot}/sbin"
 ln -sf %{_sbindir}/hdparm "%{buildroot}/sbin"
@@ -70,7 +70,7 @@ ln -sf %{_sbindir}/hdparm "%{buildroot}/sbin"
 %license LICENSE.TXT
 %doc Changelog README.acoustic contrib/README.contrib README.wiper
 %{_mandir}/man8/hdparm.8%{?ext_man}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/hdparm
 /sbin/wiper.sh
 %endif
