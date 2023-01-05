@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  4 21:49:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.4:
+  * This is a quick bugfix release that resolves some issues with the 7.4.3
+    release on CI for downstream projects.  The issues were on testing code,
+    and so shouldn't impact application code or behaviour.
+  * Don't raise ConditionTimeoutError if test doesn't time out (#1182)
+- update to 7.4.3:
+  * Fix code editor gutter widget on recent Python versions (#1176)
+  * fix issues with FileDialog and DirectoryDialog close method on Linux
+  * update setup.py metadata (#1173)
+  * restrict to PySide versions before 6.4.0 (#1169)
+  * don't do unneccessary evaluations of conditions in EventLoopHelper
+  * fix a deleted object error in PyQt5 (#1161)
+  * better reporting of toolkit errors (#1157)
+  * fix some Python 2 style print statements in documentation (#1157)
+
+-------------------------------------------------------------------
 Thu Sep 22 11:45:57 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Removed pyface-pr958-qt5deprecation.patch because it's not needed anymore
