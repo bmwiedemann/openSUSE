@@ -15,7 +15,7 @@
     <param name="exclude">tools/propcc.ml</param>
     <param name="exclude">tools/varcc.ml</param>
     <param name="filename">ocaml-lablgtk3</param>
-    <param name="revision">b4e316e0f9ee47b33734c2e4e3f56a3867acd038</param>
+    <param name="revision">8a803575ded8107a063a8779c47ca79310de90bc</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/garrigue/lablgtk.git</param>

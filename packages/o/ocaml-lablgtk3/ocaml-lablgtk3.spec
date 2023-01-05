@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-lablgtk3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-lablgtk3
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Binding to Cairo, a 2D Vector Graphics Library.  
 License:        LGPL-3.0-or-later
@@ -25,10 +25,11 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/lablgtk3
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  pkg-config
-BuildRequires:  ocaml(ocaml_base_version) >= 4.05
+BuildRequires:  ocaml(ocaml_base_version) >= 4.09
 BuildRequires:  ocamlfind(cairo2)
+BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(camlp5)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(findlib)
