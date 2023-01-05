@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 21:20:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 2.1.1:
+  * buildsystem - undo co-installability of Qt5 and Qt6 headers.
+- Update to 2.1.0:
+  * Re-license project to MIT and remove the commercial offering
+  * buildsystem - Increase minimum CMake version to 3.12.0
+  * buildsystem - Build in Release mode by default (in non-developer situations)
+  * Client-side:
+    + Generate "explicit" in front of service and job constructors
+  * Server-side:
+    + Disable HTTP/2 support (which Qt 6 enables by default), it causes trouble with some SOAP servers.
+    + Improve parsing of GET argument to avoid misinterpreting queries (possible security issue #247).
+
+-------------------------------------------------------------------
 Wed May 25 07:03:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add a Qt6 flavor for kdsoap.
