@@ -1,7 +1,7 @@
 #
 # spec file for package iputils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,7 @@ ln -sf %{_bindir}/tracepath %{buildroot}/%{_bindir}/tracepath6
 # symlink to man tracepath6(8)
 ln -sf %{_mandir}/man8/tracepath.8%{ext_man} %{buildroot}%{_mandir}/man8/tracepath6.8%{ext_man}
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # We still have reverse dependencies using /sbin/* or /bin/*
 # so keep these symlinks for now. They are slowly being fixed
 # but lets not just break them yet.
@@ -98,7 +98,7 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 %{_bindir}/tracepath
 %{_bindir}/tracepath6
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/arping
 /bin/clockdiff
 /bin/ping
