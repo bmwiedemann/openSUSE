@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 18:45:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.1:
+  * Remove unnecessary `i` variable from encoder module namespace
+  * Declare support for Python 3.11 and add wheels
+
+-------------------------------------------------------------------
 Sun Dec  4 03:28:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.18.0 
