@@ -1,7 +1,7 @@
 #
 # spec file for package docker-compose
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           docker-compose
-Version:        2.14.2
+Version:        2.15.0
 Release:        0
 Summary:        Define and run multi-container applications with Docker
 License:        Apache-2.0

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jan 05 13:59:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.0:
+  * add support for COMPOSE_PARALLEL_LIMIT (parity with Compose v1)
+  * introduce --no-attach to ignore some service output
+  * introduce `--ignore-buildable` to ignore buildable images on pull
+  * limit build concurrency according to --parallel
+  * Ignore not only auto-removed containers but also "removal in progress" for orphan containers
+  * Set `pullChanged` when setting `--pull` on `compose up`
+  * Fix empty file when using compose config in case of smaller source files
+  * Update documentation
+  * build(deps): bump github.com/docker/cli-docs-tool from 0.5.0 to 0.5.1
+  * add support of privileged attribut in service.build section
+  * cleanup framework.go from uncessary debug logs
+  * reduce cyclomatic complexity
+  * fix security opts support (seccomp and unconfined)
+  * check service names based on project, not running containers
+  * debut output for CI
+  * change the way finding the just built compose binary
+  * e2e tests display Compose version used to run the test currently the version displayed is the one installed and not the one use for the tests
+  * rely on CI timeout
+  * add buildx plugin to e2e configuration directory
+  * remove flaky TestLocalComposeLogsFollow
+  * service hash MUST exclude replicas
+  * don't assume os.Stdout and rely on dockerCLI.streams
+  * dump stdout to help diagnose flaky test
+  * don't fail `logs` when driver:none is set
+  * introduce support for cgroup namespace
+
+-------------------------------------------------------------------
 Tue Dec 20 12:21:59 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.14.2:
