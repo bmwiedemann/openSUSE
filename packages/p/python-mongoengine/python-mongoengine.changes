@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  4 19:57:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Support MONGODB-AWS authentication mechanism (with
+    `authmechanismproperties`) #2507
+  * Turning off dereferencing for the results of distinct query. #2663
+  * Add tests against Mongo 5.0 in pipeline
+  * Drop support for Python 3.6 (EOL)
+  * Bug fix support for PyMongo>=4 to fix "pymongo.errors.InvalidOperation:
+    Cannot use MongoClient after close"
+  errors. #2627
+  * Bug fix regarding uuidRepresentation that was case sensitive #2650
+
+-------------------------------------------------------------------
 Fri Jun 10 15:25:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - update to 0.24.1:

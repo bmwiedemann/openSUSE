@@ -68,4 +68,21 @@
     <comment></comment>
     <requestid>982089</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>021ecd6dce7654fc58d7af424efb1467</srcmd5>
+    <version>0.25.0</version>
+    <time>1672927238</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.0:
+  * Support MONGODB-AWS authentication mechanism (with
+    `authmechanismproperties`) #2507
+  * Turning off dereferencing for the results of distinct query. #2663
+  * Add tests against Mongo 5.0 in pipeline
+  * Drop support for Python 3.6 (EOL)
+  * Bug fix support for PyMongo&gt;=4 to fix &quot;pymongo.errors.InvalidOperation:
+    Cannot use MongoClient after close&quot;
+  errors. #2627
+  * Bug fix regarding uuidRepresentation that was case sensitive #2650</comment>
+    <requestid>1055990</requestid>
+  </revision>
 </revisionlist>
