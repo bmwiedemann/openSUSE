@@ -1,0 +1,4 @@
+addFilter('devel-file-in-non-devel-package .*/Cython/.*')
+addFilter('devel-dependency python38-devel')
+addFilter('devel-dependency python39-devel')
+addFilter('devel-dependency python310-devel')
