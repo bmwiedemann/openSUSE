@@ -7,4 +7,15 @@
     <comment>from the elementaryOS UI designers, but can be used on any desktop</comment>
     <requestid>401589</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c604ffd3e7448c907ed929098ac0908</srcmd5>
+    <version>5.4.0</version>
+    <time>1672927287</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0:
+  * adjusted elasticsearch icon
+  * added symlinks
+  * updates</comment>
+    <requestid>1056141</requestid>
+  </revision>
 </revisionlist>

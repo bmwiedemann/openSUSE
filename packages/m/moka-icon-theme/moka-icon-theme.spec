@@ -1,6 +1,7 @@
 #
-# Spec file for package moka-icon-theme
+# spec file for package moka-icon-theme
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Sam Hewitt
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,21 +12,23 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           moka-icon-theme
-Version:        5.3.1
+Version:        5.4.0
 Release:        0
-License:        CC-BY-SA-4.0 and GPL-3.0+
 Summary:        Moka Icon theme
-Url:            https://snwh.org/moka
+License:        CC-BY-SA-4.0 AND GPL-3.0-or-later
 Group:          System/GUI/Other
-Source:         https://github.com/moka-project/moka-icon-theme/archive/v%{version}.tar.gz
-BuildRequires:  automake
+URL:            https://snwh.org/moka
+Source:         https://github.com/snwh/moka-icon-theme/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icon-naming-utils >= 0.8.7
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  meson
 BuildArch:      noarch
 
 %description
@@ -34,15 +37,14 @@ Moka is a simple and modern icon theme with Material Design influences.
 %prep
 %setup -q
 find -L . -type l -print -delete
-chmod +x autogen.sh
 chmod a-x AUTHORS README.md
 
 %build
-./autogen.sh
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
+%meson_install
 rm -f %{buildroot}%{_datadir}/icons/Moka/AUTHORS
 %fdupes %{buildroot}%{_datadir}/icons/Moka
 
@@ -50,7 +52,9 @@ rm -f %{buildroot}%{_datadir}/icons/Moka/AUTHORS
 %icon_theme_cache_post Moka
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING LICENSE_* README.md
+%license COPYING
+%doc AUTHORS LICENSE_* README.md
 %{_datadir}/icons/Moka
 %ghost %{_datadir}/icons/Moka/icon-theme.cache
+
+%changelog
