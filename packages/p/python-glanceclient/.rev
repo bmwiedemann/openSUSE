@@ -619,4 +619,23 @@ update to version 2.3.0
   - setup.cfg: Replace dashes with underscores</comment>
     <requestid>979055</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>979863fae46cb566edba1ae4e1e9c134</srcmd5>
+    <version>4.2.0</version>
+    <time>1672927237</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.2.0
+  - schema_args: Do not generate option for read-only properties
+  - Add support for glance-download import method
+  - Delete python bytecode before every test run
+  - Update master for stable/zed
+  - Uncap warlock
+  - Check if stdin has isatty attribute
+  - Bump default pagesize
+  - Remove incorrect note from requirements files
+  - Make &quot;tox -edocs&quot; generate the manpage
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Bump tox minversion to 3.18.0</comment>
+    <requestid>1055987</requestid>
+  </revision>
 </revisionlist>
