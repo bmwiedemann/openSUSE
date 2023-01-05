@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-coverage
-Version:        7.0.1
+Version:        7.0.3
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0

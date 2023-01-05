@@ -518,4 +518,14 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
     <comment></comment>
     <requestid>1045546</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f08235eeeb05124be18f8e92fe8677be</srcmd5>
+    <version>7.0.3</version>
+    <time>1672927220</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.3:
+  * Fix: when using pytest-cov or pytest-xdist, or perhaps both, the
+    combining step could fail with ``assert row is not None`` using 7.0.2.</comment>
+    <requestid>1055949</requestid>
+  </revision>
 </revisionlist>
