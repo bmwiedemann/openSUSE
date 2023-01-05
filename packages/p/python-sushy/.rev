@@ -197,4 +197,20 @@
   - Migrate System constants to enums</comment>
     <requestid>1007580</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ce2b2dbf015cd84f7c8c086ebacea541</srcmd5>
+    <version>4.4.0</version>
+    <time>1672927235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.0
+  - Fix misuse of assertTrue
+  - Update master for stable/zed
+  - Improve resiliency of eTag handling
+  - Increase server side retries
+  - Fix misuse of assertIsNone
+  - Update release versions for yoga and zed
+  - Add Python3 antelope unit tests
+  - Make server connection retries configurable</comment>
+    <requestid>1055985</requestid>
+  </revision>
 </revisionlist>

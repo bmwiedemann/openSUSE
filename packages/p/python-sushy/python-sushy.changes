@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:11:53 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - Fix misuse of assertTrue
+  - Update master for stable/zed
+  - Improve resiliency of eTag handling
+  - Increase server side retries
+  - Fix misuse of assertIsNone
+  - Update release versions for yoga and zed
+  - Add Python3 antelope unit tests
+  - Make server connection retries configurable
+
+-------------------------------------------------------------------
 Sun Oct  2 14:49:41 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.3.0
