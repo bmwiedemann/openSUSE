@@ -1,7 +1,7 @@
 #
 # spec file for package libplacebo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   229
 Name:           libplacebo
-Version:        5.229.1
+Version:        5.229.2
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
