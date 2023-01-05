@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           ocaml-camlp5
-Version:        8.00.03
+Version:        8.00.04
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
 License:        BSD-3-Clause
 Group:          Development/Languages/OCaml
+BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-camlp5.patch
-BuildRequires:  ocaml < 4.15
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml < 5.1
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(findlib)
@@ -46,7 +47,8 @@ Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and prin
 This package contains the development files.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
 
 %build
 %ifarch ppc64
@@ -64,9 +66,11 @@ cp -Lavit %buildroot%ocaml_standard_library/camlp5 etc/META
 %ocaml_create_file_list
 
 %files -f %name.files
+%defattr(-,root,root,-)
 %_bindir/*
 %_mandir/*/*
 
 %files devel -f %name.files.devel
+%defattr(-,root,root,-)
 
 %changelog
