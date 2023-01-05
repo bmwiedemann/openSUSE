@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec 26 03:08:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.31    2022-12-25
+          [CHANGES]
+           * PL_infix_plugin now exists in 5.37.7
+           * Support the new infix operator precedence levels added by
+             perl v5.37.7
+           * Various updates to hax/ support files
+
+-------------------------------------------------------------------
 Sun Dec  4 03:10:55 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.30
