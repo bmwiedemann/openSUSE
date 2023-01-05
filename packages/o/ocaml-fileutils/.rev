@@ -64,4 +64,13 @@
     <comment>- Use https URL for github.com</comment>
     <requestid>967050</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>219104c3445dd7876b1264e29946cfa8</srcmd5>
+    <version>0.6.4</version>
+    <time>1672927253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.4
+  See included CHANGES.md for details</comment>
+    <requestid>1056073</requestid>
+  </revision>
 </revisionlist>
