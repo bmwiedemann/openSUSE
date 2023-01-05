@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Dec 29 09:21:35 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.051:
+  * Add P/GLOB and REGEX parameters to file listing  (#334)
+  * ui: Move mirrorlist url to size/mtime column (#335)
+  * Improve url escaping in ui and redirects (#335)
+
+-------------------------------------------------------------------
+Thu Dec 22 10:15:27 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.050:
+  * Show description of top level folders for openSUSE (#333)
+  * Do not access DB in local render for / (#333)
+  * Improve layout for small screen size (#333)
+  * Implement realpath for remote root with nfs (#331)
+
+-------------------------------------------------------------------
+Thu Dec 15 12:26:30 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.049:
+  * Unify display of current path in /browse /download and .mirrorlist (#327)
+  * Show only hostname in mirrorlist url (#329)
+  * Set content-type for zsync (#328)
+  * Discover folders using realpath (#330)
+
+-------------------------------------------------------------------
+Thu Nov 24 13:06:57 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.048:
+  * Fix sorting by size in /report/download (#324)
+  * Change page size in /report/download (#324)
+  * Improve sorting in /browse (#324)
+  * Fix map icon not shown properly in .mirrorlist (#324)
+
+-------------------------------------------------------------------
+Thu Nov 24 10:17:35 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.047:
+  * Add /browse route to navigate folders with ajax (#322)
+  * Render TOP_FOLDER with /browse if browser (#322)
+  * Add ajax table for the one dimension download reports (#318)
+  * Cleanup stat older than STAT_KEEP_DAYS (8) (#319)
+  * Fix db password from ini file wasnt taken in all places (#323)
+  * Add option for enabling Mojo Status Plugin (#318)
+
+-------------------------------------------------------------------
 Thu Nov 17 06:21:34 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.046:
