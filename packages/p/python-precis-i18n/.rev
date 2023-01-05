@@ -49,4 +49,16 @@
   * Add type hints for package</comment>
     <requestid>954396</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e2baa02635267e1a289af9c9348a0a82</srcmd5>
+    <version>1.0.5</version>
+    <time>1672927242</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  *  Update internal tables for Unicode 15.0.
+  *  Small type hint fix to one ``.pyi`` file.
+  *  Add Python 3.11 and 3.12 to CI build environment.
+  *  Update copyright year (2023).</comment>
+    <requestid>1055997</requestid>
+  </revision>
 </revisionlist>
