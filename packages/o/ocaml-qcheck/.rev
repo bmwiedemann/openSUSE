@@ -84,4 +84,13 @@ It is a dependency of the next version of Haxe (4.0.0).</comment>
   See included CHANGELOG.md for details</comment>
     <requestid>967078</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>25b62f0f79f2c7efa4f4947e0fbacba0</srcmd5>
+    <version>0.20</version>
+    <time>1672927293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20
+  See included CHANGELOG.md for details</comment>
+    <requestid>1056079</requestid>
+  </revision>
 </revisionlist>
