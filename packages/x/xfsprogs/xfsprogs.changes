@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  4 17:38:34 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.1.0:
+  - libxfs: kernel sync
+  - libxfs: consume the xfs_warn mountpoint argument
+  - misc: add static to various sourcefile-local functions
+  - misc: add missing includes
+  - xfs_{db,repair}: fix XFS_REFC_COW_START usage
+  - xfs_repair: don't crash on unknown inode parents in dry run mode
+  - xfs_repair: retain superblock buffer to avoid write hook deadlock
+  - xfs_repair: Attempt log replay during boot time repair
+  - xfs_repair: covscan fixes
+  - xfs_db: create separate struct and field definitions for finobts
+  - xfs_db: fix dir3 block magic check
+  - xfs_db: fix octal conversion logic
+  - xfs_db: fix printing of reverse mapping record blockcounts
+  - xfs_io: don't display stripe alignment flags for rt files
+  - xfs_db: fix dir3 block magic check
+  - mkfs.xfs: add mkfs config file for the 6.1 LTS kernel
+
+-------------------------------------------------------------------
 Wed Nov 16 10:20:22 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.0.0:

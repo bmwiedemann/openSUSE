@@ -1,7 +1,7 @@
 #
 # spec file for package xfsprogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
