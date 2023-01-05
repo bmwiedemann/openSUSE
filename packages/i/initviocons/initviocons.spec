@@ -1,7 +1,7 @@
 #
 # spec file for package initviocons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ make CFLAGS="$RPM_OPT_FLAGS -Wall"
 %install
 %make_install
 install -m 0755 termprobes $RPM_BUILD_ROOT/%{_bindir}/termprobes
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p $RPM_BUILD_ROOT/bin
 ln -sf %{_bindir}/initviocons $RPM_BUILD_ROOT/bin
 %endif
@@ -62,7 +62,7 @@ ln -sf %{_bindir}/initviocons $RPM_BUILD_ROOT/bin
 %files
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog COPYING NEWS README
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/*
 %endif
 %{_bindir}/*
