@@ -1,7 +1,7 @@
 #
-# spec file for package python-bokeh
+# spec file for package python-bokeh2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,16 +28,20 @@ Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{v
 Source1:        https://raw.githubusercontent.com/bokeh/bokeh/%{version}/conftest.py
 #PATCH-FIX-UPSTREAM bokeh-pr12218-Pillow9.2.patch gh#bokeh/bokeh#12218
 Patch1:         https://github.com/bokeh/bokeh/pull/12218.patch#/bokeh-pr12218-Pillow9.2.patch
+#PATCH-FIX-UPSTREAM bokeh-pr12690-bool-deprecation.patch gh#bokeh/bokeh#12690
+Patch2:         bokeh-pr12690-bool-deprecation.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module packaging >= 16.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.1}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
@@ -93,10 +97,10 @@ find tests -name '*.py' -exec \
   ';'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/bokeh
 
@@ -138,6 +142,6 @@ deselectname+=" or test_numpyint"
 %doc CHANGELOG README.md
 %python_alternative %{_bindir}/bokeh
 %{python_sitelib}/bokeh/
-%{python_sitelib}/bokeh-%{version}*-info
+%{python_sitelib}/bokeh-%{version}.dist-info
 
 %changelog

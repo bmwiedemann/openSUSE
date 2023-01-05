@@ -1,0 +1,73 @@
+From 6df57b705b42a2905b51d2dd5e5287a7e7bf1650 Mon Sep 17 00:00:00 2001
+From: Matthew Rocklin <mrocklin@gmail.com>
+Date: Tue, 20 Dec 2022 08:27:49 -0600
+Subject: [PATCH] Replace numpy.bool8 with numpy.bool_
+
+Fixes https://github.com/bokeh/bokeh/issues/12689
+Fixes https://github.com/dask/distributed/issues/7422
+---
+ src/bokeh/core/property/primitive.py             |  2 +-
+ tests/unit/bokeh/core/property/test_primitive.py | 16 ++++++++--------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+Index: bokeh-2.4.3/bokeh/core/property/primitive.py
+===================================================================
+--- bokeh-2.4.3.orig/bokeh/core/property/primitive.py
++++ bokeh-2.4.3/bokeh/core/property/primitive.py
+@@ -34,7 +34,7 @@ from .bases import Init, PrimitiveProper
+ bokeh_bool_types = (bool,)
+ try:
+     import numpy as np
+-    bokeh_bool_types += (np.bool8,)
++    bokeh_bool_types += (np.bool_,)
+ except ImportError:
+     pass
+ 
+Index: bokeh-2.4.3/tests/unit/bokeh/core/property/test_primitive.py
+===================================================================
+--- bokeh-2.4.3.orig/tests/unit/bokeh/core/property/test_primitive.py
++++ bokeh-2.4.3/tests/unit/bokeh/core/property/test_primitive.py
+@@ -52,8 +52,8 @@ class Test_Bool:
+         assert prop.is_valid(False)
+         assert prop.is_valid(True)
+ 
+-        assert prop.is_valid(np.bool8(False))
+-        assert prop.is_valid(np.bool8(True))
++        assert prop.is_valid(np.bool_(False))
++        assert prop.is_valid(np.bool_(True))
+ 
+     def test_invalid(self) -> None:
+         prop = bcpp.Bool()
+@@ -159,8 +159,8 @@ class Test_Complex:
+         assert not prop.is_valid(_TestHasProps())
+         assert not prop.is_valid(_TestModel())
+ 
+-        assert not prop.is_valid(np.bool8(False))
+-        assert not prop.is_valid(np.bool8(True))
++        assert not prop.is_valid(np.bool_(False))
++        assert not prop.is_valid(np.bool_(True))
+ 
+     def test_has_ref(self) -> None:
+         prop = bcpp.Complex()
+@@ -219,8 +219,8 @@ class Test_Float:
+         assert not prop.is_valid(_TestHasProps())
+         assert not prop.is_valid(_TestModel())
+ 
+-        assert not prop.is_valid(np.bool8(False))
+-        assert not prop.is_valid(np.bool8(True))
++        assert not prop.is_valid(np.bool_(False))
++        assert not prop.is_valid(np.bool_(True))
+         assert not prop.is_valid(np.complex64(1.0+1.0j))
+         assert not prop.is_valid(np.complex128(1.0+1.0j))
+         if hasattr(np, "complex256"):
+@@ -277,8 +277,8 @@ class Test_Int:
+         assert not prop.is_valid(_TestHasProps())
+         assert not prop.is_valid(_TestModel())
+ 
+-        assert not prop.is_valid(np.bool8(False))
+-        assert not prop.is_valid(np.bool8(True))
++        assert not prop.is_valid(np.bool_(False))
++        assert not prop.is_valid(np.bool_(True))
+         assert not prop.is_valid(np.float16(0))
+         assert not prop.is_valid(np.float16(1))
+         assert not prop.is_valid(np.float32(0))
