@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:27:35 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Nov 23 13:24:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add e63d7cdf.patch: awk: fix use after free (CVE-2022-30065,

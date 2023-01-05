@@ -1,7 +1,7 @@
 #
 # spec file for package busybox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,7 +135,7 @@ make %{?_smp_mflags} -e oldconfig
 make -e
 make -e doc busybox.links %{?_smp_mflags}
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 for i in busybox.links %{?with_ww3:busybox-warewulf3.links}; do
     sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' $i
 done
