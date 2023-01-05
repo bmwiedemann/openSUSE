@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:36:59 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Aug 23 12:48:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add closefrom.patch [boo#1189086]

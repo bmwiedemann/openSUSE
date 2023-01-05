@@ -1,7 +1,7 @@
 #
 # spec file for package fuse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,7 +130,7 @@ install -m644 -D util/udev.rules %{buildroot}/%{_sysconfdir}/udev/rules.d/99-fus
 find %{buildroot} -type f -name "*.la" -delete -print
 # not needed for fuse, might reappar in separate package:
 rm -f %{buildroot}/%{_libdir}/libulockmgr.a
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 mkdir %{buildroot}/%{_lib}
 ln -s -v %{_sbindir}/mount.fuse %{buildroot}/sbin
@@ -169,7 +169,7 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %{_sysconfdir}/udev/rules.d/99-fuse.rules
 %endif
 %verify(not mode) %attr(4750,root,trusted) %{_bindir}/fusermount
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/mount.fuse
 %endif
 %{_sbindir}/mount.fuse
@@ -180,13 +180,13 @@ rm -rf doc/Makefile.am doc/Makefile.in doc/Makefile
 %{_mandir}/man8/mount.fuse.8%{?ext_man}
 
 %files -n libfuse2
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /%{_lib}/libfuse.so.2*
 %endif
 %{_libdir}/libfuse.so.2*
 
 %files -n libulockmgr1
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /%{_lib}/libulockmgr.so.*
 %endif
 %{_libdir}/libulockmgr.so.*
