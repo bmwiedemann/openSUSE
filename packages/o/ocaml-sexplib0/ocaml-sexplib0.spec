@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sexplib0
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-sexplib0
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library containing the definition of S-expressions and some base converters
@@ -27,7 +27,7 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/sexplib0
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 
 %description

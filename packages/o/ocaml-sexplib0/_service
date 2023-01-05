@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-sexplib0</param>
-    <param name="revision">486bed42dd1946666e6dba369d493dc472c874bd</param>
+    <param name="revision">4c3387b5890ed7f27d761d4926022efef5710463</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/janestreet/sexplib0.git</param>

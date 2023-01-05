@@ -41,4 +41,13 @@
   No changelog provided</comment>
     <requestid>967080</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>047084c6e9719adc0453ce7a61cf0ac9</srcmd5>
+    <version>0.15.1</version>
+    <time>1672927258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.1
+  Handle OCaml 5.0</comment>
+    <requestid>1056081</requestid>
+  </revision>
 </revisionlist>
