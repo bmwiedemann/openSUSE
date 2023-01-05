@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:04:28 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Updated tarballs, still 2.3.7, although the tarballs add a -1
+
+-------------------------------------------------------------------
+Mon Dec 12 07:24:12 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.3.7:
+  * Small improvements and bug fixes all over the place. For
+    details see included ANNOUNCE
+    or https://www.lyx.org/announce/2_3_7.txt
+- Remove lyx-2.3.6-fix-gcc12.patch
+
+-------------------------------------------------------------------
 Sat May 14 14:28:50 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Add lyx-2.3.6-fix-gcc12.patch to fix build with gcc-12

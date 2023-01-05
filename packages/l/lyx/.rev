@@ -862,4 +862,18 @@
 - Use autosetup</comment>
     <requestid>977248</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>2ce31a2fbeefaa2c402bcd8b0e223602</srcmd5>
+    <version>2.3.7</version>
+    <time>1672927263</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated tarballs, still 2.3.7, although the tarballs add a -1
+
+- Update to 2.3.7:
+  * Small improvements and bug fixes all over the place. For
+    details see included ANNOUNCE
+    or https://www.lyx.org/announce/2_3_7.txt
+- Remove lyx-2.3.6-fix-gcc12.patch</comment>
+    <requestid>1056088</requestid>
+  </revision>
 </revisionlist>

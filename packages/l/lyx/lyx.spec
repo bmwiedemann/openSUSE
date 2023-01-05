@@ -1,7 +1,7 @@
 #
 # spec file for package lyx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           lyx
-Version:        2.3.6.1
+Version:        2.3.7
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.lyx.org/
-Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.xz
+Source:         ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}-1.tar.xz
 Source1:        lyxrc.dist
 Source2:        lyx.keyring
-Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}.tar.xz.sig
+Source3:        ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-%{version}-1.tar.xz.sig
 Source4:        README.SUSE
 # PATCH-FIX-UPSTREAM to satisfy rpmlint - use #! /usr/bin/python as shebang
 # See: https://www.lyx.org/trac/changeset/cac27076ead10684270520670adc6bd004793361/lyxgit
@@ -36,8 +36,6 @@ Patch0:         correct-shebang.patch
 # PATCH-FIX-UPSTREAM remove_python_shebang.patch mcepl@suse.com
 # remove all instances of python2 shebang lines
 Patch1:         remove_python_shebang.patch
-# Fix build with gcc-12
-Patch2:         lyx-2.3.6-fix-gcc12.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
