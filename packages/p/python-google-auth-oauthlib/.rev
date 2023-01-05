@@ -98,4 +98,14 @@
     <comment></comment>
     <requestid>1034454</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60de18da936fabbc7fc568e57ca177ec</srcmd5>
+    <version>0.8.0</version>
+    <time>1672927265</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.8.0:
+  * Add support for Python 3.11
+  * Introduce granted scopes to credentials</comment>
+    <requestid>1056090</requestid>
+  </revision>
 </revisionlist>
