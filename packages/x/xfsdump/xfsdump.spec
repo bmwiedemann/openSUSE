@@ -71,7 +71,7 @@ export DIST_ROOT=%{buildroot}
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %find_lang xfsdump
 mv %{buildroot}/sbin/{xfsdump,xfsrestore} %{buildroot}/%{_sbindir}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -s %{_sbindir}/xfsdump %{buildroot}/sbin
 ln -s %{_sbindir}/xfsrestore %{buildroot}/sbin
 %endif
@@ -79,7 +79,7 @@ ln -s %{_sbindir}/xfsrestore %{buildroot}/sbin
 %files -f xfsdump.lang
 %defattr(-,root,root,755)
 %{_sbindir}/*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %doc %{_defaultdocdir}/%{name}

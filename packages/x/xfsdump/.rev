@@ -295,4 +295,12 @@
   * xfsrestore: untangle inventory unpacking logic</comment>
     <requestid>1043475</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>3faf87276b507e24595150af4659f65b</srcmd5>
+    <version>3.1.12</version>
+    <time>1672927204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055779</requestid>
+  </revision>
 </revisionlist>
