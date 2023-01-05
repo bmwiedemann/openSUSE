@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 18:32:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Add scale-to-X and scale-to-Y attributes to page-layout properties
+  * Add Support for Linux on power
+  * Update datatable.py
+  * Fix bug in __replaceGenerator()
+
+-------------------------------------------------------------------
 Sun Oct  4 15:42:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Change license from GPL-2.0-or-later AND Apache-2.0 to

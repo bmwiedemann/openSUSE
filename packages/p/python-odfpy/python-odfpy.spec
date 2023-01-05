@@ -1,7 +1,7 @@
 #
-# spec file for package python-odfpy
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define binaries csv2ods mailodf odf2mht odf2xhtml odf2xml odfimgimport odflint odfmeta odfoutline odfuserfield xml2odf
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Python API and tools to manipulate OpenDocument files
-License:        GPL-2.0-or-later OR Apache-2.0
+License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/eea/odfpy
-Source:         https://files.pythonhosted.org/packages/source/o/odfpy/%{modname}-%{version}.tar.gz
+Source:         https://github.com/eea/odfpy/archive/refs/tags/release-%{version}.tar.gz
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -35,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,7 +67,7 @@ In addition to the API, there are a few scripts:
 Visit https://github.com/eea/odfpy for documentation and examples.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n %{modname}-release-%{version}
 sed -i "1d" odf/{userfield,odf2xhtml,manifest,element,elementtypes,load,odfmanifest,thumbnail}.py # Fix non-executable scripts
 
 %build

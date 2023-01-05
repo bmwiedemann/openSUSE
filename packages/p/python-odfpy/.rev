@@ -178,4 +178,16 @@ See setup.py (forwarded request 137513 from babelworx)</comment>
     <comment></comment>
     <requestid>839486</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6c6f9deb07f131a36373fde6da0dd0ad</srcmd5>
+    <version>1.4.2</version>
+    <time>1672927233</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * Add scale-to-X and scale-to-Y attributes to page-layout properties
+  * Add Support for Linux on power
+  * Update datatable.py
+  * Fix bug in __replaceGenerator()</comment>
+    <requestid>1055975</requestid>
+  </revision>
 </revisionlist>
