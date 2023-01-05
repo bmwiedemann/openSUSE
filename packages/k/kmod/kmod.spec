@@ -140,14 +140,14 @@ rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_sbindir" "$b/sbin"
 for i in depmod insmod lsmod modinfo modprobe rmmod; do
 	ln -s "%_bindir/kmod" "$b/%_sbindir/$i"
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 	ln -s "%_bindir/kmod" "$b/sbin/$i"
 %endif
 done
 mkdir -p "$b/%_bindir" "$b/bin"
 for i in lsmod; do
 	ln -s "%_bindir/kmod" "$b/%_bindir/$i"
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 	ln -s "%_bindir/kmod" "$b/bin/$i"
 %endif
 done
@@ -171,7 +171,7 @@ done
 %_sbindir/modprobe
 %_sbindir/rmmod
 %_mandir/man[58]/*.[58]*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/lsmod
 /sbin/depmod
 /sbin/insmod

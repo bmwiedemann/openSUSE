@@ -649,4 +649,12 @@ testsuite still needs zstd command, the library can do without.</comment>
     <comment>- Update to release 30</comment>
     <requestid>986103</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>70020f40d2ecf1a1fef8bc4f165af0ec</srcmd5>
+    <version>30</version>
+    <time>1672927198</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055108 from lnussel)</comment>
+    <requestid>1055735</requestid>
+  </revision>
 </revisionlist>

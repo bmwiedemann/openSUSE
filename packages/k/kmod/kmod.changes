@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:38:29 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Jun 30 16:15:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 30
