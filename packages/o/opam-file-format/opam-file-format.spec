@@ -1,7 +1,7 @@
 #
 # spec file for package opam-file-format
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg opam-file-format
 Name:           %pkg%nsuffix
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Parser and printer for the opam file syntax
@@ -39,7 +39,7 @@ URL:            https://opam.ocaml.org/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-rpm-macros >= 20230101
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
