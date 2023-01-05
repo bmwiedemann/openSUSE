@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  5 08:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Improve closing of v4l2 devices
+  * Fix creation of pid_file
+  * Add header check for mmal
+  * Fix pause when used as command line option
+  * Fix json pages when multiple cameras used
+  * Fix codec for movie_codec for mpeg4
+  * Fix rotation for v4l2 devices
+
+-------------------------------------------------------------------
 Sun Dec  4 14:20:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.0:

@@ -195,4 +195,19 @@
   * Update japanese translations. (forwarded request 1039989 from dirkmueller)</comment>
     <requestid>1040170</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d9496a2cc3e86aa6ced2ca2a366ff252</srcmd5>
+    <version>4.5.1</version>
+    <time>1672930504</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.1:
+  * Improve closing of v4l2 devices
+  * Fix creation of pid_file
+  * Add header check for mmal
+  * Fix pause when used as command line option
+  * Fix json pages when multiple cameras used
+  * Fix codec for movie_codec for mpeg4
+  * Fix rotation for v4l2 devices (forwarded request 1056139 from dirkmueller)</comment>
+    <requestid>1056200</requestid>
+  </revision>
 </revisionlist>
