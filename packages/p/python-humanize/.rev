@@ -90,4 +90,41 @@
   * Remove deprecated private function aliases</comment>
     <requestid>1030148</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a97f38b71ef705f409149f97ac2c802f</srcmd5>
+    <version>4.4.0</version>
+    <time>1672927240</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Add installation instructions (#56) @hugovk
+  * Internationalise the decimal separator in intcomma() (#53) @Luflosi
+  * Internationalise intcomma for de_DE locale (#49) @Luflosi
+  * Replace short scale with long scale for Polish numbers (#54) @mjmikulski
+  * Fix intcomma() failing with a string as input when ndigits is not None
+    (#52) @Luflosi
+  * Fix some pylint findings (#42) @hugovk
+  * Fix &quot;ValueError: math domain error&quot; for metric(0) (#47) @liukun
+  * Add Greek translation (#46) @waseigo
+  * Polish: Added thousand, fixed big numbers (#43) @dejurin
+  * Fix intword for negative numbers (#41) @vishket
+  * Update annotations, docs, and tests: naturaltime can also accept a
+    timedelta (#31) @nuztalgia
+  * Update annotations: naturadelta and naturaltime can also accept a float
+    (#29) @hugovk
+  * Rename Arabic locale from ar_SA to ar to enable fallbacks (#27) @hugovk
+  * Use %d for year translations, convert to string for intcomma after (#23)
+    @carterbox
+  * Fix intcomma with ndigits=0 (#26) @hugovk
+  * Add humanize.metric() for converting big/small numbers to SI units (#22)
+  * Add type hints (#15) @hugovk
+  * Fix scientific() on small positive numbers (#22) @bwoodsend
+  * Remove redundant wheel dependency from pyproject.toml (#16) @mgorny
+  * Support Python 3.11 (#13) @hugovk
+  * Add Arabic language (jmoiron/humanize#256) @AYMENJD
+  * Docs: add dark mode toggle and default to system preference
+    (jmoiron/humanize#255) @hugovk
+  * Documentation improvements (jmoiron/humanize#254) @mondeja
+  * Update repo links (#2) @hugovk</comment>
+    <requestid>1055993</requestid>
+  </revision>
 </revisionlist>
