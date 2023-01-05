@@ -2507,4 +2507,12 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
 - BuildRequire iproute2 (needed for aa-unconfined tests) (forwarded request 1037410 from cboltz)</comment>
     <requestid>1037411</requestid>
   </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>b42175f0d4a99ca61e2189f8a6dd00f0</srcmd5>
+    <version>3.1.2</version>
+    <time>1672927202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055771</requestid>
+  </revision>
 </revisionlist>

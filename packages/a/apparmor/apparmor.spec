@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011-2022 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,12 @@
 #
 
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define sbindir %_sbindir
+%define apparmor_bin_prefix /usr/lib/apparmor
 %else
 %define sbindir /sbin
+%define apparmor_bin_prefix /lib/apparmor
 %endif
 
 %if 0%{?suse_version} <= 1500
@@ -91,7 +93,6 @@ Patch12:        dnsmasq-cpu-possible.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
