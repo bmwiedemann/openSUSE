@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:30:22 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Nov 28 13:51:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - cryptsetup 2.6.0:

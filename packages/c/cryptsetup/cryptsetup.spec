@@ -1,7 +1,7 @@
 #
 # spec file for package cryptsetup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -147,7 +147,7 @@ time via the config file %{_sysconfdir}/crypttab.
 %{nil}
 
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 install -dm 0755 %{buildroot}/sbin
 ln -s ..%{_sbindir}/cryptsetup %{buildroot}/sbin
 %endif
@@ -172,7 +172,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/cryptsetup
 %endif
 %{_sbindir}/cryptsetup
