@@ -1,7 +1,7 @@
 #
 # spec file for package whois
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           whois
-Version:        5.5.14
+Version:        5.5.15
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later

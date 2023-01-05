@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:41:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.15:
+  * Updated the .bd, .nz and .tv TLD servers.
+  * Added the .llyw.cymru, .gov.scot and .gov.wales SLD servers.
+  * Updated the .ac.uk and .gov.uk SLD servers.
+  * Recursion has been enabled for whois.nic.tv.
+  * Updated the list of new gTLDs with four generic TLDs assigned in
+    October 2013 which were missing due to a bug.
+  * Removed 4 new gTLDs which are no longer active.
+  * Added the Georgian translation, contributed by Temuri Doghonadze.
+  * Updated the Finnish translation, contributed by Lauri Nurmi.
+
+-------------------------------------------------------------------
 Mon Oct 17 06:39:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.14:
