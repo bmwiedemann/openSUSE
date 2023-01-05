@@ -248,4 +248,19 @@
     <comment>- Update to release 2.15.1</comment>
     <requestid>1036697</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f44f1f1726a74dc760ea8e78be406f24</srcmd5>
+    <version>2.15.2</version>
+    <time>1672927302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.2:
+  Fixed
+    polredbest: rare error &quot;inconsistent concatenation&quot;
+    hypergeom([0,0],[1],2)
+    powers(t_INT, ...) was very slow
+    factor(prod(i=1,20,nextprime(2^i)), 131) would include 131
+    sumeulerrat(x^2/(1+x),2) -&gt; FPE
+    lambertw(10^1000) -&gt; overflow (forwarded request 1056144 from dirkmueller)</comment>
+    <requestid>1056174</requestid>
+  </revision>
 </revisionlist>

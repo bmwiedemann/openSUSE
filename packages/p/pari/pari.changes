@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  5 08:17:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.2:
+  Fixed
+    polredbest: rare error "inconsistent concatenation"
+    hypergeom([0,0],[1],2)
+    powers(t_INT, ...) was very slow
+    factor(prod(i=1,20,nextprime(2^i)), 131) would include 131
+    sumeulerrat(x^2/(1+x),2) -> FPE
+    lambertw(10^1000) -> overflow
+
+-------------------------------------------------------------------
 Fri Nov 18 17:44:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.15.1
