@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 12:56:09 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Re-disable tests in PPC, PPC64 and S390X and reference issues about
+  endianness unsafe API
+
+-------------------------------------------------------------------
 Thu Dec  8 12:51:17 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 5.4

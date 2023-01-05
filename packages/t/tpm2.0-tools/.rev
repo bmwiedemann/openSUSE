@@ -666,4 +666,12 @@ fix the offset of the read buffer (forwarded request 909201 from aplanas)</comme
     <comment></comment>
     <requestid>1041885</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>2a8525ea9d717b08283eef49ee79205c</srcmd5>
+    <version>5.4</version>
+    <time>1672927208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055808</requestid>
+  </revision>
 </revisionlist>

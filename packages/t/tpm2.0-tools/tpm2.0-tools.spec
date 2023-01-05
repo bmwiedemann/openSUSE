@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,16 @@
 
 
 %define _lto_cflags %{nil}
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64le
 %bcond_without  test
+%else
+# ppc ppc64 s390x: some code (tpm2_command_header_from_bytes) depend
+# on the endianness of the architecture:
+#   gh#tpm2-software/tpm2-tools#3055
+#   gh#tpm2-software/tpm2-tools#3060
+#   gh#tpm2-software/tpm2-tools#3061
+%bcond_with     test
+%endif
 Name:           tpm2.0-tools
 Version:        5.4
 Release:        0
