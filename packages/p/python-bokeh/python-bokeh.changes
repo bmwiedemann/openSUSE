@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan  4 15:40:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.0.3
+  * Bokeh Version 3.0.3 (Dec 2022) is a point release that
+    addresses layout issues affecting downstream projects, as well
+    as other small regressions and bugfixes.
+  * Fix export with fractional CSS lengths (#12611)
+  * Fix layout propagation in nested mixed layouts (#12583)
+  * Fix application of UI element styles in Firefox (#12633)
+  * Add default styles to FILE template (#12627)
+  * Ensure change callback manipulation is threadsafe (#12623)
+
+-------------------------------------------------------------------
 Sat Nov 19 20:33:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 3.0.2

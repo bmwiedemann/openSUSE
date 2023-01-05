@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -84,6 +84,7 @@ BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module pandas-datareader}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pydot}
+BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest-asyncio >= 0.18.1}
 BuildRequires:  %{python_module pytest-xdist}
@@ -157,7 +158,7 @@ deselectname+=" or (codebase and combined)"
 # extraneous fields
 deselectname+=" or test_serialization_data_models"
 # linting and code structure irrelevant for rpm package
-deselectname+=" or test_flake8 or test_isort or test_eslint or test_code_quality or test_no_request_host"
+deselectname+=" or test_ruff or test_isort or test_eslint or test_code_quality or test_no_request_host"
 # no driver (chromedriver only x86_64)
 deselectname+=" or Test_webdriver_control"
 # fails when tested with pytest-xdist
