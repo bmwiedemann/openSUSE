@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -68,6 +68,12 @@ Patch0:         reduce-meson-dependency.patch
 Patch1:         0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
 # PATCH-FIX-UPSTREAM 0001-alsa-dont-set--1-as-node.target.patch
 Patch2:         0001-alsa-dont-set--1-as-node.target.patch
+# PATCH-FIX-UPSTREAM 0003-bluez5-backend-native-fix-missing-brace-in-CIND-reply.patch
+Patch3:         0003-bluez5-backend-native-fix-missing-brace-in-CIND-reply.patch
+# PATCH-FIX-UPSTREAM 0001-modules-fix-rate-update.patch
+Patch4:         0001-modules-fix-rate-update.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-fix-memory-leak-of-properties.patch
+Patch5:         0001-alsa-fix-memory-leak-of-properties.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -263,6 +269,25 @@ The framework is used to build a modular daemon that can be configured to:
  * A central hub where video can be made available for other applications
    such as the gnome-shell screencast API.
 
+%package module-x11-%{apiver_str}
+Summary:        X11 support For PipeWire, A Multimedia Framework
+Group:          Productivity/Multimedia/Other
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+
+%description module-x11-%{apiver_str}
+PipeWire is a server and user space API to deal with multimedia pipelines.
+
+The framework is used to build a modular daemon that can be configured to:
+
+ * Be a low-latency audio server with features like pulseaudio and/or jack;
+ * A video capture server that can manage hardware video capture devices
+   and provide access to them;
+ * A central hub where video can be made available for other applications
+   such as the gnome-shell screencast API.
+
+This package contains X11 bell support for PipeWire.
+
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
 Group:          Productivity/Multimedia/Other
@@ -341,6 +366,9 @@ This package provides a PulseAudio implementation based on PipeWire
 %endif
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -550,9 +578,9 @@ fi
 %files modules-%{apiver_str}
 %dir %{_libdir}/pipewire-%{apiver}
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-*.so
+%exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
 %dir %{_libdir}/pipewire-%{apiver}/v4l2/
 %{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
-
 %dir %{_datadir}/alsa-card-profile/
 %dir %{_datadir}/alsa-card-profile/mixer/
 %{_datadir}/alsa-card-profile/mixer/*
@@ -560,6 +588,9 @@ fi
 %{_datadir}/pipewire/client.conf
 %{_datadir}/pipewire/client-rt.conf
 %{_datadir}/pipewire/minimal.conf
+
+%files module-x11-%{apiver_str}
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
 
 %files spa-plugins-%{spa_ver_str}
 %dir %{_libdir}/spa-%{spa_ver}/

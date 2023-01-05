@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:25:48 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix pulse tunnel getting out of
+  sync/overruns (glfo#pipewire/pipewire#2891):
+  * 0001-modules-fix-rate-update.patch
+- Add patch from upstream to fix memory leak of properties:
+  * 0001-alsa-fix-memory-leak-of-properties.patch
+
+-------------------------------------------------------------------
+Fri Dec 30 13:45:32 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
+
+- Ship only X11 bell module in module-x11 sub-package
+
+-------------------------------------------------------------------
+Tue Dec 27 20:12:09 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Split the X11 bell implementation into a separate package
+  (overlaps with implementations in e.g. Marco).
+- Add patch from upstream to fix a Bluetooth regression
+  (glfo#pipewire/pipewire#2898):
+  * 0003-bluez5-backend-native-fix-missing-brace-in-CIND-reply.patch
+
+-------------------------------------------------------------------
 Mon Dec 19 11:00:49 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to remember last routing after a reboot

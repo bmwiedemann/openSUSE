@@ -1,0 +1,24 @@
+From ed463248721cc03c826f80dac9667b238c844e03 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Sun, 1 Jan 2023 02:00:36 +0000
+Subject: [PATCH] alsa: fix memory leak of properties
+
+---
+ pipewire-alsa/alsa-plugins/ctl_pipewire.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pipewire-alsa/alsa-plugins/ctl_pipewire.c b/pipewire-alsa/alsa-plugins/ctl_pipewire.c
+index 71f02f90e..67bd2f432 100644
+--- a/pipewire-alsa/alsa-plugins/ctl_pipewire.c
++++ b/pipewire-alsa/alsa-plugins/ctl_pipewire.c
+@@ -1083,6 +1083,7 @@ static void proxy_destroy(void *data)
+ 	struct global *g = data;
+ 	spa_list_remove(&g->link);
+ 	g->proxy = NULL;
++	pw_properties_free(g->props);
+ }
+ 
+ static const struct pw_proxy_events proxy_events = {
+-- 
+GitLab
+
