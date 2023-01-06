@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 30 12:06:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Update to 0.21.0:
+  * Explicitly add py package as a dependency, fixing issue with pytest >=
+    7.2.0
+  * Process log files will not be overwritten for each new process anymore,
+    making it easier to debug issues that occurred in the middle of failed test
+    runs
+- 0.19.0:
+  * drop support for python 3.5 and 3.6
+  * reorganize internals. pytest-xprocess is now a package and all resources
+    used by running processes are kept as instances of
+    :class:XProcessResources.
+- 0.18.1:
+  * Fix bug with previous release where internal module was missing
+- 0.18.0:
+  * :method:`ProcessInfo.terminate` will now terminate outer leaves in process
+    tree first and work its way towards root process. For example, if a process
+    has child and grandchild, xprocess will terminate first child and
+    grandchild and only then will the root process receive a termination
+    signal.
+  * :class:`ProcessStarter` now has attr:terminate_on_interrupt. This flag will
+    make xprocess attempt to terminate and clean up all started process
+    resources upon interruptions during pytest runs (CTRL+C, SIGINT and
+    internal errors) when set to True. It will default to False, so if the
+    described behaviour is desired the flag must be explicitly set True.
+  * Add a new popen_kwargs variable to ProcessStarter, this variable can be
+    used for passing keyword values to the subprocess.Popen constructor, giving
+    the user more control over how the process is initialized.
+
+-------------------------------------------------------------------
 Sat Jun 19 11:01:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - initial packaging of 0.17.1

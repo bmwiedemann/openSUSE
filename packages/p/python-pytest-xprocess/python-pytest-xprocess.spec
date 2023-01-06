@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-xprocess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define oldpython python
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-xprocess
-Version:        0.17.1
+Version:        0.21.0
 Release:        0
-Summary:        A pytest plugin for managing processes across test runs.
+Summary:        A pytest plugin for managing processes across test runs
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-xprocess
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-xprocess/pytest-xprocess-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 2.8}
+BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-psutil
+Requires:       python-py
 Requires:       python-pytest >= 2.8
 BuildArch:      noarch
 %python_subpackages
@@ -56,8 +57,9 @@ test-specific databases (i.e. Postgres, Couchdb).
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc %attr(0644, -, -) README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/xprocess
+%{python_sitelib}/pytest_xprocess-%{version}*-info
 
 %changelog
