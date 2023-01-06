@@ -96,4 +96,12 @@
     <comment>- Update to release 5.4.3</comment>
     <requestid>1043990</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f4e8f0a17321e4e81da91c27c31751e</srcmd5>
+    <version>5.4.4</version>
+    <time>1673021140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.4</comment>
+    <requestid>1056249</requestid>
+  </revision>
 </revisionlist>

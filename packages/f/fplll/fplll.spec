@@ -1,7 +1,7 @@
 #
 # spec file for package fplll
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           fplll
-%define lname   libfplll7
-Version:        5.4.3
+%define lname   libfplll8
+Version:        5.4.4
 Release:        0
 Summary:        Lenstra-Lovász Lattice Basis Reduction Algorithm Library
 License:        LGPL-2.1-or-later
@@ -60,7 +60,7 @@ Requires:       %lname = %version
 Obsoletes:      libfplll-devel < %version-%release
 Provides:       libfplll-devel = %version-%release
 
-%description -n fplll-devel
+%description devel
 fplll contains several algorithms on lattices that rely on
 floating-point computations. This includes implementations of the
 floating-point LLL reduction algorithm, offering different
@@ -72,7 +72,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libfplll.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %limit_build -m 1700
@@ -96,7 +96,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %files -n %lname
 %_libdir/libfplll.so.*
 
-%files -n fplll-devel
+%files devel
 %_includedir/fplll*
 %_libdir/libfplll.so
 %_libdir/pkgconfig/*.pc

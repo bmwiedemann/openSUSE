@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 17:40:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.4
+  * Make Babai test more robust for PPC
+
+-------------------------------------------------------------------
 Tue Dec 20 21:30:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.4.3
