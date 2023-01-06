@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-openSUSE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define plasma_version 5.26.4
+%define plasma_version 5.26.5
 Name:           plasma5-openSUSE
 Version:        84.87~git20220602T134713~22403ba
 Release:        0
