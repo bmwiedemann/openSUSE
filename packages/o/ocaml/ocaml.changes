@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
+
+- update to version 4.14.1
+  See included Changes for benefits and breaking changes
+
+-------------------------------------------------------------------
 Thu Jul  7 07:07:07 UTC 2022 - ohering@suse.de
 
 - remove directory= statements from ocamldoc and compiler-libs META files

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml</param>
-    <param name="revision">15553b77175270d987058b386d737ccb939e8d5a</param>
+    <param name="revision">99cb5d93fc30f1a6f3e69f5aa5d2063994d33a93</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/ocaml.git</param>

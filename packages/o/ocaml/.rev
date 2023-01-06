@@ -804,4 +804,13 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989369</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>693353f10442a0b4c0e8bd0ce3d6caf7</srcmd5>
+    <version>4.14.1</version>
+    <time>1673021092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.14.1
+  See included Changes for benefits and breaking changes</comment>
+    <requestid>1056083</requestid>
+  </revision>
 </revisionlist>

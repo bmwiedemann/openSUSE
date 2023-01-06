@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -38,11 +38,11 @@
 	%nil
 
 %global  _buildshell /bin/bash
-%bcond_with ocaml_make_testsuite
+%bcond_with ocaml_testsuite
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.14.0
+Version:        4.14.1
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}
@@ -59,7 +59,7 @@ Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %version-%release
@@ -174,6 +174,11 @@ CFLAGS='-pipe'
 ./configure --help
 %configure \
 	${configure_target} \
+%if %{with ocaml_testsuite}
+	--enable-ocamltest \
+%else
+	--disable-ocamltest \
+%endif
 	--enable-native-compiler \
 	--libdir=%ocaml_standard_library
 %make_build
@@ -521,7 +526,7 @@ done
 %ocaml_standard_library/compiler-libs/*.cmxa
 %ocaml_standard_library/compiler-libs/*.mli
 
-%if %{with ocaml_make_testsuite}
+%if %{with ocaml_testsuite}
 %check
 make %{?_smp_mflags} -C testsuite clean
 if make -C testsuite all
