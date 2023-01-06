@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  5 04:43:00 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.0.0:
+  + The compiler check functions "prefix" kwargs now accepts
+    arrays.
+  + Flags removed from cpp/objcpp warning level 1:
+    "-Wnon-virtual-dtor" is no longer implied by "meson setup
+    -Dwarning_level=1".
+  + There has been some developer environment improvements.
+  + Rename "java.generate_native_headers" to "java.native_headers".
+    The former is deprecated now.
+  + "rust.bindgen" now accepts a dependency argument.
+  + The Rust module is marked as stable now.
+  + "warning-level=everything" option: The new "everything" value
+    for the built-in "warning_level" enables roughly all applicable
+    compiler warnings. For Clang, this simply enables
+    "-Weverything". For GCC, Meson enables warnings approximately
+    equivalent to "-Weverything" from Clang.
+  + Plese see https://mesonbuild.com/Release-notes-for-1-0-0.html
+    for full release notes.
+- Remove shebang from mesonbuild/scripts/cmake_run_ctgt.py, this
+  file is not supposed to be directly callable.
+
+-------------------------------------------------------------------
 Wed Nov 23 09:03:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.64.1:

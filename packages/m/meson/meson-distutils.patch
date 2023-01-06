@@ -1,16 +1,8 @@
-diff -Nur meson-0.62.1/MANIFEST.in new/MANIFEST.in
---- meson-0.62.1/MANIFEST.in    2022-04-20 17:32:16.000000000 +0200
-+++ new/MANIFEST.in     2022-04-26 16:59:11.579219774 +0200
-@@ -17,3 +17,5 @@
- include run_meson_command_tests.py
- include run_project_tests.py
- include meson.py
-+
-+include mesonbuild/dependencies/data/*.txt
-diff -Nur meson-0.62.1/setup.py new/setup.py
---- meson-0.62.1/setup.py	2022-04-20 17:32:16.000000000 +0200
-+++ new/setup.py	2022-04-26 16:58:46.507097203 +0200
-@@ -20,7 +20,7 @@
+Index: b/setup.py
+===================================================================
+--- a/setup.py
++++ b/setup.py
+@@ -20,7 +20,7 @@ if sys.version_info < (3, 7):
      raise SystemExit('ERROR: Tried to install Meson with an unsupported Python version: \n{}'
                       '\nMeson requires Python 3.7.0 or greater'.format(sys.version))
  
@@ -19,7 +11,7 @@ diff -Nur meson-0.62.1/setup.py new/setup.py
  
  data_files = []
  if sys.platform != 'win32':
-@@ -28,4 +28,16 @@
+@@ -28,4 +28,16 @@ if sys.platform != 'win32':
      data_files = [('share/man/man1', ['man/meson.1']),
                    ('share/polkit-1/actions', ['data/com.mesonbuild.install.policy'])]
  
@@ -37,3 +29,13 @@ diff -Nur meson-0.62.1/setup.py new/setup.py
 +    package_data={'mesonbuild.dependencies.data': ['mesonbuild/dependencies/data/*.txt']},
 +    data_files=data_files,
 +)
+Index: b/MANIFEST.in
+===================================================================
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -17,3 +17,5 @@ include run_unittests.py
+ include run_meson_command_tests.py
+ include run_project_tests.py
+ include meson.py
++
++include mesonbuild/dependencies/data/*.txt

@@ -1,5 +1,7 @@
---- meson-0.63.1/data/macros.meson
-+++ meson-0.63.1/data/macros.meson
+Index: b/data/macros.meson
+===================================================================
+--- a/data/macros.meson
++++ b/data/macros.meson
 @@ -42,4 +42,5 @@
          -C %{_vpath_builddir} \
          --num-processes %{_smp_build_ncpus} \

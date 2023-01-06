@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define _name   mesonbuild
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 Name:           meson%{name_ext}
-Version:        0.64.1
+Version:        1.0.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -133,7 +133,7 @@ Java, Rust. Build definitions are written in a non-turing complete
 Domain Specific Language.
 
 %package vim
-Summary:        Vim support for meson.build files
+Summary:        Vim syntax highlighting support for meson.build files
 Group:          Productivity/Text/Editors
 Requires:       vim
 Supplements:    (vim and %{name})
@@ -147,7 +147,8 @@ CCache and the like. Supported languages include C, C++, Fortran,
 Java, Rust. Build definitions are written in a non-turing complete
 Domain Specific Language.
 
-This package provides support for meson.build files in Vim.
+This package provides meson.build syntax highlighting support for
+Vim/NeoVim.
 
 %prep
 %setup -q -n meson-%{version}
@@ -163,10 +164,14 @@ rm -r "test cases/frameworks/1 boost" \
       "test cases/objc/2 nsstring"
 
 # AddressSanitizer fails here because of ulimit.
-sed -i "/def test_generate_gir_with_address_sanitizer/s/$/\n        raise unittest.SkipTest('ulimit')/" run_unittests.py
+sed -i "/def test_generate_gir_with_address_sanitizer/{
+       s/$/\n        raise unittest.SkipTest('ulimit')/;
+       }" run_unittests.py
 
 # Remove hashbang from non-exec script
-sed -i '1{/\/usr\/bin\/env/d;}' ./mesonbuild/rewriter.py
+sed -i '1{/\/usr\/bin\/env/d;}' \
+  ./mesonbuild/rewriter.py \
+  ./mesonbuild/scripts/cmake_run_ctgt.py
 
 # remove gtest check that actually works because our gtest has .pc files
 rm -rf test\ cases/failing/85\ gtest\ dependency\ with\ version
