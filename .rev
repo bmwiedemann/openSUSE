@@ -89,4 +89,17 @@
   * Add tests</comment>
     <requestid>1009277</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c45221b584743aa91f2a695ac4f8b707</srcmd5>
+    <version>2.1.1</version>
+    <time>1673021081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * Add __main__ to re-enable demo via python -m termcolor
+
+- Update to 2.1.0
+  * Support FORCE_COLOR and detect tty (#25) @hugovk
+  * Deprecate __ALL__, use __all__ instead (#23) @hugovk</comment>
+    <requestid>1046125</requestid>
+  </revision>
 </revisionlist>
