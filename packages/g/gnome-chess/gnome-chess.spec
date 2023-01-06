@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-chess
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-chess
-Version:        43.0
+Version:        43.1
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
