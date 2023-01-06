@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,21 +44,22 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.11.1
+Version:        2022.12.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
 URL:            https://distributed.dask.org
+# SourceRepository: https://github.com/dask/distributed
 Source:         https://github.com/dask/distributed/archive/refs/tags/%{version}.tar.gz#/distributed-%{version}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
-# PATCH-FIX-UPSTREAM distributed-pr7286-tornado-6-2.patch gh#dask/distributed#7286
-Patch2:         distributed-pr7286-tornado-6-2.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-off.patch -- ignore that we can't probe addresses on obs, code@bnavigator.de
 Patch3:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
 Patch4:         distributed-ignore-thread-leaks.patch
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -73,7 +74,7 @@ Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
 Requires:       python-toolz >= 0.10.0
-Requires:       python-tornado >= 6.2
+Requires:       python-tornado >= 6.0.3
 Requires:       python-urllib3
 Requires:       python-zict >= 0.1.3
 Requires(post): update-alternatives
@@ -109,16 +110,17 @@ clusters.
 sed -e '/--durations=20/d' \
     -e '/--color=yes/d'  \
     -e 's/timeout_method = thread/timeout_method = signal/' \
+    -e ' /^    error$/ a \    ignore:`np.bool8` is a deprecated alias for `np.bool_`' \
     -i setup.cfg
 
 %build
 %if ! %{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dask-ssh
 %python_clone -a %{buildroot}%{_bindir}/dask-scheduler
 %python_clone -a %{buildroot}%{_bindir}/dask-worker
@@ -152,6 +154,7 @@ donttest+=" or (test_resources and test_prefer_constrained)"
 donttest+=" or (test_steal and test_steal_twice)"
 donttest+=" or (test_variable and test_variable_in_task)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
+donttest+=" or (test_worker_memory and test_digests)"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
@@ -201,7 +204,7 @@ notparallel+=" or test_client_async_before_loop_starts"
 %python_alternative %{_bindir}/dask-scheduler
 %python_alternative %{_bindir}/dask-worker
 %{python_sitelib}/distributed
-%{python_sitelib}/distributed-%{version}*-info
+%{python_sitelib}/distributed-%{version}.dist-info
 
 %endif
 

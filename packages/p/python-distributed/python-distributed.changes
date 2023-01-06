@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jan  2 21:03:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.1
+  ## Enhancements
+  * SpillBuffer metrics (GH#7368) crusaderky
+  * Prometheus: measure how much spilling blocks the event loop (GH#7370) crusaderky
+  * Add transfer_outgoing_bytes_total metric (GH#7388) Gabe Joseph
+  * Fail P2PShuffle gracefully upon worker failure (GH#7326) Hendrik Makait
+  ## Bug Fixes
+  * Select queued tasks in stimuli, not transitions (GH#7402) Gabe Joseph
+  * Check ContextVar in default_client (GH#7369) Matthew Rocklin
+  * Fix sending event messages to non-subscribers (GH#7014) Laurence Watts
+  * Set sizing mode on Tabs to avoid layout collapse (GH#7365) Mateusz Paprocki
+  ## Maintenance
+  * Restructure P2PShuffle extensions (GH#7390) Hendrik Makait
+  * Add Python 3.11 classifier (GH#7408) James Bourbeau
+  * Add support for Python 3.11 (GH#7249) Thomas Grainger
+  * Add test for using annotations with client.submit and client.map (GH#7399) James Bourbeau
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (GH#7393)
+  * Remove superfluous ShuffleSchedulerExtension.barriers (GH#7389) Hendrik Makait
+  * Remove ignore annotation-unchecked (GH#7379) crusaderky
+  * Remove tornado max version from nightly recipe (GH#7376) Charles Blackmon-Luca
+  * Remove the experimental feature warning for Semaphore (GH#7373) Florian Jetter
+- Release 2022.12.0
+  ## Enhancements
+  * Expose event loop health metrics in Prometheus (GH#7360) Hendrik Makait
+  * Allow log propagation by default (GH#5669) Florian Jetter
+  * Clean up of unpack_remotedata() (GH#7322) Mads R. B. Kristensen
+  * Upgrade to tornado 6.2 (GH#7286) Thomas Grainger
+  * Introduce Server level comm counters (GH#7332) Florian Jetter
+  * Prometheus debug log (GH#7302) Florian Jetter
+  ## Bug Fixes
+  * Catch BaseException s from user tasks (GH#5997) Gabe Joseph
+  * Impossible use case of erred deps in transition to waiting (GH#7354) crusaderky
+  * Fix a deadlock when queued tasks are resubmitted quickly in succession (GH#7348) Florian Jetter
+  ## Maintenance
+  * Fetch all artifacts (GH#7355) Enrico Minack
+  * Delay fsspec and urllib3 import time (GH#6659) Florian Jetter
+  * Bump mypy (GH#7349) crusaderky
+  * Bump mypy and remove win specific run (GH#7344) Florian Jetter
+  * Finish overhaul of SchedulerState annotations (GH#7333) crusaderky
+  * Fix flaky test_pause_while_spilling (GH#7334) Gabe Joseph
+  * Update gpuCI RAPIDS_VER to 23.02 (GH#7337)
+- Drop distributed-pr7286-tornado-6-2.patch
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Mon Nov 21 19:00:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove allow-bokeh3.patch
