@@ -1,7 +1,7 @@
 #
 # spec file for package sway
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,7 @@ Recommends:     xorg-x11-server-wayland
 %endif
 Recommends:     swaybar
 Recommends:     swaynag
+Requires:       xdg-desktop-portal-wlr
 
 %description
 "SirCmpwn's Wayland window manager" is a work in progress i3-compatible window
