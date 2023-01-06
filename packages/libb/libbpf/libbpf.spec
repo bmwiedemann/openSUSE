@@ -1,7 +1,7 @@
 #
 # spec file for package libbpf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,6 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 %package devel
 Summary:        Development files for libbpf
 Requires:       %{libname} = %{version}
-Requires:       linux-glibc-devel >= 5.16
 
 %description devel
 libbpf is a C library which provides API for managing eBPF programs and maps.
@@ -51,7 +50,6 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 Summary:        Static library for libbpf
 Requires:       %{libname} = %{version}
 Requires:       %{name}-devel = %{version}
-Requires:       linux-glibc-devel >= 5.16
 
 %description devel-static
 libbpf is a C library which provides API for managing eBPF programs and maps.
