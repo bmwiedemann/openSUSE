@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  6 14:57:44 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.10.1
+  Bugfixes:
+  * Fixed not auto playing next file in playlist, when current
+    file ends
+  * Fixed opened file not playing when "Auto load videos from
+    same folder" setting is disabled 
+
+-------------------------------------------------------------------
 Tue Jan  3 08:25:10 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.0
