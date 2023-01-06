@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 05 20:31:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 7.3.0:
+  * sc/rd 71 add plg link (#896)
+  * Update documentation from template (#899)
+  * Fix #547 - add a check for topologySpreadConstraint (#879)
+
+-------------------------------------------------------------------
 Wed Jan 04 15:46:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 7.2.1:
