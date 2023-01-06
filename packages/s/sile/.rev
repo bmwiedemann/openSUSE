@@ -60,4 +60,22 @@
   * fix(debug): Correct filename in debug info after includes (#1652)</comment>
     <requestid>1043025</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4b07327595bb2cb418e687e74b8df044</srcmd5>
+    <version>0.14.7</version>
+    <time>1673021156</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.6 -&gt; 0.14.7
+- Features
+ * build: Allow easy skip of font checks with FCMATCH=true
+- Bug Fixes
+ * build: Only check tooling to bulid manual if really needed
+ * inputters: Rework SIL input to handle both junk outside of document tag and fragments
+ * outputters: Patch up error message when failing to load font
+ * shaper: Correct font-variants using opsz axis
+ * shaper: Respect variations when shaping
+ * tooling: Keep all Lua packages in same env for Nix
+ * utilities: Tweak breadcrumbs to work under LuaJIT limitations</comment>
+    <requestid>1056335</requestid>
+  </revision>
 </revisionlist>

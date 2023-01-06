@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  6 07:59:02 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.14.6 -> 0.14.7
+- Features
+ * build: Allow easy skip of font checks with FCMATCH=true
+- Bug Fixes
+ * build: Only check tooling to bulid manual if really needed
+ * inputters: Rework SIL input to handle both junk outside of document tag and fragments
+ * outputters: Patch up error message when failing to load font
+ * shaper: Correct font-variants using opsz axis
+ * shaper: Respect variations when shaping
+ * tooling: Keep all Lua packages in same env for Nix
+ * utilities: Tweak breadcrumbs to work under LuaJIT limitations 
+
+-------------------------------------------------------------------
 Thu Dec 15 00:18:40 UTC 2022 - pirateclip@protonmail.com
 
 - Update to version 0.14.6:

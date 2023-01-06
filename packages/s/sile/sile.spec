@@ -1,7 +1,7 @@
 #
 # spec file for package sile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.14.6
+Version:        0.14.7
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 Group:          Productivity/Publishing
