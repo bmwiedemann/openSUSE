@@ -1,7 +1,7 @@
 #
 # spec file for package libkdecoration2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define lname_private   libkdecorations2private%{private_sover}
 %bcond_without released
 Name:           libkdecoration2
-Version:        5.26.4
+Version:        5.26.5
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
