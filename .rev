@@ -177,4 +177,21 @@ Depends on SR#238636</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>971056</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>a1c52713d55bed12b82acc1932ad1e15</srcmd5>
+    <version>0.8.0</version>
+    <time>1673021170</time>
+    <user>dimstar_suse</user>
+    <comment>- remove braces from rpmspec macros
+- rename so_version macro
+- remove obsolete rpm statements
+- remove obsolete libvirt_version macro
+- update URL to Source0
+- set Release to zero
+- link to shared libraries, liblzma provides no static lib anymore
+- use pkgconfig() in BuildRequires
+- remove obsolete suse_version conditionals
+- remove obsolete Group tags</comment>
+    <requestid>1056366</requestid>
+  </revision>
 </revisionlist>

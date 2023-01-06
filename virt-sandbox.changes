@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan  1 01:01:01 UTC 2023 - olaf@aepfle.de
+
+- remove braces from rpmspec macros
+- rename so_version macro
+- remove obsolete rpm statements
+- remove obsolete libvirt_version macro
+- update URL to Source0
+- set Release to zero
+- link to shared libraries, liblzma provides no static lib anymore
+- use pkgconfig() in BuildRequires
+- remove obsolete suse_version conditionals
+- remove obsolete Group tags
+
+-------------------------------------------------------------------
 Wed Apr 13 01:23:45 UTC 2022 - olaf@aepfle.de
 
 - Fix GTK_DOC_CHECK bug with virt-sandbox.patch
