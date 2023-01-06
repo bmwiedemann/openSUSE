@@ -54,4 +54,18 @@
     <comment></comment>
     <requestid>828530</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5875864a58ca5a56ca92967d979b9e82</srcmd5>
+    <version>1.4.0</version>
+    <time>1673021068</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Add python-py dep
+- More specific python_sitelib in %files
+- Update to 1.4.0:
+  * Dropped support for Python 2.7 and 3.5.
+  * Added official support for Python 3.10.
+</comment>
+    <requestid>1039064</requestid>
+  </revision>
 </revisionlist>
