@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/HypothesisWorks/hypothesis.git</param>
     <param name="scm">git</param>
-    <param name="revision">hypothesis-python-6.56.2</param>
+    <param name="revision">hypothesis-python-6.61.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">hypothesis-python-(.*)</param>
     <param name="subdir">hypothesis-python</param>    

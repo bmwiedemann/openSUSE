@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.56.2
+Version:        6.61.0
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
-Requires:       python-exceptiongroup >= 1.0.0~rc8
+Requires:       python-exceptiongroup >= 1.0.0
 Requires:       python-sortedcontainers >= 2.1.0
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
@@ -55,7 +55,7 @@ Recommends:     python-Django >= 2.2
 Recommends:     python-black >= 19.10
 Recommends:     python-click >= 7.0
 Recommends:     python-dpcontracts >= 0.4
-Recommends:     python-lark-parser >= 0.6.5
+Recommends:     python-lark >= 0.10.1
 Recommends:     python-libcst >= 0.3.16
 Recommends:     python-numpy >= 1.9.0
 Recommends:     python-pandas >= 0.25
@@ -78,7 +78,7 @@ BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis = %{version}}
-BuildRequires:  %{python_module lark-parser >= 0.6.5}
+BuildRequires:  %{python_module lark >= 0.10.1}
 BuildRequires:  %{python_module libcst >= 0.3.16}
 BuildRequires:  %{python_module numpy >= 1.9.0}
 BuildRequires:  %{python_module pandas >= 1.0}

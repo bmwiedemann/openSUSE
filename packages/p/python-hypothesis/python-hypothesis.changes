@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Dec 15 06:35:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.61.0
+
+  - This release improves our treatment of database keys, which based on (among
+    other things) the source code of your test function.  We now post-process
+    this source to ignore decorators, comments, trailing whitespace, and blank
+    lines - so that you can add :obj:`@example() <hypothesis.example>`\ s or
+    make some small no-op edits to your code without preventing replay of any
+    known failing or covering examples.
+
+- 6.60.1 - 2022-12-11
+
+  - This patch updates our vendored `list of top-level domains
+    <https://www.iana.org/domains/root/db>`__,
+    which is used by the provisional :func:`~hypothesis.provisional.domains`
+    strategy.
+
+- 6.60.0 - 2022-12-04
+
+  - This release improves Hypothesis' ability to resolve forward references in
+    type annotations. It fixes a bug that prevented
+    :func:`~hypothesis.strategies.builds` from being used with `pydantic models
+    that possess updated forward references
+    <https://pydantic-docs.helpmanual.io/usage/postponed_annotations/>`__. See
+    :issue:`3519`.
+
+- 6.59.0 - 2022-12-02
+
+  - The :obj:`@example(...) <hypothesis.example>` decorator now has a ``.via()``
+    method, which future tools will use to track automatically-added covering
+    examples (:issue:`3506`).
+
+- 6.58.2 - 2022-11-30
+
+  - This patch updates our vendored `list of top-level domains
+    <https://www.iana.org/domains/root/db>`__, which is used by the provisional
+    :func:`~hypothesis.provisional.domains` strategy.
+
+- 6.58.1 - 2022-11-26
+
+  - This patch shifts ``hypothesis[lark]`` from depending on the old
+    :pypi:`lark-parser` package to the new :pypi:`lark` package.  There are no
+    code changes in Hypothesis, it's just that Lark got a new name on PyPI for
+    version 1.0 onwards.
+
+- 6.58.0 - 2022-11-19
+
+  - :func:`~hypothesis.register_random` has used :mod:`weakref` since
+    :ref:`v6.27.1`, allowing the :class:`~random.Random`-compatible objects to
+    be garbage-collected when there are no other references remaining in order
+    to avoid memory leaks.  We now raise an error or emit a warning when this
+    seems likely to happen immediately.
+
+  - The type annotation of :func:`~hypothesis.register_random` was also widened
+    so that structural subtypes of :class:`~random.Random` are accepted by
+    static typecheckers.
+
+- 6.57.1 - 2022-11-14
+
+  - This patch updates some internal type annotations and fixes a formatting
+    bug in the :obj:`~hypothesis.Phase.explain` phase reporting.
+
+- 6.57.0 - 2022-11-14
+
+  - Hypothesis now raises an error if you passed a strategy as the
+    ``alphabet=`` argument to :func:`~hypothesis.strategies.text`, and it
+    generated something which was not a length-one string.  This has never been
+    supported, we're just adding explicit validation to catch cases like `this
+    StackOverflow question <https://stackoverflow.com/a/74336909/9297601>`__.
+
+- 6.56.4 - 2022-10-28
+
+  - This patch updates some docs, and depends on :pypi:`exceptiongroup` 1.0.0
+    final to avoid a bug in the previous version.
+
+- 6.56.3 - 2022-10-17
+
+  - This patch teaches :func:`~hypothesis.strategies.text` to rewrite a few
+    more filter predicates (:issue:`3134`).  You're unlikely to notice any
+    change.
+
+-------------------------------------------------------------------
 Sun Oct 16 17:44:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.56.2:
