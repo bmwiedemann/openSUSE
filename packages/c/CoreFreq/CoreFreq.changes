@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan  6 10:44:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.94.3:
+  * [AMD][RMB] If UMC is quad channels then unpopulate odd channels
+  * [AMD][RPL] Provide Service Processor Vcore as workaround
+  * [UI] Auto size and lay performance capabilities window
+  * [UI] Adding comments to the EEO and R2H technologies
+  * [AMD][Raphael] 7950X3D, 7900X3D. support
+
+-------------------------------------------------------------------
 Tue Jan  3 08:19:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.94.1:
