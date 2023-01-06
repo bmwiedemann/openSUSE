@@ -57,4 +57,14 @@
     <comment></comment>
     <requestid>971978</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>3786100a3d6891f28be03d4f8d5522f0</srcmd5>
+    <version>1.7.0</version>
+    <time>1673021073</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test_pretty_formatter test that fails in osc build but it works when
+  run manually.
+</comment>
+    <requestid>1040238</requestid>
+  </revision>
 </revisionlist>
