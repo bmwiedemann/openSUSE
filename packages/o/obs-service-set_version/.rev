@@ -335,4 +335,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>941631</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f779debf5be84e121197adf489efc011</srcmd5>
+    <version>0.6.0</version>
+    <time>1673021099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  * Test against Python 3.10 which is the Tumbleweed default
+  * Remove TravisCI - we switched to GitHub Actions
+  * handle removed packaging.version.LegacyVersion (Fixes #83)</comment>
+    <requestid>1056150</requestid>
+  </revision>
 </revisionlist>

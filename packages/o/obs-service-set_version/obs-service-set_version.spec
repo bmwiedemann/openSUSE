@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,8 @@
 %endif
 %define service set_version
 
-%if 0%{?suse_version} > 1315  || 0%{?fedora_version}  || 0%{?rhel} >= 8
-%define use_python python3
-%else
-%define use_python python
-%endif
-
 Name:           obs-service-%{service}
-Version:        0.5.14
+Version:        0.6.0
 Release:        0
 Summary:        An OBS source service: Update spec file version
 License:        GPL-2.0-or-later
@@ -41,19 +35,17 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %if %{with obs_scm_testsuite}
-BuildRequires:  %{use_python}-ddt
-BuildRequires:  %{use_python}-flake8
-BuildRequires:  %{use_python}-packaging
+BuildRequires:  python3-ddt
+BuildRequires:  python3-flake8
+BuildRequires:  python3-packaging
 %endif
 
-%if 0%{?suse_version}
 %if 0%{?suse_version} > 1315
 Requires:       python3-base
 %else
-Requires:       python
+Requires:       python3
 %endif
-Recommends:     %{use_python}-packaging
-%endif
+Recommends:     python3-packaging
 
 %description
 This is a source service for openSUSE Build Service.
@@ -65,11 +57,9 @@ a given version or to the existing files.
 %setup -q
 
 %build
-sed -i -e "1 s,#!/usr/bin/python$,#!/usr/bin/%{use_python}," set_version
-
 %if %{with obs_scm_testsuite}
 %check
-make test PYTHON=%{use_python}
+make test PYTHON=python3
 %endif
 
 %install

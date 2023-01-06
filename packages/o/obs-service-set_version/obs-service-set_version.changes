@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 05 09:07:08 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.6.0:
+  * Test against Python 3.10 which is the Tumbleweed default
+  * Remove TravisCI - we switched to GitHub Actions
+  * handle removed packaging.version.LegacyVersion (Fixes #83)
+
+-------------------------------------------------------------------
 Mon Dec 13 10:46:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - simplifiy conditions for all rhel like distros to skip testsuite 

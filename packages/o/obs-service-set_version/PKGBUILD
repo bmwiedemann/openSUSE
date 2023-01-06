@@ -1,5 +1,5 @@
 pkgname=obs-service-set_version
-pkgver=0.5.14
+pkgver=0.6.0
 pkgrel=0
 pkgdesc="An OBS source service: Update spec file version"
 arch=('i686' 'x86_64')
