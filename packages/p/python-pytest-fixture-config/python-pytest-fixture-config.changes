@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  8 11:00:15 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/man-group/pytest-plugins/issues/209
+  + python-pytest-fixture-config-no-six.patch
+
+-------------------------------------------------------------------
 Wed Nov 17 03:39:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add required BuildRequires on six. 

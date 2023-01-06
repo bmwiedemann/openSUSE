@@ -24,4 +24,12 @@
     <comment>- Add required BuildRequires on six.</comment>
     <requestid>931874</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>61c603ac4fdeb4e3b45d265e55bf81ba</srcmd5>
+    <version>1.7.0</version>
+    <time>1673021075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041840</requestid>
+  </revision>
 </revisionlist>
