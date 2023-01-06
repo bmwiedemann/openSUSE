@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 08:59:29 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Update gdm-smartcard.pamd: Move pam_nologin.so under pam_pkcs11.so
+  to make it work with pam_pkcs11's auto file username.
+
+-------------------------------------------------------------------
 Fri Dec  2 10:05:28 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Update gdm-fingerprint.pamd and gdm-smartcard.pamd: Before this
