@@ -1,7 +1,7 @@
 #
 # spec file for package kwin5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.26.4
+Version:        5.26.5
 %define _plasma5_bugfix 5.26.2
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)

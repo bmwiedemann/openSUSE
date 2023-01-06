@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:06:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * Include missing cmath header for std::round
+  * backends/drm: extend connector lifetime to match their outputs (kde#463334)
+  * Ignore critical notifications in window heap effects (kde#463437)
+  * workspace: don't make the placeholder output too big
+  * kwinglutils: Restore the default FB when the last FBO is unbound
+  * dmabuf: Create buffers without the SCANOUT flag
+  * screencast: Don't skip the last valid modifier
+  * wayland: Fix updating pixel data from translucent client buffers when using qpainter backend
+  * backends/drm: fix VRR detection (kde#463172)
+  * backends/drm: fix error in finding the best plane
+  * wayland: Require to reboot computer after changing primary selection option
+  * Revert "Disable PrimarySelection in seat setPrimarySelection" (kde#461498)
+  * scene: Fix a typo in WindowItem::updateShadowItem()
+  * workspace: handle duplicate output hashes correctly
+  * core/outputconfiguration: use std::weak_ptr for storing the mode
+  * workspace: match KScreen when computing the hash without an edid
+  * backends/drm: don't break crtc<->plane connections (kde#462214)
+  * effects/blendchanges: ignore fullscreen windows
+  * wayland/outputmanagement: reject configurations if outputs change (kde#460953)
+  * backends/drm: don't leak gbm surface if creating egl surface fails
+
+-------------------------------------------------------------------
 Tue Nov 29 14:47:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.4
