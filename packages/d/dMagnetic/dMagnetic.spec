@@ -1,7 +1,7 @@
 #
 # spec file for package dMagnetic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dMagnetic
-Version:        0.30
+Version:        0.34
 Release:        0
 Summary:        An interpreter for Magnetic Scrolls games
 License:        BSD-2-Clause
@@ -38,17 +38,17 @@ make all
 
 %install
 mkdir -p %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_mandir}/man6
 mkdir -p %{buildroot}%{_mandir}/man5
 mkdir -p %{buildroot}%{_datadir}/dMagnetic
 install -m 755 dMagnetic %{buildroot}%{_bindir}/dMagnetic
-install -m 644 dMagnetic.1 %{buildroot}%{_mandir}/man1/dMagnetic.1
+install -m 644 dMagnetic.6 %{buildroot}%{_mandir}/man6/dMagnetic.6
 install -m 644 dMagneticini.5 %{buildroot}%{_mandir}/man5/dMagneticini.5
 install -m 644 dMagnetic.ini %{buildroot}%{_datadir}/dMagnetic/dMagnetic.ini
 
 %files
 %{_bindir}/dMagnetic
-%{_mandir}/man1/dMagnetic.1%{?ext_man}
+%{_mandir}/man6/dMagnetic.6%{?ext_man}
 %{_mandir}/man5/dMagneticini.5%{?ext_man}
 %{_datadir}/dMagnetic/
 %doc README.txt
