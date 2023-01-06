@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  6 03:54:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-Flask-SQLAlchemy-3.0.patch:
+  * Support Flask-SQLAlchemy >= 3.0 
+
+-------------------------------------------------------------------
 Fri Sep 30 06:52:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Upate to 5.0.2:

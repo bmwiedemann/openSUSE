@@ -155,4 +155,13 @@ This is a maintained fork of python-Flask-Security</comment>
 - Update {Build,}Requires versions.</comment>
     <requestid>1007165</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e9a1762ca540b3a18c06e7853200e2d4</srcmd5>
+    <version>5.0.2</version>
+    <time>1673021152</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-Flask-SQLAlchemy-3.0.patch:
+  * Support Flask-SQLAlchemy &gt;= 3.0</comment>
+    <requestid>1056308</requestid>
+  </revision>
 </revisionlist>

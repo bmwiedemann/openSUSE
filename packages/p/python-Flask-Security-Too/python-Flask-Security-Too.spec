@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Security-Too
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,10 @@ License:        MIT
 URL:            https://github.com/Flask-Middleware/flask-security
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-Too/Flask-Security-Too-%{version}.tar.gz
 Patch0:         no-mongodb.patch
+# PATCH-FIX-OPENSUSE Use pyqrcodeng, we do not ship qrcode in OpenSUSE.
 Patch1:         use-pyqrcodeng.patch
+# PATCH-FIX-UPSTREAM gh#Flask-Middleware/flask-security#9632a0eab5d3be4280c185e7e934a57fc24057a2
+Patch2:         support-Flask-SQLAlchemy-3.0.patch
 BuildRequires:  %{python_module Babel >= 2.9.1}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module Flask-Babel >= 2.0.0}

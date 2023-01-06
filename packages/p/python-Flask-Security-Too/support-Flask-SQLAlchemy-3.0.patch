@@ -1,0 +1,50 @@
+From 9632a0eab5d3be4280c185e7e934a57fc24057a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=BCrg=20Rast?= <juergr@gmail.com>
+Date: Mon, 26 Sep 2022 16:35:31 +0200
+Subject: [PATCH] Fixed issues related to upcomming flask-sqlalchemy 3.0.0
+ release (#678)
+
+- rename of get_debug_queries to get_recorded_queries (and move to to new module)
+- SQLALCHEMY_RECORD_QUERIES must be set explicit
+---
+ tests/conftest.py   |  4 ++++
+ tests/test_utils.py | 11 ++++++++---
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index b9076413..f5e41a43 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -410,6 +410,10 @@ def sqlalchemy_setup(request, app, tmpdir, realdburl):
+     else:
+         app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+ 
++    # In Flask-SQLAlchemy >= 3.0.0 queries are no longer logged automatically,
++    # even in debug or testing mode.
++    app.config["SQLALCHEMY_RECORD_QUERIES"] = True
++
+     db = SQLAlchemy(app)
+ 
+     fsqla.FsModels.set_db_info(db)
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index df569a74..5c63dc55 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -201,9 +201,14 @@ def get_num_queries(datastore):
+     return None if datastore doesn't support this.
+     """
+     if is_sqlalchemy(datastore):
+-        from flask_sqlalchemy import get_debug_queries
+-
+-        return len(get_debug_queries())
++        try:
++            # Flask-SQLAlachemy >= 3.0.0
++            from flask_sqlalchemy.record_queries import get_recorded_queries
++        except ImportError:
++            # Flask-SQLAlchemy < 3.0.0
++            from flask_sqlalchemy import get_debug_queries as get_recorded_queries
++
++        return len(get_recorded_queries())
+     return None
+ 
+ 
