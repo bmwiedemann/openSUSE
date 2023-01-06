@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-push-notifications
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        Django package to send push notifications to mobile devices
 License:        MIT
 URL:            https://github.com/jazzband/django-push-notifications
 Source:         https://github.com/jazzband/django-push-notifications/archive/%{version}.tar.gz#/django-push-notifications-%{version}.tar.gz
+Patch0:         support-new-apns2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +51,7 @@ Send push notifications to mobile devices through GCM, APNS or WNS and
 to WebPush (Chrome, Firefox and Opera) in Django.
 
 %prep
-%setup -q -n django-push-notifications-%{version}
+%autosetup -p1 -n django-push-notifications-%{version}
 djcodemod run --removed-in 4.0 push_notifications/{admin,fields,models}.py
 
 %build

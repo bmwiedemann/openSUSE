@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>976289</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6872ee287fa8fa27810a22332864e96c</srcmd5>
+    <version>3.0.0</version>
+    <time>1673021151</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-apns2.patch:
+  * Support new apsn2 that no longer exports init_context.</comment>
+    <requestid>1056304</requestid>
+  </revision>
 </revisionlist>
