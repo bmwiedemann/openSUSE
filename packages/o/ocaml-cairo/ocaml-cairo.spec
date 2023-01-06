@@ -31,7 +31,7 @@ BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cairo) >= 1.12
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 
@@ -42,7 +42,7 @@ This is an OCaml binding for the Cairo library, a 2D graphics library with suppo
 Summary:        Development files for %name
 Group:          Development/Languages/OCaml
 Requires:       %name = %version
-Requires:       pkgconfig(cairo)
+Requires:       pkgconfig(cairo) >= 1.12
 
 %description    devel
 The %name-devel package contains libraries and signature files for

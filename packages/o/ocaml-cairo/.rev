@@ -44,4 +44,12 @@
 - Move cairo2-pango+cairo2-gtk to separate pkg to remove dependency to lablgtk2</comment>
     <requestid>1056068</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a84af41731c93a05da73b7abc435f42</srcmd5>
+    <version>0.6.4</version>
+    <time>1673021144</time>
+    <user>dimstar_suse</user>
+    <comment>- Set minimal cairo version to 1.12</comment>
+    <requestid>1056279</requestid>
+  </revision>
 </revisionlist>
