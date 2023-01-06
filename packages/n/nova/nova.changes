@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 05 13:59:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.6.0:
+  * Update documentation from template (#188)
+  * installation.md: complete asdf installation (#182)
+  * Sc/rd 71 add plg links (#186)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Wed Dec 21 09:08:22 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 3.5.0:
