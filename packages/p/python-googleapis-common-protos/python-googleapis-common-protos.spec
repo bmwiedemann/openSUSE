@@ -1,7 +1,7 @@
 #
 # spec file for package python-googleapis-common-protos
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modname googleapis-common-protos
 %define pkgname %{lua:pname,_ = string.gsub(rpm.expand('%modname'), '-' , '_');print(pname)}
 Name:           python-googleapis-common-protos
-Version:        1.57.0
+Version:        1.57.1
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0

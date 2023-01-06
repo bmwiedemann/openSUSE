@@ -105,4 +105,13 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1039326 from glaubitz)</comment>
     <requestid>1039346</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e71e9fd4b30a95537c0eff0c4a1222f4</srcmd5>
+    <version>1.57.1</version>
+    <time>1673021146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.57.1:
+  * Mark reference_docs_uri field in google/api/client.proto as deprecated</comment>
+    <requestid>1056274</requestid>
+  </revision>
 </revisionlist>

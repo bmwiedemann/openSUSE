@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 20:36:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.57.1:
+  * Mark reference_docs_uri field in google/api/client.proto as deprecated
+
+-------------------------------------------------------------------
 Thu Dec  1 13:19:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.57.0:
