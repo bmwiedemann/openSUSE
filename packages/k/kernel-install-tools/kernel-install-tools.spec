@@ -48,7 +48,7 @@ for use on systems with UEFI Secure Boot enabled.
 %install
 %make_install
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 mv %{buildroot}/sbin/installkernel %{buildroot}/usr/sbin/installkernel
 %endif
 
@@ -58,7 +58,7 @@ mv %{buildroot}/sbin/installkernel %{buildroot}/usr/sbin/installkernel
 %{_bindir}/sbtool-genkey
 %{_bindir}/sbtool-sign-kernel
 %{_sbindir}/sbtool-enroll-key
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %{_sbindir}/installkernel
 %else
 /sbin/installkernel
