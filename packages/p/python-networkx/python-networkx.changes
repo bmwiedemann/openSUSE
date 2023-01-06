@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan  4 22:18:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.8:
+  * Fix warnings from running tests in randomized order 
+  * Update pydata-sphinx-theme 
+  * update secutiry link to tidelift 
+  * Update numpydoc 
+  * Support Python 3.11 
+  * Minor updates to expanders generator tests 
+  * Add missing asserts to tests 
+  * fixes #6036 
+  * Improve test coverage expanders line graph generators solved (PR for issue #6034) 
+  * Replace .A call with .toarray for sparse array in example. 
+  * Improve test coverage for algorithms/richclub.py 
+  * Tested boykov_kolmogorov and dinitz with cutoff 
+  * Improve test coverage for multigraph class 
+  * Improve test coverage for algorithms in dominating_set.py (PR for issue 6032) 
+  * Improve test coverage for graph class 
+  * added coverage in generators/tree.py 
+  * DOC: Specifically branch off main, instead of current branch 
+  * Improve test coverage for multidigraph class 
+  * Improve test coverage for digraph class 
+  * Improve test coverage for algorithms in dispersion.py 
+  * Test on Python 3.11 
+  * Improve test coverage in algorithms shortest paths unweighted.py 
+  * Increased test coverage algorithms/matching.py 
+  * Renamed test functions in test_lowest_common_ancestors 
+  * Increase covering coverage 
+  * Add example for fiedler_vector 
+  * Improve test coverage for cycles.py 
+  * Added an example in all_pairs_node_connectivity  
+  * Amount of nodes and edges have mistakes when reading adjlist file 
+
+-------------------------------------------------------------------
 Sun Oct  2 09:32:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.7:
