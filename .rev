@@ -426,4 +426,17 @@
   * ez: don't crash when there's no [sendemail] section</comment>
     <requestid>1046132</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>38230049e9df5aa060d54a1a4fa2514a</srcmd5>
+    <version>0.11.2</version>
+    <time>1673021158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.2:
+  * Always run log with --no-abbrev-commit
+  * Handle series with more than 999 patches
+  * ez: dedupe cover letter CCs taken from individual patches
+  * ez: avoid header wrapping when writing to file
+  * ez: don't crash on non-existent tag in show_info</comment>
+    <requestid>1056333</requestid>
+  </revision>
 </revisionlist>
