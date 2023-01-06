@@ -59,4 +59,13 @@
 </comment>
     <requestid>1032671</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d8d06d1045bddada70d551a9766fc1ef</srcmd5>
+    <version>9.1.2</version>
+    <time>1673021089</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.2:
+  * #6: Added minimal test to ``sphinx.packaging``.</comment>
+    <requestid>1056000</requestid>
+  </revision>
 </revisionlist>
