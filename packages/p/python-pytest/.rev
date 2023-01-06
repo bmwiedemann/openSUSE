@@ -997,4 +997,124 @@
     <comment></comment>
     <requestid>993543</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>dd51b7f0682f6d84077ad8a4848e223f</srcmd5>
+    <version>7.2.0</version>
+    <time>1673021072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-test-raising-repr.patch gh#pytest-dev/pytest#10473, this make it
+  compatible with latest release of python-exceptiongroup
+- Remove python_module macro definition
+- Update to 7.2.0:
+  # Deprecations
+  - #10012: Update pytest.PytestUnhandledCoroutineWarning{.interpreted-text
+    role=&quot;class&quot;} to a deprecation; it will raise an error in pytest 8.
+  - #10396: pytest no longer depends on the py library. pytest provides a
+    vendored copy of py.error and py.path modules but will use the py library
+    if it is installed. If you need other py.* modules, continue to install the
+    deprecated py library separately, otherwise it can usually be removed as a
+    dependency.
+  - #4562: Deprecate configuring hook specs/impls using attributes/marks.
+  - Instead use :pypytest.hookimpl{.interpreted-text role=&quot;func&quot;} and
+    :pypytest.hookspec{.interpreted-text role=&quot;func&quot;}.
+    For more details, see the docs
+    &lt;legacy-path-hooks-deprecated&gt;{.interpreted-text role=&quot;ref&quot;}.
+  - #9886: The functionality for running tests written for nose has been
+    officially deprecated.
+    This includes:
+     * Plain setup and teardown functions and methods: this might catch users
+       by surprise, as setup() and teardown() are not pytest idioms, but part
+       of the nose support.
+     * Setup/teardown using the @with_setup decorator.
+    For more details, consult the deprecation docs
+    &lt;nose-deprecation&gt;{.interpreted-text role=&quot;ref&quot;}.
+  # Features
+  -  #9897: Added shell-style wildcard support to testpaths.
+  # Improvements
+  - #10218: @pytest.mark.parametrize() (and similar functions) now accepts any
+    Sequence[str] for the argument names, instead of just list[str] and
+    tuple[str, ...].
+    (Note that str, which is itself a Sequence[str], is still treated as a
+    comma-delimited name list, as before).
+  - #10381: The --no-showlocals flag has been added. This can be passed
+    directly to tests to override --showlocals declared through addopts.
+  - #3426: Assertion failures with strings in NFC and NFD forms that normalize
+    to the same string now have a dedicated error message detailing the issue,
+    and their utf-8 representation is expresed instead.
+  - #7337: A warning is now emitted if a test function returns something other
+    than [None]{.title-ref}. This prevents a common mistake among beginners
+    that expect that returning a [bool]{.title-ref} (for example [return foo(a,
+    b) == result]{.title-ref}) would cause a test to pass or fail, instead of
+    using [assert]{.title-ref}.
+  - #8508: Introduce multiline display for warning matching via
+    :pypytest.warns{.interpreted-text role=&quot;func&quot;} and enhance match comparison
+    for :py_pytest._code.ExceptionInfo.match{.interpreted-text role=&quot;func&quot;} as
+    returned by :pypytest.raises{.interpreted-text role=&quot;func&quot;}.
+  - #8646: Improve :pypytest.raises{.interpreted-text role=&quot;func&quot;}. Previously
+    passing an empty tuple would give a confusing error. We now raise
+    immediately with a more helpful message.
+  - #9741: On Python 3.11, use the standard library's tomllib{.interpreted-text
+    role=&quot;mod&quot;} to parse TOML.  tomli{.interpreted-text role=&quot;mod&quot;}` is no
+    longer a dependency on Python 3.11.
+  - #9742: Display assertion message without escaped newline characters with
+    -vv.
+  - #9823: Improved error message that is shown when no collector is found for
+    a given file.
+  - #9873: Some coloring has been added to the short test summary.
+  - #9883: Normalize the help description of all command-line options.
+  - #9920: Display full crash messages in short test summary info, when runng
+    in a CI environment.
+  - #9987: Added support for hidden configuration file by allowing .pytest.ini
+    as an alternative to pytest.ini.
+  # Bug Fixes
+  - #10150: sys.stdin{.interpreted-text role=&quot;data&quot;} now contains all expected
+    methods of a file-like object when capture is enabled.
+  - #10382: Do not break into pdb when raise unittest.SkipTest() appears
+    top-level in a file.
+  - #7792: Marks are now inherited according to the full MRO in test classes.
+    Previously, if a test class inherited from two or more classes, only marks
+    from the first super-class would apply.
+    When inheriting marks from super-classes, marks from the sub-classes are
+    now ordered before marks from the super-classes, in MRO order. Previously
+    it was the reverse.
+    When inheriting marks from super-classes, the [pytestmark]{.title-ref}
+    attribute of the sub-class now only contains the marks directly applied to
+    it. Previously, it also contained marks from its super-classes. Please note
+    that this attribute should not normally be accessed directly; use
+    pytest.Node.iter_markers{.interpreted-text role=&quot;func&quot;} instead.
+  - #9159: Showing inner exceptions by forcing native display in
+    ExceptionGroups even when using display options other than --tb=native. A
+    temporary step before full implementation of pytest-native display for
+    inner exceptions in ExceptionGroups.
+  - #9877: Ensure caplog.get_records(when) returns current/correct data after
+    invoking caplog.clear().
+  # Improved Documentation
+  - #10344: Update information on writing plugins to use pyproject.toml instead
+    of setup.py.
+  - #9248: The documentation is now built using Sphinx 5.x (up from 3.x
+    previously).
+  - #9291: Update documentation on how pytest.warns{.interpreted-text
+    role=&quot;func&quot;} affects DeprecationWarning{.interpreted-text role=&quot;class&quot;}.
+- pytest 7.1.3 (2022-08-31)
+  # Bug Fixes
+  - #10060: When running with --pdb, TestCase.tearDown is no longer called for
+    tests when the class has been skipped via unittest.skip or
+    pytest.mark.skip.
+  - #10190: Invalid XML characters in setup or teardown error messages are now
+    properly escaped for JUnit XML reports.
+  - #10230: Ignore .py files created by pyproject.toml-based editable builds
+    introduced in pip 21.3.
+  - #3396: Doctests now respect the --import-mode flag.
+  - #9514: Type-annotate FixtureRequest.param as Any as a stop gap measure
+    until 8073{.interpreted-text role=&quot;issue&quot;} is fixed.
+  - #9791: Fixed a path handling code in rewrite.py that seems to work fine,
+    but was incorrect and fails in some systems.
+  - #9917: Fixed string representation for pytest.approx{.interpreted-text
+    role=&quot;func&quot;} when used to compare tuples.
+  # Improved Documentation
+  - #9937: Explicit note that tmpdir{.interpreted-text role=&quot;fixture&quot;} fixture
+    is discouraged in favour of tmp_path{.interpreted-text role=&quot;fixture&quot;}.
+</comment>
+    <requestid>1040176</requestid>
+  </revision>
 </revisionlist>

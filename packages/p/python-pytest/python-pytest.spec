@@ -31,15 +31,16 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        7.1.2
+Version:        7.2.0
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-test-raising-repr.patch gh#pytest-dev/pytest#10473
+Patch:          fix-test-raising-repr.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}
@@ -47,11 +48,11 @@ BuildRequires:  %{python_module tomli >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 19.2.0
+Requires:       python-exceptiongroup
 Requires:       python-importlib-metadata >= 0.12
 Requires:       python-iniconfig
 Requires:       python-packaging
 Requires:       python-pluggy >= 0.12
-Requires:       python-py >= 1.8.2
 Requires:       python-setuptools
 Requires:       python-tomli >= 1
 %if %{with libalternatives}
@@ -90,6 +91,8 @@ complex functional testing for applications and libraries.
 %autosetup -p1 -n pytest-%{version}
 # fix gh#pytest-dev/pytest#7891 still happening for Leap
 sed -i '/^\[metadata\]/ a version = %{version}' setup.cfg
+# Tests not failing with our current version of packages gh#pytest-dev/pytest#10042
+sed -i '/pytest.mark.xfail(reason="#10042")/d' testing/test_debugging.py
 
 %build
 %python_build
@@ -139,7 +142,9 @@ alternatives=$(update-alternatives --quiet --list py.test 2> /dev/null) && (
 %license LICENSE
 %python_alternative %{_bindir}/pytest
 %python_alternative %{_bindir}/py.test
+%pycache_only %{python_sitelib}/__pycache__/*.pyc
 %{python_sitelib}/_pytest
+%{python_sitelib}/py.py
 %{python_sitelib}/pytest
 %{python_sitelib}/pytest-%{version}*-info
 %endif
