@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:33:50 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Feb  3 12:54:11 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop vim BuildRequires: the test suite passes without it present.

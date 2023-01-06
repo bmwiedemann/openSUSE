@@ -1,7 +1,7 @@
 #
 # spec file for package dosfstools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@ floppies.
 
 %install
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/{dosfsck,dosfslabel,mkdosfs,fsck.msdos,mkfs.msdos,fsck.fat,fsck.vfat,mkfs.fat,mkfs.vfat} %{buildroot}/sbin
 %endif
@@ -58,7 +58,7 @@ ln -sf %{_sbindir}/{dosfsck,dosfslabel,mkdosfs,fsck.msdos,mkfs.msdos,fsck.fat,fs
 
 %files
 %doc %{_docdir}/dosfstools
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 %endif
 %{_sbindir}/dosfsck
