@@ -20,7 +20,7 @@
 #define betaversion %{nil}
 %define codename Tumbleweed
 Name:           openSUSE-release
-Version:        20230105
+Version:        20230106
 Release:        0
 # 0 is the product release, not the build release of this package
 Summary:        openSUSE Tumbleweed
@@ -180,7 +180,7 @@ Provides:       weakremover(openssl-debuginfo)
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = openSUSE
-Provides:       product(openSUSE) = 20230105-0
+Provides:       product(openSUSE) = 20230106-0
 %ifarch x86_64
 Provides:       product-register-target() = openSUSE%2DTumbleweed%2Dx86_64
 %endif
@@ -194,7 +194,7 @@ Provides:       product-register-target() = openSUSE%2DTumbleweed%2Dppc64le
 Provides:       product-register-target() = openSUSE%2DTumbleweed%2Daarch64
 %endif
 Provides:       product-label() = openSUSE
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%3A20230105
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%3A20230106
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-url(repository) = http%3A%2F%2Fdownload.opensuse.org%2Ftumbleweed%2Frepo%2Foss%2F
 Requires:       product_flavor(openSUSE)
@@ -208,7 +208,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(ftp)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description ftp
@@ -223,7 +223,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(mini)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description mini
@@ -238,7 +238,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -253,7 +253,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-kde)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-kde
@@ -268,7 +268,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-x11)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-x11
@@ -283,7 +283,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-gnome)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-gnome
@@ -298,7 +298,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(livecd-xfce)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description livecd-xfce
@@ -313,7 +313,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-kde)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-kde
@@ -328,7 +328,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-gnome)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-gnome
@@ -343,7 +343,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(usb-x11)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description usb-x11
@@ -358,7 +358,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -373,7 +373,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-docker)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-docker
@@ -388,7 +388,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-kvm)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-kvm
@@ -403,7 +403,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-vmware)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-vmware
@@ -418,7 +418,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-openstack)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-openstack
@@ -433,7 +433,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-hyperv)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-hyperv
@@ -448,7 +448,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-vagrant)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-vagrant
@@ -463,7 +463,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-wsl)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-wsl
@@ -478,7 +478,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance-custom)
-Provides:       product_flavor(openSUSE) = 20230105-0
+Provides:       product_flavor(openSUSE) = 20230106-0
 Summary:        openSUSE Tumbleweed%{?betaversion: %{betaversion}}
 
 %description appliance-custom
@@ -557,10 +557,10 @@ cat >%{buildroot}%{_sysconfdir}/products.d/openSUSE.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>openSUSE</name>
-  <version>20230105</version>
+  <version>20230106</version>
   <release>0</release>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:opensuse:20230105</cpeid>
+  <cpeid>cpe:/o:opensuse:opensuse:20230106</cpeid>
   <productline>openSUSE</productline>
   <register>
     <pool>
