@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  6 08:41:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.3:
+  * Initialize Filedescriptor
+  * Disable MultiAdapter ULT testcases
+
+-------------------------------------------------------------------
 Thu Dec 15 10:39:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.2:
