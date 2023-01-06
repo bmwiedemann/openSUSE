@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  5 13:07:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-pytest-forked as test dependency
+  * The pytest parameter --forked is provided by python-pytest-forked
+    which is no longer a transitive build requirement of
+    python-pytest-xdist
+  * gh#pytest-dev/pytest-xdist#468, gh#pytest-dev/pytest-xdist#821
+
+-------------------------------------------------------------------
 Sat Aug 13 23:03:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to relase 4.2.0, matching wxWidgets 3.2.0

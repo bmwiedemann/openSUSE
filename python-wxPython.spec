@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -146,6 +146,7 @@ Obsoletes:      %{python_provides}-wxPython < %{version}-%{release}
 %endif
 %if %{with test}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
@@ -260,8 +261,10 @@ sleep 5
 # Make sure "import wx" does not confuse the wx dir with the module
 mv wx wx_temp
 
+# pytest --forked from python-pytest-forked:
 # Run each test as a separate process, otherwise multiple app
-# instances will corrupt each others static data
+# instances will corrupt each others static data.
+#
 # Run UiAction tests one by one
 %pytest_arch --forked -n 1 -k 'test_uiaction or test_mousemanager' unittests/
 # Skip Auto ID management test (only enabled on Windows)
