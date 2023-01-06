@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-benchmark
-Version:        3.4.1
+Version:        4.0.0
 Release:        0
 Summary:        A py.test fixture for benchmarking code
 License:        BSD-2-Clause
@@ -53,8 +52,7 @@ A py.test fixture for benchmarking code. It will group the tests into
 rounds that are calibrated to the chosen timer.
 
 %prep
-%setup -q -n pytest-benchmark-%{version}
-%autopatch -p1
+%autosetup -p1 -n pytest-benchmark-%{version}
 # skip cli tests as we use update-alternatives
 rm -f tests/test_cli.py
 # Don't look for a test pass in the wrong place -- https://github.com/ionelmc/pytest-benchmark/issues/214

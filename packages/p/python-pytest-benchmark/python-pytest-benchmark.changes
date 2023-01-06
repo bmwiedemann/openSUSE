@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 30 07:44:51 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.0.0:
+  * Dropped support for legacy Pythons (2.7, 3.6 or older).
+  * Switched CI to GitHub Actions.
+  * Removed dependency on the py library (that was not properly specified as a
+    dependency anyway).
+  * Fix skipping test in test_utils.py if appropriate VCS not available. Also
+    fix typo. Contributed by Sam James in #211.
+  * Added support for pytest 7.2.0 by using pytest.hookimpl and pytest.hookspec
+    to configure hooks. Contributed by Florian Bruhin in #224.
+  * Now no save is attempted if --benchmark-disable is used. Fixes #205.
+    Contributed by Friedrich Delgado in #207.
+
+-------------------------------------------------------------------
 Mon Mar 28 21:07:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.4.1
