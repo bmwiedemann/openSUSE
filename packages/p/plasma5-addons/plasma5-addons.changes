@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:06:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * There is no translation for nativeText, use sequence instead. (kde#463775)
+  * applets/notes: Close context menu on left click (kde#463530)
+  * wallpapers/potd: update picture at 0:01 (kde#463345)
+  * wallpapers/potd: use `i18ndc` to specify translation domain (kde#463103)
+  * KateSessionsItemDelegate: Fix reference to signal parameter (kde#462452)
+  * alternatecalendar: always use day name in full label
+
+-------------------------------------------------------------------
 Tue Nov 29 14:47:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.4
