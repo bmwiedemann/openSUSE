@@ -11155,7 +11155,7 @@ unsorted:
   - libfparser-4_5_2 
   - libfplist-devel 
   - libfplist1 
-  - libfplll7 
+  - libfplll8 
   - libfpm_helper-devel 
   - libfpm_helper0 
   - libfprint-2-2-32bit: [x86_64] 
@@ -18249,8 +18249,6 @@ unsorted:
   - ocaml-integers-devel 
   - ocaml-jsonm 
   - ocaml-jsonm-devel 
-  - ocaml-lablgtk2 
-  - ocaml-lablgtk2-devel 
   - ocaml-lablgtk3 
   - ocaml-lablgtk3-devel 
   - ocaml-libguestfs: [x86_64] 
@@ -22775,6 +22773,7 @@ unsorted:
   - python310-azure-mgmt-kubernetesconfiguration 
   - python310-azure-mgmt-kusto 
   - python310-azure-mgmt-labservices 
+  - python310-azure-mgmt-loadtesting 
   - python310-azure-mgmt-loadtestservice 
   - python310-azure-mgmt-loganalytics 
   - python310-azure-mgmt-logic 
@@ -24143,8 +24142,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_23_4-gnu-hpc 
-  - python310-numpy_1_23_4-gnu-hpc-devel 
+  - python310-numpy_1_24_1-gnu-hpc 
+  - python310-numpy_1_24_1-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -26079,6 +26078,7 @@ unsorted:
   - python38-azure-mgmt-kubernetesconfiguration 
   - python38-azure-mgmt-kusto 
   - python38-azure-mgmt-labservices 
+  - python38-azure-mgmt-loadtesting 
   - python38-azure-mgmt-loadtestservice 
   - python38-azure-mgmt-loganalytics 
   - python38-azure-mgmt-logic 
@@ -27499,8 +27499,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_23_4-gnu-hpc 
-  - python38-numpy_1_23_4-gnu-hpc-devel 
+  - python38-numpy_1_24_1-gnu-hpc 
+  - python38-numpy_1_24_1-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -29477,6 +29477,7 @@ unsorted:
   - python39-azure-mgmt-kubernetesconfiguration 
   - python39-azure-mgmt-kusto 
   - python39-azure-mgmt-labservices 
+  - python39-azure-mgmt-loadtesting 
   - python39-azure-mgmt-loadtestservice 
   - python39-azure-mgmt-loganalytics 
   - python39-azure-mgmt-logic 
@@ -30899,8 +30900,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_23_4-gnu-hpc 
-  - python39-numpy_1_23_4-gnu-hpc-devel 
+  - python39-numpy_1_24_1-gnu-hpc 
+  - python39-numpy_1_24_1-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
