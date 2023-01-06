@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  5 15:33:51 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.05c
+  - afl-fuzz:
+    - added afl_custom_fuzz_send custom mutator feature. Now your can
+      send fuzz data to the target as you need, e.g. via IPC.
+    - cmplog mode now has a -l R option for random colorization, thanks
+      to guyf2010 for the PR!
+    - queue statistics are written every 30 minutes to
+      out/NAME/queue_data if compiled with INTROSPECTION
+    - new env: AFL_FORK_SERVER_KILL_SIGNAL
+  - afl-showmap/afl-cmin
+    - `-t none` now translates to `-t 120000` (120 seconds)
+  - unicorn_mode updated
+  - updated rust custom mutator dependencies and LibAFL custom mutator
+  - several minor bugfixes
+
+-------------------------------------------------------------------
 Sat Oct 22 14:15:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update file list for riscv64

@@ -1197,4 +1197,25 @@
     <comment>- Update file list for riscv64 (forwarded request 1030538 from Andreas_Schwab)</comment>
     <requestid>1030539</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>4c5a13c11482c4d07359af9f5371b238</srcmd5>
+    <version>4.05c</version>
+    <time>1673021128</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.05c
+  - afl-fuzz:
+    - added afl_custom_fuzz_send custom mutator feature. Now your can
+      send fuzz data to the target as you need, e.g. via IPC.
+    - cmplog mode now has a -l R option for random colorization, thanks
+      to guyf2010 for the PR!
+    - queue statistics are written every 30 minutes to
+      out/NAME/queue_data if compiled with INTROSPECTION
+    - new env: AFL_FORK_SERVER_KILL_SIGNAL
+  - afl-showmap/afl-cmin
+    - `-t none` now translates to `-t 120000` (120 seconds)
+  - unicorn_mode updated
+  - updated rust custom mutator dependencies and LibAFL custom mutator
+  - several minor bugfixes (forwarded request 1056232 from msmeissn)</comment>
+    <requestid>1056233</requestid>
+  </revision>
 </revisionlist>
