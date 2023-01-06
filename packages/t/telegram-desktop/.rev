@@ -921,4 +921,12 @@
     <comment>- Update to 4.4.1</comment>
     <requestid>1041353</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>b63673d0b8fabedebdce96c30d7b6a95</srcmd5>
+    <version>4.4.1</version>
+    <time>1673021136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056241</requestid>
+  </revision>
 </revisionlist>

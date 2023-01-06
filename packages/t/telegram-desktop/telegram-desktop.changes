@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 20 23:13:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(gtk+-2.0) BuildRequires: No longer needed, nor
+  used.
+
+-------------------------------------------------------------------
 Thu Dec  8 08:44:55 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.4.1:
