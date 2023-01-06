@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan  5 14:05:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.10.2:
+  * Bugfixes
+    - Make git a runtime dependency (#2860) @ssbarnea
+    - Disable version check when running as a pre-commit hook (#2858) @ssbarnea
+    - Avoid checking var-names on non ansible files (#2856) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Jan  4 15:57:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.10.1:
+  * Bugfixes
+    - Avoid TypeError NoneType with lookups (#2852) @ssbarnea
+    - Add the missing github_branch meta field (#2847) @triplepoint
+    - name[template]: only trigger on word characters after the template (#2836) @evgeni
+    - Update documentation of `run_once` rule (#2823) @shatakshiiii
+    - Fix line number on var-naming error for 'register' (#2840) @zigarn
+    - Add SLES15SP4 to schema (#2841) @johanneskastl
+    - src/ansiblelint/schemas/meta.json: add openSUSE 15.5 (#2842) @johanneskastl
+    - Complete schema for Antsibull changelogs (#2834) @shatakshiiii
+
+-------------------------------------------------------------------
 Fri Dec 16 12:46:39 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - convert from setup.cfg to pyproject.toml
