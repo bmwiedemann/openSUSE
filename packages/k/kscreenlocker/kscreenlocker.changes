@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:06:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * Fix KSignalHandler initialization order
+  * Fix crash condition where kscreenlocker_greet doesn't start
+    handle signals in time On mobile, we frequently spam our power
+    buttons, of which each triggers a call from PowerDevil to
+    ksldapp (in ksmserver) to lock the screen.
+  * Fix wallpaper not loading (leaving the background black)
+
+-------------------------------------------------------------------
 Tue Nov 29 14:47:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.4
