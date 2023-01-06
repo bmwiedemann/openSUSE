@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jan  6 08:17:37 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.11.0
+  * New Features
+    - Edit book: Check book: Allow automatic fixing of various
+      simple CSS errors
+    - E-book viewer: When Read aloud is speaking, make the control
+      bar translucent so that words under the bar are visible
+    - Edit book: Switch to a new library (stylelint) for find
+      problems in CSS as the old library was no longer maintained.
+    - Edit book: File browser: Allow using keyboard shortcuts to
+      re-order the spine
+    - calibredb list: Allow specifying multiple fields for --sort-by
+    - Check library: Allow opening the book folder easily
+  * Bug Fixes
+    - Fix windows not being moved onto the current monitor when
+      they were previously visible on a removed monitor that was to
+      the left of the current monitor
+    - Book list: Fix a regression in the previous release that
+      broke drag and drop of multiple books
+    - Fix detection of Tolino Vision 6 on macOS/Linux
+    - Content server: Fix auto full screen not working when
+      continuing to read books with user account enabled
+    - Edit book: Set semantics: Fix error when setting the "Notes"
+      semantic
+    - HTMLZ output: Fix images referred to in CSS stylesheets not
+      being converted
+    - Book details panel: Fix HTML comment tags in the comments
+      breaking display of book details
+    - Content server home page: When showing recently read books
+      from across devices hide the entries for which loading the
+      cover fails
+    - Windows Text-to-speech: Dont fail to configure if one of the
+      voices has no defined language
+    - Fix a regression in calibre 5 that broke using a file for the
+      --extra-css option of ebook-convert
+    - Content server FTS: Fix page header bar not visible
+    - Content server: Fix identifiers from third party metadata
+      download plugins not becoming clickable links on the book
+      details page
+    - Edit book: Warn when saving will overwrite a read-only file
+    - Fix restoring geometry of maximized/fullscreen dialogs
+      forcing them visible
+    - Fix a regression in the previous release that caused spurious
+      error message when doing some out of band searches
+    - Fix a regression in the previous release that broke choosing
+      new programs for the Open with function
+
+-------------------------------------------------------------------
 Fri Dec 16 06:38:45 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.10.0
