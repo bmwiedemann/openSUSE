@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:13:37 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Update master for stable/yoga
+  - Fix remaining logic to support Python 3.6/7
+  - Fix compatibility with Python 3.12, importlib-metadata 5.0
+  - Order old importlib-metadata results by group
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Python3 antelope unit tests
+  - Add Python3 zed unit tests
+  - Update master for stable/zed
+  - remove unicode from code
+  - Fix compatibility with Python 3.10, 3.9.11
+
+-------------------------------------------------------------------
 Tue Jun  7 11:05:28 UTC 2022 - cloud-devel@suse.de
 
 - update to version 3.5.0

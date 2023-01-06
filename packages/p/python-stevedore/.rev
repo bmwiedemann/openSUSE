@@ -435,4 +435,22 @@
 - remove unneeded dependencies</comment>
     <requestid>983719</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e509dc671b8f43972507727b02ed2572</srcmd5>
+    <version>4.1.1</version>
+    <time>1673021087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.1
+  - Update master for stable/yoga
+  - Fix remaining logic to support Python 3.6/7
+  - Fix compatibility with Python 3.12, importlib-metadata 5.0
+  - Order old importlib-metadata results by group
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Python3 antelope unit tests
+  - Add Python3 zed unit tests
+  - Update master for stable/zed
+  - remove unicode from code
+  - Fix compatibility with Python 3.10, 3.9.11</comment>
+    <requestid>1055984</requestid>
+  </revision>
 </revisionlist>
