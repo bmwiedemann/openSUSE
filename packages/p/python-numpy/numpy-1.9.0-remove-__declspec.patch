@@ -13,14 +13,16 @@ build to fail.  Since this is windows-specific, it can be
 safely removed.
 
 
---- a/numpy/core/setup_common.py
-+++ b/numpy/core/setup_common.py
-@@ -226,7 +226,7 @@ OPTIONAL_FUNCTION_ATTRIBUTES = [('__attr
-                                 ]
+Index: numpy-1.24.0/numpy/core/setup_common.py
+===================================================================
+--- numpy-1.24.0.orig/numpy/core/setup_common.py
++++ numpy-1.24.0/numpy/core/setup_common.py
+@@ -141,7 +141,7 @@ OPTIONAL_FILE_FUNCS = ["ftello", "fseeko
+ OPTIONAL_MISC_FUNCS = ["backtrace", "madvise"]
  
  # variable attributes tested via "int %s a" % attribute
 -OPTIONAL_VARIABLE_ATTRIBUTES = ["__thread", "__declspec(thread)"]
 +OPTIONAL_VARIABLE_ATTRIBUTES = ["__thread"]
  
- # Subset of OPTIONAL_STDFUNCS which may already have HAVE_* defined by Python.h
- OPTIONAL_STDFUNCS_MAYBE = [
+ # Subset of OPTIONAL_*_FUNCS which may already have HAVE_* defined by Python.h
+ OPTIONAL_FUNCS_MAYBE = [

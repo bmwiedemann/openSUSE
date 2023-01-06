@@ -1,3 +1,6 @@
-# This file is required for testing
-addFilter("devel-file-in-non-devel-package.*/usr/lib.*/python.*/site-packages/numpy/f2py/tests/src/array_from_pyobj/wrapmodule.c")
+# These files are required for testing (and testing the package on a live system)
+addFilter("devel-file-in-non-devel-package.*numpy/f2py/tests/src/array_from_pyobj/wrapmodule.c")
+addFilter("devel-file-in-non-devel-package.*numpy/core/tests/examples")
+addFilter("devel-file-in-non-devel-package.*numpy/core/tests/data")
 addFilter("hidden-file-or-dir .*/numpy/f2py/tests/src/assumed_shape/.f2py_f2cmap")
+addFilter("hidden-file-or-dir .*/numpy/f2py/tests/src/f2cmap/.f2py_f2cmap")

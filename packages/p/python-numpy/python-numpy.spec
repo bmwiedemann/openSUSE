@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.23.4
-%define _ver 1_23_4
+%define ver 1.24.1
+%define _ver 1_24_1
 %define pname python-numpy
+%define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
  %bcond_with hpc
@@ -85,22 +86,23 @@ Patch1:         numpy-1.9.0-remove-__declspec.patch
 BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module hypothesis >= 6.24.1}
-BuildRequires:  %{python_module pytest >= 6.2.5}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools >= 60.0.0}
-BuildRequires:  %{python_module testsuite}
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros >= 20210929
 BuildConflicts: gcc11 < 11.2
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
+# SECTION test requirements
+BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module hypothesis >= 6.24.1}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module typing-extensions >= 4.2.0}
+# /SECTION
 %if %{without hpc}
 # Last version which packaged %%{_bindir}/f2py without update-alternatives
-# Protect it from substitution
-%define oldpy_numpy python-numpy
-Conflicts:      %{oldpy_numpy} <= 1.12.0
+Conflicts:      %{plainpython}-numpy <= 1.12.0
  %if 0%{?suse_version}
 BuildRequires:  gcc-fortran
  %else
@@ -149,6 +151,7 @@ basic linear algebra and random number generation.
 Summary:        Development files for numpy applications
 Requires:       %{name} = %{version}
 Requires:       python-devel
+Requires:       %plainpython(abi) = %{python_version}
 %if %{without hpc}
 %if %{with openblas}
 Requires:       openblas-devel
@@ -202,6 +205,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %if !%{with hpc}
 %python_clone -a %{buildroot}%{_bindir}/f2py
+%python_expand rm %{buildroot}%{$python_sitearch}/numpy/core/include/numpy/.doxyfile
+%else
+rm %{buildroot}%{p_python_sitearch}/numpy/core/include/numpy/.doxyfile
 %endif
 
 %if 0%{?suse_version}
@@ -253,6 +259,7 @@ EOF
 %endif
 
 %check
+# https://numpy.org/doc/stable/dev/development_environment.html#running-tests
 %if %{without hpc}
 export PATH="%{buildroot}%{_bindir}:$PATH"
 
@@ -263,6 +270,12 @@ pushd testing
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
 test_failok+=" or test_structured_object_item_setting"
+# flaky due to memory consumption
+test_failok+=" or test_big_arrays"
+# gh#numpy/numpy#22825
+test_failok+=" or TestPrintOptions"
+# gh#numpy/numpy#22835
+test_failok+=" or test_keepdims_out"
 # boo#1148173 gh#numpy/numpy#14438
 %ifarch ppc64 ppc64le
 test_failok+=" or test_generalized_sq"
@@ -272,12 +285,23 @@ test_failok+=" or test_generalized_sq"
 test_failok+=" or TestF77ReturnCharacter"
 test_failok+=" or TestF90ReturnCharacter"
 %endif
+# missing instruction set
+%ifarch s390x
+test_failok+=" or test_truncate_f32"
+%endif
 %ifarch %{ix86}
 # (arm 32-bit seems okay here)
 # gh#numpy/numpy#18387
 test_failok+=" or test_pareto"
 # gh#numpy/numpy#18388
 test_failok+=" or test_float_remainder_overflow"
+%endif
+%ifarch %{ix86} %{arm32}
+# too much memory for 32bit
+test_failok+=" or test_identityless_reduction_huge_array"
+test_failok+=" or test_huge_vectordot"
+# invalid int type for 32bit
+test_failok+=" or (test_kind and test_all)"
 %endif
 %ifarch riscv64
 # These tests fail due to non-portable assumptions about the signbit of NaN
@@ -289,15 +313,17 @@ test_failok+=" or test_float"
 echo "
 import sys
 import numpy
-numpy.test(label='full', verbose=2,
-           extra_argv=['-v', '-n', 'auto', '-k'] + sys.argv[1:])
+r = numpy.test(label='full', verbose=2,
+               extra_argv=['-v', '-n', 'auto', '-k'] + sys.argv[1:])
+sys.exit(0 if r else 1)
 " > runobstest.py
 
 %{python_expand # for all python3 flavors
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
 [ -n "$test_failok" ] && $python runobstest.py "${test_failok:4}" ||:
-$python runobstest.py "not (${test_failok:4})"
+# test_new_policy: duplicates test runs and output and does not follow our deselection
+$python runobstest.py "not (test_new_policy ${test_failok})"
 }
 
 popd
@@ -321,6 +347,8 @@ popd
 %python_alternative %{_bindir}/f2py
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{_bindir}/f2py3
+%else
+%exclude %{_bindir}/f2py3
 %endif
 %{_bindir}/f2py%{python_bin_suffix}
 %{python_sitearch}/numpy/
@@ -336,6 +364,9 @@ popd
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{p_bindir}/f2py
 %{p_bindir}/f2py3
+%else
+%exclude %{p_bindir}/f2py
+%exclude %{p_bindir}/f2py3
 %endif
 %{p_bindir}/f2py%{python_bin_suffix}
 %{p_python_sitearch}/numpy/

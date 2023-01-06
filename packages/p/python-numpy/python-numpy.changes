@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:31:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.24.1
+  * NumPy 1.24.1 is a maintenance release that fixes bugs and
+    regressions discovered after the 1.24.0 release. The Python
+    versions supported by this release are 3.8-3.11.
+  * #22820: BLD: add workaround in setup.py for newer setuptools
+  * #22830: BLD: CIRRUS_TAG redux
+  * #22831: DOC: fix a couple typos in 1.23 notes
+  * #22832: BUG: Fix refcounting errors found using pytest-leaks
+  * #22834: BUG, SIMD: Fix invalid value encountered in several
+    ufuncs
+  * #22837: TST: ignore more np.distutils.log imports
+  * #22839: BUG: Do not use getdata() in np.ma.masked_invalid
+  * #22847: BUG: Ensure correct behavior for rows ending in
+    delimiter in...
+  * #22848: BUG, SIMD: Fix the bitmask of the boolean comparison
+  * #22857: BLD: Help raspian arm + clang 13 about
+    __builtin_mul_overflow
+  * #22858: API: Ensure a full mask is returned for masked_invalid
+  * #22866: BUG: Polynomials now copy properly (#22669)
+  * #22867: BUG, SIMD: Fix memory overlap in ufunc comparison loops
+  * #22868: BUG: Fortify string casts against floating point
+    warnings
+  * #22875: TST: Ignore nan-warnings in randomized out tests
+  * #22883: MAINT: restore npymath implementations needed for
+    freebsd
+  * #22884: BUG: Fix integer overflow in in1d for mixed integer
+    dtypes #22877
+  * #22887: BUG: Use whole file for encoding checks with
+    charset_normalizer.
+- Drop numpy-distutils-ignore.patch fixed upstream
+
+-------------------------------------------------------------------
+Mon Dec 19 13:36:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.24.0
+  * The NumPy 1.24.0 release continues the ongoing work to improve
+    the handling and promotion of dtypes, increase the execution
+    speed, and clarify the documentation. There are also a large
+    number of new and expired deprecations due to changes in
+    promotion and cleanups. This might be called a deprecation
+    release. Highlights are:
+    - Many new deprecations, check them out.
+    - Many expired deprecations,
+    - New F2PY features and fixes.
+    - New “dtype” and “casting” keywords for stacking functions.
+  * For a detailed description see
+    https://numpy.org/doc/stable/release/1.24.0-notes.html
+- Add numpy-distutils-ignore.patch gh#numpy/numpy#22828
+- Fix running the tests: Actually fail on errors
+
+-------------------------------------------------------------------
+Wed Dec 14 20:59:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Support builds without any primary python3 package (:backports)
+
+-------------------------------------------------------------------
 Thu Oct 20 13:48:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.23.4

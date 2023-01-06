@@ -1020,4 +1020,12 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>1030235</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>94ff137b2a57d169fd9d8f2ac7916fad</srcmd5>
+    <version>1.24.1</version>
+    <time>1673021083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046448</requestid>
+  </revision>
 </revisionlist>
