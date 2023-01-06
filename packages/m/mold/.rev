@@ -421,4 +421,12 @@
     unit and as a global variable name in another. So it makes sense to warn on the</comment>
     <requestid>1045468</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0b71e27a30babf1ad20d4fd83f537974</srcmd5>
+    <version>1.9.0</version>
+    <time>1673035649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056408</requestid>
+  </revision>
 </revisionlist>

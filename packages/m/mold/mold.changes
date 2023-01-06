@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan  6 11:38:43 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable build on ppc now that the target is supported upstream
+
+-------------------------------------------------------------------
+Fri Jan  6 09:38:06 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.9.0
+  * mold gained support for the three new targets: 32-bit PowerPC, SH-4 and DEC
+    Alpha. Each porting work didn't take more than a few days for us to complete,
+    which demonstrate how portable the mold linker is. You can typically port mold
+    to a new target just by writing a few hundreds lines of target-specific code.
+    See arch-*.cc files in mold/elf/ directory to see how target-specific code
+    actually looks like. (651adad, 3411e17, 6231510)
+  * Bug fixes and compatibility improvements
+  * In a rare occasion, a statically-initialized function pointer might get a wrong
+    address in a statically-linked executable. This bug has been fixed. (ccd47db)
+  * Fixed a -gdb-index option's crash bug on big-endian hosts. (3c96828)
+  * [RISC-V] mold rewrote machine instructions in a wrong way as a result of a wrong
+    R_RISCV_HI20 relaxation if the output file was being linked against the high
+    address. It's not a problem for user-land programs, but kernels linked with mold
+    could crash due to this bug. This bug has been fixed. (3c96828)
+
+-------------------------------------------------------------------
 Tue Dec 27 09:47:12 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.8.0

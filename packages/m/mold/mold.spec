@@ -1,7 +1,7 @@
 #
 # spec file for package mold
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  valgrind
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
 PreReq:         update-alternatives
-ExcludeArch:    ppc
 
 %if %{suse_version} < 1550
 %define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF
