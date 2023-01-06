@@ -68,4 +68,20 @@
     <comment></comment>
     <requestid>860761</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e7722c936f9a597bc4d32e825fd0143</srcmd5>
+    <version>2.3.0</version>
+    <time>1673021065</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition 
+- More specific python_sitelib in %files
+- Update to 2.3.0:
+  * Update azure-pipelines template repositories
+  * stricter mypy settings
+  * exit(main()) -&gt; raise SystemExit(main()) pt2
+  * drop python3.6 support
+  * coloring changes for pytest 7.2
+</comment>
+    <requestid>1039045</requestid>
+  </revision>
 </revisionlist>

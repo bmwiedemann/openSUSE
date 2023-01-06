@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 30 06:28:21 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition 
+- More specific python_sitelib in %files
+- Update to 2.3.0:
+  * Update azure-pipelines template repositories
+  * stricter mypy settings
+  * exit(main()) -> raise SystemExit(main()) pt2
+  * drop python3.6 support
+  * coloring changes for pytest 7.2
+
+-------------------------------------------------------------------
 Wed Jan  6 14:32:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.2.0
