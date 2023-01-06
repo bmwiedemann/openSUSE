@@ -1,7 +1,7 @@
 #
 # spec file for package kcm_sddm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcm_sddm
-Version:        5.26.4
+Version:        5.26.5
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
