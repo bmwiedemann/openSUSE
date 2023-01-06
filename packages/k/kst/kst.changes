@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  6 16:35:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update build constraints
+
+-------------------------------------------------------------------
+Fri Jan  6 12:41:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libnetcdf BuildRequires: this seems not to be required (and
+  does no longer exist).
+
+-------------------------------------------------------------------
 Thu Dec 15 07:37:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace libcfitsio-devel with pkgconfig(cfitsio): the devel

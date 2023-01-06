@@ -451,4 +451,15 @@
   we care for the symbol CMake is looking for. (forwarded request 1043128 from dimstar)</comment>
     <requestid>1043134</requestid>
   </revision>
+  <revision rev="53" vrev="14">
+    <srcmd5>e4e3800ac8869f837c16c6e5fa701ca1</srcmd5>
+    <version>2.0.8</version>
+    <time>1673035650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update build constraints
+
+- Drop libnetcdf BuildRequires: this seems not to be required (and
+  does no longer exist).</comment>
+    <requestid>1056659</requestid>
+  </revision>
 </revisionlist>
