@@ -328,4 +328,13 @@
   - Fix broken link for Marketplace in header</comment>
     <requestid>1007442</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a555d0c39b023c21bad822e592747a80</srcmd5>
+    <version>3.0.1</version>
+    <time>1673021090</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Update included page footers to use current URLs</comment>
+    <requestid>1056002</requestid>
+  </revision>
 </revisionlist>
