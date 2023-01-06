@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec 29 09:24:31 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to version 0.26.0:
+  + Support for kernel up to 6.1
+  + bcc tool updates for biosnoop, opensnoop, biopattern, killsnoop, runqslower, offcputime, wakeuptime, etc.
+  + libbpf-tools updates for klockstat, sigsnoop, hardirqs, softirqs, opensnoop, statsnoop, offcputime, tcplife, cpufreq, cpudist, etc.
+  + new libbpf-tools: tcptop, tcpstates, biotop, capable
+  + doc update, bug fixes and other tools improvement
+
+-------------------------------------------------------------------
 Thu Aug 11 06:10:16 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to version 0.25.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package bcc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           bcc
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
