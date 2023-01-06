@@ -42,4 +42,12 @@
   prepare for ocaml-5.0</comment>
     <requestid>1056074</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1ee81b801b66b2b7621890977f4b7a94</srcmd5>
+    <version>3.1.3</version>
+    <time>1673021143</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conditionals for gtksourceview-3.0 and gtkspell3-3.0</comment>
+    <requestid>1056278</requestid>
+  </revision>
 </revisionlist>

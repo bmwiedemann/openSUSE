@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_without ocaml_lablgtk3_gtksourceview3
+%bcond_without ocaml_lablgtk3_gtkspell
 
 Name:           ocaml-lablgtk3
 Version:        3.1.3
@@ -35,8 +37,12 @@ BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(threads)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
+%if %{with ocaml_lablgtk3_gtksourceview3}
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.18
+%endif
+%if %{with ocaml_lablgtk3_gtkspell}
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 3.0.4
+%endif
 
 %description
 This is an OCaml binding for the Cairo library, a 2D graphics library with support for multiple output devices.
@@ -46,8 +52,12 @@ Summary:        Development files for %name
 Group:          Development/Languages/OCaml
 Requires:       %name = %version
 Requires:       pkgconfig(gtk+-3.0) >= 3.18
+%if %{with ocaml_lablgtk3_gtksourceview3}
 Requires:       pkgconfig(gtksourceview-3.0) >= 3.18
+%endif
+%if %{with ocaml_lablgtk3_gtkspell}
 Requires:       pkgconfig(gtkspell3-3.0) >= 3.0.4
+%endif
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -59,7 +69,13 @@ developing applications that use %name.
 %build
 sed -i~ '/mode promote/d' tools/dune
 diff -u "$_"~ "$_" && exit 1
-dune_release_pkgs='lablgtk3,lablgtk3-sourceview3,lablgtk3-gtkspell3'
+dune_release_pkgs='lablgtk3'
+%if %{with ocaml_lablgtk3_gtksourceview3}
+dune_release_pkgs="${dune_release_pkgs},lablgtk3-sourceview3"
+%endif
+%if %{with ocaml_lablgtk3_gtkspell}
+dune_release_pkgs="${dune_release_pkgs},lablgtk3-gtkspell3"
+%endif
 %ocaml_dune_setup
 %ocaml_dune_build
 
