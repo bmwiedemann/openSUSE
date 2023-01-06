@@ -329,4 +329,12 @@ versions of libva(2)</comment>
   * Fixed aux table l2 page fault</comment>
     <requestid>1046472</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2e05b79310de3bd5690c03b0aa2493a5</srcmd5>
+    <version>22.6.6</version>
+    <time>1673021174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056369</requestid>
+  </revision>
 </revisionlist>

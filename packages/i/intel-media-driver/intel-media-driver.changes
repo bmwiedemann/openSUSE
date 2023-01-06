@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  6 09:04:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.6.6:
+  * Revert "vaGetImage optimization on D-card."  
+
+-------------------------------------------------------------------
 Tue Jan  3 10:41:30 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated Supplements
