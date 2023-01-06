@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  2 16:58:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.13.1:
+  * #608: Added support for tab completion on the ``keyring`` command
+  if the ``completion`` extra is installed (``keyring[completion]``).
+  * #612: Prevent installation of ``pywin32-ctypes 0.1.2`` with broken
+  ``use2to3`` directive.
+  * #607: Removed PSF license as it was unused and confusing. Project
+  remains MIT licensed as always.
+
+-------------------------------------------------------------------
 Wed Nov  9 14:34:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies, remove workaround for gh#jaraco/keyring#526

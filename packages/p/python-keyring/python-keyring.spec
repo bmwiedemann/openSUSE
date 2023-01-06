@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,10 @@
 %bcond_with test
 %endif
 Name:           python-keyring%{psuffix}
-Version:        23.11.0
+Version:        23.13.1
 Release:        0
 Summary:        System keyring service access from Python
-License:        MIT AND Python-2.0
+License:        MIT
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
@@ -39,6 +39,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3.2
+%if 0%{python_version_nodots} < 310
+Requires:       python-importlib-resources
+%endif
 Requires:       python-jaraco.classes
 Requires:       python-jeepney >= 0.4.2
 %if 0%{python_version_nodots} < 312

@@ -594,4 +594,18 @@
     <comment></comment>
     <requestid>1035041</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>e6772a9e5cec74ce233ae6098adbd3f9</srcmd5>
+    <version>23.13.1</version>
+    <time>1673021088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.13.1:
+  * #608: Added support for tab completion on the ``keyring`` command
+  if the ``completion`` extra is installed (``keyring[completion]``).
+  * #612: Prevent installation of ``pywin32-ctypes 0.1.2`` with broken
+  ``use2to3`` directive.
+  * #607: Removed PSF license as it was unused and confusing. Project
+  remains MIT licensed as always.</comment>
+    <requestid>1055998</requestid>
+  </revision>
 </revisionlist>
