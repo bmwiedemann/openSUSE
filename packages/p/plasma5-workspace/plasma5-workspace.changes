@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:06:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * Fix time input bug caused by "or" in regex (kde#415028)
+  * wallpapers/image: fix finding the real symlink target (kde#461940)
+  * applets/systemtray: Fix copy-paste mistake (double assignment to width)
+  * Fix building screenpooltest
+  * Panel: Add floating margins to avoid overflowing content when floating (kde#462130)
+  * find in system's path and sudo's path (kde#462127)
+  * kcms/region_language: set fix scrolling in language sheet (kde#462057)
+  * Revert "shell: Use the basic scene graph rendering loop on wayland"
+  * Revert "shell: Don't force basic render loop for Plasma Mobile"
+
+-------------------------------------------------------------------
 Tue Nov 29 14:47:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.4.1
