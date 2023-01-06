@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python3-saml
 Version:        1.14.0
 Release:        0
@@ -68,6 +67,10 @@ sed -i 's/==/>=/;/dependency_links/d' setup.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%dir %{python_sitelib}/onelogin
+%{python_sitelib}/onelogin/saml2
+%{python_sitelib}/onelogin/__init__.py
+%pycache_only %{python_sitelib}/onelogin/__pycache__/
+%{python_sitelib}/python3_saml-%{version}*-info
 
 %changelog
