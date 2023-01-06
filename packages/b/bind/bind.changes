@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:42:37 UTC 2023 - Thiago Macieira <thiago@kde.org>
+
+- Declare that named.service depends on network-online.target, otherwise named
+  may start too early and thus fail (time out) when resolving some
+  domains. This happens easily in containers.
+
+-------------------------------------------------------------------
 Thu Dec 22 12:36:53 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.10
