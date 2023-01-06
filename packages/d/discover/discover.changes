@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:06:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * libdiscover: fix permission text not being translated
+
+-------------------------------------------------------------------
 Tue Nov 29 14:47:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.4
