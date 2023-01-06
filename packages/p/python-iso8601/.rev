@@ -196,4 +196,15 @@ https://build.opensuse.org/package/show?package=openstack-nova&amp;project=Virtu
     <comment></comment>
     <requestid>940344</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a1e987c856ae9c31e6fa03f2086a9d90</srcmd5>
+    <version>1.1.0</version>
+    <time>1673021087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * raise ParseError if we get an exception on is_iso8601()
+  * Add is_iso8601() function
+  * Update license years</comment>
+    <requestid>1055988</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-iso8601
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-iso8601
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Python module to parse ISO 8601 dates
 License:        MIT
@@ -27,8 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/micktwomey/pyiso8601
 Source:         https://files.pythonhosted.org/packages/source/i/iso8601/iso8601-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module pytest >= 2.4.2}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
