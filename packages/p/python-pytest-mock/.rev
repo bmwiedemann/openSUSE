@@ -233,4 +233,29 @@
     <comment></comment>
     <requestid>948117</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>428dce152fdb239b56b12957a95e7091</srcmd5>
+    <version>3.10.0</version>
+    <time>1673021070</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Remove pytest-mock-issue272-asyncio.patch
+- Add python-py dependency
+- Update to 3.10.0:
+  * Added new mocker.stop(m) method to stop specific mocker.patch or mocker.spy
+    calls (#319).
+- 3.9.0:
+  * Expose NonCallableMagicMock via the mocker fixture (#318).
+- 3.8.2:
+  * Fixed AsyncMock support for Python 3.7+ in mocker.async_stub (#302).
+- 3.8.1:
+  * Fix regression caused by an explicit mock dependency in the code (#298).
+- 3.8.0:
+  * Add MockerFixture.async_mock method. Thanks @PerchunPak for the PR (#296).
+- 3.7.0:
+  * Python 3.10 now officially supported.
+  * Dropped support for Python 3.6.
+</comment>
+    <requestid>1039088</requestid>
+  </revision>
 </revisionlist>

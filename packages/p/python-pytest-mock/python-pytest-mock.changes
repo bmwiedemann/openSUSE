@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 30 11:25:21 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Remove pytest-mock-issue272-asyncio.patch
+- Add python-py dependency
+- Update to 3.10.0:
+  * Added new mocker.stop(m) method to stop specific mocker.patch or mocker.spy
+    calls (#319).
+- 3.9.0:
+  * Expose NonCallableMagicMock via the mocker fixture (#318).
+- 3.8.2:
+  * Fixed AsyncMock support for Python 3.7+ in mocker.async_stub (#302).
+- 3.8.1:
+  * Fix regression caused by an explicit mock dependency in the code (#298).
+- 3.8.0:
+  * Add MockerFixture.async_mock method. Thanks @PerchunPak for the PR (#296).
+- 3.7.0:
+  * Python 3.10 now officially supported.
+  * Dropped support for Python 3.6.
+
+-------------------------------------------------------------------
 Sat Jan 22 11:58:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add pytest-mock-issue272-asyncio.patch
