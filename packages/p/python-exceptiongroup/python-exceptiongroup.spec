@@ -1,5 +1,5 @@
 #
-# spec file for package python-exceptiongroup
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,18 +16,31 @@
 #
 
 
-%define pyversion 1.0.0rc9
-Name:           python-exceptiongroup
-Version:        1.0.0~rc9
+# This is not only because of dependency of testsuite, but mostly
+# because of cyclical dependencies between exceptiongroup and pytest.
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
+Name:           python-exceptiongroup%{psuffix}
+Version:        1.1.0
 Release:        0
 Summary:        Backport of PEP 654 (exception groups)
 License:        MIT AND Python-2.0
 URL:            https://github.com/agronholm/exceptiongroup
-Source:         https://github.com/agronholm/exceptiongroup/archive/refs/tags/%{pyversion}.tar.gz#/exceptiongroup-%{pyversion}-gh.tar.gz
+Source:         https://github.com/agronholm/exceptiongroup/archive/refs/tags/%{version}.tar.gz#/exceptiongroup-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-scm}
 BuildRequires:  %{python_module pip}
+%if %{with test}
+BuildRequires:  %{python_module exceptiongroup = %{version}}
 BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -61,23 +74,29 @@ exception group classes are used instead, ``TracebackException`` is not monkey p
 and the exception hook won't be installed.
 
 %prep
-%setup -q -n exceptiongroup-%{pyversion}
+%setup -q -n exceptiongroup-%{version}
 
+%if !%{with test}
 %build
-export SETUPTOOLS_SCM_PRETEND_VERSION=%{pyversion}
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/exceptiongroup
-%{python_sitelib}/exceptiongroup-%{pyversion}*-info
+%{python_sitelib}/exceptiongroup-%{version}.dist-info
+%endif
 
 %changelog
