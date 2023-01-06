@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec 13 13:17:32 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.8.0
+  * If a test raises an ExceptionGroup (or nested ExceptionGroups) 
+    with only a single ‘leaf’ exception from pytest.xfail() or 
+    pytest.skip(), we now unwrap it to have the desired effect on Pytest. 
+  * Trio 0.22.0 deprecated MultiError in favor of the standard-library 
+    (or backported) ExceptionGroup type; pytest-trio now uses ExceptionGroup 
+    exclusively and therefore requires Trio 0.22.0 or later. (#128)
+  * Dropped support for end-of-life Python 3.6, and the async_generator library 
+    necessary to support it, and started testing on Python 3.10 and 3.11. (#129)
+
+-------------------------------------------------------------------
 Thu Nov  5 14:05:47 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 0.7.0

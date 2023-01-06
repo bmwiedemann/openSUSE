@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-trio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,29 +19,27 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-trio
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Pytest plugin for trio
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/pytest-trio
 Source:         https://github.com/python-trio/pytest-trio/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-async_generator >= 1.9
 Requires:       python-contextvars >= 2.1
-Requires:       python-outcome
-Requires:       python-pytest >= 3.6
-Requires:       python-trio >= 0.15.0
+Requires:       python-outcome >= 1.1.0
+Requires:       python-pytest >= 7.2.0
+Requires:       python-trio >= 0.22.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module async_generator >= 1.9}
 BuildRequires:  %{python_module contextvars >= 2.1}
 BuildRequires:  %{python_module hypothesis >= 3.64}
-BuildRequires:  %{python_module outcome}
+BuildRequires:  %{python_module outcome >= 1.1.0}
 # we really need newer pytest in tests than is required by the package
-BuildRequires:  %{python_module pytest >= 6.0.0} 
-BuildRequires:  %{python_module trio >= 0.15.0}
+BuildRequires:  %{python_module pytest >= 7.2.0}
+BuildRequires:  %{python_module trio >= 0.22.0}
 # /SECTION
 %python_subpackages
 
