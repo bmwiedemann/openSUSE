@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  2 09:55:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Add __main__ to re-enable demo via python -m termcolor
+
+-------------------------------------------------------------------
+Sat Dec  3 01:09:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.1.0
+  * Support FORCE_COLOR and detect tty (#25) @hugovk
+  * Deprecate __ALL__, use __all__ instead (#23) @hugovk
+
+-------------------------------------------------------------------
 Mon Oct  3 16:03:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:

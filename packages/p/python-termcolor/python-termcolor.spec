@@ -1,7 +1,7 @@
 #
 # spec file for package python-termcolor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-termcolor
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        ANSII Color formatting for output in terminal
 License:        MIT
