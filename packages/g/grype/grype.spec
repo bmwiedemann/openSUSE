@@ -1,7 +1,7 @@
 #
 # spec file for package grype
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           grype
-Version:        0.54.0
+Version:        0.55.0
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0

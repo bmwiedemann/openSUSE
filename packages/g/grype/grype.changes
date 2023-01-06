@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 05 14:00:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.55.0:
+  * fix: sort vulnerability results (#1052)
+  * Adding internal/file/hasher test cases (#1049)
+  * fix: orient by cve merging (#1046)
+  * Update Syft to v0.64.0 (#1047)
+  * fix: update removing results based on ownership-by-file-overlap (#1045)
+  * feat: swap custom cyclone-dx model for cyclone-dx library (#1038)
+  * chore: add GitLab Community Edition image to quality gate (#1035)
+
+-------------------------------------------------------------------
 Fri Dec 16 12:39:08 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.54.0:
