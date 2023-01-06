@@ -1,5 +1,5 @@
 #
-# spec file for package python-hypothesmith-test
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-hypothesmith%{psuffix}
-Version:        0.2.0
+Version:        0.2.3
 Release:        0
 Summary:        Hypothesis strategies for generating Python programs, something like CSmith
 License:        MPL-2.0
@@ -37,15 +37,16 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-base >= 3.6
-Requires:       python-hypothesis >= 5.46
-Requires:       python-lark >= 0.7.2
-Requires:       python-libcst >= 0.3.8
+Requires:       python-base >= 3.7
+Requires:       python-hypothesis >= 6.58.1
+Requires:       python-lark >= 0.10.1
+Requires:       python-libcst >= 0.4.0
 %if %{with test}
 BuildRequires:  %{python_module black}
-BuildRequires:  %{python_module hypothesis >= 5.46}
-BuildRequires:  %{python_module lark >= 0.7.2}
-BuildRequires:  %{python_module libcst >= 0.3.8}
+BuildRequires:  %{python_module exceptiongroup}
+BuildRequires:  %{python_module hypothesis >= 6.58.1}
+BuildRequires:  %{python_module lark >= 0.10.1}
+BuildRequires:  %{python_module libcst >= 0.4.0}
 BuildRequires:  %{python_module parso}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}

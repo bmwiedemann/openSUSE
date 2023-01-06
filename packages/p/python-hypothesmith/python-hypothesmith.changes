@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec 15 06:26:48 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update requirements
+
+-------------------------------------------------------------------
+Tue Dec 13 15:35:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.2.3 
+  * Actually package up the renamed grammar file this time.
+
+- Update to 0.2.2 - 2022-11-29
+  * Correct the minimum required version of LibCST
+  * Use importlib.resources to load the Python grammar (zip-safe) 
+
+-------------------------------------------------------------------
+Tue Dec  6 03:35:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.2.1 - 2022-11-25
+  * Use the lark package on PyPI, for Lark version 1.0+ (requires recent Hypothesis)
+  * Use updated Python grammar for from_grammar(), thanks to Lark updates
+  * Drop support for Python 3.6, add 3.10 and 3.11 to CI 
+
+-------------------------------------------------------------------
 Thu Oct 20 13:24:58 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to v0.2.0
@@ -7,6 +30,15 @@ Thu Oct 20 13:24:58 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
     that's why hypothesmith exists...
 - Release v0.1.9
   * Fixed rare internal error when from_node() generated misplaced except: clauses
+
+-------------------------------------------------------------------
+Thu Sep 29 02:26:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.2.0 - 2021-11-27
+  More efficient generation of Python identifiers
+  Workaround for CPython parser bug in 3.9.8 (#16) Yes, yet another one - still, that's why hypothesmith exists...
+- Update to 0.1.9 - 2021-08-19
+  Fixed rare internal error when from_node() generated misplaced except: clauses 
 
 -------------------------------------------------------------------
 Sun Mar 21 20:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
