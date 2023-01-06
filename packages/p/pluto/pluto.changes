@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 05 14:01:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.12.0:
+  * Update documentation from template (#428)
+  * sc/rd 71 add plg link (#427)
+  * fix: preserve ordering of custom columns (#412)
+  * Bump k8s.io/api from 0.25.3 to 0.25.4 (#406)
+  * Bump k8s.io/apimachinery from 0.25.3 to 0.25.4 (#405)
+  * Bump sigs.k8s.io/controller-runtime from 0.13.0 to 0.13.1 (#403)
+  * Bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#404)
+  * Bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (#402)
+  * Bump alpine from 3.16.2 to 3.16.3 (#407)
+
+-------------------------------------------------------------------
 Mon Dec 12 12:23:50 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
 - Install completions 
