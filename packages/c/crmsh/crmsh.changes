@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 06 07:11:07 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230106.b020209b:
+  * Dev: unittest: Adjust unit test based on previous change
+  * Dev: utils: use --preserve-env option, not -E for sudo
+
+-------------------------------------------------------------------
+Thu Jan 05 12:03:10 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230105.6c47d1cc:
+  * Dev: behave: add basic alice-bob init-join test
+  * Dev: unittest: replace root by alice and bob
+  * Feature: replace root by a custom user with root privileges
+
+-------------------------------------------------------------------
 Wed Dec 28 09:46:54 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221228.326c28fd:
