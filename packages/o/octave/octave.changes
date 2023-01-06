@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:33:48 UTC 2023 - pgajdos@suse.com
+
+- back to GraphicsMagick, octave cannot be built against
+  ImageMagick 7
+
+-------------------------------------------------------------------
 Mon Dec 19 15:19:25 UTC 2022 - pgajdos@suse.com
 
 - GraphicsMagick will be removed from Factory

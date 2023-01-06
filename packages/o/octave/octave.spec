@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@
 %bcond_without java
 
 # Image processing library
-%if 0%{suse_version} >= 1550
-# Default variant - ImageMagick
+%if 0
+# currently, octave cannot be built against ImageMagick 7
 %bcond_without imagemagick
 %else
 # Default variant - GraphicsMagick
@@ -235,6 +235,11 @@ export QCOLLECTIONGENERATOR=qhelpgenerator-qt5
 %endif
 %configure \
   --libexecdir=%{_libdir} \
+%if %{with imagemagick}
+  --with-magick=Magick++\
+%else
+  --with-magick=GraphicsMagick++\
+%endif
   %{?with_gui: --with-qt} \
   %{!?with_gui: --without-qt} \
   %{?with_jit: --enable-jit} \
