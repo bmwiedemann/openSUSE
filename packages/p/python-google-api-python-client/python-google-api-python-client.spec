@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-api-python-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-google-api-python-client
-Version:        2.69.0
+Version:        2.70.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
