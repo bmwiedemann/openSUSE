@@ -40,7 +40,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2021.7.0
+Version:        2021.8.0
 Release:        0
 Summary:        Threading Building Blocks (TBB)
 License:        Apache-2.0
@@ -48,11 +48,11 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.threadingbuildingblocks.org/
 Source0:        https://github.com/oneapi-src/oneTBB/archive/v%{version}.tar.gz#/tbb-%{version}.tar.gz
 Source99:       tbb-rpmlintrc
-Patch0:         https://github.com/oneapi-src/oneTBB/commit/5cb212d44732947396abdd39eae1229c7cd51644.patch
 Patch1:         https://github.com/oneapi-src/oneTBB/pull/917.patch
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
 Patch3:         retry-pthread_create.patch
+Patch4:         add-cmake-check-for-libatomic-requirement-when-build.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

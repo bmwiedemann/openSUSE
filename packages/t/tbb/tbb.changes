@@ -1,20 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan  4 20:08:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to v2021.8.0
+  * Fixed oneapi::tbb::concurrent_bounded_queue::pop return type (GitHub* #807).
+  * Fixed oneapi::tbb::concurrent_queue and oneapi::tbb::concurrent_bounded_queue
+    with non-default constructible value types (GitHub* #885).
+  * Fixed incorrect splitting of iteration space in case there is no
+    support for proportional splitting in custom ranges.
+- Add patch to link against libatomic where necessary
+  * add-cmake-check-for-libatomic-requirement-when-build.patch
+- Drop 5cb212d44732947396abdd39eae1229c7cd51644.patch, merged upstream
+- Use correct changelog entries for v2021.7.0
+
+-------------------------------------------------------------------
 Sun Dec 11 18:37:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v2021.7.0:
-  * Memory allocator crash on a system with an incomplete /proc/meminfo
-    (GitHub* #584).
-  * Incorrect blocking of task stealing (GitHub* #478).
-  * Hang due to incorrect decrement of a limiter_node (GitHub* #634).
-  * Memory corruption in some rare cases when passing big messages in a flow
-    graph (GitHub* #639).
-  * Possible deadlock in a throwable flow graph node with a lightweight
-    policy. The lightweight policy is now ignored for functors that can
-    throw exceptions (GitHub* #420).
-  * Crash when obtaining a range from empty ordered and unordered containers
-    (GitHub* #641).
-  * Deadlock in a concurrent_vector resize() that could happen when the new
-    size is less than the previous size (GitHub* #733).
+  * Memory allocator crash when allocating ~1TB on 64-bit systems (GitHub* #838).
+  * Thread Distribution over NUMA Nodes on Windows OS systems.
+  * For oneapi::tbb::suspend it is now guaranteed that the user-specified
+    callable object is executed by the calling thread.
 
 -------------------------------------------------------------------
 Sat Sep 24 12:16:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
