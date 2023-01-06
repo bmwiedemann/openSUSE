@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-systemmonitor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define kf5_version 5.98.0
 %bcond_without released
 Name:           plasma5-systemmonitor
-Version:        5.26.4
+Version:        5.26.5
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
