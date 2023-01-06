@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,15 +42,20 @@
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.11.1
+Version:        2022.12.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
+# SourceRepository: https://github.com/dask/dask
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM  dask-pr9777-np1.24.patch gh#dask/dask#9777
+Patch0:         dask-pr9777-np1.24.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
@@ -70,7 +75,6 @@ Recommends:     %{name}-distributed = %{version}
 Recommends:     %{name}-dot = %{version}
 Recommends:     python-SQLAlchemy >= 1.4.0
 Recommends:     python-cityhash
-Recommends:     python-distributed >= %{version}
 Recommends:     python-fastparquet
 Recommends:     python-gcsfs >= 0.4.0
 Recommends:     python-murmurhash
@@ -327,11 +331,11 @@ sed -i  '/addopts/d' setup.cfg
 chmod a-x dask/dataframe/io/orc/utils.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dask
 %{python_expand # give SUSE specific install instructions
 sed -E -i '/Please either conda or pip install/,/python -m pip install/ {
@@ -373,6 +377,9 @@ donttest+=" or (test_threaded and test_interrupt)"
 donttest+=" or test_select_from_select"
 # tries to get an IP address
 donttest+=" or test_map_partitions_df_input"
+# more nullcast pandas warnings since numpy 1.24 (see also gh#dask/dask#9793)
+donttest+=" or (test_array_core and test_setitem_extended_API_2d_mask)"
+donttest+=" or (test_arithmetics_reduction and test_datetime_std)"
 %pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
@@ -388,7 +395,7 @@ donttest+=" or test_map_partitions_df_input"
 %license LICENSE.txt
 %python_alternative %{_bindir}/dask
 %{python_sitelib}/dask/
-%{python_sitelib}/dask-%{version}*-info
+%{python_sitelib}/dask-%{version}.dist-info
 %exclude %{python_sitelib}/dask/array/
 %exclude %{python_sitelib}/dask/bag/
 %exclude %{python_sitelib}/dask/dataframe/

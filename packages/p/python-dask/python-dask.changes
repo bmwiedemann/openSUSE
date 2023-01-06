@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Jan  2 20:44:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.1
+  ## Enhancements
+  * Support dtype_backend="pandas|pyarrow" configuration (GH#9719)
+    James Bourbeau
+  * Support cupy.ndarray to cudf.DataFrame dispatching in
+    dask.dataframe (GH#9579) Richard (Rick) Zamora
+  * Make filesystem-backend configurable in read_parquet (GH#9699)
+    Richard (Rick) Zamora
+  * Serialize all pyarrow extension arrays efficiently (GH#9740)
+    James Bourbeau
+  ## Bug Fixes
+  * Fix bug when repartitioning with tz-aware datetime index
+    (GH#9741) James Bourbeau
+  * Partial functions in aggs may have arguments (GH#9724) Irina
+    Truong
+  * Add support for simple operation with pyarrow-backed extension
+    dtypes (GH#9717) James Bourbeau
+  * Rename columns correctly in case of SeriesGroupby (GH#9716)
+    Lawrence Mitchell
+  ## Maintenance
+  * Add zarr to Python 3.11 CI environment (GH#9771) James Bourbeau
+  * Add support for Python 3.11 (GH#9708) Thomas Grainger
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (GH#9753)
+  * Avoid np.bool8 deprecation warning (GH#9737) James Bourbeau
+  * Make sure dev packages aren’t overwritten in upstream CI build
+    (GH#9731) James Bourbeau
+  * Avoid adding data.h5 and mydask.html files during tests
+    (GH#9726) Thomas Grainger
+- Release 2022.12.0
+  ## Enhancements
+  * Remove statistics-based set_index logic from read_parquet
+    (GH#9661) Richard (Rick) Zamora
+  * Add support for use_nullable_dtypes to dd.read_parquet
+    (GH#9617) Ian Rose
+  * Fix map_overlap in order to accept pandas arguments (GH#9571)
+    Fabien Aulaire
+  * Fix pandas 1.5+ FutureWarning in .str.split(..., expand=True)
+    (GH#9704) Jacob Hayes
+  * Enable column projection for groupby slicing (GH#9667) Richard
+    (Rick) Zamora
+  * Support duplicate column cum-functions (GH#9685) Ben
+  * Improve error message for failed backend dispatch call
+    (GH#9677) Richard (Rick) Zamora
+  ## Bug Fixes
+  * Revise meta creation in arrow parquet engine (GH#9672) Richard
+    (Rick) Zamora
+  * Fix da.fft.fft for array-like inputs (GH#9688) James Bourbeau
+  * Fix groupby -aggregation when grouping on an index by name
+    (GH#9646) Richard (Rick) Zamora
+  ## Maintenance
+  * Avoid PytestReturnNotNoneWarning in test_inheriting_class
+    (GH#9707) Thomas Grainger
+  * Fix flaky test_dataframe_aggregations_multilevel (GH#9701)
+    Richard (Rick) Zamora
+  * Bump mypy version (GH#9697) crusaderky
+  * Disable dashboard in test_map_partitions_df_input (GH#9687)
+    James Bourbeau
+  * Use latest xarray-contrib/issue-from-pytest-log in upstream
+    build (GH#9682) James Bourbeau
+  * xfail ttest_1samp for upstream scipy (GH#9670) James Bourbeau
+  * Update gpuCI RAPIDS_VER to 23.02 (GH#9678)
+- Add dask-pr9777-np1.24.patch gh#dask/dask#9777
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Mon Nov 21 19:03:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Go back to bokeh 2.4

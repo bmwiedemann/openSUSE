@@ -1,0 +1,185 @@
+From c68d1328a7478d4f1326daff0fccd5d0de24e01c Mon Sep 17 00:00:00 2001
+From: James Bourbeau <jrbourbeau@gmail.com>
+Date: Tue, 20 Dec 2022 11:32:17 -0600
+Subject: [PATCH 1/3] Fix numpy warning in
+ test_pandas_timestamp_overflow_pyarrow
+
+---
+ dask/array/numpy_compat.py              |  1 +
+ dask/dataframe/io/tests/test_parquet.py | 15 ++++++++++++---
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/dask/array/numpy_compat.py b/dask/array/numpy_compat.py
+index 8cbb5ad3dcf..59bd68f13a9 100644
+--- a/dask/array/numpy_compat.py
++++ b/dask/array/numpy_compat.py
+@@ -10,6 +10,7 @@
+ _numpy_121 = _np_version >= parse_version("1.21.0")
+ _numpy_122 = _np_version >= parse_version("1.22.0")
+ _numpy_123 = _np_version >= parse_version("1.23.0")
++_numpy_124 = _np_version >= parse_version("1.24.0")
+ 
+ 
+ # Taken from scikit-learn:
+diff --git a/dask/dataframe/io/tests/test_parquet.py b/dask/dataframe/io/tests/test_parquet.py
+index eed3b83e091..7a6fc3be284 100644
+--- a/dask/dataframe/io/tests/test_parquet.py
++++ b/dask/dataframe/io/tests/test_parquet.py
+@@ -1,3 +1,4 @@
++import contextlib
+ import glob
+ import math
+ import os
+@@ -14,6 +15,7 @@
+ import dask
+ import dask.dataframe as dd
+ import dask.multiprocessing
++from dask.array.numpy_compat import _numpy_124
+ from dask.blockwise import Blockwise, optimize_blockwise
+ from dask.dataframe._compat import (
+     PANDAS_GT_110,
+@@ -3197,9 +3199,16 @@ def test_pandas_metadata_nullable_pyarrow(tmpdir):
+ @PYARROW_MARK
+ def test_pandas_timestamp_overflow_pyarrow(tmpdir):
+     info = np.iinfo(np.dtype("int64"))
+-    arr_numeric = np.linspace(
+-        start=info.min + 2, stop=info.max, num=1024, dtype="int64"
+-    )
++    # In `numpy=1.24.0` NumPy warns when an overflow is encountered when casting from float to int
++    # https://numpy.org/doc/stable/release/1.24.0-notes.html#numpy-now-gives-floating-point-errors-in-casts
++    if _numpy_124:
++        ctx = pytest.warns(RuntimeWarning, match="invalid value encountered in cast")
++    else:
++        ctx = contextlib.nullcontext()
++    with ctx:
++        arr_numeric = np.linspace(
++            start=info.min + 2, stop=info.max, num=1024, dtype="int64"
++        )
+     arr_dates = arr_numeric.astype("datetime64[ms]")
+ 
+     table = pa.Table.from_arrays([pa.array(arr_dates)], names=["ts"])
+
+From 7457f47f8202c0478909edc9f9068ae8d00f0cbb Mon Sep 17 00:00:00 2001
+From: James Bourbeau <jrbourbeau@gmail.com>
+Date: Tue, 20 Dec 2022 12:29:51 -0600
+Subject: [PATCH 2/3] Temporarily avoid crick in Python 3.11 build
+
+
+---
+ continuous_integration/environment-3.11.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+[removed]
+
+From 03512362608504e30120fa5214d50bb7f969d543 Mon Sep 17 00:00:00 2001
+From: James Bourbeau <jrbourbeau@gmail.com>
+Date: Tue, 20 Dec 2022 13:51:40 -0600
+Subject: [PATCH 3/3] More
+
+---
+ dask/dataframe/core.py                  |  8 +++++++-
+ dask/dataframe/tests/test_reshape.py    | 24 +++++++++++++++++++++---
+ dask/diagnostics/tests/test_profiler.py | 12 ++++++++----
+ 3 files changed, 36 insertions(+), 8 deletions(-)
+
+diff --git a/dask/dataframe/core.py b/dask/dataframe/core.py
+index 19d09597184..20f6b8d0795 100644
+--- a/dask/dataframe/core.py
++++ b/dask/dataframe/core.py
+@@ -8140,7 +8140,13 @@ def _convert_to_numeric(series, skipna):
+ 
+ def _sqrt_and_convert_to_timedelta(partition, axis, *args, **kwargs):
+     if axis == 1:
+-        return pd.to_timedelta(M.std(partition, axis=axis, *args, **kwargs))
++        with warnings.catch_warnings():
++            warnings.filterwarnings(
++                "ignore",
++                category=RuntimeWarning,
++                message="invalid value encountered in cast",
++            )
++            return pd.to_timedelta(M.std(partition, axis=axis, *args, **kwargs))
+ 
+     is_df_like, time_cols = kwargs["is_df_like"], kwargs["time_cols"]
+ 
+diff --git a/dask/dataframe/tests/test_reshape.py b/dask/dataframe/tests/test_reshape.py
+index 88f9a59587c..a7d800f1c42 100644
+--- a/dask/dataframe/tests/test_reshape.py
++++ b/dask/dataframe/tests/test_reshape.py
+@@ -1,3 +1,4 @@
++import contextlib
+ import warnings
+ 
+ import numpy as np
+@@ -109,6 +110,19 @@ def decorator():
+     return decorator
+ 
+ 
++@contextlib.contextmanager
++def ignore_numpy_bool8_deprecation():
++    # This warning comes from inside `pandas`. We can't do anything about it, so we ignore the warning.
++    # Note it's been fixed upstream in `pandas` https://github.com/pandas-dev/pandas/pull/49886.
++    with warnings.catch_warnings():
++        warnings.filterwarnings(
++            "ignore",
++            category=DeprecationWarning,
++            message="`np.bool8` is a deprecated alias for `np.bool_`",
++        )
++        yield
++
++
+ @check_pandas_issue_45618_warning
+ def test_get_dummies_sparse():
+     s = pd.Series(pd.Categorical(["a", "b", "a"], categories=["a", "b", "c"]))
+@@ -116,14 +130,16 @@ def test_get_dummies_sparse():
+ 
+     exp = pd.get_dummies(s, sparse=True)
+     res = dd.get_dummies(ds, sparse=True)
+-    assert_eq(exp, res)
++    with ignore_numpy_bool8_deprecation():
++        assert_eq(exp, res)
+ 
+     assert res.compute().a.dtype == "Sparse[uint8, 0]"
+     assert pd.api.types.is_sparse(res.a.compute())
+ 
+     exp = pd.get_dummies(s.to_frame(name="a"), sparse=True)
+     res = dd.get_dummies(ds.to_frame(name="a"), sparse=True)
+-    assert_eq(exp, res)
++    with ignore_numpy_bool8_deprecation():
++        assert_eq(exp, res)
+     assert pd.api.types.is_sparse(res.a_a.compute())
+ 
+ 
+@@ -139,7 +155,9 @@ def test_get_dummies_sparse_mix():
+ 
+     exp = pd.get_dummies(df, sparse=True)
+     res = dd.get_dummies(ddf, sparse=True)
+-    assert_eq(exp, res)
++
++    with ignore_numpy_bool8_deprecation():
++        assert_eq(exp, res)
+ 
+     assert res.compute().A_a.dtype == "Sparse[uint8, 0]"
+     assert pd.api.types.is_sparse(res.A_a.compute())
+diff --git a/dask/diagnostics/tests/test_profiler.py b/dask/diagnostics/tests/test_profiler.py
+index 9b3c8036a7a..8f9980af76c 100644
+--- a/dask/diagnostics/tests/test_profiler.py
++++ b/dask/diagnostics/tests/test_profiler.py
+@@ -369,10 +369,14 @@ def test_saves_file_path_deprecated():
+         with pytest.warns(FutureWarning) as record:
+             prof.visualize(show=False, file_path=fn)
+ 
+-        assert len(record) == 1
+-        assert os.path.exists(fn)
+-        with open(fn) as f:
+-            assert "html" in f.read().lower()
++        assert 1 <= len(record) <= 2
++        assert "file_path keyword argument is deprecated" in str(record[-1].message)
++        # This additional warning comes from inside `bokeh`. There's a fix upstream
++        # https://github.com/bokeh/bokeh/pull/12690 so for now we just ignore it.
++        if len(record) == 2:
++            assert "`np.bool8` is a deprecated alias for `np.bool_`" in str(
++                record[0].message
++            )
+ 
+ 
+ @pytest.mark.skipif("not bokeh")
