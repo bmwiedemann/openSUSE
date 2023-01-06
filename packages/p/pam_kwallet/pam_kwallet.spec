@@ -1,7 +1,7 @@
 #
 # spec file for package pam_kwallet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           pam_kwallet
-Version:        5.26.4
+Version:        5.26.5
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -69,7 +69,7 @@ module.
 %build
   # Before usrmerge, the PAM module goes into /lib*/security/
   %{cmake_kf5 -d build -- \
-  %if !0%{?usrmerged}
+  %if 0%{?suse_version} < 1550
       -DKDE_INSTALL_LIBDIR=/%{_lib}
   %endif
   }
@@ -100,7 +100,7 @@ module.
 
 %files
 %license LICENSES/*
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %{_pam_moduledir}/pam_kwallet5.so
 %else
 /%{_lib}/security/pam_kwallet5.so
