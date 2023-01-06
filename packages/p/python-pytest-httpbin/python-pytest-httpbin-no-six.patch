@@ -1,0 +1,13 @@
+Index: pytest-httpbin-1.0.2/pytest_httpbin/serve.py
+===================================================================
+--- pytest-httpbin-1.0.2.orig/pytest_httpbin/serve.py
++++ pytest-httpbin-1.0.2/pytest_httpbin/serve.py
+@@ -3,7 +3,7 @@ import threading
+ import ssl
+ from wsgiref.simple_server import WSGIServer, make_server, WSGIRequestHandler
+ from wsgiref.handlers import SimpleHandler
+-from six.moves.urllib.parse import urljoin
++from urllib.parse import urljoin
+ 
+ 
+ CERT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certs')

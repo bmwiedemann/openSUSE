@@ -26,16 +26,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/kevin1024/pytest-httpbin
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-httpbin/pytest-httpbin-%{version}.tar.gz
 Source99:       pytest-httpbin-rpmlintrc
+# https://github.com/kevin1024/pytest-httpbin/issues/75
+Patch0:         python-pytest-httpbin-no-six.patch
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-httpbin
 Requires:       python-pytest
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,6 +50,7 @@ fixture.
 
 %prep
 %setup -q -n pytest-httpbin-%{version}
+%patch0 -p1
 
 %build
 %python_build
