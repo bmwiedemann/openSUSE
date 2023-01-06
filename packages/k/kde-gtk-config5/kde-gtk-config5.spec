@@ -1,7 +1,7 @@
 #
 # spec file for package kde-gtk-config5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kde-gtk-config5
-Version:        5.26.4
+Version:        5.26.5
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
