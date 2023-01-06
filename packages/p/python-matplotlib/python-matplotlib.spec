@@ -16,10 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-# NEP 29: Numpy 1.20 dropped Python 3.6. No python36-numpy in TW anymore.
-%define         skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -31,7 +27,7 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.5.3
+Version:        3.6.2
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -41,34 +37,36 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests-pytest72.patch gh#matplotlib/matplotlib#24173
-Patch1:         fix-tests-pytest72.patch
-BuildRequires:  %{python_module Cycler >= 0.10}
-BuildRequires:  %{python_module FontTools >= 4.22.0}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module kiwisolver >= 1.0.1}
-BuildRequires:  %{python_module numpy >= 1.17}
-BuildRequires:  %{python_module numpy-devel >= 1.16}
-BuildRequires:  %{python_module packaging >= 20.0}
+# SECTION build
+BuildRequires:  %{python_module setuptools_scm >= 7}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing > 2.2.1}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  qhull-devel >= 2003.1
+# /SECTION
+# SECTION tk dependencies via tcl
+BuildRequires:  tcl
+BuildRequires:  pkgconfig(freetype2) >= 2.3
+BuildRequires:  pkgconfig(libpng) >= 1.2
+BuildRequires:  pkgconfig(tcl)
+# /SECTION
+# SECTION runtime
+Requires:       python-contourpy >= 1.0.1
 Requires:       python-Cycler >= 0.10
 Requires:       python-FontTools >= 4.22.0
-Requires:       python-Pillow >= 6.2
+Requires:       python-Pillow >= 6.2.0
 Requires:       python-kiwisolver >= 1.0.1
-Requires:       python-numpy >= 1.17
+Requires:       python-numpy >= 1.19
 Requires:       python-packaging >= 20.0
 Requires:       python-pyparsing > 2.2.1
 Requires:       python-python-dateutil >= 2.7
-Requires:       python-pytz
+# /SECTION
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -76,12 +74,7 @@ Recommends:     python-certifi
 Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
-# SECTION tk dependencies via tcl
-BuildRequires:  tcl
-BuildRequires:  pkgconfig(freetype2) >= 2.3
-BuildRequires:  pkgconfig(libpng) >= 1.2
-BuildRequires:  pkgconfig(tcl)
-# /SECTION
+# SECTION test
 %if %{with test}
 BuildRequires:  %{python_module matplotlib = %{version}}
 BuildRequires:  %{python_module matplotlib-cairo = %{version}}
@@ -102,6 +95,7 @@ BuildRequires:  ghostscript
 BuildRequires:  inkscape
 BuildRequires:  poppler-tools
 # /SECTION
+# /SECTION test
 %endif
 %python_subpackages
 
@@ -140,7 +134,7 @@ This package includes the GTK4-based gtk4, gtk4agg, and
 gtk4cairo backends for the %{name} plotting package
 
 %package        gtk-common
-Summary:        code common for GTK3 and GTK4 backends for %{name}
+Summary:        Code common for GTK3 and GTK4 backends for %{name}
 Requires:       %{name} = %{version}
 Requires:       %{name}-cairo = %{version}
 Requires:       gdk-pixbuf-loader-rsvg
@@ -181,6 +175,7 @@ Requires:       tex(type1cm.sty)
 Requires:       tex(type1ec.sty)
 Requires:       tex(ucs.sty)
 Requires:       tex(underscore.sty)
+BuildArch:      noarch
 
 %description    latex
 This package allows %{name} to display latex in plots
@@ -236,7 +231,7 @@ for %{name} plotting package
 
 %prep
 %autosetup -p1 -n matplotlib-%{version}
-#copy freetype to the right location, so that matplotlib will not try to download it
+# Copy freetype to the right location, so that matplotlib will not try to download it
 mkdir -p ~/.cache/matplotlib/
 SHA=($(sha256sum %{SOURCE98}))
 cp %{SOURCE98} ~/.cache/matplotlib/${SHA}
@@ -249,19 +244,15 @@ find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec
 cp %{SOURCE1} mplsetup.cfg
 # The setup procedure wants certifi to download packages over https. Not applicable here.
 sed -i '/"certifi>=.*"/ d' setup.py
-# To make it work with setuptools_scm >= 7
-# https://discourse.matplotlib.org/t/matplotlib-announce-amm-matplotlib-3-5-3/23046
-sed -i 's/setuptools_scm>=4,<7/setuptools_scm>=4/' setup.py
-sed -i '/"setuptools_scm_git_archive"/ d' setup.py
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %{python_expand sed -i -e "s/install matplotlib from source/install the $python-matplotlib-testdata package/" \
                       %{buildroot}%{$python_sitearch}/matplotlib/tests/__init__.py
 }
@@ -277,9 +268,6 @@ skip_tests+=" or test_backend_fallback_headful"
 skip_tests+=" or (test_usetex and png and not empty and not unicode)"
 # output slightly differs: text moves a bit
 skip_tests+=" or test_pdflatex"
-# we do not ship the qt4 backend
-skip_tests+=" or (test_correct_key and Qt4Agg)"
-skip_tests+=" or (test_fig_close and Qt4Agg)"
 # timing tests on obs can fail unpredictably
 skip_tests+=" or test_invisible_Line_rendering"
 # too much memory consumption on obs parallel workers
@@ -288,18 +276,25 @@ skip_tests+=" or (test_agg and chunksize) or test_throw_rendering_complexity_exc
 skip_tests+=" or (test_backends_interactive and test_figure_leak_20490)"
 # flaky signal termination tests inside obs
 skip_tests+=" or _sigint"
+# test finds extra system fonts not found by the mpl fontmanager
+skip_tests+=" or test_get_font_names"
+# different default font
+skip_tests+=" or test_bold_font_output_with_none_fonttype"
 %ifnarch x86_64
 # image comparison failures due to precisions dicrepancies to the x86 produced references
 skip_tests+=" or png or svg or pdf"
 %endif
+# backend tests landing in the wrong xdist process may fail with an error. Test them without xdist.
+no_xdist="test_backend or test_span_selector_animated_artists_callback"
 %{pytest_arch --pyargs matplotlib.tests \
               --pyargs mpl_toolkits.tests \
               -n auto \
               -m "not network" \
-              -k "not ( ${skip_tests:4} or test_backend )"
+              -vv \
+              -k "not (${no_xdist} ${skip_tests})"
 }
-# backend tests landing in the wrong xdist process may fail with an error. Test them without xdist.
-%pytest_arch --pyargs matplotlib.tests -k "test_backend and not ( ${skip_tests:4} )"
+
+%pytest_arch --pyargs matplotlib.tests -k "(${no_xdist}) and not (${skip_tests:4})"
 %endif
 
 %if !%{with test}
@@ -309,7 +304,7 @@ skip_tests+=" or png or svg or pdf"
 %license LICENSE/
 %license doc/users/project/license.rst
 %{python_sitearch}/matplotlib/
-%{python_sitearch}/matplotlib-%{version}-py*.egg-info
+%{python_sitearch}/matplotlib-%{version}.dist-info
 %{python_sitearch}/matplotlib-%{version}-py*-nspkg.pth
 %{python_sitearch}/mpl_toolkits
 %{python_sitearch}/pylab.py*
@@ -323,9 +318,6 @@ skip_tests+=" or png or svg or pdf"
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4agg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_gtk4cairo.*
-%exclude %{python_sitearch}/matplotlib/backends/backend_qt4.py*
-%exclude %{python_sitearch}/matplotlib/backends/backend_qt4agg.py*
-%exclude %{python_sitearch}/matplotlib/backends/backend_qt4cairo.py*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5agg.*
 %exclude %{python_sitearch}/matplotlib/backends/backend_qt5cairo.py*
@@ -348,9 +340,6 @@ skip_tests+=" or png or svg or pdf"
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_gtk4cairo.*.py*
-%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt4.*.py*
-%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt4agg.*.py*
-%exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt4cairo.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5agg.*.py*
 %exclude %{python_sitearch}/matplotlib/backends/__pycache__/backend_qt5cairo.*.py*

@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Thu Dec 22 15:40:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.6.2
+  * Avoid mutating dictionaries passed to subplots
+  * Fix bbox_inches='tight' on a figure with constrained layout
+    enabled
+  * Fix auto-scaling of ax.hist density with histtype='step'
+  * Fix compatibility with PySide6 6.4
+  * Fix evaluating colormaps on non-NumPy arrays
+  * Fix key reporting in pick events
+  * Fix thread check on PyPy 3.8
+  * Handle input to ax.bar that is all NaN
+  * Make rubber band more visible on Tk and Wx backends
+  * Restore (and warn on) seaborn styles in style.library
+  * Restore get_renderer function in deprecated tight_layout
+  * nb/webagg: Fix resize handle on WebKit browsers (e.g., Safari)
+- Release 3.6.1
+  * A warning is no longer raised when constrained layout
+    explicitly disabled and tight layout is applied
+  * Add missing get_cmap method to ColormapRegistry
+  * Adding a colorbar on a ScalarMappable that is not attached to
+    an Axes is now deprecated instead of raising a hard error
+  * Fix barplot being empty when first element is NaN
+  * Fix FigureManager.resize on GTK4
+  * Fix fill_between compatibility with NumPy 1.24 development
+    version
+  * Fix hexbin with empty arrays and log scaling
+  * Fix resize_event deprecation warnings when creating figure on
+    macOS
+  * Fix build in mingw
+  * Fix compatibility with PyCharm's interagg backend
+  * Fix crash on empty Text in PostScript backend
+  * Fix generic font families in SVG exports
+  * Fix horizontal colorbars with hatches
+  * Fix misplaced mathtext using eqnarray
+  * stackplot no longer changes the Axes cycler
+- Release 3.6.0
+  ## Figure and Axes creation / management
+  * subplots, subplot_mosaic accept height_ratios and width_ratios
+    arguments
+  * Constrained layout is no longer considered experimental
+  * New layout_engine module
+  * Compressed layout added for fixed-aspect ratio Axes
+  * Layout engines may now be removed
+  * Axes.inset_axes flexibility
+  * WebP is now a supported output format
+  * Garbage collection is no longer run on figure close
+  ## Plotting methods
+  * Striped lines (experimental)
+  * Custom cap widths in box and whisker plots in bxp and boxplot
+  * Easier labelling of bars in bar plot
+  * New style format string for colorbar ticks
+  * Linestyles for negative contours may be set individually
+  * Improved quad contour calculations via ContourPy
+  * errorbar supports markerfacecoloralt
+  * streamplot can disable streamline breaks
+  * New axis scale asinh (experimental)
+  * stairs(..., fill=True) hides patch edge by setting linewidth
+  * Fix the dash offset of the Patch class
+  * Rectangle patch rotation point
+  ## Colors and colormaps
+  * Color sequence registry
+  * Colormap method for creating a different lookup table size
+  * Setting norms with strings
+  ## Titles, ticks, and labels
+  * plt.xticks and plt.yticks support minor keyword argument
+  ## Legends
+  * Legend can control alignment of title and handles
+  * ncol keyword argument to legend renamed to ncols
+  ## Markers
+  * marker can now be set to the string "none"
+  * Customization of MarkerStyle join and cap style
+  ## Fonts and Text
+  * Font fallback
+  * List of available font names
+  * math_to_image now has a color keyword argument
+  * Active URL area rotates with link text
+  ## rcParams improvements
+  * Allow setting figure label size and weight globally and
+    separately from title
+  * Mathtext parsing can be disabled globally
+  * Double-quoted strings in matplotlibrc
+  ## 3D Axes improvements
+  * Standardized views for primary plane viewing angles
+  * Custom focal length for 3D camera
+  * 3D plots gained a 3rd "roll" viewing angle
+  * Equal aspect ratio for 3D plots
+  ## Interactive tool improvements
+  * Rotation, aspect ratio correction and add/remove state
+  * MultiCursor now supports Axes split over multiple figures
+  * PolygonSelector bounding boxes
+  * Setting PolygonSelector vertices
+  * SpanSelector widget can now be snapped to specified values
+  * More toolbar icons are styled for dark themes
+  ## Platform-specific changes
+  * Wx backend uses standard toolbar
+- Drop upstream patch fix-tests-pytest72.patch
+- Move to PEP518 build
+
+-------------------------------------------------------------------
 Wed Dec  7 11:28:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests-pytest72.patch to fix tests failing with pytest 7.2
