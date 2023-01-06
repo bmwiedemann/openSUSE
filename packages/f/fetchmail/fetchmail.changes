@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  5 21:24:47 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 6.4.35:
+  * BREAKING CHANGES:
+    - Fetchmail now warns about OpenSSL before 1.1.1s or 3.0.7,
+      and rejects wolfSSL older than 5.5.0.
+  * Updated Swedish and Esperanto translations.
+
+-------------------------------------------------------------------
 Fri Oct 21 11:24:40 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Remove stale requires to python-rpm-macros.
