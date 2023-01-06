@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 07:30:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_tinc.service.patch
+  * harden_tinc@.service.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 11:25:55 UTC 2020 - Michele Bologna <Michele.Bologna@suse.com>
 
 - Update to tinc 1.0.36

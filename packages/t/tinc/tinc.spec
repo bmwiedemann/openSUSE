@@ -26,6 +26,8 @@ Group:          Productivity/Networking/Security
 URL:            http://www.tinc-vpn.org/
 Source0:        http://www.tinc-vpn.org/packages/%{name}-%{version}.tar.gz
 Patch0:         tinc-systemd-path-fix.patch
+Patch1:	harden_tinc.service.patch
+Patch2:	harden_tinc@.service.patch
 
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
@@ -48,6 +50,8 @@ information to others.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 %configure \
