@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 05 14:00:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.0:
+  * adding purl types for binary classifiers (#1435)
+  * chore: refactor basic CPE functionality to its own package (#1436)
+  * fix: typo in os.Getwd error message (#1433)
+  * fix: additional excessive go binary warnings (#1432)
+  * docs: migrate to homebrew-core (#1427)
+
+-------------------------------------------------------------------
 Wed Jan 04 15:47:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.64.0:
