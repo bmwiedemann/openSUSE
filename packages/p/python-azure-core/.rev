@@ -342,4 +342,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1033494 from glaubitz)</comment>
     <requestid>1033501</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b984ac913851a978f6a883b3be22aeab</srcmd5>
+    <version>1.26.2</version>
+    <time>1673021177</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.26.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1056346 from glaubitz)</comment>
+    <requestid>1056387</requestid>
+  </revision>
 </revisionlist>
