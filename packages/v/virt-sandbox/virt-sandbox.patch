@@ -1,13 +1,46 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -113,6 +113,7 @@ LIBVIRT_SANDBOX_RPCGEN
+@@ -87,7 +87,6 @@ AC_ARG_WITH([zlib],
+ m4_divert_text([DEFAULTS], [with_zlib=yes])
+ 
+ orig_pkg_config="$PKG_CONFIG"
+-PKG_CONFIG="$PKG_CONFIG --static"
+ if test "$with_zlib" = "yes" ; then
+     PKG_CHECK_MODULES(ZLIB, zlib >= $ZLIB_REQUIRED)
+     AC_DEFINE([WITH_ZLIB], [1], [Whether ZLIB support was enabled])
+@@ -113,9 +112,9 @@ LIBVIRT_SANDBOX_RPCGEN
  LIBVIRT_SANDBOX_SELINUX
  LIBVIRT_SANDBOX_XDR
  
+-LIBVIRT_SANDBOX_STATIC_LIBC
+-LIBVIRT_SANDBOX_STATIC_LZMA
+-LIBVIRT_SANDBOX_STATIC_ZLIB
 +GTK_DOC_CHECK([1.10],[--flavour no-tmpl])
- LIBVIRT_SANDBOX_STATIC_LIBC
- LIBVIRT_SANDBOX_STATIC_LZMA
- LIBVIRT_SANDBOX_STATIC_ZLIB
++PKG_CHECK_MODULES(LZMA, liblzma)
++PKG_CHECK_MODULES(ZLIB, zlib)
+ 
+ dnl search for LDD path
+ AC_PATH_PROG([LDD_PATH], [ldd])
+--- a/libvirt-sandbox/Makefile.am
++++ b/libvirt-sandbox/Makefile.am
+@@ -221,8 +221,6 @@ libvirt_sandbox_init_lxc_CFLAGS = \
+ 			$(WARN_CFLAGS) \
+ 			$(NULL)
+ libvirt_sandbox_init_lxc_LDFLAGS = \
+-			-all-static \
+-			-static-pie \
+ 			$(COVERAGE_CFLAGS:-f%=-Wc,f%) \
+ 			$(WARN_CFLAGS) \
+ 			$(NULL)
+@@ -236,8 +234,6 @@ libvirt_sandbox_init_qemu_CFLAGS = \
+ 			$(WARN_CFLAGS) \
+ 			$(NULL)
+ libvirt_sandbox_init_qemu_LDFLAGS = \
+-			-all-static \
+-			-static-pie \
+ 			$(COVERAGE_CFLAGS:-f%=-Wc,f%) \
+ 			$(ZLIB_LIBS) \
+ 			$(LZMA_LIBS) \
 --- a/m4/virt-gtk-misc.m4
 +++ b/m4/virt-gtk-misc.m4
 @@ -1,5 +1,4 @@
