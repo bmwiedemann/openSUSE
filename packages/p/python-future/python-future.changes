@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan  5 12:03:41 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2022-40899.patch to fix REDoS in http.cookiejar
+  gh#PythonCharmers/python-future#610
+  bsc#1206673
+
+-------------------------------------------------------------------
 Fri Mar 12 13:35:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add python39-build.patch to avoid test failures

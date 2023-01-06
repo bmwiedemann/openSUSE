@@ -1,7 +1,7 @@
 #
 # spec file for package python-future
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-future
 Version:        0.18.2
 Release:        0
@@ -33,6 +32,8 @@ Patch1:         future-correct-mimetype.patch
 # PATCH-FIX-UPSTREAM python39-build.patch gh#PythonCharmers/python-future#578 mcepl@suse.com
 # Overcome incompatibilites with python 3.9
 Patch2:         python39-build.patch
+# PATCH-FIX-UPSTREAM CVE-2022-40899.patch gh#PythonCharmers/python-future#610 bsc#1206673
+Patch3:         CVE-2022-40899.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +44,7 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  python3-dbm
 %endif
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,7 +72,7 @@ sed -i -e '/^#!\//, 1d' src/future/backports/test/pystone.py
 %post
 %{python_install_alternative futurize pasteurize}
 
-%preun
+%postun
 %python_uninstall_alternative futurize
 
 %check
@@ -86,6 +87,10 @@ sed -i -e '/^#!\//, 1d' src/future/backports/test/pystone.py
 %license LICENSE.txt
 %python_alternative %{_bindir}/futurize
 %python_alternative %{_bindir}/pasteurize
-%{python_sitelib}/*
+%{python_sitelib}/future-%{version}*-info
+%{python_sitelib}/future
+%{python_sitelib}/libfuturize
+%{python_sitelib}/libpasteurize
+%{python_sitelib}/past
 
 %changelog

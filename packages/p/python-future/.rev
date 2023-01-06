@@ -123,4 +123,15 @@
 </comment>
     <requestid>878588</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>5491b4715ec1afd0cb6cf8b5fb1726d6</srcmd5>
+    <version>0.18.2</version>
+    <time>1673021063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-40899.patch to fix REDoS in http.cookiejar
+  gh#PythonCharmers/python-future#610
+  bsc#1206673
+</comment>
+    <requestid>1056169</requestid>
+  </revision>
 </revisionlist>
