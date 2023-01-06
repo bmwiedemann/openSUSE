@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan  5 21:06:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * Updated testing and coverage to drop Python 3.6 and add Python 3.11.
+  * Added new "recv_eof" option to not pass an EOF from a channel to a
+    redirected target, allowing output from multiple SSH sessions to be
+    sent and mixed with other direct output to that target.
+  * Added new methods to make it easy to perform forwarding between TCP
+    ports and UNIX domain sockets.
+  * Added a workaround for a problem seen on a Huawei SFTP server where
+    it sends an invalid combination of file attribute flags.
+  * Fixed an issue with copying files to SFTP servers that don't support
+    random access I/O.
+  * Fixed an issue when requesting remote port forwarding on a dynamically
+    allocated port.
+  * Fixed an issue where readexactly could block indefinitely when a signal
+    is delivered in the stream before the requested number of bytes are
+    available.
+  * Fixed an interoperability issue with OpenSSH when using SSH certificates
+    with RSA keys with a SHA-2 signature.
+  * Fixed an issue with handling "None" in ProxyCommand, GlobalKnownHostsFile,
+    and UserKnownHostsFile config file options.
+
+-------------------------------------------------------------------
 Fri Sep 23 02:23:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.12.0 
