@@ -1,7 +1,7 @@
 #
 # spec file for package gerbera
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gerbera
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -27,8 +27,6 @@ Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%
 Source1:        config.xml
 Source2:        gerbera.sysusers.in
 Patch0:         harden_gerbera.service.patch
-# PATCH-FIX-UPSTREAM https://github.com/gerbera/gerbera/issues/2755
-Patch1:         disable-test.patch
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes

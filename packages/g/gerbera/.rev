@@ -156,4 +156,22 @@
 </comment>
     <requestid>1038939</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f180f5aa3800b6a9d117e63dd39d4f6</srcmd5>
+    <version>1.12.1</version>
+    <time>1673021160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.1:
+  * Debug options for specialized messages
+  * Configure offset of lastPlayedPosition (aka Samsung bookmark)
+  * Calling null IOHandler
+  * Encoding of ticks ' as &amp;apos; for Bose
+  * ffmpeg and transcoding in docker container
+  * Tests failing on openSuSE &gt; 15.3 and others
+- Drop 2759.patch
+- Add 2759.patch: fix tests execution issues.
+- Remove disable-test.patch
+</comment>
+    <requestid>1056337</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  6 08:07:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.12.1:
+  * Debug options for specialized messages
+  * Configure offset of lastPlayedPosition (aka Samsung bookmark)
+  * Calling null IOHandler
+  * Encoding of ticks ' as &apos; for Bose
+  * ffmpeg and transcoding in docker container
+  * Tests failing on openSuSE > 15.3 and others
+- Drop 2759.patch
+
+-------------------------------------------------------------------
+Mon Dec  5 08:25:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add 2759.patch: fix tests execution issues.
+- Remove disable-test.patch
+
+-------------------------------------------------------------------
 Tue Nov 29 14:19:26 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.12.0:
