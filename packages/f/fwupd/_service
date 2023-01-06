@@ -4,7 +4,7 @@
     <param name="url">https://github.com/fwupd/fwupd.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.8.8</param>
+    <param name="revision">1.8.9</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
