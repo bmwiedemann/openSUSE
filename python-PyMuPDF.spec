@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.21.0
+Version:        1.21.1
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
