@@ -1,7 +1,7 @@
 #
 # spec file for package kpipewire
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 %bcond_without released
 Name:           kpipewire
-Version:        5.26.4
+Version:        5.26.5
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
