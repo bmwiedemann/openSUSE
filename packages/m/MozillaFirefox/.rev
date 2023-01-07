@@ -6023,4 +6023,12 @@
     <comment>- add mozilla-bmo1805809.patch to fix build for x86-32 (boo#1206600)</comment>
     <requestid>1044163</requestid>
   </revision>
+  <revision rev="386" vrev="1">
+    <srcmd5>a7f37f7e1a6ec0283b117314ab94b06c</srcmd5>
+    <version>108.0.2</version>
+    <time>1673108167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056394</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          108
-%define mainver        %major.0.1
-%define orig_version   108.0.1
+%define mainver        %major.0.2
+%define orig_version   108.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -228,7 +228,6 @@ Patch23:        mozilla-bmo531915.patch
 Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
 Patch27:        mozilla-buildfixes.patch
-Patch28:        mozilla-bmo1805809.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
