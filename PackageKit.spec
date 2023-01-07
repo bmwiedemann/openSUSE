@@ -70,6 +70,8 @@ Patch11:        PackageKit-zypp-dont-refresh-before-searching.patch
 Patch12:        PackageKit-zypp-dont-remove-locked-packages.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-package-id.patch gh#PackageKit/PackageKit/commit/8eb2ef0ae, bsc#1202585 sckang@suse.com -- zypp: add repository data in package id
 Patch13:        PackageKit-zypp-add-repo-in-packageid.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-ambiguous-filesystem-reference.patch gh#PackageKit/PackageKit/commit/bb1409a71, bsc#1206687 sckang@suse.com -- zypp: Fix ambiguous reference to 'filesystem' class
+Patch14:        PackageKit-zypp-fix-ambiguous-filesystem-reference.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
