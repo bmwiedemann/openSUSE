@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  6 20:51:48 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.7.1:
+  * Bug Fixes
+    + Fixes invalid sorting order for disk usage percentage
+    + Partially fix battery text getting cut off in small windows
+    + Fix CPU widget's 'all' label being missing on small sizes
+
+-------------------------------------------------------------------
 Sun Jan  1 16:31:08 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
 
 - Add build dependency to zstd compression tool
