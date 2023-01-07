@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdenlive
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-designer-plugin-crash.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -135,8 +133,6 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %{_kf5_kxmlguidir}/kdenlive/
 %{_kf5_mandir}/man1/kdenlive*
 %{_kf5_plugindir}/mltpreview.so
-%dir %{_kf5_plugindir}/designer
-%{_kf5_plugindir}/designer/kdenlivewidgets.so
 %{_kf5_servicesdir}/mltpreview.desktop
 %{_kf5_sharedir}/kdenlive/
 %{_kf5_sharedir}/knotifications5/kdenlive.notifyrc

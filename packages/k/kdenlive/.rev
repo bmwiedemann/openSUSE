@@ -955,4 +955,12 @@ I would be grateful.
   * 0001-Fix-designer-plugin-crash.patch</comment>
     <requestid>1045745</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>3e0dbbe742e054544a25b52f44cfab94</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108292</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056497</requestid>
+  </revision>
 </revisionlist>
