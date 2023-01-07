@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkomparediff2
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
