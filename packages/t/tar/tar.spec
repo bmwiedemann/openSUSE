@@ -167,7 +167,7 @@ rm %{buildroot}%{_localstatedir}/lib/tests/tar/{atconfig,atlocal,Makefile}*
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/rmt %{buildroot}%{_bindir}/rmt
 ln -sf %{_sysconfdir}/alternatives/rmt.1%{ext_man} %{buildroot}%{_mandir}/man1/rmt.1%{ext_man}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/%{name} %{buildroot}/bin
 %endif
@@ -218,7 +218,7 @@ fi
 
 %files
 %license COPYING
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/%{name}
 %endif
 %{_bindir}/%{name}
