@@ -17,20 +17,19 @@
 
 
 %define __builder ninja
-%define sonum 1_1_0
+%define sonum 1_2_0
+%define sover 1.2.0
 %define libname lib2geom%{sonum}
 %define develname 2geom
-%define short_version 1.1
+%define short_version 1.2.2
 Name:           lib2geom
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
 Summary:        Easy to use 2D geometry library in C++
 License:        LGPL-2.1-only AND MPL-1.1
 URL:            https://gitlab.com/inkscape/%{name}
 Group:          System/Libraries
 Source0:        %{url}/-/archive/%{short_version}/%{name}-%{short_version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         fix-floating-point-epsilon-in-tests-i586.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         fix-pkgconfig-libdir-path.patch
 BuildRequires:  libboost_headers-devel
@@ -91,7 +90,7 @@ needed to develop applications that require %{name}.
 %files -n %{libname}
 %license COPYING-LGPL-2.1 COPYING-MPL-1.1
 %doc NEWS.md README.md
-%{_libdir}/%{name}.so.%{version}
+%{_libdir}/%{name}.so.%{sover}
 
 %files devel
 %dir %{_includedir}/%{develname}-%{version}/

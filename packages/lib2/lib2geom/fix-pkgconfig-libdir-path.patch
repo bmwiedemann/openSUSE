@@ -1,7 +1,7 @@
-Index: lib2geom-1.1/2geom.pc.in
+Index: lib2geom-1.2.2/2geom.pc.in
 ===================================================================
---- lib2geom-1.1.orig/2geom.pc.in
-+++ lib2geom-1.1/2geom.pc.in
+--- lib2geom-1.2.2.orig/2geom.pc.in
++++ lib2geom-1.2.2/2geom.pc.in
 @@ -1,6 +1,6 @@
  prefix=@CMAKE_INSTALL_PREFIX@
  exec_prefix=${prefix}
@@ -10,13 +10,3 @@ Index: lib2geom-1.1/2geom.pc.in
  includedir=${prefix}/include
  
  Name: 2geom
-Index: lib2geom-1.1/CMakeLists.txt
-===================================================================
---- lib2geom-1.1.orig/CMakeLists.txt
-+++ lib2geom-1.1/CMakeLists.txt
-@@ -147,4 +147,4 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURC
- 
- configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/2geom.pc.in
-                 ${CMAKE_CURRENT_BINARY_DIR}/2geom.pc @ONLY IMMEDIATE )
--install(FILES "${CMAKE_CURRENT_BINARY_DIR}/2geom.pc" DESTINATION lib/pkgconfig)
-+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/2geom.pc" DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")

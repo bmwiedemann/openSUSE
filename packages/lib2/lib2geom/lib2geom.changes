@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 18 14:52:12 UTC 2022 - thod_@gmx.de
+
+- Update to version 1.2.2
+  * Remove assertions in the intersection routine for EllipticalArc
+  * fix-floating-point-epsilon-in-tests-i586.patch fixed upstream
+
+-------------------------------------------------------------------
 Mon Jun 28 10:16:01 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix libdir in pkgconfig file and to install it to
