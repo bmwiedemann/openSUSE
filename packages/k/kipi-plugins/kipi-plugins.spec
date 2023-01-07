@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kipi-plugins
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
