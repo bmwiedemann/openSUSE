@@ -1,7 +1,7 @@
 #
 # spec file for package seahorse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
 Source0:        https://download.gnome.org/sources/seahorse/43/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM 9260c747.patch dimstar@opensuse.org -- Allow building with GnuPG-2.4.x
+Patch0:         https://gitlab.gnome.org/GNOME/seahorse/-/commit/9260c747.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets

@@ -903,4 +903,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
   due to being referenced in the .desktop file (forwarded request 1042513 from gmbr3)</comment>
     <requestid>1042554</requestid>
   </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>0df3c77d4c28d6c4e889515bedeb2fd1</srcmd5>
+    <version>43.0</version>
+    <time>1673108258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056679</requestid>
+  </revision>
 </revisionlist>

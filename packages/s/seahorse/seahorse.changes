@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  6 09:29:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 9260c747.patch: Allow building with GnuPG-2.4.x.
+
+-------------------------------------------------------------------
 Mon Dec 12 22:49:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - The shell provider dbus service file must be in the main package
