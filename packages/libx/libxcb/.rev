@@ -317,4 +317,12 @@
   * Improve/fix docs for reply fds functions</comment>
     <requestid>975000</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>acf52fea58ab9e4dcfeca754c43cfccb</srcmd5>
+    <version>1.15</version>
+    <time>1673108159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056273</requestid>
+  </revision>
 </revisionlist>

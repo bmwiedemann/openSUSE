@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 20:19:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- avoid configuring twice 
+- add gpg validation / source url / keyring
+
+-------------------------------------------------------------------
 Wed May  4 15:23:40 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - buildrequire xcb-proto >= 1.15 
