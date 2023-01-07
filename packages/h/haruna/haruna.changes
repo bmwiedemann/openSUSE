@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  7 06:41:30 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.10.2
+  Bugfixes:
+  * Fixed crash when "Maximum recent files" setting was set to
+    zero.
+
+-------------------------------------------------------------------
 Fri Jan  6 14:57:44 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.1
