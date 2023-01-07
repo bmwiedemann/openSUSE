@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpublictransport
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
