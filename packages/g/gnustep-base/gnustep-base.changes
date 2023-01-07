@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:54:03 UTC 2023 - Fred kiefer <fredkiefer@gmx.de>
+
+- Update to version 1.28.1
+   * Many changes to make building and testcases work on ms-windows (particularly with the MSVC target and when using a strict C99 compiler).
+   * Support for native locking on ms-windows.
+   * Support for overlapped I/O on ms-windows.
+   * New timezone handling code to deal with v2+ of the timezone format.
+   * TLS support for secure Distributed Objects connections.
+   * Masking of sensitive information in http/https debug logs.
+   * a variety of bugfixes.
+
+-------------------------------------------------------------------
 Fri Apr  1 10:14:31 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 1.28.0

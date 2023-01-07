@@ -24,7 +24,7 @@
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
 %define         gs_library       %{_libdir}/GNUstep
 Name:           gnustep-base
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        GNUstep Base library package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -180,7 +180,7 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 
 %files
 %license COPYING COPYING.LIB
-%doc ANNOUNCE ChangeLog NEWS README
+%doc ANNOUNCE ChangeLog NEWS README.md
 %{_bindir}/HTMLLinker
 %{_bindir}/autogsdoc
 %{_bindir}/cvtenc
@@ -211,6 +211,7 @@ chmod 755 %{buildroot}%{profile_dir}/%{gs_userstart}
 %{_mandir}/man1/pldes.1%{?ext_man}
 %{_mandir}/man1/sfparse.1%{?ext_man}
 %{_mandir}/man1/xmlparse.1%{?ext_man}
+%{_mandir}/man1/plutil.1%{?ext_man}
 %{_mandir}/man8/gdomap.8%{?ext_man}
 %if 0%{?suse_version}
 %config(noreplace) %{profile_dir}/%{gs_userstart}
