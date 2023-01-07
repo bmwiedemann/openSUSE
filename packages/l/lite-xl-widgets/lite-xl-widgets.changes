@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 31 00:48:36 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20221227.a632bfd:
+  * selectbox: enabled hide/show animation
+  * foldingbook: always update containers width
+  * checkbox: animate background color on click
+  * foldingbook: use new animation system for un/collapse
+  * added basic animation system and queue
+  * properly re-update widget on show and other fixes
+  * fonts: cache rebuild clear previous fonts
+  * minor annotation changes
+  * Added support for new force_scrollbar_status
+
+-------------------------------------------------------------------
 Thu Nov 03 18:14:55 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version git20221023.648c067:

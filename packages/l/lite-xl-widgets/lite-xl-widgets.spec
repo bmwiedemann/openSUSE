@@ -17,7 +17,7 @@
 
 %define programname lite-xl
 Name:           lite-xl-widgets
-Version:        git20221023.648c067
+Version:        git20221227.a632bfd
 Release:        0
 Summary:        Widgets for %{programname}
 License:        MIT
