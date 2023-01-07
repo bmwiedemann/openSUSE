@@ -1457,4 +1457,12 @@ CVE-2020-13871 boo#1172646</comment>
   relying on --safe for execution of an untrusted CLI script</comment>
     <requestid>1043393</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>7b99511adcacd5202a28f70c2e5c61d4</srcmd5>
+    <version>3.40.1</version>
+    <time>1673108152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056142</requestid>
+  </revision>
 </revisionlist>

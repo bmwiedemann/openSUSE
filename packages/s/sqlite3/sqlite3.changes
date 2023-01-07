@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 28 21:37:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.40.1:
+  * Fix the --safe command-line option to the CLI such that it
+    correctly disallows the use of SQL functions like writefile()
+    that can cause harmful side-effects.
+    (previously patched, drop sqlite-CVE-2022-46908.patch)
+  * Fix a potential infinite loop in the memsys5 alternative memory
+    allocator. This bug was introduced by a performance
+    optimization in version 3.39.0.
+  * Various other obscure fixes. 
+
+-------------------------------------------------------------------
 Tue Dec 13 16:10:49 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1206337, CVE-2022-46908, sqlite-CVE-2022-46908.patch:
