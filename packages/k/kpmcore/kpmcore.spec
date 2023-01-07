@@ -21,7 +21,7 @@
 %bcond_without released
 %global sover 12
 Name:           kpmcore
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-only
