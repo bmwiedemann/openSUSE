@@ -367,4 +367,13 @@
 </comment>
     <requestid>1040369</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>ff76721d1421723a0bbef9810eb9ec4c</srcmd5>
+    <version>1.15.1</version>
+    <time>1673108163</time>
+    <user>dimstar_suse</user>
+    <comment>- add 8a3c2c816d789639b49d3ae867213393ed7abdff.patch to resolve
+  testsuite failures with Python 3.11</comment>
+    <requestid>1056350</requestid>
+  </revision>
 </revisionlist>

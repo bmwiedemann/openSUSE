@@ -1,7 +1,7 @@
 #
 # spec file for package python-cffi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://cffi.readthedocs.org
 Source0:        https://files.pythonhosted.org/packages/source/c/cffi/cffi-%{version}.tar.gz
 Source1:        python-cffi-rpmlintrc
+Patch1:         https://foss.heptapod.net/pypy/cffi/-/commit/8a3c2c816d789639b49d3ae867213393ed7abdff.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module pytest}
@@ -43,7 +44,7 @@ Foreign Function Interface for Python calling C code. The aim of this project
 is to provide a convenient and reliable way of calling C code from Python.
 
 %prep
-%setup -q -n cffi-%{version}
+%autosetup -p1 -n cffi-%{version}
 
 %build
 export CFLAGS="%{optflags}"

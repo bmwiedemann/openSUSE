@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  6 08:59:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 8a3c2c816d789639b49d3ae867213393ed7abdff.patch to resolve
+  testsuite failures with Python 3.11 
+
+-------------------------------------------------------------------
 Mon Dec  5 12:22:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-py as test dependency
