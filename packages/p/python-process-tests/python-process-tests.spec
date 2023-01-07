@@ -1,7 +1,7 @@
 #
 # spec file for package python-process-tests
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-process-tests
-Version:        2.0.2
+Version:        2.1.2
 Release:        0
 Summary:        Tools for testing processes
 License:        BSD-2-Clause

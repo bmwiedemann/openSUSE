@@ -48,4 +48,20 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743992</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>942b7d1f1473af3d093982e97974bda7</srcmd5>
+    <version>2.1.2</version>
+    <time>1673108158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.2:
+  * Fixed another regression caused by the ``universal_newlines`` for
+    Windows.
+  * Fixed regression caused by the ``universal_newlines`` (now the internals
+    don't decode strings).
+  * Applied the cookiecutter-pylibrary templates.
+  * ``TestProcess`` will use ``universal_newlines`` by default for the
+    contained ``subprocess.Popen`` to make sure line buffering is actually
+  used. This also fixes warnings on Python 3.</comment>
+    <requestid>1056272</requestid>
+  </revision>
 </revisionlist>
