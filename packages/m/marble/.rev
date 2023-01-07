@@ -1281,4 +1281,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
     <requestid>1041600</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>24b2a72578bc91acf29c2b9872b647a5</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108348</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056633</requestid>
+  </revision>
 </revisionlist>
