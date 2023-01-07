@@ -33,4 +33,12 @@
 - Explicit to define BuildRequires pkgconfig(lua) &gt;= 5.4</comment>
     <requestid>1040350</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>492ef303f0f3080b3e0d67911f5d8a38</srcmd5>
+    <version>2.1.1+git20221230.4e272c3</version>
+    <time>1673108383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1056724</requestid>
+  </revision>
 </revisionlist>

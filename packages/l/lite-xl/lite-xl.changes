@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Dec 30 20:07:07 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.1.1+git20221230.4e272c3:
+  * Minor typos in init text
+  * Bump version to 2.1.1 (#1284)
+  * regex: properly call pcre2_jit_compile
+  * Fix horizontal scroll with touchpad on MacOS
+  * contextmenu: adjust y positioning if less than zero (#1268)
+  * Fix userdata APIs for Lua 5.4 in native plugin interface (#1188)
+  * dirmonitor: use pipes on fsevents (#1274)
+  * Fix popping subsyntaxes that end consecutively (#1246)
+  * Fix two typos in data/init.lua (#1272)
+  * Add example settings to _overwrite_ an existing key binding (#1270)
+  * dirmonitor: fix high cpu usage, fixes #1237 (#1271)
+  * Use Lua string length instead of relying on `strlen` (#1262)
+  * Allow `TreeView` file operation commands when focused (#1256)
+  * Update changelog.md
+  * Update changelog.md
+  * Updated changelog.md
+  * set arch tuple in meson (#1254)
+  * core regex: use backward compatible lua_newuserdata
+  * `detectindent`: Limit subsyntax depth (#1253)
+  * fix: move tab scroll buttons to remove spacing before 1st tab (#1231)
+  * Improve IME location updates (#1170)
+  * Simplify SDL message boxes (#1249)
+  * trimwhitespace: expose functionality and extra features (#1238)
+  * Fix some syntax errors (#1243)
+  * `toolbarview`: Remove tooltip when hidden (#1251)
+  * core: ported regex.gsub to faster native version (#1233)
+  * contextmenu: make divider less aggressive (#1228)
+  * add touch events
+  * Converted from bytes to characters, as this is what windows is expecting.
+  * plugins projectsearch: expose its functionality (#1235)
+  * Add `regex.find_offsets`, `regex.find`, improve `regex.match` (#1232)
+  * feat: alert user via nagview if file cannot be saved (#1230)
+  * autocomplete: wrap the autocomplete results around (#1223)
+  * feat: encode home in statusview file path (#1224)
+  * Improve `regex.gsub` performance (#1220)
+  * Fix native plugins not reloading upon core:restart (#1219)
+  * meson: updated all subproject wraps (#1214)
+  * better error messages for checkcolor (#1211)
+  * docs api: added dirmonitor
+  * docs api: minor corrections
+  * Add initialization to variable in `ren_draw_text`
+  * statusview: respect right padding of item tooltip
+  * update documentation for system (#1210)
+  * Windows font loading hotfix (#1205)
+  * MSVC Support (#1199)
+  * Make `Scrollbar` follow `force_status` when animations are disabled
+  * Pass the currently selected item to `CommandView` validation (#1203)
+  * Replace deprecated meson feature `gui_app` with `win_subsystem`
+  * Use subsyntax info in `doc:toggle-{line,block}-comments`
+  * Set initial tokenizer state to a `NULL` byte
+  * Add `tokenizer.extract_subsyntaxes`
+  * meson: bump minimum required version to 0.56
+  * add support for loading fonts with UTF-8 filenames
+  * use flexible structure member from C99
+  * fix utfconv.h duplicate functions
+  * Use a better fallback in case `get_exe_filename` fails
+  * Add missing `get_exe_filename()` implementation for FreeBSD
+  * macOS: `-mmacosx-version-min` is required for setting min version (#1192)
+  * linewrapping: fix enabled always by mistake introduced with #1190
+  * traceback: some lua versions do not support message as nil
+  * Make linewrapping plugin recompute breaks before scrolling (#1190)
+  * highlighter: autostop co-routine when not needed (#881)
+  * dirmonitor: give kevent a timeout so it doesn't lock forever (#1180)
+  * tokenizer: remove the limit of 3 subsyntaxes depth (#1186)
+
+-------------------------------------------------------------------
 Mon Dec  5 15:02:14 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Group' specification

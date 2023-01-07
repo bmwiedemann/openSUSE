@@ -17,7 +17,7 @@
 
 
 Name:           lite-xl
-Version:        2.1.0+git20221103.03cc5ff
+Version:        2.1.1+git20221230.4e272c3
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
