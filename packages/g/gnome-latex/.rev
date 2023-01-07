@@ -84,4 +84,12 @@
     <comment>New stable release (forwarded request 1033636 from iznogood)</comment>
     <requestid>1034165</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f6f54a5fd33a4a6581c177d31a3a1ba8</srcmd5>
+    <version>3.44.0</version>
+    <time>1673108263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056383</requestid>
+  </revision>
 </revisionlist>
