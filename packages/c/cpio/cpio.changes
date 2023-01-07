@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:29:29 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Oct 28 13:13:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update keyring

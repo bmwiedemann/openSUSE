@@ -1,7 +1,7 @@
 #
 # spec file for package cpio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,7 +110,7 @@ mkdir -p %{buildroot}/{usr/bin,bin}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/mt %{buildroot}%{_bindir}/mt
 ln -sf %{_sysconfdir}/alternatives/mt.1%{ext_man} %{buildroot}%{_mandir}/man1/mt.1%{ext_man}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/cpio %{buildroot}/bin
 %endif
 
@@ -138,7 +138,7 @@ fi
 %files
 %license COPYING
 %doc NEWS ChangeLog
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/cpio
 %endif
 %{_bindir}/cpio
