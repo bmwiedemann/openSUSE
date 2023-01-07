@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           colord-kde
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        KDE interfaces and session daemon to colord
 License:        GPL-2.0-or-later
