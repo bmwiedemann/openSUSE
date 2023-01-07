@@ -458,4 +458,12 @@ See lib/register/dmreg.c and tools/dmevent_tool.c (both have GPL-2.0 license) (f
     <comment></comment>
     <requestid>979760</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>e2f239ce1015a02b7c6655b297cbfec3</srcmd5>
+    <version>1.0.0.rc16.3</version>
+    <time>1673108160</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1053507 from lnussel)</comment>
+    <requestid>1056297</requestid>
+  </revision>
 </revisionlist>
