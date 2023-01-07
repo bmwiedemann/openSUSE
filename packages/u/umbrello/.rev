@@ -1532,4 +1532,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
     <requestid>1041623</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>1b21e1acbe71f0bee3b380cad0429085</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108359</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056656</requestid>
+  </revision>
 </revisionlist>
