@@ -1,7 +1,7 @@
 #
 # spec file for package net-snmp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,7 @@ Patch14:        net-snmp-5.9.2-fix-create-v3-user-outfile.patch
 Patch15:        net-snmp-5.9.1-subagent-set-response.patch
 Patch16:        net-snmp-5.9.3-fixed-python2-bindings.patch
 Patch17:        net-snmp-5.9.3-grep.patch
+Patch18:        net-snmp-5.9.3-disallow_SET_requests_with_NULL_varbind.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -256,14 +257,16 @@ autoreconf -fvi
 	--with-sys-location="unknown" \
 	--with-mib-modules="$MIBS" \
 	--with-cflags="%{optflags} -fcommon" \
-        --with-ldflags="-Wl,-z,relro -Wl,-z,now" \
+	--with-ldflags="-Wl,-z,relro -Wl,-z,now" \
 	--with-persistent-directory="%{_localstatedir}/lib/net-snmp" \
 	--with-agentx-socket="%{netsnmp_agentx_socket_dir_fhs}/master" \
-        --with-temp-file-pattern=%{_localstatedir}/run/net-snmp/snmp-tmp-XXXXXX \
+	--with-temp-file-pattern=%{_localstatedir}/run/net-snmp/snmp-tmp-XXXXXX \
 	--with-logfile="%{netsnmp_logfile}" \
 	--with-libwrap="%{_prefix}" \
 	--with-perl-modules="INSTALLDIRS=vendor" \
 	--with-defaults \
+	--with-pic \
+	--sysconfdir=%{_sysconfdir} \
 	--enable-shared \
 	--disable-static \
 	--enable-as-needed \
@@ -271,9 +274,14 @@ autoreconf -fvi
 	--enable-local-smux \
 	--enable-ipv6 \
 	--enable-ucd-snmp-compatibility \
+	--enable-mfd-rewrites \
 	--with-security-modules=tsm,usm \
 	--with-transports=TLSTCP,DTLSUDP \
-        --with-systemd
+	--with-systemd \
+	--with-openssl \
+	--enable-blumenthal-aes \
+	--disable-des \
+	--disable-md5
 
 # Parallel build deps not properly stated
 %make_build -j1

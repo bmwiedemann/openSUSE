@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  5 11:49:22 UTC 2023 - Alexander Bergmann <abergmann@suse.com>
+
+- Fixed NULL pointer exception issue when handling ipDefaultTTL or
+  pv6IpForwarding (bsc#1205148, CVE-2022-44793, bsc#1205150, CVE-2022-44792).
+  add:
+  * net-snmp-5.9.3-disallow_SET_requests_with_NULL_varbind.patch
+- Enable AES-192 and AES-256 privacy protocol (bsc#1206828).
+- Use new MFD rewrites of mib modules, where available.
+- Disable legacy DES encryption and MD5 authentication protocols.
+
+-------------------------------------------------------------------
 Mon Oct  3 11:45:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - change egrep/fgrep to grep -E/-F to avoid warnings boo#1203096

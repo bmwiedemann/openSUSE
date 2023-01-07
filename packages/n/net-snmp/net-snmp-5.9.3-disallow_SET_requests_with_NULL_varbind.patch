@@ -1,0 +1,94 @@
+diff -Nurp net-snmp-5.9.3-orig/agent/snmp_agent.c net-snmp-5.9.3/agent/snmp_agent.c
+--- net-snmp-5.9.3-orig/agent/snmp_agent.c	2022-07-13 23:14:14.000000000 +0200
++++ net-snmp-5.9.3/agent/snmp_agent.c	2023-01-05 12:44:03.533604744 +0100
+@@ -3719,12 +3719,44 @@ netsnmp_handle_request(netsnmp_agent_ses
+     return 1;
+ }
+ 
++static int
++check_set_pdu_for_null_varbind(netsnmp_agent_session *asp)
++{
++    int i;
++    netsnmp_variable_list *v = NULL;
++
++    for (i = 1, v = asp->pdu->variables; v != NULL; i++, v = v->next_variable) {
++	if (v->type == ASN_NULL) {
++	    /*
++	     * Protect SET implementations that do not protect themselves
++	     * against wrong type.
++	     */
++	    DEBUGMSGTL(("snmp_agent", "disallowing SET with NULL var for varbind %d\n", i));
++	    asp->index = i;
++	    return SNMP_ERR_WRONGTYPE;
++	}
++    }
++    return SNMP_ERR_NOERROR;
++}
++
+ int
+ handle_pdu(netsnmp_agent_session *asp)
+ {
+     int             status, inclusives = 0;
+     netsnmp_variable_list *v = NULL;
+ 
++#ifndef NETSNMP_NO_WRITE_SUPPORT
++    /*
++     * Check for ASN_NULL in SET request
++     */
++    if (asp->pdu->command == SNMP_MSG_SET) {
++	status = check_set_pdu_for_null_varbind(asp);
++	if (status != SNMP_ERR_NOERROR) {
++	    return status;
++	}
++    }
++#endif /* NETSNMP_NO_WRITE_SUPPORT */
++
+     /*
+      * for illegal requests, mark all nodes as ASN_NULL 
+      */
+diff -Nurp net-snmp-5.9.3-orig/apps/snmpset.c net-snmp-5.9.3/apps/snmpset.c
+--- net-snmp-5.9.3-orig/apps/snmpset.c	2022-07-13 23:14:14.000000000 +0200
++++ net-snmp-5.9.3/apps/snmpset.c	2023-01-05 12:44:06.377533268 +0100
+@@ -182,6 +182,7 @@ main(int argc, char *argv[])
+             case 'x':
+             case 'd':
+             case 'b':
++            case 'n': /* undocumented */
+ #ifdef NETSNMP_WITH_OPAQUE_SPECIAL_TYPES
+             case 'I':
+             case 'U':
+diff -Nurp net-snmp-5.9.3-orig/testing/fulltests/default/T0142snmpv2csetnull_simple net-snmp-5.9.3/testing/fulltests/default/T0142snmpv2csetnull_simple
+--- net-snmp-5.9.3-orig/testing/fulltests/default/T0142snmpv2csetnull_simple	1970-01-01 01:00:00.000000000 +0100
++++ net-snmp-5.9.3/testing/fulltests/default/T0142snmpv2csetnull_simple	2023-01-05 12:44:08.701474860 +0100
+@@ -0,0 +1,31 @@
++#!/bin/sh
++
++. ../support/simple_eval_tools.sh
++
++HEADER SNMPv2c set of system.sysContact.0 with NULL varbind
++
++SKIPIF NETSNMP_DISABLE_SET_SUPPORT
++SKIPIF NETSNMP_NO_WRITE_SUPPORT
++SKIPIF NETSNMP_DISABLE_SNMPV2C
++SKIPIFNOT USING_MIBII_SYSTEM_MIB_MODULE
++
++#
++# Begin test
++#
++
++# standard V2C configuration: testcomunnity
++snmp_write_access='all'
++. ./Sv2cconfig
++STARTAGENT
++
++CAPTURE "snmpget -On $SNMP_FLAGS -c testcommunity -v 2c $SNMP_TRANSPORT_SPEC:$SNMP_TEST_DEST$SNMP_SNMPD_PORT .1.3.6.1.2.1.1.4.0"
++
++CHECK ".1.3.6.1.2.1.1.4.0 = STRING:"
++
++CAPTURE "snmpset -On $SNMP_FLAGS -c testcommunity -v 2c $SNMP_TRANSPORT_SPEC:$SNMP_TEST_DEST$SNMP_SNMPD_PORT .1.3.6.1.2.1.1.4.0 n x"
++
++CHECK "Reason: wrongType"
++
++STOPAGENT
++
++FINISHED
