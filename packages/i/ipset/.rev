@@ -380,4 +380,12 @@
     <comment>- Update to release 7.16</comment>
     <requestid>1037179</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ab136f047c44152da5df17e2151c9c01</srcmd5>
+    <version>7.17</version>
+    <time>1673108182</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1056416</requestid>
+  </revision>
 </revisionlist>

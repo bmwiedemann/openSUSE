@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 30 14:50:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.17
+  * No userspace changes (kernel modules are not generated
+    here for openSUSE, see kernel-default instead)
+
+-------------------------------------------------------------------
 Mon Nov 21 20:05:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.16
