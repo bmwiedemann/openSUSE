@@ -56,7 +56,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.22
+Version:        0.7.23
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
@@ -90,13 +90,13 @@ BuildRequires:  swig
 %endif
 
 %if %{with python}
-%global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(True))")
+%global python_sitearch %(python -c "from sysconfig import get_path; print(get_path('platlib'))")
 BuildRequires:  python-devel
 BuildRequires:  swig
 %endif
 
 %if %{with python3}
-%global python3_sitearch %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(True))")
+%global python3_sitearch %(python3 -c "from sysconfig import get_path; print(get_path('platlib'))")
 BuildRequires:  python3-devel
 BuildRequires:  swig
 %endif
