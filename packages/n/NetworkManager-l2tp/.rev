@@ -119,4 +119,12 @@
     <comment>New upstream release</comment>
     <requestid>1035613</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>06215f6c93a5209a767ab1c49f4b70e1</srcmd5>
+    <version>1.20.8</version>
+    <time>1673108161</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.20.8.</comment>
+    <requestid>1056305</requestid>
+  </revision>
 </revisionlist>
