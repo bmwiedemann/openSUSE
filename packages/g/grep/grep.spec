@@ -1,7 +1,7 @@
 #
 # spec file for package grep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ echo 'int main() { return 77; }' > gnulib-tests/test-free.c
 
 %install
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 install -d %{buildroot}/bin
 ln -sf %{_bindir}/egrep %{buildroot}/bin/egrep
 ln -sf %{_bindir}/fgrep %{buildroot}/bin/fgrep
@@ -83,7 +83,7 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %files
 %license COPYING
 %doc README AUTHORS NEWS THANKS TODO ChangeLog*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/egrep
 /bin/fgrep
 /bin/grep

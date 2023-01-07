@@ -733,4 +733,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>- efgrep-warning.patch: remove warning from [ef]grep (forwarded request 1004919 from Andreas_Schwab)</comment>
     <requestid>1004920</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>6675a9a23d9685abd7f84a36e3caea1a</srcmd5>
+    <version>3.8</version>
+    <time>1673108139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055273</requestid>
+  </revision>
 </revisionlist>
