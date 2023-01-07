@@ -81,4 +81,12 @@
 - Install the plasmoid with kalendar if plasma5-workspace is installed (forwarded request 1041882 from Vogtinator)</comment>
     <requestid>1041883</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a70dfc9f82ae06b779063fa63a283e00</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108279</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056468</requestid>
+  </revision>
 </revisionlist>
