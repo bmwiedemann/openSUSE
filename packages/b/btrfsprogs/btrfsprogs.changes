@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan  6 00:00:00 CET 2023 - dsterba@suse.cz
+
+- update to 6.1.2:
+  * revert libbtrfs changes to v6.0.2, fix remaining build problems
+- update to 6.1.1:
+  * subvol list: fix printing of UUID
+  * revert changes to ctree.h regarding qgroup items, breaks build of several
+    applications
+  * hide __init definition in kerncompat.h, may break build
+- update to 6.1:
+  * filesystem df: add json output
+  * qgroup show: add json output
+  * new command: 'inspect-internal map-swapfile' to check swapfile and its
+    swapfile_offset value used for hibernation
+  * corrupt-block: fix parsing of option --root argument
+  * experimental (interfaces not finalized):
+    * new command 'inspect-internal list-chunks'
+    * new group reflink, command clone
+  * other:
+    * synchronize some files with kernel versions
+    * docs updates
+    * build: use gnu11
+
+-------------------------------------------------------------------
 Tue Dec 27 10:24:24 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

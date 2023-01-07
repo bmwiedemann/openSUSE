@@ -1201,4 +1201,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>1055777</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>68abbc1aaf63d6e0a61e0975a648462c</srcmd5>
+    <version>6.1.2</version>
+    <time>1673108180</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.2: (forwarded request 1056399 from dsterba)</comment>
+    <requestid>1056405</requestid>
+  </revision>
 </revisionlist>
