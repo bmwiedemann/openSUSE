@@ -51,7 +51,7 @@ export LDFLAGS="-pie"
 
 %install
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -s %{_bindir}/sed %{buildroot}/bin/sed
 %endif
@@ -63,7 +63,7 @@ ln -s %{_bindir}/sed %{buildroot}/bin/sed
 %files
 %license COPYING*
 %doc AUTHORS BUGS NEWS README* THANKS
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/sed
 %endif
 %{_bindir}/sed
