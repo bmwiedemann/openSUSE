@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libktorrent
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
