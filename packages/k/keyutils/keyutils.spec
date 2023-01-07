@@ -79,7 +79,7 @@ This package provides headers and libraries for building key utilities.
 
 %install
 make install NO_ARLIB=1 DESTDIR=%{buildroot} BINDIR=/%{_bindir} SBINDIR=/%{_sbindir} LIBDIR=/%{_libdir} USRLIBDIR=%{_libdir}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin %{buildroot}/sbin
 ln -s /%{_bindir}/keyctl %{buildroot}/bin
 ln -s /%{_sbindir}/key.dns_resolver %{buildroot}/sbin
@@ -100,7 +100,7 @@ install -m 0750 -d \
 %files
 %license LICENCE.GPL
 %doc README
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/*
 /bin/*
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:37:34 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Jun 21 08:26:54 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add /etc/keys/evn and /usr/etc/keys/evm together with the IMA ones
