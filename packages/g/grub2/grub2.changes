@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  3 02:48:05 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Move unsupported zfs modules into 'extras' packages
+  (bsc#1205554) (PED-2947)
+
+-------------------------------------------------------------------
 Fri Dec 30 07:58:54 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix inappropriately including commented lines in crypttab (bsc#1206279)

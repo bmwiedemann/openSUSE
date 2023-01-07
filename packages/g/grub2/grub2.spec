@@ -1,7 +1,7 @@
 #
 # spec file for package grub2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -550,6 +550,18 @@ bootloader with modular architecture.  It supports rich variety of kernel format
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for %{platform} systems.
 
+%package %{grubarch}-extras
+Summary:        Unsupported modules for %{grubarch}
+Group:          System/Boot
+BuildArch:      noarch
+Requires:       %{name}-%{grubarch} = %{version}
+Provides:       %{name}-%{grubarch}:%{_datadir}/%{name}/%{grubarch}/zfs.mod
+Provides:       %{name}-%{grubarch}:%{_datadir}/%{name}/%{grubarch}/zfscrypt.mod
+Provides:       %{name}-%{grubarch}:%{_datadir}/%{name}/%{grubarch}/zfsinfo.mod
+
+%description %{grubarch}-extras
+Unsupported modules for %{name}-%{grubarch}
+
 %package %{grubarch}-debug
 Summary:        Debug symbols for %{grubarch}
 Group:          System/Boot
@@ -594,6 +606,19 @@ bootloader with modular architecture.  It supports rich variety of kernel format
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for EFI systems.
 
+%package %{grubefiarch}-extras
+
+Summary:        Unsupported modules for %{grubefiarch}
+Group:          System/Boot
+BuildArch:      noarch
+Requires:       %{name}-%{grubefiarch} = %{version}
+Provides:       %{name}-%{grubefiarch}:%{_datadir}/%{name}/%{grubefiarch}/zfs.mod
+Provides:       %{name}-%{grubefiarch}:%{_datadir}/%{name}/%{grubefiarch}/zfscrypt.mod
+Provides:       %{name}-%{grubefiarch}:%{_datadir}/%{name}/%{grubefiarch}/zfsinfo.mod
+
+%description %{grubefiarch}-extras
+Unsupported modules for %{name}-%{grubefiarch}
+
 %package %{grubefiarch}-debug
 Summary:        Debug symbols for %{grubefiarch}
 Group:          System/Boot
@@ -625,6 +650,18 @@ The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
 bootloader with modular architecture.  It supports rich variety of kernel formats,
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for XEN systems.
+
+%package %{grubxenarch}-extras
+Summary:        Unsupported modules for %{grubxenarch}
+Group:          System/Boot
+BuildArch:      noarch
+Requires:       %{name}-%{grubxenarch} = %{version}
+Provides:       %{name}-%{grubxenarch}:%{_datadir}/%{name}/%{grubxenarch}/zfs.mod
+Provides:       %{name}-%{grubxenarch}:%{_datadir}/%{name}/%{grubxenarch}/zfscrypt.mod
+Provides:       %{name}-%{grubxenarch}:%{_datadir}/%{name}/%{grubxenarch}/zfsinfo.mod
+
+%description %{grubxenarch}-extras
+Unsupported modules for %{name}-%{grubxenarch}
 
 %endif
 
@@ -1102,6 +1139,25 @@ perl -ni -e '
 %else
 %endif
 
+# bsc#1205554 move the zfs modules into extras packages
+# EXTRA_PATTERN='pattern1|pattern2|pattern3|...'
+EXTRA_PATTERN="zfs"
+%ifarch %{ix86} x86_64
+find %{buildroot}/%{_datadir}/%{name}/%{grubxenarch}/ -type f | sed 's,%{buildroot},,' > %{grubxenarch}-all.lst
+grep -v -E ${EXTRA_PATTERN} %{grubxenarch}-all.lst > %{grubxenarch}.lst
+grep -E ${EXTRA_PATTERN} %{grubxenarch}-all.lst > %{grubxenarch}-extras.lst
+%endif
+
+%ifarch %{efi}
+find %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/ -name '*.mod' | sed 's,%{buildroot},,' > %{grubefiarch}-mod-all.lst
+grep -v -E ${EXTRA_PATTERN} %{grubefiarch}-mod-all.lst > %{grubefiarch}-mod.lst
+grep -E ${EXTRA_PATTERN} %{grubefiarch}-mod-all.lst > %{grubefiarch}-mod-extras.lst
+%endif
+
+find %{buildroot}/%{_datadir}/%{name}/%{grubarch}/ -name '*.mod' | sed 's,%{buildroot},,' > %{grubarch}-mod-all.lst
+grep -v -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod.lst
+grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
+
 %find_lang %{name}
 %fdupes %buildroot%{_bindir}
 %fdupes %buildroot%{_libdir}
@@ -1373,7 +1429,7 @@ fi
 
 %if ! 0%{?only_efi:1}
 
-%files %{grubarch}
+%files %{grubarch} -f %{grubarch}-mod.lst
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubarch}
 %ifarch ppc ppc64 ppc64le
@@ -1388,7 +1444,6 @@ fi
 %endif
 %{_datadir}/%{name}/%{grubarch}/*.img
 %{_datadir}/%{name}/%{grubarch}/*.lst
-%{_datadir}/%{name}/%{grubarch}/*.mod
 %ifarch x86_64
 %{_datadir}/%{name}/%{grubarch}/efiemu*.o
 %endif
@@ -1397,6 +1452,10 @@ fi
 %ifarch %{ix86} x86_64
 %{_libexecdir}/%{name}-instdev-fixup.pl
 %endif
+
+%files %{grubarch}-extras -f %{grubarch}-mod-extras.lst
+%defattr(-,root,root,-)
+%dir %{_datadir}/%{name}/%{grubarch}
 
 %files %{grubarch}-debug
 %defattr(-,root,root,-)
@@ -1408,7 +1467,7 @@ fi
 
 %ifarch %{efi}
 
-%files %{grubefiarch}
+%files %{grubefiarch} -f %{grubefiarch}-mod.lst
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubefiarch}
 %{_datadir}/%{name}/%{grubefiarch}/grub.efi
@@ -1417,7 +1476,6 @@ fi
 %endif
 %{_datadir}/%{name}/%{grubefiarch}/*.img
 %{_datadir}/%{name}/%{grubefiarch}/*.lst
-%{_datadir}/%{name}/%{grubefiarch}/*.mod
 %{_datadir}/%{name}/%{grubefiarch}/kernel.exec
 %{_datadir}/%{name}/%{grubefiarch}/modinfo.sh
 %dir %{sysefibasedir}
@@ -1436,6 +1494,10 @@ fi
 %{sysefidir}/grub.der
 %endif
 
+%files %{grubefiarch}-extras -f %{grubefiarch}-mod-extras.lst
+%defattr(-,root,root,-)
+%dir %{_datadir}/%{name}/%{grubefiarch}
+
 %files %{grubefiarch}-debug
 %defattr(-,root,root,-)
 %{_datadir}/%{name}/%{grubefiarch}/gdb_grub
@@ -1452,13 +1514,16 @@ fi
 %{_libdir}/snapper/plugins/grub
 
 %ifarch %{ix86} x86_64
-%files %{grubxenarch}
+%files %{grubxenarch} -f %{grubxenarch}.lst
 %defattr(-,root,root,-)
 %dir %{_datadir}/%{name}/%{grubxenarch}
-%{_datadir}/%{name}/%{grubxenarch}/*
 # provide compatibility sym-link for VM definitions pointing to old location
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/%{grubxenarch}
+
+%files %{grubxenarch}-extras -f %{grubxenarch}-extras.lst
+%defattr(-,root,root,-)
+%dir %{_datadir}/%{name}/%{grubxenarch}
 %endif
 
 %if 0%{?has_systemd:1}
