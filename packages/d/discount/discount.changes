@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 15:27:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.7b:
+  * fix to makefiles for parallel build 
+
+-------------------------------------------------------------------
 Fri Mar 12 23:06:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to version 2.2.7:

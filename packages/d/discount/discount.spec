@@ -1,7 +1,7 @@
 #
 # spec file for package discount
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 2
 %bcond_with fenced_code
 Name:           discount
-Version:        2.2.7
+Version:        2.2.7b
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
@@ -72,7 +72,7 @@ CFLAGS="%{optflags}" ./configure.sh \
   --with-dl=BOTH \
   --pkg-config \
   --enable-all-features
-%make_build --jobs=1
+%make_build
 
 %install
 make DESTDIR=%{buildroot} install.everything
