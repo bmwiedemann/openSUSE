@@ -305,4 +305,12 @@
 - Drop upstream noexecstack.patch</comment>
     <requestid>952093</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>fb82d91485beff100ba03a21d5ad309a</srcmd5>
+    <version>1.5.2</version>
+    <time>1673108137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046687</requestid>
+  </revision>
 </revisionlist>

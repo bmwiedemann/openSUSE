@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan  3 09:03:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add zcat in zstd-gzip (needed by for example the kernel scripts)
+
+-------------------------------------------------------------------
 Sun Jan 30 22:59:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - enable zlib/gzip compatible backend, as zlib is significantly
