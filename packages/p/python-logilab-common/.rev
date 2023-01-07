@@ -86,4 +86,13 @@
     <comment></comment>
     <requestid>1007070</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>51a53d79b17b476439997047922b7b3d</srcmd5>
+    <version>1.9.8</version>
+    <time>1673108377</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.8:
+  * No upstream changelog available</comment>
+    <requestid>1056715</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-logilab-common
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-logilab-common
-Version:        1.9.7
+Version:        1.9.8
 Release:        0
 Summary:        Python lowlevel functionality shared by logilab projects
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-URL:            https://www.logilab.org/project/logilab-common
+URL:            https://logilab-common.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logilab-common/logilab-common-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
