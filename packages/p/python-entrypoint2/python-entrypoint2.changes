@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan  6 12:31:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1:
+  * Python 3.10 support
+  * Python 3.11 support
+  * support positional list for python 3.9+
+  * type hints added 
+
+-------------------------------------------------------------------
+Sat Jan 15 15:38:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4:
+  * drop python 2x support 
+
+-------------------------------------------------------------------
 Thu Sep 17 11:06:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.2.1:

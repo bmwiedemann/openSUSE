@@ -127,4 +127,19 @@
 - remove remove_nose.patch (upstream)</comment>
     <requestid>835984</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a76f2b562e03a0b154a654a7a11fa9fd</srcmd5>
+    <version>1.1</version>
+    <time>1673108166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1:
+  * Python 3.10 support
+  * Python 3.11 support
+  * support positional list for python 3.9+
+  * type hints added 
+
+- update to 0.2.4:
+  * drop python 2x support</comment>
+    <requestid>1056392</requestid>
+  </revision>
 </revisionlist>
