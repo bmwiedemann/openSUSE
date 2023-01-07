@@ -43,7 +43,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.6
+Version:        17.31.7
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -85,9 +85,14 @@ BuildRequires:  dejagnu
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel
+BuildRequires:  ghostscript
 BuildRequires:  graphviz
 BuildRequires:  libproxy-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  texlive-dvips
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-newunicodechar
+BuildRequires:  texlive-xcolor
 BuildRequires:  yaml-cpp-devel
 
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
