@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           artikulate
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
