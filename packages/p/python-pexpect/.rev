@@ -304,4 +304,12 @@
     <comment>- skip extra tests for qemu based builds</comment>
     <requestid>1034807</requestid>
   </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>d41761b68d2d1543d524cf46ee858e4e</srcmd5>
+    <version>4.8.0</version>
+    <time>1673108259</time>
+    <user>dimstar_suse</user>
+    <comment>- add 684.patch, 715.patch: Python 3.11 support</comment>
+    <requestid>1056699</requestid>
+  </revision>
 </revisionlist>

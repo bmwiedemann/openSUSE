@@ -1,7 +1,7 @@
 #
 # spec file for package python-pexpect
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ License:        ISC
 URL:            https://pexpect.readthedocs.org/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-%{version}.tar.gz
 Patch0:         no-python-binary.patch
+# Newer asyncio / python 3.11 support
+Patch1:         https://github.com/pexpect/pexpect/pull/715.patch
+Patch2:         https://github.com/pexpect/pexpect/pull/684.patch
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -45,8 +48,7 @@ Pexpect is a pure Python module for spawning child applications;
 controlling them; and responding to expected patterns in their output.
 
 %prep
-%setup -q -n pexpect-%{version}
-%patch0 -p1
+%autosetup -p1 -n pexpect-%{version}
 
 # Fix wrong-script-interpreter
 find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;

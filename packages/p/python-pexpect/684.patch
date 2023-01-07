@@ -1,0 +1,23 @@
+From 0bc643ea88748e08a095e3f1a43480c9113d45b8 Mon Sep 17 00:00:00 2001
+From: Karthikeyan Singaravelan <tir.karthi@gmail.com>
+Date: Sat, 17 Apr 2021 08:10:37 +0000
+Subject: [PATCH] Set daemon attribute instead of using setDaemon method that
+ was deprecated in Python 3.10
+
+---
+ pexpect/popen_spawn.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pexpect/popen_spawn.py b/pexpect/popen_spawn.py
+index 4bb58cfe..e6bdf07d 100644
+--- a/pexpect/popen_spawn.py
++++ b/pexpect/popen_spawn.py
+@@ -57,7 +57,7 @@ def __init__(self, cmd, timeout=30, maxread=2000, searchwindowsize=None,
+ 
+         self._read_queue = Queue()
+         self._read_thread = threading.Thread(target=self._read_incoming)
+-        self._read_thread.setDaemon(True)
++        self._read_thread.daemon = True
+         self._read_thread.start()
+ 
+     _read_reached_eof = False
