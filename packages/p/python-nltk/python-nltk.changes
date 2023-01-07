@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jan  6 15:32:43 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.8 
+
+* Refactor dispersion plot (#3082)
+* Provide type hints for LazyCorpusLoader variables (#3081)
+* Throw warning when LanguageModel is initialized with incorrect vocabulary (#3080)
+* Fix WordNet's all_synsets() function (#3078)
+* Resolve TreebankWordDetokenizer inconsistency with end-of-string contractions (#3070)
+* Support both iso639-3 codes and BCP-47 language tags (#3060)
+* Avoid DeprecationWarning in Regexp tokenizer (#3055)
+* Fix many doctests, add doctests to CI (#3054, #3050, #3048)
+* Fix bool field not being read in VerbNet (#3044)
+* Greatly improve time efficiency of SyllableTokenizer when tokenizing numbers (#3042)
+* Fix encodings of Polish udhr corpus reader (#3038)
+* Allow TweetTokenizer to tokenize emoji flag sequences (#3034)
+* Prevent LazyModule from increasing the size of nltk.__dict__ (#3033)
+* Fix CoreNLPServer non-default port issue (#3031)
+* Add "acion" suffix to the Spanish SnowballStemmer (#3030)
+* Allow loading WordNet without OMW (#3026)
+* Use input() in nltk.chat.chatbot() for Jupyter support (#3022)
+* Fix edit_distance_align() in distance.py (#3017)
+* Tackle performance and accuracy regression of sentence tokenizer since NLTK 3.6.6 (#3014)
+* Add the Iota operator to semantic logic (#3010)
+* Resolve critical errors in WordNet app (#3008)
+* Resolve critical error in CHILDES Corpus (#2998)
+* Make WordNet information_content() accept adjective satellites (#2995)
+* Add "strict=True" parameter to CoreNLP (#2993, #3043)
+* Resolve issue with WordNet's synset_from_sense_key (#2988)
+* Handle WordNet synsets that were lost in mapping (#2985)
+* Resolve TypeError in Boxer (#2979)
+* Add function to retrieve WordNet synonyms (#2978)
+* Warn about nonexistent OMW offsets instead of raising an error (#2974)
+* Fix missing ic argument in res, jcn and lin similarity functions of WordNet (#2970)
+* Add support for the extended OMW (#2946)
+* Fix LC cutoff policy of text tiling (#2936)
+* Optimize ConditionalFreqDist.__add__ performance (#2939)
+* Add Markdown corpus reader (#2902)
+ 
+-------------------------------------------------------------------
 Mon Dec 26 10:41:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Complete nltk_data.tar.xz for offline testing

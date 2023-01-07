@@ -1,7 +1,7 @@
 #
 # spec file for package python-nltk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pyname nltk
 %define skip_python2 1
 Name:           python-nltk
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
