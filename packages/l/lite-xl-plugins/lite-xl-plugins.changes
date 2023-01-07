@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Dec 31 00:38:40 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20221231.bf3a3b7:
+  * readme: add evergreen to plugin list (#184)
+  * `minimap`: Fix crash if `avoid_small_docs` and `linewrapping` are both enabled
+  * Add highlighting for go.mod and go.sum files (#182)
+  * Extend eval plugin with eval:selected (#177)
+  * Add `tab_switcher` (#173)
+  * Fix lfautoinsert (#180)
+  * Improved language_wren.lua (#171)
+  * added editorconfig plugin (#163)
+  * regexreplacepreview: compat fixes for lite-xl master
+  * Fix bug with rainbowparen.lua messing with the ability to comment out lines. (#170)
+  * language_php: switch to non capturing group match
+  * centerdoc: better spacing on center mode
+  * Reorganize README.md
+  * custom_caret: better handle of default caret color
+  * ipc: annotation changes
+  * settings: merge a plugin settings when enabled at runtime
+  * feat: add group method for fontconfig plugin (#157)
+  * [Plugin] Add Custom Caret Plugin (#162)
+  * Update README.md
+  * settings: ask before clearing font cache
+  * profiler: rephrased parts of the readme
+  * readme: chopped long lines, added directory to install
+  * Add Profiler Plugin (#155)
+  * Reorganize README.md (#156)
+  * add gitblame plugin (#154)
+  * settings: support global force scrollbar status on newly opened Views
+  * settings: apply force_scrollbar_status on the fly
+  * settings: added force_scrollbar_status
+  * language_php: better match class type inline vars
+  * language_rust: better lifetime syntax support (#152)
+  * Update language_rivet.lua
+  * language_php: added backticks support
+  * language_php: fix highlighting outside of markdown code tags
+  * language_php: add missing yield keyword
+  * add nelua support to lfautoinsert (#150)
+  * Added extra file extensions to language_sh.lua (#145)
+  * language_php: applied changes from #108
+  * settings: added new option keep_newline_whitespace
+  * Removed extra item in list (#142)
+  * macmodkeys: added missing params
+  * Add workaround for sorted `Doc:get_selection` issue (#141)
+  * Reorganize README.md (#139)
+  * Use new `command.add` syntax (#136)
+
+-------------------------------------------------------------------
 Fri Nov  4 00:09:38 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adjusting gitdiff_highlight-{gitdiff,init}.lua to play nice with

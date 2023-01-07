@@ -17,7 +17,7 @@
 
 %define programname lite-xl
 Name:           lite-xl-plugins
-Version:        git20221101.0971a7a
+Version:        git20221231.bf3a3b7
 Release:        0
 Summary:        Additional plugins for %{programname}
 License:        MIT
@@ -50,6 +50,8 @@ sed -i '/  -- Following without special icon:/ r %{SOURCE5}' %{_builddir}/%{name
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{programname}/plugins
+mkdir -p %{buildroot}%{_datadir}/%{programname}/plugins/editorconfig/tests/{glob,parser,properties}
+mkdir -p %{buildroot}%{_datadir}/%{programname}/plugins/profiler
 mkdir -p %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight
 mkdir -p %{buildroot}%{_datadir}/%{programname}/fonts
 mkdir -p %{buildroot}%{_datadir}/doc/%{name}
@@ -61,7 +63,13 @@ cp -v %{SOURCE1} plugins/
 # in ~/.config/lite-xl/init.lua:
 # config.plugins.ipc = false
 #####
-install -D -m644 plugins/* %{buildroot}%{_datadir}/%{programname}/plugins
+install -D -m644 plugins/*.lua %{buildroot}%{_datadir}/%{programname}/plugins
+install -D -m644 plugins/editorconfig/{*.md,*.lua} %{buildroot}%{_datadir}/%{programname}/plugins/editorconfig
+install -D -m644 plugins/editorconfig/tests/*.lua %{buildroot}%{_datadir}/%{programname}/plugins/editorconfig/tests
+install -D -m644 plugins/editorconfig/tests/glob/{*.in,*.lua} %{buildroot}%{_datadir}/%{programname}/plugins/editorconfig/tests/glob
+install -D -m644 plugins/editorconfig/tests/parser/{*.in,*.lua} %{buildroot}%{_datadir}/%{programname}/plugins/editorconfig/tests/parser
+install -D -m644 plugins/editorconfig/tests/properties/{*.in,*.lua} %{buildroot}%{_datadir}/%{programname}/plugins/editorconfig/tests/properties
+install -D -m644 plugins/profiler/* %{buildroot}%{_datadir}/%{programname}/plugins/profiler
 install -D -m644 %{SOURCE2} %{buildroot}%{_datadir}/%{programname}/fonts
 install -D -m644 %{SOURCE3} %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight/init.lua
 install -D -m644 %{SOURCE4} %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight/gitdiff.lua

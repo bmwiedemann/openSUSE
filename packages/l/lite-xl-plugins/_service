@@ -6,7 +6,10 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/lite-xl/lite-xl-plugins</param>
     <param name="scm">git</param>
+    <param name="revision">master</param>
+    <!--
     <param name="revision">2.1</param>
+    -->
     <param name="versionformat">git%cd.%h</param>
     <!--
     <param name="parent-tag">v2.0.5</param>
