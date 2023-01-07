@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.40.gbf3fef9988
+%define archive_version +suse.44.g5a506d73bd
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        252.3
+Version:        252.4
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -216,8 +216,7 @@ Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed
 # quickly. But even in these cases, the patches are temporary and should be
 # removed as soon as a fix is merged by upstream.
-Patch5000:      5000-coredump-adjust-whitespace.patch
-Patch5001:      5001-coredump-do-not-allow-user-to-access-coredumps-with-.patch
+Patch5000:      5000-rules-add-missing-line-continuation.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB

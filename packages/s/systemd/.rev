@@ -6272,4 +6272,27 @@ handle manual pages that consist only of a .so directive such as
   Add 5001-coredump-do-not-allow-user-to-access-coredumps-with-.patch</comment>
     <requestid>1043872</requestid>
   </revision>
+  <revision rev="376" vrev="1">
+    <srcmd5>1b061a6e9ccebe0e358dcdcc9ab0e62d</srcmd5>
+    <version>252.4</version>
+    <time>1673108179</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 5000-rules-add-missing-line-continuation.patch until commit
+  de8409ac43f6e4596de4cecce8dbbb5f1f2a18b1 is backported to the v252 stable
+  tree.
+
+- Import commit 5a506d73bde7ba9261985f8e9ce084044a519432 (merge of v252.4)
+  It includes the following fixes:
+    9b75a3d050 coredump: do not allow user to access coredumps with changed uid/gid/capabilities (bsc#1205000 CVE-2022-4415)
+    
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/bf3fef99886bd977a1c7a51d20087bc8977fff44...5a506d73bde7ba9261985f8e9ce084044a519432
+  Additionally, it also includes the following backports:
+  - 20ca3155c5 localed: reload PID1 configuration after modifying /etc/locale.conf
+  - 3538c202fd test: update TEST-73-LOCALE to define several locale settings in initial PID1 environment
+- Drop 5000-coredump-adjust-whitespace.patch
+       5001-coredump-do-not-allow-user-to-access-coredumps-with-.patch
+  They are part of v252.4.</comment>
+    <requestid>1056400</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,28 @@
+From de8409ac43f6e4596de4cecce8dbbb5f1f2a18b1 Mon Sep 17 00:00:00 2001
+From: Yu Watanabe <watanabe.yu+github@gmail.com>
+Date: Wed, 21 Dec 2022 17:32:56 +0900
+Subject: [PATCH 5000/5000] rules: add missing line continuation
+
+Fixes a bug introduced by 953c928c24455744d5534679998d129b947a5e04.
+
+Fixes #25811.
+---
+ rules.d/60-evdev.rules | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rules.d/60-evdev.rules b/rules.d/60-evdev.rules
+index 15483101e7..c97cdecb58 100644
+--- a/rules.d/60-evdev.rules
++++ b/rules.d/60-evdev.rules
+@@ -6,7 +6,7 @@ KERNEL!="event*", GOTO="evdev_end"
+ # Execute the match patterns below, from least-to-most specific.
+ 
+ # Device matching the modalias string (bustype, vendor, product, version, other properties)
+-IMPORT{builtin}="hwdb --subsystem=input --lookup-prefix=evdev:",
++IMPORT{builtin}="hwdb --subsystem=input --lookup-prefix=evdev:", \
+   ENV{.HAVE_HWDB_PROPERTIES}="1"
+ 
+ # AT keyboard matching by the machine's DMI data
+-- 
+2.35.3
+
