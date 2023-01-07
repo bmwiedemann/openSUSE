@@ -1,7 +1,7 @@
 #
 # spec file for package findutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ export DEFAULT_ARG_SIZE="(31u * 1024u)"
 
 rm -f %{buildroot}%{_infodir}/find-maint*
 %find_lang %{name}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/find %{buildroot}/bin
 %endif
@@ -103,7 +103,7 @@ rm %{buildroot}%{_mandir}/man5/locatedb.5*
 %files
 %license COPYING
 %doc AUTHORS NEWS README THANKS TODO
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/find
 %endif
 %{_bindir}/find

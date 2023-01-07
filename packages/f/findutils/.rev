@@ -599,4 +599,12 @@ Prompted by an error of 'osc service localrun download_files'.
     <comment></comment>
     <requestid>950716</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>068b7ea06f0b9a33c017763b57c4ea02</srcmd5>
+    <version>4.9.0</version>
+    <time>1673108138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055021</requestid>
+  </revision>
 </revisionlist>
