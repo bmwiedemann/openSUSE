@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:34:50 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Sep 15 10:23:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Refresh e2fsprogs.keyring based on currently provided keys.

@@ -1,7 +1,7 @@
 #
 # spec file for package e2fsprogs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -243,7 +243,7 @@ make install install-libs DESTDIR=$RPM_BUILD_ROOT ELF_INSTALL_DIR=/%{_libdir}
 
 rm $RPM_BUILD_ROOT%{_libdir}/e2initrd_helper
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -s %{_sbindir}/badblocks %{buildroot}/sbin/badblocks
 ln -s %{_sbindir}/debugfs   %{buildroot}/sbin/debugfs
@@ -326,7 +326,7 @@ done
 %license NOTICE
 %endif
 %config /etc/mke2fs.conf
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/badblocks
 /sbin/debugfs
 /sbin/dumpe2fs
@@ -400,7 +400,7 @@ done
 
 %files -n libext2fs2
 %defattr(-, root, root)
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /%{_lib}/libext2fs.so.*
 /%{_lib}/libe2p.so.*
 %endif
@@ -418,7 +418,7 @@ done
 
 %files -n libcom_err2
 %defattr(-, root, root)
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /%{_lib}/libcom_err.so.*
 /%{_lib}/libss.so.*
 %endif
