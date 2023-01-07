@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:26:05 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Apr 27 08:53:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename xz_lzma.patch xz_lzma_zstd.patch and expand the patch to

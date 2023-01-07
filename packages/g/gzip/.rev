@@ -504,4 +504,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment></comment>
     <requestid>973075</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>f0f5c01f0a3a2e21f190197d1134b4c7</srcmd5>
+    <version>1.12</version>
+    <time>1673108143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055860</requestid>
+  </revision>
 </revisionlist>

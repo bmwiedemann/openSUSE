@@ -1,7 +1,7 @@
 #
 # spec file for package gzip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,7 +107,7 @@ done
 
 %install
 %make_install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/gzip %{_bindir}/gunzip %{_bindir}/zcat %{buildroot}/bin
 %endif
@@ -123,7 +123,7 @@ ln -sf zmore.1 %{buildroot}%{_mandir}/man1/zless.1
 %files
 %license COPYING
 %doc README AUTHORS ChangeLog TODO NEWS THANKS
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/gunzip
 /bin/gzip
 /bin/zcat
