@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymisp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define misp_objects_revision 66a9b8eee70ce3ac7ff5f2225cd7f78fe4630143
 Name:           python-pymisp
-Version:        2.4.165.1
+Version:        2.4.166
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
