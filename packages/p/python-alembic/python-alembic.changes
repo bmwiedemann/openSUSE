@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  5 19:06:37 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.9.0: 
+  feature
+  * Added new Alembic command alembic check. This performs the widely requested feature of running an “autogenerate” comparison
+    between the current database and the MetaData that’s currently set up for autogenerate, returning an error code if the two do not match,
+    based on current autogenerate settings. Pull request courtesy Nathan Louie.
+    See also Running Alembic Check to test for new upgrade operations
+    References: #724
+    bug
+  * Fixed issue in tox.ini file where changes in the tox 4.0 series to the format of “passenv” caused tox to not function correctly,
+    in particular raising an error as of tox 4.0.6.
+  * Fixed typing issue where revision.process_revision_directives was not fully typed; additionally ensured all Callable and Dict arguments
+    to EnvironmentContext.configure() include parameters in the typing declaration.
+    Additionally updated the codebase for Mypy 0.990 compliance.
+    References: #1110
+
+-------------------------------------------------------------------
 Mon Aug  1 21:38:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:
