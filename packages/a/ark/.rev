@@ -1268,4 +1268,12 @@
   used (forwarded request 1043126 from dirkmueller)</comment>
     <requestid>1043135</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>1ef302d9f264e3e4c6473152d46f0652</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108193</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056437</requestid>
+  </revision>
 </revisionlist>
