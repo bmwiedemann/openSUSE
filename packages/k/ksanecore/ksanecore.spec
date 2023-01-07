@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ksanecore
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only
