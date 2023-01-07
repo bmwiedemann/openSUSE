@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jan  5 21:08:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Updated translations.
+- Changes from version 44.0:
+  + Minor bug fixes.
+  + Use more Tepl features.
+  + Code refactorings.
+  + Misc:
+    - Donations: change to Liberapay link.
+    - Create https://gedit-technology.net/ (mainly for developers).
+  + User manual:
+    - Available online:
+      https://gedit-technology.net/user-manuals/gedit/ (used on
+      platforms where Yelp is unavailable: macOS and Windows).
+    - Improvements to the content.
+  + The core of the application:
+    - Rework the statusbar.
+    - Improve the vocabulary used in the dialog for choosing
+      favorite encodings.
+    - Improve a little the API docs.
+  + Plugins: File browser: expand/collapse item on right/left
+    keypress.
+  + Updated translations.
+- Bump api_ver to 44 following upstream changes.
+
+-------------------------------------------------------------------
 Wed Nov 30 14:20:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 43.2:

@@ -1156,4 +1156,12 @@
     <comment>Update to 43.2 (forwarded request 1039131 from dimstar)</comment>
     <requestid>1039361</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>3173820bf15617c27355e2fad2327f0a</srcmd5>
+    <version>44.1</version>
+    <time>1673108165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056381</requestid>
+  </revision>
 </revisionlist>
