@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-approver
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Channel Approver for KDE Telepathy implementation
 License:        LGPL-2.1-or-later
