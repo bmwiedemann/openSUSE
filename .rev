@@ -220,4 +220,17 @@
     <comment></comment>
     <requestid>1032092</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a694cc322d19028a691dd8fa1283ab61</srcmd5>
+    <version>7.1.13</version>
+    <time>1673108395</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.13:
+  * Use Apache license SPDX identifier
+  * fix usage of deprecated urllib3.Response.getheaders()
+  * Fix typos and add codespell GitHub Action
+  * Expose fetch-owner in the api for list_object
+  * Add python 3.11 support</comment>
+    <requestid>1056766</requestid>
+  </revision>
 </revisionlist>
