@@ -737,4 +737,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
     <requestid>1041577</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9600106b7a2dfbb8ba68e976bf4c7112</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108237</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056610</requestid>
+  </revision>
 </revisionlist>
