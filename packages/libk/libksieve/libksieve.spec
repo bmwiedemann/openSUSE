@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libksieve
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -93,7 +93,6 @@ This package contains development headers of libksieve.
 %kf5_makeinstall -C build
 
 %find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
 
 %post   -n libksieve%{soversion} -p /sbin/ldconfig
 %postun -n libksieve%{soversion} -p /sbin/ldconfig
