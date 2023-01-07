@@ -17,7 +17,7 @@
 
 %define programname lite-xl
 Name:           lite-xl-colors
-Version:        git20221011.b245158
+Version:        git20221219.b3a9cdd
 Release:        0
 Summary:        Additional colors for %{programname}
 License:        MIT
