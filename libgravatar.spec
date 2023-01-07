@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libgravatar
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
