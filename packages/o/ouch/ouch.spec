@@ -1,7 +1,7 @@
 #
 # spec file for package ouch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ouch
-Version:        0.4.0~0
+Version:        0.4.1~0
 Release:        0
 Summary:        Compression and decompression utility for the terminal
 License:        MIT

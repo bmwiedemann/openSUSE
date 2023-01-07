@@ -7,4 +7,13 @@
     <comment>Need for dosbox.</comment>
     <requestid>1011225</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>369572e5ea893bb290183491f3342bbd</srcmd5>
+    <version>1.9.4</version>
+    <time>1673108391</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.9.4.
+  * Fixed broken copy-constructor and a lot of smaller fixes.</comment>
+    <requestid>1056756</requestid>
+  </revision>
 </revisionlist>

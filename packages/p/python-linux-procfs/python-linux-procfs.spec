@@ -1,7 +1,7 @@
 #
 # spec file for package python-linux-procfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-linux-procfs
-Version:        0.6
+Version:        0.7.1
 Release:        0
 Summary:        Linux /proc abstraction classes
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

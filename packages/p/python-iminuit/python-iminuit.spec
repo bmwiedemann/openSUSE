@@ -1,7 +1,7 @@
 #
-# spec file for package python-iminuit
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.16.0
+Version:        2.18.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pybind11 >= 2.9.0}

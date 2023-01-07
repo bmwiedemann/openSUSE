@@ -455,4 +455,17 @@
   * fix htop</comment>
     <requestid>1040435</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f975eb94a4e61a55227b0b74f3aaae7a</srcmd5>
+    <version>20230104</version>
+    <time>1673108400</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20230104:
+  * Komikku
+  * WebCord #3355
+  * Changed Pix symlink target to multimedia-photo-manager
+  * Rename application-dart to text-x-dart
+  * Updated app ids of RSS Guard</comment>
+    <requestid>1056785</requestid>
+  </revision>
 </revisionlist>

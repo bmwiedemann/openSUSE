@@ -282,4 +282,15 @@
 </comment>
     <requestid>974994</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7a2fce3c74f4e5d0b69b40e9ca2b4dc0</srcmd5>
+    <version>1.9.20</version>
+    <time>1673108395</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.20:
+  * Python 3.11 support, early enablement for 3.12
+  * Add support for subversion 1.14.2
+  * Recommend using status2() instead of status()</comment>
+    <requestid>1056769</requestid>
+  </revision>
 </revisionlist>

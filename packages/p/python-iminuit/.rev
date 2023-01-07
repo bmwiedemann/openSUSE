@@ -183,4 +183,19 @@
     <comment></comment>
     <requestid>997679</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f72b29913a4c33bfe1b4abde3880c3d8</srcmd5>
+    <version>2.18.0</version>
+    <time>1673108398</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.18.0:
+  * Bump actions/checkout from 2 to 3
+  * ci: update to Python 3.11 final release
+  * move tutorials
+  * added visualize function to Minuit
+  * Bump pypa/cibuildwheel from 2.10.2 to 2.11.2
+  * add more checks for gradients
+  * Add Python 3.11, drop 3.6</comment>
+    <requestid>1056767</requestid>
+  </revision>
 </revisionlist>

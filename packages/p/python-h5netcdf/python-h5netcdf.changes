@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  7 12:08:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Rework adding _FillValue-attribute, add tests.
+  * Add special add_phony method for creating phony dimensions, add test.
+  * Rewrite _unlabeled_dimension_mix (labeled/unlabeled), add tests.
+  * Add default netcdf fillvalues, pad only if necessary, adapt tests.
+  * Fix regression in padding algorithm, add test.
+  * Set ``track_order=True`` by default in created files if h5py 3.7.0 or
+  greater is detected to help compatibility with netCDF4-c programs.
+
+-------------------------------------------------------------------
 Tue Aug  2 12:08:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.0.2:

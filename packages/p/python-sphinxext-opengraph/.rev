@@ -16,4 +16,26 @@ This package is eventually going to be needed by Kitty, when someone manages to 
     <comment></comment>
     <requestid>1032480</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d77714d8164df6c7699c65157bda64ab</srcmd5>
+    <version>0.7.5</version>
+    <time>1673108396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.7.5:
+  * check for description length before subscripting
+  * Use Sphinx Builder method to get page url
+  * Fix field names in readme
+  * Allow dirhtml builder without ogp_site_url
+  * Take default og:site_name from sphinx project config value
+  * Do not append index with dirhtml
+  * Create wheel with version number not &quot;main&quot;
+  * Don't run CI on tag and push
+  * Fix option name in README.md.
+  * Test multiple Sphinx and OS versions
+  * Fix ci workflow syntax
+  * Tidy up whitespace
+  * ci: Pin PyPI publish action to v1
+  * Add support for meta description</comment>
+    <requestid>1056770</requestid>
+  </revision>
 </revisionlist>

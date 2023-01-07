@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  7 14:45:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230104:
+  * Komikku
+  * WebCord #3355
+  * Changed Pix symlink target to multimedia-photo-manager
+  * Rename application-dart to text-x-dart
+  * Updated app ids of RSS Guard
+
+-------------------------------------------------------------------
 Mon Dec  5 20:55:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221201:

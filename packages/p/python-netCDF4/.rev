@@ -359,4 +359,18 @@
     <comment></comment>
     <requestid>1004592</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>075aa8f850b94d9eecc02b09be5b7bac</srcmd5>
+    <version>1.6.2</version>
+    <time>1673108399</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2:
+ * Added ``netCDF4.__has_set_alignment__`` property to help identify if the
+   underlying netcdf4 supports setting the HDF5 alignment.
+ * Slicing multi-dimensional variables with an all False boolean index array
+   now returns an empty numpy array (instead of raising an exception - issue #1197).
+   Behavior now consistent with numpy slicing.
+ * fix problem with compiling using netcdf-c &lt; 4.9.0 (issue #1209)</comment>
+    <requestid>1056768</requestid>
+  </revision>
 </revisionlist>

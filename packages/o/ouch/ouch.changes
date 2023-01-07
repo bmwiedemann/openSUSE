@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan  7 11:39:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  New Features:
+  * Add cli option to (de)compress quietly #325
+  Improvements:
+  * Allow ouch to decompress archive into existing folder #321
+  * Accept inserting subcommand-independent flags in any position #329
+  * Improve extension parsing logic #330
+  * Slight refactor when ensuring archive-only inputs #331
+  * Use BStr to display possibly non-UTF8 byte sequences#332
+  * Use ubyte instead of humansize #333 #333
+  * Stop keeping track of the names of unpacked files #334
+  * Clean up #335
+  Bug fixes:
+  * Stop incorrectly asking to remove the parent dir #321
+  * Fixed overwriting archive file when decompressing archive detected with MIME types.
+  Tweaks:
+  * Add scoop install instructions to readme #323
+
+-------------------------------------------------------------------
 Thu Dec  1 09:11:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.0:

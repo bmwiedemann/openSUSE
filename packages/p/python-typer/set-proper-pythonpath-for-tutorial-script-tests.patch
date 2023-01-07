@@ -79,7 +79,7 @@ index c4fca5b..1280e22 100644
      from docs_src.subcommands.tutorial001 import items, users
  
 +    env = os.environ.copy()
-+    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__))
++    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
 +
      for module in [mod, items, users]:
          result = subprocess.run(
@@ -104,7 +104,7 @@ index 4db168b..eaf4539 100644
      from docs_src.subcommands.tutorial003 import items, lands, reigns, towns, users
  
 +    env = os.environ.copy()
-+    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__))
++    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
 +
      for module in [mod, items, lands, reigns, towns, users]:
          result = subprocess.run(

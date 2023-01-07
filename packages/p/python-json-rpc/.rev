@@ -44,4 +44,16 @@
     <comment></comment>
     <requestid>964381</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27423a52e103d8f21333bec71d3ad445</srcmd5>
+    <version>1.14.0</version>
+    <time>1673108394</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.0 
+  * ADD: context arguments to dispatcher
+  * FIX: positional arguments support for Django backend
+
+- Update to 1.13.0:</comment>
+    <requestid>1056764</requestid>
+  </revision>
 </revisionlist>

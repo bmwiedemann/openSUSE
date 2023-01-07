@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  7 10:38:27 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 1.9.4.
+  * Fixed broken copy-constructor and a lot of smaller fixes.
+
+-------------------------------------------------------------------
 Sat Oct 15 17:47:32 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Initialized 1.9.3.

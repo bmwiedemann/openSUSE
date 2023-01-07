@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  7 12:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0 
+  * ADD: context arguments to dispatcher
+  * FIX: positional arguments support for Django backend
+
+-------------------------------------------------------------------
 Wed Mar 23 12:58:53 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
@@ -6,7 +13,7 @@ Wed Mar 23 12:58:53 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Mar  9 08:40:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Update to 0.13.0:
+- Update to 1.13.0:
   * python 3.8 support
 
 -------------------------------------------------------------------

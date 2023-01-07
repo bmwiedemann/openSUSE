@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 15:07:01 UTC 2023 - Matthias Bach <marix@marix.org> - 0.7.0
+
+- Adapt set-proper-pythonpath-for-tutorial-script-tests.patch to
+  also work for Python 3.11.
+
+-------------------------------------------------------------------
 Sun Nov  6 19:35:15 UTC 2022 - Matthias Bach <marix@marix.org> - 0.7.0
 
 - Update to upstream version 0.7.0

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan  7 12:46:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.7.5:
+  * check for description length before subscripting
+  * Use Sphinx Builder method to get page url
+  * Fix field names in readme
+  * Allow dirhtml builder without ogp_site_url
+  * Take default og:site_name from sphinx project config value
+  * Do not append index with dirhtml
+  * Create wheel with version number not "main"
+  * Don't run CI on tag and push
+  * Fix option name in README.md.
+  * Test multiple Sphinx and OS versions
+  * Fix ci workflow syntax
+  * Tidy up whitespace
+  * ci: Pin PyPI publish action to v1
+  * Add support for meta description
+
+-------------------------------------------------------------------
 Tue Oct 11 15:31:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.6.3 

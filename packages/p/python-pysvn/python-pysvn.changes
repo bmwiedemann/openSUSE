@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  7 12:30:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.20:
+  * Python 3.11 support, early enablement for 3.12
+  * Add support for subversion 1.14.2
+  * Recommend using status2() instead of status()
+
+-------------------------------------------------------------------
 Wed May  4 19:29:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove skip_python310, it is not needed anymore.

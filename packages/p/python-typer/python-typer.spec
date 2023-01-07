@@ -1,7 +1,7 @@
 #
 # spec file for package python-typer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
