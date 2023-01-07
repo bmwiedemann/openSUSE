@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           okular
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
