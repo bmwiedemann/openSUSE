@@ -1,7 +1,7 @@
 #
 # spec file for package gedit-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gedit-plugins
-Version:        43.1
+Version:        44.0
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
-Source0:        https://download.gnome.org/sources/gedit-plugins/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit-plugins/44/%{name}-%{version}.tar.xz
 Source1:        gedit-plugins.SUSE
 # PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
 Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
@@ -39,7 +39,7 @@ BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-python) >= 0.82
-BuildRequires:  pkgconfig(gedit) >= 43.0
+BuildRequires:  pkgconfig(gedit) >= 44.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
