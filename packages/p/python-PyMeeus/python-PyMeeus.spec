@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMeeus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyMeeus
-Version:        0.5.11
+Version:        0.5.12
 Release:        0
 Summary:        Python implementation of Jean Meeus astronomical routines
 License:        LGPL-3.0-only

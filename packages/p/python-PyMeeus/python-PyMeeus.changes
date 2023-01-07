@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 17:54:31 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.5.12: 
+  * Fixed a bug in the computation of the winter solstice. Added new tests and information about proper use of the library.
+
+-------------------------------------------------------------------
 Thu Nov 18 11:27:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.5.11:
