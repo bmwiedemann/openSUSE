@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan  5 19:11:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  Fixed
+  * Fixed #221, jpegls_errc::destination_buffer_too_small incorrectly thrown
+    for 8 bit 2*2 image with stride = 4 during decoding.
+- update to 2.4.0:
+  Added
+  * Support for Windows on ARM64 in the MSBuild projects and CMake files.
+  * Support to read and write application data markers. #180
+  * Added method charls_validate_spiff_header to validate SPIFF headers.
+  Changed
+  * Improved compatibility of public headers with C++20.
+  * Switch order of APP8 and SOF55 markers during encoding to allign with
+    user application data markers.
+  Fixed
+  * Fixed #167, Multi component image with interleave mode none is not
+    correctly decoded when a custom stride argument is used.
+
+-------------------------------------------------------------------
 Tue Mar 29 21:45:02 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 2.3.4:

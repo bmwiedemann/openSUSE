@@ -1,7 +1,7 @@
 #
 # spec file for package CharLS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 2
 Name:           CharLS
-Version:        2.3.4
+Version:        2.4.1
 Release:        0
 Summary:        A JPEG-LS library
 License:        BSD-3-Clause
