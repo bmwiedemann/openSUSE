@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kolourpaint
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
