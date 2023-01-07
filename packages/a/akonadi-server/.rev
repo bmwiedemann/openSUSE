@@ -855,4 +855,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Release Gear 22.12.0 (forwarded request 1041224 from krop)</comment>
     <requestid>1041400</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>fa100597ab6f0f184829ffba7d4d2146</srcmd5>
+    <version>22.12.1</version>
+    <time>1673108192</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 22.12.1 (forwarded request 1046548 from krop)</comment>
+    <requestid>1056433</requestid>
+  </revision>
 </revisionlist>
