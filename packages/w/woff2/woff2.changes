@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  6 11:21:56 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add install-executables.patch to install woff2 tools
+
+-------------------------------------------------------------------
 Tue Jul 24 08:57:10 UTC 2018 - bjorn.lie@gmail.com
 
 - Add woff2-fix-overflow-when-decoding-glyf.patch: Check for

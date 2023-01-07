@@ -1,7 +1,7 @@
 #
 # spec file for package woff2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,8 @@ Source0:        https://github.com/google/woff2/archive/v%{version}/%{name}-%{ve
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM woff2-fix-overflow-when-decoding-glyf.patch -- Check for overflow when decoding glyf
 Patch0:         woff2-fix-overflow-when-decoding-glyf.patch
-
+# PATCH-FIX-OPENSUSE install-executables.patch -- Install woff tools
+Patch1:         install-executables.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -121,6 +122,10 @@ This package contains development files for %{name}.
 
 %post -n libwoff2enc%{soname} -p /sbin/ldconfig
 %postun -n libwoff2enc%{soname} -p /sbin/ldconfig
+
+%files
+%license LICENSE
+%{_bindir}/woff2_*
 
 %files -n libwoff2common%{soname}
 %license LICENSE
