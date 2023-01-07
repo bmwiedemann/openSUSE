@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-compressor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define mod_name django_compressor
 %define skip_python2 1
 Name:           python-django-compressor
-Version:        4.1
+Version:        4.3
 Release:        0
 Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
 License:        Apache-2.0 AND BSD-3-Clause AND MIT
@@ -31,12 +31,12 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module calmjs}
 BuildRequires:  %{python_module csscompressor}
-BuildRequires:  %{python_module django-appconf >= 1.0}
+BuildRequires:  %{python_module django-appconf >= 1.0.3}
 BuildRequires:  %{python_module django-sekizai >= 2.0.0}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module rcssmin >= 1.0.6}
-BuildRequires:  %{python_module rjsmin >= 1.1.0}
+BuildRequires:  %{python_module rcssmin >= 1.1.1}
+BuildRequires:  %{python_module rjsmin >= 1.2.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module slimit}
 BuildRequires:  fdupes
@@ -46,8 +46,8 @@ Requires:       python-Jinja2
 Requires:       python-beautifulsoup4
 Requires:       python-csscompressor
 Requires:       python-django-appconf >= 1.0.3
-Requires:       python-rcssmin >= 1.0.6
-Requires:       python-rjsmin >= 1.1.0
+Requires:       python-rcssmin >= 1.1.1
+Requires:       python-rjsmin >= 1.2.1
 Requires:       python-slimit
 Recommends:     python-Brotli >= 1.0.6
 Recommends:     python-calmjs

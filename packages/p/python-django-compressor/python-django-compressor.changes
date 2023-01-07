@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  7 08:45:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3:
+  * `Full Changelog <https://github.com/django-compressor/django-
+    compressor/compare/4.1...4.3>`_
+  * Officially support Python 3.11
+  * Drop Python 3.6 and 3.7 support
+  * Drop Django 2.2 and 3.1 support
+  * Drop SlimItFilter
+  * Update the `CachedS3Boto3Storage` example storage subclass in "Remote
+    Storages" to work properly after the v4.0 change to how duplicate file
+    names are handled by `CompressorFileStorage` 
+  * Update rsmin and jsmin versions
+
+-------------------------------------------------------------------
 Thu Nov 24 18:26:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix tests problem related to jinja2 version

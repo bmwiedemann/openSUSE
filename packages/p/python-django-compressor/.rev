@@ -68,4 +68,22 @@
 </comment>
     <requestid>1037971</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cab99c94eb690a0fce0614ca31413392</srcmd5>
+    <version>4.3</version>
+    <time>1673108388</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3:
+  * `Full Changelog &lt;https://github.com/django-compressor/django-
+    compressor/compare/4.1...4.3&gt;`_
+  * Officially support Python 3.11
+  * Drop Python 3.6 and 3.7 support
+  * Drop Django 2.2 and 3.1 support
+  * Drop SlimItFilter
+  * Update the `CachedS3Boto3Storage` example storage subclass in &quot;Remote
+    Storages&quot; to work properly after the v4.0 change to how duplicate file
+    names are handled by `CompressorFileStorage` 
+  * Update rsmin and jsmin versions</comment>
+    <requestid>1056746</requestid>
+  </revision>
 </revisionlist>
