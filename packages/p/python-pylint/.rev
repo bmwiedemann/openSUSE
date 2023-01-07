@@ -426,4 +426,41 @@
     <comment></comment>
     <requestid>1012118</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>eb3bcedc15516bdc019d73bc28aa9d51</srcmd5>
+    <version>2.15.9</version>
+    <time>1673108390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.15.9:
+  * Fix false-positive for used-before-assignment in pattern matching with a
+    guard.
+  * Pylint will no longer deadlock if a parallel job is killed but fail
+    immediately instead.
+  * When pylint exit due to bad arguments being provided the exit code will
+    now be the expected 32.
+  * Fixes a ModuleNotFound exception when running pylint on a Django project
+    with the pylint_django plugin enabled.
+  * Document a known false positive for useless-suppression when disabling
+  * line-too-long in a module with only comments and no code.
+  * Fix logging-fstring-interpolation false positive raised when logging and
+    f-string with %s formatting.
+  * Fixes false positive abstract-method on Protocol classes.
+  * Fix missing-param-doc false positive when function parameter has an
+    escaped underscore.
+  * multiple-statements no longer triggers for function stubs using inlined
+    ....
+  * Fix deprecated-method false positive when alias for method is similar to
+  * name of deprecated method.
+  * Fix a false positive for used-before-assignment for imports guarded by
+  * typing.TYPE_CHECKING later used in variable annotations.
+  * Other Bug Fixes
+  * Pylint will now filter duplicates given to it before linting. The output
+  * should be the same whether a file is given/discovered multiple times or
+    not.
+  * Fixes a crash in stop-iteration-return when the next builtin is
+  * called without arguments.
+  * Fix false positive for unhashable-member when subclassing dict and
+  * using the subclass as a dictionary key.</comment>
+    <requestid>1056749</requestid>
+  </revision>
 </revisionlist>

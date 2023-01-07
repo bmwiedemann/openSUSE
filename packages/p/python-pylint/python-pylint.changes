@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Dec 17 18:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.15.9:
+  * Fix false-positive for used-before-assignment in pattern matching with a
+    guard.
+  * Pylint will no longer deadlock if a parallel job is killed but fail
+    immediately instead.
+  * When pylint exit due to bad arguments being provided the exit code will
+    now be the expected 32.
+  * Fixes a ModuleNotFound exception when running pylint on a Django project
+    with the pylint_django plugin enabled.
+  * Document a known false positive for useless-suppression when disabling
+  * line-too-long in a module with only comments and no code.
+  * Fix logging-fstring-interpolation false positive raised when logging and
+    f-string with %s formatting.
+  * Fixes false positive abstract-method on Protocol classes.
+  * Fix missing-param-doc false positive when function parameter has an
+    escaped underscore.
+  * multiple-statements no longer triggers for function stubs using inlined
+    ....
+  * Fix deprecated-method false positive when alias for method is similar to
+  * name of deprecated method.
+  * Fix a false positive for used-before-assignment for imports guarded by
+  * typing.TYPE_CHECKING later used in variable annotations.
+  * Other Bug Fixes
+  * Pylint will now filter duplicates given to it before linting. The output
+  * should be the same whether a file is given/discovered multiple times or
+    not.
+  * Fixes a crash in stop-iteration-return when the next builtin is
+  * called without arguments.
+  * Fix false positive for unhashable-member when subclassing dict and
+  * using the subclass as a dictionary key.
+  * unnecessary-list-index-lookup will not be wrongly emitted if
+  * enumerate is called with start.
+  * Don't warn about stop-iteration-return when using next() over
+  * itertools.cycle.
+  * Messages sent to reporter are now copied so a reporter cannot modify the
+  * message sent to other reporters.
+  * Fix crash that happened when parsing files with unexpected encoding
+    starting with 'utf' like utf13.
+  * Fix a crash when a child class with an __init__ method inherits from a
+  * parent class with an __init__ class attribute.
+  * Fix a false positive for simplify-boolean-expression when multiple
+    values are inferred for a constant.
+  * Remove __index__ dunder method call from unnecessary-dunder-call
+  * Fixed a multi-processing crash that prevents using any more than 1
+    thread on MacOS.
+  * The returned module objects and errors that were cached by the linter
+    plugin loader cannot be reliably pickled. This means that dill would
+    throw an error  when attempting to serialise the linter object for
+    multi-processing use.
+  * Add a keyword-only compare_constants argument to safe_infer.
+  * Sort --generated-rcfile output.
+
+-------------------------------------------------------------------
 Mon Oct 17 09:46:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.15.4
