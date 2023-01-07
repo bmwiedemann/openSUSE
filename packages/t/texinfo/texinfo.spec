@@ -130,7 +130,7 @@ then
     ln -sf texi2pdf.1%{?ext_man} %{buildroot}%{_mandir}/man1/pdftexi2dvi.1%{?ext_man}
 fi
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 mv %{buildroot}%{_bindir}/install-info %{buildroot}/sbin/
 ln -sf ../../sbin/install-info %{buildroot}%{_bindir}/install-info
@@ -230,7 +230,7 @@ end
 %files -n info
 %defattr(-,root,root,0755)
 %ghost %verify(not mode md5 size mtime) %{_infodir}/dir
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/install-info
 %else
 %{_sbindir}/install-info

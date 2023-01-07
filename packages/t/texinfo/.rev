@@ -675,4 +675,12 @@
     <comment>texinfo 7.0.1 (forwarded request 1039956 from AndreasStieger)</comment>
     <requestid>1040159</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>db524a20563d9531e0e1cde51519b5e1</srcmd5>
+    <version>7.0.1</version>
+    <time>1673108145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055873</requestid>
+  </revision>
 </revisionlist>

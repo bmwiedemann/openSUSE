@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:22:54 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Sun Dec  4 07:33:56 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - texinfo 7.0.1:
