@@ -797,4 +797,19 @@
     <comment></comment>
     <requestid>1046526</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>f36f8a5cb381744ca89c4ae922d340d6</srcmd5>
+    <version>1.26.42</version>
+    <time>1673108184</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.42:
+  * api-change:``securitylake``: [``botocore``] Allow CreateSubscriber API
+    to take string input that allows setting more descriptive
+    SubscriberDescription field. Make souceTypes field required in model
+    level for UpdateSubscriberRequest as it is required for every API call
+    on the backend. Allow ListSubscribers take any String as nextToken
+    param.
+</comment>
+    <requestid>1056682</requestid>
+  </revision>
 </revisionlist>

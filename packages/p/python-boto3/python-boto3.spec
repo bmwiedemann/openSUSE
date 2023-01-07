@@ -1,7 +1,7 @@
 #
 # spec file for package python-boto3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-boto3
-Version:        1.26.41
+Version:        1.26.42
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
@@ -37,13 +37,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore < 1.30.0
 Requires:       python-botocore >= 1.29.41
-Requires:       python-jmespath < 1.0.0
+Requires:       python-jmespath < 2.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-s3transfer < 0.7.0
 Requires:       python-s3transfer >= 0.6.0
 Requires:       python-six
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -55,17 +54,9 @@ For documentation consult the online documentation at
 http://boto3.readthedocs.org/en/latest/
 
 
-
-
-
-
-
-
-
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
-
 %prep
 %setup -q -n boto3-%{version}
 sed -i 's/from botocore.vendored //' boto3/compat.py

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:59:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.42:
+  * api-change:``securitylake``: [``botocore``] Allow CreateSubscriber API
+    to take string input that allows setting more descriptive
+    SubscriberDescription field. Make souceTypes field required in model
+    level for UpdateSubscriberRequest as it is required for every API call
+    on the backend. Allow ListSubscribers take any String as nextToken
+    param.
+
+-------------------------------------------------------------------
 Mon Jan  2 12:37:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.26.41
