@@ -2365,4 +2365,15 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
   * lsfd:fix crash triggered by an empty filter expression</comment>
     <requestid>1044107</requestid>
   </revision>
+  <revision rev="259" vrev="2">
+    <srcmd5>c7cece81c95b11e6751043e5c08cdd57</srcmd5>
+    <version>2.38.1</version>
+    <time>1673108148</time>
+    <user>dimstar_suse</user>
+    <comment>- restore man and info pages
+- clean up spec file slightly 
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)</comment>
+    <requestid>1056354</requestid>
+  </revision>
 </revisionlist>

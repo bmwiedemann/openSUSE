@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  6 09:27:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restore man and info pages
+- clean up spec file slightly 
+
+-------------------------------------------------------------------
+Tue Dec 27 13:23:29 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Dec 21 17:11:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - restore lsblk and lslogins as well
