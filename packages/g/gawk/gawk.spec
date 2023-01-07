@@ -1,7 +1,7 @@
 #
 # spec file for package gawk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ almost completely POSIX 1003.2 compliant.
 %install
 %make_install
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 install -d -m 755 %{buildroot}/bin
 ln -s %{_bindir}/gawk %{buildroot}/bin/gawk
 ln -s %{_bindir}/gawk %{buildroot}/bin/awk
@@ -71,7 +71,7 @@ ln -sfv %{_mandir}/man1/gawk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ex
 %files -f %{name}.lang
 %config %{_sysconfdir}/profile.d/gawk.csh
 %config %{_sysconfdir}/profile.d/gawk.sh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 #UsrMerge
 /bin/awk
 /bin/gawk
