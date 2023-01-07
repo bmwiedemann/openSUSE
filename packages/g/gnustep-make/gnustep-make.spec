@@ -24,7 +24,7 @@
 # Disable debug package as rpm > 4.13 does not allow for empty debug file list.
 %global debug_package %{nil}
 Name:           gnustep-make
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        GNUstep Makefile package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

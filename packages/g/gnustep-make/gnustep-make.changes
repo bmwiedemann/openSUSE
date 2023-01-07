@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:41:18 UTC 2023 - Fred kiefer <fredkiefer@gmx.de>
+
+- update to version 2.9.1
+  * Add workaround for Clang bug on Windows MSVC when tests contain no Objective-C constructs.
+  * Various fixes for minor issues introduced in the test framework by parallelisation mof testcase execution.
+
+-------------------------------------------------------------------
 Sat Jun 25 20:44:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to version 2.9.0
