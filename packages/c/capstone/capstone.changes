@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan  3 15:28:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Enable static library, and add libcapstone-devel-static subpackage
+  (this is helpful for qemu-linux-user)
+
+-------------------------------------------------------------------
 Sun Aug 16 02:42:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.2

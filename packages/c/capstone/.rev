@@ -37,4 +37,12 @@
   - Fix x86_op record</comment>
     <requestid>826947</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>17c79ee95d4fdf4decf6b33d6525674a</srcmd5>
+    <version>4.0.2</version>
+    <time>1673108257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056673</requestid>
+  </revision>
 </revisionlist>

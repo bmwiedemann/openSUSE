@@ -1,7 +1,7 @@
 #
 # spec file for package capstone
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,14 @@ Requires:       libcapstone%{sover} = %{version}
 %description -n libcapstone-devel
 Development files to build upon libcapstone, C language only.
 
+%package -n libcapstone-devel-static
+Summary:        Static library for capstone
+Group:          Development/Libraries/C and C++
+Requires:       libcapstone-devel = %{version}
+
+%description -n libcapstone-devel-static
+Statically linked libcapstone.
+
 %package doc
 Summary:        Documentation for capstone, a disassembly framework
 Group:          Documentation/Other
@@ -72,7 +80,7 @@ This package contains the Capstone bindings for Python.
 %autosetup
 
 %build
-CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" \
+CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" CAPSTONE_STATIC="yes" \
   CFLAGS="%{optflags}" ./make.sh
 
 pushd bindings/python/
@@ -82,7 +90,7 @@ popd
 %install
 CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" \
   LIBDIRARCH="%{_lib}" INCDIR="%{_includedir}" \
-  DESTDIR=%{buildroot} V=1 CAPSTONE_STATIC=no ./make.sh install
+  DESTDIR=%{buildroot} V=1 CAPSTONE_STATIC="yes" ./make.sh install
 
 install -m 755 -d %{buildroot}%{_docdir}/%{name}-doc/docs
 install -m 644 -t %{buildroot}%{_docdir}/%{name}-doc/docs docs/README docs/*.pdf
@@ -115,6 +123,9 @@ sed -e '/^archive/d' -e 's|^libdir=.*|libdir=%{_libdir}|' \
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files -n libcapstone-devel-static
+%{_libdir}/lib%{name}.a
 
 %files -n python3-capstone
 %{python3_sitelib}/%{name}/
