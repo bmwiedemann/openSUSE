@@ -966,4 +966,13 @@
     <comment>bsc#1200264, CVE-2022-31782</comment>
     <requestid>998792</requestid>
   </revision>
+  <revision rev="98" vrev="4">
+    <srcmd5>d3db92533b0f2f96e337816887e5d122</srcmd5>
+    <version>2.12.1</version>
+    <time>1673108156</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to pkgconfig(zlib) so that alternative providers can be
+  used</comment>
+    <requestid>1056268</requestid>
+  </revision>
 </revisionlist>

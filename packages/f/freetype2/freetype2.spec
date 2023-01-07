@@ -1,7 +1,7 @@
 #
 # spec file for package freetype2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,8 @@ BuildRequires:  gawk
 BuildRequires:  libbz2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 This library features TrueType fonts for open source projects. This
@@ -78,8 +78,8 @@ that will switch the TrueType Interpreter to the old version 35.
 Summary:        Development environment for the freetype2 TrueType font library
 Group:          Development/Libraries/C and C++
 Requires:       libfreetype6 = %{version}
-Requires:       zlib-devel
 Requires:       pkgconfig(libbrotlidec)
+Requires:       pkgconfig(zlib)
 # there is no freetype-devel on suse:
 Provides:       freetype-devel
 # Static library provides:
