@@ -1,7 +1,7 @@
 #
 # spec file for package python-parso
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
 URL:            https://github.com/davidhalter/parso
 Source0:        https://files.pythonhosted.org/packages/source/p/parso/parso-%{version}.tar.gz
+Patch1:         https://github.com/davidhalter/parso/commit/cf5969d7a109798adbf9538d70e92138f077d700.patch
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +46,7 @@ Parso consists of a small API to parse Python and analyse the syntax
 tree.
 
 %prep
-%setup -q -n parso-%{version}
+%autosetup -p1 -n parso-%{version}
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  6 21:44:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add cf5969d7a109798adbf9538d70e92138f077d700.patch to fix
+  unit tests with Python 3.11/3.12 
+
+-------------------------------------------------------------------
 Fri Dec 10 20:32:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 0.8.3:

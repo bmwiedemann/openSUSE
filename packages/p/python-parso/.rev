@@ -172,4 +172,13 @@
     <comment></comment>
     <requestid>940007</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0dc03d06e288663b9f23476e2aae5e18</srcmd5>
+    <version>0.8.3</version>
+    <time>1673108260</time>
+    <user>dimstar_suse</user>
+    <comment>- add cf5969d7a109798adbf9538d70e92138f077d700.patch to fix
+  unit tests with Python 3.11/3.12</comment>
+    <requestid>1056710</requestid>
+  </revision>
 </revisionlist>
