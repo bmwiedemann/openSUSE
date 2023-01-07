@@ -20,7 +20,7 @@
 %define kf5_version 5.94.0
 %bcond_without released
 Name:           skanpage
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Multi-Page Scanning Application
 License:        GPL-2.0-or-later
