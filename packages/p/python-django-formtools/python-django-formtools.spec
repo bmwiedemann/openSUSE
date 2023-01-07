@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-formtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-formtools
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        A set of high-level abstractions for Django forms
 License:        BSD-3-Clause
@@ -51,7 +51,7 @@ Currently for form previews and multi-step forms.
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
 export PYTHONPATH=`pwd`
-%python_expand $python -m django test -v 2 tests --pythonpath=`pwd` 
+%python_expand $python -m django test -v 2 tests --pythonpath=`pwd`
 
 %files %{python_files}
 %license LICENSE

@@ -70,4 +70,19 @@
     <comment></comment>
     <requestid>944667</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>857f97f40c2c22dc00c9eab37c59df69</srcmd5>
+    <version>2.4</version>
+    <time>1673108378</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4:
+  * Updated translations from Transifex.
+  * Any kwarg passed to ``render_goto_step()`` is passed over to ``render``.
+  * ``WizardView`` is using ``get_form_list()`` instead of directly
+    accessing ``form_list`` (#168).
+  * Added Python 3.10 to test matrix.
+  * Dropped testing for Django 3.1.
+  * Confirmed support for Django 4.0 and 4.1.</comment>
+    <requestid>1056717</requestid>
+  </revision>
 </revisionlist>

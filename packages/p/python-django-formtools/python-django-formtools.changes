@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  6 22:01:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4:
+  * Updated translations from Transifex.
+  * Any kwarg passed to ``render_goto_step()`` is passed over to ``render``.
+  * ``WizardView`` is using ``get_form_list()`` instead of directly
+    accessing ``form_list`` (#168).
+  * Added Python 3.10 to test matrix.
+  * Dropped testing for Django 3.1.
+  * Confirmed support for Django 4.0 and 4.1.
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
