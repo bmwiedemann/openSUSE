@@ -1,7 +1,7 @@
 #
 # spec file for package cifs-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -137,7 +137,7 @@ done
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"
 export LDFLAGS="-pie"
 autoreconf -i
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 export ROOTSBINDIR="%{_sbindir}"
 %endif
 %configure \
@@ -187,7 +187,7 @@ if [ ! -f %{cifs_idmap_lib} ] ; then
 fi
 
 %files
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %{_sbindir}/mount.cifs
 %{_sbindir}/mount.smb3
 %else

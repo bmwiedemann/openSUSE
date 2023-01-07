@@ -711,4 +711,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>1029627</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3b7c0cb05125e1b1bd27d050c0c76b18</srcmd5>
+    <version>7.0</version>
+    <time>1673108153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056227</requestid>
+  </revision>
 </revisionlist>

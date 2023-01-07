@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  4 10:32:54 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Oct 17 13:29:37 UTC 2022 - palcantara@suse.de
 
 - Update cifs-utils to 7.0
