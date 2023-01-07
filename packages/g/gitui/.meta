@@ -1,0 +1,18 @@
+<package name="gitui" project="openSUSE:Factory">
+  <title>Terminal UI for git</title>
+  <description>Terminal UI for git that features: 
+    * Fast and intuitive keyboard only control
+    * Context based help (no need to memorize tons of hot-keys)
+    * Inspect, commit, and amend changes (incl. hooks: pre-commit,commit-msg,post-commit)
+    * Stage, unstage, revert and reset files, hunks and lines
+    * Stashing (save, pop, apply, drop, and inspect)
+    * Push/Fetch to/from remote
+    * Branch List (create, rename, delete, checkout, remotes)
+    * Browse commit log, diff committed changes
+    * Scalable terminal UI layout
+    * Async git API for fluid control
+    * Submodule support
+</description>
+  <devel project="utilities" package="gitui"/>
+  <url>https://github.com/extrawurst/gitui</url>
+</package>

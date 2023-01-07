@@ -1,0 +1,27 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/extrawurst/gitui</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">234e7cb</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">gitui</param>
+     <param name="compression">xz</param>
+     <param name="update">false</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">gitui</param>
+  </service>
+</services>
+
