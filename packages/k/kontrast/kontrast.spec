@@ -19,7 +19,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kontrast
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
