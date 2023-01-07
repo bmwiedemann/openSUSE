@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  6 02:22:16 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-fix-ambiguous-filesystem-reference.patch:
+  zypp: Fix ambiguous reference to 'filesystem' class
+  (gh#PackageKit/PackageKit/commit/bb1409a71, bsc#1206687).
+
+-------------------------------------------------------------------
 Mon Sep 26 03:12:44 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-dont-remove-locked-packages.patch: zypp:
