@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:08:23 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Nov  3 07:05:00 UTC 2022 - Amit Chaudhary <amit.chaudhary@suse.com>
 
 - killed lvmlockd doesn't clear/adopt locks leading to inability to start volume group (bsc#1203216)

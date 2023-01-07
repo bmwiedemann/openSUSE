@@ -272,7 +272,7 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
   rm %{buildroot}%{_unitdir}/lvmlocks.service
 
   # compat symlinks in /sbin remove with Leap 43
-  %if !0%{?usrmerged}
+  %if 0%{?suse_version} < 1550
   mkdir -p %{buildroot}/sbin
   ln -s %{_sbindir}/dmsetup %{buildroot}/sbin/dmsetup
   %endif
@@ -349,7 +349,7 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     rm %{buildroot}%{_mandir}/man8/dmeventd.8
     rm %{buildroot}%{_mandir}/man8/dmfilemapd.8
 
-    %if !0%{?usrmerged}
+    %if 0%{?suse_version} < 1550
       # compat symlinks in /sbin remove with Leap 43
       mkdir -p %{buildroot}/sbin
       pushd %{buildroot}/%{_sbindir}
@@ -395,7 +395,7 @@ Programs and man pages for configuring and using the device mapper.
 %license COPYING COPYING.LIB
 %doc README
 %doc udev/12-dm-permissions.rules
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/dmsetup
 %endif
 %{_sbindir}/dmsetup
@@ -428,7 +428,7 @@ Device mapper main shared library
 %{_libdir}/libdevmapper.so.1.02
 
 %post   -n %{libname}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # in usrmerged scenario we better don't remove ourselves :-)
 if [ -f /%{_lib}/libdevmapper.so.1.03 ]; then
   # Special migration - the library is now in %{_libdir}, but up to the point where
@@ -606,7 +606,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %{_sbindir}/rclvm2-lvmpolld
 %{_sbindir}/rclvm2-monitor
 # compat symlinks in /sbin
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/lvm
 /sbin/lvmconfig
 /sbin/lvmdevices
