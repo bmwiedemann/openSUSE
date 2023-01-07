@@ -20,7 +20,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-filetransfer-handler
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        Telepathy filetransfer handler
 License:        GPL-2.0-or-later
