@@ -342,4 +342,17 @@
   * https://dosbox-staging.github.io/v0-80-0/#changes</comment>
     <requestid>1046685</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>08752d4dcab2fb4f895914eb46c5d6cc</srcmd5>
+    <version>0.80.1</version>
+    <time>1673108389</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to dosbox-staging 0.80.1
+  * Replaced dosbox-staging-0.80.0-config.patch by dosbox-staging-config.patch.
+  * Replaced dosbox-staging-0.80.0-name.patch by dosbox-staging-name.patch.
+  * Added pkgconfig(gl) dependencies.
+  * Removed Provides/Obsoletes instructions for dosbox-translations subpackage.
+  * https://dosbox-staging.github.io/v0-80-1/#changes</comment>
+    <requestid>1056758</requestid>
+  </revision>
 </revisionlist>

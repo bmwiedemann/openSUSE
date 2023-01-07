@@ -45,13 +45,12 @@ diff -Pdpru dosbox-staging-0.80.0.orig/contrib/linux/meson.build dosbox-staging-
 diff -Pdpru dosbox-staging-0.80.0.orig/meson.build dosbox-staging-0.80.0/meson.build
 --- dosbox-staging-0.80.0.orig/meson.build	2022-12-21 06:01:22.000000000 +0300
 +++ dosbox-staging-0.80.0/meson.build	2023-01-04 09:41:24.630629881 +0300
-@@ -1,5 +1,5 @@
+@@ -1,4 +1,4 @@
  project(
 -    'dosbox-staging',
 +    'dosbox',
      'c',
      'cpp',
-     version: '0.80.0',
 @@ -32,7 +32,7 @@ project(
  #
  data_dir = get_option('datadir')
