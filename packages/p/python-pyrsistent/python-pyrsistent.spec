@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyrsistent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-pyrsistent
-Version:        0.18.1
+Version:        0.19.3
 Release:        0
 Summary:        Persistent, Functional, Immutable data structures
 License:        MIT

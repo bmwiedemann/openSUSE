@@ -155,4 +155,26 @@
  * Fix #238, failing doc tests on Python 3.11, thanks @musicinmybrain for this!</comment>
     <requestid>965829</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>679ebf8bc9f3bc6f731a42456b8909a9</srcmd5>
+    <version>0.19.3</version>
+    <time>1673108157</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.3:
+ * Fix #264, add wheels and official support for Python 3.11.
+ * Fix #263, pmap regression in 0.19.1. Element access sometimes unreliable
+   after insert.
+ * Fix #159 (through PR #243). Pmap keys/values/items now behave more like the
+   corresponding Python 3 methods on dicts. Previously they returned a
+   materialized PVector holding the items, now they return
+   views instead.
+ * Fix #244, type for argument to PVector.delete missing.
+ * Fix #249, rename perf test directory to avoid tripping up automatic
+   discovery in more recent setuptools versions
+ * Fix #247, performance bug when setting elements in maps and adding elements
+   to sets
+ * Fix #248, build pure Python wheels. This is used by some installers.
+ * Fix #254, #258, support manylinux_2014_aarch64 wheels.</comment>
+    <requestid>1056270</requestid>
+  </revision>
 </revisionlist>

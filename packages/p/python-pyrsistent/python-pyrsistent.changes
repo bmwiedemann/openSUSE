@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan  5 20:30:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.3:
+ * Fix #264, add wheels and official support for Python 3.11.
+ * Fix #263, pmap regression in 0.19.1. Element access sometimes unreliable
+   after insert.
+ * Fix #159 (through PR #243). Pmap keys/values/items now behave more like the
+   corresponding Python 3 methods on dicts. Previously they returned a
+   materialized PVector holding the items, now they return
+   views instead.
+ * Fix #244, type for argument to PVector.delete missing.
+ * Fix #249, rename perf test directory to avoid tripping up automatic
+   discovery in more recent setuptools versions
+ * Fix #247, performance bug when setting elements in maps and adding elements
+   to sets
+ * Fix #248, build pure Python wheels. This is used by some installers.
+ * Fix #254, #258, support manylinux_2014_aarch64 wheels.
+
+-------------------------------------------------------------------
 Fri Feb  4 22:50:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.18.1:
