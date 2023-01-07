@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        22.12.0
+Version:        22.12.1
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
