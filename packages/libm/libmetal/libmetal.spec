@@ -1,7 +1,7 @@
 #
 # spec file for package libmetal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libmetal0
 Name:           libmetal
-Version:        2020.01
+Version:        2020.10.0
 Release:        0
 Summary:        Bare metal interaction APIs
 License:        BSD-3-Clause

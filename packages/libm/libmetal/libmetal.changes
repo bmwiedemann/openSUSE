@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec 29 20:18:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2020.10.0:
+  * Enhanced Continuous Integration using GitHub actions rather than Travis.
+  * Update CMake minimum version to 3.0.2
+  * Improved C11 compliance
+  * Bug fixes
+- update to 2020.04.0:
+  * Added checkpatch and gitlint for checking commits and code style.
+  * Updated documentation.
+  * Various bug fixes.
+
+-------------------------------------------------------------------
 Tue Feb 25 09:09:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the links for the CPU code to be generated on all available
