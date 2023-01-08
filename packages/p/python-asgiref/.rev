@@ -80,4 +80,31 @@
   * Fix root_path in WebSocket Connection Scope</comment>
     <requestid>980784</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fef2e8c6d25c7ec7cdf144f9850b7747</srcmd5>
+    <version>3.6.0</version>
+    <time>1673209507</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0:
+  * Two new functions are added to the ``asgiref.sync`` module:
+    ``iscoroutinefunction()`` and ``markcoroutinefunction()``.
+  * Python 3.12 deprecates ``asyncio.iscoroutinefunction()`` as an alias for
+    ``inspect.iscoroutinefunction()``, whilst also removing the
+    ``_is_coroutine`` marker.  The latter is replaced with the
+    ``inspect.markcoroutinefunction`` decorator.
+  * The new ``asgiref.sync`` functions are compatibility shims for these
+    functions that can be used until Python 3.12 is the minimum supported
+    version.
+  * The ``loop`` argument to ``asgiref.timeout.timeout`` is deprecated. As per
+    other ``asyncio`` based APIs, the running event loop is used by default.
+    Note that ``asyncio`` provides timeout utilities from Python 3.11, and
+    these should be preferred where available.
+  * Support for the ``ASGI_THREADS`` environment variable, used by
+    ``SyncToAsync``, is removed. In general, a running event-loop is not
+    available to `asgiref` at import time, and so the default thread pool
+    executor cannot be configured. Protocol servers, or applications, should set
+    the default executor as required when configuring the event loop at
+    application startup.</comment>
+    <requestid>1056748</requestid>
+  </revision>
 </revisionlist>
