@@ -1,7 +1,7 @@
 #
 # spec file for package i3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           i3
-Version:        4.21.1
+Version:        4.22
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
@@ -59,6 +59,8 @@ Recommends:     i3lock
 Recommends:     i3status
 Recommends:     xorg-x11-server
 Provides:       windowmanager
+# Since 4.22, gaps are merged
+Obsoletes:      i3-gaps < 4.19.1
 # Upstream First - Policy:
 # Never add any patches to this package without the upstream commit id
 # in the patch. Any patches added here without a very good reason to make

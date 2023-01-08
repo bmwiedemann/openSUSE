@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan  7 22:00:22 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.22:
+  * merge of the i3-gaps fork
+  * i3bar: bar { padding } config directive now implemented (supports bar { height } from i3-gaps)
+  * i3-dmenu-desktop: allow more than one --entry-type with the --show-duplicates flag
+  * You can now enable gaps using the gaps config directive and/or command
+  * colors now support an optional alpha value at the end (#rrggbbaa)
+  * the hide_edge_borders option now supports the smart_no_gaps keyword
+  * Support nonprimary keyword for outputs
+  * add "mode" field in binding event
+  * gaps: workspace gaps assignments are no longer order-dependent
+  * Fix compliance to _MOTIF_WM_HINTS spec when all decorations are set
+  * The floating_from and tiling_from criteria now also work in commands
+
+-------------------------------------------------------------------
 Sat Nov 26 10:35:25 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - spec: explicit BuildRequires versions based on meson.build

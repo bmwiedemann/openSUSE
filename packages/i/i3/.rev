@@ -421,4 +421,24 @@ Please decide if this lasts to accept the sr. (forwarded request 138719 from sei
     <comment></comment>
     <requestid>1042909</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1634217241beab8d12ad1cba0913e85c</srcmd5>
+    <version>4.22</version>
+    <time>1673209533</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.22:
+  * merge of the i3-gaps fork
+  * i3bar: bar { padding } config directive now implemented (supports bar { height } from i3-gaps)
+  * i3-dmenu-desktop: allow more than one --entry-type with the --show-duplicates flag
+  * You can now enable gaps using the gaps config directive and/or command
+  * colors now support an optional alpha value at the end (#rrggbbaa)
+  * the hide_edge_borders option now supports the smart_no_gaps keyword
+  * Support nonprimary keyword for outputs
+  * add &quot;mode&quot; field in binding event
+  * gaps: workspace gaps assignments are no longer order-dependent
+  * Fix compliance to _MOTIF_WM_HINTS spec when all decorations are set
+  * The floating_from and tiling_from criteria now also work in commands
+</comment>
+    <requestid>1056826</requestid>
+  </revision>
 </revisionlist>
