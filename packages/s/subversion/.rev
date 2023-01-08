@@ -1654,4 +1654,12 @@
     <comment></comment>
     <requestid>1036478</requestid>
   </revision>
+  <revision rev="190" vrev="4">
+    <srcmd5>2319e4d84c98a4d421ae19ec66bc013c</srcmd5>
+    <version>1.14.2</version>
+    <time>1673209504</time>
+    <user>dimstar_suse</user>
+    <comment>- add ruby32-fixes.patch (https://svn.apache.org/viewvc?view=revision&amp;revision=1904472)</comment>
+    <requestid>1056713</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009-2010 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -66,6 +66,7 @@ Patch11:        subversion.libtool-verbose.patch
 Patch20:        subversion-swig-perl-install_vendor.patch
 Patch23:        subversion-swig-perl-Wall.patch
 Patch30:        subversion-1.8.0-rpath.patch
+Patch31:        ruby32-fixes.patch
 Patch37:        subversion-no-build-date.patch
 Patch39:        subversion-fix-parallel-build-support-for-perl-bindings.patch
 Patch40:        subversion-perl-underlinking.patch
@@ -250,6 +251,7 @@ parameters and keywords for the svn command and other tools.
 %patch20 -p1
 %patch23 -p1
 %patch30 -p1
+%patch31 -p1
 %patch37 -p1
 %patch39
 %patch40 -p1

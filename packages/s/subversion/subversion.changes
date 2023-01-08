@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  6 21:04:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add ruby32-fixes.patch (https://svn.apache.org/viewvc?view=revision&revision=1904472) 
+
+-------------------------------------------------------------------
 Thu Nov 17 13:45:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not have the main package recommend the bash-completion
