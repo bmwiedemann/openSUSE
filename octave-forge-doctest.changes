@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan  4 13:52:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Expected error messages can be optionally prefixed with "error: ".
+  * Writing "??? " at the beginning of an error is now deprecated.
+  * Texinfo users can markup errors with `@error{}`.
+  * `doctest myclass` has been refactored with various bugs fixed.
+  * Preliminary support for `doctest classdef.method` on Octave.
+  * Test classdef methods using dotted `classdef.method` while still
+    using `@class/method` on old-style classes.
+  * Functions defined directly in the Octave interpreter can now be tested.
+  * Test suite fixes for Octave 6 and 7.
+  * Source code is encoded with UTF-8, indicated with `.oct-config` files.
+  * Don't doctest some classdef methods twice.
+
+-------------------------------------------------------------------
 Wed Nov 27 00:12:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.7.0:
