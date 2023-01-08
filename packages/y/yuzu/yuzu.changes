@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun Jan 08 00:08:24 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 01299:
+  * "Merge Tagged PR 9042"
+  * "Merge Tagged PR 9570"
+  * "Merge Tagged PR 9573"
+  * opengl: Sanitize antialiasing config
+  * video_core/vulkan: Fixed loading of Vulkan driver pipeline cache The header size of the Vulkan driver pipeline cache files was incorrectly in PipelineCache::LoadVulkanPipelineCache, for which the pipeline cache wasn't read correctly and got invalidated on each load.
+  * MacroHLE: eliminate 2 rushed macros.
+  * externals: update dynarmic, xbyak
+  * Run clang-format
+  * externals: Update sirit
+  * shader_recompiler: Fix shuffle partitioning for >64 invoc-per-subgroup GPUs
+  * Vulkan, OpenGL: Hook up geometry shader passthrough emulation
+  * shader_recompiler: Add support for lowering geometry passthrough
+  * Vulkan, OpenGL: Hook up storage buffer alignment code
+  * shader_recompiler: Align SSBO offsets to meet host requirements
+  * shader_recompiler: SPIRV: Only enable int64 feature when supported
+  * shader_recompiler: Add comparison operators to descriptor types
+  * Vulkan: Add a workaround for input_position on Adreno drivers
+  * video_core/vulkan: Vulkan driver pipelines now contain cache version So that old cache can get deleted when the cache version changes and does not grow infinitely
+  * video_core/vulkan: Driver pipeline cache will now be deleted with the shader cache
+  * config: Set the Vulkan driver pipeline cache option to be global
+  * video_core/vulkan: Added check if Vulkan pipeline path has been set
+  * config: Better wording for VK pipeline cache option and enable by default
+  * yuzu-cmd: Removed `use_vulkan_driver_pipeline_cache` from default_ini.h The addition of the use_vulkan_driver_pipeline_cache option into the default ini string literal caused the 16,384-byte limit of the MSVC compiler to be exceeded.
+  * video_core/vulkan: Added `VkPipelineCache` to store Vulkan pipelines As an optional feature which can be enabled in the advanced graphics configuration, all pipelines that get built at the initial shader loading are stored in a VkPipelineCache object and are dumped to the disk.
+  * BufferBase: Don't ignore GPU pages.
+  * Fermi2D: sync cache flushes
+  * MemoryManager: use fastmem directly.
+  * net: Silently translate ETIMEDOUT network error
+  * video_core: Cache GPU internal writes.
+  * Vulkan: Fix drivers that don't support dynamic_state_2 up
+  * common: add setting for renderer clock workaround
+  * vulkan: implement 'turbo mode' clock booster
+  * renderer_vulkan: implement fallback path for null descriptors
+  * yuzu-ui: Add setting for disabling macro HLE
+  * Video_core: Address feedback
+  * Texture Cache: Implement async texture downloads.
+  * Vulkan: Update blacklisting to latest driver versions.
+  * ShaderCompiler: Inline driver specific constants.
+  * Vulkan: rework stencil tracking.
+  * TAS: Immediately switch stick to TAS on input
+  * cmake: move find-modules to root cmake dir
+  * service: nifm: Initialize request state
+  * service: nifm: Match documentation names
+  * cmake: allow options shadowing with normal variables
+  * cmake: improve find_package failure messages
+  * vulkan_common: blacklist radv from extended_dynamic_state2 on drivers before 22.3.1
+  * video_core: fix build
+  * MacroHLE: Final cleanup and fixes.
+  * Rasterizer: Setup skeleton for Host Conditional rendering
+  * RasterizerMemory: Add filtering for flushing/invalidation operations.
+  * Vulkan: Allow stagging buffer deferrals.
+  * MacroHLE: Add OpenGL Support
+  * Vulkan: Add other additional pipeline specs
+  * Vulkan: Implement Dynamic State 3
+  * Vulkan Implement Dynamic State 2 LogicOp and PatchVertices
+  * Vulkan: Implement Dynamic States 2
+  * DMAPusher: Improve collection of non executing methods
+  * Revert Buffer cache changes and setup additional macros.
+  * MacroHLE: Reduce massive calculations on sizing estimation.
+  * MacroHLE: Add HLE replacement for base vertex and base instance.
+  * MacroHLE: Add Index Buffer size estimation.
+  * MacroHLE: Refactor MacroHLE system.
+  * MacroHLE: Implement DrawIndexedIndirect & DrawArraysIndirect.
+  * MacroHLE: Add MultidrawIndirect HLE Macro.
+  * TAS: Record sanitized instead of raw stick inputs
+  * vfs: Replace cstr concat with char concat
+  * vulkan_common: unify VK_EXT_debug_utils and selection of validation layer
+  * host_memory: Use transparent huge pages where available
+  * host_memory: Allocate virtual_base with MAP_NORESERVE
+  * Update translations (2023-01-01)
+  * settings: comment language blocklist columns
+  * settings: added regon/language warning bounds check
+  * Revert "k_page_group: synchronize"
+  * settings: warn on invalid regon/language combinations
+
+-------------------------------------------------------------------
 Sun Jan 01 00:08:41 UTC 2023 - pousaduarte@gmail.com
 
 - Update to version 01290:
