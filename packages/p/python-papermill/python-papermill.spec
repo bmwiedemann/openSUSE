@@ -1,7 +1,7 @@
 #
 # spec file for package python-papermill
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-papermill
-Version:        2.3.4
+Version:        2.4.0
 Release:        0
 Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/nteract/papermill
 Source:         https://files.pythonhosted.org/packages/source/p/papermill/papermill-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM papermill-fix-test.patch -- used missing attribute
-Patch1:         https://github.com/nteract/papermill/commit/35a1b6a8a47a4e0dee2612294d467de2dc4d60c6.patch#/papermill-fix-test.patch
-# https://github.com/nteract/papermill/pull/668
-Patch2:         python-papermill-no-mock.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -90,8 +87,11 @@ and analyzing Jupyter Notebooks.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# TestBrokenNotebook2: different output type expected
-%pytest -k "not TestBrokenNotebook2"
+# different output type expected
+donttest="TestBrokenNotebook2"
+# no pyarrow
+donttest="$donttest or test_hdfs_listdir"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative papermill

@@ -131,4 +131,29 @@
     <comment></comment>
     <requestid>983311</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e85a8e96bf96abe1db3017ea399b77a</srcmd5>
+    <version>2.4.0</version>
+    <time>1673209554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0
+  * Add tracking cell executions with cell descriptions PR #650
+  * Fixed Azure Blob URI matching for prefixes PR #654
+  * Updates HDFS handler to use PyArrow.fs.HadoopFileSystm PR #658
+  * Drop support for Python 3.6 PR #666
+  * CI Build fixes PR #664
+  * Updated mock references in tests PR #668
+  * Added option for not writing any output ipynb file PR #669
+  * Allow custom kernel name and language in engine registration PR
+    #676
+  * Allow for direct input of NotebookNode objects PR #670
+  * Removed deepcopy of input nodes PR #673
+  * Fixed failing tests for windows PR #672
+  * Implemented bash translator PR #674
+- Drop patches
+  * papermill-fix-test.patch
+  * python-papermill-no-mock.patch
+</comment>
+    <requestid>1056891</requestid>
+  </revision>
 </revisionlist>
