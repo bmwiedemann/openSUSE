@@ -5905,6 +5905,7 @@ unsorted:
   - gitolite 
   - gitslave 
   - gitslave-doc 
+  - gitui 
   - givaro-devel 
   - givaro-doc 
   - gjiten 
@@ -6590,10 +6591,15 @@ unsorted:
   - grub2-branding-upstream 
   - grub2-i386-efi: [i586] 
   - grub2-i386-efi-debug: [i586] 
+  - grub2-i386-efi-extras: [i586] 
   - grub2-i386-pc-debug 
+  - grub2-i386-pc-extras 
   - grub2-i386-xen: [i586] 
+  - grub2-i386-xen-extras: [i586] 
   - grub2-theme-breeze 
   - grub2-x86_64-efi-debug: [x86_64] 
+  - grub2-x86_64-efi-extras: [x86_64] 
+  - grub2-x86_64-xen-extras: [x86_64] 
   - grubby 
   - grype 
   - gscan2pdf 
@@ -10392,6 +10398,7 @@ unsorted:
   - libcapnp-0_10_3 
   - libcapnp-devel 
   - libcapstone-devel 
+  - libcapstone-devel-static 
   - libcares2-32bit: [x86_64] 
   - libcaribou0 
   - libcasacore7 
@@ -15233,7 +15240,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of common_locks:libxcb-present0 
+  - libxcb-devel: [i586] # devel package of common_locks:libxcb-dri2-0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -44252,6 +44259,7 @@ unsorted:
   - wmpomme 
   - wmutils 
   - wob 
+  - woff2 
   - woff2-devel 
   - wofi 
   - wofi-devel 
