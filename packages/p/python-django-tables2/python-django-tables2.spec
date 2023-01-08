@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tables2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-tables2
-Version:        2.4.1
+Version:        2.5.1
 Release:        0
 Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause
 URL:            https://github.com/jieter/django-tables2/
 Source:         https://github.com/jieter/django-tables2/archive/v%{version}.tar.gz#/django-tables2-%{version}.tar.gz
-# https://github.com/jieter/django-tables2/issues/843
-Patch0:         python-django-tables2-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 Suggests:       python-tablib
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-filter >= 2.3.0}
 BuildRequires:  %{python_module fudge}
 BuildRequires:  %{python_module psycopg2}
@@ -51,7 +48,6 @@ does for HTML forms.
 
 %prep
 %setup -q -n django-tables2-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -61,7 +57,6 @@ does for HTML forms.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# fudge causes two test failures on Python 3.6 from Leap
 %python_exec ./manage.py test
 
 %files %{python_files}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jan  8 06:02:30 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove python-django-tables2-no-mock.patch merged upstream
+- Update to v2.5.1
+  * `TableMixinBase`: implement `get_paginate_by`
+- from v2.5.0
+  * Dropped support for python 3.6, added support for python 3.11
+  * Add django_tables2/bootstrap4-responsive.html
+  * Pass record/value to `LinkColumn`'s attrs callables too
+  * Add template `bootstrap5.html` to support bootstrap 5
+
+-------------------------------------------------------------------
 Thu May 12 07:27:41 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
