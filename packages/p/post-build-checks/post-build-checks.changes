@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 06 20:25:08 UTC 2023 - dmueller@suse.com
+
+- Update to version 84.87+git20230106.3a359c5:
+  * Only delete subarch packages if matching main arch exists
+
+-------------------------------------------------------------------
+Wed Dec 21 12:42:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Add hook to delete x86_64 subarches
+- fix version in git
+
+-------------------------------------------------------------------
 Fri Nov 25 12:59:11 UTC 2022 - ro@suse.de
 
 - Update to version 84.87+git20221125.a8b2d0e:

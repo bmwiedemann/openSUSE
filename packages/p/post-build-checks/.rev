@@ -931,4 +931,16 @@ Marcus
   * Add mount, umount, swapon and swapoff to ESSENTIAL_PKG_TO_KEEP</comment>
     <requestid>1038207</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>2ebd5e3647cb2ca9f4a191dcac8f278b</srcmd5>
+    <version>84.87+git20230106.3a359c5</version>
+    <time>1673209519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20230106.3a359c5:
+  * Only delete subarch packages if matching main arch exists
+
+- Add hook to delete x86_64 subarches
+- fix version in git</comment>
+    <requestid>1056691</requestid>
+  </revision>
 </revisionlist>
