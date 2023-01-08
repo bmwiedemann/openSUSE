@@ -40,7 +40,7 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only

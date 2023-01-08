@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  3 21:34:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * LoongArch64 architecture support
+  * Support kernels up to v6.0 (x86_64)
+
+-------------------------------------------------------------------
 Wed Apr 20 08:55:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.7.1:
