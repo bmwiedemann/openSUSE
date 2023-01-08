@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>880626</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4402e9565c39b0e10f43ad9c3ea67a52</srcmd5>
+    <version>0.8.0</version>
+    <time>1673209536</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Python 3.9 support
+  * support PEO 591
+  * Require newer typing extension
+  * Python 3.10 support
+  * Add support for UnionType in get_args 
+- drop typing_inspect-pr69-py39-GenericAlias.patch (upstream)</comment>
+    <requestid>1056831</requestid>
+  </revision>
 </revisionlist>
