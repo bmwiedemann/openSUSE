@@ -1,7 +1,7 @@
 #
-# spec file for package python-pyfuse3
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %define skip_python2 1
 %define pname   pyfuse3
 Name:           python-%{pname}
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later
 URL:            https://github.com/libfuse/pyfuse3
 Source:         https://files.pythonhosted.org/packages/source/p/%{pname}/%{pname}-%{version}.tar.gz
-Patch0:         0001-timestamp-rounding-tests-avoid-y2038-issue.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module pytest >= 3.4.0}
