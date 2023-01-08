@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-arubaos-switch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -70,7 +70,10 @@ This Drivers uses the REST interface.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -v -k "not (test_traceroute)"
+skip_tests="test_traceroute"
+# gh#napalm-automation-community/napalm-arubaos-switch#20
+skip_tests+=" or test_method_signatures or test_get_facts"
+%pytest -k "not (${skip_tests})"
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan  5 14:51:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests
+  (gh#napalm-automation-community/napalm-arubaos-switch#20)
+
+-------------------------------------------------------------------
 Mon Aug 22 17:20:03 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add patch float-speed.patch to fix build

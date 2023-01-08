@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>999332</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3bad5c335853ec6e1a671b6c6cdc7d2f</srcmd5>
+    <version>0.2.0</version>
+    <time>1673209547</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests
+  (gh#napalm-automation-community/napalm-arubaos-switch#20)
+</comment>
+    <requestid>1056869</requestid>
+  </revision>
 </revisionlist>
