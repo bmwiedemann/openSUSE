@@ -1,7 +1,7 @@
 #
 # spec file for package librcc
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define major   0
-
 Name:           librcc
-Version:        0.2.12
+Version:        0.2.13
 Release:        0
 Summary:        Russian Character Set Conversion Library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://rusxmms.sourceforge.net
-Source:         http://darksoft.org/files/rusxmms/%name-%version.tar.bz2
+URL:            https://rusxmms.sourceforge.net
+Source:         https://github.com/RusXMMS/librcc/archive/refs/tags/librcc-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  aspell-devel
+BuildRequires:  automake
 BuildRequires:  db-devel
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enca)
 BuildRequires:  pkgconfig(libguess)
 BuildRequires:  pkgconfig(librcd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Provides the possibility to automatically convert considered
@@ -46,7 +46,7 @@ just the Russian one. The library is part of the rusxmms patch.
 Summary:        Russian Character Set Conversion Library
 Group:          System/Libraries
 Requires:       rcc-runtime
-Supplements:    packageand(unzip:aspell)
+Supplements:    (unzip and aspell)
 
 %description -n %{name}%{major}
 Provides the possibility to automatically convert considered
@@ -70,13 +70,14 @@ Group:          System/Libraries
 Runtime environment for the LibRCC package.
 
 %prep
-%setup -q
+%setup -q -n librcc-librcc-%{version}
 
 %build
+./autogen.sh
 %configure \
     --disable-static \
     --enable-force-system-iconv
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -85,25 +86,23 @@ rm -f %{buildroot}%{_libdir}/{*.la,rcc/engines/*.la}
 rm -rf %{_builddir}/%{name}-%{version}/examples/{.deps,Makefile,*~}
 
 %post -n %{name}%{major} -p /sbin/ldconfig
-
 %postun -n %{name}%{major} -p /sbin/ldconfig
 
 %files -n %{name}%{major}
-%defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_libdir}/librcc.so.*
 %{_libdir}/librccui.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING NEWS README docs examples
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README docs examples
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n rcc-runtime
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %{_libdir}/rcc/
 %config(noreplace) %{_sysconfdir}/rcc.xml
 
