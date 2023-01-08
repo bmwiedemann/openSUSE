@@ -15,4 +15,13 @@
     <comment>- Add missing BR toml (for tests)</comment>
     <requestid>1030326</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f8466b6f54088af170503942a090fa8b</srcmd5>
+    <version>0.2.0</version>
+    <time>1673209545</time>
+    <user>dimstar_suse</user>
+    <comment>- SPEC clean up
+</comment>
+    <requestid>1056865</requestid>
+  </revision>
 </revisionlist>

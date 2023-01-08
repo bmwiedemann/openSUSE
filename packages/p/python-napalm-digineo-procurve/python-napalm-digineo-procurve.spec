@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-digineo-procurve
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-napalm-digineo-procurve
 Version:        0.2.0
 Release:        0
-License:        Apache-2.0
 Summary:        NAPALM - HP ProCurve/Aruba network driver
-URL:            https://github.com/digineo/napalm-digineo-procurve
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/digineo/napalm-digineo-procurve
 Source:         https://files.pythonhosted.org/packages/source/n/napalm-digineo-procurve/napalm-digineo-procurve-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-napalm >= 2.4.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module napalm >= 2.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-napalm >= 2.4.0
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -58,6 +57,7 @@ Napalm driver for HP ProCurve/Aruba switches.
 %files %{python_files}
 %license LICENSE.md
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/napalm_digineo_procurve
+%{python_sitelib}/napalm_digineo_procurve-%{version}*-info
 
 %changelog

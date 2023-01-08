@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan  6 15:21:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- SPEC clean up
+
+-------------------------------------------------------------------
 Fri Oct 21 08:35:43 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR toml (for tests)
