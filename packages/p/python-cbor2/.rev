@@ -82,4 +82,15 @@
   * Made CBORTag handling consistent between python and C-module</comment>
     <requestid>946692</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c9148b500bea68d5623dac0476994f4</srcmd5>
+    <version>5.4.6</version>
+    <time>1673209539</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.6:
+  * Fix tag decoding error
+  * fix potential memory leak
+  * Bump requirement to 3.7+</comment>
+    <requestid>1056835</requestid>
+  </revision>
 </revisionlist>

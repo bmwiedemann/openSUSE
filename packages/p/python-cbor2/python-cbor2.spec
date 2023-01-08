@@ -1,7 +1,7 @@
 #
 # spec file for package python-cbor2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cbor2
-Version:        5.4.2
+Version:        5.4.6
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT
 URL:            https://github.com/agronholm/cbor2
 Source:         https://files.pythonhosted.org/packages/source/c/cbor2/cbor2-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 40.7.0}
-BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools_scm >= 6.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -38,15 +40,15 @@ Pure Python CBOR (de)serializer with extensive tag support
 %prep
 %setup -q -n cbor2-%{version}
 # Remove test dependency on pytest-cov
-sed -i 's/--cov//' setup.cfg
+sed -i 's/--cov//' pyproject.toml
 
 %build
 export LANG=en_US.UTF8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  7 23:33:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.6:
+  * Fix tag decoding error
+  * fix potential memory leak
+  * Bump requirement to 3.7+ 
+
+-------------------------------------------------------------------
 Sat Jan 15 17:50:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.2:
