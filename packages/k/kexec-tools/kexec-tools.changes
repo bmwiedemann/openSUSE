@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 12:37:09 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Oct  4 19:05:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add kexec-tools-riscv64.patch
