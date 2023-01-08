@@ -246,4 +246,19 @@
     <comment></comment>
     <requestid>1009183</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>602d9db750d8c556dc9e1d09eee412b7</srcmd5>
+    <version>0.7.2</version>
+    <time>1673209551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2
+  * Allow space after In #264 (@davidbrochart)
+  * Fix jupyter_core pinning #263 (@davidbrochart)
+  * Update README, add Python 3.11 #260 (@davidbrochart)
+- Release 0.7.1
+  * Remove nest-asyncio #259 (@davidbrochart)
+- Use PEP517 hatchling build
+</comment>
+    <requestid>1056887</requestid>
+  </revision>
 </revisionlist>

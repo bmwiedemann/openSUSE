@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,21 +29,23 @@
 %else
 %bcond_with libalternatives
 %endif
+
 Name:           python-nbclient%{psuffix}
-Version:        0.7.0
+Version:        0.7.2
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbclient
 Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclient-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module hatchling >= 1.10.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jupyter-client >= 6.1.5
-Requires:       python-nbformat >= 5.0
-Requires:       python-nest-asyncio
-Requires:       python-traitlets >= 5.2.2
+Requires:       python-jupyter-client >= 6.1.12
+Requires:       python-nbformat >= 5.1
+Requires:       python-traitlets >= 5.3
+Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5) or python-jupyter-core >= 5.1)
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -57,7 +59,8 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbclient = %{version}}
-BuildRequires:  %{python_module pytest >= 4.1}
+BuildRequires:  %{python_module nbconvert >= 7}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module xmltodict}
@@ -72,13 +75,14 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 
 %prep
 %setup -q -n nbclient-%{version}
-
-%build
-%python_build
+sed -i 's/--color=yes//' pyproject.toml
 
 %if ! %{with test}
+%build
+%pyproject_wheel
+
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter-execute
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -91,7 +95,7 @@ donttest="parallel_notebooks"
 # https://github.com/jupyter/nbclient/issues/189
 donttest+=" or (test_run_all_notebooks and (opts6 or opts8 or opts9))"
 # extra -v for more verbose error diffs
-%pytest -v -k "not ($donttest)" --asyncio-mode=auto
+%pytest -v -k "not ($donttest)"
 %endif
 
 %if ! %{with test}
@@ -105,11 +109,11 @@ donttest+=" or (test_run_all_notebooks and (opts6 or opts8 or opts9))"
 %python_uninstall_alternative jupyter-execute
 
 %files %{python_files}
-%doc CHANGELOG.md README.md
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/jupyter-execute
 %{python_sitelib}/nbclient
-%{python_sitelib}/nbclient-%{version}*-info/
+%{python_sitelib}/nbclient-%{version}.dist-info/
 %endif
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  8 09:32:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.2
+  * Allow space after In #264 (@davidbrochart)
+  * Fix jupyter_core pinning #263 (@davidbrochart)
+  * Update README, add Python 3.11 #260 (@davidbrochart)
+- Release 0.7.1
+  * Remove nest-asyncio #259 (@davidbrochart)
+- Use PEP517 hatchling build
+
+-------------------------------------------------------------------
 Sun Oct  9 17:10:22 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.7.0:
