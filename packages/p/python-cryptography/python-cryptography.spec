@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-cryptography%{psuffix}
-Version:        38.0.4
+Version:        39.0.0
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -109,7 +109,8 @@ find . -name .keep -print -delete
 
 %if %{with test}
 %check
-%pytest_arch -n auto
+# won't work for cryptography
+%pytest_arch -n auto --ignore-glob=vendor/*
 %endif
 
 %if !%{with test}

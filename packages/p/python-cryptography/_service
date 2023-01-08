@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="disabled"/>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">cryptography-38.0.3/src/rust</param>
+    <param name="srcdir">cryptography-39.0.0/src/rust</param>
     <param name="compression">zst</param>
   </service>
   <service name="cargo_audit" mode="disabled">

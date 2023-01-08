@@ -760,4 +760,41 @@
     <comment></comment>
     <requestid>1041379</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>72f23ea1c215f41f4b28b7a3dfcc13e3</srcmd5>
+    <version>39.0.0</version>
+    <time>1673209508</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 39.0.0:
+  * **BACKWARDS INCOMPATIBLE:** Support for OpenSSL 1.1.0 has been removed.
+  Users on older version of OpenSSL will need to upgrade.
+  * **BACKWARDS INCOMPATIBLE:** Dropped support for LibreSSL &lt; 3.5. The new
+  minimum LibreSSL version is 3.5.0. Going forward our policy is to support
+  versions of LibreSSL that are available in versions of OpenBSD that are
+  still receiving security support.
+  * **BACKWARDS INCOMPATIBLE:** Removed the ``encode_point`` and
+  ``from_encoded_point`` methods on
+  :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers`,
+  which had been deprecated for several years.
+  :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.public_bytes`
+  and
+  :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.from_encoded_point`
+  should be used instead.
+  * **BACKWARDS INCOMPATIBLE:** Support for using MD5 or SHA1 in
+  :class:`~cryptography.x509.CertificateBuilder`, other X.509 builders, and
+  PKCS7 has been removed.
+  * **ANNOUNCEMENT:** The next version of ``cryptography`` (40.0) will
+    change
+  the way we link OpenSSL. This will only impact users who build
+  ``cryptography`` from source (i.e., not from a ``wheel``), and specify their
+  own version of OpenSSL. For those users, the ``CFLAGS``, ``LDFLAGS``,
+  ``INCLUDE``, ``LIB``, and ``CRYPTOGRAPHY_SUPPRESS_LINK_FLAGS`` environment
+  variables will no longer be respected. Instead, users will need to
+  configure their builds `as documented here`_.
+  * Added support for disabling the legacy provider in OpenSSL 3.0.x
+  * Added support for disabling RSA key validation checks when loading RSA
+  keys via
+  ~cryptography.hazmat.primitives.serialization.load_pem_private_key</comment>
+    <requestid>1056761</requestid>
+  </revision>
 </revisionlist>

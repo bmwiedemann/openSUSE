@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:38:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 39.0.0:
+  * **BACKWARDS INCOMPATIBLE:** Support for OpenSSL 1.1.0 has been removed.
+  Users on older version of OpenSSL will need to upgrade.
+  * **BACKWARDS INCOMPATIBLE:** Dropped support for LibreSSL < 3.5. The new
+  minimum LibreSSL version is 3.5.0. Going forward our policy is to support
+  versions of LibreSSL that are available in versions of OpenBSD that are
+  still receiving security support.
+  * **BACKWARDS INCOMPATIBLE:** Removed the ``encode_point`` and
+  ``from_encoded_point`` methods on
+  :class:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers`,
+  which had been deprecated for several years.
+  :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.public_bytes`
+  and
+  :meth:`~cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey.from_encoded_point`
+  should be used instead.
+  * **BACKWARDS INCOMPATIBLE:** Support for using MD5 or SHA1 in
+  :class:`~cryptography.x509.CertificateBuilder`, other X.509 builders, and
+  PKCS7 has been removed.
+  * **ANNOUNCEMENT:** The next version of ``cryptography`` (40.0) will
+    change
+  the way we link OpenSSL. This will only impact users who build
+  ``cryptography`` from source (i.e., not from a ``wheel``), and specify their
+  own version of OpenSSL. For those users, the ``CFLAGS``, ``LDFLAGS``,
+  ``INCLUDE``, ``LIB``, and ``CRYPTOGRAPHY_SUPPRESS_LINK_FLAGS`` environment
+  variables will no longer be respected. Instead, users will need to
+  configure their builds `as documented here`_.
+  * Added support for disabling the legacy provider in OpenSSL 3.0.x
+  * Added support for disabling RSA key validation checks when loading RSA
+  keys via
+  ~cryptography.hazmat.primitives.serialization.load_pem_private_key
+  ~cryptography.hazmat.primitives.serialization.load_der_private_key
+  ~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key
+  * Added support for creating OCSP requests with precomputed hashes using
+  :meth:`~cryptography.x509.ocsp.OCSPRequestBuilder.add_certificate_by_hash`.
+  * Added support for loading multiple PEM-encoded X.509 certificates from
+  a single input via :func:`~cryptography.x509.load_pem_x509_certificates`.
+
+-------------------------------------------------------------------
 Wed Dec  7 16:43:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 38.0.4
