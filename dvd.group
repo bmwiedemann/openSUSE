@@ -1314,7 +1314,7 @@
     <package name="less" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="lftp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="lhasa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="lib2geom1_1_0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
+    <package name="lib2geom1_2_0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libAnalitza8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libAppStreamQt2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libBasicUsageEnvironment1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
@@ -1744,7 +1744,7 @@
     <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcelt0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libcfg6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libcfitsio10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-gtk25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2684,7 +2684,7 @@
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libtepl-6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtepl-6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libthai-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
