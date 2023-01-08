@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan  7 14:14:56 UTC 2023 - Matthias Bach <marix@marix.org>
+
+- Add python-311-compat.patch to achieve compatibility with Python
+  3.11.
+
+-------------------------------------------------------------------
 Mon Jul 18 19:00:39 UTC 2022 - Matthias Bach <marix@marix.org> - 2.7.0
 
 - Add emoji-2.0-compatibility.patch to allow upgrade of

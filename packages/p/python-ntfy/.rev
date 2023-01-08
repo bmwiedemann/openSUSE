@@ -87,4 +87,13 @@
 - Add drop-misleading-shebangs.patch.</comment>
     <requestid>990081</requestid>
   </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>d5126e35908db87dafd78f8435484fbb</srcmd5>
+    <version>2.7.0</version>
+    <time>1673209521</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311-compat.patch to achieve compatibility with Python
+  3.11.</comment>
+    <requestid>1056787</requestid>
+  </revision>
 </revisionlist>
