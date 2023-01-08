@@ -309,4 +309,12 @@
 - Drop praat-gcc11.patch: incorporated upstream.</comment>
     <requestid>1039635</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9db85da0311cb45d48205407ac2133af</srcmd5>
+    <version>6.3.03</version>
+    <time>1673209524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056795</requestid>
+  </revision>
 </revisionlist>

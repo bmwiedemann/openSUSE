@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  7 14:36:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v6.3.03:
+  * Sound files: read Kay® Nasometer™ files (as separate channels).
+  * Script window: indent and exdent.
+  * Scripting: conserve editor environment in runScript.
+
+-------------------------------------------------------------------
 Wed Nov 30 10:44:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.3.01:
