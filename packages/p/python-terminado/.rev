@@ -170,4 +170,14 @@
     <comment></comment>
     <requestid>1037965</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0486d03b988410c9a38c496947b74c08</srcmd5>
+    <version>0.17.1</version>
+    <time>1673209553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.1
+  * Don't split manually on linebreaks #209 (@incase)
+</comment>
+    <requestid>1056890</requestid>
+  </revision>
 </revisionlist>
