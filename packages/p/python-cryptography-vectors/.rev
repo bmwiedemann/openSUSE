@@ -179,4 +179,13 @@
     <comment></comment>
     <requestid>1041380</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>154a2030099a3b300a73cede377ffe95</srcmd5>
+    <version>39.0.0</version>
+    <time>1673209510</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 39.0.0
+  * Update test vectors to match python-cryptography 39.0.0</comment>
+    <requestid>1056762</requestid>
+  </revision>
 </revisionlist>
