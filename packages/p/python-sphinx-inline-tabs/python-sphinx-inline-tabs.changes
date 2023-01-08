@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  7 23:02:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.1.2b11:
+  * Move rich text label to a separate section
+  * Drop reference to furo's development workflow
+  * don't bother avoiding checking clicked-but-not-triggered-state
+  * Add a plan text code block example
+  * Improve design enabling more customization 
+
+-------------------------------------------------------------------
 Fri Aug 27 16:03:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of sphinx-inline-tabs version 2021.8.17b10 for

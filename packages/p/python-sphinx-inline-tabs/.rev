@@ -7,4 +7,17 @@
     <comment>New dependency for kitty</comment>
     <requestid>917539</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c69325e44201aaee962aff58b4f95b6d</srcmd5>
+    <version>2022.1.2b11</version>
+    <time>1673209534</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.1.2b11:
+  * Move rich text label to a separate section
+  * Drop reference to furo's development workflow
+  * don't bother avoiding checking clicked-but-not-triggered-state
+  * Add a plan text code block example
+  * Improve design enabling more customization</comment>
+    <requestid>1056829</requestid>
+  </revision>
 </revisionlist>
