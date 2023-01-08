@@ -60,4 +60,12 @@
   * Dropped Python 3.6 support</comment>
     <requestid>990233</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ef8b67ef9517c238a9bf78cbe32b4eed</srcmd5>
+    <version>0.2.0</version>
+    <time>1673209545</time>
+    <user>dimstar_suse</user>
+    <comment>- SPEC clean up</comment>
+    <requestid>1056864</requestid>
+  </revision>
 </revisionlist>

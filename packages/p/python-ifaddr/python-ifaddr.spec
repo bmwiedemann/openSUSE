@@ -1,7 +1,7 @@
 #
 # spec file for package python-ifaddr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ifaddr
 Version:        0.2.0
@@ -65,6 +64,7 @@ dos2unix README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/ifaddr
+%{python_sitelib}/ifaddr-%{version}*-info
 
 %changelog
