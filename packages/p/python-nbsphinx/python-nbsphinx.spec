@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbsphinx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.8.9
+Version:        0.8.11
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
@@ -31,9 +30,11 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{python_module traitlets >= 5}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
@@ -65,10 +66,10 @@ build process.
 %setup -q -n nbsphinx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -86,6 +87,6 @@ $python -m nbsphinx
 %license LICENSE
 %{python_sitelib}/nbsphinx.py*
 %pycache_only %{python_sitelib}/__pycache__/nbsphinx.*.py*
-%{python_sitelib}/nbsphinx-%{version}*-info
+%{python_sitelib}/nbsphinx-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  8 09:45:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.11
+  * LaTeX: apply code cell border style to all code blocks
+- Release 0.8.10
+  * Fix handling of source_suffix
+  * A few LaTeX fixes
+
+-------------------------------------------------------------------
 Fri Jun 17 18:17:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Version 0.8.9 

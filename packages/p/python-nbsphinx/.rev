@@ -137,4 +137,17 @@ too small
 </comment>
     <requestid>983483</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b128bcaef6a9af973d45dbc54e623567</srcmd5>
+    <version>0.8.11</version>
+    <time>1673209552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.11
+  * LaTeX: apply code cell border style to all code blocks
+- Release 0.8.10
+  * Fix handling of source_suffix
+  * A few LaTeX fixes
+</comment>
+    <requestid>1056888</requestid>
+  </revision>
 </revisionlist>
