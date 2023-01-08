@@ -1,5 +1,17 @@
 -------------------------------------------------------------------
-Thu Dec 29 11:489:34 UTC 2022 - maiku.fabian@gmail.com
+Sun Jan 08 13:00:01 UTC 2023 - maiku.fabian@gmail.com
+
+- Update tarball to version with corrected changelog upstream
+
+-------------------------------------------------------------------
+Fri Dec 30 12:37:58 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.19.13
+- Catch exception when user database is locked during shutdown
+  (Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=215144)
+
+-------------------------------------------------------------------
+Thu Dec 29 11:48:34 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.19.12
 - Try not to fail if the database contains invalid UTF-8 or is otherwise malformed
