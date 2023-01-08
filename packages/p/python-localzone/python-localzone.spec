@@ -1,7 +1,7 @@
 #
 # spec file for package python-localzone
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-localzone
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        A library for managing DNS zones
 License:        BSD-3-Clause
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ags-slc/localzone
 # The PyPI sdist does not provide the tests
 Source:         https://github.com/ags-slc/localzone/archive/v%{version}.tar.gz#/localzone-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM localzone-dnspython-2.1.patch gh#ags-slc/localzone#3 -- support dnspython 2.1
-Patch0:         https://github.com/ags-slc/localzone/pull/3.patch#/localzone-dnspython-2.1.patch
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
