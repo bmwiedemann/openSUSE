@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>884603</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>22bbf40a708429dc219a19a6a7540b67</srcmd5>
+    <version>0.2.1</version>
+    <time>1673209532</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-fix-nptypes.patch gh#jupyter-widgets/traittypes#32
+- Clean specfile, no files catachall
+- Use PEP517 build (forwarded request 1056814 from bnavigator)</comment>
+    <requestid>1056815</requestid>
+  </revision>
 </revisionlist>

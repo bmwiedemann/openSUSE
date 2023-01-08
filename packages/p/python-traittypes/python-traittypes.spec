@@ -1,7 +1,7 @@
 #
 # spec file for package python-traittypes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-traittypes
 Version:        0.2.1
 Release:        0
@@ -27,10 +25,14 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/traittypes
 Source:         https://files.pythonhosted.org/packages/source/t/traittypes/traittypes-%{version}.tar.gz
-# https://github.com/jupyter-widgets/traittypes/pull/43
+# PATCH-FEATURE-UPSTREAM gh#jupyter-widgets/traittypes#43
 Patch0:         python-traittypes-remove-nose.patch
+# PATCH-FIX-UPSTREAM h#jupyter-widgets/traittypes#32
+Patch1:         python-fix-nptypes.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-traitlets >= 4.2.2
@@ -48,23 +50,22 @@ BuildRequires:  %{python_module xarray}
 Custom trait types for scientific computing.
 
 %prep
-%setup -q -n traittypes-%{version}
-%patch0 -p1
+%autosetup -p1 -n traittypes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_bad_values: gh#jupyter-widgets/traittypes#31
-%pytest -k 'not test_bad_values' traittypes
+%pytest traittypes
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/traittypes
+%{python_sitelib}/traittypes-%{version}.dist-info
 
 %changelog

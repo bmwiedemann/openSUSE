@@ -1,0 +1,25 @@
+Index: traittypes-0.2.1/traittypes/tests/test_traittypes.py
+===================================================================
+--- traittypes-0.2.1.orig/traittypes/tests/test_traittypes.py
++++ traittypes-0.2.1/traittypes/tests/test_traittypes.py
+@@ -17,17 +17,17 @@ import xarray as xr
+ 
+ 
+ class IntArrayTrait(HasTraits):
+-    value = Array().tag(dtype=np.int)
++    value = Array(dtype=int)
+ 
+ 
+ class TestIntArray(TraitTestBase):
+     """
+-    Test dtype validation with a ``dtype=np.int``
++    Test dtype validation with a ``dtype=int``
+     """
+     obj = IntArrayTrait()
+ 
+     _good_values = [1, [1, 2, 3], [[1, 2, 3], [4, 5, 6]], np.array([1])]
+-    _bad_values = [[1, [0, 0]]]
++    _bad_values = [[1, [0, 0]], ['str'], 'str']
+ 
+     def assertEqual(self, v1, v2):
+         return np.testing.assert_array_equal(v1, v2)
