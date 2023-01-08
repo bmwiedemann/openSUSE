@@ -1,7 +1,7 @@
 #
 # spec file for package python-octave-kernel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-octave-kernel
-Version:        0.34.2
+Version:        0.35.1
 Release:        0
 Summary:        A Jupyter kernel for Octave
 License:        BSD-3-Clause
@@ -25,12 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Calysto/octave_kernel
 Source:         https://files.pythonhosted.org/packages/source/o/octave_kernel/octave_kernel-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-client >= 4.3.0}
 BuildRequires:  %{python_module jupyter_kernel_test}
 BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module metakernel >= 0.24.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  octave
@@ -68,10 +69,10 @@ This package provides the jupyter notebook extension.
 %setup -q -n octave_kernel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %fdupes %{buildroot}%{_jupyter_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

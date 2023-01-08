@@ -69,4 +69,15 @@
   * Fix error: '_make_figures' undefined near line 1, column 1 #212</comment>
     <requestid>992643</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cd1ef56dd83201a5defceb71d00bcca0</srcmd5>
+    <version>0.35.1</version>
+    <time>1673209553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.35.1
+  * Include test and example notebook in sdist #228 (@blink1073)
+- Move to PEP517 hatchling build
+</comment>
+    <requestid>1056889</requestid>
+  </revision>
 </revisionlist>

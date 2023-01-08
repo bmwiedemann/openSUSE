@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  8 09:51:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.35.1
+  * Include test and example notebook in sdist #228 (@blink1073)
+- Move to PEP517 hatchling build
+
+-------------------------------------------------------------------
 Wed Aug  3 21:13:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.34.2
