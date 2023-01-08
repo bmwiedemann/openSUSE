@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec 29 22:56:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8:
+  * Made exit message when child signal is caught only show up
+  when in verbose mode.
+  * Adjusted the way the VERSION value is assigned in the Makefile.
+  CFLAGS was being overwritten by Debian's build process.
+
+-------------------------------------------------------------------
 Mon Dec 20 22:44:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7:
