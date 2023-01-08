@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  8 15:55:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13.1
+  * Added support for `auto` as a deduced type in C23.
+  * C23 (anti-)trigraphs
+  * friend scoped user-defined conversion operators are now
+    parsed correctly.
+
+-------------------------------------------------------------------
 Tue Nov  1 13:11:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 13
