@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  8 10:20:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.5 with jupyter-js-widgets 8.0.5
+  * no release notes
+  * js package version bumps
+- PEP517 jupyter-packaging build
+
+-------------------------------------------------------------------
 Thu Sep  8 14:58:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.0.3:

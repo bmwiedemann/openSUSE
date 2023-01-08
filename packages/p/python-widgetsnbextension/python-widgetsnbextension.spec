@@ -1,7 +1,7 @@
 #
 # spec file for package python-widgetsnbextension
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define jupver 8.0.2
+%define jupver 8.0.5
 Name:           python-widgetsnbextension
-Version:        4.0.3
+Version:        4.0.5
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause AND MIT
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/w/widgetsnbextens
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging}
 BuildRequires:  %{python_module notebook >= 4.4.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-widgetsnbextension = %{version}
@@ -59,10 +59,10 @@ It provides the Jupyter configuration files.
 %setup -q -n widgetsnbextension-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

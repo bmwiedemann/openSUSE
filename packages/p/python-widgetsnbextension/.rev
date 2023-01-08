@@ -68,4 +68,16 @@
     <comment></comment>
     <requestid>1002373</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e9be3a9422258d54392e0a189551952</srcmd5>
+    <version>4.0.5</version>
+    <time>1673209555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.5 with jupyter-js-widgets 8.0.5
+  * no release notes
+  * js package version bumps
+- PEP517 jupyter-packaging build
+</comment>
+    <requestid>1056892</requestid>
+  </revision>
 </revisionlist>
