@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,12 @@
 %endif
 
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM jupyterlab-server-pr362-entrypoint.patch gh#jupyterlab/jupyterlab_server#362
-Patch1:         https://github.com/jupyterlab/jupyterlab_server/pull/362.patch#/jupyterlab-server-pr362-entrypoint.patch
 Source100:      python-jupyterlab-server-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 1.5}
@@ -89,7 +87,7 @@ Requires:       python-jupyterlab-server-openapi = %{version}
 Requires:       python-openapi-spec-validator >= 0.5.1
 Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
-Requires:       python-pytest-jupyter-server >= 0.6
+Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
 #Requires:       python-sphinxcontrib-spelling

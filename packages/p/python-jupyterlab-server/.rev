@@ -7,4 +7,16 @@
     <comment>rename of jupyter-jupyterlab-server</comment>
     <requestid>1045954</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e56cfaa03d97a3fe07c6c195b3fc2ae9</srcmd5>
+    <version>2.18.0</version>
+    <time>1673209556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.18.0
+  * Prepare for jupyter_server preferred_dir fix #324 (@vidartf)
+  * Handle systems with python3 #362 (@blink1073)
+- Drop jupyterlab-server-pr362-entrypoint.patch
+</comment>
+    <requestid>1056893</requestid>
+  </revision>
 </revisionlist>

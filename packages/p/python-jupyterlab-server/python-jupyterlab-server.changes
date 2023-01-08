@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  8 09:23:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.18.0
+  * Prepare for jupyter_server preferred_dir fix #324 (@vidartf)
+  * Handle systems with python3 #362 (@blink1073)
+- Drop jupyterlab-server-pr362-entrypoint.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 11:33:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update ot 2.17.0
