@@ -1543,4 +1543,21 @@ Changes:
 - Add missing dependencies from vc as Recommends</comment>
     <requestid>1036688</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>0c70e98c651cb2f092cd158e2910d948</srcmd5>
+    <version>20230105</version>
+    <time>1673209515</time>
+    <user>dimstar_suse</user>
+    <comment>- configure mkbaselibs to create glibc-hwcaps baselibs as well
+- Better filetype detection for temp changes files
+- Add hook to run checks after mkbaselibs run
+- Delete leftover multilinedefine variable definition
+- Support multiline macros in the config's macro sections
+- Support #!BuildConstraint lines
+- Support #!BuildTarget in spec files to set the build target
+  (as workaround of broken BuildArch in rpm since 2001)
+- Support a regexp for file renames
+- Set home to /root when running build time services</comment>
+    <requestid>1056167</requestid>
+  </revision>
 </revisionlist>
