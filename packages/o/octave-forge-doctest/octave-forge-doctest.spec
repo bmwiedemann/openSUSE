@@ -1,7 +1,7 @@
 #
-# spec file for package octave-forge-doctest
+# spec file
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define octpkg  doctest
 Name:           octave-forge-%{octpkg}
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Octave-Forge documentation tests
-License:        GPL-3.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://octave.sourceforge.io
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
