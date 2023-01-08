@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  6 22:00:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * Fix compatibility with ``packaging>=22``.
+
+-------------------------------------------------------------------
 Mon Sep 12 15:09:22 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - initial package
