@@ -1542,4 +1542,12 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>1046686</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>0d85e49f2e5b7b269158f1928086c3f3</srcmd5>
+    <version>4.5.62</version>
+    <time>1673209514</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1056825</requestid>
+  </revision>
 </revisionlist>
