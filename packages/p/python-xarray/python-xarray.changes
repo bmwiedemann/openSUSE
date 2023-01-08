@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan  7 13:02:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.0
+  * This release includes a number of bug fixes and experimental
+    support for Zarr V3.
+  ## New Features
+  * Enable using offset and origin arguments in
+    DataArray.resample() and Dataset.resample() (GH7266, PR7284).
+    By Spencer Clark.
+  * Add experimental support for Zarr’s in-progress V3
+    specification. (PR6475). By Gregory Lee and Joe Hamman.
+  ## Breaking changes
+  * The minimum versions of some dependencies were changed
+    (PR7300):
+  ## Deprecations
+  * The PyNIO backend has been deprecated (GH4491, PR7301). By Joe
+    Hamman.
+  ## Bug fixes
+  * Fix handling of coordinate attributes in where(). (GH7220,
+    PR7229) By Sam Levang.
+  * Import nc_time_axis when needed (GH7275, PR7276). By Michael
+    Niklas.
+  * Fix static typing of xr.polyval() (GH7312, PR7315). By Michael
+    Niklas.
+  * Fix multiple reads on fsspec S3 files by resetting file pointer
+    to 0 when reading file streams (GH6813, PR7304). By David Hoese
+    and Wei Ji Leong.
+  * Fix Dataset.assign_coords() resetting all dimension coordinates
+    to default (pandas) index (GH7346, PR7347). By Benoît Bovy.
+
+-------------------------------------------------------------------
 Tue Nov 22 13:28:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2022.11.0

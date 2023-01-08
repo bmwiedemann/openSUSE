@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-xarray
-Version:        2022.11.0
+Version:        2022.12.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -28,14 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 Patch0:         local_dataset.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.20}
-BuildRequires:  %{python_module packaging >= 21.0}
+BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.20
-Requires:       python-packaging >= 21.0
+Requires:       python-packaging >= 21.3
 Requires:       python-pandas >= 1.3
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
@@ -57,7 +57,7 @@ Suggests:       python-nc-time-axis
 # SECTION extras io
 Suggests:       python-netCDF4
 Suggests:       python-h5netcdf
-Suggests:       python-pydap
+Suggests:       (python-pydap if python-base < 3.10)
 Suggests:       python-zarr
 Suggests:       python-fsspec
 Suggests:       python-cftime
@@ -102,15 +102,17 @@ chmod -x xarray/util/print_versions.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# OOM crashes the whole vm or even the local host running osc: https://github.com/pydata/xarray/issues/6854
+donttest="nczarr"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   # https://github.com/pydata/xarray/issues/5341
   # https://github.com/pydata/xarray/issues/5375
   # still precision problems in 2022.11.0
-  donttest=" or (test_interpolate_chunk_advanced and linear)"
+  donttest="$donttest or (test_interpolate_chunk_advanced and linear)"
   # tests for 64bit types
   donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore"
 fi
-%pytest -n auto -rsEf -k "not (kexprdummyprefix $donttest)" xarray
+%pytest -n auto -rsEf -k "not ($donttest)" xarray
 
 %files %{python_files}
 %doc README.md
