@@ -1,7 +1,7 @@
 #
 # spec file for package libcdata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcdata
 %define lname	libcdata1
-Version:        20220115
+Version:        20230108
 Release:        0
 Summary:        Library for C generic data functions
 License:        LGPL-3.0-or-later
@@ -30,7 +30,7 @@ Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
 # Various notes: https://en.opensuse.org/libyal
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  8 16:18:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230108
+  * Updates to the linked list API
+
+-------------------------------------------------------------------
 Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (not needed - system libs are
