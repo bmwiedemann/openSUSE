@@ -37,4 +37,37 @@
     <comment></comment>
     <requestid>999338</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>16fca71ca99a9afee53fa9fd2552c2f6</srcmd5>
+    <version>20180525.8c54a85</version>
+    <time>1673209546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180525.8c54a85:
+  * Version bump
+  * Implement token auth (#17)
+  * Add built status and pypi version to README
+  * PY3 compatibility for tests
+  * Fix style and add optinal_args protection against falsy value
+  * Add .travis.yaml
+  * Support for rest-api agents that run on non-standard tcp port. (#14)
+  * Clean up after replacing url2libe with requests
+  * Removing pylama.ini
+  * Replace urllib2 with requests
+- Add napalm-py23_compat.patch to fix missing py23_compat.py file
+  (gh#napalm-automation-community/napalm-asa#35).
+- Add pylama.patch to fix two problems discovered by pylama
+  (gh#napalm-automation-community/napalm-asa#36).
+- Switch to git checkout version (releases are significantly
+  lagging).
+- Update to version 20211220.27ac4ce:
+  * get_interfaces added
+  * keep_alive re-written
+  * workaround for slow devices
+  * Session object reverted back to requests.Session
+- Skip failing tests (gh#napalm-automation-community/napalm-asa#34)
+- Remove float-speed.patch which has been made irrelevant by the
+  development upstream.
+</comment>
+    <requestid>1056866</requestid>
+  </revision>
 </revisionlist>

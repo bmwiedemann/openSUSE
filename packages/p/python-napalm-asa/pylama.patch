@@ -1,0 +1,24 @@
+---
+ napalm_asa/asa.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/napalm_asa/asa.py
++++ b/napalm_asa/asa.py
+@@ -62,7 +62,7 @@ class RespFetcherHttps:
+         try:
+             token_request = self.session.post(full_url, auth=(self.username, self.password),
+                                               data="", timeout=self.timeout, verify=False)
+-            if token_request.status_code is 204 and 'X-Auth-Token' in token_request.headers.keys():
++            if token_request.status_code == 204 and 'X-Auth-Token' in token_request.headers.keys():
+                 self.token = token_request.headers['X-Auth-Token']
+                 self.session.headers.update({'X-Auth-Token': token_request.headers['X-Auth-Token']})
+                 return (True, None)
+@@ -78,7 +78,7 @@ class RespFetcherHttps:
+             token_delete_request = self.session.delete(full_url,
+                                                        auth=(self.username, self.password),
+                                                        timeout=self.timeout, verify=False)
+-            if token_delete_request.status_code is 204:
++            if token_delete_request.status_code == 204:
+                 self.session.headers.pop('X-Auth-Token', None)
+                 return (True, None)
+             else:

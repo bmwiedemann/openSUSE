@@ -1,0 +1,18 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/napalm-automation-community/napalm-asa.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">napalm-asa</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">napalm-asa-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+  </service>
+</services>

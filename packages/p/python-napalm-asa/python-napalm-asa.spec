@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-asa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,27 +17,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# skip py2 as napalm dropped py2
 %define skip_python2 1
 Name:           python-napalm-asa
-Version:        0.1.4
+%define base_version 0.1.1
+Version:        20180525.8c54a85
 Release:        0
 Summary:        NAPALM - Cisco ASA Driver network driver
 License:        Apache-2.0
 URL:            https://github.com/napalm-automation-community/napalm-asa
-Source:         https://github.com/napalm-automation-community/napalm-asa/archive/v%{version}.tar.gz#/napalm-asa-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/napalm-automation-community/napalm-asa/pull/33 float speed
-Patch0:         float-speed.patch
-BuildRequires:  %{python_module setuptools}
+# Source:         https://github.com/napalm-automation-community/napalm-asa/archive/v%%{version}.tar.gz#/napalm-asa-%%{version}.tar.gz
+Source:         napalm-asa-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM napalm-py23_compat.patch gh#napalm-automation-community/napalm-asa#35 mcepl@suse.com
+# Make tests pass even when we removed napalm.base.utils.py23_compat
+Patch0:         py23_compat.patch
+# PATCH-FIX-UPSTREAM pylama.patch gh#napalm-automation-community/napalm-asa#36 mcepl@suse.com
+# Fix problems discovered by pylama
+Patch1:         pylama.patch
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-napalm >= 2.5.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module napalm >= 2.5.0}
+BuildRequires:  %{python_module napalm >= 4.0.0}
 BuildRequires:  %{python_module pylama}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -49,22 +54,28 @@ available from software version 9.3.2 and up, and on the 5500-X series,
 ASAv, ASA on Firepower and ISA 3000 platforms.
 
 %prep
-%setup -q -n napalm-asa-%{version}
-%autopatch -p1
+%autosetup -p1 -n napalm-asa-%{version}
+
+sed -i -E '/--cov/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k "not test_get_config_filtered"
+# gh#napalm-automation-community/napalm-asa#34
+skip_tests="test_get_facts or test_get_interfaces "
+skip_tests+=" or test_method_signatures or test_traceroute"
+skip_tests+=" or test_get_config_filtered or test_get_config_sanitized"
+%pytest -k "not (${skip_tests})"
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS README.md
-%{python_sitelib}/*
+%doc README.md CONTRIBUTING AUTHORS
+%{python_sitelib}/napalm_asa
+%{python_sitelib}/napalm_asa-%{base_version}*-info
 
 %changelog

@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/napalm-automation-community/napalm-arubaos-switch.git</param>
+              <param name="changesrevision">27ac4cef23ca6ccf99b212e73be7cb7c7b48244c</param></service><service name="tar_scm">
+                <param name="url">https://github.com/napalm-automation-community/napalm-asa.git</param>
+              <param name="changesrevision">8c54a85c379a092ea946119732d42f45d351652c</param></service></servicedata>

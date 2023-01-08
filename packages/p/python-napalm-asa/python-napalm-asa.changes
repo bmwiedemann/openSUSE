@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 05 14:54:34 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20180525.8c54a85:
+  * Version bump
+  * Implement token auth (#17)
+  * Add built status and pypi version to README
+  * PY3 compatibility for tests
+  * Fix style and add optinal_args protection against falsy value
+  * Add .travis.yaml
+  * Support for rest-api agents that run on non-standard tcp port. (#14)
+  * Clean up after replacing url2libe with requests
+  * Removing pylama.ini
+  * Replace urllib2 with requests
+- Add napalm-py23_compat.patch to fix missing py23_compat.py file
+  (gh#napalm-automation-community/napalm-asa#35).
+- Add pylama.patch to fix two problems discovered by pylama
+  (gh#napalm-automation-community/napalm-asa#36).
+
+-------------------------------------------------------------------
+Tue Jan 03 21:30:47 UTC 2023 - mcepl@cepl.eu
+
+- Switch to git checkout version (releases are significantly
+  lagging).
+- Update to version 20211220.27ac4ce:
+  * get_interfaces added
+  * keep_alive re-written
+  * workaround for slow devices
+  * Session object reverted back to requests.Session
+- Skip failing tests (gh#napalm-automation-community/napalm-asa#34)
+- Remove float-speed.patch which has been made irrelevant by the
+  development upstream.
+
+-------------------------------------------------------------------
 Thu Aug 25 08:08:17 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add patch float-speed.patch (sent upstream)

@@ -1,0 +1,41 @@
+---
+ napalm_asa/asa.py |    7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+--- a/napalm_asa/asa.py
++++ b/napalm_asa/asa.py
+@@ -30,7 +30,6 @@ from collections import OrderedDict
+ from netaddr import IPNetwork
+ 
+ from napalm.base import NetworkDriver
+-from napalm.base.utils import py23_compat
+ from napalm.base.exceptions import (
+     ConnectionException,
+     CommandErrorException,
+@@ -70,7 +69,7 @@ class RespFetcherHttps:
+             else:
+                 return (False, token_request.status_code)
+         except requests.exceptions.RequestException as e:
+-            raise ConnectionException(py23_compat.text_type(e))
++            raise ConnectionException(str(e))
+ 
+     def delete_token(self):
+         """Delete auth token."""
+@@ -85,7 +84,7 @@ class RespFetcherHttps:
+             else:
+                 return (False, token_delete_request.status_code)
+         except requests.exceptions.RequestException as e:
+-            raise ConnectionException(py23_compat.text_type(e))
++            raise ConnectionException(str(e))
+ 
+     def get_resp(self, endpoint="", data=None):
+         """Get response from device and returne parsed json."""
+@@ -103,7 +102,7 @@ class RespFetcherHttps:
+ 
+             return f.json()
+         except requests.exceptions.RequestException as e:
+-            raise ConnectionException(py23_compat.text_type(e))
++            raise ConnectionException(str(e))
+ 
+ 
+ class ASADriver(NetworkDriver):
