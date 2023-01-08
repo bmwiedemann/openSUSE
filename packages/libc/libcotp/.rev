@@ -43,4 +43,14 @@
 </comment>
     <requestid>1056146</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e54f10a5c69d976cbc157e1481524397</srcmd5>
+    <version>1.2.8</version>
+    <time>1673209557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.8:
+  * this release fixes a regression brought by v1.2.7.
+</comment>
+    <requestid>1056899</requestid>
+  </revision>
 </revisionlist>

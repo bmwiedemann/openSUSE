@@ -21,7 +21,7 @@
 %global debug_package %{nil}
 %endif
 Name:           libcotp
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -29,6 +29,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/paolostivanin/%{name}
 Source0:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/paolostivanin/libcotp/releases/download/v%{version}/v%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
