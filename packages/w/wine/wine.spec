@@ -1,7 +1,7 @@
 #
 # spec file for package wine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 8.0-rc1
-Version:        8.0~rc1
+%define realver 8.0-rc3
+Version:        8.0~rc3
 Release:        0
 
 %if "%{flavor}" != ""
@@ -164,7 +164,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 8.0-rc1
+%define staging_version 8.0-rc3
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
