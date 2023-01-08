@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  1 00:21:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove Requires on all shell completions. This seems to break
+  supplements.
+
+-------------------------------------------------------------------
 Wed Dec  7 13:20:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 22.12:

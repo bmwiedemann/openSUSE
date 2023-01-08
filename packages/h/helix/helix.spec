@@ -44,7 +44,6 @@ has treesitter support for syntax highlighting and improved navigation
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and bash-completion)
-Requires:       bash-completion
 BuildArch:      noarch
 
 %description    bash-completion
@@ -54,7 +53,6 @@ Bash command-line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and fish)
-Requires:       fish
 BuildArch:      noarch
 
 %description    fish-completion
@@ -64,7 +62,6 @@ Fish command-line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Supplements:    (%{name} and zsh)
-Requires:       zsh
 BuildArch:      noarch
 
 %description    zsh-completion
