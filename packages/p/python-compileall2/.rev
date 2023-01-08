@@ -15,4 +15,14 @@
     <comment>- Refresh test_compileall2.py for Python 3.10+ support.</comment>
     <requestid>949546</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06f1bcd2d803c89d0ef0aa98937caead</srcmd5>
+    <version>0.7.2</version>
+    <time>1673209526</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.2:
+  * Improved tests 
+  * switch to pyproject.toml</comment>
+    <requestid>1056805</requestid>
+  </revision>
 </revisionlist>

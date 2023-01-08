@@ -1,7 +1,7 @@
 #
 # spec file for package python-compileall2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-compileall2
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Enhanced Python `compileall` module
 License:        Python-2.0
@@ -27,9 +27,10 @@ URL:            https://github.com/fedora-python/compileall2
 Source:         https://files.pythonhosted.org/packages/source/c/compileall2/compileall2-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/fedora-python/compileall2/master/LICENSE
 Source2:        https://raw.githubusercontent.com/fedora-python/compileall2/master/test_compileall2.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,11 +45,11 @@ cp %{SOURCE1} %{SOURCE2} .
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/compileall2
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
