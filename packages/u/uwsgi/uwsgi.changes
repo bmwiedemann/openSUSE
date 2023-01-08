@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  6 20:36:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.21:
+  * Python 3.10 support
+  * Python 3.11 support
+  * add tests for worker deadlocks
+  * fix memory corruption in uwsgi_cache
+  * Fix segfault from GEVENT_SWITCH
+  * Support php 8.1
+  * Use parenthesis in print() statement 
+
+-------------------------------------------------------------------
+Tue Dec 13 19:44:00 UTC 2022 - sven@uebelacker.net
+
+- fixing uwsgi-php[78] package description
+- rpmlint: removing obsolete specfile condition for python which is included in python-rpm-macros
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be

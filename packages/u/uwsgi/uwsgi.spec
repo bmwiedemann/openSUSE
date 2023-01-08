@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,15 +27,14 @@
 %define with_php 0
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           uwsgi
-Version:        2.0.20
+Version:        2.0.21
 Release:        0
 Summary:        Application Container Server for Networked/Clustered Web Applications
 License:        Apache-2.0 AND GPL-2.0-only WITH GCC-exception-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://uwsgi-docs.readthedocs.io/en/latest/
-Source:         https://projects.unbit.it/downloads/uwsgi-%{version}.tar.gz
+Source:         https://github.com/unbit/uwsgi/archive/refs/tags/%{version}.tar.gz
 Source1:        opensuse.ini.in
 Source2:        uwsgi.service
 Source3:        django.ini.example
@@ -420,7 +419,11 @@ This package contains support for rendering XML content using XSLT.
 
 %if %{with_php}
 %package %{php}
+%if 0%{?suse_version} >= 1550
+Summary:        PHP8 Plugin for uWSGI
+%else
 Summary:        PHP7 Plugin for uWSGI
+%endif
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
 Requires:       %{php}-embed
@@ -428,7 +431,11 @@ Requires:       %{php}-embed
 %description %{php}
 uWSGI is a self-healing application container server coded in pure C.
 
+%if 0%{?suse_version} >= 1550
+This package contains support for PHP version 8.
+%else
 This package contains support for PHP version 7.
+%endif
 %endif
 
 %prep
