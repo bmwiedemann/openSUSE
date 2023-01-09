@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 02 04:44:33 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.6.0+git20230101.7495a8845:
+  * link to 6.6.0 docs
+  * doc-neaten
+  * post-6.6.0
+  * 6.6.0 (#1169)
+  * Fix #1164: regression on CSV blank-line handling (#1168)
+  * mlr unspace verb (#1167)
+  * Add doc info on DSL code-comment syntax (#1165)
+  * Fix #1102 (#1163)
+  * Fix #1146 (#1157)
+  * Bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17 (#1162)
+  * Bump actions/cache from 3.2.1 to 3.2.2 (#1160)
+  * Bump actions/cache from 3.2.0 to 3.2.1 (#1156)
+  * Bump actions/cache from 3.0.11 to 3.2.0 (#1155)
+  * Bump github/codeql-action from 2.1.36 to 2.1.37 (#1151)
+  * Bump actions/setup-go from 3.4.0 to 3.5.0 (#1148)
+  * Bump goreleaser/goreleaser-action from 3.2.0 to 4.1.0 (#1147)
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (#1145)
+  * Bump github/codeql-action from 2.1.35 to 2.1.36 (#1143)
+  * Fix typo in `mlr put` documentation (#1140)
+  * Bump actions/setup-go from 3.3.1 to 3.4.0 (#1136)
+  * Bump github/codeql-action from 2.1.33 to 2.1.35 (#1137)
+
+-------------------------------------------------------------------
 Wed Nov 30 17:33:12 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 6.5.0+git20221130.636ca8873:
