@@ -1,7 +1,7 @@
 #
 # spec file for package trinity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           trinity
-Version:        1.9+git.20220913
+Version:        1.9+git.20230108
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only

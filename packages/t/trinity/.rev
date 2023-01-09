@@ -725,4 +725,14 @@
   * fix warning about pragma diagnostic pop without push</comment>
     <requestid>1038593</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>5d21a7c62c699eb01bd55731348e05b1</srcmd5>
+    <version>1.9+git.20230108</version>
+    <time>1673281421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20230108:
+  * fix: previous_op_count may more than op_count case process data compete. I met this under mips64 debian
+  * drop decnet</comment>
+    <requestid>1056974</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 09 07:05:48 UTC 2023 - jslaby@suse.cz
+
+- Update to version 1.9+git.20230108:
+  * fix: previous_op_count may more than op_count case process data compete. I met this under mips64 debian
+  * drop decnet
+
+-------------------------------------------------------------------
 Mon Nov 28 08:49:14 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20220913:
