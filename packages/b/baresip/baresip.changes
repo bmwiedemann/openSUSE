@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jan  5 22:30:53 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to release 2.10.0
+  * sdl: small improvements
+  * vidinfo: allow all pixel formats
+  * vid: add support for YUV422P pixel format
+  * avformat: fix hwaccel vaapi
+  * mk: add deprecate notice
+  * mingw: upgrade to OpenSSL 3.0.7
+  * dshow: fix some warnings
+  * dshow: fix pragma warning
+  * ci: install libsdl2 development package
+  * sdl: work in progress fixes for multi-threading
+  * Stop segfaulting when no URI is passed to dial command
+  * ice: local candidate policy config
+  * auresamp: check handler arguments
+  * fixes 2315 and GTK errors on quit
+  * auresamp: avoid division
+  * cmake: check for XShm.h
+  * pulse_async: avoid integer overrun for timestamps in recorder
+  * ua: use sdp connection data instead origin
+  * rtpext: move from baresip to re
+  * acc,stream: add rtcp_mux account param
+  * video: video_update cleanup
+  * aufile/src: add auframe support
+  * ice/tmr_async_handler: fix possible segfault
+  * webrtc: fix browser offer handling
+  * Space at the beginning of sip: creates errors
+  * opus_multistream: update mimetype to ad-hoc standard
+  * webrtc: add offerer and recvonly options
+  * test: replace RSA cert with EC cert
+  * Add OPTIONS handling for webrtc demo
+  * mk: remove rtpext.c from srcs.mk
+  * ua: change refer log to info()
+- switch to Cmake builds
+- add devel and libbaresip2 sub-packages
+- add pcp module
+- remove sndio and v4l2 modules
+
+-------------------------------------------------------------------
 Thu Aug 25 23:07:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.0

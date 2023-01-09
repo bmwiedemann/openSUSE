@@ -1,7 +1,7 @@
 #
 # spec file for package baresip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           baresip
-Version:        2.6.0
+Version:        2.10.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://github.com/baresip/baresip
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ilbc-devel
 BuildRequires:  jack-devel
@@ -47,8 +48,8 @@ BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libre) >= 2.6.0
-BuildRequires:  pkgconfig(librem) >= 2.6.0
+BuildRequires:  pkgconfig(libre) >= 2.10.0
+BuildRequires:  pkgconfig(librem) >= 2.10.0
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
@@ -59,6 +60,7 @@ BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(webrtc-audio-processing)
+Recommends:     baresip-devel
 Recommends:     baresip-video
 
 %description
@@ -103,6 +105,24 @@ Supports both IPv4 and IPv6, and the following features.
 This subpackage provides the modules that are needed for video
 support.
 
+%package devel
+Summary:        Development files for the baresip library
+Requires:       libbaresip2 = %{version}-%{release}
+Requires:       pkgconfig
+
+%description devel
+The baresip-devel package includes header files and libraries necessary
+for developing programs which use the baresip C library.
+
+%package -n libbaresip2
+Summary:        Standard library for baresip
+Provides:       %{name} = %{version}-%{release}
+Obsoletes:      %{name} < %{version}-%{release}
+
+%description -n libbaresip2
+This package contains the shared library needed to run programs compiled with
+baresip
+
 %prep
 %setup -q
 mv modules/mqtt/README.md README.mqtt
@@ -111,21 +131,18 @@ sed 's|/usr/local/lib|%{_libdir}/|g' -i docs/examples/config
 sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 
 %build
-export LFLAGS="%{optflags} -pie"
-# Ugh. The Makefile uses CLFAGS+=, which is really awkward to
-# deal with because you can't use `make CFLAGS=` and it's not obvious.
-CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg" %make_build \
-    RELEASE=1 \
-    USE_TLS=1 \
-    PREFIX=%{_prefix}/ \
-    MOD_PATH="%{_libdir}/baresip/modules" \
-    EXTRA_MODULES="avfilter swscale"
+%cmake \
+	-DCMAKE_SKIP_BUILD_RPATH:BOOL=ON
+%cmake_build
 
 %install
-%make_install LIBDIR=%{_libdir} EXTRA_MODULES="avfilter swscale"
+%cmake_install
+
+%post   -n libbaresip2 -p /sbin/ldconfig
+%postun -n libbaresip2 -p /sbin/ldconfig
 
 %files
-%license docs/COPYING
+%license LICENSE
 %doc CHANGELOG.md README.md README.mqtt
 %doc docs/examples
 %{_bindir}/baresip
@@ -170,6 +187,7 @@ CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg" %make_build \
 %{_libdir}/baresip/modules/netroam.so
 %{_libdir}/baresip/modules/opus.so
 %{_libdir}/baresip/modules/opus_multistream.so
+%{_libdir}/baresip/modules/pcp.so
 %{_libdir}/baresip/modules/plc.so
 %{_libdir}/baresip/modules/presence.so
 %{_libdir}/baresip/modules/portaudio.so
@@ -179,7 +197,6 @@ CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg" %make_build \
 %{_libdir}/baresip/modules/serreg.so
 %{_libdir}/baresip/modules/snapshot.so
 %{_libdir}/baresip/modules/sndfile.so
-%{_libdir}/baresip/modules/sndio.so
 %{_libdir}/baresip/modules/srtp.so
 %{_libdir}/baresip/modules/stdio.so
 %{_libdir}/baresip/modules/stun.so
@@ -188,6 +205,14 @@ CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg" %make_build \
 %{_libdir}/baresip/modules/uuid.so
 %{_libdir}/baresip/modules/vumeter.so
 %{_libdir}/baresip/modules/webrtc_aec.so
+
+%files devel
+%{_libdir}/lib%{name}.so
+%{_includedir}/%{name}.h
+%{_libdir}/pkgconfig/lib%{name}.pc
+
+%files -n libbaresip2
+%{_libdir}/lib%{name}.so.2*
 
 %files video
 %{_libdir}/baresip/modules/av1.so
@@ -199,7 +224,6 @@ CFLAGS="%{optflags} -fpie -I/usr/include/ffmpeg" %make_build \
 %{_libdir}/baresip/modules/sdl.so
 %{_libdir}/baresip/modules/selfview.so
 %{_libdir}/baresip/modules/swscale.so
-%{_libdir}/baresip/modules/v4l2.so
 %{_libdir}/baresip/modules/vidbridge.so
 %{_libdir}/baresip/modules/vidinfo.so
 %{_libdir}/baresip/modules/vp8.so
