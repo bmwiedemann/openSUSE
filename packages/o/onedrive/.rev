@@ -298,4 +298,12 @@
     <comment>supply correct &quot;tarball&quot; (forwarded request 1040760 from frispete)</comment>
     <requestid>1041115</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ba9ba9826fab9e0775df35770aa6cf6a</srcmd5>
+    <version>2.4.23</version>
+    <time>1673281450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057019</requestid>
+  </revision>
 </revisionlist>

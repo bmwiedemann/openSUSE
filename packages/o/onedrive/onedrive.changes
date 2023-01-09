@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan 06 18:35:48 UTC 2023 - hpj@urpla.net
+
+- Update to version 2.4.23:
+  * Release files for 2.4.23 (#2280)
+  * Update handling of --source-directory and --destination-directory if empty (#2278)
+  * Update Alpine Dockerfile to use Alpine 3.17 (#2277)
+  * Update USAGE.md
+  * Update application-security.md
+  * docs: Fix typos in Docker.md (#2270)
+  * Update version checks (#2269)
+  * Update version release notification handling (#2267)
+  * Update --get-O365-drive-id error handling (#2266)
+  * systemd: disable PrivateUsers (#2265)
+  * Update INSTALL.md
+  * Update RHEL7, RHEL8 and RHEL9 Makefile and SPEC file compatibility (#2256)
+  * Restore RHEL7 spec file compatibility (#2254)
+
+-------------------------------------------------------------------
 Mon Dec 05 22:40:53 UTC 2022 - hpj@urpla.net
 
 - Update to version 2.4.22:
