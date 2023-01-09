@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  8 17:46:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.2:
+  * Add macos-max-compat option to the wheel target that is enabled by default to
+    support the latest version 22.0 of the packaging library 
+
+-------------------------------------------------------------------
 Mon Jan  2 10:31:58 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.12.1:

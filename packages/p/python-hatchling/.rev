@@ -100,4 +100,14 @@
     <comment></comment>
     <requestid>1046167</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3944bf4dc85ee43e9a41013a6d8f762a</srcmd5>
+    <version>1.12.2</version>
+    <time>1673281401</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.2:
+  * Add macos-max-compat option to the wheel target that is enabled by default to
+    support the latest version 22.0 of the packaging library</comment>
+    <requestid>1056910</requestid>
+  </revision>
 </revisionlist>

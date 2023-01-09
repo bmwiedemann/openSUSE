@@ -17,7 +17,7 @@
 
 
 Name:           python-hatchling
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
