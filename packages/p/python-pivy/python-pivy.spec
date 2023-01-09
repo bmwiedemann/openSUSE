@@ -1,7 +1,7 @@
 #
 # spec file for package python-pivy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 #%%define skip_python310 1
 
 Name:           python-pivy
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        Coin Binding for Python
 # GPL only applies to some examples
 License:        GPL-2.0-only AND ISC
 Group:          Development/Libraries/Python
-URL:            https://github.com/FreeCAD/pivy
-Source0:        https://github.com/FreeCAD/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
+URL:            https://github.com/coin3d/pivy
+Source0:        https://github.com/coin3d/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
