@@ -219,7 +219,7 @@ done
   make documentation
 
 %install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
   make install-shared libdir=/%{_lib} linkagedir=%{_libdir} DESTDIR=%{buildroot}
   chmod 0755 %{buildroot}/%{_lib}/libhistory.so.%{rl_vers}
   chmod 0755 %{buildroot}/%{_lib}/libreadline.so.%{rl_vers}
@@ -266,7 +266,7 @@ ldd -u -r %{buildroot}/%{_lib}/libreadline.so.* || true
 %else
 %doc COPYING
 %endif
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /%{_lib}/libhistory.so.%{rl_major}
 /%{_lib}/libhistory.so.%{rl_vers}
 /%{_lib}/libreadline.so.%{rl_major}
