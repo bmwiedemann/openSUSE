@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan  8 17:51:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * general: add hid_get_device_info (#432);
+  * general: Meson build script (as a wrapper over CMake) (#410);
+  * general: add HID Bus Type in hid_device_info (#308);
+  * libusb: primary usage_page/usage is now available with hid_get_device_info
+    regardless of the compilation flags;
+  * hidraw: Open files with O_CLOEXEC to not leak fds to child processes (#446);
+  * hidraw: add support for HID over SPI (#486);
+  * cmake: libusb: Ensure Iconv is found when provided via CFLAGS/LDFLAGS (#430);
+
+-------------------------------------------------------------------
 Mon Jul 11 07:52:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.0:
