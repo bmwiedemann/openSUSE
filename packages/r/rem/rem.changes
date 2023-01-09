@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 30 20:13:54 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to release 2.10.0 
+  * draw: add pixel format YUYV422
+  * vidframe_draw_hline: add more formats
+  * vid: add support for YUV422P pixel format
+  * aubuf: avoid underflow of cur_sz
+  * cmake/pkgconfig: fix prefix variable
+
+-------------------------------------------------------------------
 Sat Oct  1 08:56:45 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to release 2.8.0

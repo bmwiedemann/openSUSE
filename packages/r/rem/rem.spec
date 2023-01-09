@@ -16,10 +16,10 @@
 #
 
 
-%global sover   3
+%global sover   4
 %global libname lib%{name}%{sover}
 Name:           rem
-Version:        2.8.0
+Version:        2.10.0
 Release:        0
 Summary:        Audio and Video processing media library
 License:        BSD-3-Clause
