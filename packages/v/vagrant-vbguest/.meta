@@ -1,0 +1,6 @@
+<package name="vagrant-vbguest" project="openSUSE:Factory">
+  <title>Vagrant vbguest plugin</title>
+  <description>vagrant-vbguest is a Vagrant plugin which automatically installs the host's VirtualBox Guest Additions on the guest system.</description>
+  <devel project="Virtualization:vagrant" package="vagrant-vbguest"/>
+  <url>https://github.com/dotless-de/vagrant-vbguest</url>
+</package>

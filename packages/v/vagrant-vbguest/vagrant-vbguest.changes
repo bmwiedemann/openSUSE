@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Sat Dec  3 12:38:39 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Update to 0.31.0
+
+-------------------------------------------------------------------
+Thu Mar  3 07:44:07 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Switch back to the default Ruby for Tumbleweed
+
+-------------------------------------------------------------------
+Wed Nov  3 11:23:56 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Fix ruby macro usage
+
+-------------------------------------------------------------------
+Thu Aug  5 07:29:58 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Build using ruby 3.0 on Tumbleweed
+
+-------------------------------------------------------------------
+Tue Sep  8 07:23:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch back to the default Ruby for Tumbleweed
+
+-------------------------------------------------------------------
+Tue May 12 15:33:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch to Ruby 2.6 for Tumbleweed
+
+-------------------------------------------------------------------
+Mon Aug 12 09:06:47 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to 0.19.0
+
+  0.19.0 (2019-07-09)
+    Relax version pin on micormachine dependency. Allow 2.x to 3.x. @johanneskastl [GH-341]
+
+  0.18.0 (2019-05-20)
+    Fix Linux kernel module detection for VirtuaBox >= 6.0.6. @carlosefr [GH-334]
+
+-------------------------------------------------------------------
+Mon Apr  1 19:30:27 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Initial package version
