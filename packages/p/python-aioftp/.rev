@@ -59,4 +59,12 @@
   * tests: use `pytest_asyncio` `strict` mode and proper decorations (fixes #155) (forwarded request 1012070 from glaubitz)</comment>
     <requestid>1012082</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>79af6a39febad222954ce504726fa49a</srcmd5>
+    <version>0.21.4</version>
+    <time>1673281433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056985</requestid>
+  </revision>
 </revisionlist>

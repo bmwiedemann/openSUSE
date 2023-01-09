@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan  7 20:25:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove 'legacy' pytest-asyncio mode command line argument. It is
+  not available anymore, meanwhile upstream uses 'strict' from
+  config file.
+
+-------------------------------------------------------------------
 Mon Oct 17 11:31:51 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.21.4
