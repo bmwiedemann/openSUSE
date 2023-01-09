@@ -153,4 +153,12 @@ For newer release I take more care of the changelog</comment>
     <comment></comment>
     <requestid>977723</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b8668e3358a42c6ab9494cbb3441d477</srcmd5>
+    <version>5.2</version>
+    <time>1673281427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056996</requestid>
+  </revision>
 </revisionlist>

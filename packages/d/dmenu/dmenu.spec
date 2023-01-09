@@ -1,7 +1,7 @@
 #
 # spec file for package dmenu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dmenu
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        A generic and efficient menu for X
 License:        MIT
@@ -28,7 +28,7 @@ Patch0:         dmenu-optflags.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xft) >= 2.3.5
 BuildRequires:  pkgconfig(xinerama)
 
 %description

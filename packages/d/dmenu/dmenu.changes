@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan  5 19:36:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2:
+  * dmenu: use die() to print usage message
+  * remove workaround for a crash in emojis, fixed in Xft 2.3.5
+  * tab-complete: determine size before copying
+  * readstdin: use getline
+  * improve correctness and startup performance
+  * drw_text: account for fallback fonts in ellipsis width
+  * drw_text: don't segfault when called with 0 width
+  * fix UB with the function iscntrl()
+  * avoid redraw when there's no change
+  * inputw: improve correctness and startup performance
+  * signifcantly improve performance on large strings 
+
+-------------------------------------------------------------------
 Wed May 11 11:41:00 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.1
