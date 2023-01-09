@@ -1,7 +1,7 @@
 #
 # spec file for package smemstat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           smemstat
-Version:        0.02.10
+Version:        0.02.11
 Release:        0
 Summary:        Memory usage monitoring tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/smemstat/
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.xz
+URL:            https://github.com/ColinIanKing/smemstat
+Source:         https://github.com/ColinIanKing/smemstat/archive/refs/tags/V%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncursesw)
 
@@ -56,6 +56,7 @@ export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw) -fwhole-program"
 
 %files
 %license COPYING
+%doc README.md
 %{_bindir}/smemstat
 %{_mandir}/man8/smemstat.8%{?ext_man}
 

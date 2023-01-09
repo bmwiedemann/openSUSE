@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  3 13:07:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.02.11:
+  * debian/watch: change location to github for tarballs
+  * Update copyright and project email contact information
+  * debian/control: update maintainer email address and project URL
+  * smemstat.c: always use "%s"-style format for printf()-style functions
+  * README.md: Make headings into subheadings
+  * Add README.md
+
+-------------------------------------------------------------------
 Sat Jul 10 10:14:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.10
