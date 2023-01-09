@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  9 08:44:37 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.11
+  * Make it possible to force setting meta
+  * Improved strong authentication method
+  * Support product list views honoring the `expand` parameter
+
+-------------------------------------------------------------------
 Mon Jan  2 09:33:59 UTC 2023 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.10
