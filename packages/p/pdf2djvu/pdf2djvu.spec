@@ -1,7 +1,7 @@
 #
 # spec file for package pdf2djvu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  djvulibre
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.25
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(poppler) >= 0.62
