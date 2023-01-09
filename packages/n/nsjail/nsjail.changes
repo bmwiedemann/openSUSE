@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jan  6 16:17:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- drop obscpio file upon request
+
+-------------------------------------------------------------------
+Thu Jan 05 15:43:58 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 3.3+git1.5b48117:
+  * configs/xchat: mount whole /tmp/.X11-unix
+  * Setup cgroup.subtree_control controllers when necessary in cgroupsv2
+  * Unset LDFLAGS for kafel
+  * config/xchat: move original .xchat2 config dir to .config/
+  * Update kafel
+  * configs/bash: remove tmpfs mount over /dev as it makes /dev/null non-writeable
+  * configs/firefox-with-net-wayland: x11 socket is not needed here
+  * nsjail: use atomic in sighandlers
+  * configs/xchat-with-net: use 8.8.8.8 in resolv.conf unconditionally
+  * cpu: more debug messaging
+  * mnt: quote paths in log messages
+  * Switch C++ standard to C++14 - it'll allow to use new features, like std::quoted
+  * mnt: remove unnecessary quote in a debug message
+  * cpu/subproc: better debugging strings
+  * cpu: even better LOG_Ds
+  * cpu: Add more debugging messages
+  * Make logs more efficient by avoiding argument evaluation for LOG* if it's not needed at the current level
+  * When setting CPU affinity, take into consideration the current CPU affinity set. Use only CPU numbers, which exist in the current affinity set. Maybe fixes https://github.com/google/nsjail/issues/200
+  * subproc: Allow killing subprocesses with different signal
+  * Add `disable_tsc` option
+
+-------------------------------------------------------------------
 Wed Jan 05 08:34:49 UTC 2022 - jsegitz@suse.com
 
 - Changed version string to 3.0+git72.dccf911 and adjusted
