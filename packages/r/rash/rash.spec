@@ -103,7 +103,7 @@ mv README.md README.rash
 	EOF
 mkdir -p %{buildroot}%{_bindir}
 gcc %{optflags} -g3 -o %{buildroot}%{_bindir}/rash rash.c
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/rash %{buildroot}/bin/rash
 %endif
@@ -124,7 +124,7 @@ done
 %defattr(-,root,root)
 %license LICENSE
 %doc README.rash */README.*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/rash
 %endif
 %{_bindir}/rash
