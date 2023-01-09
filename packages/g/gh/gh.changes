@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  4 09:42:11 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.21.2
+  https://github.com/cli/cli/releases
+  * docs: update codespace installation instructions by @levenleven in #6781
+  * Bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17 by @dependabot in #6794
+  * Bump github.com/gdamore/tcell/v2 from 2.5.3 to 2.5.4 by @dependabot in #6798
+  * Handle erase operation in auth git-credential command by @samcoe in #6805
+  * select base repo correctly when only one remote by @vilmibm in #6803
+
+-------------------------------------------------------------------
 Tue Nov 29 05:02:04 UTC 2022 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to 2.20.2

@@ -263,4 +263,12 @@ Switched to tar_scm to pass auto review.</comment>
 </comment>
     <requestid>1038789</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9f3be993bce5eb9e987addd4d6b24588</srcmd5>
+    <version>2.21.2</version>
+    <time>1673281434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056995</requestid>
+  </revision>
 </revisionlist>
