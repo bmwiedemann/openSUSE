@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  8 20:46:55 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 3.6.2 bugfix release
+  See changelog https://github.com/OSGeo/gdal/blob/v3.6.2/gdal/NEWS.md
+
+-------------------------------------------------------------------
 Thu Dec 15 16:17:22 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix 3.6.1 (critical)
