@@ -18,7 +18,7 @@
 
 %define lname	libsigscan1
 Name:           libsigscan
-Version:        20221218
+Version:        20230109
 Release:        0
 Summary:        Library for binary signature scanning
 License:        LGPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
 BuildRequires:  pkgconfig(libclocale) >= 20221218
