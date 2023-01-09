@@ -463,4 +463,20 @@
   * using the subclass as a dictionary key.</comment>
     <requestid>1056749</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>84414f6ac57fb0121ace12eda269e042</srcmd5>
+    <version>2.15.10</version>
+    <time>1673281453</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v2.15.10:
+  * Fix use-sequence-for-iteration when unpacking a set with *.
+  * Fix false positive assigning-non-slot when a class attribute is
+  * re-assigned.
+  * Fixes used-before-assignment false positive when the walrus operator
+  * is used in a ternary operator.
+  * Prevent used-before-assignment when imports guarded by if TYPE_CHECKING
+  * are guarded again when used.
+  * Using custom braces in msg-template will now work properly.</comment>
+    <requestid>1057060</requestid>
+  </revision>
 </revisionlist>

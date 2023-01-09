@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  9 11:54:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.15.10:
+  * Fix use-sequence-for-iteration when unpacking a set with *.
+  * Fix false positive assigning-non-slot when a class attribute is
+  * re-assigned.
+  * Fixes used-before-assignment false positive when the walrus operator
+  * is used in a ternary operator.
+  * Prevent used-before-assignment when imports guarded by if TYPE_CHECKING
+  * are guarded again when used.
+  * Using custom braces in msg-template will now work properly.
+
+-------------------------------------------------------------------
 Sat Dec 17 18:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.15.9:
