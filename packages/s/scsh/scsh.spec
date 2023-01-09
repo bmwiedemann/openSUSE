@@ -120,7 +120,7 @@ make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm en
 rm -rf %{buildroot}%{_bindir}
 %else
 make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/scsh %{buildroot}/bin/scsh
 %endif
@@ -141,7 +141,7 @@ make test
 %else
 %license COPYING
 %doc README README.rx doc/scsh.pdf
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/scsh
 %endif
 %{_bindir}/scsh

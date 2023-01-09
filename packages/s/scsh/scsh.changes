@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:19:59 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Jun  9 09:36:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Let us use a %check section for testing 

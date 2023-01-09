@@ -44,4 +44,12 @@
     <comment>- Let us use a %check section for testing</comment>
     <requestid>981469</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b1462f3804eb9079dd522dd05064926b</srcmd5>
+    <version>0.7+git114432435e4eadd54334df6b37fcae505079b49f</version>
+    <time>1673281451</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055734 from lnussel)</comment>
+    <requestid>1057024</requestid>
+  </revision>
 </revisionlist>
