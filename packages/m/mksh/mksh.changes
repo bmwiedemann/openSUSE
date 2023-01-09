@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:11:50 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Feb  9 11:20:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize/remove old RPM constructs.

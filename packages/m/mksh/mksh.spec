@@ -125,14 +125,14 @@ install -d %{buildroot}/bin
 for shell in mksh lksh; do
     install -D -p -m 755 ${shell} %{buildroot}%{_bindir}/${shell}
     install -D -p -m 644 ${shell}.1 %{buildroot}%{_mandir}/man1/${shell}.1
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     ln -s %{_bindir}/${shell} %{buildroot}/bin/${shell}
 %endif
 done
 install -d -m 755 %{buildroot}%{_sysconfdir}/alternatives
 ln -s %{_sysconfdir}/bash.bashrc %{buildroot}%{_sysconfdir}/mkshrc
 # compatibility symlinks for pdksh, lksh replaces pdksh in openSUSE >= 13.2
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -s /bin/lksh %{buildroot}/bin/pdksh
 %endif
 ln -s %{_bindir}/lksh %{buildroot}%{_bindir}/pdksh
@@ -140,11 +140,11 @@ ln -s %{_mandir}/man1/lksh.1%{ext_man} \
     %{buildroot}%{_mandir}/man1/pdksh.1%{ext_man}
 # symlinks for update-alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/ksh \
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     %{buildroot}%{_sysconfdir}/alternatives/usr-bin-ksh \
 %endif
     %{buildroot}%{_sysconfdir}/alternatives/ksh.1%{ext_man}
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 ln -sf %{_sysconfdir}/alternatives/ksh %{buildroot}/%{_bindir}/ksh
 %else
 ln -sf %{_sysconfdir}/alternatives/ksh %{buildroot}/bin/ksh
@@ -189,7 +189,7 @@ fi
 
 %post
 %{_sbindir}/update-alternatives \
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
   --install %{_bindir}/ksh ksh %{_bindir}/lksh 15 \
 %else
   --install /bin/ksh ksh %{_bindir}/lksh 15 \
@@ -198,7 +198,7 @@ fi
   --slave %{_mandir}/man1/ksh.1%{?ext_man} ksh.1%{?ext_man} %{_mandir}/man1/lksh.1%{?ext_man}
 
 %postun
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 if [ ! -f %{_bindir}/lksh ] ; then
     %{_sbindir}/update-alternatives --remove ksh %{_bindir}/lksh
 fi
@@ -221,7 +221,7 @@ fi
 %{_mandir}/man1/ksh.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/ksh
 %ghost %{_sysconfdir}/alternatives/ksh.1%{?ext_man}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/mksh
 /bin/lksh
 /bin/ksh
