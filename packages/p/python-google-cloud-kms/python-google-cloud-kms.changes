@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jan  6 11:24:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.13.0
+  * Add SHA-2 import methods (6311278)
+  * Add support for `google.cloud.kms.__version__` (6311278)
+  * Add support for additional HMAC algorithms (6311278)
+  * Add typing to proto.Message based class attributes (6311278)
+  * Add dict typing for client_options (6311278)
+  * **deps:** Require google-api-core &gt;=1.34.0, >=2.11.0  (dbe2f96)
+  * Drop usage of pkg_resources (dbe2f96)
+  * Fix timeout default values (dbe2f96)
+  * **samples:** Snippetgen handling of repeated enum field (6311278)
+  * **samples:** Snippetgen should call await on the operation
+    coroutine before calling result (dbe2f96)
+- Drop installation of fixup_kms_v1_keywords.py, removed upstream
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Oct 17 10:23:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.12.3

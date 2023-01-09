@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-kms
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-cloud-kms
-Version:        2.12.3
+Version:        2.13.0
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-kms/google-cloud-kms-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.32.0}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.3}
+BuildRequires:  %{python_module google-api-core >= 1.34.0}
+BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
 BuildRequires:  %{python_module proto-plus >= 1.22.0}
 BuildRequires:  %{python_module protobuf >= 3.19}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -35,8 +35,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.32.0
-Requires:       python-grpc-google-iam-v1 >= 0.12.3
+Requires:       python-google-api-core >= 1.34.0
+Requires:       python-grpc-google-iam-v1 >= 0.12.4
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 BuildArch:      noarch
@@ -60,13 +60,6 @@ Cloud Key Management Service (KMS) API API client library
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/fixup_kms_v1_keywords.py
-
-%post
-%python_install_alternative fixup_kms_v1_keywords.py
-
-%postun
-%python_uninstall_alternative fixup_kms_v1_keywords.py
 
 %check
 %pytest tests/unit
@@ -75,6 +68,5 @@ Cloud Key Management Service (KMS) API API client library
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
-%python_alternative %{_bindir}/fixup_kms_v1_keywords.py
 
 %changelog
