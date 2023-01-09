@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 16 14:32:31 UTC 2022 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.7:
+  + Overhaul policy routing setup (issue #19)
+  + Support alias IPv4 ranges (issue #14)
+  + Add support for NetworkManager (bsc#1204549)
+  + Remove dependency on netconfig
+  + Install into libexec directory
+  + Clear stale ifcfg files for accelerated NICs (bsc#1199853)
+  + More debug messages
+  + Documentation update
+
+-------------------------------------------------------------------
 Sun Sep 18 17:14:16 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - /etc/netconfig.d/ moved to /usr/libexec/netconfig/netconfig.d/ in
