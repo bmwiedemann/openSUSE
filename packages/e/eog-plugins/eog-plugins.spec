@@ -1,7 +1,7 @@
 #
 # spec file for package eog-plugins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eog-plugins
-Version:        42.2
+Version:        42.3
 Release:        0
 Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later

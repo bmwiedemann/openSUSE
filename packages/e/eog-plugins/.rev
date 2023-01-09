@@ -471,4 +471,14 @@
 </comment>
     <requestid>1004774</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>643acd6f4ed3d1b8daaba646a194f3a8</srcmd5>
+    <version>42.3</version>
+    <time>1673281440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 42.3:
+  + General changes: build: Use correct variables.
+  + Updated translations. (forwarded request 1056818 from iznogood)</comment>
+    <requestid>1057051</requestid>
+  </revision>
 </revisionlist>
