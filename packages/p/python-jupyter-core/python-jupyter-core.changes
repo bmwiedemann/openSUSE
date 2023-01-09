@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan  8 09:16:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.1.2
+  * Add spell check and ensure docstrings #327 (@blink1073)
+  * Maint: Some more precise typing. #326 (@Carreau)
+
+-------------------------------------------------------------------
 Sun Dec 25 20:25:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.1.1
