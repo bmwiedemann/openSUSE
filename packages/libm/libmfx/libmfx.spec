@@ -1,7 +1,7 @@
 #
 # spec file for package libmfx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global sover 1
 Name:           libmfx
 %define lname   libmfx%{sover}
-Version:        22.6.4
+Version:        22.6.5
 Release:        0
 Summary:        The Intel Media SDK
 License:        MIT
