@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:51:22 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Enable ppc64le support 
+
+-------------------------------------------------------------------
+Sat Dec 31 13:53:14 UTC 2022 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Update to 1.4.0: 
+  * Package management
+   * New ‘guix home’ command, for home environment management
+   * New ‘guix shell’ command, the successor to ‘guix environment’
+   * New ‘guix system edit’ command, to edit services
+   * New ‘deb’ format for the ‘guix pack’ command
+   * New ‘guix import minetest’ command, to import Minetest extensions
+   * New ‘guix import elm’ command, to import Elm packages
+   * New ‘guix import egg’ command, to import CHICKEN egg packages
+   * New ‘guix import hexpm’ command, to import Erlang and Elixir packages
+   * New 'guix style' command, to auto-format package definitions
+   * ‘guix import texlive’ rewritten to use the TLPDB as its source
+   * ‘guix import elpa’ now supports the non-GNU ELPA repository
+   * ‘guix import pypi’ can now import a specific version
+   * ‘guix import cran’ can now import a specific version
+   * New updater (see ‘guix refresh’): ‘generic-git’
+   * ‘guix graph’ has a new ‘--max-depth’ option
+   * ‘guix deploy’ has a new ‘--execute’ option
+   * ‘guix shell’ has a new ‘--emulate-fhs’ option
+   * ‘guix shell’ has a new ‘--symlink’ option
+   * ‘--with-commit’ option now accepts strings returned by ‘git describe’
+   * ‘--with-source’ option now applied recursively
+   * Align tabular data output by commands like ‘guix package --list-available’
+   * Improved ‘guix import go’ importer via a new PEG parser
+   * Improved Software Heritage downloader
+   * New 'web.archive.org’ download fall-back
+   * Various performance enhancements
+   * New ‘--tune’ package transformation option
+   * ‘guix refresh’ ‘-L’ option is repurposed to ‘load-path’ modification
+   * ‘guix system image’ supersedes the ‘docker-image’ sub-command
+ * Noteworthy bug fixes
+  * Fall back to Software Heritage when cloning a channel
+  * ‘--with-patch’ can be used on packages with non-origin sources
+  * Fix pathological profile building performance in the presence of grafts
+  * Deduplication phase of the garbage collector is now faster
+  * File system flags are validated before system instantiation
+  * Fonts can now be discovered in any profile via XDG_DATA_DIRS
+  * Various Python reproducibility fixes
+  * The installer now supports MSDOS disk labels on UEFI systems
+  * The installer can now properly mount FAT16 partitions
+  * The installer no longer crashes when deleting a free space partition
+  * Emacs handles major upgrades better without a re-login
+  * The bootloader configuration now accepts multiple targets
+  * File system mount point is always created when ‘create?’ is true
+  * Build the man database only if ‘man-db’ is in the profile
+  * gdk-pixbuf now discovers pixbuf loaders via a search path
+  * Gitolite home directory permissions are fixed
+  * The man-db database is indexed via man pages names
+  * ‘chfn’ can now change the user's full name
+  * GNOME Settings Bluetooth panel is now working
+  * Inferiors are now caching store connections
+  * Retry downloads when a substitute has become unavailable
+  * The installer doesn't segfault when removing an extended partition
+  * The installer doesn't ship an older Guix revision
+  * The installer cannot proceed without any non-root user accounts
+  * <operating-system> compiler truly honors the 'system' argument
+
+-------------------------------------------------------------------
 Thu Dec  1 15:33:30 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Raise libguile-ssh to version 14

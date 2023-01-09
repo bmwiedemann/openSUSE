@@ -1,7 +1,8 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Jonathan Brielmaier <j.brielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define guile	guile-2.0.9.tar.xz
 %define guix_builder_group	guixbuild
 Name:           guix
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        GNU Package manager
 License:        GPL-3.0-only
@@ -79,7 +80,7 @@ Requires:       libgcrypt-devel
 Requires:       libguile-ssh14
 Requires(pre):  %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64
+ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc64le
 Provides:       %{_libexecdir}/guix/guile
 
 %description

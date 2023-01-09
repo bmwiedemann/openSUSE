@@ -240,4 +240,12 @@ I tested it manually and it looks fine when the SR above is in. Although upstrea
     <comment>This should make guix installable again on Tumbleweed/Factory</comment>
     <requestid>1039514</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b0244197530355462dd16bfdc4b805c3</srcmd5>
+    <version>1.4.0</version>
+    <time>1673281458</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1057078</requestid>
+  </revision>
 </revisionlist>
