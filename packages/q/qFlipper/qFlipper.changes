@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Mon Jan  2 17:44:39 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- qFlipper version 1.2.2+git7.1672595968.84566a5:
+  * Do not use wrong serial port (#148)
+  * Fix zero width window (#149)
+  * Adding extra keyboard navigation (#135)
