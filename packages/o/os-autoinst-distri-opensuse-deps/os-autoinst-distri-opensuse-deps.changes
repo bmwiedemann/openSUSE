@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  9 11:38:45 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(SemVer)
+
+-------------------------------------------------------------------
 Fri Sep 23 20:05:01 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(Class::Accessor::Fast)
