@@ -1,7 +1,7 @@
 #
 # spec file for package python-drgn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,22 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.21
+Version:        0.0.22
 Release:        0
 Summary:        Scriptable debugger library
-License:        GPL-3.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/osandov/drgn
 Source:         https://files.pythonhosted.org/packages/source/d/drgn/drgn-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libkdumpfile-devel
+BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
 %python_subpackages
 

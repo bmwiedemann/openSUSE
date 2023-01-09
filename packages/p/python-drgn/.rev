@@ -15,4 +15,30 @@
     <comment></comment>
     <requestid>1010977</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba8b880cb84003242cadbb46823fb4a9</srcmd5>
+    <version>0.0.22</version>
+    <time>1673281409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to drgn-0.0.22:
+  * License changed to LGPLv2.1+.
+  * Linux kernel support was tested up to Linux 6.2-rc2.
+  * Oldest kernel version officially supported is now 4.9.
+  * The StackFrame.locals() method was added.
+  * The StackFrame.sp attribute was added.
+  * Helpers for XArrays were added.
+  * The drgn.helpers.linux.slab.get_slab_aliases() helper was added.
+  * The drgn.helpers.linux.slab.slab_object_info() helper was added.
+  * The drgn.helpers.common.memory.identify_address() helper now
+    provide the offset from the beginning of the slab object and
+    whether it is allocated or free.
+  * The drgn.helpers.common.stack.print_annotated_stack() helper was
+    added.
+  * Support for Linux kernel modules and stack unwinding on s390x.
+  * Partial support for looking up types with C++ template
+    arguments.
+  * Parsing debug info for C++ template parameter packs.
+</comment>
+    <requestid>1057008</requestid>
+  </revision>
 </revisionlist>
