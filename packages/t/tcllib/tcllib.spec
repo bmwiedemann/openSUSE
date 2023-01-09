@@ -1,7 +1,7 @@
 #
 # spec file for package tcllib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           tcllib
-URL:            http://tcllib.sf.net
-BuildRequires:  tcl
-Version:        1.20
+Version:        1.21
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Tcl Standard Library
 License:        TCL
 Group:          Development/Libraries/Tcl
+URL:            http://tcllib.sf.net
+Source0:        http://core.tcl.tk/tcllib/uv/tcllib-%{version}.tar.xz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  sed
+BuildRequires:  tcl
 Requires:       /bin/sh
 BuildArch:      noarch
-Source0:        http://core.tcl.tk/tcllib/uv/tcllib-%version.tar.xz
-Source1:        %name-rpmlintrc
 
 %description
 This package is intended to be a collection of Tcl packages that
@@ -49,25 +48,25 @@ sed -i '1{ /^#!/d }' modules/pki/pki.tcl modules/oauth/oauth.tcl modules/defer/d
 
 # do not use /usr/bin/env in shebang
 for script in $(find apps examples -type f -executable -print); do
-    sed -i 's:/usr/bin/env tclsh:/usr/bin/tclsh:' $script
+    sed -i 's:%{_bindir}/env tclsh:%{_bindir}/tclsh:' $script
 done
 
 %build
 
-%install  
+%install
 tclsh ./installer.tcl -no-examples -no-html \
- -app-path   %buildroot/%_bindir \
- -pkg-path   %buildroot/%_datadir/tcl/%name%version \
- -nroff-path %buildroot%_mandir/mann \
+ -app-path   %{buildroot}/%{_bindir} \
+ -pkg-path   %{buildroot}/%{_datadir}/tcl/%{name}%{version} \
+ -nroff-path %{buildroot}%{_mandir}/mann \
  -no-wait -no-gui
 
 %files
-%defattr(-,root,root)
-%doc license.terms README.md ChangeLog
+%license license.terms
+%doc README.md ChangeLog
 %doc support/releases/history/README-*
-%_datadir/tcl
-%_bindir/*
+%{_datadir}/tcl
+%{_bindir}/*
 %doc examples
-%doc %_mandir/mann/*
+%{_mandir}/mann/*
 
 %changelog

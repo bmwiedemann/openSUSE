@@ -156,4 +156,12 @@ Make compatible with tcl license (it is the stated license of the package anyway
     <comment>- Update to version 1.20: /usr/share/doc/packages/tcllib/README</comment>
     <requestid>866631</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>19d6be58f037f6c9d35c241af5fc026c</srcmd5>
+    <version>1.21</version>
+    <time>1673281442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057040</requestid>
+  </revision>
 </revisionlist>
