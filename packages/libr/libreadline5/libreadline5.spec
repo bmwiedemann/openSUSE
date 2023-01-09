@@ -128,7 +128,7 @@ done
 
 %install
   make install htmldir=%{_defaultdocdir}/readline DESTDIR=%{buildroot}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
   make install-shared libdir=/%{_lib} linkagedir=%{_libdir} DESTDIR=%{buildroot}
   rm -rf %{buildroot}%{_defaultdocdir}/bash
   rm -rf %{buildroot}%{_defaultdocdir}/readline
@@ -175,7 +175,7 @@ mv %{buildroot}%{_mandir}/man3/readline.3 %{buildroot}%{_mandir}/man3/readline5.
 %else
 %doc COPYING
 %endif
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /%{_lib}/libhistory.so.5
 /%{_lib}/libhistory.so.%{rl_vers}
 /%{_lib}/libreadline.so.5

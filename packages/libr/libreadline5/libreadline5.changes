@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:07:05 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Thu Sep 30 10:18:22 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Move to /usr for UsrMerge (boo#1191091)
