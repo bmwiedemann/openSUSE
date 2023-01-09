@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 07 12:07:19 UTC 2023 - mia@0x0.st
+
+- Update to version 2.5.2:
+  * Improve debug messages
+  * Correct jackbridge build flags
+  * LTO must not be used for building wine stuff (not just linking)
+  * Also prevent -flto from wine link flags
+  * Prevent -static-lib{gcc,stdc++} flags from going to winelib stuff
+  * Use LIB_EXT for wine libs copying
+  * Bump version to 2.5.2
+  * fix pkgconfig files having bad includedir/libdir variables
+  * Revert "outer frame for carla-lv2" stuff, make it verbose instead
+  * Import fixes from main branch into hotfix-2.5 one
+- Refresh/Git format patches:
+  * carla-systemlibs.patch
+    -> 0001-Use-system-flac-vorbis-ogg.patch
+  * carla-remove-pkgconf-rpath.patch
+    -> 0002-Remove-rpath-from-.pc-files.patch
+  * use-correct-plugin-paths.patch
+    -> 0003-Use-correct-plugin-paths-for-openSUSE.patch
+
+-------------------------------------------------------------------
 Mon Oct 10 06:22:28 UTC 2022 - christophe@krop.fr
 
 - Update to version 2.5.1:

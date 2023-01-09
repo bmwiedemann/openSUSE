@@ -6,7 +6,7 @@
     <param name="exclude">.git</param>
     <param name="exclude">data/windows</param>
     <param name="exclude">source/native-plugins/external/*</param>
-    <param name="revision">v2.5.1</param>
+    <param name="revision">v2.5.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

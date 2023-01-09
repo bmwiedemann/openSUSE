@@ -1,20 +1,66 @@
-Index: carla-2.5.0/source/backend/utils/Makefile
-===================================================================
---- carla-2.5.0.orig/source/backend/utils/Makefile
-+++ carla-2.5.0/source/backend/utils/Makefile
-@@ -43,6 +43,8 @@ endif
+From 125f16f4861ec6df1709b03c5cc44b80677bbef7 Mon Sep 17 00:00:00 2001
+From: Mia Herkt <mia@0x0.st>
+Date: Sat, 7 Jan 2023 13:31:11 +0100
+Subject: [PATCH 1/3] Use system flac/vorbis/ogg
+
+---
+ source/Makefile.mk             |  8 ++++++++
+ source/backend/Makefile        |  2 ++
+ source/backend/utils/Makefile  |  2 ++
+ source/bridges-plugin/Makefile |  5 +++++
+ source/bridges-ui/Makefile     | 10 +++++-----
+ source/plugin/Makefile         |  3 +++
+ 6 files changed, 25 insertions(+), 5 deletions(-)
+
+diff --git a/source/Makefile.mk b/source/Makefile.mk
+index 29e9523..4565551 100644
+--- a/source/Makefile.mk
++++ b/source/Makefile.mk
+@@ -231,6 +231,14 @@ else ifeq ($(HAVE_SDL1),true)
+ BASE_FLAGS += -DHAVE_SDL -DHAVE_SDL1
+ endif
  
++FLAC_FLAGS  = $(shell pkg-config --cflags flac)
++FLAC_LIBS   = $(shell pkg-config --libs flac)
++BASE_FLAGS += $(FLAC_FLAGS)
++
++VORBIS_FLAGS  = $(shell pkg-config --cflags vorbis vorbisfile vorbisenc ogg)
++VORBIS_LIBS   = $(shell pkg-config --libs   vorbis vorbisfile vorbisenc ogg)
++BASE_FLAGS += $(VORBIS_FLAGS)
++
+ ifeq ($(HAVE_SNDFILE),true)
+ BASE_FLAGS += -DHAVE_SNDFILE
+ endif
+diff --git a/source/backend/Makefile b/source/backend/Makefile
+index 8c14c79..fdd1da9 100644
+--- a/source/backend/Makefile
++++ b/source/backend/Makefile
+@@ -86,6 +86,8 @@ STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
+ STANDALONE_LINK_FLAGS += $(FLUIDSYNTH_LIBS)
+ STANDALONE_LINK_FLAGS += $(SDL_LIBS)
+ STANDALONE_LINK_FLAGS += $(X11_LIBS)
++STANDALONE_LINK_FLAGS += $(FLAC_LIBS)
++STANDALONE_LINK_FLAGS += $(VORBIS_LIBS)
+ 
+ ifeq ($(USING_JUCE),true)
+ STANDALONE_LINK_FLAGS += $(JUCE_AUDIO_BASICS_LIBS)
+diff --git a/source/backend/utils/Makefile b/source/backend/utils/Makefile
+index 238274b..617b7af 100644
+--- a/source/backend/utils/Makefile
++++ b/source/backend/utils/Makefile
+@@ -45,6 +45,8 @@ endif
  LINK_FLAGS += $(LILV_LIBS)
  LINK_FLAGS += $(WATER_LIBS)
+ LINK_FLAGS += $(YSFX_GRAPHICS_LIBS)
 +LINK_FLAGS += $(FLAC_LIBS)
 +LINK_FLAGS += $(VORBIS_LIBS)
  
  ifeq ($(HAVE_X11),true)
  LINK_FLAGS += $(X11_LIBS)
-Index: carla-2.5.0/source/bridges-plugin/Makefile
-===================================================================
---- carla-2.5.0.orig/source/bridges-plugin/Makefile
-+++ carla-2.5.0/source/bridges-plugin/Makefile
+diff --git a/source/bridges-plugin/Makefile b/source/bridges-plugin/Makefile
+index 72fe7f9..b6da63b 100644
+--- a/source/bridges-plugin/Makefile
++++ b/source/bridges-plugin/Makefile
 @@ -179,6 +179,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
  
  NATIVE_LINK_FLAGS  += $(MAGIC_LIBS)
@@ -27,10 +73,10 @@ Index: carla-2.5.0/source/bridges-plugin/Makefile
  LIBS_native        += $(MODULEDIR)/audio_decoder.a
  LIBS_native        += $(MODULEDIR)/native-plugins.a
  LIBS_native        += $(MODULEDIR)/sfzero.a
-Index: carla-2.5.0/source/bridges-ui/Makefile
-===================================================================
---- carla-2.5.0.orig/source/bridges-ui/Makefile
-+++ carla-2.5.0/source/bridges-ui/Makefile
+diff --git a/source/bridges-ui/Makefile b/source/bridges-ui/Makefile
+index 243bbfa..30385f9 100644
+--- a/source/bridges-ui/Makefile
++++ b/source/bridges-ui/Makefile
 @@ -36,19 +36,19 @@ endif
  # ---------------------------------------------------------------------------------------------------------------------
  
@@ -56,29 +102,10 @@ Index: carla-2.5.0/source/bridges-ui/Makefile
  
  BUILD_COCOA_FLAGS   = $(BUILD_CXX_FLAGS) -DBRIDGE_COCOA -ObjC++
  LINK_COCOA_FLAGS    = $(LINK_FLAGS) -framework Cocoa $(LIBDL_LIBS)
-Index: carla-2.5.0/source/Makefile.mk
-===================================================================
---- carla-2.5.0.orig/source/Makefile.mk
-+++ carla-2.5.0/source/Makefile.mk
-@@ -230,6 +230,14 @@ else ifeq ($(HAVE_SDL1),true)
- BASE_FLAGS += -DHAVE_SDL -DHAVE_SDL1
- endif
- 
-+FLAC_FLAGS  = $(shell pkg-config --cflags flac)
-+FLAC_LIBS   = $(shell pkg-config --libs flac)
-+BASE_FLAGS += $(FLAC_FLAGS)
-+
-+VORBIS_FLAGS  = $(shell pkg-config --cflags vorbis vorbisfile vorbisenc ogg)
-+VORBIS_LIBS   = $(shell pkg-config --libs   vorbis vorbisfile vorbisenc ogg)
-+BASE_FLAGS += $(VORBIS_FLAGS)
-+
- ifeq ($(HAVE_SNDFILE),true)
- BASE_FLAGS += -DHAVE_SNDFILE
- endif
-Index: carla-2.5.0/source/plugin/Makefile
-===================================================================
---- carla-2.5.0.orig/source/plugin/Makefile
-+++ carla-2.5.0/source/plugin/Makefile
+diff --git a/source/plugin/Makefile b/source/plugin/Makefile
+index 389dd77..47ce7bb 100644
+--- a/source/plugin/Makefile
++++ b/source/plugin/Makefile
 @@ -127,6 +127,9 @@ endif
  
  LINK_FLAGS += $(YSFX_GRAPHICS_LIBS)
@@ -89,16 +116,6 @@ Index: carla-2.5.0/source/plugin/Makefile
  ifeq ($(MACOS),true)
  SYMBOLS_NATIVE  = -Wl,-exported_symbol,_carla_get_native_rack_plugin
  SYMBOLS_NATIVE += -Wl,-exported_symbol,_carla_get_native_patchbay_plugin
-Index: carla-2.5.0/source/backend/Makefile
-===================================================================
---- carla-2.5.0.orig/source/backend/Makefile
-+++ carla-2.5.0/source/backend/Makefile
-@@ -86,6 +86,8 @@ STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
- STANDALONE_LINK_FLAGS += $(FLUIDSYNTH_LIBS)
- STANDALONE_LINK_FLAGS += $(SDL_LIBS)
- STANDALONE_LINK_FLAGS += $(X11_LIBS)
-+STANDALONE_LINK_FLAGS += $(FLAC_LIBS)
-+STANDALONE_LINK_FLAGS += $(VORBIS_LIBS)
- 
- ifeq ($(USING_JUCE),true)
- STANDALONE_LINK_FLAGS += $(JUCE_AUDIO_BASICS_LIBS)
+-- 
+2.39.0
+

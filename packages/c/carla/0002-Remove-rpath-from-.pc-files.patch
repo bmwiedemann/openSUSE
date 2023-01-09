@@ -1,0 +1,59 @@
+From 8bc42b9231b93f8ea4f0839bf945d4f014f769c1 Mon Sep 17 00:00:00 2001
+From: "davejplater@gmail.com" <davejplater@gmail.com>
+Date: Sat, 7 Jan 2023 13:33:45 +0100
+Subject: [PATCH 2/3] Remove rpath from .pc files
+
+---
+ data/pkgconfig/carla-host-plugin.pc   | 2 +-
+ data/pkgconfig/carla-native-plugin.pc | 2 +-
+ data/pkgconfig/carla-standalone.pc    | 2 +-
+ data/pkgconfig/carla-utils.pc         | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/data/pkgconfig/carla-host-plugin.pc b/data/pkgconfig/carla-host-plugin.pc
+index 29b952a..fa148b6 100644
+--- a/data/pkgconfig/carla-host-plugin.pc
++++ b/data/pkgconfig/carla-host-plugin.pc
+@@ -6,5 +6,5 @@ carla_libdir=${libdir}/carla
+ Name: carla-host-plugin
+ Version: X-VERSION-X
+ Description: Carla Host as Native Plugin
+-Libs: -Wl,-rpath,${carla_libdir} -L${carla_libdir} -lcarla_host-plugin
++Libs: -L${carla_libdir} -lcarla_host-plugin
+ Cflags: -DREAL_BUILD -I${includedir}/carla -I${includedir}/carla/includes
+diff --git a/data/pkgconfig/carla-native-plugin.pc b/data/pkgconfig/carla-native-plugin.pc
+index ade9950..5400014 100644
+--- a/data/pkgconfig/carla-native-plugin.pc
++++ b/data/pkgconfig/carla-native-plugin.pc
+@@ -5,5 +5,5 @@ includedir=X-INCLUDEDIR-X
+ Name: carla-native-plugin
+ Version: X-VERSION-X
+ Description: Carla Native Plugin
+-Libs: -Wl,-rpath,${libdir}/carla -L${libdir}/carla -lcarla_native-plugin
++Libs: -L${libdir}/carla -lcarla_native-plugin
+ Cflags: -DREAL_BUILD -I${includedir}/carla -I${includedir}/carla/includes
+diff --git a/data/pkgconfig/carla-standalone.pc b/data/pkgconfig/carla-standalone.pc
+index 0e1113a..7daa047 100644
+--- a/data/pkgconfig/carla-standalone.pc
++++ b/data/pkgconfig/carla-standalone.pc
+@@ -5,5 +5,5 @@ includedir=X-INCLUDEDIR-X
+ Name: carla-standalone
+ Version: X-VERSION-X
+ Description: Carla Host Standalone
+-Libs: -Wl,-rpath,${libdir}/carla -L${libdir}/carla -lcarla_standalone2
++Libs: -L${libdir}/carla -lcarla_standalone2
+ Cflags: -DREAL_BUILD -I${includedir}/carla -I${includedir}/carla/includes
+diff --git a/data/pkgconfig/carla-utils.pc b/data/pkgconfig/carla-utils.pc
+index 1115fbe..6a8b5f2 100644
+--- a/data/pkgconfig/carla-utils.pc
++++ b/data/pkgconfig/carla-utils.pc
+@@ -5,5 +5,5 @@ includedir=X-INCLUDEDIR-X
+ Name: carla-utils
+ Version: X-VERSION-X
+ Description: Carla Host Utilities
+-Libs: -Wl,-rpath,${libdir}/carla -L${libdir}/carla -lcarla_utils
++Libs: -L${libdir}/carla -lcarla_utils
+ Cflags: -DREAL_BUILD -I${includedir}/carla -I${includedir}/carla/includes -I${includedir}/carla/utils
+-- 
+2.39.0
+

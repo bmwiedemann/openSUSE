@@ -1,7 +1,7 @@
 #
 # spec file for package carla
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
 # to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
@@ -37,11 +37,11 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        carla-warning
 Source2:        bsd-2-clause.txt
 # PATCH-FIX-OPENSUSE -- Use system flac/vorbis/ogg
-Patch0:         carla-systemlibs.patch
+Patch0:         0001-Use-system-flac-vorbis-ogg.patch
 # PATCH-FIX-OPENSUSE -- Remove rpath from .pc files davejplater@gmail.com
-Patch1:         carla-remove-pkgconf-rpath.patch
+Patch1:         0002-Remove-rpath-from-.pc-files.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
-Patch2:         use-correct-plugin-paths.patch
+Patch2:         0003-Use-correct-plugin-paths-for-openSUSE.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme

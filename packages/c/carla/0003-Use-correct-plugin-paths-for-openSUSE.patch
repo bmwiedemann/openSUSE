@@ -1,8 +1,18 @@
-Index: carla-2.3.0/source/frontend/carla_shared.py
-===================================================================
---- carla-2.3.0.orig/source/frontend/carla_shared.py
-+++ carla-2.3.0/source/frontend/carla_shared.py
-@@ -444,27 +444,27 @@ else:
+From 8de9be56dd35bd33e8a81adfbea082f4b210a8f4 Mon Sep 17 00:00:00 2001
+From: "sflees@suse.de" <sflees@suse.de>
+Date: Sat, 7 Jan 2023 13:34:29 +0100
+Subject: [PATCH 3/3] Use correct plugin paths for openSUSE
+
+---
+ source/frontend/carla_shared.py  | 12 ++++++------
+ source/frontend/carla_widgets.py |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/source/frontend/carla_shared.py b/source/frontend/carla_shared.py
+index bad8e2d..bc8a483 100644
+--- a/source/frontend/carla_shared.py
++++ b/source/frontend/carla_shared.py
+@@ -459,27 +459,27 @@ else:
      splitter = ":"
  
      DEFAULT_LADSPA_PATH  = HOME + "/.ladspa"
@@ -36,11 +46,11 @@ Index: carla-2.3.0/source/frontend/carla_shared.py
      DEFAULT_VST3_PATH   += ":/usr/local/lib/vst3"
  
      DEFAULT_SF2_PATH     = HOME + "/.sounds/sf2"
-Index: carla-2.3.0/source/frontend/carla_widgets.py
-===================================================================
---- carla-2.3.0.orig/source/frontend/carla_widgets.py
-+++ carla-2.3.0/source/frontend/carla_widgets.py
-@@ -1854,7 +1854,7 @@ if __name__ == '__main__':
+diff --git a/source/frontend/carla_widgets.py b/source/frontend/carla_widgets.py
+index fbb058b..a0c734c 100755
+--- a/source/frontend/carla_widgets.py
++++ b/source/frontend/carla_widgets.py
+@@ -1871,7 +1871,7 @@ if __name__ == '__main__':
      _loadHostSettings(_host)
  
      _host.engine_init("JACK", "Carla-Widgets")
@@ -49,3 +59,6 @@ Index: carla-2.3.0/source/frontend/carla_widgets.py
      _host.set_active(0, True)
  
      gui1 = CarlaAboutW(None, _host)
+-- 
+2.39.0
+
