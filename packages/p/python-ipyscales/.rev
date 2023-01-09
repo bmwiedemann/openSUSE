@@ -38,4 +38,17 @@
 - fix fdupes errors</comment>
     <requestid>976246</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>333fe04258cc48e0eb4e40f74cb9b6dd</srcmd5>
+    <version>unknown</version>
+    <time>1673281411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0 with jupyter-scale 3.3.0
+  * no release notes
+- Fix gh#vidartf/ipyscales#29
+- Cleanup jupyter-* packages
+
+- Update to 0.6.0 with jupyter-scales 3.2.0</comment>
+    <requestid>1056905</requestid>
+  </revision>
 </revisionlist>

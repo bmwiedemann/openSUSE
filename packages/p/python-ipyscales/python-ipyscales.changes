@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan  8 16:08:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.0 with jupyter-scale 3.3.0
+  * no release notes
+- Fix gh#vidartf/ipyscales#29
+- Cleanup jupyter-* packages
+
+-------------------------------------------------------------------
 Wed May 11 08:56:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to 0.6.0 with jupyter-scales 3.20
+- Update to 0.6.0 with jupyter-scales 3.2.0
   * no release notes
 - fix fdupes errors
 

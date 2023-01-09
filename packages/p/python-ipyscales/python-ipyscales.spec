@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyscales
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define mainver 0.6.0
-%define labver  3.2.0
+%define mainver 0.7.0
+%define labver  3.3.0
 %define         skip_python2 1
 Name:           python-ipyscales
 Version:        %{mainver}
@@ -56,13 +55,10 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyscales
 Summary:        A Jupyter widget library for scales
-Requires:       jupyter-ipyscales = %{version}
 Requires:       jupyter-notebook >= 4.0.0
-Requires(post): jupyter-notebook
-Requires(post): jupyter-ipywidgets >= 7.0.0
-Requires(preun):jupyter-notebook
-Requires(preun):jupyter-ipywidgets >= 7.0.0
 Conflicts:      python3-jupyter_ipyscales < 0.4.0
+# any flavor is okay
+Requires:       (%(echo "%{python_module ipyscales = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
 
 %description -n jupyter-ipyscales
 A Jupyter/IPython widget library for scales.
@@ -73,9 +69,8 @@ This package provides the jupyter notebook extension.
 Version:        %{labver}
 Summary:        A JupyterLab widget library for scales
 Requires:       jupyter-jupyterlab
-Requires:       python3-ipyscales = %{mainver}
-Provides:       python3-jupyter_ipyscales_jupyterlab = %{labver}-%{release}
-Obsoletes:      python3-jupyter_ipyscales_jupyterlab < %{labver}-%{release}
+# any flavor is okay
+Requires:       (%(echo "%{python_module ipyscales = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
 
 %description -n jupyter-jupyterlab-ipyscales
 A Jupyter/IPython widget library for scales.
@@ -89,18 +84,25 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 %setup -q -c -T
 
 %build
+# must use upstream wheel: npm build requires online connection
+:
 
 %install
 %pyproject_install %{SOURCE0}
-%{python_expand #
-find %{buildroot}%{$python_sitelib} -name '*.py' \
+builddir=${PWD}
+%{python_expand # must patch everything after installing from wheel
+pushd %{buildroot}%{$python_sitelib}
+cp ipyscales-%{mainver}.dist-info/LICENSE.txt ${builddir}
+find ipyscales -name '*.py' \
   -exec dos2unix '{}' ';' \
   -exec sed -i '1{/env python/ d}' '{}' ';'
-%fdupes %{buildroot}%{$python_sitelib}
+# gh#vidartf/ipyscales#29
+sed -i 's/np.float/float/' ipyscales/tests/test_colorarray.py
+popd
 }
-
-%{jupyter_move_config}
-cp %{buildroot}%{python3_sitelib}/ipyscales-%{mainver}.dist-info/LICENSE.txt .
+%python_compileall
+%jupyter_move_config
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
