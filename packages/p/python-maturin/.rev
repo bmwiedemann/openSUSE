@@ -707,4 +707,16 @@
 </comment>
     <requestid>1044089</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f3ca5dda07a506e273e67914358be636</srcmd5>
+    <version>0.14.8</version>
+    <time>1673281415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.8:
+  * Add support for packaging multiple pure Python packages
+    gh#PyO3/maturin#1378
+  * Fallback to sysconfig interpreters for pyo3 bindings
+    gh#PyO3/maturin#1381</comment>
+    <requestid>1056955</requestid>
+  </revision>
 </revisionlist>

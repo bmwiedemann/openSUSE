@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  9 01:59:53 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.8:
+  * Add support for packaging multiple pure Python packages
+    gh#PyO3/maturin#1378
+  * Fallback to sysconfig interpreters for pyo3 bindings
+    gh#PyO3/maturin#1381
+
+-------------------------------------------------------------------
 Wed Dec 21 12:01:29 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.14.7:
