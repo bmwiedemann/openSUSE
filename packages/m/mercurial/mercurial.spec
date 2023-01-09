@@ -1,7 +1,7 @@
 #
 # spec file for package mercurial
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
 Name:           mercurial
-Version:        6.3.1
+Version:        6.3.2
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later

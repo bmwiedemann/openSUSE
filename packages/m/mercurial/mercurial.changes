@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:21:20 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to Mercurial 6.3.2
+  * [ecfc84b956a8] tests: expect the message from 1baf0fffd82f 
+    in test-hghave.t (issue6762)
+  * [5c095119bff4] tests: add the missing space to test-hghave.t (issue6762)
+  * [2c346c1c75ec] tests: use an all too familiar executable 
+    in test-run-tests.t (issue6661)
+  * [13c0e3b4fd35] tests: use `test -f` instead of `ls` to see if a file 
+    is present (issue6662)
+  * [8ced4ca30ea1] bisect: correct message about aborting an in-progress 
+    bisect (issue6527)
+  * filemerge: fix crash when using filesets in [partial-merge-tools]
+  * help: fix a py3 error interpolating Set into b'%s'
+  * match: make the FLAG_RE pattern a raw string
+  * python-compat: adapt to Python 3.11 BC breakage with `random.sample`
+  * rust-status: fix thread count ceiling
+  * hg: show the correct message when cloning an LFS repo 
+    with extension disabled
+  * extensions: process disabled external paths when `hgext` package 
+    is in-memory
+  * emitrevision: consider ancestors revision to emit as available base
+  * make: add a target for building pyoxidizer tests on macOS
+  * run-tests: support --pyoxidized on macOS
+  * packaging: add dependencies to the PyOxidizer build on macOS
+  * Miscellaneous test fixes
+
+-------------------------------------------------------------------
 Sun Nov 20 09:32:18 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to Mercurial 6.3.1:
