@@ -61,4 +61,28 @@
 - Do not build on Python 3.6, due to no NumPy.</comment>
     <requestid>887388</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65ed1165523a332d15759d8e1d4ea6cb</srcmd5>
+    <version>1.13.3</version>
+    <time>1673281414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.3:
+  * release(1.13.2): (inverse\_)component\_map accepts non-aligned inputs
+  * fix: component\_map and inverse\_component\_map accept non-aligned
+    inputs
+  * fixtest: elements in inv\_component\_map are now sorted
+  * feat: unique accepts lists
+  * fix: remove duplicates from inverse\_component\_map
+  * build: update build system with aarch64 and py310
+  * release(1.13.0): using improved map for faster renumber, remap, more
+  * perf: switch to ska::flat\_hash\_map instead of std::unordered\_map
+  * release(1.12.2): release binaries with broader numpy ABI compat
+  * chore: use oldest-supported-numpy when building wheels
+  * release(1.12.1): unique accepts empty arrays
+  * fix: fastremap.unique doesn't accept empty arrays
+  * release(1.12.0): new point\_cloud and foreground functions
+  * feat(point\_cloud): new point\_cloud and foreground functions
+  * fix(renumber): preserve\_zero=False w/ arrays starting with 0</comment>
+    <requestid>1056941</requestid>
+  </revision>
 </revisionlist>
