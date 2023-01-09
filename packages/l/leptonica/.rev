@@ -193,4 +193,11 @@
     <comment></comment>
     <requestid>1057098</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>35e8de3baa7f149fd092e9da11a8d6bf</srcmd5>
+    <version>1.82.0</version>
+    <time>1673284914</time>
+    <user>dimstar_suse</user>
+    <comment>Revert, breaks tesseracto-cr</comment>
+  </revision>
 </revisionlist>
