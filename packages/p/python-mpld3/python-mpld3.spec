@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpld3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,37 +16,35 @@
 #
 
 
-# No numpy for py3.6
-%define skip_python36 1
-%define modname mpld3
-# Tests are not designed to be non-interactively run, see README.md
-%bcond_without  test
 Name:           python-mpld3
-Version:        0.5.8
+Version:        0.5.9
 Release:        0
 Summary:        D3 Viewer for Matplotlib
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://mpld3.github.com
-Source0:        https://files.pythonhosted.org/packages/source/m/mpld3/%{modname}-%{version}.tar.gz
-# Originally from https://raw.githubusercontent.com/mpld3/mpld3/master/visualize_tests.py
-Source1:        visualize_tests.py
-BuildRequires:  %{python_module Jinja2 >= 2.7}
-BuildRequires:  %{python_module matplotlib >= 2.2}
-BuildRequires:  %{python_module pandas}
+URL:            https://mpld3.github.io
+# SourceRepository: https://github.com/mpld3/mpld3
+Source0:        https://files.pythonhosted.org/packages/source/m/mpld3/mpld3-%{version}.tar.gz
+Source1:        https://github.com/mpld3/mpld3/raw/v%{version}/visualize_tests.py
+# PATCH-FIX-UPSTREAM mpld3-pr516-dasharray.patch gh#mpld3/mpld3#516
+Patch1:         mpld3-pr516-dasharray.patch
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.7
-Requires:       python-matplotlib >= 2.2
-Requires:       python-pandas
+Requires:       python-Jinja2
+Requires:       python-matplotlib
 Recommends:     jupyter-notebook
 BuildArch:      noarch
-%if %{with test}
+# SECTION test
 BuildRequires:  %{python_module diffimg}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -69,37 +67,32 @@ Documentation and examples for %{name}
 
 %prep
 %autosetup -p1 -n mpld3-%{version}
-
 cp %{SOURCE1} .
-
-chmod -x examples/*.py
 
 # Fix a bunch of inappropriate exec perms
 chmod a-x notebooks/*.ipynb \
           LICENSE \
           *.md \
           mpld3/js/*.js \
+          examples/*.py \
           mpld3.egg-info/*
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 export HIDE_PLOTS=True
-# exclusions gh#mpld3/mpld3#505
-%pytest -k 'not (test_show or test_snapshots)' mpld3/tests/*.py
-%endif
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.md README.md
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/mpld3/
+%{python_sitelib}/mpld3-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc examples/ notebooks/

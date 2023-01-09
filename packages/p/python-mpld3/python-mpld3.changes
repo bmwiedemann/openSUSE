@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan  7 20:43:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.9
+  * no release notes
+  * bumps some js versions, doc changes
+- Remove bcond_without test: tests were run all along
+- Fix failing test suite:
+  * Add mpld3-pr516-dasharray.patch gh#mpld3/mpld3#516
+
+-------------------------------------------------------------------
 Mon May 30 22:22:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update 0.5.8:
