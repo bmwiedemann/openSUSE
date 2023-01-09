@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-cross
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _libpkg libspirv-cross-c-shared0
 %define __builder ninja
 Name:           spirv-cross
-Version:        1.3.231.0
+Version:        1.3.236.0
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0 OR MIT

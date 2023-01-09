@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan  3 18:34:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.236.0
+  * MSL: Support "raw" buffer input in tessellation evaluation
+    shaders.
+  * MSL: Handle partial access chains with array-of-UBO/SSBO.
+  * HLSL: Implement VK_EXT_mesh_shader
+
+-------------------------------------------------------------------
 Mon Oct 24 20:13:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.231.0
