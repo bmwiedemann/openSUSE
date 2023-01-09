@@ -1,7 +1,7 @@
 #
 # spec file for package gcc11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %define _slibdir  /%{_lib}
 %define slibdir   /lib
 %define slibdir64 /lib64
@@ -24,6 +24,7 @@
 %define _slibdir  %{_libdir}
 %define slibdir   %{_prefix}/lib
 %define slibdir64 %{_prefix}/lib64
+%define usrmerged 1
 %endif
 
 # Ada currently fails to build on a few platforms, enable it only

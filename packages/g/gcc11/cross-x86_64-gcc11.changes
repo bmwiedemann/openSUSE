@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:41:18 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't rely on %usrmerged, set it based on standard %suse_version
+
+-------------------------------------------------------------------
 Mon Oct 24 08:56:14 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-11 branch head (bd0c76a2329e7fe6d6612c225), git2076

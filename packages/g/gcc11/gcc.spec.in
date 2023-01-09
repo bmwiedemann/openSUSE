@@ -17,7 +17,7 @@
 
 # nospeccleaner
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %define _slibdir  /%{_lib}
 %define slibdir   /lib
 %define slibdir64 /lib64
@@ -25,6 +25,7 @@
 %define _slibdir  %{_libdir}
 %define slibdir   %{_prefix}/lib
 %define slibdir64 %{_prefix}/lib64
+%define usrmerged 1
 %endif
 
 # Ada currently fails to build on a few platforms, enable it only

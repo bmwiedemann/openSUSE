@@ -288,4 +288,12 @@ The compiler is NOT used by default.</comment>
   * includes fix for -Wmismatched-tags ICE  [bsc#1204599]</comment>
     <requestid>1030847</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bfc7b0b304c391f29d2b65f8ac00e167</srcmd5>
+    <version>11.3.1+git2076</version>
+    <time>1673281430</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't rely on %usrmerged, set it based on standard %suse_version</comment>
+    <requestid>1056992</requestid>
+  </revision>
 </revisionlist>
