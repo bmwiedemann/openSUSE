@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
@@ -89,7 +89,7 @@ to users via direct download. This package provides client to it.
 %if %{with test}
 %check
 #export PYTEST_ADDOPTS="--import-mode=importlib"
-%pytest -k 'not network' tests/unit
+%pytest -k 'not network and not w_custom_endpoint' tests/unit
 %endif
 
 %if !%{with test}

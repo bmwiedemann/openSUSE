@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  6 10:59:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.0
+  * Add "transfer_manager" module for concurrent uploads and
+    downloads, as a preview feature (#943)
+  * Add use_auth_w_custom_endpoint support (#941)
+  * Implement closed property on fileio.py classes (#907)
+
+-------------------------------------------------------------------
 Wed Nov 16 15:38:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.0

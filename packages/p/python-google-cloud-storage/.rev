@@ -205,4 +205,16 @@
     <comment></comment>
     <requestid>1036390</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>60dbd975b9d4aeebf78753692f29bb74</srcmd5>
+    <version>2.7.0</version>
+    <time>1673281407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.0
+  * Add &quot;transfer_manager&quot; module for concurrent uploads and
+    downloads, as a preview feature (#943)
+  * Add use_auth_w_custom_endpoint support (#941)
+  * Implement closed property on fileio.py classes (#907)</comment>
+    <requestid>1056981</requestid>
+  </revision>
 </revisionlist>
