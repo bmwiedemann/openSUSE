@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  9 08:10:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.5:
+  * Grouped files are always opened in a single window, even when
+    the app is configured to open files in separate windows.
+  * Tab DND is enabled under Wayland.
+  * A total item deselection is prevented in the side-pane with
+    Qt6 (Qt5 had no problem).
+  * Side-pane and session buttons have been added to the tool-bar.
+
+-------------------------------------------------------------------
 Thu Dec  1 09:26:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.4:
