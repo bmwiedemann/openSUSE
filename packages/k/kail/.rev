@@ -56,4 +56,12 @@
 - Refresh vendor.tar.xz</comment>
     <requestid>781572</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00400876e72d1d265ad8ab8cb9d39ad0</srcmd5>
+    <version>0.16.1</version>
+    <time>1673281438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057005</requestid>
+  </revision>
 </revisionlist>

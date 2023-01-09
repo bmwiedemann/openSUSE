@@ -1,7 +1,7 @@
 #
 # spec file for package kail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           kail
-Version:        0.15.0
+Version:        0.16.1
 Release:        0
 Summary:        Kubernetes log viewer
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/boz/kail
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.12
+Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.18
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 

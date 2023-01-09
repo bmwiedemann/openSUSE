@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jan 06 18:56:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.16.1:
+  * added separate homebrew tap token, skip homebrew publish till #84 fix
+
+-------------------------------------------------------------------
+Fri Jan 06 18:54:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.16.0:
+  * update krew index manifest update added to ci
+  * add output flag details to flags table
+  * removed deprecated godownloader setup
+  * Add json and zerolog writers
+  * use json encoder, add "pretty" mode
+  * add output mode flag
+  * Bump k8s.io/client-go from 0.25.4 to 0.26.0
+
+-------------------------------------------------------------------
+Fri Jan 06 18:51:29 UTC 2023 - kastl@b1-systems.de
+
+- add _service file
+- BuildRequire go1.18
+- Update to version 0.15.1:
+  * added github workflow for CI, added krew, updated homebrew  (#83)
+  * Bump k8s.io/client-go from 0.24.3 to 0.25.4
+  * fix: update goreleaser yaml
+  * Bump github.com/stretchr/testify from 1.8.0 to 1.8.1
+  * chore: flip to upstream koz/kcache
+  * Switch to GitHub Actions
+  * Add dependabot
+
+-------------------------------------------------------------------
 Wed Mar  4 15:04:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.15.0
