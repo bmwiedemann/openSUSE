@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 08 13:53:04 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1673059575.c051c08:
+  * Dependency cron 2023-01-07
+  * Try running the full-stack test without retry
+  * Add postgresql service to requirements
+  * Pin css_parser to version 1.12.0 because newer need ruby 2.7
+  * Dependency cron 2023-01-05
+
+-------------------------------------------------------------------
 Sat Dec 24 02:16:48 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1671708203.c9f8b10:
