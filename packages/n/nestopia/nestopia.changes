@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:25:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.52.0:
+   - FLTK: Update to latest lodepng
+   - FLTK: Use NST prefix for data directories in build (cpasjuste)
+   - FLTK: Better frame timing on non-60Hz screens
+   - win32: Fix minor code problems (mjunix)
+   - Add support for Unlicensed MMC3 boards with PRG ROM over 512K
+   - Add support for Mapper 258 (UNL-158B)
+   - Add support for Mapper 400 (UNL-RET-X7-GBL)
+   - Remove options for 8-bit audio and sample rates below 44100Hz
+   - Improve heuristics for VRC2/4 boards
+   - Fix IPS patching in cases where patches overlap ROM region boundaries
+   - Improve handling of fast sequential reads to 0x2007
+   - Improve opcode 9c and 9e timing
+   - Correct implementation of PPU Open Bus
+
+-------------------------------------------------------------------
 Fri Aug 27 18:19:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.51.1

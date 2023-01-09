@@ -1,7 +1,7 @@
 #
 # spec file for package nestopia
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nestopia
-Version:        1.51.1
+Version:        1.52.0
 Release:        0
 Summary:        Nintendo Entertainment System/Famicom emulator
 License:        GPL-2.0-or-later
