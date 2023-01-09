@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioftp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-aioftp
 Version:        0.21.4
@@ -53,7 +52,7 @@ aioftp is a python FTP client/server based on asyncio.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --asyncio-mode=legacy
+%pytest
 
 %files %{python_files}
 %doc README.rst
