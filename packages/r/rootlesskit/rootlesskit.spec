@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           rootlesskit
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Linux-native fakeroot using user namespaces
 License:        Apache-2.0

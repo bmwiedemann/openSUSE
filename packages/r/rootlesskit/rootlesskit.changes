@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 24 16:43:43 UTC 2022 - andrea.manzini@suse.com
+
+- Update to version 1.1.0:
+  * Support using /usr/bin/getsubids (`--subid-source=dynamic`)
+    Useful for SSSD environments (subid: sss in /etc/nsswitch.conf)
+
+    Full changes: https://github.com/rootless-containers/rootlesskit/milestone/3?closed=1
+
+- bump vendor dependencies
+
+-------------------------------------------------------------------
 Fri Apr 22 13:36:54 UTC 2022 - rpm@fthiessen.de
 
 - Update to version 1.0.0:
