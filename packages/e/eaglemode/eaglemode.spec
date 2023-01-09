@@ -1,7 +1,7 @@
 #
 # spec file for package eaglemode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eaglemode
-Version:        0.95.2
+Version:        0.96.0
 Release:        0
 Summary:        A zoomable user interface (ZUI) with file manager, file viewers, games, etc.
 License:        GPL-3.0-only

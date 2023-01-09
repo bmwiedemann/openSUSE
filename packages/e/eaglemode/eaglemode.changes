@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  8 18:39:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.96.0:
+  * Added emStocks - a plugin for stock watchlists
+  * Added undo/redo functions to editable text fields
+  * Extended the graphics API to paint Bezier curves, arrows, and dashes
+  * Added support for showing ICO files which are PNG compressed
+  * Revised the emListBox API: Now the items have names
+
+-------------------------------------------------------------------
 Sun Dec  4 18:02:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.92.2:
