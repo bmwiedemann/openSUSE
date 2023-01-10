@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:27:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.3:
+  + Fix few memory leaks
+  + EMailReader: Correct sensitivity of toolbar buttons
+  + Add Interlingue translation into the list of supported locales
+  + Bugs fixed:
+    - e_task_table_get_selected: Skip non-existent comp_data
+    - Calendar: Unset "Show Event Preview" shortcut
+    - Duplicate attachments when forwarding
+    - MarkdownEditor: Correct signature boundary start on text
+      insert
+    - RSS: Crash when reading feed with empty author
+    - itip-formatter: iframe height miscalculated without frame
+      flattening
+    - Composer: Spell checking is auto-enabled on mode change
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec  5 09:35:15 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.46.2:

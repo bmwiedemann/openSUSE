@@ -2418,4 +2418,26 @@ Recommended for 12.3</comment>
     <comment>- Update to version 3.46.2: (forwarded request 1040205 from dimstar)</comment>
     <requestid>1040314</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>d833179a986536517fe0e8245f644067</srcmd5>
+    <version>3.46.3</version>
+    <time>1673359164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.3:
+  + Fix few memory leaks
+  + EMailReader: Correct sensitivity of toolbar buttons
+  + Add Interlingue translation into the list of supported locales
+  + Bugs fixed:
+    - e_task_table_get_selected: Skip non-existent comp_data
+    - Calendar: Unset &quot;Show Event Preview&quot; shortcut
+    - Duplicate attachments when forwarding
+    - MarkdownEditor: Correct signature boundary start on text
+      insert
+    - RSS: Crash when reading feed with empty author
+    - itip-formatter: iframe height miscalculated without frame
+      flattening
+    - Composer: Spell checking is auto-enabled on mode change
+  + Updated translations. (forwarded request 1056686 from iznogood)</comment>
+    <requestid>1057047</requestid>
+  </revision>
 </revisionlist>
