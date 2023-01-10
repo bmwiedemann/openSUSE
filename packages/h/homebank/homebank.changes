@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jan  9 16:41:47 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.1:
+  * bugfix: lp#2001566 vehicule cost report label vehicle while
+    properties label Category
+  * bugfix: lp#2000834 when fiscal year is not 01 jan
+    last/this/next year is 1 year ahead
+  * bugfix: lp#2000809 user feedback when create template or
+    assignment
+  * bugfix: lp#2000760 typo in french translation
+  * bugfix: lp#2000629 move buttons in Manage Assignments window
+    do not update at ends
+  * bugfix: lp#2000294 statistics Time 'Balance mode' ignores
+    filters
+  * bugfix: lp#2000292 week 51/52 display incorrectly in
+    Statistics Report
+  * bugfix: lp#2000269 quick filter transactions uncleared shows
+    reconciled transactions
+  * bugfix: lp#2000266 duplicated 'This fortnight' label in
+    date range
+  * bugfix: lp#1999963 category list with an & show other name
+  * bugfix: lp#1999879 new assignment by amount do not save
+    the amount
+  * bugfix: lp#1999322 When I hide a payee, changes are not saved
+  * bugfix: lp#1999297 win: crash in scheduled transaction
+  * bugfix: lp#1999265 future/remind list column width
+    to 0 (hidden)
+  * bugfix: lp#1999250 program crashes exporting Payees to csv
+  * bugfix: lp#1999243 moving assignment rule is not subject to
+    saving and moving to position>99 fails
+  * bugfix: lp#1999188 show detail preference is ignored + column
+    width to 0
+  * bugfix: lp#1999186 void transactions show regardless of
+    preferences setting
+  * bugfix: lp#1998987 translation is missing for days and
+    transaction status
+  * bugfix: lp#1998912 translation is missing for the new
+    date selector
+
+-------------------------------------------------------------------
 Tue Dec  6 21:24:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6:
