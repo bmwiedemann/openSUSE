@@ -101,4 +101,20 @@
     <comment></comment>
     <requestid>941566</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fff2187ed9af5b1fcf08c019d997d63c</srcmd5>
+    <version>4.6</version>
+    <time>1673359132</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6:
+  * Catch exceptions in ``formatExceptionOnly``.
+  Getting an exception when reporting about a different exception is not helpful.
+  On Python 3.11 this is needed for some HTTPErrors.
+  * Add official support for Python 3.11.
+  * Add official support for Python 3.9 and 3.10.
+  * Undo dropping support for Python 3.5.
+  * Drop support for running the tests using ``python setup.py test``.
+- drop zope.exceptions-pr19+pr21-py310.patch (upstream)</comment>
+    <requestid>1056694</requestid>
+  </revision>
 </revisionlist>

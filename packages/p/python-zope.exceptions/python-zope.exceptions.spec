@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,27 +26,24 @@
 %bcond_with test
 %endif
 Name:           python-zope.exceptions%{psuffix}
-Version:        4.4
+Version:        4.6
 Release:        0
 Summary:        Zope Exceptions
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-URL:            http://cheeseshop.python.org/pypi/zope.exceptions
+URL:            https://cheeseshop.python.org/pypi/zope.exceptions
 Source:         https://files.pythonhosted.org/packages/source/z/zope.exceptions/zope.exceptions-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM zope.exceptions-pr19+pr21-py310.patch -- gh#zopefoundation/zope.exceptions#21
-Patch0:         zope.exceptions-pr19+pr21-py310.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.interface
 Obsoletes:      %{name}-doc
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module zope.exceptions}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testrunner}
 %endif
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
