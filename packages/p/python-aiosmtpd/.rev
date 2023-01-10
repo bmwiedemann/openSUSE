@@ -66,4 +66,21 @@
 </comment>
     <requestid>1037222</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>46a8e6a29bebd47a3ca06e5614bc64d4</srcmd5>
+    <version>1.4.3</version>
+    <time>1673359130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * Is now compatible with uvloop
+  * Add compatibility for Python 3.10 and 3.11 (Closes #322)
+  * Test matrix update (Closes #306)
+  * Drop Python 3.6, PyPy 3.6 (some) and MacOS 10
+  * Add Python 3.10 &amp; 3.11, PyPy 3.7 &amp; 3.8, Ubuntu 22.04, MacOS 11 &amp; 12
+  * Expanded tox environments
+  * Longer AUTOSTOP_DELAY especially for Windows (Closes #313)
+  * Update signing keys
+  * Some documentation fixes</comment>
+    <requestid>1055964</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:48:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Is now compatible with uvloop
+  * Add compatibility for Python 3.10 and 3.11 (Closes #322)
+  * Test matrix update (Closes #306)
+  * Drop Python 3.6, PyPy 3.6 (some) and MacOS 10
+  * Add Python 3.10 & 3.11, PyPy 3.7 & 3.8, Ubuntu 22.04, MacOS 11 & 12
+  * Expanded tox environments
+  * Longer AUTOSTOP_DELAY especially for Windows (Closes #313)
+  * Update signing keys
+  * Some documentation fixes
+
+-------------------------------------------------------------------
 Mon Nov 21 16:19:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip rpmlint error python-tests-in-package. 
