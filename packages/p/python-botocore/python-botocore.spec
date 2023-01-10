@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-botocore%{?psuffix}
-Version:        1.29.41
+Version:        1.29.45
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
@@ -37,14 +37,11 @@ Source:         https://files.pythonhosted.org/packages/source/b/botocore/botoco
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jmespath < 1.0.0
-Requires:       python-jmespath >= 0.7.1
-Requires:       python-python-dateutil < 3.0.0
-Requires:       python-python-dateutil >= 2.1
 Requires:       python-requests
 Requires:       python-six
-Requires:       python-urllib3 < 1.27
-Requires:       python-urllib3 >= 1.25.4
+Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
+Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3.0.0)
+Requires:       (python-urllib3 >= 1.25.4 with python-urllib3 < 1.27)
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module botocore = %{version}}
