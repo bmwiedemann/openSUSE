@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-zope.schema%{psuffix}
-Version:        6.2.1
+Version:        7.0.1
 Release:        0
 Summary:        Zope interface extension for defining data schemas
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.schema
 Source:         https://files.pythonhosted.org/packages/source/z/zope.schema/zope.schema-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

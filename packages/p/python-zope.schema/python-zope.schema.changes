@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  6 12:40:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * Fix fallback when ``zope.i18nmessageid`` is not installed (regression
+  introduced in 7.0.0).
+  * Add support for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop ``zope.schema._compat`` module.
+  * Fix test deprecation warning on Python 3.11.
+
+-------------------------------------------------------------------
 Fri Sep 16 12:03:45 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.2.1

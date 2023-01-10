@@ -118,4 +118,18 @@
     <comment></comment>
     <requestid>1004158</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>72549c07c75f942d1c38e13765755bdc</srcmd5>
+    <version>7.0.1</version>
+    <time>1673359133</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.1:
+  * Fix fallback when ``zope.i18nmessageid`` is not installed (regression
+  introduced in 7.0.0).
+  * Add support for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop ``zope.schema._compat`` module.
+  * Fix test deprecation warning on Python 3.11.</comment>
+    <requestid>1056695</requestid>
+  </revision>
 </revisionlist>
