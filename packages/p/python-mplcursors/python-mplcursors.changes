@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  9 21:07:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.5.2
+  * Fix compatibility with Matplotlib 3.6 and with PEP517 builds.
+  * Non-multiple cursors can now be dragged.
+
+-------------------------------------------------------------------
 Thu Jan 20 20:25:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.5.1
