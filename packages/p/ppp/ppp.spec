@@ -150,12 +150,31 @@ install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/ppp/peers/pppoatm
 %endif
 install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/ppp/peers/ppp
 install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/ppp/peers/pptp
+%if 0%{?suse_version} > 1500
+install -d 755 %{buildroot}%{_pam_vendordir}
+install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/ppp
+%else
 install -d 755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/ppp
+%endif
 install -m 644 %{SOURCE13} %{buildroot}%{_mandir}/man8/pppoe-discovery.8.gz
 install -Dm 644 %{SOURCE14} %{buildroot}%{_sysconfdir}/ppp/chatscripts/modem.chat
 install -Dm 644 %{SOURCE15} %{buildroot}%{_unitdir}/modem@.service
 install -Dm 644 %{SOURCE16} %{buildroot}%{_udevrulesdir}/90-modem.rules
+
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/ppp ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/ppp ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files
 %attr(0750,root,root) %dir %{_sysconfdir}/ppp
@@ -165,7 +184,11 @@ install -Dm 644 %{SOURCE16} %{buildroot}%{_udevrulesdir}/90-modem.rules
 %config(noreplace) %{_sysconfdir}/ppp/pap-secrets
 %config(noreplace) %{_sysconfdir}/ppp/chap-secrets
 %config(noreplace) %{_sysconfdir}/ppp/peers/p*
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/ppp
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/ppp
+%endif
 %doc FAQ README* SETUP scripts PLUGINS
 %{_mandir}/man?/*.?%{ext_man}
 %attr(-,root,%{_group}) %{_sbindir}/pppd

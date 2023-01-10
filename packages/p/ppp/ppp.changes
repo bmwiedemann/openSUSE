@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 28 14:32:02 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Thu May 26 18:43:35 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add ppp-compiling-with-clang-encounters-an-error-in-eap-tls..patch

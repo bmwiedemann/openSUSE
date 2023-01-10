@@ -400,4 +400,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
     <comment></comment>
     <requestid>979444</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>c3ca3621dfac361e4bb0f4ebf5d608d5</srcmd5>
+    <version>2.4.9</version>
+    <time>1673359159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057041</requestid>
+  </revision>
 </revisionlist>
