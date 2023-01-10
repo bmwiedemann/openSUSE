@@ -83,7 +83,7 @@ make check
 
 %install
 make DESTDIR=%{buildroot} install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin/
 ln -sf %{_bindir}/fuser %{buildroot}/bin/
 %endif
@@ -95,7 +95,7 @@ rm -f %{buildroot}%{_mandir}/man1/peekfd.1*
 %files
 %defattr (-,root,root,755)
 %license COPYING
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/fuser
 %endif
 %{_bindir}/fuser
