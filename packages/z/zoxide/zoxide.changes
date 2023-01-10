@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  9 17:36:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  Added:
+  * edit subcommand to adjust the scores of entries.
+  Fixed:
+  * Zsh: completions clashing with zsh-autocomplete.
+  * Fzf: 'invalid option' on macOS.
+  * PowerShell: handle UTF-8 encoding correctly.
+  * Zsh: don't hide output from chpwd hooks.
+  * Nushell: upgrade minimum supported version to v0.73.0.
+  * Zsh: fix extra space in interactive completions when no match is found.
+  * Fzf: various improvements.
+  * Nushell: Accidental redefinition of hooks when initialized twice.
+  Removed:
+  * remove -i subcommand: use edit instead.
+
+-------------------------------------------------------------------
 Tue Sep 27 13:10:27 UTC 2022 - Jacob Hansen <me@jacobbaungard.com>
 
 - Version 0.8.3
