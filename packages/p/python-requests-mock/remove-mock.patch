@@ -1,9 +1,9 @@
-Index: requests-mock-1.9.3/tests/test_mocker.py
+Index: requests-mock-1.10.0/tests/test_mocker.py
 ===================================================================
---- requests-mock-1.9.3.orig/tests/test_mocker.py
-+++ requests-mock-1.9.3/tests/test_mocker.py
-@@ -12,7 +12,10 @@
- 
+--- requests-mock-1.10.0.orig/tests/test_mocker.py
++++ requests-mock-1.10.0/tests/test_mocker.py
+@@ -13,7 +13,10 @@
+ import json
  import pickle
  
 -import mock

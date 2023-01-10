@@ -237,4 +237,37 @@
   * Use unittest.mock if available.</comment>
     <requestid>990666</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>03bd7b8cd242ef125b6e2e0955c1d0d8</srcmd5>
+    <version>1.10.0</version>
+    <time>1673359133</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.0:
+  * Add a release note for the RLock
+  * Allow passing json\_encoder to mocking
+  * Improvements to Type Hints
+  * Lint fix for long line exception
+  * Shorten line length of comments
+  * Workaround for python2.7 not supporting lock timeout
+  * Comments to explain reentrant behaviour
+  * Change to use RLock and set a timeout to prevent infinite deadlocks
+  * Update homepage/doc URLs of requests library
+  * Add comment for pytest late loading feature
+  * pytest plugin should lazy-load requests\_mock
+  * Add test for threaded race condition
+  * Use threading.Lock() to prevent race conditions around monkeypatching of
+    get\_adapter()
+  * add GitHub URL for PyPi
+  * Add reset methods on the Mocker class type
+  * Avoid using distutils to check pytest version
+  * YAML quoting
+  * Support Python 3.10
+  * Minor changes to code snippet example
+  * Fix DeprecationWarnings in setup.cfg keys
+  * a few minor fixes and proposed changes to documentation files
+  * Improve response-related param type hints
+  * Explicitly indicate start of keyword-only args
+  * Fix failing pytest</comment>
+    <requestid>1056828</requestid>
+  </revision>
 </revisionlist>
