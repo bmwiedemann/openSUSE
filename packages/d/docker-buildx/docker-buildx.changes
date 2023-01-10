@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Tue Jan 10 06:00:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.0:
+  * docs: update with new inspect output
+  * inspect: change additional spdxs to not have duplicates
+  * inspect: provide access to multiple spdx documents
+  * inspect: parse sbom and provenance into json structs
+  * inspect: break after first matching attestation
+  * github: update CI to buildkit v0.11
+  * go.mod: update cli-docs-tool v0.5.1 and re-generate docs
+  * docs: update anchor links
+  * imagetools inspect: handle provenance and sbom
+  * imagetools inspect: missing annotations key
+  * vendor: update buildkit to v0.11.0-rc4
+  * docs: update oci layout with tag resolution
+  * build: refactor reference parsing for image layouts
+  * e2e: use native k3s installation script
+  * Propagate SOURCE_DATE_EPOCH from the client env
+  * disable buildx experimental in pipeline
+  * readme: fix status badge
+  * build: check error from toSolveOpt before adding FrontendAttrs
+  * git: do not show warnings if project does not use git
+  * github: update buildkit image to v0.11-rc3
+  * build: warn if git operation fails
+  * build: lookup the right git binary on WSL
+  * build: forward all build opts everywhere
+  * ci: generate provenance and sbom for bin image
+  * ci: generate provenance and sbom for release binaries
+  * buildflags: warn on duplicate attest field
+  * ci: update to ubuntu 22.04
+  * ci: fix deprecated set-output syntax
+  * ci: do not publish docs on prerelease
+  * builder: check endpoint from store when loading factory
+  * build: fix env vars check for vcs details
+  * bake: support null label value
+  * bake: support null arg value
+  * bake: add tests for block interpolation
+  * bake: support block-based interpolation
+  * bake: add cty tags to hcl structures
+  * build: set provenance vcs details
+  * e2e: load to docker store
+  * vendor: update buildkit to 862b22d7
+  * vendor: update buildkit to 93b40706a007
+  * store: set nodegroup last activity
+  * store: use constants for directory names
+  * vendor: github.com/moby/buildkit v0.11.0-rc1.0.20221207183946-5993b526de65
+  * build: don't set add-hosts option if empty
+  * bake: add attests field
+  * build: add attests flag and sbom/provenance shorthands
+  * build: add attestations to build options
+  * build: pass attestation attributes to build request
+  * chore: sort buildOptions alphabetically
+  * store: skip DockerContext field from being saved
+  * builder: fix default docker context behavior
+  * builder: enhance driver factory logic when loading drivers
+  * mutualize builder logic
+  * dockerutil pkg to manage docker api client and context
+  * kubernetes: fix context load test
+  * vendor: update buildkit to master@9624ab4
+  * hcl: SrcRange not checked when solving JSON func calls
+  * build: skip "host-gateway" validation with moby driver
+  * docs: moved manual pages to docs repo, added link
+  * bake: fix panic for unsupported hcl variable type
+  * imagetools: set default repo ref on creation if nil
+  * go.mod: golang_protobuf_extensions v1.0.4 - prevent incompat versions
+  * hack: mutualize build opts in Makefile and Dockerfile
+  * hack: improve hash-files script
+  * build(deps): Bump peter-evans/create-pull-request from 4.2.2 to 4.2.3
+  * ci: update softprops/action-gh-release to v0.1.15
+  * build(deps): Bump peter-evans/create-pull-request from 4.2.0 to 4.2.2
+  * docs: add tar flag to oci+docker exporters
+  * build: support tar flag for oci+docker exporters
+  * vendor: update buildkit to master@ae9d0f5
+  * docs: clarify support for various sets of shared options
+  * Correction in Synopsis.
+  * kubernetes: move context config logic to its own pkg
+  * docs: add cache persistence notes for docker-container driver
+  * go.mod: golang.org/x/crypto v0.1.0
+  * Address feedback
+  * Synchronise access to the map when printing.
+  * docs: use consistent "Type" header across parameter tables
+  * docs: add env parameter to docker-container driver
+  * Correct documentation on gha scopes
+  * use double spaces with json marshal indent
+  * go.mod: github.com/spf13/cobra v1.6.1
+  * docs: refactored file and directory structure
+  * docs: update git ref to docs repo
+  * docs: change cache storage links to exporter to docs site
+  * ci(docs-upstream): switch to reusable workflow
+  * update github.com/compose-spec/compose-go to v1.6.0
+  * docs: add exporter docs
+  * driver: don't create tracer delegate opt if tracer is nil
+  * progress: explicitly fail if tty requested but not available
+  * hack: lint scripts
+  * hack: use single output dir
+  * docker-container: move userns detection into driver
+  * chore: tidy up duplicate dockertypes import
+  * lint: add nolintlint and fix violations
+  * lint: remove structcheck
+  * build(deps): Bump peter-evans/create-pull-request from 4.1.4 to 4.2.0
+  * docs: add user sign for console blocks
+  * build(deps): Bump peter-evans/create-pull-request from 4.1.3 to 4.1.4
+  * docs: fix typo in cache docs
+  * go.mod: matttproud/golang_protobuf_extensions v1.0.2 (use tag)
+  * docs: fix cache command examples
+  * docs: replaced broken relative links
+  * changed from relative to absolute links
+  * moved context arg to last
+  * review comments, align style with driver docs
+  * address review comments
+  * fix incorrect heading text
+  * improve wording on default buildkit image
+  * updated prose and structure for driver docs
+  * bake: do not fail printing definition if instance unavailable
+  * Fix assignment to nil map
+  * Support empty env var when it can't be unset
+  * added tables for cache parameters
+  * build(deps): Bump peter-evans/create-pull-request from 4.1.2 to 4.1.3
+  * remove unrelated comment after upgrade
+  * ci: don't trigger build and e2e workflows on docs-only pull requests
+  * docs: final cache storage fixups
+  * docs: additions from editorial review
+  * docs: add cache storage backend docs
+  * build(deps): Bump peter-evans/create-pull-request from 4.0.4 to 4.1.2
+  * invoke: load defaults from image config
+  * docs: update links to new docs
+  * docs: update links in driver guide
+  * bake: recursively resolve groups
+  * kubernetes: rootless: support Google Container-Optimized OS
+  * Add git provenance labels
+  * return di.Err when it's not nil
+  * progress: add prefix to vertex progress group
+  * store: move regex to where it's used
+  * s3 cache client-side support
+  * vendor: bump compose-go to v1.5.0
+  * docs: missing syntax directive
+  * docs: make sure all named context examples use 1.4
+  * Dockerfile: update golangci-lint to 1.48.0 (go 1.19 support)
+  * Dockerfile: update to go 1.19
+  * docker api: use helper to parse context docker endpoint metadata
+
+-------------------------------------------------------------------
 Wed Sep 07 11:55:39 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.9.1:
