@@ -3236,4 +3236,12 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment></comment>
     <requestid>1038724</requestid>
   </revision>
+  <revision rev="242" vrev="7">
+    <srcmd5>b5851638ac60d6522ca2693e33fcf9f5</srcmd5>
+    <version>7.1.0</version>
+    <time>1673359173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057125</requestid>
+  </revision>
 </revisionlist>

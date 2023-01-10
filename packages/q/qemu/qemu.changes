@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  5 19:31:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- install binfmt-misc handlers for systemd (bsc#1206838) 
+
+-------------------------------------------------------------------
 Wed Nov 16 12:29:15 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Raise the maximum number of vCPUs a VM can have to 1024 (jsc#PED-2592)

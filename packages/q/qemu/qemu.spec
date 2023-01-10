@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -228,6 +228,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies exclusive to qemu-linux-user
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
+# passing filelist check for /usr/lib/binfmt.d
+BuildRequires:  systemd
 BuildRequires:  zlib-devel-static
 BuildRequires:  (pcre-devel-static if glib2-devel-static < 2.73 else pcre2-devel-static)
 # we must not install the qemu-linux-user package when under QEMU build
@@ -345,9 +347,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
+BuildRequires:  perl-Text-Markdown
 BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-setuptools
-BuildRequires:  perl-Text-Markdown
 %if "%{name}" == "qemu"
 # Requires, Recommends, etc exclusive to qemu
 %if %{kvm_available}
@@ -499,6 +501,7 @@ syscall layer occurs on the native hardware and operating system.
 %_bindir/qemu-xtensa
 %_bindir/qemu-xtensaeb
 %_sbindir/qemu-binfmt-conf.sh
+%_prefix/lib/binfmt.d/qemu-*.conf
 
 # End of description and files for qemu-linux-user
 %else
@@ -1763,15 +1766,15 @@ for f in *.md
 
     %{nil ensure the correct media type }
     Markdown.pl "${f}" >"${b}.html" & set -- "${@}" "${!}"
-    
+
     %{nil links to b.md will be rendered as to b;
     soft link because %%doc makes a copy }
     ln -Ts "${b}.html" "${b}" & set -- "${@}" "${!}"
 
     echo >>docs.txt %%doc "${d}${b}.html" "${d}${b}"
- 
+
   done
-  
+
   %{nil wait here because we are running in a subshell }
   while ((${#}))
   do wait "${1}"
@@ -2194,6 +2197,8 @@ rm -rf %{buildroot}%_datadir/qemu/keymaps
 unlink %{buildroot}%_datadir/qemu/trace-events-all
 install -d -m 755 %{buildroot}%_sbindir
 install -m 755 scripts/qemu-binfmt-conf.sh %{buildroot}%_sbindir
+install -d -m 755 %{buildroot}%{_prefix}/lib/binfmt.d/
+scripts/qemu-binfmt-conf.sh --systemd ALL --persistent yes --exportdir %{buildroot}%{_prefix}/lib/binfmt.d/
 
 # End of additional installation steps for qemu-linux-user
 %else
