@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 10 05:50:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.1:
+  * Don't share the options map
+  * don't filter by services if no filter was set
+  * use a simpler prompt implementation when we lack a terminal
+  * fix CVE-2022-27664 and CVE-2022-32149 high-risk vulnerability
+  * add support for uts namespace
+
+-------------------------------------------------------------------
 Thu Jan 05 13:59:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.0:
