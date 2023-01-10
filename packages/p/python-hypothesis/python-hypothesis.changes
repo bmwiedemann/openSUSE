@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan  7 21:27:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.61.2
+  * This patch improves our pretty-printing of failing examples,
+    including some refactoring to prepare for exciting future
+    features.
+- Release 6.61.1
+  * This patch brings our domains() and emails() strategies into
+    compliance with RFC 5890 §2.3.1: we no longer generate
+    parts-of-domains where the third and fourth characters are --
+    (“R-LDH labels”), though future versions may deliberately
+    generate xn-- punycode labels. Thanks to python-email-validator
+    for the report!
+- Update dependencies
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Thu Dec 15 06:35:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.61.0

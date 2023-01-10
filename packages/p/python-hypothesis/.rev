@@ -643,4 +643,12 @@ This version fixes the license naming issue.</comment>
 </comment>
     <requestid>1043052</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>35188a1a58e9698f29cd6a38bdc29eb8</srcmd5>
+    <version>6.61.2</version>
+    <time>1673359138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056961</requestid>
+  </revision>
 </revisionlist>

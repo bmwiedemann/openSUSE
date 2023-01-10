@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.61.0
+Version:        6.61.2
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -41,24 +41,26 @@ URL:            https://github.com/HypothesisWorks/hypothesis
 # See also https://hypothesis.readthedocs.io/en/latest/packaging.html
 Source:         hypothesis-python-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
-Requires:       python-exceptiongroup >= 1.0.0
-Requires:       python-sortedcontainers >= 2.1.0
+Requires:       (python-exceptiongroup >= 1.0.0 if python-base < 3.11)
+Requires:       (python-sortedcontainers >= 2.1.0 with python-sortedcontainers < 3.0)
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 # SECTION requires_extra
 # consuming packages need to declare these optional dependencies explicitly
-Recommends:     python-Django >= 2.2
+Recommends:     python-Django >= 3.2
 Recommends:     python-black >= 19.10
 Recommends:     python-click >= 7.0
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark >= 0.10.1
 Recommends:     python-libcst >= 0.3.16
 Recommends:     python-numpy >= 1.9.0
-Recommends:     python-pandas >= 0.25
+Recommends:     python-pandas >= 1.0
 Recommends:     python-pytest >= 4.6
 Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
@@ -68,16 +70,14 @@ Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # /SECTION
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module attrs >= 19.2.0}
-BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
+BuildRequires:  %{python_module hypothesis = %{version}}
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module backports.zoneinfo >= 0.2.1 if %python-base < 3.9}
 BuildRequires:  %{python_module black >= 19.10}
 BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module hypothesis = %{version}}
 BuildRequires:  %{python_module lark >= 0.10.1}
 BuildRequires:  %{python_module libcst >= 0.3.16}
 BuildRequires:  %{python_module numpy >= 1.9.0}
@@ -113,12 +113,12 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/hypothesis
@@ -170,7 +170,7 @@ filterwarnings =
 %doc README.rst
 %python_alternative %{_bindir}/hypothesis
 %{python_sitelib}/*hypothesis*
-%{python_sitelib}/hypothesis-%{version}-py*.egg-info
+%{python_sitelib}/hypothesis-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__/*hypothesis*
 %endif
 
