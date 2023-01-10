@@ -2191,4 +2191,19 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     Task list.</comment>
     <requestid>1040203</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>87ba73a6e14b6ed9d613a7e2029b8f6e</srcmd5>
+    <version>3.46.3</version>
+    <time>1673359163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.3:
+  + Fix a crash under source_registry_object_added_no_owner()
+  + ESoupAuthBearer: Add debug prints
+  + Bugs fixed: 
+    - e_util_change_uri_component: Reset default port when changing
+      scheme
+    - Prompting for password too often
+  + Updated translations. (forwarded request 1056685 from iznogood)</comment>
+    <requestid>1057046</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:25:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.3:
+  + Fix a crash under source_registry_object_added_no_owner()
+  + ESoupAuthBearer: Add debug prints
+  + Bugs fixed: 
+    - e_util_change_uri_component: Reset default port when changing
+      scheme
+    - Prompting for password too often
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Dec  4 15:45:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 3.46.2:
