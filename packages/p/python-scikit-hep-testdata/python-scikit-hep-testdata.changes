@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 10 09:27:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to versin 0.14.26
+  * removal of Python 3.6 [gh#scikit-hep/scikit-hep-testdata#109].
+  * update rntuple tests to 6.29 and adding more
+    [gh#scikit-hep/scikit-hep-testdata#111].
+- Minor rebasing of scikit-hep-testdata-datadir.patch to apply
+  cleanly.
+
+-------------------------------------------------------------------
 Tue Oct 25 20:11:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.14.22:

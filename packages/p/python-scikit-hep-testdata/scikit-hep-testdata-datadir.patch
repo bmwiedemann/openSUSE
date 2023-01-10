@@ -1,15 +1,15 @@
-diff -ur scikit-hep-testdata-0.4.4.orig/src/skhep_testdata/local_files.py scikit-hep-testdata-0.4.4/src/skhep_testdata/local_files.py
---- scikit-hep-testdata-0.4.4.orig/src/skhep_testdata/local_files.py	2021-07-16 20:25:58.664206704 +0200
-+++ scikit-hep-testdata-0.4.4/src/skhep_testdata/local_files.py	2021-07-16 20:36:55.863591123 +0200
-@@ -1,6 +1,7 @@
- # -*- coding: utf-8 -*-
- from __future__ import absolute_import
+Index: scikit-hep-testdata-0.4.26/src/skhep_testdata/local_files.py
+===================================================================
+--- scikit-hep-testdata-0.4.26.orig/src/skhep_testdata/local_files.py
++++ scikit-hep-testdata-0.4.26/src/skhep_testdata/local_files.py
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
  
 +import os
  import sys
  import tempfile
- import typing
-@@ -24,7 +25,7 @@
+ import zipfile
+@@ -17,7 +18,7 @@ else:
  __all__ = ("data_path", "download_all", "known_files")
  
  
@@ -18,10 +18,11 @@ diff -ur scikit-hep-testdata-0.4.4.orig/src/skhep_testdata/local_files.py scikit
  
  baseurl = "https://raw.githubusercontent.com/scikit-hep/scikit-hep-testdata/main/src/skhep_testdata/data/"
  zipurl = "https://github.com/scikit-hep/scikit-hep-testdata/zipball/main"
-diff -ur scikit-hep-testdata-0.4.4.orig/tests/test_local_files.py scikit-hep-testdata-0.4.4/tests/test_local_files.py
---- scikit-hep-testdata-0.4.4.orig/tests/test_local_files.py	2021-07-16 20:25:58.664206704 +0200
-+++ scikit-hep-testdata-0.4.4/tests/test_local_files.py	2021-07-16 20:42:21.434980038 +0200
-@@ -5,7 +5,7 @@
+Index: scikit-hep-testdata-0.4.26/tests/test_local_files.py
+===================================================================
+--- scikit-hep-testdata-0.4.26.orig/tests/test_local_files.py
++++ scikit-hep-testdata-0.4.26/tests/test_local_files.py
+@@ -4,7 +4,7 @@ import pytest
  
  import skhep_testdata as skhtd
  
