@@ -1,7 +1,7 @@
 #
 # spec file for package python-stack-data
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-stack-data
 Version:        0.2.0
 Release:        0
@@ -65,9 +64,11 @@ Extract data from python stack frames and tracebacks for informative displays
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# incompatibility with Pygments
+%pytest -k 'not test_pygments_example'
 
 %files %{python_files}
-%{python_sitelib}/stack_data*
+%{python_sitelib}/stack_data
+%{python_sitelib}/stack_data-%{version}*-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 01:04:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_pygments_example test, because it is just too
+  unstable given the ever changing output from Pygments.
+
+-------------------------------------------------------------------
 Mon May 16 12:18:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.2.0:

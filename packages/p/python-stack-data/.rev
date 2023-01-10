@@ -23,4 +23,14 @@
 </comment>
     <requestid>977523</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>353935a240c7afa6cd7c53ad3dcd3601</srcmd5>
+    <version>0.2.0</version>
+    <time>1673359130</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_pygments_example test, because it is just too
+  unstable given the ever changing output from Pygments.
+</comment>
+    <requestid>1046660</requestid>
+  </revision>
 </revisionlist>
