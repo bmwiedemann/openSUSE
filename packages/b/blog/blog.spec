@@ -1,7 +1,7 @@
 #
 # spec file for package blog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,7 +92,7 @@ make %{?_smp_mflags} CC="%__cc" \
 %make_install \
     MANPATH=%{_mandir} \
     INSTBINFLAGS="-m 0744" \
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
     SBINDIR=%{_sbindir} \
 %endif
     LIBDIR=%{_libdir} \
@@ -121,7 +121,7 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %defattr(-,root,root)
 %license COPYING
 %doc README
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/blogctl
 /sbin/blogd
 /sbin/blogger

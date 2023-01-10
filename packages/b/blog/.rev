@@ -164,4 +164,12 @@ use private glib API but implement a share memory mkstemp</comment>
     the systemd unit files of blog (boo#1186506)</comment>
     <requestid>935416</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>feb7ead9369dc5067c99f64f0582d4ea</srcmd5>
+    <version>2.26</version>
+    <time>1673359158</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1051492 from lnussel)</comment>
+    <requestid>1057034</requestid>
+  </revision>
 </revisionlist>
