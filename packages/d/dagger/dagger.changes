@@ -1,4 +1,207 @@
 -------------------------------------------------------------------
+Tue Jan 10 06:06:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.9:
+  * Fix linktime override of Version var. (#4346)
+  * sdk: Bump engine dependency to v0.3.8 (#4338)
+
+-------------------------------------------------------------------
+Tue Jan 10 06:02:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.8:
+  * Add docs for custom provisioning and the session interface (#4232)
+  * deps(python): Package updates (#4334)
+  * sdk: python: Improve runtime type checking error message (#4333)
+  * build(deps-dev): bump eslint from 8.30.0 to 8.31.0 in /sdk/nodejs (#4276)
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4314)
+  * add link to examples repo in readme (#4326)
+  * feat: improve error message on stopped dagger engine (#4284)
+  * docs: add linting support for node snippets (#4328)
+  * docs: improve GraphQL schema doc (#4240)
+  * ci: avoid running publish workflows in forks (#4330)
+  * docs: Add replace dockerfile with Go guide (#4173)
+  * chore(python): Update default python version (#4298)
+  * docs(python): Hide internal member from reference (#4295)
+  * build(deps): bump golang.org/x/mod from 0.6.0 to 0.7.0 (#4318)
+  * Support the rest of the default buildkitd conns. (#4288)
+  * Change buildkit config+state to be dagger specific. (#4287)
+  * build(deps): bump github.com/docker/cli (#4306)
+  * build(deps): bump golang.org/x/sys from 0.3.0 to 0.4.0 (#4302)
+  * feat(codegen/nodejs): improve Socket SDK object reusability (#4315)
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4262)
+  * fix: session usage and double error prints (#4303)
+  * Add zipfile cli download support for windows. (#4286)
+  * Upgrade to buildkit v0.11-rc3. (#4296)
+  * improve connect doc reference (#4250)
+  * update local development section in the README (#4297)
+  * fix(codegen/nodejs): generate the required method param documentation correctly (#4134)
+  * Switch session url to port (#4285)
+  * sdk: python: Use platform dependent cache dirs (#4281)
+  * chore(python): Update Poetry in CI (#4292)
+  * Python: Update locked packages (#4280)
+  * setup nested session in the shim instead of the executor (#4260)
+  * Added typesafe error names to nodesdk errors (#4283)
+  * docs: explain how use local NodeSDK library. (#4265)
+  * build(deps-dev): bump eslint-config-prettier in /sdk/nodejs (#4277)
+  * website: Improve nodejs sdk docs readability (#4275)
+  * style: improve NodeSDK utils code (#4274)
+  * fix: NodeSDK correctly solves subqueries (#4266)
+  * style: enhance NodeSDK coding style (#4269)
+  * build(deps): bump axios from 1.2.1 to 1.2.2 in /sdk/nodejs (#4268)
+  * build(deps): bump json5 from 2.2.1 to 2.2.2 in /website (#4273)
+  * build(deps): bump certifi from 2022.9.24 to 2022.12.7 in /sdk/python (#4148)
+  * sdk: nodejs: rename queryBuilder func (#4249)
+  * sdk: python: Don’t timeout by default (#4175)
+  * sdk: python: Refactor provisioning (#4255)
+  * Make archive names consistent with previous naming scheme. (#4261)
+  * fix(codegen/nodejs): make input type field generation ordered/stable (#4259)
+  * fix(sdk/nodejs): use OS user cache path with "env-paths" (#4256)
+  * docs: update private git docs (#4251)
+  * Add build args to Dockerfile build (#4207)
+  * Add file/folder permissions to Directory and Container APIs (#4157)
+  * build(deps): bump attrs from 22.1.0 to 22.2.0 in /sdk/python (#4238)
+  * docs: Use /var/run/docker.sock base64 (#4253)
+  * build(deps-dev): bump mocha from 10.1.0 to 10.2.0 in /sdk/nodejs (#4166)
+  * build(deps): bump graphql-request from 5.0.0 to 5.1.0 in /sdk/nodejs (#4228)
+  * feat: NodeSDK generate input from GQL schema. (#4247)
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4167)
+  * build(deps): bump typedoc from 0.23.21 to 0.23.23 in /website (#4223)
+  * build(deps-dev): bump @typescript-eslint/parser in /sdk/nodejs (#4229)
+  * build(deps-dev): bump eslint from 8.29.0 to 8.30.0 in /sdk/nodejs (#4230)
+  * build(deps): bump sass from 1.57.0 to 1.57.1 in /website (#4231)
+  * Added types to error names and error codes (#4227)
+  * build(deps-dev): bump typescript from 4.9.3 to 4.9.4 in /sdk/nodejs (#4165)
+  * build(deps-dev): bump @typescript-eslint/parser in /sdk/nodejs (#4169)
+  * build(deps-dev): bump @types/node in /sdk/nodejs (#4218)
+  * build(deps): bump spectaql from 2.0.2 to 2.0.3 in /website (#4224)
+  * build(deps): bump sass from 1.56.2 to 1.57.0 in /website (#4225)
+  * nodesdk: Split EngineSessionPortParseError into different errors (#4156)
+  * cli: expose x-dagger-engine version with dagger listen (#4221)
+  * ci: Add cli publish from main and tests against it. (#4208)
+  * docs: add reference to custom api clients from cli overview (#4202)
+  * cli: print complete GraphQL URL to stdout when listening (#4204)
+  * Update SDK form (#4203)
+  * Update SDKs to pull CLI from S3 URL. (#4194)
+  * sdk: python: Fix inconsistencies in passing IDs to fields (#4195)
+  * add toplevel socket query example (#4187)
+  * sdk: python: Check input types at runtime (#4034)
+  * update community call CTA (#4188)
+  * chore: temporarly disable provision test (#4185)
+  * chore: use index.mjs for file name (#4181)
+  * ./hack/dev: export dagger binary for host platform (#4183)
+  * Node.js GitHub + Google Cloud guide: remove awaited + fix the console.log (#4164)
+  * CI examples (#4162)
+  * Include output of failed exec in error message. (#4161)
+  * cli: add disable-host-read-write flag to dagger listen (#4171)
+  * build(deps): bump sass from 1.56.0 to 1.56.2 in /website (#4154)
+  * build(deps): bump decode-uri-component from 0.2.0 to 0.2.2 in /website (#4077)
+  * build(deps-dev): bump @types/node from 16.18.4 to 16.18.6 in /sdk/nodejs (#4114)
+  * build(deps-dev): bump prettier from 2.8.0 to 2.8.1 in /sdk/nodejs (#4124)
+  * build(deps): bump axios from 1.2.0 to 1.2.1 in /sdk/nodejs (#4115)
+  * build(deps-dev): bump @typescript-eslint/parser in /sdk/nodejs (#4139)
+  * build(deps): bump typescript from 4.9.3 to 4.9.4 in /website (#4141)
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4140)
+  * build(deps): bump amplitude-js from 8.21.2 to 8.21.3 in /website (#4153)
+  * build(deps): bump spectaql from 1.5.8 to 2.0.2 in /website (#4155)
+  * docs: Added GitHub + Google Cloud guide (#4135)
+  * Use 127.0.0.1 instead of localhost for sessions. (#4159)
+  * Replace engine-session binary w/ cli session cmd. (#4145)
+  * Update client-gen to use engine.Start directly. (#4143)
+  * update SDK request form URL (#4126)
+  * chore: Link contributing doc partial to CONTRIBUTING.md (#4127)
+  * CLI: use engine.Start directly  (#4119)
+  * connect test helper prints logs
+  * add File { withTimestamps }
+  * add Directory.WithTimestamps
+  * docs: remove YALM use case and add CUE warning (#4117)
+  * Update container optional arguments (#4122)
+  * website: remove what seems to be an unused package (#3475)
+  * docs: Add first draft of style guide (#4004)
+  * docs: add 0.2 older version warning page (#4116)
+  * docs: update Node.js SDK optionals arguments (#4121)
+  * sdk: nodejs: remove unused typedoc package (#4120)
+  * docs: Add Go example for host fs guide. (#4110)
+  * NodeJS SDK required + optional types (#4005)
+  * doc(sdk/nodejs): export CallbackFct from connect.ts (#4091)
+  * docs(python): Fix reference docs
+  * build(deps-dev): bump @typescript-eslint/eslint-plugin in /sdk/nodejs (#4098)
+  * Node.js SDK : Error handling (#3947)
+  * docs: Fix GitLab CI configuration (#4108)
+  * build(deps): bump typedoc-plugin-markdown in /website (#4101)
+  * build(deps-dev): bump @typescript-eslint/parser in /sdk/nodejs (#4102)
+  * build(deps): bump docusaurus-plugin-typedoc in /website (#4103)
+  * docs: update go multistage guide to 0.4.2 (#4082)
+  * build(deps-dev): bump typedoc-plugin-markdown in /sdk/nodejs (#4099)
+  * build(deps-dev): bump eslint from 8.28.0 to 8.29.0 in /sdk/nodejs (#4100)
+  * chore: Remove old examples dir (#4096)
+  * chore: Improve RELEASING.md based on today's interactions (#4066)
+  * Use one stable go sdk version to execute CI steps. (#4087)
+  * sdk: nodejs: Always return a immutable object (#4081)
+  * build(deps-dev): bump @types/node from 16.18.3 to 16.18.4 in /sdk/nodejs (#4068)
+  * Add API to Playground title (#4074)
+  * docs: add dagger do warning message (#4071)
+  * ci: re-enable Go SDK mirroring on `main`
+  * ci: nodejs bump: fix lint error (#4072)
+  * sdk: Bump engine dependency to v0.3.7 (#4070)
+  * DisableHostRW disables host socket access (#4067)
+
+-------------------------------------------------------------------
+Thu Dec 01 20:32:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.3.7:
+  * container: Support WithDirectory, WithFile & WithNewFile (#3827)
+  * Add warning about releasing engine before SDKs.
+  * docs: add link to docs in api reference logo (#4056)
+  * docs: Adds security note for custom session (#4057)
+  * docs: Add releasing instructions for Node.js SDK changelog (#3972)
+  * docs: Add tech review badge to API page (#4062)
+  * docs: update docs with DAGGER_SESSION_TOKEN. (#4052)
+  * add test for Directory { dockerBuild }
+  * feat: api: directory { dockerBuild }
+  * docs: Add API/CLI links to sidebar (#4044)
+  * docs: fix API Playground button style (#4043)
+  * Container.WithUnixSocket replaces same path
+  * add Container { withoutUnixSocket }
+  * panic on unknown errors in tests
+  * remove unnecessary python test fixture change
+  * add test for git + SSH auth sock
+  * remove auto SSH auth socket forwarding
+  * add sshAuthSocket param to git.tree
+  * support mounting host Unix sockets into containers
+
+-------------------------------------------------------------------
+Thu Dec  1 09:31:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
+Thu Dec 01 09:03:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.3.6:
+  Changelog (without SDK entries)
+  * docs: Fixed some page slugs (#4042)
+  * docs: add generated graphql api reference (#3745)
+  * docs: Add API and CLI documentation (#3917)
+  * Fix typo in dagger run help. (#4039)
+  * Use HTTP basic auth for dagger session token. (#4030)
+  * ci: Do not publish non semver CLI (#4028)
+  * fix dagger run alias (#4027)
+  * ci: Publish CLI & Engine at the same time (#4012)
+  * make dagger run use a random path for DAGGER_SESSION_URL (#4026)
+  * ci: Test Engine provisioning on MacOS (#3774)
+  * rename exec to run (#4019)
+  * fix: don't trim all whitespace (#3992)
+  * chore(python): Refactor connectors
+  * Check for already used error in nerdctl format too.
+  * docs: Fix error in path of docs deprecation note (#3988)
+  * ci: add CLI publishing to engine pipeline (#3980)
+  * build(deps): bump alpine from 3.16 to 3.17 (#3981)
+  * ci: Always run test & lint workflows (#3953)
+  * chore: Add community call (#3924)
+  * chore(python): Trivial formatting cleaning
+  * docs: go: remove go mod replace as no longer needed
+
+-------------------------------------------------------------------
 Thu Dec 01 08:58:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.3.5:
