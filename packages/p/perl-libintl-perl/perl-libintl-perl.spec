@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libintl-perl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
+%define cpan_name libintl-perl
 Name:           perl-libintl-perl
-Version:        1.32
+Version:        1.33
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
-%define cpan_name libintl-perl
-Summary:        High-Level Interface to Uniforum Message Translation
 License:        GPL-3.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        High-Level Interface to Uniforum Message Translation
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUIDO/%{cpan_name}-%{version}.tar.gz
 Source1:        libintl-perl-rpmlintrc
 Source2:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(version) >= 0.77
@@ -45,12 +43,12 @@ compatible with the Uniforum message translations system as implemented
 for example in GNU gettext.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -61,7 +59,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes Credits FAQ NEWS README README.md README-oldversions README.solaris README.win32 REFERENCES THANKS TODO
 %license COPYING
 
