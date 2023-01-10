@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan  3 10:41:29 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to v3.8.1:
+  * Calculate SNP launch measurement too
+  * Update to latest stable kernel (6.0.6)
+
+- Changes from 3.8.0:
+  * Automatically shift to build_on_krunvm.sh
+  * macos: Don't use SONAME on macOS
+  * Upgrade embedded kernel to 6.0.2
+
+- Changes from 3.7.0:
+  * Unify bundle generation scripts
+  * Rebase kernel on v5.15.71
+
+-------------------------------------------------------------------
 Mon Dec  5 07:30:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add split-provides for libkrunfw-sev-devel 

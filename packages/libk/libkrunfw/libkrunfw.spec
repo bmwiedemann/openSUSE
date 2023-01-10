@@ -1,7 +1,7 @@
 #
 # spec file for package libkrunfw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sev 1
 
-%global kernel linux-5.15.60
+%global kernel linux-6.0.6
 
 %ifnarch x86_64
 %define sev 0
@@ -33,13 +33,13 @@ directly inject those mappings into the guest without any kind of additional \
 work nor processing.
 
 Name:           libkrunfw
-Version:        3.6.3
+Version:        3.8.1
 Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://github.com/containers/libkrunfw
 Source0:        https://github.com/containers/libkrunfw/archive/v%{version}.tar.gz#/libkrunfw-%{version}.tar.gz
-Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/%{kernel}.tar.xz
+Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/%{kernel}.tar.xz
 ExclusiveArch:  x86_64 aarch64
 # For building libkrunfw itself, we need:
 BuildRequires:  gcc
