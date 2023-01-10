@@ -1,7 +1,7 @@
 #
 # spec file for package srt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 1_4
+%define sover 1_5
 
 Name:           srt
-Version:        1.4.4
+Version:        1.5.1
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0

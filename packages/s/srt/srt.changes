@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Sun Jan  8 10:30:37 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.5.1:
+  * API/ABI
+    - 453b276 SRT version raised to 1.5.1.
+    - ec52c45 Export functions in mingw-w64 when building as a DLL (#2451).
+    - daf838e Renamed macro MN to SRT_EMN, MJ to SRT_EMJ.
+  * Core Functionality
+    - 646bf2c Remove MSG_TRUNC logging
+    - 293a677 Removed unused struct HaveState
+    - 96d0c12 Fixed missing reject reason types (logging). (#2436)
+    - 8941831 Changed cond notification naming. Added and used new sync utilities. (#2429)
+    - eae2749 Update TSBPD base time and clock drift on an idle connection. (#2408)
+    - e50ccde Applied clang-format on CPacket.
+    - 666ee63 Fixed outlen_p value in EVP_AES_EcbCipher (crysprOpenSSL_EVP_AES_EcbCipher).
+    - f0b2003 Minor CSndBuffer edits. (#2430)
+    - fe98265 CCryptoControl: Partially removed dependency on CUDT. (#2424)
+    - 5ae3b00 Removed unused struct FByOldestActive.
+    - 7f12138 Initialize CRYSPR in startup() (#2425)
+    - 1b30573 Remove unused variable
+    - e48f43d Fixed SRT_ASSERT definition for non-MSVC compilers (#2423).
+    - ee398a3 Small refactor of the crysprFallback_MsEncrypt
+    - 618db39 Fixed byteRcvLoss stats
+    - 088e27d Create MbedTLS ctx in PBKDF (#2413)
+    - ced76c7 Increased CUnitQueue block allocation speed. Allocates 128 additional
+      units at the start and every time 90% of units are taken.
+      Previously was allocating only 32 units.
+    - a51ec39 Protect CUnit::m_iFlag from data race using an atomic.
+      Refactored common allocation code CUnitQueue::allocateEntry(..).
+    - b5055db Minor clean-up fix rethrowing an exception.
+    - c3fed9c CRcvQueue tracks IP version instead of CUnitQueue
+    - 830c599 CUnitQueue::increase(): Do not adjust taken units.
+      The adjustment was intended to patch issues around m_iCount.
+      Those are not present anymore.
+    - cdafca5 Fix sendBroadcast() message length (#2391).
+    - c5f613e Added OpenSSL EVP API support to HaiCrypt (#2333).
+    - 5070037 Cookie contest log msg downgraded to Debug
+    - bb6c493 Rethrow an exception without copying it.
+    - c9e48bd Made CRcvQueue::m_counter atomic to avoid data race.
+      Used for setting the RcvQueue:: worker thread name for logging.
+    - 6a489e1 Fixed suspicious (HCRYPT_CTX_F_ENCRYPT & ctx->flags ? ..).
+    - 2de9e6e Explicitly compare with an enum type. Fixes #2374.
+    - 61170ad Fixed local variable 'i' hiding previous local declaration. Fixes #2371.
+    - 88aab43 Fixed 'false' value implicitly casting to an integer.
+      Handle handling failure of fillHsExtKMRSP(..).
+      Fixed some other minor conversion warnings. Fixes #2372.
+  * Sample Applications and Scripts
+    - 0bc3b03 List contributors using the changelog generation script (#2456)
+  * Unit Tests
+    - 3ed8bfa Fixed a typo: cypto -> crypto.
+    - 086dfe9 Fixed TestIPv6.v6_calls_v4
+    - 0153f69 Minor fix for Bonding.CloseGroupAndSocket (#2406).
+    - 04407e6 SyncRandom.GenRandomInt: Increase tolerance (#2385)
+  * Build Scripts (CMake, etc.)
+    - 95d82c4 Only install headers if CMAKE_INSTALL_INCLUDEDIR is available
+    - 91a4373 Only install pkg-config files if CMAKE_INSTALL_LIBDIR is available
+    - 3709471 Use the default TARGETS installation folder when possible
+    - 286b43e Don't force RUNTIME targets in CMAKE_INSTALL_BINDIR
+    - 3170590 Install scripts/srt-ffplay in the bin directory
+    - ea84103 Always use GNUInstallDirs
+    - bb6fede Add variable telling if DESTINATION is needed with install()
+    - 6b70452 Add 'ENABLE BONDING' option to Windows PowerShell build script (#2398).
+  * Documentation
+    - 90d2f07 Fixed the version to 1.5.1 and did some minor changes to build options summary table.
+    - 82f742b Added Packet Managers section to Build Instructions.
+    - 286b3aa Updated the Debian badge in ReadMe
+    - 89e11eb Fixed Time Access link in API-functions.
+    - 5812e1f Fixed a typo in srt_epoll_uwait
+- Update to 1.5.0:
+  * API
+    - 64d7f69 SRT version raised to 1.5.0.
+    - c6b95f5 Removed unused srt_group_configure API function.
+    - f82b131 Dummy bonding API version if ENABLE_BONDING is disabled.
+    - 78b4d65 Drop EXPERIMENTAL from ENABLE_EXPERIMENTAL_BONDING
+    - 042df34 Removed balancing and multicast group types (#2323)
+    - 94ff168 Removed unused srt_include(..) and srt_exclude(..) API functions for unimplemented externally managed groups.
+    - 1c6e1ce Deprecated srt_rejectreason_msg[]. (#2312)
+    - 2fb3c9a Use the SOCKET type for any WIN32 environment (#2152)
+  * Core Functionality
+    - 990b75a Moved bonding API to the end of srt.h
+    - 8901838 Moved CWindow inside the srt namespace.
+    - 9761063 Moved sockaddr_any inside the srt namespace.
+    - 909c8fb Moved CCache inside the srt namespace.
+    - 3fbb917 Placed CHandshake inside the srt namespace.
+    - 9ba7e64 Moved CEpoll, CUDTException, etc. into the srt namespace
+    - 681b363 Placed CSndLossList and CRcvLossList inside the srt namespace.
+    - e926653 Fixed minor compiler warnings in RCV buffer
+    - 9b3e3c1 Fixed ENABLE_HAICRYPT_LOGGING (#2315).
+    - 477530f Drop packets in the new RCV buffer by group RCV base (#2207)
+    - 69284ce Fixed updating new RCV buffer on ISN change. (#2309)
+    - c76f43d fix CRcvBufferNew::m_iStartSeqNo was not sync in group
+    - 48d1364 Added explicit to the Scoped and UniqueLock constructors
+    - 992d816 Check if CryptoControl exists in craftKmResponse. Fixes crash #2231.
+    - 591e320 Clean up the CUDT processConnectRequest(..) function.
+      Update listener write-ready only after the new connection.
+      Was changed in #1650, but must not be done at all (see #1831).
+    - 911de75 Fix name conflict with md5 functions (#2301)
+    - c0da44e FixedArray: use a function to throw an exception.
+    - 29d56be Define an iterator for the srt::FixedArray.
+    - 1cd39b9 Show RCV buffer timespan instead of TSBPD ready span.
+    - cc62e98 Fixed CRcvBufferNew::strFullnessState(..).
+      Possible null pointer object call after if (m_entries[iLastPos].pUnit).
+      Show the first valid packet instead of the very first position in the buffer.
+    - 6c8f0f1 fix volatile in group.h
+    - 1f8c1e9 prefer to use std::atomic if available
+    - fec9a40 fix m_iLastSchedSeqNo
+    - 8f22c96 CSndUList use notify_one() instead of notify_all()
+    - af6ff16 Downgrade ACKACK reorder log to Note
+    - 1dacc2a Remove declaration srt_logger_config again
+    - 4c08c3d Move srt_rejectreason_str implementation to srt_c_api
+    - a68683a haicrypt_log.cpp include its header file
+    - f1ec270 Remove duplicated includes
+    - 5bf0cc1 Remove redundant ';' after '}'
+    - 8d1a722 Applied clang-format on api.h and api.cpp.
+    - ebbac9a fix CRcvBufferNew::m_bPeerRexmitFlag.
+    - 024e9c0 Fix extraction seq with scheduling seq in group. (#2258)
+    - 3975428 fix unrecoverable initial packets lose in group message mode
+    - fe5debb Source rate estimate: ignore old samples
+    - 589d36e Backup group: derive source rate estimate from an active link on idle member activation
+    - daf94c4 Moved source rate estimation logic to CRateEstimator from CSndBuffer
+    - a60d98a Protect RCV buffer access from socket stats
+    - 4b70a63 Group option SRTO_GROUPMINSTABLETIMEO (#2081)
+    - f15d300 Fix build for FreeBSD kernel (#2255)
+    - 7d77d41 SND Drop Request: ignore if TLPktDrop and TSBPD are enabled to reduce
+      false drops when a packet can still arrive later. It will be dropped anyway as too late.
+    - 5adc2db RCV don't drop packets on SND drop request if they already exist 
+      in the buffer and can be read (full message is available).
+    - 81a31da Fix RCV drop count when dropping on SND DROP REQ. Extended RCVBUF trace logging.
+    - 0c5bf7a Decreased SND drop request log level to Debug
+    - c885ed1 Group::updateReadState() support out-of-order messages
+    - 650dbe6 Fixed rcvDropTooLateUpTo calls. Broken after merging #2218
+    - 8f68f61 refactor Group::recv() base on new rcv buffer to support message mode
+    - ac854f2 Fixed setting the peer rexmit flag on the RCV buffer
+    - 409d363 Improved the condition for smoothed_rtt recalculation, bidirectional transmission
+    - 08e6482 SND prioritize original packets in live configuration
+    - ef11d26 SND pacing: amendment on probing packets
+    - 912463b Fix MaxBW limitation. Don't reschedule sending (keep pacing) on - SND drop,
+      - NAK received - retransmission timeout.
+    - 308cd30 Added missing lock to CSndBuffer::readData
+    - 5773901 Use SND buffer delay for TL Packet Drop instead of the timespan
+      between the first and the last packet in the buffer.
+    - a31e618 Refactoring: added packUniqueData(..) func
+    - 8518558 fixed missing m_RcvBufferLock in processCtrlDropReq()
+    - 8c05c70 Fix CRcvBufferNew::dropMessage() (#2222)
+    - 24bf666 CRcvBufferNew::dropUpTo() able to drop non-empty units (#2221)
+    - 31de8aa Add CRcvBufferNew::dropUnitInPos(..) (#2226)
+    - 8afcdbe fix m_iMaxPosInc was not updated in releaseNextFillerEntries()
+    - 258167d replace ++ with incPos() in getTimespan_ms()
+    - 3d26644 Fixed build with the old RCV buffer
+    - 1111cbd Fixed RCV TL drop of packets dropped by SND (#2214)
+    - 5f7bc23 Refactored the core stats structure (#2212).
+    - 3558cd0 Fix GC stop handling (#1950)
+    - 26678fe Fixed the issue with RTT in case of bidirectional transmission
+      introduced when adding atomic types
+    - ae787bf Fix rtt estimate in bidirectional mode
+    - c8cb38f Fix m_GroupOf->updateReadState() in message mode (#2204)
+    - 1d808c1 fix recv_WaitForReadReady() return empty
+    - c9a8db7 Fix consistency of packet seqno in CRcvLossList (#2195)
+    - 244d2f4 Fix deadlock introduced by CUDTGroup::setOpt()
+    - 8b68157 fix CRcvLossList::m_iTail not reset to -1
+    - e5a1179 Fix UDP RCVBUF and SNDBUF on Solaris (#2162).
+    - 6ae42c6 Drop msg by TTL even if hasn't ever been sent (#2068)
+    - b99e41c SND buffer: operate either origin or source time, not both.
+    - 33c8e49 checkNeedDrop returns the congestion state
+    - 5f3cd06 Fixed std::runtime_error usage (use C++03 version instead of C++11) (#2184)
+    - e4a1d2b Fixed read-ready epoll event in stream (file) mode. Only the new RCV buffer (PR #1964) is affected.
+    - ec571a0 Fixed new RCV buffer in stream mode (reading fractional packets)
+    - 3c3824f Removed unused SRT_DEBUG_TSBPD_DRIFT
+    - f11b026 fix listener's cookie check (#2176).
+    - 276a841 New receiver buffer implementation
+    - 3f2945c Reduced nesting of checkBrokenSockets()
+    - c1fdb61 Changed lock order in bstats (#2168)
+    - 489c5fc Use Mersenne Twister engine with C++11 instead of the std::random_device.
+      Fixed max value probability for the default (C++03) rand().
+    - 86d1eb2 Added CUDT::isRcvReady() with mutex lock.
+      Added CUDT::getAvailRcvBufferSize() function with and without mutex lock.
+    - 2031b2c Do not set peerA...
+
+-------------------------------------------------------------------
 Sun Mar 27 19:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.4:
