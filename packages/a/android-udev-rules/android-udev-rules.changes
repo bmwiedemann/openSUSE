@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan  5 18:59:24 UTC 2023 - munix9@googlemail.com
+
+- Update to version 20230104
+  Features
+  * Add RMX3231 - RealmeC11 2021 (#237)
+  * Add support for Vivo devices (#238)
+  * Add Meizu M1 E (#246)
+  * Add support for Polar vendor
+
+  Miscellaneous Tasks
+  * Add OnePlus 8T PTP and MTP support (close #240) (#245)
+
+-------------------------------------------------------------------
 Sun Sep  4 02:12:25 UTC 2022 - munix9@googlemail.com
 
 - Update to version 20220903
