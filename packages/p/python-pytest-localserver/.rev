@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>992066</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d27501814948c8e377043d6d58fbf81c</srcmd5>
+    <version>0.7.0</version>
+    <time>1673359134</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * Make smtp support an optional extra
+  * Update some obsolete syntax to drop support for Python 2
+  * Add linting for code and workflow actions using pre-commit hooks
+  * Expand the range of pytest versions known to be compatible, with tests
+  * Add badges to README</comment>
+    <requestid>1057062</requestid>
+  </revision>
 </revisionlist>

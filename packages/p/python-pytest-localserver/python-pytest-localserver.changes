@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  9 12:18:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Make smtp support an optional extra
+  * Update some obsolete syntax to drop support for Python 2
+  * Add linting for code and workflow actions using pre-commit hooks
+  * Expand the range of pytest versions known to be compatible, with tests
+  * Add badges to README
+
+-------------------------------------------------------------------
 Mon Aug  1 15:00:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update build requirements: Without setuptools_scm[toml], this

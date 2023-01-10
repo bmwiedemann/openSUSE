@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-localserver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,18 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%bcond_with extras
 Name:           python-pytest-localserver
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Plugin for py.test to test server connections locally
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-localserver
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-localserver/pytest-localserver-%{version}.tar.gz
 BuildRequires:  %{python_module Werkzeug >= 0.10}
+%if %{with extras}
 BuildRequires:  %{python_module aiosmtpd}
+%endif
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.0.0}
 BuildRequires:  %{python_module requests}
