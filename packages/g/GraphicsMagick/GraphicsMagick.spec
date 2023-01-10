@@ -25,7 +25,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.38
+Version:        1.3.39
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
@@ -64,6 +64,9 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libjxl)
 %endif
 
 %description

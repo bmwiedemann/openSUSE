@@ -996,4 +996,118 @@
     similar results using GNU sed and Solaris/Illumos sed and don't</comment>
     <requestid>969384</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b9df4080f824da2f60d86b832d7879f2</srcmd5>
+    <version>1.3.39</version>
+    <time>1673359145</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.39
+  Special Issues:
+  * GraphicsMagick really does need some additional productive
+    volunteers.  For several years now, the burden has entirely been on
+    me (Bob Friesenhahn).  I have been sheparding the project for 20
+    years already (and contributed to ImageMagick and GraphicsMagick
+    combined for 26 years already).  It is not reasonable to expect
+    someone with a full time job (and expecting to retire in a few
+    years) to do all of the work.
+  Security Fixes:
+  * GraphicsMagick is participating in Google's oss-fuzz project since
+    February 4 2018 due to the contributions and assistance of Alex
+    Gaynor and Paul Kehrer. The issues list is available at
+    https://bugs.chromium.org/p/oss-fuzz/issues/list under search term
+    &quot;graphicsmagick&quot;.  Issues are available for anyone to view and
+    duplicate if they have been in &quot;Verified&quot; status for 30 days, or if
+    they have been in &quot;New&quot; status for 90 days.  Please consult the
+    GraphicsMagick ChangeLog file, Mercurial repository commit log, and
+    the oss-fuzz issues list for details.
+  Security Fixes:
+  * oss-fuzz: Several security fixes originating from oss-fuzz testing.
+  * ALL: Replace strcpy() with strlcpy(), replace strcat() with
+    strlcat(), replace sprintf() with snprintf().  Prefer using bounded
+    string functions.  This change is made for the purpose of increasing
+    safety than to address any existing demonstrated concern.
+  Bug fixes:
+  * Coverity: Several fixes for issues found by Coverity to reduce the
+    number of reported issues back down to zero.
+  * Clang Analyzer 12: Fix most discovered issues.
+  * PNG: Fix possible use of uninitialized 'ping_num_trans' value in
+    ReadOnePNGImage().
+  * MinGW: Eliminate overwrite of existing _MSC_VER value in MinGW compile.
+  * MNG: Fix heap-use-after-free in CloseBlob.
+  * MNG: Fix indirect leak in MagickMallocCleared().
+  * PS: Assure that 'bounds' structure is initialized.
+  * EPT: Assure that 'bounds' structure is initialized.
+  * HEIF: If heif_image_handle_get_metadata_size() returns 0, then
+    carrying on with reading image data.
+  * configure.ac: Fix Bashism in maintainer-mode check.
+  * TGA: Remove a defective validation of comment length, which blocked
+    reading some sample TGA files from the &quot;Encyclopedia Of Graphics
+    File Formats&quot; book.  Monochromatic bilevel TGA can now be read and
+    written.  TGA &quot;Footers&quot; are now read and used when logging as well
+    as converted to Image attributes.
+  * WebP: Add configure.ac updates to check for libsharpyuv so that
+    builds with the development version work again.
+  * Visual Studio Build (VisualMagick): Fix project file generation.
+    Improve portability of code for configure.exe.
+  * Fixed mixed encoding (non-UTF-8) errors in text and source files.
+  * DrawPrimitive(): Fix composition using &quot;0,0&quot; for image size.  This
+    became broken in GraphicsMagick 1.3.36.
+  * Blob API: Fixed SEEK_END validation.  SEEK_END was not used before,
+    but now it is.
+  New Features:
+  * AVIF: Support reading AVIF via libheif if it supports decoding AVIF
+    (still no writer support).
+  * LOG: Added function IsEventLogged() to report if a particular event
+    will be logged.  Us this as much as possible throughout the software
+    to replace use of IsEventLogging().  This avoids a possible
+    performance hit if any logging is enabled at all and logging
+    statements are executed which are filtered and produce no output.
+  * FITS: Support storing multiple scenes in one file (non-standard
+    extension).
+  * JPEG: Optionally enable arithmetic coder in JPG images using
+    '-define jpeg:arithmetic-coding=true'.
+  * JPEG: Add support for reading deep gray images.
+  * HEIF: Support reading ICC color profiles.
+  * Produce ASCII armored &quot;.asc&quot; format GPG signature files.
+  * Support reading directly from .bz2, .gz, .svgz, and .Z files
+    (without creating a temporary file), if possible.
+  API Updates:
+  * Magick++: Provide a version of Image::colorMapSize() which is a
+    'const' method.  Continue to provide the non-const version in order
+    to avoid an ABI change.  The compiler should choose the appropriate
+    version.
+  Feature improvements:
+  * HTML documentation generation based on Docutils is significantly
+    updated and improved.
+  * PerlMagick: Added more sample input files and changed many reader
+    tests to use hash signature rather than comparison to reduce the
+    distribution size.
+  * Blob: The ReadBlobString() function has been re-written to perform
+    better when reading from files.
+  * JXL: The JXL coder is updated to compile with what will likely
+    become JXL 0.8.0.  Support for 16-bit 'short' samples, 16-bit
+    'float' samples, and 32-bit float samples added.  Support for
+    reading and writing ICC, EXIF, and XMP profiles added.
+  * MIME: GM &quot;magick&quot; to MIME mappings have been added for apng, avif,
+    bmp, ico, and webp (regardless of if they are supported).
+  * XPM: The XPM reader performance is dramatically improved and is
+    observed to be 32x faster when reading a medium-sized XPM file
+    (e.g. the GraphicsMagick logo).
+  * XPM: Support reading &quot;deep&quot; images with more pallete entries than
+    the maximum colormap size.
+  Windows Delegate Updates/Additions:
+  * Update bundled libjasper to version 1.900.26. Please note that 4.0.0
+    is the latest version at this time and fixes a great many security
+    and stability issues which are present in 1.900.26.
+  * Update bundled libjpeg to version 9e.
+  * Update bundled libtiff to version 4.5.0.
+  Build Changes:
+  * MSVC: Added porting function to emulate C'99 snprintf for MSVC older
+    than 2015.
+  * MSVC: Successfully compiles using Visual Studio 2008 and 2019.
+    Compiles successfully using Visual Studio 2022 if optimization is
+    disabled (otherwise there is an internal compiler error in effect.c).
+- Enable JPEG-XL on Tumbleweed. (forwarded request 1056878 from munix9)</comment>
+    <requestid>1057002</requestid>
+  </revision>
 </revisionlist>
