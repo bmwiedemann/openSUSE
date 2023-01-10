@@ -336,7 +336,7 @@ mkdir -p %{buildroot}/bin
 %if ! %{with libalternatives}
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
 %endif
 ln -sf %{_sysconfdir}/alternatives/Mail    %{buildroot}%{_bindir}/Mail
@@ -344,7 +344,7 @@ ln -sf %{_sysconfdir}/alternatives/mail    %{buildroot}%{_bindir}/mail
 ln -sf %{_sysconfdir}/alternatives/Mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/Mail.1%{?ext_man}
 ln -sf %{_sysconfdir}/alternatives/mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/mail.1%{?ext_man}
 #
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/binmail
 %endif
 ln -sf %{_bindir}/mu-mail %{buildroot}%{_sysconfdir}/alternatives/Mail
@@ -354,7 +354,7 @@ ln -sf %{_mandir}/man1/mu-mail.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternati
 %else
 # libalternatives
 ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/Mail
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/alts %{buildroot}/bin/Mail
 %endif
 mkdir -p %{buildroot}%{_datadir}/libalternatives/Mail
@@ -364,7 +364,7 @@ man=mu-mail.1
 group=mail, Mail
 EOF
 ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mail
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/alts %{buildroot}/bin/mail
 %endif
 mkdir -p %{buildroot}%{_datadir}/libalternatives/mail
@@ -383,7 +383,7 @@ EOF
 %if ! %{with libalternatives}
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mu-mail 10 \
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     --slave   /bin/mail binmail %{_bindir}/mu-mail \
 %endif
     --slave   %{_bindir}/Mail Mail %{_bindir}/mu-mail \
@@ -427,7 +427,7 @@ fi
 %config %{_sysconfdir}/permissions.d/mailutils*
 %endif
 %if ! 0%{with libalternatives}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %ghost %config %{_sysconfdir}/alternatives/binmail
 /bin/mail
 %endif

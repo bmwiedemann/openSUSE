@@ -273,4 +273,12 @@
   * Fix compilation with flex version 2.6.1 (forwarded request 994181 from dirkmueller)</comment>
     <requestid>994254</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0b48cd475fe2f94ce365bfd07d296722</srcmd5>
+    <version>3.15</version>
+    <time>1673359157</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055710 from lnussel)</comment>
+    <requestid>1057031</requestid>
+  </revision>
 </revisionlist>
