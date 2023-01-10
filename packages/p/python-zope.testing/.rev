@@ -93,4 +93,23 @@
     <comment></comment>
     <requestid>1009882</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>db06a5ac0abfdb1a5fd2c6461d249d20</srcmd5>
+    <version>5.0.1</version>
+    <time>1673359131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.1:
+  * Make wheels no longer universal.
+  * Backwards incompatible changes
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Drop modules which do not seem to be Python compatible:
+    + ``zope.testing.loghandler``
+    + ``zope.testing.server``
+  * Drop doctest option ``IGNORE_EXCEPTION_MODULE_IN_PYTHON2``.
+  * Remove functions:
+    + ``zope.testing.renormalizing.strip_dottedname_from_traceback``
+    + ``zope.testing.renormalizing.is_dotted_name``
+  * Add support for Python 3.11.</comment>
+    <requestid>1056372</requestid>
+  </revision>
 </revisionlist>
