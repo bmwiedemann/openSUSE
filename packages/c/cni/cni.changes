@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Dec 30 11:08:28 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- added patch 0001-fix-upstream-CVE-2021-38561.patch for [bsc#1206711]
+
+-------------------------------------------------------------------
+Thu Dec 29 14:06:02 UTC 2022 - andrea.manzini@suse.com
+
+- Update to version 1.1.2:
+  * Fix successfully unmarshalled nil raw result
+  * spec: fix format
+  * invoke: if Result CNIVersion is empty use netconf CNIVersion
+  * cnitool: address golint error
+  * libcni: handle empty version when parsing version
+  * Switch to ginkgo/v2
+  * add security heading to README
+  * Maintainers: add Mike Zappa
+  * introduce hybridnet to thrid-party plugins
+  * Fix incorrect pointer inputs to `json.Unmarshal`
+  * fix version of cni v0.8.1 does not have a directory of github.com/containernetworking/cni/pkg/types/100 refer to https://github.com/containernetworking/cni/tree/v0.8.1/pkg/types
+  * Spec: Container runtime shall tear down namespaces
+  * Update README.md
+  * Updated README.md to include Netlox loxilight CNI
+  * documentation: update Multus link in README.md to point to the k8snetworkplumbingwg repository
+  * [exec-plugins]: support plugin lists
+  * skel: remove superfluous err nil check in (*dispatcher).pluginMain
+  * Remove Gabe Rosenhouse as maintainer
+  * skel: print out CNI versions supported in help text.
+
+-------------------------------------------------------------------
 Thu Nov 10 14:06:19 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.1.2:

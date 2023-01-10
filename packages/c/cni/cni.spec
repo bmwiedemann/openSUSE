@@ -1,7 +1,7 @@
 #
 # spec file for package cni
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ URL:            https://github.com/containernetworking/cni
 Source0:        %{name}-%{version}.tar.gz
 Source1:        99-loopback.conf
 Source2:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM bsc#1206711
+Patch0:         0001-fix-upstream-CVE-2021-38561.patch
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
@@ -49,7 +51,10 @@ the container is deleted. Because of this focus, CNI has a wide
 range of support and the specification is simple to implement.
 
 %prep
-%autosetup -a2
+%autosetup -a2 -N
+pushd vendor/golang.org/x/text
+%autopatch -p1
+popd
 
 %build
 export GOFLAGS=-mod=vendor
