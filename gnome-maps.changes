@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  7 12:45:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + Fix blurry shape layers on zoom.
+  + Fix user location accuracy marker positioning.
+  + Various other bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  2 21:08:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

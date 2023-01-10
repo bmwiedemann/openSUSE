@@ -618,4 +618,16 @@
     <comment></comment>
     <requestid>1039789</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bbdde52981b21fb7976aae0c8a077757</srcmd5>
+    <version>43.3</version>
+    <time>1673359165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Fix blurry shape layers on zoom.
+  + Fix user location accuracy marker positioning.
+  + Various other bug fixes.
+  + Updated translations. (forwarded request 1056771 from iznogood)</comment>
+    <requestid>1057049</requestid>
+  </revision>
 </revisionlist>
