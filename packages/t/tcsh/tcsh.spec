@@ -17,14 +17,14 @@
 
 
 Name:           tcsh
-Version:        6.24.06
+Version:        6.24.07
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
 Group:          System/Shells
-URL:            http://www.tcsh.org/
-Source0:        ftp.astron.com:/pub/%{name}/%{name}-%{version}.tar.gz
-Source1:        ftp.astron.com:/pub/%{name}/%{name}-%{version}.tar.gz.asc
+URL:            https://www.tcsh.org/
+Source0:        https://astron.com/pub/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://astron.com/pub/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        bindkey.tcsh
 Source3:        complete.tcsh
 Source4:        tcsh.keyring
@@ -183,7 +183,7 @@ correction, a history mechanism, job control, and a C-like syntax.
     rm -rf %{buildroot}%{_datadir}/locale/C
     ln -sf tcsh           %{buildroot}/%{_bindir}/csh
     ln -sf tcsh.1.gz      %{buildroot}%{_mandir}/man1/csh.1.gz
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     mkdir -p %{buildroot}/bin
     ln -s %{_bindir}/tcsh %{buildroot}/bin/tcsh
     ln -s %{_bindir}/tcsh %{buildroot}/bin/csh
@@ -192,7 +192,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %files
 %defattr(-,root,root)
 %dir %{_docdir}/tcsh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/csh
 /bin/tcsh
 %endif

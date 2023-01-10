@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec 28 09:52:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.24.07:
+  * widen the pid field in pprint so that it aligns even with large pids
+  * build system updates 
+- use https for download urls
+
+-------------------------------------------------------------------
+Tue Dec 27 13:22:37 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Dec 13 07:25:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.06

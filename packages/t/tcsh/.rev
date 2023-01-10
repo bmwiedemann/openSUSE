@@ -977,4 +977,12 @@
     documentation, and build improvements available to all.</comment>
     <requestid>1042552</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>286deab1a80069fe18870520de344213</srcmd5>
+    <version>6.24.07</version>
+    <time>1673359141</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055745 from lnussel)</comment>
+    <requestid>1056976</requestid>
+  </revision>
 </revisionlist>
