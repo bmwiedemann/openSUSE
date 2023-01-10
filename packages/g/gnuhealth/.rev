@@ -483,4 +483,12 @@
 </comment>
     <requestid>983167</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e93e69a3781588836272c9b779e1d1c3</srcmd5>
+    <version>4.0.5</version>
+    <time>1673359189</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>1057157</requestid>
+  </revision>
 </revisionlist>

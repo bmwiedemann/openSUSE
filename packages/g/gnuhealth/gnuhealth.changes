@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  9 19:36:41 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- Version 4.0.5
+  * health_crypto: Fix bug #63558: Fault: 'NoneType' object has no attribute 'name'
+  * Fix bug #63557: Missing view architecture for ('calendar.category', None, 'tree')
+  * Fix bug #63533: Model 'gnuhealth.pol' is missing a default access
+  * Fix bug #63532: health_caldav misses requiremnt vobject in setup.py
+  * Fix bug #63517: Fault: 'webdav' is not in list
+  * Fix bug #62777: The term health prof used for both initiating and signing professional in patient evaluation
+  * Fix bug #62634: Missing Spanish Translations
+
+-------------------------------------------------------------------
 Thu Jun 16 15:37:00 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.0.4

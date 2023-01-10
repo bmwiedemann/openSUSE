@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2014-2022 Dr. Axel Braun
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2014-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.4
+Version:        %{majorver}.5
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
