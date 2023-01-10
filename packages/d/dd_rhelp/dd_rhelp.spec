@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rhelp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ that work and only then tries to approach the bad spots from both sides.
 mkdir -p %{buildroot}%{_bindir}
 install -Dpm 0755 dd_rhelp %{buildroot}%{_bindir}
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/bin
 ln -sf %{_bindir}/dd_rhelp %{buildroot}/bin
 %endif
@@ -68,7 +68,7 @@ ln -sf %{_bindir}/dd_rhelp %{buildroot}/bin
 %defattr(-,root,root,-)
 %doc COPYING ChangeLog FAQ NEWS README THANKS TODO doc/example.txt
 %{_bindir}/dd_rhelp
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/dd_rhelp
 %endif
 
