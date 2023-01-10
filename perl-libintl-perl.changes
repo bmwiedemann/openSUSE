@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 15 03:09:36 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-libintl-perl/Changes
+
+  Version 1.33 - 14 Dec 2020
+
+  * Bugs fixed:
+
+    https://github.com/gflohr/libintl-perl/issues/7
+
+-------------------------------------------------------------------
 Tue Oct 27 03:11:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.32
