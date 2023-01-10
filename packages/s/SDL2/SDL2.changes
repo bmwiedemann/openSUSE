@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan  3 22:40:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.26.2
+  * Fixed long delay at startup when a Razer keyboard is
+    connected
+  * Fixed not receiving SDLK_5 or SDL_SCANCODE_5 when using the
+    AZERTY keyboard layout on Linux
+- Enable libsamplerate and libdecor components
+- Remove unused tslib build requirement
+
+-------------------------------------------------------------------
 Thu Dec  1 20:38:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26.1

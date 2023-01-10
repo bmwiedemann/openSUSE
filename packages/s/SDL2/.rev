@@ -379,4 +379,12 @@
     <comment>- Update to release 2.26.1</comment>
     <requestid>1039395</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e72c0ea563477f8ecd8d77f2fe3d45dc</srcmd5>
+    <version>2.26.2</version>
+    <time>1673359135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.26.2</comment>
+    <requestid>1046656</requestid>
+  </revision>
 </revisionlist>

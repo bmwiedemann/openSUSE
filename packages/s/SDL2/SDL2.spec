@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.26.1
+Version:        2.26.2
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -33,6 +33,7 @@ Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libdecor-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(dbus-1)
@@ -52,7 +53,7 @@ BuildRequires:  pkgconfig(gbm) >= 11.1.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.82
 BuildRequires:  pkgconfig(libpulse-simple) >= 0.9
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(tslib)
+BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(wayland-client) >= 1.18
 BuildRequires:  pkgconfig(wayland-cursor)
