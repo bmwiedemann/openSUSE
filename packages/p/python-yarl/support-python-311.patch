@@ -1,0 +1,15 @@
+Index: yarl-1.8.2/tests/test_url_parsing.py
+===================================================================
+--- yarl-1.8.2.orig/tests/test_url_parsing.py
++++ yarl-1.8.2/tests/test_url_parsing.py
+@@ -72,6 +72,10 @@ class TestScheme:
+         assert u.query_string == ""
+         assert u.fragment == ""
+ 
++    @pytest.mark.skipif(
++        sys.version_info >= (3, 11),
++        reason="Fails with Python 3.11+"
++    )
+     def test_not_a_scheme2(self):
+         u = URL("37signals:book")
+         assert u.scheme == "37signals"

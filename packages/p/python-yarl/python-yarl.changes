@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  9 04:17:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-311.patch:
+  * Skip a test under Python 3.11. 
+
+-------------------------------------------------------------------
 Wed Dec  7 22:47:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.8.2 

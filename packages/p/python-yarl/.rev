@@ -187,4 +187,13 @@
     <comment></comment>
     <requestid>1041630</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>07153009a0393fc3db508d802554b263</srcmd5>
+    <version>1.8.2</version>
+    <time>1673359137</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-311.patch:
+  * Skip a test under Python 3.11.</comment>
+    <requestid>1056959</requestid>
+  </revision>
 </revisionlist>

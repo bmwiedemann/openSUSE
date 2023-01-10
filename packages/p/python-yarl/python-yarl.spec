@@ -1,7 +1,7 @@
 #
 # spec file for package python-yarl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,10 @@ Version:        1.8.2
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/yarl/
 Source:         https://files.pythonhosted.org/packages/source/y/yarl/yarl-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Workaround until gh#aio-libs/yarl#803 is fixed
+Patch0:         support-python-311.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module idna >= 2.0}
