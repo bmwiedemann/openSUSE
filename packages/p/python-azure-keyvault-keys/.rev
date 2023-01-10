@@ -185,4 +185,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1004938 from glaubitz)</comment>
     <requestid>1005728</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>232baaa25db5dc2aa39e39ebcf8a02a1</srcmd5>
+    <version>4.8.0~b2</version>
+    <time>1673359205</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.8.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 4.8.0~b2
+- Update Requires from setup.py (forwarded request 1057602 from glaubitz)</comment>
+    <requestid>1057617</requestid>
+  </revision>
 </revisionlist>
