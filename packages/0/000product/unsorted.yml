@@ -14336,7 +14336,7 @@ unsorted:
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
   - libsrecord0 
-  - libsrt1_4-32bit: [x86_64] 
+  - libsrt1_5-32bit: [x86_64] 
   - libsrtp-devel 
   - libsrtp1 
   - libsrtp1-32bit: [x86_64] 
@@ -18667,7 +18667,6 @@ unsorted:
   - opengl-games-utils 
   - opengost-otf-fonts 
   - opengost-ttf-fonts 
-  - opengreedy 
   - openhantek 
   - openhpi 
   - openhpi-clients 
@@ -21509,6 +21508,7 @@ unsorted:
   - procmon: [x86_64] 
   - procps-devel 
   - procps4-devel 
+  - procs 
   - product-builder 
   - product-builder-plugin-Tumbleweed 
   - profanity 
