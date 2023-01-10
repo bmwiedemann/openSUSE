@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:28:04 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Fri Sep 16 15:12:44 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add missing new requires for busybox-sha3sum

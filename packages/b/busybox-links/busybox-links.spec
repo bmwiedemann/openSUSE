@@ -1,7 +1,7 @@
 #
 # spec file for package busybox-links
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -615,12 +615,12 @@ echo -e "%{_bindir}/ash" > filelist-sh.txt
 touch used/ash
 echo -e "%{_bindir}/hush" >> filelist-sh.txt
 touch used/hush
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 echo "/bin/sh" >> filelist-sh.txt
 %endif
 echo -e "%{_bindir}/sh" >> filelist-sh.txt
 touch used/sh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 echo -e "/sbin/loadkmap" >> filelist-kbd.txt
 %endif
 echo -e "%{_sbindir}/loadfont" >> filelist-kbd.txt
@@ -659,7 +659,7 @@ mkdir -p %{buildroot}%{_bindir}
 bash ./busybox.install %{buildroot} --symlinks
 rm %{buildroot}%{_bindir}/busybox
 ln -sf %{_bindir}/busybox %{buildroot}%{_bindir}/sh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 %endif
 install -m 755 %{SOURCE1} %{buildroot}%{_bindir}/zless

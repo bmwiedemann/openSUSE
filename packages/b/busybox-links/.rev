@@ -206,4 +206,12 @@
     <comment>- Add missing new requires for busybox-sha3sum (forwarded request 1004491 from kukuk)</comment>
     <requestid>1004492</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>7eeff416508b2f0aee98f0fc230a0707</srcmd5>
+    <version>MACRO</version>
+    <time>1673359149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057009</requestid>
+  </revision>
 </revisionlist>
