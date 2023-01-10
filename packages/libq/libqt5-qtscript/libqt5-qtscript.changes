@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:23:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde0, rebased upstream:
+  * No code changes
+- Commits dropped by the rebase:
+  * Bump version to 5.15.10
+  * Blacklist two tests that fail on macOS ARM
+  * Bump version from 5.15.8 to 5.15.9
+
+-------------------------------------------------------------------
 Thu Nov  3 08:56:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde0, rebased upstream:
