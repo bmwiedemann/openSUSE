@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="filename">procs</param>
+    <param name="url">https://github.com/dalance/procs.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">v0.13.3</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">procs</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">procs</param>
+  </service>
+</services>

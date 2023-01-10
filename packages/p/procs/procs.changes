@@ -1,0 +1,146 @@
+-------------------------------------------------------------------
+Mon Jan  9 18:01:11 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Clean up changes file
+- Don't autogenerate changes entries.
+  They look more crypting to the user than the entries in CHANGELOG.md.
+  So let's take it from there in the future.
+
+-------------------------------------------------------------------
+Tue Oct 18 08:42:41 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.13.3:
+  * release_win: pack exe in toplevel of zip
+
+-------------------------------------------------------------------
+Wed Oct 05 03:05:01 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.13.2:
+  * Add workaround for pager issue #366
+
+-------------------------------------------------------------------
+Tue Sep 20 18:25:43 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.13.1:
+  * Remove $ from code fenced examples on readme
+  * Add derive Eq to some structs
+  * fix some typos
+
+-------------------------------------------------------------------
+Fri Jul 29 02:45:05 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.13.0:
+  * Fix clippy
+  * Add TreeSlot column #196
+  * Add case sensitivity option #159
+  * Use once_cell instead of lazy_static
+
+-------------------------------------------------------------------
+Wed May 25 08:10:13 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.12.3:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Thu May 05 05:09:16 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.12.2:
+  * Change coverage to llvm-cov
+  * Fix dead code in `--no-default-features`
+  * Fix Clippy warnings
+
+-------------------------------------------------------------------
+Fri Jan 28 02:38:24 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.12.1:
+  * Add another cgroup style of docker support #236
+  * Fix wrong decode of cgroup for docker #236
+  * Change termbg timeout to latency based #221
+  * Update tests to replace the deprecated usage of clap
+  * Add android to all cfg #223
+
+-------------------------------------------------------------------
+Tue Jan 18 11:01:42 UTC 2022 - dead_mozay@opensuse.org
+
+- Update to version 0.12.0:
+  * Fix unexpected message at piped #221
+  * Replace structopt with clap
+  * Update getch to update termios #223
+
+-------------------------------------------------------------------
+Fri Dec 24 12:20:44 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.13:
+  * Create a separate --completion-out flag
+  * Write generated shell completions to stdout
+
+-------------------------------------------------------------------
+Wed Dec 15 04:54:45 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.12:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Tue Dec 14 10:14:48 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.11:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Wed Oct 20 02:35:15 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.10:
+  * Show children processes at tree mode #181
+  * Fixed search failure with only option #117
+  * Add MultiSlot column #180
+  * address clippy lint: manual implementation of Option::map
+  * Improve grammar
+
+-------------------------------------------------------------------
+Tue Jun 22 03:02:19 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.9:
+  * Add: Add support for floating point values in watch interval
+  * Don't need separate fields for pgid and session
+  * Friendlier column name
+  * Add columns for process group ID and Session on linux.
+
+-------------------------------------------------------------------
+Sat May 29 15:07:05 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.8:
+  * Adjust get_theme timing
+
+-------------------------------------------------------------------
+Wed May 19 08:28:14 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.7:
+  * Disable termbg at piped/redirected #146
+  * Adjust elapsed_time format
+  * Remove unused import
+  * Fix compile error
+  * Add elapsed_time #120
+  * Add completion file message #130
+  
+-------------------------------------------------------------------
+Tue May 18 02:57:52 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.6:
+  * No changelog.
+
+-------------------------------------------------------------------
+Thu May 06 01:48:25 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.5:
+  * Fix infinite recursion of get_ppids #129
+
+-------------------------------------------------------------------
+Sun May 02 17:51:46 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.11.4:
+  * Suppress theme detection at each refresh of watcher mode
+
+-------------------------------------------------------------------
+Sun May  2 17:47:27 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
