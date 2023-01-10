@@ -1,7 +1,3 @@
-Prefer: -python310-jupyter-jupyterlab-server
-Prefer: -python39-jupyter-jupyterlab-server
-Prefer: -python38-jupyter-jupyterlab-server
-
 
 Prefer: yast2-schema-default
 %define gcc_version 12
@@ -571,7 +567,6 @@ Prefer: %{php_pref}-devel
 Prefer: %{php_pref}-pear
 Prefer: %{php_pref}-tokenizer
 Prefer: apache2-mod_%{php_pref}
-Prefer: php7:php7-cli
 Prefer: php8:php8-cli
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
@@ -637,7 +632,6 @@ Prefer: -alsa-topology-devel-32bit
 Prefer: -armadillo-devel-32bit
 Prefer: -arpack-ng-devel-32bit
 Prefer: -at-spi2-core-devel-32bit
-Prefer: -atkmm-devel-32bit
 Prefer: -atkmm1_6-devel-32bit
 Prefer: -audiofile-devel-32bit
 Prefer: -audit-devel-32bit
@@ -646,8 +640,6 @@ Prefer: -binutils-devel-32bit
 Prefer: -blas-devel-32bit
 Prefer: -bluez-devel-32bit
 Prefer: -cairo-devel-32bit
-Prefer: -cairomm-devel-32bit
-Prefer: -cairomm1_0-devel-32bit
 Prefer: -cblas-devel-32bit
 Prefer: -chmlib-devel-32bit
 Prefer: -cppunit-devel-32bit
@@ -756,7 +748,6 @@ Prefer: -libXxf86vm-devel-32bit
 Prefer: -libacl-devel-32bit
 Prefer: -libadns-devel-32bit
 Prefer: -libaio-devel-32bit
-Prefer: -libart_lgpl-devel-32bit
 Prefer: -libattr-devel-32bit
 Prefer: -libavc1394-devel-32bit
 Prefer: -libbasicobjects-devel-32bit
