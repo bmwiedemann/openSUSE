@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan  6 12:33:29 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- yupdate - added suport for patching the D-Installer
+  (bsc#1206927)
+- 4.5.12
+
+-------------------------------------------------------------------
 Mon Dec  5 10:13:28 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Use default depth for Xvnc, no longer enforce depth 16
