@@ -177,7 +177,7 @@ install -m 644 %{SOURCE8} %{buildroot}%{_unitdir}/
 install -m 755 %{SOURCE9} %{buildroot}/%{_sbindir}/
 ln -s service %{buildroot}/%{_sbindir}/rcsyslogd
 install -m 644 %{SOURCE12} %{buildroot}%{_fillupdir}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 for sbin in klogd syslogd ; do
 	ln -sf %{_sbindir}/${sbin} %{buildroot}/sbin/${sbin}
 done
@@ -380,7 +380,7 @@ done
 %attr(0755,root,root) %dir %ghost %{_rundir}/syslogd
 %{_sbindir}/syslogd
 %{_sbindir}/rcsyslogd
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/syslogd
 %endif
 
@@ -390,7 +390,7 @@ done
 %{_unitdir}/klogd.service
 %{_mandir}/man8/klogd.8%{ext_man}
 %{_sbindir}/klogd
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/klogd
 %endif
 

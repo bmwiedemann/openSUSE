@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:21:16 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Oct 19 11:57:37 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update ot version 1.5.1
