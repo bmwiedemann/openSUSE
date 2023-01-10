@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan  9 02:10:42 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.6.7
+  * IT: In sample mode, portamento to a different sample turns off
+    the filter if cutoff / resonance was previously 127 / 0.
+  * S3M Detect files saved with Graoumf Tracker instead of claiming
+    they were made with OpenMPT 4.47.
+  * S3M: Pattern loop state was not propagated anymore since
+    libopenmpt 0.6.0, leading to wrong song length calculation and
+    SB0 + SBx being located on different channels not working
+    properly anymore.
+
+-------------------------------------------------------------------
 Thu Sep 29 19:37:31 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.6.6

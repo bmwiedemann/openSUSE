@@ -1,7 +1,7 @@
 #
 # spec file for package libopenmpt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define libopenmpt_modplug_version 0.8.9.0
 
 Name:           libopenmpt
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause

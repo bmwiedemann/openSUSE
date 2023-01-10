@@ -729,4 +729,20 @@ Changes in 0.5.3:
     510ms echo delay instead of approximately 334ms.</comment>
     <requestid>1007099</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>13d5a0f636a9086c214263a247d66b8a</srcmd5>
+    <version>0.6.7</version>
+    <time>1673359136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7
+  * IT: In sample mode, portamento to a different sample turns off
+    the filter if cutoff / resonance was previously 127 / 0.
+  * S3M Detect files saved with Graoumf Tracker instead of claiming
+    they were made with OpenMPT 4.47.
+  * S3M: Pattern loop state was not propagated anymore since
+    libopenmpt 0.6.0, leading to wrong song length calculation and
+    SB0 + SBx being located on different channels not working
+    properly anymore.</comment>
+    <requestid>1056956</requestid>
+  </revision>
 </revisionlist>
