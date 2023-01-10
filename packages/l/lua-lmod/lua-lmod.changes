@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan  9 19:43:36 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch:
+  Since Lmod sets BASH_ENV to /usr/share/lmod/8.7.15/init/bash,
+  do not run external commands immediately in this script but only
+  when `module` is called for the first time. This prevents errors
+  when this script is run during shell init for access restricted
+  scripts (apparmor) (boo#1206957).
+
+-------------------------------------------------------------------
 Tue Jan  3 13:55:42 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Update to version 8.7.15:

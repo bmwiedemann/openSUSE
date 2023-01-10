@@ -386,4 +386,17 @@
   * Support for source_sh added. Now support more than one shell script per modulefile. (forwarded request 1046634 from eeich)</comment>
     <requestid>1046635</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a08b05d45f4738b8ae2412fbc69b2efc</srcmd5>
+    <version>8.7.15</version>
+    <time>1673359190</time>
+    <user>dimstar_suse</user>
+    <comment>- issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch:
+  Since Lmod sets BASH_ENV to /usr/share/lmod/8.7.15/init/bash,
+  do not run external commands immediately in this script but only
+  when `module` is called for the first time. This prevents errors
+  when this script is run during shell init for access restricted
+  scripts (apparmor) (boo#1206957).</comment>
+    <requestid>1057160</requestid>
+  </revision>
 </revisionlist>
