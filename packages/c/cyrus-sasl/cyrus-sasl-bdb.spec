@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl-bdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -191,7 +191,7 @@ mkdir -p $RPM_BUILD_ROOT/usr/bin
 mkdir -p $RPM_BUILD_ROOT/etc/sasl2
 install -m 755 sample/.libs/client $RPM_BUILD_ROOT/usr/bin/cyrus_sasl_sample_client
 install -m 755 sample/.libs/server $RPM_BUILD_ROOT/usr/bin/cyrus_sasl_sample_server
-chmod 0644 doc/*
+find doc -type f -exec chmod 0644 {} \;
 rm -f doc/Makefile*
 rm -f $RPM_BUILD_ROOT/%{_mandir}/cat?/*
 rm -f $RPM_BUILD_ROOT/%{_mandir}/man8/saslauthd*
