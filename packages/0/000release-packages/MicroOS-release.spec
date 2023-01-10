@@ -17,7 +17,7 @@
 
 
 Name:           MicroOS-release
-Version:        20230109
+Version:        20230110
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -176,9 +176,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20230109-0
+Provides:       product(MicroOS) = 20230110-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20230109
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20230110
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(MicroOS)
@@ -194,7 +194,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20230109-0
+Provides:       product_flavor(MicroOS) = 20230110-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -210,7 +210,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20230109-0
+Provides:       product_flavor(MicroOS) = 20230110-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -274,11 +274,11 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>MicroOS</name>
-  <version>20230109</version>
+  <version>20230110</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20230109</cpeid>
+  <cpeid>cpe:/o:opensuse:microos:20230110</cpeid>
   <productline>MicroOS</productline>
   <register>
     <pool>
