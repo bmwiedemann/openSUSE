@@ -4,10 +4,9 @@ Fri Dec 23 08:18:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.2.4:
   * Handle arrays too large to fit in iceConn buffers
   * v2: Raise required libICE version to 1.1.0 to get the updated
-  * IceGetHeaderExtra macro definition needed for this to work correctly.
+    IceGetHeaderExtra macro definition needed for this to work correctly.
   * Fix some potential memory leaks in SmcCloseConnection().
   * Add uuid as private dependency to sm.pc for static linking
-  * Build xz tarballs instead of bzip2
   * Fix spelling/wording issues
 
 -------------------------------------------------------------------

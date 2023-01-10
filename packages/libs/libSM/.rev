@@ -87,4 +87,12 @@ Sun Feb 12 03:35:24 UTC 2012 - jengelh@medozas.de
     <comment></comment>
     <requestid>1045902</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>48bdd3bc7235a6e278956f5ca05dc18b</srcmd5>
+    <version>1.2.4</version>
+    <time>1673359169</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1057077</requestid>
+  </revision>
 </revisionlist>
