@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  9 13:29:36 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1123557: --suppress-timestamps isn't needed by default.
+
+-------------------------------------------------------------------
 Fri Nov 18 21:40:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.8:

@@ -7,7 +7,7 @@ PartOf=openvpn.target
 Type=notify
 PrivateTmp=true
 PIDFile=/run/openvpn/%i.pid
-ExecStart=/usr/sbin/openvpn --daemon openvpn@%i --suppress-timestamps --writepid /run/openvpn/%i.pid --cd /etc/openvpn/ --config %i.conf
+ExecStart=/usr/sbin/openvpn --daemon openvpn@%i --writepid /run/openvpn/%i.pid --cd /etc/openvpn/ --config %i.conf
 # boo#1142830: "reload" does not work if openvpn drops root privileges after startup.
 ExecReload=/usr/bin/kill -HUP $MAINPID
 

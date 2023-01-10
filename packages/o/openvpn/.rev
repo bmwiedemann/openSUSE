@@ -891,4 +891,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1037543</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>3a2f790add4c3424c85436b158c1e5e8</srcmd5>
+    <version>2.5.8</version>
+    <time>1673359168</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1123557: --suppress-timestamps isn't needed by default.</comment>
+    <requestid>1057073</requestid>
+  </revision>
 </revisionlist>
