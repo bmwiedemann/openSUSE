@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  9 05:47:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-311.patch:
+  * Filter Deprecationwarning for one test script.
+- Remove Python 2 gubbins.
+
+-------------------------------------------------------------------
 Fri Sep  9 11:24:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 3.5.2: 

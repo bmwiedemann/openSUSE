@@ -1,0 +1,16 @@
+Index: Paste-3.5.2/tests/cgiapp_data/form.cgi
+===================================================================
+--- Paste-3.5.2.orig/tests/cgiapp_data/form.cgi
++++ Paste-3.5.2/tests/cgiapp_data/form.cgi
+@@ -2,6 +2,11 @@
+ 
+ from __future__ import print_function
+ 
++import warnings
++# Since the Paste machinery expects these scripts to return no stderr,
++# filter all DeprecationWarnings
++warnings.simplefilter("ignore", category=DeprecationWarning)
++
+ import cgi
+ import six
+ 

@@ -347,4 +347,14 @@
     <comment></comment>
     <requestid>1002727</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>beb1e9b044b675a517dfd8f22f622d4e</srcmd5>
+    <version>3.5.2</version>
+    <time>1673359140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-311.patch:
+  * Filter Deprecationwarning for one test script.
+- Remove Python 2 gubbins.</comment>
+    <requestid>1056966</requestid>
+  </revision>
 </revisionlist>

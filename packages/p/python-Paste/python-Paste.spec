@@ -1,7 +1,7 @@
 #
 # spec file for package python-Paste
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 Name:           python-Paste
 Version:        3.5.2
 Release:        0
@@ -26,6 +24,7 @@ License:        MIT
 URL:            https://github.com/cdent/paste
 Source:         https://files.pythonhosted.org/packages/source/P/Paste/Paste-%{version}.tar.gz
 Patch0:         test_modified-fixup.patch
+Patch1:         support-python-311.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six > 1.4.0}
@@ -33,15 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six > 1.4.0
 Suggests:       python-flup
-BuildArch:      noarch
-%ifpython2
-Suggests:       python-python-openid
-Provides:       %{oldpython}-paste = %{version}
-Obsoletes:      %{oldpython}-paste < %{version}
-%endif
-%if %{python_version_nodots} >= 30
 Suggests:       python-python3-openid
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,8 +43,7 @@ interface, and should be compatible with other middleware based on those
 interfaces.
 
 %prep
-%setup -q -n Paste-%{version}
-%patch0 -p1
+%autosetup -p1 -n Paste-%{version}
 sed -i '/pytest-runner/d' setup.py
 # remove test requiring internet access
 rm tests/test_proxy.py
