@@ -227,4 +227,49 @@ Fix usage of deprecated unix-process polkit authorization subject opens a race c
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1038369</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4ad34104dec174e8fdc8cb8dc4ab59fe</srcmd5>
+    <version>1.3.3</version>
+    <time>1673359192</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove backintime-rsync324_args.patch (no longer needed)
+- update to 1.3.3:
+  * New feature: Command line argument &quot;--diagnostics&quot; to show helpful info
+    for better issue support
+  * GUI change: Remove Exit button from the toolbar
+  * GUI change: Define accelerator keys for menu bar and tabs, as well as
+    toolbar shortcuts
+  * Desktop integration: Update .desktop file to mark Back In Time as a
+    single main window program
+  * Improvement: Write all log output to stderr; do not pollute stdout with
+    INFO and WARNING messages anymore
+  * Bugfix: RTE &quot;reentrant call inside io.BufferedWriter&quot; in logFile.flush()
+    during backup
+  * Bugfix: Incompatibility with rsync 3.2.4 or later because of rsync's
+    &quot;new argument protection&quot; (#1247). Deactivate &quot;--old-args&quot; rsync
+    argument earlier recommaned to users as a workaround.
+  * Bugfix: DeprecationWarnings about invalid escape sequences.
+  * Bugfix: AttributeError in &quot;Diff Options&quot; dialog
+  * Bugfix: Settings GUI: &quot;Save password to Keyring&quot; was disabled due to &quot;no
+    appropriate keyring found&quot;
+  * Bugfix: Back in Time did not start with D-Bus error
+  * Bugfix: Avoid logging errors while waiting for a target drive to be
+    mounted
+  * Bugfix: [Arch Linux] AUR pkg &quot;backintime-git&quot;: Build tests fails and
+    installation is aborted
+  * Bugfix: Wrong systray icon showing in Wayland
+  * Documentation update: Correct description of profile&lt;N&gt;.schedule.time in
+    backintime-config manpage
+  * Translation update: Brazilian Portuguese
+  * Translation update: Italian
+  * Translation update: French
+  * Testing: Fix a test fail when dealing with an empty crontab
+  * Testing: Fix a test fail when dealing with an empty config file
+  * Testing: Skip &quot;test_quiet_mode&quot; (does not work reliably)
+  * Testing: Improve &quot;test_diagnostics_arg&quot; (introduced with #1100) to no
+    longer fail when JSON output was mixed with logging output (part of #921)
+  * Testing: Numerous fixes and extensions to testing
+</comment>
+    <requestid>1057174</requestid>
+  </revision>
 </revisionlist>
