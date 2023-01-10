@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  9 14:25:17 UTC 2023 - pgajdos@suse.com
+
+- enable GraphicsMagick again; GraphicsMagick will stay for the
+  near future at least [bsc#1206620#c20]
+
+-------------------------------------------------------------------
 Wed Dec 21 19:29:19 UTC 2022 - pgajdos@suse.com
 
 - do not use GraphicsMagick, it will be dropped from Factory

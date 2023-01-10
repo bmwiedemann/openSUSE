@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.webtoolkit.eu/wt/
 Source0:        https://github.com/emweb/wt/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  FastCGI-devel
+BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
 BuildRequires:  apache-rpm-macros
 BuildRequires:  cmake
@@ -139,6 +140,7 @@ code.
     -DRUNDIR="%{WTRUNDIR}" \
     -DBUILD_EXAMPLES=ON \
     -DENABLE_POSTGRES=ON \
+    -DWT_WRASTERIMAGE_IMPLEMENTATION=GraphicsMagick \
     -DWT_WITH_SSL=ON \
     -DHTTP_WITH_ZLIB=ON
 %cmake_build

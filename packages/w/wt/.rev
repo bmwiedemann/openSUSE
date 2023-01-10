@@ -381,4 +381,12 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>1044207</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>92673eb01b47377cd717853390068108</srcmd5>
+    <version>4.8.1</version>
+    <time>1673359186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057147</requestid>
+  </revision>
 </revisionlist>
