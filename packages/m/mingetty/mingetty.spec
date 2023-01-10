@@ -51,7 +51,7 @@ make \
   DEFTERM=${DEFTERM}
 
 %install
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p ${RPM_BUILD_ROOT}{/sbin,%{_mandir}/man8}
 make install MANPATH=%{_mandir} DESTDIR=%{buildroot}
 %else
@@ -61,7 +61,7 @@ make install MANPATH=%{_mandir} DESTDIR=%{buildroot} SBINDIR=%{_sbindir}
 
 %files
 %defattr(-,root,root,755)
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/mingetty
 %else
 %{_sbindir}/mingetty

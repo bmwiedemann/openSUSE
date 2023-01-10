@@ -199,4 +199,12 @@
     <comment>- Move to /usr for UsrMerge (boo#1191077)</comment>
     <requestid>922334</requestid>
   </revision>
+  <revision rev="29" vrev="24">
+    <srcmd5>4a70f4e71dfc5d0ad14b4d8c06f4b220</srcmd5>
+    <version>1.0.8s</version>
+    <time>1673359156</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055713 from lnussel)</comment>
+    <requestid>1057029</requestid>
+  </revision>
 </revisionlist>
