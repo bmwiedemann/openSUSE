@@ -936,4 +936,15 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>1039785</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>ad3e02deaecadf40e85ae543bf9d9a8f</srcmd5>
+    <version>43.3</version>
+    <time>1673359160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + Periodically expire cached app icons.
+  + Stop notifying about unprepared critical updates.
+  + Updated translations. (forwarded request 1056681 from iznogood)</comment>
+    <requestid>1057043</requestid>
+  </revision>
 </revisionlist>
