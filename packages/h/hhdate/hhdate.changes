@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  9 17:29:27 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Use local TZ database (bsc#1206951)
+- Remove now unnecessary libcurl build dependency
+
+-------------------------------------------------------------------
 Wed Dec  7 21:53:26 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix file conflicts with devel package

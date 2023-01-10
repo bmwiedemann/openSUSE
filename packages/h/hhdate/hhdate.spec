@@ -1,7 +1,7 @@
 #
 # spec file for package hhdate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ URL:            https://github.com/HowardHinnant/date
 Source:         hhdate-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libcurl-devel
 
 %description
 A date and time library based on the C++11/14/17 chrono header.
@@ -53,7 +52,7 @@ A date and time library based on the C++11/14/17 chrono header.
 %setup -q
 
 %build
-%cmake -DBUILD_TZ_LIB=ON
+%cmake -DBUILD_TZ_LIB=ON -DUSE_SYSTEM_TZ_DB=ON
 %cmake_build
 
 %install
