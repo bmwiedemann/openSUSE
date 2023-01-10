@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-software
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define gs_plugin_api 19
 
 Name:           gnome-software
-Version:        43.2
+Version:        43.3
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later

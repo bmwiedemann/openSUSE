@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:13:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + Periodically expire cached app icons.
+  + Stop notifying about unprepared critical updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec  3 00:03:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:
