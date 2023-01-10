@@ -1172,6 +1172,7 @@ unsorted:
   - barcode 
   - barcode-devel 
   - baresip 
+  - baresip-devel 
   - baresip-video 
   - barrel 
   - barrel-lang 
@@ -10083,6 +10084,7 @@ unsorted:
   - libb64-devel 
   - libbabl-0_1-0-32bit: [x86_64] 
   - libbamf3-2 
+  - libbaresip2 
   - libbarvinok23 
   - libbase-javadoc 
   - libbaseencode-devel 
@@ -13861,7 +13863,7 @@ unsorted:
   - libreiserfscore0 
   - librelp-devel 
   - librelp0 
-  - librem3 
+  - librem4 
   - libreoffice-base-drivers-postgresql 
   - libreoffice-calc-extensions 
   - libreoffice-gdb-pretty-printers 
@@ -32300,6 +32302,10 @@ unsorted:
   - q4wine 
   - q4wine-lang 
   - q5go 
+  - qFlipper 
+  - qFlipper-base 
+  - qFlipper-cli 
+  - qFlipper-libflipperproto 
   - qactus 
   - qalculate 
   - qalculate-gtk 
@@ -43839,6 +43845,8 @@ unsorted:
   - vagrant-sshfs 
   - vagrant-sshfs-doc 
   - vagrant-sshfs-testsuite 
+  - vagrant-vbguest: [x86_64] 
+  - vagrant-vbguest-doc: [x86_64] 
   - vagrant-vim 
   - vala 
   - vala-cmake-modules 
