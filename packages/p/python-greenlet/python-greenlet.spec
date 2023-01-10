@@ -1,7 +1,7 @@
 #
 # spec file for package python-greenlet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-greenlet
 Version:        1.1.3
 Release:        0
@@ -27,6 +26,8 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
 Source9:        python-greenlet-rpmlintrc
+# PATCH-FIX-OPENSUSE sphinx-6.0.0.patch
+Patch0:         sphinx-6.0.0.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -51,7 +52,7 @@ BuildArch:      noarch
 This package contains header files required for C modules development.
 
 %prep
-%setup -q -n greenlet-%{version}
+%autosetup -p1 -n greenlet-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"

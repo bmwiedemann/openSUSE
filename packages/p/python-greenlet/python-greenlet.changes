@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan  5 07:41:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add sphinx-6.0.0.patch to make it work with new version of Sphinx.
+
+-------------------------------------------------------------------
 Mon Sep 12 20:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:
