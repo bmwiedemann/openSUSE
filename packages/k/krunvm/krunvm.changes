@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 03 10:36:08 UTC 2023 - fcrozat@suse.com
+
+- Update to version 0.2.3+git12dac81:
+  * Bump version to v0.2.3
+  * macos: add support for creating x86 microVMs
+
+-------------------------------------------------------------------
 Fri Sep 30 13:15:57 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Switch to the new libkrun1 library and devel package as dependencies

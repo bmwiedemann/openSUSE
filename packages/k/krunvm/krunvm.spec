@@ -1,7 +1,7 @@
 #
 # spec file for package krunvm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           krunvm
-Version:        0.2.2+gite67d0ea
+Version:        0.2.3+git12dac81
 Release:        0
 Summary:        Manage lightweight VMs created from OCI images
 License:        Apache-2.0
