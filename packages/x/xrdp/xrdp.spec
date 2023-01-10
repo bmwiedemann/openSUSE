@@ -1,7 +1,7 @@
 #
 # spec file for package xrdp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,16 +44,37 @@ Patch4:         xrdp-disable-8-bpp-vnc-support.patch
 Patch5:         xrdp-support-KillDisconnected-for-Xvnc.patch
 # PATCH-FIX-OPENSUSE xrdp-systemd-services.patch boo#1138954 boo#1144327 - fezhang@suse.com -- Let systemd handle the daemons
 Patch6:         xrdp-systemd-services.patch
-# PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
-Patch11:        xrdp-avahi.diff
-# PATCH-FIX-SLE xrdp-filter-tab-from-mstsc-on-focus-change.patch bnc#601996 bnc#623534 - dliang@novell.com -- filter the fake tab key which is used to notify the session
-Patch12:        xrdp-filter-tab-from-mstsc-on-focus-change.patch
-# PATCH-FIX-SLE xrdp-bsc965647-allow-admin-choose-desktop.patch bsc#965647 - fezhang@suse.com -- Allow administrator choose the desktop displayed
-Patch13:        xrdp-bsc965647-allow-admin-choose-desktop.patch
-# PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
-Patch14:        xrdp-fate318398-change-expired-password.patch
 # PATCH-FIX-UPSTREAM xrdp-update-pam.d-path.patch bsc#1203468 - yu.daike@suse.com -- update install script to accommodate with pam.d path move
-Patch15:        xrdp-update-pam.d-path.patch
+Patch7:         xrdp-update-pam.d-path.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23468.patch bsc#1206300 - yu.daike@suse.com -- Buffer overflow in xrdp_login_wnd_create()
+Patch8:         xrdp-CVE-2022-23468.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23478.patch bsc#1206302 - yu.daike@suse.com -- Out of Bound Write in xrdp_mm_trans_process_drdynvc_chan
+Patch9:         xrdp-CVE-2022-23478.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23479.patch bsc#1206303 - yu.daike@suse.com -- Buffer overflow in xrdp_mm_chan_data_in() function
+Patch10:        xrdp-CVE-2022-23479.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23480.patch bsc#1206306 - yu.daike@suse.com -- Buffer overflow in devredir_proc_client_devlist_announce_req
+Patch11:        xrdp-CVE-2022-23480.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23481.patch bsc#1206307 - yu.daike@suse.com -- Out of Bound Read in xrdp_caps_process_confirm_active()
+Patch12:        xrdp-CVE-2022-23481.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23482.patch bsc#1206310 - yu.daike@suse.com -- Out of Bound Read in xrdp_sec_process_mcs_data_CS_CORE()
+Patch13:        xrdp-CVE-2022-23482.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23483.patch bsc#1206311 - yu.daike@suse.com -- Out of Bound Read in libxrdp_send_to_channel()
+Patch14:        xrdp-CVE-2022-23483.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23484.patch bsc#1206312 - yu.daike@suse.com -- Integer Overflow in xrdp_mm_process_rail_update_window_text()
+Patch15:        xrdp-CVE-2022-23484.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23493.patch bsc#1206313 - yu.daike@suse.com -- Out of Bound Read in xrdp_mm_trans_process_drdynvc_channel_close()
+Patch16:        xrdp-CVE-2022-23493.patch
+# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23477.patch bsc#1206301 - yu.daike@suse.com -- Buffer over flow in audin_send_open() function
+Patch17:        xrdp-CVE-2022-23477.patch
+# Keep SLE only patches on the bottom starting from patch number 1001
+# PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
+Patch1001:      xrdp-avahi.diff
+# PATCH-FIX-SLE xrdp-filter-tab-from-mstsc-on-focus-change.patch bnc#601996 bnc#623534 - dliang@novell.com -- filter the fake tab key which is used to notify the session
+Patch1002:      xrdp-filter-tab-from-mstsc-on-focus-change.patch
+# PATCH-FIX-SLE xrdp-bsc965647-allow-admin-choose-desktop.patch bsc#965647 - fezhang@suse.com -- Allow administrator choose the desktop displayed
+Patch1003:      xrdp-bsc965647-allow-admin-choose-desktop.patch
+# PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
+Patch1004:      xrdp-fate318398-change-expired-password.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -106,13 +127,23 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%if 0%{?sle_version}
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
-%endif
 %patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%if 0%{?sle_version}
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
+%endif
 
 %build
 sh ./bootstrap
