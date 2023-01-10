@@ -1392,4 +1392,20 @@ Also wanted for 13.1</comment>
   to remove pkexec) (bsc#1202070) (forwarded request 992458 from msmeissn)</comment>
     <requestid>992702</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>6e16c83c2a627f251bace26e30091321</srcmd5>
+    <version>1.50.3</version>
+    <time>1673359162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.50.3:
+  + dav: Prevent usage of NULL when user is not specified.
+  + ftp: Fix hangs when the connection is released.
+  + fuse: Decrease file handle reference when open file fail.
+  + sftp: PATH-expand the ssh client.
+  + test: Several smaller enhancements.
+  + backend: Add support for xx-large and x-large thumbnails.
+  + goa: Prevent automounts when resuming from suspension.
+  + Updated translations. (forwarded request 1056684 from iznogood)</comment>
+    <requestid>1057045</requestid>
+  </revision>
 </revisionlist>
