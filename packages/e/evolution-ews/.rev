@@ -1126,4 +1126,15 @@
     <comment>- Update to version 3.46.2: (forwarded request 1040207 from dimstar)</comment>
     <requestid>1040316</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>1d43c571ffb0660deb2ff43141451071</srcmd5>
+    <version>3.46.3</version>
+    <time>1673359165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.3:
+  + ecb_ews_get_timezone: Check for non-NULL `tzid` to avoid
+    runtime warning
+  + Updated translations. (forwarded request 1056687 from iznogood)</comment>
+    <requestid>1057048</requestid>
+  </revision>
 </revisionlist>
