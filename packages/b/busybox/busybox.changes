@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan  6 08:01:46 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Update to version 1.36.0 
+  - awk: fix use after free (CVE-2022-30065)
+  - various fixes for ash, bc, cut, fbset, kbuild, libbb, mkfs.vfat,
+    mv, powertop, sed, sort, taskset, top, udhcpc6, unzip, vi, xxd
+  - improvements in ash, cmp, crond, devmem, ed, fbset, fdisk, ls, xargs, pkill
+  - new applets added: seedrng, tree, tsort
+- Adjust busybox.config for new features
+  - ash: enable sleep built-in
+  - enable new applets: seedrng, tree, tsort
+  - enable SHA hardware acceleration
+  - try LOOP_CONFIGURE for losetup/loop mounts, but fall back to 
+    LOOP_SET_FD + LOOP_SET_STATUS if not supported
+- drop e63d7cdf.patch (fix for CVE-2022-30065), included upstream
+
+-------------------------------------------------------------------
 Tue Dec 27 10:27:35 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

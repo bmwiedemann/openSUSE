@@ -24,7 +24,7 @@
 %bcond_without  static
 
 Name:           busybox
-Version:        1.35.0
+Version:        1.36.0
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
@@ -42,8 +42,6 @@ Source7:        busybox.config.static.warewulf3
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
 Patch2:         testsuite-gnu-echo.patch
-# PATCH-FIX-UPSTREAM e63d7cdf.patch CVE-2022-30065 - awk: fix use after free (rebased https://github.com/mirror/busybox/commit/e63d7cdf.patch)
-Patch3:         e63d7cdf.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
