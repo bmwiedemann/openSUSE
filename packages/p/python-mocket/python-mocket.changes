@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jan  1 18:43:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.10.9
+  * Small improvement for socketpair by @mindflayer in #189
+  * Fix for an unconvential usage of Mocket by @mindflayer in #192
+  * Improve efficiency on CI by @amotl in #194
+- Add missing fastapi test dependency
+
+-------------------------------------------------------------------
+Tue Aug 23 18:47:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.10.8:
+ - Support for calls made by fastapi (#188)
+  * Introduce a `socket.socketpair()` function that acts as the real one
+
+-------------------------------------------------------------------
+Wed Aug 17 10:09:41 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 3.10.7:
+ - Adding support for `httpx` (#183)
+ - Change methods not using its bound instance to staticmethods (#180)
+
+-------------------------------------------------------------------
 Mon Jul 25 09:24:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean test requirements and suggestions

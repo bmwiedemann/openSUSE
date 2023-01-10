@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
+
 %define skip_python2 1
 Name:           python-mocket%{psuffix}
-Version:        3.10.6
+Version:        3.10.9
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -46,6 +46,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module async_timeout}
+BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module mocket = %{version}}
 BuildRequires:  %{python_module pook >= 0.2.1}
