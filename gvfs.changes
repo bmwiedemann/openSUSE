@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan  6 19:21:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.3:
+  + dav: Prevent usage of NULL when user is not specified.
+  + ftp: Fix hangs when the connection is released.
+  + fuse: Decrease file handle reference when open file fail.
+  + sftp: PATH-expand the ssh client.
+  + test: Several smaller enhancements.
+  + backend: Add support for xx-large and x-large thumbnails.
+  + goa: Prevent automounts when resuming from suspension.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug  3 07:14:18 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - recommend pkexec in gvfs-backends. (not requires to allow customers
