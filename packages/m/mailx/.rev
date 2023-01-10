@@ -399,4 +399,12 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
     <comment>- Fix number check of test (builtin) in %pre scriptlet (boo#1197317)</comment>
     <requestid>963650</requestid>
   </revision>
+  <revision rev="47" vrev="35">
+    <srcmd5>212acf0d6715a03034a46db84d719323</srcmd5>
+    <version>12.5</version>
+    <time>1673359156</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055711 from lnussel)</comment>
+    <requestid>1057030</requestid>
+  </revision>
 </revisionlist>

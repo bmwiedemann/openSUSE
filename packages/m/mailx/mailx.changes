@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:09:42 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Mar 21 10:31:05 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Fix number check of test (builtin) in %pre scriptlet (boo#1197317) 

@@ -116,7 +116,7 @@ minor enhancements like the ability to set a "From:" address.
 %if ! %{with libalternatives}
     # create symlinks for update-alternatives
     mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     ln -sf %{_sysconfdir}/alternatives/binmail %{buildroot}/bin/mail
 %endif
     ln -sf %{_sysconfdir}/alternatives/Mail    %{buildroot}/usr/bin/Mail
@@ -124,7 +124,7 @@ minor enhancements like the ability to set a "From:" address.
     ln -sf %{_sysconfdir}/alternatives/Mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/Mail.1%{?ext_man}
     ln -sf %{_sysconfdir}/alternatives/mail.1%{?ext_man} %{buildroot}%{_mandir}/man1/mail.1%{?ext_man}
     #
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     ln -sf %{_bindir}/mailx %{buildroot}%{_sysconfdir}/alternatives/binmail
 %endif
     ln -sf %{_bindir}/mailx %{buildroot}%{_sysconfdir}/alternatives/Mail
@@ -133,7 +133,7 @@ minor enhancements like the ability to set a "From:" address.
     ln -sf %{_mandir}/man1/mailx.1%{?ext_man} %{buildroot}%{_sysconfdir}/alternatives/mail.1%{?ext_man}
 %else
     ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/Mail
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     ln -sf %{_bindir}/alts %{buildroot}/bin/Mail
 %endif
     mkdir -p %{buildroot}%{_datadir}/libalternatives/Mail
@@ -143,7 +143,7 @@ man=mailx.1
 group=mail, Mail
 EOF
     ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mail
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     ln -sf %{_bindir}/alts %{buildroot}/bin/mail
 %endif
     mkdir -p %{buildroot}%{_datadir}/libalternatives/mail
@@ -160,7 +160,7 @@ EOF
 %post
 %{_sbindir}/update-alternatives --quiet --force \
     --install %{_bindir}/mail mail %{_bindir}/mailx 20 \
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
     --slave   /bin/mail binmail %{_bindir}/mailx \
 %endif
     --slave   %{_bindir}/Mail Mail %{_bindir}/mailx \
@@ -185,13 +185,13 @@ fi
 %license COPYING
 %doc README manual.ps.gz nail.rc
 %config /etc/mail.rc
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/mail
 %endif
 /usr/bin/Mail
 /usr/bin/mail
 %if ! 0%{with libalternatives}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %ghost %config %{_sysconfdir}/alternatives/binmail
 %endif
 %ghost %config %{_sysconfdir}/alternatives/Mail
