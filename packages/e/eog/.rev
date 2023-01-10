@@ -1252,4 +1252,15 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>New stable rel (forwarded request 1030703 from iznogood)</comment>
     <requestid>1030880</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>85bd1c95ea854347ce061c4a387d41b5</srcmd5>
+    <version>43.2</version>
+    <time>1673359166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.2:
+  + Bug fixes and improvements: Avoid critical warnings when saving
+    images on exit.
+  + Updated translations. (forwarded request 1056817 from iznogood)</comment>
+    <requestid>1057050</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  7 20:43:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Bug fixes and improvements: Avoid critical warnings when saving
+    images on exit.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 24 09:12:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
