@@ -15,19 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define realversion 1.2.0b1
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-servicelinker
-Version:        1.1.0
+Version:        1.2.0~b1
 Release:        0
 Summary:        Microsoft Azure Servicelinker Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-servicelinker/azure-mgmt-servicelinker-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-servicelinker/azure-mgmt-servicelinker-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -38,10 +39,11 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.3.0
+Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
+Requires:       python-msrest >= 0.7.1
+Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -54,10 +56,10 @@ This is the Microsoft Azure Servicelinker Management Client Library.
 This package has been tested with Python 2.7, 3.6+.
 
 %prep
-%setup -q -n azure-mgmt-servicelinker-%{version}
+%setup -q -n azure-mgmt-servicelinker-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-servicelinker-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-servicelinker-%{realversion}
 %python_build
 
 %install

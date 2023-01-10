@@ -43,4 +43,17 @@
     CHANGELOG.md file provided with this package (forwarded request 977899 from glaubitz)</comment>
     <requestid>978119</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5bc2765f98ee81f3c75bd1e45c4f0d46</srcmd5>
+    <version>1.2.0~b1</version>
+    <time>1673359206</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.2.0~b1
+- Update Requires from setup.py (forwarded request 1057603 from glaubitz)</comment>
+    <requestid>1057618</requestid>
+  </revision>
 </revisionlist>
