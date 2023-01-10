@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define sbindir %_sbindir
 %define bindir %_bindir
 %else
@@ -115,7 +115,7 @@ popd
 # pidof is part of procps-ng; let's remove the symlinks to killproc5 here
 rm -f %{buildroot}{/sbin,/bin,%{_mandir}/man8}/pidof{,.8}
 %endif
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 # it's all hardcoded in Makefiles so move here
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sbindir}

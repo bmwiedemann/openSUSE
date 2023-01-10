@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define sbindir %_sbindir
 %else
 %define sbindir /sbin

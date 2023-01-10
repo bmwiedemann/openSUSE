@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:13:37 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Sat May  7 12:20:53 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch to https source urls
