@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  6 09:40:33 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.1.14
+  * This is a security release.
+  * fixed: CVE-2022-31631 [bsc#1206958]
+  * https://www.php.net/ChangeLog-8.php#8.1.14
+
+-------------------------------------------------------------------
 Wed Nov 30 08:25:35 UTC 2022 - pgajdos@suse.com
 
 - amend %preun to fix [bsc#1205782]

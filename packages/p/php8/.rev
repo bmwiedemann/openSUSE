@@ -347,4 +347,15 @@
     <comment>- amend %preun to fix [bsc#1205782]</comment>
     <requestid>1039061</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>60e6c7db8ba42d9e77a6775c3deadd29</srcmd5>
+    <version>8.1.14</version>
+    <time>1673359147</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.14
+  * This is a security release.
+  * fixed: CVE-2022-31631 [bsc#1206958]
+  * https://www.php.net/ChangeLog-8.php#8.1.14</comment>
+    <requestid>1057006</requestid>
+  </revision>
 </revisionlist>
