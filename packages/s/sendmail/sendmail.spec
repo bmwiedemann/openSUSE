@@ -57,6 +57,7 @@ BuildRequires:  m4
 BuildRequires:  mailx
 BuildRequires:  netcfg
 BuildRequires:  openldap2-devel
+BuildRequires:  pam-devel
 BuildRequires:  procmail
 %if %{without sysvinit}
 Requires(pre):  sysvinit(network)
@@ -324,7 +325,12 @@ processed mail on to the MTA (e.g. sendmail).
 %if %{with sysvinit}
     mkdir -p %{buildroot}%{_sysconfdir}/init.d
 %endif
+
+%if 0%{?suse_version} > 1500
+    mkdir -p %{buildroot}%{_pam_vendordir}
+%else
     mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+%endif
     mkdir -p %{buildroot}%{_libdir}
     mkdir -p %{buildroot}%{_libexecdir}/sendmail.d/bin
     mkdir -p %{buildroot}%{_datadir}/sendmail
@@ -467,7 +473,11 @@ processed mail on to the MTA (e.g. sendmail).
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail
     sed -ri '\|@@VARRUN@@|d' %{buildroot}%{_sysconfdir}/permissions.d/sendmail.paranoid
 %endif
+%if 0%{?suse_version} > 1500
+    install -m 0644 smtp %{buildroot}%{_pam_vendordir}/smtp
+%else
     install -m 0644 smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
+%endif
     install update.sendmail %{buildroot}%{_libexecdir}/sendmail.d/update
 %if 0%{?suse_version} <= 1140
     sed -ri 's/,,//g' %{buildroot}%{_libexecdir}/sendmail.d/update
@@ -625,9 +635,15 @@ fi
 %set_permissions %{_sbindir}/sendmail
 %endif
 
-%if ! %{with sysvinit}
 %pre
+%if ! %{with sysvinit}
 %service_add_pre sendmail.service sendmail-client.service sendmail-client.path
+%endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/smtp ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
 %endif
 
 %preun
@@ -655,6 +671,12 @@ fi
 if test -x %{_libexecdir}/sendmail.d/update ; then
     VERBOSE=false %{_libexecdir}/sendmail.d/update
 fi
+%if 0%{?suse_version} > 1500
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/smtp ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post -n libmilter%{libmilter_somajor}_%{libmilter_sominor} -p /sbin/ldconfig
 %postun -n libmilter%{libmilter_somajor}_%{libmilter_sominor} -p /sbin/ldconfig
@@ -700,7 +722,11 @@ fi
 %{_datadir}/sendmail
 %{_fillupdir}/sysconfig.sendmail
 %{_fillupdir}/sysconfig.mail-sendmail
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/smtp
+%else
 %config %attr(0644,root,root) %{_sysconfdir}/pam.d/smtp
+%endif
 %if %{with sysvinit}
 %config %attr(0744,root,root) %{_sysconfdir}/init.d/sendmail
 %endif

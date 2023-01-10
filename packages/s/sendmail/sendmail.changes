@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 28 16:41:20 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Tue Oct 25 09:32:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Remove maybe perilous shell script code from sm-client.pre (boo#1202937) 
