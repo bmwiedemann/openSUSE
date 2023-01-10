@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 09 17:58:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.29.1:
+  * fix: Fix init --ssh
+  * feat: Add hexDecode and hexEncode template functions
+  * fix: Fix bug where edit --watch only applied the first change
+  * fix: Don't request authentication when cloning public repo with builtin git
+  * fix: Improve error message when state database cannot be locked
+  * chore: Improve error message when persistent state cannot be opened
+  * feat: Allow cd command to take the destination directory as an argument
+  * feat: Add --path-style=source-{absolute,relative} option to managed command
+  * feat: Allow .chezmoi{external,ignore,remove} files to have a .tmpl suffix
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Thu Dec 22 17:15:35 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.28.0:
