@@ -480,4 +480,17 @@ SPDX syntax describing the COPYING file statesments (forwarded request 96657 fro
 - drop hunspell-CVE-2019-16707.patch (upstream) (forwarded request 1003035 from dirkmueller)</comment>
     <requestid>1003106</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d386c0d00e0d45a8cb0ff61d29555514</srcmd5>
+    <version>1.7.2</version>
+    <time>1673359142</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.2:
+  * Crash fixes, code clean-up in ~200 commits
+  * tdf#136306 don't accept/suggest typos as 3-or-more-word compound words
+  * Prepare optional spelling mode of LibreOffice to not accept/suggest not
+    dictionary-based words as compound words
+  * Merge in weblate translations (forwarded request 1056911 from dirkmueller)</comment>
+    <requestid>1056989</requestid>
+  </revision>
 </revisionlist>

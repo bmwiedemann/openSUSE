@@ -1,7 +1,7 @@
 #
 # spec file for package hunspell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define ver     1.7
 %define libname lib%{name}-1_7-0
 Name:           hunspell
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        A spell checker and morphological analyzer library
 License:        (GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1+) AND LGPL-2.1-or-later
