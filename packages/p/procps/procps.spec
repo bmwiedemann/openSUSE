@@ -18,7 +18,7 @@
 
 %define somajor 8
 %define libname libprocps%{somajor}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %bcond_with     bin2usr
 %else
 %bcond_without  bin2usr
@@ -237,7 +237,7 @@ then
 	ln snice skill
     popd
 fi
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -s %{_bindir}/ps      %{buildroot}/bin/
 ln -s %{_bindir}/pgrep   %{buildroot}/bin/
 ln -s %{_bindir}/pkill   %{buildroot}/bin/
@@ -333,7 +333,7 @@ test $error = no || exit 1
 %license COPYING COPYING.LIB
 %doc NEWS Documentation/bugs.md Documentation/FAQ
 %if %{with bin2usr}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %verify(link) /bin/ps
 %verify(link) /bin/pgrep
 %verify(link) /bin/pkill

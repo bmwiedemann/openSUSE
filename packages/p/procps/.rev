@@ -1341,4 +1341,12 @@ There are also man pages translations but they doesn't get installed automatical
 - Make sure that correct library version is installed (bsc#1206412)</comment>
     <requestid>1043109</requestid>
   </revision>
+  <revision rev="131" vrev="12">
+    <srcmd5>e2760908f866f7909c292064ec47ad0c</srcmd5>
+    <version>3.3.17</version>
+    <time>1673359155</time>
+    <user>dimstar_suse</user>
+    <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055723 from lnussel)</comment>
+    <requestid>1057027</requestid>
+  </revision>
 </revisionlist>
