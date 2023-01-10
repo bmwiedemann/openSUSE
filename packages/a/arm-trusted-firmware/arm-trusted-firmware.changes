@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 10 09:05:12 UTC 2023 - Oscar Curero <oscar@naiandei.net>
+
+- Add sun50i_h616 flavor for OrangePi Zero2
+
+-------------------------------------------------------------------
 Mon Nov 21 19:23:38 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Add --no-warn-rwx-segment always, the problem is not specific to Tumbleweed.

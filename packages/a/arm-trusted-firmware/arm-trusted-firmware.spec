@@ -1,7 +1,7 @@
 #
 # spec file for package arm-trusted-firmware
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 # OP-TEE not available
 %define use_optee 0
 %endif
-%if "%{platform}" == "a3700" || "%{platform}" == "a80x0_mcbin" || "%{platform}" == "imx8qm" || "%{platform}" == "imx8qx" || "%{platform}" == "imx8mq" || "%{platform}" == "imx8mm" || "%{platform}" == "sun50i_a64" || "%{platform}" == "sun50i_h6" || "%{platform}" == "zynqmp"
+%if "%{platform}" == "a3700" || "%{platform}" == "a80x0_mcbin" || "%{platform}" == "imx8qm" || "%{platform}" == "imx8qx" || "%{platform}" == "imx8mq" || "%{platform}" == "imx8mm" || "%{platform}" == "sun50i_a64" || "%{platform}" == "sun50i_h6" || "%{platform}" == "sun50i_h616" || "%{platform}" == "zynqmp"
 # TBD
 %define use_optee 0
 %endif

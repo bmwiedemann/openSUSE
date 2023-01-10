@@ -145,4 +145,13 @@
     <comment></comment>
     <requestid>1037834</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>b1c49ee18848571c55ed90196cca0d08</srcmd5>
+    <version>2.7</version>
+    <time>1673359203</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sun50i_h616 flavor for OrangePi Zero2
+</comment>
+    <requestid>1057333</requestid>
+  </revision>
 </revisionlist>
