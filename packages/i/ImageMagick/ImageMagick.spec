@@ -93,6 +93,9 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(libjxl)
+%endif
 %if 0%{?suse_version} > 1315
 BuildRequires:  pkgconfig(ijs)
 # bsc#1088463
