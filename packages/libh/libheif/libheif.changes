@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan  7 16:16:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.14.2:
+  * A function name typo in the C++ wrapper was corrected in v1.14.1, but
+    the old function name should not have been removed from the API
+  * (ColorProfile_nclx::set_color_primaries()). The old name is added to the
+    API again in this release.
+
+-------------------------------------------------------------------
 Tue Jan  3 12:43:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.14.1:

@@ -19,7 +19,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 %bcond_with x265
 Name:           libheif
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        GPL-2.0-or-later
