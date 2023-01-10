@@ -1,3 +1,10 @@
+--------------------------------------------------------------------
+Mon Jan 9 14:05:07 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#126
+- create xen usb controller device if necessary (bsc#1204294)
+- 22.2
+
 -------------------------------------------------------------------
 Mon Oct 17 17:41:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
