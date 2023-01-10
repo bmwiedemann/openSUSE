@@ -117,4 +117,12 @@
     <comment></comment>
     <requestid>1004817</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28899be9baf29fe9aed6ab241ddd3d0c</srcmd5>
+    <version>1.2.1</version>
+    <time>1673359161</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1056683 from iznogood)</comment>
+    <requestid>1057044</requestid>
+  </revision>
 </revisionlist>
