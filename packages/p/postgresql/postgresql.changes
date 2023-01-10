@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:22:55 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1206796: Refine the distinction of where to use sysusers and
+  use bcond to have the expression only in one place.
+
+-------------------------------------------------------------------
+Thu Sep 22 14:23:49 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- riscv64 does not have llvm support yet,
+  adapt the %postgresql_has_llvm macro accordingly. 
+
+-------------------------------------------------------------------
 Mon Sep  5 13:12:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - avoid bashisms in /bin/sh based startup script 

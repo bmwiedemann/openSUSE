@@ -541,4 +541,16 @@
     <comment></comment>
     <requestid>1001279</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>a427e9d9df95f3ee138800a465992a09</srcmd5>
+    <version>15</version>
+    <time>1673359167</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1206796: Refine the distinction of where to use sysusers and
+  use bcond to have the expression only in one place.
+
+- riscv64 does not have llvm support yet,
+  adapt the %postgresql_has_llvm macro accordingly.</comment>
+    <requestid>1057058</requestid>
+  </revision>
 </revisionlist>

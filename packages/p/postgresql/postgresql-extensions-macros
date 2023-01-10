@@ -49,5 +49,5 @@ Recommends:     %{pg_name}-llvmjit   \
 %nil
 
 %pg_version_from_name %define pg_version %( echo %{?pg_name} | sed -e 's|^postgresql||g' )%{nil}
-%postgresql_has_llvm (0%{?suse_version} >= 1500 && 0%{?pg_version} >= 11 && 0%{?pg_version} < 90)
+%postgresql_has_llvm (0%{?suse_version} >= 1500 && "%{_target_cpu}" != "riscv64" && 0%{?pg_version} >= 11 && 0%{?pg_version} < 90)
 
