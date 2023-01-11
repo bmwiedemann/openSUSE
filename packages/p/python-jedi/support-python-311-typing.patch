@@ -1,0 +1,33 @@
+From 00e23ddcee220110086621ff5922fb9cffddf60a Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 10 Jan 2023 14:52:24 +1100
+Subject: [PATCH] Support Python 3.11 typing changes
+
+Python 3.11 has changed typing so that unions now  return forward
+refrences instead of erroring, and typing.Any is now an _AnyMeta class.
+Correct the parameters for both of those.
+
+Fixes #1858
+---
+ test/test_api/test_interpreter.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_api/test_interpreter.py b/test/test_api/test_interpreter.py
+index 848bca746..8e69cafc9 100644
+--- a/test/test_api/test_interpreter.py
++++ b/test/test_api/test_interpreter.py
+@@ -656,10 +656,12 @@ def bar():
+         ({'return': 'typing.Union[str, int]'}, ['int', 'str'], ''),
+         ({'return': 'typing.Union["str", int]'},
+          ['int', 'str'] if sys.version_info >= (3, 9) else ['int'], ''),
+-        ({'return': 'typing.Union["str", 1]'}, [], ''),
++        ({'return': 'typing.Union["str", 1]'},
++         ['str'] if sys.version_info >= (3, 11) else [], ''),
+         ({'return': 'typing.Optional[str]'}, ['NoneType', 'str'], ''),
+         ({'return': 'typing.Optional[str, int]'}, [], ''),  # Takes only one arg
+-        ({'return': 'typing.Any'}, [], ''),
++        ({'return': 'typing.Any'},
++         ['_AnyMeta'] if sys.version_info >= (3, 11) else [], ''),
+ 
+         ({'return': 'typing.Tuple[int, str]'},
+          ['Tuple' if sys.version_info[:2] == (3, 6) else 'tuple'], ''),

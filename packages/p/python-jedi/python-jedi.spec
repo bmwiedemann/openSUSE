@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM gh#davidhalter/jedi#1903
+Patch0:         support-python-311-typing.patch
 BuildRequires:  %{python_module parso >= 0.8.0 with %python-parso < 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}

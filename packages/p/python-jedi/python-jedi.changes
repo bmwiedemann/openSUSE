@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 10 04:01:51 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-311-typing.patch:
+  * Support typing changes for Python 3.11+ 
+
+-------------------------------------------------------------------
 Tue Jan  3 19:08:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Move to PEP517
