@@ -21,12 +21,12 @@
 %define qt5_snapshot 1
 %define libname libQt53DCore5
 %define base_name libqt5
-%define real_version 5.15.7
-%define so_version 5.15.7
+%define real_version 5.15.8
+%define so_version 5.15.8
 %define tar_version qt3d-everywhere-src-%{version}
 %global enable_assimp (0%{?suse_version} >= 1550)
 Name:           libqt5-qt3d
-Version:        5.15.7+kde6
+Version:        5.15.8+kde0
 Release:        0
 Summary:        Qt 5 3D Addon
 # Legal: some files are GPL-3.0-only WITH Qt-GPL-exception-1.0

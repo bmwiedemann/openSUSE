@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:14:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde0, rebased upstream:
+  * Update Assimp qt_attributions following reuse of qtquick3d assimp submodule
+  * tst_qchangearbiter: fix failures on Ubuntu 20.04 CI node
+  * Build Assimp using submodule
+  * QGeometryFactory: don't make op== virtual
+
+-------------------------------------------------------------------
 Thu Nov  3 08:50:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde6, rebased upstream:
