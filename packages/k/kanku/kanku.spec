@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -62,7 +62,7 @@ BuildRequires:  perl(MooseX::App)
 BuildRequires:  perl(MooseX::Singleton)
 BuildRequires:  perl(Net::IP)
 BuildRequires:  perl(Net::OBS::Client)
-BuildRequires:  perl(Net::SSH2)
+BuildRequires:  perl(Libssh::Session)
 BuildRequires:  perl(Path::Class)
 BuildRequires:  perl(Plack)
 BuildRequires:  perl(Sys::Virt)
@@ -158,7 +158,7 @@ Requires:       perl(MooseX::App)
 Requires:       perl(MooseX::Singleton)
 Requires:       perl(Net::IP)
 Requires:       perl(Net::OBS::Client)
-Requires:       perl(Net::SSH2)
+Requires:       perl(Libssh::Session)
 Requires:       perl(Path::Class)
 Requires:       perl(Sys::Virt)
 Requires:       perl(Template)
@@ -406,12 +406,14 @@ WebUI for kanku using perl Dancer
 %dir /etc/apache2/conf.d
 %ghost %config (noreplace) /etc/apache2/conf.d/kanku.conf
 %config /etc/kanku/jobs/remove-domain.yml
+%dir /etc/kanku/dancer
 
 # public contains css/js/bootstrap/jquery etc
 /usr/share/kanku/public/
 /usr/lib/kanku/lib/Kanku.pm
 /usr/lib/kanku/lib/Kanku/REST.pm
 /usr/lib/kanku/lib/Kanku/REST
+/usr/lib/kanku/lib/Dancer2
 
 %package worker
 Summary:        Worker daemon for kanku
