@@ -1,0 +1,6 @@
+<package name="mcfly" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="mcfly"/>
+  <url>https://github.com/cantino/mcfly</url>
+</package>
