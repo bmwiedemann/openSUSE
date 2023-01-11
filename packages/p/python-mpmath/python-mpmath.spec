@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpmath
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mpmath
 Version:        1.2.1
 Release:        0
@@ -25,13 +24,13 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/fredrik-johansson/mpmath
 Source:         https://files.pythonhosted.org/packages/source/m/mpmath/mpmath-%{version}.tar.gz
-BuildRequires:  %{python_module gmpy >= 1.03}
+BuildRequires:  %{python_module gmpy2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-gmpy >= 1.03
+Requires:       python-gmpy2
 BuildArch:      noarch
 %python_subpackages
 

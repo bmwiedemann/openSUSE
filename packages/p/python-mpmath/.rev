@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1015076</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1ce9a99ab982c9f014cbe0fbdb81354b</srcmd5>
+    <version>1.2.1</version>
+    <time>1673444017</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace python-gmpy dependecy with python-gmpy2
+</comment>
+    <requestid>1057590</requestid>
+  </revision>
 </revisionlist>
