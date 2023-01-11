@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 10 04:19:50 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.0:
+  * Python 3.11 is officially supported.
+  * Dropped support for Python 3.6.
+  * Now passing subtests are shown in the test run summary at the end (for
+    example: 10 failed, 1 passed, 10 subtests passed in 0.10s) (#70).
+  * Fixed support for pytest 7.0, and pytest>=7.0 is now required.
+  * pytest>=6.0 is now required.
+  * Added official support for Python 3.10.
+  * Dropped support for Python 3.5.
+  * Users no longer need to configure a warnings filter for the internal A
+    private pytest class or function was used pytest warning (#52).
+  * Experimental: Use SUBPASS and , for passed subtests instead of general
+    PASSED, SUBFAIL and u for failed ones instead of FAILED (#30). 
+
+-------------------------------------------------------------------
 Thu Oct  7 09:36:20 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.5.0

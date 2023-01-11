@@ -49,4 +49,24 @@
     <comment></comment>
     <requestid>923685</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ddb22f979f578f54f8e2f00a072e971</srcmd5>
+    <version>0.9.0</version>
+    <time>1673443976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * Python 3.11 is officially supported.
+  * Dropped support for Python 3.6.
+  * Now passing subtests are shown in the test run summary at the end (for
+    example: 10 failed, 1 passed, 10 subtests passed in 0.10s) (#70).
+  * Fixed support for pytest 7.0, and pytest&gt;=7.0 is now required.
+  * pytest&gt;=6.0 is now required.
+  * Added official support for Python 3.10.
+  * Dropped support for Python 3.5.
+  * Users no longer need to configure a warnings filter for the internal A
+    private pytest class or function was used pytest warning (#52).
+  * Experimental: Use SUBPASS and , for passed subtests instead of general
+    PASSED, SUBFAIL and u for failed ones instead of FAILED (#30).</comment>
+    <requestid>1057181</requestid>
+  </revision>
 </revisionlist>
