@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 10 11:21:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 22.10.0
+  * Fix _test_visualize.py twisted import errors
+  * Fix #17: Allow enter to have a default
+  * Use CodeType.replace() in copycode for Python > 3.8
+
+-------------------------------------------------------------------
 Thu Dec  9 17:40:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't buildrequire unmaintained m2r

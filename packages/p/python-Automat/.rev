@@ -50,4 +50,16 @@
     <comment></comment>
     <requestid>939176</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a30f078e3508a9e5e211bfafcfc2e94</srcmd5>
+    <version>22.10.0</version>
+    <time>1673453655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.10.0
+  * Fix _test_visualize.py twisted import errors
+  * Fix #17: Allow enter to have a default
+  * Use CodeType.replace() in copycode for Python &gt; 3.8
+</comment>
+    <requestid>1057654</requestid>
+  </revision>
 </revisionlist>

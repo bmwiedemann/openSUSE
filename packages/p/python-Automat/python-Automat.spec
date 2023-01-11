@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,9 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-Automat%{psuffix}
-Version:        20.2.0
+Version:        22.10.0
 Release:        0
 Summary:        Self-service finite-state machines for the programmer on the go
 License:        MIT
@@ -36,10 +35,10 @@ URL:            https://github.com/glyph/automat
 Source:         https://files.pythonhosted.org/packages/source/A/Automat/Automat-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 16.1.0
-Requires:       python-six
+Requires:       python-attrs >= 19.2.0
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Suggests:       python-Twisted >= 16.1.1
@@ -47,7 +46,7 @@ Suggests:       python-graphviz > 0.5.1
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Twisted >= 16.1.1}
-BuildRequires:  %{python_module attrs >= 16.1.0}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module graphviz >= 0.5.1}
 BuildRequires:  %{python_module pytest}
 %if %{with python2}
