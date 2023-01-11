@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan  4 14:05:15 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
+Wed Dec 21 12:17:58 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Change with_dc default to 0 (for non TW builds).
+
+-------------------------------------------------------------------
 Thu Dec 15 16:45:28 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.17.4

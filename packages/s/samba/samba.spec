@@ -23,7 +23,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
 %{!?_pam_moduledir:%global _pam_moduledir /%{_lib}/security}
 %if 0%{?suse_version} > 1500
-%global _pam_confdir %{_distconfdir}/pam.d
+%{!?_pam_vendordir:%global _pam_vendordir %{_prefix}/lib/pam.d}
 %else
 %{!?_pam_confdir:%global _pam_confdir %{_sysconfdir}/pam.d}
 %endif
@@ -58,7 +58,12 @@
 #---------------------------------------------------------
 %{!?with_mitkrb5: %define with_mitkrb5 1}
 %{!?with_mit_dc: %define with_mit_dc 1}
+# if factory/tw default with_dc to 1 (if not already defined in project config)
+%if 0%{?suse_version} > 1500
 %{!?with_dc: %define with_dc 1}
+%else
+%{!?with_dc: %define with_dc 0}
+%endif
 
 # Define whether smbd is built with SMB1 disabled
 %{!?without_smb1_server: %define without_smb1_server 1}
@@ -152,7 +157,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.4+git.300.305b22bfce
+Version:        4.17.4+git.303.89e23854eb7
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -710,8 +715,16 @@ popd
 %sysusers_generate_pre packaging/SuSE/systemd/sysusers.samba samba samba.conf
 
 %install
+
+%if 0%{?suse_version} > 1500
 install -d -m 0755 -p \
-	%{buildroot}/%_pam_confdir \
+	%{buildroot}/%_pam_vendordir
+%else
+install -d -m 0755 -p \
+	%{buildroot}/%_pam_confdir
+%endif
+
+install -d -m 0755 -p \
 	%{buildroot}/%{_sysconfdir}/{xinetd.d,logrotate.d} \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
 	%{buildroot}/%{_sysconfdir}/security \
@@ -824,7 +837,11 @@ install -m 0755 tools/update-apparmor-samba-profile \
 # PDF generator
 install -p -m 0755 tools/smbprngenpdf %{buildroot}/%{_bindir}/smbprngenpdf
 install -m 0644 config/samba.reg %{buildroot}/%{_sysconfdir}/slp.reg.d/samba.reg
+%if 0%{?suse_version} > 1500
+install -m 0644 config/samba.pamd-common %{buildroot}/%_pam_vendordir/samba
+%else
 install -m 0644 config/samba.pamd-common %{buildroot}/%_pam_confdir/samba
+%endif
 install -m 0644 config/dhcp.conf %{buildroot}/%{_fillupdir}/samba-client-dhcp.conf
 install -m 0644 config/sysconfig.dhcp-samba-client %{buildroot}/%{_fillupdir}/sysconfig.dhcp-samba-client
 
@@ -1116,7 +1133,11 @@ exit 0
 %{_unitdir}/smb.service
 %ghost %{CONFIGDIR}/smbpasswd
 %config(noreplace) %{CONFIGDIR}/smbusers
+%if 0%{?suse_version} > 1500
+%_pam_vendordir/samba
+%else
 %config %_pam_confdir/samba
+%endif
 %{_sysconfdir}/slp.reg.d
 %dir %{_libdir}/samba
 %dir %{_libdir}/samba/vfs
