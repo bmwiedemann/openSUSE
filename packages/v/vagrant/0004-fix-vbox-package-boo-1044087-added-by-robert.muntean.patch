@@ -1,7 +1,7 @@
-From 9bd031027288433fa153188148226eb40bb4f5e8 Mon Sep 17 00:00:00 2001
+From 8ecfa63a112f0b83dc29c226dc0b2ad91953d602 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Fri, 16 Nov 2018 21:12:43 +0100
-Subject: [PATCH 04/10] fix vbox package boo#1044087, added by
+Subject: [PATCH 04/11] fix vbox package boo#1044087, added by
  robert.munteanu@gmail.com on Sun Aug 13 19:07:06 UTC 2017
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
@@ -33,5 +33,5 @@ index a0baf516f..867fe2bf8 100644
  module VagrantPlugins
    module ProviderVirtualBox
 -- 
-2.38.1
+2.39.0
 

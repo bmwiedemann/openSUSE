@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 10 09:23:16 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add patch to support building with Ruby 3.2
+
+  Rebase patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+  * 0010-Remove-dependency-on-grpc-tools.patch
+
+  Added patch:
+  * 0011-Bump-Ruby-version-to-3.x.patch
+
+-------------------------------------------------------------------
 Mon Dec 12 09:01:56 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.3.4

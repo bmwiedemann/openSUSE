@@ -58,6 +58,7 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Remove-dependency-on-grpc-tools.patch
+Patch11:        0011-Bump-Ruby-version-to-3.x.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -77,9 +78,9 @@ Patch10:        0010-Remove-dependency-on-grpc-tools.patch
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = ">= 2.7", "< 3.2"
+#  s.required_ruby_version     = ">= 2.7", "< 3.3"
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby} < 3.2
+BuildRequires:  %{ruby} < 3.3
 %else
 BuildRequires:  %{ruby} >= 2.7
 %endif

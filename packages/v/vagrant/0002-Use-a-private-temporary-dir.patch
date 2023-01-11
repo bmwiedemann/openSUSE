@@ -1,7 +1,7 @@
-From 02893365295d215dc802402ba99299f297534018 Mon Sep 17 00:00:00 2001
+From 2840391e027becd1be47e174e9848d23fa4199fb Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@debian.org>
 Date: Wed, 22 Oct 2014 09:40:14 -0200
-Subject: [PATCH 02/10] Use a private temporary dir
+Subject: [PATCH 02/11] Use a private temporary dir
 
 Without this vagrant will clutter $TMPDIR with dozens of even hundreds
 of temporary files (~4 per vagrant invocation).
@@ -94,5 +94,5 @@ index 000000000..0cbbb53ac
 +  FileUtils.rm_rf(Vagrant::Util::Tempfile.private_tmpdir)
 +end
 -- 
-2.38.1
+2.39.0
 
