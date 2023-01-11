@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:17:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde0, rebased upstream:
+  * Fix tst_proxy::multiMatch autotest
+
+-------------------------------------------------------------------
 Thu Nov  3 08:51:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde0, rebased upstream:
