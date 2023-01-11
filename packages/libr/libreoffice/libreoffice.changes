@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan  6 20:46:55 UTC 2023 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1204825 - LO-L3: PPTX: text box shows that does not show in PowerPoint
+  * bsc1204825.patch
+
+-------------------------------------------------------------------
 Tue Dec 13 17:25:49 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Use fixmath shared library
