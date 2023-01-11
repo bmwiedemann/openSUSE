@@ -1,7 +1,7 @@
 #
 # spec file for package armadillo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define soname libarmadillo11
 Name:           armadillo
-Version:        11.4.2
+Version:        11.4.3
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://arma.sourceforge.net/
-Source:         http://downloads.sourceforge.net/arma/%{name}-%{version}.tar.xz
+Source:         http://sourceforge.net/projects/arma/files/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
