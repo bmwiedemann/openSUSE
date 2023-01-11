@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Sep 02 15:10:54 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.8.3:
+  * Fix: Only create large stack size if enough memory
+  * Config file
+  * New parameter: --min-size
+  * New parameter: --skip-total
+  * Does not include a space character as the first character in each line unless required
+  * Fixes spurious permissions warning
+  * Adds completion
+
+-------------------------------------------------------------------
+Thu Jul 14 18:20:27 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.8.1:
+  * Allow -n to be used with -d
+  * Tweak utils function
+  * Fix archive/directory check in platform.rs
+  * Improve help text
+
+-------------------------------------------------------------------
+Wed May 25 08:00:32 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version v0.8.0:
+  * Increment version
+  * Improve help text
+
+-------------------------------------------------------------------
+Sun Oct 31 20:43:27 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package
