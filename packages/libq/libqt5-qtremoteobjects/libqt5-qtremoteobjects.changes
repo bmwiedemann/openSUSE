@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:23:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde0, rebased upstream:
+  * Fix reconnect to replaced server node
+  * Fix header change replication
+
+-------------------------------------------------------------------
 Thu Nov  3 08:56:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde0, rebased upstream:
