@@ -1,7 +1,7 @@
 #
 # spec file for package scrot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           scrot
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/resurrecting-open-source-projects/scrot
-Source:         https://github.com/resurrecting-open-source-projects/scrot/releases/download/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/resurrecting-open-source-projects/scrot/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(imlib2)
@@ -32,6 +32,7 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(zlib)
 
 %description

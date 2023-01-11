@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 10 15:22:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8:
+  * Created FAQ file.
+  * Improvement: added new format specifier $W: name of the window.
+  * Bug fixed: issue when not showing counting progress in terminal.
+  * Fixes: memleak and potentially bad free data.
+  * Fixes: autotools: respect --docdir.
+  * New option: added -M/--monitor option to capture a Xinerama display.
+  * Added new library dependency: libXinerama.
+  * Several other code fixes and improvements.
+
+-------------------------------------------------------------------
 Thu Feb 24 13:15:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop the unneeded nor used pkgconfig(giblib) BuildRequires: it
