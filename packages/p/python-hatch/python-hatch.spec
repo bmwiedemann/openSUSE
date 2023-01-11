@@ -1,7 +1,7 @@
 #
-# spec file for package python-hatch
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,86 +16,80 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-hatch
-Version:        0.23.0
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-hatch%{psuffix}
+Version:        1.6.3
 Release:        0
-Summary:        A modern project, package, and virtual env manager
-License:        MIT OR Apache-2.0
-URL:            https://github.com/ofek/hatch
-Source:         https://files.pythonhosted.org/packages/source/h/hatch/hatch-%{version}.tar.gz
-BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module atomicwrites}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module devel > 3.5}
-BuildRequires:  %{python_module parse}
-BuildRequires:  %{python_module pexpect}
-BuildRequires:  %{python_module pip >= 9.0.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module semver >= 2.7.8}
-BuildRequires:  %{python_module setuptools >= 36.0.0}
-BuildRequires:  %{python_module sortedcontainers >= 1.5.7}
-BuildRequires:  %{python_module toml >= 0.9.3}
-BuildRequires:  %{python_module twine >= 1.9.1}
-BuildRequires:  %{python_module userpath >= 1.3.0}
-BuildRequires:  %{python_module virtualenv}
-BuildRequires:  %{python_module wheel >= 0.27.0}
-BuildRequires:  dos2unix
+Summary:        Modern, extensible Python project management
+License:        MIT
+URL:            https://hatch.pypa.io/latest/
+# SourceRepository: https://github.com/pypa/hatch
+Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM hatch-pr659-utf8.patch gh#pypa/hatch#659 required due to newer hatchling
+Patch1:         hatch-pr659-utf8.patch
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 1.11.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
-BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-Requires:       git-core
-Requires:       python-appdirs
-Requires:       python-atomicwrites
-Requires:       python-click
-Requires:       python-colorama
-Requires:       python-coverage
-Requires:       python-pexpect
-Requires:       python-pip >= 9.0.1
-Requires:       python-pytest
-Requires:       python-semver >= 2.7.8
-Requires:       python-setuptools >= 36.0.0
-Requires:       python-sortedcontainers
-Requires:       python-toml >= 0.9.3
-Requires:       python-twine >= 1.9.1
-Requires:       python-userpath >= 1.3.0
-Requires:       python-virtualenv
-Requires:       python-wheel >= 0.27.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Requires:       git-core
+%{?python_enable_dependency_generator}
+%if %{with test}
+BuildRequires:  %{python_module filelock >= 3.7.1}
+BuildRequires:  %{python_module hatch = %{version}}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-randomly}
+BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module trustme}
+%endif
+
 %python_subpackages
 
 %description
-Hatch is a productivity tool designed to make your workflow easier and more
-efficient, while also reducing the number of other tools you need to know.
-It aims to make the 90% use cases as pleasant as possible.
+Hatch is a modern, extensible Python project manager.
+
+Features
+  * Standardized build system with reproducible builds by default
+  * Robust environment management with support for custom scripts
+  * Easy publishing to PyPI or other indexes
+  * Version management
+  * Configurable project generation with sane defaults
+  * Responsive CLI, ~2-3x faster than equivalent tools
 
 %prep
-%setup -q -n hatch-%{version}
+%autosetup -p1 -n hatch-hatch-v%{version}
 
+%if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/hatch
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 export LANG=en_US.UTF-8
-export PATH=$PATH:%{buildroot}%{_bindir}
-# test_list_success_1 randomly timeouts in OBS
-# test_failure expect syntax of output from invoke, which we do not ensure
-# test_invalid_part - flaky
-# test_package_cwd - flaky
-# test_list_success_2 - flaky
-# test_output - flaky
-# FIXME: the tests if run 100x fail randomly in multiple locations, just skip them as they are TOO flaky
-#%%pytest -k 'not (test_list_success_1 or test_failure or test_invalid_part or test_package_cwd or test_list_success_2 or test_output)'
+# tests expect this to be unset and use their own reproducible value. Nothing installed from here.
+# https://hatch.pypa.io/latest/config/build/#reproducible-builds
+unset SOURCE_DATE_EPOCH
+%pytest
+%endif
 
 %post
 %python_install_alternative hatch
@@ -103,10 +97,13 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %postun
 %python_uninstall_alternative hatch
 
+%if !%{with test}
 %files %{python_files}
-%doc README.rst
-%license LICENSE-APACHE LICENSE-MIT
+%doc README.md
+%license LICENSE.txt
 %python_alternative %{_bindir}/hatch
-%{python_sitelib}/*
+%{python_sitelib}/hatch
+%{python_sitelib}/hatch-%{version}.dist-info
+%endif
 
 %changelog
