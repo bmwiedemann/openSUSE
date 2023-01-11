@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:17:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde5, rebased upstream:
+  * QBluetoothSocket Windows: check that host info is available
+  * Thread protection for Android BT LE Server
+  * QBluetoothSocket Windows: fix localAddress and peerAddress
+  * QBluetoothSocket Windows: actually query remote port
+  * NFC: Fix PendingIntent creation for Android 12
+  * CoreBluetooth: fix warning message concatenation
+  * Windows: fix object destruction order when terminating helper threads
+  * Bluetooth (Darwin): bail out early, if Info.plist is missing
+  * Fix thread affinity for charListObtained slot
+  * Fix BT LE service addition timing issue on Android
+  * macOS specific Info.plist file for Bluetooth Examples
+  * IOBluetooth: avoid over-retaining Obj-C entity
+
+-------------------------------------------------------------------
 Thu Nov  3 08:51:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde5, rebased upstream:
