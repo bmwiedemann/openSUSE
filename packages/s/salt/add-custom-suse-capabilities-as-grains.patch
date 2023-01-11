@@ -1,4 +1,4 @@
-From 1c20e6e1acf21d301d6e53432afaa7cc42db2380 Mon Sep 17 00:00:00 2001
+From cb31b475c2ac02e06b167f30fc36fe49f7f5d4f6 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 12:59:43 +0100
 Subject: [PATCH] Add custom SUSE capabilities as Grains
@@ -25,6 +25,6 @@ index 300052f1ee..f2504dbf19 100644
 +        '__suse_reserved_saltutil_states_support': True
 +    }
 -- 
-2.34.1
+2.37.3
 
 

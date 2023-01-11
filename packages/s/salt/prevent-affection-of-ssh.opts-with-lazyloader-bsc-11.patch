@@ -1,4 +1,4 @@
-From c86432645863a21da589346ad587b610ab51a2a9 Mon Sep 17 00:00:00 2001
+From ad3735581379e5d4bbc7baef3eaa4a1b8387ccbf Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Tue, 12 Apr 2022 10:06:43 +0300
 Subject: [PATCH] Prevent affection of SSH.opts with LazyLoader
@@ -11,14 +11,14 @@ Subject: [PATCH] Prevent affection of SSH.opts with LazyLoader
 * Fix test_ssh unit tests
 ---
  salt/client/ssh/__init__.py   | 19 +++++++++++--------
- tests/unit/client/test_ssh.py | 16 ++++++++--------
- 2 files changed, 19 insertions(+), 16 deletions(-)
+ tests/unit/client/test_ssh.py | 18 +++++++++---------
+ 2 files changed, 20 insertions(+), 17 deletions(-)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index bc77eb700e..6d24d8d716 100644
+index 8ae417f575..fe1213b723 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
-@@ -225,15 +225,16 @@ class SSH:
+@@ -224,15 +224,16 @@ class SSH(MultiprocessingStateMixin):
      ROSTER_UPDATE_FLAG = "#__needs_update"
  
      def __init__(self, opts, context=None):
@@ -29,8 +29,8 @@ index bc77eb700e..6d24d8d716 100644
 +        pull_sock = os.path.join(self.opts["sock_dir"], "master_event_pull.ipc")
          if os.path.exists(pull_sock) and zmq:
              self.event = salt.utils.event.get_event(
--                "master", opts["sock_dir"], opts["transport"], opts=opts, listen=False
-+                "master", self.opts["sock_dir"], self.opts["transport"], opts=self.opts, listen=False
+-                "master", opts["sock_dir"], opts=opts, listen=False
++                "master", self.opts["sock_dir"], opts=self.opts, listen=False
              )
          else:
              self.event = None
@@ -38,7 +38,7 @@ index bc77eb700e..6d24d8d716 100644
          if self.opts["regen_thin"]:
              self.opts["ssh_wipe"] = True
          if not salt.utils.path.which("ssh"):
-@@ -244,7 +245,7 @@ class SSH:
+@@ -243,7 +244,7 @@ class SSH(MultiprocessingStateMixin):
                      " to run. Exiting."
                  ),
              )
@@ -47,7 +47,7 @@ index bc77eb700e..6d24d8d716 100644
          self.tgt_type = (
              self.opts["selected_target_option"]
              if self.opts["selected_target_option"]
-@@ -341,6 +342,9 @@ class SSH:
+@@ -339,6 +340,9 @@ class SSH(MultiprocessingStateMixin):
              self.opts["cachedir"], "salt-ssh.session.lock"
          )
          self.ssh_session_grace_time = int(self.opts.get("ssh_session_grace_time", 1))
@@ -55,9 +55,9 @@ index bc77eb700e..6d24d8d716 100644
 +        self.sopts["ssh_cli_tgt"] = copy.deepcopy(self.opts["ssh_cli_tgt"])
 +        self.opts = self.sopts
  
-     @property
-     def parse_tgt(self):
-@@ -594,7 +598,6 @@ class SSH:
+     # __setstate__ and __getstate__ are only used on spawning platforms.
+     def __setstate__(self, state):
+@@ -607,7 +611,6 @@ class SSH(MultiprocessingStateMixin):
          Spin up the needed threads or processes and execute the subsequent
          routines
          """
@@ -65,7 +65,7 @@ index bc77eb700e..6d24d8d716 100644
          que = multiprocessing.Queue()
          running = {}
          targets_queue = deque(self.targets.keys())
-@@ -605,7 +608,7 @@ class SSH:
+@@ -618,7 +621,7 @@ class SSH(MultiprocessingStateMixin):
              if not self.targets:
                  log.error("No matching targets found in roster.")
                  break
@@ -74,7 +74,7 @@ index bc77eb700e..6d24d8d716 100644
                  if targets_queue:
                      host = targets_queue.popleft()
                  else:
-@@ -669,7 +672,7 @@ class SSH:
+@@ -682,7 +685,7 @@ class SSH(MultiprocessingStateMixin):
                      continue
                  args = (
                      que,
@@ -83,7 +83,7 @@ index bc77eb700e..6d24d8d716 100644
                      host,
                      self.targets[host],
                      mine,
-@@ -763,7 +766,7 @@ class SSH:
+@@ -776,7 +779,7 @@ class SSH(MultiprocessingStateMixin):
              if len(rets) >= len(self.targets):
                  break
              # Sleep when limit or all threads started
@@ -93,7 +93,7 @@ index bc77eb700e..6d24d8d716 100644
              ) >= len(running):
                  time.sleep(0.1)
 diff --git a/tests/unit/client/test_ssh.py b/tests/unit/client/test_ssh.py
-index 23cb3d0700..5003500de1 100644
+index 00313ed55f..92a9314149 100644
 --- a/tests/unit/client/test_ssh.py
 +++ b/tests/unit/client/test_ssh.py
 @@ -95,7 +95,7 @@ class SSHReturnEventTests(ShellCase):
@@ -112,9 +112,18 @@ index 23cb3d0700..5003500de1 100644
 -        assert opts["tgt"] == host
 +        assert client.opts["tgt"] == host
  
+     def test_expand_target_no_host(self):
+         """
+@@ -564,7 +564,7 @@ class SSHTests(ShellCase):
+         assert opts["tgt"] == user + host
+         with patch("salt.roster.get_roster_file", MagicMock(return_value=roster_file)):
+             client._expand_target()
+-        assert opts["tgt"] == host
++        assert client.opts["tgt"] == host
+ 
      def test_expand_target_dns(self):
          """
-@@ -562,7 +562,7 @@ class SSHTests(ShellCase):
+@@ -587,7 +587,7 @@ class SSHTests(ShellCase):
              MagicMock(return_value=salt.utils.yaml.safe_load(self.roster)),
          ):
              client._expand_target()
@@ -123,7 +132,7 @@ index 23cb3d0700..5003500de1 100644
  
      def test_expand_target_no_user(self):
          """
-@@ -602,7 +602,7 @@ class SSHTests(ShellCase):
+@@ -627,7 +627,7 @@ class SSHTests(ShellCase):
              client = ssh.SSH(opts)
          assert opts["tgt"] == user + host
          client._update_targets()
@@ -132,7 +141,7 @@ index 23cb3d0700..5003500de1 100644
          assert client.targets[host]["user"] == user.split("@")[0]
  
      def test_update_targets_dns(self):
-@@ -620,7 +620,7 @@ class SSHTests(ShellCase):
+@@ -645,7 +645,7 @@ class SSHTests(ShellCase):
              client = ssh.SSH(opts)
          assert opts["tgt"] == user + host
          client._update_targets()
@@ -141,7 +150,7 @@ index 23cb3d0700..5003500de1 100644
          assert client.targets[host]["user"] == user.split("@")[0]
  
      def test_update_targets_no_user(self):
-@@ -661,7 +661,7 @@ class SSHTests(ShellCase):
+@@ -686,7 +686,7 @@ class SSHTests(ShellCase):
          ):
              client._expand_target()
          client._update_targets()
@@ -150,7 +159,7 @@ index 23cb3d0700..5003500de1 100644
          assert client.targets[host]["user"] == user.split("@")[0]
  
      def test_parse_tgt(self):
-@@ -681,7 +681,7 @@ class SSHTests(ShellCase):
+@@ -706,7 +706,7 @@ class SSHTests(ShellCase):
              client = ssh.SSH(opts)
              assert client.parse_tgt["hostname"] == host
              assert client.parse_tgt["user"] == user.split("@")[0]
@@ -159,7 +168,7 @@ index 23cb3d0700..5003500de1 100644
  
      def test_parse_tgt_no_user(self):
          """
-@@ -700,7 +700,7 @@ class SSHTests(ShellCase):
+@@ -725,7 +725,7 @@ class SSHTests(ShellCase):
              client = ssh.SSH(opts)
              assert client.parse_tgt["hostname"] == host
              assert client.parse_tgt["user"] == opts["ssh_user"]
@@ -169,6 +178,6 @@ index 23cb3d0700..5003500de1 100644
      def test_extra_filerefs(self):
          """
 -- 
-2.35.1
+2.37.3
 
 

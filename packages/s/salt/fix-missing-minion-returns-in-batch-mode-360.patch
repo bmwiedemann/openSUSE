@@ -1,4 +1,4 @@
-From 83fbfcbf49c98624029f1d215b7ad4d247128d39 Mon Sep 17 00:00:00 2001
+From 3ed9869ee6847472846072d62cbc57dcb9104c90 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ond=C5=99ej=20Hole=C4=8Dek?= <oholecek@aaannz.eu>
 Date: Mon, 10 May 2021 16:23:19 +0200
 Subject: [PATCH] Fix missing minion returns in batch mode (#360)
@@ -12,10 +12,10 @@ Co-authored-by: Denis V. Meltsaykin <dmeltsaykin@mirantis.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/client/__init__.py b/salt/client/__init__.py
-index ddb437604b..78f4d99e84 100644
+index 2427516ca1..86888adc19 100644
 --- a/salt/client/__init__.py
 +++ b/salt/client/__init__.py
-@@ -920,7 +920,7 @@ class LocalClient:
+@@ -972,7 +972,7 @@ class LocalClient:
  
                  self._clean_up_subscriptions(pub_data["jid"])
          finally:
@@ -25,6 +25,6 @@ index ddb437604b..78f4d99e84 100644
  
      def cmd_full_return(
 -- 
-2.31.1
+2.37.3
 
 

@@ -1,4 +1,4 @@
-From b1c213f171538890b3b61def25e4777bccfa64fe Mon Sep 17 00:00:00 2001
+From e7bc5c7fc89877e9cbf203d8fb70855df0b626e1 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Mon, 8 Nov 2021 18:09:53 +0300
 Subject: [PATCH] dnfnotify pkgset plugin implementation - 3002.2 (#450)
@@ -125,6 +125,6 @@ index 0000000000..6e9df85f71
 +                digest.update(buff)
 +        return digest.hexdigest()
 -- 
-2.33.1
+2.37.3
 
 

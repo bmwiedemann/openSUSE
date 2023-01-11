@@ -1,4 +1,4 @@
-From da47028898edb69290f989d9f99973969d6a8652 Mon Sep 17 00:00:00 2001
+From 1b78ceabaf3885e7d90d13a041685e7dda960ac9 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 16:38:17 +0100
 Subject: [PATCH] X509 fixes (#111)
@@ -44,10 +44,10 @@ We are logging in debug and not in trace mode here.
  4 files changed, 121 insertions(+), 54 deletions(-)
 
 diff --git a/salt/modules/publish.py b/salt/modules/publish.py
-index f9b7e8b168..651119906e 100644
+index c2dd62b913..45ee41ef19 100644
 --- a/salt/modules/publish.py
 +++ b/salt/modules/publish.py
-@@ -196,6 +196,8 @@ def _publish(
+@@ -199,6 +199,8 @@ def _publish(
              else:
                  return ret
  
@@ -57,7 +57,7 @@ index f9b7e8b168..651119906e 100644
  def publish(
      tgt, fun, arg=None, tgt_type="glob", returner="", timeout=5, via_master=None
 diff --git a/salt/modules/x509.py b/salt/modules/x509.py
-index 0909bace48..261b794295 100644
+index 2f9cc5cc44..194116a85c 100644
 --- a/salt/modules/x509.py
 +++ b/salt/modules/x509.py
 @@ -30,16 +30,13 @@ from salt.utils.odict import OrderedDict
@@ -198,7 +198,7 @@ index 0909bace48..261b794295 100644
  
      return signing_policy
  
-@@ -1761,7 +1760,8 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1762,7 +1761,8 @@ def create_csr(path=None, text=False, **kwargs):
          )
      )
  
@@ -208,7 +208,7 @@ index 0909bace48..261b794295 100644
          if entry in kwargs:
              setattr(subject, entry, kwargs[entry])
  
-@@ -1797,7 +1797,6 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1798,7 +1798,6 @@ def create_csr(path=None, text=False, **kwargs):
          extstack.push(ext)
  
      csr.add_extensions(extstack)
@@ -216,7 +216,7 @@ index 0909bace48..261b794295 100644
      csr.sign(
          _get_private_key_obj(
              kwargs["private_key"], passphrase=kwargs["private_key_passphrase"]
-@@ -1805,10 +1804,11 @@ def create_csr(path=None, text=False, **kwargs):
+@@ -1806,10 +1805,11 @@ def create_csr(path=None, text=False, **kwargs):
          kwargs["algorithm"],
      )
  
@@ -232,7 +232,7 @@ index 0909bace48..261b794295 100644
  
  
  def verify_private_key(private_key, public_key, passphrase=None):
-@@ -1833,7 +1833,7 @@ def verify_private_key(private_key, public_key, passphrase=None):
+@@ -1834,7 +1834,7 @@ def verify_private_key(private_key, public_key, passphrase=None):
          salt '*' x509.verify_private_key private_key=/etc/pki/myca.key \\
                  public_key=/etc/pki/myca.crt
      """
@@ -241,7 +241,7 @@ index 0909bace48..261b794295 100644
  
  
  def verify_signature(
-@@ -1889,7 +1889,10 @@ def verify_crl(crl, cert):
+@@ -1890,7 +1890,10 @@ def verify_crl(crl, cert):
          salt '*' x509.verify_crl crl=/etc/pki/myca.crl cert=/etc/pki/myca.crt
      """
      if not salt.utils.path.which("openssl"):
@@ -253,7 +253,7 @@ index 0909bace48..261b794295 100644
      crltext = _text_or_file(crl)
      crltext = get_pem_entry(crltext, pem_type="X509 CRL")
      crltempfile = tempfile.NamedTemporaryFile(delete=True)
-@@ -1911,10 +1914,7 @@ def verify_crl(crl, cert):
+@@ -1912,10 +1915,7 @@ def verify_crl(crl, cert):
      crltempfile.close()
      certtempfile.close()
  
@@ -265,7 +265,7 @@ index 0909bace48..261b794295 100644
  
  
  def expired(certificate):
-@@ -1952,8 +1952,9 @@ def expired(certificate):
+@@ -1953,8 +1953,9 @@ def expired(certificate):
                  ret["expired"] = True
              else:
                  ret["expired"] = False
@@ -277,7 +277,7 @@ index 0909bace48..261b794295 100644
  
      return ret
  
-@@ -1976,6 +1977,7 @@ def will_expire(certificate, days):
+@@ -1977,6 +1978,7 @@ def will_expire(certificate, days):
  
          salt '*' x509.will_expire "/etc/pki/mycert.crt" days=30
      """
@@ -285,7 +285,7 @@ index 0909bace48..261b794295 100644
      ret = {}
  
      if os.path.isfile(certificate):
-@@ -1989,14 +1991,11 @@ def will_expire(certificate, days):
+@@ -1990,14 +1992,11 @@ def will_expire(certificate, days):
              _expiration_date = cert.get_not_after().get_datetime()
  
              ret["cn"] = _parse_subject(cert.get_subject())["CN"]
@@ -433,6 +433,6 @@ index 8f4c433b1a..3105290a2c 100644
      @skipIf(not HAS_M2CRYPTO, "Skipping, M2Crypto is unavailable")
      def test_get_pem_entry(self):
 -- 
-2.34.1
+2.37.3
 
 

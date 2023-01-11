@@ -36,7 +36,7 @@
 %bcond_with    builddocs
 
 Name:           salt
-Version:        3004
+Version:        3005.1
 Release:        0
 Summary:        A parallel remote execution system
 License:        Apache-2.0
@@ -49,6 +49,9 @@ Source3:        html.tar.bz2
 Source4:        update-documentation.sh
 Source5:        travis.yml
 Source6:        transactional_update.conf
+
+### SALT PATCHES LIST BEGIN
+### IMPORTANT: The line above is used as a snippet marker. Do not touch it.
 
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/commit/88f40fff3b81edaa55f37949f56c67112ca2dcad
 Patch1:         run-salt-master-as-dedicated-salt-user.patch
@@ -152,204 +155,153 @@ Patch21:        switch-firewalld-state-to-use-change_interface.patch
 Patch22:        add-standalone-configuration-file-for-enabling-packa.patch
 #############
 
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/53159 (missing PR to master)
-Patch23:        batch.py-avoid-exception-when-minion-does-not-respon.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/177
 # (deviation from upstream - we should probably port this)
-Patch24:        restore-default-behaviour-of-pkg-list-return.patch
+Patch23:        restore-default-behaviour-of-pkg-list-return.patch
 # PATCH_FIX_OPENSUSE https://github.com/openSUSE/salt/pull/186 (missing upstream PR to master)
-Patch25:        read-repo-info-without-using-interpolation-bsc-11356.patch
+Patch24:        read-repo-info-without-using-interpolation-bsc-11356.patch
 # PATCH_FIX_OPENSUSE https://github.com/openSUSE/salt/pull/191 (missing upstream PR to master)
-Patch26:        let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
-# PATCH_FIX_OPENSUSE https://github.com/openSUSE/salt/commit/a8f0a15e4067ec278c8a2d690e3bf815523286ca (missing upstream PR)
-Patch27:        fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
+Patch25:        let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/commit/a18ac47b75550bd55f4ca91dc221ed408881984c
-Patch28:        make-setup.py-script-to-not-require-setuptools-9.1.patch
+Patch26:        make-setup.py-script-to-not-require-setuptools-9.1.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/228 (missing upstream PR)
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61017
-Patch29:        adds-explicit-type-cast-for-port.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/commit/da936daeebd701e147707ad814c07bfc259d4be (not yet upstream PR)
-Patch30:        add-publish_batch-to-clearfuncs-exposed-methods.patch
+Patch27:        add-publish_batch-to-clearfuncs-exposed-methods.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/57779
-Patch31:        info_installed-works-without-status-attr-now.patch
+Patch28:        info_installed-works-without-status-attr-now.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/58552
-Patch32:        zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
-
-#### MICROOS - TRANSACTIONAL UPDATES ####
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/58520 (master PR merged but not included in 3003)
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60903
-Patch33:        support-transactional-systems-microos.patch
-###########
+Patch29:        zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
 
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/275 (missing upstream PR)
-Patch34:        bsc-1176024-fix-file-directory-user-and-group-owners.patch
+Patch30:        bsc-1176024-fix-file-directory-user-and-group-owners.patch
 
 #### NO VENDOR CHANGE ####
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60421
-Patch35:        allow-vendor-change-option-with-zypper.patch
+Patch31:        allow-vendor-change-option-with-zypper.patch
 ###########
 
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/58784
-Patch36:        add-migrated-state-and-gpg-key-management-functions-.patch
+Patch32:        add-migrated-state-and-gpg-key-management-functions-.patch
 
 ### BEACON CONFIG ###
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/commit/5ea2f10b15684dd417bad858642faafc92cd382
 # (revert https://github.com/saltstack/salt/pull/58655)
-Patch37:        revert-fixing-a-use-case-when-multiple-inotify-beaco.patch
+Patch33:        revert-fixing-a-use-case-when-multiple-inotify-beaco.patch
 ###########
 
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/298 (missing upstream PR)
-Patch38:        fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
-# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/304 (missing uptstream PR)
-Patch39:        force-zyppnotify-to-prefer-packages.db-than-packages.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/59354 (master PR merged but not included in 3003)
-Patch40:        do-not-crash-when-unexpected-cmd-output-at-listing-p.patch
+Patch34:        fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
 
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/56173
-Patch41:        fixes-56144-to-enable-hotadd-profile-support.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/307 (missing upstream PR)
-Patch42:        add-sleep-on-exception-handling-on-minion-connection.patch
-# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/323 (missing upstream PR)
-Patch43:        implementation-of-suse_ip-execution-module-bsc-10999.patch
-# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/347 (missing upstream PR)
-Patch44:        notify-beacon-for-debian-ubuntu-systems-347.patch
+Patch35:        add-sleep-on-exception-handling-on-minion-connection.patch
 
 ### SALT-SSH PROCESSING TARGETS ###
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/336 (missing upstream PR)
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/353 (missing upstream PR)
-Patch45:        update-target-fix-for-salt-ssh-to-process-targets-li.patch
+Patch36:        update-target-fix-for-salt-ssh-to-process-targets-li.patch
 ############
 
-#### ANSIBLE GATE IMPROVEMENTS ####
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60056
-Patch46:        improvements-on-ansiblegate-module-354.patch
-##########
-
-# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/376 (missing upstream PR)
-Patch47:        check-if-dpkgnotify-is-executable-bsc-1186674-376.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/58503
-Patch48:        fix-missing-minion-returns-in-batch-mode-360.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60402
-Patch49:        enhance-logging-when-inotify-beacon-is-missing-pyino.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60356
-Patch50:        fix-exception-in-yumpkg.remove-for-not-installed-pac.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60432 (merged on master but not included in 3003)
-Patch51:        implementation-of-held-unheld-functions-for-state-pk.patch
+Patch37:        fix-missing-minion-returns-in-batch-mode-360.patch
 
 #### OPENSCAP ENHANCE ####
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/59756
-Patch52:        enhance-openscap-module-add-xccdf_eval-call-386.patch
+Patch38:        enhance-openscap-module-add-xccdf_eval-call-386.patch
 ###############
 
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/413 (missing upstream PR)
-Patch53:        don-t-use-shell-sbin-nologin-in-requisites.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/59777
-Patch54:        3003.3-postgresql-json-support-in-pillar-423.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/60983
-Patch55:        3003.3-do-not-consider-skipped-targets-as-failed-for.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61017
-Patch56:        fix-crash-when-calling-manage.not_alive-runners.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61014
-Patch57:        fix-issues-with-salt-ssh-s-extra-filerefs.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61061
-Patch58:        fix-ip6_interface-grain-to-not-leak-secondary-ipv4-a.patch
+Patch39:        don-t-use-shell-sbin-nologin-in-requisites.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/432 (missing upstream PR)
-Patch59:        fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+Patch40:        fix-traceback.print_exc-calls-for-test_pip_state-432.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/415 (missing upstream PR)
-Patch60:        prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/60815
-Patch61:        add-rpm_vercmp-python-library-for-version-comparison.patch
+Patch41:        prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61180
-Patch62:        dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/60324
-Patch63:        mock-ip_addrs-in-utils-minions.py-unit-test-443.patch
+Patch42:        dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/456 (missing upstream PR)
-Patch64:        fix-the-regression-for-yumnotify-plugin-456.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61188
-Patch65:        refactor-and-improvements-for-transactional-updates-.patch
+Patch43:        fix-the-regression-for-yumnotify-plugin-456.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61189
-Patch66:        state.apply-don-t-check-for-cached-pillar-errors.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61393
-Patch67:        wipe-notify_socket-from-env-in-cmdmod-bsc-1193357-30.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61530
-Patch68:        fix-inspector-module-export-function-bsc-1097531-481.patch
+Patch44:        state.apply-don-t-check-for-cached-pillar-errors.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/482
-Patch69:        drop-serial-from-event.unpack-in-cli.batch_async.patch
-# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/485
-Patch70:        add-missing-ansible-module-functions-to-whitelist-in.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61256
-Patch71:        fix-salt-call-event.send-call-with-grains-and-pillar.patch
+Patch45:        drop-serial-from-event.unpack-in-cli.batch_async.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61093
-Patch72:        state.orchestrate_single-does-not-pass-pillar-none-4.patch
+Patch46:        state.orchestrate_single-does-not-pass-pillar-none-4.patch
 
 ### SALT-SSH WITH SALT BUNDLE ###
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61715 (ssh_pre_flight_args)
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/493
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/497
-Patch73:        add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
-Patch74:        prevent-shell-injection-via-pre_flight_script_args-4.patch
+Patch47:        add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+Patch48:        prevent-shell-injection-via-pre_flight_script_args-4.patch
 ###############
 
-# PATCH-FIX_UPSTREAM: implemented at 3004.1 release (no PR)
-Patch75:        fix-multiple-security-issues-bsc-1197417.patch
-
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/501
-Patch76:        fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
-
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61064
-Patch77:        fixes-for-python-3.10-502.patch
+Patch49:        fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
 
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/505
-Patch78:        prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
+Patch50:        prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
 
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/506
-Patch79:        fix-regression-with-depending-client.ssh-on-psutil-b.patch
+Patch51:        fix-regression-with-depending-client.ssh-on-psutil-b.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61895
-Patch80:        make-sure-saltcacheloader-use-correct-fileclient-519.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/e068a34ccb2e17ae7224f8016a24b727f726d4c8
-Patch81:        fix-for-cve-2022-22967-bsc-1200566.patch
+Patch52:        make-sure-saltcacheloader-use-correct-fileclient-519.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61827
-Patch82:        ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
+Patch53:        ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62109
-Patch83:        use-salt-bundle-in-dockermod.patch
+Patch54:        use-salt-bundle-in-dockermod.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61984
-Patch84:        save-log-to-logfile-with-docker.build.patch
+Patch55:        save-log-to-logfile-with-docker.build.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62029
-Patch85:        normalize-package-names-once-with-pkg.installed-remo.patch
+Patch56:        normalize-package-names-once-with-pkg.installed-remo.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62089
-Patch86:        set-default-target-for-pip-from-venv_pip_target-envi.patch
+Patch57:        set-default-target-for-pip-from-venv_pip_target-envi.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/534
-Patch87:        fix-ownership-of-salt-thin-directory-when-using-the-.patch
+Patch58:        fix-ownership-of-salt-thin-directory-when-using-the-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62033
-Patch88:        add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62119
-Patch89:        fix-62092-catch-zmq.error.zmqerror-to-set-hwm-for-zm.patch
+Patch59:        add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62067
-Patch90:        fix-salt.states.file.managed-for-follow_symlinks-tru.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61856
-Patch91:        fix-jinja2-contextfuntion-base-on-version-bsc-119874.patch
+Patch60:        fix-salt.states.file.managed-for-follow_symlinks-tru.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62209
-Patch92:        add-support-for-gpgautoimport-539.patch
+Patch61:        add-support-for-gpgautoimport-539.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/2b486d0484c51509e9972e581d97655f4f87852e
-Patch93:        fix-test_ipc-unit-tests.patch
+Patch62:        fix-test_ipc-unit-tests.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62204
-Patch94:        retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+Patch63:        retry-if-rpm-lock-is-temporarily-unavailable-547.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62519
-Patch95:        change-the-delimeters-to-prevent-possible-tracebacks.patch
+Patch64:        change-the-delimeters-to-prevent-possible-tracebacks.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61847
-Patch96:        fix-state.apply-in-test-mode-with-file-state-module-.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61423
-Patch97:        fix-the-regression-in-schedule-module-releasded-in-3.patch
+Patch65:        fix-state.apply-in-test-mode-with-file-state-module-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62539
-Patch98:        add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/643bd4b572ca97466e085ecd1d84da45b1684332
-Patch99:        backport-syndic-auth-fixes.patch
+Patch66:        add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62633
-Patch100:       ignore-non-utf8-characters-while-reading-files-with-.patch
+Patch67:       ignore-non-utf8-characters-while-reading-files-with-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62817
-Patch101:       fopen-workaround-bad-buffering-for-binary-mode-563.patch
+Patch68:       fopen-workaround-bad-buffering-for-binary-mode-563.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62120
-Patch102:       make-pass-renderer-configurable-other-fixes-532.patch
+Patch69:       make-pass-renderer-configurable-other-fixes-532.patch
+### ENHANCE ZYPPERPKG ERROR MESSAGES ###
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62750
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62346
+Patch70:       include-stdout-in-error-message-for-zypperpkg-559.patch
+###############
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57426
+Patch71:       clarify-pkg.installed-pkg_verify-documentation.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62862
+Patch72:       ignore-extend-declarations-from-excluded-sls-files.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61772
+Patch73:       detect-module.run-syntax.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62539
+Patch74:       align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62898
+Patch75:       pass-the-context-to-pillar-ext-modules.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/c6be36eeea49ee0d0641da272087305f79c32c99 (not yet upstream)
+# Fix problem caused by: https://github.com/openSUSE/salt/pull/493 (Patch47) affecting only 3005.1.
+Patch76:       use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61064
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/5e3ff4d662321c237ddd5b2c5c83f35a84af594c (not PR to master yet)
+Patch77:       fixes-for-python-3.10-502.patch
+
+### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
+### SALT PATCHES LIST END
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -697,6 +649,13 @@ Requires(pre):  %fillup_prereq
 Salt ssh is a master running without zmq.
 it enables the management of minions over a ssh connection.
 
+%package tests
+Summary:        Unit and integration tests for Salt
+Requires:       %{name} = %{version}-%{release}
+
+%description tests
+Collections of unit and integration tests for Salt
+
 %if %{with bash_completion}
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -843,6 +802,11 @@ install -Dd -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d/
 # Install salt-support profiles
 install -Dpm 0644 salt/cli/support/profiles/* %{buildroot}%{python3_sitelib}/salt/cli/support/profiles
 
+# Install Salt tests
+install -Dd -m 0750 %{buildroot}%{_datadir}/salt
+install -Dd -m 0750 %{buildroot}%{_datadir}/salt/tests
+cp -a tests/* %{buildroot}%{_datadir}/salt/tests/
+sed -i '1s=^#!/usr/bin/\(python\|env python\)[0-9.]*=#!/usr/bin/python3=' %{buildroot}%{_datadir}/salt/tests/runtests.py
 
 ## Install Zypper plugins only on SUSE machines
 %if 0%{?suse_version}
@@ -1400,8 +1364,6 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %{_bindir}/spm
 %{_bindir}/salt-call
 %{_bindir}/salt-support
-%{_bindir}/salt-unity
-%{_mandir}/man1/salt-unity.1.gz
 %{_mandir}/man1/salt-call.1.gz
 %{_mandir}/man1/spm.1.gz
 %config(noreplace) %{_sysconfdir}/logrotate.d/salt
@@ -1429,6 +1391,11 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 %defattr(-,root,root)
 %doc doc/_build/html
 %endif
+
+%files tests
+%dir %{_datadir}/salt/
+%dir %{_datadir}/salt/tests/
+%{_datadir}/salt/tests/*
 
 %if %{with bash_completion}
 %files bash-completion

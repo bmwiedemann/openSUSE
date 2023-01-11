@@ -1,4 +1,4 @@
-From 48306a830d37e64b5275f48e25c315e658ee37e6 Mon Sep 17 00:00:00 2001
+From 41e53ad0b03511d65c5d7e6a12e7c460d83b6737 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Mon, 5 Oct 2020 16:24:16 +0200
 Subject: [PATCH] zypperpkg: ignore retcode 104 for search()
@@ -10,7 +10,7 @@ Subject: [PATCH] zypperpkg: ignore retcode 104 for search()
  2 files changed, 90 insertions(+), 27 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index c7228bf712..4af29652d9 100644
+index 32e22ce9a8..6b19c65db3 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
 @@ -99,6 +99,8 @@ class _Zypper:
@@ -51,7 +51,7 @@ index c7228bf712..4af29652d9 100644
          self.__cmd.extend(args)
          kwargs["output_loglevel"] = "trace"
          kwargs["python_shell"] = False
-@@ -447,9 +457,11 @@ class Wildcard:
+@@ -445,9 +455,11 @@ class Wildcard:
          Get available versions of the package.
          :return:
          """
@@ -66,7 +66,7 @@ index c7228bf712..4af29652d9 100644
          if not solvables:
              raise CommandExecutionError(
                  "No packages found matching '{}'".format(self.name)
-@@ -1054,7 +1066,7 @@ def list_repo_pkgs(*args, **kwargs):
+@@ -1052,7 +1064,7 @@ def list_repo_pkgs(*args, **kwargs):
  
      root = kwargs.get("root") or None
      for node in (
@@ -75,7 +75,7 @@ index c7228bf712..4af29652d9 100644
          .xml.call("se", "-s", *targets)
          .getElementsByTagName("solvable")
      ):
-@@ -2431,7 +2443,9 @@ def owner(*paths, **kwargs):
+@@ -2439,7 +2451,9 @@ def owner(*paths, **kwargs):
  def _get_visible_patterns(root=None):
      """Get all available patterns in the repo that are visible."""
      patterns = {}
@@ -86,7 +86,7 @@ index c7228bf712..4af29652d9 100644
      for element in search_patterns.getElementsByTagName("solvable"):
          installed = element.getAttribute("status") == "installed"
          patterns[element.getAttribute("name")] = {
-@@ -2628,7 +2642,7 @@ def search(criteria, refresh=False, **kwargs):
+@@ -2636,7 +2650,7 @@ def search(criteria, refresh=False, **kwargs):
  
      cmd.append(criteria)
      solvables = (
@@ -95,7 +95,7 @@ index c7228bf712..4af29652d9 100644
          .nolock.noraise.xml.call(*cmd)
          .getElementsByTagName("solvable")
      )
-@@ -2880,7 +2894,7 @@ def _get_patches(installed_only=False, root=None):
+@@ -2888,7 +2902,7 @@ def _get_patches(installed_only=False, root=None):
      """
      patches = {}
      for element in (
@@ -279,6 +279,6 @@ index 47fca906a7..671adc2779 100644
 +                env={"ZYPP_READONLY_HACK": "1"},
 +            )
 -- 
-2.34.1
+2.37.3
 
 

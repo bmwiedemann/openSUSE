@@ -1,4 +1,4 @@
-From 7096332546a65c0c507fbd4bccbf7062e7c3c9c7 Mon Sep 17 00:00:00 2001
+From 59200b4a4578c96dcffc0584725d8cba40c20ff7 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Thu, 31 Mar 2022 13:39:57 +0300
 Subject: [PATCH] Fix salt-ssh opts poisoning (bsc#1197637) - 3004 (#501)
@@ -14,19 +14,19 @@ Subject: [PATCH] Fix salt-ssh opts poisoning (bsc#1197637) - 3004 (#501)
  2 files changed, 16 insertions(+), 8 deletions(-)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 3e032c7197..bc77eb700e 100644
+index 6db2dfcbb0..8ae417f575 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
-@@ -340,7 +340,7 @@ class SSH:
+@@ -338,7 +338,7 @@ class SSH(MultiprocessingStateMixin):
          self.session_flock_file = os.path.join(
              self.opts["cachedir"], "salt-ssh.session.lock"
          )
 -        self.ssh_session_grace_time = int(self.opts.get("ssh_session_grace_time", 3))
 +        self.ssh_session_grace_time = int(self.opts.get("ssh_session_grace_time", 1))
  
-     @property
-     def parse_tgt(self):
-@@ -558,7 +558,6 @@ class SSH:
+     # __setstate__ and __getstate__ are only used on spawning platforms.
+     def __setstate__(self, state):
+@@ -571,7 +571,6 @@ class SSH(MultiprocessingStateMixin):
          """
          LOG_LOCK.release()
          salt.loader.LOAD_LOCK.release()
@@ -34,7 +34,7 @@ index 3e032c7197..bc77eb700e 100644
          single = Single(
              opts,
              opts["argv"],
-@@ -595,6 +594,7 @@ class SSH:
+@@ -608,6 +607,7 @@ class SSH(MultiprocessingStateMixin):
          Spin up the needed threads or processes and execute the subsequent
          routines
          """
@@ -42,7 +42,7 @@ index 3e032c7197..bc77eb700e 100644
          que = multiprocessing.Queue()
          running = {}
          targets_queue = deque(self.targets.keys())
-@@ -605,7 +605,7 @@ class SSH:
+@@ -618,7 +618,7 @@ class SSH(MultiprocessingStateMixin):
              if not self.targets:
                  log.error("No matching targets found in roster.")
                  break
@@ -51,7 +51,7 @@ index 3e032c7197..bc77eb700e 100644
                  if targets_queue:
                      host = targets_queue.popleft()
                  else:
-@@ -623,7 +623,7 @@ class SSH:
+@@ -636,7 +636,7 @@ class SSH(MultiprocessingStateMixin):
                              pid_running = (
                                  False
                                  if cached_session["pid"] == 0
@@ -60,7 +60,7 @@ index 3e032c7197..bc77eb700e 100644
                              )
                              if (
                                  pid_running and prev_session_running < self.max_pid_wait
-@@ -638,9 +638,10 @@ class SSH:
+@@ -651,9 +651,10 @@ class SSH(MultiprocessingStateMixin):
                          "salt-ssh/session",
                          host,
                          {
@@ -72,7 +72,7 @@ index 3e032c7197..bc77eb700e 100644
                          },
                      )
                  for default in self.defaults:
-@@ -668,7 +669,7 @@ class SSH:
+@@ -681,7 +682,7 @@ class SSH(MultiprocessingStateMixin):
                      continue
                  args = (
                      que,
@@ -81,7 +81,7 @@ index 3e032c7197..bc77eb700e 100644
                      host,
                      self.targets[host],
                      mine,
-@@ -704,6 +705,7 @@ class SSH:
+@@ -717,6 +718,7 @@ class SSH(MultiprocessingStateMixin):
                              "pid": routine.pid,
                              "master_id": self.master_id,
                              "ts": time.time(),
@@ -89,7 +89,7 @@ index 3e032c7197..bc77eb700e 100644
                          },
                      )
                  continue
-@@ -755,12 +757,13 @@ class SSH:
+@@ -768,12 +770,13 @@ class SSH(MultiprocessingStateMixin):
                                  "pid": 0,
                                  "master_id": self.master_id,
                                  "ts": time.time(),
@@ -105,10 +105,10 @@ index 3e032c7197..bc77eb700e 100644
              ) >= len(running):
                  time.sleep(0.1)
 diff --git a/salt/loader/__init__.py b/salt/loader/__init__.py
-index a0f2220476..bc3634bb7f 100644
+index 32f8a7702c..bbe4269839 100644
 --- a/salt/loader/__init__.py
 +++ b/salt/loader/__init__.py
-@@ -622,7 +622,12 @@ def roster(opts, runner=None, utils=None, whitelist=None, context=None):
+@@ -757,7 +757,12 @@ def roster(opts, runner=None, utils=None, whitelist=None, loaded_base_name=None,
          opts,
          tag="roster",
          whitelist=whitelist,
@@ -120,9 +120,9 @@ index a0f2220476..bc3634bb7f 100644
 +            "__opts__": opts,
 +        },
          extra_module_dirs=utils.module_dirs if utils else None,
+         loaded_base_name=loaded_base_name,
      )
- 
 -- 
-2.35.1
+2.37.3
 
 

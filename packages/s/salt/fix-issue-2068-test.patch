@@ -1,4 +1,4 @@
-From db77ad3e24daf3bc014dc3d85a49aa1bb33ae1ae Mon Sep 17 00:00:00 2001
+From f87d92122cb141e8f6f4d1c5a6ed5685e1b3900c Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Wed, 9 Jan 2019 16:08:19 +0100
 Subject: [PATCH] Fix issue #2068 test
@@ -13,7 +13,7 @@ Minor update: more correct is-dict check.
  1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/salt/state.py b/salt/state.py
-index b1bce4e0cd..cc6db7e1b2 100644
+index 3196f3c635..2385975b42 100644
 --- a/salt/state.py
 +++ b/salt/state.py
 @@ -12,6 +12,7 @@ The data sent to the state calls is as follows:
@@ -24,7 +24,7 @@ index b1bce4e0cd..cc6db7e1b2 100644
  import copy
  import datetime
  import fnmatch
-@@ -3206,16 +3207,18 @@ class State:
+@@ -3380,16 +3381,18 @@ class State:
          """
          for chunk in high:
              state = high[chunk]
@@ -47,6 +47,6 @@ index b1bce4e0cd..cc6db7e1b2 100644
      def call_high(self, high, orchestration_jid=None):
          """
 -- 
-2.29.2
+2.37.3
 
 

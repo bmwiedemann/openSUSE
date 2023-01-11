@@ -1,8 +1,8 @@
-From c162e36fc52ca2f10b25354f1e430e13113f2976 Mon Sep 17 00:00:00 2001
+From 0165c300ec0f7ac70b274b81a8857c2e6d71552d Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Thu, 7 Jul 2022 11:26:34 +0200
-Subject: [PATCH] Add support for name, pkgs and diff_attr parameters
- to zypperpkg.upgrade()/yumpkg.upgrade() - backport 3004 (#538)
+Subject: [PATCH] Add support for name, pkgs and diff_attr parameters to
+ zypperpkg.upgrade()/yumpkg.upgrade() - backport 3004 (#538)
 
 * Migrate zypper.upgrade tests to pytest
 
@@ -37,9 +37,9 @@ Fixes: https://github.com/saltstack/salt/issues/62031
  changelog/62032.fixed                        |   1 +
  salt/modules/yumpkg.py                       |   7 +-
  salt/modules/zypperpkg.py                    |  76 ++-
- tests/pytests/unit/modules/test_zypperpkg.py | 278 ++++++++++-
+ tests/pytests/unit/modules/test_zypperpkg.py | 277 ++++++++++-
  tests/unit/modules/test_zypperpkg.py         | 482 -------------------
- 7 files changed, 356 insertions(+), 490 deletions(-)
+ 7 files changed, 355 insertions(+), 490 deletions(-)
  create mode 100644 changelog/62030.fixed
  create mode 100644 changelog/62031.added
  create mode 100644 changelog/62032.fixed
@@ -66,7 +66,7 @@ index 0000000000..ceb3cc89b9
 @@ -0,0 +1 @@
 +Fix attr=all handling in pkg.list_pkgs() (yum/zypper).
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index 3138ac2e59..0013282507 100644
+index f52e084346..fcfc5d4045 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
 @@ -735,7 +735,7 @@ def list_pkgs(versions_as_list=False, **kwargs):
@@ -78,7 +78,7 @@ index 3138ac2e59..0013282507 100644
          attr = salt.utils.args.split_input(attr)
  
      contextkey = "pkg.list_pkgs"
-@@ -1835,6 +1835,7 @@ def upgrade(
+@@ -1844,6 +1844,7 @@ def upgrade(
      normalize=True,
      minimal=False,
      obsoletes=True,
@@ -86,7 +86,7 @@ index 3138ac2e59..0013282507 100644
      **kwargs
  ):
      """
-@@ -1991,7 +1992,7 @@ def upgrade(
+@@ -2000,7 +2001,7 @@ def upgrade(
      if salt.utils.data.is_true(refresh):
          refresh_db(**kwargs)
  
@@ -95,7 +95,7 @@ index 3138ac2e59..0013282507 100644
  
      targets = []
      if name or pkgs:
-@@ -2023,7 +2024,7 @@ def upgrade(
+@@ -2032,7 +2033,7 @@ def upgrade(
      cmd.extend(targets)
      result = _call_yum(cmd)
      __context__.pop("pkg.list_pkgs", None)
@@ -105,10 +105,10 @@ index 3138ac2e59..0013282507 100644
  
      if result["retcode"] != 0:
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index ac6c36a09f..39d26f0e93 100644
+index 4e3006a8cd..cbfbc4b78d 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -941,7 +941,7 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
+@@ -939,7 +939,7 @@ def list_pkgs(versions_as_list=False, root=None, includes=None, **kwargs):
          return {}
  
      attr = kwargs.get("attr")
@@ -117,7 +117,7 @@ index ac6c36a09f..39d26f0e93 100644
          attr = salt.utils.args.split_input(attr)
  
      includes = includes if includes else []
-@@ -1793,6 +1793,8 @@ def install(
+@@ -1791,6 +1791,8 @@ def install(
  
  
  def upgrade(
@@ -126,7 +126,7 @@ index ac6c36a09f..39d26f0e93 100644
      refresh=True,
      dryrun=False,
      dist_upgrade=False,
-@@ -1802,6 +1804,7 @@ def upgrade(
+@@ -1800,6 +1802,7 @@ def upgrade(
      skip_verify=False,
      no_recommends=False,
      root=None,
@@ -134,7 +134,7 @@ index ac6c36a09f..39d26f0e93 100644
      **kwargs
  ):  # pylint: disable=unused-argument
      """
-@@ -1821,6 +1824,27 @@ def upgrade(
+@@ -1819,6 +1822,27 @@ def upgrade(
  
      Run a full system upgrade, a zypper upgrade
  
@@ -162,7 +162,7 @@ index ac6c36a09f..39d26f0e93 100644
      refresh
          force a refresh if set to True (default).
          If set to False it depends on zypper if a refresh is
-@@ -1852,6 +1876,24 @@ def upgrade(
+@@ -1850,6 +1874,24 @@ def upgrade(
      root
          Operate on a different root directory.
  
@@ -187,7 +187,7 @@ index ac6c36a09f..39d26f0e93 100644
      Returns a dictionary containing the changes:
  
      .. code-block:: python
-@@ -1859,11 +1901,27 @@ def upgrade(
+@@ -1857,11 +1899,27 @@ def upgrade(
          {'<package>':  {'old': '<old-version>',
                          'new': '<new-version>'}}
  
@@ -215,7 +215,7 @@ index ac6c36a09f..39d26f0e93 100644
          salt '*' pkg.upgrade dist_upgrade=True fromrepo='["MyRepoName"]' novendorchange=True
          salt '*' pkg.upgrade dist_upgrade=True dryrun=True
      """
-@@ -1899,12 +1957,24 @@ def upgrade(
+@@ -1897,12 +1955,24 @@ def upgrade(
              allowvendorchange, novendorchange
          ).noraise.call(*cmd_update + ["--debug-solver"])
  
@@ -243,7 +243,7 @@ index ac6c36a09f..39d26f0e93 100644
  
      if __zypper__.exit_code not in __zypper__.SUCCESS_EXIT_CODES:
 diff --git a/tests/pytests/unit/modules/test_zypperpkg.py b/tests/pytests/unit/modules/test_zypperpkg.py
-index bfc1558c9a..e02bba9a07 100644
+index 351a173b81..84dc7a10b4 100644
 --- a/tests/pytests/unit/modules/test_zypperpkg.py
 +++ b/tests/pytests/unit/modules/test_zypperpkg.py
 @@ -4,17 +4,31 @@
@@ -280,11 +280,10 @@ index bfc1558c9a..e02bba9a07 100644
  
  
  def test_list_pkgs_no_context():
-@@ -254,3 +268,263 @@ def test_pkg_list_holds():
-         ret = zypper.list_holds()
-         assert len(ret) == 1
-         assert "bar-2:2.3.4-2.1.*" in ret
-+
+@@ -254,3 +268,262 @@ def test_del_repo_key():
+     with patch.dict(zypper.__salt__, salt_mock):
+         assert zypper.del_repo_key(keyid="keyid", root="/mnt")
+         salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
 +
 +@pytest.mark.parametrize(
 +    "zypper_version,lowpkg_version_cmp,expected_inst_avc,expected_dup_avc",
@@ -1052,6 +1051,6 @@ index 39f28f2198..fea6eeb004 100644
          """
          Test whether or not an upgrade is available for a given package.
 -- 
-2.36.1
+2.37.3
 
 

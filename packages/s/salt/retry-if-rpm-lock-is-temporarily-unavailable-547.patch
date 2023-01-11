@@ -1,4 +1,4 @@
-From cedde1082b3a11b941327ba8e213f44637fb8a6b Mon Sep 17 00:00:00 2001
+From 4a9ec335e7da2f0e3314580e43075bb69fe90c38 Mon Sep 17 00:00:00 2001
 From: Witek Bedyk <witold.bedyk@suse.com>
 Date: Mon, 29 Aug 2022 14:16:00 +0200
 Subject: [PATCH] Retry if RPM lock is temporarily unavailable (#547)
@@ -27,7 +27,7 @@ index 0000000000..59f1914593
 @@ -0,0 +1 @@
 +Fixed Zypper module failing on RPM lock file being temporarily unavailable.
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index b622105e15..7a249486fb 100644
+index 2c36e2968a..c787d4009d 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
 @@ -14,6 +14,7 @@ Package support for openSUSE via the zypper package manager
@@ -292,6 +292,6 @@ index 3f1560a385..37d555844c 100644
 +                self.assertEqual(lockf_mock.call_count, 2)
 +            zypper.__zypper__._reset()
 -- 
-2.37.2
+2.37.3
 
 

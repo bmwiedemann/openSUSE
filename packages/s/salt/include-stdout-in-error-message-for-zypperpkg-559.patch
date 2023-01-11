@@ -1,0 +1,63 @@
+From f9fe9ea009915478ea8f7896dff2c281e68b5d36 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Yeray=20Guti=C3=A9rrez=20Cedr=C3=A9s?=
+ <yeray.gutierrez@suse.com>
+Date: Fri, 14 Oct 2022 08:41:40 +0100
+Subject: [PATCH] Include stdout in error message for zypperpkg (#559)
+
+---
+ salt/modules/zypperpkg.py            |  5 +++++
+ tests/unit/modules/test_zypperpkg.py | 17 ++++++++++++++++-
+ 2 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index c787d4009d..5d745c432d 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -339,6 +339,11 @@ class _Zypper:
+                     and self.__call_result["stderr"].strip()
+                     or ""
+                 )
++                msg += (
++                    self.__call_result["stdout"]
++                    and self.__call_result["stdout"].strip()
++                    or ""
++                )
+                 if msg:
+                     _error_msg.append(msg)
+             else:
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 37d555844c..bcd001cd85 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -207,11 +207,26 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+             ):
+                 zypper.__zypper__.xml.call("crashme")
+ 
++        output_to_user_stdout = "Output to user to stdout"
++        output_to_user_stderr = "Output to user to stderr"
++        sniffer = RunSniffer(
++            stdout=output_to_user_stdout, stderr=output_to_user_stderr, retcode=1
++        )
++        with patch.dict(
++            "salt.modules.zypperpkg.__salt__", {"cmd.run_all": sniffer}
++        ), patch.object(zypper.__zypper__, "_is_rpm_lock", return_value=False):
+             with self.assertRaisesRegex(
+-                CommandExecutionError, "^Zypper command failure: Check Zypper's logs.$"
++                CommandExecutionError,
++                "^Zypper command failure: {}$".format(
++                    output_to_user_stderr + output_to_user_stdout
++                ),
+             ):
+                 zypper.__zypper__.call("crashme again")
+ 
++        sniffer = RunSniffer(retcode=1)
++        with patch.dict(
++            "salt.modules.zypperpkg.__salt__", {"cmd.run_all": sniffer}
++        ), patch.object(zypper.__zypper__, "_is_rpm_lock", return_value=False):
+             zypper.__zypper__.noraise.call("stay quiet")
+             self.assertEqual(zypper.__zypper__.error_msg, "Check Zypper's logs.")
+ 
+-- 
+2.37.3
+
+

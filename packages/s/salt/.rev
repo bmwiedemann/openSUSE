@@ -2103,4 +2103,41 @@ let build start it or we will get libvirt errors.
   * fix-test_ipc-unit-tests.patch</comment>
     <requestid>1008560</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e2a102905e70f2013ecc0185c5496bec</srcmd5>
+    <version>3005.1</version>
+    <time>1673444022</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing patch after rebase to fix collections Mapping issues
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+- Prevent deadlocks in salt-ssh executions
+- Added:
+  * use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+
+- Create new salt-tests subpackage containing Salt tests
+
+- Update to Salt release version 3005.1
+  * See release notes: https://docs.saltstack.com/en/latest/topics/releases/3005.1.html
+- Modified:
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+  * add-sleep-on-exception-handling-on-minion-connection.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * add-support-for-gpgautoimport-539.patch
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+  * align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+  * allow-vendor-change-option-with-zypper.patch
+  * async-batch-implementation.patch
+  * avoid-excessive-syslogging-by-watchdog-cronjob-58.patch
+  * bsc-1176024-fix-file-directory-user-and-group-owners.patch
+  * change-the-delimeters-to-prevent-possible-tracebacks.patch</comment>
+    <requestid>1057621</requestid>
+  </revision>
 </revisionlist>

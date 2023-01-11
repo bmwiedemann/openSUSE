@@ -1,4 +1,4 @@
-From 6ba30d3900bc328efd3480c0ff3d9e9b126fc5cb Mon Sep 17 00:00:00 2001
+From 0cbc4e8f8ed5c8366ed6864216d70d58f5ae0a82 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 12:57:21 +0100
 Subject: [PATCH] Add environment variable to know if yum is invoked from
@@ -9,7 +9,7 @@ Subject: [PATCH] Add environment variable to know if yum is invoked from
  1 file changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index cf684e20f7..8d089c6aa4 100644
+index 3f855d255f..08dccafceb 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
 @@ -965,7 +965,9 @@ def list_repo_pkgs(*args, **kwargs):
@@ -23,7 +23,7 @@ index cf684e20f7..8d089c6aa4 100644
              .splitlines()[0]
              .strip()
          )
-@@ -2422,7 +2424,9 @@ def list_holds(pattern=__HOLD_PATTERN, full=True):
+@@ -2433,7 +2435,9 @@ def list_holds(pattern=__HOLD_PATTERN, full=True):
      """
      _check_versionlock()
  
@@ -34,7 +34,7 @@ index cf684e20f7..8d089c6aa4 100644
      ret = []
      for line in salt.utils.itertools.split(out, "\n"):
          match = _get_hold(line, pattern=pattern, full=full)
-@@ -2490,7 +2494,10 @@ def group_list():
+@@ -2501,7 +2505,10 @@ def group_list():
      }
  
      out = __salt__["cmd.run_stdout"](
@@ -46,7 +46,7 @@ index cf684e20f7..8d089c6aa4 100644
      )
      key = None
      for line in salt.utils.itertools.split(out, "\n"):
-@@ -2561,7 +2568,9 @@ def group_info(name, expand=False, ignore_groups=None):
+@@ -2572,7 +2579,9 @@ def group_info(name, expand=False, ignore_groups=None):
          ret[pkgtype] = set()
  
      cmd = [_yum(), "--quiet", "groupinfo", name]
@@ -57,7 +57,7 @@ index cf684e20f7..8d089c6aa4 100644
  
      g_info = {}
      for line in salt.utils.itertools.split(out, "\n"):
-@@ -3278,7 +3287,9 @@ def download(*packages, **kwargs):
+@@ -3301,7 +3310,9 @@ def download(*packages, **kwargs):
  
      cmd = ["yumdownloader", "-q", "--destdir={}".format(CACHE_DIR)]
      cmd.extend(packages)
@@ -68,7 +68,7 @@ index cf684e20f7..8d089c6aa4 100644
      ret = {}
      for dld_result in os.listdir(CACHE_DIR):
          if not dld_result.endswith(".rpm"):
-@@ -3354,7 +3365,7 @@ def _get_patches(installed_only=False):
+@@ -3377,7 +3388,7 @@ def _get_patches(installed_only=False):
      patches = {}
  
      cmd = [_yum(), "--quiet", "updateinfo", "list", "all"]
@@ -78,6 +78,6 @@ index cf684e20f7..8d089c6aa4 100644
  
      for line in salt.utils.itertools.split(ret, os.linesep):
 -- 
-2.34.1
+2.37.3
 
 

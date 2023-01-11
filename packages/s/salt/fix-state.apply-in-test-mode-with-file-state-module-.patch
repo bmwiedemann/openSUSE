@@ -1,8 +1,8 @@
-From ed567e5f339f7bf95d4361ac47e67427db71714c Mon Sep 17 00:00:00 2001
+From 58317cda7a347581b495ab7fd71ce75f0740d8d6 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <Victor.Zhestkov@suse.com>
 Date: Thu, 1 Sep 2022 14:44:26 +0300
-Subject: [PATCH] Fix state.apply in test mode with file state module
- on user/group checking (bsc#1202167)
+Subject: [PATCH] Fix state.apply in test mode with file state module on
+ user/group checking (bsc#1202167)
 
 * Do not fail on checking user/group in test mode
 
@@ -15,12 +15,11 @@ Co-authored-by: nicholasmhughes <nicholasmhughes@gmail.com>
 Co-authored-by: nicholasmhughes <nicholasmhughes@gmail.com>
 ---
  changelog/61846.fixed                         |  1 +
- salt/states/file.py                           |  5 ++
- tests/pytests/unit/states/file/test_copy.py   | 35 ++++++++++++
- .../unit/states/file/test_directory.py        | 55 +++++++++++++++++++
- .../unit/states/file/test_filestate.py        | 42 ++++++++++++++
- .../pytests/unit/states/file/test_managed.py  | 31 +++++++++++
- 6 files changed, 169 insertions(+)
+ salt/states/file.py                           |  5 +++
+ tests/pytests/unit/states/file/test_copy.py   | 35 ++++++++++++++++
+ .../unit/states/file/test_filestate.py        | 42 +++++++++++++++++++
+ .../pytests/unit/states/file/test_managed.py  | 31 ++++++++++++++
+ 5 files changed, 114 insertions(+)
  create mode 100644 changelog/61846.fixed
 
 diff --git a/changelog/61846.fixed b/changelog/61846.fixed
@@ -31,7 +30,7 @@ index 0000000000..c4024efe9f
 @@ -0,0 +1 @@
 +Fix the reporting of errors for file.directory in test mode
 diff --git a/salt/states/file.py b/salt/states/file.py
-index a6288025e5..39cf83b78e 100644
+index 1083bb46d6..5cb58f5454 100644
 --- a/salt/states/file.py
 +++ b/salt/states/file.py
 @@ -379,6 +379,11 @@ def _check_user(user, group):
@@ -89,69 +88,6 @@ index ce7161f02d..a11adf5ae0 100644
 +        )
 +        assert ret["result"] is not False
 +        assert "is not available" not in ret["comment"]
-diff --git a/tests/pytests/unit/states/file/test_directory.py b/tests/pytests/unit/states/file/test_directory.py
-index 0e15e1d3ca..1287609c6a 100644
---- a/tests/pytests/unit/states/file/test_directory.py
-+++ b/tests/pytests/unit/states/file/test_directory.py
-@@ -291,3 +291,58 @@ def test_directory():
-                             assert (
-                                 filestate.directory(name, user=user, group=group) == ret
-                             )
-+
-+
-+def test_directory_test_mode_user_group_not_present():
-+    name = "/etc/testdir"
-+    user = "salt"
-+    group = "saltstack"
-+    if salt.utils.platform.is_windows():
-+        name = name.replace("/", "\\")
-+
-+    ret = {
-+        "name": name,
-+        "result": None,
-+        "comment": "",
-+        "changes": {name: {"directory": "new"}},
-+    }
-+
-+    if salt.utils.platform.is_windows():
-+        comt = 'The directory "{}" will be changed' "".format(name)
-+    else:
-+        comt = "The following files will be changed:\n{}:" " directory - new\n".format(
-+            name
-+        )
-+    ret["comment"] = comt
-+
-+    mock_f = MagicMock(return_value=False)
-+    mock_uid = MagicMock(
-+        side_effect=[
-+            "",
-+            "U12",
-+            "",
-+        ]
-+    )
-+    mock_gid = MagicMock(
-+        side_effect=[
-+            "G12",
-+            "",
-+            "",
-+        ]
-+    )
-+    mock_error = CommandExecutionError
-+    with patch.dict(
-+        filestate.__salt__,
-+        {
-+            "file.user_to_uid": mock_uid,
-+            "file.group_to_gid": mock_gid,
-+            "file.stats": mock_f,
-+        },
-+    ), patch("salt.utils.win_dacl.get_sid", mock_error), patch.object(
-+        os.path, "isdir", mock_f
-+    ), patch.dict(
-+        filestate.__opts__, {"test": True}
-+    ):
-+        assert filestate.directory(name, user=user, group=group) == ret
-+        assert filestate.directory(name, user=user, group=group) == ret
-+        assert filestate.directory(name, user=user, group=group) == ret
 diff --git a/tests/pytests/unit/states/file/test_filestate.py b/tests/pytests/unit/states/file/test_filestate.py
 index 2f9f369fb2..c373cb3449 100644
 --- a/tests/pytests/unit/states/file/test_filestate.py
@@ -242,6 +178,6 @@ index 9d9fb17717..0b341e09a9 100644
 +        assert ret["result"] is not False
 +        assert "is not available" not in ret["comment"]
 -- 
-2.37.2
+2.37.3
 
 

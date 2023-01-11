@@ -1,4 +1,4 @@
-From 466b188b52b064cbdda6cf3efa73da3861be8307 Mon Sep 17 00:00:00 2001
+From a2f8b54cd56eb83552eccf87afd9b67f6a4a6f4c Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 16:36:57 +0100
 Subject: [PATCH] Use Adler32 algorithm to compute string checksums
@@ -24,10 +24,10 @@ Remove deprecated warning that breaks miniion execution when "server_id_use_crc"
  2 files changed, 48 insertions(+), 4 deletions(-)
 
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index 97a7fce2f0..2c42290598 100644
+index a37f7eebcc..7cdee12c4d 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -957,6 +957,9 @@ VALID_OPTS = immutabletypes.freeze(
+@@ -964,6 +964,9 @@ VALID_OPTS = immutabletypes.freeze(
          # The port to be used when checking if a master is connected to a
          # minion
          "remote_minions_port": int,
@@ -37,7 +37,7 @@ index 97a7fce2f0..2c42290598 100644
      }
  )
  
-@@ -1260,6 +1263,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
+@@ -1267,6 +1270,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
          "disabled_requisites": [],
          "reactor_niceness": None,
          "fips_mode": False,
@@ -46,7 +46,7 @@ index 97a7fce2f0..2c42290598 100644
  )
  
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 1077e64a11..dd0bd346b2 100644
+index b55ab4e472..23d8b8ea42 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -21,6 +21,7 @@ import subprocess
@@ -57,7 +57,7 @@ index 1077e64a11..dd0bd346b2 100644
  from errno import EACCES, EPERM
  
  import distro
-@@ -3017,6 +3018,36 @@ def _hw_data(osdata):
+@@ -3015,6 +3016,36 @@ def _hw_data(osdata):
      return grains
  
  
@@ -94,7 +94,7 @@ index 1077e64a11..dd0bd346b2 100644
  def get_server_id():
      """
      Provides an integer based on the FQDN of a machine.
-@@ -3027,10 +3058,19 @@ def get_server_id():
+@@ -3025,10 +3056,19 @@ def get_server_id():
      #   server_id
  
      if salt.utils.platform.is_proxy():
@@ -119,6 +119,6 @@ index 1077e64a11..dd0bd346b2 100644
  
  def get_master():
 -- 
-2.34.1
+2.37.3
 
 

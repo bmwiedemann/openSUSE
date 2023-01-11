@@ -1,0 +1,124 @@
+From d1e9af256fa67cd792ce11e6e9c1e24a1fe2054f Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <Victor.Zhestkov@suse.com>
+Date: Fri, 28 Oct 2022 13:19:46 +0300
+Subject: [PATCH] Align Amazon EC2 (Nitro) grains with upstream PR
+ (bsc#1203685)
+
+* Set virtual to Nitro for Amazon EC2 kvm instances
+
+* Add few mocks to prevent false failing
+
+possible in some specific environments
+
+* Add one more possible test case returning Nitro
+---
+ salt/grains/core.py                    |  8 +++++++-
+ tests/pytests/unit/grains/test_core.py | 27 +++++++++++++++++++++++++-
+ 2 files changed, 33 insertions(+), 2 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 76f3767ddf..f359c07432 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -860,6 +860,10 @@ def _virtual(osdata):
+                 grains["virtual"] = "container"
+                 grains["virtual_subtype"] = "LXC"
+                 break
++            elif "amazon" in output:
++                grains["virtual"] = "Nitro"
++                grains["virtual_subtype"] = "Amazon EC2"
++                break
+         elif command == "virt-what":
+             for line in output.splitlines():
+                 if line in ("kvm", "qemu", "uml", "xen"):
+@@ -1174,7 +1178,7 @@ def _virtual(osdata):
+         grains["virtual"] = "virtual"
+ 
+     # Try to detect if the instance is running on Amazon EC2
+-    if grains["virtual"] in ("qemu", "kvm", "xen"):
++    if grains["virtual"] in ("qemu", "kvm", "xen", "amazon"):
+         dmidecode = salt.utils.path.which("dmidecode")
+         if dmidecode:
+             ret = __salt__["cmd.run_all"](
+@@ -1182,6 +1186,8 @@ def _virtual(osdata):
+             )
+             output = ret["stdout"]
+             if "Manufacturer: Amazon EC2" in output:
++                if grains["virtual"] != "xen":
++                    grains["virtual"] = "Nitro"
+                 grains["virtual_subtype"] = "Amazon EC2"
+                 product = re.match(
+                     r".*Product Name: ([^\r\n]*).*", output, flags=re.DOTALL
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index c06cdb2db0..6f3bef69f2 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -2888,6 +2888,11 @@ def test_virtual_set_virtual_ec2():
+             "/usr/bin/systemd-detect-virt",
+             None,
+             None,
++            # Check with systemd-detect-virt returning amazon and no dmidecode available
++            None,
++            "/usr/bin/systemd-detect-virt",
++            None,
++            None,
+         ]
+     )
+     cmd_run_all_mock = MagicMock(
+@@ -2946,9 +2951,22 @@ def test_virtual_set_virtual_ec2():
+             },
+             # Check with systemd-detect-virt when no dmidecode available
+             {"retcode": 0, "stderr": "", "stdout": "kvm"},
++            # Check with systemd-detect-virt returning amazon and no dmidecode available
++            {"retcode": 0, "stderr": "", "stdout": "amazon"},
+         ]
+     )
+ 
++    def _mock_is_file(filename):
++        if filename in (
++            "/proc/1/cgroup",
++            "/proc/cpuinfo",
++            "/sys/devices/virtual/dmi/id/product_name",
++            "/proc/xen/xsd_kva",
++            "/proc/xen/capabilities",
++        ):
++            return False
++        return True
++
+     with patch("salt.utils.path.which", which_mock), patch.dict(
+         core.__salt__,
+         {
+@@ -2957,6 +2975,8 @@ def test_virtual_set_virtual_ec2():
+             "cmd.retcode": salt.modules.cmdmod.retcode,
+             "smbios.get": salt.modules.smbios.get,
+         },
++    ), patch("os.path.isfile", _mock_is_file), patch(
++        "os.path.isdir", return_value=False
+     ):
+ 
+         virtual_grains = core._virtual(osdata.copy())
+@@ -2966,7 +2986,7 @@ def test_virtual_set_virtual_ec2():
+ 
+         virtual_grains = core._virtual(osdata.copy())
+ 
+-        assert virtual_grains["virtual"] == "kvm"
++        assert virtual_grains["virtual"] == "Nitro"
+         assert virtual_grains["virtual_subtype"] == "Amazon EC2 (m5.large)"
+ 
+         virtual_grains = core._virtual(osdata.copy())
+@@ -2974,6 +2994,11 @@ def test_virtual_set_virtual_ec2():
+         assert virtual_grains["virtual"] == "kvm"
+         assert "virtual_subtype" not in virtual_grains
+ 
++        virtual_grains = core._virtual(osdata.copy())
++
++        assert virtual_grains["virtual"] == "Nitro"
++        assert virtual_grains["virtual_subtype"] == "Amazon EC2"
++
+ 
+ @pytest.mark.skip_on_windows
+ def test_linux_proc_files_with_non_utf8_chars():
+-- 
+2.37.3
+
+
