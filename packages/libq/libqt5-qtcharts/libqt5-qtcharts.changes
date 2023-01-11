@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:17:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde0, rebased upstream:
+  * Fix: QPieSlice docs don't mention HTML formatting
+  * Fix axes not being removed when shared
+  * Fix incorrect plotArea before resize
+
+-------------------------------------------------------------------
 Thu Nov  3 08:51:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde0, rebased upstream:
