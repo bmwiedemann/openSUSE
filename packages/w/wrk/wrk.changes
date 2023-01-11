@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 10 16:06:46 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- removed wrk-3.1.2_distrofixes.patch
+- added wrk-4.2.0_distrofixes.patch
+- update to 4.2.0:
+  * upgrade openssl to 1.1.1i
+
+
+-------------------------------------------------------------------
 Sun Aug 16 11:50:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.1.0:

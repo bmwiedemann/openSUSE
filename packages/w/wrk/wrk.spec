@@ -1,7 +1,7 @@
 #
 # spec file for package wrk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           wrk
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Modern HTTP benchmarking tool
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/wg/wrk
 Source:         https://github.com/wg/wrk/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         wrk-3.1.2_distrofixes.patch
+Patch0:         wrk-4.2.0_distrofixes.patch
 BuildRequires:  pkgconfig
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(openssl)
 ExcludeArch:    aarch64 ppc ppc64 ppc64le
 
@@ -39,8 +40,7 @@ processing, and custom reporting. Several example scripts are located in
 scripts.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p1
 
 %build
 %make_build OPTFLAGS="%{optflags}" WITH_OPENSSL=%{_prefix}

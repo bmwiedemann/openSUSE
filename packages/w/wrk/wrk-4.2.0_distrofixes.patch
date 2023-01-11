@@ -1,14 +1,13 @@
-Index: Makefile
-===================================================================
---- Makefile.orig
-+++ Makefile
+diff --color -ur wrk-4.2.0.orig/Makefile wrk-4.2.0/Makefile
+--- wrk-4.2.0.orig/Makefile	2021-02-07 08:13:05.000000000 +0100
++++ wrk-4.2.0/Makefile	2023-01-10 17:01:58.610896091 +0100
 @@ -1,4 +1,4 @@
 -CFLAGS  += -std=c99 -Wall -O2 -D_REENTRANT
-+CFLAGS  := -std=c99 -Wall -O2 -D_REENTRANT $(OPTFLAGS)
- LIBS    := -lpthread -lm -lssl -lcrypto
++CFLAGS  += -std=c99 -Wall -O2 -D_REENTRANT $(OPTFLAGS)
+ LIBS    := -lm -lssl -lcrypto -lpthread
  
  TARGET  := $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)
-@@ -66,8 +66,7 @@ $(ODIR)/version.o:
+@@ -67,8 +67,7 @@
  	@echo 'const char *VERSION="$(VER)";' | $(CC) -xc -c -o $@ -
  
  $(ODIR)/%.o : %.c
