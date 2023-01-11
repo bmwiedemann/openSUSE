@@ -208,4 +208,12 @@
     <comment></comment>
     <requestid>1037399</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3e6ed48804b20501e1ee579a85a6ceb5</srcmd5>
+    <version>1.2.13+git20221215.c4ee41e</version>
+    <time>1673444102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1057660</requestid>
+  </revision>
 </revisionlist>

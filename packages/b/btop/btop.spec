@@ -17,7 +17,7 @@
 
 
 Name:           btop
-Version:        1.2.13+git20221106.0f8498f
+Version:        1.2.13+git20221215.c4ee41e
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0

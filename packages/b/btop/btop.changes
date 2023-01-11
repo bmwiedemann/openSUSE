@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 03 18:19:48 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20221215.c4ee41e:
+  * Fixed: Makefile, VERBOSE flag now shows directory creation, Issue #480
+  * Makefile: make build targets depend on directories
+
+-------------------------------------------------------------------
+Fri Dec 09 21:47:50 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20221130.e67a35d:
+  * Removed unused statement...
+  * Fixed: Use MemFree for used mem calculation if MemAvailable is greater than MemTotal.
+
+-------------------------------------------------------------------
 Mon Nov 07 14:43:04 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.2.13+git20221106.0f8498f:
