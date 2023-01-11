@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:14:59 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde160, rebased upstream:
+  * Set geometry property in QXcbWindow after checking minimum size
+  * Fix potential corruption with image format conversion on arm neon
+  * TLS backend SecureTransport: properly clear SSLContextRef
+  * Widgets: Use effect region bounds when drawing with repaint manager
+  * Revert "xcb: stablilize xkb state when keymap updated"
+  * forkfd/linux: add support for LoongArch
+  * Fix default QT_ARCHS for non-universal builds
+  * Add the missing -mfpu=neon CXX flag
+  * Fix missing characters or assert with certain font sizes
+  * tst_containerapisymmetry: test ranged ctors with pure input_iterator types
+  * qmake/Xcode: Mark "Qt Preprocess" build phase as always out of date
+  * Windows QPA: Fix cursors getting out of sync after restoring override cursors on native windows
+  * evdevkeyboard: Try opening as read-write first
+  * QVarLengthArray: add some basic checks for default-ctor
+  * QTableWidget doc: remove wrong comment for itemExpanded()
+  * Blacklist tst_QTimer::zeroTimer on Ubuntu 20.04
+  * Use Yu Gothic UI as the main fallback font for Japanese
+  * qxkbcommon: UCS-4-encode surrogate characters in QKeyEvent::key()
+  * Replace CopyrightFile entry in libjpeg qt_attribution.json
+  * androiddeployqt: Fix signing of paths with spaces
+  * OpenSSL: handle renegotiate errors by comparing certs
+  * Update latest qt license agreement
+  * QFontDatabase: unify relevant documentation pieces
+  * wasm: Fix assert/crash when tooltip window is closed and mouse moved
+  * Freetype: adjust underlinePosition to match our expectations
+  * SignalTransition: guard against deleted object
+  * tst_QSslSocket: QSKIP the test that is known to fail with SecureTransport
+  * QStringView: fix split(QRegularExpression) returning invalid data
+  * Check that QStringView::split() w/rvalue QRegularExpression returns valid data
+  * Teach QOpenGLTextureBlitter about GL_TEXTURE_RECTANGLE textures
+  * Doc build: fix conflicting response file with moc
+  * QTextDocument: fix an off-by-one in the changed signal for lists
+  * Fix warnings due to enums in QSizePolicy
+  * Android: Set sem_wait m_terminateSemaphore behind an atomic flag
+  * QGraphicsItem: Update input context after InputMethod event
+  * QSharedPointer: fix counter-productive QT_PREPEND_NAMESPACE use in qHash() impl
+  * tst_qhashfunctions: check qHashRange{,Commutative}() find hidden friend qHash()
+  * xcb: stablilize xkb state when keymap updated
+  * Stabilize tst_QAccessibilityMac
+  * Handle macOS 11 issues in softHyphens test
+  * QVERIFY_EXCEPTION_THROWN: re-throw unknown exceptions
+  * QAuthenticator: Filter out algorithms we don't support
+  * QNX: QNX7.1 updates
+  * Blacklist tst_QTcpServer::linkLocal on macOS ARM
+  * Blacklist problematic network auto-tests on macOS ARM
+  * Blacklist and skip failing tests on macOS ARM
+  * Windows QPA: Fix multi-touch support in some devices
+  * freetype/no-fc: Disambiguate fonts with different widths
+  * Skip disabled proxy widgets when (back)tabbing
+  * Explicitly use libc++ when creating machtest stubs
+  * Don't pass CXXFLAGS when creating machtest stubs
+  * QFontComboBox don't response qApp fontDatabaseChanged()
+  * Update architectures in machtest to arm64+x86_64, removing i386 and ppc
+  * Android: bump default QT_ANDROID_API_VERSION to 31
+  * macOS: Disable PCRE JIT when running under Rosetta
+  * macOS: Add helper function to check whether we're running under Rosetta
+  * testlib: Disable automatic backtrace when test crashes on macOS on ARM
+  * macOS: Hard-code NEON and SSE/SSE2 when building universal builds
+  * macOS: Always disable pixman NEON drawhelpers
+  * macOS: Scope Haswell arch flags to x86_64 compilation units
+  * Guard AVX parts of qfloat16 helpers instead of emitting error
+  * Granularily disable PCRE2 JIT on macOS ARM
+  * Avoid claiming F16C support on non-x86 platforms
+  * macOS: Respect QMAKE_APPLE_DEVICE_ARCHS by building for all those archs
+  * qmake: Pick default architecture on macOS based on uname
+  * macOS: Don't hard-code x86_64 as the architecture when using qmake
+  * qmake: Support Visual Studio 2022
+  * Avoid painting outside boundaries when printing QGraphicsProxyWidget
+  * wasm:  fix network reply status attribute
+  * Update Gradle to 7.2.0 and Android Gradle Plugin to 7.0.2
+  * wasm: fix size of QDialogs
+  * plaintextEdit draw text with clipRect should consider cusorWidth
+  * iOS: Hide UIWindow before restoring mirror mode
+  * iOS: Defer restoring screen mirroring until next runloop pass
+  * macOS: Bump max supported SDK version to 12
+  * iOS: Don't try to initialize a11y for views that have no platform window
+  * qnsview_mouse, scrollWheel: do not assume zero deltas on Ending phase
+  * PCRE2: upgrade to 10.39
+  * wasm: fix deadlock when thread calls exit
+  * Fix version number when warning about Apple platform SDK mismatch
+  * Doc: Add styling for note/warning/important admonitions
+  * wasm: disable the canvas resize observer
+  * wasm: fix window activation
+  * Fix show()/hide() for child windows on xcb
+  * Add warning about QCoreApplication deferred delete
+  * Fix performance regression when avoiding scrollbar flipping
+  * wasm: fix changing cursor shape
+  * QSKIP tst_qgl:closeAndThenShow() because of flaky crashes
+  * Calculate effect bounds when drawing widget graphics effect
+  * Fix treemodelcompleter example
+  * gl: Try the local CacheLocation when the shared one fails
+  * Android: set EXTRA_TITLE to the initially selected file in save dialog
+  * qmake/vcxproj: Fix malformed <Message> tags
+  * qmake/vcxproj: Fix "CONFIG += combine" extra compilers
+  * Android: set allowNativeHeapPointerTagging to false in the manifest
+  * Update windows version detection
+  * Don't link against pthread when using cxx11_future on vxworks
+  * Accessibility Linux: Fix caps lock state
+  * Don't render widget to backing store if its parent has graphics effect
+  * Handle DPR in QPainter's drawing methods taking a brush parameter
+  * XCB: Silence clipboard warning "SelectionRequest too old"
+  * QVector: Don't require default-constructible types with insert()
+  * Android: Hide the keyboard when the height is less than 0
+  * When filling a pixmap after an assignment ensure the set DPR is not lost
+  * Fix high DPI position of foreign child windows on Windows
+  * QOpenSSLBackend: Properly load 3.0 when compiled with 3.0
+  * Take overshoot into account when laying out QAbstractScrollArea
+  * Add suffixes to loop variables for Q_FOREACH
+  * Android: Fix handling of cursor position when stop composing
+  * Windows QPA: Fix mouse event position for QWindows with Qt::WindowTransparentForInput
+
+-------------------------------------------------------------------
 Thu Dec 15 12:06:32 UTC 2022 - Fabian Vogt <fvogt@ritter-vogt.de>
 
 - Update to version 5.15.7+kde177:

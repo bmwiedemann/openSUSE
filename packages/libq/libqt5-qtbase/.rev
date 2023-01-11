@@ -2487,4 +2487,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.7 + accessibility requested by sitter (forwarded request 1043149 from Vogtinator)</comment>
     <requestid>1043280</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>0a153df0ec03e8984f6d893ef7bb7f16</srcmd5>
+    <version>5.15.8+kde160</version>
+    <time>1673443978</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057220</requestid>
+  </revision>
 </revisionlist>
