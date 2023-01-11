@@ -212,8 +212,8 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-# YaST:Head:D-Installer whitelisted on 20221205
-devel-whitelist = YaST:Head:D-Installer
+# Ydevel:automotive whitelisted on 20230111
+devel-whitelist = devel:automotive
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -245,7 +245,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230110</value>
+    <value>20230111</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
