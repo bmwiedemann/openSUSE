@@ -4,7 +4,7 @@
 
 --- misc/terminfo.src
 +++ misc/terminfo.src	2018-10-29 10:23:47.271511864 +0000
-@@ -17982,8 +17982,8 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18029,8 +18029,8 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  #
  
  ibm327x|line mode IBM 3270 style,

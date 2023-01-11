@@ -3895,4 +3895,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1040231</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>d63713b170f5cc09660358da510cadcd</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1673443967</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid trouble with invalid certificate for ftp.invisible-island.net
+  and use www.invisible-island.net 
+
+- Modify offset in patch ncurses-5.9-ibm327x.dif
+- Port patch ncurses-6.3.dif and rename it to ncurses-6.4.dif
+- Update tack to 1.09-20221229
+  * latest config.guess and config.sub
+- Add ncurses patch 20230107 
+  + add --with-abi-altered configure option (prompted by discussion with
+    Brian Inglis).
+  + add BSD erase2 to characters handled by tset/reset.
+  + improve configure-script macros vs compiler warnings.
+  + regenerate configure scripts with autoconf 2.52.20221202
+  + add RV report+version (suggested by Bram Moolenaar).
+  + add comment to bracketed+paste explaining that vim patch 9.0.1117 is
+    needed for use with the updated xterm descriptions (suggested by Bram
+    Moolenaar).
+- Add ncurses update 6.4 (patch 20221231)
+  + update release notes
+  + regenerate llib-* files.
+  + correct PS vs PE names in bracketed+paste (report by Bram Moolenaar)
+- Add ncurses patch 20221224
+  + add mutex lock/unlock in a few places reported by thread-sanitizer
+  + add/use bracketed+paste to help identify terminals supporting this
+    xterm feature (prompted by discussion with Bram Moolenaar) -TD
+
+- Add ncurses patch 20221217
+  + install Ada95 sample programs in libexecdir, adding a wrapper
+    script to invoke those.</comment>
+    <requestid>1057605</requestid>
+  </revision>
 </revisionlist>
