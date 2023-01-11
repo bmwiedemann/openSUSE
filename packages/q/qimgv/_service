@@ -5,6 +5,7 @@
     <!-- TESTING -->
     <!-- LAST KNOWN GOOD:  (older) ;  (newer)
     <param name="revision">fa75f65</param>
+    <param name="revision">d24f3fa</param>
     -->
     <!-- BUILD FAILS:      (older) ;  (newer)
     <param name="revision">df8ebbd</param>  # Something seems to break here.

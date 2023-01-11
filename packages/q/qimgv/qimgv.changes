@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 03 18:25:09 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20221107.8ad0a11:
+  * [msys2] update build script
+  * Update MIME-info Database
+
+-------------------------------------------------------------------
 Wed Oct 12 17:07:07 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Cleaning up unused files
