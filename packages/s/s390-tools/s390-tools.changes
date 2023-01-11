@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 10 08:22:05 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated read_values.c for z16 machine type (bsc#1206832) 
+
+-------------------------------------------------------------------
 Mon Dec 12 15:05:48 UTC 2022 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated to version 2.25.0 (jsc#PED-627)

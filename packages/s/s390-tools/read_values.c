@@ -76,6 +76,7 @@ struct machinetype {
 	{ QC_TYPE_FAMILY_LINUXONE, "8561", "8561 = IBM LinuxONE III LT1" },
 	{ QC_TYPE_FAMILY_IBMZ,	   "8562", "8562 = z15 T02 IBM z15 T02" },
 	{ QC_TYPE_FAMILY_LINUXONE, "8562", "8562 = IBM LinuxONE III LT2" },
+	{ QC_TYPE_FAMILY_IBMZ,	   "3931", "3931 = z16     IBM z16" },
 	};
 
 int	debug = 0;
