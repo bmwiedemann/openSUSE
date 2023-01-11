@@ -1,0 +1,41 @@
+Index: autopage-0.5.1/autopage/tests/test_autopage.py
+===================================================================
+--- autopage-0.5.1.orig/autopage/tests/test_autopage.py
++++ autopage-0.5.1/autopage/tests/test_autopage.py
+@@ -37,6 +37,9 @@ class PagedStreamTest(fixtures.TestWithF
+         popen = fixtures.MockPatch('subprocess.Popen')
+         self.useFixture(popen)
+         self.popen = popen.mock
++        self.encoding = 'UTF-8'
++        if sys.version_info >= (3, 11):
++            self.encoding = 'utf-8'
+ 
+     def test_defaults(self) -> None:
+         class TestCommand(command.PagerCommand):
+@@ -58,7 +61,7 @@ class PagedStreamTest(fixtures.TestWithF
+                 env=get_env.return_value,
+                 bufsize=-1,
+                 universal_newlines=True,
+-                encoding='UTF-8',
++                encoding=self.encoding,
+                 errors='strict',
+                 stdin=subprocess.PIPE,
+                 stdout=None)
+@@ -84,7 +87,7 @@ class PagedStreamTest(fixtures.TestWithF
+                     env=get_env.return_value,
+                     bufsize=-1,
+                     universal_newlines=True,
+-                    encoding='UTF-8',
++                    encoding=self.encoding,
+                     errors='strict',
+                     stdin=subprocess.PIPE,
+                     stdout=None)
+@@ -100,7 +103,7 @@ class PagedStreamTest(fixtures.TestWithF
+                 env=get_env.return_value,
+                 bufsize=-1,
+                 universal_newlines=True,
+-                encoding='UTF-8',
++                encoding=self.encoding,
+                 errors='strict',
+                 stdin=subprocess.PIPE,
+                 stdout=None)
