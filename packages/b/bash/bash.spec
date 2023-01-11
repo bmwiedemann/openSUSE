@@ -1,7 +1,7 @@
 #
 # spec file for package bash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,7 +219,7 @@ unlink	      Remove a directory entry.
 
 whoami	      Print out username of current user.
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %package legacybin
 Summary:        Legacy usrmove helper files
 Group:          System/Shells
@@ -586,7 +586,7 @@ fi
 %ghost %config %{_sysconfdir}/alternatives/sh
 %endif
 %dir %{_sysconfdir}/bash_completion.d
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/bash
 %if %{with alternatives}
 /bin/sh
@@ -608,7 +608,7 @@ fi
 
 %if %{without alternatives}
 %files sh
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/sh
 %endif
 %{_bindir}/sh
@@ -633,7 +633,7 @@ fi
 %files loadables
 %{_ldldir}
 
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %files legacybin
 /bin/bash
 /bin/sh

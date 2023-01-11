@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:23:00 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Dec 14 14:52:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches
