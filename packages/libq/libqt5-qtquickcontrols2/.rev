@@ -241,4 +241,12 @@
     <comment>Qt 5.15.7 + accessibility requested by sitter (forwarded request 1043149 from Vogtinator)</comment>
     <requestid>1043282</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b05342481ae2fc44bc33bc0252036adb</srcmd5>
+    <version>5.15.8+kde7</version>
+    <time>1673443985</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057234</requestid>
+  </revision>
 </revisionlist>

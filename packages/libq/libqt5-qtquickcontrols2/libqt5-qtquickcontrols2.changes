@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:22:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde7, rebased upstream:
+  * RangeSlider: update handle positions when 'from' or 'to' value is changed
+  * Fix build without accessibility
+  * Register the overlay with QQuickApplicationWindow
+  * Consider all popups in the stack to test whether an event should be blocked
+  * Give focus to popup on prepareEnter instead of finalizeEnter
+  * Fix activeFocus for highest-z popup
+
+-------------------------------------------------------------------
 Thu Dec 15 12:22:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde7:
