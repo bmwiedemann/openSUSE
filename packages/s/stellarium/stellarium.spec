@@ -1,7 +1,7 @@
 #
 # spec file for package stellarium
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ URL:            https://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM - https://github.com/Stellarium/stellarium/pull/2970
+Patch1:         stellarium-gh2970.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
