@@ -593,4 +593,24 @@
   * needed still in 6.0 to fix build on 32bit.</comment>
     <requestid>1007664</requestid>
   </revision>
+  <revision rev="70" vrev="79">
+    <srcmd5>c264224eb2a0ad80ddd310b3c39cb5fd</srcmd5>
+    <version>MACRO</version>
+    <time>1673444151</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for 6.2
+
+- drop perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
+  (6.1 landed to TW)
+
+- drop perf-5.15-don-t-install-headers-with-x-permissions.patch
+  (6.0 landed to TW)
+
+- Move bash-completion to subpackage so it isn't installed when
+  not needed
+
+- Add a dummy -rebuild package to give OBS/Tumbleweed a hint when this
+  package needs a rebuild</comment>
+    <requestid>1057729</requestid>
+  </revision>
 </revisionlist>

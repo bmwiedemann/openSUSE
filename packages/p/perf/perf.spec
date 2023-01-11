@@ -1,7 +1,7 @@
 #
 # spec file for package perf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,6 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
-# remove once 6.0 reaches Tumbleweed (incl. the if below)
-Patch0:         perf-5.15-don-t-install-headers-with-x-permissions.patch
-Patch1:         perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -93,6 +90,26 @@ Requires:       %{name} = %{version}
 %description devel
 Development headers for perf. This is currently only dlfilter header.
 
+%package bash-completion
+Summary:        Bash completion for perf
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+bash command line completion support for perf.
+
+%package rebuild
+Summary:        Empty package to ensure rebuilding perf in OBS
+%requires_eq kernel-source
+
+%description rebuild
+This is an empty package that ensures perf is rebuilt every time
+kernel-default is rebuilt in OBS.
+
+There is no reason to install this package.
+
 %prep
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib kernel/bpf/disasm.[ch]) | tar -xf -
@@ -103,13 +120,6 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 
 # skip info-from-txt generation (it's the same as man anyway)
 sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
-
-%if %{version_pure} == 519
-%patch0 -p1
-%endif
-%if %{version_pure} == 60
-%patch1 -p1
-%endif
 
 %build
 cd tools/perf
@@ -143,7 +153,11 @@ make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
 	install install-doc
 
 mkdir -p %{buildroot}/%{_docdir}/perf/examples/bpf
+# === remove this when 6.2 hits factory
+%if %{version_pure} == 61
 mv %{buildroot}%{_prefix}/lib/perf/include/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
+%endif
+# === up to here
 mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
@@ -163,7 +177,6 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %{_bindir}/perf
 %{_bindir}/trace
 %{_prefix}/lib/%{name}-core
-%{_datadir}/bash-completion/completions/perf
 %{_datadir}/%{name}-core
 %{_mandir}/man1/perf*
 %dir %{_docdir}/perf/examples
@@ -173,8 +186,16 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %files gtk
 %{_libdir}/libperf-gtk.so
 
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/perf
+
 %files devel
 %dir %{_includedir}/perf/
 %{_includedir}/perf/*.h
+
+%files rebuild
+%license COPYING
 
 %changelog

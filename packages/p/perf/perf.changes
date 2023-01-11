@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 11 08:03:38 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- fix build for 6.2
+
+-------------------------------------------------------------------
+Mon Jan  9 07:09:46 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- drop perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
+  (6.1 landed to TW)
+
+-------------------------------------------------------------------
+Wed Oct 12 06:40:13 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- drop perf-5.15-don-t-install-headers-with-x-permissions.patch
+  (6.0 landed to TW)
+
+-------------------------------------------------------------------
+Fri Oct  7 15:58:23 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move bash-completion to subpackage so it isn't installed when
+  not needed
+
+-------------------------------------------------------------------
+Thu Oct  6 10:09:56 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Add a dummy -rebuild package to give OBS/Tumbleweed a hint when this
+  package needs a rebuild
+
+-------------------------------------------------------------------
 Mon Oct  3 08:41:02 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
