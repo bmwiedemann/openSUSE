@@ -695,4 +695,12 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 4.4.7</comment>
     <requestid>1040688</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>5251bdaf52063c68c15ee5a1ea1476fb</srcmd5>
+    <version>4.4.8</version>
+    <time>1673453656</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.8</comment>
+    <requestid>1057656</requestid>
+  </revision>
 </revisionlist>
