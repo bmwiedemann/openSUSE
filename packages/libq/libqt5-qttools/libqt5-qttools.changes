@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:23:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde1, rebased upstream:
+  * qdoc: Add styling for note, important and warning
+  * macdeployqt: don’t stop qmlimportscanner after 30s
+
+-------------------------------------------------------------------
 Thu Nov  3 08:56:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde1, rebased upstream:
