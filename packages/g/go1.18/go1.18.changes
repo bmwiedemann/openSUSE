@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 10 22:13:49 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.10 (released 2023-01-10) includes fixes to cgo, the
+  compiler, the linker, and the crypto/x509, net/http, and syscall
+  packages.
+  Refs boo#1193742 go1.18 release tracking
+  * go#57705 misc/cgo: backport needed for dlltool fix
+  * go#57426 crypto/x509: Verify on macOS does not return typed errors
+  * go#57344 cmd/compile: the loong64 intrinsic for CompareAndSwapUint32 function needs to sign extend its "old" argument.
+  * go#57338 syscall, internal/poll: accept4-to-accept fallback removal broke Go code on Synology DSM 6.2 ARM devices
+  * go#57213 os: TestLstat failure on Linux Aarch64
+  * go#57211 reflect: sort.SliceStable sorts incorrectly on arm64 with less function created with reflect.MakeFunc and slice of sufficient length
+  * go#57057 cmd/go: remove test dependency on gopkg.in service
+  * go#57054 cmd/go: TestScript/version_buildvcs_git_gpg (if enabled) fails on linux longtest builders
+  * go#57044 cgo: malformed DWARF TagVariable entry
+  * go#57028 cmd/cgo: Wrong types in compiler errors with clang 14
+  * go#56833 cmd/link/internal/ppc64: too-far trampoline is reused
+  * go#56711 net: reenable TestLookupDotsWithRemoteSource and TestLookupGoogleSRV with a different target
+  * go#56323 net/http: bad handling of HEAD requests with a body
+
+-------------------------------------------------------------------
 Tue Dec  6 20:49:04 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.9 (released 2022-12-06) includes security fixes to the

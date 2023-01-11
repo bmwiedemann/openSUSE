@@ -1,7 +1,7 @@
 #
 # spec file for package go1.18
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -134,7 +134,7 @@
 %endif
 
 Name:           go1.18
-Version:        1.18.9
+Version:        1.18.10
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

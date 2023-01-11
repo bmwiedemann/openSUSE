@@ -334,4 +334,28 @@
   * go#56359 cmd/compile: panic: offset too large (forwarded request 1041231 from jfkw)</comment>
     <requestid>1041234</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1c8e95c34edd54a6d62a722e33dfc065</srcmd5>
+    <version>1.18.10</version>
+    <time>1673453660</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18.10 (released 2023-01-10) includes fixes to cgo, the
+  compiler, the linker, and the crypto/x509, net/http, and syscall
+  packages.
+  Refs boo#1193742 go1.18 release tracking
+  * go#57705 misc/cgo: backport needed for dlltool fix
+  * go#57426 crypto/x509: Verify on macOS does not return typed errors
+  * go#57344 cmd/compile: the loong64 intrinsic for CompareAndSwapUint32 function needs to sign extend its &quot;old&quot; argument.
+  * go#57338 syscall, internal/poll: accept4-to-accept fallback removal broke Go code on Synology DSM 6.2 ARM devices
+  * go#57213 os: TestLstat failure on Linux Aarch64
+  * go#57211 reflect: sort.SliceStable sorts incorrectly on arm64 with less function created with reflect.MakeFunc and slice of sufficient length
+  * go#57057 cmd/go: remove test dependency on gopkg.in service
+  * go#57054 cmd/go: TestScript/version_buildvcs_git_gpg (if enabled) fails on linux longtest builders
+  * go#57044 cgo: malformed DWARF TagVariable entry
+  * go#57028 cmd/cgo: Wrong types in compiler errors with clang 14
+  * go#56833 cmd/link/internal/ppc64: too-far trampoline is reused
+  * go#56711 net: reenable TestLookupDotsWithRemoteSource and TestLookupGoogleSRV with a different target
+  * go#56323 net/http: bad handling of HEAD requests with a body (forwarded request 1057691 from jfkw)</comment>
+    <requestid>1057693</requestid>
+  </revision>
 </revisionlist>
