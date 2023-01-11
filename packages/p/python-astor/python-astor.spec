@@ -1,7 +1,7 @@
 #
 # spec file for package python-astor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-astor
 Version:        0.8.1
@@ -66,8 +65,7 @@ There are some other similar libraries, but astor focuses on the following areas
   - Enjoy easy access to parent node(s) for tree rewriting
 
 %prep
-%setup -q -n astor-%{version}
-%patch0 -p1
+%autosetup -p1 -n astor-%{version}
 
 %build
 # ugly fix for the use of /usr/bin/env
@@ -87,11 +85,13 @@ python38_donttest="test_huge_int"
 # https://github.com/berkerpeksag/astor/issues/196
 python39_donttest="${python38_donttest} or test_convert_stdlib"
 python310_donttest=${python39_donttest}
+python311_donttest=${python310_donttest}
 %pytest tests ${$python_donttest:+ -k "not (${$python_donttest})"}
 
 %files %{python_files}
 %doc AUTHORS README.rst docs/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/astor
+%{python_sitelib}/astor-%{version}*-info
 
 %changelog

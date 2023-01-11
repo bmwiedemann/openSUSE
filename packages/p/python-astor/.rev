@@ -94,4 +94,13 @@
   * https://github.com/python/cpython/issues/95778</comment>
     <requestid>1002922</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c385089bab3e8b4ccc75ed0c66309c44</srcmd5>
+    <version>0.8.1</version>
+    <time>1673444018</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip same tests for python-3.11
+</comment>
+    <requestid>1057599</requestid>
+  </revision>
 </revisionlist>

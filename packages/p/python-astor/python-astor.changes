@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 10 09:47:36 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip same tests for python-3.11
+
+-------------------------------------------------------------------
 Mon Sep 12 11:52:11 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Skip test_huge_int due to new security feature in Python
