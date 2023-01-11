@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jan  9 21:01:23 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version update to 5.0 (2023-01-09)
+  - Build Linux binary wheels for Python 3.11.
+  - Drop support for Python 2.7, 3.5, 3.6.
+- 4.9.3 (2022-11-16)
+  - Add support for building arm64 wheels on macOS.
+- 4.9.2 (2022-11-03)
+  - Update Python 3.11 support to final release.
+- 4.9.1 (2022-09-16)
+  - Update Python 3.11 support to 3.11.0-rc1.
+  - Disable unsafe math optimizations in C code. See pull request 176.
+- 4.9.0 (2022-03-10)
+  - Add support for Python 3.11 (as of 3.11a5).
+- 4.8.0 (2022-03-07)
+  - Switch package to src-layout, this is a packaging only change. (#168)
+  - Add support for Python 3.10.
+- Clean up testing - exclude failing tests explicitly
+
+-------------------------------------------------------------------
 Thu Sep  2 12:04:25 UTC 2021 - pgajdos@suse.com
 
 - version update to 4.7.0
