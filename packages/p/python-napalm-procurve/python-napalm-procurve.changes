@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 11 08:25:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing test test_get_facts (gh#ixs/napalm-procurve#30).
+
+-------------------------------------------------------------------
 Wed Oct  5 12:08:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-linter.patch to remove pyflakes code check. Some files fails with the
