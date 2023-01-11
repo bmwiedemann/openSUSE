@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,7 @@ Requires:       python-pathlib2 >= 2.3.3
 %endif
 %if %{with test}
 BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module platformdirs >= 2}

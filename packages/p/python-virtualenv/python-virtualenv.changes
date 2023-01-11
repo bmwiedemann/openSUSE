@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 11 03:46:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add python_module devel to BuildRequires in the test flavor, since
+  the test suite checks if the include path exists. 
+
+-------------------------------------------------------------------
 Sat Dec  3 02:36:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 20.16.7

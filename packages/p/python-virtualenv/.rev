@@ -660,4 +660,13 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment></comment>
     <requestid>1039742</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>d9af97a5dfe0eb0f5b18b575f80d281b</srcmd5>
+    <version>20.16.7</version>
+    <time>1673453659</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python_module devel to BuildRequires in the test flavor, since
+  the test suite checks if the include path exists.</comment>
+    <requestid>1057689</requestid>
+  </revision>
 </revisionlist>
