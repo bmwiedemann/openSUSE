@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 
 # Use the latest supported LLVM version, but Leap only has a slightly older one
 # so just use whatever version is available.
-%if 0%{?suse_version} > 1500
-%define llvm_major_version 12
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%define llvm_major_version 15
 %else
 %define llvm_major_version %{nil}
 %endif

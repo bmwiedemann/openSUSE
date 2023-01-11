@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  9 07:19:16 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Bump LLVM major version to 15 in preparation for Leap 15.5/SLES 15-SP5
+
+-------------------------------------------------------------------
 Thu Sep  1 04:58:08 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Drop Detect-new-BTF-api-btf_dump__new-btf_dump__new_v0_6_0.patch, which is
