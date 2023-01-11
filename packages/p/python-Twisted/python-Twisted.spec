@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Patch4:         no-cython_test_exception_raiser.patch
 Patch5:         no-pygtkcompat.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
+# PATCH-FIX-UPSTREAM py311-tests-compat.patch gh#twisted/twisted#11734 gh#twisted/twisted#11733
+Patch7:         py311-tests-compat.patch
 BuildRequires:  %{python_module incremental >= 21.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

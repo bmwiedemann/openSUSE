@@ -1483,4 +1483,15 @@
 </comment>
     <requestid>1037121</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>879b8b014ea1a874a469cbace9b1c0a7</srcmd5>
+    <version>22.10.0</version>
+    <time>1673453657</time>
+    <user>dimstar_suse</user>
+    <comment>- Add py311-tests-compat.patch to fix tests with python 3.11
+  gh#twisted/twisted#11734
+  gh#twisted/twisted#11733
+</comment>
+    <requestid>1057659</requestid>
+  </revision>
 </revisionlist>

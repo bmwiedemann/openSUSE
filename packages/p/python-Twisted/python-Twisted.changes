@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 10 17:43:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py311-tests-compat.patch to fix tests with python 3.11
+  gh#twisted/twisted#11734
+  gh#twisted/twisted#11733
+
+-------------------------------------------------------------------
 Mon Nov 21 13:24:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Skip rpmlint error python-tests-in-package.
