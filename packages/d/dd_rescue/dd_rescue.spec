@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rescue
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -134,7 +134,7 @@ OPT_FLAGS="%{optflags}"
 %make_install RPM_OPT_FLAGS="%{optflags}" INSTALLDIR=%{buildroot}/%{_bindir} LIB=%{_lib} LIBDIR=%{_libdir} \
     INSTASROOT= INSTALLFLAGS=
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/bin
 ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
 %endif
@@ -146,7 +146,7 @@ ln -sf %{_bindir}/dd_rescue %{buildroot}/bin
 %doc README.dd_rescue TODO
 %license COPYING
 %{_bindir}/dd_rescue
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/dd_rescue
 %endif
 %{_libdir}/libddr_hash.so

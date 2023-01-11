@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:31:33 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Jul 26 19:55:25 CEST 2022 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.12:
