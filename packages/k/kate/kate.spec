@@ -33,6 +33,8 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Defuse-root-block.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-settings-saving-regression-in-CTags-plugin.patch
 BuildRequires:  libgit2-devel
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Config)

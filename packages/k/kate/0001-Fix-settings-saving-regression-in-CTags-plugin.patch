@@ -1,0 +1,42 @@
+From 526d04db82d4b65c61b4b0f607c4b2ffa8a02f3d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?K=C3=A5re=20S=C3=A4rs?= <kare.sars@iki.fi>
+Date: Sun, 8 Jan 2023 22:11:24 +0200
+Subject: [PATCH] Fix settings saving regression in CTags plugin.
+
+BUG: 463993
+FIXED-IN: 22.12.2
+---
+ addons/kate-ctags/kate_ctags_plugin.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/addons/kate-ctags/kate_ctags_plugin.cpp b/addons/kate-ctags/kate_ctags_plugin.cpp
+index c878f5515..fc655bd01 100644
+--- a/addons/kate-ctags/kate_ctags_plugin.cpp
++++ b/addons/kate-ctags/kate_ctags_plugin.cpp
+@@ -73,6 +73,7 @@ KateCTagsConfigPage::KateCTagsConfigPage(QWidget *parent, KateCTagsPlugin *plugi
+ {
+     m_confUi.setupUi(this);
+     m_confUi.cmdEdit->setText(DEFAULT_CTAGS_CMD);
++    connect(m_confUi.cmdEdit, &QLineEdit::textEdited, this, &KateCTagsConfigPage::changed);
+ 
+     m_confUi.addButton->setToolTip(i18n("Add a directory to index."));
+     m_confUi.addButton->setIcon(QIcon::fromTheme(QStringLiteral("list-add")));
+@@ -173,6 +174,7 @@ void KateCTagsConfigPage::addGlobalTagTarget()
+     for (int i = 0; i < urls.size(); i++) {
+         if (!listContains(urls[i])) {
+             new QListWidgetItem(urls[i], m_confUi.targetList);
++            Q_EMIT changed();
+         }
+     }
+ }
+@@ -181,6 +183,7 @@ void KateCTagsConfigPage::addGlobalTagTarget()
+ void KateCTagsConfigPage::delGlobalTagTarget()
+ {
+     delete m_confUi.targetList->currentItem();
++    Q_EMIT changed();
+ }
+ 
+ /******************************************************************/
+-- 
+2.39.0
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  9 21:05:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the save button in the ctags configuration
+  (kde#463993, boo#1206984):
+  * 0001-Fix-settings-saving-regression-in-CTags-plugin.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 10:19:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.1
