@@ -137,4 +137,33 @@
   * go#56360 cmd/compile: panic: offset too large (forwarded request 1041233 from jfkw)</comment>
     <requestid>1041235</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b00776362d57f51368ca48651d348c1</srcmd5>
+    <version>1.19.5</version>
+    <time>1673453662</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19.5 (released 2023-01-10) includes fixes to the compiler,
+  the linker, and the crypto/x509, net/http, sync/atomic, and
+  syscall packages.
+  Refs boo#1200441 go1.19 release tracking
+  * go#57706 Misc/cgo: backport needed for dlltool fix
+  * go#57556 crypto/x509: re-allow duplicate attributes in CSRs
+  * go#57444 cmd/link: need to handle new-style LoongArch relocs
+  * go#57427 crypto/x509: Verify on macOS does not return typed errors
+  * go#57345 cmd/compile: the loong64 intrinsic for CompareAndSwapUint32 function needs to sign extend its &quot;old&quot; argument.
+  * go#57339 syscall, internal/poll: accept4-to-accept fallback removal broke Go code on Synology DSM 6.2 ARM devices
+  * go#57214 os: TestLstat failure on Linux Aarch64
+  * go#57212 reflect: sort.SliceStable sorts incorrectly on arm64 with less function created with reflect.MakeFunc and slice of sufficient length
+  * go#57124 sync/atomic: allow linked lists of atomic.Pointer
+  * go#57100 cmd/compile: non-retpoline-compatible errors
+  * go#57058 cmd/go: remove test dependency on gopkg.in service
+  * go#57055 cmd/go: TestScript/version_buildvcs_git_gpg (if enabled) fails on linux longtest builders
+  * go#56983 runtime: failure in TestRaiseException on windows-amd64-2012
+  * go#56834 cmd/link/internal/ppc64: too-far trampoline is reused
+  * go#56770 cmd/compile: walkConvInterface produces broken IR
+  * go#56744 cmd/compile: internal compiler error: missing typecheck
+  * go#56712 net: reenable TestLookupDotsWithRemoteSource and TestLookupGoogleSRV with a different target
+  * go#56154 net/http: bad handling of HEAD requests with a body (forwarded request 1057692 from jfkw)</comment>
+    <requestid>1057694</requestid>
+  </revision>
 </revisionlist>
