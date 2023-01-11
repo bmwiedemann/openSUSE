@@ -181,4 +181,12 @@
     <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
     <requestid>1033112</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1833331b33454a7bfa2778395e1ef6cd</srcmd5>
+    <version>5.15.8+kde0</version>
+    <time>1673444080</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057238</requestid>
+  </revision>
 </revisionlist>
