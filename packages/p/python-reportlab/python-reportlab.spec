@@ -1,7 +1,7 @@
 #
 # spec file for package python-reportlab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %define skip_python2 1
 
 Name:           python-reportlab
-Version:        3.6.7
+Version:        3.6.12
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
@@ -29,14 +28,14 @@ URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
 Patch0:         reportlab-missing-includes.patch
-BuildRequires:  %{python_module Pillow >= 4.0.0}
+BuildRequires:  %{python_module Pillow >= 9.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 4.0.0
+Requires:       python-Pillow >= 9.0.0
 Provides:       python-ReportLab = %{version}
 Obsoletes:      python-ReportLab < %{version}
 %ifpython2
@@ -49,8 +48,7 @@ Provides:       %{oldpython}-ReportLab = %{version}
 The ReportLab Toolkit. An Open Source Python library for generating PDFs and graphics.
 
 %prep
-%setup -q -n reportlab-%{version}
-%autopatch -p1
+%autosetup -p1 -n reportlab-%{version}
 sed -i "1d" src/reportlab/lib/{formatters,fonts,corp,units,pagesizes,__init__,randomtext,logger,normalDate}.py
 sed -i "1d" src/reportlab/graphics/{widgets/table,barcode/test,testdrawings,testshapes}.py # Fix non-executable bits
 
