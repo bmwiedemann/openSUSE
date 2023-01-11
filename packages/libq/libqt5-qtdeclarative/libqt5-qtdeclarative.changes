@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:19:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde22, rebased upstream:
+  * Qml: Don't crash when as-casting to type with errors
+  * Do not copy lookups
+  * deliverSinglePointEventUntilAccepted(): skip items that aren't shown
+  * V4 Lookup: Do not leak property caches
+  * Fix glitches in big AnimatedSprite animations
+  * HoverHandler: allow cursorShape binding before parentItem is set
+  * QtTest: use delay properly in mouseWheel()
+  * Set OpenGL state after invoking custom rendering
+  * Ensure that HoverHandler isn't hovered after HoverLeave to parent item
+  * Fix missing glyphs when changing distance field parameters
+  * Document that the vendorext property is deprecated
+  * tst_qqmlbinding: Avoid event loop flakyness on Ubuntu 20.04
+  * Unset the QQmlAnimationTimer pointer from unregistered jobs
+  * Reset the timer of all controlled animations upon timer destruction
+  * Don't create an animation timer when destroying the animation job
+  * Disable JIT for arm64 when doing macOS universal builds
+  * Blacklist and fix failing tests on ARM macOS
+  * qmake/vcxproj: Fix qmltypes files being displayed at project root
+  * Use resize instead of shrink when clearing upload pools
+  * Handle function as default arguments in toplevel functions
+  * Do not crash on self-assignment of QQmlProperty
+  * Do not resolve containing types of inline components too early
+  * sg: Drop internal pool allocs upon QQuickWindow::releaseResources
+  * Fix distorted subpixel text for non-RHI code path
+  * QQuickTextInput: fix cursor positioning for QInputMethodEvent
+- Commits dropped by the rebase:
+  * Fix Flickable with QTBUG-56075 patch applied
+- Update qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch with contents from
+  https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/32
+
+-------------------------------------------------------------------
 Thu Dec 15 12:21:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde25:

@@ -1,6 +1,6 @@
-From b82b1954fd0ab4e1c8aff38dac7310f6c4f144e0 Mon Sep 17 00:00:00 2001
-From: David Redondo <qt@david-redondo.de>
-Date: Mon, 27 Jun 2022 15:31:10 +0200
+From 97e530bbc0066cf9f60891b99a5a974e4c3ced85 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Wed, 13 May 2020 11:04:23 +0200
 Subject: [PATCH] QQuickItemView: Fix max(X/Y)Extent()
 
 QQuickFlickable maxXExtent() and maxYExtent() return the amount of space
@@ -9,26 +9,23 @@ returned width() if vertical and height() if horizontal. In these cases
 just defer to the QQuickFlickable base implementation like minXExtent()
 and minYExtent() already do.
 
-This change also adds tst_qquicklistview2 to speed up development.
-tst_QQuickListView is almost 9000 lines long, and compiling it
-is slow. In addition, a similar approach (creating a second test to
-avoid the slowness of a massive one) already exists for QQuickItem
-tests.
-
 Fixes: QTBUG-83890
-Pick-to: 5.15
+Pick-to: 6.2 6.4
+Change-Id: I7f4060c2f46ae07611bedceca0d322c5f7f6affb
+Reviewed-by: Richard Moe Gustavsen <richard.gustavsen@qt.io>
+Reviewed-by: Shawn Rutledge <shawn.rutledge@qt.io>
+(cherry picked from commit 99047ae219ff6689da38cc988a25030fece655da)
 ---
- src/quick/items/qquickitemview.cpp            |   4 +-
- .../qquicklistview/tst_qquicklistview.cpp     |   5 +
- .../quick/qquicklistview2/data/maxXExtent.qml |  54 +++++++++
- .../quick/qquicklistview2/data/maxYExtent.qml |  55 +++++++++
- .../quick/qquicklistview2/qquicklistview2.pro |  12 ++
- .../qquicklistview2/tst_qquicklistview2.cpp   | 114 ++++++++++++++++++
- tests/auto/quick/quick.pro                    |   1 +
- 7 files changed, 243 insertions(+), 2 deletions(-)
+ src/quick/items/qquickitemview.cpp            |  4 +-
+ .../qquickgridview/tst_qquickgridview.cpp     | 29 +++---
+ .../qquicklistview/tst_qquicklistview.cpp     | 14 ++-
+ .../quick/qquicklistview2/data/maxXExtent.qml | 29 ++++++
+ .../quick/qquicklistview2/data/maxYExtent.qml | 30 ++++++
+ .../qquicklistview2/tst_qquicklistview2.cpp   | 94 +++++++++++++++++++
+ tests/auto/quick/quick.pro                    |  1 +
+ 7 files changed, 174 insertions(+), 27 deletions(-)
  create mode 100644 tests/auto/quick/qquicklistview2/data/maxXExtent.qml
  create mode 100644 tests/auto/quick/qquicklistview2/data/maxYExtent.qml
- create mode 100644 tests/auto/quick/qquicklistview2/qquicklistview2.pro
  create mode 100644 tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
 
 diff --git a/src/quick/items/qquickitemview.cpp b/src/quick/items/qquickitemview.cpp
@@ -53,71 +50,121 @@ index f8ad168a17..a797bec4ef 100644
  
      if (d->hData.maxExtentDirty) {
          d->maxExtent = d->maxExtentForAxis(d->hData, true);
+diff --git a/tests/auto/quick/qquickgridview/tst_qquickgridview.cpp b/tests/auto/quick/qquickgridview/tst_qquickgridview.cpp
+index 46e3457d6e..7f79968440 100644
+--- a/tests/auto/quick/qquickgridview/tst_qquickgridview.cpp
++++ b/tests/auto/quick/qquickgridview/tst_qquickgridview.cpp
+@@ -3543,51 +3543,46 @@ void tst_QQuickGridView::extents_data()
+ 
+     QTest::newRow("LeftToRight, LtR, TtB")
+             << QQuickGridView::FlowLeftToRight << Qt::LeftToRight << QQuickItemView::TopToBottom
+-            << QPointF(0, -20) << QPointF(0, 0)
+-            << QPointF(0, 20) << QPointF(240, 20)
++            << QPointF(0, -20) << QPointF(0, 0) << QPointF(0, 20) << QPointF(0, 20)
+             << QPointF(0, -20) << QPointF(0, -20);
+ 
+     QTest::newRow("LeftToRight, RtL, TtB")
+             << QQuickGridView::FlowLeftToRight << Qt::RightToLeft << QQuickItemView::TopToBottom
+-            << QPointF(0, -20) << QPointF(0, 0)
+-            << QPointF(0, 20) << QPointF(240, 20)
++            << QPointF(0, -20) << QPointF(0, 0) << QPointF(0, 20) << QPointF(0, 20)
+             << QPointF(0, -20) << QPointF(0, -20);
+ 
+     QTest::newRow("LeftToRight, LtR, BtT")
+             << QQuickGridView::FlowLeftToRight << Qt::LeftToRight << QQuickItemView::BottomToTop
+-            << QPointF(0, 0) << QPointF(0, -30)
+-            << QPointF(0, 320 - 20) << QPointF(240, 320 - 20)  // content flow is reversed
++            << QPointF(0, 0) << QPointF(0, -30) << QPointF(0, 320 - 20)
++            << QPointF(0, 320 - 20) // content flow is reversed
+             << QPointF(0, -30) << QPointF(0, (-60.0 * 10) - 30);
+ 
+     QTest::newRow("LeftToRight, RtL, BtT")
+             << QQuickGridView::FlowLeftToRight << Qt::RightToLeft << QQuickItemView::BottomToTop
+-            << QPointF(0, 0) << QPointF(0, -30)
+-            << QPointF(0, 320 - 20) << QPointF(240, 320 - 20)  // content flow is reversed
++            << QPointF(0, 0) << QPointF(0, -30) << QPointF(0, 320 - 20)
++            << QPointF(0, 320 - 20) // content flow is reversed
+             << QPointF(0, -30) << QPointF(0, (-60.0 * 10) - 30);
+ 
+-
+     QTest::newRow("TopToBottom, LtR, TtB")
+             << QQuickGridView::FlowTopToBottom << Qt::LeftToRight << QQuickItemView::TopToBottom
+-            << QPointF(-20, 0) << QPointF(0, 0)
+-            << QPointF(20, 0) << QPointF(20, 320)
++            << QPointF(-20, 0) << QPointF(0, 0) << QPointF(20, 0) << QPointF(20, 0)
+             << QPointF(-20, 0) << QPointF(-20, 0);
+ 
+     QTest::newRow("TopToBottom, RtL, TtB")
+             << QQuickGridView::FlowTopToBottom << Qt::RightToLeft << QQuickItemView::TopToBottom
+-            << QPointF(0, 0) << QPointF(-30, 0)
+-            << QPointF(240 - 20, 0) << QPointF(240 - 20, 320)  // content flow is reversed
++            << QPointF(0, 0) << QPointF(-30, 0) << QPointF(240 - 20, 0)
++            << QPointF(240 - 20, 0) // content flow is reversed
+             << QPointF(-30, 0) << QPointF((-80.0 * 6) - 30, 0);
+ 
+     QTest::newRow("TopToBottom, LtR, BtT")
+             << QQuickGridView::FlowTopToBottom << Qt::LeftToRight << QQuickItemView::BottomToTop
+-            << QPointF(-20, -320) << QPointF(0, -320)
+-            << QPointF(20, 0) << QPointF(20, 320)
++            << QPointF(-20, -320) << QPointF(0, -320) << QPointF(20, 0) << QPointF(20, 0)
+             << QPointF(-20, 0) << QPointF(-20, 0);
+ 
+     QTest::newRow("TopToBottom, RtL, BtT")
+             << QQuickGridView::FlowTopToBottom << Qt::RightToLeft << QQuickItemView::BottomToTop
+-            << QPointF(0, -320) << QPointF(-30, -320)
+-            << QPointF(240 - 20, 0) << QPointF(240 - 20, 320)  // content flow is reversed
++            << QPointF(0, -320) << QPointF(-30, -320) << QPointF(240 - 20, 0)
++            << QPointF(240 - 20, 0) // content flow is reversed
+             << QPointF(-30, 0) << QPointF((-80.0 * 6) - 30, 0);
+ }
+ 
 diff --git a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-index b564fd3ba5..5f0aeb42f7 100644
+index d3deb513d0..2de6f5435c 100644
 --- a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
 +++ b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-@@ -73,6 +73,8 @@ public:
-     tst_QQuickListView();
+@@ -4278,26 +4278,24 @@ void tst_QQuickListView::extents_data()
  
- private slots:
-+    // WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
-+
-     void init();
-     void cleanupTestCase();
-     // Test QAbstractItemModel model types
-@@ -303,6 +305,8 @@ private slots:
-     void dragDelegateWithMouseArea_data();
-     void isCurrentItem_DelegateModel();
+     QTest::newRow("Vertical, TopToBottom")
+             << QQuickListView::Vertical << Qt::LeftToRight << QQuickItemView::TopToBottom
+-            << QPointF(0, -20) << QPointF(0, 0)
+-            << QPointF(0, 20) << QPointF(240, 20)
++            << QPointF(0, -20) << QPointF(0, 0) << QPointF(0, 20) << QPointF(0, 20)
+             << QPointF(0, -20) << QPointF(0, -20) << QPointF(0, -20);
  
-+    // WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
-+
- private:
-     template <class T> void items(const QUrl &source);
-     template <class T> void changed(const QUrl &source);
-@@ -10200,6 +10204,7 @@ void tst_QQuickListView::dragDelegateWithMouseArea_data()
-         QTest::newRow(enumValueName) << static_cast<QQuickItemView::LayoutDirection>(layDir);
-     }
+     QTest::newRow("Vertical, BottomToTop")
+             << QQuickListView::Vertical << Qt::LeftToRight << QQuickItemView::BottomToTop
+-            << QPointF(0, 0) << QPointF(0, -30)
+-            << QPointF(0, 320 - 20) << QPointF(240, 320 - 20)  // content flow is reversed
++            << QPointF(0, 0) << QPointF(0, -30) << QPointF(0, 320 - 20)
++            << QPointF(0, 320 - 20) // content flow is reversed
+             << QPointF(0, -30) << QPointF(0, (-30.0 * 3) - 30) << QPointF(0, (-30.0 * 30) - 30);
+ 
+     QTest::newRow("Horizontal, LeftToRight")
+             << QQuickListView::Horizontal << Qt::LeftToRight << QQuickItemView::TopToBottom
+-            << QPointF(-20, 0) << QPointF(0, 0)
+-            << QPointF(20, 0) << QPointF(20, 320)
++            << QPointF(-20, 0) << QPointF(0, 0) << QPointF(20, 0) << QPointF(20, 0)
+             << QPointF(-20, 0) << QPointF(-20, 0) << QPointF(-20, 0);
+ 
+     QTest::newRow("Horizontal, RightToLeft")
+             << QQuickListView::Horizontal << Qt::RightToLeft << QQuickItemView::TopToBottom
+-            << QPointF(0, 0) << QPointF(-30, 0)
+-            << QPointF(240 - 20, 0) << QPointF(240 - 20, 320)  // content flow is reversed
++            << QPointF(0, 0) << QPointF(-30, 0) << QPointF(240 - 20, 0)
++            << QPointF(240 - 20, 0) // content flow is reversed
+             << QPointF(-30, 0) << QPointF((-240.0 * 3) - 30, 0) << QPointF((-240.0 * 30) - 30, 0);
  }
-+// WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
- 
- QTEST_MAIN(tst_QQuickListView)
  
 diff --git a/tests/auto/quick/qquicklistview2/data/maxXExtent.qml b/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
 new file mode 100644
-index 0000000000..3a50ae9edd
+index 0000000000..b9e88cfc9e
 --- /dev/null
 +++ b/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
-@@ -0,0 +1,54 @@
-+/****************************************************************************
-+**
-+** Copyright (C) 2020 The Qt Company Ltd.
-+** Contact: https://www.qt.io/licensing/
-+**
-+** This file is part of the test suite of the Qt Toolkit.
-+**
-+** $QT_BEGIN_LICENSE:GPL-EXCEPT$
-+** Commercial License Usage
-+** Licensees holding valid commercial Qt licenses may use this file in
-+** accordance with the commercial license agreement provided with the
-+** Software or, alternatively, in accordance with the terms contained in
-+** a written agreement between you and The Qt Company. For licensing terms
-+** and conditions see https://www.qt.io/terms-conditions. For further
-+** information use the contact form at https://www.qt.io/contact-us.
-+**
-+** GNU General Public License Usage
-+** Alternatively, this file may be used under the terms of the GNU
-+** General Public License version 3 as published by the Free Software
-+** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
-+** included in the packaging of this file. Please review the following
-+** information to ensure the GNU General Public License requirements will
-+** be met: https://www.gnu.org/licenses/gpl-3.0.html.
-+**
-+** $QT_END_LICENSE$
-+**
-+****************************************************************************/
+@@ -0,0 +1,29 @@
++// Copyright (C) 2022 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
 +
-+import QtQuick 2.15
++import QtQuick
 +
 +Item {
 +    property alias view: view
@@ -145,39 +192,14 @@ index 0000000000..3a50ae9edd
 +}
 diff --git a/tests/auto/quick/qquicklistview2/data/maxYExtent.qml b/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
 new file mode 100644
-index 0000000000..2c73092aad
+index 0000000000..3be8948691
 --- /dev/null
 +++ b/tests/auto/quick/qquicklistview2/data/maxYExtent.qml
-@@ -0,0 +1,55 @@
-+/****************************************************************************
-+**
-+** Copyright (C) 2020 The Qt Company Ltd.
-+** Contact: https://www.qt.io/licensing/
-+**
-+** This file is part of the test suite of the Qt Toolkit.
-+**
-+** $QT_BEGIN_LICENSE:GPL-EXCEPT$
-+** Commercial License Usage
-+** Licensees holding valid commercial Qt licenses may use this file in
-+** accordance with the commercial license agreement provided with the
-+** Software or, alternatively, in accordance with the terms contained in
-+** a written agreement between you and The Qt Company. For licensing terms
-+** and conditions see https://www.qt.io/terms-conditions. For further
-+** information use the contact form at https://www.qt.io/contact-us.
-+**
-+** GNU General Public License Usage
-+** Alternatively, this file may be used under the terms of the GNU
-+** General Public License version 3 as published by the Free Software
-+** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
-+** included in the packaging of this file. Please review the following
-+** information to ensure the GNU General Public License requirements will
-+** be met: https://www.gnu.org/licenses/gpl-3.0.html.
-+**
-+** $QT_END_LICENSE$
-+**
-+****************************************************************************/
+@@ -0,0 +1,30 @@
++// Copyright (C) 2022 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
 +
-+import QtQuick 2.15
++import QtQuick
 +
 +Item {
 +    property alias view: view
@@ -204,73 +226,35 @@ index 0000000000..2c73092aad
 +        }
 +    }
 +}
-diff --git a/tests/auto/quick/qquicklistview2/qquicklistview2.pro b/tests/auto/quick/qquicklistview2/qquicklistview2.pro
-new file mode 100644
-index 0000000000..1128c242c7
---- /dev/null
-+++ b/tests/auto/quick/qquicklistview2/qquicklistview2.pro
-@@ -0,0 +1,12 @@
-+CONFIG += testcase
-+TARGET = tst_qquicklistview2
-+macos:CONFIG -= app_bundle
-+
-+SOURCES += tst_qquicklistview2.cpp
-+
-+include (../../shared/util.pri)
-+include (../shared/util.pri)
-+
-+TESTDATA = data/*
-+
-+QT += core-private gui-private qml-private quick-private testlib qmltest
 diff --git a/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp b/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
 new file mode 100644
-index 0000000000..916c8730f4
+index 0000000000..40b440d9cd
 --- /dev/null
 +++ b/tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
-@@ -0,0 +1,114 @@
-+/****************************************************************************
-+**
-+** Copyright (C) 2020 The Qt Company Ltd.
-+** Contact: https://www.qt.io/licensing/
-+**
-+** This file is part of the test suite of the Qt Toolkit.
-+**
-+** $QT_BEGIN_LICENSE:GPL-EXCEPT$
-+** Commercial License Usage
-+** Licensees holding valid commercial Qt licenses may use this file in
-+** accordance with the commercial license agreement provided with the
-+** Software or, alternatively, in accordance with the terms contained in
-+** a written agreement between you and The Qt Company. For licensing terms
-+** and conditions see https://www.qt.io/terms-conditions. For further
-+** information use the contact form at https://www.qt.io/contact-us.
-+**
-+** GNU General Public License Usage
-+** Alternatively, this file may be used under the terms of the GNU
-+** General Public License version 3 as published by the Free Software
-+** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
-+** included in the packaging of this file. Please review the following
-+** information to ensure the GNU General Public License requirements will
-+** be met: https://www.gnu.org/licenses/gpl-3.0.html.
-+**
-+** $QT_END_LICENSE$
-+**
-+****************************************************************************/
+@@ -0,0 +1,94 @@
++// Copyright (C) 2021 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
 +
 +#include <QtTest/QtTest>
-+#include <QtQuickTest/QtQuickTest>
-+#include <QtQml/qqmlapplicationengine.h>
 +#include <QtQuick/qquickview.h>
++#include <QtQuick/private/qquickitemview_p_p.h>
 +#include <QtQuick/private/qquicklistview_p.h>
++#include <QtQuickTest/QtQuickTest>
++#include <QStringListModel>
++#include <QQmlApplicationEngine>
 +
-+#include "../../shared/util.h"
-+#include "../shared/viewtestutil.h"
++#include <QtQuickTestUtils/private/viewtestutils_p.h>
++#include <QtQuickTestUtils/private/visualtestutils_p.h>
++#include <QtQuickTestUtils/private/qmlutils_p.h>
 +
-+using namespace QQuickViewTestUtil;
++Q_LOGGING_CATEGORY(lcTests, "qt.quick.tests")
++
++using namespace QQuickViewTestUtils;
++using namespace QQuickVisualTestUtils;
 +
 +class tst_QQuickListView2 : public QQmlDataTest
 +{
 +    Q_OBJECT
-+
 +public:
 +    tst_QQuickListView2();
 +
@@ -280,6 +264,7 @@ index 0000000000..916c8730f4
 +};
 +
 +tst_QQuickListView2::tst_QQuickListView2()
++    : QQmlDataTest(QT_QMLTEST_DATADIR)
 +{
 +}
 +
@@ -313,7 +298,6 @@ index 0000000000..916c8730f4
 +void tst_QQuickListView2::maxExtent_data()
 +{
 +    QTest::addColumn<QString>("qmlFilePath");
-+
 +    QTest::addRow("maxXExtent") << "maxXExtent.qml";
 +    QTest::addRow("maxYExtent") << "maxYExtent.qml";
 +}
@@ -355,5 +339,5 @@ index 45bcf8a9ce..00f7d64d1e 100644
      qquickloader \
      qquickmousearea \
 -- 
-2.38.0
+GitLab
 

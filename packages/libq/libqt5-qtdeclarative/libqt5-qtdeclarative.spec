@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQtQuick5
 %define base_name libqt5
-%define real_version 5.15.7
-%define so_version 5.15.7
+%define real_version 5.15.8
+%define so_version 5.15.8
 %define tar_version qtdeclarative-everywhere-src-%{version}
 Name:           libqt5-qtdeclarative
-Version:        5.15.7+kde25
+Version:        5.15.8+kde22
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -33,6 +33,7 @@ Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
 Patch100:       sse2_nojit.patch
+# https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/32
 Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{real_version}
