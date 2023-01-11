@@ -1,11 +1,9 @@
-Index: tiff-4.0.3/tools/tiff2pdf.c
-===================================================================
---- tiff-4.0.3.orig/tools/tiff2pdf.c
-+++ tiff-4.0.3/tools/tiff2pdf.c
-@@ -1264,6 +1264,15 @@ void t2p_read_tiff_data(T2P* t2p, TIFF*
-                 return;
- 
-         }
+--- tiff-4.5.0/tools/tiff2pdf.c.orig	2023-01-04 09:52:13.665734351 +0100
++++ tiff-4.5.0/tools/tiff2pdf.c	2023-01-04 09:53:13.922053942 +0100
+@@ -1435,6 +1435,15 @@
+         t2p->t2p_error = T2P_ERR_ERROR;
+         return;
+     }
 +	if(t2p->tiff_compression != COMPRESSION_LZW && 
 +	   t2p->tiff_compression != COMPRESSION_NONE){
 +		TIFFWarning(
@@ -15,6 +13,6 @@ Index: tiff-4.0.3/tools/tiff2pdf.c
 +			  "Consider to use tiffcp(1) to change compress algorithm first.",
 +			  TIFFFileName(input)    );
 +	}
-         if( TIFFIsCODECConfigured(t2p->tiff_compression) == 0){
- 		TIFFError(
- 			TIFF2PDF_MODULE, 
+     if (TIFFIsCODECConfigured(t2p->tiff_compression) == 0)
+     {
+         TIFFError(TIFF2PDF_MODULE,

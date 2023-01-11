@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jan  4 08:48:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+  * tdir_t type updated to uint32_t. This type is now used for the return
+    value of TIFFCurrentDirectory() and TIFFNumberOfDirectories(), and as
+    the argument of TIFFSetDirectory() and TIFFUnlinkDirectory()
+  * Addition of an open option concept with the new functions TIFFOpenExt(),
+    TIFFOpenWExt(), TIFFFdOpenExt(), TIFFClientOpenExt(), TIFFOpenOptionsAlloc(),
+    TIFFOpenOptionsFree()
+  * Leveraging above mentioned open option concept, addition of a new capability
+    to limit the size of a single dynamic memory allocation done by the library
+    with TIFFOpenOptionsSetMaxSingleMemAlloc()
+  * Related to IFD-Loop detection refactoring, the number of IFDs that libtiff
+    can browse through has been extended from 65535 to 1048576. This value is
+    a build-time setting that can be configured with CMake's TIFF_MAX_DIR_COUNT
+    variable or autoconf's --with-max-dir-count option.
+  * Whole code base reformatting of .c/.h files using new .clang-format format
+  * Documentation changed from static HTML and man pages to
+    Restructured Text (rst). HTML and man pages are now build artifacts.
+  * SONAME version bumped to 6 due to changes in symbol versioning.
+  * autoconf/cmake: detect (not yet released) libjpeg-turbo 2.2 to take into
+    its capability of handling both 8-bit JPEG and 12-bit JPEG in a single build.
+  * autoconf/cmake: detect sphinx-build to build HTML and man pages
+  * CMakeLists.txt: fix warning with -Wdev
+  * CMake: correctly set default value of 'lzma' option when liblzma is detected 
+  * CMake: Moved linking of CMath::CMath into CMath_LIBRARY check.
+  * Fix CMake build to be compatible with FetchContent.
+  * cmake: Correct duplicate definition of _CRT_SECURE_NO_WARNINGS 
+  * cmake: Fixes for Visual Studio 2022.
+  * Adds Requires.private generation so that pkg-config can correctly find
+    the dependencies of libtiff.
+  * Fix dependency on libm on Android
+  * Fix build in tif_lzw.c
+  * CMake: Add options for disabling tools, tests, contrib and docs.
+  * tiffcrop: Fix memory allocation to require a larger buffer (CVE-2022-3570, CVE-2022-3598)
+  * tiffcrop: disable incompatibility of -Z, -X, -Y, -z options with any PAGE_MODE_x option
+    (CVE-2022-3627, CVE-2022-3597, CVE-2022-3626)
+  * tiffcrop: fix floating-point exception (CVE-2022-2056, CVE-2022-2057, CVE-2022-2058)
+  * _TIFFCheckFieldIsValidForCodec(): return FALSE when passed a codec-specific tag
+    and the codec is not configured (CVE-2022-34526)
+  * Revised handling of TIFFTAG_INKNAMES and related TIFFTAG_NUMBEROFINKS value (CVE-2022-3599)
+  * tiffcrop: -S option mutually exclusive (CVE-2022-2519, CVE-2022-2520, CVE-2022-2521)
+- Drop tiff-CVE-2022-3597,CVE-2022-3626,CVE-2022-3627.patch
+- Drop tiff-CVE-2022-34526.patch
+- Drop tiff-CVE-2022-3599.patch
+- Drop tiff-CVE-2022-3598.patch
+- Drop tiff-CVE-2022-3970.patch
+- Drop tiff-CVE-2022-2519,CVE-2022-2520,CVE-2022-2521.patch
+- Drop tiff-CVE-2022-2056,CVE-2022-2057,CVE-2022-2058.patch
+
+-------------------------------------------------------------------
 Mon Nov 14 11:54:03 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update:

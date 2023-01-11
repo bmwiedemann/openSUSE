@@ -848,4 +848,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2022-3598.patch</comment>
     <requestid>1035628</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>0ad02f87ab686393b492c65754062e2c</srcmd5>
+    <version>4.5.0</version>
+    <time>1673443976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057209</requestid>
+  </revision>
 </revisionlist>

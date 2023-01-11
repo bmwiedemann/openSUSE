@@ -1,13 +1,11 @@
-Index: tiff-4.0.1/libtiff/tiffiop.h
-===================================================================
---- tiff-4.0.1.orig/libtiff/tiffiop.h
-+++ tiff-4.0.1/libtiff/tiffiop.h
-@@ -213,7 +213,7 @@ struct tiff {
- #define TIFFWriteFile(tif, buf, size) \
- 	((*(tif)->tif_writeproc)((tif)->tif_clientdata,(buf),(size)))
- #define TIFFSeekFile(tif, off, whence) \
--	((*(tif)->tif_seekproc)((tif)->tif_clientdata,(off),(whence)))
-+	((tif)->tif_seekproc?((*(tif)->tif_seekproc)((tif)->tif_clientdata,(toff_t)(off),whence)):0)
- #define TIFFCloseFile(tif) \
- 	((*(tif)->tif_closeproc)((tif)->tif_clientdata))
- #define TIFFGetFileSize(tif) \
+--- tiff-4.5.0/libtiff/tiffiop.h.orig	2023-01-04 09:58:24.947703675 +0100
++++ tiff-4.5.0/libtiff/tiffiop.h	2023-01-04 09:57:09.507303516 +0100
+@@ -257,7 +257,7 @@
+ #define TIFFWriteFile(tif, buf, size)                                          \
+     ((*(tif)->tif_writeproc)((tif)->tif_clientdata, (buf), (size)))
+ #define TIFFSeekFile(tif, off, whence)                                         \
+-    ((*(tif)->tif_seekproc)((tif)->tif_clientdata, (off), (whence)))
++  	((tif)->tif_seekproc?((*(tif)->tif_seekproc)((tif)->tif_clientdata,(toff_t)(off),whence)):0)
+ #define TIFFCloseFile(tif) ((*(tif)->tif_closeproc)((tif)->tif_clientdata))
+ #define TIFFGetFileSize(tif) ((*(tif)->tif_sizeproc)((tif)->tif_clientdata))
+ #define TIFFMapFileContents(tif, paddr, psize)                                 \
