@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,7 @@ Libcryptui is a library used for prompting for PGP keys.
 
 %prep
 %setup -q
-sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2 2.3:" configure
+sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2 2.3 2.4:" configure
 
 %build
 %configure \
