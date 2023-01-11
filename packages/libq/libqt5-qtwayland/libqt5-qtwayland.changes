@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:24:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde57, rebased upstream:
+  * client: Avoid protocol error with invalid min/max size
+  * Fixes the build on CentOS
+  * Client: Handle zwp_primary_selection_device_manager_v1 global removal
+  * Fix frame sync related to unprotected multithread access
+  * Client: Bump wl_output version
+  * Client: Call wl_output_release() upon QWaylandScreen destruction
+  * Client: Add F_SEAL_SHRINK seal to shm backing file
+  * Revert "Client: Ensure that wl_surface lives as long as qtquick render thread needs it"
+  * Keep toplevel windows in the top left corner of the screen
+  * Client: Ensure that wl_surface lives as long as qtquick render thread needs it
+  * Use a correct serial for xdg_surface.ack_configure
+  * tst_seatv4: fix compilation with GCC/C++20
+  * tst_seatv4: fix deprecated implicit capture of this by [=]
+
+-------------------------------------------------------------------
 Thu Nov  3 08:57:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde49, rebased upstream:
