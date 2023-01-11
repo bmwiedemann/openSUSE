@@ -1,7 +1,7 @@
 #
 # spec file for package lutris
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
-Requires:       python3-magic
 Requires:       python3-requests
 Requires:       xrandr
 Recommends:     python3-distro

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 11 10:39:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require python3-magic: lutris has its own, intree version
+  of magic.py.
+
+-------------------------------------------------------------------
 Fri Dec  2 09:04:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.12:
