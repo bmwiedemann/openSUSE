@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        3.37.1
+Version:        4.0.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -77,9 +77,6 @@ Source1:        syslog-ng.sysconfig
 Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
-Patch0:         syslog-ng-nojavah.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -101,7 +98,6 @@ Requires(pre):  syslog-service >= 2.0
 Conflicts:      syslog
 Provides:       syslog
 Provides:       sysvinit(syslog)
-Obsoletes:      syslog-ng-json
 %if %{with mqtt}
 BuildRequires:  libpaho-mqtt-devel
 %endif
@@ -129,7 +125,25 @@ BuildRequires:  libdbi-devel
 BuildRequires:  java-devel >= 1.8
 %endif
 %if %{with python}
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-cachetools
+BuildRequires:  python3-certifi
+BuildRequires:  python3-charset-normalizer
 BuildRequires:  python3-devel
+BuildRequires:  python3-google-auth
+BuildRequires:  python3-idna
+BuildRequires:  python3-kubernetes
+BuildRequires:  python3-oauthlib
+BuildRequires:  python3-pip
+BuildRequires:  python3-pyasn1
+BuildRequires:  python3-pyasn1-modules
+BuildRequires:  python3-python-dateutil
+BuildRequires:  python3-requests
+BuildRequires:  python3-requests-oauthlib
+BuildRequires:  python3-rsa
+BuildRequires:  python3-six
+BuildRequires:  python3-urllib3
+BuildRequires:  python3-websocket-client
 %endif
 
 %description
@@ -148,11 +162,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_37-0
+%package -n libevtlog-4_0-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_37-0
+%description -n libevtlog-4_0-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -220,6 +234,21 @@ logging to a redis destination.
 Summary:        Python destination support for syslog-ng
 Group:          System/Daemons
 Requires:       %{name} = %{version}
+Requires:       python3-PyYAML
+Requires:       python3-cachetools
+Requires:       python3-certifi
+Requires:       python3-charset-normalizer
+Requires:       python3-google-auth
+Requires:       python3-idna
+Requires:       python3-kubernetes
+Requires:       python3-pip
+Requires:       python3-pyasn1
+Requires:       python3-pyasn1-modules
+Requires:       python3-python-dateutil
+Requires:       python3-requests
+Requires:       python3-rsa
+Requires:       python3-six
+Requires:       python3-websocket-client
 
 %description python
 This package provides Python destination support for syslog-ng.
@@ -258,7 +287,6 @@ This package provides MQTT support for syslog-ng
 
 %prep
 %setup -q -n syslog-ng-%{version}
-%patch0 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
@@ -281,7 +309,7 @@ done
 # touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build
-autoreconf -fi
+#autoreconf -fi
 ##
 ## build ####################################################
 ##
@@ -340,6 +368,7 @@ export AM_YFLAGS=-d
 %if %{with python}
 	--enable-python				\
 	--with-python=%{py_ver}			\
+        --with-python-packages=system           \
 %else
 	--disable-python			\
 %endif
@@ -476,8 +505,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_37-0 -p /sbin/ldconfig
-%postun -n libevtlog-3_37-0 -p /sbin/ldconfig
+%post -n libevtlog-4_0-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_0-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -500,6 +529,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_bindir}/slogencrypt
 %attr(755,root,root) %{_bindir}/slogkey
 %attr(755,root,root) %{_bindir}/slogverify
+%attr(755,root,root) %{_bindir}/syslog-ng-update-virtualenv
 %{_mandir}/man5/syslog-ng.conf.5%{?ext_man}
 %{_mandir}/man8/syslog-ng.8%{?ext_man}
 %{_mandir}/man1/pdbtool.1%{?ext_man}
@@ -550,8 +580,8 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/cee/
 %dir %{_datadir}/syslog-ng/include/scl/discord/
 %dir %{_datadir}/syslog-ng/include/scl/fortigate/
-%dir %{_datadir}/syslog-ng/include/scl/kubernetes/
 %dir %{_datadir}/syslog-ng/include/scl/mariadb/
+%dir %{_datadir}/syslog-ng/include/scl/python/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -651,11 +681,11 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/cee/adapter.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/discord/discord.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/fortigate/fortigate.conf
-%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/kubernetes/kubernetes.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/mariadb/audit.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/python/python-modules.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_37-0
+%files -n libevtlog-4_0-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -706,10 +736,16 @@ chmod 640 "${additional_sockets#/}"
 %if %{with python}
 %files python
 %attr(755,root,root) %{_libdir}/syslog-ng/libmod-python.so
+%defattr(-,root,root)
 %{_libdir}/syslog-ng/python/syslogng-1.0-py%{py_ver}.egg-info
 %dir %{_libdir}/syslog-ng/python
 %dir %{_libdir}/syslog-ng/python/syslogng
+%dir %{_libdir}/syslog-ng/python/syslogng/debuggercli
 %{_libdir}/syslog-ng/python/syslogng/*
+%{_libdir}/syslog-ng/python/syslogng/debuggercli/*
+%dir %{_sysconfdir}/syslog-ng/python/
+%{_sysconfdir}/syslog-ng/python/README.md
+%{_libdir}/syslog-ng/python/requirements.txt
 
 %endif
 

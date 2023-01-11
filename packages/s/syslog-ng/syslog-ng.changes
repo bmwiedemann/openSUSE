@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 11 10:26:07 UTC 2023 - peter czanik <peter@czanik.hu>
+
+- update to 4.0.1 
+- remove obsolate syslog-ng-nojavah.patch together with
+  autotools dependencies
+- add dependencies for Python modules
+- remove obsolate Obsolates line
+- remove Kubernetes config (became a Python module)
+
+-------------------------------------------------------------------
 Tue Dec 27 13:21:32 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
