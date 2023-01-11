@@ -1,12 +1,12 @@
 <services>
   <service name="obs_scm" mode="disabled">
    <param name="changesgenerate">enable</param>
-   <param name="versionformat">5.15.7+kde@TAG_OFFSET@</param>
+   <param name="versionformat">5.15.8+kde@TAG_OFFSET@</param>
    <param name="url">https://invent.kde.org/qt/qt/qtnetworkauth.git</param>
    <param name="scm">git</param>
    <param name="filename">qtnetworkauth-everywhere-src</param>
    <param name="revision">kde/5.15</param>
-   <param name="parent-tag">v5.15.7-lts-lgpl</param>
+   <param name="parent-tag">v5.15.8-lts-lgpl</param>
    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>

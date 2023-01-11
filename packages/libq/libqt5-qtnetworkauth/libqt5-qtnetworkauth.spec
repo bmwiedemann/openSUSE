@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5NetworkAuth5
 %define base_name libqt5
-%define real_version 5.15.7
-%define so_version 5.15.7
+%define real_version 5.15.8
+%define so_version 5.15.8
 %define tar_version qtnetworkauth-everywhere-src-%{version}
 Name:           libqt5-qtnetworkauth
-Version:        5.15.7+kde0
+Version:        5.15.8+kde0
 Release:        0
 Summary:        Qt 5 NetworkAuth Library
 License:        GPL-3.0-or-later
