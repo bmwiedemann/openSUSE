@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:23:58 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde0, rebased upstream:
+  * Doc: Mention plugin dependencies in the deployment guide
+  * Blacklist more flaky tests on QEMU.
+  * Blacklist tst_plugin::test_fullScreenModeWordReselection
+  * Blacklist certain tests that check selection handle positions
+  * Only reparent the InputPanel when necessary
+  * Document the reparenting of InputPanel during modal sessions
+
+-------------------------------------------------------------------
 Thu Nov  3 08:57:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde0, rebased upstream:

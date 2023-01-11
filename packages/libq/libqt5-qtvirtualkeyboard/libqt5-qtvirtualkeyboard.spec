@@ -19,15 +19,15 @@
 %define qt5_snapshot 1
 
 Name:           libqt5-qtvirtualkeyboard
-Version:        5.15.7+kde0
+Version:        5.15.8+kde0
 Release:        0
 Summary:        Qt 5 Virtual Keyboard
 License:        GPL-3.0
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.7
-%define so_version 5.15.7
+%define real_version 5.15.8
+%define so_version 5.15.8
 %define tar_version qtvirtualkeyboard-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 BuildRequires:  libQt5Gui-private-headers-devel >= %{real_version}
