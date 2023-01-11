@@ -19,15 +19,15 @@
 %define qt5_snapshot 1
 
 Name:           libqt5-qtserialbus
-Version:        5.15.7+kde0
+Version:        5.15.8+kde0
 Release:        0
 Summary:        Qt 5 Serial Bus Addon
 License:        LGPL-3.0-only OR GPL-2.0-or-later
 Group:          Development/Libraries/X11
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.7
-%define so_version 5.15.7
+%define real_version 5.15.8
+%define so_version 5.15.8
 %define tar_version qtserialbus-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
