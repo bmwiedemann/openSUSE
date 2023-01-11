@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:21:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde0, rebased upstream:
+  * Fix assert when cloning hidden BMGFill
+
+-------------------------------------------------------------------
 Thu Nov  3 08:55:06 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde0, rebased upstream:
