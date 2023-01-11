@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-remote-desktop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define gstreamer_version  1.10.0
 
 Name:           gnome-remote-desktop
-Version:        43.2
+Version:        43.3
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
