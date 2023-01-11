@@ -1013,4 +1013,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
       contract that the user-defined SQL statement is unmodified with</comment>
     <requestid>1030996</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>06e985db2d6002984599c3e7d6398385</srcmd5>
+    <version>1.4.45</version>
+    <time>1673443973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1057161</requestid>
+  </revision>
 </revisionlist>
