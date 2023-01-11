@@ -18,7 +18,7 @@
 %define short_version 1.9.3
 
 Name:           ranger
-Version:        1.9.3+git20220615.7e2d1613
+Version:        1.9.3+git20221124.f8b304f
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ URL:            https://github.com/ranger/ranger
 Source:         %{name}-%{version}.tar.gz
 Source99:       ranger-rpmlintrc
 # PATCH-FIX-UPSTREAM ranger.desktop.patch -- Add missing GenericName
-Patch0:         ranger.desktop.patch
+Patch0:         ranger.desktop.diff
 BuildRequires:  python3-devel
 BuildRequires:	python3-setuptools
 BuildRequires:  update-desktop-files

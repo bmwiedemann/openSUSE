@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 03 19:00:21 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20221124.f8b304f:
+  * rifle: Format cmd in error for copying
+  * rifle_sxiv: Update comments
+  * ui: Guard terminal capabalities
+  * changelog, commands: Fix typos
+  * Use `printf` instead of `echo`.
+  * Check for --apparent-size before invoking on cwd.
+  * remove outdated information on security-relevant bugs
+  * remove trailing and fix indent
+  * Fix NAME not displaying in man pages
+  * rifle_sxiv: properly fallback on non-valid extensions
+  * rifle_sxiv: add some more image extensions
+  * Acknowledge and report the exit status of the rifle'd commands
+
+-------------------------------------------------------------------
+Thu Oct 13 23:23:06 UTC 2022 - scott.bradnick@suse.com
+
+- Renaming ranger.desktop.patch to ranger.desktop.diff
+- Update to version 1.9.3+git20221008.7171fe4:
+  * doc: Regenerate ranger man page
+  * Update ranger.pod
+
+-------------------------------------------------------------------
+Fri Aug 19 18:36:07 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20220801.fcf44f6f:
+  * manpage_completion_test: Change interpreter directive
+  * make requested changes
+  * rifle.conf: add xviewer for image mime type
+
+-------------------------------------------------------------------
 Fri Jun 17 18:11:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Recommends: python3-Pillow'
