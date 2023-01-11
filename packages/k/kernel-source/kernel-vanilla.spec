@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.3
+%define patchversion 6.1.4
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.1.3
+Version:        6.1.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga5315fb
+Release:        <RELEASE>.g4b9b43c
 %else
 Release:        0
 %endif
@@ -240,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-a5315fb92e6bf66727da47e30c2686b71c690341
-Provides:       kernel-srchash-a5315fb92e6bf66727da47e30c2686b71c690341
+Provides:       kernel-%build_flavor-base-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
+Provides:       kernel-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
 # END COMMON DEPS
-Provides:       %name-srchash-a5315fb92e6bf66727da47e30c2686b71c690341
+Provides:       %name-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1504,6 +1504,8 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+Enhances:	%name
+Supplements:	packageand(%name:%cluster-md-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
 
 %description -n cluster-md-kmp-%build_flavor
@@ -1553,6 +1555,8 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+Enhances:	%name
+Supplements:	packageand(%name:%dlm-kmp-%build_flavor)
 
 %description -n dlm-kmp-%build_flavor
 DLM stands for Distributed Lock Manager, a means to synchronize access to
@@ -1600,6 +1604,8 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+Enhances:	%name
+Supplements:	packageand(%name:%gfs2-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
 
 %description -n gfs2-kmp-%build_flavor
@@ -1647,6 +1653,8 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+Enhances:	%name
+Supplements:	packageand(%name:%kselftests-kmp-%build_flavor)
 
 %description -n kselftests-kmp-%build_flavor
 This package contains kernel modules which are part of the upstream kernel
@@ -1709,6 +1717,8 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+Enhances:	%name
+Supplements:	packageand(%name:%ocfs2-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
 
 %description -n ocfs2-kmp-%build_flavor
@@ -1757,6 +1767,8 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+Enhances:	%name
+Supplements:	packageand(%name:%reiserfs-kmp-%build_flavor)
 
 %description -n reiserfs-kmp-%build_flavor
 The reiserfs file system is no longer supported in SLE15.  This package
