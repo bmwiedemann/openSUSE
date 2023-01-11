@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 10 10:41:54 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing libtraceevent linker argument (workaround until
+  the kernel list the lib dependency)
+- Drop version dependencies on kernel and the libraries
+
+-------------------------------------------------------------------
 Thu Oct  6 09:40:30 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Add a dummy -rebuild package to give OBS/Tumbleweed a hint when this

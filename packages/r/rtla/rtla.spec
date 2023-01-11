@@ -1,7 +1,7 @@
 #
 # spec file for package rtla
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,9 @@ Release:        0
 Summary:        Real-Time Linux Analysis tools
 License:        GPL-2.0-only
 URL:            https://www.kernel.org/
-BuildRequires:  kernel-source >= 5.17
-BuildRequires:  libtraceevent-devel >= 1.5
-BuildRequires:  libtracefs-devel >= 1.3
+BuildRequires:  kernel-source
+BuildRequires:  libtraceevent-devel
+BuildRequires:  libtracefs-devel
 BuildRequires:  procps-devel
 BuildRequires:  python3-docutils
 
@@ -49,6 +49,8 @@ There is no reason to install this package.
 
 %prep
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib Documentation/tools/rtla) | tar -xf -
+# Workaround for missing lib dependency
+sed -i 's/--libs libtracefs/--libs libtracefs libtraceevent/' tools/tracing/rtla/Makefile
 
 %build
 cd tools/tracing/rtla
