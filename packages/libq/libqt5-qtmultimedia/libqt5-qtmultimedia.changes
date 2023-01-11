@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:21:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde1, rebased upstream:
+  * Remove the AVPlayerItemVideoOutput from player item when changing media
+  * Use AVPlayerItemVideoOutput to generate video frames
+  * Fix a memory leak in the camerabinsession
+
+-------------------------------------------------------------------
 Thu Nov  3 08:55:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde1, rebased upstream:
