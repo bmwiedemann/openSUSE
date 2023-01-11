@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  9 09:21:13 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde6, rebased upstream:
+  * webp: support sequential input device if full file is available
+  * Fix vendored libwebp to build for universal macOS
+
+-------------------------------------------------------------------
 Thu Nov  3 08:54:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.7+kde5, rebased upstream:
