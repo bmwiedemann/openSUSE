@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jan 11 05:51:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.2:
+  * Bump containerd to fix reported vuln
+  * bump base images to latest
+  * Code review feedback- better comment
+  * Fix integration tests
+  * Ensures that only one secrets cache is created for cert-manager controller
+  * avoid logging confusing error messages for external issuers
+  * use template when generating tempdir in verify-crds
+  * bump base images to latest versions
+  * bump helm version to fix CVE-2022-23525
+  * bump version of contour helm chart to 10.0.1
+  * enable testing with k8s 1.26 by adding new kind image
+  * bump base images to latest versions
+  * bump dep versions to fix trivy-reported vulns
+  * remove verify-licenses from ci-presubmit
+  * bump go to 1.19.4
+  * Use distinct manifest dirs for signed / unsigned manifests
+  * fix x/text vuln and ignore AWS vuln
+
+-------------------------------------------------------------------
 Mon Nov 21 14:38:43 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.10.1:
