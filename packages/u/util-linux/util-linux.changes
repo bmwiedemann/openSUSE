@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan  9 16:13:18 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Move /var/lib/libuuid/ ownership exclusively to uuidd (boo#1206690)
+
+-------------------------------------------------------------------
 Fri Jan  6 09:27:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restore man and info pages

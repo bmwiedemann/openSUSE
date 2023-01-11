@@ -510,10 +510,14 @@ find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
 find  %{buildroot}%{_bindir}/ -regextype posix-egrep -type l \
   -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
   -printf "%{_bindir}/%f\n" >> %{name}.files
-mkdir -p %{buildroot}%{_sharedstatedir}/libuuid
 mkdir -p %{buildroot}/run/uuidd
+%if "%ulsubset" == "systemd"
 # clock.txt from uuidd is a ghost file
+# FIXME: This could also be used by libuuid, but for now we only
+# create it for uuidd. See boo#1206690.
+mkdir -p %{buildroot}%{_sharedstatedir}/libuuid/
 touch %{buildroot}%{_sharedstatedir}/libuuid/clock.txt
+%endif
 %if %{ul_extra_bin_sbin}
 mkdir -p %{buildroot}{/bin,/sbin}
 for i in dmesg findmnt kill logger lsblk more mount su umount; do
@@ -684,11 +688,8 @@ done
 
 %endif
 %if "%ulsubset" == "systemd"
-%if 0%{?suse_version} >= 1330
 %pre -n uuidd
-%else
-
-%pre -n uuidd
+%if 0%{?suse_version} < 1330
 getent group uuidd >/dev/null || /usr/sbin/groupadd -r uuidd
 getent passwd uuidd >/dev/null || \
 	/usr/sbin/useradd -r -g uuidd -c "User for uuidd" \
@@ -722,8 +723,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %license README.licensing
 %license COPYING
 %license Documentation/licenses/*
-%attr(-,uuidd,uuidd) %dir %{_sharedstatedir}/libuuid
-%attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
 %config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
 %endif
@@ -924,8 +923,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_sbindir}/uuidd
 %endif
 %if "%ulsubset" == "systemd"
-%exclude %attr(-,uuidd,uuidd) %dir %{_sharedstatedir}/libuuid
-%exclude %attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
 %exclude %config(noreplace) %{_sysconfdir}/filesystems
 %exclude %config(noreplace) %{_sysconfdir}/blkid.conf
 %if %{defined no_config}

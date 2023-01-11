@@ -2376,4 +2376,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)</comment>
     <requestid>1056354</requestid>
   </revision>
+  <revision rev="260" vrev="3">
+    <srcmd5>b7667939cc07bcf8ee8d8dfb2dbf3710</srcmd5>
+    <version>2.38.1</version>
+    <time>1673443966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057146</requestid>
+  </revision>
 </revisionlist>
