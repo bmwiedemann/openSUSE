@@ -1,8 +1,8 @@
-Index: chromium-86.0.4240.75/base/location.h
+Index: chromium-109.0.5414.46/base/location.h
 ===================================================================
---- chromium-86.0.4240.75.orig/base/location.h
-+++ chromium-86.0.4240.75/base/location.h
-@@ -23,7 +23,7 @@ namespace base {
+--- chromium-109.0.5414.46.orig/base/location.h
++++ chromium-109.0.5414.46/base/location.h
+@@ -20,7 +20,7 @@ namespace base {
  #define SUPPORTS_LOCATION_BUILTINS                                       \
    (__has_builtin(__builtin_FUNCTION) && __has_builtin(__builtin_FILE) && \
     __has_builtin(__builtin_LINE))
@@ -11,16 +11,16 @@ Index: chromium-86.0.4240.75/base/location.h
  // GCC has supported these for a long time, but they point at the function
  // declaration in the case of default arguments, rather than at the call site.
  #define SUPPORTS_LOCATION_BUILTINS 1
-Index: chromium-86.0.4240.75/base/location.cc
+Index: chromium-109.0.5414.46/base/location.cc
 ===================================================================
---- chromium-86.0.4240.75.orig/base/location.cc
-+++ chromium-86.0.4240.75/base/location.cc
-@@ -92,7 +92,7 @@ NOINLINE Location Location::Current(cons
+--- chromium-109.0.5414.46.orig/base/location.cc
++++ chromium-109.0.5414.46/base/location.cc
+@@ -144,7 +144,7 @@ NOINLINE Location Location::Current(cons
  #else
- // static
+ 
  NOINLINE Location Location::Current() {
 -  return Location(nullptr, RETURN_ADDRESS());
 +  return Location("[unknown file]", RETURN_ADDRESS());
  }
- #endif
  
+ #endif

@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2022 Callum Farmer <gmbr3@opensuse.org>
-# Copyright (c) 2022 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@
 %endif
 
 Name:           chromium
-Version:        108.0.5359.124
+Version:        109.0.5414.74
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -111,9 +111,8 @@ Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
-Patch15:        chromium-108-compiler.patch
+Patch15:        chromium-109-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
-Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
@@ -129,8 +128,8 @@ Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
-Patch204:       chromium-107-system-zlib.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
+Patch206:       chromium-109-clang-lp154.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -161,6 +160,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
@@ -462,6 +462,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
     third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
@@ -553,11 +554,13 @@ keeplibs=(
     third_party/protobuf/third_party/six
     third_party/pthreadpool
     third_party/pyjson5
+    third_party/pyyaml
     third_party/qcms
     third_party/rnnoise
     third_party/ruy
     third_party/s2cellid
     third_party/securemessage
+    third_party/selenium-atoms
     third_party/shell-encryption
     third_party/simplejson
     third_party/skia
@@ -573,6 +576,7 @@ keeplibs=(
     third_party/swiftshader/third_party/SPIRV-Headers
     third_party/swiftshader/third_party/SPIRV-Tools
     third_party/swiftshader/third_party/subzero
+    third_party/tensorflow_models
     third_party/tensorflow-text
     third_party/tflite
     third_party/tflite/src/third_party/eigen3
@@ -789,7 +793,6 @@ myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" fatal_linker_warnings=false"
-myconf_gn+=" use_allocator=\"partition\""
 myconf_gn+=" use_allocator_shim=true"
 myconf_gn+=" use_partition_alloc=true"
 myconf_gn+=" disable_fieldtrial_testing_config=true"
@@ -818,7 +821,6 @@ myconf_gn+=" use_system_harfbuzz=true"
 myconf_gn+=" use_system_freetype=true"
 %endif
 myconf_gn+=" use_system_libwayland=true"
-myconf_gn+=" use_system_libwayland_server=true"
 myconf_gn+=" use_system_wayland_scanner=true"
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"

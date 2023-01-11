@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jan 10 21:24:55 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 109.0.5414.74:
+  * Add support for MathML Core
+  * CSS: Auto range support for font descriptors inside @font-face
+    rule
+  * CSS: Add lh length unit
+  * CSS: Add hyphenate-limit-chars property
+  * CSS: Snap border, outline and column-rule widths before layout
+  * API: Improved screen sharing and web conferencing: hints for
+    suppressing local audio playback, and Conditional Focus
+  * API: HTTP response status code in the Resource Timing API
+  * API: Same-site cross-origin prerendering triggered by the
+    speculation rules API
+  * Remove Event.path API
+  * CVE-2023-0128: Use after free in Overview Mode
+  * CVE-2023-0129: Heap buffer overflow in Network Service
+  * CVE-2023-0130: Inappropriate implementation in Fullscreen API
+  * CVE-2023-0131: Inappropriate implementation in iframe Sandbox
+  * CVE-2023-0132: Inappropriate implementation in Permission prompts
+  * CVE-2023-0133: Inappropriate implementation in Permission prompts
+  * CVE-2023-0134: Use after free in Cart
+  * CVE-2023-0135: Use after free in Cart
+  * CVE-2023-0136: Inappropriate implementation in Fullscreen API
+  * CVE-2023-0137: Heap buffer overflow in Platform Apps
+  * CVE-2023-0138: Heap buffer overflow in libphonenumber
+  * CVE-2023-0139: Insufficient validation of untrusted input in Downloads
+  * CVE-2023-0140: Inappropriate implementation in File System API
+  * CVE-2023-0141: Insufficient policy enforcement in CORS
+  * Various fixes from internal audits, fuzzing and other initiatives  
+- drop patches:
+  * chromium-gcc11.patch - not needed
+  * chromium-107-system-zlib.patch - upstream
+  * chromium-108-compiler.patch
+- add patches:
+  * chromium-109-compiler.patch
+  * chromium-109-clang-lp154.patch
+
+-------------------------------------------------------------------
 Sun Dec 18 17:31:22 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add chromium-disable-GlobalMediaControlsCastStartStop.patch:
