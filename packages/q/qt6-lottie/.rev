@@ -111,4 +111,12 @@
     <comment>Qt 6.4.1 (forwarded request 1036897 from cgiboudeaux)</comment>
     <requestid>1036908</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65cd00d89dfda7337256faf0baf6769f</srcmd5>
+    <version>6.4.2</version>
+    <time>1673444036</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
+    <requestid>1057264</requestid>
+  </revision>
 </revisionlist>
