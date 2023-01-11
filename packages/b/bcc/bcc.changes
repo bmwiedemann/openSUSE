@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 11 07:07:28 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Force specific versioning of LLVM in preparation of Leap 15.5/SLES 15-SP5
+  + Remove now duplicate dependency llvm-clang-devel, having clang-devel is enough
+
+-------------------------------------------------------------------
 Thu Dec 29 09:24:31 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to version 0.26.0:

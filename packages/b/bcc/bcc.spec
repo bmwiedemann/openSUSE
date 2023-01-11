@@ -26,6 +26,14 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
+# Use the latest supported LLVM version, but Leap < 15.5 only has a slightly
+# older one so just use whatever version is available.
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%define llvm_major_version 15
+%else
+%define llvm_major_version %{nil}
+%endif
+
 Name:           bcc
 Version:        0.26.0
 Release:        0
@@ -41,11 +49,10 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libbpf-devel
 BuildRequires:  libelf-devel
-BuildRequires:  llvm-clang-devel >= 3.7.0
-BuildRequires:  llvm-devel >= 3.7.0
+BuildRequires:  llvm%{llvm_major_version}-devel
 %if 0%{?suse_version} > 1320
-BuildRequires:  clang-devel
-BuildRequires:  llvm-gold
+BuildRequires:  clang%{llvm_major_version}-devel
+BuildRequires:  llvm%{llvm_major_version}-gold
 %else
 BuildRequires:  libstdc++-devel
 %endif
@@ -186,7 +193,7 @@ find tools/ examples/ -type f -exec \
 pushd build
 %make_install
 
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150500
 # Remove bps due to the incomplete support in kernel (bsc#1085403)
 rm -f %{buildroot}/%{_bindir}/bps
 %endif
@@ -231,7 +238,7 @@ rm -f %{buildroot}/%{_libdir}/libbcc*.a
 %{_datadir}/bcc/tools/*
 %dir %{_datadir}/bcc/man/
 %{_datadir}/bcc/man/*
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
 %{_bindir}/bps
 %endif
 
