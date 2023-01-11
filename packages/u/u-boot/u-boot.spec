@@ -1,7 +1,7 @@
 #
 # spec file for package u-boot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Texas Instruments Inc by Nishanth Menon
 # Copyright (c) 2007-2010 by Silvan Calarco <silvan.calarco@mambasoft.it>
 #
@@ -106,6 +106,11 @@
 %if "%target" == "pinephone"
 %define is_armv8 1
 %define is_a64 1
+%define sunxi_spl 1
+%endif
+%if "%target" == "orangepizero2"
+%define is_h616 1
+%define is_armv8 1
 %define sunxi_spl 1
 %endif
 %if "%target" == "bananapi" || "%target" == "cubieboard" || "%target" == "cubieboard2" || "%target" == "cubietruck" || "%target" == "melea1000" || "%target" == "a10-olinuxino-lime" || "%target" == "a13-olinuxino" || "%target" == "a13-olinuxinom" || "%target" == "a20-olinuxino-lime" || "%target" == "a20-olinuxino-lime2" || "%target" == "a20-olinuxinomicro" || "%target" == "nanopineo" || "%target" == "orangepipc" || "%target" == "hyundaia7hd" || "%target" == "lamobor1" || "%target" == "bananapim2plush3" || "%target" == "bananapim2zero" || "%target" == "orangepizero"
@@ -296,6 +301,9 @@ BuildRequires:  arm-trusted-firmware-sun50i_a64
 %if 0%{?is_h6}
 BuildRequires:  arm-trusted-firmware-sun50i_h6
 %endif
+%if 0%{?is_h616}
+BuildRequires:  arm-trusted-firmware-sun50i_h616
+%endif
 %if "%target" == "tools" || "%target" == "avnetultra96rev1" || "%target" == "clearfog" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebudbarmada8k3" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "turrisomnia"
 # Fixes ld: cannot find -ltinfo: No such file or directory
 BuildRequires:  ncurses-devel
@@ -394,6 +402,10 @@ export SCP=/dev/null
 %endif
 %if 0%{?is_h6}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
+export SCP=/dev/null
+%endif
+%if 0%{?is_h616}
+export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h616/bl31.bin
 export SCP=/dev/null
 %endif
 %if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"

@@ -1849,4 +1849,13 @@ boundary checks.
     <comment></comment>
     <requestid>1007907</requestid>
   </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>ecf4dd3116960cc33c8bf1510f8d883e</srcmd5>
+    <version>2022.10</version>
+    <time>1673443996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add orangepizero2 flavor
+</comment>
+    <requestid>1057445</requestid>
+  </revision>
 </revisionlist>
