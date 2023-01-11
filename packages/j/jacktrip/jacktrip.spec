@@ -1,7 +1,7 @@
 #
 # spec file for package jacktrip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        1.4.0
+Version:        1.6.8
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
@@ -26,16 +26,22 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/jcacerec/jacktrip
 Source:         https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  libqt5-linguist
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Jinja2
+BuildRequires:  python3-PyYAML
+BuildRequires:  rtaudio-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5NetworkAuth)
+BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
-BuildRequires:  rtaudio-devel
 
 %description
 JackTrip is a system used for multi-machine network performance over the
