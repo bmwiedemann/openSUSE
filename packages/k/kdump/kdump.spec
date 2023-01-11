@@ -1,7 +1,7 @@
 #
 # spec file for package kdump
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 
 %if 0%{?is_opensuse}
 %if 0%{suse_version} > 1500
-%define distro_suffix tumbleweed.%{_arch}
+%define distro_prefix tumbleweed.%{_arch}
 %else
-%define distro_suffix leap%{sle_version}.%{_arch}
+%define distro_prefix leap%{sle_version}.%{_arch}
 %endif
 %else
-%define distro_suffix sle%{sle_version}.%{_arch}
+%define distro_prefix sle%{sle_version}.%{_arch}
 %endif
 
 %ifarch aarch64
@@ -49,14 +49,14 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git27.gb9718ae
+Version:        1.0.2+git39.g8c819fe
 Release:        0
-Summary:        Script for kdump
+Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 URL:            https://github.com/openSUSE/kdump
 Source:         %{name}-%{version}.tar.xz
-Source1:        %{name}-calibrate.tar.bz2
+Source1:        calibrate.conf.all
 Source2:        %{name}-rpmlintrc
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7
@@ -70,7 +70,6 @@ BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-sysvinit
 BuildRequires:  util-linux-systemd
-BuildRequires:  wicked
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -84,11 +83,12 @@ BuildRequires:  kernel-default
 BuildRequires:  makedumpfile
 BuildRequires:  procps
 BuildRequires:  python3
+%ifnarch s390x
 BuildRequires:  qemu-ipxe
 BuildRequires:  qemu-vgabios
+%endif
 BuildRequires:  systemd-sysvinit
 BuildRequires:  util-linux-systemd
-BuildRequires:  wicked
 %endif
 Requires:       /usr/bin/sed
 Requires:       curl
@@ -135,7 +135,7 @@ after a crash dump has occured.
 
 %prep
 %setup -q
-%setup -q -D -T -a 1
+cp %{SOURCE1} calibrate.conf.all
 
 %build
 export CXXFLAGS="%{optflags} -std=c++11"
@@ -146,7 +146,10 @@ export CXXFLAGS="%{optflags} -std=c++11"
 	-DCALIBRATE=OFF
 %endif
 
-%cmake_build
+# run make directly instead of cmake_build, which would run make in parallel
+# and try to group output, preventing any debugging output from qemu if it
+# fails to exit
+make VERBOSE=1
 
 %check
 %ctest
@@ -156,9 +159,18 @@ export CXXFLAGS="%{optflags} -std=c++11"
 # empty directory
 mkdir -p %{buildroot}%{_localstatedir}/crash
 
-# Install pre-built calibrate.conf
 %if !%{with calibrate}
-cp calibrate/calibrate.conf.%{distro_suffix} %{buildroot}/usr/lib/kdump/calibrate.conf
+# get distro_prefix-prefixed lines from calibrate.conf.all
+grep "^%distro_prefix:" calibrate.conf.all | cut -f 2- -d: > %{buildroot}/usr/lib/kdump/calibrate.conf
+if ! test -s %{buildroot}/usr/lib/kdump/calibrate.conf; then
+echo "no calibration data for %distro_prefix in calibrate.conf.all, see packaging/suse/calibrate/README"
+false
+fi
+%else
+# save the distro_prefix
+echo "GENERATED_ON=%{distro_prefix}" >> %{buildroot}/usr/lib/kdump/calibrate.conf
+echo "generated calibrate.conf:"
+cat  %{buildroot}/usr/lib/kdump/calibrate.conf
 %endif
 
 # symlink for init script

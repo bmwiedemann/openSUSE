@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 10 17:13:22 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- improve the generation of calibrate.conf
+  * print the qemu messages and trackrss log during calibrate
+  * use static IP address for calibration
+  * all calibrate.conf variants now stored in a single file
+  * added a README and a helper script for updating calibrate.conf
+  * prevent dracut from running emergency shell
+  * fix s390x build dependencies
+
+- fix deleting of a temporary file in dracut/module-setup.sh
+- look for nsswitch.conf in /etc and /usr/etc
+- never run a debugging shell when KDUMP_CONTINUE_ON_ERROR is set
+- remove build dependency for wicked 
+- fix package summary in the spec file
+
+-------------------------------------------------------------------
 Tue Dec  6 15:17:08 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - maintain the spec file in git

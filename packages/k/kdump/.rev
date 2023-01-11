@@ -1123,4 +1123,24 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042730</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>ac0d71a77764c111ea83a8d9d2293d20</srcmd5>
+    <version>1.0.2+git39.g8c819fe</version>
+    <time>1673453658</time>
+    <user>dimstar_suse</user>
+    <comment>- improve the generation of calibrate.conf
+  * print the qemu messages and trackrss log during calibrate
+  * use static IP address for calibration
+  * all calibrate.conf variants now stored in a single file
+  * added a README and a helper script for updating calibrate.conf
+  * prevent dracut from running emergency shell
+  * fix s390x build dependencies
+- fix deleting of a temporary file in dracut/module-setup.sh
+- look for nsswitch.conf in /etc and /usr/etc
+- never run a debugging shell when KDUMP_CONTINUE_ON_ERROR is set
+- remove build dependency for wicked 
+- fix package summary in the spec file
+</comment>
+    <requestid>1057680</requestid>
+  </revision>
 </revisionlist>
