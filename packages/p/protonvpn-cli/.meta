@@ -1,0 +1,6 @@
+<package name="protonvpn-cli" project="openSUSE:Factory">
+  <title>protonvpn-cli</title>
+  <description>Official Proton VPN CLI</description>
+  <devel project="network:vpn" package="protonvpn-cli"/>
+  <url>https://github.com/ProtonVPN/linux-cli</url>
+</package>
