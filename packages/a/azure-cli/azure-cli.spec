@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.43.0
+Version:        2.44.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -59,21 +59,21 @@ Requires:       python3-PyNaCl >= 1.5.0
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-antlr4-python3-runtime >= 4.9.3
 Requires:       python3-azure-appconfiguration >= 1.1.1
-Requires:       python3-azure-batch >= 12.0
+Requires:       python3-azure-batch >= 13.0.0
 Requires:       python3-azure-cosmos >= 3.0.2
 Requires:       python3-azure-data-tables >= 12.4.0
 Requires:       python3-azure-datalake-store >= 0.0.49
 Requires:       python3-azure-graphrbac >= 0.60.0
 Requires:       python3-azure-keyvault >= 1.1.0
 Requires:       python3-azure-keyvault-administration >= 4.0.0b3
-Requires:       python3-azure-keyvault-keys >= 4.5.1
+Requires:       python3-azure-keyvault-keys >= 4.8.0~b2
 Requires:       python3-azure-loganalytics >= 0.1.0
 Requires:       python3-azure-mgmt-advisor >= 9.0.0
 Requires:       python3-azure-mgmt-apimanagement >= 3.0.0
 Requires:       python3-azure-mgmt-appconfiguration >= 2.2.0
 Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       python3-azure-mgmt-authorization >= 0.61.0
-Requires:       python3-azure-mgmt-batch >= 16.2.0
+Requires:       python3-azure-mgmt-batch >= 17.0.0
 Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 2.0.0b3
@@ -83,7 +83,7 @@ Requires:       python3-azure-mgmt-compute >= 29.0.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 9.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 10.0.0
-Requires:       python3-azure-mgmt-containerservice >= 20.6.0
+Requires:       python3-azure-mgmt-containerservice >= 21.1.0
 Requires:       python3-azure-mgmt-cosmosdb >= 8.0.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -118,24 +118,24 @@ Requires:       python3-azure-mgmt-rdbms >= 10.2.0b5
 Requires:       python3-azure-mgmt-recoveryservices >= 2.1.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 5.1.0b1
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.1.0
-Requires:       python3-azure-mgmt-redis >= 13.1.0
+Requires:       python3-azure-mgmt-redis >= 14.1.0
 Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations >= 2.0.0
 Requires:       python3-azure-mgmt-resource >= 21.1.0
 Requires:       python3-azure-mgmt-search >= 8.0
-Requires:       python3-azure-mgmt-security >= 2.0.0b1
+Requires:       python3-azure-mgmt-security >= 3.0.0
 Requires:       python3-azure-mgmt-servicebus >= 8.1.0
 Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
-Requires:       python3-azure-mgmt-servicelinker >= 1.0.0
+Requires:       python3-azure-mgmt-servicelinker >= 1.2.0~b1
 Requires:       python3-azure-mgmt-signalr >= 1.1.0
-Requires:       python3-azure-mgmt-sql >= 4.0.0b5
+Requires:       python3-azure-mgmt-sql >= 4.0.0b6
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b4
 Requires:       python3-azure-mgmt-storage >= 21.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       python3-azure-mgmt-web >= 7.0.0
-Requires:       python3-azure-multiapi-storage >= 0.10.0
+Requires:       python3-azure-multiapi-storage >= 1.0.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
 Requires:       python3-azure-synapse-artifacts >= 0.14.0
