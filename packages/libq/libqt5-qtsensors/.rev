@@ -408,4 +408,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
     <requestid>1033113</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>41cff03bc5d8d8ea1629255293fc244c</srcmd5>
+    <version>5.15.8+kde0</version>
+    <time>1673443986</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
+    <requestid>1057239</requestid>
+  </revision>
 </revisionlist>
