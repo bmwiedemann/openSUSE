@@ -209,4 +209,12 @@
     <comment>Qt 6.4.1 (forwarded request 1036897 from cgiboudeaux)</comment>
     <requestid>1036899</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ab02f7d243601c1e45618404fce7ea58</srcmd5>
+    <version>6.4.2</version>
+    <time>1673444028</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
+    <requestid>1057255</requestid>
+  </revision>
 </revisionlist>

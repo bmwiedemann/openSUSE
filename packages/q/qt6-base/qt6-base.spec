@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.1
+%define real_version 6.4.2
 %define short_version 6.4
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -714,6 +714,10 @@ installed on your system.
 
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
+
+# Copy the freetype license file to prevent errors when building docs
+cp src/3rdparty/freetype/LICENSE.txt src/gui/painting/FREETYPE_LICENSE.txt
+sed -i 's#../../3rdparty/freetype/LICENSE.txt#FREETYPE_LICENSE.txt#' src/gui/painting/qt_attribution.json
 
 # We don't want to use these 3rdparty libraries
 rm -r src/3rdparty/{double-conversion,libjpeg,libpng,freetype,harfbuzz-ng,sqlite,xcb,zlib}
