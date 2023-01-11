@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.1
+%define real_version 6.4.2
 %define short_version 6.4
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
