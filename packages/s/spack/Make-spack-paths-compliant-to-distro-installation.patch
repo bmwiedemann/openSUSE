@@ -1,7 +1,9 @@
-From e7bbc251529786e68297c8aac700358ab1fb5c14 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Wed, 10 Nov 2021 09:40:07 +0100
-Subject: [PATCH] Make spack paths compliant to distro installation
+Date: Wed Jan 11 14:30:19 2023 +0100
+Subject: Make spack paths compliant to distro installation
+Patch-mainline: Not yet
+Git-commit: c74fb7ed42aa94609c8cc8c005b004357307bb34
+References: 
 
 Spack is particular about the choice of 'prefix' which will
 replace $spack. 'prefix' is the 4th ancestor of paths.py, so
@@ -9,15 +11,15 @@ it is relative to the spack installation.
 This will only change the coded setups of
 var_path -> /var/lib/spack
 opt_path -> /opt/spack
+repo_path -> /usr/share/spack/repos
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- lib/spack/spack/paths.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
+ lib/spack/spack/paths.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 diff --git a/lib/spack/spack/paths.py b/lib/spack/spack/paths.py
-index fc617342e8..c733da2286 100644
+index f03f6eb1..914aea93 100644
 --- a/lib/spack/spack/paths.py
 +++ b/lib/spack/spack/paths.py
 @@ -41,7 +41,7 @@
@@ -29,15 +31,16 @@ index fc617342e8..c733da2286 100644
  share_path = os.path.join(prefix, "share", "spack")
  etc_path = os.path.join(prefix, "etc", "spack")
  
-@@ -53,7 +53,7 @@
+@@ -53,10 +53,10 @@
  #
  # Things in $spack/var/spack
  #
 -var_path = os.path.join(prefix, "var", "spack")
-+var_path = os.path.join("/", "var", "spack")
++var_path = os.path.join("/", "var", "lib", "spack")
  
  # read-only things in $spack/var/spack
- repos_path = os.path.join(var_path, "repos")
--- 
-2.35.3
-
+-repos_path = os.path.join(var_path, "repos")
++repos_path = os.path.join(share_path, "repos")
+ packages_path = os.path.join(repos_path, "builtin")
+ mock_packages_path = os.path.join(repos_path, "builtin.mock")
+ 

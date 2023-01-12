@@ -1,7 +1,7 @@
 #
 # spec file for package spack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,15 +167,6 @@ done
 %else
 cp %{S:5} lib/spack/docs/
 %endif
-grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i 's|#! /usr/bin/env bash|#!/usr/bin/bash|g' @
-grep -rl '#!/bin/env sh' . | xargs -i@ sed -i 's|#!/bin/env sh|#!/usr/bin/sh|g' @
-grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' @
-grep -rl "spack/" . | xargs -i@ sed -i \
-  -e 's|$spack/opt|/opt|g' \
-  -e 's|$spack/var|/var/lib|g'\
-  -e 's|$spack/share/spack/lmod|/opt/spack/modules|g'\
-  -e 's|$spack/share/spack/modules|/opt/spack/modules|g'\
-  @
 
 %build
 # Nothing to build
@@ -211,6 +202,8 @@ sed -i 's/\(^SPHINXOPTS\).*/\1 = --keep-going /' Makefile
 grep -rl ":target:" | xargs sed  -i -e "/:target:/s/^/#/" -e "/figure::/s/^/#/"
 # Fix path to var - we install this to the 'real' /var
 grep -rl "\$SPACK_ROOT/var" | xargs sed -i -e "s@\(.*\)\$SPACK_ROOT/var\(/spack.*\)@\1/var/lib\2@g"
+grep -rl '/var/lib/spack/repos' | grep -v "cmd/list.py" | \
+    xargs -i@ sed -i 's|/var/lib/spack/repos|/usr/share/spack/repos|g' @
 # spack cannot run without knowing at least the compiler, so we inject
 # a dummy one
 mkdir -p ${HOME}/.spack/linux/
@@ -235,7 +228,21 @@ source /usr/share/spack/setup-env.sh
 make man info || { cat /tmp/sphinx-err-*.log; exit 1; } #text dirhtml
 rm -rf $tmpdir
 gzip _build/texinfo/Spack.info _build/man/spack.1
+# with doc
 %endif
+cd -
+grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i 's|#! /usr/bin/env bash|#!/usr/bin/bash|g' @
+grep -rl '#!/bin/env sh' . | xargs -i@ sed -i 's|#!/bin/env sh|#!/usr/bin/sh|g' @
+grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' @
+grep -rl '/var/spack/repos' | grep -v "cmd/list.py" | \
+    xargs -i@ sed -i 's|/var/spack/repos|/usr/share/spack/repos|g' @
+grep -rl "spack/" . | xargs -i@ sed -i \
+  -e 's|$spack/opt|/opt|g' \
+  -e 's|$spack/var|/var/lib|g'\
+  -e 's|$spack/usr|/usr|g'\
+  -e 's|$spack/share/spack/lmod|/opt/spack/modules|g'\
+  -e 's|$spack/share/spack/modules|/opt/spack/modules|g'\
+  @
 
 %install
 # combine READMEs
@@ -256,9 +263,6 @@ find . -type f -name .gitlab-ci.yml -delete
 # Fix _spack_root link
 rm -f lib/spack/docs/_spack_root
 ln -sf ../.. lib/spack/docs/_spack_root
-# Do not ship Docker and container building for now - needs fixing
-rm -rf share/spack/{templates/container}
-rm -rf share/spack/docker/{centos,ubuntu}*.dockerfile
 # Do not ship AWS specifics
 rm -f share/spack/setup-tutorial-env.sh
 # Fix rpmlint warnings
@@ -288,6 +292,8 @@ cp -r etc %{buildroot}%{_prefix}
 cp -r lib/spack/{env,external,llnl,spack,spack_installable} %{buildroot}%{spack_dir}
 cp -r share/spack/* %{buildroot}%{_datarootdir}/spack
 cp -r var/spack/* %{buildroot}%{_localstatedir}/lib/spack
+# No repos in /var
+mv %{buildroot}%{_localstatedir}/lib/spack/repos %{buildroot}%{_datarootdir}/spack
 cp -r bin/sbang %{buildroot}/%{_bindir}
 cp -r bin/spack* %{buildroot}%{_bindir}/
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
@@ -407,7 +413,7 @@ rm -f %{buildroot}%{_localstatedir}/lib/spack/cache
 ln -sf %{_localstatedir}/cache/spack %{buildroot}%{_localstatedir}/lib/spack/cache
 # Remove problematic binaries which are removed upstream with
 # 0889be20e0d9dcdf4346cdeaa0647285187375f3
-rm -r %{buildroot}%{_localstatedir}/lib/spack/repos/builtin/packages/patchelf/test/
+rm -r %{buildroot}%{_datarootdir}/spack/repos/builtin/packages/patchelf/test/
 
 echo "g %{name} -" > system-group-%{name}.conf
 %sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
@@ -477,6 +483,7 @@ chmod 0775 /opt/spack
 %{_localstatedir}/cache/spack
 %{_localstatedir}/lib/spack
 %{_datarootdir}/spack
+%exclude %{_datarootdir}/spack/repos
 %config %{_sysconfdir}/profile.d/spack.sh
 %ghost %config %{_sysconfdir}/spack/packages.yaml
 %config %{_sysconfdir}/profile.d/spack.csh
@@ -485,12 +492,11 @@ chmod 0775 /opt/spack
 %config %{_sysconfdir}/skel/.spack/modules.yaml
 # repos directory is installed in -recipes
 %{_sysusersdir}/system-group-%{name}.conf
-%exclude %{_localstatedir}/lib/spack/repos
 
 %files recipes
 %license COPYRIGHT LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md NOTICE README.md
-%{_localstatedir}/lib/spack/repos
+%{_datarootdir}/spack/repos
 
 %else
 

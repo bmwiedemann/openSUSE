@@ -268,4 +268,13 @@
     <comment>env stuff fixed (forwarded request 1040235 from mslacken)</comment>
     <requestid>1040236</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>552fa5f79c9fd02759d5067502358e78</srcmd5>
+    <version>0.19.0</version>
+    <time>1673559887</time>
+    <user>dimstar_suse</user>
+    <comment>- Yet another fix for /var/spack/repos -&gt; /usr/share/spack/repos
+  move. (forwarded request 1057973 from eeich)</comment>
+    <requestid>1057974</requestid>
+  </revision>
 </revisionlist>

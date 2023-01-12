@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 11 13:04:37 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix var_path: this regression was introduced with the update
+  to the 0.19.0 release (boo#1207053).
+- Move repos to /usr/share/spack: /var is strictly for local data.
+
+-------------------------------------------------------------------
 Tue Nov 22 11:16:26 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - updated to version 0.19.0 with the following changes:
