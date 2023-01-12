@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global         _miscdir    %{_datadir}/misc
 Name:           python-magic
-Version:        5.43
+Version:        5.44
 Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause
 Group:          Development/Languages/Python
 URL:            https://www.darwinsys.com/file/
 Source99:       file.spec
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  findutils
 BuildRequires:  libtool
@@ -53,6 +54,15 @@ popd
 %install
 pushd python
 %python_install
+popd
+
+%check
+export LC_ALL=C.UTF-8
+pushd python
+%python_flavored_alternatives
+%{python_expand # indicate a writeable .pth directory for tests
+python%{$python_version} setup.py test
+}
 popd
 
 %files %{python_files}

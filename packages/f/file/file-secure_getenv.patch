@@ -6,7 +6,7 @@
 
 --- file-5.42/configure.ac
 +++ file-5.42/configure.ac	2022-06-13 08:34:50.347521415 +0000
-@@ -122,6 +122,8 @@ if test "$enable_xzlib" != "no"; then
+@@ -130,6 +130,8 @@ if test "$enable_xzlib" != "no"; then
  fi
  AC_CHECK_TYPE([sig_t],[AC_DEFINE([HAVE_SIG_T],1,[Have sig_t type])],,[#include <signal.h>])
  

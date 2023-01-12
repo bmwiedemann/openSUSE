@@ -6,7 +6,7 @@ Index: src/readelf.c
 ===================================================================
 --- src/readelf.c.orig
 +++ src/readelf.c
-@@ -825,7 +825,7 @@ do_core_note(struct magic_set *ms, unsig
+@@ -828,7 +828,7 @@ do_core_note(struct magic_set *ms, unsig
  
  	default:
  		if (type == NT_PRPSINFO && *flags & FLAGS_IS_CORE) {
@@ -15,7 +15,7 @@ Index: src/readelf.c
  			unsigned char c;
  			/*
  			 * Extract the program name.  We assume
-@@ -837,7 +837,9 @@ do_core_note(struct magic_set *ms, unsig
+@@ -840,7 +840,9 @@ do_core_note(struct magic_set *ms, unsig
  			 * If the characters aren't all printable,
  			 * reject it.
  			 */

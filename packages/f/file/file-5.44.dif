@@ -9,10 +9,8 @@
  src/dcore.c        |  207 +++++++++++++++++++++++++++++++++++++++++++++++++++++
  8 files changed, 313 insertions(+), 68 deletions(-)
 
-Index: magic/Magdir/elf
-===================================================================
---- magic/Magdir/elf.orig
-+++ magic/Magdir/elf
+--- magic/Magdir/elf
++++ magic/Magdir/elf	2023-01-09 14:36:25.751054574 +0000
 @@ -152,7 +152,7 @@
  >18	leshort		47		Renesas H8/300H,
  >18	leshort		48		Renesas H8S,
@@ -22,10 +20,8 @@ Index: magic/Magdir/elf
  >18	leshort		51		Stanford MIPS-X,
  >18	leshort		52		Motorola Coldfire,
  >18	leshort		53		Motorola M68HC12,
-Index: magic/Magdir/linux
-===================================================================
---- magic/Magdir/linux.orig
-+++ magic/Magdir/linux
+--- magic/Magdir/linux
++++ magic/Magdir/linux	2023-01-09 14:36:25.751054574 +0000
 @@ -140,27 +140,31 @@
  # All known start with: b8 c0 07 8e d8 b8 00 90 8e c0 b9 00 01 29 f6 29
  # Linux kernel boot images (i386 arch) (Wolfram Kleff)
@@ -74,21 +70,17 @@ Index: magic/Magdir/linux
  # This also matches new kernels, which were caught above by "HdrS".
  0		belong	0xb8c0078e	Linux kernel
  >0x1e3		string	Loading		version 1.3.79 or older
-Index: magic/Magdir/msad
-===================================================================
---- /dev/null
-+++ magic/Magdir/msad
+--- magic/Magdir/msad
++++ magic/Magdir/msad	2023-01-09 14:36:25.751054574 +0000
 @@ -0,0 +1,5 @@
 +#------------------------------------------------------------------------------
 +# msad:  file(1) magic for msad
 +# Microsoft visual C
 +# This must precede the heuristic for raw G3 data
 +4	string	Standard\ Jet\ DB	Microsoft Access Database
-Index: magic/Magdir/msdos
-===================================================================
---- magic/Magdir/msdos.orig
-+++ magic/Magdir/msdos
-@@ -145,9 +145,9 @@
+--- magic/Magdir/msdos
++++ magic/Magdir/msdos	2023-01-09 14:36:25.751054574 +0000
+@@ -296,9 +296,9 @@
  >>(0x3c.l+22)	leshort&0x0200	>0	(stripped to external PDB)
  >>(0x3c.l+22)	leshort&0x1000	>0	system file
  >>(0x3c.l+24)	leshort		0x010b
@@ -100,7 +92,7 @@ Index: magic/Magdir/msdos
  
  # hooray, there's a DOS extender using the PE format, with a valid PE
  # executable inside (which just prints a message and exits if run in win)
-@@ -750,7 +750,7 @@
+@@ -1020,7 +1020,7 @@
  >1		leshort	<-259
  # that offset must be accessible
  # add 10000h to jump at end of 64 KiB segment, add 1 for jump instruction and 2 for 16-bit offset
@@ -109,10 +101,8 @@ Index: magic/Magdir/msdos
  # after jump next instruction for DEBUGGING!
  #>>>&-1		ubelong	x	\b, NEXT instruction %#8.8x
  >>>0        use msdos-com
-Index: magic/Makefile.am
-===================================================================
---- magic/Makefile.am.orig
-+++ magic/Makefile.am
+--- magic/Makefile.am
++++ magic/Makefile.am	2023-01-09 14:37:10.602219227 +0000
 @@ -5,7 +5,7 @@ MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
@@ -130,14 +120,14 @@ Index: magic/Makefile.am
  $(MAGIC_FRAGMENT_DIR)/application \
  $(MAGIC_FRAGMENT_DIR)/applix \
  $(MAGIC_FRAGMENT_DIR)/apt \
-@@ -106,7 +105,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+@@ -105,7 +104,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
  $(MAGIC_FRAGMENT_DIR)/espressif \
  $(MAGIC_FRAGMENT_DIR)/esri \
  $(MAGIC_FRAGMENT_DIR)/fcs \
 -$(MAGIC_FRAGMENT_DIR)/filesystems \
  $(MAGIC_FRAGMENT_DIR)/finger \
+ $(MAGIC_FRAGMENT_DIR)/firmware \
  $(MAGIC_FRAGMENT_DIR)/flash \
- $(MAGIC_FRAGMENT_DIR)/flif \
 @@ -152,6 +150,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
  $(MAGIC_FRAGMENT_DIR)/java \
  $(MAGIC_FRAGMENT_DIR)/javascript \
@@ -176,7 +166,7 @@ Index: magic/Makefile.am
  $(MAGIC_FRAGMENT_DIR)/msooxml \
  $(MAGIC_FRAGMENT_DIR)/msvc \
  $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -261,6 +259,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
+@@ -262,6 +260,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
  $(MAGIC_FRAGMENT_DIR)/revision \
  $(MAGIC_FRAGMENT_DIR)/ringdove \
  $(MAGIC_FRAGMENT_DIR)/riff \
@@ -185,7 +175,7 @@ Index: magic/Makefile.am
  $(MAGIC_FRAGMENT_DIR)/rpi \
  $(MAGIC_FRAGMENT_DIR)/rpm \
  $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -351,9 +351,21 @@ EXTRA_DIST = \
+@@ -353,9 +353,21 @@ EXTRA_DIST = \
  $(MAGIC_DIR)/scripts/create_filemagic_flac \
  $(MAGIC_FRAGMENTS)
  
@@ -209,7 +199,7 @@ Index: magic/Makefile.am
  
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file; for now we bail if the local version does not match
-@@ -365,19 +377,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
+@@ -367,19 +379,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
  FILE_COMPILE_DEP = $(FILE_COMPILE)
  endif
  
@@ -248,11 +238,9 @@ Index: magic/Makefile.am
 +#	  fi)
 +#	$(FILE_COMPILE) -C -m magic
 +#	@rm -fr magic
-Index: magic/Makefile.in
-===================================================================
---- magic/Makefile.in.orig
-+++ magic/Makefile.in
-@@ -283,7 +283,7 @@ top_srcdir = @top_srcdir@
+--- magic/Makefile.in
++++ magic/Makefile.in	2023-01-09 14:37:31.561828862 +0000
+@@ -280,7 +280,7 @@ top_srcdir = @top_srcdir@
  MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
@@ -261,7 +249,7 @@ Index: magic/Makefile.in
  MAGIC_FRAGMENTS = \
  $(MAGIC_DIR)/Header \
  $(MAGIC_DIR)/Localstuff \
-@@ -301,7 +301,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
+@@ -298,7 +298,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
  $(MAGIC_FRAGMENT_DIR)/aout \
  $(MAGIC_FRAGMENT_DIR)/apache \
  $(MAGIC_FRAGMENT_DIR)/apl \
@@ -269,15 +257,15 @@ Index: magic/Makefile.in
  $(MAGIC_FRAGMENT_DIR)/application \
  $(MAGIC_FRAGMENT_DIR)/applix \
  $(MAGIC_FRAGMENT_DIR)/apt \
-@@ -383,7 +382,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+@@ -379,7 +378,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
  $(MAGIC_FRAGMENT_DIR)/espressif \
  $(MAGIC_FRAGMENT_DIR)/esri \
  $(MAGIC_FRAGMENT_DIR)/fcs \
 -$(MAGIC_FRAGMENT_DIR)/filesystems \
  $(MAGIC_FRAGMENT_DIR)/finger \
+ $(MAGIC_FRAGMENT_DIR)/firmware \
  $(MAGIC_FRAGMENT_DIR)/flash \
- $(MAGIC_FRAGMENT_DIR)/flif \
-@@ -429,6 +427,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+@@ -426,6 +424,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
  $(MAGIC_FRAGMENT_DIR)/java \
  $(MAGIC_FRAGMENT_DIR)/javascript \
  $(MAGIC_FRAGMENT_DIR)/jpeg \
@@ -286,7 +274,7 @@ Index: magic/Makefile.in
  $(MAGIC_FRAGMENT_DIR)/karma \
  $(MAGIC_FRAGMENT_DIR)/kde \
  $(MAGIC_FRAGMENT_DIR)/keepass \
-@@ -439,7 +439,6 @@ $(MAGIC_FRAGMENT_DIR)/lammps \
+@@ -436,7 +436,6 @@ $(MAGIC_FRAGMENT_DIR)/lammps \
  $(MAGIC_FRAGMENT_DIR)/lecter \
  $(MAGIC_FRAGMENT_DIR)/lex \
  $(MAGIC_FRAGMENT_DIR)/lif \
@@ -294,7 +282,7 @@ Index: magic/Makefile.in
  $(MAGIC_FRAGMENT_DIR)/lisp \
  $(MAGIC_FRAGMENT_DIR)/llvm \
  $(MAGIC_FRAGMENT_DIR)/locoscript \
-@@ -447,7 +446,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
+@@ -444,7 +443,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
  $(MAGIC_FRAGMENT_DIR)/luks \
  $(MAGIC_FRAGMENT_DIR)/m4 \
  $(MAGIC_FRAGMENT_DIR)/mach \
@@ -302,7 +290,7 @@ Index: magic/Makefile.in
  $(MAGIC_FRAGMENT_DIR)/macos \
  $(MAGIC_FRAGMENT_DIR)/magic \
  $(MAGIC_FRAGMENT_DIR)/mail.news \
-@@ -471,11 +469,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+@@ -468,11 +466,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
  $(MAGIC_FRAGMENT_DIR)/mkid \
  $(MAGIC_FRAGMENT_DIR)/mlssa \
  $(MAGIC_FRAGMENT_DIR)/mmdf \
@@ -315,7 +303,7 @@ Index: magic/Makefile.in
  $(MAGIC_FRAGMENT_DIR)/msooxml \
  $(MAGIC_FRAGMENT_DIR)/msvc \
  $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -538,6 +536,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
+@@ -536,6 +534,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
  $(MAGIC_FRAGMENT_DIR)/revision \
  $(MAGIC_FRAGMENT_DIR)/ringdove \
  $(MAGIC_FRAGMENT_DIR)/riff \
@@ -324,7 +312,7 @@ Index: magic/Makefile.in
  $(MAGIC_FRAGMENT_DIR)/rpi \
  $(MAGIC_FRAGMENT_DIR)/rpm \
  $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -628,10 +628,22 @@ EXTRA_DIST = \
+@@ -627,10 +627,22 @@ EXTRA_DIST = \
  $(MAGIC_DIR)/scripts/create_filemagic_flac \
  $(MAGIC_FRAGMENTS)
  
@@ -390,20 +378,16 @@ Index: magic/Makefile.in
  
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
-Index: src/Makefile.am
-===================================================================
---- src/Makefile.am.orig
-+++ src/Makefile.am
+--- src/Makefile.am
++++ src/Makefile.am	2023-01-09 14:36:25.751054574 +0000
 @@ -1,4 +1,4 @@
 -MAGIC = $(pkgdatadir)/magic
 +MAGIC = $(sysconfdir)/magic:$(pkgdatadir)/magic
  lib_LTLIBRARIES = libmagic.la
  nodist_include_HEADERS = magic.h
  
-Index: src/dcore.c
-===================================================================
---- /dev/null
-+++ src/dcore.c
+--- src/dcore.c
++++ src/dcore.c	2023-01-09 14:36:25.751054574 +0000
 @@ -0,0 +1,207 @@
 +/*
 + * Show goo about ELF core files

@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,17 +34,17 @@ Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.43
+Version:        5.44
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
-Source0:        ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz
+Source0:        https://www.astron.com/pub/file/file-%{version}.tar.gz
 Source2:        baselibs.conf
 Source3:        file-rpmlintrc
-Source4:        ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz.asc
+Source4:        https://www.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
-Patch:          file-5.42.dif
+Patch0:         file-5.44.dif
 Patch1:         file-5.19-misc.dif
 Patch4:         file-4.24-autoconf.dif
 Patch5:         file-5.14-tex.dif
@@ -63,8 +63,8 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-# Upstream mailing list
-Patch42:        file-zstd.patch
+# PATCH-FIX-UPSTREAM
+Patch42:        dc71304b.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -109,7 +109,7 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
-%patch42 -p1
+%patch42 -p0
 %patch1  -p0 -b .misc
 %patch4  -p0 -b .conf
 %patch5  -p0 -b .tex
@@ -128,8 +128,7 @@ to develop applications that require the magic "file" interface.
 %patch32 -p0 -b .clicfs
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
-
-%patch -b .0
+%patch0 -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
 

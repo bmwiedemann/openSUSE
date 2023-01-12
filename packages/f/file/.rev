@@ -1580,4 +1580,41 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1044315</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>ba0c4272b9be5beafbb91786cc255696</srcmd5>
+    <version>5.44</version>
+    <time>1673559753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch dc71304b.patch
+  * Handle script executable Zip archives
+
+- Use [Pp]atch0 explicit to avoid warning as python.magic build time
+
+- Modifying patches
+  * file-5.22-elf.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.19-biorad.dif
+  * file-secure_getenv.patch
+  * file-5.28-btrfs-image.dif
+- Remove patch file-zstd.patch now upstream
+- Port patch file-5.42.dif and rename it to file-5.44.dif
+- Update to 5.44:
+  * Handle nan's so that we don't get internal floating point exceptions
+    when they are enabled (Vincent Mihalkovic)
+  * PR/397: Restore the ability to process files from stdin immediately.
+  * fixed various clustefuzz issues
+  * Fix error detection for decompression code (Vincent Mihalkovic)
+  * Add MAGIC_NO_COMPRESS_FORK and use it to produce a more
+    meaningful error message if we are sandboxing.
+  * Add built-in lzip decompression support (Michal Gorny)
+  * Add built-in zstd decompression support (Martin Rodriguez Reboredo)
+
+- Enable tests for python-magic (not python-python-magic) 
+
+- Run pre_checkin.sh to get correct source tar ball
+
+- Update to 5.44</comment>
+    <requestid>1057786</requestid>
+  </revision>
 </revisionlist>

@@ -6,7 +6,7 @@ Index: magic/Magdir/archive
 ===================================================================
 --- magic/Magdir/archive.orig
 +++ magic/Magdir/archive
-@@ -1421,6 +1421,11 @@
+@@ -1504,6 +1504,11 @@
  0	string		PK\x07\x08PK\x03\x04	Zip multi-volume archive data, at least PKZIP v2.50 to extract
  !:mime	application/zip
  !:ext zip/cbz

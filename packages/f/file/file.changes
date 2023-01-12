@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan 11 13:06:56 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch dc71304b.patch
+  * Handle script executable Zip archives
+
+-------------------------------------------------------------------
+Tue Jan 10 13:28:51 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Use [Pp]atch0 explicit to avoid warning as python.magic build time
+
+-------------------------------------------------------------------
+Mon Jan  9 14:30:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modifying patches
+  * file-5.22-elf.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.19-biorad.dif
+  * file-secure_getenv.patch
+  * file-5.28-btrfs-image.dif
+- Remove patch file-zstd.patch now upstream
+- Port patch file-5.42.dif and rename it to file-5.44.dif
+- Update to 5.44:
+  * Handle nan's so that we don't get internal floating point exceptions
+    when they are enabled (Vincent Mihalkovic)
+  * PR/397: Restore the ability to process files from stdin immediately.
+  * fixed various clustefuzz issues
+  * Fix error detection for decompression code (Vincent Mihalkovic)
+  * Add MAGIC_NO_COMPRESS_FORK and use it to produce a more
+    meaningful error message if we are sandboxing.
+  * Add built-in lzip decompression support (Michal Gorny)
+  * Add built-in zstd decompression support (Martin Rodriguez Reboredo)
+
+-------------------------------------------------------------------
 Wed Sep 14 08:58:50 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch file-zstd.patch from upstream mailing list

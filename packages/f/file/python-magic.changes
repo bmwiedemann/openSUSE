@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 10 13:28:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Enable tests for python-magic (not python-python-magic) 
+
+-------------------------------------------------------------------
+Tue Jan 10 08:29:12 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Run pre_checkin.sh to get correct source tar ball
+
+-------------------------------------------------------------------
+Mon Jan  9 14:29:09 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 5.44
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be
@@ -17,7 +32,7 @@ Sat Mar 19 18:01:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Oct 19 09:55:47 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Update to 5.41 
+- Update to 5.41
 
 -------------------------------------------------------------------
 Sat Apr  3 07:32:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
