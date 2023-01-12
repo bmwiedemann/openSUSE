@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-magic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ahupp/python-magic
 Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
+Patch0:         https://github.com/ahupp/python-magic/commit/4ffcd591.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
@@ -52,7 +53,7 @@ identification library. It makes use of the local magic database and
 supports both textual and MIME-type output.
 
 %prep
-%setup -q -n python-magic-%{version}
+%autosetup -n python-magic-%{version} -p1
 
 %build
 %python_build
