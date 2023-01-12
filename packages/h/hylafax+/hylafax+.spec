@@ -1,7 +1,7 @@
 #
 # spec file for package hylafax+
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
+
+Patch0:         tiff_450.diff
 
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
@@ -105,6 +107,7 @@ used to access the server.
 
 %prep
 %setup -q -n hylafax-%{version}
+%autopatch -p1
 
 cp %{SOURCE8} .
 cp %{SOURCE9} .
@@ -294,6 +297,12 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_mandir}/man8/ondelay.8c%{ext_man}
 %{_mandir}/man8/probemodem.8c%{ext_man}
 %{_mandir}/man8/typetest.8c%{ext_man}
+%defattr(755,root,uucp,-)
+%dir %{faxspool}
+%dir %{faxspool}/bin
+%dir %{faxspool}%{_sysconfdir}
+%dir %{faxspool}/config
+%dir %{faxspool}/bin/dict
 %{faxspool}/config/*
 %{faxspool}/bin/dict/*
 %{faxspool}/bin/genfontmap.ps
@@ -308,10 +317,6 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %dir %{_sysconfdir}/hylafax/faxmail
 %dir %{_sysconfdir}/hylafax/faxmail/application
 %dir %{_sysconfdir}/hylafax/faxmail/image
-%dir %{faxspool}/bin
-%dir %{faxspool}%{_sysconfdir}
-%dir %{faxspool}/config
-%dir %{faxspool}/bin/dict
 %config(noreplace) %{_sysconfdir}/hylafax/hfaxd.conf
 %{_sbindir}/choptest
 %{_sbindir}/cqtest
@@ -369,13 +374,11 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_sysconfdir}/hylafax/faxmail/application/binary
 %{_sysconfdir}/hylafax/faxmail/image/tiff
 %defattr(-,uucp,uucp,-)
-%dir %{faxspool}
 %dir %{faxspool}/client
 %dir %{faxspool}/info
 %dir %{faxspool}/log
 %dir %{faxspool}/recvq
 %dir %{faxspool}/status
-%dir %{faxspool}/config
 %dir %{faxspool}/dev
 %config(noreplace) %{faxspool}%{_sysconfdir}/xferfaxlog
 %defattr(700,uucp,uucp)
