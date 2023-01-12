@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:11:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.2. Check the installed changes-6.4.2 file for the
+  full list of changes
+- Drop patches, merged upstream:
+  * 0001-Fix-a-cmake-only-build.patch
+  * 0002-Fix-a-cmake-only-build-amended.patch
+
+-------------------------------------------------------------------
 Tue Dec  6 07:34:22 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Disable two additional tests on aarch64

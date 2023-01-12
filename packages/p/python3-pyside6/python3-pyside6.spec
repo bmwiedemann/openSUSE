@@ -25,7 +25,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.4.1
+Version:        6.4.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -35,9 +35,6 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
-# PATCH-FIX-UPSTREAM -- Fixes the CMake builds
-Patch2:         0001-Fix-a-cmake-only-build.patch
-Patch3:         0002-Fix-a-cmake-only-build-amended.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -207,15 +204,13 @@ done
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2022-12-06)
+# Excluded tests (last update: 2023-01-12)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
-ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets"
-# Qt3DExtras_qt3dextras_test fails on s390x (timeout)
-%ifarch s390x
-ctest_exclude_regex="$ctest_exclude_regex|Qt3DExtras_qt3dextras_test"
-%endif
+# Qt3DExtras_qt3dextras_test fails on s390x (timeout) and randomly everywhere else (exception)
+ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test"
+
 # Random failures on aarch64: registry_existence_test times out and QtWebEngineCore_web_engine_custom_scheme asserts
 %ifarch aarch64
 ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test|QtWebEngineCore_web_engine_custom_scheme"

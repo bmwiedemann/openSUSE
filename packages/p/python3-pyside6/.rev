@@ -109,4 +109,12 @@
     <comment>Update to 6.4.1</comment>
     <requestid>1040522</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4bc654796f507d45b807313e6cc78757</srcmd5>
+    <version>6.4.2</version>
+    <time>1673559915</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.2 (forwarded request 1058031 from krop)</comment>
+    <requestid>1058032</requestid>
+  </revision>
 </revisionlist>
