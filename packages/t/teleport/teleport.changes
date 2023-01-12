@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 12 06:03:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 11.2.1:
+  * Release 11.2.1 (#20113)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#20102)
+  * [v11] chore: Bump Go to 1.19.5 (#20084)
+  * [v11] Minor docs fixes (#20006)
+  * Update config example to turn off ssh, proxy, auth and use teleport start example (#20076)
+  * revert plugin version (#20093)
+  * Update webassets in preparation for 11.2.1 release (#20074)
+  * Fix RFD link in the Directory Sharing guide (#20062)
+  * [v11] Periodically reload proxy certificates (#20040)
+  * Remove RW on `license` and `download` from preset editor role (#19997) (#20033)
+  * Unbundle TestAppInvalidateAppSessionsOnLogout (#20037)
+  * Change "name" to "sAMAccountName" (#20022)
+  * Fix bot IAM joining (#20011)
+  * docs: update version to 11.2.0 (#19971)
+  * Fix Machine ID Certificate TTL on IAM join (#20001)
+  * [v11] Make Connect's --insecure flag easier to find in docs (#19991)
+  * Use one Buf workspace instead of three (#19774) (#19990)
+
+-------------------------------------------------------------------
 Sat Jan 07 14:58:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 11.2.0:
