@@ -719,4 +719,14 @@
     gh#PyO3/maturin#1381</comment>
     <requestid>1056955</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6fad8bd9fd25c1c680a4a5a4606a326c</srcmd5>
+    <version>0.14.9</version>
+    <time>1673559874</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't pass MACOSX_DEPLOYMENT_TARGET when query default value from
+  rustc
+  gh#PyO3/maturin#1395</comment>
+    <requestid>1057818</requestid>
+  </revision>
 </revisionlist>

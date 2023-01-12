@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 11 15:09:08 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Don't pass MACOSX_DEPLOYMENT_TARGET when query default value from
+  rustc
+  gh#PyO3/maturin#1395
+
+-------------------------------------------------------------------
 Mon Jan  9 01:59:53 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.14.8:
@@ -310,49 +317,62 @@ Wed Jul 27 01:09:20 UTC 2022 - Mia Herkt <mia@0x0.st>
 Mon Jul 18 21:19:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 -  Update to v0.13.0
-  * Drop python 3.6 by @konstin in #945
+  * Drop python 3.6
+    gh#PyO3/maturin#945
   * Add support for building with multiple binary targets by
     @messense in #948
   * Add a --target option to maturin list-python command by
     @messense in #957
   * Add support for using bundled python sysconfigs for PyPy when
-    abi3 feature is enabled by @messense in #958
+    abi3 feature is enabled
+    gh#PyO3/maturin#958
   * Filter cargo targets by kind instead of crate_types by
     @messense in #959
   * Don't build sdist by default in maturin build command by
     @messense in #955
   * Add support for cross compiling PyPy wheels when abi3 feature
-    is enabled by @messense in #963
+    is enabled
+    gh#PyO3/maturin#963
   * Update actions/checkout and actions/setup-python versions by
     @messense in #965
   * Add --find-interpreter option to build and publish commands by
     @messense in #964
   * Infer target triple from ARCHFLAGS for macOS by @messense in
     #967
-  * Add bootstrap from sdist test to CI by @messense in #968
+  * Add bootstrap from sdist test to CI
+    gh#PyO3/maturin#968
   * Upload wheel artifacts in bootstrap test for inspection by
     @messense in #971
   * Expose commonly used Cargo CLI options in maturin build command
-    by @messense in #972
+
+    gh#PyO3/maturin#972
   * Add support for wasm32-unknown-emscripten target by @messense
     in #974
   * Allow overriding platform release version using env var by
     @messense in #975
   * Don't warn if package not listed in cargo metadata is a
-    dependency of Rust std by @messense in #976
+    dependency of Rust std
+    gh#PyO3/maturin#976
   * Fix Emscripten CI: Pyodide packages.json was moved to
-    repodata.json by @hoodmane in #977
+    repodata.json
+    gh#PyO3/maturin#977
   * Emscripten: Use -Z link-native-libraries=no and remove emcc
-    wrapper by @hoodmane in #978
+    wrapper
+    gh#PyO3/maturin#978
   * Fix maturin develop for arm64 Python on M1 Mac when default
-    toolchain is x86_64 by @messense in #980
-  * Improvements to Emscripten/Pyodide CI by @hoodmane in #983
+    toolchain is x86_64
+    gh#PyO3/maturin#980
+  * Improvements to Emscripten/Pyodide CI
+    gh#PyO3/maturin#983
   * Setup Pyodide with nox for easier local testing by @messense in
     #984
-  * Remove -Zbuild-std for Emscripten target by @messense in #986
-  * Add --repository option to upload command by @messense in #987
+  * Remove -Zbuild-std for Emscripten target
+    gh#PyO3/maturin#986
+  * Add --repository option to upload command
+    gh#PyO3/maturin#987
   * Only lookup bundled Python sysconfig when interpreters aren't
-    specified as file path by @messense in #988
+    specified as file path
+    gh#PyO3/maturin#988
   * Align some maturin build options with cargo by @messense in
     #991
   * Find CPython upper to 3.12 and PyPy upper to 3.10 by @messense
@@ -360,9 +380,12 @@ Mon Jul 18 21:19:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
   * Add aliases for maturin build and develop subcommands by
     @messense in #994
   * Update zbus to 1.9.3 to fix GHSA-76w9-p8mg-j927 and
-    GHSA-wgrg-5h56-jg27 by @messense in #996
-  * Update to Rust 1.62 for Docker image by @messense in #997
-  * Upgrade setuptools-rust to 1.4.0 by @messense in #998
+    GHSA-wgrg-5h56-jg27
+    gh#PyO3/maturin#996
+  * Update to Rust 1.62 for Docker image
+    gh#PyO3/maturin#997
+  * Upgrade setuptools-rust to 1.4.0
+    gh#PyO3/maturin#998
   * Bump openssl-src from 111.21.0+1.1.1p to 111.22.0+1.1.1q by
     @dependabot in #1000
   * Update user guide for the upcoming 0.13 release by @messense in
