@@ -1,7 +1,7 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2001-2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 %global modprobe_d_files 90-s390-tools.conf
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define _mysbindir %{_sbindir}
 %else
 %define _mysbindir /sbin
@@ -49,7 +49,7 @@ Source6:        sysconfig.xpram
 Source7:        appldata
 Source8:        sysconfig.appldata
 Source10:       dasdro
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source11:       dasd_reload.opensuse
 Source12:       mkdump.pl.opensuse
 %else
@@ -62,13 +62,13 @@ Source15:       mkdump.8
 Source18:       zpxe.rexx
 Source19:       rules.xpram
 Source20:       rules.hw_random
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source21:       59-graf.rules.opensuse
 %else
 Source21:       59-graf.rules.suse
 %endif
 Source22:       s390-tools-zdsfs.caution.txt
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source23:       README.SUSE.opensuse
 %else
 Source23:       README.SUSE.suse
@@ -80,7 +80,7 @@ Source27:       setup_cio_ignore.sh
 Source28:       59-prng.rules
 Source29:       59-zfcp-compat.rules
 Source30:       90-s390-tools.conf
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source31:       detach_disks.sh.opensuse
 Source32:       killcdl.opensuse
 %else
@@ -90,14 +90,14 @@ Source32:       killcdl.suse
 Source33:       lgr_check
 Source34:       sysconfig.virtsetup
 Source35:       virtsetup.service
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source36:       virtsetup.sh.opensuse
 %else
 Source36:       virtsetup.sh.suse
 %endif
 Source37:       appldata.service
 Source38:       hsnc.service
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source39:       vmlogrdr.service.opensuse
 %else
 Source39:       vmlogrdr.service.suse
@@ -110,7 +110,7 @@ Source41:       pkey.conf
 Source86:       read_values.c
 Source87:       read_values.8
 Source88:       ctc_configure
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Source89:       dasd_configure.opensuse
 Source90:       iucv_configure.opensuse
 %else
@@ -134,7 +134,7 @@ Patch001:       s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.pat
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
 Patch902:       s390-tools-sles12-create-filesystem-links.patch
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.opensuse
 %else
 Patch903:       s390-tools-sles12-update-by_id-links-on-change-and-add-action.patch.suse
@@ -347,7 +347,7 @@ install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
 
 # The "usrmerge" has happened in openSUSE:Factory, but not yet in SLES.
 # Make sure we look for the zfcpdump kernel image in the right place.
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 install -D -m600 %{_prefix}/lib/modules/*-zfcpdump/image %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
 %else
 install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
@@ -425,7 +425,7 @@ install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 # If building for openSUSE, move all the binaries installed via
 # the IBM-provided Makefile from /sbin to /usr/sbin/ to
 # align with the openSUSE "usrmerge" project
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 mv -vi %{buildroot}/sbin/* %{buildroot}%{_mysbindir}/
 %endif
 

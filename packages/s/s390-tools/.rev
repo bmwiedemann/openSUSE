@@ -631,4 +631,15 @@
     <comment></comment>
     <requestid>1057742</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>fc379ea92400664fb421ef97000c5aca</srcmd5>
+    <version>2.25.0</version>
+    <time>1673559876</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated read_values.c for z16 machine type (bsc#1206832)
+  * Added the IBM LinuxONE Emperor 4 machine type
+- Updated read_values.c for z16 machine type (bsc#1206832) 
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)</comment>
+    <requestid>1057829</requestid>
+  </revision>
 </revisionlist>
