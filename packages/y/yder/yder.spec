@@ -1,8 +1,8 @@
 #
 # spec file for package yder
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2018-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2018-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.18
+Version:        1.4.19
 Release:        0
 Summary:        Logging library written in C
 # Example programs in subfolder examples/ are licensed under MIT
@@ -82,6 +82,7 @@ rm -rf %{buildroot}/%{_datadir}/doc/
 %{_includedir}/yder.h
 %{_includedir}/yder-cfg.h
 %{_libdir}/libyder.so
+%{_libdir}/cmake/Yder
 %{_libdir}/pkgconfig/libyder.pc
 
 %changelog
