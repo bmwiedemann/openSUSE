@@ -4213,4 +4213,36 @@ oddjob-gpupdate isn't blocked)</comment>
   * Start using new ruff linter.</comment>
     <requestid>1043873</requestid>
   </revision>
+  <revision rev="430" vrev="1">
+    <srcmd5>f557472bc5ecb25be569b4ed365bd4af</srcmd5>
+    <version>2.4.0+git20230111.8ae3cb5</version>
+    <time>1673559863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230111.8ae3cb5:
+  * Files in /etc/pam.d/ should be moved to /usr
+
+- Update to version 2.4.0+git20230111.cd8d2e8:
+  * magic: remove python2 support and simplify
+  * Remove Python 2 support in generate-isocodes.py
+
+- Update to version 2.4.0+git20230110.6b6e36c:
+  * Use badge for entire devel package in OBS.
+  * zypper-plugins: complement test whitelisting by a mismatching entry
+
+- Update to version 2.4.0+git20230106.738df37:
+  * speed up parsing of ElfSectionInfo
+
+- Update to version 2.4.0+git20230106.c39f6c2:
+  * Relax no-binary and noarch-with-lib64 checks
+
+- Update to version 2.4.0+git20230106.ba0020a:
+  * Update openSUSE's licenses.toml
+  * Franklin Street address is ok
+
+- Update to version 2.4.0+git20230105.c9a861d:
+  * openSUSE: new whitelisting restriction for zypper plugins (bsc#1204314)
+  * Update D-Bus whitelisting for NetworkManager-iodine (bsc#1206756)
+  * Add OBS badge.</comment>
+    <requestid>1057792</requestid>
+  </revision>
 </revisionlist>

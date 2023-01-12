@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jan 11 14:08:35 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230111.8ae3cb5:
+  * Files in /etc/pam.d/ should be moved to /usr
+
+-------------------------------------------------------------------
+Wed Jan 11 10:10:22 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230111.cd8d2e8:
+  * magic: remove python2 support and simplify
+  * Remove Python 2 support in generate-isocodes.py
+
+-------------------------------------------------------------------
+Tue Jan 10 10:20:43 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230110.6b6e36c:
+  * Use badge for entire devel package in OBS.
+  * zypper-plugins: complement test whitelisting by a mismatching entry
+
+-------------------------------------------------------------------
+Fri Jan 06 14:57:11 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230106.738df37:
+  * speed up parsing of ElfSectionInfo
+
+-------------------------------------------------------------------
+Fri Jan 06 14:01:31 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230106.c39f6c2:
+  * Relax no-binary and noarch-with-lib64 checks
+
+-------------------------------------------------------------------
+Fri Jan 06 08:49:47 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230106.ba0020a:
+  * Update openSUSE's licenses.toml
+  * Franklin Street address is ok
+
+-------------------------------------------------------------------
+Thu Jan 05 18:06:28 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230105.c9a861d:
+  * openSUSE: new whitelisting restriction for zypper plugins (bsc#1204314)
+  * Update D-Bus whitelisting for NetworkManager-iodine (bsc#1206756)
+  * Add OBS badge.
+
+-------------------------------------------------------------------
 Tue Dec 20 08:33:46 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221220.12af927:
