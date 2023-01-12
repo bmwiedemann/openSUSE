@@ -1984,6 +1984,7 @@ unsorted:
   - chntpw 
   - chocolate-doom 
   - chocolate-doom-bash-completion 
+  - choose 
   - choqok 
   - choqok-devel 
   - chromaprint-fpcalc 
@@ -3250,6 +3251,10 @@ unsorted:
   - duplicity 
   - duplicity-lang 
   - duply 
+  - dust 
+  - dust-bash-completion 
+  - dust-fish-completion 
+  - dust-zsh-completion 
   - dustrac 
   - dvb-utils 
   - dvbcut 
@@ -5799,6 +5804,7 @@ unsorted:
   - ghex-devel 
   - ghex-lang 
   - ghostscript-devel 
+  - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -7210,6 +7216,8 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
+  - hylafax+ 
+  - hylafax+-client 
   - hyper-v-enhanced-session 
   - hyperfine 
   - hyperfine-bash-completion 
@@ -10978,7 +10986,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_37-0 
+  - libevtlog-4_0-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -11034,6 +11042,7 @@ unsorted:
   - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
+  - libfaxutil7_0_6 
   - libfcache-devel 
   - libfcache1 
   - libfcft4 
@@ -15760,7 +15769,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-default 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -16534,6 +16543,7 @@ unsorted:
   - mccs 
   - mcds 
   - mcelog: [i586] 
+  - mcfly 
   - mchange-commons 
   - mcjoin 
   - mcomix 
@@ -19485,8 +19495,10 @@ unsorted:
   - pentobi 
   - percona-toolkit 
   - perf 
+  - perf-bash-completion 
   - perf-devel 
   - perf-gtk 
+  - perf-rebuild 
   - perftest 
   - perl-32bit: [x86_64] 
   - perl-Acme-Damn 
@@ -21593,6 +21605,7 @@ unsorted:
   - protobuf-devel 
   - protobuf-java 
   - protobuf-source 
+  - protonvpn-cli 
   - protonvpn-gui 
   - proxychains-ng 
   - prun-ohpc 
@@ -33380,6 +33393,7 @@ unsorted:
   - salt-ssh 
   - salt-standalone-formulas-configuration 
   - salt-syndic 
+  - salt-tests 
   - salt-zsh-completion 
   - samba-ad-dc 
   - samba-ceph: [x86_64] 
@@ -43062,6 +43076,7 @@ unsorted:
   - tidy 
   - tidy-doc 
   - tidyp 
+  - tiff 
   - tig 
   - tig-bash-completion 
   - tig-zsh-completion 
