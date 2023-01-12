@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-Pint
-Version:        0.19.2
+Version:        0.20.1
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause

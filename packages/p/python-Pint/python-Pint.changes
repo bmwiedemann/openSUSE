@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan  4 20:05:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.1:
+  * Reorganized code into facets.
+  * The definition parser is now completely appart, making it easy to try other formats.
+  * Extra requires for optional packages are now explicit in setup.cfg
+  * Parse both Greek mu and micro Unicode points without error.
+  * Added angular frequency documentation page.
+  * Move ASV benchmarks to dedicated folder. (Issue #1542)
+  * Implement `numpy.broadcast_arrays` (#1607)
+  * An ndim attribute has been added to Quantity and DataFrame has been added to upcast
+    types for pint-pandas compatibility. (#1596)
+  * Fix a recursion error that would be raised when passing quantities to `cond` and `x`.
+  * Update test_non_int tests for pytest.
+  * Create NaN-value quantities of appropriate non-int-type (Issue #1570).
+  * New documentation format and organization!
+  * Better support for pandas and dask. 
+
+-------------------------------------------------------------------
 Tue May 31 03:00:36 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
