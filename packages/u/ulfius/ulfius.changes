@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 12 07:59:52 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.12
+  * Improve cmake script.
+  * Minor bugfixes
+  * Add cmake build flag WITH_WEBSOCKET_MESSAGE_LIST to completely
+    disable message lists storage in websockets.
+
+-------------------------------------------------------------------
 Sat Oct 15 19:52:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.11
