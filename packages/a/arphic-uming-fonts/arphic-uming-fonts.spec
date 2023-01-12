@@ -1,7 +1,7 @@
 #
 # spec file for package arphic-uming-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,11 @@ Name:           arphic-uming-fonts
 Version:        0.2.20080216.1
 Release:        0
 Summary:        CJK Unicode Font Ming Style
-License:        SUSE-Arphic
+License:        Arphic-1999
+# rpmlint has not been updated yet to reflect the new license names already present on
+# format specfile https://github.com/rpm-software-management/rpmlint/pull/982
 Group:          System/X11/Fonts
-Url:            http://www.freedesktop.org/wiki/Software/CJKUnifonts/
+URL:            http://www.freedesktop.org/wiki/Software/CJKUnifonts/
 # download      http://ftp.tw.debian.org/debian/pool/main/t/ttf-arphic-uming/ttf-arphic-uming_0.1.20060928.orig.tar.bz2
 Source0:        ttf-arphic-uming-0.2.20080216.1.tar.bz2
 BuildRequires:  fontpackages-devel
