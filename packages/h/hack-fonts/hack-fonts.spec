@@ -1,7 +1,7 @@
 #
 # spec file for package hack-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Alexander Evseev
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,11 @@ Name:           hack-fonts
 Version:        3.003
 Release:        0
 Summary:        A typeface designed for source code
-License:        MIT AND SUSE-Bitstream-Vera
+License:        Bitstream-Vera AND MIT
+# rpmlint has not been updated yet to reflect the new license names already present on
+# format specfile https://github.com/rpm-software-management/rpmlint/pull/982
 Group:          System/X11/Fonts
-Url:            http://sourcefoundry.org/hack/
+URL:            http://sourcefoundry.org/hack/
 Source:         https://github.com/source-foundry/Hack/releases/download/v%{version}/%{realname}-v%{version}%{?extraver}.%{srcext}
 Source1:        README.md
 Source2:        LICENSE.md
