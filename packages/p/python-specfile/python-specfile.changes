@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 12 10:27:28 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Remove patch (already upstream):
+  * python-specfile-improve-setup-cfg.patch
+
+- Update to version 0.12.0:
+  * All classes including `Specfile` itself can now be copied using
+    the standard `copy()` and `deepcopy()` functions from `copy` 
+    module.
+  * `Section.name` attribute has been renamed to a more fitting 
+    `Section.id`.
+  * `setup.cfg` now uses `license_files` instead of deprecated 
+    `license_file`.
+
+-------------------------------------------------------------------
 Tue Dec 13 08:20:36 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Add config.cfg improvements to remove deprecation warnings
@@ -7,7 +22,7 @@ Tue Dec 13 08:20:36 UTC 2022 - David Anes <david.anes@suse.com>
 - Update to version 0.11.1
   * Tags enclosed in conditional macro expansions are not ignored 
     anymore.
-  * Fixed context managers being shared between Specfile instances. 1q
+  * Fixed context managers being shared between Specfile instances.
 
 - Update to version 0.11.0 
   * Context managers (Specfile.sections(), Specfile.tags() etc.) can

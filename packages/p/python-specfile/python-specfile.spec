@@ -1,7 +1,7 @@
 #
 # spec file for package python-specfile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,17 @@
 
 %define skip_python38 1
 Name:           python-specfile
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
 URL:            https://github.com/packit/specfile
 Source:         https://files.pythonhosted.org/packages/source/s/specfile/specfile-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module rpm}
@@ -37,10 +39,6 @@ BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 Requires:       python-rpm
 Requires:       python-typing-extensions
-
-# PATCH-SUSE: some improvements that are still pending upstream
-# https://github.com/packit/specfile/pull/162
-Patch0:         python-specfile-improve-setup-cfg.patch
 
 BuildArch:      noarch
 
@@ -55,7 +53,7 @@ A library for parsing and manipulating RPM spec files.
 sed -i '/rpm-py-installer/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 # Following tests fail:
@@ -64,7 +62,7 @@ sed -i '/rpm-py-installer/d' setup.cfg
 %pytest -k "not (test_update_tag or test_macros_reinit)"
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
