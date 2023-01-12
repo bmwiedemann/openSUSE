@@ -90,4 +90,15 @@
     <comment></comment>
     <requestid>918869</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9b4898d0fa55f483e3055c857019662f</srcmd5>
+    <version>5.15.5</version>
+    <time>1673559869</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge -sip and -api package into -devel
+
+- Update to 5.15.5
+  * Added support for Python v3.10.</comment>
+    <requestid>1057815</requestid>
+  </revision>
 </revisionlist>

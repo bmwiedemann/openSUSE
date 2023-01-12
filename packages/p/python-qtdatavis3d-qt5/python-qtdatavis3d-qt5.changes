@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 11 14:57:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Merge -sip and -api package into -devel
+
+-------------------------------------------------------------------
+Wed Jan 11 09:24:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.15.5
+  * Added support for Python v3.10.
+
+-------------------------------------------------------------------
 Mon Sep 13 15:58:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove the Supplements for python-sip -- boo#1190441

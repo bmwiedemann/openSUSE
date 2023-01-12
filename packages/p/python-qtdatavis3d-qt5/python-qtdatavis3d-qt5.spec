@@ -16,12 +16,12 @@
 #
 
 
-%define oldpython python
+%define plainpython python
 %define mname qtdatavis3d-qt5
-%{?!python_module:%define python_module() python3-%{**}}
+
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.4
+Version:        5.15.5
 Release:        0
 Summary:        Python bindings for the Qt5 Data Visualization library
 License:        GPL-3.0-only
@@ -45,25 +45,26 @@ Provides:       python-PyQtDataVisualization = %{version}-%{release}
 PyQtDataVisualization is a set of Python bindings for the Qt5 Data
 Visualization library.
 
-%package        api
-Summary:        Eric API files for %{name}
-Group:          Development/Libraries/C and C++
-Supplements:    packageand(eric:python-%{mname})
 
-%description    api
-This package provides Qt5 Data Visualization library API files for the
-Eric IDE.
-
-%package sip
-Summary:        Sip files for %{name}
+%package devel
+Summary:        Sip and eric API files for %{name}
 Group:          Development/Libraries/Python
-Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
-Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
+Provides:       python-%{mname}-sip = %{version}-%{release}
+Obsoletes:      python-%{mname}-sip < %{version}-%{release}
+Provides:       python-%{mname}-api = %{version}-%{release}
+Obsoletes:      python-%{mname}-api < %{version}-%{release}
+Provides:       %{plainpython}-%{mname}-sip = %{version}-%{release}
+Obsoletes:      %{plainpython}-%{mname}-sip < %{version}-%{release}
+Provides:       %{plainpython}-%{mname}-api = %{version}-%{release}
+Obsoletes:      %{plainpython}-%{mname}-api < %{version}-%{release}
 Requires:       python-qt5-devel
+Requires:       %{plainpython}(abi) = %{python_version}
+Supplements:    (eric and python-%{mname})
+Supplements:    (python-qt5-devel and python-%{mname})
 
-%description sip
-This package provides the SIP files used to generate the Python bindings for
-%{name}
+%description devel
+This package provides the SIP files used to generate the Python bindings 
+and Qt5 Data Visualization library API files for the Eric IDE for %{name}.
 
 %package doc
 Summary:        Examples for %{name}
@@ -91,14 +92,11 @@ This package provides %{name} examples.
 %{python_sitearch}/PyQt5/QtDataVisualization.*
 %{python_sitearch}/PyQtDataVisualization-%{version}.dist-info/
 
-%files %{python_files api}
-%license LICENSE
-%dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
-%{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQtDataVisualization.api
-
-%files %{python_files sip}
+%files %{python_files devel}
 %license LICENSE
 %{pyqt5_sipdir}/QtDataVisualization/
+%dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
+%{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQtDataVisualization.api
 
 %files %{python_files doc}
 %license LICENSE
