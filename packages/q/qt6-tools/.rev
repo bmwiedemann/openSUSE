@@ -175,4 +175,13 @@
     <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
     <requestid>1057282</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d0630c8744c71905f253034ce2482d8f</srcmd5>
+    <version>6.4.2</version>
+    <time>1673559880</time>
+    <user>dimstar_suse</user>
+    <comment>- Leap 15.4 doesn't have llvm11 but llvm13 so just use that in
+  SP4 and llvm15 in SP5. (forwarded request 1057858 from krop)</comment>
+    <requestid>1057859</requestid>
+  </revision>
 </revisionlist>

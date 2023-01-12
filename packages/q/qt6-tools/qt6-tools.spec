@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,11 +46,15 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
-# clang-devel in Leap 15.3 points to clang7...
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
-BuildRequires:  clang11-devel
+# clang-devel in Leap 15 points to clang7...
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150400
+BuildRequires:  clang13-devel
+%else
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150500
+BuildRequires:  clang15-devel
 %else
 BuildRequires:  clang-devel >= 8
+%endif
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig

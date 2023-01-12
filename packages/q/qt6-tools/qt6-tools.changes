@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 11 20:07:37 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Leap 15.4 doesn't have llvm11 but llvm13 so just use that in
+  SP4 and llvm15 in SP5.
+
+-------------------------------------------------------------------
+Wed Jan 11 19:29:26 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix condition to use llvm11 in SLE 15 SP5 instead of the default
+  llvm7.
+
+-------------------------------------------------------------------
 Fri Jan  6 16:46:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.2:
