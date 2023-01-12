@@ -1,4 +1,217 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:52:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.2
+  * |Feature| Added the objects.KDE stat (#3111).
+  * |Feature| Added the objects.Boolean scale (#3205).
+  * |Enhancement| Improved user feedback for failures during plot
+    compilation by catching exceptions and re-raising with a
+    PlotSpecError that provides additional context. (#3203).
+  * |Fix| Improved calculation of automatic mark widths with
+    unshared facet axes (#3119).
+  * |Fix| Improved robustness to empty data in several components
+    of the objects interface (#3202).
+  * |Fix| Fixed a bug where legends for numeric variables with
+    large values would be incorrectly shown (i.e. with a missing
+    offset or exponent; #3187).
+  * |Fix| Fixed a regression in v0.12.0 where manually-added labels
+    could have duplicate legend entries (#3116).
+  * |Fix| Fixed a bug in histplot with kde=True and log_scale=True
+    where the curve was not scaled properly (#3173).
+  * |Fix| Fixed a bug in relplot where inner axis labels would be
+    shown when axis sharing was disabled (#3180).
+  * |Fix| Fixed a bug in objects.Continuous to avoid an exception
+    with boolean data (#3190).
+- Release 0.12.1
+  * Added the objects.Text mark (#3051).
+  * Added the objects.Dash mark (#3074).
+  * Added the objects.Perc stat (#3063).
+  * Added the objects.Count stat (#3086).
+  * The objects.Band and objects.Range marks will now cover the
+    full extent of the data if min / max variables are not
+    explicitly assigned or added in a transform (#3056).
+  * The objects.Jitter move now applies a small amount of jitter by
+    default (#3066).
+  * Axes with a objects.Nominal scale now appear like categorical
+    axes in classic seaborn, with fixed margins, no grid, and an
+    inverted y axis (#3069).
+  * The objects.Continuous.label method now accepts base=None to
+    override the default formatter with a log transform (#3087).
+  * Marks that sort along the orient axis (e.g. objects.Line) now
+    use a stable algorithm (#3064).
+  * Added a label parameter to pointplot, which addresses a
+    regression in 0.12.0 when pointplot is passed to FacetGrid
+    (#3016).
+  * Fixed a bug that caused an exception when more than two layers
+    with the same mappings were added to objects.Plot (#3055).
+  * Made objects.PolyFit robust to missing data (#3010).
+  * Fixed a bug in objects.Plot that occurred when data assigned to
+    the orient coordinate had zero variance (#3084).
+  * Fixed a regression in kdeplot where passing cmap for an
+    unfilled bivariate plot would raise an exception (#3065).
+  * Addressed a performance regression in lineplot with a large
+    number of unique x values (#3081).
+  * Seaborn no longer contains doctest-style examples, simplifying
+    the testing infrastructure (#3034).
+- Release 0.12.0
+  ## Introduction of the objects interface
+  * This release debuts the seaborn.objects interface, an entirely
+    new approach to making plots with seaborn. It is the product of
+    several years of design and 16 months of implementation work.
+    The interface aims to provide a more declarative, composable,
+    and extensible API for making statistical graphics. It is
+    inspired by Wilkinson's grammar of graphics, offering a
+    Pythonic API that is informed by the design of libraries such
+    as ggplot2 and vega-lite along with lessons from the past 10
+    years of seaborn's development.
+  * For more information and numerous examples, see the tutorial
+    chapter and API reference.
+  * This initial release should be considered "experimental". While
+    it is stable enough for serious use, there are definitely some
+    rough edges, and some key features remain to be implemented. It
+    is possible that breaking changes may occur over the next few
+    minor releases. Please be patient with any limitations that you
+    encounter and help the development by reporting issues when you
+    find behavior surprising.
+  ## Keyword-only arguments
+  * Seaborn's plotting functions now require explicit keywords for
+    most arguments, following the deprecation of positional
+    arguments in v0.11.0. With this enforcement, most functions
+    have also had their parameter lists rearranged so that data is
+    the first and only positional argument. This adds consistency
+    across the various functions in the library. It also means that
+    calling func(data) will do something for nearly all functions
+    (those that support wide-form data) and that pandas.DataFrame
+    can be piped directly into a plot. It is possible that the
+    signatures will be loosened a bit in future releases so that x
+    and y can be positional, but minimal support for positional
+    arguments after this change will reduce the chance of
+    inadvertent mis-specification (2804).
+  ## Modernization of categorical scatterplots
+  * This release begins the process of modernizing the categorical
+    plots, beginning with stripplot and swarmplot. These functions
+    are sporting some enhancements that alleviate a few
+    long-running frustrations (2413, 2447):
+  * The new native_scale parameter allows numeric or datetime
+    categories to be plotted with their original scale rather than
+    converted to strings and plotted at fixed intervals.
+  * The new formatter parameter allows more control over the string
+    representation of values on the categorical axis. There should
+    also be improved defaults for some types, such as dates.
+  * It is now possible to assign hue when using only one coordinate
+    variable (i.e. only x or y).
+  * It is now possible to disable the legend.
+  * The updates also harmonize behavior with functions that have
+    been more recently introduced. This should be relatively
+    non-disruptive, although a few defaults will change:
+  * The functions now hook into matplotlib's unit system for
+    plotting categorical data. (Seaborn's categorical functions
+    actually predate support for categorical data in matplotlib.)
+    This should mostly be transparent to the user, but it may
+    resolve a few edge cases. For example, matplotlib interactivity
+    should work better (e.g., for showing the data value under the
+    cursor).
+  * A color palette is no longer applied to levels of the
+    categorical variable by default. It is now necessary to
+    explicitly assign hue to see multiple colors (i.e., assign the
+    same variable to x/y and hue). Passing palette without hue will
+    continue to be honored for one release cycle.
+  * Numeric hue variables now receive a continuous mapping by
+    default, using the same rules as scatterplot. Pass
+    palette="deep" to reproduce previous defaults.
+  * The plots now follow the default property cycle; i.e. calling
+    an axes-level function multiple times with the same active axes
+    will produce different-colored artists.
+  * Currently, assigning hue and then passing a color will produce
+    a gradient palette. This is now deprecated, as it is easy to
+    request a gradient with, e.g. palette="light:blue".
+  * Similar enhancements / updates should be expected to roll out
+    to other categorical plotting functions in future releases.
+    There are also several function-specific enhancements:
+  * In stripplot, a "strip" with a single observation will be
+    plotted without jitter (2413)
+  * In swarmplot, the points are now swarmed at draw time, meaning
+    that the plot will adapt to further changes in axis scaling or
+    tweaks to the plot layout (2443).
+  * In swarmplot, the proportion of points that must overlap before
+    issuing a warning can now be controlled with the warn_thresh
+    parameter (2447).
+  * In swarmplot, the order of the points in each swarm now matches
+    the order in the original dataset; previously they were sorted.
+    This affects only the underlying data stored in the matplotlib
+    artist, not the visual representation (2443).
+  ## More flexible errorbars
+  * Increased the flexibility of what can be shown by the
+    internally-calculated errorbars for lineplot, barplot, and
+    pointplot.
+  * With the new errorbar parameter, it is now possible to select
+    bootstrap confidence intervals, percentile / predictive
+    intervals, or intervals formed by scaled standard deviations or
+    standard errors. The parameter also accepts an arbitrary
+    function that maps from a vector to an interval. There is a new
+    user guide chapter demonstrating these options and explaining
+    when you might want to use each one.
+  * As a consequence of this change, the ci parameter has been
+    deprecated. Note that regplot retains the previous API, but it
+    will likely be updated in a future release (2407, 2866).
+  ## Other updates
+  * It is now possible to aggregate / sort a lineplot along the y
+    axis using orient="y" (2854).
+  * Made it easier to customize FacetGrid / PairGrid / JointGrid
+    with a fluent (method-chained) style by adding apply/ pipe
+    methods. Additionally, fixed the tight_layout and refline
+    methods so that they return self (2926).
+  * Added FacetGrid.tick_params and PairGrid.tick_params to
+    customize the appearance of the ticks, tick labels, and
+    gridlines of all subplots at once (2944).
+  * Added a width parameter to barplot (2860).
+  * It is now possible to specify estimator as a string in barplot
+    and pointplot, in addition to a callable (2866).
+  * Error bars in regplot now inherit the alpha value of the points
+    they correspond to (2540).
+  * When using pairplot with corner=True and diag_kind=None, the
+    top left y axis label is no longer hidden (2850).
+  * It is now possible to plot a discrete histplot as a step
+    function or polygon (2859).
+  * It is now possible to customize the appearance of elements in a
+    boxenplot with box_kws/line_kws/flier_kws (2909).
+  * Improved integration with the matplotlib color cycle in most
+    axes-level functions (2449).
+  * Fixed a regression in 0.11.2 that caused some functions to
+    stall indefinitely or raise when the input data had a duplicate
+    index (2776).
+  * Fixed a bug in histplot and kdeplot where weights were not
+    factored into the normalization (2812).
+  * Fixed two edgecases in histplot when only binwidth was provided
+    (2813).
+  * Fixed a bug in violinplot where inner boxes/points could be
+    missing with unpaired split violins (2814).
+  * Fixed a bug in PairGrid where an error would be raised when
+    defining hue only in the mapping methods (2847).
+  * Fixed a bug in scatterplot where an error would be raised when
+    hue_order was a subset of the hue levels (2848).
+  * Fixed a bug in histplot where dodged bars would have different
+    widths on a log scale (2849).
+  * In lineplot, allowed the dashes keyword to set the style of a
+    line without mapping a style variable (2449).
+  * Improved support in relplot for "wide" data and for faceting
+    variables passed as non-pandas objects (2846).
+  * Subplot titles will no longer be reset when calling
+    FacetGrid.map or FacetGrid.map_dataframe (2705).
+  * Added a workaround for a matplotlib issue that caused
+    figure-level functions to freeze when plt.show was called
+    (2925).
+  * Improved robustness to numerical errors in kdeplot (2862).
+  * Fixed a bug where rugplot was ignoring expand_margins=False
+    (2953).
+  * The patch.facecolor rc param is no longer set by set_palette
+    (or set_theme). This should have no general effect, because the
+    matplotlib default is now "C0" (2906).
+  * Made scipy an optional dependency and added <span class="...
+- Move to PEP517 build with flit-core
+- Drop seaborn-pr2562-clustermap-colors.patch
+
+-------------------------------------------------------------------
 Mon Nov 14 09:38:03 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,40 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-seaborn
-Version:        0.11.2
+Version:        0.12.2
 Release:        0
 Summary:        Statistical data visualization for python
-License:        BSD-3-Clause
+License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM seaborn-pr2562-clustermap-colors.patch -- gh#mwaskom/seaborn#2562
-Patch0:         https://github.com/mwaskom/seaborn/pull/2562.patch#/seaborn-pr2562-clustermap-colors.patch
-BuildRequires:  %{python_module fastcluster}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module matplotlib >= 2.1.2}
-BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module numpy-devel >= 1.13.3}
-BuildRequires:  %{python_module pandas >= 0.22.0}
-BuildRequires:  %{python_module patsy}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.0.1}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module statsmodels}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module matplotlib >= 3.1}
+BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module pandas >= 0.25}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module typing-extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
-Requires:       python-matplotlib >= 2.1.2
-Requires:       python-numpy >= 1.13.3
-Requires:       python-pandas >= 0.22.0
-Requires:       python-scipy >= 1.0.1
-Recommends:     python-Pillow
+Requires:       python-matplotlib >= 3.1
+Requires:       python-numpy >= 1.17
+Requires:       python-pandas >= 0.25
+%if %{python_version_nodots} < 38
+Requires:       python-typing-extensions
+%endif
 Recommends:     python-fastcluster
-Recommends:     python-patsy
-Recommends:     python-statsmodels
+Recommends:     python-scipy >= 1.3
+Recommends:     python-statsmodels >= 0.10
+# SECTION tests with extras
+BuildRequires:  %{python_module fastcluster}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 1.3}
+BuildRequires:  %{python_module statsmodels >= 0.10}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -78,35 +78,21 @@ Some of the features that seaborn offers are:
 
 %prep
 %autosetup -p1 -n seaborn-%{version}
+# remove shebang
+sed -i '1{/env python/d}' seaborn/external/appdirs.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Test code is not ready for matplotlib 3.5 yet: gh#mwaskom/seaborn#2663, gh#mwaskom/seaborn#2690, gh#mwaskom/seaborn#2693 (no live code changes, only testing)
-donttest+="    (TestBoxPlotter and test_axes_data)"
-donttest+=" or (TestBoxPlotter and test_draw_missing_boxes)"
-donttest+=" or (TestBoxPlotter and test_missing_data)"
-donttest+=" or (TestCatPlot and test_plot_elements)"
-donttest+=" or (TestKDEPlotUnivariate and test_legend)"
-donttest+=" or (TestKDEPlotBivariate and test_fill_artists)"
-donttest+=" or (TestKDEPlotBivariate and test_common_norm)"
-donttest+=" or (TestKDEPlotBivariate and test_log_scale)"
-donttest+=" or (TestKDEPlotBivariate and test_bandwidth)"
-donttest+=" or (TestKDEPlotBivariate and test_weights)"
-donttest+=" or (TestKDEPlotBivariate and test_hue_ignores_cmap)"
-donttest+=" or (TestKDEPlotBivariate and test_contour_line_colors)"
-donttest+=" or (TestKDEPlotBivariate and test_levels_and_thresh)"
-donttest+=" or (TestDisPlot and test_with_rug)"
-donttest+=" or (TestDisPlot and test_bivariate_kde_norm)"
-%pytest seaborn -k "not ($donttest)"
+%pytest -n auto -rfEs
 
 %files %{python_files}
-%license LICENSE licences/*
+%license LICENSE.md licences/*
 %doc README.md
 %{python_sitelib}/seaborn
 %{python_sitelib}/seaborn-%{version}*-info
