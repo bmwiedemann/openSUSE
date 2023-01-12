@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 12 07:58:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * Improve cmake script and MSVC support
+  * Build with flag -Wconversion
+
+-------------------------------------------------------------------
 Sat Oct 15 19:50:39 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1
