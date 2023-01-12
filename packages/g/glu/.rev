@@ -104,4 +104,12 @@
 - supersedes u_autoconf-Don-t-modify-CFLAGS-in-configure-scripts.patch</comment>
     <requestid>902307</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a1dab57d6cfd16de4ceb9bbb55677f71</srcmd5>
+    <version>9.0.2</version>
+    <time>1673559864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057796</requestid>
+  </revision>
 </revisionlist>

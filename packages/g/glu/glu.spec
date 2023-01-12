@@ -1,7 +1,7 @@
 #
 # spec file for package glu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           glu
 Version:        9.0.2
 Release:        0
 Summary:        OpenGL utility library
-License:        SUSE-SGI-FreeB-2.0
+License:        SGI-B-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://cgit.freedesktop.org/mesa/glu/
 
