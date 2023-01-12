@@ -17,7 +17,7 @@
 
 
 Name:           modsecurity
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 Summary:        Web application firewall engine
 License:        BSD-2-Clause

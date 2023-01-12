@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 16 14:21:07 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.0.8
+  * Adjust parser activation rules in modsecurity.conf-recommended [#2796]
+  * Multipart parsing fixes and new MULTIPART_PART_HEADERS collection [#2795]
+  * Prevent LMDB related segfault [#2755, #2761]
+  * Fix msc_transaction_cleanup function comment typo [#2788]
+  * Fix: MULTIPART_INVALID_PART connected to wrong internal variable [#2785]
+  * Restore Unique_id to include random portion after timestamp [#2752, #2758]
+
+-------------------------------------------------------------------
 Sun Aug 14 12:34:25 UTC 2022 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to version 3.0.7
