@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Jan 12 06:01:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.1.0:
+  * Fix goreleaser permissions (#138)
+  * v1.1.0 release PR (#137)
+  * fix(deps): update osv-scanner minor (#79)
+  * Temporarily disable alpine package scanning (#136)
+  * Move tests from cloudbuild to gh actions (#135)
+  * Use short url in scanner output (#134)
+  * chore(deps): update workflows (#78)
+  * Update readme and add changelog (#133)
+  * fix: use correct ecosystem for NuGet (#132)
+  * Do not highlight borders of result table (#131)
+  * Add contributing file (#130)
+  * Update README.md (#127)
+  * docs: describe build process (#109)
+  * Add gomodtidy after renovate updates (#120)
+  * Make lint trigger same as others (#125)
+  * Minor documentation updates. (#121)
+  * Add support for Alpine Linux /lib/apk/db/installed (Resolves #72) (#107)
+  * feat: add docker publish method (#70)
+  * Add Pipenv lockfile support (Resolves #71) (#66)
+  * Lint readme (#100)
+  * Have renovate-bot label its PRs as it does with osv.dev (#116)
+  * [pkg] implement NuGet ecosystem parser (#98)
+  * Update github.com/spdx/gordf dependency to fix 32 bit support (#104)
+  * test: update spec case and adjust assertion message (#99)
+  * fix: ensure that files are closed when they're no longer needed (#106)
+  * Fix lockfile example syntax (#103)
+  * docs: add homebrew installation note (#89)
+
+-------------------------------------------------------------------
+Tue Dec 20 13:53:44 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add build parameters, so 'osv-scanner --version' shows proper version,
+  build date and the release tag as commit
+
+-------------------------------------------------------------------
+Tue Dec 20 12:39:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.0.2:
+  * shorten affected package to package (#90)
+  * Move table columns so that the important column is displayed first (#87)
+  * Add blog post link to README (#84)
+  * Minor updates to install instruction title (#80)
+  * Added installation instructions for Scoop (#68)
+  * Update README.md (#77)
+  * Fix readme anchor link. (#76)
+  * Update README.md (#58)
+  * Add disclaimer on Debian scanning. (#65)
+  * Add gradle lockfile support (#46)
+
+-------------------------------------------------------------------
+Tue Dec 20 12:38:20 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package osv-scanner: Vulnerability scanner written in Go which uses the data provided by https://osv.dev
