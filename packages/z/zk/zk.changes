@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan  5 06:30:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix specfile.
+  * Remove usage of golang-packaging macros. Buggy
+- Reset to latest shipped c_compiler.
+
+-------------------------------------------------------------------
+Sat Dec 31 16:05:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Set gcc less than version 12.
+- Requires fzf.
+
+-------------------------------------------------------------------
+Sat Dec 31 06:15:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add -tags "fts5" for build and install.
+
+-------------------------------------------------------------------
 Fri Dec 23 13:14:31 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add more docs.

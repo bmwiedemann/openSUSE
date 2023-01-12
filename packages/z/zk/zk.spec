@@ -1,7 +1,7 @@
 #
 # spec file for package zk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,22 +25,30 @@ Group:          System/Shells
 URL:            https://github.com/mickael-menu/zk
 Source0:        https://github.com/mickael-menu/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
-Recommends:     fzf
+BuildRequires:  c_compiler
+BuildRequires:  golang(API)
+BuildRequires:  pkgconfig(icu-io)
+BuildRequires:  pkgconfig(sqlite3)
+Requires:       fzf
 
 %description
 Zk is a plain text note-taking assistant for markdown.
 It is a command-line tool helping you to maintain a plain text Zettelkasten or personal wiki.
 
 %prep
-%setup -q -a 1
+%setup -qa1
 
 %build
-%goprep github.com/mickael-menu/zk
-%gobuild
+%ifarch ppc64
+BUILDMOD=""
+%else
+BUILDMOD="-buildmode=pie"
+%endif
+export RPM_OPT_FLAGS="%{optflags}"
+go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.revision=%{version}" --tags "icu json1 fts5 secure_delete"
 
 %install
-%goinstall
+install -Dm755 zk %{buildroot}%{_bindir}/zk
 
 %files
 %{_bindir}/%{name}
