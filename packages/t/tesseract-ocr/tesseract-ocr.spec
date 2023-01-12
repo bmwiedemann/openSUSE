@@ -1,7 +1,7 @@
 #
 # spec file for package tesseract-ocr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%define so_ver 4
+%define lname	libtesseract-5_3_0
 Name:           tesseract-ocr
-Version:        4.1.1
+Version:        5.3.0
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
 URL:            https://github.com/tesseract-ocr/tesseract
-Source0:        https://github.com/tesseract-ocr/tesseract/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE -- boo#1159231
-Patch0:         tesseract-ocr-no-cpudetection.patch
+Source0:        https://github.com/tesseract-ocr/tesseract/archive/refs/tags/%{version}.tar.gz#/tesseract-%{version}.tar.gz
 BuildRequires:  asciidoc
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  chrpath
+BuildRequires:  cmake
+BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -36,6 +35,7 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  plantuml
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
@@ -55,7 +55,7 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 
 %package devel
 Summary:        Tesseract Open Source OCR Engine Development files
-Requires:       libtesseract%{so_ver} = %{version}
+Requires:       %{lname} = %{version}
 Requires:       pkgconfig(lept) >= 1.74
 Requires:       pkgconfig(libarchive)
 
@@ -63,10 +63,10 @@ Requires:       pkgconfig(libarchive)
 This package contains development files for the Tesseract Open Source OCR
 Engine.
 
-%package -n libtesseract%{so_ver}
+%package -n %{lname}
 Summary:        Open Source OCR Engine
 
-%description -n libtesseract%{so_ver}
+%description -n %{lname}
 A commercial quality OCR engine originally developed at HP between 1985 and
 1995. In 1995, this engine was among the top 3 evaluated by UNLV. It was
 open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
@@ -75,37 +75,38 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 %autosetup -n tesseract-%{version} -p1
 
 %build
-autoreconf -fiv
-%configure \
-  --enable-opencl \
-   --disable-static
-%make_build all training doc
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} -DTESSDATA_PREFIX=%{_datadir}/%{name}
+%cmake_build
+
+chrpath --delete src/training/libpango_training.so
+
+# Manually build manfiles, cmake does not build them
+cd ../doc
+sh generate_manpages.sh
+ls -alh
 
 %install
-%make_install all training-install
-
-# Remove libtool config files
-rm -f %{buildroot}%{_libdir}/libtesseract.la
-
-# Manually install the devel docs in order to fix rpmlint warnings "files-duplicate" and "doc-file-dependency"
-mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-devel
-cp -a doc/html/ %{buildroot}%{_defaultdocdir}/%{name}-devel/
-# Fix rpmlint warning "doc-file-dependency"
-rm -f %{buildroot}%{_defaultdocdir}/%{name}-devel/html/installdox
-
-# Fix rpmlint warning "non-executable-in-bin"
-chmod 0755 %{buildroot}%{_bindir}/tesstrain_utils.sh
+%cmake_install
+install -D build/src/training/libpango_training.so \
+	%{buildroot}%{_libdir}/libpango_training.so
+mkdir -p %{buildroot}%{_mandir}/{man1,man5}/
+cp -a doc/*.1 %{buildroot}%{_mandir}/man1/
+cp -a doc/*.5 %{buildroot}%{_mandir}/man5/
+cp -a tessdata/pdf.ttf %{buildroot}/%{_datadir}/tessdata/
 
 # Fix rpmlint warning "files-duplicate"
 %fdupes -s %{buildroot}
 
-%post -n libtesseract%{so_ver} -p /sbin/ldconfig
-%postun -n libtesseract%{so_ver} -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
 %files
 %doc AUTHORS ChangeLog README.md
 %license LICENSE
 %{_bindir}/*
+%{_libdir}/libcommon_training.so
+%{_libdir}/libpango_training.so
+%{_libdir}/libunicharset_training.so
 %dir %{_datadir}/tessdata
 %{_datadir}/tessdata/configs/
 %{_datadir}/tessdata/tessconfigs/
@@ -114,12 +115,13 @@ chmod 0755 %{buildroot}%{_bindir}/tesstrain_utils.sh
 %{_mandir}/man5/*.5%{?ext_man}
 
 %files devel
-%doc %{_defaultdocdir}/tesseract-ocr-devel/
-%{_includedir}/tesseract/
-%{_libdir}/libtesseract*.so
+%{_includedir}/tesseract
+%{_libdir}/libtesseract.so
+%{_libdir}/cmake/tesseract/
 %{_libdir}/pkgconfig/*.pc
 
-%files -n libtesseract%{so_ver}
-%{_libdir}/libtesseract.so.%{so_ver}*
+%files -n %{lname}
+%license LICENSE
+%{_libdir}/libtesseract.so.*
 
 %changelog

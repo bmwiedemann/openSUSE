@@ -109,4 +109,40 @@
     <comment></comment>
     <requestid>788742</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2eaaeea4a88dd024b1995428249f7a86</srcmd5>
+    <version>5.3.0</version>
+    <time>1673559866</time>
+    <user>dimstar_suse</user>
+    <comment>- Move unversioned libraries to main package 
+
+- Update to version 5.3.0:
+  * Fix memory issues in ScrollView::MessageReceiver
+  * autotools: Add rule for svpaint executable
+  * Replace call of exit function by return statement in main function
+  * Fix the build on CodeQL/Analyze by @arseniy-sonar in #3888
+  * CI: Remove Ubuntu 18.04
+  * configure.ac: fix build on aarch64_be
+  * SW CI: Add paths filter
+  * Create .mailmap
+  * Fix tesseract.pc from cmake to match autotools
+  * Update README.md
+  * Fixed 2 errors
+  * fix issue #3940 - remove colormap before thresholding
+  * Update upload-artifact action
+  * Update checkout action to version 3
+  * Fix Markdownlint
+  * Fix broken links in CONTRIBUTING.md
+  * pdfrenderer.cpp: Ignore non-text blocks
+  * lstm.train: allow .box from .raw.png too
+  * Fix a number of performance issues (reported by Coverity Scan)
+  * Fix training tools for legacy engine (issue #3925)
+  * Fix function tesseract::WriteFeature (issue #3925)
+  * Modernize function ObjectCache::DeleteUnusedObjects (fix issue with s…
+  * More fixes for issue #3925
+- Fixed packaging to include missing shared libs:
+  * libcommon_training.so
+  * libunicharset_training.so</comment>
+    <requestid>1057918</requestid>
+  </revision>
 </revisionlist>

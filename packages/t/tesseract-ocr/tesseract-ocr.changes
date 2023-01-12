@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Jan  5 09:00:32 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Move unversioned libraries to main package 
+
+-------------------------------------------------------------------
+Mon Jan 02 16:13:51 UTC 2023 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 5.3.0:
+  * Fix memory issues in ScrollView::MessageReceiver
+  * autotools: Add rule for svpaint executable
+  * Replace call of exit function by return statement in main function
+  * Fix the build on CodeQL/Analyze by @arseniy-sonar in #3888
+  * CI: Remove Ubuntu 18.04
+  * configure.ac: fix build on aarch64_be
+  * SW CI: Add paths filter
+  * Create .mailmap
+  * Fix tesseract.pc from cmake to match autotools
+  * Update README.md
+  * Fixed 2 errors
+  * fix issue #3940 - remove colormap before thresholding
+  * Update upload-artifact action
+  * Update checkout action to version 3
+  * Fix Markdownlint
+  * Fix broken links in CONTRIBUTING.md
+  * pdfrenderer.cpp: Ignore non-text blocks
+  * lstm.train: allow .box from .raw.png too
+  * Fix a number of performance issues (reported by Coverity Scan)
+  * Fix training tools for legacy engine (issue #3925)
+  * Fix function tesseract::WriteFeature (issue #3925)
+  * Modernize function ObjectCache::DeleteUnusedObjects (fix issue with s…
+  * More fixes for issue #3925
+- Fixed packaging to include missing shared libs:
+  * libcommon_training.so
+  * libunicharset_training.so
+
+-------------------------------------------------------------------
+Fri Sep 16 11:29:04 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+
+- Switched to new CMake buildsystem
+- Update to version 5.2.0:
+  * Improvements and fixes for continuous integration, autoconf and cmake builds
+  * Set /Os for some 32 bit MS compilers
+  * Improve comments and other documentation
+  * Add initial support for Intel AVX512F
+  * Fix for very large PDF files on 32 bit hosts
+  * Fix NEON detection on FreeBSD
+  * Fix regression with UZN files
+  * Fix calling delete[] for memory allocated by malloc in C API
+  * Add an API function to init tesseract with traineddata from memory
+  * Replace direct access to Leptonica internal data structures by function calls and
+    support latest releases of Leptonica.
+  * Replace std::regex by std::string functions.
+  * Use compiled-in TESSDATA_PREFIX also on Windows
+  * Add new parameter 'invert_threshold', change the default threshold from 0.5 to 0.7
+    and mark parameter 'tessedit_do_invert' as deprecated
+
+- Update to version 5.1.0:
+  * Handle image and line regions in output formats ALTO, hOCR and text.
+  * New parameter curl_timeout for curl_easy_setop.
+  * Build fixes and improvements.
+  * Catch nullptr in PageIterator::Orientation to improve robustness.
+  * Remove unused code.
+
+- Update to version 5.0.1:
+  * Add SPDX-License-Identifier to public include files.
+  * Support redirections when running OCR on a URL.
+  * Lots of fixes and improvements for cmake builds.
+  * Distributions should use the autoconf build.
+  * Fix broken msys2 build with gcc 11.
+  * Fix parameter certainty_scale (was duplicated).
+  * Fix some compiler warnings and clean code.
+  * Correctly detect amd64 and i386 on FreeBSD.
+  * Add libarchive and libcurl in continuous integration actions.
+  * Update submodule googletest to release v1.11.0.
+
+- Update to version 5.0.0:
+  * Enable fast float32 LSTM by default
+  * Switch to NFC normalisation everywhere
+  * Remove banner message
+  * Disable music staff detection and removal
+  * Add new command line option --loglevel
+  * Fix regression for OCR with more than one model file
+  * Optimizations
+  * Improve training messages
+  * Add RowAttributes getter to PageIterator
+  * Limit BCER to interval [0,1]
+  * Improved build process
+  * Cleaned code
+
+- Update to version 4.1.3:
+  * Fix broken autoconf build
+
+- Update to version 4.1.2:
+  * Allow line images with larger width for training
+  * Bugfixes
+  * Build updates and fixes
+
+- Removed tesseract-ocr-no-cpudetection.patch
+  Obsolete with the use of CMake build system instead of Makefiles
+
+-------------------------------------------------------------------
 Thu Mar 26 20:33:55 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add tesseract-ocr-no-cpudetection.patch
