@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 10 19:30:57 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- replace libheimdal conflicts by obsoletes / provides to provide a
+  smooth update in the new libheimdal-devel.
+
+-------------------------------------------------------------------
 Wed Dec 21 09:53:45 UTC 2022 - enzokiel@kabelmail.de
 
 - Update to version 7.8.0

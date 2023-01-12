@@ -1,7 +1,7 @@
 #
 # spec file for package libheimdal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -227,7 +227,8 @@ Requires:       pkgconfig(ncurses) >= 5.3
 Requires:       pkgconfig(sqlite3)
 Conflicts:      krb5-devel
 Conflicts:      krb5-mini-devel
-Conflicts:      libheimdal < %{version}-%{release}
+Provides:       libheimdal = %{version}-%{release}
+Obsoletes:      libheimdal < %{version}-%{release}
 
 %description devel
 Heimdal is an implementation of Kerberos 5 (and some more stuff) largely written
