@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230110" schemaversion="4.1">
+<image name="OBS__MicroOS___20230111" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230110</productvar>
+      <productvar name="VERSION">20230111</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230110,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230111,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230110/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230111/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1758,7 +1758,7 @@
       <repopackage name="libthai0"/>
       <repopackage name="libtheoradec1"/>
       <repopackage name="libtheoraenc1"/>
-      <repopackage name="libtiff5"/>
+      <repopackage name="libtiff6"/>
       <repopackage name="libtirpc-netconfig"/>
       <repopackage name="libtirpc3"/>
       <repopackage name="libtotem-plparser18" arch="x86_64"/>
