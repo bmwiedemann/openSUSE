@@ -1,5 +1,0 @@
-<package name="python-gmpy" project="openSUSE:Factory">
-  <title>Multiprecision arithmetic for Python</title>
-  <description>A C-coded Python extension module that wraps the GMP library to provide to Python code fast multiprecision arithmetic (integer, rational, and float), random number generation, advanced number-theoretical functions, and more.</description>
-  <devel project="devel:languages:python:numeric" package="python-gmpy"/>
-</package>
