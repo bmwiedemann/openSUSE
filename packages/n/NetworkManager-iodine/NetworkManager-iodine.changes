@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:12:03 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d conf file to /usr (bsc#1206756)
+
+-------------------------------------------------------------------
 Sat Feb 19 17:51:33 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Create nm-iodine user (by systemd-sysusers)

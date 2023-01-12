@@ -68,7 +68,7 @@ firewalled but DNS traffic is still allowed.
 make %{?_smp_mflags}
 
 %install
-%make_install
+%make_install dbusservicedir=%{_datadir}/dbus-1/system.d
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -82,7 +82,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/NetworkManager/libnm-vpn-plugin-iodine.so
 %{_vpnservicedir}/nm-iodine-service.name
 %{_libexecdir}/nm-iodine-service
-%config %{_sysconfdir}/dbus-1/system.d/nm-iodine-service.conf
+%{_datadir}/dbus-1/system.d/nm-iodine-service.conf
 
 %files gnome
 %{_datadir}/appdata/network-manager-iodine.appdata.xml
