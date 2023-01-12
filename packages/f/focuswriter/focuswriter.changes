@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 11 14:16:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.4:
+  * FIXED: Did not ignore user input when force processing events
+  * FIXED: Did not compile on macOS
+  * FIXED: Did not compile on OS/2
+  * Disabled typewriter sounds on OS/2
+  * Replaced deprecated code
+
+-------------------------------------------------------------------
 Tue Sep 27 08:33:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.3:
