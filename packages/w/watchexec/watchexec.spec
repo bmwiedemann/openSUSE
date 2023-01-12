@@ -1,7 +1,7 @@
 #
 # spec file for package watchexec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           watchexec
-Version:        1.20.6
+Version:        1.21.0
 Release:        0
 Summary:        Watches a path and runs a command whenever it detects modifications.
 License:        Apache-2.0
@@ -34,7 +34,7 @@ whenever it detects modifications.
 
 %prep
 %autosetup -a1
-mkdir .cargo
+mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

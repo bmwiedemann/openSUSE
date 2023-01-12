@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jan 12 11:00:39 UTC 2023 - david.anes@suse.com
+
+- Update to version 1.21.0:
+  * release: watchexec-cli v1.21.0 (#478)
+  * release: watchexec-filterer-tagged v0.2.0 (#477)
+  * release: watchexec-filterer-globset v1.1.0 (#476)
+  * Update PR advice for auto-merge; add meta comment (#475)
+  * release: watchexec-filterer-ignore v1.1.0 (#474)
+  * release: watchexec v2.1.0 (#472)
+  * Add PR trigger on auto-merge enable (#473)
+  * release: ignore-files v1.1.0 (#471)
+  * release: project-origins v1.2.0 (#470)
+  * Remove remnants of the old release flow that now break things (#469)
+  * Add guide for crate release order (#468)
+  * Bump tokio from 1.21.0 to 1.23.1 (#467)
+  * Add usecase to README (#460)
+  * Update command-group requirement from 1.0.8 to 2.0.1 in /crates/lib (#462)
+  * Update git-config requirement from 0.12.0 to 0.14.0 in /crates/ignore-files (#464)
+  * Update clearscreen requirement from 1.0.9 to 2.0.0 in /crates/lib (#463)
+  * Bump taiki-e/install-action from 1 to 2 (#461)
+  * Add to changelogs for libs (#466)
+  * Add complex converter tool wrapper example to docs (#458)
+  * Clippy fixes (#465)
+  * Add openSUSE and MINGW packages (#453)
+  * Update contrib guide (#452)
+  * Add apt.cli.rs to install methods (#451)
+  * Add option to exit when stdin ends (#449)
+  * Update git-config requirement from 0.7.1 to 0.12.0 in /crates/ignore-files (#448)
+  * Bump axum-core from 0.2.7 to 0.2.9 (#439)
+  * Bump mathieudutour/github-tag-action from 6.0 to 6.1 (#435)
+  * Bump softprops/action-gh-release from cd28b0f5ee8571b76cfdaa62a30d51d752317477 to 1 (#447)
+  * Bump cargo-bins/release-pr from 1 to 2 (#441)
+  * Bump softprops/action-gh-release from 50195ba7f6f93d1ac97ba8332a178e008ad176aa to cd28b0f5ee8571b76cfdaa62a30d51d752317477 (#438)
+  * Readme: fix CI badge URL (#419)
+  * Fix zsh autocomplete after using --shell=bash (#417)
+  * Update release versioning
+  * Learn some build optimisations from binstall (#416)
+
+-------------------------------------------------------------------
+Thu Jan 12 10:58:39 UTC 2023 - david.anes@suse.com
+
+- Update to version 1.20.6:
+  * release: watchexec-cli v1.20.6 (#415)
+  * release: watchexec v2.0.2 (#414)
+  * Default release pr version to patch
+  * Enable OIDC
+  * Checkout before setting up signing
+  * Debug gitsign
+  * Document the absolute crate release order (#413)
+  * Use gitsign for release-pr commits (#412)
+  * release: watchexec-filterer-globset v1.0.1 (#410)
+  * release: watchexec-filterer-tagged v0.1.1 (#411)
+
+-------------------------------------------------------------------
 Fri Nov  4 07:33:58 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Remove restriction to build only on Rust tier 1 archs.
