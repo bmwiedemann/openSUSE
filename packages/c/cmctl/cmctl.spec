@@ -21,14 +21,14 @@
 %define archive_name cert-manager
 
 Name:           cmctl
-Version:        1.10.2
+Version:        1.11.0
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
 URL:            https://github.com/cert-manager/cert-manager
 Source:         %{archive_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.19
 
 %description
 cmctl is a CLI tool that can help you to manage cert-manager resources inside your cluster.

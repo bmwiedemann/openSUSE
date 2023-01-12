@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Wed Jan 11 19:08:01 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.19
+- Update to version 1.11.0:
+  * Bump go to 1.19.5
+  * Bump containerd to fix reported vuln
+  * bump base images to latest
+  * Policy check ensures that cert.sepc.secretName secret gets labelled
+  * Keymanager controller ensures that temporary private key Secrets are labelled
+  * Issuing controller ensures that cert.spec.secretName secrets are labelled
+  * Adds a new label to cert-manager API
+  * move custom acmesolver image above extraArgs
+  * Log error if CA source is in a namespace that is not in scope
+  * Fix cainjector's namespace flag
+  * Code review feedback- better comment
+  * Bump golang.org/x/crypto and golang.org/x/oauth2
+  * Fix integration tests
+  * Ensures that only one secrets cache is created for cert-manager controller
+  * bump base images to latest
+  * avoid logging confusing error messages for external issuers
+  * Allow custom helm values files to be supplied to make ko-deploy-certmanager
+  * Remove trailing escape slash
+  * various ginkgo tweaks
+  * Remove duplicate ko-deploy-cert-manager make target
+  * use template when generating tempdir in verify-crds
+  * update LICENSES (make update-licenses)
+  * vcert: upgrade to v4.23.0 to fix "Click Retry" and "WebSDK CertRequest"
+  * fix(AzureDNS): suppress original message in adal.TokenRefreshError to prevent early CR reconciliations due to unique data (timestamp, Trace ID) that lands to CR status
+  * helm: add option to override ACME HTTP-01 solver image
+  * Bump sigs.k8s.io deps
+  * Bump supported versions of k8s mentioned in the helm chart
+  * Add some experimental ko based build and deploy tools
+  * update base images to latest
+  * Bump version of contour helm chart + images
+  * Add ko tool
+  * bump golang.org/x/net version to fix trivy vulns
+  * update SECURITY policy to exclude vuln reports
+  * Enable + use k8s 1.26 for e2e tests by default
+  * Bumps [helm.sh/helm/v3](https://github.com/helm/helm) from 3.10.0 to 3.10.3. - [Release notes](https://github.com/helm/helm/releases) - [Commits](helm/helm@v3.10.0...v3.10.3)
+  * add + use CABundle field for ACME servers in issuers
+  * change wording on descriptions for Vault and TPP 'CABundle' fields
+  * Update controller-runtime to v0.14.0
+  * kubebuilder did not yet create a 1.26 release
+  * add WithLegacy function to our fake discovery client
+  * Bump k8s.io deps to v0.26.0
+  * feat: Add max-concurrent-challenges parameter to helm
+  * fix kubebuilder tools arm64 sha256sum
+  * bump dep versions to fix trivy-reported vulns
+  * Fixed a typo in helm chart values
+  * bump go to 1.19.4
+  * remove verify-licenses from ci-presubmit
+  * Addressing review comments
+  * Updating CRDs
+  * Addressing review comments
+  * Update internal/controller/certificates/policies/checks.go
+  * Refreshing secrets when the keystore fields change
+  * Gateway and GatewayClass for tests are created against beta Gateway API
+  * Corrects test Gateway resources
+  * Removes unused check
+  * Updates Gateway API test dependency
+  * Bumps Contour Helm chart version
+  * Tests download Gateway installation bundle
+  * Update reference to HTTPRoute docs
+  * feature: update gateway api to v1beta1
+  * e2e: use Vault 1.12.1 instead of the outdated 1.2.3
+  * Return error when Gateway has a cross-namespace secret ref
+  * Use distinct manifest dirs for signed / unsigned manifests
+  * Add boilerplate comment
+  * Add error case + list all supported OIDs in cannonical order
+  * Make test assertion more specific to slice, need to verify ordering of rdns
+  * e2e test confirming LDAP rdn literalsubject in generated certificate
+  * chore(AzureDNS): added more comments as requested by @wallrj
+  * Test that the Sign function *does* use the Vault namespace
+  * Recreate the original behaviour of sending a Vault token to the unauthenticated sys/health endpoint.
+  * Remove unused Token method
+  * Remove unused Sys methods
+  * Test
+  * Set the Vault namespace using the official method in the vault SDK
+  * Gofmt files
+  * Add support for required LDAP (rfc4514) RDNs in LiteralSubject
+  * feat(AzureDNS): add a test for federated SPT
+  * fix: featureGates add webhook deployment in chart yaml
+  * updating to match feedback and adjust the RunAsNonRoot options for http01 solver to be more descriptive
+  * fail in case of invalid IP address
+  * enable basicConstraints feature in e2e environments by default
+  * Addressing review comments
+  * improve gen.CSR and use it everywhere
+  * Fix typos in explanatory comment
+  * Always initialize tlsClientConfig if the default is nil
+  * Use RenegotiateOnceAsClient and explain why
+  * chore(Azure): improve naming, add comments
+  * fix x/text vuln and ignore AWS vuln
+  * bump to latest go minor version to fix vulns
+  * Adding unit tests
+  * add make target for updating base images
+  * bump base / kind images
+  * re-order Helm parameters & move some values to constants
+  * feat: add commonLabels to webhook configmap
+  * Fixing CA flag in basic constraints extension
+  * feat(Azure): add support for workload identity
+  * fix: update scorecard not running
+  * Fire event for informational purposes when the CertificateRequest has not yet been approved.
+  * remove devel folder
+  * update base and kind images
+  * don't write to devel folder when updating kind images
+  * final update to old devel kind images
+  * minor language tweaks to README and ROADMAP
+  * Remove the old Helm chart for Vault
+  * [NIT] Changing variable name to denote right type
+  * [NIT] Changing variable name to denote right type
+  * use Vault Helm Chart provied by Hashicorp
+  * Add scorecard badge to README
+  * Add Scorecard Action yml
+
+-------------------------------------------------------------------
 Wed Jan 11 05:51:08 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.10.2:
