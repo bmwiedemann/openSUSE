@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 12 03:34:54 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Disable src tidy test as it is incompatible with cve patches
+
+-------------------------------------------------------------------
+Tue Jan 10 08:58:18 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1206930 - CVE-2022-46176 - Enforce that cargo checks ssh host keys.
+  * 0001-CVE-2022-46176-verify-ssh-host-keys-in-cargo.patch
+  * 0002-Rebuild-Cargo.lock.patch
+
+-------------------------------------------------------------------
 Fri Dec  2 10:29:03 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add NoSource for the bootstrap compilers.  This generate a nosrc.rpm

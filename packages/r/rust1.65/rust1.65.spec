@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
 #
 # All modifications and additions to the file contributed by third parties
@@ -253,6 +253,8 @@ Source1000:     README.suse-maint
 Patch0:         ignore-Wstring-conversion.patch
 # IMPORTANT - To generate patches for submodules in git so they apply relatively you can use
 #  git format-patch --dst-prefix=b/src/tools/cargo/  HEAD~2
+Patch1:         0001-CVE-2022-46176-verify-ssh-host-keys-in-cargo.patch
+Patch2:         0002-Rebuild-Cargo.lock.patch
 
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -635,9 +637,9 @@ export CROSS_COMPILE=llvm-
 # we can use it with -Z gcc-ld=lld (which is sadly trapped in nightly). We can't exclude
 # a single test so sadly we have to exclude that whole suite.
 %ifarch aarch64
-python3 ./x.py test --target=%{rust_triple} --exclude src/test/run-make
+python3 ./x.py test --target=%{rust_triple} --exclude src/test/run-make,src/tools/tidy
 %else
-python3 ./x.py test --target=%{rust_triple}
+python3 ./x.py test --target=%{rust_triple} --exclude src/tools/tidy
 %endif
 
 # End with test
