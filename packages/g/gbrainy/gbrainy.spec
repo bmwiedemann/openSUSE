@@ -1,7 +1,7 @@
 #
 # spec file for package gbrainy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gbrainy
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        A brain teaser game and trainer
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://wiki.gnome.org/Apps/gbrainy
 Source:         https://gent.softcatala.org/jmas/gbrainy/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- gbrainy-use-libexecdir.patch
 Patch0:         gbrainy-use-libexecdir.patch
-
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -72,15 +71,13 @@ export MONO_SHARED_DIR=%{_localstatedir}/tmp
 %configure \
 	--disable-static \
 	%{nil}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 rm -rf %{buildroot}%{_datadir}/pixmaps
-# There are no extensions yet, Thus creating a -devel package sounds overkill (file can't reside in noarch package).
-rm %{buildroot}%{_libdir}/pkgconfig/gbrainy.pc
 
 # When below tests fail, we can now remove the chmod
 test -x %{buildroot}%{_libexecdir}/%{name}/gbrainy.exe.config

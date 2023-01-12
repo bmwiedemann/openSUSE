@@ -536,4 +536,12 @@ The update addresses several other things and was much easier to fix for mono 3.
   + Update translations.</comment>
     <requestid>1040173</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>48dd84e67b55630c05186c37fbbc9369</srcmd5>
+    <version>2.4.6</version>
+    <time>1673559892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057882</requestid>
+  </revision>
 </revisionlist>

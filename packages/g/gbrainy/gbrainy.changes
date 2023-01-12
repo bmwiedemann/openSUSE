@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan  8 20:24:08 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.4.6:
+  + Fix license URL in about box.
+  + Better metadata to describe the application.
+  + Updated translations.
+- Drop the removal of pkgconfig file which is not shipped anymore.
+
+-------------------------------------------------------------------
 Sun Dec  4 21:55:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.4.5:
