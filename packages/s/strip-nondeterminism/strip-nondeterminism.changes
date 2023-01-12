@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:53:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add f1017c67.patch: Support the magic format as returned by file
+  5.44 (plus commit dc71304b).
+
+-------------------------------------------------------------------
 Mon Jun 14 10:21:07 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.12.0

@@ -83,4 +83,12 @@ Add strip-nondeterminism-0.029-zipfix.patch
   run.</comment>
     <requestid>899924</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5e8c811fde7adc7ab8cab83795847c26</srcmd5>
+    <version>1.12.0</version>
+    <time>1673559752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057779</requestid>
+  </revision>
 </revisionlist>

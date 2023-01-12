@@ -1,7 +1,7 @@
 #
 # spec file for package strip-nondeterminism
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://reproducible-builds.org/_lfs/releases/strip-nondetermini
 Source2:        rpmmacros
 Source3:        strip-all-nondeterminism
 Source4:        %{name}.keyring
+Patch0:         https://salsa.debian.org/reproducible-builds/strip-nondeterminism/-/commit/f1017c67.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl-base

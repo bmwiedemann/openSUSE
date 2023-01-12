@@ -1,0 +1,25 @@
+From f1017c675abea533bd60272f1bedfbccf759b9c9 Mon Sep 17 00:00:00 2001
+From: FC Stegerman <flx@obfusk.net>
+Date: Sun, 1 Jan 2023 22:14:22 +0100
+Subject: [PATCH] update pyzip regex for latest file(1)
+
+---
+ lib/File/StripNondeterminism.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/File/StripNondeterminism.pm b/lib/File/StripNondeterminism.pm
+index fc5451e..338a514 100644
+--- a/lib/File/StripNondeterminism.pm
++++ b/lib/File/StripNondeterminism.pm
+@@ -111,7 +111,7 @@ sub get_normalizer_for_file($) {
+ 	}
+ 
+ 	# pyzip - check last due to call to file(1)
+-	if (_get_file_type($_) =~ m/python3 script executable \(binary data\)/) {
++	if (_get_file_type($_) =~ m/python3 script executable \((Zip archive|binary data)\)/) {
+ 		my $handler = _handler('pyzip');
+ 		return $handler
+ 		  if File::StripNondeterminism::handlers::pyzip::is_pyzip_file($_);
+-- 
+GitLab
+
