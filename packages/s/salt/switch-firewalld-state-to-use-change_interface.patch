@@ -1,4 +1,4 @@
-From 995f67741e591b60fcecff87d4d97099ca82bafc Mon Sep 17 00:00:00 2001
+From c3e73e4a9e0c81b5dca198fac5c49a1ae91c7111 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 17:12:04 +0100
 Subject: [PATCH] Switch firewalld state to use change_interface
@@ -67,6 +67,6 @@ index cc6eaba5c3..534b9dd62d 100644
                      ret["comment"] = "Error: {}".format(err)
                      return ret
 -- 
-2.37.3
+2.34.1
 
 

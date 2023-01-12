@@ -2140,4 +2140,11 @@ let build start it or we will get libvirt errors.
   * change-the-delimeters-to-prevent-possible-tracebacks.patch</comment>
     <requestid>1057621</requestid>
   </revision>
+  <revision rev="133" vrev="10">
+    <srcmd5>db108383d7523510f3ad951a7e7d4aa0</srcmd5>
+    <version>3004</version>
+    <time>1673534648</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207071</comment>
+  </revision>
 </revisionlist>

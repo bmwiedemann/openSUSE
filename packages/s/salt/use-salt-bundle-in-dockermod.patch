@@ -1,4 +1,4 @@
-From cd03f33b3ba1ebf267825d29b68d4e88e6a0021a Mon Sep 17 00:00:00 2001
+From ed53e3cbd62352b8d2af4d4b36c03e40981263bb Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Mon, 27 Jun 2022 17:59:24 +0300
 Subject: [PATCH] Use Salt Bundle in dockermod
@@ -12,7 +12,7 @@ Subject: [PATCH] Use Salt Bundle in dockermod
  2 files changed, 241 insertions(+), 34 deletions(-)
 
 diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
-index d8581586ca..ab5c2ac609 100644
+index fdded88dbb..e6b81e7f09 100644
 --- a/salt/modules/dockermod.py
 +++ b/salt/modules/dockermod.py
 @@ -201,14 +201,19 @@ import copy
@@ -35,7 +35,7 @@ index d8581586ca..ab5c2ac609 100644
  import time
  import uuid
  
-@@ -6693,6 +6698,111 @@ def _compile_state(sls_opts, mods=None):
+@@ -6682,6 +6687,111 @@ def _compile_state(sls_opts, mods=None):
          return st_.state.compile_high_data(high_data)
  
  
@@ -147,7 +147,7 @@ index d8581586ca..ab5c2ac609 100644
  def call(name, function, *args, **kwargs):
      """
      Executes a Salt function inside a running container
-@@ -6728,47 +6838,68 @@ def call(name, function, *args, **kwargs):
+@@ -6717,47 +6827,68 @@ def call(name, function, *args, **kwargs):
      if function is None:
          raise CommandExecutionError("Missing function parameter")
  
@@ -370,6 +370,6 @@ index 47fe5d55e6..19c7f450d7 100644
 +
 +    assert {"retcode": 0, "comment": "container cmd"} == ret
 -- 
-2.37.3
+2.36.1
 
 

@@ -1,4 +1,4 @@
-From 797b256548cbcda0f3828c6d182c44a3815dd313 Mon Sep 17 00:00:00 2001
+From 834defc8e38c4495ed51bb549d86727dd8b812b3 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 17:10:37 +0100
 Subject: [PATCH] Include aliases in the fqdns grains
@@ -24,19 +24,18 @@ Implement network.fqdns module function (bsc#1134860) (#172)
 
 Co-authored-by: Eric Siebigteroth <eric.siebigteroth@suse.de>
 ---
- salt/modules/network.py                    |  5 +++-
- salt/utils/network.py                      | 16 +++++++++++
- tests/pytests/unit/modules/test_network.py |  4 +--
- tests/unit/utils/test_network.py           | 32 ++++++++++++++++++++++
- 4 files changed, 54 insertions(+), 3 deletions(-)
+ salt/modules/network.py          |  5 ++++-
+ salt/utils/network.py            | 16 ++++++++++++++
+ tests/unit/utils/test_network.py | 37 ++++++++++++++++++++++++++++++++
+ 3 files changed, 57 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/network.py b/salt/modules/network.py
-index 1149c96097..8c2d188903 100644
+index 08c20b99f9..53ebfe4bc7 100644
 --- a/salt/modules/network.py
 +++ b/salt/modules/network.py
-@@ -2100,7 +2100,10 @@ def fqdns():
-         #   https://sourceware.org/bugzilla/show_bug.cgi?id=19329
-         time.sleep(random.randint(5, 25) / 1000)
+@@ -2089,7 +2089,10 @@ def fqdns():
+ 
+     def _lookup_fqdn(ip):
          try:
 -            return [socket.getfqdn(socket.gethostbyaddr(ip)[0])]
 +            name, aliaslist, addresslist = socket.gethostbyaddr(ip)
@@ -47,10 +46,10 @@ index 1149c96097..8c2d188903 100644
              if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
                  # No FQDN for this IP address, so we don't need to know this all the time.
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index d042cd177d..bccda01556 100644
+index 22075066fd..8867041e0e 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -2332,3 +2332,19 @@ def filter_by_networks(values, networks):
+@@ -2302,3 +2302,19 @@ def filter_by_networks(values, networks):
              raise ValueError("Do not know how to filter a {}".format(type(values)))
      else:
          return values
@@ -70,36 +69,19 @@ index d042cd177d..bccda01556 100644
 +        and len(hostname) < 0xFF
 +        and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
 +    )
-diff --git a/tests/pytests/unit/modules/test_network.py b/tests/pytests/unit/modules/test_network.py
-index 15fd5545a0..b948e578bb 100644
---- a/tests/pytests/unit/modules/test_network.py
-+++ b/tests/pytests/unit/modules/test_network.py
-@@ -28,7 +28,7 @@ def fake_fqdn():
-     with patch("socket.getfqdn", autospec=True, return_value=fqdn), patch(
-         "socket.gethostbyaddr",
-         autospec=True,
--        return_value=("fnord", "fnord fnord"),
-+        return_value=("fnord", ["fnord fnord"], []),
-     ):
-         yield fqdn
- 
-@@ -88,7 +88,7 @@ def test_fqdns_should_return_sorted_unique_domains(fake_ips):
-     with patch("socket.getfqdn", autospec=True, side_effect=fake_domains), patch(
-         "socket.gethostbyaddr",
-         autospec=True,
--        return_value=("fnord", "fnord fnord"),
-+        return_value=("fnord", ["fnord fnord"], []),
-     ):
-         actual_fqdns = networkmod.fqdns()
-         assert actual_fqdns == {
 diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
-index 422f85d68c..3060aba0aa 100644
+index 6863ccd0c9..637d5e9811 100644
 --- a/tests/unit/utils/test_network.py
 +++ b/tests/unit/utils/test_network.py
-@@ -1269,3 +1269,35 @@ class NetworkTestCase(TestCase):
+@@ -1273,3 +1273,40 @@ class NetworkTestCase(TestCase):
              ),
          ):
              self.assertEqual(network.get_fqhostname(), host)
++
++    def test_netlink_tool_remote_on(self):
++        with patch("subprocess.check_output", return_value=NETLINK_SS):
++            remotes = network._netlink_tool_remote_on("4505", "remote")
++            self.assertEqual(remotes, {"127.0.0.1", "::ffff:1.2.3.4"})
 +
 +    def test_is_fqdn(self):
 +        """
@@ -133,6 +115,6 @@ index 422f85d68c..3060aba0aa 100644
 +        ]:
 +            assert not network.is_fqdn(fqdn)
 -- 
-2.37.3
+2.34.1
 
 

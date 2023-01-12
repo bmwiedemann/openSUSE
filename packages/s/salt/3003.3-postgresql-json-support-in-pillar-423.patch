@@ -1,0 +1,1008 @@
+From 5c2624552e1ac2dbec3b54ff8c147ae50494969e Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Wed, 19 Jan 2022 17:25:37 +0100
+Subject: [PATCH] 3003.3 - postgresql JSON support in pillar (#423)
+
+* Allow single field returns from SQL pillar
+
+Several SQL databases support native JSON storage. When storing
+pillars in this way, SQL query result already returns dict and
+without the need to have key column.
+
+* Add and adapt tests for as_json sql mode
+
+* Add missing entries to rest of sql pillar tests
+
+* Add changelog entry
+
+* Fix the sql_base pillar merge for as_json
+
+Use salt.utils.update() to recursively merge the JSON dicts of the
+returned SQL queries.
+
+Co-authored-by: Ondrej Holecek <oholecek@suse.com>
+---
+ changelog/60905.added                      |  1 +
+ salt/pillar/sql_base.py                    | 38 +++++++++++++++
+ tests/pytests/unit/pillar/test_sql_base.py | 43 ++++++++++++++++
+ tests/unit/pillar/test_mysql.py            | 57 ++++++++++++++++++++++
+ tests/unit/pillar/test_sqlcipher.py        | 32 ++++++++++++
+ tests/unit/pillar/test_sqlite3.py          | 32 ++++++++++++
+ 6 files changed, 203 insertions(+)
+ create mode 100644 changelog/60905.added
+ create mode 100644 tests/pytests/unit/pillar/test_sql_base.py
+
+diff --git a/changelog/60905.added b/changelog/60905.added
+new file mode 100644
+index 0000000000..3fe39286a8
+--- /dev/null
++++ b/changelog/60905.added
+@@ -0,0 +1 @@
++Support querying for JSON data in SQL external pillar
+diff --git a/salt/pillar/sql_base.py b/salt/pillar/sql_base.py
+index f7d87105af..8020d5503b 100644
+--- a/salt/pillar/sql_base.py
++++ b/salt/pillar/sql_base.py
+@@ -136,6 +136,33 @@ These columns define list grouping
+ The range for with_lists is 1 to number_of_fields, inclusive.
+ Numbers outside this range are ignored.
+ 
++If you specify `as_json: True` in the mapping expression and query only for
++single value, returned data are considered in JSON format and will be merged
++directly.
++
++.. code-block:: yaml
++
++  ext_pillar:
++    - sql_base:
++        - query: "SELECT json_pillar FROM pillars WHERE minion_id = %s"
++          as_json: True
++
++The processed JSON entries are recursively merged in a single dictionary.
++Additionnaly if `as_list` is set to `True` the lists will be merged in case of collision.
++
++For instance the following rows:
++
++    {"a": {"b": [1, 2]}, "c": 3}
++    {"a": {"b": [1, 3]}, "d": 4}
++
++will result in the following pillar with `as_list=False`
++
++    {"a": {"b": [1, 3], "c": 3, "d": 4}
++
++and in with `as_list=True`
++
++    {"a": {"b": [1, 2, 3], "c": 3, "d": 4}
++
+ Finally, if you pass the queries in via a mapping, the key will be the
+ first level name where as passing them in as a list will place them in the
+ root.  This isolates the query results into their own subtrees.
+@@ -171,6 +198,7 @@ More complete example for MySQL (to also show configuration)
+ import abc  # Added in python2.6 so always available
+ import logging
+ 
++from salt.utils.dictupdate import update
+ from salt.utils.odict import OrderedDict
+ 
+ # Please don't strip redundant parentheses from this file.
+@@ -200,6 +228,7 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
+     num_fields = 0
+     depth = 0
+     as_list = False
++    as_json = False
+     with_lists = None
+     ignore_null = False
+ 
+@@ -259,6 +288,7 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
+                 "query": "",
+                 "depth": 0,
+                 "as_list": False,
++                "as_json": False,
+                 "with_lists": None,
+                 "ignore_null": False,
+             }
+@@ -314,6 +344,13 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
+         for ret in rows:
+             # crd is the Current Return Data level, to make this non-recursive.
+             crd = self.focus
++
++            # We have just one field without any key, assume returned row is already a dict
++            # aka JSON storage
++            if self.as_json and self.num_fields == 1:
++                crd = update(crd, ret[0], merge_lists=self.as_list)
++                continue
++
+             # Walk and create dicts above the final layer
+             for i in range(0, self.depth - 1):
+                 # At the end we'll use listify to find values to make a list of
+@@ -433,6 +470,7 @@ class SqlBaseExtPillar(metaclass=abc.ABCMeta):
+                 )
+                 self.enter_root(root)
+                 self.as_list = details["as_list"]
++                self.as_json = details["as_json"]
+                 if details["with_lists"]:
+                     self.with_lists = details["with_lists"]
+                 else:
+diff --git a/tests/pytests/unit/pillar/test_sql_base.py b/tests/pytests/unit/pillar/test_sql_base.py
+new file mode 100644
+index 0000000000..0d44c2d608
+--- /dev/null
++++ b/tests/pytests/unit/pillar/test_sql_base.py
+@@ -0,0 +1,43 @@
++import pytest
++import salt.pillar.sql_base as sql_base
++from tests.support.mock import MagicMock
++
++
++class FakeExtPillar(sql_base.SqlBaseExtPillar):
++    """
++    Mock SqlBaseExtPillar implementation for testing purpose
++    """
++
++    @classmethod
++    def _db_name(cls):
++        return "fake"
++
++    def _get_cursor(self):
++        return MagicMock()
++
++
++@pytest.mark.parametrize("as_list", [True, False])
++def test_process_results_as_json(as_list):
++    """
++    Validates merging of dict values returned from JSON datatype.
++    """
++    return_data = FakeExtPillar()
++    return_data.as_list = as_list
++    return_data.as_json = True
++    return_data.with_lists = None
++    return_data.enter_root(None)
++    return_data.process_fields(["json_data"], 0)
++    test_dicts = [
++        ({"a": [1]},),
++        ({"b": [2, 3]},),
++        ({"a": [4]},),
++        ({"c": {"d": [4, 5], "e": 6}},),
++        ({"f": [{"g": 7, "h": "test"}], "c": {"g": 8}},),
++    ]
++    return_data.process_results(test_dicts)
++    assert return_data.result == {
++        "a": [1, 4] if as_list else [4],
++        "b": [2, 3],
++        "c": {"d": [4, 5], "e": 6, "g": 8},
++        "f": [{"g": 7, "h": "test"}],
++    }
+diff --git a/tests/unit/pillar/test_mysql.py b/tests/unit/pillar/test_mysql.py
+index ddfb67d230..de6212b2c8 100644
+--- a/tests/unit/pillar/test_mysql.py
++++ b/tests/unit/pillar/test_mysql.py
+@@ -18,6 +18,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -39,6 +40,7 @@ class MysqlPillarTestCase(TestCase):
+                 {"query": "SELECT blah7", "as_list": True},
+                 {"query": "SELECT blah8", "with_lists": "1"},
+                 {"query": "SELECT blah9", "with_lists": "1,2"},
++                {"query": "SELECT json1", "as_json": True},
+             ],
+             {},
+         )
+@@ -51,6 +53,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -61,6 +64,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -71,6 +75,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -81,6 +86,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -91,6 +97,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -101,6 +108,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -111,6 +119,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -121,6 +130,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah8",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": [1],
+                         "ignore_null": False,
+                     },
+@@ -131,10 +141,22 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah9",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": [1, 2],
+                         "ignore_null": False,
+                     },
+                 ],
++                [
++                    None,
++                    {
++                        "query": "SELECT json1",
++                        "depth": 0,
++                        "as_list": False,
++                        "as_json": True,
++                        "with_lists": None,
++                        "ignore_null": False,
++                    },
++                ],
+             ],
+             qbuffer,
+         )
+@@ -151,6 +173,7 @@ class MysqlPillarTestCase(TestCase):
+                 "5": {"query": "SELECT blah5"},
+                 "6": {"query": "SELECT blah6", "depth": 2},
+                 "7": {"query": "SELECT blah7", "as_list": True},
++                "8": {"query": "SELECT json1", "as_json": True},
+             },
+         )
+         qbuffer = return_data.extract_queries(args, kwargs)
+@@ -162,6 +185,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -172,6 +196,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -182,6 +207,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -192,6 +218,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -202,6 +229,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -212,6 +240,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -222,6 +251,18 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
++                        "with_lists": None,
++                        "ignore_null": False,
++                    },
++                ],
++                [
++                    "8",
++                    {
++                        "query": "SELECT json1",
++                        "depth": 0,
++                        "as_list": False,
++                        "as_json": True,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -253,6 +294,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah1",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -263,6 +305,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -273,6 +316,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -283,6 +327,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah1",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -293,6 +338,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -303,6 +349,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -341,6 +388,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -351,6 +399,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -361,6 +410,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -371,6 +421,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -381,6 +432,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -391,6 +443,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -401,6 +454,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -411,6 +465,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah8",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -432,6 +487,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -442,6 +498,7 @@ class MysqlPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+diff --git a/tests/unit/pillar/test_sqlcipher.py b/tests/unit/pillar/test_sqlcipher.py
+index 99edcb094c..1330c3bbfc 100644
+--- a/tests/unit/pillar/test_sqlcipher.py
++++ b/tests/unit/pillar/test_sqlcipher.py
+@@ -30,6 +30,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -40,6 +41,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -50,6 +52,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -60,6 +63,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -70,6 +74,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -80,6 +85,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -90,6 +96,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -100,6 +107,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah8",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": [1],
+                         "ignore_null": False,
+                     },
+@@ -110,6 +118,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah9",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": [1, 2],
+                         "ignore_null": False,
+                     },
+@@ -141,6 +150,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -151,6 +161,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -161,6 +172,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -171,6 +183,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -181,6 +194,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -191,6 +205,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -201,6 +216,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -232,6 +248,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah1",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -242,6 +259,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -252,6 +270,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -262,6 +281,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah1",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -272,6 +292,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -282,6 +303,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -320,6 +342,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -330,6 +353,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -340,6 +364,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -350,6 +375,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -360,6 +386,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -370,6 +397,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -380,6 +408,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -390,6 +419,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah8",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -411,6 +441,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -421,6 +452,7 @@ class SQLCipherPillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+diff --git a/tests/unit/pillar/test_sqlite3.py b/tests/unit/pillar/test_sqlite3.py
+index 1d0b187729..fee651db32 100644
+--- a/tests/unit/pillar/test_sqlite3.py
++++ b/tests/unit/pillar/test_sqlite3.py
+@@ -30,6 +30,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -40,6 +41,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -50,6 +52,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -60,6 +63,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -70,6 +74,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -80,6 +85,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -90,6 +96,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -100,6 +107,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah8",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": [1],
+                         "ignore_null": False,
+                     },
+@@ -110,6 +118,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah9",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": [1, 2],
+                         "ignore_null": False,
+                     },
+@@ -141,6 +150,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -151,6 +161,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -161,6 +172,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -171,6 +183,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -181,6 +194,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -191,6 +205,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -201,6 +216,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -232,6 +248,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah1",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -242,6 +259,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -252,6 +270,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -262,6 +281,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah1",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -272,6 +292,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -282,6 +303,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -320,6 +342,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -330,6 +353,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -340,6 +364,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah3",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -350,6 +375,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah4",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -360,6 +386,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah5",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -370,6 +397,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah6",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -380,6 +408,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah7",
+                         "depth": 2,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -390,6 +419,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah8",
+                         "depth": 0,
+                         "as_list": True,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -411,6 +441,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+@@ -421,6 +452,7 @@ class SQLite3PillarTestCase(TestCase):
+                         "query": "SELECT blah2",
+                         "depth": 0,
+                         "as_list": False,
++                        "as_json": False,
+                         "with_lists": None,
+                         "ignore_null": False,
+                     },
+-- 
+2.34.1
+
+

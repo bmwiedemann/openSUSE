@@ -1,4 +1,4 @@
-From e4374250234ab74bce0ef86d95cb30e873f0af3c Mon Sep 17 00:00:00 2001
+From 2bfea35790926e3d4cbecd5f78f695deb8b086ec Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Thu, 24 Jan 2019 18:12:35 +0100
 Subject: [PATCH] temporary fix: extend the whitelist of allowed commands
@@ -8,7 +8,7 @@ Subject: [PATCH] temporary fix: extend the whitelist of allowed commands
  1 file changed, 3 insertions(+)
 
 diff --git a/salt/auth/__init__.py b/salt/auth/__init__.py
-index afd7ad65fa..0c64755235 100644
+index 6e970173b4..3b73c2ec08 100644
 --- a/salt/auth/__init__.py
 +++ b/salt/auth/__init__.py
 @@ -12,6 +12,7 @@ so that any external authentication system can be used inside of Salt
@@ -29,6 +29,6 @@ index afd7ad65fa..0c64755235 100644
          "print_event",
          "raw",
 -- 
-2.37.3
+2.33.0
 
 

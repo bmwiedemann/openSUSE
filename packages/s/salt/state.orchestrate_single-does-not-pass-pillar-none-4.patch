@@ -1,4 +1,4 @@
-From 634e82874b17c38bd4d27c0c07a53c9e39e49968 Mon Sep 17 00:00:00 2001
+From d44207dc209894b36f2a2c8af4c81afcd86b4625 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 9 Feb 2022 09:01:08 +0000
@@ -100,6 +100,6 @@ index 0000000000..df0a718a41
 +        )
 +        assert "pillar" not in mock_state_single.call_args.kwargs
 -- 
-2.37.3
+2.35.1
 
 

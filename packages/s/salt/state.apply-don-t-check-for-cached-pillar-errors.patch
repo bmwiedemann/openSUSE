@@ -1,4 +1,4 @@
-From cba6455bd0480bfb80c466a2b34a702a9afb5bd5 Mon Sep 17 00:00:00 2001
+From 5880703551d82a68a0e2f3108878124d8ae98bf0 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 25 Jan 2022 17:20:55 +0100
 Subject: [PATCH] state.apply: don't check for cached pillar errors
@@ -45,7 +45,7 @@ index 0000000000..af885d77fa
 @@ -0,0 +1 @@
 +Don't check for cached pillar errors on state.apply
 diff --git a/salt/modules/state.py b/salt/modules/state.py
-index f214291328..c0feabe842 100644
+index 0c3dfc3317..0027744229 100644
 --- a/salt/modules/state.py
 +++ b/salt/modules/state.py
 @@ -106,18 +106,17 @@ def _set_retcode(ret, highstate=None):
@@ -357,6 +357,6 @@ index 02fd2dd307..30cda303cc 100644
 +            state._get_pillar_errors(kwargs={}, pillar=pillar.fresh) == expected_errors
 +        )
 -- 
-2.37.3
+2.34.1
 
 

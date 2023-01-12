@@ -1,4 +1,4 @@
-From 51836a4c37f05262e708f058f323c1fbc2123ade Mon Sep 17 00:00:00 2001
+From 07d1b742f16799d3df9d7eeb04bbce5d814e519d Mon Sep 17 00:00:00 2001
 From: Martin Seidl <mseidl@suse.de>
 Date: Tue, 27 Oct 2020 16:12:29 +0100
 Subject: [PATCH] Allow vendor change option with zypper
@@ -64,7 +64,7 @@ Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
  2 files changed, 462 insertions(+), 61 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 6b19c65db3..c2452d6dec 100644
+index 1777bec031..7216e25b86 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
 @@ -35,6 +35,8 @@ import salt.utils.stringutils
@@ -76,7 +76,7 @@ index 6b19c65db3..c2452d6dec 100644
  from salt.utils.versions import LooseVersion
  
  log = logging.getLogger(__name__)
-@@ -135,6 +137,13 @@ class _Zypper:
+@@ -128,6 +130,13 @@ class _Zypper:
          self.__systemd_scope = False
          self.__root = None
  
@@ -90,7 +90,7 @@ index 6b19c65db3..c2452d6dec 100644
          # Call status
          self.__called = False
  
-@@ -179,6 +188,8 @@ class _Zypper:
+@@ -172,6 +181,8 @@ class _Zypper:
              self.__no_raise = True
          elif item == "refreshable":
              self.__refresh = True
@@ -99,7 +99,7 @@ index 6b19c65db3..c2452d6dec 100644
          elif item == "call":
              return self.__call
          else:
-@@ -219,6 +230,33 @@ class _Zypper:
+@@ -212,6 +223,33 @@ class _Zypper:
      def pid(self):
          return self.__call_result.get("pid", "")
  
@@ -133,7 +133,7 @@ index 6b19c65db3..c2452d6dec 100644
      def _is_error(self):
          """
          Is this is an error code?
-@@ -335,6 +373,15 @@ class _Zypper:
+@@ -326,6 +364,15 @@ class _Zypper:
              if self.__systemd_scope:
                  cmd.extend(["systemd-run", "--scope"])
              cmd.extend(self.__cmd)
@@ -149,7 +149,7 @@ index 6b19c65db3..c2452d6dec 100644
              log.debug("Calling Zypper: %s", " ".join(cmd))
              self.__call_result = __salt__["cmd.run_all"](cmd, **kwargs)
              if self._check_result():
-@@ -1444,6 +1491,8 @@ def install(
+@@ -1435,6 +1482,8 @@ def install(
      no_recommends=False,
      root=None,
      inclusion_detection=False,
@@ -158,7 +158,7 @@ index 6b19c65db3..c2452d6dec 100644
      **kwargs
  ):
      """
-@@ -1491,6 +1540,13 @@ def install(
+@@ -1482,6 +1531,13 @@ def install(
      skip_verify
          Skip the GPG verification check (e.g., ``--no-gpg-checks``)
  
@@ -172,7 +172,7 @@ index 6b19c65db3..c2452d6dec 100644
      version
          Can be either a version number, or the combination of a comparison
          operator (<, >, <=, >=, =) and a version number (ex. '>1.2.3-4').
-@@ -1656,6 +1712,7 @@ def install(
+@@ -1647,6 +1703,7 @@ def install(
      cmd_install.append(
          kwargs.get("resolve_capabilities") and "--capability" or "--name"
      )
@@ -180,7 +180,7 @@ index 6b19c65db3..c2452d6dec 100644
  
      if not refresh:
          cmd_install.insert(0, "--no-refresh")
-@@ -1692,6 +1749,7 @@ def install(
+@@ -1683,6 +1740,7 @@ def install(
                  systemd_scope=systemd_scope,
                  root=root,
              )
@@ -188,7 +188,7 @@ index 6b19c65db3..c2452d6dec 100644
              .call(*cmd)
              .splitlines()
          ):
-@@ -1704,7 +1762,9 @@ def install(
+@@ -1695,7 +1753,9 @@ def install(
      while downgrades:
          cmd = cmd_install + ["--force"] + downgrades[:500]
          downgrades = downgrades[500:]
@@ -199,7 +199,7 @@ index 6b19c65db3..c2452d6dec 100644
  
      _clean_cache()
      new = (
-@@ -1735,7 +1795,8 @@ def upgrade(
+@@ -1726,7 +1786,8 @@ def upgrade(
      dryrun=False,
      dist_upgrade=False,
      fromrepo=None,
@@ -209,7 +209,7 @@ index 6b19c65db3..c2452d6dec 100644
      skip_verify=False,
      no_recommends=False,
      root=None,
-@@ -1774,7 +1835,11 @@ def upgrade(
+@@ -1765,7 +1826,11 @@ def upgrade(
          Specify a list of package repositories to upgrade from. Default: None
  
      novendorchange
@@ -222,7 +222,7 @@ index 6b19c65db3..c2452d6dec 100644
  
      skip_verify
          Skip the GPG verification check (e.g., ``--no-gpg-checks``)
-@@ -1821,31 +1886,21 @@ def upgrade(
+@@ -1812,31 +1877,21 @@ def upgrade(
              cmd_update.extend(["--from" if dist_upgrade else "--repo", repo])
          log.info("Targeting repos: %s", fromrepo)
  
@@ -267,10 +267,10 @@ index 6b19c65db3..c2452d6dec 100644
      new = list_pkgs(root=root)
      ret = salt.utils.data.compare_dicts(old, new)
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 671adc2779..39f28f2198 100644
+index 0ba5595d65..78fe226914 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -135,6 +135,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -137,6 +137,7 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
  
          stdout_xml_snippet = '<?xml version="1.0"?><test foo="bar"/>'
          sniffer = RunSniffer(stdout=stdout_xml_snippet)
@@ -278,7 +278,7 @@ index 671adc2779..39f28f2198 100644
          with patch.dict("salt.modules.zypperpkg.__salt__", {"cmd.run_all": sniffer}):
              self.assertEqual(zypper.__zypper__.call("foo"), stdout_xml_snippet)
              self.assertEqual(len(sniffer.calls), 1)
-@@ -609,13 +610,373 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -592,13 +593,373 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                  {"vim": "7.4.326-2.62", "fakepkg": ""},
              )
  
@@ -653,7 +653,7 @@ index 671adc2779..39f28f2198 100644
              "salt.modules.zypperpkg.refresh_db", MagicMock(return_value=True)
          ), patch(
              "salt.modules.zypperpkg._systemd_scope", MagicMock(return_value=False)
-@@ -654,16 +1015,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -637,16 +998,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                      self.assertDictEqual(ret, {"vim": {"old": "1.1", "new": "1.1,1.2"}})
                      zypper_mock.assert_any_call("update", "--auto-agree-with-licenses")
  
@@ -670,7 +670,7 @@ index 671adc2779..39f28f2198 100644
                  with patch(
                      "salt.modules.zypperpkg.list_pkgs",
                      MagicMock(side_effect=[{"vim": "1.1"}, {"vim": "1.1"}]),
-@@ -679,6 +1030,22 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -662,6 +1013,22 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                          "--debug-solver",
                      )
  
@@ -693,7 +693,7 @@ index 671adc2779..39f28f2198 100644
                  with patch(
                      "salt.modules.zypperpkg.list_pkgs",
                      MagicMock(side_effect=[{"vim": "1.1"}, {"vim": "1.1"}]),
-@@ -697,7 +1064,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -680,7 +1047,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                          "Dummy",
                          "--from",
                          "Dummy2",
@@ -701,7 +701,7 @@ index 671adc2779..39f28f2198 100644
                      )
                      zypper_mock.assert_any_call(
                          "dist-upgrade",
-@@ -707,7 +1073,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -690,7 +1056,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                          "Dummy",
                          "--from",
                          "Dummy2",
@@ -709,7 +709,7 @@ index 671adc2779..39f28f2198 100644
                          "--debug-solver",
                      )
  
-@@ -727,33 +1092,13 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -710,33 +1075,13 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                          "Dummy2",
                      )
  
@@ -744,7 +744,7 @@ index 671adc2779..39f28f2198 100644
              "salt.modules.zypperpkg.refresh_db", MagicMock(return_value=True)
          ), patch(
              "salt.modules.zypperpkg._systemd_scope", MagicMock(return_value=False)
-@@ -812,12 +1157,13 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -795,12 +1140,13 @@ Repository 'DUMMY' not found by its alias, number, or URI.
                  self.pid = 1234
                  self.exit_code = 555
                  self.noraise = MagicMock()
@@ -759,7 +759,7 @@ index 671adc2779..39f28f2198 100644
              "salt.modules.zypperpkg.__zypper__", FailingZypperDummy()
          ) as zypper_mock, patch(
              "salt.modules.zypperpkg.refresh_db", MagicMock(return_value=True)
-@@ -834,7 +1180,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -817,7 +1163,7 @@ Repository 'DUMMY' not found by its alias, number, or URI.
                  self.assertEqual(cmd_exc.exception.info["changes"], {})
                  self.assertEqual(cmd_exc.exception.info["result"]["stdout"], zypper_out)
                  zypper_mock.noraise.call.assert_called_with(
@@ -769,6 +769,6 @@ index 671adc2779..39f28f2198 100644
  
      def test_upgrade_available(self):
 -- 
-2.37.3
+2.33.0
 
 

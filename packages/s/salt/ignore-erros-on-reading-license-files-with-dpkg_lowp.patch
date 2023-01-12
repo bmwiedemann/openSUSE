@@ -1,4 +1,4 @@
-From 7cac5f67eb0d586314f9e7c987b8a620e28eeac3 Mon Sep 17 00:00:00 2001
+From 90d0e3ce40e46a9bff3e477b61e02cf3e87e8b9f Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Mon, 27 Jun 2022 17:55:49 +0300
 Subject: [PATCH] Ignore erros on reading license files with dpkg_lowpkg
@@ -51,6 +51,6 @@ index 0000000000..1a89660c02
 +        assert license_read_mock.calls[0].args[0] == "/usr/share/doc/bash/copyright"
 +        assert license_read_mock.calls[0].kwargs["errors"] == "ignore"
 -- 
-2.37.3
+2.36.1
 
 

@@ -1,4 +1,4 @@
-From af5eb3f436fa405b76851c6ba0d491559b020974 Mon Sep 17 00:00:00 2001
+From c70db2e50599339118c9bf00c69f5cd38ef220bb Mon Sep 17 00:00:00 2001
 From: Vladimir Nadvornik <nadvornik@suse.cz>
 Date: Mon, 27 Jun 2022 17:00:58 +0200
 Subject: [PATCH] Save log to logfile with docker.build
@@ -8,10 +8,10 @@ Subject: [PATCH] Save log to logfile with docker.build
  1 file changed, 18 insertions(+)
 
 diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
-index ab5c2ac609..461c89431f 100644
+index e6b81e7f09..1f871b40cf 100644
 --- a/salt/modules/dockermod.py
 +++ b/salt/modules/dockermod.py
-@@ -4001,6 +4001,7 @@ def build(
+@@ -3990,6 +3990,7 @@ def build(
      fileobj=None,
      dockerfile=None,
      buildargs=None,
@@ -19,7 +19,7 @@ index ab5c2ac609..461c89431f 100644
  ):
      """
      .. versionchanged:: 2018.3.0
-@@ -4054,6 +4055,9 @@ def build(
+@@ -4043,6 +4044,9 @@ def build(
      buildargs
          A dictionary of build arguments provided to the docker build process.
  
@@ -29,7 +29,7 @@ index ab5c2ac609..461c89431f 100644
  
      **RETURN DATA**
  
-@@ -4128,6 +4132,20 @@ def build(
+@@ -4117,6 +4121,20 @@ def build(
      stream_data = []
      for line in response:
          stream_data.extend(salt.utils.json.loads(line, cls=DockerJSONDecoder))
@@ -51,6 +51,6 @@ index ab5c2ac609..461c89431f 100644
      # Iterate through API response and collect information
      for item in stream_data:
 -- 
-2.37.3
+2.36.1
 
 

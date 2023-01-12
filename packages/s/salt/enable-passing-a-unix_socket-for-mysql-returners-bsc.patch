@@ -1,4 +1,4 @@
-From 465ea094039e771ea2b4ccda012d0dc12f7aa022 Mon Sep 17 00:00:00 2001
+From c8f4092f117bd93293e0957422555d3ae7bae999 Mon Sep 17 00:00:00 2001
 From: Maximilian Meister <mmeister@suse.de>
 Date: Thu, 3 May 2018 15:52:23 +0200
 Subject: [PATCH] enable passing a unix_socket for mysql returners
@@ -63,6 +63,6 @@ index 6fd4fdef2c..7a7e9a3284 100644
  
              try:
 -- 
-2.37.3
+2.34.1
 
 

@@ -1,4 +1,4 @@
-From 93d7bdab18bdc657c8103a7b5f569458a97c8ca0 Mon Sep 17 00:00:00 2001
+From 933345d049a0207e730ca518dc5f016b0c05d761 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 7 Jul 2021 15:41:48 +0100
@@ -420,6 +420,6 @@ index 045c37f7c9..301c1869ec 100644
 +                },
 +            )
 -- 
-2.37.3
+2.34.1
 
 

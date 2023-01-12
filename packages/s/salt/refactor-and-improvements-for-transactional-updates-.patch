@@ -1,0 +1,1063 @@
+From e28a67ec69b4781fc9c667a9cdec66192e4cca45 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Wed, 19 Jan 2022 17:45:01 +0100
+Subject: [PATCH] Refactor and improvements for "transactional-updates"
+ module
+
+Add --no-return-event option to salt-call
+
+Act on concurrent flag when running highstate
+
+Simplify transactional_update module to not use SSH wrapper
+
+Fix tests for transactional update
+
+Add changelog
+
+Fix pylint issues
+
+Fix failing unit test for state.highstate after refactor
+
+Remove hack about tukit issue that has been already fixed
+---
+ changelog/61188.fixed                         |   3 +
+ salt/cli/caller.py                            |   2 +-
+ salt/modules/state.py                         |  12 +-
+ salt/modules/transactional_update.py          | 235 ++---------
+ salt/utils/parsers.py                         |   6 +
+ .../pytests/unit/modules/state/test_state.py  |   2 +-
+ .../unit/modules/test_transactional_update.py | 389 ++----------------
+ 7 files changed, 81 insertions(+), 568 deletions(-)
+ create mode 100644 changelog/61188.fixed
+
+diff --git a/changelog/61188.fixed b/changelog/61188.fixed
+new file mode 100644
+index 0000000000..102a8982a6
+--- /dev/null
++++ b/changelog/61188.fixed
+@@ -0,0 +1,3 @@
++Add "--no-return-event" option to salt-call to prevent sending return event back to master.
++Make "state.highstate" to acts on concurrent flag.
++Simplify "transactional_update" module to not use SSH wrapper and allow more flexible execution
+diff --git a/salt/cli/caller.py b/salt/cli/caller.py
+index 795d32e4c9..10eb5e397a 100644
+--- a/salt/cli/caller.py
++++ b/salt/cli/caller.py
+@@ -293,7 +293,7 @@ class BaseCaller:
+                 pass
+ 
+         # return the job infos back up to the respective minion's master
+-        if not is_local:
++        if not is_local and not self.opts.get("no_return_event", False):
+             try:
+                 mret = ret.copy()
+                 mret["jid"] = "req"
+diff --git a/salt/modules/state.py b/salt/modules/state.py
+index c78072131b..0c3dfc3317 100644
+--- a/salt/modules/state.py
++++ b/salt/modules/state.py
+@@ -1053,9 +1053,15 @@ def highstate(test=None, queue=False, **kwargs):
+         }
+         return ret
+ 
+-    conflict = _check_queue(queue, kwargs)
+-    if conflict is not None:
+-        return conflict
++    concurrent = kwargs.get("concurrent", False)
++
++    if queue:
++        _wait(kwargs.get("__pub_jid"))
++    else:
++        conflict = running(concurrent)
++        if conflict:
++            __context__["retcode"] = salt.defaults.exitcodes.EX_STATE_COMPILER_ERROR
++            return conflict
+ 
+     orig_test = __opts__.get("test", None)
+     opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
+diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
+index 799fe08e4d..28b02f8fec 100644
+--- a/salt/modules/transactional_update.py
++++ b/salt/modules/transactional_update.py
+@@ -275,11 +275,7 @@ transaction.
+ 
+ """
+ 
+-import copy
+ import logging
+-import os
+-import sys
+-import tempfile
+ 
+ # required by _check_queue invocation later
+ import time  # pylint: disable=unused-import
+@@ -312,11 +308,6 @@ def __virtual__():
+         return (False, "Module transactional_update requires a transactional system")
+ 
+ 
+-class TransactionalUpdateHighstate(salt.client.ssh.state.SSHHighState):
+-    def _master_tops(self):
+-        return self.client.master_tops()
+-
+-
+ def _global_params(self_update, snapshot=None, quiet=False):
+     """Utility function to prepare common global parameters."""
+     params = ["--non-interactive", "--drop-if-no-change"]
+@@ -950,65 +941,42 @@ def call(function, *args, **kwargs):
+ 
+     activate_transaction = kwargs.pop("activate_transaction", False)
+ 
+-    # Generate the salt-thin and create a temporary directory in a
+-    # place that the new transaction will have access to, and where we
+-    # can untar salt-thin
+-    thin_path = __utils__["thin.gen_thin"](
+-        __opts__["cachedir"],
+-        extra_mods=__salt__["config.option"]("thin_extra_mods", ""),
+-        so_mods=__salt__["config.option"]("thin_so_mods", ""),
+-    )
+-    thin_dest_path = tempfile.mkdtemp(dir=__opts__["cachedir"])
+-    # Some bug in Salt is preventing us to use `archive.tar` here. A
+-    # AsyncZeroMQReqChannel is not closed at the end of the salt-call,
+-    # and makes the client never exit.
+-    #
+-    # stdout = __salt__['archive.tar']('xzf', thin_path, dest=thin_dest_path)
+-    #
+-    stdout = __salt__["cmd.run"](["tar", "xzf", thin_path, "-C", thin_dest_path])
+-    if stdout:
+-        __utils__["files.rm_rf"](thin_dest_path)
+-        return {"result": False, "comment": stdout}
+-
+     try:
+         safe_kwargs = salt.utils.args.clean_kwargs(**kwargs)
+         salt_argv = (
+             [
+-                "python{}".format(sys.version_info[0]),
+-                os.path.join(thin_dest_path, "salt-call"),
+-                "--metadata",
+-                "--local",
+-                "--log-file",
+-                os.path.join(thin_dest_path, "log"),
+-                "--cachedir",
+-                os.path.join(thin_dest_path, "cache"),
++                "salt-call",
+                 "--out",
+                 "json",
+                 "-l",
+                 "quiet",
++                "--no-return-event",
+                 "--",
+                 function,
+             ]
+             + list(args)
+             + ["{}={}".format(k, v) for (k, v) in safe_kwargs.items()]
+         )
++
+         try:
+             ret_stdout = run([str(x) for x in salt_argv], snapshot="continue")
+         except salt.exceptions.CommandExecutionError as e:
++            # This happens when there was an problem with salt-call execution
+             ret_stdout = e.message
+ 
+         # Process "real" result in stdout
+         try:
+             data = __utils__["json.find_json"](ret_stdout)
+             local = data.get("local", data)
+-            if isinstance(local, dict) and "retcode" in local:
+-                __context__["retcode"] = local["retcode"]
+-            return local.get("return", data)
++            if isinstance(local, dict):
++                if "retcode" in local:
++                    __context__["retcode"] = local["retcode"]
++                return local.get("return", local)
++            else:
++                return local
+         except ValueError:
+             return {"result": False, "retcode": 1, "comment": ret_stdout}
+     finally:
+-        __utils__["files.rm_rf"](thin_dest_path)
+-
+         # Check if reboot is needed
+         if activate_transaction and pending_transaction():
+             reboot()
+@@ -1044,49 +1012,7 @@ def apply_(mods=None, **kwargs):
+     return highstate(**kwargs)
+ 
+ 
+-def _create_and_execute_salt_state(
+-    chunks, file_refs, test, hash_type, activate_transaction
+-):
+-    """Create the salt_state tarball, and execute it in a transaction"""
+-
+-    # Create the tar containing the state pkg and relevant files.
+-    salt.client.ssh.wrapper.state._cleanup_slsmod_low_data(chunks)
+-    trans_tar = salt.client.ssh.state.prep_trans_tar(
+-        salt.fileclient.get_file_client(__opts__), chunks, file_refs, __pillar__.value()
+-    )
+-    trans_tar_sum = salt.utils.hashutils.get_hash(trans_tar, hash_type)
+-
+-    ret = None
+-
+-    # Create a temporary directory accesible later by the transaction
+-    # where we can move the salt_state.tgz
+-    salt_state_path = tempfile.mkdtemp(dir=__opts__["cachedir"])
+-    salt_state_path = os.path.join(salt_state_path, "salt_state.tgz")
+-    try:
+-        salt.utils.files.copyfile(trans_tar, salt_state_path)
+-        ret = call(
+-            "state.pkg",
+-            salt_state_path,
+-            test=test,
+-            pkg_sum=trans_tar_sum,
+-            hash_type=hash_type,
+-            activate_transaction=activate_transaction,
+-        )
+-    finally:
+-        __utils__["files.rm_rf"](salt_state_path)
+-
+-    return ret
+-
+-
+-def sls(
+-    mods,
+-    saltenv="base",
+-    test=None,
+-    exclude=None,
+-    activate_transaction=False,
+-    queue=False,
+-    **kwargs
+-):
++def sls(mods, activate_transaction=False, queue=False, **kwargs):
+     """Execute the states in one or more SLS files inside a transaction.
+ 
+     saltenv
+@@ -1132,55 +1058,14 @@ def sls(
+     if conflict is not None:
+         return conflict
+ 
+-    # Get a copy of the pillar data, to avoid overwriting the current
+-    # pillar, instead the one delegated
+-    pillar = copy.deepcopy(__pillar__.value())
+-    pillar.update(kwargs.get("pillar", {}))
+-
+-    # Clone the options data and apply some default values. May not be
+-    # needed, as this module just delegate
+-    opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
+-    st_ = TransactionalUpdateHighstate(
+-        opts, pillar, __salt__, salt.fileclient.get_file_client(__opts__)
+-    )
+-
+-    if isinstance(mods, str):
+-        mods = mods.split(",")
+-
+-    high_data, errors = st_.render_highstate({saltenv: mods})
+-    if exclude:
+-        if isinstance(exclude, str):
+-            exclude = exclude.split(",")
+-        if "__exclude__" in high_data:
+-            high_data["__exclude__"].extend(exclude)
+-        else:
+-            high_data["__exclude__"] = exclude
+-
+-    high_data, ext_errors = st_.state.reconcile_extend(high_data)
+-    errors += ext_errors
+-    errors += st_.state.verify_high(high_data)
+-    if errors:
+-        return errors
+-
+-    high_data, req_in_errors = st_.state.requisite_in(high_data)
+-    errors += req_in_errors
+-    if errors:
+-        return errors
+-
+-    high_data = st_.state.apply_exclude(high_data)
+-
+-    # Compile and verify the raw chunks
+-    chunks = st_.state.compile_high_data(high_data)
+-    file_refs = salt.client.ssh.state.lowstate_file_refs(
+-        chunks,
+-        salt.client.ssh.wrapper.state._merge_extra_filerefs(
+-            kwargs.get("extra_filerefs", ""), opts.get("extra_filerefs", "")
+-        ),
+-    )
++    concurrent = kwargs.pop("concurrent", True)
+ 
+-    hash_type = opts["hash_type"]
+-    return _create_and_execute_salt_state(
+-        chunks, file_refs, test, hash_type, activate_transaction
++    return call(
++        "state.sls",
++        mods,
++        activate_transaction=activate_transaction,
++        concurrent=concurrent,
++        **kwargs
+     )
+ 
+ 
+@@ -1216,40 +1101,15 @@ def highstate(activate_transaction=False, queue=False, **kwargs):
+     if conflict is not None:
+         return conflict
+ 
+-    # Get a copy of the pillar data, to avoid overwriting the current
+-    # pillar, instead the one delegated
+-    pillar = copy.deepcopy(__pillar__.value())
+-    pillar.update(kwargs.get("pillar", {}))
+-
+-    # Clone the options data and apply some default values. May not be
+-    # needed, as this module just delegate
+-    opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
+-    st_ = TransactionalUpdateHighstate(
+-        opts, pillar, __salt__, salt.fileclient.get_file_client(__opts__)
+-    )
+-
+-    # Compile and verify the raw chunks
+-    chunks = st_.compile_low_chunks()
+-    file_refs = salt.client.ssh.state.lowstate_file_refs(
+-        chunks,
+-        salt.client.ssh.wrapper.state._merge_extra_filerefs(
+-            kwargs.get("extra_filerefs", ""), opts.get("extra_filerefs", "")
+-        ),
+-    )
+-    # Check for errors
+-    for chunk in chunks:
+-        if not isinstance(chunk, dict):
+-            __context__["retcode"] = 1
+-            return chunks
+-
+-    test = kwargs.pop("test", False)
+-    hash_type = opts["hash_type"]
+-    return _create_and_execute_salt_state(
+-        chunks, file_refs, test, hash_type, activate_transaction
++    return call(
++        "state.highstate",
++        activate_transaction=activate_transaction,
++        concurrent=True,
++        **kwargs
+     )
+ 
+ 
+-def single(fun, name, test=None, activate_transaction=False, queue=False, **kwargs):
++def single(fun, name, activate_transaction=False, queue=False, **kwargs):
+     """Execute a single state function with the named kwargs, returns
+     False if insufficient data is sent to the command
+ 
+@@ -1282,44 +1142,11 @@ def single(fun, name, test=None, activate_transaction=False, queue=False, **kwar
+     if conflict is not None:
+         return conflict
+ 
+-    # Get a copy of the pillar data, to avoid overwriting the current
+-    # pillar, instead the one delegated
+-    pillar = copy.deepcopy(__pillar__.value())
+-    pillar.update(kwargs.get("pillar", {}))
+-
+-    # Clone the options data and apply some default values. May not be
+-    # needed, as this module just delegate
+-    opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
+-    st_ = salt.client.ssh.state.SSHState(opts, pillar)
+-
+-    # state.fun -> [state, fun]
+-    comps = fun.split(".")
+-    if len(comps) < 2:
+-        __context__["retcode"] = 1
+-        return "Invalid function passed"
+-
+-    # Create the low chunk, using kwargs as a base
+-    kwargs.update({"state": comps[0], "fun": comps[1], "__id__": name, "name": name})
+-
+-    # Verify the low chunk
+-    err = st_.verify_data(kwargs)
+-    if err:
+-        __context__["retcode"] = 1
+-        return err
+-
+-    # Must be a list of low-chunks
+-    chunks = [kwargs]
+-
+-    # Retrieve file refs for the state run, so we can copy relevant
+-    # files down to the minion before executing the state
+-    file_refs = salt.client.ssh.state.lowstate_file_refs(
+-        chunks,
+-        salt.client.ssh.wrapper.state._merge_extra_filerefs(
+-            kwargs.get("extra_filerefs", ""), opts.get("extra_filerefs", "")
+-        ),
+-    )
+-
+-    hash_type = opts["hash_type"]
+-    return _create_and_execute_salt_state(
+-        chunks, file_refs, test, hash_type, activate_transaction
++    return call(
++        "state.single",
++        fun=fun,
++        name=name,
++        activate_transaction=activate_transaction,
++        concurrent=True,
++        **kwargs
+     )
+diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
+index c0820e5df0..5ff3c964be 100644
+--- a/salt/utils/parsers.py
++++ b/salt/utils/parsers.py
+@@ -3108,6 +3108,12 @@ class SaltCallOptionParser(
+             action="store_true",
+             help="Force a refresh of the grains cache.",
+         )
++        self.add_option(
++            "--no-return-event",
++            default=False,
++            action="store_true",
++            help=("Do not produce the return event back to master."),
++        )
+         self.add_option(
+             "-t",
+             "--timeout",
+diff --git a/tests/pytests/unit/modules/state/test_state.py b/tests/pytests/unit/modules/state/test_state.py
+index 3fa663edeb..02fd2dd307 100644
+--- a/tests/pytests/unit/modules/state/test_state.py
++++ b/tests/pytests/unit/modules/state/test_state.py
+@@ -777,7 +777,7 @@ def test_highstate():
+         }
+ 
+         mock = MagicMock(side_effect=["A", None, None])
+-        with patch.object(state, "_check_queue", mock):
++        with patch.object(state, "running", mock):
+             assert state.highstate("whitelist=sls1.sls") == "A"
+ 
+             with patch.dict(state.__opts__, {"test": "A"}):
+diff --git a/tests/pytests/unit/modules/test_transactional_update.py b/tests/pytests/unit/modules/test_transactional_update.py
+index 032ca0c9e8..40dab0e2f6 100644
+--- a/tests/pytests/unit/modules/test_transactional_update.py
++++ b/tests/pytests/unit/modules/test_transactional_update.py
+@@ -1,5 +1,3 @@
+-import sys
+-
+ import pytest
+ import salt.loader.context
+ import salt.modules.state as statemod
+@@ -353,114 +351,23 @@ def test_call_fails_input_validation():
+         tu.call("")
+ 
+ 
+-@patch("tempfile.mkdtemp", MagicMock(return_value="/var/cache/salt/minion/tmp01"))
+-def test_call_fails_untar():
+-    """Test transactional_update.call when tar fails"""
+-    utils_mock = {
+-        "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+-        "files.rm_rf": MagicMock(),
+-    }
+-    opts_mock = {"cachedir": "/var/cache/salt/minion"}
+-    salt_mock = {
+-        "cmd.run": MagicMock(return_value="Error"),
+-        "config.option": MagicMock(),
+-    }
+-    with patch.dict(tu.__utils__, utils_mock), patch.dict(
+-        tu.__opts__, opts_mock
+-    ), patch.dict(tu.__salt__, salt_mock):
+-        assert tu.call("/chroot", "test.ping") == {
+-            "result": False,
+-            "comment": "Error",
+-        }
+-
+-        utils_mock["thin.gen_thin"].assert_called_once()
+-        salt_mock["config.option"].assert_called()
+-        salt_mock["cmd.run"].assert_called_once()
+-        utils_mock["files.rm_rf"].assert_called_once()
+-
+-
+-@patch("tempfile.mkdtemp", MagicMock(return_value="/var/cache/salt/minion/tmp01"))
+-def test_call_fails_salt_thin():
+-    """Test transactional_update.chroot when fails salt_thin"""
+-    utils_mock = {
+-        "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+-        "files.rm_rf": MagicMock(),
+-        "json.find_json": MagicMock(side_effect=ValueError()),
+-    }
+-    opts_mock = {"cachedir": "/var/cache/salt/minion"}
+-    salt_mock = {
+-        "cmd.run": MagicMock(return_value=""),
+-        "config.option": MagicMock(),
+-        "cmd.run_all": MagicMock(return_value={"retcode": 1, "stderr": "Error"}),
+-    }
+-    with patch.dict(tu.__utils__, utils_mock), patch.dict(
+-        tu.__opts__, opts_mock
+-    ), patch.dict(tu.__salt__, salt_mock):
+-        assert tu.call("test.ping") == {
+-            "result": False,
+-            "retcode": 1,
+-            "comment": "Error",
+-        }
+-
+-        utils_mock["thin.gen_thin"].assert_called_once()
+-        salt_mock["config.option"].assert_called()
+-        salt_mock["cmd.run"].assert_called_once()
+-        salt_mock["cmd.run_all"].assert_called_with(
+-            [
+-                "transactional-update",
+-                "--non-interactive",
+-                "--drop-if-no-change",
+-                "--no-selfupdate",
+-                "--continue",
+-                "--quiet",
+-                "run",
+-                "python{}".format(sys.version_info[0]),
+-                "/var/cache/salt/minion/tmp01/salt-call",
+-                "--metadata",
+-                "--local",
+-                "--log-file",
+-                "/var/cache/salt/minion/tmp01/log",
+-                "--cachedir",
+-                "/var/cache/salt/minion/tmp01/cache",
+-                "--out",
+-                "json",
+-                "-l",
+-                "quiet",
+-                "--",
+-                "test.ping",
+-            ]
+-        )
+-        utils_mock["files.rm_rf"].assert_called_once()
+-
+-
+-@patch("tempfile.mkdtemp", MagicMock(return_value="/var/cache/salt/minion/tmp01"))
+ def test_call_fails_function():
+     """Test transactional_update.chroot when fails the function"""
+     utils_mock = {
+-        "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+-        "files.rm_rf": MagicMock(),
+         "json.find_json": MagicMock(side_effect=ValueError()),
+     }
+-    opts_mock = {"cachedir": "/var/cache/salt/minion"}
+     salt_mock = {
+-        "cmd.run": MagicMock(return_value=""),
+-        "config.option": MagicMock(),
+         "cmd.run_all": MagicMock(
+             return_value={"retcode": 0, "stdout": "Not found", "stderr": ""}
+         ),
+     }
+-    with patch.dict(tu.__utils__, utils_mock), patch.dict(
+-        tu.__opts__, opts_mock
+-    ), patch.dict(tu.__salt__, salt_mock):
++    with patch.dict(tu.__utils__, utils_mock), patch.dict(tu.__salt__, salt_mock):
+         assert tu.call("test.ping") == {
+             "result": False,
+             "retcode": 1,
+             "comment": "Not found",
+         }
+ 
+-        utils_mock["thin.gen_thin"].assert_called_once()
+-        salt_mock["config.option"].assert_called()
+-        salt_mock["cmd.run"].assert_called_once()
+         salt_mock["cmd.run_all"].assert_called_with(
+             [
+                 "transactional-update",
+@@ -470,47 +377,29 @@ def test_call_fails_function():
+                 "--continue",
+                 "--quiet",
+                 "run",
+-                "python{}".format(sys.version_info[0]),
+-                "/var/cache/salt/minion/tmp01/salt-call",
+-                "--metadata",
+-                "--local",
+-                "--log-file",
+-                "/var/cache/salt/minion/tmp01/log",
+-                "--cachedir",
+-                "/var/cache/salt/minion/tmp01/cache",
++                "salt-call",
+                 "--out",
+                 "json",
+                 "-l",
+                 "quiet",
++                "--no-return-event",
+                 "--",
+                 "test.ping",
+             ]
+         )
+-        utils_mock["files.rm_rf"].assert_called_once()
+ 
+ 
+-@patch("tempfile.mkdtemp", MagicMock(return_value="/var/cache/salt/minion/tmp01"))
+ def test_call_success_no_reboot():
+     """Test transactional_update.chroot when succeed"""
+     utils_mock = {
+-        "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+-        "files.rm_rf": MagicMock(),
+         "json.find_json": MagicMock(return_value={"return": "result"}),
+     }
+-    opts_mock = {"cachedir": "/var/cache/salt/minion"}
+     salt_mock = {
+-        "cmd.run": MagicMock(return_value=""),
+-        "config.option": MagicMock(),
+         "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
+     }
+-    with patch.dict(tu.__utils__, utils_mock), patch.dict(
+-        tu.__opts__, opts_mock
+-    ), patch.dict(tu.__salt__, salt_mock):
++    with patch.dict(tu.__utils__, utils_mock), patch.dict(tu.__salt__, salt_mock):
+         assert tu.call("test.ping") == "result"
+ 
+-        utils_mock["thin.gen_thin"].assert_called_once()
+-        salt_mock["config.option"].assert_called()
+-        salt_mock["cmd.run"].assert_called_once()
+         salt_mock["cmd.run_all"].assert_called_with(
+             [
+                 "transactional-update",
+@@ -520,43 +409,30 @@ def test_call_success_no_reboot():
+                 "--continue",
+                 "--quiet",
+                 "run",
+-                "python{}".format(sys.version_info[0]),
+-                "/var/cache/salt/minion/tmp01/salt-call",
+-                "--metadata",
+-                "--local",
+-                "--log-file",
+-                "/var/cache/salt/minion/tmp01/log",
+-                "--cachedir",
+-                "/var/cache/salt/minion/tmp01/cache",
++                "salt-call",
+                 "--out",
+                 "json",
+                 "-l",
+                 "quiet",
++                "--no-return-event",
+                 "--",
+                 "test.ping",
+             ]
+         )
+-        utils_mock["files.rm_rf"].assert_called_once()
+ 
+ 
+-@patch("tempfile.mkdtemp", MagicMock(return_value="/var/cache/salt/minion/tmp01"))
+ def test_call_success_reboot():
+     """Test transactional_update.chroot when succeed and reboot"""
+     pending_transaction_mock = MagicMock(return_value=True)
+     reboot_mock = MagicMock()
+     utils_mock = {
+-        "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+-        "files.rm_rf": MagicMock(),
+         "json.find_json": MagicMock(return_value={"return": "result"}),
+     }
+-    opts_mock = {"cachedir": "/var/cache/salt/minion"}
+     salt_mock = {
+-        "cmd.run": MagicMock(return_value=""),
+-        "config.option": MagicMock(),
+         "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
+     }
+     with patch.dict(tu.__utils__, utils_mock), patch.dict(
+-        tu.__opts__, opts_mock
++        tu.__salt__, salt_mock
+     ), patch.dict(tu.__salt__, salt_mock), patch(
+         "salt.modules.transactional_update.pending_transaction",
+         pending_transaction_mock,
+@@ -567,9 +443,6 @@ def test_call_success_reboot():
+             tu.call("transactional_update.dup", activate_transaction=True) == "result"
+         )
+ 
+-        utils_mock["thin.gen_thin"].assert_called_once()
+-        salt_mock["config.option"].assert_called()
+-        salt_mock["cmd.run"].assert_called_once()
+         salt_mock["cmd.run_all"].assert_called_with(
+             [
+                 "transactional-update",
+@@ -579,49 +452,31 @@ def test_call_success_reboot():
+                 "--continue",
+                 "--quiet",
+                 "run",
+-                "python{}".format(sys.version_info[0]),
+-                "/var/cache/salt/minion/tmp01/salt-call",
+-                "--metadata",
+-                "--local",
+-                "--log-file",
+-                "/var/cache/salt/minion/tmp01/log",
+-                "--cachedir",
+-                "/var/cache/salt/minion/tmp01/cache",
++                "salt-call",
+                 "--out",
+                 "json",
+                 "-l",
+                 "quiet",
++                "--no-return-event",
+                 "--",
+                 "transactional_update.dup",
+             ]
+         )
+-        utils_mock["files.rm_rf"].assert_called_once()
+         pending_transaction_mock.assert_called_once()
+         reboot_mock.assert_called_once()
+ 
+ 
+-@patch("tempfile.mkdtemp", MagicMock(return_value="/var/cache/salt/minion/tmp01"))
+ def test_call_success_parameters():
+     """Test transactional_update.chroot when succeed with parameters"""
+     utils_mock = {
+-        "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
+-        "files.rm_rf": MagicMock(),
+         "json.find_json": MagicMock(return_value={"return": "result"}),
+     }
+-    opts_mock = {"cachedir": "/var/cache/salt/minion"}
+     salt_mock = {
+-        "cmd.run": MagicMock(return_value=""),
+-        "config.option": MagicMock(),
+         "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
+     }
+-    with patch.dict(tu.__utils__, utils_mock), patch.dict(
+-        tu.__opts__, opts_mock
+-    ), patch.dict(tu.__salt__, salt_mock):
++    with patch.dict(tu.__utils__, utils_mock), patch.dict(tu.__salt__, salt_mock):
+         assert tu.call("module.function", key="value") == "result"
+ 
+-        utils_mock["thin.gen_thin"].assert_called_once()
+-        salt_mock["config.option"].assert_called()
+-        salt_mock["cmd.run"].assert_called_once()
+         salt_mock["cmd.run_all"].assert_called_with(
+             [
+                 "transactional-update",
+@@ -631,75 +486,32 @@ def test_call_success_parameters():
+                 "--continue",
+                 "--quiet",
+                 "run",
+-                "python{}".format(sys.version_info[0]),
+-                "/var/cache/salt/minion/tmp01/salt-call",
+-                "--metadata",
+-                "--local",
+-                "--log-file",
+-                "/var/cache/salt/minion/tmp01/log",
+-                "--cachedir",
+-                "/var/cache/salt/minion/tmp01/cache",
++                "salt-call",
+                 "--out",
+                 "json",
+                 "-l",
+                 "quiet",
++                "--no-return-event",
+                 "--",
+                 "module.function",
+                 "key=value",
+             ]
+         )
+-        utils_mock["files.rm_rf"].assert_called_once()
+ 
+ 
+ def test_sls():
+     """Test transactional_update.sls"""
+-    transactional_update_highstate_mock = MagicMock()
+-    transactional_update_highstate_mock.return_value = (
+-        transactional_update_highstate_mock
+-    )
+-    transactional_update_highstate_mock.render_highstate.return_value = (None, [])
+-    transactional_update_highstate_mock.state.reconcile_extend.return_value = (None, [])
+-    transactional_update_highstate_mock.state.requisite_in.return_value = (None, [])
+-    transactional_update_highstate_mock.state.verify_high.return_value = []
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(return_value=[]),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.modules.transactional_update.TransactionalUpdateHighstate",
+-        transactional_update_highstate_mock,
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.sls("module") == "result"
+-        _create_and_execute_salt_state_mock.assert_called_once()
+ 
+ 
+ def test_sls_queue_true():
+     """Test transactional_update.sls"""
+-    transactional_update_highstate_mock = MagicMock()
+-    transactional_update_highstate_mock.return_value = (
+-        transactional_update_highstate_mock
+-    )
+-    transactional_update_highstate_mock.render_highstate.return_value = (None, [])
+-    transactional_update_highstate_mock.state.reconcile_extend.return_value = (None, [])
+-    transactional_update_highstate_mock.state.requisite_in.return_value = (None, [])
+-    transactional_update_highstate_mock.state.verify_high.return_value = []
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(
+             side_effect=[
+@@ -714,37 +526,14 @@ def test_sls_queue_true():
+             ]
+         ),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.modules.transactional_update.TransactionalUpdateHighstate",
+-        transactional_update_highstate_mock,
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.sls("module", queue=True) == "result"
+-        _create_and_execute_salt_state_mock.assert_called_once()
+ 
+ 
+ def test_sls_queue_false_failing():
+     """Test transactional_update.sls"""
+-    transactional_update_highstate_mock = MagicMock()
+-    transactional_update_highstate_mock.return_value = (
+-        transactional_update_highstate_mock
+-    )
+-    transactional_update_highstate_mock.render_highstate.return_value = (None, [])
+-    transactional_update_highstate_mock.state.reconcile_extend.return_value = (None, [])
+-    transactional_update_highstate_mock.state.requisite_in.return_value = (None, [])
+-    transactional_update_highstate_mock.state.verify_high.return_value = []
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(
+             side_effect=[
+@@ -759,65 +548,27 @@ def test_sls_queue_false_failing():
+             ]
+         ),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.modules.transactional_update.TransactionalUpdateHighstate",
+-        transactional_update_highstate_mock,
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.sls("module", queue=False) == [
+             'The function "state.running" is running as PID 4126 and was started at 2015, Mar 25 12:34:07.204096 with jid 20150325123407204096'
+         ]
+-        _create_and_execute_salt_state_mock.assert_not_called()
+ 
+ 
+ def test_highstate():
+     """Test transactional_update.highstage"""
+-    transactional_update_highstate_mock = MagicMock()
+-    transactional_update_highstate_mock.return_value = (
+-        transactional_update_highstate_mock
+-    )
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(return_value=[]),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.modules.transactional_update.TransactionalUpdateHighstate",
+-        transactional_update_highstate_mock,
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.highstate() == "result"
+-        _create_and_execute_salt_state_mock.assert_called_once()
+ 
+ 
+ def test_highstate_queue_true():
+     """Test transactional_update.highstage"""
+-    transactional_update_highstate_mock = MagicMock()
+-    transactional_update_highstate_mock.return_value = (
+-        transactional_update_highstate_mock
+-    )
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(
+             side_effect=[
+@@ -832,33 +583,14 @@ def test_highstate_queue_true():
+             ]
+         ),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.modules.transactional_update.TransactionalUpdateHighstate",
+-        transactional_update_highstate_mock,
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.highstate(queue=True) == "result"
+-        _create_and_execute_salt_state_mock.assert_called_once()
+ 
+ 
+ def test_highstate_queue_false_failing():
+     """Test transactional_update.highstage"""
+-    transactional_update_highstate_mock = MagicMock()
+-    transactional_update_highstate_mock.return_value = (
+-        transactional_update_highstate_mock
+-    )
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(
+             side_effect=[
+@@ -873,62 +605,27 @@ def test_highstate_queue_false_failing():
+             ]
+         ),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.modules.transactional_update.TransactionalUpdateHighstate",
+-        transactional_update_highstate_mock,
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.highstate(queue=False) == [
+             'The function "state.running" is running as PID 4126 and was started at 2015, Mar 25 12:34:07.204096 with jid 20150325123407204096'
+         ]
+-        _create_and_execute_salt_state_mock.assert_not_called()
+ 
+ 
+ def test_single():
+     """Test transactional_update.single"""
+-    ssh_state_mock = MagicMock()
+-    ssh_state_mock.return_value = ssh_state_mock
+-    ssh_state_mock.verify_data.return_value = None
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(return_value=[]),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.client.ssh.state.SSHState", ssh_state_mock
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.single("pkg.installed", name="emacs") == "result"
+-        _create_and_execute_salt_state_mock.assert_called_once()
+ 
+ 
+ def test_single_queue_false_failing():
+     """Test transactional_update.single"""
+-    ssh_state_mock = MagicMock()
+-    ssh_state_mock.return_value = ssh_state_mock
+-    ssh_state_mock.verify_data.return_value = None
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(
+             side_effect=[
+@@ -943,33 +640,16 @@ def test_single_queue_false_failing():
+             ]
+         ),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.client.ssh.state.SSHState", ssh_state_mock
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.single("pkg.installed", name="emacs", queue=False) == [
+             'The function "state.running" is running as PID 4126 and was started at 2015, Mar 25 12:34:07.204096 with jid 20150325123407204096'
+         ]
+-        _create_and_execute_salt_state_mock.assert_not_called()
+ 
+ 
+ def test_single_queue_true():
+     """Test transactional_update.single"""
+-    ssh_state_mock = MagicMock()
+-    ssh_state_mock.return_value = ssh_state_mock
+-    ssh_state_mock.verify_data.return_value = None
+-
+-    _create_and_execute_salt_state_mock = MagicMock(return_value="result")
+-    opts_mock = {
+-        "hash_type": "md5",
+-    }
+     salt_mock = {
+         "saltutil.is_running": MagicMock(
+             side_effect=[
+@@ -984,16 +664,7 @@ def test_single_queue_true():
+             ]
+         ),
+     }
+-    get_sls_opts_mock = MagicMock(return_value=opts_mock)
+-    with patch.dict(tu.__opts__, opts_mock), patch.dict(
+-        statemod.__salt__, salt_mock
+-    ), patch("salt.utils.state.get_sls_opts", get_sls_opts_mock), patch(
+-        "salt.fileclient.get_file_client", MagicMock()
+-    ), patch(
+-        "salt.client.ssh.state.SSHState", ssh_state_mock
+-    ), patch(
+-        "salt.modules.transactional_update._create_and_execute_salt_state",
+-        _create_and_execute_salt_state_mock,
++    with patch.dict(statemod.__salt__, salt_mock), patch(
++        "salt.modules.transactional_update.call", MagicMock(return_value="result")
+     ):
+         assert tu.single("pkg.installed", name="emacs", queue=True) == "result"
+-        _create_and_execute_salt_state_mock.assert_called_once()
+-- 
+2.34.1
+
+

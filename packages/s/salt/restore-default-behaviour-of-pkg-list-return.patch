@@ -1,4 +1,4 @@
-From 2de635bd9c2f9571092d5904ac8fa971c0140235 Mon Sep 17 00:00:00 2001
+From 9885fa0fc9ec818515551b2a415e6f1b8e3680b9 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Fri, 30 Aug 2019 14:20:06 +0200
 Subject: [PATCH] Restore default behaviour of pkg list return
@@ -13,10 +13,10 @@ Co-authored-by: Mihai Dinca <mdinca@suse.de>
  1 file changed, 25 insertions(+), 9 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index e52535d428..dd836b7ad0 100644
+index 6af922337f..ac618bd385 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -1410,8 +1410,10 @@ def refresh_db(force=None, root=None):
+@@ -1401,8 +1401,10 @@ def refresh_db(force=None, root=None):
      return ret
  
  
@@ -28,7 +28,7 @@ index e52535d428..dd836b7ad0 100644
      return sorted({pkg.split(":", 1)[0] for pkg in pkgs if len(pkg.split(":", 1)) == 2})
  
  
-@@ -1427,6 +1429,7 @@ def install(
+@@ -1418,6 +1420,7 @@ def install(
      ignore_repo_failure=False,
      no_recommends=False,
      root=None,
@@ -36,7 +36,7 @@ index e52535d428..dd836b7ad0 100644
      **kwargs
  ):
      """
-@@ -1542,6 +1545,9 @@ def install(
+@@ -1533,6 +1536,9 @@ def install(
  
          .. versionadded:: 2018.3.0
  
@@ -46,7 +46,7 @@ index e52535d428..dd836b7ad0 100644
  
      Returns a dict containing the new package names and versions::
  
-@@ -1617,7 +1623,8 @@ def install(
+@@ -1608,7 +1614,8 @@ def install(
  
      diff_attr = kwargs.get("diff_attr")
  
@@ -56,7 +56,7 @@ index e52535d428..dd836b7ad0 100644
      old = (
          list_pkgs(attr=diff_attr, root=root, includes=includes)
          if not downloadonly
-@@ -1847,7 +1854,7 @@ def upgrade(
+@@ -1838,7 +1845,7 @@ def upgrade(
      return ret
  
  
@@ -65,7 +65,7 @@ index e52535d428..dd836b7ad0 100644
      """
      Remove and purge do identical things but with different Zypper commands,
      this function performs the common logic.
-@@ -1857,7 +1864,7 @@ def _uninstall(name=None, pkgs=None, root=None):
+@@ -1848,7 +1855,7 @@ def _uninstall(name=None, pkgs=None, root=None):
      except MinionError as exc:
          raise CommandExecutionError(exc)
  
@@ -74,7 +74,7 @@ index e52535d428..dd836b7ad0 100644
      old = list_pkgs(root=root, includes=includes)
      targets = []
      for target in pkg_params:
-@@ -1920,7 +1927,7 @@ def normalize_name(name):
+@@ -1911,7 +1918,7 @@ def normalize_name(name):
  
  
  def remove(
@@ -83,7 +83,7 @@ index e52535d428..dd836b7ad0 100644
  ):  # pylint: disable=unused-argument
      """
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
-@@ -1952,8 +1959,11 @@ def remove(
+@@ -1943,8 +1950,11 @@ def remove(
      root
          Operate on a different root directory.
  
@@ -96,7 +96,7 @@ index e52535d428..dd836b7ad0 100644
  
      Returns a dict containing the changes.
  
-@@ -1965,10 +1975,12 @@ def remove(
+@@ -1956,10 +1966,12 @@ def remove(
          salt '*' pkg.remove <package1>,<package2>,<package3>
          salt '*' pkg.remove pkgs='["foo", "bar"]'
      """
@@ -111,7 +111,7 @@ index e52535d428..dd836b7ad0 100644
      """
      .. versionchanged:: 2015.8.12,2016.3.3,2016.11.0
          On minions running systemd>=205, `systemd-run(1)`_ is now used to
-@@ -2000,6 +2012,10 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
+@@ -1991,6 +2003,10 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
      root
          Operate on a different root directory.
  
@@ -122,7 +122,7 @@ index e52535d428..dd836b7ad0 100644
      .. versionadded:: 0.16.0
  
  
-@@ -2013,7 +2029,7 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
+@@ -2004,7 +2020,7 @@ def purge(name=None, pkgs=None, root=None, **kwargs):  # pylint: disable=unused-
          salt '*' pkg.purge <package1>,<package2>,<package3>
          salt '*' pkg.purge pkgs='["foo", "bar"]'
      """
@@ -130,8 +130,8 @@ index e52535d428..dd836b7ad0 100644
 +    return _uninstall(inclusion_detection, name=name, pkgs=pkgs, root=root)
  
  
- def list_holds(pattern=None, full=True, root=None, **kwargs):
+ def list_locks(root=None):
 -- 
-2.37.3
+2.33.0
 
 

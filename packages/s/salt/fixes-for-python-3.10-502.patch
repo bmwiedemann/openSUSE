@@ -1,15 +1,65 @@
-From d5fae6bd4a4f243115ee220393e05440f0d48b5a Mon Sep 17 00:00:00 2001
+From efcf52ad6b7edf64e6a2eaead99c8df5894ab613 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Tue, 5 Apr 2022 12:04:46 +0300
 Subject: [PATCH] Fixes for Python 3.10 (#502)
 
-* Use collections.abc.Mapping instead collections.Mapping in state
----
- salt/state.py | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+* Fix _compat.py importlib logic for Python 3.10
 
+Use the same logic in _compat.py and entrypoints.py to load
+the same importlib.metadata. Python's built in implementation for
+Python >= 3.10 and the Salt one for others.
+
+* Use collections.abc.Mapping instead collections.Mapping in state
+
+Co-authored-by: piterpunk <piterpunk@slackware.com>
+---
+ salt/_compat.py | 30 +++++++++++++++++-------------
+ salt/state.py   |  5 +++--
+ 2 files changed, 20 insertions(+), 15 deletions(-)
+
+diff --git a/salt/_compat.py b/salt/_compat.py
+index 8149657bea..a402f17a3c 100644
+--- a/salt/_compat.py
++++ b/salt/_compat.py
+@@ -11,19 +11,23 @@ if sys.version_info >= (3, 9, 5):
+ else:
+     import salt.ext.ipaddress as ipaddress
+ 
++if sys.version_info >= (3, 10):
++    # Python 3.10 will include a fix in importlib.metadata which allows us to
++    # get the distribution of a loaded entry-point
++    import importlib.metadata  # pylint: disable=no-member,no-name-in-module
++else:
++    # importlib_metadata before version 3.3.0 does not include the functionality we need.
++    try:
++        import importlib_metadata
+ 
+-# importlib_metadata before version 3.3.0 does not include the functionality we need.
+-try:
+-    import importlib_metadata
+-
+-    importlib_metadata_version = [
+-        int(part)
+-        for part in importlib_metadata.version("importlib_metadata").split(".")
+-        if part.isdigit()
+-    ]
+-    if tuple(importlib_metadata_version) < (3, 3, 0):
++        importlib_metadata_version = [
++            int(part)
++            for part in importlib_metadata.version("importlib_metadata").split(".")
++            if part.isdigit()
++        ]
++        if tuple(importlib_metadata_version) < (3, 3, 0):
++            # Use the vendored importlib_metadata
++            import salt.ext.importlib_metadata as importlib_metadata
++    except ImportError:
+         # Use the vendored importlib_metadata
+         import salt.ext.importlib_metadata as importlib_metadata
+-except ImportError:
+-    # Use the vendored importlib_metadata
+-    import salt.ext.importlib_metadata as importlib_metadata
 diff --git a/salt/state.py b/salt/state.py
-index f5579fbb69..61519d5042 100644
+index 3361a537cd..b759c8e0ee 100644
 --- a/salt/state.py
 +++ b/salt/state.py
 @@ -12,7 +12,6 @@ The data sent to the state calls is as follows:
@@ -26,10 +76,10 @@ index f5579fbb69..61519d5042 100644
  
 +from collections.abc import Mapping
 +
- import salt.channel.client
  import salt.fileclient
  import salt.loader
-@@ -3405,7 +3406,7 @@ class State:
+ import salt.minion
+@@ -3276,7 +3277,7 @@ class State:
          """
          for chunk in high:
              state = high[chunk]
@@ -39,6 +89,6 @@ index f5579fbb69..61519d5042 100644
              for state_ref in state:
                  needs_default = True
 -- 
-2.37.3
+2.35.1
 
 

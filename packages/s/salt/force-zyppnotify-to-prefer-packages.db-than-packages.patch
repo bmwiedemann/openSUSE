@@ -1,0 +1,29 @@
+From 36b107fb5108fe4e52e9ef522765d6ada588c50d Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 9 Dec 2020 14:58:55 +0300
+Subject: [PATCH] Force zyppnotify to prefer Packages.db than Packages
+ if it exists
+
+---
+ scripts/suse/zypper/plugins/commit/zyppnotify | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/suse/zypper/plugins/commit/zyppnotify b/scripts/suse/zypper/plugins/commit/zyppnotify
+index 51ac02254e..d6a1bef42b 100755
+--- a/scripts/suse/zypper/plugins/commit/zyppnotify
++++ b/scripts/suse/zypper/plugins/commit/zyppnotify
+@@ -20,7 +20,9 @@ class DriftDetector(Plugin):
+     def __init__(self):
+         Plugin.__init__(self)
+         self.ck_path = "/var/cache/salt/minion/rpmdb.cookie"
+-        self.rpm_path = "/var/lib/rpm/Packages"
++        self.rpm_path = "/var/lib/rpm/Packages.db"
++        if not os.path.exists(self.rpm_path):
++            self.rpm_path = "/var/lib/rpm/Packages"
+ 
+     def _get_mtime(self):
+         """
+-- 
+2.29.2
+
+

@@ -1,4 +1,4 @@
-From 7ac8c79f38960c787f6b5324e347707325c65e79 Mon Sep 17 00:00:00 2001
+From 34a81d88db3862bcc03cdda4974e576723af7643 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Mon, 27 Jun 2022 18:03:49 +0300
 Subject: [PATCH] Fix ownership of salt thin directory when using the
@@ -45,6 +45,6 @@ index 293ea1b7fa..95171f7aea 100644
      if venv_salt_call is None:
          # Use Salt thin only if Salt Bundle (venv-salt-minion) is not available
 -- 
-2.37.3
+2.36.1
 
 

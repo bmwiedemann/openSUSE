@@ -1,9 +1,9 @@
-From 875fb95ae468042005cd0db463f13a9315c1e756 Mon Sep 17 00:00:00 2001
+From 8ad65d6fa39edc7fc1967e2df1f3db0aa7df4d11 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 22 May 2019 13:00:46 +0100
-Subject: [PATCH] Add standalone configuration file for enabling package
- formulas
+Subject: [PATCH] Add standalone configuration file for enabling
+ package formulas
 
 ---
  conf/suse/standalone-formulas-configuration.conf | 4 ++++
@@ -21,6 +21,6 @@ index 0000000000..94d05fb2ee
 +    - /usr/share/salt-formulas/states
 +    - /srv/salt
 -- 
-2.37.3
+2.29.2
 
 

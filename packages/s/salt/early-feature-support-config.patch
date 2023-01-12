@@ -1,4 +1,4 @@
-From 3ccce128163f6cd9a9360d3b28729702a5d260c1 Mon Sep 17 00:00:00 2001
+From f24c61d3c1ede64c0ef5c11efeb7d2293e714550 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 16:40:45 +0100
 Subject: [PATCH] early feature: support-config
@@ -561,10 +561,10 @@ Check last function by full name
  create mode 100644 tests/unit/modules/test_saltsupport.py
 
 diff --git a/doc/ref/modules/all/index.rst b/doc/ref/modules/all/index.rst
-index fef851215a..a36ab6b2e9 100644
+index 43dfb700f9..73958181dd 100644
 --- a/doc/ref/modules/all/index.rst
 +++ b/doc/ref/modules/all/index.rst
-@@ -416,6 +416,7 @@ execution modules
+@@ -415,6 +415,7 @@ execution modules
      salt_version
      saltcheck
      saltcloudmod
@@ -573,10 +573,10 @@ index fef851215a..a36ab6b2e9 100644
      schedule
      scp_mod
 diff --git a/doc/ref/states/all/index.rst b/doc/ref/states/all/index.rst
-index da7be43039..c968315970 100644
+index 914b63d0fb..e40b32a6e8 100644
 --- a/doc/ref/states/all/index.rst
 +++ b/doc/ref/states/all/index.rst
-@@ -282,6 +282,7 @@ state modules
+@@ -280,6 +280,7 @@ state modules
      rvm
      salt_proxy
      saltmod
@@ -1740,13 +1740,13 @@ index 0000000000..391acdb606
 +      info: List of all available groups
 +      output: table
 diff --git a/salt/loader/lazy.py b/salt/loader/lazy.py
-index 8a5d0dd267..e7d692859c 100644
+index 48c70d01c0..220641059c 100644
 --- a/salt/loader/lazy.py
 +++ b/salt/loader/lazy.py
-@@ -968,8 +968,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+@@ -950,8 +950,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
          mod_names = [module_name] + list(virtual_aliases)
  
-         for attr in funcs_to_load:
+         for attr in getattr(mod, "__load__", dir(mod)):
 -            if attr.startswith("_"):
 -                # private functions are skipped
 +            if attr.startswith("_") and attr != "__call__":
@@ -2168,10 +2168,10 @@ index 0000000000..e800e3bf1f
 +
 +    return __virtualname__
 diff --git a/salt/scripts.py b/salt/scripts.py
-index 7f6d80de59..1276d2c8b2 100644
+index 93eab0f702..b1fea566a9 100644
 --- a/salt/scripts.py
 +++ b/salt/scripts.py
-@@ -583,3 +583,18 @@ def salt_unity():
+@@ -574,3 +574,18 @@ def salt_unity():
          sys.argv.pop(1)
          s_fun = getattr(sys.modules[__name__], "salt_{}".format(cmd))
      s_fun()
@@ -2191,10 +2191,10 @@ index 7f6d80de59..1276d2c8b2 100644
 +    _install_signal_handlers(client)
 +    client.run()
 diff --git a/salt/state.py b/salt/state.py
-index d6d2c90168..3196f3c635 100644
+index 91927d9ec6..fa5a578dc6 100644
 --- a/salt/state.py
 +++ b/salt/state.py
-@@ -1592,7 +1592,9 @@ class State:
+@@ -1577,7 +1577,9 @@ class State:
                  names = []
                  if state.startswith("__"):
                      continue
@@ -2205,7 +2205,7 @@ index d6d2c90168..3196f3c635 100644
                  if orchestration_jid is not None:
                      chunk["__orchestration_jid__"] = orchestration_jid
                  if "__sls__" in body:
-@@ -2273,9 +2275,16 @@ class State:
+@@ -2176,9 +2178,16 @@ class State:
                          ret = self.call_parallel(cdata, low)
                      else:
                          self.format_slots(cdata)
@@ -2225,7 +2225,7 @@ index d6d2c90168..3196f3c635 100644
                  self.states.inject_globals = {}
              if (
                  "check_cmd" in low
-@@ -3362,10 +3371,31 @@ class State:
+@@ -3252,10 +3261,31 @@ class State:
          running.update(errors)
          return running
  
@@ -2489,7 +2489,7 @@ index 0000000000..fb0c9e0372
 +    """
 +    return __virtualname__
 diff --git a/salt/utils/args.py b/salt/utils/args.py
-index 536aea3816..04a8a14054 100644
+index ba50aff126..4e5ca0eedf 100644
 --- a/salt/utils/args.py
 +++ b/salt/utils/args.py
 @@ -15,6 +15,7 @@ import salt.utils.jid
@@ -2500,7 +2500,7 @@ index 536aea3816..04a8a14054 100644
  
  log = logging.getLogger(__name__)
  
-@@ -399,7 +400,7 @@ def format_call(
+@@ -437,7 +438,7 @@ def format_call(
      ret = initial_ret is not None and initial_ret or {}
  
      ret["args"] = []
@@ -2510,10 +2510,10 @@ index 536aea3816..04a8a14054 100644
      aspec = get_function_argspec(fun, is_class_method=is_class_method)
  
 diff --git a/salt/utils/decorators/__init__.py b/salt/utils/decorators/__init__.py
-index 1f62d5f3d6..1906cc2ecc 100644
+index 20803771ed..0aba77e194 100644
 --- a/salt/utils/decorators/__init__.py
 +++ b/salt/utils/decorators/__init__.py
-@@ -866,3 +866,27 @@ def ensure_unicode_args(function):
+@@ -867,3 +867,27 @@ def ensure_unicode_args(function):
          return function(*args, **kwargs)
  
      return wrapped
@@ -2542,7 +2542,7 @@ index 1f62d5f3d6..1906cc2ecc 100644
 +
 +    return f
 diff --git a/salt/utils/parsers.py b/salt/utils/parsers.py
-index 911b2cbb04..dc125de7d7 100644
+index 28660397d4..c0820e5df0 100644
 --- a/salt/utils/parsers.py
 +++ b/salt/utils/parsers.py
 @@ -17,6 +17,7 @@ import optparse
@@ -2561,7 +2561,7 @@ index 911b2cbb04..dc125de7d7 100644
  import salt.utils.platform
  import salt.utils.process
  import salt.utils.stringutils
-@@ -2026,6 +2028,118 @@ class SyndicOptionParser(
+@@ -2088,6 +2090,118 @@ class SyndicOptionParser(
          return opts
  
  
@@ -2698,25 +2698,25 @@ index 0000000000..4e0e79f3ea
 +if __name__ == "__main__":
 +    salt_support()
 diff --git a/setup.py b/setup.py
-index bd11ff95f7..d633af35ec 100755
+index af8e448007..2f6dfd6064 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -1165,6 +1165,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1253,6 +1253,7 @@ class SaltDistribution(distutils.dist.Distribution):
                  "scripts/salt-master",
                  "scripts/salt-minion",
                  "scripts/salt-proxy",
 +                "scripts/salt-support",
                  "scripts/salt-ssh",
                  "scripts/salt-syndic",
-                 "scripts/spm",
-@@ -1216,6 +1217,7 @@ class SaltDistribution(distutils.dist.Distribution):
+                 "scripts/salt-unity",
+@@ -1299,6 +1300,7 @@ class SaltDistribution(distutils.dist.Distribution):
                  "salt-key = salt.scripts:salt_key",
                  "salt-master = salt.scripts:salt_master",
                  "salt-minion = salt.scripts:salt_minion",
 +                "salt-support = salt.scripts:salt_support",
                  "salt-ssh = salt.scripts:salt_ssh",
                  "salt-syndic = salt.scripts:salt_syndic",
-                 "spm = salt.scripts:salt_spm",
+                 "salt-unity = salt.scripts:salt_unity",
 diff --git a/tests/unit/cli/test_support.py b/tests/unit/cli/test_support.py
 new file mode 100644
 index 0000000000..dc0e99bb3d
@@ -3779,6 +3779,6 @@ index 0000000000..f9ce7be29a
 +                "00:00:00.000 - The real TTYs became " "pseudo TTYs and vice versa"
 +            ]
 -- 
-2.37.3
+2.34.1
 
 

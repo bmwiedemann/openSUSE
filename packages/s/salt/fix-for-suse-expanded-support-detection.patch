@@ -1,4 +1,4 @@
-From 51bcdcfdec73368d1517150eafda21e4af51dd7a Mon Sep 17 00:00:00 2001
+From 369a732537937dd6865152a87f04777539b27fcd Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Thu, 6 Sep 2018 17:15:18 +0200
 Subject: [PATCH] Fix for SUSE Expanded Support detection
@@ -14,10 +14,10 @@ This change also adds a check for redhat-release and then marks the
  1 file changed, 9 insertions(+)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index debbeb257d..b55ab4e472 100644
+index 436c058eb6..00bd0565bf 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -2058,6 +2058,15 @@ def os_data():
+@@ -1990,6 +1990,15 @@ def os_data():
                      log.trace("Parsing distrib info from /etc/centos-release")
                      # CentOS Linux
                      grains["lsb_distrib_id"] = "CentOS"
@@ -34,6 +34,6 @@ index debbeb257d..b55ab4e472 100644
                          for line in ifile:
                              # Need to pull out the version and codename
 -- 
-2.37.3
+2.29.2
 
 

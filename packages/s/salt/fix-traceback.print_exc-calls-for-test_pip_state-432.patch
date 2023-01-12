@@ -1,4 +1,4 @@
-From 8b07b529458e1fc007c8ee848d66035b3403a22d Mon Sep 17 00:00:00 2001
+From 929942b15f377df21ae076ef9e25cf83639b1850 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Mon, 8 Nov 2021 17:43:02 +0300
 Subject: [PATCH] Fix traceback.print_exc calls for test_pip_state (#432)
@@ -8,10 +8,10 @@ Subject: [PATCH] Fix traceback.print_exc calls for test_pip_state (#432)
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/unit/states/test_pip_state.py b/tests/unit/states/test_pip_state.py
-index 93b8b3bd71..9531b6d2be 100644
+index 9f5be295be..1074a1989f 100644
 --- a/tests/unit/states/test_pip_state.py
 +++ b/tests/unit/states/test_pip_state.py
-@@ -441,7 +441,7 @@ class PipStateInstallationErrorTest(TestCase):
+@@ -445,7 +445,7 @@ class PipStateInstallationErrorTest(TestCase):
              sys.stdout.flush()
              sys.exit(2)
          except Exception as exc:
@@ -21,6 +21,6 @@ index 93b8b3bd71..9531b6d2be 100644
              sys.exit(3)
          sys.exit(0)
 -- 
-2.37.3
+2.34.1
 
 

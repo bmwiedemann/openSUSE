@@ -1,4 +1,4 @@
-From f92891c007ee55d9ccc2d7b3da53e4e0a6fc94c3 Mon Sep 17 00:00:00 2001
+From fbd5163bd0d5409a1823e9fb8e0cb623c22d6036 Mon Sep 17 00:00:00 2001
 From: Michael Calmer <mc@suse.de>
 Date: Fri, 8 Jul 2022 10:15:37 +0200
 Subject: [PATCH] add support for gpgautoimport (#539)
@@ -18,10 +18,10 @@ Subject: [PATCH] add support for gpgautoimport (#539)
  2 files changed, 140 insertions(+), 31 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index cbfbc4b78d..2c36e2968a 100644
+index 39d26f0e93..b622105e15 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -589,7 +589,7 @@ def list_upgrades(refresh=True, root=None, **kwargs):
+@@ -591,7 +591,7 @@ def list_upgrades(refresh=True, root=None, **kwargs):
          salt '*' pkg.list_upgrades
      """
      if refresh:
@@ -30,7 +30,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      ret = dict()
      cmd = ["list-updates"]
-@@ -703,7 +703,7 @@ def info_available(*names, **kwargs):
+@@ -705,7 +705,7 @@ def info_available(*names, **kwargs):
  
      # Refresh db before extracting the latest package
      if kwargs.get("refresh", True):
@@ -39,7 +39,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      pkg_info = []
      batch = names[:]
-@@ -1393,7 +1393,6 @@ def mod_repo(repo, **kwargs):
+@@ -1395,7 +1395,6 @@ def mod_repo(repo, **kwargs):
          cmd_opt.append("--name='{}'".format(kwargs.get("humanname")))
  
      if kwargs.get("gpgautoimport") is True:
@@ -47,7 +47,7 @@ index cbfbc4b78d..2c36e2968a 100644
          call_refresh = True
  
      if cmd_opt:
-@@ -1405,8 +1404,8 @@ def mod_repo(repo, **kwargs):
+@@ -1407,8 +1406,8 @@ def mod_repo(repo, **kwargs):
          # when used with "zypper ar --refresh" or "zypper mr --refresh"
          # --gpg-auto-import-keys is not doing anything
          # so we need to specifically refresh here with --gpg-auto-import-keys
@@ -58,7 +58,7 @@ index cbfbc4b78d..2c36e2968a 100644
      elif not added and not cmd_opt:
          comment = "Specified arguments did not result in modification of repo"
  
-@@ -1417,7 +1416,7 @@ def mod_repo(repo, **kwargs):
+@@ -1419,7 +1418,7 @@ def mod_repo(repo, **kwargs):
      return repo
  
  
@@ -67,7 +67,7 @@ index cbfbc4b78d..2c36e2968a 100644
      """
      Trigger a repository refresh by calling ``zypper refresh``. Refresh will run
      with ``--force`` if the "force=True" flag is passed on the CLI or
-@@ -1428,6 +1427,17 @@ def refresh_db(force=None, root=None):
+@@ -1430,6 +1429,17 @@ def refresh_db(force=None, root=None):
  
          {'<database name>': Bool}
  
@@ -85,7 +85,7 @@ index cbfbc4b78d..2c36e2968a 100644
      root
          operate on a different root directory.
  
-@@ -1448,11 +1458,22 @@ def refresh_db(force=None, root=None):
+@@ -1450,11 +1460,22 @@ def refresh_db(force=None, root=None):
      salt.utils.pkg.clear_rtag(__opts__)
      ret = {}
      refresh_opts = ["refresh"]
@@ -109,7 +109,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      for line in out.splitlines():
          if not line:
-@@ -1637,7 +1658,7 @@ def install(
+@@ -1639,7 +1660,7 @@ def install(
                  'arch': '<new-arch>'}}}
      """
      if refresh:
@@ -118,7 +118,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      try:
          pkg_params, pkg_type = __salt__["pkg_resource.parse_targets"](
-@@ -1932,7 +1953,7 @@ def upgrade(
+@@ -1934,7 +1955,7 @@ def upgrade(
          cmd_update.insert(0, "--no-gpg-checks")
  
      if refresh:
@@ -127,7 +127,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      if dryrun:
          cmd_update.append("--dry-run")
-@@ -2759,7 +2780,7 @@ def search(criteria, refresh=False, **kwargs):
+@@ -2844,7 +2865,7 @@ def search(criteria, refresh=False, **kwargs):
      root = kwargs.get("root", None)
  
      if refresh:
@@ -136,7 +136,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      cmd = ["search"]
      if kwargs.get("match") == "exact":
-@@ -2910,7 +2931,7 @@ def download(*packages, **kwargs):
+@@ -2995,7 +3016,7 @@ def download(*packages, **kwargs):
  
      refresh = kwargs.get("refresh", False)
      if refresh:
@@ -145,7 +145,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      pkg_ret = {}
      for dld_result in (
-@@ -3062,7 +3083,7 @@ def list_patches(refresh=False, root=None, **kwargs):
+@@ -3147,7 +3168,7 @@ def list_patches(refresh=False, root=None, **kwargs):
          salt '*' pkg.list_patches
      """
      if refresh:
@@ -154,7 +154,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      return _get_patches(root=root)
  
-@@ -3156,7 +3177,7 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
+@@ -3241,7 +3262,7 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
          salt '*' pkg.resolve_capabilities resolve_capabilities=True w3m_ssl
      """
      if refresh:
@@ -364,6 +364,6 @@ index fea6eeb004..3f1560a385 100644
  
      def test_wildcard_to_query_match_all(self):
 -- 
-2.37.3
+2.36.1
 
 

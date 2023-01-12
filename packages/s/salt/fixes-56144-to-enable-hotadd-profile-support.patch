@@ -1,0 +1,63 @@
+From 0def15837c3470f20ce85ec81e2c1d42cd933c23 Mon Sep 17 00:00:00 2001
+From: nicholasmhughes <nicholasmhughes@gmail.com>
+Date: Fri, 14 Feb 2020 22:03:42 -0500
+Subject: [PATCH] fixes #56144 to enable hotadd profile support
+
+---
+ doc/topics/cloud/vmware.rst |  8 ++++++++
+ salt/cloud/clouds/vmware.py | 12 ++++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/doc/topics/cloud/vmware.rst b/doc/topics/cloud/vmware.rst
+index bbc5cdff11..1a18ebf226 100644
+--- a/doc/topics/cloud/vmware.rst
++++ b/doc/topics/cloud/vmware.rst
+@@ -457,6 +457,14 @@ Set up an initial profile at ``/etc/salt/cloud.profiles`` or
+     Specifies whether the new virtual machine should be powered on or not. If
+     ``template: True`` is set, this field is ignored. Default is ``power_on: True``.
+ 
++``cpu_hot_add``
++    Boolean value that enables hot-add support for modifying CPU resources while
++    the guest is powered on.
++
++``mem_hot_add``
++    Boolean value that enables hot-add support for modifying memory resources while
++    the guest is powered on.
++
+ ``extra_config``
+     Specifies the additional configuration information for the virtual machine. This
+     describes a set of modifications to the additional options. If the key is already
+diff --git a/salt/cloud/clouds/vmware.py b/salt/cloud/clouds/vmware.py
+index 1e9943ad78..4999ca089f 100644
+--- a/salt/cloud/clouds/vmware.py
++++ b/salt/cloud/clouds/vmware.py
+@@ -2821,6 +2821,12 @@ def create(vm_):
+     win_run_once = config.get_cloud_config_value(
+         "win_run_once", vm_, __opts__, search_global=False, default=None
+     )
++    cpu_hot_add = config.get_cloud_config_value(
++        'cpu_hot_add', vm_, __opts__, search_global=False, default=None
++    )
++    mem_hot_add = config.get_cloud_config_value(
++        'mem_hot_add', vm_, __opts__, search_global=False, default=None
++    )
+ 
+     # Get service instance object
+     si = _get_si()
+@@ -3039,6 +3045,12 @@ def create(vm_):
+         )
+         config_spec.deviceChange = specs["device_specs"]
+ 
++    if cpu_hot_add and hasattr(config_spec, 'cpuHotAddEnabled'):
++        config_spec.cpuHotAddEnabled = bool(cpu_hot_add)
++
++    if mem_hot_add and hasattr(config_spec, 'memoryHotAddEnabled'):
++        config_spec.memoryHotAddEnabled = bool(mem_hot_add)
++
+     if extra_config:
+         for key, value in extra_config.items():
+             option = vim.option.OptionValue(key=key, value=value)
+-- 
+2.33.0
+
+

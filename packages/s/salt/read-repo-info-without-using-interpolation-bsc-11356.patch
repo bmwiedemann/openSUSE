@@ -1,4 +1,4 @@
-From c27ac9afb6bd13fc26fc440e0a097bbb82cbb640 Mon Sep 17 00:00:00 2001
+From c3a058842344dacd01b0a0c55483c22b35f449e8 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 7 Nov 2019 15:11:49 +0100
 Subject: [PATCH] Read repo info without using interpolation
@@ -9,10 +9,10 @@ Subject: [PATCH] Read repo info without using interpolation
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index dd836b7ad0..32e22ce9a8 100644
+index b5621174a4..c3342ab6d1 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -1121,7 +1121,9 @@ def _get_repo_info(alias, repos_cfg=None, root=None):
+@@ -1111,7 +1111,9 @@ def _get_repo_info(alias, repos_cfg=None, root=None):
      Get one repo meta-data.
      """
      try:
@@ -24,6 +24,6 @@ index dd836b7ad0..32e22ce9a8 100644
          for key, val in meta.items():
              if val in ["0", "1"]:
 -- 
-2.37.3
+2.29.2
 
 

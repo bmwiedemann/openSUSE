@@ -1,4 +1,4 @@
-From f2dc43cf1db3fee41e328c68545ccac2576021ca Mon Sep 17 00:00:00 2001
+From 09afcd0d04788ec4351c1c0b73a0c6eb3b0fd8c9 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Mon, 27 Jun 2022 18:01:21 +0300
 Subject: [PATCH] Normalize package names once with pkg.installed/removed
@@ -18,10 +18,10 @@ Subject: [PATCH] Normalize package names once with pkg.installed/removed
  3 files changed, 192 insertions(+), 6 deletions(-)
 
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index 46f0b1f613..f52e084346 100644
+index 9f8f548e5f..3138ac2e59 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -1460,7 +1460,12 @@ def install(
+@@ -1449,7 +1449,12 @@ def install(
  
      try:
          pkg_params, pkg_type = __salt__["pkg_resource.parse_targets"](
@@ -35,7 +35,7 @@ index 46f0b1f613..f52e084346 100644
          )
      except MinionError as exc:
          raise CommandExecutionError(exc)
-@@ -1612,7 +1617,10 @@ def install(
+@@ -1603,7 +1608,10 @@ def install(
                  except ValueError:
                      pass
                  else:
@@ -47,7 +47,7 @@ index 46f0b1f613..f52e084346 100644
                          arch = "." + archpart
                          pkgname = namepart
  
-@@ -2143,11 +2151,13 @@ def remove(name=None, pkgs=None, **kwargs):  # pylint: disable=W0613
+@@ -2134,11 +2142,13 @@ def remove(name=None, pkgs=None, **kwargs):  # pylint: disable=W0613
              arch = ""
              pkgname = target
              try:
@@ -64,10 +64,10 @@ index 46f0b1f613..f52e084346 100644
                      pkgname = namepart
              # Since we don't always have the arch info, epoch information has to parsed out. But
 diff --git a/salt/states/pkg.py b/salt/states/pkg.py
-index ef4e062145..cda966a1e8 100644
+index 0d601e1aaf..71298e6c7a 100644
 --- a/salt/states/pkg.py
 +++ b/salt/states/pkg.py
-@@ -1873,6 +1873,7 @@ def installed(
+@@ -1901,6 +1901,7 @@ def installed(
                  normalize=normalize,
                  update_holds=update_holds,
                  ignore_epoch=ignore_epoch,
@@ -75,7 +75,7 @@ index ef4e062145..cda966a1e8 100644
                  **kwargs
              )
          except CommandExecutionError as exc:
-@@ -2940,7 +2941,7 @@ def _uninstall(
+@@ -2973,7 +2974,7 @@ def _uninstall(
          }
  
      changes = __salt__["pkg.{}".format(action)](
@@ -85,7 +85,7 @@ index ef4e062145..cda966a1e8 100644
      new = __salt__["pkg.list_pkgs"](versions_as_list=True, **kwargs)
      failed = []
 diff --git a/tests/pytests/unit/states/test_pkg.py b/tests/pytests/unit/states/test_pkg.py
-index cba8201bda..ecb841e8ec 100644
+index 17b91bcb39..10acae9f88 100644
 --- a/tests/pytests/unit/states/test_pkg.py
 +++ b/tests/pytests/unit/states/test_pkg.py
 @@ -2,6 +2,8 @@ import logging
@@ -122,7 +122,7 @@ index cba8201bda..ecb841e8ec 100644
      }
  
  
-@@ -726,3 +737,167 @@ def test_held_unheld(package_manager):
+@@ -715,3 +726,167 @@ def test_held_unheld(package_manager):
          hold_mock.assert_not_called()
          unhold_mock.assert_any_call(name="held-test", pkgs=["baz"])
          unhold_mock.assert_any_call(name="held-test", pkgs=["bar"])
@@ -291,6 +291,6 @@ index cba8201bda..ecb841e8ec 100644
 +        assert ret["result"]
 +        assert ret["changes"] == expected
 -- 
-2.37.3
+2.36.1
 
 

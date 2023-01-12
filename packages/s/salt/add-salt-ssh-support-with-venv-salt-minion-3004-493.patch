@@ -1,4 +1,4 @@
-From c683ceaf9321a646d32e3b2b5fca705563fe8e73 Mon Sep 17 00:00:00 2001
+From 8d1aba4e450922ec7ae4ce5fcf13dc5f7d2b8b7e Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Thu, 24 Feb 2022 16:52:24 +0300
 Subject: [PATCH] Add salt-ssh support with venv-salt-minion - 3004
@@ -54,45 +54,49 @@ the child process as failed
 
 * Do not run pre flight script for raw_shell
 ---
- salt/_logging/impl.py          |  55 +++++++-----
- salt/client/ssh/__init__.py    | 157 ++++++++++++++++++++++++++++-----
+ salt/_logging/impl.py          |  59 ++++++-----
+ salt/client/ssh/__init__.py    | 174 ++++++++++++++++++++++++++++-----
  salt/client/ssh/client.py      |   7 +-
  salt/client/ssh/shell.py       |   8 ++
- salt/client/ssh/ssh_py_shim.py | 108 +++++++++++++----------
- salt/loader/__init__.py        |  31 ++++++-
+ salt/client/ssh/ssh_py_shim.py | 108 +++++++++++---------
+ salt/loader/__init__.py        |  31 +++++-
  salt/netapi/__init__.py        |   3 +-
  salt/roster/__init__.py        |   6 +-
  tests/unit/test_loader.py      |   2 +-
- 9 files changed, 278 insertions(+), 99 deletions(-)
+ 9 files changed, 292 insertions(+), 106 deletions(-)
 
 diff --git a/salt/_logging/impl.py b/salt/_logging/impl.py
-index cc18f49a9e..e050f43caf 100644
+index 779316ce0b..953490b284 100644
 --- a/salt/_logging/impl.py
 +++ b/salt/_logging/impl.py
-@@ -14,6 +14,7 @@ import re
- import socket
+@@ -7,6 +7,7 @@
+ import logging
+ import re
  import sys
- import traceback
 +import threading
  import types
- import urllib.parse
  
-@@ -104,6 +105,10 @@ DFLT_LOG_DATEFMT_LOGFILE = "%Y-%m-%d %H:%M:%S"
- DFLT_LOG_FMT_CONSOLE = "[%(levelname)-8s] %(message)s"
- DFLT_LOG_FMT_LOGFILE = "%(asctime)s,%(msecs)03d [%(name)-17s:%(lineno)-4d][%(levelname)-8s][%(process)d] %(message)s"
+ # Let's define these custom logging levels before importing the salt._logging.mixins
+@@ -89,6 +90,10 @@ SORTED_LEVEL_NAMES = [l[0] for l in sorted(LOG_LEVELS.items(), key=lambda x: x[1
+ 
+ MODNAME_PATTERN = re.compile(r"(?P<name>%%\(name\)(?:\-(?P<digits>[\d]+))?s)")
  
 +# LOG_LOCK is used to prevent deadlocks on using logging
 +# in combination with multiprocessing with salt-api
 +LOG_LOCK = threading.Lock()
 +
  
- class SaltLogRecord(logging.LogRecord):
-     def __init__(self, *args, **kwargs):
-@@ -270,27 +275,35 @@ class SaltLoggingClass(LOGGING_LOGGER_CLASS, metaclass=LoggingMixinMeta):
+ # ----- REMOVE ME ON REFACTOR COMPLETE ------------------------------------------------------------------------------>
+ class __NullLoggingHandler(TemporaryLoggingHandler):
+@@ -283,31 +288,35 @@ class SaltLoggingClass(
          else:
              extra["exc_info_on_loglevel"] = exc_info_on_loglevel
  
--        if sys.version_info < (3, 8):
+-        if sys.version_info < (3,):
+-            LOGGING_LOGGER_CLASS._log(
+-                self, level, msg, args, exc_info=exc_info, extra=extra
+-            )
+-        elif sys.version_info < (3, 8):
 -            LOGGING_LOGGER_CLASS._log(
 -                self,
 -                level,
@@ -146,7 +150,7 @@ index cc18f49a9e..e050f43caf 100644
      def makeRecord(
          self,
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index ad2796bc87..6db2dfcbb0 100644
+index 37faa869bc..0066f4597b 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
 @@ -6,11 +6,13 @@ import base64
@@ -162,8 +166,8 @@ index ad2796bc87..6db2dfcbb0 100644
 +import psutil
  import queue
  import re
- import shlex
-@@ -20,6 +22,7 @@ import tarfile
+ import subprocess
+@@ -19,6 +21,7 @@ import tarfile
  import tempfile
  import time
  import uuid
@@ -171,16 +175,16 @@ index ad2796bc87..6db2dfcbb0 100644
  
  import salt.client.ssh.shell
  import salt.client.ssh.wrapper
-@@ -47,6 +50,7 @@ import salt.utils.url
+@@ -44,6 +47,7 @@ import salt.utils.stringutils
+ import salt.utils.thin
+ import salt.utils.url
  import salt.utils.verify
- from salt._logging import LOG_LEVELS
- from salt._logging.mixins import MultiprocessingStateMixin
 +from salt._logging.impl import LOG_LOCK
  from salt.template import compile_template
+ from salt.utils.platform import is_junos, is_windows
  from salt.utils.process import Process
- from salt.utils.zeromq import zmq
-@@ -146,15 +150,26 @@ if [ "$SUDO" ] && [ "$SUDO_USER" ]
- then SUDO="$SUDO -u $SUDO_USER"
+@@ -146,15 +150,26 @@ elif [ "$SUDO" ] && [ -n "$SUDO_USER" ]
+ then SUDO="sudo "
  fi
  EX_PYTHON_INVALID={EX_THIN_PYTHON_INVALID}
 -PYTHON_CMDS="python3 /usr/libexec/platform-python python27 python2.7 python26 python2.6 python2 python"
@@ -230,10 +234,10 @@ index ad2796bc87..6db2dfcbb0 100644
 +# The file on a salt-ssh minion used to identify if Salt Bundle was deployed
 +VENV_HASH_FILE = "/var/tmp/venv-salt-minion/venv-hash.txt"
 +
- if not salt.utils.platform.is_windows() and not salt.utils.platform.is_junos():
+ if not is_windows() and not is_junos():
      shim_file = os.path.join(os.path.dirname(__file__), "ssh_py_shim.py")
      if not os.path.exists(shim_file):
-@@ -209,7 +223,7 @@ class SSH(MultiprocessingStateMixin):
+@@ -209,7 +223,7 @@ class SSH:
  
      ROSTER_UPDATE_FLAG = "#__needs_update"
  
@@ -242,7 +246,7 @@ index ad2796bc87..6db2dfcbb0 100644
          self.__parsed_rosters = {SSH.ROSTER_UPDATE_FLAG: True}
          pull_sock = os.path.join(opts["sock_dir"], "master_event_pull.ipc")
          if os.path.exists(pull_sock) and zmq:
-@@ -236,7 +250,9 @@ class SSH(MultiprocessingStateMixin):
+@@ -236,7 +250,9 @@ class SSH:
              else "glob"
          )
          self._expand_target()
@@ -253,10 +257,10 @@ index ad2796bc87..6db2dfcbb0 100644
          self.targets = self.roster.targets(self.opts["tgt"], self.tgt_type)
          if not self.targets:
              self._update_targets()
-@@ -316,6 +332,13 @@ class SSH(MultiprocessingStateMixin):
-             extended_cfg=self.opts.get("ssh_ext_alternatives"),
+@@ -317,6 +333,14 @@ class SSH:
          )
          self.mods = mod_data(self.fsclient)
+ 
 +        self.cache = salt.cache.Cache(self.opts)
 +        self.master_id = self.opts["id"]
 +        self.max_pid_wait = int(self.opts.get("ssh_max_pid_wait", 600))
@@ -264,10 +268,11 @@ index ad2796bc87..6db2dfcbb0 100644
 +            self.opts["cachedir"], "salt-ssh.session.lock"
 +        )
 +        self.ssh_session_grace_time = int(self.opts.get("ssh_session_grace_time", 3))
- 
-     # __setstate__ and __getstate__ are only used on spawning platforms.
-     def __setstate__(self, state):
-@@ -546,6 +569,8 @@ class SSH(MultiprocessingStateMixin):
++
+     @property
+     def parse_tgt(self):
+         """
+@@ -531,6 +555,8 @@ class SSH:
          """
          Run the routine in a "Thread", put a dict on the queue
          """
@@ -276,7 +281,7 @@ index ad2796bc87..6db2dfcbb0 100644
          opts = copy.deepcopy(opts)
          single = Single(
              opts,
-@@ -585,7 +610,7 @@ class SSH(MultiprocessingStateMixin):
+@@ -570,7 +596,7 @@ class SSH:
          """
          que = multiprocessing.Queue()
          running = {}
@@ -285,7 +290,7 @@ index ad2796bc87..6db2dfcbb0 100644
          returned = set()
          rets = set()
          init = False
-@@ -594,11 +619,43 @@ class SSH(MultiprocessingStateMixin):
+@@ -579,11 +605,43 @@ class SSH:
                  log.error("No matching targets found in roster.")
                  break
              if len(running) < self.opts.get("ssh_max_procs", 25) and not init:
@@ -332,7 +337,7 @@ index ad2796bc87..6db2dfcbb0 100644
                  for default in self.defaults:
                      if default not in self.targets[host]:
                          self.targets[host][default] = self.defaults[default]
-@@ -630,8 +687,38 @@ class SSH(MultiprocessingStateMixin):
+@@ -615,8 +673,38 @@ class SSH:
                      mine,
                  )
                  routine = Process(target=self.handle_routine, args=args)
@@ -372,7 +377,7 @@ index ad2796bc87..6db2dfcbb0 100644
                  continue
              ret = {}
              try:
-@@ -662,12 +749,27 @@ class SSH(MultiprocessingStateMixin):
+@@ -647,12 +735,27 @@ class SSH:
                              )
                              ret = {"id": host, "ret": error}
                              log.error(error)
@@ -400,7 +405,24 @@ index ad2796bc87..6db2dfcbb0 100644
              if len(rets) >= len(self.targets):
                  break
              # Sleep when limit or all threads started
-@@ -1036,14 +1138,24 @@ class Single:
+@@ -916,6 +1019,7 @@ class Single:
+         self.context = {"master_opts": self.opts, "fileclient": self.fsclient}
+ 
+         self.ssh_pre_flight = kwargs.get("ssh_pre_flight", None)
++        self.ssh_pre_flight_args = kwargs.get("ssh_pre_flight_args", None)
+ 
+         if self.ssh_pre_flight:
+             self.ssh_pre_file = os.path.basename(self.ssh_pre_flight)
+@@ -1007,7 +1111,7 @@ class Single:
+ 
+         self.shell.send(self.ssh_pre_flight, script)
+ 
+-        return self.execute_script(script)
++        return self.execute_script(script, script_args=self.ssh_pre_flight_args)
+ 
+     def check_thin_dir(self):
+         """
+@@ -1020,14 +1124,24 @@ class Single:
              return False
          return True
  
@@ -429,7 +451,7 @@ index ad2796bc87..6db2dfcbb0 100644
          self.deploy_ext()
          return True
  
-@@ -1071,8 +1183,9 @@ class Single:
+@@ -1055,8 +1169,9 @@ class Single:
          Returns tuple of (stdout, stderr, retcode)
          """
          stdout = stderr = retcode = None
@@ -440,7 +462,7 @@ index ad2796bc87..6db2dfcbb0 100644
              if not self.opts.get("ssh_run_pre_flight", False) and self.check_thin_dir():
                  log.info(
                      "%s thin dir already exists. Not running ssh_pre_flight script",
-@@ -1086,14 +1199,16 @@ class Single:
+@@ -1070,14 +1185,16 @@ class Single:
                  stdout, stderr, retcode = self.run_ssh_pre_flight()
                  if retcode != 0:
                      log.error(
@@ -459,11 +481,38 @@ index ad2796bc87..6db2dfcbb0 100644
              cmd_str = " ".join([self._escape_arg(arg) for arg in self.argv])
              stdout, stderr, retcode = self.shell.exec_cmd(cmd_str)
  
+@@ -1335,15 +1452,24 @@ ARGS = {arguments}\n'''.format(
+ 
+         return cmd
+ 
+-    def execute_script(self, script, extension="py", pre_dir=""):
++    def execute_script(self, script, extension="py", pre_dir="", script_args=None):
+         """
+         execute a script on the minion then delete
+         """
++        args = ""
++        if script_args:
++            args = " {}".format(
++                " ".join([str(el) for el in script_args])
++                if isinstance(script_args, (list, tuple))
++                else script_args
++            )
+         if extension == "ps1":
+             ret = self.shell.exec_cmd('"powershell {}"'.format(script))
+         else:
+             if not self.winrm:
+-                ret = self.shell.exec_cmd("/bin/sh '{}{}'".format(pre_dir, script))
++                ret = self.shell.exec_cmd(
++                    "/bin/sh '{}{}'{}".format(pre_dir, script, args)
++                )
+             else:
+                 ret = saltwinshell.call_python(self, script)
+ 
 diff --git a/salt/client/ssh/client.py b/salt/client/ssh/client.py
-index be9247cb15..0b67598fc6 100644
+index 245e1529c6..a45deeb325 100644
 --- a/salt/client/ssh/client.py
 +++ b/salt/client/ssh/client.py
-@@ -108,7 +108,7 @@ class SSHClient:
+@@ -107,7 +107,7 @@ class SSHClient:
          return sane_kwargs
  
      def _prep_ssh(
@@ -472,7 +521,7 @@ index be9247cb15..0b67598fc6 100644
      ):
          """
          Prepare the arguments
-@@ -123,7 +123,7 @@ class SSHClient:
+@@ -122,7 +122,7 @@ class SSHClient:
          opts["selected_target_option"] = tgt_type
          opts["tgt"] = tgt
          opts["arg"] = arg
@@ -481,7 +530,7 @@ index be9247cb15..0b67598fc6 100644
  
      def cmd_iter(
          self,
-@@ -160,7 +160,7 @@ class SSHClient:
+@@ -159,7 +159,7 @@ class SSHClient:
              final.update(ret)
          return final
  
@@ -490,7 +539,7 @@ index be9247cb15..0b67598fc6 100644
          """
          Execute a salt-ssh call synchronously.
  
-@@ -193,6 +193,7 @@ class SSHClient:
+@@ -192,6 +192,7 @@ class SSHClient:
              low.get("timeout"),
              low.get("tgt_type"),
              low.get("kwarg"),
@@ -499,10 +548,10 @@ index be9247cb15..0b67598fc6 100644
          )
  
 diff --git a/salt/client/ssh/shell.py b/salt/client/ssh/shell.py
-index cfa82d13c2..bc1ad034df 100644
+index 7461618a2e..6b54a20abd 100644
 --- a/salt/client/ssh/shell.py
 +++ b/salt/client/ssh/shell.py
-@@ -464,6 +464,14 @@ class Shell:
+@@ -442,6 +442,14 @@ class Shell:
                  if stdout:
                      old_stdout = stdout
                  time.sleep(0.01)
@@ -650,10 +699,10 @@ index b77749f495..293ea1b7fa 100644
          "--local",
          "--metadata",
 diff --git a/salt/loader/__init__.py b/salt/loader/__init__.py
-index 72a5e54401..32f8a7702c 100644
+index f7815acc03..a0f2220476 100644
 --- a/salt/loader/__init__.py
 +++ b/salt/loader/__init__.py
-@@ -9,6 +9,7 @@ import inspect
+@@ -8,6 +8,7 @@ import contextlib
  import logging
  import os
  import re
@@ -689,18 +738,14 @@ index 72a5e54401..32f8a7702c 100644
  
  def static_loader(
      opts,
-@@ -725,7 +738,7 @@ def fileserver(opts, backends, loaded_base_name=None):
+@@ -597,16 +610,19 @@ def fileserver(opts, backends):
      )
  
  
--def roster(opts, runner=None, utils=None, whitelist=None, loaded_base_name=None):
-+def roster(opts, runner=None, utils=None, whitelist=None, loaded_base_name=None, context=None):
+-def roster(opts, runner=None, utils=None, whitelist=None):
++def roster(opts, runner=None, utils=None, whitelist=None, context=None):
      """
      Returns the roster modules
- 
-@@ -736,12 +749,15 @@ def roster(opts, runner=None, utils=None, whitelist=None, loaded_base_name=None)
-     :param str loaded_base_name: The imported modules namespace when imported
-                                  by the salt loader.
      """
 +    if context is None:
 +        context = {}
@@ -713,9 +758,9 @@ index 72a5e54401..32f8a7702c 100644
 -        pack={"__runner__": runner, "__utils__": utils},
 +        pack={"__runner__": runner, "__utils__": utils, "__context__": context},
          extra_module_dirs=utils.module_dirs if utils else None,
-         loaded_base_name=loaded_base_name,
      )
-@@ -933,7 +949,14 @@ def render(
+ 
+@@ -744,7 +760,14 @@ def render(opts, functions, states=None, proxy=None, context=None):
      )
      rend = FilterDictWrapper(ret, ".render")
  
@@ -732,10 +777,10 @@ index 72a5e54401..32f8a7702c 100644
      ):
          err = (
 diff --git a/salt/netapi/__init__.py b/salt/netapi/__init__.py
-index 7127dc2b3c..4a80697648 100644
+index 81954acb96..5d2ff994a6 100644
 --- a/salt/netapi/__init__.py
 +++ b/salt/netapi/__init__.py
-@@ -79,6 +79,7 @@ class NetapiClient:
+@@ -46,6 +46,7 @@ class NetapiClient:
          self.loadauth = salt.auth.LoadAuth(apiopts)
          self.key = salt.daemons.masterapi.access_keys(apiopts)
          self.ckminions = salt.utils.minions.CkMinions(apiopts)
@@ -743,7 +788,7 @@ index 7127dc2b3c..4a80697648 100644
  
      def _is_master_running(self):
          """
-@@ -238,7 +239,7 @@ class NetapiClient:
+@@ -205,7 +206,7 @@ class NetapiClient:
          with salt.client.ssh.client.SSHClient(
              mopts=self.opts, disable_custom_roster=True
          ) as client:
@@ -753,7 +798,7 @@ index 7127dc2b3c..4a80697648 100644
      def runner(self, fun, timeout=None, full_return=False, **kwargs):
          """
 diff --git a/salt/roster/__init__.py b/salt/roster/__init__.py
-index fc7339d785..ea23d550d7 100644
+index b45afffd24..4b6182b2dd 100644
 --- a/salt/roster/__init__.py
 +++ b/salt/roster/__init__.py
 @@ -59,7 +59,7 @@ class Roster:
@@ -777,7 +822,7 @@ index fc7339d785..ea23d550d7 100644
      def _gen_back(self):
          """
 diff --git a/tests/unit/test_loader.py b/tests/unit/test_loader.py
-index 66ba3d4e05..412d412398 100644
+index 2319f815d3..e83f86cd01 100644
 --- a/tests/unit/test_loader.py
 +++ b/tests/unit/test_loader.py
 @@ -1696,7 +1696,7 @@ class LazyLoaderRefreshFileMappingTest(TestCase):
@@ -790,6 +835,6 @@ index 66ba3d4e05..412d412398 100644
  
          self.LOADER_CLASS = LazyLoaderMock
 -- 
-2.37.3
+2.35.1
 
 

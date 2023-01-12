@@ -1,4 +1,4 @@
-From 33e45a7ced8a3cfc0a8c37cdc5d7a29d6f6833c3 Mon Sep 17 00:00:00 2001
+From 64c2735b64a074acc1ef05a82f9fcf342426f87e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 25 Mar 2020 13:09:52 +0000
@@ -9,10 +9,10 @@ Subject: [PATCH] Make setup.py script to not require setuptools > 9.1
  1 file changed, 8 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index d633af35ec..586842972d 100755
+index 39a66fefba..d9c3d6e303 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -718,14 +718,6 @@ class Install(install):
+@@ -805,14 +805,6 @@ class Install(install):
          install.finalize_options(self)
  
      def run(self):
@@ -28,6 +28,6 @@ index d633af35ec..586842972d 100755
          # _version.py in the build command
          self.distribution.running_salt_install = True
 -- 
-2.37.3
+2.29.2
 
 

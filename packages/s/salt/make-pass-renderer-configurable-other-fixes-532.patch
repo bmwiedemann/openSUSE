@@ -1,4 +1,4 @@
-From 030e2cb20af09673d5f38d68bcb257c6c839a2f3 Mon Sep 17 00:00:00 2001
+From 7b4f5007b7e6a35386d197afe53d02c8d7b41d53 Mon Sep 17 00:00:00 2001
 From: Daniel Mach <daniel.mach@gmail.com>
 Date: Thu, 6 Oct 2022 11:58:23 +0200
 Subject: [PATCH] Make pass renderer configurable & other fixes (#532)
@@ -71,10 +71,10 @@ index 0000000000..22a9711383
 +Only trailing newlines are stripped from the fetched secret.
 +Pass process arguments are handled in a secure way.
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index 7cdee12c4d..0cc0deb874 100644
+index 2c42290598..9e72a5b4b7 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -967,6 +967,14 @@ VALID_OPTS = immutabletypes.freeze(
+@@ -960,6 +960,14 @@ VALID_OPTS = immutabletypes.freeze(
          # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
          # Possible values are: False, adler32, crc32
          "server_id_use_crc": (bool, str),
@@ -89,7 +89,7 @@ index 7cdee12c4d..0cc0deb874 100644
      }
  )
  
-@@ -1608,6 +1616,10 @@ DEFAULT_MASTER_OPTS = immutabletypes.freeze(
+@@ -1601,6 +1609,10 @@ DEFAULT_MASTER_OPTS = immutabletypes.freeze(
          "fips_mode": False,
          "detect_remote_minions": False,
          "remote_minions_port": 22,

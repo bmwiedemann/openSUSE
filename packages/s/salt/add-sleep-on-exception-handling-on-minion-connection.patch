@@ -1,4 +1,4 @@
-From b772fc7540cea4088ecac0bdc0e24d2be84bfcad Mon Sep 17 00:00:00 2001
+From aafa76ddd04114f699d760577681db75579685d7 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Thu, 18 Feb 2021 14:49:38 +0300
 Subject: [PATCH] Add sleep on exception handling on minion connection
@@ -12,7 +12,7 @@ Subject: [PATCH] Add sleep on exception handling on minion connection
  1 file changed, 6 insertions(+)
 
 diff --git a/salt/minion.py b/salt/minion.py
-index 16452facf4..780b397e83 100644
+index 4da665a130..dacff1e0a9 100644
 --- a/salt/minion.py
 +++ b/salt/minion.py
 @@ -1123,6 +1123,9 @@ class MinionManager(MinionBase):
@@ -25,7 +25,7 @@ index 16452facf4..780b397e83 100644
          while True:
              try:
                  if minion.opts.get("beacons_before_connect", False):
-@@ -1161,6 +1164,9 @@ class MinionManager(MinionBase):
+@@ -1158,6 +1161,9 @@ class MinionManager(MinionBase):
                      minion.opts["master"],
                      exc_info=True,
                  )
@@ -36,6 +36,6 @@ index 16452facf4..780b397e83 100644
      # Multi Master Tune In
      def tune_in(self):
 -- 
-2.37.3
+2.29.2
 
 
