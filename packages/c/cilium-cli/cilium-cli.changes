@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:53:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.12:
+  * Prepare for v0.12.12 release
+  * connectivity: Fix node2node test case feat requirement
+  * Add copy-retry-limit flag
+  * Fix Typo [valye -> value]
+  * ci: update Cilium version to v1.12.5
+  * defaults: update default Cilium version to v1.12.5
+  * go.mod, vendor: pull in latest cilium charts for v1.10.18, v1.11.12, v1.12.5 and v1.13-rc4
+  * connectivity: Add node-to-node encryption tests
+  * connectivity: Make pod to world test configurable
+  * introduce --open-browser flag on cilium hubble UI
+  * hubble: port-forward only on IPv4
+  * cli: Support client only in version sub-command
+  * build(deps): bump library/busybox from `898fba6` to `5289a46`
+  * build(deps): bump actions/checkout from 3.2.0 to 3.3.0
+  * all: fix spacing with ℹ️  logs
+  * hubble: port-forward only to localhost
+  * build(deps): bump actions/download-artifact from 3.0.1 to 3.0.2
+  * build(deps): bump nick-invision/retry from 2.8.2 to 2.8.3
+  * connectivity: allow to specify connect and request timeout
+  * connectivity: convert curl/ping command construction *ConnectivityTest methods
+  * connectivity: make curlEndpoints a (*podToPodWithEndpoints) method
+  * build(deps): bump actions/upload-artifact from 3.1.1 to 3.1.2
+  * connectivity: Fix iface derivation in encrypt tests
+  * build(deps): bump helm.sh/helm/v3 from 3.10.2 to 3.10.3
+  * k8s: Bring back TTY to Exec
+  * .github: replace deprecated set-output commands
+  * build(deps): bump actions/setup-go from 3.4.0 to 3.5.0
+  * Use the newly extracted GetCiliumVersion method
+  * Extract GetCiliumVersion to the k8s package
+  * sysdump: exclude endpoint object files by default
+  * build(deps): bump helm/kind-action from 1.4.0 to 1.5.0
+  * connectivity: Fix tunnel feature detection
+  * .github: pin ubuntu runners to 22.04
+  * build(deps): bump azure/setup-helm from 3.4 to 3.5
+  * build(deps): bump actions/checkout from 3.1.0 to 3.2.0
+  * connectivity, k8s, internal/utils: drop ExecInPodWithTTY and CtrlCReader
+  * k8s: use exec.StreamWithContext
+  * go.mod, vendor: update client-go to v0.26.0
+  * sysdump: Autodetect the cilium-operator namespace
+  * sysdump: Fix bug that caused Cilium namespace to be empty
+  * build(deps): bump library/busybox from `62bc224` to `898fba6`
+  * install: update existing roles, bindings if already extant
+  * README, dependabot: mark v0.10 branch as unmaintained
+  * connectivity: Add encryption test
+  * connectivity: Add feature getter
+  * connectivity: Add feature to detect tunneling mode
+  * k8s: Add ExecInPodWithWriters
+  * connectivity: Add feature to detect encryption
+  * sysdump: Log detected Cilium namespace
+  * Update Go to 1.19.4
+  * workflows: Test with Cilium v1.12.4
+  * build(deps): bump library/golang
+  * Update stable release to v0.12.11
+  * defaults: update default Cilium version to v1.12.4
+  * .github: update get-kubeconfig.sh for k8s 1.24
+  * workflows: Bump timeout for External Workload workflow
+  * build(deps): bump library/golang from `a3cdc5a` to `3607071`
+  * workflows: Collect sysdump immediatly after test failures
+  * workflows: Bump timeout for EKS workflow
+  * connectivity: Reorder L7 ingress connectivity tests
+  * build(deps): bump library/golang from `d171aa3` to `a3cdc5a`
+  * build(deps): bump actions/setup-go from 3.3.1 to 3.4.0
+
+-------------------------------------------------------------------
 Thu Dec 01 19:48:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.11:
