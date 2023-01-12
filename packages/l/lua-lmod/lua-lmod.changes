@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 12 13:22:34 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Changing description to make it more clear to users what this tool
+  is for wand where it should be installed - and where not.
+  Also add Provides: for shell functions set by shell init scripts
+  provided with this package.
+
+-------------------------------------------------------------------
 Mon Jan  9 19:43:36 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch:

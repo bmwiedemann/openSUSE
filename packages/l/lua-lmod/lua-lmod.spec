@@ -34,7 +34,7 @@
 %{!?_rpmmacrodir:%define _rpmmacrodir %_rpmconfigdir/macros.d}
 
 Name:           lua-lmod
-Summary:        Lua-based Environment Modules
+Summary:        Lua-based Environment Modules used in HPC
 License:        MIT
 Group:          Development/Libraries/Other
 Version:        8.7.15
@@ -66,6 +66,8 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python-Sphinx
 %endif
 Provides:       lua-lmod-man = %{version}-%{release}
+Provides:       ml = %{version}
+Provides:       modules = %{version}
 %if 0%{?build_pdf:1}
 
 %if 0%{suse_version} >= 1550
@@ -106,8 +108,16 @@ BuildRequires:  texlive-wrapfig
 %endif # %%build_pdf
 
 %description
-Lmod is an Environment Module System based on Lua, Reads TCL Modules,
-Supports a Software Hierarchy.
+Lmod is an Environment Module System as used in High Performance Computing
+(HPC) based on Lua, Reads TCL Modules, Supports a Software Hierarchy.
+Environment Modules are to select the individual versions of HPC libraries
+and tools from a set of installed ones.
+It requires these libraries and tools to be available in separate independent
+directory structures. On SUSE systems default location for these structures
+is under /usr/lib/hpc.
+
+It is not recommended to install this tool on systems which do not belong
+to an HPC deployment which uses the module system.
 
 %package doc
 Summary:        Documentation for Lmod

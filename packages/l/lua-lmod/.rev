@@ -399,4 +399,15 @@
   scripts (apparmor) (boo#1206957).</comment>
     <requestid>1057160</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>49c28103a84a4d3b51ef1c673f9cd646</srcmd5>
+    <version>8.7.15</version>
+    <time>1673559916</time>
+    <user>dimstar_suse</user>
+    <comment>- Changing description to make it more clear to users what this tool
+  is for wand where it should be installed - and where not.
+  Also add Provides: for shell functions set by shell init scripts
+  provided with this package. (forwarded request 1058035 from eeich)</comment>
+    <requestid>1058036</requestid>
+  </revision>
 </revisionlist>
