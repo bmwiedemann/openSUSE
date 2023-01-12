@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 11 20:38:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use llvm13 on Leap 15.4 and llvm15 on 15.5
+
+-------------------------------------------------------------------
 Mon Jan  2 15:18:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update fix-application-output.patch to work with current versions

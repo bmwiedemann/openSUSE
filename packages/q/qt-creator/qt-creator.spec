@@ -63,13 +63,18 @@ Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
 ##
 BuildRequires:  cmake
-# clang-devel in Leap 15.3 points to clang7...
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
-BuildRequires:  clang11-devel
-BuildRequires:  llvm11-devel
+# clang-devel in Leap 15 points to clang7...
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150400
+BuildRequires:  clang13-devel
+BuildRequires:  llvm13-devel
+%else
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150500
+BuildRequires:  clang15-devel
+BuildRequires:  llvm15-devel
 %else
 BuildRequires:  clang-devel >= 10.0
 BuildRequires:  llvm-devel
+%endif
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
