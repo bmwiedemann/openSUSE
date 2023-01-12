@@ -139,4 +139,12 @@
   to upstream (forwarded request 1044083 from mslacken)</comment>
     <requestid>1044084</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0597a719467818c418827611ff432d0c</srcmd5>
+    <version>1.1.5</version>
+    <time>1673559913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058009</requestid>
+  </revision>
 </revisionlist>
