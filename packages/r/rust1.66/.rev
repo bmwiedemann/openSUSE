@@ -7,4 +7,12 @@
     <comment>Submit new package rust1.66 for factory</comment>
     <requestid>1043833</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2c680207841ace7dd5cbb3a3080b72c2</srcmd5>
+    <version>1.66.0</version>
+    <time>1673559814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057887</requestid>
+  </revision>
 </revisionlist>

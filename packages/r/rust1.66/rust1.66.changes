@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 12 03:40:11 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Disable src tidy test as it is incompatible with cve patches
+
+-------------------------------------------------------------------
+Tue Jan 10 08:55:11 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1206930 - CVE-2022-46176 - Enforce that cargo checks ssh host keys.
+  * 0001-CVE-2022-46176-verify-ssh-host-keys-in-cargo.patch
+
+-------------------------------------------------------------------
 Fri Dec 16 02:33:49 UTC 2022 - William Brown <william.brown@suse.com>
 
 Version 1.66.0 (2022-12-15)
