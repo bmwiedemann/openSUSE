@@ -200,4 +200,12 @@
     <user>dimstar_suse</user>
     <comment>Revert, breaks tesseracto-cr</comment>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f2708c70c4087751f81bfbe13f756fdd</srcmd5>
+    <version>1.83.0</version>
+    <time>1673559866</time>
+    <user>dimstar_suse</user>
+    <comment>Update back to new version</comment>
+    <requestid>1057139</requestid>
+  </revision>
 </revisionlist>
