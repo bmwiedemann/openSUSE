@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  8 17:54:43 UTC 2023 - Michael Calmer <mc@suse.com>
+
+- fix createTempFile vulnerability - CVE-2022-41946 (bsc#1206921)
+  * Added: fix-createTempFile-vulnerability-CVE-2022-41946.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 14:35:20 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - Address SQL Injection Vulnerability CVE-2022-31197

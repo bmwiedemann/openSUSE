@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-jdbc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ URL:            https://jdbc.postgresql.org/
 Source0:        https://repo1.maven.org/maven2/org/postgresql/postgresql/%{version}/postgresql-%{version}-jdbc-src.tar.gz
 Patch1:         CVE-2022-26520.patch
 Patch2:         fix-SQL-Injection-CVE-2022-31197.patch
+Patch3:         fix-createTempFile-vulnerability-CVE-2022-41946.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.ongres.scram:client) >= 2.0
@@ -46,6 +47,7 @@ This package contains the API Documentation for %{name}.
 %setup -q -n postgresql-%{version}-jdbc-src
 %patch1 -p1
 %patch2 -p1
+%patch3 -p2
 
 # Build parent POMs in the same Maven call.
 %pom_xpath_remove "pom:plugin[pom:artifactId = 'maven-shade-plugin']"
