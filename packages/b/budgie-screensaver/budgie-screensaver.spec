@@ -66,10 +66,30 @@ Fork of GNOME Screensaver for Budgie 10
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cp %{buildroot}%{_datadir}/applications/budgie-screensaver.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %find_lang budgie-screensaver
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/budgie-screensaver %{buildroot}%{_pam_vendordir}
+
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/budgie-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/budgie-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files
 %license LICENSE
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/budgie-screensaver
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/budgie-screensaver
+%endif
 %{_bindir}/budgie-screensaver
 %{_bindir}/budgie-screensaver-command
 %{_libexecdir}/budgie-screensaver-dialog
