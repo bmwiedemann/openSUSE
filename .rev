@@ -35,4 +35,14 @@
     <comment></comment>
     <requestid>974866</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e64abfa7a0dd67010ec356d7fc5bf16f</srcmd5>
+    <version>1.0.0</version>
+    <time>1673650943</time>
+    <user>dimstar_suse</user>
+    <comment>- Add py311-compat.patch to make it compatible with python 3.11
+  gh#python/cpython#88852
+</comment>
+    <requestid>1057971</requestid>
+  </revision>
 </revisionlist>
