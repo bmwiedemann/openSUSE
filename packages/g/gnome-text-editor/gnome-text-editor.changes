@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:14:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Sort recent documents by last-visited (opened) time
+  + Fix initial state for search bar buttons
+  + Don't allow autosave to race against loading documents
+  + Disable search entry when recents list is empty
+  + Disable highlighting, spellcheck, and brace matching on large
+    files
+  + Fix scrolling of large lists in "save changes" dialog
+  + Fix emphasis style in various style schemes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct  4 20:30:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
