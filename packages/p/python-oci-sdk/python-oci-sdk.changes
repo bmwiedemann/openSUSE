@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 11 15:17:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.90.1
+  * Upgrade wheel version for applicable Python versions to
+    fix security vulnerability as mentioned in (#502)
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 11:20:08 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file
