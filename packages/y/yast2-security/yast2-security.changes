@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 20 10:21:49 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: export security policy settings (related to
+  jsc#SLE-24764).
+- Always write the ssg-apply configuration if a security policy
+  is enabled, even if the action is 'none' (related to
+  jsc#SLE-24764).
+- 4.5.5
+
+-------------------------------------------------------------------
 Thu Dec  1 14:56:43 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed wrong steps count causing a crash during saving (bsc#1205918)

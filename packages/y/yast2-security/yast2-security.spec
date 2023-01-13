@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-security
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-security
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 Group:          System/YaST
 License:        GPL-2.0-only
