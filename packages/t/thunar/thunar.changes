@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Wed Jan 11 12:50:18 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.18.2:
+  * bulk renamer: Remember LastActiveMode (gxo#xfce/thunar#989)
+  * Dont show toolbar menu for back/forward (gxo#xfce/thunar#983)
+  * Double compact view ellipsization threshold
+  * Few thumbnails missing after scroll (gxo#xfce/thunar#843)
+  * Improve alignment of XfceFileNameInput
+  * Make 'empty trash' sensitive on tab-switch (gxo#xfce/thunar#1001)
+  * Only attach toolbar after toolbar items were set up (gxo#xfce/thunar#927)
+  * Prevent crash after closing windows (gxo#xfce/thunar#995)
+  * Prevent crash for copy+overwrite via DBus (gxo#xfce/thunar#1002)
+  * Prevent rare crash when closing thunar (gxo#xfce/thunar#698)
+  * Prevent segfault for location selector (gxo#xfce/thunar#994)
+  * Re-add symlink target in type column (gxo#xfce/thunar#985)
+  * Revert "Prevent focus stealing of file transfer dialog (gxo#xfce/thunar#643)"
+  * Shrink rename dialog only in height
+  * split-view: prevent losing open tabs (gxo#xfce/thunar#986)
+
+-------------------------------------------------------------------
 Thu Dec 22 15:01:45 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
-- Update to version 4.18.1
+- Update to version 4.18.1:
   * Fix several thumbnailing issues
   * 'replace' option fixed for copy with '*.partial~' (gxo#xfce/thunar#974)
   * Preserve trusted state when launchers are copied
