@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 12 14:01:17 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Added pam-config-rpmlintrc in order to ignore the rpmlint check
+  for /etc/pam.d/common* files.
+
+-------------------------------------------------------------------
 Mon Oct 24 09:33:52 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.8

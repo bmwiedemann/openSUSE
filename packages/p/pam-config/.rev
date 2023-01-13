@@ -700,4 +700,12 @@
   - Add pam_u2f support [bsc#1115512]</comment>
     <requestid>1030733</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>2e8ad0a299688d57259484c857e1ed38</srcmd5>
+    <version>1.8</version>
+    <time>1673650946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058019</requestid>
+  </revision>
 </revisionlist>

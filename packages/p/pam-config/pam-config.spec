@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/SUSE/pam-config
 Source:         %{name}-%{version}.tar.xz
+# Do not show some rpmlint errors.
+Source1:        pam-config-rpmlintrc
 PreReq:         pam >= 1.3.0
 Recommends:     pam_pwquality
 
