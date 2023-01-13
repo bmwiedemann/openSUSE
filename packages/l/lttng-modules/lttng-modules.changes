@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 13 21:41:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.8:
+  * Fix: jbd2: use the correct print format.
+  * Fix: in_x32_syscall was introduced in v4.7.0.
+  * Explicitly skip tracing x32 system calls.
+  * Fix: kallsyms wrapper on ppc64el.
+  * Fix: Adjust ranges for RHEL 8.6 kernels.
+  * Fix: kvm-x86 requires CONFIG_KALLSYMS_ALL.
+  * Fix: mm/slab_common: drop kmem_alloc & avoid dereferencing
+    fields when not using (v6.1).
+
+-------------------------------------------------------------------
 Sun Oct  2 18:13:47 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.7 (changes since 2.13.4):
