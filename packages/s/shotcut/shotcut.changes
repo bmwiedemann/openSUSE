@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jan  9 08:16:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 22.12.21:
+  New Bugs:
+    * Fixed the keyframes button sets size and position parameters to
+      all zeroes in the following filters (broke in v22.11):
+      + Blur: Pad
+      + Crop: Rectangle
+      + Size, Position & Rotate
+      + Spot Remover
+      + Text: Rich
+      + Text: Simple
+    * Fixed a crash when changing a parameter in the Pitch audio
+      filter (broke in v22.11).
+    * Fixed a crash on File > New or File > Close while also
+      playing (broke in v22.09).
+    * Fixed a memory leak in slideshow dialog and transition properties
+      preview (bug in v22.09).
+  Old Bugs:
+    * Fixed Time Remap video filter disables a Crop: Source filter.
+    * Fixed making a gradient stop transparent (alpha value 0) in various filters:
+      + Audio Level Visualization
+      + Audio Light Visualization
+      + Audio Spectrum Visualization
+      + Audio Waveform Visualization
+      + GPS Graphic
+      + Gradient
+  Improvements and Changes:
+    * Added new seek actions to the Player menu:
+      + Forward Jump Alt+Page Down (option+page down on macOS)
+      + Backward Jump Alt+Page Up (option+page up on macOS)
+      + Set Jump Time Ctrl+J (command+J on macOS)
+    * Added Cycle Marker Color with default keyboard shortcut
+      Ctrl+Alt+M (option+command+M on macOS).
+    * Added Advanced > Sample rate to the Properties > Convert dialog.
+
+-------------------------------------------------------------------
 Mon Nov 28 10:25:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 22.11.25:

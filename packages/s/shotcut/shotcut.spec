@@ -1,7 +1,7 @@
 #
 # spec file for package shotcut
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
 
 Name:           shotcut
-Version:        22.11.25
+Version:        22.12.21
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
