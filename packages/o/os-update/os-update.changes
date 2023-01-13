@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 13 13:40:55 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.9
+  - Minimal support for SLE12 (os-update)
+  - From address now configureable (systemd-status-mail)
+  - Include error messages of systemctl, too (systemd-status-mail)
+
+-------------------------------------------------------------------
 Wed Dec 21 10:53:22 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.8

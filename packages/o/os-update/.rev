@@ -97,4 +97,15 @@
 </comment>
     <requestid>1044056</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>575fe176abfc74f5c78f48db3ff8f5cf</srcmd5>
+    <version>1.9</version>
+    <time>1673651009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.9
+  - Minimal support for SLE12 (os-update)
+  - From address now configureable (systemd-status-mail)
+  - Include error messages of systemctl, too (systemd-status-mail)</comment>
+    <requestid>1058256</requestid>
+  </revision>
 </revisionlist>
