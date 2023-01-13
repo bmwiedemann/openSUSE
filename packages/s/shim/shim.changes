@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 12 07:00:19 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Removed shim-bsc1198101-opensuse-cert-prompt.patch (bsc#1198101) 
+   - Detail discussion is in bugzilla:
+	https://bugzilla.suse.com/show_bug.cgi?id=1198101
+   - The shim community review and challenge this prompt. No other
+     distro shows prompt (Have checked Fedora 37, CentOS 9 and Ubuntu 22.10).
+     Currently, it blocked the review process of openSUSE shim.
+   - Other distros lock-down kernel when secure boot is enabled. Some of
+     them used different key for signing kernel binary with In-tree kernel
+     module. And their build service does not provide signed Out-off-tree
+     module.
+
+-------------------------------------------------------------------
 Fri Dec  9 08:38:14 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Modified shim-install, add the following Olaf Kirch's patches to support

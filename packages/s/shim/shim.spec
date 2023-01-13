@@ -77,8 +77,6 @@ Patch4:         remove_build_id.patch
 Patch5:         shim-disable-export-vendor-dbx.patch
 # PATCH-FIX-UPSTREAM shim-Enable-the-NX-compatibility-flag-by-default.patch jlee@suse.com -- Enable the NX compatibility flag by default
 Patch6:         shim-Enable-the-NX-compatibility-flag-by-default.patch
-# PATCH-FIX-OPENSUSE shim-bsc1198101-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
-Patch100:	shim-bsc1198101-opensuse-cert-prompt.patch
 BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
@@ -124,9 +122,6 @@ The source code of UEFI shim loader
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%if 0%{?is_opensuse} == 1 || 0%{?sle_version} == 0
-%patch100 -p1
-%endif
 
 %build
 # generate the vendor SBAT metadata
