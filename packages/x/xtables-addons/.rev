@@ -652,4 +652,12 @@
     <comment>- Update to release 3.22</comment>
     <requestid>1031082</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>fe3cf956e0746408a107eb3885afae88</srcmd5>
+    <version>3.23</version>
+    <time>1673650957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.23</comment>
+    <requestid>1058083</requestid>
+  </revision>
 </revisionlist>
