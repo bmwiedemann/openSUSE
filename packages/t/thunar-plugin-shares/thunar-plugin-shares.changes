@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 11 13:04:51 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 0.3.2:
+  * Add basic GitLab pipeline
+  * Bump GLib minimum build required to 2.26
+  * configure.ac: use AC_PROG_CC_C99
+  * Create README.md. Update configure.ac.in
+  * Revert "configure.ac: use AC_PROG_CC_C99"
+  * Translation Updates
+  * Use long argument for net usershare to prevent bug (Issue #16) 
+
+-------------------------------------------------------------------
 Mon Apr  6 06:07:11 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.3.1

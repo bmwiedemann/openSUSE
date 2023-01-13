@@ -20,7 +20,7 @@
 %define plugin_name thunar-shares-plugin
 
 Name:           thunar-plugin-shares
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 URL:            https://docs.xfce.org/xfce/thunar/custom-actions
 Source0:        http://archive.xfce.org/src/thunar-plugins/%{plugin_name}/0.3/%{plugin_name}-%{version}.tar.bz2
@@ -28,9 +28,9 @@ Summary:        Thunar Plugin for Sharing Files Using Samba
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(thunarx-3)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(thunarx-3) >= 1.0.1
 Requires:       samba
 Requires:       thunar >= %{thunar_version}
 Recommends:     %{name}-lang = %{version}
