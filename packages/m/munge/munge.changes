@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jul  6 09:29:47 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
-- Update to version 0.15.4:
+- Update to version 0.5.15:
   - Added support for OpenSSL 3.0.
   - Fixed "make install" conflict with systemd RuntimeDirectory.
   - Fixed big-endian bug causing failures on s390x.

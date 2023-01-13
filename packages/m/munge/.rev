@@ -170,4 +170,14 @@ as well.</comment>
     <comment></comment>
     <requestid>987006</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>393e3edade2252762444f8cde3824184</srcmd5>
+    <version>0.5.15</version>
+    <time>1673651019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.15:
+
+Hope, the changelog is correct now.</comment>
+    <requestid>1058293</requestid>
+  </revision>
 </revisionlist>
