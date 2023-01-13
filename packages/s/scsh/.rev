@@ -52,4 +52,13 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055734 from lnussel)</comment>
     <requestid>1057024</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f339e67d3707a365f593ca86df65d4b7</srcmd5>
+    <version>0.7+git114432435e4eadd54334df6b37fcae505079b49f</version>
+    <time>1673651003</time>
+    <user>dimstar_suse</user>
+    <comment>- Require scheme48-vm as otjherwise scsh reports
+  'No such file or directory'</comment>
+    <requestid>1058227</requestid>
+  </revision>
 </revisionlist>

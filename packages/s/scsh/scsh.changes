@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 12:34:26 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Require scheme48-vm as otjherwise scsh reports
+  'No such file or directory'
+
+-------------------------------------------------------------------
 Tue Dec 27 13:19:59 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

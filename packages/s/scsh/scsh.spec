@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ BuildRequires:  scsh-base = %version
 BuildRequires:  racket
 BuildRequires:  scheme48 = %{scheme}
 BuildRequires:  scheme48-devel = %{scheme}
+Requires:       scheme48-vm = %{scheme}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
