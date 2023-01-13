@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 14:41:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Replace pwdutils with shadow (pwdutils was dropped ages ago)
+- Don't require systemd, it's only optional
+
+-------------------------------------------------------------------
 Fri Nov 18 18:15:16 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Drop 32bit architecures support boo#1205101

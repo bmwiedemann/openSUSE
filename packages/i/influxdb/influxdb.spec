@@ -1,7 +1,7 @@
 #
 # spec file for package influxdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,11 +47,8 @@ BuildRequires:  pkgconfig(flux) >= 0.170.1
 BuildRequires:  systemd-rpm-macros
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
 %endif
-Requires(pre):  pwdutils
-%if %{with systemd}
-%{systemd_requires}
-Requires(post): systemd
-%else
+Requires(pre):  shadow
+%if !%{with systemd}
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
 %endif
