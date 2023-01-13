@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 12 20:58:15 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.2.1
+  * Fix double free
+
+-------------------------------------------------------------------
+Fri Jan 12 19:50:38 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.2.0
+  * Signed policies for keys and sealed data
+
+-------------------------------------------------------------------
 Fri Dec  2 17:43:52 UTC 2022 - James.Bottomley@HansenPartnership.com
 
 - Update to version 3.1.2
