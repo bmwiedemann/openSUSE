@@ -1,7 +1,7 @@
 #
 # spec file for package mrsh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,6 +119,13 @@ do
     sed -i -e ':c;/pam_keyinit.so/bx' -e '$asession\toptional\tpam_keyinit.so\tforce revoke' \
            -e 'N;bc;:x;N;bx'  %{buildroot}/%{_sysconfdir}/pam.d/$i
 done
+
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/mrsh %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/mrlogin %{buildroot}%{_pam_vendordir}
+%endif
+
 %if 0%{!?have_systemd}
 sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrlogind
 sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrshd
@@ -129,6 +136,20 @@ sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrshd
 %pre server
 %if 0%{?have_systemd}
 %service_add_pre mrshd.socket mrlogind.socket mrlogind@.service mrshd@.service
+%endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/mrsh pam.d/mrlogin ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans server
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/mrsh pam.d/mrlogin ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 %post server
@@ -177,8 +198,13 @@ sed -i 's#disable\s*= yes#disable			= no#' %{buildroot}/etc/xinetd.d/mrshd
 %doc %{basename: %{S:1}}
 %{!?have_systemd:%attr(644,root,root) %config(noreplace) /etc/xinetd.d/mrshd}
 %{!?have_systemd:%attr(644,root,root) %config(noreplace) /etc/xinetd.d/mrlogind}
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/mrsh
+%{_pam_vendordir}/mrlogin
+%else
 %attr(644,root,root) %config(noreplace) /etc/pam.d/mrsh
 %attr(644,root,root) %config(noreplace) /etc/pam.d/mrlogin
+%endif
 %{?have_systemd:%{_unitdir}/*}
 %{_mandir}/man8/in.mrlogind.8*
 %{_mandir}/man8/in.mrshd.8*

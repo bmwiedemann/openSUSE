@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 17:57:17 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Fri Feb 19 07:23:11 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Convert service_del_postun -n to service_del_postun_without_restart.
