@@ -10,4 +10,12 @@ The relevant security team AUDIT-0 and whitelist of the pam module was carried o
 https://bugzilla.suse.com/show_bug.cgi?id=1205459</comment>
     <requestid>1038555</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>77fb90c2cfe81c5091117d02fc63fa1d</srcmd5>
+    <version>0.1.0~2</version>
+    <time>1673650963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058091</requestid>
+  </revision>
 </revisionlist>

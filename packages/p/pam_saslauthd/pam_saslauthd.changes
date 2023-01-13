@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 06 01:42:42 UTC 2023 - william.brown@suse.com
+
+- Remove tier1 limit
+- bsc#1206563 - improve pam_saslauthd default config for openldap migration
+- Update to version 0.1.0~2:
+  * Minor fix to default pam config
+
+-------------------------------------------------------------------
 Thu Nov 24 22:49:34 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update macros to use _pam_vendordir

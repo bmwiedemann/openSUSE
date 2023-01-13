@@ -1,7 +1,7 @@
 #
 # spec file for package pam_saslauthd
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           pam_saslauthd
 #               This will be set by osc services, that will run after this.
-Version:        0.1.0~1
+Version:        0.1.0~2
 Release:        0
 Summary:        A pam module to authenticated saslauthd as a provider
 #               If you know the license, put it's SPDX string here.
@@ -26,7 +27,7 @@ License:        MPL-2.0
 #               Select a group from this link:
 #               https://en.opensuse.org/openSUSE:Package_group_guidelines
 Group:          Productivity/Networking/Security
-Url:            https://github.com/Firstyear/pam_saslauthd
+URL:            https://github.com/Firstyear/pam_saslauthd
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
@@ -35,7 +36,6 @@ BuildRequires:  pam-devel
 # Because tar doesn't req zstd even though it's a valid and auto-impled compression.
 BuildRequires:  zstd
 Requires:       cyrus-sasl-saslauthd
-ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 A pam module that allows authentication to saslauthd as a provider. This only provides authentication
