@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pysmb
-Version:        1.2.8
+Version:        1.2.9.1
 Release:        0
 Summary:        SMB/CIFS library to support file sharing between Windows and Linux machines
 License:        Zlib
@@ -38,6 +38,7 @@ BuildRequires:  python-twisted
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tqdm}
 # /SECTION
 %python_subpackages
 

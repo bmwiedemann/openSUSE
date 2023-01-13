@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 13 07:00:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.9.1:
+  * Add support for tqdm progress display (gh#miketeo/pysmb#205).
+  * Fix bug where timeout parameter was not passed to
+    socket.createConnection() (gh#miketeo/pysmb#202).
+- BuildRequires: python-tqdm for tests.
+
+-------------------------------------------------------------------
 Wed Jun 22 00:41:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.8:
