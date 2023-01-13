@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,6 +86,24 @@ NOCONFIGURE=1 ./autogen.sh
 %install
 %make_install
 %find_lang %{name}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/xfce4-screensaver %{buildroot}%{_pam_vendordir}
+%endif
+
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/xfce4-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/xfce4-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files -f  %{name}.lang
 %license COPYING COPYING.LGPL COPYING.LIB
@@ -101,7 +119,11 @@ NOCONFIGURE=1 ./autogen.sh
 %dir %{_libexecdir}/xfce4-screensaver/
 %config %{_sysconfdir}/xdg/autostart/xfce4-screensaver.desktop
 %config %{_sysconfdir}/xdg/menus/xfce4-screensavers.menu
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/xfce4-screensaver
+%else
 %config %{_sysconfdir}/pam.d/xfce4-screensaver
+%endif
 %{_bindir}/xfce4-screensaver
 %{_bindir}/xfce4-screensaver-command
 %{_bindir}/xfce4-screensaver-configure
