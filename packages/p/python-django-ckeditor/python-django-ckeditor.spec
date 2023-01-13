@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-ckeditor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-ckeditor
-Version:        6.0.0
+Version:        6.5.1
 Release:        0
 Summary:        Django admin CKEditor integration
 License:        BSD-3-Clause
 URL:            https://github.com/django-ckeditor/django-ckeditor
 Source:         https://files.pythonhosted.org/packages/source/d/django-ckeditor/django-ckeditor-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

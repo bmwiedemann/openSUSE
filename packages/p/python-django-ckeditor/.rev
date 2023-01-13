@@ -51,4 +51,30 @@
     <comment></comment>
     <requestid>851918</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>05d5d50a1e4cac702e4c4e68a4b480ec</srcmd5>
+    <version>6.5.1</version>
+    <time>1673650992</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.5.1:
+  * Avoided calling ``static()`` if ``CKEDITOR_BASEPATH`` is defined.
+  * Fixed ``./manage.py generateckeditorthumbnails`` to work again after the
+    image uploader backend rework.
+  * CKEditor 4.19.1
+  * Stopped calling ``static()`` during application startup.
+  * Added Django 4.1
+  * Changed the context for the widget to deviate less from Django. Removed a
+  * few template variables which are not used in the bundled
+  * ``ckeditor/widget.html`` template. This only affects you if you are using a
+  * customized widget or widget template.
+  * Dropped support for Python &lt; 3.8, Django &lt; 3.2.
+  * Added a pre-commit configuration.
+  * Added a GitHub action for running tests.
+  * Made selenium tests require opt in using a ``SELENIUM=firefox`` or
+    ``SELENIUM=chromium`` environment variable.
+  * Made it possible to override the CKEditor template in the widget class.
+  * Changed ``CKEDITOR_IMAGE_BACKEND`` to require dotted module paths (the old
+    identifiers are still supported for now).</comment>
+    <requestid>1058180</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:51:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.1:
+  * Avoided calling ``static()`` if ``CKEDITOR_BASEPATH`` is defined.
+  * Fixed ``./manage.py generateckeditorthumbnails`` to work again after the
+    image uploader backend rework.
+  * CKEditor 4.19.1
+  * Stopped calling ``static()`` during application startup.
+  * Added Django 4.1
+  * Changed the context for the widget to deviate less from Django. Removed a
+  * few template variables which are not used in the bundled
+  * ``ckeditor/widget.html`` template. This only affects you if you are using a
+  * customized widget or widget template.
+  * Dropped support for Python < 3.8, Django < 3.2.
+  * Added a pre-commit configuration.
+  * Added a GitHub action for running tests.
+  * Made selenium tests require opt in using a ``SELENIUM=firefox`` or
+    ``SELENIUM=chromium`` environment variable.
+  * Made it possible to override the CKEditor template in the widget class.
+  * Changed ``CKEDITOR_IMAGE_BACKEND`` to require dotted module paths (the old
+    identifiers are still supported for now).
+
+-------------------------------------------------------------------
 Sun Nov 29 19:41:50 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.0.0:
