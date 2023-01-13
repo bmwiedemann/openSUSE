@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 13 10:51:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Backport the workaround from SLE/Leap for the bug in systemd
+  scripts that didn't set the default enable state for the
+  wireplumber user service when installing wireplumber. The bug
+  (boo#1200485) was fixed but that's only for new installations
+  while this workaround will fix old installations (boo#1202008).
+  This is used to automatically fix installations of
+  SLE 15 SP4/Leap 15.4 that were not updated during it's lifetime
+  and upgrade directly to SP5/15.5 .
+
+-------------------------------------------------------------------
+Wed Jan 11 12:41:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add upstream patches to fix glfo#pipewire/pipewire#2214 and to
+  handle better non-null terminated strings: 
+  * 0001-alsa-monitor-handle-snd_aloop-devices-better.patch
+  * 0001-spa-json-make-sure-we-only-add-encoded-string-data.patch
+  * 0001-m-lua-scripting-ignore-string-integer-table-keys-when-constructing-a-JSON-Array-Object.patch
+
+-------------------------------------------------------------------
 Tue Dec 13 14:43:46 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.4.13:

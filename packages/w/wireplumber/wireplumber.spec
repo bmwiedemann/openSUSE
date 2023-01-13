@@ -32,6 +32,13 @@ Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
 # PATCH-FIX-OPENSUSE reduce-meson-required-version.patch
 Patch0:         reduce-meson-required-version.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-monitor-handle-snd_aloop-devices-better.patch
+Patch1:         0001-alsa-monitor-handle-snd_aloop-devices-better.patch
+# PATCH-FIX-UPSTREAM 0001-spa-json-make-sure-we-only-add-encoded-string-data.patch
+Patch2:         0001-spa-json-make-sure-we-only-add-encoded-string-data.patch
+# PATCH-FIX-UPSTREAM 0001-m-lua-scripting-ignore-string-integer-table-keys-when-constructing-a-JSON-Array-Object.patch
+Patch3:         0001-m-lua-scripting-ignore-string-integer-table-keys-when-constructing-a-JSON-Array-Object.patch
+
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -70,6 +77,8 @@ BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+%{?systemd_ordering}
+
 
 %description
 WirePlumber is a modular session / policy manager for PipeWire and
@@ -140,6 +149,9 @@ the wireplumber shared library.
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}
@@ -171,6 +183,29 @@ export XDG_RUNTIME_DIR=/tmp
 
 %post
 %systemd_user_post wireplumber.service
+
+%if 0%{?suse_version} <= 1500
+# If the pipewire.socket user unit is not enabled and the workaround
+# for boo#1186561 has never been executed, we need to execute it now
+if [ ! -L %{_sysconfdir}/systemd/user/pipewire.service.wants/wireplumber.service \
+    -a ! -f %{_localstatedir}/lib/pipewire/wireplumber_post_workaround \
+    -a -x %{_bindir}/systemctl ]; then
+    for service in wireplumber.service ; do
+        %{_bindir}/systemctl --global preset "$service" || :
+    done
+
+    mkdir -p %{_localstatedir}/lib/pipewire
+    cat << EOF > %{_localstatedir}/lib/pipewire/wireplumber_post_workaround
+# The existence of this file means that the wireplumber user services were
+# enabled at least once. Please don't remove this file as that would
+# make the services to be enabled again in the next package update.
+#
+# Check the following bugs for more information:
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1200485
+EOF
+fi
+%endif
+
 
 %preun
 %systemd_user_preun wireplumber.service

@@ -1,0 +1,32 @@
+From f6dc1b3347967948cf876c62fa597b803052cb3b Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 13 Dec 2022 15:19:06 +0100
+Subject: [PATCH] alsa-monitor: handle snd_aloop devices better
+
+Place Loopback as the device description for snd_aloop devices.
+
+Fixes pipewire#2214
+---
+ src/scripts/monitors/alsa.lua | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/scripts/monitors/alsa.lua b/src/scripts/monitors/alsa.lua
+index 195c0916..b959a4a2 100644
+--- a/src/scripts/monitors/alsa.lua
++++ b/src/scripts/monitors/alsa.lua
+@@ -228,8 +228,11 @@ function prepareDevice(parent, id, obj_type, factory, properties)
+     local d = nil
+     local f = properties["device.form-factor"]
+     local c = properties["device.class"]
++    local n = properties["api.alsa.card.name"]
+ 
+-    if f == "internal" then
++    if n == "Loopback" then
++      d = I18n.gettext("Loopback")
++    elseif f == "internal" then
+       d = I18n.gettext("Built-in Audio")
+     elseif c == "modem" then
+       d = I18n.gettext("Modem")
+-- 
+GitLab
+
