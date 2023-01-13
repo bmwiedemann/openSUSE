@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 11 18:41:30 UTC 2023 - Li Zhang <li.zhang@suse.com>
+
+- Fixes jsc#PED-1716
+* Patches added:
+  configure-Add-Wno-gnu-variable-sized-typ.patch
+  s390x-pci-add-routine-to-get-host-functi.patch
+  s390x-pci-don-t-fence-interpreted-device.patch
+  s390x-pci-enable-adapter-event-notificat.patch
+  s390x-pci-enable-for-load-store-interpre.patch
+  s390x-pci-let-intercept-devices-have-sep.patch
+  s390x-pci-reflect-proper-maxstbl-for-gro.patch
+  Update-linux-headers-to-v6.0-rc4.patch
+
+-------------------------------------------------------------------
 Thu Jan  5 19:31:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - install binfmt-misc handlers for systemd (bsc#1206838) 

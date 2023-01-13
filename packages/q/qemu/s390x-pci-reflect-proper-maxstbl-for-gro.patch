@@ -1,0 +1,38 @@
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+Date: Fri, 2 Sep 2022 13:27:36 -0400
+Subject: s390x/pci: reflect proper maxstbl for groups of interpreted devices
+
+Git-commit: 9ee8f7e46a7d42ede69a4780200129bf1acb0d01
+References: jsc#PED-1716
+
+The maximum supported store block length might be different depending
+on whether the instruction is interpretively executed (firmware-reported
+maximum) or handled via userspace intercept (host kernel API maximum).
+Choose the best available value during group creation.
+
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Reviewed-by: Pierre Morel <pmorel@linux.ibm.com>
+Message-Id: <20220902172737.170349-8-mjrosato@linux.ibm.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ hw/s390x/s390-pci-vfio.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/hw/s390x/s390-pci-vfio.c b/hw/s390x/s390-pci-vfio.c
+index 338f436e8755514632a76f9838f6..2aefa508a07d9a228c045a5ff50b 100644
+--- a/hw/s390x/s390-pci-vfio.c
++++ b/hw/s390x/s390-pci-vfio.c
+@@ -213,7 +213,11 @@ static void s390_pci_read_group(S390PCIBusDevice *pbdev,
+         resgrp->msia = cap->msi_addr;
+         resgrp->mui = cap->mui;
+         resgrp->i = cap->noi;
+-        resgrp->maxstbl = cap->maxstbl;
++        if (pbdev->interp && hdr->version >= 2) {
++            resgrp->maxstbl = cap->imaxstbl;
++        } else {
++            resgrp->maxstbl = cap->maxstbl;
++        }
+         resgrp->version = cap->version;
+         resgrp->dtsm = ZPCI_DTSM;
+     }

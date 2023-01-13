@@ -1,0 +1,304 @@
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+Date: Fri, 2 Sep 2022 13:27:32 -0400
+Subject: s390x/pci: enable for load/store interpretation
+
+Git-commit: dd1d5fd9684beeb0c14c39f497ef2aa9ac683aa7
+References: jsc#PED-1716
+
+If the ZPCI_OP ioctl reports that is is available and usable, then the
+underlying KVM host will enable load/store intepretation for any guest
+device without a SHM bit in the guest function handle.  For a device that
+will be using interpretation support, ensure the guest function handle
+matches the host function handle; this value is re-checked every time the
+guest issues a SET PCI FN to enable the guest device as it is the only
+opportunity to reflect function handle changes.
+
+By default, unless interpret=off is specified, interpretation support will
+always be assumed and exploited if the necessary ioctl and features are
+available on the host kernel.  When these are unavailable, we will silently
+revert to the interception model; this allows existing guest configurations
+to work unmodified on hosts with and without zPCI interpretation support,
+allowing QEMU to choose the best support model available.
+
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Acked-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20220902172737.170349-4-mjrosato@linux.ibm.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ hw/s390x/meson.build            |  1 +
+ hw/s390x/s390-pci-bus.c         | 66 ++++++++++++++++++++++++++++++++-
+ hw/s390x/s390-pci-inst.c        | 16 ++++++++
+ hw/s390x/s390-pci-kvm.c         | 22 +++++++++++
+ include/hw/s390x/s390-pci-bus.h |  1 +
+ include/hw/s390x/s390-pci-kvm.h | 24 ++++++++++++
+ target/s390x/kvm/kvm.c          |  7 ++++
+ target/s390x/kvm/kvm_s390x.h    |  1 +
+ 8 files changed, 137 insertions(+), 1 deletion(-)
+
+diff --git a/hw/s390x/meson.build b/hw/s390x/meson.build
+index feefe0717ec41477cc6efefdafaf..f291016feeb4f3523a174d56bcad 100644
+--- a/hw/s390x/meson.build
++++ b/hw/s390x/meson.build
+@@ -23,6 +23,7 @@ s390x_ss.add(when: 'CONFIG_KVM', if_true: files(
+   's390-skeys-kvm.c',
+   's390-stattrib-kvm.c',
+   'pv.c',
++  's390-pci-kvm.c',
+ ))
+ s390x_ss.add(when: 'CONFIG_TCG', if_true: files(
+   'tod-tcg.c',
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index 4b2bdd94b382ff996f6ab0e8d8ce..156051e6e960e634fd8fc24f4f16 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -16,6 +16,7 @@
+ #include "qapi/visitor.h"
+ #include "hw/s390x/s390-pci-bus.h"
+ #include "hw/s390x/s390-pci-inst.h"
++#include "hw/s390x/s390-pci-kvm.h"
+ #include "hw/s390x/s390-pci-vfio.h"
+ #include "hw/pci/pci_bus.h"
+ #include "hw/qdev-properties.h"
+@@ -971,12 +972,51 @@ static void s390_pci_update_subordinate(PCIDevice *dev, uint32_t nr)
+     }
+ }
+ 
++static int s390_pci_interp_plug(S390pciState *s, S390PCIBusDevice *pbdev)
++{
++    uint32_t idx, fh;
++
++    if (!s390_pci_get_host_fh(pbdev, &fh)) {
++        return -EPERM;
++    }
++
++    /*
++     * The host device is already in an enabled state, but we always present
++     * the initial device state to the guest as disabled (ZPCI_FS_DISABLED).
++     * Therefore, mask off the enable bit from the passthrough handle until
++     * the guest issues a CLP SET PCI FN later to enable the device.
++     */
++    pbdev->fh = fh & ~FH_MASK_ENABLE;
++
++    /* Next, see if the idx is already in-use */
++    idx = pbdev->fh & FH_MASK_INDEX;
++    if (pbdev->idx != idx) {
++        if (s390_pci_find_dev_by_idx(s, idx)) {
++            return -EINVAL;
++        }
++        /*
++         * Update the idx entry with the passed through idx
++         * If the relinquished idx is lower than next_idx, use it
++         * to replace next_idx
++         */
++        g_hash_table_remove(s->zpci_table, &pbdev->idx);
++        if (idx < s->next_idx) {
++            s->next_idx = idx;
++        }
++        pbdev->idx = idx;
++        g_hash_table_insert(s->zpci_table, &pbdev->idx, pbdev);
++    }
++
++    return 0;
++}
++
+ static void s390_pcihost_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+                               Error **errp)
+ {
+     S390pciState *s = S390_PCI_HOST_BRIDGE(hotplug_dev);
+     PCIDevice *pdev = NULL;
+     S390PCIBusDevice *pbdev = NULL;
++    int rc;
+ 
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_BRIDGE)) {
+         PCIBridge *pb = PCI_BRIDGE(dev);
+@@ -1022,12 +1062,35 @@ static void s390_pcihost_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+         set_pbdev_info(pbdev);
+ 
+         if (object_dynamic_cast(OBJECT(dev), "vfio-pci")) {
+-            pbdev->fh |= FH_SHM_VFIO;
++            /*
++             * By default, interpretation is always requested; if the available
++             * facilities indicate it is not available, fallback to the
++             * interception model.
++             */
++            if (pbdev->interp) {
++                if (s390_pci_kvm_interp_allowed()) {
++                    rc = s390_pci_interp_plug(s, pbdev);
++                    if (rc) {
++                        error_setg(errp, "Plug failed for zPCI device in "
++                                   "interpretation mode: %d", rc);
++                        return;
++                    }
++                } else {
++                    DPRINTF("zPCI interpretation facilities missing.\n");
++                    pbdev->interp = false;
++                }
++            }
+             pbdev->iommu->dma_limit = s390_pci_start_dma_count(s, pbdev);
+             /* Fill in CLP information passed via the vfio region */
+             s390_pci_get_clp_info(pbdev);
++            if (!pbdev->interp) {
++                /* Do vfio passthrough but intercept for I/O */
++                pbdev->fh |= FH_SHM_VFIO;
++            }
+         } else {
+             pbdev->fh |= FH_SHM_EMUL;
++            /* Always intercept emulated devices */
++            pbdev->interp = false;
+         }
+ 
+         if (s390_pci_msix_init(pbdev)) {
+@@ -1360,6 +1423,7 @@ static Property s390_pci_device_properties[] = {
+     DEFINE_PROP_UINT16("uid", S390PCIBusDevice, uid, UID_UNDEFINED),
+     DEFINE_PROP_S390_PCI_FID("fid", S390PCIBusDevice, fid),
+     DEFINE_PROP_STRING("target", S390PCIBusDevice, target),
++    DEFINE_PROP_BOOL("interpret", S390PCIBusDevice, interp, true),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+index 6d400d41472e34db2218ae10bcd6..651ec3863506fde22af2432ac244 100644
+--- a/hw/s390x/s390-pci-inst.c
++++ b/hw/s390x/s390-pci-inst.c
+@@ -18,6 +18,8 @@
+ #include "sysemu/hw_accel.h"
+ #include "hw/s390x/s390-pci-inst.h"
+ #include "hw/s390x/s390-pci-bus.h"
++#include "hw/s390x/s390-pci-kvm.h"
++#include "hw/s390x/s390-pci-vfio.h"
+ #include "hw/s390x/tod.h"
+ 
+ #ifndef DEBUG_S390PCI_INST
+@@ -246,6 +248,20 @@ int clp_service_call(S390CPU *cpu, uint8_t r2, uintptr_t ra)
+                 goto out;
+             }
+ 
++            /*
++             * Take this opportunity to make sure we still have an accurate
++             * host fh.  It's possible part of the handle changed while the
++             * device was disabled to the guest (e.g. vfio hot reset for
++             * ISM during plug)
++             */
++            if (pbdev->interp) {
++                /* Take this opportunity to make sure we are sync'd with host */
++                if (!s390_pci_get_host_fh(pbdev, &pbdev->fh) ||
++                    !(pbdev->fh & FH_MASK_ENABLE)) {
++                    stw_p(&ressetpci->hdr.rsp, CLP_RC_SETPCIFN_FH);
++                    goto out;
++                }
++            }
+             pbdev->fh |= FH_MASK_ENABLE;
+             pbdev->state = ZPCI_FS_ENABLED;
+             stl_p(&ressetpci->fh, pbdev->fh);
+diff --git a/hw/s390x/s390-pci-kvm.c b/hw/s390x/s390-pci-kvm.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..0f16104a74c3856b5afdd433090750f4ca6ba4b2
+--- /dev/null
++++ b/hw/s390x/s390-pci-kvm.c
+@@ -0,0 +1,22 @@
++/*
++ * s390 zPCI KVM interfaces
++ *
++ * Copyright 2022 IBM Corp.
++ * Author(s): Matthew Rosato <mjrosato@linux.ibm.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or (at
++ * your option) any later version. See the COPYING file in the top-level
++ * directory.
++ */
++
++#include "qemu/osdep.h"
++
++#include "kvm/kvm_s390x.h"
++#include "hw/s390x/pv.h"
++#include "hw/s390x/s390-pci-kvm.h"
++#include "cpu_models.h"
++
++bool s390_pci_kvm_interp_allowed(void)
++{
++    return kvm_s390_get_zpci_op() && !s390_is_pv();
++}
+diff --git a/include/hw/s390x/s390-pci-bus.h b/include/hw/s390x/s390-pci-bus.h
+index da3cde2bb4257ffba5b22e3f8fdb..a9843dfe97d91e72f579acfefc10 100644
+--- a/include/hw/s390x/s390-pci-bus.h
++++ b/include/hw/s390x/s390-pci-bus.h
+@@ -350,6 +350,7 @@ struct S390PCIBusDevice {
+     IndAddr *indicator;
+     bool pci_unplug_request_processed;
+     bool unplug_requested;
++    bool interp;
+     QTAILQ_ENTRY(S390PCIBusDevice) link;
+ };
+ 
+diff --git a/include/hw/s390x/s390-pci-kvm.h b/include/hw/s390x/s390-pci-kvm.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..80a2e7d0caf63d50693f3a923575e1930b62d90f
+--- /dev/null
++++ b/include/hw/s390x/s390-pci-kvm.h
+@@ -0,0 +1,24 @@
++/*
++ * s390 PCI KVM interfaces
++ *
++ * Copyright 2022 IBM Corp.
++ * Author(s): Matthew Rosato <mjrosato@linux.ibm.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or (at
++ * your option) any later version. See the COPYING file in the top-level
++ * directory.
++ */
++
++#ifndef HW_S390_PCI_KVM_H
++#define HW_S390_PCI_KVM_H
++
++#ifdef CONFIG_KVM
++bool s390_pci_kvm_interp_allowed(void);
++#else
++static inline bool s390_pci_kvm_interp_allowed(void)
++{
++    return false;
++}
++#endif
++
++#endif
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index 7bd8db0e7b922efc8ff7f40302f1..6a8dbadf7ed0f8a15a8c22e64a43 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -157,6 +157,7 @@ static int cap_ri;
+ static int cap_hpage_1m;
+ static int cap_vcpu_resets;
+ static int cap_protected;
++static int cap_zpci_op;
+ 
+ static bool mem_op_storage_key_support;
+ 
+@@ -362,6 +363,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     cap_s390_irq = kvm_check_extension(s, KVM_CAP_S390_INJECT_IRQ);
+     cap_vcpu_resets = kvm_check_extension(s, KVM_CAP_S390_VCPU_RESETS);
+     cap_protected = kvm_check_extension(s, KVM_CAP_S390_PROTECTED);
++    cap_zpci_op = kvm_check_extension(s, KVM_CAP_S390_ZPCI_OP);
+ 
+     kvm_vm_enable_cap(s, KVM_CAP_S390_USER_SIGP, 0);
+     kvm_vm_enable_cap(s, KVM_CAP_S390_VECTOR_REGISTERS, 0);
+@@ -2574,3 +2576,8 @@ bool kvm_arch_cpu_check_are_resettable(void)
+ {
+     return true;
+ }
++
++int kvm_s390_get_zpci_op(void)
++{
++    return cap_zpci_op;
++}
+diff --git a/target/s390x/kvm/kvm_s390x.h b/target/s390x/kvm/kvm_s390x.h
+index 05a5e1e6f46df5327b996b99f7dc..aaae8570de5830512932b470eeaf 100644
+--- a/target/s390x/kvm/kvm_s390x.h
++++ b/target/s390x/kvm/kvm_s390x.h
+@@ -27,6 +27,7 @@ void kvm_s390_vcpu_interrupt_pre_save(S390CPU *cpu);
+ int kvm_s390_vcpu_interrupt_post_load(S390CPU *cpu);
+ int kvm_s390_get_hpage_1m(void);
+ int kvm_s390_get_ri(void);
++int kvm_s390_get_zpci_op(void);
+ int kvm_s390_get_clock(uint8_t *tod_high, uint64_t *tod_clock);
+ int kvm_s390_get_clock_ext(uint8_t *tod_high, uint64_t *tod_clock);
+ int kvm_s390_set_clock(uint8_t tod_high, uint64_t tod_clock);

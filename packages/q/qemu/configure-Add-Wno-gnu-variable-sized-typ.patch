@@ -1,0 +1,67 @@
+From: Chenyi Qiang <chenyi.qiang@intel.com>
+Date: Thu, 15 Sep 2022 17:10:34 +0800
+Subject: configure: Add -Wno-gnu-variable-sized-type-not-at-end
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 28d01b1d69e947a50b9ab9b45113fda1c4f96ac9
+References: jsc#PED-1716
+
+A Linux headers update to v6.0-rc switches some definitions from GNU
+'zero-length-array' extension to the C-standard-defined flexible array
+member. e.g.
+
+struct kvm_msrs {
+        __u32 nmsrs; /* number of msrs in entries */
+        __u32 pad;
+
+-       struct kvm_msr_entry entries[0];
++       struct kvm_msr_entry entries[];
+};
+
+Those (unlike the GNU zero-length-array) have some extra restrictions like
+'this must be put at the end of a struct', which clang build would complain
+about. e.g. the current code
+
+struct {
+        struct kvm_msrs info;
+        struct kvm_msr_entry entries[1];
+} msr_data = { }
+
+generates the warning like:
+
+target/i386/kvm/kvm.c:2868:25: error: field 'info' with variable sized
+type 'struct kvm_msrs' not at the end of a struct or class is a GNU
+extension [-Werror,-Wgnu-variable-sized-type-not-at-end]
+        struct kvm_msrs info;
+                        ^
+In fact, the variable length 'entries[]' field in 'info' is zero-sized in
+GNU defined semantics, which can give predictable offset for 'entries[1]'
+in local msr_data. The local defined struct is just there to force a stack
+allocation large enough for 1 kvm_msr_entry, a clever trick but requires to
+turn off this clang warning.
+
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Chenyi Qiang <chenyi.qiang@intel.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Message-Id: <20220915091035.3897-2-chenyi.qiang@intel.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Li Zhang <lizhang@suse.de>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure b/configure
+index 72ab03f11aa344ffd73178ce9d77..144a6be2cc04978d3f0b307b3b1b 100755
+--- a/configure
++++ b/configure
+@@ -1258,6 +1258,7 @@ add_to nowarn_flags -Wno-string-plus-int
+ add_to nowarn_flags -Wno-typedef-redefinition
+ add_to nowarn_flags -Wno-tautological-type-limit-compare
+ add_to nowarn_flags -Wno-psabi
++add_to nowarn_flags -Wno-gnu-variable-sized-type-not-at-end
+ 
+ gcc_flags="$warn_flags $nowarn_flags"
+ 

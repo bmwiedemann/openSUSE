@@ -195,6 +195,14 @@ Patch00031:     meson-enforce-a-minimum-Linux-kernel-hea.patch
 Patch00032:     linux-user-drop-conditionals-for-obsolet.patch
 Patch00033:     block-io_uring-revert-Use-io_uring_regis.patch
 Patch00034:     pc-q35-Bump-max_cpus-to-1024.patch
+Patch00035:     configure-Add-Wno-gnu-variable-sized-typ.patch
+Patch00036:     Update-linux-headers-to-v6.0-rc4.patch
+Patch00037:     s390x-pci-add-routine-to-get-host-functi.patch
+Patch00038:     s390x-pci-enable-for-load-store-interpre.patch
+Patch00039:     s390x-pci-don-t-fence-interpreted-device.patch
+Patch00040:     s390x-pci-enable-adapter-event-notificat.patch
+Patch00041:     s390x-pci-let-intercept-devices-have-sep.patch
+Patch00042:     s390x-pci-reflect-proper-maxstbl-for-gro.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-switch-to-python3-as-needed.patch
 Patch01001:     enable-cross-compilation-on-ARM.patch
@@ -228,10 +236,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies exclusive to qemu-linux-user
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
+BuildRequires:  (pcre-devel-static if glib2-devel-static < 2.73 else pcre2-devel-static)
 # passing filelist check for /usr/lib/binfmt.d
 BuildRequires:  systemd
 BuildRequires:  zlib-devel-static
-BuildRequires:  (pcre-devel-static if glib2-devel-static < 2.73 else pcre2-devel-static)
 # we must not install the qemu-linux-user package when under QEMU build
 %if 0%{?qemu_user_space_build:1}
 #!BuildIgnore:  post-build-checks
@@ -1574,14 +1582,13 @@ Conflicts:      %name < 1.6.0
 SeaBIOS is an open source implementation of a 16bit x86 BIOS. SeaBIOS
 is the default and legacy BIOS for QEMU.
 
-%files seabios -f roms/seabios/docs/docs.txt
+%files seabios
 %defattr(-, root, root)
 %dir %_datadir/%name
 %_datadir/%name/bios.bin
 %_datadir/%name/bios-256k.bin
 %_datadir/%name/firmware/50-seabios-256k.json
 %_datadir/%name/firmware/60-seabios-128k.json
-%license  roms/seabios/COPYING
 
 %package vgabios
 Summary:        VGA BIOSes for QEMU
@@ -1622,10 +1629,11 @@ The Google Serial Graphics Adapter BIOS or SGABIOS provides a means for legacy
 x86 software to communicate with an attached serial console as if a video card
 were attached. For use with QEMU.
 
-%files sgabios
+%files sgabios -f roms/seabios/docs/docs.txt
 %defattr(-, root, root)
 %dir %_datadir/%name
 %_datadir/%name/sgabios.bin
+%license  roms/seabios/COPYING
 
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
@@ -2183,7 +2191,7 @@ done
 
 # End of the build for qemu
 %endif
-wait $seabios_docs_pid
+wait "${seabios_docs_pid}"
 
 %install
 cd %blddir
