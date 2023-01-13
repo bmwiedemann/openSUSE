@@ -37,13 +37,12 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules used in HPC
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.7.15
+Version:        8.7.17
 Release:        0
 URL:            https://github.com/TACC/Lmod
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
 Patch1:         Messages-Remove-message-about-creating-a-consulting-ticket.patch
 Patch2:         Doc-Ugly-workaround-for-bug-in-Sphinx.patch
-Patch100:       issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch
 
 BuildRequires:  bc
 BuildRequires:  lua >= %{lua_version}
@@ -133,7 +132,6 @@ Documentation (pdf) for the Lmod Environment Modules System.
 %if 0%{?sle_version:1} && 0%{?sle_version} < 150000
 %patch2 -p1
 %endif
-%patch100 -p1
 
 %build
 %if 0%{!?build_pdf:1}

@@ -410,4 +410,24 @@
   provided with this package. (forwarded request 1058035 from eeich)</comment>
     <requestid>1058036</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d18f62022e577f1124e606a94582a4b2</srcmd5>
+    <version>8.7.17</version>
+    <time>1673651001</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.7.15:
+  * Issue #619: Do not source lmod_bash_aliases when $POSIXLY_CORRECT is set
+    (by bash --posix)
+  * Issue #620: Dynamically set shell name inside Lmod instead of init/bash.in
+  * Added debugging stmts to track down issue when adding loop in MODULEPATH
+    when doing a spider.
+  * Zsh now gets /path/to/ksh_scripts if KSH_SUPPORT is yes.
+  * Issue #620: Honor shell name on command line.  Use &quot;shell&quot;
+    when Lmod gets to decide.
+  * Fix bug in keyword terse output: Add newline on final entry (Created
+    in Lmod 8.4.18).
+- Obsoletes:
+  issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch (forwarded request 1058224 from eeich)</comment>
+    <requestid>1058225</requestid>
+  </revision>
 </revisionlist>

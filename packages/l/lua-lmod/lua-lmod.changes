@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 13 06:07:14 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Updated to version 8.7.15:
+  * Issue #619: Do not source lmod_bash_aliases when $POSIXLY_CORRECT is set
+    (by bash --posix)
+  * Issue #620: Dynamically set shell name inside Lmod instead of init/bash.in
+  * Added debugging stmts to track down issue when adding loop in MODULEPATH
+    when doing a spider.
+  * Zsh now gets /path/to/ksh_scripts if KSH_SUPPORT is yes.
+  * Issue #620: Honor shell name on command line.  Use "shell"
+    when Lmod gets to decide.
+  * Fix bug in keyword terse output: Add newline on final entry (Created
+    in Lmod 8.4.18).
+- Obsoletes:
+  issue-620-Delay-setting-of-LMOD_SHELL_PRGM-until-module-is-actually-called.patch
+
+-------------------------------------------------------------------
 Thu Jan 12 13:22:34 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Changing description to make it more clear to users what this tool
