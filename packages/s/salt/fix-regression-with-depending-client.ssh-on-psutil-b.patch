@@ -1,4 +1,4 @@
-From 0c4a71224d49e778b4a2c683c63de52a0876de69 Mon Sep 17 00:00:00 2001
+From 6e0e6c26f4ec0955b55937ae3b58ca485b99facd Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Tue, 12 Apr 2022 10:08:17 +0300
 Subject: [PATCH] Fix regression with depending client.ssh on psutil
@@ -9,7 +9,7 @@ Subject: [PATCH] Fix regression with depending client.ssh on psutil
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 6d24d8d716..396f9457f2 100644
+index fe1213b723..1b76a38e0b 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
 @@ -12,7 +12,6 @@ import hashlib
@@ -20,7 +20,7 @@ index 6d24d8d716..396f9457f2 100644
  import queue
  import re
  import shlex
-@@ -407,6 +406,16 @@ class SSH:
+@@ -420,6 +419,16 @@ class SSH(MultiprocessingStateMixin):
                              self.__parsed_rosters[self.ROSTER_UPDATE_FLAG] = False
                              return
  
@@ -37,7 +37,7 @@ index 6d24d8d716..396f9457f2 100644
      def _update_roster(self, hostname=None, user=None):
          """
          Update default flat roster with the passed in information.
-@@ -626,7 +635,8 @@ class SSH:
+@@ -639,7 +648,8 @@ class SSH(MultiprocessingStateMixin):
                              pid_running = (
                                  False
                                  if cached_session["pid"] == 0
@@ -48,6 +48,6 @@ index 6d24d8d716..396f9457f2 100644
                              if (
                                  pid_running and prev_session_running < self.max_pid_wait
 -- 
-2.35.1
+2.37.3
 
 

@@ -1,4 +1,4 @@
-From b4945a0608b3d8996e8b5593dcc458c15b11d6ba Mon Sep 17 00:00:00 2001
+From 3f1b1180ba34e9ab3a4453248c733f11aa193f1b Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <Victor.Zhestkov@suse.com>
 Date: Wed, 14 Sep 2022 14:57:29 +0300
 Subject: [PATCH] Ignore non utf8 characters while reading files with
@@ -32,10 +32,10 @@ index 0000000000..1ab74f9122
 @@ -0,0 +1 @@
 +Prevent possible tracebacks in core grains module by ignoring non utf8 characters in /proc/1/environ, /proc/1/cmdline, /proc/cmdline
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 9530a43fc5..b543144da2 100644
+index 047c33ffd3..76f3767ddf 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -1093,7 +1093,9 @@ def _virtual(osdata):
+@@ -1089,7 +1089,9 @@ def _virtual(osdata):
          if ("virtual_subtype" not in grains) or (grains["virtual_subtype"] != "LXC"):
              if os.path.isfile("/proc/1/environ"):
                  try:
@@ -46,7 +46,7 @@ index 9530a43fc5..b543144da2 100644
                          fhr_contents = fhr.read()
                      if "container=lxc" in fhr_contents:
                          grains["virtual"] = "container"
-@@ -1911,7 +1913,9 @@ def os_data():
+@@ -1909,7 +1911,9 @@ def os_data():
              grains["init"] = "systemd"
          except OSError:
              try:
@@ -57,7 +57,7 @@ index 9530a43fc5..b543144da2 100644
                      init_cmdline = fhr.read().replace("\x00", " ").split()
              except OSError:
                  pass
-@@ -3160,7 +3164,9 @@ def kernelparams():
+@@ -3154,7 +3158,9 @@ def kernelparams():
          return {}
      else:
          try:
@@ -69,7 +69,7 @@ index 9530a43fc5..b543144da2 100644
                  grains = {"kernelparams": []}
                  for data in [
 diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
-index 84dd97d62f..e640a07f76 100644
+index 7c4ea1f17f..c06cdb2db0 100644
 --- a/tests/pytests/unit/grains/test_core.py
 +++ b/tests/pytests/unit/grains/test_core.py
 @@ -11,6 +11,7 @@ import os
@@ -80,7 +80,7 @@ index 84dd97d62f..e640a07f76 100644
  import textwrap
  from collections import namedtuple
  
-@@ -2635,6 +2636,38 @@ def test_kernelparams_return_linux(cmdline, expectation):
+@@ -2738,6 +2739,38 @@ def test_kernelparams_return_linux(cmdline, expectation):
          assert core.kernelparams() == expectation
  
  
@@ -119,7 +119,7 @@ index 84dd97d62f..e640a07f76 100644
  def test_linux_gpus():
      """
      Test GPU detection on Linux systems
-@@ -2837,3 +2870,88 @@ def test_virtual_set_virtual_ec2():
+@@ -2940,3 +2973,88 @@ def test_virtual_set_virtual_ec2():
  
          assert virtual_grains["virtual"] == "kvm"
          assert "virtual_subtype" not in virtual_grains
@@ -210,4 +210,5 @@ index 84dd97d62f..e640a07f76 100644
 +            assert virt_grains == {"virtual": "physical"}
 -- 
 2.37.3
+
 

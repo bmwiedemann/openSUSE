@@ -1,4 +1,4 @@
-From e0b91c626c10b29d328fa92415393cd57bb4c962 Mon Sep 17 00:00:00 2001
+From d97cbae7eb3cb0030d355a4ae3fb35745fed5da0 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 21 Sep 2018 17:31:39 +0200
 Subject: [PATCH] Do not load pip state if there is no 3rd party
@@ -10,7 +10,7 @@ Safe import 3rd party dependency
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/pip.py b/salt/modules/pip.py
-index f68cafaeaf..14cfafed4b 100644
+index 7135a9145f..da26416662 100644
 --- a/salt/modules/pip.py
 +++ b/salt/modules/pip.py
 @@ -96,6 +96,12 @@ import salt.utils.url
@@ -26,7 +26,7 @@ index f68cafaeaf..14cfafed4b 100644
  # This needs to be named logger so we don't shadow it in pip.install
  logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
  
-@@ -113,7 +119,12 @@ def __virtual__():
+@@ -114,7 +120,12 @@ def __virtual__():
      entire filesystem.  If it's not installed in a conventional location, the
      user is required to provide the location of pip each time it is used.
      """
@@ -41,6 +41,6 @@ index f68cafaeaf..14cfafed4b 100644
  
  def _pip_bin_env(cwd, bin_env):
 -- 
-2.33.0
+2.37.3
 
 

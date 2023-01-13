@@ -1,9 +1,8 @@
-From 6c1c81aba71711632a14b725426077f9183065e9 Mon Sep 17 00:00:00 2001
+From 7d5b1d2178d0573f137b9481ded85419a36998ff Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 6 Oct 2022 10:55:50 +0100
-Subject: [PATCH] fopen: Workaround bad buffering for binary mode
- (#563)
+Subject: [PATCH] fopen: Workaround bad buffering for binary mode (#563)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

@@ -1,0 +1,151 @@
+From 6dc653b0cf8e6e043e13bea7009ded604ceb7b71 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 12 Jan 2023 15:43:56 +0000
+Subject: [PATCH] Allow entrypoint compatibility for
+ importlib-metadata>=5.0.0 (#572)
+
+add tests and make sure the compat code is in an else :)
+
+changelog
+
+switch to try/except
+
+Co-authored-by: MKLeb <calebb@vmware.com>
+---
+ changelog/62854.fixed                         |  1 +
+ salt/utils/entrypoints.py                     | 15 +++--
+ .../pytests/functional/loader/test_loader.py  | 67 +++++++++++++++++--
+ 3 files changed, 74 insertions(+), 9 deletions(-)
+ create mode 100644 changelog/62854.fixed
+
+diff --git a/changelog/62854.fixed b/changelog/62854.fixed
+new file mode 100644
+index 0000000000..13e6df4fe3
+--- /dev/null
++++ b/changelog/62854.fixed
+@@ -0,0 +1 @@
++Use select instead of iterating over entrypoints as a dictionary for importlib_metadata>=5.0.0
+diff --git a/salt/utils/entrypoints.py b/salt/utils/entrypoints.py
+index 3effa0b494..9452878ade 100644
+--- a/salt/utils/entrypoints.py
++++ b/salt/utils/entrypoints.py
+@@ -38,13 +38,20 @@ def iter_entry_points(group, name=None):
+     entry_points_listing = []
+     entry_points = importlib_metadata.entry_points()
+ 
+-    for entry_point_group, entry_points_list in entry_points.items():
+-        if entry_point_group != group:
+-            continue
+-        for entry_point in entry_points_list:
++    try:
++        for entry_point in entry_points.select(group=group):
+             if name is not None and entry_point.name != name:
+                 continue
+             entry_points_listing.append(entry_point)
++    except AttributeError:
++        # importlib-metadata<5.0.0
++        for entry_point_group, entry_points_list in entry_points.items():
++            if entry_point_group != group:
++                continue
++            for entry_point in entry_points_list:
++                if name is not None and entry_point.name != name:
++                    continue
++                entry_points_listing.append(entry_point)
+ 
+     return entry_points_listing
+ 
+diff --git a/tests/pytests/functional/loader/test_loader.py b/tests/pytests/functional/loader/test_loader.py
+index 6dfd97b0e6..a13d90d5eb 100644
+--- a/tests/pytests/functional/loader/test_loader.py
++++ b/tests/pytests/functional/loader/test_loader.py
+@@ -1,5 +1,4 @@
+ import json
+-import sys
+ 
+ import pytest
+ import salt.utils.versions
+@@ -143,10 +142,6 @@ def test_utils_loader_does_not_load_extensions(
+     assert "foobar.echo" not in loader_functions
+ 
+ 
+-@pytest.mark.skipif(
+-    sys.version_info < (3, 6),
+-    reason="importlib-metadata>=3.3.0 does not exist for Py3.5",
+-)
+ def test_extension_discovery_without_reload_with_importlib_metadata_installed(
+     venv, salt_extension, salt_minion_factory
+ ):
+@@ -209,6 +204,68 @@ def test_extension_discovery_without_reload_with_importlib_metadata_installed(
+     assert "foobar.echo2" in loader_functions
+ 
+ 
++def test_extension_discovery_without_reload_with_importlib_metadata_5_installed(
++    venv, salt_extension, salt_minion_factory
++):
++    # Install our extension into the virtualenv
++    installed_packages = venv.get_installed_packages()
++    assert salt_extension.name not in installed_packages
++    venv.install("importlib-metadata>=3.3.0")
++    code = """
++    import sys
++    import json
++    import subprocess
++    import salt._logging
++    import salt.loader
++
++    extension_path = "{}"
++
++    minion_config = json.loads(sys.stdin.read())
++    salt._logging.set_logging_options_dict(minion_config)
++    salt._logging.setup_logging()
++    loader = salt.loader.minion_mods(minion_config)
++
++    if "foobar.echo1" in loader:
++        sys.exit(1)
++
++    # Install the extension
++    proc = subprocess.run(
++        [sys.executable, "-m", "pip", "install", extension_path],
++        check=False,
++        shell=False,
++        stdout=subprocess.PIPE,
++    )
++    if proc.returncode != 0:
++        sys.exit(2)
++
++    loader = salt.loader.minion_mods(minion_config)
++    if "foobar.echo1" not in loader:
++        sys.exit(3)
++
++    print(json.dumps(list(loader)))
++    """.format(
++        salt_extension.srcdir
++    )
++    ret = venv.run_code(
++        code, input=json.dumps(salt_minion_factory.config.copy()), check=False
++    )
++    # Exitcode 1 - Extension was already installed
++    # Exitcode 2 - Failed to install the extension
++    # Exitcode 3 - Extension was not found within the same python process after being installed
++    assert ret.returncode == 0
++    installed_packages = venv.get_installed_packages()
++    assert salt_extension.name in installed_packages
++
++    loader_functions = json.loads(ret.stdout)
++
++    # A non existing module should not appear in the loader
++    assert "monty.python" not in loader_functions
++
++    # But our extension's modules should appear on the loader
++    assert "foobar.echo1" in loader_functions
++    assert "foobar.echo2" in loader_functions
++
++
+ def test_extension_discovery_without_reload_with_bundled_importlib_metadata(
+     venv, salt_extension, salt_minion_factory
+ ):
+-- 
+2.37.3
+
+

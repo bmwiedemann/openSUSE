@@ -1,4 +1,4 @@
-From 435d9fbee299b06e1c58cdc0574b6a1975841879 Mon Sep 17 00:00:00 2001
+From f348f291093ea3f7c841b03a975ae81b40963842 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Wed, 25 Nov 2020 15:09:41 +0300
 Subject: [PATCH] Fix salt.utils.stringutils.to_str calls to make it
@@ -10,10 +10,10 @@ Subject: [PATCH] Fix salt.utils.stringutils.to_str calls to make it
  2 files changed, 19 insertions(+), 8 deletions(-)
 
 diff --git a/salt/modules/file.py b/salt/modules/file.py
-index b830b390d3..b9744393d7 100644
+index d475e3c2e3..d3de4da467 100644
 --- a/salt/modules/file.py
 +++ b/salt/modules/file.py
-@@ -4970,6 +4970,12 @@ def check_perms(
+@@ -5036,6 +5036,12 @@ def check_perms(
      is_dir = os.path.isdir(name)
      is_link = os.path.islink(name)
  
@@ -26,7 +26,7 @@ index b830b390d3..b9744393d7 100644
      # user/group changes if needed, then check if it worked
      if user:
          if isinstance(user, int):
-@@ -4979,7 +4985,7 @@ def check_perms(
+@@ -5045,7 +5051,7 @@ def check_perms(
              and user_to_uid(user) != user_to_uid(perms["luser"])
          ) or (
              not salt.utils.platform.is_windows()
@@ -35,7 +35,7 @@ index b830b390d3..b9744393d7 100644
          ):
              perms["cuser"] = user
  
-@@ -4991,7 +4997,7 @@ def check_perms(
+@@ -5057,7 +5063,7 @@ def check_perms(
              and group_to_gid(group) != group_to_gid(perms["lgroup"])
          ) or (
              not salt.utils.platform.is_windows()
@@ -44,7 +44,7 @@ index b830b390d3..b9744393d7 100644
          ):
              perms["cgroup"] = group
  
-@@ -5023,8 +5029,7 @@ def check_perms(
+@@ -5089,8 +5095,7 @@ def check_perms(
              and user != ""
          ) or (
              not salt.utils.platform.is_windows()
@@ -54,7 +54,7 @@ index b830b390d3..b9744393d7 100644
              and user != ""
          ):
              if __opts__["test"] is True:
-@@ -5045,8 +5050,7 @@ def check_perms(
+@@ -5111,8 +5116,7 @@ def check_perms(
              and group != ""
          ) or (
              not salt.utils.platform.is_windows()
@@ -65,10 +65,10 @@ index b830b390d3..b9744393d7 100644
          ):
              if __opts__["test"] is True:
 diff --git a/salt/states/file.py b/salt/states/file.py
-index 89c70eb454..fd8ffde757 100644
+index 50ceef1158..1083bb46d6 100644
 --- a/salt/states/file.py
 +++ b/salt/states/file.py
-@@ -989,15 +989,22 @@ def _check_dir_meta(name, user, group, mode, follow_symlinks=False):
+@@ -863,15 +863,22 @@ def _check_dir_meta(name, user, group, mode, follow_symlinks=False):
      if not stats:
          changes["directory"] = "new"
          return changes
@@ -94,6 +94,6 @@ index 89c70eb454..fd8ffde757 100644
      ):
          changes["group"] = group
 -- 
-2.29.2
+2.37.3
 
 

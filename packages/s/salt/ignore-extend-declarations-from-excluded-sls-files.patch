@@ -1,0 +1,250 @@
+From e4aff9ca68ce142c87ec875846d8916b9df8e6c5 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Fri, 21 Oct 2022 14:39:52 +0200
+Subject: [PATCH] Ignore extend declarations from excluded sls files
+
+* Use both test sls files
+
+(cherry picked from commit 3cb5f5a14ff68d0bd809a4adba7d820534d0f7c7)
+
+* Test that excluded sls files can't extend others
+
+(cherry picked from commit e91c1a608b3c016b2c30bf324e969cd097ddf776)
+
+* Ignore extend declarations from excluded sls files
+
+sls files that are excluded should not affect other sls files by
+extending their states. Exclude statements are processed very late in
+the state processing pipeline to ensure they are not overridden. By that
+time, extend declarations are already processed.
+
+Luckily, it's not necessary to change much, during the extend
+declarations processing it is easy to check if the sls file that
+contains a given extend declaration is excluded.
+
+(cherry picked from commit 856b23c45dd3be78d8879a0b0c4aa6356afea3cf)
+---
+ changelog/62082.fixed                         |   1 +
+ salt/state.py                                 |  19 +++
+ .../unit/state/test_state_highstate.py        | 152 +++++++++++++++++-
+ 3 files changed, 171 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/62082.fixed
+
+diff --git a/changelog/62082.fixed b/changelog/62082.fixed
+new file mode 100644
+index 0000000000..02e5f5ff40
+--- /dev/null
++++ b/changelog/62082.fixed
+@@ -0,0 +1 @@
++Ignore extend declarations in sls files that are excluded.
+diff --git a/salt/state.py b/salt/state.py
+index 316dcdec63..f5579fbb69 100644
+--- a/salt/state.py
++++ b/salt/state.py
+@@ -1680,6 +1680,25 @@ class State:
+                     else:
+                         name = ids[0][0]
+ 
++                sls_excludes = []
++                # excluded sls are plain list items or dicts with an "sls" key
++                for exclude in high.get("__exclude__", []):
++                    if isinstance(exclude, str):
++                        sls_excludes.append(exclude)
++                    elif exclude.get("sls"):
++                        sls_excludes.append(exclude["sls"])
++
++                if body.get("__sls__") in sls_excludes:
++                    log.debug(
++                        "Cannot extend ID '%s' in '%s:%s' because '%s:%s' is excluded.",
++                        name,
++                        body.get("__env__", "base"),
++                        body.get("__sls__", "base"),
++                        body.get("__env__", "base"),
++                        body.get("__sls__", "base"),
++                    )
++                    continue
++
+                 for state, run in body.items():
+                     if state.startswith("__"):
+                         continue
+diff --git a/tests/pytests/unit/state/test_state_highstate.py b/tests/pytests/unit/state/test_state_highstate.py
+index 059f83fd9f..7c72cc8e09 100644
+--- a/tests/pytests/unit/state/test_state_highstate.py
++++ b/tests/pytests/unit/state/test_state_highstate.py
+@@ -3,9 +3,11 @@
+ """
+ 
+ import logging
++import textwrap
+ 
+ import pytest  # pylint: disable=unused-import
+ import salt.state
++from salt.utils.odict import OrderedDict
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -180,7 +182,7 @@ def test_find_sls_ids_with_exclude(highstate, state_tree_dir):
+         with pytest.helpers.temp_file(
+             "slsfile1.sls", slsfile1, sls_dir
+         ), pytest.helpers.temp_file(
+-            "slsfile1.sls", slsfile1, sls_dir
++            "slsfile2.sls", slsfile2, sls_dir
+         ), pytest.helpers.temp_file(
+             "stateB.sls", stateB, sls_dir
+         ), pytest.helpers.temp_file(
+@@ -196,3 +198,151 @@ def test_find_sls_ids_with_exclude(highstate, state_tree_dir):
+             high, _ = highstate.render_highstate(matches)
+             ret = salt.state.find_sls_ids("issue-47182.stateA.newer", high)
+             assert ret == [("somestuff", "cmd")]
++
++
++def test_dont_extend_in_excluded_sls_file(highstate, state_tree_dir):
++    """
++    See https://github.com/saltstack/salt/issues/62082#issuecomment-1245461333
++    """
++    top_sls = textwrap.dedent(
++        """\
++        base:
++          '*':
++            - test1
++            - exclude
++        """
++    )
++    exclude_sls = textwrap.dedent(
++        """\
++       exclude:
++         - sls: test2
++       """
++    )
++    test1_sls = textwrap.dedent(
++        """\
++       include:
++         - test2
++
++       test1:
++         cmd.run:
++           - name: echo test1
++       """
++    )
++    test2_sls = textwrap.dedent(
++        """\
++        extend:
++          test1:
++            cmd.run:
++              - name: echo "override test1 in test2"
++
++        test2-id:
++          cmd.run:
++            - name: echo test2
++        """
++    )
++    sls_dir = str(state_tree_dir)
++    with pytest.helpers.temp_file(
++        "top.sls", top_sls, sls_dir
++    ), pytest.helpers.temp_file(
++        "test1.sls", test1_sls, sls_dir
++    ), pytest.helpers.temp_file(
++        "test2.sls", test2_sls, sls_dir
++    ), pytest.helpers.temp_file(
++        "exclude.sls", exclude_sls, sls_dir
++    ):
++        # manually compile the high data, error checking is not needed in this
++        # test case.
++        top = highstate.get_top()
++        matches = highstate.top_matches(top)
++        high, _ = highstate.render_highstate(matches)
++
++        # high is mutated by call_high and the different "pipeline steps"
++        assert high == OrderedDict(
++            [
++                (
++                    "__extend__",
++                    [
++                        {
++                            "test1": OrderedDict(
++                                [
++                                    ("__sls__", "test2"),
++                                    ("__env__", "base"),
++                                    (
++                                        "cmd",
++                                        [
++                                            OrderedDict(
++                                                [
++                                                    (
++                                                        "name",
++                                                        'echo "override test1 in test2"',
++                                                    )
++                                                ]
++                                            ),
++                                            "run",
++                                        ],
++                                    ),
++                                ]
++                            )
++                        }
++                    ],
++                ),
++                (
++                    "test1",
++                    OrderedDict(
++                        [
++                            (
++                                "cmd",
++                                [
++                                    OrderedDict([("name", "echo test1")]),
++                                    "run",
++                                    {"order": 10001},
++                                ],
++                            ),
++                            ("__sls__", "test1"),
++                            ("__env__", "base"),
++                        ]
++                    ),
++                ),
++                (
++                    "test2-id",
++                    OrderedDict(
++                        [
++                            (
++                                "cmd",
++                                [
++                                    OrderedDict([("name", "echo test2")]),
++                                    "run",
++                                    {"order": 10000},
++                                ],
++                            ),
++                            ("__sls__", "test2"),
++                            ("__env__", "base"),
++                        ]
++                    ),
++                ),
++                ("__exclude__", [OrderedDict([("sls", "test2")])]),
++            ]
++        )
++        highstate.state.call_high(high)
++        # assert that the extend declaration was not applied
++        assert high == OrderedDict(
++            [
++                (
++                    "test1",
++                    OrderedDict(
++                        [
++                            (
++                                "cmd",
++                                [
++                                    OrderedDict([("name", "echo test1")]),
++                                    "run",
++                                    {"order": 10001},
++                                ],
++                            ),
++                            ("__sls__", "test1"),
++                            ("__env__", "base"),
++                        ]
++                    ),
++                )
++            ]
++        )
+-- 
+2.37.3
+
+

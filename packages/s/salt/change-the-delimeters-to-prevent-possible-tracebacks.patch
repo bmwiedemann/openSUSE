@@ -1,8 +1,8 @@
-From e28385eb37932809a11ec81c81834a51e094f507 Mon Sep 17 00:00:00 2001
+From e011015f0eaa8e6453b57c208ab2a43a15824e36 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <Victor.Zhestkov@suse.com>
 Date: Thu, 1 Sep 2022 14:42:24 +0300
-Subject: [PATCH] Change the delimeters to prevent possible tracebacks
- on some packages with dpkg_lowpkg
+Subject: [PATCH] Change the delimeters to prevent possible tracebacks on
+ some packages with dpkg_lowpkg
 
 * Use another separator on query to dpkg-query
 
@@ -75,6 +75,6 @@ index d00fc46c66..a97519f489 100644
                  ),
              }
 -- 
-2.37.2
+2.37.3
 
 

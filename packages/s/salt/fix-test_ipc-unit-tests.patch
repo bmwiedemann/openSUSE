@@ -1,4 +1,4 @@
-From 61d9b5e4ceaa0f5feb7fc364c9089cb624006812 Mon Sep 17 00:00:00 2001
+From 4cc528dadfbffdeb90df41bbd848d0c2c7efec78 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 12 Jul 2022 14:02:58 +0200
 Subject: [PATCH] Fix test_ipc unit tests
@@ -8,10 +8,10 @@ Subject: [PATCH] Fix test_ipc unit tests
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/tests/unit/transport/test_ipc.py b/tests/unit/transport/test_ipc.py
-index 79b49f9406..7177b7f6c4 100644
+index 4a0a7c29e2..af001d9650 100644
 --- a/tests/unit/transport/test_ipc.py
 +++ b/tests/unit/transport/test_ipc.py
-@@ -107,8 +107,8 @@ class IPCMessagePubSubCase(salt.ext.tornado.testing.AsyncTestCase):
+@@ -105,8 +105,8 @@ class IPCMessagePubSubCase(salt.ext.tornado.testing.AsyncTestCase):
                  self.stop()
  
          # Now let both waiting data at once
@@ -22,7 +22,7 @@ index 79b49f9406..7177b7f6c4 100644
          self.pub_channel.publish("TEST")
          self.wait()
          self.assertEqual(len(call_cnt), 2)
-@@ -150,7 +150,7 @@ class IPCMessagePubSubCase(salt.ext.tornado.testing.AsyncTestCase):
+@@ -148,7 +148,7 @@ class IPCMessagePubSubCase(salt.ext.tornado.testing.AsyncTestCase):
              pass
  
          try:
@@ -32,6 +32,6 @@ index 79b49f9406..7177b7f6c4 100644
          except StreamClosedError as ex:
              assert False, "StreamClosedError was raised inside the Future"
 -- 
-2.36.1
+2.37.3
 
 

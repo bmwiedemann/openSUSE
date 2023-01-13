@@ -1,4 +1,4 @@
-From 7720401d74ed6eafe860aab297aee0c8e22bc00f Mon Sep 17 00:00:00 2001
+From 8cd50907edeb4a1128681c30e52b2b30cf7f937d Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 25 Jan 2022 17:08:57 +0100
 Subject: [PATCH] Debian info_installed compatibility (#50453)
@@ -61,10 +61,10 @@ https://github.com/openSUSE/salt/commit/d0ef24d113bdaaa29f180031b5da384cffe08c64
  3 files changed, 166 insertions(+), 18 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 8d9f1b9f52..3c3fbf4970 100644
+index 0cbd611b71..4a2281c47f 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -3035,6 +3035,15 @@ def info_installed(*names, **kwargs):
+@@ -3458,6 +3458,15 @@ def info_installed(*names, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -80,7 +80,7 @@ index 8d9f1b9f52..3c3fbf4970 100644
      CLI Example:
  
      .. code-block:: bash
-@@ -3045,11 +3054,19 @@ def info_installed(*names, **kwargs):
+@@ -3468,11 +3477,19 @@ def info_installed(*names, **kwargs):
      """
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
      failhard = kwargs.pop("failhard", True)
@@ -101,7 +101,7 @@ index 8d9f1b9f52..3c3fbf4970 100644
          t_nfo = dict()
          if pkg_nfo.get("status", "ii")[1] != "i":
              continue  # return only packages that are really installed
-@@ -3070,7 +3087,10 @@ def info_installed(*names, **kwargs):
+@@ -3493,7 +3510,10 @@ def info_installed(*names, **kwargs):
              else:
                  t_nfo[key] = value
  
@@ -281,10 +281,10 @@ index 6a88573a8f..afbd619490 100644
  
      return ret
 diff --git a/tests/pytests/unit/modules/test_aptpkg.py b/tests/pytests/unit/modules/test_aptpkg.py
-index 6c5ed29848..51b7ffbe4d 100644
+index 6ef27e2d29..8e404a673c 100644
 --- a/tests/pytests/unit/modules/test_aptpkg.py
 +++ b/tests/pytests/unit/modules/test_aptpkg.py
-@@ -336,6 +336,58 @@ def test_info_installed(lowpkg_info_var):
+@@ -359,6 +359,58 @@ def test_info_installed(lowpkg_info_var):
          assert len(aptpkg.info_installed()) == 1
  
  
@@ -344,6 +344,6 @@ index 6c5ed29848..51b7ffbe4d 100644
      """
      Test - Return the name of the package that owns the file.
 -- 
-2.34.1
+2.37.3
 
 

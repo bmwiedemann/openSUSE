@@ -1,4 +1,4 @@
-From 82ceb569ea57fc14ff3e2fa1c3f7ef5b95bb5eb0 Mon Sep 17 00:00:00 2001
+From 97753443c2d782b61fd51457d13309405e8f12d8 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 18:40:40 +0100
 Subject: [PATCH] Add "migrated" state and GPG key management functions
@@ -20,7 +20,7 @@ same virtual package, based on the counterpart from rpm_lowpkg API.
 
 Convert test to pytests
 ---
- salt/modules/aptpkg.py                       |   7 +-
+ salt/modules/aptpkg.py                       |   4 +-
  salt/modules/rpm_lowpkg.py                   | 151 +++++++
  salt/modules/yumpkg.py                       |  88 ++++
  salt/modules/zypperpkg.py                    |  88 ++++
@@ -28,40 +28,37 @@ Convert test to pytests
  tests/pytests/unit/modules/test_yumpkg.py    |  44 +-
  tests/pytests/unit/modules/test_zypperpkg.py |  45 +-
  tests/pytests/unit/states/test_pkgrepo.py    | 448 +++++++++++++++++++
- 8 files changed, 1073 insertions(+), 5 deletions(-)
+ 8 files changed, 1071 insertions(+), 4 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 0d378355ab..558033c931 100644
+index 544143d286..21ccc2a73c 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2036,7 +2036,7 @@ def _convert_if_int(value):
-     return value
- 
- 
--def get_repo_keys():
-+def get_repo_keys(**kwargs):
-     """
-     .. versionadded:: 2017.7.0
- 
-@@ -2118,7 +2118,9 @@ def get_repo_keys():
+@@ -2211,7 +2211,7 @@ def _parse_repo_keys_output(cmd_ret):
      return ret
  
  
--def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv="base"):
-+def add_repo_key(
-+    path=None, text=None, keyserver=None, keyid=None, saltenv="base", **kwargs
-+):
+-def get_repo_keys(aptkey=True, keydir=None):
++def get_repo_keys(aptkey=True, keydir=None, **kwargs):
      """
      .. versionadded:: 2017.7.0
  
-@@ -2144,7 +2146,6 @@ def add_repo_key(path=None, text=None, keyserver=None, keyid=None, saltenv="base
-         salt '*' pkg.add_repo_key keyserver='keyserver.example' keyid='0000AAAA'
+@@ -2319,6 +2319,7 @@ def add_repo_key(
+     aptkey=True,
+     keydir=None,
+     keyfile=None,
++    **kwargs
+ ):
      """
+     .. versionadded:: 2017.7.0
+@@ -2372,7 +2373,6 @@ def add_repo_key(
+     if not salt.utils.path.which("apt-key"):
+         aptkey = False
      cmd = ["apt-key"]
 -    kwargs = {}
  
-     current_repo_keys = get_repo_keys()
- 
+     # If the keyid is provided or determined, check it against the existing
+     # repo key ids to determine whether it needs to be imported.
 diff --git a/salt/modules/rpm_lowpkg.py b/salt/modules/rpm_lowpkg.py
 index d65a46a703..c8e984c021 100644
 --- a/salt/modules/rpm_lowpkg.py
@@ -222,10 +219,10 @@ index d65a46a703..c8e984c021 100644
 +    cmd.extend(["-e", key])
 +    return __salt__["cmd.retcode"](cmd) == 0
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index 8d089c6aa4..9737508377 100644
+index 08dccafceb..46f0b1f613 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -3471,3 +3471,91 @@ def services_need_restart(**kwargs):
+@@ -3494,3 +3494,91 @@ def services_need_restart(**kwargs):
                  services.add(service)
  
      return list(services)
@@ -318,10 +315,10 @@ index 8d089c6aa4..9737508377 100644
 +    """
 +    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 43c4e91109..4fc045c313 100644
+index c2452d6dec..4e3006a8cd 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -3134,3 +3134,91 @@ def services_need_restart(root=None, **kwargs):
+@@ -3142,3 +3142,91 @@ def services_need_restart(root=None, **kwargs):
      services = zypper_output.split()
  
      return services
@@ -414,10 +411,10 @@ index 43c4e91109..4fc045c313 100644
 +    """
 +    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
 diff --git a/salt/states/pkgrepo.py b/salt/states/pkgrepo.py
-index f395dec1ed..00d3cbfcd8 100644
+index 358c927695..a777fe4a96 100644
 --- a/salt/states/pkgrepo.py
 +++ b/salt/states/pkgrepo.py
-@@ -85,6 +85,7 @@ package managers are APT, DNF, YUM and Zypper. Here is some example SLS:
+@@ -118,6 +118,7 @@ Using ``aptkey: False`` with ``keyserver`` and ``keyid``:
  """
  
  
@@ -425,7 +422,7 @@ index f395dec1ed..00d3cbfcd8 100644
  import sys
  
  import salt.utils.data
-@@ -672,3 +673,209 @@ def absent(name, **kwargs):
+@@ -714,3 +715,209 @@ def absent(name, **kwargs):
          ret["comment"] = "Failed to remove repo {}".format(name)
  
      return ret
@@ -636,7 +633,7 @@ index f395dec1ed..00d3cbfcd8 100644
 +
 +    return ret
 diff --git a/tests/pytests/unit/modules/test_yumpkg.py b/tests/pytests/unit/modules/test_yumpkg.py
-index ea8135bcef..475e1d6094 100644
+index 99ec05b990..a495569c5d 100644
 --- a/tests/pytests/unit/modules/test_yumpkg.py
 +++ b/tests/pytests/unit/modules/test_yumpkg.py
 @@ -7,7 +7,7 @@ import salt.modules.rpm_lowpkg as rpm
@@ -648,7 +645,7 @@ index ea8135bcef..475e1d6094 100644
  
  try:
      import pytest
-@@ -1849,6 +1849,48 @@ def test_get_repo_with_non_existent_repo(list_repos_var):
+@@ -1911,6 +1911,48 @@ def test_get_repo_with_non_existent_repo(list_repos_var):
      assert ret == expected, ret
  
  
@@ -698,7 +695,7 @@ index ea8135bcef..475e1d6094 100644
      """
      Tests that the proper CLI options are added when obsoletes=False
 diff --git a/tests/pytests/unit/modules/test_zypperpkg.py b/tests/pytests/unit/modules/test_zypperpkg.py
-index 4a0055e11c..eb1e63f6d7 100644
+index 70bd837c5f..351a173b81 100644
 --- a/tests/pytests/unit/modules/test_zypperpkg.py
 +++ b/tests/pytests/unit/modules/test_zypperpkg.py
 @@ -8,7 +8,8 @@ import os
@@ -711,10 +708,10 @@ index 4a0055e11c..eb1e63f6d7 100644
  
  
  @pytest.fixture
-@@ -78,3 +79,45 @@ def test_normalize_name():
-         assert result == "foo", result
-         result = zypper.normalize_name("foo.noarch")
-         assert result == "foo", result
+@@ -211,3 +212,45 @@ def test_pkg_list_holds():
+         ret = zypper.list_holds()
+         assert len(ret) == 1
+         assert "bar-2:2.3.4-2.1.*" in ret
 +
 +
 +def test_get_repo_keys():
@@ -1214,6 +1211,6 @@ index daa913bcc2..cbb12cfb9b 100644
 +            "comment": "There are keys or repositories to migrate or drop",
 +        }
 -- 
-2.34.1
+2.37.3
 
 

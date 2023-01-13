@@ -1,4 +1,4 @@
-From 77e90c4925a4268c5975cf1ce0bb0e4c457618c1 Mon Sep 17 00:00:00 2001
+From 1434a128559df8183c032af722dc3d187bda148a Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <Victor.Zhestkov@suse.com>
 Date: Thu, 1 Sep 2022 14:46:24 +0300
 Subject: [PATCH] Add Amazon EC2 detection for virtual grains
@@ -29,10 +29,10 @@ index 0000000000..5f402d61c2
 @@ -0,0 +1 @@
 +Implementation of Amazon EC2 instance detection and setting `virtual_subtype` grain accordingly including the product if possible to identify.
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index c5d996d1bb..9530a43fc5 100644
+index 23d8b8ea42..047c33ffd3 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -1173,6 +1173,24 @@ def _virtual(osdata):
+@@ -1171,6 +1171,24 @@ def _virtual(osdata):
      if grains.get("virtual_subtype") and grains["virtual"] == "physical":
          grains["virtual"] = "virtual"
  
@@ -58,10 +58,10 @@ index c5d996d1bb..9530a43fc5 100644
          log.info(
              "Although '%s' was found in path, the current user "
 diff --git a/salt/modules/cmdmod.py b/salt/modules/cmdmod.py
-index 61b328b13b..cd42e2cda0 100644
+index a26220718a..07b6e100d2 100644
 --- a/salt/modules/cmdmod.py
 +++ b/salt/modules/cmdmod.py
-@@ -907,6 +907,7 @@ def _run_quiet(
+@@ -932,6 +932,7 @@ def _run_quiet(
      success_retcodes=None,
      success_stdout=None,
      success_stderr=None,
@@ -69,7 +69,7 @@ index 61b328b13b..cd42e2cda0 100644
  ):
      """
      Helper for running commands quietly for minion startup
-@@ -933,6 +934,7 @@ def _run_quiet(
+@@ -958,6 +959,7 @@ def _run_quiet(
          success_retcodes=success_retcodes,
          success_stdout=success_stdout,
          success_stderr=success_stderr,
@@ -77,7 +77,7 @@ index 61b328b13b..cd42e2cda0 100644
      )["stdout"]
  
  
-@@ -955,6 +957,7 @@ def _run_all_quiet(
+@@ -980,6 +982,7 @@ def _run_all_quiet(
      success_retcodes=None,
      success_stdout=None,
      success_stderr=None,
@@ -85,7 +85,7 @@ index 61b328b13b..cd42e2cda0 100644
  ):
  
      """
-@@ -987,6 +990,7 @@ def _run_all_quiet(
+@@ -1012,6 +1015,7 @@ def _run_all_quiet(
          success_retcodes=success_retcodes,
          success_stdout=success_stdout,
          success_stderr=success_stderr,
@@ -94,10 +94,10 @@ index 61b328b13b..cd42e2cda0 100644
  
  
 diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
-index bc3947fa1b..84dd97d62f 100644
+index 5c43dbdb09..7c4ea1f17f 100644
 --- a/tests/pytests/unit/grains/test_core.py
 +++ b/tests/pytests/unit/grains/test_core.py
-@@ -2720,3 +2720,120 @@ def test_get_server_id():
+@@ -2823,3 +2823,120 @@ def test_get_server_id():
  
      with patch.dict(core.__opts__, {"id": "otherid"}):
          assert core.get_server_id() != expected
@@ -219,6 +219,6 @@ index bc3947fa1b..84dd97d62f 100644
 +        assert virtual_grains["virtual"] == "kvm"
 +        assert "virtual_subtype" not in virtual_grains
 -- 
-2.37.2
+2.37.3
 
 

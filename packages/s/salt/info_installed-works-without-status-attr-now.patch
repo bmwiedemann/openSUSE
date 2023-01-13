@@ -1,4 +1,4 @@
-From 3f8e937d938f19dd40fde527497f7775bbffe353 Mon Sep 17 00:00:00 2001
+From 55fc248aabd486f8ae4ff2bc755d653cdc39a4bb Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 25 Jan 2022 17:12:47 +0100
 Subject: [PATCH] info_installed works without status attr now
@@ -12,10 +12,10 @@ detect if a package was installed or not. Now info_installed adds the
  2 files changed, 27 insertions(+)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 3c3fbf4970..0d378355ab 100644
+index 4a2281c47f..544143d286 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -3056,6 +3056,15 @@ def info_installed(*names, **kwargs):
+@@ -3479,6 +3479,15 @@ def info_installed(*names, **kwargs):
      failhard = kwargs.pop("failhard", True)
      kwargs.pop("errors", None)  # Only for compatibility with RPM
      attr = kwargs.pop("attr", None)  # Package attributes to return
@@ -32,10 +32,10 @@ index 3c3fbf4970..0d378355ab 100644
          "all_versions", False
      )  # This is for backward compatible structure only
 diff --git a/tests/pytests/unit/modules/test_aptpkg.py b/tests/pytests/unit/modules/test_aptpkg.py
-index 51b7ffbe4d..8c64c8c9c1 100644
+index 8e404a673c..76b59d8604 100644
 --- a/tests/pytests/unit/modules/test_aptpkg.py
 +++ b/tests/pytests/unit/modules/test_aptpkg.py
-@@ -361,6 +361,24 @@ def test_info_installed_attr(lowpkg_info_var):
+@@ -384,6 +384,24 @@ def test_info_installed_attr(lowpkg_info_var):
          assert ret["wget"] == expected_pkg
  
  
@@ -61,6 +61,6 @@ index 51b7ffbe4d..8c64c8c9c1 100644
      """
      Test info_installed 'all_versions'.
 -- 
-2.34.1
+2.37.3
 
 

@@ -1,4 +1,4 @@
-From 74d3d43d09c692ba41138278f34d2a2e2ef83dd8 Mon Sep 17 00:00:00 2001
+From 9e527322ee0f5c7e1f9b7c16f14be9c349cf8e55 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Fri, 9 Apr 2021 16:01:32 +0300
 Subject: [PATCH] Update target fix for salt-ssh to process targets list
@@ -14,10 +14,10 @@ Regression fix of salt-ssh on processing targets (#353)
  1 file changed, 29 insertions(+), 17 deletions(-)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 564d622ab5..37faa869bc 100644
+index ef162d2270..ad2796bc87 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
-@@ -327,7 +327,7 @@ class SSH:
+@@ -338,7 +338,7 @@ class SSH(MultiprocessingStateMixin):
          if not self.opts.get("ssh_cli_tgt"):
              self.opts["ssh_cli_tgt"] = self.opts.get("tgt", "")
          hostname = self.opts.get("ssh_cli_tgt", "")
@@ -26,7 +26,7 @@ index 564d622ab5..37faa869bc 100644
              user, hostname = hostname.split("@", 1)
          else:
              user = self.opts.get("ssh_user")
-@@ -378,7 +378,7 @@ class SSH:
+@@ -393,7 +393,7 @@ class SSH(MultiprocessingStateMixin):
                              self.__parsed_rosters[self.ROSTER_UPDATE_FLAG] = False
                              return
  
@@ -35,7 +35,7 @@ index 564d622ab5..37faa869bc 100644
          """
          Update default flat roster with the passed in information.
          :return:
-@@ -392,8 +392,8 @@ class SSH:
+@@ -407,8 +407,8 @@ class SSH(MultiprocessingStateMixin):
                          "    host: {hostname}\n    user: {user}\n    passwd: {passwd}\n".format(
                              s_user=getpass.getuser(),
                              s_time=datetime.datetime.utcnow().isoformat(),
@@ -46,7 +46,7 @@ index 564d622ab5..37faa869bc 100644
                              passwd=self.opts.get("ssh_passwd", ""),
                          )
                      )
-@@ -410,20 +410,32 @@ class SSH:
+@@ -425,20 +425,32 @@ class SSH(MultiprocessingStateMixin):
          Uptade targets in case hostname was directly passed without the roster.
          :return:
          """
@@ -93,6 +93,6 @@ index 564d622ab5..37faa869bc 100644
      def get_pubkey(self):
          """
 -- 
-2.34.1
+2.37.3
 
 

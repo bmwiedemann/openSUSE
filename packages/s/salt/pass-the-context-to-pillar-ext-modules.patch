@@ -1,0 +1,276 @@
+From 8a584a8546667ab5390e9a2003a8ce3cb3add25c Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <Victor.Zhestkov@suse.com>
+Date: Fri, 28 Oct 2022 13:20:13 +0300
+Subject: [PATCH] Pass the context to pillar ext modules
+
+* Pass __context__ to ext pillar
+
+* Add test for passing the context to pillar ext module
+
+* Align the test and pillar to prevent failing test
+---
+ salt/master.py                    |  7 ++-
+ salt/pillar/__init__.py           | 16 +++++-
+ tests/pytests/unit/test_master.py | 91 ++++++++++++++++++++++++++++++-
+ 3 files changed, 108 insertions(+), 6 deletions(-)
+
+diff --git a/salt/master.py b/salt/master.py
+index 7f41ffe77b..0110082626 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -951,6 +951,7 @@ class MWorker(salt.utils.process.SignalHandlingProcess):
+         self.k_mtime = 0
+         self.stats = collections.defaultdict(lambda: {"mean": 0, "runs": 0})
+         self.stat_clock = time.time()
++        self.context = {}
+ 
+     # We need __setstate__ and __getstate__ to also pickle 'SMaster.secrets'.
+     # Otherwise, 'SMaster.secrets' won't be copied over to the spawned process
+@@ -1138,7 +1139,7 @@ class MWorker(salt.utils.process.SignalHandlingProcess):
+             self.key,
+         )
+         self.clear_funcs.connect()
+-        self.aes_funcs = AESFuncs(self.opts)
++        self.aes_funcs = AESFuncs(self.opts, context=self.context)
+         salt.utils.crypt.reinit_crypto()
+         self.__bind()
+ 
+@@ -1202,7 +1203,7 @@ class AESFuncs(TransportMethods):
+         "_ext_nodes",  # To be removed in 3006 (Sulfur) #60980
+     )
+ 
+-    def __init__(self, opts):
++    def __init__(self, opts, context=None):
+         """
+         Create a new AESFuncs
+ 
+@@ -1212,6 +1213,7 @@ class AESFuncs(TransportMethods):
+         :returns: Instance for handling AES operations
+         """
+         self.opts = opts
++        self.context = context
+         self.event = salt.utils.event.get_master_event(
+             self.opts, self.opts["sock_dir"], listen=False
+         )
+@@ -1603,6 +1605,7 @@ class AESFuncs(TransportMethods):
+             pillarenv=load.get("pillarenv"),
+             extra_minion_data=load.get("extra_minion_data"),
+             clean_cache=load.get("clean_cache"),
++            context=self.context,
+         )
+         data = pillar.compile_pillar()
+         self.fs_.update_opts()
+diff --git a/salt/pillar/__init__.py b/salt/pillar/__init__.py
+index 7be963566a..906bdfe55d 100644
+--- a/salt/pillar/__init__.py
++++ b/salt/pillar/__init__.py
+@@ -46,6 +46,7 @@ def get_pillar(
+     pillarenv=None,
+     extra_minion_data=None,
+     clean_cache=False,
++    context=None,
+ ):
+     """
+     Return the correct pillar driver based on the file_client option
+@@ -81,6 +82,7 @@ def get_pillar(
+             pillar_override=pillar_override,
+             pillarenv=pillarenv,
+             clean_cache=clean_cache,
++            context=context,
+         )
+     return ptype(
+         opts,
+@@ -92,6 +94,7 @@ def get_pillar(
+         pillar_override=pillar_override,
+         pillarenv=pillarenv,
+         extra_minion_data=extra_minion_data,
++        context=context,
+     )
+ 
+ 
+@@ -280,7 +283,7 @@ class AsyncRemotePillar(RemotePillarMixin):
+         raise salt.ext.tornado.gen.Return(ret_pillar)
+ 
+     def destroy(self):
+-        if self._closing:
++        if hasattr(self, "_closing") and self._closing:
+             return
+ 
+         self._closing = True
+@@ -309,6 +312,7 @@ class RemotePillar(RemotePillarMixin):
+         pillar_override=None,
+         pillarenv=None,
+         extra_minion_data=None,
++        context=None,
+     ):
+         self.opts = opts
+         self.opts["saltenv"] = saltenv
+@@ -333,6 +337,7 @@ class RemotePillar(RemotePillarMixin):
+             merge_lists=True,
+         )
+         self._closing = False
++        self.context = context
+ 
+     def compile_pillar(self):
+         """
+@@ -406,6 +411,7 @@ class PillarCache:
+         pillarenv=None,
+         extra_minion_data=None,
+         clean_cache=False,
++        context=None,
+     ):
+         # Yes, we need all of these because we need to route to the Pillar object
+         # if we have no cache. This is another refactor target.
+@@ -432,6 +438,8 @@ class PillarCache:
+             minion_cache_path=self._minion_cache_path(minion_id),
+         )
+ 
++        self.context = context
++
+     def _minion_cache_path(self, minion_id):
+         """
+         Return the path to the cache file for the minion.
+@@ -455,6 +463,7 @@ class PillarCache:
+             functions=self.functions,
+             pillar_override=self.pillar_override,
+             pillarenv=self.pillarenv,
++            context=self.context,
+         )
+         return fresh_pillar.compile_pillar()
+ 
+@@ -530,6 +539,7 @@ class Pillar:
+         pillar_override=None,
+         pillarenv=None,
+         extra_minion_data=None,
++        context=None,
+     ):
+         self.minion_id = minion_id
+         self.ext = ext
+@@ -568,7 +578,7 @@ class Pillar:
+         if opts.get("pillar_source_merging_strategy"):
+             self.merge_strategy = opts["pillar_source_merging_strategy"]
+ 
+-        self.ext_pillars = salt.loader.pillars(ext_pillar_opts, self.functions)
++        self.ext_pillars = salt.loader.pillars(ext_pillar_opts, self.functions, context=context)
+         self.ignored_pillars = {}
+         self.pillar_override = pillar_override or {}
+         if not isinstance(self.pillar_override, dict):
+@@ -1335,7 +1345,7 @@ class Pillar:
+         """
+         This method exist in order to be API compatible with RemotePillar
+         """
+-        if self._closing:
++        if hasattr(self, "_closing") and self._closing:
+             return
+         self._closing = True
+ 
+diff --git a/tests/pytests/unit/test_master.py b/tests/pytests/unit/test_master.py
+index a49ecfec3b..ca02c7788d 100644
+--- a/tests/pytests/unit/test_master.py
++++ b/tests/pytests/unit/test_master.py
+@@ -1,7 +1,7 @@
+ import time
+ 
+ import salt.master
+-from tests.support.mock import patch
++from tests.support.mock import MagicMock, patch
+ 
+ 
+ def test_fileserver_duration():
+@@ -14,3 +14,92 @@ def test_fileserver_duration():
+         update.called_once()
+         # Timeout is 1 second
+         assert 2 > end - start > 1
++
++
++def test_mworker_pass_context():
++    """
++    Test of passing the __context__ to pillar ext module loader
++    """
++    req_channel_mock = MagicMock()
++    local_client_mock = MagicMock()
++
++    opts = {
++        "req_server_niceness": None,
++        "mworker_niceness": None,
++        "sock_dir": "/tmp",
++        "conf_file": "/tmp/fake_conf",
++        "transport": "zeromq",
++        "fileserver_backend": ["roots"],
++        "file_client": "local",
++        "pillar_cache": False,
++        "state_top": "top.sls",
++        "pillar_roots": {},
++    }
++
++    data = {
++        "id": "MINION_ID",
++        "grains": {},
++        "saltenv": None,
++        "pillarenv": None,
++        "pillar_override": {},
++        "extra_minion_data": {},
++        "ver": "2",
++        "cmd": "_pillar",
++    }
++
++    test_context = {"testing": 123}
++
++    def mworker_bind_mock():
++        mworker.aes_funcs.run_func(data["cmd"], data)
++
++    with patch("salt.client.get_local_client", local_client_mock), patch(
++        "salt.master.ClearFuncs", MagicMock()
++    ), patch("salt.minion.MasterMinion", MagicMock()), patch(
++        "salt.utils.verify.valid_id", return_value=True
++    ), patch(
++        "salt.loader.matchers", MagicMock()
++    ), patch(
++        "salt.loader.render", MagicMock()
++    ), patch(
++        "salt.loader.utils", MagicMock()
++    ), patch(
++        "salt.loader.fileserver", MagicMock()
++    ), patch(
++        "salt.loader.minion_mods", MagicMock()
++    ), patch(
++        "salt.loader._module_dirs", MagicMock()
++    ), patch(
++        "salt.loader.LazyLoader", MagicMock()
++    ) as loadler_pillars_mock:
++        mworker = salt.master.MWorker(opts, {}, {}, [req_channel_mock])
++
++        with patch.object(mworker, "_MWorker__bind", mworker_bind_mock), patch.dict(
++            mworker.context, test_context
++        ):
++            mworker.run()
++            assert (
++                loadler_pillars_mock.call_args_list[0][1].get("pack").get("__context__")
++                == test_context
++            )
++
++        loadler_pillars_mock.reset_mock()
++
++        opts.update(
++            {
++                "pillar_cache": True,
++                "pillar_cache_backend": "file",
++                "pillar_cache_ttl": 1000,
++                "cachedir": "/tmp",
++            }
++        )
++
++        mworker = salt.master.MWorker(opts, {}, {}, [req_channel_mock])
++
++        with patch.object(mworker, "_MWorker__bind", mworker_bind_mock), patch.dict(
++            mworker.context, test_context
++        ), patch("salt.utils.cache.CacheFactory.factory", MagicMock()):
++            mworker.run()
++            assert (
++                loadler_pillars_mock.call_args_list[0][1].get("pack").get("__context__")
++                == test_context
++            )
+-- 
+2.37.3
+
+

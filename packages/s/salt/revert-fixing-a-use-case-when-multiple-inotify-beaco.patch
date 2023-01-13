@@ -1,4 +1,4 @@
-From a82b6316d8a780a7a8cbfbabeb52fa50b3fb1032 Mon Sep 17 00:00:00 2001
+From dc849a15ea214170d4de9f54615caa8b3136dc10 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 19:07:34 +0100
 Subject: [PATCH] Revert "Fixing a use case when multiple inotify beacons
@@ -21,19 +21,19 @@ This reverts commit 66c58dedf8c364eaeb35c5adce8bcc8fe5c1219a.
  7 files changed, 11 insertions(+), 48 deletions(-)
 
 diff --git a/salt/beacons/__init__.py b/salt/beacons/__init__.py
-index 414142c262..13e2ae78db 100644
+index b346c2a648..90918cba5b 100644
 --- a/salt/beacons/__init__.py
 +++ b/salt/beacons/__init__.py
-@@ -71,7 +71,6 @@ class Beacon:
-                 beacon_name = current_beacon_config["beacon_module"]
-             else:
-                 beacon_name = mod
+@@ -94,7 +94,6 @@ class Beacon:
+                     log.error("Configuration for beacon must be a list.")
+                     continue
+ 
 -            b_config[mod].append({"_beacon_name": mod})
              fun_str = "{}.beacon".format(beacon_name)
-             validate_str = "{}.validate".format(beacon_name)
              if fun_str in self.beacons:
+                 runonce = self._determine_beacon_config(
 diff --git a/salt/beacons/diskusage.py b/salt/beacons/diskusage.py
-index 1216abf79b..897bc90a6a 100644
+index 5be33ff975..0b8d7c53e1 100644
 --- a/salt/beacons/diskusage.py
 +++ b/salt/beacons/diskusage.py
 @@ -8,7 +8,6 @@ Beacon to monitor disk usage.
@@ -44,7 +44,7 @@ index 1216abf79b..897bc90a6a 100644
  import salt.utils.platform
  
  try:
-@@ -81,8 +80,6 @@ def beacon(config):
+@@ -83,8 +82,6 @@ def beacon(config):
      it will override the previously defined threshold.
  
      """
@@ -54,10 +54,10 @@ index 1216abf79b..897bc90a6a 100644
      ret = []
      for mounts in config:
 diff --git a/salt/beacons/inotify.py b/salt/beacons/inotify.py
-index b6e7334eee..c44bd49fb0 100644
+index 283b84fdc7..0dc60662a6 100644
 --- a/salt/beacons/inotify.py
 +++ b/salt/beacons/inotify.py
-@@ -65,19 +65,17 @@ def _get_notifier(config):
+@@ -67,19 +67,17 @@ def _get_notifier(config):
      """
      Check the context for the notifier and construct it if not present
      """
@@ -81,7 +81,7 @@ index b6e7334eee..c44bd49fb0 100644
  
  
  def validate(config):
-@@ -237,9 +235,6 @@ def beacon(config):
+@@ -239,9 +237,6 @@ def beacon(config):
        being at the Notifier level in pyinotify.
      """
  
@@ -91,7 +91,7 @@ index b6e7334eee..c44bd49fb0 100644
      config = salt.utils.beacons.list_to_dict(config)
  
      ret = []
-@@ -262,7 +257,7 @@ def beacon(config):
+@@ -264,7 +259,7 @@ def beacon(config):
                      break
                  path = os.path.dirname(path)
  
@@ -100,7 +100,7 @@ index b6e7334eee..c44bd49fb0 100644
  
              if excludes and isinstance(excludes, list):
                  for exclude in excludes:
-@@ -349,9 +344,6 @@ def beacon(config):
+@@ -351,9 +346,6 @@ def beacon(config):
  
  
  def close(config):
@@ -114,7 +114,7 @@ index b6e7334eee..c44bd49fb0 100644
 +        __context__["inotify.notifier"].stop()
 +        del __context__["inotify.notifier"]
 diff --git a/salt/beacons/napalm_beacon.py b/salt/beacons/napalm_beacon.py
-index ec8cf63fca..164b29cdf8 100644
+index 122d56edb7..692fbe07aa 100644
 --- a/salt/beacons/napalm_beacon.py
 +++ b/salt/beacons/napalm_beacon.py
 @@ -168,9 +168,10 @@ with a NTP server at a stratum level greater than 5.
@@ -129,7 +129,7 @@ index ec8cf63fca..164b29cdf8 100644
  import salt.utils.napalm
  
  log = logging.getLogger(__name__)
-@@ -301,9 +302,6 @@ def beacon(config):
+@@ -306,9 +307,6 @@ def beacon(config):
      """
      Watch napalm function and fire events.
      """
@@ -186,10 +186,10 @@ index f5befb2756..dfaf1d499a 100644
 -    assert "httpd.inotify.notifier" in inotify.__context__
 +    assert "inotify.notifier" in inotify.__context__
 diff --git a/tests/pytests/unit/test_beacons.py b/tests/pytests/unit/test_beacons.py
-index 27940c6f65..a347f3f27f 100644
+index 2ca0b30ea2..841a3b8140 100644
 --- a/tests/pytests/unit/test_beacons.py
 +++ b/tests/pytests/unit/test_beacons.py
-@@ -70,19 +70,3 @@ def test_beacon_module():
+@@ -108,19 +108,3 @@ def test_beacon_module():
      ]
      assert ret == _expected
  
@@ -210,6 +210,6 @@ index 27940c6f65..a347f3f27f 100644
 -        beacon.process(mock_opts["beacons"], mock_opts["grains"])
 -        patched[name].assert_has_calls(calls)
 -- 
-2.34.1
+2.37.3
 
 

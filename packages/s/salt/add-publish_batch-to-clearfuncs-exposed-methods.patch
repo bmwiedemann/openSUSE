@@ -1,4 +1,4 @@
-From 2422d30358bcd0f96e399e623136f7984d136b38 Mon Sep 17 00:00:00 2001
+From e6f6b011849536c5ff9a9bdef56e900ed5a7fb1d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 28 May 2020 09:37:08 +0100
@@ -9,10 +9,10 @@ Subject: [PATCH] Add publish_batch to ClearFuncs exposed methods
  1 file changed, 1 insertion(+)
 
 diff --git a/salt/master.py b/salt/master.py
-index ab85c7f5c6..59bb19ce75 100644
+index 705a1bc2fb..7f41ffe77b 100644
 --- a/salt/master.py
 +++ b/salt/master.py
-@@ -2042,6 +2042,7 @@ class ClearFuncs(TransportMethods):
+@@ -1952,6 +1952,7 @@ class ClearFuncs(TransportMethods):
      expose_methods = (
          "ping",
          "publish",
@@ -21,6 +21,6 @@ index ab85c7f5c6..59bb19ce75 100644
          "mk_token",
          "wheel",
 -- 
-2.29.2
+2.37.3
 
 

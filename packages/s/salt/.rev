@@ -2147,4 +2147,41 @@ let build start it or we will get libvirt errors.
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207071</comment>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>1c955e7ca361ad8d44be2e5eedc6ac33</srcmd5>
+    <version>3005.1</version>
+    <time>1673650947</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow entrypoint compatibility for &quot;importlib-metadata&gt;=5.0.0&quot; (bsc#1207071)
+- Added:
+  * allow-entrypoint-compatibility-for-importlib-metadat.patch
+
+- Add missing patch after rebase to fix collections Mapping issues
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+- Prevent deadlocks in salt-ssh executions
+- Added:
+  * use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+
+- Create new salt-tests subpackage containing Salt tests
+
+- Update to Salt release version 3005.1
+  * See release notes: https://docs.saltstack.com/en/latest/topics/releases/3005.1.html
+- Modified:
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+  * add-sleep-on-exception-handling-on-minion-connection.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * add-support-for-gpgautoimport-539.patch
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+  * align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+  * allow-vendor-change-option-with-zypper.patch</comment>
+    <requestid>1058037</requestid>
+  </revision>
 </revisionlist>
