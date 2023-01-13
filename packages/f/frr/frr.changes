@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 12:27:58 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Fri Nov 11 13:04:52 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - Migration to /usr/etc: Conditionally moved /etc/logrotate.d/frr

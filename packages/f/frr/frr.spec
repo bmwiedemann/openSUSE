@@ -1,7 +1,7 @@
 #
 # spec file for package frr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -275,7 +275,12 @@ install -D -m 0644 tools%{_sysconfdir}/frr/daemons %{buildroot}%{_sysconfdir}/fr
 # add rpki module to daemon
 sed -i -e 's/^\(bgpd_options=\)\(.*\)\(".*\)/\1\2 -M rpki\3/' %{buildroot}%{_sysconfdir}/frr/daemons
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -D -m 0644 redhat/frr.pam %{buildroot}%{_pam_vendordir}/frr
+%else
 install -D -m 0644 redhat/frr.pam %{buildroot}%{_sysconfdir}/pam.d/frr
+%endif
 %if 0%{?suse_version} > 1500
 install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_distconfdir}/logrotate.d/frr
 %else
@@ -315,7 +320,7 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %service_add_pre %{name}.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/frr ; do
+for i in logrotate.d/frr pam.d/frr ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -323,7 +328,7 @@ done
 %posttrans
 %if 0%{?suse_version} > 1500
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/frr ; do
+for i in logrotate.d/frr pam.d/frr ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -375,7 +380,11 @@ done
 %config(noreplace) %attr(640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/[!v]*.conf*
 %config(noreplace) %attr(640,%{frr_user},%{frrvty_group}) %{_sysconfdir}/%{name}/vtysh.conf
 %config(noreplace) %%attr(640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/daemons
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/frr
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/frr
+%endif
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/frr
 %else
