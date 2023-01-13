@@ -236,4 +236,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1010235 from glaubitz)</comment>
     <requestid>1010244</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>148b1bcbfd76975f6fdc2326d94a5919</srcmd5>
+    <version>7.8.2</version>
+    <time>1673651000</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.8.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1058178 from glaubitz)</comment>
+    <requestid>1058235</requestid>
+  </revision>
 </revisionlist>
