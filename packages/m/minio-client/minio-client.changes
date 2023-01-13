@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 13 06:10:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230111T031416Z:
+  * Add confirm flag to `mc admin update --yes` (#4439)
+  * Renew license online if license file not passed (#4429)
+  * Rename admin replicate subcommands (#4383)
+  * support concurrent uploads for 'mc pipe' (#4435)
+  * rb: avoid throwing error for force delete of prefix (#4436)
+  * Upload inspect data to SUBNET (#4420)
+  * trace: Add bootstrap tracing type (#4416)
+  * Allow mirror to continue syncing after an object fails to sync (#4427)
+
+-------------------------------------------------------------------
 Wed Jan 04 15:48:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20221224T152138Z:
