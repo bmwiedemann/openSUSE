@@ -128,4 +128,16 @@
 - Update Requires from setup.py (forwarded request 1004653 from glaubitz)</comment>
     <requestid>1006523</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c175e1fe90e9fddda144f9c82d8112ab</srcmd5>
+    <version>0.15.0</version>
+    <time>1673650999</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.15.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1058187 from glaubitz)</comment>
+    <requestid>1058233</requestid>
+  </revision>
 </revisionlist>
