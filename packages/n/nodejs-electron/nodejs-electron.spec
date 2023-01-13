@@ -203,13 +203,13 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.3.2
+Version:        21.3.4
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
 Group:          Development/Languages/NodeJS
 URL:            https://github.com/electron/electron
-Source0:        %{mod_name}-%{version}.tar.xz
+Source0:        %{mod_name}-%{version}.tar.zst
 Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
@@ -256,6 +256,8 @@ Patch72:        electron-version-from-env.patch
 Patch73:        disable-webspeech.patch
 Patch74:        common.gypi-remove-fno-omit-frame-pointer.patch
 Patch75:        gcc-asmflags.patch
+# https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
+Patch76:        disable-devtools-tests.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
@@ -352,6 +354,8 @@ Patch3092:      webgl_image_conversion-Wstrict-aliasing.patch
 Patch3093:      xr_cube_map-Wstrict-aliasing.patch
 Patch3094:      static_constructors-Wstrict-aliasing.patch
 Patch3095:      CVE-2022-43548.patch
+Patch3096:      remove-date-reproducible-builds.patch
+Patch3097:      shim_headers-fix-ninja.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -445,6 +449,7 @@ BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  util-linux
 BuildRequires:  vulkan-headers
+BuildRequires:  zstd
 %if %{with system_abseil}
 BuildRequires:  pkgconfig(absl_algorithm_container) >= 20211000
 BuildRequires:  pkgconfig(absl_base)
@@ -692,7 +697,10 @@ patch -R -p1 < %SOURCE420
 
 # Link system wayland-protocols-devel into where chrome expects them
 mkdir -p third_party/wayland-protocols/kde/src
+#mkdir -p third_party/wayland-protocols/mesa
+
 #ln -svfT %{_datadir}/wayland-protocols third_party/wayland-protocols/src
+#ln -svfT %{_datadir}/wayland-eglstream third_party/wayland-protocols/mesa/wayland-drm
 ln -svfT %{_datadir}/plasma-wayland-protocols third_party/wayland-protocols/kde/src/protocols
 
 # Shim generators for replace_gn_files.py
@@ -1128,6 +1136,7 @@ myconf_gn+=" enable_xz_extractor=false"
 myconf_gn+=" enable_feed_v2=false"
 myconf_gn+=" ozone_platform_headless=false"
 myconf_gn+=" angle_enable_gl_null=false"
+myconf_gn+=" enable_paint_preview=false"
 
 
 
@@ -1235,6 +1244,7 @@ myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
 %if %{with qt}
 myconf_gn+=" use_qt=true"
 %endif
+
 
 # Do not build WebGPU support. It is huge and not used by ANY known apps (we would know if it was — it's hidden behind an experimental flag).
 myconf_gn+=" use_dawn=false"

@@ -1,0 +1,18 @@
+Correct output path of ninja shim_headers rule
+This is not needed for a succesful build on OBS but makes building it manually way easier
+
+--- src/build/shim_headers.gni.orig
++++ src/build/shim_headers.gni
+@@ -28,8 +28,10 @@
+     }
+     args += invoker.headers
+ 
+-    outputs = process_file_template(invoker.headers,
+-                                    "${shim_headers_path}/{{source_file_part}}")
++    outputs = []
++    foreach(h, invoker.headers) {
++      outputs += [ shim_headers_path + "/" + rebase_path(invoker.root_path,"//") + "/" + h ]
++    }
+   }
+ 
+   group(target_name) {

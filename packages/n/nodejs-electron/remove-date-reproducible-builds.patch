@@ -1,0 +1,62 @@
+--- a/tools/json_schema_compiler/cpp_util.py
++++ b/tools/json_schema_compiler/cpp_util.py
+@@ -13,9 +13,9 @@
+ import re
+ 
+ CHROMIUM_LICENSE = (
+-"""// Copyright %d The Chromium Authors. All rights reserved.
++"""// Copyright 2022 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+-// found in the LICENSE file.""" % datetime.now().year
++// found in the LICENSE file."""
+ )
+ GENERATED_FILE_MESSAGE = """// GENERATED FROM THE API DEFINITION IN
+ //   %s
+--- a/tools/json_to_struct/json_to_struct.py
++++ b/tools/json_to_struct/json_to_struct.py
+@@ -74,7 +74,7 @@
+ import struct_generator
+ import element_generator
+ 
+-HEAD = u"""// Copyright %d The Chromium Authors. All rights reserved.
++HEAD = u"""// Copyright 2022 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+@@ -227,7 +227,7 @@
+     year: Year to display next to the copy-right in the header.
+   """
+   year = int(year) if year else datetime.now().year
+-  head = HEAD % (year, schema_filename, description_filename)
++  head = HEAD % (schema_filename, description_filename)
+   _GenerateH(basepath, output_root, head, namespace, schema, description)
+   _GenerateCC(basepath, output_root, head, namespace, schema, description)
+ 
+--- src/tools/json_schema_compiler/feature_compiler.py.old	2022-12-02 23:49:17.031737400 +0100
++++ src/tools/json_schema_compiler/feature_compiler.py	2023-01-04 06:47:07.764551600 +0100
+@@ -19,7 +19,7 @@
+ 
+ # The template for the header file of the generated FeatureProvider.
+ HEADER_FILE_TEMPLATE = """
+-// Copyright %(year)s The Chromium Authors. All rights reserved.
++// Copyright 2022 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+@@ -43,7 +43,7 @@
+ 
+ # The beginning of the .cc file for the generated FeatureProvider.
+ CC_FILE_BEGIN = """
+-// Copyright %(year)s The Chromium Authors. All rights reserved.
++// Copyright 2022 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
+@@ -899,7 +899,6 @@
+                              replace('.', '_').upper()),
+         'method_name': self._method_name,
+         'source_files': str([ToPosixPath(f) for f in self._source_files]),
+-        'year': str(datetime.now().year)
+     })
+     if not os.path.exists(self._out_root):
+       os.makedirs(self._out_root)

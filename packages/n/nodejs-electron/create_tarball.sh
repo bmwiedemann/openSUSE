@@ -78,7 +78,7 @@ echo ">>>>>> Create LASTCHANGE(.committime) file"
 echo -n "LASTCHANGE=$(git log -1 --format=format:%H HEAD)" > build/util/LASTCHANGE
 # shellcheck disable=1091
 source build/util/LASTCHANGE
-echo -n "$(git log -1 --date=unix --format=format:%cd "$LASTCHANGE")" > build/util/LASTCHANGE.committime
+echo -n "$(git log -1 --date=unix --format=format:%cd $LASTCHANGE)" > build/util/LASTCHANGE.committime
 
 
 
@@ -213,8 +213,7 @@ keeplibs=(
     third_party/electron_node #Integral part of electron
     third_party/emoji-segmenter #not available as a shared library
     third_party/fdlibm #derived code, not vendored dep
-    third_party/harfbuzz-ng #There are new google files within this directory.
-    third_party/harfbuzz-ng/utils
+    third_party/harfbuzz-ng/utils  #There are new google files within this directory.
     third_party/highway #Not in Leap
     third_party/hunspell #heavily forked version
     third_party/iccjpeg #not in any distro
@@ -229,7 +228,7 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/fastfeat
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
-    third_party/libavif #not availabe on 15.3
+    third_party/libavif #leap too old
     third_party/libgav1 #not in Factory yet, but available in unofficial repos. CONSIDER UNBUNDLING when any distro has it.
     third_party/libjxl #not in Leap
     third_party/libphonenumber #Depends on protobuf which cannot be unbundled
@@ -311,8 +310,8 @@ keeplibs=(
     third_party/wayland/stubs #added chromium code
     third_party/wayland/wayland_scanner_wrapper.py #wrapper script
     third_party/wayland-protocols/gtk/gdk/wayland/protocol #Imagine downloading 100MB of gtk source just to get one file.
-    third_party/wayland-protocols/mesa #egl-wayland-devel (Fedora) / libnvidia-egl-wayland1 (SUSE). Not in 15.3 CONSIDER UNBUNDLING when all distros have this
-    third_party/wayland-protocols/src #pkgconfig(wayland-protocols) — 15.3 too old CONSIDER UNBUNDLING once we drop it
+    third_party/wayland-protocols/mesa #egl-wayland-devel (Fedora) / libnvidia-egl-wayland1 (Tumbleweed). 15.4 has an old version that misses the file we need.
+    third_party/wayland-protocols/src #pkgconfig(wayland-protocols) — 15.4 too old CONSIDER UNBUNDLING once we drop it
     third_party/wayland-protocols/unstable #unknown origin. not in wayland-protocol-devel or elsewhere
     third_party/wuffs #not in any distro
     third_party/x11proto #derived code, not vendored dep
@@ -371,6 +370,7 @@ find . -type d -name __pycache__ -print0 | xargs -0 rm -rvf
 find . -type f -name '*.pyc' -print -delete
 
 echo ">>>>>> Remove non-free binaries"
+find . -type f -name "*.wasm" -print -delete
 find . -type f -name "*.jar" -print -delete
 find . -type f -name "*.exe" -print -delete
 find . -type f -name "*.node" -print -delete
@@ -394,8 +394,7 @@ echo ">>>>>> Hardlink duplicate files to reduce extraction time"
 fdupes -Sr src
 
 echo ">>>>>> Create tarball"
-#I would like to use zst, as it decompresses MUCH faster, but unfortunately it is not supported by OBS diff view yet
-XZ_OPT="-T$(nproc) -e9 -vv" tar -vvcJf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.xz" src
+ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd -vvcf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.zst" src
 if [ $? -ne 0 ]; then
     echo "ERROR: tar cf failed"
     cleanup_and_exit 1
