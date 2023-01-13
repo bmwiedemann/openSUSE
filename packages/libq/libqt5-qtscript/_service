@@ -1,11 +1,11 @@
 <services>
   <service name="obs_scm" mode="disabled">
-   <param name="versionformat">5.15.10</param>
+   <param name="versionformat">5.15.12</param>
    <param name="url">https://invent.kde.org/qt/qt/qtscript.git</param>
    <param name="scm">git</param>
    <param name="filename">qtscript-everywhere-src</param>
-   <param name="revision">5.15.10</param>
-   <param name="parent-tag">v5.15.10-lts</param>
+   <param name="revision">origin/5.15.12</param>
+   <param name="parent-tag">v5.15.12-lts</param>
    <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>
