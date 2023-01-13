@@ -483,4 +483,19 @@
 - Move dtk-logos.sty from doc tree into load tree</comment>
     <requestid>972662</requestid>
   </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>6a709970f53090a78fc63cf12cb18898</srcmd5>
+    <version>unknown</version>
+    <time>1673650945</time>
+    <user>dimstar_suse</user>
+    <comment>- For dvips do not require but recommend metapost (boo#1206850)
+
+- The boldtensors styles should require the bbold fonts 
+- Use https for urls
+
+- Update mltex to latest version 4.2svn63213 as upstream has now
+  removed all .dvi, .pdf, and .tex files from doc tree due to the
+  used Creative Commons Attribution-NonCommercial-ShareAlike license</comment>
+    <requestid>1058001</requestid>
+  </revision>
 </revisionlist>
