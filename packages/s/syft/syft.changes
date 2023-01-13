@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 13 06:11:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.66.1:
+  * fix: update graalvm cataloger to fix panic (#1454)
+  * chore: remove bumping cosign in go.mod when updating bootstrap tools (#1452)
+
+-------------------------------------------------------------------
+Fri Jan 13 06:09:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.66.0:
+  * feat: Add the origin field to the output format of syftjson (#1327)
+  * chore: update schema (#1449)
+  * feat: prefer known CPE vendors over other candidates (#1294)
+  * fix: update attestation code to remove library dependencies and shellout for keyless flow (#1442)
+  * feat: add BeamVM Hex support (#1073)
+  * feat: add apache httpd binary classifier (#1448)
+  * chore: claim artifacthub package ownership from developer-guy (#881)
+  * Parallel package catalog processing (#1355)
+  * feat: Add php binary catalogers (#1444)
+  * Update syft bootstrap tools to latest versions. (#1443)
+  * fix: duplicate file in tar archive causes read to fail (#1445)
+  * Add support for GraalVM Native Image executables. (#1276)
+  * Add redis binary classifier (#1438)
+  * docs: add cataloger construction summary (#1434)
+  * chore: update bootstrap tools to latest versions. (#1428)
+  * Add alpine type to purl (#1431)
+
+-------------------------------------------------------------------
 Thu Jan 05 14:00:02 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.65.0:
