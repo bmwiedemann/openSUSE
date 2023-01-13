@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:50:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.5:
+  * Fix regression introduced in version 2.8.4. Argument ``quality`` is not
+    removed for images of type ``.webp``.
+
+-------------------------------------------------------------------
 Wed Jan  4 16:49:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.4:

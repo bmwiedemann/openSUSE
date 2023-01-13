@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-easy-thumbnails
-Version:        2.8.4
+Version:        2.8.5
 Release:        0
 Summary:        Easy thumbnails for Django
 License:        BSD-2-Clause
