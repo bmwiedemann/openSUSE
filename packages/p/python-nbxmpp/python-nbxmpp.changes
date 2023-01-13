@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan  6 14:14:26 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.0.0:
+  * Add message reactions (XEP-0444) support.
+  * Add HTTP module.
+  * Raise required python version to 3.10.
+  * Remove example client.
+  * Port to libsoup3.
+  * XEP-0392: Update to 0.8.0.
+
+-------------------------------------------------------------------
 Mon Oct 31 11:23:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.2.5:

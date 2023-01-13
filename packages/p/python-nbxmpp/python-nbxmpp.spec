@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbxmpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,15 @@
 #
 
 
-# Requires at least python 3.9
-%define skip_python2 1
-%define skip_python36 1
+# Requires at least python 3.10
 %define skip_python38 1
+%define skip_python39 1
+%if 0%{?suse_version} <= 1500 && "%{?pythons}%{!?pythons:python3}" == "python3"
+%define pythons python310
+%endif
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        3.2.5
+Version:        4.0.0
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
@@ -38,7 +40,7 @@ BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module precis-i18n}
-BuildRequires:  typelib(Soup) = 2.4
+BuildRequires:  typelib(Soup) = 3.0
 Recommends:     python-gssapi
 BuildArch:      noarch
 %{?python_enable_dependency_generator}
@@ -50,13 +52,6 @@ Python-nbxmpp is a Python library that provides a way for Python
 applications to use Jabber/XMPP networks in a non-blocking way.
 This library is initialy a fork of xmpppy one, but using
 non-blocking sockets.
-
-%package doc
-Summary:        Nbxmpp Documentation
-Group:          Documentation/Other
-
-%description doc
-This packages provides documentation of Nbxmpp API.
 
 %prep
 %setup -q
@@ -73,11 +68,8 @@ This packages provides documentation of Nbxmpp API.
 
 %files %{python_files}
 %license COPYING
+%doc ChangeLog README.md
 %{python_sitelib}/%{_name}/
 %{python_sitelib}/%{_name}-*
-
-%files %{python_files doc}
-%doc ChangeLog README.md
-%doc %{_name}/examples/
 
 %changelog
