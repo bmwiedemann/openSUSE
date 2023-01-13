@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 12 09:45:00 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable debug build on sun50i_a64 as it is too big
+
+-------------------------------------------------------------------
+Tue Jan 10 14:06:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 2.8:
+  * changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/tree/docs/change-log.md
+
+-------------------------------------------------------------------
 Tue Jan 10 09:05:12 UTC 2023 - Oscar Curero <oscar@naiandei.net>
 
 - Add sun50i_h616 flavor for OrangePi Zero2

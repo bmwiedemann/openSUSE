@@ -18,9 +18,10 @@
 
 %global platform @BUILD_FLAVOR@%{nil}
 
-%if "%{platform}" == "a3700" || "%{platform}" == "imx8mq"
+%if "%{platform}" == "a3700" || "%{platform}" == "imx8mq" || "%{platform}" == "sun50i_a64"
 # Debug build not supported for UART boot on a3700
 # Debug build is too big on imx8mq, see: https://developer.trustedfirmware.org/T626
+# Debug build is too big on sun50i_a64 see: https://git.trustedfirmware.org/ci/tf-a-ci-scripts.git/commit/?id=3a78c106bb417a48572c46923c935e8193c4a7bf
 %global debug_build 0
 %else
 %global debug_build 1
@@ -49,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.7
+Version:        2.8
 Release:        0
-%define srcversion 2.7
+%define srcversion 2.8
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
