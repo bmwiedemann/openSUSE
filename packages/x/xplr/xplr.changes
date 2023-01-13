@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 13 11:12:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.20.2:
+  * Updated UI to be more light theme and NO_COLOR friendly.
+  * Fixed creating files inside multiple subdirectories (e.g.
+    foo/bar/test.txt) (thanks to @soryeigeton for reporting and help
+    debugging).
+  * Added new hooks (contribution by @emsquid).
+  * on_mode_switch
+  * on_layout_switch
+
+-------------------------------------------------------------------
 Sat Dec 17 19:31:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.20.1:
