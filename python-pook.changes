@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 13 06:33:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove py311-compat.patch, not needed anymore
+- Update to 1.1.1:
+  * Fix Py3.11 compatibility (#85)
+
+-------------------------------------------------------------------
+Thu Jan 12 11:04:56 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py311-compat.patch to fix python-3.11 compatibility
+- Update to 1.1.0:
+  * chore(version): bump minor v1.1.0
+  * Switch to Python >= 3.5 and fix latest aiohttp compatability (#83)
+  * fix: remove print call (#81)
+
+-------------------------------------------------------------------
 Wed Apr  6 09:52:49 UTC 2022 - pgajdos@suse.com
 
 - python-mock not required for build

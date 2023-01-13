@@ -1,7 +1,7 @@
 #
 # spec file for package python-pook
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # requires python-aiohttp
 %define skip_python2 1
 Name:           python-pook
-Version:        1.0.2
+Version:        1.1.1
 Release:        0
 Summary:        HTTP traffic mocking and expectations
 License:        MIT
@@ -50,7 +49,7 @@ BuildRequires:  %{python_module xmltodict >= 0.10.2}
 HTTP traffic mocking and expectations.
 
 %prep
-%setup -q -n pook-%{version}
+%autosetup -p1 -n pook-%{version}
 rm -f setup.cfg pytest.ini tox.ini
 
 # Assist unittest on Python 2
@@ -77,6 +76,7 @@ $python -m unittest tests.integration.engines.unittest_suite
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pook
+%{python_sitelib}/pook-%{version}*-info
 
 %changelog

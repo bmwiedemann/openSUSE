@@ -56,4 +56,20 @@
     <comment></comment>
     <requestid>967309</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7cc00ca0ad594b97da4f692e94a17cec</srcmd5>
+    <version>1.1.1</version>
+    <time>1673650948</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py311-compat.patch, not needed anymore
+- Update to 1.1.1:
+  * Fix Py3.11 compatibility (#85)
+
+- Add py311-compat.patch to fix python-3.11 compatibility
+- Update to 1.1.0:
+  * chore(version): bump minor v1.1.0
+  * Switch to Python &gt;= 3.5 and fix latest aiohttp compatability (#83)
+  * fix: remove print call (#81)</comment>
+    <requestid>1058121</requestid>
+  </revision>
 </revisionlist>
