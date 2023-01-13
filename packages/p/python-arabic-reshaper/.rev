@@ -64,4 +64,13 @@
     <comment></comment>
     <requestid>1010153</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da64261348a335cb2d58fc678f64c8af</srcmd5>
+    <version>3.0.0</version>
+    <time>1673650989</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v3.0.0:
+  * No more Python 2.x support.</comment>
+    <requestid>1058184</requestid>
+  </revision>
 </revisionlist>
