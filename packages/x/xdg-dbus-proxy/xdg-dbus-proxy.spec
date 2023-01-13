@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-dbus-proxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,11 @@ Group:          System/Daemons
 URL:            https://github.com/flatpak/xdg-dbus-proxy
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
+%if 0%{?suse_version} > 1500
 BuildRequires:  dbus-1-daemon
+%else
+BuildRequires:  dbus-1
+%endif
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt-tools
 BuildRequires:  meson

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 11 17:27:43 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- BuildRequire dbus-1 in SLE-15 where the dbus-1 package is not
+  splitted to generate a dbus-1-daemon package.
+
+-------------------------------------------------------------------
 Fri Jul 15 16:58:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.4:
