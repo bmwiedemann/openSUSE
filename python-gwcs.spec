@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwcs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           python-gwcs
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://gwcs.readthedocs.io/en/latest/
+# SourceRepository: https://github.com/spacetelescope/gwcs
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
 BuildRequires:  %{python_module asdf >= 2.8.1}
 BuildRequires:  %{python_module asdf-astropy >= 0.2.0}
@@ -30,9 +31,11 @@ BuildRequires:  %{python_module asdf_wcs_schemas}
 BuildRequires:  %{python_module astropy >= 5.1}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.1
@@ -56,10 +59,10 @@ World Coordinate System of astronomical data.
 %setup -q -n gwcs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

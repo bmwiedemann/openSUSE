@@ -85,4 +85,23 @@
     ignored. [#414]</comment>
     <requestid>1031604</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4a6090ffe04a08198df37351115ba971</srcmd5>
+    <version>0.18.3</version>
+    <time>1673651012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.3
+  * Fix pixel scale formula used by iterative inverse by @mcara in
+    #423
+  * refactor for Tox 4 by @zacharyburnett in #428
+  * Improve stability of SIP fitting. Fix constant term - CRPIX -
+    in SIP by @mcara in #427
+  * use canonical name of RTD config and enable nitpicky mode to
+    catch broken links in docs by @zacharyburnett in #430
+  * add downstream tests for JWST and Roman calibration pipelines
+    by @zacharyburnett in #415
+  * fix CRDS_PATH in CI when running downstream tests by
+    @zacharyburnett in #432 (forwarded request 1058262 from bnavigator)</comment>
+    <requestid>1058263</requestid>
+  </revision>
 </revisionlist>
