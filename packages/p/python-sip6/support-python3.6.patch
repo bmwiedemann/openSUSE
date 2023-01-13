@@ -1,0 +1,90 @@
+Index: sip-6.7.5/PKG-INFO
+===================================================================
+--- sip-6.7.5.orig/PKG-INFO
++++ sip-6.7.5/PKG-INFO
+@@ -9,7 +9,7 @@ License: SIP
+ Platform: X11
+ Platform: macOS
+ Platform: Windows
+-Requires-Python: >=3.7
++Requires-Python: >=3.6
+ License-File: LICENSE
+ License-File: LICENSE-GPL3
+ License-File: LICENSE-GPL2
+Index: sip-6.7.5/setup.py
+===================================================================
+--- sip-6.7.5.orig/setup.py
++++ sip-6.7.5/setup.py
+@@ -50,7 +50,7 @@ setup(
+         name='sip',
+         version=version,
+         license='SIP',
+-        python_requires='>=3.7',
++        python_requires='>=3.6',
+         install_requires=['packaging', 'ply', 'setuptools', 'toml'],
+         packages=find_packages(),
+         package_data={
+Index: sip-6.7.5/sipbuild/py_versions.py
+===================================================================
+--- sip-6.7.5.orig/sipbuild/py_versions.py
++++ sip-6.7.5/sipbuild/py_versions.py
+@@ -22,4 +22,4 @@
+ 
+ 
+ # The oldest supported minor version of Python v3.
+-OLDEST_SUPPORTED_MINOR = 7
++OLDEST_SUPPORTED_MINOR = 6
+Index: sip-6.7.5/sipbuild/module/source/12/setup.py.in
+===================================================================
+--- sip-6.7.5.orig/sipbuild/module/source/12/setup.py.in
++++ sip-6.7.5/sipbuild/module/source/12/setup.py.in
+@@ -40,6 +40,6 @@ setup(
+         name='@SIP_MODULE_PROJECT_NAME@',
+         version='@SIP_MODULE_VERSION@',
+         license='SIP',
+-        python_requires='>=3.7',
++        python_requires='>=3.6',
+         ext_modules=[module]
+      )
+Index: sip-6.7.5/sipbuild/module/source/12/sip.h.in
+===================================================================
+--- sip-6.7.5.orig/sipbuild/module/source/12/sip.h.in
++++ sip-6.7.5/sipbuild/module/source/12/sip.h.in
+@@ -24,8 +24,8 @@
+ #include <Python.h>
+ 
+ /* Sanity check on the Python version. */
+-#if PY_VERSION_HEX < 0x03070000
+-#error "This version of @_SIP_MODULE_FQ_NAME@ requires Python v3.7 or later"
++#if PY_VERSION_HEX < 0x03060000
++#error "This version of @_SIP_MODULE_FQ_NAME@ requires Python v3.6 or later"
+ #endif
+ 
+ 
+Index: sip-6.7.5/sipbuild/module/source/13/setup.py.in
+===================================================================
+--- sip-6.7.5.orig/sipbuild/module/source/13/setup.py.in
++++ sip-6.7.5/sipbuild/module/source/13/setup.py.in
+@@ -40,6 +40,6 @@ setup(
+         name='@SIP_MODULE_PROJECT_NAME@',
+         version='@SIP_MODULE_VERSION@',
+         license='SIP',
+-        python_requires='>=3.7',
++        python_requires='>=3.6',
+         ext_modules=[module]
+      )
+Index: sip-6.7.5/sipbuild/module/source/13/sip.h.in
+===================================================================
+--- sip-6.7.5.orig/sipbuild/module/source/13/sip.h.in
++++ sip-6.7.5/sipbuild/module/source/13/sip.h.in
+@@ -24,8 +24,8 @@
+ #include <Python.h>
+ 
+ /* Sanity check on the Python version. */
+-#if PY_VERSION_HEX < 0x03070000
+-#error "This version of @_SIP_MODULE_FQ_NAME@ requires Python v3.7 or later"
++#if PY_VERSION_HEX < 0x03060000
++#error "This version of @_SIP_MODULE_FQ_NAME@ requires Python v3.6 or later"
+ #endif
+ 
+ 

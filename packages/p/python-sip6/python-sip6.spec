@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip6
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           python-sip6
-Version:        6.7.3
+Version:        6.7.5
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sip-hg2860-fixprop.patch https://www.riverbankcomputing.com/hg/sip/rev/2157850bf018, https://www.riverbankcomputing.com/pipermail/pyqt/2022-October/045021.html
-Patch0:         sip-hg2860-fixprop.patch
-BuildRequires:  %{python_module devel >= 3.7}
+Patch0:         support-python3.6.patch
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +47,10 @@ to generate wxPython, the Python bindings for wxWidgets.
 Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
 Requires:       c++_compiler
-Requires:       python-devel >= 3.7
+Requires:       python-devel >= 3.6
+%if %{python_version_nodots} <= 36
+Requires:       python-dataclasses
+%endif
 Requires:       python-packaging
 Requires:       python-ply
 Requires:       python-setuptools

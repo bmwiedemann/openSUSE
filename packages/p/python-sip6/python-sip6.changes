@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 12 09:02:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support python 3.6 needed by SLE15:
+  * support-python3.6.patch 
+
+-------------------------------------------------------------------
+Wed Jan 11 09:17:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.5
+  * This is a minor bug-fix release that fixes a problem with
+    extract filenames that contain Windows drive letters.
+- Version 6.7.4 is a minor big fix release that fixes the typo
+  affecting type hints for properties.
+- Drop sip-hg2860-fixprop.patch
+
+-------------------------------------------------------------------
 Mon Oct 31 10:44:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add sip-hg2860-fixprop.patch
