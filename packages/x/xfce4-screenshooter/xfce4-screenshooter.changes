@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jan 13 16:26:50 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.10.3
+  * Lower minimal Xfce dependencies back to 4.16
+  * Remove fallback code
+
+-------------------------------------------------------------------
+Thu Jan  5 07:40:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.2:
+  * Fix capture of CSD windows
+  * Fix active window and region capture modes
+  * Consider scale factor while capturing screenshots with cairo
+  * Support libsoup2 and 3 simultaneously
+  * save dialog: show preview of selected file
+  * Save preferences of panel plugin
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Dec 23 18:57:44 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 1.10.1: 

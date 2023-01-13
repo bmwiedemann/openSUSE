@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screenshooter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %bcond_with git
 
 Name:           xfce4-screenshooter
-Version:        1.10.1
+Version:        1.10.3
 Release:        0
 Summary:        Screenshot Tool for the Xfce Desktop
 License:        GPL-2.0-or-later
@@ -47,8 +47,8 @@ BuildRequires:  pkgconfig(libxfconf-0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:  pkgconfig(pango) >= 1.44.0
 BuildRequires:  pkgconfig(xext) >= 1.0.0
-BuildRequires:  pkgconfig(xi) >= 1.7.8
 BuildRequires:  pkgconfig(xfixes) >= 4.0.0
+BuildRequires:  pkgconfig(xi) >= 1.7.8
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
