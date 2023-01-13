@@ -1,7 +1,7 @@
 #
 # spec file for package babelstone-han-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           babelstone-han-fonts
-Version:        15.0.4
+Version:        15.0.5
 Release:        0
 Summary:        BabelStone font for Han Script
-License:        SUSE-Arphic
-# Change to Arphic-1999 after openSUSE's rpmlint gets synced
-# https://github.com/spdx/license-list-XML/issues/1404
+License:        Arphic-1999
+# rpmlint has not been updated yet to reflect the new license names already present on
+# format specfile https://github.com/rpm-software-management/rpmlint/pull/982
 Group:          System/X11/Fonts
 URL:            http://www.babelstone.co.uk/Fonts/
 Source0:        http://babelstone.co.uk/Fonts/Download/BabelStoneHan.zip

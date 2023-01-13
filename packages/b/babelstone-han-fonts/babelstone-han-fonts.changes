@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  6 08:49:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- update: 15.0.4 -> 15.0.5
+ * Change license ID from SUSE-Arphic to Arphic-1999
+ * 179 additional CJK unified ideographs
+ * 7 PUA characters added from BabelStone Han PUA version 1.320
+ * 10 duplicate PUA characters removed and about 60 PUA characters removed (now supported as IVS sequences)
+
+-------------------------------------------------------------------
 Sun Nov 13 01:35:19 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 8.0.2 -> 15.0.4
