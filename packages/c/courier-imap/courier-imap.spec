@@ -1,7 +1,7 @@
 #
 # spec file for package courier-imap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  pam-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  procps
 BuildRequires:  zlib-devel
@@ -129,8 +130,14 @@ mv %{buildroot}%{_bindir}/{couriertls,imapd,pop3d} %{buildroot}%{_sbindir}/
 # Rename imapd.8 to courier-imapd.8
 mv  %{buildroot}%{_mandir}/man8/imapd.8 %{buildroot}%{_mandir}/man8/%{name}d.8
 # Install PAM config files
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -D -m 644 %{S:2} %{buildroot}%{_pam_vendordir}/pop3
+install -D -m 644 %{S:3} %{buildroot}%{_pam_vendordir}/imap
+%else
 install -D -m 644 %{S:2} %{buildroot}%{_sysconfdir}/pam.d/pop3
 install -D -m 644 %{S:3} %{buildroot}%{_sysconfdir}/pam.d/imap
+%endif
 # Install init scripts
 for i in imap imap-ssl imap-gencert pop pop-ssl pop-gencert; do
   ln -s -f service %{buildroot}%{_sbindir}/rccourier-$i
@@ -163,6 +170,12 @@ make check
 %pre
 %service_add_pre courier-imap-gencert.service courier-imap-ssl.service courier-imap.service
 %service_add_pre courier-pop-gencert.service courier-pop-ssl.service courier-pop.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/pop3 pam.d/imap ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %preun
 %service_del_preun courier-imap-gencert.service courier-imap-ssl.service courier-imap.service
@@ -177,14 +190,27 @@ make check
 %service_del_postun courier-imap-gencert.service courier-imap-ssl.service courier-imap.service
 %service_del_postun courier-pop-gencert.service courier-pop-ssl.service courier-pop.service
 
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/pop3 pam.d/imap ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %defattr(-,root,root,755)
 %license COPYING*
 %doc AUTHORS README
 %doc libs/imap/ChangeLog libs/imap/BUGS libs/imap/README.proxy
 %doc libs/maildir/README.sharedfolders libs/maildir/README.maildirquota
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/imap
+%{_pam_vendordir}/pop3
+%else
 %config %attr(644,root,root) %{_sysconfdir}/pam.d/imap
 %config %attr(644,root,root) %{_sysconfdir}/pam.d/pop3
+%endif
 %dir %{_sysconfdir}/courier
 %dir %{_sysconfdir}/courier/imapaccess
 %dir %{_sysconfdir}/courier/shared

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 12 17:42:55 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Sun Dec 18 09:30:09 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.1
