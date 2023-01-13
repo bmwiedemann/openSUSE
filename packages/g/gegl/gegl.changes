@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 11 09:05:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 133.patch: Fix build against libraw 0.21.0.
+
+-------------------------------------------------------------------
 Wed Nov 23 11:13:07 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - luajit was disabled for riscv64 ppc64 ppc64le, patch it here

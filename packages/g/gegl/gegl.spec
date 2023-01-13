@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 133.patch dimstar@opensuse.org -- Fix build against libraw 0.21.0
+Patch0:         https://gitlab.gnome.org/GNOME/gegl/-/merge_requests/133.patch
 Source99:       baselibs.conf
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

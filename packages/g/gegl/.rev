@@ -566,4 +566,12 @@
       collection,</comment>
     <requestid>1037559</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>bf7e576b3abe71d2012b8861312b63a0</srcmd5>
+    <version>0.4.40</version>
+    <time>1673650926</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 133.patch: Fix build against libraw 0.21.0.</comment>
+    <requestid>1057748</requestid>
+  </revision>
 </revisionlist>
