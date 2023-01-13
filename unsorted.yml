@@ -5804,7 +5804,6 @@ unsorted:
   - ghex-devel 
   - ghex-lang 
   - ghostscript-devel 
-  - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -7216,8 +7215,6 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
-  - hylafax+ 
-  - hylafax+-client 
   - hyper-v-enhanced-session 
   - hyperfine 
   - hyperfine-bash-completion 
@@ -11042,7 +11039,6 @@ unsorted:
   - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
-  - libfaxutil7_0_6 
   - libfcache-devel 
   - libfcache1 
   - libfcft4 
@@ -12308,8 +12304,8 @@ unsorted:
   - libleechcraft-util-xdg-qt5-0_6_75 
   - libleechcraft-util-xpc-qt5-0_6_75_2 
   - libleechcraft-util-xsd-qt5-0_6_75 
-  - liblept5 
-  - liblept5-32bit: [x86_64] 
+  - libleptonica6 
+  - libleptonica6-32bit: [x86_64] 
   - libleveldb1 
   - liblevmar2 
   - liblightdm-qt5-3-0 
@@ -14591,7 +14587,7 @@ unsorted:
   - libterminalwidget5-0 
   - libtermkey-devel 
   - libtermkey1 
-  - libtesseract4 
+  - libtesseract-5_3_0 
   - libtestshade1_12: [x86_64] 
   - libtevent-devel 
   - libtexlua53-5 
@@ -19005,6 +19001,7 @@ unsorted:
   - ossim-sample-data 
   - osslsigncode 
   - ossp-uuid 
+  - osv-scanner 
   - oto 
   - otpclient 
   - otter-browser 
@@ -23562,7 +23559,6 @@ unsorted:
   - python310-glfw 
   - python310-glob2 
   - python310-glucat 
-  - python310-gmpy 
   - python310-gmpy2 
   - python310-gns3fy 
   - python310-gobject-devel 
@@ -24855,9 +24851,8 @@ unsorted:
   - python310-qtcharts-qt5-sip 
   - python310-qtconsole 
   - python310-qtdatavis3d-qt5 
-  - python310-qtdatavis3d-qt5-api 
+  - python310-qtdatavis3d-qt5-devel 
   - python310-qtdatavis3d-qt5-doc 
-  - python310-qtdatavis3d-qt5-sip 
   - python310-qtnetworkauth-qt5 
   - python310-qtnetworkauth-qt5-devel 
   - python310-qtwebengine-qt5 
@@ -26893,7 +26888,6 @@ unsorted:
   - python38-glfw 
   - python38-glob2 
   - python38-glucat 
-  - python38-gmpy 
   - python38-gmpy2 
   - python38-gns3fy 
   - python38-gobject 
@@ -28238,9 +28232,8 @@ unsorted:
   - python38-qtcharts-qt5-sip 
   - python38-qtconsole 
   - python38-qtdatavis3d-qt5 
-  - python38-qtdatavis3d-qt5-api 
+  - python38-qtdatavis3d-qt5-devel 
   - python38-qtdatavis3d-qt5-doc 
-  - python38-qtdatavis3d-qt5-sip 
   - python38-qtnetworkauth-qt5 
   - python38-qtnetworkauth-qt5-devel 
   - python38-qtwebengine-qt5 
@@ -30292,7 +30285,6 @@ unsorted:
   - python39-glfw 
   - python39-glob2 
   - python39-glucat 
-  - python39-gmpy 
   - python39-gmpy2 
   - python39-gns3fy 
   - python39-gobject 
@@ -31638,9 +31630,8 @@ unsorted:
   - python39-qtcharts-qt5-sip 
   - python39-qtconsole 
   - python39-qtdatavis3d-qt5 
-  - python39-qtdatavis3d-qt5-api 
+  - python39-qtdatavis3d-qt5-devel 
   - python39-qtdatavis3d-qt5-doc 
-  - python39-qtdatavis3d-qt5-sip 
   - python39-qtnetworkauth-qt5 
   - python39-qtnetworkauth-qt5-devel 
   - python39-qtwebengine-qt5 
@@ -43075,7 +43066,6 @@ unsorted:
   - tidy 
   - tidy-doc 
   - tidyp 
-  - tiff 
   - tig 
   - tig-bash-completion 
   - tig-zsh-completion 

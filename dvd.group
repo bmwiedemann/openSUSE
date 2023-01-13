@@ -576,6 +576,7 @@
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ghostscript-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="ghostscript-fonts-grops" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="ghostscript-fonts-other" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="ghostscript-fonts-std" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
@@ -869,6 +870,8 @@
     <package name="hunspell-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hwdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="hwinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="hylafax+" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="hylafax+-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="hyper-v" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="iagno" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iagno-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1882,6 +1885,7 @@
     <package name="libfakekey0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libfaxutil7_0_6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfcitx-config4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfcitx-core0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfcitx-gclient1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4370,6 +4374,7 @@
     <package name="thunar-volman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-volman-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="thunar-volman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="tiff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="tigervnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="time" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
