@@ -1,0 +1,28 @@
+From 9cc26aab3244b3022bcb5be338602f2e02e0b3d6 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Fri, 13 Jan 2023 10:41:28 +0100
+Subject: [PATCH] Fix build with Python 3.10
+
+Patch picked from ArchLinux
+
+Also see https://bugreports.qt.io/browse/PYSIDE-1775
+---
+ sources/shiboken2/libshiboken/pep384impl.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sources/shiboken2/libshiboken/pep384impl.cpp b/sources/shiboken2/libshiboken/pep384impl.cpp
+index 66df0fd..a723303 100644
+--- a/sources/shiboken2/libshiboken/pep384impl.cpp
++++ b/sources/shiboken2/libshiboken/pep384impl.cpp
+@@ -751,7 +751,7 @@ _Pep_PrivateMangle(PyObject *self, PyObject *name)
+ #endif // IS_PY2
+     Shiboken::AutoDecRef privateobj(PyObject_GetAttr(
+         reinterpret_cast<PyObject *>(Py_TYPE(self)), Shiboken::PyMagicName::name()));
+-#ifndef Py_LIMITED_API
++#if !defined(Py_LIMITED_API) && PY_VERSION_HEX < 0x03010000
+     return _Py_Mangle(privateobj, name);
+ #else
+     // PYSIDE-1436: _Py_Mangle is no longer exposed; implement it always.
+-- 
+2.39.0
+

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:18:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.15.8.
+  * Check the changes-5.15.8 file for the full list of changes
+- Drop patch, merged upstream:
+  * 0001-Backport-LLVM-13-fix-from-shiboken6.patch
+- Add patch to fix build with recent Python versions:
+  * 0001-Fix-build-with-Python-3.10.patch
+
+-------------------------------------------------------------------
 Tue Aug  9 08:25:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the dist-info folder name with python3-setuptools 63

@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           python3-pyside2
-Version:        5.15.5
+Version:        5.15.8
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -40,9 +40,9 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         0001-Backport-LLVM-13-fix-from-shiboken6.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Backport-Fix-GLES-builds.patch
+Patch3:         0001-Backport-Fix-GLES-builds.patch
+# PATCH-FIX-UPSTREAM PYSIDE-1775
+Patch4:         0001-Fix-build-with-Python-3.10.patch
 # Provide the PyPI names
 Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}
