@@ -1001,4 +1001,15 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1042878</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>65c66393ff1ba6779a2cb9da08471779</srcmd5>
+    <version>0.4.7.13</version>
+    <time>1673650978</time>
+    <user>dimstar_suse</user>
+    <comment>tor 0.4.7.13:
+  * fix SafeSocks option to avoid DNS leaks (boo#1207110, TROVE-2022-002)
+  * improve congestion control
+  * fix relay channel handling</comment>
+    <requestid>1058127</requestid>
+  </revision>
 </revisionlist>

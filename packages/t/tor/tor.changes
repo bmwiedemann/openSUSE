@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 13 06:29:25 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- tor 0.4.7.13:
+  * fix SafeSocks option to avoid DNS leaks (boo#1207110, TROVE-2022-002)
+  * improve congestion control
+  * fix relay channel handling
+
+-------------------------------------------------------------------
 Tue Dec  6 21:10:57 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.12:
