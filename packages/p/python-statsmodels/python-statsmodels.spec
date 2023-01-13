@@ -32,12 +32,15 @@ Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE use_old_setuptools_scm.patch mcepl@suse.com
+# Use older version setuptools_scm
+Patch0:         use_old_setuptools_scm.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module setuptools >= 0.59.2}
-BuildRequires:  %{python_module setuptools_scm >= 7}
+BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
@@ -72,6 +75,7 @@ and data analysis in Python.
 
 %prep
 %autosetup -p1 -n statsmodels-%{version}
+
 rm -rf statsmodels/.pytest_cache
 find . -type f -name "*.py" -exec sed -i -e '1{/env python/ d}' -e 's/\r$//' {} \;
 find . -type f -exec chmod a-x {} \;
@@ -111,7 +115,7 @@ pushd $testdir
 %define donttest  -k "not (test_seasonal_order or (test_holtwinters and test_forecast_index) or (test_discrete and test_basic))"
 %endif
 # not slow: some tests in tsa and discrete take AGES to run in OBS, like 2h per the folder
-%pytest_arch -n auto -p no:cacheprovider -m "not slow" %{$python_sitearch}/statsmodels %{?donttest}
+%pytest_arch -n auto -p no:cacheprovider -m "not slow" %{?donttest} %{$python_sitearch}/statsmodels
 popd
 rm -r $testdir
 %endif

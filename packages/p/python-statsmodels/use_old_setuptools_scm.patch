@@ -1,0 +1,60 @@
+From 38215fcb462598a3d60eeebdf30b5e7568d5c973 Mon Sep 17 00:00:00 2001
+From: Kevin Sheppard <kevin.sheppard@gmail.com>
+Date: Mon, 24 Oct 2022 00:48:12 +0100
+Subject: [PATCH] Restore setuptools_scm verion bump
+
+---
+ pyproject.toml           |    2 +-
+ requirements-dev.txt     |    2 +-
+ statsmodels/__init__.py  |    6 ++++--
+ statsmodels/tools/web.py |    2 +-
+ 4 files changed, 7 insertions(+), 5 deletions(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -15,7 +15,7 @@ requires = [
+     # Cap at 1.9.x for all other platforms
+     "scipy>=1.3,<1.10; (python_version>'3.9' or platform_system!='Windows' or platform_machine!='x86') and python_version<'3.12'",
+     "scipy>=1.9; python_version>='3.12'",
+-    "setuptools_scm[toml]>=7.0,<8"
++    "setuptools_scm[toml]>=6.4.2,<7.0.0"
+ ]
+ build-backend = "setuptools.build_meta"
+ 
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -1,6 +1,6 @@
+ # build
+ cython>=0.29.32,<3.0.0
+-setuptools_scm[toml]~=7.0.0
++setuptools_scm[toml]>=6.4.2,<7.0.0
+ oldest-supported-numpy>=2022.4.18
+ 
+ # run
+--- a/statsmodels/__init__.py
++++ b/statsmodels/__init__.py
+@@ -1,4 +1,6 @@
+-from statsmodels._version import __version__, __version_tuple__
++from statsmodels._version import (
++    version as __version__, version_tuple as __version_info__
++)
+ 
+ debug_warnings = False
+ 
+@@ -32,4 +34,4 @@ def test(extra_args=None, exit=False):
+     return tst(extra_args=extra_args, exit=exit)
+ 
+ 
+-__all__ = ["__version__", "__version_tuple__", "test"]
++__all__ = ["__version__", "__version_info__", "test"]
+--- a/statsmodels/tools/web.py
++++ b/statsmodels/tools/web.py
+@@ -5,7 +5,7 @@ to a function's reference
+ import webbrowser
+ from urllib.parse import urlencode
+ 
+-from statsmodels import __version__
++from statsmodels._version import __version__
+ 
+ BASE_URL = 'https://www.statsmodels.org/'
+ 
