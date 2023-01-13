@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-SpamAssassin-Plugin-dqs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           perl-Mail-SpamAssassin-Plugin-dqs
-Version:        1.2.2
+Version:        1.4.0
 Release:        0
 Summary:        SpamAssassin plugin for Spamhaus Data Query Service (DQS)
 License:        Apache-2.0
 Group:          Development/Libraries/Perl
 URL:            https://github.com/spamhaus/spamassassin-dqs/tags
-Source0:        https://github.com/spamhaus/spamassassin-dqs/archive/refs/tags/v%{version}.tar.gz
+Source0:        https://github.com/spamhaus/spamassassin-dqs/archive/refs/tags/v%{version}.tar.gz#/spamassassin-dqs-%{version}.tar.gz
 Source1:        README-SUSE.md
-BuildRequires:  spamassassin >= 3.4.1
-Requires:       spamassassin >= 3.4.1
+BuildRequires:  spamassassin >= 4.0.0
+Requires:       spamassassin >= 4.0.0
 %{perl_requires}
 
 %description
@@ -45,25 +45,27 @@ registration procedure for a free DQS key is mandatory nevertheless.
 
 %prep
 %setup -q -n spamassassin-dqs-%{version}
-sed -e 's|<config_directory>|%{perl_vendorlib}/Mail/SpamAssassin/Plugin|' -i sh.pre
+sed -e 's|<config_directory>|%{perl_vendorlib}/Mail/SpamAssassin/Plugin|' -i "3.4.1+/sh.pre"
 cp %{SOURCE1} .
 
 %build
 
 %install
-install -D -p -m 0644 SH.pm %{buildroot}%{perl_vendorlib}/Mail/SpamAssassin/Plugin/SH.pm
+install -D -p -m 0644 "3.4.1+/SH.pm" %{buildroot}%{perl_vendorlib}/Mail/SpamAssassin/Plugin/SH.pm
 mkdir -p %{buildroot}/%{_bindir}
-install -m 0755 hbltest.sh %{buildroot}%{_bindir}/hbltest.sh
-for FILE in sh.pre sh.cf sh_hbl.cf sh_hbl_scores.cf sh_scores.cf ; do
-	install -D -p -m 0644 $FILE %{buildroot}%{_sysconfdir}/mail/spamassassin/$FILE
+install -m 0755 "3.4.1+/hbltest.sh" %{buildroot}%{_bindir}/hbltest.sh
+install -D -p -m 0644 "3.4.1+/sh.pre" "%{buildroot}%{_sysconfdir}/mail/spamassassin/sh.pre"
+for FILE in sh.cf sh_scores.cf sh_hbl.cf sh_hbl_scores.cf ; do
+	install -D -p -m 0644 "4.0.0+/$FILE" "%{buildroot}%{_sysconfdir}/mail/spamassassin/$FILE"
 done
 
 %check
 # setup config files
 mkdir tests
 cp %{_sysconfdir}/mail/spamassassin/* tests/
-for FILE in sh.pre sh.cf sh_scores.cf ; do
-	cp $FILE tests/
+cp "3.4.1+/sh.pre" tests/
+for FILE in sh.cf sh_scores.cf ; do
+	cp "4.0.0+/$FILE" tests/
 done
 sed -e 's|%{perl_vendorlib}|%{buildroot}%{perl_vendorlib}|' -i tests/sh.pre
 # execute the tests

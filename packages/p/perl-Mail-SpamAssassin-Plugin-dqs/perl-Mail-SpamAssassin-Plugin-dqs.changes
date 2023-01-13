@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 13 13:35:49 UTC 2023 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- spamassassin-dqs version 1.4.0
+  * Added support for SA 4.0.0+
+
+- spamassassin-dqs version 1.3.0
+  * Updated README.md
+
+-------------------------------------------------------------------
 Wed Nov 16 10:28:49 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - spamassassin-dqs version 1.2.2
