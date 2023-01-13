@@ -1,7 +1,7 @@
 #
 # spec file for package python-vncdotool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-vncdotool
 Version:        1.0.0
@@ -29,6 +28,8 @@ Patch0:         remove-nose.patch
 Patch1:         fix-mocking.patch
 # https://github.com/sibson/vncdotool/issues/218
 Patch2:         python-vncdotool-no-mock.patch
+# gh#python/cpython#88852
+Patch3:         py311-compat.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -81,6 +82,7 @@ Command line VNC client.
 %python_alternative %{_bindir}/vncdo
 %python_alternative %{_bindir}/vncdotool
 %python_alternative %{_bindir}/vnclog
-%{python_sitelib}/*
+%{python_sitelib}/vncdotool
+%{python_sitelib}/vncdotool-%{version}*-info
 
 %changelog
