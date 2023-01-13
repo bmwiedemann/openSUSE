@@ -237,4 +237,18 @@
 </comment>
     <requestid>1045797</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1f01186ae37eb8cbcf9b0a592073b326</srcmd5>
+    <version>3.1.3</version>
+    <time>1673651007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3:
+  * Fix Aegis import/export when using long pwds.
+  * Fix secret service cleanup
+  * Show the correct error message when import fails
+  * Use g_utf8_strlen instead of strlen
+  * Add libcotp &gt;= 2.0 compatibility
+</comment>
+    <requestid>1058252</requestid>
+  </revision>
 </revisionlist>
