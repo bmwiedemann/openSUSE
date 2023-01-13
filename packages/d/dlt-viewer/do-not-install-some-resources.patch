@@ -1,0 +1,33 @@
+From d03816fa9141a2977655b9c0174fa170ecdf8d4d Mon Sep 17 00:00:00 2001
+From: Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+Date: Thu, 5 Jan 2023 19:56:01 +0100
+Subject: [PATCH] Do not install resources on app path
+
+
+diff --git a/src/cmake/Linux.cmake b/src/cmake/Linux.cmake
+index 3153722..1cd260a 100644
+--- a/src/cmake/Linux.cmake
++++ b/src/cmake/Linux.cmake
+@@ -9,22 +9,8 @@ install(FILES
+     "resources/icon/256x256/org.genivi.DLTViewer.png"
+     DESTINATION "${DLT_RESOURCE_INSTALLATION_PATH}/icons/hicolor/256x256/apps/"
+     COMPONENT dlt_viewer)
+-install(FILES
+-    "resources/icon/256x256/org.genivi.DLTViewer.png"
+-    DESTINATION "${DLT_APP_DIR_NAME}"
+-    RENAME ".DirIcon"
+-    COMPONENT dlt_viewer)
+-install(FILES
+-    "resources/icon/256x256/org.genivi.DLTViewer.png"
+-    DESTINATION "${DLT_APP_DIR_NAME}"
+-    COMPONENT dlt_viewer)
+-
+ 
+ install(PROGRAMS
+     "resources/org.genivi.DLTViewer.desktop"
+     DESTINATION "${DLT_RESOURCE_INSTALLATION_PATH}/applications"
+     COMPONENT dlt_viewer)
+-install(PROGRAMS
+-    "resources/org.genivi.DLTViewer.desktop"
+-    DESTINATION "${DLT_APP_DIR_NAME}"
+-    COMPONENT dlt_viewer)

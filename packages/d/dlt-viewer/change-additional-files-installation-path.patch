@@ -1,0 +1,19 @@
+From d28195777b14b105518661425529892c8c367761 Mon Sep 17 00:00:00 2001
+From: Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+Date: Thu, 5 Jan 2023 19:29:59 +0100
+Subject: [PATCH] Change DLT_ADDITIONAL_FILES_INSTALLATION_PATH location
+
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f68f427..604e258 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -74,7 +74,7 @@ set_target_properties(dlt-viewer PROPERTIES
+ if(WIN32)
+     set(DLT_ADDITIONAL_FILES_INSTALLATION_PATH "${DLT_EXECUTABLE_INSTALLATION_PATH}")
+ else()
+-    set(DLT_ADDITIONAL_FILES_INSTALLATION_PATH ".")
++    set(DLT_ADDITIONAL_FILES_INSTALLATION_PATH "/usr/share/dlt-viewer")
+ endif()
+ 
+ install(FILES

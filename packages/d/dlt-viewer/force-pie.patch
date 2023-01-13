@@ -1,0 +1,53 @@
+From 808a3d4a641f97aeb91b8860de8a93ed4831d59b Mon Sep 17 00:00:00 2001
+From: Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+Date: Fri, 6 Jan 2023 15:07:36 +0100
+Subject: [PATCH] Force PIE
+
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 98a1d63..616c9e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,6 +29,8 @@ file(WRITE "${CMAKE_BINARY_DIR}/full_version.txt" "${DLT_PROJECT_VERSION_MAJOR}.
+ 
+ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+     set(LINUX TRUE)
++    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
++    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pie")
+ endif()
+ 
+ set(CMAKE_CXX_STANDARD 11)
+diff --git a/parser/CMakeLists.txt b/parser/CMakeLists.txt
+index ee1f4b0..d1ea074 100644
+--- a/parser/CMakeLists.txt
++++ b/parser/CMakeLists.txt
+@@ -24,12 +24,6 @@ set_target_properties(dlt-parser PROPERTIES
+     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+     INSTALL_RPATH "$<$<BOOL:${LINUX}>:$ORIGIN/../lib;>$<$<BOOL:${APPLE}>:@loader_path/../Frameworks;>$<$<BOOL:${DLT_USE_QT_RPATH}>:${DLT_QT5_LIB_DIR}>")
+ 
+-    if(CMAKE_COMPILER_IS_GNUCXX)
+-    # https://stackoverflow.com/questions/45329372/ubuntu-recognizes-executable-as-shared-library-and-wont-run-it-by-clicking
+-    # https://forum.juce.com/t/cmake-executable-build-shows-up-as-shared-library-on-linux-mint/45503/6
+-    target_link_options(dlt-parser PRIVATE "-no-pie")
+-endif()
+-
+ install(TARGETS dlt-parser
+     DESTINATION "${DLT_EXECUTABLE_INSTALLATION_PATH}"
+     # Underscore for NSIS compatibility https://gitlab.kitware.com/cmake/cmake/-/issues/19982
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 913f520..ef58963 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -56,12 +56,6 @@ target_link_libraries(dlt-viewer
+     Qt5::Widgets
+     Qt5::SerialPort)
+ 
+-if(CMAKE_COMPILER_IS_GNUCXX)
+-    # https://stackoverflow.com/questions/45329372/ubuntu-recognizes-executable-as-shared-library-and-wont-run-it-by-clicking
+-    # https://forum.juce.com/t/cmake-executable-build-shows-up-as-shared-library-on-linux-mint/45503/6
+-    target_link_options(dlt-viewer PRIVATE "-no-pie")
+-endif()
+-
+ set_target_properties(dlt-viewer PROPERTIES
+     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+     INSTALL_RPATH "$<$<BOOL:${LINUX}>:$ORIGIN/../lib;>$<$<BOOL:${APPLE}>:@loader_path/../Frameworks;>$<$<BOOL:${DLT_USE_QT_RPATH}>:${DLT_QT5_LIB_DIR}>")
