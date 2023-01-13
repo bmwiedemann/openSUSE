@@ -20,7 +20,7 @@
 %define libname libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

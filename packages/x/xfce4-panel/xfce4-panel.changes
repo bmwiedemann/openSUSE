@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:37:08 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.18.1
+  * Update copyright year
+  * clock: Add missing sanity check
+  * clock: Do not override custom font formats
+  * clock: Fix sync timeout
+  * docs: Fix version for xfce_panel_set_image_from_source()
+  * libxfce4panel: Deprecate XfcePanelImage
+  * tasklist: Adapt wnck default icon size when UI scale > 1 
+    (gxo#xfce/xfce4-panel#681)
+  * tasklist: Do not duplicate menu item activation
+  * tasklist: Fix group button visibility
+  * tasklist: Fix scrolling through window buttons (gxo#xfce/xfce4-panel#692)
+  * tasklist: Fix window count positioning when UI scale > 1
+  * tasklist: Keep icon pixbuf around and use surface also for menu items
+  * windowmenu: Adapt wnck default icon size when UI scale > 1 
+    (gxo#xfce/xfce4-panel#682)
+  * Translation Updates
+-------------------------------------------------------------------
 Sat Dec 17 14:09:32 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.18.0
