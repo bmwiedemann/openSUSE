@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.2
+Version:        5.2.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -64,8 +64,6 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch1:         https://github.com/astropy/astropy/pull/14194.patch#/astropy-pr14194-numpy1.24.patch
 # https://docs.astropy.org/en/v5.2/install.html#requirements
 BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module Jinja2}
