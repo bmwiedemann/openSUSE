@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Jan 13 11:30:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.2:
+  * test/test-float.c: Avoid tickling an implicit int error
+  * test-aligned-alloc: Define _GNU_SOURCE for the aligned_alloc prototype
+  * test-fchmodat: Include <sys/stat.h> for the fchmodat prototype
+  * test-pidfd-getfd: Include <syspidfd.h> if available for pidfd_getfd
+  * rework stress_strnrnd()
+  * stress-signest: disable alternative stack before unmap
+  * Makefile: bump verison, update to new code name
+  * stress-forkheavy: cast mmap return to same type as pointer metrics
+  * stress-fp: disable float128 for OpenBSD
+  * stress-fp: disable float80 due to unresolved division by zero SIGFPEs
+  * core-shared-heap: cast void * ptt to uintptr_t to clean up icc build
+    warning
+  * stress-matrix-3d: remove redundant redeclaration of variable j
+  * stress-matrix: remove redundant redeclaration of variable j
+  * stress-efivar: rename varname to get_varname to avoid name shadowing
+  * stress-fp: add fp rates into metrics output, increase metrics to 24
+    slots
+  * stress-fp: only count bogo-ops for float, double, long double
+  * core-helper: silence a spurious gcc warning
+  * stress-str: replace search for _ with +
+  * README.md: update number of stressors
+  * stress-fp: exercise various floating point values with +, *, /
+    operations
+  * stress-branch: add yield call for SH4 to allow it to be interrupted
+  * stress-pci: add locking around PCI memory rate stats
+  * stress-ipsec-mb: add locking around statistics being dumped in debug
+  * core-shared-heap: ensure offset is always aligned to natural pointer
+    alignment
+  * stress-fault: restore signal handlers at end of stressor loop
+  * stress-bad-altstack: replace STRESS_MINSIGSTKSZ with static size_t
+    stress_minsigstksz
+  * core-shared-heap: only report shared heap usage if it has been used
+  * core-mwc: add stress_mwc*modn() functions for modulo'd range
+  * core-builtin.h: convert macros into inline functions
+  * stress-*: voidify return from snprintf
+  * stress-str: fix prototype for test_strcpy_t
+  * stress-list: evaluate entry->value ^ rnd before passing it into a macro
+  * stress-wcs: add missing strdsc for stress_wcscpy testcase
+  * core-shared-heap: add strdup for shared description metrics string
+  * stress-ng: replace size of on index element j with 0
+  * stress-ng.h: divide by size of make allocator bitmap elements instead
+    of 8
+  * stress-cpu: use a clang builtin for reversing bits
+  * core-hash: replace hash_rol_uint32 with shim_rol32n
+  * stress-wcs: remove variable failed, use info.failed instead
+  * stress-str: bundle wcs function args into a struct, improves run time
+  * stress-wcs: bundle wcs function args into a struct, improves run time
+  * core-hash: use builtin rotate macros for rotating values
+  * core-builtin: re-work rotate helpers, add generalised rotate
+    left/right macros
+  * stress-list: use builtin shim_ror64
+  * stress-resources: free resources before child exit
+  * core-helper: fix stack size for non-first calls (incorrect cached value)
+  * stress-pci: print PCI config and resource space read rates
+  * core-helper: fix typo on STRESS_MAXIMUM macro
+  * core-cache: Add 32 bit variants of 64 bit hashes
+  * core-hash: add more comments to explain the nuances of memcpy
+  * core-hash: xorror64: cast len to uint64_t before flipping bits
+  * core-helper: simplify stack size calculations using STRESS_MAXIMUM macro
+  * core-helper: limit iterations on stress_get_prime64
+  * stress-priv-instr: remove extraneous ) for SPARC (again)
+  * stress-priv-instr: remove extraneous ) for SPARC
+  * stress-mlock: fix typo on time function
+  * stress-judy: move judy_ops array to function scope
+  * core-resources: clean up code, voidify, constify, misc cleanups
+  * stress-dirdeep: only report directories being deleted if it is taking
+    a while to complete
+  * stress-dirdeep: remove commented out cruft.
+  * stress-evivar: ignore ioctl FS_IOC_SETFLAGS error return
+  * stress-sigio: use metrics interface to report SIGIOs per sec
+  * stress-malloc: add missing tab
+  * stress-judy: add judy insert/find/delete rate metrics
+
+-------------------------------------------------------------------
 Tue Dec 13 10:22:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.01:
