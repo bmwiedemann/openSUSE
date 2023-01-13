@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1039824</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4934459d0360a787ca07895938351012</srcmd5>
+    <version>1.1.4</version>
+    <time>1673650997</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.4:
+  * Add Django 4.1 support.
+  * Drop support for Python 3.6.
+  * Drop support for Django 2.2, 3.0, 3.1.</comment>
+    <requestid>1058209</requestid>
+  </revision>
 </revisionlist>

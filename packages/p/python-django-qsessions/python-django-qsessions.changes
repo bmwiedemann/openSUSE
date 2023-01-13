@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan  7 17:17:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * Add Django 4.1 support.
+  * Drop support for Python 3.6.
+  * Drop support for Django 2.2, 3.0, 3.1. 
+
+-------------------------------------------------------------------
 Thu Dec  1 17:15:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libgdal30 dependency and recommends: the code does not
