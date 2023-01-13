@@ -1,7 +1,7 @@
 #
 # spec file for package gpsd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define         sover 29
+%define         sover 30
 %define         libgps libgps%{sover}
 %define         libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.24
+Version:        3.25
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -216,6 +216,7 @@ for i in "${pyversions[@]}"; do
         target_python=${i} \
         python_libdir=${pylibdir[$cnt]} \
         unitdir=%{_unitdir} \
+        mibdir=%{_datadir}/snmp/mibs/%{name} \
         build
 
     # Fix python interpreter path.
@@ -399,5 +400,9 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_bindir}/gpssnmp
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
+%dir %{_datadir}/snmp
+%dir %{_datadir}/snmp/mibs
+%dir %{_datadir}/snmp/mibs/%{name}
+%{_datadir}/snmp/mibs/gpsd/GPSD-MIB
 
 %changelog

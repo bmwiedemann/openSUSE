@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 11 17:49:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.25
+  * Have ubxtool "-w 0" run forever.
+  * Bump libgps version to 30.0
+  * Change fixsource_t, store server locally, make pointers const.
+  * Move gpsd_hexpack() to gps.h as gps_hexpack()
+  * Move gpsd_hexdump() to gps.h as gps_hexdump()
+  * Allow gpsctl -s/--ship to work without -f.
+  * Grab prRes and quality from u-blox 8+, into JSON, then into xgps.
+  * New GPSD-MIB, installed in share/mibs/gpsd.
+  * gpssnmp supports GPSD-MIB in pass and pass_persist modes
+  * Add decodes for NMEA $xxHDM, $xxROT and $xxXDR
+  * Add Magnetic Heading (mheading) and Rate of Rotation (rot) to
+    attitude_t
+  * Allow NTP time from gpsd://, tcp:// and udp:// sources
+  * Add the -B, --nobuffer, option to gpspipe.
+  * gpsd opens $RUNDIR/chrony.clk.XXX.sock to supply serial time to
+    chronyd.
+  * Add -g and --garmin options to gpxlogger for depth.
+  * Add -F and --filein options to gpxlogger to read GPSD JSON from a
+    file.
+- Update gpsd.keyring (DD3DD9BB -> 0C898D47)
+
+-------------------------------------------------------------------
 Thu Apr 28 07:25:07 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.24

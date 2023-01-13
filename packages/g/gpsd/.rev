@@ -1020,4 +1020,12 @@ For more please read usr/share/doc/packages/gpsd/NEWS
     <comment></comment>
     <requestid>974365</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c091ab37adf30f3d84ee1ef4bf528cf2</srcmd5>
+    <version>3.25</version>
+    <time>1673650944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057999</requestid>
+  </revision>
 </revisionlist>
