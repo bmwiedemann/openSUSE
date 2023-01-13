@@ -1,0 +1,8 @@
+<package name="kubectl-node-shell" project="openSUSE:Factory">
+  <title>Exec into node via kubectl</title>
+  <description>(formerly known as kubectl-enter)
+
+Start a root shell in the node's host OS running.</description>
+  <devel project="devel:kubic" package="kubectl-node-shell"/>
+  <url>https://github.com/kvaps/kubectl-node-shell</url>
+</package>
