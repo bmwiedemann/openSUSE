@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+INSTDIR=debian/tmp
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	mkdir -p "${INSTDIR}/usr/share/php-mapi/"
+	cp -av *.php "${INSTDIR}/usr/share/php-mapi/"

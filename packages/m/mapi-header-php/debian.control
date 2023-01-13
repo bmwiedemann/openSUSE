@@ -1,0 +1,14 @@
+Source: mapi-header-php
+Section: base
+Priority: optional
+Maintainer: Grommunio <null@grommunio.com>
+Build-Depends: debhelper-compat (= 12)
+Rules-Requires-Root: no
+Standards-Version: 4.5.1
+
+Package: mapi-header-php
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, grommunio-error-pages
+Description: Common PHP MAPI header files for grommunio
+ PHP files shared between grommunio-web, grommunio-sync and other PHP
+ applications from the groupware suite.
