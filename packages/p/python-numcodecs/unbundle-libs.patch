@@ -1,8 +1,8 @@
-Index: numcodecs-0.7.2/setup.py
+Index: numcodecs-0.11.0/setup.py
 ===================================================================
---- numcodecs-0.7.2.orig/setup.py
-+++ numcodecs-0.7.2/setup.py
-@@ -112,6 +112,7 @@ def blosc_extension():
+--- numcodecs-0.11.0.orig/setup.py
++++ numcodecs-0.11.0/setup.py
+@@ -104,6 +104,7 @@ def blosc_extension():
          Extension('numcodecs.blosc',
                    sources=sources + blosc_sources,
                    include_dirs=include_dirs,
@@ -10,7 +10,7 @@ Index: numcodecs-0.7.2/setup.py
                    define_macros=define_macros,
                    extra_compile_args=extra_compile_args,
                    ),
-@@ -152,6 +153,7 @@ def zstd_extension():
+@@ -138,6 +139,7 @@ def zstd_extension():
          Extension('numcodecs.zstd',
                    sources=sources + zstd_sources,
                    include_dirs=include_dirs,
@@ -18,7 +18,7 @@ Index: numcodecs-0.7.2/setup.py
                    define_macros=define_macros,
                    extra_compile_args=extra_compile_args,
                    ),
-@@ -185,6 +187,7 @@ def lz4_extension():
+@@ -165,6 +167,7 @@ def lz4_extension():
          Extension('numcodecs.lz4',
                    sources=sources + lz4_sources,
                    include_dirs=include_dirs,
@@ -26,3 +26,23 @@ Index: numcodecs-0.7.2/setup.py
                    define_macros=define_macros,
                    extra_compile_args=extra_compile_args,
                    ),
+Index: numcodecs-0.11.0/numcodecs/tests/test_blosc.py
+===================================================================
+--- numcodecs-0.11.0.orig/numcodecs/tests/test_blosc.py
++++ numcodecs-0.11.0/numcodecs/tests/test_blosc.py
+@@ -155,10 +155,11 @@ def test_compress_complib(use_threads):
+     }
+     blosc.use_threads = use_threads
+     for cname in blosc.list_compressors():
+-        enc = blosc.compress(arr, cname.encode(), 1, Blosc.NOSHUFFLE)
+-        complib = blosc.cbuffer_complib(enc)
+-        expected_complib = expected_complibs[cname]
+-        assert complib == expected_complib
++        if cname in expected_complibs:
++            enc = blosc.compress(arr, cname.encode(), 1, Blosc.NOSHUFFLE)
++            complib = blosc.cbuffer_complib(enc)
++            expected_complib = expected_complibs[cname]
++            assert complib == expected_complib
+     with pytest.raises(ValueError):
+         # capitalized cname
+         blosc.compress(arr, b'LZ4', 1)

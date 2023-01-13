@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Jan 12 16:00:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11.0
+  * Speed up isinstance checks of
+    numcodecs.ndarray_like.NDArrayLike,
+    numcodecs.ndarray_like.DType and
+    numcodecs.ndarray_like.FlagsObj. By Andreas Poehlmann, #379.
+  * Remove unnecessary None argument to .get(), it is the default
+    value. By Dimitri Papadopoulos Orfanos, #395.
+  * Apply refurb suggestions. By Dimitri Papadopoulos Orfanos,
+    #372.
+  * Migrate codespell configuration to pyproject.toml and get rid
+    of setup.cfg. By Dimitri Papadopoulos Orfanos #374.
+  * Unvendor cpuinfo. By Dimitri Papadopoulos Orfanos #373.
+  * Drop headers. By John Kirkham, #375.
+  * Remove Python 2 code. By Dimitri Papadopoulos Orfanos #368,
+    #387.
+  * Support Python 3.11. By Dimitri Papadopoulos Orfanos, #369.
+  * Drop Python 3.7. By John Kirkham,, #405 #406.
+  * Test with zfpy 1.0.0. By John Kirkham, #385.
+  * Remove vendored C files and re-generate them on the fly using
+    Cython. Add a pyproject.toml file to define Cython as a build
+    dependency. By Dimitri Papadopoulos Orfanos, #369.
+  * Add tests for all registry classes. By Josh Moore, #349.
+  * Finish pyproject.toml migration. By John Kirkham #382.
+- Add numcodecs-pr417-raggednumpy.patch
+  * gh#zarr-developers/numcodecs#417
+- Refresh unbundle-libs.patch for system blosc supporting snappy
+  * gh#zarr-developers/numcodecs#264
+
+-------------------------------------------------------------------
+Sun Sep 25 20:23:44 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * require python >= 3.7
+
+- update to version 0.10.2:
+  * Fix
+    + Add BitRound (0.10.0) to registry. By Josh Moore, #342.
+
+- changes from version 0.10.1:
+  * Maintenance
+    + Add entrypoints to setup.py. By Josh Moore, #332.
+    + Fix spelling. By Dimitri Papadopoulos Orfanos, #336.
+    + Drop Python 3.6 from tests By Dimitri Papadopoulos Orfanos,
+      #338, #339.
+    + Remove trailing spaces and empty lines. By Dimitri Papadopoulos
+      Orfanos, #341.
+    + Add LGTM.com configuration file By Dimitri Papadopoulos Orfanos,
+      #337.
+
+- changes from version 0.10.0:
+  * Enhancements
+    + Add support of alternative array classes (other than NumPy
+      arrays) By Mads R. B. Kristensen, #305.
+    + Add ability to find codecs via entrypoint numcodecs.codecs. By
+      Martin Durant, #290.
+    + Add bitround codec By Ryan Abernathy and Martin Durant, #298.
+    + Introduce a flat option to ensure_contiguous_ndarray to switch
+      off flatten for ZFPY codec By Haiying Xu, #307.
+  * Bug fixes
+    + Fix a flatten array error for ZFPY, ZFPY codec is supported on
+      Python 3.9 and 3.10 on Linux and MacOS, the docs about ZFPY is
+      also available. By Haiying Xu, John Kirkham, Ryan Abernathey
+      #303.
+    + Codex: make encode and decode @abstractmethods By Mads
+      R. B. Kristensen, #306.
+    + Fix expected result test for Shuffle. By Elliott Sales de
+      Andrade, #282.
+  * Maintenance
+    + Multiple code linting fixes. By Dimitri Papadopoulos Orfanos,
+      #295, #294, #293, and #292.
+    + Drop Python 3.6 By Josh Moore, #318.
+    + Fix macOS Python 3.10 By John Kirkham, #311.
+    + chore: bump cibuildwheel version, use action By Henry Schreiner,
+      #309.
+    + Specify language as ‘en’ instead of None. By John Kirkham, #329.
+    + Move master to main. By John Kirkham, #322.
+    + Drop fastparquet benchmark. By John Kirkham, #321.
+    + Trim wheel builds. By John Kirkham, #320.
+
+- changes from version 0.9.1:
+  * Fix inaccurate docstrings for Blosc. By James Webber, #287.
+
+- changes from version 0.9.0:
+  * c-blosc upgrade 1.18.1 -> 1.21.0. Warning: this temporarily
+    removes support for snappy compression! By kindjacket, #283.
+  * Fix an ImportError with Blosc on Android. By Daniel Jewell, #284.
+
+- changes from version 0.8.1:
+  * Fix an ImportError with Blosc on Android. By Daniel Jewell, #284.
+
+- changes from version 0.8.0:
+  * The numcodecs.zfpy.ZFPY codec is now supported on Python 3.8 if
+    zfpy==0.5.5 is installed. By haiying xu, #229.
+  * Add support for byte Shuffle filter By Paul Branson and Martin
+    Durant #273.
+  * Update Windows + Mac CI to run all tests. By Jackson Maxfield
+    Brown, #276. Help from Oleg Höfling, #273.
+  * Update cpuinfo to 8.0.0. By Florian Jetter, #280.
+  * Drop out-of-date manual release docs. By John Kirkham, #272.
+  * Add support for Python 3.9 and Update GitHub Actions.
+
+-------------------------------------------------------------------
 Mon Apr 25 11:13:12 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable AVX2 to make package build reproducible (boo#1198818)
