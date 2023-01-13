@@ -25,7 +25,7 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.5.0
+Version:        3.6.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
@@ -80,7 +80,7 @@ xdg
 
 %build
 mv -vb src/dune_rules/setup.defaults.ml src/dune_rules/setup.ml
-ocaml configure.ml \
+bash configure \
 	'--bindir=%_bindir' \
 	'--datadir=%_datadir' \
 	'--etcdir=%_sysconfdir' \
@@ -94,8 +94,8 @@ ocaml configure.ml \
 dune_release_pkgs='dune'
 %ocaml_dune_setup
 jobs="-j `/usr/bin/getconf _NPROCESSORS_ONLN`"
-ocaml bootstrap.ml --verbose ${jobs}
-./dune.exe build \
+ocaml boot/bootstrap.ml --verbose ${jobs}
+./_boot/dune.exe build \
 	dune.install \
 	--release \
 	--profile dune-bootstrap \
@@ -103,7 +103,7 @@ ocaml bootstrap.ml --verbose ${jobs}
 	${jobs} \
 	%nil
 mkdir .bin
-ln -s ../dune.exe .bin/dune
+ln -sv ../_boot/dune.exe .bin/dune
 %endif
 #
 %if "%build_flavor" == "devel"
