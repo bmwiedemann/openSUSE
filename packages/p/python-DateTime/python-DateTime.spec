@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-DateTime
-Version:        4.9
+Version:        5.0
 Release:        0
 Summary:        Zope DateTime data type
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/DateTime
 Source:         https://files.pythonhosted.org/packages/source/D/DateTime/DateTime-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
