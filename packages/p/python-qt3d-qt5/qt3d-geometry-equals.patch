@@ -1,0 +1,46 @@
+diff -ur PyQt3D-5.15.5.orig/configure.py PyQt3D-5.15.5/configure.py
+--- PyQt3D-5.15.5.orig/configure.py	2023-01-11 16:36:08.772857551 +0100
++++ PyQt3D-5.15.5/configure.py	2023-01-12 21:48:49.016850894 +0100
+@@ -552,12 +552,12 @@
+         """
+ 
+         # Qt v5.12.4 was the last release where we updated PyQt for a patch
+-        # version.
++        # version. And SUSE started at 5.15.8 again
+         major = (target_configuration.qt_version >> 16) & 0xff
+         minor = (target_configuration.qt_version >> 8) & 0xff
+         patch = target_configuration.qt_version & 0xff
+ 
+-        if (major, minor) >= (5, 13):
++        if (major, minor) >= (5, 13) and (major, minor, patch) < (5, 15, 8):
+             patch = 0
+         elif (major, minor) == (5, 12):
+             if patch > 4:
+diff -ur PyQt3D-5.15.5.orig/sip/Qt3DCore/Qt3DCoremod.sip PyQt3D-5.15.5/sip/Qt3DCore/Qt3DCoremod.sip
+--- PyQt3D-5.15.5.orig/sip/Qt3DCore/Qt3DCoremod.sip	2023-01-11 16:36:08.788857951 +0100
++++ PyQt3D-5.15.5/sip/Qt3DCore/Qt3DCoremod.sip	2023-01-12 21:43:54.953179289 +0100
+@@ -25,7 +25,7 @@
+ %Import QtCore/QtCoremod.sip
+ %Import QtGui/QtGuimod.sip
+ 
+-%Timeline {Qt3D_5_7_0 Qt3D_5_7_1 Qt3D_5_8_0 Qt3D_5_9_0 Qt3D_5_9_1 Qt3D_5_9_2 Qt3D_5_9_3 Qt3D_5_9_4 Qt3D_5_9_5 Qt3D_5_9_6 Qt3D_5_9_7 Qt3D_5_9_8 Qt3D_5_9_9 Qt3D_5_10_0 Qt3D_5_10_1 Qt3D_5_11_0 Qt3D_5_11_1 Qt3D_5_11_2 Qt3D_5_11_3 Qt3D_5_12_0 Qt3D_5_12_1 Qt3D_5_12_2 Qt3D_5_12_3 Qt3D_5_12_4 Qt3D_5_13_0 Qt3D_5_14_0 Qt3D_5_15_0}
++%Timeline {Qt3D_5_7_0 Qt3D_5_7_1 Qt3D_5_8_0 Qt3D_5_9_0 Qt3D_5_9_1 Qt3D_5_9_2 Qt3D_5_9_3 Qt3D_5_9_4 Qt3D_5_9_5 Qt3D_5_9_6 Qt3D_5_9_7 Qt3D_5_9_8 Qt3D_5_9_9 Qt3D_5_10_0 Qt3D_5_10_1 Qt3D_5_11_0 Qt3D_5_11_1 Qt3D_5_11_2 Qt3D_5_11_3 Qt3D_5_12_0 Qt3D_5_12_1 Qt3D_5_12_2 Qt3D_5_12_3 Qt3D_5_12_4 Qt3D_5_13_0 Qt3D_5_14_0 Qt3D_5_15_0 Qt3D_5_15_8}
+ 
+ %Copying
+ Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
+diff -ur PyQt3D-5.15.5.orig/sip/Qt3DRender/qgeometryfactory.sip PyQt3D-5.15.5/sip/Qt3DRender/qgeometryfactory.sip
+--- PyQt3D-5.15.5.orig/sip/Qt3DRender/qgeometryfactory.sip	2023-01-11 16:36:08.796858151 +0100
++++ PyQt3D-5.15.5/sip/Qt3DRender/qgeometryfactory.sip	2023-01-12 21:44:48.070563125 +0100
+@@ -35,7 +35,12 @@
+     public:
+         virtual ~QGeometryFactory();
+         virtual Qt3DRender::QGeometry *operator()() = 0;
++%If (- Qt3D_5_15_0)
+         virtual bool operator==(const Qt3DRender::QGeometryFactory &other) const = 0;
++%End
++%If (Qt3D_5_15_8 -)
++        virtual bool equals(const Qt3DRender::QGeometryFactory &other) const = 0;
++%End
+     };
+ 
+     typedef QSharedPointer<Qt3DRender::QGeometryFactory> QGeometryFactoryPtr;

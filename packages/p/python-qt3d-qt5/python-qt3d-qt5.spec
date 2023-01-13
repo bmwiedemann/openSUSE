@@ -24,18 +24,19 @@
 %define have_qt3danimation 1
 %endif
 
-%define oldpython python
+%define plainpython python
 %define mname qt3d-qt5
-%{?!python_module:%define python_module() python3-%{**}}
+
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.4
+Version:        5.15.5
 Release:        0
 Summary:        Python bindings for the Qt5 3D framework
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart/intro
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt3D/PyQt3D-%{version}.tar.gz
+Patch0:         qt3d-geometry-equals.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-devel}
@@ -59,24 +60,25 @@ Requires:       python-qt5-sip
 %description
 PyQt3D is a set of Python bindings for the Qt 3D framework.
 
-%package api
-Summary:        Eric API files for %{name}
+%package devel
+Summary:        Development files for %{name}
 Group:          Development/Tools/IDE
-Supplements:    packageand(eric:python-%{mname})
-
-%description api
-This package provides Qt5 3D framework API files for the Eric IDE.
-
-%package sip
-Summary:        Sip files for %{name}
-Group:          Development/Libraries/Python
-Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
-Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
 Requires:       python-qt5-devel
+Requires:       %{plainpython}(abi) = %python_version
+Supplements:    (eric and python-%{mname})
+Supplements:    (python-qt5-devel and python-%{mname})
+Provides:       python-%{mname}-sip = %{version}-%{release}
+Obsoletes:      python-%{mname}-sip < %{version}-%{release}
+Provides:       python-%{mname}-api = %{version}-%{release}
+Obsoletes:      python-%{mname}-api < %{version}-%{release}
+Provides:       %{plainpython}-%{mname}-sip = %{version}-%{release}
+Obsoletes:      %{plainpython}-%{mname}-sip < %{version}-%{release}
+Provides:       %{plainpython}-%{mname}-api = %{version}-%{release}
+Obsoletes:      %{plainpython}-%{mname}-api < %{version}-%{release}
 
-%description sip
-This package provides the SIP files used to generate the Python bindings for
-%{name}
+%description devel
+This package provides the SIP files used to generate the Python bindings
+and the Qt5 3D framework API files for the Eric IDE for %{name}
 
 %package doc
 Summary:        Examples for %{name}
@@ -88,7 +90,7 @@ BuildArch:      noarch
 This package provides %{name} examples.
 
 %prep
-%setup -q -n PyQt3D-%{version}
+%autosetup -p1 -n PyQt3D-%{version}
 
 %build
 %pyqt_build
@@ -111,13 +113,10 @@ find examples/assets -type f -print0 | xargs -0 dos2unix
 %{python_sitearch}/PyQt5/Qt3DRender.*
 %{python_sitearch}/PyQt3D-%{version}.dist-info/
 
-%files %{python_files api}
+%files %{python_files devel}
 %license LICENSE
 %dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
 %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQt3D.api
-
-%files %{python_files sip}
-%license LICENSE
 %{?have_qt3danimation:%{pyqt5_sipdir}/Qt3DAnimation/}
 %{pyqt5_sipdir}/Qt3DCore/
 %{pyqt5_sipdir}/Qt3DExtras/

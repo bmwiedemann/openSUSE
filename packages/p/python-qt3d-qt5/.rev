@@ -101,4 +101,12 @@ This is for backports derived from Factory. No effect on Tumbleweed.</comment>
     <comment></comment>
     <requestid>918868</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e171b8fa720accb5023d45934525aae</srcmd5>
+    <version>5.15.5</version>
+    <time>1673650954</time>
+    <user>dimstar_suse</user>
+    <comment>fix the fix</comment>
+    <requestid>1058201</requestid>
+  </revision>
 </revisionlist>

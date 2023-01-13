@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 12 20:35:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix Timeline generation for qt3d-geometry-equals.patch
+
+-------------------------------------------------------------------
+Thu Jan 12 19:07:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Merge -api and -sip packages into -devel
+- Add qt3d-geometry-equals.patch
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2023-January/045097.html
+
+-------------------------------------------------------------------
+Wed Jan 11 09:14:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to PyQt3D 5.15.5
+  * Added support for Python v3.10.
+
+-------------------------------------------------------------------
 Mon Sep 13 15:58:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove the Supplements for python-sip -- boo#1190441
