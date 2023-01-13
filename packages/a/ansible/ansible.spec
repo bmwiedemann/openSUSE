@@ -81,10 +81,6 @@ find ./ansible_collections/ -iname .keep -delete
 # azure collection has wrong file endings
 find ./ansible_collections/azure -type f -exec dos2unix {} \;
 
-# ./ansible_collections/lowlydba/sqlserver/ throws errors in rpmlint
-# and is powershell only
-rm -rf ./ansible_collections/lowlydba/sqlserver/
-
 %build
 %python_build
 

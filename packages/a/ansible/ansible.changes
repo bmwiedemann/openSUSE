@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 12 12:17:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- do no longer remove ./ansible_collections/lowlydba/sqlserver/
+  as the powershell shebang is ignored and no longer causing issues
+
+-------------------------------------------------------------------
 Sun Dec 18 20:23:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - disable automatic generation of RPM dependencies from files in collections
