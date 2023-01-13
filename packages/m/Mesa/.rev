@@ -5137,4 +5137,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>- Update list of gallium-drivers to match default list</comment>
     <requestid>1046159</requestid>
   </revision>
+  <revision rev="465" vrev="337">
+    <srcmd5>da162ac29a4d5cdedeb732e50b1aad06</srcmd5>
+    <version>unknown</version>
+    <time>1673650931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057866</requestid>
+  </revision>
 </revisionlist>
