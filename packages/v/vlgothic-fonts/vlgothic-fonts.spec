@@ -1,7 +1,7 @@
 #
 # spec file for package vlgothic-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           vlgothic-fonts
-Version:        20200720
+Version:        20220612
 Release:        0
 Summary:        VL-Gothic TrueType font family
-License:        BSD-3-Clause AND SUSE-mplus
+License:        BSD-3-Clause AND mplus
 Group:          System/X11/Fonts
 URL:            http://dicey.org/vlgothic/
 Source0:        https://en.osdn.net/dl/vlgothic/VLGothic-%{version}.tar.xz

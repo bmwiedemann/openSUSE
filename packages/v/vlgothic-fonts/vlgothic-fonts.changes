@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  5 07:33:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220612:
+  * Fix character width setting (OS/2 table) of VL-Gothic
+  Force xAvgCharWidth of his OS/2 table by fontforge's
+  auto-setting to a fixed value that is not expected
+
+-------------------------------------------------------------------
 Sat May  7 15:14:29 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2020/07/20
