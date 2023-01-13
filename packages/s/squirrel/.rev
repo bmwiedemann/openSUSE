@@ -102,4 +102,31 @@
     <comment></comment>
     <requestid>743441</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a52b1a28a9642634612416c9c715373d</srcmd5>
+    <version>3.2</version>
+    <time>1673650998</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2 (bsc#1201974, CVE-2021-41556):
+  * added new inline bind env syntax for closures
+  * added sq_tailcall
+  * added rawcall keyword
+  * added post call initializer syntax
+  * added table.keys() and table.values()
+  * added table.filter()
+  * added skipempty in split()
+  * additional parameters in array.map() and array.apply()
+  * additional optional initializer in array.reduce()
+  * added sqstd_pushstringf and sqstd_throwerrorf
+  * closure.call() is now a &quot;native tailcall&quot; and the invoked function can now be suspended
+  * fixed sq_newmember and sq_rawnewmember properly pop parameters
+  * fixed capturing free variable on for loop counter before a break statement
+  * fixed \u in lexer
+  * various bugfixes
+  * sq_gettypetag doesn't set last error(it's treated as SQBool function but keeps a SQRESULT for backward compatibility)
+  * fixed _set method in userdata delegates
+  * fixed some warnings 
+- drop squirrel-aliasing.patch, squirrel-ptr_conversion.patch (upstream)</comment>
+    <requestid>1058212</requestid>
+  </revision>
 </revisionlist>

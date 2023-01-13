@@ -1,7 +1,7 @@
 #
 # spec file for package squirrel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define tardir SQUIRREL3
-%define tarver 3_0_7
+%define tardir squirrel3
+%define tarver 3_2
 Name:           squirrel
-Version:        3.0.7
+Version:        3.2
 Release:        0
 Summary:        A high level imperative/OO programming language
 License:        MIT
 Group:          Development/Languages/Other
-URL:            http://squirrel-lang.org/
+URL:            https://squirrel-lang.org/
 Source:         https://downloads.sourceforge.net/%{name}/%{name}_%{tarver}_stable.tar.gz
 Patch0:         squirrel-autoconfiscate.patch.bz2
-Patch1:         squirrel-aliasing.patch
-Patch2:         squirrel-ptr_conversion.patch
 Patch3:         squirrel-rename_binary.patch
 Patch4:         squirrel-gcc47.patch
 BuildRequires:  dos2unix
@@ -81,8 +79,6 @@ Example scripts to show squirrel usage.
 %setup -q -n %{tardir}
 dos2unix -q $(find . -type f)
 %patch0
-%patch1
-%patch2 -p1
 %patch3
 %patch4 -p1
 find . -type f -exec chmod -x {} +
