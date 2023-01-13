@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jan 12 10:13:45 UTC 2023 - enzokiel@kabelmail.de
+
+- Update to version 3.9.3
+  * New:
+    + User action script to fix ID3v2 standard violations.
+  * Improved:
+    + Accept letters in track numbers when setting tags from
+      filename.
+    + Embed lyrics: Use letras.com instead of lyrics.wikia.com.
+  * Fixed:
+    + Crash upon termination when qml and qmlview actions have been
+      used.
+    + Abort when invalid keys are used for FLAC Vorbis comments.
+    + Use of non-BMP Unicode characters with TagLib.
+    + Error description when saving files fails.
+    + Discogs import.
+    + Building with Musl libc.
+    + Windows: Handling of common path in multiple command line
+      arguments.
+
+-------------------------------------------------------------------
 Sun Aug  7 09:03:25 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update ot 3.9.2
