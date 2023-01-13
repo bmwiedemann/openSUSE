@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 13 13:47:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.3
+  * Fix pixel scale formula used by iterative inverse by @mcara in
+    #423
+  * refactor for Tox 4 by @zacharyburnett in #428
+  * Improve stability of SIP fitting. Fix constant term - CRPIX -
+    in SIP by @mcara in #427
+  * use canonical name of RTD config and enable nitpicky mode to
+    catch broken links in docs by @zacharyburnett in #430
+  * add downstream tests for JWST and Roman calibration pipelines
+    by @zacharyburnett in #415
+  * fix CRDS_PATH in CI when running downstream tests by
+    @zacharyburnett in #432
+
+-------------------------------------------------------------------
 Thu Oct 27 17:04:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.2
