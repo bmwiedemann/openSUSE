@@ -1,7 +1,7 @@
 #
 # spec file for package elixir
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           elixir
-Version:        1.14.0
+Version:        1.14.2
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -28,9 +28,9 @@ Source2:        macros.elixir
 BuildRequires:  gcc
 BuildRequires:  make
 # required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
-Requires:       erlang >= 22
+Requires:       erlang >= 23
 Requires:       git >= 1.7
-BuildRequires:  erlang >= 22
+BuildRequires:  erlang >= 23
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
 BuildRequires:  git >= 1.7
