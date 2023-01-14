@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan  7 12:27:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.33:
+  * The ``cythonize`` and ``cython`` commands have a new option ``-M`` /
+    ``--depfile`` to generate ``.dep`` dependency files for the
+    compilation unit.  This can be used by external build tools to
+    track these dependencies. 
+  * ``const`` fused types could not be used with memory views.
+  * ``wstr`` usage was removed in Python 3.12 and later (PEP-623).
+  * A type check assertion for Cython functions failed in debug Python
+    builds.
+  * Fixed various compiler warnings.
+  * Fixed error when calculating complex powers of negative numbers.
+  * Corrected a small mis-formatting of exception messages on Python 2.
+  * The ``PyUnicode_AsUTF8AndSize()`` C-API function was missing from the
+    CPython declarations.
+  * A performance problem in the compiler was resolved when nesting
+    conditional expressions.
+  * Test suite problems with recent NumPy and CPython versions were
+    resolved.
+  * Other changes
+  * The undocumented, untested and apparently useless syntax
+  ``from somemodule cimport class/struct/union somename`` was deprecated
+  in anticipation of its removal in Cython 3.  The type
+  modifier is not needed here and a plain ``cimport`` of the name will do.
+  * Properly disable generation of descriptor docstrings on PyPy since they
+    cause crashes.
+  It was previously disabled, but only accidentally via a typo.
+  * The ``cpow`` directive of Cython 3.0 is available as a no-op.
+
+-------------------------------------------------------------------
 Wed Oct 26 01:33:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove leftover Python 2 gubbins.
