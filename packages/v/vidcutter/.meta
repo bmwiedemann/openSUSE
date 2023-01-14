@@ -1,5 +1,0 @@
-<package name="vidcutter" project="openSUSE:Factory">
-  <title>VidCutter</title>
-  <description>Open-Source Video Trimmer</description>
-  <devel project="multimedia:apps" package="vidcutter"/>
-</package>
