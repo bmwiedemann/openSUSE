@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without vala
 %endif
 Name:           AppStream
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -31,11 +31,12 @@ URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz
 Source1:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         support-meson0.59.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gperf
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.62
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(Qt5Core)
@@ -144,8 +145,10 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 
 %find_lang appstream %{name}.lang
 
-%ldconfig_scriptlets -n libappstream%{libappstream_sover}
-%ldconfig_scriptlets -n libAppStreamQt%{libAppStreamQt_sover}
+%post -n libAppStreamQt%{libAppStreamQt_sover} -p /sbin/ldconfig
+%post -n libappstream%{libappstream_sover} -p /sbin/ldconfig
+%postun -n libAppStreamQt%{libAppStreamQt_sover} -p /sbin/ldconfig
+%postun -n libappstream%{libappstream_sover} -p /sbin/ldconfig
 
 %files lang -f %{name}.lang
 

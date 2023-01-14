@@ -1,0 +1,91 @@
+Index: AppStream-0.15.6/meson.build
+===================================================================
+--- AppStream-0.15.6.orig/meson.build
++++ AppStream-0.15.6/meson.build
+@@ -1,5 +1,5 @@
+ project('AppStream', 'c',
+-  meson_version: '>=0.62',
++  meson_version: '>=0.59',
+   default_options: ['c_std=c11', 'cpp_std=gnu++14'],
+ 
+   license: 'LGPL-2.1+',
+@@ -112,6 +112,7 @@ add_project_arguments(
+     '-Werror=missing-include-dirs',
+     '-Werror=declaration-after-statement',
+     '-Werror=format-security',
++    '-Werror=format',
+ 
+     '-Wno-missing-field-initializers',
+     '-Wno-error=missing-field-initializers',
+@@ -130,6 +131,7 @@ add_project_arguments(
+   '-Werror=return-type',
+   '-Werror=misleading-indentation',
+   '-Werror=format-security',
++  '-Werror=format',
+   language: 'cpp'
+ )
+ add_project_arguments('-DAS_COMPILATION', language: 'c')
+Index: AppStream-0.15.6/po/meson.build
+===================================================================
+--- AppStream-0.15.6.orig/po/meson.build
++++ AppStream-0.15.6/po/meson.build
+@@ -1,5 +1,20 @@
+ 
+ as_gettext_domain = 'appstream'
++
++if meson.version().version_compare('<0.62')
++i18n.gettext(as_gettext_domain,
++    preset : 'glib',
++    data_dirs: [join_paths(source_root, 'data')],
++    args: [
++        '--default-domain=' + as_gettext_domain,
++        '--from-code=UTF-8',
++        '-i', '-F', '-c', '--no-wrap',
++        '--package-name=' + as_gettext_domain,
++        '--copyright-holder=Matthias Klumpp',
++        '--msgid-bugs-address=appstream@lists.freedesktop.org'
++    ]
++)
++else
+ i18n_result = i18n.gettext(as_gettext_domain,
+     preset : 'glib',
+     data_dirs: [join_paths(source_root, 'data')],
+@@ -12,6 +27,7 @@ i18n_result = i18n.gettext(as_gettext_do
+         '--msgid-bugs-address=appstream@lists.freedesktop.org'
+     ]
+ )
++endif
+ 
+ run_target ('make-linguas',
+     command: ['sh',
+Index: AppStream-0.15.6/data/meson.build
+===================================================================
+--- AppStream-0.15.6.orig/data/meson.build
++++ AppStream-0.15.6/data/meson.build
+@@ -17,6 +17,18 @@ metainfo_with_relinfo = custom_target('g
+     command : [ascli_exe, 'news-to-metainfo', '--limit=6', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
+ )
+ 
++    # generates XML with mangled description markup tags, but better than nothing...
++if meson.version().version_compare('<0.62')
++metainfo_i18n = i18n.merge_file (
++    input:  metainfo_with_relinfo,
++    output: 'org.freedesktop.appstream.cli.metainfo.xml',
++    type: 'xml',
++    data_dirs: [meson.current_source_dir()],
++    po_dir: join_paths (source_root, 'po'),
++    install: true,
++    install_dir: metainfo_dir
++)
++else
+ metainfo_i18n = i18n.itstool_join(
+     input:  metainfo_with_relinfo,
+     output: 'org.freedesktop.appstream.cli.metainfo.xml',
+@@ -25,6 +37,7 @@ metainfo_i18n = i18n.itstool_join(
+     install: true,
+     install_dir: metainfo_dir,
+ )
++endif
+ 
+ test('as-validate_metainfo.cli',
+     ascli_exe,
