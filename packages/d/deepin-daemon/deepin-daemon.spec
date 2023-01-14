@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-daemon
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   _name       dde-daemon
 %define   import_path github.com/linuxdeepin/dde-daemon
@@ -22,7 +23,7 @@ Name:           deepin-daemon
 Version:        5.14.45
 Release:        0
 Summary:        Daemon handling the DDE session settings
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-daemon
 Source0:        https://github.com/linuxdeepin/dde-daemon/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        %{name}.sysusers
@@ -40,38 +41,38 @@ Patch1:         %{name}-libinput.patch
 Patch2:         disable-gobuild-in-makefile.patch
 Patch3:         harden_deepin-accounts-daemon.service.patch
 Group:          System/GUI/Other
-BuildRequires:  lightdm
-BuildRequires:  lightdm-gtk-greeter
-BuildRequires:  golang-packaging
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  fontpackages-devel
+BuildRequires:  golang-github-linuxdeepin-dde-api
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
+BuildRequires:  golang-packaging
+BuildRequires:  lightdm
+BuildRequires:  lightdm-gtk-greeter
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(ddcutil)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libbamf3)
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(librsvg-2.0)
-BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  pkgconfig(ddcutil)
-BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
-BuildRequires:  golang-github-linuxdeepin-dde-api
+BuildRequires:  pkgconfig(xtst)
 %if 0%{?sle_version} == 150200
 BuildRequires:  golang-github-stretchr-testify
 %endif
@@ -80,16 +81,16 @@ BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
 Requires:       acpid
 Requires:       gvfs
 Requires:       iw
 Requires:       rfkill
 Requires:       upower
+Requires:       wallpaper-branding-openSUSE
 Requires:       xdotool
 Requires:       xvfb-run
-Requires:       wallpaper-branding-openSUSE
 %if %{suse_version} > 1500
 Requires:       libgdk_pixbuf_xlib-2_0-0
 %else
@@ -130,10 +131,9 @@ them manually or use deepin-dbus-install package.
 %package -n golang-github-linuxdeepin-deepin-daemon
 Summary:        Deepin daemon golang codes
 Group:          Development/Languages/Golang
-Requires:       golang-github-linuxdeepin-go-dbus-factory
 Requires:       golang-github-linuxdeepin-dde-api
+Requires:       golang-github-linuxdeepin-go-dbus-factory
 BuildArch:      noarch
-AutoReqProv:    On
 AutoReq:        Off
 %{go_provides}
 
@@ -144,8 +144,8 @@ use import path with pkg.deepin.io/dde/daemon prefix.
 %package lightdm
 Summary:        Deepin Desktop branding setting for lightdm
 Group:          System/X11/Displaymanagers
-Requires:       lightdm
 Requires:       %{name} = %{version}
+Requires:       lightdm
 AutoReqProv:    Off
 
 %description lightdm
@@ -253,8 +253,19 @@ popd
 
 %find_lang %{_name}
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/deepin-auth-keyboard %{buildroot}%{_pam_vendordir}
+%endif
+
 %pre
 %service_add_pre deepin-accounts-daemon.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/deepin-auth-keyboard ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 %service_add_post deepin-accounts-daemon.service
@@ -281,6 +292,14 @@ if [ $1 -eq 0 ]; then
   rm -f /usr/share/dbus-1/system-services/com.deepin.daemon*
 fi
 
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/deepin-auth-keyboard ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
@@ -290,7 +309,11 @@ fi
 %exclude %{_bindir}/%{name}-polkit-installer
 %dir %{_sysconfdir}/default/grub.d
 %config %{_sysconfdir}/default/grub.d/10_deepin.cfg
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/deepin-auth-keyboard
+%else
 %config %{_sysconfdir}/pam.d/deepin-auth-keyboard
+%endif
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/conf.d
 %config %{_sysconfdir}/NetworkManager/conf.d/deepin.dde.daemon.conf
@@ -348,4 +371,3 @@ fi
 %files lang -f %{_name}.lang
 
 %changelog
-

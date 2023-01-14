@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 12 18:05:58 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Sat Aug 20 13:46:13 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.14.45
