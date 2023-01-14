@@ -333,4 +333,12 @@ w3m permissive license much more akin to ISC (spdx.org/licenses/ISC) than to eit
     <comment></comment>
     <requestid>569803</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>872dc610e57707e29bbfa4f5d211661b</srcmd5>
+    <version>0.5.3+git20180125</version>
+    <time>1673724653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058135</requestid>
+  </revision>
 </revisionlist>

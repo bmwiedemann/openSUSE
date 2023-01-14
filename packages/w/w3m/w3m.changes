@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 10 08:22:40 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+- CVE-2022-38223 Out-of-bounds write in checkType located in etc.c
+  (bsc#1202684)
+ - add:
+    0002-Fix-m17n-backspace-handling-causes-out-of-bounds-wri.patch
+    0001-Fix-warning-for-unused-variable-without-USE_M17N.patch
+
+-------------------------------------------------------------------
 Thu Jan 25 10:26:25 UTC 2018 - Thomas.Blume@suse.com
 
 - add git ChangeLog to /usr/share/doc/w3m/

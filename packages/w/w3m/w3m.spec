@@ -1,7 +1,7 @@
 #
 # spec file for package w3m
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           w3m
-Url:            http://w3m.sourceforge.net/
+URL:            http://w3m.sourceforge.net/
 Version:        0.5.3+git20180125
 Release:        0
 Summary:        A text-based WWW browser
@@ -29,6 +29,8 @@ Patch0:         0001-allow-to-configure-the-accept-option-for-bad-cookies.patch
 Patch1:         0001-implements-simple-session-management.patch
 Patch2:         0001-handle-EXDEV-during-history-file-rename.patch
 Patch3:         0001-w3mman-don-t-show-invalid-characters-bsc-950800.patch
+Patch4:         0001-Fix-warning-for-unused-variable-without-USE_M17N.patch
+Patch5:         0002-Fix-m17n-backspace-handling-causes-out-of-bounds-wri.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gc-devel
@@ -70,7 +72,6 @@ features:
 If w3m-inline-image is installed it can display graphics inside
 terminals, even on the console on some platforms.
 
-
 %description inline-image
 Inline image extension for w3m, the text-based WWW browser.
 
@@ -80,10 +81,7 @@ terminal (if it runs in a graphical X Window System environment).
 %prep
 %setup -q -n w3m-%{version}
 find -name CVS -exec rm -Rf "{}" "+"
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -DUSE_BUFINFO -DOPENSSL_NO_SSL_INTERN -D_GNU_SOURCE $(getconf LFS_CFLAGS) -fno-strict-aliasing `ncursesw6-config --cflags` -fPIE"

@@ -1,0 +1,132 @@
+From 0c8c1db8d29b5bb8bbd6214d640230dd6b1545dd Mon Sep 17 00:00:00 2001
+From: Rene Kita <mail@rkta.de>
+Date: Mon, 13 Sep 2021 19:47:02 +0200
+Subject: [PATCH 1/2] Fix warning for unused variable without USE_M17N
+
+(cherry picked from commit 4901408ea5ea167696175a5da3c92e709702ca4f)
+---
+ display.c | 6 ++----
+ etc.c     | 4 +++-
+ file.c    | 3 +--
+ linein.c  | 2 --
+ table.c   | 2 +-
+ 5 files changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/display.c b/display.c
+index f1d6f99..e04b79b 100644
+--- a/display.c
++++ b/display.c
+@@ -1364,15 +1364,14 @@ cursorRight(Buffer *buf, int n)
+ {
+     int i, delta = 1, cpos, vpos2;
+     Line *l = buf->currentLine;
+-    Lineprop *p;
+ 
+     if (buf->firstLine == NULL)
+ 	return;
+     if (buf->pos == l->len && !(l->next && l->next->bpos))
+ 	return;
+     i = buf->pos;
+-    p = l->propBuf;
+ #ifdef USE_M17N
++    Lineprop *p = l->propBuf;
+     while (i + delta < l->len && p[i + delta] & PC_WCHAR2)
+ 	delta++;
+ #endif
+@@ -1415,13 +1414,12 @@ cursorLeft(Buffer *buf, int n)
+ {
+     int i, delta = 1, cpos;
+     Line *l = buf->currentLine;
+-    Lineprop *p;
+ 
+     if (buf->firstLine == NULL)
+ 	return;
+     i = buf->pos;
+-    p = l->propBuf;
+ #ifdef USE_M17N
++    Lineprop *p = l->propBuf;
+     while (i - delta > 0 && p[i - delta] & PC_WCHAR2)
+ 	delta++;
+ #endif
+diff --git a/etc.c b/etc.c
+index dcc6edd..dea56b5 100644
+--- a/etc.c
++++ b/etc.c
+@@ -253,8 +253,10 @@ checkType(Str s, Lineprop **oprop, Linecolor **ocolor)
+     char *es = NULL;
+ #endif
+     int do_copy = FALSE;
++#ifdef USE_M17N
+     int i;
+     int plen = 0, clen;
++#endif
+ 
+     if (prop_size < s->length) {
+ 	prop_size = (s->length > LINELEN) ? s->length : LINELEN;
+@@ -429,7 +431,6 @@ checkType(Str s, Lineprop **oprop, Linecolor **ocolor)
+ 	}
+ #endif
+ 
+-	plen = get_mclen(str);
+ 	mode = get_mctype(str) | effect;
+ #ifdef USE_ANSI_COLOR
+ 	if (color) {
+@@ -439,6 +440,7 @@ checkType(Str s, Lineprop **oprop, Linecolor **ocolor)
+ #endif
+ 	*(prop++) = mode;
+ #ifdef USE_M17N
++	plen = get_mclen(str);
+ 	if (plen > 1) {
+ 	    mode = (mode & ~PC_WCHAR1) | PC_WCHAR2;
+ 	    for (i = 1; i < plen; i++) {
+diff --git a/file.c b/file.c
+index 86af3a9..af92794 100644
+--- a/file.c
++++ b/file.c
+@@ -7966,7 +7966,6 @@ int
+ save2tmp(URLFile uf, char *tmpf)
+ {
+     FILE *ff;
+-    int check;
+     clen_t linelen = 0, trbyte = 0;
+     MySignalHandler(*volatile prevtrap) (SIGNAL_ARG) = NULL;
+     static JMP_BUF env_bak;
+@@ -7983,8 +7982,8 @@ save2tmp(URLFile uf, char *tmpf)
+ 	goto _end;
+     }
+     TRAP_ON;
+-    check = 0;
+ #ifdef USE_NNTP
++    int check = 0;
+     if (uf.scheme == SCM_NEWS) {
+ 	char c;
+ 	while (c = UFgetc(&uf), !iseos(uf.stream)) {
+diff --git a/linein.c b/linein.c
+index d8f9023..282c2f4 100644
+--- a/linein.c
++++ b/linein.c
+@@ -77,8 +77,6 @@ static Str strCurrentBuf;
+ static int use_hist;
+ #ifdef USE_M17N
+ static void ins_char(Str str);
+-#else
+-static void ins_char(char c);
+ #endif
+ 
+ char *
+diff --git a/table.c b/table.c
+index 572ebd6..842de18 100644
+--- a/table.c
++++ b/table.c
+@@ -415,7 +415,7 @@ suspend_or_pushdata(struct table *tbl, char *line)
+ #ifdef USE_M17N
+ #define PUSH_TAG(str,n) Strcat_charp_n(tagbuf, str, n)
+ #else
+-#define PUSH_TAG(str,n) Strcat_char(tagbuf, *str)
++#define PUSH_TAG(str,n) Strcat_char(tagbuf, *str), (void)n
+ #endif
+ 
+ int visible_length_offset = 0;
+-- 
+2.39.0
+
