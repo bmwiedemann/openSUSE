@@ -1,7 +1,7 @@
 #
 # spec file for package act
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,7 @@ act helps you run your Github Actions locally.
 %prep
 %setup -q
 %setup -q -a1 %{SOURCE1}
+sed -i 's_var version = \"v0.2.27-dev\"_var version = "%{version}"_g' main.go
 
 %build
 %{goprep} .

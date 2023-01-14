@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 11 16:48:45 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.2.34
+
+- Spec file:
+  Fix bsc#1207021 to report the correct version when calling "act --version"
+  Wrong version is fixed with sed in act-0.2.34/main.go
+  Reported upstream as GH://nektos/act#1555
+
+-------------------------------------------------------------------
 Sat Dec 10 07:43:56 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 0.2.34
 
 - Update to version 0.2.34:
