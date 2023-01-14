@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-screensaver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,6 +87,23 @@ find %{buildroot} -type f -name "*.la" -delete -print
 chmod a-x %{buildroot}%{_datadir}/%{name}/__init__.py
 chmod a-x %{buildroot}%{_datadir}/%{name}/*/__init__.py
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/cinnamon-screensaver %{buildroot}%{_pam_vendordir}
+
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/cinnamon-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/cinnamon-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %post
 /sbin/ldconfig
 %if 0%{?suse_version} < 1500
@@ -104,7 +121,11 @@ chmod a-x %{buildroot}%{_datadir}/%{name}/*/__init__.py
 %files
 %license COPYING*
 %doc AUTHORS README.md debian/changelog
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/cinnamon-screensaver
+%else
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
+%endif
 %{_bindir}/%{name}
 %{_bindir}/%{name}-command
 %{_libexecdir}/cs-backup-locker
