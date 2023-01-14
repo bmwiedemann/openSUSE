@@ -1,7 +1,7 @@
 #
 # spec file for package mujs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           mujs
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 Summary:        An embeddable Javascript interpreter
 License:        AGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://mujs.com
 Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.xz
-Patch0:         %{name}-1.2.0-stack-exhaustion.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(readline)
 

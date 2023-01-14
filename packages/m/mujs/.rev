@@ -60,4 +60,39 @@
     <comment>Added mujs-1.2.0-stack-exhaustion.patch (CVE-2022-30974, boo#1199678).</comment>
     <requestid>977973</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>02f482aa6e60441d1f9078699c9f90d5</srcmd5>
+    <version>1.3.2</version>
+    <time>1673724753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.2
+  * 1.3.2 patch release for UAF bug fix.
+  * Bug 706057: Fix use-after-free in getOwnPropertyDescriptor.
+  * Set length of output array Array.prototype.map.
+- Update to 1.3.1
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.1
+  * Make a patch release for important iterator bug fix.
+  * Issue #166: Use special iterator for string and array indices.
+  * Enable choice of library version for shell
+  * Use $(@D) instead of $(dir $@)
+- Update to 1.3.0
+  * https://git.ghostscript.com/?p=mujs.git;a=log;h=refs/tags/1.3.0
+  * Avoid freeing buffer twice in case of error.
+  * Fast path for &quot;simple&quot; arrays.
+  * Bug 705775: Fix double fclose in pretty-printing tool.
+  * Makefile: fix parallel builds
+  * Guard state initialization with try to avoid panic in initialization.
+  * Add js_isbooleanobject and js_isdateobject functions.
+  * Issue #161: Cope with empty programs in mujs-pp.
+  * Issue #161: Don't fclose a FILE that is NULL.
+  * Issue #162: Check stack overflow during regexp compilation.
+  * Bug 705052: Don't use private STACK/TOP macros in jsstate.c
+  * Add &quot;console&quot; object to mujs shell.
+  * Issue #156: Fix check for duplicate formal parameters when strict.
+  * Some minor optimizations to Ap_join.
+  * array join: avoid strcat, speedup from O(N^2) to O(N)
+- Drop mujs-1.2.0-stack-exhaustion.patch because now in upstream.</comment>
+    <requestid>1058365</requestid>
+  </revision>
 </revisionlist>
