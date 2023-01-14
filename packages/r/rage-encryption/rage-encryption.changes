@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 03:23:28 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1207039 - CVE-2023-22895 - update bzip2 crate
+- Update of vendored dependencies
+
+-------------------------------------------------------------------
 Thu Jan 05 03:20:27 UTC 2023 - william.brown@suse.com
 
 - Update of vendored dependencies

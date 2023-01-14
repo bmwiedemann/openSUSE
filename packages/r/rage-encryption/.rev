@@ -82,4 +82,13 @@
     <comment>Update of vendored dependencies</comment>
     <requestid>1056807</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9e7f7f7786b8addb125ebc6d16ca3af6</srcmd5>
+    <version>0.9.0+0</version>
+    <time>1673724769</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1207039 - CVE-2023-22895 - update bzip2 crate
+- Update of vendored dependencies</comment>
+    <requestid>1058385</requestid>
+  </revision>
 </revisionlist>
