@@ -4908,6 +4908,8 @@ rvu_cptpf: pci:v0000177Dd0000A0F2sv*sd*bc*sc*i*
 rvu_cptpf: pci:v0000177Dd0000A0FDsv*sd*bc*sc*i*
 s2255drv: usb:v1943p2255d*dc*dsc*dp*ic*isc*ip*in*
 s2255drv: usb:v1943p2257d*dc*dsc*dp*ic*isc*ip*in*
+s5p_mfc: of:N*T*Csamsung,exynos3250-mfc
+s5p_mfc: of:N*T*Csamsung,exynos3250-mfcC*
 s5p_mfc: of:N*T*Csamsung,exynos5433-mfc
 s5p_mfc: of:N*T*Csamsung,exynos5433-mfcC*
 s5p_mfc: of:N*T*Csamsung,mfc-v10

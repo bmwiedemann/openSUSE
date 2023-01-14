@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jan 12 10:49:08 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230110 (git commit a1ad1d5b5062):
+  * amdgpu: add VCN4.0.4 firmware from amd-5.4
+  * amdgpu: add SMU13.0.7 firmware from amd-5.4
+  * amdgpu: add SDMA6.0.2 firmware from amd-5.4
+  * amdgpu: add PSP13.0.7 firmware from amd-5.4
+  * amdgpu: add GC11.0.2 firmware from amd-5.4
+  * amdgpu: add DCN3.2.1 firmware from amd-5.4
+  * amdgpu: update VCN4.0.0 firmware from amd-5.4
+  * amdgpu: update SMU13.0.0 firmware from amd-5.4
+  * amdgpu: update SDMA6.0.0 firmware from amd-5.4
+  * amdgpu: update PSP13.0.0 firmware from amd-5.4
+  * amdgpu: update GC11.0.0 firmware from amd-5.4
+  * iwlwifi: add new FWs from core76-35 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core76-35 release
+  * iwlwifi: add new FWs from core75-47 release
+  * iwlwifi: update 9000-family firmwares to core75-47
+  * amdgpu: update renoir DMCUB firmware
+  * amdgpu: Update renoir PSP firmware
+  * amdgpu: update copyright date for LICENSE.amdgpu
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * cxgb4: Update firmware to revision 1.27.1.0
+  * qca: Update firmware files for BT chip WCN6750
+
+-------------------------------------------------------------------
 Wed Dec 28 08:58:43 UTC 2022 - tiwai@suse.com
 
 - Update to version 20221216 (git commit c9c19583f717):
