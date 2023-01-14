@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,10 @@
 
 
 %define libname libflatpak0
+%define bubblewrap_version 0.5.0
+%define ostree_version 2020.8
+%define xdg_dbus_proxy_version 0.1.0
+
 # dbus only used config files in /etc until 1.9.18
 %if %{pkg_vcmp dbus-1 < 1.9.18}
 %define _dbusconfigdir %{_sysconfdir}/dbus-1/system.d
@@ -42,7 +46,7 @@ Source2:        update-system-flatpaks.timer
 Source3:        https://flathub.org/repo/flathub.flatpakrepo
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
-BuildRequires:  bubblewrap >= 0.5.0
+BuildRequires:  bubblewrap >= %{bubblewrap_version}
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  libcap-devel
@@ -52,7 +56,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  xdg-dbus-proxy >= 0.1.0
+BuildRequires:  xdg-dbus-proxy >= %{xdg_dbus_proxy_version}
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(appstream) >= 0.12.0
 BuildRequires:  pkgconfig(dconf) >= 0.26
@@ -71,14 +75,14 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4
 BuildRequires:  pkgconfig(libzstd) >= 0.8.1
-BuildRequires:  pkgconfig(ostree-1) >= 2020.8
+BuildRequires:  pkgconfig(ostree-1) >= %{ostree_version}
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xau)
 Requires:       %{libname} = %{version}
-Requires:       bubblewrap >= 0.4.1
-Requires:       ostree >= 2020.8
-Requires:       xdg-dbus-proxy >= 0.1.0
+Requires:       bubblewrap >= %{bubblewrap_version}
+Requires:       ostree >= %{ostree_version}
+Requires:       xdg-dbus-proxy >= %{xdg_dbus_proxy_version}
 Requires:       xdg-desktop-portal >= 0.10
 Requires:       user(flatpak)
 # Remove after openSUSE Leap 42 is out of scope

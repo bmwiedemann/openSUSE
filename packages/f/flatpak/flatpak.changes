@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 11 14:56:17 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix the "Requires" version of bubblewrap to be the same as
+  "BuildRequires" (>= 0.5.0).
+- Use a macro to define the versions required of bubblewrap,
+  ostree and xdg_dbus_proxy to avoid having the same issue in
+  the future again.
+
+-------------------------------------------------------------------
 Fri Nov 18 17:38:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.1:
