@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jan 13 17:32:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.2
+  * This release primarily focuses on bug fixes. In particular it
+    resolves various issues with support for rendering ipywidgets
+    (particularly in ipywidgets>=8.0) and also fixes a number of
+    issues with the Jupyter Server previews.
+  ## Enhancements
+  * Add support for Tqdm.process_map (#4093)
+  * Support non-vtkPolyData types in vtk synchronizer (#4124)
+  * Allow invoking convert functions from pyodide (#4135)
+  * Support step format in date sliders (#4152)
+  * Add a Reacton component to simplify rendering (#4190)
+  ## Bugs
+  * Ensure Jupyter server extension serves resources, extensions
+    and paths correctly (#4083, #4133, #4202)
+  * Ensure IPyWidget comm does not break when new widget is
+    rendered (#4091)
+  * Improving detection of comms in VSCode and Google Colab (#4115)
+  * Ensure .js mimetype is served correctly on Windows (#4118)
+  * Ensure unhiding Tabulator columns renders cells correctly
+    (#4119)
+  * Ensure embedded Slider widgets initialize with correct default
+    (#4121)
+  * Handle missing event loop in thread gracefully (#4123)
+  * Ensure Matplotlib pane handles explicit width/height settings
+    correctly (#4128)
+  * Allow Viewer to render servable but non-viewable objects
+    (#4131)
+  * Fix regression in tracking sessions in admin interface (#4132)
+  * Ensure Tabs headers do not scroll unncessarily (#4146)
+  * Ensure Location model reports as idle (#4159)
+  * Fix auth error template rendering (#4162)
+  * Fix issues with value on EditableSlider when it is outside
+    fixed_start / fixed_end range (#4169)
+  * Ensure ipywidgets events are handled the same way as regular
+    events (#4171)
+  * Don't raise TypeError for class which contains __panel__
+    (#4174)
+  * Do not dispatch events if bokeh Document is set to hold events
+    (#4178)
+  * Execute onload callbacks immediately in pyodide app (#4191)
+  * Improve IPyWidget kernel handling in server contexts (#4195)
+  * Fix rendering of IPyWidget with child views in the notebook
+    (#4197)
+- PEP517 build
+
+-------------------------------------------------------------------
 Mon Nov 21 17:47:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.1
