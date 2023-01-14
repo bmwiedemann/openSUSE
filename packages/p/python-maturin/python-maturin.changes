@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 14 12:23:46 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.10
+  * Use module name specified by [package.metadata.maturin]
+    gh#PyO3/maturin#1409
+
+-------------------------------------------------------------------
 Wed Jan 11 15:09:08 UTC 2023 - Mia Herkt <mia@0x0.st>
 
-- Don't pass MACOSX_DEPLOYMENT_TARGET when query default value from
-  rustc
-  gh#PyO3/maturin#1395
+- Update to v0.14.9
+  * Don't pass MACOSX_DEPLOYMENT_TARGET when query default value
+    from rustc
+    gh#PyO3/maturin#1395
 
 -------------------------------------------------------------------
 Mon Jan  9 01:59:53 UTC 2023 - Mia Herkt <mia@0x0.st>

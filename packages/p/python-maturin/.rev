@@ -729,4 +729,14 @@
   gh#PyO3/maturin#1395</comment>
     <requestid>1057818</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dcc97611cf2fb302e56a7c30e16152aa</srcmd5>
+    <version>0.14.10</version>
+    <time>1673724754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.10
+  * Use module name specified by [package.metadata.maturin]
+    gh#PyO3/maturin#1409</comment>
+    <requestid>1058366</requestid>
+  </revision>
 </revisionlist>
