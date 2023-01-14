@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 11 11:17:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.40.10:
+  + Fix the evaluation of the autoconnect retries.
+  + nm-cloud-setup now preserves addresses added externally.
+  + Ensure that dnsmasq is stopped after changing the dns backend
+    and restarting the service.
+  + Fix honoring an explicit DHCPv6 DUID with dhclient.
+  + Other various fixes.
+
+-------------------------------------------------------------------
 Tue Dec 20 18:09:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.40.8:
