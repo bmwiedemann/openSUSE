@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:53:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Add support for Python 3.11.
+  * Correct version information in RTD documentation.
+  * ``badges/shields``: Change to GitHub workflow badge routes.
+
+-------------------------------------------------------------------
 Mon Sep 26 19:34:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to v5.2.0
