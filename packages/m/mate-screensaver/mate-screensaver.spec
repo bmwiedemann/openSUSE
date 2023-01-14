@@ -1,7 +1,7 @@
 #
 # spec file for package mate-screensaver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -94,13 +94,34 @@ for desktop in $(ls | grep \.desktop); do
 done
 popd
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/mate-screensaver %{buildroot}%{_pam_vendordir}
+
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/mate-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/mate-screensaver ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files
 %license COPYING COPYING.LIB
 %doc README NEWS
 %dir %{_sysconfdir}/xdg/menus/
 %config %{_sysconfdir}/xdg/menus/mate-screensavers.menu
 %config %{_sysconfdir}/xdg/autostart/mate-screensaver.desktop
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/mate-screensaver
+%else
 %config %{_sysconfdir}/pam.d/mate-screensaver
+%endif
 %{_bindir}/%{name}*
 %{_libexecdir}/%{name}/
 %{_datadir}/applications/*.desktop

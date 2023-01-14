@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 17:29:22 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
