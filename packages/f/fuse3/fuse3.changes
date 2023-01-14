@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 13 21:23:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.13
+  * There is a new low-level API function fuse_session_custom_io
+    that allows to implement a daemon with a custom io. This can
+    be used to create a daemon that can process incoming FUSE
+    requests to other destinations than /dev/fuse.
+  * A deadlock when resolving paths in the high-level API has
+    been fixed.
+
+-------------------------------------------------------------------
 Thu Sep  8 12:41:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.12.0
