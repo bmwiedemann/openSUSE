@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1673059575.c051c08
+Version:        4.6.1673622416.c01e5cb
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -538,8 +538,11 @@ fi
 %{_unitdir}/openqa-webui.service
 %{_unitdir}/openqa-livehandler.service
 %{_unitdir}/openqa-gru.service
+%dir %{_unitdir}/openqa-gru.service.requires
 %{_unitdir}/openqa-scheduler.service
+%dir %{_unitdir}/openqa-scheduler.service.requires
 %{_unitdir}/openqa-websockets.service
+%dir %{_unitdir}/openqa-websockets.service.requires
 %{_unitdir}/openqa-enqueue-audit-event-cleanup.service
 %{_unitdir}/openqa-enqueue-audit-event-cleanup.timer
 %{_unitdir}/openqa-enqueue-asset-cleanup.service
@@ -710,6 +713,9 @@ fi
 
 %files local-db
 %{_unitdir}/openqa-setup-db.service
+%{_unitdir}/openqa-gru.service.requires/postgresql.service
+%{_unitdir}/openqa-scheduler.service.requires/postgresql.service
+%{_unitdir}/openqa-websockets.service.requires/postgresql.service
 %{_datadir}/openqa/script/setup-db
 %{_bindir}/openqa-setup-db
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 13 15:07:17 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1673622416.c01e5cb:
+  * Change type of `owner` column to bigint in consistency with jobs table
+  * Add postgresql service to requirements
+  * Avoid deadlock when updating asset size during job creation
+  * Fix asset cache error handling to avoid proceeding in case of failures
+  * Add missing `use Mojo::UserAgent`
+  * Clean up /api/v1/jobs pagination and remove unused code
+  * Add pagination for GET /api/v1/jobs
+  * Avoid race condition by waiting for the #text element
+  * Dependency cron 2023-01-10
+  * Revert "Add postgresql service to requirements"
+
+-------------------------------------------------------------------
 Sun Jan 08 13:53:04 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1673059575.c051c08:
