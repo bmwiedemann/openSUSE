@@ -1,0 +1,14 @@
+Source: grommunio-index
+Section: python
+Priority: optional
+Maintainer: Grommunio <null@grommunio.com>
+Build-Depends: debhelper-compat (= 12), cmake, g++ (>= 10),
+ libexmdbpp-dev (>= 1.8), libsqlite3-dev, pkg-config, systemd
+Rules-Requires-Root: no
+Standards-Version: 4.5.1
+
+Package: grommunio-index
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Generator for grommunio-web search indexes
+ .
