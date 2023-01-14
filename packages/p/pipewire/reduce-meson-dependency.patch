@@ -121,7 +121,7 @@ Index: pipewire-0.3.63/meson.build
 +++ pipewire-0.3.63/meson.build
 @@ -1,7 +1,7 @@
  project('pipewire', ['c' ],
-   version : '0.3.63',
+   version : '0.3.64',
    license : [ 'MIT', 'LGPL-2.1-or-later', 'GPL-2.0-only' ],
 -  meson_version : '>= 0.59.0',
 +  meson_version : '>= 0.54.0',

@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.63
+Version:        0.3.64
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,16 +64,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
-Patch1:         0001-pulse-server-add-channel-map-in-echo-cancel-module.patch
-# PATCH-FIX-UPSTREAM 0001-alsa-dont-set--1-as-node.target.patch
-Patch2:         0001-alsa-dont-set--1-as-node.target.patch
-# PATCH-FIX-UPSTREAM 0003-bluez5-backend-native-fix-missing-brace-in-CIND-reply.patch
-Patch3:         0003-bluez5-backend-native-fix-missing-brace-in-CIND-reply.patch
-# PATCH-FIX-UPSTREAM 0001-modules-fix-rate-update.patch
-Patch4:         0001-modules-fix-rate-update.patch
-# PATCH-FIX-UPSTREAM 0001-alsa-fix-memory-leak-of-properties.patch
-Patch5:         0001-alsa-fix-memory-leak-of-properties.patch
+
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -113,9 +104,10 @@ BuildRequires:  pkgconfig(jack) >= 1.9.10
 BuildRequires:  pkgconfig(ldacBT-abr)
 BuildRequires:  pkgconfig(ldacBT-enc)
 %endif
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
+# ffmpeg disabled on purpose, only used for pw-play and pw-record (break circular dependency with ffmpeg).
+#BuildRequires:  pkgconfig(libavcodec)
+#BuildRequires:  pkgconfig(libavfilter)
+#BuildRequires:  pkgconfig(libavformat)
 %if %{with libcamera}
 BuildRequires:  libcamera-devel >= 0.0.1
 %endif
@@ -364,11 +356,6 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -379,7 +366,7 @@ export CXX=g++-9
     -Ddocs=enabled \
     -Dman=enabled \
     -Dgstreamer=enabled \
-    -Dffmpeg=enabled \
+    -Dffmpeg=disabled \
     -Dsystemd=enabled \
     -Dsystemd-user-unit-dir=%{_userunitdir} \
     -Dgstreamer-device-provider=disabled \
@@ -601,7 +588,7 @@ fi
 %{_libdir}/spa-%{spa_ver}/avb/
 %{_libdir}/spa-%{spa_ver}/bluez5/
 %{_libdir}/spa-%{spa_ver}/control/
-%{_libdir}/spa-%{spa_ver}/ffmpeg/
+#%%{_libdir}/spa-%%{spa_ver}/ffmpeg/
 %{_libdir}/spa-%{spa_ver}/jack/
 %if %{with libcamera}
 %{_libdir}/spa-%{spa_ver}/libcamera/
