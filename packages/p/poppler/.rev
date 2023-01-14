@@ -1952,4 +1952,12 @@ New upstream release</comment>
   * Use less deprecated functions</comment>
     <requestid>1046136</requestid>
   </revision>
+  <revision rev="190" vrev="2">
+    <srcmd5>cfd5e85fc3a0fbe573192b3f46978223</srcmd5>
+    <version>23.01.0</version>
+    <time>1673724651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058134</requestid>
+  </revision>
 </revisionlist>

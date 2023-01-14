@@ -42,9 +42,10 @@ Source:         %{url}/%{sname}-%{version}.tar.xz
 Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
 Source90:       poppler.keyring
 Source99:       baselibs.conf
+Patch0:         reduce-boost-required-version.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc
-BuildRequires:  libboost_headers-devel >= 1.58
+BuildRequires:  libboost_headers-devel >= 1.66
 BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -164,7 +165,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 %package -n     libpoppler-devel
 Summary:        Development files for the Poppler PDF rendering library
 Group:          Development/Libraries/C and C++
-Requires:       libboost_headers-devel >= 1.58
+Requires:       libboost_headers-devel >= 1.66
 Requires:       libpoppler%{poppler_sover} = %{version}
 Requires:       libpoppler-cpp%{poppler_cpp_sover} = %{version}
 Requires:       libstdc++-devel
@@ -212,6 +213,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
+%patch0 -p1
 
 %build
 %if "%{flavor}" == "qt5"

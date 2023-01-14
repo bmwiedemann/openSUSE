@@ -1,0 +1,13 @@
+Index: poppler-23.01.0/CMakeLists.txt
+===================================================================
+--- poppler-23.01.0.orig/CMakeLists.txt
++++ poppler-23.01.0/CMakeLists.txt
+@@ -214,7 +214,7 @@ endif()
+ # Check for Cairo rendering backend
+ macro_optional_find_package(Cairo ${CAIRO_VERSION})
+ 
+-find_package(Boost 1.71.0)
++find_package(Boost 1.66.0)
+ if(Boost_FOUND)
+   set(USE_BOOST_HEADERS ON)
+ elseif(ENABLE_BOOST)
