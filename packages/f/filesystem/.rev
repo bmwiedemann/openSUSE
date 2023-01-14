@@ -1312,4 +1312,26 @@
     <comment>- Add %_user_tmpfilesdir to the filesystem (forwarded request 1037889 from oertel)</comment>
     <requestid>1037891</requestid>
   </revision>
+  <revision rev="168" vrev="11">
+    <srcmd5>3b4b51e6aaaa0f453f0dc47f72378239</srcmd5>
+    <version>84.87</version>
+    <time>1673724636</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert &quot;Remove /etc/sysconfig/network hierachy&quot; for now
+  (bsc#1206723).
+
+- Add languages that contain a lot of translations. For years
+  we output statistics on how many translations are removed, but
+  it wasn't collected so far. So adding languages with &gt;50k translated
+  messages (bsc#1134757)
+
+- Fixup previous change: X86_64 is not yet known to RPM, thus we
+  need to make sure to explicitly include x86_64.
+
+- add subdirectories for x86_64 hwcaps
+
+- Remove unused /etc/sysconfig/scripts
+- Remove /etc/sysconfig/network hierachy, not used by default anymore</comment>
+    <requestid>1058014</requestid>
+  </revision>
 </revisionlist>

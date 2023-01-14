@@ -1,7 +1,7 @@
 #
 # spec file for package filesystem
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,8 @@ Source2:        languages
 Source3:        ghost.list
 Source4:        languages.man
 Source64:       directory.list64
-Source65:       ghost.list64
+Source65:       directory.list64-x86_64
+Source66:       ghost.list64
 Source99:       LICENSE.txt
 
 %description
@@ -53,8 +54,8 @@ the home directories of system users.
 cp %{SOURCE0} .
 cp %{SOURCE1} .
 cp %{SOURCE3} .
-%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
-cat %{SOURCE65} >> ghost.list
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
+cat %{SOURCE66} >> ghost.list
 %endif
 
 %build
@@ -109,7 +110,7 @@ cat > pre.lua <<'EOF'
 needmigrate = false
 local dirs = {"/bin",
   "/sbin",
-%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
   "/lib64",
 %endif
   "/lib" }
@@ -174,14 +175,17 @@ function create_dir () {
 mkdir -p $RPM_BUILD_ROOT
 # generic directories first
 echo "%%defattr(-,root,root)" > filesystem.list
-%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
 cat %{SOURCE64} >> directory.list
+%endif
+%ifarch x86_64 %x86_64
+cat %{SOURCE65} >> directory.list
 %endif
 cat >> filesystem.links << EOF
 usr/bin   /bin
 usr/sbin  /sbin
 usr/lib   /lib
-%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+%ifarch s390x %sparc x86_64 %x86_64 ppc64 ppc aarch64 ppc64le riscv64
 usr/lib64 /lib64
 %endif
 EOF

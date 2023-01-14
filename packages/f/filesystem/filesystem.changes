@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 12 11:41:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Revert "Remove /etc/sysconfig/network hierachy" for now
+  (bsc#1206723).
+
+-------------------------------------------------------------------
+Wed Dec 14 15:28:47 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Add languages that contain a lot of translations. For years
+  we output statistics on how many translations are removed, but
+  it wasn't collected so far. So adding languages with >50k translated
+  messages (bsc#1134757)
+
+-------------------------------------------------------------------
+Wed Dec 14 09:11:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fixup previous change: X86_64 is not yet known to RPM, thus we
+  need to make sure to explicitly include x86_64.
+
+-------------------------------------------------------------------
+Thu Dec  8 14:18:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add subdirectories for x86_64 hwcaps
+
+-------------------------------------------------------------------
+Wed Dec  7 15:59:46 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove unused /etc/sysconfig/scripts
+- Remove /etc/sysconfig/network hierachy, not used by default anymore
+
+-------------------------------------------------------------------
 Thu Nov 24 12:27:27 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Add %_user_tmpfilesdir to the filesystem

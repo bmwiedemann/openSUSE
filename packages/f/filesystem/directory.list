@@ -16,7 +16,6 @@
 0755 root root /etc/sysconfig/network/if-up.d
 0700 root root /etc/sysconfig/network/providers
 0755 root root /etc/sysconfig/network/scripts
-0755 root root /etc/sysconfig/scripts
 0755 root root /etc/sysctl.d
 0755 root root /etc/tmpfiles.d
 0755 root root /etc/opt
