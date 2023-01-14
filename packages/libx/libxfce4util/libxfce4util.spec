@@ -19,7 +19,7 @@
 %bcond_with git
 %define libname libxfce4util7
 Name:           libxfce4util
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
