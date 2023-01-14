@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  6 08:23:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * cursor size: Use 24 as a default size instead of 0.
+  * Set our own cursor theme and size internally via GtkSettings
+
+-------------------------------------------------------------------
 Sun Dec  4 12:21:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.9:

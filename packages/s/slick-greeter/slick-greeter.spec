@@ -18,7 +18,7 @@
 
 %define _name   lightdm-slick-greeter
 Name:           slick-greeter
-Version:        1.5.9
+Version:        1.6.0
 Release:        0
 Summary:        The slick-looking login screen application
 License:        CC-BY-SA-3.0 AND GPL-3.0-only
