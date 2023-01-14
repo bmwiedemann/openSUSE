@@ -175,4 +175,14 @@
 - drop incompatible-regex-pattern.patch (upstream)</comment>
     <requestid>1046277</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aa8ea57bbf3812c80e93148a1d826c86</srcmd5>
+    <version>1.1.6</version>
+    <time>1673724681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.6:
+  * Fix the bug where Monday is parsed as a month
+  * Prevent ReDoS in Spanish sentence splitting regex</comment>
+    <requestid>1058176</requestid>
+  </revision>
 </revisionlist>

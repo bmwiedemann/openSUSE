@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:39:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * Fix the bug where Monday is parsed as a month
+  * Prevent ReDoS in Spanish sentence splitting regex
+
+-------------------------------------------------------------------
 Mon Jan  2 18:57:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.5:
