@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-policy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -148,6 +148,8 @@ Patch063:       fix_alsa.patch
 Patch064:       dontaudit_interface_kmod_tmpfs.patch
 Patch065:       fix_sendmail.patch
 Patch066:       fix_ipsec.patch
+# https://github.com/containers/container-selinux/pull/199, can be dropped once this is included
+Patch067:       fix_container.patch
 
 Patch100:       sedoctool.patch
 

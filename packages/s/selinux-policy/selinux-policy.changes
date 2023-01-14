@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 12 13:01:47 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update fix_container.patch to allow privileged containers to use
+  localectl (bsc#1207077)
+
+-------------------------------------------------------------------
+Wed Jan 11 14:17:02 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Add fix_container.patch to allow privileged containers to use
+  timedatectl (bsc#1207054)
+
+-------------------------------------------------------------------
 Thu Dec 15 16:11:15 UTC 2022 - Hu <cathy.hu@suse.com>
 
 - Added fix_ipsec.patch: Allow AF_ALG socket creation for strongswan
