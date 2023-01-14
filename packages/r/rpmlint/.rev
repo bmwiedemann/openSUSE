@@ -4245,4 +4245,15 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add OBS badge.</comment>
     <requestid>1057792</requestid>
   </revision>
+  <revision rev="431" vrev="1">
+    <srcmd5>3133a4484b9cbbc98dd5ef78c1b1c749</srcmd5>
+    <version>2.4.0+git20230112.139edaf</version>
+    <time>1673724702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230112.139edaf:
+  * use subprocess.run(..., text=True) instead of stdout.decode()
+  * Print number of messages that are filtered out
+  * Speed up DuplicatesCheck by shorter messages</comment>
+    <requestid>1058142</requestid>
+  </revision>
 </revisionlist>

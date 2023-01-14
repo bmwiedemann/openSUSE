@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 13 07:50:36 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230112.139edaf:
+  * use subprocess.run(..., text=True) instead of stdout.decode()
+  * Print number of messages that are filtered out
+  * Speed up DuplicatesCheck by shorter messages
+
+-------------------------------------------------------------------
 Wed Jan 11 14:08:35 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230111.8ae3cb5:
