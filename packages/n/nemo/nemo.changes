@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 19:28:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.1:
+  * pathbar/entry: Give entry-preferred mode the same persistent behavior as
+    pathbar-preferred.
+
+-------------------------------------------------------------------
 Sun Dec  4 14:23:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.0:
