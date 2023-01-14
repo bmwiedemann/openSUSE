@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan  6 18:27:53 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.3.0 
+  * Refactor Google Cloud Storage to use blob.open (ddelange, #744)
+  * Add FTP/FTPS support (#33) (RachitSharma2001, #739)
+  * Bring back compression_wrapper(filename) + use case-insensitive extension matching (piskvorky, #737)
+  * Fix avoidable S3 race condition (#693) (RachitSharma2001, #735)
+  * setup.py: Remove pathlib2 (jayvdb, #733)
+  * Add flake8 config globally (cadnce, #732)
+  * Added buffer_size parameter to http module (mullenkamp, #730)
+  * Added documentation to support GCS anonymously (cadnce, #728)
+  * Reconnect inactive sftp clients automatically (Kache, #719)
+
+-------------------------------------------------------------------
 Sat Oct 15 05:34:22 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v6.2.0
