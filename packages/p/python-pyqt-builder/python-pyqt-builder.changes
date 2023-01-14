@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 12 21:14:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add pyqt-builder-add-timeline5.15.patch for Qt3D 5.15.8
+
+-------------------------------------------------------------------
+Thu Jan 12 11:22:21 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support python 3.6 needed by SLE:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 17:16:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.14.0
+  * Added support for QtPdf, QtPdfWidgets and QtTextToSpeech for
+    PyQt6.
+  * SIP v6.7 is now required.
+
+-------------------------------------------------------------------
 Mon Jun 20 21:19:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.13.0

@@ -99,4 +99,20 @@
     <comment></comment>
     <requestid>984219</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6b7d9aeabc0cadd87830962a2731879b</srcmd5>
+    <version>1.14.0</version>
+    <time>1673724647</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pyqt-builder-add-timeline5.15.patch for Qt3D 5.15.8
+
+- Add patch to support python 3.6 needed by SLE:
+  * support-python3.6.patch
+
+- Update to version 1.14.0
+  * Added support for QtPdf, QtPdfWidgets and QtTextToSpeech for
+    PyQt6.
+  * SIP v6.7 is now required.</comment>
+    <requestid>1058080</requestid>
+  </revision>
 </revisionlist>

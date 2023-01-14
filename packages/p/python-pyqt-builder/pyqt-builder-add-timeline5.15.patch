@@ -1,0 +1,14 @@
+Index: PyQt-builder-1.14.0/pyqtbuild/builder.py
+===================================================================
+--- PyQt-builder-1.14.0.orig/pyqtbuild/builder.py
++++ PyQt-builder-1.14.0/pyqtbuild/builder.py
+@@ -530,7 +530,8 @@ macx {
+         patch = self.qt_version & 0xff
+ 
+         # Qt v5.12.4 was the last release where we updated for a patch version.
+-        if (major, minor) >= (5, 13):
++        # And SUSE started to use it in 5.15.8 again for qt3d-qt5
++        if (major, minor) >= (5, 13) and (major, minor, patch) < (5, 15, 8):
+             patch = 0
+         elif (major, minor) == (5, 12):
+             if patch > 4:

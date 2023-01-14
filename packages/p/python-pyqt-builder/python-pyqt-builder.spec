@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pyqt-builder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,31 @@
 
 %define mname pyqt-builder
 Name:           python-%{mname}
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/pyqt-builder
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
+# PATCH-FEATURE-SUSE support-python3.6.patch alarrosa@suse.com
+Patch0:         support-python3.6.patch
+# PATCH-FEATURE-SUSE pyqt-builder-add-timeline5.15.patch code@bnavigator.de
+Patch1:         pyqt-builder-add-timeline5.15.patch
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-sip-devel >= 6.3
 Requires:       python-packaging
+Requires:       python-sip-devel >= 6.7
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-PyQt-builder = %{version}-%{release}
 BuildArch:      noarch
 # SECTION Test Requirements
-BuildRequires:  %{python_module sip-devel >= 6.3}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module sip-devel >= 6.7}
 # /SECTION
 %python_subpackages
 
@@ -50,13 +56,13 @@ optional project.py script. Any PEP 517 compliant frontend, for example
 sip-install or pip can then be used to build and install the project.
 
 %prep
-%setup -q -n PyQt-builder-%{version}
+%autosetup -p1 -n PyQt-builder-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyqt-bundle
 %python_clone -a %{buildroot}%{_bindir}/pyqt-qt-wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -75,7 +81,7 @@ $python -c 'import pyqtbuild'
 %postun
 %python_uninstall_alternative pyqt-bundle
 
-%files %python_files
+%files %{python_files}
 %license LICENSE*
 %doc README NEWS ChangeLog
 %python_alternative %{_bindir}/pyqt-bundle
