@@ -24,7 +24,8 @@ Summary:        The sip module support for PyQt5
 URL:            https://www.riverbankcomputing.com/software/sip/
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt5-sip/PyQt5_sip-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+Patch0:         support-python3.6.patch
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools >= 30.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,6 +44,7 @@ create wxPython, the Python bindings for the wxWidget toolkit.
 
 %prep
 %setup -q -n PyQt5_sip-%{version}
+%patch0 -p1
 
 %build
 %python_build

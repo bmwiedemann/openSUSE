@@ -1,0 +1,85 @@
+Index: PyQt5_sip-12.11.0/setup.py
+===================================================================
+--- PyQt5_sip-12.11.0.orig/setup.py
++++ PyQt5_sip-12.11.0/setup.py
+@@ -40,6 +40,6 @@ setup(
+         name='PyQt5_sip',
+         version='12.11.0',
+         license='SIP',
+-        python_requires='>=3.7',
++        python_requires='>=3.6',
+         ext_modules=[module]
+      )
+Index: PyQt5_sip-12.11.0/sip.h
+===================================================================
+--- PyQt5_sip-12.11.0.orig/sip.h
++++ PyQt5_sip-12.11.0/sip.h
+@@ -24,8 +24,8 @@
+ #include <Python.h>
+ 
+ /* Sanity check on the Python version. */
+-#if PY_VERSION_HEX < 0x03070000
+-#error "This version of PyQt5.sip requires Python v3.7 or later"
++#if PY_VERSION_HEX < 0x03060000
++#error "This version of PyQt5.sip requires Python v3.6 or later"
+ #endif
+ 
+ 
+Index: PyQt5_sip-12.11.0/siplib.c
+===================================================================
+--- PyQt5_sip-12.11.0.orig/siplib.c
++++ PyQt5_sip-12.11.0/siplib.c
+@@ -1041,6 +1041,10 @@ const sipAPIDef *sip_init_library(PyObje
+     PyObject *obj;
+     PyMethodDef *md;
+ 
++#if PY_VERSION_HEX < 0x03070000 && defined(WITH_THREAD)
++    PyEval_InitThreads();
++#endif
++
+     /* Add the SIP version number. */
+     obj = PyLong_FromLong(SIP_VERSION);
+ 
+@@ -13289,12 +13293,16 @@ int sip_api_convert_from_slice_object(Py
+         Py_ssize_t *start, Py_ssize_t *stop, Py_ssize_t *step,
+         Py_ssize_t *slicelength)
+ {
++#if PY_VERSION_HEX >= 0x03070000
+     if (PySlice_Unpack(slice, start, stop, step) < 0)
+         return -1;
+ 
+     *slicelength = PySlice_AdjustIndices(length, start, stop, *step);
+ 
+     return 0;
++#else
++    return PySlice_GetIndicesEx(slice, length, start, stop, step, slicelength);
++#endif
+ }
+ 
+ 
+Index: PyQt5_sip-12.11.0/PKG-INFO
+===================================================================
+--- PyQt5_sip-12.11.0.orig/PKG-INFO
++++ PyQt5_sip-12.11.0/PKG-INFO
+@@ -9,7 +9,7 @@ License: SIP
+ Platform: X11
+ Platform: macOS
+ Platform: Windows
+-Requires-Python: >=3.7
++Requires-Python: >=3.6
+ License-File: LICENSE
+ License-File: LICENSE-GPL3
+ License-File: LICENSE-GPL2
+Index: PyQt5_sip-12.11.0/PyQt5_sip.egg-info/PKG-INFO
+===================================================================
+--- PyQt5_sip-12.11.0.orig/PyQt5_sip.egg-info/PKG-INFO
++++ PyQt5_sip-12.11.0/PyQt5_sip.egg-info/PKG-INFO
+@@ -9,7 +9,7 @@ License: SIP
+ Platform: X11
+ Platform: macOS
+ Platform: Windows
+-Requires-Python: >=3.7
++Requires-Python: >=3.6
+ License-File: LICENSE
+ License-File: LICENSE-GPL3
+ License-File: LICENSE-GPL2
