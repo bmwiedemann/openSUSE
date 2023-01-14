@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 14 10:54:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.1.4
+  * Fixed `Phalcon\Acl\Adapter\Memory::isAllowed` to not use the
+    deprecated `ReflectionType::getClass` [#16255]
+
+- update to 5.1.3
+  * Fixed `Phalcon\Mvc\Micro::handle` to type check an object for the
+    `finish` [#16240]
+  * Fixed `Phalcon\DI\Service::resolve` to not call the `get()` from
+    the container and cause an infinite loop [#15032]
+
+-------------------------------------------------------------------
 Sat Dec 10 10:50:44 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.1.2
