@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 12 13:02:32 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Rename spc_timedated.patch to spc.patch
+- Update spc.patch to allow privileged containers to use
+  localectl (bsc#1207077)
+
+-------------------------------------------------------------------
+Wed Jan 11 14:15:06 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Add spc_timedated.patch to allow privileged containers to use
+  timedatectl (bsc#1207054)
+
+-------------------------------------------------------------------
 Thu Jul 14 08:37:48 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.188.0:
