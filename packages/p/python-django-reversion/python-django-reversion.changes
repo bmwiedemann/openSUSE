@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan  7 16:58:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.4:
+  * Fix warning log formatting for failed reverts (@tony).
+  * A revision will no longer be created if a transaction is marked as
+    rollback, as this would otherwise cause an additional database error
+  * A warning log is now emitted if a revert fails due to database integrity
+    errors, making debugging the final
+  ``RevertError`` easier.
+  * Fixed doc builds on readthedocs (@etianen).
+  * Fix admin detail view in multi-database configuration (@atten).
+  * Added support for using django-reversion contexts in ``asyncio`` tasks
+  * Improved performance of `createinitialrevisions` management command
+
+-------------------------------------------------------------------
 Tue Dec 28 01:29:24 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite using only-sqlite-test-db.patch

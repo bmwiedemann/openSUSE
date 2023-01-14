@@ -152,4 +152,12 @@
 - Update to v4.0.1</comment>
     <requestid>942944</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>30a52113ed93a69a2ff6779b2bc340f2</srcmd5>
+    <version>5.0.4</version>
+    <time>1673724768</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1058386</requestid>
+  </revision>
 </revisionlist>
