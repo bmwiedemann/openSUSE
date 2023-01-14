@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jan 14 10:05:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.39.0:
+  * adding optional ClientTrace and Context to jrpc and fhttp; extend access log api to be usable for tracing; add optional Transport chaining for otelhttp (#661)
+  * add support for setting grpc metadata (#671)
+  * Bump google.golang.org/grpc from 1.51.0 to 1.52.0 (#678)
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (#677)
+  * Bump golang.org/x/net from 0.4.0 to 0.5.0 (#674)
+  * Adding flag to disable panic (stack trace) on log.Fatalf … (#675)
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (#672)
+  * Bump github/codeql-action from 2.1.36 to 2.1.37 (#673)
+  * Bump github/codeql-action from 2.1.32 to 2.1.36 (#669)
+  * use -healthservice flag for server start and ping as default, allow change in rapi and web UI (#667)
+  * switch to go 1.19.4 (#668)
+  * Bump golang.org/x/net from 0.2.0 to 0.4.0 (#665)
+  * Bump google.golang.org/grpc from 1.50.0 to 1.51.0 (#660)
+  * Generalize and clarify/simplify a bit Occurrence type (#655)
+  * don't normalize URL too early as this could be a tcp or udp runner (for web ui/rapi calls) (#657)
+  * Bump github/codeql-action from 2.1.31 to 2.1.32 (#656)
+
+-------------------------------------------------------------------
 Tue Nov 15 09:21:44 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.38.4:
