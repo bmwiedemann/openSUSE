@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %bcond_without test
+%define psuffix -test
 %else
 %bcond_with test
+%define psuffix %{nil}
 %endif
 
 %if 0%{?suse_version} > 1500
@@ -29,11 +31,10 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define plainpython python
-Name:           python-pybind11
-Version:        2.10.0
+Name:           python-pybind11%{psuffix}
+Version:        2.10.3
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
@@ -41,8 +42,10 @@ URL:            https://github.com/pybind/pybind11
 Source:         https://github.com/pybind/pybind11/archive/v%{version}.tar.gz#/pybind11-%{version}.tar.gz
 Source99:       python-pybind11-rpmlintrc
 BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  cmake
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros >= 20220912
@@ -90,7 +93,7 @@ This package contains files for developing applications using pybind11.
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 # calling cmake to install header to right location and
 # generate cmake include files
 %{python_expand pushd .
@@ -114,7 +117,7 @@ popd
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pybind11-config
 %{python_expand #
 %cmake_install
@@ -125,7 +128,9 @@ ln -s %{_includedir}/pybind11 %{buildroot}%{$python_sitelib}/pybind11/include/py
 # same for cmake files: pybind11.get_cmake_dir()
 rm -r %{buildroot}%{$python_sitelib}/pybind11/share/cmake/pybind11
 ln -s %{_datadir}/cmake/pybind11 %{buildroot}%{$python_sitelib}/pybind11/share/cmake/pybind11
-# note: next release will also include pkg-config files here: https://github.com/pybind/pybind11/pull/4077
+# same for pkgconfig
+rm %{buildroot}%{$python_sitelib}/pybind11/share/pkgconfig/pybind11.pc
+ln -s %{_datadir}/pkgconfig/pybind11.pc %{buildroot}%{$python_sitelib}/pybind11/share/pkgconfig/pybind11.pc
 %fdupes %{buildroot}%{$python_sitelib}
 }
 %endif
@@ -185,6 +190,7 @@ end
 %license LICENSE
 %{_includedir}/pybind11
 %{_datadir}/cmake/pybind11
+%{_datadir}/pkgconfig/pybind11.pc
 
 %files %{python_files devel}
 %license LICENSE
@@ -192,6 +198,7 @@ end
 %ghost %{python_sitelib}/pybind11/share/cmake/pybind11.rpmmoved
 %{python_sitelib}/pybind11/include
 %ghost %{python_sitelib}/pybind11/include/pybind11.rpmmoved
+%{python_sitelib}/pybind11/share/pkgconfig
 %endif
 
 %changelog

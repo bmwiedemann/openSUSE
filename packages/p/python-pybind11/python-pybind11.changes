@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu Jan 12 17:50:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Package new pkgconfig file gh#pybind/pybind11#4077
+- PEP517 build
+- Fix multibuild setup: unique packagename for test flavor required
+
+-------------------------------------------------------------------
+Wed Jan  4 19:48:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.3:
+  * Temporarily made our GIL status assertions (added in 2.10.2) disabled by
+  default (re-enable manually by defining
+  ``PYBIND11_ASSERT_GIL_HELD_INCREF_DECREF``, will be enabled in 2.11).
+  * Improved error messages when ``inc_ref``/``dec_ref`` are called with an
+  invalid GIL state.
+  * Some minor touchups found by static analyzers.
+  * ``scoped_interpreter`` constructor taking ``PyConfig``.
+  * ``pybind11/eigen/tensor.h`` adds converters to and from
+    ``Eigen::Tensor`` and
+  ``Eigen::TensorMap``.
+  * ``PyGILState_Check()``'s  were integrated to ``pybind11::handle``
+  ``inc_ref()`` & ``dec_ref()``. The added GIL checks are guarded by
+  ``PYBIND11_ASSERT_GIL_HELD_INCREF_DECREF``, which is the default only if
+  ``NDEBUG`` is not defined. (Made non-default in 2.10.3, will be active in 2.11)
+  * Add option for enable/disable enum members in docstring.
+  * Fixed typing of ``KeysView``, ``ValuesView`` and ``ItemsView`` in
+    ``bind_map``.
+  * Fix segfault bug when passing foreign native functions to functional.h.
+  * Build system improvements:
+  * Support setting PYTHON_LIBRARIES manually for Windows ARM cross-
+    compilation
+  (classic mode).
+  * Extend IPO/LTO detection for ICX (a.k.a IntelLLVM) compiler.
+  * Allow calling ``find_package(pybind11 CONFIG)`` multiple times from
+    separate
+  directories in the same CMake project and properly link Python (new mode).
+  * ``multiprocessing_set_spawn`` in pytest fixture for added safety.
+  * Fixed a bug in two pybind11/tools cmake scripts causing "Unknown
+    arguments specified" errors.
+  * Version 2.10.1 (Oct 31, 2022)
+  * This is the first version to fully support embedding the newly released
+    Python 3.11.
+  * Changes:
+  * Allow ``pybind11::capsule`` constructor to take null destructor
+    pointers.
+  * ``embed.h`` was changed so that ``PYTHONPATH`` is used also with Python
+    3.11
+  (established behavior).
+  * A ``PYBIND11_SIMPLE_GIL_MANAGEMENT`` option was added (cmake, C++
+    define),
+  along with many additional tests in ``test_gil_scoped.py``. The option may be
+  useful to try when debugging GIL-related issues, to determine if the more
+  complex default implementation is or is not to blame. See #4216 for
+  background. WARNING: Please be careful to not create ODR violations when
+  using the option: everything that is linked together with mutual symbol
+  visibility needs to be rebuilt.
+  * ``PYBIND11_EXPORT_EXCEPTION`` was made non-empty only under macOS. This
+    makes
+  Linux builds safer, and enables the removal of warning suppression pragmas for
+  Windows.
+  * Fixed a bug where ``UnicodeDecodeError`` was not propagated from various
+  ``py::str`` ctors when decoding surrogate utf characters.
+  * Revert perfect forwarding for ``make_iterator``. This broke at least one
+  valid use case. May revisit later.
+  * Fix support for safe casts to ``void*`` (regression in 2.10.0).
+  * Fix ``char8_t`` support (regression in 2.9).
+  * Unicode surrogate character in Python exception message leads to process
+  termination in ``error_already_set::what()``.
+  * Fix MSVC 2019 v.1924 & C++14 mode error for ``overload_cast``.
+  * Make augmented assignment operators non-const for the object-api.
+    Behavior
+  was previously broken for augmented assignment operators.
+  * Add proper error checking to C++ bindings for Python list append and
+    insert.
+  * Work-around for Nvidia's CUDA nvcc compiler in versions 11.4.0 - 11.8.0.
+  * A workaround for PyPy was added in the ``py::error_already_set``
+  implementation, related to PR `#1895 <https://github.com/pybind/pybind11/pull/1895>`_
+  released with v2.10.0.
+  * Fixed compiler errors when C++23 ``std::forward_like`` is available.
+  * Properly raise exceptions in contains methods (like when an object in
+    unhashable).
+  * Further improve another error in exception handling.
+  * ``get_local_internals()`` was made compatible with
+  ``finalize_interpreter()``, fixing potential freezes during interpreter
+  finalization.
+  * Performance and style:
+  * Reserve space in set and STL map casters if possible. This will prevent
+  unnecessary rehashing / resizing by knowing the number of keys ahead of time
+  for Python to C++ casting. This improvement will greatly speed up the casting
+  of large unordered maps and sets.
+  * GIL RAII scopes are non-copyable to avoid potential bugs.
+  * Explicitly default all relevant ctors for pytypes in the
+    ``PYBIND11_OBJECT``
+  macros and enforce the clang-tidy checks ``modernize-use-equals-default`` in
+  macros as well.
+  * Optimize iterator advancement in C++ bindings.
+  * Use the modern ``PyObject_GenericGetDict`` and
+    ``PyObject_GenericSetDict``
+  for handling dynamic attribute dictionaries.
+  * Document that users should use ``PYBIND11_NAMESPACE`` instead of using
+    ``pybind11`` when
+  opening namespaces. Using namespace declarations and namespace qualification
+  remain the same as ``pybind11``. This is done to ensure consistent symbol
+  visibility.
+  * Mark ``detail::forward_like`` as constexpr.
+  * Optimize unpacking_collector when processing ``arg_v`` arguments.
+  * Optimize casting C++ object to ``None``.
+
+-------------------------------------------------------------------
 Thu Sep 15 20:25:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - %pretrans must be lua
