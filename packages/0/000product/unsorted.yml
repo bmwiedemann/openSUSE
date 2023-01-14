@@ -6582,6 +6582,7 @@ unsorted:
   - gromacs-doc 
   - gromacs-openmpi: [x86_64] 
   - gromit-mpx 
+  - grommunio-index 
   - gromox 
   - gron 
   - groovy18 
@@ -11008,6 +11009,8 @@ unsorted:
   - libexiv2-27-32bit: [x86_64] 
   - libexiv2-devel 
   - libexiv2-xmp-static 
+  - libexmdbpp-devel 
+  - libexmdbpp0 
   - libexpat-devel: [i586] # devel package of common_locks:libexpat1 
   - libexpat-devel-32bit: [x86_64] 
   - libext2fs-devel 
@@ -22158,6 +22161,7 @@ unsorted:
   - python3-presagemate 
   - python3-pwquality 
   - python3-pycadf 
+  - python3-pyexmdb 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
@@ -24030,6 +24034,7 @@ unsorted:
   - python310-metakernel 
   - python310-metamagic.json 
   - python310-methodtools 
+  - python310-micropipenv 
   - python310-mimesis 
   - python310-minidb 
   - python310-minio 
@@ -27381,6 +27386,7 @@ unsorted:
   - python38-metakernel 
   - python38-metamagic.json 
   - python38-methodtools 
+  - python38-micropipenv 
   - python38-mimesis 
   - python38-minidb 
   - python38-minio 
@@ -30776,6 +30782,7 @@ unsorted:
   - python39-metakernel 
   - python39-metamagic.json 
   - python39-methodtools 
+  - python39-micropipenv 
   - python39-mimesis 
   - python39-minidb 
   - python39-minio 
@@ -43932,7 +43939,6 @@ unsorted:
   - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
-  - vidcutter 
   - vido 
   - vido-lang 
   - viewnior 
