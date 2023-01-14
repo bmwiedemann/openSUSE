@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 10 14:33:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.6:
+  + Fix the path and translation domains of GSchema files.
+  + Removed strings that don't match our conscious language
+    standards from the translation files.
+  + Added autoptr support.
+  + Fix translations of country and territory names in the mobile
+    broadband dialog.
+  + Honor explicitly set APN if provider was not present in the
+    mobile broadband dialog.
+  + Make sure Kosovar operators are ordered properly in the mobile
+    broadband dialog.
+- Drop libnma-schema-without-path.patch: Fixed upstream.
+- Package libnma-glib-schema sub-package as noarch.
+
+-------------------------------------------------------------------
 Mon Nov 14 08:10:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libnma-schema-without-path.patch: Do not specify path in

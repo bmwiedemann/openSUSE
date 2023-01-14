@@ -1,7 +1,7 @@
 #
 # spec file for package libnma
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,13 @@
 %define base_ver 1.10
 
 Name:           libnma
-Version:        1.10.4
+Version:        1.10.6
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libnma
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM libnma-schema-without-path.patch dimstar@opensuse.org -- Do not add path to schema
-Patch0:         libnma-schema-without-path.patch
+
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -64,7 +63,8 @@ Requires:       mobile-broadband-provider-info
 Shared library for NetworkManager-applet.
 
 %package glib-schema
-Summary:        glib-schema org.gnome.nm-applet.eap
+Summary:        GLib-schema org.gnome.nm-applet.eap
+BuildArch:      noarch
 
 %description glib-schema
 The glib-schema allows libnma to be configured wia dconf

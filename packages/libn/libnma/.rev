@@ -137,4 +137,24 @@
     <comment></comment>
     <requestid>1035588</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>90a85cd2a751727bb659dd97a7afe18c</srcmd5>
+    <version>1.10.6</version>
+    <time>1673724674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.6:
+  + Fix the path and translation domains of GSchema files.
+  + Removed strings that don't match our conscious language
+    standards from the translation files.
+  + Added autoptr support.
+  + Fix translations of country and territory names in the mobile
+    broadband dialog.
+  + Honor explicitly set APN if provider was not present in the
+    mobile broadband dialog.
+  + Make sure Kosovar operators are ordered properly in the mobile
+    broadband dialog.
+- Drop libnma-schema-without-path.patch: Fixed upstream.
+- Package libnma-glib-schema sub-package as noarch. (forwarded request 1057637 from iznogood)</comment>
+    <requestid>1058168</requestid>
+  </revision>
 </revisionlist>
