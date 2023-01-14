@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 13 11:54:13 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 75 (jsc#PED-1080):
+  * CXL fixes and improvements
+  * Add master-passphrase removal support
+  * some oob memory access fixes
+
+-------------------------------------------------------------------
 Wed Aug 24 07:57:14 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
-- Update to version 74 (jsc#PED-1080):
+- Update to version 74
   * Many CXL fixes
   * Some build system fixes
   * monitor: Fix the monitor config file parsing
