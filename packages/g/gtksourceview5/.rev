@@ -81,4 +81,12 @@
     <comment></comment>
     <requestid>1005352</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d89030ef1e3c590e256aa4754540dd2</srcmd5>
+    <version>5.6.2</version>
+    <time>1673724675</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1057755 from iznogood)</comment>
+    <requestid>1058169</requestid>
+  </revision>
 </revisionlist>
