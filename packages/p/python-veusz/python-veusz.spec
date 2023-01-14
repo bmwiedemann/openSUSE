@@ -1,7 +1,7 @@
 #
 # spec file for package python-veusz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 %define X_display ":98"
 
-%define         skip_python2  1
-%define         skip_python36 1
 Name:           python-veusz
 Version:        3.5.3
 Release:        0
@@ -28,12 +26,16 @@ Summary:        Scientific plotting library for Python
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM veusz-numpy1.24.patch commit without PR or issue
+Patch1:         https://github.com/veusz/veusz/commit/f93cf7ac0a1d93902524f38efbb58c4f0d016caa.patch#/veusz-numpy1.24.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sip-devel}
 BuildRequires:  %{python_module tomli}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -72,6 +74,7 @@ Requires(postun):desktop-file-utils
 Requires(postun):shared-mime-info
 Obsoletes:      veusz3 < %{version}
 Provides:       veusz3 = %{version}
+BuildArch:      noarch
 
 %description -n veusz
 Veusz is a scientific plotting package, designed to create
@@ -101,11 +104,11 @@ sed -E -i "/\#!\/usr\/bin\/env python/d" veusz/veusz_{listen,main}.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 %make_build -C Documents/ man
 
 %install
-%python_install
+%pyproject_install
 
 # Copy common files to /usr/share/ and...
 mkdir -p %{buildroot}%{_datadir}/veusz
@@ -162,7 +165,7 @@ fi
 %doc README.md AUTHORS ChangeLog
 %doc Documents/manual/html
 %license COPYING
-%{python_sitearch}/veusz-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/veusz-%{version}.dist-info
 %{python_sitearch}/veusz/
 
 %files -n veusz

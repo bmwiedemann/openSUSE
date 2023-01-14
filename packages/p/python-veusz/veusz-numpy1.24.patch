@@ -1,0 +1,105 @@
+From f93cf7ac0a1d93902524f38efbb58c4f0d016caa Mon Sep 17 00:00:00 2001
+From: Jeremy Sanders <jeremy@jeremysanders.net>
+Date: Thu, 22 Dec 2022 12:56:47 +0000
+Subject: [PATCH] Replace removed type definitions in numpy
+
+---
+ veusz/datasets/filtered.py     |  2 +-
+ veusz/plugins/datasetplugin.py | 20 ++++++++++----------
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/veusz/datasets/filtered.py b/veusz/datasets/filtered.py
+index efa45009f..0eb996086 100644
+--- a/veusz/datasets/filtered.py
++++ b/veusz/datasets/filtered.py
+@@ -104,7 +104,7 @@ def evaluateFilter(self, doc):
+             return [
+                 _("Input filter expression non-numeric: '%s'") % self.inexpr]
+ 
+-        filterarr = d.data.astype(N.bool)
++        filterarr = d.data.astype(N.bool_)
+         if self.invert:
+             filterarr = N.logical_not(filterarr)
+ 
+diff --git a/veusz/plugins/datasetplugin.py b/veusz/plugins/datasetplugin.py
+index 838f2e7b3..00628d197 100644
+--- a/veusz/plugins/datasetplugin.py
++++ b/veusz/plugins/datasetplugin.py
+@@ -780,8 +780,8 @@ def interleave(datasets):
+             ds = [ N.hstack( (d, N.zeros(maxlength-len(d))) )
+                    for d in datasets ]
+             # which elements are valid
+-            good = [ N.hstack( (N.ones(len(d), dtype=N.bool),
+-                                N.zeros(maxlength-len(d), dtype=N.bool)) )
++            good = [ N.hstack( (N.ones(len(d), dtype=N.bool_),
++                                N.zeros(maxlength-len(d), dtype=N.bool_)) )
+                      for d in datasets ]
+ 
+             intl = N.column_stack(ds).reshape(maxlength*len(datasets))
+@@ -966,7 +966,7 @@ def updateDatasets(self, fields, helper):
+ 
+         # mean data (only use finite values)
+         tot = N.zeros(maxlength, dtype=N.float64)
+-        num = N.zeros(maxlength, dtype=N.int)
++        num = N.zeros(maxlength, dtype=N.int_)
+         for d in inds:
+             f = N.isfinite(d.data)
+             tot[:len(d.data)][f] += d.data[f]
+@@ -976,7 +976,7 @@ def updateDatasets(self, fields, helper):
+         def averageError(errtype, fallback=None):
+             """Get average for an error value."""
+             tot = N.zeros(maxlength, dtype=N.float64)
+-            num = N.zeros(maxlength, dtype=N.int)
++            num = N.zeros(maxlength, dtype=N.int_)
+             for d in inds:
+                 vals = getattr(d, errtype)
+                 if vals is None and fallback:
+@@ -1030,7 +1030,7 @@ def updateDatasets(self, fields, helper):
+ 
+         # add data where finite
+         data = N.zeros(maxlength, dtype=N.float64)
+-        anyfinite = N.zeros(maxlength, dtype=N.bool)
++        anyfinite = N.zeros(maxlength, dtype=N.bool_)
+         for d in inds:
+             f = N.isfinite(d.data)
+             data[:len(d.data)][f] += d.data[f]
+@@ -1213,7 +1213,7 @@ def updateDatasets(self, fields, helper):
+ 
+         # output data and where data is finite
+         data = N.ones(maxlength, dtype=N.float64)
+-        anyfinite = N.zeros(maxlength, dtype=N.bool)
++        anyfinite = N.zeros(maxlength, dtype=N.bool_)
+         for d in inds:
+             f = N.isfinite(d.data)
+             anyfinite[f] = True
+@@ -1386,7 +1386,7 @@ def updateDatasets(self, fields, helper):
+ 
+         minvals = N.zeros(maxlength, dtype=N.float64) + 1e100
+         maxvals = N.zeros(maxlength, dtype=N.float64) - 1e100
+-        anyfinite = N.zeros(maxlength, dtype=N.bool)
++        anyfinite = N.zeros(maxlength, dtype=N.bool_)
+         for d in inds:
+             f = N.isfinite(d.data)
+             anyfinite[f] = True
+@@ -1417,7 +1417,7 @@ def updateDatasets(self, fields, helper):
+         if self.dserror is not None:
+             # compute mean and look at differences from it
+             tot = N.zeros(maxlength, dtype=N.float64)
+-            num = N.zeros(maxlength, dtype=N.int)
++            num = N.zeros(maxlength, dtype=N.int_)
+             for d in inds:
+                 f = N.isfinite(d.data)
+                 tot[f] += d.data[f]
+@@ -1594,10 +1594,10 @@ def updateDatasets(self, fields, helper):
+ 
+         if filt is None:
+             # select nothing
+-            filt = N.zeros(data.shape, dtype=N.bool)
++            filt = N.zeros(data.shape, dtype=N.bool_)
+         else:
+             # filter must have int/bool type
+-            filt = N.array(filt, dtype=N.bool)
++            filt = N.array(filt, dtype=N.bool_)
+ 
+         try:
+             if fields['replacenan']:

@@ -425,4 +425,12 @@
   * Fix missing documentation</comment>
     <requestid>1040697</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>c99cf69157fd5dcc5e07deb498caa6fc</srcmd5>
+    <version>3.5.3</version>
+    <time>1673724745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058332</requestid>
+  </revision>
 </revisionlist>
