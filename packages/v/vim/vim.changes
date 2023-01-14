@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:29:35 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1188, fixes the following problems
+- refreshed vim-7.4-highlight_fstab.patch
+  * Float constant not recognized as float.
+  * Type error when using "any" type and adding a number to a float.
+  * Leaking allocated type.
+  * Termcap entries for RGB colors are not set automatically.
+  * test_mswin_event() can hang.
+  * Users cannot easily try out a PR.
+  * CI does not use the latest Python version.
+  * Code is indented more than needed.
+  * Compiler may complain about an unused function.
+  * Terminfo entries for bracketed paste are not used.
+  * Sporadic test failures when using a terminal window.
+  * Type of arguments not checked when calling a partial.
+  * Tex filetype detection not sufficiently tested.
+  * Cursor positioning and display problems with 'smoothscroll' and using
+  "zt", "zb" or "zz".
+  * Class member access is not fully tested yet.
+  * Class function not implemented yet.
+  * Virtual text at a column position is truncated at the window
+  edge. (Yegappan Lakshmanan)
+  * Memory leak when using class functions.
+  * Bracketed paste can be enabled when pasted text is not recognized.
+  * No error if function argument shadows class member.
+  * Build failure.
+  * Sporadic Test_range() failure.
+  * Unexpected output when autoloading a script for an interactive operation.
+  * Build failure without the +eval feature.
+  * Code is indented more than needed.
+  * Error message names do not match the items.
+  * Comparing objects uses identity instead of equality.
+  * Missing function argument.
+  * Memory leak when getting class member type from expr.
+  * Some conditions are always false.
+  * Crash when expecting varargs but it is something else.
+  * Cannot create a new object in a compiled function.
+  * Cannot call an object method in a compiled function.
+  * 'cursorcolumn' and 'colorcolumn' wrong after concealing and wrapping line.
+  * Crash and/or memory leak when redefining function after error.
+  * Invalid memory access with bad 'statusline' value.
+  * Reading beyond text.
+  * Invalid memory access with recursive substitute expression.
+  * Cannot access a class member in a compiled function.
+  * Cmdline test fails in the GUI.
+  * Class members may be garbage collected.
+  * :interface is not implemented yet.
+  * Build failure.
+  * Class "implements" argument not implemented.
+  * Build error with some compilers.
+  * Coverity warns for dead code.
+  * Cannot use a class as a type.
+  * Tests fail because of a different error message.
+  * "implements" only handles one interface name.
+  * Code is indented more than necessary.
+  * Extends argument for class not implemented yet.
+  * ASAN error for ufunc_T allocated with wrong size.
+  * Coverity warns for using strcpy().
+  * Configure does not handle all FORTIFY_SOURCE variants.
+  * Compiler warning for implicit size_t/int conversion.
+  * Evaluating string expression advances function line.
+  * Tests using IPv6 sometimes fail.
+  * Code is indented more than necessary.
+  * EditorConfig files do not have their own filetype.
+  * Code to enable/disable mouse is not from terminfo/termcap.
+  * Some key+modifier tests fail on some AppVeyor images.
+  * Screen is not redrawn after using setcellwidths().
+  * When 'selection' is "exclusive" then "1v" is one char short.
+  * Compiler warning for unused variable on non-Unix systems.
+  * Smali files are not recognized.
+  * The set_ref_in_item() function is too long.
+  * smithy files are not recognized.
+  * A child class cannot override functions from a base class.
+  * Not all errors around inheritance are tested.
+  * Compiler warnings without the +job feature.
+  * Class inheritance and typing insufficiently tested.
+  * go checksum files are not recognized.
+
+-------------------------------------------------------------------
 Wed Dec 28 17:06:17 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1107, fixes the following problems

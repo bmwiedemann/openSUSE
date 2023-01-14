@@ -6677,4 +6677,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1055871</requestid>
   </revision>
+  <revision rev="334" vrev="1">
+    <srcmd5>6ee245b26ab85e8f5856576285f7fe2e</srcmd5>
+    <version>9.0.1188</version>
+    <time>1673724677</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1188, fixes the following problems
+- refreshed vim-7.4-highlight_fstab.patch
+  * Float constant not recognized as float.
+  * Type error when using &quot;any&quot; type and adding a number to a float.
+  * Leaking allocated type.
+  * Termcap entries for RGB colors are not set automatically.
+  * test_mswin_event() can hang.
+  * Users cannot easily try out a PR.
+  * CI does not use the latest Python version.
+  * Code is indented more than needed.
+  * Compiler may complain about an unused function.
+  * Terminfo entries for bracketed paste are not used.
+  * Sporadic test failures when using a terminal window.
+  * Type of arguments not checked when calling a partial.
+  * Tex filetype detection not sufficiently tested.
+  * Cursor positioning and display problems with 'smoothscroll' and using
+  &quot;zt&quot;, &quot;zb&quot; or &quot;zz&quot;.
+  * Class member access is not fully tested yet.
+  * Class function not implemented yet.
+  * Virtual text at a column position is truncated at the window
+  edge. (Yegappan Lakshmanan)
+  * Memory leak when using class functions.
+  * Bracketed paste can be enabled when pasted text is not recognized.
+  * No error if function argument shadows class member.
+  * Build failure.
+  * Sporadic Test_range() failure.
+  * Unexpected output when autoloading a script for an interactive operation.
+  * Build failure without the +eval feature.
+  * Code is indented more than needed.
+  * Error message names do not match the items.</comment>
+    <requestid>1058175</requestid>
+  </revision>
 </revisionlist>
