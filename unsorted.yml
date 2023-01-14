@@ -94,7 +94,7 @@ unsorted:
   - Mesa-KHR-devel 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
-  - Mesa-dri-devel: [i586] # devel package of common_locks:Mesa-libEGL1 
+  - Mesa-dri-devel: [i586] # devel package of common_locks:Mesa-libGL1 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit: [x86_64] 
   - Mesa-gallium-32bit: [x86_64] 
@@ -3078,6 +3078,7 @@ unsorted:
   - dkimproxy 
   - dkms 
   - dlpack-devel 
+  - dlt-viewer 
   - dm-zoned-tools 
   - dmd 
   - dmenu 
@@ -8706,6 +8707,7 @@ unsorted:
   - kubeconform 
   - kubectl-foreach 
   - kubectl-neat 
+  - kubectl-node-shell 
   - kubectl-oomd 
   - kubectl-who-can: [x86_64] 
   - kubectx 
@@ -9358,7 +9360,7 @@ unsorted:
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
   - libQMatrixClient0_5_3 
-  - libQgpsmm29 
+  - libQgpsmm30 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
   - libQt53DCore-devel 
@@ -13864,8 +13866,6 @@ unsorted:
   - libregina3 
   - libreiser4-2_0-5 
   - libreiser4-minimal-2_0-5 
-  - libreiserfscore-devel 
-  - libreiserfscore0 
   - librelp-devel 
   - librelp0 
   - librem4 
@@ -15765,7 +15765,7 @@ unsorted:
   - ltrace 
   - ltrace-32bit: [x86_64] 
   - lttng-modules 
-  - lttng-modules-kmp-default 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
@@ -16168,6 +16168,7 @@ unsorted:
   - mangohud 
   - mangohud-32bit: [x86_64] 
   - manpageeditor 
+  - mapi-header-php 
   - mapserver 
   - mapserver-devel 
   - marble 
@@ -19118,7 +19119,7 @@ unsorted:
   - pam_pkcs11-devel-doc 
   - pam_radius 
   - pam_radius-32bit: [x86_64] 
-  - pam_saslauthd: [x86_64] 
+  - pam_saslauthd 
   - pam_script 
   - pam_snapper 
   - pam_ssh_agent_auth 
@@ -20940,6 +20941,7 @@ unsorted:
   - php8-soap 
   - php8-sockets 
   - php8-sodium 
+  - php8-ssh2 
   - php8-sysvmsg 
   - php8-sysvsem 
   - php8-sysvshm 
@@ -24117,7 +24119,6 @@ unsorted:
   - python310-nbsphinx-link 
   - python310-nbval 
   - python310-nbxmpp 
-  - python310-nbxmpp-doc 
   - python310-ncclient 
   - python310-ndg-httpsclient 
   - python310-neovim 
@@ -24836,9 +24837,8 @@ unsorted:
   - python310-qstylizer 
   - python310-qsymm 
   - python310-qt3d-qt5 
-  - python310-qt3d-qt5-api 
+  - python310-qt3d-qt5-devel 
   - python310-qt3d-qt5-doc 
-  - python310-qt3d-qt5-sip 
   - python310-qt5-devel 
   - python310-qt5-doc 
   - python310-qt5-quick3d 
@@ -28215,9 +28215,8 @@ unsorted:
   - python38-qstylizer 
   - python38-qsymm 
   - python38-qt3d-qt5 
-  - python38-qt3d-qt5-api 
+  - python38-qt3d-qt5-devel 
   - python38-qt3d-qt5-doc 
-  - python38-qt3d-qt5-sip 
   - python38-qt5 
   - python38-qt5-devel 
   - python38-qt5-doc 
@@ -30866,8 +30865,6 @@ unsorted:
   - python39-nbsphinx 
   - python39-nbsphinx-link 
   - python39-nbval 
-  - python39-nbxmpp 
-  - python39-nbxmpp-doc 
   - python39-ncclient 
   - python39-ndg-httpsclient 
   - python39-neovim 
@@ -31613,9 +31610,8 @@ unsorted:
   - python39-qstylizer 
   - python39-qsymm 
   - python39-qt3d-qt5 
-  - python39-qt3d-qt5-api 
+  - python39-qt3d-qt5-devel 
   - python39-qt3d-qt5-doc 
-  - python39-qt3d-qt5-sip 
   - python39-qt5 
   - python39-qt5-devel 
   - python39-qt5-doc 
@@ -33063,7 +33059,6 @@ unsorted:
   - rehex 
   - reiser4progs 
   - reiser4progs-devel 
-  - reiserfs 
   - rekor 
   - relaxngDatatype 
   - relaxngcc 
@@ -33384,6 +33379,7 @@ unsorted:
   - salt-ssh 
   - salt-standalone-formulas-configuration 
   - salt-syndic 
+  - salt-tests 
   - salt-zsh-completion 
   - samba-ad-dc 
   - samba-ceph: [x86_64] 

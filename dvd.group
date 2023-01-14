@@ -2014,7 +2014,7 @@
     <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libgpod4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libgps29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgps30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgraphene-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgraphite2-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgravatar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5154,6 +5154,7 @@
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz-ng-compat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
