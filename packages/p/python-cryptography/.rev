@@ -797,4 +797,12 @@
   ~cryptography.hazmat.primitives.serialization.load_pem_private_key</comment>
     <requestid>1056761</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>a4920949ba4f5bfd1299e5042d7f761d</srcmd5>
+    <version>39.0.0</version>
+    <time>1673724648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058087</requestid>
+  </revision>
 </revisionlist>

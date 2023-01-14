@@ -1,8 +1,18 @@
-Index: cryptography-37.0.2/src/cryptography/__init__.py
-===================================================================
---- cryptography-37.0.2.orig/src/cryptography/__init__.py	2022-06-09 18:07:46.169719315 +0200
-+++ cryptography-37.0.2/src/cryptography/__init__.py	2022-06-09 18:07:53.853613006 +0200
-@@ -18,12 +18,3 @@ __all__ = [
+From 172adcb524950666fa223ed325d87bf355bca50d Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Thu, 12 Jan 2023 11:12:53 +0100
+Subject: [PATCH] remove python3.6 deprecation warning
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ src/cryptography/__init__.py | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/cryptography/__init__.py b/src/cryptography/__init__.py
+index 07c894ea3..91b624bf0 100644
+--- a/src/cryptography/__init__.py
++++ b/src/cryptography/__init__.py
+@@ -13,13 +13,3 @@ __all__ = [
      "__author__",
      "__copyright__",
  ]
@@ -10,8 +20,12 @@ Index: cryptography-37.0.2/src/cryptography/__init__.py
 -if sys.version_info[:2] == (3, 6):
 -    warnings.warn(
 -        "Python 3.6 is no longer supported by the Python core team. "
--        "Therefore, support for it is deprecated in cryptography and will be"
--        " removed in a future release.",
+-        "Therefore, support for it is deprecated in cryptography. The next "
+-        "release of cryptography (40.0) will be the last to support Python "
+-        "3.6.",
 -        CryptographyDeprecationWarning,
 -        stacklevel=2,
 -    )
+-- 
+2.39.0
+

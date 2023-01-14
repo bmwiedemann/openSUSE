@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 12 10:14:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adjust patch remove_python_3_6_deprecation_warning.patch to version
+  39.0.0
+
+-------------------------------------------------------------------
 Mon Jan  2 19:38:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 39.0.0:
