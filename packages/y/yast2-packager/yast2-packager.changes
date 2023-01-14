@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 10 17:35:41 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Media check fixes in containerized environment
+  - Start browsing the ISO files from the /host directory
+    to show the host files (bsc#1206834)
+  - Fixed file readability check to correctly use the specified
+    ISO file
+- 4.5.11
+
+-------------------------------------------------------------------
 Tue Dec 20 09:30:54 UTC 2022 - Ladislav Slezák <lslezak@suse.com>
 
 - Do not fail when the installation URL contains a space
