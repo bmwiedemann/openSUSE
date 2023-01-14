@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 11 10:30:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.0.0+git.20210311:
+  * Removed related db query from domain filters.
+  * Resolves #4.
+- use proper python3-magic module
+
+-------------------------------------------------------------------
 Sat Aug 22 22:43:04 UTC 2020 - mardnh@gmx.de
 
 - Initial package, version 0.0.0+git.20180324

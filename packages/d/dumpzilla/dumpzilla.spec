@@ -1,6 +1,7 @@
 #
 # spec file for package dumpzilla
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           dumpzilla
-Version:        0.0.0+git.20180324
+Version:        0.0.0+git.20210311
 Release:        0
 Summary:        Firefox browser forensic tool
 License:        GPL-3.0-or-later
@@ -27,8 +28,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        http://www.dumpzilla.org/Manual_dumpzilla_en.txt
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python3-magic
 Requires:       python3-lz4
+Requires:       python3-python-magic
 BuildArch:      noarch
 
 %description
@@ -54,7 +55,6 @@ Features:
  * Session data (Webs, reference URLs and text used in forms).
  * Visualize live user surfing, Url used in each tab or window
    and use of forms.
-
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
