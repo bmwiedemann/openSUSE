@@ -228,12 +228,6 @@ getent passwd munin > /dev/null || %{_sbindir}/useradd -r -c "munin monitoring" 
 %endif
 
 %post
-chown -R munin:munin %{htmldir}
-chown -R munin:munin %{dbdir}
-chmod 755 %{dbdir}
-touch %{logdir}/munin-graph.log %{logdir}/munin-html.log %{logdir}/munin-nagios.log %{logdir}/munin-limits.log %{logdir}/munin-update.log
-chown munin:munin %{logdir}/*
-chown root:root %{logdir}/munin-node.log* >/dev/null 2>&1 || true
 %tmpfiles_create munin.conf
 %service_add_post munin-cgi-graph.service
 %service_add_post munin-cgi-html.service
@@ -273,12 +267,6 @@ getent passwd munin > /dev/null || %{_sbindir}/useradd -r -c "munin monitoring" 
 if [ $1 = 1 ]; then
 %{_sbindir}/munin-node-configure --shell | sh
 fi
-chown -R munin:munin %{dbdir}
-chmod 755 %{dbdir}
-touch %{logdir}/munin-node.log
-chown munin:munin %{logdir}/*
-chown root:root %{logdir}/munin-node.log*
-chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %tmpfiles_create munin-node.conf
 %service_add_post munin-node.service
 %firewalld_reload
@@ -368,6 +356,11 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_mandir}/man8/munin.8%{?ext_man}
 %attr(0750, munin, munin) %dir %{logdir}
 %attr(0755, munin, munin) %dir %{dbdir}
+%ghost %attr(0644, munin, munin) %{logdir}/munin-graph.log
+%ghost %attr(0644, munin, munin) %{logdir}/munin-html.log
+%ghost %attr(0644, munin, munin) %{logdir}/munin-nagios.log
+%ghost %attr(0644, munin, munin) %{logdir}/munin-limits.log
+%ghost %attr(0644, munin, munin) %{logdir}/munin-update.log
 %ghost /run/munin
 
 %files node
@@ -452,6 +445,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %attr(0750, munin, munin) %dir %{logdir}
 %attr(0755, munin, munin) %dir %{dbdir}
 %attr(0775, nobody, nobody) %dir %{dbdir}/plugin-state
+%ghost %{logdir}/munin-node.log
 %ghost /run/munin
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services

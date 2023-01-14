@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 12 13:16:28 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop harmful chown in %post scripts (boo#1155078)
+
+-------------------------------------------------------------------
 Thu Dec 15 17:20:35 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.0.71
