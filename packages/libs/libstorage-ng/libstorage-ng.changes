@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Jan 11 12:42:15 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#911
+- avoid using existing mount paths in testsuite
+- coding style
+- 4.5.63
+
+--------------------------------------------------------------------
 Sat Jan 7 20:09:30 UTC 2023 - aschnell@suse.com
 
 - Translated using Weblate (Macedonian) (bsc#1149754)
