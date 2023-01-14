@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Jan 12 18:47:42 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Prune the test suite when run in lettered staging projects:
+  * Add a couple more tests that require extra packages.
+
+-------------------------------------------------------------------
+Thu Jan 12 09:52:02 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.89.1:
+  * Fixes
+    - Ignore Response classes on return annotation.
+  * Docs
+    - Update docs and examples for Response Model with Return Type 
+      Annotations, and update runtime error. 
+    - New docs at Response Model - Return Type: Other Return Type 
+      Annotations.
+    - Add External Link: FastAPI lambda container: serverless 
+      simplified.
+  * Translations
+    - Add Turkish translation for docs/tr/docs/tutorial/first_steps.md.
+
+- Update to 0.89.0: 
+  * Features
+    - Add support for function return type annotations to declare the response_model.
+  * Docs
+    - Add External Link: Authorization on FastAPI with Casbin.
+    - Fix typo in docs/en/docs/async.md.
+    - Fix typo in docs/en/docs/deployment/concepts.md.
+  * Translations
+    - Add Russian translation for docs/ru/docs/fastapi-people.md.
+    - Fix typo in Chinese translation for docs/zh/docs/benchmarks.md.
+    - Add Korean translation for docs/tutorial/cors.md.
+* Internal
+    - Update coverage[toml] requirement from <7.0,>=6.5.0 to >=6.5.0,<8.0.
+    - Update uvicorn[standard] requirement from <0.19.0,>=0.12.0 to >=0.12.0,<0.21.0 for development.
+    - Bump dawidd6/action-download-artifact from 2.24.2 to 2.24.3.
+    - Update FastAPI People.
+    - Bump types-ujson from 5.5.0 to 5.6.0.0.
+    - Bump pypa/gh-action-pypi-publish from 1.5.2 to 1.6.4.
+    - Add GitHub Action gate/check.
+    - Update sponsors, add Svix.
+    - Remove Doist sponsor.
+    - Update sqlalchemy requirement from <=1.4.41,>=1.3.18 to >=1.3.18,<1.4.43.
+    - Bump nwtgck/actions-netlify from 1.2.4 to 2.0.0.
+    - Refactor CI artifact upload/download for docs previews.
+    - Bump pypa/gh-action-pypi-publish from 1.5.1 to 1.5.2.
+    - Update FastAPI People.
+    - Update sponsors, disable course bundle.
+    - Update typer[all] requirement from <0.7.0,>=0.6.1 to >=0.6.1,<0.8.0.
+
+-------------------------------------------------------------------
 Wed Jan  4 18:18:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove flit from build requirements: The real used backend
@@ -22,12 +73,12 @@ Mon Nov 14 09:12:12 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 0.88.0
   * Upgrades
-    - arrow_up Bump Starlette to version 0.22.0 to fix bad encoding
+    - Bump Starlette to version 0.22.0 to fix bad encoding
       for query parameters in new TestClient.
   * Docs
-    - pencil2 Fix typo in docs for docs/en/docs/advanced/middleware.md.
+    - Fix typo in docs for docs/en/docs/advanced/middleware.md.
   * Translations
-    - globe_with_meridians Add Portuguese translation for 
+    - Add Portuguese translation for 
       docs/pt/docs/deployment/docker.md.
 
 - Update to 0.87.0
@@ -46,38 +97,35 @@ Mon Nov 14 09:12:12 UTC 2022 - David Anes <david.anes@suse.com>
     - New docs about how to Help Maintain FastAPI.
 
   * Features:
-    - arrow_up Upgrade and relax dependencies for extras "all".
-    - sparkles Re-export Starlette's WebSocketException and add it 
+    - Upgrade and relax dependencies for extras "all".
+    - Re-export Starlette's WebSocketException and add it 
       to docs.
-    - memo Update references to Requests for tests to HTTPX, and add
+    - Update references to Requests for tests to HTTPX, and add
       HTTPX to extras.
-    - arrow_up Upgrade Starlette to 0.21.0, including the new 
+    - Upgrade Starlette to 0.21.0, including the new 
       TestClient based on HTTPX. PR #5471 by @pawelrubin.
 
   * Docs:
-    - pencil2 Tweak Help FastAPI from PR review after merging.
-    - pencil2 Clarify docs on CORS.
-    - memo Update Help FastAPI: Help Maintain FastAPI.
+    - Tweak Help FastAPI from PR review after merging.
+    - Clarify docs on CORS.
+    - Update Help FastAPI: Help Maintain FastAPI.
 
   * Translations:
-    - globe_with_meridians Fix highlight lines for Japanese 
+    - Fix highlight lines for Japanese 
       translation for docs/tutorial/query-params.md. 
-    - globe_with_meridians Add French translation for 
+    - Add French translation for 
       docs/fr/docs/advanced/additional-status-code.md.
-    - globe_with_meridians Add Portuguese translation for 
+    - Add Portuguese translation for 
       docs/pt/docs/tutorial/request-forms-and-files.md.
-    - globe_with_meridians Add Japanese translation for 
+    - Add Japanese translation for 
       docs/ja/docs/advanced/websockets.md.
 
   * Internal:
-    - sparkles Use Ruff for linting.
-    - hammer_and_wrench Add Arabic issue number to Notify 
-      Translations GitHub Action.
-    - arrow_up Bump dawidd6/action-download-artifact from 2.24.1 to 
-      2.24.2.
-    - arrow_up Bump dawidd6/action-download-artifact from 2.24.0 to 
-      2.24.1.
-    - memo Update coverage badge to use Samuel Colvin's Smokeshow.
+    - Use Ruff for linting.
+    - Add Arabic issue number to Notify Translations GitHub Action.
+    - Bump dawidd6/action-download-artifact from 2.24.1 to 2.24.2.
+    - Bump dawidd6/action-download-artifact from 2.24.0 to 2.24.1.
+    - Update coverage badge to use Samuel Colvin's Smokeshow.
 
 -------------------------------------------------------------------
 Fri Nov  4 11:06:39 UTC 2022 - Michael Ströder <michael@stroeder.com>
@@ -101,7 +149,7 @@ Wed Nov  2 10:35:31 UTC 2022 - David Anes <david.anes@suse.com>
     - Fix typo in docs about contributing, for compatibility with pip in Zsh. 
     - Fix typo in docs with examples for Python 3.10 instead of 3.9.
   
-  *Translations:
+  * Translations:
     - Add Portuguese translation for docs/pt/docs/tutorial/request-forms.md.
     - Add Chinese translation for docs/zh/docs/tutorial/dependencies/classes-as-dependencies.md.
     - Add French translation for deployment/deta.md.

@@ -19,7 +19,7 @@
 # Keep extra test requirements out of Ring1
 %bcond_with ringdisabled
 Name:           python-fastapi
-Version:        0.88.0
+Version:        0.89.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module orjson >= 3.2.1}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
 BuildRequires:  %{python_module python-jose >= 3.3}
-BuildRequires:  %{python_module ujson >= 5.2}
+BuildRequires:  %{python_module ujson >= 5.6}
 %endif
 # /SECTION
 %python_subpackages
@@ -83,6 +83,8 @@ ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutori
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_py39.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_security/test_tutorial005_py310.py"
 ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_sql_databases_peewee"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_01.py"
+ignorefiles="$ignorefiles --ignore tests/test_tutorial/test_response_model/test_tutorial003_01_py310.py"
 donttest="$donttest or test_orjson_response_class"
 donttest="$donttest or (test_tutorial001 and test_get_custom_response)"
 %endif
