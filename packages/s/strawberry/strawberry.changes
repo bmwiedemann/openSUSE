@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 13 21:26:32 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.14
+
+ + Fix initial volume not set when using Auto as output (#1104).
+ + Fix saving moodbar if the URL contains host, ie.: UNC paths for SMB (#1101).
+ + Fix CollectionBackendTest compile error (#1100).
+ + Remove explicitly enabling debug messages (#1106).
+
+-------------------------------------------------------------------
 Mon Jan  9 21:52:43 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.13
