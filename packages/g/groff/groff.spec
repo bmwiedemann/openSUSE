@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,6 @@ Patch101:       https://salsa.debian.org/debian/groff/raw/master/debian/patches/
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
-BuildRequires:  distribution-release
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -137,9 +136,8 @@ sed -i \
 
 %build
 # bsc#1185613
-. /etc/os-release
-sed -i "s:\(doc-volume-operating-system\) BSD:\1 $PRETTY_NAME:" tmac/doc-common-u
-sed -i "s:\(doc-default-operating-system\) BSD:\1 $PRETTY_NAME:" tmac/doc-common-u
+sed -i "s:\(doc-volume-operating-system\) BSD:\1 SUSE:" tmac/doc-common-u
+sed -i "s:\(doc-default-operating-system\) BSD:\1 SUSE:" tmac/doc-common-u
 # -----------
 autoreconf -fvi
 # libdir redefined as it is just bunch of perl scripts
