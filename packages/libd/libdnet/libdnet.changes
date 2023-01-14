@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 12 10:41:06 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.16.3:
+  - IPv6 support 
+  - fixed some potential buffer overflows
+
+-------------------------------------------------------------------
 Thu Oct 15 14:16:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.14:

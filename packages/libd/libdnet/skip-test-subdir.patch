@@ -1,7 +1,7 @@
-Index: libdnet-libdnet-1.14/Makefile.am
+Index: libdnet-libdnet-1.16.3/Makefile.am
 ===================================================================
---- libdnet-libdnet-1.14.orig/Makefile.am
-+++ libdnet-libdnet-1.14/Makefile.am
+--- libdnet-libdnet-1.16.3.orig/Makefile.am
++++ libdnet-libdnet-1.16.3/Makefile.am
 @@ -2,7 +2,7 @@
  
  include $(top_srcdir)/Makefile.am.common

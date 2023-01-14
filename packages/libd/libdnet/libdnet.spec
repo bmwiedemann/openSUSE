@@ -1,7 +1,7 @@
 #
 # spec file for package libdnet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libdnet
-Version:        1.14
+Version:        1.16.3
 Release:        0
 Summary:        Library for Portable Interface to Low-Level Networking Routines
 License:        BSD-3-Clause
@@ -25,6 +25,7 @@ URL:            https://github.com/dugsong/libdnet
 Source0:        https://github.com/dugsong/libdnet/archive/%{name}-%{version}.tar.gz
 # Skip the test subdir, as installing that is not necessary
 Patch1:         skip-test-subdir.patch
+BuildRequires:  check-devel
 BuildRequires:  libbsd-devel
 BuildRequires:  libtool
 
