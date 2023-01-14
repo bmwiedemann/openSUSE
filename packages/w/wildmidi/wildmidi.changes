@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 14 13:03:50 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.5
+  * Fixed MUS drum channels 9 and 15 being swapped if the same file
+    is played twice from the same memory buffer.
+  * Player: Fixed save midi reading wrong argv if there are no path
+    seperators.
+  * Other code and build system clean-ups.
+
+-------------------------------------------------------------------
 Sun Mar 21 13:29:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 0.4.4

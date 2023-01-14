@@ -1,7 +1,7 @@
 #
 # spec file for package wildmidi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2007-2016 Hans de Goede <j.w.r.degoede@hhs.nl>
 # Copyright (c) 2016 Pauline Emily <vilene@posteo.net>
 #
@@ -20,7 +20,7 @@
 
 %define soname  libWildMidi2
 Name:           wildmidi
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Softsynth midi player
 License:        GPL-3.0-or-later
