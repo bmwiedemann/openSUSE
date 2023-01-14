@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 11 12:13:52 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Always read local timezone database (bsc#1207000).
+- 4.5.5
+
+-------------------------------------------------------------------
+Tue Jan 10 08:53:15 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Stop using File.exists? which no longer works in Ruby 3.2
+  (bsc#1206419)
+- 4.5.4
+
+-------------------------------------------------------------------
 Thu Nov 24 12:13:15 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update language cache when selecting new language to ensure that

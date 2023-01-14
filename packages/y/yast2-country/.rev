@@ -1750,4 +1750,12 @@
     <comment>submit new version 4.5.3</comment>
     <requestid>1039347</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>df5c8683d8182c99cc1c398127354241</srcmd5>
+    <version>4.5.5</version>
+    <time>1673724640</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.5</comment>
+    <requestid>1057784</requestid>
+  </revision>
 </revisionlist>
