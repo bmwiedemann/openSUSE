@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 15 11:38:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.14
+  * No longer run usage() and bbcheck() in unconfigured state
+    (boo#1207144) 
+
+-------------------------------------------------------------------
 Tue Jan  3 14:21:24 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.13

@@ -678,4 +678,14 @@ Latest changes:
     failure.</comment>
     <requestid>1046542</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e37acec6ca8f9b39258c98f9aba15520</srcmd5>
+    <version>0.8.14</version>
+    <time>1673801894</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.14
+  * No longer run usage() and bbcheck() in unconfigured state
+    (boo#1207144)</comment>
+    <requestid>1058446</requestid>
+  </revision>
 </revisionlist>
