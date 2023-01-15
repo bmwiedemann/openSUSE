@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libgnustep-base1_28
+%define lname   libgnustep-base1_29
 %define         gnustep_sh       GNUstep.sh
 %define         gs_config        %{_sysconfdir}/GNUstep/GNUstep.conf
 %define         profile_dir      %{_sysconfdir}/profile.d
@@ -24,7 +24,7 @@
 %define         gs_makefiles     %{_datadir}/GNUstep/Makefiles
 %define         gs_library       %{_libdir}/GNUstep
 Name:           gnustep-base
-Version:        1.28.1
+Version:        1.29.0
 Release:        0
 Summary:        GNUstep Base library package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
