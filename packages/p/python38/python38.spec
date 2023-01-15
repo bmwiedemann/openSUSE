@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -479,7 +479,14 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
+
+%if 0%{?suse_version} >= 1550
+# Sphinx 6.0+ reports various warnings that are not backported
+# branch.
+%make_build html SPHINXERRORHANDLING=""
+%else
 %make_build -j1 html
+%endif
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp

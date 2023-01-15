@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 08:04:11 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Suppress warnings for Sphinx 6.0+.
+
+-------------------------------------------------------------------
 Thu Dec  8 10:32:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.8.16:
