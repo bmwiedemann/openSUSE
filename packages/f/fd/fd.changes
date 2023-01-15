@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 14 17:09:47 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 8.6.0:
+  * New --and <pattern> option to add additional patterns that must also be matched. 
+  * Added --changed-after as alias for --changed-within, to have a name consistent with --changed-before.
+  * Breaking: On Unix-like systems, --type executable now additionally checks if the file is executable by the current user,
+  * Fix completion generation to not include full path of fd command
+  * Fix build error if completions feature is disabled
+  * Fix --owner, --threads/j option value parsing
+-------------------------------------------------------------------
 Wed Nov 02 07:05:31 UTC 2022 - sebix+novell.com@sebix.at
 
 - Update to version 8.5.0:

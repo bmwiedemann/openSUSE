@@ -1,7 +1,7 @@
 #
 # spec file for package fd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        8.5.0
+Version:        8.6.0
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
