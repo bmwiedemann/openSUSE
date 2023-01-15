@@ -1,5 +1,4 @@
 
-Prefer: yast2-schema-default
 %define gcc_version 12
 
 # testing new cycle algorithm
@@ -925,6 +924,7 @@ Prefer: -zziplib-devel-32bit
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby3.1-rubygem-fast_gettext
 Prefer: -ruby3.1-rubygem-public_suffix-3.1
+Prefer: -ruby3.2-rubygem-public_suffix-3.1
 
 Prefer: -ruby3.1-rubygem-kramdown
 
