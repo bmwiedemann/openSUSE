@@ -1,7 +1,7 @@
 #
 # spec file for package libcdatetime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libcdatetime1
 Name:           libcdatetime
-Version:        20220104
+Version:        20230115
 Release:        0
 Summary:        Library for C date and time functions
 License:        LGPL-3.0-or-later
@@ -36,11 +36,11 @@ Library for C date and time functions.
 
 Part of the libyal library family.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library for C date and time functions
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library for C date and time functions.
 
 libcdatetime is a low level member of the libyal library family.
@@ -48,7 +48,7 @@ libcdatetime is a low level member of the libyal library family.
 %package devel
 Summary:        Development files for libcdatetime, a PFF/OFF file format library
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 libcdatetime is a library C date and time functions.
@@ -67,20 +67,20 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libcdatetime.so.*
+%_libdir/libcdatetime.so.*
 
 %files devel
-%{_includedir}/libcdatetime.h
-%{_includedir}/libcdatetime/
-%{_libdir}/libcdatetime.so
-%{_libdir}/pkgconfig/libcdatetime.pc
-%{_mandir}/man3/libcdatetime.3*
+%_includedir/libcdatetime.h
+%_includedir/libcdatetime/
+%_libdir/libcdatetime.so
+%_libdir/pkgconfig/libcdatetime.pc
+%_mandir/man3/libcdatetime.3*
 
 %changelog

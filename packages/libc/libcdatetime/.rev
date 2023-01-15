@@ -66,4 +66,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038443</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f1a00bb0af30bfbeb97943dd99c0f8a7</srcmd5>
+    <version>20230115</version>
+    <time>1673801892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 202301015</comment>
+    <requestid>1058442</requestid>
+  </revision>
 </revisionlist>
