@@ -1,7 +1,7 @@
 #
 # spec file for package libfcache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libfcache
 %define lname	libfcache1
-Version:        20220110
+Version:        20230115
 Release:        0
 Summary:        Library to provide generic file data cache functions
 License:        LGPL-3.0-or-later
