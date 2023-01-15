@@ -1117,4 +1117,14 @@
 </comment>
     <requestid>1040176</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>3c168ec4dd7c605f2c0ee39af0f4a645</srcmd5>
+    <version>7.2.0</version>
+    <time>1673801869</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-pygments-2.14.0.patch to make it work with pygments 2.14.0
+  gh#pytest-dev/pytest#10632
+</comment>
+    <requestid>1056778</requestid>
+  </revision>
 </revisionlist>

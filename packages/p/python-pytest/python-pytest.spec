@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-test-raising-repr.patch gh#pytest-dev/pytest#10473
 Patch:          fix-test-raising-repr.patch
+# PATCH-FIX-UPSTREAM fix-tests-pygments-2.14.0.patch gh#pytest-dev/pytest#10632
+Patch1:         fix-tests-pygments-2.14.0.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}

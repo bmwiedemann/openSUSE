@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 10:15:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-pygments-2.14.0.patch to make it work with pygments 2.14.0
+  gh#pytest-dev/pytest#10632
+
+-------------------------------------------------------------------
 Mon Dec  5 08:51:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-test-raising-repr.patch gh#pytest-dev/pytest#10473, this make it
