@@ -23,4 +23,12 @@
     <comment>- Update to release 1.37</comment>
     <requestid>1043617</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8503db6efc058bca142a62d52ecc862f</srcmd5>
+    <version>2.1</version>
+    <time>1673801893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1</comment>
+    <requestid>1058439</requestid>
+  </revision>
 </revisionlist>

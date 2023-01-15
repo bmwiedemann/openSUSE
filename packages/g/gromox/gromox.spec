@@ -1,7 +1,7 @@
 #
 # spec file for package gromox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        1.37
+Version:        2.1
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -55,6 +55,7 @@ BuildRequires:  pkgconfig(jsoncpp) >= 1.4.0
 BuildRequires:  pkgconfig(libHX) >= 4.3
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libolecf)
 BuildRequires:  pkgconfig(libpff)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libzstd)
@@ -67,19 +68,30 @@ BuildRequires:  user(gromox)
 %if 0%{?suse_version}
 Requires:       glibc-locale-base
 %endif
-Requires:       php-cli >= 7.4
-Requires:       php-fpm
-%if 0%{?suse_version}
-Requires:       php-mysql
-Requires:       php-posix
-%else
-Requires:       php-mysqlnd
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# Require php-cli/fpm (and modules) that have a chance of loading mapi.so
+# which means same generation as the one we built with.
+Requires:       php8-cli php8-fpm php8-mysql php8-posix php8-soap
 %endif
+%if 0%{?sle_version} && 0%{?sle_version} < 150400
+Requires:       php-cli
+Requires:       php7-fpm
+Requires:       php7-mysql
+Requires:       php7-posix
+Requires:       php7-soap
+%endif
+%if 0%{?fedora_version} || 0%{?centos_version} || 0%{?redhat_version}
+Requires:       php-cli
+Requires:       php-fpm
+Requires:       php-mysqlnd
+Requires:       php-posix
 Requires:       php-soap
+%endif
 Requires:       w3m
 Requires(pre):  user(grommunio)
 Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)
+Provides:       bundled(tzcode) = 2022c
 %{?systemd_ordering}
 %if !0%{?_pamdir:1}
 %define _pamdir /%_lib/security
@@ -104,7 +116,7 @@ ready-to-run installation of Gromox.
 %build
 autoreconf -fi
 %configure CFLAGS="%optflags -Og" CXXFLAGS="%optflags -Og"
-%make_build
+%make_build V=1
 
 %install
 b="%buildroot"
@@ -134,7 +146,7 @@ mkdir -p "$b/%_sysconfdir/%name" "$b/%_datadir/%name"
 mkdir -p "$b/etc/php8/fpm/php-fpm.d"
 cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php8/fpm/php-fpm.d/gromox.conf"
 %endif
-%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
+%if 0%{?sle_version} && 0%{?sle_version} < 150400
 mkdir -p "$b/etc/php7/fpm/php-fpm.d"
 cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php7/fpm/php-fpm.d/gromox.conf"
 %endif

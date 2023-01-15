@@ -1,13 +1,15 @@
 #!/usr/bin/make -f
 export DH_VERBOSE=1
 phpdir := $(shell readlink -f $$(php-config --ini-path)/..)
+INSTDIR := debian/gromox
 
 %:
 	dh $@ --parallel --with autoreconf
 
 override_dh_auto_install:
 	dh_auto_install
-	find ${INSTDIR} -type f -name "*.la" -delete
+	find ${INSTDIR} -type f -name "*.la" -print -delete
+	perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' ${INSTDIR}/lib/systemd/system/*.service
 	for i in /etc/gromox /var/lib/gromox /var/lib/gromox/domain \
 	    /var/lib/gromox/queue /var/lib/gromox/queue/clone \
 	    /var/lib/gromox/queue/mess /var/lib/gromox/queue/save \

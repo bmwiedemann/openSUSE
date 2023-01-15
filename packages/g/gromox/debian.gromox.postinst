@@ -1,10 +1,24 @@
 #!/bin/sh
 
-# %files
-chown root:gromox /etc/gromox || :
-chmod 0770 /etc/gromox || :
-vd="/var/lib/gromox \
-	/var/lib/gromox/domain \
+set -e
+. /usr/share/debconf/confmodule
+
+set_perms()
+{
+	USER="$1"
+	GROUP="$2"
+	MODE="$3"
+	FILE="$4"
+	if ! dpkg-statoverride --list "$FILE" >/dev/null 2>&1; then
+		chown -R "$USER:$GROUP" "$FILE"
+		chmod -R $MODE "$FILE"
+        fi
+}
+
+xpostinst()
+{
+set_perms root gromox 0770 /etc/gromox || :
+for i in /var/lib/gromox \
 	/var/lib/gromox/queue \
 	/var/lib/gromox/queue/cache \
 	/var/lib/gromox/queue/clone \
@@ -12,11 +26,9 @@ vd="/var/lib/gromox \
 	/var/lib/gromox/queue/mess \
 	/var/lib/gromox/queue/save \
 	/var/lib/gromox/queue/timer \
-	/var/lib/gromox/user \
-	/var/log/gromox"
-chown gromox:gromox $vd || :
-chmod 0770 $vd || :
-chmod 0770 /var/lib/gromox /var/log/gromox || :
+	/var/log/gromox; do
+	set_perms gromox gromox 0770 "$i" || :
+done
 
 # %post
 if test -x /usr/bin/systemd-tmpfiles; then
@@ -32,5 +44,20 @@ if test -x /usr/bin/systemctl; then
 		gromox-pop3.service gromox-timer.service gromox-zcore.service \
 		grommunio-chat.service \
 		php7.4-fpm.service php8.0-fpm.service php8.1-fpm.service \
+		php8.2-fpm.service \
 		saslauthd.service 2>/dev/null || :
 fi
+}
+
+
+case "$1" in
+configure|reconfigure)
+	xpostinst
+	;;
+abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+*)
+	echo "postinst called with unknown argument \"$1\"" >&2
+	exit 1
+	;;
+esac

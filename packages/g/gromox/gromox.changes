@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 12 11:39:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * exmdb_provider: support for private store message and folder
+    softdelete (and thus the Recover Deleted Items feature in OL)
+  * mapi_lib: parse "Received" headers into
+    PR_MESSAGE_DELIVERY_TIME for the sake of EML imports
+  * emsmdb: work around OL crash with Recover Deleted Items dialog
+  * emsmdb: rework interpretation of PR_SENT_REPRESENTING on
+    IPM.Schedule objects (relates to the organizer of a meeting
+    when such meeting is forwarded)
+
+-------------------------------------------------------------------
 Sun Dec 18 12:25:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.37
