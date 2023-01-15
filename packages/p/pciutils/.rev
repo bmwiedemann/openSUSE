@@ -573,4 +573,12 @@
   * As usually, updated pci.ids to the current snapshot of the database.</comment>
     <requestid>1039674</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>adc0b24615f49d7be60e29491b712805</srcmd5>
+    <version>3.9.0</version>
+    <time>1673801861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058138</requestid>
+  </revision>
 </revisionlist>

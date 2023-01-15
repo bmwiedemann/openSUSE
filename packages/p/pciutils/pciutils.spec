@@ -81,7 +81,7 @@ rm -rf %{buildroot}%{_datadir}/pci.ids*
 install -D -m 0644 lib/libpci.pc %{buildroot}%{_libdir}/pkgconfig/libpci.pc
 ln -sf %{_libdir}/libpci.so.3 %{buildroot}%{_libdir}/libpci.so
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -s %{_bindir}/{lspci,setpci} %{buildroot}/sbin
 %endif
@@ -98,7 +98,7 @@ rm %{buildroot}%{_mandir}/man8/update-pciids.8
 %files
 %license COPYING
 %doc README
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/lspci
 /sbin/setpci
 %endif
