@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 15 12:18:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.5:
+  * Fix option -l (files-with-matches) when used with option -z
+    (decompress) which would sometimes show duplicates when a
+    compressed files had many matches
+
+-------------------------------------------------------------------
 Thu Jan  5 09:08:20 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.9.4:
