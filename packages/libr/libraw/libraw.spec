@@ -1,7 +1,7 @@
 #
 # spec file for package libraw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define asan_build    0
 
 %define tar_name LibRaw
-%define lver    20
+%define lver    23
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.20.2
+Version:        0.21.0
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only

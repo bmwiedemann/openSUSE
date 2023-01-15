@@ -636,4 +636,38 @@
     bsc#1120515,bsc#1120516,bsc#1120517,bsc#1120519)</comment>
     <requestid>921823</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ada3d02b2909947bdc70f964c7e7103a</srcmd5>
+    <version>0.21.0</version>
+    <time>1673801877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.0:
+  * Camera format support:
+    + Phase One/Leaf IIQ-S v2 support
+    + Canon CR3 filmrolls/RawBurst
+    + Canon CRM (movie) files
+    + Tiled bit-packed (and 16-bit unpacked) DNGs
+    + (non-standard) Deflate-compressed integer DNG files are allowed
+  * Camera support:
+    + Canon EOS R3, R7 and R10
+    + Fujifilm X-H2S, X-T30 II
+    + OM System OM-1
+    + Leica M11
+    + Sony A7-IV (ILCE-7M4)
+    + DJI Mavic 3
+    + Nikon Z9: standard compression formats only
+  * Multiple (resultion) thumbnails support
+  * Misc:
+    + Nikon makernotes: read NEFCompression tag for HE/HE* files
+    + Nikon orientation tag: more fixed offsets for known cameras
+    + Adobe DNG SDK 1.6 support (meaning, just an additional patch for GPR SDK)
+  * Bugs fixed:
+    + Fixed possible out-of-buffer read in Nikon orientation tag parser
+    + Out-of-range read-only array access in postprocessing if output_color is set to 0 (raw color)
+    + Minolta Z2 was not recognized correctly on 32-bit systems
+    + Fixed possible buffer overflow in Kodak C330 decoder
+    + dcraw_process(): check for buffer allocation results to avoid NULL deref
+    + Multiple bugfixes inspired by oss-fuzz project (forwarded request 1055251 from polslinux)</comment>
+    <requestid>1055784</requestid>
+  </revision>
 </revisionlist>
