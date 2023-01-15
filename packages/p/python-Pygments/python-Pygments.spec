@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,15 @@
 %bcond_with libalternatives
 %endif
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://pygments.org
+URL:            https://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcag-contrast-ratio}

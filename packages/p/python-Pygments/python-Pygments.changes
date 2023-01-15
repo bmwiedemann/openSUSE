@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:54:50 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 2.14.0:
+  * Added lexers:
+    + Arturo (#2259)
+    + GAP session (#2211)
+    + Fift (#2249)
+    + func (#2232)
+    + Jsonnet (#2239)
+    + Minecraft schema (#2276)
+    + MIPS (#2228)
+    + Phix (#2222)
+    + Portugol (#2300)
+    + TL-b (#2247)
+    + World of Warcraft TOC format (#2244, #2245)
+    + Wren (#2271)
+  * Updated lexers:
+    + Abap: Update keywords (#2281)
+    + Alloy: Update for Alloy 6 (#1963)
+    + C family (C, C++ and many others):
+      - Fix an issue where a chunk would be wrongly recognized as a
+        function definition due to braces in comments (#2210)
+      - Improve parantheses handling for function definitions
+        (#2207, #2208)
+    + C#: Fix number and operator recognition (#2256, #2257)
+    + CSound: Updated builtins (#2268)
+    + F#: Add .fsx file extension (#2282)
+    + gas (GNU assembler): recognize braces as punctuation (#2230)
+    + HTTP: Add CONNECT keyword (#2242)
+    + Inform 6: Fix lexing of properties and doubles (#2214)
+    + INI: Allow comments that are not their own line
+      (#2217, #2161)
+    + Java properties: Fix issue with whitespace-delimited keys,
+      support comments starting with ! and escapes, no longer
+      support undocumented ; and // comments (#2241)
+    + LilyPond: Improve heuristics, add \maxima duration (#2283)
+    + LLVM: Add opaque pointer type (#2269)
+    + Macaulay2: Update keywords (#2305)
+    + Minecraft-related lexers (SNB and Minecraft function) moved
+      to pygments.lexers.minecraft (#2276)
+    + Nim: General improvements (#1970)
+    + Nix: Fix single quotes inside indented strings (#2289)
+    + Objective J: Fix catastrophic backtracking (#2225)
+    + NASM: Add support for SSE/AVX/AVX-512 registers as well as
+      'rel' and 'abs' address operators (#2212)
+    + Powershell:
+      - Add local: keyword (#2254)
+      - Allow continuations without markers (#2262, #2263)
+    + Solidity: Add boolean operators (#2292)
+    + Spice: Add enum keyword and fix a bug regarding binary,
+      hexadecimal and octal number tokens (#2227)
+    + YAML: Accept colons in key names (#2277)
+  * Fix make mapfiles when Pygments is not installed in editable
+    mode (#2223)
+  * Support more filetypes and compression types in autopygmentize
+    (#2219)
+  * Merge consecutive tokens in Autohotkey, Clay (#2248)
+  * Add .nasm as a recognized file type for NASM (#2280)
+  * Add *Spec.hs as a recognized file type for HSpec (#2308)
+  * Add *.pyi (for typing stub files) as a recognized file type for
+    Python (#2331)
+  * The HTML lexer no longer emits empty spans for whitespace
+    (#2304)
+  * Fix IRCFormatter inserting linenumbers incorrectly (#2270)
+- set minimum python version to 3.6:
+  increased upstream -- gh#pygments/pygments#2059
+- remove lxml BuildRequires:
+  dropped upstream -- gh#pygments/pygments#2301
+- remove skip_python2: python >= 3.6 is already required
+- drop python_module macro definition: provided by
+  python-rpm-macros
+
+-------------------------------------------------------------------
 Thu Aug 18 15:23:43 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 2.13.0:
