@@ -85,4 +85,25 @@
     <comment></comment>
     <requestid>969758</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7197a6598f47105ee00451b7fe34f485</srcmd5>
+    <version>2.0.0</version>
+    <time>1673801871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Prior to version 2, we failed to correctly support true Pytest
+    setup/teardown methods (i.e. setup_method and teardown_method) and
+    these would not get copied to inner class scopes. This has been fixed.
+    We still support old nose-style setup/teardown for now, despite them
+    going away in Pytest 8.
+  * Modernize codebase/project a bunch:
+    + Dropped support for Python &lt;3.6 (including 2.7)
+    + Pytest support upgraded to support, and require, Pytest &gt;=7.
+    + Behavioral changes in Pytest internals have fixed a handful of
+      sorta-bugs present in pytest-relaxed under Pytest versions 3 and 4.
+- Dropped patches pytest-6.1-and-7.patch, pytest-relaxed-pr10.patch:
+  * No longer required.
+- Removed six from BuildRequires, is no longer used.</comment>
+    <requestid>1057683</requestid>
+  </revision>
 </revisionlist>
