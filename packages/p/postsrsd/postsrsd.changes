@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan  7 15:14:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.2
+  * Everything thrown over the fence, this is a complete rewrite
+    of PostSRSd.
+  * Configuration file, no more fiddling with environment variables.
+  * Support for socketmap table (Postfix 2.10 or newer required).
+  * Unix socket support
+  * Rewrite mode with database backend, supports unlimited email
+    address length.
+  * Experimental Milter support.
+
+-------------------------------------------------------------------
 Wed Aug 17 08:37:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12

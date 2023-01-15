@@ -1,7 +1,7 @@
 #
 # spec file for package postsrsd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           postsrsd
-Version:        1.12
+Version:        2.0.2
 Release:        0
 Summary:        Sender Rewriting Support for postfix
 License:        GPL-2.0-only
@@ -25,8 +25,11 @@ Group:          Productivity/Networking/Email/Servers
 URL:            https://github.com/roehling/postsrsd
 
 Source:         https://github.com/roehling/postsrsd/archive/%version.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.24
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libconfuse)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(systemd)
 
 %description
 PostSRSd provides the Sender Rewriting Scheme (SRS) via TCP-based
@@ -37,18 +40,18 @@ as forwarder.
 %autosetup -p1
 
 %build
-%cmake -DGENERATE_SRS_SECRET=0 -DCHROOT_DIR=/var/lib/empty \
-	-DUSE_APPARMOR=1 -DINIT_FLAVOR=systemd
+%cmake -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS \
+	-DGENERATE_SRS_SECRET=0 -DCHROOT_DIR=/var/lib/empty \
+	-DUSE_APPARMOR=1 -DINIT_FLAVOR=systemd \
+	-DWITH_SQLITE=BOOL:ON -DBUILD_TESTING:BOOL=OFF
 %make_jobs
 
 %install
 %cmake_install
 b="%buildroot"
-mkdir -p "$b/%_prefix/lib/systemd/system" "$b/%_defaultdocdir"
-mv "$b/%_sysconfdir/systemd/system"/* "$b/%_prefix/lib/systemd/system/"
+mkdir -p "$b/%_defaultdocdir"
 mv "$b/%_datadir/doc/%name" "$b/%_defaultdocdir/"
-cp README.md "$b/%_defaultdocdir/%name/"
-ln -s service "$b/%_sbindir/rcpostsrsd"
+cp README.rst "$b/%_defaultdocdir/%name/"
 
 %pre
 %service_add_pre postsrsd.service
@@ -68,15 +71,9 @@ fi
 %service_del_postun postsrsd.service
 
 %files
-%dir %_sysconfdir/apparmor.d
-%config %_sysconfdir/apparmor.d/*
-%config(noreplace) %_sysconfdir/default/postsrsd
-%ghost %_sysconfdir/postsrsd.secret
 %_sbindir/postsrsd
-%_sbindir/rcpostsrsd
-%_prefix/lib/systemd/system/*.service
+%_unitdir/*
 %_docdir/%name/
-%_datadir/postsrsd/
-%license LICENSE
+%license LICENSES/*
 
 %changelog
