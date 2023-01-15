@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 13 08:21:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add shadow-fix-print-login-timeout.patch:
+  Fix printing full login timeout message
+  See gh/shadow-maint/shadow#621
+
+-------------------------------------------------------------------
 Fri Dec 16 10:04:44 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1205502: Fix useradd audit event logging of ID field
   * Add shadow-audit-no-id.patch
+  See gh/shadow-maint/shadow#606
 
 -------------------------------------------------------------------
 Tue Nov  8 21:15:44 UTC 2022 - Michael Vetter <mvetter@suse.com>

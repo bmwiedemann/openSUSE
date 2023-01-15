@@ -1,7 +1,7 @@
 #
 # spec file for package shadow
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,12 +53,14 @@ Patch4:         shadow-util-linux.patch
 Patch5:         shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
 Patch6:         shadow-login_defs-suse.patch
-# PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321)
+# PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321) (gh/shadow-maint/shadow#591)
 Patch7:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch8:         disable_new_audit_function.patch
 # PATCH-FIX-UPSTREAM shadow-audit-no-id.patch mvetter@suse.com -- Fix useradd audit event logging of ID field (bsc#1205502) (gh/shadow-maint/shadow#606)
 Patch9:         shadow-audit-no-id.patch
+# PATCH-FIX-UPSTREAM shadow-fix-print-login-timeout.patch mvetter@suse.com -- Fix print full login timeout message (gh/shadow-maint/shadow#621)
+Patch10:        https://github.com/shadow-maint/shadow/commit/670cae834827a8f794e6f7464fa57790d911b63c.patch#/shadow-fix-print-login-timeout.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -129,6 +131,7 @@ Development files for libsubid4.
 %patch8 -p1
 %endif
 %patch9 -p1
+%patch10 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO

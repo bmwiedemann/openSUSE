@@ -834,4 +834,16 @@
   * Add shadow-audit-no-id.patch</comment>
     <requestid>1043310</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>a3a1b6d07ba03ac917a65ababcbb20d9</srcmd5>
+    <version>4.13</version>
+    <time>1673801866</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow-fix-print-login-timeout.patch:
+  Fix printing full login timeout message
+  See gh/shadow-maint/shadow#621
+
+  See gh/shadow-maint/shadow#606</comment>
+    <requestid>1058151</requestid>
+  </revision>
 </revisionlist>
