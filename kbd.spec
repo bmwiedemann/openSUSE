@@ -286,7 +286,7 @@ install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/vlock
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/vlock
 %endif
 install -m 644 %{SOURCE12} %{buildroot}%{_mandir}/man8/
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/bin
 mkdir -p %{buildroot}/sbin
 ln -s %{_bindir}/chvt %{buildroot}/bin
@@ -417,7 +417,7 @@ test -f /etc/pam.d/vlock.rpmsave && mv -v /etc/pam.d/vlock.rpmsave /etc/pam.d/vl
 %{_fillupdir}/sysconfig.keyboard
 %{kbd}
 %exclude %{kbd}/keymaps/{%{legacy_folders}}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/fbtest
 /bin/chvt
 /bin/openvt
