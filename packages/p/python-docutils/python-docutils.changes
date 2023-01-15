@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 10 15:42:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete sphix-6.0.0.patch
+- Add pygments-2.14.patch
+- The patch is related to pygments not Sphinx and the patch is updated to make
+  it conditional so it work with older versions of pygments, shp#docutils#201
+
+-------------------------------------------------------------------
+Wed Jan  4 13:09:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add sphinx-6.0.0.patch to fix tests for new version of sphinx.
+
+-------------------------------------------------------------------
 Wed Nov  2 12:32:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Release 0.19 (2022-07-05)

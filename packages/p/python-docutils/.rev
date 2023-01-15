@@ -515,4 +515,15 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
 </comment>
     <requestid>1032911</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>fe58126e1b27f7d1523b648f5e4f619b</srcmd5>
+    <version>0.19</version>
+    <time>1673801869</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pygments-2.14.patch
+- The patch is related to pygments not Sphinx and the patch is updated to make
+  it conditional so it work with older versions of pygments, shp#docutils#201
+</comment>
+    <requestid>1057655</requestid>
+  </revision>
 </revisionlist>

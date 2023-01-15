@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
+# PATCH-FIX-OPENSUSE pygments-2.14.patch shp#docutils#201
+Patch0:         pygments-2.14.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -62,7 +64,7 @@ such as HTML, XML, and LaTeX. For input Docutils supports reStructuredText, an
 easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 
 %prep
-%setup -q -n docutils-%{version}
+%autosetup -p1 -n docutils-%{version}
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
 sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
