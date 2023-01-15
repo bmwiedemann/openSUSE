@@ -1,4 +1,4 @@
-
+Prefer: -yast2-schema-micro
 %define gcc_version 12
 
 # testing new cycle algorithm
