@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue Jan 10 18:02:04 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 6.1.3
+  * #11116: Reverted to previous Sphinx 5 node copying method
+  * #11117: Reverted changes to parallel image processing from Sphinx 6.1.0
+  * #11119: Supress ``ValueError`` in the ``linkcheck`` builder
+
+-------------------------------------------------------------------
+Sun Jan  8 09:18:41 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 6.1.2
+  * #11101: LaTeX: div.topic_padding key of sphinxsetup documented at 5.1.0 was
+    implemented with name topic_padding
+  * #11099: LaTeX: shadowrule key of sphinxsetup causes PDF build to crash since
+    Sphinx 5.1.0
+  * #11096: LaTeX: shadowsize key of sphinxsetup causes PDF build to crash since
+    Sphinx 5.1.0
+  * #11095: LaTeX: shadow of topic and contents boxes not in page margin since
+    Sphinx 5.1.0
+  * #11100: Fix copying images when running under parallel mode.
+- Disable test_copy_images tests as they need an internet access.
+
+-------------------------------------------------------------------
+Thu Jan  5 18:09:36 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 6.1.1
+  * #11091: Fix ``util.nodes.apply_source_workaround`` for ``literal_block`` nodes
+    with no source information in the node or the node's parents.
+  * Adopted the `Ruff`_ code linter.
+    .. _Ruff: https://github.com/charliermarsh/ruff
+  * #10979: gettext: Removed support for pluralisation in ``get_translation``.
+    This was unused and complicated other changes to ``sphinx.locale``.
+  * ``sphinx.util`` functions:
+     * Renamed ``sphinx.util.typing.stringify()``
+       to ``sphinx.util.typing.stringify_annotation()``
+     * Moved ``sphinx.util.xmlname_checker()``
+       to ``sphinx.builders.epub3._XML_NAME_PATTERN``
+
+     Moved to ``sphinx.util.display``:
+
+     * ``sphinx.util.status_iterator``
+     * ``sphinx.util.display_chunk``
+     * ``sphinx.util.SkipProgressMessage``
+     * ``sphinx.util.progress_message``
+
+     Moved to ``sphinx.util.http_date``:
+
+     * ``sphinx.util.epoch_to_rfc1123``
+     * ``sphinx.util.rfc1123_to_epoch``
+
+     Moved to ``sphinx.util.exceptions``:
+
+     * ``sphinx.util.save_traceback``
+     * ``sphinx.util.format_exception_cut_frames``
+
+  * Cache doctrees in the build environment during the writing phase.
+  * Make all writing phase tasks support parallel execution.
+  * #11072: Use PEP 604 (``X | Y``) display conventions for ``typing.Optional``
+    and ``typing.Optional`` types within the Python domain and autodoc.
+  * #10700: autodoc: Document ``typing.NewType()`` types as classes rather than
+    'data'.
+  * Cache doctrees between the reading and writing phases.
+  * #10962: HTML: Fix the multi-word key name lookup table.
+  * Fixed support for Python 3.12 alpha 3 (changes in the ``enum`` module).
+  * #11069: HTML Theme: Removed outdated "shortcut" link relation keyword.
+  * #10952: Properly terminate parallel processes on programme interuption.
+  * #10988: Speed up ``TocTree.resolve()`` through more efficient copying.
+  * #6744: LaTeX: support for seealso directive should be via an environment
+    to allow styling.
+  * #11074: LaTeX: Can't change sphinxnote to use sphinxheavybox starting with
+    5.1.0
+  * Require Pygments 2.13 or later.
+  * #10944: imgmath:  Fix resolving image paths for files in nested folders.
+
+-------------------------------------------------------------------
+Wed Jan  4 05:56:10 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add pygments-2.14.patch in order to fix Pygments tests
+  after the 2.14 release.
+  gh#sphinx-doc/sphinx#11067
+
+-------------------------------------------------------------------
+Sat Dec 31 09:06:47 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 6.0.0
+  * #10468: Drop Python 3.6 support
+  * #10470: Drop Python 3.7, Docutils 0.14, Docutils 0.15, Docutils 0.16, and
+    Docutils 0.17 support. Patch by Adam Turner
+  * #7405: Removed the jQuery and underscore.js JavaScript frameworks.
+    These frameworks are no longer be automatically injected into themes from
+    Sphinx 6.0. If you develop a theme or extension that uses the
+    ``jQuery``, ``$``, or ``$u`` global objects, you need to update your
+    JavaScript to modern standards, or use the mitigation below.
+    The first option is to use the sphinxcontrib.jquery_ extension, which has been
+    developed by the Sphinx team and contributors. To use this, add
+    ``sphinxcontrib.jquery`` to the ``extensions`` list in ``conf.py``, or call
+    ``app.setup_extension("sphinxcontrib.jquery")`` if you develop a Sphinx theme
+    or extension.
+    The second option is to manually ensure that the frameworks are present.
+    To re-add jQuery and underscore.js, you will need to copy ``jquery.js`` and
+    ``underscore.js`` from `the Sphinx repository`_ to your ``static`` directory,
+    and add the following to your ``layout.html``:
+
+    .. code-block:: html+jinja
+
+       {%- block scripts %}
+           <script src="{{ pathto('_static/jquery.js', resource=True) }}"></script>
+           <script src="{{ pathto('_static/underscore.js', resource=True) }}"></script>
+           {{ super() }}
+       {%- endblock %}
+
+    .. _sphinxcontrib.jquery: https://github.com/sphinx-contrib/jquery/
+    Patch by Adam Turner.
+  * #10471, #10565: Removed deprecated APIs scheduled for removal in Sphinx 6.0. See
+    :ref:`dev-deprecated-apis` for details. Patch by Adam Turner.
+  * #10901: C Domain: Remove support for parsing pre-v3 style type directives and
+    roles. Also remove associated configuration variables ``c_allow_pre_v3`` and
+    ``c_warn_on_allowed_pre_v3``. Patch by Adam Turner.
+  * #10924: LaTeX: adopt better looking defaults for tables and code-blocks.
+    See :confval:`latex_table_style` and the ``pre_border-radius`` and
+    ``pre_background-TeXcolor`` :ref:`additionalcss` for the former defaults
+    and how to re-enact them if desired.
+  * #10984: LaTeX: Document :confval:`latex_additional_files` behavior for files
+    with ``.tex`` extension.
+
+-------------------------------------------------------------------
 Sun Oct 16 14:43:01 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 5.3.0

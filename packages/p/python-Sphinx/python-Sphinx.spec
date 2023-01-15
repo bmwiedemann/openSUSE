@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-Sphinx%{psuffix}
-Version:        5.3.0
+Version:        6.1.3
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -310,7 +310,7 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 export LC_ALL="C.utf8"
 # test_latex_images test downloading a remote image
 # test_signature_annotations doesn’t work
-%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations)'
+%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images)'
 %endif
 
 %if ! %{with test}
