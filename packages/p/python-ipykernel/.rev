@@ -378,4 +378,17 @@
   * Add more kernel tests #1032 (@blink1073)</comment>
     <requestid>1045315</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a3b877ed3f162400e886c676a4dd1211</srcmd5>
+    <version>6.20.1</version>
+    <time>1673801880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.20.1
+  * Don't raise error when trying to create another Qt app for Qt
+    eventloop #1071 (@ccordoba12)
+  * Fix types and sync lint deps #1070 (@blink1073)
+- Release 6.20.0
+  * ENH: add %gui support for Qt6 #1054 (@shaperilio) (forwarded request 1058371 from bnavigator)</comment>
+    <requestid>1058372</requestid>
+  </revision>
 </revisionlist>

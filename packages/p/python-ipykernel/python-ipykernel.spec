@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipykernel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.19.4
+Version:        6.20.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 14 13:37:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.20.1
+  * Don't raise error when trying to create another Qt app for Qt
+    eventloop #1071 (@ccordoba12)
+  * Fix types and sync lint deps #1070 (@blink1073)
+- Release 6.20.0
+  * ENH: add %gui support for Qt6 #1054 (@shaperilio)
+
+-------------------------------------------------------------------
 Sun Dec 25 17:46:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.19.4
