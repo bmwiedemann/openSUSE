@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 11 15:35:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.5.0
+  Features:
+  * Able to identify Nordic GTK Theme as dark theme 
+  * Activate the corresponding buffer to a response user query
+  Changes:
+  * Suppress error message when connection keeps failing 
+  Bug fixes:
+  * Fix SASL authentication error when connecting to Soju
+
+- Update to version 1.4.0
+  Features:
+  * Add support for IRCv3 standard-replies
+  * Add support for SASL EXTERNAL, invite-notify, server-time
+  * Add conf item server-visibility for setting default server visiblity 
+  * Add /clear command for clearing messages of current buffer
+
+-------------------------------------------------------------------
 Fri Feb 11 04:07:44 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.3.2

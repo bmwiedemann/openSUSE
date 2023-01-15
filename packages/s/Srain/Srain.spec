@@ -1,7 +1,7 @@
 #
 # spec file for package Srain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           Srain
-Version:        1.3.2
+Version:        1.5.0
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
@@ -25,7 +25,7 @@ URL:            https://srain.im
 Source:         https://github.com/SrainApp/srain/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.45.0
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(appstream)
