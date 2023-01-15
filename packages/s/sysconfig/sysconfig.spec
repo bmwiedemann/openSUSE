@@ -105,7 +105,7 @@ touch %{buildroot}%{_sysconfdir}/sysconfig/network/dhcp
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/network/scripts
 ln -s %{_libexecdir}/netconfig/functions.netconfig \
       %{buildroot}%{_sysconfdir}/sysconfig/network/scripts
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
 ln -s %{_sbindir}/netconfig %{buildroot}/sbin/netconfig
 %endif
@@ -174,7 +174,7 @@ EOF
 %dir %{_sysconfdir}/sysconfig/network/scripts
 %{_sysconfdir}/sysconfig/network/scripts/functions.netconfig
 %{_sbindir}/netconfig
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/netconfig
 %endif
 %{_mandir}/man8/netconfig.8%{ext_man}
