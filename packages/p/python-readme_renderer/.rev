@@ -100,4 +100,14 @@
 </comment>
     <requestid>1035252</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7a32a1a34e231590a553ebad8020b5d9</srcmd5>
+    <version>37.3</version>
+    <time>1673801867</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-pygments-2.14.0.patch to adapt tests to the new version of
+  pygments gh#pypa/readme_renderer#272 
+</comment>
+    <requestid>1055954</requestid>
+  </revision>
 </revisionlist>

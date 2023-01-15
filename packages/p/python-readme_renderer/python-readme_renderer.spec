@@ -1,7 +1,7 @@
 #
 # spec file for package python-readme_renderer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-readme_renderer
 Version:        37.3
 Release:        0
@@ -25,6 +24,8 @@ Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
 URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests-pygments-2.14.0.patch gh#pypa/readme_renderer#272
+Patch0:         fix-tests-pygments-2.14.0.patch
 BuildRequires:  %{python_module Pygments >= 2.5.1}
 BuildRequires:  %{python_module bleach >= 2.1.0}
 BuildRequires:  %{python_module cmarkgfm >= 0.7.0}
@@ -62,6 +63,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/readme_renderer
+%{python_sitelib}/readme_renderer-%{version}*-info
 
 %changelog

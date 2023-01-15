@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  4 16:24:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-pygments-2.14.0.patch to adapt tests to the new version of
+  pygments gh#pypa/readme_renderer#272 
+
+-------------------------------------------------------------------
 Wed Nov  9 18:51:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 37.3 (2022-10-31)
