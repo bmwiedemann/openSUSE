@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 15 10:35:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch
+  [boo#1207122] [CVE-2023-23457]
+
+-------------------------------------------------------------------
 Wed Nov 16 23:18:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0.1

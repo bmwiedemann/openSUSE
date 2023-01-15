@@ -1,7 +1,7 @@
 #
 # spec file for package upx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://upx.github.io/
 Source:         https://github.com/upx/upx/releases/download/v%version/upx-%version-src.tar.xz
 Patch0:         upx-aarch64.patch
 Patch1:         upx-endiantests.patch
+Patch2:         0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libucl1-devel

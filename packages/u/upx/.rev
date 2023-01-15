@@ -159,4 +159,12 @@
     <comment>- Update to release 4.0.1</comment>
     <requestid>1036300</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>32ba60ebb676f918038cf6b1c3685429</srcmd5>
+    <version>4.0.1</version>
+    <time>1673801887</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch [boo#1207122] [CVE-2023-23457]</comment>
+    <requestid>1058444</requestid>
+  </revision>
 </revisionlist>
