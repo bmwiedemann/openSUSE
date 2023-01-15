@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:18:37 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Dec  6 21:03:48 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2212.0

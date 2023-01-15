@@ -758,7 +758,7 @@ if test "%{rsyslog_module_dir_nodeps}" != "%{rsyslog_module_dir_withdeps}" ; the
 		      %{buildroot}%{rsyslog_module_dir_withdeps}
 	done
 fi
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 	install -d -m0755 %{buildroot}/sbin
 	ln -sf %{_sbindir}/rsyslogd $RPM_BUILD_ROOT/sbin/rsyslogd
 %endif
@@ -920,7 +920,7 @@ fi # first install
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/rsyslog.d/remote.conf
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/rsyslog.d/*.frule
 %{_sbindir}/rsyslogd
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/rsyslogd
 %endif
 %dir %{rsyslog_module_dir_nodeps}
