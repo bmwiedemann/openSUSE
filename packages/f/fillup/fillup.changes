@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:36:20 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Aug 24 10:45:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Makefile is not parallel-safe

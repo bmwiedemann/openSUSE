@@ -1,7 +1,7 @@
 #
 # spec file for package fillup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@ install -m 755 BIN/fillup %{buildroot}/%{_bindir}
 install -d %{buildroot}/%{_mandir}/man8
 install -m 644 SGML/fillup.8.gz %{buildroot}/%{_mandir}/man8
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # There are literally hundreds of rpm scritps referencing /bin/fillup (suse macro)
 # So let's at least keep the symlink there for now (DimStar - 2014-10-31)
 install -d -m 755 $RPM_BUILD_ROOT/bin
@@ -79,7 +79,7 @@ make test    OPTISPLUS="%{optflags}"
 %files
 %defattr(-,root,root)
 # rpm scriptlets still use this, based on %*fillup* macros
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /bin/fillup
 %endif
 %{_bindir}/fillup
