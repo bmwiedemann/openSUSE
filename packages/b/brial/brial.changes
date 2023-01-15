@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 15 10:28:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.12
+  * Address testing problems with boost 1.81.0
+
+-------------------------------------------------------------------
 Fri Jul 29 10:01:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.11
