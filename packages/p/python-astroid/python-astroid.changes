@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan  7 08:50:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.12.14:
+  * Handle the effect of properties on the __init__ of a dataclass
+    correctly.
+  * Handle the effect of kw_only=True in dataclass fields correctly.
+  * Handle the effect of init=False in dataclass fields correctly.
+  * Fix crash if numpy module doesn't have version attribute.
+  * Handle AttributeError during str.format template inference tip
+    evaluation
+
+-------------------------------------------------------------------
 Sat Dec  3 03:46:28 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.12.13: 
