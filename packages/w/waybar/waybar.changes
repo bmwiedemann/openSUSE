@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jan 16 09:18:06 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove `changesgenerate` service
+  Upstream provides a better changelog than the one this service is able to
+  generate from git commits.
+
+-------------------------------------------------------------------
+Wed Jan 11 15:03:09 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.9.17:
+  * Add image module
+  * Upower click
+  * feat: add icon support to the wireplumber module
+  * fix: wireplumber module when used with a bluetooth device
+  * Allow the calendar month scrolling to be inverted
+  * User Module: added file existence check
+  * Don't search "Keyboard at" from hyprland/language
+  * Hide module if text resolves to being empty
+  * fix AIconLabel spacing between image and label
+  * feat(battery): add macsmc-battery time remaining support
+  * fix(calendar week numbers)
+  * fix(battery): ignore non-system power supplies
+  * Calendar week numbers
+  * format-calendar-weeks won't accept format strings
+  * Fix hyprland language initialization issues
+  * Minor refactorings and formatting fixes for hyprland language module
+  * Implement hyprland submap module
+  * Fix wrong layout name in hyprland language module when a variant is used
+  * modules/clock: improve ux when calendar_shift is used
+  * sway,feat: allow alphabetical sort
+  * fix: cpu_load pushed twice to the vector
+  * Add mpris module
+  * Activate CI for mpris module
+  * Fix GTK crash due to wlr/workspace module upon reconnecting monitor
+
+-------------------------------------------------------------------
 Tue Dec 13 20:58:47 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix: actually use the date library dependency provided by hhdate

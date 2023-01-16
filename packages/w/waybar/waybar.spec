@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.9.16
+Version:        0.9.17
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -41,6 +41,8 @@ BuildRequires:  pkgconfig(catch2) >= 3.0
 BuildRequires:  sndio-devel >= 1.7.0
 # clock module
 BuildRequires:  hhdate-devel
+# optional: mpris module
+BuildRequires:  pkgconfig(playerctl)
 # optional: man pages
 BuildRequires:  scdoc
 # optional: tray module
