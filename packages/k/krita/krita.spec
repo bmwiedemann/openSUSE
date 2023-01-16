@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,12 @@
 %bcond_without xsimd
 %endif
 %endif
+# SR#1043861 for 15.5
+%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
+%bcond_without libjxl
+%endif
 Name:           krita
-Version:        5.1.3
+Version:        5.1.5
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -48,9 +52,7 @@ BuildRequires:  libboost_system1_75_0-devel
 %endif
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
-%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150300)
 BuildRequires:  libheif-devel
-%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
@@ -95,8 +97,7 @@ BuildRequires:  cmake(QuaZip-Qt5)
 BuildRequires:  cmake(xsimd)
 %endif
 BuildRequires:  pkgconfig(OpenColorIO)
-# not in 15.5 yet
-%if 0%{?suse_version} > 1500
+%if %{with libjxl}
 BuildRequires:  pkgconfig(libjxl)
 %endif
 BuildRequires:  pkgconfig(libmypaint)

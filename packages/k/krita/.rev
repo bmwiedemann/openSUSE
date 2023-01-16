@@ -721,4 +721,12 @@
 - Require the optional xsimd dependency</comment>
     <requestid>1038648</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>424c5c7fde5dc6dd9ccee16aa66e1128</srcmd5>
+    <version>5.1.5</version>
+    <time>1673888391</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.5</comment>
+    <requestid>1058693</requestid>
+  </revision>
 </revisionlist>

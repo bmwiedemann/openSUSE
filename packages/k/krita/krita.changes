@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 16 10:44:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.1.5
+  * https://krita.org/en/item/krita-5-1-5-released/
+  * Fixed an issue with banding when using the gradient map filter
+    as a filter layer. (kde#463585)
+  * Only center paste into active layer if contents are outside
+    image bounds. (kde#461894)
+  * EXR: Fixed opening EXR files that have only a luma channel.
+    (kde#461975)
+  * Fixed an issue building with XSIMD 10.0 and up. (kde#463219)
+  * Properly use the resolution of a .KRA file when that file is
+    used as a file layer. (kde#442127)
+  * Fixed a regression in loading PSD files. (kde#462417)
+
+-------------------------------------------------------------------
 Mon Nov 28 09:27:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable PCH to drastically reduce the required disk space
