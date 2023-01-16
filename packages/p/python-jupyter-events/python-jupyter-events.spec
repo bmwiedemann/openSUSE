@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-events
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,43 @@
 #
 
 
-# This is with alts/libalternatives only and has never been something else
+%if 0%{suse_version} >= 1550
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-jupyter-events
-Version:        0.5.0
+Version:        0.6.3
 Release:        0
 Summary:        Jupyter Event System library
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_events
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_events/jupyter_events-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-PyYAML >= 6.0
-Requires:       python-jsonschema-format-nongpl >= 4.3.0
+Requires:       python-PyYAML >= 5.3
+Requires:       python-jsonschema-format-nongpl >= 3.2.0
 Requires:       python-python-json-logger >= 2.0.4
+Requires:       python-rfc3339-validator
+Requires:       python-rfc3986-validator >= 0.1.1
 Requires:       python-traitlets >= 5.3
 Provides:       python-jupyter_events = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML >= 6.0}
+BuildRequires:  %{python_module rfc3339-validator}
+BuildRequires:  %{python_module PyYAML >= 5.3}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module jsonschema-format-nongpl >= 4.3.0}
-BuildRequires:  %{python_module pytest >= 6.1.0}
+BuildRequires:  %{python_module jsonschema-format-nongpl >= 3.2.0}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module python-json-logger >= 2.0.4}
+BuildRequires:  %{python_module rfc3986-validator >= 0.1.1}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module traitlets >= 5.3}
 # /SECTION
@@ -71,12 +78,14 @@ sed -i 's/--color=yes//' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# flavored not yet installed libalts are not supported by python-rpm-macros
-%{python_expand #
+%{python_expand # provide flavored command in case not yet installed libalts are not supported by python_flavored_alternatives
 mkdir -p build/flavorbin
-ln -s %{buildroot}%{_bindir}/jupyter-events-%{$python_bin_suffix} build/flavorbin/jupyter-events
+which jupyter-events || ln -s %{buildroot}%{_bindir}/jupyter-events-%{$python_bin_suffix} build/flavorbin/jupyter-events
 }
 %pytest
+
+%pre
+%python_libalternatives_reset_alternative jupyter-events
 
 %post
 %python_install_alternative jupyter-events

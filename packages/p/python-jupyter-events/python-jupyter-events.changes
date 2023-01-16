@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 15 21:04:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.3
+  * Clean up typing #64 (@blink1073)
+- Release 0.6.2
+  * Decrease pyyaml dependency floor to increase compatibility #63
+    (@kevin-bates)
+- Release 0.6.1
+  * Remove artificial cap on jsonschema dependency #61
+    (@kevin-bates)
+  * Try dropping jsonschema dependency #59 (@bretttully)
+- Release 0.6.0
+  * Add typing file #60 (@blink1073)
+  * Use base setup dependency type #47 (@blink1073)
+  * (CI and lint cleanups in multiple PRs)
+- allow update-alternatives for backported 15.x packages
+
+---------------------------------------------------------
 Sun Dec 25 22:08:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.5
