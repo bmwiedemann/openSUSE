@@ -19,4 +19,15 @@
 </comment>
     <requestid>1056893</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ebf5f7aa4cfc96434d867a684d1c0e17</srcmd5>
+    <version>2.19.0</version>
+    <time>1673888348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.19.0
+  * Don't change language environment variable #366 (@fcollonval)
+  * Fix test_process_app #367 (@blink1073)
+  * Sync lint deps #365 (@blink1073)</comment>
+    <requestid>1058707</requestid>
+  </revision>
 </revisionlist>
