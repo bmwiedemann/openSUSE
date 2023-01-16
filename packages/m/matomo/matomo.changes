@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jan 16 14:31:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.1
+  * matomo-org/matomo
+    - #20090 Speed up sparklines when larger periods are selected
+      and improve detection of trends as well as fix comparison of dates
+    - #20094 Don’t force using day period for sparkline when comparing
+      to ensure it compares correct periods and is fast
+    - #19974 Performance improvements for goals by pages
+    - #19928 Fix Unknown format specifier in translation in Live plugin
+    - #20176 Fix PHP8.2 Deprecation Warning on module install
+    - #20082 Add countdown redirection to User Invite error page
+    - #20099 Updated Nonce and Token exception message
+    - #20110 Retry establishing DB connection if it fails with MySQL Server Has Gone Away
+    - #20147 Remove outdated misleading comment
+  * matomo-org/tag-manager
+    - #582 Add new trigger user interaction
+  * matomo-org/device-detector
+    - #7302 Detect existing brand: Digma, Condor, Samsung, iDroid, BQ, Gigabyte, Santin
+    - #7304 Detect new brands: DEYI, JoySurf, VIVIMAGE, X-Mobile and
+      Detect devices for existing brands: Vivo, Huawei, Sharp, HTC
+    - #7307 Improves detection for Iridium browser
+    - #7310 Add support for Laravel cache
+    - #7311 Detect new brands: Kapsys, Sunmax, SSKY, Winstar, XCOM, YELLYOUTH
+      and Detect devices for existing brands
+    - #7312 Improves version detection for iOS, iPadOS and macOS
+    - #7313 Adds detection for Movitel, Moxee, Olax, Olympia, Uniqcell, Yestel,
+      Youin brands and improves detection for Alcatel, Andowl, Archos, AT&T,
+      Bmobile, Cellution, Cricket, Crosscall, Facetel, Huawei, iPro, Kalley, 
+      Konrow, LOGIC, Mediacom, Multilaser, neoCore, Nokia, OnePlus, ONN,
+      Positivo, Siragon, TCL, Vivo, Xiaomi, Xtratech, Yezz, Zuum brands
+    - #7315 Detect new brands: Khadas, Youwei and Detect devices for existing brands
+    - #7318 Improving regex rules for browser versions: Chromium GOST, CoolBrowser,
+      Amigo, Opera Mobile etc.
+    - #7320 Adds detection for RedOS
+    - #7322 Improves detection for iPadOS and mobile apps
+    - #7323 Adds detection for Airpha, Brigmton, Cwowdefu, Entity, Mobile Kingdom,
+      SGIN, Wecool brands and improves detection for Alcatel, Blu, Bmobile, Ceibal,
+      CORN, Cricket, Cyrus, Digit4G, Hammer, Hi, Huawei, Konrow, Kurio, Moxee, MTN,
+      ONN, Philco, Realme, Sky, TCL, True, Vivo, Wolki, Xiaomi, Zuum, ZTE brands
+      and Android TV
+    - #7324 Adds detection for Ruggex, Syco brands and improves detection for Huawei,
+      iPro, Kempler & Strauss, MTC, QUBO, Realme, TCL, TOSCIDO, Verizon, Vivo brands
+  * matomo-org/referrer-spam-list
+    - #1335 Add hugblog.xyz
+    - #1336 Add trade365.org
+    - #1337 Add seo-traffic.xyz
+    - #1338 Add shoppinglocation.com
+    - #1339 Add judyandsimon.com
+    - #1340 Add residualforlife.com
+    - #1341 Add thegreensociety.net
+    - #1342 Update spammers.txt
+
+-------------------------------------------------------------------
 Thu Dec  8 09:53:36 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.13.0
