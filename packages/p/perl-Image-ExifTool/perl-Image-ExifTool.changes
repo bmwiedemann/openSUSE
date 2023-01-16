@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jan 16 15:10:33 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.54:
+  - Increased precision of Sony FocusDistance2 conversion
+  - Decode a number of new Apple tags (thanks Frank Rupprecht)
+  - Fixed bug writing QuickTime-format files which have a zero-sized mdat (ie.
+    media data extends to end of file) which would cause an incorrect mdat size
+    to be written
+  - Added support for a number of new XMP tags written by ACR 15.1
+  - Added a new Nikon LensID
+  - Decode timed GPS from Lamax S9 dual dashcam MOV videos
+  - Decode a number of new Nikon tags (thanks Warren Hatch)
+  - Decode a couple of new Canon tags (thanks John Moyer)
+  - Decode FujiFilm BWMagentaGreen tag
+  - Enable block-write of EXIF to JXL files
+  - Accept values of "now" and "Z" when writing EXIF OffsetTime tags
+  - Changed priority of XMP when reading/writing HEIC files so that it is no
+    longer preferred as with other QuickTime-based formats
+  - Changed family 1 group name of Canon DR4 tags from CanonVRD to CanonDR4 to
+    allow newer tags to be differentiated from older ones.  The family 0 group
+    name for both remains CanonVRD
+  - Patched to recognize JXL EXIF box with non-zero header length
+  - Patched to avoid runtime error when writing a PDF with an Info dictionary
+    which was stored incorrectly as a direct object
+  - Fixed problem writing EXIF to JXL images where a new EXIF box was created
+    even if one previously existed
+
+-------------------------------------------------------------------
 Tue Jan  3 14:02:51 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 12.52:
