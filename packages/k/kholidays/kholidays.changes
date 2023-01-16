@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * holidays/plan2/holiday_us_en-us - fix Junetenth date
+  * Fix German "Buß- und Bettag" holiday is wrong (SN,BY) (kde#461835)
+  * Add holidays for Malaysia (kde#462867)
+  * cmake: Use ECMQmlModule for declarative plugin
+  * qcalendarsystem condition 'months<0' is always true
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:41 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
