@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Jan 13 08:29:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Only build manpage using pandoc when on x86_64.
+  Pandoc seems to not be available on all archs.
+
+-------------------------------------------------------------------
+Wed Jan 11 12:24:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7:
+  * Add manpage
+  * Document requirements
+  * Update tests where test cases are not reachable anymore
+  * Minor code cleanups
+
+-------------------------------------------------------------------
+Tue Jan 10 18:54:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of gontributions 0.6 for openSUSE
