@@ -687,4 +687,12 @@
     <comment></comment>
     <requestid>997783</requestid>
   </revision>
+  <revision rev="95" vrev="22">
+    <srcmd5>c3a3f1ca2a608c2dafcc698ecd538f1c</srcmd5>
+    <version>21.5.34</version>
+    <time>1673888359</time>
+    <user>dimstar_suse</user>
+    <comment>Add xemacs-21.5.34-fix2038.patch to fix buffers after year 2038 (forwarded request 1058331 from bmwiedemann)</comment>
+    <requestid>1058604</requestid>
+  </revision>
 </revisionlist>

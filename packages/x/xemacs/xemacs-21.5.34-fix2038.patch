@@ -1,0 +1,20 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2023-01-14
+Subject: Fix build in 2038
+
+The UNIX Epoch needs more than 31 bits after 2038-01-19
+so we extend the variable to 64 bits
+
+Index: xemacs-21.5.34/src/buffer.h
+===================================================================
+--- xemacs-21.5.34.orig/src/buffer.h
++++ xemacs-21.5.34/src/buffer.h
+@@ -246,7 +246,7 @@ struct buffer
+      -1 means visited file was nonexistent.
+      0  means visited file modtime unknown; in no case complain
+      about any mismatch on next save attempt.  */
+-  int modtime;
++  long long modtime;
+ 
+   /* the value of text->modiff at the last auto-save.  */
+   long auto_save_modified;
