@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * CMakeLists.txt cmake_minimum_required should be first line of CMakeLists.txt file
+  * Remove Jenkins CI leftover
+  * Use correct SPDX license identifier for CC0
+  * FindXCB: remove Xprint
+  * FindXCB: remove XEvIE
+  * Mark translation fetching as deprecated
+  * Fix compatibility with newer Gradle provided with Qt 5.15.8
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:19 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
