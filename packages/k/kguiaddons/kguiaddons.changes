@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * waylandclipboard: Be a bit smarter about when to use the QGuiApplication::clipboard (kde#462979)
+  * Perform some initialization in initialization list
+  * Fix test on Windows
+  * KeySequenceRecorder: Allow modifier-only shortcuts
+  * KColorSchemeWatcherWin: Fix checking for dark mode
+  * Correct descriptions for CMake options WITH_WAYLAND and WITH_X11
+  * waylandclipboard: Update QClipboard when gaining focus (kde#442521)
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:41 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
