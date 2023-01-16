@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 12 17:25:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + **Really** fix endless ringing bug.
+  + Fixed a crash.
+  + Database closed correctly on shutdown.
+  + Allow building without GStreamer debugging API.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec  5 14:17:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.2:

@@ -15,4 +15,17 @@
     <comment>New stable release (forwarded request 1040309 from iznogood)</comment>
     <requestid>1040322</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3600c7549b5ef15b532418b037d03461</srcmd5>
+    <version>43.3</version>
+    <time>1673888363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + **Really** fix endless ringing bug.
+  + Fixed a crash.
+  + Database closed correctly on shutdown.
+  + Allow building without GStreamer debugging API.
+  + Updated translations. (forwarded request 1058056 from iznogood)</comment>
+    <requestid>1058615</requestid>
+  </revision>
 </revisionlist>
