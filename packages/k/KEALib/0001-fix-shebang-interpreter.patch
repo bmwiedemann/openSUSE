@@ -1,0 +1,9 @@
+diff --color -ur kealib-1.5.0.orig/tools/kea-config.in kealib-1.5.0/tools/kea-config.in
+--- kealib-1.5.0.orig/tools/kea-config.in	2022-11-22 23:49:01.000000000 +0100
++++ kealib-1.5.0/tools/kea-config.in	2023-01-16 08:42:23.268230188 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ usage()
+ {

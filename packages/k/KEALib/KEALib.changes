@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:45:00 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.5.0:
+  * Note: this release breaks the ABI - you will need to re-compile.
+    Also, the GDAL plugin will longer work with GDAL < 3; but will now work with GDAL 3.6.x.
+  * Implement Dataset.DeleteLayer()
+  * Support for 64 bit int images and nodata in the GDAL driver for GDAL >= 3.5
+  * Print error on file open failure in GDAL driver
+  * Set the attribute chunksize as passed in, not zero
+  * Add support for ArcGIS 10.9 and ArcPro 2.7 and 2.8
+  * New kealib Python bindings using libawkward for accessing neighbours
+  * Support for GetSpatialRef() etc and other various GDAL 3.x changes in driver.
+  * Make driver more robust when dealing with corrupted files esp. when the RAT cannot be read.
+  * Protect driver internal data structures with mutexes - should be totally threadsafe now.
+
+- Added patch 0001-fix-shebang-interpreter.patch
+
+-------------------------------------------------------------------
 Mon Aug 24 15:28:41 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
