@@ -82,4 +82,78 @@
     <comment></comment>
     <requestid>970656</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b74893f7cb26fbd7908f3632336c3ae5</srcmd5>
+    <version>3.0+git88.b64d36a</version>
+    <time>1673888352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0+git88.b64d36a:
+  * Xfce v4.18: Fix invisible items in thunar sidebar
+  * Gnome 43: Fix background color of tab bar and action bar
+  * Gnome-shell v43: Quick-settings - Improve toggle buttons appearance
+  * Gnome-shell: Fix page navigation arrow appearance
+  * Gnome 43: Fix nautilus sidebar appearance
+  * Gnome 43: Fix nautilus pathbar appearance
+  * Gnome-shell v43: Add styles for quick settings menu
+  * Gnome 42: Fix nautilus path bar buttons appearance in hover state
+  * KDE: Plasma-solid - Update tasks indicator appearance
+  * Gnome 42: Fix nautilus path bar buttons appearance
+  * Xfce: Thunar - Reduce padding in sidebar items to prevent scrolling
+  * KDE: Plasma - Update tasks indicator appearance
+  * Cinnamon: Nemo -  Improve appearance of highlighted items in sidebar
+  * Gnome-shell: Fix app folders dialog appearance in Zorin OS
+  * KDE: Kvantum - Update sliders color
+  * Gnome-shell: Fix visual issues in Zorin OS
+- Define explicit Provides/Obsoletes for the various subpackages
+- Split dracula-gtk-theme into flavours subpackages:
+  * metatheme-dracula-common
+  * kde-theme-dracula
+  * gtk2-metatheme-dracula
+  * gtk3-metatheme-dracula
+  * gtk4-metatheme-dracula
+  * gnome-shell-theme-dracula
+  * cinnamon-theme-dracula
+  * metacity-theme-dracula
+  * xfwm4-theme-dracula 
+- Update to version 3.0+git72.2452278:
+  * Cinnamon: Fix workspace switcher (as buttons) appearance
+  * Cinnamon: Fix cutted text in search bar
+  * Elementary OS: Fix missing highlight color in task switcher
+  * feature request added
+  * bug report added
+  * Gnome-shell v42: Improve notifications appearance on hover state
+  * Gnome-shell v42: Remove odd shadow in calendar area
+  * KDE: Sddm - Improve focused text entries appearance
+  * Update min_prelight
+  * Restore shell theme
+  * Gnome: Improve window control buttons visibility
+  * Gnome-shell v42: Improve prompt dialog appearance
+  * Gnome-shell v42: Fix media control buttons appearance
+  * Gnome: Fix flickering above Chrome URL bar, Fix #201. Fix #195
+  * KDE: Sddm - Improve general appearance
+  * Xfce: Fix thunar appearance
+  * Cinnamon: Fix grouped window list visibility issue
+  * KDE: Sddm - Fix missing spacing around text entries
+  * Gnome-shell v42: Improve notifications appearance
+  * Gnome-shell v42: Fix some visual issues
+  * KDE: Sddm - Improve input appearance
+  * Fix background hovering effect on Dash to Dock
+  * Gnome-shell v42: Improve calendar area appearance
+  * Gnome-shell:  Add specific styles for dash-to-dock
+  * Gnome-shell v42: Fix wasted space in calendar area
+  * Gnome-shell v42: Fix styling issues in popups
+  * KDE: Sddm - Fix shrink buttons/entries
+  * Gnome-shell: Improve popups appearance
+  * KDE: SDDM - Improve button appearance
+  * Gnome-shell-v42: Fix issue with app folders
+  * Gnome-shell-v42: Remove odd border in message list
+  * Gnome-shell-v42: Fix issue with calendar
+  * Gnome-shell-v42: Fix issue with popovers
+  * Gnome-shell: Fix issue with page indicator
+  * Gnome-shell: Update text entries appearance
+  * KDE: Sddm - Fix small font size
+  * Gnome: Fix appearance of linked buttons in headerbar
+</comment>
+    <requestid>1058673</requestid>
+  </revision>
 </revisionlist>
