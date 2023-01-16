@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 12 17:36:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.23
+  * Add Command line option to configure console binding for
+    TCP/AUX console.
+
+-------------------------------------------------------------------
 Tue May 24 16:15:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.22
