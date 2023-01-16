@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:19:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Dialog: Only center panel popup if it still would cover two thirds of its panel widget (kde#462930)
+  * containmentinterface: add function to open context menu
+  * ExpandableListItem: load custom content when item is expanded
+  * PC3/ActionTextField: Specify focus reason for shortcut activation
+  * Use StandardKey.Find instead of "CTRL+F"
+  * ActionTextField: add property type for focusSequence
+  * ActionTextField: show native shortcut text in tooltip
+  * ActionTextField: fix StandardKey not working
+  * Dialog: Add default case to a switch to make clangd happier
+  * Dialog: Use one std::optional instead of two boolean flags
+  * Mark transient applets in config (kde#417114)
+
+-------------------------------------------------------------------
 Tue Dec  6 20:11:09 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
