@@ -1,7 +1,7 @@
 #
 # spec file for package openwsman
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -463,6 +463,10 @@ install -m 644 etc/openwsman.conf %{buildroot}/%{_sysconfdir}/openwsman
 install -m 644 etc/openwsman_client.conf %{buildroot}/%{_sysconfdir}/openwsman
 install -m 644 etc/ssleay.cnf %{buildroot}/%{_sysconfdir}/openwsman
 install -m 644 %{pamfile} %{buildroot}/%{_sysconfdir}/pam.d/openwsman
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}/%{_sysconfdir}/pam.d/openwsman %{buildroot}/%{_pam_vendordir}
+%endif
 %if 0%{?rhel_version} == 700
 rm -f %{buildroot}/%{_bindir}/winrs
 %endif
@@ -473,11 +477,23 @@ rm -f %{buildroot}/%{_bindir}/winrs
 %post -n libwsman_client5 -p /sbin/ldconfig
 %postun -n libwsman_client5 -p /sbin/ldconfig
 
-%if 0%{?has_systemd}
 %pre server
+%if 0%{?has_systemd}
 if [ -f /var/lib/systemd/migrated/%{name} ]; then
 %service_add_pre %{name}.service
 fi
+%endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/openwsman ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans server
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/openwsman ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 %post server
@@ -600,7 +616,11 @@ rm -f /var/log/wsmand.log
 %config(noreplace) %{_sysconfdir}/openwsman/openwsman.conf
 %config(noreplace) %{_sysconfdir}/openwsman/ssleay.cnf
 %attr(0755,root,root) %{_sysconfdir}/openwsman/owsmangencert.sh
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/openwsman
+%else
 %config %{_sysconfdir}/pam.d/openwsman
+%endif
 %if 0%{?has_firewalld}
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
