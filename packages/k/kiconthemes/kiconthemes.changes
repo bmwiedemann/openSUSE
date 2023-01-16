@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * .kde-ci.yml: enable static CI builds
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:43 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
