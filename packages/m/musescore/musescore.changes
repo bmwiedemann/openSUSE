@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:44:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+  * Fixed a crash on startup with specific VST instruments present
+  * Fixed a crash on deleting particular staves
+  * Fixed a hang on startup involving WASAPI
+  * Fixed corruption on adding or removing beats or measures in certain cases
+  * Fixed shortcuts using numeric keypad
+  * Fixed issues involving system elements and parts
+  * Fixed issues with playback start position
+  * Fixed chord symbol playback on transposing staves
+
+-------------------------------------------------------------------
 Sun Jan  1 11:11:45 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix audio playback support in muse score 
