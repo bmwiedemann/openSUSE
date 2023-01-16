@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 12:59:04 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Tue Nov 16 15:09:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

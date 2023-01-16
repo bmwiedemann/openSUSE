@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-sfcb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -251,6 +251,10 @@ ln -s /etc/init.d/sfcb $RPM_BUILD_ROOT/usr/sbin/rcsfcb
 # Added NWP 5/14/08 - transition to using cim-schema rpm instead of internal-built schema
 ln -sf /usr/share/mof/cim-current $RPM_BUILD_ROOT/%{_datadir}/sfcb/CIM
 install -m 0644 %SOURCE4 $RPM_BUILD_ROOT/etc/pam.d/sfcb
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv $RPM_BUILD_ROOT/etc/pam.d/sfcb $RPM_BUILD_ROOT/%{_pam_vendordir}
+%endif
 install -m 0755 %SOURCE8 %{buildroot}%{_datadir}/sfcb/gen_ssl_certs.sh
 rm $RPM_BUILD_ROOT%{_libdir}/sfcb/*.la
 %if 0%{?suse_version} <= 1500
@@ -271,7 +275,11 @@ echo "%dir %{_libdir}/cmpi/" >> _pkg_list
 echo "%dir %{_sysconfdir}/sfcb/" >> _pkg_list
 echo "%dir %{_libdir}/sfcb" >> _pkg_list
 echo "%config(noreplace) %{_sysconfdir}/sfcb/sfcb.cfg" >> _pkg_list
+%if 0%{?suse_version} > 1500
+echo "%config %{_pam_vendordir}/sfcb" >> _pkg_list
+%else
 echo "%config %{_sysconfdir}/pam.d/sfcb" >> _pkg_list
+%endif
 %if 0%{?suse_version} <= 1500
 echo "%config %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/sblim-sfcb" >> _pkg_list
 %endif
@@ -306,6 +314,19 @@ fi
 # follow http://en.opensuse.org/openSUSE:Systemd_packaging_guidelines
 %if 0%{?has_systemd}
 %service_add_pre sblim-sfcb.service
+%endif
+
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/sfcb ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/sfcb ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 %post
