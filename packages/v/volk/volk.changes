@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 14 17:55:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * License switch to LGPLv3+
+  * Fix build for 32 bit arm with neon
+  * Add experimental support for MIPS and RISC-V
+
+-------------------------------------------------------------------
 Mon Sep  5 17:48:54 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 2.5.2

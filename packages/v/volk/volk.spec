@@ -1,7 +1,7 @@
 #
 # spec file for package volk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%global sonum 2
-%global soname 2_5
+%global sonum 3
+%global soname 3_0
 Name:           volk
-Version:        2.5.2
+Version:        3.0.0
 Release:        0
 Summary:        Vector-Optimized Library of Kernels
-License:        GPL-3.0-only
+License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libvolk.org/
 Source:         https://github.com/gnuradio/volk/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source98:       https://github.com/gnuradio/volk/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
-Source99:       https://github.com/gnuradio/volk/releases/download/v%{version}/gpg_volk_release_key.asc#/volk.keyring
+Source99:       volk.keyring
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -111,7 +111,7 @@ rm %{buildroot}%{_libdir}/libcpu_features.a
 %{_libdir}/libvolk.so.%{sonum}*
 
 %files -n volk_modtool
-%doc python/volk_modtool/README
+%doc python/volk_modtool/README.md
 %{_bindir}/volk_modtool
 %{python3_sitearch}/volk_modtool
 
