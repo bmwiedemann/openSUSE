@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Config.cmake.in: workaround Inotify static issue
+  * Better Pluralize 'n minutes ago' (kde#462261)
+  * Fix portal urls cache on X11 (kde#460314)
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:30 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
