@@ -84,4 +84,12 @@ D435.</comment>
     https://github.com/IntelRealSense/librealsense/releases/tag/v2.51.1</comment>
     <requestid>1001165</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf95ac63bd0d27b6c903aafaf9e0803f</srcmd5>
+    <version>2.53.1</version>
+    <time>1673888369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1058622</requestid>
+  </revision>
 </revisionlist>

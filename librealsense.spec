@@ -1,7 +1,7 @@
 #
 # spec file for package librealsense
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define libver 2_51
+%define libver 2_53
+
 Name:           librealsense
-Version:        2.51.1
+Version:        2.53.1
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -48,10 +49,9 @@ playback of streaming sessions.
 %package -n %{name}%{libver}
 Summary:        Library for Intel RealSense depth cameras
 Group:          System/Libraries
-Obsoletes:      librealsense2 < %{version}-%{release}
 
 %description -n %{name}%{libver}
-Library for librealsense applications.
+Library for Intel RealSense depth cameras applications.
 
 %package devel
 Summary:        Headers and library for librealsense
