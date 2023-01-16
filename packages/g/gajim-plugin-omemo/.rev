@@ -125,4 +125,12 @@
     <comment>- Update to version 2.8.17.</comment>
     <requestid>1008817</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cca4e373fcf27c6876ed80610b31900d</srcmd5>
+    <version>2.9.0</version>
+    <time>1673888335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0.</comment>
+    <requestid>1057135</requestid>
+  </revision>
 </revisionlist>
