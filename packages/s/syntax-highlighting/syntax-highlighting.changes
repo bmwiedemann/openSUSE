@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:19:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Resolve conflict on .ex file extension
+  * Markdown: remove dynamic rules that are not needed
+  * Julia: merge hundreds of rules into a single regex ; fix adjoint operator ; includes ##Comments
+  * avoid temporary constructions of Definition in AbstractHighlighter::highlightLine
+  * GCode: numbers are optional with parameters (kde#462969)
+  * cmake: Use ECMQmlModule for qtquick plugin
+  * update version and references
+  * Add MapCSS highlighting
+  * Update test files for Nim codeblock in markdown
+  * Add testcase to markdown file for Nim code blocks
+  * Markdown: Use nim highlighting in nim blocks
+  * Add testcase for "\"
+  * Nim: Small syntax fixes
+  * Add new keywords: `get` and `set`
+
+-------------------------------------------------------------------
 Tue Dec  6 20:11:14 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
