@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 15 11:51:12 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.31.2
+  * Fix build --with-network=internal only (configure logic error,
+    bug 348).
+
+-------------------------------------------------------------------
 Tue Nov  1 05:12:49 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.31.1
