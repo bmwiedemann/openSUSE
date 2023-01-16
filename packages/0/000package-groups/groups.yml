@@ -166,7 +166,7 @@ dvd:
   - patterns-server-kvm_tools
   - patterns-base-minimal_base: [required,suggested]
   - patterns-yast-x11_yast: [required,suggested]
-  - patterns-server-xen_server
+  - patterns-server-xen_server: [x86_64]
   # bnc#431280 (Japanese fonts)
   - arphic-uming-fonts
   - cellwriter
@@ -351,7 +351,7 @@ dvd:
   - atftp
   - bcm20702a1-firmware
   - bcm43xx-firmware
-  - elilo
+  - elilo: [x86_64]
   - erofs-utils
   - expect
   - f2fs-tools
@@ -380,7 +380,7 @@ dvd:
   - spu-tools
   - system-user-upsd
   - technisat-usb2-firmware
-  - virtualbox-guest-tools
+  - virtualbox-guest-tools: [x86_64]
   - xen-tools-domU
   # used in staging tests
   - yast2-nfs-server
