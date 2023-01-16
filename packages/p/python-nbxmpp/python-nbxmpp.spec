@@ -24,7 +24,7 @@
 %endif
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
