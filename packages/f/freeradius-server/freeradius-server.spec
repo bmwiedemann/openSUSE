@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -270,9 +270,14 @@ perl -i -pe 's/^#group =.*$/group = radiusd/' $RADDB/radiusd.conf
 touch %{buildroot}%{_localstatedir}/log/radius/radutmp
 touch %{buildroot}%{_localstatedir}/log/radius/radius.log
 # SUSE
+%if 0%{?suse_version} > 1500
+install -d     %{buildroot}%{_pam_vendordir}
+install -m 644 suse/radiusd-pam %{buildroot}%{_pam_vendordir}/radiusd
+%else
 install -d     %{buildroot}%{_sysconfdir}/pam.d
-install -d     %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 suse/radiusd-pam %{buildroot}%{_sysconfdir}/pam.d/radiusd
+%endif
+install -d     %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 suse/radiusd-logrotate %{buildroot}%{_sysconfdir}/logrotate.d/radiusd
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{unitname}.conf
@@ -324,6 +329,12 @@ getent passwd radiusd >/dev/null || %{_sbindir}/useradd -r -g radiusd \
 %{_bindir}/gpasswd -a radiusd winbind
 
 %service_add_pre %{unitname}.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/radiusd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 %service_add_post %{unitname}.service
@@ -334,6 +345,14 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 
 %postun
 %service_del_postun %{unitname}.service
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/radiusd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files doc
 %defattr(-,root,root)
@@ -346,7 +365,11 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %doc CREDITS doc/ChangeLog
 %license LICENSE COPYRIGHT
 # SUSE
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/radiusd
+%else
 %config %{_sysconfdir}/pam.d/radiusd
+%endif
 %config %{_sysconfdir}/logrotate.d/radiusd
 %{_sbindir}/rcradiusd
 %dir %attr(755,radiusd,radiusd) %{_localstatedir}/lib/radiusd

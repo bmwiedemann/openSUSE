@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 11:06:06 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Thu Sep 29 08:57:18 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - use chown with colon instead dot in radiusd.service
