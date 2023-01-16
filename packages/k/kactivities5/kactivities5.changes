@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Disable tests that require X11 on non X11 platforms
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:20 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
