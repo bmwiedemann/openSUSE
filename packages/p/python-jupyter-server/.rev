@@ -464,4 +464,25 @@
 </comment>
     <requestid>1046204</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a100246aad65ce854036d468875f823c</srcmd5>
+    <version>2.1.0</version>
+    <time>1673888348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0
+  * Fix preferred_dir for sync contents manager #1173 (@vidartf)
+  * Update typing and warning handling #1174 (@blink1073)
+- Release 2.0.7
+  * Log how long each extension module takes to import #1171
+    (@yuvipanda)
+  * Set JPY_SESSION_NAME to full notebook path. #1100 (@Carreau)
+  * Reapply preferred_dir fix, now with better backwards
+    compatability #1162 (@vidartf)
+  * Update example to use hatch #1169 (@blink1073)
+  * Clean up docs build and typing #1168 (@blink1073)
+  * Fix check release by ignoring duplicate file name in wheel
+    #1163 (@blink1073)
+  * Fix broken link in warning message #1158 (@consideRatio)</comment>
+    <requestid>1058569</requestid>
+  </revision>
 </revisionlist>
