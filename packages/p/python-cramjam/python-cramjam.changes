@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 13 11:04:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.6.2
+  * Bump pyo3, numpy and expand pyproject.toml by @milesgranger in
+    #90
+- Updated crate fixes bzip2 < 0.4.4 vulnerability
+  * boo#1207039, CVE-2023-22895
+
+-------------------------------------------------------------------
 Sat Oct 29 09:30:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.6.1

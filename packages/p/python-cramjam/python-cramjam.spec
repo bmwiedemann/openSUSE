@@ -1,7 +1,7 @@
 #
 # spec file for package python-cramjam
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
+# Adjust the version in _service and use `rm -rf pyrus-cramjam; osc service runall` in order to update
 Name:           python-cramjam
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Thin Python bindings to de/compression algorithms in Rust
 License:        MIT
 URL:            https://github.com/milesgranger/pyrus-cramjam
-# use `rm -rf pyrus-cramjam; osc service runall` in order to update
 Source:         pyrus-cramjam-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module maturin >= 0.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
@@ -59,6 +60,6 @@ cp %{SOURCE2} .cargo/config
 %files %{python_files}
 %license LICENSE
 %{python_sitearch}/cramjam
-%{python_sitearch}/cramjam-%{version}*-info
+%{python_sitearch}/cramjam-%{version}.dist-info
 
 %changelog
