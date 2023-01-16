@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Jan 16 10:58:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Remove dependency on pandoc:
+  Upsteam ships a man page. Lets assume they update it upon each
+  release and take it without generating ourselves
+
+-------------------------------------------------------------------
+Fri Jan 13 08:37:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Only build manpage using pandoc when on x86_64.
+  Pandoc seems to not be available on all archs.
+
+-------------------------------------------------------------------
+Tue Jan 10 07:39:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of cheat 4.4.0 for openSUSE
