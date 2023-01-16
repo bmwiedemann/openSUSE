@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter_nbextensions_configurator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter_nbextensions_configurator
-Version:        0.5.0
+Version:        0.6.1
 Release:        0
 Summary:        Configuration interfaces for nbextensions
 License:        BSD-3-Clause
@@ -33,20 +32,22 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module jupyter_contrib_core >= 0.3.3}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module notebook >= 6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
+Requires:       jupyter-jupyter_nbextensions_configurator = %{version}
 Requires:       python-PyYAML
 Requires:       python-jupyter_contrib_core >= 0.3.3
 Requires:       python-jupyter_core
 Requires:       python-notebook >= 6
 Requires:       python-tornado
 Requires:       python-traitlets
-Recommends:     jupyter-jupyter_nbextensions_configurator = %{version}
 BuildArch:      noarch
 
 %python_subpackages
@@ -66,7 +67,8 @@ Group:          Development/Languages/Python
 Requires:       jupyter-jupyter_contrib_core >= 0.3.3
 Requires:       jupyter-jupyter_core
 Requires:       jupyter-notebook >= 6
-Requires:       python3-jupyter_nbextensions_configurator = %{version}
+# any flavor is okay
+Requires:       (%(echo "%{python_module jupyter_nbextensions_configurator = %{version}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
 
 %description -n jupyter-jupyter_nbextensions_configurator
 The jupyter_nbextensions_configurator jupyter server extension provides
@@ -86,10 +88,10 @@ sed -i 's/\r$//' LICENSE.txt
 sed -i 's|/usr/bin/env python|%{__python3}|' scripts/jupyter-nbextensions_configurator
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
 
@@ -100,7 +102,7 @@ sed -i 's|/usr/bin/env python|%{__python3}|' scripts/jupyter-nbextensions_config
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/jupyter_nbextensions_configurator-%{version}-py*.egg-info
+%{python_sitelib}/jupyter_nbextensions_configurator-%{version}.dist-info
 %{python_sitelib}/jupyter_nbextensions_configurator/
 
 %files -n jupyter-jupyter_nbextensions_configurator

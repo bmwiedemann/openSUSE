@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 15 20:42:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Remove scripts from setup.py
+- Releas 0.6.0
+  * Support nbclassic
+- PEP517 build
+
+-------------------------------------------------------------------
 Mon Aug  1 18:45:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.0

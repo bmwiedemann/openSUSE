@@ -68,4 +68,16 @@
 - Fix (!) remove_nose.patch, and actually run some tests</comment>
     <requestid>992092</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e5d005f27ebf75a0a33f10356ac4f8d7</srcmd5>
+    <version>0.6.1</version>
+    <time>1673888347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1
+  * Remove scripts from setup.py
+- Releas 0.6.0
+  * Support nbclassic
+- PEP517 build</comment>
+    <requestid>1058568</requestid>
+  </revision>
 </revisionlist>
