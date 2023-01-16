@@ -419,7 +419,6 @@
     <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="elfutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="elilo" supportstatus="unsupported"/> <!-- reason: dvd:elilo -->
     <package name="emacs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-apel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="emacs-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3246,7 +3245,6 @@
     <package name="patterns-server-lamp_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="patterns-server-mail_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="patterns-server-printing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
-    <!-- patterns-server-xen_server not found on i586-->
     <package name="patterns-xfce-xfce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="patterns-xfce-xfce_basis" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="patterns-xfce-xfce_laptop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce_laptop -->
@@ -4553,7 +4551,6 @@
     <package name="virt-manager-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virt-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <!-- virtualbox-guest-tools not found on i586-->
     <package name="vlan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="vlc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="vlc-codec-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
@@ -4932,6 +4929,7 @@
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
+    <package name="elilo" supportstatus="unsupported"/> <!-- reason: dvd:elilo -->
     <package name="exim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="facetimehd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fcitx-gtk2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
