@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 16 09:08:02 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.26.10
+  * Improved: translations
+  * Improved: Skip bookmark on current position for next/previous
+    navigation
+- cleanup spec file
+
+-------------------------------------------------------------------
 Sun Jun 12 11:19:30 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.26.9

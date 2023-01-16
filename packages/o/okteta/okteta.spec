@@ -1,7 +1,7 @@
 #
 # spec file for package okteta
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-# for compatibility with Leap 15.1 which doesn't have this macro yet
-%{!?_kf5_knsrcfilesdir: %global _kf5_knsrcfilesdir %{_kf5_configdir}}
 %define Kasten_sover 4
 %define Okteta_sover 3
 %bcond_without released
 Name:           okteta
-Version:        0.26.9
+Version:        0.26.10
 Release:        0
 Summary:        Hex Editor
 License:        GFDL-1.2-only AND GPL-2.0-only
@@ -127,24 +125,24 @@ Contains the development files for the Okteta Hex Editor.
 %lang_package -n libokteta
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang okteta
-    %find_lang oktetapart
-    %find_lang liboktetacore libokteta.lang
-    %find_lang liboktetagui libokteta.lang
-    %find_lang libkasten libkasten.lang
-    %find_lang liboktetakasten libkasten.lang
-    %{kf5_find_htmldocs}
-  %endif
-  %suse_update_desktop_file    org.kde.okteta         Utility Editor
+%kf5_makeinstall -C build
+
+%find_lang okteta
+%find_lang oktetapart
+%find_lang liboktetacore libokteta.lang
+%find_lang liboktetagui libokteta.lang
+%find_lang libkasten libkasten.lang
+%find_lang liboktetakasten libkasten.lang
+%{kf5_find_htmldocs}
+
+%suse_update_desktop_file    org.kde.okteta         Utility Editor
 
 %post -n libKasten%{Kasten_sover} -p /sbin/ldconfig
 %postun -n libKasten%{Kasten_sover} -p /sbin/ldconfig
@@ -192,7 +190,6 @@ Contains the development files for the Okteta Hex Editor.
 %{_kf5_libdir}/pkgconfig/OktetaGui.pc
 %{_kf5_plugindir}/designer/
 
-%if %{with released}
 %files lang -f %{name}.lang
 %license LICENSES/*
 
@@ -204,6 +201,5 @@ Contains the development files for the Okteta Hex Editor.
 
 %files -n libokteta-lang -f libokteta.lang
 %license LICENSES/*
-%endif
 
 %changelog
