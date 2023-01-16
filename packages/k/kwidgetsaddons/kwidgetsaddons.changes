@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:19:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Make Full Screen action use consistent text and icon (kde#240854)
+  * Restore ABI compatibility broken in 29bb6d
+
+-------------------------------------------------------------------
 Tue Dec  6 20:11:04 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
