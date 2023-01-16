@@ -1,7 +1,7 @@
 #
 # spec file for package sioyek
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@ install -Dm755 %{name} -t "%{buildroot}%{_bindir}/"
 
 install -Dm644 pdf_viewer/prefs.config -t "%{buildroot}%{_sysconfdir}/%{name}/"
 install -Dm644 pdf_viewer/keys.config -t "%{buildroot}%{_sysconfdir}/%{name}/"
-install -Dm644 resources/%{name}-icon-linux.png -t "%{buildroot}%{_datadir}/icons/"
+install -Dm644 resources/%{name}-icon-linux.png -t "%{buildroot}%{_datadir}/pixmaps/"
 install -Dm644 resources/%{name}.desktop -t "%{buildroot}%{_datadir}/applications/"
 install -Dm644 resources/%{name}.1 -t "%{buildroot}%{_mandir}/man1/"
 
@@ -78,7 +78,7 @@ install -Dm644 tutorial.pdf -t "%{buildroot}%{_datadir}/%{name}/"
 
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
-%{_datadir}/icons/%{name}-icon-linux.png
+%{_datadir}/pixmaps/%{name}-icon-linux.png
 
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/prefs.config
