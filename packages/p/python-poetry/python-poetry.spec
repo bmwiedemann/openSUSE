@@ -1,7 +1,7 @@
 #
-# spec file for package python-poetry
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@
 %bcond_with test
 %endif
 
-Name:           python-poetry
-Version:        1.3.1
+Name:           python-poetry%{psuffix}
+Version:        1.3.2
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -136,7 +136,7 @@ deactivate
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/poetry
-%{python_sitelib}/poetry-%{version}*-info
+%{python_sitelib}/poetry-%{version}.dist-info
 %python_alternative %{_bindir}/poetry
 %endif
 
