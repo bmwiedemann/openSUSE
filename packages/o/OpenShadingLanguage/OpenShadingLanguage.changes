@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:05:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.8.0:
+  * Remove dependency on OptiX SDK for building core OSL with OptiX support.
+    You can now build OSL with OptiX support enabled even if you don't have the
+    OptiX SDK headers present at build time. But you will still need them to
+    build your OptiX-based application that uses OSL for GPU rendering.
+  * Batch mode: fix issue with closure keyword parameters.
+  * Batch mode: fix crash when adding a default initialized closure.
+  * Batch mode: Fix support for closures with array types.
+  * testshade: better testing of all closure parameter types.
+  * Fix various CI breaks as dependencies shifted.
+ 
+-------------------------------------------------------------------
 Sat Dec 10 21:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.7.1:
