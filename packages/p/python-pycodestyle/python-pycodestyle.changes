@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 13:46:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- cleanup spec, trim %files section and fix %python_clone command
+
+-------------------------------------------------------------------
 Tue Dec 13 16:26:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.10.0  (bsc#1206225)

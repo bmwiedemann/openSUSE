@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycodestyle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
+%define skip_python2 1
 Name:           python-pycodestyle
 Version:        2.10.0
 Release:        0
@@ -54,8 +53,7 @@ sed -ri '1s/^#!.*//' pycodestyle.py
 
 %install
 %python_install
-%python_clone %{buildroot}%{_bindir}/pycodestyle
-ln -sf pycodestyle-%{python3_bin_suffix} %{buildroot}%{_bindir}/pycodestyle
+%python_clone -a %{buildroot}%{_bindir}/pycodestyle
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %post
@@ -71,9 +69,8 @@ ln -sf pycodestyle-%{python3_bin_suffix} %{buildroot}%{_bindir}/pycodestyle
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/pycodestyle
-%{_bindir}/pycodestyle-%{python_bin_suffix}
 %{python_sitelib}/pycodestyle.py*
 %pycache_only %{python_sitelib}/__pycache__/pycodestyle.*.py*
-%{python_sitelib}/pycodestyle-%{version}-*.egg-info
+%{python_sitelib}/pycodestyle-%{version}*-info
 
 %changelog
