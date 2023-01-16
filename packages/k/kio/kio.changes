@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:18:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Restore old behavior for KFileFilterCombo::setFilter
+  * [kprocessrunner] Don't specify which desktop the app should be launched on
+  * Fix crash when dealing with user notification dialog
+  * [WidgetsAskUserActionHandler] Add fallbacks for dialog parent windows (kde#463124)
+  * [jobuidelegate] Set window when creating delegate
+  * Fix KFileFilterComboTest
+  * kdiroperator: fix full file path not being stripped (kde#459900)
+  * Fix integer overflow for large files in AccessManager (kde#452972)
+  * Pre-select "Delete" in Delete Confirmation Dialog (kde#462845)
+  * Make link against KWindowSystem private
+  * [KOpenWithDialog] Save search history in state config
+  * file_unix: Fix check for hidden NTFS files
+  * Use new nomenclature with socket name; use ".socket" suffix
+  * Port away from deprecated KService::property overload
+  * [previewjob] Deprecate overlayIconSize and overlayIconAlpha
+  * Replace KIO::SlaveConfig with KIO::WorkerConfig
+  * Remove unused includes
+  * [kpropertiesdialog] Remove UI to set DBus startup type
+  * when inside a sandbox use different openwith behavior
+  * Don't install service desktop files for KCMs in KF6
+  * Don't install KonqPopupMenu service type file for KF6
+  * Fix typo
+  * Port away from deprecated KWindowSystem API
+  * webdav docs: remove broken link
+
+-------------------------------------------------------------------
 Tue Dec  6 20:10:46 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
