@@ -1,7 +1,7 @@
 #
 # spec file for package partclone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Mariusz Fik <fisiu@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           partclone
-Version:        0.3.20
+Version:        0.3.22
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later

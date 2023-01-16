@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:12:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.22:
+  * fix log message to add new line after "Open devicefile successfully"
+  * Add missing space before opening parenthesis
+  * Skip FAT tests on big-endian architectures
+  * Skip F2FS tests on big-endian architectures
+  * Increase F2FS default test size to 100+ MB
+  * Increase XFS default test image size to 300+ MB
+  * fail-mbr: Remove binutils section .note.gnu.build-id using objcopy
+  * Change C99 for loop init to C89 for compatibility
+  * update autotools build files
+  * Avoid redefining _GNU_SOURCE, _LARGEFILE64_SOURCE
+  * Support FUSE 2.x API
+  * Check argument count in partclone.imgfuse
+  * Support out-of-tree builds for BTRFS and XFS
+  * Avoid uninitialized variables to prevent compiler warnings
+  * Check for EVP_MD_CTX_reset
+  * Remove unused variables to silence compiler warnings
+  * Detect FUSE version and explicitly print “yes” or “no” regarding
+    filesystem support
+  * Fix MBR builds for x86, non-x86 and out-of-tree
+  * Support unit-testing in out-of-tree builds
+  * Fix typos
+
+-------------------------------------------------------------------
 Tue May  3 18:10:04 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.3.20:
