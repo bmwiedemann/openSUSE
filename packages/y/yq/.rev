@@ -36,4 +36,12 @@ IMO the Conflicts tag is unavoidable, hence adding.
     <comment></comment>
     <requestid>1043633</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8dd9140c73e9f140e71ff74ec5b0deaf</srcmd5>
+    <version>4.30.8</version>
+    <time>1673888384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058658</requestid>
+  </revision>
 </revisionlist>

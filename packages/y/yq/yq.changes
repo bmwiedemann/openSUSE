@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 16 09:05:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v4.30.8:
+  * Log info message instead of erroring when unable to chown file in linux
+    (e.g. snap confinement) #1521
+  * Fixed bug in splice operator #1511
+  * Fixed value operator bug  #1515
+  * Fixed handling of merging null #1501
+  * Ownership of file now maintained in linux (thanks @vaguecoder) #1473
+  * Bumped dependency versions
+
+-------------------------------------------------------------------
 Sun Dec 18 13:43:18 UTC 2022 - dmueller@suse.com
 
 - Update to version 4.30.6:

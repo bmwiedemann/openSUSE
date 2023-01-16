@@ -1,7 +1,7 @@
 #
 # spec file for package yq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.30.6
+Version:        4.30.8
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
 URL:            https://github.com/mikefarah/yq
-Source0:        https://github.com/mikefarah/yq/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mikefarah/yq/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # conflict with all python3X-yq packages since they install /usr/bin/yq
 # we need to handle Leap 15.4 specially since the python3dist() is not

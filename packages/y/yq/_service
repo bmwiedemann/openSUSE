@@ -1,19 +1,4 @@
 <services>
-  <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/mikefarah/yq.git</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v4.30.6</param>
-    <param name="changesgenerate">enable</param>
-  </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">yq-*.tar</param>
-    <param name="compression">gz</param>
-  </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">yq</param>
-  </service>
+  <service name="download_files" mode="disabled"/>
   <service name="go_modules" mode="disabled"/>
 </services>
