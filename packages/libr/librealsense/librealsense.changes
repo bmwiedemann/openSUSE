@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  9 07:36:02 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.53.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.53.1
+- Drop old "Obsoletes" -- no current distro provides that.
+
+-------------------------------------------------------------------
 Mon Sep  5 02:09:26 UTC 2022 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2.51.1
