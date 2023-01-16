@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:19:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * kquickstyleitem fix clazy warning clazy-qstring-arg
+  * CheckBox/RadioButton/Switch: update implicit sizing code
+  * CheckBox/RadioButton/Switch: center align indicators when no content
+  * CheckBox/RadioButton/Switch: align indicators with 1st text line
+  * Button/ToolButton: allow menu arrows to be added by Accessible.role
+
+-------------------------------------------------------------------
 Tue Dec  6 20:11:11 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
