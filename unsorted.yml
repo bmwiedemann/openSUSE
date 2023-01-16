@@ -1348,6 +1348,7 @@ unsorted:
   - blueprint-compiler 
   - blueprint-compiler-devel 
   - blueprint-cursor-theme 
+  - bluetuith 
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
@@ -1960,6 +1961,7 @@ unsorted:
   - chasen-devel 
   - chck-devel 
   - chealpix-devel 
+  - cheat 
   - check-create-certificate 
   - check-devel 
   - check_postgres 
@@ -2022,6 +2024,7 @@ unsorted:
   - cinnamon-settings-daemon-devel 
   - cinnamon-settings-daemon-lang 
   - cinnamon-theme-adapta 
+  - cinnamon-theme-dracula 
   - cinnamon-theme-matcha 
   - cint-devel 
   - civetweb 
@@ -3184,7 +3187,6 @@ unsorted:
   - dpkg-devel 
   - dpkg-lang 
   - dqlite-devel 
-  - dracula-gtk-theme 
   - dracut-extra 
   - dracut-fips 
   - dracut-ima: [i586] 
@@ -6176,6 +6178,7 @@ unsorted:
   - gnome-shell-search-provider-lollypop 
   - gnome-shell-search-provider-wike 
   - gnome-shell-theme-adapta 
+  - gnome-shell-theme-dracula 
   - gnome-shell-theme-matcha 
   - gnome-software-devel 
   - gnome-sound-recorder 
@@ -6336,6 +6339,7 @@ unsorted:
   - goldendict 
   - goldendict-lang 
   - gom-devel 
+  - gontributions 
   - goobox 
   - goobox-lang 
   - goocanvas-devel 
@@ -6737,6 +6741,7 @@ unsorted:
   - gtk2-metatheme-ambiance 
   - gtk2-metatheme-arc 
   - gtk2-metatheme-bluebird 
+  - gtk2-metatheme-dracula 
   - gtk2-metatheme-e17gtk 
   - gtk2-metatheme-elementary 
   - gtk2-metatheme-equinox 
@@ -6771,6 +6776,7 @@ unsorted:
   - gtk3-metatheme-ambiance 
   - gtk3-metatheme-arc 
   - gtk3-metatheme-bluebird 
+  - gtk3-metatheme-dracula 
   - gtk3-metatheme-e17gtk 
   - gtk3-metatheme-elementary 
   - gtk3-metatheme-greybird 
@@ -6790,6 +6796,7 @@ unsorted:
   - gtk4-docs 
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-arc 
+  - gtk4-metatheme-dracula 
   - gtk4-metatheme-matcha 
   - gtk4-metatheme-yaru-mate 
   - gtkam 
@@ -8291,6 +8298,7 @@ unsorted:
   - kdbusaddons-devel 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
+  - kde-theme-dracula 
   - kdebugsettings 
   - kdebugsettings-lang 
   - kdeclarative-devel 
@@ -12180,7 +12188,7 @@ unsorted:
   - libkea-stats18 
   - libkea-util-io0 
   - libkea-util52 
-  - libkea1_4 
+  - libkea1_5 
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
@@ -13852,7 +13860,7 @@ unsorted:
   - librealsense 
   - librealsense-devel 
   - librealsense-examples 
-  - librealsense2_51 
+  - librealsense2_53 
   - librecad 
   - librecad-parts 
   - librecode3 
@@ -14975,7 +14983,7 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit: [x86_64] 
-  - libvolk2_5 
+  - libvolk3_0 
   - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit: [x86_64] 
@@ -16608,6 +16616,7 @@ unsorted:
   - metacity-devel 
   - metacity-lang 
   - metacity-theme-adapta 
+  - metacity-theme-dracula 
   - metacity-theme-matcha 
   - metacity-tools 
   - metainf-services 
@@ -16622,6 +16631,7 @@ unsorted:
   - metatheme-ambiance-common 
   - metatheme-arc-common 
   - metatheme-bluebird-common 
+  - metatheme-dracula-common 
   - metatheme-e17gtk-common 
   - metatheme-elementary-common 
   - metatheme-greybird-common 
@@ -24127,6 +24137,7 @@ unsorted:
   - python310-nbxmpp 
   - python310-ncclient 
   - python310-ndg-httpsclient 
+  - python310-ndjson 
   - python310-neovim 
   - python310-nest-asyncio 
   - python310-nested-lookup 
@@ -25326,6 +25337,7 @@ unsorted:
   - python310-user-agents 
   - python310-user_agent 
   - python310-userpath 
+  - python310-usfm2osis 
   - python310-uvicorn 
   - python310-uvloop 
   - python310-uwsgi-python3 
@@ -27478,6 +27490,7 @@ unsorted:
   - python38-nbval 
   - python38-ncclient 
   - python38-ndg-httpsclient 
+  - python38-ndjson 
   - python38-neovim 
   - python38-nest-asyncio 
   - python38-nested-lookup 
@@ -28730,6 +28743,7 @@ unsorted:
   - python38-user-agents 
   - python38-user_agent 
   - python38-userpath 
+  - python38-usfm2osis 
   - python38-uvicorn 
   - python38-uvloop 
   - python38-uwsgi-python3 
@@ -30875,6 +30889,7 @@ unsorted:
   - python39-nbval 
   - python39-ncclient 
   - python39-ndg-httpsclient 
+  - python39-ndjson 
   - python39-neovim 
   - python39-nest-asyncio 
   - python39-nested-lookup 
@@ -32126,6 +32141,7 @@ unsorted:
   - python39-user-agents 
   - python39-user_agent 
   - python39-userpath 
+  - python39-usfm2osis 
   - python39-uvicorn 
   - python39-uvloop 
   - python39-uwsgi-python3 
@@ -44555,6 +44571,7 @@ unsorted:
   - xfstests 
   - xfwm4-branding-upstream 
   - xfwm4-theme-adapta 
+  - xfwm4-theme-dracula 
   - xfwm4-theme-matcha 
   - xgalaga++ 
   - xgalaga-sdl 
