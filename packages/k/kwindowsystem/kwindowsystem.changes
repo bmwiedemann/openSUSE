@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:19:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Merge two KWINDOWSYSTEM_HAVE_X11 sections into one
+  * Fix KStartupInfo::appStarted()
+  * Deprecate KStartupInfo::startupId()
+  * Deprecate KStartupInfo::silenceStartup
+  * Add a formatting commit to blame ignore list
+  * KWindowSystemPluginWrapper doesn't need a virtual dtor
+  * Make KX11Extras::icon behave like KWindowSytem::icon (kde#462739)
+
+-------------------------------------------------------------------
 Tue Dec  6 20:11:05 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
