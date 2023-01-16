@@ -50,7 +50,6 @@ RUN zypper -n install \
               mdadm \
               parted \
               qemu-tools \
-              reiserfs \
               shadow \
               supermin \
               xfsprogs \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:29:29 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Do not install reiserfs as it has been deprecated
+
+-------------------------------------------------------------------
 Fri Oct  7 11:43:11 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Create an unprivileged user to run as non-root
