@@ -184,4 +184,15 @@
 </comment>
     <requestid>1045428</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d9b1994d9af183864d24209902e1b5ff</srcmd5>
+    <version>5.7.3</version>
+    <time>1673888346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.7.3
+  * Undeprecate validate(nb, relax_add_props=True) #343 (@minrk)
+- Release 5.7.2
+  * Only require nbformat_minor for v4 #342 (@minrk)</comment>
+    <requestid>1058566</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbformat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.7.1
+Version:        5.7.3
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause

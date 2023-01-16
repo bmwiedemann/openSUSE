@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 15 20:39:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.3
+  * Undeprecate validate(nb, relax_add_props=True) #343 (@minrk)
+- Release 5.7.2
+  * Only require nbformat_minor for v4 #342 (@minrk)
+
+-------------------------------------------------------------------
 Mon Dec 26 22:15:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.7.1
