@@ -1,7 +1,7 @@
 #
 # spec file for package uucp
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           uucp
 Version:        1.07
 Release:        0
 Summary:        Taylor Unix-to-Unix copy
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://www.gnu.org/software/uucp/
+URL:            https://www.gnu.org/software/uucp/
 Source0:        http://ftp.gnu.org/gnu/uucp/%{name}-%{version}.tar.gz
 Source1:        uucpcfg.tar.bz2
 Source3:        suucp.service
@@ -52,24 +52,25 @@ BuildRequires:  automake
 BuildRequires:  lockdev-devel
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
+BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 Requires:       ca-certificates
 Requires:       filesystem
 Requires:       logrotate
 Requires:       netcfg
 Requires:       openssl
-Requires:       stunnel
 Requires:       rmail
+Requires:       stunnel
 %if 0%{?suse_version} >= 1330
-Requires(pre):	user(uucp) group(uucp)
+Requires(pre):  user(uucp) group(uucp)
 %else
 Requires(pre):  shadow
 %endif
 Requires(post): %{install_info_prereq}
 Requires(post): fileutils
 Requires(post): permissions
-Requires(preun): %{install_info_prereq}
-Requires(verify): permissions
+Requires(preun):%{install_info_prereq}
+Requires(verify):permissions
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -137,8 +138,13 @@ mkdir -p %{buildroot}%{_unitdir}
 install -m644 %{SOURCE3} %{buildroot}%{_unitdir}
 install -m644 %{SOURCE5} %{buildroot}%{_unitdir}
 install -m644 %{SOURCE6} %{buildroot}%{_unitdir}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -m644 %{SOURCE7} %{buildroot}%{_pam_vendordir}/uucp
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 install -m644 %{SOURCE7} %{buildroot}%{_sysconfdir}/pam.d/uucp
+%endif
 mkdir -p %{buildroot}%{_sysconfdir}/xinetd.d
 install -m644 %{SOURCE8} %{buildroot}%{_sysconfdir}/xinetd.d/uucp
 # move to libexec
@@ -197,6 +203,18 @@ done
 
 %pre
 %service_add_pre s%{name}.service %{name}.socket
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/uucp ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/uucp ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/uucp.info%{ext_info}
@@ -243,7 +261,11 @@ test -x /usr/bin/systemd-tmpfiles && /usr/bin/systemd-tmpfiles --create %{_tmpfi
 %{_unitdir}/s%{name}.service
 %{_sbindir}/rcs%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/uucp
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/uucp
+%else
 %config %{_sysconfdir}/pam.d/uucp
+%endif
 %dir %attr(0750,uucp,uucp) %{_sysconfdir}/%{name}/
 %config %attr(0640,uucp,uucp) %{_sysconfdir}/%{name}/suucp-server.conf.systemd
 %config %attr(0640,uucp,uucp) %{_sysconfdir}/%{name}/suucp-client.conf.example
