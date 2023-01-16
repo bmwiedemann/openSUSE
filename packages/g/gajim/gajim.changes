@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Jan 14 17:11:58 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.6.1:
+  * Raise required nbxmpp version to 4.0.1.
+  * AdHocCommands: Refresh commands list after completing command.
+  * Limit message length and add FullMessageWindow.
+  * ChatList: Improve timedelta function.
+  * CreateGroupchatWindow: Add Advanced switch and always show
+    address entry.
+  * UX: Make more text labels selectable/enable can-focus for
+    copying.
+  * AccountPage: Add menu item to deny all subscription requests.
+  * Account menu: Add Execute Command… entry for convenience.
+  * AccountPage: Make all account menu items available.
+  * AccountPage: Add menu entry for adding contacts.
+  * Notifications: Fix rare case where Gajim displays notifications
+    for our own messages.
+  * ServiceDiscoveryWindow: Fix jumping when resizing window.
+  * Don't fail in mark_as_unread if there are no messages.
+  * Profile: Fix setting avatar.
+  * ChatStack DnD: Add workaround for mis-fired drag-motion signal.
+  * AudioPreview: Make visualisation fully RTL compatible again and
+    ensure graph is always drawn.
+  * Preview: Handle exceptions while decrypting.
+  * Audio Visualizer: Port deprecated methods.
+  * AudioPreview: Always format progress time as LTR.
+  * AppPage: Differentiate between updates (Gajim/Plugins).
+  * GroupChat: Display reason when group chat is destroyed.
+
+-------------------------------------------------------------------
+Sat Jan  7 10:32:56 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.6.0:
+  * Raise required nbxmpp version to 4.0.0.
+  * Depend on Python 3.10.
+  * Port to libsoup3.
+  * Allow sending files by copy-pasting them from file managers.
+  * Preview: Add audio preview controls and visualisation.
+  * Resurrect URI-specific context menus.
+  * Highlight the file when opening containing directory.
+  * BaseAvatarChooserDialog: Allow all image types.
+  * Timestamps: Use date/time format preference in more places.
+  * AppPage: Show date for last update check.
+  * Add dedicated context menu for non-specific URI types.
+  * Restore ability to manually disambiguate JID-like addresses.
+  * Use the unified Start/Join Chat flow for "?join" links.
+  * CertificateBox: Format serial number in hex.
+  * MessageActionsBox: Restore emoji button behaviour.
+  * Settings: Add migration for global MUC search api endpoint.
+  * AccountWizard: Remove subscriptions after successful login.
+  * Audio Preview: Fix visuals on EOS while seeking.
+  * Audio Preview: Don't let seekbar handle jump to end on EOS when
+    user is seeking.
+  * Commands: Attempt to parse only if message can have a command.
+  * Notifications: Use correct nickname for /me messages.
+  * AvatarSelector: Set default crop scale to 1.0.
+  * Menus: Don’t use GLib variant text format parsing.
+  * Remember last folder correctly after sending file.
+  * Preview: Don't treat multi-line message body as previewable
+    URL.
+
+-------------------------------------------------------------------
 Sat Dec  3 15:11:47 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.5.4:

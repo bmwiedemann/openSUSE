@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,26 @@
 #
 
 
-#
-# Gajim uses libsoup2 while GUPnP, libsoup3. And that makes the app unlunchable.
-# This is a temporary fix until upstream addresses it.
-#
-# FIXME: Once the issue https://dev.gajim.org/gajim/gajim/-/issues/11183
-#        is properly addressed, exclude only AppIndicator3.
-#
-%define __requires_exclude ^typelib\\((GUPnPIgd|AppIndicator3)\\).*$
-#
-# It was: __requires_exclude ^typelib\\(AppIndicator3\\)
-
+%define __requires_exclude ^typelib\\(AppIndicator3\\).*$
 %if 0%{?suse_version} > 1500
 %define py3ver 3
 %define py3pkg python3
 %define py3pkg_sitelib %{python3_sitelib}
 %else
-# Requires at least python 3.9
+# Requires at least python 3.10
 %define py3ver 3.10
 %define py3pkg python310
 %define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
 %endif
 Name:           gajim
-Version:        1.5.4
+Version:        1.6.1
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.5/gajim-%{version}.tar.gz
-BuildRequires:  %{py3pkg}-nbxmpp >= 3.2.4
+Source:         https://gajim.org/downloads/1.6/gajim-%{version}.tar.gz
+BuildRequires:  %{py3pkg}-nbxmpp >= 4.0.1
 BuildRequires:  %{py3pkg}-precis-i18n >= 1.0.0
 BuildRequires:  %{py3pkg}-setuptools
 BuildRequires:  ca-certificates-mozilla
@@ -64,12 +54,12 @@ Requires:       %{py3pkg}-gobject-Gdk
 Requires:       %{py3pkg}-gobject-cairo
 Requires:       %{py3pkg}-gssapi
 Requires:       %{py3pkg}-keyring
-Requires:       %{py3pkg}-nbxmpp >= 3.2.5
+Requires:       %{py3pkg}-nbxmpp >= 4.0.1
 Requires:       %{py3pkg}-precis-i18n >= 1.0.0
 Requires:       %{py3pkg}-pycairo >= 1.16.0
 Requires:       ca-certificates-mozilla
 Requires:       typelib(GtkSource) = 4
-Requires:       typelib(Soup) = 2.4
+Requires:       typelib(Soup) = 3.0
 # gajim-remote
 Recommends:     %{py3pkg}-dbus-python
 # OMEMO encryption
