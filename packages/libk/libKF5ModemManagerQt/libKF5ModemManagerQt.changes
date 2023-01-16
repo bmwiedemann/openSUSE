@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:19:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * modempropertiestest Value stored to 'found' is never read
+  * Lookup country code during initialization
+
+-------------------------------------------------------------------
 Tue Dec  6 20:11:07 UTC 2022 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.101.0
