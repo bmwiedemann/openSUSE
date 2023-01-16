@@ -1,8 +1,10 @@
 Krita 5 plugin support
 Origin: https://github.com/amyspark/gmic
 
+Rebased for gmic 3.2.0
+
 ---
- gmic-qt/CMakeLists.txt                        |  69 +++++-
+ gmic-qt/CMakeLists.txt                        |  68 ++++-
  gmic-qt/gmic_krita_qt.desktop                 |   9 +
  gmic-qt/src/DialogSettings.cpp                |  33 ++-
  .../src/FilterParameters/BoolParameter.cpp    |   2 +
@@ -31,7 +33,7 @@ Origin: https://github.com/amyspark/gmic
  gmic-qt/src/Widgets/ProgressInfoWindow.cpp    |   4 +
  gmic-qt/src/Widgets/ProgressInfoWindow.h      |   2 +
  gmic-qt/ui/dialogsettings.ui                  |   2 +-
- 29 files changed, 714 insertions(+), 32 deletions(-)
+ 29 files changed, 713 insertions(+), 32 deletions(-)
  create mode 100644 gmic-qt/gmic_krita_qt.desktop
  create mode 100644 gmic-qt/src/Host/KritaPlugin/gmicqttoolplugin.cpp
  create mode 100644 gmic-qt/src/Host/KritaPlugin/gmicqttoolplugin.h
@@ -39,24 +41,22 @@ Origin: https://github.com/amyspark/gmic
  create mode 100644 gmic-qt/src/Host/KritaPlugin/host.cpp
 
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index 3c3fd21..dcd3564 100644
+index 17b0fdf..25fff53 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
 @@ -22,7 +22,7 @@ endif()
 
  message("Build type is " ${CMAKE_BUILD_TYPE})
 
--set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita, none, paintdotnet or 8bf.")
-+set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita, krita-plugin, none, paintdotnet or 8bf.")
+-set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), none, paintdotnet or 8bf.")
++set (GMIC_QT_HOST "gimp" CACHE STRING "Define for which host gmic-qt will be built: gimp, gimp3 (experimental), krita-plugin, none, paintdotnet or 8bf.")
  if (${GMIC_QT_HOST} STREQUAL "none")
    message("Building standalone version.")
  else()
-@@ -623,6 +623,71 @@ elseif (${GMIC_QT_HOST} STREQUAL "krita")
-       ${gmic_qt_LIBRARIES}
+@@ -611,6 +611,70 @@ if (${GMIC_QT_HOST} STREQUAL "gimp" OR ${GMIC_QT_HOST} STREQUAL "gimp3")
        )
-     install(TARGETS gmic_krita_qt RUNTIME DESTINATION bin)
-+    install(FILES gmic_krita_qt.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-+
+     install(TARGETS gmic_gimp_qt RUNTIME DESTINATION "${GIMP_PKGLIBDIR}/plug-ins/gmic_gimp_qt")
+
 +elseif (${GMIC_QT_HOST} STREQUAL "krita-plugin")
 +    set(MIN_FRAMEWORKS_VERSION 5.44.0)
 +
@@ -120,15 +120,16 @@ index 3c3fd21..dcd3564 100644
 +      )
 +    endif()
 +    install(TARGETS krita_gmic_qt DESTINATION ${KRITA_PLUGIN_INSTALL_DIR}) # plugin
-
++
  elseif (${GMIC_QT_HOST} STREQUAL "none")
 
-@@ -666,7 +731,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
-       )
+   set (gmic_qt_SRCS ${gmic_qt_SRCS}
+@@ -663,7 +727,7 @@ elseif (${GMIC_QT_HOST} STREQUAL "8bf")
+     )
 
  else()
--    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita, none, paintdotnet or 8bf")
-+    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita, krita-plugin, none, paintdotnet or 8bf")
+-    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, none, paintdotnet or 8bf")
++    message(FATAL_ERROR "GMIC_QT_HOST is not defined as gimp, gimp3, krita-plugin, none, paintdotnet or 8bf")
  endif()
 
  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
@@ -239,13 +240,13 @@ index e89eafb..051122e 100644
    QDialog::done(r);
  }
 diff --git a/gmic-qt/src/FilterParameters/BoolParameter.cpp b/gmic-qt/src/FilterParameters/BoolParameter.cpp
-index c9b6fbe..43e897e 100644
+index 41a5f04..619a480 100644
 --- a/gmic-qt/src/FilterParameters/BoolParameter.cpp
 +++ b/gmic-qt/src/FilterParameters/BoolParameter.cpp
-@@ -57,12 +57,14 @@ bool BoolParameter::addTo(QWidget * widget, int row)
-   delete _checkBox;
-   _checkBox = new QCheckBox(_name, widget);
+@@ -63,12 +63,14 @@ bool BoolParameter::addTo(QWidget * widget, int row)
+   _checkBox = new QCheckBox(widget);
    _checkBox->setChecked(_value);
+   _label = new QLabel(_name, widget);
 +#ifndef _GMIC_QT_DISABLE_THEMING_
    if (Settings::darkThemeEnabled()) {
      QPalette p = _checkBox->palette();
@@ -254,9 +255,9 @@ index c9b6fbe..43e897e 100644
      _checkBox->setPalette(p);
    }
 +#endif
-   _grid->addWidget(_checkBox, row, 0, 1, 3);
+   _grid->addWidget(_label, row, 0, 1, 1);
+   _grid->addWidget(_checkBox, row, 1, 1, 2);
    connectCheckBox();
-   return true;
 diff --git a/gmic-qt/src/FilterParameters/FloatParameter.cpp b/gmic-qt/src/FilterParameters/FloatParameter.cpp
 index 01a01c6..d9524e4 100644
 --- a/gmic-qt/src/FilterParameters/FloatParameter.cpp
@@ -381,10 +382,10 @@ index 0515a52..7781e4b 100644
 +
  #endif // GMIC_QT_GLOBALS_H
 diff --git a/gmic-qt/src/GmicProcessor.cpp b/gmic-qt/src/GmicProcessor.cpp
-index b3c177d..a288193 100644
+index 7ab4e8b..a42e19f 100644
 --- a/gmic-qt/src/GmicProcessor.cpp
 +++ b/gmic-qt/src/GmicProcessor.cpp
-@@ -192,6 +192,11 @@ bool GmicProcessor::isIdle() const
+@@ -189,6 +189,11 @@ bool GmicProcessor::isIdle() const
    return !_filterThread;
  }
 
@@ -397,7 +398,7 @@ index b3c177d..a288193 100644
  {
    if (_filterThread) {
 diff --git a/gmic-qt/src/GmicProcessor.h b/gmic-qt/src/GmicProcessor.h
-index caf4c2f..55f8a2a 100644
+index 4cd5452..39165f2 100644
 --- a/gmic-qt/src/GmicProcessor.h
 +++ b/gmic-qt/src/GmicProcessor.h
 @@ -92,6 +92,7 @@ public:
@@ -407,12 +408,12 @@ index caf4c2f..55f8a2a 100644
 +  bool isInputImagesEmpty() const;
    bool hasUnfinishedAbortedThreads() const;
 
-   const cimg_library::CImg<float> & previewImage() const;
+   const gmic_library::gmic_image<float> & previewImage() const;
 diff --git a/gmic-qt/src/GmicQt.cpp b/gmic-qt/src/GmicQt.cpp
-index 080514f..7bbc877 100644
+index 90be043..45a595a 100644
 --- a/gmic-qt/src/GmicQt.cpp
 +++ b/gmic-qt/src/GmicQt.cpp
-@@ -90,7 +90,7 @@ RunParameters lastAppliedFilterRunParameters(ReturnedRunParametersFlag flag)
+@@ -87,7 +87,7 @@ RunParameters lastAppliedFilterRunParameters(ReturnedRunParametersFlag flag)
  {
    configureApplication();
    RunParameters parameters;
@@ -421,7 +422,7 @@ index 080514f..7bbc877 100644
    const QString path = settings.value(QString("LastExecution/host_%1/FilterPath").arg(GmicQtHost::ApplicationShortname)).toString();
    parameters.filterPath = path.toStdString();
    QString args = settings.value(QString("LastExecution/host_%1/Arguments").arg(GmicQtHost::ApplicationShortname)).toString();
-@@ -200,7 +200,7 @@ int run(UserInterfaceMode interfaceMode,                   //
+@@ -197,7 +197,7 @@ int run(UserInterfaceMode interfaceMode,                   //
      LanguageSettings::installTranslators();
      MainWindow mainWindow;
      mainWindow.setPluginParameters(parameters);
@@ -430,7 +431,7 @@ index 080514f..7bbc877 100644
        mainWindow.showMaximized();
      } else {
        mainWindow.show();
-@@ -548,9 +548,11 @@ namespace
+@@ -545,9 +545,11 @@ namespace
 
  void configureApplication()
  {
@@ -443,7 +444,7 @@ index 080514f..7bbc877 100644
    if (QSettings().value(HIGHDPI_KEY, false).toBool()) {
      QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 diff --git a/gmic-qt/src/HeadlessProcessor.cpp b/gmic-qt/src/HeadlessProcessor.cpp
-index 0f88b32..c7ed61b 100644
+index a0a99b1..17a4f5e 100644
 --- a/gmic-qt/src/HeadlessProcessor.cpp
 +++ b/gmic-qt/src/HeadlessProcessor.cpp
 @@ -27,6 +27,7 @@
@@ -454,7 +455,7 @@ index 0f88b32..c7ed61b 100644
  #include "Common.h"
  #include "FilterParameters/FilterParametersWidget.h"
  #include "FilterSelector/FiltersPresenter.h"
-@@ -74,7 +75,7 @@ HeadlessProcessor::~HeadlessProcessor()
+@@ -71,7 +72,7 @@ HeadlessProcessor::~HeadlessProcessor()
 
  bool HeadlessProcessor::setPluginParameters(const RunParameters & parameters)
  {
@@ -463,7 +464,7 @@ index 0f88b32..c7ed61b 100644
    _path = QString::fromStdString(parameters.filterPath);
    _inputMode = (parameters.inputMode == InputMode::Unspecified) ? DefaultInputMode : parameters.inputMode;
    _outputMode = (parameters.outputMode == OutputMode::Unspecified) ? DefaultOutputMode : parameters.outputMode;
-@@ -239,7 +240,7 @@ void HeadlessProcessor::onProcessingFinished()
+@@ -236,7 +237,7 @@ void HeadlessProcessor::onProcessingFinished()
        GmicQtHost::outputImages(images, _filterThread->imageNames(), _outputMode);
        _processingCompletedProperly = true;
      }
@@ -472,7 +473,7 @@ index 0f88b32..c7ed61b 100644
      if (!status.isEmpty() && !_hash.isEmpty()) {
        ParametersCache::setValues(_hash, status);
        ParametersCache::save();
-@@ -272,7 +273,9 @@ void HeadlessProcessor::endApplication(const QString & errorMessage)
+@@ -269,7 +270,9 @@ void HeadlessProcessor::endApplication(const QString & errorMessage)
    if (!errorMessage.isEmpty()) {
      Logger::error(errorMessage);
    }
@@ -999,19 +1000,19 @@ index 0000000..fcfa12b
 +
 +} // namespace GmicQtHost
 diff --git a/gmic-qt/src/Host/None/JpegQualityDialog.cpp b/gmic-qt/src/Host/None/JpegQualityDialog.cpp
-index b351994..d92386d 100644
+index 69635c6..00a7f95 100644
 --- a/gmic-qt/src/Host/None/JpegQualityDialog.cpp
 +++ b/gmic-qt/src/Host/None/JpegQualityDialog.cpp
-@@ -1,6 +1,8 @@
- #include "JpegQualityDialog.h"
+@@ -2,6 +2,8 @@
  #include <QSettings>
+ #include "Settings.h"
  #include "ui_jpegqualitydialog.h"
 +#include "Globals.h"
 +
  int JpegQualityDialog::_permanentQuality = -1;
  int JpegQualityDialog::_selectedQuality = -1;
 
-@@ -14,7 +16,7 @@ JpegQualityDialog::JpegQualityDialog(QWidget * parent) : QDialog(parent), ui(new
+@@ -15,7 +17,7 @@ JpegQualityDialog::JpegQualityDialog(QWidget * parent) : QDialog(parent), ui(new
    ui->spinBox->setRange(0, 100);
 
    if (_selectedQuality == -1) {
@@ -1020,7 +1021,7 @@ index b351994..d92386d 100644
    }
 
    ui->slider->setValue(_selectedQuality);
-@@ -24,7 +26,7 @@ JpegQualityDialog::JpegQualityDialog(QWidget * parent) : QDialog(parent), ui(new
+@@ -25,7 +27,7 @@ JpegQualityDialog::JpegQualityDialog(QWidget * parent) : QDialog(parent), ui(new
    connect(ui->spinBox, QOverload<int>::of(&QSpinBox::valueChanged), ui->slider, &QSlider::setValue);
    connect(ui->pbOk, &QPushButton::clicked, [this]() {
      _selectedQuality = ui->spinBox->value();
@@ -1064,10 +1065,10 @@ index 6da4d84..05d8b4b 100644
      }
    }
 diff --git a/gmic-qt/src/MainWindow.cpp b/gmic-qt/src/MainWindow.cpp
-index f0e0b66..713b162 100644
+index 421c30e..afdf630 100644
 --- a/gmic-qt/src/MainWindow.cpp
 +++ b/gmic-qt/src/MainWindow.cpp
-@@ -190,8 +190,12 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui(new Ui::MainW
+@@ -187,8 +187,12 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent), ui(new Ui::MainW
      updateShortcutF5->setContext(Qt::ApplicationShortcut);
      QShortcut * updateShortcutCtrlR = new QShortcut(QKeySequence("Ctrl+R"), this);
      updateShortcutCtrlR->setContext(Qt::ApplicationShortcut);
@@ -1080,7 +1081,7 @@ index f0e0b66..713b162 100644
      ui->tbUpdateFilters->setToolTip(updateText);
    }
 
-@@ -279,6 +283,7 @@ void MainWindow::setIcons()
+@@ -276,6 +280,7 @@ void MainWindow::setIcons()
    ui->tbExpandCollapse->setIcon(_expandIcon);
  }
 
@@ -1088,7 +1089,7 @@ index f0e0b66..713b162 100644
  void MainWindow::setDarkTheme()
  {
    // SHOW(QStyleFactory::keys());
-@@ -331,6 +336,7 @@ void MainWindow::setDarkTheme()
+@@ -328,6 +333,7 @@ void MainWindow::setDarkTheme()
    ui->vSplitterLine->setStyleSheet("QFrame{ border-top: 0px none #a0a0a0; border-bottom: 1px solid rgb(160,160,160);}");
    Settings::UnselectedFilterTextColor = Settings::UnselectedFilterTextColor.darker(150);
  }
@@ -1096,7 +1097,7 @@ index f0e0b66..713b162 100644
 
  void MainWindow::setPluginParameters(const RunParameters & parameters)
  {
-@@ -385,7 +391,7 @@ void MainWindow::buildFiltersTree()
+@@ -382,7 +388,7 @@ void MainWindow::buildFiltersTree()
      _filtersPresenter->importGmicGTKFaves();
      _filtersPresenter->saveFaves();
      _gtkFavesShouldBeImported = false;
@@ -1105,7 +1106,7 @@ index f0e0b66..713b162 100644
    }
 
    _filtersPresenter->toggleSelectionMode(withVisibility);
-@@ -495,7 +501,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -492,7 +498,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    } else if (status == (int)Updater::UpdateStatus::NotNecessary) {
    }
 
@@ -1114,7 +1115,7 @@ index f0e0b66..713b162 100644
      _gtkFavesShouldBeImported = false;
    } else {
      _gtkFavesShouldBeImported = askUserForGTKFavesImport();
-@@ -512,7 +518,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
+@@ -509,7 +515,7 @@ void MainWindow::onStartupFiltersUpdateFinished(int status)
    }
 
    // Retrieve and select previously selected filter
@@ -1123,7 +1124,7 @@ index f0e0b66..713b162 100644
    if (_newSession || !_lastExecutionOK) {
      hash.clear();
    }
-@@ -577,7 +583,9 @@ void MainWindow::onEscapeKeyPressed()
+@@ -574,7 +580,9 @@ void MainWindow::onEscapeKeyPressed()
      } else {
        _processor.cancel();
        ui->previewWidget->displayOriginalImage();
@@ -1133,7 +1134,7 @@ index f0e0b66..713b162 100644
      }
    }
  }
-@@ -677,7 +685,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
+@@ -674,7 +682,9 @@ void MainWindow::onPreviewUpdateRequested(bool synchronous)
      ui->previewWidget->displayOriginalImage();
      return;
    }
@@ -1143,7 +1144,7 @@ index f0e0b66..713b162 100644
 
    const FiltersPresenter::Filter currentFilter = _filtersPresenter->currentFilter();
    GmicProcessor::FilterContext context;
-@@ -740,7 +750,9 @@ void MainWindow::onPreviewImageAvailable()
+@@ -737,7 +747,9 @@ void MainWindow::onPreviewImageAvailable()
    }
    ui->previewWidget->setPreviewImage(_processor.previewImage());
    ui->previewWidget->enableRightClick();
@@ -1153,7 +1154,7 @@ index f0e0b66..713b162 100644
    if (_pendingActionAfterCurrentProcessing == ProcessingAction::Close) {
      close();
    }
-@@ -748,9 +760,19 @@ void MainWindow::onPreviewImageAvailable()
+@@ -745,9 +757,19 @@ void MainWindow::onPreviewImageAvailable()
 
  void MainWindow::onPreviewError(const QString & message)
  {
@@ -1173,7 +1174,7 @@ index f0e0b66..713b162 100644
    if (_pendingActionAfterCurrentProcessing == ProcessingAction::Close) {
      close();
    }
-@@ -831,12 +853,16 @@ void MainWindow::onVeryFirstShowEvent()
+@@ -829,12 +851,16 @@ void MainWindow::onVeryFirstShowEvent()
    Updater::setOutputMessageMode(Settings::outputMessageMode());
    int ageLimit;
    {
@@ -1192,7 +1193,7 @@ index f0e0b66..713b162 100644
  }
 
  void MainWindow::setZoomConstraint()
-@@ -997,7 +1023,7 @@ void MainWindow::saveCurrentParameters()
+@@ -995,7 +1021,7 @@ void MainWindow::saveCurrentParameters()
 
  void MainWindow::saveSettings()
  {
@@ -1201,7 +1202,7 @@ index f0e0b66..713b162 100644
 
    _filtersPresenter->saveSettings(settings);
 
-@@ -1039,7 +1065,7 @@ void MainWindow::saveSettings()
+@@ -1037,7 +1063,7 @@ void MainWindow::saveSettings()
 
  void MainWindow::loadSettings()
  {
@@ -1210,7 +1211,7 @@ index f0e0b66..713b162 100644
    _filtersPresenter->loadSettings(settings);
 
    _lastExecutionOK = settings.value("LastExecution/ExitedNormally", true).toBool();
-@@ -1055,9 +1081,11 @@ void MainWindow::loadSettings()
+@@ -1053,9 +1079,11 @@ void MainWindow::loadSettings()
    if (settings.value("Config/PreviewPosition", "Left").toString() == "Left") {
      setPreviewPosition(PreviewPosition::Left);
    }
@@ -1222,7 +1223,7 @@ index f0e0b66..713b162 100644
    if (!Settings::visibleLogos()) {
      ui->logosLabel->hide();
    }
-@@ -1101,7 +1129,7 @@ void MainWindow::loadSettings()
+@@ -1099,7 +1127,7 @@ void MainWindow::loadSettings()
      ui->splitter->setSizes(sizes);
    }
 
@@ -1231,7 +1232,7 @@ index f0e0b66..713b162 100644
  }
 
  void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
-@@ -1163,7 +1191,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
+@@ -1161,7 +1189,7 @@ void MainWindow::setPreviewPosition(MainWindow::PreviewPosition position)
  void MainWindow::adjustVerticalSplitter()
  {
    QList<int> sizes;
@@ -1240,7 +1241,7 @@ index f0e0b66..713b162 100644
    sizes.push_back(settings.value(QString("Config/ParamsVerticalSplitterSizeTop"), -1).toInt());
    sizes.push_back(settings.value(QString("Config/ParamsVerticalSplitterSizeBottom"), -1).toInt());
    const int splitterHeight = ui->verticalSplitter->height();
-@@ -1292,17 +1320,19 @@ bool MainWindow::askUserForGTKFavesImport()
+@@ -1290,17 +1318,19 @@ bool MainWindow::askUserForGTKFavesImport()
                           QMessageBox::Yes | QMessageBox::No, this);
    messageBox.setDefaultButton(QMessageBox::Yes);
    QCheckBox * cb = new QCheckBox(tr("Don't ask again"));
@@ -1262,7 +1263,7 @@ index f0e0b66..713b162 100644
      return false;
    }
 diff --git a/gmic-qt/src/MainWindow.h b/gmic-qt/src/MainWindow.h
-index 8e5bc09..abd9727 100644
+index 4679fc5..39a6d3c 100644
 --- a/gmic-qt/src/MainWindow.h
 +++ b/gmic-qt/src/MainWindow.h
 @@ -71,7 +71,9 @@ public:
@@ -1276,7 +1277,7 @@ index 8e5bc09..abd9727 100644
 
  public slots:
 diff --git a/gmic-qt/src/Settings.cpp b/gmic-qt/src/Settings.cpp
-index 18b24f8..79ed316 100644
+index 3ed8122..5ca1c78 100644
 --- a/gmic-qt/src/Settings.cpp
 +++ b/gmic-qt/src/Settings.cpp
 @@ -67,7 +67,7 @@ QString Settings::NegativeSign('-');
@@ -1359,10 +1360,10 @@ index 381bc64..7939d3a 100644
  private:
    static void setDefaultInputMode();
 diff --git a/gmic-qt/src/Widgets/ProgressInfoWindow.cpp b/gmic-qt/src/Widgets/ProgressInfoWindow.cpp
-index 1cb8437..8d27f9f 100644
+index 533d257..604cf47 100644
 --- a/gmic-qt/src/Widgets/ProgressInfoWindow.cpp
 +++ b/gmic-qt/src/Widgets/ProgressInfoWindow.cpp
-@@ -62,9 +62,11 @@ ProgressInfoWindow::ProgressInfoWindow(HeadlessProcessor * processor) : QMainWin
+@@ -59,9 +59,11 @@ ProgressInfoWindow::ProgressInfoWindow(HeadlessProcessor * processor) : QMainWin
    connect(processor, &HeadlessProcessor::done, this, &ProgressInfoWindow::onProcessingFinished);
    _isShown = false;
 
@@ -1374,7 +1375,7 @@ index 1cb8437..8d27f9f 100644
  }
 
  ProgressInfoWindow::~ProgressInfoWindow()
-@@ -88,6 +90,7 @@ void ProgressInfoWindow::closeEvent(QCloseEvent * event)
+@@ -85,6 +87,7 @@ void ProgressInfoWindow::closeEvent(QCloseEvent * event)
    event->accept();
  }
 
@@ -1382,7 +1383,7 @@ index 1cb8437..8d27f9f 100644
  void ProgressInfoWindow::setDarkTheme()
  {
    qApp->setStyle(QStyleFactory::create("Fusion"));
-@@ -110,6 +113,7 @@ void ProgressInfoWindow::setDarkTheme()
+@@ -107,6 +110,7 @@ void ProgressInfoWindow::setDarkTheme()
    p.setColor(QPalette::Disabled, QPalette::WindowText, QColor(110, 110, 110));
    qApp->setPalette(p);
  }
@@ -1391,7 +1392,7 @@ index 1cb8437..8d27f9f 100644
  void ProgressInfoWindow::onCancelClicked(bool)
  {
 diff --git a/gmic-qt/src/Widgets/ProgressInfoWindow.h b/gmic-qt/src/Widgets/ProgressInfoWindow.h
-index 2fe13cd..d1c67ad 100644
+index 615dd16..9db9a1a 100644
 --- a/gmic-qt/src/Widgets/ProgressInfoWindow.h
 +++ b/gmic-qt/src/Widgets/ProgressInfoWindow.h
 @@ -57,7 +57,9 @@ public:
@@ -1418,5 +1419,5 @@ index 3ce2ecc..ab5f10e 100644
            <string>Theme</string>
           </property>
 --
-2.37.2
+2.39.0
 

@@ -1,7 +1,7 @@
 #
 # spec file for package gmic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,13 +40,12 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.1.6
+Version:        3.2.0
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
 # CECILL-2.1
 License:        CECILL-2.1
-Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://gmic.eu
 # Git URL:      https://github.com/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
@@ -90,14 +89,8 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
-# gmic first looks for opencv 4 and falls back to opencv 3 if not found.
-# opencv 4 in not available in leap <= 15.3
-%if 0%{suse_version} == 1500 && 0%{?sle_version} < 150400
-BuildRequires:  pkgconfig(opencv)
-%else
 BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(zlib)
-%endif
 Requires:       gmic-data = %{version}
 
 %description
@@ -109,12 +102,10 @@ multi-spectral volumetric images.
 %package -n libgmic3
 Summary:        Shared library that belongs to gmic
 License:        CECILL-2.1
-Group:          Productivity/Graphics/Bitmap Editors
 
 %package -n libgmic-devel
 Summary:        Header and library from gmic for use in other C++ projects
 License:        CECILL-2.1
-Group:          Development/Libraries/C and C++
 Requires:       libgmic3 = %{version}
 
 %description -n libgmic3
@@ -128,7 +119,6 @@ uses the gmic functionality provided by the gmic library.
 %package -n gimp-plugin-gmic
 Summary:        GMIC plugin for gimp
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Bitmap Editors
 Requires:       gmic-data = %{version}
 %requires_eq    gimp
 # This package was only available in the 'graphics' repo
@@ -142,7 +132,6 @@ for interactive use in gimp.
 %package -n krita-plugin-gmic
 Summary:        GMIC plugin for krita
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Bitmap Editors
 Requires:       gmic-data = %{version}
 %requires_eq    krita
 
@@ -152,7 +141,6 @@ This is a plugin for krita to provide gmic features.
 %package bash-completion
 Summary:        Bash completion for gmic
 License:        CECILL-2.1
-Group:          Productivity/Graphics/Bitmap Editors
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
@@ -163,7 +151,6 @@ This package contains the bash completion command for gmic.
 %package data
 Summary:        Shared data files for the various gmic frontends
 License:        CECILL-2.1
-Group:          Productivity/Graphics/Bitmap Editors
 BuildArch:      noarch
 
 %description data
@@ -177,7 +164,7 @@ dos2unix src/{gmic_libc.*,use_libcgmic.c}
 %build
 # Build gmic
 # Starting with gmic 3.1.0, the gmic dev replaced their CMake build system with a non-configurable Makefile...
-sed -i 's#LIB = lib#LIB = %{_lib}#' src/Makefile
+sed -i 's#LIB ?= lib#LIB ?= %{_lib}#' src/Makefile
 
 # Breaks compilation for a couple archs
 sed -i 's#-mtune=generic##' src/Makefile

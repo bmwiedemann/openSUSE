@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 16 10:05:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.0
+  * https://discuss.pixls.us/t/release-of-gmic-3-2/30567#uwhats-new-in-version-32u-2
+  * Fix saving output file in .png format with stand-alone version.
+  * Fix command texturize3d (a.k.a. t3d) when used on large
+    3D object
+  * Saving animated .gif now better handles alpha-channels
+  * Fix behavior of using break in a foreach...done loop
+- Rebase krita5.patch
+
+-------------------------------------------------------------------
 Mon Dec 19 15:49:41 UTC 2022 - pgajdos@suse.com
 
 - GraphicsMagick is not required for build [bsc#1206620]

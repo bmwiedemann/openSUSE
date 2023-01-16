@@ -287,4 +287,12 @@
     <comment></comment>
     <requestid>1044323</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>80ba3c5dff3ab72739a6aeb99b700e22</srcmd5>
+    <version>3.2.0</version>
+    <time>1673888390</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.2.0</comment>
+    <requestid>1058691</requestid>
+  </revision>
 </revisionlist>
