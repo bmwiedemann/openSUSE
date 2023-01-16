@@ -1,7 +1,7 @@
 #
 # spec file for package python-dqsegdb2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %global modname dqsegdb2
 Name:           python-dqsegdb2
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Simplified python interface to the DQSEGDB API
 License:        GPL-3.0-only
@@ -34,10 +34,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-gwdatafind
+Requires:       python-igwn-auth-utils
 Requires:       python-ligo-segments
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module gwdatafind}
+BuildRequires:  %{python_module igwn-auth-utils}
 BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
