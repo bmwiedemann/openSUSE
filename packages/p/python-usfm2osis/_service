@@ -1,0 +1,17 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/chrislit/usfm2osis.git</param>
+    <param name="versionprefix">0.6.1+git</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">Matej Cepl &lt;mcepl@suse.com&gt;</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">usfm2osis-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">usfm2osis</param>
+  </service>
+</services>

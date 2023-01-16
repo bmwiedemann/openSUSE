@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Jan 15 19:02:58 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 20210211.8fda304:
+  * Oops... I don't think anyone's still using Python 3.0
+  * Added installation instructions
+  * fixed mis-nesting of intro outlines within paragraphs (\ip..\iot)
+  * removed imports from __future__ (needed for Py2 support)
+  * removed older test/lint systems
+  * removed older build/test/lint systems
+  * added tox config
+  * added some flake8 settings
+  * moved module names to docstring after license
+  * made comments with \'s use raw strings & corrected a 2to3 bug with chr
+
+-------------------------------------------------------------------
+Sun Jan 15 18:54:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for usfm2osis 0.6.1.
