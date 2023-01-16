@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 16 09:33:08 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Remove `changesgenerate` service
+  Upstream provides a better changelog than the one this service is able to
+  generate from git commits.
+
+-------------------------------------------------------------------
+Mon Jan 16 09:29:09 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.29.2:
+  * feat: Add keepassxc.prompt config variable
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Jan 09 17:58:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.29.1:
