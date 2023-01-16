@@ -1,7 +1,7 @@
 #
 # spec file for package libva-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libva-utils
-Version:        2.16.0
+Version:        2.17.1
 Release:        0
 Summary:        A collection of utilities and examples to exercise VA-API
 License:        EPL-1.0 AND MIT
@@ -64,26 +64,30 @@ A driver implementation is necessary to properly operate.
 %files
 %license COPYING
 %doc NEWS
-%{_bindir}/avcenc
-%{_bindir}/avcstreamoutdemo
-%{_bindir}/h264encode
-%{_bindir}/jpegenc
-%{_bindir}/loadjpeg
-%{_bindir}/mpeg2vaenc
-%{_bindir}/mpeg2vldemo
-%{_bindir}/putsurface
-%{_bindir}/putsurface_wayland
-%{_bindir}/vainfo
-%{_bindir}/vavpp
-%{_bindir}/vp8enc
-%{_bindir}/vp9enc
-%{_bindir}/hevcencode
-%{_bindir}/sfcsample
-%{_bindir}/vppblending
-%{_bindir}/vppchromasitting
-%{_bindir}/vppdenoise
-%{_bindir}/vppscaling_csc
-%{_bindir}/vppscaling_n_out_usrptr
 %{_bindir}/vppsharpness
+%{_bindir}/vppscaling_n_out_usrptr
+%{_bindir}/vppscaling_csc
+%{_bindir}/vpphdr_tm
+%{_bindir}/vppdenoise
+%{_bindir}/vppchromasitting
+%{_bindir}/vppblending
+%{_bindir}/vpp3dlut
+%{_bindir}/vp9enc
+%{_bindir}/vp8enc
+%{_bindir}/vavpp
+%{_bindir}/vainfo
+%{_bindir}/vacopy
+%{_bindir}/sfcsample
+%{_bindir}/putsurface_wayland
+%{_bindir}/putsurface
+%{_bindir}/mpeg2vldemo
+%{_bindir}/mpeg2vaenc
+%{_bindir}/loadjpeg
+%{_bindir}/jpegenc
+%{_bindir}/hevcencode
+%{_bindir}/h264encode
+%{_bindir}/avcstreamoutdemo
+%{_bindir}/avcenc
+%{_bindir}/av1encode
 
 %changelog

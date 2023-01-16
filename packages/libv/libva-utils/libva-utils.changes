@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jan 16 08:05:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * fix: Fix possible memory leak
+  * fix: fix coding issues of array size and function return types
+  * Version 2.17.0 - 26.Dec.2022
+  * add: Upload a security disclaimer
+  * add: av1 encode sample code
+  * tests: Changed default initialization value to VAProfileNone
+  * ci: Add git dependency for mingw build for meson dependencies cloning
+  * vainfo: Add support for Win32 device enumeration and selection
+  * ci: dos2unix for windows workflow files
+  * ci: update checkout and setup-python action versions to v3 and v4
+  * ci: Add msvc/mingw Windows CI
+  * tests: enable building on Windows
+  * tests: Remove C++20 constructs in tests project targetting C++11
+  * tests: remove non C++ standard constructs
+  * vainfo: add va-win32 support
+  * add:Import OpenBSD getopt for MSVC from mesa/f9bb5323
+  * fix: Fix reporting of VAConfigAttribEncMaxSlices
+  * meson: add missing sample tools
+
+-------------------------------------------------------------------
 Thu Oct 13 19:43:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.0:
