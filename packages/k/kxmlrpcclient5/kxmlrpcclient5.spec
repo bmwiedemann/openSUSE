@@ -18,14 +18,14 @@
 
 %define rname kxmlrpcclient
 %define lname libKF5XmlRpcClient5
-%define _tar_path 5.101
+%define _tar_path 5.102
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kxmlrpcclient5
-Version:        5.101.0
+Version:        5.102.0
 Release:        0
 Summary:        Library containing simple XML-RPC Client support
 License:        BSD-2-Clause
