@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 15 08:34:31 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230115.e69ffac7:
+  * Fix spelling errors.
+  * Don't use inspect.getargspec, removed in Python 3.11.
+
+-------------------------------------------------------------------
+Wed Jan 11 08:20:29 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.4.1+20230111.89dfe511:
+  * Dev: behave: Add 'sudo' before most of commands
+  * Dev: behave: Run all cases twice under normal user
+
+-------------------------------------------------------------------
 Fri Jan 06 07:11:07 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230106.b020209b:
