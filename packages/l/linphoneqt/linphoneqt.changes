@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jan 11 03:06:54 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.5
+
+- Update to version 5.0.5:
+  * Fixed crash at startup
+  * Update SDK to 5.2.10
+- Update to version 5.0.4:
+  * Fixed volume gauge in multimedia parameters while being in call
+  * Update SDK to 5.2.6
+- Update to version 5.0.3:
+  * Fixed crash at startup about missing contact address on account
+- Update to version 5.0.2:
+  * Default Language didn't match with the system language
+- Update to version 5.0.1:
+  * Fixed image display in chats from an URL
+  * Fixed display a notification of all kind of messages
+- Update to version 5.0.0:
+  * Video conference and iCalendars
+  * Make a meeting directly from a group chat
+  * New call layouts
+  * Display a waiting room before going into a conference
+  * Display a waiting room before going into a conference\
+  * Post quantum ZRTP
+  * Merge messages into one notification to avoid spam
+  * Design overhaul on calls
+  * Audio devices can be changed while being in call
+- added linphoneqt_fix_gcc12_error.patch
+  * fix build error with gcc12
+
+-------------------------------------------------------------------
 Fri Nov 18 12:45:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.4.11:
