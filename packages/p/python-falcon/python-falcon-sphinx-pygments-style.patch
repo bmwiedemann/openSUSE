@@ -1,13 +1,13 @@
-Index: falcon-3.0.1/docs/conf.py
+Index: falcon-3.1.1/docs/conf.py
 ===================================================================
---- falcon-3.0.1.orig/docs/conf.py	2021-05-11 00:19:26.000000000 +0200
-+++ falcon-3.0.1/docs/conf.py	2021-11-17 11:57:45.522196166 +0100
-@@ -138,7 +138,7 @@ exclude_patterns = ['_build', '_newsfrag
- #show_authors = False
+--- falcon-3.1.1.orig/docs/conf.py
++++ falcon-3.1.1/docs/conf.py
+@@ -134,7 +134,7 @@ exclude_patterns = ['_build', '_newsfrag
+ # show_authors = False
  
  # The name of the Pygments (syntax highlighting) style to use.
 -pygments_style = 'github'
 +pygments_style = 'sphinx'
  
  # A list of ignored prefixes for module index sorting.
- #modindex_common_prefix = []
+ # modindex_common_prefix = []

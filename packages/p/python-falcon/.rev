@@ -156,4 +156,26 @@
     <comment></comment>
     <requestid>941333</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f9bbc8117f46c43e335d34c78dd5debe</srcmd5>
+    <version>3.1.1</version>
+    <time>1673973327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  Falcon 3.1.1 is a minor point release addressing a couple of high impact
+  bugs, and enabling the framework on the recently released CPython 3.11.
+- 3.1.0
+  This release contains several refinements to request validation and error
+  handling, along with some tweaks to response handling for static and
+  downloadable files.
+  Due to popular demand, TestClient and ASGIConductor now expose convenience
+  shorthand aliases for the simulate_* methods, i.e., simulate_get() is now
+  also available as get(), etc.
+  Some important bugs were also fixed to ensure applications properly clean up
+  response streams and do not hang when reading request bodies that are
+  streamed using chunked transfer encoding.
+  This release also adds support for CPython 3.10 and deprecates CPython 3.6.
+</comment>
+    <requestid>1058834</requestid>
+  </revision>
 </revisionlist>
