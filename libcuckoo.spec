@@ -1,7 +1,7 @@
 #
 # spec file for package libcuckoo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libcuckoo
-Version:        0.3
+Version:        0.3.1
 Release:        0
 Summary:        A high-performance, concurrent hash table
 License:        Apache-2.0
@@ -26,7 +26,6 @@ URL:            https://github.com/efficient/%{name}
 Source:         https://github.com/efficient/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-Patch0:         fix-tests-for-32-bit.patch
 
 %description
 Libcuckoo is a high-performance, concurrent hash table.
