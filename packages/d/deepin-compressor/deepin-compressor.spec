@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-compressor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.12.12
+Version:        5.12.13
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Archive Manager for Deepin Desktop
