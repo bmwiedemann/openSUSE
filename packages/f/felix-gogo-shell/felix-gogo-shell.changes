@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec 29 18:56:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  [FELIX-6038] - pull Java 7 support back in for gogo runtime,shell and console
+  [FELIX-6046] - fix gogo shell thread interrupt.
+  [FELIX-5970] - Add requirement & capabilities model so gogo can be resolved
+  [FELIX-5999] - cleanup compiler warnings
+  [FELIX-6000] - cleanup compiler warnings
+  [FELIX-6003] - Add some resolver checks to make sure @RequireGogo annotation works for both jline and shell
+  [FELIX-6007] - create a gogo bom
+
+-------------------------------------------------------------------
 Sun Nov 24 12:16:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Specify maven.compiler.release to fix build with jdk9+ and newer

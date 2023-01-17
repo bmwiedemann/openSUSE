@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-shell
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global bundle  org.apache.felix.gogo.shell
 Name:           felix-gogo-shell
-Version:        1.1.0
+Version:        1.1.4
 Release:        0
 Summary:        Apache Felix Gogo command line shell for OSGi
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://felix.apache.org/documentation/subprojects/apache-felix-gogo.html
-Source0:        http://archive.apache.org/dist/felix/%{bundle}-%{version}-source-release.tar.gz
+URL:            https://felix.apache.org/documentation/subprojects/apache-felix-gogo.html
+Source0:        https://archive.apache.org/dist/felix/%{bundle}-%{version}-source-release.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:gogo-parent:pom:) >= 4
@@ -60,7 +60,7 @@ This package contains the API documentation for %{name}.
 %endif
 
 %install
-%mvn_install
+%{mvn_install}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
