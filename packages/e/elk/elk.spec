@@ -1,7 +1,7 @@
 #
 # spec file for package elk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -47,7 +48,7 @@
 
 %if "%{flavor}" == "openmpi5"
 %if 0%{?suse_version} < 1550
-ExclusiveArch: do_not_build
+ExclusiveArch:  do_not_build
 %endif
 %global mpi_flavor openmpi
 %define mpi_vers 5
@@ -70,21 +71,21 @@ ExclusiveArch: do_not_build
 # /SECTION
 
 Name:           %{pname}%{?my_suffix}
-Version:        8.6.7
+Version:        8.7.2
 Release:        0
 Summary:        An all-electron full-potential linearised augmented-planewave code
 License:        GPL-3.0-or-later
 URL:            https://elk.sourceforge.net
 Source0:        https://download.sf.net/project/%{pname}/%{pname}-%{version}.tgz
 Source1:        %{pname}.rpmlintrc
-BuildRequires:  fdupes
 BuildRequires:  blas-devel
+BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  pkgconfig
+BuildRequires:  wannier90%{?my_suffix}-devel
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libxc)
-BuildRequires:  wannier90%{?my_suffix}-devel
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-macros-devel

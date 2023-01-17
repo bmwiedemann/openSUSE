@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 16 18:07:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.7.2:
+  * Fixed problem of writing TDDFT density of states with
+    wrtdsk=.false.
+  * Fixed problem of restarting from TDDFT backup files.
+  * Removed an OpenMP regression which cause substantial slow-down
+    of TDDFT.
+  * Added more documentation.
+  * Minor optimisations and bug fixes.
+
+-------------------------------------------------------------------
 Tue Dec 20 07:46:02 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Adjust wannier90-devel dependencies so as to build against its
