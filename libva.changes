@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jan 16 08:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * win: Simplify signature for driver name loading
+  * win: Rewrite driver registry query and fix some
+    bugs/leaks/inefficiencies
+  * win: Add missing null check after calloc
+  * va: Update security disclaimer
+  * dep:remove the file .cvsignore
+  * pkgconfig: add 'with-legacy' for emgd, nvctrl and fglrx
+  * meson: add 'with-legacy' for emgd, nvctrl and fglrx
+  * x11: move all FGLRX code to va_fglrx.c
+  * x11: move all NVCTRL code to va_nvctrl.c
+  * meson: stop using deprecated meson.source_root()
+  * meson: stop using configure_file copy=true
+  * va: correctly include the win32 (local) headers
+  * win: clean-up the coding style
+  * va: dos2unix all the files
+  * drm: remove unnecessary dri2 version/extension query
+  * trace: annotate internal functions with DLL_HIDDEN
+  * build/sysdeps: Remove HAVE_GNUC_VISIBILITY_ATTRIBUTE and use _GNUC_
+    support level attribute instead
+  * meson: Check support for -Wl,-version-script and build link_args
+    accordingly
+  * meson: Set va_win32 soversion to '' and remove the install_data rename
+  * fix: resouce check null
+  * va_trace: Add Win32 memory types in va_TraceSurfaceAttributes
+  * va_trace: va_TraceSurfaceAttributes should check the
+    VASurfaceAttribMemoryType
+  * va: Adds Win32 Node and Windows build support
+  * va: Adds compat_win32 abstraction for Windows build and prepares va
+    common code for windows build
+  * pkgconfig: Add Win32 package for when WITH_WIN32 is enabled
+  * meson: Add with_win32 option, makes libdrm non-mandatory on Win
+  * x11: add basic DRI3 support
+  * drm: remove VA_DRM_IsRenderNodeFd() helper
+  * drm: add radeon drm + radeonsi mesa combo
+
+-------------------------------------------------------------------
 Mon Nov 28 11:21:48 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Make sure make runs with verbose builds so we see the gcc

@@ -1,7 +1,7 @@
 #
 # spec file for package libva-gl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 Name:           libva-gl
 %define _name   libva
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Video Acceleration (VA) API
 License:        MIT
