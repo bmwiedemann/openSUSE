@@ -1,0 +1,82 @@
+From 3006ff81671b20531f8a1b3830e79d760f96df40 Mon Sep 17 00:00:00 2001
+From: Matthew Feickert <matthew.feickert@cern.ch>
+Date: Wed, 30 Nov 2022 14:06:31 -0600
+Subject: [PATCH 1/2] feat: Use setuptools over setuptools._distutils.core
+
+Drop all usage of setuptools._distutils in favor of pure setuptools.
+This effectively solves the problems that were present in the attempt
+in https://github.com/xrootd/xrootd/pull/1585 and
+https://github.com/xrootd/xrootd/pull/1700.
+
+Co-authored-by: Henry Schreiner <henry.fredrick.schreiner@cern.ch>
+---
+ bindings/python/setup.py.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bindings/python/setup.py.in b/bindings/python/setup.py.in
+index fbac3e6dfb8..c5bbec50386 100644
+--- a/bindings/python/setup.py.in
++++ b/bindings/python/setup.py.in
+@@ -3,7 +3,7 @@ from __future__ import print_function
+ # setuptools._distutils added in setuptools v48.0.0
+ # c.f. https://setuptools.pypa.io/en/latest/history.html#v48-0-0
+ try:
+-    from setuptools._distutils.core import setup, Extension
++    from setuptools import setup, Extension
+     # sysconfig v48.0.0+ is incompatible for Python 3.6 only, so fall back to distutils.
+     # Instead of checking setuptools.__version__ explicitly, use the knowledge that
+     # to get here in the 'try' block requires setuptools v48.0.0+.
+
+From 237708dc4bff32025f1f8550621cd5d574706ac4 Mon Sep 17 00:00:00 2001
+From: Matthew Feickert <matthew.feickert@cern.ch>
+Date: Wed, 30 Nov 2022 14:31:34 -0600
+Subject: [PATCH 2/2] chore: Remove check for setuptools over distutils
+
+* Now that setuptools._distutils.core usage has been dropped, it is
+  possible to go further and drop direct usage of distutils
+  in favor of setuptools. This has already happened with the removal
+  of setuptools._distutils as
+
+  > from setuptools import setup, Extension
+
+  should always pass, and so this commit just makes this explicitly
+  clear by removing the try/except block.
+---
+ bindings/python/setup.py.in | 24 ++++++++----------------
+ 1 file changed, 8 insertions(+), 16 deletions(-)
+
+diff --git a/bindings/python/setup.py.in b/bindings/python/setup.py.in
+index c5bbec50386..7fb8c53f63d 100644
+--- a/bindings/python/setup.py.in
++++ b/bindings/python/setup.py.in
+@@ -1,22 +1,14 @@
+ from __future__ import print_function
+ 
+-# setuptools._distutils added in setuptools v48.0.0
+-# c.f. https://setuptools.pypa.io/en/latest/history.html#v48-0-0
+-try:
+-    from setuptools import setup, Extension
+-    # sysconfig v48.0.0+ is incompatible for Python 3.6 only, so fall back to distutils.
+-    # Instead of checking setuptools.__version__ explicitly, use the knowledge that
+-    # to get here in the 'try' block requires setuptools v48.0.0+.
+-    # FIXME: When support for Python 3.6 is dropped simplify this
+-    import sys
+-
+-    if sys.version_info < (3, 7):
+-        from distutils import sysconfig
+-    else:
+-        import sysconfig
+-except ImportError:
+-    from distutils.core import setup, Extension
++from setuptools import setup, Extension
++# sysconfig with setuptools v48.0.0+ is incompatible for Python 3.6 only, so fall back to distutils.
++# FIXME: When support for Python 3.6 is dropped simplify this
++import sys
++
++if sys.version_info < (3, 7):
+     from distutils import sysconfig
++else:
++    import sysconfig
+ 
+ from os import getenv, walk, path
+ import subprocess

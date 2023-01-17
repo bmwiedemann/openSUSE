@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,13 @@ URL:            http://xrootd.org/
 Source0:        http://xrootd.org/download/v%{version}/xrootd-%{version}.tar.gz
 Source1:        %{name}-user.conf
 Source100:      xrootd-rpmlintrc
-Patch0:         harden_cmsd@.service.patch
-Patch1:         harden_frm_purged@.service.patch
-Patch2:         harden_frm_xfrd@.service.patch
-Patch3:         harden_xrootd@.service.patch
+# PATCH-FIX-UPSTREAM xrootd-drop-python-distutils.patch badshah400@gmail.com -- Drop distutils usage in favour of setuptools; upstream commit
+Patch0:         https://github.com/xrootd/xrootd/commit/d5732ef1a602ee3559aebaebd7a64d682417ec26.patch#/xrootd-drop-python-distutils.patch
+# PATCH-FEATURE-OPENSUSE Hardening patches
+Patch100:       harden_cmsd@.service.patch
+Patch101:       harden_frm_purged@.service.patch
+Patch102:       harden_frm_xfrd@.service.patch
+Patch103:       harden_xrootd@.service.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

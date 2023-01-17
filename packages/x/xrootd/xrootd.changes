@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 15 18:20:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add xrootd-drop-python-distutils.patch: Drop distutils usage in
+  favour of setuptools; upstream commit d5732ef
+  [gh#xrootd/xrootd#1843]. This fixes build failures on Factory.
+
+-------------------------------------------------------------------
 Mon Oct 31 10:28:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.5.1:
