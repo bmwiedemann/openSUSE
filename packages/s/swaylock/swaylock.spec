@@ -1,7 +1,7 @@
 #
 # spec file for package swaylock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,10 +79,30 @@ export CFLAGS="%{optflags} -I/usr/include/wayland"
 
 %install
 %meson_install
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/swaylock %{buildroot}%{_pam_vendordir}
+
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/swaylock ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/swaylock ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %files
 %{_bindir}/swaylock
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/swaylock
+%else
 %config %{_sysconfdir}/pam.d/swaylock
+%endif
 %{_mandir}/man1/swaylock.1%{?ext_man}
 
 %files bash-completion
