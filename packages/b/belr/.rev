@@ -146,4 +146,16 @@
     <comment></comment>
     <requestid>1041334</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3802aa32b96ceb3daa3a3b4051feec2f</srcmd5>
+    <version>5.2.9</version>
+    <time>1673973374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * Fix syntax error in Github issue template
+  * Added Github yml issue template
+  * Parse integers as long long
+</comment>
+    <requestid>1059000</requestid>
+  </revision>
 </revisionlist>
