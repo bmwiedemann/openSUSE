@@ -58,6 +58,8 @@ unsorted:
   - FlightGear 
   - FlightGear-data 
   - FlightGear-docs 
+  - Font-Downloader 
+  - Font-Downloader-lang 
   - Fragments 
   - Fragments-lang 
   - FreeCAD: [x86_64] 
@@ -22871,6 +22873,7 @@ unsorted:
   - python310-azure-mgmt-servicefabric 
   - python310-azure-mgmt-servicefabricmanagedclusters 
   - python310-azure-mgmt-servicelinker 
+  - python310-azure-mgmt-servicenetworking 
   - python310-azure-mgmt-signalr 
   - python310-azure-mgmt-sql 
   - python310-azure-mgmt-sqlvirtualmachine 
@@ -26175,6 +26178,7 @@ unsorted:
   - python38-azure-mgmt-servicefabric 
   - python38-azure-mgmt-servicefabricmanagedclusters 
   - python38-azure-mgmt-servicelinker 
+  - python38-azure-mgmt-servicenetworking 
   - python38-azure-mgmt-signalr 
   - python38-azure-mgmt-sql 
   - python38-azure-mgmt-sqlvirtualmachine 
@@ -29574,6 +29578,7 @@ unsorted:
   - python39-azure-mgmt-servicefabric 
   - python39-azure-mgmt-servicefabricmanagedclusters 
   - python39-azure-mgmt-servicelinker 
+  - python39-azure-mgmt-servicenetworking 
   - python39-azure-mgmt-signalr 
   - python39-azure-mgmt-sql 
   - python39-azure-mgmt-sqlvirtualmachine 
@@ -33359,6 +33364,7 @@ unsorted:
   - ruqola 
   - ruqola-lang 
   - rust 
+  - rust-bindgen 
   - rust-cbindgen 
   - rust-keylime: [i586] 
   - rust-packaging 
@@ -43229,7 +43235,7 @@ unsorted:
   - traefik 
   - traefik1.7 
   - trang 
-  - transactional-update-notifier 
+  - transactional-update-notifier: [i586] 
   - transconnect 
   - transfig 
   - transifex-client 
