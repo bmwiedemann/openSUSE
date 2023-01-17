@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 17 09:47:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.6:
+ * Retrieve cookies in -p/--print mode (bug fix)
+ * More verbose message on resolution failures
+ * Print warning to stderr to elude > capture
+ * Corrected deferred
+
+-------------------------------------------------------------------
 Tue Nov  1 10:58:47 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.1.5
