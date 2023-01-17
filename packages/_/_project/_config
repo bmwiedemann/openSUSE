@@ -963,7 +963,7 @@ Prefer: libstdc++6 libgcc_s1 libquadmath0 libhwasan0 libgccjit0
 Prefer: libstdc++6-32bit libstdc++6-64bit
 Prefer: syslog-service
 Prefer: poppler-tools
-Prefer: libjpeg8-devel libjpeg-turbo
+Prefer: -libjpeg62-devel
 Prefer: microcode_ctl:kernel-default
 Prefer: yast2-control-center-qt
 Prefer: wine
