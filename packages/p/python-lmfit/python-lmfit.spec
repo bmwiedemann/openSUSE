@@ -1,7 +1,7 @@
 #
 # spec file for package python-lmfit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-lmfit
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
 License:        BSD-3-Clause AND MIT
 URL:            https://lmfit.github.io/lmfit-py/
 Source:         https://files.pythonhosted.org/packages/source/l/lmfit/lmfit-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asteval >= 0.9.22
-Requires:       python-numpy >= 1.18
-Requires:       python-scipy >= 1.3
+Requires:       python-asteval >= 0.9.28
+Requires:       python-numpy >= 1.19
+Requires:       python-scipy >= 1.6
+Requires:       python-uncertainties >= 3.1.4
 Recommends:     python-dill
 Recommends:     python-emcee
 Recommends:     python-matplotlib
 Recommends:     python-pandas
-Recommends:     python-uncertainties >= 3.0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module asteval >= 0.9.22}
-BuildRequires:  %{python_module numpy >= 1.18}
+BuildRequires:  %{python_module asteval >= 0.9.28}
+BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.4}
-BuildRequires:  %{python_module uncertainties >= 3.0.1}
+BuildRequires:  %{python_module scipy >= 1.6}
+BuildRequires:  %{python_module uncertainties >= 3.1.4}
 # /SECTION
 %python_subpackages
 
@@ -74,57 +74,14 @@ sed -i -e '/^#!\//, 1d' lmfit/jsonutils.py
 sed -i '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_exec -c "import sys, lmfit, numpy, scipy, asteval, uncertainties;
-print('Python: {}\n\n'
-'lmfit: {}, scipy: {}, numpy: {}, asteval: {}, uncertainties: {}'.format(
-    sys.version,
-    lmfit.__version__,
-    scipy.__version__,
-    numpy.__version__,
-    asteval.__version__,
-    uncertainties.__version__
-))"}
-
-cat << 'EOF' >> testexample.py
-import numpy as np
-
-import lmfit
-from lmfit.lineshapes import gaussian
-from lmfit.models import PseudoVoigtModel
-
-x = np.linspace(0, 10, 201)
-np.random.seed(0)
-y = gaussian(x, 10.0, 6.15, 0.8)
-y += gaussian(x, 8.0, 6.35, 1.1)
-y += gaussian(x, 0.25, 6.00, 7.5)
-y += np.random.normal(size=len(x), scale=0.5)
-
-# with NaN values in the input data
-y[55] = y[91] = np.nan
-mod = PseudoVoigtModel()
-params = mod.make_params(amplitude=20, center=5.5,
-                         sigma=1, fraction=0.25)
-params['fraction'].vary = False
-
-# with propagate, should get no error, but bad results
-result = mod.fit(y, params, x=x, nan_policy='propagate')
-lmfit.report_fit(result)
-
-print(result.__dict__)
-EOF
-
-cat testexample.py
-
-%python_exec testexample.py
-
-# We don't care about speed
+# We don't care about speed on obs
 donttest="speed"
 # these tests fail on non x86_64. Upstream does not care: https://github.com/lmfit/lmfit-py/issues/692
 donttest+=" or test_model_nan_policy"
@@ -136,7 +93,7 @@ fi
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
-%doc README.rst THANKS.txt
+%doc README.rst AUTHORS.txt
 %license LICENSE
 %{python_sitelib}/lmfit
 %{python_sitelib}/lmfit-%{version}*-info
