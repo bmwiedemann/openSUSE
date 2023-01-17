@@ -1,0 +1,41 @@
+From d1f6385c0838602bce35f02087556f978d7c074b Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Tue, 17 Jan 2023 11:33:47 +0100
+Subject: [PATCH] Fix linking with boost 1.75.0
+
+Boost 1.75.0 has a bug that causes "multiple definitions" errors in the
+linking stage. This was fixed in later versions by declaring some
+functions as inline.
+
+See https://github.com/boostorg/safe_numerics/issues/106 .
+
+As a (ugly) workaround, override the function that breaks kdiff3's build
+to be inline before including the boost headers (when using 1.75.0).
+---
+ src/TypeUtils.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/TypeUtils.h b/src/TypeUtils.h
+index de2265f0..459a5777 100644
+--- a/src/TypeUtils.h
++++ b/src/TypeUtils.h
+@@ -14,6 +14,16 @@
+ #include <type_traits>
+ #include <limits>
+ 
++#include <boost/version.hpp>
++#if BOOST_VERSION == 107500
++// prevent multiple definitions of literal_string with boost 1.75
++// see https://github.com/boostorg/safe_numerics/issues/106
++#include <cstdint>
++namespace boost::safe_numerics {
++	enum class safe_numerics_error : std::uint8_t;
++	inline const char * literal_string(const safe_numerics_error & e);
++}
++#endif
+ #include <boost/safe_numerics/safe_integer.hpp>
+ 
+ #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+-- 
+2.35.3
+

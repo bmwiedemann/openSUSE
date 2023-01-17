@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 17 10:37:52 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.10.0
+  * Make DirectoryMergeWindow and DirectoryMergeInfo QDockWidgets
+  * Use Qt native saveState/restoreState
+- Build with boost 1.75.0 on Leap as the standard version is too
+  old (kdiff3 requires at least 1.71 now)
+- Add Fix-linking-with-boost-1.75.0.patch to workaround a bug in
+  boost 1.75.0 that breaks the linking stage
+
+-------------------------------------------------------------------
 Wed Dec  7 16:25:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.6:

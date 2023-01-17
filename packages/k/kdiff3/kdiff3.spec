@@ -1,7 +1,7 @@
 #
 # spec file for package kdiff3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,32 @@
 #
 
 
-%bcond_without lang
+%bcond_without released
 Name:           kdiff3
-Version:        1.9.6
+Version:        1.10.0
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://apps.kde.org/kdiff3
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+%if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
-BuildRequires:  boost-devel
+%endif
+# PATCH-FIX-OPENSUSE
+Patch:          Fix-linking-with-boost-1.75.0.patch
+%if 0%{?suse_version} <= 1500
+BuildRequires:  libboost_headers1_75_0-devel
+%else
+BuildRequires:  boost-devel >= 1.71
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
@@ -60,19 +69,18 @@ KDiff3 is a program that:
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DBUILD_autotests=FALSE
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 %suse_update_desktop_file -r org.kde.kdiff3 Qt KDE Utility TextEditor X-KDE-Utilities-File
 
-%if %{with lang}
-  %find_lang %{name} %{name}.lang --with-man
-  %find_lang diff_ext %{name}.lang
-  %find_lang kdiff3fileitemactionplugin %{name}.lang
-  %{kf5_find_htmldocs}
-%endif
+%find_lang %{name} %{name}.lang --with-man
+%find_lang diff_ext %{name}.lang
+%find_lang kdiff3fileitemactionplugin %{name}.lang
+%{kf5_find_htmldocs}
+
 %fdupes %{buildroot}
 
 %files
@@ -90,9 +98,8 @@ KDiff3 is a program that:
 %{_kf5_kxmlguidir}/kdiff3part/
 %{_kf5_plugindir}/kf5/kfileitemaction/kdiff3fileitemaction.so
 %{_kf5_plugindir}/kf5/parts/kdiff3part.so
+%{_kf5_servicesdir}/kdiff3part.desktop
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
