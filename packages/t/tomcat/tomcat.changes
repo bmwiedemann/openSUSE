@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 23 08:20:55 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- set logrotate for localhost.log, manager.log, host-manager.log and localhost_access_log.txt
+- use logrotate for catalina.out
+  * update tomcat-serverxml-tool and spec to configure server.xml
+- Added patch:
+  * tomcat-9.0-logrotate_everything.patch
+  * tomcat-serverxml-tool.tar.gz
+- Removed:
+  * tomcat-serverxml-tool-1.0.tar.gz
+
+-------------------------------------------------------------------
 Tue Nov 29 14:46:26 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Use catalina.out for logging (bsc#1205647)

@@ -1,10 +1,10 @@
-@@@TCLOG@@@/catalina.out {
+@@@TCLOG@@@/catalina.out @@@TCLOG@@@/localhost_access_log.txt @@@TCLOG@@@/host-manager.log @@@TCLOG@@@/localhost.log @@@TCLOG@@@/manager.log{
     notifempty
     copytruncate
     weekly
     rotate 52
     compress
     missingok
-    su root tomcat
+    su tomcat tomcat
     create 0644 tomcat tomcat
 }

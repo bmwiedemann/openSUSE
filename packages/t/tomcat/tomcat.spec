@@ -24,7 +24,6 @@
 %define minor_version 0
 %define micro_version 43
 %define packdname apache-tomcat-%{version}-src
-%define serverxmltool_version 1.0
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
 %define appdir %{basedir}/webapps
@@ -63,7 +62,7 @@ Source21:       tomcat-functions
 Source30:       tomcat-preamble
 Source31:       tomcat-server
 Source32:       tomcat-named.service
-Source33:       https://gitlab.suse.de/galaxy/tomcat-serverxml-tool/-/archive/%{serverxmltool_version}/tomcat-serverxml-tool-%{serverxmltool_version}.tar.gz
+Source33:       tomcat-serverxml-tool.tar.gz
 Source34:       tomcat-serverxml-tool.sh.in
 Source1000:     tomcat-rpmlintrc
 Source1001:     https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz.asc
@@ -91,6 +90,7 @@ Patch12:        tomcat-9.0-hardening_getResources.patch
 Patch13:        tomcat-9.0.43-CVE-2021-43980.patch
 Patch14:        tomcat-9.0.43-CVE-2022-42252.patch
 Patch15:        tomcat-9.0-fix_catalina.patch
+Patch16:        tomcat-9.0-logrotate_everything.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -272,6 +272,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
@@ -335,9 +336,9 @@ jar cf ../../../../../../../../output/build/webapps/docs/appdev/sample/sample.wa
 popd
 popd
 
-pushd %{_builddir}/tomcat-serverxml-tool-%{serverxmltool_version}/src
+pushd %{_builddir}/tomcat-serverxml-tool/src
 javac -source %{javac_target} -target %{javac_target} com/suse/tcserverxml/ApplyStylesheet.java
-jar cfe %{_builddir}/tomcat-serverxml-tool-%{serverxmltool_version}/serverxmltool.jar com.suse.tcserverxml.ApplyStylesheet com/suse/tcserverxml/ApplyStylesheet.class com/suse/tcserverxml/add-context.xslt com/suse/tcserverxml/remove-context.xslt
+jar cfe %{_builddir}/tomcat-serverxml-tool/serverxmltool.jar com.suse.tcserverxml.ApplyStylesheet com/suse/tcserverxml/ApplyStylesheet.class com/suse/tcserverxml/add-context.xslt com/suse/tcserverxml/remove-context.xslt com/suse/tcserverxml/add-valve-rotatable-false.xslt
 popd
 
 %install
@@ -587,7 +588,7 @@ ln -s -f %{_sysconfdir}/alternatives/jsp %{buildroot}%{_javadir}/%{name}-jsp.jar
 ln -s -f %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
 
 # Install tool used to edit server.xml
-pushd %{_builddir}/tomcat-serverxml-tool-%{serverxmltool_version}
+pushd %{_builddir}/tomcat-serverxml-tool
 cat %{SOURCE34} | sed 's#@LIBEXECDIR@#%{_libexecdir}#g' >tomcat-serverxml-tool.sh
 install -m 0755 tomcat-serverxml-tool.sh \
     %{buildroot}%{_libexecdir}/%{name}/serverxml-tool.sh
@@ -677,34 +678,38 @@ rm -f \
     %{libdir}/\[ecj\].jar >/dev/null 2>&1
 
 %post webapps
-%{serverxmltool} add %{tomcatappdir}/ROOT /
-%{serverxmltool} add %{tomcatappdir}/sample /sample
-%{serverxmltool} add %{tomcatappdir}/examples /examples
+%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/ROOT path=/
+%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/sample path=/sample
+%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/examples path=/examples
 
 %postun webapps
 if [ $1 -eq 0 ]; then # uninstall only
-  %{serverxmltool} remove %{tomcatappdir}/ROOT /
-  %{serverxmltool} remove %{tomcatappdir}/sample /sample
-  %{serverxmltool} remove %{tomcatappdir}/examples /examples
+  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/ROOT path=/
+  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/sample path=/sample
+  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/examples path=/examples
 fi
 
 %post admin-webapps
-%{serverxmltool} add %{tomcatappdir}/host-manager /host-manager %{tomcatappdir}/host-manager/META-INF/context.xml
-%{serverxmltool} add %{tomcatappdir}/manager /manager %{tomcatappdir}/manager/META-INF/context.xml
+%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/host-manager path=/host-manager contextXml=%{tomcatappdir}/host-manager/META-INF/context.xml
+%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/manager path=/manager contextXml=%{tomcatappdir}/manager/META-INF/context.xml
+
 
 %postun admin-webapps
 if [ $1 -eq 0 ]; then # uninstall only
-  %{serverxmltool} remove %{tomcatappdir}/host-manager /host-manager
-  %{serverxmltool} remove %{tomcatappdir}/manager /manager
+  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/host-manager path=/host-manager
+  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/manager path=/manager
 fi
 
 %post docs-webapp
-%{serverxmltool} add %{tomcatappdir}/docs /docs
+%{serverxmltool} add-context.xslt docBase=%{tomcatappdir}/docs path=/docs
 
 %postun docs-webapp
 if [ $1 -eq 0 ]; then # uninstall only
-  %{serverxmltool} remove %{tomcatappdir}/docs /docs
+  %{serverxmltool} remove-context.xslt docBase=%{tomcatappdir}/docs path=/docs
 fi
+
+%posttrans
+%{serverxmltool} add-valve-rotatable-false.xslt
 
 %files
 %doc {LICENSE,NOTICE,RELEASE*}
@@ -727,7 +732,7 @@ fi
 %attr(0755,root,tomcat) %dir %{basedir}
 %attr(0755,root,tomcat) %dir %{confdir}
 %attr(0775,root,tomcat) %dir %{appdir}
-%attr(0770,tomcat,root) %dir %{logdir}
+%attr(0770,tomcat,tomcat) %dir %{logdir}
 %attr(0660,tomcat,tomcat) %{logdir}/catalina.out
 %attr(0770,root,tomcat) %dir %{cachedir}
 %attr(0775,root,tomcat) %dir %{cachedir}/Catalina
