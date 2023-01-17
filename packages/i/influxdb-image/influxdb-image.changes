@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 17 12:20:56 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable on x86 and armv6/7 as influxdb is not available
+
+-------------------------------------------------------------------
 Fri Jan 13 14:50:23 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Initial version, scripts are from v1.11 branch 

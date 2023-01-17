@@ -3,6 +3,7 @@
 #!BuildTag: opensuse/influxdb:%%MINOR%%
 #!BuildTag: opensuse/influxdb:%%PKG_VERSION%%
 #!BuildTag: opensuse/influxdb:%%PKG_VERSION%%-%RELEASE%
+#!ExcludeArch: i586 armv6l armv6hl armv7l armv7hl
 
 FROM opensuse/tumbleweed
 LABEL maintainer="Thorsten Kukuk <kukuk@suse.com>"
