@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
   <param name="url">https://github.com/liayan/firectl.git</param>
-  <param name="changesrevision">5702042fb862533cfd4bd64279d9d7bd7db8c695</param></service></servicedata>
+  <param name="changesrevision">5702042fb862533cfd4bd64279d9d7bd7db8c695</param></service><service name="tar_scm">
+                <param name="url">https://github.com/firecracker-microvm/firectl.git</param>
+              <param name="changesrevision">7614c6674c633babb058f25d1e8b8c62bf888307</param></service></servicedata>

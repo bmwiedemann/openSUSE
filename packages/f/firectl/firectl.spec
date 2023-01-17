@@ -19,7 +19,7 @@
 # Use hardening ldflags.
 
 Name:           firectl
-Version:        0.1.50
+Version:        0.2.0
 Release:        0
 Summary:        Command-line tool to run Firecracker microVMs
 License:        Apache-2.0

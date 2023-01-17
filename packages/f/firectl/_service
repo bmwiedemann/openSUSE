@@ -1,9 +1,9 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/liayan/firectl.git</param>
+    <param name="url">https://github.com/firecracker-microvm/firectl.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.1.50</param>
+    <param name="revision">v0.2.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
