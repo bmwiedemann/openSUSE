@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 15 21:12:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.9
+  * Make Qtconsole work with PyZMQ 25 #914 (@ccordoba12)
+  * [7.x] Remove deprecated zmq imports #916 (@blink1073)
+- Drop py310-ignore-deprecation.patch
+
+-------------------------------------------------------------------
 Wed Dec 14 21:10:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.4.8
