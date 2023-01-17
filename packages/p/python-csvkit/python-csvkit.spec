@@ -1,7 +1,7 @@
 #
 # spec file for package python-csvkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-csvkit
-Version:        1.0.7
+Version:        1.1.0
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT

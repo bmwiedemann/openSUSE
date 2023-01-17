@@ -132,4 +132,19 @@
 </comment>
     <requestid>1008677</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8f191942e2770631e88e69230b9c1c97</srcmd5>
+    <version>1.1.0</version>
+    <time>1673973309</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * feat: :doc:`/scripts/csvsql` accepts multiple :code:`--query` command-
+    line arguments.
+  * feat: :doc:`/scripts/csvstat` adds :code:`--no-grouping-separator` and
+    :code:`--decimal-format` options.
+  * Add Python 3.11 support.
+  * Drop Python 3.6 support (end-of-life was December 23, 2021).
+  * Drop Python 2.7 support (end-of-life was January 1, 2020).</comment>
+    <requestid>1058765</requestid>
+  </revision>
 </revisionlist>

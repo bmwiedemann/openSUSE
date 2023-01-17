@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 16 20:54:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * feat: :doc:`/scripts/csvsql` accepts multiple :code:`--query` command-
+    line arguments.
+  * feat: :doc:`/scripts/csvstat` adds :code:`--no-grouping-separator` and
+    :code:`--decimal-format` options.
+  * Add Python 3.11 support.
+  * Drop Python 3.6 support (end-of-life was December 23, 2021).
+  * Drop Python 2.7 support (end-of-life was January 1, 2020).
+
+-------------------------------------------------------------------
 Fri Oct  7 07:07:37 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix u-a scriptlets
