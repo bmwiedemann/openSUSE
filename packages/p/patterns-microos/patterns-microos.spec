@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-microos
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Patterns for openSUSE MicroOS
 License:        MIT
 Group:          Metapackages
 URL:            http://en.opensuse.org/Patterns
-Source0:        %name-rpmlintrc
+Source0:        %name.rpmlintrc
 ExclusiveArch:  x86_64 %arm32 aarch64 ppc64le s390x riscv64
 
 %description
@@ -401,6 +401,10 @@ Requires:       hostname
 Requires:       avahi
 %endif
 
+# Desktop notifications about transactional update succeeding/failing
+# for the masses
+Requires:       transactional-update-notifier
+
 %description desktop-common
 Packages required for openSUSE MicroOS Desktops.
 
@@ -685,11 +689,15 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 # empty on purpose
 
 %install
-mkdir -p %buildroot/usr/share/doc/packages/patterns-microos/
-for i in basesystem base base_zypper base_microdnf base_packagekit \
-    defaults hardware ima_evm ra_agent ra_verifier apparmor selinux cockpit \
-    sssd_ldap cloud desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD; do
-	echo "This file marks the pattern $i to be installed." >%buildroot/usr/share/doc/packages/patterns-microos/$i.txt
+mkdir -p %{buildroot}%{_docdir}/patterns-microos/
+PATTERNS='
+    basesystem base base_zypper base_microdnf base_packagekit defaults hardware
+    sssd_ldap ima_evm ra_agent ra_verifier apparmor selinux cockpit cloud
+    desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD
+'
+for i in $PATTERNS; do
+    echo "This file marks the pattern $i to be installed." \
+        > %{buildroot}%{_docdir}/patterns-microos/${i}.txt
 done
 
 %files basesystem

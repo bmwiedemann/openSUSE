@@ -571,4 +571,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>- Remove redundant gnome-system-monitor (boo#1205108)</comment>
     <requestid>1038200</requestid>
   </revision>
+  <revision rev="60" vrev="60">
+    <srcmd5>74cd3c1ce59f2b8c6fe4a32bc3406de5</srcmd5>
+    <version>5.0</version>
+    <time>1673973289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058720</requestid>
+  </revision>
 </revisionlist>

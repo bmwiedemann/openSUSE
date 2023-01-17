@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 11 15:55:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add transactional-update-notifier to the microos_desktop_common
+  Pattern. This is a long waited change that will provide Desktop
+  notifications about transactional updates succeeding/failing for
+  MicroOS Desktop users.
+- Improve readability of FOR loop shell construct, in the install
+  directive, by assigning all the Patterns iterated by FOR to the
+  PATTERNS variable (for i in $PATTERNS) instead of passing them
+  directly (for i in pattern1 pattern2 pattern3 ...).
+- Rename patterns-microos-rpmlintrc to patterns-microos.rpmlintrc.
+  While the former is obviously supported, the latter is both
+  preferred and recommended by upstream.
+
+-------------------------------------------------------------------
 Fri Nov 25 12:33:10 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Remove redundant gnome-system-monitor (boo#1205108) 
