@@ -1,7 +1,7 @@
 #
 # spec file for package traefik
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project github.com/traefik/traefik
 
 Name:           traefik
-Version:        2.9.5
+Version:        2.9.6
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
