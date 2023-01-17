@@ -91,4 +91,40 @@
     <comment>- icu721_fixes.patch: fixes compatibility with ICU 72.1 (bsc#1205236)</comment>
     <requestid>1035028</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d06840fca85c49820a98d1516a96109</srcmd5>
+    <version>18.13.0</version>
+    <time>1673973292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to NodejJS 18.13.0 LTS:
+  * build: disable v8 snapshot compression by default
+  * crypto: update root certificates
+  * deps: update ICU to 72.1
+  * doc:
+    + add doc-only deprecation for headers/trailers setters
+    + add Rafael to the tsc
+    + deprecate use of invalid ports in url.parse
+    + deprecate url.parse()
+  * lib: drop fetch experimental warning
+  * net: add autoSelectFamily and autoSelectFamilyAttemptTimeout options
+  * src:
+    + add uvwasi version
+    + add initial shadow realm support
+  * test_runner:
+    + add t.after() hook
+    + don't use a symbol for runHook()
+  * tls:
+    + add &quot;ca&quot; property to certificate object
+  * util:
+    + add fast path for utf8 encoding
+    + improve textdecoder decode performance
+    + add MIME utilities
+- new_python3.patch, icu721_fixes.patch: upstreamed, removed
+
+- Update _constraints:
+  * Less RAM for aarch64 and 32-bit arm
+  * Use 'asimdrdm' cpu flag to use aarch64 workers where tests
+    are more stable</comment>
+    <requestid>1058736</requestid>
+  </revision>
 </revisionlist>

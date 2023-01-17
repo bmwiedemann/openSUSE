@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs18
-Version:        18.12.1
+Version:        18.13.0
 Release:        0
 
 # Double DWZ memory limits
@@ -131,7 +131,7 @@ Source3:        nodejs.keyring
 
 # Python 3.4 compatible node-gyp 
 ### https://github.com/nodejs/node-gyp.git 
-### git archive v7.1.2 gyp/ | xz > node-gyp_7.1.2.tar.xz 
+### git archive v7.1.2 | xz > node-gyp_7.1.2.tar.xz 
 Source5:        node-gyp_7.1.2.tar.xz 
 # Only required to run unit tests in NodeJS 10+ 
 Source10:       update_npm_tarball.sh 
@@ -170,9 +170,7 @@ Patch133:       rsa-pss-revert.patch
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
-Patch304:       new_python3.patch
 Patch305:       qemu_timeouts_arches.patch
-Patch306:       icu721_fixes.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -268,7 +266,8 @@ BuildRequires:  group(nobody)
 
 %if ! 0%{with intree_openssl}
 
-BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
+BuildRequires:  libopenssl-1_1-devel
+#BuildRequires:  (pkgconfig(openssl) >= %{openssl_req_ver} and pkgconfig(openssl) < 3.0)
 
 # require patched openssl library on SLES for nodejs16
 %if 0%{?suse_version} && "%{pkg_version openssl-1_1}" != "~~~"
@@ -279,11 +278,11 @@ Requires:       openssl-has-RSA_get0_pss_params
 %endif
 
 %if 0%{?suse_version}
-%if 0%{?suse_version} >= 1500
-BuildRequires:  openssl >= %{openssl_req_ver}
-%else
+#%if 0%{?suse_version} >= 1500
+#iBuildRequires:  openssl >= %{openssl_req_ver}
+#%else
 BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
-%endif
+#%endif
 
 BuildRequires:  libopenssl1_1-hmac
 # /suse_version
@@ -310,13 +309,13 @@ Provides:       bundled(libcares2) = 1.18.1
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 69
 %else
-Provides:       bundled(icu) = 71.1
+Provides:       bundled(icu) = 72.1
 %endif
 
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.47.0
+Provides:       bundled(nghttp2) = 1.51.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -366,8 +365,8 @@ ExclusiveArch:  not_buildable
 %endif
 
 Provides:       bundled(uvwasi) = 0.0.13
-Provides:       bundled(libuv) = 1.43.0
-Provides:       bundled(v8) = 10.2.154.15
+Provides:       bundled(libuv) = 1.44.2
+Provides:       bundled(v8) = 10.2.154.23
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
 %else
@@ -377,14 +376,16 @@ BuildRequires:  pkgconfig(libbrotlidec)
 
 Provides:       bundled(llhttp) = 6.0.10
 Provides:       bundled(ngtcp2) = 0.8.1
+Provides:       bundled(base64) = 0.5.0
 
-Provides:       bundled(node-acorn) = 8.8.0
+
+Provides:       bundled(node-acorn) = 8.8.1
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
-Provides:       bundled(node-corepack) = 0.14.2
+Provides:       bundled(node-corepack) = 0.15.2
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.11.0
+Provides:       bundled(node-undici) = 5.13.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -413,7 +414,7 @@ Requires:       nodejs-common
 Requires:       nodejs18 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 8.19.2
+Provides:       npm(npm) = 8.19.3
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -476,7 +477,7 @@ Provides:       bundled(node-graceful-fs) = 4.2.10
 Provides:       bundled(node-has) = 1.0.3
 Provides:       bundled(node-has-flag) = 4.0.0
 Provides:       bundled(node-has-unicode) = 2.0.1
-Provides:       bundled(node-hosted-git-info) = 5.1.0
+Provides:       bundled(node-hosted-git-info) = 5.2.1
 Provides:       bundled(node-http-cache-semantics) = 4.1.0
 Provides:       bundled(node-http-proxy-agent) = 5.0.0
 Provides:       bundled(node-https-proxy-agent) = 5.0.1
@@ -504,8 +505,8 @@ Provides:       bundled(node-just-diff) = 5.1.1
 Provides:       bundled(node-just-diff-apply) = 5.4.1
 Provides:       bundled(node-libnpmaccess) = 6.0.4
 Provides:       bundled(node-libnpmdiff) = 4.0.5
-Provides:       bundled(node-libnpmexec) = 4.0.13
-Provides:       bundled(node-libnpmfund) = 3.0.4
+Provides:       bundled(node-libnpmexec) = 4.0.14
+Provides:       bundled(node-libnpmfund) = 3.0.5
 Provides:       bundled(node-libnpmhook) = 8.0.4
 Provides:       bundled(node-libnpmorg) = 4.0.4
 Provides:       bundled(node-libnpmpack) = 4.1.3
@@ -639,17 +640,29 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 
 %if %{node_version_number} <= 10
 rm -r deps/npm/*
-tar zxf %{SOURCE9} -C deps/npm --strip-components=1
-tar Jxf %{SOURCE90} -C deps/npm
+pushd deps/npm
+tar zxf %{SOURCE9} --strip-components=1
+tar Jxf %{SOURCE90}
 %endif
 
 %if %{node_version_number} >= 10
 tar Jxf %{SOURCE11}
 %endif
 
+# downgrade node-gyp to last version that supports python 3.4 for SLE12
+%if 0%{?suse_version} && 0%{?suse_version} < 1500 && 0%{node_version_number} >= 16
+rm -r  deps/npm/node_modules/node-gyp
+mkdir deps/npm/node_modules/node-gyp
+pushd deps/npm/node_modules/node-gyp
+tar Jxf %{SOURCE5}
+popd
+%endif
+
 %patch1 -p1
 %patch3 -p1
+%if %{node_version_number} <= 12 && 0%{?suse_version} < 1500
 %patch5 -p1
+%endif
 %patch7 -p1
 %if 0%{with valgrind_tests}
 %endif
@@ -670,9 +683,7 @@ tar Jxf %{SOURCE11}
 %endif
 %patch200 -p1
 
-%patch304 -p1
 %patch305 -p1
-%patch306 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50
@@ -686,12 +697,6 @@ find -name \*~ -print0 -delete
 # abnormalities from patching
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
 
-# downgrade node-gyp to last version that supports python 3.4 for SLE12
-%if 0%{?suse_version} && 0%{?suse_version} < 1500 && 0%{node_version_number} >= 16
-rm -r  deps/npm/node_modules/node-gyp
-mkdir deps/npm/node_modules/node-gyp
-tar -C deps/npm/node_modules/node-gyp -Jxf %{SOURCE5}
-%endif
 
 
 %build
@@ -971,6 +976,7 @@ make test-ci
 %files
 %defattr(-, root, root)
 %license LICENSE
+%doc doc/changelogs/CHANGELOG_V%{node_version_number}.md
 %doc AUTHORS *.md
 %doc deps/v8/tools/gdbinit
 %dir %{_libdir}/node_modules

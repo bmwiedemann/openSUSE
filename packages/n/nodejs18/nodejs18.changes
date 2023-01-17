@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jan 16 14:57:58 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to NodejJS 18.13.0 LTS:
+  * build: disable v8 snapshot compression by default
+  * crypto: update root certificates
+  * deps: update ICU to 72.1
+  * doc:
+    + add doc-only deprecation for headers/trailers setters
+    + add Rafael to the tsc
+    + deprecate use of invalid ports in url.parse
+    + deprecate url.parse()
+  * lib: drop fetch experimental warning
+  * net: add autoSelectFamily and autoSelectFamilyAttemptTimeout options
+  * src:
+    + add uvwasi version
+    + add initial shadow realm support
+  * test_runner:
+    + add t.after() hook
+    + don't use a symbol for runHook()
+  * tls:
+    + add "ca" property to certificate object
+  * util:
+    + add fast path for utf8 encoding
+    + improve textdecoder decode performance
+    + add MIME utilities
+
+- new_python3.patch, icu721_fixes.patch: upstreamed, removed
+
+-------------------------------------------------------------------
+Fri Dec 23 11:31:12 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints:
+  * Less RAM for aarch64 and 32-bit arm
+  * Use 'asimdrdm' cpu flag to use aarch64 workers where tests
+    are more stable
+
+-------------------------------------------------------------------
 Thu Nov 10 08:18:42 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - icu721_fixes.patch: fixes compatibility with ICU 72.1 (bsc#1205236)
