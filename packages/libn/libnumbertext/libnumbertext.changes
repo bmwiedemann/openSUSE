@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan  7 16:15:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.11:
+  * Soros.cxx/java/js/py: fix boundary inheritance of
+  *   optional function (conditional text), reported by Juanma Sanchez
+  *   and Antonio Bueno
+  * test/*, configure.ac, Makefile.am: add C++ unit testing
+  * Soros.cxx: fix an assert seen with in libreoffice crashtesting on
+  *   an empty string, by Caolán McNamara
+  * New modules:
+  * fa.sor: new Persian (Farsi) module by Amir Hossein Maher
+  * mul.sor: new module with note symbols for multiple languages
+  * Module fixes and extensions:
+  * ca.sor: revert removing conditional text
+  * cs.sor: fix ordinals, cardinals, currencies by Stanislav Horáček,
+  *   with help of Zdeněk Crhonek
+  * da.sor: revert removing conditional text
+  * en.sor: add extra currencies (BZF, DKK, ILS, LKR, ZMW, ZWD) for
+  *   LibreOffice locales of Number Format dialog windows
+  * es.sor: add extra currencies (PAB, SVC, VED/VES) for LibreOffice,
+  *   revert removing conditional text
+  * ga.sor: add currency support
+  * hu_Hung.sor: fix regression of transliteration of parenthesized words
+  *   in LibreOffice, reported by Zoltán Óvári
+  * ro.sor: strip first space and remove double space in currency
+  * ru.sor: fix grammar of cents by Alex Ivanov
+  * sl.sor: fix cardinal-masculine and cardinal-neuter,
+  *   reported by Martin Srebotnjak
+  * uk.sor: fix grammar of cents by Alex Ivanov
+  * LibreOffice Calc add-on:
+  * CalcAddIn.xcu: new Russian translation by Evgeniy Kukhtinov
+
+-------------------------------------------------------------------
 Sun Apr 10 09:13:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.10:

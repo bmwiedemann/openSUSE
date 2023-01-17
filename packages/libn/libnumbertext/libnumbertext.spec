@@ -1,7 +1,7 @@
 #
 # spec file for package libnumbertext
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libnumbertext-1_0-0
 Name:           libnumbertext
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Language-neutral NUMBERTEXT and MONEYTEXT functions
 License:        MPL-2.0
