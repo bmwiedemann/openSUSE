@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-mobilenetwork
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-mobilenetwork
-Version:        1.0.0.0
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Mobilenetwork Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-mobilenetwork/azure-mgmt-mobilenetwork-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-mobilenetwork/azure-mgmt-mobilenetwork-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -57,10 +55,10 @@ This is the Microsoft Azure Mobilenetwork Management Client Library.
 This package has been tested with Python 3.7+.
 
 %prep
-%setup -q -n azure-mgmt-mobilenetwork-%{realversion}
+%setup -q -n azure-mgmt-mobilenetwork-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-mobilenetwork-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-mobilenetwork-%{version}
 %python_build
 
 %install
