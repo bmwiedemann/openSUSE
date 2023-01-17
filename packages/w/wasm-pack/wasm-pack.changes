@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 03:09:42 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1207039 - CVE-2023-22895 - update bzip2 crate
+- Update of vendored dependencies
+
+-------------------------------------------------------------------
 Wed Aug 24 19:55:52 UTC 2022 - elimat@opensuse.org
 
 - Update to version 0.10.3~0:
