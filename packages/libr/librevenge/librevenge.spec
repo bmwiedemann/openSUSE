@@ -1,7 +1,7 @@
 #
 # spec file for package librevenge
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global apiversion 0.0
 %global pkgextension 0_0-0
 Name:           librevenge
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 Summary:        A base library for writing document import filters
 License:        LGPL-2.1-or-later OR MPL-2.0
@@ -154,8 +154,8 @@ make %{?_smp_mflags} check
 %dir %{_datadir}/gdb/auto-load
 %dir %{_datadir}/gdb/auto-load%{_prefix}
 %dir %{_datadir}/gdb/auto-load%{_libdir}
-%{_datadir}/gdb/auto-load%{_libdir}/%{name}-%{apiversion}.py*
-%{_datadir}/gdb/auto-load%{_libdir}/%{name}-stream-%{apiversion}.py*
+%{_datadir}/gdb/auto-load%{_libdir}/%{name}-%{apiversion}-gdb.py*
+%{_datadir}/gdb/auto-load%{_libdir}/%{name}-stream-%{apiversion}-gdb.py*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/python
 
