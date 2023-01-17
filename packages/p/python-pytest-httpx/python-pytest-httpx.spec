@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-httpx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-httpx
-Version:        0.21.0
+Version:        0.21.2
 Release:        0
 Summary:        Send responses to httpx
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module pytest >= 6.0}
-BuildRequires:  %{python_module pytest-asyncio >= 0.14.0}
+BuildRequires:  %{python_module pytest-asyncio >= 0.20.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-httpx >= 0.23.0
@@ -43,7 +43,8 @@ Send responses to httpx.
 %prep
 %setup -q -n pytest_httpx-%{version}
 # unpin exact version
-sed -i '/install_requires/ s/httpx==0./httpx>=0./' setup.py
+sed -i '/install_requires/ s/httpx==0.23.\*/httpx/' setup.py
+sed -i '/install_requires/ s/pytest>=6.*,<8.\*/pytest/' setup.py
 
 %build
 %python_build

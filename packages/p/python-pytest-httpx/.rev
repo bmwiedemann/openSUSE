@@ -40,4 +40,18 @@
     <comment></comment>
     <requestid>991207</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6c8cfab2c7415f73d53049a9a5e51e3</srcmd5>
+    <version>0.21.2</version>
+    <time>1673973327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.2
+  * URL containing non ASCII characters in query can now be matched.
+  * Requests are now cleared when calling httpx_mock.reset.
+- 0.21.1
+  * httpx_mock.add_callback now handles async callbacks.
+- Unpin httpx and pytest in python metadata
+</comment>
+    <requestid>1058836</requestid>
+  </revision>
 </revisionlist>
