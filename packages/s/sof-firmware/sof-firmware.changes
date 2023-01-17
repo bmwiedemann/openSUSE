@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 17 14:55:46 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2.2.3:
+  ADL-N FW binary and topology updates for ADL/RPL/ICL
+- Update to version 2.2.4:
+  New topology binaries for RPL/ADL/JSL
+- Fix modalias for ACPI (bsc#1207211)
+
+-------------------------------------------------------------------
 Thu Nov  3 11:08:43 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 2.2.2:

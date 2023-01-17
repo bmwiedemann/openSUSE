@@ -1,7 +1,7 @@
 #
 # spec file for package sof-firmware
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-%define sofversion  2.2.2
-%define tplgversion 2.2.2
+%define sofversion  2.2.4
+%define tplgversion 2.2.4
 
 Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
@@ -66,10 +66,10 @@ Supplements:    modalias(pci:v00008086d000051C8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051CCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000054C8sv*sd*bc*sc*i*)
 # Broadwell
-Supplements:    modalias(acpi*:INT3438:*)
+Supplements:    modalias(acpi*:INT3438%3A*)
 # Baytrail
-Supplements:    modalias(acpi*:80860F28:*)
-Supplements:    modalias(acpi*:808622A8:*)
+Supplements:    modalias(acpi*:80860F28%3A*)
+Supplements:    modalias(acpi*:808622A8%3A*)
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
