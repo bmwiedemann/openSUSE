@@ -25,4 +25,13 @@ This allows to remove desktop-data and hicolor-icon-theme buildrequires.</commen
   Add BR on gobject-introspection and Requires on python3-gobject-Gdk</comment>
     <requestid>810757</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>77ad9da79ddc228acc2e81300bc17c11</srcmd5>
+    <version>0.1.11</version>
+    <time>1673973322</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.11:
+  * Fix compatibility with Python 3.11 (by Rowan Hart) (forwarded request 1058758 from dirkmueller)</comment>
+    <requestid>1058812</requestid>
+  </revision>
 </revisionlist>

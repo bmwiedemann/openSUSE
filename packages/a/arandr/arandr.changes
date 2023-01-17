@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 16 19:31:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.11:
+  * Fix compatibility with Python 3.11 (by Rowan Hart)
+
+-------------------------------------------------------------------
 Tue Jun  2 09:05:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - boo#1172370 arandr fails to start in TW and 15.1:

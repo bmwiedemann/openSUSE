@@ -1,7 +1,7 @@
 #
 # spec file for package arandr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2013,2019 B1 Systems GmbH, Vohburg, Germany <seife+obs@b1-systems.com>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           arandr
-Version:        0.1.10
+Version:        0.1.11
 Release:        0
 Summary:        Visual Front End for XRandR
 License:        GPL-3.0-only
