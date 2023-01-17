@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SDL
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,8 @@ emulators, and many popular games, including the award winning Linux port of
 # Remove hanging test. See: https://github.com/PerlGameDev/SDL/issues/289
 rm t/sdlx_controller_interface.t
 %endif
+# core_video is deadlocking in OBS builds (no graphical interface available)
+rm t/core_video.t
 # MANUAL END
 
 %build

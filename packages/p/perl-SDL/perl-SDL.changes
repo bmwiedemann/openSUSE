@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 15:20:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip t/core_video.t: We do not have a GUI available inside OBS
+  builds which can result in this test deadlocking.
+
+-------------------------------------------------------------------
 Tue Aug 16 10:33:49 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated cpanspec.yml
