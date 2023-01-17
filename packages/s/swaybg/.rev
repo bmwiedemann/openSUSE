@@ -37,4 +37,12 @@
   * Fix memory leak when using image tile mode</comment>
     <requestid>960698</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77a338a60b0afab50256fa6c168084b4</srcmd5>
+    <version>1.2.0</version>
+    <time>1673973339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058860</requestid>
+  </revision>
 </revisionlist>
