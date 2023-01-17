@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 12:07:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add da0d3f22.patch: Fix build with libraw 0.21.
+
+-------------------------------------------------------------------
 Wed Apr 27 12:09:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add relevant version limit to pkgconfig(appstream) BuildRequires.
