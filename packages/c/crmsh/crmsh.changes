@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 17 08:42:48 UTC 2023 - nicholas.yang@suse.com
+
+- Update to version 4.4.1+20230117.fb8b3c2b:
+  * Dev: unittest: adjust unit tests for previous change
+  * Dev: healthcheck: allow using non-root sudoer for remote access
+  * Fix: bootstrap: corosync-cfgtool -R requires privilege
+  * Dev: bootstrap: implement swapping hacluster's ssh key using non-root sudoer remote access
+  * Dev: unittest: Add unit test for previous change
+  * Dev: behave: Add user_access.feature to do functional test for previous change
+  * Dev: utils: Check current user's privilege and give hints to user
+
+-------------------------------------------------------------------
 Sun Jan 15 08:34:31 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.4.1+20230115.e69ffac7:
