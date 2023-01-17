@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 15 20:22:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.8.1
+  * fix: mro_trait can be unbound when the class is not in mro #824
+    (@maartenbreddels)
+
+-------------------------------------------------------------------
 Sun Dec 25 21:51:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.8.0

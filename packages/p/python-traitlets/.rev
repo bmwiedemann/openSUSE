@@ -137,4 +137,14 @@
   * Adopt ruff and address lint #809 (@blink1073)</comment>
     <requestid>1045326</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5071f149b63a6de7b0034a02b3e10c3</srcmd5>
+    <version>5.8.1</version>
+    <time>1673973279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.1
+  * fix: mro_trait can be unbound when the class is not in mro #824
+    (@maartenbreddels)</comment>
+    <requestid>1058563</requestid>
+  </revision>
 </revisionlist>
