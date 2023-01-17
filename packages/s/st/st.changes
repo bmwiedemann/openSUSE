@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:40:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9:
+  * avoid potential UB when using isprint()
+  * make underlines and strikethroughs respect `chscale`
+  * Delay redrawals on palette changes
+  * 10/SGR mouse: use alt as meta key instead of super/windows key
+  * Fix mousereport
+  * Fix overtyping wide characters.
+  * Fix null pointer access in strhandle
+  * Add support for OSC color sequences
+  * Fix possible rare crash when Xutf8TextPropertyToTextList fails
+  * fix a problem that the standard streams are unexpectedly closed
+  * Add 14th bit to XK_SWITCH_MOD bitmask
+  * fix: correctly encode mouse buttons >= 8 in X10 and SGR mode
+  * ST: Add WM_ICON_NAME property support
+- add compose-buffer-overflow.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 09:14:45 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Update to version 0.8.4

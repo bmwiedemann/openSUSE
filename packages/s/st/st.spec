@@ -1,7 +1,7 @@
 #
 # spec file for package st
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           st
-Version:        0.8.4
+Version:        0.9
 Release:        0
 Summary:        Simple Terminal Implementation for X
 License:        MIT
@@ -26,6 +26,7 @@ Group:          System/X11/Terminals
 URL:            https://%{name}.suckless.org/
 Source:         https://dl.suckless.org/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
+Patch1:         compose-buffer-overflow.patch
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc
@@ -41,7 +42,7 @@ Requires:       terminfo
 Simple and lightweight and unbloated X11 terminal.
 
 %prep
-%autosetup
+%autosetup -p1
 # terminfo entries are provided by terminfo from ncurses
 sed -e "/tic .*st.info/d" -i Makefile
 
