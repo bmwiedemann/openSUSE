@@ -18,10 +18,10 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.2.6
+Version:        5.2.9
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/%{version}/%{name}-%{version}.tar.bz2

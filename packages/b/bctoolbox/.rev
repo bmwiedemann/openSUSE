@@ -353,4 +353,15 @@
 </comment>
     <requestid>1055792</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d06cad62deb0499f93fbb216d0fc936a</srcmd5>
+    <version>5.2.9</version>
+    <time>1673973371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+- revert license tag change
+</comment>
+    <requestid>1058999</requestid>
+  </revision>
 </revisionlist>
