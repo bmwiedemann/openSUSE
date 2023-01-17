@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 17 08:42:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.11.2:
+  * Main.vala: Turn the initial btrfs quota error into a message if we think we
+    know what the error is.
+
+-------------------------------------------------------------------
 Sat Dec  3 17:18:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.11.1:
