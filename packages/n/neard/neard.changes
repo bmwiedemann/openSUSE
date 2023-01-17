@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  5 06:52:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to release 0.18:
+  * Fixed configure with newer autoconf v2.71.
+  * Made missing autoconf-archive messages nicer.
+  * Fixed minor uninitialized access reported by Valgrind.
+
+-------------------------------------------------------------------
 Wed Oct 27 09:38:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.17
