@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyviz-comms
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyviz-comms
-Version:        0.7.6
+Version:        2.2.1
 Release:        0
 Summary:        Tool to launch jobs, organize the output, and dissect the results
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/pyviz_comms
+# For the bundled JS files
 Source0:        https://files.pythonhosted.org/packages/source/p/pyviz_comms/pyviz_comms-%{version}.tar.gz
+# For the tests
+Source1:        https://github.com/holoviz/pyviz_comms/archive/refs/tags/v%{version}.tar.gz#/pyviz_comms-%{version}-gh.tar.gz
 Source100:      python-pyviz-comms-rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-param >= 1.6.0
+Requires:       python-param
+Provides:       python-pyviz_comms = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module param >= 1.6.0}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module param}
 # /SECTION
 %python_subpackages
 
@@ -43,17 +49,22 @@ classic notebook and Jupyterlab.
 
 %prep
 %setup -q -n pyviz_comms-%{version}
+tar -x -f %{SOURCE1} --strip-components=1 pyviz_comms-%{version}/pyviz_comms/tests/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyviz_comms
+%{python_sitelib}/pyviz_comms-%{version}.dist-info
 
 %changelog

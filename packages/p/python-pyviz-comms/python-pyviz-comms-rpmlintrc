@@ -1,1 +1,2 @@
-addFilter("hidden-file-or-dir .*/pyviz_comms/.version")
+addFilter("backup-file-in-package .*/pyviz_comms.*package.json.orig")
+addFilter("filelist-forbidden .*/pyviz_comms.*package.json.orig")
