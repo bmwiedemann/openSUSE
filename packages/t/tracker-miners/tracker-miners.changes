@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 12 17:01:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.3:
+  + Fix possible warnings in tracker-miner-fs-3
+  + Fixes to handle BTRFS subvolumes
+  + Reset nie:isStoredAs/nie:interpretedAs on updated folders
+  + Drop 'fluidsynthmidi' GStreamer module
+  + Fix GSource leak
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec  5 14:13:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.2:

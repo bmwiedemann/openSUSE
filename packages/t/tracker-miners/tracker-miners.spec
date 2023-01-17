@@ -1,7 +1,7 @@
 #
 # spec file for package tracker-miners
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tracker-miners
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later

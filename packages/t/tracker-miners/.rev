@@ -363,4 +363,18 @@
     <comment>New stable release (forwarded request 1040308 from iznogood)</comment>
     <requestid>1040321</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6e1d39c3b7716dd6d5652acd063631a4</srcmd5>
+    <version>3.4.3</version>
+    <time>1673973284</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.3:
+  + Fix possible warnings in tracker-miner-fs-3
+  + Fixes to handle BTRFS subvolumes
+  + Reset nie:isStoredAs/nie:interpretedAs on updated folders
+  + Drop 'fluidsynthmidi' GStreamer module
+  + Fix GSource leak
+  + Updated translations. (forwarded request 1058043 from iznogood)</comment>
+    <requestid>1058614</requestid>
+  </revision>
 </revisionlist>
