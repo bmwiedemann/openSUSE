@@ -3,12 +3,12 @@ replace-with = "vendored-sources"
 
 [source."https://github.com/firecracker-microvm/kvm-bindings"]
 git = "https://github.com/firecracker-microvm/kvm-bindings"
-tag = "v0.5.0-1"
+tag = "v0.6.0-1"
 replace-with = "vendored-sources"
 
 [source."https://github.com/firecracker-microvm/micro-http"]
 git = "https://github.com/firecracker-microvm/micro-http"
-rev = "0a58eb1"
+rev = "4b18a04"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]

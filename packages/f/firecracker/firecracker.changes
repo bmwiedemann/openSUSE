@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec 19 10:44:16 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.2.0
+  * Added a new CPU template called T2S
+  * Added a new CLI option --metrics-path PATH
+  * Added baselines for m6i.metal and m6a.metal
+  * Changed the jailer option --exec-file to fail if the filename does not
+    contain the string firecracker
+  * Updated Rust toolchain and all dependencies to their respective newest versions
+  * Made the T2 template more robust by explicitly disabling additional
+    CPUID flags that should be off
+  * Now MAC address is correctly displayed when queried with GET /vm/config
+  * Fixed a self-DoS scenario in the virtio-queue code 
+  * Fixed the bad handling of kernel cmdline parameters when init arguments were
+    provided via JSON PUT /boot-source request
+  * Fixed a bug on ARM64 hosts  where the upper 64bits of the V0-V31 FL/SIMD
+    registers were not saved correctly
+
+-------------------------------------------------------------------
 Sat Oct  1 17:55:05 UTC 2022 - Liang Yan <lyan@opensuse.org>
 
 - Update firecracker to version 1.1.1

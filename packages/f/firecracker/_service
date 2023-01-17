@@ -3,8 +3,8 @@
     <param name="url">https://github.com/firecracker-microvm/firecracker.git</param>
     <param name="scm">git</param>
     <param name="filename">firecracker</param>
-    <param name="versionformat">1.1.1</param>
-    <param name="revision">v1.1.1</param>
+    <param name="versionformat">1.2.0</param>
+    <param name="revision">v1.2.0</param>
   </service>
 
 
