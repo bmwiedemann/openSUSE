@@ -59,4 +59,22 @@
 For details, see CHANGELOG_V19.md</comment>
     <requestid>1043680</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff516e4a2d9aa68ba146df817a7fe759</srcmd5>
+    <version>19.4.0</version>
+    <time>1673973291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.4.0:
+  * buffer: add buffer.isUtf8 for utf8 validation
+  * http: improved timeout defaults handling
+  * net: add autoSelectFamily global getter and setter
+  * os: add availableParallelism()
+  * util: add fast path for text-decoder fatal flag
+
+- Update _constraints:
+  * Less RAM for aarch64 and 32-bit arm
+  * Use 'asimdrdm' cpu flag to use aarch64 workers where tests
+    are more stable</comment>
+    <requestid>1058733</requestid>
+  </revision>
 </revisionlist>

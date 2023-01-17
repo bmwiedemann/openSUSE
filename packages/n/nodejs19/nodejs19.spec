@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs19
-Version:        19.3.0
+Version:        19.4.0
 Release:        0
 
 # Double DWZ memory limits
@@ -363,9 +363,9 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(uvwasi) = 0.0.13
+Provides:       bundled(uvwasi) = 0.0.14
 Provides:       bundled(libuv) = 1.44.2
-Provides:       bundled(v8) = 10.8.168.21
+Provides:       bundled(v8) = 10.8.168.25
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
 %else
@@ -375,6 +375,8 @@ BuildRequires:  pkgconfig(libbrotlidec)
 
 Provides:       bundled(llhttp) = 8.1.0
 Provides:       bundled(ngtcp2) = 0.8.1
+Provides:       bundled(base64) = 0.5.0
+Provides:       bundled(simdutf) = 2.0.9
 
 Provides:       bundled(node-acorn) = 8.8.1
 Provides:       bundled(node-acorn-walk) = 8.2.0
@@ -382,7 +384,7 @@ Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.15.2
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.13.0
+Provides:       bundled(node-undici) = 5.14.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
