@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 14 11:46:17 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Make "*:link:selected" optional to work around too old gtk4 libs
+  on Leap 15.4; add link-selected-is-optional.patch
+
+-------------------------------------------------------------------
 Tue Jun 28 03:38:48 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Prevent Unity desktop theme from being installed

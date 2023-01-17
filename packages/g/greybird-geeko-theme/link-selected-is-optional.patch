@@ -1,0 +1,11 @@
+--- light/gtk-4.0/_common.scss.orig	2022-06-27 17:19:46.000000000 +0200
++++ light/gtk-4.0/_common.scss	2023-01-14 12:43:50.146007431 +0100
+@@ -1547,7 +1547,7 @@ headerbar {
+       box-shadow: inset 0 1px mix($top_hilight, $selected_bg_color, 60%);
+     }
+ 
+-    .subtitle:link { @extend *:link:selected;  }
++    .subtitle:link { @extend *:link:selected !optional;  }
+ 
+     button {
+       @include button(normal, $selected_bg_color, $selected_fg_color);

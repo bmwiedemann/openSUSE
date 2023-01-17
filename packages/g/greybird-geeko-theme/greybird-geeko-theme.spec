@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-geeko-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Group:          System/GUI/GNOME
 Source:         %{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE disable-unity_v3.23.1.patch maurizio.galli@gmail.com -- remove unity desktop
 Patch0:         disable-unity_v3.23.1.patch
+# PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4
+Patch1:         link-selected-is-optional.patch
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -89,6 +91,9 @@ This package provides the GTK+ 4 support of Greybird-geeko.
 %prep
 %setup -q -n %{_name}-%{version}
 %patch0 -p1
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%patch1
+%endif
 
 %build
 %meson
