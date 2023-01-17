@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 16 15:17:46 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.4.0:
+  + The ability to use the write()/read() interface of i2c-dev has been restored.
+    It is needed to work around a bug in the proprietary nvidia driver.  By
+     default,  the write()/read() interface is used for the nvidia driver, the
+     ioctl() interface is used for all other drivers. Command line options
+    ***--use-file-io*** and ***--use-ioctl-io*** affect his default behavior.
+    When i2c-dev's file io interface is used, option ***--force-slave-address***
+    is again meaningful.
+  + Option ***--sleep-multiplier*** and API functions **ddca_set_sleep_multiplier_value()**,
+    **ddca_set_default_sleep_multiplier_value()** now accept 0 as a valid
+    argument.
+  + The ddcutil command parser reports an error if a display selection option
+    (e.g. ***--bus***) is given on a command to which it does not apply.
+  + Write additional error and information messages to the system log.
+  + Eliminate message "Is DDC/CI enabled in the monitor's on-screen display?"
+    It's rarely the cause of communication failures.
+  + Warn of a possibly invalid DRM connector name in **detect** output if
+    monitors with identical EDIDs are used with the proprietary nvidia driver.
+  + Handle /dev/i2c device names with a double hyphen, e.g. /dev/i2c--3.
+  + Better libddcutil handling of configuration file errors.  Do not abort
+    initialization in case of errors.
+  + Fix interpretation of digital display type bits for EDID version 1.4
+  + Miscellaneous segfaults.
+
+-------------------------------------------------------------------
 Tue Nov  8 09:46:20 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.3.0:

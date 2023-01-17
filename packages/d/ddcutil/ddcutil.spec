@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ddcutil
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
@@ -75,10 +75,10 @@ Header files and pkgconfig control file for libddcutil.
 %setup -q
 
 %build
-./autogen.sh
+./autogen.sh --prefix=%{_prefix}
 %configure --enable-lib=yes --enable-drm=yes --enable-usb=yes \
    --docdir="%{_defaultdocdir}/%{name}"
-make %{?_smp_mflags} V=1
+%make_build
 
 %check
 make %{?_smp_mflags} check
@@ -95,6 +95,7 @@ make %{?_smp_mflags} check
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/data
 %{_datadir}/%{name}/data/*rules
+%{_udevrulesdir}/60-ddcutil.rules
 %{_datadir}/%{name}/data/90-nvidia-i2c.conf
 %{_mandir}/man1/ddcutil.1*
 %{_bindir}/ddcutil
