@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.4
+%define patchversion 6.1.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        6.1.4
+Version:        6.1.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4b9b43c
+Release:        <RELEASE>.g573f4a9
 %else
 Release:        0
 %endif
@@ -67,7 +67,7 @@ BuildRequires:  texlive-zapfding
 %endif
 URL:            https://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
+Provides:       %name-srchash-573f4a96e922fec10a29d12760ec30fa654571bc
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz

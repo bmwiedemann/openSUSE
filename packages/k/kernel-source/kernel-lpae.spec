@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.4
+%define patchversion 6.1.6
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.1.4
+Version:        6.1.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g4b9b43c
+Release:        <RELEASE>.g573f4a9
 %else
 Release:        0
 %endif
@@ -240,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
-Provides:       kernel-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
+Provides:       kernel-%build_flavor-base-srchash-573f4a96e922fec10a29d12760ec30fa654571bc
+Provides:       kernel-srchash-573f4a96e922fec10a29d12760ec30fa654571bc
 # END COMMON DEPS
-Provides:       %name-srchash-4b9b43c3573f81802c32ace9a4b8711fb79ee86c
+Provides:       %name-srchash-573f4a96e922fec10a29d12760ec30fa654571bc
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
