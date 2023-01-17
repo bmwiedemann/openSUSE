@@ -80,4 +80,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1038208</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b020778e52b4c5ffe474cfde14870aaa</srcmd5>
+    <version>5.0.5</version>
+    <time>1673973302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.5:
+  * Fixed crash at startup
+  * Update SDK to 5.2.10
+- Update to version 5.0.4:
+  * Fixed volume gauge in multimedia parameters while being in call
+  * Update SDK to 5.2.6
+- Update to version 5.0.3:
+  * Fixed crash at startup about missing contact address on account
+- Update to version 5.0.2:
+  * Default Language didn't match with the system language
+- Update to version 5.0.1:
+  * Fixed image display in chats from an URL
+  * Fixed display a notification of all kind of messages
+- Update to version 5.0.0:
+  * Video conference and iCalendars
+  * Make a meeting directly from a group chat
+  * New call layouts
+  * Display a waiting room before going into a conference
+  * Display a waiting room before going into a conference\
+  * Post quantum ZRTP
+  * Merge messages into one notification to avoid spam
+  * Design overhaul on calls
+  * Audio devices can be changed while being in call
+- added linphoneqt_fix_gcc12_error.patch
+  * fix build error with gcc12
+</comment>
+    <requestid>1058090</requestid>
+  </revision>
 </revisionlist>

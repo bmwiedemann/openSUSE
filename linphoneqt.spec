@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.4.11
+Version:        5.0.5
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -30,6 +30,8 @@ Source1:        %{_name}.appdata.xml
 Patch0:         linphoneqt-fix-no-git.patch
 # PATCH-FIX-OPENSUSE https://aur.archlinux.org/cgit/aur.git/plain/0002-remove-bc_compute_full_version-usage.patch?h=linphone-desktop
 Patch1:         linphoneqt-0002-remove-bc_compute_full_version-usage.patch
+# PATCH-FIX-OPENSUSE linphoneqt_fix_gcc12_error.patch -- Fix building with gcc12
+Patch2:         linphoneqt_fix_gcc12_error.patch
 %if 0%{?suse_version}
 BuildRequires:  Mesa-libGLESv2-devel
 %else
@@ -111,7 +113,7 @@ echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/
 echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
 
 %build
-if [[ %version = 4.4.[0-9]* ]]; then
+if [[ %version = 5.0.[0-9]* ]]; then
     sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
     sed -i '/\/ui/s@${qml_dir}@${CMAKE_CURRENT_SOURCE_DIR}/../&@' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
 %if 0%{?suse_version}

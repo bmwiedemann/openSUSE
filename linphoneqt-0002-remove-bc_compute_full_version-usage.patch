@@ -68,7 +68,7 @@ index baea03cf..08ffc1b5 100644
 +if (NOT(APP_PROJECT_VERSION))
    set(APP_PROJECT_VERSION "0.0.0")
  endif ()
- string(REGEX REPLACE "([0-9.]+)-?.*" "\\1" LINPHONE_VERSION "${APP_PROJECT_VERSION}")
+ 
 -- 
 2.29.2
 
