@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 16 07:06:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.69:
+  * Parts of a fenced divs are now translated separately (GitHub's #381)
+  * Use the implementation of YFM to parse YAML files too.
+  * Numbers and arrays are not quoted anymore in Yaml files, as it should
+    be.
+  * This adds the yfm_paths option to Markdown and Asciidoc YFM,
+  * fixing GitHub's #392 along the way.
+  * Please note that '-o keys' is now case-sensitive in Yaml documents.
+  * Do not translate nor quote booleans, so that they are not treated as
+    string.
+  * Correctly handle placeholders of empty elements (GitHub's #389)
+  * Translate attributes within attribute-folded inline and placeholder (GH
+    #391)
+  * alt attribute of  can be properly handled with:  -o
+    'attributes=<image>alt' -o 'inline=<image>' -o foldattributes
+  * Thanks k-yaegashi for the pull request fixing both issues
+  * Add a deprecation warning to po4a-translate and po4a-updatepo stating
+    that po4a is the prefered interface.
+  * Rewrite the po4a-gettextize documentation (Debian's #1016695) [Mt].
+  * Rewrite the intro of po4a doc, and add a Quick start tutorial [Mt].
+
+-------------------------------------------------------------------
 Fri Jul 15 12:21:58 UTC 2022 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Update to version 0.67
