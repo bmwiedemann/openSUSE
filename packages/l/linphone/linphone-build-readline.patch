@@ -62,13 +62,13 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -69,6 +69,7 @@ option(ENABLE_ASSETS "Package sound asse
- 
+ option(ENABLE_PACKAGE_SOURCE "Create 'package_source' target for source archive making (CMake >= 3.11)" OFF)
  
  cmake_dependent_option(ENABLE_NOTIFY "Enable libnotify support." YES "ENABLE_GTK_UI;NOT APPLE" NO)
 +cmake_dependent_option(ENABLE_READLINE "Enable readline support." YES "ENABLE_CONSOLE_UI" NO)
  cmake_dependent_option(ENABLE_ASSISTANT "Turn on assistant compiling." YES "ENABLE_GTK_UI" NO)
  
- # Hidden non-cache options:
+ option(ENABLE_SRTP "Build with the SRTP transport support." YES)
 @@ -156,6 +157,15 @@ if(ENABLE_TUNNEL)
  		set(ENABLE_TUNNEL OFF CACHE BOOL "Enable tunnel support." FORCE)
  	endif()

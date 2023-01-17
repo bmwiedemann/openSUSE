@@ -14,15 +14,6 @@ diff -Nraub liblinphone-5.0.22.ori/CMakeLists.txt liblinphone-5.0.22/CMakeLists.
 diff -Nraub liblinphone-5.0.22.ori/src/CMakeLists.txt liblinphone-5.0.22/src/CMakeLists.txt
 --- liblinphone-5.0.22.ori/src/CMakeLists.txt	2021-09-09 23:33:57.000000000 -0400
 +++ liblinphone-5.0.22/src/CMakeLists.txt	2021-09-11 22:29:46.614904584 -0400
-@@ -32,7 +32,7 @@
- 	if (XCODE)
- 		list(APPEND LINK_LIBS jsoncpp_static)
- 	else()
--		list(APPEND LINK_LIBS jsoncpp_object)
-+		list(APPEND LINK_LIBS jsoncpp)
- 	endif()
- endif()
- 
 @@ -589,7 +589,7 @@
  		if (XCODE)
  			target_link_libraries(linphone PRIVATE jsoncpp_static)
@@ -40,16 +31,4 @@ diff -Nraub liblinphone-5.0.22.ori/src/CMakeLists.txt liblinphone-5.0.22/src/CMa
 +			target_link_libraries(linphone PRIVATE jsoncpp)
  		endif()
  	endif()
- 
-diff -Nraub liblinphone-5.0.22.ori/tester/CMakeLists.txt liblinphone-5.0.22/tester/CMakeLists.txt
---- liblinphone-5.0.22.ori/tester/CMakeLists.txt	2021-09-09 23:33:57.000000000 -0400
-+++ liblinphone-5.0.22/tester/CMakeLists.txt	2021-09-11 22:29:46.618904459 -0400
-@@ -34,7 +34,7 @@
- 	if (XCODE)
- 		list(APPEND OTHER_LIBS_FOR_TESTER jsoncpp_static)
- 	else()
--		list(APPEND OTHER_LIBS_FOR_TESTER jsoncpp_object)
-+		list(APPEND OTHER_LIBS_FOR_TESTER jsoncpp)
- 	endif()
- endif()
  

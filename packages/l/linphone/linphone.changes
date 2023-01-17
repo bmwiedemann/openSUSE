@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 11 03:06:07 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.10
+
+- Update to version 5.2.10:
+  * Video conferencing feature with "mosaic" and "active speaker + thumbnails" layouts
+  * Added conferencing scheduling API
+  * Support for post-quantum robust encryption for ZRTP calls
+  * Rtp bundle can be enabled per LinphoneAccount
+  * New APIs on Friend object to be able to set more info
+  * QRCode image generation
+  * Licence becomes AGPLv3
+
+-------------------------------------------------------------------
 Sat Sep 10 12:21:42 UTC 2022 - thod_@gmx.de
 
 - Update to version 5.1.58

@@ -1,7 +1,7 @@
 #
 # spec file for package linphone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,10 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.1.58
+Version:        5.2.10
 Release:        0
 Summary:        Web Phone
-License:        GPL-3.0-or-later
+License:        AGPL-3.0-or-later
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(libbzrtp) >= 5.0.0
 BuildRequires:  pkgconfig(libosip2)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
+BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(libv4l2) >= 0.8.4
@@ -93,6 +94,7 @@ BuildRequires:  pkgconfig(ortp) >= 5.0.0
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
+BuildRequires:  pkgconfig(zxing)
 %if 0%{?use_system_ldap}
 %if 0%{?suse_version}
 BuildRequires:  openldap2-devel
@@ -286,6 +288,7 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
   -DENABLE_TOOLS=OFF           \
   -DENABLE_STRICT=OFF          \
   -DENABLE_STATIC=OFF          \
+  -DENABLE_FLEXIAPI=OFF        \
   -DCMAKE_LINK_WHAT_YOU_USE=ON
 
 %cmake_build
@@ -377,6 +380,6 @@ cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/Linphone/
 %{_datadir}/LinphoneCxx/
-%{_datadir}/doc/lib%{name}-5.1.0/
+%{_datadir}/doc/lib%{name}-5.2.0/
 
 %changelog

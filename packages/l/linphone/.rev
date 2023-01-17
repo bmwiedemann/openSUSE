@@ -151,4 +151,20 @@
     <comment></comment>
     <requestid>1036601</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>049179da61989057fc1b4a9fd00dd760</srcmd5>
+    <version>5.2.10</version>
+    <time>1673973299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.10:
+  * Video conferencing feature with &quot;mosaic&quot; and &quot;active speaker + thumbnails&quot; layouts
+  * Added conferencing scheduling API
+  * Support for post-quantum robust encryption for ZRTP calls
+  * Rtp bundle can be enabled per LinphoneAccount
+  * New APIs on Friend object to be able to set more info
+  * QRCode image generation
+  * Licence becomes AGPLv3
+</comment>
+    <requestid>1058089</requestid>
+  </revision>
 </revisionlist>

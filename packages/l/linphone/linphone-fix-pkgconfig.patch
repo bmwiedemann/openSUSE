@@ -1,7 +1,7 @@
 --- a/share/CMakeLists.txt
 +++ b/share/CMakeLists.txt
 @@ -35,6 +35,15 @@ install(FILES ${GRAMMAR_FILES}
- 	PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+ 	PARENT_SCOPE
  )
  
 +set(LINPHONE_CFLAGS ${LINPHONE_CPPFLAGS})
@@ -13,9 +13,9 @@
 +configure_file(${CMAKE_CURRENT_SOURCE_DIR}/linphone.pc.in ${CMAKE_CURRENT_BINARY_DIR}/linphone.pc)
 +install(FILES ${CMAKE_CURRENT_BINARY_DIR}/linphone.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 +
- set(SOUND_FILES
- 	hello16000.wav
- 	hello8000.wav
+ if(ENABLE_ASSETS)
+ 	set(SOUND_FILES
+ 		"${CMAKE_CURRENT_SOURCE_DIR}/hello16000.wav"
 --- a/share/linphone.pc.in
 +++ b/share/linphone.pc.in
 @@ -3,7 +3,7 @@ exec_prefix=@exec_prefix@
