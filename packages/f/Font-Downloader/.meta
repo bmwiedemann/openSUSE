@@ -1,0 +1,9 @@
+<package name="Font-Downloader" project="openSUSE:Factory">
+  <title>Install fonts from online sources</title>
+  <description>Font-Downloader is an application allows you to search and install fonts
+directly from the Google Fonts website.
+
+</description>
+  <devel project="M17N" package="Font-Downloader"/>
+  <url>https://github.com/GustavoPeredo/Font-Downloader</url>
+</package>
