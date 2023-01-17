@@ -72,4 +72,15 @@
     <comment></comment>
     <requestid>1008122</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78631bc0fa1e5eccd211dc8268086d94</srcmd5>
+    <version>0.1.11</version>
+    <time>1673973324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.11:
+  - Move codeAction Command* to pylsp_rope.refactoring
+  - Implement generate.{GenerateVariable(),GenerateClass(),get_code_actions(),GenerateFunction()}.
+</comment>
+    <requestid>1058819</requestid>
+  </revision>
 </revisionlist>
