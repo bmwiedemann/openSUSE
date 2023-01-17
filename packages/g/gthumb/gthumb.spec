@@ -1,7 +1,7 @@
 #
 # spec file for package gthumb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
 Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
-
+# PATCH-FIx-UPSTREAM da0d3f22.patch dimstar@opensuse.org -- Fix build with libraw 0.21
+Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/da0d3f22.patch
 BuildRequires:  AppStream
 BuildRequires:  bison
 BuildRequires:  fdupes
