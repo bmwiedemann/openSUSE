@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 14 21:46:21 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply 1441bec703cf68161acce5e85907ddd71c47fdc3.patch from upstream
+  project in order to build with Leptonica 1.83.0
+- Make tests work again
+
+-------------------------------------------------------------------
 Fri Nov 11 13:26:52 UTC 2022 - pgajdos@suse.com
 
 - silent rpmlint

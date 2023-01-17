@@ -1,7 +1,7 @@
 #
 # spec file for package python-tesserocr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sirfz/tesserocr
 Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-%{version}.tar.gz
+Patch1:         1441bec703cf68161acce5e85907ddd71c47fdc3.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
@@ -51,6 +52,7 @@ GIL while processing an image in tesseract.
 
 %prep
 %setup -q -n tesserocr-%{version}
+%patch1 -p1
 
 %build
 %python_build
@@ -59,6 +61,7 @@ GIL while processing an image in tesseract.
 %python_install
 
 %check
+export TESSDATA_PREFIX=/usr/share/tessdata
 %python_exec setup.py develop --user
 # test_LSTM_choices failure: https://github.com/sirfz/tesserocr/issues/214
 %pytest -k 'not test_LSTM_choices'
