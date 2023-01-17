@@ -691,4 +691,12 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
     <comment></comment>
     <requestid>1038678</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9e391dd7f88c0071047272c55d77ac7d</srcmd5>
+    <version>2.17.0</version>
+    <time>1673973286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058668</requestid>
+  </revision>
 </revisionlist>
