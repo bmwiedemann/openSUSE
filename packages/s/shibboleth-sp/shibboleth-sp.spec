@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0
 Group:          Productivity/Networking/Security
 URL:            https://shibboleth.net/
-Source0:        http://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2.asc
+Source0:        https://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        shibd.service
 Patch0:         shibboleth-sp-2.5.5-doxygen_timestamp.patch
