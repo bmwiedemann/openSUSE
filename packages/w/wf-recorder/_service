@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/ammen99/wf-recorder.git</param>
-    <param name="revision">bb7aff7a52598b70b87da351822e8e58caa1a973</param>
+    <param name="revision">460d454b1efd380a3f732f6fd70c7a5e265381f6</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

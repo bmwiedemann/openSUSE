@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 17 11:40:17 UTC 2023 - llyyr.public@gmail.com
+
+- Update to version 0.3.0+git19:
+  * Gracefully terminate on SIGTERM/SIGHUP to avoid corruption (#183)
+  * Fix meson deprecation warning
+  * Replace deprecated av_init_packet() calls
+  * FrameRate Changes, Implement CFR and estimated buffer framerate (#190)
+  * Use VP8+Vorbis on WebM for recordings (#202)
+  * Add GitHub Actions CI to test the build (#201)
+  * README: Flesh out build dependencies for building from source (#203)
+  * build: Fix compile failure introduced by last commit (#200)
+  * Add a compile-time option to set the default container file format
+  * README: Update Fedora build and install documentation
+  * Use VP9+Opus on MKV for recordings
+  * Add default codec parameters for libvpx/libvpx-vp9. (#197)
+
+-------------------------------------------------------------------
 Tue Sep 13 12:15:24 UTC 2022 - llyyr.public@gmail.com
 
 - Update to version 0.3.0+git7:
