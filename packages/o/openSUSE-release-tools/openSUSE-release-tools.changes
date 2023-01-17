@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jan 10 07:04:27 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230110.5f7806f:
+  * Switch to ci-test.yml to actions/checkout@v3 and codecov/codecov-action@v3
+  * Drop gocd pipelines for 15.3
+
+-------------------------------------------------------------------
+Thu Jan 05 17:56:47 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230105.9011ec4:
+  * consistency: remove .sh suffix from openh264_release_to_publish.sh
+  * add set -e to remaining openh264 scripts as well
+  * add set -e to not hide any failures
+  * add openh264 tools into CONTENTS.md
+  * reflect change in script name
+  * fix date pattern %M->%m
+  * Add date into archive name
+  * Spellcheck from cboltz
+  * Use api.opensuse.org instead
+  * Scriptw for manual release workflow of OpenH264
+
+-------------------------------------------------------------------
+Tue Jan 03 10:09:44 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230103.b4e2549:
+  * retab publish_distro
+  * check_source_tests: Adopt expected error to latest changes
+  * metrics.py: Fix E741 ('l' may look like 'I')
+  * More fixes for editor config compliance
+  * gocd: Apply editorconfig standards
+  * publish_distro_conf: Apply editor config standards
+  * Validate that the files match the editor config
+
+-------------------------------------------------------------------
+Mon Jan 02 13:36:49 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230102.e49b449:
+  * dashboard: remove 15.3 (EOL)
+
+-------------------------------------------------------------------
 Fri Dec 16 11:21:11 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20221216.84941bd:
