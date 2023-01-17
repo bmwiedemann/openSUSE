@@ -244,7 +244,7 @@ index 000000000000..ce48ff1ff451
 +{
 +	if (!n)
 +		return 0;
-+	return 63 - __builtin_clz(n);
++	return 63 - __builtin_clzl(n);
 +}
 +
 +static UCS_F_ALWAYS_INLINE unsigned ucs_ffs32(uint32_t n)

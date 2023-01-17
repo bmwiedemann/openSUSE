@@ -218,4 +218,12 @@
 - Drop baselibs.conf as openucx only works on 64b systems</comment>
     <requestid>1008219</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>7429e837f5f43efdb79cffb405c3989e</srcmd5>
+    <version>1.13.1</version>
+    <time>1673973287</time>
+    <user>dimstar_suse</user>
+    <comment>- openucx-s390x-support.patch: fix use of clz builtin for 64-bit value (forwarded request 1058654 from Andreas_Schwab)</comment>
+    <requestid>1058681</requestid>
+  </revision>
 </revisionlist>

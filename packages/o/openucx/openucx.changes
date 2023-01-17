@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 09:45:05 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- openucx-s390x-support.patch: fix use of clz builtin for 64-bit value
+
+-------------------------------------------------------------------
 Tue Oct  4 16:39:30 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update openucx-s390x-support.patch to add missing ucs_ffs32 on s390x
