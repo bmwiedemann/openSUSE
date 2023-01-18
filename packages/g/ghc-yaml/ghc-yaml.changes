@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 24 11:27:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yaml to version 0.11.8.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Feb 24 12:19:07 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yaml to version 0.11.8.0.
