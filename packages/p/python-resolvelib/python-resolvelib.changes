@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 18 08:12:49 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- ignore some faulty tests
+  Because of python-packaging version: gh#sarugaku/resolvelib#114
+
+-------------------------------------------------------------------
 Thu Dec 15 21:03:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add comment on why we need to stay with < 0.9.0 (bsc#1206225)

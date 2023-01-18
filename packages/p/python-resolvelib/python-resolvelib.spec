@@ -1,7 +1,7 @@
 #
 # spec file for package python-resolvelib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-resolvelib
 # ansible-core 2.14.x is currently requiring < 0.9.0
 Version:        0.8.1
@@ -27,8 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/resolvelib
 Source:         https://github.com/sarugaku/resolvelib/archive/%{version}.tar.gz#/resolvelib-%{version}.tar.gz
 BuildRequires:  %{python_module commentjson}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,17 +41,20 @@ A Python module to resolve abstract dependencies into concrete ones.
 %setup -q -n resolvelib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Ignoring some faulty tests because of python-packaging version:
+# gh#sarugaku/resolvelib#114
+%pytest --ignore tests/functional/cocoapods/test_resolvers_cocoapods.py --ignore tests/functional/python/test_resolvers_python.py
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/resolvelib
+%{python_sitelib}/resolvelib-%{version}*info
 
 %changelog

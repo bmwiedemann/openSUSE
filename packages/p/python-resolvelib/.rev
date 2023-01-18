@@ -119,4 +119,14 @@
     <comment>- add comment on why we need to stay with &lt; 0.9.0 (bsc#1206225)</comment>
     <requestid>1043226</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>487e9b8fb19df7593f2daca2cdadba3d</srcmd5>
+    <version>0.8.1</version>
+    <time>1674043955</time>
+    <user>dimstar_suse</user>
+    <comment>- ignore some faulty tests
+  Because of python-packaging version: gh#sarugaku/resolvelib#114
+</comment>
+    <requestid>1059315</requestid>
+  </revision>
 </revisionlist>
