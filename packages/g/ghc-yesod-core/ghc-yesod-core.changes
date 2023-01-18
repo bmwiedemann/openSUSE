@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 07:24:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.24.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Jul 20 15:05:36 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.24.0.
