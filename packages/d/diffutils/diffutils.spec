@@ -1,7 +1,7 @@
 #
 # spec file for package diffutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diffutils
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        GNU diff Utilities
 License:        GFDL-1.2-only AND GPL-3.0-or-later
@@ -25,7 +25,7 @@ Group:          Productivity/Text/Utilities
 URL:            https://www.gnu.org/software/diffutils/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=diffutils&download=1#/%{name}.keyring
 Provides:       diff = %{version}
 Obsoletes:      diff < %{version}
 
