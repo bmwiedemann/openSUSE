@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jan 17 03:29:22 UTC 2023 - william.brown@suse.com
+
+- Update to version 20230117:
+  * Assigned RUSTSEC-2022-0080 to parity-util-mem (#1530)
+  * Add parity-util-mem unmaintained (#1528)
+  * Assigned RUSTSEC-2021-0146 to twoway (#1529)
+  * Add unmaintained `twoway` (#1435)
+  * Assigned RUSTSEC-2022-0079 to elf_rs (#1527)
+  * Add advisory for elf_rs crate (#1450)
+  * Update RUSTSEC-2021-0088.md (#1512)
+  * Assigned RUSTSEC-2022-0078 to bumpalo (#1526)
+  * Add advisory for bumpalo Vec iterator unsoundness (#1525)
+  * Assigned RUSTSEC-2022-0077 to claim (#1523)
+
+-------------------------------------------------------------------
 Tue Nov 01 22:16:48 UTC 2022 - william.brown@suse.com
 
 - Update to version 20221102:
