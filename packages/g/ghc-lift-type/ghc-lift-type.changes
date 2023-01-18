@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 24 18:42:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lift-type to version 0.1.1.1.
+  ## 0.1.1.1
+
+  - Fix lifting the `Data.Kind.Type` into a `TemplateHaskell.Type` [#9](https://github.com/parsonsmatt/lift-type/pull/9)
+
+  ## 0.1.1.0
+
+  - Cleanup and a slight performance improvement [#7](https://github.com/parsonsmatt/lift-type/pull/7)
+  - Implement `typeRepToType :: SomeTypeRep -> Type` [#8](https://github.com/parsonsmatt/lift-type/pull/8)
+
+-------------------------------------------------------------------
 Fri May  7 09:37:14 UTC 2021 - psimons@suse.com
 
 - Add lift-type at version 0.1.0.1.
