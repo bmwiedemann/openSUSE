@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Nov  3 14:43:05 UTC 2022 - Antoine Ginies <aginies@suse.com>
+
+- version 2.1:
+  * various lint fixes
+  * improve help usage
+  * add select_vm to choose VM on connected hypervisor
+  * improve prompt
+  * add some more xml files
+  * remove unwanted import sys
+
+-------------------------------------------------------------------
+Fri Oct 14 11:55:09 UTC 2022 - Antoine Ginies <aginies@suse.com>
+
+- first package release
