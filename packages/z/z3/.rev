@@ -316,4 +316,12 @@
   * handle _toExpr for quantified formulas in JS bindings (forwarded request 1003043 from dirkmueller)</comment>
     <requestid>1003077</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8e4715062b905dc249bd272fefa74b59</srcmd5>
+    <version>4.12.0</version>
+    <time>1674043968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059321</requestid>
+  </revision>
 </revisionlist>

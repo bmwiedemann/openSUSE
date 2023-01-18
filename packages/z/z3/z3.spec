@@ -1,7 +1,7 @@
 #
 # spec file for package z3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 4_11
+%define sover 4_12
 Name:           z3
-Version:        4.11.2
+Version:        4.12.0
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
@@ -61,6 +61,7 @@ Development files for the Z3 library.
 Summary:        Python bindings for Z3
 Group:          Development/Languages/Python
 Requires:       libz3-%{sover} = %{version}
+BuildArch:      noarch
 
 %description -n python3-%{name}
 Python bindings for the Z3 library.
