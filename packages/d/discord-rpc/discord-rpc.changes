@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 14:23:53 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Don't recommend discord, just suggest it. We don't want it installed
+  just because some game or other application uses the rpc lib,
+  especially because it's also not FOSS.  
+
+-------------------------------------------------------------------
 Tue Jun 21 15:00:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Add-some-library-versioning.patch to further SLPP
