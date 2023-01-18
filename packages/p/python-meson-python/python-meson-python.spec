@@ -1,7 +1,7 @@
 #
 # spec file for package python-meson-python
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-meson-python
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
@@ -26,27 +26,27 @@ Source0:        https://files.pythonhosted.org/packages/source/m/meson_python/me
 # for the test suite
 Source1:        https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
 Source2:        https://files.pythonhosted.org/packages/py3/p/pyproject_metadata/pyproject_metadata-0.6.1-py3-none-any.whl
-Source3:        https://files.pythonhosted.org/packages/py3/p/packaging/packaging-21.3-py3-none-any.whl
-Source4:        https://files.pythonhosted.org/packages/py3/p/pyparsing/pyparsing-3.0.9-py3-none-any.whl
+Source3:        https://files.pythonhosted.org/packages/py3/p/packaging/packaging-23.0-py3-none-any.whl
+Source4:        https://files.pythonhosted.org/packages/py3/t/typing_extensions/typing_extensions-4.4.0-py3-none-any.whl
 # PATCH-FEATURE-OPENSUSE mesonpy-trim-deps.patch code@bnavigator.de
 Patch11:        mesonpy-trim-deps.patch
 # PATCH-FEATURE-OPENSUSE mesonpy-no-wheel-rebuild.patch code@bnavigator.de
 Patch12:        mesonpy-no-wheel-rebuild.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyproject-metadata >= 0.5.0}
+BuildRequires:  %{python_module pyproject-metadata >= 0.6.1}
 BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
-BuildRequires:  %{python_module typing-extensions >= 3.7.4 if %python-base < 3.8}
+BuildRequires:  %{python_module typing-extensions >= 3.7.4 if %python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.63.3
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 Requires:       meson >= 0.63.3
-Requires:       python-pyproject-metadata >= 0.5.0
+Requires:       python-pyproject-metadata >= 0.6.1
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli >= 1.0.0
 %endif
-%if 0%{python_version_nodots} < 38
+%if 0%{python_version_nodots} < 310
 Requires:       python-typing-extensions >= 3.7.4
 %endif
 # SECTION test
@@ -54,7 +54,6 @@ BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyproject-metadata >= 0.6.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -79,11 +78,7 @@ Python build backend (PEP 517) for Meson projects.
 %check
 export MESONPY_FORCE_LOCAL_LIB=1
 %python_expand cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} build/
-# can test test_spam only once gh#mesonbuild/meson-python#169
-# this has benn fixed shortly after the release of 0.11
-%python_expand $python_ignore="--ignore tests/docs/examples/test_spam.py"
-unset python310_ignore
-%pytest ${$python_ignore}
+%pytest
 
 %files %{python_files}
 %license LICENSE
