@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Dec 12 16:53:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20221212.
+  git-annex (10.20221212) upstream; urgency=medium
+
+    * Fix a hang that occasionally occurred during commands such as move,
+      when operating on unlocked files. (A bug introduced in 10.20220927)
+    * When youtube-dl is not available in PATH, use yt-dlp instead.
+    * Support parsing yt-dpl output to display download progress.
+    * init: Avoid scanning for annexed files, which can be lengthy in a
+      large repository. Instead that scan is done on demand.
+    * Sped up the initial scan for annexed files by 21%.
+    * test: Add --test-debug option.
+    * Support quettabyte and yottabyte.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 12 Dec 2022 12:20:06 -0400
+
+  git-annex (10.20221104) upstream; urgency=medium
+
+    * export: Fix a bug that left a file on a special remote when
+      two files with the same content were both deleted in the exported tree.
+    * S3: Support signature=anonymous to access a S3 bucket anonymously.
+      This can be used, for example, with importtree=yes to import from
+      a public bucket.
+      This feature needs git-annex to be built with aws-0.23.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 03 Nov 2022 14:07:31 -0400
+
+-------------------------------------------------------------------
+Thu Nov  3 18:09:01 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20221103.
+  git-annex (10.20221103) upstream; urgency=medium
+
+    * Doubled the speed of git-annex drop when operating on many files,
+      and of git-annex get when operating on many tiny files.
+    * trust, untrust, semitrust, dead: Fix behavior when provided with
+      multiple repositories to operate on.
+    * trust, untrust, semitrust, dead: When provided with no parameters,
+      do not operate on a repository that has an empty name.
+    * move: Fix openFile crash with -J
+      (Fixes a reversion in 8.20201103)
+    * S3: Speed up importing from a large bucket when fileprefix= is set,
+      by only asking for files under the prefix.
+    * When importing from versioned remotes, fix tracking of the content
+      of deleted files.
+    * More robust handling of ErrorBusy when writing to sqlite databases.
+    * Avoid hanging when a suspended git-annex process is keeping a sqlite
+      database locked.
+    * Make --batch mode handle unstaged annexed files consistently
+      whether the file is unlocked or not. Note that this changes the
+      behavior of --batch when it is provided with locked files that are
+      in the process of being added to the repository, but have not yet been
+      staged in git.
+    * Make git-annex enable-tor work when using the linux standalone build.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 03 Nov 2022 14:07:31 -0400
+
+-------------------------------------------------------------------
 Mon Oct  3 17:25:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20221003.
