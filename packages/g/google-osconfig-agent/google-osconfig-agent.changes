@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 18 10:19:55 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221214.00
+  * Close clients that are not passed anywhere (#450)
+
+-------------------------------------------------------------------
 Fri Oct 21 13:12:03 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20221013.01
