@@ -79,4 +79,16 @@
     <comment></comment>
     <requestid>1006078</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>765de9e70b7df1ff90f2a34c5dc03ff8</srcmd5>
+    <version>0.20.7</version>
+    <time>1674048198</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-45299-update-webbrowser.patch (copied from
+  gh#tree-sitter/tree-sitter#2042) to use more recent version
+  of webbrowser-rs, which has been fixed against CVE-2022-45299
+  (bsc#1207196).
+</comment>
+    <requestid>1059323</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 18 10:05:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2022-45299-update-webbrowser.patch (copied from
+  gh#tree-sitter/tree-sitter#2042) to use more recent version
+  of webbrowser-rs, which has been fixed against CVE-2022-45299
+  (bsc#1207196).
+
+-------------------------------------------------------------------
 Sat Sep 24 09:49:29 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 0.20.7:

@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ URL:            https://tree-sitter.github.io/
 Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+# PATCH-FIX-UPSTREAM CVE-2022-45299-update-webbrowser.patch bsc#1207196 mcepl@suse.com
+# Use more recent version of webbrowser-rs
+Patch0:         CVE-2022-45299-update-webbrowser.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  rust > 1.40
 Requires:       lib%{name}%{somajor} = %{version}
@@ -63,6 +66,7 @@ developing applications that use %{name}.
 
 %prep
 %autosetup -p1 -a1
+
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
