@@ -1,7 +1,7 @@
 #
 # spec file for package chromium
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Callum Farmer <gmbr3@opensuse.org>
 # Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -22,10 +22,6 @@
 %define outputdir out
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
-# Compiler
-%bcond_without clang
-# Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
-%bcond_without lto
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %bcond_without gtk4
 %bcond_without qt
@@ -53,18 +49,6 @@
 %bcond_with ffmpeg_51
 %bcond_with system_avif
 %endif
-%bcond_without pipewire
-%bcond_without system_ffmpeg
-%bcond_without system_zlib
-%bcond_with system_vpx
-
-# FFmpeg version
-%if %{with ffmpeg_51}
-%define ffmpeg_version 59
-%else
-%define ffmpeg_version 58
-%endif
-
 # LLVM version
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
 %define llvm_version 12
@@ -75,7 +59,20 @@
 %define llvm_version 15
 %endif
 %endif
-
+# Compiler
+%bcond_without clang
+# Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
+%bcond_without lto
+%bcond_without pipewire
+%bcond_without system_ffmpeg
+%bcond_without system_zlib
+%bcond_with system_vpx
+# FFmpeg version
+%if %{with ffmpeg_51}
+%define ffmpeg_version 59
+%else
+%define ffmpeg_version 58
+%endif
 Name:           chromium
 Version:        109.0.5414.74
 Release:        0
@@ -130,6 +127,9 @@ Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
 Patch206:       chromium-109-clang-lp154.patch
+Patch207:       chromium-icu72-1.patch
+Patch208:       chromium-icu72-2.patch
+Patch209:       chromium-icu72-3.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -141,10 +141,11 @@ BuildRequires:  git
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
-BuildRequires:  libcap-devel
 BuildRequires:  libdc1394
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgsm-devel
@@ -152,7 +153,6 @@ BuildRequires:  libjpeg-devel >= 8.1
 BuildRequires:  libpng-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nasm
-BuildRequires:  ncurses-devel
 BuildRequires:  ninja >= 1.7.2
 BuildRequires:  nodejs >= 8.0
 BuildRequires:  pam-devel
@@ -160,12 +160,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
 BuildRequires:  wdiff
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  perl(Switch)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bzip2)
@@ -175,6 +173,8 @@ BuildRequires:  pkgconfig(dirac) >= 1.0.0
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(hunspell)
@@ -183,6 +183,7 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(kadm-client)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdc1394-2)
@@ -200,18 +201,28 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
 BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus) >= 1.3.1
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(schroedinger-1.0)
 BuildRequires:  pkgconfig(slang)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora) >= 1.1
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(tinfo)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(wayland-client)
@@ -298,12 +309,12 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
-#!BuildIgnore:  gcc
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  gcc11
 BuildRequires:  libstdc++6-devel-gcc11
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
+#!BuildIgnore:  gcc
 %else
 BuildRequires:  clang
 BuildRequires:  libstdc++-devel

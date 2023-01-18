@@ -1,0 +1,55 @@
+From 103e1ff08c00590be56c98aa5647e92c7fa78631 Mon Sep 17 00:00:00 2001
+From: Mustafa Emre Acer <meacer@chromium.org>
+Date: Fri, 18 Nov 2022 22:52:00 +0000
+Subject: [PATCH] IDN Spoof Checks: Disallow ZWJ and ZWNJ in ICU versions below
+ 72
+
+ICU 72 updates to Unicode 15 which changes the zero width joiner (ZWJ)
+and zero width non-joiner (ZWNJ) characters from
+Identifier_Status=Allowed to Identifier_Status=Restricted. These
+characters are therefore no longer allowed by default in ICU 72.
+
+crbug/694157 recently implemented Non-Transitional IDNA 2008 behind a
+flag. ZWJ and ZWNJ are disallowed in Transitional Mode but allowed in
+Non-Transitional Mode, so the test cases with the Non-Transitional Mode
+enabled fail in ICU 72.
+
+This CL removes ZWJ and ZWNJ from the allowed identifiers set for
+ICU versions below 72. This effectively disables these characters even
+in Non-Transitional Mode.
+
+This is a temporary fix. Once ICU 72 is rolled out, we should check if
+we can use UIDNA_CHECK_CONTEXTJ and explicitly add ZWJ and ZWNJ to
+the allowed sets again.
+
+Bug: 1386204, 694157
+Change-Id: I606c43b9d94fea0f2331e5aed530f633bb94517c
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4038542
+Reviewed-by: Frank Tang <ftang@chromium.org>
+Commit-Queue: Mustafa Emre Acer <meacer@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1073605}
+---
+ .../spoof_checks/idn_spoof_checker.cc         |  9 ++++++
+ .../idn_spoof_checker_unittest.cc             | 28 +++++++++++--------
+ 2 files changed, 25 insertions(+), 12 deletions(-)
+
+diff --git a/components/url_formatter/spoof_checks/idn_spoof_checker.cc b/components/url_formatter/spoof_checks/idn_spoof_checker.cc
+index aaff7c60bb918..87f62e49f487f 100644
+--- a/components/url_formatter/spoof_checks/idn_spoof_checker.cc
++++ b/components/url_formatter/spoof_checks/idn_spoof_checker.cc
+@@ -713,6 +713,15 @@ void IDNSpoofChecker::SetAllowedUnicodeSet(UErrorCode* status) {
+   allowed_set.remove(0xA640u, 0xA69Fu);  // Cyrillic Extended-B
+   allowed_set.remove(0xA720u, 0xA7FFu);  // Latin Extended-D
+ 
++#if U_ICU_VERSION_MAJOR_NUM < 72
++  // Unicode 15 changes ZWJ and ZWNJ from allowed to restricted. Restrict them
++  // in lower versions too. This only relevant in Non-Transitional Mode as
++  // Transitional Mode maps these characters out.
++  // TODO(crbug.com/1386204): Remove these after ICU 72 is rolled out.
++  allowed_set.remove(0x200Cu);  // Zero Width Non-Joiner
++  allowed_set.remove(0x200Du);  // Zero Width Joiner
++#endif
++
+   uspoof_setAllowedUnicodeSet(checker_, &allowed_set, status);
+ }
+ 

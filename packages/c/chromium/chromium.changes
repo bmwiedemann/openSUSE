@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 17 21:03:29 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Added patches:
+  * chromium-icu72-1.patch: ensure TextCodecCJK doesn't conflict
+    with system icu (bsc#1207147)
+  * chromium-icu72-2.patch: align default characters for old icu
+    with that of ICU 72
+  * chromium-icu72-3.patch: make V8 aware of space in ICU 72 time
+    format
+
+-------------------------------------------------------------------
 Tue Jan 10 21:24:55 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 109.0.5414.74:
