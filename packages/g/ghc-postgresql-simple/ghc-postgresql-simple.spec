@@ -19,13 +19,12 @@
 %global pkg_name postgresql-simple
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Mid-Level PostgreSQL client library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/8.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Only-devel
 BuildRequires:  ghc-aeson-devel
@@ -72,7 +71,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
