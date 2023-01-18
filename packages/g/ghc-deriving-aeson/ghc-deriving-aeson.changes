@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan  8 14:38:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update deriving-aeson to version 0.2.9.
+  ## 0.2.9
+
+  * Fixed a bug in chaining `ConstructorTagModifier` & `FieldLabelModifier`
+
+-------------------------------------------------------------------
 Thu Jun 16 00:50:00 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add deriving-aeson at version 0.2.8 revision 1.
