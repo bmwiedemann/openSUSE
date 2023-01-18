@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 30 05:50:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update Cabal-syntax to version 3.8.1.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Aug 15 09:05:07 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update Cabal-syntax to version 3.8.1.0 revision 1.
