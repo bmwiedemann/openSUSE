@@ -1,7 +1,7 @@
 Format: 1.0
 Source: grommunio-index
 Architecture: any
-Version: 0.1.16.e01e06c
+Version: 0.1.18.6a0f73a
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Grommunio <null@grommunio.com>
 Homepage: https://grommunio.com/

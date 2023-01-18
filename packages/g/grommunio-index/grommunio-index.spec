@@ -17,7 +17,7 @@
 
 
 Name:           grommunio-index
-Version:        0.1.16.e01e06c
+Version:        0.1.18.6a0f73a
 Release:        0
 Summary:        Generator for grommunio-web search indexes
 License:        AGPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  libexmdbpp0 >= 1.8.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 Requires:       libexmdbpp0 >= 1.8.0
+Requires:       user(groweb)
 %define services grommunio-index.service grommunio-index.timer
 
 %description
