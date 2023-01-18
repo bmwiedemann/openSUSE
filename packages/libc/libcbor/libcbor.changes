@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jan 16 15:32:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.1: 
+  * BREAKING: Fix cbor_copy leaking memory and creating invalid items when the allocator fails.
+  * BREAKING: Improved half-float encoding for denormalized numbers. [#208]
+  * Make the buffer_size optional in cbor_serialize_alloc [#205]
+  * Fix a potential memory leak when the allocator fails during array or map decoding [#224]
+  * Fix a memory leak when the allocator fails when adding chunks to indefinite bytestrings.
+  * Fix a memory leak when the allocator fails when adding chunks to indefinite strings
+  * Fix cbor_build_tag illegal memory behavior when the allocator fails
+  * Add a new cbor_serialized_size API
+  * Reworked cbor_serialize_alloc to allocate the exact amount of memory necessary upfront
+
+-------------------------------------------------------------------
 Fri Aug 26 05:23:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install manual page in the correct man section

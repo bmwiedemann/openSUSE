@@ -1,7 +1,7 @@
 #
 # spec file for package libcbor-doc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define socurrent  0
-%define sorevision 9
-%define soage      0
+%define sorevision 10
+%define soage      1
 %define lname   libcbor%{socurrent}_%{sorevision}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "doc"
@@ -26,7 +26,7 @@ Name:           libcbor-doc
 %else
 Name:           libcbor
 %endif
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        Library for parsing Concise Binary Object Representation (CBOR)
 License:        MIT
@@ -76,6 +76,8 @@ The libcbor-devel contains libraries and header files for libcbor.
 sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig|${CMAKE_INSTALL_LIBDIR}/pkgconfig|' src/CMakeLists.txt
 
 %build
+export CFLAGS="%(echo %{optflags}) -Wno-return-type"
+export CXXFLAGS="$CFLAGS"
 %if "%{flavor}" == "doc"
 %make_build -C doc man
 %else
