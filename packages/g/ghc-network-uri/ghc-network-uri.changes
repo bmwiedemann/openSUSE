@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec 27 01:43:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update network-uri to version 2.6.4.2.
+  # network-uri-2.6.4.2 (2022-12-18)
+  * Fix warnings, `-Wtrustworthy-safe` and `-Woperator-whitespace-ext-conflict` on GHC 9.4.
+  * Slightly improved test coverage.
+
+-------------------------------------------------------------------
 Mon Feb  8 05:05:56 UTC 2021 - psimons@suse.com
 
 - Update network-uri to version 2.6.4.1.
