@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  9 16:30:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microstache to version 1.0.2.3.
+  ## microstache 1.0.2.3
+
+  - Support `parsec-3.1.16.*`
+
+-------------------------------------------------------------------
 Thu Aug 11 15:04:04 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update microstache to version 1.0.2.2.
