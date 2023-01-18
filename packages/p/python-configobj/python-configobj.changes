@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 21:16:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools 
+
+-------------------------------------------------------------------
 Tue Dec  4 12:46:48 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

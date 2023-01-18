@@ -1,7 +1,7 @@
 #
 # spec file for package python-configobj
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,22 +21,22 @@
 Name:           python-configobj
 Version:        5.0.6
 Release:        0
-Url:            https://github.com/DiffSK/configobj
 Summary:        Config file reading, writing and validation
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
+URL:            https://github.com/DiffSK/configobj
 Source:         https://files.pythonhosted.org/packages/source/c/configobj/configobj-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+BuildArch:      noarch
 # There are no real docs!
 %ifpython2
 Obsoletes:      %{oldpython}-configobj-docs < %{version}
 Provides:       %{oldpython}-configobj-docs = %{version}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -69,7 +69,6 @@ It has lots of other features though:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitelib}/configobj.py*
 %{python_sitelib}/validate.py*
 %{python_sitelib}/_version.py*

@@ -139,4 +139,12 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>653984</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>d8d9ed50f4c32b0ad346a1e8bec93449</srcmd5>
+    <version>5.0.6</version>
+    <time>1674043694</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1058778</requestid>
+  </revision>
 </revisionlist>
