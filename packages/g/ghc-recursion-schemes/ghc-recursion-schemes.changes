@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec 26 16:33:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update recursion-schemes to version 5.2.2.3.
+  ## 5.2.2.3
+
+  * Workaround for https://gitlab.haskell.org/ghc/ghc/-/issues/18320, which was
+    preventing code calling makeBaseFunctor from being profiled.
+
+-------------------------------------------------------------------
 Mon Aug 22 20:43:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update recursion-schemes to version 5.2.2.2 revision 1.
