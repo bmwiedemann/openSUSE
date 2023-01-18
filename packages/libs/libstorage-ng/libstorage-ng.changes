@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Jan 17 12:35:45 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#912
+- allow both 'swap' and 'none' as path for swap in fstab
+- added testcase
+- 4.5.64
+
+--------------------------------------------------------------------
 Wed Jan 11 12:42:15 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#911
