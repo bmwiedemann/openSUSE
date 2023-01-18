@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 10 19:40:46 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.17.
+  concurrent-output (1.10.17) unstable; urgency=medium
+
+    * Fix ansi-terminal dependency to only include >= 0.6.2,
+      which is needed for hSupportsANSI.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 10 Jan 2023 15:40:11 -0400
+
+-------------------------------------------------------------------
 Fri May 20 23:32:14 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update concurrent-output to version 1.10.16.

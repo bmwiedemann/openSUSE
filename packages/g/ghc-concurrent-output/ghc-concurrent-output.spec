@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-concurrent-output
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name concurrent-output
 Name:           ghc-%{pkg_name}
-Version:        1.10.16
+Version:        1.10.17
 Release:        0
 Summary:        Ungarble output from several threads or commands
 License:        BSD-2-Clause
