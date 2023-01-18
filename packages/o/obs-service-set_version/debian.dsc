@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-set_version
-Version: 0.6.0-0
+Version: 0.6.1-0
 Binary: obs-service-set_version
 Provides: obs-service-set_version
 Maintainer: Dirk Mueller <dmueller@suse.de>

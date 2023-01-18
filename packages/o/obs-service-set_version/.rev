@@ -346,4 +346,15 @@
   * handle removed packaging.version.LegacyVersion (Fixes #83)</comment>
     <requestid>1056150</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c20f4683521d7cdce48be3002d46abc5</srcmd5>
+    <version>0.6.1</version>
+    <time>1674043708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1:
+  * Handle already converted versions gracefully
+  * Flake8 fixes (missing import)
+  * Test python3 by default</comment>
+    <requestid>1058989</requestid>
+  </revision>
 </revisionlist>
