@@ -17,7 +17,7 @@
 
 
 Name:           hledger-ui
-Version:        1.27.1
+Version:        1.28
 Release:        0
 Summary:        Curses-style terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-breakpoint-devel
 BuildRequires:  ghc-brick-devel
 BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-containers-devel
