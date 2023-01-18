@@ -1,7 +1,7 @@
 #
 # spec file for package xmoto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,14 +39,14 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(ode)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
-%if 0%{?suse_version} >= 1330
-BuildRequires:  pkgconfig(lua5.1)
-%else
-BuildRequires:  pkgconfig(lua)
+# Fix for: Failed loading SDL2 library on openSUSE Leap
+%if 0%{?suse_version} <= 1500
+BuildRequires:  pkgconfig(sdl2)
 %endif
 
 %description

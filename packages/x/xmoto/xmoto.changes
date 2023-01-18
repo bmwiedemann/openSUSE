@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 17 16:34:55 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires SDL2 for openSUSE Leap: fix for building with
+  sdl12_compat
+- Remove obsolete if/else BuildRequire for lua, we need lua 5.1
+
+-------------------------------------------------------------------
 Mon Aug 17 15:49:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.6.1
