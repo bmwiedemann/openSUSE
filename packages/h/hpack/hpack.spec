@@ -19,13 +19,12 @@
 %global pkg_name hpack
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.35.0
+Version:        0.35.1
 Release:        0
 Summary:        A modern format for Haskell packages
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Glob-devel
@@ -81,7 +80,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build

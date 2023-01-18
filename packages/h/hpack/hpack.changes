@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 11 23:09:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hpack to version 0.35.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue Sep 27 13:19:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hpack to version 0.35.0 revision 1.
