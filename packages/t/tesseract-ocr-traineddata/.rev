@@ -31,4 +31,24 @@
     <comment>1</comment>
     <requestid>373455</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e45af3bd5273d73650b14b8b229bb76a</srcmd5>
+    <version>4.1.0+git.20191030.6572757</version>
+    <time>1674043727</time>
+    <user>dimstar_suse</user>
+    <comment>- fix conflits and split osd subpackage 
+
+- Fix (hopefully) overall compatibility with previous version
+- add Obsoletes to solve conflict in Factory
+
+- set tessdata dir location to be the same as in package tesseract-ocr 
+  (/usr/share/tessdata, not /usr/share/tesseract/tessdata)
+- fix version prefix and version format: 4.1.0+git.20191030.6572757
+  * git tag 6572757 is upstream 4.1.0 (not 4.0)
+  * set version format to include human readable date
+
+- Update to version 4.0+git.1572421488.6572757:
+  * This release only supports LSTM neural net based engine (--oem 1)</comment>
+    <requestid>1059187</requestid>
+  </revision>
 </revisionlist>

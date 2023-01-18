@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/tesseract-ocr/tessdata_fast.git</param>
+              <param name="changesrevision">65727574dfcd264acbb0c3e07860e4e9e9b22185</param></service></servicedata>

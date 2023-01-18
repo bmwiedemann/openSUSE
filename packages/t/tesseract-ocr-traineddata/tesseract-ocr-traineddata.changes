@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 17 23:30:15 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fix conflits and split osd subpackage 
+
+-------------------------------------------------------------------
+Mon Jan 24 22:00:52 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Fix (hopefully) overall compatibility with previous version
+- add Obsoletes to solve conflict in Factory
+
+-------------------------------------------------------------------
+Mon Jun 27 23:22:34 UTC 2021 - brassh@web.de
+
+- set tessdata dir location to be the same as in package tesseract-ocr 
+  (/usr/share/tessdata, not /usr/share/tesseract/tessdata)
+- fix version prefix and version format: 4.1.0+git.20191030.6572757
+  * git tag 6572757 is upstream 4.1.0 (not 4.0)
+  * set version format to include human readable date
+
+-------------------------------------------------------------------
+Fri Dec 27 12:47:57 UTC 2019 - idonmez@suse.com
+
+- Update to version 4.0+git.1572421488.6572757:
+  * This release only supports LSTM neural net based engine (--oem 1)
+
+-------------------------------------------------------------------
 Tue Mar 15 16:35:21 UTC 2016 - dvaleev@suse.com
 
 - Set disk constraints to 6GB
