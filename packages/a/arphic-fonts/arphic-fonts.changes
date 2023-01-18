@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 18 14:23:36 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- amend license SUSE-Arphic to SPDX's Arphic-1999
+
+-------------------------------------------------------------------
 Sun Jan 20 09:48:39 UTC 2013 - swyear@gmail.com
 
 - remove Provides: locale(*) and Provides: scalable-font-*, 

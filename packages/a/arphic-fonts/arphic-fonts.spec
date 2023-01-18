@@ -1,7 +1,7 @@
 #
 # spec file for package arphic-fonts
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           arphic-fonts
 Version:        20001125
 Release:        0
 Summary:        Chinese TrueType Fonts (Contains Only the License Text)
-License:        SUSE-Arphic
+License:        Arphic-1999
 Group:          System/X11/Fonts
-Url:            http://www.arphic.com.tw/
+URL:            https://www.arphic.com.tw/
 # ttf files have been downloaded from debian.
 Source0:        ttf-arphic.tar.bz2
 Source1:        fonts.scale.bkai00mp
