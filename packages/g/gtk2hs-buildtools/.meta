@@ -1,0 +1,5 @@
+<package name="gtk2hs-buildtools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="gtk2hs-buildtools"/>
+</package>
