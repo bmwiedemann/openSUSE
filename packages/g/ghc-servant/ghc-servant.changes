@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:28:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update servant to version 0.19.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/servant-0.19.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Mar 21 14:55:15 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update servant to version 0.19 revision 4.
