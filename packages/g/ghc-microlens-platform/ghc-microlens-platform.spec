@@ -18,7 +18,7 @@
 
 %global pkg_name microlens-platform
 Name:           ghc-%{pkg_name}
-Version:        0.4.3.2
+Version:        0.4.3.3
 Release:        0
 Summary:        Microlens + all batteries included (best for apps)
 License:        BSD-3-Clause
