@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 18 12:20:43 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.23.12
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.12/NEWS
+  * input: curl: require CURL 7.55.0 or later
+  * decoder: mad: fixed integer underflow with very small files
+  * tags: fixed crash bug due to race condition
+  * output: pipewire: adjust to PipeWire 0.3.64 API change
+  * fixed build failures with GCC 13
+
+-------------------------------------------------------------------
 Sat Dec  3 21:28:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.11:
   - simple: move default database to ~/.cache/mpd/db from ~/.cache/mpd.db
   - simple: default "cache_directory" to ~/.cache/mpd/mounts
+  - windows: fixed  DoS via a crafted input (bsc#1207028), CVE-2022-46449
 - add keyring
 
 -------------------------------------------------------------------

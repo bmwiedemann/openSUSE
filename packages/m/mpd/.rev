@@ -690,4 +690,18 @@
 - add keyring</comment>
     <requestid>1039907</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6af710b168cca39f5563fb972512698a</srcmd5>
+    <version>0.23.12</version>
+    <time>1674058285</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.12
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.12/NEWS
+  * input: curl: require CURL 7.55.0 or later
+  * decoder: mad: fixed integer underflow with very small files
+  * tags: fixed crash bug due to race condition
+  * output: pipewire: adjust to PipeWire 0.3.64 API change
+  * fixed build failures with GCC 13</comment>
+    <requestid>1059359</requestid>
+  </revision>
 </revisionlist>
