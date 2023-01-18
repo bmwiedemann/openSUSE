@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Dec 18 02:14:29 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.13.2.
+  ## 0.13.2
+
+    * Support ConTeXt output via skylighting-format-context (Albert Krewinkel).
+
+    * Update syntax definitions for markdown, nim, javascript.
+
+  ## 0.13.1.2
+
+    * Update syntax definitions for c, cmake, commonmlisp, css, go, ini, isocpp,
+      javascript, json, powershell, python, rust, sass, scss, toml, xml.
+
+    * Associate regex captures with a context. This is necessary for proper
+      implementation of the KDE syntax highlighting algorithm.  Captures are
+      only available within the context to which the match creating the
+      capture switches. (Closes #160.)
+
+-------------------------------------------------------------------
+Fri Oct 28 22:57:29 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-core to version 0.13.1.1.
+  ## 0.13.1.1
+
+    * Add dart, purescript syntax definitions.
+
+    * Update syntax definitions for isocpp, latex, alert, bash,
+      cmake, nix, sql-postgresql, vhdl, zsh.
+
+    * Remove obsoleote patch for lua.xml.
+
+    * Add patches for latex.xml and isocpp.xml.
+
+  ## 0.13.1
+
+    * `getCapture`: fail instead of throwing error if dynamic match not found.
+      I believe this is the intended behavior for StringDetect, judging
+      from examples in the KDE documentation.
+
+    * Update xml syntax definitions:
+      asn1, bash, c, cmake, cpp, cs, d, elixir, fortran-fixed, gcc, glsl,
+      go, html, java, javascript, lex, lua, markdown, mediawiki, noweb,
+      ocaml, orgmode, php, powershell, prolog, python, r, ruby, rust,
+      scheme, sql-postgresql, typescript, vhdl, xml, yacc, yaml, zsh
+
+    * Replace a lambda with pointfree notation (shaving off some RAM usage)
+      (0xd34df00d).
+
+    * Use `newtype` for `TokenizerM`, giving about 5-10% boost on benchmark
+      (0xd34df00d).
+
+-------------------------------------------------------------------
 Sat Aug 13 17:58:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update skylighting-core to version 0.13 revision 1.
