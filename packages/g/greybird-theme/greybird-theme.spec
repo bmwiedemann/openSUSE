@@ -1,7 +1,7 @@
 #
 # spec file for package greybird-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,15 @@
 %define _name Greybird
 
 Name:           greybird-theme
-Version:        3.22.13+git2.ede9f55
+Version:        3.23.2+git0.25f312f
 Release:        0
 URL:            https://github.com/shimmerproject/Greybird
 Summary:        A grey theme for GNOME, XFCE, GTK+ 2 and 3
-License:        GPL-2.0-or-later OR CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 OR GPL-2.0-or-later
 Group:          System/GUI/GNOME
 Source:         %{_name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE link-selected-is-optional.patch manfred.h@gmx.net -- work around too old gtk4 libs on Leap 15.4
+Patch0:         link-selected-is-optional.patch
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -61,10 +63,6 @@ Requires:       metatheme-greybird-common = %{version}
 Supplements:    packageand(metatheme-greybird-common:gtk2)
 
 %description -n gtk2-metatheme-greybird
-The Greybird Theme for GTK2/3 and xfwm4/emerald/metacity started out on the
-basis of Bluebird, but aims at reworking the intense blue tone to a more
-neutral grey-ish look.
-
 This package provides the GTK+ 2 support of Greybird.
 
 %package -n gtk3-metatheme-greybird
@@ -74,14 +72,22 @@ Requires:       metatheme-greybird-common = %{version}
 Supplements:    packageand(metatheme-greybird-common:gtk3)
 
 %description -n gtk3-metatheme-greybird
-The Greybird Theme for GTK2/3 and xfwm4/emerald/metacity started out on the
-basis of Bluebird, but aims at reworking the intense blue tone to a more
-neutral grey-ish look.
-
 This package provides the GTK+ 3 support of Greybird.
+
+%package -n gtk4-metatheme-greybird
+Summary:        GTK+ 3 support for the Greybird theme
+Group:          System/GUI/GNOME
+Requires:       metatheme-greybird-common = %{version}
+Supplements:    packageand(metatheme-greybird-common:gtk3)
+
+%description -n gtk4-metatheme-greybird
+This package provides the GTK+ 4 support of Greybird
 
 %prep
 %setup -q -n %{_name}-%{version}
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%patch0 -p1
+%endif
 
 %build
 %meson
@@ -115,6 +121,8 @@ rm -r %{buildroot}%{_datadir}/themes/%{_name}{,-dark}/plank
 %{_datadir}/themes/%{_name}-bright/xfce-notify-4.0
 %dir %{_datadir}/themes/%{_name}{,-dark}/gnome-shell
 %{_datadir}/themes/%{_name}{,-dark}/gnome-shell/gnome-shell.css
+%dir %{_datadir}/themes/%{_name}{,-dark}/openbox-3
+%{_datadir}/themes/%{_name}{,-dark}/openbox-3/*
 
 %files -n gtk2-metatheme-greybird
 %{_datadir}/themes/%{_name}{,-dark}/gtk-2.0
@@ -123,5 +131,8 @@ rm -r %{buildroot}%{_datadir}/themes/%{_name}{,-dark}/plank
 %files -n gtk3-metatheme-greybird
 %{_datadir}/themes/%{_name}{,-dark}/gtk-3.0
 %endif
+
+%files -n gtk4-metatheme-greybird
+%{_datadir}/themes/%{_name}{,-dark}/gtk-4.0
 
 %changelog
