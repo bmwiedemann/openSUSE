@@ -19,12 +19,13 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.12.1
+Version:        3.1.13.0
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-aeson-devel
@@ -39,7 +40,6 @@ BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-fast-logger-devel
 BuildRequires:  ghc-http-types-devel
-BuildRequires:  ghc-http2-devel
 BuildRequires:  ghc-iproute-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-resourcet-devel
@@ -52,6 +52,7 @@ BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vault-devel
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-logger-devel
+BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-word8-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
@@ -84,6 +85,10 @@ WAI Middleware for adding arbitrary headers to an HTTP request.
 * Clean Path
 
 Clean a request path to a canonical form.
+
+* Combine Headers
+
+Combine duplicate headers into one.
 
 * GZip Compression
 
@@ -142,6 +147,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
