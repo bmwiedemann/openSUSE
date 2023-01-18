@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  6 18:02:25 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update regex-applicative-text to version 0.1.0.1 revision 7.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Jan  2 18:42:32 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update regex-applicative-text to version 0.1.0.1 revision 6.

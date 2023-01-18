@@ -1,7 +1,7 @@
 cabal-version:      >=1.10
 name:               regex-applicative-text
 version:            0.1.0.1
-x-revision:         6
+x-revision:         7
 synopsis:           regex-applicative on text
 category:           Text
 description:        Wrapped regex-applicative primitives to work with Text
@@ -23,9 +23,10 @@ tested-with:
    || ==8.4.4
    || ==8.6.5
    || ==8.8.4
-   || ==8.10.4
-   || ==9.0.1
-   || ==9.2.1
+   || ==8.10.7
+   || ==9.0.2
+   || ==9.2.5
+   || ==9.4.3
 
 build-type:         Simple
 extra-source-files: README.md
@@ -38,7 +39,7 @@ library
   hs-source-dirs:   src
   ghc-options:      -Wall
   build-depends:
-      base               >=4.3 && <4.17
+      base               >=4.3 && <4.18
     , regex-applicative  >=0.3 && <0.4
     , text
 
