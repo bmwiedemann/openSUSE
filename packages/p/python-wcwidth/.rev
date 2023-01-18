@@ -139,4 +139,18 @@
 add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment>
     <requestid>1037604</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2d45dc0ae774c5df84686209edc7d220</srcmd5>
+    <version>0.2.6</version>
+    <time>1674043695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6:
+  * Fix example for str.rjust(20, '_')
+  * Add CodeQL workflow for GitHub code scanning
+  * Switch to using importlib.metadata
+  * Use a new jinja2 templating process to update library to latest unicode
+- Drop patch remove-pkg_resources.patch.
+- Remove Python 2 gubbins.</comment>
+    <requestid>1058811</requestid>
+  </revision>
 </revisionlist>

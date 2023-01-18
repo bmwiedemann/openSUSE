@@ -1,7 +1,7 @@
 #
 # spec file for package python-wcwidth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-wcwidth
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
 URL:            https://github.com/jquast/wcwidth
 Source:         https://github.com/jquast/wcwidth/archive/%{version}.tar.gz#/wcwidth-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#jquast/wcwidth#62
-Patch0:         remove-pkg_resources.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache >= 1.2.1
-%endif
-%ifpython2
-Requires:       python-backports.functools_lru_cache >= 1.2.1
-%endif
 %if %python_version_nodots < 38
 Requires:       python-importlib_metadata
 %endif

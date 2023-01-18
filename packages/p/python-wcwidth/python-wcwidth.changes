@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 17 06:29:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.2.6:
+  * Fix example for str.rjust(20, '_')
+  * Add CodeQL workflow for GitHub code scanning
+  * Switch to using importlib.metadata
+  * Use a new jinja2 templating process to update library to latest unicode
+- Drop patch remove-pkg_resources.patch.
+- Remove Python 2 gubbins.
+
+-------------------------------------------------------------------
 Wed Nov 23 10:03:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add explicit Requires for python-importlib_metadata for Python < 3.8
