@@ -252,4 +252,14 @@
   * Correct 'make ping' logic and other tricky Makefile syntax</comment>
     <requestid>1055824</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2dd6b95a2b5500fdfa4c73bffdc98a16</srcmd5>
+    <version>1.7.1</version>
+    <time>1674058286</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Improve config parsing code
+  * Make ConfigList() more stable</comment>
+    <requestid>1059388</requestid>
+  </revision>
 </revisionlist>

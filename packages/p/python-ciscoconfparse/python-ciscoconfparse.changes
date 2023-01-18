@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 13:54:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Improve config parsing code
+  * Make ConfigList() more stable
+
+-------------------------------------------------------------------
 Wed Jan  4 14:04:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:
