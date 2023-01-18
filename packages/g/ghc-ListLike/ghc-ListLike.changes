@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 15 13:48:19 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ListLike to version 4.7.8.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Mon Jun 20 16:44:10 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update ListLike to version 4.7.7 revision 1.
