@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-module-text
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hslua-module-text
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.2
+Version:        1.0.3.1
 Release:        0
 Summary:        Lua module for text
 License:        MIT
