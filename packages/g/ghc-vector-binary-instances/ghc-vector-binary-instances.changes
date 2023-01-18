@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 27 23:34:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update vector-binary-instances to version 0.2.5.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jul 22 14:18:29 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update vector-binary-instances to version 0.2.5.2 revision 2.
