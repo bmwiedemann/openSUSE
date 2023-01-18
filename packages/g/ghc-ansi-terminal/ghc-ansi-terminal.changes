@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 21 23:22:40 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ansi-terminal-0.11.4/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Apr 28 23:10:27 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update ansi-terminal to version 0.11.3.
