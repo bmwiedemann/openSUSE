@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 24 07:21:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update conduit to version 1.3.4.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Oct  6 07:03:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update conduit to version 1.3.4.3.
