@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jan 17 23:36:53 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2023.1.1
+  * Added
+    + Help screen listing valid options for vpl-inspect
+    + YUV400 option for JPEG encoding with sample_encode
+    + Build option --disable_experimental to build with
+      ONEVPL_EXPERIMENTAL disabled
+  * Changed
+    + Session creation example to request a minimum API version
+- Update to version 2023.1.0
+  * Added
+    + oneVPL API 2.8 support
+    + New infer sample
+    + xdg_shell for weston10
+  * Fixed
+    + NOT_ENOUGH_BUFFER error when HRD off in ExtBRC
+    + Legacy tools using x86/x86_64 specific assembler code
+    + Pkg-config files not installing in correct location in cross
+      compilation scenarios
+- Reenable other architectures again for all products.
+  * Add fix_arm_ilp32.patch
+- Drop upstream remove_x86_64_check.patch
+
+-------------------------------------------------------------------
 Tue Nov 15 12:14:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - missed part of specfile to limit build to x86_64 on older

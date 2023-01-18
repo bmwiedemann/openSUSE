@@ -1,7 +1,7 @@
 #
 # spec file for package libvpl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,12 @@
   %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
 
-%if 0%{?suse_version} >= 1550
-# Legacy tools use x86 asm, https://github.com/oneapi-src/oneVPL/issues/69
-%ifarch x86_64 %{ix86}
 %bcond_without tools
-%else
-%bcond_with tools
-%endif
-%endif
 
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2023.0.0
+Version:        2023.1.1
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
@@ -40,15 +33,11 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/oneapi-src/oneVPL
 Source0:        https://github.com/oneapi-src/oneVPL/archive/refs/tags/v%{version}.tar.gz#/oneVPL-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
-# https://github.com/oneapi-src/oneVPL/pull/73
-Patch0:         https://patch-diff.githubusercontent.com/raw/oneapi-src/oneVPL/pull/73.patch#/remove_x86_64_check.patch
+Patch0:         https://github.com/oneapi-src/oneVPL/commit/11a0d1547e3fff4bcbd8b0ecc1bbfc4300c091ee.patch#/fix_arm_ilp32.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)
-%if 0%{?suse_version} < 1550
-ExclusiveArch:  x86_64
-%endif
 
 %description
 The oneAPI Video Processing Library (oneVPL) provides a single video processing
