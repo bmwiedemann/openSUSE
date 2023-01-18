@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:24:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cookie to version 0.4.6.
+  ## 0.4.6
+
+  * Resolve redundant import of Data.Monoid [#26](https://github.com/snoyberg/cookie/pull/26)
+  * Added `renderSetCookieBS` and `renderCookiesBS`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
