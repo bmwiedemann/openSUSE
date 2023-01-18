@@ -25,7 +25,7 @@ Summary:        A web server for the Snap Framework
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-blaze-builder-devel
@@ -90,8 +90,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
-cabal-tweak-dep-ver 'unix-compat' '< 0.6' '< 1'
 
 %build
 %ghc_lib_build

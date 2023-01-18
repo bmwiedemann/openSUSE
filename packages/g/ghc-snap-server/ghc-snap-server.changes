@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 08:57:29 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update snap-server to version 1.1.2.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Apr 22 13:39:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update snap-server to version 1.1.2.0 revision 1.

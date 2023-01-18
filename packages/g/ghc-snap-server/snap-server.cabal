@@ -1,6 +1,6 @@
 name:           snap-server
 version:        1.1.2.0
-x-revision: 1
+x-revision: 2
 synopsis:       A web server for the Snap Framework
 description:
   Snap is a simple and fast web development framework and server written in
@@ -97,8 +97,8 @@ Library
     Snap.Internal.Http.Server.TLS
 
   build-depends:
-    attoparsec                          >= 0.12     && < 0.14,
-    base                                >= 4.6      && < 4.16,
+    attoparsec                          >= 0.12     && < 0.15,
+    base                                >= 4.6      && < 4.18,
     blaze-builder                       >= 0.4      && < 0.5,
     bytestring                          >= 0.9.1    && < 0.12,
     bytestring-builder                  >= 0.10.4   && < 0.11,
@@ -113,11 +113,11 @@ Library
     network                             >= 2.3      && < 3.2,
     old-locale                          >= 1.0      && < 1.1,
     snap-core                           >= 1.0      && < 1.1,
-    text                                >= 0.11     && < 1.3,
+    text                                >= 0.11     && < 2.1,
     time                                >= 1.0      && < 1.13,
     transformers                        >= 0.3      && < 0.6,
-    unix-compat                         >= 0.2      && < 0.6,
-    vector                              >= 0.7      && < 0.13
+    unix-compat                         >= 0.2      && < 0.7,
+    vector                              >= 0.7      && < 0.14
 
   other-extensions:
     BangPatterns,
