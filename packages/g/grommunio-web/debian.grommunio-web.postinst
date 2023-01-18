@@ -1,0 +1,8 @@
+#!/bin/sh
+chmod 0750 /var/log/grommunio
+mkdir -p /var/lib/grommunio-web/tmp /var/lib/grommunio-web/sqlite-index
+chown -Rh groweb:groweb /var/lib/grommunio-web
+chmod 0770 /var/lib/grommunio-web
+chmod 0775 /var/lib/grommunio-web/tmp /var/lib/grommunio-web/sqlite-index
+# clear translation caches
+ipcrm -M 0x950412de 2>/dev/null || :

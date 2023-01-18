@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/grommunio/grommunio-web</param>
+		<param name="filename">grommunio-web</param>
+		<param name="revision">master</param>
+		<param name="parent-tag">grommunio-web-3.1</param>
+		<param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+		<param name="versionrewrite-pattern">grommunio-web-?(.*)</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

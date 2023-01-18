@@ -1,0 +1,70 @@
+#!/usr/bin/make -f
+INSTDIR=$(CURDIR)/debian/grommunio-web
+WADEB=$(CURDIR)/debian/grommunio-web
+WABASE=/usr/share/grommunio-web
+HEADERBASE=/usr/share/php-mapi/includes
+WACONFBASE=/etc/grommunio-web
+DOCDIR=/usr/share/doc/grommunio-web/scripts/
+WA=$(WADEB)$(WABASE)
+phpdir := $(shell readlink -f $$(php-config --ini-path)/..)
+
+export DH_VERBOSE=1
+
+%:
+	dh $@
+
+# Mark build as supported (license checks)
+override_dh_auto_build:
+	dh_auto_build -- SUPPORTED_BUILD=1
+
+override_dh_auto_clean:
+
+override_dh_auto_test:
+
+override_dh_auto_install:
+	install -d -m 755 $(INSTDIR)$(WABASE)
+	install -d -m 755 $(INSTDIR)$(WACONFBASE)
+	install -d -m 644 $(INSTDIR)$(DOCDIR)
+	# echo version
+	dpkg-parsechangelog | grep Version | sed -e 's/^Version: //g' > $(INSTDIR)$(WABASE)/version
+	dpkg-parsechangelog -S Version | sha1sum | cut -b 1-8 >$(INSTDIR)$(WABASE)/cachebuster
+
+	cp -av deploy/* $(INSTDIR)$(WABASE)/
+
+	install -vm 644 LICENSE.txt $(INSTDIR)$(WABASE)/LICENSE.txt
+
+	# Nginx conf
+	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d"
+	install -Dpvm 644 build/grommunio-web.conf "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d/"
+	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d"
+	install -Dpvm 644 build/grommunio-web-upstream.conf "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d/grommunio-web.conf"
+
+	# PHP-FPM
+	mkdir -pv "${INSTDIR}/${phpdir}/fpm/pool.d"
+	install -Dpvm 644 build/pool-grommunio-web.conf "${INSTDIR}/${phpdir}/fpm/pool.d/"
+
+	# web config
+	mv -v $(INSTDIR)$(WABASE)/config.php.dist $(INSTDIR)$(WACONFBASE)/config.php
+	ln -sfv $(WACONFBASE)/config.php $(INSTDIR)$(WABASE)/config.php
+	ln -sfv $(HEADERBASE) $(INSTDIR)$(WABASE)/server/includes/mapi
+	rm -v $(INSTDIR)$(WABASE)/debug.php.dist
+	mkdir -pv "${INSTDIR}/var/lib/grommunio-web/tmp"
+	mkdir -pv "${INSTDIR}/var/lib/grommunio-web/sqlite-index"
+	mkdir -pv "${INSTDIR}/var/lib/grommunio-web/session"
+
+	# Signatures template scripts
+	mkdir -pv "${INSTDIR}/usr/share/doc/grommunio-web/scripts"
+	for dir in "${INSTDIR}/usr/share/grommunio-web/plugins"/*; do \
+		plugindir=$$(basename "$dir"); \
+		if [ -f "${INSTDIR}/usr/share/grommunio-web/plugins/$$plugindir/config.php" ]; then \
+			mv -v "${INSTDIR}/usr/share/grommunio-web/plugins/$$plugindir/config.php" "${INSTDIR}/etc/grommunio-web/config-$$plugindir.php"; \
+			ln -sv "/etc/grommunio-web/config-$$plugindir.php" "${INSTDIR}/usr/share/grommunio-web/plugins/$$plugindir/config.php"; \
+		else \
+			echo "we did not find a config.php"; \
+		fi; \
+	done
+
+override_dh_fixperms:
+	dh_fixperms -Xvar/lib/grommunio-web/tmp
+	dh_fixperms -Xvar/lib/grommunio-web/sqlite-index
+	dh_fixperms -Xvar/lib/grommunio-web/session

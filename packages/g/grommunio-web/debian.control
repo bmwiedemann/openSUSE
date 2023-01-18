@@ -1,0 +1,18 @@
+Source: grommunio-web
+Section: non-free
+Priority: optional
+Maintainer: grommunio <dev@grommunio.com>
+Build-Depends: debhelper (>= 8.0.0), openjdk-9-jdk | openjdk-11-jdk
+Standards-Version: 3.9.4
+
+Package: grommunio-web
+Architecture: all
+Section: web
+Depends: system-user-grommunio, ${misc:Depends}, gromox (>= 1.27), php-bcmath,
+ php-curl, php-gd, php-iconv, php-json, php-mbstring,
+ php-sqlite3, php-sysvshm, php-xml, php-zip, mapi-header-php, ${dist:Depends}
+Provides: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual, grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems, grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications, grommunio-web-plugin-filepreviewer
+Conflicts: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual, grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems, grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications, grommunio-web-plugin-filepreviewer
+Replaces: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual, grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems, grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications, grommunio-web-plugin-filepreviewer
+Description: Web access for grommunio
+ Main web application for grommunio

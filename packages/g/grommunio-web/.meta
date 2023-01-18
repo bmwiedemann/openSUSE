@@ -1,0 +1,5 @@
+<package name="grommunio-web" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:mail" package="grommunio-web"/>
+</package>
