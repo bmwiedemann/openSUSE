@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Dec 29 12:53:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.14:
+  Engine features
+  * Added 'loot.requires_status' and 'status_loot' properties to loot table
+    definitions.
+  * Support '/' as shorthand for 'exec' in the dev console. A space is not
+    required after the slash.
+  * Added 'spawn_level' property to map enemies. This follows the same
+    syntax as the Power property of the same name.
+  * Add XP scaling tables for scaling enemy reward XP based on enemy level.
+  * Replace 'immunity' effects with percentage-based resistances.
+  * Added 'mouse_move_deadzone' property to engine/misc.txt to help
+    alleviate erratic mouse-move behavior when the cursor is near the
+    player.
+  * Alternative tab UI for when tabs exceed the available space.
+  * Added keybind for cycling equipment sets in reverse.
+  * Refactored stats and stat bonuses to use floats for fractional values.
+  * Support fractional values in the following:
+  * Added 'resource_round_method' property to engine/combat.txt.
+  * Support arbitrary "MP-like" resources:
+  * Configuration file: engine/resource_stats.txt
+  * Added 'requires_resource_stat' and 'resource_steal' properties to
+    Powers.
+  * Added 'requires_resource_stat_state' and
+    'requires_resource_stat_state_mode' properties to Powers.
+  * Added 'enabled' property to MenuStatBar definitions.
+  Engine fixes
+  * Fixed set item tooltips showing incorrect number of equipped items if a
+    set item was on an inactive loadout.
+  * Fixed dev console commands not working if they were preceded by
+    whitespace.
+  * Fixed spawning entities not counting towards summoned entity count.
+  * Fix broken gamepad navigation after closing Powers menu while on a non-
+    default tab.
+  * Removed hard-coded minimum values for HP/MP steal and damage return.
+  * Fixed "activate" message incorrectly showing in MenuPowers tooltips.
+  * Fix some cases where 'min' damage/absorb could be greater than the
+    cooresponding 'max' value.
+  * Fixed text input issues with deleting text on Android.
+  Game updates
+  * Fireball and Ice Bolt scrolls now give the player a 10 second period in
+    which their basic attacks (Swing, Shoot, Channel) are replaced with the
+    scroll power.
+  * Fixed the naming of scroll damage as it appears in power description
+    tooltips.
+  * Lowered Lezaith's slow resistance to 50%, down from 100%
+  * Lowered Lezaith's stun resistance to 90%, down from 100%
+  * Translation updates
+
+-------------------------------------------------------------------
 Sat May  7 19:52:39 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.13.04

@@ -17,7 +17,7 @@
 
 
 Name:           flare
-Version:        1.13.04
+Version:        1.14
 Release:        0
 Summary:        Free Libre Action Roleplaying Engine
 License:        (CC-BY-SA-3.0 OR CC-BY-SA-4.0) AND GPL-3.0-or-later
