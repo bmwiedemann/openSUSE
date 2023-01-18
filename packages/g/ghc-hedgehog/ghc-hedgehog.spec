@@ -19,7 +19,7 @@
 %global pkg_name hedgehog
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.2
+Version:        1.2
 Release:        0
 Summary:        Release with confidence
 License:        BSD-3-Clause

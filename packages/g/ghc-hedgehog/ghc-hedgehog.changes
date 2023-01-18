@@ -1,11 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 27 22:16:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hedgehog to version 1.2.
+  * Allow skipping to a specific test number or shrink result
+    * Export shrinkPathCompress and shrinkPathDecompress
+  * Add Gen.subset
+  * Add example for Gen.subsequence
+  * Don't drop actions depending on shrunk predecessors
+
+-------------------------------------------------------------------
 Sat Sep  3 08:12:56 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hedgehog to version 1.1.2.
-  Upstream has edited the change log file since the last release in
-  a non-trivial way, i.e. they did more than just add a new entry
-  at the top. You can review the file at:
-  http://hackage.haskell.org/package/hedgehog-1.1.2/src/CHANGELOG.md
+  * Support GHC 9.4
+  * Allow newer dependencies
 
 -------------------------------------------------------------------
 Sun May 22 14:23:14 UTC 2022 - Peter Simons <psimons@suse.com>
@@ -37,7 +45,7 @@ Fri Sep 10 08:13:36 UTC 2021 - psimons@suse.com
 -------------------------------------------------------------------
 Tue Aug 17 15:23:29 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- relax constraints on mmorph 
+- relax constraints on mmorph
 
 -------------------------------------------------------------------
 Fri Mar 12 20:49:18 UTC 2021 - psimons@suse.com
@@ -50,9 +58,9 @@ Fri Mar 12 20:49:18 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Thu Dec 10 19:28:32 UTC 2020 - psimons@suse.com
 
@@ -72,4 +80,3 @@ Wed Dec  9 11:25:11 UTC 2020 - psimons@suse.com
 Fri Oct 30 03:01:45 UTC 2020 - psimons@suse.com
 
 - Add hedgehog at version 1.0.3.
-
