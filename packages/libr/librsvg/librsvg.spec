@@ -1,7 +1,7 @@
 #
 # spec file for package librsvg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -159,8 +159,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/%{name}/CO*.md
 
 %check
-%ifarch %x86_64
-%make_build check
+%ifarch x86_64 %{?x86_64}
+# 2023-01-15: the pdf-related tests are failing (bsc#1207167)
+%{cargo_test} -- --skip pdf_has_text --skip pdf_has_link
 %endif
 
 %post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig

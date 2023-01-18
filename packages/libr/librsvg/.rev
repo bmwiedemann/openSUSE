@@ -1043,4 +1043,13 @@
     <comment></comment>
     <requestid>1001376</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>17a351531f964c4bacd937fa4608c1db</srcmd5>
+    <version>2.55.1</version>
+    <time>1674043722</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor tarball
+- actually run the testsuite for x86_64 (bsc#1207167) (forwarded request 1058610 from dirkmueller)</comment>
+    <requestid>1058616</requestid>
+  </revision>
 </revisionlist>
