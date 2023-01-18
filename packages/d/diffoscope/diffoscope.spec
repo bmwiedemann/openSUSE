@@ -1,7 +1,7 @@
 #
 # spec file for package diffoscope
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        221
+Version:        232
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -143,7 +143,8 @@ py.test-%{python3_bin_suffix} -k 'not ((test_python and test_diff) or test_ident
 %license COPYING
 %{_bindir}/diffoscope
 %{_bindir}/diffoscope-%{py3_ver}
-%{python3_sitelib}/*
+%{python3_sitelib}/diffoscope
+%{python3_sitelib}/diffoscope-%{version}*-info
 %ghost %{_sysconfdir}/alternatives/diffoscope
 
 %changelog

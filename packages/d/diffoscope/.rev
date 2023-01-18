@@ -433,4 +433,79 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
 </comment>
     <requestid>1005453</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ab058afe94475b60d22108f5976089b4</srcmd5>
+    <version>232</version>
+    <time>1674048195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 232:
+  * Allow ICC tests to (temporarily) fail.
+  * Update debian/tests/control after the addition of PyPDF 3 support.
+  * Update regular expression for Android .APK files.
+  * Support PyPDF version 3.
+- 231:
+  * Improve &quot;[X] may produce better output&quot; messages. Based on a patch by
+    Helmut Grohne. (Closes: #1026982)
+- 230:
+  * Fix compatibility with file(1) version 5.43; thanks, Christoph Biedl.
+  * Support Berkeley DB version 6.
+- 229:
+  * Skip test_html.py::test_diff if html2text is not installed.
+    (Closes: #1026034)
+  * Bump standards version to 4.6.2, no changes needed.
+- 228:
+  * As an optimisation, don't run apktool if no differences are detected before
+    the signing block. (Closes: reproducible-builds/diffoscope!105)
+  * Support both the python3-progressbar and python3-progressbar2 Debian
+    packages, two modules providing the &quot;progressbar&quot; Python module.
+    (Closes: reproducible-builds/diffoscope#323)
+  * Ensure we recommend apksigcopier. (Re: reproducible-builds/diffoscope!105)
+  * Make the code clearer around generating the Debian substvars and tidy
+    generation of os_list.
+  * Update copyright years.
+- 227:
+  * Don't attempt to attach text-only differences notice if there are no
+    differences to begin with. (Closes: #1024171, #1024349)
+  * Don't run Python decompiling tests on Python bytecode that both file(1)
+    cannot yet detect and Python 3.11 cannot demarshall. (Closes: #1024335)
+- 226:
+  * Add an lzip comparator with tests.
+  * Add support for comparing the &quot;text&quot; content of HTML files using html2text.
+    (Closes: #1022209, reproducible-builds/diffoscope#318)
+  * Misc/test improvements:
+    * Drop the ALLOWED_TEST_FILES test; it's mostly just annoying.
+    * Drop other copyright notices from lzip.py and test_lzip.py.
+    * Use assert_diff helper in test_lzip.py.
+    * Pylint tests/test_source.py.
+  * Add lzip to debian dependencies.
+- 225:
+  * Add support for detecting ordering-only differences in XML files.
+    (Closes: #1022146)
+  * Fix an issue with detecting ordering differences. (Closes: #1022145)
+  * Add support for ttx(1) from fonttools.
+    (Re: reproducible-builds/diffoscope#315)
+  * Test improvements:
+    - Tidy up the JSON tests and use assert_diff over get_data and manual
+      assert in XML tests.
+    - Rename order1.diff to json_expected_ordering_diff for consistency.
+    - Temporarily allow the stable-po pipeline to fail in the CI.
+  * Use consistently capitalised &quot;Ordering&quot; everywhere we use the word in
+    diffoscope's output.
+- 224:
+  * Fix rlib test failure with LLVM 15. Thanks to Gianfranco Costamagna
+    (locutusofborg) for the patch.
+- 223:
+  * The cbfstools utility is now provided in Debian via the coreboot-utils
+    Debian package, so we can enable that functionality within Debian.
+    (Closes: #1020630)
+  * Also include coreboot-utils in Build-Depends and Test-Depends so it is
+    available for the tests.
+  * Add support for file 5.43.
+- 222:
+  * Use pep517 and pip to load the requirements. (Closes: #1020091)
+  * Remove old Breaks/Replaces in debian/control that have been obsoleted since
+    bullseye
+</comment>
+    <requestid>1059331</requestid>
+  </revision>
 </revisionlist>
