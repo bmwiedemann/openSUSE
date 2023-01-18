@@ -1,8 +1,8 @@
 #
 # spec file for package manpages-l10n
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2022 Antoine Belvire <antoine.belvire@opensuse.org>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023 Antoine Belvire <antoine.belvire@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           manpages-l10n
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
-Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.%{name}
 # PATCH-FIX-UPSTREAM manpages-l10n-4.16.0-fix-links.patch -- Fix incorrect links in man2 (boo#1202798)
 Patch0:         manpages-l10n-4.16.0-fix-links.patch
@@ -50,13 +50,14 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package pl Polish
 %man_lang_package pt_BR %{quote:Brazilian Portuguese}
 %man_lang_package ro Romanian
+%man_lang_package ru Russian
 %man_lang_package sr Serbian
 %man_lang_package sv Swedish
 %man_lang_package uk Ukrainian
 %man_lang_package vi Vietnamese
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %configure --enable-distribution=%{distribution_id}

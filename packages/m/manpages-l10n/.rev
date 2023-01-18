@@ -152,4 +152,12 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>1038259</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>72ae7019c81405bd36c709f676981e93</srcmd5>
+    <version>4.17.0</version>
+    <time>1674043935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059174</requestid>
+  </revision>
 </revisionlist>
