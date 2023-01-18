@@ -110,6 +110,7 @@ Patch131:       posttrans.diff
 Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
 Patch135:       selinux_transactional_update.patch
+Patch136:       x86_64-microarchitectures.patch
 # touches a generated file
 Patch180:       whatrequires-doc.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
@@ -220,8 +221,8 @@ rm -rf sqlite
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
-%patch -P 122 -P 123               -P 131        -P 133 -P 134
-%patch -P 135 -P 180
+%patch -P 122 -P 123
+%patch -P 131          -P 133 -P 134 -P 135 -P 136 -P 180
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
@@ -239,6 +240,8 @@ export CFLAGS="-g -O0 -fno-strict-aliasing -ffunction-sections"
 
 %ifarch %arm
 BUILDTARGET="--build=%{_target_cpu}-suse-linux-gnueabi"
+%elifarch x86_64 %x86_64
+BUILDTARGET="--build=x86_64-suse-linux"
 %else
 BUILDTARGET="--build=%{_target_cpu}-suse-linux"
 %endif
@@ -272,7 +275,7 @@ mkdir -p %{buildroot}/usr/share/locale
 ln -s ../share/locale %{buildroot}/usr/lib/locale
 %make_install
 mkdir -p %{buildroot}/bin
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 ln -s /usr/bin/rpm %{buildroot}/bin/rpm
 %endif
 # remove .la file and the static variant of libpopt
@@ -388,7 +391,7 @@ fi
 %license 	COPYING
 %doc 	docs/manual
 	/etc/rpm
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 	/bin/rpm
 %endif
 	%{_bindir}/gendiff

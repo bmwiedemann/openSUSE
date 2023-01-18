@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Tue Dec 27 13:17:31 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be
   used
+
+-------------------------------------------------------------------
+Thu Dec  8 17:08:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add x86_64-microarchitectures.patch
 
 -------------------------------------------------------------------
 Fri Dec  2 15:01:05 CET 2022 - mls@suse.de

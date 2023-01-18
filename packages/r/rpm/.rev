@@ -2414,4 +2414,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1043727</requestid>
   </revision>
+  <revision rev="306" vrev="3">
+    <srcmd5>5ee41b3ed4348857cfb5020f7b5dfd13</srcmd5>
+    <version>4.18.0</version>
+    <time>1674043724</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1058837</requestid>
+  </revision>
 </revisionlist>
