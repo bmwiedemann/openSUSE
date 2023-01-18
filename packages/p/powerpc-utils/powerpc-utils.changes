@@ -9,6 +9,11 @@ Mon Jan  2 10:27:16 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
   + hcnmgr-Fix-setting-primary-slave-across-reboots.patch
 
 -------------------------------------------------------------------
+Tue Dec 27 13:14:31 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Nov 30 19:39:57 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Support multiple dev paths for a nvmf boot device (bsc#1205696 ltc#200595)

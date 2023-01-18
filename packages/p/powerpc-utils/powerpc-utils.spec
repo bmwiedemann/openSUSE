@@ -77,7 +77,7 @@ make CFLAGS="%{optflags}" %{?_smp_mflags}
 %make_install \
     rasdir=%{_sbindir} \
     mandir=%{_mandir}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
 ln -sf %{_sbindir}/lsprop %{buildroot}/sbin/lsprop
 %endif
@@ -119,7 +119,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*
 %{_mandir}/man*/*
 %{_sbindir}/*
 %{_bindir}/*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/lsprop
 %endif
 %dir %{_localstatedir}/lib/powerpc-utils
