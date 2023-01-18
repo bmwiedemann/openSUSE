@@ -1,0 +1,140 @@
+name:               xmonad
+version:            0.17.1
+x-revision: 2
+synopsis:           A tiling window manager
+description:        xmonad is a tiling window manager for X. Windows are arranged
+                    automatically to tile the screen without gaps or overlap, maximising
+                    screen use. All features of the window manager are accessible from the
+                    keyboard: a mouse is strictly optional. xmonad is written and
+                    extensible in Haskell. Custom layout algorithms, and other extensions,
+                    may be written by the user in config files. Layouts are applied
+                    dynamically, and different layouts may be used on each workspace.
+                    Xinerama is fully supported, allowing windows to be tiled on several
+                    screens.
+license:            BSD3
+license-file:       LICENSE
+author:             Spencer Janssen, Don Stewart, Adam Vogt, David Roundy, Jason Creighton,
+                    Brent Yorgey, Peter Jones, Peter Simons, Andrea Rossato, Devin Mullins,
+                    Lukas Mai, Alec Berryman, Stefan O'Rear, Daniel Wagner, Peter J. Jones,
+                    Daniel Schoepe, Karsten Schoelzel, Neil Mitchell, Joachim Breitner,
+                    Peter De Wachter, Eric Mertens, Geoff Reedy, Michiel Derhaeg,
+                    Philipp Balzarek, Valery V. Vorotyntsev, Alex Tarkovsky, Fabian Beuke,
+                    Felix Hirn, Michael Sloan, Tomas Janousek, Vanessa McHale, Nicolas Pouillard,
+                    Aaron Denney, Austin Seipp, Benno Fünfstück, Brandon S Allbery, Chris Mears,
+                    Christian Thiemann, Clint Adams, Daniel Neri, David Lazar, Ferenc Wagner,
+                    Francesco Ariis, Gábor Lipták, Ivan N. Veselov, Ivan Tarasov, Javran Cheng,
+                    Jens Petersen, Joey Hess, Jonne Ransijn, Josh Holland, Khudyakov Alexey,
+                    Klaus Weidner, Michael G. Sloan, Mikkel Christiansen, Nicolas Dudebout,
+                    Ondřej Súkup, Paul Hebble, Shachaf Ben-Kiki, Siim Põder, Tim McIver,
+                    Trevor Elliott, Wouter Swierstra, Conrad Irwin, Tim Thelion, Tony Zorman
+maintainer:         xmonad@haskell.org
+tested-with:        GHC == 8.4.4 || == 8.6.5 || == 8.8.4 || == 8.10.7 || == 9.0.2 || == 9.2.2
+category:           System
+homepage:           http://xmonad.org
+bug-reports:        https://github.com/xmonad/xmonad/issues
+build-type:         Simple
+extra-source-files: README.md
+                    CHANGES.md
+                    CONTRIBUTING.md
+                    INSTALL.md
+                    MAINTAINERS.md
+                    TUTORIAL.md
+                    man/xmonad.1.markdown
+                    man/xmonad.1
+                    man/xmonad.1.html
+                    man/xmonad.hs
+                    util/hpcReport.sh
+cabal-version:      1.12
+
+source-repository head
+  type:     git
+  location: https://github.com/xmonad/xmonad
+
+flag pedantic
+  description: Be pedantic (-Werror and the like)
+  default:     False
+  manual:      True
+
+flag quickcheck-classes
+
+library
+  exposed-modules: XMonad
+                   XMonad.Config
+                   XMonad.Core
+                   XMonad.Layout
+                   XMonad.Main
+                   XMonad.ManageHook
+                   XMonad.Operations
+                   XMonad.StackSet
+  other-modules:   Paths_xmonad
+  hs-source-dirs:  src
+  build-depends:   base                  >= 4.11 && < 5
+                 , X11                   >= 1.10 && < 1.11
+                 , containers
+                 , data-default-class
+                 , directory
+                 , filepath
+                 , mtl                   < 2.3
+                 , process
+                 , setlocale
+                 , time
+                 , transformers          >= 0.3
+                 , unix                  < 2.8
+  ghc-options:     -funbox-strict-fields -Wall -Wno-unused-do-bind
+  default-language: Haskell2010
+
+  -- Keep this in sync with the oldest version in 'tested-with'
+  if impl(ghc > 8.4.4)
+    ghc-options:   -Wno-unused-imports
+
+  if flag(pedantic)
+    ghc-options:   -Werror
+
+executable xmonad
+  main-is:       Main.hs
+  build-depends: base, xmonad
+  ghc-options:   -Wall -Wno-unused-do-bind
+  default-language: Haskell2010
+
+  -- Keep this in sync with the oldest version in 'tested-with'
+  if impl(ghc > 8.4.4)
+    ghc-options:   -Wno-unused-imports
+
+  if flag(pedantic)
+    ghc-options:   -Werror
+
+test-suite properties
+  type:           exitcode-stdio-1.0
+  main-is:        Properties.hs
+  other-modules:  Instances
+                  Properties.Delete
+                  Properties.Failure
+                  Properties.Floating
+                  Properties.Focus
+                  Properties.GreedyView
+                  Properties.Insert
+                  Properties.Layout.Full
+                  Properties.Layout.Tall
+                  Properties.Screen
+                  Properties.Shift
+                  Properties.Stack
+                  Properties.StackSet
+                  Properties.Swap
+                  Properties.View
+                  Properties.Workspace
+                  Utils
+  hs-source-dirs: tests
+  build-depends:  base
+                , QuickCheck >= 2
+                , X11
+                , containers
+                , xmonad
+  default-language: Haskell2010
+
+  if flag(quickcheck-classes) && impl(ghc > 8.5)
+    -- no quickcheck-classes in LTS-12
+    -- GHC 8.4 and lower needs too much boilerplate (Eq1, Show1, …)
+    build-depends: quickcheck-classes >= 0.4.3
+
+  if flag(pedantic)
+    ghc-options:   -Werror
