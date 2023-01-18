@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  5 14:54:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmonad-contrib to version 0.17.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Sep  3 14:11:28 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmonad-contrib to version 0.17.1.
