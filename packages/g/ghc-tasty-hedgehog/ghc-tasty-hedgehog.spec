@@ -19,7 +19,7 @@
 %global pkg_name tasty-hedgehog
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.1.0
+Version:        1.4.0.0
 Release:        0
 Summary:        Integration for tasty and hedgehog
 License:        BSD-3-Clause
