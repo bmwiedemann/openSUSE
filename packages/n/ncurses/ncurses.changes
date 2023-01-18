@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 16 08:30:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230114
+  + change RV to XR/xr, to avoid conflict with pre-existing usage in vim,
+    to use RV/rv to denote DA2 and its response (discussion with Bram
+    Moolenaar) -TD
+  + add XF flag to xterm+focus so that termcap applications can be aware
+    of terminals which may support focus in/out -TD
+  + use xterm+focus in xterm-p370 and tmux -TD
+  + improve configure-script macros vs compiler warnings.
+- Correct offsets of patches
+  * ncurses-5.9-ibm327x.dif
+  * ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Tue Jan 10 10:34:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid trouble with invalid certificate for ftp.invisible-island.net
