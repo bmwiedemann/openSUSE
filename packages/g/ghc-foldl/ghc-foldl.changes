@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jan 15 00:57:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update foldl to version 1.4.14.
+  1.4.14
+
+  - Add [`Control.Foldl.NonEmpty.nonEmpty`](https://github.com/Gabriella439/foldl/pull/186)
+  - Add [`Control.Foldl.NonEmpty.toFold`](https://github.com/Gabriella439/foldl/pull/191)
+   - [Generalize `fold1` to work with `Foldable1`](https://github.com/Gabriella439/foldl/pull/185)
+
+-------------------------------------------------------------------
+Sat Nov 26 03:09:29 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update foldl to version 1.4.13.
+  1.4.13
+
+  * New "Control.Foldl.NonEmpty" module for folding non-empty containers
+
+-------------------------------------------------------------------
 Sun Sep  4 23:11:45 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update foldl to version 1.4.12 revision 5.
