@@ -1,7 +1,7 @@
 #
 # spec file for package arphic-ukai-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           arphic-ukai-fonts
 Version:        0.2.20080216.1
 Release:        0
 Summary:        CJK Unicode Font Kai Style
-License:        SUSE-Arphic
+License:        Arphic-1999
 Group:          System/X11/Fonts
-Url:            http://www.freedesktop.org/wiki/Software/CJKUnifonts/
+URL:            https://www.freedesktop.org/wiki/Software/CJKUnifonts/
 # download http://ftp.tw.debian.org/debian/pool/main/t/ttf-arphic-ukai/ttf-arphic-ukai_0.2.20080216.1.orig.tar.gz
 Source0:        ttf-arphic-ukai-0.2.20080216.1.tar.bz2
 BuildRequires:  fontpackages-devel
