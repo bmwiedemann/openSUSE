@@ -24,4 +24,14 @@
     <comment></comment>
     <requestid>1010383</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8eab323bfbc5654c907c17567bda481</srcmd5>
+    <version>0.20.1</version>
+    <time>1674048193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.1
+  * Support HTTPX 0.23.1, thanks @g-as for input (#223)
+</comment>
+    <requestid>1058833</requestid>
+  </revision>
 </revisionlist>
