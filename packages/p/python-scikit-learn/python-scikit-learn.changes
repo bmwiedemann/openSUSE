@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 15 13:04:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.2.0
+  * Pandas output with set_output API
+  * Interaction constraints in Histogram-based Gradient Boosting
+    Trees
+  * New and enhanced displays
+  * Faster parser in fetch_openml
+  * Experimental Array API support in LinearDiscriminantAnalysis
+  * Improved efficiency of many estimators
+- Drop sklearn-pr24283-gradient-segfault.patch
+- PEP517 build
+
+-------------------------------------------------------------------
 Thu Oct 27 18:40:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.1.3

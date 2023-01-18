@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,21 +43,21 @@
 # enable pytest color output for local debugging: osc --with pytestcolor
 %bcond_with pytestcolor
 Name:           python-scikit-learn%{psuffix}
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sklearn-pr24283-gradient-segfault.patch gh#scikit-learn/scikit-learn#24283
-Patch0:         sklearn-pr24283-gradient-segfault.patch
 BuildRequires:  %{python_module Cython >= 0.29.24}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module joblib >= 1.0.0}
+BuildRequires:  %{python_module joblib >= 1.1.1}
 BuildRequires:  %{python_module numpy-devel >= 1.17.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.3.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -69,7 +69,7 @@ Requires:       python-numpy >= 1.17.3
 Requires:       python-scipy >= 1.3.2
 Requires:       python-threadpoolctl >= 2.0.0
 Requires:       python-xml
-Suggests:       python-matplotlib
+Suggests:       python-matplotlib >= 3.1.3
 Suggests:       python-pandas
 Suggests:       python-seaborn
 Provides:       python-sklearn = %{version}-%{release}
@@ -78,12 +78,12 @@ Provides:       sklearn = %{version}-%{release}
 %endif
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module pytest >= 5.0.1}
+BuildRequires:  %{python_module pytest >= 5.3.1}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module scikit-learn = %{version}}
 %if %{with extratest}
-BuildRequires:  %{python_module matplotlib >= 3.1.2}
+BuildRequires:  %{python_module matplotlib >= 3.1.3}
 BuildRequires:  %{python_module pandas >= 1.0.5}
 BuildRequires:  %{python_module scikit-image >= 0.16.2}
 %endif
@@ -105,12 +105,12 @@ sed -i '/--color=yes/d' setup.cfg
 %build
 %if !%{with test}
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
@@ -119,7 +119,8 @@ export CFLAGS="%{optflags}"
 mkdir test_dir
 pushd test_dir
 export SKLEARN_SKIP_NETWORK_TESTS=1
-NO_TESTS="dummyprefix"
+# fails with scipy 1.10 gh#scikit-learn/scikit-learn#25403
+NO_TESTS="test_spectral_embedding_two_components"
 %ifarch %{ix86} %{arm}
 # Precision-related errors on 32 bit
 # https://github.com/scikit-learn/scikit-learn/issues/19230
@@ -135,7 +136,7 @@ popd
 %license COPYING
 %doc README.rst
 %{python_sitearch}/sklearn/
-%{python_sitearch}/scikit_learn-%{version}*-info
+%{python_sitearch}/scikit_learn-%{version}.dist-info
 %endif
 
 %changelog
