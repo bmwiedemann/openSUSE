@@ -1,6 +1,6 @@
 name:               integer-logarithms
 version:            1.0.3.1
-x-revision:         3
+x-revision:         4
 cabal-version:      >=1.10
 author:             Daniel Fischer
 copyright:
@@ -37,8 +37,9 @@ tested-with:
      || ==8.8.4
      || ==8.10.4
      || ==9.0.2
-     || ==9.2.4
-     || ==9.4.1
+     || ==9.2.5
+     || ==9.4.4
+     || ==9.6.1
   , GHCJS ==8.4
 
 extra-source-files:
@@ -60,8 +61,8 @@ library
   hs-source-dirs:   src
   build-depends:
       array     >=0.3 && <0.6
-    , base      >=4.3 && <4.18
-    , ghc-prim  <0.10
+    , base      >=4.3 && <4.19
+    , ghc-prim  <0.11
 
   if !impl(ghc >=7.10)
     build-depends: nats >=1.1.2 && <1.2
