@@ -19,18 +19,22 @@
 %global pkg_name breakpoint
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.0
+Version:        0.1.2.0
 Release:        0
 Summary:        Set breakpoints using a GHC plugin
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-ghc-devel
 BuildRequires:  ghc-haskeline-devel
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-pretty-simple-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
