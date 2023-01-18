@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 16 19:39:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update barbies to version 2.0.4.0.
+  ## 2.0.4.0
+    - Add FunctorT and DistributiveT instances for AccumT
+
+-------------------------------------------------------------------
 Fri Feb  4 12:31:26 UTC 2022 - psimons@suse.com
 
 - Add barbies at version 2.0.3.1.

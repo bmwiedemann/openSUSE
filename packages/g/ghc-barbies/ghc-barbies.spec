@@ -19,7 +19,7 @@
 %global pkg_name barbies
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.3.1
+Version:        2.0.4.0
 Release:        0
 Summary:        Classes for working with types that can change clothes
 License:        BSD-3-Clause
