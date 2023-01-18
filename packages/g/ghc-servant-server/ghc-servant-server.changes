@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:28:50 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update servant-server to version 0.19.2.
+  0.19.2
+  ------
+
+  Compatibility with GHC 9.4, see [PR #1592](https://github.com/haskell-servant/servant/pull/1592).
+
+-------------------------------------------------------------------
 Tue Mar 29 16:33:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update servant-server to version 0.19.1 revision 2.
