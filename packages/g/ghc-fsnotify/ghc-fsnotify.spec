@@ -19,13 +19,12 @@
 %global pkg_name fsnotify
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.1
+Version:        0.4.1.0
 Release:        0
 Summary:        Cross platform library for file change notification
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-bytestring-devel
@@ -33,18 +32,21 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hinotify-devel
+BuildRequires:  ghc-monad-control-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-shelly-devel
+BuildRequires:  ghc-safe-exceptions-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-retry-devel
+BuildRequires:  ghc-sandwich-devel
 BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-unliftio-devel
 %endif
 
 %description
@@ -64,7 +66,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
