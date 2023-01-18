@@ -372,4 +372,15 @@
 </comment>
     <requestid>1055794</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>13026519184c5bf628003f3901580f65</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+- Update license tag to AGPL-3.0-or-later
+</comment>
+    <requestid>1059006</requestid>
+  </revision>
 </revisionlist>
