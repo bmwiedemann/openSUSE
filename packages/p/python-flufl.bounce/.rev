@@ -44,4 +44,13 @@
     <comment></comment>
     <requestid>986786</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>64ae27e67c8da8cc4ae2178eefeb5743</srcmd5>
+    <version>4.0</version>
+    <time>1674048196</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed dependency python-six
+</comment>
+    <requestid>1059332</requestid>
+  </revision>
 </revisionlist>

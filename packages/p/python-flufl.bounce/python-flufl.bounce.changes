@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 18 10:46:47 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dependency python-six
+
+-------------------------------------------------------------------
 Tue Jul  5 07:31:39 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Skip building for python2
