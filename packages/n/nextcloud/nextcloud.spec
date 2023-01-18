@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        24.0.8
+Version:        25.0.3
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -317,6 +317,7 @@ fi
 %{apache_myserverroot}/%{name}/apps
 %{apache_myserverroot}/%{name}/core/js/mimetypelist.js
 %dir %{apache_myserverroot}/%{name}/core/img/filetypes
+%{apache_myserverroot}/%{name}/core/img/filetypes/*
 %defattr(660,%{apache_user},%{apache_group},770)
 %{apache_myserverroot}/%{name}/config
 %{apache_myserverroot}/%{name}/data
