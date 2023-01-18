@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jan 17 17:45:57 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.110.0:
+  * related: Handly []any
+  * Fix permalinks issue with repeated sections
+  * tpl/strings: Add findRESubmatch
+  * config/security: Add O\w+ (e.g. GOROOT) to the default allowed list
+  * Preserve front matter slice value types (e.g. int)
+  * Make hugo.toml the new config.toml
+  * Add fill HTTP Response info into .Data in resources.GetRemote
+  * Fix HEAD method in resources.GetRemote
+  * Fix order when reading custom headers in resources.GetRemote
+  * deps: Upgrade github.com/evanw/esbuild v0.15.18 => v0.17.0
+  * resource: Fix Go Doc vs .Data.Integrity
+  * Misc doc, code refactoring to improve documentation
+  * Make readFile return nil when file not found (note)
+  * Remove reference to Goreleaser in code comment
+  * tpl/compare: Sort special float values as string
+  * tpl/diagrams: Move Goat to its own file
+
+-------------------------------------------------------------------
 Fri Dec 23 17:54:39 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.109.0:

@@ -486,4 +486,28 @@
   * parser/metadecoders: Fix spelling (forwarded request 1045114 from jfkw)</comment>
     <requestid>1045119</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e67c10b9310593b2f27cefc00225758d</srcmd5>
+    <version>0.110.0</version>
+    <time>1674043763</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.110.0:
+  * related: Handly []any
+  * Fix permalinks issue with repeated sections
+  * tpl/strings: Add findRESubmatch
+  * config/security: Add O\w+ (e.g. GOROOT) to the default allowed list
+  * Preserve front matter slice value types (e.g. int)
+  * Make hugo.toml the new config.toml
+  * Add fill HTTP Response info into .Data in resources.GetRemote
+  * Fix HEAD method in resources.GetRemote
+  * Fix order when reading custom headers in resources.GetRemote
+  * deps: Upgrade github.com/evanw/esbuild v0.15.18 =&gt; v0.17.0
+  * resource: Fix Go Doc vs .Data.Integrity
+  * Misc doc, code refactoring to improve documentation
+  * Make readFile return nil when file not found (note)
+  * Remove reference to Goreleaser in code comment
+  * tpl/compare: Sort special float values as string
+  * tpl/diagrams: Move Goat to its own file (forwarded request 1059143 from jfkw)</comment>
+    <requestid>1059144</requestid>
+  </revision>
 </revisionlist>

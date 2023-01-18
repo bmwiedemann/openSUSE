@@ -1,7 +1,7 @@
 #
 # spec file for package hugo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           hugo
-Version:        0.109.0
+Version:        0.110.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
