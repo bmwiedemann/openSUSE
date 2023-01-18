@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.44.2
+Version:        0.46
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -34,7 +34,9 @@ BuildRequires:  ghc-alsa-core-devel
 BuildRequires:  ghc-alsa-mixer-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-cairo-devel
 BuildRequires:  ghc-cereal-devel
+BuildRequires:  ghc-colour-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-dbus-devel
 BuildRequires:  ghc-directory-devel
@@ -48,6 +50,7 @@ BuildRequires:  ghc-libmpd-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-netlink-devel
 BuildRequires:  ghc-old-locale-devel
+BuildRequires:  ghc-pango-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-numbers-devel
 BuildRequires:  ghc-process-devel

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan  5 06:31:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.46.
+  ## Version 0.46 (January, 2023)
+
+  - New bar position specifiers TopHM, BottomHM.
+  - New configuration option, `dpi`, to set the font scaling factor.
+  - Fixes and extensions for section aligment behaviour (#650, #655).
+  - Fix: honour fc/bg specs for icons (#663).
+
+-------------------------------------------------------------------
+Sun Oct 16 19:17:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.45.
+  ## Version 0.45 (October, 2022)
+
+  - New cairo/pango font drawing backend, substituting the direct X11/Xft one.
+
+-------------------------------------------------------------------
 Wed Aug 10 14:18:31 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.44.2.
