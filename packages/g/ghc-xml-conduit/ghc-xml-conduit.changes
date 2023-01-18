@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 30 14:50:43 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xml-conduit to version 1.9.1.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun May 22 09:54:16 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xml-conduit to version 1.9.1.1 revision 1.
