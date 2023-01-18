@@ -1,0 +1,59 @@
+cabal-version:      >=1.10
+name:               data-array-byte
+version:            0.1.0.1
+x-revision: 1
+license:            BSD3
+license-file:       LICENSE
+copyright:          (c) Roman Leshchinskiy 2009-2012
+maintainer:         andrew.lelechenko@gmail.com
+author:             Roman Leshchinskiy <rl@cse.unsw.edu.au>
+tested-with:
+    ghc ==8.0.2 ghc ==8.2.2 ghc ==8.4.4 ghc ==8.6.5 ghc ==8.8.4
+    ghc ==8.10.7 ghc ==9.0.2 ghc ==9.2.4 ghc ==9.4.2
+
+homepage:           https://github.com/Bodigrim/data-array-byte
+bug-reports:        https://github.com/Bodigrim/data-array-byte/issues
+synopsis:           Compatibility layer for Data.Array.Byte
+description:
+    Compatibility layer for [Data.Array.Byte](https://hackage.haskell.org/package/base/docs/Data-Array-Byte.html), providing boxed wrappers for @ByteArray#@ and @MutableByteArray#@ and relevant instances for GHC < 9.4. Include it into your Cabal file:
+    .
+    > build-depends: base
+    > if impl(ghc < 9.4)
+    >   build-depends: data-array-byte
+    .
+    and then @import Data.Array.Byte@ unconditionally.
+
+category:           Compatibility
+build-type:         Simple
+extra-source-files:
+    changelog.md
+    README.md
+
+source-repository head
+    type:     git
+    location: https://github.com/Bodigrim/data-array-byte
+
+library
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=4.9 && <4.19,
+        deepseq >=1.4 && <1.5,
+        template-haskell >=2.11 && <2.21
+
+    if impl(ghc <9.4)
+        exposed-modules: Data.Array.Byte
+
+test-suite data-array-byte-tests
+    type:             exitcode-stdio-1.0
+    main-is:          Main.hs
+    hs-source-dirs:   test
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base,
+        data-array-byte,
+        quickcheck-classes-base >=0.6 && <0.7,
+        tasty >=1.4 && <1.5,
+        tasty-quickcheck >=0.10 && <0.11,
+        template-haskell

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Jan 15 23:25:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update data-array-byte to version 0.1.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Oct  8 12:22:04 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Add data-array-byte at version 0.1.0.1.
+
