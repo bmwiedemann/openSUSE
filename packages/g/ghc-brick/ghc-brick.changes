@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 24 18:20:39 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 1.5.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/brick-1.5/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Sep 30 02:57:19 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update brick to version 1.3.
