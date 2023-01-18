@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 17 21:50:31 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream version 3.2.3
+  * fix bad output on unknown CLI command
+  * update vendored dependencies
+
+-------------------------------------------------------------------
 Fri Nov  4 18:10:42 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream version 3.2.2
   * Fix allowing nested empty directories.

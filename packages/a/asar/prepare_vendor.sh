@@ -50,6 +50,7 @@ fi
 
 echo ">>>>>> Cleanup object files"
 find node_modules/ -name "*.node" -print -delete
+find node_modules/ -name "*.wasm" -print -delete
 find node_modules/ -name "*.jar" -print -delete
 find node_modules/ -name "*.dll" -print -delete
 find node_modules/ -name "*.dylib" -print -delete
