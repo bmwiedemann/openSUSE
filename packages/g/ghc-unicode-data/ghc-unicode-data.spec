@@ -19,7 +19,7 @@
 %global pkg_name unicode-data
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.4.0.1
 Release:        0
 Summary:        Access Unicode Character Database (UCD)
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Performance is the primary goal in the design of this package.
 
 The Haskell data structures are generated programmatically from the UCD files.
 The latest Unicode version supported by this library is
-'<https://www.unicode.org/versions/Unicode14.0.0/ 14.0.0>'.
+'<https://www.unicode.org/versions/Unicode15.0.0/ 15.0.0>'.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
