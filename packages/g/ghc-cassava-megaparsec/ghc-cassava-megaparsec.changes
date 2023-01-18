@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 27 19:24:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cassava-megaparsec to version 2.0.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:26:35 UTC 2021 - psimons@suse.com
 
 - Update cassava-megaparsec to version 2.0.4.
