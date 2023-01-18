@@ -10,6 +10,7 @@
 #patches:
 #  foo.patch: -p1
 #  bar.patch:
+#  baz.patch: PATCH-FIX-OPENSUSE
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-
@@ -26,3 +27,9 @@
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
+skip_doc: .*\.yml .*\.toml
+#add_doc: files to add to docs
+#misc: |-
+#anything else to be added to spec file
+#follows directly after %files section, so it can contain new blocks or also
+#changes to %files section
