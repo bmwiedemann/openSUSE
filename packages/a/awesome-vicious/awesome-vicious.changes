@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 16 19:28:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Added AMD GPU widget type for Linux.
+  * Fixed typos in contrib widgets documentation.
+
+-------------------------------------------------------------------
 Mon Oct 10 18:28:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.5.1

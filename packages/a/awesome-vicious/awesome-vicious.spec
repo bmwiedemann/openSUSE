@@ -1,7 +1,7 @@
 #
 # spec file for package awesome-vicious
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define packname   vicious
 
 Name:           awesome-vicious
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Vicious plugins for awesome
 License:        GPL-2.0-or-later
