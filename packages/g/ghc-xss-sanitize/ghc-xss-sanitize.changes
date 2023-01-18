@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 29 05:34:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7.1.
+  # 0.3.7.1
+
+  add max height and max width as valid style attributes
+
+-------------------------------------------------------------------
 Wed Mar 30 14:05:07 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xss-sanitize to version 0.3.7 revision 1.
