@@ -1,7 +1,7 @@
 #
 # spec file for package libevent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,6 +120,7 @@ This package holds the static libraries for libevent2.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
+export ac_cv_func_select=no
 %configure \
 	--disable-libevent-regress
 make %{?_smp_mflags}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 15 22:06:53 UTC 2023 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Disable the select backend, this can be easily done by lying
+  to configure. This is done due to:
+  * using fd number > 1024 on an fd_set results in a runtime 
+    fortify source assertion, preventing further doom.
+  * select will not be changed to handle fd > 1024.
+  * this limit is unreasonable low for this century.
+
+-------------------------------------------------------------------
 Tue Feb  9 08:18:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop insserv_prereq and fillup_prereq macros: there are no

@@ -309,4 +309,17 @@ gruss friseer (forwarded request 77922 from Friseer)</comment>
   pre-scripts that would justify these dependencies. (forwarded request 870408 from dimstar)</comment>
     <requestid>870473</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>93846b878b1ac0625dbe50f797680726</srcmd5>
+    <version>2.1.12</version>
+    <time>1674043688</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable the select backend, this can be easily done by lying
+  to configure. This is done due to:
+  * using fd number &gt; 1024 on an fd_set results in a runtime 
+    fortify source assertion, preventing further doom.
+  * select will not be changed to handle fd &gt; 1024.
+  * this limit is unreasonable low for this century. (forwarded request 1058580 from elvigia)</comment>
+    <requestid>1058751</requestid>
+  </revision>
 </revisionlist>
