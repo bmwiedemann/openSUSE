@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 25 23:41:48 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update formatting to version 7.2.0.
+  7.2.0
+
+  * Added `FromBuilder` and `formatted` to simplify using formatting with other APIs (thanks Kyle Butt).
+  * Updated examples in comments to pass cabal-docspec (thanks Kyle Butt).
+  * Fixed haddock parsing in ghc-8.8.4 (thanks Oleg Grenrus).
+  * Generalised IO printing functions to use MonadIO (thanks Oleg Grenrus).
+  * Added `(%+)` and `(<%+>)` for appending formatters with a space between them, the latter also behaving like `(<>)` (thanks Oleg Grenrus).
+  * Allow building with Cabal 2.2 (thanks Jens Petersen).
+  * Removed unused dependency on `ghc-prim`
+  * Add a `no-double-conversion` build flag to optionally remove the dependency on `double-conversion` (Thanks Janus Troelsen)
+  * The `no-double-conversion` flag also fixes the build on GHC 9.4 on which `double-conversion` is apparently broken
+
+-------------------------------------------------------------------
 Wed Feb  2 09:56:26 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update formatting to version 7.1.3 revision 2.

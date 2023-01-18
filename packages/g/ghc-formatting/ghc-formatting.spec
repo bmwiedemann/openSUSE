@@ -19,13 +19,12 @@
 %global pkg_name formatting
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        7.1.3
+Version:        7.2.0
 Release:        0
 Summary:        Combinator-based type-safe formatting (like printf() or FORMAT)
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-clock-devel
 BuildRequires:  ghc-double-conversion-devel
@@ -59,7 +58,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
