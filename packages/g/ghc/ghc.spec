@@ -74,6 +74,8 @@ PreReq:         update-alternatives
 Requires:       ghc-compiler = %{version}-%{release}
 Requires:       ghc-ghc-devel = %{version}-%{release}
 Requires:       ghc-libraries = %{version}-%{release}
+# Work around a bug in Sphinx 6.1.x to fix the documentation build. Remove this patch ASAP.
+Patch1:         fix_extlinks.patch
 # PATCH-FIX-OPENSUSE: use vfpv3-d16 and disable NEON
 Patch2:         ghc-armv7-VFPv3D16--NEON.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
@@ -189,6 +191,7 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 
 %prep
 %setup -q
+%patch1 -p1
 %patch2 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1

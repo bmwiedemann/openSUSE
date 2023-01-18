@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 17 11:45:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "fix_extlinks.patch" to work around a bug in Sphinx 6.1.x
+  that broke our documentation build. Remove this patch once Sphinx
+  is fixed. This patch is a variant of the ghc-9.4.4 patch from
+  https://gitlab.haskell.org/ghc/ghc/-/issues/22766. Upstream's
+  https://github.com/sphinx-doc/sphinx/issues/11094 has further
+  details. [boo#1207214]
+
+-------------------------------------------------------------------
 Mon Jun 27 17:04:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add ghc.keyring to have source validation enabled

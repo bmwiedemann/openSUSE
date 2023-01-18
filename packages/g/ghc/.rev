@@ -936,4 +936,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>989696</requestid>
   </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>a7664e436f4e4095faad24d16c19ebef</srcmd5>
+    <version>8.10.7</version>
+    <time>1674043772</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059044</requestid>
+  </revision>
 </revisionlist>
