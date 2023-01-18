@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec 19 04:48:20 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hspec to version 2.10.8.
+  ## Changes in 2.10.8 (2022-12-19)
+    - Add pretty-printing support for rational numbers
+    - Force / evaluate exceptions recursively (#763)
+    - Add `xprop` and `fprop`, which use `xit` and `fit` (thanks @lehins)
+
+-------------------------------------------------------------------
+Sat Dec  3 13:00:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hspec to version 2.10.7.
+  ## Changes in 2.10.7 (2022-12-03)
+    - Do not depend on `ghc` for pretty-printing (#750, #752)
+
+-------------------------------------------------------------------
 Tue Sep 13 10:34:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hspec to version 2.10.6.
