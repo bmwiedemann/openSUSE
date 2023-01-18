@@ -1,7 +1,7 @@
 #
 # spec file for package hledger-interest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           hledger-interest
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        Computes interest for a given account
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
 BuildRequires:  ghc-hledger-lib-devel
@@ -89,7 +88,6 @@ German BGB288.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_bin_build
