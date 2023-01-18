@@ -1,7 +1,7 @@
 #
 # spec file for package rust-keylime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.1.0+git.1666019359.f5de47b
+Version:        0.1.0+git.1672681780.762cec8
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -38,6 +38,10 @@ Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
+# PATCH-FIX-UPSTREAM 0001-keylime-agent-remove-const_err-deny.patch gh#keylime/rust-keylime#501
+Patch2:         0001-keylime-agent-remove-const_err-deny.patch
+# PATCH-FIX-UPSTREAM 0001-Cargo.toml-tss-esapi-bindings.patch gh#keylime/rust-keylime#502
+Patch3:         0001-Cargo.toml-tss-esapi-bindings.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  firewall-macros
@@ -70,7 +74,14 @@ cp %{SOURCE2} .cargo/config
 %sysusers_generate_pre %{SOURCE4} keylime keylime-user.conf
 
 %install
-%{cargo_install} --no-default-features --features "with-zmq"
+# If https://github.com/Firstyear/cargo-packaging/pull/3 gets merged,
+# replace it with:
+#
+#  #{cargo_install -p keylime-agent} --no-default-features --features "with-zmq"
+#  #{cargo_install -p keylime-ima-emulator}
+
+install -Dpm 0755 %{_builddir}/%{name}-%{version}/target/release/keylime_agent %{buildroot}%{_bindir}/keylime_agent
+install -Dpm 0755 %{_builddir}/%{name}-%{version}/target/release/keylime_ima_emulator %{buildroot}%{_bindir}/keylime_ima_emulator
 
 install -Dpm 0600 keylime-agent.conf %{buildroot}%{_distconfdir}/keylime/agent.conf
 install -Dpm 0644 ./dist/systemd/system/keylime_agent.service %{buildroot}%{_unitdir}/keylime_agent.service

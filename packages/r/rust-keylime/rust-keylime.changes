@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 16 14:02:08 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1672681780.762cec8:
+  * build(deps): bump openssl from 0.10.41 to 0.10.45
+  * build(deps): bump tokio from 1.21.1 to 1.23.0
+  * Disable dnf-makecache.service to save RAM
+  * CI tests: Do not remove Fedora tag repository
+  * add support for cargo deb
+  * Pacify clippy::needless-borrow
+  * Move tpm.rs from keylime-agent to the library
+  * Split crates into library and applications
+- Add 0001-keylime-agent-remove-const_err-deny.patch
+- Fix "cargo install" with workspaces
+  https://github.com/rust-lang/cargo/issues/7599
+- Add 0001-Cargo.toml-tss-esapi-bindings.patch
+
+-------------------------------------------------------------------
+Fri Dec 09 13:10:40 UTC 2022 - aplanas@suse.com
+
+- Update to version 0.1.0+git.1670590616.e80c67a:
+  * main: only read uuid from KeylimeConfig
+  * Enabling more e2e tests in Packit CI
+  * systemd: start agent after network is online
+  * Cargo: Drop unused dependencies rust-ini and toml
+
+-------------------------------------------------------------------
 Tue Oct 25 08:16:33 UTC 2022 - aplanas@suse.com
 
 - Add cargo-audit service per policy

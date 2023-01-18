@@ -1,0 +1,32 @@
+From a44207e5ffde079b39b119afbf12871d2f78adf1 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 16 Jan 2023 15:51:46 +0100
+Subject: [PATCH] keylime-agent: remove const_err deny
+
+In 1.66 / 1.66.1 const_err is already a hard error, and was enabled as
+such as long ago. New compilers will complain in case that this is still
+used:
+
+  warning: lint `const_err` has been removed: converted into hard error
+
+More info:
+  https://github.com/rust-lang/rust/issues/71800
+---
+ keylime-agent/src/main.rs | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/keylime-agent/src/main.rs b/keylime-agent/src/main.rs
+index 6333652..1d6fdf4 100644
+--- a/keylime-agent/src/main.rs
++++ b/keylime-agent/src/main.rs
+@@ -3,7 +3,6 @@
+ 
+ #![deny(
+     nonstandard_style,
+-    const_err,
+     dead_code,
+     improper_ctypes,
+     non_shorthand_field_patterns,
+-- 
+2.39.0
+
