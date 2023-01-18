@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 13 15:27:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v23.0
+  * Remove unused LPAREN token from tokenizer by @hrnciar in #630
+  * Reorganise the project layout and version management by
+    @pradyunsg in #626
+  * Correctly handle non-normalised specifiers in requirements by
+    @pradyunsg in #634
+  * Use stable Python 3.11 in tests by @153957 in #641
+  * Fix typing for specifiers.BaseSpecifier.filter() by @henryiii
+    in #643
+  * Correctly handle trailing whitespace on URL requirements by
+    @pradyunsg in #642
+  * refactor _generic_api to use EXT_SUFFIX by @mattip in #607
+  * Allow "extra" to be None in the marker environment by
+    @pradyunsg in #650
+  * Fix typos by @kianmeng in #648
+  * Update changelog for release by @pradyunsg in #656
+
+-------------------------------------------------------------------
 Fri Dec 30 10:16:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v22.0
