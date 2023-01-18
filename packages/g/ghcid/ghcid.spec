@@ -19,13 +19,12 @@
 %global pkg_name ghcid
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        GHCi based bare bones IDE
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-cmdargs-devel
@@ -71,7 +70,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build

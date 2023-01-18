@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 17 08:58:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ghcid to version 0.8.8.
+  0.8.8, released 2022-09-17
+      #365, support fsnotify 0.4
+      #348, improve the no files loaded message
+      #321, print Ghcide has stopped to the output file.
+
+-------------------------------------------------------------------
 Sat Sep 17 07:37:28 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update ghcid to version 0.8.7 revision 1.
