@@ -2972,6 +2972,7 @@ unsorted:
   - deepin-wallpapers 
   - deepin-wallpapers-community 
   - deepin-wayland-devel 
+  - deepin-wayland-protocols 
   - deepin-x11-client 
   - dehydrated 
   - dehydrated-apache2 
@@ -3271,6 +3272,7 @@ unsorted:
   - dvgt 
   - dwarf2json 
   - dwarves 
+  - dwayland-devel 
   - dwz 
   - dwz-testsuite 
   - dxflib-devel 
@@ -4741,6 +4743,8 @@ unsorted:
   - ghc-cabal-plan-devel: [x86_64] 
   - ghc-cabal2spec: [x86_64] 
   - ghc-cabal2spec-devel: [x86_64] 
+  - ghc-cairo: [x86_64] 
+  - ghc-cairo-devel: [x86_64] 
   - ghc-call-stack: [x86_64] 
   - ghc-call-stack-devel: [x86_64] 
   - ghc-canonical-json: [x86_64] 
@@ -4848,6 +4852,8 @@ unsorted:
   - ghc-css-text-devel: [x86_64] 
   - ghc-csv: [x86_64] 
   - ghc-csv-devel: [x86_64] 
+  - ghc-data-array-byte: [x86_64] 
+  - ghc-data-array-byte-devel: [x86_64] 
   - ghc-data-clist: [x86_64] 
   - ghc-data-clist-devel: [x86_64] 
   - ghc-data-default: [x86_64] 
@@ -5012,12 +5018,16 @@ unsorted:
   - ghc-githash-devel: [x86_64] 
   - ghc-gitrev: [x86_64] 
   - ghc-gitrev-devel: [x86_64] 
+  - ghc-glib: [x86_64] 
+  - ghc-glib-devel: [x86_64] 
   - ghc-gray-code: [x86_64] 
   - ghc-gray-code-devel: [x86_64] 
   - ghc-gridtables: [x86_64] 
   - ghc-gridtables-devel: [x86_64] 
   - ghc-groups: [x86_64] 
   - ghc-groups-devel: [x86_64] 
+  - ghc-gtk2hs-buildtools: [x86_64] 
+  - ghc-gtk2hs-buildtools-devel: [x86_64] 
   - ghc-hackage-security: [x86_64] 
   - ghc-hackage-security-devel: [x86_64] 
   - ghc-haddock-library: [x86_64] 
@@ -5317,6 +5327,8 @@ unsorted:
   - ghc-pandoc-lua-marshal-devel: [x86_64] 
   - ghc-pandoc-types: [x86_64] 
   - ghc-pandoc-types-devel: [x86_64] 
+  - ghc-pango: [x86_64] 
+  - ghc-pango-devel: [x86_64] 
   - ghc-parallel: [x86_64] 
   - ghc-parallel-devel: [x86_64] 
   - ghc-parsec: [x86_64] 
@@ -5497,6 +5509,8 @@ unsorted:
   - ghc-skylighting-format-ansi-devel: [x86_64] 
   - ghc-skylighting-format-blaze-html: [x86_64] 
   - ghc-skylighting-format-blaze-html-devel: [x86_64] 
+  - ghc-skylighting-format-context: [x86_64] 
+  - ghc-skylighting-format-context-devel: [x86_64] 
   - ghc-skylighting-format-latex: [x86_64] 
   - ghc-skylighting-format-latex-devel: [x86_64] 
   - ghc-smallcheck: [x86_64] 
@@ -6581,6 +6595,7 @@ unsorted:
   - grim 
   - grisbi 
   - grisbi-lang 
+  - grml-zsh-config 
   - groff-doc 
   - gromacs 
   - gromacs-bash-completion 
@@ -6590,6 +6605,7 @@ unsorted:
   - gromacs-openmpi: [x86_64] 
   - gromit-mpx 
   - grommunio-index 
+  - grommunio-web 
   - gromox 
   - gron 
   - groovy18 
@@ -6759,6 +6775,7 @@ unsorted:
   - gtk2-metatheme-yaru-mate 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
+  - gtk2hs-buildtools: [x86_64] 
   - gtk3-branding-upstream 
   - gtk3-devel 
   - gtk3-devel-32bit: [x86_64] 
@@ -6799,6 +6816,7 @@ unsorted:
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-arc 
   - gtk4-metatheme-dracula 
+  - gtk4-metatheme-greybird 
   - gtk4-metatheme-matcha 
   - gtk4-metatheme-yaru-mate 
   - gtkam 
@@ -9150,6 +9168,8 @@ unsorted:
   - libColPack0-32bit: [x86_64] 
   - libColorFull0 
   - libConvexDecomposition3_17 
+  - libDWaylandClient5 
+  - libDWaylandServer5 
   - libDebugUtils1 
   - libDetour1 
   - libDetourCrowd1 
@@ -13626,7 +13646,9 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
+  - libqt5-dwaylandplugin 
   - libqt5-dxcbplugin 
+  - libqt5-kwayland-shellplugin 
   - libqt5-linguist 
   - libqt5-linguist-devel 
   - libqt5-qt3d-devel 
@@ -15452,7 +15474,7 @@ unsorted:
   - libz-ng2 
   - libz-ng2-32bit: [x86_64] 
   - libz1-32bit: [x86_64] 
-  - libz3-4_11 
+  - libz3-4_12 
   - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
@@ -22172,6 +22194,7 @@ unsorted:
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
+  - python3-pvirsh 
   - python3-pwquality 
   - python3-pycadf 
   - python3-pyexmdb 
@@ -34557,110 +34580,169 @@ unsorted:
   - tesseract-data 
   - tesseract-ocr 
   - tesseract-ocr-devel 
-  - tesseract-ocr-traineddata-afrikaans 
-  - tesseract-ocr-traineddata-albanian 
-  - tesseract-ocr-traineddata-amharic 
-  - tesseract-ocr-traineddata-arabic 
-  - tesseract-ocr-traineddata-assamese 
-  - tesseract-ocr-traineddata-azerbaijani 
-  - tesseract-ocr-traineddata-azerbaijani_cyrillic 
-  - tesseract-ocr-traineddata-basque 
-  - tesseract-ocr-traineddata-belarusian 
-  - tesseract-ocr-traineddata-bengali 
-  - tesseract-ocr-traineddata-bosnian 
-  - tesseract-ocr-traineddata-bulgarian 
-  - tesseract-ocr-traineddata-burmese 
-  - tesseract-ocr-traineddata-catalan 
-  - tesseract-ocr-traineddata-cebuano 
-  - tesseract-ocr-traineddata-cherokee 
-  - tesseract-ocr-traineddata-chinese_simplified 
-  - tesseract-ocr-traineddata-chinese_traditional 
-  - tesseract-ocr-traineddata-croatian 
-  - tesseract-ocr-traineddata-czech 
-  - tesseract-ocr-traineddata-danish 
-  - tesseract-ocr-traineddata-dutch 
-  - tesseract-ocr-traineddata-dzongkha 
-  - tesseract-ocr-traineddata-english 
-  - tesseract-ocr-traineddata-english_middle 
-  - tesseract-ocr-traineddata-esperanto 
-  - tesseract-ocr-traineddata-estonian 
-  - tesseract-ocr-traineddata-finnish 
-  - tesseract-ocr-traineddata-frankish 
-  - tesseract-ocr-traineddata-french 
-  - tesseract-ocr-traineddata-french_middle 
-  - tesseract-ocr-traineddata-galician 
-  - tesseract-ocr-traineddata-georgian 
-  - tesseract-ocr-traineddata-georgian_old 
-  - tesseract-ocr-traineddata-german 
-  - tesseract-ocr-traineddata-greek 
-  - tesseract-ocr-traineddata-greek_ancient 
-  - tesseract-ocr-traineddata-gujarati 
-  - tesseract-ocr-traineddata-haitian 
-  - tesseract-ocr-traineddata-hebrew 
-  - tesseract-ocr-traineddata-hindi 
-  - tesseract-ocr-traineddata-hungarian 
-  - tesseract-ocr-traineddata-icelandic 
-  - tesseract-ocr-traineddata-indonese 
-  - tesseract-ocr-traineddata-inuktitut 
-  - tesseract-ocr-traineddata-irish 
-  - tesseract-ocr-traineddata-italian 
-  - tesseract-ocr-traineddata-italian_old 
-  - tesseract-ocr-traineddata-japanese 
-  - tesseract-ocr-traineddata-javanese 
-  - tesseract-ocr-traineddata-kannada 
-  - tesseract-ocr-traineddata-kazakh 
-  - tesseract-ocr-traineddata-khmer 
-  - tesseract-ocr-traineddata-korean 
-  - tesseract-ocr-traineddata-kurdish 
-  - tesseract-ocr-traineddata-kyrgyz 
+  - tesseract-ocr-traineddata-afr 
+  - tesseract-ocr-traineddata-amh 
+  - tesseract-ocr-traineddata-ara 
+  - tesseract-ocr-traineddata-asm 
+  - tesseract-ocr-traineddata-aze 
+  - tesseract-ocr-traineddata-aze_cyrl 
+  - tesseract-ocr-traineddata-bel 
+  - tesseract-ocr-traineddata-ben 
+  - tesseract-ocr-traineddata-bod 
+  - tesseract-ocr-traineddata-bos 
+  - tesseract-ocr-traineddata-bre 
+  - tesseract-ocr-traineddata-bul 
+  - tesseract-ocr-traineddata-cat 
+  - tesseract-ocr-traineddata-ceb 
+  - tesseract-ocr-traineddata-ces 
+  - tesseract-ocr-traineddata-chi_sim 
+  - tesseract-ocr-traineddata-chi_sim_vert 
+  - tesseract-ocr-traineddata-chi_tra 
+  - tesseract-ocr-traineddata-chi_tra_vert 
+  - tesseract-ocr-traineddata-chr 
+  - tesseract-ocr-traineddata-cos 
+  - tesseract-ocr-traineddata-cym 
+  - tesseract-ocr-traineddata-dan 
+  - tesseract-ocr-traineddata-deu 
+  - tesseract-ocr-traineddata-div 
+  - tesseract-ocr-traineddata-doc 
+  - tesseract-ocr-traineddata-dzo 
+  - tesseract-ocr-traineddata-ell 
+  - tesseract-ocr-traineddata-eng 
+  - tesseract-ocr-traineddata-enm 
+  - tesseract-ocr-traineddata-epo 
+  - tesseract-ocr-traineddata-equ 
+  - tesseract-ocr-traineddata-est 
+  - tesseract-ocr-traineddata-eus 
+  - tesseract-ocr-traineddata-fao 
+  - tesseract-ocr-traineddata-fas 
+  - tesseract-ocr-traineddata-fil 
+  - tesseract-ocr-traineddata-fin 
+  - tesseract-ocr-traineddata-fra 
+  - tesseract-ocr-traineddata-frk 
+  - tesseract-ocr-traineddata-frm 
+  - tesseract-ocr-traineddata-fry 
+  - tesseract-ocr-traineddata-gla 
+  - tesseract-ocr-traineddata-gle 
+  - tesseract-ocr-traineddata-glg 
+  - tesseract-ocr-traineddata-grc 
+  - tesseract-ocr-traineddata-guj 
+  - tesseract-ocr-traineddata-hat 
+  - tesseract-ocr-traineddata-heb 
+  - tesseract-ocr-traineddata-hin 
+  - tesseract-ocr-traineddata-hrv 
+  - tesseract-ocr-traineddata-hun 
+  - tesseract-ocr-traineddata-hye 
+  - tesseract-ocr-traineddata-iku 
+  - tesseract-ocr-traineddata-ind 
+  - tesseract-ocr-traineddata-isl 
+  - tesseract-ocr-traineddata-ita 
+  - tesseract-ocr-traineddata-ita_old 
+  - tesseract-ocr-traineddata-jav 
+  - tesseract-ocr-traineddata-jpn 
+  - tesseract-ocr-traineddata-jpn_vert 
+  - tesseract-ocr-traineddata-kan 
+  - tesseract-ocr-traineddata-kat 
+  - tesseract-ocr-traineddata-kat_old 
+  - tesseract-ocr-traineddata-kaz 
+  - tesseract-ocr-traineddata-khm 
+  - tesseract-ocr-traineddata-kir 
+  - tesseract-ocr-traineddata-kmr 
+  - tesseract-ocr-traineddata-kor 
+  - tesseract-ocr-traineddata-kor_vert 
   - tesseract-ocr-traineddata-lao 
-  - tesseract-ocr-traineddata-latin 
-  - tesseract-ocr-traineddata-latvian 
-  - tesseract-ocr-traineddata-lithuanian 
-  - tesseract-ocr-traineddata-macedonian 
-  - tesseract-ocr-traineddata-malay 
-  - tesseract-ocr-traineddata-malayalam 
-  - tesseract-ocr-traineddata-maltese 
-  - tesseract-ocr-traineddata-marathi 
-  - tesseract-ocr-traineddata-math_equation 
-  - tesseract-ocr-traineddata-nepali 
-  - tesseract-ocr-traineddata-norwegian 
-  - tesseract-ocr-traineddata-orientation_and_script_detection 
-  - tesseract-ocr-traineddata-oriya 
-  - tesseract-ocr-traineddata-pashto 
-  - tesseract-ocr-traineddata-persian 
-  - tesseract-ocr-traineddata-polish 
-  - tesseract-ocr-traineddata-portuguese 
-  - tesseract-ocr-traineddata-punjabi 
-  - tesseract-ocr-traineddata-romanian 
-  - tesseract-ocr-traineddata-russian 
-  - tesseract-ocr-traineddata-sanskrit 
-  - tesseract-ocr-traineddata-serbian 
-  - tesseract-ocr-traineddata-serbian_latin 
-  - tesseract-ocr-traineddata-sinhala 
-  - tesseract-ocr-traineddata-slovak 
-  - tesseract-ocr-traineddata-slovenian 
-  - tesseract-ocr-traineddata-spanish 
-  - tesseract-ocr-traineddata-spanish_old 
-  - tesseract-ocr-traineddata-swahili 
-  - tesseract-ocr-traineddata-swedish 
-  - tesseract-ocr-traineddata-syriac 
-  - tesseract-ocr-traineddata-tagalog 
-  - tesseract-ocr-traineddata-tajik 
-  - tesseract-ocr-traineddata-tamil 
-  - tesseract-ocr-traineddata-telugu 
-  - tesseract-ocr-traineddata-thai 
-  - tesseract-ocr-traineddata-tibetan_standard 
-  - tesseract-ocr-traineddata-tigrinya 
-  - tesseract-ocr-traineddata-turkish 
-  - tesseract-ocr-traineddata-ukrainian 
-  - tesseract-ocr-traineddata-urdu 
-  - tesseract-ocr-traineddata-uyghur 
-  - tesseract-ocr-traineddata-uzbek 
-  - tesseract-ocr-traineddata-uzbek_cyrillic 
-  - tesseract-ocr-traineddata-vietnamese 
-  - tesseract-ocr-traineddata-welsh 
-  - tesseract-ocr-traineddata-yiddish 
+  - tesseract-ocr-traineddata-lat 
+  - tesseract-ocr-traineddata-lav 
+  - tesseract-ocr-traineddata-lit 
+  - tesseract-ocr-traineddata-ltz 
+  - tesseract-ocr-traineddata-mal 
+  - tesseract-ocr-traineddata-mar 
+  - tesseract-ocr-traineddata-mkd 
+  - tesseract-ocr-traineddata-mlt 
+  - tesseract-ocr-traineddata-mon 
+  - tesseract-ocr-traineddata-mri 
+  - tesseract-ocr-traineddata-msa 
+  - tesseract-ocr-traineddata-mya 
+  - tesseract-ocr-traineddata-nep 
+  - tesseract-ocr-traineddata-nld 
+  - tesseract-ocr-traineddata-nor 
+  - tesseract-ocr-traineddata-oci 
+  - tesseract-ocr-traineddata-ori 
+  - tesseract-ocr-traineddata-osd 
+  - tesseract-ocr-traineddata-pan 
+  - tesseract-ocr-traineddata-pol 
+  - tesseract-ocr-traineddata-por 
+  - tesseract-ocr-traineddata-pus 
+  - tesseract-ocr-traineddata-que 
+  - tesseract-ocr-traineddata-ron 
+  - tesseract-ocr-traineddata-rus 
+  - tesseract-ocr-traineddata-san 
+  - tesseract-ocr-traineddata-script-arabic 
+  - tesseract-ocr-traineddata-script-armenian 
+  - tesseract-ocr-traineddata-script-bengali 
+  - tesseract-ocr-traineddata-script-canadian_aboriginal 
+  - tesseract-ocr-traineddata-script-cherokee 
+  - tesseract-ocr-traineddata-script-cyrillic 
+  - tesseract-ocr-traineddata-script-devanagari 
+  - tesseract-ocr-traineddata-script-ethiopic 
+  - tesseract-ocr-traineddata-script-fraktur 
+  - tesseract-ocr-traineddata-script-georgian 
+  - tesseract-ocr-traineddata-script-greek 
+  - tesseract-ocr-traineddata-script-gujarati 
+  - tesseract-ocr-traineddata-script-gurmukhi 
+  - tesseract-ocr-traineddata-script-hangul 
+  - tesseract-ocr-traineddata-script-hangul_vert 
+  - tesseract-ocr-traineddata-script-hans 
+  - tesseract-ocr-traineddata-script-hans_vert 
+  - tesseract-ocr-traineddata-script-hant 
+  - tesseract-ocr-traineddata-script-hant_vert 
+  - tesseract-ocr-traineddata-script-hebrew 
+  - tesseract-ocr-traineddata-script-japanese 
+  - tesseract-ocr-traineddata-script-japanese_vert 
+  - tesseract-ocr-traineddata-script-kannada 
+  - tesseract-ocr-traineddata-script-khmer 
+  - tesseract-ocr-traineddata-script-lao 
+  - tesseract-ocr-traineddata-script-latin 
+  - tesseract-ocr-traineddata-script-malayalam 
+  - tesseract-ocr-traineddata-script-myanmar 
+  - tesseract-ocr-traineddata-script-oriya 
+  - tesseract-ocr-traineddata-script-sinhala 
+  - tesseract-ocr-traineddata-script-syriac 
+  - tesseract-ocr-traineddata-script-tamil 
+  - tesseract-ocr-traineddata-script-telugu 
+  - tesseract-ocr-traineddata-script-thaana 
+  - tesseract-ocr-traineddata-script-thai 
+  - tesseract-ocr-traineddata-script-tibetan 
+  - tesseract-ocr-traineddata-script-vietnamese 
+  - tesseract-ocr-traineddata-sin 
+  - tesseract-ocr-traineddata-slk 
+  - tesseract-ocr-traineddata-slv 
+  - tesseract-ocr-traineddata-snd 
+  - tesseract-ocr-traineddata-spa 
+  - tesseract-ocr-traineddata-spa_old 
+  - tesseract-ocr-traineddata-sqi 
+  - tesseract-ocr-traineddata-srp 
+  - tesseract-ocr-traineddata-srp_latn 
+  - tesseract-ocr-traineddata-sun 
+  - tesseract-ocr-traineddata-swa 
+  - tesseract-ocr-traineddata-swe 
+  - tesseract-ocr-traineddata-syr 
+  - tesseract-ocr-traineddata-tam 
+  - tesseract-ocr-traineddata-tat 
+  - tesseract-ocr-traineddata-tel 
+  - tesseract-ocr-traineddata-tgk 
+  - tesseract-ocr-traineddata-tha 
+  - tesseract-ocr-traineddata-tir 
+  - tesseract-ocr-traineddata-ton 
+  - tesseract-ocr-traineddata-tur 
+  - tesseract-ocr-traineddata-uig 
+  - tesseract-ocr-traineddata-ukr 
+  - tesseract-ocr-traineddata-urd 
+  - tesseract-ocr-traineddata-uzb 
+  - tesseract-ocr-traineddata-uzb_cyrl 
+  - tesseract-ocr-traineddata-vie 
+  - tesseract-ocr-traineddata-yid 
+  - tesseract-ocr-traineddata-yor 
   - tesseract-server 
   - test-interface 
   - test-interface-javadoc 
