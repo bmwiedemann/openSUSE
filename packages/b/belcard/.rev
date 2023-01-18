@@ -122,4 +122,15 @@
     <comment></comment>
     <requestid>1040614</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>96daa0586af16bba6692ab8e84f59b10</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * Fix syntax error in Github issue template
+  * Added Github yml issue template
+</comment>
+    <requestid>1059001</requestid>
+  </revision>
 </revisionlist>
