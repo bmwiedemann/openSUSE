@@ -1,7 +1,7 @@
 #
 # spec file for package rcm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           rcm
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        An rc file (dotfile) management tool
 License:        BSD-3-Clause

@@ -47,4 +47,14 @@
     Mat M, Darcy Parker). (forwarded request 975915 from develop7)</comment>
     <requestid>975916</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0b2623ee2f7740ffda048bcac1ed2a47</srcmd5>
+    <version>1.3.6</version>
+    <time>1674048202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.6
+  * Feature: rcup/rcdn hooks can bail early (Patrick Brisbin)
+  * Documentation improvement (Teo Ljungberg) (forwarded request 1059329 from develop7)</comment>
+    <requestid>1059330</requestid>
+  </revision>
 </revisionlist>

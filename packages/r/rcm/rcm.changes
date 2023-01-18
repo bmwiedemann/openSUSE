@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 10:36:31 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 1.3.6
+  * Feature: rcup/rcdn hooks can bail early (Patrick Brisbin)
+  * Documentation improvement (Teo Ljungberg)
+
+-------------------------------------------------------------------
 Mon May  9 16:48:50 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 1.3.5
