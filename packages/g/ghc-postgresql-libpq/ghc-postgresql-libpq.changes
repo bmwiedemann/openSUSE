@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan  5 14:39:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-libpq to version 0.9.5.0.
+  0.9.5.0
+  -------
+
+  - Drop support for GHCs prior 8.6
+  - Require libpq >=10.22 (when using pkgconfig).
+  - Use CApiFFI for some parts of the API
+    (we cannot use for all due https://gitlab.haskell.org/ghc/ghc/-/issues/22043)
+
+-------------------------------------------------------------------
 Sun Oct  9 17:39:23 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-libpq to version 0.9.4.3 revision 3.
