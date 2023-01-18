@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  8 00:21:20 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update bifunctors to version 5.5.14.
+  5.5.14 [2022.12.07]
+  -------------------
+  * Define `Functor`, `Foldable`, and `Traversable` instances for `Sum` and
+    `Product`.
+
+-------------------------------------------------------------------
 Mon Sep 12 23:34:21 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update bifunctors to version 5.5.13.
