@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec 27 18:43:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update haskell-lexer to version 1.1.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
