@@ -1,0 +1,44 @@
+From 3f6a1954ff440959adcc44cc58372ed13ae2dbb3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Fri, 13 Jan 2023 14:39:54 +0100
+Subject: [PATCH] Only override the graphdriver to vfs if the priority is unset
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is an amend to https://github.com/containers/storage/pull/1460
+
+That PR was not addressing the case when the system wide config had the
+driver_priority option configured and the user had no config file of their
+own. Then `getRootlessStorageOpts` would be called and it would override the
+graph driver to "vfs".
+
+With this commit we only override the graph driver if driver priority is
+empty. Otherwise we propagate the driver priority into the storage options, so
+that the driver autodetection works as expected.
+
+Signed-off-by: Dan Čermák <dcermak@suse.com>
+---
+ vendor/github.com/containers/storage/types/options.go | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/vendor/github.com/containers/storage/types/options.go b/vendor/github.com/containers/storage/types/options.go
+index e87f458cc..eb7142ff2 100644
+--- a/vendor/github.com/containers/storage/types/options.go
++++ b/vendor/github.com/containers/storage/types/options.go
+@@ -274,7 +274,11 @@ func getRootlessStorageOpts(rootlessUID int, systemOpts StoreOptions) (StoreOpti
+ 		}
+ 	}
+ 	if opts.GraphDriverName == "" {
+-		opts.GraphDriverName = "vfs"
++		if len(systemOpts.GraphDriverPriority) == 0 {
++			opts.GraphDriverName = "vfs"
++		} else {
++			opts.GraphDriverPriority = systemOpts.GraphDriverPriority
++		}
+ 	}
+ 
+ 	if os.Getenv("STORAGE_OPTS") != "" {
+-- 
+2.39.0
+

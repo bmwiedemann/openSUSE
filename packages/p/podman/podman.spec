@@ -29,6 +29,8 @@ Source1:        podman.conf
 Source2:        README.SUSE.SLES
 # hotfix for https://github.com/containers/podman/issues/16765
 Patch0:         0001-Revert-Default-missing-hostPort-to-containerPort-is-.patch
+Patch1:         0002-Make-the-priority-for-picking-the-storage-driver-con.patch
+Patch2:         0003-Only-override-the-graphdriver-to-vfs-if-the-priority.patch
 BuildRequires:  bash-completion
 BuildRequires:  cni
 BuildRequires:  device-mapper-devel

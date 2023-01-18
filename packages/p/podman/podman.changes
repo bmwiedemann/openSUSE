@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 17 10:42:42 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- add patch: 0003-Only-override-the-graphdriver-to-vfs-if-the-priority.patch
+    (backport of https://github.com/containers/storage/pull/1468)
+
+-------------------------------------------------------------------
+Fri Jan 13 12:46:24 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Make the priority for picking the storage driver configurable (bsc#1197093)
+  (backport of https://github.com/containers/storage/pull/1460)
+- add patch: 0002-Make-the-priority-for-picking-the-storage-driver-con.patch
+
+-------------------------------------------------------------------
 Tue Nov 22 08:20:16 UTC 2022 - dcermak@suse.com
 
 - switch to building with go 1.17
