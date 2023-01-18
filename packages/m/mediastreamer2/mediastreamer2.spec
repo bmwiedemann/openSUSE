@@ -21,7 +21,7 @@
 %define docuver 5.2.0
 
 Name:           mediastreamer2
-Version:        5.2.6
+Version:        5.2.9
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later

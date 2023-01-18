@@ -558,4 +558,15 @@
 </comment>
     <requestid>1055797</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4202bd8014811fa0614c01d329aeafdd</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * Fix a crash due to a race condition in conference server
+  * Add logs to troubleshoot inactive streams issue
+</comment>
+    <requestid>1059007</requestid>
+  </revision>
 </revisionlist>

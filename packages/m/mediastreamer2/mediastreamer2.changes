@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 11 03:04:30 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.9
+
+- Update to version 5.2.9:
+  * Fix a crash due to a race condition in conference server
+  * Add logs to troubleshoot inactive streams issue
+
+-------------------------------------------------------------------
 Wed Jan  4 12:45:58 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.2.6:
