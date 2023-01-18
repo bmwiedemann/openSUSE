@@ -1,7 +1,7 @@
 #
 # spec file for package redis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        7.0.7
+Version:        7.0.8
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 16 21:00:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 7.0.8
+  * CVE-2022-35977: Integer overflow in the Redis SETRANGE and
+    SORT/SORT_RO commands can drive Redis to OOM panic boo#1207202
+  * CVE-2023-22458: Integer overflow in the Redis HRANDFIELD and
+    ZRANDMEMBER commands can lead to denial-of-service boo#1207203
+  * Avoid possible hang when client issues long KEYS, SRANDMEMBER,
+    HRANDFIELD, and ZRANDMEMBER commands and gets disconnected by
+    client output buffer limit
+  * Make sure that fork child doesn't do incremental rehashing
+  * Fix a bug where blocking commands with a sub-second timeout
+    would block forever
+  * Fix sentinel issue if replica changes IP
+
+-------------------------------------------------------------------
 Fri Dec 16 13:15:09 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 7.0.7
