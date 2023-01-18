@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-benchmark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/pytest-benchmark
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-benchmark/pytest-benchmark-%{version}.tar.gz
 Patch0:         fix-test-fast.patch
+# PATCH-FIX-OPENSUSE py311.patch gh#ionelmc/pytest-benchmark#232
+Patch1:         py311.patch
 BuildRequires:  %{python_module aspectlib}
 BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module freezegun}

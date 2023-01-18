@@ -108,4 +108,19 @@
 </comment>
     <requestid>1039055</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fa04fdaa9cf3bda88f1db9a99d762c6c</srcmd5>
+    <version>4.0.0</version>
+    <time>1674043711</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify the py311.patch to fix the test_abort_broken test, instead of
+  disabling.
+- Add py311.patch to make it compatible with python 3.11,
+  gh#ionelmc/pytest-benchmark#232
+- Disable broken test_abort_broken, this test is broken because the output of
+  the tests is a bit different with python 3.11 so we can disable until it's
+  fixed.
+</comment>
+    <requestid>1059005</requestid>
+  </revision>
 </revisionlist>
