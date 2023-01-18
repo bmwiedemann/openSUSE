@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Dec 13 07:09:04 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ShellCheck to version 0.9.0.
+  ## v0.9.0 - 2022-12-12
+  ### Added
+  - SC2316: Warn about 'local readonly foo' and similar (thanks, patrickxia!)
+  - SC2317: Warn about unreachable commands
+  - SC2318: Warn about backreferences in 'declare x=1 y=$x'
+  - SC2319/SC2320: Warn when $? refers to echo/printf/[ ]/[[ ]]/test
+  - SC2321: Suggest removing $((..)) in array[$((idx))]=val
+  - SC2322: Suggest collapsing double parentheses in arithmetic contexts
+  - SC2323: Suggest removing wrapping parentheses in a[(x+1)]=val
+
+  ### Fixed
+  - SC2086: Now uses DFA to make more accurate predictions about values
+  - SC2086: No longer warns about values declared as integer with declare -i
+
+  ### Changed
+  - ShellCheck now has a Data Flow Analysis engine to make smarter decisions
+    based on control flow rather than just syntax. Existing checks will
+    gradually start using it, which may cause them to trigger differently
+    (but more accurately).
+  - Values in directives/shellcheckrc can now be quoted with '' or ""
+
+-------------------------------------------------------------------
 Thu May 19 23:17:38 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update ShellCheck to version 0.8.0 revision 1.

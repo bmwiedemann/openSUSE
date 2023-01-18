@@ -19,13 +19,12 @@
 %global pkg_name ShellCheck
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
@@ -36,12 +35,14 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-fgl-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-transformers-devel
 BuildRequires:  pandoc
 ExcludeArch:    %{ix86}
 
@@ -75,7 +76,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
