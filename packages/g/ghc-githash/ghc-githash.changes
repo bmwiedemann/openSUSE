@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 23 11:38:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update githash to version 0.1.6.3.
+  ## 0.1.6.3
+
+  * Specify protocol.file.allow=always for latest git [#28](https://github.com/snoyberg/githash/pull/28)
+
+-------------------------------------------------------------------
 Mon Sep 20 07:11:36 UTC 2021 - psimons@suse.com
 
 - Update githash to version 0.1.6.2.
