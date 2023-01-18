@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 09:37:52 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230112.00
+  * Updating logging module so cloud logs are flushed prior to exit (#196)
+  * Windows: retry adding MDS route (#194)
+
+-------------------------------------------------------------------
 Wed Nov 16 15:51:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20221109.00

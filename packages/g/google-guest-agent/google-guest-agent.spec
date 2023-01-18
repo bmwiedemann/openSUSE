@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-agent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20221109.00
+Version:        20230112.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0

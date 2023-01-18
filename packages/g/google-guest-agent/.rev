@@ -213,4 +213,14 @@
   * Add workload cert refresh to preset (#185) (forwarded request 1036258 from glaubitz)</comment>
     <requestid>1036260</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7617c90b7eaa2cb1fa85209d4a71ad14</srcmd5>
+    <version>20230112.00</version>
+    <time>1674058282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230112.00
+  * Updating logging module so cloud logs are flushed prior to exit (#196)
+  * Windows: retry adding MDS route (#194) (forwarded request 1059309 from glaubitz)</comment>
+    <requestid>1059351</requestid>
+  </revision>
 </revisionlist>
