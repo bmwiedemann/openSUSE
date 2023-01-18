@@ -87,4 +87,12 @@
     <comment>- Use meson to build package</comment>
     <requestid>1046050</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4b7e478ac3c3fe2465dee951f77ae185</srcmd5>
+    <version>1.6.4</version>
+    <time>1674043958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059310</requestid>
+  </revision>
 </revisionlist>

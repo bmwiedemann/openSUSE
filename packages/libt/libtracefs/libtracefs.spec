@@ -18,7 +18,7 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only

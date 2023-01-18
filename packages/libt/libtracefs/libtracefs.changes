@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 18 09:39:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Flush pipe data in tracefs_cpu_flush()
+  * Add check for duplicate functions in man pages
+  * Make sure 32 bit works on 64 bit file systems
+
+-------------------------------------------------------------------
 Tue Dec 27 09:22:13 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Use meson to build package
