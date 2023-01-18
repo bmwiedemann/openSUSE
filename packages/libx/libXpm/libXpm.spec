@@ -1,7 +1,7 @@
 #
 # spec file for package libXpm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,19 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXpm/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1207001:   U_0001-configure-add-disable-open-zfile-instead-of-requirin.patch
+Patch1207029:   U_0002-Fix-CVE-2022-46285-Infinite-loop-on-unclosed-comment.patch
+Patch1207030:   U_0004-Fix-CVE-2022-44617-Runaway-loop-with-width-of-0-and-.patch
+Patch1207031:   U_0005-Fix-CVE-2022-4883-compression-commands-depend-on-PAT.patch
+Patch1207129:   U_regression-bug1207029_1207030_1207031.patch
+Patch1207130:   U_regression2-bug1207029_1207030_1207031.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gzip
+BuildRequires:  libtool
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xextproto)
@@ -80,8 +90,15 @@ regard to its format.
 
 %prep
 %setup -q
+%patch1207001 -p1
+%patch1207029 -p1
+%patch1207030 -p1
+%patch1207031 -p1
+%patch1207129 -p1
+%patch1207130 -p1
 
 %build
+autoreconf -fi
 %configure --disable-static
 make %{?_smp_mflags}
 

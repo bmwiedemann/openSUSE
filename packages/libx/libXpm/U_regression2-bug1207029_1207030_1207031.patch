@@ -1,0 +1,66 @@
+From 8178eb0834d82242e1edbc7d4fb0d1b397569c68 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Mon, 16 Jan 2023 19:44:52 +1000
+Subject: [PATCH libXpm 7/7] Use gzip -d instead of gunzip
+
+GNU gunzip [1] is a shell script that exec's `gzip -d`. Even if we call
+/usr/bin/gunzip with the correct built-in path, the actual gzip call
+will use whichever gzip it finds first, making our patch pointless.
+
+Fix this by explicitly calling gzip -d instead.
+
+https://git.savannah.gnu.org/cgit/gzip.git/tree/gunzip.in
+
+[Part of the fix for CVE-2022-4883]
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+---
+ README.md    | 2 +-
+ configure.ac | 3 +--
+ src/RdFToI.c | 2 +-
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+Index: libXpm-3.5.14/README.md
+===================================================================
+--- libXpm-3.5.14.orig/README.md
++++ libXpm-3.5.14/README.md
+@@ -41,5 +41,5 @@ the first version found in the PATH used
+ on the PATH environment variable set at runtime.
+ 
+ To specify paths to be used for these commands instead of searching $PATH, pass
+-the XPM_PATH_COMPRESS, XPM_PATH_UNCOMPRESS, XPM_PATH_GZIP, and XPM_PATH_GUNZIP
++the XPM_PATH_COMPRESS, XPM_PATH_UNCOMPRESS, and XPM_PATH_GZIP
+ variables to the configure command.
+Index: libXpm-3.5.14/configure.ac
+===================================================================
+--- libXpm-3.5.14.orig/configure.ac
++++ libXpm-3.5.14/configure.ac
+@@ -58,7 +58,7 @@ AC_DEFINE_UNQUOTED([$1], ["$$1"], [Path
+ ]) dnl End of AC_DEFUN([XPM_PATH_PROG]...
+ 
+ # Optional feature: When a filename ending in .Z or .gz is requested,
+-# open a pipe to a newly forked compress/uncompress/gzip/gunzip command to
++# open a pipe to a newly forked compress/uncompress/gzip command to
+ # handle it.
+ AC_MSG_CHECKING([whether to handle compressed pixmaps])
+ case $host_os in
+@@ -75,7 +75,6 @@ if test x$OPEN_ZFILE = xno ; then
+ else
+         XPM_PATH_PROG([XPM_PATH_UNCOMPRESS], [uncompress])
+         XPM_PATH_PROG([XPM_PATH_GZIP], [gzip])
+-        XPM_PATH_PROG([XPM_PATH_GUNZIP], [gunzip])
+         AC_CHECK_FUNCS([closefrom close_range], [break])
+ fi
+ 
+Index: libXpm-3.5.14/src/RdFToI.c
+===================================================================
+--- libXpm-3.5.14.orig/src/RdFToI.c
++++ libXpm-3.5.14/src/RdFToI.c
+@@ -251,7 +251,7 @@ OpenReadFile(
+ 	else if ( ext && !strcmp(ext, ".gz") )
+ 	{
+ 	    mdata->type = XPMPIPE;
+-	    mdata->stream.file = xpmPipeThrough(fd, XPM_PATH_GUNZIP, "-qc", "r");
++	    mdata->stream.file = xpmPipeThrough(fd, XPM_PATH_GZIP, "-dqc", "r");
+ 	}
+ 	else
+ #endif /* z-files */

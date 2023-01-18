@@ -1,0 +1,95 @@
+From 4841039e5385f264d12757903894f47c64f59361 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Thu, 5 Jan 2023 15:42:36 -0800
+Subject: [PATCH] configure: add --disable-open-zfile instead of requiring
+ -DNO_ZPIPE
+
+Documents the two compression options in the README, makes their
+configure options reflect the interdependency of their implementation,
+and makes the configure script report their configuration.
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ README.md    | 15 +++++++++++++++
+ configure.ac | 36 +++++++++++++++++++++++-------------
+ 2 files changed, 38 insertions(+), 13 deletions(-)
+
+diff --git a/README.md b/README.md
+index adc83c8..7895350 100644
+--- a/README.md
++++ b/README.md
+@@ -16,3 +16,18 @@ For patch submission instructions, see:
+ 
+   https://www.x.org/wiki/Development/Documentation/SubmittingPatches
+ 
++------------------------------------------------------------------------------
++
++libXpm supports two optional features to handle compressed pixmap files.
++
++--enable-open-zfile makes libXpm recognize file names ending in .Z and .gz
++and open a pipe to the appropriate command to compress the file when writing
++and uncompress the file when reading. This is enabled by default on platforms
++other than MinGW and can be disabled by passing the --disable-open-zfile flag
++to the configure script.
++
++--enable-stat-zfile make libXpm search for a file name with .Z or .gz added
++if it can't find the file it was asked to open.  It relies on the
++--enable-open-zfile feature to open the file, and is enabled by default
++when --enable-open-zfile is enabled, and can be disabled by passing the
++--disable-stat-zfile flag to the configure script.
+diff --git a/configure.ac b/configure.ac
+index 789a96e..1b64830 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,25 +49,35 @@ if test "x$USE_GETTEXT" = "xyes" ; then
+ fi
+ AM_CONDITIONAL(USE_GETTEXT, test "x$USE_GETTEXT" = "xyes")
+ 
++# Optional feature: When a filename ending in .Z or .gz is requested,
++# open a pipe to a newly forked compress/uncompress/gzip/gunzip command to
++# handle it.
++AC_MSG_CHECKING([whether to handle compressed pixmaps])
++case $host_os in
++        *mingw*)        zpipe_default="no" ;;
++        *)              zpipe_default="yes" ;;
++esac
++AC_ARG_ENABLE(open-zfile,
++        AS_HELP_STRING([--enable-open-zfile],
++                        [Search for files with .Z & .gz extensions automatically @<:@default=auto@:>@]),
++              [OPEN_ZFILE=$enableval], [OPEN_ZFILE=yes])
++AC_MSG_RESULT([$OPEN_ZFILE])
++if test x$OPEN_ZFILE = xno ; then
++        AC_DEFINE(NO_ZPIPE, 1, [Define to 1 to disable decompression via pipes])
++fi
++
+ # Optional feature: When ___.xpm is requested, also look for ___.xpm.Z & .gz
+ # Replaces ZFILEDEF = -DSTAT_ZFILE in old Imakefile
++AC_MSG_CHECKING([whether to search for compressed pixmaps])
+ AC_ARG_ENABLE(stat-zfile,
+-	AS_HELP_STRING([--enable-stat-zfile],
+-			[Search for files with .Z & .gz extensions automatically @<:@default=yes@:>@]),
+-              [STAT_ZFILE=$enableval], [STAT_ZFILE=yes])
++        AS_HELP_STRING([--enable-stat-zfile],
++                        [Search for files with .Z & .gz extensions automatically @<:@default=auto@:>@]),
++              [STAT_ZFILE=$enableval], [STAT_ZFILE=$OPEN_ZFILE])
++AC_MSG_RESULT([$STAT_ZFILE])
+ if test x$STAT_ZFILE = xyes ; then
+-	AC_DEFINE(STAT_ZFILE, 1, [Define to 1 to automatically look for files with .Z & .gz extensions])
++        AC_DEFINE(STAT_ZFILE, 1, [Define to 1 to automatically look for files with .Z & .gz extensions])
+ fi
+ 
+-
+-case $host_os in
+-	*mingw*)
+-                AC_DEFINE(NO_ZPIPE, 1, [Define to 1 to disable decompression via pipes])
+-	;;
+-	*)
+-	;;
+-esac
+-
+ AC_CONFIG_FILES([Makefile
+                  doc/Makefile
+                  include/Makefile
+-- 
+2.35.3
+

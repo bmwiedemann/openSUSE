@@ -1,0 +1,24 @@
+@@ -, +, @@ 
+---
+ src/create.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+--- a/src/create.c	
++++ a/src/create.c	
+@@ -994,11 +994,15 @@ CreateXImage(
+ #if !defined(FOR_MSW) && !defined(AMIGA)
+     if (height != 0 && (*image_return)->bytes_per_line >= INT_MAX / height) {
+ 	XDestroyImage(*image_return);
++	*image_return = NULL;
+ 	return XpmNoMemory;
+     }
+     /* now that bytes_per_line must have been set properly alloc data */
+-    if((*image_return)->bytes_per_line == 0 ||  height == 0)
++    if((*image_return)->bytes_per_line == 0 ||  height == 0) {
++	XDestroyImage(*image_return);
++	*image_return = NULL;
+     	return XpmNoMemory;
++    }
+     (*image_return)->data =
+ 	(char *) XpmMalloc((*image_return)->bytes_per_line * height);
+ 
+-- 

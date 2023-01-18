@@ -105,4 +105,26 @@
   * update man pages</comment>
     <requestid>1036996</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>00e1c9d8dd29313cda2eea7e5c4885df</srcmd5>
+    <version>3.5.14</version>
+    <time>1674043718</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-configure-add-disable-open-zfile-instead-of-requirin.patch
+  * needed by U_0005-Fix-CVE-2022-4883-compression-commands-depend-on-PAT.patch
+- U_0002-Fix-CVE-2022-46285-Infinite-loop-on-unclosed-comment.patch
+  * libXpm: Infinite loop on unclosed comments (CVE-2022-46285, 
+    bsc#1207029)
+- U_0004-Fix-CVE-2022-44617-Runaway-loop-with-width-of-0-and-.patch
+  * libXpm: Runaway loop on width of 0 and enormous height 
+    (CVE-2022-44617, bsc#1207030)
+- U_0005-Fix-CVE-2022-4883-compression-commands-depend-on-PAT.patch
+  * libXpm: compression commands depend on $PATH (CVE-2022-4883,
+    bsc#1207031)
+- U_regression-bug1207029_1207030_1207031.patch
+  * regression fix for above patches
+- U_regression2-bug1207029_1207030_1207031.patch
+  * second regression fix: Use gzip -d instead of gunzip</comment>
+    <requestid>1059036</requestid>
+  </revision>
 </revisionlist>
