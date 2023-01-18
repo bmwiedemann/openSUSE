@@ -1,0 +1,7 @@
+#!/bin/sh
+getent group grommunio >/dev/null || addgroup --system grommunio
+getent passwd grommunio >/dev/null || \
+	adduser --system grommunio --home / --no-create-home --disabled-password --ingroup grommunio
+getent group groweb >/dev/null || addgroup --system groweb
+getent passwd groweb >/dev/null || \
+	adduser --system groweb --home / --no-create-home --disabled-password --ingroup groweb

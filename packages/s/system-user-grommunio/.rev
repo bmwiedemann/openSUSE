@@ -7,4 +7,12 @@
     <comment>together with gromox</comment>
     <requestid>1000296</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5777a1a30bf931d3458fce3d0e3f6efe</srcmd5>
+    <version>3</version>
+    <time>1674043887</time>
+    <user>dimstar_suse</user>
+    <comment>- Add groweb user for grommunio-web, grommunio-index</comment>
+    <requestid>1059291</requestid>
+  </revision>
 </revisionlist>

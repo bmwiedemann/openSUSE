@@ -1,0 +1,16 @@
+Source: system-user-grommunio
+Priority: optional
+Section: mail
+Maintainer: Grommunio <null@grommunio.com>
+Standards-Version: 4.5.0
+
+Package: system-user-grommunio
+Architecture: all
+Pre-Depends: ${misc:Pre-Depends}
+Depends: adduser, ${misc:Depends}
+Provides: system-user-groweb
+Replaces: system-user-groweb
+Conflicts: system-user-groweb
+Description: System user and group grommunio
+ .
+ This package provides the grommunio account.
