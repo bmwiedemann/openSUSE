@@ -1,6 +1,6 @@
 name:                generic-monoid
 version:             0.1.0.1
-x-revision: 1
+x-revision: 2
 synopsis:            Derive monoid instances for product types.
 description:         Using GHC's generics, allow for deriving `Monoid` and `Semigroup` instances for your product types.
 license:             BSD3
@@ -15,6 +15,6 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     Data.Semigroup.Generic, Data.Monoid.Generic
-  build-depends:       base >=4.11 && <4.17
+  build-depends:       base >=4.11 && <4.19
   hs-source-dirs:      src
   default-language:    Haskell2010
