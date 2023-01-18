@@ -62,4 +62,14 @@
     <comment></comment>
     <requestid>1006739</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>763421b33c474c4b6db9dbb8f316f07b</srcmd5>
+    <version>4.1.1</version>
+    <time>1674048197</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dependency
+- Add required dep for testing python-pdm-pep517
+</comment>
+    <requestid>1059337</requestid>
+  </revision>
 </revisionlist>

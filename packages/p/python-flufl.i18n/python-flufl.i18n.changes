@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 18 10:55:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dependency
+- Add required dep for testing python-pdm-pep517
+
+-------------------------------------------------------------------
 Wed Sep 28 15:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 4.1.1 (2022-09-05)
