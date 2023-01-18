@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,6 +37,7 @@ BuildRequires:  typelib-1_0-Gtk-3_0
 BuildRequires:  update-desktop-files
 Requires:       python3-gobject-Gdk
 Requires:       python3-pyxdg
+Requires:       typelib-1_0-Gtk-3_0
 Requires:       xdg-utils
 # for the version control plugin
 Suggests:       bzr

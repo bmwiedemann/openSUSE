@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 18 14:34:38 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Added missing dependency on typelib-1_0-Gtk-3_0 (bsc#1188958)
+
+-------------------------------------------------------------------
 Wed Nov  9 10:42:03 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.75.1:
