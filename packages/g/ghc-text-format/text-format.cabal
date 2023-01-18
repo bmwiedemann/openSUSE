@@ -1,16 +1,16 @@
+cabal-version:  >= 1.10
 name:           text-format
-version:        0.3.2
-x-revision:     2
+version:        0.3.2.1
+x-revision:     1
 license:        BSD3
 license-file:   LICENSE
-homepage:       https://github.com/bos/text-format
-bug-reports:    https://github.com/bos/text-format/issues
+homepage:       https://github.com/hackage-trustees/text-format
+bug-reports:    https://github.com/hackage-trustees/text-format/issues
 category:       Text
 author:         Bryan O'Sullivan <bos@serpentine.com>
-maintainer:     Bryan O'Sullivan <bos@serpentine.com>
+maintainer:     Hackage Trustees
 stability:      experimental
 synopsis:       Text formatting
-cabal-version:  >= 1.8
 build-type:     Simple
 description:
     A text formatting library optimized for both ease of use and high
@@ -25,10 +25,13 @@ tested-with:
    || == 7.10.3
    || == 8.0.2
    || == 8.2.2
-   || == 8.4.3
+   || == 8.4.4
    || == 8.6.5
-   || == 8.8.3
-   || == 8.10.1
+   || == 8.8.4
+   || == 8.10.7
+   || == 9.0.2
+   || == 9.2.5
+   || == 9.4.3
 
 extra-source-files:
     README.markdown
@@ -55,15 +58,17 @@ library
     Data.Text.Format.Int
 
   build-depends:
-    array,
-    base >=4.3 && <4.15,
-    integer-gmp >= 0.2,
-    double-conversion >= 0.2.0.0,
-    ghc-prim,
-    old-locale,
-    text >= 0.11.0.8,
-    time,
-    transformers
+      array
+    , base              >= 4.3       && < 4.18
+    , integer-gmp       >= 0.2
+    , double-conversion >= 0.2.0.0
+    , ghc-prim
+    , old-locale
+    , text              >= 0.11.0.8
+    , time
+    , transformers
+
+  default-language: Haskell98
 
   if flag(developer)
     ghc-options: -Werror
@@ -75,12 +80,8 @@ library
 
   if !impl(ghc >= 8.0)
     build-depends:
-      semigroups          >= 0.18.5  && < 0.20
+      semigroups        >= 0.18.5  && < 0.20
 
 source-repository head
   type:     git
   location: https://github.com/hackage-trustees/text-format.git
-
-source-repository head
-  type:     mercurial
-  location: https://bitbucket.org/bos/text-format
