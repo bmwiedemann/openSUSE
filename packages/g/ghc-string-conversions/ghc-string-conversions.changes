@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  8 19:40:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update string-conversions to version 0.4.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
