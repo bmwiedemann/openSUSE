@@ -19,7 +19,7 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.2.6
+Version:        5.2.9
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later

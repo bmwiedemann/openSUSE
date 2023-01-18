@@ -150,4 +150,14 @@
 </comment>
     <requestid>1055796</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>608c5f7687fb72ff3a81e203a0cfb768</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+</comment>
+    <requestid>1059003</requestid>
+  </revision>
 </revisionlist>
