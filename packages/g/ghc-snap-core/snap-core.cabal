@@ -1,6 +1,6 @@
 name:           snap-core
 version:        1.0.5.0
-x-revision: 2
+x-revision: 3
 synopsis:       Snap: A Haskell Web Framework (core interfaces and types)
 
 description:
@@ -155,7 +155,7 @@ Library
     unix-compat               >= 0.3     && < 0.7,
       -- allow unix-compat-0.6, see https://github.com/snapframework/snap-core/pull/317
     unordered-containers      >= 0.1.4.3 && < 0.3,
-    vector                    >= 0.6     && < 0.13
+    vector                    >= 0.6     && < 0.14
 
   other-extensions:
     BangPatterns,
