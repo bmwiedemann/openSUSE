@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 21 21:03:43 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.37 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Oct 24 07:33:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.37 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Oct  7 11:38:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update monad-logger to version 0.3.37 revision 1.
