@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ssm-agent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.2.286.0
+Version:        3.2.419.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0

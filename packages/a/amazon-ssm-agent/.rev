@@ -215,4 +215,12 @@
   + Update shell for Session Manager on MacOS (forwarded request 1037636 from glaubitz)</comment>
     <requestid>1037655</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0dc3630da848999fa3beb3da980e089b</srcmd5>
+    <version>3.2.419.0</version>
+    <time>1674043952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059300</requestid>
+  </revision>
 </revisionlist>
