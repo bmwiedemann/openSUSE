@@ -1,7 +1,7 @@
 #
 # spec file for package osc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,75 +16,84 @@
 #
 
 
-%if 0%{?suse_version} >= 1500 || 0%{?fedora} >= 29 || 0%{?rhel} >= 7 || 0%{?mageia} >= 8
-%bcond_without python3
-%else
-%bcond_with    python3
-%endif
-
-%if %{with python3}
-
 %define use_python python3
+%define use_python_pkg python3
 
-# else if with python3
-%else
-%define use_python python
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+# use python36 on SLE 12 and older
+%define use_python python3.6
+%define use_python_pkg python36
 %endif
 
-%define version_unconverted 0.182.0
+%define completion_dir_bash %{_datadir}/bash-completion/completions
+%define completion_dir_csh %{_sysconfdir}/profile.d
+%define completion_dir_fish %{_datadir}/fish/vendor_completions.d
 %define osc_plugin_dir %{_prefix}/lib/osc-plugins
-%define macros_file macros.osc
-%if ! %{defined _rpmmacrodir}
- %define _rpmmacrodir %{_sysconfdir}/rpm
+# need to override python_sitelib because it is not set as we would expect on many distros
+%define python_sitelib %(RPM_BUILD_ROOT= %{use_python} -Ic "import sysconfig; print(sysconfig.get_path('purelib'))")
+
+%if 0%{?is_opensuse}
+%define completion_dir_bash %{_sysconfdir}/bash_completion.d
+%endif
+
+# generate manpages on distros where argparse-manpage >= 3 is available
+%if 0%{?suse_version} > 1500 || 0%{?fedora} >= 37
+%bcond_without man
+%else
+%bcond_with man
+%endif
+
+%define argparse_manpage_pkg %{use_python_pkg}-argparse-manpage
+%if 0%{?fedora}
+%define argparse_manpage_pkg argparse-manpage
 %endif
 
 Name:           osc
-Version:        0.182.0
+Version:        1.0.0~b3
 Release:        0
-Summary:        Open Build Service Commander
+Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/osc
+
 Source:         %{name}-%{version}.tar.gz
+
+%if 0%{?debian}
 Source1:        debian.dirs
 Source2:        debian.docs
-Source3:        debian.osc.links
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{use_python}-devel
-BuildRequires:  %{use_python}-setuptools
-BuildRequires:  diffstat
-%if 0%{?mandriva_version} || 0%{?mageia}
-BuildRequires:  python-rpm
-Requires:       python-rpm
-%else
-%if 0%{?suse_version} >= 1500 || 0%{?fedora} >= 32 || 0%{?rhel} >= 7
-BuildRequires:  %{use_python}-rpm
-Requires:       %{use_python}-rpm
-%else
-BuildRequires:  rpm-python
-Requires:       rpm-python
 %endif
-%endif
-%if 0%{?suse_version} == 0 || 0%{?suse_version} >= 1120
+
 BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if %{with man}
+BuildRequires:  %{argparse_manpage_pkg}
 %endif
-Recommends:     openssh
-%if 0%{?suse_version}
-Requires:       %{use_python}
-Recommends:     %{use_python}-progressbar
-BuildRequires:  %{use_python}-xml
-Requires:       %{use_python}-xml
-%if !%{with python3} && 0%{?suse_version} < 1020
-BuildRequires:  python-elementtree
-Requires:       python-elementtree
-%endif
-%if 0%{?suse_version} > 1000
+BuildRequires:  %{use_python_pkg}-cryptography
+BuildRequires:  %{use_python_pkg}-devel >= 3.6
+BuildRequires:  %{use_python_pkg}-rpm
+BuildRequires:  %{use_python_pkg}-setuptools
+BuildRequires:  %{use_python_pkg}-urllib3
+BuildRequires:  diffstat
+
+Requires:       %{use_python_pkg}-cryptography
+Requires:       %{use_python_pkg}-rpm
+Requires:       %{use_python_pkg}-urllib3
+
+# needed for showing download progressbars
+Recommends:     %{use_python_pkg}-progressbar
+
+# needed for storing credentials in kwallet/gnome-keyring
+Recommends:     %{use_python_pkg}-keyring
+Recommends:     %{use_python_pkg}-keyring-keyutils
+
 Recommends:     build
 Recommends:     ca-certificates
 Recommends:     diffstat
 Recommends:     powerpc32
 Recommends:     sudo
-# These packages are needed for "osc add $URL"
+
+# needed for `osc add <URL>`
 Recommends:     obs-service-recompress
 Recommends:     obs-service-download_files
 Recommends:     obs-service-format_spec_file
@@ -93,133 +102,107 @@ Recommends:     obs-service-set_version
 Recommends:     obs-service-source_validator
 Recommends:     obs-service-tar_scm
 Recommends:     obs-service-verify_file
+
+%if 0%{?fedora}
+Recommends:     openssh
+%endif
+%if 0%{?suse_version}
+Recommends:     openssh-common
+%endif
+
+# needed for `osc browse` that calls xdg-open
 Recommends:     xdg-utils
-# for osc >= 0.167.0 the newest build version is needed.
-# Otherwise osc chroot might not work correctly.
-Conflicts:      build < 20200106
-%endif
-%endif
-# needed for storing credentials in kwallet/gnome-keyring
-%if 0%{?suse_version} > 1000 || 0%{?mandriva_version} || 0%{?mdkversion} || 0%{?fedora} >= 29 || 0%{?rhel} >= 8
-%if %{with python3}
-Recommends:     python3-keyring
-Recommends:     python3-keyring-keyutils
-%else
-Recommends:     python-keyring
-Recommends:     python-keyring-keyutils
-%endif
-%endif
-%if 0%{?rhel} && 0%{?rhel} < 6
-BuildRequires:  python-elementtree
-Requires:       python-elementtree
-%endif
-%if 0%{?suse_version} || 0%{?mandriva_version} || 0%{?mageia}
-%if 0%{?suse_version} >= 1315
-BuildRequires:  %{use_python}-M2Crypto > 0.19
-BuildRequires:  %{use_python}-chardet
-Requires:       %{use_python}-M2Crypto > 0.19
-Requires:       %{use_python}-chardet
-%else
-BuildRequires:  python-m2crypto > 0.19
-Requires:       python-m2crypto > 0.19
-%endif
-%else
-%if 0%{?fedora} >= 29  || 0%{?rhel} >= 7
-BuildRequires:  python3-m2crypto
-Requires:       python3-m2crypto
-%else
-BuildRequires:  m2crypto > 0.19
-Requires:       m2crypto > 0.19
-%endif
-%endif
 
-Provides:       %{use_python}-osc
-
-%if %{with python3}
-%define python_sitelib %(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-%else
-%{!?python_sitelib: %define python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%endif
+Provides:       %{use_python_pkg}-osc
 
 %description
-Commandline client for the Open Build Service.
+OpenSUSE Commander is a command-line client for the Open Build Service.
 
-See http://en.opensuse.org/openSUSE:OSC , as well as
-http://en.opensuse.org/openSUSE:Build_Service_Tutorial for a general
-introduction.
+See http://en.opensuse.org/openSUSE:OSC, as well as
+http://en.opensuse.org/openSUSE:Build_Service_Tutorial
+for a general introduction.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# the PATH hack/rewrite is needed for Fedora 20 builds, because /bin
-# is a symlink to /usr/bin and /bin precedes /usr/bin in PATH
-# => a "wrong" interpreter line ("#!/bin/python") is constructed
-# ("wrong", because no package provides "/bin/python").
-PATH="/usr/bin:$PATH" CFLAGS="%{optflags}" %{use_python} setup.py build
+%{use_python} setup.py build
 
-cat << eom > %{macros_file}
+# write rpm macros
+cat << EOF > macros.osc
 %%osc_plugin_dir %{osc_plugin_dir}
-eom
-echo >> %{macros_file}
+EOF
+
+# build man page
+%if %{with man}
+PYTHONPATH=. argparse-manpage \
+    --output=osc.1 \
+    --format=single-commands-section \
+    --module=osc.commandline \
+    --function=get_parser \
+    --project-name=osc \
+    --prog=osc \
+    --description="OpenSUSE Commander" \
+    --author="Contributors to the osc project. See the project's GIT history for the complete list." \
+    --url="https://github.com/openSUSE/osc/"
+%endif
 
 %install
-%{use_python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
-sed -i -E 's|#!.*python|#!%{_bindir}/%{use_python}|' osc-wrapper.py
-ln -s osc-wrapper.py %{buildroot}/%{_bindir}/osc
-mkdir -p %{buildroot}%{osc_plugin_dir}
-mkdir -p %{buildroot}%{_localstatedir}/lib/osc-plugins
-install -Dm0644 dist/complete.csh %{buildroot}%{_sysconfdir}/profile.d/osc.csh
-%if 0%{?suse_version}
-install -Dm0644 dist/complete.sh %{buildroot}%{_sysconfdir}/bash_completion.d/osc.sh
-%else
-install -Dm0644 dist/complete.sh %{buildroot}%{_sysconfdir}/profile.d/osc.sh
+%{use_python} setup.py install -O1 --skip-build --force --root %{buildroot} --prefix %{_prefix}
+
+# create plugin dirs
+install -d %{buildroot}%{osc_plugin_dir}
+install -d %{buildroot}%{_sharedstatedir}/osc-plugins
+
+# install completions
+install -Dm0755 contrib/osc.complete %{buildroot}%{_datadir}/osc/complete
+install -Dm0644 contrib/complete.csh %{buildroot}%{completion_dir_csh}/osc.csh
+install -Dm0644 contrib/complete.sh %{buildroot}%{completion_dir_bash}/osc.sh
+install -Dm0644 contrib/osc.fish %{buildroot}%{completion_dir_fish}/osc.fish
+
+# install rpm macros
+install -Dm0644 macros.osc %{buildroot}%{_rpmmacrodir}/macros.osc
+
+# install man page
+%if %{with man}
+install -Dm0644 osc.1 %{buildroot}%{_mandir}/man1/osc.1
 %endif
-%if 0%{?suse_version} > 1110
-install -Dm0755 dist/osc.complete %{buildroot}%{_prefix}/lib/osc/complete
-%else
-install -Dm0755 dist/osc.complete %{buildroot}%{_libdir}/osc/complete
-%endif
 
-install -Dm644 osc.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/osc.fish
-
-install -m644 %{macros_file} -D %{buildroot}%{_rpmmacrodir}/%{macros_file}
-
-%if 0%{?suse_version} >= 1500
 %check
 %{use_python} setup.py test
-%endif
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%if 0%{?suse_version} >= 1500
+
+# docs
 %license COPYING
-%doc AUTHORS README.md TODO NEWS
-%else
-%doc AUTHORS README.md TODO NEWS COPYING
-%endif
-%{_bindir}/osc*
-%{python_sitelib}/*
-%config %{_sysconfdir}/profile.d/osc.csh
-%if 0%{?suse_version}
-%config %{_sysconfdir}/bash_completion.d/osc.sh
-%else
-%config %{_sysconfdir}/profile.d/osc.sh
-%endif
-%{_rpmmacrodir}/%{macros_file}
-%dir %{_localstatedir}/lib/osc-plugins
+%doc AUTHORS README.md NEWS
+%if %{with man}
 %{_mandir}/man1/osc.*
-%if 0%{?suse_version} > 1110
-%{_prefix}/lib/osc
-%else
-%{_libdir}/osc
 %endif
+
+# executables
+%{_bindir}/*
+
+# python modules
+%{python_sitelib}/*
+
+# rpm macros
+%{_rpmmacrodir}/*
+
+# plugins
+%dir %{osc_plugin_dir}
+%dir %{_sharedstatedir}/osc-plugins
+
+# completions
+%dir %{_datadir}/osc
+%{_datadir}/osc/complete
+%{completion_dir_bash}/*
+%{completion_dir_csh}/*
+%{completion_dir_fish}/*
+
+# osc owns the dirs to avoid the "directories not owned by a package" build error
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_completions.d
-%{_datadir}/fish/vendor_completions.d/osc.fish
-%dir %{osc_plugin_dir}
 
 %changelog

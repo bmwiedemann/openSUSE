@@ -9,9 +9,9 @@ export PYBUILD_NAME=osc
 
 override_dh_auto_install:
 	dh_auto_install
-	install -Dm0644 dist/complete.csh debian/tmp/etc/profile.d/osc.csh
-	install -Dm0644 dist/complete.sh debian/tmp/etc/bash_completion.d/osc.sh
-	install -Dm0755 dist/osc.complete debian/tmp/usr/lib/osc/complete
+	install -Dm0644 contrib/complete.csh debian/tmp/etc/profile.d/osc.csh
+	install -Dm0644 contrib/complete.sh debian/tmp/etc/bash_completion.d/osc.sh
+	install -Dm0755 contrib/osc.complete debian/tmp/usr/lib/osc/complete
 
 
 override_dh_auto_test:
