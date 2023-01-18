@@ -23,7 +23,7 @@
 
 %define mod_name electron
 # https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
-%define abi_version 109
+%define abi_version 110
 
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
@@ -103,29 +103,23 @@ BuildArch:      i686
 %endif
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400 || 0%{?fedora}
-%bcond_without system_harfbuzz
-%else
-%bcond_with system_harfbuzz
-%endif
-
-
-%bcond_without system_freetype
 %bcond_without system_nghttp2
-%bcond_without system_double_conversion
-%bcond_without system_woff2
 
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
+%bcond_without harfbuzz_5
 %bcond_without system_aom
 %bcond_without system_avif
+%bcond_without system_jxl
 %bcond_without icu_71
 %bcond_without ffmpeg_5
 %bcond_without system_dav1d
 %bcond_without system_spirv
 %else
+%bcond_with harfbuzz_5
 %bcond_with system_aom
 %bcond_with system_avif
+%bcond_with system_jxl
 %bcond_with icu_71
 %bcond_with ffmpeg_5
 %bcond_with system_dav1d
@@ -140,11 +134,7 @@ BuildArch:      i686
 %bcond_with system_nvctrl
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora_version}
-%bcond_without system_jxl
-%else
-%bcond_with system_jxl
-%endif
+
 
 
 
@@ -203,7 +193,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.3.4
+Version:        22.0.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -225,6 +215,9 @@ Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
 # …and against icu-69
 Source410:      NumberFormat-icu71-incrementExact.patch
 Source411:      intl-objects-icu71-UNUM_APPROXIMATELY_SIGN_FIELD.patch
+# and against harfbuzz 4
+Source415:      harfbuzz-replace-chromium-scoped-type.patch
+
 
 #Reverse upstream changes to build against system libavif.
 #All of this patch is dead code, so it can be reversed unconditionally.
@@ -268,7 +261,6 @@ Patch1038:      pdfium-fix-system-libs.patch
 Patch1040:      system-jsoncpp.patch
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/zlib.patch/
 Patch1041:      system-zlib.patch
-Patch1043:      node-system-libs.patch
 Patch1044:      replace_gn_files-system-libs.patch
 Patch1045:      angle-system-xxhash.patch
 # https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-99-pdfium-system-libtiff-libpng.patch
@@ -288,8 +280,8 @@ Patch1071:      system-pydeps.patch
 Patch1072:      node-system-icu.patch
 Patch1073:      system-nasm.patch
 Patch1074:      no-zlib-headers.patch
-Patch1075:      system-abseil-missing-shims.patch
 Patch1076:      crashpad-use-system-abseil.patch
+Patch1077:      chromium-108-abseil-shims.patch
 
 # PATCHES to fix interaction with third-party software
 Patch2004:      chromium-gcc11.patch
@@ -315,6 +307,7 @@ Patch2033:       node-upgrade-llhttp-to-8.patch
 %else
 Source2033:      node-upgrade-llhttp-to-8.patch
 %endif
+Patch2034:      swiftshader-LLVMJIT-AddressSanitizerPass-dead-code-remove.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -327,16 +320,10 @@ Patch3033:      chromium-94.0.4606.71-InkDropHost-crash.patch
 Patch3056:      async_shared_storage_database_impl-missing-absl-WrapUnique.patch
 # https://salsa.debian.org/chromium-team/chromium/-/blob/456851fc808b2a5b5c762921699994e957645917/debian/patches/upstream/nested-nested-nested-nested-nested-nested-regex-patterns.patch
 Patch3064:      nested-nested-nested-nested-nested-nested-regex-patterns.patch
-# Fedora patch to fix build with python3.11
-Patch3066:      chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
 Patch3067:      reproducible-config.gypi.patch
-Patch3068:      content_language_parser-missing-string.patch
 Patch3069:      aggregatable_attribution_utils-do-not-assume-abseil-ABI.patch
+Patch3071:      electron_serial_delegate-ambiguous-Observer.patch
 Patch3072:      attribution_response_parsing-do-not-assume-abseil-ABI.patch
-Patch3074:      pending_beacon_dispatcher-virtual-functions-cannot-be-constexpr.patch
-Patch3075:      std_lib_extras-missing-intptr_t.patch
-Patch3076:      gtk_ui_platform_stub-incomplete-type-LinuxInputMethodContext.patch
-Patch3077:      argument_spec-missing-isnan-isinf.patch
 Patch3078:      select_file_dialog_linux_kde-Wodr.patch
 Patch3079:      web_contents_impl-Wsubobject-linkage.patch
 Patch3080:      compact_enc_det_generated_tables-Wnarrowing.patch
@@ -356,6 +343,10 @@ Patch3094:      static_constructors-Wstrict-aliasing.patch
 Patch3095:      CVE-2022-43548.patch
 Patch3096:      remove-date-reproducible-builds.patch
 Patch3097:      shim_headers-fix-ninja.patch
+Patch3098:      document_loader-private-DecodedBodyData.patch
+Patch3099:      crashpad-elf_image_reader-ProgramHeaderTableSpecific-expected-unqualified-id.patch
+Patch3100:      first_party_set_parser-IssueWithMetadata-no-known-conversion.patch
+Patch3101:      print_dialog_gtk-no-kEnableOopPrintDriversJobPrint.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -376,9 +367,7 @@ BuildRequires:  c-ares-devel
 %if %{with system_crc32c}
 BuildRequires:  cmake(Crc32c)
 %endif
-%if %{with system_double_conversion}
 BuildRequires:  double-conversion-devel
-%endif
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 %if 0%{?fedora}
@@ -449,6 +438,7 @@ BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  util-linux
 BuildRequires:  vulkan-headers
+BuildRequires:  wayland-devel
 BuildRequires:  zstd
 %if %{with system_abseil}
 BuildRequires:  pkgconfig(absl_algorithm_container) >= 20211000
@@ -496,17 +486,17 @@ BuildRequires:  pkgconfig(dav1d) >= 1
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
-%if %{with system_freetype}
 BuildRequires:  pkgconfig(freetype2)
-%endif
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gtk+-3.0)
-%if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) >= 3
+%if %{with harfbuzz_5}
+BuildRequires:  pkgconfig(harfbuzz) >= 5
 %endif
+
 
 %if %{with icu_71}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
@@ -542,7 +532,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
 %if %{with system_jxl}
-BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(libjxl) >= 0.7
 %endif
 %if 0%{?fedora} >= 38
 #Work around https://bugzilla.redhat.com/show_bug.cgi?id=2148612
@@ -558,9 +548,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
-%if %{with system_woff2}
 BuildRequires:  pkgconfig(libwoff2dec)
-%endif
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libxxhash)
@@ -682,6 +670,10 @@ patch -R -p1 < %PATCH1076
 patch -R -p1 < %SOURCE400
 %endif
 
+%if %{without harfbuzz_5}
+patch -R -p1 < %SOURCE415
+%endif
+
 %if %{without icu_71}
 patch -R -p1 < %SOURCE410
 patch -R -p1 < %SOURCE411
@@ -696,7 +688,9 @@ patch -R -p1 < %SOURCE401
 patch -R -p1 < %SOURCE420
 
 # Link system wayland-protocols-devel into where chrome expects them
+mkdir -p third_party/wayland/src
 mkdir -p third_party/wayland-protocols/kde/src
+ln -svfT %{_datadir}/wayland third_party/wayland/src/protocol
 #mkdir -p third_party/wayland-protocols/mesa
 
 #ln -svfT %{_datadir}/wayland-protocols third_party/wayland-protocols/src
@@ -862,6 +856,7 @@ export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--n
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
 %endif
 %endif
+export LDFLAGS="$LDFLAGS --param ggc-min-expand=30 --param ggc-min-heapsize=4096"
 
 %endif
 test "$_link_threads" -le 0 && _link_threads=1
@@ -870,10 +865,13 @@ export LDFLAGS="$LDFLAGS -flto=$_link_threads --param lto-max-streaming-parallel
 
 gn_system_libraries=(
     brotli
+    double-conversion
     ffmpeg
     flac
     flatbuffers
     fontconfig
+    freetype
+    harfbuzz-ng
     icu
     libdrm
     libevent
@@ -887,6 +885,7 @@ gn_system_libraries=(
     opus
     re2
     snappy
+    woff2
     zlib
 )
 
@@ -901,6 +900,8 @@ gn_system_libraries+=(
    absl_flags
    absl_functional
    absl_hash
+   absl_log
+   absl_log_internal
    absl_memory
    absl_meta
    absl_numeric
@@ -942,11 +943,6 @@ find third_party/dav1d -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( dav1d )
 %endif
 
-%if %{with system_double_conversion}
-find base/third_party/double_conversion -type f ! -name "*.gn" -a ! -name "*.gni" -delete
-gn_system_libraries+=( double-conversion )
-%endif
-
 %if %{with system_nvctrl}
 find third_party/angle/src/third_party/libXNVCtrl/ -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libXNVCtrl )
@@ -968,25 +964,11 @@ gn_system_libraries+=(
 )
 %endif
 
-%if %{with system_harfbuzz}
-find third_party/harfbuzz-ng -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" -delete
-gn_system_libraries+=( harfbuzz-ng )
-%endif
-
-%if %{with system_freetype}
-find third_party/freetype -type f ! -name "*.gn" -a ! -name "*.gni" -delete
-gn_system_libraries+=( freetype )
-%endif
-
 %if %{with system_vpx}
 find third_party/libvpx -type f ! -name "*.gn" -a ! -name "*.gni" -delete
 gn_system_libraries+=( libvpx )
 %endif
 
-%if %{with system_woff2}
-find third_party/woff2 -type f ! -name "*.gn" -a ! -name "*.gni" -delete
-gn_system_libraries+=( woff2 )
-%endif
 
 %if %{with system_yuv}
 find third_party/libyuv -type f ! -name "*.gn" -a ! -name "*.gni" -delete
@@ -1179,12 +1161,9 @@ myconf_gn+=" use_system_libpng=true"
 myconf_gn+=" use_system_lcms2=true"
 myconf_gn+=" use_system_libopenjpeg2=true"
 myconf_gn+=" use_system_wayland_scanner=true"
-%if %{with system_harfbuzz}
+myconf_gn+=" use_system_libwayland=true"
 myconf_gn+=" use_system_harfbuzz=true"
-%endif
-%if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
-%endif
 myconf_gn+=" use_system_cares=true"
 %if %{with system_nghttp2}
 myconf_gn+=" use_system_nghttp2=true"

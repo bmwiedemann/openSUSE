@@ -213,7 +213,6 @@ keeplibs=(
     third_party/electron_node #Integral part of electron
     third_party/emoji-segmenter #not available as a shared library
     third_party/fdlibm #derived code, not vendored dep
-    third_party/harfbuzz-ng/utils  #There are new google files within this directory.
     third_party/highway #Not in Leap
     third_party/hunspell #heavily forked version
     third_party/iccjpeg #not in any distro
@@ -226,6 +225,7 @@ keeplibs=(
     third_party/libaddressinput #seems not to be available as a separate library
     third_party/libaom #version in Factory is too old
     third_party/libaom/source/libaom/third_party/fastfeat
+    third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
     third_party/libavif #leap too old
@@ -253,7 +253,6 @@ keeplibs=(
     third_party/metrics_proto #integral part of chrome
     third_party/modp_b64 #not in any distro
     third_party/node #javascript code
-    third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2/
     third_party/one_euro_filter #not in any distro
     third_party/openscreen #Integral part of chrome, needed even if you're building without.
     third_party/openscreen/src/third_party/mozilla #derived code, not vendored dependency
@@ -275,8 +274,6 @@ keeplibs=(
     third_party/rnnoise #use of private headers
     third_party/shell-encryption #not available on any distro, also heavily patched
     third_party/skia #integral part of chrome
-    third_party/skia/include/third_party/skcms #part of skia, not available as a separate library
-    third_party/skia/third_party/skcms #part of skia, not available as a separate library
     third_party/smhasher #not in Rawhide or Factory. AltLinux has it (libsmhasher) CONSIDER UNBUNDLING if we have it
     third_party/speech-dispatcher #Headers for a delay-loaded optional dependency
     third_party/sqlite #heavily forked version
@@ -306,7 +303,6 @@ keeplibs=(
     third_party/webrtc/rtc_base/third_party/sigslot #derived code, not vendored dep
     third_party/webrtc_overrides #Integral part of chrome
     third_party/widevine #Integral part of chrome. Needed.
-    third_party/wayland/protocol #added chromium code
     third_party/wayland/stubs #added chromium code
     third_party/wayland/wayland_scanner_wrapper.py #wrapper script
     third_party/wayland-protocols/gtk/gdk/wayland/protocol #Imagine downloading 100MB of gtk source just to get one file.

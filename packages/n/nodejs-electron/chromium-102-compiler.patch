@@ -99,7 +99,7 @@ index d40843b..b92f03b 100644
    cflags = []
    ldflags = []
    defines = []
-@@ -1227,45 +1203,6 @@
+@@ -1227,46 +1203,6 @@
      }
    }
  
@@ -122,6 +122,7 @@ index d40843b..b92f03b 100644
 -      # -ffile-compilation-dir is an alias for both -fdebug-compilation-dir=
 -      # and -fcoverage-compilation-dir=.
 -      cflags += [ "-ffile-compilation-dir=." ]
+-      swiftflags += [ "-file-compilation-dir=." ]
 -    }
 -    if (!is_win) {
 -      # We don't use clang -cc1as on Windows (yet? https://crbug.com/762167)
@@ -182,7 +183,7 @@ index d40843b..b92f03b 100644
 -    if (!is_debug && !using_sanitizer && current_cpu != "s390x" &&
 -        current_cpu != "s390" && current_cpu != "ppc64" &&
 -        current_cpu != "mips" && current_cpu != "mips64" &&
--        current_cpu != "riscv64") {
+-        current_cpu != "riscv64" && current_cpu != "loong64") {
 -      # Non-chromium code is not guaranteed to compile cleanly with
 -      # _FORTIFY_SOURCE. Also, fortified build may fail when optimizations are
 -      # disabled, so only do that for Release build.

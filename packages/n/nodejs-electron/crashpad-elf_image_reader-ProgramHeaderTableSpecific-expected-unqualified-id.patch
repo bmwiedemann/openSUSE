@@ -1,0 +1,38 @@
+From 0acdadf032955add4a996332c19e08f7cecd7558 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Fri, 30 Sep 2022 14:07:07 +0200
+Subject: [PATCH] snapshot: remove redundant template parameter
+
+GCC 12 does not allow it in C++20 mode anymore.
+
+Bug: chromium:819294
+Change-Id: I025dda8046739fefc4ff449d4496ef496374eff5
+Reviewed-on: https://chromium-review.googlesource.com/c/crashpad/crashpad/+/3929186
+Commit-Queue: Mark Mentovai <mark@chromium.org>
+Reviewed-by: Mark Mentovai <mark@chromium.org>
+---
+ snapshot/elf/elf_image_reader.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/snapshot/elf/elf_image_reader.cc b/snapshot/elf/elf_image_reader.cc
+index 9d3ba43ab..30e8b987c 100644
+--- a/third_party/crashpad/crashpad/snapshot/elf/elf_image_reader.cc
++++ b/third_party/crashpad/crashpad/snapshot/elf/elf_image_reader.cc
+@@ -56,14 +56,14 @@ template <typename PhdrType>
+ class ElfImageReader::ProgramHeaderTableSpecific
+     : public ElfImageReader::ProgramHeaderTable {
+  public:
+-  ProgramHeaderTableSpecific<PhdrType>() {}
++  ProgramHeaderTableSpecific() {}
+ 
+-  ProgramHeaderTableSpecific<PhdrType>(
++  ProgramHeaderTableSpecific(
+       const ProgramHeaderTableSpecific<PhdrType>&) = delete;
+   ProgramHeaderTableSpecific<PhdrType>& operator=(
+       const ProgramHeaderTableSpecific<PhdrType>&) = delete;
+ 
+-  ~ProgramHeaderTableSpecific<PhdrType>() {}
++  ~ProgramHeaderTableSpecific() {}
+ 
+   bool Initialize(const ProcessMemoryRange& memory,
+                   VMAddress address,

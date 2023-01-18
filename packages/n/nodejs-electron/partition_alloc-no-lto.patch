@@ -24,33 +24,33 @@ Compile files which declare functions in inline assembly without LTO due to http
 +  }
 +}
 +
- target(partition_alloc_target_type, "partition_alloc") {
+ component("partition_alloc") {
    sources = [
      "address_pool_manager.cc",
 @@ -262,20 +278,10 @@
-       "partition_alloc_base/mac/scoped_typeref.h",
-     ]
+     }
    }
--  if (current_cpu == "x64") {
--    defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
--    sources += [ "starscan/stack/asm/x64/push_registers_asm.cc" ]
--  } else if (current_cpu == "x86") {
--    defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
--    sources += [ "starscan/stack/asm/x86/push_registers_asm.cc" ]
--  } else if (current_cpu == "arm") {
--    defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
--    sources += [ "starscan/stack/asm/arm/push_registers_asm.cc" ]
--  } else if (current_cpu == "arm64") {
-+  deps = []
-+  if (current_cpu == "x64" || current_cpu == "x86" || current_cpu == "arm" || current_cpu == "arm64") {
-     defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
--    sources += [ "starscan/stack/asm/arm64/push_registers_asm.cc" ]
--  } else {
--    # To support a trampoline for another arch, please refer to v8/src/heap/base.
-+    deps += [ ":partition_alloc_asm" ]
+   if (build_with_chromium) {
+-    if (current_cpu == "x64") {
+-      defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
+-      sources += [ "starscan/stack/asm/x64/push_registers_asm.cc" ]
+-    } else if (current_cpu == "x86") {
+-      defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
+-      sources += [ "starscan/stack/asm/x86/push_registers_asm.cc" ]
+-    } else if (current_cpu == "arm") {
+-      defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
+-      sources += [ "starscan/stack/asm/arm/push_registers_asm.cc" ]
+-    } else if (current_cpu == "arm64") {
++    deps = []
++    if (current_cpu == "x64" || current_cpu == "x86" || current_cpu == "arm" || current_cpu == "arm64") {
+       defines += [ "PA_PCSCAN_STACK_SUPPORTED" ]
+-      sources += [ "starscan/stack/asm/arm64/push_registers_asm.cc" ]
+-    } else {
+-      # To support a trampoline for another arch, please refer to v8/src/heap/base.
++      deps += [ ":partition_alloc_asm" ]
+     }
    }
    public_deps = [
-     ":chromecast_buildflags",
 @@ -289,7 +295,6 @@
      ":partition_alloc_implementation",
      ":memory_tagging",

@@ -1,15 +1,3 @@
-Index: electron-17.1.0/third_party/angle/src/libANGLE/HandleAllocator.cpp
-===================================================================
---- electron-17.1.0.orig/third_party/angle/src/libANGLE/HandleAllocator.cpp	2022-03-07 17:22:29.553295179 +0100
-+++ electron-17.1.0/third_party/angle/src/libANGLE/HandleAllocator.cpp	2022-03-09 08:25:10.346569313 +0100
-@@ -9,6 +9,7 @@
- 
- #include "libANGLE/HandleAllocator.h"
- 
-+#include <limits>
- #include <algorithm>
- #include <functional>
- 
 Index: electron-17.1.0/third_party/perfetto/src/trace_processor/containers/string_pool.cc
 ===================================================================
 --- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-03-07 17:28:24.814737660 +0100

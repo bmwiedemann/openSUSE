@@ -1,0 +1,42 @@
+From 82827b0a8683c5c9c7285db48cefb7fa8ea92ffe Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Thu, 20 Oct 2022 16:27:27 +0000
+Subject: [PATCH] GCC: declare DocumentLoader::DecodedBodyData as public
+
+Fix build with GCC as DocumentLoader::DecodedBodyData was not
+declaring SameSizeAsDocumentLoader. This works in Clang because
+declaring it as friend of DocumentLoader implicitly declares it
+as friend of its class members. But GCC does not accept that.
+
+Bug: 819294
+Change-Id: Iba6a4138fbd90831e7a65fae8445ad4b1736594f
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3963839
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Reviewed-by: Nate Chapin <japhet@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1061645}
+---
+
+diff --git a/third_party/blink/renderer/core/loader/document_loader.h b/third_party/blink/renderer/core/loader/document_loader.h
+index b22fe2a..37a4230 100644
+--- a/third_party/blink/renderer/core/loader/document_loader.h
++++ b/third_party/blink/renderer/core/loader/document_loader.h
+@@ -434,6 +434,11 @@
+       const KURL& url,
+       const ResourceResponse& response);
+ 
++  // This needs to be kept as public to be accessible from
++  // SameSizeAsDocumentLoader as GCC will fail to allow access
++  // even if it is friend of DocumentLoader
++  class DecodedBodyData;
++
+  protected:
+   // Based on its MIME type, if the main document's response corresponds to an
+   // MHTML archive, then every resources will be loaded from this archive.
+@@ -465,7 +470,6 @@
+   friend struct SameSizeAsDocumentLoader;
+   class BodyData;
+   class EncodedBodyData;
+-  class DecodedBodyData;
+ 
+   Frame* CalculateOwnerFrame();
+   scoped_refptr<SecurityOrigin> CalculateOrigin(Document* owner_document);

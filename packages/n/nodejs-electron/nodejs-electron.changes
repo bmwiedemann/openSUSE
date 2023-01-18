@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jan 18 05:27:34 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Update to 22.0.2
+  * ABI break: NODE_MODULE_VERSION is now 110. Native modules may need recompiling
+  * Chromium to 108.0.5359.179
+  * Node v16.17.1
+  * V8 v10.8
+  * Added WebContents input-event event.
+  * Deprecated BrowserWindow scroll-touch-* events.
+  * The deprecated new-window event has been removed.
+  * Added contextBridge.exposeInIsolatedWorld(worldId, key, api) to expose
+    an API to an isolatedWorld within a renderer from a preload script.
+  * Added webContents.close() method.
+  * Added new UtilityProcess API to launch chromium child process with node integration.
+  * Added new WebContents event content-bounds-updated.
+  * Added support for navigator.mediaDevices.getDisplayMedia via a new
+    session handler, ses.setDisplayMediaRequestHandler.
+  * Added support for serialPort.forget() as well as a new event
+    serial-port-revoked emitted when a given origin is revoked.
+- Drop patches applied upstream
+  * argument_spec-missing-isnan-isinf.patch
+  * chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patch
+  * content_language_parser-missing-string.patch
+  * gtk_ui_platform_stub-incomplete-type-LinuxInputMethodContext.patch
+  * node-system-libs.patch
+  * pending_beacon_dispatcher-virtual-functions-cannot-be-constexpr.patch
+  * std_lib_extras-missing-intptr_t.patch
+  * system-abseil-missing-shims.patch
+- Re-add electron_serial_delegate-ambiguous-Observer.patch due to upstream reintroducing the invalid code
+- Add patches to fix build errors
+  * chromium-108-abseil-shims.patch
+  * crashpad-elf_image_reader-ProgramHeaderTableSpecific-expected-unqualified-id.patch
+  * document_loader-private-DecodedBodyData.patch
+  * first_party_set_parser-IssueWithMetadata-no-known-conversion.patch
+  * print_dialog_gtk-no-kEnableOopPrintDriversJobPrint.patch
+  * swiftshader-LLVMJIT-AddressSanitizerPass-dead-code-remove.patch
+- Conditionally reverse upstream changes to fix build with old harfbuzz
+  * harfbuzz-replace-chromium-scoped-type.patch
+- Switch to bundled libjxl on Fedora 36 due to system version being too old
+  
+-------------------------------------------------------------------
 Wed Jan 11 22:08:14 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.3.4
   * Changed HTML5 Notifications created with the requireInteraction option to not timeout

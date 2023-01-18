@@ -1,0 +1,14 @@
+--- a/electron/shell/browser/serial/electron_serial_delegate.h	2022-09-16 12:31:19.704082600 +0200
++++ b/electron/shell/browser/serial/electron_serial_delegate.h	2022-09-16 21:30:57.247975900 +0200
+@@ -38,9 +38,9 @@
+   device::mojom::SerialPortManager* GetPortManager(
+       content::RenderFrameHost* frame) override;
+   void AddObserver(content::RenderFrameHost* frame,
+-                   Observer* observer) override;
++                   content::SerialDelegate::Observer* observer) override;
+   void RemoveObserver(content::RenderFrameHost* frame,
+-                      Observer* observer) override;
++                      content::SerialDelegate::Observer* observer) override;
+ 
+   void DeleteControllerForFrame(content::RenderFrameHost* render_frame_host);
+ 

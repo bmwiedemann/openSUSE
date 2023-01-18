@@ -1,0 +1,537 @@
+From aa2ff2bee16776301bd840a4e18bdebdfb916822 Mon Sep 17 00:00:00 2001
+From: Munira Tursunova <moonira@google.com>
+Date: Tue, 04 Oct 2022 14:20:04 +0000
+Subject: [PATCH] Replacing Chromium scoped types with HarfBuzz custom types.
+
+Removed the Chromium side type HbScoped and move to the
+HarfBuzz custom type.
+
+Bug: 1363228
+Change-Id: I9d390808953e2c36651533cbf5f4958beff2e14d
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3927859
+Reviewed-by: Dominik Röttsches <drott@chromium.org>
+Reviewed-by: Rune Lillesveen <futhark@chromium.org>
+Reviewed-by: Calder Kitagawa <ckitagawa@chromium.org>
+Commit-Queue: Munira Tursunova <moonira@google.com>
+Cr-Commit-Position: refs/heads/main@{#1054692}
+---
+
+diff --git a/components/paint_preview/DEPS b/components/paint_preview/DEPS
+index bcc6288..28f2c7a 100644
+--- a/components/paint_preview/DEPS
++++ b/components/paint_preview/DEPS
+@@ -3,7 +3,6 @@
+   "+components/memory_pressure",
+   "+mojo/public/cpp",
+   "+third_party/harfbuzz-ng/src/src",
+-  "+third_party/harfbuzz-ng/utils/hb_scoped.h",
+   "+third_party/skia/include/core",
+   "+ui/gfx/geometry",
+ ]
+diff --git a/components/paint_preview/common/BUILD.gn b/components/paint_preview/common/BUILD.gn
+index 377dc92..c39757d 100644
+--- a/components/paint_preview/common/BUILD.gn
++++ b/components/paint_preview/common/BUILD.gn
+@@ -37,7 +37,6 @@
+     "//components/crash/core/common:crash_key_lib",
+     "//skia",
+     "//third_party:freetype_harfbuzz",
+-    "//third_party/harfbuzz-ng:hb_scoped_util",
+     "//ui/gfx/geometry",
+     "//url",
+   ]
+diff --git a/components/paint_preview/common/subset_font.cc b/components/paint_preview/common/subset_font.cc
+index 8298861d5..147dfc3 100644
+--- a/components/paint_preview/common/subset_font.cc
++++ b/components/paint_preview/common/subset_font.cc
+@@ -7,6 +7,7 @@
+ // clang-format off
+ #include <hb.h>
+ #include <hb-subset.h>
++#include <hb-cplusplus.hh>
+ // clang-format on
+ 
+ #include <memory>
+@@ -17,7 +18,6 @@
+ #include "base/callback.h"
+ #include "base/numerics/safe_conversions.h"
+ #include "components/crash/core/common/crash_key.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ #include "third_party/skia/include/core/SkStream.h"
+ #include "third_party/skia/include/core/SkTypeface.h"
+ 
+@@ -45,11 +45,11 @@
+ }
+ 
+ // Converts SkData to a hb_blob_t.
+-HbScoped<hb_blob_t> MakeBlob(sk_sp<SkData> data) {
++hb::unique_ptr<hb_blob_t> MakeBlob(sk_sp<SkData> data) {
+   if (!data ||
+       !base::IsValueInRangeForNumericType<unsigned int, size_t>(data->size()))
+-    return nullptr;
+-  return HbScoped<hb_blob_t>(
++    return hb::unique_ptr<hb_blob_t>(nullptr);
++  return hb::unique_ptr<hb_blob_t>(
+       hb_blob_create(static_cast<const char*>(data->data()),
+                      static_cast<unsigned int>(data->size()),
+                      HB_MEMORY_MODE_READONLY, nullptr, nullptr));
+@@ -72,8 +72,9 @@
+                                                   family_name.c_str());
+   int ttc_index = 0;
+   sk_sp<SkData> data = StreamToData(typeface->openStream(&ttc_index));
+-  HbScoped<hb_face_t> face(hb_face_create(MakeBlob(data).get(), ttc_index));
+-  HbScoped<hb_subset_input_t> input(hb_subset_input_create_or_fail());
++  hb::unique_ptr<hb_face_t> face(
++      hb_face_create(MakeBlob(data).get(), ttc_index));
++  hb::unique_ptr<hb_subset_input_t> input(hb_subset_input_create_or_fail());
+   if (!face || !input) {
+     return nullptr;
+   }
+@@ -102,14 +103,16 @@
+   hb_set_add(skip_subset, HB_TAG('G', 'S', 'U', 'B'));
+   hb_set_add(skip_subset, HB_TAG('G', 'P', 'O', 'S'));
+ 
+-  HbScoped<hb_face_t> subset_face(hb_subset_or_fail(face.get(), input.get()));
++  hb::unique_ptr<hb_face_t> subset_face(
++      hb_subset_or_fail(face.get(), input.get()));
+   if (!subset_face) {
+     return nullptr;
+   }
+   // Store the correct collection index for the subsetted font.
+   const int final_ttc_index = hb_face_get_index(subset_face.get());
+ 
+-  HbScoped<hb_blob_t> subset_blob(hb_face_reference_blob(subset_face.get()));
++  hb::unique_ptr<hb_blob_t> subset_blob(
++      hb_face_reference_blob(subset_face.get()));
+   if (!subset_blob) {
+     return nullptr;
+   }
+diff --git a/third_party/blink/renderer/platform/BUILD.gn b/third_party/blink/renderer/platform/BUILD.gn
+index 88cef3c..ae88e5a 100644
+--- a/third_party/blink/renderer/platform/BUILD.gn
++++ b/third_party/blink/renderer/platform/BUILD.gn
+@@ -1683,7 +1683,6 @@
+     "//third_party/blink/renderer/platform/wtf",
+     "//third_party/ced",
+     "//third_party/emoji-segmenter",
+-    "//third_party/harfbuzz-ng:hb_scoped_util",
+     "//third_party/icu",
+     "//third_party/libyuv",
+     "//third_party/one_euro_filter",
+diff --git a/third_party/blink/renderer/platform/fonts/opentype/font_format_check.cc b/third_party/blink/renderer/platform/fonts/opentype/font_format_check.cc
+index 7c7057b..d43668f1 100644
+--- a/third_party/blink/renderer/platform/fonts/opentype/font_format_check.cc
++++ b/third_party/blink/renderer/platform/fonts/opentype/font_format_check.cc
+@@ -7,10 +7,10 @@
+ // Include HarfBuzz to have a cross-platform way to retrieve table tags without
+ // having to rely on the platform being able to instantiate this font format.
+ #include <hb.h>
++#include <hb-cplusplus.hh>
+ 
+ #include "base/sys_byteorder.h"
+ #include "third_party/blink/renderer/platform/wtf/vector.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ #include "third_party/skia/include/core/SkTypeface.h"
+ 
+ namespace blink {
+@@ -27,7 +27,8 @@
+   const unsigned int kMinCOLRHeaderSize = 14;
+   if (table_tags.size() && table_tags.Contains(kCOLRTag) &&
+       table_tags.Contains(HB_TAG('C', 'P', 'A', 'L'))) {
+-    HbScoped<hb_blob_t> table_blob(hb_face_reference_table(face, kCOLRTag));
++    hb::unique_ptr<hb_blob_t> table_blob(
++        hb_face_reference_table(face, kCOLRTag));
+     if (hb_blob_get_length(table_blob.get()) < kMinCOLRHeaderSize)
+       return FontFormatCheck::COLRVersion::kNoCOLR;
+ 
+@@ -51,11 +52,11 @@
+ }  // namespace
+ 
+ FontFormatCheck::FontFormatCheck(sk_sp<SkData> sk_data) {
+-  HbScoped<hb_blob_t> font_blob(
++  hb::unique_ptr<hb_blob_t> font_blob(
+       hb_blob_create(reinterpret_cast<const char*>(sk_data->bytes()),
+                      base::checked_cast<unsigned>(sk_data->size()),
+                      HB_MEMORY_MODE_READONLY, nullptr, nullptr));
+-  HbScoped<hb_face_t> face(hb_face_create(font_blob.get(), 0));
++  hb::unique_ptr<hb_face_t> face(hb_face_create(font_blob.get(), 0));
+ 
+   unsigned table_count = 0;
+   table_count = hb_face_get_table_tags(face.get(), 0, nullptr, nullptr);
+diff --git a/third_party/blink/renderer/platform/fonts/opentype/open_type_caps_support.cc b/third_party/blink/renderer/platform/fonts/opentype/open_type_caps_support.cc
+index 5e6d1f2..73b984a 100644
+--- a/third_party/blink/renderer/platform/fonts/opentype/open_type_caps_support.cc
++++ b/third_party/blink/renderer/platform/fonts/opentype/open_type_caps_support.cc
+@@ -5,10 +5,10 @@
+ // clang-format off
+ #include <hb.h>
+ #include <hb-aat.h>
++#include <hb-cplusplus.hh>
+ // clang-format on
+ 
+ #include "third_party/blink/renderer/platform/fonts/opentype/open_type_caps_support.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ 
+ namespace blink {
+ 
+@@ -146,9 +146,9 @@
+     hb_face_t* const hb_face =
+         hb_font_get_face(harfbuzz_face_->GetScaledFont());
+ 
+-    HbScoped<hb_blob_t> morx_blob(
++    hb::unique_ptr<hb_blob_t> morx_blob(
+         hb_face_reference_table(hb_face, HB_TAG('m', 'o', 'r', 'x')));
+-    HbScoped<hb_blob_t> mort_blob(
++    hb::unique_ptr<hb_blob_t> mort_blob(
+         hb_face_reference_table(hb_face, HB_TAG('m', 'o', 'r', 't')));
+ 
+     // TODO(crbug.com/911149): Use hb_aat_layout_has_substitution() for
+diff --git a/third_party/blink/renderer/platform/fonts/opentype/open_type_cpal_lookup.cc b/third_party/blink/renderer/platform/fonts/opentype/open_type_cpal_lookup.cc
+index 86c289c..98cbd7a 100644
+--- a/third_party/blink/renderer/platform/fonts/opentype/open_type_cpal_lookup.cc
++++ b/third_party/blink/renderer/platform/fonts/opentype/open_type_cpal_lookup.cc
+@@ -6,11 +6,11 @@
+ 
+ #include "third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.h"
+ #include "third_party/blink/renderer/platform/wtf/std_lib_extras.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ #include "third_party/skia/include/core/SkStream.h"
+ 
+ // clang-format off
+ #include <hb.h>
++#include <hb-cplusplus.hh>
+ #include <hb-ot.h>
+ // clang-format on
+ 
+@@ -28,7 +28,7 @@
+   if (!typeface || !typeface->getTableSize(kCpalTag))
+     return absl::nullopt;
+ 
+-  HbScoped<hb_face_t> face(HbFaceFromSkTypeface(typeface));
++  hb::unique_ptr<hb_face_t> face(HbFaceFromSkTypeface(typeface));
+ 
+   if (!face || !hb_ot_color_has_palettes(face.get()))
+     return absl::nullopt;
+diff --git a/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc b/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc
+index ebab0fa8..4ecd886 100644
+--- a/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc
++++ b/third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.cc
+@@ -4,12 +4,12 @@
+ 
+ #include "third_party/blink/renderer/platform/fonts/opentype/variable_axes_names.h"
+ 
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ #include "third_party/skia/include/core/SkStream.h"
+ #include "third_party/skia/include/core/SkTypeface.h"
+ 
+ // clang-format off
+ #include <hb.h>
++#include <hb-cplusplus.hh>
+ #include <hb-ot.h>
+ // clang-format on
+ 
+@@ -23,11 +23,11 @@
+     return output;
+   sk_sp<SkData> sk_data =
+       SkData::MakeFromStream(stream.get(), stream->getLength());
+-  HbScoped<hb_blob_t> blob(
++  hb::unique_ptr<hb_blob_t> blob(
+       hb_blob_create(reinterpret_cast<const char*>(sk_data->bytes()),
+                      base::checked_cast<unsigned>(sk_data->size()),
+                      HB_MEMORY_MODE_READONLY, nullptr, nullptr));
+-  HbScoped<hb_face_t> face(hb_face_create(blob.get(), 0));
++  hb::unique_ptr<hb_face_t> face(hb_face_create(blob.get(), 0));
+   unsigned axes_count = hb_ot_var_get_axis_count(face.get());
+   std::unique_ptr<hb_ot_var_axis_info_t[]> axes =
+       std::make_unique<hb_ot_var_axis_info_t[]>(axes_count);
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.cc b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.cc
+index b4bb5a3..b6ee0a8f 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.cc
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.cc
+@@ -32,6 +32,7 @@
+ 
+ // clang-format off
+ #include <hb.h>
++#include <hb-cplusplus.hh>
+ #include <hb-ot.h>
+ // clang-format on
+ 
+@@ -52,7 +53,6 @@
+ #include "third_party/blink/renderer/platform/resolution_units.h"
+ #include "third_party/blink/renderer/platform/wtf/hash_map.h"
+ #include "third_party/blink/renderer/platform/wtf/math_extras.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ #include "third_party/skia/include/core/SkPaint.h"
+ #include "third_party/skia/include/core/SkPath.h"
+ #include "third_party/skia/include/core/SkPoint.h"
+@@ -203,7 +203,7 @@
+   const hb_codepoint_t kInvalidCodepoint = static_cast<hb_codepoint_t>(-1);
+   hb_codepoint_t space = kInvalidCodepoint;
+ 
+-  HbScoped<hb_set_t> glyphs(hb_set_create());
++  hb::unique_ptr<hb_set_t> glyphs(hb_set_create());
+ 
+   // Check whether computing is needed and compute for gpos/gsub.
+   if (features & kKerning &&
+@@ -391,8 +391,8 @@
+ }
+ 
+ // TODO(yosin): We should move |CreateFace()| to "harfbuzz_font_cache.cc".
+-static HbScoped<hb_face_t> CreateFace(FontPlatformData* platform_data) {
+-  HbScoped<hb_face_t> face;
++static hb::unique_ptr<hb_face_t> CreateFace(FontPlatformData* platform_data) {
++  hb::unique_ptr<hb_face_t> face;
+ 
+   sk_sp<SkTypeface> typeface = sk_ref_sp(platform_data->Typeface());
+   CHECK(typeface);
+@@ -402,8 +402,8 @@
+ 
+   // Fallback to table copies if there is no in-memory access.
+   if (!face) {
+-    face.reset(hb_face_create_for_tables(HarfBuzzSkiaGetTable, typeface.get(),
+-                                         nullptr));
++    face = hb::unique_ptr<hb_face_t>(hb_face_create_for_tables(
++        HarfBuzzSkiaGetTable, typeface.get(), nullptr));
+   }
+ 
+   DCHECK(face);
+@@ -415,7 +415,7 @@
+ static scoped_refptr<HarfBuzzFontData> CreateHarfBuzzFontData(
+     hb_face_t* face,
+     SkTypeface* typeface) {
+-  HbScoped<hb_font_t> ot_font(hb_font_create(face));
++  hb::unique_ptr<hb_font_t> ot_font(hb_font_create(face));
+   hb_ot_font_set_funcs(ot_font.get());
+ 
+   int axis_count = typeface->getVariationDesignPosition(nullptr, 0);
+@@ -445,7 +445,7 @@
+     FontPlatformData* platform_data) {
+   const auto& result = font_map_.insert(platform_data->UniqueID(), nullptr);
+   if (result.is_new_entry) {
+-    HbScoped<hb_face_t> face = CreateFace(platform_data);
++    hb::unique_ptr<hb_face_t> face = CreateFace(platform_data);
+     result.stored_value->value =
+         CreateHarfBuzzFontData(face.get(), platform_data->Typeface());
+   }
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.h b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.h
+index cbfb1c15..eb0dcb75 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.h
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.h
+@@ -38,9 +38,9 @@
+ #include "third_party/blink/renderer/platform/wtf/allocator/allocator.h"
+ #include "third_party/blink/renderer/platform/wtf/ref_counted.h"
+ #include "third_party/blink/renderer/platform/wtf/text/character_names.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ 
+ #include <hb.h>
++#include <hb-cplusplus.hh>
+ 
+ namespace blink {
+ 
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.cc b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.cc
+index 4561bc9..a2d2eb1d 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.cc
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.cc
+@@ -16,9 +16,8 @@
+ }  // namespace
+ 
+ namespace blink {
+-
+-HbScoped<hb_face_t> HbFaceFromSkTypeface(sk_sp<SkTypeface> typeface) {
+-  HbScoped<hb_face_t> return_face(nullptr);
++hb::unique_ptr<hb_face_t> HbFaceFromSkTypeface(sk_sp<SkTypeface> typeface) {
++  hb::unique_ptr<hb_face_t> return_face(nullptr);
+   int ttc_index = 0;
+ 
+   // Have openStream() write the ttc index of this typeface within the stream to
+@@ -28,7 +27,7 @@
+   if (tf_stream && tf_stream->getMemoryBase()) {
+     const void* tf_memory = tf_stream->getMemoryBase();
+     size_t tf_size = tf_stream->getLength();
+-    HbScoped<hb_blob_t> face_blob(hb_blob_create(
++    hb::unique_ptr<hb_blob_t> face_blob(hb_blob_create(
+         reinterpret_cast<const char*>(tf_memory),
+         base::checked_cast<unsigned int>(tf_size), HB_MEMORY_MODE_READONLY,
+         tf_stream.release(), DeleteTypefaceStream));
+@@ -38,7 +37,8 @@
+     // See https://github.com/harfbuzz/harfbuzz/issues/248 .
+     unsigned int num_hb_faces = hb_face_count(face_blob.get());
+     if (0 < num_hb_faces && static_cast<unsigned>(ttc_index) < num_hb_faces) {
+-      return_face.reset(hb_face_create(face_blob.get(), ttc_index));
++      return_face =
++          hb::unique_ptr<hb_face_t>(hb_face_create(face_blob.get(), ttc_index));
+     }
+   }
+   return return_face;
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.h b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.h
+index 8817f06..f00d6f2 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.h
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face_from_typeface.h
+@@ -8,9 +8,8 @@
+ #include "third_party/blink/renderer/platform/platform_export.h"
+ #include "third_party/skia/include/core/SkTypeface.h"
+ 
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+-
+ #include <hb.h>
++#include <hb-cplusplus.hh>
+ 
+ namespace blink {
+ 
+@@ -25,7 +24,7 @@
+ // from copying all font tables on Mac into newly allocated memory, causing a
+ // potentially quite large allocations (in the megabytes range). See the
+ // implementation of SkTypeface_Mac::onOpenStream.
+-PLATFORM_EXPORT HbScoped<hb_face_t> HbFaceFromSkTypeface(
++PLATFORM_EXPORT hb::unique_ptr<hb_face_t> HbFaceFromSkTypeface(
+     sk_sp<SkTypeface> typeface);
+ }  // namespace blink
+ 
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.cc b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.cc
+index 763f3a3..c50910df 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.cc
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.cc
+@@ -5,7 +5,6 @@
+ #include "third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.h"
+ #include "third_party/blink/renderer/platform/fonts/shaping/harfbuzz_face.h"
+ #include "third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_data.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ 
+ namespace blink {
+ 
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.h b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.h
+index 1b0accf..eaedd0b 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.h
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_cache.h
+@@ -7,7 +7,6 @@
+ 
+ #include "third_party/blink/renderer/platform/fonts/font_metrics.h"
+ #include "third_party/blink/renderer/platform/fonts/unicode_range_set.h"
+-#include "third_party/harfbuzz-ng/utils/hb_scoped.h"
+ 
+ namespace blink {
+ 
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_data.h b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_data.h
+index caf5d49..0d4b6f9 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_data.h
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_font_data.h
+@@ -5,6 +5,8 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_PLATFORM_FONTS_SHAPING_HARFBUZZ_FONT_DATA_H_
+ #define THIRD_PARTY_BLINK_RENDERER_PLATFORM_FONTS_SHAPING_HARFBUZZ_FONT_DATA_H_
+ 
++#include <hb-cplusplus.hh>
++
+ #include "base/check_op.h"
+ #include "third_party/blink/renderer/platform/fonts/font_platform_data.h"
+ #include "third_party/blink/renderer/platform/fonts/opentype/open_type_vertical_data.h"
+@@ -81,7 +83,7 @@
+     return vertical_data_;
+   }
+ 
+-  HbScoped<hb_font_t> unscaled_font_;
++  hb::unique_ptr<hb_font_t> unscaled_font_;
+   SkFont font_;
+ 
+   // Capture these scaled fallback metrics from FontPlatformData so that a
+diff --git a/third_party/harfbuzz-ng/BUILD.gn b/third_party/harfbuzz-ng/BUILD.gn
+index 522e164d..4b64e1b 100644
+--- a/third_party/harfbuzz-ng/BUILD.gn
++++ b/third_party/harfbuzz-ng/BUILD.gn
+@@ -41,6 +41,7 @@
+       "src/src/hb-blob.h",
+       "src/src/hb-buffer.h",
+       "src/src/hb-common.h",
++      "src/src/hb-cplusplus.hh",
+       "src/src/hb-deprecated.h",
+       "src/src/hb-face.h",
+       "src/src/hb-font.h",
+@@ -409,15 +410,9 @@
+   }
+ }
+ 
+-source_set("hb_scoped_util") {
+-  sources = [ "utils/hb_scoped.h" ]
+-  deps = [ "//third_party:freetype_harfbuzz" ]
+-}
+-
+ fuzzer_test("hb_shape_fuzzer") {
+   sources = [ "fuzz/hb_shape_fuzzer.cc" ]
+   deps = [
+-    ":hb_scoped_util",
+     "//base",
+     "//third_party:freetype_harfbuzz",
+   ]
+@@ -427,7 +422,6 @@
+ fuzzer_test("hb_subset_fuzzer") {
+   sources = [ "fuzz/hb_subset_fuzzer.cc" ]
+   deps = [
+-    ":hb_scoped_util",
+     "//base",
+     "//third_party:freetype_harfbuzz",
+   ]
+diff --git a/third_party/harfbuzz-ng/utils/hb_scoped.h b/third_party/harfbuzz-ng/utils/hb_scoped.h
+deleted file mode 100644
+index 887f6b90..0000000
+--- a/third_party/harfbuzz-ng/utils/hb_scoped.h
++++ /dev/null
+@@ -1,60 +0,0 @@
+-// Copyright 2020 The Chromium Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style license that can be
+-// found in the LICENSE file.
+-
+-#ifndef THIRD_PARTY_HARFBUZZ_NG_UTILS_HB_SCOPED_H_
+-#define THIRD_PARTY_HARFBUZZ_NG_UTILS_HB_SCOPED_H_
+-
+-// clang-format off
+-#include <hb.h>
+-#include <hb-subset.h>
+-// clang-format on
+-
+-#include <memory>
+-#include <type_traits>
+-
+-template <typename T>
+-struct always_false : std::false_type {};
+-
+-template <class T>
+-struct HbSpecializedDeleter {
+-  inline void operator()(T* obj) {
+-    static_assert(always_false<T>::value,
+-                  "HbScoped is only allowed for HarfBuzz types that have a "
+-                  "deleter specialization.");
+-  }
+-};
+-
+-// Defines a scoped pointer type HbScoped based on std::unique_ptr, using the
+-// corresponsing HarfBuzz destructors to commonly used public HarfBuzz types.
+-// The interface of HbScoped is the same as that of std::unique_ptr.
+-//
+-//  void MyFunction() {
+-//    HbScoped<hb_blob_t> scoped_harfbuzz_blob(
+-//        hb_blob_create(mydata, mylength));
+-//
+-//    DoSomethingWithBlob(scoped_harfbuzz_blob.get());
+-//  }
+-//
+-// When |scoped_harfbuzz_buffer| goes out of scope, hb_blob_destroy() is called
+-// for the hb_blob_t* created from hb_blob_create().
+-template <class T>
+-using HbScoped = std::unique_ptr<T, HbSpecializedDeleter<T>>;
+-
+-#define SPECIALIZED_DELETER_FOR_HARFBUZZ_TYPE(TYPE, DESTRUCTOR) \
+-  template <>                                                   \
+-  struct HbSpecializedDeleter<TYPE> {                           \
+-    inline void operator()(TYPE* obj) { DESTRUCTOR(obj); }      \
+-  };
+-
+-#define HB_TYPE_DESTRUCTOR_PAIRS_REPEAT(F) \
+-  F(hb_blob_t, hb_blob_destroy)            \
+-  F(hb_buffer_t, hb_buffer_destroy)        \
+-  F(hb_face_t, hb_face_destroy)            \
+-  F(hb_font_t, hb_font_destroy)            \
+-  F(hb_set_t, hb_set_destroy)              \
+-  F(hb_subset_input_t, hb_subset_input_destroy)
+-
+-HB_TYPE_DESTRUCTOR_PAIRS_REPEAT(SPECIALIZED_DELETER_FOR_HARFBUZZ_TYPE)
+-
+-#endif  // THIRD_PARTY_HARFBUZZ_NG_UTILS_HB_SCOPED_H_

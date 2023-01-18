@@ -95,11 +95,11 @@ Use -fpic for code which goes only in dlls (gives smaller code),
 +  asmflags = ["-fpic", "-fno-semantic-interposition"]
  }
  
- shared_library("qt5_shim") {
+ if (!use_sysroot) {
 @@ -76,6 +78,8 @@
-     # 3. Manually add copyright header.
-     "qt_shim_moc.cc",
-   ]
+     sources += get_target_outputs(":generate_moc")
+     deps += [ ":generate_moc" ]
+   }
 +  cflags = ["-fpic", "-fno-semantic-interposition"]
 +  asmflags = ["-fpic", "-fno-semantic-interposition"]
  }

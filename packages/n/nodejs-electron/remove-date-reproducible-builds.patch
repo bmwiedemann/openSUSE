@@ -4,8 +4,8 @@
  import re
  
  CHROMIUM_LICENSE = (
--"""// Copyright %d The Chromium Authors. All rights reserved.
-+"""// Copyright 2022 The Chromium Authors. All rights reserved.
+-"""// Copyright %d The Chromium Authors
++"""// Copyright 2022 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be
 -// found in the LICENSE file.""" % datetime.now().year
 +// found in the LICENSE file."""
@@ -18,8 +18,8 @@
  import struct_generator
  import element_generator
  
--HEAD = u"""// Copyright %d The Chromium Authors. All rights reserved.
-+HEAD = u"""// Copyright 2022 The Chromium Authors. All rights reserved.
+-HEAD = u"""// Copyright %d The Chromium Authors
++HEAD = u"""// Copyright 2022 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.
  
@@ -38,8 +38,8 @@
  
  # The template for the header file of the generated FeatureProvider.
  HEADER_FILE_TEMPLATE = """
--// Copyright %(year)s The Chromium Authors. All rights reserved.
-+// Copyright 2022 The Chromium Authors. All rights reserved.
+-// Copyright %(year)s The Chromium Authors
++// Copyright 2022 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.
  
@@ -47,8 +47,8 @@
  
  # The beginning of the .cc file for the generated FeatureProvider.
  CC_FILE_BEGIN = """
--// Copyright %(year)s The Chromium Authors. All rights reserved.
-+// Copyright 2022 The Chromium Authors. All rights reserved.
+-// Copyright %(year)s The Chromium Authors
++// Copyright 2022 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.
  

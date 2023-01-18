@@ -3,11 +3,11 @@ Enable JXL imageformat support, it is exposed by element-desktop.
 --- a/third_party/blink/common/features.cc
 +++ b/third_party/blink/common/features.cc
 @@ -767,7 +767,7 @@
-     "OffsetParentNewSpecBehavior", base::FEATURE_DISABLED_BY_DEFAULT};
+                                                          "delay-in-ms", 0};
  
  // Enables the JPEG XL Image File Format (JXL).
--const base::Feature kJXL{"JXL", base::FEATURE_DISABLED_BY_DEFAULT};
-+const base::Feature kJXL{"JXL", base::FEATURE_ENABLED_BY_DEFAULT};
+-BASE_FEATURE(kJXL, "JXL", base::FEATURE_DISABLED_BY_DEFAULT);
++BASE_FEATURE(kJXL, "JXL", base::FEATURE_ENABLED_BY_DEFAULT);
  
  // Make all pending 'display: auto' web fonts enter the swap or failure period
  // immediately before reaching the LCP time limit (~2500ms), so that web fonts

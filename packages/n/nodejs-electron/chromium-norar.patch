@@ -48,18 +48,19 @@ Index: electron-17.1.0/chrome/common/safe_browsing/BUILD.gn
        ":download_type_util",
 -      ":rar_analyzer",
        "//components/safe_browsing/core/common",
+       "//third_party/lzma_sdk/google:seven_zip_reader",
      ]
- 
 Index: electron-17.1.0/chrome/common/safe_browsing/DEPS
 ===================================================================
 --- electron-17.1.0.orig/chrome/common/safe_browsing/DEPS	2022-03-07 17:20:32.164818543 +0100
 +++ electron-17.1.0/chrome/common/safe_browsing/DEPS	2022-03-09 08:25:16.218473339 +0100
-@@ -3,6 +3,5 @@ include_rules = [
+@@ -3,7 +3,6 @@ include_rules = [
    "+components/safe_browsing/core/common",
    "+third_party/maldoca",
    "+third_party/protobuf",
 -  "+third_party/unrar",
    "+third_party/zlib",
+   "+third_party/lzma_sdk/google",
  ]
 Index: electron-17.1.0/chrome/services/file_util/BUILD.gn
 ===================================================================
@@ -77,7 +78,7 @@ Index: electron-17.1.0/chrome/services/file_util/safe_archive_analyzer.cc
 ===================================================================
 --- electron-17.1.0.orig/chrome/services/file_util/safe_archive_analyzer.cc	2022-03-07 17:20:32.264818949 +0100
 +++ electron-17.1.0/chrome/services/file_util/safe_archive_analyzer.cc	2022-03-09 08:25:16.218473339 +0100
-@@ -44,10 +44,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
+@@ -44,12 +44,16 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
  void SafeArchiveAnalyzer::AnalyzeRarFile(base::File rar_file,
                                           base::File temporary_file,
                                           AnalyzeRarFileCallback callback) {
@@ -92,3 +93,5 @@ Index: electron-17.1.0/chrome/services/file_util/safe_archive_analyzer.cc
 +  NOTREACHED();
 +#endif
  }
+ 
+ void SafeArchiveAnalyzer::AnalyzeSevenZipFile(

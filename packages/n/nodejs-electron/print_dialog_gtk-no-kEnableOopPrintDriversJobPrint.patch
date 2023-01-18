@@ -1,0 +1,97 @@
+From e3fcdb9c67501e7e4b86ea904e154ea615b5187e Mon Sep 17 00:00:00 2001
+From: Lei Zhang <thestig@chromium.org>
+Date: Tue, 18 Oct 2022 17:51:09 +0000
+Subject: [PATCH] Fix build when enable_oop_printing=false.
+
+https://crrev.com/1050907 changed print_dialog_gtk.cc to start checking
+`kEnableOopPrintDriversJobPrint`, assuming it is unconditionally
+defined.
+
+Similarly, various CLs like https://crrev.com/992136 changed
+print_browsertest.cc without the proper conditionals.
+
+Change-Id: Ie7efe976bba4b7583be104fad37984bea07f8773
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3962532
+Reviewed-by: Alan Screen <awscreen@chromium.org>
+Commit-Queue: Lei Zhang <thestig@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1060540}
+---
+
+diff --git a/chrome/browser/printing/print_browsertest.cc b/chrome/browser/printing/print_browsertest.cc
+index a70cd643..c66456f 100644
+--- a/chrome/browser/printing/print_browsertest.cc
++++ b/chrome/browser/printing/print_browsertest.cc
+@@ -2733,6 +2733,7 @@
+ 
+   void PrimeAsRepeatingErrorGenerator() { reset_errors_after_check_ = false; }
+ 
++#if BUILDFLAG(ENABLE_OOP_PRINTING)
+   void PrimeForSpoolingSharedMemoryErrors() {
+     simulate_spooling_memory_errors_ = true;
+   }
+@@ -2784,6 +2785,7 @@
+   bool print_backend_service_use_detected() const {
+     return print_backend_service_use_detected_;
+   }
++#endif  // BUILDFLAG(ENABLE_OOP_PRINTING)
+ 
+   mojom::ResultCode use_default_settings_result() const {
+     return use_default_settings_result_;
+@@ -2838,7 +2840,6 @@
+     return std::make_unique<TestPrintJobWorker>(
+         rfh_id, &test_print_job_worker_callbacks_);
+   }
+-#endif  // BUILDFLAG(ENABLE_OOP_PRINTING)
+ 
+   void OnUseDefaultSettings() {
+     did_use_default_settings_ = true;
+@@ -2861,6 +2862,7 @@
+       print_backend_service_use_detected_ = true;
+     }
+   }
++#endif  // BUILDFLAG(ENABLE_OOP_PRINTING)
+ 
+   void ErrorCheck(mojom::ResultCode result) {
+     // Interested to reset any trigger for causing access-denied errors, so
+diff --git a/ui/gtk/printing/print_dialog_gtk.cc b/ui/gtk/printing/print_dialog_gtk.cc
+index 98985bc..0596691 100644
+--- a/ui/gtk/printing/print_dialog_gtk.cc
++++ b/ui/gtk/printing/print_dialog_gtk.cc
+@@ -13,6 +13,7 @@
+ 
+ #include "base/bind.h"
+ #include "base/check_op.h"
++#include "base/dcheck_is_on.h"
+ #include "base/files/file_util.h"
+ #include "base/logging.h"
+ #include "base/memory/raw_ptr.h"
+@@ -22,6 +23,7 @@
+ #include "base/task/thread_pool.h"
+ #include "base/threading/sequenced_task_runner_handle.h"
+ #include "base/values.h"
++#include "printing/buildflags/buildflags.h"
+ #include "printing/metafile.h"
+ #include "printing/mojom/print.mojom.h"
+ #include "printing/print_job_constants.h"
+@@ -419,11 +421,19 @@
+ 
+ void PrintDialogGtk::PrintDocument(const printing::MetafilePlayer& metafile,
+                                    const std::u16string& document_name) {
++#if DCHECK_IS_ON()
++#if BUILDFLAG(ENABLE_OOP_PRINTING)
++  const bool kOopPrinting =
++      printing::features::kEnableOopPrintDriversJobPrint.Get();
++#else
++  const bool kOopPrinting = false;
++#endif  // BUILDFLAG(ENABLE_OOP_PRINTING)
++
+   // For in-browser printing, this runs on the print worker thread, so it does
+   // not block the UI thread.  For OOP it runs on the service document task
+   // runner.
+-  DCHECK_EQ(owning_task_runner()->RunsTasksInCurrentSequence(),
+-            printing::features::kEnableOopPrintDriversJobPrint.Get());
++  DCHECK_EQ(owning_task_runner()->RunsTasksInCurrentSequence(), kOopPrinting);
++#endif  // DCHECK_IS_ON()
+ 
+   // The document printing tasks can outlive the PrintingContext that created
+   // this dialog.

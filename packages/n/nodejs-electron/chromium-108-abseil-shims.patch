@@ -1,0 +1,59 @@
+--- /dev/null
++++ b/build/linux/unbundle/absl_log.gn
+@@ -0,0 +1,13 @@
++source_set("basic_log_test") {}
++source_set("check_test") {}
++source_set("die_if_null_test") {}
++source_set("flags_test") {}
++source_set("globals_test") {}
++source_set("log_entry_test") {}
++source_set("log_format_test") {}
++source_set("log_macro_hygiene_test") {}
++source_set("log_modifier_methods_test") {}
++source_set("log_sink_test") {}
++source_set("log_streamer_test") {}
++source_set("scoped_mock_log_test") {}
++source_set("stripping_test") {}
+--- /dev/null
++++ b/build/linux/unbundle/absl_log_internal.gn
+@@ -0,0 +1,1 @@
++source_set("stderr_log_sink_test") {}
+--- a/build/linux/unbundle/replace_gn_files.py
++++ b/build/linux/unbundle/replace_gn_files.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ REPLACEMENTS = {
+-  # Use system libabsl_2xxx. These 18 shims MUST be used together.
++  # Use system libabsl_2xxx. These 20 shims MUST be used together.
+   'absl_algorithm': 'third_party/abseil-cpp/absl/algorithm/BUILD.gn',
+   'absl_base': 'third_party/abseil-cpp/absl/base/BUILD.gn',
+   'absl_cleanup': 'third_party/abseil-cpp/absl/cleanup/BUILD.gn',
+@@ -24,6 +24,8 @@
+   'absl_flags': 'third_party/abseil-cpp/absl/flags/BUILD.gn',
+   'absl_functional': 'third_party/abseil-cpp/absl/functional/BUILD.gn',
+   'absl_hash': 'third_party/abseil-cpp/absl/hash/BUILD.gn',
++  'absl_log': 'third_party/abseil-cpp/absl/log/BUILD.gn',
++  'absl_log_internal': 'third_party/abseil-cpp/absl/log/internal/BUILD.gn',
+   'absl_memory': 'third_party/abseil-cpp/absl/memory/BUILD.gn',
+   'absl_meta': 'third_party/abseil-cpp/absl/meta/BUILD.gn',
+   'absl_numeric': 'third_party/abseil-cpp/absl/numeric/BUILD.gn',
+--- a/build/linux/unbundle/absl_container.gn
++++ b/build/linux/unbundle/absl_container.gn
+@@ -109,6 +109,8 @@
+   public_configs = [ ":system_absl_node_hash_set" ]
+ }
+ 
++source_set("common_policy_traits_test") {
++}
+ source_set("inlined_vector_test") {
+ }
+ source_set("node_slot_policy_test") {
+--- a/build/linux/unbundle/absl_functional.gn
++++ b/build/linux/unbundle/absl_functional.gn
+@@ -45,3 +45,5 @@
+   deps = [ ":function_ref_shim" ]
+   public_configs = [ ":system_absl_function_ref" ]
+ }
++
++source_set("any_invocable_test") {}
