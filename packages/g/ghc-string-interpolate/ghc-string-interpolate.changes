@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 12 15:21:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update string-interpolate to version 0.3.2.0.
+  ## v0.3.2.0 (2022-12-12)
+
+  + Added support for GHC 9.4
+
+-------------------------------------------------------------------
 Sun Sep  4 15:18:23 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add string-interpolate at version 0.3.1.2 revision 1.
