@@ -64,6 +64,12 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-cpu-arm-Fix-incorrect-free.patch
+Patch1:         0001-cpu-arm-Fix-incorrect-free.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-guard-against-some-invalid-values.patch
+Patch2:         0001-alsa-guard-against-some-invalid-values.patch
+# PATCH-FIX-UPSTREAM 0001-spa-Fix-audioconvert-overflow-when-scaling.patch
+Patch3:         0001-spa-Fix-audioconvert-overflow-when-scaling.patch
 
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -356,6 +362,9 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}

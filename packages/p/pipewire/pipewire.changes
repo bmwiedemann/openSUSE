@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 17 08:28:49 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to avoid division by 0 and other issues
+  with invalid values (glfo#pipewire/pipewire#2953):
+  * 0001-alsa-guard-against-some-invalid-values.patch
+- Add patch from upstream to fix causing an overflow resulting in
+  choppy sound in some cases (glfo#pipewire/pipewire#2680):
+  * 0001-spa-Fix-audioconvert-overflow-when-scaling.patch
+
+-------------------------------------------------------------------
+Mon Jan 16 08:21:05 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a crash on arm:
+  * 0001-cpu-arm-Fix-incorrect-free.patch
+
+-------------------------------------------------------------------
 Fri Jan 13 07:46:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.64:
@@ -21,12 +37,13 @@ Fri Jan 13 07:46:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
   * PipeWire
     - Clear all peer input port buffers when suspending. This fixes
       some SIGBUS errors when some plugins were using old memory.
-      (#2914)
+      (glfo#pipewire/pipewire#2914)
     - Fix a case where nodes that were not supposed to be
-      suspended, were kept suspended on a rate change. (#2929)
+      suspended, were kept suspended on a rate change.
+      (glfo#pipewire/pipewire#2929)
     - Fix an error in the quantum and rate calculations that could
       cause nodes to run with wrong quantum and rates when multiple
-      rates were allowed. (#2925)
+      rates were allowed. (glfo#pipewire/pipewire#2925)
   * Tools
     - pw-dump will now sort dictionaries to make it easier to
       compare different outputs.
@@ -41,16 +58,16 @@ Fri Jan 13 07:46:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
     - ROC 0.2.X is now required.
     - The pulse tunnel and RTP source were not updating the rate
       field correctly which could cause synchronization problems.
-      (#2891)
+      (glfo#pipewire/pipewire#2891)
     - The filter-chain now supports an arbitrary number of control
-      properties. (#2933)
+      properties. (glfo#pipewire/pipewire#2933)
     - It is now possible to assign custom port names to the ports
       from an adapter with the PW_KEY_NODE_CHANNELNAMES.
     - Support was added for capture and playback props in
-      echo-cancel. (#2939)
+      echo-cancel. (glfo#pipewire/pipewire#2939)
   * SPA
     - The ACP code now has an option to set the probe samplerate.
-      (#1599)
+      (glfo#pipewire/pipewire#1599)
     - UCM devices now also have a Pro Audio profile.
     - Filtering of Step ranges is now implemented.
   * Pulse-Server
@@ -59,13 +76,14 @@ Fri Jan 13 07:46:11 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
     - source_master and sink_master are now correctly handled in
       module echo-cancel.
     - Fix a regression in DRAIN where resuming after a DRAIN would
-      fail. This caused problems for espeak. (#2928)
+      fail. This caused problems for espeak.
+      (glfo#pipewire/pipewire#2928)
     - TARGET_OBJECT is now used to make it possible to use the
       indexes as a target.
     - ladspa-source and remap-source can now also link to monitors.
   * ALSA
     - The ALSA plugin now handles the target.object correctly when
-      set to -1. (#2893)
+      set to -1. (glfo#pipewire/pipewire#2893)
   * V4L2
     - The v4l2 replacement library now also follows symlinks.
     - Support for getting and setting controls was added.

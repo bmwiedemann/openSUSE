@@ -1,0 +1,70 @@
+From 65f3a9c481214ce015d20cee813dd9dac2de8dab Mon Sep 17 00:00:00 2001
+From: Sanchayan Maity <sanchayan@asymptotic.io>
+Date: Sat, 14 Jan 2023 15:14:29 +0530
+Subject: [PATCH] cpu-arm: Fix incorrect free
+
+A bug was introduced with the refactoring in da26563. In arm_init,
+the buffer passed to spa_cpu_read_file is allocated and it is just
+going to return that. So cpuinfo will actually point to buffer on
+the stack, which need not be freed with a call to free.
+
+The crash resulting with the incorrect free.
+
+root@dragonboard-845c:~# pipewire --version
+munmap_chunk(): invalid pointer
+[  185.037284] audit: type=1701 audit(1659949975.843:14): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=2243 comm="pipewire" exe="/usr/bin/pipewire" sig=6 res=1
+Aborted
+root@dragonboard-845c:~# wireplumber --version
+munmap_chunk(): invalid pointer
+[  193.453693] audit: type=1701 audit(1659949984.255:15): auid=4294967295 uid=0 gid=0 ses=4294967295 pid=2244 comm="wireplumber" exe="/usr/bin/wireplumber" sig=6 res=1
+Aborted
+
+Backtrace from the crash
+
+(gdb) bt
+!0  __pthread_kill_implementation (threadid=<optimized out>, signo=signo@entry=6, no_tid=no_tid@entry=0) at pthread_kill.c:44
+!1  0x0000fffff7d8edd8 in __pthread_kill_internal (signo=6, threadid=<optimized out>) at pthread_kill.c:78
+!2  0x0000fffff7d4a390 in __GI_raise (sig=sig@entry=6) at /usr/src/debug/glibc/2.36-r0/sysdeps/posix/raise.c:26
+!3  0x0000fffff7d37498 in __GI_abort () at abort.c:79
+!4  0x0000fffff7d83374 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0xfffff7e5fc20 "%s\n") at /usr/src/debug/glibc/2.36-r0/sysdeps/posix/libc_fatal.c:155
+!5  0x0000fffff7d988c0 in malloc_printerr (str=str@entry=0xfffff7e5a7f0 "munmap_chunk(): invalid pointer") at malloc.c:5660
+!6  0x0000fffff7d98aac in munmap_chunk (p=p@entry=0xffffffffd258) at malloc.c:3054
+!7  0x0000fffff7d9d068 in __GI___libc_free (mem=mem@entry=0xffffffffd268) at malloc.c:3375
+!8  0x0000fffff7cd36cc in arm_init (impl=impl@entry=0xaaaaaaac8c48) at /usr/src/debug/pipewire/1.0-r0/spa/plugins/support/cpu-arm.c:97
+!9  0x0000fffff7cd391c in impl_init (factory=<optimized out>, handle=0xaaaaaaac8c48, info=0xffffffffe548, support=<optimized out>, n_support=<optimized out>) at /usr/src/debug/pipewire/1.0-r0/spa/plugins/support/cpu.c:264
+!10 0x0000fffff7f3a234 in load_spa_handle (lib=<optimized out>, factory_name=factory_name@entry=0xfffff7f6d768 "support.cpu", info=info@entry=0xffffffffe548, n_support=1,
+    support=support@entry=0xfffff7fb0488 <global_support+88>) at /usr/src/debug/pipewire/1.0-r0/src/pipewire/pipewire.c:280
+!11 0x0000fffff7f3a5b0 in add_interface (factory_name=factory_name@entry=0xfffff7f6d768 "support.cpu", type=type@entry=0xfffff7f62310 "Spa:Pointer:Interface:CPU", info=info@entry=0xffffffffe548,
+    support=0xfffff7fb0430 <global_support>) at /usr/src/debug/pipewire/1.0-r0/src/pipewire/pipewire.c:358
+!12 0x0000fffff7f3b3f8 in pw_init (argc=argc@entry=0xffffffffea5c, argv=argv@entry=0xffffffffea50) at /usr/src/debug/pipewire/1.0-r0/src/pipewire/pipewire.c:661
+!13 0x0000aaaaaaaa1104 in main (argc=<optimized out>, argv=<optimized out>) at /usr/src/debug/pipewire/1.0-r0/src/daemon/pipewire.c:79
+(gdb) f 8
+!8  0x0000fffff7cd36cc in arm_init (impl=impl@entry=0xaaaaaaac8c48) at /usr/src/debug/pipewire/1.0-r0/spa/plugins/support/cpu-arm.c:97
+97      /usr/src/debug/pipewire/1.0-r0/spa/plugins/support/cpu-arm.c: No such file or directory.
+(gdb) info locals
+flags = 122
+cpuinfo = 0xffffffffd268 "processor\t: 0\nBogoMIPS\t: 38.40\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop\nCPU implementer\t: 0x51\nCPU architecture: 8\nCPU variant\t.
+line = 0xaaaaaaac8ce0 "\310\252\252\252\n"
+buffer = "processor\t: 0\nBogoMIPS\t: 38.40\nFeatures\t: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop\nCPU implementer\t: 0x51\nCPU architecture: 8\nCPU variant\t: 0x7\nCPU pa"...
+arch = <optimized out>
+__func__ = "arm_init"
+---
+ spa/plugins/support/cpu-arm.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/spa/plugins/support/cpu-arm.c b/spa/plugins/support/cpu-arm.c
+index cfc54272c..6cd68d813 100644
+--- a/spa/plugins/support/cpu-arm.c
++++ b/spa/plugins/support/cpu-arm.c
+@@ -94,8 +94,6 @@ arm_init(struct impl *impl)
+ 		free(line);
+ 	}
+ 
+-	free(cpuinfo);
+-
+ 	impl->flags = flags;
+ 
+ 	return 0;
+-- 
+GitLab
+
