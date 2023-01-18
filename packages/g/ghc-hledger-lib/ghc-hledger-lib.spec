@@ -19,7 +19,7 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.27.1
+Version:        1.28
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-blaze-markup-devel
-BuildRequires:  ghc-breakpoint-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-cassava-devel
