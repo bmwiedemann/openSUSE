@@ -19,7 +19,7 @@
 %global pkg_name streaming-commons
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.2.4
+Version:        0.2.2.5
 Release:        0
 Summary:        Common lower-level functions needed by various streaming data libraries
 License:        MIT

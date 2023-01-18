@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 23 07:27:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update streaming-commons to version 0.2.2.5.
+  ## 0.2.2.5
+
+  * UTF-8 Decoder fails on trailing bytes [#71](https://github.com/fpco/streaming-commons/pull/71)
+
+-------------------------------------------------------------------
 Sun Feb  6 09:23:47 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update streaming-commons to version 0.2.2.4.
