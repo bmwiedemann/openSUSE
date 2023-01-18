@@ -19,7 +19,7 @@
 %global pkg_name sandwich
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.2
+Version:        0.1.2.0
 Release:        0
 Summary:        Yet another test framework for Haskell
 License:        BSD-3-Clause

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 17 03:05:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update sandwich to version 0.1.2.0.
+  ## 0.1.2.0
+
+  * Be able to control `sandwich-webdriver` download directory.
+  * Add flags to control `sandwich-webdriver` Selenium paths: `--selenium-jar`, `--chrome-binary`, `--chromedriver-binary`, `--firefox-binary`, `--geckodriver-binary`.
+
+-------------------------------------------------------------------
 Mon Oct  3 02:07:14 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add sandwich at version 0.1.1.2.
