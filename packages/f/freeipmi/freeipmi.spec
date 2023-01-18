@@ -1,7 +1,7 @@
 #
 # spec file for package freeipmi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2003-2008 FreeIPMI Core Team
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,8 +59,6 @@ Provides:       freeipmi-ipmimonitoring = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): info
 Requires(preun):info
-# Necessary as only those archs implement iopl and friends (#368541)
-ExclusiveArch:  %{ix86} x86_64 ia64 alpha aarch64
 
 %description
 This project provides "Remote-Console" (out-of-band) and
