@@ -1,6 +1,6 @@
 Name: pipes
 Version: 4.3.16
-x-revision: 5
+x-revision: 6
 Cabal-Version: >= 1.10
 Build-Type: Simple
 Tested-With: GHC == 7.10.3, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.1
@@ -78,7 +78,7 @@ Benchmark prelude-benchmarks
 
     Build-Depends:
         base      >= 4.4     && < 5  ,
-        criterion >= 1.1.1.0 && < 1.6,
+        criterion >= 1.1.1.0 && < 1.7,
         optparse-applicative >= 0.12 && < 0.18,
         mtl       >= 2.1     && < 2.4,
         pipes
