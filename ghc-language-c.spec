@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-language-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name language-c
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Analysis and generation of C code
 License:        BSD-3-Clause
