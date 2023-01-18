@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec 14 05:19:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-ghc to version 0.4.14.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue May 17 06:12:59 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update microlens-ghc to version 0.4.14.0.
