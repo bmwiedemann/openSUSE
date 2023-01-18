@@ -215,7 +215,7 @@ splitter-whitelist =
 source_projects_expand = devel:languages:haskell
 
 # devel:automotive whitelisted on 20230111 | security:sensor on 20230118
-devel-whitelist = devel:automotive security:sensor
+devel-whitelist = devel:automotive security:sensor X11:Drivers:Video:Redesign
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -247,7 +247,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230117</value>
+    <value>20230118</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -576,8 +576,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20230116'
-publishing: '20230116'
+published: '20230117'
+publishing: '20230117'
 testing: '20230117'
 </value>
   </attribute>
