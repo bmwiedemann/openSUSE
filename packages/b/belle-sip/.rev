@@ -281,4 +281,14 @@
 </comment>
     <requestid>1055795</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>58d977f033d3ec19fc7bccc043446fa9</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+</comment>
+    <requestid>1059002</requestid>
+  </revision>
 </revisionlist>
