@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 10:29:57 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Tue Dec  1 14:56:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Correct upstream URL and upstream release URL 

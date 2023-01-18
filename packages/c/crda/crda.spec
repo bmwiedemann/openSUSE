@@ -1,7 +1,7 @@
 #
 # spec file for package crda
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,7 @@ export PATH=.:$PATH
 make DESTDIR=$RPM_BUILD_ROOT SBINDIR=%{_sbindir}/ UDEV_RULE_DIR=%{_udevrulesdir} LIBDIR=%{_libdir} install
 mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}/default
 install -m 644 %{S:1} %{buildroot}%{_prefix}%{_sysconfdir}/default/%{name}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mkdir $RPM_BUILD_ROOT/sbin
 ln -sf %{_sbindir}/{crda,regdbdump} $RPM_BUILD_ROOT/sbin
 %endif
@@ -86,7 +86,7 @@ rm -r %{buildroot}/usr/include/reglib
 %_sbindir/crda
 %_sbindir/regdbdump
 %_libdir/libreg.so
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/crda
 /sbin/regdbdump
 %endif

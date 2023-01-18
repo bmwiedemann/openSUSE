@@ -240,4 +240,12 @@ License is ISC, not BSD-3-Clause (forwarded request 134144 from babelworx)</comm
   - ## CRDA is no longer needed as of kernel v4.15</comment>
     <requestid>852376</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>e3cce2fb3fa2da9db017e6c79fba536a</srcmd5>
+    <version>4.14</version>
+    <time>1674043703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058864</requestid>
+  </revision>
 </revisionlist>
