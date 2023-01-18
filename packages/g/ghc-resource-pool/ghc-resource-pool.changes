@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 16 13:43:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update resource-pool to version 0.4.0.0.
+  # resource-pool-0.4.0.0 (2023-01-16)
+  * Require `poolMaxResources` to be not smaller than the number of stripes.
+  * Add support for setting the number of stripes.
+  * Hide the constructor of `PoolConfig` from the public API and provide
+    `defaultPoolConfig` so that future additions to `PoolConfig` don't require
+    major version bumps.
+
+-------------------------------------------------------------------
 Wed Jun 15 21:02:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update resource-pool to version 0.3.1.0.
