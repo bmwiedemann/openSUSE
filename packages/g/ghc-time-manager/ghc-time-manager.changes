@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  1 00:22:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update time-manager to version 0.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
