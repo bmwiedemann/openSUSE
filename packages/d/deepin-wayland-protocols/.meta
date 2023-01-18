@@ -1,0 +1,5 @@
+<package name="deepin-wayland-protocols" project="openSUSE:Factory">
+  <title>Deepin Wayland Protocols</title>
+  <description>This project should be installing only the xml files of the non-standard wayland protocols we use in Deepin.</description>
+  <devel project="X11:Deepin" package="deepin-wayland-protocols"/>
+</package>
