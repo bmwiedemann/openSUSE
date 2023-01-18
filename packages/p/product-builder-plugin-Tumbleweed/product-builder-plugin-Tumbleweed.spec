@@ -1,7 +1,7 @@
 #
 # spec file for package product-builder-plugin-Tumbleweed
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           product-builder-plugin-Tumbleweed
 Summary:        openSUSE - KIWI Image System
 License:        GPL-2.0-or-later
 Group:          System/Management
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Source:         product-builder-plugins-%version.tar.xz
 Provides:       product-builder-plugin = %version-%release

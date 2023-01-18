@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 10:16:20 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- 1.7.0
+  * switch to SHA512 hashes for repomd meta data
+  * various smaller fixes for fedora media
+
+-------------------------------------------------------------------
 Fri Sep 24 08:50:41 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.6.0
