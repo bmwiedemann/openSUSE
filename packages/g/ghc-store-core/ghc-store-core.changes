@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 28 21:08:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update store-core to version 0.4.4.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
