@@ -302,4 +302,14 @@
 </comment>
     <requestid>1055793</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d67099f34c7d1920863d648ec3690360</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+</comment>
+    <requestid>1059004</requestid>
+  </revision>
 </revisionlist>
