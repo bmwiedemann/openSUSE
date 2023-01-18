@@ -315,4 +315,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1010962 from glaubitz)</comment>
     <requestid>1011034</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4b3678738f2f29ae8718eba299317f97</srcmd5>
+    <version>29.1.0</version>
+    <time>1674058281</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 29.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1059292 from glaubitz)</comment>
+    <requestid>1059350</requestid>
+  </revision>
 </revisionlist>
