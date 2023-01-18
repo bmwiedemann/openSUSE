@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.14.3.0
+Version:        2.14.4.4
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-fast-logger-devel
 BuildRequires:  ghc-http-api-data-devel
 BuildRequires:  ghc-lift-type-devel
