@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec 21 15:36:55 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update zip to version 1.7.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Oct 24 08:31:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update zip to version 1.7.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Apr 19 19:29:56 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update zip to version 1.7.2 revision 1.
