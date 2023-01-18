@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 24 07:26:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update libyaml to version 0.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
