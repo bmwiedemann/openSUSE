@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 17 17:28:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Version update to 1.14
+  * Fireball and Ice Bolt scrolls now give the player a 10 second
+    period in which their basic attacks (Swing, Shoot, Channel)
+    are replaced with the scroll power.
+  * Fixed the naming of scroll damage as it appears in power
+    description tooltips.
+  * Lowered Lezaith's slow resistance to 50%, down from 100%
+  * Lowered Lezaith's stun resistance to 90%, down from 100%
+  Translation updates
+  * German (de) update
+  * Scottish Gaelic (gd) update
+  * Indonesian (id) update
+  * Italian (it) update
+  * Japanese (ja) update
+  * Korean (ko) update
+  * Polish (pl) update
+  * Russian (ru) update
+  * Chinese (zh) update
+
+-------------------------------------------------------------------
 Thu May 12 07:20:20 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 1.13.04 - bugfix release
