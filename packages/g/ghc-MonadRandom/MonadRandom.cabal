@@ -1,5 +1,5 @@
 name:                MonadRandom
-version:             0.5.3
+version:             0.6
 x-revision: 2
 synopsis:            Random-number generation monad.
 description:         Support for computations which consume random values.
@@ -12,7 +12,7 @@ category:            Control
 build-type:          Simple
 cabal-version:       >=1.10
 extra-source-files:  CHANGES.markdown
-tested-with:         GHC ==7.6.3 || ==7.8.4 || ==7.10.3 || ==8.0.2 || ==8.2.2 || ==8.4.4 || ==8.6.5 || ==8.8.3 || ==8.10.1
+tested-with:         GHC ==7.10.3 || ==8.0.2 || ==8.2.2 || ==8.4.4 || ==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.4 || ==9.4.2
 
 source-repository head
   type:     git
@@ -28,12 +28,12 @@ library
     Control.Monad.Trans.Random.Lazy,
     Control.Monad.Trans.Random.Strict
   build-depends:
-    base                >=4.6 && <5,
-    transformers        >=0.3 && <0.6,
+    base                >=4.8 && <5,
+    transformers        >=0.4 && <0.7,
     transformers-compat >=0.4 && <0.8,
-    mtl                 >=2.1 && <2.3,
+    mtl                 >=2.2.1 && <2.3 || >= 2.3.1 && < 2.4,
     primitive           >=0.6 && <0.8,
-    random              >=1.0 && <1.3
+    random              >=1.0.1 && <1.3
   ghc-options:         -Wall
   default-language:    Haskell2010
   other-extensions:    Safe

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jan  9 19:37:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update MonadRandom to version 0.6 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Dec 18 19:53:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update MonadRandom to version 0.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Nov  5 20:40:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update MonadRandom to version 0.6.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/MonadRandom-0.6/src/CHANGES.markdown
+
+-------------------------------------------------------------------
 Wed Aug 11 10:04:49 UTC 2021 - psimons@suse.com
 
 - Update MonadRandom to version 0.5.3 revision 2.

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-MonadRandom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name MonadRandom
 Name:           ghc-%{pkg_name}
-Version:        0.5.3
+Version:        0.6
 Release:        0
 Summary:        Random-number generation monad
 License:        BSD-3-Clause
