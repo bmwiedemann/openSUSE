@@ -264,4 +264,12 @@
   * Run tests on macos, Windows, and 3.11-dev (#267, @dan-blanchard)</comment>
     <requestid>1046266</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9e1c724027b95961daee819d26b2cbdb</srcmd5>
+    <version>5.1.0</version>
+    <time>1674043694</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 builds</comment>
+    <requestid>1058777</requestid>
+  </revision>
 </revisionlist>

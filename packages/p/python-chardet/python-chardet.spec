@@ -33,6 +33,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-chardet%{psuffix}
 Version:        5.1.0
 Release:        0
@@ -40,6 +41,7 @@ Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
 URL:            https://github.com/chardet/chardet
 Source0:        https://files.pythonhosted.org/packages/source/c/chardet/chardet-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
