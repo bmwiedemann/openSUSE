@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global descriptor An implementation of the Double Ratchet cryptographic ratchet \
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 Name:           %{origname}
-Version:        3.2.13
+Version:        3.2.14
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0

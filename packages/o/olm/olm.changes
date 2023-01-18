@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 15 20:16:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.14:
+  * TypeScript type improvements.
+  * Improvements to Python packaging
+  * Documentation improvements.
+
+-------------------------------------------------------------------
 Mon Oct 31 12:00:00 UTC 2022 - cunix@mail.de
 
 - build: removed "python_module" definition in spec file

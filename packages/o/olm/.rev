@@ -73,4 +73,12 @@ but better to push out soon</comment>
     <comment>Update to 3.2.13</comment>
     <requestid>1032557</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e30ced6574b6a98e7872d682f2dda07</srcmd5>
+    <version>3.2.14</version>
+    <time>1674043761</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.2.14:</comment>
+    <requestid>1059021</requestid>
+  </revision>
 </revisionlist>
