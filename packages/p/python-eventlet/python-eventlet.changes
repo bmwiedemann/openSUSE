@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 17 16:55:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-py3-rlock.patch to make the code compatible with python 3.11,
+  gh#eventlet/eventlet#754 
+
+-------------------------------------------------------------------
 Fri Dec  9 10:16:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Reove unecessary sysconfig-netconfig BuildRequires

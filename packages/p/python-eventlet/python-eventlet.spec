@@ -1,7 +1,7 @@
 #
 # spec file for package python-eventlet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Patch0:         denose-eventlet.patch
 Patch1:         newdnspython.patch
 # PATCH-FIX-UPSTREAM https://github.com/eventlet/eventlet/pull/643
 Patch2:         python-eventlet-FTBFS2028.patch
+# PATCH-FIX-UPSTREAM fix-py3-rlock.patch gh#eventlet/eventlet#754
+Patch3:         fix-py3-rlock.patch
 BuildRequires:  %{python_module setuptools}
 %if %{with python2}
 BuildRequires:  python2-monotonic >= 1.4

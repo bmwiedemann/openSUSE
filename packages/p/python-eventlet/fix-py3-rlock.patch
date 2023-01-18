@@ -1,0 +1,119 @@
+diff --git a/eventlet/patcher.py b/eventlet/patcher.py
+index b249d6f19..4eeb93439 100644
+--- a/eventlet/patcher.py
++++ b/eventlet/patcher.py
+@@ -412,6 +412,23 @@ def _green_existing_locks():
+             elif py3_style and not isinstance(obj, pyrlock_type):
+                 _fix_py3_rlock(obj)
+ 
++    if (3, 0) <= sys.version_info <= (3, 10):
++        # Older py3 won't have RLocks show up in gc.get_objects() -- see
++        # https://github.com/eventlet/eventlet/issues/546 -- so green a handful
++        # that we know are significant
++        import logging
++        if isinstance(logging._lock, rlock_type):
++            _fix_py3_rlock(logging._lock)
++        logging._acquireLock()
++        try:
++            for ref in logging._handlerList:
++                handler = ref()
++                if handler and isinstance(handler.lock, rlock_type):
++                    _fix_py3_rlock(handler.lock)
++                del handler
++        finally:
++            logging._releaseLock()
++
+ 
+ def _fix_py2_rlock(rlock, tid):
+     import eventlet.green.threading
+@@ -425,7 +442,7 @@ def _fix_py2_rlock(rlock, tid):
+ 
+ def _fix_py3_rlock(old):
+     import gc
+-    import threading
++    from eventlet.green import threading
+     new = threading._PyRLock()
+     while old._is_owned():
+         old.release()
+@@ -434,14 +451,23 @@ def _fix_py3_rlock(old):
+         new.acquire()
+     gc.collect()
+     for ref in gc.get_referrers(old):
+-        try:
+-            ref_vars = vars(ref)
+-        except TypeError:
+-            pass
++        if isinstance(ref, dict):
++            for k, v in ref.items():
++                if v is old:
++                    ref[k] = new
++        elif isinstance(ref, list):
++            for k, v in enumerate(ref):
++                if v is old:
++                    ref[k] = new
+         else:
+-            for k, v in ref_vars.items():
+-                if v == old:
+-                    setattr(ref, k, new)
++            try:
++                ref_vars = vars(ref)
++            except TypeError:
++                pass
++            else:
++                for k, v in ref_vars.items():
++                    if v is old:
++                        setattr(ref, k, new)
+ 
+ 
+ def _green_os_modules():
+diff --git a/tests/isolated/patcher_existing_logging_module_lock.py b/tests/isolated/patcher_existing_logging_module_lock.py
+new file mode 100644
+index 000000000..2acad62ee
+--- /dev/null
++++ b/tests/isolated/patcher_existing_logging_module_lock.py
+@@ -0,0 +1,30 @@
++# https://github.com/eventlet/eventlet/issues/730
++# https://github.com/eventlet/eventlet/pull/754
++__test__ = False
++
++
++if __name__ == "__main__":
++    import logging
++    import eventlet.patcher
++    eventlet.patcher.monkey_patch(thread=True)
++    import threading
++
++    def take_and_release():
++        try:
++            logging._lock.acquire()
++        finally:
++            logging._lock.release()
++
++    assert logging._lock.acquire()
++    t = threading.Thread(target=take_and_release)
++    t.daemon = True
++    t.start()
++
++    t.join(timeout=0.1)
++    # we should timeout, and the thread is still blocked waiting on the lock
++    assert t.is_alive()
++
++    logging._lock.release()
++    t.join(timeout=0.1)
++    assert not t.is_alive()
++    print("pass")
+diff --git a/tests/patcher_test.py b/tests/patcher_test.py
+index dbf6e1c71..e8d6f3300 100644
+--- a/tests/patcher_test.py
++++ b/tests/patcher_test.py
+@@ -485,6 +485,10 @@ def test_patcher_existing_locks_unlocked():
+     tests.run_isolated('patcher_existing_locks_unlocked.py')
+ 
+ 
++def test_patcher_existing_logging_module_lock():
++    tests.run_isolated('patcher_existing_logging_module_lock.py')
++
++
+ def test_importlib_lock():
+     tests.run_isolated('patcher_importlib_lock.py')
+ 

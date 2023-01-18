@@ -477,4 +477,14 @@
 </comment>
     <requestid>1041890</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>366d223f6df784dd27a04fa4ecb86377</srcmd5>
+    <version>0.33.2</version>
+    <time>1674043716</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-py3-rlock.patch to make the code compatible with python 3.11,
+  gh#eventlet/eventlet#754 
+</comment>
+    <requestid>1059026</requestid>
+  </revision>
 </revisionlist>
