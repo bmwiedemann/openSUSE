@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-digest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,31 @@
 
 %global pkg_name digest
 Name:           ghc-%{pkg_name}
-Version:        0.0.1.3
+Version:        0.0.1.4
 Release:        0
-Summary:        Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now
+Summary:        Various hashes for bytestrings; CRC32 and Adler32 for now
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    %{ix86}
 
 %description
-This package provides efficient cryptographic hash implementations for strict
-and lazy bytestrings. For now, CRC32 and Adler32 are supported; they are
-implemented as FFI bindings to efficient code from zlib.
+This package provides efficient hash implementations for strict and lazy
+bytestrings. For now, CRC32 and Adler32 are supported; they are implemented as
+FFI bindings to efficient code from zlib.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
-Requires:       zlib-devel
+Requires:       pkgconfig
+Requires:       pkgconfig(zlib)
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
@@ -48,6 +51,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
