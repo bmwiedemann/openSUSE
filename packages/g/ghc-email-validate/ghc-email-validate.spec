@@ -19,7 +19,7 @@
 %global pkg_name email-validate
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.2.16
+Version:        2.3.2.18
 Release:        0
 Summary:        Email address validation
 License:        BSD-3-Clause
