@@ -19,7 +19,7 @@
 %global pkg_name hspec-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.10.6
+Version:        2.10.8
 Release:        0
 Summary:        A Testing Framework for Haskell
 License:        MIT
@@ -34,8 +34,7 @@ BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-ghc-boot-th-devel
-BuildRequires:  ghc-ghc-devel
+BuildRequires:  ghc-haskell-lexer-devel
 BuildRequires:  ghc-hspec-expectations-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-quickcheck-io-devel
