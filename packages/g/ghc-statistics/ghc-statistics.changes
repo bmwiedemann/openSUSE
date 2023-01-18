@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  8 20:11:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.1.2.
+  ## Changes in 0.16.1.2
+
+   * Fixed bug in `fromSample` for exponential distribudion (#190)
+
+-------------------------------------------------------------------
 Thu May 12 18:58:41 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update statistics to version 0.16.1.0.
