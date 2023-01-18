@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 11 08:00:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace usage of deprecated fgrep with grep -F.
+
+-------------------------------------------------------------------
 Mon Jul 25 15:18:20 CEST 2022 - mls@suse.de
 
 - fix build on ppc

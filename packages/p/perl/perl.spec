@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -255,7 +255,7 @@ install -m 444 saveConfig_heavy.pl $cpa/Config_heavy.pl
 # install macros.perl file
 install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/macros.d/macros.perl
 pushd %{_includedir}
-( rpm -ql glibc-devel | fgrep '.h'
+( rpm -ql glibc-devel | grep -F '.h'
   find %{_includedir}/asm/ -name \*.h
   find %{_includedir}/asm-generic -name \*.h
   find %{_includedir}/linux -name \*.h
