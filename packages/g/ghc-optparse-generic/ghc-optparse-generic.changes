@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 10 23:34:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update optparse-generic to version 1.4.9.
+  1.4.9
+
+  * [Add `Data` instance for `Unwrapped`](https://github.com/Gabriella439/optparse-generic/pull/100)
+
+-------------------------------------------------------------------
 Sun Sep  4 23:36:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update optparse-generic to version 1.4.8 revision 1.

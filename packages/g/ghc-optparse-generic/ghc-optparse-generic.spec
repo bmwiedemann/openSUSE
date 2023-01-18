@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-optparse-generic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global pkg_name optparse-generic
 Name:           ghc-%{pkg_name}
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        Auto-generate a command-line parser for your datatype
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Only-devel
 BuildRequires:  ghc-bytestring-devel
@@ -58,13 +58,13 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %{pkg_name}-%{version}
 
 %post devel
 %ghc_pkg_recache
@@ -74,6 +74,8 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %files -f %{name}.files
 %license LICENSE
+%{_bindir}/optparse-generic-example-unwrap-options
+%{_bindir}/optparse-generic-example-unwrap-with-help
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md
