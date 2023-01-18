@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Mon Jan 16 18:32:30 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#618
+- switch from curl to osc api to avoid authentication hassle with
+  IBS
+- add 'ignore_packages' environment setting to allow more control
+  over package config
+- update docs
+- 17.68
+
+--------------------------------------------------------------------
 Thu Dec 1 12:45:11 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#616
