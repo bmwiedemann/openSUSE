@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 14 05:19:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-mtl to version 0.2.0.3.
+  # 0.2.0.2
+
+  * Added support for mtl 2.3 and transformers 0.6 per [#152](https://github.com/stevenfontanella/microlens/issues/152).
+
+-------------------------------------------------------------------
 Mon May 16 04:48:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update microlens-mtl to version 0.2.0.2.

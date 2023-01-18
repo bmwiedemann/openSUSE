@@ -18,7 +18,7 @@
 
 %global pkg_name microlens-mtl
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.2
+Version:        0.2.0.3
 Release:        0
 Summary:        Microlens support for Reader/Writer/State from mtl
 License:        BSD-3-Clause
