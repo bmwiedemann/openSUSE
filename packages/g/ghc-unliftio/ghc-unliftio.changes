@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 27 15:19:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unliftio to version 0.2.23.0.
+  ## 0.2.23.0
+
+  * `UnliftIO.Exception` re-exports the `Handler` and sync/async exception wrappers
+    from `safe-exceptions`, instead of redefining them.
+      * With this change, you won't be able to distinguish between an asynchronous
+        exception from `UnliftIO.Exception.throwTo` and `Control.Exception.Safe.throwTo`.
+      * [#103](https://github.com/fpco/unliftio/pull/103)
+
+-------------------------------------------------------------------
 Tue Apr 26 14:58:15 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unliftio to version 0.2.22.0.

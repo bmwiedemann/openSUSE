@@ -19,7 +19,7 @@
 %global pkg_name unliftio
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.22.0
+Version:        0.2.23.0
 Release:        0
 Summary:        The MonadUnliftIO typeclass for unlifting monads to IO (batteries included)
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-safe-exceptions-devel
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
