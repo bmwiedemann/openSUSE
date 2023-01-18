@@ -1,0 +1,160 @@
+cabal-version:  2.2
+name:           double-conversion
+version:        2.0.4.2
+x-revision: 2
+license:        BSD-3-Clause
+license-file:   LICENSE
+homepage:       https://github.com/haskell/double-conversion
+bug-reports:    https://github.com/haskell/double-conversion/issues
+category:       Text
+author:         Bryan O'Sullivan <bos@serpentine.com>
+maintainer:     Bryan O'Sullivan <bos@serpentine.com>
+stability:      experimental
+synopsis:       Fast conversion between single and double precision floating point and text
+build-type:     Simple
+description:
+    A library that performs fast, accurate conversion between 
+    floating point and text.
+    .
+    This library is implemented as bindings to the C++
+    @double-conversion@ library written by Florian Loitsch at Google:
+    <https://github.com/floitsch/double-conversion>.
+    .
+    Now it can convert single precision numbers, and also it can create 
+    Builder, instead of bytestring or text. 
+    .
+    The 'Text' versions of these functions are about 30 times faster
+    than the default 'show' implementation for the 'Double' type.
+    .
+    The 'ByteString' versions are have very close speed to the 'Text' versions;
+    .
+    Builder versions (both for Text and Bytestring) are slower on single value,
+    but they are much faster on large number of values 
+    (up to 20x faster on list with 20000 doubles).
+    .
+    As a final note, be aware that the @bytestring-show@ package is
+    about 50% slower than simply using 'show'.
+
+extra-source-files:
+    README.markdown
+    benchmarks/*.cabal
+    benchmarks/*.hs
+    double-conversion/*.cmake.in
+    double-conversion/AUTHORS
+    double-conversion/CMakeLists.txt
+    double-conversion/COPYING
+    double-conversion/Changelog
+    double-conversion/LICENSE
+    double-conversion/Makefile
+    double-conversion/README
+    double-conversion/SConstruct
+    double-conversion/src/*.cc
+    double-conversion/src/*.h
+    double-conversion/src/CMakeLists.txt
+    double-conversion/src/SConscript
+    double-conversion/test/CMakeLists.txt
+    double-conversion/test/cctest/*.cc
+    double-conversion/test/cctest/*.h
+    double-conversion/test/cctest/CMakeLists.txt
+    double-conversion/test/cctest/SConscript
+    include/*.h
+    tests/*.hs
+
+flag developer
+  description: operate in developer mode
+  default: False
+  manual: True
+
+flag embedded_double_conversion
+  description: embed the C++ double_conversion library
+  default: True
+
+library
+  if impl(ghc >= 9.4)
+    build-depends: system-cxx-std-lib == 1.0
+
+  elif os(darwin) || os(freebsd)
+    extra-libraries: c++
+  elif os(windows)
+    if arch(x86_64) && impl(ghc < 8.6.5)
+      extra-libraries: stdc++-6 gcc_s_seh-1
+    elif arch(x86_64)
+      extra-libraries: stdc++ gcc_s_seh-1
+    elif impl(ghc >= 8.6.5)
+      extra-libraries: stdc++ gcc_s_dw2-1
+    else 
+      extra-libraries: stdc++-6 gcc_s_dw2-1
+  else
+    extra-libraries: stdc++
+
+  if flag(embedded_double_conversion)
+    c-sources:
+      cbits/hs-double-conversion-embed.cc
+
+      double-conversion/src/bignum.cc
+      double-conversion/src/bignum-dtoa.cc
+      double-conversion/src/cached-powers.cc
+      double-conversion/src/diy-fp.cc
+      double-conversion/src/double-conversion.cc
+      double-conversion/src/fast-dtoa.cc
+      double-conversion/src/fixed-dtoa.cc
+      double-conversion/src/strtod.cc
+    include-dirs: double-conversion/src
+  else
+    extra-libraries: double-conversion
+    c-sources:
+      cbits/hs-double-conversion.cc
+
+  include-dirs:
+    include
+
+  exposed-modules:
+    Data.Double.Conversion.Convertable
+    Data.Double.Conversion.ByteString
+    Data.Double.Conversion.Text
+
+  other-modules:
+    Data.Double.Conversion.Internal.FFI
+    Data.Double.Conversion.Internal.ByteString
+    Data.Double.Conversion.Internal.ByteStringBuilder
+    Data.Double.Conversion.Internal.Text
+    Data.Double.Conversion.Internal.TextBuilder
+
+  build-depends:
+    -- Build failure with GHC <= 7.6
+    -- https://github.com/haskell/double-conversion/issues/38
+    base >= 4.7 && < 5,
+    bytestring,
+    ghc-prim,
+    text >= 0.11.0.8
+
+  if flag(developer)
+    ghc-options: -Werror 
+    ghc-prof-options: -auto-all
+  else
+    cc-options: -DNDEBUG 
+
+  ghc-options: -Wall 
+
+  default-language: Haskell2010
+
+test-suite tests
+  type: exitcode-stdio-1.0
+  hs-source-dirs: tests
+  main-is: Properties.hs
+  other-modules: Regressions
+  ghc-options: -Wall
+  build-depends:
+    HUnit,
+    base,
+    bytestring,
+    double-conversion,
+    test-framework,
+    test-framework-hunit,
+    test-framework-quickcheck2,
+    text
+  default-language: Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/haskell/double-conversion

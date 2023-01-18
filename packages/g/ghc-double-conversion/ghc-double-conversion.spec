@@ -19,12 +19,13 @@
 %global pkg_name double-conversion
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.4.1
+Version:        2.0.4.2
 Release:        0
 Summary:        Fast conversion between single and double precision floating point and text
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 Patch0:         riscv.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ghc-Cabal-devel
@@ -54,12 +55,11 @@ instead of bytestring or text.
 The 'Text' versions of these functions are about 30 times faster than the
 default 'show' implementation for the 'Double' type.
 
-The 'ByteString' versions are /slower/ than the 'Text' versions; roughly half
-the speed. (This seems to be due to the cost of allocating 'ByteString' values
-via 'malloc'.)
+The 'ByteString' versions are have very close speed to the 'Text' versions;
 
-Builder versions are slower on single value, but they are much faster on large
-number of values (up to 50x faster on list with 20000 doubles).
+Builder versions (both for Text and Bytestring) are slower on single value, but
+they are much faster on large number of values (up to 20x faster on list with
+20000 doubles).
 
 As a final note, be aware that the 'bytestring-show' package is about 50%
 slower than simply using 'show'.
@@ -78,6 +78,7 @@ files.
 
 %prep
 %autosetup -p1 -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
