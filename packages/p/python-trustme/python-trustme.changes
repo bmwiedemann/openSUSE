@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 16 21:04:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Sat Jan 14 10:45:50 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix2038.patch to allow tests of python-aiosmtplib to pass after 2038
+
+-------------------------------------------------------------------
 Mon Aug 30 14:18:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.0

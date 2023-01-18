@@ -1,0 +1,17 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2023-01-14
+Subject: Fix tests of python-aiosmtplib after 2038
+
+diff --git a/trustme/__init__.py b/trustme/__init__.py
+index cc280b0..f24e100 100644
+--- a/trustme/__init__.py
++++ b/trustme/__init__.py
+@@ -50,7 +50,7 @@ _KEY_SIZE = 2048
+ # Some versions of cryptography on 32-bit platforms fail if you give
+ # them dates after ~2038-01-19:
+ #   https://github.com/pyca/cryptography/pull/4658
+-DEFAULT_EXPIRY = datetime.datetime(2038, 1, 1)
++DEFAULT_EXPIRY = datetime.datetime(2098, 1, 1)
+ 
+ def _name(name, organization_name=None, common_name=None):
+     # type: (Text, Optional[Text], Optional[Text]) -> x509.Name

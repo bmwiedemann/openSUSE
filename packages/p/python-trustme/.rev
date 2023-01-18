@@ -66,4 +66,14 @@
     <comment></comment>
     <requestid>915528</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>20845b54b34748dc2c9eedf971b86e90</srcmd5>
+    <version>0.9.0</version>
+    <time>1674043691</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file
+- Add fix2038.patch to allow tests of python-aiosmtplib to pass after 2038
+</comment>
+    <requestid>1058771</requestid>
+  </revision>
 </revisionlist>
