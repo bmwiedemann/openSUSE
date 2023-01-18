@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 29 20:22:57 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update websockets-snap to version 0.10.3.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
