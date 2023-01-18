@@ -1,7 +1,7 @@
 #
 # spec file for package ode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_maj  8
 %define lname   libode%{so_maj}
 Name:           ode
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        Open Dynamics Engine Library
 License:        BSD-3-Clause OR LGPL-2.1-or-later
@@ -92,6 +92,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ifarch %{ix86}
 # Fail.
 %else
+
 %check
 %make_build check
 %endif
