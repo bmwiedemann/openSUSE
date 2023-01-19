@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 16 13:25:14 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1673871170.29e858b:
+  * Fix build by providing postgresql during build
+
+-------------------------------------------------------------------
 Fri Jan 13 15:07:17 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1673622416.c01e5cb:
