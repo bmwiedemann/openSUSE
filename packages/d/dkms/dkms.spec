@@ -1,7 +1,7 @@
 #
 # spec file for package dkms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        2.8.4
+Version:        2.8.8
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
@@ -64,8 +64,6 @@ module RPMS as originally developed by Dell.
   ETC=%{buildroot}%{_sysconfdir}/%{name} \
   BASHDIR=%{buildroot}%{_datadir}/bash-completion/completions \
   LIBDIR=%{buildroot}%{_libexecdir}/%{name}
-make install-doc DESTDIR=%{buildroot} \
-    DOCDIR=%{buildroot}%{_docdir}/%{name}
 
 # systemd
 mkdir -p %{buildroot}%{_unitdir}
@@ -74,12 +72,6 @@ install -p -m 755 %{SOURCE2} %{buildroot}%{_unitdir}
 mkdir -p "%{buildroot}%{_sysconfdir}/default"
 install -m 644 %{SOURCE3} "%{buildroot}%{_sysconfdir}/default/dkms"
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdkms
-
-# remove regular init file
-rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d/dkms_autoinstaller
-
-# remove license in wrong dir
-rm -f %{buildroot}%{_docdir}/%{name}/COPYING
 
 sed -i \
     -e 's:# tmp_location="/tmp":tmp_location="%{_localstatedir}/tmp/dkms":' \
@@ -112,25 +104,26 @@ exit 0
 exit 0
 
 %files
+%doc README.md
+%license COPYING
+%config(noreplace) %{_sysconfdir}/%{name}
 %{_sbindir}/%{name}
 %{_sbindir}/rcdkms
 %{_localstatedir}/lib/%{name}
 %{_libexecdir}/%{name}
 %{_tmpfilesdir}/dkms.conf
-%{_mandir}/*/*
-%config(noreplace) %{_sysconfdir}/%{name}
-%license COPYING
-%doc sample.spec sample.conf AUTHORS README.md
-%doc sample-suse-9-mkkmp.spec sample-suse-10-mkkmp.spec
+%{_mandir}/man8/dkms.8%{ext_man}
 # these dirs are for plugins - owned by other packages
 %{_sysconfdir}/kernel/postinst.d/%{name}
 %{_sysconfdir}/kernel/prerm.d/%{name}
+%{_sysconfdir}/kernel/install.d/%{name}
 %{_datadir}/bash-completion/completions/%{name}
 %{_unitdir}/dkms.service
 %{_unitdir}/dkms.systemd
 %config %{_sysconfdir}/default/dkms
 %dir %{_sysconfdir}/kernel
 %dir %{_sysconfdir}/kernel/postinst.d
+%dir %{_sysconfdir}/kernel/install.d
 %dir %{_sysconfdir}/kernel/prerm.d
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 19 10:12:58 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.8.8
+  * Drop old kernel 2.x checks
+  * Drop modules.conf handling
+  * Fix kernel removing.
+- Update to version 2.8.7
+  * Fix kernel `prerm.d` for new output in `dkms status`
+- Update to version 2.8.6
+  * Fix installation of configuration files
+  * Use more condensed output for commands, print when invoking
+    the signing hook
+- Update to version 2.8.5
+  * Simplify function for correct kernel using the modules folder
+    and not the configuration files in /boot.
+  * Simplify function to detect newer kernels
+
+-------------------------------------------------------------------
 Tue Jun  8 13:53:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.8.4
