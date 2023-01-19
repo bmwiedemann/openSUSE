@@ -1,0 +1,5 @@
+<package name="klib" project="openSUSE:Factory">
+  <title>klib</title>
+  <description>Klib is a standalone and lightweight C library distributed under MIT/X11 license. Most components are independent of external libraries, except the standard C library, and independent of each other. To use a component of this library, you only need to copy a couple of files to your source code tree without worrying about library dependencies.</description>
+  <devel project="devel:libraries:c_c++" package="klib"/>
+</package>
