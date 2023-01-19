@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 18 05:31:26 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.1:
+  * Fixed an issue affecting bowtie2 alignment accuracy.
+  * Updated the versions of the NCBI NGS and VDB libraries used by
+    bowtie2.
+  * Fixed a segmentation fault that would occur while aligning SRA
+    data.
+  * Fixed an issue preventing --un-mates from properly saving
+    unaligned mates.
+
+-------------------------------------------------------------------
 Sun Nov 20 17:25:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.0:
