@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 10 11:11:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't fail on Sphinx build warnings.
+- For jsc#PED-1570, providing Python 3.11 for SLE-15-SP5.
+
+-------------------------------------------------------------------
 Thu Dec  8 14:59:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.11.1:

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -465,6 +465,9 @@ rm Lib/site-packages/README.txt
 
 # Add vendored bluez-devel files
 tar xvf %{SOURCE21}
+
+# Don't fail on warnings when building documentation
+sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
 
 %build
 %if %{with doc}

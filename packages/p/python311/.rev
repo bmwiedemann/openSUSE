@@ -685,4 +685,13 @@ C API
 </comment>
     <requestid>1041729</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>52aa4b39a97fb788c397c8cea66dea12</srcmd5>
+    <version>3.11.1</version>
+    <time>1674143065</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't fail on Sphinx build warnings.
+- For jsc#PED-1570, providing Python 3.11 for SLE-15-SP5.</comment>
+    <requestid>1059550</requestid>
+  </revision>
 </revisionlist>
