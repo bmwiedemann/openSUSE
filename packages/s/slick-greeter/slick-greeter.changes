@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 17 08:23:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Allow wayland sessions to pass validation
+  * Add github workflow, remove .circleci.
+
+-------------------------------------------------------------------
 Tue Dec  6 08:23:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
