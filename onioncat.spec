@@ -1,7 +1,7 @@
 #
 # spec file for package onioncat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,18 @@
 
 
 Name:           onioncat
-Version:        0.3.9
+Version:        4.10.0
 Release:        0
 Summary:        VPN adapter for Tor and I2P
 License:        GPL-3.0-only
 URL:            https://www.onioncat.org/
-Source:         https://www.cypherpunk.at/ocat/download/Source/current/%{name}-%{version}.tar.gz
-Source2:        https://www.cypherpunk.at/ocat/download/Source/current/%{name}-%{version}.tar.gz.asc
+Source:         https://github.com/rahra/onioncat/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source2:        https://github.com/rahra/onioncat/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 # 0x98678E06063007E4A1F0B9C59BD601668E24F29D
 Source3:        %{name}.keyring
+# PATCH-FIX-UPSTREAM onioncat-DESTDIR-for-localstatedir.patch gh#rahra/onioncat#43 badshah400@gmail.com -- Create localstatedir inside DESTDIR
+Patch0:         onioncat-DESTDIR-for-localstatedir.patch
+BuildRequires:  libtool
 Requires:       tor
 
 %description
@@ -35,9 +38,10 @@ location hidden basis. You can think of it as a point-to-multipoint VPN between
 hidden services.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
+autoreconf -fvi
 %configure --docdir=%{_docdir}/%{name}
 %make_build
 
