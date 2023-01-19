@@ -1,0 +1,9 @@
+<package name="SDL2_Pango" project="openSUSE:Factory">
+  <title>A library for graphically rendering internationalized and tagged text in SDL2</title>
+  <description>SDL2_Pango is a library for graphically rendering internationalized and tagged
+text in SDL2 using TrueType fonts. SDL2_Pango is a port of SDL_Pango to SDL2.
+
+</description>
+  <devel project="games" package="SDL2_Pango"/>
+  <url>https://github.com/markuskimius/SDL2_Pango</url>
+</package>
