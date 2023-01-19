@@ -511,4 +511,41 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment>- Revert removal of pylama tests, we drop out of Ring1 instead</comment>
     <requestid>999112</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a51162bb57fb3502de5699e4dfd1f419</srcmd5>
+    <version>5.11.4</version>
+    <time>1674143073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.11.4
+  * No user relevant changes
+- Release 5.11.3
+  * Renable portray (#2043) @timothycrosley
+  * Fix packaging pypoetry (#2042) @staticdev
+  * Fix settings for py3.11 (#2040) @staticdev
+- Release 5.11.2
+  * Hotfix for --version. (#2035) @felixxm
+- Release 5.11.1
+  * Only call colorama.init if colorama is available (#2032)
+    @tomaarsen
+- Release 5.11.0
+  * Add support to Python 3.11 support (#2024) @staticdev
+  * Remove support to Python 3.6 (#2020) @barrelful
+  * Fix Rich compatibility (#1961) @ofek
+  * Add magic trailing comma option (#1876) @legau
+  * Add missing space in unrecoverable exception message (#1933)
+    @andersk
+  * skip-gitignore: use allow list, not deny list (#1900)
+    @bmalehorn
+  * Infinite loop for unmatched parenthesis (#1919) @anirudnits
+  * Split long cython import lines (#1931) @davidcollins001
+  * Update plone profile: copy of black, plus three settings.
+    (#1926) @mauritsvanrees
+  * Add a command-line flag to sort all re-exports (#1862) (#1863)
+    @parafoxia
+  * Fix lines_before_imports appending lines after comments (#1861)
+    @legau
+  * Remove redundant multi_line_output = 3 from &quot;Compatibility with
+    black&quot; (#1858) @jdufresne (forwarded request 1059600 from bnavigator)</comment>
+    <requestid>1059601</requestid>
+  </revision>
 </revisionlist>

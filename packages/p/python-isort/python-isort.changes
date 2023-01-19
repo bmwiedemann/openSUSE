@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jan 19 11:36:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.11.4
+  * No user relevant changes
+- Release 5.11.3
+  * Renable portray (#2043) @timothycrosley
+  * Fix packaging pypoetry (#2042) @staticdev
+  * Fix settings for py3.11 (#2040) @staticdev
+- Release 5.11.2
+  * Hotfix for --version. (#2035) @felixxm
+- Release 5.11.1
+  * Only call colorama.init if colorama is available (#2032)
+    @tomaarsen
+- Release 5.11.0
+  * Add support to Python 3.11 support (#2024) @staticdev
+  * Remove support to Python 3.6 (#2020) @barrelful
+  * Fix Rich compatibility (#1961) @ofek
+  * Add magic trailing comma option (#1876) @legau
+  * Add missing space in unrecoverable exception message (#1933)
+    @andersk
+  * skip-gitignore: use allow list, not deny list (#1900)
+    @bmalehorn
+  * Infinite loop for unmatched parenthesis (#1919) @anirudnits
+  * Split long cython import lines (#1931) @davidcollins001
+  * Update plone profile: copy of black, plus three settings.
+    (#1926) @mauritsvanrees
+  * Add a command-line flag to sort all re-exports (#1862) (#1863)
+    @parafoxia
+  * Fix lines_before_imports appending lines after comments (#1861)
+    @legau
+  * Remove redundant multi_line_output = 3 from "Compatibility with
+    black" (#1858) @jdufresne
+
+-------------------------------------------------------------------
 Fri Aug 19 09:44:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Revert removal of pylama tests, we drop out of Ring1 instead

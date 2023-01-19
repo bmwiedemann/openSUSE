@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,27 +25,26 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.10.1
+Version:        5.11.4
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
 URL:            https://pycqa.github.io/isort/
 # tests and example projects are not packaged for PyPI, get them from Github
 Source:         https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-colorama >= 0.4.3
 Recommends:     python-pip-api
 Recommends:     python-pipreqs
-Suggests:       git
+Recommends:     python-setuptools
+Suggests:       git-core
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module black}
@@ -61,7 +60,7 @@ BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module toml >= 0.10.2}
-BuildRequires:  git
+BuildRequires:  git-core
 %endif
 %python_subpackages
 
@@ -88,12 +87,8 @@ hypothesis.settings.register_profile(
 )
 " >> tests/conftest.py
 
-# unpin natsort in example plugin -- https://github.com/PyCQA/isort/issues/1873
-sed -i 's/natsort = "^/natsort = ">=/' example_isort_sorting_plugin/pyproject.toml
-# unpin black in example plugin
-sed -i 's/black = "^/black = ">=/' example_isort_formatting_plugin/pyproject.toml
-
 %build
+# Note: we also need the wheel for testing
 %pyproject_wheel
 
 %if !%{with test}
