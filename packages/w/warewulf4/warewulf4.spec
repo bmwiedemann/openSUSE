@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,21 @@
 #
 
 
+#%%define rls_cndt rc3
+
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
-Source0:        https://github.com/hpcng/warewulf/archive/v%{version}.tar.gz#/warewulf4-v%{version}.tar.gz
+Source0:        https://github.com/hpcng/warewulf/archive/v%{version}%{?rls_cndt}.tar.gz#/warewulf4-v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source3:        warewulf4-rpmlintrc
+#Patch1:         upstream.patch
 
 # no firewalld in sle12
 %if 0%{?sle_version} >= 150000 || 0%{?suse_version} > 1500
@@ -42,8 +45,8 @@ BuildRequires:  munge
 BuildRequires:  sysuser-tools
 BuildRequires:  tftp
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Requires:       %{name}-ipxe
-Requires:       %{name}-overlay
+Requires:       %{name}-ipxe = %{version}
+Requires:       %{name}-overlay = %{version}
 Requires:       dhcp-server
 Requires:       ipmitool
 Requires:       nfs-kernel-server
@@ -66,6 +69,13 @@ Group:          Productivity/Clustering/Computing
 %description overlay
 Includes the default overlays so that they can be updated seprately.
 
+%package api
+Requires:       %{name}
+Summary:        Contains the service for the warewulf rest API
+
+%description api
+Containts the binaries for the access of warewulf through a rest API and from the commandline from an external host.
+
 %package ipxe
 Requires:       tftp
 Summary:        Binaries of iPXE for ww4 installation
@@ -85,7 +95,7 @@ This package install the necessary configuration files in order to run a slurm
 cluster on the configured warewulf nodes.
 
 %prep
-%setup -q -n warewulf-%{version}
+%setup -q -n warewulf-%{version}%{?rls_cndt}
 # extract the vendor stuff
 tar xzf %{S:1}
 %autopatch -p1
@@ -97,7 +107,7 @@ make %{?_smp_mflags} genconfig \
     BINDIR=%{_bindir} \
     SYSCONFDIR=%{_sysconfdir} \
     DATADIR=%{_datadir} \
-    LOCALSTATEDIR=%{_sharedstatedir} \
+    LOCALSTATEDIR=%{_datadir} \
     SHAREDSTATEDIR=%{_sharedstatedir} \
     MANDIR=%{_mandir} \
     INFODIR=%{_infodir} \
@@ -115,10 +125,10 @@ export NO_BRP_STALE_LINK_ERROR=yes
 %{makeinstall}
 
 # cleanup
-mv %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp/dhcpd.conf.ww \
-  %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf.ww
-rmdir %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcp
-rm %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/etc/dhcpd.conf
+mv %{buildroot}%{_datadir}/warewulf/overlays/host/etc/dhcp/dhcpd.conf.ww \
+  %{buildroot}%{_datadir}//warewulf/overlays/host/etc/dhcpd.conf.ww
+rmdir %{buildroot}%{_datadir}/warewulf/overlays/host/etc/dhcp
+rm %{buildroot}%{_datadir}/warewulf/overlays/host/etc/dhcpd.conf
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcwarewulfd
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
@@ -167,11 +177,10 @@ EOF
 %attr(0755, root, warewulf) %dir %{_sysconfdir}/warewulf/ipxe
 %{_datadir}/bash-completion/completions/wwctl
 %{_mandir}/man1/wwctl*1.gz
+%{_mandir}/man5/*conf*gz
 %config(noreplace) %{_sysconfdir}/warewulf/nodes.conf
 %config(noreplace) %{_sysconfdir}/warewulf/warewulf.conf
-#%config(noreplace) %{_sysconfdir}/warewulf/wwapic.conf
-#%config(noreplace) %{_sysconfdir}/warewulf/wwapid.conf
-#%config(noreplace) %{_sysconfdir}/warewulf/wwapird.conf
+%config(noreplace) %{_sysconfdir}/warewulf/defaults.conf
 
 %config(noreplace) %{_sysconfdir}/warewulf/ipxe/*.ipxe
 %{_sysconfdir}/warewulf/examples
@@ -179,9 +188,6 @@ EOF
 %{_localstatedir}/lib/warewulf
 %exclude %{_localstatedir}/lib/warewulf/overlays
 %{_bindir}/wwctl
-#%{_bindir}/wwapic
-#%{_bindir}/wwapid
-#%{_bindir}/wwapird
 %{_sbindir}/rcwarewulfd
 %{_unitdir}/warewulfd.service
 %{_sysusersdir}/system-user-%{name}.conf
@@ -198,6 +204,14 @@ EOF
 %files ipxe
 #/srv/tftpboot/warewulf
 %{_datadir}/warewulf
+
+%files api
+%{_bindir}/wwapic
+%{_bindir}/wwapid
+%{_bindir}/wwapird
+%config(noreplace) %{_sysconfdir}/warewulf/wwapic.conf
+%config(noreplace) %{_sysconfdir}/warewulf/wwapid.conf
+%config(noreplace) %{_sysconfdir}/warewulf/wwapird.conf
 
 %files slurm
 %dir %{_localstatedir}/lib/warewulf/overlays/host/etc/slurm
