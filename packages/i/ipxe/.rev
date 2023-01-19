@@ -142,4 +142,12 @@ use xorrisofs for creating iso
     <comment></comment>
     <requestid>984582</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>cb891b26b2a194c4849cc1deb30a9c53</srcmd5>
+    <version>1.21.1+git20210908.02ec659b</version>
+    <time>1674143074</time>
+    <user>dimstar_suse</user>
+    <comment>Make bootimgs subpackage architecture-specific</comment>
+    <requestid>1059599</requestid>
+  </revision>
 </revisionlist>

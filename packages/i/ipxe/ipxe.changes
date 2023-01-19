@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 19 13:31:56 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make bootimgs subpackage architecture-specific
+
+-------------------------------------------------------------------
 Mon Jun 20 08:35:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use the default gcc version in Tumbleweed builds.

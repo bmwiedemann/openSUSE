@@ -64,7 +64,6 @@ DNS, HTTP, iSCSI, etc.
 %package bootimgs
 Summary:        Network boot loader images in bootable USB, CD, floppy and GRUB formats
 Group:          Development/Tools/Other
-BuildArch:      noarch
 
 %description bootimgs
 iPXE is a network bootloader. It provides a direct
