@@ -29,7 +29,7 @@ Sun Jul 24 09:09:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Jan 24 00:57:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 0.4.7:
+- Update to 0.4.7 (bsc#1207242, CVE-2021-32837):
   * Fix the ~ character being percent escaped when sending URLs to servers.
   * Python 3.10 compatibility
   * Fix a bug in the regex used to parse www-authenticate headers that could
