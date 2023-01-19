@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:42:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.8:
+  * Changed location of releases to GitHub only in README.
+  * Change the default internal namespace separator from the colon to the pipe
+    This solves compatibility with libexpat >= 2.4.5 after fix the security
+    problem CVE-2022-25236.
+  * Removed copy of Expat in macosx directory (issue #77).
+  * Migrated from Travis CI to GitHub actions for testing.
+
+-------------------------------------------------------------------
 Sun Apr 11 11:38:20 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
 
 - fixed spec file syntax

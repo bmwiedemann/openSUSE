@@ -1,7 +1,7 @@
 #
 # spec file for package wbxml2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # set libname
 %define libname libwbxml2-1
-
 Name:           wbxml2
-BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  libexpat-devel
-BuildRequires:  pkg-config
-BuildRequires:  popt-devel
-BuildRequires:  zlib-devel
-Url:            http://libwbxml.opensync.org/
+Version:        0.11.8
+Release:        0
 Summary:        WBXML parser and compiler library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        0.11.7
-Release:        0
+URL:            https://github.com/libwbxml/libwbxml
 Source:         https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  libexpat-devel
+BuildRequires:  pkgconfig
+BuildRequires:  popt-devel
+BuildRequires:  zlib-devel
 
 %description
 wbxml2 is a library that includes a WBXML (Wireless Binary XML)
@@ -57,12 +55,12 @@ representation of XML defined by the Wap Forum.
 Summary:        Tools for libwbxml2
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-Requires:       %{libname} = %{version} 
+Requires:       %{libname} = %{version}
 # package was called wbxml2 in openSUSE < 11.2
 Provides:       wbxml2 = %{version}
 Obsoletes:      wbxml2 < %{version}
 
-%description -n wbxml2-tools 
+%description -n wbxml2-tools
 wbxml2 is a library that includes a WBXML (Wireless Binary XML)
 parser and a WBXML compiler. Unlike wbxml, it uses expat instead of
 libxml2. WBXML contains a library and its associated tools to parse,
@@ -72,9 +70,11 @@ ecode and handle WBXML documents.
 Summary:        WBXML parser and compiler library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version} glibc-devel libexpat-devel 
+Requires:       %{libname} = %{version}
+Requires:       glibc-devel
+Requires:       libexpat-devel
 
-%description -n libwbxml2-devel 
+%description -n libwbxml2-devel
 wbxml2 is a library that includes a WBXML (Wireless Binary XML)
 parser and a WBXML compiler. Unlike wbxml, it uses expat instead of
 libxml2. WBXML contains a library and its associated tools to parse,
@@ -96,32 +96,29 @@ cmake \
         -DLIB_SUFFIX=64 \
 %endif
          %{_builddir}/libwbxml-libwbxml-%{version}
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 popd
 
 %install
 pushd build
-%makeinstall
+%make_install
 popd
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -n  %{libname}
-%defattr(-, root, root)
-%doc BUGS COPYING ChangeLog GNU-LGPL INSTALL README RELEASE References THANKS TODO
+%files -n %{libname}
+%license COPYING
+%doc BUGS ChangeLog GNU-LGPL INSTALL README RELEASE References THANKS TODO
 %{_libdir}/libwbxml2.so.1*
 
 %files -n libwbxml2-devel
-%defattr(-,root,root)
 %{_datadir}/cmake/Modules/FindLibWbxml2.cmake
 %{_libdir}/pkgconfig/libwbxml2.pc
 %{_libdir}/libwbxml2.so
 %{_includedir}/libwbxml*
 
 %files -n wbxml2-tools
-%defattr(-,root,root)
 %{_bindir}/wbxml2xml
 %{_bindir}/xml2wbxml
 
