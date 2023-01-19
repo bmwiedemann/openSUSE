@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 18 07:52:36 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.154:
+  * Fix a regression from v0.153 where pan can segfault when
+    reading groups (glgo#GNOME/pan#156).
+  * A few GTK2 related cleanups.
+
+-------------------------------------------------------------------
 Sun Nov 20 17:48:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.153:
