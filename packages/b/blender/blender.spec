@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -75,7 +75,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jan 17 10:43:47 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.4.1:
+  + Allow Win32 Diacritical Composition T103119
+  + Box trim does not create face sets attribute T103052
+  + Changed behavior when removing a material slot T103051
+  + Cycles can lose default color attribute T103143
+  + Cycles missing full constant foler for mix float and mix vector
+    T103066
+  + Cycles random animation rendering freezing up the application
+    T103101
+  + Cycles specular light leak regression T103049
+  + Fix cursor warping display under Wayland rB18cc1b11
+  + glTF exporter: Fix export VertexColor for loose edges &
+    vertices rBAfea0e8e
+  + glTF importer: Fix import ShaderNodeMix with VertexColor
+    rBAb17b70d
+  + glTF: Fix factors export after Mix Node change in Blender
+    rBA3fbcd35
+  + GPencil applying armature does not work T103234
+  + GPencil Array doesn't respect restriction in Offset T102992
+  + GPencil export to SVG wrong line thickness T103061
+  + GPencil Line Texture last point gets distorted T103037
+  + GPencil Multiframe Scale affects stroke thickness inversely
+    T103293
+  + GPencil: Fix unreported interpolate crash in empty layers
+    rBc2e7bf39
+  + GPU: Fix using FLOAT_2D_ARRAY and FLOAT_3D textures via Python.
+    rBfd9b1972
+  + Ignore unavailable sockets linked to multi-input socket
+    rB7608ebe4
+  + Initialize face sets from bevel weights broken T103195
+  + Invalid font size in the image editor with some scripts T102213
+  + Mouse escapes window during walk navigation T102346
+  + NodeSocket.node is None in Node.copy callback T103321
+  + Opening node search menu is slow because of assets. T103187
+  + PLY: Fix export with UVs T103203
+  + Prevent UV Unwrap from packing hidden UV islands T103237
+  + Sculpt: Wpaint gradient tool doesn't work with vertex mask
+    T101914
+  + Stopping Animation in Some Scenes Immediately Crashes Blender
+    T103008
+  + Storypencil add-on not being shipped with release builds.
+    rBAa61732a
+  + Storypencil clears all frame_change_post handlers. T103028
+  + UI: broken texpaintslot/color attributes/attributes name
+    filtering T102878
+  + UI: Hotkey conflict Alt D in Node Editor with Duplicate Linked
+    and Detach T102276
+  + Unavailable socket linked to multi-input socket crashes T103208
+  + Undo after mask extract doesn't restore active object T103261
+  + ViewLayer: Crash in indirect_only_get due to missing null check
+    T103031
+  + Workbench render crash in 3.4 T103067
+-------------------------------------------------------------------
 Sat Dec 10 09:42:51 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Enable openpgl for aarch64 as well
