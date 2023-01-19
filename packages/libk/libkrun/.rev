@@ -100,4 +100,12 @@
   not-set-soname-as-it-is-plugin.patch</comment>
     <requestid>1040286</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6f352b9d97f90f27a0d1291927c3f850</srcmd5>
+    <version>1.4.10</version>
+    <time>1674143069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059587</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libkrun
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ complexity that comes from Virtual Machine management, offering users a simple C
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.4.8
+Version:        1.4.10
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -40,7 +40,6 @@ URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch1:         new-kvm-ioctl.patch
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo >= 1.43.0
 BuildRequires:  gcc
@@ -105,7 +104,7 @@ use libkrun-sev Virtualization-based process isolation capabilities.
 %endif
 
 %prep
-%autosetup -p1 -a1
+%autosetup -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 

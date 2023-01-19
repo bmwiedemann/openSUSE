@@ -2,7 +2,7 @@
 
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="revision">v1.4.8</param>
+    <param name="revision">v1.4.10</param>
     <param name="url">https://github.com/containers/libkrun.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
