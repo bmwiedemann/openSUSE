@@ -105,4 +105,12 @@
   * docker: fix linux build</comment>
     <requestid>1035618</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>64adeafa54988c81ac3ab6c0ac77da86</srcmd5>
+    <version>0.18.1.2</version>
+    <time>1674143055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059517</requestid>
+  </revision>
 </revisionlist>

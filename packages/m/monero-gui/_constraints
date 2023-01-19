@@ -10,6 +10,7 @@
   <overwrite>
     <conditions>
       <arch>x86_64</arch>
+      <arch>riscv64</arch>
     </conditions>
     <hardware>
       <memory>
