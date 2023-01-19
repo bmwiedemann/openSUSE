@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jan 17 09:30:14 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Configure external timezone database provided by the timezone
+  package.  Make libstdc++6 recommend timezone to get a fully
+  working std::chrono.  Install timezone when running the testsuite.
+- Remove dependence on doxygen and graphviz when building the
+  testsuite.  Those were used to build the libstdc++ API html
+  documentation but we stopped shipping that when Java support
+  was removed and nobody noticed.  Purge traces of the built
+  libstdc++6-gccN-doc package.
+- Package libhwasan_preinit.o on x86_64.
+
+-------------------------------------------------------------------
+Mon Jan 16 11:59:43 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head (r13-5199-g2f81164255bf0d)
+  * pulls changes up to the start of Stage 4
+- Change version numbering to match the commit count from
+  the git gcc-descr alias
+- Add gcc13-pr107678.patch to fix unwinding on aarch64 with
+  pointer signing.  [bsc#1206684]
+
+-------------------------------------------------------------------
+Tue Dec 27 11:13:16 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't rely on %usrmerged, set it based on standard %suse_version
+
+-------------------------------------------------------------------
+Thu Dec 22 08:31:14 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable PRU flavour for gcc13
+
+-------------------------------------------------------------------
 Mon Dec 19 14:59:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update floatn fixinclude pickup to check each header separately (bsc#1206480)

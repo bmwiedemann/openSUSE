@@ -16,10 +16,10 @@
 #
 
 
-%define pkgname cross-sparc-gcc13
-%define cross_arch sparcv9
-%define gcc_target_arch sparc-suse-linux
-%define gcc_icecream 1
+%define pkgname cross-pru-gcc13
+%define cross_arch pru
+%define gcc_target_arch pru
+%define gcc_target_newlib 1
 # nospeccleaner
 
 %define build_cp 0%{!?gcc_accel:1}

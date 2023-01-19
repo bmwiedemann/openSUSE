@@ -115,6 +115,7 @@ add_cross cross-hppa-gcc$base_ver-bootstrap hppa hppa-suse-linux %define gcc_lib
 add_cross cross-hppa-gcc$base_ver hppa hppa-suse-linux %define gcc_icecream 1
 add_newlib_cross cross-arm-none-gcc$base_ver arm-none arm-none-eabi
 add_newlib_cross cross-epiphany-gcc$base_ver epiphany epiphany-elf
+add_newlib_cross cross-pru-gcc$base_ver pru pru
 #add_newlib_cross cross-nds32le-gcc$base_ver nds32le nds32le-elf
 add_newlib_cross cross-riscv64-elf-gcc$base_ver riscv64 riscv64-elf
 #add_newlib_cross cross-rl78-gcc$base_ver rl78 rl78-elf

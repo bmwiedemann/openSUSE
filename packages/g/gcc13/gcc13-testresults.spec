@@ -1,7 +1,7 @@
 #
 # spec file for package gcc13-testresults
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 
 # nospeccleaner
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %define _slibdir  /%{_lib}
 %define slibdir   /lib
 %define slibdir64 /lib64
@@ -45,6 +45,7 @@
 %define _slibdir  %{_libdir}
 %define slibdir   %{_prefix}/lib
 %define slibdir64 %{_prefix}/lib64
+%define usrmerged 1
 %endif
 
 # Ada currently fails to build on a few platforms, enable it only
@@ -207,7 +208,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.0+git197351
+Version:        13.0.1+git5199
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -271,11 +272,6 @@ BuildRequires:  gcc-d
 %define hostsuffix -4.8
 BuildRequires:  gcc48-c++
 %endif
-%if 0%{?building_testsuite:1}
-# For building the libstdc++ API reference
-BuildRequires:  doxygen
-BuildRequires:  graphviz
-%endif
 %ifarch ia64
 BuildRequires:  libunwind-devel
 %endif
@@ -283,6 +279,7 @@ BuildRequires:  libunwind-devel
 BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
+BuildRequires:  timezone
 %if %{build_go}
 BuildRequires:  netcfg
 BuildRequires:  procps
@@ -388,6 +385,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
+Patch21:        gcc13-pr107678.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -526,6 +524,7 @@ ln -s newlib-4.2.0.20211231/newlib .
 %if %{suse_version} < 1550
 %patch19 -p1
 %endif
+%patch21 -p0
 %patch51
 %patch60 -p1
 %patch61
@@ -668,6 +667,7 @@ amdgcn-amdhsa,\
 	$ENABLE_CHECKING \
 	--disable-werror \
 	--with-gxx-include-dir=%{_prefix}/include/c++/%{gcc_dir_version} \
+	--with-libstdcxx-zoneinfo=%{_datadir}/zoneinfo \
 	--enable-ssp \
 	--disable-libssp \
 %if 0%{!?build_libvtv:1}

@@ -17,4 +17,38 @@
     <comment>- update floatn fixinclude pickup to check each header separately (bsc#1206480) (forwarded request 1043820 from dirkmueller)</comment>
     <requestid>1043900</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7f9634bfb735d5d49417476682262fe</srcmd5>
+    <version>13.0.1+git5199</version>
+    <time>1674143029</time>
+    <user>dimstar_suse</user>
+    <comment>- Configure external timezone database provided by the timezone
+  package.  Make libstdc++6 recommend timezone to get a fully
+  working std::chrono.  Install timezone when running the testsuite.
+- Remove dependence on doxygen and graphviz when building the
+  testsuite.  Those were used to build the libstdc++ API html
+  documentation but we stopped shipping that when Java support
+  was removed and nobody noticed.  Purge traces of the built
+  libstdc++6-gccN-doc package.
+- Package libhwasan_preinit.o on x86_64.
+
+- Update to GCC trunk head (r13-5199-g2f81164255bf0d)
+  * pulls changes up to the start of Stage 4
+- Change version numbering to match the commit count from
+  the git gcc-descr alias
+- Add gcc13-pr107678.patch to fix unwinding on aarch64 with
+  pointer signing.  [bsc#1206684]
+
+- Don't rely on %usrmerged, set it based on standard %suse_version
+
+- Enable PRU flavour for gcc13</comment>
+    <requestid>1058888</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cbd08d465fe5cdb7ecdd630e49d64153</srcmd5>
+    <version>13.0.1+git5199</version>
+    <time>1674143338</time>
+    <user>dimstar_suse</user>
+    <comment>Also package libhwasan_preinit.o on aarch64. Rapid-fix as discussed with richard over slack</comment>
+  </revision>
 </revisionlist>

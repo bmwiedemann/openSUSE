@@ -1,7 +1,7 @@
 #
 # spec file for package gcc13
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %define _slibdir  /%{_lib}
 %define slibdir   /lib
 %define slibdir64 /lib64
@@ -24,6 +24,7 @@
 %define _slibdir  %{_libdir}
 %define slibdir   %{_prefix}/lib
 %define slibdir64 %{_prefix}/lib64
+%define usrmerged 1
 %endif
 
 # Ada currently fails to build on a few platforms, enable it only
@@ -186,7 +187,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.0+git197351
+Version:        13.0.1+git5199
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -250,11 +251,6 @@ BuildRequires:  gcc-d
 %define hostsuffix -4.8
 BuildRequires:  gcc48-c++
 %endif
-%if 0%{?building_testsuite:1}
-# For building the libstdc++ API reference
-BuildRequires:  doxygen
-BuildRequires:  graphviz
-%endif
 %ifarch ia64
 BuildRequires:  libunwind-devel
 %endif
@@ -262,6 +258,7 @@ BuildRequires:  libunwind-devel
 BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
+BuildRequires:  timezone
 %if %{build_go}
 BuildRequires:  netcfg
 BuildRequires:  procps
@@ -367,6 +364,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
+Patch21:        gcc13-pr107678.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -760,6 +758,10 @@ Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}
 %if %{suse_version} < 1500
 Recommends:     libstdc++%{libstdcxx_sover}-pp = %{version}-%{release}
 %endif
+# The std::chrono timezone database is provided by timezone
+# (/usr/share/zoneinfo/tzdata.zi), without that the tzdb is empty and
+# will only provide UTC
+Recommends:     timezone
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}
 The standard C++ library, needed for dynamically linked C++ programs.
@@ -782,6 +784,10 @@ Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-32bit
 %if %{suse_version} < 1500
 Recommends:     libstdc++%{libstdcxx_sover}-pp-32bit = %{version}-%{release}
 %endif
+# The std::chrono timezone database is provided by timezone
+# (/usr/share/zoneinfo/tzdata.zi), without that the tzdb is empty and
+# will only provide UTC
+Recommends:     timezone
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit
 The standard C++ library, needed for dynamically linked C++ programs.
@@ -804,6 +810,10 @@ Conflicts:      %selfconflict libstdc++%{libstdcxx_sover}-64bit
 %if %{suse_version} < 1500
 Recommends:     libstdc++%{libstdcxx_sover}-pp-64bit = %{version}-%{release}
 %endif
+# The std::chrono timezone database is provided by timezone
+# (/usr/share/zoneinfo/tzdata.zi), without that the tzdb is empty and
+# will only provide UTC
+Recommends:     timezone
 
 %description -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-64bit
 The standard C++ library, needed for dynamically linked C++ programs.
@@ -1633,17 +1643,6 @@ The runtime library needed to run programs compiled with the
 
 %postun -n libvtv%{libvtv_sover}%{libvtv_suffix}-64bit -p /sbin/ldconfig
 
-%package -n libstdc++%{libstdcxx_sover}%{libdevel_suffix}-doc
-Summary:        Documentation for the GNU C++ standard library
-License:        GPL-3.0-or-later
-Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1120
-BuildArch:      noarch
-%endif
-
-%description -n libstdc++%{libstdcxx_sover}%{libdevel_suffix}-doc
-Extensive HTML documentation for the GNU C++ standard library.
-
 %package go
 Summary:        GNU Go Compiler
 License:        GPL-3.0-or-later
@@ -2026,6 +2025,7 @@ ln -s newlib-4.2.0.20211231/newlib .
 %if %{suse_version} < 1550
 %patch19 -p1
 %endif
+%patch21 -p0
 %patch51
 %patch60 -p1
 %patch61
@@ -2168,6 +2168,7 @@ amdgcn-amdhsa,\
 	$ENABLE_CHECKING \
 	--disable-werror \
 	--with-gxx-include-dir=%{_prefix}/include/c++/%{gcc_dir_version} \
+	--with-libstdcxx-zoneinfo=%{_datadir}/zoneinfo \
 	--enable-ssp \
 	--disable-libssp \
 %if 0%{!?build_libvtv:1}
@@ -3074,6 +3075,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %ifarch %hwasan_arch
 %versmainlib libhwasan.so
 %versmainlib libhwasan.a
+%versmainlib libhwasan_preinit.o
 %endif
 %ifarch %asan_arch %ubsan_arch %tsan_arch %lsan_arch %hwasan_arch
 %versmainlib libsanitizer.spec
