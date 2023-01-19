@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 12 08:43:17 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.052:
+  * Detect redirects with remote root (#336)
+  * Add json parsing to FolderSync task (#337)
+  * Redirect Current.iso when no nfs mount (#339)
+  * Improve sorting of files in JavaScript (#340)
+  * Redirect huge files (#342)
+  * Secure last_id for jobs monitoring stat (#341)
+
+-------------------------------------------------------------------
 Thu Dec 29 09:21:35 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.051:
