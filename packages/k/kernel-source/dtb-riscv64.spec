@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.6
+%define patchversion 6.1.7
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.1.6
+Version:        6.1.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g573f4a9
+Release:        <RELEASE>.g872045c
 %else
 Release:        0
 %endif
@@ -194,6 +194,15 @@ Requires(post): coreutils
 %description -n dtb-microchip
 Device Tree files for Microchip based riscv64 systems.
 
+%package -n dtb-renesas
+Summary:        Renesas based riscv64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-renesas
+Device Tree files for Renesas based riscv64 systems.
+
 %package -n dtb-sifive
 Summary:        SiFive based riscv64 systems
 Group:          System/Boot
@@ -233,7 +242,7 @@ DTC_FLAGS="$DTC_FLAGS -@"
 %endif
 
 cd $source/arch/riscv/boot/dts
-for dts in microchip/*.dts sifive/*.dts starfive/*.dts ; do
+for dts in microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -245,7 +254,7 @@ done
 %install
 
 cd pp
-for dts in microchip/*.dts sifive/*.dts starfive/*.dts ; do
+for dts in microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -261,6 +270,13 @@ done
 cd -
 
 %post -n dtb-microchip
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%post -n dtb-renesas
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
@@ -291,6 +307,17 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/microchip
 %{dtbdir}/microchip/*.dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-renesas -f dtb-renesas.list
+%else
+%files -n dtb-renesas
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/renesas
+%{dtbdir}/renesas/*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sifive -f dtb-sifive.list
