@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jan 16 22:16:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.19:
+  * Reading a non-existent file with commands 'e' or 'E' did set the
+    'modified' flag, which prevented a following 'e' command from
+    succeeding
+  * The long name of option '-s' has been changed to '--script'.
+    Option '-s' now only suppresses byte counts and the '!' prompt
+    as mandated by POSIX. It no longer suppresses diagnostic
+    messages written to stderr.
+  * The short name '-q' has been assigned to options '--quiet' and
+    '--silent'. Option '-q' now only suppresses diagnostic messages
+    written to stderr.
+  * The help message showing the line where a script error happened
+    when ed's input is from a regular file is now printed to stdout
+    instead of stderr because it is enabled by the 'H' command.
+  * Ed no longer processes file names for backslash escapes.
+  * It has been documented in the manual that address 0 is valid as
+    a starting point for searches so that '0;/RE/' can match the
+    regular expression RE in the first line of the buffer.
+  * It has been documented in the manual how to achieve the effect
+    of ex style '!' filtering with a sequence of commands.
+
+-------------------------------------------------------------------
 Sun Mar 20 21:35:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18:
