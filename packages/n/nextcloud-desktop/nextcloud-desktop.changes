@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:49:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.5
+  - do not assert when sharing to a circle in #5310
+  - [stable-3.6] Fix macOS shell integration class inits in #5311
+  - [stable-3.6] Drop dependency on Qt Quick Controls 1 in #5312
+  - [stable-3.6] Feature/allow forceoverrideurl via command line in #5332
+  - [stable-3.6] Fix typo in #5270
+  - [stable-3.6] check that we update local file mtime on changes from server in #5321
+  - [stable-3.6] fix regressions on pinState management when doing renames in #5333
+  - [stable-3.6] Always generate random initialization vector when uploading encrypted file in #5334
+  - [stable-3.6] Fix SyncEngineTest failure when localstate is destroyed. in #5336
+  - [stable-3.6] Bugfix/e2ee vulnerability empty metadatakeys in #5335
+
+-------------------------------------------------------------------
 Thu Dec  8 13:26:29 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.6.4

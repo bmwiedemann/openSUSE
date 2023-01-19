@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud-desktop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
