@@ -38,6 +38,10 @@ BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  llvm-devel
+%if 0%{?sle_version} >= 150400
+# Fix build with GCC11 on Backports SLE15-SP4/5 - Avoid to get -lstdc++ not found
+BuildRequires:  libstdc++6-devel-gcc11
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  python3

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 11:03:49 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add libstdc++6-devel-gcc11 to fix build with GCC11 on
+  Backports SLE15-SP4/5
+
+-------------------------------------------------------------------
 Tue Oct  4 13:03:09 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.1.0:
