@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20221227
+ExpandFlags: macroserial:20230119
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -149,6 +149,16 @@ Substitute: netcfg netcfg libnss_usrfiles2
   BuildFlags: useccache:webkit2gtk3:gtk3-soup2
   BuildFlags: useccache:webkit2gtk3:gtk4
 #%endif
+
+# 2023-01-19 - x86-64-vN hwcaps libraries can be built and will require proper HW support
+%ifarch x86_64
+Macros:
+%suse_build_hwcaps_libs \
+#!BuildTarget: x86_64_v3-linux,x86_64-linux \
+#!BuildConstraint: hardware:cpu:flag x86-64-v3 \
+%{nil}
+:Macros
+%endif
 
 # slsaprovenance - as described at https://slsa.dev/provenance/v0.2
 # slsaprovenance diabled on Apr 28 2022
