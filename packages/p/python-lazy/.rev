@@ -34,4 +34,19 @@
     <comment></comment>
     <requestid>895735</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ee32e24156c1ac867fcd8b4c669b8b2</srcmd5>
+    <version>1.5</version>
+    <time>1674143050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  * Allow type checkers to infer the type of a lazy attribute 
+  * Add Python 3.8-3.11 to tox.ini. Remove old Python versions
+  * Replace deprecated python setup.py test in tox.ini 
+  * Remove deprecated test_suite from setup.py 
+  * Move metadata to setup.cfg and add a pyproject.toml file 
+  * Include tests in sdist but not in wheel 
+- use .tar.gz instead of .zip for better compression ratio</comment>
+    <requestid>1059500</requestid>
+  </revision>
 </revisionlist>

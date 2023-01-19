@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global modname lazy
 Name:           python-lazy
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Lazy attributes for Python objects
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/stefanholek/lazy
-Source:         https://files.pythonhosted.org/packages/source/l/lazy/lazy-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/l/lazy/lazy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,6 +57,7 @@ endless.
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info
 
 %changelog

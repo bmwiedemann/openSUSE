@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 18 16:47:05 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.5
+  * Allow type checkers to infer the type of a lazy attribute 
+  * Add Python 3.8-3.11 to tox.ini. Remove old Python versions
+  * Replace deprecated python setup.py test in tox.ini 
+  * Remove deprecated test_suite from setup.py 
+  * Move metadata to setup.cfg and add a pyproject.toml file 
+  * Include tests in sdist but not in wheel 
+
+- use .tar.gz instead of .zip for better compression ratio
+
+-------------------------------------------------------------------
 Wed May 26 08:46:45 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
