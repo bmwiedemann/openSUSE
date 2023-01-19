@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>986457</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6ff69dc4ed596af2474cb1ac4e8a2ed8</srcmd5>
+    <version>0.0.3+git0.e0f73b9</version>
+    <time>1674143061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.3+git0.e0f73b9:
+  * Add properly scaled phone icon
+  * Fix up entries in index.theme (forwarded request 1059531 from mauriziogalli)</comment>
+    <requestid>1059534</requestid>
+  </revision>
 </revisionlist>

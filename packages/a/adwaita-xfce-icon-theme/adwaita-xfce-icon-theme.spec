@@ -1,7 +1,7 @@
 #
 # spec file for package adwaita-xfce-icon-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           adwaita-xfce-icon-theme
-Version:        0.0.2+git0.ee9b710
+Version:        0.0.3+git0.e0f73b9
 Release:        0
 Summary:        Icon theme for Xfce complementing Adwaita
 License:        GPL-2.0-only
