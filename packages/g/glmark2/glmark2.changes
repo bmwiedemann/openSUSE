@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jan 19 09:46:29 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230104:
+  * ResultsFile: Support storing results in an XML file
+  * ResultsFile: Support storing results in a CSV file
+  * Options,ResultsFile: Add option to set the results file
+  * Introduce infrastructure to support saving results to a file
+  * CanvasGeneric: Store individual info elements in separate strings
+  * MainLoop: Store indivitual result values in separate strings
+  * Scene: Remove trailing ':' from scene info string
+  * SceneTerrain: Silence unused variable warning
+  * NativeStateGBM: Lock and release the front buffer on flip
+  * MainLoop,Scene: Support reporting shader compilation time
+  * MainLoop,Scene: Add busy percentage in CPU time results
+  * MainLoop,Scene: Support reporting CPU time results
+  * Options: Introduce option to specify benchmark results to show
+  * Scene: Update elapsed times when a benchmark finishes
+  * Scene: Introduce struct to keep track of elapsed time
+  * Scene: Introduce infrastructure for more complex scene stats
+  * Scene: Move common preparation logic to Scene::prepare
+  * Scene: Introduce non-virtual methods to prepare and finish a scene for benchmark
+  * GLVisualConfig: Support specifying the config id in --visual-config
+  * libmatrix: Support prefix dependent input conversions from string
+  * GLStateEGL,GLStateGLX: Fail if no suitable config is found
+  * GLStateEGL,GLStateGLX: Don't limit the configs passed to our selection mechanism
+  * GLVisualConfig: Penalize configs with components smaller than requested
+
+-------------------------------------------------------------------
 Thu Nov 24 12:25:29 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20221116:

@@ -1,7 +1,7 @@
 #
 # spec file for package glmark2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015-2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           glmark2
-Version:        20221116
+Version:        20230104
 Release:        0
 Summary:        OpenGL 2.0 and ES 2.0 benchmark
 License:        GPL-3.0-only
