@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 18 13:43:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Make sure 32 bit work on 64 bit file systems
+  * Fix string parsing
+  * Remove tep_find_function{address}() from libtraceevent
+  * Fix output of raw prints
+  * Show migrate-disabled field
+
+-------------------------------------------------------------------
 Sat Dec 24 10:41:38 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to release 1.7.0
@@ -6,7 +16,6 @@ Sat Dec 24 10:41:38 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
     tep_find_function_info() - Returns not only the name of a function from its
                                address, but also where the function starts and
 			       its size.
-
     tep_kbuffer() - Returns the kbuffer parser for a tep handle.
   - Now handles cpumask() macro parsing.
   - Add SAME_AS_HOST for endian and long size to kbuffer_alloc()
