@@ -1,7 +1,7 @@
 #
 # spec file for package jetbrains-mono-fonts
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,18 +14,19 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define         fontname JetBrainsMono
 %global         fullversion %{version}
 
 Name:           jetbrains-mono-fonts
-Version:        2.242
+Version:        2.304
 Release:        0
 Summary:        JetBrains Mono: a typeface for developers
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://www.jetbrains.com/lp/mono
 Source:         https://github.com/JetBrains/JetBrainsMono/releases/download/v%{fullversion}/%{fontname}-%{fullversion}.zip
-# Source1:        https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/README.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -37,7 +38,6 @@ A typeface made for developers.
 Designer: Philipp Nurullin
 
 %prep
-# cp %{SOURCE1} .
 # Usually empty, but insert fixes here, if necessary
 
 %setup -cT
@@ -53,7 +53,6 @@ install -m0644 fonts/ttf/*.ttf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-# %doc README.md
 %license OFL.txt
 %{_ttfontsdir}
 

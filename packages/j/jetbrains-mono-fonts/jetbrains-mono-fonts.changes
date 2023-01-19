@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 18 15:57:14 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.304
+  * Added glyph alternates for l k r u m y g j t w f 
+  * Added Stylistic set 1 and 2
+  * Added full support for APL
+  * Updated Greek alphabet
+  * Different construction of italic e
+  * Added alternates for != !== == === ligatures
+  * Added full Double Struck alphabet 
+  * Contour polishing
+  * Made triple equal ligature === more spacious
+  * Added support for Udmurt language
+
+-------------------------------------------------------------------
 Tue Sep 21 17:34:43 UTC 2021 - Ruben Smidt <ruben@rsmidt.dev>
 
 - v2.242 Quick Fix (30.07.2021)
