@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 18 20:03:10 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.22.0:
+  * chore: disable choco step for now
+  * chore: add `ldflags`
+  * chore: add `goos` section
+  * chore: specify `choco` version
+  * chore: install `choco`
+  * chore: fix docker version
+  * Add choco section to GoReleaser
+  * Remove `atom` files
+  * refactor: remove outdated `HasUpdate` check
+  * Allow for more generic errors in loadPkg (#543)
+  * Fix dic count
+  * fix: add `SM` to metric
+  * docs: update year
+  * chore: fix excutable name
+  * feat: install package from local directory (#534)
+  * chore: use `docker buildx`
+
+-------------------------------------------------------------------
 Wed Dec 14 19:43:59 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.21.3:

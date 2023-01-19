@@ -1,7 +1,7 @@
 #
 # spec file for package vale
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           vale
-Version:        2.21.3
+Version:        2.22.0
 Release:        0
 Summary:        CLI tool to lint prose text with syntax awareneness and extensible markup format support
 License:        MIT

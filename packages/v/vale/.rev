@@ -114,4 +114,28 @@
   * fix: don't treat `span` as a block (forwarded request 1042990 from jfkw)</comment>
     <requestid>1042991</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a903da2c194eacc2a9e2abf3f5e2648</srcmd5>
+    <version>2.22.0</version>
+    <time>1674143045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.22.0:
+  * chore: disable choco step for now
+  * chore: add `ldflags`
+  * chore: add `goos` section
+  * chore: specify `choco` version
+  * chore: install `choco`
+  * chore: fix docker version
+  * Add choco section to GoReleaser
+  * Remove `atom` files
+  * refactor: remove outdated `HasUpdate` check
+  * Allow for more generic errors in loadPkg (#543)
+  * Fix dic count
+  * fix: add `SM` to metric
+  * docs: update year
+  * chore: fix excutable name
+  * feat: install package from local directory (#534)
+  * chore: use `docker buildx` (forwarded request 1059441 from jfkw)</comment>
+    <requestid>1059449</requestid>
+  </revision>
 </revisionlist>
