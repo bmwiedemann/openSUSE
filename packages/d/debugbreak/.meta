@@ -1,0 +1,5 @@
+<package name="debugbreak" project="openSUSE:Factory">
+  <title>debugbreak</title>
+  <description>debugbreak.h allows you to put breakpoints in your C/C++ code with a call to debug_break():</description>
+  <devel project="devel:libraries:c_c++" package="debugbreak"/>
+</package>
