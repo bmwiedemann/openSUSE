@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 19 09:15:10 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Drop patch big-endian.patch, already in upstream since 10.87.00
+
+-------------------------------------------------------------------
 Sun Sep 18 09:15:29 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - ppmforge-fix-overflow.patch: Fix arithmetic overflow in ppmforge

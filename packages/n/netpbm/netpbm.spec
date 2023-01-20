@@ -1,7 +1,7 @@
 #
 # spec file for package netpbm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,8 +43,6 @@ Patch4:         %{name}-gcc-warnings.patch
 Patch5:         makeman-py3.patch
 # PATCH-FIX-UPSTREAM fix bad use of plain char
 Patch6:         signed-char.patch
-# PATCH-FIX-UPSTREAM fix dependency on byte order
-Patch7:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch8:         netpbm-disable-jasper.patch
 # PATCH-FIX-UPSTREAM fix arithmetic overflow in ppmforge (https://sourceforge.net/p/netpbm/code/4428/)
