@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Jan 19 17:47:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * Fix Python 2 compatibility
+  * Fix iteration over deep directories
+  * Relax some error checking to allow non-standards-compliant ISOs to be read
+  * Fix year rollover in the Australia timezone
+  * Fix the use of inspect for modern Python 3
+  * Add in pycdlib-explorer functionality for modify-in-place
+  * Add full support for Windows raw block devices
+  * Fix UDF entries for large files
+  * Allow some UDF errors to print a warning instead of throwing
+  * Search for UDF anchors in additional locations
+  * Fix UDF partition map parsing
+  * Several fixes to work with raw Windows devices
+  * Fix ISOs with missing Apple partition map entries
+  * Relax restrictions on dates hundredthsofseconds
+  * Fix MBR boot code sector size
+  * More UDF cleanups
+  
+-------------------------------------------------------------------
+Sun Jul 18 15:41:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Add many more unit tests to get test coverage > 95%
+  * Preserve boot record contents when moving it
+  * Make sure to allocate an extent for the boot_catalog in all cases
+  * Fix deep directory depths with ISO level 4
+  * Rewrite XA handling
+  * Improve performance of filename checking
+  * Add support for the AL record
+  * Much improved IsoHybrid support for EFI/GTP
+  * Fix large, multi-extent files
+  * Fix support for very large ISOs
+  * Remove the unused and unloved pycdlib-compare tool
+  * Fix ISO9660 date hundredths of second
+  * Much improved support for UDF
+  * Switch to read-only open by default for the open() call
+  * Fixes to work on big-endian machines
+  * APIs added:
+    * file_mode
+  * APIs removed:
+    None
+  * APIs deprecated:
+    None
+  * Addition of "facades" for using PyCdlib in simpler ways
+  * Make iso_path optional for UDF when using add_symlink
+  * Make iso_path optional when using rm_file()
+  * Make iso_path optional when using add_fp()/add_file()
+  * Create symlinks appropriately in pycdlib-extract-files
+  * Fix copy_data on macOS
+  * Support more of the UDF standard
+  * Cleanup documentation
+  * Allow UEFI El Torito identifier
+  * Add an 'auto' mode for pycdlib-extract-files
+  * Add an '-extract-to' option for pycdlib-extract-files
+  * APIs added:
+    * get_iso9660_facade
+    * get_joliet_facade
+    * get_rock_ridge_facade
+    * get_udf_facade
+    * has_rockridge
+    * has_joliet
+    * has_udf
+  * APIs removed:
+    None
+  * APIs deprecated:
+    None 
+
+-------------------------------------------------------------------
+Fri Jul 12 04:34:57 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.7.0
