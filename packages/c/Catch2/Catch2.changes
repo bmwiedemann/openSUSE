@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 18 07:33:34 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.1:
+  * Fix the reworked decomposer to work with older (pre 9) GCC
+    versions (gh#catchorg/Catch2#2571).
+- Changes from version 3.2.0:
+  * Added `CATCH_CONFIG_GETENV` compile-time toggle
+  * (gh#catchorg/Catch2#2562).
+  * Added support for more Bazel test environment variables.
+  * Bunch of small tweaks and improvements in reporters.
+  * Added support for asserting on types that can only be compared
+  * with literal 0 (gh#catchorg/Catch2#2555).
+  * Simplified internals of matcher related macros.
+  * Cleaned out some warnings and static analysis issues.
+  * Fixed serialization of test filters so the output roundtrips.
+  * Catch2's build no longer leaks `-ffile-prefix-map` setting  to
+  * dependees (gh#catchorg/Catch2#2533).
+
+-------------------------------------------------------------------
 Sat Sep 24 08:01:35 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.1.0
