@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 20 09:55:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.39.1:
+  * switch build image to 1.19.5 (#684)
+  * Bump docker/build-push-action from 3.2.0 to 3.3.0 (#682)
+  * Bump github/codeql-action from 2.1.37 to 2.1.38 (#683)
+
+-------------------------------------------------------------------
 Sat Jan 14 10:05:55 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.39.0:
