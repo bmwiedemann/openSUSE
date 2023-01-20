@@ -985,4 +985,19 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Replace deprecated std::mem_fn with lambdas</comment>
     <requestid>1031369</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>6456b2254014f2d5d8e191fb410254b7</srcmd5>
+    <version>4.1.1</version>
+    <time>1674232684</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.1.1
+  - Mount user specific binddirs last: Prevously the internal mounts would potentially overwrite user bind mounts [boo#1205011]
+  - selinux: Relabel shadowed /var files during update to make sure they don't interfere with the update [boo#1205937]
+  - Clean up /var/lib/overlay more aggressively [boo#1206947]
+  - tukit: Merge /etc overlay into parent if --discard is used together with --continue - previously the files were incorrectly always merged with the currently running system
+  - status: do not execute the status command if experimental
+  - Don't delete created mount point dirs any more
+  - Small code optimizations</comment>
+    <requestid>1059525</requestid>
+  </revision>
 </revisionlist>
