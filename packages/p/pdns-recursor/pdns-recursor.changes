@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 20 12:32:44 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.8.1
+  * Avoid unbounded recursion when retrieving DS records from some
+    misconfigured domains. (bsc#1207342, CVE-2023-22617)
+
+-------------------------------------------------------------------
 Mon Dec 12 13:20:47 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.8.0 with these major changes:

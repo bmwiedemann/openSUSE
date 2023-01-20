@@ -717,4 +717,14 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     servers.</comment>
     <requestid>1042523</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f4df16348e267409f7005051f3bb38ea</srcmd5>
+    <version>4.8.1</version>
+    <time>1674232793</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.1
+  * Avoid unbounded recursion when retrieving DS records from some
+    misconfigured domains. (bsc#1207342, CVE-2023-22617)</comment>
+    <requestid>1059961</requestid>
+  </revision>
 </revisionlist>
