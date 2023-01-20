@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ BuildArch:      i686
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        102.6.0
+Version:        102.7.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
