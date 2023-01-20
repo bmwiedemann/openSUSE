@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jan 15 21:05:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.9:
+  * Add new multi-word misspellings to the dictionary.
+  * Fix printing PyEnchant version.
+  * Improve mwic4po:
+    + Improve error handling.
+    + Use uppercase for CLI metavar.
+  * Drop support for Python < 3.6.
+  * Update Docutils homepage URL.
+  * Make it possible use pytest as the test harness.
+
+-------------------------------------------------------------------
 Mon Mar 30 16:35:53 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.7.8:

@@ -1,7 +1,7 @@
 #
 # spec file for package mwic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?license: %global license %doc}
 Name:           mwic
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        A spellchecker with grouping support
 License:        MIT
