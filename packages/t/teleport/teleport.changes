@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jan 20 10:08:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 11.2.2:
+  * Release 11.2.2 (#20363)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#20375)
+  * Remove invalid commands on login with ssh port (#20364)
+  * spell fixes (#20279)
+  * [v11] Add Connect docs about linking tsh (#20029)
+  * Validate AWS regions when configuring the AWSMatcher (#20288)
+  * Add redirects to the new Audit Events section (#19553) (#19968)
+  * [v11] Point at source version in docs rather then generic master. (#20303)
+  * [v11] [Docs] Use gravitational.com to download checksums. (#20282)
+  * Added binary signing for darwin tarballs - branch/v11 backport (#20305)
+  * [v11] Machine ID and GitHub Actions docs copy improvements (#20291)
+  * Add mysql conn tester (#20177) (#20230)
+  * fix: Always dial to root cluster for single-use certificates (#20238)
+  * [v11] Set extra proxy headers in all `tsh` HTTP requests (#20071)
+  * [v11] Updates to cloud getting started (#20256)
+  * Update Rust to 1.66.1 (#20201)
+  * Bump Buf to v1.12.0 (#20194)
+  * [v11] Stop heartbeating during graceful shutdown (#20225)
+  * [v11] docs: add overview of session recording (#19934)
+  * [v11] Use pre-generated RSA keys in tests (#19448)
+  * [v11] Document GitHub Actions and Kubernetes (#20179)
+  * fixes ldap filter example (#20223)
+  * [v11] Update Linux install package link for Cloud (#20210)
+  * Grant the built-in kube role semaphore permissions (#20174)
+  * Adds a post-delete hook to delete the `kube-agent` state secrets (#20169)
+  * Stablize RemoteConnCleanup (#20048) (#20086)
+  * [v11] Change the application access authentication flow (#20165)
+  * Bump cloud version to 11.2.1 (#20157)
+  * [v11] capture additional prehog events (#20114)
+  * Ensure Proxy uses cache for periodic operations (#20153)
+  * Add kube and windows_desktop tctl tokens add handling (#20139)
+  * Added 01/12 Upcoming Releases Update (#20137)
+  * [v11] feat: add login rule service proto definition  (#20112)
+  * [v11] Trim error messages on UserLogin events (#20125)
+  * [v11] Fix `certificate signed by unknown authority` after reconciling a dynamic RDS resource (#20099)
+  * Update to 11.2.1 for docs (#20117)
+  * Fix CertificateInvalidError in formatCertError (#20052)
+
+-------------------------------------------------------------------
 Thu Jan 12 06:03:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 11.2.1:
