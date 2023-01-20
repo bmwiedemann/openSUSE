@@ -1,0 +1,23 @@
+From 08bc7a5c35f32e2348ec8002b195b3e4f630fd4a Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 16 Jan 2023 18:48:38 +0100
+Subject: [PATCH] Don't search for KSane::Core in KF5SaneConfig
+
+It's not a public dependency, so it doesn't need to be searched.
+---
+ KF5SaneConfig.cmake.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/KF5SaneConfig.cmake.in b/KF5SaneConfig.cmake.in
+index 5d1b995..67f6f04 100644
+--- a/KF5SaneConfig.cmake.in
++++ b/KF5SaneConfig.cmake.in
+@@ -2,5 +2,4 @@
+ 
+ include(CMakeFindDependencyMacro)
+ find_dependency(Qt@QT_MAJOR_VERSION@Widgets "@REQUIRED_QT_VERSION@")
+-find_dependency(KSaneCore "@RELEASE_SERVICE_VERSION@")
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5SaneTargets.cmake")
+-- 
+2.39.0
+

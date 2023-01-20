@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 17 21:08:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid -devel depending on KSaneCore:
+  * 0001-Don-t-search-for-KSane-Core-in-KF5SaneConfig.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 10:21:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.1
