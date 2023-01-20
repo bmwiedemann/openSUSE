@@ -86,4 +86,17 @@
     <comment></comment>
     <requestid>1006757</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c5b62e89fa5653339776fe889a49ab2c</srcmd5>
+    <version>1.10</version>
+    <time>1674232682</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by Plasma 5.27
+
+- Update to 1.10:
+  * Add destructor for keystate interface
+  * Add a protocol to order the outputs for plasmashell to assign
+    desktop environment components to a specific screen (forwarded request 1059493 from iDesmI)</comment>
+    <requestid>1059498</requestid>
+  </revision>
 </revisionlist>

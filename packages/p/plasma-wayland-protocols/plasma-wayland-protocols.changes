@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan 19 08:28:56 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 1.10:
+  * Add destructor for keystate interface
+  * Add a protocol to order the outputs for plasmashell to assign
+    desktop environment components to a specific screen
+
+-------------------------------------------------------------------
 Wed Sep 28 18:44:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.9.0:
