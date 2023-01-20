@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 19 07:30:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.1.30:
+  * many JSON printer/parser fixes and improvements
+  * unintentionally large library size reduced
+  * thread safety improvements
+  * big-endian compatibility fix
+  * uncrustify updated
+  * lots of other fixes and improvements
+
+-------------------------------------------------------------------
 Sat Dec  3 10:12:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.4:
