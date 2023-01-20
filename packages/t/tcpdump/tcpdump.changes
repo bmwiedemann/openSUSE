@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 17 08:18:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.99.3:
+  * Updated printers:
+      PTP: Use the proper values for the control field and print un-allocated
+        values for the message field as "Reserved" instead of "none".
+  * Source code:
+      smbutil.c: Replace obsolete function call (asctime)
+  *  Documentation:
+      Reformat the installation notes (INSTALL.txt) in Markdown.
+      Convert CONTRIBUTING to Markdown.
+      CONTRIBUTING.md: Document the use of "protocol: " in a commit summary.
+      Add a README file for NetBSD.
+      Fix CMake build to set man page section numbers in tcpdump.1
+
+-------------------------------------------------------------------
 Sun Jan  1 12:50:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.99.2:

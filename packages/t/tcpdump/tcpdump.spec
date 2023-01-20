@@ -18,7 +18,7 @@
 
 %define min_libpcap_version 1.10.0
 Name:           tcpdump
-Version:        4.99.2
+Version:        4.99.3
 Release:        0
 Summary:        A Packet Sniffer
 License:        BSD-3-Clause
