@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 17 16:32:12 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Control the collection of lvm grains via config (bsc#1204939)
+
+- Added:
+  * control-the-collection-of-lvm-grains-via-config.patch
+
+-------------------------------------------------------------------
 Thu Jan 12 15:49:38 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Allow entrypoint compatibility for "importlib-metadata>=5.0.0" (bsc#1207071)

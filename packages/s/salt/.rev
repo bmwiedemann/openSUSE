@@ -2184,4 +2184,14 @@ let build start it or we will get libvirt errors.
   * allow-vendor-change-option-with-zypper.patch</comment>
     <requestid>1058037</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>8e959f559e600b8ec96a86d95dc80b0d</srcmd5>
+    <version>3005.1</version>
+    <time>1674232689</time>
+    <user>dimstar_suse</user>
+    <comment>- Control the collection of lvm grains via config (bsc#1204939)
+- Added:
+  * control-the-collection-of-lvm-grains-via-config.patch</comment>
+    <requestid>1059578</requestid>
+  </revision>
 </revisionlist>

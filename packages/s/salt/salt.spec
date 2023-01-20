@@ -301,6 +301,8 @@ Patch76:       use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
 Patch77:       fixes-for-python-3.10-502.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62854
 Patch78:       allow-entrypoint-compatibility-for-importlib-metadat.patch
+# PATCH-FIX-OPENSUSE: https://github.com/openSUSE/salt/pull/571
+Patch79:       control-the-collection-of-lvm-grains-via-config.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
