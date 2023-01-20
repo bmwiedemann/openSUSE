@@ -9,6 +9,7 @@ Author: Hans Petter Jansson <hpj@cl.no>
     Patch 16: nss-fips-rsa-keygen-strictness.patch
 
 diff --git a/lib/freebl/mpi/mpprime.c b/lib/freebl/mpi/mpprime.c
+index b757150..41d08b1 100644
 --- a/lib/freebl/mpi/mpprime.c
 +++ b/lib/freebl/mpi/mpprime.c
 @@ -14,6 +14,8 @@
@@ -20,7 +21,7 @@ diff --git a/lib/freebl/mpi/mpprime.c b/lib/freebl/mpi/mpprime.c
  #define SMALL_TABLE 0 /* determines size of hard-wired prime table */
  
  #define RANDOM() rand()
-@@ -451,6 +453,25 @@
+@@ -465,6 +467,25 @@ mpp_make_prime_ext_random(mp_int *start, mp_size nBits, mp_size strong, mpp_rand
      } else
          num_tests = 50;
  
@@ -47,6 +48,7 @@ diff --git a/lib/freebl/mpi/mpprime.c b/lib/freebl/mpi/mpprime.c
          --nBits;
      MP_CHECKOK(mpl_set_bit(start, nBits - 1, 1));
 diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
+index 2b8a3bf..8d40d11 100644
 --- a/lib/freebl/rsa.c
 +++ b/lib/freebl/rsa.c
 @@ -16,11 +16,13 @@
@@ -61,9 +63,9 @@ diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
  #include "blapii.h"
 +#include "fips.h"
  
- /*
- ** Number of times to attempt to generate a prime (p or q) from a random
-@@ -143,11 +145,24 @@
+ /* The minimal required randomness is 64 bits */
+ /* EXP_BLINDING_RANDOMNESS_LEN is the length of the randomness in mp_digits */
+@@ -149,11 +151,24 @@ rsa_build_from_primes(const mp_int *p, const mp_int *q,
              err = mp_invmod(d, &phi, e);
          } else {
              err = mp_invmod(e, &phi, d);
@@ -90,7 +92,7 @@ diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
      if (err != MP_OKAY) {
          if (err == MP_UNDEF) {
              PORT_SetError(SEC_ERROR_NEED_RANDOM);
-@@ -280,10 +295,12 @@
+@@ -286,10 +301,12 @@ RSA_NewKey(int keySizeInBits, SECItem *publicExponent)
      mp_int q = { 0, 0, 0, NULL };
      mp_int e = { 0, 0, 0, NULL };
      mp_int d = { 0, 0, 0, NULL };
@@ -104,7 +106,7 @@ diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
      int prerr = 0;
      RSAPrivateKey *key = NULL;
      PLArenaPool *arena = NULL;
-@@ -301,11 +318,40 @@
+@@ -307,11 +324,40 @@ RSA_NewKey(int keySizeInBits, SECItem *publicExponent)
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          goto cleanup;
      }
@@ -149,7 +151,7 @@ diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
      }
  #endif
  
-@@ -323,12 +369,7 @@
+@@ -329,12 +375,7 @@ RSA_NewKey(int keySizeInBits, SECItem *publicExponent)
      key->arena = arena;
      /* length of primes p and q (in bytes) */
      primeLen = keySizeInBits / (2 * PR_BITS_PER_BYTE);
@@ -163,7 +165,7 @@ diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
      /* 3.  Set the version number (PKCS1 v1.5 says it should be zero) */
      SECITEM_AllocItem(arena, &key->version, 1);
      key->version.data[0] = 0;
-@@ -339,13 +380,64 @@
+@@ -345,13 +386,64 @@ RSA_NewKey(int keySizeInBits, SECItem *publicExponent)
          PORT_SetError(0);
          CHECK_SEC_OK(generate_prime(&p, primeLen));
          CHECK_SEC_OK(generate_prime(&q, primeLen));
@@ -229,7 +231,7 @@ diff --git a/lib/freebl/rsa.c b/lib/freebl/rsa.c
          /* Attempt to use these primes to generate a key */
          rv = rsa_build_from_primes(&p, &q,
                                     &e, PR_FALSE, /* needPublicExponent=false */
-@@ -368,7 +460,9 @@
+@@ -374,7 +466,9 @@ cleanup:
      mp_clear(&q);
      mp_clear(&e);
      mp_clear(&d);

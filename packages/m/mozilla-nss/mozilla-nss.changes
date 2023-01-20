@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jan 15 20:25:25 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.86
+  * bmo#1803190 - conscious language removal in NSS
+  * bmo#1794506 - Set nssckbi version number to 2.60
+  * bmo#1803453 - Set CKA_NSS_SERVER_DISTRUST_AFTER and
+                  CKA_NSS_EMAIL_DISTRUST_AFTER for 3
+                  TrustCor Root Certificates
+  * bmo#1799038 - Remove Staat der Nederlanden EV Root CA from NSS
+  * bmo#1797559 - Remove EC-ACC root cert from NSS
+  * bmo#1794507 - Remove SwissSign Platinum CA - G2 from NSS
+  * bmo#1794495 - Remove Network Solutions Certificate Authority
+  * bmo#1802331 - compress docker image artifact with zstd
+  * bmo#1799315 - Migrate nss from AWS to GCP
+  * bmo#1800989 - Enable static builds in the CI
+  * bmo#1765759 - Removing SAW docker from the NSS build system
+  * bmo#1783231 - Initialising variables in the rsa blinding code
+  * bmo#320582 - Implementation of the double-signing of the message
+                 for ECDSA
+  * bmo#1783231 - Adding exponent blinding for RSA.
+
+-------------------------------------------------------------------
 Mon Dec  5 13:32:45 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.85
