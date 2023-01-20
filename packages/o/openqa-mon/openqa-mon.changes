@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 13 09:29:18 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.26
+  - Many revtui improvements
+  - Add experimental support for RabbitMQ in openqa-mon
+  - openqa-mq supports connecting to arbitrary servers
+  - Many small bugfixes
+
+-------------------------------------------------------------------
 Fri Dec  3 09:51:07 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to upstream version 0.25

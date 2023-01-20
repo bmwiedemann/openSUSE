@@ -31,4 +31,12 @@
     <comment>Update to version 0.25 (forwarded request 935429 from ph03nix)</comment>
     <requestid>936125</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bba05f79b6f2a699f82d9ce3d5555127</srcmd5>
+    <version>0.26</version>
+    <time>1674232739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26 (forwarded request 1059878 from jfkw)</comment>
+    <requestid>1059879</requestid>
+  </revision>
 </revisionlist>

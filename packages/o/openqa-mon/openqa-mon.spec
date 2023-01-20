@@ -1,7 +1,7 @@
 #
 # spec file for package openqa-mon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           openqa-mon
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        CLI monitoring utility for openQA
 License:        GPL-3.0-or-later
 URL:            https://github.com/grisu48/openqa-mon/
 Source:         openqa-mon-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.14
+BuildRequires:  golang-packaging
 %{go_nostrip}
 
 %description
@@ -43,7 +43,6 @@ install -Dm 755 openqa-mon %{buildroot}/%{_bindir}/openqa-mon
 install -Dm 755 openqa-mq %{buildroot}/%{_bindir}/openqa-mq
 install -Dm 755 openqa-revtui %{buildroot}/%{_bindir}/openqa-revtui
 install -Dm 644 doc/openqa-mon.8 %{buildroot}/%{_mandir}/man8/openqa-mon.8
-
 
 %files
 %doc README.md
