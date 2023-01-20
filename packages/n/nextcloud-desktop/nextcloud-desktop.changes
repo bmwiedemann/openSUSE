@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 20 10:17:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.6
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex" 33f3975
+- Drop Fix_3.6.5_Language_Bug_#5339.patch, because now in upstream.
+
+-------------------------------------------------------------------
+Thu Jan 19 16:50:38 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add patch Fix_3.6.5_Language_Bug_#5339.patch.
+
+-------------------------------------------------------------------
 Thu Jan 19 12:49:14 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.6.5
