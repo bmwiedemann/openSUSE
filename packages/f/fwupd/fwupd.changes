@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 18 17:13:29 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix error generating grub.cfg when an update is available.
+  + uefi-capsule-Do-not-call-grub2-probe-without-argumen.patch
+
+-------------------------------------------------------------------
 Wed Jan  4 08:43:32 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.9:

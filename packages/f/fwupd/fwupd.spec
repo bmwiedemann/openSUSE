@@ -55,6 +55,8 @@ Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 Patch3:         harden_fwupd-offline-update.service.patch
 # PATCH-FEATURE-OPENSUSE harden_fwupd-refresh.service.patch -- Harden services
 Patch4:         harden_fwupd-refresh.service.patch
+# PATCH_FIX_UPSTREAM uefi-capsule-Do-not-call-grub2-probe-without-argumen.patch -- https://github.com/fwupd/fwupd/issues/5424
+Patch5:         uefi-capsule-Do-not-call-grub2-probe-without-argumen.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
