@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec 28 12:12:49 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus-1 system.d conf file to /usr (bsc#1206757)
+
+-------------------------------------------------------------------
 Sat Mar 12 17:25:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.16:
