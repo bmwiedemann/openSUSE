@@ -281,8 +281,6 @@
     <package name="cepces-certmonger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="cepces-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="certmonger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="cervisia" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="cervisia-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="checkmedia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="cheese" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -298,7 +296,6 @@
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clang15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="clang15-doc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1285,8 +1282,6 @@
     <package name="ktnef-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktouch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="ktouch-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kturtle" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kturtle-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kubrick" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kubrick-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kuserfeedback-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5012,10 +5007,6 @@
     <package name="libbrotlidec1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbz2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbz2-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libc++-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libc++1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libc++abi-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libc++abi1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcairo2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcanberra-gtk0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcanberra-gtk2-module-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

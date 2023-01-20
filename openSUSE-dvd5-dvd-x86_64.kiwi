@@ -289,8 +289,6 @@
       <repopackage name="cepces-certmonger"/>
       <repopackage name="cepces-selinux"/>
       <repopackage name="certmonger"/>
-      <repopackage name="cervisia"/>
-      <repopackage name="cervisia-lang"/>
       <repopackage name="checkmedia"/>
       <repopackage name="checkpolicy"/>
       <repopackage name="cheese"/>
@@ -306,7 +304,6 @@
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
       <repopackage name="clang15"/>
-      <repopackage name="clang15-doc"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1335,8 +1332,6 @@
       <repopackage name="ktnef-lang"/>
       <repopackage name="ktouch"/>
       <repopackage name="ktouch-lang"/>
-      <repopackage name="kturtle"/>
-      <repopackage name="kturtle-lang"/>
       <repopackage name="kubrick"/>
       <repopackage name="kubrick-lang"/>
       <repopackage name="kuserfeedback-imports"/>
@@ -1490,10 +1485,6 @@
       <repopackage name="libbz2-1"/>
       <repopackage name="libbz2-1-32bit" arch="x86_64"/>
       <repopackage name="libbz2-devel" arch="x86_64"/>
-      <repopackage name="libc++-devel" arch="x86_64"/>
-      <repopackage name="libc++1" arch="x86_64"/>
-      <repopackage name="libc++abi-devel" arch="x86_64"/>
-      <repopackage name="libc++abi1" arch="x86_64"/>
       <repopackage name="libcaca0"/>
       <repopackage name="libcacard0"/>
       <repopackage name="libcairo-gobject2"/>
