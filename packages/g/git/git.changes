@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 17 19:13:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.39.1, fixing two security issues that could allow remote
+  code execution when accessing specially crafted repositories:
+  * CVE-2022-41903: log format integer overflow boo#1207033
+  * CVE-2022-23521: gitattributed parsing integer overflow
+    boo#1207032
+
+-------------------------------------------------------------------
 Thu Dec 15 12:01:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be

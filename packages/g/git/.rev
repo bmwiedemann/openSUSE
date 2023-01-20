@@ -2571,4 +2571,16 @@ git 2.12.3
   used</comment>
     <requestid>1043115</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>70cd6d534a37a31c723d3013e1a1f4b3</srcmd5>
+    <version>2.39.1</version>
+    <time>1674232634</time>
+    <user>dimstar_suse</user>
+    <comment>- git 2.39.1, fixing two security issues that could allow remote
+  code execution when accessing specially crafted repositories:
+  * CVE-2022-41903: log format integer overflow boo#1207033
+  * CVE-2022-23521: gitattributed parsing integer overflow
+    boo#1207032</comment>
+    <requestid>1059326</requestid>
+  </revision>
 </revisionlist>
