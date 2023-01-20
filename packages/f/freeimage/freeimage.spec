@@ -1,7 +1,7 @@
 #
 # spec file for package freeimage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,9 @@ Patch5:         CVE-2019-12211_2019-12213.patch
 Patch6:         bigendian.patch
 # PATCH-FIX-UPSTREAM: compile with libraw 0.20.0 - https://734724.bugs.gentoo.org/attachment.cgi?id=651956
 Patch7:         libraw_0_20.patch
+Patch8:         libraw_0_21.patch
 # build with openexr3
-Patch8:         freeimage-openexr3.patch
+Patch9:         freeimage-openexr3.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  jxrlib-devel
