@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan  4 11:50:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- LegacyX86: unlike other ports, i586 does have a valid non-oss
+  repo. Do not filter it out (related to boo#1206406).
+- 20230104
+
+-------------------------------------------------------------------
 Mon Dec 12 13:35:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Define i586 as an external port: openSUSE:Factory is giving up on
