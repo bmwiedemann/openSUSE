@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 19 11:56:26 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.3:
+  * EAP dissector crash.
+  * NFS dissector memory leak.
+  * Dissection engine crash.
+  * GNW dissector crash.
+  * iSCSI dissector crash.
+  * Multiple dissector excessive loops.
+  * TIPC dissector crash.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.3.html
+
+-------------------------------------------------------------------
 Thu Dec  8 07:55:00 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.2:
