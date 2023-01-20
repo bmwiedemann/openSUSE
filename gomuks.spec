@@ -1,7 +1,7 @@
 #
 # spec file for package gomuks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           gomuks
-Version:        0.2.3
+Version:        0.3.0
 Release:        0
 Summary:        A terminal Matrix client written in Go
 License:        AGPL-3.0-only
-URL:            https://maunium.net/go/gomuks
+URL:            https://github.com/tulir/gomuks
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  go >= 1.14
+BuildRequires:  go >= 1.13
 BuildRequires:  go-md2man
-BuildRequires:  golang-github-kr-pty
 BuildRequires:  golang-packaging
 BuildRequires:  olm-devel
 BuildRequires:  pkgconfig
@@ -45,18 +44,11 @@ A terminal Matrix client written in Go using mautrix and mauview.
 Basic usage is possible, but expect bugs and missing features.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a1
 
 %build
-export VERSION=%{version}
-export COMMIT=%{commit}
-export CGO_ENABLED=1
-go build \
-   -mod=vendor \
-   -buildmode=pie \
-   -ldflags "-s -w -X main.version=$VERSION" \
-   -o %{name} ;
+export FZF_VERSION=%{version} FZF_REVISION=tarball
+go build -v -mod=vendor -buildmode=pie
 
 %install
 # Install the binary.

@@ -1,22 +1,10 @@
 <revisionlist>
   <revision rev="1" vrev="1">
-    <srcmd5>d4780ac7454784a7eac0cabf63956331</srcmd5>
-    <version>0.2.3</version>
-    <time>1614274053</time>
-    <user>RBrownSUSE</user>
-    <comment>Hello, I would like to submit my package to openSUSE:Factory.
-
-gomuks is a TUI Matrix client written in Go. It's fairly promising and I have
-been maintaining this package in my home project for a number of months -
-it's picked up a number of users.
-
-Please tell me if I've done something wrong with my package, as this is my
-first time submitting to Factory.
-
-Thanks in advance!
-
-Best
-Lawrence</comment>
-    <requestid>874738</requestid>
+    <srcmd5>37f80c01de5146f01a2722cf6d8b0e14</srcmd5>
+    <version>0.3.0</version>
+    <time>1674232743</time>
+    <user>dimstar_suse</user>
+    <comment>gomuks</comment>
+    <requestid>1059907</requestid>
   </revision>
 </revisionlist>

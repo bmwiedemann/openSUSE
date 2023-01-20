@@ -1,3 +1,64 @@
+-------------------------------------------------------------------
+Wed Jan 18 07:11:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Switch to service for tarball and vendor tarball creation
+- Update to version 0.3.0:
+  * Bumped minimum Go version to 1.18.
+    Switched from /r0 to /v3 paths everywhere.
+    The new v3 paths are implemented since Synapse 1.48, Dendrite 0.6.5,
+    and Conduit 0.4.0. Servers older than these are no longer supported.
+  * Added config flags for backspace behavior.
+  * Added /rainbownotice command to send a rainbow as a m.notice message.
+  * Added support for editing messages in an external editor.
+  * Added arrow key support for navigating results in fuzzy search.
+  * Added initial support for configurable keyboard shortcuts #328.
+  * Added support for shortcodes without tab-completion in /react #354.
+  * Added background color to differentiate inline code #361.
+  * Added tab-completion support for /toggle options #362.
+  * Added initial support for rendering spoilers in messages.
+  * Added support for sending spoilers (with ||reason|spoiler|| or ||spoiler||).
+  * Added support for inline links (limited terminal support; requires /toggle inlineurls).
+  * Added graphical file picker for /upload when no path is provided (requires zenity).
+  * Updated more places to use default/reverse colors instead of white/black to
+    better work on light themed terminals #401.
+  * Fixed mentions being lost when editing messages.
+  * Fixed date change messages showing the wrong date.
+  * Fixed some whitespace in HTML being rendered even when it shouldn't.
+  * Fixed copying non-text messages with /copy.
+  * Fixed rendering code blocks with unknown languages #386.
+  * Fixed newlines not working in code blocks with certain syntax highlightings #387.
+  * Fixed rendering more than one reaction of the same type in a single message #391.
+  * Fixed line-wrapped messages getting corrupted when receiving a reaction #397.
+
+-------------------------------------------------------------------
+Mon Oct 17 12:30:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file to be more guidelines-like.
+
+-------------------------------------------------------------------
+Thu Sep 29 13:29:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.2.4:
+  - Added is_direct flag when creating DMs.
+  - Added newline toggle for swapping enter and alt-enter
+    behavior.
+  - Added timestamps toggle for disabling timestamps in the UI.
+  - Added support for getting custom download directory with
+    xdg-user-dir.
+  - Added support for updating homeserver URL based on well-known
+    data in /login response.
+  - Updated some places to use default color instead of white to
+    better work on light themed terminals.
+  - Updated notification library to work on all unix-like systems
+    with notify-send.
+    Notification sounds will now work if either paplay or ogg123
+    is available.
+  - Disabled logging request content for sensitive requests like
+    /login and cross-signing key uploads.
+  - Fixed caching state of rooms where the room ID contains
+    slashes.
+  - Fixed index error in fuzzy search.
+
 --------------------------------------------------------------------
 Sat Feb 19 17:18:00 UTC 2021 - Lawrence Brown <albino+suse@autistici.org>
 
