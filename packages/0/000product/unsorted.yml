@@ -1927,6 +1927,8 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certstrap 
+  - cervisia 
+  - cervisia-lang 
   - cf-cli 
   - cf-cli-test 
   - cfengine 
@@ -2064,6 +2066,7 @@ unsorted:
   - clang14-devel 
   - clang14-doc 
   - clang15-devel 
+  - clang15-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -8738,6 +8741,8 @@ unsorted:
   - ktp-text-ui-lang 
   - ktuberling 
   - ktuberling-lang 
+  - kturtle 
+  - kturtle-lang 
   - kube-no-trouble 
   - kube-prometheus-k8s-yaml 
   - kube-prometheus-sources 
@@ -10398,6 +10403,10 @@ unsorted:
   - libbz2-devel-32bit: [x86_64] 
   - libbzrtp0 
   - libbzrtp0-32bit: [x86_64] 
+  - libc++-devel: [x86_64] # devel package of common_locks:libLLVM15 
+  - libc++1: [x86_64] 
+  - libc++abi-devel: [x86_64] # devel package of common_locks:libLLVM15 
+  - libc++abi1: [x86_64] 
   - libc4core0_1_11 
   - libcaca-devel 
   - libcaca-ruby 
