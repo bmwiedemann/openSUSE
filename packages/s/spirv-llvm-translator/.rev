@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f0d69101f1cb018211b0bbdefe10052</srcmd5>
+    <version>15.0.0</version>
+    <time>1674232658</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package for spirv-llvm-translator, version 15.0.0
+
+Needed by rusticl (Mesa)</comment>
+    <requestid>1059411</requestid>
+  </revision>
+</revisionlist>
