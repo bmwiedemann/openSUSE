@@ -618,4 +618,20 @@ rename the package from spyder3 to spyder.
   * Improvements to the way Spyder handles menus sections additions (forwarded request 1046014 from bnavigator)</comment>
     <requestid>1046015</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7b106d3be8ecc9a0bcd402e2420a9207</srcmd5>
+    <version>5.4.2</version>
+    <time>1674232715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.2
+  * Fix issues detected with PyZMQ 25
+  * Fix dot completions and improve support for files and
+    directories completions
+  * Fix getting current user enviroment variables
+  * Fix cursor position restauration after autoformat when saving
+    files
+  * Fix error when reverting unexisting files
+  * Fix some issues related with Python 3.11 compatibility (forwarded request 1059825 from bnavigator)</comment>
+    <requestid>1059826</requestid>
+  </revision>
 </revisionlist>

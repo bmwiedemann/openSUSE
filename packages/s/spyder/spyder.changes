@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 19 10:04:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.2
+  * Fix issues detected with PyZMQ 25
+  * Fix dot completions and improve support for files and
+    directories completions
+  * Fix getting current user enviroment variables
+  * Fix cursor position restauration after autoformat when saving
+    files
+  * Fix error when reverting unexisting files
+  * Fix some issues related with Python 3.11 compatibility
+
+-------------------------------------------------------------------
 Fri Dec 30 09:34:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.1

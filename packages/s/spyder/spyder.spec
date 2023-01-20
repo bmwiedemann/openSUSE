@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -31,7 +31,9 @@ Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#
 Source1:        spyder-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 49.6.0
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       %{name}-lang
 Requires:       cookiecutter >= 1.6.0
@@ -79,9 +81,9 @@ Requires:       python3-whatthepatch
 Requires:       python3-yapf
 Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
 Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3)
-Requires:       (python3-python-lsp-server >= 1.7.0 with python3-python-lsp-server < 1.8)
+Requires:       (python3-python-lsp-server >= 1.7.1 with python3-python-lsp-server < 1.8)
 Requires:       (python3-qtconsole >= 5.4.0 with python3-qtconsole < 5.5.0)
-Requires:       (python3-spyder-kernels >= 2.4.1 with python3-spyder-kernels < 2.5)
+Requires:       (python3-spyder-kernels >= 2.4.2 with python3-spyder-kernels < 2.5)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -174,9 +176,9 @@ BuildRequires:  xdpyinfo
 BuildRequires:  xvfb-run
 BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
 BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3)
-BuildRequires:  (python3-python-lsp-server >= 1.7 with python3-python-lsp-server < 1.8)
+BuildRequires:  (python3-python-lsp-server >= 1.7.1 with python3-python-lsp-server < 1.8)
 BuildRequires:  (python3-qtconsole >= 5.4 with python3-qtconsole < 5.5)
-BuildRequires:  (python3-spyder-kernels >= 2.4.1 with python3-spyder-kernels < 2.5)
+BuildRequires:  (python3-spyder-kernels >= 2.4.2 with python3-spyder-kernels < 2.5)
 # /SECTION
 
 %description
@@ -277,10 +279,10 @@ sed -r \
 rm -r external-deps/*
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
 
 # install the icon
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
@@ -413,7 +415,7 @@ xvfb-run --server-args "-screen 0 1920x1080x24" bash runtests.sh
 %{_bindir}/spyder
 %{_datadir}/applications/spyder.desktop
 %{python3_sitelib}/spyder/
-%{python3_sitelib}/spyder-%{version}*-info
+%{python3_sitelib}/spyder-%{version}.dist-info
 %exclude %{python3_sitelib}/spyder/locale/
 %exclude %{python3_sitelib}/spyder/plugins/io_dcm/
 %exclude %{python3_sitelib}/spyder/plugins/io_hdf5/
