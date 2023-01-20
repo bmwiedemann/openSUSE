@@ -66,4 +66,12 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
     <comment></comment>
     <requestid>961667</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7e5906ddd77e12a378661753197f8a7b</srcmd5>
+    <version>1.2.16</version>
+    <time>1674232662</time>
+    <user>dimstar_suse</user>
+    <comment>- Move dbus-1 system.d conf file to /usr (bsc#1206757) (forwarded request 1045904 from gmbr3)</comment>
+    <requestid>1057042</requestid>
+  </revision>
 </revisionlist>
