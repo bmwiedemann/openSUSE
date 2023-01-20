@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 08:54:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.12:
+  * This is another bugfix only release in the libspectre's 0.2 series.
+  * Fix exporting to PDF with newer ghostscript (Albert Astals Cid)
+
+-------------------------------------------------------------------
 Tue Nov  8 23:14:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.11:
