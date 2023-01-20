@@ -1,7 +1,7 @@
-Index: icewm-2.9.7/lib/menu.in
+Index: icewm-3.3.0/lib/menu.in
 ===================================================================
---- icewm-2.9.7.orig/lib/menu.in
-+++ icewm-2.9.7/lib/menu.in
+--- icewm-3.3.0.orig/lib/menu.in
++++ icewm-3.3.0/lib/menu.in
 @@ -11,5 +11,6 @@ prog Firefox mozilla firefox
  prog Hexchat xchat hexchat
  prog Gimp gimp gimp
@@ -10,10 +10,10 @@ Index: icewm-2.9.7/lib/menu.in
 +#menufile Programs folder programs
  menufile Tool_bar folder toolbar
 +menuprog SUSE folder xdg_menu --format icewm
-Index: icewm-2.9.7/src/wmmenu.cc
+Index: icewm-3.3.0/src/wmmenu.cc
 ===================================================================
---- icewm-2.9.7.orig/src/wmmenu.cc
-+++ icewm-2.9.7/src/wmmenu.cc
+--- icewm-3.3.0.orig/src/wmmenu.cc
++++ icewm-3.3.0/src/wmmenu.cc
 @@ -294,6 +294,46 @@ char* MenuLoader::parseMenuProg(char *p,
      return p;
  }
@@ -71,10 +71,10 @@ Index: icewm-2.9.7/src/wmmenu.cc
          else if (!strcmp(word, "include")) {
              p = parseIncludeStatement(p, container);
          }
-Index: icewm-2.9.7/src/wmprog.h
+Index: icewm-3.3.0/src/wmprog.h
 ===================================================================
---- icewm-2.9.7.orig/src/wmprog.h
-+++ icewm-2.9.7/src/wmprog.h
+--- icewm-3.3.0.orig/src/wmprog.h
++++ icewm-3.3.0/src/wmprog.h
 @@ -30,6 +30,7 @@ private:
      char* parseAMenu(char *data, ObjectContainer *container);
      char* parseMenuFile(char *data, ObjectContainer *container);

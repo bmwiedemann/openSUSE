@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -34,6 +34,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gettext-runtime >= 0.20.0
 BuildRequires:  libtool
 BuildRequires:  lzip
 BuildRequires:  pkgconfig
@@ -153,9 +154,6 @@ mailbox status, and a digital clock. It is fast and small.
 %patch1 -p1
 %patch2 -p1
 
-# Do not require needlessly new gettext.
-sed -i 's/0.19.6/0.18.3/g' configure.ac
-
 %build
 autoreconf -fi
 # Build the Lite version
@@ -164,13 +162,8 @@ autoreconf -fi
   --with-cfgdir=%{_sysconfdir}/icewm \
   --enable-i18n                      \
   --disable-nls                      \
-  --disable-guievents                \
-  --disable-winmenu                  \
   --without-icesound                 \
-  --enable-lite                      \
-  --enable-taskbar                   \
   --disable-menus-fdo                \
-  --disable-menus-mate               \
   --disable-fribidi
 %make_build
 # Grab the lite content.

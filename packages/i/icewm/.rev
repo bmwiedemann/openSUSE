@@ -596,4 +596,45 @@
     <comment></comment>
     <requestid>1037793</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>69ba44d314b60283a80d08fcdac0fdcc</srcmd5>
+    <version>3.3.0</version>
+    <time>1674232585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Prevent a derefence of a null-Pixel in xftColor.
+  * Add &quot;getClass&quot; and &quot;setClass&quot; commands to icesh.
+  * Support tabs in task grouping.
+  * Use spaces instead of dots when printing WM_COMMAND.
+  * When a focused window hides or rolls up, focus some other window.
+  * When looking for a focusable window, avoid rolled up windows.
+  * Fix for setting focus on passive motif dialogs 
+  * Fallback to rolled up windows in the second pass of getLastFocus.
+  * Use CurrentTime when setting focus to a passive client in the timeout.
+  * On icon not found, report dimensions.
+  * Don't refocus a focused window in focusLastWindow.
+  * Don't activate an active window when receiving an activation message.
+  * Ignore duplicate map requests.
+  * Let icesh implicitly select windows at most once.
+  * Add support for nanosvg for issue #695.
+  * Add preference ToolTipIcon=1 for issue #637.
+  * Add nanosvg to .gitignore.
+  * Remove unneeded logevent from icesh.
+- Remove unknown options from configure 
+- Rebase icewm-preferences.patch
+- update to 3.2.3:
+  * Only freeze the task pane layout when a button was removed,
+  * which fixes the KeySysWorkspaceNext+Prev+Last bug.
+  * Ensure that a task button is updated once it is mapped,
+  * which prevents stale task button titles.
+  * Show a big icon in the tooltip of a toolbar button and the tray.
+  * All of the winoptions are now fully tab-aware.
+  * More documentation about tabbing in the icewm manpage.
+  * Document the &quot;workspace&quot; directory for icons on workspace buttons.
+  * Add &quot;loadicon&quot; and &quot;saveicon&quot; commands to icesh.
+  * Updated translations: Catalan, Dutch, Slovak, Japanese,
+  * Portuguese + Brazil, Macedonian.
+</comment>
+    <requestid>1059186</requestid>
+  </revision>
 </revisionlist>
