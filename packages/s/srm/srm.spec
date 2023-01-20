@@ -1,7 +1,7 @@
 #
 # spec file for package srm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        1.2.15
 Release:        0
 # COPYING file has the MIT license, but also a extra no-advertising clause
 Summary:        A secure replacement for rm
-License:        SUSE-SGI-FreeB-2.0
+License:        SGI-B-2.0
 Group:          Hardware/Other
 URL:            http://srm.sf.net
 Source0:        https://sourceforge.net/projects/srm/files/%{version}/%{name}-%{version}.tar.gz
@@ -44,7 +44,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 
 %files
 %defattr(-, root, root)
-%doc COPYING
+%license COPYING
 %{_bindir}/fill_test
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}*
