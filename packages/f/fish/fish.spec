@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only

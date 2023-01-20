@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jan 17 11:23:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.6.0:
+  * By default, Control-R now opens the command history in the pager, 
+  * Abbrevations are more flexible
+  * The \\x and \\X escape syntax is now equivalent. \\xAB previously
+    behaved the same as \\XAB, except that it would error if the value “AB” was larger than “7f”
+  * The fish_git_prompt will now only turn on features if the appropriate
+    variable has been set to a true value (of “1”, “yes” or “true”)
+    instead of just checking if it is defined.
+  * Abbreviations are no longer stored in universal variables.
+  * The short option -r for abbreviations has changed from rename to regex,
+    for consistency with string.
+  * argparse can now be used without option specifications, to allow using
+    --min-args, --max-args or for commands that take no options
+  * set --show now shows when a variable was inherited from fish’s parent process,
+    which should help with debugging
+  * The read limit is now restored to the default when fish_read_limit is unset
+  * fish_clipboard_copy and fish_clipboard_paste can now be used in pipes
+  * A new variable, fish_cursor_selection_mode, can be used to configure whether
+    the command line selection includes the character under the cursor (inclusive) or not (exclusive)
+  * The complete-and-search binding, used with Shift-Tab by default,
+    selects the first item in the results immediately
+  * The key combination for the QUIT terminal sequence, often Control-Backslash (\\x1c),
+    can now be sused as a binding
+  * commandline gained two new options, --selection-start and --selection-end,
+    to set the start/end of the current selection
+
+-------------------------------------------------------------------
 Fri Jul 22 21:30:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.1:
