@@ -269,6 +269,7 @@ unsorted:
   - Rivet-plugins 
   - SDL2-devel 
   - SDL2-devel-32bit: [x86_64] 
+  - SDL2_Pango-devel 
   - SDL2_image-devel 
   - SDL2_mixer-devel 
   - SDL2_net-devel 
@@ -2593,6 +2594,8 @@ unsorted:
   - cross-pru-binutils 
   - cross-pru-gcc12 
   - cross-pru-gcc12-bootstrap 
+  - cross-pru-gcc13 
+  - cross-pru-gcc13-bootstrap 
   - cross-pru-newlib-devel 
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc11 
@@ -2872,6 +2875,8 @@ unsorted:
   - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
   - debootstrap 
+  - debugbreak 
+  - debugbreak-devel 
   - debugedit 
   - debuginfod-client 
   - debuginfod-dummy-client 
@@ -8565,6 +8570,8 @@ unsorted:
   - klettres-lang 
   - klfbackend-devel 
   - klftools-devel 
+  - klib 
+  - klib-devel 
   - klickety 
   - klickety-lang 
   - kmailtransport-devel 
@@ -9660,6 +9667,7 @@ unsorted:
   - libRivet-3_1_6 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL2-2_0-0-32bit: [x86_64] 
+  - libSDL2_Pango4 
   - libSDL2_gfx-1_0-0 
   - libSDL2_gfx-1_0-0-32bit: [x86_64] 
   - libSDL2_gfx-devel 
@@ -44239,6 +44247,7 @@ unsorted:
   - warewulf-provision-x86_64-initramfs: [x86_64] 
   - warewulf-vnfs: [x86_64] 
   - warewulf4: [x86_64] 
+  - warewulf4-api: [x86_64] 
   - warewulf4-ipxe: [x86_64] 
   - warewulf4-overlay: [x86_64] 
   - warewulf4-slurm: [x86_64] 
