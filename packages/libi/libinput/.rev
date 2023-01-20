@@ -987,4 +987,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.22</comment>
     <requestid>1036796</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>51ffdade95477a3832ad544f2934b857</srcmd5>
+    <version>1.22.1</version>
+    <time>1674232697</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 1059574 from iznogood)</comment>
+    <requestid>1059636</requestid>
+  </revision>
 </revisionlist>

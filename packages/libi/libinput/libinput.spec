@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.22.0
+Version:        1.22.1
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -164,8 +164,7 @@ done
 
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %post udev
 [ -x /usr/bin/udevadm ] && /usr/bin/udevadm hwdb --update || :

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:06:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to release 1.22.1:
+  * This version includes quirks for laptops from Apple and Dell,
+    as well as for the Glorious Model 0 mouse. It also backports a
+    meson fix for use of libinput as subproject and a fix for
+    libinput debug-events not flushing the output, resulting in
+    truncated information.
+  * Finally, the tablet touch arbitration rectangle was increased
+    by 50mm in both directions to reduce the number of misdetected
+    touches.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Sat Nov 19 12:23:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.22
