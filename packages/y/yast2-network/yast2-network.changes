@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 12 11:45:25 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Copy only the specific backend configuration to the target system
+  having a clean installation (bsc#1206723)
+- 4.5.12
+
+-------------------------------------------------------------------
 Thu Dec 29 06:44:50 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not crash when the NETMASK or PREFIXLEN are invalid
