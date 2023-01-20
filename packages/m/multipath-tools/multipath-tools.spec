@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,9 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
+
+
 
 
 
@@ -244,7 +247,7 @@ exit 0
 %{_mandir}/man8/multipathd.8*
 %{_mandir}/man8/multipathc.8*
 %{_mandir}/man8/mpathpersist.8*
-%ghost /run/multipath
+%ghost %attr(700,root,root) /run/multipath
 
 %files -n libmpath0
 %{libdir}/libmultipath.so.0

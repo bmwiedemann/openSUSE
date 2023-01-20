@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 18 09:27:06 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Fix "rpm --verify" (bsc#1207232) 
+
+-------------------------------------------------------------------
 Wed Oct 26 06:50:35 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.2+59+suse.ac8942d:

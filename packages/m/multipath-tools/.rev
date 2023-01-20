@@ -1733,4 +1733,12 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * Fix segfault in &quot;multipath -t&quot; command (boo#1204731) (forwarded request 1031262 from mwilck)</comment>
     <requestid>1031265</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>fce243262d27f9a33cfa80e8b278c8e4</srcmd5>
+    <version>0.9.2+59+suse.ac8942d</version>
+    <time>1674232608</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix &quot;rpm --verify&quot; (bsc#1207232)</comment>
+    <requestid>1059305</requestid>
+  </revision>
 </revisionlist>
