@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 20 09:56:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.66.2:
+  * chore: use checkout v3 with new depth (#1471)
+  * chore: use checkout v2 for tag depth (#1470)
+  * fix: nil panic in graalvm cataloger (#1468)
+  * add linter for type assertion checks (#1469)
+  * fix: bump golang.org/x/net to v0.4.0 (#1467)
+  * fix: bump golang.org/x/text to v0.3.8 (#1466)
+  * bootstrap within composite action (#1461)
+  * chore: revert GolangBinMetadata name and make analogous GolangModMetadata (#1458)
+  * README: update Nix installation instructions (#1455)
+
+-------------------------------------------------------------------
 Fri Jan 13 06:11:18 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.66.1:
