@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 16 12:47:34 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 2.198.0:
+  * Fix spc_t transition rules on tmpfs_t
+- Changes from 2.197.0:
+  * Add boolean containers_use_ecryptfs policy
+- Changes from 2.195.1:
+  * Readd missing allow rules for container_t
+- Changes from 2.194.0:
+  * Allow syslogd_t to use tmpfs files created by container runtime
+- Changes from 2.193.0:
+  * Allow containers to mount tmpfs_t file systems
+  * Label spc_t as a init initrc daemon
+  * Allow userdomains to run containers
+- Changes from 2.191.0:
+  * Create container_logwriter_t type
+- Changes from 2.190.1:
+  * Support BuildKit
+  * container.fc: Set label for kata-agent
+  * support nerdctl
+- Changes from 2.190.0:
+  * Packit: initial enablement
+  * Allow iptables to list directories labeled as container_file_t
+- Changes from 2.189.0:
+  * Dont audit searching other processes in /proc.
+
+-------------------------------------------------------------------
 Thu Jan 12 13:02:32 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Rename spc_timedated.patch to spc.patch
