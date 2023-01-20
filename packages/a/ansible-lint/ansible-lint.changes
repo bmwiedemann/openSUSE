@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 20 10:04:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.11.0:
+  * Minor Changes
+    - Remove opt-in and experimental tags from metadata rule (#2906) @ssbarnea
+    - Remove opt-in and experimental tags from galaxy rule (#2905) @ssbarnea
+    - Add galaxy[no-changelog] check to galaxy rule (#2832) @alisonlhart
+  * Bugfixes
+    - Fix typo in installing.md (#2901) @wgroenewold
+    - Fix 'location' attribute for CodeclimateJSONFormatter (#2897) @4ch1m
+    - Avoid dubious ownership errors with newer versions of git (#2890) @ssbarnea
+    - Clarify effects of --offline flag (#2896) @Andeye
+    - Fix infinite hang on schema refresh by adding timeout parameter (#2895) @Andeye
+    - schema: detect invalid space in meta runtime (#2873) @ssbarnea
+    - Docs: issue #2864 update urls (#2865) @oraNod
+
+-------------------------------------------------------------------
 Thu Jan  5 14:05:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.10.2:
