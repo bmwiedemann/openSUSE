@@ -429,4 +429,34 @@
     <comment></comment>
     <requestid>1056408</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>418926d1e4dad14c90a5ddd65c73a925</srcmd5>
+    <version>1.10.0</version>
+    <time>1674232791</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.0
+  * mold now officially supports the --print-dependencies option to print out
+    dependency information between input files. Here is a truncated example output
+    when linking mold itself with the option. There are many use cases of the
+    option; for example, if you want to eliminate the dependency to some library
+    from your program, you can use this option to find out all the functions that
+    use the library's function to fix them. (6fd47db)
+  * [x86-64][s390x] mold now optimizes thread-local variable accesses in shared
+    libraries if the library is linked with -z nodlopen. If your shared library is
+    not intended to be used via dlopen(2) and your library frequently accesses
+    thread-local variables, you might want to pass that option when linking your
+    library. (25d02bb, f32ce33)
+  * [arm64] mold is now able to optimize GOT load by rewriting an ADDR+LDR
+    instruction pair with an ADDR+ADD if the loaded GOT value is known at link-time.
+    (f2311b1)
+  * mold 1.9.0 was up to 10% slower than 1.8.0 on some multicore machines. We fixed
+    the performance regression and made it even faster than 1.8.0. (7132822)
+  * Previously, mold failed to report an undefined symbol error if there's a weak
+    undefined symbol of the same name. That bug resulted in producing a non-working
+    executable instead of reporting a link failure. Now, mold correctly reports such
+    link errors. (8936194)
+  * mold 1.9.0 might crash with SIGSEGV if --emit-relocs is used with object files
+    containing debug info. That bug has been fixed. (e17d7da)</comment>
+    <requestid>1059957</requestid>
+  </revision>
 </revisionlist>
