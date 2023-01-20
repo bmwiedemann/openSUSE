@@ -1,7 +1,7 @@
 #
 # spec file for package pam_pkcs11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,8 +122,13 @@ done
 cd ..
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a AUTHORS COPYING ChangeLog ChangeLog.git NEWS README README.md TODO doc/pam_pkcs11.html doc/mappers_api.html doc/api doc/README.autologin doc/README.mappers %{buildroot}%{_docdir}/%{name}
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+cp common-auth-smartcard %{buildroot}%{_pam_vendordir}
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 cp common-auth-smartcard %{buildroot}%{_sysconfdir}/pam.d/
+%endif
 install -D -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/pkcs11_eventmgr.service
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rcpkcs11_eventmgr
@@ -132,6 +137,18 @@ ln -s service %{buildroot}%{_sbindir}/rcpkcs11_eventmgr
 
 %pre
 %service_add_pre pkcs11_eventmgr.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/common-auth-smartcard ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/common-auth-smartcard ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %service_add_post pkcs11_eventmgr.service
@@ -153,7 +170,11 @@ ln -s service %{buildroot}%{_sbindir}/rcpkcs11_eventmgr
 %dir %{_sysconfdir}/pam_pkcs11/cacerts
 %dir %{_sysconfdir}/pam_pkcs11/crls
 %config(noreplace) %{_sysconfdir}/pam_pkcs11/*.conf
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/common-auth-smartcard
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/common-auth-smartcard
+%endif
 %{_prefix}/lib/systemd/system/pkcs11_eventmgr.service
 %{_sbindir}/*
 

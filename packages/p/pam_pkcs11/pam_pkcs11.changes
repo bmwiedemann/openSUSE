@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 09:31:59 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Fri Jul 29 08:49:15 UTC 2022 - pgajdos@suse.com
 
 -  use pam rpm macros [bsc#1190957]
