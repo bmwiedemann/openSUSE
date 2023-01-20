@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  e8919158faed3f4a08289fb293dd87ce56bdcc4d
+# Parent  a6ee87356867ce6ed5b0be1ba2c2690a488beb55
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,9 +13,9 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -89,16 +89,17 @@
- #include "PLDHashTable.h"
+@@ -90,16 +90,17 @@
  #include "plstr.h"
+ #include "prdtoa.h"
  #include "prlink.h"
  #include "xpcpublic.h"
  #include "js/RootingAPI.h"
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4847,16 +4848,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4878,16 +4879,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
  #if defined(MOZ_WIDGET_GTK)
    // Under Flatpak/Snap package, load /etc/firefox/defaults/pref/*.js.
-@@ -4938,17 +4950,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4969,17 +4981,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -790,7 +790,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
-@@ -78,17 +78,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "ui
+@@ -81,17 +81,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "ui
  else:
      # These files can't be built in unified mode because they redefine LOG.
      SOURCES += [
@@ -810,7 +810,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
      UNIFIED_SOURCES += [
-@@ -126,16 +128,17 @@ include("/ipc/chromium/chromium-config.m
+@@ -129,16 +131,17 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -1807,7 +1807,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2094,20 +2095,29 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2157,20 +2158,29 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1839,7 +1839,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
      ::CFRelease(url);
      return rv;
    }
-@@ -2119,16 +2129,23 @@ nsLocalFile::Reveal() {
+@@ -2182,16 +2192,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {

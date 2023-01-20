@@ -10,25 +10,25 @@ for the definition of this variable.
 diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbuild/mozbuild/action/langpack_manifest.py
 --- a/python/mozbuild/mozbuild/action/langpack_manifest.py
 +++ b/python/mozbuild/mozbuild/action/langpack_manifest.py
-@@ -11,16 +11,17 @@
- from __future__ import absolute_import, print_function, unicode_literals
+@@ -15,16 +15,17 @@ from __future__ import absolute_import, 
  
  import argparse
- import sys
- import os
- import json
- import io
  import datetime
+ import io
+ import json
+ import logging
+ import os
+ import sys
 +import time
- import requests
- import mozversioncontrol
+ 
+ import fluent.syntax.ast as FTL
  import mozpack.path as mozpath
- from mozpack.chrome.manifest import (
-     Manifest,
-     ManifestLocale,
-     parse_manifest,
- )
-@@ -100,17 +101,17 @@ def get_dt_from_hg(path):
+ import mozversioncontrol
+ import requests
+ from fluent.syntax.parser import FluentParser
+ from mozbuild.configure.util import Version
+ from mozpack.chrome.manifest import Manifest, ManifestLocale, parse_manifest
+@@ -102,17 +103,17 @@ def get_dt_from_hg(path):
  #    ts == "20170914215617"
  ###
  def get_timestamp_for_locale(path):
@@ -45,5 +45,5 @@ diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbu
  
  
  ###
- # Parses multiple defines files into a single key-value pair object.
- #
+ # Parses an FTL file into a key-value pair object.
+ # Does not support attributes, terms, variables, functions or selectors;

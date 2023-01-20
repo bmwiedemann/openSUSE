@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  b1cfd1fa113437854cff1f201e2e9721104d2f61
+# Parent  9d5642506b3a46c3bb28c659173d7055c9674c77
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2318,18 +2318,16 @@ name = "glsl-to-cxx"
+@@ -2348,18 +2348,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,7 +26,7 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -151,16 +151,17 @@ async-task = { git = "https://github.com
+@@ -154,16 +154,17 @@ async-task = { git = "https://github.com
  chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
  chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
@@ -38,12 +38,12 @@ diff --git a/Cargo.toml b/Cargo.toml
 +glslopt = { path = "third_party/rust/glslopt/" }
  
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "b09ffe23ee60a066176e5d7f9f2c6cd95c528ceb" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "b09ffe23ee60a066176e5d7f9f2c6cd95c528ceb" }
- sync15 = { git = "https://github.com/mozilla/application-services", rev = "b09ffe23ee60a066176e5d7f9f2c6cd95c528ceb" }
- tabs = { git = "https://github.com/mozilla/application-services", rev = "b09ffe23ee60a066176e5d7f9f2c6cd95c528ceb" }
- viaduct = { git = "https://github.com/mozilla/application-services", rev = "b09ffe23ee60a066176e5d7f9f2c6cd95c528ceb" }
- webext-storage = { git = "https://github.com/mozilla/application-services", rev = "b09ffe23ee60a066176e5d7f9f2c6cd95c528ceb" }
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
+ sync15 = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
+ tabs = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
+ viaduct = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
+ webext-storage = { git = "https://github.com/mozilla/application-services", rev = "d7dbd32fa379ad46820476222f4d2aeaed2d7175" }
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -1985,10 +1985,10 @@ diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc
 diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
 --- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
 +++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -87,16 +87,18 @@ const char* VideoFrameBufferTypeToString
-       return "kI422";
-     case VideoFrameBuffer::Type::kI010:
+@@ -94,16 +94,18 @@ const char* VideoFrameBufferTypeToString
        return "kI010";
+     case VideoFrameBuffer::Type::kI210:
+       return "kI210";
      case VideoFrameBuffer::Type::kNV12:
        return "kNV12";
      default:
@@ -2007,7 +2007,7 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -117,16 +117,17 @@ const char* CodecTypeToPayloadString(Vid
+@@ -113,16 +113,17 @@ const char* CodecTypeToPayloadString(Vid
      case kVideoCodecH264:
        return kPayloadNameH264;
      case kVideoCodecMultiplex:
@@ -2223,7 +2223,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -116,16 +116,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+@@ -114,16 +114,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
@@ -2241,7 +2241,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -1921,16 +1922,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1955,16 +1956,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -2312,7 +2312,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depa
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -132,16 +132,17 @@ bool IsNonVolatile(RTPExtensionType type
+@@ -137,16 +137,17 @@ bool IsNonVolatile(RTPExtensionType type
  #if defined(WEBRTC_MOZILLA_BUILD)
      case kRtpExtensionCsrcAudioLevel:
        // TODO: Mozilla implement for CsrcAudioLevel
@@ -2333,7 +2333,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -42,16 +42,17 @@ const char* FrameTypeToString(AudioFrame
+@@ -40,16 +40,17 @@ namespace {
      case AudioFrameType::kEmptyFrame:
        return "empty";
      case AudioFrameType::kAudioFrameSpeech:
@@ -2344,13 +2344,13 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b
    RTC_CHECK_NOTREACHED();
 +  return "";
  }
- #endif
  
  constexpr char kIncludeCaptureClockOffset[] =
      "WebRTC-IncludeCaptureClockOffset";
  
  }  // namespace
  
+ RTPSenderAudio::RTPSenderAudio(Clock* clock, RTPSender* rtp_sender)
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc

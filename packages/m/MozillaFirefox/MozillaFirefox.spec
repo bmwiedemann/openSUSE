@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          108
-%define mainver        %major.0.2
-%define orig_version   108.0.2
+%define major          109
+%define mainver        %major.0
+%define orig_version   109.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -120,7 +120,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.85
+BuildRequires:  mozilla-nss-devel >= 3.86
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000

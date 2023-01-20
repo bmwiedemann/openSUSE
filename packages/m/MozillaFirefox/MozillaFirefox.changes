@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jan 16 06:54:09 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 109.0
+  MFSA 2023-01 (bsc#1207119)
+  * CVE-2023-23597 (bmo#1538028)
+    Logic bug in process allocation allowed to read arbitrary
+    files
+  * CVE-2023-23598 (bmo#1800425)
+    Arbitrary file read from GTK drag and drop on Linux
+  * CVE-2023-23599 (bmo#1777800)
+    Malicious command could be hidden in devtools output on
+    Windows
+  * CVE-2023-23600 (bmo#1787034)
+    Notification permissions persisted between Normal and Private
+    Browsing on Android
+  * CVE-2023-23601 (bmo#1794268)
+    URL being dragged from cross-origin iframe into same tab
+    triggers navigation
+  * CVE-2023-23602 (bmo#1800890)
+    Content Security Policy wasn't being correctly applied to
+    WebSockets in WebWorkers
+  * CVE-2023-23603 (bmo#1800832)
+    Calls to <code>console.log</code> allowed bypasing Content
+    Security Policy via format directive
+  * CVE-2023-23604 (bmo#1802346)
+    Creation of duplicate <code>SystemPrincipal</code> from less
+    secure contexts
+  * CVE-2023-23605 (bmo#1764921, bmo#1802690, bmo#1806974)
+    Memory safety bugs fixed in Firefox 109 and Firefox ESR 102.7
+  * CVE-2023-23606 (bmo#1764974, bmo#1798591, bmo#1799201,
+    bmo#1800446, bmo#1801248, bmo#1802100, bmo#1803393,
+    bmo#1804626, bmo#1804971, bmo#1807004)
+    Memory safety bugs fixed in Firefox 109
+- requires NSS 3.86
+- rebased patches
+
+-------------------------------------------------------------------
 Fri Jan  6 06:57:25 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Mozilla Firefox 108.0.2
