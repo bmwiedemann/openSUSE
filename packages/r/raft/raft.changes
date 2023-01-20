@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 20 12:43:50 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.17.1:
+  * not API compatible
+  * Correct quorum calculation that determines when it's safe to
+    apply a log entry
+  * Ensuring that a "known good" configuration is always available
+    to roll back to when a new configuration can't be committe
+  * Fix potential crashes when a Raft state transition occurs
+    during an asynchronous operation like writing to disk.
+
+-------------------------------------------------------------------
 Sun Dec  4 18:35:22 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.16.0:
