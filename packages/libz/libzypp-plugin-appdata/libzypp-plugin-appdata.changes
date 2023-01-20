@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 17 12:02:21 UTC 2023 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20230117:
+  * InstallAppdata: use subprocess.run instead of os.system (CVE-2023-22643)
+
+-------------------------------------------------------------------
+Tue Jan 17 11:07:35 UTC 2023 - dimstar@opensuse.org
+
+- Update to version 1.0.1+git.20220909:
+  * Add dist directory, for openSUSE packaging
+
+-------------------------------------------------------------------
 Tue Aug 16 12:19:30 UTC 2022 - dimstar@opensuse.org
 
 - Update to version 1.0.1+git.20220816:

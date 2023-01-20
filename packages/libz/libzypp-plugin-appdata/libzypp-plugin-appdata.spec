@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-plugin-appdata
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libzypp-plugin-appdata
-Version:        1.0.1+git.20220816
+Version:        1.0.1+git.20230117
 Release:        0
 Summary:        libzypp extension to handle AppStream metadata
 License:        CC0-1.0 AND MIT
