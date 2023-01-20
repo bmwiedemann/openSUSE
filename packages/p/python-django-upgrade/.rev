@@ -7,4 +7,41 @@
     <comment>Tool to automatically update django code</comment>
     <requestid>1000651</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>918ed8313068d2e10c1807b97febca2e</srcmd5>
+    <version>1.12.0</version>
+    <time>1674232786</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.0:
+  * Make ``re_path`` -&gt; ``path`` fixer also convert ``include()``\'s with
+    unterminated regexes.
+  * Avoid rewriting ``request.META`` to ``request.headers`` in ``del``
+    statements.
+  * Add Django 1.9+ fixer to rename the legacy engine name
+    ``django.db.backends.postgresql_psycopg2`` in ``settings.DATABASES`` to
+    ``django.db.backends.postgresql``.
+  * Make detection of management commands and migration files detect both
+    forward and backward slashes as directory separators.
+- update to 1.11.0:
+  * See also `the release blog post
+    &lt;https://adamj.eu/tech/2022/10/26/django-upgrade-mega-release/&gt;`__.
+  * Add Django 1.7+ fixer to rewrite ``admin.site.register()`` calls into
+    ``@admin.register()`` when eligible.
+  * Add Django 3.2+ fixer to rewrite admin action function attributes to use
+    the ``@admin.action()`` decorator.
+  * Add Django 3.2+ fixer to rewrite admin display function attributes to
+    use the ``@admin.display()`` decorator.
+  * Add Django 4.1+ fixer to rewrite calls to test case methods
+    ``assertFormError()`` and ``assertFormsetError()`` from their old
+    signatures to the new ones.
+  * Add Django 2.0+ fixer to drop assignments of ``allow_tags`` attributes
+    to ``True``.
+  * Add Django 3.1+ fixer to replace ``list`` error message key with
+    ``list_invalid`` on ``ModelMultipleChoiceField``.
+  * Make ``request.headers`` fixer also rewrite accesses of the ``content-
+    length`` and ``content-type`` headers.
+  * Extend ``request.headers`` fixer to rewrite ``in`` and ``not in``
+    comparisons on ``request.META``.</comment>
+    <requestid>1059955</requestid>
+  </revision>
 </revisionlist>

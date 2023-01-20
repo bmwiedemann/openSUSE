@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-upgrade
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-upgrade
-Version:        1.9.0
+Version:        1.12.0
 Release:        0
 Summary:        Automatically upgrade your Django projects
 License:        MIT
@@ -28,18 +28,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/django-upgrade
 Source:         https://github.com/adamchainz/django-upgrade/archive/refs/tags/%{version}.tar.gz#/django-upgrade-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-tokenize-rt
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-setuptools
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module tokenize-rt}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tokenize-rt}
 # /SECTION
 %python_subpackages
 
