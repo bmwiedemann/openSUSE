@@ -119,7 +119,7 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.Software.desktop %{buildro
 
 cat >> %{buildroot}%{_datadir}/glib-2.0/schemas/20_org.gnome.software-opensuse.gschema.override << FOE
 [org.gnome.software]
-official-repos = [ 'repo-oss', 'repo-update', 'repo-non-oss' ]
+official-repos = [ 'repo-oss', 'repo-update', 'repo-non-oss', 'download.opensuse.org-oss', 'download.opensuse.org-tumbleweed', 'download.opensuse.org-non-oss' ]
 FOE
 
 %files

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 16 17:34:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also add download.opensuse.org-non-oss (NON-OSS repo)
+  download.opensuse.org-oss (OSS repo), and
+  download.opensuse.org-tumbleweed (Update repo) to
+  software-opensuse.gschema.override, declaring them also
+  official repositories (the names match the ones picked by the NET
+  installer).
+
+-------------------------------------------------------------------
 Fri Jan  6 19:13:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.3:
