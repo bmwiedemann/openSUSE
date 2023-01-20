@@ -1,0 +1,5 @@
+<package name="phpunit" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:php:applications" package="phpunit"/>
+</package>

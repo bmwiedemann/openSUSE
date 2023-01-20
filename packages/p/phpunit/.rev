@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ee43cafcd6b8d625e3fd11c9ae4e7e8</srcmd5>
+    <version>9.5.28</version>
+    <time>1674232745</time>
+    <user>dimstar_suse</user>
+    <comment>Please add phpunit into Factory, we have a request for CC (Petr Gajdos)</comment>
+    <requestid>1059910</requestid>
+  </revision>
+</revisionlist>
