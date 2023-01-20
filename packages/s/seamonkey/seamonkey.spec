@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 #               2006-2018 Wolfgang Rosenauer
-#               2018-2022 Tristan Miller
+#               2018-2023 Tristan Miller
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,15 +58,14 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.47
-BuildRequires:  rust-std-static
 BuildRequires:  rust-cbindgen
 BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.14
+Version:        2.53.15
 Release:        0
-%define releasedate 20220929000000
+%define releasedate 20230120000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers

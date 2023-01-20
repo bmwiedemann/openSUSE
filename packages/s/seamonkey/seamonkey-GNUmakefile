@@ -144,7 +144,7 @@ $(stage)-%:
 	$(MAKE) -C $(OBJDIR)/comm/suite/locales langpack-$*
 
 #  Combine extensions data with the main localization stuff and leave only one manifest file
-	for manifest in `find $@/extensions $@/../chatzilla-$* -name "*.manifest" -print` ; \
+	for manifest in `find $@/extensions -name "*.manifest" -print` ; \
 	do \
 	    while read keyword name lang path rest ; \
 	    do \
@@ -160,7 +160,7 @@ $(stage)-%:
 	rm -f $@/chrome/$*.manifest
 
 #  Spanish locales other than es-ES are from Latam, where the es-AR langpack is most preferred
-	[ $* = es-AR ] && sed -i '/^locale/ s/es-AR/es-*/' $@/chrome.manifest || :
+	[ $* = es-AR ] && sed -i '/^locale/ s/ es-AR / es /' $@/chrome.manifest || :
 
 
 locale-%: REL_NAME = extensions/langpack-$*@seamonkey.mozilla.org.xpi

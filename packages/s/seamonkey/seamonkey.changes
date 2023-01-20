@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Jan 20 10:12:30 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.15
+  * Microtasks and promises bug 1193394.
+  * Implement queueMicrotask()bug 1480236.
+  * Remove old synchronous contentPrefService from the tree bug 886907
+    and bug 1392929.
+  * Remove remaining uses of 'general.useragent.locale' bug 1410736
+    and bug 1410738.
+  * Migrate to intl.locale.requested.locale list from
+    'general.useragent.locale' bug 1441016.
+  * Introduce a pref to store BCP47 locale list bug 1414390, bug
+    1423532 and bug 1441026.
+  * Remove synchronous certificate verification APIs from
+    nsIX509CertDB bug 1453741 and bug 1453778.
+  * Taskbar preview's favicon appears blank bug 1475524.
+  * Call Imagelibs decodeImageAsyncWindows using a callback bug
+    1790695.
+  * Remove PermissionsService from process Windows sandboxing code bug
+    1788233, bug 1789782 and bug 1794394.
+  * Security info dialog doesn't show cert status anymore bug 1293378.
+  * Replace nsIPlatfromCharset in mailnews bug 1381762.
+  * Replace use of nsMsgI18NFileSystemCharset() with
+    NS_CopyUnicodeToNative/NS_CopyNativeToUnicode() bug 1506422.
+  * Cater for Outlook's/Hotmail's 'Deleted' folder bug 1320191.
+  * Make some filter methods scriptable bug 1497513.
+  * Fix crash in nsMsgFilterAfterTheFact::ApplyFilter() caused by
+    async reset of 'm_curFolder' bug 537017.
+  * Localize messages from nsIMsgFolder.logRuleHitFail() bug 1352731.
+  * Add logging of message filter runs and actions bug 697522.
+  * Check that we got a non-null header before running a filter on it
+    (and crashing) bug 1563959.
+  * With CONDSTORE, eliminate unneeded flag fetches at startup bug
+    1428097.
+  * Fix so custom tags (keywords) are visible to all users bug 583677.
+  * Improve handling of tags on shared folders bug 1596371.
+  * Allow setting/resetting junk marking by user for yahoo/aol to
+    stick bug 1260059.
+  * Don't check subject if spellchecker is not ready bug 1069787.
+  * Grammar issues in mailnews_account_settings.xhtml bug 1793291.
+  * Remove use of nsIMemory bug 1792578.
+  * Replace obsolete GetStringBundleService call in SeaMonkey bug
+    1794400.
+  * SeaMonkey crashes on MacOS Ventura 13.0 bug 1797696.
+  * Continue the switch from Python 2 to Python 3 in the build system.
+  * Added support for clang 15 and macOS SDK 11.3.
+  * Verified compatibility with Rust 1.65.
+  * SeaMonkey 2.53.15 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.15 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 102.6
+    and Thunderbird 102.5 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- update seamonkey-GNUmakefile patch per
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1692516#c9 to remove
+  obsolete stuff and fix handling of Latam Spanish
+- remove build dependency on obsolete rust-std-static
+- request inclusion in Leap 15.4:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=
+
+-------------------------------------------------------------------
 Thu Sep 29 12:14:18 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.14
