@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan 20 07:48:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.1:
+  * Fix CD Github action
+
+-------------------------------------------------------------------
+Fri Jan 20 07:46:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0:
+  Features:
+  * Add --number-separator CLI flag #892
+  * Add Makefile language support #867
+  * Vercel: add section links #922
+  Chore:
+  * Add gitpod.io configuration #881
+  * Use human_panic #887
+  * Read license from manifest first #769
+  * Install cargo-insta in dev containers #909
+  * Info struct to holds a Vec #911
+  * Add benchmark #912
+  * GH action to synchronize wiki with .github/wiki #926
+  * Clean up greeter and fix repository detection mechanism in wiki #927
+  * Turn AsciiArt.rs into its own crate #934
+  Bug Fixes:
+  * Use ISO time for snapshot tests #908
+  * Parse multi-byte unicode chars correctly + docs #936
+
+-------------------------------------------------------------------
 Thu Dec  1 09:22:05 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.2:
