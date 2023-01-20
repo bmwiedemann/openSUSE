@@ -1,247 +1,168 @@
---- opml.orig/feedlist_bg.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_bg.opml	2019-09-12 17:13:01.079104717 +0200
+diff -Pdpru opml.orig/feedlist_bg.opml opml/feedlist_bg.opml
+--- opml.orig/feedlist_bg.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_bg.opml	2023-01-15 16:15:14.390429467 +0100
 @@ -12,6 +12,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="International">		<!-- translate this title for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="News">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_ca.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_ca.opml	2019-09-12 17:13:32.304985090 +0200
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_ca.opml opml/feedlist_ca.opml
+--- opml.orig/feedlist_ca.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_ca.opml	2023-01-15 16:15:22.142480435 +0100
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Example Feeds">		<!-- translate this title for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="News">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_de.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_de.opml	2019-09-12 17:15:11.670240333 +0200
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_de.opml opml/feedlist_de.opml
+--- opml.orig/feedlist_de.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_de.opml	2023-01-15 16:15:51.338672400 +0100
 @@ -19,6 +19,10 @@
   
  		<!-- lets keep this default English block in sync over all feed lists! -->
  		<outline text="International">		<!-- translate this title for localized feed list -->
 +			<outline text="openSUSE">
-+				<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+				<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++				<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++				<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +			</outline>
  			<outline text="News">
- 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_en.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_en.opml	2019-09-12 17:15:38.820397478 +0200
+ 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_en.opml opml/feedlist_en.opml
+--- opml.orig/feedlist_en.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_en.opml	2023-01-15 16:16:01.654740229 +0100
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Example Feeds">		<!-- translate this title for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="News">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_es.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_es.opml	2019-09-12 17:15:56.647187470 +0200
-@@ -14,6 +14,10 @@
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_es.opml opml/feedlist_es.opml
+--- opml.orig/feedlist_es.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_es.opml	2023-01-15 16:16:10.018795223 +0100
+@@ -15,6 +15,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Fuentes de ejemplo (inglés)">
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="News">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_eu.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_eu.opml	2019-09-12 17:16:19.605629163 +0200
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdot" />
+diff -Pdpru opml.orig/feedlist_eu.opml opml/feedlist_eu.opml
+--- opml.orig/feedlist_eu.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_eu.opml	2023-01-15 16:16:30.482929559 +0100
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Nazioarteko jarioak">		<!-- translate this title for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="Berriak">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_fr.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_fr.opml	2019-09-12 17:16:35.248567405 +0200
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_fa.opml opml/feedlist_fa.opml
+--- opml.orig/feedlist_fa.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_fa.opml	2023-01-15 16:16:48.095045173 +0100
+@@ -13,6 +13,10 @@
+ 		
+ 		<!-- lets keep this default English block in sync over all feed lists! -->
+ 		<outline text="International">		
++			<outline text="openSUSE">
++				<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++				<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++			</outline>
+ 			<outline text="News">
+ 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_fr.opml opml/feedlist_fr.opml
+--- opml.orig/feedlist_fr.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_fr.opml	2023-01-15 16:16:54.627088051 +0100
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="International">		<!-- translate this title for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_gl.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_gl.opml	2019-09-12 17:16:44.603932418 +0200
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_gl.opml opml/feedlist_gl.opml
+--- opml.orig/feedlist_gl.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_gl.opml	2023-01-15 16:17:01.839135394 +0100
 @@ -12,6 +12,10 @@
  	</outline>
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Exemplos de fontes (inglés)">
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="News">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_he.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_he.opml	2019-09-12 17:17:04.446585618 +0200
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_he.opml opml/feedlist_he.opml
+--- opml.orig/feedlist_he.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_he.opml	2023-01-15 16:17:27.803305834 +0100
 @@ -28,6 +28,10 @@
      </outline>
   		<!-- lets keep this default English block in sync over all feed lists! -->
  		<outline text="מהעולם">		<!-- translate this for localized feed list -->
 +			<outline text="openSUSE">
-+				<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+				<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++				<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++				<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +			</outline>
  			<outline text="News">
- 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_hu.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_hu.opml	2019-09-12 17:17:50.059489745 +0200
+ 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+diff -Pdpru opml.orig/feedlist_hu.opml opml/feedlist_hu.opml
+--- opml.orig/feedlist_hu.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_hu.opml	2023-01-15 16:17:51.471461202 +0100
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Példa hírforrások">		<!-- translate this for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="Magyar hírek">
  			<outline text="[origo]" htmlUrl="http://www.origo.hu/" xmlUrl="http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml" />
  			<outline text="Index" htmlUrl="https://index.hu/" xmlUrl="https://index.hu/24ora/rss/" />
---- opml.orig/feedlist_id.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_id.opml	2019-09-12 17:18:02.914617244 +0200
+diff -Pdpru opml.orig/feedlist_id.opml opml/feedlist_id.opml
+--- opml.orig/feedlist_id.opml	2023-01-10 21:12:42.000000000 +0100
++++ opml/feedlist_id.opml	2023-01-15 16:17:58.327506208 +0100
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Contoh Feed">		<!-- translate this title for localized feed list -->
 +		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
++			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
  		<outline text="Berita">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_it.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_it.opml	2019-09-12 17:18:15.065792525 +0200
-@@ -19,6 +19,10 @@
- 	        </outline>
- 	<!-- lets keep this default English block in sync over all feed lists! -->
- 	<outline text="Notizie internazionali">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="Notizie">
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_nl.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_nl.opml	2019-09-12 17:18:27.072977584 +0200
-@@ -6,6 +6,10 @@
-   <body>
- 	<!-- lets keep this default English block in sync over all feed lists! -->
- 	<outline text="International">		<!-- translate this for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_no.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_no.opml	2019-09-12 17:18:43.355872451 +0200
-@@ -18,6 +18,10 @@
- 
- 		<!-- lets keep this default English block in sync over all feed lists! -->
- 		<outline text="Internasjonalt">
-+			<outline text="openSUSE">
-+				<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+				<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+			</outline>
- 			<outline text="Nyheter">
- 					<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 					<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_pl.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_pl.opml	2019-09-12 17:18:54.151139771 +0200
-@@ -18,6 +18,10 @@
- 
-   <!-- lets keep this English block in sync over all feed lists! -->
-     <outline text="międzynarodowe">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_pt_BR.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_pt_BR.opml	2019-09-12 17:19:01.990607706 +0200
-@@ -11,6 +11,10 @@
-         </outline>
-         <!-- lets keep this English block in sync over all feed lists! -->
-         <outline text="internacional">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_pt.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_pt.opml	2019-09-12 17:19:15.821668996 +0200
-@@ -24,6 +24,10 @@
- 	</outline>
-         <!-- lets keep this English block in sync over all feed lists! -->
-         <outline text="internacional">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_sk.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_sk.opml	2019-09-12 17:19:43.199810863 +0200
-@@ -8,6 +8,10 @@
- 
-  			<!-- lets keep this default English block in sync over all feed lists! -->
- 			<outline text="International">		<!-- translate this for localized feed list -->
-+				<outline text="openSUSE">
-+					<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+					<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+				</outline>
- 				<outline text="News">		<!-- translate this title for localized feed list -->
- 					<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 					<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
---- opml.orig/feedlist_sv.opml	2018-09-13 20:26:14.000000000 +0200
-+++ opml/feedlist_sv.opml	2019-09-12 17:19:53.419117293 +0200
-@@ -15,6 +15,10 @@
- 
- 	<!-- lets keep this default English block in sync over all feed lists! -->
-       <outline title="&#xD6;ppen k&#xE4;llkod" text="&#xD6;ppen k&#xE4;llkod" description="&#xD6;ppen k&#xE4;llkod" type="folder">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="http://news.opensuse.org/" xmlUrl="http://news.opensuse.org/?feed=rss2" />
-+			<outline text="Planet SUSE" htmlUrl="http://planet.opensuse.org/" xmlUrl="http://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="http://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="http://rss.slashdot.org/Slashdot/slashdot" />
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />

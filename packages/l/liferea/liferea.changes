@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jan 20 11:05:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use the properly boostrapped release tarball from upstream.
+- Drop libtool BuildRequires and no longer run autogen.sh.
+
+-------------------------------------------------------------------
+Sun Jan 15 15:43:23 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.14.0
+  + New 'Reader mode' preference that allows stripping all web
+    content
+  + Implement support for Webkits Intelligent Tracking Protection
+  + New progress bar when loading websites
+  + Youtube videos from media:video can be embedded now with a
+    click on the video preview picture.
+  + Changes to UserAgent handling: same UA is now used for both
+    feed fetching and internal browsing.
+  + New view mode 'Automatic' which switches between 'Normal' and
+    'Wide' mode based on the window proportions.
+  + Liferea now supports the new GTK dark theme logic, where in
+    the GTK/GNOME preferences you define wether you "prefer" dark
+    mode or light mode
+  + Favicon discovery improvements: now detects all types of Apple
+    Touch Icons, MS Tile Images and Safari Mask Icons
+  + Increase size of stored favicons to 128x128px to improve icon
+    quality in 3-pane wide view.
+  + Make several plugins support gettext
+  + Allow mutiple feed in same libnotify notification
+  + Redesign of the update message in the status bar. It now shows
+    a update counter of the feeds being in update.
+  + You can now export a feed to XML file
+  + Added an option to show news bins in reduced feed list
+  + Added menu option to send item per mail
+  + Default to https:// instead of http:// when user doesn't
+    provide protocol on subscribing feed
+  + Implement support for subscribing to LD+Json metadata listings
+    e.g. concert or theater event listings
+  + Implement support for subscribing to HTML5 websites
+  + Support for media:description field of Youtube feeds
+  + Improve HTML5 extraction: extract main tag if it exists and
+    no article was found.
+  + Execute feed pipe/filter commands asynchronously
+  + Better explanation of feed update errors.
+  + Added generic Google Reader API support (allows using FeedHQ,
+    FreshRSS, Miniflux...)
+  + Now allow converting TinyTinyRSS subscriptions to
+    local subscriptions
+  + New search folder rule to match podcasts
+  + New search folder rule to match headline authors
+  + New search folder rule to match subscription source
+  + New search folder rule to match parent folder name
+  + New search folder property that allows hiding read items
+  + Now search folders are automatically rebuild when rules are
+    changed
+  + Added new plugin 'add-bookmark-site' that allows to configure
+    a custom bookmarking site.
+  + Added new plugin 'getfocus' that adds transparency on the feed
+    list when it is not focussed.
+  + Trayicon plugin has now a configuration option to change the
+    behaviour when closing Liferea.
+  + Trayicon plugin has now an option to disable minimizing to tray
+  + New hot key Ctrl-D for 'Open in External Browser'
+  + New hot key F10 for headerbar plugin to allow triggering the
+    hamburger menu
+  + New hot key Ctrl-0 to reset zoom
+  + New hot key Ctrl-O to open enclosures
+  + Fix hidden panes, Liferea will never allow the panes to be
+    smaller than 5% in height or width
+  + Wait for network to be fully available before updating
+  + 2-pane mode was removed
+  + Dropped CDF channel support
+  + Dropped Atom 0.2/0.3 (aka Pie) support
+  + Dropped blogChannel namespace support
+  + Dropped photo namespace support
+- Add libtool BuildRequires and run autogen.sh: the tarball is an
+  unbootstrapped git archive.
+
+-------------------------------------------------------------------
 Thu Jan 13 21:53:19 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Require python3-cairo; needed for tray icon (boo#1193579).

@@ -100,4 +100,41 @@
     <comment></comment>
     <requestid>946550</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a317ade900bb34de578afa8e79f76a6e</srcmd5>
+    <version>1.14.0</version>
+    <time>1674232759</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the properly boostrapped release tarball from upstream.
+- Drop libtool BuildRequires and no longer run autogen.sh.
+
+- Update to version 1.14.0
+  + New 'Reader mode' preference that allows stripping all web
+    content
+  + Implement support for Webkits Intelligent Tracking Protection
+  + New progress bar when loading websites
+  + Youtube videos from media:video can be embedded now with a
+    click on the video preview picture.
+  + Changes to UserAgent handling: same UA is now used for both
+    feed fetching and internal browsing.
+  + New view mode 'Automatic' which switches between 'Normal' and
+    'Wide' mode based on the window proportions.
+  + Liferea now supports the new GTK dark theme logic, where in
+    the GTK/GNOME preferences you define wether you &quot;prefer&quot; dark
+    mode or light mode
+  + Favicon discovery improvements: now detects all types of Apple
+    Touch Icons, MS Tile Images and Safari Mask Icons
+  + Increase size of stored favicons to 128x128px to improve icon
+    quality in 3-pane wide view.
+  + Make several plugins support gettext
+  + Allow mutiple feed in same libnotify notification
+  + Redesign of the update message in the status bar. It now shows
+    a update counter of the feeds being in update.
+  + You can now export a feed to XML file
+  + Added an option to show news bins in reduced feed list
+  + Added menu option to send item per mail
+  + Default to https:// instead of http:// when user doesn't
+    provide protocol on subscribing feed</comment>
+    <requestid>1059942</requestid>
+  </revision>
 </revisionlist>

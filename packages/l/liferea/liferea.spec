@@ -1,7 +1,7 @@
 #
 # spec file for package liferea
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           liferea
-Version:        1.13.6
+Version:        1.14.0
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://lzone.de/liferea/
 Source0:        https://github.com/lwindolf/liferea/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
 Patch0:         liferea-opensuse-feeds.patch
-
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -69,8 +68,7 @@ news aggregator for GTK and GNOME.
 %if 0%{?suse_version} >= 01550 || 0%{?sle_version} >= 150200
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 %endif
-%configure \
-        --disable-static
+%configure --disable-static
 %make_build
 
 %install
@@ -110,7 +108,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/glib-2.0/schemas/net.sf.liferea.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*.*
 %{_libdir}/%{name}/
-%doc %{_mandir}/man1/liferea.1*
+%doc %{_mandir}{,/*}/man1/liferea.1*
 
 # We can't really move the localized manpages to the lang package, since they'd
 # create a conflict between the lang subpackage and bundles
