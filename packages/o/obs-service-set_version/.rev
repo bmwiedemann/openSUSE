@@ -357,4 +357,13 @@
   * Test python3 by default</comment>
     <requestid>1058989</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b6c975997cdcbf44dafdc14850761bba</srcmd5>
+    <version>0.6.2</version>
+    <time>1674232650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2:
+  * Avoid the Flake8 warning and restore conditional import</comment>
+    <requestid>1059386</requestid>
+  </revision>
 </revisionlist>

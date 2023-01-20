@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 18 13:39:25 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.6.2:
+  * Avoid the Flake8 warning and restore conditional import
+
+-------------------------------------------------------------------
 Tue Jan 17 14:36:28 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.6.1:
