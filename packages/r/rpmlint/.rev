@@ -4256,4 +4256,20 @@ oddjob-gpupdate isn't blocked)</comment>
   * Speed up DuplicatesCheck by shorter messages</comment>
     <requestid>1058142</requestid>
   </revision>
+  <revision rev="432" vrev="1">
+    <srcmd5>a422c70994cfb4a17429584f0835d6ac</srcmd5>
+    <version>2.4.0+git20230119.40d52b0</version>
+    <time>1674232663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230119.40d52b0:
+  * openSUSE: new whitelisting restriction for sysctl drop-in files (bsc#1174722)
+- Update to version 2.4.0+git20230118.aac2cf3:
+  * zypper-plugins whitelist: adjust libzypp-plugin-appdata (bsc#1206836)
+  * simplify str.split
+  * disable opensuse-tumbleweed-aarch64 due to system crash
+- Update to version 2.4.0+git20230118.42ed609:
+  * Update D-Bus whitelisting for NetworkManager-libreswan (bsc#1206757)
+</comment>
+    <requestid>1059845</requestid>
+  </revision>
 </revisionlist>

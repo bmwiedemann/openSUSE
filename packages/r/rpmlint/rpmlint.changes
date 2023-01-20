@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jan 19 18:05:58 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 2.4.0+git20230119.40d52b0:
+  * openSUSE: new whitelisting restriction for sysctl drop-in files (bsc#1174722)
+
+-------------------------------------------------------------------
+Wed Jan 18 10:11:06 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230118.aac2cf3:
+  * zypper-plugins whitelist: adjust libzypp-plugin-appdata (bsc#1206836)
+  * simplify str.split
+  * disable opensuse-tumbleweed-aarch64 due to system crash
+
+-------------------------------------------------------------------
+Wed Jan 18 08:31:33 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230118.42ed609:
+  * Update D-Bus whitelisting for NetworkManager-libreswan (bsc#1206757)
+
+-------------------------------------------------------------------
 Fri Jan 13 07:50:36 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230112.139edaf:
