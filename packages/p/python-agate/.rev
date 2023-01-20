@@ -113,4 +113,13 @@
     tested).</comment>
     <requestid>1055999</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4534fbbe092b40c0a0523e4cf27f51f8</srcmd5>
+    <version>1.7.1</version>
+    <time>1674232798</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Allow parsedatetime 2.6.</comment>
+    <requestid>1059991</requestid>
+  </revision>
 </revisionlist>
