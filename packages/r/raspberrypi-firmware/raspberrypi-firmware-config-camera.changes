@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 19 13:42:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2578acb89 (2023-01-18):
+  * kernel: overlays: i2c-sensor: Add mpu6050 and mpu9250
+    See: raspberrypi/linux#5325
+  * firmware: arm_dispmanx: Correct support for NV21, and add support for YV16
+    See: #1767
+  * firmware: arm_dispmanx: Fix FKMS to adopt pre-multiplied alpha
+    See: #1773
+  * firmware: hdmi_2711: Make some clock setup unconditional so booting
+    without hdmi setup is possible
+    See: https://forums.raspberrypi.com/viewtopic.php?t=345362
+  * firmware: Actually rebuild firmware described in previous commit
+  * firmware: Add D flag to video= cmdline option when hotplug is forced 
+    See: https://forums.raspberrypi.com/viewtopic.php?p=2067109#p2067109
+
+-------------------------------------------------------------------
 Fri Dec 23 13:58:39 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0a7ea702 (2022-12-12):

@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware-config-camera
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-config-camera
-Version:        2022.12.12
+Version:        2023.01.18
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT
