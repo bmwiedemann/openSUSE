@@ -1,7 +1,7 @@
 #
 # spec file for package openscap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ Patch3:         openscap-docker-add-suse.patch
 %if 0%{?suse_version} != 1599
 Patch4:         oscap-remediate.service.in.patch
 %endif
+Patch5:         0001-Use-correct-includes.patch
 BuildRequires:  asciidoc
 # Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
 BuildRequires:  cmake
