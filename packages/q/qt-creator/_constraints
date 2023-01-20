@@ -12,10 +12,11 @@
       <arch>ppc64</arch>
       <arch>ppc64le</arch>
       <arch>x86_64</arch>
+      <arch>riscv64</arch>
     </conditions>
     <hardware>
       <disk>
-        <size unit="G">13</size>
+        <size unit="G">14</size>
       </disk>
       <memory>
         <size unit="G">6</size>

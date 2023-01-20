@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 18 21:12:44 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update constraints for riscv64
+
+-------------------------------------------------------------------
 Wed Jan 11 20:38:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Use llvm13 on Leap 15.4 and llvm15 on 15.5

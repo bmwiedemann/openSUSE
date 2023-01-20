@@ -127,4 +127,13 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>- Use llvm13 on Leap 15.4 and llvm15 on 15.5</comment>
     <requestid>1057860</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>a013c9ff2c45d605854f305e9754f7d1</srcmd5>
+    <version>9.0.1</version>
+    <time>1674232730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update constraints for riscv64
+</comment>
+    <requestid>1059844</requestid>
+  </revision>
 </revisionlist>
