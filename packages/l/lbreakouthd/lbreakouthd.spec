@@ -26,6 +26,8 @@ Group:          Amusements/Games/Action/Breakout
 URL:            http://lgames.sourceforge.net/LBreakoutHD/
 Source:         https://downloads.sourceforge.net/project/lgames/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/lgames/files/add-ons/lbreakout2/lbreakout2-levelsets-20160512.tar.gz
+# PATCH-FIX-UPSTREAM lbreakouthd-user-hiscoredir.patch badshah400@gmail.com -- Save hiscores to user config dir instead of global localstatedir
+Patch0:         lbreakouthd-user-hiscoredir.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -43,7 +45,7 @@ and effects. You control a paddle at the bottom of the playing field
 and must destroy bricks at the top by bouncing balls against them.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -57,6 +59,9 @@ and must destroy bricks at the top by bouncing balls against them.
 ## install levels
 tar -xf %{SOURCE1} -C %{buildroot}%{_datadir}/%{name}/levels
 
+# Remove global hiscores files, not needed after Patch0
+rm %{buildroot}%{_localstatedir}/games/*
+
 %find_lang %{name}
 %fdupes -s %{buildroot}/%{_datadir}
 
@@ -67,7 +72,5 @@ tar -xf %{SOURCE1} -C %{buildroot}%{_datadir}/%{name}/levels
 %{_bindir}/lbreakouthd
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%dir %{_localstatedir}/games/
-%attr(664,games,games) %{_localstatedir}/games/%{name}.hscr
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 19 07:06:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lbreakouthd-user-hiscoredir.patch: Save hiscores to user
+  config dir instead of global localstatedir; patch sent upstream
+  [https://sourceforge.net/p/lgames/bugs/93/]. This also fixes an
+  issue with openSUSE's pkg where the installed hiscores file was
+  forced to be have '0664' perms instead of '0666', causing high
+  scores to not be saved at all.
+- Drop hiscores.hscr file installed to _localstatedir, as it is no
+  longer used in light of above patch.
+
+-------------------------------------------------------------------
 Sun Jan  1 19:40:12 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.1.1
