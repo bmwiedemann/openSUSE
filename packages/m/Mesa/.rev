@@ -5145,4 +5145,23 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1057866</requestid>
   </revision>
+  <revision rev="466" vrev="338">
+    <srcmd5>a5cd62d18e8a55ee6fbaea0999cd2d7c</srcmd5>
+    <version>unknown</version>
+    <time>1674232659</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for Rusticl - Mesa's new OpenCL implementation.
+  * See https://docs.mesa3d.org/rusticl
+  You will need to set your environment to use it
+  * See https://docs.mesa3d.org/envvars#rusticl-environment-variables
+
+- Compile with gcc12 on Leaps: building drivers fails with:
+  /usr/include/dxguids/dxguids.h:70:1: internal compiler error: 
+  in cxx_eval_bit_field_ref, at cp/constexpr.c:2578
+
+- Fix some deprecation warnings
+  * WARNING: option &quot;false&quot; deprecated, please use &quot;disabled&quot; instead.
+  * WARNING: option &quot;true&quot; deprecated, please use &quot;enabled&quot; instead.</comment>
+    <requestid>1059416</requestid>
+  </revision>
 </revisionlist>

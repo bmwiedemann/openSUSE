@@ -44,6 +44,7 @@
 %define _name_archive mesa
 %define _version 22.3.3
 %define with_opencl 0
+%define with_rusticl 0
 %define with_vulkan 0
 %define with_llvm 0
 
@@ -95,6 +96,11 @@
 
 %if "%{flavor}" == "drivers"
   %define glamor 0
+%if 0%{?suse_version} > 1550
+%ifnarch s390 s390x
+  %define with_rusticl 1
+%endif
+%endif
 %else
   # No llvm dependencies
   %define with_llvm 0
@@ -148,7 +154,11 @@ BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
@@ -269,6 +279,12 @@ BuildRequires:  clang9-devel
 %endif
 %endif
 BuildRequires:  libclc
+%if 0%{with_rusticl}
+BuildRequires:  rust
+BuildRequires:  rust-bindgen
+BuildRequires:  pkgconfig(LLVMSPIRVLib)
+BuildRequires:  pkgconfig(SPIRV-Tools)
+%endif
 %endif
 
 Requires:       Mesa-libEGL1 = %{version}
@@ -643,7 +659,7 @@ Group:          System/Libraries
 This package contains the VDPAU state tracker for VirtIO GPU.
 
 %package -n Mesa-libOpenCL
-Summary:        Mesa OpenCL implementation
+Summary:        Mesa OpenCL implementation (Clover)
 Group:          System/Libraries
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       libclc(llvm%{_llvm_sonum})
@@ -653,6 +669,18 @@ Requires:       libclc
 
 %description -n Mesa-libOpenCL
 This package contains the Mesa OpenCL implementation or GalliumCompute.
+
+%package -n Mesa-libRusticlOpenCL
+Summary:        Mesa OpenCL implementation (Rusticl)
+Group:          System/Libraries
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+Requires:       libclc(llvm%{_llvm_sonum})
+%else
+Requires:       libclc
+%endif
+
+%description -n Mesa-libRusticlOpenCL
+This package contains the Mesa Rust-written OpenCL implementation.
 
 %package -n Mesa-libva
 Summary:        Mesa VA-API implementation
@@ -777,55 +805,63 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
 %ifarch ppc64 ppc64le
 %limit_build -m 1024
 %endif
+%if 0%{?sle_version} >= 150400
+export CC=gcc-12
+export CXX=g++-12
+%endif
 
 egl_platforms=x11,wayland
 
 %meson \
             --auto-features=disabled \
 %if "%{flavor}" == "drivers"
-            -Dgles1=false \
-            -Dgles2=false \
-            -Degl=true \
+            -Dgles1=disabled \
+            -Dgles2=disabled \
+            -Degl=enabled \
             -Dglx=disabled \
             -Dosmesa=false \
 %else
             -Dglvnd=true \
-            -Dgles1=true \
-            -Dgles2=true \
-            -Degl=true \
+            -Dgles1=enabled \
+            -Dgles2=enabled \
+            -Degl=enabled \
             -Dosmesa=true \
             -Dglx=auto \
-            -Dllvm=false \
+            -Dllvm=disabled \
             -Dvulkan-drivers= \
 %endif
             -Dplatforms=$egl_platforms \
-            -Ddri3=true \
-            -Dshared-glapi=true \
+            -Ddri3=enabled \
+            -Dshared-glapi=enabled \
 %if 0%{?with_nine}
             -Dgallium-nine=true \
 %endif
 %if %{glamor}
-            -Dgbm=true \
+            -Dgbm=enabled \
 %endif
 %if 0%{with_opencl}
             -Dgallium-opencl=icd \
 %if 0%{?suse_version} >= 1550
             --sysconfdir=%{_datadir} \
 %endif
+%if 0%{with_rusticl}
+            -Dgallium-rusticl=true \
+            -Drust_std=2021 \
+%endif
 %endif
             -Ddri-search-path=%{_libdir}/dri \
 %if 0%{with_llvm}
-            -Dllvm=true \
-            -Dshared-llvm=true \
+            -Dllvm=enabled \
+            -Dshared-llvm=enabled \
 %endif
 %if "%{flavor}" == "drivers"
 %if %{video_codecs}
             -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec \
 %endif
 %if %{gallium_loader}
-            -Dgallium-vdpau=true \
-            -Dgallium-va=true \
-            -Dgallium-xa=true \
+            -Dgallium-vdpau=enabled \
+            -Dgallium-va=enabled \
+            -Dgallium-xa=enabled \
 %endif
 %if 0%{with_vulkan}
             -Dvulkan-drivers=%{?vulkan_drivers} \
@@ -855,7 +891,7 @@ egl_platforms=x11,wayland
             -Dgallium-drivers=swrast \
 %endif
 %ifarch aarch64 %{ix86} x86_64 ppc64le s390x
-            -Dvalgrind=true \
+            -Dvalgrind=enabled \
 %endif
             -Db_ndebug=true \
             -Dc_args="%{optflags}" \
@@ -1159,6 +1195,20 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_sysconfdir}/OpenCL/vendors/mesa.icd
 %endif
 %{_libdir}/libMesaOpenCL.so*
+%endif
+
+%if 0%{with_rusticl}
+%files -n Mesa-libRusticlOpenCL
+%if 0%{?suse_version} >= 1550
+%dir %{_datadir}/OpenCL
+%dir %{_datadir}/OpenCL/vendors
+%{_datadir}/OpenCL/vendors/rusticl.icd
+%else
+%dir %{_sysconfdir}/OpenCL
+%dir %{_sysconfdir}/OpenCL/vendors
+%{_sysconfdir}/OpenCL/vendors/rusticl.icd
+%endif
+%{_libdir}/libRusticlOpenCL.so*
 %endif
 
 %if "%{flavor}" == "drivers"

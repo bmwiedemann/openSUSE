@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 16 22:44:11 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add support for Rusticl - Mesa's new OpenCL implementation.
+  * See https://docs.mesa3d.org/rusticl
+  You will need to set your environment to use it
+  * See https://docs.mesa3d.org/envvars#rusticl-environment-variables
+
+-------------------------------------------------------------------
+Mon Jan 16 11:27:13 UTC 2023 - Hans-Peter Jansen <hp@urpla.net>
+
+- Compile with gcc12 on Leaps: building drivers fails with:
+  /usr/include/dxguids/dxguids.h:70:1: internal compiler error: 
+  in cxx_eval_bit_field_ref, at cp/constexpr.c:2578
+
+-------------------------------------------------------------------
+Sun Jan 15 12:40:15 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Fix some deprecation warnings
+  * WARNING: option "false" deprecated, please use "disabled" instead.
+  * WARNING: option "true" deprecated, please use "enabled" instead.
+
+-------------------------------------------------------------------
 Wed Jan 11 21:00:56 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 22.3.3:
