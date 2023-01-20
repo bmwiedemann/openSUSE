@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-openSUSE-promo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE-promo
-Version:        20221212
+Version:        20230104
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -173,9 +173,11 @@ install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control
     # Update external link
     sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Factory_Servers.xml,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\_Factory_Servers.xml," %{buildroot}%{?skelcdpath}/CD1/control.xml
     sed -i -e "s,https://download.opensuse.org/YaST/Repos/openSUSE_Leap_,https://download.opensuse.org/YaST/Repos/openSUSE_$ports_arch\_Leap_," %{buildroot}%{?skelcdpath}/CD1/control.xml
-    #we parse out non existing non-oss repo for ports
-    xsltproc -o %{buildroot}%{?skelcdpath}/CD1/control_ports.xml control/nonoss.xsl %{buildroot}%{?skelcdpath}/CD1/control.xml
-    mv %{buildroot}%{?skelcdpath}/CD1/control{_ports,}.xml
+    %ifnarch %ix86
+        #we parse out non existing non-oss repo for ports, except on i586, where nonoss exists
+        xsltproc -o %{buildroot}%{?skelcdpath}/CD1/control_ports.xml control/nonoss.xsl %{buildroot}%{?skelcdpath}/CD1/control.xml
+        mv %{buildroot}%{?skelcdpath}/CD1/control{_ports,}.xml
+    %endif
     xmllint --noout --relaxng %{_datadir}/YaST2/control/control.rng %{buildroot}%{?skelcdpath}/CD1/control.xml
 %endif
 
