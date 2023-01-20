@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jan 19 17:25:19 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.1.11:
+  * update MANIFEST file
+- 3.1.10
+  * improve tests
+- 3.1.9
+  * fail gracefully for badly written EnumType
+- 3.1.8
+  * recalculate bits used after all flags created (sometimes needed when a
+    custom `__new__` is in place.
+- 3.1.7
+  * update flag creation to (possibly) add bitwise operator methods to newly
+    created flags
+  * update extend_enum() to work with 3.11 flags
+- 3.1.6
+  * Update `dir()` on mixed enums to include mixed data type methods and
+    attributes.
+
+  * Rename `enum_property` to `property` to match stdlib.  Recommended usage is
+    `aenum.property` (prefix with module name).
+
+  * Remove quadritic creation behavior.
+
+  BREAKING CHANGE BUG FIX that won't affect most people
+
+  Enums with a custom `__new__` that:
+
+  - use the enum machinery to generate the values; AND
+  - have keyword arguments set to a default (like `None`)
+
+  will fail to generate a missing value.  To fix: remove the default value and
+  instead specify it on the member creation line.
+
+  BREAKING CHANGE
+
+  In Python 3.11 the `str()` of mixed enums will now match its `format()` which
+  will be the normal `str()` of the data type -- so for an IntEnum you'll see
+  `5` instead of `Perm.R|X`.  This affects IntEnum, StrEnum, and IntFlag.
+
+-------------------------------------------------------------------
 Mon Jan 10 14:57:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.5:
