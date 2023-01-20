@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 13:53:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream reelase 22.0.3
+  * Fixed an issue where the setPermissionRequestHandler callback would be invoked twice when using navigator.getUserMedia(...)
+  * Use the process cache to reduce the memory for asar file.
+
+-------------------------------------------------------------------
 Wed Jan 18 05:27:34 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Update to 22.0.2
   * ABI break: NODE_MODULE_VERSION is now 110. Native modules may need recompiling
