@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 19 10:24:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.3.0
+  * Add ignore-self-only-init option by @thejcannon in #560
+- Release 6.2.3
+  * Fix decorator parsing for async functions by @cdce8p in #577
+  * fix: do not pass file names with pre-commit by @yajo in #610
+- Release 6.2.2
+  * Fix false positive of google convention missing args
+    descriptions by @stinovlas in #619
+- Release 6.2.1
+  * Add https protocol on websites at the README.rst by @realFranco
+    in #611
+  * Use tomllib/tomli for reading .toml configs by @mgorny in #608
+- Release 6.2.0
+  * Exempt properties from D401 by @TomFryers in #546
+  * Add support for Python 3.10 by @hugovk in #554
+  * Add D419: Add and switch to "Docstring is empty" error code by
+    @thejcannon in #559
+  * Allow for hanging indent when documenting args in Google style
+    by @rmorshea in #564
+  * Fix match option to only consider basename when given a path
+    argument by @oczkoisse in #550
+- Drop integration-tests-invocation.patch
+
+-------------------------------------------------------------------
 Thu Jul 14 16:30:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove old pathlib extra package build requirement. It is

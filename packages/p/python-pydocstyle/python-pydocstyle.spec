@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydocstyle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pydocstyle
-Version:        6.1.1
+Version:        6.3.0
 Release:        0
 Summary:        Python docstring style checker
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/pydocstyle/
+# Only the Repository Archive has the tests
 Source:         https://github.com/PyCQA/pydocstyle/archive/%{version}.tar.gz#/pydocstyle-%{version}.tar.gz
-# Tests invoke pip and pycodestyle directly, when they should use sys.executable.
-# https://github.com/PyCQA/pydocstyle/pull/403
-Patch0:         integration-tests-invocation.patch
-# Tests invoke pip
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module importlib-metadata >= 2 if %python-base < 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six > 1.10.0}
-BuildRequires:  %{python_module snowballstemmer}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module snowballstemmer >= 2.2.0}
+BuildRequires:  %{python_module tomli >= 1.2.3 if %python-base < 3.11}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six > 1.10.0
-Requires:       python-snowballstemmer
+Requires:       python-snowballstemmer >= 2.2.0
+Requires:       (python-importlib-metadata >= 2 if python-base < 3.8)
+Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Provides:       python-pep257 = %{version}
+Provides:       python-pep257 = %{version}-%{release}
 Obsoletes:      python-pep257 < %{version}
 BuildArch:      noarch
 %python_subpackages
@@ -61,23 +59,21 @@ conventions.
 
 %prep
 %setup -q -n pydocstyle-%{version}
-%patch0 -p1
-dos2unix README.rst
-
-# Disable pip fixture
-sed -i /^pytestmark/d src/tests/test_integration.py
+# Stupid poetry!
+sed -i '/version/ s/0.0.0-dev/%{version}/' pyproject.toml
+# remove shebang
+sed -i -e '/^#! \//, 1d' src/pydocstyle/__main__.py
+# Disable pip fixture: We have the package already installed with a proper cmd
+# Can't get the builddeps from network
+sed -i /^pytestmark.*install_package/d src/tests/test_integration.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pydocstyle
-%{python_expand  #
-sed -i -e '/^#! \//, 1d' %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
-dos2unix %{buildroot}%{$python_sitelib}/pydocstyle/__main__.py
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand  %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export PYTHONPATH=$(pwd)/src
@@ -94,6 +90,6 @@ export PYTHONPATH=$(pwd)/src
 %license LICENSE-MIT
 %python_alternative %{_bindir}/pydocstyle
 %{python_sitelib}/pydocstyle
-%{python_sitelib}/pydocstyle-%{version}-py*.egg-info
+%{python_sitelib}/pydocstyle-%{version}.dist-info
 
 %changelog
