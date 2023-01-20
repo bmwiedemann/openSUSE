@@ -1,7 +1,7 @@
 #
 # spec file for package mirror-registry
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           mirror-registry
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Tool helping to mirror a registry to a private one
 License:        Apache-2.0
 URL:            https://github.com/thkukuk/mirror-registry
 Source:         %{name}-%{version}.tar.xz
 Requires:       skopeo >= 0.1.39
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.18
 ExcludeArch:    s390 %{ix86}
 
 %description
