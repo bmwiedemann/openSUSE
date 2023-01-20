@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 20 09:54:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.0:
+  * feat: update tflint to v0.44.1 (#2422)
+  * Remove GITHUB_OAUTH_TOKEN from tflint + update docs (#2424)
+
+-------------------------------------------------------------------
 Fri Jan 13 10:11:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.42.8:
