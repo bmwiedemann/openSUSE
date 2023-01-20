@@ -7,4 +7,13 @@
     <comment>dependency of python-django-rest-framework-braces</comment>
     <requestid>832045</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa500ba11bf338ab91fea7a1edd979c0</srcmd5>
+    <version>0.6.12</version>
+    <time>1674232748</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.6.12:
+  * Manually adding a release for the last published version.</comment>
+    <requestid>1059913</requestid>
+  </revision>
 </revisionlist>
