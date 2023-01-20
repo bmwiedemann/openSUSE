@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 16 13:00:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Upgrade to version 4.2.0 (jsc#PED-581, bsc#1202365).
+  - [FEATURE] Display build info via icainfo -v
+  - [FEATURE] New API function ica_get_build_version()
+  - [FEATURE] Display fips indication via icainfo -f
+  - [FEATURE] New API function ica_get_fips_indicator()
+  - [FEATURE] New API function ica_aes_gcm_initialize_fips()
+  - [FEATURE] New API function ica_aes_gcm_kma_get_iv()
+  - [FEATURE] New API function ica_get_msa_level()
+  - [PATCH] icainfo: check for malloc error when getting functionlist
+
+-------------------------------------------------------------------
 Tue Oct 11 20:32:12 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgrade to version 4.1.1 (jsc#PED-581, bsc#1202365).

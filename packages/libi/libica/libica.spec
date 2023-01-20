@@ -1,7 +1,7 @@
 #
 # spec file for package libica
 #
-# Copyright (c) 2018-2022 SUSE LLC
+# Copyright (c) 2018-2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -116,8 +116,9 @@ the libica library.
 autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC" CFLAGS="%{optflags} -fPIC" \
   --enable-fips
+
 %make_build clean
-%make_build FIPSHMAC=fipshmac
+%make_build FIPSHMAC=fipshmac BUILD_VERSION="FIPS-SUSE-%version-%release"
 
 %define major %(echo %{version} | sed -e 's/[.].*//')
 
