@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Jan 19 10:35:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.26.52
+  * api-change:``cloudwatch``: [``botocore``] Update cloudwatch client to latest version
+  * api-change:``efs``: [``botocore``] Update efs client to latest version
+  * api-change:``ivschat``: [``botocore``] Updates the range for a Chat Room's
+    maximumMessageRatePerSecond field.
+  * api-change:``wafv2``: [``botocore``] Improved the visibility of the guidance for updating AWS WAF
+    resources, such as web ACLs and rule groups.
+- from version 1.26.51
+  * api-change:``billingconductor``: [``botocore``] This release adds support for SKU Scope for
+    pricing plans.
+  * api-change:``cloud9``: [``botocore``] Added minimum value to AutomaticStopTimeMinutes parameter.
+  * api-change:``imagebuilder``: [``botocore``] Add support for AWS Marketplace product IDs as input
+    during CreateImageRecipe for the parent-image parameter. Add support for listing third-party
+    components.
+  * api-change:``network-firewall``: [``botocore``] Network Firewall now allows creation of dual
+    stack endpoints, enabling inspection of IPv6 traffic.
+- from version 1.26.50
+  * api-change:``connect``: [``botocore``] This release updates the responses of
+    UpdateContactFlowContent, UpdateContactFlowMetadata, UpdateContactFlowName and DeleteContactFlow
+    API with empty responses.
+  * api-change:``ec2``: [``botocore``] Documentation updates for EC2.
+  * api-change:``outposts``: [``botocore``] This release adds POWER_30_KVA as an option for
+    PowerDrawKva. PowerDrawKva is part of the RackPhysicalProperties structure in the CreateSite
+    request.
+  * api-change:``resource-groups``: [``botocore``] AWS Resource Groups customers can now turn on
+    Group Lifecycle Events in their AWS account. When you turn this on, Resource Groups monitors your
+    groups for changes to group state or membership. Those changes are sent to Amazon EventBridge as
+    events that you can respond to using rules you create.
+- from version 1.26.49
+  * api-change:``cleanrooms``: [``botocore``] Initial release of AWS Clean Rooms
+  * api-change:``lambda``: [``botocore``] Add support for MaximumConcurrency parameter for SQS event
+    source. Customers can now limit the maximum concurrent invocations for their SQS Event Source
+    Mapping.
+  * api-change:``logs``: [``botocore``] Bug fix: logGroupName is now not a required field in
+    GetLogEvents, FilterLogEvents, GetLogGroupFields, and DescribeLogStreams APIs as logGroupIdentifier
+    can be provided instead
+  * api-change:``mediaconvert``: [``botocore``] The AWS Elemental MediaConvert SDK has added support
+    for compact DASH manifest generation, audio normalization using TruePeak measurements, and the
+    ability to clip the sample range in the color corrector.
+  * api-change:``secretsmanager``: [``botocore``] Update documentation for new ListSecrets and
+    DescribeSecret parameters
+- from version 1.26.48
+  * api-change:``kendra``: [``botocore``] This release adds support to new document types - RTF, XML,
+    XSLT, MS_EXCEL, CSV, JSON, MD
+- from version 1.26.47
+  * api-change:``location``: [``botocore``] This release adds support for two new route travel
+    models, Bicycle and Motorcycle which can be used with Grab data source.
+  * api-change:``rds``: [``botocore``] This release adds support for configuring allocated storage on
+    the CreateDBInstanceReadReplica, RestoreDBInstanceFromDBSnapshot, and
+    RestoreDBInstanceToPointInTime APIs.
+- from version 1.26.46
+  * api-change:``ecr-public``: [``botocore``] This release for Amazon ECR Public makes several change
+    to bring the SDK into sync with the API.
+  * api-change:``kendra-ranking``: [``botocore``] Introducing Amazon Kendra Intelligent Ranking, a
+    new set of Kendra APIs that leverages Kendra semantic ranking capabilities to improve the quality
+    of search results from other search services (i.e. OpenSearch, ElasticSearch, Solr).
+  * api-change:``network-firewall``: [``botocore``] Network Firewall now supports the Suricata rule
+    action reject, in addition to the actions pass, drop, and alert.
+  * api-change:``ram``: [``botocore``] Enabled FIPS aws-us-gov endpoints in SDK.
+  * api-change:``workspaces-web``: [``botocore``] This release adds support for a new portal
+    authentication type: AWS IAM Identity Center (successor to AWS Single Sign-On).
+- from version 1.26.45
+  * api-change:``acm-pca``: [``botocore``] Added revocation parameter validation: bucket names must
+    match S3 bucket naming rules and CNAMEs conform to RFC2396 restrictions on the use of special
+    characters in URIs.
+  * api-change:``auditmanager``: [``botocore``] This release introduces a new data retention option
+    in your Audit Manager settings. You can now use the DeregistrationPolicy parameter to specify if
+    you want to delete your data when you deregister Audit Manager.
+- from version 1.26.44
+  * api-change:``amplifybackend``: [``botocore``] Updated GetBackendAPIModels response to include
+    ModelIntrospectionSchema json string
+  * api-change:``apprunner``: [``botocore``] This release adds support of securely referencing
+    secrets and configuration data that are stored in Secrets Manager and SSM Parameter Store by adding
+    them as environment secrets in your App Runner service.
+  * api-change:``connect``: [``botocore``] Documentation update for a new Initiation Method value in
+    DescribeContact API
+  * api-change:``emr-serverless``: [``botocore``] Adds support for customized images. You can now
+    provide runtime images when creating or updating EMR Serverless Applications.
+  * api-change:``lightsail``: [``botocore``] Documentation updates for Amazon Lightsail.
+  * api-change:``mwaa``: [``botocore``] MWAA supports Apache Airflow version 2.4.3.
+  * api-change:``rds``: [``botocore``] This release adds support for specifying which certificate
+    authority (CA) to use for a DB instance's server certificate during DB instance creation, as well
+    as other CA enhancements.
+- from version 1.26.43
+  * api-change:``application-autoscaling``: [``botocore``] Customers can now use the existing
+    DescribeScalingActivities API to also see the detailed and machine-readable reasons for Application
+    Auto Scaling not scaling their resources and, if needed, take the necessary corrective actions.
+  * api-change:``logs``: [``botocore``] Update to remove sequenceToken as a required field in
+    PutLogEvents calls.
+  * api-change:``ssm``: [``botocore``] Adding support for QuickSetup Document Type in Systems Manager
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jan  4 14:59:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.42:
