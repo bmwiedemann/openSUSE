@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/jeffmahoney/linux-security-sensor</param>
+              <param name="changesrevision">0e858552af3d6ab57bae796cc3e50ccef36b4aff</param></service><service name="tar_scm">
+                <param name="url">https://github.com/SUSE/linux-security-sensor</param>
+              <param name="changesrevision">b5931f73eb6c171a558d09d4ef8b3d4d7292d519</param></service></servicedata>

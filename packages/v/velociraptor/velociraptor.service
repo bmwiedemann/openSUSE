@@ -1,0 +1,22 @@
+[Unit]
+Description=Velociraptor Server Service
+
+[Service]
+Type=simple
+User=root
+Group=root
+UMask=0027
+EnvironmentFile=-/etc/sysconfig/velociraptor
+ExecStart=/usr/bin/velociraptor frontend --verbose --config /etc/velociraptor/server.config $VELOCIRAPTOR_OPTS
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

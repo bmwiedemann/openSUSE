@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd78bb362fdd3a8cd83889cd5afe5f25</srcmd5>
+    <version>0.6.7.4~git53.0e85855</version>
+    <time>1674232707</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed systemd pkgconfig issue.
+
+Had to revert clang &gt;= 13 back to clang13.  Allowing newer versions is
+causing crashes in libbpfgo.</comment>
+    <requestid>1059630</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: skip git submodule import for OBS build
+
+For OBS builds, the git submodule is imported during obs_scm.
+
+Signed-off-by: Jeff Mahoney <jeffm@suse.com>
+---
+ Makefile |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -61,8 +61,8 @@ ifeq ($(BUILD_LIBBPFGO), 1)
+ 	vql/linux/chattrsnoop/chattrsnoop.bpf.o
+ 
+ $(LIBBPFGO_DIR): always-check
+-	echo "INFO: updating submodule 'libbpfgo'"
+-	$(GIT) submodule update --init --recursive $@
++#	echo "INFO: updating submodule 'libbpfgo'"
++#	$(GIT) submodule update --init --recursive $@
+ 
+ $(LIBBPF_LIB): $(LIBBPFGO_DIR)
+ 	make -C $(LIBBPFGO_DIR) libbpfgo-full-static

@@ -1,0 +1,1015 @@
+-------------------------------------------------------------------
+Thu Jan 19 15:17:22 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Restore requirement to build with clang13.  Newer versions
+  cause libbpfgo to crash immediately.
+
+-------------------------------------------------------------------
+Thu Jan 19 14:36:42 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Added support for setting command line options via sysconfig
+
+-------------------------------------------------------------------
+Thu Jan 19 05:00:55 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.4~git53.0e85855:
+  * sdjournal: work around missing _SYSTEMD_UNIT fields
+
+-------------------------------------------------------------------
+Thu Jan 19 01:01:09 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Clean up for Factory submission:
+  - Make bpf-enabled builds conditional
+  - Removed %defattr and combined service lines.
+  - Change clang and llvm dependencies to use >= 13
+  - Newer versions of clang hit a DWARF parsing bug in go < 1.19,
+    so increase go version dependecy
+  - Define ExclusiveArch for x86_64, ppc64le, aarch64, and s390x
+    Neither the client or server builds on ix86.
+
+-------------------------------------------------------------------
+Mon Dec 12 20:03:23 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.4~git51.a588d6e4:
+  * magefile.go: use current architecture for Linux builds
+  * Update libbpfgo submodule to include non-AMD64 build fixes
+  * bpf: bpf expects s390 instead of s390x
+
+-------------------------------------------------------------------
+Wed Dec 07 04:21:36 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.4~git46.5d88d80:
+  * contrib/kafka-humio-gateway: add new debug option for noisy events
+  * contrib/kafka-humio-gateway: backoff and retry for metadata
+  * vql/server/kafka: connect sarama logging to velociraptor logging
+  * vql/server/kafka: add exponential backoff (limited to 30s) for metadata retries
+  * vql/server/kafka: set appropriate ClientID
+
+-------------------------------------------------------------------
+Wed Dec 07 02:49:56 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.4~git41.678ed56:
+  * rpm: introduce rpm vql plugin
+  * users: extend DeleteUser testcase to ensure org membership was dropped
+  * users: ensure baseline user state is correct
+  * github: run testcases on Linux builds in new workflow
+  * gui/reporting: update bluemonday dependency to latest
+  * SSHLogin: require _TRANSPORT != 'kernel' from watch_journal()
+  * SUSE: Add docker-compose environment
+  * SUSE: add Docker files
+  * clients/host-info.js: add MAC addresses to client dashboard
+  * linux: Add ability to interrogate system and network configuration
+  * Add Linux.Sys.Bash to Server.Monitor.Shell artifact
+  * kafka-humio-gateway: add sample config file
+  * Updating the NewFiles and ProcessStatuses Artifacts
+  * cronsnoop: rework testcases to use t.TempDir
+  * vql/linux/cronsnoop: Add cronsnoop() plugin
+  * Extend audit artifacts to use new interface
+  * audit: rearchitect plugin to scale better with multiple invocations
+  * audit: use caller-allocated buffer
+  * use github.com/jeffmahoney/go-libaudit/v2 for audit
+  * Kafka.Events.Client: Update to use new artifactset type
+  * Add artifact for chattrsnoop plugin
+  * bpflib: ensure it's built only on linux and when requesting bpf
+  * Add chattrsnoop plugin
+  * Add artifact to monitor user group updates (#24)
+  * vql/linux/dnssnoop: Add dnssnoop() plugin
+  * Log Sudo/root command by auditd
+  * Add custom artifacts for login and logout attempts recorded by auditd
+  * Add tcpsnoop plugin
+  * vql/linux/bpflib: add helper package for bpf plugins
+  * libbpfgo: add submodule with forked repo for fully static builds
+  * Add Kafka-Humio Gateway [Depends on PR#10] (#8)
+  * Add a Kafka export plugin
+  * SUSE: Add SSHLogin artifacts
+  * SUSE: Do build tests on every pull request
+  * Add systemd-dev as build dependency for github workflow
+  * Update the Linux.Events.SSHLogin artifact to scan the systemd journal
+  * Update the Linux.Syslog.SSHLogin artifact to scan the systemd journal
+  * Add parser to read systemd journal on Linux
+  * Linux.Detection.ImmutableFiles: Enumerate immutable files under a path
+  * linux: add lsattr() function to enumerate file attributes
+  * Github: Run build workflow on each pull request
+  * More fixes for Windows.System.VAD (#2317) (#2318)
+  * Bugfix: When org is not specified this JS code raised (#2315) (#2316)
+
+-------------------------------------------------------------------
+Tue Dec 06 21:53:43 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.3~git41.fa6afa7:
+  * rpm: introduce rpm vql plugin
+  * users: extend DeleteUser testcase to ensure org membership was dropped
+  * users: ensure baseline user state is correct
+  * github: run testcases on Linux builds
+  * gui/reporting: update bluemonday dependency to latest
+  * SSHLogin: require _TRANSPORT != 'kernel' from watch_journal()
+  * SUSE: Add docker-compose environment
+  * SUSE: add Docker files
+  * clients/host-info.js: add MAC addresses to client dashboard
+  * linux: Add ability to interrogate system and network configuration
+  * Add Linux.Sys.Bash to Server.Monitor.Shell artifact
+  * kafka-humio-gateway: add sample config file
+  * Updating the NewFiles and ProcessStatuses Artifacts
+  * cronsnoop: rework testcases to use t.TempDir
+  * vql/linux/cronsnoop: Add cronsnoop() plugin
+  * Extend audit artifacts to use new interface
+  * audit: rearchitect plugin to scale better with multiple invocations
+  * audit: use caller-allocated buffer
+  * use github.com/jeffmahoney/go-libaudit/v2 for audit
+  * Kafka.Events.Client: Update to use new artifactset type
+  * Add artifact for chattrsnoop plugin
+  * bpflib: ensure it's built only on linux and when requesting bpf
+  * Add chattrsnoop plugin
+  * Add artifact to monitor user group updates (#24)
+  * vql/linux/dnssnoop: Add dnssnoop() plugin
+  * Log Sudo/root command by auditd
+  * Add custom artifacts for login and logout attempts recorded by auditd
+  * Add tcpsnoop plugin
+  * vql/linux/bpflib: add helper package for bpf plugins
+  * libbpfgo: add submodule with forked repo for fully static builds
+  * Add Kafka-Humio Gateway [Depends on PR#10] (#8)
+  * Add a Kafka export plugin
+  * SUSE: Add SSHLogin artifacts
+  * SUSE: Do build tests on every pull request
+  * Add systemd-dev as build dependency for github workflow
+  * Update the Linux.Events.SSHLogin artifact to scan the systemd journal
+  * Update the Linux.Syslog.SSHLogin artifact to scan the systemd journal
+  * Add parser to read systemd journal on Linux
+  * Linux.Detection.ImmutableFiles: Enumerate immutable files under a path
+  * linux: add lsattr() function to enumerate file attributes
+  * Github: Run build workflow on each pull request
+  * Bugfix: Do not materialize the VAD array in Windows.System.VAD (#2311)
+  * Sync to master's bugfixes (#2309)
+  * Prepare for 0.6.7-2 release (#2300)
+  * 0.6.7 sync (#2261)
+  * 0.6.7 sync3 (#2256)
+  * 0.6.7 sync (#2239)
+  * Prepare a 0.6.7-rc3 (#2217)
+  * Bugfix: sparse files were not properly detected. (#2200) (#2201)
+  * Propagate progress timeout for collections. (#2193)
+  * Verify client's key with or without the org id. (#2192)
+  * Add Windows.System.Shares (#2191)
+  * Allow artifacts to have aliases (#2190)
+  * Added a regex_array column type to allow multiple regex to be set. (#2188)
+  * [Snyk] Upgrade react-router-dom from 5.3.3 to 5.3.4 (#2180)
+  * Add 'UsedBy' column to results (#2186)
+  * Update flow and hunt download exports to use the container (#2185)
+  * Disable toolbar buttons when no options are available (#2183)
+  * Allow hunts to be scheduled on multiple orgs (#2182)
+  * Update WIndows PSList and VAD artifacts (#38) (#2181)
+  * Add in amcache (#2176)
+  * Added additional sources for UserAccessLogs (aka SUM) artifact (#2179)
+  * Fixed tests (#2177)
+  * [Snyk] Upgrade styled-components from 5.3.5 to 5.3.6 (#2174)
+  * Page Cell logs in notebook (#2172)
+  * Break client connection stats by org id (#2171)
+  * Added a remapping export to Windows.Registry.NTUser (#2170)
+  * Added tlsh hash (#2169)
+  * Check sparse files for large size before padding them out. (#2167)
+  * Linux and macOS Packet Capture Artifact Updates (#2168)
+  * Update deps (#2166)
+  * Add some suggested groks for parsing IIS logs (#2165)
+  * Refactor collection container  (#2163)
+  * Implement transparent decryption for collector accessor (#2162)
+  * [Snyk] Upgrade ace-builds from 1.11.0 to 1.11.1 (#2161)
+  * Automatically decrypt collections with collector accessor  (#2159)
+  * Fix css colors. (#2158)
+  * [Snyk] Upgrade ace-builds from 1.10.1 to 1.11.0 (#2156)
+  * Retry reads on EOF in NTFS accessor (#2157)
+  * Updated zip implementation to support crypto (#2155)
+  * Target 'Cmdline' instead of 'CommandLine' (#2154)
+  * Bugfix: Extra interpolation when client logs messages with % (#2152)
+  * Add 'Active' column to show whether or not a firewall rule is enabled. (#2150)
+  * Added test for encrypted offline collector. (#2149)
+  * Update parsing for Dock plist details (#2148)
+  * Implement filter for large artifact forms (#2147)
+  * Add Public Key Encryption Support to Offline Collections (#2133)
+  * Implemented a max memory grouper (#2146)
+  * Check if setgid flag is set (#2145)
+  * [Snyk] Upgrade react-overlays from 5.2.0 to 5.2.1 (#2144)
+  * Add context to yara.NTFS (#36) (#2143)
+  * Add `auth_redirect_template` config for handling unauthorized API calls (#2140)
+  * Allow the user to specify a collection as urgent (#2139)
+  * Fix typo, slightly improve translations (de,fr) (#2137)
+  * Add 'CronScripts'  query/source and 'Length' option (#2138)
+  * Check sanity of inventory service for all orgs (#2136)
+  * Change 'filename' to 'file' for upload (#2135)
+  * Sync with latest NTFS changes. (#2134)
+  * [Snyk] Upgrade classnames from 2.3.1 to 2.3.2 (#2130)
+  * Added URLRegex to FireFox history (#2129)
+  * Link to collection in host shell (#2128)
+  * additional references (#2126)
+  * Sync to go-ntfs (#2125)
+  * Provide the option to expand sparse files in export (#2124)
+  * Bugfix: Process address space lockup under some conditions (#2123)
+  * Added URLRegex to Firefox and Chrome history (#2122)
+  * Add note about RecentApps key not being available after Windows 10, version 1803 (#2119)
+  * Expose the communicator's crypto manager (#2118)
+  * Further refactor of the download handler. (#2117)
+  * [Snyk] Upgrade ace-builds from 1.10.0 to 1.10.1 (#2114)
+  * Uploaded files are now shows with client paths (#2116)
+  * [Snyk] Upgrade recharts from 2.1.13 to 2.1.14 (#2115)
+  * Maintain row count per query. (#2113)
+  * Update Trackaccount.yaml (#2112)
+  * Clean up artifact references (#2111)
+  * Prevent null error when choosing to calculate hash and when providing authenticode information (#2109)
+  * Add Length option and re-arrange output (#2107)
+  * Bugfix: Merge file option should work with config show (#2108)
+  * Always write content to lock files (#2106)
+  * [Snyk] Upgrade ace-builds from 1.9.6 to 1.10.0 (#2102)
+  * Authentication configuration error reporting/validation (#2101)
+  * auth: don't return a base path with two leading slashes (#2100)
+  * Added org report in root org dashboard (#2098)
+  * [Snyk] Upgrade react-bootstrap from 1.6.5 to 1.6.6 (#2094)
+  * [Snyk] Upgrade humanize-duration from 3.27.2 to 3.27.3 (#2095)
+  * authenticode is a function and not a plug (#2092)
+  * Allow '+' in usernames (#2093)
+  * Attempt to decompress client messages if errors occur. (#2088)
+  * Pass org config to mutations in MemcacheFileDataStore (#2087)
+  * Support oauth with a different base path. (#2082)
+  * Allow client->server compression to be disabled (#2081)
+  * Keep track of collected results using  collection status (#2075)
+  * Enforce a hard timeout for incoming processing (#2074)
+  * Expand API of user service to include context (#2071)
+  * When creating a new org pass the new org id to the acl function (#2068)
+  * Allow collect_client() etc to accept ArtifactSpec protobuf (#2067)
+  * Only create initial orgs on first run. (#2066)
+  * Bugfix: Do not start multiple communicators in windows service. (#2064)
+  * Added initial_orgs to the config (#2063)
+  * Bugfix- Server.Utils.DeleteClient over sanitized client id (#2061)
+  * Fixed backwards compatible bug (#2057)
+  * [Snyk] Upgrade ace-builds from 1.9.5 to 1.9.6 (#2055)
+  * Fixed CSS for column selector ui (#2053)
+  * Split server sanity checks into root org and other orgs (#2052)
+  * collect each query's status separately (#2049)
+  * Pass org ids in href parameters (#2047)
+  * Org manager maintains services lifetime (#2045)
+  * Added org_delete() function to remove orgs. (#2042)
+  * Updated themes for context menu (#2041)
+  * Made context menus settable in the config file (#2040)
+  * Added Send to CyberChef context menu on table cells. (#2039)
+  * [Snyk] Upgrade ace-builds from 1.9.3 to 1.9.5 (#2037)
+  * [Snyk] Upgrade ace-builds from 1.8.1 to 1.9.3 (#2033)
+  * Bugfix: watch_usn() was not flushing the mft LRU properly (#2032)
+  * Bugfix: Maintain field order in sysmon based tracker (#2030)
+  * Added regex protocols for int, float etc. (#2028)
+  * Refactor client monitoring API to use service (#2027)
+  * Bugfix: Switch GUI to first available org (#2025)
+  * Update Linux pslist() to use CommandLine column (#2024)
+  * Add embedded stager parse usecase (#34) (#2023)
+  * update to clean up null fields (#2020)
+  * Refactor code to propagate the context in more cases. (#2019)
+  * Bugix: Raw file accessor had different behaviour on Windows (#2018)
+  * Cater for unknown parents in process tracker. (#2015)
+  * Fix sense of multiple regexp in all() function (#2014)
+  * Added all() and any() VQL functions (#2013)
+  * Capitalize 'i' in config generation output (#2012)
+  * Fixed crash in api_client command (#2010)
+  * Update UserAccessLogs.yaml (#2009)
+  * Fixed bug in UserAccessLog artifact (#2008)
+  * api/authenticators: fix handling of missing oauthstate cookie for OAUTH2 (#2000)
+  * Collect domain role info on interrogate (#1998)
+  * Added new GUI column type for tree (#1997)
+  * Fixed CSS to make column selector more visible (#1996)
+  * Send a System.Upload.Completion event on server artifact upload (#1995)
+  * Refactor of oauth code (#1993)
+  * Added some helpful server artifacts (#1992)
+  * Bugfix: "rpm server" command did not produce minion packages (#1991)
+  * Add ability to delete monitoring events. (#1990)
+  * Allow notebook GUI to set notebooks to public. (#1989)
+  * Allow the user to change password in the GUI (#1988)
+  * Added a delay() VQL function (#1987)
+  * Fixed a crash when add_monitoring was called without parameters. (#1986)
+  * Allow hunt() to limit by OS condition (#1985)
+  * [Snyk] Upgrade ace-builds from 1.7.1 to 1.8.1 (#1984)
+  * Fix "last_visit_time" timestamp (#1983)
+  * Added Generic.System.ProcessSiblings (#1982)
+  * [Snyk] Upgrade bootstrap from 4.6.1 to 4.6.2 (#1979)
+  * General cleanup (#1977)
+  * Update BinaryRename.yaml (#1976)
+  * Support multi orgs in server-server communication (#1975)
+  * Inventory service should upload tools to global public directory (#1973)
+  * fixed path issue (#1972)
+  * Support REG_MULTI_SZ in raw registry accessor (#1969)
+  * fix: upgrade interactjs from 1.10.16 to 1.10.17 (#1968)
+  * Update prefetch library to fix bug (#1965)
+  * The "fs" accessor should also be org sensitive. (#1964)
+  * Added user_grant() VQL function (#1963)
+  * fix: upgrade interactjs from 1.10.14 to 1.10.16 (#1961)
+  * fix: gui/velociraptor/package.json & gui/velociraptor/package-lock.json to reduce vulnerabilities (#1960)
+  * Several security related bugfixes.  (#1962)
+  * Fixed bug in watch_evtx() (#1955)
+  * fix: upgrade ace-builds from 1.7.0 to 1.7.1 (#1952)
+  * Fixed visted_url typo (#1953)
+  * Added NewOrg artifact to make creating new orgs easier. (#1951)
+  * Fix broken deps due to snyke merge (#1950)
+  * build(deps): bump terser from 4.8.0 to 4.8.1 in /gui/velociraptor (#1946)
+  * fix: upgrade recharts from 2.1.11 to 2.1.12 (#1945)
+  * fix: upgrade @fortawesome/react-fontawesome from 0.1.18 to 0.2.0 (#1948)
+  * Added orgs() plugin and user management (#1949)
+  * fix: upgrade ace-builds from 1.6.1 to 1.7.0 (#1944)
+  * Add new embedded pe in data section parse (#1943)
+  * Refactor startup code (#1942)
+  * fix: upgrade qs from 6.10.4 to 6.11.0 (#1941)
+  * fix: upgrade recharts from 2.1.10 to 2.1.11 (#1939)
+  * fix: upgrade ace-builds from 1.6.0 to 1.6.1 (#1938)
+  * Added artifact Windows.Attack.IncorrectImagePath (#1927)
+  * Account for pid reuse in process tracker. (#1936)
+  * add precondition for only windows (#1935)
+  * Make ddclient service parameters configurable (#1933)
+  * fix: gui/velociraptor/package.json & gui/velociraptor/package-lock.json to reduce vulnerabilities (#1930)
+  * fix: upgrade interactjs from 1.10.13 to 1.10.14 (#1918)
+  * replace YaraUrl type (#1922)
+  * Add other url yara fixes (#1921)
+  * Update Glob.yaml (#1920)
+  * Fixed bug in startup code. (#1919)
+  * Initial commit of multitenant support (#1917)
+  * Adds three Linux artifacts (#1916)
+  * Fixed a crash when using artifact plugin with tools (#1915)
+  * Added a collector accessor (#1912)
+  * fix: upgrade interactjs from 1.10.11 to 1.10.13 (#1909)
+  * fix: upgrade qs from 6.10.3 to 6.10.4 (#1910)
+  * Japanese translation (#1906)
+  * Fix spanish translations. (#1907)
+  * fix: upgrade react-overlays from 5.1.2 to 5.2.0 (#1904)
+  * Add Shimcache reformat (#1892)
+  * A couple of performance tweaks. (#1903)
+  * Fix Amcache artifact (#1902)
+  * Retry axios requests  (#1901)
+  * Revert "fix: upgrade ace-builds from 1.5.2 to 1.5.3 (#1899)" (#1900)
+  * fix: upgrade ace-builds from 1.5.2 to 1.5.3 (#1899)
+  * Use the auto accessor as first level of VFS  (#1898)
+  * Theme fixes (#1895)
+  * Added additional logging for windows client service (#1894)
+  * Theme updates (#1893)
+  * Prepare for release 0.6.5 (#1890)
+  * Bugfix: CPU limit was not properly enforced on endpoint. (#1889)
+  * fix: upgrade react-calendar-timeline from 0.27.0 to 0.28.0 (#1887)
+  * fix: upgrade ace-builds from 1.5.1 to 1.5.2 (#1888)
+  * Improve the Windows.Sys.StartupItems artifact (#1886)
+  * Fixed the --remap flag (#1883)
+  * Fixed bug in client_delete() (#1882)
+  * Added a delete_flow VQL plugin (#1880)
+  * Add fix for generic bin file payload (#1879)
+  * Bugfix: Notebook calculation did not update cell (#1878)
+  * fix: upgrade humanize-duration from 3.27.1 to 3.27.2 (#1877)
+  * Revised Portuguese translation (#1876)
+  * Update usn.go (#1873)
+  * Added French language (#1874)
+  * Updated german translation (#1875)
+  * Refactor artifact plugin to be more efficient. (#1871)
+  * Update de.js (#1870)
+  * fix: upgrade ace-builds from 1.5.0 to 1.5.1 (#1867)
+  * Refactor server artifacts service (#1868)
+  * Refactored notebook into a service (#1863)
+  * fix: upgrade react-router-dom from 5.3.2 to 5.3.3 (#1861)
+  * fix: upgrade recharts from 2.1.9 to 2.1.10 (#1862)
+  * Bugfix: raw registry accessor supports read_file() (#1859)
+  * Add LogHunter - a generic grep over log capability (#1853)
+  * Added a GUI element to easily filter log messages (#1858)
+  * Added an oidc-cognito authenticator (#1854)
+  * build(deps): bump tar from 6.0.5 to 6.1.11 in /gui/velociraptor (#1852)
+  * fix: upgrade react-router-dom from 5.3.1 to 5.3.2 (#1850)
+  * Fix ACE font handling (#1849)
+  * Format timestamps opportunistically. (#1848)
+  * Update cidr_contains() to return true if any of the ranges match. (#1847)
+  * Sync KapeFiles and SQLECmd artifacts (#1845)
+  * Prepare 0.6.5-rc1 release (#1844)
+  * Added a default process tracker (#1843)
+  * Implement log levels in VQL (#1839)
+  * Theme development checkpoint (#1838)
+  * fix: upgrade ace-builds from 1.4.14 to 1.5.0 (#1836)
+  * fix: upgrade react-bootstrap from 1.6.4 to 1.6.5 (#1837)
+  * Added an LRU VQL function (#1835)
+  * Bugfix: VFS viewer was unable to access files with \ in name (#1832)
+  * use group SID instead of name to get local admins (#1833)
+  * Added Portuguese and Spanish languages (#1831)
+  * fix: upgrade react-overlays from 5.1.1 to 5.1.2 (#1830)
+  * Make display timezone user selectable (#1827)
+  * Added Musl build target (#1826)
+  * Fix deadlock in hunt dispatcher (#1825)
+  * Theme tweaks (#1821)
+  * add groupname parameter to LocalAdmins artifact (#1823)
+  * Fix/activitescache glob expression - Timeline.yaml (#1824)
+  * Update TemplateInjection.yaml (#1820)
+  * Prevent text wrap on sidebar (#1819)
+  * Added some missing translations (#1817)
+  * Added Deutsch UI Language (#1816)
+  * Support UNC paths in windows accessors. (#1815)
+  * Add enrichment callback for process tracker (#1814)
+  * Prevent null FailureActions error (#1811)
+  * Make ACL manager pluggable. (#1813)
+  * Allow custom override for GUI artifacts by default (#1810)
+  * Refactored hunt related functions to use the hunt_dispatcher (#1807)
+  * artifactset: add ability to select named sources (#1809)
+  * UI enhancements (#1805)
+  * Refactor: Create user manager service (#1804)
+  * New themes and refactoring of existing CSS (#1801)
+  * Bugfix: Server monitoring queries were not correctly cancelled. (#1803)
+  * Add gunzip function (#1802)
+  * GUI: Artifact selector (#1790)
+  * Refactor and improve the way clients send query related information (#1800)
+  * fix: upgrade axios from 0.26.1 to 0.27.2 (#1798)
+  * Add Cobalt Strike carver sleep function capability (#1795)
+  * Bugfix: Create new buffer to accumulate VQL results (#1794)
+  * Make velociraptor_client executable in postint script (#1788)
+  * Support addition on dicts (#1785)
+  * fix: upgrade moment from 2.29.2 to 2.29.3 (#1782)
+  * fix: upgrade react-router-dom from 5.3.0 to 5.3.1 (#1783)
+  * Reset nanny when client connection failed. (#1780)
+  * Fix artifacts that use yara parameters to specify yara type (#1779)
+  * SysmonInstall artifact now skips install if not needed (#1777)
+  * Suppress warning message for offline collector (#1776)
+  * Bug fix (#1774)
+  * Avoid bash process lingering around while server is running (#1775)
+  * oidc: Fix typo: Genric -> Generic (#1773)
+  * Make MaxWait for event table settable. (#1772)
+  * Fixed bug in Windows.Detection.Yara.Process (#1771)
+  * fix: upgrade react-scripts from 5.0.0 to 5.0.1 (#1770)
+  * Initial implementation of client side process tracker. (#1768)
+  * Bugfix: Client did not update list of query columns (#1767)
+  * Fixed bug in ETWSessions artifact (#1766)
+  * build(deps): bump async from 2.6.3 to 2.6.4 in /gui/velociraptor (#1761)
+  * Add update to ADSHunter for better output on complete system hunts (#28) (#1765)
+  * Add fix for dupliate entries from flattern bug (#1760)
+  * build(deps): bump ejs from 3.1.6 to 3.1.7 in /gui/velociraptor (#1758)
+  * build(deps): bump cross-fetch from 3.1.3 to 3.1.5 in /gui/velociraptor (#1759)
+  * Fix undefined types in some artifact parameters (#1757)
+  * Update Glob.yaml (#1754)
+  * Bugfix: Unable to set cpu limits in hunt GUI (#1751)
+  * Support case insensitive notebook cell types (#1747)
+  * Fixed a bug in the Userassist artifact (#1746)
+  * Bugfix: Hunt stats were not properly incremented (#1744)
+  * Invalidate transformed cache when the base table changes. (#1742)
+  * GUI Table widgets now can apply transformations on the table. (#1740)
+  * Update FilenameSearch.yaml (#1741)
+
+-------------------------------------------------------------------
+Fri Nov 11 21:12:02 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git86.b5931f7:
+  * cleanup: go mod tidy
+- Fix vendoring of replaced modules.
+- Only require libtsan0 on x86_64
+- Only attempt to copy vmlinux.h if /sys/kernel/btf/vmlinux doesn't exist
+
+-------------------------------------------------------------------
+Fri Nov 11 20:13:00 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git84.1b38fda:
+  * Clean up libbpfgo mess
+  * libbpfgo: use forked repo for fully static builds
+  * libbpfgo: sync to v0.4.4-libbpf-1.0.1
+  * contrib/kafka-humio-gateway: add new debug option for noisy events
+  * contrib/kafka-humio-gateway: backoff and retry for metadata
+  * vql/server/kafka: connect sarama logging to velociraptor logging
+  * vql/server/kafka: add exponential backoff (limited to 30s) for metadata retries
+  * vql/server/kafka: set appropriate ClientID
+  * libbpfgo: add selftest to build so testcases work
+  * cronsnoop: rework testcases to use t.TempDir
+  * cronsnoop: move external dependencies to end of import list
+  * SSHLogin: require _TRANSPORT != 'kernel' from watch_journal()
+
+-------------------------------------------------------------------
+Fri Nov 11 20:08:20 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git67.85b608e:
+  * clients/host-info.js: add MAC addresses to client dashboard
+  * linux: Add ability to interrogate system and network configuration
+  * SUSE: Add docker-compose environment
+  * SUSE: add Docker files
+  * Add Linux.Sys.Bash to Server.Monitor.Shell artifact
+  * api/authenticators: fix handling of missing oauthstate cookie for OAUTH2
+  * kafka-humio-gateway: add sample config file
+  * Updating the NewFiles and ProcessStatuses Artifacts
+  * cronsnoop: Add plugin which is able to snoop removal/addition of cron… (#37)
+  * third_party/go-libaudit: don't directly use unix.*
+  * Add Linux.Remediation.Quarantine artifact
+  * Extend audit artifacts to use new interface
+  * audit: rearchitect plugin to scale better with multiple invocations
+  * third_party/go-libaudit: move handling of receive buffer to caller
+  * third_party/go-libaudit: move buffer handling from netlink to audit
+  * third_party/go-libaudit: allow audit fd to be pollable
+  * third_party/go-libaudit: Add support for removing individual rules
+  * third_party/go-libaudit: rule.Rule.Build: Don't assume that no syscalls means all syscalls
+  * third_party/go-libaudit: Report missing rules during deletion
+  * import go-libaudit as a third-party module
+  * quarantine: actually call the OS-specific artifact
+  * artifactset: add ability to select named sources
+  * GUI: Artifact selector (#1790)
+  * host-info: make quarantine UI more robust with non-Windows client hosts
+  * shell-viewer: default to Bash on non-Windows clients
+
+-------------------------------------------------------------------
+Thu Nov 10 15:22:27 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git70.b7df8172:
+  * file_store: handle watching artifacts with named sources
+
+-------------------------------------------------------------------
+Thu Sep 29 14:16:05 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git68.5226b23b:
+  * api/authenticators/basic: fix logoff endpoint
+  * clients/host-info.js: add MAC addresses to client dashboard
+  * linux: Add ability to interrogate system and network configuration
+  * SUSE: Add docker-compose environment
+  * SUSE: add Docker files
+  * Add Linux.Sys.Bash to Server.Monitor.Shell artifact
+
+-------------------------------------------------------------------
+Fri Aug 19 21:07:15 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Updated vendoring.
+- Fixed update-vendoring script to use an independent go module cache.
+
+-------------------------------------------------------------------
+Fri Aug 19 01:59:35 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git59.5ebb49db:
+  * api/authenticators: fix handling of missing oauthstate cookie for OAUTH2
+
+-------------------------------------------------------------------
+Thu Aug 11 19:40:21 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git57.fcb11adf:
+  * kafka-humio-gateway: add sample config file
+
+-------------------------------------------------------------------
+Fri Jul 15 14:30:49 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Updated BuildRequires to use go 1.17 after updating vendoring
+
+-------------------------------------------------------------------
+Fri Jul 15 02:24:03 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Add vmlinux.h from 5.18.9-2-default to provide type information (x86_64 only)
+
+-------------------------------------------------------------------
+Fri Jul 15 00:00:39 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4.2~git56.47b4adb4:
+  * Updating the NewFiles and ProcessStatuses Artifacts
+  * cronsnoop: Add plugin which is able to snoop removal/addition of cron… (#37)
+  * third_party/go-libaudit: don't directly use unix.*
+  * Add Linux.Remediation.Quarantine artifact
+  * Extend audit artifacts to use new interface
+  * audit: rearchitect plugin to scale better with multiple invocations
+  * third_party/go-libaudit: move handling of receive buffer to caller
+  * third_party/go-libaudit: move buffer handling from netlink to audit
+  * third_party/go-libaudit: allow audit fd to be pollable
+  * third_party/go-libaudit: Add support for removing individual rules
+  * third_party/go-libaudit: rule.Rule.Build: Don't assume that no syscalls means all syscalls
+  * third_party/go-libaudit: Report missing rules during deletion
+  * import go-libaudit as a third-party module
+  * quarantine: actually call the OS-specific artifact
+  * artifactset: add ability to select named sources
+  * GUI: Artifact selector (#1790)
+  * host-info: make quarantine UI more robust with non-Windows client hosts
+  * shell-viewer: default to Bash on non-Windows clients
+
+-------------------------------------------------------------------
+Thu May 12 20:15:26 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to upstream 0.6.4-2:
+  * Reset nanny when client connection failed. (#1780)
+  * Fix artifacts that use yara parameters to specify yara type (#1779)
+  * Update release for bugfixes 0.6.4-2
+  * Add update to ADSHunter for better output on complete system hunts (#28) (#1765)
+  * SysmonInstall artifact now skips install if not needed (#1777)
+  * Initial implementation of client side process tracker. (#1768)
+  * Invalidate transformed cache when the base table changes. (#1742)
+  * GUI Table widgets now can apply transformations on the table. (#1740)
+  * Suppress warning message for offline collector (#1776)
+  * Bug fix (#1774)
+  * Avoid bash process lingering around while server is running (#1775)
+  * oidc: Fix typo: Genric -> Generic (#1773)
+  * Make MaxWait for event table settable. (#1772)
+  * Fixed bug in Windows.Detection.Yara.Process (#1771)
+  * fix: upgrade react-scripts from 5.0.0 to 5.0.1 (#1770)
+  * Bugfix: Client did not update list of query columns (#1767)
+  * Merge bugfixes from master branch. (#1769)
+- Revendored dependencies.
+
+-------------------------------------------------------------------
+Thu May 12 17:54:31 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4~git31.4298eab0:
+  * Elastic.Events.Client: Update to use new artifactset type
+  * Kafka.Events.Client: Update to use new artifactset type
+  * artifacts: add artifactset parameter type
+  * api: add type and description fields to v1/GetArtifacts endpoint
+
+-------------------------------------------------------------------
+Thu May 12 13:30:42 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.4~git26.4407b9b7:
+  * Add artifact for chattrsnoop plugin
+  * bpflib: ensure it's built only on linux and when requesting bpf
+  * Add chattrsnoop plugin
+  * tcpsnoop: Properly close module in case of attach error
+  * Add artifacts for dns/tcp snoop plugins
+  * tcpsnoop: Add timestamp to generated events
+  * dnssnoop: Add timestamp to generated events
+
+-------------------------------------------------------------------
+Tue May  3 20:35:57 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Fix error handling in tcpsnoop and dnssnoop.
+  * If BTF information is unavailable, there is no indication that the
+    query has failed.
+
+-------------------------------------------------------------------
+Tue May  3 13:45:09 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Rebase on 0.6.4:
+  * Updated dependencies
+  * Bugfix: startup bugs (#1680)
+  * bugfix: Server event notebook not correctly created (#1737)
+  * Bugfix: Start a dummy indexing service (#1736)
+  * Add bugfix which would return no rows if the user removed whitelist (#1735)
+  * Fixed bug in read_reg_key (#1734)
+  * BUGFIX: Do not include config flag when darwin installer is repacked (#1733)
+  * Refactored index into its own service. (#1730)
+  * Bugfix: Write one index item per JSONL record. (#1727)
+  * Bugfix: Estimating client impact should consider last active status (#1726)
+  * Add complete ntfs metadata option to MFT output (#1725)
+  * Various bugfixes. (#1724)
+  * Update Usn.yaml (#1723)
+  * Fixed a bug in hunt download preparation. (#1722)
+  * Add Windows.Forensics.Usn filter and presentation updates (#1720)
+  * Optimize writing event monitoring records (#1721)
+  * Add Generic.Detection.Yara.Zip (#1718)
+  * Fixed crash on master-pong response. (#1719)
+  * Remove _type option from elastic. (#1715)
+  * Opportunistically update directly connected client's ping times (#1713)
+  * Fixed a bug in hunt download preparation. (#1722)
+  * Add Windows.Forensics.Usn filter and presentation updates (#1720)
+  * Optimize writing event monitoring records (#1721)
+  * Add Generic.Detection.Yara.Zip (#1718)
+  * Fixed crash on master-pong response. (#1719)
+  * Remove _type option from elastic. (#1715)
+  * Opportunistically update directly connected client's ping times (#1713)
+  * Fixed bug in VQL cell splitting. (#1712)
+  * artifact for parsing macos packages (#1706)
+  * Bugfix: Create a cell for each collected source (#1710)
+  * artifact for parsing macos packages (#1706)
+  * Bugfix: Create a cell for each collected source (#1710)
+  * Added Server.Utils.CollectClient to simplify direct collections (#1708)
+  * fix: gui/velociraptor/package.json & gui/velociraptor/package-lock.json to reduce vulnerabilities (#1705)
+  * Fix build on Go 1.18 (#1704)
+  * build(deps): bump minimist from 1.2.5 to 1.2.6 in /gui/velociraptor (#1703)
+  * Mft update - add uSecZeros (#1701)
+  * Server monitoring service will reload if an artifact is modified (#1702)
+  * Refactor client info manager (#1700)
+  * A number of bugfixes (#1699)
+  * Update Windows.NTFS.MFT (#1698)
+  * Actually export HumanString attribute on OSPath (#1689)
+  * RHEL/CentOS/Fedora dnf packages (#1684)
+  * Implemented Human Readable OSPath method. (#1688)
+  * Added lazy MFT attributes (#1685)
+  * Maintain OSPath in mft artifacts (#1683)
+  * Fix bug in deaddisk remapping of directories. (#1682)
+  * Bugfix: startup bugs (#1680)
+  * Updated SQLECmd artifacts (#1677)
+  * Artifact repository needs to watch for changes across nodes. (#1676)
+  * Update auto accessor to re-open file with ntfs if read failed (#1674)
+  * Fix MacOS.System.Plist artifact (#1673)
+  * Error collection based on VQL logs (#1672)
+  * Add memory limiting to offline collector (#1666)
+  * Allow mount overlays (#1664)
+  * build(deps): bump node-forge from 1.2.1 to 1.3.0 in /gui/velociraptor (#1661)
+  * Fixed bugs in remapping logic. (#1660)
+  * Fixed bug in the windows auto accessor. (#1658)
+  * Elastic.Events.Clients: synchronize parameters with Elastic.Flows.Upload (#1657)
+  * Add initial commit for Windows.NTFS.ExtendedAttributes (#1656)
+  * Added a shadow remapping type (#1655)
+  * Implemented an event notebook (#1654)
+  * Add Windows.System.WMIQuery (#1651)
+  * Fixed data race in progress throttler. (#1653)
+  * Implemented timeout and cpu limits on offline collector. (#1650)
+  * Added an rpm server command. (#1647)
+  * Artifacts can now define suggestions for notebook cells. (#1646)
+  * Allow multiple OIDC authenticators to be specified. (#1645)
+  * Added a multi authenticator. (#1644)
+  * Add HashHunter hash() update for performance (#1643)
+  * Change the DNSCache Artifact to WMI (#1640)
+  * Added an uploader for notebooks.  (#1639)
+  * Added hashselect arg option to hash() (#1637)
+  * Add Generic.Detection.HashHunter and tests (#1638)
+  * Added Generic.Collectors.SQLECmd (#1635)
+  * Add BinaryHunter (#1634)
+  * String artifact parameters can now have validator regex (#1628)
+  * Implemented CPU rate limited for better control (#1622)
+  * Added a client nanny to detect deadlocks (#1621)
+  * Linux.Sys.Services artifact, parse services from systemctl (#1619)
+  * Collect MAC addresses during interrogation and index them (#1611)
+  * Allow parse_ntfs() to operate on an image file. (#1610)
+  * Fix regression in VFSGetBuffer (#1605)
+  * Added rekey() VQL function (#1604)
+  * switch to uninstall string (#1603)
+  * freebsd /etc/rc.d/velociraptor service script (#1602)
+  * Add Windows.Registry.BackupRestore (#1601)
+  * Optimized NTFS code for better speed and added more fields to parse_mft (#1599)
+  * Update BinaryRename.yaml (#1598)
+  * Added LinuxM1 (#1597)
+  * Add explicit check of sticky keys (#1592)
+  * Remote data store should identify retryable errors (#1590)
+  * fix: gui/velociraptor/package.json & gui/velociraptor/package-lock.json to reduce vulnerabilities (#1588)
+  * Add test improvement clear system log (#18) (#1586)
+  * Modified Windows.Forensics.Prefetch to use VQL binary parser (#1585)
+  * add Windows.NTFS.ADSHunter first commit (#17) (#1583)
+  * Resolves Velocidex/velociraptor#1543 Create new VQL entropy() function (#1574)
+  * Remove C time and updating naming (#1546)
+  * fix: gui/velociraptor/package.json & gui/velociraptor/package-lock.json to reduce vulnerabilities (#1568)
+  * Update OSPath protocols to support slices. (#1575)
+  * Implement array slice notation in VQL and Server.Import.PreviousReleases (#1573)
+  * add rtf TemplateInjection to Windows.Detection.TemplateInjection  (#1572)
+  * Change accessors API to deal with OSPath objects directly.  (#1570)
+  * Bump follow-redirects from 1.14.4 to 1.14.8 in /gui/velociraptor (#1567)
+  * Added a deaddisk command to generate config (#1564)
+  * Fix bug in Windows.System.Services (#1565)
+  * Fixed glob expand braces order of operations. (#1560)
+  * Added an offset and raw_file accessors (#1559)
+  * Update CertUtil.yaml (#1558)
+  * remove users to include the system path (#1536)
+  * Implement remap() VQL function and remapping config (#1555)
+  * Make GitHub actions more flexible on Windows (#1549)
+  * Bump normalize-url from 4.5.0 to 4.5.1 in /gui/velociraptor (#1548)
+  * Fix typo (#1547)
+  * Refractor of accessors and path manipulations (#1545)
+  * Dns etw update (#1544)
+  * add PowershellProfile (#1542)
+  * Added dynamic pubsub attributes (#1540)
+  * Fix Windows.Applications.Chrome.History (#1539)
+  * windows.application to windows.applications merge. New firefox history artefact (#1534)
+  * Fixed race condition in zip accessor reference counting. (#1531)
+  * Added Windows.Persistence.SilentProcessExit (#1530)
+  * Add limitations section and lastwrite timestamp (#1529)
+  * Offline collector FetchBinary should respect the IsExecutable flag (#1528)
+  * update description, order by, and hidden keypath (#1527)
+  * add limitations section (#1520)
+  * Avoid holding index lock for too long. (#1519)
+  * re-introduce Windows.Collectors.File with deprecation note (#1516)
+  * add limitations to description and key path to query (#1514)
+  * Retry remote datastore connections (#1513)
+  * Write minion log files and autocert in its own dir.  (#1512)
+  * Synced KapeFiles artifacts (#1511)
+  * Added data retention server artifacts (#1510)
+  * Set an upper limit for ttl in memcache (#1508)
+  * Add updates to Windows.System.Services (#15) (#1509)
+  * Ensure collector container is properly closed when interrupted. (#1507)
+  * Continually rebuild the index at runtime. (#1506)
+  * Harder vacuum - directly move client task directories to the attic. (#1505)
+  * add limitation disclaimer (#1504)
+  * Reduce critial section to avoid deadlock in repository manager (#1503)
+  * Implemented a vacuum command to remove old tasks from client queues. (#1501)
+  * Better format profile metrics output. (#1495)
+  * Cap size of directories and report large directories. (#1493)
+  * Set ACE completers per editor to avoid global state. (#1492)
+  * Add HttpOnly flag to all cookies. (#1491)
+  * Refactor completion routine calls (#1490)
+  * Limit size of cached directories. (#1483)
+  * Add more instrumentation to memory caches. (#1482)
+  * Fixed chart resizing bug (#1481)
+  * Removed the old queries: list from artifacts. (#1480)
+  * [Snyk] Fix for 9 vulnerabilities (#1479)
+  * Remove lock around critical section. (#1478)
+  * Added MacOS.Forensics.AppleDoubleZip (#1476)
+  * Update Windows.Persistence.PermanentWMIEvents to add blind custom namespace detection (#13) (#1475)
+  * Make index snapshot frequency configurable (#1474)
+  * Bugfix: Setting notebook index did not escape username (#1471)
+  * Flush index from memory to disk  (#1470)
+  * Fixed 2 bugs with the memcache file store (#1469)
+  * Update flow active time when the result set is completed (#1468)
+  * Tag artifacts as built ins (#1467)
+  * Fixed bug in the pathspec() VQL function. (#1465)
+  * fix APIConfigLoader not applying command line args (#1463)
+
+-------------------------------------------------------------------
+Mon May 02 14:55:07 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Resync with git repository:
+  * Add artifact to monitor user group updates (#24)
+  * Add dnssnoop plugin (#15)
+  * Log Sudo/root command by auditd
+  * Add custom artifacts for login and logout attempts recorded by auditd
+
+-------------------------------------------------------------------
+Fri Mar 18 14:12:59 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.3~git19.640f7a1c:
+  * Add tcpsnoop plugin
+
+-------------------------------------------------------------------
+Tue Mar 15 13:31:21 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.3~git17.741ebb59:
+  * kafka-humio-gateway: update README.md
+  * kafka-humio-gateway: Fix missing variable rename
+  * Add Kafka-Humio Gateway [Depends on PR#10] (#8)
+
+-------------------------------------------------------------------
+Tue Mar 15 01:04:29 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.3~git13.af7fdb00:
+  * SUSE: Add SSHLogin artifacts
+  * Add a Kafka export plugin
+  * SUSE: Do build tests on every pull request
+  * Add systemd-dev as build dependency for github workflow
+
+-------------------------------------------------------------------
+Fri Feb 18 00:52:01 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.3~git6.d95ed32e:
+  * Update the Linux.Events.SSHLogin artifact to scan the systemd journal
+  * Update the Linux.Syslog.SSHLogin artifact to scan the systemd journal
+  * Add parser to read systemd journal on Linux
+  * Add an artifact to enumerate immutable files under a path
+  * Add chattr function support for linux
+  * Make GitHub actions more flexible on Windows
+
+-------------------------------------------------------------------
+Thu Feb 10 02:12:54 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Add simple default configs and provide dirs in /var/lib for client
+  and server.
+
+-------------------------------------------------------------------
+Mon Feb  7 14:40:47 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Temporarily re-enable Windows artifacts (LSS#4).
+
+-------------------------------------------------------------------
+Wed Feb  2 18:10:19 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Added systemd unit file and placeholder config file.
+
+-------------------------------------------------------------------
+Thu Jan 27 17:33:45 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.3~git0.69e0fffa:
+  * Prepare for 0.6.3 release (#1515)
+  * add limitations to description and key path to query (#1514)
+  * Retry remote datastore connections (#1513)
+  * Write minion log files and autocert in its own dir.  (#1512)
+  * Synced KapeFiles artifacts (#1511)
+  * Added data retention server artifacts (#1510)
+  * Set an upper limit for ttl in memcache (#1508)
+  * Add updates to Windows.System.Services (#15) (#1509)
+  * Ensure collector container is properly closed when interrupted. (#1507)
+  * Continually rebuild the index at runtime. (#1506)
+  * Harder vacuum - directly move client task directories to the attic. (#1505)
+  * add limitation disclaimer (#1504)
+  * Reduce critial section to avoid deadlock in repository manager (#1503)
+  * Implemented a vacuum command to remove old tasks from client queues. (#1501)
+  * Better format profile metrics output. (#1495)
+  * Cap size of directories and report large directories. (#1493)
+  * Set ACE completers per editor to avoid global state. (#1492)
+  * Add HttpOnly flag to all cookies. (#1491)
+  * Refactor completion routine calls (#1490)
+  * fix: upgrade react-bootstrap from 1.3.0 to 1.6.4 (#1486)
+  * fix: upgrade http-proxy-middleware from 1.0.5 to 1.3.1 (#1485)
+  * fix: upgrade react-ace from 9.1.3 to 9.5.0 (#1487)
+  * fix: upgrade recharts from 2.0.9 to 2.1.8 (#1488)
+  * fix: upgrade react-datetime-picker from 3.0.4 to 3.4.3 (#1489)
+  * Limit size of cached directories. (#1483)
+  * Add more instrumentation to memory caches. (#1482)
+  * Fixed chart resizing bug (#1481)
+  * Removed the old queries: list from artifacts. (#1480)
+  * [Snyk] Fix for 9 vulnerabilities (#1479)
+  * Remove lock around critical section. (#1478)
+  * Added MacOS.Forensics.AppleDoubleZip (#1476)
+  * Update Windows.Persistence.PermanentWMIEvents to add blind custom namespace detection (#13) (#1475)
+  * Make index snapshot frequency configurable
+  * fix APIConfigLoader not applying command line args (#1463)
+  * Flush index from memory to disk  (#1470)
+  * Prepare RC2 (#1473)
+  * Bugfix: Setting notebook index did not escape username (#1471)
+  * Fixed 2 bugs with the memcache file store (#1469)
+  * Update flow active time when the result set is completed (#1468)
+  * Tag artifacts as built ins (#1467)
+  * Fixed bug in the pathspec() VQL function. (#1465)
+  * Update PrivateKeys.yaml (#1459)
+  * Added recursion_callback option to the glob plugin (#1461)
+  * Added config wizard for multi-frontend configuration (#1460)
+  * Calculate the sha256 hash of the offline container. (#1458)
+  * Artifact inspection GUI now allows pivot. (#1457)
+  * Client certs can now be specified in the config file. (#1456)
+  * New Upload File Form element (#1455)
+  * Added a sparse accessor (#1453)
+  * Hunt wizard estimates clients affected (#1452)
+  * Make the interrogation process customizable. (#1451)
+  * Update Info.yaml (#1427)
+  * Improved Lnk parser to include additional fields. (#1449)
+  * Added a Yara GUI element editor. (#1447)
+  * Added patch and merge to `config show` and `config generate` (#1445)
+  * Remove usage of FatalIfError from main module (#1443)
+  * Introduced a dedicated pathspec object (#1440)
+  * Bump is-svg from 4.2.2 to 4.3.0 in /gui/velociraptor (#1437)
+  * Only pass client config in the client VQL scope. (#1436)
+  * rework protobuf message generator (#1435)
+  * Update Autoruns.yaml
+  * Added test for filefinder (#1431)
+  * fix filters in filefinder artifact (#1430)
+  * Add Artifact to collect KapeFile targets on Linux (#1426)
+  * Enabled lazy quotes on csv parser (#1424)
+  * Fixed bug in client comms. (#1423)
+  * Add document filter for better usability (#1421)
+  * Added resource information to the output of parse_pe() (#1420)
+  * Low latency client connectivity discovery (#1419)
+  * Add RecentDocs collection (#1416)
+  * Update Amcache artifact for clarity (#1415)
+  * Added extra parameters to parse_csv() (#1413)
+  * Added netcat plugin to read from socket (#1412)
+  * Updated SRUM with Network Usage and Upload option (#1408)
+  * Synced darwin and freebsd file accessor with the linux one. (#1409)
+  * Added Windows.Forensics.SAM artifact (#1404)
+  * Initial artifacts can be specified in config (#1403)
+  * Add conhost.exe to binary rename (#1402)
+  * Add update Prefetch Btime execution fix (#1398)
+  * Update Prefetch timeline (#1397)
+  * Cleanup search API (#1396)
+  * Update protobuf dependencies. (#1394)
+  * More multi-frontend optimizations (#1393)
+  * Client info manager now keeps track of scheduled tasks. (#1392)
+  * add sid and lookupsid plugin (#1388)
+  * Add Mutant whitelist (#1387)
+  * Notify currently connected clients on new hunts (#1386)
+  * Index rebuild command loads new index service. (#1385)
+  * Changes to support distributed architecture. (#1384)
+  * Added procdump and procdump64 (#1382)
+  * Fixed heavy mutex contention in the labeler. (#1375)
+  * Add shellcode to CobaltStrike carver (#10) (#1373)
+  * Added an index rebuild command. (#1369)
+  * GUI artifact form was ignoring the friendly name attribute (#1368)
+  * Added a specialized form element for regex parameters. (#1367)
+  * Added a gRPC based remote datastore (#1366)
+  * Display all subauthorities for GUID in SRUM (#1365)
+  * Verify all gRPC peer certificates were signed by the Velociraptor CA (#1362)
+  * Implemented MemcacheFileDatastore - memory caching with file backend (#1361)
+  * Added new plugins to manipulate event tables easier. (#1355)
+  * Refactored in memory datastore to be more efficient. (#1353)
+  * Sync vfilter (#1351)
+  * Add both fqdn and hostname to the client search table (#1350)
+  * BUGFIX: Datastore on windows is unable to represent files with . (#1348)
+  * Added buffer_size parameter to parse_records_with_regex() (#1347)
+  * Propagate column types from artifact to flow notebook. (#1346)
+  * Cobalt parser update (#1345)
+  * Allow listener to not use file buffer. (#1344)
+  * Fix Deployment documentation link in README (#1343)
+  * Preserve uint64 types across Listener (#1341)
+  * Fix spelling (#1339)
+  * Refactored queue listener to preserve order. (#1340)
+  * Added a magic() VQL function (#1338)
+  * Fixed bug in CSS (#1337)
+
+-------------------------------------------------------------------
+Thu Jan 27 17:27:42 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.2~git0.8dd598b2:
+  * Update ese parser to fix timestamp bug
+  * Prepare final 0.6.2 release (#1363)
+  * Verify all gRPC peer certificates were signed by the Velociraptor CA
+  * Removed search index parallelism (#1358)
+  * Added new plugins to manipulate event tables easier. (#1355)
+  * Sync vfilter (#1351)
+  * Add both fqdn and hostname to the client search table (#1350)
+  * BUGFIX: Datastore on windows is unable to represent files with . (#1348)
+  * Added buffer_size parameter to parse_records_with_regex() (#1347)
+  * Propagate column types from artifact to flow notebook. (#1346)
+
+-------------------------------------------------------------------
+Thu Jan 06 20:14:39 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.2~git73.dc02b45e:
+  * Update PrivateKeys.yaml (#1459)
+  * Added recursion_callback option to the glob plugin (#1461)
+  * Added config wizard for multi-frontend configuration (#1460)
+  * Calculate the sha256 hash of the offline container. (#1458)
+  * Artifact inspection GUI now allows pivot. (#1457)
+  * Client certs can now be specified in the config file. (#1456)
+  * New Upload File Form element (#1455)
+  * Added a sparse accessor (#1453)
+  * Hunt wizard estimates clients affected (#1452)
+  * Make the interrogation process customizable. (#1451)
+
+-------------------------------------------------------------------
+Tue Dec 21 20:25:43 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Disable Windows artifacts.  We don't target Windows endpoints and
+  the queries clutter the GUI.
+
+-------------------------------------------------------------------
+Thu Dec 16 14:12:05 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Switch to using master branch via service files.
+  - Added update-vendoring.sh to update the nodejs and go dependencies
+    after version update.
+  - Patch the version string to reflect the package version instead
+    of an indistinguishable <next-tag>-dev.
+
+-------------------------------------------------------------------
+Thu Dec  2 01:46:34 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Initial packaging.

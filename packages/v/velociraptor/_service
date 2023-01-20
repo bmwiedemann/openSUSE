@@ -1,0 +1,21 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/jeffmahoney/linux-security-sensor</param>
+    <param name="filename">velociraptor</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="revision">sensor-base-0.6.7</param>
+    <param name="scm">git</param>
+    <param name="parent-tag">v0.6.7-4</param>
+    <param name="versionrewrite-pattern">v([0-9\.]*)-(.*)</param>
+    <param name="versionrewrite-replacement">\1.\2</param>
+    <param name="changesgenerate">enable</param>
+    <param name="submodules">enable</param>
+  </service>
+  <service name="set_version" mode="manual" />
+  <service mode="buildtime" name="tar"/>
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+

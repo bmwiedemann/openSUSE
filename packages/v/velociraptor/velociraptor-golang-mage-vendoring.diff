@@ -1,0 +1,22 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: [PATCH] velociraptor: add dummy main function for mage
+
+Mage won't pull in the full dependencies without there being a real
+import.  This isn't used in the executable, since that's in bin/, but it
+will be used for 'go mod vendor'
+---
+ dummy.go |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+--- /dev/null
++++ b/dummy.go
+@@ -0,0 +1,9 @@
++// +build useless
++package main
++
++import (
++	"github.com/magefile/mage"
++)
++
++func main() {
++}
