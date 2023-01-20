@@ -125,6 +125,8 @@ class FWTopics(object):
                 for f in self.modinfo(ko, 'alias'):
                     if f == '':
                         continue
+                    if re.match(r'^acpi', f):
+                        f = re.sub(r'([^:]*):([^:]*)$', r'\1%3A\2', f)
                     if self.aliases.get(name) == None:
                         self.aliases[name] = []
                     if not f in self.aliases[name]:

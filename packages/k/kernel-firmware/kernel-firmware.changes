@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 18 13:26:13 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Correct alias list for ACPI entries (bsc#1207211)
+
+-------------------------------------------------------------------
 Thu Jan 12 10:49:08 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230110 (git commit a1ad1d5b5062):
+  (preparation for jsc#PED-1167, jsc#PED-1169, jsc#PED-1171)
   * amdgpu: add VCN4.0.4 firmware from amd-5.4
   * amdgpu: add SMU13.0.7 firmware from amd-5.4
   * amdgpu: add SDMA6.0.2 firmware from amd-5.4
