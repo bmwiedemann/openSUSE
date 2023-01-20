@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 17 11:52:18 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.4.4.2:
+  https://wiki.documentfoundation.org/Releases/7.4.4/RC2
+  https://wiki.documentfoundation.org/Releases/7.4.4/RC1
+- Updated bundled dependencies:
+  * poppler-22.09.0.tar.xz -> poppler-22.12.0.tar.xz
+
+-------------------------------------------------------------------
 Fri Jan  6 20:46:55 UTC 2023 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1204825 - LO-L3: PPTX: text box shows that does not show in PowerPoint

@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.4.3.2
+Version:        7.4.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -279,7 +279,7 @@ ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_79_0.tar.xz
-Source2023:     %{external_url}/poppler-22.09.0.tar.xz
+Source2023:     %{external_url}/poppler-22.12.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.11.tar.gz
 %else
 BuildRequires:  libboost_date_time-devel
@@ -1402,18 +1402,14 @@ cp uno.py %{buildroot}%{_libdir}/%{name}/program/uno.py
 %py3_compile %{buildroot}/%{_libdir}/libreoffice/sdk/examples/python/
 # Add python cache dir to respective filelist
 for filelist in file-lists/*.txt; do
-    echo "filelist: ${filelist}"
     # For each python file in the filelist
     for pyfile in `cat "${filelist}" | grep '\.py$'`; do
-        echo "pyfile: ${pyfile}"
         pydir=`dirname ${pyfile}`
         pyname=`basename ${pyfile}`
         # If the bytecode for this python file exists, add it to the filelist
         if compgen -G "%{buildroot}${pydir}/__pycache__/${pyname%.*}*.pyc" > /dev/null; then
             echo "%dir ${pydir}/__pycache__/" >> "${filelist}"
-            #echo "%dir ${pydir}/__pycache__/" >> pycache.txt
             echo "${pydir}/__pycache__/${pyname%.*}*.pyc" >> "${filelist}"
-            echo "adding: ${pydir}/__pycache__/${pyname%.*}*.pyc"
         fi
     done
 done
