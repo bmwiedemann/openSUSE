@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname papi
-%define ver 6.0.0.1
-%define _ver 6_0_0_1
+%define ver 7.0.0
+%define _ver 7_0_0
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -261,6 +261,7 @@ EOF
 %{p_bindir}/papi_component_avail
 %{p_bindir}/papi_error_codes
 %{p_bindir}/papi_multiplex_cost
+%{p_bindir}/papi_hardware_avail
 %{p_bindir}/papi_hl_output_writer.py
 %{p_datadir}/%{pname}
 %{p_bindir}/papi_avail
@@ -280,9 +281,12 @@ EOF
 %{p_includedir}/fpapi.h
 %{p_includedir}/papi.h
 %{p_includedir}/papiStdEventDefs.h
+%{p_includedir}/sde_lib.h
+%{p_includedir}/sde_lib.hpp
 %doc %{p_mandir}/man3/*.gz
 %doc %{p_mandir}/man1/*
 %{p_libdir}/libpapi.so
+%{p_libdir}/libsde.so
 %{p_libdir}/pkgconfig/*.pc
 
 %files devel-static
@@ -292,5 +296,6 @@ EOF
 %files -n %{libname %_ver}
 %defattr(-,root,root)
 %{p_libdir}/libpapi.so.*
+%{p_libdir}/libsde.so.*
 
 %changelog

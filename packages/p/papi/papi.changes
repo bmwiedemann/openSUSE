@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jan 17 18:19:14 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Update to version 7.0 (jsc#PED-3032)
+
+  - See https://icl.utk.edu/papi/news/news.html?id=384 for more detail on the following major
+    changes in this release.
+
+    * A new "intel_gpu" component with monitoring capabilities support for Intel GPUs (including 
+      GPU hardware events and memory performance metrics.
+
+    * A new "sysdetect" component for detecting a machine's architectural details.
+
+    * A major redesign of the "rocm" component for advanced monitoring features for the latest AMD 
+      GPUs. 
+
+    * Support for NVIDIA compute capability 7.0 and greater. 
+
+    * A significant redesign of the "sde" component into two separate entities
+
+    * A new C++ interface for "libsde,"
+
+    * New Counter Analysis Toolkit (CAT) benchmarks and refinements of PAPI's CAT data analysis.
+
+    * Support for FUGAKU's A64FX Arm architecture
+
+-------------------------------------------------------------------
 Fri Mar  4 21:14:30 UTC 2022 - Tony Jones <tonyj@suse.com>
 
 - Change papi_hl_output_writer.py script to reference Python3 (bsc#1196709)
