@@ -252,4 +252,16 @@
     <comment></comment>
     <requestid>922564</requestid>
   </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>24c27befab9df309207ad9dfac12f89c</srcmd5>
+    <version>5.8</version>
+    <time>1674232640</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2022-4515.patch: fixes arbitrary command execution via
+  a tag file with a crafted filename (bsc#1206543, CVE-2022-4515)
+- Stop resetting ctags update-alternative priority back to auto.
+  These are admin settings.
+- Remove u-a links in the correct scriptlet</comment>
+    <requestid>1059377</requestid>
+  </revision>
 </revisionlist>

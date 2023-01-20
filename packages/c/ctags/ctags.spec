@@ -1,7 +1,7 @@
 #
 # spec file for package ctags
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ Patch17:        0017-Go-language-support.patch
 Patch18:        0018-SUSE-man-page-changes.patch
 Patch19:        0019-Do-not-include-build-time-in-binary.patch
 Patch20:        ctags-gcc11.patch
+Patch21:        CVE-2022-4515.patch
 BuildRequires:  update-alternatives
 Requires(pre):  update-alternatives
 Requires(post): update-alternatives
@@ -84,12 +85,11 @@ ln -s %{_mandir}/man1/ctags.1%{ext_man}              %{buildroot}%{_sysconfdir}/
 
 %post
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
-update-alternatives --install  %{_bindir}/ctags ctags %{_bindir}/ctags-exuberant 20 \
+update-alternatives --install %{_bindir}/ctags ctags %{_bindir}/ctags-exuberant 20 \
   --slave %{_mandir}/man1/ctags.1.gz ctags.1 %{_mandir}/man1/ctags-exuberant.1.gz
-update-alternatives --auto ctags
 
-%preun
-if [ $1 -eq 0 ]; then
+%postun
+if [ ! -f %{_bindir}/ctags-exuberant ]; then
   update-alternatives --remove ctags %{_bindir}/ctags-exuberant
 fi
 

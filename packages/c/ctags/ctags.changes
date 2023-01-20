@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 18 13:06:30 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- CVE-2022-4515.patch: fixes arbitrary command execution via
+  a tag file with a crafted filename (bsc#1206543, CVE-2022-4515)
+- Stop resetting ctags update-alternative priority back to auto.
+  These are admin settings.
+- Remove u-a links in the correct scriptlet
+
+-------------------------------------------------------------------
 Mon Sep 27 08:59:35 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build with gcc 11
