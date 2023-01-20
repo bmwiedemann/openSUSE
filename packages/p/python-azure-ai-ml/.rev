@@ -49,4 +49,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1040528 from glaubitz)</comment>
     <requestid>1040638</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b08effe301d943de6a53bb09f4b2be1f</srcmd5>
+    <version>1.3.0</version>
+    <time>1674232787</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1059904 from glaubitz)</comment>
+    <requestid>1059958</requestid>
+  </revision>
 </revisionlist>
