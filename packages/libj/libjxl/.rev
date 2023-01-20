@@ -42,4 +42,12 @@ Leap 15.5
   * 0001-Remove-LCMS-mutex.patch (forwarded request 1043745 from alarrosa)</comment>
     <requestid>1043748</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f26f2d822eb77941915e3ba6a194a75</srcmd5>
+    <version>0.8.0</version>
+    <time>1674232660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.8</comment>
+    <requestid>1059421</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 18 15:13:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8
+  * API: new function JxlDecoderSetImageBitDepth and
+    JxlEncoderSetFrameBitDepth to set the bit depth of buffers.
+  * encoder API: add an effort 10 option for lossless
+    compression; using this setting requires calling
+    JxlEncoderAllowExpertOptions.
+- Enable PNG utilities [boo#1205107]
+
+-------------------------------------------------------------------
 Mon Dec 19 12:35:30 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch (applied reversed) to revert the requirement for an

@@ -1,7 +1,7 @@
 #
 # spec file for package libjxl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libjxl
-%define lname   libjxl0_7
-Version:        0.7.0
+%define lname   libjxl0_8
+Version:        0.8.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libhwy) >= 1.0
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
 
 %description
 JPEG XL is a raster-graphics file format that supports both lossy and
