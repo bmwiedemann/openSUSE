@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 19 10:10:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.1
+  * Fixes an error with the Pydocstyle 6.2.0+
+  * Includes missing Pylint "information" category.
+  * Improves Jedi file completions for directories.
+- Drop python-lsp-server-pr327-sys-executable.patch
+- Add pylsp-pr340-pydocstyle-6.3.patch
+  gh#python-lsp/python-lsp-server#340
+
+-------------------------------------------------------------------
 Fri Dec 30 09:46:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.0

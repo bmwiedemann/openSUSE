@@ -17,14 +17,14 @@
 
 
 Name:           python-python-lsp-server
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-lsp-server-pr327-sys-executable.patch gh#python-lsp/python-lsp-server#327
-Patch1:         python-lsp-server-pr327-sys-executable.patch
+# PATCH-FIX-UPSTREAM pylsp-pr340-pydocstyle-6.3.patch gh#python-lsp/python-lsp-server#340
+Patch1:         pylsp-pr340-pydocstyle-6.3.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -43,13 +43,13 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module pydocstyle >= 2.0.0}
-BuildRequires:  %{python_module pylint >= 2.5.0}
+BuildRequires:  %{python_module pydocstyle >= 6.3.0 with %python-pydocstyle < 6.4.0}
+BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 1.2.0}
 BuildRequires:  %{python_module ujson >= 3.0.0}
-BuildRequires:  %{python_module whatthepatch}
+BuildRequires:  %{python_module whatthepatch >= 1.0.2 with %python-whatthepatch < 2}
 BuildRequires:  %{python_module yapf}
 # /SECTION
 BuildRequires:  fdupes
@@ -61,11 +61,14 @@ Requires:       python-ujson >= 3.0.0
 Requires:       (python-jedi >= 0.17.2 with python-jedi < 0.19.0)
 Suggests:       python-autopep8 >= 1.6.0
 Conflicts:      python-autopep8 >= 1.7.0
-Suggests:       python-pydocstyle >= 2.0.0
+Suggests:       python-pydocstyle >= 6.3.0
+Conflicts:      python-pydocstyle >= 6.4.0
 Suggests:       python-pylint >= 2.5.0
+Conflicts:      python-pylint >= 3
 Suggests:       python-rope >= 1.2.0
 Suggests:       python-yapf
-Suggests:       python-whatthepatch
+Suggests:       python-whatthepatch >= 1.0.2
+Conflicts:      python-whatthepatch >= 2
 # SECTION flake8 pins
 Suggests:       python-flake8 >= 5.0.0
 Conflicts:      python-flake8 >= 7

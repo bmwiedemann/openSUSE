@@ -188,4 +188,18 @@
   * gh#python-lsp/python-lsp-server#327 (forwarded request 1045987 from bnavigator)</comment>
     <requestid>1045989</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b9a1bdbd28de1f19c7a6bacfeb0f3db5</srcmd5>
+    <version>1.7.1</version>
+    <time>1674232714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1
+  * Fixes an error with the Pydocstyle 6.2.0+
+  * Includes missing Pylint &quot;information&quot; category.
+  * Improves Jedi file completions for directories.
+- Drop python-lsp-server-pr327-sys-executable.patch
+- Add pylsp-pr340-pydocstyle-6.3.patch
+  gh#python-lsp/python-lsp-server#340 (forwarded request 1059821 from bnavigator)</comment>
+    <requestid>1059822</requestid>
+  </revision>
 </revisionlist>
