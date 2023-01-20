@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:02:56 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.21.2.
+  * Fix early file close bug in dulwich.pack.extend_pack. (@jelmer)
+- Update to version 0.21.1.
+  * Factor out dulwich.pack.extend_pack. (@jelmer)
+- Update to version 0.21.0.
+  * Pack internals have been significantly refactored, including significant low-level API changes.
+    As a consequence of this, Dulwich now reuses pack deltas when
+    communicating with remote servers, which brings a big boost to network performance. (@jelmer)
+  * Add 'pack-refs' command. (@danchr)
+  * Handle more errors when trying to read a ref (@danchr)
+  * Allow for reuse of existing deltas while creating pack files (@stspdotname)
+  * cli: fix argument parsing for pack-objects --stdout (@stspdotname)
+  * cli: open pack-objects output files in binary mode to avoid write() error (@stspdotname)
+  * Bump minimum python version to 3.7. (@jelmer)
+  * honor no_proxy environment variable (#1098, @afaul)
+  * In HTTP Git Client, allow missing Content-Type. (@jelmer)
+  * Fix --pure builds (@jelmer, #1093)
+  * Allow passing abbrev to describe (#1084, @nanonyme)
+
+-------------------------------------------------------------------
 Mon Nov 21 17:53:09 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.20.50.
