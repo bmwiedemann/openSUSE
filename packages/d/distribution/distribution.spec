@@ -1,7 +1,7 @@
 #
 # spec file for package distribution
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source1:        registry-configuration.yml
 Source2:        registry.service
 Source4:        README-registry.SUSE
 Source10:       system-user-registry.conf
+Patch1:         aws-sdk-1.42.27-update.patch
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
@@ -65,7 +66,7 @@ Registry server for Docker (hosting/delivering of repositories and images).
 
 %prep
 %setup -q -n distribution-%{version}
-%autopatch -p1
+%patch1 -p2
 cp %{SOURCE4} .
 
 %build

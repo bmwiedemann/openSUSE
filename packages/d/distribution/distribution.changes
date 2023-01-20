@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 13 11:06:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add aws-sdk-1.42.27-update.patch to include AWS_ROLE_ARN
+  support (SD-106252) 
+
+-------------------------------------------------------------------
 Fri Sep  9 14:16:41 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Explicitly require nologin shell which is needed for registry
