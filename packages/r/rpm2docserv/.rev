@@ -132,4 +132,14 @@
 - Fix building on Leap 15.4</comment>
     <requestid>1039537</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>446e8de6b9085e590a5f2b2661715f81</srcmd5>
+    <version>20230119.8224a04</version>
+    <time>1674232733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230119.8224a04:
+  * Update dependencies
+  * Remove &quot;index.html&quot; from URLs</comment>
+    <requestid>1059848</requestid>
+  </revision>
 </revisionlist>

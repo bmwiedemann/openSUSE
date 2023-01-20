@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 19 17:58:03 UTC 2023 - kukuk@suse.com
+
+- Update to version 20230119.8224a04:
+  * Update dependencies
+  * Remove "index.html" from URLs
+
+-------------------------------------------------------------------
 Fri Dec  2 10:12:16 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update vendor dir

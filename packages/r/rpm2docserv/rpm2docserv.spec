@@ -1,7 +1,7 @@
 #
 # spec file for package rpm2docserv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           rpm2docserv
-Version:        20221129.a10bb7c
+Version:        20230119.8224a04
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
