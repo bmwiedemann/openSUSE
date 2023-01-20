@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 12:46:06 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.1.1:
+   - scrub: fix warnings/errors due to missing include
+   - debian: Add missing pkg version to the changelog
+
+-------------------------------------------------------------------
 Wed Jan  4 17:38:34 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.1.0:
