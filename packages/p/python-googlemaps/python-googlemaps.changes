@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 19 15:46:02 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 4.7.3
+  * correct lazy attribute inside logger
+  * Adds support for Address Validation API
+  * Geocode by place id
+  * make Places textsearch query parameter optional 
+
+-------------------------------------------------------------------
 Tue Jun  9 12:21:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 4.4.1
