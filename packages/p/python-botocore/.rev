@@ -1074,4 +1074,12 @@
   * api-change:``logs``: Update to remove sequenceToken as a required field in</comment>
     <requestid>1057003</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>7534fe92369e6192ffd8cd974d937e4a</srcmd5>
+    <version>1.29.52</version>
+    <time>1674232692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059614</requestid>
+  </revision>
 </revisionlist>
