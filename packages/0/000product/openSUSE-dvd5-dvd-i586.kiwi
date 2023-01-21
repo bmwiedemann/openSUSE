@@ -1100,7 +1100,6 @@
       <repopackage name="kernel-firmware-ti"/>
       <repopackage name="kernel-firmware-ueagle"/>
       <repopackage name="kernel-firmware-usb-network"/>
-      <repopackage name="kernel-pae" arch="i586,i686"/>
       <repopackage name="kernel-pae" arch="i586,i686" onlyarch="i686"/>
       <repopackage name="kernel-pae-devel" arch="i586,i686" onlyarch="i686"/>
       <repopackage name="kexec-tools"/>

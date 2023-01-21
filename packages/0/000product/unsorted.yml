@@ -8401,7 +8401,8 @@ unsorted:
   - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa: [x86_64] 
-  - kernel-pae-devel: [i586] # devel package of dvd:kernel-pae 
+  - kernel-pae: [i586] 
+  - kernel-pae-devel: [i586] 
   - kernel-pae-vdso: [i586] 
   - kernel-source 
   - kernel-source-vanilla 
@@ -11693,9 +11694,9 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-appliance: [x86_64] 
   - libguestfs-bash-completion: [x86_64] 
-  - libguestfs-devel: [x86_64] # devel package of dvd:libguestfs0 
+  - libguestfs-devel: [x86_64] 
   - libguestfs-gobject-1_0: [x86_64] 
-  - libguestfs-gobject-devel: [x86_64] # devel package of dvd:libguestfs0 
+  - libguestfs-gobject-devel: [x86_64] 
   - libguestfs-inspect-icons: [x86_64] 
   - libguestfs-man-pages-ja: [x86_64] 
   - libguestfs-man-pages-uk: [x86_64] 
@@ -18326,7 +18327,7 @@ unsorted:
   - ocaml-lablgtk3 
   - ocaml-lablgtk3-devel 
   - ocaml-libguestfs: [x86_64] 
-  - ocaml-libguestfs-devel: [x86_64] # devel package of dvd:libguestfs0 
+  - ocaml-libguestfs-devel: [x86_64] 
   - ocaml-libvirt 
   - ocaml-libvirt-devel 
   - ocaml-logs 
