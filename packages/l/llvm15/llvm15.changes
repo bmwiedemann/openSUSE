@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 14 14:06:38 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 15.0.7.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Build stage 2 with -fno-plt on x86_64: since building with
+  -Wl,-z,now the PLT stubs are basically dead code, so eliminating
+  the indirection reduces the number of branches and improves code
+  locality for the quite frequent cross-DSO calls.
+- Add llvm-workaround-superfluous-branches.patch: hints LLVM to
+  eliminate branches until gh#llvm/llvm-project#28804 is solved.
+
+-------------------------------------------------------------------
 Sun Dec  4 21:43:38 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 15.0.6.

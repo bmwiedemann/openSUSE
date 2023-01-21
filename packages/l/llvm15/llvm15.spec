@@ -1,7 +1,7 @@
 #
 # spec file for package llvm15
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 15.0.6
+%define _relver 15.0.7
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  15.0
 %define _sonum  15
 %define _itsme15 1
 # Integer version used by update-alternatives
-%define _uaver  1506
+%define _uaver  1507
 %define _soclang 13
 %define _socxx  1
 
@@ -367,6 +367,8 @@ Patch13:        llvm-normally-versioned-libllvm.patch
 Patch14:        llvm-do-not-install-static-libraries.patch
 # PATCH-FIX-OPENSUSE (or -UPSTREAM?): we disable RPATHs, but the test driver drops LD_LIBRARY_PATH.
 Patch15:        libcxx-test-library-path.patch
+# PATCH-FIX-UPSTREAM (?): Work around gh#llvm/llvm-project#28804 by hinting with __builtin_assume.
+Patch16:        llvm-workaround-superfluous-branches.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -807,6 +809,7 @@ This package contains the development files for Polly.
 %patch5 -p1
 %patch13 -p1
 %patch14 -p1
+%patch16 -p2
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
@@ -979,6 +982,15 @@ if ! ./stage1/bin/clang -c -xc -Werror -fstack-clash-protection -o /dev/null /de
 then
     flags=$(echo %flags | sed 's/-fstack-clash-protection//');
 fi
+# 4) Add -fno-plt: With -Wl,-z,now the PLT is basically dead code, so we can
+#    now go the direct route for quite frequent cross-DSO calls. This reduces
+#    branches in a typical execution by ~5 percent, instructions/cycles
+#    by ~4 percent, and reduces pressure on the instruction cache. We do this
+#    only on x86_64 where it doesn't increase the code size significantly.
+%ifarch x86_64
+flags="$flags -fno-plt"
+%endif
+
 CFLAGS=$flags
 CXXFLAGS=$flags
 
