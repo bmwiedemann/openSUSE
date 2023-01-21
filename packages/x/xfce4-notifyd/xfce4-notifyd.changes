@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jan 21 13:28:41 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.7.1:
+  * Fix incorrect usage of XDT_CHECK_OPTIONAL_PACKAGE
+  * Properly validate markup
+  * Update glade file to remove use of deprecated properties
+  * Support the 'action-icons' hint
+  * Add support for notification sounds
+  * Clean up notification ID storage
+  * Return replaces_id if provided
+  * Remove xfconf prop name define duplication
+  * Add ability to disallow certain apps to send critical notifications
+  * Add a context menu that allows individual known application deletion
+  * Fix a slide-out loop when the mouse pointer is in the way
+  * Add option to hide panel button when no unread notifications
+  * Remove more pre-GTK-3.22 guards
+  * Bump GTK minimum to 2.22 and remove/ifdef X11-isms
+  * Support Wayland
+  * Don't set a nonsensical icon name
+  * Clean up xfce_notify_window_set_icon_pixbuf()
+  * xfce_notify_window_set_icon_pixbuf() shouldn't take ownership
+  * Move urgency hint fetch inside check for correct type
+  * DRY up the configuration handling
+  * Add pref to show summary & body with gauge values
+  * Update glade file to latest version
+  * settings: Disable single click to mute apps
+    (gxo#apps/xfce4-notifyd#5)
+  * Do not treat zero expiration time as urgent
+  * Add compile_flags.txt generation
+  * Fix incorrect icon name for preview notification
+  * Fix blurry icons when UI scale factor > 1
+  * build: Let xdt-depends.m4 macros set GLib macros
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 18 14:49:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.5:

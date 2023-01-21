@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-notifyd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.6.5
+Version:        0.7.1
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
