@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 19 16:21:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.3
+  * Add RearrangeToOddPlusEven, Xor3, 8-bit CompressStore,
+    HWY_ASSUME
+  * Add contrib/bit_pack for 8/16-bit lanes
+  * Update for new RVV intrinsics; faster WASM min/max and
+    extmul/q15mul
+
+-------------------------------------------------------------------
 Thu Dec 15 11:32:45 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added missing baselibs.conf so that 32bit library packages

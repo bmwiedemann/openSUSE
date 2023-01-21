@@ -1,7 +1,7 @@
 #
 # spec file for package highway
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lname libhwy1
 
 Name:           highway
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        C++ library providing SIMD/vector intrinsics
 License:        Apache-2.0

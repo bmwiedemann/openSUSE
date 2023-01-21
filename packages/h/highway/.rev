@@ -55,4 +55,12 @@
     <comment>I forgot to add baselibs.conf as a source in the .spec file last time, sorry! (forwarded request 1043358 from DarkWav)</comment>
     <requestid>1043365</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>60ce6d258c49a99f98811d8e90a49980</srcmd5>
+    <version>1.0.3</version>
+    <time>1674324589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.3</comment>
+    <requestid>1059834</requestid>
+  </revision>
 </revisionlist>
