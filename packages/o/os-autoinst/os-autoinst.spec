@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1672996991.b66759a
+Version:        4.6.1674226658.ae134c9
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -211,6 +211,8 @@ export NO_BRP_STALE_LINK_ERROR=yes
 
 %check
 export CI=1
+# set TESSDATA_PREFIX for 02-ocr.t
+export TESSDATA_PREFIX="%{_datadir}/tessdata/"
 # account for sporadic slowness in build environments
 # https://progress.opensuse.org/issues/89059
 export OPENQA_TEST_TIMEOUT_SCALE_CI=20
