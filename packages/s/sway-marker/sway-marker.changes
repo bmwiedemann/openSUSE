@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 20 11:30:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3:
+  * Improved key handling: non-unicode keys (including modifier keys
+    like ctrl, alt and super) are now ignored. You can still close
+    the dialog with ESC.
+  * Updated dependencies. New clap version brings an improved cli help menu.
+- Use service to create vendor tarball
+- Move to zst
+
+-------------------------------------------------------------------
 Fri Apr 29 18:30:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.2:
