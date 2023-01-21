@@ -1,7 +1,7 @@
 #
 # spec file for package libxmlb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
 URL:            https://github.com/hughsie/libxmlb
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source9:        baselibs.conf
 # Enable when/if libstemmer becomes available in openSUSE (+ in meson call)
 #BuildRequires:  libstemmer-devel
 BuildRequires:  %{python_module setuptools}
@@ -37,6 +38,7 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(liblzma)
 # Needed for the self tests
 BuildRequires:  pkgconfig(shared-mime-info)
+%{?suse_build_hwcaps_libs}
 
 %description
 XML is slow to parse and strings inside the document cannot be
