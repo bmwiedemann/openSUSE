@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 21 11:18:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 233:
+  * Split packaging metadata into an extras_require.json file instead of using
+    the pep517 and the pip modules directly. This was causing build failures if
+    not using a virtualenv and/or building without internet access.
+  * Add an external tool reference for GNU Guix (lzip).
+  * Drop an external tool reference for GNU Guix (pedump).
+  * Split inline Python code in shell script to generate test dependencies to a
+    separate Python script.
+  * No need for "from __future__ import print_function" import in setup.py
+    anymore.
+  * Comment and tidy the new extras_require.json handling.
+
+-------------------------------------------------------------------
 Wed Jan 18 10:05:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 232:
