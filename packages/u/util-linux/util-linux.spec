@@ -339,6 +339,8 @@ Conflicts:      util-linux < 2.25
 # uuid-runtime appeared in SLE11 SP1 to SLE11 SP3
 Provides:       uuid-runtime = %{version}
 Obsoletes:      uuid-runtime <= 2.19.1
+Requires:       group(uuidd)
+Requires:       user(uuidd)
 %systemd_requires
 
 %description -n uuidd

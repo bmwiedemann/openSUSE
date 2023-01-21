@@ -4,6 +4,11 @@ Wed Jan 11 07:58:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 - Replace usage of deprecated fgrep with grep -F.
 
 -------------------------------------------------------------------
+Mon Jan  9 18:19:38 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- %dir /var/lib/libuuid/ is owned by uuidd:uuidd but no such user are required.
+
+-------------------------------------------------------------------
 Mon Jan  9 16:13:18 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Move /var/lib/libuuid/ ownership exclusively to uuidd (boo#1206690)
