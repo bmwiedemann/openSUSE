@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jan 20 10:59:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.15.0
+  * This release of Sherpa includes various enhancements,
+    documentation updates,  bug fixes, and infrastructure changes.
+  ## Enhancements:
+  * Improved validation of arguments when creating Data objects:
+    - arrays sent to Data objects are now converted to ndarrays
+    - the independent axis is now made read-only
+    - the size of a data object is now fixed.
+  * Filter setting with notice/ignore are reported to the screen
+    for the users of the UI layer.
+  * Increased test coverage for plotting
+  ## Documentation changes:
+  * updated readthedocs to use pip and pytest instead of setup.py
+  * several updates to documentation, including updates to
+    fake_pha, calc_ftest, calc_mlr
+  ## Infrastructure changes:
+  * Drop support for Python 3.7
+  * Updates to start creating Python 3.10 Conda packages.
+  * Use Numpy 1.20 for Python 3.8/3.9 and Numpy 1.21 for Python
+    3.10.
+  * Moves toward PEP-517 with some distutils cleanup and more
+    configuration moved from setup.py to setup.cfg
+  * Various improvements to the GitHub Actions and GitLab workflows
+  ## Bug fixes:
+  * Ensure chi2xspecvar errors match XSPEC when 0 counts are
+    present during background subtraction
+  * Remove model instances from the global symbol table when clean
+    is called
+  * Addresses new warnings in the tests for Matplotlib 3.6.0 and
+    AstroPy 5.1
+  * Minor copy and paste error in fake_pha docstring
+  * Test issues in test_fake_pha.py due to randomness
+  ## Caveats
+  * There are known issues (#1602, #1605, #1606) in the
+    histogram1d/histogram2d functions leading to failures which
+    were not fully addressed in this release (see the failed case
+    in the second histogram1d example). This is not the Sherpa core
+    functionality and numpy.histogram can be used if needed.
+- Drop reproducible.patch: the patched fftw sources are not used in
+  this build.
+
+-------------------------------------------------------------------
 Mon Aug  8 15:24:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Sherpa requires a build with setuptools < 60:
