@@ -1,7 +1,7 @@
 #
 # spec file for package crash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %define whitepaper_version 2003
 %define scripts_version  2008-02-08
 %define gcore_version  2011-09-22
+%define trace_version  2021-02-08
 
 %if 0%{!?have_snappy:1}
 %if 0%{?suse_version} >= 1310
@@ -51,6 +52,10 @@ Name:           crash
 %else
 %define build_gcore 0
 %endif
+
+# Not limited by architecture for now
+%define build_trace 1
+
 %define build_kmp 1
 %if 0%{?suse_version} <= 1500 && 0%{?suse_version} >= 1315
 # kernel is missing on 32bit SLE - cannot build a KMP
@@ -73,6 +78,7 @@ Source5:        gcore-%{gcore_version}.tar.bz2
 Source6:        Module.supported
 Source7:        http://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz.sig
 Source8:        gnu.keyring
+Source9:        crash-trace-%{trace_version}.tar.bz2
 Source95:       get-kernel-flavors.sh
 Source96:       depmod.sh
 Source97:       mkinitrd.sh
@@ -256,6 +262,25 @@ Authors:
 
 %endif
 
+%if %build_trace
+
+%package trace
+Requires:       %{name} = %{version}
+Summary:        Trace extension for crash
+License:        GPL-2.0-or-later
+Group:          Development/Tools/Debuggers
+
+%description trace
+Crash extension to show or dump tracing information
+
+
+
+Authors:
+--------
+    Lai Jiangshan  <laijs@cn.fujitsu.com>
+
+%endif
+
 %package %kmp_pkg
 Summary:        Memory driver for the crash utility
 License:        GPL-2.0-only
@@ -325,6 +350,10 @@ cd -
 cd extensions
 tar xfvj %{S:5}
 cd -
+## crash-trace extension
+cd extensions
+tar xfvj %{S:9}
+cd -
 %patch12 -p1
 %patch16 -p1
 %patch29 -p1
@@ -372,6 +401,9 @@ install -m 0644 extensions/dminfo.so extensions/snap.so \
     $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
 %if %build_gcore
 install -m 0644 extensions/gcore.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
+%endif
+%if %build_trace
+install -m 0644 extensions/trace.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
 %endif
 %if %build_eppic
 install -m 0644 extensions/eppic.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
@@ -440,6 +472,13 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/crash/extensions/gcore.so
 %doc extensions/README.gcore
+%endif
+
+%if %build_trace
+
+%files trace
+%defattr(-,root,root)
+%{_libdir}/crash/extensions/trace.so
 %endif
 
 %changelog
