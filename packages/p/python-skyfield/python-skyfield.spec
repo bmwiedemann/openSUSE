@@ -1,7 +1,7 @@
 #
 # spec file for package python-skyfield
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define assayver    264.bb62d1f
 %define skip_python2 1
 Name:           python-skyfield
-Version:        1.43.1
+Version:        1.45
 Release:        0
 Summary:        Elegant astronomy for Python
 License:        MIT
