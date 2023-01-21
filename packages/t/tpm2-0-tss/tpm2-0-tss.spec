@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-0-tss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{ve
 # curl https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xd6b4d8bac7e0cc97dcd4ac7272e88b53f7a95d84 > tpm2-tss.keyring
 Source2:        tpm2-tss.keyring
 Source3:        baselibs.conf
+Patch0:         0001-tss2_rc-ensure-layer-number-is-in-bounds.patch
 BuildRequires:  /usr/sbin/groupadd
 BuildRequires:  acl
 BuildRequires:  doxygen
@@ -185,7 +186,7 @@ details of direct communication with the interface and protocol exposed by the
 daemon hosting the TPM2 reference implementation.
 
 %prep
-%autosetup -n tpm2-tss-%{version}
+%autosetup -p1 -n tpm2-tss-%{version}
 
 %build
 # configure looks for groupadd on PATH

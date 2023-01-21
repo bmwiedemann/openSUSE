@@ -427,4 +427,16 @@ This should be handled together with sr#769061</comment>
     <comment></comment>
     <requestid>988349</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>9e186423e3bf7bb9bea2b18a3e9d3846</srcmd5>
+    <version>3.2.0</version>
+    <time>1674324613</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-tss2_rc-ensure-layer-number-is-in-bounds.patch: fixes
+  CVE-2023-22745 (bsc#1207325): Buffer Overlow in TSS2_RC_Decode. Overly large
+  RC values passed to the TSS2 function could lead to memory overread or
+  memory overread.
+  This patch is not yet part of any upstream git tag.</comment>
+    <requestid>1059943</requestid>
+  </revision>
 </revisionlist>

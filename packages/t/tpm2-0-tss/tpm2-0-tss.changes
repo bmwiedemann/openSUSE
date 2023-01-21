@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 20 11:10:30 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add 0001-tss2_rc-ensure-layer-number-is-in-bounds.patch: fixes
+  CVE-2023-22745 (bsc#1207325): Buffer Overlow in TSS2_RC_Decode. Overly large
+  RC values passed to the TSS2 function could lead to memory overread or
+  memory overread.
+  This patch is not yet part of any upstream git tag.
+
+-------------------------------------------------------------------
 Mon Jul 11 11:19:36 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Revert "Add version the configuration file tpm2-tss-fapi.conf"
