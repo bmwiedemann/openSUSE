@@ -45,5 +45,6 @@ cp -av *.php "$b/%_datadir/php-mapi/"
 
 %files
 %_datadir/php-mapi/
+%license LICENSE.txt
 
 %changelog
