@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1673260278.dba37e72
+Version:        1.1674229328.3f0c40ae
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -80,6 +80,15 @@ Recommends:     os-autoinst-devel
 
 %description
 Metapackage that contains the dependencies of os-autoinst-distri-opensuse.
+
+%package worker
+Summary:        Convenience package pulling in os-autoinst-distri-openSUSE dependencies and the openQA worker
+Group:          Development/Tools/Other
+Requires:       %{name} = %{version}
+Requires:       openQA-worker
+
+%description worker
+Convenience package pulling in os-autoinst-distri-openSUSE dependencies and the openQA worker.
 
 %prep
 

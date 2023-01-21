@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 21 03:30:42 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency %{name} = %{version}
+- Added dependency openQA-worker
+
+-------------------------------------------------------------------
 Mon Jan  9 11:38:45 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(SemVer)
