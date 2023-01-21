@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,12 @@
 %define skip_python36 1
 %define modname debugpy
 Name:           python-%{modname}%{psuffix}
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
 URL:            https://github.com/microsoft/debugpy/
-Source:         https://github.com/microsoft/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/microsoft/debugpy/archive/v%{version}.tar.gz#/debugpy-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
