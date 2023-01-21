@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,15 @@
 %endif
 
 Name:           iptables
-Version:        1.8.8
+Version:        1.8.9
 Release:        0
 Summary:        IP packet filter administration utilities
 License:        Artistic-2.0 AND GPL-2.0-only
 Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/iptables/
 #Git-Clone:     git://git.netfilter.org/iptables
-Source:         https://netfilter.org/projects/iptables/files/%name-%version.tar.bz2
-Source2:        https://netfilter.org/projects/iptables/files/%name-%version.tar.bz2.sig
+Source:         https://netfilter.org/projects/iptables/files/%name-%version.tar.xz
+Source2:        https://netfilter.org/projects/iptables/files/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         iptables-batch.patch
@@ -194,6 +194,7 @@ rm -f "$b/%_libdir/"libiptc.so*
 install -m0755 iptables/iptables-apply "$b/%_sbindir/"
 rm -f "$b/%_libdir"/*.la
 rm -f "$b/%_sysconfdir/ethertypes" # provided by netcfg
+rm -f "$b/%_sysconfdir/xtables.conf" # packaging bug
 
 for i in iptables iptables-restore iptables-save ip6tables ip6tables-restore \
     ip6tables-save arptables arptables-restore arptables-save ebtables \
@@ -328,6 +329,7 @@ fi
 %_sbindir/ip6tables-*translate*
 %_sbindir/arptables-nft*
 %_sbindir/ebtables-nft*
+%_sbindir/ebtables-*translate*
 %_sbindir/xtables*
 %_mandir/man1/*tables*
 %_mandir/man8/*tables*

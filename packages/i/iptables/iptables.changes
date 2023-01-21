@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 12 22:58:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.9
+  * arptables-nft: Support --exact flag
+  * Support more chunk types in the "sctp" extension
+  * Print `--` in ip6tables' "opt" column for consistency with
+    iptables
+  * More verbose error messages if iptables-nft-restore fails
+  * Support `-p Length` with ebtables-nft,
+    needed for 802_3 extension.
+
+-------------------------------------------------------------------
 Thu Jul 21 12:43:02 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - add baselibs.conf for libip4tc2, will be needed by

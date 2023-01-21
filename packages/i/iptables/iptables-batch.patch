@@ -3,14 +3,14 @@
  iptables/iptables-batch.c |  468 ++++++++++++++++++++++++++++++++++++++++++++++
  2 files changed, 477 insertions(+)
 
-Index: iptables-1.8.6/iptables/Makefile.am
+Index: iptables-1.8.9/iptables/Makefile.am
 ===================================================================
---- iptables-1.8.6.orig/iptables/Makefile.am
-+++ iptables-1.8.6/iptables/Makefile.am
-@@ -138,3 +138,12 @@ uninstall-hook:
- 		); \
- 		( cd "$$dir" && rm -f ip6tables-apply ); \
+--- iptables-1.8.9.orig/iptables/Makefile.am
++++ iptables-1.8.9/iptables/Makefile.am
+@@ -147,3 +147,12 @@ uninstall-hook:
  	}
+ 
+ EXTRA_DIST = tests
 +
 +iptables_legacy_batch_SOURCES  = iptables-batch.c iptables.c xshared.c
 +iptables_legacy_batch_LDFLAGS  = ${xtables_legacy_multi_LDFLAGS}
@@ -20,10 +20,10 @@ Index: iptables-1.8.6/iptables/Makefile.am
 +ip6tables_legacy_batch_LDFLAGS = ${xtables_legacy_multi_LDFLAGS}
 +ip6tables_legacy_batch_LDADD   = ${xtables_legacy_multi_LDADD}
 +sbin_PROGRAMS += iptables-legacy-batch ip6tables-legacy-batch
-Index: iptables-1.8.6/iptables/iptables-batch.c
+Index: iptables-1.8.9/iptables/iptables-batch.c
 ===================================================================
 --- /dev/null
-+++ iptables-1.8.6/iptables/iptables-batch.c
++++ iptables-1.8.9/iptables/iptables-batch.c
 @@ -0,0 +1,468 @@
 +/*
 + * Author: Ludwig Nussel <ludwig.nussel@suse.de>
