@@ -1,7 +1,7 @@
 #
 # spec file for package liblscp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover  6
 Name:           liblscp
-Version:        0.9.6
+Version:        0.9.8
 Release:        0
 Summary:        LinuxSampler control protocol library
 License:        LGPL-2.1-or-later

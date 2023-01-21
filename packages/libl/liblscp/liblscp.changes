@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 20 16:25:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.8:
+  * Fixed broken pkg-config file (lscp.pc) generation (thanks
+    to Konstantin Voinov while on OBS multimedia::proaudio).
+
+-------------------------------------------------------------------
 Sun Apr 10 13:25:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.6:
