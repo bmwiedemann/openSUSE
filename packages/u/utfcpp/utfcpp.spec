@@ -1,7 +1,7 @@
 #
 # spec file for package utfcpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           utfcpp
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
@@ -63,6 +63,6 @@ make -C build test
 %{_includedir}/utf8cpp/utf8/cpp17.h
 %{_includedir}/utf8cpp/utf8/unchecked.h
 %dir %{_libdir}/cmake/utf8cpp
-%{_libdir}/cmake/utf8cpp/utf8cppConfig.cmake
+%{_libdir}/cmake/utf8cpp/utf8cpp*.cmake
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan  3 08:43:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v3.2.3:
+  * A minor release that includes a fix for Clang Compiler Warnings
+    and build system improvements
+
+-------------------------------------------------------------------
 Mon Nov  7 09:20:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:
