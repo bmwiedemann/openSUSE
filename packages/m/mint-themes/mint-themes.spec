@@ -1,7 +1,7 @@
 #
 # spec file for package mint-themes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   mint
 Name:           mint-themes
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Mint Themes
 License:        GPL-3.0-or-later
