@@ -112,6 +112,7 @@ unsorted:
   - Mesa-libGLESv2-devel-32bit: [x86_64] 
   - Mesa-libGLESv3-devel 
   - Mesa-libOpenCL 
+  - Mesa-libRusticlOpenCL 
   - Mesa-libd3d 
   - Mesa-libd3d-32bit: [x86_64] 
   - Mesa-libd3d-devel 
@@ -6363,6 +6364,7 @@ unsorted:
   - goldendict 
   - goldendict-lang 
   - gom-devel 
+  - gomuks 
   - gontributions 
   - goobox 
   - goobox-lang 
@@ -8399,8 +8401,7 @@ unsorted:
   - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa: [x86_64] 
-  - kernel-pae: [i586] 
-  - kernel-pae-devel: [i586] 
+  - kernel-pae-devel: [i586] # devel package of dvd:kernel-pae 
   - kernel-pae-vdso: [i586] 
   - kernel-source 
   - kernel-source-vanilla 
@@ -9302,6 +9303,8 @@ unsorted:
   - libLLVM14 
   - libLLVM14-32bit: [x86_64] 
   - libLLVM15-32bit: [x86_64] 
+  - libLLVMSPIRVLib-devel 
+  - libLLVMSPIRVLib15 
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
   - libLTO12 
@@ -11690,9 +11693,9 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-appliance: [x86_64] 
   - libguestfs-bash-completion: [x86_64] 
-  - libguestfs-devel: [x86_64] 
+  - libguestfs-devel: [x86_64] # devel package of dvd:libguestfs0 
   - libguestfs-gobject-1_0: [x86_64] 
-  - libguestfs-gobject-devel: [x86_64] 
+  - libguestfs-gobject-devel: [x86_64] # devel package of dvd:libguestfs0 
   - libguestfs-inspect-icons: [x86_64] 
   - libguestfs-man-pages-ja: [x86_64] 
   - libguestfs-man-pages-uk: [x86_64] 
@@ -12177,7 +12180,7 @@ unsorted:
   - libjthread1_3_3 
   - libjxl-devel 
   - libjxl-tools 
-  - libjxl0_7-32bit: [x86_64] 
+  - libjxl0_8-32bit: [x86_64] 
   - libjxrglue0 
   - libjxrglue0-32bit: [x86_64] 
   - libkadm5clnt7 
@@ -13306,7 +13309,7 @@ unsorted:
   - libpapi 
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
-  - libpapi_6_0_0_1-hpc 
+  - libpapi_7_0_0-hpc 
   - libparanoia1_0 
   - libparaview5_11 
   - libpari-gmp-tls8 
@@ -13853,7 +13856,7 @@ unsorted:
   - libradcli5 
   - librados-devel: [x86_64] # devel package of dvd:librbd1 
   - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
-  - libraft2 
+  - libraft3 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
   - libraqm-devel 
@@ -18323,7 +18326,7 @@ unsorted:
   - ocaml-lablgtk3 
   - ocaml-lablgtk3-devel 
   - ocaml-libguestfs: [x86_64] 
-  - ocaml-libguestfs-devel: [x86_64] 
+  - ocaml-libguestfs-devel: [x86_64] # devel package of dvd:libguestfs0 
   - ocaml-libvirt 
   - ocaml-libvirt-devel 
   - ocaml-logs 
@@ -19206,9 +19209,9 @@ unsorted:
   - papi-devel-static 
   - papi-hpc 
   - papi-hpc-devel 
-  - papi_6_0_0_1-hpc 
-  - papi_6_0_0_1-hpc-devel 
-  - papi_6_0_0_1-hpc-devel-static 
+  - papi_7_0_0-hpc 
+  - papi_7_0_0-hpc-devel 
+  - papi_7_0_0-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
   - paprefs 
@@ -20986,6 +20989,7 @@ unsorted:
   - php8-pgsql 
   - php8-phalcon 
   - php8-phar 
+  - php8-phpunit 
   - php8-posix 
   - php8-psr 
   - php8-readline 
@@ -22214,6 +22218,7 @@ unsorted:
   - python3-pvirsh 
   - python3-pwquality 
   - python3-pycadf 
+  - python3-pycdlib-common 
   - python3-pyexmdb 
   - python3-pyghmi 
   - python3-pyginac 
@@ -24497,6 +24502,7 @@ unsorted:
   - python310-pycairo-devel 
   - python310-pycapnp 
   - python310-pycdio 
+  - python310-pycdlib 
   - python310-pycha 
   - python310-pychm 
   - python310-pyclipper 
@@ -27868,6 +27874,7 @@ unsorted:
   - python38-pycapnp 
   - python38-pycares 
   - python38-pycdio 
+  - python38-pycdlib 
   - python38-pycha 
   - python38-pychm 
   - python38-pyclipper 
@@ -31268,6 +31275,7 @@ unsorted:
   - python39-pycapnp 
   - python39-pycares 
   - python39-pycdio 
+  - python39-pycdlib 
   - python39-pycha 
   - python39-pychm 
   - python39-pyclipper 
@@ -33393,6 +33401,7 @@ unsorted:
   - ruby3.1-devel-extra 
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
+  - ruby3.1-rubygem-d-installer 
   - ruby3.1-rubygem-d-installer-cli 
   - ruby3.1-rubygem-grpc 
   - rubygem-libguestfs: [x86_64] 
@@ -44033,6 +44042,9 @@ unsorted:
   - velero-plugin-for-gcp 
   - velero-plugin-for-microsoft-azure 
   - velero-zsh-completion 
+  - velociraptor: [x86_64] 
+  - velociraptor-client: [x86_64] 
+  - velociraptor-kafka-humio-gateway: [x86_64] 
   - velocity 
   - velocity-custom-parser-example 
   - velocity-demo 
