@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-headers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@
 # and the independently increasing toolchain release number (216).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk236
+Version:        1.6.1+sdk236+git7.d13b522
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-1.3.236.0.tar.gz
+#Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/sdk-1.3.236.0.tar.gz
+Source:         %name-%version.tar.xz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -47,7 +48,7 @@ registry. This includes:
 * The XML registry file.
 
 %prep
-%autosetup -n SPIRV-Headers-sdk-1.3.236.0
+%autosetup
 
 %build
 %cmake

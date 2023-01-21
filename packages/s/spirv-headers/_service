@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="filename">spirv-headers</param>
+		<param name="scm">git</param>
+		<param name="url">https://github.com/KhronosGroup/SPIRV-Headers</param>
+		<param name="revision">d13b522</param>
+		<param name="parent-tag">sdk-1.3.236.0</param>
+		<param name="versionformat">1.6.1+sdk236+git@TAG_OFFSET@.%h</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

@@ -257,4 +257,12 @@
     <comment>- Update to release 1.6.1+sdk236 (1d31a10)</comment>
     <requestid>1045166</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>aea033126fbef43f6f98d5f762c741f4</srcmd5>
+    <version>1.6.1+sdk236+git7.d13b522</version>
+    <time>1674324610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 1.6.1+sdk236+git7.d13b522</comment>
+    <requestid>1059920</requestid>
+  </revision>
 </revisionlist>
