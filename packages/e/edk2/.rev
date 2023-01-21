@@ -27,4 +27,26 @@
     <comment></comment>
     <requestid>978092</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e176d5a36e91b5ba10172ef751c478e7</srcmd5>
+    <version>0.0~20230118T162833~201514e6</version>
+    <time>1674324584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update edk2 to 202211:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202211
+- Update edk2-platforms to version 0.0~20230118T162833~201514e6
+- Update edk2-non-osi to version 0.0~20230118T154213~bc0b6bf
+- Update openssl to 1.1.1s
+- Update openssl.keyring
+- Add patch to fix build for Hikey/Hikey960:
+  * edk2-platforms-fix-Hikeys.patch
+- Drop upstream patch:
+  * edk2-7d74ea14.patch
+- Backport patch to fix build:
+  * edk2-7d74ea14.patch
+- Update edk2 to 202208:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202208
+</comment>
+    <requestid>1059829</requestid>
+  </revision>
 </revisionlist>

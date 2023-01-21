@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 19 13:54:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update edk2 to 202211:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202211
+- Update edk2-platforms to version 0.0~20230118T162833~201514e6
+- Update edk2-non-osi to version 0.0~20230118T154213~bc0b6bf
+- Update openssl to 1.1.1s
+- Update openssl.keyring
+- Add patch to fix build for Hikey/Hikey960:
+  * edk2-platforms-fix-Hikeys.patch
+- Drop upstream patch:
+  * edk2-7d74ea14.patch
+
+-------------------------------------------------------------------
+Thu Nov 10 08:07:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix build:
+  * edk2-7d74ea14.patch
+
+-------------------------------------------------------------------
+Thu Oct 27 15:05:10 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update edk2 to 202208:
+  * changelog: https://github.com/tianocore/edk2/releases/tag/edk2-stable202208
+
+-------------------------------------------------------------------
 Thu May 19 08:05:04 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to stable202205-rc1 to fix build with GCC12:

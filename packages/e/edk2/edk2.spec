@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define platform @BUILD_FLAVOR@%{nil}
-%define edk2_platforms_version 0.0~20220516T160923~03d1c51272
-%define edk2_non_osi_version 0.0~20220407T181805~6996a45
+%define edk2_platforms_version 0.0~20230118T162833~201514e6
+%define edk2_non_osi_version 0.0~20230118T154213~bc0b6bf
 %define brotli_version 0.0~20220110T130810~f4153a0
-%global openssl_version 1.1.1n
+%global openssl_version 1.1.1s
 
 # Build with edk2-non-osi
 %bcond_without edk2_non_osi
@@ -34,14 +34,14 @@
 %endif
 
 # This differs on RC
-%define archive_version 202205-rc1
+%define archive_version 202211
 
 %if "%{platform}" != "%{nil}"
 Name:           edk2-%{platform}
 %else
 Name:           edk2
 %endif
-Version:        0.0~20220516T160923~03d1c51272
+Version:        0.0~20230118T162833~201514e6
 Release:        0
 Summary:        Firmware required to run the %{platform}
 License:        SUSE-Firmware
@@ -54,6 +54,7 @@ Source3:        brotli-%{brotli_version}.tar.xz
 Source10:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source11:       https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source12:       openssl.keyring
+Patch999:       edk2-platforms-fix-Hikeys.patch
 #!BuildIgnore:  gcc-PIE
 %if "%{platform}" != "hikey" && "%{platform}" != "hikey960"
 BuildRequires:  acpica
@@ -81,6 +82,9 @@ Firmware required to run the %{platform}
 
 %prep
 %setup -q -n edk2-edk2-stable%{archive_version} -a 1 -a 2 -a 3
+pushd edk2-platforms-%{edk2_platforms_version}
+%patch999 -p1
+popd
 
 # Fix path of the brotli submodules
 cp -R brotli-%{brotli_version}/* BaseTools/Source/C/BrotliCompress/brotli/
