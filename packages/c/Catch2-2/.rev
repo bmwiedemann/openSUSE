@@ -7,4 +7,12 @@
     <comment>We need to maintain version 2.x of Catch2 at least until most upstream packages catch up to Catch2 &gt;= 3. See comments on sr#1005804 for rationale.</comment>
     <requestid>1010532</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>89718d60b97926c65fbcc67520a88728</srcmd5>
+    <version>2.13.10</version>
+    <time>1674324604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059877</requestid>
+  </revision>
 </revisionlist>
