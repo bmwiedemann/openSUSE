@@ -1,7 +1,7 @@
 #
 # spec file for package pleaser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%define pamdir %{_pam_vendordir}
+%else
+%define pamdir %{_sysconfdir}/pam.d
+%endif
 
 %bcond_without check
 
@@ -58,6 +64,20 @@ cp %{SOURCE2} .cargo/config
 %build
 RUSTFLAGS=%{rustflags} cargo build --release
 
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/please pam.d/pleaseedit ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/please pam.d/pleaseedit ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %post
 %set_permissions /usr/bin/please
 %set_permissions /usr/bin/pleaseedit
@@ -80,8 +100,8 @@ install -Dpm0600 -t %{buildroot}%{_sysconfdir}/ examples/please.ini
 
 mkdir -m 700 -p %{buildroot}%{_sysconfdir}/please.d
 
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-cat > %{buildroot}%{_sysconfdir}/pam.d/please << EOF
+mkdir -p %{buildroot}%{pamdir}
+cat > %{buildroot}%{pamdir}/please << EOF
 auth       include      common-auth
 account    include      common-account
 password   include      common-password
@@ -89,8 +109,7 @@ session    optional     pam_keyinit.so revoke
 session    include      common-session
 EOF
 
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-cat > %{buildroot}%{_sysconfdir}/pam.d/pleaseedit << EOF
+cat > %{buildroot}%{pamdir}/pleaseedit << EOF
 auth       include      common-auth
 account    include      common-account
 password   include      common-password
@@ -105,8 +124,13 @@ EOF
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pleaseedit
 %{_mandir}/man1/please.1*
 %{_mandir}/man5/please.ini.5*
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/please
+%{_pam_vendordir}/pleaseedit
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/please
 %config(noreplace) %{_sysconfdir}/pam.d/pleaseedit
+%endif
 %config(noreplace) %{_sysconfdir}/please.ini
 %config(noreplace) %{_sysconfdir}/please.d
 
