@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 20 13:15:26 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.20
+## 🐛 Bug Fixes
+ * (no effect on Element Desktop) (Part 2) fix crash on browsers that don't support `Array.at`
+
+-------------------------------------------------------------------
 Fri Dec 23 10:06:22 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.17
