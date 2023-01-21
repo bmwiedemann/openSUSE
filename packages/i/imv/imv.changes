@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 19 01:59:20 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to 4.4.0:
+  * Fixed critical error "wl_window: fix buffer size not divisible by scale"
+  * Added libgrapheme 2.0.0 as an alternative to icu
+  * Added '-w' option to specify window title at startup
+  * Added background rectangle behind the (possibly multiline) overlay text
+  * Changed chequered pattern to only over the image area for transparent images not the whole viewport
+  * Renamed imv-folder to imv-dir
+  * Fixed slideshow not always pausing correctly
+  * Fixed imv-dir showing as a duplicate imv in its desktop file
+  * Fixed whitespace bug in expanded title text
+  * Made imv-dir fall back to imv behaviour when given too many arguments
+  * Improved handling of paths from stdin
+  * Minor documentation and changelog improvements
+
+-------------------------------------------------------------------
 Tue Mar  8 04:29:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to 4.3.1:

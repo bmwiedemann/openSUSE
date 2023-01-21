@@ -1,7 +1,7 @@
 #
 # spec file for package imv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           imv
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Image viewer for X11/Wayland
 License:        GPL-2.0-or-later AND MIT
@@ -64,7 +64,7 @@ imv is a command line image viewer intended for use with tiling window managers.
 %doc AUTHORS README.md
 %{_bindir}/%{name}*
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/%{name}-folder.desktop
+%{_datadir}/applications/%{name}-dir.desktop
 %{_mandir}/man?/%{name}*
 %{_sysconfdir}/%{name}_config
 
