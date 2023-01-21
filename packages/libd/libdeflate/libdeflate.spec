@@ -19,12 +19,13 @@
 %define major 0
 %define libname %{name}%{major}
 Name:           libdeflate
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
 URL:            https://github.com/ebiggers/libdeflate
 Source:         https://github.com/ebiggers/libdeflate/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  zlib-devel
 
 %description
@@ -67,10 +68,11 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install PREFIX="%{_prefix}" LIBDIR="%{_libdir}"
+%cmake_install
 find %{buildroot} -type f -name "*.a" -delete -print
 
 # Delete libdeflate-gunzip and replace with symlink libdeflate-gzip to fix dwz break with hardlink.
@@ -79,7 +81,7 @@ rm %{buildroot}%{_bindir}/libdeflate-gunzip
 ln -s ./libdeflate-gzip %{buildroot}%{_bindir}/libdeflate-gunzip
 
 %check
-%make_build check
+%ctest
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -96,6 +98,7 @@ ln -s ./libdeflate-gzip %{buildroot}%{_bindir}/libdeflate-gunzip
 %doc README.md
 %{_includedir}/libdeflate.h
 %{_libdir}/libdeflate.so
+%{_libdir}/cmake/libdeflate
 %{_libdir}/pkgconfig/libdeflate.pc
 
 %changelog
