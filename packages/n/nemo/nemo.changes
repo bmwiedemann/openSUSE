@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 15 21:27:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.2:
+  * l10n: Update POT
+  * nemo-places-sidebar.c: Get the expander width from the current theme
+    instead of hard-coded.
+  * nemo-action: readlink before populate
+  * nemo-script-config-widget: monitor correct path for setup-dir-monitors
+  * nemo-window-pane.c: Use the button-release event for showing the current
+    location entry.
+  * Run generate_additional_file to populate desktop/action files with new
+    translations. 
+
+-------------------------------------------------------------------
 Mon Jan  2 19:28:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.1:
