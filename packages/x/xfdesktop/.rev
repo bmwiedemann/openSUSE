@@ -467,4 +467,12 @@
     <comment></comment>
     <requestid>1045180</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c7f6e07df290f6aa6dd1c636e09f4ac7</srcmd5>
+    <version>4.18.1</version>
+    <time>1674324763</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1060153 from tux93)</comment>
+    <requestid>1060158</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 21 13:33:34 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.18.1:
+  * Load removable volume information asynchronously
+  * Fix apps menu not popping up when menu icons disabled
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Dec 21 13:36:12 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Rebase xfdesktop-default-background-image.patch for Xfce 4.18

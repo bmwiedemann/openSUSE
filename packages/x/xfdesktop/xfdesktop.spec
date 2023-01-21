@@ -1,7 +1,7 @@
 #
 # spec file for package xfdesktop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfdesktop
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Desktop Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
