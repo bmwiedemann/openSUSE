@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
 BuildRequires:  %{python_module six >= 1.14.0}
 BuildRequires:  %{python_module toml >= 0.9.4}
+BuildRequires:  %{python_module tomli >= 2.0.1}
 BuildRequires:  %{python_module virtualenv >= 20.0.8}
 BuildRequires:  %{python_module wheel >= 0.29.0}
 BuildRequires:  fdupes
@@ -50,6 +51,7 @@ Requires:       python-pluggy >= 0.12.0
 Requires:       python-py >= 1.4.17
 Requires:       python-six >= 1.14.0
 Requires:       python-toml >= 0.9.4
+Requires:       python-tomli >= 2.0.1
 Requires:       python-virtualenv >= 20.0.8
 Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
 Requires(post): update-alternatives

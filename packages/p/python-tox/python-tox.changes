@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:30:37 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Add missing python-tomli dependency.
+
+-------------------------------------------------------------------
 Tue Oct 25 18:56:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove python2-related parts of the SPEC file.
@@ -6,7 +11,7 @@ Tue Oct 25 18:56:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 16:26:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.26.0 
+- Update to version 3.26.0
   Bugfixes
   * Fix fallback to python environment when isolated_build = true is set – by @Unrud #2474
   * Fixed SetuptoolsDeprecationWarning about using --global-option – by @adamchainz #2478
