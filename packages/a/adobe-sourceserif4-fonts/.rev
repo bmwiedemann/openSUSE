@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>912575</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4e54073c0debe026baa7050fa2409b0</srcmd5>
+    <version>4.005</version>
+    <time>1674324654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.004: Minor fixes:
+  * solve contextual kerning for the geminated l
+  * fix hmtx issue in TTF VFs
+  * fix substitution for io + combining mark</comment>
+    <requestid>1060046</requestid>
+  </revision>
 </revisionlist>

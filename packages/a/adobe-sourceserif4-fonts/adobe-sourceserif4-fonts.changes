@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 20 21:56:04 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 4.004: Minor fixes:
+  * solve contextual kerning for the geminated l
+  * fix hmtx issue in TTF VFs
+  * fix substitution for io + combining mark
+
+-------------------------------------------------------------------
 Mon Aug 16 14:23:22 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Create new package to Source Serif 4, the successor of Source Serif

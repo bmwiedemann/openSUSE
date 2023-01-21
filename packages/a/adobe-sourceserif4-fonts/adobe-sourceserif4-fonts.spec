@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourceserif4-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           adobe-sourceserif4-fonts
-Version:        4.004
+Version:        4.005
 Release:        0
 Summary:        A set of OpenType fonts designed for user interfaces
 License:        OFL-1.1
