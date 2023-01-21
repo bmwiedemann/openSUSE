@@ -1,7 +1,7 @@
 #
 # spec file for package uid_wrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 #
 ############################# NOTE ##################################
 Name:           uid_wrapper
-Version:        1.2.9
+Version:        1.3.0
 Release:        0
 Summary:        A wrapper for privilege seperation
 License:        GPL-3.0-or-later
@@ -75,7 +75,7 @@ development/testing.
 %postun -p /sbin/ldconfig
 
 %files
-%doc AUTHORS README.md ChangeLog
+%doc AUTHORS README.md CHANGELOG
 %license LICENSE
 %{_libdir}/libuid_wrapper.so*
 %dir %{_libdir}/cmake/uid_wrapper
