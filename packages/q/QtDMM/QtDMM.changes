@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 27 16:12:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- No gold on riscv64
+
+-------------------------------------------------------------------
 Wed Jul 17 08:07:43 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the lrelease executable name.

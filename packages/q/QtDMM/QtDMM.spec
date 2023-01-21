@@ -1,7 +1,7 @@
 #
 # spec file for package QtDMM
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://github.com/tuxmaster/QtDMM
 Source:         https://github.com/tuxmaster/QtDMM/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM QtDMM-0.9.2-newmodels.patch
 Patch0:         QtDMM-0.9.2-newmodels.patch
+%ifnarch riscv64
 BuildRequires:  binutils-gold
+%endif
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -52,6 +54,9 @@ refer to the preset table.
 %patch0 -p1
 # called lrelease in openSUSE
 sed -i 's/lrelease-qt5/lrelease/' src/src.pro
+%ifarch riscv64
+sed -i 's/-fuse-ld=gold//' src/src.pro
+%endif
 
 %build
 %qmake5
