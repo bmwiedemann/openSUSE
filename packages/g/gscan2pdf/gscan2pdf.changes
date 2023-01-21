@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 21 10:23:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.13.2:
+  * Filter out temporary filenames from tool warnings.
+    Closes Debian bug #1026205: Unpaper errors for every scanned page
+  * Don't forget to destroy file chooser when creating multiple images.
+    Closes bug #409 (V2.13.0: Save Dialog Box cannot be closed anymore)
+  * Catch missing dependencies in pdftk.
+  * Catch invalid dates rather than crashing.
+    Closes bug #407 (2.12.8-1.fc36 crashes (exits) when entering an invalid date)
+  * Update to Hungarian translation
+  * Update to French translation
+
+-------------------------------------------------------------------
 Sat Dec 17 19:43:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.1:
