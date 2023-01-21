@@ -1,7 +1,7 @@
 #
 # spec file for package python-GooseMPL
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-GooseMPL
-Version:        0.5.0
+Version:        0.12.1
 Release:        0
 Summary:        Style and extension functions for matplotlib
 License:        MIT
 URL:            https://github.com/tdegeus/GooseMPL
-Source:         https://github.com/tdegeus/GooseMPL/archive/v%{version}.tar.gz#/GooseMPL-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/G/GooseMPL/GooseMPL-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-matplotlib >= 2.0.0
+Requires:       python-PyYAML
+Requires:       python-deprecation
+Requires:       python-matplotlib
 Requires:       python-matplotlib-latex
-Requires:       python-numpy >= 1.0.0
+Requires:       python-numpy
+Requires:       python-scipy
 # \usepackage{amsmath, amsfonts, amssymb, bm}
 Requires:       texlive-amsmath
 Requires:       texlive-amsfonts
@@ -40,8 +43,12 @@ Requires:       texlive-tools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib-latex}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  texlive-amsfonts
 BuildRequires:  texlive-amsmath
 BuildRequires:  texlive-tools
@@ -57,21 +64,19 @@ using matplotlib.
 %setup -q -n GooseMPL-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -c "import GooseMPL; GooseMPL.copy_style()"
-$python -B docs/examples/*/*.py
-}
+%pytest test/main.py
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/GooseMPL
+%{python_sitelib}/GooseMPL-%{version}.dist-info
 
 %changelog
