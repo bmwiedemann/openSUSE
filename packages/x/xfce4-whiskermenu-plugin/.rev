@@ -520,4 +520,12 @@
     <comment></comment>
     <requestid>941563</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4703dd0a8626cea608b5bd3e842345d4</srcmd5>
+    <version>2.7.2</version>
+    <time>1674324762</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1060153 from tux93)</comment>
+    <requestid>1060157</requestid>
+  </revision>
 </revisionlist>

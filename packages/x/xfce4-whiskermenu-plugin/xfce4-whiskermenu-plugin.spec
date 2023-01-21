@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-whiskermenu-plugin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define panel_version 4.12.0
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
