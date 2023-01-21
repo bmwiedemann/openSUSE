@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 21 10:57:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * change to purgeAuto in systemd unit files (thx B.Foresman)
+  * systemd files should go in /etc, not /lib (thx B.Foresman)
+  * read -N not available on macOS (thx Peter Torelli)
+
+-------------------------------------------------------------------
 Sat Dec  3 19:32:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:

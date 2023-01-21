@@ -1,7 +1,7 @@
 #
 # spec file for package duply
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011-2019 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           duply
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        A frontend for the "duplicity" backup program
 License:        GPL-2.0-only
