@@ -1,7 +1,7 @@
 #
 # spec file for package translation-update
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,6 +122,19 @@ preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
 Applications that use gettext correctly can then pick up overridden or
 updated translations from this location.
 
+%package -n translation-update-az
+Summary:        Translation Updates for Azerbaijani
+Group:          System/Localization
+Provides:       locale(translation-update:az)
+Requires:       translation-update
+
+%description -n translation-update-az
+This is a set of translation updates that are installed into the
+preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
+
+Applications that use gettext correctly can then pick up overridden or
+updated translations from this location.
+
 %package -n translation-update-bg
 Summary:        Translation Updates for Bulgarian
 Group:          System/Localization
@@ -162,7 +175,7 @@ Applications that use gettext correctly can then pick up overridden or
 updated translations from this location.
 
 %package -n translation-update-da
-Summary:        Translation Updates for 
+Summary:        Translation Updates for Danish
 Group:          System/Localization
 Provides:       locale(translation-update:da)
 Requires:       translation-update
@@ -227,7 +240,7 @@ Applications that use gettext correctly can then pick up overridden or
 updated translations from this location.
 
 %package -n translation-update-en_GB
-Summary:        Translation Updates for 
+Summary:        Translation Updates for British English
 Group:          System/Localization
 Provides:       locale(translation-update:en_GB)
 Requires:       translation-update
@@ -357,7 +370,7 @@ Applications that use gettext correctly can then pick up overridden or
 updated translations from this location.
 
 %package -n translation-update-it
-Summary:        Translation Updates for italiano
+Summary:        Translation Updates for Italian
 Group:          System/Localization
 Provides:       locale(translation-update:it)
 Requires:       translation-update
@@ -434,6 +447,19 @@ preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
 Applications that use gettext correctly can then pick up overridden or
 updated translations from this location.
 
+%package -n translation-update-ms
+Summary:        Translation Updates for Malay
+Group:          System/Localization
+Provides:       locale(translation-update:ms)
+Requires:       translation-update
+
+%description -n translation-update-ms
+This is a set of translation updates that are installed into the
+preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
+
+Applications that use gettext correctly can then pick up overridden or
+updated translations from this location.
+
 %package -n translation-update-nb
 Summary:        Translation Updates for Norwegian bokmål
 Group:          System/Localization
@@ -467,6 +493,19 @@ Provides:       locale(translation-update:nl)
 Requires:       translation-update
 
 %description -n translation-update-nl
+This is a set of translation updates that are installed into the
+preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
+
+Applications that use gettext correctly can then pick up overridden or
+updated translations from this location.
+
+%package -n translation-update-oc
+Summary:        Translation Updates for Occitan
+Group:          System/Localization
+Provides:       locale(translation-update:oc)
+Requires:       translation-update
+
+%description -n translation-update-oc
 This is a set of translation updates that are installed into the
 preferred directory, /usr/share/locale-langpack/<locale>/LC_MESSAGES/.
 
@@ -578,7 +617,7 @@ Applications that use gettext correctly can then pick up overridden or
 updated translations from this location.
 
 %package -n translation-update-sr
-Summary:        Translation Updates for Serbian (sr)
+Summary:        Translation Updates for Serbian
 Group:          System/Localization
 Provides:       locale(translation-update:sr)
 Requires:       translation-update
@@ -799,6 +838,12 @@ rm -rf "$RPM_BUILD_ROOT"
 %defattr(-,root,root)
 %{_defaultdocdir}/%{name}
 
+%files -n translation-update-az
+%defattr(-,root,root)
+%dir %{_datadir}/locale-langpack
+%lang(az) %{_datadir}/locale-langpack/az
+%doc COPYING
+
 %files -n translation-update-bg
 %defattr(-,root,root)
 %dir %{_datadir}/locale-langpack
@@ -943,6 +988,12 @@ rm -rf "$RPM_BUILD_ROOT"
 %lang(ml) %{_datadir}/locale-langpack/ml
 %doc COPYING
 
+%files -n translation-update-ms
+%defattr(-,root,root)
+%dir %{_datadir}/locale-langpack
+%lang(ms) %{_datadir}/locale-langpack/ms
+%doc COPYING
+
 %files -n translation-update-nb
 %defattr(-,root,root)
 %dir %{_datadir}/locale-langpack
@@ -959,6 +1010,12 @@ rm -rf "$RPM_BUILD_ROOT"
 %defattr(-,root,root)
 %dir %{_datadir}/locale-langpack
 %lang(nl) %{_datadir}/locale-langpack/nl
+%doc COPYING
+
+%files -n translation-update-oc
+%defattr(-,root,root)
+%dir %{_datadir}/locale-langpack
+%lang(oc) %{_datadir}/locale-langpack/oc
 %doc COPYING
 
 %files -n translation-update-pa
