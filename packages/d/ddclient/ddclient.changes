@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan  1 10:41:36 UTC 2023 - munix9@googlemail.com
+
+- Add curl as BuildRequires/Requires to be able to use the '-curl'
+  option (eg. in DDCLIENT_OPTIONS in /etc/sysconfig/ddclient).
+
+-------------------------------------------------------------------
 Tue Dec 27 12:40:48 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.10.0:

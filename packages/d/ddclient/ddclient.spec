@@ -33,12 +33,14 @@ Patch2:         fix-configure_ac.patch
 Patch3:         disable-ip-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  curl
 BuildRequires:  make
 BuildRequires:  perl(HTTP::Daemon)
 BuildRequires:  perl(HTTP::Message::PSGI)
 BuildRequires:  perl(IO::Socket::SSL)
 BuildRequires:  perl(Test::MockModule)
 BuildRequires:  perl(Test::Warnings)
+Requires:       curl
 Requires:       perl >= 5.10.1
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
