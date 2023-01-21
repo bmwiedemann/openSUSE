@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jan 21 11:46:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.10:
+  * Fix baud rate handling with RTU under Linux
+  * Fix modbus_disable_quirks signature
+  * Move content about migration to libmodbus.org
+  * Avoid negative value in FD_SET call
+  * Test socket against positive value instead of -1
+  * Improvements to autotools by @ndim
+  * Fix doc links by @jordanjohnson56 (#653)
+  * Test the protocol id for 0 by @metapsychologe (#509)
+  * Fix double negative in tests
+  * New quirks handler (closes #38 #533)
+  * Fix bitwise OR in documentation
+  * Improve doc about slave ID in RTU
+  * Add .clang-format and format code (closes #394)
+  * Remove constraints on baud rate values
+  * Accept IP or device in arg of unit test progs
+  * Avoid compilation issue with VS2022 with strdup
+  * Display created files in configure.js
+  * Use strcpy_s under Windows
+  * Replace inet_addr by inet_pton calls
+  * Replace inet_ntoa by inet_ptop
+  * Update configure.ac/config.h.win32 for new inet functions
+  * Instructions to build libmodbus in a VS project
+  * Fix connection check for Windows RTU (closes #660, #662)
+  * Add CIFuzz Github action by @DavidKorczynski (#669)
+  * Convert a few int to unsigned int (#402) 
+
+-------------------------------------------------------------------
 Fri Dec  2 19:31:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.8:

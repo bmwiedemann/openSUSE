@@ -1,7 +1,7 @@
 #
 # spec file for package libmodbus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libmodbus
-Version:        3.1.8
+Version:        3.1.10
 Release:        0
 Summary:        Modbus Library
 License:        LGPL-2.1-or-later
@@ -76,15 +76,15 @@ export CFLAGS="%{optflags}"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # Installed by %%doc
-rm %{buildroot}%{_docdir}/%{name}/{AUTHORS,MIGRATION,NEWS,README.md}
+rm %{buildroot}%{_docdir}/%{name}/{AUTHORS,NEWS,README.md}
 
 %post -n libmodbus5 -p /sbin/ldconfig
 %postun -n libmodbus5 -p /sbin/ldconfig
 
 %files -n libmodbus5
 %license COPYING.LESSER
-%doc AUTHORS MIGRATION NEWS README.md
-%{_libdir}/*.so.*
+%doc AUTHORS NEWS README.md
+%{_libdir}/*.so.5*
 
 %files devel
 %{_includedir}/modbus
