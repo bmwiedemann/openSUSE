@@ -1,7 +1,7 @@
 #
 # spec file for package conftest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           conftest
-Version:        0.36.0
+Version:        0.38.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0
@@ -25,7 +25,7 @@ URL:            https://github.com/open-policy-agent/conftest
 Source0:        https://github.com/open-policy-agent/conftest/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.17 
+BuildRequires:  golang(API) >= 1.18
 
 %description
 Conftest helps you write tests against structured configuration data. Using Conftest you can write tests for your Kubernetes configuration, Tekton pipeline definitions, Terraform code, Serverless configs or any other config files.
@@ -81,20 +81,16 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{_bindir}/%{name}
 
 %files bash-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/zsh_completion.d/_%{name}
 
 %files fish-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/fish
 %dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog
-

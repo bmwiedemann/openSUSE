@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 21 11:28:14 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.38.0:
+  * ci: Require commits to have conventional commit prefix (#766)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.47.4 to 0.48.0 (#767)
+  * misc: Improve generated changelog (#765)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.47.3 to 0.47.4 (#764)
+  * Added helper method to load combined config files for Rego unit tests (#762)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.47.2 to 0.47.3 (#760)
+  * build(deps): bump golang from 1.18.5-alpine to 1.19.4-alpine (#761)
+  * Bump OPA to 0.47.2 (#759)
+  * Allow data-only bundles (#754)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.47.0 to 0.47.1 (#758)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.46.1 to 0.47.0 (#757)
+  * build(deps): bump alpine from 3.16.3 to 3.17.0 (#756)
+
+-------------------------------------------------------------------
 Fri Dec 16 22:47:31 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
 - Up-to-date syntax for supplements
