@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 19 15:58:59 UTC 2023 - schubi@suse.com
+
+- Update to version 0.5.1:
+  * Reading files in /usr/_vendor_/_example_._suffix_.d/* regardless
+    there is a /etc/_example_._suffix_ file. (#175)
+
+-------------------------------------------------------------------
 Fri Dec 02 14:13:24 UTC 2022 - schubi@suse.com
 
 - Update to version 0.5.0:
