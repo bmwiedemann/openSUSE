@@ -1,3 +1,41 @@
+-------------------------------------------------------------------
+Sat Jan 21 04:07:38 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Fixed release detection to include Tumblweed
+
+-------------------------------------------------------------------
+Sat Jan 21 02:20:07 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Increase required release to enable eBPF to SLE 15 SP2 and
+  openSUSE Leap 15.2.  Earlier versions don't have a usable eBPF
+  and can't easily build llvm13.
+
+-------------------------------------------------------------------
+Sat Jan 21 01:44:59 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Remove dependency on bpftool.  We use the vmlinux.h archive
+  to provide vmlinux.h.
+
+-------------------------------------------------------------------
+Fri Jan 20 20:18:49 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Restored %defattr due to SLE12 using rpm-4.11.
+- Fix builds in vendor code on SLE12
+- Fix build in third_party/sdjournal due to older systemd on SLE12
+- Added patches:
+  - vendor-build-fixes-for-SLE12.patch
+  - sdjournal-build-fix-for-SLE12.patch
+
+-------------------------------------------------------------------
+Fri Jan 20 16:37:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add memory limit to systemd unit
+
+---------------------------------------------------------------------
+Fri Jan 20 16:37:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add memory limit to systemd unit
+
 ---------------------------------------------------------------------
 Thu Jan 19 15:17:22 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 

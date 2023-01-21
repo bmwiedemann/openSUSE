@@ -1,0 +1,18 @@
+From: Jeff Mahoney <jeffm@suse.com>
+Subject: third_party/sdjournal: remove enums missing on SLE-12
+
+The version of systemd on SLE-12 is older and doesn't have these enums.  We
+don't use them, so it's safe to remove them.
+
+--- a/third_party/sdjournal/journal_linux.go
++++ b/third_party/sdjournal/journal_linux.go
+@@ -380,9 +380,6 @@ const (
+         SD_JOURNAL_RUNTIME_ONLY              = int(C.SD_JOURNAL_RUNTIME_ONLY)
+         SD_JOURNAL_SYSTEM                    = int(C.SD_JOURNAL_SYSTEM)
+         SD_JOURNAL_CURRENT_USER              = int(C.SD_JOURNAL_CURRENT_USER)
+-        SD_JOURNAL_OS_ROOT                   = int(C.SD_JOURNAL_OS_ROOT)
+-        SD_JOURNAL_ALL_NAMESPACES            = int(C.SD_JOURNAL_ALL_NAMESPACES)
+-        SD_JOURNAL_INCLUDE_DEFAULT_NAMESPACE = int(C.SD_JOURNAL_INCLUDE_DEFAULT_NAMESPACE)
+ )
+ 
+ // Journal event constants

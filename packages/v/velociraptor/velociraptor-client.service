@@ -6,6 +6,8 @@ Type=simple
 User=root
 Group=root
 UMask=0027
+MemoryHigh=4G
+MemoryMax=8G
 EnvironmentFile=-/etc/sysconfig/velociraptor-client
 ExecStart=/usr/bin/velociraptor client --config /etc/velociraptor/client.config $VELOCIRAPTOR_CLIENT_OPTS
 

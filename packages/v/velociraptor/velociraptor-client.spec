@@ -1,7 +1,7 @@
 #
-# spec file for package velociraptor
+# spec file for package velociraptor-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,51 +15,66 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define projname velociraptor
 %define vendor_version 0.6.7.4~git41.678ed56
 %define vmlinux_h_version 5.14.21150400.22-150400-default
 
-%if 0%{?suse_version} >= 1500
+# SLE 15 SP2 / Leap 15.2 or newer gets eBPF
+# Earlier versions don't have a usable eBPF and the
+# release doesn't easily build llvm13
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %bcond_without bpf
 %else
 %bcond_with bpf
+%endif
+
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
+
+# SLE12 has _sharedstatedir in an odd place
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+%define _sharedstatedir /var/lib
 %endif
 
 Name:           velociraptor-client
 Version:        0.6.7.4~git53.0e85855
 Release:        0
 Summary:        Endpoint visibility and collection tool (endpoint only)
-Group:		System/Monitoring
+Group:          System/Monitoring
 License:        AGPL-3.0-only
 URL:            https://github.com/Velocidex/velociraptor
 Source:         %{projname}-%{version}.tar.xz
 Source1:        vendor-golang-%{vendor_version}.tar.xz
 Source2:        %{name}.service
 Source3:        %{name}.config.placeholder
-Source4:	vmlinux.h-%{vmlinux_h_version}.tar.xz
-Source5:	update-vendoring.sh
-Source6:	sysconfig.%{name}
+Source4:        vmlinux.h-%{vmlinux_h_version}.tar.xz
+Source5:        update-vendoring.sh
+Source6:        sysconfig.%{name}
 Patch1:         velociraptor-golang-mage-vendoring.diff
-Patch2:		velociraptor-skip-git-submodule-import-for-OBS-build.patch
-BuildRequires:  golang-packaging
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  golang(API) >= 1.19
+Patch2:         velociraptor-skip-git-submodule-import-for-OBS-build.patch
+Patch3:         vendor-build-fixes-for-SLE12.patch
+Patch4:         sdjournal-build-fix-for-SLE12.patch
 BuildRequires:  fileb0x
+BuildRequires:  golang-packaging
 BuildRequires:  mage
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.19
+BuildRequires:  pkgconfig(libsystemd)
 %ifarch x86_64
 BuildRequires:  libtsan0
 %endif
 %if %{with bpf}
 # clang15 causes libbpfo to crash immediately
 BuildRequires:  clang13
+BuildRequires:  libelf-devel
 BuildRequires:  llvm13
-BuildRequires:  bpftool
-BuildRequires:	libelf-devel
-BuildRequires:	zlib-devel-static
+BuildRequires:  zlib-devel-static
 %endif
 Conflicts:      velociraptor
-ExclusiveArch:	x86_64 ppc64le aarch64 s390x
+ExclusiveArch:  x86_64 ppc64le aarch64 s390x
 
 %description
 Velociraptor is a tool for collecting host based state information
@@ -71,7 +86,6 @@ https://docs.velociraptor.app/
 
 This package contains only the endpoint agent.  For the full console, please
 install the 'velociraptor' package.
-
 
 %prep
 %setup -q -a 1 -a 4 -n %{projname}-%{version}
@@ -107,6 +121,7 @@ install -d -m 755 %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE6} %{buildroot}%{_fillupdir}
 
 %files
+%defattr(-, root, root)
 %license LICENSE
 %doc README.md
 %dir %{_sysconfdir}/velociraptor
