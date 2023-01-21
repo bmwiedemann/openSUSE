@@ -1,7 +1,7 @@
 #
 # spec file for package cyreal-alice-fonts
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cyreal-alice-fonts
-Version:        1.010
+Version:        2.003
 Release:        0
-License:        OFL-1.1
 Summary:        Alice Font
-Url:            http://cyreal.org/archives/842
+License:        OFL-1.1
 Group:          System/X11/Fonts
-#Source0:       wget http://www.google.com/webfonts/download?kit=nVDICQAe6IAM-XidgBCu9Q -O cyreal-alice-fonts.zip
-Source0:        cyreal-alice-fonts.zip
+URL:            http://www.cyreal.org/fonts/alice/
+Source0:        https://github.com/cyrealtype/Alice/releases/download/v2.003/Alice-v2.003.zip
+Source1:        https://github.com/cyrealtype/Alice/raw/v%{version}/README.md
+Source2:        https://github.com/cyrealtype/Alice/raw/v%{version}/AUTHORS.txt
+Source3:        https://github.com/cyrealtype/Alice/raw/v%{version}/CONTRIBUTORS.txt
+Source4:        https://github.com/cyrealtype/Alice/raw/v%{version}/TRADEMARKS.txt
+Source5:        https://github.com/cyrealtype/Alice/raw/v%{version}/FONTLOG.txt
+Source6:        https://github.com/cyrealtype/Alice/raw/v%{version}/documents/Alice.png
+Source7:        https://github.com/cyrealtype/Alice/raw/v%{version}/documents/AliceCyr.png
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
@@ -41,21 +46,23 @@ proportions, open aperture, and soft rounded features; perfect for long
 meditative text-setting and headlines.
 
 %prep
-%setup -cqn %{name}-%{version}
+%autosetup -c
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} .
+chmod 0644 OFL.txt
 sed -i 's/\r$//g' OFL.txt
 
 %build
 
 %install
-install -Dm 644 Alice-Regular.ttf \
-    %{buildroot}%{_ttfontsdir}/Alice-Regular.ttf
+install -dm0755 %{buildroot}%{_ttfontsdir}
+install -m0644 fonts/otf/*.otf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root,-)
-%doc OFL.txt
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/Alice-Regular.ttf
+%{_ttfontsdir}/*.otf
+%doc README.md {AUTHORS,CONTRIBUTORS,TRADEMARKS,FONTLOG}.txt Alice*.png
+%license OFL.txt
 
 %changelog
