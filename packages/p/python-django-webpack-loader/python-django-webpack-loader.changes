@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jan 20 15:28:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Add compatibility for Django 4.1 and Python 3.10
+- update to 1.7.0:
+  * Bump django to 3.2.15
+- update to 1.6.0:
+  * Add a setting to configure skip common chunks behaviour globally
+  * Bump django from 3.2.12 to 3.2.13
+  * Add support for Django 4.0
+- update to 1.5.0:
+  * Added support for Subresource Integrity
+  * Bump django from 3.2.7 to 3.2.12
+  * Fix get_files on readme
+  * Use r-prefixed strings in IGNORE
+  * Fix small typo in README.md
+  * Use assertNotEqual instead of assertNotEquals for Python 3.11
+    compatibility
+  * Readme revamp
+- update to 1.4.1:
+  * Fixes #300, failsafe request checking #301
+- update to 1.4.0:
+  * Bump django from 3.2.4 to 3.2.5 #299
+  * Add issue templates #293
+  * Add skip_common_chunks functionality #297
+- update to 1.3.0:
+  * Add option for rel="preload" in JS/CSS tags #203
+  * Add option for extension appending in the url files #135
+  * Fixes RemovedInDjango41Warning #290
+  * Applies IGNORE setting before checking assets #286
+  * Removed type from link and script tags per #152
+  * NOTE: Skipped version 1.2.0 to match `webpack-bundle-tracker` version
+- update to 1.1.0:
+  * Added compatibility with `webpack-bundle-tracker@1.1.0`
+  * Removes bower references in project
+  * Fix jinja configuration example in README.md
+- update to 1.0.0:
+  * Added support for custom loader classes
+  * Added compatibility with `webpack-bundle-tracker@1.0.0-alpha.1`
+  * Updated and corrected examples
+  * Updated Python and Django supported versions on tests
+
+-------------------------------------------------------------------
 Mon Jun  1 12:39:17 UTC 2020 - pgajdos@suse.com
 
 - do not require unittest2 for build, tests are currently not run
