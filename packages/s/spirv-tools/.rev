@@ -292,4 +292,12 @@ join Staging:E</comment>
     <comment>- Update to release 2022.4+sdk236</comment>
     <requestid>1045167</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2d31195e47af4d6774547ff192358ccf</srcmd5>
+    <version>2023.1</version>
+    <time>1674324599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2023.1</comment>
+    <requestid>1059456</requestid>
+  </revision>
 </revisionlist>
