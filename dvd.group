@@ -4896,7 +4896,6 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="kernel-pae" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
   </packagelist>
 </group>
@@ -4946,7 +4945,7 @@
     <package name="gtk2-engine-murrine-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gtk2-theming-engine-adwaita-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gtk2-tools-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gvim" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hdjmod-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hexchat" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5052,7 +5051,7 @@
     <package name="libgtk-2_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libguestfs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libguestfs-xfs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libguestfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="libguestfs0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libharfbuzz0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libibus-1_0-5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5072,7 +5071,7 @@
     <package name="liblzma5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libmfx1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmount1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libnbd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="libnbd0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libndctl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libnettle8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnscd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5152,15 +5151,15 @@
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="msr-safe-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mtdev-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="nbdkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-basic-filters" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-basic-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-curl-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-nbd-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-python-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-ssh-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-vddk-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="nbdkit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-basic-filters" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-basic-plugins" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-curl-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-nbd-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-python-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-server" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-ssh-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-vddk-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -5203,8 +5202,8 @@
     <package name="v4l2loopback-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="vendor-reset-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="vhba-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="virt-v2v" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="virt-v2v-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="virt-v2v" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="virt-v2v-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wpa_supplicant-gui" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
