@@ -395,4 +395,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>1046468</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>8f7f089ff9ab7890adaf147a200becf8</srcmd5>
+    <version>2023.01.20</version>
+    <time>1674324616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059981</requestid>
+  </revision>
 </revisionlist>
