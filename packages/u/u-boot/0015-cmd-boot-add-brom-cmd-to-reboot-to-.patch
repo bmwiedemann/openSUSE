@@ -1,4 +1,4 @@
-From f8998b3d8dd1fb8ea6af564f97a34554f3ad8dd3 Mon Sep 17 00:00:00 2001
+From 06f80e4ba4cbd083d39ba9305db74fbe70b22137 Mon Sep 17 00:00:00 2001
 From: Andy Yan <andy.yan@rock-chips.com>
 Date: Tue, 6 Feb 2018 09:51:12 +0800
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to brom dnl mode
@@ -24,10 +24,10 @@ index 6b2a610cf4..bcdf4420cf 100644
  #endif
  
 diff --git a/cmd/boot.c b/cmd/boot.c
-index be67a5980d..d48c0bf1b3 100644
+index 14839c1ced..d7c7db449c 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
-@@ -43,16 +43,36 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])
+@@ -44,16 +44,36 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])
  	printf ("## Application terminated, rc = 0x%lX\n", rc);
  	return rcode;
  }

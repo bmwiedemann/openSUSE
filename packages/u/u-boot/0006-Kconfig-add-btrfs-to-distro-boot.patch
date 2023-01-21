@@ -1,4 +1,4 @@
-From 387eb51ad949d061794574b2e8770a80b2ba2eb7 Mon Sep 17 00:00:00 2001
+From 12fb340d8e330662f0859602d159d36b815304a7 Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Fri, 17 Jan 2020 20:59:02 +0100
 Subject: [PATCH] Kconfig: add btrfs to distro boot
@@ -13,7 +13,7 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/Kconfig b/Kconfig
-index c8c22555a9..6a9e60ef66 100644
+index 0cdc9658f7..dd2c898210 100644
 --- a/Kconfig
 +++ b/Kconfig
 @@ -211,6 +211,7 @@ config DISTRO_DEFAULTS

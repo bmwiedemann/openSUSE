@@ -1,4 +1,4 @@
-From 1184511200f355cdd39c4a603e83c9e74f776804 Mon Sep 17 00:00:00 2001
+From 68c559be4f3ca905f70669c619fcb977cc292259 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 3 Jul 2022 18:25:39 +0200
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
@@ -36,10 +36,10 @@ index b08f202374..36e7697b1c 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index 5712576184..468fbdc0f2 100644
+index dbe6005daa..318e3f1e18 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
-@@ -1036,6 +1036,22 @@ source "board/sunxi/Kconfig"
+@@ -1050,6 +1050,22 @@ source "board/sunxi/Kconfig"
  
  endif
  
@@ -63,10 +63,10 @@ index 5712576184..468fbdc0f2 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index 8f7c894286..91866a3be6 100644
+index 0c4b6dd1ca..84227dbd42 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
-@@ -297,7 +297,30 @@ uint32_t sunxi_get_boot_device(void)
+@@ -301,7 +301,30 @@ uint32_t sunxi_get_boot_device(void)
  	return -1;		/* Never reached */
  }
  
@@ -97,7 +97,7 @@ index 8f7c894286..91866a3be6 100644
  uint32_t sunxi_get_spl_size(void)
  {
  	struct boot_file_head *egon_head = (void *)SPL_ADDR;
-@@ -432,6 +455,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
+@@ -436,6 +459,7 @@ u32 spl_mmc_boot_mode(struct mmc *mmc, const u32 boot_device)
  
  void board_init_f(ulong dummy)
  {
@@ -106,10 +106,10 @@ index 8f7c894286..91866a3be6 100644
  
  #if defined CONFIG_MACH_SUN6I || defined CONFIG_MACH_SUN8I_H3
 diff --git a/cmd/boot.c b/cmd/boot.c
-index d48c0bf1b3..c870e6a217 100644
+index d7c7db449c..111c9d9409 100644
 --- a/cmd/boot.c
 +++ b/cmd/boot.c
-@@ -46,6 +46,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])
+@@ -47,6 +47,7 @@ static int do_go(struct cmd_tbl *cmdtp, int flag, int argc, char *const argv[])
  #endif
  
  #if defined(CONFIG_ROCKCHIP_BOOT_MODE_REG) && CONFIG_ROCKCHIP_BOOT_MODE_REG
@@ -117,7 +117,7 @@ index d48c0bf1b3..c870e6a217 100644
  #include <asm/arch-rockchip/boot_mode.h>
  static int do_reboot_brom(struct cmd_tbl *cmdtp, int flag, int argc, char * const argv[])
  {
-@@ -56,6 +57,20 @@ static int do_reboot_brom(struct cmd_tbl *cmdtp, int flag, int argc, char * cons
+@@ -57,6 +58,20 @@ static int do_reboot_brom(struct cmd_tbl *cmdtp, int flag, int argc, char * cons
  }
  #endif
  
@@ -138,7 +138,7 @@ index d48c0bf1b3..c870e6a217 100644
  /* -------------------------------------------------------------------- */
  
  #ifdef CONFIG_CMD_GO
-@@ -67,7 +82,7 @@ U_BOOT_CMD(
+@@ -68,7 +83,7 @@ U_BOOT_CMD(
  );
  #endif
  

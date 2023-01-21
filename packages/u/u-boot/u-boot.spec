@@ -180,7 +180,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2022.10
+%define archive_version 2023.01
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -210,7 +210,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2022.10
+Version:        2023.01
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -439,29 +439,6 @@ export DEVICE_TREE=zynqmp-zcu102-rev1.0
 export DEVICE_TREE=zynq-zturn-v5
 %endif
 
-%ifarch riscv64
-# Hack to allow enabling btrfs on riscv64.  CONFIG_CMD_BTRFS implies
-# CONFIG_ZSTD, which needs __clzsi2 from libgcc.  The system libgcc has
-# been built with -mabi=lp64d (double-float ABI), but U-Boot is built with
-# -mabi=lp64 (soft-float ABI).  The linker does not allow mixing objects
-# with differing float ABIs.  Since __clzsi2 does not use any floating
-# point, there is actually no compatibilty problem, so pretend that is was
-# built with the soft-float ABI.  Create a private libgcc.a that contains
-# the rebranded object files.
-libgcc=$(gcc -print-libgcc-file-name)
-mkdir arch/riscv/libgcc
-pushd arch/riscv/libgcc
-ar x $libgcc _clz.o _clzsi2.o
-# Change the header flags from 0x05 (RVC, double-float ABI) to 0x01 (RVC,
-# soft-float ABI)
-printf '\1' | dd of=_clz.o bs=1 seek=48 conv=notrunc status=none
-printf '\1' | dd of=_clzsi2.o bs=1 seek=48 conv=notrunc status=none
-ar cr libgcc.a _clz.o _clzsi2.o
-rm -f _clz.o _clzsi2.o
-popd
-extra_makeflags=PLATFORM_LIBGCC="$PWD/arch/riscv/libgcc/libgcc.a"
-%endif
-
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $confname
 echo "Attempting to enable fdt apply command (.dtbo) support."
 echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
@@ -546,7 +523,7 @@ install -D -m 0644 spl/arndale-spl.bin %{buildroot}%{uboot_dir}/arndale-spl.bin
 install -D -m 0644 %{SOURCE2} %{buildroot}%{uboot_dir}/arndale-bl1.img
 %endif
 %if %mvebu_spl == 1
-install -D -m 0644 u-boot-spl.kwb %{buildroot}%{uboot_dir}/u-boot-spl.kwb
+install -D -m 0644 u-boot-with-spl.kwb %{buildroot}%{uboot_dir}/u-boot-with-spl.kwb
 %endif
 %if %rockchip_spl == 1
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
@@ -632,7 +609,7 @@ fi
 # Generic documents
 %doc doc/develop/index.rst
 %doc doc/usage/index.rst doc/usage/netconsole.rst
-%doc doc/README.JFFS2 doc/README.JFFS2_NAND
+%doc doc/README.JFFS2_NAND
 %doc doc/README.autoboot doc/README.console doc/README.dns
 %doc doc/README.hwconfig doc/README.nand doc/README.serial_multi
 %doc doc/README.SNTP doc/README.standalone doc/README.update doc/README.usb

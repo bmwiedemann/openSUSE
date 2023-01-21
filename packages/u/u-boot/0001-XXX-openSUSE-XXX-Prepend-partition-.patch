@@ -1,4 +1,4 @@
-From e0f05ece4ec906a569ac2619fbbfa47bcd491f9c Mon Sep 17 00:00:00 2001
+From 466616f11fa54dff641e1a792a01d3d1e7a59fa1 Mon Sep 17 00:00:00 2001
 From: Guillaume GARDET <guillaume.gardet@free.fr>
 Date: Wed, 13 Apr 2016 13:44:29 +0200
 Subject: [PATCH] XXX openSUSE XXX: Prepend partition 3 (and 4 for chromebook
@@ -12,7 +12,7 @@ Subject: [PATCH] XXX openSUSE XXX: Prepend partition 3 (and 4 for chromebook
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index 5506f3168f..d389f4f8b1 100644
+index c3a2414b91..9e75a72a56 100644
 --- a/include/config_distro_bootcmd.h
 +++ b/include/config_distro_bootcmd.h
 @@ -158,7 +158,7 @@
@@ -24,7 +24,7 @@ index 5506f3168f..d389f4f8b1 100644
  	"scan_dev_for_efi="                                               \
  		"setenv efi_fdtfile ${fdtfile}; "                         \
  		BOOTENV_EFI_SET_FDTFILE_FALLBACK                          \
-@@ -486,7 +486,7 @@
+@@ -517,7 +517,7 @@
  	"scan_dev_for_boot_part="                                         \
  		"part list ${devtype} ${devnum} -bootable devplist; "     \
  		"env exists devplist || setenv devplist 1; "              \

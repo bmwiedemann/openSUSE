@@ -1,4 +1,4 @@
-From 7289992f2d3a5c3e858ee8494dc64871c80f6692 Mon Sep 17 00:00:00 2001
+From 23e6300ad9a901ec81d9f9fa55f737f062a14c63 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Thu, 21 Oct 2021 09:55:50 +0200
 Subject: [PATCH] Enable EFI and ISO partitions support on socfpga_de0_nano_soc
@@ -10,10 +10,10 @@ Subject: [PATCH] Enable EFI and ISO partitions support on socfpga_de0_nano_soc
  1 file changed, 2 deletions(-)
 
 diff --git a/configs/socfpga_de0_nano_soc_defconfig b/configs/socfpga_de0_nano_soc_defconfig
-index 1ef0dd9398..a8cd5544a7 100644
+index 5f5706fbdb..93f51a43fc 100644
 --- a/configs/socfpga_de0_nano_soc_defconfig
 +++ b/configs/socfpga_de0_nano_soc_defconfig
-@@ -43,8 +43,6 @@ CONFIG_CMD_EXT4_WRITE=y
+@@ -44,8 +44,6 @@ CONFIG_CMD_EXT4_WRITE=y
  CONFIG_MTDIDS_DEFAULT="nor0=ff705000.spi.0"
  CONFIG_MTDPARTS_DEFAULT="mtdparts=ff705000.spi.0:1m(u-boot),256k(env1),256k(env2),14848k(boot),16m(rootfs),-@1536k(UBI)"
  CONFIG_CMD_UBI=y

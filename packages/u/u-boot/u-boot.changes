@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 19 14:17:33 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Remove obsolete riscv64 libgcc hack
+
+-------------------------------------------------------------------
+Thu Jan 19 10:53:37 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2023.01:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2022.10...v2023.01
+
+-------------------------------------------------------------------
 Tue Jan 10 09:07:47 UTC 2023 - Oscar Curero <oscar@naiandei.net>
 
 - Add orangepizero2 flavor

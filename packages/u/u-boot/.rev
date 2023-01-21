@@ -1858,4 +1858,16 @@ boundary checks.
 </comment>
     <requestid>1057445</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>11773707f97e08ecf5a50d067880d9ee</srcmd5>
+    <version>2023.01</version>
+    <time>1674324607</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete riscv64 libgcc hack
+- Update to 2023.01:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2022.10...v2023.01
+</comment>
+    <requestid>1059909</requestid>
+  </revision>
 </revisionlist>

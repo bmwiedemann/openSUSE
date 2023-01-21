@@ -1,4 +1,4 @@
-From d40e9e4ccf4f93c287a318f3e817e3ec91dd1bd5 Mon Sep 17 00:00:00 2001
+From bf5706274c740f19abfc5d4862b512054c834862 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Wed, 18 Nov 2020 13:42:04 +0000
 Subject: [PATCH] Disable CONFIG_CMD_BTRFS in xilinx_zynqmp_virt_defconfig to
@@ -9,10 +9,10 @@ Subject: [PATCH] Disable CONFIG_CMD_BTRFS in xilinx_zynqmp_virt_defconfig to
  1 file changed, 1 insertion(+)
 
 diff --git a/configs/xilinx_zynqmp_virt_defconfig b/configs/xilinx_zynqmp_virt_defconfig
-index e5ac26e038..0aec7d0d97 100644
+index 4732c39bdb..d86433b084 100644
 --- a/configs/xilinx_zynqmp_virt_defconfig
 +++ b/configs/xilinx_zynqmp_virt_defconfig
-@@ -93,6 +93,7 @@ CONFIG_CMD_TIMER=y
+@@ -92,6 +92,7 @@ CONFIG_CMD_TIMER=y
  CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_EXT4_WRITE=y
