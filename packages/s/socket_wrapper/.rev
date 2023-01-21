@@ -190,4 +190,17 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1039284</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>825254ecaf6506b90706d3bae6f66bbd</srcmd5>
+    <version>1.4.0</version>
+    <time>1674324605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  * Added support for sendmmsg()/recvmmsg()
+  * Added support for handling close, recvmmsg and sendmmsg syscalls
+  * Added support to interact with uid_wrapper syscall()
+  * Improved IP address tracing output
+</comment>
+    <requestid>1059892</requestid>
+  </revision>
 </revisionlist>
