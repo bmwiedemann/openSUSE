@@ -1,7 +1,7 @@
 #
 # spec file for package libkdumpfile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@
 %define oldpython python
 
 Name:           libkdumpfile
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library

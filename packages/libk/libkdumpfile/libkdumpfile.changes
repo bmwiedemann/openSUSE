@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 21 11:53:07 UTC 2023 - Petr Tesařík <ptesarik@suse.com>
+
+- Upgrade to libkdumpfile version 0.5.1
+  * Bitmap of all RAM in the memory.pagemap attribute.
+  * Enhance the API with conversions between numeric and string PTE
+    format: addrxlat_pte_format(), addrxlat_pte_format_name().
+  * Improve compatibility (mawk, Python 3.12).
+
+-------------------------------------------------------------------
 Fri Aug 12 19:27:55 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - Upgrade to libkdumpfile version 0.5.0

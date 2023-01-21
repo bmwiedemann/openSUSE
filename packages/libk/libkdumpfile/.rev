@@ -179,4 +179,17 @@
 </comment>
     <requestid>994881</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a5976023a8a75cc40aba12a657a8c477</srcmd5>
+    <version>0.5.1</version>
+    <time>1674324748</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to libkdumpfile version 0.5.1
+  * Bitmap of all RAM in the memory.pagemap attribute.
+  * Enhance the API with conversions between numeric and string PTE
+    format: addrxlat_pte_format(), addrxlat_pte_format_name().
+  * Improve compatibility (mawk, Python 3.12).
+</comment>
+    <requestid>1060134</requestid>
+  </revision>
 </revisionlist>
