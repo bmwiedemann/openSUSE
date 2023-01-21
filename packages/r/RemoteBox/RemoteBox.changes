@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jan 21 08:22:59 UTC 2023 - gallochri <chri@gallochri.com>
+
+- Update to 3.2
+  - RemoteBox now requires VirtualBox 7.0.x
+  - Started the process of moving away from Glade and implementing 
+    GUI code natively. This is significant effort and involves a 
+    large amount of code churn which will span many releases.
+  - Added option to attach an ISO when creating a new guest
+  - Added support for setting the TPM (Trusted Platform Module) types
+        TPM v1.2
+        TPM v2.0
+  - Added support for setting Secure Boot (where supported)
+  - Added support for the following network cards:
+        Novell NE2000
+        Novell NE1000
+        WD/SMC EtherCard Plus 16
+        WD/SMC EtherCard Plus
+        3Com EtherLink II
+        3Com EtherLink
+  - Added support for the Windows Audio System (WAS)
+  - Added support for USB Multi-Touch screen and pad
+  - Added ability to edit an IPv4 Port Forwarding rule
+  - Added ability to edit an IPv6 Port Forwarding rule
+  - Added 'Devices' menu with items orignally in the 'Machine' menu
+  - Added 'Actions' menu with items orignally in the 'Machine' menu
+  - Added 'New Floppy Disk Image' to the 'Change Floppy' menu
+  - Added 'Add Floppy Disk Image' to the 'Change Floppy' menu
+  - Added 'Add Floppy Disk Image' to the menus when editing storage 
+    menu when attaching storage in
+  - Added 'Add Optical Disc Image' to the 'Change Optical Disc' menu
+  - Added 'Add Optical Disc Image' to the menus when editing storage
+  - The 'Devices' menu now pops up instead of the 'Machine' menu on 
+    an RMB event on the guest list
+  - The 'Change Floppy' and 'Change Optical Disc' menus are now 
+    usable with guests that are powered off
+  - Updated many operating system icons
+  - Added several new dialog motifs
+  - Various minor GUI tweaks
+
+-------------------------------------------------------------------
 Wed Mar 30 14:40:28 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.1

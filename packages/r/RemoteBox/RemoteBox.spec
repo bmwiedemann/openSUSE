@@ -1,7 +1,7 @@
 #
 # spec file for package RemoteBox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 # to remotebox so filter it
 %global __provides_exclude ^perl\\(vboxService\\)
 Name:           RemoteBox
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        A VirtualBox client with remote management
 License:        GPL-2.0-or-later

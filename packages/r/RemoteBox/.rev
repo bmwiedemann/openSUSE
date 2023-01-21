@@ -205,4 +205,12 @@ reports this as a valid minimum, the guest won't start.
     <comment></comment>
     <requestid>966392</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d8b4ec066a7fc715f64890a41a25f6a8</srcmd5>
+    <version>3.2</version>
+    <time>1674324746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060101</requestid>
+  </revision>
 </revisionlist>
