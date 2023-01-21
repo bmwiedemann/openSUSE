@@ -1701,4 +1701,18 @@
     <comment></comment>
     <requestid>1058150</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>3d56ac60f4d63709e0c644979a8b3f99</srcmd5>
+    <version>4.18.3</version>
+    <time>1674324757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.18.3:
+  * Prevent critical when changing directory (gxo#xfce/thunar#1014)
+  * Keep hidden toolbar hidden after Ctrl+L (gxo#xfce/thunar#1011)
+  * Prevent jumping cursor on file deletion (gxo#xfce/thunar#910)
+  * Prevent Critical when file counting is enabled
+  * Properly handle resident thunar plugins (gxo#xfce/thunar#1007)
+  * Translation Updates (forwarded request 1060112 from manfred-h)</comment>
+    <requestid>1060154</requestid>
+  </revision>
 </revisionlist>

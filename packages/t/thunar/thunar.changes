@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:44:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.18.3:
+  * Prevent critical when changing directory (gxo#xfce/thunar#1014)
+  * Keep hidden toolbar hidden after Ctrl+L (gxo#xfce/thunar#1011)
+  * Prevent jumping cursor on file deletion (gxo#xfce/thunar#910)
+  * Prevent Critical when file counting is enabled
+  * Properly handle resident thunar plugins (gxo#xfce/thunar#1007)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Jan 11 12:50:18 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.18.2:
