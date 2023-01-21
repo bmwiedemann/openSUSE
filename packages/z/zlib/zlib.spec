@@ -1,7 +1,7 @@
 #
 # spec file for package zlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zlib
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Library implementing the DEFLATE compression algorithm
 License:        Zlib
@@ -30,26 +30,23 @@ Source5:        baselibs.conf
 Source6:        zlib-rpmlintrc
 #PATCH-FIX-SUSE: compiler check of varguments passed to gzprintf
 Patch1:         zlib-format.patch
-#PATCH-FIX-UPSTREAM do not store negative values in uInt
+#PATCH-FIX-SUSE do not store negative values in uInt
 Patch2:         0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
 #PATCH-FIX-SUSE do not check exact version match as the lib can be updated
 #               we should simply rely on soname versioning to protect us
 Patch3:         zlib-no-version-check.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/ec3df00224d4
-Patch4:         zlib-1.2.12-correct-inputs-provided-to-crc-func.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/1eb7682f845ac9e9bf9ae35bbfb3bad5dacbd91d
-Patch5:         zlib-1.2.12-fix-CVE-2022-37434.patch
-#PATCH-FIX-UPSTREAM https://github.com/madler/zlib/pull/229
-Patch6:         minizip-dont-install-crypt-header.patch
-# The following patches are taken from https://github.com/iii-i/zlib/commits/crc32vx-v3
+#PATCH-FIX-SUSE https://github.com/madler/zlib/pull/229
+Patch4:         minizip-dont-install-crypt-header.patch
+# PATCH-FIX-UPSTREAM https://github.com/madler/zlib/commit/e554695638228b846d49657f31eeff0ca4680e8a
+Patch5:         zlib-1.2.13-fix-bug-deflateBound.patch
+#PATCH-FIX-SUSE https://github.com/madler/zlib/pull/410
+Patch6:         zlib-1.2.13-IBM-Z-hw-accelerated-deflate-s390x.patch
+# Patches taken from https://github.com/iii-i/zlib/releases/tag/crc32vx-v3
 Patch7:         zlib-1.2.5-minizip-fixuncrypt.patch
-Patch8:         zlib-1.2.11-optimized-s390.patch
+Patch8:         zlib-1.2.13-optimized-s390.patch
 # https://github.com/iii-i/zlib/commit/171d0ff3c9ed40da0ac14085ab16b766b1162069
-Patch9:         zlib-1.2.12-IBM-Z-hw-accelerated-deflate-s390x.patch
 Patch10:        zlib-1.2.11-covscan-issues.patch
 Patch11:        zlib-1.2.11-covscan-issues-rhel9.patch
-Patch12:        zlib-1.2.12-optimized-crc32-power8.patch
-Patch13:        zlib-1.2.12-fix-configure.patch
 Patch14:        zlib-1.2.12-s390-vectorize-crc32.patch
 # The following patches are taken from https://github.com/mscastanho/zlib/commits/power-optimizations-1.2.12
 Patch15:        zlib-1.2.12-adler32-vector-optimizations-for-power.patch
@@ -148,11 +145,8 @@ It should exit 0
 %patch6 -p1
 %patch7 -p1
 %patch8
-%patch9 -p1
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
-%patch13 -p1
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1

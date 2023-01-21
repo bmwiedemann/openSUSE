@@ -3,8 +3,8 @@ Index: deflate.c
 --- deflate.c.orig
 +++ deflate.c
 @@ -1233,15 +1233,16 @@ local void lm_init (s)
- /* For 80x86 and 680x0, an optimized version will be provided in match.asm or
-  * match.S. The code will be functionally equivalent.
+  *   string (strstart) and its distance is <= MAX_DIST, and prev_length >= 1
+  * OUT assertion: the match length is not greater than s->lookahead.
   */
 -local uInt longest_match(s, cur_match)
 +local uInt longest_match(s, pcur_match)
@@ -27,14 +27,14 @@ Index: deflate.c
       */
      register Bytef *strend = s->window + s->strstart + MAX_MATCH - 1;
 -    register ush scan_start = *(ushf*)scan;
--    register ush scan_end   = *(ushf*)(scan+best_len-1);
+-    register ush scan_end   = *(ushf*)(scan + best_len - 1);
 +    register uInt scan_start = *(ushf*)scan;
-+    register uInt scan_end   = *(ushf*)(scan+best_len-1);
++    register uInt scan_end   = *(ushf*)(scan + best_len - 1);
  #else
      register Bytef *strend = s->window + s->strstart + MAX_MATCH;
--    register Byte scan_end1  = scan[best_len-1];
+-    register Byte scan_end1  = scan[best_len - 1];
 -    register Byte scan_end   = scan[best_len];
-+    register uInt scan_end1  = scan[best_len-1];
++    register uInt scan_end1  = scan[best_len - 1];
 +    register uInt scan_end   = scan[best_len];
  #endif
  

@@ -27,11 +27,11 @@ Author: Matheus Castanho <msc@linux.ibm.com>
  create mode 100644 contrib/power/slide_hash_power8.c
  create mode 100644 contrib/power/slide_hash_resolver.c
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 44de486f6..8208c626b 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -186,7 +186,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
+Index: zlib-1.2.13/CMakeLists.txt
+===================================================================
+--- zlib-1.2.13.orig/CMakeLists.txt
++++ zlib-1.2.13/CMakeLists.txt
+@@ -174,7 +174,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
                  add_definitions(-DZ_POWER8)
                  set(ZLIB_POWER8
                    contrib/power/adler32_power8.c
@@ -41,11 +41,11 @@ index 44de486f6..8208c626b 100644
  
                  set_source_files_properties(
                      ${ZLIB_POWER8}
-diff --git a/Makefile.in b/Makefile.in
-index 9ef9fa9b5..f71c6eae0 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -183,6 +183,9 @@ crc32_z_power8.o: $(SRCDIR)contrib/power/crc32_z_power8.c
+Index: zlib-1.2.13/Makefile.in
+===================================================================
+--- zlib-1.2.13.orig/Makefile.in
++++ zlib-1.2.13/Makefile.in
+@@ -185,6 +185,9 @@ crc32-vx.o: $(SRCDIR)contrib/s390/crc32-
  deflate.o: $(SRCDIR)deflate.c
  	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)deflate.c
  
@@ -55,7 +55,7 @@ index 9ef9fa9b5..f71c6eae0 100644
  infback.o: $(SRCDIR)infback.c
  	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)infback.c
  
-@@ -245,6 +248,11 @@ deflate.lo: $(SRCDIR)deflate.c
+@@ -252,6 +255,11 @@ deflate.lo: $(SRCDIR)deflate.c
  	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/deflate.o $(SRCDIR)deflate.c
  	-@mv objs/deflate.o $@
  
@@ -67,11 +67,11 @@ index 9ef9fa9b5..f71c6eae0 100644
  infback.lo: $(SRCDIR)infback.c
  	-@mkdir objs 2>/dev/null || test -d objs
  	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/infback.o $(SRCDIR)infback.c
-diff --git a/configure b/configure
-index 810a7404d..d0dacf9c2 100755
---- a/configure
-+++ b/configure
-@@ -879,8 +879,8 @@ if tryboth $CC -c $CFLAGS $test.c; then
+Index: zlib-1.2.13/configure
+===================================================================
+--- zlib-1.2.13.orig/configure
++++ zlib-1.2.13/configure
+@@ -898,8 +898,8 @@ if tryboth $CC -c $CFLAGS $test.c; then
  
    if tryboth $CC -c $CFLAGS -mcpu=power8 $test.c; then
      POWER8="-DZ_POWER8"
@@ -82,10 +82,10 @@ index 810a7404d..d0dacf9c2 100755
      echo "Checking for -mcpu=power8 support... Yes." | tee -a configure.log
    else
      echo "Checking for -mcpu=power8 support... No." | tee -a configure.log
-diff --git a/contrib/power/power.h b/contrib/power/power.h
-index f57c76167..28c8f78ca 100644
---- a/contrib/power/power.h
-+++ b/contrib/power/power.h
+Index: zlib-1.2.13/contrib/power/power.h
+===================================================================
+--- zlib-1.2.13.orig/contrib/power/power.h
++++ zlib-1.2.13/contrib/power/power.h
 @@ -4,7 +4,10 @@
   */
  #include "../../zconf.h"
@@ -97,11 +97,10 @@ index f57c76167..28c8f78ca 100644
  unsigned long _crc32_z_power8(unsigned long, const Bytef *, z_size_t);
 +
 +void _slide_hash_power8(deflate_state *s);
-diff --git a/contrib/power/slide_hash_power8.c b/contrib/power/slide_hash_power8.c
-new file mode 100644
-index 000000000..c5a0eb5a6
+Index: zlib-1.2.13/contrib/power/slide_hash_power8.c
+===================================================================
 --- /dev/null
-+++ b/contrib/power/slide_hash_power8.c
++++ zlib-1.2.13/contrib/power/slide_hash_power8.c
 @@ -0,0 +1,63 @@
 + /* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
 +  * For conditions of distribution and use, see copyright notice in zlib.h
@@ -166,11 +165,10 @@ index 000000000..c5a0eb5a6
 +    slide_hash_power8_loop(s,n,p);
 +#endif
 +}
-diff --git a/contrib/power/slide_hash_resolver.c b/contrib/power/slide_hash_resolver.c
-new file mode 100644
-index 000000000..54fa1eb21
+Index: zlib-1.2.13/contrib/power/slide_hash_resolver.c
+===================================================================
 --- /dev/null
-+++ b/contrib/power/slide_hash_resolver.c
++++ zlib-1.2.13/contrib/power/slide_hash_resolver.c
 @@ -0,0 +1,15 @@
 +/* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
 + * For conditions of distribution and use, see copyright notice in zlib.h
@@ -187,12 +185,12 @@ index 000000000..54fa1eb21
 +
 +    return slide_hash_default;
 +}
-diff --git a/deflate.c b/deflate.c
-index 799fb93cc..b2db576dc 100644
---- a/deflate.c
-+++ b/deflate.c
-@@ -196,6 +196,13 @@ local const config configuration_table[10] = {
-                  (unsigned)(s->hash_size-1)*sizeof(*s->head)); \
+Index: zlib-1.2.13/deflate.c
+===================================================================
+--- zlib-1.2.13.orig/deflate.c
++++ zlib-1.2.13/deflate.c
+@@ -204,6 +204,13 @@ local const config configuration_table[1
+                  (unsigned)(s->hash_size - 1)*sizeof(*s->head)); \
      } while (0)
  
 +#ifdef Z_POWER_OPT
@@ -205,7 +203,7 @@ index 799fb93cc..b2db576dc 100644
  /* ===========================================================================
   * Slide the hash table when sliding the window down (could be avoided with 32
   * bit values at the expense of memory usage). We slide even when level == 0 to
-@@ -227,6 +234,11 @@ local void slide_hash(s)
+@@ -235,6 +242,11 @@ local void slide_hash(s)
  #endif
  }
  

@@ -20,11 +20,11 @@ Author: Matheus Castanho <msc@linux.ibm.com>
  create mode 100644 contrib/power/longest_match_power9.c
  create mode 100644 contrib/power/longest_match_resolver.c
 
-Index: zlib-1.2.12/CMakeLists.txt
+Index: zlib-1.2.13/CMakeLists.txt
 ===================================================================
---- zlib-1.2.12.orig/CMakeLists.txt
-+++ zlib-1.2.12/CMakeLists.txt
-@@ -199,7 +199,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
+--- zlib-1.2.13.orig/CMakeLists.txt
++++ zlib-1.2.13/CMakeLists.txt
+@@ -187,7 +187,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
  
              if(POWER9)
                  add_definitions(-DZ_POWER9)
@@ -34,11 +34,11 @@ Index: zlib-1.2.12/CMakeLists.txt
  
                  set_source_files_properties(
                      ${ZLIB_POWER9}
-Index: zlib-1.2.12/Makefile.in
+Index: zlib-1.2.13/Makefile.in
 ===================================================================
---- zlib-1.2.12.orig/Makefile.in
-+++ zlib-1.2.12/Makefile.in
-@@ -189,6 +189,9 @@ crc32-vx.o: $(SRCDIR)contrib/s390/crc32-
+--- zlib-1.2.13.orig/Makefile.in
++++ zlib-1.2.13/Makefile.in
+@@ -185,6 +185,9 @@ crc32-vx.o: $(SRCDIR)contrib/s390/crc32-
  deflate.o: $(SRCDIR)deflate.c
  	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)deflate.c
  
@@ -48,7 +48,7 @@ Index: zlib-1.2.12/Makefile.in
  slide_hash_power8.o: $(SRCDIR)contrib/power/slide_hash_power8.c
  	$(CC) $(CFLAGS) -mcpu=power8 $(ZINC) -c -o $@ $(SRCDIR)contrib/power/slide_hash_power8.c
  
-@@ -259,6 +262,11 @@ deflate.lo: $(SRCDIR)deflate.c
+@@ -255,6 +258,11 @@ deflate.lo: $(SRCDIR)deflate.c
  	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/deflate.o $(SRCDIR)deflate.c
  	-@mv objs/deflate.o $@
  
@@ -60,11 +60,11 @@ Index: zlib-1.2.12/Makefile.in
  slide_hash_power8.lo: $(SRCDIR)contrib/power/slide_hash_power8.c
  	-@mkdir objs 2>/dev/null || test -d objs
  	$(CC) $(SFLAGS) -mcpu=power8 $(ZINC) -DPIC -c -o objs/slide_hash_power8.o $(SRCDIR)contrib/power/slide_hash_power8.c
-Index: zlib-1.2.12/configure
+Index: zlib-1.2.13/configure
 ===================================================================
---- zlib-1.2.12.orig/configure
-+++ zlib-1.2.12/configure
-@@ -915,8 +915,8 @@ if tryboth $CC -c $CFLAGS $test.c; then
+--- zlib-1.2.13.orig/configure
++++ zlib-1.2.13/configure
+@@ -907,8 +907,8 @@ if tryboth $CC -c $CFLAGS $test.c; then
  
    if tryboth $CC -c $CFLAGS -mcpu=power9 $test.c; then
      POWER9="-DZ_POWER9"
@@ -75,10 +75,10 @@ Index: zlib-1.2.12/configure
      echo "Checking for -mcpu=power9 support... Yes." | tee -a configure.log
    else
      echo "Checking for -mcpu=power9 support... No." | tee -a configure.log
-Index: zlib-1.2.12/contrib/power/longest_match_power9.c
+Index: zlib-1.2.13/contrib/power/longest_match_power9.c
 ===================================================================
 --- /dev/null
-+++ zlib-1.2.12/contrib/power/longest_match_power9.c
++++ zlib-1.2.13/contrib/power/longest_match_power9.c
 @@ -0,0 +1,194 @@
 +/* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
 + * For conditions of distribution and use, see copyright notice in zlib.h
@@ -274,10 +274,10 @@ Index: zlib-1.2.12/contrib/power/longest_match_power9.c
 +    if ((uInt)best_len <= s->lookahead) return (uInt)best_len;
 +    return s->lookahead;
 +}
-Index: zlib-1.2.12/contrib/power/longest_match_resolver.c
+Index: zlib-1.2.13/contrib/power/longest_match_resolver.c
 ===================================================================
 --- /dev/null
-+++ zlib-1.2.12/contrib/power/longest_match_resolver.c
++++ zlib-1.2.13/contrib/power/longest_match_resolver.c
 @@ -0,0 +1,15 @@
 +/* Copyright (C) 2019 Matheus Castanho <msc@linux.ibm.com>, IBM
 + * For conditions of distribution and use, see copyright notice in zlib.h
@@ -294,10 +294,10 @@ Index: zlib-1.2.12/contrib/power/longest_match_resolver.c
 +
 +    return longest_match_default;
 +}
-Index: zlib-1.2.12/contrib/power/power.h
+Index: zlib-1.2.13/contrib/power/power.h
 ===================================================================
---- zlib-1.2.12.orig/contrib/power/power.h
-+++ zlib-1.2.12/contrib/power/power.h
+--- zlib-1.2.13.orig/contrib/power/power.h
++++ zlib-1.2.13/contrib/power/power.h
 @@ -10,4 +10,6 @@ uLong _adler32_power8(uLong adler, const
  
  unsigned long _crc32_z_power8(unsigned long, const Bytef *, z_size_t);
@@ -305,13 +305,13 @@ Index: zlib-1.2.12/contrib/power/power.h
 +uInt _longest_match_power9(deflate_state *s, IPos cur_match);
 +
  void _slide_hash_power8(deflate_state *s);
-Index: zlib-1.2.12/deflate.c
+Index: zlib-1.2.13/deflate.c
 ===================================================================
---- zlib-1.2.12.orig/deflate.c
-+++ zlib-1.2.12/deflate.c
-@@ -1309,6 +1309,14 @@ local void lm_init (s)
- /* For 80x86 and 680x0, an optimized version will be provided in match.asm or
-  * match.S. The code will be functionally equivalent.
+--- zlib-1.2.13.orig/deflate.c
++++ zlib-1.2.13/deflate.c
+@@ -1313,6 +1313,14 @@ local void lm_init(s)
+  *   string (strstart) and its distance is <= MAX_DIST, and prev_length >= 1
+  * OUT assertion: the match length is not greater than s->lookahead.
   */
 +
 +#ifdef Z_POWER_OPT
@@ -324,9 +324,9 @@ Index: zlib-1.2.12/deflate.c
  local uInt longest_match(s, pcur_match)
      deflate_state *s;
      IPos pcur_match;                             /* current match */
-@@ -1454,6 +1462,11 @@ local uInt longest_match(s, pcur_match)
+@@ -1460,6 +1468,11 @@ local uInt longest_match(s, pcur_match)
+     return s->lookahead;
  }
- #endif /* ASMV */
  
 +#ifdef Z_POWER_OPT
 +#undef longest_match

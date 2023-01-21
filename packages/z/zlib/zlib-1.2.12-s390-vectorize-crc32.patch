@@ -18,19 +18,19 @@ choose between the regular and the vectorized implementations.
  create mode 100644 contrib/s390/crc32-vx.c
  create mode 100644 contrib/s390/crc32_z_resolver.c
 
-diff --git a/Makefile.in b/Makefile.in
-index 2e78f3844..04c2f5d53 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -29,6 +29,7 @@ LDFLAGS=
- TEST_LDFLAGS=-L. libz.a
+Index: zlib-1.2.13/Makefile.in
+===================================================================
+--- zlib-1.2.13.orig/Makefile.in
++++ zlib-1.2.13/Makefile.in
+@@ -25,6 +25,7 @@ LDFLAGS=
+ TEST_LDFLAGS=$(LDFLAGS) -L. libz.a
  LDSHARED=$(CC)
  CPP=$(CC) -E
 +VGFMAFLAG=
  
  STATICLIB=libz.a
  SHAREDLIB=libz.so
-@@ -179,6 +180,9 @@ crc32.o: $(SRCDIR)crc32.c
+@@ -175,6 +176,9 @@ crc32.o: $(SRCDIR)crc32.c
  crc32_z_power8.o: $(SRCDIR)contrib/power/crc32_z_power8.c
  	$(CC) $(CFLAGS) -mcpu=power8 $(ZINC) -c -o $@ $(SRCDIR)contrib/power/crc32_z_power8.c
  
@@ -40,7 +40,7 @@ index 2e78f3844..04c2f5d53 100644
  deflate.o: $(SRCDIR)deflate.c
  	$(CC) $(CFLAGS) $(ZINC) -c -o $@ $(SRCDIR)deflate.c
  
-@@ -229,6 +233,11 @@ crc32.lo: $(SRCDIR)crc32.c
+@@ -225,6 +229,11 @@ crc32.lo: $(SRCDIR)crc32.c
  	$(CC) $(SFLAGS) $(ZINC) -DPIC -c -o objs/crc32.o $(SRCDIR)crc32.c
  	-@mv objs/crc32.o $@
  
@@ -52,11 +52,11 @@ index 2e78f3844..04c2f5d53 100644
  crc32_z_power8.lo: $(SRCDIR)contrib/power/crc32_z_power8.c
  	-@mkdir objs 2>/dev/null || test -d objs
  	$(CC) $(SFLAGS) -mcpu=power8 $(ZINC) -DPIC -c -o objs/crc32_z_power8.o $(SRCDIR)contrib/power/crc32_z_power8.c
-diff --git a/configure b/configure
-index dd01b5c0e..acf94a599 100755
---- a/configure
-+++ b/configure
-@@ -929,6 +929,32 @@ else
+Index: zlib-1.2.13/configure
+===================================================================
+--- zlib-1.2.13.orig/configure
++++ zlib-1.2.13/configure
+@@ -921,6 +921,32 @@ else
    echo "Checking for Power optimizations support... No." | tee -a configure.log
  fi
  
@@ -89,7 +89,7 @@ index dd01b5c0e..acf94a599 100755
  # show the results in the log
  echo >> configure.log
  echo ALL = $ALL >> configure.log
-@@ -960,6 +986,7 @@ echo mandir = $mandir >> configure.log
+@@ -952,6 +978,7 @@ echo mandir = $mandir >> configure.log
  echo prefix = $prefix >> configure.log
  echo sharedlibdir = $sharedlibdir >> configure.log
  echo uname = $uname >> configure.log
@@ -97,7 +97,7 @@ index dd01b5c0e..acf94a599 100755
  
  # udpate Makefile with the configure results
  sed < ${SRCDIR}Makefile.in "
-@@ -969,6 +996,7 @@ sed < ${SRCDIR}Makefile.in "
+@@ -961,6 +988,7 @@ sed < ${SRCDIR}Makefile.in "
  /^LDFLAGS *=/s#=.*#=$LDFLAGS#
  /^LDSHARED *=/s#=.*#=$LDSHARED#
  /^CPP *=/s#=.*#=$CPP#
@@ -105,10 +105,10 @@ index dd01b5c0e..acf94a599 100755
  /^STATICLIB *=/s#=.*#=$STATICLIB#
  /^SHAREDLIB *=/s#=.*#=$SHAREDLIB#
  /^SHAREDLIBV *=/s#=.*#=$SHAREDLIBV#
-diff --git a/contrib/gcc/zifunc.h b/contrib/gcc/zifunc.h
-index daf4fe442..b62379ed8 100644
---- a/contrib/gcc/zifunc.h
-+++ b/contrib/gcc/zifunc.h
+Index: zlib-1.2.13/contrib/gcc/zifunc.h
+===================================================================
+--- zlib-1.2.13.orig/contrib/gcc/zifunc.h
++++ zlib-1.2.13/contrib/gcc/zifunc.h
 @@ -8,9 +8,28 @@
  
  /* Helpers for arch optimizations */
@@ -139,11 +139,10 @@ index daf4fe442..b62379ed8 100644
  /* This is a helper macro to declare a resolver for an indirect function
   * (ifunc). Let's say you have function
   *
-diff --git a/contrib/s390/crc32-vx.c b/contrib/s390/crc32-vx.c
-new file mode 100644
-index 000000000..fa5387c11
+Index: zlib-1.2.13/contrib/s390/crc32-vx.c
+===================================================================
 --- /dev/null
-+++ b/contrib/s390/crc32-vx.c
++++ zlib-1.2.13/contrib/s390/crc32-vx.c
 @@ -0,0 +1,195 @@
 +/*
 + * Hardware-accelerated CRC-32 variants for Linux on z Systems
@@ -340,11 +339,10 @@ index 000000000..fa5387c11
 +
 +    return ((uv4si)v2)[2];
 +}
-diff --git a/contrib/s390/crc32_z_resolver.c b/contrib/s390/crc32_z_resolver.c
-new file mode 100644
-index 000000000..9749cab40
+Index: zlib-1.2.13/contrib/s390/crc32_z_resolver.c
+===================================================================
 --- /dev/null
-+++ b/contrib/s390/crc32_z_resolver.c
++++ zlib-1.2.13/contrib/s390/crc32_z_resolver.c
 @@ -0,0 +1,41 @@
 +#include <sys/auxv.h>
 +#include "../gcc/zifunc.h"
@@ -387,11 +385,11 @@ index 000000000..9749cab40
 +        return s390_crc32_vx;
 +    return crc32_z_default;
 +}
-diff --git a/crc32.c b/crc32.c
-index ae7b7e792..c2122615b 100644
---- a/crc32.c
-+++ b/crc32.c
-@@ -736,12 +736,12 @@ local z_word_t crc_word_big(data)
+Index: zlib-1.2.13/crc32.c
+===================================================================
+--- zlib-1.2.13.orig/crc32.c
++++ zlib-1.2.13/crc32.c
+@@ -745,12 +745,12 @@ local z_word_t crc_word_big(data)
  #endif
  
  /* ========================================================================= */
@@ -406,7 +404,7 @@ index ae7b7e792..c2122615b 100644
  
  unsigned long ZEXPORT crc32_z(crc, buf, len)
      unsigned long crc;
-@@ -1064,10 +1064,15 @@ unsigned long ZEXPORT crc32_z(crc, buf, len)
+@@ -1073,10 +1073,15 @@ unsigned long ZEXPORT crc32_z(crc, buf,
      return crc ^ 0xffffffff;
  }
  

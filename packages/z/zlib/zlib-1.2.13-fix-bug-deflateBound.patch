@@ -1,0 +1,27 @@
+From e554695638228b846d49657f31eeff0ca4680e8a Mon Sep 17 00:00:00 2001
+From: Mark Adler <madler@alumni.caltech.edu>
+Date: Thu, 15 Dec 2022 09:07:13 -0800
+Subject: [PATCH] Fix bug in deflateBound() for level 0 and memLevel 9.
+
+memLevel 9 would cause deflateBound() to assume the use of fixed
+blocks, even if the compression level was 0, which forces stored
+blocks. That could result in a bound less than the size of the
+compressed data. Now level 0 always uses the stored blocks bound.
+---
+ deflate.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/deflate.c b/deflate.c
+index cd538b8ac..4a512e1f9 100644
+--- a/deflate.c
++++ b/deflate.c
+@@ -752,7 +752,8 @@ uLong ZEXPORT deflateBound(strm, sourceLen)
+ 
+     /* if not default parameters, return one of the conservative bounds */
+     if (s->w_bits != 15 || s->hash_bits != 8 + 7)
+-        return (s->w_bits <= s->hash_bits ? fixedlen : storelen) + wraplen;
++        return (s->w_bits <= s->hash_bits && s->level ? fixedlen : storelen) +
++               wraplen;
+ 
+     /* default settings: return tight bound for that case -- ~0.03% overhead
+        plus a small constant */
