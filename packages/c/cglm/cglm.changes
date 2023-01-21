@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 23 20:48:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.8.8:
+  New features:
+  * new abs functions for vec2, ivec2, ivec3, ivec4
+  Bugfixes and Improvements:
+  * fix assertion in test_clamp on x86
+  * fix missing abs declaration on Emscripten
+  * switch CMAKE_BINARY_DIR to CMAKE_CURRENT_BINARY_DIR for cmake.pc
+  * see previous releases for more
+
+-------------------------------------------------------------------
 Sun Nov 20 02:32:15 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.8.7

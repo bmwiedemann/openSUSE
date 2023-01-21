@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           cglm
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        OpenGL mathematics (glm) for C
 License:        MIT
