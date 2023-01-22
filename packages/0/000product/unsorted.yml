@@ -9715,7 +9715,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of common_locks:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-2022_4_sdk236-32bit: [x86_64] 
+  - libSPIRV-Tools-2023_1-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -10385,7 +10385,6 @@ unsorted:
   - libbtf1 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
-  - libbtrfsutil1 
   - libbudgie-plugin0 
   - libbudgie-private0 
   - libbudgietheme0 
@@ -15402,6 +15401,8 @@ unsorted:
   - libxml2-devel-32bit: [x86_64] 
   - libxml2-doc 
   - libxmlb-devel 
+  - libxmlb2-32bit: [x86_64] 
+  - libxmlb2-x86-64-v3: [x86_64] 
   - libxmlbird1 
   - libxmlrpc++8 
   - libxmlrpc3 
@@ -25221,6 +25222,7 @@ unsorted:
   - python310-sunpy 
   - python310-suntime 
   - python310-sure 
+  - python310-surer 
   - python310-svglib 
   - python310-svgpathtools 
   - python310-svgwrite 
@@ -28621,6 +28623,7 @@ unsorted:
   - python38-sunpy 
   - python38-suntime 
   - python38-sure 
+  - python38-surer 
   - python38-svglib 
   - python38-svgpathtools 
   - python38-svgwrite 
@@ -32022,6 +32025,7 @@ unsorted:
   - python39-sunpy 
   - python39-suntime 
   - python39-sure 
+  - python39-surer 
   - python39-svglib 
   - python39-svgpathtools 
   - python39-svgwrite 
@@ -43351,6 +43355,7 @@ unsorted:
   - translate-shell 
   - translate-toolkit-devel-doc 
   - translate-toolkit-doc 
+  - translation-update-az 
   - translation-update-bg 
   - translation-update-ca 
   - translation-update-dz 
@@ -43365,9 +43370,11 @@ unsorted:
   - translation-update-lt 
   - translation-update-lv 
   - translation-update-ml 
+  - translation-update-ms 
   - translation-update-nb 
   - translation-update-ne 
   - translation-update-nl 
+  - translation-update-oc 
   - translation-update-pa 
   - translation-update-ro 
   - translation-update-sk 
