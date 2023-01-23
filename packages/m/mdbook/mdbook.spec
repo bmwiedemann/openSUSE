@@ -1,7 +1,7 @@
 #
 # spec file for package mdbook
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,13 +37,13 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build}
+%{cargo_build} --all-features
 
 %install
-%{cargo_install}
+%{cargo_install} --all-features
 
 %check
-%{cargo_test}
+%{cargo_test} --all-features
 
 %files
 %license LICENSE
