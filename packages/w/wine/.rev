@@ -4674,4 +4674,14 @@
 - update staging to 8.0 rc5 release</comment>
     <requestid>1060352</requestid>
   </revision>
+  <revision rev="398" vrev="1">
+    <srcmd5>ed6e691bf1742249ec2140ecc8b8323e</srcmd5>
+    <version>8.0</version>
+    <time>1674665036</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.0 release
+  - see all lower entries for major changes, also the ANNOUNCE file
+- update staging to 8.0 release</comment>
+    <requestid>1060796</requestid>
+  </revision>
 </revisionlist>
