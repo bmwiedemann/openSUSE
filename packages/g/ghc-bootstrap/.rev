@@ -249,4 +249,12 @@ Add support for ppc64le.</comment>
     <comment>Add missing dependency on libffi8.so to fix jsc#PED-1151.</comment>
     <requestid>1041880</requestid>
   </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>74c40d6b9a94a78d7234f6b079adcefe</srcmd5>
+    <version>8.10.1</version>
+    <time>1674495169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060396</requestid>
+  </revision>
 </revisionlist>

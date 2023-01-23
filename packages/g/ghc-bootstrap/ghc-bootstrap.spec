@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Keep in sync with ghc.spec
+%if 0%{suse_version} > 1550
+%global llvm_major 12
+%else
+%global llvm_major 9
+%endif
 
 %ifarch ppc
 %define longarch powerpc
@@ -93,7 +99,7 @@ Release:        0
 BuildRequires:  libnuma-devel
 %endif
 %ifarch aarch64 %{arm}
-Requires:       llvm
+Requires:       llvm%{llvm_major}
 %endif
 %ifnarch %{arm} s390x
 Requires:       libffi-devel

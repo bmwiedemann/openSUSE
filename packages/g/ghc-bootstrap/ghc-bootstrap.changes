@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:39:27 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not require unversionned llvm since ghc needs a specific
+  llvm version. [boo#1207265]
+
+-------------------------------------------------------------------
 Thu Dec  1 16:43:06 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Explictly depend on libffi8 to make sure we're getting the
