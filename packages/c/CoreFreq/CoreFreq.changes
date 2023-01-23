@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 23 08:50:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.95.1:
+  * [Intel] RPL: voltage of Pcore, Ecore, System Agent
+  * [Intel] RPL and ADL Chipset device IDs
+  * [Intel] Decode the RPL IMC and improve DDR5 support
+  * [Build] Raise `MAX_FREQ_HZ` up to 7125000000 Hertz
+  * [Intel] Mobile {Coffee Lake, Kaby Lake} codenames
+  * [Intel] Braswell codename detection
+  * [AMD] SYSCFG Register
+  * [AMD] EPYC 9654
+  * [AMD] Transparent SME
+  * [AMD] DRAM Data Scrambling
+  * [AMD] Adding "Barcelo R" and "Rembrandt R"
+
+-------------------------------------------------------------------
 Fri Jan  6 10:44:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.94.3:
