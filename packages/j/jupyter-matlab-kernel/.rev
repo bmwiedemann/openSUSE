@@ -43,4 +43,16 @@
     <comment></comment>
     <requestid>869692</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1fa4e6e9881a99292c0a1cb238f9d98</srcmd5>
+    <version>0.17.1</version>
+    <time>1674495098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.1
+  * Stop using sys.executable when building wheels by @RibomBalt in
+    #161
+  * Add a kernel that priorly links to a existing matlab engine
+    (besides the original one) by @RibomBalt in #159</comment>
+    <requestid>1060277</requestid>
+  </revision>
 </revisionlist>

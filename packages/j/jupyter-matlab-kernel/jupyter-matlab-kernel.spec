@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-matlab-kernel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%bcond_without  test
 Name:           jupyter-matlab-kernel
-Version:        0.16.11
+Version:        0.17.1
 Release:        0
 Summary:        Matlab kernel for Jupyter
 License:        BSD-3-Clause AND MIT
@@ -26,21 +25,20 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Calysto/matlab_kernel
 Source:         https://files.pythonhosted.org/packages/source/m/matlab-kernel/matlab_kernel-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyter_client >= 4.4.0
-BuildRequires:  jupyter-jupyter_core-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-certifi
+BuildRequires:  python3-ipython >= 4.0.0
+BuildRequires:  python3-jupyter_client >= 4.4.0
+BuildRequires:  python3-metakernel >= 0.23
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-wurlitzer
-Requires:       jupyter-ipython >= 4.0.0
-Requires:       jupyter-jupyter_client >= 4.4.0
-Requires:       jupyter-metakernel >= 0.20.8
-Requires:       python3-wurlitzer
-Suggests:       python3-backports.tempfile
-Suggests:       python3-certifi
-Provides:       python3-jupyter_matlab_kernel = %{version}
-Obsoletes:      python3-jupyter_matlab_kernel < %{version}
-Provides:       python3-matlab-kernel = %{version}
+BuildRequires:  python3-wheel
+Requires:       python3-ipython >= 4.0.0
+Requires:       python3-jupyter_client >= 4.4.0
+Requires:       python3-metakernel >= 0.23
+Provides:       python3-jupyter_matlab_kernel = %{version}-%{release}
+Obsoletes:      python3-jupyter_matlab_kernel < %{version}-%{release}
+Provides:       python3-matlab-kernel = %{version}-%{release}
 BuildArch:      noarch
 
 %description
@@ -51,22 +49,23 @@ MetaKernel, which means it features a standard set of magics.
 %setup -q -n matlab_kernel-%{version}
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_jupyter_kernel_dir}
 
 # Tests require MATLAB installed
 # %%check
-# %%pytest
+# Use from the github repo: test_matlab_kernel.py
 
 %files
 %license LICENSE.txt
 %doc README.rst
-%{python3_sitelib}/matlab_kernel-%{version}-py*.egg-info
-%{python3_sitelib}/matlab_kernel/
+%{python3_sitelib}/matlab_kernel-%{version}.dist-info
+%{python3_sitelib}/matlab_kernel
 %{_jupyter_kernel_dir}/matlab
+%{_jupyter_kernel_dir}/matlab_connect
 
 %changelog
