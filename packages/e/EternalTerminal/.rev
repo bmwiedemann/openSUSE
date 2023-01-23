@@ -185,4 +185,32 @@
     <comment></comment>
     <requestid>1034108</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9228d508c8300526e843a08b5fa3f5ce</srcmd5>
+    <version>6.2.4</version>
+    <time>1674495232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.4:
+  * CVE-2022-48257, CVE-2022-48258 remedied
+  * fix readme regarding port forwarding #522
+  * Fix test failures that started appearing in CI #526
+  * Add documentation for the EternalTerminal protocol #523
+  * ssh-et: apply upstream updates #527
+  * docs: write gpg key to trusted.gpg.d for APT #530
+  * Support for ipv6 addresses (with or without port specified) #536
+  * ipv6 abbreviated address support #539
+  * Fix launchd plist config to remove daemonization. #540
+  * Explicitly set verbosity from cxxopts value. #542
+  * Remove daemon flag in systemd config #549
+  * Format all source with clang-format. #552
+  * Fix tunnel parsing exception handling. #550
+  * Fix SIGTERM behavior that causes systemd control of etserver to timeout. #554
+  * Parse telemetry ini config as boolean and make telemetry opt-in. #553
+  * Logfile open mode and permission plus location configurability. #556
+- bsc#1207123 (CVE-2022-48257) Fix predictable logfile names in /tmp
+- bsc#1207124 (CVE-2022-48258) Fix etserver and etclient have world-readable logfiles
+- Note: Upstream released 6.2.2 with fixes then 6.2.4 and later removed 6.2.2
+  and redid 6.2.4</comment>
+    <requestid>1060453</requestid>
+  </revision>
 </revisionlist>
