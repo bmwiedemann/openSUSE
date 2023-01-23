@@ -1166,4 +1166,11 @@
     <comment>- updated to latest repository</comment>
     <requestid>1059934</requestid>
   </revision>
+  <revision rev="147" vrev="4">
+    <srcmd5>eafbd5c487510757b9894e818737e98a</srcmd5>
+    <version>0.10.4</version>
+    <time>1674467250</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207398</comment>
+  </revision>
 </revisionlist>
