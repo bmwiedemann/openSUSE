@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jan 22 05:48:34 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.36+git.20221123:
+  * Fix (disabled) Wavelet sound decompression
+  * Fix in_availableJoysticks cvar not updating
+  * Add keys for SDL 2.0.14's new gamepad buttons
+  * More predictable mesh normals generation
+  * Bugfixes
+- Spec file cleaning, e.g. removed loki installer stuff
+
+-------------------------------------------------------------------
 Wed Nov  2 18:44:16 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Remove nasm build requires, no longer used.
