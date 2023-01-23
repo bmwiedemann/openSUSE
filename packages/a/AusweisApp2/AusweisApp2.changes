@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 23 09:29:26 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.26.2
+    - Fixed notification when another application is running on the port in use.
+    - Fixed crashes on Android.
+    - Optimization of forwarding to "CommunicationErrorAddress" on iOS.
+    - Improved installation of the proxy service for terminal server environments.
+    - Fixed the setting for the setup wizard when installing in corporate networks.
+
+-------------------------------------------------------------------
 Sun Dec 18 17:25:08 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
