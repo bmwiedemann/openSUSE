@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Thu Jan 19 20:06:25 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 0.10.1
+  - support python 3
+- Refresh spec file, drop obsolete constructs
+- Update project URL
+- Update project license
+- Do not run tests, this version does not have any
+
+-------------------------------------------------------------------
+Fri Aug 29 13:05:18 UTC 2014 - toddrme2178@gmail.com
+
+- Update to version 0.9.3
+  + No changelog available
+
+-------------------------------------------------------------------
+Wed Dec 11 01:14:13 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 0.9
+  + No changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 11:06:06 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Jun 26 08:20:00 UTC 2012 - saschpe@suse.de
+
+- Update to version 0.3.6:
+  + Added missing Gunicorn worker
+  + Resolved #24 socket_error undefined
+
+-------------------------------------------------------------------
+Thu Feb  9 10:16:25 UTC 2012 - saschpe@suse.de
+
+- Remove old tarballs
+- Spec cleanup:
+  + No CFLAGS for noarch package
+  + Simplified macro usage
+
+-------------------------------------------------------------------
+Tue Feb 7 09:28:42 UTC 2012 - cfarrell@suse.com
+
+- Update to version 0.3.0:
+  + Updated docs
+  + PEP8
+  + Cleaned up examples and moved the autobahn testrunner.
+  + fix close(): previously it might have caused receive() to hang
+
+-------------------------------------------------------------------
+Tue Jan 31 13:11:40 UTC 2012 - cfarrell@suse.com
+
+- Update to mercurial changeset 70:c32ee0e06bd4:
+  + Splitted the Python fixes and exceptions in separate modules
+  + Updated python shebang
+
+-------------------------------------------------------------------
+Mon Jan 23 08:10:08 UTC 2012 - cfarrell@suse.com
+
+- hg update to commit f3b44105105e to get new fixes 
+
+-------------------------------------------------------------------
+Mon Jan  9 16:12:38 UTC 2012 - cfarrell@suse.com
+
+- Update to latest mercurial version and start testing
+
+-------------------------------------------------------------------
+Fri Nov 18 07:59:16 UTC 2011 - cfarrell@suse.com
+
+- Forgot to do a hg update stable in the mercurial tree 
+
+-------------------------------------------------------------------
+Thu Nov 17 21:11:58 UTC 2011 - cfarrell@suse.com
+ 
+- pulled from hg trunk as it looks like protocol version 8 is now supported 
+
