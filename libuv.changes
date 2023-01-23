@@ -578,6 +578,10 @@ Thu Oct 11 14:05:40 UTC 2018 - adam.majer@suse.de
   https://github.com/libuv/libuv/releases
 * install license as %license
 * fix_tests.patch: fix unit tests on OBS
+* fix for bsc#1199062 (backported as
+  0001-linux-remove-epoll-syscall-wrappers.patch and 
+  0002-linux-drop-code-path-for-epoll_pwait-less-kernels.patch) is
+  included in upstream releases from 1.23.1 on
 
 -------------------------------------------------------------------
 Sun Dec 24 22:24:45 UTC 2017 - avindra@opensuse.org
