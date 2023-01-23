@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 21 10:59:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.7:
+  * Fix for online games over 1MB not loading
+  * Much faster startup time (6 seconds faster on mac)
+  * MapEditor: Fill Shapes right click option added to allow filling holes in countries
+  * SwingGUI: fix for online lobby sometimes not repainting when tabs switched
+  * Lobby: when player resigns, the player is converted to easy AI instead of crap AI
+  * New field in game engine for maxCardsPerPlayer
+  * Fix grasshopper error on java 1.8 on mac when appending to log from interrupted thread
+  * Show connection errors in Lobby
+  * Fix error in replay when user has made invalid commands (e.g. tried to place 10 armies when they only have 9)
+  * SwingUI on macOS use native file chooser for selecting files (fix for Documents folder not showing files)
+  * Game engine supports over 9 players if configured with "game.players.max" in game.ini
+  * SwingGUI: can select 3 defending dice in any game mode
+  * Fix for lobby failed to launch when javax.crypto.JceSecurity not found
+  * New field in game for minimumNewArmies that can be set depending on the game options
+  * New Italian rules: no minimum armies, if you have less than 3 counties, you get 0 armies
+  * New Italian rules: during trade get 2 extra armies for each country, and can place them anywhere
+  * New Italian rules: game engine/network play version now 14
+
+
+-------------------------------------------------------------------
 Fri Dec  3 15:33:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.2.4

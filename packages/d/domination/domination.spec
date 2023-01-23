@@ -1,7 +1,7 @@
 #
 # spec file for package domination
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           domination
-Version:        1.2.4
+Version:        1.2.7
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
 License:        GPL-3.0-only
