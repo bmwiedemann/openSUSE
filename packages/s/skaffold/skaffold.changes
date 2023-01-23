@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 21 07:41:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.5:
+  * fix: add proper artifactOverrides->setValueTemplates conversion when upgrading from v2beta29 (#8335)
+  * fix: use release namespace in render when specified (#8259)
+
+-------------------------------------------------------------------
 Wed Dec 21 19:13:56 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.4:
