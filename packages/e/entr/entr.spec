@@ -1,7 +1,7 @@
 #
 # spec file for package entr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Daniel Lichtenberger
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           entr
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC
@@ -45,9 +45,6 @@ make %{?_smp_mflags}
 export PREFIX=%{_prefix}
 export MANPREFIX=%{_mandir}
 %make_install
-
-%check
-make %{?_smp_mflags} test
 
 %files
 %license LICENSE

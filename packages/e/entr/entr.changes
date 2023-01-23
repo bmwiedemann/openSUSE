@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 21 21:36:42 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.3
+  * Symlink changes detected on Linux by setting
+    'ENTR_INOTIFY_SYMLINK'.
+  * Use /dev/null rather then closed pipe for stdin in -r mode.
+  * Utilize {O,FD}_CLOEXEC flag for unintentional leaks of
+    descriptors to executed utilities.
+  * Remove C unit tests.
+  * Only respond to attribute/inode changes on Linux.
+- Drop tests. The new tests do not run within a chroot.
+
+-------------------------------------------------------------------
 Sat May  7 13:18:32 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.2
