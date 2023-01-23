@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>869703</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ed503906dded2a00bb20073c3e10fd0f</srcmd5>
+    <version>unknown</version>
+    <time>1674495099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2 w/ labver 0.6.2
+  * ipywidgets 8.0 compatibility by @jasongrout and @mwcraig in #86
+  * Drop support for Python 3.6
+- Release 0.5.1
+  * Add anchor attribute to choose between right sidebar or main
+    area</comment>
+    <requestid>1060278</requestid>
+  </revision>
 </revisionlist>

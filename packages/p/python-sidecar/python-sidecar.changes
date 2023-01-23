@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 22 15:09:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.2 w/ labver 0.6.2
+  * ipywidgets 8.0 compatibility by @jasongrout and @mwcraig in #86
+  * Drop support for Python 3.6
+- Release 0.5.1
+  * Add anchor attribute to choose between right sidebar or main
+    area
+
+-------------------------------------------------------------------
 Thu Feb  4 10:19:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.5.0
