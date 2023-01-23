@@ -1000,4 +1000,11 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Small code optimizations</comment>
     <requestid>1059525</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>7f10aadccb064b289360ea9e022bc74a</srcmd5>
+    <version>4.1.0</version>
+    <time>1674445087</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207366</comment>
+  </revision>
 </revisionlist>
