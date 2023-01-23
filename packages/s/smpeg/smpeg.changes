@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 22 07:52:42 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use BuildRequires pkgconfig(sdl), fixes building for openSUSE Leap
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Jan 23 19:55:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Avoid pointlessy generating static libraries.

@@ -1,7 +1,7 @@
 #
 # spec file for package smpeg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,9 @@ Patch7:         320_gnu_stack.diff
 #PATCH-FIX-UPSTREAM fix ftbfs with gcc 6
 Patch9:         340_gcc6.diff
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sdl)
 
 %description
 SMPEG is a MPEG-1 video player library with sound support. Video
@@ -78,13 +79,14 @@ rm -rf %{buildroot}%{_bindir}/glmovie
 rm -rf %{buildroot}%{_bindir}/plaympeg
 rm -rf %{buildroot}%{_mandir}/man1/plaympeg.1
 rm -rf %{buildroot}%{_mandir}/man1/gtv.1
-find %{buildroot} -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libsmpeg-0_4-0 -p /sbin/ldconfig
 %postun -n libsmpeg-0_4-0 -p /sbin/ldconfig
 
 %files -n libsmpeg-0_4-0
-%doc COPYING README
+%license COPYING
+%doc README
 %{_libdir}/libsmpeg-0.4.so.0
 %{_libdir}/libsmpeg-0.4.so.0.1.4
 
