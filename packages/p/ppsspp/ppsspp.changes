@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 21 21:11:41 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ppsspp 1.14.4:
+  * Graphics fixes in Burnout Dominator, Kurohyou, Ratchet & Clank,
+    Outrun, Ridge Racer, Spongebob: Yellow Avenger,
+    Cars: Race-o-Rama, Hunter x Hunter, many others
+  * Performance improvements: Killzone now runs at playable speed,
+    Juiced 2 performance fixed, lighting ubershader optimization
+  * Many software renderer improvements, both performance and
+    accuracy.
+  * Some input handling fixes, IR interpreter fixes, and so much
+    more.
+
+-------------------------------------------------------------------
 Sat Dec 10 09:20:01 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build on Factory: Does not build with FFmpeg 5.0 yet
