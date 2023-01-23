@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:32:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * This is a security release to address CVE-2023-22742: when compiled
+    using the optional, included libssh2 backend, libgit2 fails to verify
+    SSH keys by default. boo#1207364
+  * When using an SSH remote with the optional, included libssh2 backend,
+    libgit2 does not perform certificate checking by default. Prior versions
+    of libgit2 require the caller to set the `certificate_check` field of
+    libgit2's `git_remote_callbacks` structure - if a certificate check
+    callback is not set, libgit2 does not perform any certificate checking.
+    This means that by default - without configuring a certificate check
+    callback, clients will not perform validation on the server SSH keys and
+    may be subject to a man-in-the-middle attack.
+
+-------------------------------------------------------------------
 Wed Dec 21 13:11:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit
