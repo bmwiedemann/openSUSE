@@ -62,4 +62,20 @@
     + Add Russian translation (ru.po + desktop.in) #246</comment>
     <requestid>1045407</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e09c7ad091606152d433e3d33ef4d25c</srcmd5>
+    <version>1.5.2</version>
+    <time>1674495230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Implemented enhancements:
+    + Find Russian translation and icons here #260
+    + How can I remove it from the system? #248
+  * Fixed bugs:
+    + Unable to Paste Clipboard Images in Whatsapp for Linus #268
+    + Use different compression mode for deb package #267
+    + Dark theme not appearing for window border in Linux Mint
+      21 Vanessa, Flatpak. #262</comment>
+    <requestid>1060440</requestid>
+  </revision>
 </revisionlist>
