@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Thu Jan 19 22:53:49 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed old firmware
+
+-------------------------------------------------------------------
+Thu Jan 19 14:48:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 525.85.05
+
+-------------------------------------------------------------------
+Thu Jan 19 11:03:42 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use _firmwaredir
+
+-------------------------------------------------------------------
+Wed Jan 18 18:45:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs
+
+-------------------------------------------------------------------
+Wed Jan 18 16:16:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed rpmlintrc to %{name}-rpmlintrc
+
+-------------------------------------------------------------------
+Wed Jan 18 12:42:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- implements jsc#PED-2658
+
+-------------------------------------------------------------------
+Mon Jan  9 12:20:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 525.78.01
+
+-------------------------------------------------------------------
+Wed Jan  4 13:22:10 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed package to kernel-firmware-nvidia-gsp-G06 due to package
+  redesign
+
+-------------------------------------------------------------------
+Mon Nov 28 22:46:41 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 525.60.11 
+
+-------------------------------------------------------------------
+Fri Nov 11 14:44:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 525.53 
+
+-------------------------------------------------------------------
+Tue Oct 18 12:37:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 515.76
+
+-------------------------------------------------------------------
+Wed Aug  3 11:20:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-enabled simpletest (nvidia-smi); moved nvidia-smi and
+  required libnvidia-ml to /usr/lib/kernel-firmware-nvidia-gsp to
+  avoid conflicts with program/lib in nvidia-computeG06; run it with
+  LD_LIBRARY_PATH=/usr/lib/kernel-firmware-nvidia-gsp \
+    /usr/lib/kernel-firmware-nvidia-gsp/nvidia-smi
+
+-------------------------------------------------------------------
+Mon Aug  1 12:49:06 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 515.65.01
+
+-------------------------------------------------------------------
+Thu Jun 30 22:04:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 515.57 
+- no longer enable installation of simpletest (nvidia-smi) in
+  order to avoid file conflicts with nvidia-computeG06
+
+-------------------------------------------------------------------
+Tue May 31 20:16:01 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed URL in specfile 
+
+-------------------------------------------------------------------
+Tue May 31 18:21:01 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 515.48.07
+
+-------------------------------------------------------------------
+Wed May 25 14:11:58 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build on aarch64 
+
+-------------------------------------------------------------------
+Fri May 20 10:15:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed another warning
+- added aarch shell script archive
+
+-------------------------------------------------------------------
+Thu May 19 12:45:40 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- created package 

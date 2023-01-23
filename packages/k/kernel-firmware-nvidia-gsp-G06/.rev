@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae86a5e6ef55b657029bf575d7e7da5f</srcmd5>
+    <version>525.85.05</version>
+    <time>1674495050</time>
+    <user>dimstar_suse</user>
+    <comment>implements jsc#PED-2658
+
+- removed old firmware</comment>
+    <requestid>1059872</requestid>
+  </revision>
+</revisionlist>

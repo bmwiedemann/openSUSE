@@ -1,0 +1,5 @@
+<package name="kernel-firmware-nvidia-gsp-G06" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Drivers:Video:Redesign" package="kernel-firmware-nvidia-gsp-G06"/>
+</package>
