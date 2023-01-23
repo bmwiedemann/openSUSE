@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           hidapi
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
 License:        BSD-3-Clause OR GPL-3.0-or-later
