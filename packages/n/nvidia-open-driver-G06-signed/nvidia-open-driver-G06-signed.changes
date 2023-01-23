@@ -1,0 +1,331 @@
+-------------------------------------------------------------------
+Thu Jan 19 19:51:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 525.85.05
+  * Fix build problems with Clang 15.0, #377 by @ptr1337
+
+-------------------------------------------------------------------
+Thu Jan 19 15:45:16 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- require "group(video)" 
+
+-------------------------------------------------------------------
+Thu Jan 19 15:20:18 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- set options for nvidia kernel module via modprobe install script;
+  no longer adjusting of nvidia's NVreg_DeviceFileGID option in
+  modprobe.d file needed in %post
+
+-------------------------------------------------------------------
+Thu Jan 19 13:26:44 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- package the modprobe.d file as a sample in
+  /usr/lib/nvidia-open-driver-G06-signed; then adjust GUID of
+  video group for nvidia's NVreg_DeviceFileGID option and write the
+  result to /etc/modprobe.d, i.e. no longer touch a packaged 
+  modprobe.d file below /usr
+
+-------------------------------------------------------------------
+Thu Jan 19 10:56:45 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- set group id for nvidia's NVreg_DeviceFileGID option already 
+  during build, since it's not allowed to edit modprobe.d files
+  during %post
+
+-------------------------------------------------------------------
+Wed Jan 18 13:49:56 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- added pci_ids-unsupported-525.78.01/pci_ids-unsupported as sources
+  to specfile 
+
+-------------------------------------------------------------------
+Wed Jan 18 13:40:38 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- added empty %changelog section to specfile 
+
+-------------------------------------------------------------------
+Wed Jan 18 12:49:22 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- implements jsc#PED-2658
+
+-------------------------------------------------------------------
+Mon Jan  9 14:08:58 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- require kernel-firmware-nvidia-gsp-G06 (with suffix -G06!)
+
+-------------------------------------------------------------------
+Mon Jan  9 12:30:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 525.78.01
+  * adds alpha support for 
+    + NVIDIA GeForce RTX 3050
+    + NVIDIA GeForce RTX 4090
+    + NVIDIA RTX 6000 Ada Generation
+    + NVIDIA L40
+    + NVIDIA GeForce RTX 4080
+    + NVIDIA GeForce RTX 4070 Ti
+
+-------------------------------------------------------------------
+Wed Jan  4 13:56:56 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- renamed package to nvidia-open-driver-G06-signed due to package
+  redesign
+
+-------------------------------------------------------------------
+Mon Nov 28 23:08:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 525.60.11
+
+-------------------------------------------------------------------
+Wed Nov 23 13:37:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- set NVreg_PreserveVideoMemoryAllocations kernel option now
+  needed for GNOME Wayland (gdm) since
+    commit 51181871e9db716546e9593216220389de0d8b03
+    Author: Ray Strode <rstrode@redhat.com>
+    Date:   Fri Mar 4 14:11:03 2022 -0500
+
+      data: Disable wayland on nvidia if suspend is broken
+
+-------------------------------------------------------------------
+Mon Nov 14 10:25:51 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- added /etc/dracut.conf.d/60-nvidia-$flavor.conf in order to
+  omit nvidia modules in initrd, which apparently were added
+  automatically - apart from nvidia-uvm module; related to
+  boo#1173733
+
+-------------------------------------------------------------------
+Fri Nov 11 14:32:14 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 525.53
+  * GSP firmware is now distributed as multiple firmware files:
+    this release has gsp_tu10x.bin and gsp_ad10x.bin replacing
+    gsp.bin from previous releases.  
+    + Each file is named after a GPU architecture and supports
+      GPUs from one or more architectures. This allows GSP
+      firmware to better leverage each architecture's
+      capabilities.
+    + The .run installer will continue to install firmware to
+      /lib/firmware/nvidia/<version> and the nvidia.ko kernel
+      module will load the appropriate firmware for each GPU at
+      runtime.
+  * Add support for IBT (indirect branch tracking) on supported
+    platforms, #256 by @rnd-ash
+  * Return EINVAL when [failing to] allocating memory, 
+    #280 by @YusufKhan-gamedev
+  * Fix various typos in nvidia/src/kernel, #16 by
+    @alexisgeoffrey
+  * Added support for rotation in X11, Quadro Sync, Stereo,
+    and YUV 4:2:0 on Turing. 
+
+-------------------------------------------------------------------
+Tue Oct 18 14:08:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- (build-)require perl-Bootloader due to pbl usage in %post(-un)
+
+-------------------------------------------------------------------
+Tue Oct 18 13:58:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh/kmp-postun.sh:
+  * add/remove nosimplefb=1 kernel option in order to fix Linux
+    console on TW kernel, which comes with simpledrm support
+
+-------------------------------------------------------------------
+Sat Oct  8 09:47:11 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 515.76
+  * Improved compatibility with new Linux kernel releases
+  * Fixed possible excessive GPU power draw on an idle X11 or
+    Wayland desktop when driving high resolutions or refresh rates
+
+-------------------------------------------------------------------
+Wed Aug  3 10:52:41 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- added pci_ids-unsupported -> pci_ids-unsupported-515.65.01
+  symlink to which I can refer from blog
+
+-------------------------------------------------------------------
+Tue Aug  2 16:04:37 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 515.65.01
+  * Collection of minor fixes to issues, #6 by @Joshua-Ashton
+  * Remove unnecessary use of acpi_bus_get_device().
+
+-------------------------------------------------------------------
+Tue Jul 19 16:27:15 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Force CC to gcc to avoid compiler differs warnings
+
+-------------------------------------------------------------------
+Tue Jul 19 14:23:40 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- json-to-pci-id-list.py  
+ * added new Python script by Tamara Schmitz which is being used
+   now to parse supported-gpus.json in order to create the PCI ID
+   list 'pci_ids-unsupported-<version>'
+
+-------------------------------------------------------------------
+Mon Jul 18 13:57:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- pci_ids-unsupported-515.57
+  * currently unsupported devices (Turing and later, which needs
+    NVreg_OpenRmEnableUnsupportedGpus=1 kernel option; Alpha Quality!)
+
+-------------------------------------------------------------------
+Thu Jul 14 10:54:27 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- define %kernel_module_directory macro on older distros in order
+  to fix build on Leap 15.3(GA)/sle 15 SP3(GA)
+
+-------------------------------------------------------------------
+Thu Jun 30 21:44:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 515.57
+  * Backtick is deprecated, #273 by @arch-user-france1
+
+-------------------------------------------------------------------
+Fri Jun 17 10:19:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Revert last change and use default CA [pesign-obs-integration
+  and kernel-source docs are incorrect]
+
+-------------------------------------------------------------------
+Thu Jun 16 12:31:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Create uefi cert package
+
+-------------------------------------------------------------------
+Wed Jun 15 21:48:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Sign the kernel modules and compress them
+
+-------------------------------------------------------------------
+Wed Jun 15 11:15:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't buildrequire azure on aarch64; no such kernel flavor
+  available on aarch64
+
+-------------------------------------------------------------------
+Thu Jun  9 13:12:16 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- move cuda-drivers = %version provide to nvidia-computeG0X, which
+  then again requires nvidia-gfxG0X-kmp or nvidia-open-gfxG0X-kmp
+  respectively
+
+-------------------------------------------------------------------
+Wed Jun  8 15:20:11 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: provide cuda-drivers = %version, so you can just
+  install 'cuda' meta package to install CUDA stack 
+  (cuda --> cuda-11-7 --> cuda-runtime-11-7 --> cuda-drivers >= 515.43.04)
+  from https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/
+
+-------------------------------------------------------------------
+Tue Jun  7 09:44:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: added Conflicts to nvidia-gfxG06-kmp
+
+-------------------------------------------------------------------
+Tue May 31 17:54:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 515.48.07
+  * List of compatible GPUs in README.md.
+  * Fix various README capitalizations, #8 by @lx-is
+  * Automatically tag bug report issues, #15 by @thebeanogamer
+  * Improve conftest.sh Script, #37 by @Nitepone
+  * Update HTTP link to HTTPS, #101 by @alcaparra
+  * moved array sanity check to before the array access, #117 by @RealAstolfo
+  * Fixed some typos, #122 by @FEDOyt
+  * Fixed capitalization, #123 by @keroeslux
+  * Fix typos in NVDEC Engine Descriptor, #126 from @TrickyDmitriy
+  * Extranous apostrohpes in a makefile script [sic], #14 by @kiroma
+  * HDMI no audio @ 4K above 60Hz, #75 by @adolfotregosa
+  * dp_configcaps.cpp:405: array index sanity check in wrong place?, #110 by @dcb314
+  * NVRM kgspInitRm_IMPL: missing NVDEC0 engine, cannot initialize GSP-RM, #116 by @kfazz
+  * ERROR: modpost: "backlight_device_register" [...nvidia-modeset.ko] undefined, #135 by @sndirsch
+  * aarch64 build fails, #151 by @frezbo
+- supersedes backlight-workaround.patch
+
+-------------------------------------------------------------------
+Thu May 19 21:33:33 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Set mno-outline-atomics to fix libgcc issues on aarch64
+
+-------------------------------------------------------------------
+Thu May 19 12:27:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: require kernel-firmware-nvidia-gsp package for nvidia's
+  versioned "gsp.bin" fimrware
+
+-------------------------------------------------------------------
+Thu May 19 08:21:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable build also for aarch64 
+
+-------------------------------------------------------------------
+Thu May 19 08:02:16 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- improved summary and description 
+
+-------------------------------------------------------------------
+Thu May 19 03:05:12 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- modprobe.nvidia.install
+  * install script when the "nvidia" module is being loaded; needed
+    for creating devices
+- specfile
+  * filled modprobe.d config file (options and install script)
+
+-------------------------------------------------------------------
+Thu May 19 02:15:53 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh/kmp-postun.sh 
+  * additional code for %post/%postun scriptlets to create nvidia
+    devices
+- specfile: adjust %kernel_module_package macro appropriately
+
+-------------------------------------------------------------------
+Tue May 17 19:35:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- added kmp-filelist 
+- adding an empty modprobe.d config file (to be filled later)
+
+-------------------------------------------------------------------
+Tue May 17 18:41:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- added hardware supplements
+  * added my-find-supplements, pci_ids-515.43.04
+  * changes in specfile to generate the hardware supplements from 
+    pci_ids-515.43.04 via my-find-supplements
+
+-------------------------------------------------------------------
+Tue May 17 14:08:21 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Set SYSSRC and SYSOUT for building with proper kernel source tree
+  for each flavor
+- Exclusive build for x86_64
+- backlight-workaround.patch:
+  workaround for a build failure with azure flavor
+- persistent-nvidia-id-string.patch:
+  make persistent nvidia id string for reproducible builds
+
+-------------------------------------------------------------------
+Fri May 13 14:47:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- switched to a known license to fix build:  MIT/GPLv2 --> GPL-2.0 and MIT
+
+-------------------------------------------------------------------
+Fri May 13 13:29:44 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Don-t-override-INSTALL_MOD_DIR.patch
+  * Make sure INSTALL_MOD_DIR from our spec-file is honoured
+- Make the default flavor build. Not sure how to get other flavors to build.
+
+-------------------------------------------------------------------
+Thu May 12 09:51:40 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- created package
+  * build still fails completely
+  * more things are missing
+ 

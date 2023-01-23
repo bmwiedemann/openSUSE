@@ -1,0 +1,39 @@
+# convert to one line via " awk '{ printf "%s ", $0 }' " script.txt'
+
+PATH=$PATH:/bin:/usr/bin;
+if /sbin/modprobe --ignore-install nvidia NVreg_DeviceFileUID=0 NVreg_DeviceFileGID=$(getent group video | cut -d: -f3) NVreg_DeviceFileMode=0660 NVreg_PreserveVideoMemoryAllocations=1; then
+  if /sbin/modprobe nvidia_uvm; then
+    if [ ! -c /dev/nvidia-uvm ]; then
+      mknod -m 660 /dev/nvidia-uvm c $(cat /proc/devices | while read major device; do if [ "$device" == "nvidia-uvm" ]; then echo $major; break; fi ; done) 0; 
+      chown :video /dev/nvidia-uvm;
+    fi;
+    if [ ! -c /dev/nvidia-uvm-tools ]; then
+      mknod -m 660 /dev/nvidia-uvm-tools c $(cat /proc/devices | while read major device; do if [ "$device" == "nvidia-uvm" ]; then echo $major; break; fi ; done) 1;
+      chown :video /dev/nvidia-uvm-tools;
+    fi;
+  fi;
+  if [ ! -c /dev/nvidiactl ]; then
+    mknod -m 660 /dev/nvidiactl c 195 255;
+    chown :video /dev/nvidiactl;
+  fi;
+  devid=-1;
+  for dev in $(ls -d /sys/bus/pci/devices/*); do 
+    vendorid=$(cat $dev/vendor);
+    if [ "$vendorid" == "0x10de" ]; then
+      class=$(cat $dev/class);
+      classid=${class%%00};
+      if [ "$classid" == "0x0300" -o "$classid" == "0x0302" ]; then 
+        devid=$((devid+1));
+        if [ ! -c /dev/nvidia${devid} ]; then 
+          mknod -m 660 /dev/nvidia${devid} c 195 ${devid}; 
+          chown :video /dev/nvidia${devid};
+        fi;
+      fi;
+    fi;
+  done;
+  /sbin/modprobe nvidia_drm;
+  if [ ! -c /dev/nvidia-modeset ]; then
+    mknod -m 660 /dev/nvidia-modeset c 195 254;
+    chown :video /dev/nvidia-modeset;
+  fi;
+fi

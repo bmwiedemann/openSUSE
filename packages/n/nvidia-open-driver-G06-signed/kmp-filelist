@@ -1,0 +1,16 @@
+%defattr (-,root,root)
+%dir %{kernel_module_directory}/%2-%1
+%dir %{kernel_module_directory}/%2-%1/updates
+%{kernel_module_directory}/%2-%1/updates/nvidia*.ko
+%if 0%{?suse_version} >= 1550
+%dir /usr/lib/modprobe.d
+%config /usr/lib/modprobe.d/50-nvidia-%1.conf
+%dir /usr/lib/dracut
+%dir /usr/lib/dracut/dracut.conf.d
+/usr/lib/dracut/dracut.conf.d/60-nvidia-%1.conf
+%else
+%dir %{_sysconfdir}/modprobe.d
+%config %{_sysconfdir}/modprobe.d/50-nvidia-%1.conf
+%dir /etc/dracut.conf.d
+/etc/dracut.conf.d/60-nvidia-%1.conf
+%endif
