@@ -20,7 +20,7 @@
 %define soname 17
 %bcond_without python2
 Name:           miniupnpc
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 Summary:        Universal Plug'n'Play (UPnP) Client
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ Patch0:         miniupnpc-kernelversion.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       libminiupnpc%{soname} = %{version}-%{release}
 
@@ -101,15 +102,14 @@ Device (IGD) specifications.
 %endif
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags} \
-     CC="gcc" \
+%make_build \
+     CC="gcc" BUILD=$PWD/build \
      OPTFLAGS="%{optflags}" \
-     PYTHON="python"
+     PYTHON="python3"
 
 %python_build
 

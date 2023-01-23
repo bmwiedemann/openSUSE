@@ -1,9 +1,9 @@
-Index: miniupnpc-2.2.2/updateminiupnpcstrings.sh
+Index: miniupnpc-2.2.3/updateminiupnpcstrings.sh
 ===================================================================
---- miniupnpc-2.2.2.orig/updateminiupnpcstrings.sh
-+++ miniupnpc-2.2.2/updateminiupnpcstrings.sh
-@@ -8,8 +8,8 @@ TMPFILE=miniupnpcstrings.h.tmp
- TEMPLATE_FILE=${FILE}.in
+--- miniupnpc-2.2.3.orig/updateminiupnpcstrings.sh
++++ miniupnpc-2.2.3/updateminiupnpcstrings.sh
+@@ -19,8 +19,8 @@ if [ ! -f "$TMPFILE" ] ; then
+ fi
  
  # detecting the OS name and version
 -OS_NAME=`uname -s`
