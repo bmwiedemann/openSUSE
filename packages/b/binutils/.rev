@@ -2101,4 +2101,14 @@ contain it.
   * The objcopy program's --weaken, --weaken-symbol, and</comment>
     <requestid>994281</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>46e6e5b6d41810eef121e9650cf3f48f</srcmd5>
+    <version>2.39</version>
+    <time>1674495020</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build on x86_64_vX platforms 
+
+- add arm32-avoid-copyreloc.patch for PR16177 (bsc#1200962) (forwarded request 1060005 from dirkmueller)</comment>
+    <requestid>1060010</requestid>
+  </revision>
 </revisionlist>

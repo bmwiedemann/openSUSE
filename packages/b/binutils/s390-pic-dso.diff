@@ -19,7 +19,7 @@ Index: bfd/elf32-s390.c
 +		  || ELF_ST_VISIBILITY (h->other) != STV_PROTECTED))
 +	    {
 +	      (*_bfd_error_handler)
-+		  (_("%B: relocation %s against `%s' can not be used when "
++		  (_("%pB: relocation %s against `%s' can not be used when "
 +		     "making a shared object; recompile with -fPIC"),
 +		   input_bfd, elf_howto_table[r_type].name,
 +		   h->root.root.string);

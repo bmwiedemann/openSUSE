@@ -94,7 +94,7 @@ Release:        0
 %define	make_check_handling	false
 %endif
 # handle all binary object formats supported by SUSE (and a few more)
-%ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le riscv64 s390 s390x x86_64
+%ifarch %ix86 %arm aarch64 ia64 ppc ppc64 ppc64le riscv64 s390 s390x x86_64 %x86_64
 %define build_multitarget 1
 %else
 %define build_multitarget 0
@@ -125,6 +125,7 @@ Patch6:         unit-at-a-time.patch
 Patch8:         ld-relro.diff
 Patch9:         testsuite.diff
 Patch10:        enable-targets-gold.diff
+Patch11:        arm32-avoid-copyreloc.patch
 Patch12:        s390-pic-dso.diff
 Patch14:        binutils-build-as-needed.diff
 Patch15:        binutils-znow.patch
@@ -138,6 +139,9 @@ Patch40:        binutils-fix-abierrormsg.diff
 Patch41:        binutils-fix-relax.diff
 Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
+Patch44:        binutils-revert-rela.diff
+Patch45:        binutils-pr29482.diff
+Patch46:        binutils-maxpagesize.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -165,7 +169,7 @@ Requires:       alts
 PreReq:         update-alternatives
 %endif
 %if 0%{!?cross:1} && 0%{?suse_version} >= 1310
-%define gold_archs %ix86 aarch64 %arm x86_64 ppc ppc64 ppc64le s390x %sparc
+%define gold_archs %ix86 aarch64 %arm x86_64 %x86_64 ppc ppc64 ppc64le s390x %sparc
 %endif
 
 %description gold
@@ -215,7 +219,7 @@ The next generation profiling tool for Linux
 %ifarch %arm
 %define HOST %{_target_cpu}-suse-linux-gnueabi
 %else
-%define HOST %(echo %{_target_cpu} | sed -e "s/parisc/hppa/" -e "s/i.86/i586/" -e "s/ppc/powerpc/" -e "s/sparc64v.*/sparc64/" -e "s/sparcv.*/sparc/")-suse-linux
+%define HOST %(echo %{_target_cpu} | sed -s -e "s/x86_64_v./x86_64/" -e "s/parisc/hppa/" -e "s/i.86/i586/" -e "s/ppc/powerpc/" -e "s/sparc64v.*/sparc64/" -e "s/sparcv.*/sparc/")-suse-linux
 %endif
 %define DIST %(echo '%distribution' | sed 's/ (.*)//')
 
@@ -243,6 +247,7 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch8
 %patch9
 %patch10
+%patch11 -p1
 %patch12
 %patch14
 %patch15
@@ -259,7 +264,10 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %if %{suse_version} < 1550
 %patch42 -p1
 %patch43 -p1
+%patch44 -p1
 %endif
+%patch45 -p1
+%patch46 -p1
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
@@ -690,7 +698,7 @@ fi;
 %{_libdir}/libctf-nobfd.so.*
 
 %if %{suse_version} > 1500
-%ifarch %ix86 x86_64 aarch64
+%ifarch %ix86 x86_64 %x86_64 aarch64
 %files -n gprofng
 %defattr(-,root,root)
 %dir %{_libdir}/gprofng/

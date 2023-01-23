@@ -1,0 +1,272 @@
+This is for bsc#1198422
+
+This essentially reverts commit 17c6c3b99156fe82c1e637e1a5fd9f163ac788c8
+to return back to old behaviour regarding RELA relocs: old binutils
+used the relocated field as additional addend, relying on it being
+zero for normal RELA behaviour.  This isn't correct according to the 
+psABI, but some old tools (e.g. older ICC) emit object files where
+the in-field "addend" is to be used (and record the zero in the A field
+of the RELA reloc).  This change was included starting with binutils 2.37,
+but for older codestreams we want to be compatible with the old (buggy)
+behaviour.  We revert the change for all relocs and not just those for
+which it arguably made some sense or where we had a report about (PLT32).
+
+
+Index: binutils-2.39/bfd/elf64-x86-64.c
+===================================================================
+--- binutils-2.39.orig/bfd/elf64-x86-64.c	2022-10-17 16:20:55.074224642 +0200
++++ binutils-2.39/bfd/elf64-x86-64.c	2022-10-17 16:31:36.128864508 +0200
+@@ -47,127 +47,127 @@ static reloc_howto_type x86_64_elf_howto
+ 	bfd_elf_generic_reloc, "R_X86_64_NONE",	false, 0, 0x00000000,
+ 	false),
+   HOWTO(R_X86_64_64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_PC32, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_PC32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_PC32", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_GOT32, 0, 4, 32, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOT32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_GOT32", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_PLT32, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_PLT32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_PLT32", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_COPY, 0, 4, 32, false, 0, complain_overflow_bitfield,
+-	bfd_elf_generic_reloc, "R_X86_64_COPY", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_COPY", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_GLOB_DAT, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_GLOB_DAT", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_GLOB_DAT", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_JUMP_SLOT, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_JUMP_SLOT", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_JUMP_SLOT", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_RELATIVE, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_RELATIVE", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_RELATIVE", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_GOTPCREL, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTPCREL", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_GOTPCREL", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_32, 0, 4, 32, false, 0, complain_overflow_unsigned,
+-	bfd_elf_generic_reloc, "R_X86_64_32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_32", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_32S, 0, 4, 32, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_32S", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_32S", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_16, 0, 2, 16, false, 0, complain_overflow_bitfield,
+-	bfd_elf_generic_reloc, "R_X86_64_16", false, 0, 0xffff, false),
++	bfd_elf_generic_reloc, "R_X86_64_16", false, 0xffff, 0xffff, false),
+   HOWTO(R_X86_64_PC16, 0, 2, 16, true, 0, complain_overflow_bitfield,
+-	bfd_elf_generic_reloc, "R_X86_64_PC16", false, 0, 0xffff, true),
++	bfd_elf_generic_reloc, "R_X86_64_PC16", false, 0xffff, 0xffff, true),
+   HOWTO(R_X86_64_8, 0, 1, 8, false, 0, complain_overflow_bitfield,
+-	bfd_elf_generic_reloc, "R_X86_64_8", false, 0, 0xff, false),
++	bfd_elf_generic_reloc, "R_X86_64_8", false, 0xff, 0xff, false),
+   HOWTO(R_X86_64_PC8, 0, 1, 8, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_PC8", false, 0, 0xff, true),
++	bfd_elf_generic_reloc, "R_X86_64_PC8", false, 0xff, 0xff, true),
+   HOWTO(R_X86_64_DTPMOD64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_DTPMOD64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_DTPMOD64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_DTPOFF64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_DTPOFF64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_DTPOFF64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_TPOFF64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_TPOFF64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_TPOFF64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_TLSGD, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_TLSGD", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_TLSGD", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_TLSLD, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_TLSLD", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_TLSLD", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_DTPOFF32, 0, 4, 32, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_DTPOFF32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_DTPOFF32", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_GOTTPOFF, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTTPOFF", false, 0, 	0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_GOTTPOFF", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_TPOFF32, 0, 4, 32, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_TPOFF32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_TPOFF32", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_PC64, 0, 8, 64, true, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_PC64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_PC64", false, MINUS_ONE, MINUS_ONE,
+ 	true),
+   HOWTO(R_X86_64_GOTOFF64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTOFF64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_GOTOFF64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_GOTPC32, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTPC32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_GOTPC32", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_GOT64, 0, 8, 64, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOT64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_GOT64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_GOTPCREL64, 0, 8, 64, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTPCREL64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_GOTPCREL64", false, MINUS_ONE, MINUS_ONE,
+ 	true),
+   HOWTO(R_X86_64_GOTPC64, 0, 8, 64, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTPC64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_GOTPC64", false, MINUS_ONE, MINUS_ONE,
+ 	true),
+   HOWTO(R_X86_64_GOTPLT64, 0, 8, 64, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTPLT64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_GOTPLT64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_PLTOFF64, 0, 8, 64, false, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_PLTOFF64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_PLTOFF64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_SIZE32, 0, 4, 32, false, 0, complain_overflow_unsigned,
+-	bfd_elf_generic_reloc, "R_X86_64_SIZE32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_SIZE32", false, 0xffffffff, 0xffffffff,
+ 	false),
+   HOWTO(R_X86_64_SIZE64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_SIZE64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_SIZE64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_GOTPC32_TLSDESC, 0, 4, 32, true, 0,
+ 	complain_overflow_bitfield, bfd_elf_generic_reloc,
+-	"R_X86_64_GOTPC32_TLSDESC", false, 0, 0xffffffff, true),
++	"R_X86_64_GOTPC32_TLSDESC", false, 0xffffffff, 0xffffffff, true),
+   HOWTO(R_X86_64_TLSDESC_CALL, 0, 0, 0, false, 0,
+ 	complain_overflow_dont, bfd_elf_generic_reloc,
+ 	"R_X86_64_TLSDESC_CALL",
+ 	false, 0, 0, false),
+   HOWTO(R_X86_64_TLSDESC, 0, 8, 64, false, 0,
+ 	complain_overflow_dont, bfd_elf_generic_reloc,
+-	"R_X86_64_TLSDESC", false, 0, MINUS_ONE, false),
++	"R_X86_64_TLSDESC", false, MINUS_ONE, MINUS_ONE, false),
+   HOWTO(R_X86_64_IRELATIVE, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_IRELATIVE", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_IRELATIVE", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_RELATIVE64, 0, 8, 64, false, 0, complain_overflow_dont,
+-	bfd_elf_generic_reloc, "R_X86_64_RELATIVE64", false, 0, MINUS_ONE,
++	bfd_elf_generic_reloc, "R_X86_64_RELATIVE64", false, MINUS_ONE, MINUS_ONE,
+ 	false),
+   HOWTO(R_X86_64_PC32_BND, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_PC32_BND", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_PC32_BND", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_PLT32_BND, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_PLT32_BND", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_PLT32_BND", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_GOTPCRELX, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_GOTPCRELX", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_GOTPCRELX", false, 0xffffffff, 0xffffffff,
+ 	true),
+   HOWTO(R_X86_64_REX_GOTPCRELX, 0, 4, 32, true, 0, complain_overflow_signed,
+-	bfd_elf_generic_reloc, "R_X86_64_REX_GOTPCRELX", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_REX_GOTPCRELX", false, 0xffffffff, 0xffffffff,
+ 	true),
+ 
+   /* We have a gap in the reloc numbers here.
+@@ -188,7 +188,7 @@ static reloc_howto_type x86_64_elf_howto
+ 
+ /* Use complain_overflow_bitfield on R_X86_64_32 for x32.  */
+   HOWTO(R_X86_64_32, 0, 4, 32, false, 0, complain_overflow_bitfield,
+-	bfd_elf_generic_reloc, "R_X86_64_32", false, 0, 0xffffffff,
++	bfd_elf_generic_reloc, "R_X86_64_32", false, 0xffffffff, 0xffffffff,
+ 	false)
+ };
+ 
+Index: binutils-2.39/gas/testsuite/gas/i386/i386.exp
+===================================================================
+--- binutils-2.39.orig/gas/testsuite/gas/i386/i386.exp	2022-07-08 11:46:47.000000000 +0200
++++ binutils-2.39/gas/testsuite/gas/i386/i386.exp	2022-10-17 16:27:41.276966573 +0200
+@@ -1287,7 +1287,6 @@ if [gas_64_check] then {
+ 	run_list_test "reloc64" "--defsym _bad_=1"
+ 	run_list_test "x86-64-inval-tls"
+ 	run_dump_test "mixed-mode-reloc64"
+-	run_dump_test "rela"
+ 	run_dump_test "x86-64-ifunc"
+ 	run_dump_test "x86-64-opcode-inval"
+ 	run_dump_test "x86-64-opcode-inval-intel"
+Index: binutils-2.39/gas/testsuite/gas/i386/rela.d
+===================================================================
+--- binutils-2.39.orig/gas/testsuite/gas/i386/rela.d	2022-07-08 11:46:47.000000000 +0200
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,13 +0,0 @@
+-#name: x86-64 rela relocs w/ non-zero relocated fields
+-#objdump: -rsj .data
+-
+-.*: +file format .*
+-
+-RELOCATION RECORDS FOR \[\.data\]:
+-
+-OFFSET +TYPE +VALUE
+-0*0 R_X86_64_64 *q
+-0*8 R_X86_64_32 *l
+-
+-Contents of section .data:
+- 0+0 11 ?11 ?11 ?11 22 ?22 ?22 ?22 33 ?33 ?33 ?33 44 ?44 ?44 ?44 .*
+Index: binutils-2.39/gas/testsuite/gas/i386/rela.s
+===================================================================
+--- binutils-2.39.orig/gas/testsuite/gas/i386/rela.s	2022-07-08 11:46:47.000000000 +0200
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,14 +0,0 @@
+-# Note: This file is also used by an ld test case.
+-
+-	.text
+-	.global _start
+-_start:
+-	ret
+-
+-	.data
+-	.p2align 4
+-l:	.long	0x11111111, 0x22222222
+-q:	.quad	0x4444444433333333
+-
+-	.reloc l, BFD_RELOC_64, q
+-	.reloc q, BFD_RELOC_32, l
+Index: binutils-2.39/ld/testsuite/ld-x86-64/rela.d
+===================================================================
+--- binutils-2.39.orig/ld/testsuite/ld-x86-64/rela.d	2022-07-08 11:46:48.000000000 +0200
++++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+@@ -1,10 +0,0 @@
+-#name: x86-64 rela relocs w/ non-zero relocated fields
+-#as: --64
+-#source: ${srcdir}/../../../gas/testsuite/gas/i386/rela.s
+-#ld: -melf_x86_64
+-#objdump: -sj .data
+-
+-.*: +file format .*
+-
+-Contents of section .data:
+- *[0-9a-f]*0 .8 ?.. ?.. ?.. 00 ?00 ?00 ?00 .0 ?.. ?.. ?.. 44 ?44 ?44 ?44 .*
+Index: binutils-2.39/ld/testsuite/ld-x86-64/x86-64.exp
+===================================================================
+--- binutils-2.39.orig/ld/testsuite/ld-x86-64/x86-64.exp	2022-07-26 09:13:10.000000000 +0200
++++ binutils-2.39/ld/testsuite/ld-x86-64/x86-64.exp	2022-10-17 16:27:41.276966573 +0200
+@@ -286,7 +286,6 @@ run_dump_test "apic"
+ run_dump_test "pcrel8"
+ run_dump_test "pcrel16"
+ run_dump_test "pcrel16-2"
+-run_dump_test "rela"
+ run_dump_test "tlsgd2"
+ run_dump_test "tlsgd3"
+ run_dump_test "tlsgd12"
