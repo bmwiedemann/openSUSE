@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkginfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pkginfo
-Version:        1.5.0.1
+Version:        1.9.6
 Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT
@@ -30,10 +29,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
 
@@ -47,8 +47,6 @@ the *.egg-info stored in a "development checkout"
 
 %prep
 %setup -q -n pkginfo-%{version}
-# fix tests until fixed upstream
-sed -i "s|'2\.1'|None|" pkginfo/tests/test_installed.py
 
 %build
 %python_build
@@ -64,7 +62,7 @@ sed -i "s|'2\.1'|None|" pkginfo/tests/test_installed.py
 %post
 %python_install_alternative pkginfo
 
-%preun
+%postun
 %python_uninstall_alternative pkginfo
 
 %files %{python_files}

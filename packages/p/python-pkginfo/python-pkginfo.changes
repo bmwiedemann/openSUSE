@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Fri Jan 20 10:58:46 UTC 2023 - Elisei Roca <eroca@suse.com>
+
+- Update to version 1.9.6
+    1.9.6 (2023-01-08)
+    ------------------
+
+    - Fix various typos in docs / docstrings.  LP #2002232.
+
+    1.9.5 (2023-01-06)
+    ------------------
+
+    - Add stricter typing checks, matching those used in 'twine'.
+
+    - Fix typing errors / gaps reported from 'twine' CI failure.  LP #2002104.
+
+    1.9.4 (2023-01-05)
+    ------------------
+
+    - Fix packaging of stub file for Python typing support.
+
+    1.9.3 (2023-01-03)
+    ------------------
+
+    - Added stub files for Python typing support;  verify using 'mypy'. LP #1876591.
+
+    1.9.2 (2022-11-29)
+    ------------------
+
+    - Drop "universal" wheel support (should be redundant with
+      'python_requires >= 3.6', but just in case).  LP #1998258.
+
+    1.9.1 (2022-11-29)
+    ------------------
+
+    - Restore a deprecated alias for the '_must_decode' helper function, moved
+      from 'pkginfo._compat.must_decode' to 'pkginfo.distribution._must_decode'
+      in 1.90.
+
+    - Repair unit tests broken by dropping Python 2.7 classifier.
+
+    1.9.0 (2022-11-29)
+    ------------------
+
+    - Drop support for Python 2.7.
+
+    - Switch to use 'pytest' vs. 'nose', which doesn't support Python > 3.9.
+
+    1.8.3 (2022-06-08)
+    ------------------
+
+    - Specify supported Python versions in 'setup.py' using 'python_requires'.
+      LP #1977981.
+
+    1.8.2 (2021-12-01)
+    ------------------
+
+    - Add fix for installed distributions with '__package__' set to an empty
+      string. LP #1952946.
+
+    1.8.1 (2021-11-19)
+    ------------------
+
+    - Add 'MANIFEST.in' to ensure example files used by tests are included
+      in source distributions.  LP #1951553.
+
+    1.8.0 (2021-11-18)
+    ------------------
+
+    - Support new standard metadata location for installed dists. LP #1865286.
+
+    - Don't overwrite header-based 'description' with empty payload. LP #1885458.
+
+    - Add support for Metadata-Version 2.2. LP #1928729.
+
+    - Add support for uncompressed tarballs for sdists.  LP #1951457.
+
+    - Add support for Python 3.10.
+
+    1.7.1 (2021-07-09)
+    ------------------
+
+    - Use Python3 to build docs, and fix doctest examples to use Python3-
+      compatible syntax.  LP #1933322.
+
+    1.7.0 (2021-01-16)
+    ------------------
+
+    - Add support for Python 3.9.
+
+    - Drop support for Python 3.5.
+
+    1.6.1 (2020-10-26)
+    ------------------
+
+    - Adjust test classifiers to match supported Python versions. LP #1901127.
+
+    1.6.0 (2020-10-20)
+    ------------------
+
+    - Add support for Python 3.8.
+      LP #1869854.
+
+    - Drop support for Python 3.4.
+
+    - Update tests to match setuptools' change, no longer reporting metadata
+      version for installed packages w/o explicit metadata.  LP #1870197.
+ 
+
+-------------------------------------------------------------------
 Sun Aug 16 15:30:46 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove unnecessary build dependency nose
