@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 23 12:19:20 UTC 2023 - Tamara Schmitz <tschmitz@suse.com>
+
+- update to 22.11:
+  * work on end-to-end encryption implementation
+  * configuration settings ported to new form components
+  * new settings component for managing notifications settings
+  * add proxy configuration menu
+  * added developer tools for inspecting raw matrix events
+  * added confirmation dialog when signing out and when enabling end-to-end encryption
+  * rewrite of theaccount switcher
+- fix buildrequires, remove redundant requires
+- fix permissions of license file
+
+-------------------------------------------------------------------
 Thu Sep 29 19:55:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.09:
