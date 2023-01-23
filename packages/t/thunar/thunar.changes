@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 23 12:54:38 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add switch_pane_shortcut.patch
+  Backport upstream fix for gxo#xfce/thunar#1005
+- Add differentiate_zoom_levels_between_view_modes.patch
+  Backport upstream fix for gxo#xfce/thunar#832
+
+-------------------------------------------------------------------
 Sat Jan 21 09:44:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.18.3:

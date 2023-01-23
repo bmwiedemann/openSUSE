@@ -27,6 +27,10 @@ Group:          Productivity/File utilities
 URL:            https://docs.xfce.org/xfce/thunar/start
 Source:         https://archive.xfce.org/src/xfce/thunar/4.18/%{name}-%{version}.tar.bz2
 Source100:      %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM: Add a shortcut for switching panes in split view mode
+Patch0:         switch_pane_shortcut.patch
+# PATCH-FIX-UPSTREAM: Differentiate between list and icon view in terms of zooming
+Patch1:         differentiate_zoom_levels_between_view_modes.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -105,7 +109,7 @@ This package provides the GObject Introspection bindings for the Thunar extensio
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with git}
