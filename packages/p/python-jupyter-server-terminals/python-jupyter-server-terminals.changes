@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jan 22 13:00:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.4
+  * Add typing file #74 (@blink1073)
+  * Add spelling and docstring enforcement #72 (@blink1073)
+
+-------------------------------------------------------------------
 Mon Dec 26 14:04:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.4.3

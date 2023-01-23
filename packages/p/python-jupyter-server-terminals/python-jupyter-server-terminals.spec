@@ -1,7 +1,7 @@
 #
-# spec file for package python-jupyter-server-terminals
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,25 +26,25 @@
 %endif
 
 Name:           python-jupyter-server-terminals%{psuffix}
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        A Jupyter Server Extension Providing Terminals
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-server/jupyter_server_terminals
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server_terminals/jupyter_server_terminals-0.4.3.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server_terminals/jupyter_server_terminals-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  jupyter-rpm-macros
-Requires:       python-terminado >= 0.8.3
+BuildRequires:  python-rpm-macros
 Requires:       jupyter-server-terminals = %{version}
+Requires:       python-terminado >= 0.8.3
 Provides:       python-jupyter_server_terminals = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module jupyter-server-terminals = %{version}}
 BuildRequires:  %{python_module jupyter-server >= 2}
+BuildRequires:  %{python_module jupyter-server-terminals = %{version}}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-jupyter-server >= 0.5.3}
 BuildRequires:  %{python_module pytest-timeout}
@@ -55,9 +55,9 @@ BuildRequires:  %{python_module pytest-timeout}
 A Jupyter Server Extension Providing Terminals.
 
 %package -n jupyter-server-terminals
-Summary: Jupyter Server Extension registration for python*-jupyter-server-terminals
+Summary:        Jupyter Server Extension registration for python*-jupyter-server-terminals
 # Any flavor is okay
-Requires: (%(echo "%{python_module jupyter-server-terminals = %{version}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       (%(echo "%{python_module jupyter-server-terminals = %{version}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
 
 %description -n jupyter-server-terminals
 A Jupyter Server Extension Providing Terminals.
