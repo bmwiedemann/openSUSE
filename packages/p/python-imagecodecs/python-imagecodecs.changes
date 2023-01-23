@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jan 21 11:40:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.24
+  * Pass 6512 tests.
+  * Fix PNG codec error handling.
+  * Fix truncated transferfunctions in cms_profile (#57).
+  * Fix exceptions not raised in cdef functions not returning
+    Python object.
+- Release 2022.12.22
+  * Require libtiff 4.5 (breaking).
+  * Require libavif 0.11 (breaking).
+  * Change jpegxl_encode level parameter to resemble libjpeg
+    quality (breaking).
+  * Add LZFSE codec via lzfse library.
+  * Add LZHAM codec via lzham library.
+  * Fix AttributeError in cms_profile (#52).
+  * Support gamma argument in cms_profile (#53).
+  * Raise limit of TIFF pages to 1048576.
+  * Use libtiff thread-safe error/warning handlers.
+  * Add option to specify filters and strategy in png_encode.
+  * Add option to specify integrity check type in lzma_encode.
+  * Fix DeprecationWarning with NumPy 1.24.
+
+-------------------------------------------------------------------
 Sun Oct  9 08:05:22 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update imagecodecs_distributor_setup.py to skip unbuildable exts

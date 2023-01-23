@@ -16,9 +16,8 @@ def customize_build(EXTENSIONS, OPTIONS):
     del EXTENSIONS['jpegxl']  # jpeg-xl library not available
     del EXTENSIONS['lerc']    # LERC library not available
     del EXTENSIONS['lz4f']    # requires static linking
-    del EXTENSIONS['mozjpeg'] # mozjpeg library not available
-    del EXTENSIONS['zfp']     # zfp library 0.5.5 not supported
-
+    del EXTENSIONS['mozjpeg'] # Win32 only
+    
     EXTENSIONS['avif']['libraries'] = [
         'avif',
         'aom',
@@ -28,7 +27,7 @@ def customize_build(EXTENSIONS, OPTIONS):
 
     if sys.maxsize < 2**63 - 1:
         # no zfp on 32-bit platforms
-        # del EXTENSIONS['zfp']
+        del EXTENSIONS['zfp']
         # avif tests fail on 32-bit
         del EXTENSIONS['avif']
         # spng build fail on 32-bit
@@ -42,3 +41,5 @@ def customize_build(EXTENSIONS, OPTIONS):
     EXTENSIONS['jpegxr']['include_dirs'].append(includedir +  'jxrlib')
     EXTENSIONS['rcomp']['include_dirs'].append(includedir +   'cfitsio')
     EXTENSIONS['zopfli']['include_dirs'].append(includedir +  'zopfli')
+    EXTENSIONS['lzham']['libraries'] = ['lzhamdll']
+    
