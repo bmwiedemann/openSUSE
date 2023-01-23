@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 12:46:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add ignore-deprecation.patch to make it compatible with python 3.11
+  gh#hhatto/autopep8#665
+
+-------------------------------------------------------------------
 Sat Jan 21 18:45:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.0.1

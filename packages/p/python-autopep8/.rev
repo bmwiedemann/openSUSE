@@ -237,4 +237,14 @@
     <comment></comment>
     <requestid>1060375</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>aa15bd8a72c8b10fd136521df4d84915</srcmd5>
+    <version>2.0.1</version>
+    <time>1674665065</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ignore-deprecation.patch to make it compatible with python 3.11
+  gh#hhatto/autopep8#665
+</comment>
+    <requestid>1060884</requestid>
+  </revision>
 </revisionlist>

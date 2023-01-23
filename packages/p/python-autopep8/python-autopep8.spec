@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ignore-deprecation.patch gh#hhatto/autopep8#665/files
+Patch:          ignore-deprecation.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.8}
@@ -45,7 +47,7 @@ Autopep8 is automatic generated to pep8 checked code.
 This is old style tool, wrapped pep8 via subprocess module.
 
 %prep
-%setup -q -n autopep8-%{version}
+%autosetup -p1 -n autopep8-%{version}
 sed -i '1s/^#!.*//' autopep8.py # Remove she-bang line
 
 %build
