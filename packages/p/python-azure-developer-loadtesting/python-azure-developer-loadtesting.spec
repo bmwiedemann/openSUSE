@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-developer-loadtesting
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 1.0.0b2
+%define realversion 1.0.0b3
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-developer-loadtesting
-Version:        1.0.0~b2
+Version:        1.0.0~b3
 Release:        0
 Summary:        Microsoft Azure Developer LoadTesting Client Library for Python
 License:        MIT
@@ -36,6 +36,7 @@ BuildRequires:  unzip
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.1
+Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
