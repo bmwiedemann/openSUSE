@@ -1,7 +1,7 @@
 #
 # spec file for package easy-rsa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Stefan Jakobs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define pname   EasyRSA
 Name:           easy-rsa
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        CLI utility to build and manage a PKI CA
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ Source:         https://github.com/OpenVPN/%{name}/releases/download/v%{version}
 Source1:        https://github.com/OpenVPN/%{name}/releases/download/v%{version}/%{pname}-%{version}.tgz.sig
 # https://github.com/OpenVPN/easy-rsa/tree/master/release-keys
 Source2:        %{name}.keyring
-Patch1:         fix-747.patch
 Patch100:       suse-packaging.patch
 BuildArch:      noarch
 
@@ -40,7 +39,6 @@ certificates, including sub-CAs, and create Certificate Revokation Lists (CRL).
 
 %prep
 %setup -q -n %{pname}-%{version}
-%patch1 -p2
 %patch100
 
 %build
