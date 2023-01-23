@@ -17,7 +17,7 @@
 
 
 Name:           python-future
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        Single-source support for Python 3 and 2
 # See https://github.com/PythonCharmers/python-future/issues/242 for PSF licensing
@@ -32,8 +32,6 @@ Patch1:         future-correct-mimetype.patch
 # PATCH-FIX-UPSTREAM python39-build.patch gh#PythonCharmers/python-future#578 mcepl@suse.com
 # Overcome incompatibilites with python 3.9
 Patch2:         python39-build.patch
-# PATCH-FIX-UPSTREAM CVE-2022-40899.patch gh#PythonCharmers/python-future#610 bsc#1206673
-Patch3:         CVE-2022-40899.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

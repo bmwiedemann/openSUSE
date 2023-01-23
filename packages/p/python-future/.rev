@@ -134,4 +134,41 @@
 </comment>
     <requestid>1056169</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d98023ee7047a765b49f3c5a8c9696a7</srcmd5>
+    <version>0.18.3</version>
+    <time>1674495040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18.3:
+  * Backport fix for bpo-38804 (c91d70b)
+  * Fix bug in fix_print.py fixer (dffc579)
+  * Fix bug in fix_raise.py fixer (3401099)
+  * Fix newint bool in py3 (fe645ba)
+  * Fix bug in super() with metaclasses (6e27aac)
+  * docs: fix simple typo, reqest -&gt; request (974eb1f)
+  * Correct eq (c780bf5)
+  * Pass if lint fails (2abe00d)
+  * fix order (f96a219)
+  * Add flake8 to image (046ff18)
+  * Make lint.sh executable (58cc984)
+  * Add docker push to optimize CI (01e8440)
+  * Build System (42b3025)
+  * Add docs build status badge to README.md (3f40bd7)
+  * Use same docs requirements in tox (18ecc5a)
+  * Add docs/requirements.txt (5f9893f)
+  * Add PY37_PLUS, PY38_PLUS, and PY39_PLUS (bee0247)
+  * fix 2.6 test, better comment (ddedcb9)
+  * fix 2.6 test (3f1ff7e)
+  * remove nan test (4dbded1)
+  * include list test values (e3f1a12)
+  * fix other python2 test issues (c051026)
+  * fix missing subTest (f006cad)
+  * import from old imp library on older python versions (fc84fa8)
+  * replace fstrings with format for python 3.4,3.5 (4a687ea)
+  * minor style/spelling fixes (8302d8c)
+  * improve cmp function, add unittest (0d95a40)
+  * Pin typing==3.7.4.1 for Python 3.3 compatiblity (1a48f1b)
+  * Fix various py26 unit test failures (9ca5a14)</comment>
+    <requestid>1060113</requestid>
+  </revision>
 </revisionlist>
