@@ -1,0 +1,111 @@
+From: Larry Finger <Larry.Finger@gmail.com>
+Subject: Fix Tumbleweed build for kernel 6.1+
+
+Kernel 6.1 brought several changes to the kernel API with respect to wireless
+operations. This patch fixes the base code to support such changes.
+
+Index: rtl8812au-5.13.6+git20220905.a8450b0/os_dep/linux/os_intfs.c
+===================================================================
+--- rtl8812au-5.13.6+git20220905.a8450b0.orig/os_dep/linux/os_intfs.c
++++ rtl8812au-5.13.6+git20220905.a8450b0/os_dep/linux/os_intfs.c
+@@ -2154,7 +2154,11 @@ int rtw_os_ndev_register(_adapter *adapt
+ 	u8 rtnl_lock_needed = rtw_rtnl_lock_needed(dvobj);
+ 
+ #ifdef CONFIG_RTW_NAPI
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 1,0)
+ 	netif_napi_add(ndev, &adapter->napi, rtw_recv_napi_poll, RTL_NAPI_WEIGHT);
++#else
++	netif_napi_add(ndev, &adapter->napi, rtw_recv_napi_poll);
++#endif
+ #endif /* CONFIG_RTW_NAPI */
+ 
+ #if defined(CONFIG_IOCTL_CFG80211)
+Index: rtl8812au-5.13.6+git20220905.a8450b0/os_dep/osdep_service.c
+===================================================================
+--- rtl8812au-5.13.6+git20220905.a8450b0.orig/os_dep/osdep_service.c
++++ rtl8812au-5.13.6+git20220905.a8450b0/os_dep/osdep_service.c
+@@ -2915,7 +2915,11 @@ inline u32 rtw_random32(void)
+ {
+ #ifdef PLATFORM_LINUX
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
++#if LINUX_VERSION_CODE >- KERNEL_VERSION(6, 1, 0)
++	return get_random_u32();
++#else
+ 	return prandom_u32();
++#endif
+ #elif (LINUX_VERSION_CODE <= KERNEL_VERSION(2, 6, 18))
+ 	u32 random_int;
+ 	get_random_bytes(&random_int , 4);
+Index: rtl8812au-5.13.6+git20220905.a8450b0/os_dep/linux/ioctl_cfg80211.c
+===================================================================
+--- rtl8812au-5.13.6+git20220905.a8450b0.orig/os_dep/linux/ioctl_cfg80211.c
++++ rtl8812au-5.13.6+git20220905.a8450b0/os_dep/linux/ioctl_cfg80211.c
+@@ -464,7 +464,11 @@ u8 rtw_cfg80211_ch_switch_notify(_adapte
+ 		 *  called by others with block-tx.
+ 		 */
+ 
+-		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, false);
++		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++		 0,
++#endif
++		 0, false);
+ #else
+ 		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0);
+ #endif
+@@ -1911,6 +1915,9 @@ exit:
+ }
+ 
+ static int cfg80211_rtw_add_key(struct wiphy *wiphy, struct net_device *ndev
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++	, int link_id
++#endif
+ 	, u8 key_index
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+ 	, bool pairwise
+@@ -2073,6 +2080,9 @@ addkey_end:
+ }
+ 
+ static int cfg80211_rtw_get_key(struct wiphy *wiphy, struct net_device *ndev
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++	, int link_id
++#endif
+ 	, u8 keyid
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+ 	, bool pairwise
+@@ -2262,6 +2272,9 @@ exit:
+ 
+ static int cfg80211_rtw_del_key(struct wiphy *wiphy, struct net_device *ndev,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++				int link_id,
++#endif
+ 				u8 key_index, bool pairwise, const u8 *mac_addr)
+ #else	/* (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) */
+ 				u8 key_index, const u8 *mac_addr)
+@@ -2281,7 +2294,11 @@ static int cfg80211_rtw_del_key(struct w
+ }
+ 
+ static int cfg80211_rtw_set_default_key(struct wiphy *wiphy,
+-	struct net_device *ndev, u8 key_index
++	struct net_device *ndev,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++	int link_id,
++#endif
++	 u8 key_index
+ 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 38)) || defined(COMPAT_KERNEL_RELEASE)
+ 	, bool unicast, bool multicast
+ 	#endif
+@@ -2329,7 +2346,11 @@ static int cfg80211_rtw_set_default_key(
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 30))
+ int cfg80211_rtw_set_default_mgmt_key(struct wiphy *wiphy,
+-	struct net_device *ndev, u8 key_index)
++	struct net_device *ndev,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++	int link_id,
++#endif
++	u8 key_index)
+ {
+ #define SET_DEF_KEY_PARAM_FMT " key_index=%d"
+ #define SET_DEF_KEY_PARAM_ARG , key_index

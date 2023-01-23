@@ -1,7 +1,7 @@
 #
 # spec file for package rtl8812au
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,14 @@ Source2:        LICENSE
 Patch0:         fix-backported-ndo_select_queue.patch
 # PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
+# PATCH-FIX-OPENSUSE fix_api_changes_kernel_6.1.patch
+Patch2:         fix_api_changes_kernel_6.1.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  binutils
 BuildRequires:  fdupes
+BuildRequires:  kernel-default-devel
 BuildRequires:  kernel-devel
-BuildRequires:  kernel-source
 BuildRequires:  module-init-tools
 %kernel_module_package -p %{name}-preamble
 
@@ -73,6 +75,7 @@ https://github.com/maurossi/rtl8812au/ .
 %if 0%{?sle_version} == 150300
 %patch1 -p1
 %endif
+%patch2 -p1
 
 set -- *
 mkdir source

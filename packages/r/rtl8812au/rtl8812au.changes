@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 23 02:25:03 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add patch to build with Tumbleweed kernels 6.1.x:
+  * fix_api_changes_kernel_6.1.patch
+- The "kernel-source" package is removed from the BuildRequires
+  list. The much smaller "kernel-default-devel" is sufficient.
+
+-------------------------------------------------------------------
 Tue Sep 27 06:59:36 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable the service to submit the package to Factory

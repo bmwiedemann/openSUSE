@@ -141,4 +141,12 @@
 - Enable the service</comment>
     <requestid>1006363</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>aab8dedb6b0c71bc9d560fb1488d7acc</srcmd5>
+    <version>5.13.6+git20220905.a8450b0</version>
+    <time>1674495135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060345</requestid>
+  </revision>
 </revisionlist>
