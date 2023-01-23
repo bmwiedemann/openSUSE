@@ -20,9 +20,15 @@
 %bcond_without test
 %endif
 
+%if 0%{?sle_version} <= 150300 && !0%{?is_opensuse}
+%bcond_without python2
+%else
+%bcond_with python2
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-shaptools
-Version:        0.3.12+git.1619007514.1951d23
+Version:        0.3.13+git.1673855974.f208fad
 Release:        0
 Summary:        Python tools to interact with SAP HANA utilities
 License:        Apache-2.0
@@ -30,8 +36,10 @@ Group:          Development/Languages/Python
 Url:            https://github.com/SUSE/shaptools
 Source:         %{name}-%{version}.tar.gz
 %if %{with test}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
+%endif
+%if %{with python2}
+BuildRequires:  python-mock
 %endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

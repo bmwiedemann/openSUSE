@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">python-shaptools</param>
-    <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
-    <param name="revision">1951d234b51114379befab11c99c92dfa179a83f</param>
+    <param name="versionformat">0.3.13+git.%ct.%h</param>
+    <param name="revision">f208fad36c1d85f64c83e4f3fd4f0f5ca2ba30cf</param>
   </service>
 
   <service name="recompress" mode="disabled">

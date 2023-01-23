@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 13 02:13:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct macro usage, %ifpython2 is only suitable for Requires.
+
+-------------------------------------------------------------------
+Thu Jan  5 23:44:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only BuildRequire python-mock under Python 2.
+
+-------------------------------------------------------------------
+Fri Mar 25 15:45:21 UTC 2021 - Eike Walldt <waldt@b1-systems.de>
+
+- Create version 0.3.13
+- add HANA add_hosts feature
+
+-------------------------------------------------------------------
 Fri Mar 12 14:59:00 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Create version 0.3.12
@@ -156,8 +172,8 @@ Thu Feb 25 10:20:10 UTC 2019 - dakechi@suse.com
 - Fix UT to check the inst formatting correctly
 - Move the comment to the right place
 - Enforce the HANA instance nr format.
-- Forces Intance nr always with 2 positions filled with 0
-- Forces right formating on HANA OS admin user.
+- Forces Instance nr always with 2 positions filled with 0
+- Forces right formatting on HANA OS admin user.
 
 -------------------------------------------------------------------
 Thu Dec 20 08:33:10 UTC 2018 - xarbulu@suse.com

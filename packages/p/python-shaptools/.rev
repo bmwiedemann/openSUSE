@@ -162,4 +162,12 @@
     <comment>Hotfix release for https://bugzilla.suse.com/show_bug.cgi?id=1185090</comment>
     <requestid>887289</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f698166f6d43dc03e52d8bca4d9c5cab</srcmd5>
+    <version>0.3.13+git.1673855974.f208fad</version>
+    <time>1674495145</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060349</requestid>
+  </revision>
 </revisionlist>
