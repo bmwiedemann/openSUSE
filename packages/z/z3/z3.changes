@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 21 17:32:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.1:
+  * change macos build to use explicit reference to Macos version 11. Hosted
+    builds are migrating to macos-12 and it broke a user Issue #6539.
+
+-------------------------------------------------------------------
 Tue Jan 17 15:42:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 4.12.0
