@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 18 12:09:13 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Fix SELinux labeling issue caused by /usr/sbin/config.postfix (bsc#1207227).
+
+-------------------------------------------------------------------
 Mon Nov 14 15:05:42 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - postfix default main.cf myhostname default causes conflict
