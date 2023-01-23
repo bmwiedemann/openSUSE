@@ -1,7 +1,7 @@
 #
 # spec file for package drm_info
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           drm_info
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Small utility to dump info about DRM devices
 License:        MIT
-URL:            https://github.com/ascent12/drm_info
-Source0:        https://github.com/ascent12/drm_info/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://gitlab.freedesktop.org/emersion/drm_info
+Source0:        https://gitlab.freedesktop.org/emersion/drm_info/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  libdrm-devel
 BuildRequires:  libjson-c-devel
@@ -31,12 +31,13 @@ BuildRequires:  ninja
 BuildRequires:  pciutils-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
+BuildRequires:  scdoc
 
 %description
 Small utility to dump info about DRM devices.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %meson
@@ -49,5 +50,6 @@ Small utility to dump info about DRM devices.
 %doc README.md
 %license LICENSE
 %{_bindir}/drm_info
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
