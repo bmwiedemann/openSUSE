@@ -198,4 +198,21 @@
   * Bug fixes</comment>
     <requestid>985139</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1e89b2063a32a9e5f218ab5d10cd66a9</srcmd5>
+    <version>6.0.2</version>
+    <time>1674495221</time>
+    <user>dimstar_suse</user>
+    <comment>- Integrate KBFS packages previously build via own source package
+  * Upstream integrated these into the same source.
+  * Also includes adding kbfs-related patches
+    ensure-mount-dir-exists.patch and
+    ensure-service-stop-unmounts-filesystem.patch.
+- Upgrade Go version used for compilation to 1.19.
+- Use Systemd unit file from upstream source.
+- Replace deprecated tar_scm source service by obs_scm.
+- Drop the no longer required go_nostrip macro.
+- Drop unnessecary use of gofilelist macro.</comment>
+    <requestid>1060407</requestid>
+  </revision>
 </revisionlist>

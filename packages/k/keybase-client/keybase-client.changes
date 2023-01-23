@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 21 13:56:32 UTC 2023 - Matthias Bach <marix@marix.org> - 6.0.2
+
+- Integrate KBFS packages previously build via own source package
+  * Upstream integrated these into the same source.
+  * Also includes adding kbfs-related patches
+    ensure-mount-dir-exists.patch and
+    ensure-service-stop-unmounts-filesystem.patch.
+- Upgrade Go version used for compilation to 1.19.
+- Use Systemd unit file from upstream source.
+- Replace deprecated tar_scm source service by obs_scm.
+- Drop the no longer required go_nostrip macro.
+- Drop unnessecary use of gofilelist macro.
+
+-------------------------------------------------------------------
 Sun Jun 26 12:34:59 UTC 2022 - Matthias Bach <marix@marix.org> - 6.0.2
 
 - Upgrade to version 6.0.2
