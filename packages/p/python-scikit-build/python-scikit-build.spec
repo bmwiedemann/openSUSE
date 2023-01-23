@@ -27,7 +27,7 @@
 
 %define skip_python2 1
 Name:           python-scikit-build%{psuffix}
-Version:        0.16.4
+Version:        0.16.6
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
@@ -103,9 +103,9 @@ sed -i '/tool.pylint/,/^$/ d' pyproject.toml
 
 %if %{with test}
 %check
-# test_pep518 needs a wheelhouse with downloaded wheels including platform dependent cmake
-donttest="test_pep518"
-%pytest -k "not ($donttest)"
+# these tests need a wheelhouse with downloaded wheels including platform dependent cmake
+donttestmarker="isolated"
+%pytest -m "not ($donttestmarker)"
 %endif
 
 %if !%{with test}

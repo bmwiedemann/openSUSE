@@ -133,4 +133,26 @@
 - Old setuptools_scm in 15.X does not pull in toml automatically (forwarded request 1055958 from bnavigator)</comment>
     <requestid>1055959</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be42e35c963a779e3a6e4845dcc84e7e</srcmd5>
+    <version>0.16.6</version>
+    <time>1674495053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.6
+  * Fix a discovery regression in 0.16.5 when a cmake folder or
+    cmake.py was present in #848.
+  * Correct an issue in the tests where a generator wasn't expanded
+    into a list in #850.
+- Version 0.16.5
+  * Use cmake module if installed over system installs in #839.
+  * Support setting of -DCMAKE_SYSTEM_PROCESSOR if passed for
+    selecting an arch, useful for cross compiling on conda-forge in
+    #843.
+  * Fixed a rare encoded error output string on Windows in #842.
+  * Better granularity in extras in #838.
+  * Add test markers for nosetuptoolsscm and isolated (helpful for
+    package distributions building scikit-build itself like conda)
+    in #837. (forwarded request 1060177 from bnavigator)</comment>
+    <requestid>1060178</requestid>
+  </revision>
 </revisionlist>
