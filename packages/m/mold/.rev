@@ -459,4 +459,15 @@
     containing debug info. That bug has been fixed. (e17d7da)</comment>
     <requestid>1059957</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5f70da5011551b79ea652564f67957f9</srcmd5>
+    <version>1.10.1</version>
+    <time>1674495083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.1
+  * mold 1.10.0 had a buffer overrun bug that causes the linker to terminate
+    immediately if compiled with -D_GLIBCXX_ASSERTIONS. We fixed the unsafe memory
+    access in this release. (7e65546)</comment>
+    <requestid>1060245</requestid>
+  </revision>
 </revisionlist>

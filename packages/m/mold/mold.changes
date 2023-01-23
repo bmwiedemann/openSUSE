@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 22 08:23:35 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.10.1
+  * mold 1.10.0 had a buffer overrun bug that causes the linker to terminate
+    immediately if compiled with -D_GLIBCXX_ASSERTIONS. We fixed the unsafe memory
+    access in this release. (7e65546)
+
+-------------------------------------------------------------------
 Fri Jan 20 12:19:11 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.10.0
