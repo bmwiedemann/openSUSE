@@ -1700,7 +1700,6 @@
     <package name="libbs2b0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbsd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbtrfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libbtrfsutil1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libburn4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbytesize-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbytesize1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
