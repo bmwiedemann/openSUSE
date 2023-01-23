@@ -181,4 +181,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042654</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1f6c30c571ab8d8b145e50ad24a92221</srcmd5>
+    <version>3.0.4.1</version>
+    <time>1674495214</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.0.4.1
+[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser
+[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges
+[CVE-2022-44572] Forbid control characters in attributes (also ReDoS)
+For more detailed information see the installed CHANGELOG.md</comment>
+    <requestid>1060387</requestid>
+  </revision>
 </revisionlist>

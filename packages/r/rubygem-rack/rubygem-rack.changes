@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jan 20 13:25:39 UTC 2023 - Hendrik Vogelsang <hvogel@suse.com>
+
+updated to version 3.0.4.1
+
+[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser
+[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges
+[CVE-2022-44572] Forbid control characters in attributes (also ReDoS)
+
+For more detailed information see the installed CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Dec  7 11:31:08 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.0.2
