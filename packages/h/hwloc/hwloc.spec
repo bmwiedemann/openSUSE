@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1550
 %bcond_without XNVCtrl
 %else
@@ -22,13 +23,13 @@
 %endif
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.8/hwloc-%{version}.tar.bz2
+Source0:        https://download.open-mpi.org/release/hwloc/v2.9/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen

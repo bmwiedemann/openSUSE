@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 23 07:53:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  + Expose the memory size of CXL memory devices (Type 3) on Linux.
+  + The LevelZero backend now reports the "XeLinkBandwidth" distance
+    matrix between L0 devices (and subdevices) when available.
+  + Add support for CUDA compute capability up to 9.0.
+  + lstopo now switches to console mode when its output is redirected.
+    Graphical window mode may be forced back with --of window.
+  + hwloc-calc now accepts "numa" in -H, and I/O subtypes such as "gpu"
+    in -I and -N.
+
+-------------------------------------------------------------------
 Fri Jul 29 17:38:15 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add libXNVCtrl support on TW
