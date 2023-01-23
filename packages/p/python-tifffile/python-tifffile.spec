@@ -1,7 +1,7 @@
 #
 # spec file for package python-tifffile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,44 @@
 #
 
 
-%define packagename tifffile
-%define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tifffile
-Version:        2021.1.14
+Version:        2022.10.10
 Release:        0
 Summary:        Read and write TIFF(r) files
 License:        BSD-2-Clause
-URL:            https://www.lfd.uci.edu/~gohlke/
-Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-BuildRequires:  %{python_module imagecodecs >= 2020.5.30}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module matplotlib >= 3.2}
-BuildRequires:  %{python_module numpy >= 1.15.1}
-BuildRequires:  %{python_module pytest}
+URL:            https://github.com/cgohlke/tifffile/
+Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/tifffile-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module numpy >= 1.19.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module zarr >= 2.5.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-imagecodecs >= 2020.5.30
-Requires:       python-lxml
-Requires:       python-matplotlib >= 3.2
-Requires:       python-numpy >= 1.15.1
-Requires:       python-zarr >= 2.5.0
+Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+Recommends:     python-fsspec
+Recommends:     python-imagecodecs >= 2022.2.22
+Recommends:     python-lxml
+Recommends:     python-matplotlib >= 3.3
+Recommends:     python-zarr
+# SECTION test
+BuildRequires:  %{python_module imagecodecs >= 2022.2.22}
+BuildRequires:  %{python_module cmapfile}
+BuildRequires:  %{python_module czifile}
+BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module fsspec}
+BuildRequires:  %{python_module lfdfiles}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module matplotlib >= 3.3}
+BuildRequires:  %{python_module oiffile}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module roifile}
+BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module zarr}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,37 +64,50 @@ SGI, NIH, ImageJ, MicroManager, MD GEL, and FluoView files. Write numpy
 arrays to TIFF, BigTIFF, and ImageJ hyperstack compatible files.
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%setup -q -n tifffile-%{version}
 # Fix warning wrong-file-end-of-line-encoding
 sed -i 's/\r//' README.rst
+sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/%{packagename}
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/tifffile
 %python_clone -a %{buildroot}%{_bindir}/lsm2bin
 %python_clone -a %{buildroot}%{_bindir}/tiffcomment
+%python_clone -a %{buildroot}%{_bindir}/tiff2fsspec
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%prepare_alternative %{packagename}
+%prepare_alternative tifffile
 %prepare_alternative lsm2bin
 %prepare_alternative tiffcomment
 
 %post
-%python_install_alternative %{packagename}
+%python_install_alternative tifffile
 %python_install_alternative lsm2bin
 %python_install_alternative tiffcomment
+%python_install_alternative tiff2fsspec
 
 %postun
-%python_uninstall_alternative %{packagename}
+%python_uninstall_alternative tifffile
 %python_uninstall_alternative lsm2bin
 %python_uninstall_alternative tiffcomment
+%python_uninstall_alternative tiff2fsspec
 
 %check
-# skip online tests and tests that OOM
-%pytest -k 'not (test_issue_infinite_loop or test_func_pformat_xml or test_filehandle_seekable or test_write_compress_lerc or test_write_imagej_raw or test_write_bigtiff or test_write_ome or test_class_omexml_attributes or test_class_omexml_multiimage or test_class_omexml or test_write_compression_lerc)'
+# Crashes Out-Of-Memory
+donttest="test_write_ome"
+donttest="$donttest or test_write_imagej_raw"
+donttest="$donttest or test_write_bigtiff"
+# can't connect to localhost
+donttest="$donttest or test_write_fsspec"
+# no lerc support in imagecodecs
+donttest="$donttest or test_write_compression_lerc"
+# can't connect to external server
+donttest="$donttest or test_class_omexml"
+%pytest -n auto -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
@@ -91,7 +115,8 @@ sed -i 's/\r//' README.rst
 %python_alternative %{_bindir}/tifffile
 %python_alternative %{_bindir}/lsm2bin
 %python_alternative %{_bindir}/tiffcomment
-%{python_sitelib}/*egg-info/
-%{python_sitelib}/%{packagename}/
+%python_alternative %{_bindir}/tiff2fsspec
+%{python_sitelib}/tifffile-%{version}.dist-info/
+%{python_sitelib}/tifffile
 
 %changelog

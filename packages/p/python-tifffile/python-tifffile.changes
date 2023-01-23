@@ -1,4 +1,271 @@
 -------------------------------------------------------------------
+Sat Jan 21 13:23:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.10.10.
+  * Pass 4925 tests.
+  * Fix RecursionError in peek_iterator.
+  * Fix reading NDTiffv3 summary settings.
+  * Fix svs_description_metadata parsing (#149).
+  * Fix ImportError if Python was built without zlib or lzma.
+  * Fix bool of COMPRESSION and PREDICTOR instances.
+  * Deprecate non-sequence extrasamples arguments.
+  * Parse SCIFIO metadata as ImageJ.
+- Release 2022.8.12
+  * Fix writing ImageJ format with hyperstack argument.
+  * Fix writing description with metadata disabled.
+  * Add option to disable writing shaped metadata in TiffWriter.
+- Release 2022.8.8
+  * Fix regression using imread out argument (#147).
+  * Fix imshow show argument.
+  * Support fsspec OpenFile.
+- Release 2022.8.3
+  * Fix regression writing default resolutionunit (#145).
+  * Add strptime function parsing common datetime formats.
+- Release 2022.7.31
+  * Fix reading corrupted WebP compressed segments missing alpha
+    channel (#122).
+  * Fix regression reading compressed ImageJ files.
+- Release 2022.7.28
+  * Rename FileSequence.labels attribute to dims (breaking).
+  * Rename tifffile_geodb module to geodb (breaking).
+  * Rename TiffFile._astuple method to astuple (breaking).
+  * Rename noplots command line argument to maxplots (breaking).
+  * Fix reading ImageJ hyperstacks with non-TZC order.
+  * Fix colorspace of JPEG segments encoded by Bio-Formats.
+  * Fix fei_metadata for HELIOS FIB-SEM (#141, needs test).
+  * Add xarray style properties to TiffPage (WIP).
+  * Add option to specify OME-XML for TiffFile.
+  * Add option to control multiscales in ZarrTiffStore.
+  * Support writing to uncompressed ZarrTiffStore.
+  * Support writing empty images with tiling.
+  * Support overwriting some tag values in NDPI (#137).
+  * Support Jetraw compression (experimental).
+  * Standardize resolution parameter and property.
+  * Deprecate third resolution argument on write (use
+    resolutionunit).
+  * Deprecate tuple type compression argument on write (use
+    compressionargs).
+  * Deprecate enums in TIFF namespace (use enums from module).
+  * Improve default number of threads to write compressed segments
+    (#139).
+  * Parse metaseries time values as datetime objects (#143).
+  * Increase internal read and write buffers to 256 MB.
+  * Convert some warnings to debug messages.
+  * Declare all classes final.
+  * Add script to generate documentation via Sphinx.
+  * Convert docstrings to Google style with Sphinx directives.
+- Release 2022.5.4
+  * Allow to write NewSubfileType=0 (#132).
+  * Support writing iterators of strip or tile bytes.
+  * Convert iterables (not iterators) to NumPy arrays when writing.
+  * Explicitly specify optional keyword parameters for imread and
+    imwrite.
+  * Return number of written bytes from FileHandle write functions.
+- Release 2022.4.28
+  * Add option to specify fsspec version 1 URL template name
+    (#131).
+  * Ignore invalid dates in UIC tags (#129).
+  * Fix zlib_encode and lzma_encode to work with non-contiguous
+    arrays (#128).
+  * Fix delta_encode to preserve byteorder of ndarrays.
+  * Move Imagecodecs fallback functions to private module and add
+    tests.
+- Release 2022.4.26
+  * Fix AttributeError in TiffFile.shaped_metadata (#127).
+  * Fix TiffTag.overwrite with pre-packed binary value.
+  * Write sparse TIFF if tile iterator contains None.
+  * Raise ValueError when writing photometric mode with too few
+    samples.
+  * Improve test coverage.
+- Release 2022.4.22
+  * Add type hints for Python 3.10 (WIP).
+  * Fix Mypy errors (breaking).
+  * Mark many parameters positional-only or keyword-only
+    (breaking).
+  * Remove deprecated pages parameter from imread (breaking).
+  * Remove deprecated compress and ijmetadata write parameters
+    (breaking).
+  * Remove deprecated fastij and movie parameters from TiffFile
+    (breaking).
+  * Remove deprecated multifile parameters from TiffFile
+    (breaking).
+  * Remove deprecated tif parameter from TiffTag.overwrite
+    (breaking).
+  * Remove deprecated file parameter from FileSequence.asarray
+    (breaking).
+  * Remove option to pass imread class to FileSequence (breaking).
+  * Remove optional parameters from __str__ functions (breaking).
+  * Rename TiffPageSeries.offset to dataoffset (breaking)
+  * Change TiffPage.pages to None if no SubIFDs are present
+    (breaking).
+  * Change TiffPage.index to int (breaking).
+  * Change TiffPage.is_contiguous, is_imagej, and is_shaped to bool
+    (breaking).
+  * Add TiffPage imagej_description and shaped_description
+    properties.
+  * Add TiffFormat abstract base class.
+  * Deprecate lazyattr and use functools.cached_property instead
+    (breaking).
+  * Julian_datetime raises ValueError for dates before year 1
+    (breaking).
+  * Regressed import time due to typing.
+- Release 2022.4.8
+  * Add _ARRAY_DIMENSIONS attributes to ZarrTiffStore.
+  * Allow C instead of S axis when writing OME-TIFF.
+  * Fix writing OME-TIFF with separate samples.
+  * Fix reading unsqueezed pyramidal OME-TIFF series.
+- Release 2022.3.25
+  * Fix another ValueError using ZarrStore with zarr >= 2.11.0
+    (tiffslide #25).
+  * Add parser for Hamamatsu streak metadata.
+  * Improve hexdump.
+- Release 2022.3.16
+  * Use multi-threading to compress strips and tiles.
+  * Raise TiffFileError when reading corrupted strips and tiles
+    (#122).
+  * Fix ScanImage single channel count (#121).
+  * Add parser for AstroTIFF FITS metadata.
+- Release 2022.2.9
+  * Fix ValueError using multiscale ZarrStore with zarr >= 2.11.0.
+  * Raise KeyError if ZarrStore does not contain key.
+  * Limit number of warnings for missing files in multifile series.
+  * Allow to save colormap to 32-bit ImageJ files (#115).
+- Release 2022.2.2
+  * Fix TypeError when second ImageDescription tag contains
+    non-ASCII (#112).
+  * Fix parsing IJMetadata with many IJMetadataByteCounts (#111).
+  * Detect MicroManager NDTiffv2 header (not tested).
+  * Remove cache from ZarrFileSequenceStore (use
+    zarr.LRUStoreCache).
+  * Raise limit on maximum number of pages.
+  * Use J2K format when encoding JPEG2000 segments.
+  * Formally deprecate imsave and TiffWriter.save.
+  * Drop support for Python 3.7 and NumPy < 1.19 (NEP29).
+- Release 2021.11.2
+  * Lazy-load non-essential tag values (breaking).
+  * Warn when reading from closed file.
+  * Support ImageJ prop metadata type (#103).
+  * Support writing indexed ImageJ format.
+  * Fix multi-threaded access of multi-page Zarr stores with
+    chunkmode 2.
+  * Raise error if truncate is used with compression, packints, or
+    tile.
+  * Read STK metadata without UIC2tag.
+  * Improve log and warning messages (WIP).
+  * Improve string representation of large tag values.
+- Release 2021.10.12
+  * Revert renaming of file parameter in FileSequence.asarray
+    (breaking).
+  * Deprecate file parameter in FileSequence.asarray.
+- Release 2021.10.10
+  * Disallow letters as indices in FileSequence; use categories
+    (breaking).
+  * Do not warn of missing files in FileSequence; use files_missing
+    property.
+  * Support predictors in ZarrTiffStore.write_fsspec.
+  * Add option to specify Zarr group name in write_fsspec.
+  * Add option to specify categories for FileSequence patterns
+    (#76).
+  * Add option to specify chunk shape and dtype for
+    ZarrFileSequenceStore.
+  * Add option to tile ZarrFileSequenceStore and
+    FileSequence.asarray.
+  * Add option to pass additional zattrs to Zarr stores.
+  * Detect Roche BIF files.
+- Release 2021.8.30
+  * Fix horizontal differencing with non-native byte order.
+  * Fix multi-threaded access of memory-mappable, multi-page Zarr
+    stores (#67).
+- Release 2021.8.8
+  * Fix tag offset and valueoffset for NDPI > 4 GB (#96).
+- Release 2021.7.30
+  * Deprecate first parameter to TiffTag.overwrite (no longer
+    required).
+  * TiffTag init API change (breaking).
+  * Detect Ventana BIF series and warn that tiles are not stitched.
+  * Enable reading PreviewImage from RAW formats (#93, #94).
+  * Work around numpy.ndarray.tofile is very slow for
+    non-contiguous arrays.
+  * Fix issues with PackBits compression (requires imagecodecs
+    2021.7.30).
+- Release 2021.7.2
+  * Decode complex integer images found in SAR GeoTIFF.
+  * Support reading NDPI with JPEG-XR compression.
+  * Deprecate TiffWriter RGB auto-detection, except for RGB24/48
+    and RGBA32/64.
+- Release 2021.6.14
+  * Set stacklevel for deprecation warnings (#89).
+  * Fix svs_description_metadata for SVS with double header (#88,
+    breaking).
+  * Fix reading JPEG compressed CMYK images.
+  * Support ALT_JPEG and JPEG_2000_LOSSY compression found in
+    Bio-Formats.
+  * Log warning if TiffWriter auto-detects RGB mode (specify
+    photometric).
+- Release 2021.6.6
+  * Fix TIFF.COMPESSOR typo (#85).
+  * Round resolution numbers that do not fit in 64-bit rationals
+    (#81).
+  * Add support for JPEG XL compression.
+  * Add Numcodecs compatible TIFF codec.
+  * Rename ZarrFileStore to ZarrFileSequenceStore (breaking).
+  * Add method to export fsspec ReferenceFileSystem from
+    ZarrFileStore.
+  * Fix fsspec ReferenceFileSystem v1 for multifile series.
+  * Fix creating OME-TIFF with micron character in OME-XML.
+- Release 2021.4.8
+  * Fix reading OJPEG with wrong photometric or samplesperpixel
+    tags (#75).
+  * Fix fsspec ReferenceFileSystem v1 and JPEG compression.
+  * Use TiffTagRegistry for NDPI_TAGS, EXIF_TAGS, GPS_TAGS,
+    IOP_TAGS constants.
+  * Make TIFF.GEO_KEYS an Enum (breaking).
+- Release 2021.3.31
+  * Use JPEG restart markers as tile offsets in NDPI.
+  * Support version 1 and more codecs in fsspec ReferenceFileSystem
+    (untested).
+- Release 2021.3.17
+  * Fix regression reading multi-file OME-TIFF with missing files
+    (#72).
+  * Fix fsspec ReferenceFileSystem with non-native byte order
+    (#56).
+- Release 2021.3.16
+  * TIFF is no longer a defended trademark.
+  * Add method to export fsspec ReferenceFileSystem from
+    ZarrTiffStore (#56).
+- Release 2021.3.5
+  * Preliminary support for EER format (#68).
+  * Do not warn about unknown compression (#68).
+- Release 2021.3.4
+  * Fix reading multi-file, multi-series OME-TIFF (#67).
+  * Detect ScanImage 2021 files (#46).
+  * Shape new version ScanImage series according to metadata
+    (breaking).
+  * Remove Description key from TiffFile.scanimage_metadata dict
+    (breaking).
+  * Also return ScanImage version from read_scanimage_metadata
+    (breaking).
+  * Fix docstrings.
+- Release 2021.2.26
+  * Squeeze axes of LSM series by default (breaking).
+  * Add option to preserve single dimensions when reading from
+    series (WIP).
+  * Do not allow appending to OME-TIFF files.
+  * Fix reading STK files without name attribute in metadata.
+  * Make TIFF constants multi-thread safe and pickleable (#64).
+  * Add detection of NDTiffStorage MajorVersion to
+    read_micromanager_metadata.
+  * Support ScanImage v4 files in read_scanimage_metadata.
+- Release 2021.2.1
+  * Fix multi-threaded access of ZarrTiffStores using same TiffFile
+    instance.
+  * Use fallback zlib and lzma codecs with imagecodecs lite builds.
+  * Open Olympus and Panasonic RAW files for parsing, albeit not
+    supported.
+  * Support X2 and X4 differencing found in DNG.
+  * Support reading JPEG_LOSSY compression found in DNG.
+
+-------------------------------------------------------------------
 Mon Feb  8 14:28:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Skip python36 because of imagecodecs

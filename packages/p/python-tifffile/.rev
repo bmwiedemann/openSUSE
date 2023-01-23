@@ -73,4 +73,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
 - Add zarr dependency.</comment>
     <requestid>870287</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1522ef4c029f26545b1159abcd8fe45e</srcmd5>
+    <version>2022.10.10</version>
+    <time>1674495105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060309</requestid>
+  </revision>
 </revisionlist>
