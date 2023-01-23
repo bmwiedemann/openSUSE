@@ -12900,7 +12900,7 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
-  - libnfdump1_7_0 
+  - libnfdump1_7_1 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit: [x86_64] 
   - libnfs-devel 
@@ -13824,8 +13824,8 @@ unsorted:
   - libquadmath0-gcc12-32bit: [x86_64] 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
-  - libquazip1-qt5-1_3_0 
-  - libquazip1-qt6-1_3_0 
+  - libquazip1-qt5-1_4_0 
+  - libquazip1-qt6-1_4_0 
   - libquicktime 
   - libquicktime-32bit: [x86_64] 
   - libquicktime-devel 
@@ -23072,6 +23072,7 @@ unsorted:
   - python310-cassowary 
   - python310-casttube 
   - python310-catkin-pkg 
+  - python310-cattrs 
   - python310-cauldron-notebook 
   - python310-cbor 
   - python310-cbor2 
@@ -23612,6 +23613,7 @@ unsorted:
   - python310-geopandas 
   - python310-geopy 
   - python310-getmac 
+  - python310-gevent-websocket 
   - python310-geventhttpclient 
   - python310-ggplot 
   - python310-ghp-import 
@@ -23829,7 +23831,6 @@ unsorted:
   - python310-jellyfish 
   - python310-jenkinsapi 
   - python310-jfscripts 
-  - python310-jgraph 
   - python310-jinja2-fsloader 
   - python310-jinja2-pluralize 
   - python310-jinja2-time 
@@ -23868,7 +23869,6 @@ unsorted:
   - python310-jupyter-core 
   - python310-jupyter-events 
   - python310-jupyter-kernel-test 
-  - python310-jupyter-nbutils 
   - python310-jupyter-packaging 
   - python310-jupyter-server 
   - python310-jupyter-server-mathjax 
@@ -23895,7 +23895,6 @@ unsorted:
   - python310-kasa 
   - python310-kazoo 
   - python310-kerberos 
-  - python310-keyczar 
   - python310-keylime: [i586] 
   - python310-keyring 
   - python310-keyring-keyutils 
@@ -24090,6 +24089,7 @@ unsorted:
   - python310-meld3 
   - python310-memory_profiler 
   - python310-mercantile 
+  - python310-merge3 
   - python310-mergedeep 
   - python310-meson-python 
   - python310-metaextract 
@@ -24180,10 +24180,8 @@ unsorted:
   - python310-nbdime-git 
   - python310-nbdime-hg 
   - python310-nbformat 
-  - python310-nbindex-jupyter 
   - python310-nbsmoke 
   - python310-nbsphinx 
-  - python310-nbsphinx-link 
   - python310-nbval 
   - python310-nbxmpp 
   - python310-ncclient 
@@ -25073,6 +25071,7 @@ unsorted:
   - python310-serverfiles 
   - python310-setproctitle 
   - python310-setuptools-declarative-requirements 
+  - python310-setuptools-gettext 
   - python310-setuptools-git 
   - python310-setuptools-git-versioning 
   - python310-setuptools-rust 
@@ -26382,6 +26381,7 @@ unsorted:
   - python38-cassowary 
   - python38-casttube 
   - python38-catkin-pkg 
+  - python38-cattrs 
   - python38-cauldron-notebook 
   - python38-cbor 
   - python38-cbor2 
@@ -26945,6 +26945,7 @@ unsorted:
   - python38-geopy 
   - python38-getmac 
   - python38-gevent 
+  - python38-gevent-websocket 
   - python38-geventhttpclient 
   - python38-ggplot 
   - python38-ghp-import 
@@ -27181,7 +27182,6 @@ unsorted:
   - python38-jellyfish 
   - python38-jenkinsapi 
   - python38-jfscripts 
-  - python38-jgraph 
   - python38-jinja2-fsloader 
   - python38-jinja2-pluralize 
   - python38-jinja2-time 
@@ -27220,7 +27220,6 @@ unsorted:
   - python38-jupyter-core 
   - python38-jupyter-events 
   - python38-jupyter-kernel-test 
-  - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
   - python38-jupyter-server 
   - python38-jupyter-server-mathjax 
@@ -27247,7 +27246,6 @@ unsorted:
   - python38-kasa 
   - python38-kazoo 
   - python38-kerberos 
-  - python38-keyczar 
   - python38-keylime 
   - python38-keyring 
   - python38-keyring-keyutils 
@@ -27447,6 +27445,7 @@ unsorted:
   - python38-meld3 
   - python38-memory_profiler 
   - python38-mercantile 
+  - python38-merge3 
   - python38-mergedeep 
   - python38-meson-python 
   - python38-metaextract 
@@ -27537,10 +27536,8 @@ unsorted:
   - python38-nbdime-git 
   - python38-nbdime-hg 
   - python38-nbformat 
-  - python38-nbindex-jupyter 
   - python38-nbsmoke 
   - python38-nbsphinx 
-  - python38-nbsphinx-link 
   - python38-nbval 
   - python38-ncclient 
   - python38-ndg-httpsclient 
@@ -28470,6 +28467,7 @@ unsorted:
   - python38-setproctitle 
   - python38-setuptools 
   - python38-setuptools-declarative-requirements 
+  - python38-setuptools-gettext 
   - python38-setuptools-git 
   - python38-setuptools-git-versioning 
   - python38-setuptools-rust 
@@ -29783,6 +29781,7 @@ unsorted:
   - python39-cassowary 
   - python39-casttube 
   - python39-catkin-pkg 
+  - python39-cattrs 
   - python39-cauldron-notebook 
   - python39-cbor 
   - python39-cbor2 
@@ -30347,6 +30346,7 @@ unsorted:
   - python39-geopy 
   - python39-getmac 
   - python39-gevent 
+  - python39-gevent-websocket 
   - python39-geventhttpclient 
   - python39-ggplot 
   - python39-ghp-import 
@@ -30582,7 +30582,6 @@ unsorted:
   - python39-jellyfish 
   - python39-jenkinsapi 
   - python39-jfscripts 
-  - python39-jgraph 
   - python39-jinja2-fsloader 
   - python39-jinja2-pluralize 
   - python39-jinja2-time 
@@ -30621,7 +30620,6 @@ unsorted:
   - python39-jupyter-core 
   - python39-jupyter-events 
   - python39-jupyter-kernel-test 
-  - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
   - python39-jupyter-server 
   - python39-jupyter-server-mathjax 
@@ -30648,7 +30646,6 @@ unsorted:
   - python39-kasa 
   - python39-kazoo 
   - python39-kerberos 
-  - python39-keyczar 
   - python39-keylime 
   - python39-keyring 
   - python39-keyring-keyutils 
@@ -30848,6 +30845,7 @@ unsorted:
   - python39-meld3 
   - python39-memory_profiler 
   - python39-mercantile 
+  - python39-merge3 
   - python39-mergedeep 
   - python39-meson-python 
   - python39-metaextract 
@@ -30939,10 +30937,8 @@ unsorted:
   - python39-nbdime-git 
   - python39-nbdime-hg 
   - python39-nbformat 
-  - python39-nbindex-jupyter 
   - python39-nbsmoke 
   - python39-nbsphinx 
-  - python39-nbsphinx-link 
   - python39-nbval 
   - python39-ncclient 
   - python39-ndg-httpsclient 
@@ -31871,6 +31867,7 @@ unsorted:
   - python39-setproctitle 
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
+  - python39-setuptools-gettext 
   - python39-setuptools-git 
   - python39-setuptools-git-versioning 
   - python39-setuptools-rust 
@@ -33366,7 +33363,7 @@ unsorted:
   - rtl-sdr-devel 
   - rtl-sdr-udev 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433 
   - rtl_433-devel 
@@ -45093,7 +45090,6 @@ unsorted:
   - youtube-dl-bash-completion 
   - youtube-dl-fish-completion 
   - youtube-dl-zsh-completion 
-  - ypserv 
   - yq 
   - yq-bash-completion 
   - yq-fish-completion 
