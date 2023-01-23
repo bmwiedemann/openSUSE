@@ -1,8 +1,8 @@
 #
 # spec file for package Radicale
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2012-2022 Ákos Szőts <szotsaki@gmail.com>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2012-2023 Ákos Szőts <szotsaki@gmail.com>
 # Copyright (c) 2011 Marcus Rueckert <darix@opensu.se>
 #
 # All modifications and additions to the file contributed by third parties
