@@ -84,6 +84,7 @@ BuildRequires:  xmlsec1-devel
 BuildRequires:  xmlsec1-openssl-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(systemd)
 # remove extra packages from version 1.2.9 and older
 Obsoletes:      openscap-engine-sce < %{version}
 Obsoletes:      openscap-extra-probes < %{version}

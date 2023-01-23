@@ -1177,4 +1177,13 @@
     <comment>- 0001-Use-correct-includes.patch: fixed build with rpm 4.18 (forwarded request 1059914 from msmeissn)</comment>
     <requestid>1059915</requestid>
   </revision>
+  <revision rev="81" vrev="6">
+    <srcmd5>537f8802c95e724f92873a9db2363208</srcmd5>
+    <version>1.3.6</version>
+    <time>1674495146</time>
+    <user>dimstar_suse</user>
+    <comment>- Require systemd for building, was pulled in before by indirect
+  dependencies which don't exist anymore (forwarded request 1060354 from kukuk)</comment>
+    <requestid>1060355</requestid>
+  </revision>
 </revisionlist>
