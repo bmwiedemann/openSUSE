@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 21 18:45:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * require pycodestyle 2.10.0 and higher version by @hhatto in
+    #659
+  * fix: e265, e266 by @hhatto in #663
+- Release 2.0.0
+  * Fix E265 and E266 confusion and overlap by @PeterJCLaw in #650
+  * Use tomli in place of unmaintained toml package by @mgorny in
+    #629
+  * fix: special case of auto value with flake8 config by @hhatto
+    in #653
+- Release 1.7.0
+  * Require pycodestyle 2.9.1 and higher version ( Thanks
+    @heavenshell)
+  * Drop support Python2.7
+
+-------------------------------------------------------------------
 Thu Nov  4 13:27:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.6.0
