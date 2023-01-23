@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:39:27 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not require unversionned llvm since ghc needs a specific
+  llvm version. [boo#1207265]
+
+-------------------------------------------------------------------
 Tue Jan 17 11:45:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Apply "fix_extlinks.patch" to work around a bug in Sphinx 6.1.x

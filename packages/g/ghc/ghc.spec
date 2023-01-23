@@ -23,6 +23,7 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
+# Keep in sync with ghc-bootstrap.spec
 %if 0%{suse_version} > 1550
 %global llvm_major 12
 %else
