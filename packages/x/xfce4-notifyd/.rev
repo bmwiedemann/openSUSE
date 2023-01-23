@@ -369,4 +369,26 @@
     <comment> (forwarded request 1060153 from tux93)</comment>
     <requestid>1060156</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e038e711bddc08fd37d576106d4a9894</srcmd5>
+    <version>0.7.2</version>
+    <time>1674495088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Fix sound proplist memleak when notification isn't shown
+  * Improve sorting in known apps list of settings
+  * Add extra margin in the known app settings
+  * Fix word casing in known app settings
+  * Add ability to exclude specific applications from log
+  * Better, non-quadratic algo for xfce_notify_count_apps_in_log()
+  * Plug memleak in notify_get_from_desktop_file()
+  * Redesign the known apps panel a bit
+  * Remove a few more GTK_CHECK_VERSION call sites
+  * Avoid use-after-free when deleting known app
+  * Improve algo for finding desktop file for known app name
+  * Improve icon loading for known apps list
+  * Don't set invalid icon name in known apps list
+  * Translation Updates (forwarded request 1060249 from manfred-h)</comment>
+    <requestid>1060259</requestid>
+  </revision>
 </revisionlist>

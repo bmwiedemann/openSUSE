@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jan 22 09:13:44 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.7.2:
+  * Fix sound proplist memleak when notification isn't shown
+  * Improve sorting in known apps list of settings
+  * Add extra margin in the known app settings
+  * Fix word casing in known app settings
+  * Add ability to exclude specific applications from log
+  * Better, non-quadratic algo for xfce_notify_count_apps_in_log()
+  * Plug memleak in notify_get_from_desktop_file()
+  * Redesign the known apps panel a bit
+  * Remove a few more GTK_CHECK_VERSION call sites
+  * Avoid use-after-free when deleting known app
+  * Improve algo for finding desktop file for known app name
+  * Improve icon loading for known apps list
+  * Don't set invalid icon name in known apps list
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jan 21 13:28:41 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.7.1:

@@ -17,22 +17,22 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://docs.xfce.org/apps/notifyd/start
-Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.6/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.7/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  exo-tools
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
-# BuildRequires:  xfce4-dev-tools
+BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
