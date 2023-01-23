@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.11.0
+Version:        5.11.1
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
