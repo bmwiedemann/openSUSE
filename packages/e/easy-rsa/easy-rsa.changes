@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Jan 17 11:06:55 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.2:
+  * Command 'renew': Remove option 'nopass' 
+  * find_x509_types_dir(): Remove excess checks
+  * Remove function find_x509_types_dir() 
+  * For 'init-pki hard' only, always try to create a new pki/vars file 
+  * Introduce global option '--notext|--no-text' 
+  * Minor style change
+  * Introduce command 'set-pass' 
+  * Fix shellcheck warning for command set-pass case statement 
+  * cleanup(): Exit correctly for SIGINT 
+  * Update help: Standardise output; Improve code; Reprioritise options
+  * vars.example: Add EASYRSA_NO_PASS and wrap long lines
+  * Use 'unset -v', consistently
+  * build-ca: Improve passphrase input mechanism 
+  * Remove global options '--verbose' and '--quiet' as not required
+  * Remove all prerequisite code to build a safe SSL config file
+  * Rename temp files to reflect the purpose 
+  * easyrsa_openssl(): Always set OPENSSL_CONF to EasyRSA safe SSL config 
+  * Replace SSL calls for serial number with function ssl_cert_serial() 
+  * Introduce OpenSSL only mode: No Safe SSL Config File 
+  * ff_date_to_cert_date(): Correct the input format for busybox date 
+  * Re-order easyrsa_openssl() temp-file assignment 
+  * Stop EASYRSA_DEBUG interfering with SSL output from subshells 
+  * Status reports: Recognise Expired certificates 
+  * New function safe_set_var(): Safe wrapper for set_var() 
+  * Windows, build-ca: Add input password to re-open private key 
+  * Renewal: General code improvements 
+  * cleanup(): General improvements - Create KNOWN error exit 
+  * build-ca: Change FATAL error to warning for old openssl-easyrsa.cnf 
+  * Allow --fix-offset to create post-dated certificates 
+  * Default settings: Make default Edwards curve ED25519
+  * cleanup(): Exit with numeric error-code only 
+  * init-pki(): Introduce second warning before HARD removal
+  * build-full: Always enable inline file creation 
+  * Global option '--passout' always take priority ONLY
+  * Status Reports: Set 'LC_TIME=C.UTF-8', only used for reports 
+  * Option --fix-offset: Adjust off-by-one day
+- Drop fix-747.patch
+
+-------------------------------------------------------------------
 Tue Dec 13 23:09:09 UTC 2022 - Olav Reinert <seroton10@gmail.com>
 
 - fix for 3.1.1:
