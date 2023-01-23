@@ -1,7 +1,7 @@
 #
 # spec file for package amsynth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amsynth
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later

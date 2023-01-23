@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 21 12:09:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.13.1:
+  * Fixed a crash when parsing XSettings on some systems
+    (gh#amsynth/amsynth#221).
+
+-------------------------------------------------------------------
 Sun Jul 17 01:44:29 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 1.13.0
-
   * Fixed intermittent unexpected MIDI output in response to MIDI CC input.
   * Fixed VST plugin UI updates in response to host parameter changes.
   * Added HiDPI scaling support to VST plugin UI.
