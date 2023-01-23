@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyevents
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define mainver 0.8.1
-%define labver  1.8.1
+%define plainpython3dist python3dist
 Name:           python-ipyevents
-Version:        %{mainver}
+Version:        2.0.1
 Release:        0
 Summary:        A custom ipython widget for returning mouse and keyboard events
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mwcraig/ipyevents
 # The Github archive has the test file, but does not bundle the extensions
-Source0:        %{url}/archive/%{version}.tar.gz#/ipyevents-%{mainver}-gh.tar.gz
+Source0:        https://github.com/mwcraig/ipyevents/archive/%{version}.tar.gz#/ipyevents-%{version}-gh.tar.gz
 # Only the (pure) wheel bundles both extensions
-Source1:        https://files.pythonhosted.org/packages/py2.py3/i/ipyevents/ipyevents-%{mainver}-py2.py3-none-any.whl
+Source1:        https://files.pythonhosted.org/packages/py2.py3/i/ipyevents/ipyevents-%{version}-py2.py3-none-any.whl
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pip}
@@ -38,14 +35,13 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
-Requires:       jupyter-ipyevents = %{mainver}
-Requires:       python-ipywidgets >= 7.0.0
+Requires:       jupyter-ipyevents = %{version}
+Requires:       python-ipywidgets >= 7.6.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
-ipyevents provides a custom widget for returning mouse and keyboard 
+ipyevents provides a custom widget for returning mouse and keyboard
 events to Python. Use it to:
 
   * add keyboard shortcuts to an existing widget.
@@ -58,10 +54,11 @@ This package provides the python interface.
 Summary:        A custom ipython widget for returning mouse and keyboard events
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
-Requires:       python3-ipyevents = %{mainver}
+# any flavor is okay
+Requires:       %{plainpython3dist}(ipyevents) = %{version}
 
 %description -n jupyter-ipyevents
-ipyevents provides a custom widget for returning mouse and keyboard 
+ipyevents provides a custom widget for returning mouse and keyboard
 events to Python. Use it to:
 
   * add keyboard shortcuts to an existing widget.
@@ -71,15 +68,15 @@ events to Python. Use it to:
 This package provides the tools and jupyter notebook extension.
 
 %package     -n jupyter-ipyevents-jupyterlab
-Version:        %{labver}
+Version:        %{version}
 Release:        0
 Summary:        A custom ipython widget for returning mouse and keyboard events
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
-Requires:       python3-ipyevents = %{mainver}
+Requires:       %{plainpython3dist}(ipyevents) = %{version}
 
 %description -n jupyter-ipyevents-jupyterlab
-ipyevents provides a custom widget for returning mouse and keyboard 
+ipyevents provides a custom widget for returning mouse and keyboard
 events to Python. Use it to:
 
   * add keyboard shortcuts to an existing widget.
@@ -89,37 +86,36 @@ events to Python. Use it to:
 This package provides the JupyterLab extension.
 
 %prep
-%setup -q -n ipyevents-%{mainver}
+%setup -q -n ipyevents-%{version}
 
 %build
 # we install the (pure) wheel directly...
 
 %install
-%{python_expand mkdir -p build; cp %SOURCE1 build/}
-%pyproject_install
+%pyproject_install %{SOURCE1}
 
 %{jupyter_move_config}
 %python_expand find %{buildroot}%{$python_sitelib}/ipyevents/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
 %python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%fdupes %{buildroot}%{_jupyter_prefix} 
-cp %{buildroot}%{python3_sitelib}/ipyevents-%{mainver}.dist-info/LICENSE.md .
+%fdupes %{buildroot}%{_jupyter_prefix}
+find %{buildroot}%{_prefix} -path ipyevents-%{version}.dist-info/LICENSE.md -exec cp {} . ';' -quit
 
 %check
 %pytest
 
 %files %{python_files}
 %license LICENSE.md
-%{python_sitelib}/ipyevents-%{mainver}*-info/
+%{python_sitelib}/ipyevents-%{version}*-info/
 %{python_sitelib}/ipyevents/
 
 %files -n jupyter-ipyevents
 %license LICENSE.md
-%config %{_jupyter_nb_notebook_confdir}/ipyevents.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/ipyevents.json
 %{_jupyter_nbextension_dir}/ipyevents/
 
 %files -n jupyter-ipyevents-jupyterlab
 %license LICENSE.md
-%{_jupyter_labextensions_dir}/ipyevents-%{labver}.tgz
+%{_jupyter_labextensions_dir3}/ipyevents
 
 %changelog

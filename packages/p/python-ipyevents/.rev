@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>868196</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>345029636831d3bc3ceb1e012a533dae</srcmd5>
+    <version>2.0.1</version>
+    <time>1674495096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.1 (python and jupyterlab)
+  * no upstream changelog
+  * jupyterlab 3 compatibility</comment>
+    <requestid>1060276</requestid>
+  </revision>
 </revisionlist>
