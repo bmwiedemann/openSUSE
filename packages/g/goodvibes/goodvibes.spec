@@ -1,7 +1,7 @@
 #
 # spec file for package goodvibes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           goodvibes
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        A lightweight radio player
 License:        GPL-3.0-only
