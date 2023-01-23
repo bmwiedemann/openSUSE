@@ -1,7 +1,7 @@
 #
 # spec file for package gnutls
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,11 @@ Patch7:         gnutls-Make-XTS-key-check-failure-not-fatal.patch
 Patch8:         gnutls-disable-flaky-test-dtls-resume.patch
 #PATCH-FIX-OPENSUSE bsc#1199881 Verify only the libgnutls library HMAC
 Patch9:         gnutls-verify-library-HMAC.patch
+#PATCH-FIX-SUSE bsc#1207183 FIPS: DH/ECDH PCT public key regeneration
+Patch10:        gnutls-FIPS-PCT-DH.patch
+Patch11:        gnutls-FIPS-PCT-ECDH.patch
+#PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
+Patch12:        gnutls-FIPS-140-3-references.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge

@@ -1,0 +1,85 @@
+Index: gnutls-3.7.8/lib/nettle/pk.c
+===================================================================
+--- gnutls-3.7.8.orig/lib/nettle/pk.c
++++ gnutls-3.7.8/lib/nettle/pk.c
+@@ -2498,6 +2498,48 @@ static int pct_test(gnutls_pk_algorithm_
+ 		}
+ 		break;
+ 	case GNUTLS_PK_DH:
++		if (_gnutls_fips_mode_enabled()) {
++			/* Perform Owner Assurance of Pair-wise Consistency
++			 * according to SP800-56A (revision 3), 5.6.2.1.4.
++			 *
++			 * DH params (see lib/crypto-backend.h)
++			 *  [DSA_P] [0] is p (prime number)
++			 *  [DSA_Q] [1] is q (prime order)
++			 *  [DSA_G] [2] is g (generator)
++			 *  [DSA_Y] [3] is y (public key)
++			 *  [DSA_X] [4] is x (private key only)
++			 *
++			 * Regenerate the public key from the private key with
++			 * y = g^x mod p and compare it with the previous one.
++			 */
++
++			mpz_t p, g, y, x;
++
++			mpz_init(p);
++			mpz_init(g);
++			mpz_init(y);
++			mpz_init(x);
++
++			mpz_set(p, params->params[DSA_P]);
++			mpz_set(g, params->params[DSA_G]);
++			mpz_set(x, params->params[DSA_X]);
++
++			mpz_powm(y, g, x, p);
++
++			ret = mpz_cmp(y, params->params[DSA_Y]);
++			if (unlikely(ret != 0)) {
++				ret = gnutls_assert_val(GNUTLS_E_PK_GENERATION_ERROR);
++			}
++
++			mpz_clear(p);
++			mpz_clear(g);
++			mpz_clear(y);
++			mpz_clear(x);
++			if (ret < 0) {
++				goto cleanup;
++			}
++		}
++		break;
+ 	case GNUTLS_PK_ECDH_X25519:
+ 	case GNUTLS_PK_ECDH_X448:
+ 		ret = 0;
+@@ -2780,8 +2822,17 @@ wrap_nettle_pk_generate_keys(gnutls_pk_a
+ 				}
+ 			}
+ #endif
+-
+-			ret = _gnutls_mpi_init_multi(&params->params[DSA_Y], &params->params[DSA_X], NULL);
++			if (_gnutls_fips_mode_enabled()) {
++				ret = _gnutls_mpi_init_multi(&params->params[DSA_P],
++							     &params->params[DSA_G],
++							     &params->params[DSA_Y],
++							     &params->params[DSA_X],
++							     NULL);
++			} else {
++				ret = _gnutls_mpi_init_multi(&params->params[DSA_Y],
++							     &params->params[DSA_X],
++							     NULL);
++			}
+ 			if (ret < 0) {
+ 				gnutls_assert();
+ 				goto dh_fail;
+@@ -2790,6 +2841,11 @@ wrap_nettle_pk_generate_keys(gnutls_pk_a
+ 			mpz_set(TOMPZ(params->params[DSA_Y]), y);
+ 			mpz_set(TOMPZ(params->params[DSA_X]), x);
+ 			params->params_nr += 2;
++			if (_gnutls_fips_mode_enabled()) {
++				mpz_set(TOMPZ(params->params[DSA_P]), pub.p);
++				mpz_set(TOMPZ(params->params[DSA_G]), pub.g);
++				params->params_nr += 2;
++			}
+ 
+ 			ret = 0;
+ 

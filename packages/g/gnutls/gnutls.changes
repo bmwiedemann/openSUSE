@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 20 09:58:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Change all the 140-2 references to FIPS 140-3 in order to
+  account for the new FIPS certification [bsc#1207346]
+  * Add gnutls-FIPS-140-3-references.patch
+
+-------------------------------------------------------------------
+Mon Jan 16 12:52:55 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: GnuTLS DH/ECDH PCT public key regeneration [bsc#1207183]
+  * Add gnutls-FIPS-PCT-DH.patch gnutls-FIPS-PCT-ECDH.patch
+
+-------------------------------------------------------------------
 Mon Dec 12 08:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) so that alternative providers can be
