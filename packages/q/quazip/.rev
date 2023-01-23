@@ -230,4 +230,12 @@
     <comment>- Install the pkgconfig file when building against Qt 6.3.1</comment>
     <requestid>984240</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>eec77a820d4cf88a79bbd944717bbe0c</srcmd5>
+    <version>1.4</version>
+    <time>1674495133</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.4.0</comment>
+    <requestid>1060341</requestid>
+  </revision>
 </revisionlist>

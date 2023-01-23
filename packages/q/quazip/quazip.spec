@@ -34,9 +34,9 @@ ExclusiveArch:  do_not_build
 %define pkg_suffix -qt5
 %endif
 %define so_ver 1
-%define lib_ver 1_3_0
+%define lib_ver 1_4_0
 Name:           quazip%{?pkg_suffix}
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -45,6 +45,7 @@ Source:         https://github.com/stachenov/quazip/archive/v%{version}.tar.gz#/
 BuildRequires:  cmake >= 3.15
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?qt5}
 BuildRequires:  doxygen
