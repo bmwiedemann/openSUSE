@@ -4664,4 +4664,14 @@
 - update staging to 8.0 rc4 release</comment>
     <requestid>1058452</requestid>
   </revision>
+  <revision rev="397" vrev="1">
+    <srcmd5>2bf6e16b8dcbf02942d8c23868730d1b</srcmd5>
+    <version>8.0~rc5</version>
+    <time>1674495141</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0 rc5 release candidate
+  - Bug fixes only, we are in code freeze.
+- update staging to 8.0 rc5 release</comment>
+    <requestid>1060352</requestid>
+  </revision>
 </revisionlist>
