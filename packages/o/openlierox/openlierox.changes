@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 21 15:30:24 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap: use gcc11
+
+-------------------------------------------------------------------
 Thu May 19 08:00:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch to pkgconfig(sdl) to build with sdl12_compat.

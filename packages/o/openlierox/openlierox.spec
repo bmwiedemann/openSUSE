@@ -1,7 +1,7 @@
 #
 # spec file for package openlierox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  SDL_image-devel
 BuildRequires:  SDL_mixer-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
 BuildRequires:  hawknl-devel
 BuildRequires:  hicolor-icon-theme
@@ -38,6 +37,12 @@ BuildRequires:  libzip-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(sdl)
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++ >= 11
+%endif
 # for people who try to install this using upstream capitalization
 Provides:       OpenLieroX = %{version}-%{release}
 
@@ -50,6 +55,11 @@ are available to provide endless gaming pleasure.
 %autosetup -n OpenLieroX
 
 %build
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-11"
+export CXX="g++-11"
+%endif
+
 %cmake -DDEBUG=OFF -DBREAKPAD=OFF -DSYSTEM_DATA_DIR=%{_datadir} -DHAWKNL_BUILTIN=ON
 %make_build
 
