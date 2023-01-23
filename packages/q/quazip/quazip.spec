@@ -82,6 +82,8 @@ Useful to access ZIP archives from Qt programs.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       libquazip%{so_ver}-%{quazip_flavor}-%{lib_ver} = %{version}
+Requires:       pkgconfig(bzip2)
+Requires:       pkgconfig(zlib)
 %if 0%{?qt5}
 Requires:       cmake(Qt5Core)
 Provides:       libquazip-qt5-devel = %{version}

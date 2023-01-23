@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:55:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Make sure the bzip2 and zlib devel packages are pulled when
+  installing quazip's devel package
+
+-------------------------------------------------------------------
 Mon Jan 23 06:48:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.4.0
