@@ -55,9 +55,6 @@ BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
 BuildRequires:  libbtrfs-devel
 %endif
-%if 0%{?suse_version} >= 1550
-BuildRequires:  libbtrfsutil-devel
-%endif
 %if 0%{?suse_version} > 1310
 BuildRequires:  libmount-devel >= 2.24
 %endif
