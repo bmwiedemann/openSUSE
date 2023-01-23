@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:59:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.14:
+  * Fixed parsing of port 0 (zero) returning None, instead of 0.
+  * Removed deprecated getheaders() calls in contrib module.
+
+-------------------------------------------------------------------
 Fri Dec  2 13:02:46 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - update to 1.26.13

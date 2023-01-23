@@ -623,4 +623,14 @@
   * Removed the ``&lt;4`` in the ``Requires-Python`` packaging metadata field. (forwarded request 1039590 from glaubitz)</comment>
     <requestid>1039604</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6ef57fb08f7a1d67350eeee86cf16b49</srcmd5>
+    <version>1.26.14</version>
+    <time>1674495042</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.14:
+  * Fixed parsing of port 0 (zero) returning None, instead of 0.
+  * Removed deprecated getheaders() calls in contrib module.</comment>
+    <requestid>1060116</requestid>
+  </revision>
 </revisionlist>
