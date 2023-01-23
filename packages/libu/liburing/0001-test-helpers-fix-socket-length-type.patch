@@ -1,0 +1,41 @@
+From b5caa618565c0c6d0053f7b1bae2423cd317660c Mon Sep 17 00:00:00 2001
+From: Gabriel Krisman Bertazi <krisman@suse.de>
+Date: Wed, 18 Jan 2023 11:48:06 -0300
+Subject: [PATCH] test/helpers: fix socket length type
+
+t_create_socket_pair uses size_t for paddrlen, which is uint64 on 64-bit
+architecture, while the network syscalls expect uint32.  The implicit
+cast is always safe for little-endian here due to the structure format,
+its small size and the fact it was previously zeroed - so the test
+succeeds.
+
+Still, on BE machines, our CI caught a few tests crashing on
+connect(). For instance:
+
+localhost:~/liburing/test # ./send_recv.t
+connect failed
+test_invalid failed
+
+Signed-off-by: Gabriel Krisman Bertazi <krisman@suse.de>
+Link: https://lore.kernel.org/r/20230118144806.18352-1-krisman@suse.de
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+---
+ test/helpers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/helpers.c b/test/helpers.c
+index 869e903..37ba67c 100644
+--- a/test/helpers.c
++++ b/test/helpers.c
+@@ -173,7 +173,7 @@ int t_create_socket_pair(int fd[2], bool stream)
+ 	int val;
+ 	struct sockaddr_in serv_addr;
+ 	struct sockaddr *paddr;
+-	size_t paddrlen;
++	socklen_t paddrlen;
+ 
+ 	type |= SOCK_CLOEXEC;
+ 	fd[0] = socket(AF_INET, type, 0);
+-- 
+2.39.0
+

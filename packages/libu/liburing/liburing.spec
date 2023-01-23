@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,15 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM: has been accepted upstream
-Patch0:         test-xattr-don-t-rely-on-NUL-termination.patch
-# PATCH-FIX-UPSTREAM: has been accepted upstream
-# [1/1] Handle EINTR in tests
-#      commit: fa67f6aedcfdaffc14cbf0b631253477b2565ef0
-Patch2:         handle-eintr.patch
+# PATCH-FIX-UPSTREAM: fix tests on big endian
+Patch1:         0001-test-helpers-fix-socket-length-type.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps
