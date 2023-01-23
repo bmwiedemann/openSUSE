@@ -1,7 +1,0 @@
-# To overwrite variables, create a file /etc/default/ypxfrd with
-# the variables which should be changed.
-
-# Additonal arguments for rpc.ypxfrd. See manual page
-# for possible options.
-YPXFRD_ARGS=""
-

@@ -1,4 +1,0 @@
-d /var/yp 0755 - - -
-L /var/yp/Makefile - - - - ../../usr/share/yp/ypMakefile
-L /var/yp/securenets - - - - ../../usr/share/yp/securenets.example
-L /etc/ypserv.conf - - - - ../usr/share/yp/ypserv.conf
