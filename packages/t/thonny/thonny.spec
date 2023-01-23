@@ -21,7 +21,7 @@
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT

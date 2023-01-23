@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jan 22 21:35:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Fix Mypy logging error in the Assistant, #2491 by @kr-g and @solsword
+  * Fix AttributeError on save, #2454
+  * Add Thonny version as environment value for user programs
+  * Make `__file__` contain absolute path
+  * Start SSH preparation command with space to avoid adding it to shell
+    history
+  * Bump pipkin version to 1.0b8 and fix various bugs with MicroPython
+    package installation, including not being able to update a package
+  * Restore Find/Replace dialog close button and non-dialog behavior
+  * Make Find/Replace dialog non-modal again
+  * Fix Find/Replace seeding
+  * Restore focus after using file dialogs
+  * Don't remove stacktrace links after closing the process
+  * Never clear shell when Stop/Restart is used for stopping a process
+  * Treat .toml, .gitignore and .env as text files
+  * Fix expression box glitch (lower frame box remaining visible) when
+    debugging on macOS
+  * Ignore disk flushing errors in the end of UF2 installation
+  * Make port finding in the end of UF2 installation process more robust
+  * Don't enable variant and version selection in UF2 dialog before variants
+    get downloaded
+  * Add Vietnamese translation, by Bui Huy Quang
+  * Update several translations
+  * Fix the name for Slowenian
+  * Update several deps in Thonny + Python bundles (asttokens, mypy, pylint,
+    esptool, paramiko)
+
+-------------------------------------------------------------------
 Sun Jan  1 15:15:40 UTC 2023 - Thomas Wagner <wagner-thomas@gmx.at>
 
 - Update to 4.0.1
