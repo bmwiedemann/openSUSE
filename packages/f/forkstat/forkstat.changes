@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan 22 16:33:18 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.03.00
+
+  * Remove redundant null check on ptr
+  * Update copyright
+  * forkstat: remove redundant assignment to ptr
+  * Add STAT_NONE to event_t enum and use it instead of 0
+
+-------------------------------------------------------------------
 Sat Nov  7 18:17:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.16

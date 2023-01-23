@@ -1,7 +1,7 @@
 #
 # spec file for package forkstat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           forkstat
-Version:        0.02.16
+Version:        0.03.00
 Release:        0
 Summary:        Process fork/exec/exit monitoring tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/forkstat/
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.xz
+URL:            https://github.com/ColinIanKing/forkstat
+Source:         https://github.com/ColinIanKing/forkstat/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 Forkstat monitors process fork(), exec() and exit() activity. It is useful for
@@ -36,7 +36,7 @@ Summary:        Bash Completion for %{name}
 Group:          System/Benchmark
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(forkstat:bash-completion)
+Supplements:    (forkstat and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -47,7 +47,7 @@ Bash completion script for %{name}.
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
