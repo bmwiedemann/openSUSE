@@ -150,4 +150,14 @@ too small
 </comment>
     <requestid>1056888</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6b868edbc2db9e3ab12d48f33bcf4850</srcmd5>
+    <version>0.8.12</version>
+    <time>1674495089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.12
+  * Implement &quot;link&quot; galleries (without nested sub-documents)
+</comment>
+    <requestid>1060262</requestid>
+  </revision>
 </revisionlist>

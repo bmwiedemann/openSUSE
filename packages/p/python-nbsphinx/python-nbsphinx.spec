@@ -18,7 +18,7 @@
 
 %define         skip_python2 1
 Name:           python-nbsphinx
-Version:        0.8.11
+Version:        0.8.12
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
