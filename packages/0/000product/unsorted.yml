@@ -8301,9 +8301,9 @@ unsorted:
   - kbackup 
   - kbackup-lang 
   - kbdsniffd 
-  - kbfs: [i586] 
-  - kbfs-git: [i586] 
-  - kbfs-tool: [i586] 
+  - kbfs 
+  - kbfs-git 
+  - kbfs-tool 
   - kbibtex 
   - kbibtex-devel 
   - kbibtex-lang 
