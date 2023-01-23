@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jan 11 09:59:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  * Fix #394. Event labeling
+  * Implement #393 consistent logging
+  * Add feature #391. Add country code aggregation
+  * Fix #392. Fix format options with IPv6
+  * Implement #390. Aggregation for GeoDB's enriched AS data
+  * Add OpenBSD pflog decoding in nfpcapd and nfdump
+  * Fix #389 receiving IPv4 on IPv6 socket in sfcapd
+  * Fix #385 bug when compiled on i386 arch - 32bit alignment
+  * Fix #384 bug when compile with --enable-nsel
+  * Implement #366 Linux NFLOG link layer protocol in nfpcapd
+  * Fix #381 pcap overwrite in nfpcapd fixed
+  * Implement #377. Rework sampling code in general. Switch to
+    packet interval/space notation. Map older sampling to new
+    notation.
+  * Fix #375 relative timestamps with sysUptime id 160
+  * Rework nbar code. Use new array records and fix nbar bug in
+    older versions.
+  * Fix #370. Help shows correct option -A
+  * Fix #369. Legacy -M for NfSen works again
+  * Improve nbar handling. Add private enterprise number decoding
+
+-------------------------------------------------------------------
 Fri Sep 30 13:46:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.0.1
