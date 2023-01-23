@@ -1,9 +1,9 @@
 <services>
-	<service name="obs_scm" mode="disabled">
+	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/raspberrypi/rpi-eeprom.git</param>
 		<param name="filename">raspberrypi-eeprom</param>
-		<param name="revision">c1c19fd4ba380a3e349791089701082cb51da39d</param>
+		<param name="revision">bf7419c961e8b65854fd73ec29fbc515087539e8</param>
 		<param name="versionrewrite-pattern">v([0-9\.]{10}).*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 <!--
@@ -11,8 +11,7 @@
 -->
 	</service>
 	<service name="set_version" mode="disabled"/>
-	<service name="tar" mode="buildtime"/>
-	<service name="recompress" mode="buildtime">
+	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>
 		<param name="compression">xz</param>
 	</service>

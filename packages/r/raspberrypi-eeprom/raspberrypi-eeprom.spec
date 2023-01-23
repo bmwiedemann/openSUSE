@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-eeprom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        2022.01.25
+Version:        2023.01.11
 Release:        0
 Summary:        Raspberry Pi 4 EEPROM firmware
 License:        SUSE-Firmware

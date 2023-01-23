@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jan 22 20:32:45 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Packaging changes:
+  * Compress archive to tar.xz to save space (~43M -> ~3.4M)
+  * Refresh rpi-eeprom-update-Use-tr-instead-of-strings.patch
+- 2023-01-11-vl805-000138c0:
+- Interesting changes since the last release:-
+  * Update VL805 to 138C0 - fix for handling of split transactions
+    raspberrypi/linux#5262
+  * Fix HID error handling with network install #458
+- 2022-11-25-vl805-000138a1:
+- Interesting changes since the last release:-
+  * Add [tryboot] conditional statement to autoboot.txt + tryboot_a_b mode
+  * Support custom OTP mac addresses
+  * Increase TFTP_MAX_BLOCK_SIZE
+  * Stop NVMe cleanly
+  * Fixes for NETCONSOLE parsing and initialisation.
+  * Long filename support for start_file / fixup_file.
+  * Secure boot and display debug info on the diagnostics screen.
+- 2022-04-26-vl805-000138a1:
+- Interesting changes since the last default release:
+  * Implement network install
+  * Add support for BOOT_ORDER_HTTP
+  * Enable the boot partition number to be specified as an EEPROM config
+    property.
+
+-------------------------------------------------------------------
 Tue Mar  8 12:28:21 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - 2022-01-25-vl805-000138a1:
