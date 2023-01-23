@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jan 21 21:48:12 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.68:
+  * TLS modules now default to using stronger, modern ciphers and
+    will default to allow client preference in selecting ciphers.
+    Allowing client preference in selecting ciphers is safe to do along
+    with restrictions to use modern ciphers supporting PFS, and is
+    better for mobile users without AES hardware acceleration.
+    Legacy ciphers can still be configured in lighttpd.conf using
+    `ssl.openssl.ssl-conf-cmd`, as long as the ciphers are supported by
+    the underlying TLS libraries. https://wiki.lighttpd.net/Docs_SSL
+    new defaults:
+    “CipherString” => “EECDH+AESGCM:AES256+EECDH:CHACHA20:SHA256:!SHA384”,
+    “Options” => “-ServerPreference”
+    old defaults:
+    “CipherString” => “HIGH”,
+    “Options” => “ServerPreference”
+  * Deprecated TLS options have been removed.
+    – ssl.honor-cipher-order
+    – ssl.dh-file
+    – ssl.ec-curve
+    – ssl.disable-client-renegotiation
+    – ssl.use-sslv2
+    – ssl.use-sslv3
+    See https://wiki.lighttpd.net/Docs_SSL for replacements with
+    `ssl.openssl.ssl-conf-cmd`, but prefer lighttpd defaults instead.
+  * Deprecated: mod_evasive has been removed
+  * Deprecated: mod_secdownload has been removed
+  * Deprecated: mod_uploadprogress has been removed
+  * Deprecated: mod_usertrack has been removed
+    These four modules can be replaced with a few lines of LUA.
+
+-------------------------------------------------------------------
 Wed Nov 16 13:20:40 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - package license file

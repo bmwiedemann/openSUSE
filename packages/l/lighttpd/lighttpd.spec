@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.67
+Version:        1.4.68
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -344,7 +344,6 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_cgi.so
 %{_libdir}/%{name}/mod_deflate.so
 %{_libdir}/%{name}/mod_dirlisting.so
-%{_libdir}/%{name}/mod_evasive.so
 %{_libdir}/%{name}/mod_evhost.so
 %{_libdir}/%{name}/mod_expire.so
 %{_libdir}/%{name}/mod_extforward.so
@@ -355,16 +354,13 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_redirect.so
 %{_libdir}/%{name}/mod_rewrite.so
 %{_libdir}/%{name}/mod_scgi.so
-%{_libdir}/%{name}/mod_secdownload.so
 %{_libdir}/%{name}/mod_setenv.so
 %{_libdir}/%{name}/mod_simple_vhost.so
 %{_libdir}/%{name}/mod_ssi.so
 %{_libdir}/%{name}/mod_staticfile.so
 %{_libdir}/%{name}/mod_sockproxy.so
 %{_libdir}/%{name}/mod_status.so
-%{_libdir}/%{name}/mod_uploadprogress.so
 %{_libdir}/%{name}/mod_userdir.so
-%{_libdir}/%{name}/mod_usertrack.so
 %{_libdir}/%{name}/mod_vhostdb.so
 %{_libdir}/%{name}/mod_wstunnel.so
 %{_libdir}/%{name}/mod_authn_dbi.so
