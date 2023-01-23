@@ -1,7 +1,7 @@
 #
 # spec file for package python-rply
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rply
 Version:        0.7.8
 Release:        0
@@ -26,7 +25,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/alex/rply
 # https://github.com/alex/rply/issues/90
 Source:         https://github.com/alex/rply/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM rply-pr116-pytest.patch gh#alex/rply#116
+Patch0:         rply-pr116-pytest.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
@@ -43,13 +46,13 @@ It is a more-or-less direct port of David Beazley's PLY, with a new
 public API, and with RPython support.
 
 %prep
-%setup -q -n rply-%{version}
+%autosetup -p1 -n rply-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +61,7 @@ public API, and with RPython support.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/rply
+%{python_sitelib}/rply-%{version}.dist-info
 
 %changelog

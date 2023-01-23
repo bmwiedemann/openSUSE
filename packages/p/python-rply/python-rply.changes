@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 21 18:59:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix test suite: pytest no longer comes with py
+  * Add rply-pr116-pytest.patch gh#alex/rply#116
+- PEP517 build
+
+-------------------------------------------------------------------
 Fri Oct  7 15:12:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 0.7.8 
