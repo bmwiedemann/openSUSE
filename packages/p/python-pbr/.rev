@@ -699,4 +699,16 @@
     <comment></comment>
     <requestid>1032046</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>de891b39edd6e70ae26ef331a09faef5</srcmd5>
+    <version>5.11.1</version>
+    <time>1674495041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.11.1:
+  * Run PBR integration on Ubuntu Focal too
+  * Remove numpy dependencies
+  * Tie recursion calls to Dist object, not module
+  * Update tox.ini to work with tox 4</comment>
+    <requestid>1060114</requestid>
+  </revision>
 </revisionlist>
