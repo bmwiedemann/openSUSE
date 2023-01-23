@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 21 10:01:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.28.2:
+  - Requests now supports charset\_normalizer 3.x.
+  - Updated MissingSchema exception to suggest https scheme rather than http.
+- drop requests-allow-charset-normalizer-3.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Oct 31 07:43:29 UTC 2022 - David Anes <david.anes@suse.com>
 
 - allow using newest version of charset-normalizer (3.0+) 

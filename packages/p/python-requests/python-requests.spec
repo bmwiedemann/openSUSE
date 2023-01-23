@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests%{psuffix}
-Version:        2.28.1
+Version:        2.28.2
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -36,8 +36,6 @@ Source:         https://files.pythonhosted.org/packages/source/r/requests/reques
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
 # PATCH-FIX-UPSTREAN: Allow charset normalizer >=2 and <4
-# - https://github.com/psf/requests/commit/c57f1f0ca10e61771b459c857182c23626607312
-Patch1:         requests-allow-charset-normalizer-3.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
