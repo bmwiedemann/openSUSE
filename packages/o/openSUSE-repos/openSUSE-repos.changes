@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 23 13:05:23 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230123.088570b:
+  * Use http as the redirect target does not support https
+  * Add openh264 repos as enabled by default
+
+-------------------------------------------------------------------
 Wed Nov 16 13:14:08 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20221116.d3d7bc7:

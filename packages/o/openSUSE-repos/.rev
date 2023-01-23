@@ -37,4 +37,14 @@
     <comment></comment>
     <requestid>1036232</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>73c63ef0c527459e03aa8600b3152df0</srcmd5>
+    <version>20230123.088570b</version>
+    <time>1674495224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230123.088570b:
+  * Use http as the redirect target does not support https
+  * Add openh264 repos as enabled by default</comment>
+    <requestid>1060421</requestid>
+  </revision>
 </revisionlist>

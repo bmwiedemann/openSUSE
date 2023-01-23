@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-repos
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -61,7 +61,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20221116.d3d7bc7
+Version:        20230123.088570b
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
