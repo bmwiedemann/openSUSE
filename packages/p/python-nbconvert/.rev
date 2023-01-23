@@ -252,4 +252,14 @@
   * clean_html: allow SVG tags and SVG attributes #1890 (@akx) (forwarded request 1045433 from bnavigator)</comment>
     <requestid>1045434</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1fb37046db953ecfac222f15f56a5e66</srcmd5>
+    <version>7.2.8</version>
+    <time>1674495090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.8
+  * always pass relax_add_props=True when validating #1936 (@minrk)
+</comment>
+    <requestid>1060263</requestid>
+  </revision>
 </revisionlist>

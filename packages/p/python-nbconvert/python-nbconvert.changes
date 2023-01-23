@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 22 13:03:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.8
+  * always pass relax_add_props=True when validating #1936 (@minrk)
+
+-------------------------------------------------------------------
 Mon Dec 26 23:06:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.7
