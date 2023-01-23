@@ -7,4 +7,16 @@
     <comment>make way for 3.0</comment>
     <requestid>1009563</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27c0c1b9276c57bdc833c5ac0619c426</srcmd5>
+    <version>2.2.6.2</version>
+    <time>1674495228</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.2.6.2
+[CVE-2022-44570] Fix ReDoS in Rack::Utils.get_byte_ranges
+[CVE-2022-44571] Fix ReDoS vulnerability in multipart parser
+[CVE-2022-44572] Forbid control characters in attributes (also ReDoS)
+See installed CHANGELOG.md for more changes</comment>
+    <requestid>1060431</requestid>
+  </revision>
 </revisionlist>

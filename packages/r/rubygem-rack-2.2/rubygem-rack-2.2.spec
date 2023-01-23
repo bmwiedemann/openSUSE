@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-2.2
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.4
+Version:        2.2.6.2
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -38,11 +38,11 @@ BuildRequires:  fdupes
 %endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            https://github.com/rack/rack
+URL:            https://github.com/rack/rack
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rack-rpmlintrc
 Source2:        gem2rpm.yml
@@ -70,7 +70,6 @@ middleware) into a single method call.
 # MANUAL
 %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/
 # /MANUAL
-
 
 %gem_packages
 
