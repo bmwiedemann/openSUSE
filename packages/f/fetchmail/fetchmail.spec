@@ -55,7 +55,6 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
-BuildRequires:  opie
 BuildRequires:  postfix
 BuildRequires:  procmail
 BuildRequires:  python3-base
@@ -105,7 +104,6 @@ export CFLAGS="%{optflags} -fPIE"
     --enable-RPA \
     --enable-NTLM \
     --enable-SDPS \
-    --enable-opie \
     --with-kerberos5 \
     --with-gssapi \
     --with-ssl=%{_prefix} \
