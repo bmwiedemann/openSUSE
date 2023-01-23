@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.6:
+  * Add Nikon3.WhiteBalanceBias2	
+  * Add Nikon LensData v0802	
+  * Add some F mount lenses
+  * Initial support for OM System MakerNote
+  * Add Sony ARW compression to dict
+  * Exif start can be at any byte in payload, not word aligned
+  * Fix exception type when writing BMFF file
+  * Add more MIME type mappings for TIFF-based raws
+  * Fix naming of canon EF 35-80mm
+  * Replace assert with enforce
+  * PNG: always strip the existing iCCP chunk
+  * Account for header bytes for Exif and XMP boxes
+  * Fix Integer overflow in Photoshop::setIptcIrb
+  * Fix Integer-overflow in sumToLong
+  * Fix out of bounds read in isValidBoxFileType()
+  * Fix in Jp2 metadata writing & improvements in reading
+  * Strip XMP raw packet before decoding
+  * Add tiff tags
+  * Add more DNG 1.6 tags	
+  * Fix bug in iterating over the elements of dateStrings
+  * Use memmove in TiffEncoder::updateDirEntry
+  * Treat Exif.Sony1.PreviewImage as undefined tag
+
+-------------------------------------------------------------------
 Wed Jan  4 13:50:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch to ctest for running the testsuite
