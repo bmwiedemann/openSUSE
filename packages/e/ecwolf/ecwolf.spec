@@ -1,7 +1,7 @@
 #
 # spec file for package ecwolf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,53 +17,60 @@
 
 
 Name:           ecwolf
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        An opensource implementation of Wolfenstein3D engine
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Shoot
-URL:            http://maniacsvault.net/ecwolf
-Source:         http://maniacsvault.net/ecwolf/files/ecwolf/1.x/%{name}-%{version}-src.tar.xz
-Patch0:         ecwolf-static-libs.patch
+URL:            https://maniacsvault.net/ecwolf
+#Git-Clone:     https://bitbucket.org/ecwolf/ecwolf.git
+Source:         https://maniacsvault.net/ecwolf/files/ecwolf/1.x/%{name}-%{version}-src.tar.xz
+Patch1:         ecwolf-no-rpath.patch
+Patch2:         ecwolf-fix-path.patch
 BuildRequires:  cmake
+BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libbz2-devel
-BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(sdl2)
+Provides:       bundled(gdtoa)
+Provides:       bundled(lzma)
 
 %description
 ECWolf is a port of the Wolfenstein 3D engine based of Wolf4SDL.
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0 -p1
-
-sed -e 's|OpenResourceFile(datawad|OpenResourceFile("%{_datadir}/ecwolf/ecwolf.pk3"|' \
-  -e 's|Push(datawad|Push("%{_datadir}/ecwolf/ecwolf.pk3"|' \
-  -e 's|%{_prefix}/local/share/games/wolf3d|%{_datadir}/wolf3d|' \
-  -i src/wl_iwad.cpp
+%patch1 -p1
+%patch2 -p1
+# remove bundled libs
+rm -Rf deps/{bzip2,zlib,jpeg-6b,SDL,SDL_mixer,SDL_net,textscreen}
+sed -e 's|/usr/local/share/games/wolf3d|%{_datadir}/wolf3d|g' -i docs/ecwolf.6
 
 %build
 %cmake \
-    -DBUILD_PATCHUTIL=ON \
+    -DINTERNAL_ZLIB=OFF \
+    -DINTERNAL_BZIP2=OFF \
+    -DINTERNAL_JPEG=OFF \
+    -DUSE_LIBTEXTSCREEN=OFF \
     -DGPL=ON
-%make_jobs
+%cmake_build
 
 %install
 install -D -m 0755 build/ecwolf %{buildroot}%{_bindir}/ecwolf
-install -m 0755 build/tools/patchutil/patchutil %{buildroot}%{_bindir}/ecwolf-patchutil
 install -D -m 0644 build/ecwolf.pk3 %{buildroot}%{_datadir}/ecwolf/ecwolf.pk3
+install -D -m 0644 docs/ecwolf.6 %{buildroot}%{_mandir}/man6/ecwolf.6
 
 %files
 %license docs/license-gpl.txt docs/license-id.txt
-%doc README.md
+%doc README.md PHILOSOPHY.md docs/changelog
 %{_bindir}/ecwolf
-%{_bindir}/ecwolf-patchutil
-%{_datadir}/ecwolf
+%dir %{_datadir}/ecwolf
 %{_datadir}/ecwolf/ecwolf.pk3
+%{_mandir}/man6/ecwolf.6%{?ext_man}
 
 %changelog

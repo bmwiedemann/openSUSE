@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri Jan 20 22:50:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches
+  * ecwolf-fix-path.patch
+  * ecwolf-no-rpath.patch
+- Drop patch
+  * ecwolf-static-libs.patch
+- Install manpage
+- Update BuildRequires
+- Mention bundled libs
+- Update to version 1.4.0
+  * LAN multiplayer for up to 11 players.
+  * Actors now track their current target instead of assuming the
+    one and only player.
+  * Visibility for attacks is determined by geometric checks
+    instead of renderer feedback.
+  * The "DoomEdNum" has been deprecated and all places where they
+    were used now accept actor class names directly.
+  * Support for BILLBOARD flag for "3D sprites", compared to
+    Wolf4SDL the angle of the actor is used allowing arbitrary
+    angles.
+  * Added parallax skies compatible with ROTT through sky1 in
+    MAPINFO/Map definition (mostly incompatible with LZWolf's
+    parallaxsky definition)
+  * Added support for Wolfstone 3D and Elite Hans: Die Neue Ordnung
+  * Added pageindextext to MAPINFO/Gameinfo.
+  * Added $musicalias to SNDINFO.
+  * Added Super 3-D Noah's Ark MIDI->OPL code.
+  * Fading has been reworked to allow overlaying fades over game
+    play.
+  * Support for blend and alpha mixing in TEXTURES.
+  * Support for colormaps with 64 light levels like Blake Stone.
+  * Partial support for Blake Stone map meta data.
+  * Support for Blake Stone's level name strings as LEVELDSC.
+  * Support for Macintosh Wolf3D's MAPLIST.
+  * Added support for offset() in DECORATE states.
+  * Pickups support Hide state to allow spent pickups to be visible
+  * Added Idle state for actors to return to if they lose their
+    target.
+  * Files can be autoloaded though ecwolf.cfg.
+  * Added game based content filtering for PK3s from ZDoom.
+  * Default FOV can be changed through DesiredFOV in ecwolf.cfg.
+  * Added Pushwall_MoveNoStop line special which allows moving
+    pushwalls through walls like Mac Wolf and ROTT.
+  * Added Teleport_Relative line special which works similarly to
+    ROTT elevators without the theatrics.
+  * Wall and plane drawing has been modified to generally have
+    better precision.
+  * Added trackhighscores property to MAPINFO/Gameinfo.
+  * Added resethealth and resetinventory to MAPINFO/Map
+    definition.
+  * Enemies can now accept health items.
+  * Added A_Wander.
+  * Added SmartAnimation actor to support Blake Stone's "smart
+    animation" system.
+  * Added --foreignsaves option to force saves to load even if
+    game data check fails.
+  * Added --skill option to select skill level by number
+    particularly for when more than 4 skill levels are present.
+  * Added ROTT style tall walls and ROTT's map height marker with
+    feature flag "planedepth".
+  * Actor z-heights are now rendered and can be set in info plane
+    with "zheights" enabled in map translator (compatible with
+    ROTT).
+  * ROTT map loader no longer synthesizes a third plane but
+    instead relies on the map translator flag "globalflat".
+  * Support for ROTT's song numbers in map translator.
+  * Partial support for booting Macintosh Wolfenstein 3D,
+    Blake Stone: Planet Strike, and Rise of the Triad.
+  * Includes support for several new data formats most of which
+    have no practical use outside of loading vanilla compatible
+    data.
+  * Macintosh Wolfenstein 3D data is supported through macbin
+    format.
+  * Feature is hidden behind ShowPreviewGames in ecwolf.cfg as
+    they're not yet supported or fully playable.
+  * Improvements in holowall support.
+  * Fixed some long standing minor memory leaks.
+  * New icon/logo by NeuralStunner.
+  * Support for more ultrawide aspect ratios.
+  * Automap panning speed is now dependent on zoom level.
+  * Fixed crash if no sound device was present.
+  * Fixed cases where adaptive frame rate would fail and game would
+    run too fast.
+  * Customized SDL_mixer is still suggested but no longer required
+    for full functionality as the only feature missing is support
+    for alternate spelling of LOOP_START and LOOP_END tags.
+  * Steam and GOG support updated to support new releases.
+  * Remove patchutil from ECWolf source code
+
+-------------------------------------------------------------------
 Sun Feb 17 19:16:29 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Simplified specfile
