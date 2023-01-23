@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec  6 14:36:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.4:
+  * Fix location detection with nested locations (e.g. when using LDAP Pro)
+  * Fix automatic location switching with nested locations (e.g. when using
+  * Fix location filtering (only show current location) with nested
+    locations (e.g. when using LDAP Pro)
+  * Fix broken authentication for Qt6-based builds (e.g. openSUSE
+    Tumbleweed)
+  * RemoteAccess: fix broken display when selecting a secondary screen which
+    is placed left of the primary screen
+  * ScreenLock: fix lock window position and size in multi monitor setups –
+    the lock window now covers all screens
+  * Add workaround for binutils/GCC/Qt PIE+LTO issue to fix crashes when
+    starting Veyon Configurator and Veyon Server on Ubuntu 22.04
+  * UserFunctions: also set GID when running programs as user – fixes access
+    to the user's tmpdir and potential security issues
+  * Add Fedora 36 packages
+  * Add Ubuntu 22.04 packages
+  * Drop Debian Stretch packages
+  * Drop Fedora 34 packages
+  * 3rdparty: x11vnc: update to 0.9.16-67-g4e18eee (LibreSSL build fixes)
+
+-------------------------------------------------------------------
 Thu Oct 27 09:12:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require /usr/bin/pkexec instead of pkexec: allow the package to
