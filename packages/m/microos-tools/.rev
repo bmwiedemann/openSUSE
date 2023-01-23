@@ -223,4 +223,11 @@
     <comment></comment>
     <requestid>1059616</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>eb2349bdfc77574fd7b5742ebdcf1c4a</srcmd5>
+    <version>2.17</version>
+    <time>1674460828</time>
+    <user>favogt_factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207366</comment>
+  </revision>
 </revisionlist>
