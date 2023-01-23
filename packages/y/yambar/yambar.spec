@@ -1,7 +1,7 @@
 #
 # spec file for package yambar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           yambar
-Version:        1.9.0
+Version:        1.9.0+g28
 Release:        0
 Summary:        Modular statusbar for X11 and Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/yambar
-Source:         https://codeberg.org/dnkl/yambar/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  meson >= 0.59
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(yaml-0.1)
 Simplistic and highly configurable status panel for X and Wayland.
 
 %prep
-%autosetup -n %{name}
+%setup -q
 
 %package devel
 Summary:        Development files for %{name}
@@ -95,6 +95,7 @@ rm -rfv %{buildroot}%{_datadir}/doc/
 %{_mandir}/man1/yambar.1%{?ext_man}
 %{_mandir}/man5/yambar.5%{?ext_man}
 %{_mandir}/man5/yambar-decorations.5%{?ext_man}
+%{_mandir}/man5/yambar-modules.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-alsa.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-backlight.5%{?ext_man}
 %{_mandir}/man5/yambar-modules-battery.5%{?ext_man}
@@ -128,7 +129,6 @@ rm -rfv %{buildroot}%{_datadir}/doc/
 %files devel
 %dir %{_includedir}/%{name}/
 %dir %{_includedir}/%{name}/bar
-
 %{_includedir}/%{name}/bar/bar.h
 %{_includedir}/%{name}/color.h
 %{_includedir}/%{name}/config-verify.h

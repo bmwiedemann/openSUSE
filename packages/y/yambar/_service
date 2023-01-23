@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://codeberg.org/dnkl/yambar.git</param>
+    <param name="versionformat">@PARENT_TAG@+g@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">f75168796ad6f361eb35c4335918468afe7cd8c6</param>
+    <param name="versionrewrite-pattern">(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+
+

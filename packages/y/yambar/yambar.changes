@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jan 13 10:31:05 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.9.0+g28:
+  * module/pipewire: handle failures when trying to connect to pipewire
+  * ci: drop gitlab CI
+  * tag: handle width formatter on ints when no other formatting options are used
+  * doc: tags: add a couple of formatting examples
+  * doc: tags: re-arrange columns in ‘formatting’ table
+  * implement field width tag format option
+  * module/i3: fix regression in handling of persistent workspaces
+  * module/dwl: correctly handle the title
+  * modules: change min poll interval from 500ms to 250ms
+  * module/battery: using a static buffer in readline_from_fd() isn’t thread safe
+
+-------------------------------------------------------------------
 Tue Dec 20 04:07:01 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix installation of license and docs.
