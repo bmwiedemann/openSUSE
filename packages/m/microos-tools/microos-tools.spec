@@ -1,7 +1,7 @@
 #
 # spec file for package microos-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
+
 Name:           microos-tools
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -97,6 +99,11 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %dir %{_unitdir}/salt-minion.service.d
 %{_unitdir}/salt-minion.service.d/TMPDIR.conf
 %{_tmpfilesdir}/salt-minion-tmpdir.conf
+%if %{?suse_version} <= 1500
+%dir %{_distconfdir}
+%endif
+%dir %{_distconfdir}/tukit.conf.d
+%{_distconfdir}/tukit.conf.d/salt-tukit.conf
 %{_sysctldir}/30-corefiles.conf
 %{_sbindir}/setup-systemd-proxy-env
 %dir %{_prefix}/lib/dracut
