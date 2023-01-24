@@ -35,6 +35,7 @@ common_locks:
 dvd:
   # We add the kernel-firmware-* packages
   - kernel-firmware: [locked]
+  - kernel-firmware-nvidia-gsp-G06: [locked]
   - MicroOS-release: [locked]
   - patterns-microos-basesystem: [locked]
   - openSUSE-Tumbleweed-Kubic-release: [locked]
