@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 24 07:21:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.2.7:
+  * New option '-W, --compare-before-write'.
+  * Remove synonym option '--direct'.
+
+-------------------------------------------------------------------
 Sat May  7 12:20:13 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - use https source urls

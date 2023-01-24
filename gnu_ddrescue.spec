@@ -1,7 +1,7 @@
 #
 # spec file for package gnu_ddrescue
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnu_ddrescue
-Version:        1.26
+Version:        1.27
 Release:        0
 Summary:        I/O error aware data recovery and copying utility
 License:        GPL-2.0-or-later
