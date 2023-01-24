@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:41:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Drop support for Python versions less than 3.7 (including Python 2).
+- drop remove-nose.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Sep 27 03:03:07 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-nose.patch:

@@ -191,4 +191,14 @@
   * Remove use of nose in the tests.</comment>
     <requestid>921548</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c18d7e8784329e4f1c1edb7d342b31e6</srcmd5>
+    <version>1.0.1</version>
+    <time>1674585748</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  * Drop support for Python versions less than 3.7 (including Python 2).
+- drop remove-nose.patch (upstream)</comment>
+    <requestid>1060481</requestid>
+  </revision>
 </revisionlist>
