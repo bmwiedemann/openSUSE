@@ -453,6 +453,10 @@ Ignore: util-linux:info
 
 Ignore: polkit-default-privs:polkit
 
+# syslog-service only starts with network enabled, but inside OBS we have no network anyway
+Ignore: syslog-service:sysvinit(network)
+Ignore: syslog-service:service(network)
+
 # tcl requires sqlite3-tcl to uphold the promise from upstream to be complete
 # but as we decide to build sqlite3-tcl as part of sqlite, not tcl (to get more up-to-date version)
 # we need to ignore the tcl -> sqlite dep
