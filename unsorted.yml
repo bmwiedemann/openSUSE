@@ -280,7 +280,7 @@ unsorted:
   - SDL_sound-devel 
   - SHERPA-MC-devel 
   - SVT-AV1: [x86_64] 
-  - SVT-AV1-devel: [x86_64] # devel package of common_locks:libSvtAv1Enc1 
+  - SVT-AV1-devel: [x86_64] # devel package of dvd:libSvtAv1Enc1 
   - SampleICC 
   - SecLists 
   - ServiceReport 
@@ -2182,6 +2182,7 @@ unsorted:
   - cockpit-packagekit: [i586] 
   - cockpit-pcp 
   - cockpit-podman: [i586] 
+  - cockpit-selinux 
   - cockpit-storaged 
   - cockpit-system: [i586] 
   - cockpit-tests 
@@ -3850,6 +3851,7 @@ unsorted:
   - ffmpeg-5-libpostproc-devel 
   - ffmpeg-5-libswresample-devel 
   - ffmpeg-5-libswscale-devel 
+  - ffmpeg-5-mini-devel 
   - ffmpeg-5-private-devel 
   - ffmsindex 
   - ffnvcodec-devel 
@@ -8299,9 +8301,9 @@ unsorted:
   - kbackup 
   - kbackup-lang 
   - kbdsniffd 
-  - kbfs 
-  - kbfs-git 
-  - kbfs-tool 
+  - kbfs: [i586] 
+  - kbfs-git: [i586] 
+  - kbfs-tool: [i586] 
   - kbibtex 
   - kbibtex-devel 
   - kbibtex-lang 
@@ -8402,8 +8404,7 @@ unsorted:
   - kernel-macros 
   - kernel-obs-build 
   - kernel-obs-qa: [x86_64] 
-  - kernel-pae: [i586] 
-  - kernel-pae-devel: [i586] 
+  - kernel-pae-devel: [i586] # devel package of dvd:kernel-pae 
   - kernel-pae-vdso: [i586] 
   - kernel-source 
   - kernel-source-vanilla 
@@ -9731,6 +9732,7 @@ unsorted:
   - libSoapyOsmoSDR0 
   - libSoapySDR0_8 
   - libSoundTouch1-32bit: [x86_64] 
+  - libSoundTouchDll1 
   - libStatTimer2: [x86_64] 
   - libSvtAv1Dec0: [x86_64] 
   - libTMCG-devel 
@@ -10102,6 +10104,7 @@ unsorted:
   - libavc1394-tools 
   - libavcall1 
   - libavcodec58_134-32bit: [x86_64] 
+  - libavcodec59: [i586] 
   - libavcodec59-32bit: [x86_64] 
   - libavdevice58_13 
   - libavdevice58_13-32bit: [x86_64] 
@@ -10109,8 +10112,10 @@ unsorted:
   - libavdevice59-32bit: [x86_64] 
   - libavfilter7_110 
   - libavfilter7_110-32bit: [x86_64] 
+  - libavfilter8: [i586] 
   - libavfilter8-32bit: [x86_64] 
   - libavformat58_76-32bit: [x86_64] 
+  - libavformat59: [i586] 
   - libavformat59-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
@@ -10121,6 +10126,7 @@ unsorted:
   - libavtp-devel 
   - libavtp0-32bit: [x86_64] 
   - libavutil56_70-32bit: [x86_64] 
+  - libavutil57: [i586] 
   - libavutil57-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
@@ -11695,9 +11701,9 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-appliance: [x86_64] 
   - libguestfs-bash-completion: [x86_64] 
-  - libguestfs-devel: [x86_64] 
+  - libguestfs-devel: [x86_64] # devel package of dvd:libguestfs0 
   - libguestfs-gobject-1_0: [x86_64] 
-  - libguestfs-gobject-devel: [x86_64] 
+  - libguestfs-gobject-devel: [x86_64] # devel package of dvd:libguestfs0 
   - libguestfs-inspect-icons: [x86_64] 
   - libguestfs-man-pages-ja: [x86_64] 
   - libguestfs-man-pages-uk: [x86_64] 
@@ -12789,6 +12795,7 @@ unsorted:
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
   - libmysofa-devel 
+  - libmysofa1: [i586] 
   - libmysofa1-32bit: [x86_64] 
   - libmysqlcppconn-devel 
   - libmysqlcppconn8-2 
@@ -13036,6 +13043,8 @@ unsorted:
   - libolm3 
   - libomalloc-4_3_1 
   - libomalloc-devel 
+  - libomemo-c-devel 
+  - libomemo-c0 
   - libomniORB4-3 
   - libomnithread4 
   - libomp11-devel 
@@ -13508,6 +13517,7 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi2: [i586] 
   - libpostproc55_9-32bit: [x86_64] 
+  - libpostproc56: [i586] 
   - libpostproc56-32bit: [x86_64] 
   - libpowerman0 
   - libppl14 
@@ -14072,6 +14082,7 @@ unsorted:
   - librime-private-devel 
   - librime1 
   - librist-devel 
+  - librist4: [i586] 
   - librist4-32bit: [x86_64] 
   - librk0 
   - librlog-devel 
@@ -14103,6 +14114,7 @@ unsorted:
   - librttopo1 
   - librttr_core0_9_6 
   - librubberband-devel 
+  - librubberband2: [i586] 
   - librubberband2-32bit: [x86_64] 
   - librvngabw-0_0-0 
   - librvngabw-devel 
@@ -14561,8 +14573,10 @@ unsorted:
   - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
+  - libswresample4: [i586] 
   - libswresample4-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
+  - libswscale6: [i586] 
   - libswscale6-32bit: [x86_64] 
   - libsybdb5 
   - libsybdb5-32bit: [x86_64] 
@@ -14978,6 +14992,7 @@ unsorted:
   - libvhdi-tools 
   - libvhdi1 
   - libvidstab-devel 
+  - libvidstab1_1: [i586] 
   - libvidstab1_1-32bit: [x86_64] 
   - libvigraimpex11 
   - libvips-devel 
@@ -15015,6 +15030,7 @@ unsorted:
   - libvma: [x86_64] 
   - libvma-devel: [x86_64] 
   - libvma9: [x86_64] 
+  - libvmaf1: [i586] 
   - libvmaf1-32bit: [x86_64] 
   - libvmdk-devel 
   - libvmdk-tools 
@@ -15518,6 +15534,7 @@ unsorted:
   - libzen0-32bit: [x86_64] 
   - libzfp1 
   - libzhuyin13-32bit: [x86_64] 
+  - libzimg2: [i586] 
   - libzimg2-32bit: [x86_64] 
   - libzinnia0 
   - libzio-devel 
@@ -18331,7 +18348,7 @@ unsorted:
   - ocaml-lablgtk3 
   - ocaml-lablgtk3-devel 
   - ocaml-libguestfs: [x86_64] 
-  - ocaml-libguestfs-devel: [x86_64] 
+  - ocaml-libguestfs-devel: [x86_64] # devel package of dvd:libguestfs0 
   - ocaml-libvirt 
   - ocaml-libvirt-devel 
   - ocaml-logs 
@@ -32498,6 +32515,7 @@ unsorted:
   - qore-sqlite3-module-doc 
   - qore-ssh2-module 
   - qore-ssh2-module-doc 
+  - qore-stdlib 
   - qore-uuid-module 
   - qore-uuid-module-doc 
   - qore-xml-module 
@@ -33201,6 +33219,7 @@ unsorted:
   - rfb 
   - rfbplaymacro 
   - rfbproxy 
+  - rfc-read 
   - rfcdiff 
   - rhash 
   - rhash-devel 
