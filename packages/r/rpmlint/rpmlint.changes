@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:17:06 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230124.a959d84:
+  * temporarily drop badness for sysctl-file-* errors
+
+-------------------------------------------------------------------
 Thu Jan 19 18:05:58 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 2.4.0+git20230119.40d52b0:

@@ -4272,4 +4272,13 @@ oddjob-gpupdate isn't blocked)</comment>
 </comment>
     <requestid>1059845</requestid>
   </revision>
+  <revision rev="433" vrev="1">
+    <srcmd5>a1801a77b828ccfde2c08ca59c16c194</srcmd5>
+    <version>2.4.0+git20230124.a959d84</version>
+    <time>1674577543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230124.a959d84:
+  * temporarily drop badness for sysctl-file-* errors</comment>
+    <requestid>1060575</requestid>
+  </revision>
 </revisionlist>
