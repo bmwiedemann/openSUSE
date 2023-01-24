@@ -8394,6 +8394,7 @@ unsorted:
   - kernel-docs 
   - kernel-docs-html 
   - kernel-firmware 
+  - kernel-firmware-nvidia-gsp-G06: [x86_64] 
   - kernel-install-tools 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
@@ -18195,6 +18196,7 @@ unsorted:
   - nut-doc-images 
   - nut-drivers-net 
   - nvdock 
+  - nvidia-open-driver-G06-signed-kmp-default: [x86_64] 
   - nvidia-texture-tools 
   - nvimpager 
   - nvimpager-zsh-completion 
