@@ -1142,7 +1142,6 @@
       <repopackage name="kernel-firmware-network"/>
       <repopackage name="kernel-firmware-nfp"/>
       <repopackage name="kernel-firmware-nvidia"/>
-      <repopackage name="kernel-firmware-nvidia-gsp-G06" arch="x86_64"/>
       <repopackage name="kernel-firmware-platform"/>
       <repopackage name="kernel-firmware-prestera"/>
       <repopackage name="kernel-firmware-qcom"/>
@@ -3413,7 +3412,6 @@
       <repopackage name="ntfsprogs"/>
       <repopackage name="numactl" arch="x86_64"/>
       <repopackage name="numlockx"/>
-      <repopackage name="nvidia-open-driver-G06-signed-kmp-default" arch="x86_64"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="nvme-cli-zsh-completion"/>
