@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/antlarr/lua-mpris/
 Source:         lua-mpris-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lua-dbus
 BuildRequires:  pkgconfig
