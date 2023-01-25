@@ -14,7 +14,7 @@
 #preamble: |-
 # BuildRequires:  gcc-c++
 post_prep: |-
-sed -i 's/\r$//' samples/WHERE_TO_DOWNLOAD_MORE_SAMPLES.TXT
+  sed -i 's/\r$//' samples/WHERE_TO_DOWNLOAD_MORE_SAMPLES.TXT
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
 #post_build: |-

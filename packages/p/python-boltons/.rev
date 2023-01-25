@@ -73,4 +73,12 @@
   * Support Python 3.10.</comment>
     <requestid>940120</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dc2a0dd6a5f863be64674e4a8ded558e</srcmd5>
+    <version>21.0.0</version>
+    <time>1674585815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060583</requestid>
+  </revision>
 </revisionlist>

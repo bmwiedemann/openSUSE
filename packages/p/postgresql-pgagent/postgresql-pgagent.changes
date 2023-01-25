@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:30:28 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix source name
+
+-------------------------------------------------------------------
+Sun Jan  8 14:43:03 UTC 2023 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 4.2.2
+  * Use std::string instead of std::wstring as it handles the utf-8 conversion.
+  * Properly quote CMAKE_OSX_ARCHITECTURES for macOS.
+  * Correct schema update message.
+
+-------------------------------------------------------------------
 Tue Apr  5 15:03:36 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Build also postgresql14 flavors from SLE15-SP4 on (SLE-20673)

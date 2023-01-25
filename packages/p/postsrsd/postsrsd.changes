@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 16 18:07:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch the default execution user from "nobody" to the new
+  "postsrsd". /var/lib/postsrsd will be owned by postsrsd. If
+  /etc/postsrsd.conf contains a "unprivileged-user" override,
+  it needs to be adjusted.
+
+-------------------------------------------------------------------
 Sat Jan  7 15:14:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.2

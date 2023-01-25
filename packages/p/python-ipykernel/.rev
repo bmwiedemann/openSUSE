@@ -391,4 +391,14 @@
   * ENH: add %gui support for Qt6 #1054 (@shaperilio) (forwarded request 1058371 from bnavigator)</comment>
     <requestid>1058372</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7bedfb2fabe8f0e80841e3befb3e9b19</srcmd5>
+    <version>6.20.2</version>
+    <time>1674585716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.20.2
+  * Fix Exception in OutStream.close() #1076 (@ilyasher)
+</comment>
+    <requestid>1060266</requestid>
+  </revision>
 </revisionlist>

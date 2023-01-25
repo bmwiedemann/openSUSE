@@ -1,4 +1,28 @@
 --------------------------------------------------------------------
+Mon Jan 23 16:09:55 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#315
+- fix buffer overflow in debug log (bsc#1207403)
+- 8.19
+
+--------------------------------------------------------------------
+Mon Jan 23 12:21:50 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#312
+- be careful switch_to_fb option takes care of textmode setting
+  (bsc#1206460)
+- 8.18
+
+--------------------------------------------------------------------
+Mon Jan 23 11:51:55 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#311
+- support more general wicked firmware devices interface
+  (jsc#PED-3118, jsc#PED-967)
+- add usenbft boot config setting (mainly to aid testing)
+- 8.17
+
+--------------------------------------------------------------------
 Wed Oct 26 15:17:07 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#307

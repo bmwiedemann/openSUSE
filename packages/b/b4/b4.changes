@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jan 24 06:21:58 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.0
+  * worked around Python's email bugs
+  * other bugfixes
+
+-------------------------------------------------------------------
 Fri Jan  6 07:22:24 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.11.2:

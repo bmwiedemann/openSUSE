@@ -86,4 +86,15 @@
   * Update rsmin and jsmin versions</comment>
     <requestid>1056746</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f2bd7b76b70b47d2cb3d39abac870686</srcmd5>
+    <version>4.3.1</version>
+    <time>1674585773</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.1:
+  * `Full list of changes from v4.3 &lt;https://github.com/django-
+    compressor/django-compressor/compare/4.3...4.3.1&gt;`_
+  * Documentation fixes only</comment>
+    <requestid>1060482</requestid>
+  </revision>
 </revisionlist>

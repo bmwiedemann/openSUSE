@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 19 08:20:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.21:
+  + Add libsoup3 HTTP backend.
+  + Minor fixes.
+- Drop 91a9e41fed6269637da52d5f88699782a940b198.patch: Fixed
+  upstream.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
 Wed Jan 19 12:42:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 91a9e41fed6269637da52d5f88699782a940b198.patch: g-i: Annotate

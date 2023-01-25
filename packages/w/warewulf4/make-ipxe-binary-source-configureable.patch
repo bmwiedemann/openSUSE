@@ -1,0 +1,163 @@
+From 32ab50f299502fce7bf588852a75c63cf3332cf8 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.de>
+Date: Fri, 20 Jan 2023 15:05:42 +0100
+Subject: [PATCH] make ipxe binary source configureable
+
+---
+ internal/pkg/buildconfig/defaults.go       |  2 +-
+ internal/pkg/configure/tftp.go             | 17 ++++++++++-------
+ internal/pkg/overlay/datastructure.go      |  2 ++
+ internal/pkg/warewulfconf/constructors.go  | 12 ++++++++++--
+ internal/pkg/warewulfconf/datastructure.go |  2 ++
+ overlays/host/etc/dhcp/dhcpd.conf.ww       | 14 +++++---------
+ 6 files changed, 30 insertions(+), 19 deletions(-)
+
+diff --git a/internal/pkg/buildconfig/defaults.go b/internal/pkg/buildconfig/defaults.go
+index 24cb2d40..17baecba 100644
+--- a/internal/pkg/buildconfig/defaults.go
++++ b/internal/pkg/buildconfig/defaults.go
+@@ -27,7 +27,7 @@ func BINDIR() string {
+ }
+ 
+ func DATADIR() string {
+-	wwlog.Debug("DATADIR = '%s'", bindir)
++	wwlog.Debug("DATADIR = '%s'", datadir)
+ 	return datadir
+ }
+ 
+diff --git a/internal/pkg/configure/tftp.go b/internal/pkg/configure/tftp.go
+index d321f023..842d7fb4 100644
+--- a/internal/pkg/configure/tftp.go
++++ b/internal/pkg/configure/tftp.go
+@@ -11,9 +11,8 @@ import (
+ 	"github.com/hpcng/warewulf/internal/pkg/wwlog"
+ )
+ 
+-var tftpdir string = path.Join(buildconfig.TFTPDIR(), "warewulf")
+-
+ func TFTP() error {
++	var tftpdir string = path.Join(buildconfig.TFTPDIR(), "warewulf")
+ 	controller, err := warewulfconf.New()
+ 	if err != nil {
+ 		wwlog.Error("%s", err)
+@@ -27,11 +26,15 @@ func TFTP() error {
+ 	}
+ 
+ 	fmt.Printf("Writing PXE files to: %s\n", tftpdir)
+-	for _, f := range [4]string{"x86_64.efi", "x86_64.kpxe", "arm64.efi"} {
+-		err = util.SafeCopyFile(path.Join(buildconfig.DATADIR(), "warewulf", "ipxe", f), path.Join(tftpdir, f))
++	copyCheck := make(map[string]bool)
++	for _, f := range controller.Tftp.IpxeBinaries {
++		if copyCheck[f] {
++			continue
++		}
++		copyCheck[f] = true
++		err = util.SafeCopyFile(path.Join(buildconfig.DATADIR(), f), path.Join(tftpdir, f))
+ 		if err != nil {
+-			wwlog.Error("%s", err)
+-			return err
++			wwlog.Warn("ipxe binary could not be copied, not booting may not work: %s", err)
+ 		}
+ 	}
+ 
+@@ -39,7 +42,7 @@ func TFTP() error {
+ 		wwlog.Info("Warewulf does not auto start TFTP services due to disable by warewulf.conf")
+ 		os.Exit(0)
+ 	}
+-	
++
+ 	fmt.Printf("Enabling and restarting the TFTP services\n")
+ 	err = util.SystemdStart(controller.Tftp.SystemdName)
+ 	if err != nil {
+diff --git a/internal/pkg/overlay/datastructure.go b/internal/pkg/overlay/datastructure.go
+index 2a427bee..eb8004cf 100644
+--- a/internal/pkg/overlay/datastructure.go
++++ b/internal/pkg/overlay/datastructure.go
+@@ -31,6 +31,7 @@ type TemplateStruct struct {
+ 	Dhcp          warewulfconf.DhcpConf
+ 	Nfs           warewulfconf.NfsConf
+ 	Warewulf      warewulfconf.WarewulfConf
++	Tftp          warewulfconf.TftpConf
+ 	AllNodes      []node.NodeInfo
+ 	node.NodeConf
+ 	// backward compatiblity
+@@ -64,6 +65,7 @@ func InitStruct(nodeInfo node.NodeInfo) TemplateStruct {
+ 	tstruct.AllNodes = allNodes
+ 	tstruct.Nfs = *controller.Nfs
+ 	tstruct.Dhcp = *controller.Dhcp
++	tstruct.Tftp = *controller.Tftp
+ 	tstruct.Warewulf = *controller.Warewulf
+ 	tstruct.Ipaddr = controller.Ipaddr
+ 	tstruct.Ipaddr6 = controller.Ipaddr6
+diff --git a/internal/pkg/warewulfconf/constructors.go b/internal/pkg/warewulfconf/constructors.go
+index 1d68564a..904d0d31 100644
+--- a/internal/pkg/warewulfconf/constructors.go
++++ b/internal/pkg/warewulfconf/constructors.go
+@@ -36,8 +36,14 @@ func New() (ControllerConf, error) {
+ 	ret.Tftp = &tftpconf
+ 	ret.Nfs = &nfsConf
+ 	err := defaults.Set(&ret)
++	// ipxe binaries are merged not overwritten, store defaults separate
++	defIpxe := make(map[string]string)
++	for k, v := range ret.Tftp.IpxeBinaries {
++		defIpxe[k] = v
++		delete(ret.Tftp.IpxeBinaries, k)
++	}
+ 	if err != nil {
+-		wwlog.Error("Coult initialize default variables")
++		wwlog.Error("Could initialize default variables")
+ 		return ret, err
+ 	}
+ 	// Check if cached config is old before re-reading config file
+@@ -53,7 +59,9 @@ func New() (ControllerConf, error) {
+ 		if err != nil {
+ 			return ret, err
+ 		}
+-
++		if len(ret.Tftp.IpxeBinaries) == 0 {
++			ret.Tftp.IpxeBinaries = defIpxe
++		}
+ 		if ret.Ipaddr == "" || ret.Netmask == "" {
+ 			conn, error := net.Dial("udp", "8.8.8.8:80")
+ 			if error != nil {
+diff --git a/internal/pkg/warewulfconf/datastructure.go b/internal/pkg/warewulfconf/datastructure.go
+index c3eebf8c..eb195a2e 100644
+--- a/internal/pkg/warewulfconf/datastructure.go
++++ b/internal/pkg/warewulfconf/datastructure.go
+@@ -44,6 +44,8 @@ type TftpConf struct {
+ 	Enabled     bool   `yaml:"enabled" default:"true"`
+ 	TftpRoot    string `yaml:"tftproot" default:"/var/lib/tftpboot"`
+ 	SystemdName string `yaml:"systemd name" default:"tftp"`
++	// Path is relative to buildconfig.DATADIR()
++	IpxeBinaries map[string]string `yaml:"ipxe" default:"{\"00:09\": \"x86_64.efi\",\"00:00\": \"x86_64.kpxe\",\"00:0B\": \"arm64.efi\",\"00:07\":  \"x86_64.efi\"}"`
+ }
+ 
+ type NfsConf struct {
+diff --git a/overlays/host/etc/dhcp/dhcpd.conf.ww b/overlays/host/etc/dhcp/dhcpd.conf.ww
+index 82b96cec..66b9d22e 100644
+--- a/overlays/host/etc/dhcp/dhcpd.conf.ww
++++ b/overlays/host/etc/dhcp/dhcpd.conf.ww
+@@ -20,15 +20,11 @@ option architecture-type   code 93  = unsigned integer 16;
+ if exists user-class and option user-class = "iPXE" {
+     filename "http://{{$.Ipaddr}}:{{$.Warewulf.Port}}/ipxe/${mac:hexhyp}";
+ } else {
+-    if option architecture-type = 00:0B {
+-        filename "/warewulf/arm64.efi";
+-    } elsif option architecture-type = 00:09 {
+-        filename "/warewulf/x86_64.efi";
+-    } elsif option architecture-type = 00:07 {
+-        filename "/warewulf/x86_64.efi";
+-    } elsif option architecture-type = 00:00 {
+-        filename "/warewulf/x86_64.kpxe";
+-    }
++{{range $type,$name := $.Tftp.IpxeBinaries }}
++    if option architecture-type = {{ $type }} {
++        filename "/warewulf/{{ $name }}";
++    } 
++{{ end }}
+ }
+ 
+ {{if eq .Dhcp.Template "static" -}}
+-- 
+2.39.0
+

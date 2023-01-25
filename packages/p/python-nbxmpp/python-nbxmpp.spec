@@ -24,22 +24,24 @@
 %endif
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://dev.gajim.org/gajim/python-nbxmpp
 Source:         %{url}/-/archive/%{version}/python-nbxmpp-%{version}.tar.bz2
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 65.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators >= 20200714
 BuildRequires:  python-rpm-macros >= 20200714
 # For testing
-BuildRequires:  %{python_module gobject-Gdk}
+BuildRequires:  %{python_module gobject-Gdk >= 3.42}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  typelib(Soup) = 3.0
 Recommends:     python-gssapi
 BuildArch:      noarch
@@ -57,10 +59,10 @@ non-blocking sockets.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check

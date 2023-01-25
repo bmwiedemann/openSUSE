@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 23 14:43:38 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- enable compressed images
+
+-------------------------------------------------------------------
+Fri Jan 20 19:42:52 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.21.1+git20230120.a99e435c:
+  * [efi] Do not rely on ProcessorBind.h when building host binaries (bsc#1207310)
+  * multiple [ena] [efi] [tls] [intel] [intelxl] enhancements
+  * [image] Do not clear current working URI when executing embedded image
+  * [console] Fix definition of unreachability for remapped keys
+  * [console] Add Swedish "se" keymap
+  * [efi] Support keyboard remapping via the EFI console
+  * [usb] Support keyboard remapping via the native USB keyboard driver
+  * [ecm] Use ACPI-provided system-specific MAC address if present
+- Build on all architectures (jsc#PED-1148)
+
+-------------------------------------------------------------------
 Thu Jan 19 13:31:56 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make bootimgs subpackage architecture-specific

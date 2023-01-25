@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionprefix">1.82.02</param>
+    <param name="versionprefix">1.83.00</param>
     <param name="url">https://github.com/openSUSE/cpanspec</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

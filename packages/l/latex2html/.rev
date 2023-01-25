@@ -451,4 +451,13 @@ A    latex2html-share-dir.diff</comment>
   latex2html-dest-dir.diff, latex2html-perl-bindir.diff (forwarded request 989493 from dirkmueller)</comment>
     <requestid>989993</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fa7194514550add43b143d1ee35bd8d2</srcmd5>
+    <version>2023</version>
+    <time>1674585725</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023:
+  * update for latest pdftocairo (forwarded request 1060012 from dirkmueller)</comment>
+    <requestid>1060350</requestid>
+  </revision>
 </revisionlist>

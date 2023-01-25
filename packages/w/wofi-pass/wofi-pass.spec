@@ -1,7 +1,7 @@
 #
 # spec file for package wofi-pass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,16 @@ License:        GPL-2.0-only
 URL:            https://gitlab.com/muhq/wofi-pass
 Source0:        wofi-pass-%{version}.tar.gz
 Source99:       wofi-pass-rpmlintrc
+# PATCH-FEATURE-OPENSUSE sway-branding.patch mcepl@suse.com
+# Use branding stylesheet in /etc/wofi/style.css
+Patch0:         sway-branding.patch
 BuildRequires:  /bin/bash
 BuildRequires:  findutils
 BuildRequires:  pass-otp
 BuildRequires:  password-store
 BuildRequires:  util-linux
 BuildRequires:  wl-clipboard
+Recommends:     sway-branding
 BuildArch:      noarch
 
 %description

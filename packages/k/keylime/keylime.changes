@@ -1,4 +1,195 @@
 -------------------------------------------------------------------
+Mon Jan 23 08:28:17 UTC 2023 - aplanas@suse.com
+
+- Update to version v6.5.3:
+  * Bump version number to 6.5.3
+  * durable attestation: a simple "attestation replay" CLI utility
+  * cmd_exec: Replace cast()s to bytes with asserts isinstance(..., bytes)
+  * codestyle: Add type annotations to db/keylime_db.py and add to mypy
+  * codestyle: Add type annotations to requests_client.py and add to mypy
+  * codestyle: Add type annotations to tornado_requests.py and add to mypy
+  * mypy: Change list of checked files to shorter list of unchecked files
+  * codestyle: Add missing annotations to cmd_exec.py and add to mypy
+  * codestyle: Have all files in ima directory checked by mypy
+  * pylint: ignore zmq Context abstract-class-instantiated warnings
+  * tenant: reliable and consistent add/delete operations (fixes #1158) (#1271)
+  * tenant: fix the exit code for `bulkinfo` operation
+  * config: support override via environment variables
+  * Extend test execution instructions in TESTING.md
+  * packit-ci: Add hotfix for tpm2-tss Fedora BZ#2158598
+  * tenant: Remove code hashing a public key and using hash as UUID
+  * linters: Exclude intentionally invalid python file
+  * config: Check for available config upgrade on startup
+  * Do not install keylime nor configuration files during tests
+  * .ci/test_wrapper: Add test user keylime:tss
+  * config: Support quoted strings for TOML compatibility
+  * gitignore: Do not use 'config' as a match pattern
+  * tests: Add test for convert_config script
+  * convert_config: Set version for each mapping processed
+  * cmd/convert_config: Remove quotes and spaces around version string
+  * convert_config: Set default output path as /etc/keylime for root
+  * convert_config: Do not use keys() to iterate on maps
+  * Install config upgrade script as keylime_upgrade_config
+  * templates: Remove log_destination option
+  * Fix default values in mappings
+  * Correctly strip elements of a list on config v2.0 adjust script
+  * setup: Don't use keylime.conf to generate the split configuration
+  * convert_config: Add --defaults option to use default values
+  * convert_config: Use str_to_version from common module
+  * Add keylime/common/version.py for version manipulation
+  * elchecking: load policy modules explicitly
+  * Revert "tpm_abstract: move import of measured_boot into check_pcrs(..)"
+  * codestyle: Add type-annotations to cli/policies.py and add to mypy
+  * codestyle: Add type-annotations to cli/options.py and add to mypy
+  * Introduce a RetDictType for return type of cmd_exec.run()
+  * requirements, docs: add typing-extensions as a dependency
+  * ima_dm: add type checks and hints
+  * Switch code coverage measurement to Fedora 37
+  * codestyle: Fix annotation of mb_measurement_data
+  * ima: Fix the ima_sign_verification_keys initial datatype
+  * elchecking: add support for MeasuredBoot when SecureBoot is disabled
+  * verifier: a (very simple) cache implementation for IMA policies (solves #1167)
+  * codestyle: Add type annotations to cmd/convert_ima_policy.py and add to mypy
+  * codestyle: Add type annotations to cmd/ima_emulator_adapter.py and add to mypy
+  * codestyle: Add type annotations to cmd/user_data_encrypt.py and add to mypy
+  * codestyle: Add type annotations to cmd/verifier.py and add to mypy
+  * codestyle: Add type annotations to cmd/tenant.py and add to mypy
+  * codestyle: Add type annotations to cmd/registrar.py and add to mypy
+  * codestyle: Add type annotations to cmd/ca.py and add to mypy
+  * codestyle: Add type annotations to cmd/agent.py and add to mypy
+  * CI tests: Do not remove Fedora tag repository
+  * tpm_abstract: move import of measured_boot into check_pcrs(..)
+  * docker: fix and improve build_locally.sh
+  * docker: use version 5.4 of tpm2-tools
+  * docker: update container to Fedora 37
+  * codestyle: Type-annotate files in revocation_actions & add to mypy
+  * Remove redundant parameter from enforce_pcrs()
+  * codestyle: Add missing type annotations to files in common & add to mypy
+  * api_version: Catch InvalidVersion for packaging v22.0
+  * verifier: fix for IMA policy checksum calculation
+  * codestyle: Type-annotate measured_boot.py and add to mypy
+  * codestyle: Fix variable assigments in tpm2_object_test.py and add to mypy
+  * codestyle: Fix and add type annotations to tpm2_objects.py and add to mypy
+  * codestyle: Cast the agent Dict to allow Any types to be assigned to it
+  * codestyle: Change verifier_port annotation from int to str
+  * codestyle: Avoid switching datatypes of agent by using differnt variable
+  * codestyle: Fix event parameter to be an Optional[Event]
+  * codestyle: Fix annotation of tosend parameter to be a Dict[str, Any]
+  * codestyle: add type hints to elchecking module
+  * codestyle: Type-annotate web_util.py and add to mypy
+  * codestyle: Add missing type annotations to ima.py and add to mypy
+  * codestyle: Add missing type annotations to ima_test.py and add to mypy
+  * codestyle: Add missing type annotations to file_signatures.py and add to mypy
+  * logging: remove option to log into separate file
+  * codestyle: Add type annotations to tpm classes and address issues
+  * codestyle: Add type-annotations to signing.py and add to mypy
+  * codestyle: Add missing type annotations to api_version.py and add to mypy
+  * codestyle: Add keylime_logging.py to mypy
+  * codestyle: Add missing type-annotations to agentstates and add to mypy
+  * codestyle: Add missing type annotations to failure.py and add to mypy
+  * codestyle: Type-annotate user_utils_test.py and add to mypy
+  * codestyle: Type-annotate user_utils.py and add to mypy
+  * codestyle: Type-annotate ca_util.py and add to mypy
+  * codestyle: Add missing annotations to cert_utils and add to mypy
+  * codestyle: Type-annotate ca_impl_openssl and add to mypy
+  * codestyle: Type-annotate tpm_ek_ca.py and add to mypy
+  * codestyle: Type-annotate fs_util.py and add to mypy
+  * codestyle: Add json.py to mypy.ini
+  * codestyle: Type-annotate secure_mount.py and add to mypy
+  * codestyle: Add missing annotations to crypto.py and add to mypy
+  * common: remove metrics
+  * cmd: removal of keylime_migrations_apply
+  * codestyle: Set type of trusted_server_ca to List[str] and initialize with list
+  * codestyle: Avoid switching of type of trusted_ca by using another variable
+  * codestyle: Enable test_tpm.py to be type-checked by pyright
+  * codestyle: Fix an issue detected by pyright in test_ca_impl_openssl
+  * codestyle: Fix typo in annotation
+  * codestyle: Relax some parameter type requirements due to test case
+  * codestyle: Fix an issue detected by pyright in test_ca_util.py
+  * ci: add mypy to CI
+  * config: add missing type hints
+  * ima/ast: add missing type hints
+  * json: allow ignore comment to be parsed by mypy
+  * tox: add mypy support
+  * tox: Add test directory to black and isort tools' command line
+  * codestyle: Add type annotations to test_ima_verification.py and fix issues
+  * codestyle: Add type annotations to test_validators and fix issues
+  * codestyle: Add type annotations to test_crypto.py
+  * tpm: Replace assert with Exception
+  * Fix incorrect generators in converted IMA policies (#1223)
+  * ima: Remove dead m2w function parameter
+  * ima: Remove 'main' function from ima.py
+  * codestyle: Add type annotations to cmd_exec.py
+  * tpm: Type-annotate tools_version and avoid switching data types
+  * codestyle: cmd: Type annotation ima_emulator_adapter.py
+  * codestyle: Add type annotations to various low-level functions
+  * pyproject: Add test directory for pyright and exclude some tests
+  * verifier: Calculates the checksum for the whole IMA policy on the verifier #1198
+  * codestyle: Add type annotations to crypto.py and address issues
+  * codestyle: Do not assign function parameter a new value in function
+  * codestyle: Avoid switching type of ek_handle from 'str' to int
+  * codestyle: Avoid switching type of pcrs variable from List[str] to dict
+  * codestyle: Avoid switching type of tpm_policy from possible 'str' to dict
+  * codestyle: Drop re.Pattern annotation due to pyright on python 3.6
+  * codestyle: Add missing type annotations to ima/ima.py and address issues
+  * ima: Always set algorithm in Digest class and require a string
+  * codestyle: Add type annotations to various files
+  * config: remove fallback config
+  * codestyle: Add missing type annotations to agentstates.py
+  * pyright: Fix a pyright issue in ca_impl_openssl
+  * cleaning up pyproject.toml
+  * fixing type issue
+  * tests: Switch to sha256 hashes for signatures
+  * The verifier can selectively load only a subset of columns from the `allowlist` table.
+  * pyright: Enable pyright on cmd/ima_emulator_adapter.py
+  * pyright: Add type annotations to cmd/convert_ima_policy.py
+  * pyright: Add type annotations to ima/file_signatures.py
+  * ima: Raise ValueError on unsupported key types
+  * pyright: Fix issue in keylime/revocation_notifier.py
+  * pyright: Fix issue in keylime/da/record.py
+  * pyright: Fix issues in keylime/ima/file_signatures.py
+  * pyright: Fix issue in keylime/json.py
+  * code-style: Make tox less verbose when running check tools
+  * code-style: Run isort as part of 'make check'
+  * code-style: Run black --diff as part of 'make check'
+  * pyright: Run pyright as part of 'make check'
+  * pyright: Fix an issue in ima/ima.py
+  * removing unnecessary entry from pyright ignore list
+  * addressing type issues related to IMA
+  * algorithms: simplify the Hash class
+  * CI/CD: Run pyright as part of PRs
+  * pyproject: Filter-out files with warnings in pyright
+  * Some fixes to validate_ima_policy_data (#1192)
+  * common: Raise ValueError in Hash constructor if hash not supported
+  * common: Add a test case for testing the Hash class
+  * ima: this PR adds checksums for allowlists as a separate column on the DB
+  * requirements.txt, docs: add gpg package and sync list in docs
+  * codestyle: Add codestyle checking for script/create_policy
+  * scripts: Fix pylint issue W1514 in scripts/create_policy
+  * scripts: Fix pylint issue C0209 in scripts/create_policy
+  * codestyle: Add codestyle checking for all .py files under scripts/
+  * scripts: Fix pylint issue W0612 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue W0613 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue C0201 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue W1309 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue W0707 in scripts/convert_config.py
+  * scripts: Fix pylint issue W1514 in scripts/convert_config.py
+  * scripts: Fix pylint issue W0621 in scripts/convert_config.py
+  * scripts: Fix pylint issue W0105 in scripts/convert_config.py
+  * scripts: Fix pylint issue W1309 in scripts/convert_config.py
+  * scripts: Fix pylint issue W0611 in scripts/convert_config.py
+  * scripts: Fix pylin R1705 in scipts/convert_config.py
+  * common: Remove redundant return parameter from validate_ima_policy_data
+  * common: Remove redundant return parameter from valid_exclude_list
+  * common: Remove redundant return parameter from valid_regex
+  * Do not use default values that need reading the config in methods
+  * non-obvious type fixes not concerning IMA (#1173)
+  * da: This commit implements most of the changes for #73 "Durable (Offline) Attestation". (#1129)
+  * verifier: Do not access agent["tpm_clockinfo"] if value is 'None'
+  * Enable e2e test functional/tpm-issuer-cert-using-ecc
+  * tpm_main: fix ek creation for tpm2-tools versions > 4.2
+
+-------------------------------------------------------------------
 Fri Nov 11 09:40:46 UTC 2022 - aplanas@suse.com
 
 - Update to version v6.5.2:

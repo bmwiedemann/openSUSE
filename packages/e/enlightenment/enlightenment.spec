@@ -1,7 +1,7 @@
 #
 # spec file for package enlightenment
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -272,8 +272,13 @@ chmod -s %{buildroot}%{_libdir}/enlightenment/utils/enlightenment_ckpasswd \
 %endif
 
 # copy PAM profile
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+cp %{SOURCE2} %{buildroot}%{_pam_vendordir}/enlightenment
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/enlightenment
+%endif
 
 # Install correct openSUSE rules for system.conf
 mkdir -p %{buildroot}/%{_datadir}/%{name}/doc/
@@ -323,6 +328,20 @@ fi
 
 %endif
 
+%if 0%{?suse_version} > 1500
+%pre
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/enlightenment ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/enlightenment ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+
 %files -f enlightenment.lang
 %defattr(-,root,root)
 %license COPYING README AUTHORS
@@ -344,7 +363,11 @@ fi
 %{_libdir}/enlightenment
 %verify(not user group mode) %attr(4755,root,root) %{_libdir}/enlightenment/utils/enlightenment_system
 %config(noreplace) %{_sysconfdir}/enlightenment
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/enlightenment
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/enlightenment
+%endif
 %dir %{_sysconfdir}/xdg/menus
 %config %{_sysconfdir}/xdg/menus/e-applications.menu
 %{_bindir}/enlightenment*

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 24 18:10:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.29.3:
+  * feat: Add --recursive flag to chattr command
+  * feat: Check config file format in doctor command
+  * fix: Support .zip files with empty internal directories
+  * fix: Only prompt once for KeePassXC password
+  * fix: Remove problematic username guessing in init command
+
+-------------------------------------------------------------------
 Mon Jan 16 09:33:08 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Remove `changesgenerate` service

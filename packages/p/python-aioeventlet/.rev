@@ -36,4 +36,13 @@
     <comment></comment>
     <requestid>828003</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>3966951cdb94fdd8bfa7feda13798e3c</srcmd5>
+    <version>0.5.2</version>
+    <time>1674585845</time>
+    <user>dimstar_suse</user>
+    <comment>- Add py311.patch to make the code compatible with python 3.11
+</comment>
+    <requestid>1060676</requestid>
+  </revision>
 </revisionlist>

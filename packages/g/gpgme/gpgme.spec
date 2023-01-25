@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@
 %bcond_with python3
 %bcond_without qt
 %endif
-%{!?python_module:%define python_module() python-%{**} python3-{**}}
 Name:           gpgme%{psuffix}
 Version:        1.18.0
 Release:        0
@@ -36,11 +35,11 @@ Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://www.gnupg.org/related_software/gpgme/
-Source:         ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2
-Source1:        ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2.sig
+Source:         https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-%{version}.tar.bz2
+Source1:        https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
 # https://www.gnupg.org/signature_key.html
-Source3:        gpgme.keyring
+Source3:        https://gnupg.org/signature_key.asc#/gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
 # PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D545
@@ -51,6 +50,8 @@ Patch4:         gpgme-D546-python310.patch
 Patch5:         gpgme-1.18.0-T6137-qt_test.patch
 # PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
 Patch6:         gpgme-suse-nobetasuffix.patch
+# Enable python 3.11 as well
+Patch7:         python311.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -215,11 +216,7 @@ management.
 This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
-%setup -q -n gpgme-%{version}
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n gpgme-%{version}
 
 %build
 ./autogen.sh

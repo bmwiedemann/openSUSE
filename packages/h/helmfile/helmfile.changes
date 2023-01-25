@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Jan 23 17:02:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.150.0:
+  New features:
+  * We introduced a new Helmfile V1 mode that can be enabled via an
+    environment variable and a build flag. It allows you to build a
+    Helmfile V1 binary from the same source tree and even enabling
+    the V1 mode at runtime via an environment variable:
+    HELMFILE_V1MODE=true
+  * The new V1 mode and upcoming Helmfile v1 releases have some
+    breaking changes like the .gotmpl extension is required to let
+    Helmfile render the helmfile.yaml as a template. See the V1
+    proposal for more information.
+  * We also reverted our YAML library to gopkg.in/yaml.v2 and
+    introduced goccy/go-yaml for the Helmfile V1 mode. You can
+    opt-in for the V1 mode or enable the new YAML library via
+    environment variables: HELMFILE_GOCCY_GOYAML=true. Please note
+    that the default yaml parser disables yaml overwrite feature.
+  * If you've been struggling with managing and repeating common
+    fields across releases, or worked-around that by either
+    leveraging helmfile templates(not release templates) or
+    layering values and valuesTemplate (although it wasn't the
+    intended usage), the new inherit field would be handy.
+    It allows you to layer any number of release templates.
+  * The last and most important change is that we finally dropped
+    the Helm v2 support! Helm v2 has been unmaintained since 2020,
+    and no one should be using it anymore.
+
+  What's Changed:
+  * Clarify postsync hooks docs by @felipecrs in #585
+  * optimize lint logic by @yxxhero in #586
+  * use yaml v3 UnmarshalYAML by @yxxhero in #587
+  * doc: Remove HELMFILE_SKIP_INSECURE_TEMPLATE_FUNCTIONS in
+    Helmfile v1 by @mumoshu in #590
+  * Add helmfile state validate policy by @yxxhero in #592
+  * add goreportcard by @yxxhero in #595
+  * feat: Helmfile V1 mode by @mumoshu in #594
+  * Re: Strict helmfile.yaml file ext when rendered as template
+    by @mumoshu in #599
+  * Re: Remove deprecated args and cmd for v1.0.0 by @mumoshu in #598
+  * Sops and gpg command by @metajiji in #597
+  * Use goccy/go-yaml for v1 / Prep bringing back go-yaml v2 for
+    v0.x by @mumoshu in #604
+  * fix env value lost in environment values by @yxxhero in #605
+  * Fix cryptic message on values template render error by
+    @mumoshu in #607
+  * feat: inherit field for release template inheritance by
+    @mumoshu in #606
+  * Use gopkg.in/yaml.v2 for Helmfile v0.x by @mumoshu in #609
+  * build(deps): bump golang.org/x/term from 0.3.0 to 0.4.0 by
+    @dependabot in #616
+  * build(deps): bump gitpython from 3.1.27 to 3.1.30 in /docs by
+    @dependabot in #618
+  * Enhance tpl func test by @yxxhero in #619
+  * feat: mark deprecated args and cmd for v1 by @yxxhero in #628
+  * fix fetch does not work with kustomized releases by @xiaomudk
+    in #624
+  * Drop Helm v2 support by @xiaomudk in #613
+  * Reset values flag by @kkoralsky in #602
+
+-------------------------------------------------------------------
 Fri Dec 23 15:20:12 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.149.0:

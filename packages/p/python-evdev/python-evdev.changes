@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 23 14:25:52 UTC 2023 - Matthias Bach <marix@marix.org> - 1.6.1
+
+- Update to 1.6.1
+  * No changelog was made available.
+- Fix source URL as upstream no longer creates Github releases but
+  only tags.
+- Add a _service file for easier source download.
+
+-------------------------------------------------------------------
 Wed Jul 20 20:11:21 UTC 2022 - Matthias Bach <marix@marix.org> - 1.6.0
 
 - Update to 1.6.0

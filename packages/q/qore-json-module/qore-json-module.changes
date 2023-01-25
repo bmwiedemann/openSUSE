@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan  6 17:09:09 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.8.2 because of updated qore
+  * Updates to allow the module to build with qpp from Qore 1.12.4+
+
+-------------------------------------------------------------------
 Tue Jun 14 11:12:55 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
-- Update to 1.8.1 becoause of qore-doc requirement
+- Update to 1.8.1 because of qore-doc requirement
   * eliminated excess whitespace from compact JSON 
     serialization (refs qorelanguage/qore#4459)
 

@@ -1,7 +1,7 @@
 #
 # spec file for package iotop-c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iotop-c
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        Simple top-like I/O monitor (implemented in C)
 License:        GPL-2.0-or-later

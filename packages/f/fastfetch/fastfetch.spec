@@ -1,7 +1,7 @@
 #
 # spec file for package fastfetch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        1.7.5
+Version:        1.9.0
 Release:        0
 Summary:        Neofetch-like tool written in C
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/LinusDierheimer/fastfetch
 Source:         https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
+BuildRequires:  opencl-headers
 BuildRequires:  vulkan-headers
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(chafa)

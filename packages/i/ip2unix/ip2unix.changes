@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 12:55:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildREquire pkgconfig(systemd) instead of systemd: allow OBS
+  to shortcut through the mini flavor.
+
+-------------------------------------------------------------------
 Tue May 24 09:33:17 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
 
 - added patch gcc-12.patch

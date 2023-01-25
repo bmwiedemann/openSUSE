@@ -95,4 +95,24 @@
     <comment></comment>
     <requestid>974291</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a333de47a7193188a653ef138d6abaa8</srcmd5>
+    <version>0.21.1</version>
+    <time>1674585830</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to %pyproject_wheel/install, there is no need to create
+  setup.py manually.
+
+- Update to version 0.21.1:
+  * Particle class and submodules: Better test coverage.
+  * PDGID class method and related standalone functions:
+    -  Minor code simplifications.
+    -  Significant improvements to test coverage.
+  * README: info added on how to create user-defined particles.
+- Update tests.tar.xz to tag 0.21.1.
+- Create a basic setup.py file to allow building and installation.
+- Manually copy missed data files into buildroot.
+- Disable python3.6 building, no longer supported by upstream.</comment>
+    <requestid>1060616</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,6 @@
 #
 
 
-#
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -33,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-core%{psuffix}
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause

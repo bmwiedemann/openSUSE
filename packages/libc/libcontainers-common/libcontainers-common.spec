@@ -140,17 +140,6 @@ install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_ma
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
 sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf
-# use btrfs storage driver if system storage is on btrfs
-# For rootless it will fall back to overlay if btrfs is not working
-# https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md#storage-table
-if [ $1 -eq 1 ] ; then
-  for dir in %{_localstatedir}/lib/containers %{_localstatedir}/lib ; do
-    test "$(findmnt -o FSTYPE -l --target '$dir' | grep -v FSTYPE)" != "btrfs" && CONTAINERS_USE_BTRFS_DRIVER=0
-  done
-  if [ "$CONTAINERS_USE_BTRFS_DRIVER" != "0" ]; then
-    sed -i 's/driver = "overlay"/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
-  fi
-fi
 
 %files
 %dir %{_sysconfdir}/containers

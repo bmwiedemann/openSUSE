@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jan 22 11:39:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12:
+  * 'zutilsrc' has been renamed to 'zutils.conf', and is loog for in 
+    $XDG_CONFIG_HOME/zutils.conf instead of $HOME/.zutilsrc.
+    (XDG_CONFIG_HOME defaults to $HOME/.config).
+  * In zcat, zcmp, zdiff, and zgrep, the option '-O, --force-format'
+    now can force also "uncompressed" format.
+  * zcmp now accepts the option '-H, --hexadecimal' to print byte
+    values in hexadecimal instead of octal.
+  * zcmp: option '-s' changed to '--script'
+  * zcmp: '-q' has been assigned to options '--quiet' and '--silent'
+  * zcmp: '-q' now only suppresses diagnostic messages written to 
+    stderr
+  * zcmp: '-s' now only suppresses messages about file differences
+    written to stdout or stderr.
+  * zcmp: Option '-l, --list' is now different from option '-v,
+    --verbose', whichnow undoes the effect of '--quiet'.
+  * zcmp now prints byte and line in EOF message like GNU cmp:
+    "zcmp: EOF on FILE after byte B, in line L".
+  * zgrep now also accepts the following options:
+    '-G, --basic-regexp',
+    '--label=<label>',
+    '--line-buffered',
+    '-P, --perl-regexp',
+    '--silent',
+    '-T, --initial-tab',
+    '-U, --binary', and
+    '-Z, --null'.
+  * ztest now exits with status 2 if an uncompressed file has a
+    compressed file name extension, or if a compressed file has a 
+    wrong compressed extension.
+  * zudate now accepts option '-d, --destdir' to write recompressed
+    files to another directory.
+  * zupdate now accepts option '-e, --expand-extensions', which
+    makes it expand combined file name extensions; tgz --> tar.lz.
+  * zupdate now also accepts option '-i, --ignore-errors', which
+    makes it ignore non-fatal errors
+  * All utilities now support compress'd (.Z) files through gzip.
+  * At verbosity level 1 (2 for zdiff and zgrep) or higher, '-V,
+    --version' now prints the versions of the compressors used
+    (limited by option '-M, --format').
+  * Diagnostics caused by invalid arguments to command line options
+    now show the argument and the name of the option.
+
+-------------------------------------------------------------------
 Thu Apr 14 12:49:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.11:

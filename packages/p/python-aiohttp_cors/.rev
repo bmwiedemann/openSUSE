@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>998084</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e316d9179db9dd1a2abdf43617389590</srcmd5>
+    <version>0.7.0</version>
+    <time>1674585847</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 412.patch to support python 3.11 gh#aio-libs/aiohttp-cors#412
+</comment>
+    <requestid>1060678</requestid>
+  </revision>
 </revisionlist>

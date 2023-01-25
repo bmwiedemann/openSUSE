@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jan 23 14:11:16 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.1.0
+  * Fixed a python 2 to 3 compat issue which was missed earlier (#374).
+  * Add Python 3.11 primary support
+  * Keep exception traceback somehow (#368).
+  * Support Sphinx 4.x.
+  * Remove dependency to case.
+  * Drop support of Python < 3.7.
+  * Update to psutil 5.9.0.
+  * Replace deprecated threading Event.isSet with Event.is_set.
+  * Prevent segmentation fault in get_pdeathsig while using ctypes (#361).
+- Drop billiard-sphinx4.patch, not needed anymore
+
+-------------------------------------------------------------------
 Fri Jun  4 20:49:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.4.0:

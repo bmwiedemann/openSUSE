@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 02:35:30 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Bring back gnome-initial-setup for Leap 15.5 while keep it
+  disabled on SLE 15 SP5 (jsc#PED-1719).
+
+-------------------------------------------------------------------
 Sun Apr 14 00:18:06 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
 
 - Use new distribution-logos for the logo

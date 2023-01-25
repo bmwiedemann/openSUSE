@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 23 17:25:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * `Full list of changes from v4.3 <https://github.com/django-
+    compressor/django-compressor/compare/4.3...4.3.1>`_
+  * Documentation fixes only
+
+-------------------------------------------------------------------
 Sat Jan  7 08:45:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3:

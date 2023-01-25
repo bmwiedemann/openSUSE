@@ -1,7 +1,7 @@
 #
 # spec file for package libchamplain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libchamplain
-Version:        0.12.20
+Version:        0.12.21
 Release:        0
 Summary:        Library to display maps
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libchamplain
 Source0:        https://download.gnome.org/sources/libchamplain/0.12/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 91a9e41fed6269637da52d5f88699782a940b198.patch -- g-i: Annotate champlain_layer_set_view to allow NULL as view
-Patch0:         https://gitlab.gnome.org/GNOME/libchamplain/-/commit/91a9e41fed6269637da52d5f88699782a940b198.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
@@ -36,11 +34,11 @@ BuildRequires:  pkgconfig(cairo) >= 1.4
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 0.90
 BuildRequires:  pkgconfig(gdk-3.0) >= 2.90
-BuildRequires:  pkgconfig(gio-2.0) >= 2.16
-BuildRequires:  pkgconfig(glib-2.0) >= 2.16
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.10
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.68
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.90
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.0
 BuildRequires:  pkgconfig(vapigen)
 

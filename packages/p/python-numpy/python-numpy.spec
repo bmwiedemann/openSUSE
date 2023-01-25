@@ -103,27 +103,27 @@ BuildRequires:  %{python_module typing-extensions >= 4.2.0}
 %if %{without hpc}
 # Last version which packaged %%{_bindir}/f2py without update-alternatives
 Conflicts:      %{plainpython}-numpy <= 1.12.0
- %if 0%{?suse_version}
+%if 0%{?suse_version}
 BuildRequires:  gcc-fortran
- %else
+%else
 BuildRequires:  gcc-gfortran
- %endif
- %if %{with openblas}
+%endif
+%if %{with openblas}
 BuildRequires:  openblas-devel > 0.3.20
- %else
+%else
 BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
 BuildRequires:  lapack-devel
 # openblas has significantly better performance for some operations
 Recommends:     libopenblas_pthreads0
- %endif
- %if %{with libalternatives}
+%endif
+%if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
- %else
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
- %endif
+%endif
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel

@@ -1,7 +1,7 @@
 #
 # spec file for package gdm-branding-openSUSE
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        The GNOME Display Manager -- openSUSE default configuration
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Url:            http://projects.gnome.org/gdm/
+URL:            http://projects.gnome.org/gdm/
 Source99:       gdm-branding-openSUSE-rpmlintrc
 # For directory ownership:
 BuildRequires:  gdm
@@ -35,8 +35,8 @@ BuildRequires:  gdm-branding-upstream
 BuildRequires:  sed
 %endif
 BuildRequires:  distribution-logos-openSUSE-Tumbleweed
-Requires:       gdm
 Requires:       distribution-logos
+Requires:       gdm
 Supplements:    (gdm and branding-openSUSE)
 Conflicts:      gdm-branding
 Provides:       gdm-branding
@@ -57,7 +57,7 @@ cp -a %{_sysconfdir}/gdm/custom.conf .
 mkdir -p %{buildroot}%{_datadir}/gdm/greeter/images/
 install -d %{buildroot}%{_sysconfdir}/gdm
 install -m0644 custom.conf %{buildroot}%{_sysconfdir}/gdm/custom.conf
-%if 0%{?sle_version} >= 120300
+%if (!0%{?is_opensuse} && 0%{?sle_version} >= 120300) || (0%{?is_opensuse} && 0%{?sle_version} <= 150400 && 0%{?sle_version} >= 120300)
 sed -i -e "s/\[daemon\]/\[daemon\]\nInitialSetupEnable=False/g" %{buildroot}%{_sysconfdir}/gdm/custom.conf
 %endif
 ln -sf %{_datadir}/pixmaps/distribution-logos/light-inline.svg %{buildroot}%{_datadir}/gdm/greeter/images/distributor.svg

@@ -89,6 +89,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{name}-imports = %{version}
 Requires:       libKPipeWire%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
+Requires:       pkgconfig(libpipewire-0.3)
 
 %description devel
 KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.

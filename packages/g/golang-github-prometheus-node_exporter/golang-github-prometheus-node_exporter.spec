@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-node_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.3.1
+Version:        1.5.0
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
@@ -31,12 +31,10 @@ Source:         node_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
-# This patch has been applied before generating vendor tarball
-Patch1:         0001-Update-prometheus-client-to-1.11.1.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) >= 1.18
 %{?systemd_ordering}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
@@ -53,7 +51,7 @@ ExcludeArch:    s390
 Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
 
 %prep
-%autosetup -a1 -p1 -n node_exporter-%{version}
+%autosetup -a1 -n node_exporter-%{version}
 
 %build
 %goprep github.com/prometheus/node_exporter

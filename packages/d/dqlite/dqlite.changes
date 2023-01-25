@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 20 12:52:35 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14.0:
+  * compatibility with libraft 0.17.1
+
+-------------------------------------------------------------------
+Tue Dec 27 17:05:56 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.13.0:
+  * experimental disk-mode
+  * Fix an issue that limited maximum row size
+
+-------------------------------------------------------------------
 Sun Dec  4 18:42:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.12.0:

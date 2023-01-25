@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 13 06:01:46 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- storage.conf: Unset 'driver' and set 'driver_priority' to
+  allow podman to use 'btrfs' if available and fallback to
+  'overlay' if not.
+- .spec: rm %post script to set 'btrfs' as storage driver
+  in storage.conf
+
+-------------------------------------------------------------------
 Mon Dec  5 12:23:07 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Remove registry.suse.com from search unqualified-search-registries:

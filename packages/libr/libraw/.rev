@@ -670,4 +670,26 @@
     + Multiple bugfixes inspired by oss-fuzz project (forwarded request 1055251 from polslinux)</comment>
     <requestid>1055784</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b11d984fccfbac42c3ad06c722bcb474</srcmd5>
+    <version>0.21.1</version>
+    <time>1674585723</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.1:
+  * fixed typo in panasonic metadata parser
+  * Multiple fixes inspired by oss-fuzz project
+  * Phase One/Leaf IIQ-S v2 support
+  * Canon CR3 filmrolls
+  * Canon CRM (movie) files
+  * Tiled bit-packed (and 16-bit unpacked) DNGs
+  * (non-standard) Deflate-compressed integer DNG files are allowed
+  * Canon EOS R3, R7 and R10
+  * Fujifilm X-H2S, X-T30 II
+  * OM System OM-1
+  * Leica M11
+  * Sony A7-IV (ILCE-7M4)
+  * DJI Mavic 3
+  * Nikon Z9: standard compression formats only (forwarded request 1059316 from dirkmueller)</comment>
+    <requestid>1060347</requestid>
+  </revision>
 </revisionlist>

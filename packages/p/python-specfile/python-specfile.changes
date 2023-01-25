@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jan 23 15:38:33 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.13.1:
+  * Fixed a bug in section parsing that caused sections to be 
+    ignored when there were macro definitions spread across the spec
+    file and not cumulated at the top.
+
+- Update to version 0.13.0: 
+  * Added Section.options attribute for convenient manipulation of
+    section options.
+  * specfile now supports single-line sections where section content
+    is represented by a macro starting with a newline.
+  * Added evr argument to Specfile.add_changelog_entry(). This
+    allows adding a changelog entry with an EVR value that's
+    different from the current specfile's value. This makes it
+    easier to reconstruct a specfile's %changelog based on another
+    source using the higher level interface.
+
+-------------------------------------------------------------------
 Thu Jan 12 10:27:28 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Remove patch (already upstream):

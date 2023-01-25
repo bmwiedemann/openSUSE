@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan  6 17:57:39 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.8.0 because of compatibility with qore 1.12.4 
+  * fixed WSDL handling type conversions when supporting data provider APIs
+  * implemented the SaxDataProvider module
+  * updated to build with qpp from Qore 1.12.4+
+
+-------------------------------------------------------------------
 Thu May 26 12:35:03 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to version 1.5.3

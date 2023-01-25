@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 24 09:45:43 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 10.0.0:
+  * Now the program does not use external utilities to calculate ReplayGain, instead the built-in method is used. This accelerated the conversion process and reduced the number of dependencies.
+  * For package maintainers: Note that metaflac, mp3gain, vorbisgain and wvgain are no longer needed.
+  * Improved error handling. Before starting the conversion, you can view all errors and warnings in one window.
+  * Fixed bug: When changing the “Artist” field, the “Album Artist” field mistakenly becomes “Multiple Values”
+  * Translations updated
+
+-------------------------------------------------------------------
 Mon Dec 26 15:29:54 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - fix spec for building on openSUSE_Backports_SLE-15-SP5

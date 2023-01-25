@@ -226,4 +226,12 @@
 * The changes file is partially rewrite to remove references to the old yanked versions</comment>
     <requestid>1035197</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d0a774d9130138b43cfeba1bece097b5</srcmd5>
+    <version>6.5.3</version>
+    <time>1674585727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060358</requestid>
+  </revision>
 </revisionlist>

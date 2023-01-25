@@ -7,10 +7,10 @@ Use zutils- prefix with executables also present in the gzip
 package.
 
 ---
-Index: zutils-1.10/Makefile.in
+Index: zutils-1.12/Makefile.in
 ===================================================================
---- zutils-1.10.orig/Makefile.in
-+++ zutils-1.10/Makefile.in
+--- zutils-1.12.orig/Makefile.in
++++ zutils-1.12/Makefile.in
 @@ -126,12 +126,12 @@ install-strip-compress : install-bin-str
  
  install-bin : all
@@ -29,7 +29,7 @@ Index: zutils-1.10/Makefile.in
 +	$(INSTALL_PROGRAM) ./zgrep "$(DESTDIR)$(bindir)/zutils-zgrep"
  	$(INSTALL_PROGRAM) ./ztest "$(DESTDIR)$(bindir)/ztest"
  	$(INSTALL_PROGRAM) ./zupdate "$(DESTDIR)$(bindir)/zupdate"
- 	if [ ! -e "$(DESTDIR)$(sysconfdir)/$(pkgname)rc" ] ; then \
+ 	if [ ! -e "$(DESTDIR)$(sysconfdir)/$(pkgname).conf" ] ; then \
 @@ -161,18 +161,18 @@ install-man :
  	-rm -f "$(DESTDIR)$(mandir)/man1/zgrep.1"*
  	-rm -f "$(DESTDIR)$(mandir)/man1/ztest.1"*

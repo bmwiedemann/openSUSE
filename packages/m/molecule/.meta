@@ -1,5 +1,5 @@
 <package name="molecule" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="systemsmanagement" package="molecule"/>
+  <devel project="systemsmanagement:ansible" package="molecule"/>
 </package>

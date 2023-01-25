@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Dec  8 20:28:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221101:
+  * Bugfix - removed forgotten if-then code used with scaling tests.
+    Majority of users won't notice a difference since most FontForge
+    fonts are created in the +x,+y quadrant. Users that might see a
+    change/difference are users drawing only in the -x, -y quadrant.
+  * Enhanced libspiro to allow closed-loop spiros starting with '['
+    or 'a' by seeking the first available 'v', 'c', or 'o' as start,
+    which may be found later in the spiro curve. This was the least
+    modification needed to allow call-test10 or call-test11 to pass.
+  * Due to confusion created when ppedit was also re-licensed as MIT
+    APACHE and GPL2+, it's necessary to re-clarify libspiro is GPL3+.
+    In summary, GPL can include MIT code, MIT code cannot accept GPL.
+    Please note code not in ppedit like libspiro's java is GNU GPL2+.
+    Please note that libspiro's improvements or patches are also GPL.
+  * Thanks to orbea for bugfixes concerning linking and linker flags,
+    and removing .libs from linker path (some linkers don't like it).
+  * Added more commenting in spiroentrypoints.h to clarify functions.
+  * Reconfigured code to avoid exporting bezctx_intf.h since this is
+    supposed to be internal to libspiro and not for external calling.
+  * Also added https://gcc.gnu.org/wiki/Visibility to reduce exports.
+  * SPIRO_INTERNAL_BEZCTX and call-test21.c added for simpler method
+    of accessing libspiro for programs that only need the end result.
+  * Test added for 'a','h' to ensure points don't overlap, else exit.
+
+-------------------------------------------------------------------
 Sat Aug 15 21:50:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20200505:

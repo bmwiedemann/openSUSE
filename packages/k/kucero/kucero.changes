@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 23 11:02:40 UTC 2023 - dmueller@suse.com
+
+- Update to version 1.6.2:
+  * For v1.6.2 release (#50)
+  * Bump gomodules to fix CVEs (#49)
+  * Uplift go-restful module to v2.16.0 (#48)
+  * Bump CI test to v1.25.0 (#47)
+  * Add Kubernetes 1.25 CI test (#46)
+  * For v1.6.1 release (#45)
+  * Update go modules (#44)
+  * Add golang v1.19 (#42)
+  * Bump minimum Golang version to 1.17 (#41)
+  * Remove PSP (#40)
+  * Change how we decide the node is control plane node
+  * Bump container image to opensuse/leap:15.4
+  * Bump base image to go 1.18
+  * Bump kind version to v0.13.0
+  * Add Go 1.18 CI test
+  * Bump the k8s version to the latest
+  * Add k8s 1.24 CI test
+
+-------------------------------------------------------------------
 Fri Mar 18 12:38:46 UTC 2022 - jenting.hsiao@suse.com
 
 - Update to version 1.6.0:

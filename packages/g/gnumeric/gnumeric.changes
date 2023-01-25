@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 20 18:22:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.54:
+  + Improve whitespace handling in html import.
+  + Improve various desktop environments' icon discovery.
+  + New function ENCODEURL.
+  + New libpython configuration.
+  + Fix problem relating to sheet remove and conditional format.
+  + Fix inconsistent rounding of half-way cases.
+  + Fix xlsx leaks.
+  + Cell comment speed-ups.
+
+-------------------------------------------------------------------
 Sun Sep 18 09:45:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.53:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp_cors
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiohttp_cors
 Version:        0.7.0
@@ -29,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/aiohttp-cors/ai
 Patch0:         0001-Fix-tests.patch
 Patch1:         0001-215-fixing-exception-message-216.patch
 Patch2:         278.patch
+# PATCH-FIX-UPSTREAM 412.patch gh#aio-libs/aiohttp-cors#412
+Patch3:         412.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 18 01:35:21 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Update gdm-disable-gnome-initial-setup.patch: Refactoring to
+  disable it on SLE runtime, so with the same executable it is
+  still possible to run on Leap (jsc#PED-1719).
+
+-------------------------------------------------------------------
 Wed Jan  4 08:59:29 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Update gdm-smartcard.pamd: Move pam_nologin.so under pam_pkcs11.so

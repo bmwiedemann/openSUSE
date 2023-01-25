@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jan 24 09:56:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to %pyproject_wheel/install, there is no need to create
+  setup.py manually.
+
+-------------------------------------------------------------------
+Mon Jan 23 19:57:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.21.1:
+  * Particle class and submodules: Better test coverage.
+  * PDGID class method and related standalone functions:
+    -  Minor code simplifications.
+    -  Significant improvements to test coverage.
+  * README: info added on how to create user-defined particles.
+- Update tests.tar.xz to tag 0.21.1.
+- Create a basic setup.py file to allow building and installation.
+- Manually copy missed data files into buildroot.
+- Disable python3.6 building, no longer supported by upstream.
+
+-------------------------------------------------------------------
 Sun May  1 22:01:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.20.1:

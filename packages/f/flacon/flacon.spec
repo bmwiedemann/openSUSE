@@ -1,7 +1,7 @@
 #
 # spec file for package flacon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2018 Alexander Evseev <aevseev@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        9.5.1
+Version:        10.0.0
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later
@@ -40,12 +40,10 @@ Recommends:     faac
 Recommends:     flac
 Recommends:     lame
 Recommends:     mac
-Recommends:     mp3gain
 Recommends:     opus-tools
 Recommends:     sox
 Recommends:     ttaenc
 Recommends:     vorbis-tools
-Recommends:     vorbisgain
 Recommends:     wavpack
 
 %description

@@ -246,4 +246,12 @@
   and removed</comment>
     <requestid>1005004</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>0e774dd164d0c75b9bd3ccf560307693</srcmd5>
+    <version>276.1</version>
+    <time>1674585710</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1059988</requestid>
+  </revision>
 </revisionlist>

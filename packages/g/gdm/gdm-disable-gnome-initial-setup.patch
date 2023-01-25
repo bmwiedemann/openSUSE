@@ -1,42 +1,31 @@
-Index: gdm-41.0/daemon/gdm-display.c
+Index: gdm-41.3/daemon/gdm-display.c
 ===================================================================
---- gdm-41.0.orig/daemon/gdm-display.c
-+++ gdm-41.0/daemon/gdm-display.c
-@@ -573,7 +573,7 @@ gdm_display_prepare (GdmDisplay *self)
-                 exit (EXIT_FAILURE);
+--- gdm-41.3.orig/daemon/gdm-display.c
++++ gdm-41.3/daemon/gdm-display.c
+@@ -1655,6 +1655,9 @@ wants_initial_setup (GdmDisplay *self)
+         gboolean enabled = FALSE;
+         gboolean forced = FALSE;
+ 
++        g_autofree gchar *release_name = NULL;
++        release_name = g_get_os_info (G_OS_INFO_KEY_NAME);
++
+         priv = gdm_display_get_instance_private (self);
+ 
+         if (already_done_initial_setup ()) {
+@@ -1691,6 +1694,16 @@ wants_initial_setup (GdmDisplay *self)
+                 return FALSE;
          }
  
--        priv->doing_initial_setup = wants_initial_setup (self);
-+        priv->doing_initial_setup = FALSE;
- 
-         g_object_ref (self);
-         ret = GDM_DISPLAY_GET_CLASS (self)->prepare (self);
-@@ -1542,6 +1542,7 @@ on_launch_environment_session_died (GdmL
-         self_destruct (self);
- }
- 
-+#if 0
- static gboolean
- can_create_environment (const char *session_id)
- {
-@@ -1693,6 +1694,7 @@ wants_initial_setup (GdmDisplay *self)
- 
++	if (release_name == NULL) {
++		g_error ("GdmDisplay: Failed to parse os-release");
++                return enabled;
++        }
++
++        if (g_str_has_prefix (release_name, "SLE")) {
++                g_debug ("GdmDisplay: Disable gnome-initial-setup on SLE");
++		return FALSE;
++        }
++
          return enabled;
  }
-+#endif
  
- void
- gdm_display_start_greeter_session (GdmDisplay *self)
-Index: gdm-41.0/data/gdm.schemas.in
-===================================================================
---- gdm-41.0.orig/data/gdm.schemas.in
-+++ gdm-41.0/data/gdm.schemas.in
-@@ -50,7 +50,7 @@
-     <schema>
-       <key>daemon/InitialSetupEnable</key>
-       <signature>b</signature>
--      <default>true</default>
-+      <default>false</default>
-     </schema>
-     <schema>
-       <key>daemon/PreferredDisplayServer</key>

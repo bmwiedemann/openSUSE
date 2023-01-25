@@ -17,7 +17,7 @@
 
 
 Name:           b4
-Version:        0.11.2
+Version:        0.12.0
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later

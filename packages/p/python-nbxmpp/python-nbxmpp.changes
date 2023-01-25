@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 23 23:28:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.1.0:
+  * Port package to pyproject.toml.
+  * Handle race condition when cancelling request.
+
+-------------------------------------------------------------------
 Fri Jan 13 21:41:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.0.1:

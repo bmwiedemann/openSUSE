@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jan  5 12:57:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Provide a ffmpeg-5-mini-devel build recipe to help split
+  anticipated build cycles.
+- Reenable SDL2 for ffmpeg-5.spec. ffplay and -vf sdl should be
+  back. [boo#1206505]
+
+-------------------------------------------------------------------
 Mon Dec 12 21:18:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build for x86_64 subarchs the same way like for baseline 

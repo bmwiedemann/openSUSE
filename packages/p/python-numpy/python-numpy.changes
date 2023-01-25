@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jan 22 19:55:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Slightly reformat the specfile condition blocks: The
+  %python_subpackages generator misses " %if" lines with a
+  preceding whitespace. Relevant for d:l:p:backports not having
+  libalternatives.
+
+-------------------------------------------------------------------
 Mon Jan  2 19:31:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.24.1

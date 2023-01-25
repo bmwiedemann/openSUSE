@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Geo-IP2Location
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define cpan_name Geo-IP2Location
 Name:           perl-Geo-IP2Location
-Version:        8.60
+Version:        8.70
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
-Summary:        Lookup of country, region, city, latitude, longitude, ZIP code, time zon[cut]
 License:        MIT
+Summary:        Lookup of country, region, city, latitude, longitude, ZIP code, time zon[cut]
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LO/LOCATION/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -35,9 +35,9 @@ BuildRequires:  perl-macros
 This Perl module provides fast lookup of country, region, city, latitude,
 longitude, ZIP code, time zone, ISP, domain name, connection type, IDD
 code, area code, weather station code and station, MCC, MNC, mobile carrier
-brand, elevation, usage type, IP address type and IAB advertising category
-from IP address using IP2Location database. This module uses a file based
-BIN database available at at
+brand, elevation, usage type, IP address type, IAB advertising category,
+district, AS number and AS name from IP address using IP2Location database.
+This module uses a file based BIN database available at at
 https://www.ip2location.com/database/ip2location upon subscription. You can
 visit at https://www.ip2location.com/development-libraries to download BIN
 sample files. This database consists of IP address as keys and other

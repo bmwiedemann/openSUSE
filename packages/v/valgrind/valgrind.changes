@@ -33,7 +33,9 @@ Wed Apr 13 15:17:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Apr 12 19:27:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.19.0:
+- update to 3.19.0 (bsc#1204685):
+  * obsoletes backport 0001-arm64-Mismatch-detected-between-RDMA-and-atomics-fea.patch
+    on older distributions
   * Fix Rust v0 name demangling.
   * The Linux rseq syscall is now implemented as (silently) returning ENOSYS.
   * Add FreeBSD syscall wrappers for __specialfd and __realpathat.

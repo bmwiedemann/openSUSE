@@ -18,7 +18,7 @@
 
 
 Name:           gedit-plugins
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later

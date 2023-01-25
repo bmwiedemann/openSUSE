@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 20 18:20:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.54:
+  + Allow multiple data labels for series.
+  + Fix accumulator problem with infinites.
+  + Fix fraction-formatting overflow problem.
+
+-------------------------------------------------------------------
 Sun Sep 18 09:44:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.53:

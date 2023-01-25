@@ -1,7 +1,7 @@
 #
 # spec file for package cpanspec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name cpanspec
 Name:           cpanspec
-Version:        1.82.02.1651742438.5f389d1
+Version:        1.83.00.1674496263.ba76ec9
 Release:        0
 Summary:        Generate a SUSE spec file for a CPAN module
 License:        Artistic-1.0 OR GPL-1.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 23 14:39:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.24
+  * Support for Python 3.11 has been added.
+  * wheel is no required as part of pyproject.toml's build dependencies
+  * Improve inspection of builtin functions.
+  * Add more keywords to trigger auto-deindent.
+
+-------------------------------------------------------------------
 Thu Nov  3 12:15:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six not needed dependency

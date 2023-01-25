@@ -1,0 +1,127 @@
+Index: aioeventlet-0.5.1/tests/test_eventlet.py
+===================================================================
+--- aioeventlet-0.5.1.orig/tests/test_eventlet.py
++++ aioeventlet-0.5.1/tests/test_eventlet.py
+@@ -19,72 +19,78 @@ try:
+     import asyncio
+ 
+     exec('''if 1:
+-        @asyncio.coroutine
+-        def coro_wrap_greenthread():
++        async def coro_wrap_greenthread():
+             result = []
+ 
+             gt = eventlet.spawn(eventlet_slow_append, result, 1, 0.020)
+-            value = yield from aioeventlet.wrap_greenthread(gt)
++            for i in aioeventlet.wrap_greenthread(gt):
++                value = yield i
+             result.append(value)
+ 
+             gt = eventlet.spawn(eventlet_slow_append, result, 2, 0.010)
+-            value = yield from aioeventlet.wrap_greenthread(gt)
++            for i in aioeventlet.wrap_greenthread(gt):
++                value = yield i
+             result.append(value)
+ 
+             gt = eventlet.spawn(eventlet_slow_error)
+             try:
+-                yield from aioeventlet.wrap_greenthread(gt)
++                for i in aioeventlet.wrap_greenthread(gt):
++                    yield i
+             except ValueError as exc:
+                 result.append(str(exc))
+ 
+             result.append(4)
+-            return result
++            yield result
++            return
+ 
+-        @asyncio.coroutine
+-        def coro_slow_append(result, value, delay=SHORT_SLEEP):
+-            yield from asyncio.sleep(delay)
++        async def coro_slow_append(result, value, delay=SHORT_SLEEP):
++            for i in asyncio.sleep(delay):
++                yield i
+             result.append(value)
+-            return value * 10
++            yield value * 10
++            return
+ 
+-        @asyncio.coroutine
+-        def coro_slow_error():
+-            yield from asyncio.sleep(0.001)
++        async def coro_slow_error():
++            for i in asyncio.sleep(0.001):
++                yield i
+             raise ValueError("error")
+     ''')
+ except ImportError:
+     import trollius as asyncio
+     from trollius import From, Return
+ 
+-    @asyncio.coroutine
+-    def coro_wrap_greenthread():
++    async def coro_wrap_greenthread():
+         result = []
+ 
+         gt = eventlet.spawn(eventlet_slow_append, result, 1, 0.020)
+-        value = yield From(aioeventlet.wrap_greenthread(gt))
++        for i in From(aioeventlet.wrap_greenthread(gt)):
++            value = yield i
+         result.append(value)
+ 
+         gt = eventlet.spawn(eventlet_slow_append, result, 2, 0.010)
+-        value = yield From(aioeventlet.wrap_greenthread(gt))
++        for i in From(aioeventlet.wrap_greenthread(gt)):
++            value = yield i
+         result.append(value)
+ 
+         gt = eventlet.spawn(eventlet_slow_error)
+         try:
+-            yield From(aioeventlet.wrap_greenthread(gt))
++            for i in From(aioeventlet.wrap_greenthread(gt)):
++                yield i
+         except ValueError as exc:
+             result.append(str(exc))
+ 
+         result.append(4)
+         raise Return(result)
+ 
+-    @asyncio.coroutine
+-    def coro_slow_append(result, value, delay=SHORT_SLEEP):
+-        yield From(asyncio.sleep(delay))
++    async def coro_slow_append(result, value, delay=SHORT_SLEEP):
++        for i in From(asyncio.sleep(delay)):
++            yield i
+         result.append(value)
+         raise Return(value * 10)
+ 
+-    @asyncio.coroutine
+-    def coro_slow_error():
+-        yield From(asyncio.sleep(0.001))
++    async def coro_slow_error():
++        for i in From(asyncio.sleep(0.001)):
++            yield i
+         raise ValueError("error")
+ 
+ 
+@@ -223,8 +229,7 @@ class LinkFutureTests(tests.TestCase):
+         def func(obj):
+             return aioeventlet.yield_future(obj)
+ 
+-        @asyncio.coroutine
+-        def coro_func():
++        async def coro_func():
+             print("do something")
+ 
+         def regular_func():
+@@ -315,8 +320,7 @@ class WrapGreenthreadTests(tests.TestCas
+             pass
+         self.assertRaises(TypeError, aioeventlet.wrap_greenthread, func)
+ 
+-        @asyncio.coroutine
+-        def coro_func():
++        async def coro_func():
+             pass
+         coro_obj = coro_func()
+         self.addCleanup(coro_obj.close)

@@ -123,4 +123,70 @@ changes related to request: 238211
     <comment>Update to version 1.8.0</comment>
     <requestid>981144</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>726807fa88b82377c2f8f70783449c10</srcmd5>
+    <version>1.13.0</version>
+    <time>1674589376</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove buildroot from mydatarootdir 
+- Update to 1.13.0
+  * implemented support for including REST path args
+  * fixed a bug handling the swagger_base_path RestClient option
+  * RestHandler will always set the socketobject request content
+  * implemented get_safe_url()
+  * fixed parse_url() with passwords with / chars in it
+  * fixed handling child attributes in connection objects
+  * fixed REST ping operations 
+  * fixed bugs in HTTP communications with 32-bit builds of Qore
+- Update to 1.12.4
+  * fixed a bug building documentation with autotools 
+  * fixed bugs in C++ QoreSocket::send*() methods not used in the Qore 
+    language  
+  * fixed a bug building documentation with release files created from 
+    the autotools makefile target
+  * fixed bugs in the cmake configuration generating documentation for 
+    builtin modules 
+  * provide APIs to provide additional information about child data 
+  * Bugfix/4545 swagger fix 
+  * Add support for RISC-V 
+  * Bugfix/4538 sqlutil expressions
+  * refs #4550 fixed WebUtil to never serve files outside the root dir
+  * refs #4553 fixed a bug building with openssl 3+ 
+  * refs #4555 do not return / chars in data provider names
+  * refs #4557 implemented support for event handling in DataProviders 
+  * refs #4559 fixed FsUtil to behave more consistently regarding target 
+  * refs #4561 fixed bugs handling escape chars in regex subst replacement
+  * refs #4565 fixed WebSocket PING/PONG handling 
+  * refs #4567 fixed bugs in HTTPClient class setting keys and certs 
+  * refs #4572 added child capability indicator attributes to data 
+  * refs #4574 allow HTTP certs to be reloaded from the source location
+  * refs #4576 DataProvider module: updated child capability info 
+  * refs #4578 added the argument hash to methods returning REST API path
+  * refs #4583 fixed race conditions in the Logger module
+  * refs #4587 fixed a bug setting the data provider name in Swagger schema
+  * refs #4590 QUnit: allow the exception argument to be checked 
+  * refs #4595 working socket polling infrastructure 
+  * refs #4605 fixed handling abstract memberGate() and methodGate() methods
+  * refs #4607 fixed the unreferenced-variable warning 
+  * refs #4609 fixed cast&lt;&gt; with lvalues
+  * added OdbcFirebirdSqlUtil module 
+  * refs #4620 fixed bugs serializing / deserializing SqlUtil tables 
+  * refs #4622 fixed AbstractDataProvider::search*() methods
+  * Bugfix/4624 data provider search fix 
+  * refs #4626 added support for the immediate data:// location 
+  * refs #4628 fixed sequence* mapper keys in DbTableDataProvider 
+  * Bugfix/4624 4632 fixes
+  * refs #4634 fixed WebSocketHandler::sendOne() 
+  * refs #4637 allow information about schema changes after alignments 
+  * refs #4639 allow for the client's time zone to be set 
+  * refs #4643 fixed handling signal args
+  * refs #4646 allow REST handlers to set custom headers in error responses
+  * refs #4658 fixed a race condition in deadlock detection
+  * Enablement of the architecture s390x
+  * Move qore-doc.spec to qore.spec
+  * Remove fix-logger-doc.patch and fix-building-doc.patch 
+  * Remove clean section because of integration in rpm
+</comment>
+    <requestid>1060688</requestid>
+  </revision>
 </revisionlist>

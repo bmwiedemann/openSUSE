@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 24 16:38:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py311.patch to make the code compatible with python 3.11
+
+-------------------------------------------------------------------
 Wed Aug 19 10:34:12 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pr_1.patch for Python 3.7+ support

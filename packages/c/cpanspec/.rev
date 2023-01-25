@@ -445,4 +445,21 @@ Stephan Kulow (7):
     <comment></comment>
     <requestid>975430</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b88d76710e58f8ebddda7d2aa44b6131</srcmd5>
+    <version>1.83.00.1674496263.ba76ec9</version>
+    <time>1674585774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.83.00.1674496263.ba76ec9:
+  * v1.83.00
+  * Add blank line after %autosetup (#42)
+  * Ensure non-interactive mode (#41)
+  * Add github workflow (#40)
+  * Switch to faster CPAN mirror
+  * Strip pod from summary (#38)
+  * fix --debug option by adding 'use Data::Dumper' (#31)
+  * Fix reading META.yml (#37)
+</comment>
+    <requestid>1060487</requestid>
+  </revision>
 </revisionlist>

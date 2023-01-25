@@ -1,7 +1,7 @@
 #
 # spec file for package libspiro
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 %define sonum   1
 Name:           libspiro
-Version:        20200505
+Version:        20221101
 Release:        0
 Summary:        A clothoid to bezier spline converter
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          System/Libraries
-Source0:        https://github.com/fontforge/libspiro/archive/%{version}.tar.gz
 URL:            https://github.com/fontforge/libspiro
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        https://github.com/fontforge/libspiro/archive/%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 libspiro contains routines which will convert an array of clothoid
@@ -47,12 +46,12 @@ spline control points into an equivalent set of bezier control points.
 %package devel
 Summary:        Development Files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{name}1 = %{version} glibc-devel
+Requires:       %{name}1 = %{version}
+Requires:       glibc-devel
 
 %description devel
 This package contains all necessary include files and libraries needed
 to compile and develop applications that use %{name}.
-
 
 %prep
 %setup -q
@@ -62,25 +61,24 @@ autoreconf -i
 automake --foreign -Wall
 %configure --with-pic\
            --disable-static
-make %{?smp_mflags}
+%make_build
 
 %install
-%makeinstall
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{sonum} -p /sbin/ldconfig
-
 %postun -n %{name}%{sonum} -p /sbin/ldconfig
 
 %files -n %{name}%{sonum}
 %license COPYING
-%doc ChangeLog README* 
+%doc ChangeLog README*
 %{_libdir}/lib*.so.*
 
 %files devel
 %{_includedir}/*
 %{_libdir}/*.so
-%{_mandir}/man3/libspiro.3*
+%{_mandir}/man3/libspiro.3%{?ext_man}
 %{_libdir}/pkgconfig/*.pc
 
 %changelog

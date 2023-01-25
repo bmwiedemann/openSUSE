@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 21 21:20:31 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.12:
+  * Don't remember window position on screen (seems more common
+    and better left to the window manager).
+  * Fix cursor construction error on Wayland
+    (gh#otsaloma/gaupol#202).
+
+-------------------------------------------------------------------
 Sun Apr  3 14:43:52 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.11:

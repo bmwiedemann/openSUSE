@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jan 20 07:22:58 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2022-3341.patch: Backport from upstream to fix
+  null pointer dereference in decode_main_header() in
+  libavformat/nutdec.c (bsc#1206778).
+
+-------------------------------------------------------------------
 Fri Dec 23 08:09:25 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add ffmpeg-CVE-2022-3109.patch: Backport from upstream to fix

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 13 08:52:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
 Tue Sep 27 01:16:29 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Update to 0.25.4 Bugfix release

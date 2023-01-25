@@ -20,7 +20,7 @@
 %define api_ver 44
 
 Name:           gedit
-Version:        44.1
+Version:        44.2
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later

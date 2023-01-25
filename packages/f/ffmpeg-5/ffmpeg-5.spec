@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -171,6 +171,7 @@ BuildRequires:  pkgconfig(rav1e)
 %if %{with rubberband}
 BuildRequires:  pkgconfig(rubberband)
 %endif
+BuildRequires:  pkgconfig(sdl2)
 %if %{with smbclient}
 BuildRequires:  pkgconfig(smbclient)
 %endif

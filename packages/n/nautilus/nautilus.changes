@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jan 19 12:44:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Regressions addressed:
+    - Launch search from shell correctly
+    - Make nautilus-autorun-software work again
+    - Restore 2-dimensional navigation from sushi
+    - Resolve stuttering scrolling
+    - Reintroduce 64px icon size for grid view
+    - Show full filename again in grid, using tooltips
+  + Other bugfixes:
+    - Avoid a many crashes
+    - Stop showing � in the type on Properties
+    - Show rename error dialogs again
+    - Handle X11-only drag-and-drop quirks
+    - Allow autorun.sh without executable bit
+    - Improve selection-setting
+    - Restrict DND actions over drag source
+    - Focus replaces files
+    - Improve keyboard focus navigation on the new views
+    - Stop blocking on the tracker connection
+    - Don't add missing emblems
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Dec  2 22:21:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

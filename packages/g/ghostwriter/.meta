@@ -1,5 +1,5 @@
 <package name="ghostwriter" project="openSUSE:Factory">
   <title>A distraction-free Markdown editor</title>
   <description>ghostwriter is a text editor for Markdown, which is a plain text markup format. For more information about Markdown, please visit John Gruber’s website at http://www.daringfireball.net. ghostwriter provides a relaxing, distraction-free writing environment.</description>
-  <devel project="editors" package="ghostwriter"/>
+  <devel project="KDE:Applications" package="ghostwriter"/>
 </package>

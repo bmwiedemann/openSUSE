@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 23 11:49:07 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update upstream keyring: https://gnupg.org/signature_key.asc
+
+-------------------------------------------------------------------
+Sat Jan 21 14:57:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311.patch to build language bindings for python 3.11 
+
+-------------------------------------------------------------------
 Tue Nov  8 18:35:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add gpgme-suse-nobetasuffix.patch

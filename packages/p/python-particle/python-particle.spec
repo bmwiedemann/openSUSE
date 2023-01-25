@@ -1,7 +1,7 @@
 #
 # spec file for package python-particle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global modname particle
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-particle
-Version:        0.20.1
+Version:        0.21.1
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -27,9 +28,12 @@ URL:            https://github.com/scikit-hep/particle
 Source0:        https://files.pythonhosted.org/packages/source/p/particle/%{modname}-%{version}.tar.gz
 # Downloaded separately from github using _service file
 Source1:        tests.tar.xz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2
@@ -56,10 +60,14 @@ particle data tables and particle identification codes.
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" src/particle/__main__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%{python_expand # Copy missed files
+cp -R src/particle/data %{buildroot}%{$python_sitelib}/%{modname}/
+cp -R src/particle/lhcb %{buildroot}%{$python_sitelib}/%{modname}/
+}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,7 +76,7 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" src/particle/__main__.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}*-info/
 
 %changelog

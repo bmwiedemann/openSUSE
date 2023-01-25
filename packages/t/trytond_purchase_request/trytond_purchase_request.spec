@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_purchase_request
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           trytond_purchase_request
-Version:        %{majorver}.1
+Version:        %{majorver}.2
 Release:        0
 
 URL:            http://www.tryton.org/

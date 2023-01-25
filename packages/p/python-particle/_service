@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="url">https://github.com/scikit-hep/particle.git</param>
 		<param name="scm">git</param>
-		<param name="revision">v0.20.0</param>
+		<param name="revision">v0.21.1</param>
 		<param name="subdir">tests</param>
 		<param name="version">_none_</param>
 		<param name="filename">tests</param>

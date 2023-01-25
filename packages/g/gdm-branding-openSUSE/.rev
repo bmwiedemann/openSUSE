@@ -229,4 +229,14 @@
 - Use new distribution-logos for the logo (forwarded request 693968 from hellcp)</comment>
     <requestid>701597</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>358625957e2a899ddf33ddca988928c6</srcmd5>
+    <version>15.1</version>
+    <time>1674585759</time>
+    <user>dimstar_suse</user>
+    <comment>- Bring back gnome-initial-setup for Leap 15.5 while keep it
+  disabled on SLE 15 SP5 (jsc#PED-1719).
+</comment>
+    <requestid>1060533</requestid>
+  </revision>
 </revisionlist>

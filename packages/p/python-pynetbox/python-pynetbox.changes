@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 23 21:56:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.1
+  * Removed pre-NetBox 3.3 features.
+  * Fix custom_filed KeyError traceback.
+
+-------------------------------------------------------------------
 Mon Dec 12 18:06:33 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

@@ -1,7 +1,7 @@
 #
 # spec file for package zutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zutils
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Collection of utilities for dealing with compressed files
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ Source2:        %{name}.keyring
 Patch1:         zutils-1.7-noconflict.patch
 BuildRequires:  gcc-c++
 BuildRequires:  lzip
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
 
 %description
 Zutils is a collection of utilities able to deal with any combination
@@ -56,30 +54,12 @@ in those utilities supporting it.
 %check
 %make_build check
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
 %files
 %doc ChangeLog README
 %license COPYING
-%config %{_sysconfdir}/zutilsrc
-%{_bindir}/zutils-zcat
-%{_bindir}/zutils-zcmp
-%{_bindir}/zutils-zdiff
-%{_bindir}/zutils-zegrep
-%{_bindir}/zutils-zfgrep
-%{_bindir}/zutils-zgrep
-%{_bindir}/ztest
-%{_bindir}/zupdate
-%{_infodir}/zutils.info%{?ext_info}
-%{_mandir}/man1/zutils-zcat.1%{?ext_man}
-%{_mandir}/man1/zutils-zcmp.1%{?ext_man}
-%{_mandir}/man1/zutils-zdiff.1%{?ext_man}
-%{_mandir}/man1/zutils-zgrep.1%{?ext_man}
-%{_mandir}/man1/ztest.1%{?ext_man}
-%{_mandir}/man1/zupdate.1%{?ext_man}
+%{_sysconfdir}/zutils.conf
+%{_bindir}/*
+%{_infodir}/*.info%{?ext_info}
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package dqlite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -30,7 +30,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libuv) >= 1.8.0
-BuildRequires:  pkgconfig(raft) >= 0.16.0
+BuildRequires:  pkgconfig(raft) >= 0.17.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.22.0
 
 %description

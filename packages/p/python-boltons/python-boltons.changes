@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 23 14:33:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patch getstate-to-through-methods.patch
+  * Adds support for Python 3.11
+
+-------------------------------------------------------------------
 Mon Dec 13 00:04:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 21.0.0:

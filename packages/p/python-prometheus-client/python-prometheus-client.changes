@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 24 07:59:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.16.0:
+  * [FEATURE] Support HELP text in multiprocess mode.
+  * [ENHANCEMENT] Reduce the mmap minimum size.
+  * [BUGFIX] Use the correct OpenMetrics encoder when
+    application/openmetrics-text is requested in ASGI apps.
+  * [BUGFIX] Allow Prometheus format parser to handle a missing
+    space after labels.
+
+-------------------------------------------------------------------
 Fri Oct 14 01:18:51 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.15.0 release

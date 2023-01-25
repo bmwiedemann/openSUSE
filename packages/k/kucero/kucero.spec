@@ -1,7 +1,7 @@
 #
 # spec file for package kucero
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define goipath github.com/jenting/kucero
 
 Name:           kucero
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Kubernetes control plane certificate auto rotation
 License:        Apache-2.0

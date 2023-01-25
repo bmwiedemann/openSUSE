@@ -1,7 +1,7 @@
 #
 # spec file for package python-bpython
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python36 1
 %bcond_without     test
 Name:           python-bpython
-Version:        0.23
+Version:        0.24
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT

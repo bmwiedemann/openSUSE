@@ -23,10 +23,11 @@ Summary:        Sender Rewriting Support for postfix
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Servers
 URL:            https://github.com/roehling/postsrsd
-
 Source:         https://github.com/roehling/postsrsd/archive/%version.tar.gz
+Source3:        sysuser.conf
 BuildRequires:  cmake >= 3.24
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libconfuse)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
@@ -40,10 +41,12 @@ as forwarder.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %_sourcedir/sysuser.conf %name postsrsd.conf
 %cmake -DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS \
-	-DGENERATE_SRS_SECRET=0 -DCHROOT_DIR=/var/lib/empty \
+	-DGENERATE_SRS_SECRET=0 -DCHROOT_DIR=/var/lib/postsrsd \
 	-DUSE_APPARMOR=1 -DINIT_FLAVOR=systemd \
-	-DWITH_SQLITE=BOOL:ON -DBUILD_TESTING:BOOL=OFF
+	-DWITH_SQLITE=BOOL:ON -DBUILD_TESTING:BOOL=OFF \
+	-DPOSTSRSD_USER=postsrsd
 %make_jobs
 
 %install
@@ -53,7 +56,10 @@ mkdir -p "$b/%_defaultdocdir"
 mv "$b/%_datadir/doc/%name" "$b/%_defaultdocdir/"
 cp README.rst "$b/%_defaultdocdir/%name/"
 
-%pre
+mkdir -p "$b/%_sysusersdir" "$b/var/lib/postsrsd"
+install -m 0644 "%_sourcedir/sysuser.conf" "$b/%_sysusersdir/postsrsd.conf"
+
+%pre -f %name.pre
 %service_add_pre postsrsd.service
 
 %post
@@ -72,8 +78,10 @@ fi
 
 %files
 %_sbindir/postsrsd
+%_sysusersdir/*
 %_unitdir/*
-%_docdir/%name/
+%_defaultdocdir/%name/
+%attr(0750,postsrsd,postsrsd) /var/lib/postsrsd
 %license LICENSES/*
 
 %changelog

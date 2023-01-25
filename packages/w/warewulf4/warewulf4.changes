@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 24 11:17:32 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- added make-ipxe-binary-source-configureable.patch
+
+-------------------------------------------------------------------
 Thu Jan 19 11:13:58 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - Update to 4.4.0 with following changes:

@@ -14,7 +14,7 @@ Version:        0.9
 Release:        663
 License:        GPL-2.0+
 Summary:        An URL extractor/viewer
-Url:            ftp://ftp.mutt.org/pub/mutt/contrib/
+Url:            https://github.com/sigpipe/urlview
 Group:          Productivity/Networking/Web/Browsers
 Source:         urlview-%{version}.tar.bz2
 Source1:        skel.urlview

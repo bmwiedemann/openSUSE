@@ -1,7 +1,7 @@
 #
 # spec file for package qore-xml-module
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global mod_ver 1.5.3
+%global mod_ver 1.8.0
 
 %{?_datarootdir: %global mydatarootdir %_datarootdir}
 %{!?_datarootdir: %global mydatarootdir /usr/share}
@@ -37,10 +37,8 @@
 # get *suse release minor version without trailing zeros
 %global os_min %(echo %suse_version|rev|cut -b-2|rev|sed s/0*$//)
 
-%if %suse_version > 1010
+%if %suse_version
 %global dist .opensuse%{os_maj}_%{os_min}
-%else
-%global dist .suse%{os_maj}_%{os_min}
 %endif
 
 %endif
@@ -60,21 +58,27 @@ Summary:        XML module for Qore
 Name:           qore-xml-module
 Version:        %{mod_ver}
 Release:        1%{dist}
-License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
+License:        MIT
 Group:          Development/Languages/Other
 URL:            http://qore.org
 Source:         https://github.com/qorelanguage/module-xml/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       /usr/bin/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
+BuildRequires:  cmake
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
-BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9.4
-#Because of file conflict with qore-xml-module-tools-1.5.1+qore1.0.10-1.3
-Obsoletes:      %{name}-tools  < %{version}
+BuildRequires:  qore >= 1.12.4
+BuildRequires:  qore-devel >= 1.12.4
+BuildRequires:  qore-stdlib >= 1.12.4
+%if 0%{?suse_version} || 0%{?sles_version}
+BuildRequires:  timezone
+%else
+BuildRequires:  tzdata
+%endif
 
 %description
 This package contains the xml module for the Qore Programming Language.
@@ -87,6 +91,7 @@ XML is a markup language for encoding information.
 %package doc
 Summary:        Documentation and examples for the Qore xml module
 Group:          Development/Languages
+BuildArch:      noarch
 
 %description doc
 This package contains the HTML documentation and example programs for the Qore
@@ -94,30 +99,22 @@ xml module.
 
 %files doc
 %defattr(-,root,root,-)
-%doc docs/xml docs/XmlRpcHandler docs/SalesforceSoapClient docs/SoapClient docs/SoapDataProvider docs/SoapHandler docs/WSDL docs/XmlRpcConnection test examples
+%doc docs/xml docs/XmlRpcHandler docs/SalesforceSoapClient docs/SaxDataProvider docs/SoapClient docs/SoapDataProvider docs/SoapHandler docs/WSDL docs/XmlRpcConnection test examples
 
 %prep
 %setup -q
-./configure RPM_OPT_FLAGS="$RPM_OPT_FLAGS" --prefix=/usr --disable-debug
 
 %build
+export CXXFLAGS="%{?optflags}"
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DCMAKE_SKIP_RPATH=1 -DCMAKE_SKIP_INSTALL_RPATH=1 -DCMAKE_SKIP_BUILD_RPATH=1 -DCMAKE_PREFIX_PATH=${_prefix}/lib64/cmake/Qore .
+make %{?_smp_mflags}
 %{__make}
-find test -type f|xargs chmod 644
-find docs -type f|xargs chmod 644
+%{__make} docs
+sed -i 's/#!\/usr\/bin\/env qore/#!\/usr\/bin\/qore/' test/*.qtest bin/soaputil bin/webdav-server test/disabled/GlobalWeather.qtest.disabled examples/*.q
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{module_dir}
-mkdir -p $RPM_BUILD_ROOT/%{user_module_dir}
-mkdir -p $RPM_BUILD_ROOT/usr/share/doc/qore-xml-module
-make install DESTDIR=$RPM_BUILD_ROOT
-%fdupes -s %{__builddir}/html
-# Fix scripts
-find examples -name "*.q" -exec sed -i '1 s/env qore/qore/' \{\} +
-for f in "%{buildroot}%{_bindir}/"{soaputil,webdav-server}; do sed -i '1 s/env qore/qore/' "$f"; done
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%fdupes -s %{__builddir}/html docs
 
 %files
 %defattr(-,root,root,-)

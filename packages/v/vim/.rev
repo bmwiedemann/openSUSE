@@ -6714,4 +6714,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Error message names do not match the items.</comment>
     <requestid>1058175</requestid>
   </revision>
+  <revision rev="335" vrev="1">
+    <srcmd5>560d1fa2102e3b3fb9082971c89fd5a7</srcmd5>
+    <version>9.0.1234</version>
+    <time>1674585736</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1234, fixes the following problems
+  * Return value of type() for class and object unclear.
+  * Invalid memory access with folding and using &quot;L&quot;.
+  * Some Bazel files are not recognized.
+  * No error when class function argument shadows a member.
+  * Cannot map &lt;Esc&gt; when using the Kitty key protocol.
+  * Compiler warning for comparing pointer with int.
+  * Restoring KeyTyped when building statusline not tested.
+  * Code is indented more than necessary.
+  * Dump file missing from patch.
+  * Abstract class not supported yet.
+  * Crash when using kitty and using a mapping with &lt;Esc&gt;.
+  * AppVeyor builds with an old Python version.
+  * Assignment with operator doesn't work in object method.
+  * Crash when iterating over list of objects.
+  * Return type of values() is always list&lt;any&gt;.
+  * Expression compiled the wrong way after using an object.
+  * Crash when handling class that extends another class with more than one
+  object members.
+  * Testing with Python on AppVeyor does not work properly.
+  * Error when object type is expected but getting &quot;any&quot;.
+  * Code is indented more than necessary.
+  * Getting interface member does not always work.
+  * Compiler complains about declaration after label.
+  * Storing value in interface member does not always work.
+  * Cannot read back what setcellwidths() has done.
+  * Adding a line below the last one does not expand fold.
+  * File left behind after running tests.
+  * Using isalpha() adds dependency on current locale.
+  * Coverity warns for ignoring return value.</comment>
+    <requestid>1060392</requestid>
+  </revision>
 </revisionlist>

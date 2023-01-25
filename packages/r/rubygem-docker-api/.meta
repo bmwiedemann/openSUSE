@@ -1,5 +1,5 @@
 <package name="rubygem-docker-api" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="YaST:Head" package="rubygem-docker-api"/>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-docker-api"/>
 </package>

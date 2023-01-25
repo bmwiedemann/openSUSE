@@ -1,7 +1,7 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -173,15 +173,16 @@ patch -s --fuzz=0 config/agent.conf < %{SOURCE10}
 patch -s --fuzz=0 config/registrar.conf < %{SOURCE11}
 patch -s --fuzz=0 config/verifier.conf < %{SOURCE12}
 
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_verifier
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_agent
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_tenant
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_attest
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ca
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_migrations_apply
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_userdata_encrypt
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_convert_ima_policy
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_tenant
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_upgrade_config
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_userdata_encrypt
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_verifier
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -208,26 +209,28 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 # %%pyunittest -v
 
 %post
-%python_install_alternative %{srcname}_verifier
-%python_install_alternative %{srcname}_registrar
 %python_install_alternative %{srcname}_agent
-%python_install_alternative %{srcname}_tenant
+%python_install_alternative %{srcname}_attest
 %python_install_alternative %{srcname}_ca
-%python_install_alternative %{srcname}_migrations_apply
-%python_install_alternative %{srcname}_userdata_encrypt
-%python_install_alternative %{srcname}_ima_emulator
 %python_install_alternative %{srcname}_convert_ima_policy
+%python_install_alternative %{srcname}_ima_emulator
+%python_install_alternative %{srcname}_registrar
+%python_install_alternative %{srcname}_tenant
+%python_install_alternative %{srcname}_upgrade_config
+%python_install_alternative %{srcname}_userdata_encrypt
+%python_install_alternative %{srcname}_verifier
 
 %postun
-%python_uninstall_alternative %{srcname}_verifier
-%python_uninstall_alternative %{srcname}_registrar
 %python_uninstall_alternative %{srcname}_agent
-%python_uninstall_alternative %{srcname}_tenant
+%python_uninstall_alternative %{srcname}_attest
 %python_uninstall_alternative %{srcname}_ca
-%python_uninstall_alternative %{srcname}_migrations_apply
-%python_uninstall_alternative %{srcname}_userdata_encrypt
-%python_uninstall_alternative %{srcname}_ima_emulator
 %python_uninstall_alternative %{srcname}_convert_ima_policy
+%python_uninstall_alternative %{srcname}_ima_emulator
+%python_uninstall_alternative %{srcname}_registrar
+%python_uninstall_alternative %{srcname}_tenant
+%python_uninstall_alternative %{srcname}_upgrade_config
+%python_uninstall_alternative %{srcname}_userdata_encrypt
+%python_uninstall_alternative %{srcname}_verifier
 
 %post -n %{srcname}-firewalld
 %firewalld_reload
@@ -280,15 +283,16 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/%{srcname}_verifier
-%python_alternative %{_bindir}/%{srcname}_registrar
 %python_alternative %{_bindir}/%{srcname}_agent
-%python_alternative %{_bindir}/%{srcname}_tenant
+%python_alternative %{_bindir}/%{srcname}_attest
 %python_alternative %{_bindir}/%{srcname}_ca
-%python_alternative %{_bindir}/%{srcname}_migrations_apply
-%python_alternative %{_bindir}/%{srcname}_userdata_encrypt
-%python_alternative %{_bindir}/%{srcname}_ima_emulator
 %python_alternative %{_bindir}/%{srcname}_convert_ima_policy
+%python_alternative %{_bindir}/%{srcname}_ima_emulator
+%python_alternative %{_bindir}/%{srcname}_registrar
+%python_alternative %{_bindir}/%{srcname}_tenant
+%python_alternative %{_bindir}/%{srcname}_upgrade_config
+%python_alternative %{_bindir}/%{srcname}_userdata_encrypt
+%python_alternative %{_bindir}/%{srcname}_verifier
 %{python_sitelib}/*
 
 %files -n %{srcname}-config

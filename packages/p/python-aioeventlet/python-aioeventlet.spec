@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioeventlet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 # versioning fun
 %define intver 0.5.1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aioeventlet
 Version:        0.5.2
 Release:        0
@@ -28,6 +27,8 @@ URL:            https://pypi.org/project/aioeventlet/
 Source:         https://files.pythonhosted.org/packages/source/a/aioeventlet/aioeventlet-%{version}.tar.gz
 # pr_1.patch is Python 3.7+ support
 Patch0:         pr_1.patch
+# PATCH-FIX-OPENSUSE py311.patch Python 3.11+ support
+Patch1:         py311.patch
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -54,8 +55,7 @@ in an greenthread while the Python main thread runs other greenthreads in
 parallel.
 
 %prep
-%setup -q -n aioeventlet-%{intver}
-%patch0 -p1
+%autosetup -p1 -n aioeventlet-%{intver}
 
 %build
 %python_build
@@ -75,6 +75,8 @@ fi}
 %files %{python_files}
 %license COPYING
 %doc README
-%{python_sitelib}/*
+%{python_sitelib}/aioeventlet.py
+%{python_sitelib}/aioeventlet-%{intver}*-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

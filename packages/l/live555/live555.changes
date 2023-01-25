@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jan 21 12:18:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.01.19:
+  - By default, we no longer compile "groupsock/NetAddress.cpp" for Windows to use
+    "gethostbyname()", because of a report that this breaks IPv6 name resolution. 
+
+-------------------------------------------------------------------
+Mon Jan 16 07:38:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.01.11:
+  * Updated the "BasicTaskScheduler"/"DelayQueue" implementation to make the 'token counter'
+    a field of the task scheduler object, rather than having it be a static variable.
+    This avoids potential problems if an application uses more than one thread (with each thread
+    having its own task scheduler).
+
+-------------------------------------------------------------------
 Fri Dec  2 21:59:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.12.01:

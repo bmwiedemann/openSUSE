@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jan 23 11:39:22 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1234, fixes the following problems
+  * Return value of type() for class and object unclear.
+  * Invalid memory access with folding and using "L".
+  * Some Bazel files are not recognized.
+  * No error when class function argument shadows a member.
+  * Cannot map <Esc> when using the Kitty key protocol.
+  * Compiler warning for comparing pointer with int.
+  * Restoring KeyTyped when building statusline not tested.
+  * Code is indented more than necessary.
+  * Dump file missing from patch.
+  * Abstract class not supported yet.
+  * Crash when using kitty and using a mapping with <Esc>.
+  * AppVeyor builds with an old Python version.
+  * Assignment with operator doesn't work in object method.
+  * Crash when iterating over list of objects.
+  * Return type of values() is always list<any>.
+  * Expression compiled the wrong way after using an object.
+  * Crash when handling class that extends another class with more than one
+  object members.
+  * Testing with Python on AppVeyor does not work properly.
+  * Error when object type is expected but getting "any".
+  * Code is indented more than necessary.
+  * Getting interface member does not always work.
+  * Compiler complains about declaration after label.
+  * Storing value in interface member does not always work.
+  * Cannot read back what setcellwidths() has done.
+  * Adding a line below the last one does not expand fold.
+  * File left behind after running tests.
+  * Using isalpha() adds dependency on current locale.
+  * Coverity warns for ignoring return value.
+  * Using an object member in a closure doesn't work.
+  * Completion includes functions that don't work.
+  * Handling of FORTIFY_SOURCE flags doesn't match Fedora usage.
+  * Termcap/terminfo entries do not indicate where modifiers might appear.
+  * Code is indented more than necessary.
+  * Cannot use setcellwidths() below 0x100.
+  * Cannot call a :def function with a number for a float argument.
+  * Reading past the end of a line when formatting text.
+
+-------------------------------------------------------------------
 Fri Jan 13 09:29:35 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1188, fixes the following problems

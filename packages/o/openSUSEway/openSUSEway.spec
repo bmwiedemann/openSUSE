@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSEway
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.g
 # Add multimedia keys configuration
 BuildArch:      noarch
 BuildRequires:  aaa_base
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 Requires:       NetworkManager
 Requires:       aaa_base
 Recommends:     adwaita-qt5

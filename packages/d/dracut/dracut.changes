@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 23 09:22:03 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.358.g8ecd6e83:
+  See https://github.com/dracutdevs/dracut/releases/tag/058 for details (059
+  just adds missing entries in NEWS.md).
+  Additional changes:
+  * chore(suse): add execute permission to all scripts
+  * chore(suse): update spec
+
+-------------------------------------------------------------------
+Mon Jan 23 09:21:37 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.355.g1b722fda:
+  * fix(dracut.spec): require libopenssl1_1-hmac for dracut-fips (bsc#1206439)
+
+-------------------------------------------------------------------
 Thu Dec 15 15:30:21 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.353.g6dab83eb:

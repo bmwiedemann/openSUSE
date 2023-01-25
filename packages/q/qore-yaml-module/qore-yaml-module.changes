@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jan  8 19:13:56 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 0.7.3 for qore 1.0.14
+  * Updated to build with qpp from Qore 1.12.4+
+  * improved deserialization of date/time values; fixed a bug where 
+    a random string could be deserialized as a duration 
+  * Bugfix where REST schema validation was not applied in the 
+    DataStreamClient module with non-DataStream messages 
+
+-------------------------------------------------------------------
 Mon Jun  6 12:41:17 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Version schema changed now offically released 0.7

@@ -1,7 +1,7 @@
 #
 # spec file for package live555
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Dominique Leuenberger, Ramiswil, Switzerland
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define lmdmaj 107
 
 Name:           live555
-Version:        2022.12.01
+Version:        2023.01.19
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -47,11 +47,11 @@ This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
 
-%package -n libBasicUsageEnvironment1
+%package -n libBasicUsageEnvironment2
 Summary:        Basic Usage Environment library of live555 streaming media
 Group:          System/Libraries
 
-%description -n libBasicUsageEnvironment1
+%description -n libBasicUsageEnvironment2
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
@@ -77,7 +77,7 @@ can be used to build streaming applications
 %package devel
 Summary:        LIVE555 Streaming Media
 Group:          Development/Languages/C and C++
-Requires:       libBasicUsageEnvironment1 = %{version}
+Requires:       libBasicUsageEnvironment2 = %{version}
 Requires:       libUsageEnvironment3 = %{version}
 Requires:       libgroupsock30 = %{version}
 Requires:       libliveMedia%{lmdmaj} = %{version}
@@ -125,11 +125,11 @@ Cflags: -I${includedir}/liveMedia -I${includedir}/UsageEnvironment -I${includedi
 EOF
 
 %post -n libliveMedia%{lmdmaj} -p /sbin/ldconfig
-%post -n libBasicUsageEnvironment1 -p /sbin/ldconfig
+%post -n libBasicUsageEnvironment2 -p /sbin/ldconfig
 %post -n libgroupsock30 -p /sbin/ldconfig
 %post -n libUsageEnvironment3 -p /sbin/ldconfig
 %postun -n libliveMedia%{lmdmaj} -p /sbin/ldconfig
-%postun -n libBasicUsageEnvironment1 -p /sbin/ldconfig
+%postun -n libBasicUsageEnvironment2 -p /sbin/ldconfig
 %postun -n libgroupsock30 -p /sbin/ldconfig
 %postun -n libUsageEnvironment3 -p /sbin/ldconfig
 
@@ -140,9 +140,9 @@ EOF
 %license COPYING
 %{_libdir}/libliveMedia.so.%{lmdmaj}*
 
-%files -n libBasicUsageEnvironment1
+%files -n libBasicUsageEnvironment2
 %license COPYING
-%{_libdir}/libBasicUsageEnvironment.so.1*
+%{_libdir}/libBasicUsageEnvironment.so.2*
 
 %files -n libgroupsock30
 %license COPYING

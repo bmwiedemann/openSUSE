@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jan 23 18:51:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.0:
+  * Added MessageMatches exception matcher
+    (gh#catchorg/Catch2#2570).
+  * Added RangeEquals and UnorderedRangeEquals generic range
+    matchers (gh#catchorg/Catch2#2377).
+  * Added SKIP macro for skipping tests from within the test body
+    (gh#catchorg/Catch2#2360).
+  * Restored support for PPC Macs in the break-into-debugger
+    functionality (gh#catchorg/Catch2#2619).
+  * Made our warning suppression compatible with CUDA toolkit pre
+    11.5 (gh#catchorg/Catch2#2626).
+  * Cleaned out some static analysis complaints.
+  * Fixed macro redefinition warning when NVCC was reporting as
+    MSVC (gh#catchorg/Catch2#2603).
+  * Fixed throws in generator constructor causing the whole binary
+    to abort (gh#catchorg/Catch2#2615).
+  * Fixed missing transitive include with libstdc++13
+    (gh#catchorg/Catch2#2611).
+  * Improved support for dynamic library build with non-MSVC
+    compilers on Windows (gh#catchorg/Catch2#2630).
+  * When used as a subproject, Catch2 keeps its generated header
+    in a separate directory from the main project
+    (gh#catchorg/Catch2#2604).
+
+-------------------------------------------------------------------
 Wed Jan 18 07:33:34 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.2.1:

@@ -55,4 +55,19 @@
     <comment></comment>
     <requestid>1010625</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b3fdf5667840cd4eee53952dab62e8a6</srcmd5>
+    <version>0.16.0</version>
+    <time>1674585826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * [FEATURE] Support HELP text in multiprocess mode.
+  * [ENHANCEMENT] Reduce the mmap minimum size.
+  * [BUGFIX] Use the correct OpenMetrics encoder when
+    application/openmetrics-text is requested in ASGI apps.
+  * [BUGFIX] Allow Prometheus format parser to handle a missing
+    space after labels.
+</comment>
+    <requestid>1060598</requestid>
+  </revision>
 </revisionlist>

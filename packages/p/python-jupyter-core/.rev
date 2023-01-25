@@ -178,4 +178,15 @@ Update to 4.6.1</comment>
 </comment>
     <requestid>1056897</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0f12db58b4276a7f027adec2b8b7755e</srcmd5>
+    <version>5.1.3</version>
+    <time>1674585715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.3
+  * Clear the test environment before each function run #333
+    (@jasongrout)
+</comment>
+    <requestid>1060265</requestid>
+  </revision>
 </revisionlist>

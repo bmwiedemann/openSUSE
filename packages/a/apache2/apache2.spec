@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,7 +107,7 @@
 %define build_http2 1
 
 Name:           apache2%{psuffix}
-Version:        2.4.54
+Version:        2.4.55
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0

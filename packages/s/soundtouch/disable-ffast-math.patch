@@ -4,9 +4,11 @@ is undesirable for shared libraries.
 see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=55522
 for details.
 
---- soundtouch/CMakeLists.txt	2021-09-07 17:26:53.000000000 +0200
-+++ soundtouch/CMakeLists.txt	2022-09-11 10:52:23.945515340 +0200
-@@ -3,13 +3,6 @@
+Index: soundtouch/CMakeLists.txt
+===================================================================
+--- soundtouch.orig/CMakeLists.txt
++++ soundtouch/CMakeLists.txt
+@@ -3,13 +3,6 @@ project(SoundTouch VERSION 2.3.2 LANGUAG
  
  include(GNUInstallDirs)
  
@@ -20,14 +22,16 @@ for details.
  #####################
  # SoundTouch library
  
---- soundtouch/configure.ac	2021-09-07 17:26:53.000000000 +0200
-+++ soundtouch/configure.ac	2022-09-11 10:52:44.845868245 +0200
-@@ -33,7 +33,7 @@
+Index: soundtouch/configure.ac
+===================================================================
+--- soundtouch.orig/configure.ac
++++ soundtouch/configure.ac
+@@ -33,7 +33,7 @@ AC_LANG(C++)
  
- # Compiler flags. Apply -ffast-math to allow gcc autovectorization
+ # Compiler flags. Apply -Ofast (implies -O3 -ffast-math) to allow gcc autovectorization
  # generate effective SIMD code.
--CXXFLAGS+=" -O3 -ffast-math"
-+CXXFLAGS+=" -O3 "
+-CXXFLAGS+=" -Ofast"
++CXXFLAGS+=" -O2"
  
  # Set AR_FLAGS to avoid build warning "ar: `u' modifier ignored since `D' is the default (see `U')"
  AR_FLAGS='cr'

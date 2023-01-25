@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,13 +56,13 @@ ExclusiveArch:  do_not_build
 %define         pg_version %(pg_config --version | sed -e 's/.*[[:space:]]//' -e 's/\\.[0-9]*$//' -e 's/\\.//')
 
 Name:           %{pgname}-%{sname}
-Version:        4.0.0
+Version:        4.2.2
 Release:        0
 Summary:        Job scheduler for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 URL:            http://www.pgadmin.org/
-Source0:        https://download.postgresql.org/pub/pgadmin/%{sname}/pgAgent-%{version}-Source.tar.gz
+Source0:        https://github.com/pgadmin-org/%{sname}/archive/refs/tags/%{sname}-%{version}.tar.gz
 Source2:        %{sname}.service.in
 Source3:        %{sname}.logrotate.in
 Source4:        %{sname}.conf.in
@@ -88,7 +88,7 @@ pgAgent is a job scheduler for PostgreSQL which may be managed
 using pgAdmin.
 
 %prep
-%setup -q -n pgAgent-%{version}-Source
+%autosetup -n %{sname}-%{sname}-%{version}
 
 cp %{SOURCE2} %{name}.service
 cp %{SOURCE3} %{name}.logrotate

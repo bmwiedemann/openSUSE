@@ -1,0 +1,22 @@
+From 75cd86b3ea6534d5bd8d3c83c3cf1b493e7c9102 Mon Sep 17 00:00:00 2001
+From: Stefano Rivera <github@rivera.za.net>
+Date: Fri, 20 Jan 2023 12:16:35 -0800
+Subject: [PATCH] Add __getstate__ to through_methods (bpo-26579) (#323)
+
+Adds support for Python 3.11.
+---
+ tests/test_dictutils.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_dictutils.py b/tests/test_dictutils.py
+index ca59a31e..0044001a 100644
+--- a/tests/test_dictutils.py
++++ b/tests/test_dictutils.py
+@@ -474,6 +474,7 @@ def test_frozendict_api():
+                        '__ge__',
+                        '__getattribute__',
+                        '__getitem__',
++                       '__getstate__',
+                        '__gt__',
+                        '__init__',
+                        '__iter__',

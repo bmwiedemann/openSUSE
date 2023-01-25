@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 22 12:56:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.20.2
+  * Fix Exception in OutStream.close() #1076 (@ilyasher)
+
+-------------------------------------------------------------------
 Sat Jan 14 13:37:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.20.1

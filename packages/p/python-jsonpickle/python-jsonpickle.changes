@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Jan 21 19:24:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.1
+  * Remove accidental pin of setuptools to versions below 59. This
+    allows jsonpickle to build with CPython 3.11 and 3.12 alphas.
+    (#424)
+  * Remove accidental dependency on pytz in pandas tests. (+421)
+  * Fix issue with decoding bson.bson.Int64 objects (#422)
+- Release 3.0.0
+  * Drop support for CPython<3.7. CPython 3.6 and below have
+    reached EOL and no longer receive security updates. (#375)
+  * Add support for CPython 3.11. (#395) (+396)
+  * Remove jsonlib and yajl backends (py2 only)
+  * Add `include_properties` option to the pickler. This should
+    only be used if analyzing generated json outside of Python.
+    (#297) (+387)
+  * Allow the `classes` argument to `jsonpickle.decode` to be a
+    dict of class name to class object. This lets you decode
+    arbitrary dumps into different classes. (#148) (+392)
+  * Fix bug with deserializing `numpy.poly1d`. (#391)
+  * Allow frozen dataclasses to be deserialized. (#240)
+  * Fixed a bug where pickling a function could return a `None`
+    module. (#399)
+  * Removed old bytes/quopri and ref decoding abaility from the
+    unpickler. These were last used in jsonpickle<1. Removing them
+    causes a slight speedup in unpickling lists (~5%). (+403)
+  * Fixed a bug with namedtuples encoding on CPython 3.11. (#411)
+  * When using the `sort_keys` option for the `simplejson` backend,
+    jsonpickle now produces correct object references with py/id
+    tags. (#408)
+  * Speed up the internal method `_restore_tags` by ~10%. This
+    should speed up unpickling of almost every object.
+- Release 2.2.0
+  * Classes with a custom `__getitem__()` and `append()` now pickle
+    properly. (#362) (+379)
+  * Remove the demjson backend, as demjson hasn't been maintained
+    for 5 years. (+379)
+  * Added new handler for numpy objects when using
+    unpickleable=False. (#381) (+382)
+  * Added exception handling for class attributes that can't be
+    accessed. (#301) (+383)
+  * Added a long-requested on_missing attribute to the Unpickler
+    class. This lets you choose behavior for when jsonpickle can't
+    find a class to deserialize to. (#190) (#193) (+384)
+  * Private members of `__slots__` are no longer skipped when
+    encoding. Any objects encoded with versions prior to 2.2.0
+    should still decode properly. (#318) (+385)
+- Release 2.1.0
+  * Python 3.10 is now officially supported. (+376)
+  * `is_reducible()` was sped up by ~80%.  (+353) (+354)
+  * `_restore_tags()` was sped up by ~100%. Unpickling items with a
+    lot of tuples and sets will benefit most. Python 2 users and
+    users deserializing pickles from jsonpickle <= 0.9.6 may see a
+    slight performance decrease if using a lot of bytes, ref,
+    and/or repr objects. (+354)
+  * `is_iterator()` was sped up by ~20% by removing an unnecessary
+    variable assignment. (+354)
+  * `jsonpickle.decode` has a new option, `v1_decode` to assist in
+    decoding objects created in jsonpickle version 1. (#364)
+  * The `encode()` documentation has been updated to help sklearn
+    users.
+  * `SQLALchemy<1.2` is no longer being tested by jsonpickle. Users
+    of sqlalchemy + jsonpickle can always use 1.2 or 1.3. When
+    jsonpickle v3 is released we will add SQLAlchemy 1.4 to the
+    test suite alongside removal of support for Python 3.5 and
+    earlier.
+- Remove testing skip conditionals:
+  * no python36 anymore
+  * jsonpickle not in Ring1 anymore
+
+-------------------------------------------------------------------
 Thu Jan  6 19:51:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't test and recommend unmaintained packages demjson and

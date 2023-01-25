@@ -47,4 +47,12 @@
     <comment>Plasma 5.26.5 - untested (forwarded request 1055974 from Vogtinator)</comment>
     <requestid>1056017</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e946d2238884aadf48823caeddd09956</srcmd5>
+    <version>5.26.5</version>
+    <time>1674585721</time>
+    <user>dimstar_suse</user>
+    <comment>- Require pipewire-devel for the -devel package (forwarded request 1060342 from luca_b)</comment>
+    <requestid>1060343</requestid>
+  </revision>
 </revisionlist>

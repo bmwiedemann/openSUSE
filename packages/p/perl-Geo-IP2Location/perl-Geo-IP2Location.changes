@@ -1,9 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 18 16:05:24 UTC 2023 - Elisei Roca <eroca@suse.com>
+
+- Update to 8.70
+    Twenty-third release under the Geo::IP2Location
+    Added new function "get_district" 
+    Added new function "get_asn" 
+    Added new function "get_as" 
+
+-------------------------------------------------------------------
 Wed Jun 22 06:08:14 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Update to 8.60
-      Twenty-second release under the Geo::IP2Location
-      Reduced file I/O to improve query performance
+    Twenty-second release under the Geo::IP2Location
+    Reduced file I/O to improve query performance
 
 -------------------------------------------------------------------
 Fri Sep 17 06:30:55 UTC 2021 - Elisei Roca <eroca@suse.com>

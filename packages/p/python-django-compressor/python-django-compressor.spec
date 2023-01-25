@@ -19,7 +19,7 @@
 %define mod_name django_compressor
 %define skip_python2 1
 Name:           python-django-compressor
-Version:        4.3
+Version:        4.3.1
 Release:        0
 Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
 License:        Apache-2.0 AND BSD-3-Clause AND MIT

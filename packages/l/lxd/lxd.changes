@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 25 19:01:56 UTC 2022 - Kostas Papadakis <papadakis.k@yandex.com>
+
+- Add stop entry to systemd service file so the lxc containers shutdown
+  gracefully
+
+-------------------------------------------------------------------
 Mon Dec 12 04:12:54 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 5.9. The full upstream changelog is available from:

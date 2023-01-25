@@ -28,4 +28,16 @@
     <comment></comment>
     <requestid>1031365</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac24b4c0059aa4bdc36812c364fad5ae</srcmd5>
+    <version>1.23</version>
+    <time>1674585807</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23:
+  * Changes by @bbonev in #43
+  * Fix some issues reported by lintian by @debian-janitor in #42
+  * Revert syscall count stuff by @bbonev in #44
+  * fix empty archlinux package by @bokunodev in #46</comment>
+    <requestid>1060546</requestid>
+  </revision>
 </revisionlist>

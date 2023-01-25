@@ -1,7 +1,7 @@
 #
 # spec file for package python-boltons
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/mahmoud/boltons
 Source:         https://github.com/mahmoud/boltons/archive/%{version}.tar.gz#/boltons-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Support Python 3.10 gh#mahmoud/boltons#270e974975984f662f998c8f6eb0ebebd964de82
 Patch0:         fix-ecoutil-imports.patch
+# PATCH-FIX-UPSTREAM Adds support for Python 3.11. gh#mahmoud/boltons#75cd86b3ea6534d5bd8d3c83c3cf1b493e7c9102
+Patch1:         getstate-to-through-methods.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

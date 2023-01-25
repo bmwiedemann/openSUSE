@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-amdgpu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
 Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
+Patch2:         U_Use-DRM_CAP_CURSOR_WIDTH-HEIGHT-if-possible.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -64,6 +65,7 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

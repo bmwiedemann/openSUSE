@@ -439,4 +439,14 @@
   * ez: don't crash on non-existent tag in show_info</comment>
     <requestid>1056333</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b5778764ceb757741d4dd082ee1ebef6</srcmd5>
+    <version>0.12.0</version>
+    <time>1674585808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.0
+  * worked around Python's email bugs
+  * other bugfixes</comment>
+    <requestid>1060560</requestid>
+  </revision>
 </revisionlist>

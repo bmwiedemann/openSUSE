@@ -62,4 +62,18 @@
     <comment></comment>
     <requestid>981012</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5f98b395131b2012324ec413d923dea9</srcmd5>
+    <version>0.7.3</version>
+    <time>1674589378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3 for qore 1.0.14
+  * Updated to build with qpp from Qore 1.12.4+
+  * improved deserialization of date/time values; fixed a bug where 
+    a random string could be deserialized as a duration 
+  * Bugfix where REST schema validation was not applied in the 
+    DataStreamClient module with non-DataStream messages 
+</comment>
+    <requestid>1060689</requestid>
+  </revision>
 </revisionlist>

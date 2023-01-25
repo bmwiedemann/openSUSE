@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 24 16:49:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 412.patch to support python 3.11 gh#aio-libs/aiohttp-cors#412
+
+-------------------------------------------------------------------
 Thu Aug 18 15:28:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile, remove coverage

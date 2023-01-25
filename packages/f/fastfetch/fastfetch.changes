@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Jan 23 16:30:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.9.0
+  * fastfetch no longer creates a sample config file silently. Use --gen-config to generate one.
+  * fastfetch now search for user config file in the order of fastfetch --list-config-paths
+  * Unknown disks are hidden by default.
+  * Resolution module is renamed to Display. 
+  * new options: --logo-padding-top, --list-config-paths, --list-data-paths, --gpu-hide-integrated, --gpu-hide-discrete
+  * Raw image file as logo support 
+  * Add Brightness, Wifi module support
+  * Disk name support for Linux
+  * Fix rpm package count detection 
+  * Fix cpu temp detection 
+
+-------------------------------------------------------------------
+Wed Jan 18 02:47:19 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.8.2. Changes since then to this version:
+  * 1.8.2:
+    - Fix memleaks Users module (Windows)
+    - Fix shell detection when installed with scoop (Windows)
+    - Don't use libcJSON as wlanapi's dll name (Windows)
+    - Align artifact names to other platforms (Windows)
+  * 1.8.1:
+    - Bios / Board / Chassis modules are splitted against Host module for performance reasons
+    - Caching is removed. Option --nocache is removed accordingly
+    - Windows (7 and newer) is officially and fully supported
+    - FreeBSD support is improved greatly (Bios, Cpu Temp, Cpu Usage, Disk, Host, Processes, Swap, Terminal / Shell, Uptime)
+    - Adds a new flag --stat, which prints time usage for individual modules
+    - Adds Wifi module which supports Windows and macOS
+    - Adds data source option for logo printing
+    - Detects Homebrew Cellar and Cask seperately
+    - Detects WSL version
+    - Detects disk based on mount point
+    - Exposes more chafa configs
+    - Improves performance for Cpu Usage, Public IP, Weather modules
+    - Improves performance for Kitty image protocol when both image width / height specified
+    - Improves performance for large file loading
+    - Improves performance for macOS WM and Host detection
+    - Improves shell and terminal detection on macOS
+    - Supports Deepin Terminal terminal font
+    - Supports GPU detection on Android
+    - Supports Kitty Terminal terminal font
+    - Supports bar output for percentage values
+    - Supports Bios module on macOS
+    - Supports eopkg package manager detection
+    - Supports iTerm image logo protocol
+    - Supports image logo printing on macOS
+    - Supports tcsh version detection
+    - Vulkan module on macOS no longer requires vulkan-loader to work
+    - Fixes disk size detection on 32bit Linux (#337)
+    - Fixes cpu freq detection in WSL
+    - Fixes internal bug of FFstrbuf
+    - Fixes some memory leaks
+    - Fixes segfault if 0 is given as argument index
+    - Lots of code refactors
+	- Added new logos:
+	  * Alpine
+	  * CRUX
+	  * EndeavourOS
+	  * Enso
+	  * Garuda small
+	  * Nobara
+	  * OpenMandriva
+	  * Parabola GNU/Linux-libre
+	  * Rocky
+	  * Rosa
+	  * Solus
+	  * Univalent
+	  * Vanilla OS
+
+-------------------------------------------------------------------
 Wed Dec  7 21:59:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec for fastfetch 1.7.5

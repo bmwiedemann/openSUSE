@@ -1,0 +1,13 @@
+Index: cockpit-251.3/pkg/selinux/setroubleshoot-view.jsx
+===================================================================
+--- cockpit-251.3.orig/pkg/selinux/setroubleshoot-view.jsx
++++ cockpit-251.3/pkg/selinux/setroubleshoot-view.jsx
+@@ -458,7 +458,7 @@ export class SETroubleshootPage extends
+                     <PageSection>
+                         <Stack hasGutter>
+                             <StackItem>{modifications}</StackItem>
+-                            <StackItem>{troubleshooting}</StackItem>
++                            <StackItem>{ !this.props.connected || troubleshooting}</StackItem>
+                         </Stack>
+                     </PageSection>
+                 </Page>

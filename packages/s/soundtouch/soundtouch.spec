@@ -1,7 +1,7 @@
 #
 # spec file for package soundtouch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           soundtouch
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Audio Processing Library
 License:        LGPL-2.1-or-later
@@ -52,6 +52,15 @@ Summary:        Audio Processing Library
 Group:          System/Libraries
 
 %description -n libSoundTouch%{sover}
+SoundTouch is a C++ audio processing library that allows
+changing the sound tempo, pitch and playback rate parameters
+independently from each other.
+
+%package -n libSoundTouchDll%{sover}
+Summary:        Audio Processing Library
+Group:          System/Libraries
+
+%description -n libSoundTouchDll%{sover}
 SoundTouch is a C++ audio processing library that allows
 changing the sound tempo, pitch and playback rate parameters
 independently from each other.
@@ -94,6 +103,9 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}
 %post -n libSoundTouch%{sover} -p /sbin/ldconfig
 %postun -n libSoundTouch%{sover} -p /sbin/ldconfig
 
+%post -n libSoundTouchDll%{sover} -p /sbin/ldconfig
+%postun -n libSoundTouchDll%{sover} -p /sbin/ldconfig
+
 %files
 %{_bindir}/*
 %{_mandir}/man1/*
@@ -102,9 +114,14 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}
 %license COPYING.TXT
 %{_libdir}/libSoundTouch.so.%{sover}*
 
+%files -n libSoundTouchDll%{sover}
+%license COPYING.TXT
+%{_libdir}/libSoundTouchDll.so.%{sover}*
+
 %files devel
 %{_datadir}/aclocal/*.m4
 %{_includedir}/%{name}
+%{_includedir}/SoundTouchDLL.h
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 

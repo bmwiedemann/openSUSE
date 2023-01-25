@@ -1,7 +1,7 @@
 #
 # spec file for package qore-json-module
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define mod_ver 1.8.1
+%define mod_ver 1.8.2
 
 %{?_datarootdir: %global mydatarootdir %_datarootdir}
 %{!?_datarootdir: %global mydatarootdir /usr/share}
@@ -37,10 +37,8 @@
 # get *suse release minor version without trailing zeros
 %define os_min %(echo %suse_version|rev|cut -b-2|rev|sed s/0*$//)
 
-%if %suse_version > 1010
+%if %suse_version
 %define dist .opensuse%{os_maj}_%{os_min}
-%else
-%define dist .suse%{os_maj}_%{os_min}
 %endif
 
 %endif
@@ -60,17 +58,21 @@ Summary:        JSON module for Qore
 Name:           qore-json-module
 Version:        %{mod_ver}
 Release:        1%{dist}
-License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
+License:        MIT
 Group:          Development/Languages
 URL:            http://qore.org
 Source:         https://github.com/qorelanguage/module-json/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       /usr/bin/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
+BuildRequires:  cmake >= 3.5
+BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
-BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9
+BuildRequires:  openssl-devel
+BuildRequires:  qore >= 1.12.4
+BuildRequires:  qore-devel >= 1.12.4
+BuildRequires:  qore-stdlib >= 1.12.4
 
 %description
 This package contains the json module for the Qore Programming Language.
@@ -82,20 +84,20 @@ JSON is a concise human-readable data serialization format.
 
 %prep
 %setup -q
-./configure RPM_OPT_FLAGS="$RPM_OPT_FLAGS" --prefix=/usr --disable-debug
 
 %build
-%{__make}
+export CXXFLAGS="%{?optflags}"
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DCMAKE_SKIP_RPATH=1 -DCMAKE_SKIP_INSTALL_RPATH=1 -DCMAKE_SKIP_BUILD_RPATH=1 -DCMAKE_PREFIX_PATH=${_prefix}/lib64/cmake/Qore .
+make %{?_smp_mflags}
+make %{?_smp_mflags} docs
+sed -i 's/#!\/usr\/bin\/env qore/#!\/usr\/bin\/qore/' test/*.qtest examples/*
+%if 0%{?suse_version}
+#%fdupes -s docs/json
+%endif
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{module_dir}
-mkdir -p $RPM_BUILD_ROOT/%{user_module_dir}
-mkdir -p $RPM_BUILD_ROOT/usr/share/doc/qore-json-module
-make install DESTDIR=$RPM_BUILD_ROOT
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install %{?_smp_mflags}
+#chmod 0755 /usr/lib64/qore-modules/json-api-1.3.qmod
 
 %files
 %defattr(-,root,root,-)
@@ -103,9 +105,15 @@ rm -rf $RPM_BUILD_ROOT
 %{user_module_dir}
 %doc COPYING.LGPL COPYING.MIT README RELEASE-NOTES AUTHORS
 
+%check
+qore -l ./json-api-1.3.qmod test/JsonRpcClient.qtest -v
+qore -l ./json-api-1.3.qmod test/JsonRpcHandler.qtest -v
+qore -l ./json-api-1.3.qmod test/json.qtest -v
+
 %package doc
 Summary:        JSON module for Qore
 Group:          Development/Languages
+BuildArch:      noarch
 
 %description doc
 This package contains the HTML documentation and example programs for the Qore
@@ -113,6 +121,6 @@ json module.
 
 %files doc
 %defattr(-,root,root,-)
-%doc docs/json/html docs/JsonRpcHandler/html examples/ test/
+%doc docs/json docs/JsonRpcConnection docs/JsonRpcHandler test examples
 
 %changelog

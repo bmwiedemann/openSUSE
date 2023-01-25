@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 23 16:14:28 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Recommends sway-branding-openSUSE and add sway-branding.patch
+  which uses the stylesheet it provides (it is not error for
+  wofi to point to non-existent stylesheet, so it is optional
+  dependency, and if somebody desires not to use openSUSEway
+  style, they are free to do so).
+
+-------------------------------------------------------------------
 Mon Jul 11 08:53:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file to make rpmlint happy.

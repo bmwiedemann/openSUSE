@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpeg-4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,6 +122,7 @@ Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
 Patch12:        ffmpeg-CVE-2022-3964.patch
 Patch13:        ffmpeg-CVE-2022-3109.patch
+Patch14:        ffmpeg-CVE-2022-3341.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

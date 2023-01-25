@@ -719,4 +719,14 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment></comment>
     <requestid>1034799</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>57fb50561f804aad0833cc1d92b61156</srcmd5>
+    <version>1.18.0</version>
+    <time>1674585747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream keyring: https://gnupg.org/signature_key.asc
+
+- add python311.patch to build language bindings for python 3.11</comment>
+    <requestid>1060479</requestid>
+  </revision>
 </revisionlist>

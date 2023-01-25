@@ -1,7 +1,7 @@
 #
 # spec file for package lastpass-cli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lastpass-cli
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        LastPass command line interface tool
 License:        GPL-2.0-only

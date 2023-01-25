@@ -1,7 +1,7 @@
 #
 # spec file for package dracut
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        057+suse.353.g6dab83eb
+Version:        059+suse.358.g8ecd6e83
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,6 +43,7 @@ BuildRequires:  rust
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(systemd) >= 219
 Requires:       %{_bindir}/get_kernel_version
+Requires:       awk
 Requires:       bash
 Requires:       coreutils
 Requires(post): coreutils
@@ -57,6 +58,7 @@ Requires:       modutils
 Requires:       pigz
 Requires:       sed
 Requires:       systemd >= 219
+Recommends:     (tpm2.0-tools if tpm2-0-tss)
 Requires:       udev > 166
 Requires:       util-linux >= 2.21
 Requires:       util-linux-systemd >= 2.36.2
@@ -81,6 +83,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       libcryptsetup12-hmac
 Requires:       libgcrypt20-hmac
 Requires:       libkcapi-tools
+Requires:       libopenssl1_1-hmac
 
 %description fips
 This package requires everything which is needed to build an
@@ -355,6 +358,9 @@ fi
 %{dracutlibdir}/modules.d/01systemd-ldconfig
 %{dracutlibdir}/modules.d/01systemd-modules-load
 %{dracutlibdir}/modules.d/01systemd-networkd
+%{dracutlibdir}/modules.d/01systemd-pcrphase
+%{dracutlibdir}/modules.d/01systemd-portabled
+%{dracutlibdir}/modules.d/01systemd-pstore
 %{dracutlibdir}/modules.d/01systemd-repart
 %{dracutlibdir}/modules.d/01systemd-resolved
 %{dracutlibdir}/modules.d/01systemd-rfkill
@@ -391,6 +397,9 @@ fi
 %endif
 %{dracutlibdir}/modules.d/80lvmmerge
 %{dracutlibdir}/modules.d/80lvmthinpool-monitor
+%exclude %{dracutlibdir}/modules.d/80test
+%exclude %{dracutlibdir}/modules.d/80test-makeroot
+%exclude %{dracutlibdir}/modules.d/80test-root
 %ifarch s390 s390x
 %{dracutlibdir}/modules.d/81cio_ignore
 %endif
@@ -399,6 +408,7 @@ fi
 %{dracutlibdir}/modules.d/90dm
 %{dracutlibdir}/modules.d/90dmraid
 %{dracutlibdir}/modules.d/90dmsquash-live
+%{dracutlibdir}/modules.d/90dmsquash-live-autooverlay
 %{dracutlibdir}/modules.d/90dmsquash-live-ntfs
 %{dracutlibdir}/modules.d/90kernel-modules-extra
 %{dracutlibdir}/modules.d/90kernel-modules
@@ -408,6 +418,7 @@ fi
 %{dracutlibdir}/modules.d/90mdraid
 %{dracutlibdir}/modules.d/90multipath
 %{dracutlibdir}/modules.d/90nvdimm
+%{dracutlibdir}/modules.d/90overlayfs
 %{dracutlibdir}/modules.d/90qemu
 %{dracutlibdir}/modules.d/90qemu-net
 %{dracutlibdir}/modules.d/91crypt-gpg

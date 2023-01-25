@@ -17,7 +17,7 @@
 
 
 Name:           linuxrc
-Version:        8.16
+Version:        8.19
 Release:        0
 Summary:        SUSE Installation Program
 License:        GPL-3.0+

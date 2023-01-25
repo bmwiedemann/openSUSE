@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jan 16 19:14:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2
+  * exmdb_provider: repair SQL logic errors showing up when a
+    folder's contents are requested in Conversation mode
+  * exmdb_provider: only delete links, not messages, from search
+    folders
+  * tools: add --integrity option for mkprivate, mkpublic, mkmidb
+
+-------------------------------------------------------------------
 Thu Jan 12 11:39:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1

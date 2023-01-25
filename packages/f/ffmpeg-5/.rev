@@ -90,4 +90,12 @@
     <comment>- build for x86_64 subarchs the same way like for baseline (forwarded request 1042488 from dirkmueller)</comment>
     <requestid>1042490</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>e720983e61a86c8a5dc876a3a69c5891</srcmd5>
+    <version>5.1.2</version>
+    <time>1674589370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060634</requestid>
+  </revision>
 </revisionlist>

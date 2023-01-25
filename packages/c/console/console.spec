@@ -1,7 +1,7 @@
 #
 # spec file for package console
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        A simple user-friendly terminal emulator for the GNOME desktop
 License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 66b225e.patch -- style: Use accent_fg_color properly
+Patch:          https://gitlab.gnome.org/GNOME/console/-/commit/66b225e.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler

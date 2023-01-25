@@ -1,7 +1,7 @@
 #
 # spec file for package ip2unix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  python3
 BuildRequires:  python3-pytest
 BuildRequires:  pkgconfig(yaml-cpp) >= 0.5.0
 # systemd-socket-activate is used in tests
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 
 %description
 Executes a program and converts IP to Unix domain sockets at runtime based on a

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 23 12:38:50 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.8.0:
+  * Bug Fixes
+    + Update help menu for disk and temperature widgets with
+      sorting support.
+    + Fix time graph labels not being styled.
+  * Features
+    + Split usage into both usage percentage and usage value.
+  * Changes
+    + Hide battery duration section if the value is unknown. Also
+      update shortened text.
+    + Automatically hide the battery widget if no batteries are
+      found but --battery is enabled.
+
+-------------------------------------------------------------------
 Fri Jan  6 20:51:48 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.7.1:

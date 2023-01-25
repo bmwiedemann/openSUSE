@@ -48,4 +48,17 @@
     <comment></comment>
     <requestid>967200</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>966f461d9e733ba8c8994b2c745cfb37</srcmd5>
+    <version>4.2.2</version>
+    <time>1674585762</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix source name
+
+- update to 4.2.2
+  * Use std::string instead of std::wstring as it handles the utf-8 conversion.
+  * Properly quote CMAKE_OSX_ARCHITECTURES for macOS.
+  * Correct schema update message.</comment>
+    <requestid>1060591</requestid>
+  </revision>
 </revisionlist>

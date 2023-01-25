@@ -7,4 +7,16 @@
     <comment>wofi frontend for pass (for using pass in Wayland-based window managers like Sway).</comment>
     <requestid>988313</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cbbdbc0e90d0288111a00657a9e367d</srcmd5>
+    <version>0.0~git.1646651169.572c0ef</version>
+    <time>1674585792</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommends sway-branding-openSUSE and add sway-branding.patch
+  which uses the stylesheet it provides (it is not error for
+  wofi to point to non-existent stylesheet, so it is optional
+  dependency, and if somebody desires not to use openSUSEway
+  style, they are free to do so).</comment>
+    <requestid>1060530</requestid>
+  </revision>
 </revisionlist>

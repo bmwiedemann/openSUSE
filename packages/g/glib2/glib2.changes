@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 19 14:50:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.74.5:
+  + Bugs fixed: glgo#GNOME/GLib#2843, glgo#GNOME/GLib#2881,
+    glgo#GNOME/GLib#2883, glgo#GNOME/GLib!3165,
+    glgo#GNOME/GLib!3166, glgo#GNOME/GLib!3182,
+    glgo#GNOME/GLib!3197, glgo#GNOME/GLib!3204,
+    glgo#GNOME/GLib!3214.
+  + Updated translations.
+- Drop 1539540.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Dec 22 13:01:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.4:

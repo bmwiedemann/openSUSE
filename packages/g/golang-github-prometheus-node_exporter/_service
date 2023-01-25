@@ -4,11 +4,11 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.3.1</param>
+    <param name="revision">v1.5.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
@@ -16,6 +16,6 @@
     <param name="basename">node_exporter</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">node_exporter-1.3.1.tar.gz</param>
+    <param name="archive">node_exporter-1.5.0.tar.gz</param>
   </service>
 </services>

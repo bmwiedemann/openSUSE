@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.20.1
+Version:        6.20.2
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause

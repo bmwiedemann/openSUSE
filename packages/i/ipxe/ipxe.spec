@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           ipxe
-Version:        1.21.1+git20210908.02ec659b
+Version:        1.21.1+git20230120.a99e435c
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
@@ -31,14 +31,14 @@ Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  binutils-devel
-%ifarch aarch64
+%ifnarch %{ix86} x86_64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-x86_64-gcc7
 %else
 BuildRequires:  cross-x86_64-gcc%{gcc_version}
 %endif
 %endif
-%ifarch x86_64
+%ifnarch aarch64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-aarch64-gcc7
 %else
@@ -48,13 +48,14 @@ BuildRequires:  cross-aarch64-gcc%{gcc_version}
 BuildRequires:  perl
 %ifarch %{ix86} x86_64
 BuildRequires:  syslinux
-%endif
 BuildRequires:  xorriso
+%endif
 BuildRequires:  xz-devel
+# Does not build on bigendian
+ExcludeArch:    s390 s390x ppc ppc64
 # ix86 does not have a cross-x86_64 gcc available so it can't build
 # the x86_64 ipxe code. As a result of which, the support for ix86
 # is more limited.
-ExclusiveArch:  %{ix86} x86_64 aarch64
 
 %description
 iPXE is a network bootloader. It provides a direct
@@ -79,29 +80,42 @@ UNDI formats. EFI is supported, too.
 %build
 cd src
 
+# enable compressed images
+sed -i.bak \
+    -e 's,//\(#define.*IMAGE_ZLIB.*\),\1,' \
+    -e 's,//\(#define.*IMAGE_GZIP.*\),\1,' \
+    config/general.h
+
 make_ipxe() {
     # https://github.com/ipxe/ipxe/issues/620
     [ `gcc -dumpversion` -ge 12 ] && TAG="NO_WERROR=1" || TAG=""
-    make %{?_smp_mflags} V=1 \
+    make -O %{?_smp_mflags} V=1 \
         VERSION=%{version} $TAG "$@"
 }
 
 %ifarch %{ix86} x86_64
 make_ipxe bin-i386-efi/ipxe.efi
 make_ipxe bin-i386-efi/snp.efi
+%else
+make_ipxe CROSS="x86_64-suse-linux-" bin-i386-efi/ipxe.efi
+make_ipxe CROSS="x86_64-suse-linux-" bin-i386-efi/snp.efi
 %endif
 
 %ifarch x86_64
-# ix86 can't cross-compile
 make_ipxe bin-x86_64-efi/ipxe.efi
 make_ipxe bin-x86_64-efi/snp.efi
-make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi
+%else
+# ix86 can't cross-compile
+%ifnarch %{ix86}
+make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/ipxe.efi
+make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/snp.efi
+%endif
 %endif # x86_64
 
 %ifarch aarch64
-make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/ipxe.efi
-make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/snp.efi
 make_ipxe bin-arm64-efi/snp.efi
+%else
+make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi
 %endif
 
 make_ipxe \
@@ -116,29 +130,25 @@ mkdir -p %{buildroot}/%{_datadir}/%{name}.efi/
 
 install -D -m0644 src/bin/undionly.kpxe %{buildroot}/%{_datadir}/%{name}/
 install -D -m0644 src/bin/ipxe.{%{buildtargets}} %{buildroot}/%{_datadir}/%{name}/
-%ifarch %{ix86} x86_64
 install -D -m0644 src/bin-i386-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-i386.efi
 install -D -m0644 src/bin-i386-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-i386.efi
-%endif
 %ifnarch %{ix86}
 install -D -m0644 src/bin-x86_64-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-x86_64.efi
 install -D -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-x86_64.efi
-install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi
 %endif
+install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi
 
 %files bootimgs
 %defattr(-,root,root)
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/ipxe.{%{buildtargets}}
-%ifarch %{ix86} x86_64
 %{_datadir}/%{name}/ipxe-i386.efi
 %{_datadir}/%{name}/snp-i386.efi
-%endif
 %ifnarch %{ix86}
 %{_datadir}/%{name}/ipxe-x86_64.efi
 %{_datadir}/%{name}/snp-x86_64.efi
-%{_datadir}/%{name}/snp-arm64.efi
 %endif
+%{_datadir}/%{name}/snp-arm64.efi
 %{_datadir}/%{name}/undionly.kpxe
 %license COPYING COPYING.GPLv2 COPYING.UBDL
 
