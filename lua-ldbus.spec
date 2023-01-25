@@ -1,7 +1,7 @@
 #
 # spec file for package lua-ldbus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/daurnimator/ldbus/
 Source:         lua-ldbus-%{version}.tar.xz
 Patch0:         lua54.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 %if 0%{?suse_version} < 1330
 BuildRequires:  dbus-1-devel
@@ -46,6 +47,7 @@ ldbus is a C binding to dbus for Lua.
 
 %prep
 %autosetup -n lua-ldbus-%{version} -p1
+
 %if "%{flavor}" != "lua53"
 sed -i -e "s/lua5.3/lua%{lua_version}/" src/Makefile
 %endif
@@ -58,7 +60,7 @@ export CFLAGS="$CFLAGS -Ivendor/compat-5.3"
 %endif
 %endif
 cd src
-%make_build
+make %{?_make_output_sync} %{?_smp_mflags}
 
 %install
 cd src
