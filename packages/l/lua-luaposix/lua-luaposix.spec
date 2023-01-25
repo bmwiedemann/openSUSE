@@ -31,6 +31,7 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/luaposix/luaposix
 Source0:        https://github.com/luaposix/luaposix/archive/v%{version}/%{mod_name}-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
