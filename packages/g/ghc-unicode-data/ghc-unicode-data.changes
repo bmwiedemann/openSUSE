@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 17 16:15:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unicode-data to version 0.4.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Dec 17 21:27:17 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unicode-data to version 0.4.0.1.
