@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:11:01 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to reduce the requirement of python 3.7 to work with
+  python 3.6 so borgmatic can be used in Leap 15.5 . All the tests
+  work fine so it seems python 3.7 isn't really required:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
 Mon Nov 28 10:07:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.7.5:
