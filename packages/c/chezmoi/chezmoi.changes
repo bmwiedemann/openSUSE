@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:24:38 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.29.4:
+  * fix: Revert buggy diff library
+
+-------------------------------------------------------------------
 Tue Jan 24 18:10:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.29.3:
