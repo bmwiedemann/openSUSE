@@ -1,0 +1,15 @@
+<package name="cpp-httplib" project="openSUSE:Factory">
+  <title>A C++11 cross platform HTTP/HTTPS library</title>
+  <description>Features:
+- Built-in mappings
+- Static file server
+- Post routing handler
+- Pre routing handler
+- Receive content with a content receiver
+- Bind a socket to multiple interfaces and any available port
+NOTE: This is a multi-threaded 'blocking' HTTP library.
+If you are looking for a 'non-blocking' library, this is not the one that you want.
+</description>
+  <devel project="devel:libraries:c_c++" package="cpp-httplib"/>
+  <url>https://github.com/yhirose/cpp-httplib</url>
+</package>

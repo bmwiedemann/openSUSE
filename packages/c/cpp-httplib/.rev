@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8cd30b362127239f843263a0b112bce1</srcmd5>
+    <version>0.11.4</version>
+    <time>1674664969</time>
+    <user>dimstar_suse</user>
+    <comment>Migrate from obscpio to classical tar.gz sources archive for properly debugsource package building</comment>
+    <requestid>1060703</requestid>
+  </revision>
+</revisionlist>

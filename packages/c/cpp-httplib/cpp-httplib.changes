@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Jan 24 20:14:49 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Migrate from obscpio to classical tar.gz sources archive for properly
+  debugsource package building
+
+-------------------------------------------------------------------
+Tue Jan 17 10:14:59 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to version 0.11.4:
+  * add support for requests with both MultipartFormDataItems and Content Providers (#1454)
+  * Add EINTR and EAGAIN judge for accept (#1438)
+  * Updated unit test
+  * std::condition_variable::notify_one/all() should be called after unlocking mutex (#1448)
+  * Support LOCAL_ADDR and LOCAL_PORT header in client Request (#1450)
+  * Fix #1442
+  * Removed code for upsupported OpenSSL
+- Combined multibuild cpp-httplib and cpp-httplib-headers packages
+- Remove unneeded BuildRequires for cpp-httplib-headers
+
+-------------------------------------------------------------------
+Mon Jan 16 17:53:43 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Move LICENSE file to the library package
+- Drop cmake BuildRequires and linker additional "-s" flag
+
+-------------------------------------------------------------------
+Mon Jan  2 11:26:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Redo description so it does not rely on monospace formatting.
+
+-------------------------------------------------------------------
+Mon Dec 26 10:41:44 UTC 2022 - Alexey Svistunov <svalx@svalx.net>
+
+- Move README.md to devel subpackage
+
+-------------------------------------------------------------------
+Mon Dec 26 09:13:54 UTC 2022 - svalx@svalx.net
+
+- Update to version 0.11.3:
+  * Fix #1426
+  * Fix #1437
+  * Windows CMake directory install fix (#1434)
+
+-------------------------------------------------------------------
+Fri Dec 23 08:53:05 UTC 2022 - Alexey Svistunov <svalx@svalx.net>
+
+- Initial release
+

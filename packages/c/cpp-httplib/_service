@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/yhirose/cpp-httplib.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(\d.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
