@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 25 04:51:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 109.0.5414.119 (boo#1207512):
+  * CVE-2023-0471: Use after free in WebTransport
+  * CVE-2023-0472: Use after free in WebRTC
+  * CVE-2023-0473: Type Confusion in ServiceWorker API
+  * CVE-2023-0474: Use after free in GuestView
+  * Various fixes from internal audits, fuzzing and other
+    initiatives
+
+-------------------------------------------------------------------
 Tue Jan 17 21:03:29 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added patches:
