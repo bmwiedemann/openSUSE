@@ -114,13 +114,13 @@ install -D -m 644 -p %{SOURCE5} %{buildroot}/%{_docdir}/kbfs-tool/README.SUSE
 
 %check
 cd go
-%{gotest} github.com/keybase/client/go/keybase
+%{gotest} -cpu 1 github.com/keybase/client/go/keybase
 %ifnarch i586 arm armv7hl # kbfs tests are flacky on 32-bit archs
-%{gotest} github.com/keybase/client/go/kbfs/test
-%{gotest} github.com/keybase/client/go/kbfs/test -tags fuse
+%{gotest} -cpu 1 github.com/keybase/client/go/kbfs/test
+%{gotest} -cpu 1 github.com/keybase/client/go/kbfs/test -tags fuse
 %endif
-%{gotest} github.com/keybase/client/go/kbfs/kbfstool
-%{gotest} github.com/keybase/client/go/kbfs/kbfsgit/git-remote-keybase
+%{gotest} -cpu 1 github.com/keybase/client/go/kbfs/kbfstool
+%{gotest} -cpu 1 github.com/keybase/client/go/kbfs/kbfsgit/git-remote-keybase
 
 %post
 %systemd_user_post keybase.service

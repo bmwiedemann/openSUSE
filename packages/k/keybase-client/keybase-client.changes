@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 07:52:35 UTC 2023 - Matthias Bach <marix@marix.org> - 6.0.2
+
+- Limit parallel test execution as that seems to cause failing
+  builds on OBS that don't occur locally.
+
+-------------------------------------------------------------------
 Sat Jan 21 13:56:32 UTC 2023 - Matthias Bach <marix@marix.org> - 6.0.2
 
 - Integrate KBFS packages previously build via own source package

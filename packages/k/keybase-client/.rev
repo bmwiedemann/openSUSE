@@ -215,4 +215,14 @@
 - Drop unnessecary use of gofilelist macro.</comment>
     <requestid>1060407</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4b4b78a6b9182567056fd86d75a05963</srcmd5>
+    <version>6.0.2</version>
+    <time>1674665041</time>
+    <user>dimstar_suse</user>
+    <comment>- Limit parallel test execution as that seems to cause failing
+  builds on OBS that don't occur locally.
+</comment>
+    <requestid>1060798</requestid>
+  </revision>
 </revisionlist>
