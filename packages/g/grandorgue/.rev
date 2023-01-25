@@ -7,4 +7,12 @@
     <comment>Virtual pipe organ software I’ld like to have in Tumbleweed</comment>
     <requestid>1044313</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93bfb5ba95b59bec28b6b57609033edc</srcmd5>
+    <version>3.9.5</version>
+    <time>1674664982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060709</requestid>
+  </revision>
 </revisionlist>

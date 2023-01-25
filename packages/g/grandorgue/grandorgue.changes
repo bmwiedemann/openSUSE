@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 24 22:39:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.9.5-1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.9.5-1
+  * Fixed saving position when some panel is outside the screen area #1271
+  * Fixed playing release samples for very short notes #1222
+  * Fixed help: the wrong panel positioning on wayland was documented #1271
+  * Fixed typos and spelling errors in the Help
+  * Fixed continuing loading an organ after an exception in one loading thread
+  * Fixed size of text fields in the Organ Settings dialog on OsX #1315
+  * Fixed missing the object filename in an error message if some exception occured when loading this object
+
+-------------------------------------------------------------------
 Tue Dec 13 22:31:14 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.9.4-1.
