@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan  9 07:48:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.6:
+  * Turn off autodetect after FILE_FORMAT
+
+-------------------------------------------------------------------
 Sun Dec  4 21:21:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.5:
