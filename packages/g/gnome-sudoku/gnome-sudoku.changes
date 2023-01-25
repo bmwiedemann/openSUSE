@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 24 16:07:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Revert "Fix redundant undo stack entries for earmarks".
+  + Warnings when solution to puzzle is violated no longer consider
+    earmarks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 15 16:13:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
