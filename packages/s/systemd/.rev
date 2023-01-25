@@ -6295,4 +6295,15 @@ handle manual pages that consist only of a .so directive such as
   They are part of v252.4.</comment>
     <requestid>1056400</requestid>
   </revision>
+  <revision rev="377" vrev="2">
+    <srcmd5>5f4c1a8723a517111e0f556a3555b68c</srcmd5>
+    <version>252.4</version>
+    <time>1674664960</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop 1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
+  It's no more necessary since util-linux 2.38 has been released in Factory.
+
+- Make sure we apply the presets on units shipped by systemd package</comment>
+    <requestid>1060655</requestid>
+  </revision>
 </revisionlist>

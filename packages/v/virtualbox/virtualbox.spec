@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,12 +51,12 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.4
+Version:        7.0.6
 Release:        0
 Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-License:        GPL-2.0-or-later
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+License:        GPL-2.0-or-later
 Group:          %{package_group}
 URL:            https://www.virtualbox.org/
 #
@@ -195,7 +195,7 @@ BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  libelf-devel
 BuildRequires:  libidl-devel
-BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl-devel
 BuildRequires:  libopus-devel
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-linguist-devel
@@ -316,6 +316,9 @@ the terms of the GNU Public License (GPL).
 
 
 
+
+
+
 ##########################################
 
 %package qt
@@ -355,6 +358,9 @@ This package contains the code for the GUI used to control VMs.
 
 
 
+
+
+
 #########################################
 
 %package websrv
@@ -367,6 +373,9 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
+
+
+
 
 
 
@@ -432,6 +441,9 @@ VirtualBox guest addition tools.
 
 
 
+
+
+
 ###########################################
 
 %package -n python3-%{name}
@@ -472,6 +484,9 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
+
+
 ###########################################
 
 %package devel
@@ -485,6 +500,9 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
+
+
 
 
 
@@ -559,6 +577,9 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
+
+
+
 ###########################################
 
 %package guest-desktop-icons
@@ -570,6 +591,9 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
+
+
 
 
 

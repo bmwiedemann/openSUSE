@@ -114,4 +114,13 @@
     - Document IDL support in IDEs</comment>
     <requestid>993435</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>012abbc2fee0f6c8fc439bad6a661976</srcmd5>
+    <version>1.11.1</version>
+    <time>1674665075</time>
+    <user>dimstar_suse</user>
+    <comment>- Add py311.patch to make tests compatible with python 3.11 gh#apache/avro#1961
+</comment>
+    <requestid>1060888</requestid>
+  </revision>
 </revisionlist>

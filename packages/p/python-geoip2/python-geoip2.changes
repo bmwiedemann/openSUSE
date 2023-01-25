@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 23 16:42:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests for python 3.11. python-mocket currently does not work
+  with python 3.11, so we should disable tests that uses it until it's
+  supported.
+
+  See these issues:
+  gh#maxmind/GeoIP2-python@3b0dbb1eb990
+  gh#mindflayer/python-mocket#181
+  gh#benoitc/http-parser#95
+
+-------------------------------------------------------------------
 Mon Jul  4 07:11:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.6.0:

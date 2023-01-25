@@ -1,7 +1,7 @@
 #
 # spec file for package OpenBoard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ Patch9117:      9117-disable-software-update.patch
 Patch9686:      9686-cmake-add-shortcut-manager.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(Qt5Concurrent)
@@ -63,6 +62,7 @@ BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(poppler)
 BuildRequires:  pkgconfig(quazip1-qt5)

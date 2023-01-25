@@ -1,0 +1,14 @@
+Index: avro-1.11.1/avro/compatibility.py
+===================================================================
+--- avro-1.11.1.orig/avro/compatibility.py
++++ avro-1.11.1/avro/compatibility.py
+@@ -49,6 +49,9 @@ class SchemaType(str, Enum):
+     STRING = "string"
+     UNION = "union"
+ 
++    def __str__(self):
++        return self.value
++
+ 
+ class SchemaCompatibilityType(Enum):
+     compatible = "compatible"

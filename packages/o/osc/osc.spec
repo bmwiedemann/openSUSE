@@ -62,7 +62,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        debian.dirs
 Source2:        debian.docs
 %endif
-
+Patch1:         https://github.com/openSUSE/osc/pull/1228.patch
+Patch2:         https://github.com/openSUSE/osc/pull/1217.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

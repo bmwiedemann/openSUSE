@@ -24,8 +24,10 @@
 %{!?_pam_moduledir:%global _pam_moduledir /%{_lib}/security}
 %if 0%{?suse_version} > 1500
 %{!?_pam_vendordir:%global _pam_vendordir %{_prefix}/lib/pam.d}
+%global samba_pamdir %_pam_vendordir
 %else
 %{!?_pam_confdir:%global _pam_confdir %{_sysconfdir}/pam.d}
+%global samba_pamdir %_pam_confdir
 %endif
 %{!?_pam_secconfdir:%global _pam_secconfdir %{_sysconfdir}/security}
 
@@ -157,7 +159,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.4+git.303.89e23854eb7
+Version:        4.17.4+git.314.7b07e3c51a6
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -716,13 +718,8 @@ popd
 
 %install
 
-%if 0%{?suse_version} > 1500
 install -d -m 0755 -p \
-	%{buildroot}/%_pam_vendordir
-%else
-install -d -m 0755 -p \
-	%{buildroot}/%_pam_confdir
-%endif
+	%{buildroot}/%samba_pamdir
 
 install -d -m 0755 -p \
 	%{buildroot}/%{_sysconfdir}/{xinetd.d,logrotate.d} \
@@ -760,8 +757,7 @@ make %{?_smp_mflags} install \
 rm \
 	%{buildroot}/%{_mandir}/man8/samba.8* \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8* \
-	%{buildroot}/%{_unitdir}/samba-ad-dc.service \
-	%{buildroot}/%{_libdir}/samba/libdsdb-module-samba4.so
+	%{buildroot}/%{_unitdir}/samba-ad-dc.service
 %endif
 
 # CTDB
@@ -837,11 +833,7 @@ install -m 0755 tools/update-apparmor-samba-profile \
 # PDF generator
 install -p -m 0755 tools/smbprngenpdf %{buildroot}/%{_bindir}/smbprngenpdf
 install -m 0644 config/samba.reg %{buildroot}/%{_sysconfdir}/slp.reg.d/samba.reg
-%if 0%{?suse_version} > 1500
-install -m 0644 config/samba.pamd-common %{buildroot}/%_pam_vendordir/samba
-%else
-install -m 0644 config/samba.pamd-common %{buildroot}/%_pam_confdir/samba
-%endif
+install -m 0644 config/samba.pamd-common %{buildroot}/%samba_pamdir/samba
 install -m 0644 config/dhcp.conf %{buildroot}/%{_fillupdir}/samba-client-dhcp.conf
 install -m 0644 config/sysconfig.dhcp-samba-client %{buildroot}/%{_fillupdir}/sysconfig.dhcp-samba-client
 
@@ -1134,9 +1126,9 @@ exit 0
 %ghost %{CONFIGDIR}/smbpasswd
 %config(noreplace) %{CONFIGDIR}/smbusers
 %if 0%{?suse_version} > 1500
-%_pam_vendordir/samba
+%samba_pamdir/samba
 %else
-%config %_pam_confdir/samba
+%config %samba_pamdir/samba
 %endif
 %{_sysconfdir}/slp.reg.d
 %dir %{_libdir}/samba
@@ -1527,6 +1519,7 @@ exit 0
 %{_libdir}/samba/libREG-FULL-samba4.so
 %{_libdir}/samba/libRPC-SERVER-LOOP-samba4.so
 %{_libdir}/samba/libRPC-WORKER-samba4.so
+%{_libdir}/samba/libdsdb-module-samba4.so
 %if ! %{with_mitkrb5}
 %{_libdir}/samba/libasn1-samba4.so
 %{_libdir}/samba/libcom-err-samba4.so
@@ -1865,7 +1858,6 @@ exit 0
 %files ad-dc-libs
 %defattr(-,root,root)
 %{_libdir}/samba/libdb-glue-samba4.so
-%{_libdir}/samba/libdsdb-module-samba4.so
 %{_libdir}/samba/libdsdb-garbage-collect-tombstones-samba4.so
 %{_libdir}/samba/libscavenge-dns-records-samba4.so
 %{_libdir}/samba/libprocess-model-samba4.so

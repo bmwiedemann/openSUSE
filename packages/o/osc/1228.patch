@@ -1,0 +1,23 @@
+From 732ff678e789e7624e6d15b2ad641dba3828e4d7 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Wed, 25 Jan 2023 11:38:08 +0100
+Subject: [PATCH] Fix osc.get_request_list ignoring the req_type parameter
+
+---
+ osc/core.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/osc/core.py b/osc/core.py
+index 0e8d027ac..bdce9e94c 100644
+--- a/osc/core.py
++++ b/osc/core.py
+@@ -4741,6 +4741,9 @@ def get_request_list(
+         "states": req_state,
+     }
+ 
++    if req_type is not None:
++        kwargs["types"] = [req_type]
++
+     assert not exclude_target_projects, "unsupported"
+     assert not withfullhistory, "unsupported"
+ 

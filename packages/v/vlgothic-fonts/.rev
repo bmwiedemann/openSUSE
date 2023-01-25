@@ -91,4 +91,13 @@
     <comment></comment>
     <requestid>1056991</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f9593ec56f565047701998ced17efd07</srcmd5>
+    <version>20220612</version>
+    <time>1674665044</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner run
+- fix URL (forwarded request 1060827 from dirkmueller)</comment>
+    <requestid>1060831</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ajsonrpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ajsonrpc
 Version:        1.2.0
 Release:        0
@@ -49,9 +48,13 @@ Async JSON-RPC 2.0 protocol + server powered by asyncio.
 %check
 # 1 test fails on python 3.6
 # See https://github.com/pavlov99/ajsonrpc/issues/19
-%if 0%{?suse_version} > 1530
-%__python38 -m unittest -v
-%endif
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+if [ %{$python_version} != "3.6" ]
+then
+  rm -rf _build*
+  $python -m pytest -v
+fi
+}
 
 %post
 %python_install_alternative async-json-rpc-server
@@ -63,6 +66,7 @@ Async JSON-RPC 2.0 protocol + server powered by asyncio.
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/async-json-rpc-server
-%{python_sitelib}/*
+%{python_sitelib}/ajsonrpc
+%{python_sitelib}/ajsonrpc-%{version}*-info
 
 %changelog

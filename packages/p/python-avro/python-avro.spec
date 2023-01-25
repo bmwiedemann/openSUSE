@@ -1,7 +1,7 @@
 #
 # spec file for package python-avro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-avro
 Version:        1.11.1
@@ -26,6 +25,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://avro.apache.org/
 Source:         https://files.pythonhosted.org/packages/source/a/avro/avro-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: py311.patch gh#apache/avro#1961
+Patch:          py311.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +44,7 @@ Apache Avro is a serialization and RPC framework.
 This package contains the python implementation of Avro.
 
 %prep
-%setup -q -n avro-%{version}
+%autosetup -p1 -n avro-%{version}
 sed -i '1{\@^#!/usr/bin/env python@d}' avro/*.py avro/tether/*.py avro/test/*.py
 
 %build

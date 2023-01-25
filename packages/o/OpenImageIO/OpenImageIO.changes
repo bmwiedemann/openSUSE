@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:15:32 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- BuildRequire pkgconfig(libavdevice) instead of ffmpeg-devel: let
+  OBS figure out the right packages that do not conlfict.
+
+-------------------------------------------------------------------
 Mon Jan  2 14:02:00 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 2.4.7.0

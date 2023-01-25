@@ -15,4 +15,42 @@
     <comment></comment>
     <requestid>944518</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75cd32c57dac17884bd223c20403fdc2</srcmd5>
+    <version>0.9.20</version>
+    <time>1674664988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.9.20
+  * free AEADObject's and HeaderProtectionObject's memory
+  * free BufferObject’s memory
+  * Enable IPv4/IPv6 dual stack support on Windows
+  * [docs] add a logo, stop mocking libraries
+  * [docs] test that documentation can be built without warnings
+  * [tests] clarify the various handshake loss test cases
+  * [connection] retransmit CRYPTO to speedup handshake completion
+  * [examples] update DoQ examples for more recent drafts (fixes: #224)
+  * [lint] run mypy on each CI run
+- 0.9.19
+  * [tls] use PyOpenSSL to validate certificate
+  * [qa] set better names for our C modules
+  * [package] drop dependency on &quot;dataclasses&quot; package
+  * [package] update cryptography requirement to &gt;= 3.1
+  * [qa] fix some type annotations
+  * [http3] advertise support for extended CONNECT
+  * [examples] make HTTP/3 client set content-length (fixes: #241)
+  * [package] fix macosx arm64 wheels
+- 0.9.18
+  * [examples] add sec-webtransport-http3-draft to server response
+  * [package] update OpenSSL to 1.1.1m
+  * [tests] rewrite asyncio tests as coroutines
+  * [qa] reformat code using updated `black`
+  * [qa] tell git to ignore virtual environments
+  * http3_client.py: correct error code for connection close
+  * [webtransport] make H3_DATAGRAM value uppercase
+  * [webtransport] update H3_DATAGRAM value
+  * [readme] update minimal Python version
+  * [examples] don't sent HTTP/3 DATA if there is no request body
+</comment>
+    <requestid>1060790</requestid>
+  </revision>
 </revisionlist>

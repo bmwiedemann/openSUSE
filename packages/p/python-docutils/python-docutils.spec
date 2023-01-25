@@ -45,11 +45,13 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-Pygments
+Requires:       python-packaging
 Recommends:     python-roman
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module roman}
 %endif
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"

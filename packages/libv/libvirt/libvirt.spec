@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -162,7 +162,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.10.0
+Version:        9.0.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -304,6 +304,8 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         ef482951-apparmor-Allow-umount-dev.patch
+Patch1:         d6a8b9ee-qemu-Fix-managed-no-when-creating-ethdev.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1481,9 +1483,9 @@ fi
 %{_sbindir}/virtproxyd
 %{_sbindir}/virtlogd
 %{_sbindir}/virtlockd
-%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/
 %attr(0755, root, root) %{_libexecdir}/libvirt-guests.sh
-%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks/
 %{_unitdir}/libvirtd.service
 %{_unitdir}/libvirtd.socket
 %{_unitdir}/libvirtd-ro.socket
@@ -1519,8 +1521,8 @@ fi
 %dir %{_sysconfdir}/sasl2/
 %config(noreplace) %{_sysconfdir}/sasl2/libvirt.conf
 %dir %{_datadir}/augeas/
-%dir %{_datadir}/augeas/lenses
-%dir %{_datadir}/augeas/lenses/tests
+%dir %{_datadir}/augeas/lenses/
+%dir %{_datadir}/augeas/lenses/tests/
 %{_datadir}/augeas/lenses/libvirtd.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd.aug
 %{_datadir}/augeas/lenses/virtlogd.aug
@@ -1539,7 +1541,7 @@ fi
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/boot/
 %dir %attr(0711, root, root) %{_localstatedir}/cache/%{name}/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/
-%dir %attr(0755, root, root) %{_libdir}/%{name}/lock-driver
+%dir %attr(0755, root, root) %{_libdir}/%{name}/lock-driver/
 %attr(0755, root, root) %{_libdir}/%{name}/lock-driver/lockd.so
 %if %{with_polkit_rules}
 %{_datadir}/polkit-1/rules.d/50-libvirt.rules
@@ -1557,10 +1559,10 @@ fi
 %doc %{_mandir}/man8/virtlockd.8*
 %doc %{_mandir}/man8/virtproxyd.8*
 %if %{with_apparmor}
-%dir %{_sysconfdir}/apparmor.d
-%dir %{_sysconfdir}/apparmor.d/abstractions
-%dir %{_sysconfdir}/apparmor.d/%{name}
-%dir %{_sysconfdir}/apparmor.d/local
+%dir %{_sysconfdir}/apparmor.d/
+%dir %{_sysconfdir}/apparmor.d/abstractions/
+%dir %{_sysconfdir}/apparmor.d/%{name}/
+%dir %{_sysconfdir}/apparmor.d/local/
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.libvirtd
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.lib.libvirt.virt-aa-helper
 %config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/libvirt-qemu
@@ -1570,11 +1572,11 @@ fi
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.lib.libvirt.virt-aa-helper
 %{_libexecdir}/virt-aa-helper
 %endif
-%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/
 %dir %{_fwdefdir}
 %{_fwdefdir}/libvirtd-relocation-server.xml
-%dir /usr/lib/supportconfig
-%dir /usr/lib/supportconfig/plugins
+%dir /usr/lib/supportconfig/
+%dir /usr/lib/supportconfig/plugins/
 /usr/lib/supportconfig/plugins/libvirt
 
 %files daemon-hooks
@@ -1598,7 +1600,7 @@ fi
 %{_unitdir}/virtinterfaced-admin.socket
 %{_sbindir}/virtinterfaced
 %{_sbindir}/rcvirtinterfaced
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
 %doc %{_mandir}/man8/virtinterfaced.8*
 
@@ -1614,11 +1616,11 @@ fi
 %{_sbindir}/rcvirtnetworkd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/
-%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/autostart
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/qemu/networks/autostart/
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/network/
 %dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/dnsmasq/
 %attr(0755, root, root) %{_libexecdir}/libvirt_leaseshelper
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_network.so
 %if %{with_firewalld_zone}
 %dir %{_prefix}/lib/firewalld/zones/
@@ -1641,7 +1643,7 @@ fi
 %{_unitdir}/virtnodedevd-admin.socket
 %{_sbindir}/virtnodedevd
 %{_sbindir}/rcvirtnodedevd
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nodedev.so
 %doc %{_mandir}/man8/virtnodedevd.8*
 
@@ -1656,7 +1658,7 @@ fi
 %{_sbindir}/virtnwfilterd
 %{_sbindir}/rcvirtnwfilterd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/nwfilter/
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_nwfilter.so
 %doc %{_mandir}/man8/virtnwfilterd.8*
 
@@ -1671,7 +1673,7 @@ fi
 %{_sbindir}/virtsecretd
 %{_sbindir}/rcvirtsecretd
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/secrets/
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_secret.so
 %doc %{_mandir}/man8/virtsecretd.8*
 
@@ -1690,11 +1692,11 @@ fi
 %attr(0755, root, root) %{_libexecdir}/libvirt_parthelper
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/storage/autostart/
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_storage.so
-%dir %{_libdir}/%{name}/storage-backend
+%dir %{_libdir}/%{name}/storage-backend/
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_fs.so
-%dir %{_libdir}/%{name}/storage-file
+%dir %{_libdir}/%{name}/storage-file/
 %{_libdir}/%{name}/storage-file/libvirt_storage_file_fs.so
 %doc %{_mandir}/man8/virtstoraged.8*
 
@@ -1752,7 +1754,7 @@ fi
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/qemu/
 %{_datadir}/augeas/lenses/libvirtd_qemu.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_qemu.so
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/
@@ -1784,7 +1786,7 @@ fi
 %attr(0755, root, root) %{_libexecdir}/libvirt_lxc
 %{_datadir}/augeas/lenses/libvirtd_lxc.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_lxc.so
 %{_bindir}/virt-create-rootfs
 %doc %{_mandir}/man1/virt-create-rootfs.1*
@@ -1817,7 +1819,7 @@ fi
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/dump/
 %dir %attr(0700, root, root) %{_localstatedir}/lib/%{name}/libxl/save/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/libxl/
-%dir %{_libdir}/%{name}/connection-driver
+%dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_libxl.so
 %doc %{_mandir}/man8/virtxend.8*
 %endif
@@ -1869,7 +1871,7 @@ fi
 %{_bindir}/virt-pki-query-dn
 %{_bindir}/virt-pki-validate
 %{_datadir}/bash-completion/completions/virsh
-%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/
 
 %if %{with_qemu}
 %files client-qemu
@@ -1918,7 +1920,7 @@ fi
 %files doc
 %doc AUTHORS.rst NEWS.rst README.rst
 %license COPYING COPYING.LESSER
-%dir %{_datadir}/doc/%{name}
+%dir %{_datadir}/doc/%{name}/
 %doc %{_datadir}/doc/%{name}/*
 
 %if %{with_sanlock}
@@ -1934,11 +1936,11 @@ fi
 %dir %{_libdir}/%{name}/lock-driver/
 %attr(0755, root, root) %{_libdir}/%{name}/lock-driver/sanlock.so
 %dir %{_datadir}/augeas/
-%dir %{_datadir}/augeas/lenses
-%dir %{_datadir}/augeas/lenses/tests
+%dir %{_datadir}/augeas/lenses/
+%dir %{_datadir}/augeas/lenses/tests/
 %{_datadir}/augeas/lenses/libvirt_sanlock.aug
 %{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
-%dir %attr(0700, root, sanlock) %{_localstatedir}/lib/%{name}/sanlock
+%dir %attr(0700, root, sanlock) %{_localstatedir}/lib/%{name}/sanlock/
 %{_sbindir}/virt-sanlock-cleanup
 %attr(0755, root, root) %{_libexecdir}/libvirt_sanlock_helper
 %endif

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 17 17:33:00 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.0.0
+  - jsc#PED-620
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-0-0-2023-01-16
+  - Added patches:
+    ef482951-apparmor-Allow-umount-dev.patch,
+    d6a8b9ee-qemu-Fix-managed-no-when-creating-ethdev.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 17:49:38 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Fix lxc container initialization with systemd and hybrid cgroups

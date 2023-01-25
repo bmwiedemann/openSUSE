@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:45:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.1.6
+  * This release flushes out the last [checks calendar] ~6 years of
+    patches that have been sitting on the master branch. Please see
+    the git shortlog below for details.
+- supersedes the following patches
+  * Xspice-python3.patch
+  * n_disable-surfaces-on-kms.patch
+  * n_hardcode_libdrm_cflags.patch
+  * u_fix-build-against-xserver-21_1.patch
+
+-------------------------------------------------------------------
 Sat May 14 21:26:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - remove "hardware" supplements; modeset is used now with KMS driver

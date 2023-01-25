@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.4/Config.kmk
+Index: VirtualBox-7.0.6/Config.kmk
 ===================================================================
---- VirtualBox-7.0.4.orig/Config.kmk
-+++ VirtualBox-7.0.4/Config.kmk
+--- VirtualBox-7.0.6.orig/Config.kmk
++++ VirtualBox-7.0.6/Config.kmk
 @@ -972,11 +972,9 @@ if1of ($(KBUILD_TARGET), freebsd linux)
  endif
  # Use new VBoxNetDhcpd instead of old VBoxNetDHCP

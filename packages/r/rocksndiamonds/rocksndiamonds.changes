@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jan 24 06:26:44 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 4.3.4.0:
+  * added optional main menu button to directly show level set info
+  * added new, topic-related headlines for info screens
+  * added support for separate sound and music for info sub-screens
+  * added third tutorial level set “ncrtorial” by ncrecc
+  * improved some game element graphics in the level editor
+  * fixed some bugs
+- Changes in version 4.3.30:
+  * added showing score even if not added to local score file
+  * added CSS to fill browser window for Emscripten (browser) platform
+  * added support for “Home” and “End” keys to text gadgets
+  * added using setup option for displaying overlay touch buttons
+  * added level info config option to disable time limit for all levels
+  * added asking for uploading remaining tapes when enabling score server
+  * added alpha channel for anti-aliasing to element collecting image
+  * added command line option to select display to open program window on
+  * added resizing window instead of recreating it on window size changes
+  * added new animation mode “.global_anim_sync” for game element graphics
+  * added support for custom graphics for many elements of MM game engine
+  * added project files for Windows and Mac platforms
+  * added quality improved sound and music samples
+  * added support for multiple pages (files) for level set info
+  * added drawing sparkles when laser hits mirrors for MM engine
+  * added pausing tape after replaying not only for warp mode
+  * added setup option to continue recording after replaying tape
+  * fixed bug with leaving scores screen on Android platform
+  * fixed continuing from hall of fame after playing on Android platform
+  * fixed bug with broken text area content when editing envelope text
+  * fixed synchronization problem when configuring game controller
+  * fixed synchronization problem when configuring keyboard
+  * fixed bug when using different normal and deadly shield time
+  * fixed crash bugs when accessing invalid data in broken level files
+  * fixed code issues found by Cppcheck (static C/C++ code analysis tool)
+  * fixed code issues found by Clang with option “-fsanitize=undefined”
+  * fixed code issues found by GCC with option “-Wextra”
+  * fixed some bugs with tape handling
+* Rebase rocksndiamonds-src_libgame_setup.c-CVE-2011-4606.patch
+
+-------------------------------------------------------------------
 Thu May 19 07:25:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.3.2.1:

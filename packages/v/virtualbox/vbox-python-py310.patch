@@ -1,10 +1,10 @@
 # https://www.virtualbox.org/changeset/90537/vbox
 
-Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/Makefile.kmk
+Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/Makefile.kmk
 ===================================================================
---- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/Makefile.kmk
-+++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/Makefile.kmk
-@@ -702,6 +702,52 @@ VBoxPython3_10m_x86_LIBS       = $(VBOX_
+--- VirtualBox-7.0.6.orig/src/libs/xpcom18a4/python/Makefile.kmk
++++ VirtualBox-7.0.6/src/libs/xpcom18a4/python/Makefile.kmk
+@@ -703,6 +703,52 @@ VBoxPython3_10m_x86_LIBS       = $(VBOX_
   endif
  endif
  

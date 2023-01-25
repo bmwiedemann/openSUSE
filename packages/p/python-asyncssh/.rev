@@ -379,4 +379,14 @@
     and UserKnownHostsFile config file options.</comment>
     <requestid>1056282</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>cc3f0aa4180f1549a24e6da87043be4c</srcmd5>
+    <version>2.13.0</version>
+    <time>1674665063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-sha1.patch to make it compatible with latests versions of
+  cryptography gh#ronf/asyncssh@fae5a9e8baad
+</comment>
+    <requestid>1060882</requestid>
+  </revision>
 </revisionlist>

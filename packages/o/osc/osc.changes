@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:48:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 1228.patch to fix regressions in get_request_list
+- add 1217.patch to fix correct variable (prj instead of project)
+
+-------------------------------------------------------------------
 Tue Jan 17 08:46:45 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 1.0.0b3

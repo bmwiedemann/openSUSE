@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 24 13:19:01 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop 1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
+
+  It's no more necessary since util-linux 2.38 has been released in Factory.
+
+-------------------------------------------------------------------
+Mon Jan 23 10:48:30 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Make sure we apply the presets on units shipped by systemd package
+
+-------------------------------------------------------------------
 Fri Jan  6 10:10:37 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Add 5000-rules-add-missing-line-continuation.patch until commit

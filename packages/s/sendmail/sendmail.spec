@@ -1,7 +1,7 @@
 #
 # spec file for package sendmail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ BuildRequires:  netcfg
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  procmail
-%if %{without sysvinit}
+%if %{with sysvinit}
 Requires(pre):  sysvinit(network)
 %endif
 BuildRequires:  tcpd-devel
@@ -113,7 +113,7 @@ Release:        0
 Summary:        BSD Sendmail
 License:        Sendmail
 Group:          Productivity/Networking/Email/Servers
-Source0:        ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz
+Source0:        https://ftp.sendmail.org/%{name}.%{version}.tar.gz
 Source1:        sendmail-suse.tar.bz2
 Source2:        sendmail-rpmlintrc
 Source3:        sendmail-client.path
@@ -121,8 +121,8 @@ Source4:        sendmail.service
 Source5:        sendmail-client.service
 Source6:        sendmail-client.systemd
 Source7:        sendmail.tmpfiles
-Source42:       ftp://ftp.sendmail.org/pub/sendmail/PGPKEYS#/%{name}.keyring
-Source43:       ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz.sig
+Source42:       https://ftp.sendmail.org/PGPKEYS#/%{name}.keyring
+Source43:       https://ftp.sendmail.org/%{name}.%{version}.tar.gz.sig
 # PATCH-FIX-OPENSUSE: Add our m4 extensions and maintenance scripts
 Patch0:         sendmail-8.17.1.dif
 # PATCH-FIX-OPENSUSE: if select(2) is interrupted the timeout become undefined

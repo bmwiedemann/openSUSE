@@ -6162,4 +6162,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.1.7 &amp; mremap fix for overlayfs</comment>
     <requestid>1059344</requestid>
   </revision>
+  <revision rev="676" vrev="1">
+    <srcmd5>786ff0ccea41a4b9dbf44a5415195e56</srcmd5>
+    <version>6.1.8</version>
+    <time>1674664935</time>
+    <user>dimstar_suse</user>
+    <comment>6.1.8 &amp; btrfs warn fix &amp; saa7146 reenablement</comment>
+    <requestid>1060565</requestid>
+  </revision>
 </revisionlist>

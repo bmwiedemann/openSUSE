@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 24 12:23:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build GLIBC hwcaps optimized versions of the interpreter
+
+-------------------------------------------------------------------
 Tue Jan 10 11:11:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't fail on Sphinx build warnings.

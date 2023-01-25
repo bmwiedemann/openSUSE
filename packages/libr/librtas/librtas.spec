@@ -1,7 +1,7 @@
 #
 # spec file for package librtas
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 %define sover 2
-
 Name:           librtas
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Libraries to provide access to RTAS calls and RTAS events
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-ExclusiveArch:  ppc ppc64 ppc64le
 URL:            https://github.com/ibm-power-utilities/librtas
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         librtas.fix_doc_path.patch
-Patch1:         librtasevent-Fix-memory-page-address-print-issue.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+ExclusiveArch:  ppc ppc64 ppc64le
 
 %description
 The librtas shared library provides userspace with an interface through
@@ -47,7 +45,7 @@ contents of RTAS events.
 %package        devel
 Summary:        Devel librtas files
 Group:          Development/Libraries/C and C++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
@@ -76,47 +74,42 @@ definitions and common routines useful in parsing and dumping the
 contents of RTAS events.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
 %configure
-make CFLAGS="%optflags -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags} -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}"
 
 %install
 rm -rf doc/*/latex
-make install DESTDIR=%buildroot LIB_DIR="%{_libdir}"
+make install DESTDIR=%{buildroot} LIB_DIR="%{_libdir}"
 # documents are in -doc subpackage
-rm -rf %buildroot/%_docdir
-/sbin/ldconfig -n %buildroot%{_libdir}
+rm -rf %{buildroot}/%{_docdir}
+/sbin/ldconfig -n %{buildroot}%{_libdir}
 chmod -x %{buildroot}%{_libdir}/*.a
-rm %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
-
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-, root, root)
-%doc COPYING.LESSER Changelog README
+%license COPYING.LESSER
+%doc Changelog README
 %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(-, root, root)
-%doc COPYING.LESSER
+%license COPYING.LESSER
 %{_libdir}/librtasevent.so
 %{_libdir}/librtas.so
 %{_includedir}/librtas.h
 %{_includedir}/librtasevent.h
 %{_includedir}/librtasevent_v4.h
 %{_includedir}/librtasevent_v6.h
-%{_libdir}/pkgconfig/*.pc
 
 %files devel-static
-%defattr(-,root,root)
-%doc COPYING.LESSER
+%license COPYING.LESSER
 %{_libdir}/librtas.a
 %{_libdir}/librtasevent.a
 

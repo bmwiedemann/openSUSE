@@ -2,9 +2,11 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_code.py
 ===================================================================
 --- docutils-0.19.orig/test/test_parsers/test_rst/test_directives/test_code.py
 +++ docutils-0.19/test/test_parsers/test_rst/test_directives/test_code.py
-@@ -11,13 +11,18 @@ Test the 'code' directive in parsers/rst
+@@ -10,14 +10,20 @@ Test the 'code' directive in parsers/rst
+ 
  if __name__ == '__main__':
      import __init__  # noqa: F401
++from packaging.version import Version
  from test_parsers import DocutilsTestSupport
 -from docutils.utils.code_analyzer import with_pygments
 +from docutils.utils.code_analyzer import with_pygments, pygments_version
@@ -15,14 +17,14 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_code.py
      if not with_pygments:
          del(totest['code-parsing'])
 +        del(totest['code-parsing-2-14'])
-+    elif pygments_version >= '2.14.0':
++    elif pygments_version >= Version('2.14.0'):
 +        del(totest['code-parsing'])
 +    else:
 +        del(totest['code-parsing-2-14'])
      s.generateTests(totest)
      return s
  
-@@ -170,6 +175,165 @@ totest['code-parsing'] = [
+@@ -170,6 +176,165 @@ totest['code-parsing'] = [
              \n\
          <inline classes="name builtin">
              print
@@ -192,9 +194,11 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_code_long.p
 ===================================================================
 --- docutils-0.19.orig/test/test_parsers/test_rst/test_directives/test_code_long.py
 +++ docutils-0.19/test/test_parsers/test_rst/test_directives/test_code_long.py
-@@ -11,14 +11,20 @@ Test the 'code' directive in body.py wit
+@@ -10,15 +10,22 @@ Test the 'code' directive in body.py wit
+ 
  if __name__ == '__main__':
      import __init__  # noqa: F401
++from packaging.version import Version
  from test_parsers import DocutilsTestSupport
 -from docutils.utils.code_analyzer import with_pygments
 +from docutils.utils.code_analyzer import with_pygments, pygments_version
@@ -204,7 +208,7 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_code_long.p
      settings = {'syntax_highlight': 'long'}
      s = DocutilsTestSupport.ParserTestSuite(suite_settings=settings)
      if with_pygments:
-+        if pygments_version >= '2.14.0':
++        if pygments_version >= Version('2.14.0'):
 +            del(totest['code-parsing-long'])
 +        else:
 +            del(totest['code-parsing-long-2-14'])
@@ -214,7 +218,7 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_code_long.p
      return s
  
  
-@@ -73,6 +79,94 @@ totest['code-parsing-long'] = [
+@@ -73,6 +80,94 @@ totest['code-parsing-long'] = [
              \n\
          <inline classes="name builtin">
              print
@@ -313,8 +317,11 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_include.py
 ===================================================================
 --- docutils-0.19.orig/test/test_parsers/test_rst/test_directives/test_include.py
 +++ docutils-0.19/test/test_parsers/test_rst/test_directives/test_include.py
-@@ -12,7 +12,7 @@ if __name__ == '__main__':
+@@ -10,9 +10,10 @@ Tests for misc.py "include" directive.
+ import os.path
+ if __name__ == '__main__':
      import __init__  # noqa: F401
++from packaging.version import Version
  from test_parsers import DocutilsTestSupport
  from docutils import parsers
 -from docutils.utils.code_analyzer import with_pygments
@@ -322,19 +329,19 @@ Index: docutils-0.19/test/test_parsers/test_rst/test_directives/test_include.py
  
  # optional 3rd-party markdown parser
  md_parser_name = 'recommonmark'
-@@ -27,6 +27,11 @@ def suite():
+@@ -27,6 +28,11 @@ def suite():
      # eventually skip optional parts:
      if not with_pygments:
          del(totest['include-code'])
 +        del(totest['include-code-2-14'])
-+    elif pygments_version >= '2.14.0':
++    elif pygments_version >= Version('2.14.0'):
 +        del(totest['include-code'])
 +    else:
 +        del(totest['include-code-2-14'])
      if not md_parser_class:
          del(totest['include-markdown'])
      s.generateTests(totest)
-@@ -1191,6 +1196,313 @@ Including includes/include14.txt
+@@ -1191,6 +1197,313 @@ Including includes/include14.txt
          <inline classes="punctuation">
              ..
           \n\
@@ -656,11 +663,11 @@ Index: docutils-0.19/docutils/utils/code_analyzer.py
  from docutils import ApplicationError
  try:
      import pygments
-+    from distutils.version import LooseVersion
++    from packaging.version import Version
      from pygments.lexers import get_lexer_by_name
      from pygments.formatters.html import _get_ttype_class
      with_pygments = True
-+    pygments_version = LooseVersion(pygments.__version__)
++    pygments_version = Version(pygments.__version__)
  except ImportError:
      with_pygments = False
 +    pygments_version = '0'

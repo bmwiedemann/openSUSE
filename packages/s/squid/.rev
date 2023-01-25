@@ -1096,4 +1096,12 @@ and CVE references,
     <comment></comment>
     <requestid>1055875</requestid>
   </revision>
+  <revision rev="109" vrev="4">
+    <srcmd5>79ef97abaf9ed72e54f223f51193216f</srcmd5>
+    <version>5.7</version>
+    <time>1674665045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060834</requestid>
+  </revision>
 </revisionlist>

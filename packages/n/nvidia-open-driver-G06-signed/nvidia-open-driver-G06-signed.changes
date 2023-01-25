@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jan 25 15:00:04 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- added pesign-copy-sources, pesign-spec-macros, which are needed
+  to fix repackaging step required for securebooot signing kernel
+  modules (boo#1207520)
+- pesign-spec-macros: used for defining RPM macros; here:
+  %define __kmp_supplements %_sourcedir/my-find-supplements \
+                            %_sourcedir/pci_ids-%{version}
+- pesign-copy-sources: sources needed by the RPM macros above; 
+  here: pci_ids-%{version}, my-find-supplements
+- all above needs changes for pesign-obs-integration first 
+  (SR#1060443)
+
+-------------------------------------------------------------------
+Tue Jan 24 23:52:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- added conflicts to nvidia-driver-G06-kmp package (boo#1207495)
+
+-------------------------------------------------------------------
 Thu Jan 19 19:51:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 525.85.05

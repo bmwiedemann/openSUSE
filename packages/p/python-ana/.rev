@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>788240</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ef59e6c068364ed44e75b6fd69b04873</srcmd5>
+    <version>0.06</version>
+    <time>1674665048</time>
+    <user>dimstar_suse</user>
+    <comment>- Make package compatible with python3.6
+- Add fix-tests.patch to fix tests with python3.11 gh#zardus/ana#15
+</comment>
+    <requestid>1060866</requestid>
+  </revision>
 </revisionlist>

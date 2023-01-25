@@ -1,7 +1,7 @@
 #
 # spec file for package python-geoip2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,11 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module maxminddb >= 2.2.0}
-BuildRequires:  %{python_module mocket >= 3.8.9}
+# mocket currently does not work with 3.11. See these issues:
+# gh#maxmind/GeoIP2-python@3b0dbb1eb990
+# gh#mindflayer/python-mocket#181
+# gh#benoitc/http-parser#95
+BuildRequires:  %{python_module mocket >= 3.8.9 if %python-base < 3.11}
 BuildRequires:  %{python_module python-magic >= 0.4.18}
 BuildRequires:  %{python_module requests >= 2.14.0}
 # /SECTION
@@ -62,7 +66,15 @@ The API also works with MaxMind's free GeoLite2 databases.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest tests/*_test.py -v
+python38_tests="tests/webservice_test.py tests/models_test.py tests/database_test.py"
+python39_tests=$python38_tests
+python310_tests=$python38_tests
+# mocket currently does not work with 3.11. See these issues:
+# gh#maxmind/GeoIP2-python@3b0dbb1eb990
+# gh#mindflayer/python-mocket#181
+# gh#benoitc/http-parser#95
+python311_tests="tests/models_test.py tests/database_test.py"
+%pyunittest -v ${$python_tests}
 
 %files %{python_files}
 %license LICENSE

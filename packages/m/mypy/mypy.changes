@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jan 24 11:50:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.991
+  - Basic Python 3.11 Support
+  - Breaking Change: No Implicit Optional Types for Arguments
+  - Breaking Change: Namespace Packages Enabled by Default
+  - Recursive Types Enabled By Default
+  - Error Codes Shown by Default
+  - Safe Handling of Empty Function Bodies
+  - Enabling Experimental Features Individually
+  - Configuring Packages/Modules in the Config File
+  - Warn about Variable Annotations in Unchecked Functions
+  - Error Code for Using an Abstract Class as type[T]
+  - Performance Improvements
+  - Changes to Error Reporting and Messages
+
+-------------------------------------------------------------------
 Tue Sep 27 16:01:57 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove mypy-pr13259-walrus.patch because it's not needed anymore, it's in the

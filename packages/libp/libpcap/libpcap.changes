@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jan 18 09:34:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.3:
+  * Sort the PUBHDR variable in Makefile.in in "ls" order.
+  * Fix typo in comment in pflog.h.
+  * Remove two no-longer-present files from .gitignore.
+  * Update code and comments for handling failure to set promiscuous
+    mode based on new information.
+
+-------------------------------------------------------------------
+Sun Jan  1 12:37:49 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.10.2:
+  * Build system updates
+  * Developer visible fixes
+  * Fix some formatting string issues found by cppcheck
+  * "Dead" pcap_ts from pcap_open_dead() and ..._with_tstamp_precision():
+    Don't crash if pcap_breakloop() is called.
+  * Savefiles: multiple bug fixes handling files
+  * Capture: Never process more than INT_MAX packets in a
+    pcap_dispatch() call, to avoid integer overflow
+  * Packet filtering: PFLOG bug fixes and improvements
+  * Fix memory leak in capture device open
+  * Fix detection of CAN/CAN FD packets in direction check
+  * Fix double-free crashes on errors such as running on a kernel
+    with CONFIG_PACKET_MMAP not configured
+  * Multiple CANbus bug fixes
+  * Fix pcap_findalldevs() to find usbmon devices
+  * Fix handling of VLAN tagged packets if the link-layer type is
+    changed from DLT_LINUX_SLL to DLT_LINUX_SLL2
+  * Always turn on PACKET_AUXDATA
+  * Correctly compute the "real" length for isochronous USB transfers
+ 
+-------------------------------------------------------------------
 Fri Jun 11 12:02:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.10.1

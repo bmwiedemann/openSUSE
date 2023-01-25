@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.4/src/bldprogs/scm.cpp
+Index: VirtualBox-7.0.6/src/bldprogs/scm.cpp
 ===================================================================
---- VirtualBox-7.0.4.orig/src/bldprogs/scm.cpp
-+++ VirtualBox-7.0.4/src/bldprogs/scm.cpp
+--- VirtualBox-7.0.6.orig/src/bldprogs/scm.cpp
++++ VirtualBox-7.0.6/src/bldprogs/scm.cpp
 @@ -2335,7 +2335,7 @@ static int scmProcessFileInner(PSCMRWSTA
                              pszTreatAs = "shell";
                          else if (   (cchFirst >= 15 && strncmp(pchFirst, "/usr/bin/python", 15) == 0)
@@ -11,10 +11,10 @@ Index: VirtualBox-7.0.4/src/bldprogs/scm.cpp
                          else if (   (cchFirst >= 13 && strncmp(pchFirst, "/usr/bin/perl", 13) == 0)
                                   || (cchFirst >= 17 && strncmp(pchFirst, "/usr/bin/env perl", 17) == 0) )
                              pszTreatAs = "perl";
-Index: VirtualBox-7.0.4/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+Index: VirtualBox-7.0.6/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
 ===================================================================
---- VirtualBox-7.0.4.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
-+++ VirtualBox-7.0.4/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+--- VirtualBox-7.0.6.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
++++ VirtualBox-7.0.6/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
 @@ -32,6 +32,9 @@
  %define VBOXDOCDIR %{_defaultdocdir}/%NAME%
  %global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$|^/usr/lib/python.*$|^.*\\.py$
@@ -25,10 +25,10 @@ Index: VirtualBox-7.0.4/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
  
  Summary:   Oracle VM VirtualBox
  Name:      %NAME%
-Index: VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
+Index: VirtualBox-7.0.6/src/libs/libxml2-2.9.14/libxml.spec.in
 ===================================================================
---- VirtualBox-7.0.4.orig/src/libs/libxml2-2.9.14/libxml.spec.in
-+++ VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
+--- VirtualBox-7.0.6.orig/src/libs/libxml2-2.9.14/libxml.spec.in
++++ VirtualBox-7.0.6/src/libs/libxml2-2.9.14/libxml.spec.in
 @@ -1,3 +1,4 @@
 +%global with_python2 0
  %global with_python3 1
@@ -93,10 +93,10 @@ Index: VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
  
  %if 0%{?with_python3}
  %files -n python3-%{name}
-Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
 ===================================================================
---- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
-+++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+--- VirtualBox-7.0.6.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
++++ VirtualBox-7.0.6/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
 @@ -438,7 +438,9 @@ char *PyTraceback_AsString(PyObject *exc
  
  	{ // a temp scope so I can use temp locals.
@@ -108,10 +108,10 @@ Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
  #else
      /* PyUnicode_AsUTF8() is const char * as of Python 3.7, char * earlier. */
  	const char *tempResult = (const char *)PyUnicode_AsUTF8(obResult);
-Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
+Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/src/PyGBase.cpp
 ===================================================================
---- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
-+++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
+--- VirtualBox-7.0.6.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
++++ VirtualBox-7.0.6/src/libs/xpcom18a4/python/src/PyGBase.cpp
 @@ -183,7 +183,11 @@ PyG_Base::~PyG_Base()
  // Get the correct interface pointer for this object given the IID.
  void *PyG_Base::ThisAsIID( const nsIID &iid )
@@ -125,10 +125,10 @@ Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
  	if (iid.Equals(NS_GET_IID(nsISupports)))
  		return (nsISupports *)(nsIInternalPython *)this;
  	if (iid.Equals(NS_GET_IID(nsISupportsWeakReference)))
-Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/gen_python_deps.py
+Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/gen_python_deps.py
 ===================================================================
---- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/gen_python_deps.py
-+++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/gen_python_deps.py
+--- VirtualBox-7.0.6.orig/src/libs/xpcom18a4/python/gen_python_deps.py
++++ VirtualBox-7.0.6/src/libs/xpcom18a4/python/gen_python_deps.py
 @@ -96,7 +96,7 @@ def main(argv):
      else:
          multi = 1

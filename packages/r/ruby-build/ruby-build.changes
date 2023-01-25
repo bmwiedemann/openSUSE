@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jan 24 20:12:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230124.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230124
+  * Development of 3.3.0 started by @hsbt in #2116
+  * Warn EOL status for all of rbx packages by @hsbt in #2117
+  * svn.ruby-lang.org is shutdown now. by @hsbt in #2120
+  * Drop svn support by @hsbt in #2121
+  * Add TruffleRuby and TruffleRuby GraalVM 22.3.1 by @eregon in #2134
+
+-------------------------------------------------------------------
 Sun Dec 25 20:14:37 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20221225.

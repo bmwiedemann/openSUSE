@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:43:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.7.0:
+  * Add support for Windows nodes (#45)
+
+-------------------------------------------------------------------
 Thu Jan 12 12:07:24 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubectl-node-shell: Exec into node via kubectl

@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.4/src/VBox/Main/webservice/Makefile.kmk
+Index: VirtualBox-7.0.6/src/VBox/Main/webservice/Makefile.kmk
 ===================================================================
---- VirtualBox-7.0.4.orig/src/VBox/Main/webservice/Makefile.kmk
-+++ VirtualBox-7.0.4/src/VBox/Main/webservice/Makefile.kmk
+--- VirtualBox-7.0.6.orig/src/VBox/Main/webservice/Makefile.kmk
++++ VirtualBox-7.0.6/src/VBox/Main/webservice/Makefile.kmk
 @@ -848,7 +848,7 @@ $(if-expr !defined(VBOX_WITHOUT_NOINLINE
  		$(RECOMPILE_ON_MAKEFILE_CURRENT) | $$(dir $$@)
  	$(call MSG_GENERATE,,lots of files,$(GSOAPH_RELEVANT))

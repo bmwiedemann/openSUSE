@@ -1,0 +1,64 @@
+diff -bur zig-0.10.0.orig/build.zig zig-0.10.0/build.zig
+--- zig-0.10.0.orig/build.zig	2022-11-17 19:51:09.821938555 +0800
++++ zig-0.10.0/build.zig	2022-11-19 05:36:24.771743399 +0800
+@@ -572,12 +572,12 @@
+         "zigcpp",
+         b.fmt("{s}{s}{s}", .{ exe.target.libPrefix(), "zigcpp", exe.target.staticLibSuffix() }),
+     }) catch unreachable);
+-    assert(cfg.lld_include_dir.len != 0);
+-    exe.addIncludePath(cfg.lld_include_dir);
++    // assert(cfg.lld_include_dir.len != 0);
++    // exe.addIncludePath(cfg.lld_include_dir);
+     exe.addIncludePath(cfg.llvm_include_dir);
+     exe.addLibraryPath(cfg.llvm_lib_dir);
+     addCMakeLibraryList(exe, cfg.clang_libraries);
+-    addCMakeLibraryList(exe, cfg.lld_libraries);
++    // addCMakeLibraryList(exe, cfg.lld_libraries);
+     addCMakeLibraryList(exe, cfg.llvm_libraries);
+ 
+     if (use_zig_libcxx) {
+@@ -703,8 +703,8 @@
+     cmake_binary_dir: []const u8,
+     cmake_prefix_path: []const u8,
+     cxx_compiler: []const u8,
+-    lld_include_dir: []const u8,
+-    lld_libraries: []const u8,
++    // lld_include_dir: []const u8,
++    // lld_libraries: []const u8,
+     clang_libraries: []const u8,
+     llvm_lib_dir: []const u8,
+     llvm_include_dir: []const u8,
+@@ -766,8 +766,8 @@
+         .cmake_binary_dir = undefined,
+         .cmake_prefix_path = undefined,
+         .cxx_compiler = undefined,
+-        .lld_include_dir = undefined,
+-        .lld_libraries = undefined,
++        // .lld_include_dir = undefined,
++        // .lld_libraries = undefined,
+         .clang_libraries = undefined,
+         .llvm_lib_dir = undefined,
+         .llvm_include_dir = undefined,
+@@ -788,14 +788,14 @@
+             .prefix = "#define ZIG_CXX_COMPILER ",
+             .field = "cxx_compiler",
+         },
+-        .{
+-            .prefix = "#define ZIG_LLD_INCLUDE_PATH ",
+-            .field = "lld_include_dir",
+-        },
+-        .{
+-            .prefix = "#define ZIG_LLD_LIBRARIES ",
+-            .field = "lld_libraries",
+-        },
++        // .{
++        //     .prefix = "#define ZIG_LLD_INCLUDE_PATH ",
++        //     .field = "lld_include_dir",
++        // },
++        // .{
++        //     .prefix = "#define ZIG_LLD_LIBRARIES ",
++        //     .field = "lld_libraries",
++        // },
+         .{
+             .prefix = "#define ZIG_CLANG_LIBRARIES ",
+             .field = "clang_libraries",

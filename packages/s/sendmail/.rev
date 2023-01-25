@@ -1141,4 +1141,15 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>- Migration of PAM settings to /usr/lib/pam.d. (forwarded request 1045669 from schubi2)</comment>
     <requestid>1057036</requestid>
   </revision>
+  <revision rev="116" vrev="7">
+    <srcmd5>650b3d36d507cc0c968de658e6b071c8</srcmd5>
+    <version>8.17.1</version>
+    <time>1674664955</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix source URLs: ftp.sendmail.com was restructured and the
+  pub/sendmail directory is now the root directory.
+
+- Switch over to https URLs (forwarded request 1060633 from dimstar)</comment>
+    <requestid>1060641</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioquic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-aioquic
-Version:        0.9.17
+Version:        0.9.20
 Release:        0
 Summary:        Python implementation of QUIC and HTTP/3
 License:        BSD-3-Clause
@@ -36,11 +35,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(openssl)
 Requires:       python-certifi
-Requires:       python-cryptography >= 2.5
+Requires:       python-cryptography >= 3.1
+Requires:       python-pyOpenSSL >= 20
 Requires:       python-pylsqpack >= 0.3.3
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 2.5}
+BuildRequires:  %{python_module pyOpenSSL >= 20}
 BuildRequires:  %{python_module pylsqpack >= 0.3.3}
 # /SECTION
 %python_subpackages

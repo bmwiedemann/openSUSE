@@ -84,7 +84,7 @@ BuildRequires:  sysuser-tools
 %else
 Requires(pre):  shadow
 %endif
-%if 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1330 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
 
@@ -142,7 +142,11 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--with-large-files \
 	--enable-underscores \
 	--enable-auth \
+%if 0%{?suse_version} < 1599
 	--enable-auth-basic="SMB_LM,DB,fake,getpwnam,LDAP,NCSA,NIS,PAM,POP3,RADIUS,SASL,SMB" \
+%else
+        --enable-auth-basic="SMB_LM,DB,fake,getpwnam,LDAP,NCSA,PAM,POP3,RADIUS,SASL,SMB" \
+%endif
 	--enable-auth-ntlm="SMB_LM,fake" \
 	--enable-auth-negotiate \
 	--enable-auth-digest \
@@ -372,7 +376,9 @@ fi
 %{squidhelperdir}/basic_ldap_auth
 %{squidhelperdir}/digest_edirectory_auth
 %{squidhelperdir}/basic_ncsa_auth
+%if 0%{?suse_version} < 1599
 %{squidhelperdir}/basic_nis_auth
+%endif
 %{squidhelperdir}/basic_pam_auth
 %{squidhelperdir}/basic_pop3_auth
 %{squidhelperdir}/basic_radius_auth

@@ -1617,4 +1617,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1059402</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>8cc4a19877c8777fb42858b2a9d81fae</srcmd5>
+    <version>1.0.0~b3</version>
+    <time>1674665058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060883</requestid>
+  </revision>
 </revisionlist>

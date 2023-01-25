@@ -3599,4 +3599,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1057608</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>81ef40ff5d9e3a9c3dfabb879d2125fe</srcmd5>
+    <version>4.17.4+git.314.7b07e3c51a6</version>
+    <time>1674664938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060506</requestid>
+  </revision>
 </revisionlist>

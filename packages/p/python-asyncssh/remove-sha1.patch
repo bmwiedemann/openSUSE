@@ -1,0 +1,91 @@
+From fae5a9e8baad8bd505b43e14fc13b9010789865c Mon Sep 17 00:00:00 2001
+From: Ron Frederick <ronf@timeheart.net>
+Date: Sat, 7 Jan 2023 21:02:01 -0800
+Subject: [PATCH] Handle elimination of SHA-1 for digital signatures in
+ cryptograhy 39.0.0
+
+This commit changes the default X.509 signature algorithm for DSA and
+some unit test code to avoid attempting to use SHA-1 for X.509 certificate
+signing, as this is no longer allowed in cryptography 39.0.0.
+---
+ asyncssh/dsa.py          | 2 +-
+ asyncssh/ecdsa.py        | 2 +-
+ asyncssh/public_key.py   | 4 ++--
+ asyncssh/rsa.py          | 2 +-
+ tests/test_public_key.py | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/asyncssh/dsa.py b/asyncssh/dsa.py
+index d3f95196..1972e1d0 100644
+--- a/asyncssh/dsa.py
++++ b/asyncssh/dsa.py
+@@ -41,7 +41,7 @@ class _DSAKey(SSHKey):
+     _key: Union[DSAPrivateKey, DSAPublicKey]
+ 
+     algorithm = b'ssh-dss'
+-    default_hash_name = 'sha1'
++    default_x509_hash = 'sha256'
+     pem_name = b'DSA'
+     pkcs8_oid = ObjectIdentifier('1.2.840.10040.4.1')
+     sig_algorithms = (algorithm,)
+diff --git a/asyncssh/ecdsa.py b/asyncssh/ecdsa.py
+index 25bad399..57d8d821 100644
+--- a/asyncssh/ecdsa.py
++++ b/asyncssh/ecdsa.py
+@@ -54,7 +54,7 @@ class _ECKey(SSHKey):
+ 
+     _key: Union[ECDSAPrivateKey, ECDSAPublicKey]
+ 
+-    default_hash_name = 'sha256'
++    default_x509_hash = 'sha256'
+     pem_name = b'EC'
+     pkcs8_oid = ObjectIdentifier('1.2.840.10045.2.1')
+ 
+diff --git a/asyncssh/public_key.py b/asyncssh/public_key.py
+index 75672ed4..a744b3d7 100644
+--- a/asyncssh/public_key.py
++++ b/asyncssh/public_key.py
+@@ -240,7 +240,7 @@ class SSHKey:
+     sig_algorithms: Sequence[bytes] = ()
+     x509_algorithms: Sequence[bytes] = ()
+     all_sig_algorithms: Set[bytes] = set()
+-    default_hash_name: str = ''
++    default_x509_hash: str = ''
+     pem_name: bytes = b''
+     pkcs8_oid: Optional[ObjectIdentifier] = None
+     use_executor: bool = False
+@@ -385,7 +385,7 @@ def _generate_x509_certificate(self, key: 'SSHKey', subject: str,
+                              'valid after time')
+ 
+         if hash_name == ():
+-            hash_name = key.default_hash_name
++            hash_name = key.default_x509_hash
+ 
+         if comment == ():
+             comment = key.get_comment_bytes()
+diff --git a/asyncssh/rsa.py b/asyncssh/rsa.py
+index 09edc59d..ccfbaa2d 100644
+--- a/asyncssh/rsa.py
++++ b/asyncssh/rsa.py
+@@ -52,7 +52,7 @@ class RSAKey(SSHKey):
+     _key: Union[RSAPrivateKey, RSAPublicKey]
+ 
+     algorithm = b'ssh-rsa'
+-    default_hash_name = 'sha256'
++    default_x509_hash = 'sha256'
+     pem_name = b'RSA'
+     pkcs8_oid = ObjectIdentifier('1.2.840.113549.1.1.1')
+     sig_algorithms = (b'rsa-sha2-256', b'rsa-sha2-512',
+diff --git a/tests/test_public_key.py b/tests/test_public_key.py
+index ad288203..091531a4 100644
+--- a/tests/test_public_key.py
++++ b/tests/test_public_key.py
+@@ -2358,7 +2358,7 @@ def test_x509_certificate_hashes(self):
+         privkey = get_test_key('ssh-rsa')
+         pubkey = privkey.convert_to_public()
+ 
+-        for hash_alg in ('sha1', 'sha256', 'sha512'):
++        for hash_alg in ('sha256', 'sha512'):
+             cert = privkey.generate_x509_user_certificate(
+                 pubkey, 'OU=user', hash_alg=hash_alg)
+ 

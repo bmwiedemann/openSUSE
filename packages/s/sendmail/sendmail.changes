@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 24 12:22:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix source URLs: ftp.sendmail.com was restructured and the
+  pub/sendmail directory is now the root directory.
+
+-------------------------------------------------------------------
+Tue Jan 24 12:10:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to https URLs
+
+-------------------------------------------------------------------
+Fri Jan 20 15:53:37 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix wrong "without sysvinit", don't require sysvinit in that case
+
+-------------------------------------------------------------------
 Wed Dec 28 16:41:20 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

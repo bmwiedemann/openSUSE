@@ -33,6 +33,7 @@ Prefer: -libubsan1-gcc12
 Prefer: -libubsan1-gcc12-32bit
 
 Patterntype: rpm-md ymp
+RepoType: rpm-md:sha512
 %if "%_repository" == "images"
   Type: kiwi
   Repotype: none

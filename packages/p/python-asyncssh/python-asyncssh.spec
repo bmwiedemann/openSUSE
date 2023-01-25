@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-asyncssh
@@ -28,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ronf/asyncssh
 Source:         https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-%{version}.tar.gz
 Patch0:         gss_test.patch
+# PATCH-FIX-UPSTREAM remove-sha1.patch gh#ronf/asyncssh@fae5a9e8baad
+Patch1:         remove-sha1.patch
 # SECTION test requirements
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.8}
@@ -75,6 +76,7 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 %files %{python_files}
 %license LICENSE COPYRIGHT
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/asyncssh
+%{python_sitelib}/asyncssh-%{version}*-info
 
 %changelog

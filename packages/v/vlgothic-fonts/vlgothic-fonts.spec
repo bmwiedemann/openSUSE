@@ -22,7 +22,7 @@ Release:        0
 Summary:        VL-Gothic TrueType font family
 License:        BSD-3-Clause AND mplus
 Group:          System/X11/Fonts
-URL:            http://dicey.org/vlgothic/
+URL:            http://vlgothic.dicey.org/
 Source0:        https://en.osdn.net/dl/vlgothic/VLGothic-%{version}.tar.xz
 BuildRequires:  fontpackages-devel
 BuildRequires:  xz
@@ -30,7 +30,6 @@ Provides:       scalable-font-ja
 Provides:       vlgothic = %{version}
 Provides:       locale(ja)
 Obsoletes:      vlgothic <= 20110722
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
@@ -53,7 +52,6 @@ done
 %reconfigure_fonts_scriptlets -c
 
 %files
-%defattr(-,root,root)
 %license LICENSE*
 %doc README* Changelog*
 %{_ttfontsdir}

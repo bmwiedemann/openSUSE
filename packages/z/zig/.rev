@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03a841311d8d01ca8336769dbd94cba7</srcmd5>
+    <version>0.10.1</version>
+    <time>1674664970</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain zig in openSUSE:Factory. I just use ExclusiveArch to aarch64 and x86_64 since they build successfully. However, idk why OBS now tells me that &quot;nothing provides empty-fake-package&quot; ?</comment>
+    <requestid>1060716</requestid>
+  </revision>
+</revisionlist>

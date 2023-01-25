@@ -1,0 +1,30 @@
+From b8338bc7a6517a57ddd1537490be8b7023617104 Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Wed, 25 Jan 2023 11:01:30 +0100
+Subject: [PATCH] Fix tests: Do not test different id in test_dir
+
+Looks like the python interpreter uses the same id if it's available, so
+this test fails randomly, depending on memory management.
+
+".../ana-0.06/test.py", line 113, in test_dir
+    self.assertNotEqual(old_id, id(two))
+AssertionError: 140642905866320 == 140642905866320
+
+This patch just removes the check because we cannot be sure that they
+are different.
+---
+ test.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/test.py b/test.py
+index 8c5f9ee..1250c34 100644
+--- a/test.py
++++ b/test.py
+@@ -110,7 +110,6 @@ def test_dir(self):
+         ana.dl = ana.DirDataLayer(pickle_dir="/tmp/test_ana")
+         two = A.ana_load(uuid)
+         self.assertEquals(uuid, two.ana_uuid)
+-        self.assertNotEqual(old_id, id(two))
+ 
+         # reset the datalayer to make sure we handle it properly
+         ana.set_dl(ana.DictDataLayer())

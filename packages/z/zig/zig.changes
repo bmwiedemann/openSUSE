@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Jan 25 03:31:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add rpm-macros to recommends.
+- Simplify to just use ExclusiveArch declaration.
+
+-------------------------------------------------------------------
+Tue Jan 24 16:22:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Improve specfile: from %{_rpmconfigdir}/macros.d to %{_rpmmacrodir}
+
+-------------------------------------------------------------------
+Tue Jan 24 15:45:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add zig-rpmlintrc to specfile as one of sources.
+
+-------------------------------------------------------------------
+Tue Jan 24 12:18:58 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase physical memory to 64G on riscv, and aarch.
+  * Note: ppc architectures won't build. Placeholder for now.
+- Set physical memory to 8G for arm architectures. Placeholder for now
+- Set physical memory to 32G for i586 archictectures.
+- ExcludeArch for ppc and arm architectures.
+
+-------------------------------------------------------------------
+Mon Jan 23 03:58:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for zig 0.10.1

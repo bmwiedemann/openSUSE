@@ -1,0 +1,31 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/container-images.git</param>
+    <param name="revision">main</param>
+    <param name="subdir">samba-ad-dc</param>
+    <param name="extract">Dockerfile</param>
+    <param name="extract">entrypoint.sh</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/container-images.git</param>
+    <param name="revision">main</param>
+    <param name="extract">LICENSE</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+      <param name="file">Dockerfile</param>
+      <param name="regex">%%PKG_VERSION%%</param>
+      <param name="parse-version">patch</param>
+      <param name="package">samba-ad-dc</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+      <param name="file">Dockerfile</param>
+      <param name="regex">%%MINOR%%</param>
+      <param name="parse-version">minor</param>
+      <param name="package">samba-ad-dc</param>
+  </service>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="docker_label_helper"/>
+</services>

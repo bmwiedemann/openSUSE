@@ -66,4 +66,12 @@ I want to make OpenBoard available again in TW (and later also Leap) and therefo
     <comment></comment>
     <requestid>1038947</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e07e047d11c5bddfa6ece45a6ab7b42e</srcmd5>
+    <version>1.7.0~git20221129.9de37af</version>
+    <time>1674665080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060940</requestid>
+  </revision>
 </revisionlist>

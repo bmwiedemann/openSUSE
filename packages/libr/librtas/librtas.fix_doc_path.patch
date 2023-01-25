@@ -1,8 +1,7 @@
-Index: librtas-2.0.1/Makefile.am
-===================================================================
---- librtas-2.0.1.orig/Makefile.am
-+++ librtas-2.0.1/Makefile.am
-@@ -3,7 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
+diff -ur librtas-2.0.4~/Makefile.am librtas-2.0.4/Makefile.am
+--- librtas-2.0.4~/Makefile.am	2023-01-24 19:08:58.000000000 +0100
++++ librtas-2.0.4/Makefile.am	2023-01-25 12:35:10.011935185 +0100
+@@ -3,7 +3,7 @@
  EXTRA_DIST = README COPYING.LESSER
  EXTRA_DIST += doc/doxygen.rtas doc/doxygen.rtasevent Changelog
  
@@ -10,4 +9,4 @@ Index: librtas-2.0.1/Makefile.am
 +docdir = $(datadir)/doc/packages/@PACKAGE@
  doc_DATA = README COPYING.LESSER
  
- pkgconfigdir = $(libdir)/pkgconfig
+ bin_PROGRAMS=

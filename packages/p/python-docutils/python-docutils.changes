@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 24 07:15:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refactor pygments-2.14.patch to not use distutils. 
+
+-------------------------------------------------------------------
 Tue Jan 10 15:42:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete sphix-6.0.0.patch

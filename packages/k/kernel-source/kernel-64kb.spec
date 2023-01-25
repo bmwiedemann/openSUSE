@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.1
-%define patchversion 6.1.7
+%define patchversion 6.1.8
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -111,9 +111,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.1.7
+Version:        6.1.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g872045c
+Release:        <RELEASE>.gbaebfe0
 %else
 Release:        0
 %endif
@@ -240,10 +240,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-872045c995c0ea6c9b968cf79d4889feb3879209
-Provides:       kernel-srchash-872045c995c0ea6c9b968cf79d4889feb3879209
+Provides:       kernel-%build_flavor-base-srchash-baebfe0ef3d47efabc570a82bd54611798a920a9
+Provides:       kernel-srchash-baebfe0ef3d47efabc570a82bd54611798a920a9
 # END COMMON DEPS
-Provides:       %name-srchash-872045c995c0ea6c9b968cf79d4889feb3879209
+Provides:       %name-srchash-baebfe0ef3d47efabc570a82bd54611798a920a9
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc

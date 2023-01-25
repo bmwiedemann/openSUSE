@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 12:58:14 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py311.patch to make tests compatible with python 3.11 gh#apache/avro#1961
+
+-------------------------------------------------------------------
 Thu Aug  4 09:32:11 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.11.1 (from GitHub release notes):

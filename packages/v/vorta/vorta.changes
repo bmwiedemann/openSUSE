@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jan 24 23:09:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.10:
+  * see https://github.com/borgbase/vorta/releases/tag/v0.8.10
+  * Add Borg v2 compatibility (based on beta4).
+  * Improve Linux desktop tray behavior.
+  * Improve check and extract commands.
+  * Fix blocking issue with temp file when extracting files
+
+-------------------------------------------------------------------
 Tue Nov  8 21:11:16 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 0.8.9

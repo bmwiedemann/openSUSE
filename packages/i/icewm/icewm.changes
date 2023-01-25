@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jan 24 06:58:32 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.1:
+  * Fully support nanosvg as an alternative to librsvg.
+  * Rolled up windows can now be moved vertically with icesh.
+  * Fix multi-monitor when primary monitor is right-below of secondary.
+  * Don't resize when a client adjusts its WM_NORMAL_HINTS increments.
+  * Report the audio interface in the configure summary.
+  * Consider that the keyboard may have been changed externally.
+  * Increase the timeout for the dynamic menu generator to 2 seconds.
+  * Don't reactivate a focused window when RaiseOnClick is guaranteed.
+  * Let the winoption "ignorePositionHint" also ignore the USPosition.
+  * Fix the "ignoreOverrideRedirect" winoption.
+  * Let icesh also spy on RandR monitor configuration events.
+
+-------------------------------------------------------------------
 Wed Dec 21 07:35:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3.0:

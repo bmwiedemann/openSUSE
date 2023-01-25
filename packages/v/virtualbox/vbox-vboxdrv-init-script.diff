@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.4/src/VBox/Installer/linux/vboxdrv.sh
+Index: VirtualBox-7.0.6/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-7.0.4.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-7.0.4/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-7.0.6.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-7.0.6/src/VBox/Installer/linux/vboxdrv.sh
 @@ -29,11 +29,12 @@
  #
  ### BEGIN INIT INFO
@@ -19,7 +19,7 @@ Index: VirtualBox-7.0.4/src/VBox/Installer/linux/vboxdrv.sh
  ### END INIT INFO
  
  ## @todo This file duplicates a lot of script with vboxadd.sh.  When making
-@@ -520,13 +521,6 @@ See the documentation for your Linux dis
+@@ -526,13 +527,6 @@ See the documentation for your Linux dis
          fi
      fi
      # ensure permissions
@@ -33,7 +33,7 @@ Index: VirtualBox-7.0.4/src/VBox/Installer/linux/vboxdrv.sh
      if ! $MODPROBE vboxnetflt > /dev/null 2>&1; then
          failure "modprobe vboxnetflt failed. Please use 'dmesg' to find out why"
      fi
-@@ -684,31 +678,7 @@ setup()
+@@ -690,31 +684,7 @@ setup()
          log "Error building the module:"
          module_build_log "$myerr"
          failure "Look at $LOG to find out what went wrong"
@@ -66,11 +66,11 @@ Index: VirtualBox-7.0.4/src/VBox/Installer/linux/vboxdrv.sh
  
      # Secure boot on Ubuntu, Debian and Oracle Linux.
      if test -n "$HAVE_SEC_BOOT"; then
-Index: VirtualBox-7.0.4/Config.kmk
+Index: VirtualBox-7.0.6/Config.kmk
 ===================================================================
---- VirtualBox-7.0.4.orig/Config.kmk
-+++ VirtualBox-7.0.4/Config.kmk
-@@ -3111,6 +3111,9 @@ else
+--- VirtualBox-7.0.6.orig/Config.kmk
++++ VirtualBox-7.0.6/Config.kmk
+@@ -3154,6 +3154,9 @@ else
      $(SED_EXT) -n 's|.*version \([0-9][0-9]*\)\.\{0,1\}\([0-9]\{0,\}\)\.\{0,1\}\([0-9]\{0,\}\).*|$$(expr 10000 * \1 + 100 * $$(firstword \2 0) + $$(firstword \3 0))|p' )
   endif
  endif

@@ -15,10 +15,10 @@ Signed-off-by: Eric van Blokland <mail@ericvanblokland.nl>
  src/lxc/lxc_process.c | 33 +++++++++++++++++++++++++++++++--
  1 file changed, 31 insertions(+), 2 deletions(-)
 
-Index: libvirt-8.10.0/src/lxc/lxc_process.c
+Index: libvirt-9.0.0/src/lxc/lxc_process.c
 ===================================================================
---- libvirt-8.10.0.orig/src/lxc/lxc_process.c
-+++ libvirt-8.10.0/src/lxc/lxc_process.c
+--- libvirt-9.0.0.orig/src/lxc/lxc_process.c
++++ libvirt-9.0.0/src/lxc/lxc_process.c
 @@ -49,6 +49,9 @@
  #include "virprocess.h"
  #include "netdev_bandwidth_conf.h"

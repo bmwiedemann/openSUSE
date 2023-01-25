@@ -526,4 +526,12 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
 </comment>
     <requestid>1057655</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>01d0fa68c98cb420cb7c545df51e5994</srcmd5>
+    <version>0.19</version>
+    <time>1674664946</time>
+    <user>dimstar_suse</user>
+    <comment>- Refactor pygments-2.14.patch to not use distutils.</comment>
+    <requestid>1060567</requestid>
+  </revision>
 </revisionlist>

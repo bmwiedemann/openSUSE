@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 23 09:24:07 UTC 2023 - Noel Power <nopower@suse.com>
+
+- libdsdb-module-samba4 should be packaged as part of samba-libs and
+  not samba-ad-dc-libs. Additionally no need for it to be
+  removed conditionally.
+
+-------------------------------------------------------------------
+Thu Jan 12 15:24:55 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Clean up logic for PAM migration settings in spec file.
+
+-------------------------------------------------------------------
 Wed Jan  4 14:05:15 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

@@ -10,4 +10,23 @@
   * Fix build problems with Clang 15.0, #377 by @ptr1337</comment>
     <requestid>1059870</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e827851c691a71b83bc99055f447e051</srcmd5>
+    <version>525.85.05</version>
+    <time>1674664980</time>
+    <user>dimstar_suse</user>
+    <comment>- added pesign-copy-sources, pesign-spec-macros, which are needed
+  to fix repackaging step required for securebooot signing kernel
+  modules (boo#1207520)
+- pesign-spec-macros: used for defining RPM macros; here:
+  %define __kmp_supplements %_sourcedir/my-find-supplements \
+                            %_sourcedir/pci_ids-%{version}
+- pesign-copy-sources: sources needed by the RPM macros above; 
+  here: pci_ids-%{version}, my-find-supplements
+- all above needs changes for pesign-obs-integration first 
+  (SR#1060443)
+
+- added conflicts to nvidia-driver-G06-kmp package (boo#1207495)</comment>
+    <requestid>1060962</requestid>
+  </revision>
 </revisionlist>

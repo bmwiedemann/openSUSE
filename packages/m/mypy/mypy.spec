@@ -1,7 +1,7 @@
 #
 # spec file for package mypy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 %bcond_without test
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define typed_ast_version 1.5.1
+%define typed_ast_version 1.5.8.3
+%define types_psutil_version 5.9.5.6
+%define types_setuptools_version 65.6.0.3
 Name:           mypy
-Version:        0.981
+Version:        0.991
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -30,6 +31,10 @@ URL:            http://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
+# License Source2: Apache-2.0. Only for the test suite, not packaged here.
+Source2:        https://files.pythonhosted.org/packages/source/t/types-psutil/types-psutil-%{types_psutil_version}.tar.gz
+# License Source3: Apache-2.0. Only for the test suite, not packaged here.
+Source3:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       mypy-rpmlintrc
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module setuptools}
@@ -86,13 +91,16 @@ Mypy's type system features type inference, gradual typing, generics
 and union types.
 
 %prep
-%autosetup -n mypy-%{version} -p1 -a1
+%setup -n mypy-%{version} -a1 -a2 -a3
+%autopatch -p1
 
 sed -i '/env python3/d' ./mypy/stubgenc.py
 sed -i '/env python3/d' ./mypy/stubgen.py
 
 mkdir mystubs
-mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs mystubs/typed_ast
+mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs* mystubs/
+mv types-setuptools-%{types_setuptools_version}/setuptools-stubs* mystubs/
+mv types-psutil-%{types_psutil_version}/psutil-stubs* mystubs/
 
 %build
 %python_build
@@ -114,13 +122,8 @@ mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs mystubs/typed_ast
 %if %{with test}
 %check
 
-sed -i mypy_self_check.ini \
-    -e '/python_version.*$/d' \
-    -e '/warn_unused_ignores/d'
-
 %{python_expand # self-check with manually provided stubs for typed_ast
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-export MYPYPATH=./mystubs
+export PYTHONPATH=%{buildroot}%{$python_sitelib}:./mystubs
 $python -m mypy --config-file mypy_self_check.ini -p mypy
 }
 unset PYTHONPATH

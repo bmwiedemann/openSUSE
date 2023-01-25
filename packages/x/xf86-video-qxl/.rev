@@ -238,4 +238,20 @@
     <comment>- remove &quot;hardware&quot; supplements; modeset is used now with KMS driver</comment>
     <requestid>977273</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f56ac2987622307fcd7ed623ee538842</srcmd5>
+    <version>0.1.6</version>
+    <time>1674664952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.6
+  * This release flushes out the last [checks calendar] ~6 years of
+    patches that have been sitting on the master branch. Please see
+    the git shortlog below for details.
+- supersedes the following patches
+  * Xspice-python3.patch
+  * n_disable-surfaces-on-kms.patch
+  * n_hardcode_libdrm_cflags.patch
+  * u_fix-build-against-xserver-21_1.patch</comment>
+    <requestid>1060603</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-qxl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,17 +28,13 @@
 %endif
 
 Name:           xf86-video-qxl
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        QXL virtual GPU video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Patch0:         n_hardcode_libdrm_cflags.patch
-Patch1:         n_disable-surfaces-on-kms.patch
-Patch2:         Xspice-python3.patch
-Patch3:         u_fix-build-against-xserver-21_1.patch
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -79,10 +75,6 @@ XSpice is both an X and a Spice server that can be accessed by a Spice client.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 autoreconf -fi
@@ -106,14 +98,14 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %dir %{_libdir}/xorg/modules/drivers
 %{_libdir}/xorg/modules/drivers/qxl_drv.so
 
 %if %{with xspice}
 %files -n xorg-x11-server-Xspice
 %defattr(-,root,root)
-%doc COPYING README.xspice README examples/spiceqxl.xorg.conf.example
+%doc COPYING README.xspice README.md examples/spiceqxl.xorg.conf.example
 %{_bindir}/Xspice
 %{_libdir}/xorg/modules/drivers/spiceqxl_drv.so
 %dir %{_libdir}/pcsc/

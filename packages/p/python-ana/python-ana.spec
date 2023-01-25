@@ -1,7 +1,7 @@
 #
 # spec file for package python-ana
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define internal_version 0.6
 Name:           python-ana
 Version:        0.06
 Release:        0
@@ -30,6 +30,8 @@ Source2:        https://raw.githubusercontent.com/zardus/ana/master/test.py
 Source3:        https://raw.githubusercontent.com/zardus/ana/master/test_pickle.p
 # https://github.com/zardus/ana/pull/14
 Patch0:         use_unittest.patch
+# https://github.com/zardus/ana/pull/15
+Patch1:         fix-tests.patch
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,6 +48,7 @@ A Python module that provides an undocumented data layer for Python objects.
 [ -e test.py ] || cp %{SOURCE2} test.py
 [ -e test_pickle.p ] || cp %{SOURCE3} test_pickle.p
 %patch0
+%patch1 -p1
 
 %build
 %python_build
@@ -60,6 +63,11 @@ A Python module that provides an undocumented data layer for Python objects.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/ana
+%if %python_version_nodots < 38
+%{python_sitelib}/ana-%{version}*-info
+%else
+%{python_sitelib}/ana-%{internal_version}*-info
+%endif
 
 %changelog

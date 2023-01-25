@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:14:32 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.0.4 (jsc#PED-554)
+   - fix possible call to munmap with garbage value
+- Refresh librtas.fix_doc_path.patch
+
+-------------------------------------------------------------------
+Fri Jan 20 15:06:16 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.0.3
+- Remove upstreamed patch
+  - librtasevent-Fix-memory-page-address-print-issue.patch
+- Refresh spec file
+
+-------------------------------------------------------------------
 Wed Jan 12 13:01:37 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - librtasevent: Fix memory page address print issue (bsc#1193846 ltc#193949).

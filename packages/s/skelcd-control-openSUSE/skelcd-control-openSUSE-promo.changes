@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 24 10:37:00 UTC 2023 - Lubos Kocman <Lubos.Kocman@suse.com>
+
+- Enable Open H.264 repo by default code-o-o#leap/features/22
+  Resolves jsc#OPENSUSE-46 jsc#SLE-18915
+  fix changelog date
+
+- 20230124
+
+-------------------------------------------------------------------
 Wed Jan  4 11:50:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - LegacyX86: unlike other ports, i586 does have a valid non-oss

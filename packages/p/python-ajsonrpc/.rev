@@ -16,4 +16,13 @@
   * add Quart backend</comment>
     <requestid>946665</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b4846928806c446ba6249ecc70e3bf80</srcmd5>
+    <version>1.2.0</version>
+    <time>1674665039</time>
+    <user>dimstar_suse</user>
+    <comment>- Run test on all python versions but for python 3.6
+</comment>
+    <requestid>1060813</requestid>
+  </revision>
 </revisionlist>

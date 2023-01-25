@@ -1,7 +1,7 @@
 #
 # spec file for package librtas-doc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,43 +17,40 @@
 
 
 Name:           librtas-doc
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
+Summary:        Documents for librtas
+License:        LGPL-2.1-or-later
+Group:          Documentation/Other
+URL:            https://github.com/ibm-power-utilities/librtas
+Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/librtas-%{version}.tar.gz
+Patch0:         librtas.fix_doc_path.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libtool
-Summary:        Documents for librtas
-License:        LGPL-2.1-or-later
-Group:          Documentation/Other
 ExclusiveArch:  ppc ppc64 ppc64le
-URL:            https://github.com/ibm-power-utilities/librtas
-Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{version}.tar.gz#/librtas-%{version}.tar.gz
-Patch0:         librtas.fix_doc_path.patch
-Patch1:         librtasevent-Fix-memory-page-address-print-issue.patch
 
 %description
 This package provides librtas documentation
 
 %prep
-%setup -n librtas-%{version}
-%autopatch -p1
+%autosetup -p1 -n librtas-%{version}
 
 %build
 ./autogen.sh
 %configure
-make CFLAGS="%optflags -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags} -fPIC -g -I $PWD/librtasevent_src" LIB_DIR="%{_libdir}"
 
 %install
 rm -rf doc/*/latex
-make install DESTDIR=%buildroot LIB_DIR="%{_libdir}"
-rm -rf %buildroot/%_libdir
-rm -rf %buildroot/%_includedir
-%fdupes %buildroot/%_docdir
+make install DESTDIR=%{buildroot} LIB_DIR="%{_libdir}"
+rm -rf %{buildroot}/%{_libdir}
+rm -rf %{buildroot}/%{_includedir}
+%fdupes %{buildroot}/%{_docdir}
 
 %files
-%defattr(-, root, root)
 %doc %{_docdir}/librtas
 
 %changelog

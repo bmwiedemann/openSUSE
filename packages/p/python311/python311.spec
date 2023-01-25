@@ -220,6 +220,7 @@ Recommends:     %{python_pkg_name}-pip
 Provides:       python3 = %{python_version}
 %endif
 %endif
+%{?suse_build_hwcaps_libs}
 
 %description
 Python 3 is modern interpreted, object-oriented programming language,

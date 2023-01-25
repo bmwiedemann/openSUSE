@@ -1,0 +1,36 @@
+From 18cdec255404dc0d63b81e77107636f8f5db79f2 Mon Sep 17 00:00:00 2001
+From: lethliel <mstrigl@suse.com>
+Date: Fri, 20 Jan 2023 10:10:50 +0100
+Subject: [PATCH] use correct variable prj instead of project
+
+---
+ behave/features/rdelete.feature | 6 ++++++
+ osc/core.py                     | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+ create mode 100644 behave/features/rdelete.feature
+
+diff --git a/behave/features/rdelete.feature b/behave/features/rdelete.feature
+new file mode 100644
+index 000000000..df26a25fc
+--- /dev/null
++++ b/behave/features/rdelete.feature
+@@ -0,0 +1,6 @@
++Feature: `osc rdelete` command
++
++@destructive
++Scenario: Run `osc rdelete` to delete a project and mark it with a desctructive tag
++   When I execute osc with args "rdelete -r -f test:factory -m 'cleanup'"
++   Then the exit code is 0 
+diff --git a/osc/core.py b/osc/core.py
+index 6a86901b1..59d3f4fdb 100644
+--- a/osc/core.py
++++ b/osc/core.py
+@@ -6073,7 +6073,7 @@ def delete_package(apiurl: str, prj: str, pac: str, force=False, msg=None):
+ 
+ def delete_project(apiurl: str, prj: str, force=False, msg=None, recursive=False):
+     if not recursive:
+-        packages = meta_get_packagelist(apiurl, project)
++        packages = meta_get_packagelist(apiurl, prj)
+         if packages:
+             error_msg = \
+                 "Project contains packages. It must be empty before deleting it. " \

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jan 24 20:15:06 UTC 2023 - Larry Rainey <llrainey15@gmail.com>
+
+- VirtualBox 7.0.6 (released January 17 2023)
+
+This is a maintenance release. The following items were fixed and/or added: [1]
+
+- VMM: Fixed guru running the FreeBSD loader on older Intel CPUs without unrestricted guest support (bug #21332)
+- GUI: Fixed virtual machines grouping when VM was created or modified in command line (bugs #11500, #20933)
+- GUI: Introduced generic changes in settings dialogs
+- VirtioNet: Fixed broken network after loading saved state (bug #21172)
+- Storage: Added support for increasing the size of the following VMDK image variants: monolithicFlat, monolithicSparse, twoGbMaxExtentSparse, twoGbMaxExtentFlat
+- VBoxManage: Added missing --directory switch for guestcontrol mktemp command
+- Mouse Integration: Guest was provided with extended host mouse state (bug #21139)
+- DnD: Introduced generic improvements
+- Guest Control: Fixed handling creation mode for temporary directories (bug #21394)
+- Linux Host and Guest: Added initial support for building UEK7 kernel on Oracle Linux 8
+- Linux Host and Guest: Added initial support for RHEL 9.1 kernel
+- Linux Guest Additions: Added initial support for kernel 6.2 for vboxvideo
+- Audio: The "--audio" option in VBoxManage is now marked as deprecated; please use "--audio-driver" and "--audio-enabled" instead. This will allow more flexibility when changing the driver and/or controlling the audio functionality 
+
+
+Additionally, it fixes 6 CVE's: [2]
+CVE-2023-21886 	Oracle VM VirtualBox 	Core 	Multiple 	Yes 	8.1 	Network 	High 	None 	None 	Un-
+changed 	High 	High 	High 	Prior to 6.1.42, prior to 7.0.6 	 
+CVE-2023-21898 	Oracle VM VirtualBox 	Core 	None 	No 	5.5 	Local 	Low 	Low 	None 	Un-
+changed 	None 	None 	High 	Prior to 6.1.42, prior to 7.0.6 	See Note 1
+CVE-2023-21899 	Oracle VM VirtualBox 	Core 	None 	No 	5.5 	Local 	Low 	Low 	None 	Un-
+changed 	None 	None 	High 	Prior to 6.1.42, prior to 7.0.6 	See Note 1
+CVE-2023-21884 	Oracle VM VirtualBox 	Core 	None 	No 	4.4 	Local 	Low 	High 	None 	Un-
+changed 	None 	None 	High 	Prior to 6.1.42, prior to 7.0.6 	 
+CVE-2023-21885 	Oracle VM VirtualBox 	Core 	None 	No 	3.8 	Local 	Low 	Low 	None 	Changed 	Low 	None 	None 	Prior to 6.1.42, prior to 7.0.6 	See Note 2
+CVE-2023-21889 	Oracle VM VirtualBox 	Core 	None 	No 	3.8 	Local 	Low 	Low 	None 	Changed 	Low 	None 	None 	Prior to 6.1.42, prior to 7.0.6 	 
+								
+Note 1: Applies to VirtualBox VMs running Windows 7 and later.
+Note 2: Applies to Windows only.
+
+
+Links:
+[1] https://www.virtualbox.org/wiki/Changelog-7.0#v6
+[2] https://www.oracle.com/security-alerts/cpujan2023.html#AppendixOVIR
+
+-------------------------------------------------------------------
+Tue Jan 24 14:34:08 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- unify buildrequires to libopenssl-devel to handle openssl 3 transition
+
+-------------------------------------------------------------------
 Fri Dec 23 23:24:21 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
   To eliminate some VM failures while using the kernel version of vboxvideo.ko for Leap 15.4,

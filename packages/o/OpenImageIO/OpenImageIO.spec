@@ -52,7 +52,6 @@ BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
 %endif
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel
@@ -82,6 +81,7 @@ BuildRequires:  ptex-devel-static
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libavdevice)
 %if %{with libheif}
 BuildRequires:  pkgconfig(libheif)
 %endif

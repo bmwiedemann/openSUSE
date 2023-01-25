@@ -1,7 +1,7 @@
 #
-# spec file for package nvidia-Open-gfxG06
+# spec file for package nvidia-open-driver-G06-signed
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if %{undefined kernel_module_directory}
 %if 0%{?usrmerged}
@@ -32,7 +33,7 @@ Name:           nvidia-open-driver-G06-signed
 Version:        525.85.05
 Release:        0
 Summary:        NVIDIA open kernel module driver for GeForce RTX 2000 series and newer
-License:        GPL-2.0 and MIT
+License:        GPL-2.0-only AND MIT
 Group:          System/Kernel
 URL:            https://github.com/NVIDIA/open-gpu-kernel-modules/
 Source0:        open-gpu-kernel-modules-%{version}.tar.gz
@@ -46,6 +47,8 @@ Source7:        preamble
 Source8:        json-to-pci-id-list.py
 Source9:        pci_ids-unsupported-%{version}
 Source10:       pci_ids-unsupported
+Source11:       pesign-copy-sources
+Source12:       pesign-spec-macros
 Patch0:         0001-Don-t-override-INSTALL_MOD_DIR.patch
 Patch2:         persistent-nvidia-id-string.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -56,7 +59,7 @@ BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
 %ifnarch aarch64
-%if 0%{?sle_version} >= 120400 && !0%{?is_opensuse} 
+%if 0%{?sle_version} >= 120400 && !0%{?is_opensuse}
 BuildRequires:  kernel-syms-azure
 %endif
 %endif
@@ -68,8 +71,8 @@ ExclusiveArch:  x86_64 aarch64
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
 %kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 
-# create hardware supplements
-%define __kmp_supplements %_sourcedir/my-find-supplements %_sourcedir/pci_ids-%{version}
+# create hardware supplements for manual builds
+%{load:%{SOURCE12}}
 
 # newer rpmbuilds attach the kernel version and the major part of release to %%pci_id_file of the __kmp_supplements script
 # boo#1190210

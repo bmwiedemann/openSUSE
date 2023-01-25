@@ -31,7 +31,7 @@
 %define skip_python36 1
 %define modname debugpy
 Name:           python-%{modname}%{psuffix}
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT

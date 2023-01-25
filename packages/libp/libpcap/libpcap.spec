@@ -1,7 +1,7 @@
 #
 # spec file for package libpcap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libpcap
-Version:        1.10.1
+Version:        1.10.3
 Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
@@ -89,7 +89,7 @@ libpcap static libraries
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 autoreconf -fiv
-%ifarch %sparc
+%ifarch %{sparc}
 pic="PIC"
 %else
 pic="pic"
@@ -98,7 +98,7 @@ export CFLAGS="%{optflags} -f$pic" CXXFLAGS="%{optflags} -f$pic"
 %configure \
 	--enable-bluetooth=yes \
 	--enable-ipv6
-make %{?_smp_mflags} all shared
+%make_build all shared
 
 %install
 mkdir -p %{buildroot}%{_bindir}

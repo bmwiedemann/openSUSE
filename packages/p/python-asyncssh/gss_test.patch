@@ -2,9 +2,11 @@
  tests/test_connection.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/tests/test_connection.py
-+++ b/tests/test_connection.py
-@@ -1470,7 +1470,7 @@ class _TestConnectionAsyncAcceptor(Serve
+Index: asyncssh-2.13.0/tests/test_connection.py
+===================================================================
+--- asyncssh-2.13.0.orig/tests/test_connection.py
++++ asyncssh-2.13.0/tests/test_connection.py
+@@ -1546,7 +1546,7 @@ class _TestConnectionAsyncAcceptor(Serve
  
              conn.logger.info('Acceptor called')
  

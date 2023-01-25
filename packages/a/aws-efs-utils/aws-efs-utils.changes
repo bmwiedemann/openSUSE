@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:50:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.34.5
+  * Handle invalid entries in /proc/mounts
+  * Detect invalid private key
+
+-------------------------------------------------------------------
 Tue Jan  3 10:22:00 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.34.4
   * Fix potential tlsport selection collision by using
-    state file as tlsport lock file
+    state file as tlsport lock file (bsc#1206737, CVE-2022-46174)
 - Use RPM macros for directory paths (bsc#1191055)
 
 -------------------------------------------------------------------

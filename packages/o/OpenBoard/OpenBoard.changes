@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:39:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libavdevice) instead of ffmpeg-devel: let
+  OBS figure out the right packages that do not conlfict.
+
+-------------------------------------------------------------------
 Tue Nov 29 16:17:02 UTC 2022 - Martin Winter <me@letsfindaway.de>
 
 - update to version 1.7.0~git20221129.9de37af

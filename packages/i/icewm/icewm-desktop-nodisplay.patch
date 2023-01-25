@@ -1,7 +1,7 @@
-Index: icewm-3.3.0/lib/icewm.desktop
+Index: icewm-3.3.1/lib/icewm.desktop
 ===================================================================
---- icewm-3.3.0.orig/lib/icewm.desktop
-+++ icewm-3.3.0/lib/icewm.desktop
+--- icewm-3.3.1.orig/lib/icewm.desktop
++++ icewm-3.3.1/lib/icewm.desktop
 @@ -20,7 +20,7 @@ Comment[uk]=Простий та швид
  Icon=icewm
  TryExec=/usr/bin/icewm

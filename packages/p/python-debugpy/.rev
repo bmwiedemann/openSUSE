@@ -53,4 +53,13 @@
   * Fixes: #1078, #1129, #1138, #1142, #1146, #1148, #1154</comment>
     <requestid>1059952</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4876320244802c58c2684d72fcf0e86</srcmd5>
+    <version>1.6.6</version>
+    <time>1674664940</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.6.6:
+  * Disable optimization causing issues when debugging Python 3.10 and 3.11.</comment>
+    <requestid>1060514</requestid>
+  </revision>
 </revisionlist>

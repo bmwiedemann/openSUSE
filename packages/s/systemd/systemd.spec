@@ -208,9 +208,6 @@ Patch8:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 Patch10:        0001-conf-parser-introduce-early-drop-ins.patch
 Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 
-# Temporary workaround until bsc#1197178 is addressed.
-Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
-
 # Patches listed below are put in quarantine. Normally all changes must go to
 # upstream first and then are cherry-picked in the SUSE git repository. But for
 # very few cases, some stuff might be broken in upstream and need to be fixed
@@ -959,11 +956,16 @@ find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %find_lang systemd
 %endif
 
-# Build of installation images uses a hard coded list of packages with a %%pre
-# that needs to be run during the build. systemd is one of them so keep the
-# section even if it's empty.
+# Don't drop %%pre section even if it becomes empty: the build process of
+# installation images uses a hardcoded list of packages with a %%pre that needs
+# to be run during the build and complains if it can't find one.
 %pre
-:
+# Units listed below can be enabled at installation according to their preset
+# setting.
+%systemd_pre machines.target
+%systemd_pre remote-fs.target
+%systemd_pre getty@.service
+%systemd_pre systemd-timesyncd.service
 
 %post
 # Make /etc/machine-id an empty file during package installation. On the first
@@ -1018,11 +1020,11 @@ fi
 %journal_catalog_update
 %tmpfiles_create
 
-# Create default config in /etc at first install.
-# Later package updates should not overwrite these settings.
-%systemd_post getty@.service
+# Units listed below can be enabled at installation accoding to their preset
+# setting.
 %systemd_post machines.target
 %systemd_post remote-fs.target
+%systemd_post getty@.service
 %systemd_post systemd-timesyncd.service
 
 # v228 wrongly set world writable suid root permissions on timestamp files used
@@ -1069,6 +1071,8 @@ fi
 # Avoid restarting logind until fixed upstream (issue #1163)
 
 %pre -n udev%{?mini}
+# Units listed below can be enabled at installation accoding to their preset
+# setting.
 %systemd_pre remote-cryptsetup.target
 %systemd_pre systemd-pstore.service
 
@@ -1086,6 +1090,8 @@ fi
 
 %tmpfiles_create systemd-pstore.conf
 
+# Units listed below can be enabled at installation accoding to their preset
+# setting.
 %systemd_post remote-cryptsetup.target
 %systemd_post systemd-pstore.service
 
@@ -1162,107 +1168,107 @@ fi
 
 %if %{with journal_remote}
 %pre journal-remote
-%service_add_pre systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%service_add_pre systemd-journal-remote.socket systemd-journal-remote.service
-%service_add_pre systemd-journal-upload.service
+%systemd_pre systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
+%systemd_pre systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_pre systemd-journal-upload.service
 
 %post journal-remote
 # Assume that all files shipped by systemd-journal-remove are owned by root.
 %sysusers_create systemd-remote.conf
-%service_add_post systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%service_add_post systemd-journal-remote.socket systemd-journal-remote.service
-%service_add_post systemd-journal-upload.service
+%systemd_post systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
+%systemd_post systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_post systemd-journal-upload.service
 
 %preun  journal-remote
-%service_del_preun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%service_del_preun systemd-journal-remote.socket systemd-journal-remote.service
-%service_del_preun systemd-journal-upload.service
+%systemd_preun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
+%systemd_preun systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_preun systemd-journal-upload.service
 
 %postun journal-remote
-%service_del_postun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%service_del_postun systemd-journal-remote.socket systemd-journal-remote.service
-%service_del_postun systemd-journal-upload.service
+%systemd_postun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
+%systemd_postun systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_postun systemd-journal-upload.service
 %endif
 
 %if %{with networkd} || %{with resolved}
 %pre network
 %if %{with networkd}
-%service_add_pre systemd-networkd.service
-%service_add_pre systemd-networkd-wait-online.service
+%systemd_pre systemd-networkd.service
+%systemd_pre systemd-networkd-wait-online.service
 %endif
 %if %{with resolved}
-%service_add_pre systemd-resolved.service
+%systemd_pre systemd-resolved.service
 %endif
 
 %post network
 %if %{with networkd}
 %sysusers_create systemd-network.conf
 %tmpfiles_create systemd-network.conf
-%service_add_post systemd-networkd.service
-%service_add_post systemd-networkd-wait-online.service
+%systemd_post systemd-networkd.service
+%systemd_post systemd-networkd-wait-online.service
 %endif
 %if %{with resolved}
 %ldconfig
 %sysusers_create systemd-resolve.conf
-%service_add_post systemd-resolved.service
+%systemd_post systemd-resolved.service
 %endif
 
 %preun network
 %if %{with networkd}
-%service_del_preun systemd-networkd.service
-%service_del_preun systemd-networkd-wait-online.service
+%systemd_preun systemd-networkd.service
+%systemd_preun systemd-networkd-wait-online.service
 %endif
 %if %{with resolved}
-%service_del_preun systemd-resolved.service
+%systemd_preun systemd-resolved.service
 %endif
 
 %postun network
 %if %{with networkd}
-%service_del_postun systemd-networkd.service
-%service_del_postun systemd-networkd-wait-online.service
+%systemd_postun systemd-networkd.service
+%systemd_postun systemd-networkd-wait-online.service
 %endif
 %if %{with resolved}
 %ldconfig
-%service_del_postun systemd-resolved.service
+%systemd_postun systemd-resolved.service
 %endif
 %endif
 
 %if %{with portabled}
 %pre portable
-%service_add_pre systemd-portabled.service
+%systemd_pre systemd-portabled.service
 
 %post portable
 %tmpfiles_create portables.conf
-%service_add_post systemd-portabled.service
+%systemd_post systemd-portabled.service
 
 %preun portable
-%service_del_preun systemd-portabled.service
+%systemd_preun systemd-portabled.service
 
 %postun portable
-%service_del_postun systemd-portabled.service
+%systemd_postun systemd-portabled.service
 %endif
 
 %if %{with experimental}
 %pre experimental
-%service_add_pre systemd-homed.service
-%service_add_pre systemd-oomd.service systemd-oomd.socket
-%service_add_pre systemd-userdbd.service systemd-userdbd.socket
+%systemd_pre systemd-homed.service
+%systemd_pre systemd-oomd.service systemd-oomd.socket
+%systemd_pre systemd-userdbd.service systemd-userdbd.socket
 
 %post experimental
 %sysusers_create systemd-oom.conf
-%service_add_post systemd-homed.service
-%service_add_post systemd-oomd.service systemd-oomd.socket
-%service_add_post systemd-userdbd.service systemd-userdbd.socket
+%systemd_post systemd-homed.service
+%systemd_post systemd-oomd.service systemd-oomd.socket
+%systemd_post systemd-userdbd.service systemd-userdbd.socket
 
 %preun experimental
-%service_del_preun systemd-homed.service
-%service_del_preun systemd-oomd.service systemd-oomd.socket
-%service_del_preun systemd-userdbd.service systemd-userdbd.socket
+%systemd_preun systemd-homed.service
+%systemd_preun systemd-oomd.service systemd-oomd.socket
+%systemd_preun systemd-userdbd.service systemd-userdbd.socket
 
 %postun experimental
-%service_del_postun systemd-homed.service
-%service_del_postun systemd-oomd.service systemd-oomd.socket
-%service_del_postun systemd-userdbd.service systemd-userdbd.socket
+%systemd_postun systemd-homed.service
+%systemd_postun systemd-oomd.service systemd-oomd.socket
+%systemd_postun systemd-userdbd.service systemd-userdbd.socket
 %endif
 
 %files

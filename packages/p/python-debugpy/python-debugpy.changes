@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 23 20:39:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.6.6:
+  * Disable optimization causing issues when debugging Python 3.10 and 3.11.
+
+-------------------------------------------------------------------
 Fri Jan 20 10:26:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.6.5:

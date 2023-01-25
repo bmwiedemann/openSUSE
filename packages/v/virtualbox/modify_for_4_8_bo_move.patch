@@ -1,21 +1,30 @@
-Index: VirtualBox-7.0.4/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+Index: VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
 ===================================================================
---- VirtualBox-7.0.4.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
-+++ VirtualBox-7.0.4/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+--- VirtualBox-7.0.6.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
++++ VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
 @@ -45,7 +45,7 @@
  #include <iprt/assert.h>
  #include <iprt/errcore.h>
  #include "r0drv/alloc-r0drv.h"
 -
 +#include <linux/kmemleak.h>
+ #include "internal/initterm.h"
  
- #if (defined(RT_ARCH_AMD64) || defined(DOXYGEN_RUNNING)) && !defined(RTMEMALLOC_EXEC_HEAP)
- # if RTLNX_VER_MIN(2,6,23) && RTLNX_VER_MAX(5,8,0) && !RTLNX_RHEL_MAJ_PREREQ(8,5)
-@@ -311,6 +311,7 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb
-                 fFlags &= ~RTMEMHDR_FLAG_KMALLOC;
-                 pHdr = vmalloc(cb + sizeof(*pHdr));
-             }
+ 
+@@ -78,11 +78,12 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb
+                         && !(fFlags & RTMEMHDR_FLAG_ANY_CTX) ))
+         {
+             fFlags &= ~RTMEMHDR_FLAG_KMALLOC;
+-            pHdr = vmalloc(cb + sizeof(*pHdr));
+-        }
++                pHdr = vmalloc(cb + sizeof(*pHdr));
++            }
 +	    kmemleak_not_leak(pHdr);
-         }
-         else
-             pHdr = vmalloc(cb + sizeof(*pHdr));
+     }
+-    else
+-        pHdr = vmalloc(cb + sizeof(*pHdr));
++        else
++            pHdr = vmalloc(cb + sizeof(*pHdr));
+     if (RT_LIKELY(pHdr))
+     {
+         /*

@@ -22,7 +22,7 @@
 %define executable_name kubectl-node_shell
 
 Name:           kubectl-node-shell
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Exec into node via kubectl
 License:        Apache-2.0

@@ -1,0 +1,50 @@
+From 9f09c5b36cc9c97c508aeb60ed268d2e04367877 Mon Sep 17 00:00:00 2001
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Mon, 23 Jan 2023 11:42:18 +0100
+Subject: [PATCH] qemu_interface: Fix managed='no' case when creating an
+ ethernet interface
+
+In a recent commit of v9.0.0-rc1~192 I've tried to forbid case
+where a TAP device already exists, but at the same time it's
+managed by Libvirt (<interface type='ethernet'> <target
+dev='tap0' managed='yes'/> </interface>). NB, if @managed
+attribute is missing then it's assumed to be managed by Libvirt.
+
+Anyway, I've mistakenly put setting of
+VIR_NETDEV_TAP_CREATE_ALLOW_EXISTING flag into managed='yes'
+branch instead of managed='no' branch in
+qemuInterfaceEthernetConnect().
+
+Move the setting of the flag into the correct branch.
+
+Fixes: a2ae3d299cf9c5ada8aa42ec4271748eb479dc27
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+Reviewed-by: Martin Kletzander <mkletzan@redhat.com>
+(cherry picked from commit d6a8b9eef70887e01fa5fd292580e14ca5eab08c)
+---
+ src/qemu/qemu_interface.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+Index: libvirt-9.0.0/src/qemu/qemu_interface.c
+===================================================================
+--- libvirt-9.0.0.orig/src/qemu/qemu_interface.c
++++ libvirt-9.0.0/src/qemu/qemu_interface.c
+@@ -443,6 +443,9 @@ qemuInterfaceEthernetConnect(virDomainDe
+                            _("target managed='no' but specified dev doesn't exist"));
+             goto cleanup;
+         }
++
++        tap_create_flags |= VIR_NETDEV_TAP_CREATE_ALLOW_EXISTING;
++
+         if (virNetDevMacVLanIsMacvtap(net->ifname)) {
+             auditdev = net->ifname;
+             if (virNetDevMacVLanTapOpen(net->ifname, tapfd, tapfdSize) < 0)
+@@ -461,8 +464,6 @@ qemuInterfaceEthernetConnect(virDomainDe
+         if (!net->ifname)
+             template_ifname = true;
+ 
+-        tap_create_flags |= VIR_NETDEV_TAP_CREATE_ALLOW_EXISTING;
+-
+         if (virNetDevTapCreate(&net->ifname, tunpath, tapfd, tapfdSize,
+                                tap_create_flags) < 0) {
+             goto cleanup;

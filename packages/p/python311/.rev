@@ -694,4 +694,12 @@ C API
 - For jsc#PED-1570, providing Python 3.11 for SLE-15-SP5.</comment>
     <requestid>1059550</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>abad2e4800b8ce229cf7cce640176408</srcmd5>
+    <version>3.11.1</version>
+    <time>1674665076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060927</requestid>
+  </revision>
 </revisionlist>

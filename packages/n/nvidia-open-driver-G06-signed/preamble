@@ -1,4 +1,4 @@
 Requires: kernel-firmware-nvidia-gsp-G06 = %{-v*}
 Requires: perl-Bootloader
-Conflicts: nvidia-gfxG06-kmp nvidia-open-driver-G06-kmp
+Conflicts: nvidia-gfxG06-kmp nvidia-driver-G06-kmp nvidia-open-driver-G06-kmp
 Requires: group(video)

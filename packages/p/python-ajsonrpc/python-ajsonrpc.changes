@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:40:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run test on all python versions but for python 3.6
+
+-------------------------------------------------------------------
 Sat Jan 15 16:24:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0: 

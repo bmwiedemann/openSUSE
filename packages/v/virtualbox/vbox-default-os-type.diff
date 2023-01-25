@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
+Index: VirtualBox-7.0.6/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
 ===================================================================
---- VirtualBox-7.0.4.orig/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
-+++ VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
+--- VirtualBox-7.0.6.orig/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
++++ VirtualBox-7.0.6/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
 @@ -397,15 +397,15 @@ void UINameAndSystemEditor::sltFamilyCha
          if (iIndexWin10 != -1)
              m_pComboType->setCurrentIndex(iIndexWin10);
