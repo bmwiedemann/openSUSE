@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/antlarr/lua-dbus/
 Source:         lua-dbus-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-ldbus
 BuildRequires:  pkgconfig
