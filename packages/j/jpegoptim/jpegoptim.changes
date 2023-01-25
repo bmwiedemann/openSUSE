@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:30:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v1.5.1:
+  * fix logging to stdout when --stdout is used *thanks to Eta
+  * update --treshold option accept decimal numbers as parameter
+  * fix crashes when processing certain broken JPEG images
+  * fix memory leaks
+  * fix (logging) output in parallel processing mode
+
+-------------------------------------------------------------------
 Fri Sep 23 16:11:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:
