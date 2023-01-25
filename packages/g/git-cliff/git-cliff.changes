@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 18 04:06:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.1.1:
+  * Relevant change: Update README.md about the NPM package
+  * Fix type casting in base NPM package
+  * Rename the package on Windows
+  * Disable liquid parsing in README.md by using raw blocks
+  * Support for generating changelog for multiple git repositories
+  * Publish binaries for more platforms/architectures
+
+-------------------------------------------------------------------
 Wed Dec 28 12:57:44 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.0.0:
