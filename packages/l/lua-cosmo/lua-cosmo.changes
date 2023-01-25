@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 25 12:38:43 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Blank line required after %%autosetup on SLE12
+
+-------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Sun Sep 11 14:28:19 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Add test and fix_test.patch 

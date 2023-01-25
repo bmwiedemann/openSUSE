@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,10 @@ Group:          Development/Languages/Other
 URL:            https://github.com/mascarenhas/cosmo
 Source:         cosmo-%{version}.tar.xz
 Patch:          fix_test.patch
+BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lpeg
 BuildRequires:  %{flavor}-luarocks
-BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
 %lua_provides
@@ -48,6 +49,7 @@ engines, without the downside of allowing arbitrary code in the templates.
 
 %prep
 %autosetup -p1 -n %{mod_name}-%{version}
+
 sed -i -e '/lpeg >=/d' "rockspec/%{mod_name}-%{rock_version}.rockspec"
 
 %build
