@@ -1,7 +1,7 @@
 #
 # spec file for package filezilla
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           filezilla
-Version:        3.62.1
+Version:        3.63.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -36,16 +36,15 @@ BuildRequires:  pkgconfig
 # needs long long support in pugixml
 BuildRequires:  pugixml-devel >= 1.7
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel >= 3.0.4
+BuildRequires:  wxWidgets-3_2-devel >= 3.2.1
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.39.2
+BuildRequires:  pkgconfig(libfilezilla) >= 0.40.0
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
-# filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
-BuildRequires:  pkgconfig(sqlite3) >= 3.7.8
+BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
 # See boo#966384 filezilla fails to start
 Requires:       libpugixml1 >= 1.7
 Recommends:     %{name}-lang

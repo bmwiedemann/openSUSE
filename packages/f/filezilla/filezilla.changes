@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:33:15 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.63.0
+  * Bugfixes and minor changes:
+    - All official FileZilla binares now link against wxWidgets 3.2.1
+    - Fixed a potential crash when closing FileZilla
+- Changes from 3.62.2
+  * Bugfixes and minor changes:
+    - Fixed an issue with some dialogs not showing up
+
+-------------------------------------------------------------------
 Fri Nov 18 15:04:12 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.62.1
