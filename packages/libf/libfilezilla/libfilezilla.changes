@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:37:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.41.0
+  * New features:
+    - Added fz::xml::parser and fz::xml::namespace_parser
+    - Added fz::is_valid_utf8
+    - Added fz::utf16le_to_utf8_append and fz::utf16be_to_utf8_append
+- Changes from 0.40.0
+  * New features:
+    - Added fz::unicode_codepoint_to_utf8_append
+    - Added fz::strtokenizer
+    - Added fz::check_certificate_status
+
+-------------------------------------------------------------------
 Fri Nov 18 15:02:05 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.39.2
