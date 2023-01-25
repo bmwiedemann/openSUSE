@@ -1,7 +1,7 @@
 #
 # spec file for package libdeflate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 0
 %define libname %{name}%{major}
 Name:           libdeflate
-Version:        1.15
+Version:        1.17
 Release:        0
 Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
@@ -68,12 +68,13 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%cmake
+%cmake \
+  -DLIBDEFLATE_BUILD_STATIC_LIB=OFF \
+  -DLIBDEFLATE_BUILD_TESTS=ON
 %cmake_build
 
 %install
 %cmake_install
-find %{buildroot} -type f -name "*.a" -delete -print
 
 # Delete libdeflate-gunzip and replace with symlink libdeflate-gzip to fix dwz break with hardlink.
 # boo#1180984
