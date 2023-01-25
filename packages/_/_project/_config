@@ -536,6 +536,7 @@ Prefer: -budgie-desktop
 Prefer: python38-tornado
 Prefer: python39-tornado
 Prefer: python310-tornado
+Prefer: python311-tornado
 
 
 Prefer: -gnome-bluetooth-1
