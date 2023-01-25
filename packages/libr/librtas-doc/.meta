@@ -9,4 +9,5 @@ The librtasevent shared library provides users with a set of
 definitions and common routines useful in parsing and dumping the
 contents of RTAS events.</description>
   <devel project="openSUSE:Factory" package="librtas"/>
+  <bcntsynctag>librtas</bcntsynctag>
 </package>

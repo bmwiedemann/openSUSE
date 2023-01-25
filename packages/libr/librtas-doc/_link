@@ -1,9 +1,1 @@
-<link  package="librtas" cicount="copy">
-<patches>
-  <!-- <branch /> for a full copy, default case  -->
-  <!-- <apply name="patch" /> apply a patch on the source directory  -->
-  <!-- <topadd>%define build_with_feature_x 1</topadd> add a line on the top (spec file only) -->
-  <!-- <add name="file.patch" /> add a patch to be applied after %setup (spec file only) -->
-  <!-- <delete name="filename" /> delete a file -->
-</patches>
-</link>
+<link package='librtas' cicount='copy' />
