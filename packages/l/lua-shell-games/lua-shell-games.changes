@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
 Wed Nov 23 09:43:59 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix the name of the package.

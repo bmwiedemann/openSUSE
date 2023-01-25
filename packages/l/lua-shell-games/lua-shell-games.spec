@@ -67,7 +67,7 @@ ln -sfv lib/%{mod_name}.lua .
 %if "%{flavor}" == "lua51"
 REFUTE_LUA52_BEHAVIOR=true \
 %endif
-EXPECTED_LUA_VERSION="Lua %{lua_version}" %make_build test
+EXPECTED_LUA_VERSION="Lua %{lua_version}" make %{?_make_output_sync} %{?_smp_mflags} test
 
 %files
 %license LICENSE.txt
