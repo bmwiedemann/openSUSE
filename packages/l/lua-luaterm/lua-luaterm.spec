@@ -43,7 +43,7 @@ This package provides terminal operations for Lua
 %setup -q -n %{rname}-%{version}
 
 %build
-%make_build \
+make %{?_make_output_sync} %{?_smp_mflags} \
 	CWARNS="%{optflags}" \
 	LUA_INC=%{lua_incdir} \
 	LUA_SHARE=%{lua_noarchdir}/term \
