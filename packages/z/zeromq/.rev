@@ -412,4 +412,12 @@ https://github.com/zeromq/libzmq/releases/tag/v4.3.3</comment>
 </comment>
     <requestid>997418</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>46c9227f4509b43624cfc328159b92eb</srcmd5>
+    <version>4.3.4</version>
+    <time>1674664948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060587</requestid>
+  </revision>
 </revisionlist>

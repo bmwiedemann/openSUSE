@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 23 15:42:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- qemu-user.patch: Fix build with qemu linux-user emulation
+
+-------------------------------------------------------------------
 Mon Aug 15 14:00:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop xmlto and asciidoc buildrequires, these are only needed

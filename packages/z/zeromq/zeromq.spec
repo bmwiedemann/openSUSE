@@ -1,7 +1,7 @@
 #
 # spec file for package zeromq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,11 @@ Group:          Productivity/Networking/Web/Servers
 URL:            http://www.zeromq.org/
 Source:         https://github.com/zeromq/libzmq/releases/download/v%{version}/zeromq-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch1:         qemu-user.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  libunwind-devel
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} && 0%{?suse_version} <= 1110
@@ -101,8 +105,10 @@ This package holds the development files for ZeroMQ.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
+autoreconf -fi
 export LIBS=-ldl
 %configure \
   --with-libsodium \
