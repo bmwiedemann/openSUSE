@@ -154,7 +154,7 @@ BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
-%if 0%{?sle_version} >= 150400
+%if 0%{?sle_version} >= 150500
 BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
@@ -284,6 +284,12 @@ BuildRequires:  rust
 BuildRequires:  rust-bindgen
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 BuildRequires:  pkgconfig(SPIRV-Tools)
+%endif
+%endif
+%if "%{flavor}" == "drivers"
+%if %{video_codecs}
+BuildRequires:  pkgconfig(x264)
+BuildRequires:  pkgconfig(x265)
 %endif
 %endif
 
@@ -805,7 +811,7 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
 %ifarch ppc64 ppc64le
 %limit_build -m 1024
 %endif
-%if 0%{?sle_version} >= 150400
+%if 0%{?sle_version} >= 150500
 export CC=gcc-12
 export CXX=g++-12
 %endif

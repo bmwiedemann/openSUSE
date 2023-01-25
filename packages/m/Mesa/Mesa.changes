@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jan 24 11:06:48 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- force usage of gcc 12 only on Leap 15.5; there is no gcc12 on
+  Leap 15.4
+
+-------------------------------------------------------------------
+Tue Jan 24 09:32:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add BuildRequires for x264 and x265 in case video_codecs should
+  be built.
+
+-------------------------------------------------------------------
+Mon Jan 23 18:43:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-enable build on Leap, but only for 15.5; there is no gcc12
+  on Leap 15.4, which is now officially required by Mesa 22.3
+
+-------------------------------------------------------------------
 Mon Jan 16 22:44:11 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Add support for Rusticl - Mesa's new OpenCL implementation.
