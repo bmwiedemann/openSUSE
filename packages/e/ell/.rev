@@ -270,4 +270,13 @@
     <comment>- update to 0.55:</comment>
     <requestid>1045122</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2c624620c693b2f327cd1e255be536c1</srcmd5>
+    <version>0.56</version>
+    <time>1674737808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.56:
+  * Add support for TLS session resume interfaces. (forwarded request 1060725 from polslinux)</comment>
+    <requestid>1060787</requestid>
+  </revision>
 </revisionlist>
