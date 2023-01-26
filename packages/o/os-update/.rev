@@ -108,4 +108,12 @@
   - Include error messages of systemctl, too (systemd-status-mail)</comment>
     <requestid>1058256</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4acd1fc290b78be0be3bc58e0fa3dd75</srcmd5>
+    <version>1.10</version>
+    <time>1674737945</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1061162</requestid>
+  </revision>
 </revisionlist>

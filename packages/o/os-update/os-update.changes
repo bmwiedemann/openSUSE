@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 19 09:21:19 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.10
+  - Fix check if reboot is required
+  - Improve/fix check if systemd needs to be restarted
+
+-------------------------------------------------------------------
 Fri Jan 13 13:40:55 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.9
