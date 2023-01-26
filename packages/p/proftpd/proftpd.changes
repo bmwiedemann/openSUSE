@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 10:43:46 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Thu Sep  1 19:28:50 UTC 2022 - chris@computersalat.de
 
 - Update proftpd-basic.conf.patch

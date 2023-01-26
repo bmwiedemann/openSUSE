@@ -1,7 +1,7 @@
 #
 # spec file for package proftpd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -220,7 +220,12 @@ make %{?_smp_mflags}
 
 %install
 %make_install INSTALL_USER=`id -un` INSTALL_GROUP=`id -gn`
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+install -D -m 0644 contrib/dist/rpm/ftp.pamd   %{buildroot}/%{_pam_vendordir}/%{name}
+%else
 install -D -m 0644 contrib/dist/rpm/ftp.pamd   %{buildroot}/%{_sysconfdir}/pam.d/%{name}
+%endif
 install -D -m 0644 contrib/dist/rpm/%{name}.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 #
 rm -fv %{buildroot}/%{_libdir}/%{name}/*.{a,la}
@@ -254,6 +259,18 @@ ln -sf %{_sysconfdir}/init.d/%{name} %{buildroot}/%{_sbindir}/rc%{name}
 %pre
 %if 0%{?has_systemd}
 %service_add_pre %{name}.service
+%endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/proftpd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/proftpd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 %preun
@@ -315,7 +332,11 @@ install -d %{_localstatedir}/run/%{name}
 %dir %attr(0700,ftp,ftp) %{_sysconfdir}/%{name}/ssl/
 %config %{_sysconfdir}/%{name}/ssl/README
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/%{name}
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/%{name}
+%endif
 %config(noreplace) %{_sysconfdir}/%{name}/blacklist.dat
 %config(noreplace) %{_sysconfdir}/%{name}/dhparams.pem
 %dir %attr(0750,root,root) %{_localstatedir}/log/%{name}
