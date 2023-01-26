@@ -1895,4 +1895,72 @@ New Features
     <comment></comment>
     <requestid>1056198</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>ce44b919f55cb3a5e109225262d4ea63</srcmd5>
+    <version>9.18.11</version>
+    <time>1674737826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.18.11
+  Security Fixes:
+  * An UPDATE message flood could cause named to exhaust all
+    available memory. This flaw was addressed by adding a new
+    update-quota option that controls the maximum number of
+    outstanding DNS UPDATE messages that named can hold in a queue
+    at any given time (default: 100). (CVE-2022-3094)
+  * named could crash with an assertion failure when an RRSIG query
+    was received and stale-answer-client-timeout was set to a
+    non-zero value. This has been fixed. (CVE-2022-3736)
+  * named running as a resolver with the
+    stale-answer-client-timeout option set to any value greater
+    than 0 could crash with an assertion failure, when the
+    recursive-clients soft quota was reached. This has been fixed.
+    (CVE-2022-3924)
+  New Features:
+  * The new update-quota option can be used to control the number
+    of simultaneous DNS UPDATE messages that can be processed to
+    update an authoritative zone on a primary server, or forwarded
+    to the primary server by a secondary server. The default is
+    100. A new statistics counter has also been added to record
+    events when this quota is exceeded, and the version numbers for
+    the XML and JSON statistics schemas have been updated.
+  Removed Features:
+  * The Differentiated Services Code Point (DSCP) feature in BIND
+    has been non-operational since the new Network Manager was
+    introduced in BIND 9.16. It is now marked as obsolete, and
+    vestigial code implementing it has been removed. Configuring
+    DSCP values in named.conf now causes a warning to be logged.
+  Feature Changes:
+  * The catalog zone implementation has been optimized to work with
+    hundreds of thousands of member zones.
+  Bug Fixes:
+  * A rare assertion failure was fixed in outgoing TCP DNS
+    connection handling.
+  * Large zone transfers over TLS (XoT) could fail. This has been
+    fixed.
+  * In addition to a previously fixed bug, another similar issue
+    was discovered where quotas could be erroneously reached for
+    servers, including any configured forwarders, resulting in
+    SERVFAIL answers being sent to clients. This has been fixed.
+  * In certain query resolution scenarios (e.g. when following
+    CNAME records), named configured to answer from stale cache
+    could return a SERVFAIL response despite a usable, non-stale
+    answer being present in the cache. This has been fixed.
+  * When an outgoing request timed out, named would retry up to
+    three times with the same server instead of trying the next
+    available name server. This has been fixed.
+  * Recently used ADB names and ADB entries (IP addresses) could
+    get cleaned when ADB was under memory pressure. To mitigate
+    this, only actual ADB names and ADB entries are now counted
+    (excluding internal memory structures used for “housekeeping”)
+    and recently used (&lt;= 10 seconds) ADB names and entries are
+    excluded from the overmem memory cleaner.
+  * The “Prohibited” Extended DNS Error was inadvertently set in
+    some NOERROR responses. This has been fixed.
+  * Previously, TLS session resumption could have led to handshake
+    failures when client certificates were used for authentication
+    (Mutual TLS). This has been fixed.
+  [bsc#1207471, bsc#1207473, bsc#1207475]
+</comment>
+    <requestid>1060984</requestid>
+  </revision>
 </revisionlist>
