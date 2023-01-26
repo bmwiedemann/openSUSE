@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 26 01:23:32 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove use of deprecated py.test in tests.
+
+-------------------------------------------------------------------
 Fri Apr 23 18:59:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove pr_3.patch and LICENSE which were merged upstream

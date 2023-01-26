@@ -47,6 +47,8 @@ Python tool to programmatically control windows inside X.
 %prep
 %setup -q -n wmctrl-%{version}
 
+sed -i 's/\(py$\|py\.test\)/pytest/g' test/test_wmctrl.py
+
 %build
 %python_build
 
@@ -69,6 +71,8 @@ xvfb-run /tmp/test_script.sh
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/wmctrl.py*
+%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/wmctrl*/
 
 %changelog
