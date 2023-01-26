@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jan 18 22:47:30 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Updated to most recent commit (20230116)
+ * Versions no longer provided by upstream so switched to date versioning
+ * _service created to get repository tarball and commit date for versioning
+ * Website got moved to https://mplusfonts.github.io/
+ * License got changed to OFL-1.1
+ * Now there are four families being offered along with variable
+   variants so there are now accompanying subpackages for them
+   - M PLUS 1: mplus1-fonts and mplus1-variable-fonts
+   - M PLUS 2: mplus2-fonts and mplus2-variable-fonts
+   - M PLUS 1 Code: mplus1-code-fonts and mplus1-code-variable-fonts
+   - M PLUS Code Latin (which has 50% and 60% character width versions):
+    * M PLUS Code Latin 50: mplus-code-latin50-fonts
+    * M PLUS Code Latin 60: mplus-code-latin60-fonts
+    * M PLUS Code Variable: mplus-code-latin-variable-fonts
+     - There is only one variable font as its character width can be adjusted
+ * mplus-fonts package will now install mplus1-fonts and mplus2-fonts
+ * See https://mplusfonts.github.io/ for more details
+
+-------------------------------------------------------------------
 Sat Aug 15 07:54:11 UTC 2020 - hella <scythe041@gmail.com>
 
 - Updated to testflight 063a
