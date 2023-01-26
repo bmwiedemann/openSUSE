@@ -70,4 +70,13 @@
     <comment></comment>
     <requestid>998387</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2197abfa526004b8f7a01e4aaf1cab5c</srcmd5>
+    <version>1.2.0</version>
+    <time>1674737894</time>
+    <user>dimstar_suse</user>
+    <comment>- Opencode %make_build to prevent build failure when not defined.
+</comment>
+    <requestid>1061047</requestid>
+  </revision>
 </revisionlist>

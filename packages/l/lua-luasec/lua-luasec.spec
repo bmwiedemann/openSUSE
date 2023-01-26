@@ -52,7 +52,7 @@ cd src
 lua options.lua -g /usr/include/openssl/ssl.h > options.c
 cd ..
 #
-%make_build linux \
+make %{?_make_output_sync} %{?_smp_mflags} linux \
   CFLAGS="%{optflags} -fPIC -I%{lua_incdir} -I. -DWITH_LUASOCKET -DLUASOCKET_DEBUG -DLUA_COMPAT_APIINTCASTS"
 
 %install
