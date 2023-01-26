@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:08:13 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.13.2
+  * matomo-org/matomo
+    - #20180 Ensure row evolution works in events when switching
+      secondary dimension
+    - #20149 When trying to find a join for segmentation,
+      also look for available ways to join in both directions
+    - #19343 Further PHP 8.2 compatibility improvements
+    - #20234 Fixed PHP 8.1 deprecated warning for Redis::connect()
+      call
+    - #20232 Keep selected site when returning to the dashboard
+      from Tag Manager
+    - #20233 Fixed anchor link issue on the tracking code page of
+      the admin when clicking on MTM
+    - #20256 Fix possible notice in VisitorDetails class
+    - #20209 Add Snapchat to social networks
+    - #20207 Added link to useful FAQ and RAW data information to
+      Live API reference
+  * matomo-org/device-detector
+    - #7330 Detect new brands: MwalimuPlus, OLTO, DSIC, Mascom and
+      Detect devices for existing brands Vivo, Xiaomi, Sharp
+    - #7334 Detect new brands: Vormor, Oangcc, SOSH and Detect
+      devices for existing brands Vivo, Xiaomi, Sharp, ZTE
+    - #7335 Detect mobile apps: Audible, Overcast
+    - #7336 Detect Wolvic VR Browser
+    - #7337 Detect bot: GumGum Verity
+    - #7339 Detect new brands: Everex, GTMEDIA, Guophone, Unitech
+      and Detect devices for existing brands
+
+-------------------------------------------------------------------
 Mon Jan 16 14:31:06 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.13.1
