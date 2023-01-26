@@ -1,6 +1,7 @@
+#
 # spec file for package ibus-typing-booster
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,37 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           ibus-typing-booster
 Version:        2.20.0
-Release:        0 
+Release:        0
 Summary:        An input completion utility
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
+BuildRequires:  dbus-1-x11
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  ibus-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel
-BuildRequires:  desktop-file-utils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  dbus-1-x11
-BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 # for the unit tests
 BuildRequires:  m17n-lib
-BuildRequires:  m17n-db
-BuildRequires:  python3-pyenchant
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  glib2
-BuildRequires:  gtk3
-BuildRequires:  xorg-x11-server
 BuildRequires:  glibc-locale
+BuildRequires:  gtk3
+BuildRequires:  m17n-db
+BuildRequires:  python3-pyenchant
+BuildRequires:  xvfb-run
 # Because of “from packing import version”:
 BuildRequires:  python3-packaging
 %if 0%{?sle_version} >= 120200
@@ -64,15 +66,15 @@ BuildRequires:  myspell-it_IT
 %endif
 #
 Requires:       ibus >= 1.5.3
+Requires:       dbus-1-python3
 Requires:       m17n-lib
 Requires:       python3 >= 3.3
-Requires:       dbus-1-python3
 Requires:       python3-distro
 Requires:       python3-pyenchant
 # Because of “from packing import version”:
 Requires:       python3-packaging
 # Workaround bug with python3-enchant: https://bugzilla.opensuse.org/show_bug.cgi?id=1141993
-Requires:  enchant-1-backend
+Requires:       enchant-1-backend
 Requires:       python3-pyxdg
 # Recommend reasonably good fonts which have most of the emoji:
 Recommends:     noto-coloremoji-fonts
@@ -82,9 +84,9 @@ Recommends:     python3-PyAudio
 # To play a sound on error:
 Recommends:     python3-simpleaudio
 # To make the setup tool look nicer and the search for dictionaries and imes better:
-Recommends: python3-langtable
+Recommends:     python3-langtable
 # Better regexpressions (optional):
-Recommends: python3-regex
+Recommends:     python3-regex
 
 %description
 Ibus-typing-booster is a context sensitive completion
@@ -160,8 +162,6 @@ dconf write /org/freedesktop/ibus/engine/typing-booster/showstatusinfoinaux true
 dconf write /org/freedesktop/ibus/engine/typing-booster/inlinecompletion false
 dconf write /org/freedesktop/ibus/engine/typing-booster/keybindings "{'next_input_method': <['Control+Down', 'Control+KP_Down']>, 'previous_input_method': <['Control+Up', 'Control+KP_Up']>, 'lookup_related': <['Mod5+F12']>, 'enable_lookup': <['Tab', 'ISO_Left_Tab', 'KP_Divide']>, 'select_next_candidate': <['Tab', 'ISO_Left_Tab', 'Down', 'KP_Down']>, 'lookup_table_page_down': <['Page_Down', 'KP_Page_Down', 'KP_Next']>, 'toggle_emoji_prediction': <['Mod5+F6']>, 'lookup_table_page_up': <['Page_Up', 'KP_Page_Up', 'KP_Prior']>, 'toggle_off_the_record': <['Mod5+F9']>, 'cancel': <['Escape']>, 'setup': <['Mod5+F10']>, 'select_previous_candidate': <['Shift+Tab', 'Shift+ISO_Left_Tab', 'Up', 'KP_Up']>}"
 dconf dump /
-export DISPLAY=:1
-Xvfb $DISPLAY -screen 0 1024x768x16 &
 # A window manager and and ibus-daemon are needed to run the GUI
 # test tests/test_gtk.py, for example i3 can be used.
 #
@@ -181,7 +181,7 @@ Xvfb $DISPLAY -screen 0 1024x768x16 &
 #i3 -c /tmp/i3config &
 #export XDG_SESSION_TYPE=x11
 
-make check && rc=0 || rc=1
+xvfb-run --server-args="-screen 0 1024x768x16" make check && rc=0 || rc=1
 cat tests/*.log
 if [ $rc != 0 ] ; then
     exit $rc
