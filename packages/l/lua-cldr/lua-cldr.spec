@@ -27,6 +27,7 @@ License:        MIT AND Unicode-TOU
 Group:          Development/Languages/Other
 URL:            https://github.com/alerque/cldr-lua
 Source0:        %{mod_name}-lua-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-penlight

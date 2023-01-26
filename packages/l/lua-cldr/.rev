@@ -17,4 +17,14 @@
  * Tarball now has a copy of the Unicode license covering bundled data</comment>
     <requestid>1040784</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1b620aa1077e47de803d6ae220ba92ba</srcmd5>
+    <version>0.3.0</version>
+    <time>1674737883</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060895 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1061033</requestid>
+  </revision>
 </revisionlist>
