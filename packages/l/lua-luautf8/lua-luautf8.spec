@@ -35,6 +35,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/starwing/luautf8
 Source:         %{mod_name}-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luarocks
 Requires:       %{flavor}

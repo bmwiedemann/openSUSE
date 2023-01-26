@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Sat Dec  3 00:26:27 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 0.1.5:
