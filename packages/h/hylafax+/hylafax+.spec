@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.6
+Version:        7.0.7
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
@@ -40,8 +40,6 @@ Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
 Source15:       hylafax-service.xml
 Source16:       hylafax-helper.xml
-
-Patch0:         tiff_450.diff
 
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++

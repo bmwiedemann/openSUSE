@@ -398,4 +398,22 @@
     <comment></comment>
     <requestid>1058050</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c31792f703a6cdb7f50000fae1b5c560</srcmd5>
+    <version>7.0.7</version>
+    <time>1674737838</time>
+    <user>dimstar_suse</user>
+    <comment>- version 7.0.7
+  * tiff_450.diff removed
+  * constrain job priority to 0-255 (20 Jan 2023)
+  * add support for libtiff v4.5.0 (4-5 Jan 2023)
+  * add some Si2435 configuration considerations (27 Dec 2022, 20 Jan 2023)
+  * if Class1RecvAbortOK is 0 then don't bother with the CAN byte at all (31 Oct 2022)
+  * check that the modem isn't trying to deliver a message when we're trying to send
+    binary data to it (16-17 Oct 2022)
+  * prevent inherited values from creeping into subsequent xferfaxlog data (26 Aug 2022)
+  * add external reference feature in dialrules (18 Aug 2022)
+</comment>
+    <requestid>1061003</requestid>
+  </revision>
 </revisionlist>

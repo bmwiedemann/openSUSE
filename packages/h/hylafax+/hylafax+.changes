@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jan 24 04:27:01 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- version 7.0.7
+  * tiff_450.diff removed
+  * constrain job priority to 0-255 (20 Jan 2023)
+  * add support for libtiff v4.5.0 (4-5 Jan 2023)
+  * add some Si2435 configuration considerations (27 Dec 2022, 20 Jan 2023)
+  * if Class1RecvAbortOK is 0 then don't bother with the CAN byte at all (31 Oct 2022)
+  * check that the modem isn't trying to deliver a message when we're trying to send
+    binary data to it (16-17 Oct 2022)
+  * prevent inherited values from creeping into subsequent xferfaxlog data (26 Aug 2022)
+  * add external reference feature in dialrules (18 Aug 2022)
+
+-------------------------------------------------------------------
 Thu Jan 12 10:56:23 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - tiff_450.diff added 
