@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/siffiejoe/lua-luaepnf
 Source:         lua-%{mod_name}-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-lpeg
