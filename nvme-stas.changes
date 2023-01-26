@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 25 19:28:28 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.1.2:
+  * staslib: fix RoCE support (bsc#1207436)
+  * staslib: Only display unresponsive timer info for "discovered" DCs
+  * staslib: Fix Connect/Disconnect performed in reserve order
+  * udev: Set udev event priority to high
+  * stafd: Bug fix. Default "[Global] persistent-connections=false"
+  * stafd: Handle unresponsive DCs in _config_ctrls_finish()
+  * stafd: Fix handling of lost zeroconf-discovered DC
+  * staslib: Improve name resolution algorithm
+  * staslib: Add unit (sec) to timeout value in info() output
+
+-------------------------------------------------------------------
 Tue Dec 13 14:38:10 UTC 2022 - mwilck@suse.com
 
 - Update to version 2.1:
