@@ -24,7 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
 Source0:        https://gitlab.gnome.org/GNOME/pan/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/pan/-/merge_requests/43
+Patch0:         0001-Fix-crash-in-on_socket_created-when-password-storage.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.21

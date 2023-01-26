@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 08:41:14 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix crash when password storage is enabled
+  * 0001-Fix-crash-in-on_socket_created-when-password-storage.patch
+
+-------------------------------------------------------------------
 Wed Jan 18 07:52:36 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.154:
