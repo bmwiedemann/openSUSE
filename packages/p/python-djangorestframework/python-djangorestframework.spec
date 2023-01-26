@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-djangorestframework
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,7 +87,9 @@ sed -i '/addopts/d' setup.cfg
 
 %check
 %if %{with test}
-%pytest -rs -vv
+# Two tests failing due to incompatible output of Markdown 3.4 vs 3.3 pinned upstream
+# https://github.com/encode/django-rest-framework/discussions/7980
+%pytest -rs -vv -k 'not ((TestViewNamesAndDescriptions and test_markdown) or (TestDocumentationRenderer and test_shell_code_example_rendering))'
 %endif
 
 %if !%{with test}
