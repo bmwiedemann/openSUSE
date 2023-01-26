@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://framagit.org/fperrad/lua-MessagePack
 Source:         https://framagit.org/fperrad/lua-MessagePack/raw/releases/lua-messagepack-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
