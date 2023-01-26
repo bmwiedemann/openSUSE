@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>992335</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9e3569e21183c11529d08353d34ee094</srcmd5>
+    <version>0.55.0</version>
+    <time>1674737936</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests forcing terminal colors before running tests
+</comment>
+    <requestid>1061127</requestid>
+  </revision>
 </revisionlist>

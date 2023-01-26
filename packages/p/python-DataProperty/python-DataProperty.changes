@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 26 07:54:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests forcing terminal colors before running tests
+
+-------------------------------------------------------------------
 Tue Aug  2 12:21:17 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to v0.55.0:
