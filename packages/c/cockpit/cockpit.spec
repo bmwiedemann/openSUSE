@@ -66,7 +66,6 @@ Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
 # SLE Micro specific patches
-Patch100:       remove-pwscore.patch
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 
@@ -190,7 +189,6 @@ Requires: subscription-manager-cockpit
 
 # SLE Micro specific patches
 %if 0%{?is_smo}
-%patch100 -p1
 %patch101 -p1
 %patch102 -p1
 %endif
@@ -446,9 +444,7 @@ Requires: cockpit-bridge >= %{version}-%{release}
 Requires: shadow-utils
 %endif
 Requires: grep
-%if !0%{?sle_version}
 Requires: /usr/bin/pwscore
-%endif
 Requires: /usr/bin/date
 Provides: cockpit-shell = %{version}-%{release}
 Provides: cockpit-systemd = %{version}-%{release}
