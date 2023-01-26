@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jan 26 01:05:11 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.0.0
+  * See https://github.com/graphql-python/graphene-django/releases/tag/v3.0.0
+- from v3.0.0b9
+  * fix: unit test for https://github.com/graphql-python/graphene/pull/1412
+  * Make errors in form mutation non nullable
+  * Fixes related to https://github.com/graphql-python/graphene/pull/1412
+  * Delay assignment of csrftoken in Graphiql
+  * Fix type hint for DjangoObjectTypeOptions.model
+  * Fix code examples in queries.rst
+  * Fixed graphql_relay deprecation warning
+  * Make instructions runnable without tweaking
+  * Update tutorial-relay.rst
+  * Add support to persist GraphQL headers in GraphiQL
+
+-------------------------------------------------------------------
 Sun Sep 25 07:56:23 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add 12 test skips for minor differences in expected string results

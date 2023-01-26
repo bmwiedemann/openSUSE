@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene-django
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphene-django
-Version:        3.0.0b8
+Version:        3.0.0
 Release:        0
 Summary:        Graphene Django integration
 License:        MIT
@@ -51,6 +51,7 @@ BuildRequires:  %{python_module graphql-core >= 3.1.0}
 BuildRequires:  %{python_module graphql-relay}
 BuildRequires:  %{python_module promise >= 2.1}
 BuildRequires:  %{python_module psycopg2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django >= 3.3.2}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module text-unidecode}
@@ -64,6 +65,8 @@ Graphene Django integration.
 %setup -q -n graphene-django-%{version}
 %patch0 -p1
 sed -i 's/from mock import MagicMock/from unittest.mock import MagicMock/' graphene_django/filter/tests/conftest.py
+
+sed -i 's/py\.test/pytest/g' graphene_django/tests/*.py graphene_django/tests/issues/*.py graphene_django/*/tests/*.py
 
 rm setup.cfg
 sed -i '/pytest-runner/d' setup.py
@@ -90,6 +93,6 @@ skips="$skips or test_reports_validation_errors or test_errors_when_missing_oper
 %files %{python_files}
 %doc README.rst README.md
 %license LICENSE
-%{python_sitelib}/graphene[_-]django*
+%{python_sitelib}/graphene[_-]django*/
 
 %changelog
