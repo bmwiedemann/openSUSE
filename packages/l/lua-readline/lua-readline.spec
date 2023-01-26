@@ -30,6 +30,7 @@ Group:          Development/Languages/Other
 Summary:        a simple interface to the readline and history libraries
 Url:            https://pjb.com.au/comp/lua/readline.html
 Source0:        https://pjb.com.au/comp/lua/%{mod_name}-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  readline-devel
 Requires:       %{flavor}-luaposix >= 30
