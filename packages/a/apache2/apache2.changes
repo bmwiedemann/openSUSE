@@ -1,6 +1,11 @@
 -------------------------------------------------------------------
 Wed Jan 18 21:54:41 UTC 2023 - David Anes <david.anes@suse.com>
 
+- This update fixes the following security issues:
+  * fix CVE-2022-37436 [bsc#1207251], mod_proxy backend HTTP response splitting
+  * fix CVE-2022-36760 [bsc#1207250], mod_proxy_ajp Possible request smuggling
+  * fix CVE-2006-20001 [bsc#1207247], mod_dav out of bounds read, or write of zero byte
+
 - Update to 2.4.55:
     *) SECURITY: CVE-2022-37436: Apache HTTP Server: mod_proxy prior to
       2.4.55 allows a backend to trigger HTTP response splitting
