@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:49:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No need to BuildRequire yt-dlp/youtube-dl: this is only a
+  runtime dependency.
+
+-------------------------------------------------------------------
 Sat Jan  7 06:41:30 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.2

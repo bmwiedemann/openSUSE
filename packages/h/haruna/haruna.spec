@@ -28,11 +28,6 @@ BuildRequires:  extra-cmake-modules >= 5.66
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
-%if 0%{?sle_version} != 150300
-BuildRequires:  yt-dlp
-%else
-BuildRequires:  youtube-dl
-%endif
 BuildRequires:  cmake(Breeze)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
