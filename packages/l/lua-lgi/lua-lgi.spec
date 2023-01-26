@@ -27,6 +27,7 @@ Group:          Development/Languages/Other
 URL:            https://github.com/pavouk/lgi
 Source0:        https://github.com/pavouk/%{mod_name}/archive/%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
 Patch:          lua54.patch
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmodule-2.0)
