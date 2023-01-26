@@ -80,4 +80,21 @@
   * add patch: 0001-meson-disable-subproject.patch (to fix build in OBS) (forwarded request 1042700 from mwilck)</comment>
     <requestid>1042702</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>69c9d35ea61a00636d0bc66a18d10517</srcmd5>
+    <version>2.1.2</version>
+    <time>1674737864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.2:
+  * staslib: fix RoCE support (bsc#1207436)
+  * staslib: Only display unresponsive timer info for &quot;discovered&quot; DCs
+  * staslib: Fix Connect/Disconnect performed in reserve order
+  * udev: Set udev event priority to high
+  * stafd: Bug fix. Default &quot;[Global] persistent-connections=false&quot;
+  * stafd: Handle unresponsive DCs in _config_ctrls_finish()
+  * stafd: Fix handling of lost zeroconf-discovered DC
+  * staslib: Improve name resolution algorithm
+  * staslib: Add unit (sec) to timeout value in info() output (forwarded request 1061019 from mwilck)</comment>
+    <requestid>1061020</requestid>
+  </revision>
 </revisionlist>
