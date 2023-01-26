@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
 Mon Oct 25 19:53:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - initial version 1.3.0

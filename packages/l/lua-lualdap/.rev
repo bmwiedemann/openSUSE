@@ -8,4 +8,14 @@
 https://prosody.im/doc/packagers#navbar</comment>
     <requestid>927371</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>03b40248f8e49b265418d7f0e7b61cd9</srcmd5>
+    <version>1.3.0</version>
+    <time>1674737892</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060909 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061045</requestid>
+  </revision>
 </revisionlist>

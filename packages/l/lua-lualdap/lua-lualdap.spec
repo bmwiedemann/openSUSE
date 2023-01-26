@@ -45,7 +45,7 @@ LuaLDAP is a simple interface from Lua to an LDAP client, in fact it is a bind t
 %autosetup -n %{mod_name}-%{version}
 
 %build
-%make_build CFLAGS="%{optflags} -std=c99" LUA_LIBDIR=%{_libdir} LDAP_LIBDIR=%{_libdir} \
+make %{?_make_output_sync} %{?_smp_mflags} CFLAGS="%{optflags} -std=c99" LUA_LIBDIR=%{_libdir} LDAP_LIBDIR=%{_libdir} \
 LBER_LIBDIR=%{_libdir} \
 %{nil}
 
