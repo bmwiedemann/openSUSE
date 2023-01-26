@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:29:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * autoray.lazy: Much better tools for inspecting the
+    computational graph:
+    - LazyArray.show()
+    - LazyArray.plot_circuit()
+    - LazyArray.plot_history_functions() and variants
+    - LazyArray.history_fn_frequencies
+  * Global submodule aliases:
+    - enables e.g. dispatching do("scipy.linalg.lu", x:
+      numpy.ndarray) and cupy.scipy to cupyx.scipy
+  * Fix for complex and builtins and newer numpy (#11).
+
+-------------------------------------------------------------------
+Sat Jan 14 11:48:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.3
+  * add lazy.diag
+  * update infrastructure, including moving from versioneer to
+    setuptools_scm
+- Release 0.5.1
+  * allow Composed.register to be used as a decorator
+- Release 0.3.2
+  * tweaks to compiler.py
+- No relevant release or tag notes for other releases since 0.2.5
+- PEP517 build
+
+-------------------------------------------------------------------
 Mon Jan 24 16:30:37 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - SciPy and dask are optional
