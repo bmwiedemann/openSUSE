@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKMIP
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-PyKMIP
 Version:        0.10.0
@@ -31,6 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%
 Patch0:         fix-tests-SQLAlchemy-140.patch
 # https://github.com/OpenKMIP/PyKMIP/issues/668
 Patch1:         python-PyKMIP-no-mock.patch
+# PATCH-FIX-OPENSUSE crypto-39.patch gh#OpenKMIP/PyKMIP#689
+Patch2:         crypto-39.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
@@ -87,7 +88,8 @@ Standards`_ (OASIS). PyKMIP supports a subset of features in versions
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/kmip
+%{python_sitelib}/PyKMIP-%{version}*-info
 %python_alternative %{_bindir}/pykmip-server
 
 %changelog

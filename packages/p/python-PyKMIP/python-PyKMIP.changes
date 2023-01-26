@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 12:36:34 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add crypto-39.patch to make it work with python-cryptography >= 39.0.0
+  gh#OpenKMIP/PyKMIP#689
+
+-------------------------------------------------------------------
 Wed May  4 09:55:17 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
