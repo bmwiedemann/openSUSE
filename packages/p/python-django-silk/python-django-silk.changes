@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jan 26 00:10:37 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop remove-contextlib2.patch merged upstream
+- Update to v5.0.3
+  * Retain ordering, view style and limit
+  * prevent encoding errors in params
+  * Silk fails on constraint check queries
+    (Fixes compatibility with Django 4.1)
+  * Add action on sql query list
+  * traceback only when needed
+  * Drop dependency to jinja2
+- from v5.0.2
+  * Fix Multipart forms and RawPostDataException
+  * Decrease unnecessary database hits
+  * Remove unneeded pytz package
+  * Use contextlib in test_profile_parser
+  * Add support for storages, that don't implement full filesystem path
+
+-------------------------------------------------------------------
 Fri Aug 12 04:43:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.1:

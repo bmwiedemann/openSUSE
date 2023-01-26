@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-silk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %define skip_python2 1
 Name:           python-django-silk
-Version:        5.0.1
+Version:        5.0.3
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
 URL:            https://github.com/jazzband/django-silk
 Source:         https://files.pythonhosted.org/packages/source/d/django-silk/django-silk-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#jazzband/django-silk#590
-Patch0:         remove-contextlib2.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -65,10 +63,11 @@ BuildRequires:  %{python_module sqlparse >= 0.1.19}
 Profiling for the Django Framework.
 
 %prep
-%autosetup -p1 -n django-silk-%{version}
+%setup -n django-silk-%{version}
 # see https://github.com/jazzband/django-silk/pull/532
 sed -i '/Pygments/d' setup.py
-chmod a-x silk/static/silk/lib/*
+chmod a-x silk/static/silk/lib/*.css
+chmod a-x silk/static/silk/lib/*.js
 
 %build
 %python_build
