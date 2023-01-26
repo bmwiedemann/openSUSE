@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.358.g8ecd6e83
+Version:        059+suse.360.g2e0ed5f7
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later

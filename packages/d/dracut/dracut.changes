@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 15:58:58 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.360.g2e0ed5f7:
+  * revert(multipath): install multipathd.socket (bsc#1207524)
+
+-------------------------------------------------------------------
 Mon Jan 23 09:22:03 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.358.g8ecd6e83:
