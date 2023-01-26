@@ -2197,6 +2197,13 @@ unsorted:
   - codemodel-javadoc 
   - codespell 
   - cogl-devel 
+  - coin-or-Cbc 
+  - coin-or-Cbc-devel 
+  - coin-or-Cgl-devel 
+  - coin-or-Clp 
+  - coin-or-Clp-devel 
+  - coin-or-CoinUtils-devel 
+  - coin-or-Osi-devel 
   - collectd 
   - collectd-plugin-amqp 
   - collectd-plugin-buddyinfo 
@@ -9187,8 +9194,12 @@ unsorted:
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
   - libCSXCAD0 
+  - libCbc3 
+  - libCgl1 
+  - libClp1 
   - libCoin60 
   - libCoin80 
+  - libCoinUtils3 
   - libColPack0 
   - libColPack0-32bit: [x86_64] 
   - libColorFull0 
@@ -9384,6 +9395,9 @@ unsorted:
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
   - libOpenThreads21 
+  - libOsi1 
+  - libOsiCbc3 
+  - libOsiClp1 
   - libPDAL13 
   - libPocoActiveRecord92 
   - libPocoCppParser92 
@@ -19066,6 +19080,8 @@ unsorted:
   - osgi-compendium-javadoc 
   - osgi-core 
   - osgi-core-javadoc 
+  - osgi-service-log 
+  - osgi-service-log-javadoc 
   - osinfo-db-tools 
   - osmo-bsc 
   - osmo-bsc-abisip-find 
@@ -24797,6 +24813,7 @@ unsorted:
   - python310-pytest-socket 
   - python310-pytest-spec 
   - python310-pytest-sphinx 
+  - python310-pytest-subprocess 
   - python310-pytest-subtesthack 
   - python310-pytest-subtests 
   - python310-pytest-sugar 
@@ -28179,6 +28196,7 @@ unsorted:
   - python38-pytest-socket 
   - python38-pytest-spec 
   - python38-pytest-sphinx 
+  - python38-pytest-subprocess 
   - python38-pytest-subtesthack 
   - python38-pytest-subtests 
   - python38-pytest-sugar 
@@ -31581,6 +31599,7 @@ unsorted:
   - python39-pytest-socket 
   - python39-pytest-spec 
   - python39-pytest-sphinx 
+  - python39-pytest-subprocess 
   - python39-pytest-subtesthack 
   - python39-pytest-subtests 
   - python39-pytest-sugar 
