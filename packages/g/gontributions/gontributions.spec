@@ -17,7 +17,7 @@
 
 
 Name:           gontributions
-Version:        0.7
+Version:        0.7.1
 Release:        0
 Summary:        Open source contributions lister
 License:        MIT

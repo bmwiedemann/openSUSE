@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:14:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Update email address
+
+-------------------------------------------------------------------
 Fri Jan 13 08:29:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Only build manpage using pandoc when on x86_64.
