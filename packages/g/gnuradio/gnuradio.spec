@@ -23,7 +23,7 @@
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.5.0
+Version:        3.10.5.1
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
