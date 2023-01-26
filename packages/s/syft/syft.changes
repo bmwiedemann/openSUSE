@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 26 06:37:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.68.1:
+  * fix: add relevant CPEs to python and busybox classifiers (#1517)
+  * Update syft bootstrap tools to latest versions. (#1515)
+  * chore: correct bootstrap tool script (#1514)
+  * chore(deps): bump github.com/google/go-containerregistry (#1513)
+  * Fix AssertEncoderAgainstGoldenSnapshot calls to conditionally update (#1511)
+  * chore(deps): bump golang.org/x/mod from 0.6.0 to 0.7.0 (#1505)
+  * chore(deps): bump github.com/docker/docker (#1506)
+  * chore(deps): bump github.com/Masterminds/sprig/v3 from 3.2.2 to 3.2.3 (#1507)
+  * chore(deps): bump github.com/dustin/go-humanize from 1.0.0 to 1.0.1 (#1508)
+  * Bump github.com/spdx/tools-golang to v0.4.0 (#1450)
+
+-------------------------------------------------------------------
 Sat Jan 21 07:53:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.68.0:
