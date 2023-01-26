@@ -25,6 +25,7 @@ License:        MIT
 Group:          System/Libraries
 URL:            https://github.com/harningt/luaevent
 Source:         https://github.com/harningt/luaevent/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libevent-devel >= 1.4
 Requires:       %{flavor}
@@ -51,7 +52,7 @@ sed -i \
     Makefile
 
 %build
-%make_build -j1 all \
+make %{?_make_output_sync} all \
     LUA_INC_DIR=%{lua_incdir}
 
 %install
