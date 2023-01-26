@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/ToxicFrog/vstruct
 Source:         %{mod_name}-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}

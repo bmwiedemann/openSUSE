@@ -7,4 +7,13 @@
     <comment>fix</comment>
     <requestid>1000939</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5914f27485c0c0d61687741042d917b9</srcmd5>
+    <version>2.1.1+git2</version>
+    <time>1674737901</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missing dependency on lua-macros (boo#1205612)
+</comment>
+    <requestid>1061055</requestid>
+  </revision>
 </revisionlist>
