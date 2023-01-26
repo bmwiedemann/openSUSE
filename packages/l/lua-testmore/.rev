@@ -7,4 +7,14 @@
     <comment>New package</comment>
     <requestid>1004029</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>92a823dbe53f9719a1196803dfffcaa5</srcmd5>
+    <version>0.3.6+git2</version>
+    <time>1674737900</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060921 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1061053</requestid>
+  </revision>
 </revisionlist>

@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://framagit.org/fperrad/lua-TestMore
 Source:         lua-TestMore-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 %lua_provides
