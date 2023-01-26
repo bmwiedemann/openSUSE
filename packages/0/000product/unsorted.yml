@@ -1380,6 +1380,7 @@ unsorted:
   - bomber 
   - bomber-lang 
   - bomns 
+  - bonk 
   - bonnie 
   - bonnie++ 
   - books 
@@ -3096,6 +3097,11 @@ unsorted:
   - dkimproxy 
   - dkms 
   - dlpack-devel 
+  - dlt-daemon: [x86_64] 
+  - dlt-examples: [x86_64] 
+  - dlt-libs: [x86_64] 
+  - dlt-libs-devel: [x86_64] 
+  - dlt-tools: [x86_64] 
   - dlt-viewer 
   - dm-zoned-tools 
   - dmd 
@@ -7664,6 +7670,7 @@ unsorted:
   - iwatch 
   - iwd 
   - iwidgets 
+  - iwlfwdump 
   - iwpmd 
   - j2objc-annotations 
   - j2objc-annotations-javadoc 
@@ -12968,6 +12975,9 @@ unsorted:
   - libnsfdb-tools 
   - libnsfdb1 
   - libnsl-devel 
+  - libnsl3-32bit: [x86_64] 
+  - libnss_nis2 
+  - libnss_nis2-32bit: [x86_64] 
   - libnss_slurm2: [x86_64] 
   - libnss_usrfiles2-32bit: [x86_64] 
   - libnsssharedhelper0 
@@ -14707,6 +14717,7 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-9 
   - libtirpc-devel 
+  - libtirpc3-32bit: [x86_64] 
   - libtls26 
   - libtls26-32bit: [x86_64] 
   - libtntdb-devel 
@@ -17193,7 +17204,16 @@ unsorted:
   - mpitests-openmpi3-gnu-hpc 
   - mpitests-openmpi4 
   - mpitests-openmpi4-gnu-hpc 
+  - mplus-code-latin-variable-fonts 
+  - mplus-code-latin50-fonts 
+  - mplus-code-latin60-fonts 
   - mplus-fonts 
+  - mplus1-code-fonts 
+  - mplus1-code-variable-fonts 
+  - mplus1-fonts 
+  - mplus1-variable-fonts 
+  - mplus2-fonts 
+  - mplus2-variable-fonts 
   - mpop 
   - mpop-doc 
   - mpris-ctl 
@@ -24274,6 +24294,7 @@ unsorted:
   - python310-onnxconverter-common 
   - python310-opcodes 
   - python310-openTSNE 
+  - python310-openai 
   - python310-openapi-codec 
   - python310-openapi-core 
   - python310-openapi-schema-validator 
@@ -27636,6 +27657,7 @@ unsorted:
   - python38-onnxconverter-common 
   - python38-opcodes 
   - python38-openTSNE 
+  - python38-openai 
   - python38-openapi-codec 
   - python38-openapi-core 
   - python38-openapi-schema-validator 
@@ -31037,6 +31059,7 @@ unsorted:
   - python39-onnxconverter-common 
   - python39-opcodes 
   - python39-openTSNE 
+  - python39-openai 
   - python39-openapi-codec 
   - python39-openapi-core 
   - python39-openapi-schema-validator 
@@ -33322,6 +33345,8 @@ unsorted:
   - rosegarden: [x86_64] 
   - rott 
   - roundcubemail 
+  - rovasiras-kende-fonts 
+  - rovasiras-roga-fonts 
   - rox-filer 
   - rpcgen 
   - rpcsvc-proto-devel 
@@ -44390,6 +44415,7 @@ unsorted:
   - whfc 
   - whipper 
   - whohas 
+  - wicked-nbft 
   - widelands 
   - widelands-data 
   - widelands-debug 
@@ -45117,6 +45143,8 @@ unsorted:
   - youtube-dl-bash-completion 
   - youtube-dl-fish-completion 
   - youtube-dl-zsh-completion 
+  - yp-tools 
+  - ypbind 
   - yq 
   - yq-bash-completion 
   - yq-fish-completion 
