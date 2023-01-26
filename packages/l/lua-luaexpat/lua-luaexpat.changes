@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Tue Aug 23 14:17:59 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Drop LUA_32BITS and GNU11 std - seems fixed now

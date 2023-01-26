@@ -27,6 +27,7 @@ License:        MIT
 Group:          Productivity/Networking/Other
 URL:            http://matthewwild.co.uk/projects/luaexpat/
 Source:         https://github.com/lunarmodules/luaexpat/archive/%{version}/%{mod_name}-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libexpat-devel
 Requires:       %{flavor}
