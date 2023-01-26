@@ -1,7 +1,7 @@
 #
 # spec file for package python-model-bakery
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-model-bakery
-Version:        1.2.1
+Version:        1.9.0
 Release:        0
 Summary:        Smart object creation facility for Django
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://github.com/model-bakers/model_bakery
+URL:            http://github.com/model-bakers/model_bakery
 Source:         https://files.pythonhosted.org/packages/source/m/model-bakery/model_bakery-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -58,6 +58,6 @@ export PYTHONPATH=${PWD}
 %files %{python_files}
 %doc CHANGELOG.md README.md docs/source/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/model[-_]bakery*/
 
 %changelog
