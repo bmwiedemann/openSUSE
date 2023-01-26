@@ -24,6 +24,7 @@ Summary:        Cyrus SASL library for Lua 5.1+
 License:        BSD-3-Clause
 URL:            https://github.com/JorjBauer/lua-cyrussasl
 Source:         https://github.com/JorjBauer/lua-cyrussasl/archive/refs/tags/v%{version}.tar.gz#$/%{mod_name}-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  git
