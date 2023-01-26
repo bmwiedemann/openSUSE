@@ -62,7 +62,7 @@ sed -i \
     makefile
 
 %build
-%make_build -j1
+make %{?_make_output_sync}
 
 %install
 

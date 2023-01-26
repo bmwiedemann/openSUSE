@@ -58,4 +58,14 @@
   - Run test with correct lua version</comment>
     <requestid>1037590</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>488a0c4ba35c6ef5f97f6a098e5248dd</srcmd5>
+    <version>1.0.2</version>
+    <time>1674737888</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060903 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061039</requestid>
+  </revision>
 </revisionlist>
