@@ -46,10 +46,10 @@ Fennel is a lisp that compiles to Lua. Features include:
 %autosetup -p1 -n fennel-%{version}
 
 %build
-%make_build fennel
+make %{?_make_output_sync} %{?_smp_mflags} fennel
 
 %check
-%make_build test
+make %{?_make_output_sync} %{?_smp_mflags} test
 
 %install
 mkdir -p %{buildroot}%{_bindir}

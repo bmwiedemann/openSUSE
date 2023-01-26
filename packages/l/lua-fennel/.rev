@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1030955</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6f571ec0fceb96a0c596273d44c2a3f0</srcmd5>
+    <version>1.2.1</version>
+    <time>1674737885</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060897 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061035</requestid>
+  </revision>
 </revisionlist>

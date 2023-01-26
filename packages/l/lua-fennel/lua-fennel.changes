@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
 Fri Oct 21 14:39:15 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.2.1
