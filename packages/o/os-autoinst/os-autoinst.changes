@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:33:27 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1674646390.61f9e42:
+  * sshVirtsh: Show virsh stderr output on virsh start failure
+  * Isotovideo/Interface.pm: Bump interface to 35
+  * testapi: Improve wrong call handling in get_test_data
+  * distribution: Use "enter_cmd" where applicable in become_root
+  * t: Add call tests for multiple missing testapi functions
+  * backend/qemu.pm: Add virtio_console_user fifo name
+
+-------------------------------------------------------------------
 Fri Jan 20 14:57:47 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1674226658.ae134c9:
