@@ -1,7 +1,7 @@
 #
 # spec file for package insighttoolkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -53,7 +53,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gdcm-devel
 BuildRequires:  gtest
 BuildRequires:  hdf5-devel
-BuildRequires:  libnsl-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  vtk-devel
