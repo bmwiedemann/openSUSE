@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jan 24 20:42:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 11.2.3:
+  * Release 11.2.3 (#20570)
+  * [11] Add metric for incomplete file uploads (#19724) (#20492)
+  * Fix kube access proxy peering compatibility (#20561) (#20566)
+  * docs: update trusted clusters page (#20159)
+  * Backport GHA workflows (#20507)
+  * [v11] Respect --auth and --mfa-mode before defaulting to passwordless (#20474)
+  * expand for CNAME records (#20445)
+  * [v11] feat: login rule tctl CRUD commands (#20236)
+  * sort database guides (#20501)
+  * Remove unmaintained AWS Cloudformation example (#20459)
+  * [v11] Support multiple transformations in role templates (#20296)
+  * Bump webassets. (#20422)
+  * [v11] Add initial instructions for cluster role map updating (#20480)
+  * Fix "tsh db connect" with "mariadb" when proxy is in seperate port mode (#20409)
+  * Don't prematurely close context in app service. (#20437)
+  * Integ tests: Use address of web UI as Proxy.PublicAddrs (#20470)
+  * spell fixes (#20457)
+  * update style guide relating to focus and content duplication (#20292)
+  * [v11] helm: support dnsConfig in `teleport-kube-agent` chart (#20107)
+  * Update Cloud architecture with DDoS security (#19429)
+  * [v11] Fix "*":"*" matching in EC2 auto discovery (#20390)
+  * adding video banner to documentation (#20354)
+  * [v11] Allow updating of trusted cluster role maps (#20286)
+  * Skip unparsable events when decoding searchevents results (#20329)
+  * Bump `gravitational/trace` to `v1.2.1` (#20349)
+
+-------------------------------------------------------------------
 Fri Jan 20 10:08:52 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 11.2.2:

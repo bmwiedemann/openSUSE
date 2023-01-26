@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:20:20 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove NIS utilities, they are deprecated and will be removed
+
+-------------------------------------------------------------------
 Tue Sep  6 13:53:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend reiserfs: the openSUSE kernel has disabled

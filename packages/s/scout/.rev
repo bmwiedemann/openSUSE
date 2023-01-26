@@ -353,4 +353,16 @@
   * Translated using Weblate (French, Slovak, Spanish)</comment>
     <requestid>934926</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>652c0bc9bedc99e6377929209d32c8ef</srcmd5>
+    <version>0.2.7+20230124.b4e3468</version>
+    <time>1674737806</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.2.7+20230124.b4e3468:
+  * Bump version to v0.2.7
+  * allow multiple baseurls in repo file
+  * remove deprecated class
+  * Translated using Weblate (Macedonian, German, Ukrainian)</comment>
+    <requestid>1060729</requestid>
+  </revision>
 </revisionlist>

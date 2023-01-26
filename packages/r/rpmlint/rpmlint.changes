@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:05:47 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230125.20e5b58:
+  * SymlinkExceptions: also exclude systemd-mini
+  * FileDigestCheck: allow multiple package names in ghost/symlink exceptions
+
+-------------------------------------------------------------------
+Tue Jan 24 19:02:12 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230124.a2050c3:
+  * FileDigestCheck: support exceptions to symlink restrictions
+  * Revert "temporarily drop badness for sysctl-file-* errors"
+
+-------------------------------------------------------------------
 Tue Jan 24 08:17:06 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230124.a959d84:

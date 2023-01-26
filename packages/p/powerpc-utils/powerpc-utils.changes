@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:23:07 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.3.11 (jsc#PED-560)
+   - Add support for drmgr hooks.
+- Drop upstreamed patches
+  - Support-multiple-dev-paths-for-a-nvmf-boot-device.patch
+  - bootlist-Add-install-boot-support-for-nvmf-devices.patch
+  - hcnmgr-Fix-setting-primary-slave-across-reboots.patch
+  - lparstat-Fix-array-overflow-issue.patch
+  - lparstat-Fix-display-of-mode-for-dedicated-donating-.patch
+  - lsslot-Explicity-declare-that-lmb_address-be-display.patch
+  - lsslot-Fix-lsslot-c-mem-output-when-using-4GB-LMB-si.patch
+  - ofpathname-Fix-several-issues-in-nvmf-boot-install-s.patch
+  - ofpathname-Handle-nsid-as-hex-in-nvmf-boot-install-s.patch
+
+-------------------------------------------------------------------
 Mon Jan  2 10:27:16 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix lparstat cpu mode display in a dedicated-donating LPAR (bsc#1206518 ltc#200949)

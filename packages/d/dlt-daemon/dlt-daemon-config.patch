@@ -1,0 +1,49 @@
+diff -up dlt-daemon-2.18.8/src/daemon/dlt.conf.orig dlt-daemon-2.18.8/src/daemon/dlt.conf
+--- dlt-daemon-2.18.8/src/daemon/dlt.conf.orig	2022-02-22 14:49:44.990640557 +0100
++++ dlt-daemon-2.18.8/src/daemon/dlt.conf	2022-02-22 15:00:04.074142174 +0100
+@@ -32,7 +32,7 @@ ECUId = ECU1
+ SharedMemorySize = 100000
+ 
+ # Directory where to store the persistant configuration (Default: /tmp)
+-# PersistanceStoragePath = /tmp
++PersistanceStoragePath = /var/lib/dlt-daemon
+ 
+ # The logging console for internal logging of dlt-daemon (Default: 0)
+ # 0 = log to stdout
+@@ -46,7 +46,7 @@ LoggingMode = 0
+ LoggingLevel = 6
+ 
+ # The logging filename if internal logging mode is log to file (Default: /tmp/dlt.log)
+-LoggingFilename = /tmp/dlt.log
++LoggingFilename = /var/lib/dlt-daemon/dlt.log
+ 
+ # Timeout on send to client (sec)
+ TimeOutOnSend = 4
+@@ -98,14 +98,14 @@ RingbufferStepSize = 500000
+ ########################################################################
+ # Control Application                                                  #
+ ########################################################################
+-ControlSocketPath = /tmp/dlt-ctrl.sock
++ControlSocketPath = /run/dlt/dlt-ctrl.sock
+ 
+ ########################################################################
+ # Offline Trace memory                                                 #
+ ########################################################################
+ 
+ # Store DLT messages to local directory, if not set offline Trace is off (Default: off)
+-# OfflineTraceDirectory = /tmp
++# OfflineTraceDirectory = /var/lib/dlt-daemon
+ 
+ # Maximum size in bytes of one trace file (Default: 1000000)
+ # OfflineTraceFileSize = 1000000
+diff -up dlt-daemon-2.18.8/systemd/dlt.service.cmake.orig dlt-daemon-2.18.8/systemd/dlt.service.cmake
+--- dlt-daemon-2.18.8/systemd/dlt.service.cmake.orig	2022-02-22 15:01:59.608929579 +0100
++++ dlt-daemon-2.18.8/systemd/dlt.service.cmake	2022-02-22 15:02:04.434878925 +0100
+@@ -24,6 +24,7 @@ ExecStart=@CMAKE_INSTALL_PREFIX@/bin/dlt
+ WatchdogSec=@DLT_WatchdogSec@
+ NotifyAccess=main
+ LimitCORE=infinity
++RuntimeDirectory=dlt
+ 
+ [Install]
+ WantedBy=basic.target

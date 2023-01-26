@@ -1,0 +1,29 @@
+From 876aab4b0e7b73dd16f96c92706a6a464ddd23df Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 26 Jan 2023 00:55:12 +0100
+Subject: [PATCH] FEM: femmesh: fix AttributeError: module 'numpy' has no
+ attribute 'int'
+
+---
+ src/Mod/Fem/femmesh/meshtools.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/Mod/Fem/femmesh/meshtools.py b/src/Mod/Fem/femmesh/meshtools.py
+index dd8671b0ea..7693249bb9 100644
+--- a/src/Mod/Fem/femmesh/meshtools.py
++++ b/src/Mod/Fem/femmesh/meshtools.py
+@@ -485,7 +485,10 @@ def get_femelement_sets(
+     # fem_objects = FreeCAD FEM document objects
+     # get femelements for reference shapes of each obj.References
+     count_femelements = 0
+-    referenced_femelements = np.zeros((max(femelement_table.keys())+1,),dtype=np.int)
++    referenced_femelements = np.zeros(
++        (max(femelement_table.keys()) + 1,),
++        dtype=int
++    )
+     has_remaining_femelements = None
+     for fem_object_i, fem_object in enumerate(fem_objects):
+         obj = fem_object["Object"]
+-- 
+2.38.1
+

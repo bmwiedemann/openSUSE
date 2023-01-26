@@ -331,4 +331,12 @@
   support for this fs, upstream kernel will follow.</comment>
     <requestid>1001481</requestid>
   </revision>
+  <revision rev="40" vrev="40">
+    <srcmd5>1fdb2e355cf75dbb5c1c8e3925a0de22</srcmd5>
+    <version>20170319</version>
+    <time>1674737812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060823</requestid>
+  </revision>
 </revisionlist>

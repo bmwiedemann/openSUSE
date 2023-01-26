@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 25 16:02:23 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- rename u_xorg-server-oob-read-enqueue-event.patch to 
+  U_xorg-server-oob-read-enqueue-event.patch since it's already
+  upstream
+
+-------------------------------------------------------------------
+Wed Jan 25 03:15:56 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add u_xorg-server-oob-read-enqueue-event.patch: fix an
+  out-of-bounds read in EnqueueEvent.
+
+-------------------------------------------------------------------
 Mon Dec 19 19:54:11 UTC 2022 - dmueller@suse.com
 
 - Update to version xorg-server-21.1.6:

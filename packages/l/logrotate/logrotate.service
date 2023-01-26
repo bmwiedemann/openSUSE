@@ -6,15 +6,7 @@ ConditionACPower=true
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/sh -c "/usr/bin/systemctl set-environment etc_conf=" ; \
-   /bin/sh -c "if [ -f /etc/logrotate.conf ]; then /usr/bin/systemctl set-environment etc_conf=/etc/logrotate.conf; fi" ; \
-   /bin/sh -c "/usr/bin/systemctl set-environment usr_etc_conf=" ; \
-   /bin/sh -c "if [ -f /usr/etc/logrotate.conf ]; then /usr/bin/systemctl set-environment usr_etc_conf=/usr/etc/logrotate.conf; fi" ; \
-   /bin/sh -c "/usr/bin/systemctl set-environment usr_etc_dir=" ; \
-   /bin/sh -c "if [ -d /usr/etc/logrotate.d ]; then /usr/bin/systemctl set-environment usr_etc_dir=/usr/etc/logrotate.d; fi" ; \
-   /bin/sh -c "/usr/bin/systemctl set-environment etc_dir=" ; \
-   /bin/sh -c "if [ -d /etc/logrotate.d ]; then /usr/bin/systemctl set-environment etc_dir=/etc/logrotate.d; fi"
-ExecStart=/bin/sh -c "/usr/sbin/logrotate ${usr_etc_conf} ${etc_conf} ${etc_dir} ${usr_etc_dir}"
+ExecStart=/usr/sbin/logrotate-all
 
 # performance options
 Nice=19

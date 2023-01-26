@@ -346,4 +346,12 @@ lsof license is most similar to Zlib (also use SPDX format) (forwarded request 1
     <comment></comment>
     <requestid>1045497</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f30519f68fd553d2bd5cf9945a16cad0</srcmd5>
+    <version>4.97.0</version>
+    <time>1674737810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060803</requestid>
+  </revision>
 </revisionlist>

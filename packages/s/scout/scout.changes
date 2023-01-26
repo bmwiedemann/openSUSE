@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jan 24 12:19:06 UTC 2023 - bwiedemann@suse.com
+
+- Update to version 0.2.7+20230124.b4e3468:
+  * Bump version to v0.2.7
+  * allow multiple baseurls in repo file
+  * remove deprecated class
+  * Translated using Weblate (Macedonian, German, Ukrainian)
+
+-------------------------------------------------------------------
 Tue Nov 30 12:07:46 UTC 2021 - aplanas@suse.com
 
 - Update to version 0.2.6+20211130.022a45c:

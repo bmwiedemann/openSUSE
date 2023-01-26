@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 25 13:52:26 UTC 2023 - Knut Alejandro Anderssen González <kanderssen@suse.com>
+
+- During installation, do not configure DHCP if there is some
+  active interface configured by firmware (jsc#PED-967).
+- 4.5.15
+
+-------------------------------------------------------------------
 Tue Jan 24 09:37:43 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix the return of packages needed by the selected backend when

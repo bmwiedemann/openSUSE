@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -119,6 +119,8 @@ Patch0:         arpack-ng-python-module-installdir.patch
 Patch1:         Use-CMAKE_INSTALL_FULL_-dir.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         fix_tautological_compare_321.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         https://github.com/opencollab/arpack-ng/commit/4002c2733c6a.patch#/replace_deprecated_np-complex.patch
 %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif

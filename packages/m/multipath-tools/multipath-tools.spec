@@ -1,7 +1,7 @@
 #
 # spec file for package multipath-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global _lto_cflags %{nil}
+%global _make_output_sync -Orecurse
 
 # multipath-tools auto-detects support for -D_FORTFY_SOURCE.
 # This will lead to a compilation error if the distro overrides
@@ -34,7 +35,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.2+59+suse.ac8942d
+Version:        0.9.4+68+suse.98559ea
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
@@ -62,6 +63,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(mount)
 %if 0%{?with_check} == 1
 BuildRequires:  pkgconfig(cmocka)
 %endif
@@ -84,9 +86,6 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
-
-
-
 
 
 
@@ -152,11 +151,11 @@ This package provides development files and documentation for libdmmp.
 
 %define makeflags %{!?with_libdmmp:ENABLE_LIBDMMP=0}
 %if 0%{?suse_version} < 1550
-%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} SYSTEMDPATH=usr/lib
+%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} systemd_prefix=%{_prefix}
 %define sbindir /sbin
 %define libdir  /%{_lib}
 %else
-%define dirflags LIB=%{_lib} usr_prefix=%{_prefix} exec_prefix=%{_prefix} syslibdir=%{_libdir} libdir=%{_libdir}/multipath SYSTEMDPATH=usr/lib
+%define dirflags LIB=%{_lib} prefix=%{_prefix}
 %define sbindir %{_sbindir}
 %define libdir  %{_libdir}
 %endif
@@ -169,15 +168,15 @@ cp %{SOURCE5} .
 
 %build
 [ -n "$SOURCE_DATE_EPOCH" ] && export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-%{make_build} OPTFLAGS="%{mp_optflags}" %{dirflags} %{makeflags}
+%{make_build} OPTFLAGS="%{mp_optflags}" %{dirflags} %{makeflags} V=1
 
 %if 0%{?with_check} == 1
 %check
-%{make_build} OPTFLAGS="%{mp_optflags}" test
+%{make_build} OPTFLAGS="%{mp_optflags}" V=1 test
 %endif
 
 %install
-%make_install %{dirflags} %{makeflags}
+%make_install %{dirflags} %{makeflags} V=1
 mkdir -p %{buildroot}%{_defaultlicensedir}
 mkdir -p %{buildroot}/usr/sbin
 mkdir -p %{buildroot}/usr/%{_lib}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 18 09:31:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.97.0:
+  * Remove support because the os is no longer updated for
+    more than 10 years
+  * Remove support because the os is no longer updated
+    for more than 20 years
+  * Add experimental build system based on Autotools
+  * Fixed LTsock testing on darwin
+  * Remove NEW and OLD folders
+  * Fix FreeBSD testcases
+  * Rewrite documentation and publish at https://lsof.readthedocs.io/
+
+-------------------------------------------------------------------
 Tue Dec 27 12:08:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.96.5:

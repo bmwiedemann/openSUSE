@@ -1741,4 +1741,32 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
     <comment>- Fix &quot;rpm --verify&quot; (bsc#1207232)</comment>
     <requestid>1059305</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>5b2a53ca4ff9031481263961112cd69a</srcmd5>
+    <version>0.9.4+68+suse.98559ea</version>
+    <time>1674737830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.4+68+suse.98559ea:
+  * libmultipath: bump ABI version to 18.0.0
+  * libmultipath: pathinfo: don't fail for devices lacking INQUIRY properties
+    (gh#opensvc/multipath-tools#56)
+  * libmpathpersist: use conf-&gt;timeout for updating persistent reservations
+    (gh#opensvc/multipath-tools#45)
+  * libmultipath: is_path_valid(): check if device is in use
+    (bsc#1203141) (added libmount dependency)
+  * libmultipath: orphan paths if coalesce_paths frees newmp (bsc#1207546)
+  * multipathd: handle no active paths in update_map_pr (bsc#1207546)
+  * multipathd: make pr registration consistent (bsc#1207546)
+  * libmultipath: don't leak memory on invalid strings  (bsc#1207546)
+  * multipath.conf(5): improve documentation of dev_loss_tmo (bsc#1207546)
+  * libmpathpersist: fix command keyword ordering (bsc#1207546)
+  * libmultipath: fix 'show paths format' failure
+  * minor bugfixes
+  * hwtable fixes
+  * Build system rework
+  * spec file: adapt make command line to changes in build system
+  * spec file: use make -Orecurse (better readable output)
+  * spec file: use verbose build (forwarded request 1060999 from mwilck)</comment>
+    <requestid>1061002</requestid>
+  </revision>
 </revisionlist>

@@ -3886,4 +3886,17 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>1045913</requestid>
   </revision>
+  <revision rev="416" vrev="2">
+    <srcmd5>90fb8761df7301129f5fe3c32fe60c15</srcmd5>
+    <version>21.1.6</version>
+    <time>1674737825</time>
+    <user>dimstar_suse</user>
+    <comment>- rename u_xorg-server-oob-read-enqueue-event.patch to 
+  U_xorg-server-oob-read-enqueue-event.patch since it's already
+  upstream
+
+- Add u_xorg-server-oob-read-enqueue-event.patch: fix an
+  out-of-bounds read in EnqueueEvent.</comment>
+    <requestid>1060975</requestid>
+  </revision>
 </revisionlist>

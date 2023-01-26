@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 25 13:18:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable test_beartype_in_sphinx, broken with sphinx 6.1.3
+  gh#beartype/beartype#209
+- Update to version 0.12.0
+  Change log - https://github.com/beartype/beartype/releases
+
+-------------------------------------------------------------------
 Wed Oct 12 02:44:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.11.0 

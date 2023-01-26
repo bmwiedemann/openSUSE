@@ -1,7 +1,7 @@
 #
 # spec file for package logrotate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           logrotate
-Version:        3.20.1
+Version:        3.21.0
 Release:        0
 Summary:        Cron service for rotating, compressing, mailing and removing system log files
 License:        GPL-2.0-or-later
@@ -30,9 +30,9 @@ Source0:        https://github.com/%{name}/%{name}/releases/download/%{version}/
 Source1:        logrotate.wtmp
 Source2:        logrotate.default
 Source3:        logrotate.service
+Source4:        logrotate-all
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
-Source100:      %{name}-rpmlintrc
-Patch0:         logrotate-vendor-dir.patch
+Source11:       logrotate.keyring
 BuildRequires:  acl
 BuildRequires:  automake
 BuildRequires:  libacl-devel
@@ -52,16 +52,14 @@ daily cron job.
 It manages plain files only and is not involved in systemd's journal rotation.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 autoreconf -f -i
 %configure \
     --disable-silent-rules \
     --with-state-file-path=%{_localstatedir}/lib/misc/logrotate.status \
-    --disable-werror \
-    --enable-vendordir
+    --disable-werror
 %make_build
 
 %check
@@ -73,6 +71,7 @@ mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/logrotate.d/wtmp
 install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/logrotate.conf
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 755 %{SOURCE4} %{buildroot}%{_sbindir}/logrotate-all
 install -D -m 0644 examples/%{name}.timer %{buildroot}%{_unitdir}/%{name}.timer
 ln -s service %{buildroot}%{_sbindir}/rc%{name}
 
@@ -102,6 +101,7 @@ fi
 %license COPYING
 %doc ChangeLog.md README.md
 %{_sbindir}/logrotate
+%{_sbindir}/logrotate-all
 %{_sbindir}/rc%{name}
 %{_mandir}/man8/logrotate.8%{?ext_man}
 %{_mandir}/man5/logrotate.conf.5%{?ext_man}

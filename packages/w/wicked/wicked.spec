@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.71
+Version:        0.6.72
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_71 = %{version}-%{release}
+Provides:       libwicked-0_6_72 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -124,6 +124,18 @@ Wicked is a network configuration infrastructure incorporating a number
 of existing frameworks into a unified architecture, providing a DBUS
 interface to network configuration.
 
+%package nbft
+Summary:        Network configuration infrastructure - nbft support
+Group:          System/Management
+Requires:       %name = %{version}
+Requires:       jq >= 1.6
+Requires:       nvme-cli >= 2.2.1
+
+%description nbft
+This package provides an extension to retrieve the NBFT firmware
+network interface configuration according to the NVM Express Boot
+Specification 1.0 and convert it to wicked configuration.
+
 %if %{with systemd}
 
 %package service
@@ -169,7 +181,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_71 = %{version}-%{release}
+Requires:       libwicked-0_6_72 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -215,13 +227,13 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=${RPM_BUILD_ROOT}
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 # install /sbin/{ifup,ifown,ifstatus,ifprobe} links
 %__mkdir_p -m 0755 ${RPM_BUILD_ROOT}/sbin
 %__ln_s %_sbindir/ifup	${RPM_BUILD_ROOT}/sbin/ifup
 %endif
 for i in ifdown ifstatus ifprobe; do
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %__ln_s ifup ${RPM_BUILD_ROOT}/sbin/$i
 %else
 %__ln_s ifup ${RPM_BUILD_ROOT}%{_sbindir}/$i
@@ -310,6 +322,13 @@ fi
 %{fillup_only -dns dhcp wicked network}
 # reload dbus after install or upgrade to apply new policies
 /usr/bin/systemctl reload dbus.service 2>/dev/null || :
+# migrate `wicked redfish enable` to `wicked firmware enable`
+if test -f %_sysconfdir/wicked/client-redfish.xml -a \
+      ! -f %_sysconfdir/wicked/client-firmware.xml ; then
+	mv -f -- %_sysconfdir/wicked/client-redfish.xml \
+		 %_sysconfdir/wicked/client-firmware.xml || :
+fi
+rm -f -- %_sysconfdir/wicked/client-redfish.xml || :
 
 %postun
 /sbin/ldconfig
@@ -338,7 +357,12 @@ fi
 %dir %_sysconfdir/wicked/scripts
 %config(noreplace) %_sysconfdir/wicked/scripts/*
 %dir %_sysconfdir/wicked/extensions
-%config(noreplace) %_sysconfdir/wicked/extensions/*
+%config(noreplace) %_sysconfdir/wicked/extensions/dispatch
+%config(noreplace) %_sysconfdir/wicked/extensions/firewall
+%config(noreplace) %_sysconfdir/wicked/extensions/hostname
+%config(noreplace) %_sysconfdir/wicked/extensions/ibft
+%config(noreplace) %_sysconfdir/wicked/extensions/netconfig
+%config(noreplace) %_sysconfdir/wicked/extensions/redfish-config
 %dir %_sysconfdir/wicked/ifconfig
 %dir %{dbus_config_base}
 %dir %{dbus_config_base}/system.d
@@ -389,6 +413,10 @@ fi
 %_fillupdir/sysconfig.dhcp-wicked
 %attr(0750,root,root) %dir        %wicked_storedir
 
+%files nbft
+%config(noreplace) %_sysconfdir/wicked/client-nbft.xml
+%config(noreplace) %_sysconfdir/wicked/extensions/nbft
+
 %if %{with systemd}
 
 %files service
@@ -403,7 +431,7 @@ fi
 %dir /etc/sysconfig/network
 %attr(0600,root,root) %config /etc/sysconfig/network/ifcfg-lo
 %_sbindir/ifup
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/ifup
 /sbin/ifdown
 /sbin/ifstatus
@@ -430,7 +458,7 @@ fi
 %_sbindir/rcnetwork
 %attr(0600,root,root) %config /etc/sysconfig/network/ifcfg-lo
 %_sbindir/ifup
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/ifup
 /sbin/ifdown
 /sbin/ifstatus

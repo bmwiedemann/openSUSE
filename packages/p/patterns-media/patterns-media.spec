@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,8 +39,8 @@ such as DVD's
 
 
 
-################################################################################
 
+################################################################################
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -206,8 +206,6 @@ Recommends:     yast2-trans-stats
 Recommends:     yast2-trans-sv
 Recommends:     yast2-trans-zh_CN
 Recommends:     yast2-trans-zh_TW
-Recommends:     ypbind
-Recommends:     yptools
 # Firmware for ZD1211 based WLAN sticks
 Recommends:     zd1211-firmware
 Recommends:     zip

@@ -34,4 +34,12 @@
   updates</comment>
     <requestid>997512</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0c9b764b58bbd975a314a4d0908131b5</srcmd5>
+    <version>0.2.1</version>
+    <time>1674737814</time>
+    <user>dimstar_suse</user>
+    <comment>- skip building on python 3.11 as well</comment>
+    <requestid>1060824</requestid>
+  </revision>
 </revisionlist>

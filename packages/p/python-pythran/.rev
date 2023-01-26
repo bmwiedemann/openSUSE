@@ -51,4 +51,21 @@ now with fixed empty debuginfo extraction</comment>
     <comment></comment>
     <requestid>1045509</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>017d14d2d4abc9e87ca53e07f3851ef9</srcmd5>
+    <version>0.12.1</version>
+    <time>1674737816</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * Bump xsimd depdency to 10.0.0
+  * Correctly raise KeyError when getting an unset dict item
+  * Fix negative binomial implementation
+  * Correctly convert strided array with offset
+  * Support np.clip(v, None, x) and np.clip(v, x, None)
+  * Support scipy.special.ndtr, scipy.special.ndtri, scipy.special.gammaincinv
+  * Fix set intersection
+  * Support numpy.fft.fftn
+  * Support axis parameter in numpy.argsort</comment>
+    <requestid>1060837</requestid>
+  </revision>
 </revisionlist>

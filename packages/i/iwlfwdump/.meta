@@ -1,0 +1,5 @@
+<package name="iwlfwdump" project="openSUSE:Factory">
+  <title>iwlfwdump</title>
+  <description></description>
+  <devel project="hardware" package="iwlfwdump"/>
+</package>

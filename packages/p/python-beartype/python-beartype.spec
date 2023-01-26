@@ -1,7 +1,7 @@
 #
 # spec file for package python-beartype
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-beartype
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT
@@ -70,7 +69,8 @@ Unbearably fast runtime type checking in pure Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not (test_doc_readme or test_sphinx or test_pep561_mypy)'
+# Disable test_beartype_in_sphinx, broken with sphinx 6.1.3 gh#beartype/beartype#209
+%pytest -k 'not (test_doc_readme or test_sphinx or test_pep561_mypy or test_beartype_in_sphinx)'
 
 %files %{python_files}
 %doc README.rst

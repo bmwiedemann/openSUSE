@@ -958,4 +958,13 @@ I need to make a separate request for the py2 version.
     <comment></comment>
     <requestid>933291</requestid>
   </revision>
+  <revision rev="114" vrev="4">
+    <srcmd5>072c963114a6e9118c439284853bb4c8</srcmd5>
+    <version>MACRO</version>
+    <time>1674737817</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand version from installed flavors: The primary python3 flavor
+  could be older on a backport for 15.X (forwarded request 1060847 from bnavigator)</comment>
+    <requestid>1060848</requestid>
+  </revision>
 </revisionlist>

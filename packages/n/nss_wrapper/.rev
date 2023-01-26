@@ -204,4 +204,19 @@
 </comment>
     <requestid>1034765</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>af612387f65b7a8821d1be88f3105e90</srcmd5>
+    <version>1.1.15</version>
+    <time>1674737822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.15
+  * Fixed linking issue in tests
+  * Fixed a memory leak in tests
+- Update to version 1.1.14
+  * Fixed implementation of initgroups()
+  * Fixed implementation of getgrouplist()
+  * Avoid dclose(RTLD_NEXT)
+</comment>
+    <requestid>1060964</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jan 25 15:45:26 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.15
+  * Fixed linking issue in tests
+  * Fixed a memory leak in tests
+
+-------------------------------------------------------------------
+Wed Jan 25 11:13:12 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.14
+  * Fixed implementation of initgroups()
+  * Fixed implementation of getgrouplist()
+  * Avoid dclose(RTLD_NEXT)
+
+-------------------------------------------------------------------
 Wed Nov  9 06:48:12 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.13

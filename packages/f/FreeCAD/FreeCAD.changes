@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 00:01:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build after numpy 1.24 API changes, add
+  0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
+
+-------------------------------------------------------------------
 Fri Dec 30 00:55:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with OpenCASCADE 7.7.0, add

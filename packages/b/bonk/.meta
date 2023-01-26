@@ -1,0 +1,6 @@
+<package name="bonk" project="openSUSE:Factory">
+  <title>Keep bonking</title>
+  <description>A touch alternative with a sprinkle of mkdir written in Rust.</description>
+  <devel project="utilities" package="bonk"/>
+  <url>https://github.com/elliot40404/bonk</url>
+</package>

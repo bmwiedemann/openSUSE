@@ -17,7 +17,7 @@
 
 
 Name:           powerpc-utils
-Version:        1.3.10
+Version:        1.3.11
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
@@ -29,15 +29,6 @@ Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
-Patch5:         lsslot-Explicity-declare-that-lmb_address-be-display.patch
-Patch6:         lsslot-Fix-lsslot-c-mem-output-when-using-4GB-LMB-si.patch
-Patch7:         bootlist-Add-install-boot-support-for-nvmf-devices.patch
-Patch8:         ofpathname-Fix-several-issues-in-nvmf-boot-install-s.patch
-Patch9:         Support-multiple-dev-paths-for-a-nvmf-boot-device.patch
-Patch10:        ofpathname-Handle-nsid-as-hex-in-nvmf-boot-install-s.patch
-Patch11:        lparstat-Fix-display-of-mode-for-dedicated-donating-.patch
-Patch12:        lparstat-Fix-array-overflow-issue.patch
-Patch13:        hcnmgr-Fix-setting-primary-slave-across-reboots.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

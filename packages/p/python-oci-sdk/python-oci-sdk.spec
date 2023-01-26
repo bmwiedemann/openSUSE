@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.90.1
+Version:        2.90.3
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0

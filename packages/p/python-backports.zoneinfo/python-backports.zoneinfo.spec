@@ -1,7 +1,7 @@
 #
 # spec file for package python-backports.zoneinfo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,7 @@
 %define skip_python2 1
 %define skip_python39 1
 %define skip_python310 1
+%define skip_python311 1
 Name:           python-backports.zoneinfo
 Version:        0.2.1
 Release:        0

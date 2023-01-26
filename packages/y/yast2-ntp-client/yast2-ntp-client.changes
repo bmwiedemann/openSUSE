@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 23 18:50:11 UTC 2023 - Michal Filka <mfilka@suse.com>
+
+- bsc#1188980
+  - ntp dialog allows to manually set ntp source
+  - ntp source can be selected as pool or server
+  - ntp sources are written into /etc/chrony.d/pools.conf
+- 4.5.3 
+
+-------------------------------------------------------------------
 Mon Nov 21 14:40:27 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix the netconfig executable path using /sbin/netconfig instead

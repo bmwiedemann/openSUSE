@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:04:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Expand version from installed flavors: The primary python3 flavor
+  could be older on a backport for 15.X
+
+-------------------------------------------------------------------
 Sun Nov  7 15:24:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Make sip6 also the default on Leap -- boo#1192300

@@ -1,7 +1,7 @@
 #
 # spec file for package FreeCAD
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,8 @@ Patch4:         0001-Drawing-add-missing-include.patch
 Patch5:         0001-FEM-add-missing-include.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         0001-Revert-unused-parameter-warning-change.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FAILDRV=$(readlink "/sys/${DEVPATH}/failing_device/driver")
+FAILDRV=$(basename "$FAILDRV")
+
+test "$FAILDRV" = 'iwlwifi' || exit 0
+
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+OUT="/var/log/iwl-fw-error-${TIMESTAMP}.dump"
+umask 0077
+cat "/sys/${DEVPATH}/data" > "${OUT}"
+echo 1 > "/sys/${DEVPATH}/data"

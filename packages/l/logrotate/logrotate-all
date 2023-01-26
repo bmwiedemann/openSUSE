@@ -1,0 +1,28 @@
+#!/bin/sh
+set -eu
+
+configs=
+
+# Only read /usr/etc/logrotate.conf if /etc/logrotate.conf does not exist
+if ! [ -e /etc/logrotate.conf ]; then
+	configs="$configs /usr/etc/logrotate.conf"
+else
+	configs="$configs /etc/logrotate.conf"
+fi
+
+# Then read in all of {/usr,}/etc/logrotate.d/*, with /etc/ overriding /usr/etc/.
+dirs=
+[ -d /usr/etc/logrotate.d ] && dirs="/usr/etc/logrotate.d"
+[ -d /etc/logrotate.d ] && dirs="$dirs /etc/logrotate.d"
+
+if [ -n "$dirs" ]; then
+	for confname in $(find $dirs -type f -printf "%P\n" | sort -u); do
+		if [ -e "/etc/logrotate.d/$confname" ]; then
+			configs="$configs /etc/logrotate.d/$confname"
+		else
+			configs="$configs /usr/etc/logrotate.d/$confname"
+		fi
+	done
+fi
+
+exec /usr/sbin/logrotate $configs

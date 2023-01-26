@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Jan 26 08:57:48 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+Do not build on ix86 because pandoc is not available 
+
+-------------------------------------------------------------------
+Tue Jan 24 13:26:24 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+Cleanup specfile 
+
+-------------------------------------------------------------------
+Tue Jan 24 07:29:37 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+Fix rpmlint errors 
+
+-------------------------------------------------------------------
+Tue Jan 24 07:09:40 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+Initial packaging 

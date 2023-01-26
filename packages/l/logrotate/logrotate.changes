@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 24 07:53:00 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 3.21.0:
+  * add ignoreduplicates directive to allow duplicate file matches
+  * add --wait-for-state-lock option to wait for lock on the state file
+  * avoid failure when an anonymous non-privileged user runs logrotate
+  * support home dir expansion in olddir
+  * reduce unnecessary rename operations with start N where N > 1
+  * unify handling of log levels
+  * do not print error: when exit code is unaffected
+
+-------------------------------------------------------------------
+Mon Jan 23 13:21:08 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Replace the vendor config logic:
+  * Remove logrotate-vendor-dir.patch and the code from logrotate.service
+    (also addresses boo#1202406)
+  * Add a wrapper script which collects all config files in the right
+    order
+- Create logrotate.keyring with kdudka's public key
+- Drop logrotate-rpmlintrc: rpmlint doesn't look at /usr/etc/logrotate.d/,
+  so the false positive doesn't trigger.
+
+-------------------------------------------------------------------
 Wed Sep 14 11:15:55 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Ignoring vendor logs settings in /usr/etc/logrotate.d if they

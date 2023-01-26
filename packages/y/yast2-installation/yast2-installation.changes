@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jan 25 19:56:12 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Connect only NBFT when linuxrc sets UseNBFT (jsc#PED-967)
+- 4.5.15
+
+-------------------------------------------------------------------
+Wed Jan 25 15:25:50 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Discover and connect to all NVMe-over-Fabrics subsystems in case
+  that linuxrc sets UseNBFT (jsc#PED-967).
+- 4.5.14
+
+-------------------------------------------------------------------
 Thu Jan 12 07:42:55 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - yupdate - added suport for patching containers (bsc#1207069)

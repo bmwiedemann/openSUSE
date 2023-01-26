@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:22:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Bump xsimd depdency to 10.0.0
+  * Correctly raise KeyError when getting an unset dict item
+  * Fix negative binomial implementation
+  * Correctly convert strided array with offset
+  * Support np.clip(v, None, x) and np.clip(v, x, None)
+  * Support scipy.special.ndtr, scipy.special.ndtri, scipy.special.gammaincinv
+  * Fix set intersection
+  * Support numpy.fft.fftn
+  * Support axis parameter in numpy.argsort
+
+-------------------------------------------------------------------
 Sun Dec 25 11:01:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Revert. 2046-fix-cli-doc-test.patch did not fix the tests.

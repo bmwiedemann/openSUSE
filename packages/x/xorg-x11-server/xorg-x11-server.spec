@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -207,9 +207,8 @@ Patch11:        n_xorg-wrapper-rename-Xorg.patch
 Patch12:        n_xorg-wrapper-anybody.patch
 Patch100:       u_01-Improved-ConfineToShape.patch
 Patch101:       u_02-DIX-ConfineTo-Don-t-bother-about-the-bounding-box-when-grabbing-a-shaped-window.patch
-# PATCH-FIX-UPSTREAM u_x86emu-include-order.patch schwab@suse.de -- Change include order to avoid conflict with system header, remove duplicate definitions
-
 Patch104:       u_xorg-server-xdmcp.patch
+Patch105:       U_xorg-server-oob-read-enqueue-event.patch
 
 Patch117:       xorg-x11-server-byte-order.patch
 
@@ -371,6 +370,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch100 -p1
 #%patch101 -p1
 %patch104 -p1
+%patch105 -p1
 %patch117 -p1
 %patch160 -p1
 %patch208 -p1

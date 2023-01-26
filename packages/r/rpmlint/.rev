@@ -4281,4 +4281,18 @@ oddjob-gpupdate isn't blocked)</comment>
   * temporarily drop badness for sysctl-file-* errors</comment>
     <requestid>1060575</requestid>
   </revision>
+  <revision rev="434" vrev="1">
+    <srcmd5>fa9e9ba7c68f9613922641ec0c670043</srcmd5>
+    <version>2.4.0+git20230125.20e5b58</version>
+    <time>1674737835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230125.20e5b58:
+  * SymlinkExceptions: also exclude systemd-mini
+  * FileDigestCheck: allow multiple package names in ghost/symlink exceptions
+- Update to version 2.4.0+git20230124.a2050c3:
+  * FileDigestCheck: support exceptions to symlink restrictions
+  * Revert &quot;temporarily drop badness for sysctl-file-* errors&quot;
+</comment>
+    <requestid>1060821</requestid>
+  </revision>
 </revisionlist>

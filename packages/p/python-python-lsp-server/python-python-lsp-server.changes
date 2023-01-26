@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 25 16:28:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Allow 1.6.0 <= autopep8 < 2.1
+  * Add pylsp-pr345-autopep8-2.patch
+  * gh#python-lsp/python-lsp-server#345
+- Fix yapf requirement for toml
+  * gh#python-lsp/python-lsp-server#346
+
+-------------------------------------------------------------------
 Thu Jan 19 10:10:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.1

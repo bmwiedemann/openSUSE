@@ -202,4 +202,16 @@
   gh#python-lsp/python-lsp-server#340 (forwarded request 1059821 from bnavigator)</comment>
     <requestid>1059822</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b1e99f09d9ef6b6d8ff207210bad14ad</srcmd5>
+    <version>1.7.1</version>
+    <time>1674737856</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow 1.6.0 &lt;= autopep8 &lt; 2.1
+  * Add pylsp-pr345-autopep8-2.patch
+  * gh#python-lsp/python-lsp-server#345
+- Fix yapf requirement for toml
+  * gh#python-lsp/python-lsp-server#346 (forwarded request 1060981 from bnavigator)</comment>
+    <requestid>1060982</requestid>
+  </revision>
 </revisionlist>

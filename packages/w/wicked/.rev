@@ -1694,4 +1694,23 @@
 - systemd: Remove systemd-udev-settle dependency (bsc#1186787)</comment>
     <requestid>1044104</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>35615904e6976106c292e950f447d27b</srcmd5>
+    <version>0.6.72</version>
+    <time>1674737833</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.6.72
+- nbft: introduced new wicked-nbft sub-package to setup network interfaces using NBFT
+  firmware configuration according to the NVM Express Boot Specification 1.0 (jsc#PED-3132)
+- client: add `wicked firmware extensions|interfaces|enable|disable` command to
+  improve `ibft`,`nbft`,`redfish` firmware extension and interface handling (jsc#PED-3132)
+- client: improve error handling in netif firmware discovery extension execution
+- appconfig: improved to handle extension definition overrides in the wicked-config
+- nanny: fix use-after-free in debug mode (bsc#1206447)
+- spec: replace transitional `%usrmerged` macro with regular version check (boo#1206798)
+- client: improve to show `no-carrier` in ifstatus output
+- linux: cleanup inclusions and update uapi header to 6.0
+- ethtool: link mode nwords cleanup and new advertise link mode map names</comment>
+    <requestid>1061060</requestid>
+  </revision>
 </revisionlist>

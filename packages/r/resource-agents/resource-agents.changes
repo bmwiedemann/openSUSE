@@ -1,24 +1,46 @@
 -------------------------------------------------------------------
-Wed Dec 14 10:17:45 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+Wed Jan 25 13:30:26 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
-- Remove ocf_heartbeat_ZFS (bsc#1205556)
-  A new package resource-agents-zfs will contain ZFS support, which will not be shipped on SLES. 
+- Update to version 4.12.0+git3.5c81805c:
+  * db2: avoid eval with unsanitized values (#1838) (bsc#1146789)
+  * build: update ChangeLog for 4.12.0
+  * build: update ChangeLog for 4.12.0-rc1 
+  * README: update IRC info (#1835)
+  * CTDB: change public_addresses validate-all warning to info
+  * Filesystem: remove validate-all mountpoint warning as it is auto-created during start-action if it doesnt exist
+  * galera/mpathpersist/sg_persist/IPsrcaddr: only check notify and promotable when OCF_CHECK_LEVEL=10
+  * WAS6: fix trap condition
+  * exportfs: fix the error handling during monitoring
+  * IPaddr2/IPsrcaddr: add/modify table parameter to be able to find interface while using policy based routing
+
+-------------------------------------------------------------------
+Wed Dec 14 10:43:42 UTC 2022 - varkoly@suse.com
+
 - Update to version 4.11.0+git90.c1dd3806:
-  * Please don't suggest /tmp/mysql-proxy.sock, that is bad practice. Use one of the directories where this socket can be provided securely (bsc#1146768)
-  * SAPInstance: be more resilient against broken kill.sap files (#1825) (bsc#1206100)
+  * Please don't suggest /tmp/mysql-proxy.sock, that is bad practice. Use one of the directories where this socket can be provided securely
+    (bsc#1146768)
+  * SAPInstance: be more resilient against broken kill.sap files (#1825)
+    (bsc#1206100)
   * lvmlockd: add "use_lvmlockd = 1" if it's commented out or missing
   * nfsserver: add nfsv4_only parameter to make it run without rpc-statd/rpcbind services
-  * mysql-common: return error in stop-action if kill fails to stop the process, so the node can get fenced
+  * mysql-common: return error in stop-action if kill fails to stop the process so the node can get fenced
   * configure.ac: Fix bashisms
   * docker/podman/zabbixserver:replace error log messages with calls to ocf_exit_reason
-  * vdo-vol: dont fail probe action when the underlying device doesnt exist
+  * vdo-vol: don't fail probe action when the underlying device doesn't exist
   * build: add iface-macvlan
   * iface-macvlan: new resource agent (#1815)
 
 -------------------------------------------------------------------
-Thu Oct 20 08:40:50 UTC 2022 - varkoly@suse.com
+Wed Nov 30 10:58:20 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
-- Update to version 4.11.0+git72.c1f0a07e:
+- Remove ocf_heartbeat_ZFS (bsc#1205556)
+  A new package resource-agents-zfs will contain ZFS support, which will not be shipped on SLES.
+
+-------------------------------------------------------------------
+Tue Oct 25 05:29:06 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Impl: AWS EFS Support in Filesystem OCF required (jsc#PED-1934)
+  Update to version 4.11.0+git72.c1f0a07e:
   * IPsrcaddr: fix monitor/status for default route not being equal to src IP before start, and change route src correctly in stop-action
   * IPsrcaddr: use scope host when using non-main tables
   * IPsrcaddr: detect metric for main table only, and allow specifying metric if necessary
@@ -28,11 +50,6 @@ Thu Oct 20 08:40:50 UTC 2022 - varkoly@suse.com
   * ocf-shellfuncs: add ocf_promotion_score() to use crm_attribute -p/crm_master depending on Pacemaker version
   * portblock: implement blocking of outgoing ports
   * VirtualDomain: replace error log messages with calls to ocf_exit_reason
-
--------------------------------------------------------------------
-Fri Sep 02 05:15:56 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git58.2a2a4dd2:
   * ocf-tester: remove removed parameter -L from Usage text
   * storage_mon: improve error messages when ioctl() fails
   * storage_mon: do random lseek even with O_DIRECT, etc
@@ -67,23 +84,8 @@ Fri Sep 02 05:15:56 UTC 2022 - varkoly@suse.com
   * ocivip: fix spelling errors
   * Filesystem: improve logic for UUID/label and add note that /dev/disk/by-{uuid,label}/ are preferred on Linux
   * docker-compose: fix number of containers/running containers logic
-
--------------------------------------------------------------------
-Thu May 26 10:14:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
-
-- Adjust BuildRequire libglue-devel -> cluster-glue-devel.
-
--------------------------------------------------------------------
-Wed May 18 07:36:56 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git11.a5f40b4c:
   * iSCSILogicalUnit: fix issue where resource was in stopped state when using allowed_initiators parameter (#1766)
   * Filesystem: improve logic for UUID/label and add note that /dev/disk/by-{uuid,label}/ are preferred on Linux
-
--------------------------------------------------------------------
-Sun May 01 22:04:58 UTC 2022 - varkoly@suse.com
-
-- Update to version 4.11.0+git8.2351f1d4:
   * oracle: Improve the error message if monpassword was not set. (#1767)
   * spec: remove redhat-lsb-core dependency (lsb_release)
   * podman: add podman parameter error judgment (#1764)
@@ -93,17 +95,7 @@ Sun May 01 22:04:58 UTC 2022 - varkoly@suse.com
   * storage-mon,ldirectord: fix spelling errors
   * db2: fix bashism
   * openstack-info: fix bashism
-
--------------------------------------------------------------------
-Wed Apr  6 13:57:27 UTC 2022 - Roger Zhou <zzhou@suse.com>
-
-- Drop obs resource-agents.conf and reuse the one in upstream commit 826c5532
-
--------------------------------------------------------------------
-Thu Mar 31 14:22:18 UTC 2022 - varkoly@suse.com
-
-- Update to version v4.11.0rc1+git2.d40f1f1b:
-  * Filesystem: fix logic for UUID/label devices with space between parameter and UUID/label
+* Filesystem: fix logic for UUID/label devices with space between parameter and UUID/label
   * build: update ChangeLog for 4.11.0-rc1
   * ocf-distro: improve RHEL based distro detection
   * ipsec: fix check string against another string not the before defined variable (#1755)
@@ -121,7 +113,7 @@ Thu Mar 31 14:22:18 UTC 2022 - varkoly@suse.com
   * IPsrcaddr: fix indentation in better error message code
   * IPsrcaddr: Better error message when no matching route found
   * IPsrcaddr: Add warning about DHCP
-  * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir (jsc#PED-121)
+  * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir
   * rabbitmq-server-ha: Use ocf_is_true, if applicable
   * Fix SERVER_START_ARGS sname/name use for FQDN
   * LinuxSCSI:replace error log messages with calls to ocf_exit_reason
@@ -155,6 +147,47 @@ Thu Mar 31 14:22:18 UTC 2022 - varkoly@suse.com
   * gcp-ilb/Squid: fix issues detected by CI
   * configure: only run ci/build.sh when shellcheck is present
   * RabbitMQ OCF RA M/S HA cluster agent migration (#1698)
+  - Adjust BuildRequire libglue-devel -> cluster-glue-devel.
+  - Drop obs resource-agents.conf and reuse the one in upstream commit 826c5532
+  - Remove patches contained by the new version:
+    0002-IPaddr2-Allow-to-send-IPv6-Neighbor-Advertisements-i.patch
+    0001-mariadb-Remove-obsolete-DEBUG_LOG-functionality-1191.patch
+    0001-Improve-the-error-message-if-monpassword-was-not-set.patch
+    0004-IPaddr2-Clarify-behavior-of-arp_-parameters-for-IPv4.patch
+    0001-aws-vpc-move-ip-Allow-to-set-the-interface-label.patch
+    0003-IPaddr2-Log-ip-addr-add-options-together.patch
+    0001-IPaddr2-Allow-to-disable-Duplicate-Address-Detection.patch
+
+
+-------------------------------------------------------------------
+Wed Jul  6 08:49:24 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- AUDIT-FIND: resource-agents: Predictable log file in /tmp in mariadb.in
+  (bsc#1146691)
+  Add patch:
+    0001-mariadb-Remove-obsolete-DEBUG_LOG-functionality-1191.patch
+
+-------------------------------------------------------------------
+Thu Jun  9 07:38:59 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- RA aws-vpc-move-ip is lacking the possibility to assign a label to an interface. 
+  (bsc#1199766)  Include upsteam patch:
+  0001-aws-vpc-move-ip-Allow-to-set-the-interface-label.patch
+- Can IPaddr2 run ARP for IPV6 in background during start operation
+  (bsc#1196164)
+  Include upstream patches:
+  0001-IPaddr2-Allow-to-disable-Duplicate-Address-Detection.patch
+  0002-IPaddr2-Allow-to-send-IPv6-Neighbor-Advertisements-i.patch
+  0003-IPaddr2-Log-ip-addr-add-options-together.patch
+  0004-IPaddr2-Clarify-behavior-of-arp_-parameters-for-IPv4.patch 
+
+-------------------------------------------------------------------
+Sun May  1 21:54:26 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- oracle RA lists monpassword as optional but fails unless provided
+  (bsc#1197956)
+  Add upstream patch:
+    0001-Improve-the-error-message-if-monpassword-was-not-set.patch 
 
 -------------------------------------------------------------------
 Wed Jan 19 16:52:54 UTC 2022 - Peter Varkoly <varkoly@suse.com>

@@ -1,0 +1,29 @@
+From 2ef5ef57bd37a8bec2ac454053b283c6f87c3b40 Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Wed, 25 Jan 2023 02:02:48 +0000
+Subject: [PATCH] dix: Use CopyPartialInternalEvent in EnqueueEvent
+
+The event might be a DeviceEvent allocated on the stack, in
+AccessXKeyboardEvent for instance. Fixes out-of-bounds read.
+
+Signed-off-by: Mike Gorse <mgorse@suse.com>
+---
+ dix/events.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dix/events.c b/dix/events.c
+index 782ed35dc..86f5357e8 100644
+--- a/dix/events.c
++++ b/dix/events.c
+@@ -1215,7 +1215,7 @@ EnqueueEvent(InternalEvent *ev, DeviceIntPtr device)
+     qe->pScreen = pSprite->hotPhys.pScreen;
+     qe->months = currentTime.months;
+     qe->event = (InternalEvent *) (qe + 1);
+-    memcpy(qe->event, event, eventlen);
++    CopyPartialInternalEvent(qe->event, (InternalEvent *)event);
+     xorg_list_append(&qe->next, &syncEvents.pending);
+ }
+ 
+-- 
+2.39.0
+

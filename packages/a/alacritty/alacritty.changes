@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 25 16:15:25 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add back the config.guess/config.sub workaround for aarch64,
+  ppc64le and riscv64, which was silently dropped from previous
+  commit.
+
+-------------------------------------------------------------------
 Wed Dec 07 21:22:40 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.11.0:

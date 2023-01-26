@@ -1,0 +1,347 @@
+From 4002c2733c6aa955018157adc534fb4a1ea9fd27 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fabien=20P=C3=A9an?= <fabien@pean.pro>
+Date: Sat, 14 Jan 2023 21:45:23 +0000
+Subject: [PATCH] Replace deprecated np.complex by built-in complex
+
+---
+ EXAMPLES/PYARPACK/README                      |  2 +-
+ EXAMPLES/PYARPACK/pyarpack.cpp                |  2 +-
+ EXAMPLES/PYARPACK/pyarpackDenseLDLT.py.in     | 24 +++++++++----------
+ EXAMPLES/PYARPACK/pyarpackDenseQRPP.py.in     | 24 +++++++++----------
+ EXAMPLES/PYARPACK/pyarpackDenseQRRR.py.in     | 24 +++++++++----------
+ EXAMPLES/PYARPACK/pyarpackSparseBiCGILU.py.in | 18 +++++++-------
+ EXAMPLES/PYARPACK/pyarpackSparseCGILU.py.in   | 18 +++++++-------
+ EXAMPLES/PYARPACK/pyarpackSparseLDLT.py.in    | 18 +++++++-------
+ EXAMPLES/PYARPACK/pyarpackSparseQR.py.in      | 18 +++++++-------
+ 9 files changed, 74 insertions(+), 74 deletions(-)
+
+diff --git a/EXAMPLES/PYARPACK/README b/EXAMPLES/PYARPACK/README
+index 1a1a9eecf..c136dd61c 100644
+--- a/EXAMPLES/PYARPACK/README
++++ b/EXAMPLES/PYARPACK/README
+@@ -52,7 +52,7 @@ Note:
+    1.1. create numpy arrays specifying explicitly the type:
+         >> Aij = np.array([], dtype='complex128')
+    1.2. filling numpy arrays casting value on append:
+-        >> Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++        >> Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+    1.3. calling the solver flavor which is consistent with the numpy array data type:
+         >> arpackSlv = pyarpackSlv.complexDouble() # Caution: complexDouble <=> np.array(..., dtype='complex128')
+    note: NO data type check can be done at C++ side, the pyarpack user MUST insure data consistency.
+diff --git a/EXAMPLES/PYARPACK/pyarpack.cpp b/EXAMPLES/PYARPACK/pyarpack.cpp
+index 1eaf5ff6a..a705b2c70 100644
+--- a/EXAMPLES/PYARPACK/pyarpack.cpp
++++ b/EXAMPLES/PYARPACK/pyarpack.cpp
+@@ -194,7 +194,7 @@ BOOST_PYTHON_MODULE(pyarpack) {
+   doc << "   1.1. create numpy arrays specifying explicitly the type:" << std::endl;
+   doc << "        >> Aij = np.array([], dtype='complex128')" << std::endl;
+   doc << "   1.2. filling numpy arrays casting value on append:" << std::endl;
+-  doc << "        >> Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type." << std::endl;
++  doc << "        >> Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type." << std::endl;
+   doc << "   1.3. calling the solver flavor which is consistent with the numpy array data type:" << std::endl;
+   doc << "        >> arpackSlv = pyarpackSlv.complexDouble() # Caution: complexDouble <=> np.array(..., dtype='complex128')" << std::endl;
+   doc << "   note: NO data type check can be done at C++ side, the pyarpack user MUST insure data consistency." << std::endl;
+diff --git a/EXAMPLES/PYARPACK/pyarpackDenseLDLT.py.in b/EXAMPLES/PYARPACK/pyarpackDenseLDLT.py.in
+index bf3ecb949..00231bf3f 100644
+--- a/EXAMPLES/PYARPACK/pyarpackDenseLDLT.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackDenseLDLT.py.in
+@@ -10,13 +10,13 @@ Aij = np.array([], dtype='complex128')
+ for k in range(n):
+     for l in range(n):
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         else:
+-            Aij = np.append(Aij, np.complex128(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for idx, val in enumerate(Aij):
+     print("A[", idx, "] =", val)
+ A = (Aij, False) # raw format: Aij values, row ordered (or not).
+@@ -65,17 +65,17 @@ Bij = np.array([], dtype='complex64')
+ for k in range(n):
+     for l in range(n):
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         else:
+-            Aij = np.append(Aij, np.complex64(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for idx, val in enumerate(Aij):
+     print("A[", idx, "] =", val)
+ for idx, val in enumerate(Bij):
+diff --git a/EXAMPLES/PYARPACK/pyarpackDenseQRPP.py.in b/EXAMPLES/PYARPACK/pyarpackDenseQRPP.py.in
+index 148c350e4..b3d82b11d 100644
+--- a/EXAMPLES/PYARPACK/pyarpackDenseQRPP.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackDenseQRPP.py.in
+@@ -10,13 +10,13 @@ Aij = np.array([], dtype='complex128')
+ for k in range(n):
+     for l in range(n):
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         else:
+-            Aij = np.append(Aij, np.complex128(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for idx, val in enumerate(Aij):
+     print("A[", idx, "] =", val)
+ A = (Aij, False) # raw format: Aij values, row ordered (or not).
+@@ -64,17 +64,17 @@ Bij = np.array([], dtype='complex64')
+ for k in range(n):
+     for l in range(n):
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         else:
+-            Aij = np.append(Aij, np.complex64(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for idx, val in enumerate(Aij):
+     print("A[", idx, "] =", val)
+ for idx, val in enumerate(Bij):
+diff --git a/EXAMPLES/PYARPACK/pyarpackDenseQRRR.py.in b/EXAMPLES/PYARPACK/pyarpackDenseQRRR.py.in
+index 0dec3aedc..400851de4 100644
+--- a/EXAMPLES/PYARPACK/pyarpackDenseQRRR.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackDenseQRRR.py.in
+@@ -10,13 +10,13 @@ Aij = np.array([], dtype='complex128')
+ for k in range(n):
+     for l in range(n):
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         else:
+-            Aij = np.append(Aij, np.complex128(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for idx, val in enumerate(Aij):
+     print("A[", idx, "] =", val)
+ A = (Aij, False) # raw format: Aij values, row ordered (or not).
+@@ -64,17 +64,17 @@ Bij = np.array([], dtype='complex64')
+ for k in range(n):
+     for l in range(n):
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         elif l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         else:
+-            Aij = np.append(Aij, np.complex64(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex(   0.,    0.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for idx, val in enumerate(Aij):
+     print("A[", idx, "] =", val)
+ for idx, val in enumerate(Bij):
+diff --git a/EXAMPLES/PYARPACK/pyarpackSparseBiCGILU.py.in b/EXAMPLES/PYARPACK/pyarpackSparseBiCGILU.py.in
+index 2df9d4064..04d9b0703 100644
+--- a/EXAMPLES/PYARPACK/pyarpackSparseBiCGILU.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackSparseBiCGILU.py.in
+@@ -16,11 +16,11 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ A = (n, i, j, Aij) # coo format: dimension, i 0-based indices, j 0-based indices, Aij values.
+@@ -77,14 +77,14 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ for k, l, Bkl in zip(i, j, Bij):
+diff --git a/EXAMPLES/PYARPACK/pyarpackSparseCGILU.py.in b/EXAMPLES/PYARPACK/pyarpackSparseCGILU.py.in
+index 1e6b0df56..0db211d2a 100644
+--- a/EXAMPLES/PYARPACK/pyarpackSparseCGILU.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackSparseCGILU.py.in
+@@ -16,11 +16,11 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ A = (n, i, j, Aij) # coo format: dimension, i 0-based indices, j 0-based indices, Aij values.
+@@ -77,14 +77,14 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ for k, l, Bkl in zip(i, j, Bij):
+diff --git a/EXAMPLES/PYARPACK/pyarpackSparseLDLT.py.in b/EXAMPLES/PYARPACK/pyarpackSparseLDLT.py.in
+index bda27dd01..667d5b6ba 100644
+--- a/EXAMPLES/PYARPACK/pyarpackSparseLDLT.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackSparseLDLT.py.in
+@@ -16,11 +16,11 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ A = (n, i, j, Aij) # coo format: dimension, i 0-based indices, j 0-based indices, Aij values.
+@@ -75,14 +75,14 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ for k, l, Bkl in zip(i, j, Bij):
+diff --git a/EXAMPLES/PYARPACK/pyarpackSparseQR.py.in b/EXAMPLES/PYARPACK/pyarpackSparseQR.py.in
+index 62fd5c639..b41b4b8cf 100644
+--- a/EXAMPLES/PYARPACK/pyarpackSparseQR.py.in
++++ b/EXAMPLES/PYARPACK/pyarpackSparseQR.py.in
+@@ -16,11 +16,11 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex128(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex128(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex128(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex128(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ A = (n, i, j, Aij) # coo format: dimension, i 0-based indices, j 0-based indices, Aij values.
+@@ -74,14 +74,14 @@ for k in range(n):
+         i = np.append(i, np.@PYINT@(k+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         j = np.append(j, np.@PYINT@(l+1)) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k:
+-            Aij = np.append(Aij, np.complex64(np.complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( 200.,  200.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 33.3,  33.3))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k-1:
+-            Aij = np.append(Aij, np.complex64(np.complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex(-101., -101.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+         if l == k+1:
+-            Aij = np.append(Aij, np.complex64(np.complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+-            Bij = np.append(Bij, np.complex64(np.complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Aij = np.append(Aij, np.complex64(complex( -99.,  -99.))) # Casting value on append is MANDATORY or C++ won't get the expected type.
++            Bij = np.append(Bij, np.complex64(complex( 16.6,  16.6))) # Casting value on append is MANDATORY or C++ won't get the expected type.
+ for k, l, Akl in zip(i, j, Aij):
+     print("A[", k, ",", l, "] =", Akl)
+ for k, l, Bkl in zip(i, j, Bij):
