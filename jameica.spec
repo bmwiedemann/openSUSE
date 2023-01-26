@@ -1,7 +1,7 @@
 #
 # spec file for package jameica
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _build 484
-%define _buildreleases 484
-%define _tag V_2_10_2_BUILD_%{_build}
+%define _build 486
+%define _buildreleases 486
+%define _tag V_2_10_3_BUILD_%{_build}
 Name:           jameica
-Version:        2.10.2
+Version:        2.10.3
 Release:        0
 Summary:        Runtime environment for Java applications like Hibiscus
 License:        Apache-2.0 AND GPL-2.0-only AND LGPL-2.0-only AND CPL-1.0 AND Zlib AND MPL-1.0 AND EPL-1.0
@@ -32,7 +32,7 @@ BuildRequires:  ant
 BuildRequires:  dos2unix
 #BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 BuildRequires:  jpackage-utils
 BuildRequires:  nanoxml = 2.2.3
 BuildRequires:  paperclips = 1.0.4
@@ -40,6 +40,7 @@ BuildRequires:  swtcalendar
 BuildRequires:  velocity = 1.7
 BuildRequires:  xml-apis
 #Requires:       eclipse-swt
+Requires:       java >= 11
 Requires:       nanoxml = 2.2.3
 Requires:       paperclips = 1.0.4
 Requires:       swtcalendar
