@@ -57,7 +57,7 @@ structure and file attributes.
 sed -i 's|@@VERSION@@|%{version}|g' Makefile
 
 %build
-%make_build -j1 CFLAGS="%{optflags} -fPIC -I%{lua_incdir}"
+make %{?_make_output_sync} CFLAGS="%{optflags} -fPIC -I%{lua_incdir}"
 
 %install
 %make_install LUA_LIBDIR='%{lua_archdir}'

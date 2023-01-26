@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
 Tue Jan  3 16:52:00 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Handle Leap 15 / SLE-15 where %lua_provides is not supported.
