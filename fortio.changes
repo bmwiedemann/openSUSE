@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 26 06:37:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.40.0:
+  * Add support for echo server https when cert/key are provided (like for grpc server) and h2 (http/2.0) option for client (#688)
+  * Bump google.golang.org/grpc from 1.52.0 to 1.52.1 (#691)
+  * log.FErrf like log.Fatalf but without the panic nor exit (#686)
+  * Bump github/codeql-action from 2.1.38 to 2.1.39 (#689)
+  * correct readme to match current 1.39.1 release. also fix #680 - pass the fortio useragent to grpc (#685)
+
+-------------------------------------------------------------------
 Fri Jan 20 09:55:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.39.1:
