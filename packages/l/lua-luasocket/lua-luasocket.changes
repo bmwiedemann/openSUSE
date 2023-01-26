@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 25 12:30:17 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix unowned %{lua_incdir} directory.
+
+-------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Sat Aug 20 17:43:12 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 rebase: luasocket-makefile.patch

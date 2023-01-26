@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/lunarmodules/luasocket
 Source:         %{mod_name}-%{version}.tar.xz
 Patch0:         luasocket-makefile.patch
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides
 %lua_provides -e
@@ -90,6 +91,7 @@ install -p -m 0644 src/*.h %{buildroot}%{lua_incdir}
 %{lua_noarchdir}/socket/
 
 %files devel
+%dir %{lua_incdir}
 %{lua_incdir}/*.h
 
 %files doc
