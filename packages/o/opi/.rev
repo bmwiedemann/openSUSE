@@ -377,4 +377,15 @@
 - add resilio-sync</comment>
     <requestid>1046145</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c357584509c9bedf9c72f8ce3210268f</srcmd5>
+    <version>2.10.0</version>
+    <time>1674737951</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.10.0
+- Ask for submit in release.sh
+- Fix packman plugin for 15.4
+- Introduce repo key handling (bsc#1207334)</comment>
+    <requestid>1061194</requestid>
+  </revision>
 </revisionlist>
