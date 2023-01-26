@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:40:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Avoid i586 segfaults with Qt5/Matplotlib:
+  * Remove i586 malloc workarounds for memory allocation
+  * Don't test balanced model reduction on 32-bit
+
+-------------------------------------------------------------------
 Sat Dec 31 19:48:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.3.post2

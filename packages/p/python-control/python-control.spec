@@ -1,7 +1,7 @@
 #
 # spec file for package python-control
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,6 @@ BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module slycot}
-BuildRequires:  libjemalloc2
 # /SECTION
 %python_subpackages
 
@@ -69,11 +68,12 @@ sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 # The default Agg backend does not define the toolbar attribute in the Figure
 # Manager used by some tests, so we run the tests with the Qt5 backend
 export MPLBACKEND="Qt5Agg"
-# preload malloc library to avoid free() error on i586 architecture
-if [[ $(getconf LONG_BIT) == 32 ]]; then
-export LD_PRELOAD="%{_libdir}/libjemalloc.so.2"
-fi
-%pytest
+donttest="dummyprefix"
+# gh#python-control/python-control#838
+[ "${RPM_ARCH}" != "x86_64" ] && donttest="$donttest or (test_optimal_doc and shooting-3-u0-None)"
+# causes i586 segfaults in matplotlib after successful balanced model reduction tests
+[ $(getconf LONG_BIT) -eq 32 ] && donttest="$donttest or testBalredMatchDC"
+%pytest -k "not (${donttest})"
 
 %files %{python_files}
 %doc ChangeLog README.rst
