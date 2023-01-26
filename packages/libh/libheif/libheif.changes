@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 20 14:37:00 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add missing BuildRequires for SVT-AV1 support for Tumbleweed (only
+  for x86_64)
+
+-------------------------------------------------------------------
+Sun Jan 15 12:31:38 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Disable dynamic plugin interface and build plugins statically instead
+  (boo#1206945)
+
+-------------------------------------------------------------------
 Sat Jan  7 16:16:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.14.2:

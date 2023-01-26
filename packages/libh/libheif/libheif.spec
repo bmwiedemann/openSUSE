@@ -18,6 +18,16 @@
 
 %define gdk_pixbuf_binary_version 2.10.0
 %bcond_with x265
+%bcond_with plugins
+%bcond_with rav1e
+%bcond_with svtenc
+%if 0%{?suse_version} > 1500
+%bcond_without rav1e
+%ifarch x86_64
+%bcond_without svtenc
+%endif
+%endif
+
 Name:           libheif
 Version:        1.14.2
 Release:        0
@@ -36,8 +46,11 @@ BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
-%if 0%{?suse_version} > 1500
+%if %{with rav1e}
 BuildRequires:  pkgconfig(rav1e)
+%endif
+%if %{with svtenc}
+BuildRequires:  pkgconfig(SvtAv1Enc)
 %endif
 %if %{with x265}
 BuildRequires:  pkgconfig(libde265)
@@ -109,17 +122,27 @@ Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
 %autosetup -p1
 
 %build
-%if %{with x265}
 %cmake \
+%if %{without rav1e}
+    -DWITH_RAV1E=OFF \
+%endif
+%if %{without svtenc}
+    -DWITH_SvtEnc=OFF \
+%endif
+%if %{without x265}
+    -DWITH_LIBDE265=OFF \
+    -DWITH_X265=OFF \
+    -DWITH_EXAMPLES=OFF \
+%endif
+%if 0%{?suse_version} <= 1500
+    -DCMAKE_CXX_FLAGS="-pthread" \
+%endif
+%if %{with plugins}
     -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=OFF \
     -DPLUGIN_DIRECTORY=%{_libexecdir}/libheif
 %else
-%cmake \
-    -DWITH_LIBDE265=OFF \
-    -DWITH_X265=OFF \
-    -DWITH_EXAMPLES=OFF \
-    -DPLUGIN_DIRECTORY=%{_libexecdir}/libheif
+    -DENABLE_PLUGIN_LOADING=OFF
 %endif
 %cmake_build
 
@@ -155,7 +178,9 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %files -n libheif1
 %license COPYING
 %{_libdir}/libheif.so.*
+%if %{with plugins}
 %{_libexecdir}/libheif
+%endif
 
 %files devel
 %doc README.md
