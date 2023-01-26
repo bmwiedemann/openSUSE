@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 25 18:09:07 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1674655858.a839999:
+  * Avoid ugly underline when hovering over "Delete asset from disk" button
+  * Allow to search for an asset in the asets table from "Downloads" tab
+  * Clarify that delete button on the assets table will delete file on disk
+  * Allow specifying search term for asset table via URL query parameter
+  * Improve coding style in setup code for assets table
+  * Initialize Mojolicious::Static only in one place
+  * Fix missing input validation for needle API endpoints
+
+-------------------------------------------------------------------
 Mon Jan 23 10:09:07 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1674465154.bcd646c:
