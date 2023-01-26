@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1059028</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51438cb8b8e4880524d6f2c43a90313e</srcmd5>
+    <version>3.1.182.52d9180</version>
+    <time>1674737925</time>
+    <user>dimstar_suse</user>
+    <comment>- Run %post's ipcrm with user privileges [boo#1207487]</comment>
+    <requestid>1061088</requestid>
+  </revision>
 </revisionlist>

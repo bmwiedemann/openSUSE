@@ -170,7 +170,7 @@ done
 
 %post
 # clear translation caches
-ipcrm -M 0x950412de 2>/dev/null || :
+runuser -u groweb -- ipcrm -M 0x950412DE 2>/dev/null || :
 
 %files
 %dir %_sysconfdir/grommunio-web

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:19:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Run %post's ipcrm with user privileges [boo#1207487]
+
+-------------------------------------------------------------------
 Sat Jan 14 10:47:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 3.1.182.52d9180) for build.opensuse.org
