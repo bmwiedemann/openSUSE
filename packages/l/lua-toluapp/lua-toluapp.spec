@@ -48,6 +48,7 @@ Patch4:         toluapp-scons-py3.patch
 Patch5:         scons-0.98.1-Options-deprecated.patch
 #PATCH-FIX-OPENSUSE mlin@suse.com - scons env.Copy() has been deprecated, use env.Clone() instead if needed
 Patch6:         toluapp-fix-deprecared-env-copy.patch
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
