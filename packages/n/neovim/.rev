@@ -1077,4 +1077,15 @@ FIXES (LSP):
 </comment>
     <requestid>1045759</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>fa4d3a1c98680e56968e904db9694595</srcmd5>
+    <version>0.8.2</version>
+    <time>1674737905</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060833 from kukuk
+
+- Remove useless BuildRequire libnsl, our version does not provide
+    gethostbyname and libnsl is deprecated</comment>
+    <requestid>1061030</requestid>
+  </revision>
 </revisionlist>

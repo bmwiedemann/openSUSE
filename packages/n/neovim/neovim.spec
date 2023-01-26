@@ -1,7 +1,7 @@
 #
 # spec file for package neovim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libnsl-devel
 BuildRequires:  libtermkey-devel
 BuildRequires:  libtool
 BuildRequires:  libuv-devel

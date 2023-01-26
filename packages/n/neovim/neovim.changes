@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:21:22 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove useless BuildRequire libnsl, our version does not provide
+  gethostbyname
+
+-------------------------------------------------------------------
 Thu Dec 29 22:31:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.8.2:
