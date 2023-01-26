@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>998616</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dd6acfd9960c8bdc8b8d17155317f430</srcmd5>
+    <version>1.2+git29</version>
+    <time>1674737902</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060924 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+  - Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061056</requestid>
+  </revision>
 </revisionlist>

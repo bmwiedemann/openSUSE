@@ -25,6 +25,7 @@ License:        MIT OR X11
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/brimworks/lua-zlib
 Source:         lua-%{mod_name}-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  zlib-devel
 Requires:       %{flavor}
@@ -43,7 +44,7 @@ lua-zlib is a simple streaming interface to zlib for Lua.
 %setup -q -n lua-zlib-%{version}
 
 %build
-%make_build linux \
+make %{?_make_output_sync} %{?_smp_mflags} linux \
   INCDIR="-I%{lua_incdir}" \
   LUAPATH="%{lua_noardir}" \
   LUACPATH="%{lua_archdir}" \
