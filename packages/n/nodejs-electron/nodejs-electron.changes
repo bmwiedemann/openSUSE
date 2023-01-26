@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 08:29:33 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.1.0
+  * Added `label` property to `Display` objects.
+  * Fixed an issue where `webView`s could have an incorrect initial background color following reloads.
+
+-------------------------------------------------------------------
 Thu Jan 19 13:53:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream reelase 22.0.3
   * Fixed an issue where the setPermissionRequestHandler callback would be invoked twice when using navigator.getUserMedia(...)

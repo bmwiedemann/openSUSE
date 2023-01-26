@@ -377,7 +377,7 @@ find . -type f -name "*.o" -print -delete
 find . -type f -name "*.a" -print -delete
 
 #We use sponge to avoid a race condition between find and rm
-find -type f | sponge | xargs -P$(nproc) -- sh -c 'file "$@" | grep -v '\'' .*script'\'' | grep '\'' .*executable'\'' | tee /dev/stderr | sed '\''s/: .*//'\'' | xargs rm -fv'
+find -type f | sponge | xargs -P$(nproc) -- sh -c 'file -S "$@" | grep -v '\'' .*script'\'' | grep '\'' .*executable'\'' | tee /dev/stderr | sed '\''s/: .*//'\'' | xargs rm -fv'
 
 
 # Remove empty directories
@@ -387,7 +387,7 @@ popd || cleanup_and_exit 1
 
 echo ">>>>>> Hardlink duplicate files to reduce extraction time"
 
-fdupes -Sr src
+/usr/lib/rpm/fdupes_wrapper src
 
 echo ">>>>>> Create tarball"
 ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd -vvcf "${ELECTRON_PKGDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}.tar.zst" src
