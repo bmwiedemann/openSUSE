@@ -1606,4 +1606,12 @@
   * ocf-shellfuncs: Parametrise the log destinarion by OCF_RESKEY_trace_dir (jsc#PED-121)</comment>
     <requestid>1043402</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>de6eb369808a187f1846a6f9eb6411f3</srcmd5>
+    <version>4.12.0+git3.5c81805c</version>
+    <time>1674737820</time>
+    <user>dimstar_suse</user>
+    <comment>Add bsc number to changes</comment>
+    <requestid>1060963</requestid>
+  </revision>
 </revisionlist>
