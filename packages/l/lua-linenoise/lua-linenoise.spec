@@ -35,6 +35,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/hoelzro/lua-linenoise
 Source:         lua-linenoise-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
