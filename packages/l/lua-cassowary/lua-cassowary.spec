@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/sile-typesetter/cassowary.lua
 Source:         cassowary.lua-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-penlight
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
