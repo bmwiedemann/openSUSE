@@ -34,6 +34,7 @@ Source1:        https://github.com/libmpack/libmpack/archive/%{libmpack_version}
 Patch0:         lua51-mpack-fix-gcc7.patch
 # PATCH-FIX-UPSTREAM lua51-mpack-fix-compilation.patch gh#libmpack/libmpack-lua#2 -- Fix compilation error when using `USE_SYSTEM_LUA=1`.
 Patch1:         lua51-mpack-fix-compilation.patch
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 BuildRequires:  libtool
@@ -66,7 +67,7 @@ popd
 sed -i 's|LUA_CMOD_INSTALLDIR :=.*|LUA_CMOD_INSTALLDIR := $(shell echo "%{lua_archdir}")|g' Makefile
 
 %build
-%make_build \
+make %{?_make_output_sync} %{?_smp_mflags} \
     USE_SYSTEM_LUA=yes \
     MPACK_LUA_VERSION=%{lua_version} \
     CFLAGS="%{optflags} -fPIC"
