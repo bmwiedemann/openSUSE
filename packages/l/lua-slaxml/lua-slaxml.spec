@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/Phrogz/SLAXML
 Source:         lua-slaxml-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildArch:      noarch
 Requires:       %{flavor}

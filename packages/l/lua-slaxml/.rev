@@ -15,4 +15,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>882231</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>027252189fb6605909109093712c8197</srcmd5>
+    <version>0.7+git20191225.108970c</version>
+    <time>1674737899</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060920 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1061052</requestid>
+  </revision>
 </revisionlist>
