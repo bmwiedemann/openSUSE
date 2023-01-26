@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 19:46:13 UTC 2023 - Predrag Ivanović <predivan@mts.rs>
+
+- Use tubleweed:latest as the default image
+  instead of, hardcoded in 'distrobox-create', fedora:toolbox.
+
+-------------------------------------------------------------------
 Wed Dec 28 22:03:04 UTC 2022 - Ayush Kumar <ayush06feb@gmail.com>
 
 - Update to latest version (1.4.2.1). Some changes:
