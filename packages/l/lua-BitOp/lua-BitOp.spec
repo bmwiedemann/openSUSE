@@ -31,6 +31,7 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://bitop.luajit.org/index.html
 Source:         http://bitop.luajit.org/download/LuaBitOp-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 Requires:       %{flavor}
@@ -47,7 +48,7 @@ on numbers.
 
 %build
 export CFLAGS="%{optflags} -I%{lua_incdir}"
-%make_build
+make %{?_make_output_sync} %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}%{_docdir}/%{name}

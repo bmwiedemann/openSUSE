@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
 Thu Feb 18 15:43:53 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning
