@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Jan 25 16:42:39 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#621
+- support more general wicked firmware devices interface
+  (jsc#PED-3118, jsc#PED-967)
+- 17.69
+
+--------------------------------------------------------------------
 Mon Jan 16 18:32:30 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#618

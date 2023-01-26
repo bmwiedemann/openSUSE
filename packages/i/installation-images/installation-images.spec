@@ -495,6 +495,7 @@ BuildRequires:  valgrind
 BuildRequires:  vim-small
 BuildRequires:  wget
 BuildRequires:  wicked
+BuildRequires:  wicked-nbft
 BuildRequires:  wireless-tools
 %ifnarch s390 s390x
 BuildRequires:  wpa_supplicant
@@ -663,7 +664,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.68
+Version:        17.69
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
