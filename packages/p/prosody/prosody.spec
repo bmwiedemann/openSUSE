@@ -80,7 +80,7 @@ sed -i 's|@@PIDDIR@@|%{_piddir}|g;' prosody.cfg.lua.dist
     --c-compiler=gcc \
     --libdir=%{_libdir}
 
-%make_build
+make %{?_make_output_sync} %{?_smp_mflags}
 
 %install
 %make_install

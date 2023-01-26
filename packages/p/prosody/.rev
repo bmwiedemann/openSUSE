@@ -586,4 +586,14 @@
   * util.jsonschema: Use same integer/float logic on Lua 5.2 and 5.3</comment>
     <requestid>1042817</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>512cb974564871374f8c13219c90c87a</srcmd5>
+    <version>0.12.2</version>
+    <time>1674737903</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060926 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061057</requestid>
+  </revision>
 </revisionlist>
