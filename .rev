@@ -1711,4 +1711,19 @@ package/skelcd-control-openSUSE.spec:Version:        13.2.7</comment>
     <comment>submit new version 20230104</comment>
     <requestid>1059360</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>2f1a0d707f2d6e777433c68cb08dfb95</srcmd5>
+    <version>20230124</version>
+    <time>1674664954</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 20230124</comment>
+    <requestid>1060618</requestid>
+  </revision>
+  <revision rev="234" vrev="2">
+    <srcmd5>e194ae0d61b556c8e5c2e858ce1b51f5</srcmd5>
+    <version>20230104</version>
+    <time>1674727041</time>
+    <user>dimstar_suse</user>
+    <comment>https://openqa.opensuse.org/tests/3069199#step/swtpm_env_setup/19</comment>
+  </revision>
 </revisionlist>
