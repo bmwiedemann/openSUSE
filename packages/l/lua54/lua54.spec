@@ -1,7 +1,7 @@
 #
 # spec file for package lua54
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
-URL:            http://www.lua.org
+URL:            https://www.lua.org
 Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
 Source1:        http://www.lua.org/tests/lua-%{version}-tests.tar.gz
 Source99:       baselibs.conf
@@ -133,7 +133,9 @@ Summary:        Documentation for Lua, a small embeddable language
 License:        MIT
 Group:          Documentation/HTML
 BuildArch:      noarch
+%if 0%{?suse_version} > 1315
 Supplements:    (lua54 and patterns-base-documentation)
+%endif
 
 %description doc
 Lua is a programming language originally designed for extending
@@ -178,7 +180,7 @@ cat > lua%{major_version}.pc <<-EOF
 prefix=%{_prefix}
 exec_prefix=%{_prefix}
 libdir=%{_libdir}
-includedir=%{_prefix}/include/lua%{major_version}
+includedir=%{_includedir}/lua%{major_version}
 INSTALL_LMOD=%{_datadir}/lua/%{major_version}
 INSTALL_CMOD=%{_libdir}/lua/%{major_version}
 
@@ -247,13 +249,13 @@ fi
 %dir %{_datadir}/lua/%{major_version}
 %{_bindir}/lua%{major_version}
 %{_bindir}/luac%{major_version}
-%{_mandir}/man1/lua%{major_version}.1%{ext_man}
-%{_mandir}/man1/luac%{major_version}.1%{ext_man}
+%{_mandir}/man1/lua%{major_version}.1%{?ext_man}
+%{_mandir}/man1/luac%{major_version}.1%{?ext_man}
 # alternatives
 %{_bindir}/lua
 %{_bindir}/luac
-%{_mandir}/man1/lua.1%{ext_man}
-%{_mandir}/man1/luac.1%{ext_man}
+%{_mandir}/man1/lua.1%{?ext_man}
+%{_mandir}/man1/luac.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/lua
 %ghost %{_sysconfdir}/alternatives/luac
 %ghost %{_sysconfdir}/alternatives/lua.1%{ext_man}

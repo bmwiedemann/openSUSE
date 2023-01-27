@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 24 10:53:04 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not use complex dependencies on SLE12
+
+-------------------------------------------------------------------
 Sun Dec 18 17:55:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added more numbered patches from upstream:
