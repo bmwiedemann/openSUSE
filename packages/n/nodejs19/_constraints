@@ -16,9 +16,6 @@
       <cpu>
         <flag>asimdrdm</flag>
       </cpu>
-      <physicalmemory>
-        <size unit="G">6</size>
-      </physicalmemory>
     </hardware>
   </overwrite>
   <overwrite>

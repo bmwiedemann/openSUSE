@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs19
-Version:        19.4.0
+Version:        19.5.0
 Release:        0
 
 # Double DWZ memory limits
@@ -82,7 +82,7 @@ Release:        0
 %define _libexecdir %{_exec_prefix}/lib
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 120500 || 0%{?fedora_version} >= 35
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120400 || 0%{?fedora_version} >= 35
 %bcond_with    intree_openssl
 %else
 %bcond_without intree_openssl
@@ -170,6 +170,8 @@ Patch132:       test-skip-y2038-on-32bit-time_t.patch
 Patch200:       versioned.patch
 
 Patch305:       qemu_timeouts_arches.patch
+Patch306:       sysctl.patch
+Patch307:       s390.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -263,10 +265,10 @@ BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
 %endif
 
+# shared openssl
 %if ! 0%{with intree_openssl}
 
-BuildRequires:  libopenssl-1_1-devel
-#BuildRequires:  (pkgconfig(openssl) >= %{openssl_req_ver} and pkgconfig(openssl) < 3.0)
+BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
 # require patched openssl library on SLES for nodejs16
 %if 0%{?suse_version} && "%{pkg_version openssl-1_1}" != "~~~"
@@ -277,13 +279,19 @@ Requires:       openssl-has-RSA_get0_pss_params
 %endif
 
 %if 0%{?suse_version}
-#%if 0%{?suse_version} >= 1500
-#iBuildRequires:  openssl >= %{openssl_req_ver}
-#%else
-BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
-#%endif
 
+%if 0%{?suse_version} >= 1500
+BuildRequires:  openssl >= %{openssl_req_ver}
+%else
+BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
+%endif
+
+%if %{pkg_vcmp pkgconfig(openssl) > '3.0' }
+BuildRequires:  libopenssl3-hmac
+%else
 BuildRequires:  libopenssl1_1-hmac
+%endif
+
 # /suse_version
 %endif
 
@@ -292,11 +300,14 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %endif
 
 %else
+# bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
 Provides:       bundled(openssl) = 3.0.7
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
+
+# /bundled openssl
 %endif
 
 %if ! 0%{with intree_cares}
@@ -306,7 +317,7 @@ Provides:       bundled(libcares2) = 1.18.1
 %endif
 
 %if ! 0%{with intree_icu}
-BuildRequires:  pkgconfig(icu-i18n) >= 69
+BuildRequires:  pkgconfig(icu-i18n) >= 71
 %else
 Provides:       bundled(icu) = 72.1
 %endif
@@ -376,13 +387,13 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(llhttp) = 8.1.0
 Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.0
-Provides:       bundled(simdutf) = 2.0.9
+Provides:       bundled(simdutf) = 3.1.0
 
 Provides:       bundled(node-acorn) = 8.8.1
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
-Provides:       bundled(node-corepack) = 0.15.2
+Provides:       bundled(node-corepack) = 0.15.3
 Provides:       bundled(node-streamsearch) = 1.1.0
 Provides:       bundled(node-undici) = 5.14.0
 
@@ -413,7 +424,7 @@ Requires:       nodejs-common
 Requires:       nodejs19 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 9.2.0
+Provides:       npm(npm) = 9.3.1
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -511,12 +522,12 @@ Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 5.1.1
 Provides:       bundled(node-just-diff-apply) = 5.4.1
 Provides:       bundled(node-libnpmaccess) = 7.0.1
-Provides:       bundled(node-libnpmdiff) = 5.0.6
-Provides:       bundled(node-libnpmexec) = 5.0.6
-Provides:       bundled(node-libnpmfund) = 4.0.6
+Provides:       bundled(node-libnpmdiff) = 5.0.7
+Provides:       bundled(node-libnpmexec) = 5.0.7
+Provides:       bundled(node-libnpmfund) = 4.0.7
 Provides:       bundled(node-libnpmhook) = 9.0.1
 Provides:       bundled(node-libnpmorg) = 5.0.1
-Provides:       bundled(node-libnpmpack) = 5.0.6
+Provides:       bundled(node-libnpmpack) = 5.0.7
 Provides:       bundled(node-libnpmpublish) = 7.0.6
 Provides:       bundled(node-libnpmsearch) = 6.0.1
 Provides:       bundled(node-libnpmteam) = 5.0.1
@@ -532,7 +543,7 @@ Provides:       bundled(node-minipass) = 3.3.6
 Provides:       bundled(node-minipass) = 4.0.0
 Provides:       bundled(node-minipass-collect) = 1.0.2
 Provides:       bundled(node-minipass-fetch) = 2.1.2
-Provides:       bundled(node-minipass-fetch) = 3.0.0
+Provides:       bundled(node-minipass-fetch) = 3.0.1
 Provides:       bundled(node-minipass-flush) = 1.0.5
 Provides:       bundled(node-minipass-json-stream) = 1.0.1
 Provides:       bundled(node-minipass-pipeline) = 1.2.4
@@ -696,6 +707,8 @@ popd
 %patch200 -p1
 
 %patch305 -p1
+%patch306 -p1
+%patch307 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50

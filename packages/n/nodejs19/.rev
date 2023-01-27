@@ -77,4 +77,22 @@ For details, see CHANGELOG_V19.md</comment>
     are more stable</comment>
     <requestid>1058733</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>597461db908c534157b0be14e3eff420</srcmd5>
+    <version>19.5.0</version>
+    <time>1674810959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.5.0:
+  * http: join authorization headers
+  * lib: add webstreams to Duplex.from()
+  * stream: implement finished() for ReadableStream and WritableStream
+- npm_search_paths.patch, linker_lto_jobs.patch: refreshed
+- sysctl.patch: don't try to execute sysctl
+- s390.patch: fix unit test on s390 with patched zlib
+
+- Use default openssl again and do not force openssl 1.1.1
+- _constraints: reset aarch64 memory requirements back to original
+  otherwise some unit tests can fail</comment>
+    <requestid>1061207</requestid>
+  </revision>
 </revisionlist>
