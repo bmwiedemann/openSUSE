@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 26 14:52:54 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.3.0
+  * optimize cloning when combining subdir parameter
+  * solve release number handling when using multiple spec files
+  * Require git-lfs to be always present and allow to opt out of lfs fetching
+  * support local symlinks to git submodules
+  * support recursive submodule cloning
+  * Fix the scmsync entry for relative submodule urls
+
+-------------------------------------------------------------------
 Tue Nov  8 12:44:07 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to 0.2.1

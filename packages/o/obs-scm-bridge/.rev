@@ -26,4 +26,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035839</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91a238611c46ea210606a1b343918637</srcmd5>
+    <version>0.3.0</version>
+    <time>1674810976</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+  * optimize cloning when combining subdir parameter
+  * solve release number handling when using multiple spec files
+  * Require git-lfs to be always present and allow to opt out of lfs fetching
+  * support local symlinks to git submodules
+  * support recursive submodule cloning
+  * Fix the scmsync entry for relative submodule urls</comment>
+    <requestid>1061230</requestid>
+  </revision>
 </revisionlist>
