@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 26 16:43:42 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1207577: set /var/lib/ntp/var/run/ntp to 775
+
+-------------------------------------------------------------------
 Wed Feb 24 02:09:55 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Modified ntp.NetworkManager: Update ntp servers on

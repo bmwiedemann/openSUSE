@@ -1,7 +1,7 @@
 #
 # spec file for package ntp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           ntp
 Version:        4.2.8p15
 Release:        0
 Summary:        Network Time Protocol daemon (version 4)
-License:        (MIT AND BSD-3-Clause AND BSD-4-Clause) AND GPL-2.0-only
+License:        BSD-3-Clause AND MIT AND BSD-4-Clause AND GPL-2.0-only
 Group:          Productivity/Networking/Other
 URL:            http://www.ntp.org/
 # main source
@@ -410,7 +410,7 @@ fi
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_fillupdir}/*
-%attr(0755,ntp,root) %{_localstatedir}/lib/ntp%{_localstatedir}/run/ntp
+%attr(0775,ntp,root) %{_localstatedir}/lib/ntp%{_localstatedir}/run/ntp
 %ghost %config(noreplace) %{_localstatedir}/log/ntp
 %attr(0755,ntp,ntp) %dir %{_localstatedir}/log/ntpstats
 
