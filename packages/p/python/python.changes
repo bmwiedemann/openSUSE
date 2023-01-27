@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 07:14:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_unverified_test.patch because apparently switching off
+  SSL verification doesn't work on older SLE.
+
+-------------------------------------------------------------------
 Tue Nov 22 20:55:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Restore python-2.7.9-sles-disable-verification-by-default.patch

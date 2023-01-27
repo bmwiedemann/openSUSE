@@ -2771,4 +2771,12 @@ However, upstream development now focuses on 3.x series.
   for SLE-12.</comment>
     <requestid>1037419</requestid>
   </revision>
+  <revision rev="176" vrev="27">
+    <srcmd5>c25f478ed6c100ca2656a36ba6f2517d</srcmd5>
+    <version>2.7.18</version>
+    <time>1674810925</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1061142</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-doc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,6 +138,9 @@ Patch72:        bpo34990-2038-problem-compileall.patch
 # PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
 # Avoid DoS by decoding IDNA for too long domain names
 Patch73:        CVE-2022-45061-DoS-by-IDNA-decode.patch
+# PATCH-FIX-UPSTREAM skip_unverified_test.patch mcepl@suse.com
+# switching verification off on the old SLE doesn't work
+Patch74:        skip_unverified_test.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc = %{version}
 Provides:       pyth_ps = %{version}
@@ -218,6 +221,9 @@ Python, and Macintosh Module Reference in PDF format.
 %patch71 -p1
 %patch72 -p1
 %patch73 -p1
+%if 0%{?sle_version} && 0%{?sle_version} < 150000
+%patch74 -p1
+%endif
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
