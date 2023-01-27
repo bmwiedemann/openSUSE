@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jan 26 12:42:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to remmina version 1.4.29
+  * Hiroyuki Tanaka added to README :) !2451
+  * Initial macOS support !2453
+  * X2Go error-message consistency !2452
+  * Avoid crash when closing, fixes issue #2832 !2454
+  * Update Copyright for 2023 !2455
+  * Aligning local and downstream jsons !2456
+- Update to remmina version 1.4.28
+  * Some minor RDP fixes !2415
+  * Mathias Winterhalter's avatar Fix Unix socket support for VNC !2417
+  * GVNC: Fixed JPEG quality encoding advertizing !2418
+  * Fix missing null checks causing signal 11 !2419
+  * Add modified date to SFTP file list !2420
+  * Adding Labels/Tags !2421
+  * Spelling: Hostname !2422
+  * X2Go: Fix annoying default_username bug. !2423
+  * plugins/x2go/x2go_plugin.c: Fix tip and comment sentence !2424
+  * Remove webkit_settings_set_enable_frame_flattening() for newer WekbKitGTK, fixes #2780 !2425
+  * Change password including gateway !2427
+  * Improve rcw close !2429
+  * Multiple changes to build and run with libsoup 3.0 !2431
+  * X2Go: Add ssh_passphrase and ssh_privatekey settings. !2428
+  * RDP: Add option to disable output suppression !2432
+  * Spelling: "Passphrase" → "password" !2433
+  * Fix compile warnings and some spelling corrections !2434
+  * [Rem-2782] Display protocol name in tooltip for connections in the ... menu... !2436
+  * [Rem-2782] Added protocol icons in drop-down menu !2438
+  * Fix widget reparenting when entering/exiting fullscreen !2439
+  * Rem 2760 !2440
+  * Allow building on a Wayland-only environment - version 4 !2437
+  * [Rem-2564] Allow for VNC runtime adjustment of color depth !2442
+  * Fix floating toolbar not disappearing when in fullscreen and keyboard grabbed !2441
+  * Revert "Merge branch 'Rem-2564' into 'master'" !2443
+  * [Rem-2654] Allow for runtime adjustment of colour depth, both increasing and decreasing !2444
+  * [Rem-2564] Changed declaration of variables to be compatible with different Ubuntu version !2445
+  * [Rem-2682] Added view-only mode for RDP !2447
+  * Removing the news widget !2446
+  * Updated Flatpak manifest files to match GitHub !2448
+  * Add missing include for X11/Wayland conditional !2450
+- Drop libsoup_2_and_3_support.patch because now in upstream.
+
+-------------------------------------------------------------------
 Wed Oct 19 14:48:49 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup_2_and_3_support.patch: support libsoup 3.0
