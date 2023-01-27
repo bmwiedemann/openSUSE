@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Jan 25 15:29:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.22.3
+  * Support for the Cloud Migrations service
+    * ``oci cloud-migrations``
+  * Support for new optional parameter to set Custom Private IP
+    during Private End Point provisioning in the Database service
+    * ``oci db autonomous-database create --private-endpoint-ip``
+    * ``oci db autonomous-database create-adb-cross-region-data-guard-details
+      --private-endpoint-ip``
+    * ``oci db autonomous-database create-from-backup-id --private-endpoint-ip``
+    * ``oci db autonomous-database create-from-backup-timestamp --private-endpoint-ip``
+    * ``oci db autonomous-database create-from-clone --private-endpoint-ip``
+    * ``oci db autonomous-database create-refreshable-clone --private-endpoint-ip``
+    * ``oci db autonomous-database update --private-endpoint-ip``
+  * Support for Machine Learning pipelines for the Data Science Service
+    * ``oci data-science pipeline``
+    * ``oci data-science pipeline-run``
+  * Support for the language PII (Personal Identifiable Information)
+    detection in the AI Language service
+    * ``oci ai language batch-detect-pii-entities``
+  * Support for cross region replication in the File Storage service
+    * ``oci fs replication create``
+    * ``oci fs replication get``
+    * ``oci fs replication list``
+    * ``oci fs replication delete``
+    * ``oci fs replication change-compartment``
+    * ``oci fs file-system estimate-replication``
+- from version 3.22.2
+  * Database service
+    * Support for Private DNS in ExaCS systems during provisioning
+      * ``oci db cloud-vm-cluster create --private-zone-id``
+    * Support for Elastic Storage Expansion (Multi-Rack) feature
+      * ``oci db exadata-infrastructure create --is-multi-rack-deployment,
+        --multi-rack-configuration-file``
+      * ``oci db exadata-infrastructure get --excluded-fields``
+      * ``oci db exadata-infrastructure list --excluded-fields``
+      * ``oci db exadata-infrastructure update --is-multi-rack-deployment,
+        --multi-rack-configuration-file``
+    * Support for target version fields of infra patching v2
+      features on cloud exadata infrastructure
+      * ``oci db cloud-exa-infra get --storageserverversion``
+      * ``oci db cloud-exa-infra get --dbserverversion``
+      * ``oci db cloud-exa-infra get --monthlystorageserverversion``
+      * ``oci db cloud-exa-infra get --monthlydbserverversion``
+  * Data Science Service
+      * Support for creating model version sets in model catalog
+        * ``oci data-science model-version-set *``
+      * Support for option paramater ``model-version-set-id`` and
+        ``version-label`` for following commands
+        * ``oci data-science model create --model-version-set-id, --version-label``
+        * ``oci data-science model list --model-version-set-name, --version-label``
+        * ``oci data-science model update --model-version-set-id, --version-label``
+- from version 3.22.1
+  * Changelog entries for version 3.22.1 are missing upstream
+    * https://github.com/oracle/oci-cli/issues/627
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jan  3 09:26:25 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.22.0
