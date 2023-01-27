@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/hoelzro/lua-repl
 Source:         lua-repl-%{version}.tar.xz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
 %if %{with test}
