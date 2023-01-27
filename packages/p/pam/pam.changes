@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:38:04 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Use rpm macros for pam dist conf dir (/usr/etc/security)
+
+-------------------------------------------------------------------
+Wed Jan 18 09:33:37 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Moved following files/dirs in /etc/security to vendor directory:
+  access.conf, limits.d, sepermit.conf, time.conf, namespace.conf,
+  namespace.d, namespace.init
+
+-------------------------------------------------------------------
 Sat Dec 24 13:31:33 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Also obsolete pam_unix-32bit to have clean upgrade path.

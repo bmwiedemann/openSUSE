@@ -19,6 +19,10 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 
+%define config_files pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session \\\
+	security/faillock.conf security/group.conf security/limits.conf security/pam_env.conf security/access.conf \\\
+	security/namespace.conf security/namespace.init security/sepermit.conf
+
 %if "%{flavor}" == "full"
 %define build_main 0
 %define build_doc 1
@@ -247,8 +251,9 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
-mkdir -p %{buildroot}%{_distconfdir}/security
-mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf,pam_env.conf} %{buildroot}%{_distconfdir}/security/
+mkdir -p %{buildroot}%{_pam_secdistconfdir}
+mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf,pam_env.conf,access.conf,limits.d,sepermit.conf,time.conf} %{buildroot}%{_pam_secdistconfdir}/
+mv %{buildroot}%{_sysconfdir}/security/{namespace.conf,namespace.d,namespace.init} %{buildroot}%{_pam_secdistconfdir}/
 mv %{buildroot}%{_sysconfdir}/environment %{buildroot}%{_distconfdir}/environment
 
 # Remove manual pages for main package
@@ -287,13 +292,13 @@ rm -rf %{buildroot}%{_mandir}/man8/pam_userdb.8*
 
 %postun -p /sbin/ldconfig
 %pre
-for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session ; do
+for i in securetty %{config_files} ; do
   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 
 %posttrans
 # Migration to /usr/etc.
-for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/common-password pam.d/common-session ; do
+for i in securetty %{config_files} ; do
   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 
@@ -307,8 +312,8 @@ done
 %dir %{_pam_confdir}
 %dir %{_pam_vendordir}
 %dir %{_pam_secconfdir}
-%dir %{_pam_secconfdir}/limits.d
-%dir %{_distconfdir}/security
+%dir %{_pam_secdistconfdir}
+%dir %{_pam_secdistconfdir}/limits.d
 # /usr/etc/pam.d is for compat reasons
 %dir %{_distconfdir}/pam.d
 %dir %{_prefix}/lib/motd.d
@@ -320,19 +325,19 @@ done
 %{_pam_vendordir}/common-*
 %endif
 %{_distconfdir}/environment
-%config(noreplace) %{_pam_secconfdir}/access.conf
-%{_distconfdir}/security/group.conf
-%{_distconfdir}/security/faillock.conf
-%{_distconfdir}/security/limits.conf
-%{_distconfdir}/security/pam_env.conf
+%{_pam_secdistconfdir}/access.conf
+%{_pam_secdistconfdir}/group.conf
+%{_pam_secdistconfdir}/faillock.conf
+%{_pam_secdistconfdir}/limits.conf
+%{_pam_secdistconfdir}/pam_env.conf
 %if %{enable_selinux}
-%config(noreplace) %{_pam_secconfdir}/sepermit.conf
+%{_pam_secdistconfdir}/sepermit.conf
 %endif
-%config(noreplace) %{_pam_secconfdir}/time.conf
-%config(noreplace) %{_pam_secconfdir}/namespace.conf
-%config(noreplace) %{_pam_secconfdir}/namespace.init
+%{_pam_secdistconfdir}/time.conf
+%{_pam_secdistconfdir}/namespace.conf
+%{_pam_secdistconfdir}/namespace.init
 %config(noreplace) %{_pam_secconfdir}/pwhistory.conf
-%dir %{_pam_secconfdir}/namespace.d
+%dir %{_pam_secdistconfdir}/namespace.d
 %{_libdir}/libpam.so.0
 %{_libdir}/libpam.so.%{libpam_so_version}
 %{_libdir}/libpamc.so.0
