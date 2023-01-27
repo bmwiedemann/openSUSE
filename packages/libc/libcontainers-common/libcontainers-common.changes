@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:01:49 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Reverts https://build.opensuse.org/request/show/1060361
+  Changes introduced to c/storage's storage.conf which adds
+  a driver_priority attribute would break consumers of libcontainer-common
+  as long as those packages are vendoring an older c/storage version.
+  Instead of patching every consumer, we're reverting this change, until
+  those packages have been updated downstream. [boo#1207509]
+
+-------------------------------------------------------------------
 Fri Jan 13 06:01:46 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - storage.conf: Unset 'driver' and set 'driver_priority' to
