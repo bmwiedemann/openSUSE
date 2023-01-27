@@ -1,9 +1,9 @@
 #
 # spec file for package flocq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Peter Trommler <ptrommler@icloud.com>
-# Copyright (c) 2022 Aaron Puchert <aaronpuchert@alice-dsl.net>
+# Copyright (c) 2023 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source0:        https://flocq.gitlabpages.inria.fr/releases/%{name}-%{version}.t
 Source100:      %{name}-rpmlintrc
 BuildRequires:  coq-devel >= 8.12
 BuildRequires:  gcc-c++
+BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocamlfind(findlib)
 # The binary format works only with the Coq version it was built with.
 Requires:       coq = %{pkg_version coq}

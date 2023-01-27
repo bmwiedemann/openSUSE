@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jan 26 14:55:35 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Fixed brickd-rpmlintrc source reference in spec file
+  removed upstream patch a679ca31b8dbd412e5f379b624200e3a96dda0ce.patch
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:20 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- New Version 2.4.4
+  - Add menu entry to clear Live Log in Windows Log Viewer
+  - Abort delayed USB stall recovery if device was removed in the meantime
+  - Add rate limit for Bricklet error messages
+  - Increase libusb requirement from 1.0.6 to 1.0.20
+  - Allow to disable mesh gateway
+  - Update bundled libusb to 1.0.26.11755 on Windows (Windows Vista or newer
+    required) and macOS
+
+-------------------------------------------------------------------
 Wed Feb 23 14:23:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add a679ca31b8dbd412e5f379b624200e3a96dda0ce.patch for RISCV support 

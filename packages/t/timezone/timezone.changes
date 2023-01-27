@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 24 08:13:08 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Install leapseconds data to %{_datadir}/zoneinfo/; this is now
+  required by some scientific applications.
+
+-------------------------------------------------------------------
 Wed Nov 30 22:42:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - timezone update 2022g:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 26 07:41:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-48281 [bsc#1207413]
+    + tiff-CVE-2022-48281.patch
+
+-------------------------------------------------------------------
 Wed Jan  4 08:48:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.0:

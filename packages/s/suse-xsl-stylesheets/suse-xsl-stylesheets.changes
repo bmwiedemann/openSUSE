@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 26 08:25:39 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.88.3
+
+- Update 2.88.3:
+  - Fix #525: typo in URL to upstream DB stylesheet
+  - HTML: Make more space for cover icons by @tomschr in #527
+  - Fix #526: add book titlepage for TRD stylesheets by @tomschr in #528
+  - Support return for keycaps by @tomschr in #529
+ 
+-------------------------------------------------------------------
 Mon Dec 12 21:32:09 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.88.2
 
 - Update 2.88.2

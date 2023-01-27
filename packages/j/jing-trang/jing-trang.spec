@@ -1,7 +1,7 @@
 #
 # spec file for package jing-trang
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,8 @@ Requires:       java-headless
 Requires:       jpackage-utils
 Requires:       mvn(com.github.relaxng:relaxngDatatype) >= 2011.1
 Requires:       mvn(xml-resolver:xml-resolver)
+Provides:       mvn(com.thaiopensource:jing)
+Provides:       mvn(org.relaxng:jing) = %{version}
 
 %description -n jing
 jing is an XML validator implemented in Java. It validates against the
@@ -96,6 +98,8 @@ Requires:       jpackage-utils
 Requires:       mvn(com.github.relaxng:relaxngDatatype) >= 2011.1
 Requires:       mvn(xerces:xercesImpl)
 Requires:       mvn(xml-resolver:xml-resolver)
+Provides:       mvn(com.thaiopensource:trang)
+Provides:       mvn(org.relaxng:trang) = %{version}
 
 %description -n trang
 Trang converts between different schema languages for XML.  It supports the

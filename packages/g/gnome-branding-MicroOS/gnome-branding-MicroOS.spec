@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-branding-MicroOS
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,12 +30,14 @@ Source4:        mod-firstboot
 BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  gio-branding-openSUSE
+BuildRequires:  transactional-update
 Requires:       flatpak
 Requires:       gio-branding-openSUSE
 Requires:       sound-theme-freedesktop
+Requires:       transactional-update
 Requires:       zenity
 Conflicts:      plasma-branding-MicroOS
-Version:        20210427
+Version:        20230126
 Release:        0
 
 %description
@@ -60,6 +62,12 @@ install -d %{buildroot}%{_sysconfdir}/skel/.config/autostart
 install -m0644 mod-firstboot.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/mod-firstboot.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 mod-firstboot %{buildroot}%{_bindir}/mod-firstboot
+
+%post
+sed -i 's/^#REBOOT_METHOD=auto/REBOOT_METHOD=notify/' %{_prefix}%{_sysconfdir}/transactional-update.conf
+
+%postun
+sed -i 's/^REBOOT_METHOD=notify/#REBOOT_METHOD=auto/' %{_prefix}%{_sysconfdir}/transactional-update.conf
 
 %files
 %license COPYING

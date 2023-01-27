@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Jan 26 14:08:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Simplify %%prep.
+
+-------------------------------------------------------------------
+Wed Jan 25 09:15:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Include tests.tar.xz via _service: pulls in tests from github as
+  these are not bundled in original source tarball.

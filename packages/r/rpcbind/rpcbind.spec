@@ -1,7 +1,7 @@
 #
 # spec file for package rpcbind
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,9 +43,6 @@ BuildRequires:  pkgconfig(libsystemd)
 Requires(post): %fillup_prereq
 Provides:       portmap
 %{?systemd_ordering}
-%if 0%{?suse_version} >= 1330
-BuildRequires:  libnsl-devel
-%endif
 %sysusers_requires
 
 %description

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jan 26 19:15:31 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.2.2:
+  + Fix:
+    - Fix to work with b2sdk 1.19.0.
+    - Fix #692.  Redundant --encrypt option added in gpg.py.
+    - Regression on issue #147, change password for incremental.
+    - Crash if a socket is listed with --files-from.
+  + Other:
+    - Add detailed step-by-step instructions.
+
+-------------------------------------------------------------------
+Thu Jan 26 13:53:26 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.2.1:
+  + New:
+    - Add rsync style --files-from=FILE.
+    - Add literal include/excludes.
+  + Fix:
+    - Fix for issue #683.
+    - Azure Blob Storage backend fails to resume.
+
+-------------------------------------------------------------------
 Tue Oct  4 17:17:27 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.0.1:

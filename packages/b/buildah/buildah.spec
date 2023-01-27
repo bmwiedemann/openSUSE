@@ -18,7 +18,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.28.2
+Version:        1.29.0
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -49,6 +49,7 @@ Requires:       slirp4netns
 BuildRequires:  libostree-devel
 # Not supported by libseccomp-golang
 ExcludeArch:    ppc64
+
 
 %description
 Buildah provides a command line tool which can be used to:

@@ -2774,4 +2774,12 @@
     <comment></comment>
     <requestid>1046568</requestid>
   </revision>
+  <revision rev="325" vrev="1">
+    <srcmd5>a5918673747ac55327dfc89cd263ada0</srcmd5>
+    <version>4.17.0_04</version>
+    <time>1674810916</time>
+    <user>dimstar_suse</user>
+    <comment>Security fix for bsc#1207544 - CVE-2022-42330</comment>
+    <requestid>1061070</requestid>
+  </revision>
 </revisionlist>

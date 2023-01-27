@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 26 22:02:12 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+
+- Build with ocaml-rpm-macros to get proper Requires and Provides
+  for coq-devel. This should prevent incompatibilities with other
+  Ocaml libraries when building native objects against coq-devel.
+
+-------------------------------------------------------------------
 Sat Nov 26 22:20:18 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.16.1.

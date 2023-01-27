@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jan 25 21:58:05 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.23
+  - Allow saving config when Modbus master timeout is changed for RS485 Bricklet
+  - Enable Python development mode when running from source
+  - Fix socket leak on connect error
+  - Add manual y-axis scaling for plot widget
+  - Remove all driver files for Windows 7 and earlier
+  - Fix calibration dialog title for Compass Bricklet plugin
+  - Fix Galileo satellite numbers for GPS Bricklet 3.0
+  - Add support for IPv6 connections
+  - Add commandline options to specify host, port and secret
+  - Add tab select menu that stays in the top left corner
+  - Fix corner cases in IMU Brick(let) plugin untab handling
+  - Add manual firmware list update button if auto-search for updates is disabled
+  - remove upstream patch 0001-red-Handle-service-provider-country-codes-missing-in.patch
+
+-------------------------------------------------------------------
 Thu Aug 18 10:57:06 UTC 2022 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.22

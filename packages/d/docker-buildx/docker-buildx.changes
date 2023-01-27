@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jan 27 06:09:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.1:
+  * vendor: update buildkit to v0.11.2
+  * build: set remote origin url
+  * build: create error group per opt
+  * build: reorder error group funcs
+  * build: use copy for BuildWithResultHandler loop vars
+  * imagetools: silence intoto warnings
+  * rm: do not check for context builders when removing inactive
+  * build: mark capabilities request as internal
+  * docs: fix broken link in buildx_bake CLI reference
+  * ci: fix typo in docs-release workflow
+  * fix the directory of the buildx binary
+  * inspect: lazily load attestation data
+  * inspect: move attestation loading to struct methods
+  * build: error when using docker exporter and attestations
+  * build: avoid compatability error when attestations disabled
+  * ci: update buildkit release version in build pipeline
+  * ci: update buildx release version in build pipeline
+  * vendor: github.com/moby/buildkit v0.11.1
+  * docs: add reference for new attest family of flags
+
+-------------------------------------------------------------------
 Tue Jan 10 06:00:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package timezone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,6 +89,7 @@ install -m 644 tzdata.zi %{buildroot}%{_prefix}/share/zoneinfo/tzdata.zi
 install -D -m 755 tzselect %{buildroot}%{_bindir}/tzselect
 install -D -m 755 zdump    %{buildroot}%{_sbindir}/zdump
 install -D -m 755 zic      %{buildroot}%{_sbindir}/zic
+install -m 644 -t %{buildroot}%{_datadir}/zoneinfo/ leapseconds leapseconds.awk leap-seconds.list
 
 %files
 %defattr(-,root,root)

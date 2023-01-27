@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 26 13:52:26 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Added wicked-nbft package when Linuxrc sets UseNBFT
+  (jsc#PED-3138, bsc#1207573)
+- 4.5.13
+
+-------------------------------------------------------------------
+Thu Jan 26 12:53:18 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Unescape the product name read from package Provides
+  (bsc#1207276)
+- 4.5.12
+
+-------------------------------------------------------------------
 Tue Jan 10 17:35:41 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Media check fixes in containerized environment

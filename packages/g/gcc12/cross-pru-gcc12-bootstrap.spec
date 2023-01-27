@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,7 +102,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.2.1+git537
+Version:        12.2.1+git749
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -128,7 +128,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc12-fifo-jobserver-support.patch
 # taken from https://gcc.gnu.org/pipermail/gcc-patches/2022-April/593378.html
 Patch22:        gcc12-riscv-inline-atomics.patch
 # remove libatomics linking
@@ -325,7 +324,6 @@ ln -s newlib-4.2.0.20211231/newlib .
 %patch15
 %patch16
 %patch17 -p1
-%patch21 -p1
 %patch22 -p1
 %patch23 -p1
 # These patches are needed only for llvm11
@@ -895,15 +893,15 @@ done
   --slave %{_bindir}/%{gcc_target_arch}-c++ %{gcc_target_arch}-c++ %{_bindir}/%{gcc_target_arch}-c++%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-g++ %{gcc_target_arch}-g++ %{_bindir}/%{gcc_target_arch}-g++%{binsuffix} \
 %endif
-  --slave %{_bindir}/%{gcc_target_arch}-gcc-ar %{gcc_target_arch}-gcc-ar %{_bindir}/%{gcc_target_arch}-gcc-ar%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-gcc-nm %{gcc_target_arch}-gcc-nm %{_bindir}/%{gcc_target_arch}-gcc-nm%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-lto-dump %{gcc_target_arch}-lto-dump %{_bindir}/%{gcc_target_arch}-lto-dump%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-gcc-ranlib %{gcc_target_arch}-gcc-ranlib %{_bindir}/%{gcc_target_arch}-gcc-ranlib%{binsuffix} \
 %if 0%{!?gcc_libc_bootstrap:1}
   --slave %{_bindir}/%{gcc_target_arch}-gcov %{gcc_target_arch}-gcov %{_bindir}/%{gcc_target_arch}-gcov%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-dump %{gcc_target_arch}-gcov-dump %{_bindir}/%{gcc_target_arch}-gcov-dump%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-tool %{gcc_target_arch}-gcov-tool %{_bindir}/%{gcc_target_arch}-gcov-tool%{binsuffix} \
 %endif
+  --slave %{_bindir}/%{gcc_target_arch}-gcc-ar %{gcc_target_arch}-gcc-ar %{_bindir}/%{gcc_target_arch}-gcc-ar%{binsuffix} \
+  --slave %{_bindir}/%{gcc_target_arch}-gcc-nm %{gcc_target_arch}-gcc-nm %{_bindir}/%{gcc_target_arch}-gcc-nm%{binsuffix} \
+  --slave %{_bindir}/%{gcc_target_arch}-lto-dump %{gcc_target_arch}-lto-dump %{_bindir}/%{gcc_target_arch}-lto-dump%{binsuffix} \
+  --slave %{_bindir}/%{gcc_target_arch}-gcc-ranlib %{gcc_target_arch}-gcc-ranlib %{_bindir}/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 
 %postun
 if [ ! -f %{_bindir}/%{gcc_target_arch}-gcc ] ; then

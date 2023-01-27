@@ -71,7 +71,6 @@ Patch15:        %{name}-7.4-filetype_apparmor.patch
 Patch18:        %{name}-7.3-filetype_spec.patch
 Patch21:        %{name}-7.3-filetype_changes.patch
 Patch22:        %{name}-7.4-filetype_mine.patch
-Patch23:        vim-8.0-ttytype-test.patch
 Patch24:        disable-unreliable-tests.patch
 Patch25:        ignore-flaky-test-failure.patch
 Patch100:       vim73-no-static-libpython.patch
@@ -211,7 +210,6 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch18 -p1
 %patch21 -p1
 %patch22 -p1
-%patch23 -p1
 %patch24 -p1
 %patch25 -p1
 %patch100 -p1

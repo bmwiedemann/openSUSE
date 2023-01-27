@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 26 22:02:12 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+
+- Build with ocaml-rpm-macros to get proper Requires and Provides
+  for flocq-devel. This should prevent incompatibilities with other
+  Ocaml libraries when building native objects against flocq-devel.
+
+-------------------------------------------------------------------
 Thu Jun 30 12:56:30 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add Git-Clone URL

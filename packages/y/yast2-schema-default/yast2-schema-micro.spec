@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema-micro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema-micro
-Version:        4.5.6
+Version:        4.5.7
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,7 +1,7 @@
 #
 # spec file for package binutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,7 +125,6 @@ Patch6:         unit-at-a-time.patch
 Patch8:         ld-relro.diff
 Patch9:         testsuite.diff
 Patch10:        enable-targets-gold.diff
-Patch11:        arm32-avoid-copyreloc.patch
 Patch12:        s390-pic-dso.diff
 Patch14:        binutils-build-as-needed.diff
 Patch15:        binutils-znow.patch
@@ -247,7 +246,6 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch8
 %patch9
 %patch10
-%patch11 -p1
 %patch12
 %patch14
 %patch15

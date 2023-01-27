@@ -397,15 +397,15 @@ done
   --slave %{_bindir}/%{gcc_target_arch}-c++ %{gcc_target_arch}-c++ %{_bindir}/%{gcc_target_arch}-c++%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-g++ %{gcc_target_arch}-g++ %{_bindir}/%{gcc_target_arch}-g++%{binsuffix} \
 %endif
-  --slave %{_bindir}/%{gcc_target_arch}-gcc-ar %{gcc_target_arch}-gcc-ar %{_bindir}/%{gcc_target_arch}-gcc-ar%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-gcc-nm %{gcc_target_arch}-gcc-nm %{_bindir}/%{gcc_target_arch}-gcc-nm%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-lto-dump %{gcc_target_arch}-lto-dump %{_bindir}/%{gcc_target_arch}-lto-dump%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-gcc-ranlib %{gcc_target_arch}-gcc-ranlib %{_bindir}/%{gcc_target_arch}-gcc-ranlib%{binsuffix} \
 %if 0%{!?gcc_libc_bootstrap:1}
   --slave %{_bindir}/%{gcc_target_arch}-gcov %{gcc_target_arch}-gcov %{_bindir}/%{gcc_target_arch}-gcov%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-dump %{gcc_target_arch}-gcov-dump %{_bindir}/%{gcc_target_arch}-gcov-dump%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-tool %{gcc_target_arch}-gcov-tool %{_bindir}/%{gcc_target_arch}-gcov-tool%{binsuffix} \
 %endif
+  --slave %{_bindir}/%{gcc_target_arch}-gcc-ar %{gcc_target_arch}-gcc-ar %{_bindir}/%{gcc_target_arch}-gcc-ar%{binsuffix} \
+  --slave %{_bindir}/%{gcc_target_arch}-gcc-nm %{gcc_target_arch}-gcc-nm %{_bindir}/%{gcc_target_arch}-gcc-nm%{binsuffix} \
+  --slave %{_bindir}/%{gcc_target_arch}-lto-dump %{gcc_target_arch}-lto-dump %{_bindir}/%{gcc_target_arch}-lto-dump%{binsuffix} \
+  --slave %{_bindir}/%{gcc_target_arch}-gcc-ranlib %{gcc_target_arch}-gcc-ranlib %{_bindir}/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 
 %postun
 if [ ! -f %{_bindir}/%{gcc_target_arch}-gcc ] ; then

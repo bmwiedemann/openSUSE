@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jan 26 08:07:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previous commit: setterm, cfdisk, fdformat, hwclock, sfdisk,
+  and tunelp  unintentionally fell out of both variants.
+
+-------------------------------------------------------------------
+Wed Jan 25 11:30:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclude these binaries from the -systemd build, as they exist in
+  the core package already:
+  + /usr/bin/lslocks
+  + /usr/bin/setterm
+  + /usr/bin/wall
+  + /usr/bin/write
+  + /usr/sbin/cfdisk
+  + /usr/sbin/fdformat
+  + /usr/sbin/fdisk
+  + /usr/sbin/hwclock
+  + /usr/sbin/sfdisk
+  + /usr/sbin/tunelp
+
+-------------------------------------------------------------------
 Wed Jan 11 07:58:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace usage of deprecated fgrep with grep -F.

@@ -33,6 +33,8 @@ Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
 # http://bugzilla.maptools.org/show_bug.cgi?id=2442
 Patch1:         tiff-4.0.3-compress-warning.patch
+# PATCH-FIX-UPSTREAM mvetter@suse.com tiff-CVE-2022-48281.patch -- bsc#1207413
+Patch2:         tiff-CVE-2022-48281.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel

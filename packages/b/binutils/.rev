@@ -2111,4 +2111,12 @@ contain it.
 - add arm32-avoid-copyreloc.patch for PR16177 (bsc#1200962) (forwarded request 1060005 from dirkmueller)</comment>
     <requestid>1060010</requestid>
   </revision>
+  <revision rev="161" vrev="3">
+    <srcmd5>9a32540854858eb5a797169adde45fd0</srcmd5>
+    <version>2.39</version>
+    <time>1674810903</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove broken arm32-avoid-copyreloc.patch to fix [gcc#108515]</comment>
+    <requestid>1060656</requestid>
+  </revision>
 </revisionlist>

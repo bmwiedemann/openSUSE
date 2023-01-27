@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 25 09:48:05 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- drop unused proposals definition ( related to drop of yast2-sound
+  bsc#1206903)
+- 20230125
+
+-------------------------------------------------------------------
 Thu Oct 27 14:50:49 UTC 2022 - Shawn W Dunn <sfalken@cloverleaf-linux.org>
 
 - Desktop-KDE: Changed polkit profile to match Gnome, for continuity

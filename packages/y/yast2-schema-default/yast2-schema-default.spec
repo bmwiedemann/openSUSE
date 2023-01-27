@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-schema-default
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           yast2-schema-default
 # Keep versions in sync with yast2-schema-micro
-Version:        4.5.6
+Version:        4.5.7
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -99,7 +99,10 @@ BuildRequires:  yast2-samba-server
 # Add support for security policies ('security_policy')
 BuildRequires:  yast2-security >= 4.5.3
 BuildRequires:  yast2-services-manager
+# YaST sound packages are dropped from TW (bsc#1206903)
+%if 0%{?sle_version}
 BuildRequires:  yast2-sound
+%endif
 BuildRequires:  yast2-squid
 BuildRequires:  yast2-sysconfig
 # tag home_btrfs_subvolume

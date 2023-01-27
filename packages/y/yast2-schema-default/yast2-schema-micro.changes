@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan 23 22:04:58 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- drop yast2-sound schema spec from TW where yast2-sound is dropped
+  (bsc#1206903)
+- 4.5.7
+
+-------------------------------------------------------------------
 Thu Nov  3 17:02:23 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add support for security policies validation (jsc#SLE-24764).

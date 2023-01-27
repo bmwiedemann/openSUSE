@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 14:53:11 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove unused libnsl build requires
+
+-------------------------------------------------------------------
 Tue Dec 27 13:16:20 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

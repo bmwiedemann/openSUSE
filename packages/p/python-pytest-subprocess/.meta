@@ -1,0 +1,10 @@
+<package name="python-pytest-subprocess" project="openSUSE:Factory">
+  <title>A plugin to fake subprocess for pytest</title>
+  <description>A pytest plugin to fake subprocess for pytest.  The plugin adds the
+``fake_process`` fixture (and ``fp`` as an alias).  It can be used it to
+register subprocess results so you won't need to rely on the real processes.
+
+</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-subprocess"/>
+  <url>https://github.com/aklajnert/pytest-subprocess</url>
+</package>

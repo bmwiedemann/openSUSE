@@ -6751,4 +6751,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Coverity warns for ignoring return value.</comment>
     <requestid>1060392</requestid>
   </revision>
+  <revision rev="336" vrev="2">
+    <srcmd5>835d561b3c054356c8118f2ab8081bd7</srcmd5>
+    <version>9.0.1234</version>
+    <time>1674810923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061139</requestid>
+  </revision>
 </revisionlist>

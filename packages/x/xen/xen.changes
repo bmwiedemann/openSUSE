@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 25 10:39:54 MST 2023 - carnold@suse.com
+
+- bsc#1207544 - VUL-0: CVE-2022-42330: xen: Guests can cause
+  Xenstore crash via soft reset (XSA-425)
+  xsa425.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 14:10:18 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
+Tue Dec 20 13:35:00 CET 2022 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  63a03e28-x86-high-freq-TSC-overflow.patch
 
 -------------------------------------------------------------------
 Thu Dec  8 10:54:29 MST 2022 - carnold@suse.com

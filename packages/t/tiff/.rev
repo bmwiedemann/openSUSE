@@ -856,4 +856,14 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>1057209</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>ab07832c8e983bbf8535ce7c61e2dda2</srcmd5>
+    <version>4.5.0</version>
+    <time>1674810921</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2022-48281 [bsc#1207413]
+    + tiff-CVE-2022-48281.patch</comment>
+    <requestid>1061126</requestid>
+  </revision>
 </revisionlist>

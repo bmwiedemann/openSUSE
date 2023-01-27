@@ -62,4 +62,13 @@
     <comment></comment>
     <requestid>1006034</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>151671a4432bc8cf465503ae158b215e</srcmd5>
+    <version>20230126</version>
+    <time>1674810957</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct the transactional-update reboot method for GNOME Desktop
+- 20230126</comment>
+    <requestid>1061200</requestid>
+  </revision>
 </revisionlist>

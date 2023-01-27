@@ -27,11 +27,13 @@
 %define psuffix -core
 %define ulbuild base
 %define ulsubset core
+%define core %nil
 %endif
 
 %if "%{flavor}" == "systemd"
 %define ulbuild base
 %define ulsubset systemd
+%define core %exclude
 %endif
 
 # All python flavors are build separately. No module can be built together with base.
@@ -1024,7 +1026,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_bindir}/lsfd
 %exclude %{_bindir}/lsipc
 %exclude %{_bindir}/lsirq
-%{_bindir}/lslocks
+%exclude %{_bindir}/lslocks
 %{_bindir}/lslogins
 %exclude %{_bindir}/lsmem
 %exclude %{_bindir}/lsns
@@ -1093,9 +1095,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_sbindir}/swapon
 %exclude %{_sbindir}/switch_root
 %exclude %{_sbindir}/wipefs
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/wall
+%exclude %{_bindir}/wall
 %exclude %{_bindir}/whereis
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/write
+%exclude %{_bindir}/write
 %exclude %{_sbindir}/zramctl
 %exclude %{_sbindir}/flushb
 %exclude %{_sbindir}/readprofile
@@ -1237,32 +1239,32 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # Files not common for all architectures
 %ifnarch ia64 m68k
 %if %{ul_extra_bin_sbin}
-/sbin/fdisk
+%core /sbin/fdisk
 %endif
-%{_sbindir}/fdisk
-%{_mandir}/man8/fdisk.8.gz
+%core %{_sbindir}/fdisk
+%core %{_mandir}/man8/fdisk.8.gz
 %endif
 %ifnarch %sparc ia64 m68k
-%{_mandir}/man8/cfdisk.8.gz
-%{_mandir}/man8/sfdisk.8.gz
+%core %{_mandir}/man8/cfdisk.8.gz
+%core %{_mandir}/man8/sfdisk.8.gz
 %if %{ul_extra_bin_sbin}
-/sbin/cfdisk
-/sbin/sfdisk
+%core /sbin/cfdisk
+%core /sbin/sfdisk
 %endif
-%{_sbindir}/cfdisk
-%{_sbindir}/sfdisk
+%core %{_sbindir}/cfdisk
+%core %{_sbindir}/sfdisk
 %endif
 %ifnarch s390 s390x
-%{_sbindir}/fdformat
+%core %{_sbindir}/fdformat
 %if %{ul_extra_bin_sbin}
-/sbin/hwclock
+%core /sbin/hwclock
 %endif
-%{_sbindir}/hwclock
-%{_bindir}/setterm
-%{_sbindir}/tunelp
-%{_mandir}/man8/fdformat.8.gz
-%{_mandir}/man8/hwclock.8.gz
-%{_mandir}/man8/tunelp.8.gz
+%core %{_sbindir}/hwclock
+%core %{_bindir}/setterm
+%core %{_sbindir}/tunelp
+%core %{_mandir}/man8/fdformat.8.gz
+%core %{_mandir}/man8/hwclock.8.gz
+%core %{_mandir}/man8/tunelp.8.gz
 %endif
 
 %if "%ulsubset" == "core"

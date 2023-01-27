@@ -1,7 +1,7 @@
 #
 # spec file for package brickd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,17 @@
 
 
 Name:           brickd
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Tinkerforce Brick Daemon
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://www.tinkerforge.com
-Source0:        https://github.com/Tinkerforge/brickd/archive/v%{version}.tar.gz
-Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{version}.tar.gz
+Source0:        https://github.com/Tinkerforge/brickd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{version}.tar.gz#/daemonlib-%{name}-%{version}.tar.gz
+Source2:        brickd-rpmlintrc
 Patch0:         harden_brickd-resume.service.patch
 Patch1:         harden_brickd.service.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         https://github.com/Tinkerforge/brickd/commit/a679ca31b8dbd412e5f379b624200e3a96dda0ce.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(systemd)

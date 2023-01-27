@@ -1,8 +1,9 @@
 #
 # spec file for package coq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012-2018 Peter Trommler, peter.trommler at ohm-hochschule.de
+# Copyright (c) 2023 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +39,7 @@ BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.09.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
 BuildRequires:  ocaml-dune >= 2.5.1
+BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(zarith)
 %if %{with ide}

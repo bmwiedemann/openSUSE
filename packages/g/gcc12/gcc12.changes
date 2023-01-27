@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 24 11:03:08 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 193f7e62815b4089dfaed4c2bd3, git749
+
+-------------------------------------------------------------------
+Tue Dec 27 10:43:05 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't rely on %usrmerged, set it based on standard %suse_version
+
+-------------------------------------------------------------------
+Thu Dec 22 11:45:17 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, e4b5fec75aa8d0d01f6e042ec28, git696
+  * remove gcc12-fifo-jobserver-support.patch which is now
+    included upstream
+
+-------------------------------------------------------------------
+Wed Nov 23 15:21:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid trailing backslashes at the end of post install scripts
+
+-------------------------------------------------------------------
 Thu Oct 20 08:20:31 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-12 branch head, 0aaef83351473e8f4eb774f8f99, git537

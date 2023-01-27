@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-configuration-management
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-configuration-management
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 URL:            https://github.com/yast/yast-migration
 Summary:        YaST2 - YaST Configuration Management
@@ -27,8 +27,8 @@ Group:          System/YaST
 Source0:        %{name}-%{version}.tar.bz2
 
 # CWM DateField and TimeField widgets
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 4.1.53
+BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-installation
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)

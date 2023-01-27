@@ -1,7 +1,7 @@
 #
 # spec file for package suse-xsl-stylesheets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define suse_styles_dir   %{db_xml_dir}/stylesheet
 #
 Name:           suse-xsl-stylesheets
-Version:        2.88.2
+Version:        2.88.3
 Release:        0
 Summary:        SUSE-Branded Stylesheets for DocBook
 License:        GPL-2.0-only OR GPL-3.0-only

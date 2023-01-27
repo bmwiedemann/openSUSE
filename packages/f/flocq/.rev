@@ -29,4 +29,15 @@
     <comment></comment>
     <requestid>986285</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a0b09255f4220f01bbcb3a552c73fff4</srcmd5>
+    <version>4.1.0</version>
+    <time>1674810996</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with ocaml-rpm-macros to get proper Requires and Provides
+  for flocq-devel. This should prevent incompatibilities with other
+  Ocaml libraries when building native objects against flocq-devel.
+</comment>
+    <requestid>1061435</requestid>
+  </revision>
 </revisionlist>

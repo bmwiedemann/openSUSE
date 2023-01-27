@@ -1,7 +1,7 @@
 #
 # spec file for package gcc12
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 %define _slibdir  /%{_lib}
 %define slibdir   /lib
 %define slibdir64 /lib64
@@ -24,6 +24,7 @@
 %define _slibdir  %{_libdir}
 %define slibdir   %{_prefix}/lib
 %define slibdir64 %{_prefix}/lib64
+%define usrmerged 1
 %endif
 
 # Ada currently fails to build on a few platforms, enable it only
@@ -186,7 +187,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.2.1+git537
+Version:        12.2.1+git749
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -367,7 +368,6 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
-Patch21:        gcc12-fifo-jobserver-support.patch
 # taken from https://gcc.gnu.org/pipermail/gcc-patches/2022-April/593378.html
 Patch22:        gcc12-riscv-inline-atomics.patch
 # remove libatomics linking
@@ -2022,7 +2022,6 @@ ln -s newlib-4.2.0.20211231/newlib .
 %patch15
 %patch16
 %patch17 -p1
-%patch21 -p1
 %patch22 -p1
 %patch23 -p1
 # These patches are needed only for llvm11

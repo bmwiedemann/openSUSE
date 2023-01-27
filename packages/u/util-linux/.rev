@@ -2400,4 +2400,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1059522</requestid>
   </revision>
+  <revision rev="263" vrev="6">
+    <srcmd5>1bf7a89fa78497e34ac42bde1b53b889</srcmd5>
+    <version>2.38.1</version>
+    <time>1674810909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061167</requestid>
+  </revision>
 </revisionlist>

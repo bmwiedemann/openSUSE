@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 12:02:13 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Correct the transactional-update reboot method for GNOME Desktop
+- 20230126 
+
+-------------------------------------------------------------------
 Fri Sep 23 16:31:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add zenity as an hard-dep, as we need it for mod-firstboot 
