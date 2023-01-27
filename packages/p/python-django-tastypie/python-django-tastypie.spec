@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-tastypie
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-tastypie
-Version:        0.14.4
+Version:        0.14.5
 Release:        0
 Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-tastypie/django-tastypie
 Source:         https://github.com/django-tastypie/django-tastypie/archive/v%{version}.tar.gz
-# https://github.com/django-tastypie/django-tastypie/issues/1635
-Patch0:         python-django-tastypie-no-mock.patch
-# PATCH-FIX-UPSTREAM pr_1642_chunk.patch -- based on PR 1642
-Patch1:         pr_1642_chunk.patch
 BuildRequires:  %{python_module Django >= 1.11.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module biplist}
@@ -54,10 +51,6 @@ customizable abstraction for creating REST-style interfaces.
 
 %prep
 %setup -q -n django-tastypie-%{version}
-%autopatch -p1
-
-# https://github.com/django-tastypie/django-tastypie/issues/1617
-sed -Ei 's/(test_apikey_and_authentication_enforce_user|test_is_authenticated)/_\1/' tests/core/tests/authentication.py
 
 %build
 %python_build
@@ -84,6 +77,6 @@ django-admin-%{$python_bin_suffix} test -v 3 validation.tests --settings=setting
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS *.rst docs/*.rst docs/release_notes/ docs/code/
-%{python_sitelib}/*
+%{python_sitelib}/*tastypie*/
 
 %changelog
