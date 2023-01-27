@@ -1,7 +1,7 @@
 #
 # spec file for package openhpi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,9 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(systemd)
 
 %description
 OpenHPI implements the SA Forum's Hardware Platform Interface (HPI). HPI is an
@@ -79,9 +80,9 @@ Requires:       libstdc++-devel
 Requires:       libtool
 Requires:       ncurses-devel
 Requires:       net-snmp-devel
-Requires:       pkgconfig(openssl)
 Requires:       popt-devel
 Requires:       zlib-devel
+Requires:       pkgconfig(openssl)
 
 %description devel
 Contains additional files needed for a developer to create applications
@@ -124,9 +125,11 @@ chmod a-x clients/*.[ch]
 
 export CFLAGS="%{optflags} -fno-strict-aliasing -DGLIB_DISABLE_DEPRECATION_WARNINGS"
 export CXXFLAGS="${CFLAGS}"
+
+# --disable-snmp_bc since usmDESPrivProtocol is not defined anymore
 %configure \
     --disable-static \
-    --disable-ipmi --disable-sysfs --enable-daemon \
+    --disable-ipmi --disable-sysfs --enable-daemon --disable-snmp_bc \
     --enable-ipmidirect --enable-simulator --enable-clients \
     --enable-ilo2_ribcl --enable-oa_soap \
     --with-systemdsystemunitdir=%{_unitdir} \

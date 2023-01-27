@@ -40,4 +40,12 @@ but is a needed in SLE15-SP1 due to a feature request).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1036505</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>961413508047d41b197d2c671424d97d</srcmd5>
+    <version>3.8.0.ge4631e8a</version>
+    <time>1674810988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061306</requestid>
+  </revision>
 </revisionlist>

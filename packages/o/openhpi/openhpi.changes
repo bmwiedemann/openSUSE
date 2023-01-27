@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:04:06 UTC 2023 - trenn@suse.de
+
+- Fix build error due to deprecated net-snmp included variable
+  DES is removed from net-snmp(-devel)
+  Therefore disable the plugin making use of it (snmp_bc)
+
+-------------------------------------------------------------------
 Thu Nov 11 11:11:11 UTC 2022 - olaf@aepfle.de
 
 - some sort of openssl is required for building
