@@ -28,6 +28,7 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/alerque/fluent-lua
 Source:         %{mod_name}-lua-%{version}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-cldr
