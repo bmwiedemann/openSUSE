@@ -25,6 +25,7 @@ Summary:        Coroutine safe xpcall and pcall
 License:        MIT
 URL:            http://www.keplerproject.org/coxpcall/
 Source:         https://github.com/keplerproject/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
+BuildRequires:  lua-macros
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luasocket
 Requires:       %{flavor}

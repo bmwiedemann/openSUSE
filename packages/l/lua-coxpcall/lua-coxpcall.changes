@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jan 25 11:52:07 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Thu Feb 11 09:49:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %lua_provides: add the lua-mod_name provides/obsoletes to
