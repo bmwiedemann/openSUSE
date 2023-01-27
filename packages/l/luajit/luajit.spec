@@ -78,7 +78,7 @@ sed -i "s,%{_libexecdir},%{_libdir}," etc/luajit.pc
 
 %build
 export CFLAGS="%{optflags}"
-%make_build \
+make %{?_make_output_sync} %{?_smp_mflags} \
 	Q= \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \

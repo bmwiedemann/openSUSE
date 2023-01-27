@@ -174,4 +174,14 @@
   * Fix warnings in minilua.c.</comment>
     <requestid>1037521</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b049c09d2da6647675bf739086dfb347</srcmd5>
+    <version>2.1.0~beta3+git.1669107176.46aa45d</version>
+    <time>1674810914</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060899 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061036</requestid>
+  </revision>
 </revisionlist>
