@@ -115,6 +115,8 @@ Patch13:        libreoffice-7.4.1.2-grep.patch
 Patch14:        use-fixmath-shared-library.patch
 # LO-L3: PPTX: text box shows that does not show in PowerPoint
 Patch15:        bsc1204825.patch
+# LO-L3: Connector lines from PPTX "break"/bend too often
+Patch16:        bsc1205866.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1040,6 +1042,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 %patch990 -p1
 %patch991 -p1
 

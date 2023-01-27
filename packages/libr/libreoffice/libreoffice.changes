@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 19 13:51:27 UTC 2023 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1205866 -  LO-L3: Connector lines from PPTX "break"/bend too often
+  * bsc1205866.patch
+
+-------------------------------------------------------------------
 Tue Jan 17 11:52:18 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.4.4.2:
