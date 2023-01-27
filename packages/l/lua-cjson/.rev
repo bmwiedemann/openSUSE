@@ -7,4 +7,12 @@
     <comment>New C-based faster version of JSON parser.</comment>
     <requestid>874721</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b1559a233dbb102dcbc8dd6ae2b5cf32</srcmd5>
+    <version>2.1.0</version>
+    <time>1674810969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061218</requestid>
+  </revision>
 </revisionlist>

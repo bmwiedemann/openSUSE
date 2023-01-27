@@ -59,7 +59,7 @@ export CFLAGS="%{optflags}"
     -DLUA_INCLUDE_DIR:PATH="%{lua_incdir}"
 find ..
 
-%make_build \
+make %{?_make_output_sync} %{?_smp_mflags} \
     CC="gcc" \
     PREFIX="%{_prefix}" \
     LUA_INCLUDE_DIR=%{lua_incdir}
