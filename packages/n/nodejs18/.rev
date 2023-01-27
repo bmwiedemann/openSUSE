@@ -127,4 +127,15 @@
     are more stable</comment>
     <requestid>1058736</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>38237ce53a2cae7a2ff5e107aaf572eb</srcmd5>
+    <version>18.13.0</version>
+    <time>1674810957</time>
+    <user>dimstar_suse</user>
+    <comment>- Again use openssl-3, if available.
+- _constraints: reset aarch64 memory requirements back to original
+  otherwise some unit tests can fail
+- s390.patch: fix unit test on s390 with patched zlib</comment>
+    <requestid>1061206</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jan 25 12:01:18 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Again use openssl-3, if available.
+- _constraints: reset aarch64 memory requirements back to original
+  otherwise some unit tests can fail
+- s390.patch: fix unit test on s390 with patched zlib
+
+-------------------------------------------------------------------
 Mon Jan 16 14:57:58 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to NodejJS 18.13.0 LTS:

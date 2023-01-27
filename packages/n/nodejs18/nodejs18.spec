@@ -82,7 +82,7 @@ Release:        0
 %define _libexecdir %{_exec_prefix}/lib
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 120500 || 0%{?fedora_version} >= 35
+%if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120400 || 0%{?fedora_version} >= 35
 %bcond_with    intree_openssl
 %else
 %bcond_without intree_openssl
@@ -171,6 +171,7 @@ Patch133:       rsa-pss-revert.patch
 Patch200:       versioned.patch
 
 Patch305:       qemu_timeouts_arches.patch
+Patch307:       s390.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -264,10 +265,10 @@ BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
 %endif
 
+# shared openssl
 %if ! 0%{with intree_openssl}
 
-BuildRequires:  libopenssl-1_1-devel
-#BuildRequires:  (pkgconfig(openssl) >= %{openssl_req_ver} and pkgconfig(openssl) < 3.0)
+BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
 # require patched openssl library on SLES for nodejs16
 %if 0%{?suse_version} && "%{pkg_version openssl-1_1}" != "~~~"
@@ -278,13 +279,19 @@ Requires:       openssl-has-RSA_get0_pss_params
 %endif
 
 %if 0%{?suse_version}
-#%if 0%{?suse_version} >= 1500
-#iBuildRequires:  openssl >= %{openssl_req_ver}
-#%else
-BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
-#%endif
 
+%if 0%{?suse_version} >= 1500
+BuildRequires:  openssl >= %{openssl_req_ver}
+%else
+BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
+%endif
+
+%if %{pkg_vcmp pkgconfig(openssl) > '3.0' }
+BuildRequires:  libopenssl3-hmac
+%else
 BuildRequires:  libopenssl1_1-hmac
+%endif
+
 # /suse_version
 %endif
 
@@ -293,11 +300,14 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %endif
 
 %else
+# bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
 Provides:       bundled(openssl) = 3.0.7
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
+
+# /bundled openssl
 %endif
 
 %if ! 0%{with intree_cares}
@@ -684,6 +694,7 @@ popd
 %patch200 -p1
 
 %patch305 -p1
+%patch307 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50
