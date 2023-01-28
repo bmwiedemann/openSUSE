@@ -64,4 +64,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000769</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa67ce04cb8b056f93c2e571f7c86f1e</srcmd5>
+    <version>5.9.9</version>
+    <time>1674927923</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-libraw-api.patch, update api for libraw 
+
+- Update version to 5.9.9
+  * Fix bugs 
+
+- Update version to 5.9.7
+  * Fix bugs
+- Drop fix-library-link.patch (forwarded request 1061715 from hillwood)</comment>
+    <requestid>1061716</requestid>
+  </revision>
 </revisionlist>

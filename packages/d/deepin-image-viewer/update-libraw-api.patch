@@ -1,0 +1,12 @@
+diff -Nur deepin-image-viewer-5.9.9/qimage-plugins/libraw/rawiohandler.cpp deepin-image-viewer-5.9.9-new/qimage-plugins/libraw/rawiohandler.cpp
+--- deepin-image-viewer-5.9.9/qimage-plugins/libraw/rawiohandler.cpp	2022-12-12 16:23:39.000000000 +0800
++++ deepin-image-viewer-5.9.9-new/qimage-plugins/libraw/rawiohandler.cpp	2023-01-28 15:02:40.618286558 +0800
+@@ -63,7 +63,7 @@
+ 
+     stream = new Datastream(device);
+     raw = new LibRaw;
+-    raw->imgdata.params.use_rawspeed = 1;
++    raw->imgdata.rawparams.use_rawspeed = 1;
+     if (raw->open_datastream(stream) != LIBRAW_SUCCESS) {
+         delete raw;
+         raw = nullptr;

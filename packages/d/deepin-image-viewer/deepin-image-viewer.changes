@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 28 07:26:47 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add update-libraw-api.patch, update api for libraw 
+
+-------------------------------------------------------------------
+Sat Jan 21 15:39:18 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.9
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sat Nov 26 11:55:32 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.7
+  * Fix bugs
+- Drop fix-library-link.patch
+
+-------------------------------------------------------------------
 Fri Aug 26 02:07:21 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.9.4

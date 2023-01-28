@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-image-viewer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,15 +24,18 @@
 %endif
 
 Name:           deepin-image-viewer
-Version:        5.9.4
+Version:        5.9.9
 Release:        0
 Summary:        Deepin Image Viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/linuxdeepin/deepin-image-viewer
 Source0:        https://github.com/linuxdeepin/deepin-image-viewer/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         fix-library-link.patch
 Source99:       %{name}.appdata.xml
+%if 0%{?suse_version} > 1500
+# PATCH-FIX-UPSTREAM update-libraw-api.patch hillwood@opensuse.org - Update api for libraw
+Patch0:         update-libraw-api.patch
+%endif
 BuildRequires:  deepin-gettext-tools
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
@@ -85,7 +88,6 @@ sed -i 's/Exec=deepin-image-viewer/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-i
 src/%{name}.desktop
 sed -i 's|"../libimageviewer/image-viewer_global.h"|<libimageviewer/image-viewer_global.h>|g' \
 src/src/module/view/homepagewidget.cpp
-sed -i '/target_link_libraries/s/imageviewer/imageviewer tiff/g' src/CMakeLists.txt
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
@@ -102,20 +104,20 @@ cp %{SOURCE99} %{buildroot}%{_datadir}/appdata/
 RELEASE_DATE=$(stat --format="%%y" %{SOURCE0} | grep -Po "\\d{4}-\\d{2}-\\d{2}")
 sed -i "s/@VERSION@/%{version}/g;s/@DATE@/$RELEASE_DATE/g" \
 %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-# Fix desktop file
+
+# Fix desktop profile
 %suse_update_desktop_file -r -G "Deepin Image Viewer" %{name} Graphics 2DGraphics RasterGraphics Viewer
+
 # Find translations
 %find_lang %{name} --with-qt
 %fdupes %{buildroot}
 
 %files
-%doc README.md
-%license LICENSE
+%doc README.md README.zh_CN.md
+%license LICENSE.txt
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/icons/
-%dir %{_datadir}/%{name}/translations
-%{_datadir}/%{name}/translations/deepin-image-viewer.qm
 %{_datadir}/deepin-manual/manual-assets/application/%{name}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/applications/%{name}.desktop
@@ -125,6 +127,8 @@ sed -i "s/@VERSION@/%{version}/g;s/@DATE@/$RELEASE_DATE/g" \
 %{_datadir}/dbus-1/services/com.deepin.ImageViewer.service
 
 %files lang -f %{name}.lang
+%dir %{_datadir}/%{name}/translations
 %lang(ast) %{_datadir}/deepin-image-viewer/translations/deepin-image-viewer_ast.qm
+%{_datadir}/%{name}/translations/deepin-image-viewer.qm
 
 %changelog
