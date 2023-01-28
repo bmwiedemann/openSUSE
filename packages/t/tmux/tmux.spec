@@ -27,6 +27,8 @@ Source0:        https://github.com/tmux/tmux/releases/download/%{version}/%{name
 Source1:        bash_completion_tmux.sh
 # PATCH-FIX-OPENSUSE crrodriguez@opensuse.org -- Use /run/tmux instead of /tmp as the default socket path, this add some robustness against accidental deletion via systemd-tmpfiles-clean, tmpwatch, or similar
 Patch0:         tmux-socket-path.patch
+# CVE-2022-47016 [bsc#1207393], Null pointer dereference in window.c
+Patch1:         tmux-CVE-2022-47016.patch
 BuildRequires:  pkgconfig
 BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(libutf8proc)
@@ -54,6 +56,7 @@ to (display and accept keyboard input from) multiple clients.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

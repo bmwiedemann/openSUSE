@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 23 16:17:36 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2022-47016 [bsc#1207393], Null pointer dereference in window.c
+  + tmux-CVE-2022-47016.patch
+
+-------------------------------------------------------------------
 Mon Jul 25 22:24:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to screen-256color as default terminal to fix incompatibility
