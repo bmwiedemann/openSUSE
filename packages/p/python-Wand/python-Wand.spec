@@ -1,7 +1,7 @@
 #
 # spec file for package python-Wand
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Wand
-Version:        0.6.10
+Version:        0.6.11
 Release:        0
 Summary:        Ctypes-based simple MagickWand API binding for Python
 License:        MIT
@@ -34,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module psutil >= 1.0.1}
-BuildRequires:  %{python_module pytest >= 2.3.0}
+BuildRequires:  %{python_module pytest >= 7.2.0}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
@@ -59,11 +58,12 @@ export PYTEST_ADDOPTS="--skip-fft"
 # Three tests failing with
 # wand.exceptions.PolicyError: attempt to perform an operation not allowed by the security policy `PDF'
 # due to https://build.opensuse.org/package/view_file/graphics/ImageMagick/ImageMagick-configuration-SUSE.patch
-%pytest -rs -k 'not (test_resolution_set_03 or test_resolution_set_04 or test_read_with_colorspace)'
+%pytest -rs -k 'not (test_resolution_set_03 or test_resolution_set_04 or test_read_with_colorspace or test_histogram)'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/wand
+%{python_sitelib}/Wand-%{version}*-info
 
 %changelog

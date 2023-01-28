@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 27 09:20:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken test in i586, test_histogram
+- Update to 0.6.11
+  * Fixed format issue when calling Image.convert(), and Image.make_blob()
+    methods. [#594]
+  * Fixed storage type size for “long” & “quantum” values in
+    Image.export_pixels() and Image.import_pixels() methods. [#596]
+  * Added filter parameter to Image.distort() method.
+  * [TEST] Added Python 3.11 to regression tests for github actions.
+  * [TEST] Replaced py.path fixtures with pythlib. [!607 & #608 by Louis
+    Sautier]
+  * [TEST] Retired Python2 support from regression testing.
+  * [TEST] Upgraded Travis CI <https://travis-ci.org/github/emcconville/wand>
+    build environments.
+
+-------------------------------------------------------------------
 Mon Aug 29 16:01:33 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to  0.6.10

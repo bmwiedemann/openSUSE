@@ -31,4 +31,25 @@
     <comment></comment>
     <requestid>1000119</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>401f985c0d7b85412173f6e797b5f1dd</srcmd5>
+    <version>0.6.11</version>
+    <time>1674927837</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken test in i586, test_histogram
+- Update to 0.6.11
+  * Fixed format issue when calling Image.convert(), and Image.make_blob()
+    methods. [#594]
+  * Fixed storage type size for “long” &amp; “quantum” values in
+    Image.export_pixels() and Image.import_pixels() methods. [#596]
+  * Added filter parameter to Image.distort() method.
+  * [TEST] Added Python 3.11 to regression tests for github actions.
+  * [TEST] Replaced py.path fixtures with pythlib. [!607 &amp; #608 by Louis
+    Sautier]
+  * [TEST] Retired Python2 support from regression testing.
+  * [TEST] Upgraded Travis CI &lt;https://travis-ci.org/github/emcconville/wand&gt;
+    build environments.
+</comment>
+    <requestid>1061526</requestid>
+  </revision>
 </revisionlist>
