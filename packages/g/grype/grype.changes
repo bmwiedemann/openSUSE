@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jan 27 06:09:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.56.0:
+  * Update Syft to v0.68.1 (#1086)
+  * chore: update grype quality gate (#1085)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.4.4 to 1.5.1 (#1081)
+  * chore(deps): bump actions/setup-python from 4.3.0 to 4.5.0 (#1075)
+  * chore(deps): bump anchore/sbom-action from 0.13.1 to 0.13.2 (#1076)
+  * chore(deps): bump actions/upload-artifact from 3.1.1 to 3.1.2 (#1077)
+  * chore(deps): bump actions/download-artifact from 3.0.1 to 3.0.2 (#1074)
+  * chore(deps): bump ossf/scorecard-action from 2.0.6 to 2.1.2 (#1078)
+  * chore(deps): bump github.com/pkg/profile from 1.6.0 to 1.7.0 (#1079)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.0 to 1.4.1 (#1080)
+  * chore(deps): bump github.com/Masterminds/sprig/v3 from 3.2.2 to 3.2.3 (#1083)
+  * chore: align makefile and bootstrap tools scripts more with syft (#1073)
+  * chore: enable dependabot on gomod and GitHub actions (#1072)
+  * Update grype bootstrap tools to latest versions. (#1070)
+  * fix: always include severity in cyclonedx output (#1067)
+  * Update Syft to v0.68.0 (#1064)
+  * Add protobuf FPs to default ignore list (#1062)
+  * chore: update Syft to v0.66.2 (#1060)
+  * Update grype bootstrap tools to latest versions. (#1055)
+  * feat: allow grype db diff to specify local db directories (#1058)
+  * chore: claim artifacthub package ownership from developer-guy (#661)
+  * chore: add github token to quality tests (#1056)
+  * chore: update yardstick to diagnose intermittent failures (#1054)
+  * Update grype bootstrap tools to latest versions. (#1048)
+
+-------------------------------------------------------------------
 Thu Jan 05 14:00:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.55.0:
