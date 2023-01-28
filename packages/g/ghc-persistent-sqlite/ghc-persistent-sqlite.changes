@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 22 17:06:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent-sqlite to version 2.13.1.1.
+  ## 2.13.1.1
+
+  * [#1459](https://github.com/yesodweb/persistent/pull/1459)
+      * Make use of `CautiousMigration` type alias for clarity.
+
+-------------------------------------------------------------------
 Sat Jan 29 00:05:57 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update persistent-sqlite to version 2.13.1.0.

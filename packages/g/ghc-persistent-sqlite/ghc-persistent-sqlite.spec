@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent-sqlite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name persistent-sqlite
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.13.1.0
+Version:        2.13.1.1
 Release:        0
 Summary:        Backend for the persistent library using sqlite3
 License:        MIT
