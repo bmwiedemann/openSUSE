@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 28 05:11:57 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.14.7 -> 0.14.8
+- Features
+ * build: Pass build time configuration into Lua environment
+ * core: Add variations support to font command
+ * shapers: Instanciate variable fonts
+ * shapers: Support named instances with FontConfig
+ * shapers: Support named instances with macfonts
+- Bug Fixes
+ * build: Package license file for vendored lunamark fork
+ * classes: Coerce option values to booleans
+ * packages: Absolutize parskip heights on use
+ * packages: Pass style & weight values to the math font loader
+ * packages: Quote option values in documentation when necessary
+ * tooling: Use luaEnv properly
+
+-------------------------------------------------------------------
 Fri Jan  6 07:59:02 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.14.6 -> 0.14.7

@@ -78,4 +78,25 @@
  * utilities: Tweak breadcrumbs to work under LuaJIT limitations</comment>
     <requestid>1056335</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00be80b8897d6c2f7128bca985a62477</srcmd5>
+    <version>0.14.8</version>
+    <time>1674927913</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.7 -&gt; 0.14.8
+- Features
+ * build: Pass build time configuration into Lua environment
+ * core: Add variations support to font command
+ * shapers: Instanciate variable fonts
+ * shapers: Support named instances with FontConfig
+ * shapers: Support named instances with macfonts
+- Bug Fixes
+ * build: Package license file for vendored lunamark fork
+ * classes: Coerce option values to booleans
+ * packages: Absolutize parskip heights on use
+ * packages: Pass style &amp; weight values to the math font loader
+ * packages: Quote option values in documentation when necessary
+ * tooling: Use luaEnv properly (forwarded request 1061682 from Pi-Cla)</comment>
+    <requestid>1061683</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.14.7
+Version:        0.14.8
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 Group:          Productivity/Publishing
@@ -82,7 +82,8 @@ BuildRequires:  git-core
 Requires:       git-core
 BuildRequires:  glibc-devel
 Requires:       glibc
-BuildRequires:  harfbuzz-devel
+# Harfbuzz's minimum version is now 6 https://github.com/sile-typesetter/sile/releases/tag/v0.14.8
+BuildRequires:  harfbuzz-devel >= 6.0.0
 BuildRequires:  libicu-devel
 Requires:       icu
 BuildRequires:  libpng16-compat-devel
@@ -147,6 +148,7 @@ make check
 
 %files
 %license %{_datadir}/licenses/sile/LICENSE
+%license %{_datadir}/licenses/sile/LICENSE-lunamark
 %doc %{_datadir}/doc/sile/*
 %dir %{_datadir}/doc/sile
 %dir %{_datadir}/licenses/sile
