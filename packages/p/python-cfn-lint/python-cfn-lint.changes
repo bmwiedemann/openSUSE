@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 28 13:41:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.72.10:
+  * Update CloudFormation specs to `108.0.0` (pull #2557)
+  * Add `AWS::Organizations::Account` to `StatefulResources` (pull #2560)
+  * Update rule I3100 regex family string matching (pull #2558)
+  * Update CloudFormation specs to `107.0.0` (pull #2546)
+  * Support `Fn::FindInMap` enhancements when template is declared with
+    `AWS::LanguageExtensions` (pull #2512)
+  * Update CloudFormation specs to `106.0.0` (pull #2546)
+  * Update rule E1030 to include `Fn::FindInMap` when using `Fn::Length`
+  * Update rule E3002 to allow a `Fn::GetAtt` for an object (pull #2548)
+  * Update rule E2532 to include current task properties (pull #2549)
+
+-------------------------------------------------------------------
 Wed Jan  4 16:15:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.72.6:

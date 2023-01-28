@@ -211,4 +211,22 @@
   * Don't validate rule I3042 when using SAM (pull #2513)</comment>
     <requestid>1055947</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f9ccba69b0a0c52fb8a9f07c4af300fc</srcmd5>
+    <version>0.72.10</version>
+    <time>1674927931</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.72.10:
+  * Update CloudFormation specs to `108.0.0` (pull #2557)
+  * Add `AWS::Organizations::Account` to `StatefulResources` (pull #2560)
+  * Update rule I3100 regex family string matching (pull #2558)
+  * Update CloudFormation specs to `107.0.0` (pull #2546)
+  * Support `Fn::FindInMap` enhancements when template is declared with
+    `AWS::LanguageExtensions` (pull #2512)
+  * Update CloudFormation specs to `106.0.0` (pull #2546)
+  * Update rule E1030 to include `Fn::FindInMap` when using `Fn::Length`
+  * Update rule E3002 to allow a `Fn::GetAtt` for an object (pull #2548)
+  * Update rule E2532 to include current task properties (pull #2549)</comment>
+    <requestid>1061741</requestid>
+  </revision>
 </revisionlist>

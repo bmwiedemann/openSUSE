@@ -17,7 +17,7 @@
 
 
 Name:           python-cfn-lint
-Version:        0.72.6
+Version:        0.72.10
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
