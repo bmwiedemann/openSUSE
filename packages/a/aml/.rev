@@ -39,4 +39,18 @@
     <comment></comment>
     <requestid>1042618</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f05721fd142556f88b3bcd557a9d3f8e</srcmd5>
+    <version>0.3.0</version>
+    <time>1674927764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * The time unit has been changed from milliseconds to microseconds
+  * The global object registry has been replaced with weak references
+  * It is now guaranteed that a callback will not be called after aml_stop().
+  * Worker threads now keep references to work objects that are being
+    executed. This ensures that they cannot be freed while they
+    are being worked</comment>
+    <requestid>1060476</requestid>
+  </revision>
 </revisionlist>

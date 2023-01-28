@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 23 16:46:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * The time unit has been changed from milliseconds to microseconds
+  * The global object registry has been replaced with weak references
+  * It is now guaranteed that a callback will not be called after aml_stop().
+  * Worker threads now keep references to work objects that are being
+    executed. This ensures that they cannot be freed while they
+    are being worked
+
+-------------------------------------------------------------------
 Sun Dec  4 11:25:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.2.2:
