@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 19:46:39 UTC 2023 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
+
+- added numpy-1.24.patch to fix the testsuite (see
+  gh#espressomd/espresso#4635) 
+
+-------------------------------------------------------------------
 Thu Sep 15 07:47:38 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix test on aarch64:

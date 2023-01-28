@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,6 +52,8 @@ Patch2:         hdf5.patch
 Patch3:         rpath.patch
 # PATCH-FIX-UPSTREAM fix-broken-fft-check.patch gh#espressomd/espresso#4567
 Patch4:         fix-broken-fft-check.patch
+# PATCH-FIX-UPSTREAM numpy-1.24.patch gh#espressomd/espresso#4635
+Patch5:         numpy-1.24.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake
