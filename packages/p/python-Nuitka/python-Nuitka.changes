@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Fri Jan 27 04:18:50 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary dependency on boltons
+- Update to v1.4
+  See https://github.com/Nuitka/Nuitka/blob/main/Changelog.rst
+
+-------------------------------------------------------------------
 Mon Jan  2 07:19:58 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip unsupported Python 3.11
 - Update to v1.3.5
-  See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst for changes
-  in 1.1, 1.2 and 1.5
+  See https://github.com/Nuitka/Nuitka/blob/main/Changelog.rst for changes
+  in 1.1, 1.2 and 1.3.5
 
 -------------------------------------------------------------------
 Tue Oct 11 23:26:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>

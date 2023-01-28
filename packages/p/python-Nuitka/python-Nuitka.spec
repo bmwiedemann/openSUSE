@@ -15,8 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# https://github.com/Nuitka/Nuitka/issues/1856
-%define skip_python311 1
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -130,9 +128,10 @@ ExclusiveArch:  do-not-build
 
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python311 1
+# For Python 3.11 support status see https://github.com/Nuitka/Nuitka/issues/1856
 Name:           python-Nuitka%{?psuffix}
-Version:        1.3.5
+Version:        1.4
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -143,7 +142,6 @@ Source1:        nuitka-rpmlintrc
 # PATCH-FIX-UPSTREAM no-binary-distribution.patch gh#Nuitka/Nuitka#1702 mcepl@suse.com
 # Do not pretend this is binary distribution
 Patch0:         no-binary-distribution.patch
-BuildRequires:  %{python_module boltons}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -156,7 +154,6 @@ Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-appdirs
 Requires:       python-atomicwrites
-Requires:       python-boltons
 Requires:       python-devel
 Requires:       scons
 Requires(post): update-alternatives
@@ -184,7 +181,6 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module atomicwrites}
-BuildRequires:  %{python_module boltons}
 BuildRequires:  %{python_module glfw}
 BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module hypothesis}
@@ -212,6 +208,7 @@ BuildRequires:  gdb
 BuildRequires:  patchelf
 BuildRequires:  strace
 BuildRequires:  tk
+BuildRequires:  xvfb-run
 BuildRequires:  %{python_module gtk if (%python-base with python-base)}
 BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
@@ -284,6 +281,9 @@ sed -Ei 's/(NumpyUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
 
 # https://github.com/Nuitka/Nuitka/issues/1340
 rm tests/standalone/PandasUsing.py
+
+# https://github.com/Nuitka/Nuitka/issues/2012
+rm tests/standalone/TkInterUsing.py
 
 # adjust mtime so that deduplicating the cache files after install does not make them inconsistent
 find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
@@ -380,7 +380,7 @@ mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
 
 export NUITKA_EXTRA_OPTIONS="--debug"
 
-CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
+CC=clang xvfb-run $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -409,7 +409,7 @@ mv tests/standalone/PkgResourcesRequiresUsing.py /tmp
 
 export NUITKA_EXTRA_OPTIONS=""
 
-CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
+CC=clang xvfb-run $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -435,7 +435,7 @@ export NUITKA_EXTRA_OPTIONS="--debug"
 # OOM
 mv tests/standalone/MatplotlibUsing.py /tmp
 
-CC=gcc $python ./tests/run-tests --no-other-python --skip-reflection-test
+CC=gcc xvfb-run $python ./tests/run-tests --no-other-python --skip-reflection-test
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
