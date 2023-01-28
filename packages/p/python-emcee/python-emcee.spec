@@ -1,7 +1,7 @@
 #
 # spec file for package python-emcee
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # NEP 29: python36-numpy and -scipy are no longer available in TW
 %define         skip_python36 1
 Name:           python-emcee
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        Python affine-invariant ensemble MCMC sampling
 License:        MIT

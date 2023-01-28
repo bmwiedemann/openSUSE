@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1007387</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d472f01b4de1459412a5408d667949cb</srcmd5>
+    <version>3.1.4</version>
+    <time>1674927965</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4:
+  * Handling updated kstest interface in scipy 1.10</comment>
+    <requestid>1061748</requestid>
+  </revision>
 </revisionlist>
