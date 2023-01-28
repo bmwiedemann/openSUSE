@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyemd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python36 1
 # pytest is too smart for its own good, prevent use of compiled version
 %bcond_with     test
-%define         skip_python36 1
 Name:           python-pyemd
 Version:        0.5.1
 Release:        0
 Summary:        Python implementation of the Earth Mover's Distance
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/wmayner/pyemd
+URL:            https://github.com/wmayner/pyemd
 Source:         https://files.pythonhosted.org/packages/source/p/pyemd/pyemd-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/wmayner/pyemd/commit/34631658ae0cc555001b692623c23c02ed8d5611 Mark uses of ragged nested sequences in NumPy arrays as intented
+Patch0:         numpy-arrays.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.9.0}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +46,8 @@ PyEMD is a Python wrapper for Ofir Pele and Michael Werman's implementation
 of the Earth Mover's Distance that allows it to be used with NumPy.
 
 %prep
-%setup -q -n pyemd-%{version}
+%autosetup -p1 -n pyemd-%{version}
+
 sed -i -e '/^#!\//, 1d' pyemd/__about__.py pyemd/__init__.py
 
 %build
@@ -59,15 +61,14 @@ export CFLAGS="%{optflags}"
 %check
 mv conftest.py conftest_bad.py_bad
 pushd test
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -m pytest
-}
+%pytest_arch
 popd
 mv conftest_bad.py_bad conftest.py
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/pyemd
+%{python_sitearch}/pyemd-%{version}*-info
 
 %changelog

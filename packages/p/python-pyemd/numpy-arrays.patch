@@ -1,0 +1,40 @@
+From 34631658ae0cc555001b692623c23c02ed8d5611 Mon Sep 17 00:00:00 2001
+From: Paul Wise <pabs3@bonedaddy.net>
+Date: Mon, 2 Aug 2021 14:55:06 +0800
+Subject: [PATCH] Mark uses of ragged nested sequences in NumPy arrays as
+ intented for two tests
+
+The tests check that emd() raises a ValueError when passed incorrect matrices.
+
+The ragged sequences are now deprecated in NumPy unless marked as intended:
+
+VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences
+(which is a list-or-tuple of lists-or-tuples-or ndarrays with different
+lengths or shapes) is deprecated. If you meant to do this, you must
+specify 'dtype=object' when creating the ndarray.
+---
+ test/test_pyemd.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_pyemd.py b/test/test_pyemd.py
+index 96c7ce2..9345cb8 100644
+--- a/test/test_pyemd.py
++++ b/test/test_pyemd.py
+@@ -130,7 +130,7 @@ def test_emd_validate_symmetric_distance_matrix():
+     first_signature = np.array([0.0, 1.0])
+     second_signature = np.array([5.0, 3.0])
+     distance_matrix = np.array([[0.0, 0.5, 3.0],
+-                                [0.5, 0.0]])
++                                [0.5, 0.0]], dtype=object)
+     with pytest.raises(ValueError):
+         emd(first_signature, second_signature, distance_matrix)
+ 
+@@ -276,7 +276,7 @@ def test_emd_with_flow_validate_square_distance_matrix():
+     first_signature = np.array([0.0, 1.0])
+     second_signature = np.array([5.0, 3.0])
+     distance_matrix = np.array([[0.0, 0.5, 3.0],
+-                                [0.5, 0.0]])
++                                [0.5, 0.0]], dtype=object)
+     with pytest.raises(ValueError):
+         emd_with_flow(first_signature, second_signature, distance_matrix)
+ 
