@@ -1,7 +1,7 @@
 #
 # spec file for package hivex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,10 +21,10 @@
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
 Name:           hivex
-Version:        1.3.21
+Version:        1.3.23
 Release:        0
 Summary:        Windows "Registry Hive" extraction library
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            http://libguestfs.org/hivex.3.html
 Source:         http://libguestfs.org/download/hivex/%{name}-%{version}.tar.gz
 Source2:        http://libguestfs.org/download/hivex/%{name}-%{version}.tar.gz.sig
@@ -150,7 +150,7 @@ touch %{name}.lang
 %postun -n libhivex0 -p /sbin/ldconfig
 
 %files
-%doc README
+%doc
 %{_bindir}/*
 %{_mandir}/*/*
 
