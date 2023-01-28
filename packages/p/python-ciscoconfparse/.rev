@@ -262,4 +262,26 @@
   * Make ConfigList() more stable</comment>
     <requestid>1059388</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b09ae68f13c9fba46541b0664c67e512</srcmd5>
+    <version>1.7.7</version>
+    <time>1674927927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.7:
+    - Replace `assert isinstance()`, as requested in github issue #256
+    - Remove test `ping` code from `Makefile`
+    - Small code reorganization in `class CiscoConfParse()`
+    - Move non-essential packages to requirements-dev.txt (github issue #258)
+    - Edit in documentation style fixes recommended by `pydocstyle -e --convention=numpy &lt;filename&gt;`.
+    - Convert some of the assertions that validated `CiscoConfParse()` method
+      parameters and variables into if-statements for more idiomatic python.
+    - Convert some of the clunky-python-syntax into more idiomatic python.
+    - Rip out all `terraform` parsing attempts.
+    - Update for CVE-2022-40898 in the python `wheel &lt;= 0.38.0` package.
+      - github issue #257 reported this issue.
+      - Modified `requirements.txt` to manually upgrade `python`'s default `wheel` version to a patched version of `wheel`.
+    - Move documentation package dependencies to `sphinx-doc/requirements.txt`
+    - Add documentation build instructions to `README.md`</comment>
+    <requestid>1061732</requestid>
+  </revision>
 </revisionlist>
