@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jan 14 11:35:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v1.4.2
+  * no relevant code changes for openSUSE users
+- Release v1.4.1
+  ## Enhancements
+  * unify much functionality from 1D, 2D and 3D into general
+    arbitrary geometry class
+    quimb.tensor.tensor_arbgeom.TensorNetworkGen
+  * refactor contraction, allowing using cotengra directly
+  * add visualize() for visualizing the actual data entries of an
+    arbitrarily high dimensional tensor
+  * add Gate class for more robust tracking and manipulation of
+    gates in quantum Circuit simulation
+  * tweak TN drawing style and layout
+  * tweak default gauging options of compressed contraction
+  * add compute_hierarchical_grouping()
+  * add as_network()
+  * add inds_size()
+  * add get_hyperinds()
+  * add outer_size()
+  * improve group_inds()
+  * refactor tensor decompositiona and ‘isometrization’ methods
+  * begin supporting pytree specifications in TNOptimizer, e.g. for
+    constants
+  * add experimental submodule for new sharing features
+  * register tensor and tensor network objects with jax pytree
+    interface (PR150)
+  * update CI infrastructure
+  ## Bug fixes:
+  * fix force atlas 2 and weight_attr bug (GH126)
+  * allow unpickling of PTensor objects (GH128, PR131)
+- Release v1.4.0
+  ## Enhancements
+  * Add 2D tensor network support and algorithms
+  * Add 3D tensor network infrastructure
+  * Add arbitrary geometry quantum state infrastructure
+  * Many changes to TNOptimizer
+  * Many changes to TN drawing
+  * Many changes to Circuit simulation
+  * Many improvements to TN simplification
+  * Make all tag and index operations deterministic
+  * Add tensor_network_sum(), tensor_network_distance() and fit()
+  * Various memory and performance improvements
+  * Various graph generators and TN builders
+
+-------------------------------------------------------------------
 Fri Feb  5 20:13:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Generalize the ExcludeArch into %ix64 %arm ppc s390x
