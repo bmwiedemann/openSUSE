@@ -1,7 +1,7 @@
 #
 # spec file for package fityk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,28 @@
 
 %define somajor 4
 Name:           fityk
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Non-linear curve fitting and data analysis
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://fityk.nieto.pl/
 Source:         https://github.com/wojdyr/fityk/releases/download/v%{version}/fityk-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM fityk-support-lua-5.4.patch badshah400@gmail.com -- Support lua up to version 5.4; patch taken from upstream git commit
-Patch0:         fityk-support-lua-5.4.patch
 # PATCH-FIX-UPSTREAM fityk-drop-dynamic-exceptions.patch gh#wojdyr/fityk#38 badshah400@gmail.com -- Drop dynamic exceptions to build with c++17 std; patch taken from upstream merge request
 Patch1:         fityk-drop-dynamic-exceptions.patch
-# PATCH-FIX-UPSTREAM fityk-ignore-distutils-deprecation-warning.patch badshah400@gmail.com -- Disable deprecation warning when importing distutils.
-Patch2:         fityk-ignore-distutils-deprecation-warning.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gnuplot
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  lua-devel >= 5.1
-BuildRequires:  ncurses-devel
 BuildRequires:  nlopt-devel
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  swig
-BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  wxGTK3-devel >= 3
 BuildRequires:  xylib-devel >= 1.0
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.35
-%endif
 
 %description
 Fityk is a program for nonlinear curve-fitting of analytical
@@ -106,12 +96,11 @@ This package contains python bindings to Fityk library.
 
 %build
 export PYTHON=%{_bindir}/python3
-autoreconf -fvi
 %configure \
     --enable-nlopt \
     --enable-python
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -135,8 +124,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/%{name}/samples/hello.lua
 %{_datadir}/icons/hicolor/*/apps/fityk.*
 %{_datadir}/applications/*.desktop
+%{_datadir}/appdata/fityk.appdata.xml
 %{_mandir}/man1/%{name}.*
-# %%{_datadir}/pixmaps/*
 %{_datadir}/mime/packages/*
 
 %files -n lib%{name}%{somajor}

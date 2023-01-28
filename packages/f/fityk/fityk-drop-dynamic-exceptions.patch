@@ -58,8 +58,8 @@ Index: fityk-1.3.1/fityk/fityk.cpp
      return ret;
  }
  
--realt Fityk::get_model_value(realt x, int dataset)  throw(ExecuteError)
-+realt Fityk::get_model_value(realt x, int dataset)
+-realt Fityk::get_model_value(realt x, int dataset) const  throw(ExecuteError)
++realt Fityk::get_model_value(realt x, int dataset) const
  {
      try {
          return priv_->dk.get_model(hd(priv_, dataset))->value(x);
@@ -75,8 +75,8 @@ Index: fityk-1.3.1/fityk/fityk.cpp
      return yy;
  }
  
--const Var* Fityk::get_variable(string const& name)  throw(ExecuteError)
-+const Var* Fityk::get_variable(string const& name)
+-const Var* Fityk::get_variable(string const& name) const  throw(ExecuteError)
++const Var* Fityk::get_variable(string const& name) const
  {
      try {
          string vname;
@@ -281,8 +281,8 @@ Index: fityk-1.3.1/fityk/fityk.h
      std::vector<Var*> all_variables() const;
  
      /// returns variable $name
--    const Var* get_variable(std::string const& name)  throw(ExecuteError);
-+    const Var* get_variable(std::string const& name);
+-    const Var* get_variable(std::string const& name) const throw(ExecuteError);
++    const Var* get_variable(std::string const& name) const;
  
      /// returns all %functions
      std::vector<Func*> all_functions() const;
@@ -295,9 +295,9 @@ Index: fityk-1.3.1/fityk/fityk.h
 +    std::vector<Func*> get_components(int dataset=DEFAULT_DATASET, char fz='F');
  
      /// returns the value of the model for a given dataset at x
--    realt get_model_value(realt x, int dataset=DEFAULT_DATASET)
+-    realt get_model_value(realt x, int dataset=DEFAULT_DATASET) const
 -                                                         throw(ExecuteError);
-+    realt get_model_value(realt x, int dataset=DEFAULT_DATASET);
++    realt get_model_value(realt x, int dataset=DEFAULT_DATASET) const;
  
      /// multiple point version of the get_model_value()
      std::vector<realt>
@@ -351,8 +351,8 @@ Index: fityk-1.3.1/fityk/func.h
 --- fityk-1.3.1.orig/fityk/func.h
 +++ fityk-1.3.1/fityk/func.h
 @@ -86,8 +86,7 @@ public:
- #pragma clang diagnostic push
- #pragma clang diagnostic ignored "-Wdeprecated"
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wdeprecated"
  #endif
 -    virtual realt get_param_value(const std::string& param) const
 -                            throw(ExecuteError); // exc. spec. is used by SWIG
@@ -366,5 +366,5 @@ Index: fityk-1.3.1/fityk/func.h
      virtual const std::string& var_name(const std::string& param) const
 -                        throw(ExecuteError) // exc. spec. is used by SWIG
                          { return used_vars_.get_name(get_param_nr(param)); }
- #ifdef __clang__
+ #if defined(__clang__)
  #pragma clang diagnostic pop
