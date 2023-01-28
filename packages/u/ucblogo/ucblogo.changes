@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jan 24 05:05:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.2.3:
+  * Fix/standardize STANDOUT in wxWidgets builds
+    (gh#jrincayc/ucblogo-code#122).
+  * Refactor code so selection highlighting does not depend on
+    platform supporting inverted blit mode.
+    (gh#jrincayc/ucblogo-code#123).
+  * Adding PRINT NOT "FALSE to show using quoted false.
+    (gh#jrincayc/ucblogo-code#125).
+  * Issue 126: Print preview on Windows
+    (gh#jrincayc/ucblogo-code#128).
+  * ISSUE-129: Remove obsolete macros from configure.ac
+    (gh#jrincayc/ucblogo-code#131).
+  * ISSUE-50: Indicate correct error line when GOTO has a
+    nonexistent tag (gh#jrincayc/ucblogo-code#136).
+  * ISSUE-134: Fixed issue with LOADPICT if it's called before
+    other turtle commands (gh#jrincayc/ucblogo-code#135).
+  * ISSUE-20: Resolving warnings about discarding const qualifier
+    on assignment. (gh#jrincayc/ucblogo-code#141).
+  * Fixes Stopping with repeat (gh#jrincayc/ucblogo-code#140).
+  * Fix debug statements (gh#jrincayc/ucblogo-code#142).
+
+-------------------------------------------------------------------
 Sat Nov 26 13:25:23 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

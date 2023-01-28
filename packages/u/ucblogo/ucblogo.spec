@@ -1,7 +1,7 @@
 #
 # spec file for package ucblogo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ucblogo
-Version:        6.2.2
+Version:        6.2.3
 Release:        0
 Summary:        Berkeley Logo interpreter
 License:        GPL-3.0-or-later
@@ -37,8 +37,8 @@ Berkeley Logo interpreter is a free (both senses) interpreter for the Logo
 programming language.
 
 %package doc
-Summary:       Documentation for ucblogo - a free logo interpreter
-BuildArch:     noarch
+Summary:        Documentation for ucblogo - a free logo interpreter
+BuildArch:      noarch
 
 %description doc
 This package provides additional documentation for ucblogo.
