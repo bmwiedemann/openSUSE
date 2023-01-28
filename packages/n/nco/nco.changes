@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 28 00:28:01 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.4:
+  * Introduced vertical interpolation for datasets stored on
+    depth/height grids, such as ocean data.
+  * Also fixed a vexing issue that can occur with certain compilers
+    on AMD hardware.
+
+-------------------------------------------------------------------
 Fri Dec 30 08:51:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.3:
