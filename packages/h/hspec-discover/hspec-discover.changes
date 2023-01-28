@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 27 12:38:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hspec-discover to version 2.10.9.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon Dec 19 04:48:27 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hspec-discover to version 2.10.8.

@@ -1,7 +1,7 @@
 #
 # spec file for package hspec-discover
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hspec-discover
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.10.8
+Version:        2.10.9
 Release:        0
 Summary:        Automatically discover and run Hspec tests
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  ghc-mockery-devel
 %description
 Automatically discover and run Hspec tests
 
-<http://hspec.github.io/hspec-discover.html>.
+<https://hspec.github.io/hspec-discover.html>.
 
 %package -n ghc-%{name}
 Summary:        Haskell %{name} library
