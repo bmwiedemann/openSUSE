@@ -1160,4 +1160,12 @@ bsc#1130564: Apply update from the openSUSE package
     fail</comment>
     <requestid>1045131</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c80dd59500da088a10ae12b4b30637d8</srcmd5>
+    <version>1.10.0</version>
+    <time>1674932385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059146</requestid>
+  </revision>
 </revisionlist>

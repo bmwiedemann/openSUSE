@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_9_3
+%define _ver 1_10_0
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -92,19 +92,17 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.9.3
+Version:        1.10.0
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
 Group:          Development/Libraries/Python
 URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#scipy/scipy#16926#issuecomment-1287507634
-Patch1:         fix-tests.patch
-# PATCH-FIX-UPSTREAM fix-tests-pytest72.patch gh#scipy/scipy#17296
-Patch2:         fix-tests-pytest72.patch
-# PATCH-FIX-UPSTREAM scipy-pr17467-no-np.int0.patch gh#scipy/scipy#17467
-Patch3:         scipy-pr17467-no-np.int0.patch
+# Create with pooch: `python3 scipy-%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
+Source1:        scipy-datasets.tar.gz
+# PATCH-FIX-UPSTREAM scipy-pr17717-ro-interpn.patch gh#scipy/scipy#17717
+Patch0:         https://github.com/scipy/scipy/pull/17717.patch#/scipy-pr17717-ro-interpn.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module meson-python >= 0.9.0}
@@ -118,6 +116,7 @@ BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros >= 20220911
 %if %{with test}
+BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -130,6 +129,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 Requires:       python-numpy >= 1.18.5
 Requires:       python-pybind11 >= 2.4.3
+Suggests:       python-pooch
  %if %{with openblas}
 BuildRequires:  openblas-devel
  %else
@@ -157,8 +157,9 @@ for numerical integration and optimization.
 %{?with_hpc:%{hpc_python_master_package -L -a }}
 
 %prep
-%autosetup -p1 -n scipy-%{version}
+%autosetup -p1 -n scipy-%{version} -a1
 sed -i '1{/env python/d}' scipy/sparse/linalg/_isolve/tests/test_gcrotmk.py
+chmod a-x scipy/stats/tests/test_distributions.py
 
 %ifarch i586
 # Limit double floating point precision for x87, triggered by GCC 12.
@@ -167,7 +168,7 @@ sed -i '1{/env python/d}' scipy/sparse/linalg/_isolve/tests/test_gcrotmk.py
 
 %if !%{with openblas}
 # Edit the options file until we have a way to provide options to meson-python from command line or environment
-# https://github.com/FFY00/meson-python/pull/122
+# https://github.com/mesonbuild/meson-python/issues/230 https://github.com/mesonbuild/meson-python/issues/235
 sed -i "s/option('blas', type: 'string', value: 'openblas'/option('blas', type: 'string', value: 'blas'/" meson_options.txt
 sed -i "s/option('lapack', type: 'string', value: 'openblas'/option('lapack', type: 'string', value: 'lapack'/" meson_options.txt
 %endif
@@ -239,6 +240,8 @@ EOF
 
 %if %{with test}
 %check
+# pooch cache (extracted SOURCE1)
+export XDG_CACHE_HOME=$PWD/scipy-datasets
 # (occasional) precision errors
 donttest="(TestLinprogIPSpecific and test_solver_select)"
 donttest+=" or test_gh12922"
@@ -248,6 +251,9 @@ donttest+=" or (TestPdist and test_pdist_jensenshannon_iris)"
 donttest+=" or (test_rotation and test_align_vectors_single_vector)"
 donttest+=" or (test_lobpcg and test_tolerance_float32)"
 donttest+=" or (test_iterative and test_maxiter_worsening)"
+%ifarch %ix86
+donttest+=" or (test_solvers and test_solve_generalized_discrete_are)"
+%endif
 # fails on big endian
 donttest+=" or (TestNoData and test_nodata)"
 # oom

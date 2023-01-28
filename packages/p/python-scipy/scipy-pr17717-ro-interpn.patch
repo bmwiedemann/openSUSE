@@ -1,0 +1,144 @@
+From 590d84e445c515d38cb52b2392c1735255c6bde5 Mon Sep 17 00:00:00 2001
+From: Brett <brettgraham@gmail.com>
+Date: Wed, 4 Jan 2023 11:53:30 -0500
+Subject: [PATCH] BUG: allow readonly input to interpolate.interpn
+
+Add readonly input test for interpolate.interpn and
+RegularGridInterpolator.
+Enforce c-contiguity for grid
+Add more const declarations to support more read-only arguments
+Check that values are writeable to work around lack of
+const fused types in cython<0.29.33
+Check for native endianess when selecting fast path in interpolate
+
+Closes #17716
+
+TST: expand interpolate tests
+---
+ scipy/interpolate/_rgi.py           |  8 +++--
+ scipy/interpolate/_rgi_cython.pyx   |  8 +++--
+ scipy/interpolate/tests/test_rgi.py | 55 +++++++++++++++++++++++++++++
+ 3 files changed, 66 insertions(+), 5 deletions(-)
+
+diff --git a/scipy/interpolate/_rgi.py b/scipy/interpolate/_rgi.py
+index 37c76bb0b71..ec9f55f76aa 100644
+--- a/scipy/interpolate/_rgi.py
++++ b/scipy/interpolate/_rgi.py
+@@ -23,11 +23,12 @@ def _check_points(points):
+                 # input is descending, so make it ascending
+                 descending_dimensions.append(i)
+                 p = np.flip(p)
+-                p = np.ascontiguousarray(p)
+             else:
+                 raise ValueError(
+                     "The points in dimension %d must be strictly "
+                     "ascending or descending" % i)
++        # see https://github.com/scipy/scipy/issues/17716
++        p = np.ascontiguousarray(p)
+         grid.append(p)
+     return tuple(grid), tuple(descending_dimensions)
+ 
+@@ -330,7 +331,10 @@ def __call__(self, xi, method=None):
+         if method == "linear":
+             indices, norm_distances = self._find_indices(xi.T)
+             if (ndim == 2 and hasattr(self.values, 'dtype') and
+-                    self.values.ndim == 2):
++                    self.values.ndim == 2 and self.values.flags.writeable and
++                    self.values.dtype.byteorder == '='):
++                # until cython supports const fused types, the fast path
++                # cannot support non-writeable values
+                 # a fast path
+                 out = np.empty(indices.shape[1], dtype=self.values.dtype)
+                 result = evaluate_linear_2d(self.values,
+diff --git a/scipy/interpolate/_rgi_cython.pyx b/scipy/interpolate/_rgi_cython.pyx
+index 22d4a2eda7a..71e030664b7 100644
+--- a/scipy/interpolate/_rgi_cython.pyx
++++ b/scipy/interpolate/_rgi_cython.pyx
+@@ -17,7 +17,7 @@ np.import_array()
+ @cython.boundscheck(False)
+ @cython.initializedcheck(False)
+ def evaluate_linear_2d(double_or_complex[:, :] values, # cannot declare as ::1
+-                       long[:, :] indices,             # unless prior
++                       const long[:, :] indices,       # unless prior
+                        double[:, :] norm_distances,    # np.ascontiguousarray
+                        tuple grid not None,
+                        double_or_complex[:] out):
+@@ -72,11 +72,13 @@ def evaluate_linear_2d(double_or_complex[:, :] values, # cannot declare as ::1
+ @cython.boundscheck(False)
+ @cython.cdivision(True)
+ @cython.initializedcheck(False)
+-def find_indices(tuple grid not None, double[:, :] xi):
++def find_indices(tuple grid not None, const double[:, :] xi):
++    # const is required for xi above in case xi is read-only
+     cdef:
+         long i, j, grid_i_size
+         double denom, value
+-        double[::1] grid_i
++        # const is required in case grid is read-only
++        const double[::1] grid_i
+ 
+         # Axes to iterate over
+         long I = xi.shape[0]
+diff --git a/scipy/interpolate/tests/test_rgi.py b/scipy/interpolate/tests/test_rgi.py
+index 89e3aae51cd..0b8436de060 100644
+--- a/scipy/interpolate/tests/test_rgi.py
++++ b/scipy/interpolate/tests/test_rgi.py
+@@ -939,3 +939,58 @@ def test_invalid_xi_dimensions(self):
+                "RegularGridInterpolator has dimension 1")
+         with assert_raises(ValueError, match=msg):
+             interpn(points, values, xi)
++
++    def test_readonly_grid(self):
++        # https://github.com/scipy/scipy/issues/17716
++        x = np.linspace(0, 4, 5)
++        y = np.linspace(0, 5, 6)
++        z = np.linspace(0, 6, 7)
++        points = (x, y, z)
++        values = np.ones((5, 6, 7))
++        point = np.array([2.21, 3.12, 1.15])
++        for d in points:
++            d.flags.writeable = False
++        values.flags.writeable = False
++        point.flags.writeable = False
++        interpn(points, values, point)
++        RegularGridInterpolator(points, values)(point)
++
++    def test_2d_readonly_grid(self):
++        # https://github.com/scipy/scipy/issues/17716
++        # test special 2d case
++        x = np.linspace(0, 4, 5)
++        y = np.linspace(0, 5, 6)
++        points = (x, y)
++        values = np.ones((5, 6))
++        point = np.array([2.21, 3.12])
++        for d in points:
++            d.flags.writeable = False
++        values.flags.writeable = False
++        point.flags.writeable = False
++        interpn(points, values, point)
++        RegularGridInterpolator(points, values)(point)
++
++    def test_non_c_contiguous_grid(self):
++        # https://github.com/scipy/scipy/issues/17716
++        x = np.linspace(0, 4, 5)
++        x = np.vstack((x, np.empty_like(x))).T.copy()[:, 0]
++        assert not x.flags.c_contiguous
++        y = np.linspace(0, 5, 6)
++        z = np.linspace(0, 6, 7)
++        points = (x, y, z)
++        values = np.ones((5, 6, 7))
++        point = np.array([2.21, 3.12, 1.15])
++        interpn(points, values, point)
++        RegularGridInterpolator(points, values)(point)
++
++    @pytest.mark.parametrize("dtype", ['>f8', '<f8'])
++    def test_endianness(self, dtype):
++        # https://github.com/scipy/scipy/issues/17716
++        # test special 2d case
++        x = np.linspace(0, 4, 5, dtype=dtype)
++        y = np.linspace(0, 5, 6, dtype=dtype)
++        points = (x, y)
++        values = np.ones((5, 6), dtype=dtype)
++        point = np.array([2.21, 3.12], dtype=dtype)
++        interpn(points, values, point)
++        RegularGridInterpolator(points, values)(point)
