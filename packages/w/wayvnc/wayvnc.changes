@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jan 27 12:20:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Prefixe include of wayland-client.h with directory name
+
+-------------------------------------------------------------------
+Fri Jan 27 10:20:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * This fixes control commands that don't take any parameters
+
+-------------------------------------------------------------------
+Tue Jan 24 05:11:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Fix compatibility issues with FreeBSD and a few other systems
+
+-------------------------------------------------------------------
+Mon Jan 23 16:49:02 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  New wayvncctl:
+  * The captured output can be changed on the fly
+  * Connected clients can be listed and managed
+  * Various events can be monitored
+  Highlights:
+  * Control interface, mentioned above.
+  * Screen capturing is paused when no client is connected
+  * Screen capturing is paused for outputs that are powered off
+  * Horizontal scrolling
+  * Each client now gets its own set of virtual inputs. This helps
+    with state tracking.
+  * Symbol to key code mapping now works better with xwayland
+
+-------------------------------------------------------------------
 Mon Nov  7 22:57:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:

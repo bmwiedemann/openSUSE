@@ -51,4 +51,32 @@
   * Improved logging and error messages</comment>
     <requestid>1034392</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dacc6c75c0048a936d750e6caf32c55a</srcmd5>
+    <version>0.6.2</version>
+    <time>1674927766</time>
+    <user>dimstar_suse</user>
+    <comment>- Prefixe include of wayland-client.h with directory name
+
+- Update to 0.6.2:
+  * This fixes control commands that don't take any parameters
+
+- Update to 0.6.1:
+  * Fix compatibility issues with FreeBSD and a few other systems
+
+- Update to 0.6.0:
+  New wayvncctl:
+  * The captured output can be changed on the fly
+  * Connected clients can be listed and managed
+  * Various events can be monitored
+  Highlights:
+  * Control interface, mentioned above.
+  * Screen capturing is paused when no client is connected
+  * Screen capturing is paused for outputs that are powered off
+  * Horizontal scrolling
+  * Each client now gets its own set of virtual inputs. This helps
+    with state tracking.
+  * Symbol to key code mapping now works better with xwayland</comment>
+    <requestid>1061540</requestid>
+  </revision>
 </revisionlist>
