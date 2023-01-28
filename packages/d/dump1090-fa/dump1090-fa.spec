@@ -1,7 +1,7 @@
 #
 # spec file for package dump1090-fa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           dump1090-fa
-Version:        3.8.1
+Version:        8.2
 Release:        0
 Summary:        An ADS-B Mode S decoder for RTLSDR devices (Flightaware fork)
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/flightaware/dump1090
-Source:         https://github.com/flightaware/dump1090/archive/v3.8.1.tar.gz#/dump1090-%{version}.tar.gz
+Source:         https://github.com/flightaware/dump1090/archive/v8.2.tar.gz#/dump1090-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbladeRF)
 BuildRequires:  pkgconfig(librtlsdr)
@@ -52,7 +52,8 @@ install -D -p -m 0755 view1090 \
 
 %files
 %license LICENSE
-%doc README-json.md README.md
+%doc README-json.md README.adaptive-gain.md README.md
+%doc debian/changelog
 %{_bindir}/dump1090-fa
 %{_bindir}/view1090-fa
 
