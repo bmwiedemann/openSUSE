@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hspec-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hspec-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.10.8
+Version:        2.10.9
 Release:        0
 Summary:        A Testing Framework for Haskell
 License:        MIT
