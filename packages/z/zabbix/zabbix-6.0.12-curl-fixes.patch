@@ -1,0 +1,127 @@
+Index: include/sysinc.h
+===================================================================
+--- include/sysinc.h.orig	2022-12-05 09:13:13.147213258 +0100
++++ include/sysinc.h	2023-01-20 19:51:49.817570470 +0100
+@@ -401,7 +401,90 @@
+ #	else
+ #		define ZBX_CURLOPT_ACCEPT_ENCODING	CURLOPT_ENCODING
+ #	endif
++#	if 0x073700 <= LIBCURL_VERSION_NUM	/* version 7.55.0 */
++#		define ZBX_CURLINFO_SPEED_DOWNLOAD	CURLINFO_SPEED_DOWNLOAD_T
++#	else
++#		define ZBX_CURLINFO_SPEED_DOWNLOAD	CURLINFO_SPEED_DOWNLOAD
++#	endif
+ #	define ZBX_CURLOPT_MAXREDIRS	10L
++#	if defined(NEED_FUNCTION_CURL_EASY_SETOPT_REDEFINE)
++#	undef curl_easy_setopt
++#	define curl_easy_setopt(handle, option, value)							\
++		__extension__({										\
++			CURLoption _curl_opt = (option);						\
++			if(__builtin_constant_p(_curl_opt)) {						\
++				CURL_IGNORE_DEPRECATION(						\
++					if(curlcheck_long_option(_curl_opt))				\
++						if(!curlcheck_long(value))				\
++							_curl_easy_setopt_err_long();			\
++					if(curlcheck_off_t_option(_curl_opt))				\
++						if(!curlcheck_off_t(value))				\
++							_curl_easy_setopt_err_curl_off_t();		\
++					if(curlcheck_string_option(_curl_opt))				\
++						if(!curlcheck_string(value))				\
++							_curl_easy_setopt_err_string();			\
++					if(curlcheck_write_cb_option(_curl_opt))			\
++						if(!curlcheck_write_cb(value))				\
++							_curl_easy_setopt_err_write_callback();		\
++					if((_curl_opt) == CURLOPT_RESOLVER_START_FUNCTION)		\
++						if(!curlcheck_resolver_start_callback(value))		\
++							_curl_easy_setopt_err_resolver_start_callback();\
++					if((_curl_opt) == CURLOPT_READFUNCTION)				\
++						if(!curlcheck_read_cb(value))				\
++							_curl_easy_setopt_err_read_cb();		\
++					if((_curl_opt) == CURLOPT_IOCTLFUNCTION)			\
++						if(!curlcheck_ioctl_cb(value))				\
++							_curl_easy_setopt_err_ioctl_cb();		\
++					if((_curl_opt) == CURLOPT_SOCKOPTFUNCTION)			\
++						if(!curlcheck_sockopt_cb(value))			\
++							_curl_easy_setopt_err_sockopt_cb();		\
++					if((_curl_opt) == CURLOPT_OPENSOCKETFUNCTION)			\
++						if(!curlcheck_opensocket_cb(value))			\
++							_curl_easy_setopt_err_opensocket_cb();		\
++					if((_curl_opt) == CURLOPT_PROGRESSFUNCTION)			\
++						if(!curlcheck_progress_cb(value))			\
++							_curl_easy_setopt_err_progress_cb();		\
++					if((_curl_opt) == CURLOPT_DEBUGFUNCTION)			\
++						if(!curlcheck_debug_cb(value))				\
++							_curl_easy_setopt_err_debug_cb();		\
++					if((_curl_opt) == CURLOPT_SSL_CTX_FUNCTION)			\
++						if(!curlcheck_ssl_ctx_cb(value))			\
++							_curl_easy_setopt_err_ssl_ctx_cb();		\
++					if(curlcheck_conv_cb_option(_curl_opt))				\
++						if(!curlcheck_conv_cb(value))				\
++							_curl_easy_setopt_err_conv_cb();		\
++					if((_curl_opt) == CURLOPT_SEEKFUNCTION)				\
++						if(!curlcheck_seek_cb(value))				\
++							_curl_easy_setopt_err_seek_cb();		\
++					if(curlcheck_cb_data_option(_curl_opt))				\
++						if(!curlcheck_cb_data(value))				\
++							_curl_easy_setopt_err_cb_data();		\
++					if((_curl_opt) == CURLOPT_ERRORBUFFER)				\
++						if(!curlcheck_error_buffer(value))			\
++							_curl_easy_setopt_err_error_buffer();		\
++					if((_curl_opt) == CURLOPT_STDERR)				\
++						if(!curlcheck_FILE(value))				\
++							_curl_easy_setopt_err_FILE();			\
++					if(curlcheck_postfields_option(_curl_opt))			\
++						if(!curlcheck_postfields(value))			\
++							_curl_easy_setopt_err_postfields();		\
++					if((_curl_opt) == CURLOPT_HTTPPOST)				\
++						if(!curlcheck_arr((value), struct curl_httppost))	\
++							_curl_easy_setopt_err_curl_httpost();		\
++					if((_curl_opt) == CURLOPT_MIMEPOST)				\
++						if(!curlcheck_ptr((value), curl_mime))			\
++							_curl_easy_setopt_err_curl_mimepost();		\
++					if(curlcheck_slist_option(_curl_opt))				\
++						if(!curlcheck_arr((value), struct curl_slist))		\
++							_curl_easy_setopt_err_curl_slist();		\
++					if((_curl_opt) == CURLOPT_SHARE)				\
++						if(!curlcheck_ptr((value), CURLSH))			\
++							_curl_easy_setopt_err_CURLSH();			\
++				)									\
++			}										\
++			curl_easy_setopt(handle, _curl_opt, value);					\
++		})
++#	endif
+ #endif
+ 
+ /* Required for advanced sigaction */
+Index: m4/libcurl.m4
+===================================================================
+--- m4/libcurl.m4.orig	2022-12-01 08:47:13.072351692 +0100
++++ m4/libcurl.m4	2023-01-20 19:20:18.248255772 +0100
+@@ -294,7 +294,27 @@ x=CURLOPT_VERBOSE;
+ 			LIBS="${LIBS} ${LIBCURL_LIBS}"
+ 			LDFLAGS="${LDFLAGS} ${LIBCURL_LDFLAGS}"
+ 			CFLAGS="${CFLAGS} ${LIBCURL_CFLAGS}"
++			# Does this version of curl ship with a broken curl_easy_setopt() wrapper?
++			# If this fails to compile, then yes and request to redefine it
++			AC_MSG_CHECKING([if curl/curl.h defines a broken curl_easy_setopt() wrapper])
++			AC_COMPILE_IFELSE([
++				AC_LANG_PROGRAM([[#include <curl/curl.h>]], [[
++CURL		*easyhandle;
++CURLoption	opt;
+ 
++(void)curl_easy_setopt(easyhandle, opt = CURLOPT_NOBODY, 1L);]]
++				)
++			], [
++				AC_MSG_RESULT(no)
++			], [
++				AC_MSG_RESULT(yes)
++				AC_DEFINE(NEED_FUNCTION_CURL_EASY_SETOPT_REDEFINE,1,
++					[Define to 1 if 'curl_easy_setopt' is broken and needs redefining.])
++			]
++			)
++
++			# Does curl_free() exist in this version of libcurl?
++			# If not, fake it with free()
+ 			AC_CHECK_FUNC(curl_free,,
+ 				AC_DEFINE(curl_free,free,
+ 					[Define curl_free() as free() if our version of curl lacks curl_free.]))

@@ -1,7 +1,7 @@
 #
 # spec file for package zabbix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.42
+Version:        6.0.12
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://www.zabbix.com
-Source0:        https://cdn.zabbix.com/zabbix/sources/stable/4.0/zabbix-%{version}.tar.gz
-Source1:        rn4.0.0.html
+Source0:        https://cdn.zabbix.com/zabbix/sources/stable/6.0/zabbix-%{version}.tar.gz
+Source1:        rn6.0.0.html
 Source2:        zabbix-tmpfiles.conf
 Source3:        zabbix-java-gateway.sh
 Source4:        zabbix-logrotate.in
@@ -45,10 +45,12 @@ Source12:       zabbix-agentd.service
 Source13:       zabbix-server.service
 Source14:       zabbix-java-gateway.service
 Source15:       README-SSL.SUSE
-# PATCH-FIX-UPSTREAM zabbix-3.0.25-new-m4-pgsql.patch fix for opensuse issue caused/solved by bnc#1120035
-Patch0:         zabbix-3.0.25-new-m4-pgsql.patch
-# PATCH-FIX-UPSTREAN  CVE-2022-35230.patch fix for CVE-2022-35230 https://git.zabbix.com/projects/ZBX/repos/zabbix/commits/3b47a97676ee9ca4e16566f1931c456459108eae
-Patch1:         CVE-2022-35230.patch
+# PATCH-FIX-UPSTREAM zabbix-6.0.12-new-m4-pgsql.patch fix for opensuse issue caused/solved by bnc#1120035
+Patch0:         zabbix-6.0.12-new-m4-pgsql.patch
+# PATCH-FIX-UPSTREAN  zabbix-6.0.12-curl-fixes.patch fix for curl specific issue https://git.zabbix.com/projects/ZBX/repos/zabbix/pull-requests/4946/commits/f462538f52a1fba52fdd4010e40fe7281044f6b1?since=52c6b9703eacf3252ec66117a8cff094624b9217#include/common/zbxsysinc.h
+Patch2:         zabbix-6.0.12-curl-fixes.patch
+# PATCH-FIX-OPENSUSE  zabbix-6.0.12-netsnmp-fixes.patch fix for removed md5 auth protocol
+Patch3:         zabbix-6.0.12-netsnmp-fixes.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -134,25 +136,26 @@ Conflicts:      zabbix-proxy
 %description proxy
 The Zabbix proxy component.
 
-%package phpfrontend
+%package ui
 Summary:        Zabbix web frontend (php)
 Group:          Productivity/Networking/Web/Frontends
 Requires:       apache2
-Requires:       php7
-Requires:       php7-bcmath
-Requires:       php7-ctype
-Requires:       php7-gd
-Requires:       php7-gettext
-Requires:       php7-ldap
-Requires:       php7-mbstring
-Requires:       php7-sockets
-Requires:       php7-xmlreader
-Requires:       php7-xmlwriter
-Suggests:       php7-mysqli
-Suggests:       php7-pgsql
+Requires:       php8
+Requires:       php8-bcmath
+Requires:       php8-ctype
+Requires:       php8-gd
+Requires:       php8-gettext
+Requires:       php8-ldap
+Requires:       php8-mbstring
+Requires:       php8-sockets
+Requires:       php8-xmlreader
+Requires:       php8-xmlwriter
+Suggests:       php8-mysqli
+Suggests:       php8-pgsql
 Conflicts:      zabbix-phpfrontend
+Obsoletes:      zabbix-phpfrontend < 6.0.0
 
-%description phpfrontend
+%description ui
 The Zabbix PHP frontend allows access via standard web browsers.
 
 NOTE: You still have to install the PHP package which contains your db driver!
@@ -244,7 +247,9 @@ remotely.
 %prep
 %setup -q -n zabbix-%{version}
 %patch0
-%patch1
+#%%patch1
+%patch2
+%patch3
 
 cp %{SOURCE6} .
 # fix source & config files to respect adapted names
@@ -349,7 +354,7 @@ rm -r %{buildroot}%{_sbindir}/zabbix_java
 
 # install the php frontend
 mkdir -p %{buildroot}%{_datadir}/zabbix
-cp -r frontends/php/* %{buildroot}%{_datadir}/zabbix
+cp -r ui/* %{buildroot}%{_datadir}/zabbix
 install -Dm 0644 %{SOURCE5} %{buildroot}%{apache_sysconfdir}/conf.d/zabbix.conf
 # remove .htaccess files as access rules are moved to zabbix.conf
 find %{buildroot}%{_datadir}/zabbix -name .htaccess -exec rm -v {} \;
@@ -532,7 +537,7 @@ if [ "$1" = 0 ] ; then
 fi
 
 %files server
-%doc AUTHORS ChangeLog database/ibm_db2 database/mysql database/oracle database/postgresql database/sqlite3 rn4.0.0.html README-SSL.SUSE
+%doc AUTHORS ChangeLog database/mysql database/oracle database/postgresql database/sqlite3 rn6.0.0.html README-SSL.SUSE
 %if 0%{?suse_version} < 1500
 %config %{SUSEfirewall_services_dir}/zabbix_server
 %endif
@@ -540,6 +545,7 @@ fi
 %config(noreplace) %attr(0640, root, %{server_group}) %{_sysconfdir}/zabbix/zabbix_server.conf
 %{_bindir}/zabbix_get
 %{_bindir}/zabbix-get
+%{_bindir}/zabbix_js
 %{_sbindir}/zabbix_server
 %{_sbindir}/zabbix-server
 %{_sbindir}/rczabbix_server
@@ -594,7 +600,7 @@ fi
 %{_tmpfilesdir}/zabbix_agentd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-agent
 
-%files phpfrontend
+%files ui
 %doc README.SUSE
 %dir %{apache_sysconfdir}
 %dir %{apache_sysconfdir}/conf.d

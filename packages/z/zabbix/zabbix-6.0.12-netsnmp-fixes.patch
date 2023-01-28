@@ -1,0 +1,45 @@
+Index: m4/netsnmp.m4
+===================================================================
+--- m4/netsnmp.m4.orig	2022-12-01 08:47:13.072351692 +0100
++++ m4/netsnmp.m4	2023-01-20 20:29:15.268271638 +0100
+@@ -170,7 +170,22 @@ session.securityAuthProto = usmHMAC384SH
+ 		],[
+ 		AC_MSG_RESULT(no)
+ 		])
+-
++################## monkey patching....
++               dnl Check if MD5 auth is removed
++               AC_MSG_CHECKING(for disabled MD5 auth protocol support)
++               AC_TRY_LINK([
++#include <net-snmp/net-snmp-config.h>
++#include <net-snmp/net-snmp-includes.h>
++               ],[
++struct snmp_session session;
++session.securityAuthProto = usmHMACMD5AuthProtocol;
++               ],[
++               AC_DEFINE(HAVE_NETSNMP_NO_MD5_AUTH, 1, [Define to 1 if MD5 auth protocols is disabled.])
++               AC_MSG_RESULT(yes)
++               ],[
++               AC_MSG_RESULT(no)
++               ])
++################## end monkey patching....
+ 		dnl Check for AES192/256 protocol support for privacy
+ 		AC_MSG_CHECKING(for strong AES privacy protocol support)
+ 		AC_TRY_LINK([
+Index: src/zabbix_server/poller/checks_snmp.c
+===================================================================
+--- src/zabbix_server/poller/checks_snmp.c.orig	2022-12-05 09:13:13.223215969 +0100
++++ src/zabbix_server/poller/checks_snmp.c	2023-01-20 20:27:57.339847563 +0100
+@@ -356,10 +356,12 @@ static int	zbx_snmpv3_set_auth_protocol(
+ 
+ 	switch (item->snmpv3_authprotocol)
+ 	{
++#ifdef usmHMACMD5AuthProtocol
+ 		case ITEM_SNMPV3_AUTHPROTOCOL_MD5:
+ 			session->securityAuthProto = usmHMACMD5AuthProtocol;
+ 			session->securityAuthProtoLen = USM_AUTH_PROTO_MD5_LEN;
+ 			break;
++#endif
+ 		case ITEM_SNMPV3_AUTHPROTOCOL_SHA1:
+ 			session->securityAuthProto = usmHMACSHA1AuthProtocol;
+ 			session->securityAuthProtoLen = USM_AUTH_PROTO_SHA_LEN;

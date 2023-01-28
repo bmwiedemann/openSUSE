@@ -1,13 +1,13 @@
 Index: configure.ac
 ===================================================================
---- configure.ac.orig	2019-01-28 11:45:10.000000000 +0100
-+++ configure.ac	2019-03-22 13:55:27.258760837 +0100
-@@ -1229,25 +1229,15 @@ if test "x$server" = "xyes" || test "x$p
+--- configure.ac.orig	2022-12-05 09:13:12.947206126 +0100
++++ configure.ac	2023-01-20 20:21:30.286134050 +0100
+@@ -1453,25 +1453,15 @@ if test "x$server" = "xyes" || test "x$p
  	fi
  
  	dnl Checking for PostgreSQL support
--	AX_LIB_POSTGRESQL("8.1")
-+	AX_LIB_POSTGRESQL([8.2])
+-	AX_LIB_POSTGRESQL("9.2")
++	AX_LIB_POSTGRESQL([9.2])
  	if test "x$want_postgresql" = "xyes"; then
  		if test "x$have_db" != "xno"; then
  			AC_MSG_ERROR([You can configure for only one database.])
@@ -29,21 +29,21 @@ Index: configure.ac
 +	        	have_db="PostgreSQL"
 +			have_multirow_insert="yes" # set by default as we are forcing to use min 8.2 postgresql
  		fi
-	fi
-
-@@ -1299,7 +1289,7 @@ if test "x$server" = "xyes" || test "x$p
+ 	fi
+ 
+@@ -1527,7 +1517,7 @@ if test "x$server" = "xyes" || test "x$p
  		AC_MSG_RESULT(no)
  	fi
  
--	DB_CFLAGS="$IBM_DB2_CPPFLAGS $MYSQL_CFLAGS $ORACLE_CPPFLAGS $POSTGRESQL_CFLAGS $SQLITE3_CPPFLAGS"
-+	DB_CFLAGS="$IBM_DB2_CPPFLAGS $MYSQL_CFLAGS $ORACLE_CPPFLAGS $POSTGRESQL_CPPFLAGS $SQLITE3_CPPFLAGS"
- 	DB_LDFLAGS="$IBM_DB2_LDFLAGS $MYSQL_LDFLAGS $ORACLE_LDFLAGS $POSTGRESQL_LDFLAGS $SQLITE3_LDFLAGS"
- 	DB_LIBS="$IBM_DB2_LIBS $MYSQL_LIBS $ORACLE_LIBS $POSTGRESQL_LIBS $SQLITE3_LIBS"
+-	DB_CFLAGS="$MYSQL_CFLAGS $ORACLE_CPPFLAGS $POSTGRESQL_CFLAGS $SQLITE3_CPPFLAGS"
++	DB_CFLAGS="$MYSQL_CFLAGS $ORACLE_CPPFLAGS $POSTGRESQL_CPPFLAGS $SQLITE3_CPPFLAGS"
+ 	DB_LDFLAGS="$MYSQL_LDFLAGS $ORACLE_LDFLAGS $POSTGRESQL_LDFLAGS $SQLITE3_LDFLAGS"
+ 	DB_LIBS="$MYSQL_LIBS $ORACLE_LIBS $POSTGRESQL_LIBS $SQLITE3_LIBS"
  
 Index: m4/ax_compare_version.m4
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ m4/ax_compare_version.m4	2019-03-22 13:42:09.744259011 +0100
++++ m4/ax_compare_version.m4	2023-01-20 20:20:44.581933215 +0100
 @@ -0,0 +1,177 @@
 +# ===========================================================================
 +#    https://www.gnu.org/software/autoconf-archive/ax_compare_version.html
@@ -224,8 +224,8 @@ Index: m4/ax_compare_version.m4
 +]) dnl AX_COMPARE_VERSION
 Index: m4/ax_lib_postgresql.m4
 ===================================================================
---- m4/ax_lib_postgresql.m4.orig	2019-01-28 11:45:08.000000000 +0100
-+++ m4/ax_lib_postgresql.m4	2019-03-22 13:44:10.008033108 +0100
+--- m4/ax_lib_postgresql.m4.orig	2022-12-01 08:47:13.068351647 +0100
++++ m4/ax_lib_postgresql.m4	2023-01-20 20:20:44.581933215 +0100
 @@ -1,31 +1,33 @@
 -##### http://autoconf-archive.cryp.to/ax_lib_postgresql.html
 +# ===========================================================================
