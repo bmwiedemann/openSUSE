@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 27 15:09:41 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-missing-include.patch: fix the build with gcc 13.
+
+-------------------------------------------------------------------
 Thu Dec 22 14:54:41 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.38.3 (boo#1206474 boo#1206750):

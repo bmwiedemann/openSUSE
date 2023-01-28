@@ -83,6 +83,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 webkit
 Patch0:         no-forced-sse.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-missing-include.patch mgorse@suse.com -- fix the build with gcc 13.
+Patch1:         webkit2gtk3-missing-include.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
