@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jan 26 19:34:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20230126.
+  git-annex (10.20230126) upstream; urgency=medium
+
+    * Change --metadata comparisons < > <= and >= to fall back to
+      lexicographical comparisons when one or both values being compared
+      are not numbers.
+    * Improve handling of some .git/annex/ subdirectories being on other
+      filesystems, in the bittorrent special remote, and youtube-dl
+      integration, and git-annex addurl.
+    * Added --anything (and --nothing). Eg, git-annex find --anything
+      will list all annexed files whether or not the content is present.
+      This is slightly faster and clearer than --include=* or --exclude=*
+    * Speed up git-annex upgrade (from v5) and init in a repository that has
+      submodules.
+    * Added libgcc_s.so.1 to the linux standalone build so pthread_cancel
+      will work.
+    * Speed up initial scanning for annexed files when built
+      with persistent-2.14.4.1
+    * Allow initremote of additional special remotes with type=web,
+      in addition to the default web special remote. When --sameas=web is used,
+      these provide additional names for the web special remote, and may
+      also have their own additional configuration and cost.
+    * web: Add urlinclude and urlexclude configuration settings.
+    * Added an optional cost= configuration to all special remotes.
+    * adb: Support the remote.name.cost and remote.name.cost-command configs.
+    * findkeys: New command, very similar to git-annex find but operating on
+      keys.
+    * move, copy: Support combining --from and --to, which will send content
+      from one remote across to another remote.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 26 Jan 2023 15:26:22 -0400
+
+-------------------------------------------------------------------
 Mon Dec 12 16:53:17 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20221212.
