@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 23 06:51:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update polyparse to version 1.13 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Aug 11 18:27:29 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update polyparse to version 1.13 revision 5.
