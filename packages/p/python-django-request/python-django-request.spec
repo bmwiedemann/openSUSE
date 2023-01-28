@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-request
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-django-request
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Django statistics app
 License:        BSD-2-Clause
@@ -26,8 +26,6 @@ URL:            https://github.com/django-request/django-request
 Source:         https://github.com/django-request/django-request/archive/%{version}.tar.gz#/django-request-%{version}.tar.gz
 # gh#django-request/django-request#241
 Patch0:         set-timezone-for-day-tests.patch
-# https://github.com/django-request/django-request/issues/245
-Patch1:         python-django-request-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

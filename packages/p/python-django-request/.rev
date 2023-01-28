@@ -33,4 +33,18 @@
     <comment></comment>
     <requestid>976387</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b32f09b3fedc89a4eb24b832d1e9ce67</srcmd5>
+    <version>1.6.2</version>
+    <time>1674927928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2:
+  * Adds support for missing HTTP status codes: 103, 208, 226, 308, 428,
+    429, 431, 451, and 511.
+  * Confirms support for Python 3.11.
+  * Confirms support for Django 4.1.
+  * Don't ignore boosted htmx requests with ``REQUEST_IGNORE_AJAX``.
+- drop python-django-request-no-mock.patch (upstream)</comment>
+    <requestid>1061729</requestid>
+  </revision>
 </revisionlist>

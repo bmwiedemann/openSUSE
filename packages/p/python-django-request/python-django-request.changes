@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jan 28 09:48:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.2:
+  * Adds support for missing HTTP status codes: 103, 208, 226, 308, 428,
+    429, 431, 451, and 511.
+  * Confirms support for Python 3.11.
+  * Confirms support for Django 4.1.
+  * Don't ignore boosted htmx requests with ``REQUEST_IGNORE_AJAX``.
+- drop python-django-request-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Wed May 11 12:12:59 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.6.1
