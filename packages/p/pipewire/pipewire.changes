@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Thu Jan 26 12:21:31 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.65:
+  * Highlights
+    - Add back the deprecated symbols but make sure a deprecated
+      warning is emitted for them. This fixes compilation issues in
+      bindings.
+    - Fix an error in the AVX code that could cause crackling in
+      filter-chain when using the mixer.
+    - The convolver in filter-chain can now select an IR from a
+      list of IRs that best matches the current samplerate. Also
+      resampling of the IR  has been improved.
+    - A new native module-combine-stream was added. You can use
+      this to create a 5.1 device from 3 stereo soundcards, for
+      example, or direct the output to multiple sinks at once.
+    - Support for Bluetooth MIDI was added. This requires a
+      wireplumber addition as well.
+    - An ALSA plugin rule was added to tweak the buffer settings in
+      Davinci Resolve so that it now runs with acceptable latency.
+    - Support for compress offload was added using tinycompress.
+      This allows compressed formats to be decoded in hardware
+      using ALSA on some devices.
+    - Many more buffixes and improvements.
+  * PipeWire
+    - Add back the deprecated symbols but make sure a deprecated
+      warning is emitted for them.
+    - Fix a regression when running older servers and newer clients
+      (such as flatpaks on older server) where the server would run
+      clients too soon, causing crashes.
+    - Ensure that environment variables override any config values.
+  * Tools
+    - pw-cli has received some improvements in the output.
+    - pw-cat can now use ffmpeg to demux streams for compress
+      offload.
+  * modules
+    - The convolver IR volume is now preserved after resampling.
+    - Adapter ports can now have a custom prefix.
+    - module-rt now clamps the realtime priority to the user
+      allowed one if it is within an acceptable range. Before it
+      would fall back to RTKit immediately.
+    - The module-echo-cancel can now have per stream channel
+      layouts which makes it possible to link to specific audio
+      ports on a device.
+    - Fix an error in the AVX code that could cause crackling in
+      filter-chain when using the mixer.
+    - The convolver in filter-chain can now select an IR from a
+      list of IRs that best matches the current sample-rate.
+    - module-pipe-* now better matches the pulseaudio properties.
+    - A new combine-stream module was added to combine multiple
+      sinks into one sink. It is also possible to merge multiple
+      sources into one.
+    - module-rtp-source now has match rules to select what SAP
+      sessions to stream from. There were also improvements to the
+      buffering and latency handling.
+    - module-rtp-sink now handles multicast loopback correctly.
+    - module-rtp-sink implements min-ptime and max-ptime to control
+      the send packet latency.
+  * SPA
+    - A new modifier flag was added to the video format parser
+      helper to allow 0 (linear) as a valid modifier.
+    - Params includes were reorganized to make it more scalable.
+      Many compressed audio formats were added.
+    - The alsa pcm plugin now handles invalid values from the
+      driver gracefully.
+    - Fix some potential stuttering cause by wrong scaling and
+      overflow of the output buffers in audioconvert.
+    - Debug output is now also sent to the log instead of stdout.
+    - A debug context was added to debug macros to implement custom
+      debug handling. This is used to redirect the debug of pods to
+      the debug log instead of using some custom duplicated code.
+    - Fix some warnings for potentially undefined shifts in format
+    conversion.
+    - Support for compress offload was added using tinycompress.
+      This is mostly used on some embedded hardware where decoding
+      of audio formats can be done in hardware.
+  * Bluetooth
+    - Some fixes for LE audio were added.
+    - Support for Bluetooth MIDI was added. This requires a
+      wireplumber addition as well.
+    - Reply OK to empty commands.
+    - Improve compatibility with some devices that send stray \n
+      such as the Sennheiser HD 350BT.
+  * pulse-server
+    - Devices with unsupported formats (by the pulseaudio API) are
+      now also listed in the pulseaudio API (with invalid formats).
+    - The native module-combine-stream is used for
+      module-combine-sink.
+  * JACK
+    - Make jack.merge-monitor default to true to better match the
+      jack1/2 behaviour. Add an exception for mixxx, which is more
+      usable with unmerged monitors.
+  * ALSA
+    - The property handling in the ALSA plugin was improved.
+      alsa.properties and alsa.rules can now be added to the config
+      file.
+    - A rule was added to tweak the buffer settings in
+      Davinci Resolve so that it can run with acceptable latency.
+    - ALSA volume will now also use cubic volumes, like pulseaudio.
+    - The ALSA ctl plugin now also uses the client-rt.conf file.
+    - A new alsa.volume-method was added to configure cubic or
+      linear volume.
+      This can be set per application using the rules.
+  * GStreamer
+    - pipewiresrc will now advertise DMABUF support if the pipeline
+      supports this.
+    - pipewiresrc will now always be a live source unless told
+      otherwise.
+- Drop reduce-meson-dependency.patch: openSUSE Leap 15.3 is
+  no longer supported.
+- Add patch to install module-combine-stream:
+  * 0001-modules-also-install-module-combine-stream.patch
+- Drop patches already included upstream:
+  * 0001-cpu-arm-Fix-incorrect-free.patch
+  * 0001-alsa-guard-against-some-invalid-values.patch
+  * 0001-spa-Fix-audioconvert-overflow-when-scaling.patch
+
+-------------------------------------------------------------------
 Tue Jan 17 08:28:49 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to avoid division by 0 and other issues

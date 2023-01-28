@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.64
+Version:        0.3.65
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -62,15 +62,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
-Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-cpu-arm-Fix-incorrect-free.patch
-Patch1:         0001-cpu-arm-Fix-incorrect-free.patch
-# PATCH-FIX-UPSTREAM 0001-alsa-guard-against-some-invalid-values.patch
-Patch2:         0001-alsa-guard-against-some-invalid-values.patch
-# PATCH-FIX-UPSTREAM 0001-spa-Fix-audioconvert-overflow-when-scaling.patch
-Patch3:         0001-spa-Fix-audioconvert-overflow-when-scaling.patch
-
+# PATCH-FIX-UPSTREAM 0001-modules-also-install-module-combine-stream.patch
+Patch0:         0001-modules-also-install-module-combine-stream.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -80,11 +73,7 @@ BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  graphviz
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
-BuildRequires:  meson >= 0.54.0
-%else
 BuildRequires:  meson >= 0.59.0
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -358,13 +347,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %lang_package
 
 %prep
-%autosetup -N
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
-%patch0 -p1
-%endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
