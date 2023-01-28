@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 27 18:22:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean out recommendations and test requirements
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Thu Jan 26 14:08:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Simplify %%prep.

@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modname pytest_subprocess
 Name:           python-pytest-subprocess
 Version:        1.4.2
 Release:        0
@@ -26,28 +24,20 @@ License:        MIT
 URL:            https://github.com/aklajnert/pytest-subprocess
 Source0:        https://files.pythonhosted.org/packages/source/p/pytest-subprocess/pytest-subprocess-%{version}.tar.gz
 Source1:        tests.tar.xz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 4.0.0
-Recommends:     python-Pygments >= 2.0
-Recommends:     python-anyio
-Recommends:     python-changelogd
-Recommends:     python-coverage
-Recommends:     python-docutils >= 0.12
-Recommends:     python-furo
-Recommends:     python-nox
-Recommends:     python-pytest-asyncio >= 0.15.1
-Recommends:     python-pytest-rerunfailures
-Recommends:     python-sphinx
-Recommends:     python-sphinx-autodoc-typehints
-Recommends:     python-sphinxcontrib-napoleon
 BuildArch:      noarch
 # SECTION Test requirements
 BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module pygments}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Pygments >= 2}
+BuildRequires:  %{python_module docutils >= 0.12}
+BuildRequires:  %{python_module pytest >= 4}
+BuildRequires:  %{python_module pytest-asyncio >= 0.15.1}
+BuildRequires:  %{python_module pytest-rerunfailures}
 # /SECTION
 %python_subpackages
 
@@ -63,10 +53,10 @@ chmod -x LICENSE README.rst pytest_subprocess/py.typed pytest_subprocess.egg-inf
 sed -Ei "s/\r$//" README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,7 +66,7 @@ sed -Ei "s/\r$//" README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/pytest_subprocess/
+%{python_sitelib}/pytest_subprocess-%{version}.dist-info
 
 %changelog
