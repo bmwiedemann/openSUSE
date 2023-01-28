@@ -31,4 +31,20 @@
     <comment></comment>
     <requestid>974411</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55d2876c0f559155a255aaf386d79fcc</srcmd5>
+    <version>0.8.0</version>
+    <time>1674927936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * This release brings build and distribution machinery up to date, adds
+    support for more recent Python 3 versions, and drops support for Python 2. 
+    We no longer support Python versions older than 3.6.
+  * Removed Python 2 compatibility code.
+  * Migrated CI from Travis CI and Appveyor to GitHub Actions.
+  * Updated copyright headers.
+  * Modernised build machinery.
+  * Updated documentation to use the Enthought Sphinx Theme.</comment>
+    <requestid>1061745</requestid>
+  </revision>
 </revisionlist>

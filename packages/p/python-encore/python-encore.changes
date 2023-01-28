@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jan 28 14:32:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * This release brings build and distribution machinery up to date, adds
+    support for more recent Python 3 versions, and drops support for Python 2. 
+    We no longer support Python versions older than 3.6.
+  * Removed Python 2 compatibility code.
+  * Migrated CI from Travis CI and Appveyor to GitHub Actions.
+  * Updated copyright headers.
+  * Modernised build machinery.
+  * Updated documentation to use the Enthought Sphinx Theme.
+
+-------------------------------------------------------------------
 Mon May  2 10:31:23 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
