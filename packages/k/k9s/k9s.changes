@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jan 27 06:07:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.0:
+  * K9s/rel v0.27.0 (#1932)
+  * Bump alpine from 3.16.2 to 3.17.1 (#1907)
+  * Replace x86_64 to amd64 build (#1910)
+  * Bump actions/checkout from 3.1.0 to 3.3.0 (#1908)
+  * Bump golang from 1.19.2-alpine3.16 to 1.19.5-alpine3.16 (#1915)
+  * Use default terminal colors for better readability (#1290) (#1837)
+  * Add labels configuration to Shell node pod (#1847)
+  * Set build date on macos (#1849)
+  * Update ScanSA calls to account for blank service accounts (#1871)
+  * Add k8s client compatibility matrix (#1872)
+  * bugfix for port forward custom containers not showing #1844 (#1877)
+  * feat: add noLatestRevCheck config option (#1874)
+  * Add policy view to serviceAccounts (#1840)
+  * Add VIM-like quit force option. (#1859)
+  * Fix order of arguments for `CanI` function call (#1866)
+  * Update README.md (#1696)
+  * Bump all references of github.com/cenkalti/backoff to v4 (#1821)
+  * Plugin support for carvel kapp CR (#1830)
+  * flux.yml plugin now displays stderr messages (#1829)
+  * Bump actions/setup-go from 3.1.0 to 3.3.1 (#1817)
+
+-------------------------------------------------------------------
 Tue Oct 18 18:18:00 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.26.7:
