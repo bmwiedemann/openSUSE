@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jan 27 09:23:35 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.0
+  - (added) VS Mode - Start and join inactive studios
+  - (added) JackTrip now prints build info on running from console
+  - (added) VS Mode - supports changing output volume from the server
+  - (added) VS Mode - Link to video on VS web when connected
+  - (updated) signing now happens in the main build workflow
+  - (updated) VS mode sorts active studios above inactive studios
+  - (updated) replaced many ifdefs with if constexpr
+  - (updated) After signing out of VS mode, you will be asked to sign back in on the web
+  - (fixed) network stats failing after studio start
+  - (fixed) occasional immediate disconnects
+  - (fixed) segfault issue due to ifdefs
+  - (fixed) turned a comment warning into an appropriate error
+  - (fixed) VS Mode - Join issue withs studios started in app
+  - (fixed) hanging app after refreshing studios
+  - (fixed) VS Mode - TCP 19 error after starting a studio
+
+-------------------------------------------------------------------
 Mon Jan  9 11:23:52 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.6.8

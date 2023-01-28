@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        1.6.8
+Version:        1.7.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
