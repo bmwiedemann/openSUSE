@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jan 26 23:00:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.9.29
+  * Switch to Google style docstrings.
+- Release 2022.2.2
+  * Add type hints.
+  * Add main function.
+  * Add FileSystemAbc abstract base class.
+  * Remove OifFile.tiffs (breaking).
+  * Drop support for Python 3.7 and numpy < 1.19 (NEP29).
+- Release 2021.6.6
+  * Fix unclosed file warnings.
+- Clean specfile
+
+-------------------------------------------------------------------
 Fri Feb 19 08:32:28 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Skip python36 because python-numpy does not support it.
