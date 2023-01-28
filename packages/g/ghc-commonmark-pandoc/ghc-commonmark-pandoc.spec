@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-commonmark-pandoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name commonmark-pandoc
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.2
+Version:        0.2.1.3
 Release:        0
 Summary:        Bridge between commonmark and pandoc AST
 License:        BSD-3-Clause
