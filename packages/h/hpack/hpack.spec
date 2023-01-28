@@ -1,7 +1,7 @@
 #
 # spec file for package hpack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name hpack
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.35.1
+Version:        0.35.2
 Release:        0
 Summary:        A modern format for Haskell packages
 License:        MIT

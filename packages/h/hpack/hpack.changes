@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 26 01:09:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hpack to version 0.35.2.
+  ## Changes in 0.35.2
+    - Add support for `ghc-shared-options`
+
+  ## Changes in 0.35.1
+    - Allow `Cabal-3.8.*`
+    - Additions to internal API
+
+-------------------------------------------------------------------
 Sun Dec 11 23:09:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hpack to version 0.35.1.
