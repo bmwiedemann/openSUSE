@@ -77,7 +77,6 @@
       <repopackage name="adwaita-icon-theme"/>
       <repopackage name="adwaita-qt5"/>
       <repopackage name="adwaita-xfce-icon-theme"/>
-      <repopackage name="agrep"/>
       <repopackage name="aha"/>
       <repopackage name="akonadi-calendar-lang"/>
       <repopackage name="akonadi-calendar-tools"/>
@@ -98,7 +97,6 @@
       <repopackage name="akonadi-server-lang"/>
       <repopackage name="akregator"/>
       <repopackage name="akregator-lang"/>
-      <repopackage name="alpine"/>
       <repopackage name="alsa"/>
       <repopackage name="alsa-firmware"/>
       <repopackage name="alsa-oss"/>
@@ -111,7 +109,6 @@
       <repopackage name="alsa-ucm-conf"/>
       <repopackage name="alsa-utils"/>
       <repopackage name="alts"/>
-      <repopackage name="amarok"/>
       <repopackage name="amavisd-milter"/>
       <repopackage name="amavisd-new"/>
       <repopackage name="amavisd-new-docs"/>
@@ -173,7 +170,6 @@
       <repopackage name="augeas"/>
       <repopackage name="augeas-lenses"/>
       <repopackage name="autoconf" arch="x86_64"/>
-      <repopackage name="autoconf-el"/>
       <repopackage name="autofs"/>
       <repopackage name="automake" arch="x86_64"/>
       <repopackage name="autotrace"/>
@@ -246,7 +242,6 @@
       <repopackage name="brltty-driver-speech-dispatcher"/>
       <repopackage name="brltty-driver-xwindow"/>
       <repopackage name="brltty-lang"/>
-      <repopackage name="bsd-games"/>
       <repopackage name="btrfsmaintenance"/>
       <repopackage name="btrfsprogs"/>
       <repopackage name="btrfsprogs-udev-rules"/>
@@ -300,7 +295,6 @@
       <repopackage name="chrony-pool-openSUSE"/>
       <repopackage name="cifs-utils"/>
       <repopackage name="circuslinux"/>
-      <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
       <repopackage name="clang15"/>
@@ -355,9 +349,6 @@
       <repopackage name="cyrus-sasl-digestmd5"/>
       <repopackage name="cyrus-sasl-gssapi"/>
       <repopackage name="cyrus-sasl-plain"/>
-      <repopackage name="dar"/>
-      <repopackage name="dar-doc"/>
-      <repopackage name="dar-lang"/>
       <repopackage name="db48-utils"/>
       <repopackage name="dbus-1"/>
       <repopackage name="dbus-1-common"/>
@@ -387,8 +378,6 @@
       <repopackage name="dialog-lang"/>
       <repopackage name="diffutils"/>
       <repopackage name="diffutils-lang"/>
-      <repopackage name="ding"/>
-      <repopackage name="ding-dict-de_en"/>
       <repopackage name="dirmngr"/>
       <repopackage name="discover"/>
       <repopackage name="discover-backend-flatpak"/>
@@ -556,11 +545,8 @@
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
       <repopackage name="gcab-lang"/>
-      <repopackage name="gcal"/>
-      <repopackage name="gcal-lang"/>
       <repopackage name="gcc"/>
       <repopackage name="gcc12"/>
-      <repopackage name="gcc12-info"/>
       <repopackage name="gcc12-locale"/>
       <repopackage name="gcin"/>
       <repopackage name="gcin-branding-openSUSE"/>
@@ -761,7 +747,6 @@
       <repopackage name="grantleetheme-lang"/>
       <repopackage name="grep"/>
       <repopackage name="grep-lang"/>
-      <repopackage name="grepmail"/>
       <repopackage name="grilo-lang"/>
       <repopackage name="grilo-plugin-tracker"/>
       <repopackage name="grilo-plugin-youtube"/>
@@ -904,8 +889,6 @@
       <repopackage name="hplip-hpijs"/>
       <repopackage name="hplip-sane"/>
       <repopackage name="hplip-udev-rules"/>
-      <repopackage name="hunspell"/>
-      <repopackage name="hunspell-tools"/>
       <repopackage name="hwdata"/>
       <repopackage name="hwinfo"/>
       <repopackage name="hylafax+"/>
@@ -985,26 +968,9 @@
       <repopackage name="irda"/>
       <repopackage name="irqbalance"/>
       <repopackage name="irqbalance-ui"/>
-      <repopackage name="irssi"/>
       <repopackage name="iso-codes"/>
       <repopackage name="iso-codes-lang"/>
       <repopackage name="iso_ent"/>
-      <repopackage name="ispell"/>
-      <repopackage name="ispell-american"/>
-      <repopackage name="ispell-brazilian"/>
-      <repopackage name="ispell-british"/>
-      <repopackage name="ispell-czech"/>
-      <repopackage name="ispell-danish"/>
-      <repopackage name="ispell-french"/>
-      <repopackage name="ispell-german"/>
-      <repopackage name="ispell-greek"/>
-      <repopackage name="ispell-hungarian"/>
-      <repopackage name="ispell-italian"/>
-      <repopackage name="ispell-ngerman"/>
-      <repopackage name="ispell-polish"/>
-      <repopackage name="ispell-portuguese"/>
-      <repopackage name="ispell-russian"/>
-      <repopackage name="ispell-spanish"/>
       <repopackage name="issue-generator"/>
       <repopackage name="iw"/>
       <repopackage name="java-11-openjdk"/>
@@ -1357,7 +1323,6 @@
       <repopackage name="ldns"/>
       <repopackage name="lensfun-data"/>
       <repopackage name="less"/>
-      <repopackage name="lftp"/>
       <repopackage name="lhasa"/>
       <repopackage name="lib2geom1_2_0"/>
       <repopackage name="lib389" arch="x86_64"/>
@@ -1583,7 +1548,6 @@
       <repopackage name="libcupsimage2"/>
       <repopackage name="libcurl4"/>
       <repopackage name="libdaemon0"/>
-      <repopackage name="libdar64-6000"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdatrie1-32bit" arch="x86_64"/>
       <repopackage name="libdav1d6"/>
@@ -1699,7 +1663,6 @@
       <repopackage name="libfido2-1"/>
       <repopackage name="libfile1_0"/>
       <repopackage name="libfind4_0"/>
-      <repopackage name="libfl2"/>
       <repopackage name="libFLAC++10"/>
       <repopackage name="libFLAC12"/>
       <repopackage name="libflashrom1"/>
@@ -1830,9 +1793,6 @@
       <repopackage name="libgphoto2-6-lang"/>
       <repopackage name="libgphoto2_port12"/>
       <repopackage name="libgpm2"/>
-      <repopackage name="libgpod-lang"/>
-      <repopackage name="libgpod-tools"/>
-      <repopackage name="libgpod4"/>
       <repopackage name="libgps30"/>
       <repopackage name="libgraphene-1_0-0"/>
       <repopackage name="libGraphicsMagick++-Q16-12"/>
@@ -2241,7 +2201,6 @@
       <repopackage name="libkyotocabinet16"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
-      <repopackage name="liblastfm5-1"/>
       <repopackage name="liblavfile-2_2-0"/>
       <repopackage name="liblavjpeg-2_2-0"/>
       <repopackage name="liblavplay-2_2-0"/>
@@ -2298,7 +2257,6 @@
       <repopackage name="libmalcontent-ui-0-0"/>
       <repopackage name="libmanette-0_2-0"/>
       <repopackage name="libmariadb3"/>
-      <repopackage name="libmariadbd19"/>
       <repopackage name="libmarkdown2"/>
       <repopackage name="libmatroska7"/>
       <repopackage name="libmaxminddb0"/>
@@ -2347,7 +2305,6 @@
       <repopackage name="libmusicbrainz5-1"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
-      <repopackage name="libmygpo-qt5-1"/>
       <repopackage name="libmypaint-lang"/>
       <repopackage name="libmypaint0"/>
       <repopackage name="libmysofa1" arch="x86_64"/>
@@ -2396,7 +2353,6 @@
       <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
       <repopackage name="libodfgen-0_1-1"/>
-      <repopackage name="libofa0"/>
       <repopackage name="libogg0"/>
       <repopackage name="libogg0-32bit" arch="x86_64"/>
       <repopackage name="liboggkate1"/>
@@ -2681,7 +2637,6 @@
       <repopackage name="librpmbuild9"/>
       <repopackage name="librscg1_0"/>
       <repopackage name="librsvg-2-2"/>
-      <repopackage name="librsync2"/>
       <repopackage name="librubberband2" arch="x86_64"/>
       <repopackage name="libruby3_1-3_1"/>
       <repopackage name="libsamba-policy0-python3"/>
@@ -2799,7 +2754,6 @@
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libsystemd0-32bit" arch="x86_64"/>
-      <repopackage name="libtag-extras1"/>
       <repopackage name="libtag1"/>
       <repopackage name="libtag_c0"/>
       <repopackage name="libtalloc2"/>
@@ -2833,7 +2787,6 @@
       <repopackage name="libtowitoko2"/>
       <repopackage name="libtpms0"/>
       <repopackage name="libtracker-sparql-3_0-0"/>
-      <repopackage name="libtre5"/>
       <repopackage name="libts0"/>
       <repopackage name="libtsan2" arch="x86_64"/>
       <repopackage name="libtss2-esys0"/>
@@ -3129,7 +3082,6 @@
       <repopackage name="lightdm-lang"/>
       <repopackage name="lightsoff"/>
       <repopackage name="lightsoff-lang"/>
-      <repopackage name="links"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
       <repopackage name="llvm15-gold"/>
@@ -3153,7 +3105,6 @@
       <repopackage name="lunar-date-lang"/>
       <repopackage name="lv"/>
       <repopackage name="lvm2"/>
-      <repopackage name="lynx"/>
       <repopackage name="lzip"/>
       <repopackage name="lzop"/>
       <repopackage name="m17n-db"/>
@@ -3226,8 +3177,6 @@
       <repopackage name="microos-tools"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
-      <repopackage name="minicom"/>
-      <repopackage name="minicom-lang"/>
       <repopackage name="mjpegtools"/>
       <repopackage name="mkfontscale"/>
       <repopackage name="mkisofs"/>
@@ -3310,9 +3259,6 @@
       <repopackage name="mtr"/>
       <repopackage name="mugshot"/>
       <repopackage name="multipath-tools"/>
-      <repopackage name="mutt"/>
-      <repopackage name="mutt-doc"/>
-      <repopackage name="mutt-lang"/>
       <repopackage name="mutter"/>
       <repopackage name="mutter-lang"/>
       <repopackage name="myspell-cs_CZ"/>
@@ -3358,7 +3304,6 @@
       <repopackage name="nbdkit-server" arch="x86_64"/>
       <repopackage name="nbdkit-ssh-plugin" arch="x86_64"/>
       <repopackage name="nbdkit-vddk-plugin" arch="x86_64"/>
-      <repopackage name="ncftp"/>
       <repopackage name="ncompress"/>
       <repopackage name="ncurses-utils"/>
       <repopackage name="net-snmp"/>
@@ -3483,7 +3428,6 @@
       <repopackage name="pam_ssh"/>
       <repopackage name="pam_ssh-32bit" arch="x86_64"/>
       <repopackage name="paperkey"/>
-      <repopackage name="par"/>
       <repopackage name="parallel-printer-support"/>
       <repopackage name="paratype-pt-mono-fonts"/>
       <repopackage name="paratype-pt-sans-fonts"/>
@@ -3597,7 +3541,6 @@
       <repopackage name="perl-Crypt-OpenSSL-RSA"/>
       <repopackage name="perl-Crypt-Rijndael"/>
       <repopackage name="perl-Crypt-SmbHash"/>
-      <repopackage name="perl-Date-Manip"/>
       <repopackage name="perl-DBD-mysql"/>
       <repopackage name="perl-DBI"/>
       <repopackage name="perl-Digest-HMAC"/>
@@ -3608,11 +3551,9 @@
       <repopackage name="perl-Encode-Detect"/>
       <repopackage name="perl-Encode-Locale"/>
       <repopackage name="perl-Error"/>
-      <repopackage name="perl-Expect"/>
       <repopackage name="perl-ExtUtils-PkgConfig"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-File-RandomAccess"/>
-      <repopackage name="perl-FileHandle-Unget"/>
       <repopackage name="perl-GD"/>
       <repopackage name="perl-Geography-Countries"/>
       <repopackage name="perl-gettext"/>
@@ -3640,7 +3581,6 @@
       <repopackage name="perl-LWP-Protocol-https"/>
       <repopackage name="perl-Mail-AuthenticationResults"/>
       <repopackage name="perl-Mail-DKIM"/>
-      <repopackage name="perl-Mail-Mbox-MessageParser"/>
       <repopackage name="perl-Mail-SpamAssassin"/>
       <repopackage name="perl-Mail-SPF"/>
       <repopackage name="perl-MailTools"/>
@@ -3708,7 +3648,6 @@
       <repopackage name="php8-xmlreader"/>
       <repopackage name="php8-xmlwriter"/>
       <repopackage name="pia"/>
-      <repopackage name="pico"/>
       <repopackage name="pidgin"/>
       <repopackage name="pidgin-plugin-libsteam"/>
       <repopackage name="pidgin-plugin-mattermost"/>
@@ -3729,7 +3668,6 @@
       <repopackage name="pinentry-gnome3"/>
       <repopackage name="pinentry-gtk2"/>
       <repopackage name="pinentry-qt5"/>
-      <repopackage name="pinfo"/>
       <repopackage name="pipewire"/>
       <repopackage name="pipewire-alsa"/>
       <repopackage name="pipewire-lang"/>
@@ -4008,7 +3946,6 @@
       <repopackage name="python310-typing_extensions"/>
       <repopackage name="python310-unicodedata2"/>
       <repopackage name="python310-urllib3"/>
-      <repopackage name="python310-urwid"/>
       <repopackage name="python310-zipp"/>
       <repopackage name="python310-zope.event"/>
       <repopackage name="python310-zope.interface"/>
@@ -4471,7 +4408,6 @@
       <repopackage name="rubygem-passenger"/>
       <repopackage name="rubygem-passenger-apache2"/>
       <repopackage name="rzip"/>
-      <repopackage name="rzsz"/>
       <repopackage name="sac"/>
       <repopackage name="salt"/>
       <repopackage name="salt-master"/>
@@ -4553,9 +4489,6 @@
       <repopackage name="skanlite"/>
       <repopackage name="skanlite-lang"/>
       <repopackage name="skkdic"/>
-      <repopackage name="slang-slsh"/>
-      <repopackage name="slrn"/>
-      <repopackage name="slrn-lang"/>
       <repopackage name="smartmontools"/>
       <repopackage name="smp_utils"/>
       <repopackage name="snapper"/>
@@ -4748,8 +4681,6 @@
       <repopackage name="transmission-common"/>
       <repopackage name="transmission-gtk"/>
       <repopackage name="transmission-gtk-lang"/>
-      <repopackage name="tre"/>
-      <repopackage name="tre-lang"/>
       <repopackage name="tree"/>
       <repopackage name="trousers"/>
       <repopackage name="tukit"/>
@@ -4855,15 +4786,12 @@
       <repopackage name="unbound-anchor"/>
       <repopackage name="unclutter" arch="x86_64"/>
       <repopackage name="unison"/>
-      <repopackage name="units"/>
       <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
       <repopackage name="unzip-doc"/>
       <repopackage name="update-alternatives"/>
       <repopackage name="upower"/>
       <repopackage name="upower-lang"/>
-      <repopackage name="urlscan"/>
-      <repopackage name="urlview"/>
       <repopackage name="usb_modeswitch"/>
       <repopackage name="usb_modeswitch-data"/>
       <repopackage name="usbmuxd"/>
@@ -4936,7 +4864,6 @@
       <repopackage name="wol"/>
       <repopackage name="wol-lang"/>
       <repopackage name="wondershaper"/>
-      <repopackage name="words"/>
       <repopackage name="wpa_supplicant"/>
       <repopackage name="wpa_supplicant-gui" arch="x86_64"/>
       <repopackage name="wqy-zenhei-fonts"/>

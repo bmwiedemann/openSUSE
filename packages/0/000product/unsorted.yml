@@ -445,6 +445,7 @@ unsorted:
   - age 
   - agenda 
   - agenda-lang 
+  - agrep 
   - aho-corasick-double-array-trie 
   - aho-corasick-double-array-trie-javadoc 
   - aide 
@@ -497,6 +498,7 @@ unsorted:
   - allegro44-tools 
   - almanah 
   - almanah-lang 
+  - alpine 
   - alpine-branding-openSUSE 
   - alsa-devel 
   - alsa-devel-32bit: [x86_64] 
@@ -524,6 +526,7 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
+  - amarok 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -1002,6 +1005,7 @@ unsorted:
   - autobuild 
   - autoconf: [i586] 
   - autoconf-archive 
+  - autoconf-el 
   - autoconf213 
   - autocutsel 
   - autofdo 
@@ -1502,6 +1506,7 @@ unsorted:
   - bs1770gain 
   - bs2b-tools 
   - bscalc 
+  - bsd-games 
   - bsdiff 
   - bsdtar 
   - bsf 
@@ -2043,6 +2048,7 @@ unsorted:
   - cjs-tests 
   - ck-devel 
   - ckb-next 
+  - ckermit 
   - ckermit-doc 
   - clFFT: [x86_64] 
   - clFFT-devel: [x86_64] 
@@ -2812,6 +2818,9 @@ unsorted:
   - dapl-utils 
   - dapper 
   - daps 
+  - dar 
+  - dar-doc 
+  - dar-lang 
   - dareader-devel 
   - darktable: [x86_64] 
   - darktable-tools-basecurve: [x86_64] 
@@ -3064,6 +3073,8 @@ unsorted:
   - digikam-lang 
   - digikam-plugins 
   - dina-bitmap-fonts 
+  - ding 
+  - ding-dict-de_en 
   - dino 
   - dino-devel 
   - diod 
@@ -4271,6 +4282,8 @@ unsorted:
   - gc-devel 
   - gcab-devel 
   - gcad3d 
+  - gcal 
+  - gcal-lang 
   - gcc-32bit: [x86_64] 
   - gcc-PIE 
   - gcc-ada 
@@ -4323,6 +4336,7 @@ unsorted:
   - gcc12-fortran-32bit: [x86_64] 
   - gcc12-go 
   - gcc12-go-32bit: [x86_64] 
+  - gcc12-info 
   - gcc12-obj-c++ 
   - gcc12-obj-c++-32bit: [x86_64] 
   - gcc12-objc 
@@ -6622,6 +6636,7 @@ unsorted:
   - grc 
   - greetd 
   - grepcidr 
+  - grepmail 
   - grfcodec 
   - gri 
   - grilo-devel 
@@ -7261,8 +7276,10 @@ unsorted:
   - hugo 
   - hugo-bash-completion 
   - humanity-icon-theme 
+  - hunspell 
   - hunspell-devel 
   - hunspell-devel-32bit: [x86_64] 
+  - hunspell-tools 
   - hut 
   - hut-bash-completion 
   - hut-fish-completion 
@@ -7637,6 +7654,7 @@ unsorted:
   - irqstat 
   - irrlicht-data 
   - irrlicht-devel 
+  - irssi 
   - irssi-devel 
   - irssi-otr 
   - isatapd 
@@ -7650,17 +7668,33 @@ unsorted:
   - isorelax 
   - ispc: [x86_64] 
   - ispc-devel: [x86_64] 
+  - ispell 
+  - ispell-american 
+  - ispell-brazilian 
+  - ispell-british 
   - ispell-bulgarian 
   - ispell-catalan 
+  - ispell-czech 
+  - ispell-danish 
   - ispell-dutch 
   - ispell-esperanto 
   - ispell-estonian 
   - ispell-finnish 
+  - ispell-french 
+  - ispell-german 
+  - ispell-greek 
+  - ispell-hungarian 
+  - ispell-italian 
   - ispell-naustrian 
+  - ispell-ngerman 
   - ispell-norsk 
   - ispell-nswiss 
+  - ispell-polish 
+  - ispell-portuguese 
+  - ispell-russian 
   - ispell-slovak 
   - ispell-slovene 
+  - ispell-spanish 
   - ispell-swedish 
   - istack-commons 
   - istack-commons-buildtools 
@@ -9183,6 +9217,7 @@ unsorted:
   - leveldb-devel 
   - leveldb-devel-static 
   - levmar-devel 
+  - lftp 
   - lha 
   - lhasa-devel 
   - lib2geom-devel 
@@ -10807,6 +10842,7 @@ unsorted:
   - libdSFMT2_2 
   - libdaemon-devel 
   - libdar-devel 
+  - libdar64-6000 
   - libdareader1 
   - libdat2-2 
   - libdat2-2-32bit: [x86_64] 
@@ -11223,6 +11259,7 @@ unsorted:
   - libfko3 
   - libfl-devel 
   - libfl-devel-32bit: [x86_64] 
+  - libfl2 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
   - libflatbuffers2 
@@ -11631,6 +11668,9 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
+  - libgpod-lang 
+  - libgpod-tools 
+  - libgpod4 
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
@@ -12363,6 +12403,7 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
+  - liblastfm5-1 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -12543,6 +12584,7 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
+  - libmariadbd19 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -12827,6 +12869,7 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
+  - libmygpo-qt5-1 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -13059,6 +13102,7 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
+  - libofa0 
   - libofa0-32bit: [x86_64] 
   - libofx 
   - libofx-devel 
@@ -14145,6 +14189,7 @@ unsorted:
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
   - librsync-devel 
+  - librsync2 
   - librtaudio6 
   - librtlsdr0 
   - librtmidi6 
@@ -14650,6 +14695,7 @@ unsorted:
   - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
+  - libtag-extras1 
   - libtag1-32bit: [x86_64] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
@@ -14789,6 +14835,7 @@ unsorted:
   - libtrampoline1 
   - libtranscript-devel 
   - libtranscript1 
+  - libtre5 
   - libtree-sitter0 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
   - libtrilinos-gnu-mvapich2-hpc: [x86_64] 
@@ -15667,6 +15714,7 @@ unsorted:
   - link-grammar 
   - link-grammar-devel 
   - linkloop 
+  - links 
   - linode-cli-bash-completion 
   - linphone 
   - linphone-cli 
@@ -16211,6 +16259,7 @@ unsorted:
   - lxterminal 
   - lxterminal-lang 
   - lynis 
+  - lynx 
   - lyx 
   - lyx-fonts 
   - lz4 
@@ -16910,6 +16959,8 @@ unsorted:
   - mingw64-zlib-devel 
   - mingw64-zlib1 
   - mingzat-fonts 
+  - minicom 
+  - minicom-lang 
   - minicondor 
   - minidlna 
   - minigalaxy 
@@ -17432,6 +17483,9 @@ unsorted:
   - musique-lang 
   - mustang-plug 
   - mustang-plug-udev-rules 
+  - mutt 
+  - mutt-doc 
+  - mutt-lang 
   - mutter-devel 
   - mvapich2 
   - mvapich2-devel 
@@ -17699,6 +17753,7 @@ unsorted:
   - nbsdgames 
   - ncat 
   - ncdu 
+  - ncftp 
   - ncmpcpp 
   - nco 
   - nco-doc 
@@ -19292,6 +19347,7 @@ unsorted:
   - paprefs 
   - paprefs-lang 
   - paps 
+  - par 
   - par2cmdline 
   - par_text 
   - paradise 
@@ -19890,6 +19946,7 @@ unsorted:
   - perl-Data-Visitor 
   - perl-Date-Calc 
   - perl-Date-Holidays-CZ 
+  - perl-Date-Manip 
   - perl-Date-Range 
   - perl-Date-Simple 
   - perl-Date-Tiny 
@@ -19972,6 +20029,7 @@ unsorted:
   - perl-Event 
   - perl-Exception-Base 
   - perl-Exception-Class 
+  - perl-Expect 
   - perl-Export-Attrs 
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
@@ -20038,6 +20096,7 @@ unsorted:
   - perl-File-Which 
   - perl-File-chdir 
   - perl-File-pushd 
+  - perl-FileHandle-Unget 
   - perl-Filesys-Df 
   - perl-Filesys-Notify-Simple 
   - perl-Filesys-Statvfs 
@@ -20227,6 +20286,7 @@ unsorted:
   - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
+  - perl-Mail-Mbox-MessageParser 
   - perl-Mail-Message 
   - perl-Mail-SPF-Test 
   - perl-Mail-SPF_XS 
@@ -21097,6 +21157,7 @@ unsorted:
   - picard-lang 
   - picmi 
   - picmi-lang 
+  - pico 
   - picocli 
   - picocli-javadoc 
   - picocom 
@@ -21131,6 +21192,7 @@ unsorted:
   - pinentry-efl 
   - pinentry-emacs 
   - pinentry-fltk 
+  - pinfo 
   - pingtunnel 
   - pingus 
   - pink-pony 
@@ -25462,6 +25524,7 @@ unsorted:
   - python310-url-normalize 
   - python310-urlextract 
   - python310-urlgrabber 
+  - python310-urwid 
   - python310-usbsdmux 
   - python310-user-agents 
   - python310-user_agent 
@@ -33530,6 +33593,7 @@ unsorted:
   - rygel-plugin-gstreamer-renderer 
   - rygel-plugin-tracker 
   - rypper 
+  - rzsz 
   - s-tui 
   - s3backer 
   - s3fs 
@@ -33968,6 +34032,7 @@ unsorted:
   - sl 
   - slade 
   - slang-devel 
+  - slang-slsh 
   - sleuth 
   - sleuthkit 
   - sleuthkit-devel 
@@ -33983,6 +34048,8 @@ unsorted:
   - slirp4netns: [i586] 
   - slop 
   - slop-devel 
+  - slrn 
+  - slrn-lang 
   - sluice 
   - sluice-bash-completion 
   - slurm: [x86_64] 
@@ -43485,7 +43552,9 @@ unsorted:
   - transmission-qt 
   - transmission-qt-lang 
   - transset 
+  - tre 
   - tre-devel 
+  - tre-lang 
   - tree-sitter 
   - tree-sitter-devel 
   - treefetch: [x86_64] 
@@ -43947,6 +44016,7 @@ unsorted:
   - unison-text 
   - unit-api 
   - unit-api-javadoc 
+  - units 
   - unittest-cpp-devel 
   - univocity-parsers 
   - univocity-parsers-javadoc 
@@ -43999,6 +44069,8 @@ unsorted:
   - uriparser 
   - uriparser-devel 
   - uriparser-doc 
+  - urlscan 
+  - urlview 
   - urlwatch 
   - urxvt-font-size 
   - urxvt-perls 
@@ -44520,6 +44592,7 @@ unsorted:
   - wordcut-devel 
   - wordnet 
   - wordnet-devel 
+  - words 
   - words-british 
   - words-canadian 
   - workrave 
