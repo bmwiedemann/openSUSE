@@ -1,7 +1,7 @@
 #
 # spec file for package xine-ui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 Name:           xine-ui
 %bcond_without distributable
-BuildRequires:  aalib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -46,7 +45,7 @@ BuildRequires:  pkgconfig(xxf86vm)
 Summary:        Video player with plugins
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Multimedia/Video/Players
-Version:        0.99.13
+Version:        0.99.14
 Release:        0
 URL:            http://xine.sourceforge.net
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -63,8 +62,6 @@ Source99:       baselibs.conf
 Patch0:         xine-ui-various.diff
 #PATCH_FIX-OPENSUSE xine-ui-desktop.patch davejplater@gmail.com - remove desktop file errors
 Patch1:         xine-ui-desktop.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         Fix-build.patch
 # *** SUSE only changes
 Patch50:        xine-ui-crippled-LOCAL.diff
 Patch60:        xine-ui-AUTOMAKE.diff
@@ -85,7 +82,6 @@ Authors:
 %prep
 echo %{with distributable}
 %setup -q
-%patch2 -p1
 %patch0
 %patch50 -p0
 %patch60
@@ -118,7 +114,9 @@ NO_CONFIGURE=1 ./autogen.sh
 	--enable-vdr-keys \
 	--with-pic \
 	--disable-static \
+	--without-aalib \
 	--without-caca \
+	--without-fb \
 	--disable-silent-rules
 make %{_smp_mflags} V=1
 
@@ -137,7 +135,8 @@ done
 #
 %find_lang %{name}
 %find_lang xitk %{name}.lang
-find . -name "xine-bugreport.1*" -print -delete
+# delete aaxine man pages as we don't build it
+find %{buildroot} -name "aaxine.1*" -print -delete
 %fdupes -s %{buildroot}%{_datadir}/xine
 %if 0
 %fdupes -s %{buildroot}%{_mandir}
@@ -158,15 +157,11 @@ find . -name "xine-bugreport.1*" -print -delete
 %doc %_mandir/*/man1/xine.1.gz
 %doc %_mandir/*/man1/xine-check.1.gz
 %doc %_mandir/*/man1/xine-remote.1.gz
-%doc %_mandir/*/man1/aaxine*
-%doc %_mandir/man1/aaxine*
 %doc %_mandir/man1/xine.1.gz
 %doc %_mandir/man1/xine-check.1.gz
 %doc %_mandir/man1/xine-remote.1.gz
 %doc %_mandir/*/man1/xine-bugreport.1.gz
 %doc %_mandir/man1/xine-bugreport.1.gz
-%{_bindir}/aaxine
-%{_bindir}/fbxine
 %{_bindir}/xine
 %{_bindir}/xine-check
 %{_bindir}/xine-remote

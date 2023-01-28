@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 27 09:15:49 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.99.14
+  * Add Dutch translation.
+  * Add panel mrl display highlight.
+  * Add display flipping support.
+  * Better keyboard support.
+  * Better status OSD.
+  * Better setup, key binding and mediamark editors.
+  * Better filename filter.
+  * Fix build with libcaca.
+  * Fix menu hide.
+  * Fix directory add to playlists.
+  * Many small fixes and optimizations.
+  * Update german translation.
+- Drop Fix-build.patch, included in this release
+- Disable aalib and directfb support as well. As xine-lib is built
+  without them, the corresponding executables (aaxine, fbxine)
+  don't work anyway.
+
+-------------------------------------------------------------------
 Sat Dec  3 07:07:48 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Disable CACA support to fix build.
