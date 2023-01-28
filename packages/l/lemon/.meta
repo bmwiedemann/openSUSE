@@ -1,0 +1,6 @@
+<package name="lemon" project="openSUSE:Factory">
+  <title>LEMON</title>
+  <description>Library of Efficient Models and Optimization in Networks</description>
+  <devel project="science" package="lemon"/>
+  <url>http://lemon.cs.elte.hu/</url>
+</package>

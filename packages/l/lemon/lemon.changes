@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Mon Feb  1 21:31:02 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.3.1.
+  * Bugfix release.
+  * Fix shared lib build and versioning
+  * Fix invalid map query in NearestNeighborTsp
+  * Bugfix in debug checking and lower bound handling
+   in min cost flow algorithms
+  * Bugfix in default LP/MIP backend settings
+  * Bugfix in tsp_test
+  * Add missing include header and std:: namespace spec.
+  * Fix division by zero error in NetworkSimplex
+- Update for version 1.3
+  * New data structures
+    * Bipartite graph concepts and implementations
+  * New algorithms
+    * Port Edmonds-Karp algorithm
+    * Heuristic algorithm for the max clique problem
+    * Heuristic algorithms for symmetric TSP
+    * Nagamochi-Ibaraki algorithm [5087694945e4]
+    * Max. cardinality search
+  * Other new features
+    * Thread safe graph and graph map implementations
+    * Different TimeStamp print formats
+    * File export functionality to LpBase
+    * Bidirectional iterator support for radixSort()
+    * Implementation improvements
+  * Implementation improvements
+    * Network Simplex
+    * Better update process, pivot rule and arc mixing
+    * Improved Altering List pivot rule
+    * Various fine tunings in CostScaling
+    * Optional iteration limit in HowardMmc
+    * Ensure strongly polynomial running time for CycleCanceling
+      while keeping the same performance
+    * Make the CBC interface be compatible with latest CBC releases
+  * CMAKE has become the default build environment
+    * Improved LP/MIP configuration
+      * Enable/disable options for LP/MIP backends
+      * Better CPLEX discovery
+      * Add cmake config to find SoPlex
+    * Allow CPACK configuration on all platforms
+    * Add 'Maintainer' CMAKE build type
+    * Add 'check' target.
+    * Add contrib dir
+    * Better version string setting in CMAKE
+    * Support shared library build    
+    * Support testing with valgrind
+  * Doc improvements
+    * SOURCE_BROWSER Doxygen switch is configurable from CMAKE
+      update-external-tags CMAKE target
+    * Optionally use MathJax for rendering the math formulae
+    * Various doc improvements
+  * Bugfixes (compared to release 1.2):
+    * Add missing doc/template.h and doc/references.bib to release
+      tarball
+    * Intel C++ compatibility fixes
+    * Fix buggy reinitialization in _solver_bits::VarIndex::clear()
+    * Bugfix in path copy constructors and assignment operators
+    * Bugfix in AllArcLookUp<>
+    * Bugfix in adaptor_test.cc
+    * Fix clang compilation warnings and errors
+    * Fix a bug + remove redundant typedefs in dimacs-solver
+    * Avoid GCC 4.7 compiler warnings
+    * Fix missing initialization in CplexEnv::CplexEnv()
+    * Add missing lemon/lemon.pc.cmake to the release tarball
+    * Create and install lemon.pc
+    * Fix VS warnings
+    * Fix LpBase::Constr two-side limit bug
+    * Bug fix in Dfs::start(s,t)
+    * Fix wrong initialization in Preflow
+    * Better Win CodeBlock/MinGW support
+    * Build environment improvements
+      * Build of mip_test and lp_test precede the running of the tests
+      * Also search for coin libs under ${COIN_ROOT_DIR}/lib/coin
+      * Do not look for COIN_VOL libraries
+    * Allow lgf file without Arc maps
+    * Bug fix in CostScaling
+    * Fix Pred[Matrix]MapPath::empty()
+    * Bug fix in (di)graphCopy()
+                The target graph is cleared before adding nodes and arcs/edges.
+    * Add missing UndirectedTags
+    * Fix the usage of std::numeric_limits<>::min() in Network Simplex
+    * Fix a critical bug in preflow
+    * Bugfix in assert.h
+    * Fix compilation issues related to various gcc versions
+    * Fix #define indicating CPLEX availability
+    * Add explicit namespace to
+      ignore_unused_variable_warning() usages
+    * Bugfix in IterableValueMap
+    * Bugfix in biNodeConnected()
+
+-------------------------------------------------------------------
+Sat Nov 19 17:29:08 UTC 2011 - werner.ho@gmx.de
+
+- new version 1.2.3
+
+-------------------------------------------------------------------
+* Tue May 04 2010 <akos.ladanyi@gmail.com> - 1.2
+- new version 1.2
+* Sun Dec 20 2009 Werner Hoch <werner.ho@gmx.de> - 1.1.1
+- new version 1.1.1
+* Mon May 19 2009 <akos.ladanyi@gmail.com>
+- new version 1.1
+* Tue May 05 2009 <akos.ladanyi@gmail.com>
+- new version 1.0.4
+* Fri Jan 30 2009 <akos.ladanyi@gmail.com>
+- new version 1.0.2
+* Thu Dec 18 2008 Werner Hoch <werner.ho@gmx.de> - 1.0.1
+- new version 1.0.1
+* Mon Oct 20 2008 <akos.ladanyi@gmail.com>
+- Initial package: lemon-1.0
+
