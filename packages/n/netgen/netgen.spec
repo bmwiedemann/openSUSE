@@ -1,7 +1,7 @@
 #
 # spec file for package netgen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with pytest
 
 Name:           netgen
-Version:        6.2.2204
+Version:        6.2.2301
 Release:        0
 Summary:        Automatic 3D tetrahedral mesh generator
 License:        LGPL-2.1-only
@@ -35,21 +35,13 @@ Patch1:         0001-Disable-backtrace-generation.patch
 # PATCH-FIX-OPENSUSE -- Allow to disable download of Catch2
 Patch4:         0001-Optionally-use-system-provided-Catch2.patch
 # PATCH-FIX-UPSTREAM
-Patch5:         0001-Optionally-prefer-system-wide-pybind11.patch
-# PATCH-FIX-UPSTREAM
 Patch6:         0001-Link-nggui-to-FFMPEG-und-JPEG-libraries-when-needed.patch
 # PATCH-FIX-UPSTREAM
 Patch7:         0001-Avoid-installation-of-Togl-static-library.patch
-# PATCH-FIX-UPSTREAM
-Patch8:         0001-Fix-use-of-unitialized-stlgeometry-member-in-constru.patch
 # PATCH-FIX-OPENSUSE
 Patch9:         0001-Include-filesystem-from-experimental-for-GCC-7.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        0001-Fix-netgen-executable-and-library-RUNPATHs.patch
-# PATCH-FIX-OPENSUSE
-Patch11:        0001-Ignore-invalid-unknown-types-in-pybind11-docstrings.patch
-# PATCH-FIX-UPSTREAM
-Patch12:        0001-fix-building-with-new-ffmpeg.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
@@ -179,6 +171,7 @@ echo "v%{version}-0-0" > ./version.txt
     -DUSE_NATIVE_ARCH=OFF \
     -DUSE_GUI=ON \
     -DUSE_PYTHON=ON \
+    -DPREFER_SYSTEM_PYBIND11=ON \
     -DNG_INSTALL_DIR_PYTHON=%{python3_sitearch} \
 %if %{with openmpi}
     -DUSE_MPI=ON \

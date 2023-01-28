@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jan 27 05:39:24 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2301
+  * no changelog provided
+- Drop upstream patches:
+  * 0001-Optionally-prefer-system-wide-pybind11.patch
+  * 0001-Fix-use-of-unitialized-stlgeometry-member-in-constru.patch
+  * 0001-Ignore-invalid-unknown-types-in-pybind11-docstrings.patch
+  * 0001-fix-building-with-new-ffmpeg.patch
+- Add build _constraints
+
+-------------------------------------------------------------------
 Sun Dec 11 18:26:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Don't write python bytecode during stubgen or test execution,
