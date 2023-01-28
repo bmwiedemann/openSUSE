@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 28 15:11:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * memory leak fixes
+  * bugfixes 
+
+-------------------------------------------------------------------
 Sat Jul  3 20:52:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4.1

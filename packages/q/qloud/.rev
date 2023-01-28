@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>906020</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>589cc0cdd3bf51177875f666d91d3fa4</srcmd5>
+    <version>1.4.2</version>
+    <time>1674927968</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * memory leak fixes
+  * bugfixes</comment>
+    <requestid>1061750</requestid>
+  </revision>
 </revisionlist>
