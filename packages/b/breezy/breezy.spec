@@ -1,7 +1,7 @@
 #
 # spec file for package breezy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,43 @@
 #
 
 
+%define rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+
 Name:           breezy
-Version:        3.2.2
+Version:        3.3.2
 Release:        0
 Summary:        Distributed version control system with multi-format support
 License:        GPL-2.0-or-later
 URL:            https://www.breezy-vcs.org/
-Source:         https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE skip_resource.setrlimit.patch lp#1883125 mcepl@suse.com
-# Don't run resource.setrlimit, which is not allowed in OBS
-Patch0:         skip_resource.setrlimit.patch
+Source0:        https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
+Source90:       cargo_config
+Source98:       vendor-lib-rio.tar.xz
+Source99:       vendor.tar.xz
+# PATCH-FIX-UPSTREAM skip_lp2003710.patch lp#2003710 mcepl@suse.com
+# Skip failing tests
+Patch0:         skip_lp2003710.patch
+BuildRequires:  cargo >= 1.41.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # full stdlib for sqlite3
 BuildRequires:  python3
+BuildRequires:  python3-Cython
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-devel
+BuildRequires:  python3-merge3
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools-gettext
+BuildRequires:  python3-setuptools-rust
+BuildRequires:  python3-wheel
+BuildRequires:  rust >= 1.41.0
+BuildRequires:  zstd
+Requires:       python3-PyYAML
 Requires:       python3-configobj
 Requires:       python3-dulwich >= 0.19.11
 Requires:       python3-fastbencode
 Requires:       python3-fastimport >= 0.9.8
+Requires:       python3-merge3
 Requires:       python3-patiencediff
 Suggests:       python3-launchpadlib >= 1.6.3
 Provides:       bzr = %{version}
@@ -57,15 +74,27 @@ multi-format support. Breezy has built-in support for the Git and
 Bazaar file formats and network protocols.
 
 %prep
-%setup -q -n breezy-%{version}
-%autopatch -p1
+%autosetup -p1 -a 98 -a 99 -n breezy-%{version}
+
 sed -ie "s,man/man1,share/man/man1," setup.py
 
+mkdir .cargo
+cp %{SOURCE90} .cargo/config
+mkdir lib-rio/.cargo
+cp %{SOURCE90} lib-rio/.cargo/config
+
+sed -i '1{\@^#!i[[:blank:]]*%{_bindir}/env python@d}' \
+    breezy/dirty_tracker.py \
+    breezy/tests/ssl_certs/create_ssls.py \
+    breezy/tests/test_dirty_tracker.py
+
 %build
-export CFLAGS="%{optflags}"
+export RUSTFLAGS=%{rustflags}
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python3_build
 
 %install
+export RUSTFLAGS=%{rustflags}
 %python3_install
 %fdupes %{buildroot}%{python3_sitearch}
 

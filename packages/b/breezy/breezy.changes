@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 23 07:45:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.3.2:
+  - Add --recurse-nested argument to 'brz export'.
+  - Add an ``extra`` for installing PGP dependencies.
+  - Convert multiple authors to the Co-authored-by field.
+  - github: Lazily load github pull requests, improving   performance. 
+  - github: Return canonical URLs for branches.
+  - Avoid deprecated distutils.version, ahead of removal.
+  - Add a docker file. 
+  - launchpad: Store Launchpad credentials in authentication.conf.
+  - git: Support accessing git branch configuration.
+  - pgp: Add support for create_signatures=when-possible
+  - propose: By default, don't push tags when proposing changes.
+  - git: Split out and separately report ProtectedBranchHookDeclined.
+  - git: Avoid reading entire pack files into memory.
+  - Numerous bug fixes
+- Remove upstreamed patches:
+  - skip_resource.setrlimit.patch
+- Add skip_lp2003710.patch to skip failing tests (lp#2003710).
+
+-------------------------------------------------------------------
 Mon Oct 24 08:03:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove silly wording from description
