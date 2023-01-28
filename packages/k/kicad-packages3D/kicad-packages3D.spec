@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-packages3D
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define _binary_payload w5T.xzdio
 
 Name:           kicad-packages3D
-Version:        6.0.9
+Version:        6.0.11
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
@@ -32,8 +32,8 @@ Summary:        3D model libraries for rendering and MCAD integration
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
-Source:         https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/%{version}/kicad-packages3D-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake
+Source:         https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/%{version}/kicad-packages3D-%{version}.tar.gz
+BuildRequires:  cmake >= 3.10
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       kicad-footprints = %{version}
