@@ -1,7 +1,7 @@
 #
 # spec file for package python-loguru
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-loguru
 Version:        0.6.0
 Release:        0
@@ -28,15 +29,13 @@ URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM loguru-fix-repr-tests.patch https://github.com/Delgan/loguru/commit/4fe21f6 -- Fix "repr()" tests failing on Python 3.11 and Python 3.10.6
 Patch1:         loguru-fix-repr-tests.patch
-BuildRequires:  %{python_module aiocontextvars if %python-base < 3.7}
+# PATCH-FIX-UPSTREAM https://github.com/Delgan/loguru/commit/5b77724ca75aa8f4b1c8866e0b786c3cbe30ca99
+Patch2:         python311.patch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 37
-Requires:       python-aiocontextvars
-%endif
 Recommends:     python-colorama
 BuildArch:      noarch
 

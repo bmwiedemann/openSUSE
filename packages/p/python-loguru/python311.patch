@@ -1,0 +1,62 @@
+From 5b77724ca75aa8f4b1c8866e0b786c3cbe30ca99 Mon Sep 17 00:00:00 2001
+From: Delgan <delgan.py@gmail.com>
+Date: Sat, 28 May 2022 16:09:23 +0200
+Subject: [PATCH] Fix failing tests on Python 3.11 (#654)
+
+---
+ .github/workflows/tests.yml     |  1 +
+ CHANGELOG.rst                   |  1 +
+ README.rst                      |  6 +++---
+ tests/test_filesink_rotation.py |  4 ++--
+ tests/test_interception.py      | 11 ++++++-----
+ 5 files changed, 13 insertions(+), 10 deletions(-)
+
+Index: loguru-0.6.0/tests/test_filesink_rotation.py
+===================================================================
+--- loguru-0.6.0.orig/tests/test_filesink_rotation.py
++++ loguru-0.6.0/tests/test_filesink_rotation.py
+@@ -49,8 +49,8 @@ def monkeypatch_filesystem(monkeypatch):
+                     return self._timestamp
+                 return getattr(self._wrapped, name)
+ 
+-        def patched_stat(filepath):
+-            stat = __stat__(filepath)
++        def patched_stat(filepath, *args, **kwargs):
++            stat = __stat__(filepath, *args, **kwargs)
+             wrapped = StatWrapper(stat, filesystem.get(os.path.abspath(filepath)))
+             return wrapped
+ 
+Index: loguru-0.6.0/tests/test_interception.py
+===================================================================
+--- loguru-0.6.0.orig/tests/test_interception.py
++++ loguru-0.6.0/tests/test_interception.py
+@@ -1,4 +1,5 @@
+ import logging
++import sys
+ 
+ from loguru import logger
+ 
+@@ -14,7 +15,7 @@ class InterceptHandler(logging.Handler):
+             level = record.levelno
+ 
+         # Find caller from where originated the logged message
+-        frame, depth = logging.currentframe(), 2
++        frame, depth = sys._getframe(6), 6
+         while frame.f_code.co_filename == logging.__file__:
+             frame = frame.f_back
+             depth += 1
+@@ -30,7 +31,7 @@ def test_formatting(writer):
+ 
+     expected = (
+         "tests.test_interception - test_interception.py - test_formatting - DEBUG - "
+-        "10 - 38 - test_interception - This is the message\n"
++        "10 - 39 - test_interception - This is the message\n"
+     )
+ 
+     with make_logging_logger("tests", InterceptHandler()) as logging_logger:
+@@ -157,4 +158,4 @@ def test_using_logging_function(writer):
+         logging.warning("ABC")
+ 
+     result = writer.read()
+-    assert result == "test_using_logging_function 157 test_interception test_interception.py ABC\n"
++    assert result == "test_using_logging_function 158 test_interception test_interception.py ABC\n"
