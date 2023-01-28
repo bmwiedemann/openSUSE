@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 28 05:48:16 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip one test that has started failing due to minor HTML output
+  changes.
+
+-------------------------------------------------------------------
 Sun Sep 18 01:41:37 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove patches merged upstream:

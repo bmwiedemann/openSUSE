@@ -91,6 +91,8 @@ skips="$skips or test_should_colorize_noclasses_with_default_lexer"
 skips="$skips or test_no_models_dot_py"
 # missing fixtures in sdist
 skips="$skips or test_migration_is_last_applied or test_syncdata or test_validate_templates"
+# https://github.com/django-extensions/django-extensions/issues/1795
+skips="$skips or test_should_highlight_bash_syntax_without_name"
 
 # test_export_emails, test_set_fake_emails and test_set_fake_emails fail in setup due to missing fixtures in sdist
 %pytest -rs -v -k "not ($skips)" --ignore tests/management/commands/test_set_fake_passwords.py --ignore tests/management/commands/test_set_fake_emails.py --ignore tests/management/commands/test_export_emails.py
