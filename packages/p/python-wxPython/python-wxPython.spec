@@ -87,8 +87,10 @@ Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 URL:            https://github.com/wxWidgets/Phoenix
-Source:         https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-%{version}.tar.gz
+# repacked  https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-%%{version}.tar.gz
+Source0:        wxPython-%{version}.tar.gz
 Source1:        python-wxPython-rpmlintrc
+Source2:        repack
 # PATCH-FIX-OPENSUSE
 Patch1:         use_stl_build.patch
 # PATCH-FIX-UPSTREAM
@@ -185,6 +187,10 @@ Provides translations to the package %{name}.
 
 %prep
 %autosetup -n wxPython-%{version} -p1
+# https://github.com/wxWidgets/Phoenix/issues/2105
+# https://bugzilla.suse.com/show_bug.cgi?id=670523
+find -iname *.dll | grep . && \
+  { echo "please run repack script (gh#2105)"; exit 1; }
 # Lower minimum Python version
 sed -i -e '/check_python_version/ s@3,7,0@3,6,0@' wscript
 

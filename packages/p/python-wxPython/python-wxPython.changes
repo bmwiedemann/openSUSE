@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 26 09:14:45 UTC 2023 - pgajdos@suse.com
+
+- add repack script to sources in spec file
+
+-------------------------------------------------------------------
+Tue Jan 17 13:51:03 UTC 2023 - pgajdos@suse.com
+
+- add repack script, do not include packaging/ dir in sources
+  [gh#wxWidgets/Phoenix#2105], [bsc#670523]
+
+-------------------------------------------------------------------
 Mon Dec  5 13:07:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-pytest-forked as test dependency
