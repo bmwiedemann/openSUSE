@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 21 15:02:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- always build all configured python bindings for Tumbleweed+ 
+
+-------------------------------------------------------------------
 Fri Sep 30 12:07:31 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 1.4.21:
