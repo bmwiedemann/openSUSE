@@ -1,7 +1,7 @@
 #
 # spec file for package lua-language-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Andreas Schneider <asn@cryptomilk.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lua-language-server
-Version:        3.5.6
+Version:        3.6.7
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
@@ -49,11 +49,11 @@ export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
 ninja -C 3rd/luamake -f compile/ninja/linux.ninja
-./3rd/luamake/luamake rebuild
+./3rd/luamake/luamake all
 
 %install
-install -d -m 0755 %{buildroot}%{_libdir}/%{name}
-cp -av bin/* %{buildroot}%{_libdir}/%{name}
+install -d -m 0755 %{buildroot}%{_libexecdir}/%{name}
+cp -av bin/* %{buildroot}%{_libexecdir}/%{name}
 
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}
 cp -av \
@@ -65,16 +65,19 @@ cp -av \
     %{buildroot}%{_datadir}/%{name}/
 
 install -d -m 0755 %{buildroot}%{_bindir}
-sed -e 's#@LIBDIR@#%{_libdir}#' %{SOURCE2} > %{buildroot}%{_bindir}/%{name}
+sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE2} > %{buildroot}%{_bindir}/%{name}
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
-%fdupes %{buildroot}%{_libdir}/%{name}
+%fdupes %{buildroot}%{_libexecdir}/%{name} %{buildroot}%{_datadir}/%{name}
+
+%check
+./3rd/luamake/luamake bee-test unit-test
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md changelog.md
 %{_bindir}/%{name}
-%{_libdir}/%{name}/
+%{_libexecdir}/%{name}/
 %{_datadir}/%{name}/
 
 %changelog

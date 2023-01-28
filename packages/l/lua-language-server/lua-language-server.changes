@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan 26 18:50:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.6.7:
+  * https://github.com/sumneko/lua-language-server/blob/3.6.7/changelog.md
+    or packaged changelog.md
+- Added %check section
+- Moved lua-language-server binary to /usr/libexec
+
+-------------------------------------------------------------------
 Sat Sep 24 10:17:33 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 3.5.6:

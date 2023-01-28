@@ -150,4 +150,16 @@
     <comment></comment>
     <requestid>1006079</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>69ccb10c0aa22b4dcb494672571678aa</srcmd5>
+    <version>3.6.7</version>
+    <time>1674927849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.7:
+  * https://github.com/sumneko/lua-language-server/blob/3.6.7/changelog.md
+    or packaged changelog.md
+- Added %check section
+- Moved lua-language-server binary to /usr/libexec</comment>
+    <requestid>1061574</requestid>
+  </revision>
 </revisionlist>

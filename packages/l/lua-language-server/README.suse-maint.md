@@ -2,9 +2,9 @@
 
 ## Prerequisites:
 
-You need the `tar_scm` obs service installed:
+You need the `tar_scm` and `download_url` obs service installed:
 
-    zypper in obs-service-tar_scm
+    zypper in obs-service-tar_scm obs-service-download_url
 
 ## Updating to a new version from upstream
 
