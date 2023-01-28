@@ -1,7 +1,7 @@
 #
 # spec file for package realmd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           realmd
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        AD integration detection
 License:        LGPL-2.1-or-later
@@ -32,6 +32,7 @@ BuildRequires:  intltool
 BuildRequires:  libpackagekit-glib2-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(krb5)
@@ -88,7 +89,6 @@ fi
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root)
 %{_sbindir}/realm
 %{_sbindir}/rc%{name}
 %{_unitdir}/realmd.service
@@ -99,8 +99,8 @@ fi
 %{_datadir}/polkit-1/actions/org.freedesktop.realmd.policy
 
 %{_datadir}/doc/realmd
-%{_mandir}/man5/realmd.conf.5%{ext_man}
-%{_mandir}/man8/realm.8%{ext_man}
+%{_mandir}/man5/realmd.conf.5%{?ext_man}
+%{_mandir}/man8/realm.8%{?ext_man}
 
 %files lang -f %{name}.lang
 

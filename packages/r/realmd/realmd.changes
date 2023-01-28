@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jan 28 15:12:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.1:
+ * Kerberos: use fewer attributes for g_file_query_info() [gfo#36]
+ * service: use name instead of IP address with ad_server [rhbz#2129050]
+ * tools: add --do-not-touch-config option for AD [gfo#30]
+ * Use autoreconf and gettext
+ * samba: use new Samba-4.15 command line options [rhbz#2028530]
+ * syslog: avoid duplicate log messages [rhbz#2024248]
+ * ldap: add socket timeout [rhbz#1817869]
+ * Use target arch pkg-config to fix cross compilation [gfo#35]
+ * doc: add computer-name to realm man page
+ * configure: update some macros for autoconf-2.71
+ * build: add --with-vendor-error-message configure option [rhbz#1889386]
+ * distro: use authselect on Red Hat platforms
+
+-------------------------------------------------------------------
 Fri May  7 11:10:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.17
