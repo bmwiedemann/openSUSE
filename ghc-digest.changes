@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jan 24 15:49:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update digest to version 0.0.1.5.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Wed Jan 11 19:16:03 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update digest to version 0.0.1.4 revision 1.
