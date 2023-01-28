@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jan 26 17:03:20 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.4
+  * Notable Fixes
+    - Add/Edit dashlet not possible #4970
+    - Custom library path + custom library, without slash in its
+      name, results in exception #4971
+    - Reflected XSS vulnerability in User Backends config page #4979
+    See: https://github.com/Icinga/icingaweb2/milestone/78?closed=1
+- Add icingaweb2-additions.tar.gz with source from version 2.11.3
+  because upstream has removed packages and etc source dir and files.
+  See: https://github.com/Icinga/icingaweb2/pull/4964
+
+-------------------------------------------------------------------
 Wed Dec 14 15:20:58 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.11.3

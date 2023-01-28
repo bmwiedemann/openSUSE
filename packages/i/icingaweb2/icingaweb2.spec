@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013-2017 Icinga Development Team | GPLv2+
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,14 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.11.3
+Version:        2.11.4
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
 Group:          System/Monitoring
 URL:            https://icinga.com
 Source0:        https://github.com/Icinga/icingaweb2/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}-additions.tar.gz
 Source90:       README.SUSE
 Source99:       %{name}-rpmlintrc
 BuildArch:      noarch
@@ -273,7 +274,8 @@ Requires:       %{name}-common = %{version}-%{release}
 Icinga Web 2's fork of Zend Framework 1.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version} -a 1
+
 %if 0%{?use_selinux}
 mkdir selinux
 cp -p packages/selinux/icingaweb2.{fc,if,te} selinux
