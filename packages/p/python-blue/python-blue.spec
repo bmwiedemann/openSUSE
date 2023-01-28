@@ -1,7 +1,7 @@
 #
 # spec file for package python-blue
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-blue
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/grantjenks/blue
 Source:         https://github.com/grantjenks/blue/archive/v%{version}.tar.gz#/blue-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE unpin-black.patch -- we can't have a fixed black version in the distribution
-Patch0:         unpin-black.patch
 # PATCH-FIX-OPENSUSE unpin-tomli.patch -- gh#grantjenks/blue#66
 Patch1:         unpin-tomli.patch
 # PATCH-FIX-UPSTREAM flake8-v5-compatibility.patch -- gh#grantjenks/blue#78

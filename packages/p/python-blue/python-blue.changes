@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jan 28 12:58:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * blue is incompatible with flake8 v5 (GH#78) due to changes in the way
+    flake8 parses its config files. For now, pin the flake8 dependency <5.0.0
+  * Add support for testing against Python 3.10 and 3.11 in tox.ini, and fix an
+    incompatibility with the rstcheck command line.
+  * Bump copyright years. 
+- drop unpin-black.patch (obsolete)
+- update flake8-v5-compatibility.patch to unpin flake8 again
+
+-------------------------------------------------------------------
 Mon Sep 19 10:14:39 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add flake8-v5-compatibility.patch wich makes it work with flake8 v5
