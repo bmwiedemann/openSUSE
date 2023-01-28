@@ -1,7 +1,7 @@
 #
 # spec file for package kicad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 # symbol libraries from version 6.0.0
 %define compatversion 6.0.0
 Name:           kicad
-Version:        6.0.9
-%define file_version 6.0.9
+Version:        6.0.11
+%define file_version 6.0.11
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
