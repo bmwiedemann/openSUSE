@@ -1,0 +1,43 @@
+Index: Theano-1.0.5/theano/scalar/basic.py
+===================================================================
+--- Theano-1.0.5.orig/theano/scalar/basic.py
++++ Theano-1.0.5/theano/scalar/basic.py
+@@ -2367,7 +2367,6 @@ class Cast(UnaryScalarOp):
+         else:
+             return s
+ 
+-convert_to_bool = Cast(bool, name='convert_to_bool')
+ convert_to_int8 = Cast(int8, name='convert_to_int8')
+ convert_to_int16 = Cast(int16, name='convert_to_int16')
+ convert_to_int32 = Cast(int32, name='convert_to_int32')
+@@ -2383,7 +2382,6 @@ convert_to_complex64 = Cast(complex64, n
+ convert_to_complex128 = Cast(complex128, name='convert_to_complex128')
+ 
+ _cast_mapping = {
+-    'bool': convert_to_bool,
+     'int8': convert_to_int8,
+     'int16': convert_to_int16,
+     'int32': convert_to_int32,
+Index: Theano-1.0.5/theano/tensor/basic.py
+===================================================================
+--- Theano-1.0.5.orig/theano/tensor/basic.py
++++ Theano-1.0.5/theano/tensor/basic.py
+@@ -1177,10 +1177,6 @@ def _conversion(real_value, name):
+ # what types you are casting to what.  That logic is implemented by the
+ # `cast()` function below.
+ 
+-_convert_to_bool = _conversion(
+-    elemwise.Elemwise(scal.convert_to_bool), 'bool')
+-"""Cast to boolean"""
+-
+ _convert_to_int8 = _conversion(
+     elemwise.Elemwise(scal.convert_to_int8), 'int8')
+ """Cast to 8-bit integer"""
+@@ -1234,7 +1230,6 @@ _convert_to_complex128 = _conversion(
+ """Cast to double-precision complex"""
+ 
+ _cast_mapping = {
+-    'bool': _convert_to_bool,
+     'int8': _convert_to_int8,
+     'int16': _convert_to_int16,
+     'int32': _convert_to_int32,

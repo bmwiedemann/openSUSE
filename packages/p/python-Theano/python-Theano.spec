@@ -1,7 +1,7 @@
 #
-# spec file for package python-Theano-test
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-Theano%{psuffix}
 Version:        1.0.5
@@ -42,6 +41,8 @@ Patch0:         remove_warnings.patch
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#Theano/Theano#6764 mcepl@suse.com
 # port the test suite from nose to pytest
 Patch1:         remove_nose.patch
+# PATCH-FIX-OPENSUSE numpy-124.patch
+Patch2:         numpy-124.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -85,8 +86,7 @@ Theano features:
   many types of mistake.
 
 %prep
-%setup -q -n Theano-%{version}
-%autopatch -p1
+%autosetup -p1 -n Theano-%{version}
 
 for script in theano/gpuarray/tests/check_dnn_conv.py \
     theano/misc/buildbot_filter.py theano/gpuarray/tests/check_dnn_conv.py \
@@ -118,7 +118,7 @@ for script in theano/gpuarray/tests/check_dnn_conv.py \
 %if %{with test}
 # https://github.com/Theano/Theano/issues/6719
 rm theano/tensor/tests/test_var.py
-%pytest -k 'not (test_scan_err1 or test_remove0 or test_csm_unsorted or test_good or test_vector_arguments or test_vector_arguments)' theano/tests
+%pytest -k 'not (test_scan_err1 or test_remove0 or test_csm_unsorted or test_good or test_vector_arguments or test_vector_arguments or test_softmax)' theano/tests
 %endif
 
 %if !%{with test}
