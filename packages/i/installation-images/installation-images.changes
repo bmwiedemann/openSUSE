@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Jan 27 15:16:26 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#622
+- introduce with_fips in spec file to control fips support
+  (bsc#1207576)
+- 17.70
+
+--------------------------------------------------------------------
 Wed Jan 25 16:42:39 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#621

@@ -1410,4 +1410,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1060994</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>c94f1d04be190fbc16a60fd164002f25</srcmd5>
+    <version>17.70</version>
+    <time>1674932415</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1061577</requestid>
+  </revision>
 </revisionlist>
