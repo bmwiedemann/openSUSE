@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.3.3
+%define _version 22.3.4
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -125,7 +125,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.3.3
+Version:        22.3.4
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -154,7 +154,7 @@ BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
-%if 0%{?sle_version} >= 150500
+%if 0%{?sle_version} >= 150400
 BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
@@ -284,12 +284,6 @@ BuildRequires:  rust
 BuildRequires:  rust-bindgen
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 BuildRequires:  pkgconfig(SPIRV-Tools)
-%endif
-%endif
-%if "%{flavor}" == "drivers"
-%if %{video_codecs}
-BuildRequires:  pkgconfig(x264)
-BuildRequires:  pkgconfig(x265)
 %endif
 %endif
 
@@ -811,7 +805,7 @@ grep -v -i vulkan "%{_sourcedir}/baselibs.conf" >"%{_sourcedir}/temp" && \
 %ifarch ppc64 ppc64le
 %limit_build -m 1024
 %endif
-%if 0%{?sle_version} >= 150500
+%if 0%{?sle_version} >= 150400
 export CC=gcc-12
 export CXX=g++-12
 %endif

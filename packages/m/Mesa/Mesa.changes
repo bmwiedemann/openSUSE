@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jan 27 17:27:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.3.4
+  * bug fix release which fixes bugs found since Mesa 22.3.3
+  * see https://docs.mesa3d.org/relnotes/22.3.4.html for more
+    details
+
+-------------------------------------------------------------------
+Fri Jan 27 09:54:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- removing again BuildRequires for x264 and x265 in case 
+  video_codecs should be built (these were never needed nor used
+  for build)
+
+-------------------------------------------------------------------
+Fri Jan 27 09:48:22 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- using gcc 12 now also on Leap 15.4; after changing build project
+  to openSUSE:Leap:15.4:Update gcc 12 packages are found now ...
+
+-------------------------------------------------------------------
 Tue Jan 24 11:06:48 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - force usage of gcc 12 only on Leap 15.5; there is no gcc12 on
