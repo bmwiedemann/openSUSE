@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-templates
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define compatversion 6.0.0
 
 Name:           kicad-templates
-Version:        6.0.9
+Version:        6.0.11
 Release:        0
 Summary:        Project templates for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
