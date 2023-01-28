@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,22 +31,21 @@
 %define pkgname vtk
 
 # pugixml in Leap 15.x is too old
+# fmt in Leap 15.x is too old
+# Need haru/hpdf version with HPDF_SHADING, i.e. >= 2.4.0
 %if 0%{?suse_version} <= 1500
+%bcond_with    fmt
+%bcond_with    haru
 %bcond_with    pugixml
 %else
+%bcond_without fmt
+%bcond_without haru
 %bcond_without pugixml
 %endif
 
 %bcond_without gl2ps
 %bcond_without java
 %bcond_without pegtl
-
-# Need version with HPDF_SHADING, i.e. >= 2.4.0
-%if 0%{?suse_version} <= 1500
-%bcond_with    haru
-%else
-%bcond_without haru
-%endif
 
 %if "%{flavor}" == ""
 %define my_suffix %{nil}
@@ -91,7 +90,7 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.2.2
+Version:        9.2.5
 Release:        0
 %define series  9.2
 Summary:        The Visualization Toolkit - A high level 3D visualization library
@@ -169,6 +168,9 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  doxygen
 BuildRequires:  gnuplot
 BuildRequires:  graphviz
+%endif
+%if %{with fmt}
+BuildRequires:  fmt-devel > 9.0
 %endif
 %if %{with gl2ps}
 BuildRequires:  gl2ps-devel > 1.4.0
@@ -463,7 +465,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
     -DVTK_USE_EXTERNAL:BOOL=ON \
     -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
-    -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=OFF \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=%{?with_fmt:ON}%{!?with_fmt:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \

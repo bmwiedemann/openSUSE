@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 27 03:50:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.2.5, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.2.md
+- Rebase
+  0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
+- Use system fmt on Tumbleweed
+
+-------------------------------------------------------------------
 Fri Oct 14 18:07:34 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.2.2, see:

@@ -54,13 +54,22 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 90c90f9d46..03f5836a0f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -417,7 +417,7 @@ if (VTK_WRAP_PYTHON)
+@@ -450,15 +450,15 @@ if (VTK_WRAP_PYTHON)
      list(REMOVE_DUPLICATES vtk_required_python_modules)
    endif ()
    string(REPLACE ";" "\n" vtk_required_python_modules "${vtk_required_python_modules}")
 -  file(WRITE "${CMAKE_BINARY_DIR}/requirements.txt"
 +  file(WRITE "${CMAKE_BINARY_DIR}/${VTK_PYTHON_SITE_PACKAGES_SUFFIX}/requirements.txt"
      "${vtk_required_python_modules}\n")
+   get_property(vtk_web_python_modules GLOBAL
+     PROPERTY  vtk_web_python_modules)
+   if (vtk_web_python_modules)
+     list(REMOVE_DUPLICATES vtk_web_python_modules)
+   endif ()
+   string(REPLACE ";" "\n" vtk_web_python_modules "${vtk_web_python_modules}")
+-  file(WRITE "${CMAKE_BINARY_DIR}/requirements_web.txt"
++  file(WRITE "${CMAKE_BINARY_DIR}/${VTK_PYTHON_SITE_PACKAGES_SUFFIX}/requirements_web.txt"
+     "${vtk_web_python_modules}\n")
    get_property(vtk_soabi GLOBAL
      PROPERTY  _vtk_python_soabi)
 -- 
