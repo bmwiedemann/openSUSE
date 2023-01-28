@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-altair
-Version:        4.2.0
+Version:        4.2.2
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause
