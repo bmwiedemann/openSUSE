@@ -1,7 +1,7 @@
 #
 # spec file for package rpmrebuild
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpmrebuild
-Version:        2.16
+Version:        2.17
 Release:        0
 Summary:        A tool to build a rpm file from the rpm database
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ a software after some configuration's change.
 %autopatch -p1
 
 %build
-make %{?_smp_mflags}
+%make_build
 # Remove shebang on script that are sourced and not executed
 find . -iname "*.src" -exec sed -i 's,^#!%{_bindir}/env bash,,g' {} \;
 # As in 2.15 remove env usage to static path
@@ -56,13 +56,12 @@ find . -iname "*.sh" -exec sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/sh,g' {} 
 sed -i 's,^#!%{_bindir}/env sh,#!%{_bindir}/sh,g' rpmrebuild
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 mv %{buildroot}%{_mandir}/fr_FR.UTF-8/ %{buildroot}%{_mandir}/fr
 rm -rf %{buildroot}%{_mandir}/fr_FR/
 # chmod 0755 %%{buildroot}%%{_libexecdir}/rpmrebuild/*.sh
 
 %files
-%defattr(-,root,root,-)
 %license COPYING COPYRIGHT
 %doc AUTHORS Changelog News README Todo
 %{_bindir}/rpmrebuild

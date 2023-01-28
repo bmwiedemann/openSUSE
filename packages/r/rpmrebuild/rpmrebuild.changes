@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jan 28 15:09:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17:
+  * fix -r does not work (xujing)
+  * fix spelling errors that could mislead users (xujing)
+  * fix --comment-missing=n does not work (xujing)
+  * fix --cap-from-fs does not work (xujing)
+  * all shell are bash
+  * clean test x$var, use -z
+  * change email to tutanota
+  * change copyright year
+  * change gpg key
+  * fix warnings from shellcheck
+  * add unitary tests for plugins and options
+  * if batch mode, do not edit any spec part
+  * spec_only : display spec name if successfull
+  * echo+read in one line with read -p
+  * add new plugin exclude_file to exclude files from spec
+  * split tests in t directory
+  * bugfix in nodoc plugin
+  * rename internal variable with RPMREBUILD_ prefix
+
+-------------------------------------------------------------------
 Sun Jul 25 15:08:13 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 2.16
