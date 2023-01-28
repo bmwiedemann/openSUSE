@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jan 16 14:49:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d.
+
+-------------------------------------------------------------------
 Tue Jan 10 02:08:45 UTC 2023 - Daike Yu <yu.daike@suse.com>
 
 - xrdp-CVE-2022-23477.patch (bsc#1206301)

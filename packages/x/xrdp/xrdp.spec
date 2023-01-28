@@ -172,11 +172,28 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcxrdp-sesman
 # use certification file created at the post phase
 rm -f %{buildroot}/%{_sysconfdir}/xrdp/{cert,key}.pem
 
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_pam_vendordir}
+mv %{buildroot}%{_sysconfdir}/pam.d/xrdp-sesman %{buildroot}%{_pam_vendordir}
+%endif
+
 %fdupes -s %{buildroot}
 
 %pre
 %service_add_pre xrdp-sesman.service
 %service_add_pre xrdp.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/xrdp-sesam ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/xrdp-sesman ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 /sbin/ldconfig
@@ -215,7 +232,11 @@ exit 0
 
 %dir %{_datadir}/xrdp
 %dir %{_libdir}/xrdp
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/xrdp-sesman
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/xrdp-sesman
+%endif
 %license COPYING
 %{_bindir}/xrdp*
 %{_datadir}/xrdp/*
