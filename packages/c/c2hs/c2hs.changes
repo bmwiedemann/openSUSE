@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 07:22:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update c2hs to version 0.28.8 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Feb  5 15:17:58 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update c2hs to version 0.28.8 revision 1.
