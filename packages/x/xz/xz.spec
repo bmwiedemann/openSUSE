@@ -1,7 +1,7 @@
 #
 # spec file for package xz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
@@ -110,6 +110,11 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %files lang -f %{name}.lang
 %dir %{_mandir}/fr
 %dir %{_mandir}/de
+%dir %{_mandir}/ko
+%if 0%{?suse_version} == 1500
+%dir %{_mandir}/ro
+%dir %{_mandir}/uk
+%endif
 
 %files
 %license COPYING COPYING.GPLv2
@@ -138,30 +143,30 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_bindir}/xzless
 %{_bindir}/xzmore
 %{_bindir}/xznew
-%{_mandir}/man1/lzcat.1%{ext_man}
-%{_mandir}/man1/lzcmp.1%{ext_man}
-%{_mandir}/man1/lzdiff.1%{ext_man}
-%{_mandir}/man1/lzegrep.1%{ext_man}
-%{_mandir}/man1/lzfgrep.1%{ext_man}
-%{_mandir}/man1/lzgrep.1%{ext_man}
-%{_mandir}/man1/lzless.1%{ext_man}
-%{_mandir}/man1/lzma.1%{ext_man}
-%{_mandir}/man1/lzmadec.1%{ext_man}
-%{_mandir}/man1/lzmainfo.1%{ext_man}
-%{_mandir}/man1/lzmore.1%{ext_man}
-%{_mandir}/man1/unlzma.1%{ext_man}
-%{_mandir}/man1/unxz.1%{ext_man}
-%{_mandir}/man1/xz.1%{ext_man}
-%{_mandir}/man1/xzcat.1%{ext_man}
-%{_mandir}/man1/xzcmp.1%{ext_man}
-%{_mandir}/man1/xzdec.1%{ext_man}
-%{_mandir}/man1/xzdiff.1%{ext_man}
-%{_mandir}/man1/xzegrep.1%{ext_man}
-%{_mandir}/man1/xzfgrep.1%{ext_man}
-%{_mandir}/man1/xzgrep.1%{ext_man}
-%{_mandir}/man1/xzless.1%{ext_man}
-%{_mandir}/man1/xzmore.1%{ext_man}
-%{_mandir}/man1/xznew.1%{ext_man}
+%{_mandir}/man1/lzcat.1%{?ext_man}
+%{_mandir}/man1/lzcmp.1%{?ext_man}
+%{_mandir}/man1/lzdiff.1%{?ext_man}
+%{_mandir}/man1/lzegrep.1%{?ext_man}
+%{_mandir}/man1/lzfgrep.1%{?ext_man}
+%{_mandir}/man1/lzgrep.1%{?ext_man}
+%{_mandir}/man1/lzless.1%{?ext_man}
+%{_mandir}/man1/lzma.1%{?ext_man}
+%{_mandir}/man1/lzmadec.1%{?ext_man}
+%{_mandir}/man1/lzmainfo.1%{?ext_man}
+%{_mandir}/man1/lzmore.1%{?ext_man}
+%{_mandir}/man1/unlzma.1%{?ext_man}
+%{_mandir}/man1/unxz.1%{?ext_man}
+%{_mandir}/man1/xz.1%{?ext_man}
+%{_mandir}/man1/xzcat.1%{?ext_man}
+%{_mandir}/man1/xzcmp.1%{?ext_man}
+%{_mandir}/man1/xzdec.1%{?ext_man}
+%{_mandir}/man1/xzdiff.1%{?ext_man}
+%{_mandir}/man1/xzegrep.1%{?ext_man}
+%{_mandir}/man1/xzfgrep.1%{?ext_man}
+%{_mandir}/man1/xzgrep.1%{?ext_man}
+%{_mandir}/man1/xzless.1%{?ext_man}
+%{_mandir}/man1/xzmore.1%{?ext_man}
+%{_mandir}/man1/xznew.1%{?ext_man}
 
 %files -n liblzma5
 %{_libdir}/liblzma.so.5*

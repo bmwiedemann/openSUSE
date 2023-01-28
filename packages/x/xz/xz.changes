@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:56:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.1:
+    * liblzma:
+        - Fixed the return value of lzma_microlzma_encoder() if the
+          LZMA options lc/lp/pb are invalid. Invalid lc/lp/pb options
+          made the function return LZMA_STREAM_END without encoding
+          anything instead of returning LZMA_OPTIONS_ERROR.
+    * Tests:
+        - Fixed test script compatibility with ancient /bin/sh
+          versions. Now the five test_compress_* tests should
+          no longer fail on Solaris 10.
+        - Added and refactored a few tests.
+    * Translations:
+        - Updated the Catalan and Esperanto translations.
+        - Added Korean and Ukrainian man page translations.
+
+-------------------------------------------------------------------
 Fri Dec 30 16:04:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.0:
