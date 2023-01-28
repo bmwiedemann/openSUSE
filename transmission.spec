@@ -1,7 +1,7 @@
 #
 # spec file for package transmission
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%
 Source1:        transmission-qt.desktop
 Source3:        README.openSUSE
 Patch0:         harden_transmission-daemon.service.patch
+Patch1:         transmission-hybrid-torrent-length.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -123,6 +124,7 @@ Discovery, DHT, µTP, PEX and magnet links.
 %setup
 cp %{SOURCE3} .
 %patch0 -p1
+%patch1 -p1
 
 %build
 sed -i '/^Icon=/ s/$/-qt/' qt/transmission-qt.desktop

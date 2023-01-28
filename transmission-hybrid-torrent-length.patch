@@ -1,0 +1,88 @@
+Transmission skips hybrid torrents
+
+https://github.com/transmission/transmission/issues/1813
+Index: transmission-3.00/libtransmission/variant-benc.c
+===================================================================
+--- transmission-3.00.orig/libtransmission/variant-benc.c
++++ transmission-3.00/libtransmission/variant-benc.c
+@@ -142,7 +142,7 @@ err:
+     return EILSEQ;
+ }
+ 
+-static tr_variant* get_node(tr_ptrArray* stack, tr_quark* key, tr_variant* top, int* err)
++static tr_variant* get_node(tr_ptrArray* stack, tr_quark* key, bool *key_has_value, tr_variant* top, int* err)
+ {
+     tr_variant* node = NULL;
+ 
+@@ -158,10 +158,10 @@ static tr_variant* get_node(tr_ptrArray*
+         {
+             node = tr_variantListAdd(parent);
+         }
+-        else if (*key != 0 && tr_variantIsDict(parent))
++        else if (key_has_value && tr_variantIsDict(parent))
+         {
+             node = tr_variantDictAdd(parent, *key);
+-            *key = 0;
++            *key_has_value = false;
+         }
+         else
+         {
+@@ -184,6 +184,7 @@ int tr_variantParseBenc(void const* buf_
+     uint8_t const* bufend = bufend_in;
+     tr_ptrArray stack = TR_PTR_ARRAY_INIT;
+     tr_quark key = 0;
++    bool key_has_value = 0;
+ 
+     tr_variantInit(top, 0);
+ 
+@@ -212,7 +213,7 @@ int tr_variantParseBenc(void const* buf_
+ 
+             buf = end;
+ 
+-            if ((v = get_node(&stack, &key, top, &err)) != NULL)
++            if ((v = get_node(&stack, &key, &key_has_value, top, &err)) != NULL)
+             {
+                 tr_variantInitInt(v, val);
+             }
+@@ -223,7 +224,7 @@ int tr_variantParseBenc(void const* buf_
+ 
+             ++buf;
+ 
+-            if ((v = get_node(&stack, &key, top, &err)) != NULL)
++            if ((v = get_node(&stack, &key, &key_has_value, top, &err)) != NULL)
+             {
+                 tr_variantInitList(v, 0);
+                 tr_ptrArrayAppend(&stack, v);
+@@ -235,7 +236,7 @@ int tr_variantParseBenc(void const* buf_
+ 
+             ++buf;
+ 
+-            if ((v = get_node(&stack, &key, top, &err)) != NULL)
++            if ((v = get_node(&stack, &key, &key_has_value, top, &err)) != NULL)
+             {
+                 tr_variantInitDict(v, 0);
+                 tr_ptrArrayAppend(&stack, v);
+@@ -245,7 +246,7 @@ int tr_variantParseBenc(void const* buf_
+         {
+             ++buf;
+ 
+-            if (tr_ptrArrayEmpty(&stack) || key != 0)
++            if (tr_ptrArrayEmpty(&stack) || key_has_value)
+             {
+                 err = EILSEQ;
+                 break;
+@@ -274,11 +275,12 @@ int tr_variantParseBenc(void const* buf_
+ 
+             buf = end;
+ 
+-            if (key == 0 && !tr_ptrArrayEmpty(&stack) && tr_variantIsDict(tr_ptrArrayBack(&stack)))
++            if (!key_has_value && !tr_ptrArrayEmpty(&stack) && tr_variantIsDict(tr_ptrArrayBack(&stack)))
+             {
+                 key = tr_quark_new(str, str_len);
++                key_has_value = true;
+             }
+-            else if ((v = get_node(&stack, &key, top, &err)) != NULL)
++            else if ((v = get_node(&stack, &key, &key_has_value, top, &err)) != NULL)
+             {
+                 tr_variantInitStr(v, str, str_len);
+             }

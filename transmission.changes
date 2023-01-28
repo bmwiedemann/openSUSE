@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan 25 20:26:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- boo#1207555: Transmission can't open Bittorrent v2 torrents
+  Add transmission-hybrid-torrent-length.patch
+
+-------------------------------------------------------------------
 Sun Apr  3 07:48:54 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Do not run autoreconf - not patching any input files
