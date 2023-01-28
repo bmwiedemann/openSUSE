@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 27 13:44:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.27.58
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.27.58/CHANGELOG.rst
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Fri Jan 20 09:09:33 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.27.52
