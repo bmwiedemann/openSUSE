@@ -21,12 +21,16 @@ Version:        1.13.1
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
-URL:            http://amsynth.github.io/
-Source:         https://github.com/amsynth/amsynth/releases/download/release-%{version}/%{name}-%{version}.tar.gz
+URL:            https://amsynth.github.io/
+Source:         https://github.com/amsynth/amsynth/archive/refs/tags/release-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  libtool
 %ifnarch %ix86 %arm
 BuildRequires:  pandoc
 %endif
@@ -146,9 +150,12 @@ This package includes the VST implementation of the synthesizer.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -n %{name}-release-%{version} -p1
 
 %build
+mkdir -p m4
+autoreconf -fiv
+intltoolize -f
 %configure
 make %{?_smp_mflags}
 
