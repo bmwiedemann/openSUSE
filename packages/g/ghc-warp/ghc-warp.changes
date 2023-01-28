@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 01:27:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Sep 28 00:40:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update warp to version 3.3.23.
