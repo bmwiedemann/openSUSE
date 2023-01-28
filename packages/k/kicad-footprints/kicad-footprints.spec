@@ -1,7 +1,7 @@
 #
 # spec file for package kicad-footprints
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 %define compatversion 6.0.0
 
 Name:           kicad-footprints
-Version:        6.0.9
-%define file_version 6.0.9
+Version:        6.0.11
+%define file_version 6.0.11
 Release:        0
 Summary:        Footprint library for KiCad
 # License is CC-BY-SA-4.0 but there is an exception
@@ -30,7 +30,7 @@ License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/libraries/kicad-footprints/-/archive/%{file_version}/kicad-footprints-%{file_version}.tar.bz2#/%{name}-%{version}.tar.bz2
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  fdupes
 BuildArch:      noarch
 Provides:       kicad-footprints = %{compatversion}

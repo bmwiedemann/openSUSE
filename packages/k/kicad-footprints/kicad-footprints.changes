@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 26 03:34:50 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 6.0.11:
+  See https://www.kicad.org/blog/2023/01/KiCad-6.0.11-Release/ for details.
+
+-------------------------------------------------------------------
+Wed Jan 25 18:31:35 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Set minimum cmake version
+
+-------------------------------------------------------------------
 Sat Nov  5 22:40:52 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 6.0.9
