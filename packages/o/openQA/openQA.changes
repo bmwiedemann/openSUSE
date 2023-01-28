@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 28 02:09:18 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1674746026.5aaec11:
+  * Avoid errors about changing the working directory after asset extraction
+  * Fix error when displaying help for minion sub command
+
+-------------------------------------------------------------------
 Wed Jan 25 18:09:07 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1674655858.a839999:
