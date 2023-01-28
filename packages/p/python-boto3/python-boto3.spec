@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-boto3
-Version:        1.26.52
+Version:        1.26.58
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
 BuildRequires:  %{python_module botocore < 1.30.0}
-BuildRequires:  %{python_module botocore >= 1.29.52}
+BuildRequires:  %{python_module botocore >= 1.29.58}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module s3transfer < 0.7.0}
 BuildRequires:  %{python_module s3transfer >= 0.6.0}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore < 1.30.0
-Requires:       python-botocore >= 1.29.52
+Requires:       python-botocore >= 1.29.58
 Requires:       python-jmespath < 2.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-s3transfer < 0.7.0
@@ -54,10 +54,10 @@ For documentation consult the online documentation at
 http://boto3.readthedocs.org/en/latest/
 
 
+
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
-
 %prep
 %setup -q -n boto3-%{version}
 sed -i 's/from botocore.vendored //' boto3/compat.py
