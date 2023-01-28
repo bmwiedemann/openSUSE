@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jan 27 09:10:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.3.2
+  * Various small fixes accumulated over years. In particular,
+    it fixes the layout on GTK3.
+  * Added SNIP background (contributed by Cristiano Fontana).
+- Drop upstram patches:
+  * fityk-support-lua-5.4.patch
+  * fityk-ignore-distutils-deprecation-warning.patch
+- Rebased fityk-drop-dynamic-exceptions.patch
+- Spec file cleanup
+- Switched to GTK3 wxWidgets
+
+-------------------------------------------------------------------
 Wed Jun 22 15:41:16 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add fityk-ignore-distutils-deprecation-warning.patch: Ignore
