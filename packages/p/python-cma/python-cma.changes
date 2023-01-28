@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jan 28 14:35:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Diagonal decoding, fmin functions with surrogate and more.
+
+-------------------------------------------------------------------
 Wed Jan  4 16:50:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to r3.2.2:

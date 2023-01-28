@@ -21,7 +21,7 @@
 # No numpy on 3.6
 %define skip_python36 1
 Name:           python-cma
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Covariance Matrix Adaptation Evolution Strategy numerical optimizer
 License:        BSD-3-Clause

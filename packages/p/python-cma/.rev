@@ -34,4 +34,13 @@
   * fix a few smallish bugs</comment>
     <requestid>1055966</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bfe9fad6b5b50f8f6f6a045812c600be</srcmd5>
+    <version>3.3.0</version>
+    <time>1674927937</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * Diagonal decoding, fmin functions with surrogate and more.</comment>
+    <requestid>1061747</requestid>
+  </revision>
 </revisionlist>
