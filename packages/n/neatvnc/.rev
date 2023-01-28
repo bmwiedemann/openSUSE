@@ -81,4 +81,29 @@
     <comment></comment>
     <requestid>1042356</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0343d1a22bae446280908657cf5c6f11</srcmd5>
+    <version>0.6.0</version>
+    <time>1674927765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  Highlights:
+  * The client now has control over h264 quality settings
+  * Left &amp; right scrolling is now supported
+  * A custom framebuffer allocator function can now be assigned
+  * The following functions have been added
+    + A function for querying client side cursor support
+    + A function to get the hostname of a connected client
+    + A function to get the credentials of an authenticated client
+    + A function for listing connected clients
+    + A function for disconnecting a client
+  Bug fixes:
+  * A race condition when a client tries to resize the display before it has an encoder
+  * Cursor buffers are now freed on close
+  * Various race conditions in encoders
+  * Spurious exits due to SIGPIPE
+  * Occasional leaked buffers when clients disconnect
+  * Clients no longer linger on exit with TLS</comment>
+    <requestid>1060477</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package neatvnc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libsoname libneatvnc0
 
 Name:           neatvnc
-Version:        0.5.4
+Version:        0.6.0
 Release:        0
 Summary:        A VNC server library
 License:        ISC
@@ -29,7 +29,7 @@ Source0:        %url/archive/v%{version}.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(aml)
+BuildRequires:  pkgconfig(aml) >= 0.3.0
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libavcodec)

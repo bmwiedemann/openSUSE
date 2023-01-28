@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jan 23 16:37:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  Highlights:
+  * The client now has control over h264 quality settings
+  * Left & right scrolling is now supported
+  * A custom framebuffer allocator function can now be assigned
+  * The following functions have been added
+    + A function for querying client side cursor support
+    + A function to get the hostname of a connected client
+    + A function to get the credentials of an authenticated client
+    + A function for listing connected clients
+    + A function for disconnecting a client
+  Bug fixes:
+  * A race condition when a client tries to resize the display before it has an encoder
+  * Cursor buffers are now freed on close
+  * Various race conditions in encoders
+  * Spurious exits due to SIGPIPE
+  * Occasional leaked buffers when clients disconnect
+  * Clients no longer linger on exit with TLS
+
+-------------------------------------------------------------------
 Mon Dec 12 11:00:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - "Pkgconfigify" BuildRequires, align with what meson checks for.
