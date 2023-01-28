@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define new_name mysql-connector-j
+
 Name:           mysql-connector-java
-Version:        8.0.30
+Version:        8.0.32
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
@@ -47,6 +49,8 @@ Requires:       reload4j
 Requires:       slf4j
 Provides:       mm.mysql = %{version}
 Obsoletes:      mm.mysql < %{version}
+# we'll be providing the new package name until this one is deprecated
+Provides:       %{new_name}
 # manual is no longer distributed
 Provides:       %{name}-manual = %{version}
 Obsoletes:      %{name}-manual < %{version}
@@ -97,21 +101,26 @@ export CLASSPATH=$(build-classpath \
     -Dcom.mysql.cj.build.jdk=%{java_home} \
     -Dcom.mysql.cj.build.jdk.javac=%{javac} \
     -Dcom.mysql.cj.build.jdk.java=%{java} \
-    dist
+    build
 
 %install
 install -d -m 755 %{buildroot}%{_javadir}
 
-install build/%{name}-%{version}-SNAPSHOT/%{name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar
+install build/%{new_name}-%{version}-SNAPSHOT/%{new_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{new_name}.jar
 
-rm -rf %{buildroot}%{name}-%{version}/docs/release-test-output
+rm -rf %{buildroot}%{new_name}-%{version}/docs/release-test-output
 
-# Install the Maven build information
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 build/%{name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 
-%add_maven_depmap JPP-%{name}.pom %{name}.jar
+# Install the Maven build information as new name
+install -pm 644 build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
+sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
+%add_maven_depmap JPP-%{new_name}.pom %{new_name}.jar
+
+# Provide poms with "old name" mysql-connector-java (now it's mysql-connector-j)
+install -pm 644 build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{new_name}.jar
 
 %files -f .mfiles
 %license LICENSE

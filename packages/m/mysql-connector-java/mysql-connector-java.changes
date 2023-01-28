@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Jan 26 17:12:29 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 8.0.32:
+  - MysqlDataSource fails to URL encode database name when constructing JDBC URL.
+  - serverSideStatementCache ignores resultSetType.
+  - UpdatableResultSet does not properly handle unsigned primary key.
+  - Connector/J 8 query with explain can not return ResultRow.
+  - Add support to row alias on INSERT... ON DUPLICATE KEY UPDATE on batch mode.
+  - connectionCollation ignored if characterEncoding is set.
+  - Connector/J rejects UNION with CTE.
+  - Malformed packet generation for `COM_STMT_EXECUTE`.
+  - Connector/J client hangs after prepare & execute process with old version server.
+  - Contribution: Fix name of relocation POM file.
+  - Contribution: [PATCH] Remove superfluous use of boxing.
+  - Contribution: Recognize "ON DUPLICATE KEY UPDATE" in "INSERT SET" Statement.
+  - RPM and DEB builds broken after introducing javadoc for maven bundles.
+  - Sonatype compliant POM and maven bundles.
+  - Upgrade 3rd party libraries and tools.
+  - Upgrade Protocol Buffers dependency to protobuf-java-3.21.9.
+
+-------------------------------------------------------------------
+Thu Dec  8 06:21:44 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Rebased javac-check.patch to new build.xml.
+
+- Changed ant target from "dist" to "build", as it's been renamed.
+
+- As Oracle renamed the package to "mysql-connector-j", we are
+  "providing" both names for now, but the package has to be renamed
+  to accommodate the change because the old name will be deprecated
+  at some point in the future without further notice.
+
+- Update to 8.0.31:
+  Functionality Added or Changed
+    * Important Change: To comply with proper naming guidelines, the
+      Maven groupId and artifactId for Connector/J have been changed
+      to the following starting with this release:
+        groupId: com.mysql
+        artifactId: mysql-connector-j
+
+    * The old groupId and artifactId can still be used for linking 
+      the Connector/J library, but they will point to a Maven 
+      relocation POM, redirecting users to the new coordinates. 
+      Please switch to the new coordinates as soon as possible, as 
+      the old coordinates could be discontinued anytime without 
+      notice. See Installing Connector/J Using Maven.
+
+    * Also, to go with these changes, the .jar library for 
+      Connector/J has been renamed to mysql-connector-j-x.y.z for 
+      all channels of distribution by Oracle, not just the Maven 
+      repository.
+
+    * Before release 8.0.29, Connector/J always interpolated byte
+      arrays as hexadecimal literals when obtaining a prepared 
+      statement's string representation by the toString() method. 
+      Since 8.0.29, all byte array values were displayed as 
+      ** BYTE ARRAY DATA ** when converted to strings. The same is 
+      also true for null values.
+
+    * To allow different ways to display byte array data and null 
+      values, a new connection property, maxByteArrayAsHex, has been
+      introduced: byte arrays shorter than the value of 
+      maxByteArrayAsHex are now shown as hexadecimal literals like
+      before release 8.0.29. Any byte arrays longer than this value
+      are interpolated generically as ** BYTE ARRAY DATA **.
+
+  Bugs Fixed
+    * X DevAPI: When parsing a string into a JSON string, some 
+      escape character sequences were not parsed properly, causing 
+      the Server to throw a com.mysql.cj.exceptions.WrongArgumentException 
+      when receiving the JSON value. This fix ensures that escape 
+      sequences are handled properly.
+
+    * X DevAPI: When using the modify() method on JSON documents, 
+      any backslashes inside a literal to be used for the modification 
+      were lost. This fix corrects the mistakes in the expression 
+      parser that caused the issue.
+
+    * Executing a PreparedStatment after applying setFetchSize(0) on
+      it caused an ArrayIndexOutOfBoundsException.
+
+    * Due to some old limitations, when used with Java applets, 
+      Connector/J found out the default character set on a system by
+      various workarounds like reading the system property 
+      file.encoding, using an OutpuStreamWriter, etc. With this fix,
+      Connector/J now uses Charset.defaultCharset(), the standard
+      method for the purpose.
+
+-------------------------------------------------------------------
 Mon Aug  1 10:44:23 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 8.0.30:

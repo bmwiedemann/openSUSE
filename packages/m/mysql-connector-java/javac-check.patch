@@ -1,16 +1,16 @@
 Description: Disable the JDK check
 Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: not-needed
-Index: mysql-connector-java-8.0.25/build.xml
+Index: mysql-connector-j-8.0.31/build.xml
 ===================================================================
---- mysql-connector-java-8.0.25.orig/build.xml
-+++ mysql-connector-java-8.0.25/build.xml
-@@ -401,7 +401,7 @@ See also com.mysql.cj.conf.PropertyDefin
+--- mysql-connector-j-8.0.31.orig/build.xml
++++ mysql-connector-j-8.0.31/build.xml
+@@ -405,7 +405,7 @@ See also com.mysql.cj.conf.PropertyDefin
  
  
-     <!-- Prepares files and settings for compiling driver. -->
--    <target name="init" depends="-extra-libs-check, -compiler-check, -init-copy, -init-notices-commercial, -init-notices-gpl, -init-info-files">
-+    <target name="init" depends="-extra-libs-check, -init-copy, -init-notices-commercial, -init-notices-gpl, -init-info-files">
-         <!-- The following is needed for source distributions as the classpath can't be dynamically altered, and not having this directory present causes the
-              build to fail. -->
-         <available property="com.mysql.cj.prebuiltDocsPresent" file="${com.mysql.cj.dist.dir.prebuilt.docs}" />
+     <!-- Initialize the build directory and check requirements for compiling the driver code. -->
+-    <target name="-init" depends="-extra-libs-check, -compiler-check, -copy-files, -copy-notices-commercial, -copy-notices-gpl, -init-info-files">
++    <target name="-init" depends="-extra-libs-check, -copy-files, -copy-notices-commercial, -copy-notices-gpl, -init-info-files">
+         <!-- The following is needed as the classpath can't be modified dynamically, and not having this library present causes the build to fail. -->
+         <available property="com.mysql.cj.c3p0Present" classname="com.mchange.v2.c3p0.QueryConnectionTester" classpathref="com.mysql.cj.build.classpath" />
+     </target>
