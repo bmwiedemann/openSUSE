@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,39 +16,46 @@
 #
 
 
-%global modname awkward
-%global skip_python2 1
+%define awkward_cpp_version 7
 Name:           python-awkward
-Version:        1.10.2
+Version:        2.0.6
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
 URL:            https://awkward-array.org/
-Source:         https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
-# PATCH-FETAURE-OPENSUSE awkward-cmake-build-with-RelWithDebInfo.patch badshah400@gmail.com -- Set CMAKE_BUILD_TYPE to RelWithDebInfo by default instead of Release
-Patch0:         awkward-cmake-build-with-RelWithDebInfo.patch
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  cmake
+# SourceRepository: https://github.com/scikit-hep/awkward
+Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatchling >= 1.10.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.13.1
+Requires:       python-awkward-cpp = %{awkward_cpp_version}
+Requires:       python-numpy >= 1.14.5
 Requires:       python-packaging
+Requires:       (python-importlib-resources if python-base < 3.9)
+Requires:       (python-typing-extensions >= 4.1.0 if python-base < 3.11)
 Recommends:     python-cupy
 Recommends:     python-numba
 Recommends:     python-pandas
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module numpy >= 1.13.1}
+BuildRequires:  %{python_module awkward-cpp = %{awkward_cpp_version}}
+BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
+BuildRequires:  %{python_module numba >= 0.50 if %python-base < 3.11}
+BuildRequires:  %{python_module numexpr}
+BuildRequires:  %{python_module numpy >= 1.14.5}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-%if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module numba >= 0.50}
-%endif
+BuildRequires:  %{python_module typing-extensions >= 4.1.0 if %python-base < 3.11}
+# Don't add uproot here: build cycle dependency
 # /SECTION
+BuildArch:      noarch
+# Test suite fails on numerous tests when trying to convert 64-bit types
+ExcludeArch:    %{ix86} %{arm32}
 %python_subpackages
 
 %description
@@ -60,57 +67,27 @@ Arrays are dynamically typed, but operations on them are compiled and fast.
 Their behavior coincides with NumPy when array dimensions are regular and
 generalizes when they're not.
 
-%package -n awkward-devel
-Summary:        Header files for using awkaward in C/C++ code
-Requires:       python3-awkward = %{version}
-
-%description -n awkward-devel
-Awkward Array is a library for nested, variable-sized data, including
-arbitrary-length lists, records, mixed types, and missing data, using
-NumPy-like idioms.
-
-This package provides the header files needed to compile C/C++ codes with
-awkward.
-
 %prep
-%autosetup -p1 -n awkward-%{version}
+%setup -q -n awkward-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-
-# Remove static libs
-%python_expand find %{buildroot}%{$python_sitearch}/%{modname}/ -name "*.a" -delete -print
-
-%{python_expand # Create a symlink to shared library in _libdir for the C/C++ devel pkg
-if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
-ln -s %{$python_sitearch}/libawkward.so %{buildroot}%{_libdir}/
-ln -s %{$python_sitearch}/libawkward-cpu-kernels.so %{buildroot}%{_libdir}/
-fi
+%pyproject_install
+%{python_expand # remove devel files
+rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/header-only
+rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/rdataframe/include
+%fdupes %{buildroot}%{$python_sitelib}
 }
-# setuptools no longer installs headers, copy them ourselves
-# The "build" directory is the result from the primary interpreter
-mkdir -p %{buildroot}%{_includedir}/awkward
-cp -a build/lib.linux-*/awkward/include %{buildroot}%{_includedir}/awkward
-
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# test-cuda: we don't have python-cupy yet
-%pytest_arch --ignore tests-cuda/
+%pytest -n auto --ignore tests-cuda/
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/*.so
-%{python_sitearch}/%{modname}/
-%{python_sitearch}/%{modname}-%{version}*-info/
-
-%files -n awkward-devel
-%license LICENSE
-%{_includedir}/awkward/
-%{_libdir}/*.so
+%{python_sitelib}/awkward/
+%{python_sitelib}/awkward-%{version}.dist-info/
 
 %changelog

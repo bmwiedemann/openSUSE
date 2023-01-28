@@ -1,4 +1,177 @@
 -------------------------------------------------------------------
+Fri Jan 27 21:34:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.6
+  * feat: expose typetracer in public backend API by @agoose77 in #2066
+  * feat: add byteorder argument to to_buffers by @agoose77 in #2095
+  * feat: add exception for missing field by @agoose77 in #2120
+- Release 2.0.3 and 2.0.4
+ * The flatten_records argument of all reducers (ak.all, ak.any,
+   ..., ak.var) has effectively been removed: setting it now raises
+   an error (PR #2020). This argument applies a reducer to all
+   contents of a record, merging fields, and it had to be removed
+   to properly implement axis=None. The old default,
+   flatten_records=False, is now the only behavior, and to get the
+   equivalent of flatten_records=True, you can use ak.ravel:
+        ak.sum(array, flatten_records=True)
+   becomes
+       ak.sum(ak.ravel(array))
+  * Removing the feature is still the right thing to do, but the
+    function argument needs to go through a deprecation cycle,
+    since libraries like dask-awkward pass arguments through to
+    Awkward. Removing flatten_records as an argument introduces an
+    error, even if the surviving case of flatten_records=False is
+    desired.
+- Release 2.0.2
+  * feat: add ak.drop_none() by @ioanaif in #1904
+- Release 2.0.1
+  * feat: add ak.without_field by @agoose77 in #1963
+- Release 2.0.0
+  * The Awkward Array version 2 project started in June of 2021 and
+    has been developed alongside version 1 updates. For most of
+    that time, it was available as a submodule, awkward._v2, so
+    that it could be tested with the same tests as version 1 and
+    could be experimented upon by early adopters.
+  * Despite the long list of PRs, the high-level interface changes
+    from version 1 to version 2 were kept at a minimum. For the
+    most part, the Awkward 1.x API is fine, but the internal
+    implementation needed an overhaul to prevent technical debt.
+  ## Summary of changes
+  * Nearly all of the code is written in Python now. Exceptions are
+    the "kernel" functions, GrowableBuffer, LayoutBuilder,
+    ArrayBuilder, AwkwardForth, and dynamically generated C++ code
+    for RDataFrame.
+  * Maintains performance because any algorithms that scale with
+    the size of an array are implemented in compiled "kernel"
+    functions.
+  * Split into two packages: awkward-cpp for the C++ part
+    (infrequently updated, binary distribution for most platforms
+    and Python versions) and awkward, the Python part (frequently
+    updated).
+  * Virtual arrays and Partitions (collectively, "lazy arrays")
+    have been removed in favor of dask-awkward.
+  * Awkward Arrays can be converted to and from RDataFrame,
+    generating C++ for ROOT to JIT-compile so that iteration over
+    Awkward Array input is fast (adapted from the Numba
+    implementation).
+  * Auto-differentiation of functions on Awkward Arrays using JAX.
+    (But not JAX JIT-compilation.)
+  * Suite of header-only C++ that does not depend on Awkward
+    Arrays, but can be used to produce them and quickly get them
+    from C++ to Python. The header-only suite includes
+    GrowableBuffer and LayoutBuilder.
+  * New documentation website (https://awkward-array.org/), based
+    on JupyterBooks, the NumPy/SciPy/Pandas style and organization,
+    as well as a notebook that can be executed in your web browser.
+  * More expressive error-messages, highlighting the ak.* function
+    that was in progress when the error occurred, with its
+    arguments. (That is, highlighting ak.* functions as the
+    granularity of feedback to users of Awkward Array, rather than
+    making you search through the stack trace to the hand-off from
+    your code to ours.)
+  * Brackets are always balanced in the console representation of
+    an array:
+
+        >>> ak.Array([
+        ...     [{"x": 1.1, "y": [1]}, {"x": 2.2, "y": [1, 2]}],
+        ...     [],
+        ...     [{"x": 3.3, "y": [1, 2, 3]}],
+        ... ])
+        <Array [[{x: 1.1, y: [1]}, {...}], ...] type='3 * var * {x: float64, y: var...'>
+    
+    as opposed to
+    
+        <Array [[{x: 1.1, y: [1]}, ... y: [1, 2, 3]}]] type='3 * var * {"x": float64, "y...'>
+    
+    in version 1. Also, show methods for values
+    
+        [[{x: 1.1, y: [1]}, {x: 2.2, y: [1, 2]}],
+         [],
+         [{x: 3.3, y: [1, 2, 3]}]]
+    
+    and types
+    
+        3 * var * {
+            x: float64,
+            y: var * int64
+        }
+    
+    This extended show output is the default representation in Jupyter.
+  * Round-trip fidelity in ak.to_arrow/ak.from_arrow: no Awkward
+    Array metadata is lost. Same for ak.to_parquet/ak.from_parquet,
+    to the extent that pyarrow can read and write Parquet.
+  * Parquet column selection using wildcards.
+  * Data exported with version 1 ak.to_buffers can be imported by
+    version 2 ak.from_buffers, with custom buffer_keys.
+  * The majority of version 1 tests have been ported to version 2,
+    to ensure that the interface and functionality doesn't change,
+    except where intended (e.g. organizing naming conventions).
+  * Consistent handling of date-time and time-delta types (matches
+    NumPy's system).
+  * Improved ak.to_json/ak.from_json arguments (for converting
+    non-JSON types NaN, infinity, complex numbers) and using a
+    known JSONSchema to accelerate ak.from_json. Removed
+    ambiguities about newline-delimited JSON (requires explicit
+    argument).
+  * The world's fastest Avro file reader in Python,
+    ak.from_avro_file (uses AwkwardForth).
+  * "nan" versions of NumPy functions, such as np.nansum,
+    np.nanmean, np.nanstd.
+  * Renamed ak.to_pandas → ak.to_dataframe, to clarify distinction
+    from awkward-pandas.
+  * Organized Type and Form objects better, more consistent.
+  * Clear specification of NumPy dtypes that can be used in Awkward
+    Arrays (bool, numbers, including complex, and
+    date-time/time-delta).
+  * Organized naming conventions throughout the codebase, such as
+    keys versus fields versus recordlookup.
+  * Carefully examined the public API (all modules, functions,
+    classes, and methods that don't start with an underscore) to be
+    sure that we can support it going forward. Any removal or
+    change of an interface will require a minor version number
+    increase and a deprecation cycle, on the order of months. (New
+    features and bug-fixes can be immediate, on patch releases.)
+  * Flags and "configuration" function arguments are now
+    keyword-only (order independent).
+  * Started adding Python type hints (nowhere near complete, but
+    started).
+  * Removed the Identities from array nodes. They were never fully
+    implemented—a placeholder for a feature that won't be developed
+    within Awkward Array (SQL-style JOINs).
+  * TypeTracerArray does a "dry run" of a calculation to predict
+    its type at the end. Used to build a computation graph for
+    dask-awkward.
+  * Equivalent but ungainly type combinations, such as "option-type
+    of option-type of X" or "union-type containing union-types,"
+    have been outlawed with tools to squash them into a canonical
+    layout. Operations on the data now have fewer possibilities to
+    worry about.
+  * Simplified the semantics of nbytes.
+  * Clarified ak.ravel and ak.flatten's treatments of missing data.
+  * Added missing ArrayBuilder methods in Numba.
+  * Set up framework for performing ak.* operations in CUDA, using
+    CuPy JIT-compilation to get the right interface, with error
+    message passing through asynchronous GPU computations. The CUDA
+    implementation is not complete, but the groundwork has been
+    laid.
+  * Parquet reading/writing uses fsspec for remote connections and
+    handles the dataset protocol correctly.
+  * Public interface to our power-tools: ak.transform unifies our
+    internal recursively_apply and broadcast_and_apply.
+  * All ak.* functions were rewritten; some were redesigned in a
+    simpler way using the above-mentioned power tools. There are
+    likely fewer undiscovered bugs in these functions now.
+  * Use of records in numerical functions is more restricted, to
+    prevent misapplication of ufuncs like + and reducers like
+    np.sum on meaningful records such as Vectors.
+  * All docstrings updated for version 2, including the code
+    examples.
+- Drop awkward-cmake-build-with-RelWithDebInfo.patch: No longer
+  compiling here
+- Remove the devel package: The header-only files are now provided
+  by awkward-devel built from python-awkward-cpp
+
+-------------------------------------------------------------------
 Fri Nov 11 08:52:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Rvert the devel package requirement, python-awkward is not provided by any of
