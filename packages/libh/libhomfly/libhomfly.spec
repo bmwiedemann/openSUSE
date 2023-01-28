@@ -1,7 +1,7 @@
 #
 # spec file for package libhomfly
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 %define lname   libhomfly0
-%define unver   1.02r6
 Name:           libhomfly
-Version:        1.0.2.6
+Version:        1.02r6
 Release:        0
 Summary:        Library to compute the homfly polynomial of a link
 License:        SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/miguelmarco/libhomfly
-Source:         https://github.com/miguelmarco/libhomfly/releases/download/%unver/%name-%unver.tar.gz
+Source:         https://github.com/miguelmarco/libhomfly/releases/download/%{version}/%name-%{version}.tar.gz
 BuildRequires:  gc-devel
 
 %description
@@ -49,7 +48,7 @@ A library to compute the homfly polynomial of a link.
 This subpackage provides the development headers for it.
 
 %prep
-%autosetup -p1 -n %name-%unver
+%autosetup -p1 -n %name-%{version}
 
 %build
 %configure --disable-static
