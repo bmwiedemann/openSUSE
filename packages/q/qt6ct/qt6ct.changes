@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 28 14:05:30 UTC 2023 - kh Lai <dlshcbmuipmam@hotmail.com>
+
+- Update to 0.7
+  * fixed crash when loading default font
+  * changed font configuration format
+  * improved icon loader
+  * updated Czech translation
+
+-------------------------------------------------------------------
 Sat Oct  1 07:43:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.6
