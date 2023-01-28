@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jan 27 12:38:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hspec to version 2.10.9.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hspec-2.10.9/src/CHANGES.markdown
+
+-------------------------------------------------------------------
 Mon Dec 19 04:48:20 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hspec to version 2.10.8.

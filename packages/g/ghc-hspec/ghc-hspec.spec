@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hspec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name hspec
 Name:           ghc-%{pkg_name}
-Version:        2.10.8
+Version:        2.10.9
 Release:        0
 Summary:        A Testing Framework for Haskell
 License:        MIT
@@ -44,7 +44,7 @@ are:
 
 * automatic discovery of test files
 
-The Hspec Manual is at <http://hspec.github.io/>.
+The Hspec Manual is at <https://hspec.github.io/>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
