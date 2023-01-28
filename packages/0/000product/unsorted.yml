@@ -5018,6 +5018,8 @@ unsorted:
   - ghc-generic-monoid-devel: [x86_64] 
   - ghc-generic-random: [x86_64] 
   - ghc-generic-random-devel: [x86_64] 
+  - ghc-generically: [x86_64] 
+  - ghc-generically-devel: [x86_64] 
   - ghc-ghc: [x86_64] 
   - ghc-ghc-boot: [x86_64] 
   - ghc-ghc-boot-devel: [x86_64] 
@@ -5116,6 +5118,8 @@ unsorted:
   - ghc-hslua-core: [x86_64] 
   - ghc-hslua-core-devel: [x86_64] 
   - ghc-hslua-devel: [x86_64] 
+  - ghc-hslua-list: [x86_64] 
+  - ghc-hslua-list-devel: [x86_64] 
   - ghc-hslua-marshalling: [x86_64] 
   - ghc-hslua-marshalling-devel: [x86_64] 
   - ghc-hslua-module-doclayout: [x86_64] 
@@ -5757,6 +5761,8 @@ unsorted:
   - ghc-vector-builder: [x86_64] 
   - ghc-vector-builder-devel: [x86_64] 
   - ghc-vector-devel: [x86_64] 
+  - ghc-vector-stream: [x86_64] 
+  - ghc-vector-stream-devel: [x86_64] 
   - ghc-vector-th-unbox: [x86_64] 
   - ghc-vector-th-unbox-devel: [x86_64] 
   - ghc-void: [x86_64] 
@@ -9157,6 +9163,9 @@ unsorted:
   - leechcraft-zalil 
   - leiningen 
   - lekha: [x86_64] 
+  - lemon 
+  - lemon-devel 
+  - lemon-doc 
   - lemonbar 
   - lensfun-devel 
   - lensfun-doc 
@@ -11027,6 +11036,7 @@ unsorted:
   - libembree3: [x86_64] 
   - libemf2svg-devel 
   - libemf2svg1 
+  - libemon1_3_1 
   - libenca0 
   - libenca0-32bit: [x86_64] 
   - libenchant-2-2-32bit: [x86_64] 
@@ -12834,9 +12844,9 @@ unsorted:
   - libnbd-devel 
   - libnbd0: [i586] 
   - libnblib_gmx0 
-  - libnco-5_1_3 
+  - libnco-5_1_4 
   - libnco-devel 
-  - libnco_c++-5_1_3 
+  - libnco_c++-5_1_4 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -22726,7 +22736,8 @@ unsorted:
   - python310-av 
   - python310-avahi 
   - python310-avro 
-  - python310-awkward 
+  - python310-awkward: [x86_64] 
+  - python310-awkward-cpp 
   - python310-awpa 
   - python310-aws-sam-translator 
   - python310-aws-xray-sdk 
@@ -25101,6 +25112,8 @@ unsorted:
   - python310-schedule 
   - python310-schema 
   - python310-scikit-build 
+  - python310-scikit-build-core 
+  - python310-scikit-build-core-pyproject 
   - python310-scikit-dsp-comm 
   - python310-scikit-hep-testdata 
   - python310-scikit-image 
@@ -25110,7 +25123,7 @@ unsorted:
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
-  - python310-scipy_1_9_3-gnu-hpc: [x86_64] 
+  - python310-scipy_1_10_0-gnu-hpc: [x86_64] 
   - python310-scitokens 
   - python310-scp 
   - python310-screeninfo 
@@ -26036,7 +26049,8 @@ unsorted:
   - python38-av 
   - python38-avahi 
   - python38-avro 
-  - python38-awkward 
+  - python38-awkward: [x86_64] 
+  - python38-awkward-cpp 
   - python38-awpa 
   - python38-aws-sam-translator 
   - python38-aws-xray-sdk 
@@ -28497,6 +28511,8 @@ unsorted:
   - python38-schedule 
   - python38-schema 
   - python38-scikit-build 
+  - python38-scikit-build-core 
+  - python38-scikit-build-core-pyproject 
   - python38-scikit-dsp-comm 
   - python38-scikit-hep-testdata 
   - python38-scikit-image 
@@ -28506,7 +28522,7 @@ unsorted:
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
-  - python38-scipy_1_9_3-gnu-hpc: [x86_64] 
+  - python38-scipy_1_10_0-gnu-hpc: [x86_64] 
   - python38-scitokens 
   - python38-scour 
   - python38-scp 
@@ -29439,7 +29455,8 @@ unsorted:
   - python39-av 
   - python39-avahi 
   - python39-avro 
-  - python39-awkward 
+  - python39-awkward: [x86_64] 
+  - python39-awkward-cpp 
   - python39-awpa 
   - python39-aws-sam-translator 
   - python39-aws-xray-sdk 
@@ -31899,6 +31916,8 @@ unsorted:
   - python39-schedule 
   - python39-schema 
   - python39-scikit-build 
+  - python39-scikit-build-core 
+  - python39-scikit-build-core-pyproject 
   - python39-scikit-dsp-comm 
   - python39-scikit-hep-testdata 
   - python39-scikit-image 
@@ -31908,7 +31927,7 @@ unsorted:
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
-  - python39-scipy_1_9_3-gnu-hpc: [x86_64] 
+  - python39-scipy_1_10_0-gnu-hpc: [x86_64] 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
@@ -45186,7 +45205,6 @@ unsorted:
   - z3-devel 
   - zabbix-agent 
   - zabbix-java-gateway 
-  - zabbix-phpfrontend 
   - zabbix-proxy 
   - zabbix-proxy-mysql 
   - zabbix-proxy-postgresql 
@@ -45194,6 +45212,7 @@ unsorted:
   - zabbix-server 
   - zabbix-server-mysql 
   - zabbix-server-postgresql 
+  - zabbix-ui 
   - zam-plugins-jack 
   - zam-plugins-vst 
   - zanshin 
