@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jan 18 17:11:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.5.
+  texmath (0.12.5.5)
+
+    * Allow pandoc-types 1.23.
+
+    * TeX reader: remove false positives for isConvertible (#204).
+      "Convertible" symbols are those in which subscripts render
+      under the symbol in display environments, and as subscripts
+      in inline environments. Previously the TeX parser recognized
+      all relation and binary symbols as convertible, which does not
+      match TeX's behavior.
+
+    * TeX reader: Support `\enspace` (#203).
+
+-------------------------------------------------------------------
 Sat Oct  8 20:29:52 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.5.4.
