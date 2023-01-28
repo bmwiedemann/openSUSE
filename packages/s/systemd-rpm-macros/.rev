@@ -644,4 +644,14 @@
 - Add %_user_tmpfilesdir macro</comment>
     <requestid>1037703</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b3e80dfb8000cd0ec82d1f0ae2e655d</srcmd5>
+    <version>19</version>
+    <time>1674927762</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 19
+
+- `udevadm hwdb` is deprecated, use `systemd-hwdb` instead.</comment>
+    <requestid>1061222</requestid>
+  </revision>
 </revisionlist>

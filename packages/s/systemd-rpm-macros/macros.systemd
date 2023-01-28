@@ -209,7 +209,7 @@ fi											\
 %systemd_user_postun_with_restart() %{nil}
 
 %udev_hwdb_update() \
-[ -x /usr/bin/udevadm ] && /usr/bin/udevadm hwdb --update || : \
+[ -x /usr/bin/systemd-hwdb ] && /usr/bin/systemd-hwdb update || : \
 %{nil}
 
 %udev_rules_update() \
