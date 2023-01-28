@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 26 11:39:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.39.
+  ## 0.3.39
+
+  * Make the previous change backwards compatible with CPP
+
+  ## 0.3.38
+
+  * Drop old deprecated instances to support transformers 0.6 [#39](https://github.com/snoyberg/monad-logger/pull/39)
+
+-------------------------------------------------------------------
 Wed Dec 21 21:03:43 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update monad-logger to version 0.3.37 revision 3.
