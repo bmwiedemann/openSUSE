@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 26 21:28:27 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.8.1.0.
+  5.8.1.0
+  -------
+
+  * Data.Graph.Inductive.PatriciaTree.Gr and
+    Data.Graph.Inductive.Tree.Gr now have Functor instances.
+
+  * 'Gr a' is now an instance of Functor.
+
+-------------------------------------------------------------------
 Sat Sep 24 07:24:12 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update fgl to version 5.8.0.0.
