@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan  4 03:06:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.55
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.55 2023-01-03
+
+      [ TESTING ]
+      - remove dependency on Test::Deep (GH #254)
+
+-------------------------------------------------------------------
 Fri Feb  4 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.54

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.54
+Version:        4.55
 Release:        0
-Summary:        Handle Common Gateway Interface requests and responses
 License:        Artistic-2.0
+Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEEJO/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -30,7 +30,6 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Temp) >= 0.17
 BuildRequires:  perl(HTML::Entities) >= 3.69
-BuildRequires:  perl(Test::Deep) >= 0.11
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Warn) >= 0.3
