@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 27 15:45:58 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 1.48~20221101+1.142dace:
+  * fix output of "sg_inq -H -p bdc" (boo#1207700)
+
+-------------------------------------------------------------------
 Thu Nov 03 20:15:14 UTC 2022 - mwilck@suse.com
 
 - Update to new upstream version 1.48~20221101.6d3bd26:
@@ -7,7 +13,7 @@ Thu Nov 03 20:15:14 UTC 2022 - mwilck@suse.com
   * sg_stream_ctl: --get fix better; sg_rem_rest_elem: cleanup
   * sg_stream_ctl: fix --get indexing; fix some './configure --enable-debug' issues
   * sg_inq+sg_vpd: JSON updates
-  * rescan-scsi-bus: speed large multipath scans
+  * rescan-scsi-bus: speed large multipath scans (bsc#1207706)
   * rescan-scsi-bus.sh speed testonline()
   * rescan-scsi-bus.sh: add option --no-lip-scan
   * rescan-scsi-bus: sgdevice26: do not traverse sg class if scsi_device isnot added

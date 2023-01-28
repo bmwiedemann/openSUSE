@@ -632,4 +632,15 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   * Zoned block device characteristics VPD page support (forwarded request 1033169 from mwilck)</comment>
     <requestid>1033478</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>490f68df4678d1452f9891c610bda999</srcmd5>
+    <version>1.48~20221101+1.142dace</version>
+    <time>1674932415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.48~20221101+1.142dace:
+  * fix output of &quot;sg_inq -H -p bdc&quot; (boo#1207700)
+
+  * rescan-scsi-bus: speed large multipath scans (bsc#1207706)</comment>
+    <requestid>1061594</requestid>
+  </revision>
 </revisionlist>
