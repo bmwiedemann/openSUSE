@@ -1870,4 +1870,21 @@ boundary checks.
 </comment>
     <requestid>1059909</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>0b99c2880415d97b0ef6d44444dc02f5</srcmd5>
+    <version>2023.01</version>
+    <time>1674932412</time>
+    <user>dimstar_suse</user>
+    <comment>Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01
+Prefer upstream solution to fix boo#1207562
+* Patches dropped:
+  0017-rpi-fix-boot-from-USB-on-RPi4-boo-1.patch
+* Patches added:
+  0017-Backport-https-patchwork.ozlabs.org.patch
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01
+* Patches added to fix boot from USB on RPi4 - boo#1207562:
+  0017-rpi-fix-boot-from-USB-on-RPi4-boo-1.patch
+</comment>
+    <requestid>1061570</requestid>
+  </revision>
 </revisionlist>

@@ -238,6 +238,7 @@ Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+Patch0017:      0017-Backport-https-patchwork.ozlabs.org.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

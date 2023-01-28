@@ -1,0 +1,83 @@
+From f4dbc6d532d05bdb3070c6492d19e268845e8a0c Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Fri, 27 Jan 2023 15:08:55 +0100
+Subject: [PATCH] Backport
+ https://patchwork.ozlabs.org/project/uboot/patch/20230125230823.1567778-1-trini@konsulko.com/
+ to fix boo#1207562
+
+---
+ configs/a3y17lte_defconfig        | 1 -
+ configs/a5y17lte_defconfig        | 1 -
+ configs/a7y17lte_defconfig        | 1 -
+ configs/dragonboard845c_defconfig | 1 -
+ configs/qcs404evb_defconfig       | 1 -
+ configs/starqltechn_defconfig     | 1 -
+ lib/Kconfig                       | 1 -
+ 7 files changed, 7 deletions(-)
+
+diff --git a/configs/a3y17lte_defconfig b/configs/a3y17lte_defconfig
+index 124fb8d476..0215c5f234 100644
+--- a/configs/a3y17lte_defconfig
++++ b/configs/a3y17lte_defconfig
+@@ -24,4 +24,3 @@ CONFIG_SYS_BOOTM_LEN=0x2000000
+ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_I2C=y
+ CONFIG_DM_I2C_GPIO=y
+-CONFIG_LMB_MAX_REGIONS=64
+diff --git a/configs/a5y17lte_defconfig b/configs/a5y17lte_defconfig
+index ffb0b3f474..d1cd97baf5 100644
+--- a/configs/a5y17lte_defconfig
++++ b/configs/a5y17lte_defconfig
+@@ -24,4 +24,3 @@ CONFIG_SYS_BOOTM_LEN=0x2000000
+ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_I2C=y
+ CONFIG_DM_I2C_GPIO=y
+-CONFIG_LMB_MAX_REGIONS=64
+diff --git a/configs/a7y17lte_defconfig b/configs/a7y17lte_defconfig
+index 8c1229d8d5..bef2d0945a 100644
+--- a/configs/a7y17lte_defconfig
++++ b/configs/a7y17lte_defconfig
+@@ -24,4 +24,3 @@ CONFIG_SYS_BOOTM_LEN=0x2000000
+ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_I2C=y
+ CONFIG_DM_I2C_GPIO=y
+-CONFIG_LMB_MAX_REGIONS=64
+diff --git a/configs/dragonboard845c_defconfig b/configs/dragonboard845c_defconfig
+index a69d82761a..cef82f5610 100644
+--- a/configs/dragonboard845c_defconfig
++++ b/configs/dragonboard845c_defconfig
+@@ -26,4 +26,3 @@ CONFIG_DM_PMIC=y
+ CONFIG_PMIC_QCOM=y
+ CONFIG_MSM_GENI_SERIAL=y
+ CONFIG_SPMI_MSM=y
+-CONFIG_LMB_MAX_REGIONS=64
+diff --git a/configs/qcs404evb_defconfig b/configs/qcs404evb_defconfig
+index dae1551411..d3608cae9f 100644
+--- a/configs/qcs404evb_defconfig
++++ b/configs/qcs404evb_defconfig
+@@ -51,4 +51,3 @@ CONFIG_USB_XHCI_DWC3=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_DWC3_GENERIC=y
+ CONFIG_USB_STORAGE=y
+-CONFIG_LMB_MAX_REGIONS=64
+diff --git a/configs/starqltechn_defconfig b/configs/starqltechn_defconfig
+index 7955076d61..243f3f90c5 100644
+--- a/configs/starqltechn_defconfig
++++ b/configs/starqltechn_defconfig
+@@ -33,4 +33,3 @@ CONFIG_VIDEO=y
+ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_VIDEO_SIMPLE=y
+ CONFIG_VIDEO_DT_SIMPLEFB=y
+-CONFIG_LMB_MAX_REGIONS=64
+diff --git a/lib/Kconfig b/lib/Kconfig
+index 3c5a4ab386..4abd987edd 100644
+--- a/lib/Kconfig
++++ b/lib/Kconfig
+@@ -992,7 +992,6 @@ config LMB
+ config LMB_USE_MAX_REGIONS
+ 	bool "Use a common number of memory and reserved regions in lmb lib"
+ 	depends on LMB
+-	default y
+ 	help
+ 	  Define the number of supported memory regions in the library logical
+ 	  memory blocks.

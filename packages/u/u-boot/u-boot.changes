@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jan 27 14:10:12 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01
+Prefer upstream solution to fix boo#1207562
+* Patches dropped:
+  0017-rpi-fix-boot-from-USB-on-RPi4-boo-1.patch
+* Patches added:
+  0017-Backport-https-patchwork.ozlabs.org.patch
+
+-------------------------------------------------------------------
+Fri Jan 27 08:09:35 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01
+* Patches added to fix boot from USB on RPi4 - boo#1207562:
+  0017-rpi-fix-boot-from-USB-on-RPi4-boo-1.patch
+
+-------------------------------------------------------------------
 Thu Jan 19 14:17:33 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Remove obsolete riscv64 libgcc hack
