@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jan 26 10:24:00 UTC 2023 - Lubos Kocman <Lubos.Kocman@suse.com>
+
+- Use http:// for openh264 as the redirection target
+  does not support https:// (Resolves boo#1207567).
+
+- 20230126
+
+-------------------------------------------------------------------
+Wed Jan 25 09:44:50 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- drop unused proposals definition ( related to drop of yast2-sound
+  bsc#1206903)
+- 20230125
+
+-------------------------------------------------------------------
+Tue Jan 24 10:37:00 UTC 2023 - Lubos Kocman <Lubos.Kocman@suse.com>
+
+- Enable Open H.264 repo by default code-o-o#leap/features/22
+  Resolves jsc#OPENSUSE-46 jsc#SLE-18915
+  fix changelog date
+
+- 20230124
+
+-------------------------------------------------------------------
 Wed Jan  4 11:50:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - LegacyX86: unlike other ports, i586 does have a valid non-oss
