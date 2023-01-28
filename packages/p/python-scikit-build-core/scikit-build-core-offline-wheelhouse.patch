@@ -1,0 +1,54 @@
+diff -ur scikit_build_core-0.1.5.orig/tests/conftest.py scikit_build_core-0.1.5/tests/conftest.py
+--- scikit_build_core-0.1.5.orig/tests/conftest.py	2023-01-27 19:49:07.842530605 +0100
++++ scikit_build_core-0.1.5/tests/conftest.py	2023-01-27 19:56:01.269327907 +0100
+@@ -27,49 +27,7 @@
+ 
+ @pytest.fixture(scope="session")
+ def pep518_wheelhouse(tmp_path_factory: pytest.TempPathFactory) -> Path:
+-    wheelhouse = tmp_path_factory.mktemp("wheelhouse")
+-
+-    subprocess.run(
+-        [
+-            sys.executable,
+-            "-m",
+-            "pip",
+-            "wheel",
+-            "--wheel-dir",
+-            str(wheelhouse),
+-            f"{BASE}[pyproject]",
+-        ],
+-        check=True,
+-    )
+-    packages = [
+-        "build",
+-        "pybind11",
+-        "rich",
+-        "setuptools",
+-        "virtualenv",
+-        "wheel",
+-    ]
+-
+-    if importlib.util.find_spec("cmake") is not None:
+-        packages.append("cmake")
+-
+-    if importlib.util.find_spec("ninja") is not None:
+-        packages.append("ninja")
+-
+-    subprocess.run(
+-        [
+-            sys.executable,
+-            "-m",
+-            "pip",
+-            "download",
+-            "-q",
+-            "-d",
+-            str(wheelhouse),
+-            *packages,
+-        ],
+-        check=True,
+-    )
+-    return wheelhouse
++    return os.getcwd() + '/build'
+ 
+ 
+ class VEnv(EnvBuilder):

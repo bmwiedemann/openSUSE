@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Fri Jan 27 17:59:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.1.5
+- New build backend. First user: python-awkward-cpp
+- Add patch: scikit-build-core-offline-wheelhouse.patch for
+  offline wheelhouse in testing
