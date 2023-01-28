@@ -1,8 +1,8 @@
 #
 # spec file for package clinfo
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2015-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           clinfo
-Version:        3.0.21.02.21
+Version:        3.0.23.01.25
 Release:        0
 Summary:        Utility that reports status information for all installed OpenCL ICDs
 License:        SUSE-Public-Domain
@@ -42,16 +42,15 @@ platforms).
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
-export PREFIX="%{buildroot}/%{_prefix}" MANDIR="%{buildroot}/%{_mandir}"
-%make_install
+%make_install DESTDIR=%{buildroot} BINDIR=%{_bindir} MAN1DIR=%{_mandir}/man1
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/clinfo
-%{_mandir}/man1/clinfo.1%{ext_man}
+%{_mandir}/man1/clinfo.1%{?ext_man}
 
 %changelog
