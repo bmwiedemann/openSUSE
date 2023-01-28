@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 26 13:28:24 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS for new products, it's deprecated and gets removed
+
+-------------------------------------------------------------------
 Tue Jan 24 12:23:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build GLIBC hwcaps optimized versions of the interpreter
