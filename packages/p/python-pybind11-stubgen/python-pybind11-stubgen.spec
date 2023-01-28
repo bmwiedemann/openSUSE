@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11-stubgen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pypiname pybind11-stubgen
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{pypiname}
-Version:        0.10.5
+Version:        0.12.0
 Release:        0
 Summary:        PEP 561 type stubs generator for pybind11 modules
 License:        BSD-3-Clause
@@ -28,8 +29,8 @@ Source:         https://pypi.io/packages/source/p/%{pypiname}/%{pypiname}-%{vers
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
