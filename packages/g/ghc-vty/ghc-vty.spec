@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %global pkg_name vty
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.37
+Version:        5.38
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
@@ -35,12 +34,10 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-mtl-devel
 BuildRequires:  ghc-microlens-th-devel
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-parallel-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
@@ -51,28 +48,16 @@ BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-quickcheck-assertions-devel
-BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-smallcheck-devel
-BuildRequires:  ghc-string-qq-devel
-BuildRequires:  ghc-test-framework-devel
-BuildRequires:  ghc-test-framework-hunit-devel
-BuildRequires:  ghc-test-framework-smallcheck-devel
-%endif
 
 %description
 Vty is terminal GUI library in the niche of ncurses. It is intended to be easy
-to use, have no confusing corner cases, and good support for common terminal
-types.
+to use and to provide good support for common terminal types.
 
 See the 'vty-examples' package as well as the program
-'test/interactive_terminal_test.hs' included in the 'vty' package for examples
-on how to use the library.
+'examples/interactive_terminal_test.hs' included in the 'vty' repository for
+examples on how to use the library.
 
-Import the "Graphics.Vty" convenience module to get access to the core parts of
+Import the 'Graphics.Vty' convenience module to get access to the core parts of
 the library.
 
 &#169; 2006-2007 Stefan O'Rear; BSD3 license.
@@ -100,9 +85,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %install
 %ghc_lib_install
 %ghc_fix_rpath %{pkg_name}-%{version}
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache
