@@ -1,14 +1,14 @@
 -------------------------------------------------------------------
 Thu Jan 19 11:56:26 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
-- Wireshark 4.0.3:
-  * EAP dissector crash.
-  * NFS dissector memory leak.
-  * Dissection engine crash.
-  * GNW dissector crash.
-  * iSCSI dissector crash.
-  * Multiple dissector excessive loops.
-  * TIPC dissector crash.
+- Wireshark 4.0.3 (bsc#1207447):
+  * CVE-2023-0414: EAP dissector crash (boo#1207666).
+  * CVE-2023-0417: NFS dissector memory leak (boo#1207669).
+  * CVE-2023-0413: Dissection engine crash (boo#1207665).
+  * CVE-2023-0416: GNW dissector crash (boo#1207668).
+  * CVE-2023-0415: iSCSI dissector crash (boo#1207667).
+  * CVE-2023-0411: Multiple dissector excessive loops (boo#1207663).
+  * CVE-2023-0412: TIPC dissector crash (boo#1207664).
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.0.3.html
 
@@ -16,7 +16,7 @@ Thu Jan 19 11:56:26 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 Thu Dec  8 07:55:00 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.2:
-  * Multiple dissector infinite loops (boo#1206189).
+  * CVE-2022-4345: Multiple dissector infinite loops (boo#1206189).
   * Kafka dissector memory exhaustion (boo#1206190).
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.0.2.html
