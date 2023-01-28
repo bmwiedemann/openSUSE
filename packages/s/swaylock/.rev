@@ -78,4 +78,17 @@
     <comment></comment>
     <requestid>1058817</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d28d27eb0bd04f6e3164408f84ded80e</srcmd5>
+    <version>v1.7.1</version>
+    <time>1674927839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Parse `--debug` parameter before forking
+  * Fix option parsing without --debug after #261
+  * Remove overridden surface attachment
+  * Estimate buffer size in advance for render_frame
+  * Remove unused fields in swaylock_surface</comment>
+    <requestid>1061548</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jan 27 12:42:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * Parse `--debug` parameter before forking
+  * Fix option parsing without --debug after #261
+  * Remove overridden surface attachment
+  * Estimate buffer size in advance for render_frame
+  * Remove unused fields in swaylock_surface
+
+-------------------------------------------------------------------
 Mon Jan 16 13:37:35 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 
