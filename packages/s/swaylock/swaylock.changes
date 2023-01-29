@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jan 29 07:47:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.2:
+  * Wait for the locked event
+
+-------------------------------------------------------------------
 Fri Jan 27 12:42:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:

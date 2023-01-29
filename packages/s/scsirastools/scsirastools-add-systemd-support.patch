@@ -1,29 +1,3 @@
-Index: scsirastools-1.6.4/src/sgcommon.c
-===================================================================
---- scsirastools-1.6.4.orig/src/sgcommon.c
-+++ scsirastools-1.6.4/src/sgcommon.c
-@@ -72,6 +72,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
- #include <errno.h>
- #include <sys/ioctl.h>
- #include <fcntl.h>
-+#include <sys/sysmacros.h>
- #include "sgsub.h"
- #include "sgcommon.h"
- 
-Index: scsirastools-1.6.4/src/sgsubmon.c
-===================================================================
---- scsirastools-1.6.4.orig/src/sgsubmon.c
-+++ scsirastools-1.6.4/src/sgsubmon.c
-@@ -45,6 +45,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBI
- #include <time.h>
- #include <sys/ioctl.h>
- #include <scsi/sg.h>
-+#include <sys/sysmacros.h>
- 
- #define PATH_MAX   64
- #include <dirent.h>
-Index: scsirastools-1.6.4/files/sgdisk
-===================================================================
 --- scsirastools-1.6.4.orig/files/sgdisk
 +++ scsirastools-1.6.4/files/sgdisk
 @@ -15,7 +15,7 @@

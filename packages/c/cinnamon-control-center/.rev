@@ -234,4 +234,41 @@
     <comment></comment>
     <requestid>1007557</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1e100f06b43ec38c23bb3a5b964dd3f3</srcmd5>
+    <version>5.6.1</version>
+    <time>1674997843</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.1:
+  * l10n: Update POT
+  * Fix build when the color panel is disabled.
+  * fix a spelling error
+  * update and improve d/copyright
+  * Remove cinnamon-settings-daemon as a dependency.
+  * l10n: respect localedir option from meson again
+  * Desktop files: Fix keywords translations
+  * l10n: Update POT
+  * cinnamon-control-center (5.4.7) vanessa; urgency=medium
+  * region panel: add keys removed from libgnomekbd's API
+  * display panel: fallback if no preferred mode is set
+  * cinnamon-control-center (5.4.6) vanessa; urgency=medium
+  * wacom: Bring in line with changes in muffin to fix support.
+  * cinnamon-control-center (5.4.5) vanessa; urgency=medium
+  * build: add missing gio-unix-2.0 dependency
+  * cinnamon-control-center (5.4.4) vanessa; urgency=medium
+  * meson: fix regression in installing with some panels disabled
+  * small debian packaging improve
+  * cinnamon-control-center (5.4.3) vanessa; urgency=medium
+  * meson: fix installation of symlinks
+  * meson: reimplement the symlink creation install script using builtin features
+  * circleci: Fix mint21 build installation step.
+  * Fix desktop files
+  * cinnamon-control-center (5.4.2) vanessa; urgency=medium
+  * packaging: Install correct desktop files to usr/share/applications instead of in the panel definition folder.
+  * cinnamon-control-center (5.4.1) vanessa; urgency=medium
+  * cc-display-config: Check other monitors' capabilities when deciding which scales to offer for the selected one.
+  * display: Keep monitors visible when disabled.
+  * display: Select a different active monitor when the current selection is disabled.</comment>
+    <requestid>1061782</requestid>
+  </revision>
 </revisionlist>

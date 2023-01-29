@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:36:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.6:
+  src/sgcommon.c,sgsubmon.c - include <sys/sysmacros.h>
+- scsirastools-add-systemd-support.patch: refresh
+
+-------------------------------------------------------------------
 Thu Dec  1 17:35:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Compact description and fix the broken markup for the tool list.

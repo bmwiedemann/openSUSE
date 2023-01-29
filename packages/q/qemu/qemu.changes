@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jan 27 12:14:01 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Refactor building and installing SeaBIOS docs
+
+-------------------------------------------------------------------
+Fri Jan 27 11:30:25 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Rename submodule patches so that it's clear which ones
+  are backports and which ones are downstream only fixes;
+- No functional change intended.
+* Patches dropped:
+  Ignore-spurious-GCC-12-warning.patch
+  roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+  Makefile-define-endianess-for-cross-buil.patch
+  ipxe-Makefile-fix-issues-of-build-reprod.patch
+  qboot-add-cross.ini-file-to-handle-aarch.patch
+  sgabios-Makefile-fix-issues-of-build-rep.patch
+  Silence-GCC-12-spurious-warnings.patch
+  build-be-explicit-about-mx86-used-note-n.patch
+  enable-cross-compilation-on-ARM.patch
+  stub-out-the-SAN-req-s-in-int13.patch
+  help-compiler-out-by-initializing-array.patch
+  seabios-switch-to-python3-as-needed.patch
+* Patches added:
+  openSUSE-Basetools-Ignore-spurious-GCC-1.patch
+  openSUSE-Makefile-Fix-csum8-to-be-built-.patch
+  openSUSE-Makefile-define-endianess-for-c.patch
+  openSUSE-Makefile-fix-issues-of-build-re.patch
+  openSUSE-add-cross.ini-file-to-handle-aa.patch
+  openSUSE-build-Makefile-fix-issues-of-bu.patch
+  openSUSE-build-Silence-GCC-12-spurious-w.patch
+  openSUSE-build-be-explicit-about-mx86-us.patch
+  openSUSE-build-enable-cross-compilation-.patch
+  openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
+  openSUSE-switch-to-python3-as-needed.patch
+  openSUSE-test-help-compiler-out-by-initi.patch
+
+-------------------------------------------------------------------
 Wed Jan 11 18:41:30 UTC 2023 - Li Zhang <li.zhang@suse.com>
 
 - Fixes jsc#PED-1716

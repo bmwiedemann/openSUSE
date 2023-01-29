@@ -204,29 +204,29 @@ Patch00040:     s390x-pci-enable-adapter-event-notificat.patch
 Patch00041:     s390x-pci-let-intercept-devices-have-sep.patch
 Patch00042:     s390x-pci-reflect-proper-maxstbl-for-gro.patch
 # Patches applied in roms/seabios/:
-Patch01000:     seabios-switch-to-python3-as-needed.patch
-Patch01001:     enable-cross-compilation-on-ARM.patch
-Patch01002:     build-be-explicit-about-mx86-used-note-n.patch
+Patch01000:     openSUSE-switch-to-python3-as-needed.patch
+Patch01001:     openSUSE-build-enable-cross-compilation-.patch
+Patch01002:     openSUSE-build-be-explicit-about-mx86-us.patch
 # Patches applied in roms/ipxe/:
 Patch02000:     ath5k-Add-missing-AR5K_EEPROM_READ-in-at.patch
-#Patch02001:     stub-out-the-SAN-req-s-in-int13.patch
-Patch02002:     ipxe-Makefile-fix-issues-of-build-reprod.patch
-Patch02003:     help-compiler-out-by-initializing-array.patch
-Patch02004:     Silence-GCC-12-spurious-warnings.patch
+#Patch02001:     openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
+Patch02002:     openSUSE-build-Makefile-fix-issues-of-bu.patch
+Patch02003:     openSUSE-test-help-compiler-out-by-initi.patch
+Patch02004:     openSUSE-build-Silence-GCC-12-spurious-w.patch
 # Patches applied in roms/sgabios/:
-Patch03000:     sgabios-Makefile-fix-issues-of-build-rep.patch
-Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
+Patch03000:     openSUSE-Makefile-fix-issues-of-build-re.patch
+Patch03001:     openSUSE-Makefile-Fix-csum8-to-be-built-.patch
 # Patches applied in roms/edk2/:
-Patch04000:     Ignore-spurious-GCC-12-warning.patch
+Patch04000:     openSUSE-Basetools-Ignore-spurious-GCC-1.patch
 # Patches applied in roms/skiboot/:
-Patch05000:     Makefile-define-endianess-for-cross-buil.patch
+Patch05000:     openSUSE-Makefile-define-endianess-for-c.patch
 # Patches applied in roms/qboot/:
-Patch11000:     qboot-add-cross.ini-file-to-handle-aarch.patch
+Patch11000:     openSUSE-add-cross.ini-file-to-handle-aa.patch
 # Patches applied in roms/opensbi/:
 Patch13000:     Makefile-fix-build-with-binutils-2.38.patch
 
 # Patches that will be applied directly across the spec file
-Source1000:     stub-out-the-SAN-req-s-in-int13.patch
+Source1000:     openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
 
 # Please do not add patches manually here.
 
@@ -1589,6 +1589,8 @@ is the default and legacy BIOS for QEMU.
 %_datadir/%name/bios-256k.bin
 %_datadir/%name/firmware/50-seabios-256k.json
 %_datadir/%name/firmware/60-seabios-128k.json
+%license roms/seabios/COPYING
+%doc %_docdir/qemu-seabios
 
 %package vgabios
 Summary:        VGA BIOSes for QEMU
@@ -1615,6 +1617,7 @@ video card. For use with QEMU.
 %_datadir/%name/vgabios-stdvga.bin
 %_datadir/%name/vgabios-virtio.bin
 %_datadir/%name/vgabios-vmware.bin
+%license roms/seabios/COPYING
 
 %package sgabios
 Summary:        Serial Graphics Adapter BIOS for QEMU
@@ -1629,11 +1632,10 @@ The Google Serial Graphics Adapter BIOS or SGABIOS provides a means for legacy
 x86 software to communicate with an attached serial console as if a video card
 were attached. For use with QEMU.
 
-%files sgabios -f roms/seabios/docs/docs.txt
+%files sgabios
 %defattr(-, root, root)
 %dir %_datadir/%name
 %_datadir/%name/sgabios.bin
-%license  roms/seabios/COPYING
 
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
@@ -1761,34 +1763,6 @@ efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 %endif
 
 %build
-
-%{nil build documentation for SeaBIOS }
-(d=roms/seabios/docs/
-cd "${d}"
-%{nil remember list of jobs in $@ }
-set --
-for f in *.md
-  do b="${f%.md}"
-
-    %{nil the following 2 commands are independent }
-
-    %{nil ensure the correct media type }
-    Markdown.pl "${f}" >"${b}.html" & set -- "${@}" "${!}"
-
-    %{nil links to b.md will be rendered as to b;
-    soft link because %%doc makes a copy }
-    ln -Ts "${b}.html" "${b}" & set -- "${@}" "${!}"
-
-    echo >>docs.txt %%doc "${d}${b}.html" "${d}${b}"
-
-  done
-
-  %{nil wait here because we are running in a subshell }
-  while ((${#}))
-  do wait "${1}"
-    shift
-  done
-  ) & ((seabios_docs_pid = $!))
 
 %if %{legacy_qemu_kvm}
 # FIXME: Why are we copying the s390 specific one (SOURCE13)?
@@ -2140,6 +2114,17 @@ done
 %make_build %{?_smp_mflags} -C %srcdir/roms bios \
   SEABIOS_EXTRAVERSION="-rebuilt.opensuse.org" \
 
+pushd %srcdir/roms/seabios/docs
+for f in *.md
+do
+  b="${f%.md}"
+  # Ensure the correct media type
+  Markdown.pl "${f}" >"${b}.html"
+  # Links to b.md will be rendered as to b
+  ln -Ts "${b}.html" "${b}"
+done
+popd
+
 # FIXME: check if we can upstream: roms-Makefile-add-cross-file-to-qboot-me.patch
 # and qboot-add-cross.ini-file-to-handle-aarch.patch
 %make_build -C %srcdir/roms qboot
@@ -2163,7 +2148,7 @@ make -C %srcdir/roms sgabios HOSTCC=cc \
 
 %if %{force_fit_virtio_pxe_rom}
 pushd %srcdir
-patch -p1 < %_sourcedir/stub-out-the-SAN-req-s-in-int13.patch
+patch -p1 < %_sourcedir/openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
 popd
 %make_build -C %srcdir/roms pxerom_variants=virtio pxerom_targets=1af41000 pxerom
 %endif
@@ -2191,7 +2176,6 @@ done
 
 # End of the build for qemu
 %endif
-wait "${seabios_docs_pid}"
 
 %install
 cd %blddir
@@ -2305,6 +2289,7 @@ done
 %if %{build_x86_firmware}
 install -D -m 0644 %{SOURCE14} %{buildroot}%_datadir/%name/firmware/50-seabios-256k.json
 install -D -m 0644 %{SOURCE15} %{buildroot}%_datadir/%name/firmware/60-seabios-128k.json
+install -d -m 0755 %{buildroot}%_docdir/qemu-seabios
 %else
 for f in %{x86_extra_firmware} ; do
   unlink %{buildroot}%_datadir/%name/$f

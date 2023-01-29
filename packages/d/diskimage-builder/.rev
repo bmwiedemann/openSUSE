@@ -289,4 +289,12 @@
   * Fix backward regex match</comment>
     <requestid>1041266</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3cea2a1feda0dba4430ccc57739ea056</srcmd5>
+    <version>3.26.0</version>
+    <time>1674997861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061807</requestid>
+  </revision>
 </revisionlist>

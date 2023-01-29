@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 21 08:40:18 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.0~20230121 for gcompris-qt 3.1
+
+-------------------------------------------------------------------
 Tue Apr 19 12:40:00 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 2.4~20220419 for gcompris-qt 2.4
@@ -6,17 +11,17 @@ Tue Apr 19 12:40:00 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 -------------------------------------------------------------------
 Sun Mar 13 13:58:40 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 2.3~20220313 for gcompris-qt 2.3 
+- Update to version 2.3~20220313 for gcompris-qt 2.3
 
 -------------------------------------------------------------------
 Sat Jan 22 13:07:30 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 2.1~20220121 for gcompris-qt 2.1 
+- Update to version 2.1~20220121 for gcompris-qt 2.1
 
 -------------------------------------------------------------------
 Sat Dec 18 08:41:12 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 2.0~20211218 for gcompris-qt 2.0 
+- Update to version 2.0~20211218 for gcompris-qt 2.0
 
 -------------------------------------------------------------------
 Mon Mar 22 13:30:43 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
@@ -26,12 +31,12 @@ Mon Mar 22 13:30:43 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 -------------------------------------------------------------------
 Thu Nov 19 12:23:52 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 1.0-20201120 for gcompris-qt 1.0 
+- Update to version 1.0-20201120 for gcompris-qt 1.0
 
 -------------------------------------------------------------------
 Sat Jun 27 14:00:16 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 20200627 for gcompris-qt 0.97.1 
+- Update to version 20200627 for gcompris-qt 0.97.1
 
 -------------------------------------------------------------------
 Tue Dec 10 11:17:16 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
@@ -42,23 +47,23 @@ Tue Dec 10 11:17:16 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 -------------------------------------------------------------------
 Mon Dec  9 20:18:00 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 20190411 for gcompris-qt 0.97 
+- Update to version 20190411 for gcompris-qt 0.97
 
 -------------------------------------------------------------------
 Mon Mar  4 16:21:28 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 20190304 for gcompris-qt 0.96 
+- Update to version 20190304 for gcompris-qt 0.96
 - Move all url to https
 
 -------------------------------------------------------------------
 Fri Jan  4 15:25:36 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 20190103 (gcompris-qt 0.95) 
+- Update to version 20190103 (gcompris-qt 0.95)
 
 -------------------------------------------------------------------
 Thu May 17 18:59:46 UTC 2018 - bruno@ioda-net.ch
 
-- Update to version 20180517 (gcompris-qt 0.91) 
+- Update to version 20180517 (gcompris-qt 0.91)
 
 -------------------------------------------------------------------
 Wed Mar 14 21:36:14 UTC 2018 - bruno@ioda-net.ch
@@ -69,7 +74,7 @@ Wed Mar 14 21:36:14 UTC 2018 - bruno@ioda-net.ch
 -------------------------------------------------------------------
 Sat Sep 30 18:54:49 UTC 2017 - bruno@ioda-net.ch
 
-- Update version 20170930 (gcompris-qt 0.81) 
+- Update version 20170930 (gcompris-qt 0.81)
 
 -------------------------------------------------------------------
 Wed Sep 13 11:40:20 UTC 2017 - bruno@ioda-net.ch
@@ -93,17 +98,17 @@ Sat Dec 24 08:49:10 UTC 2016 - bruno@ioda-net.ch
   * word list for Slovakia by Jose Riha
   * word list for Belarusian by Antos Vaclauski
   * various updates on Romanian wordlists and voices by Horia Pelle
-  * voices added for Portuguese Brazilian by Marcos D. 
+  * voices added for Portuguese Brazilian by Marcos D.
 
 -------------------------------------------------------------------
 Wed Nov 23 18:12:44 UTC 2016 - bruno@ioda-net.ch
 
-- Fix path to install to allow gcompris-qt to find the voices 
+- Fix path to install to allow gcompris-qt to find the voices
 
 -------------------------------------------------------------------
 Mon Aug  8 19:51:59 UTC 2016 - bruno@ioda-net.ch
 
-- Updated contents to match gcompris-qt 0.61 release 
+- Updated contents to match gcompris-qt 0.61 release
 
 -------------------------------------------------------------------
 Wed Jul 27 18:31:19 UTC 2016 - jengelh@inai.de

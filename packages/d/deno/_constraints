@@ -6,33 +6,10 @@
 <constraints>
 	<hardware>
 		<disk>
-			<size unit="G">4</size>
+			<size unit="G">18</size>
 		</disk>
 		<physicalmemory>
-			<size unit="G">11</size>
+			<size unit="G">12</size>
 		</physicalmemory>
-		<memoryperjob>
-			<size unit="G">1</size>
-		</memoryperjob>
 	</hardware>
-	<overwrite>
-		<conditions>
-			<arch>aarch64</arch>
-		</conditions>
-		<hardware>
-			<physicalmemory>
-				<size unit="G">15</size>
-			</physicalmemory>
-		</hardware>
-	</overwrite>
-	<overwrite>
-		<conditions>
-			<arch>x86_64</arch>
-		</conditions>
-		<hardware>
-			<disk>
-				<size unit="G">25</size>
-			</disk>
-		</hardware>
-	</overwrite>
 </constraints>

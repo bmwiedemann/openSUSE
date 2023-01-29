@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 27 15:00:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS for new products, it's deprecated and gets removed
+
+-------------------------------------------------------------------
 Thu Dec  8 14:42:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.9:

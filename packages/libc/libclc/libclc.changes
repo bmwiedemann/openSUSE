@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 28 14:28:38 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add support for SPIR-V targets on Tumbleweed.
+
+-------------------------------------------------------------------
 Sat Nov  5 11:05:57 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - build with llvm15/clang15 on sle15-sp5/Leap 15.5 

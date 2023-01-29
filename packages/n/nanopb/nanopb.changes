@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jan 28 21:06:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.7:
+  * Fix comments generation for submessages
+  * Fix handling of spaces in arguments passed through protoc
+  * Fix problems with multiple files and mangle_names option
+  * Fix generator error when using M_STRIP_PACKAGE without package name
+  * Fix compilation error with fixed size array and FT_POINTER
+  * Fix wrong format in Python Poetry project file
+  * Fix unnecessary generator message when using --quiet
+  * Fix enum_to_string with C++
+ Fix /* */ inside .proto file comment
+  * Workaround python-protobuf version issues
+  * Safeguard substraction in pb_read() with custom streams
+  * Always include pb_release() as function, instead of macro.
+ Allow using = instead of : with generator option -s
+  * Allow specifying include format without special characters
+  * Allow including headers from inside of extern C
+  * Add option NANOPB_PB2_TEMP_DIR to store nanopb_pb2.py in a temporary dir
+  * Add compile-time error message for when PB_FIELD_32BIT is needed
+  * Add --c-style command line option for naming style
+  * Add --protoc-opt to nanopb_generator.py
+  * Add ENUMTYPE convenience macros
+  * Add Bazel build rules
+
+-------------------------------------------------------------------
+Mon Jan  9 06:59:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add 'PB_ENABLE_MALLOC=1' so that we can build Criterion.
+
+-------------------------------------------------------------------
 Mon Aug 29 11:38:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.6

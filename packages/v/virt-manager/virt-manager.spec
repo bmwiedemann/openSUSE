@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ Patch7:         c22a876e-tests-Add-a-compat-check-for-linux2020-in-amd-sev-test-
 Patch8:         fbdf0516-cli-cpu-Add-maxphysaddr.mode-bits-options.patch
 Patch9:         b0d05167-cloner-Sync-uuid-and-sysinfo-system-uuid.patch
 Patch10:        999ccb85-virt-install-unattended-and-cloud-init-conflict.patch
+Patch11:        67832d30-addhardware-Fix-backtrace-when-controller-index-is-None.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -84,7 +85,6 @@ Patch157:       virtman-fix-restore-vm-menu-selection.patch
 Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
 Patch160:       virtman-revert-use-of-AyatanaAppIndicator3.patch
-Patch161:       virtman-fix-uninitialized-controller-index.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -100,6 +100,7 @@ Patch181:       virtinst-add-slem-detection-support.patch
 Patch182:       virtinst-add-sle-hpc-support.patch
 Patch183:       virtinst-add-oracle-linux-support.patch
 Patch184:       virtinst-windows-server-detection.patch
+Patch185:       virtman-fix-shared-disk-request-alignment-error.patch
 
 BuildArch:      noarch
 

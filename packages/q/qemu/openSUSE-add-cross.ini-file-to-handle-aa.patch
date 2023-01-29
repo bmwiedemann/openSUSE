@@ -1,0 +1,23 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 23 Nov 2020 07:06:37 -0700
+Subject: [openSUSE] add cross.ini file to handle aarch64 based build
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ cross.ini | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/roms/qboot/cross.ini b/roms/qboot/cross.ini
+new file mode 100644
+index 0000000000000000000000000000000000000000..4b3584da7e189efad7865450bf5310685c2e0f31
+--- /dev/null
++++ b/roms/qboot/cross.ini
+@@ -0,0 +1,8 @@
++[host_machine]
++system = 'linux'
++cpu_family = 'x86'
++cpu = 'x86_64'
++endian = 'little'
++
++[binaries]
++c = 'x86_64-suse-linux-gcc'

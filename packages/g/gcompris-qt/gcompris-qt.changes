@@ -1,8 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 21 19:44:48 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix release 3.1
+  - Fix critical bug in the new "Comparator" activity.
+- Update to release 3.0 contains 182 activities, including 8 new ones:
+  - Mouse click training
+  - Create the fractions
+  - Find the fraction
+  - Compare numbers
+  - Swap ten's complement
+  - Use ten's complement
+  - added 2 new command line options:
+    List all the available activities (-l or --list-activities)
+    Directly start a specific activity (--launch activityName)
+- Packaging update copyright years and format with spec-cleaner
+- Update list of dependencies.
+
+-------------------------------------------------------------------
 Wed May 11 15:21:03 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Add libqt5-qtimageformats as requirements to be sure to open
-  new webp encoded images 
+  new webp encoded images
 
 -------------------------------------------------------------------
 Tue Apr 19 12:40:00 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
@@ -15,11 +33,11 @@ Tue Apr 19 12:40:00 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 Sun Mar 13 13:13:13 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release 2.3
-  + Fix broken 3 activities in 2.2 ("Alphabet sequence", 
+  + Fix broken 3 activities in 2.2 ("Alphabet sequence",
     "Even and odd numbers" and "Numbers in order")
   + 2.2 changelog:
     - Russian translation back to 100%.
-    - Better ordering of the letters in the virtual keyboard 
+    - Better ordering of the letters in the virtual keyboard
       (follows the locale set in GCompris).
     + Activities:
     - New images for Tangram, Renewable energy and Watercycle activities.

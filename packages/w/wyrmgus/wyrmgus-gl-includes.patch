@@ -1,0 +1,10 @@
+--- Wyrmgus-5.3.6/src/video/renderer.h~	2022-08-08 19:14:50.000000000 +0200
++++ Wyrmgus-5.3.6/src/video/renderer.h	2023-01-28 23:56:19.735783986 +0100
+@@ -27,6 +27,7 @@
+ #pragma once
+ 
+ #pragma warning(push, 0)
++#include <GL/gl.h>
+ #include <QOpenGLTexture>
+ #include <QOpenGLTextureBlitter>
+ #pragma warning(pop)

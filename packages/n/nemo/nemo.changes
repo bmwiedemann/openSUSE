@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 28 21:12:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.3:
+  * nemo-window-menus.c: Recalculate extension/action items at an earlier stage in opening the file manu.
+  * nemo-extensions-list.c: Add a note regarding a memory leak.
+
+-------------------------------------------------------------------
 Sun Jan 15 21:27:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.2:

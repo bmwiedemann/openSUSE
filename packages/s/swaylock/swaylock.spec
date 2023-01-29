@@ -17,7 +17,7 @@
 
 
 Name:           swaylock
-Version:        v1.7.1
+Version:        v1.7.2
 Release:        0
 Summary:        Screen locker for Wayland
 License:        MIT

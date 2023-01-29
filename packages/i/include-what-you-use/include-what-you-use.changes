@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jan 28 22:28:52 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.19, update LLVM/Clang to version 15.
+  * New `--comment_style` option to control verbosity of 'why'
+    comments.
+  * New `--regex` option to select regex dialect.
+  * Add support for regex replacement in mappings.
+  * Add `begin_keep`/`end_keep` pragmas for protecting ranges of
+    includes or forward-declares.
+  * Fix several crash bugs for unusual inputs.
+  * More exhaustive handling of type aliases and enums.
+  * Recognize IWYU pragmas in CRLF source files.
+  * Respect configured toolchain on macOS (and overrides via
+    `-nostdinc++` + `-isystem`).
+  * In fix_includes.py, recognize namespace alias declarations.
+  * Improve mappings for POSIX and libc headers.
+- Update iwyu_include_picker.patch.
+
+-------------------------------------------------------------------
 Mon Dec  5 03:23:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use autosetup macro.

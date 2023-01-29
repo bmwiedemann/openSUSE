@@ -1,7 +1,7 @@
 #
 # spec file for package wyrmgus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
+Patch:          wyrmgus-gl-includes.patch
 BuildRequires:  boost-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -41,6 +42,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
@@ -64,6 +66,7 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
   -DWITH_BZIP2=ON \
   -DWITH_PHYSFS=ON \
   -DGAMEDIR=%{_bindir} \
+  -DOpenGL_GL_PREFERENCE=GLVND \
   -DENABLE_USEGAMEDIR=OFF
 %make_jobs
 

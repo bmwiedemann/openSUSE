@@ -1,0 +1,22 @@
+From: Bruce Rogers <brogers@suse.com>
+Date: Thu, 27 Jun 2019 09:38:43 -0600
+Subject: [openSUSE] Makefile: Fix csum8 to be built by host compiler
+
+Signed-off-by: Bruce Rogers <brogers@suse.com
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/roms/sgabios/Makefile b/roms/sgabios/Makefile
+index d2934c9f678dadfae5201b8507e9..d7e108faf69007056ddc08c4e63c 100644
+--- a/roms/sgabios/Makefile
++++ b/roms/sgabios/Makefile
+@@ -55,7 +55,7 @@ sgabios.elf: .depend $(OBJS) $(LDSCRIPT) csum8
+ 	$(LD) $(LDFLAGS) $(OBJS) -o $@
+ 
+ csum8: csum8.c
+-	$(CC) -Wall -O2 -o $@ $<
++	$(HOSTCC) -Wall -O2 -o $@ $<
+ 
+ sgabios.o: buildinfo
+ 

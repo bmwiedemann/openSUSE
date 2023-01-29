@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jan 28 19:45:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.26.0:
+  * cache-url: Give up on curl install for Redhat platforms
+  * Clean up tox.ini for tox v4
+  * Grow thin pool metadata by 1GiB
+  * Add variable for check installing python3 in yum element
+  * tox jobs: pin to correct nodesets; use host networking for containerfile
+  * Fix issue in extract image
+  * Added example configuration
+  * Added cloud-init growpart element
+  * Add Rocky 9 ARM64 functional test
+
+-------------------------------------------------------------------
 Wed Dec  7 22:07:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.25.0:

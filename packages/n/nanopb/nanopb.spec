@@ -1,7 +1,7 @@
 #
 # spec file for package nanopb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.6
+Version:        0.4.7
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-setuptools
 
 %description
 Nanopb is a C implementation of Google's Protocol Buffers data format. It is
@@ -67,7 +68,8 @@ format.
 %autosetup
 
 %build
-%cmake
+%cmake \
+  -DCMAKE_C_FLAGS=-DPB_ENABLE_MALLOC=1
 %cmake_build
 
 %install

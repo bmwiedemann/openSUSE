@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jan 20 11:20:21 MST 2023 - carnold@suse.com
+
+- bsc#1207070 - libvirt fails to start the guest once the new
+  shared disk is added, with the error, "cannot get 'write'
+  permission without 'resize' image size is not a multiple of
+  request alignment"
+  virtman-fix-shared-disk-request-alignment-error.patch
+
+-------------------------------------------------------------------
+Thu Jan  5 10:45:46 MST 2023 - carnold@suse.com
+
+- Replace downstream patch with upstream version (bsc#1203252)
+  67832d30-addhardware-Fix-backtrace-when-controller-index-is-None.patch
+  Drop virtman-fix-uninitialized-controller-index.patch
+
+-------------------------------------------------------------------
 Mon Nov 28 12:28:44 MST 2022 - carnold@suse.com
 
 - bsc#1205675 - [Build 20221122] virt-install: Specifying --boot no

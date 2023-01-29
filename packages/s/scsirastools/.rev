@@ -157,4 +157,14 @@
     <comment></comment>
     <requestid>1039426</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>642f1162b9d5d368869a812cf725b3b1</srcmd5>
+    <version>1.6.6</version>
+    <time>1674997869</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.6:
+  src/sgcommon.c,sgsubmon.c - include &lt;sys/sysmacros.h&gt;
+- scsirastools-add-systemd-support.patch: refresh</comment>
+    <requestid>1061810</requestid>
+  </revision>
 </revisionlist>

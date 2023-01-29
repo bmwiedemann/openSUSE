@@ -1,9 +1,9 @@
 #
 # spec file for package deno
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2022 Avindra Goolcharan <avindra@opensuse.org>
-# Copyright (c) 2018-2022 the Deno authors
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023 Avindra Goolcharan <avindra@opensuse.org>
+# Copyright (c) 2018-2023 the Deno authors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.26.2
+Version:        1.30.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -27,9 +27,13 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
 Source99:       revendor_source.sh
+# PATCH-FIX-OPENSUSE - Disable LTO
+Patch1:         deno-disbale-lto.patch
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
+BuildRequires:  cargo-packaging
 BuildRequires:  gcc-c++
 BuildRequires:  gn
 BuildRequires:  lld
@@ -37,8 +41,7 @@ BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  rust >= 1.53.0
-BuildRequires:  rust-packaging
+BuildRequires:  rust >= 1.62.1
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -58,8 +61,9 @@ updated with the --reload flag.
 
 %prep
 %autosetup -a1 -p1
-%define cargo_registry $(pwd)/vendor
-%{cargo_prep}
+cp %{SOURCE2} .cargo/config
+# Drop lock file due to revendor_source.sh breaking check
+rm Cargo.lock
 
 %build
 # workaround to use python3

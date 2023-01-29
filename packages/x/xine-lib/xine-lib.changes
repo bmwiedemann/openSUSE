@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jan 28 15:41:11 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Prevent Leap:15.4 building with ffmpeg-3
+
+-------------------------------------------------------------------
+Fri Jan 27 09:15:38 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to version 1.2.13
+- Remove xine-lib-ffmpeg5.patch, fixed upstream
+- Upstream changes:
+  * Add dav1d 1.0.0 support.
+  * Add user video frame rate limiter.
+  * Add xine_query_stream_info ().
+  * Add user OpenGL2 scale modes.
+  * Add xine timespec tools.
+  * FFmpeg compatibility update.
+  * Update german translation.
+  * Improved DVB subtitle support.
+  * Improved HLS input.
+  * Improved AAC demux.
+  * Fix clang build.
+  * Fix build with libcaca.
+  * Fix fine time display.
+  * Fix .mp4 audio.
+  * Fix wav demuxer.
+  * Work around broken Mesa vdpau drivers.
+  * Fix OpenGL2 deep color display.
+  * Various small fixes.
+  * Optimize OpenGL2 video output.
+  * Optimize audio out.
+  * Optimize OSD.
+  * Small engine optimizations.
+
+-------------------------------------------------------------------
 Thu Sep  8 06:05:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add xine-lib-ffmpeg5.patch: Fix build with ffmpeg-5.

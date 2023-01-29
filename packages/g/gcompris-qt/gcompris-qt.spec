@@ -1,8 +1,8 @@
 #
 # spec file for package gcompris-qt
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           gcompris-qt
-Version:        2.4
+Version:        3.1
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        AGPL-3.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  qml-box2d
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5Charts) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9.0
 # We don't want the Administrative documentation
 # BuildRequires:  kdoctools-devel
@@ -42,12 +43,9 @@ BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.9.0
-%if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(Qt5QmlModels) >= 5.9.0
-%else
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.9.0
-%endif
 BuildRequires:  pkgconfig(Qt5Quick) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5QuickTemplates2) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Script) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Sensors) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
@@ -60,11 +58,15 @@ Requires:       libQt5Multimedia5 >= 5.9.0
 Requires:       libQt5Svg5 >= 5.9.0
 Requires:       libqt5-qtgraphicaleffects >= 5.9.0
 Requires:       libqt5-qtimageformats >= 5.9.0
-Requires:       libqt5-qtquickcontrols >= 5.9.0
 Requires:       qml-box2d
 Recommends:     %{name}-voices = %{version}
 Provides:       gcompris = 17.10
 Obsoletes:      gcompris < 17.10
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(Qt5QmlModels) >= 5.9.0
+%else
+BuildRequires:  pkgconfig(Qt5Qml) >= 5.9.0
+%endif
 
 %description
 GCompris-Qt is an educational software suite comprising

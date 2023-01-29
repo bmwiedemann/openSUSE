@@ -1,0 +1,96 @@
+From: =?UTF-8?q?Martin=20Li=C5=A1ka?= <Martin Liška>
+Date: Tue, 22 Mar 2022 11:40:17 +0100
+Subject: [openSUSE] Basetools: Ignore spurious GCC 12 warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+References: bsc#1197018
+
+Building with GCC 12 fails producing errors. This is an example (but
+there are others):
+
+[ 1051s] Sdk/C/LzmaEnc.c: In function 'LzmaEnc_CodeOneMemBlock':
+[ 1051s] Sdk/C/LzmaEnc.c:2641:19: error: storing the address of local
+variable 'outStream' in '*p.rc.outStream' [-Werror=dangling-pointer=]
+[ 1051s]  2641 |   p->rc.outStream = &outStream.vt;
+[ 1051s]       |   ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+[ 1051s] Sdk/C/LzmaEnc.c:2624:28: note: 'outStream' declared here
+[ 1051s]  2624 |   CLzmaEnc_SeqOutStreamBuf outStream;
+[ 1051s]       |                            ^~~~~~~~~
+[ 1051s] Sdk/C/LzmaEnc.c:2624:28: note: 'pp' declared here
+
+Which is a false positive reported by GCC compiler:
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=98503
+
+Work it around by silencing the warning.
+
+Signed-off-by: Martin Liška <martin.liska@suse.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ BaseTools/Source/C/DevicePath/DevicePathUtilities.c | 4 ++++
+ BaseTools/Source/C/GenFfs/GenFfs.c                  | 4 ++++
+ BaseTools/Source/C/GenSec/GenSec.c                  | 4 ++++
+ BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c     | 4 ++++
+ 4 files changed, 16 insertions(+)
+
+diff --git a/roms/edk2/BaseTools/Source/C/DevicePath/DevicePathUtilities.c b/roms/edk2/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
+index 2ffefa8ceeeff9a1d0504ad71918..c9fb4329843a8fc34e596b506571 100644
+--- a/roms/edk2/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
++++ b/roms/edk2/BaseTools/Source/C/DevicePath/DevicePathUtilities.c
+@@ -16,6 +16,10 @@
+ #include "UefiDevicePathLib.h"
+ #include <Protocol/DevicePathUtilities.h>
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wstringop-overflow"
++#endif
++
+ //
+ // Template for an end-of-device path node.
+ //
+diff --git a/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c b/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c
+index 949025c333251bc5776159a6c535..be55a529743494677f8515906c6c 100644
+--- a/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c
++++ b/roms/edk2/BaseTools/Source/C/GenFfs/GenFfs.c
+@@ -36,6 +36,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #define UTILITY_MAJOR_VERSION   0
+ #define UTILITY_MINOR_VERSION   1
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wuse-after-free"
++#endif
++
+ STATIC CHAR8 *mFfsFileType[] = {
+   NULL,                                   // 0x00
+   "EFI_FV_FILETYPE_RAW",                  // 0x01
+diff --git a/roms/edk2/BaseTools/Source/C/GenSec/GenSec.c b/roms/edk2/BaseTools/Source/C/GenSec/GenSec.c
+index d54a4f9e0a7d67b7c8494ab37011..fb40ad36584c1cd53cc7ca4a9d4f 100644
+--- a/roms/edk2/BaseTools/Source/C/GenSec/GenSec.c
++++ b/roms/edk2/BaseTools/Source/C/GenSec/GenSec.c
+@@ -37,6 +37,10 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #define UTILITY_MAJOR_VERSION   0
+ #define UTILITY_MINOR_VERSION   1
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wuse-after-free"
++#endif
++
+ STATIC CHAR8      *mSectionTypeName[] = {
+   NULL,                                 // 0x00 - reserved
+   "EFI_SECTION_COMPRESSION",            // 0x01
+diff --git a/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c b/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
+index 4e9b499f8d80dc4d6bc13515e794..ab9b7cc34f69bceb74c454ce5032 100644
+--- a/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
++++ b/roms/edk2/BaseTools/Source/C/LzmaCompress/Sdk/C/LzmaEnc.c
+@@ -40,6 +40,10 @@ static unsigned g_STAT_OFFSET = 0;
+ 
+ #define REP_LEN_COUNT 64
+ 
++#if __GNUC__ >= 12
++#  pragma GCC diagnostic ignored "-Wdangling-pointer"
++#endif
++
+ void LzmaEncProps_Init(CLzmaEncProps *p)
+ {
+   p->level = 5;

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %endif
 %define shortversion 3.25
 Name:           cmake%{?psuffix}
-Version:        3.25.1
+Version:        3.25.2
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

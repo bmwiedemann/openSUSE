@@ -1,7 +1,7 @@
 #
 # spec file for package libclc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ BuildRequires:  cmake
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
+BuildRequires:  pkgconfig(LLVMSPIRVLib)
 %else
  %if 0%{?sle_version} >= 150500
 BuildRequires:  clang15-devel
@@ -70,7 +71,6 @@ Library requirements of the OpenCL C programming language.
 %define _lto_cflags %{nil}
 
 # For now we turn off opaque pointers - Clang uses them by default, but Mesa doesn't support them yet.
-# TODO: For building all targets, we need llvm-spirv.
 %cmake \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ \
@@ -78,8 +78,10 @@ Library requirements of the OpenCL C programming language.
   -DCMAKE_CLC_FLAGS="-Xclang -no-opaque-pointers" \
   -DCMAKE_LLAsm_FLAGS="-Xclang -no-opaque-pointers" \
 %endif
-  -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON \
-  -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl"
+%if 0%{?suse_version} < 1550
+  -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl" \
+%endif
+  -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON
 %cmake_build
 
 %install

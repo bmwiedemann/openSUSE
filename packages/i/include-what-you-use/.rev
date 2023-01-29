@@ -182,4 +182,27 @@
     <comment></comment>
     <requestid>1040626</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4e7cd0243410265fb77765acf91b3381</srcmd5>
+    <version>0.19</version>
+    <time>1674997878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.19, update LLVM/Clang to version 15.
+  * New `--comment_style` option to control verbosity of 'why'
+    comments.
+  * New `--regex` option to select regex dialect.
+  * Add support for regex replacement in mappings.
+  * Add `begin_keep`/`end_keep` pragmas for protecting ranges of
+    includes or forward-declares.
+  * Fix several crash bugs for unusual inputs.
+  * More exhaustive handling of type aliases and enums.
+  * Recognize IWYU pragmas in CRLF source files.
+  * Respect configured toolchain on macOS (and overrides via
+    `-nostdinc++` + `-isystem`).
+  * In fix_includes.py, recognize namespace alias declarations.
+  * Improve mappings for POSIX and libc headers.
+- Update iwyu_include_picker.patch.
+</comment>
+    <requestid>1061822</requestid>
+  </revision>
 </revisionlist>

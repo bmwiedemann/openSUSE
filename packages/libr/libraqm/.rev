@@ -54,4 +54,12 @@
 - Remove 0001-Pass_version_to_meson_library.patch as it was upstreamed (forwarded request 950205 from polslinux)</comment>
     <requestid>950279</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e62b94e7c9fee2fe51c2223bb96eb716</srcmd5>
+    <version>0.10.0</version>
+    <time>1674997871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061811</requestid>
+  </revision>
 </revisionlist>

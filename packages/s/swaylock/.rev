@@ -91,4 +91,13 @@
   * Remove unused fields in swaylock_surface</comment>
     <requestid>1061548</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc96a121a1ec83fc70d24bfc8b8356f8</srcmd5>
+    <version>v1.7.2</version>
+    <time>1674997882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.2:
+  * Wait for the locked event</comment>
+    <requestid>1061845</requestid>
+  </revision>
 </revisionlist>

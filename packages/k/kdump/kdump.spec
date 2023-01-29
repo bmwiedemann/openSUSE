@@ -49,7 +49,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git39.g8c819fe
+Version:        1.0.2+git46.g755f3a3
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later

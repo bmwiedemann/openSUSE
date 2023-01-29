@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jan 28 23:33:53 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 1.30.0:
+  * many changes, see https://github.com/denoland/deno/compare/v1.26.2...v1.30.0
+
+-------------------------------------------------------------------
+Thu Jan 26 10:52:37 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch from deprecated rust-packaging to cargo-packaging
+- Disable LTO to build with half of the RAM (fixes build on aarch64):
+  * deno-disbale-lto.patch
+- Update _constraints with current values
+- remove Cargo.lock to bypass checksum errors in rusty_v8
+
+-------------------------------------------------------------------
 Mon Oct 17 20:29:27 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 1.26.2:

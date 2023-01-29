@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 21 09:17:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.25.2:
+  * CUDA language level 20 (corresponding to C++20) is now supported with NVCC 12.0
+    and above.
+
+-------------------------------------------------------------------
 Thu Dec  1 19:45:57 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Update to 3.25.1

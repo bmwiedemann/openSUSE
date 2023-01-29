@@ -187,4 +187,12 @@
     <comment>- build with llvm15/clang15 on sle15-sp5/Leap 15.5</comment>
     <requestid>1033682</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>4044565b2aef74977d1b76579f32734e</srcmd5>
+    <version>0.2.0+llvm15.0.0</version>
+    <time>1674997839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061786</requestid>
+  </revision>
 </revisionlist>

@@ -317,4 +317,18 @@
   * Add support for using 5 GHz frequencies in AP mode. (forwarded request 1045110 from dirkmueller)</comment>
     <requestid>1045126</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3b6b59f0068add97fd9984947b67e420</srcmd5>
+    <version>2.2</version>
+    <time>1674997867</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2:
+  * Fix issue with handling FT and multiple roaming scans.
+  * Fix issue with handling multiple wiphy registrations.
+  * Fix issue with with EAP-PEAP session resumption.
+  * Add support for using PTK rekeying in AP mode.
+  * Add support for setting country IE in AP mode.
+  * Add support for setting WMM parameter IE in AP mode.</comment>
+    <requestid>1061799</requestid>
+  </revision>
 </revisionlist>

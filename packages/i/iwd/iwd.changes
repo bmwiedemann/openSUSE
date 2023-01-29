@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jan 25 08:06:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.2:
+  * Fix issue with handling FT and multiple roaming scans.
+  * Fix issue with handling multiple wiphy registrations.
+  * Fix issue with with EAP-PEAP session resumption.
+  * Add support for using PTK rekeying in AP mode.
+  * Add support for setting country IE in AP mode.
+  * Add support for setting WMM parameter IE in AP mode.
+
+-------------------------------------------------------------------
 Fri Dec 23 20:03:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:

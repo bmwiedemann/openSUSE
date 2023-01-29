@@ -1,0 +1,26 @@
+Subject: addhardware: Fix backtrace when controller.index is None
+From: Cole Robinson crobinso@redhat.com Tue Dec 13 13:49:35 2022 -0500
+Date: Tue Dec 13 13:49:35 2022 -0500:
+Git: 67832d3097cd6451833c30452d6991896e05933c
+
+When creating a new VM, in the customize wizard we can't depend on
+index= value being set (virtinst doesn't do it for example).
+
+For example, this causes a backtrace when adding two virtio-scsi
+controllers via the Customize wizard, or adding an extra
+virtio-scsi controller to an aarch64 CDROM install.
+
+Reported-by: Charles Arnold <carnold@suse.com>
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+--- a/virtManager/addhardware.py
++++ b/virtManager/addhardware.py
+@@ -1560,7 +1560,7 @@ class vmmAddHardware(vmmGObjectUI):
+         controller_num = [x for x in controllers if
+                 (x.type == controller_type)]
+         if len(controller_num) > 0:
+-            index_new = max([x.index for x in controller_num]) + 1
++            index_new = max(int(x.index or 0) for x in controller_num) + 1
+             dev.index = index_new
+ 
+         dev.type = controller_type

@@ -1209,4 +1209,15 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.1.2: (forwarded request 1056399 from dsterba)</comment>
     <requestid>1056405</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>c3ac8ed1d23ad54d585f9cdcf151dd38</srcmd5>
+    <version>6.1.3</version>
+    <time>1674997837</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.3:
+  * fi mkswapfile: fix setting size
+  * mkfs: check zoned support of libblkid
+  * check: improve error messages for mismatched references</comment>
+    <requestid>1061779</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jan 28 23:27:41 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add wyrmgus-gl-includes.patch to enable successful build for aarch64
+
+-------------------------------------------------------------------
 Wed Dec 28 10:36:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.6:

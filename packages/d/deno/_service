@@ -13,8 +13,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/denoland/deno</param>
-    <param name="revision">v1.26.2</param>
-    <param name="version">1.26.2</param>
+    <param name="revision">v1.30.0</param>
+    <param name="version">1.30.0</param>
 
     <!-- remove large docs -->
     <param name="exclude">docs</param>
@@ -37,8 +37,8 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/denoland/rusty_v8</param>
-    <param name="revision">v0.53.1</param>
-    <param name="version">0.53.1</param>
+    <param name="revision">v0.60.1</param>
+    <param name="version">0.60.1</param>
     <param name="exclude">.github</param>
 
     <!--
@@ -138,6 +138,9 @@
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">deno</param>
   </service>
 </services>
 

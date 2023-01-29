@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 27 15:00:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable NIS for new products, it's deprecated and gets removed
+
+-------------------------------------------------------------------
 Fri Jan 13 08:04:11 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Suppress warnings for Sphinx 6.0+.

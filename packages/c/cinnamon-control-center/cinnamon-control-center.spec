@@ -19,14 +19,14 @@
 %define soname  libcinnamon-control-center
 %define sover   1
 Name:           cinnamon-control-center
-Version:        5.2.1
+Version:        5.6.1
 Release:        0
 Summary:        Utilities to configure the Cinnamon desktop
 License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-control-center
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch:          %{name}-%{version}-libgnomekbd-3.28.1.patch
+# Patch:          %{name}-%{version}-libgnomekbd-3.28.1.patch
 BuildRequires:  cups-devel
 BuildRequires:  desktop-data
 BuildRequires:  fdupes
@@ -63,6 +63,7 @@ BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(libxklavier) >= 5.1
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
+BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi) >= 1.2
 Requires:       %{name}-common = %{version}

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Jan 28 18:51:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.1:
+  * l10n: Update POT
+  * Fix build when the color panel is disabled.
+  * fix a spelling error
+  * update and improve d/copyright
+  * Remove cinnamon-settings-daemon as a dependency.
+  * l10n: respect localedir option from meson again
+  * Desktop files: Fix keywords translations
+  * l10n: Update POT
+  * cinnamon-control-center (5.4.7) vanessa; urgency=medium
+  * region panel: add keys removed from libgnomekbd's API
+  * display panel: fallback if no preferred mode is set
+  * cinnamon-control-center (5.4.6) vanessa; urgency=medium
+  * wacom: Bring in line with changes in muffin to fix support.
+  * cinnamon-control-center (5.4.5) vanessa; urgency=medium
+  * build: add missing gio-unix-2.0 dependency
+  * cinnamon-control-center (5.4.4) vanessa; urgency=medium
+  * meson: fix regression in installing with some panels disabled
+  * small debian packaging improve
+  * cinnamon-control-center (5.4.3) vanessa; urgency=medium
+  * meson: fix installation of symlinks
+  * meson: reimplement the symlink creation install script using builtin features
+  * circleci: Fix mint21 build installation step.
+  * Fix desktop files
+  * cinnamon-control-center (5.4.2) vanessa; urgency=medium
+  * packaging: Install correct desktop files to usr/share/applications instead of in the panel definition folder.
+  * cinnamon-control-center (5.4.1) vanessa; urgency=medium
+  * cc-display-config: Check other monitors' capabilities when deciding which scales to offer for the selected one.
+  * display: Keep monitors visible when disabled.
+  * display: Select a different active monitor when the current selection is disabled.
+  * display: Clean up dead code.
+  * makepot: Include some missed files in the network panel.
+  * l10n: Update POT
+  * network/panel-common.c: Use null-safe g_strdup.
+  * cinnamon-control-center (5.4.0) vanessa; urgency=medium
+  * Adapt to muffin rebase.
+  * network: Remove old workaround for openvpn widgets.
+  * network: Add support for displaying IPv6 gateway and all IPv6 addresses
+  * CI: Update targets
+  * l10n: Update POT
+  * l10n: Update files
+- drop cinnamon-control-center-5.2.1-libgnomekbd-3.28.1.patch (obsolete)
+
+-------------------------------------------------------------------
 Sun Oct  2 04:19:18 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - FTBFS with libgnomekbd 3.28.1

@@ -362,4 +362,19 @@
     <comment>- update to 1.26.2</comment>
     <requestid>1029625</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b7b28097eabd8c29c17f2c245197678e</srcmd5>
+    <version>1.30.0</version>
+    <time>1674997874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.30.0:
+  * many changes, see https://github.com/denoland/deno/compare/v1.26.2...v1.30.0
+- Switch from deprecated rust-packaging to cargo-packaging
+- Disable LTO to build with half of the RAM (fixes build on aarch64):
+  * deno-disbale-lto.patch
+- Update _constraints with current values
+- remove Cargo.lock to bypass checksum errors in rusty_v8
+</comment>
+    <requestid>1061824</requestid>
+  </revision>
 </revisionlist>
