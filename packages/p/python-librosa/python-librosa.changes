@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jan 28 17:24:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add update-for-numpy-124.patch
+  * Replace types from expired deprecation by NumPy 1.24
+  * Upstream fixed it within a bigger set of changes in
+    gh#librosa/librosa#1587 and gh#librosa/librosa#1632
+- Move to PEP518 build
+- Improve test time by testing parallel with pytest-xdist
+
+-------------------------------------------------------------------
 Fri Oct 21 06:29:51 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add update-tests-for-numpy-123.patch gh#librosa/librosa#1581

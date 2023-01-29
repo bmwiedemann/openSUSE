@@ -1,7 +1,7 @@
 #
 # spec file for package python-librosa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-librosa
 Version:        0.9.2
 Release:        0
@@ -37,36 +35,41 @@ Patch1:         skip-test-data-missing-tests.patch
 Patch2:         update-tests-for-numpy-123.patch
 # PATCH-FIX-UPSTREAM remove-hanning-from-tests.patch gh#librosa/librosa#1548
 Patch3:         remove-hanning-from-tests.patch
+# PATCH-FIX-UPSTREAM update-for-numpy-124.patch, parts from gh#librosa/librosa#1587,  gh#librosa/librosa#1632
+Patch4:         update-for-numpy-124.patch
 BuildRequires:  %{python_module SoundFile >= 0.10.2}
 BuildRequires:  %{python_module audioread >= 2.1.9}
-BuildRequires:  %{python_module decorator >= 4.0.0}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module decorator >= 4.0.10}
 BuildRequires:  %{python_module joblib >= 0.14}
-BuildRequires:  %{python_module numba >= 0.45.0}
+BuildRequires:  %{python_module numba >= 0.45.1}
 BuildRequires:  %{python_module numpy >= 1.17.0}
 BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pooch >= 1.0}
-BuildRequires:  %{python_module resampy >= 0.2.0}
+BuildRequires:  %{python_module resampy >= 0.2.2}
 BuildRequires:  %{python_module scikit-learn >= 0.19.1}
 BuildRequires:  %{python_module scipy >= 1.2.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SoundFile >= 0.10.2
 Requires:       python-audioread >= 2.1.9
-Requires:       python-decorator >= 4.0.0
+Requires:       python-decorator >= 4.0.10
 Requires:       python-joblib >= 0.14
-Requires:       python-numba >= 0.45.0
+Requires:       python-numba >= 0.45.1
 Requires:       python-numpy >= 1.17.0
 Requires:       python-packaging >= 20.0
 Requires:       python-pooch >= 1.0
-Requires:       python-resampy >= 0.2.0
+Requires:       python-resampy >= 0.2.2
 Requires:       python-scikit-learn >= 0.19.1
 Requires:       python-scipy >= 1.2.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib >= 2.0}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module matplotlib >= 3.3.0}
 BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module samplerate}
 BuildRequires:  ffmpeg
@@ -83,13 +86,13 @@ systems.
 # Remove unneeded shebangs
 find librosa -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 # don't measure test coverage
-sed -i '/tool:pytest/,/addopts/ s/--cov-report.*--cov librosa//' setup.cfg
+sed -i '/addopts/ s/--cov-report.*--cov-report=xml//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -110,12 +113,12 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
     donttest+=" or test_istft_reconstruction or test_trim"
     donttest+=" or test_nnls_multiblock"
 fi
-%pytest -k "not (${donttest:4})"
+%pytest -k "not (${donttest:4})" -n auto
 
 %files %{python_files}
 %doc AUTHORS.md README.md
 %license LICENSE.md
 %{python_sitelib}/librosa
-%{python_sitelib}/librosa-%{version}*-info
+%{python_sitelib}/librosa-%{version}.dist-info
 
 %changelog
