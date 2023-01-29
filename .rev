@@ -574,4 +574,12 @@
     this to the forkserver process user as was the default in</comment>
     <requestid>1041730</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>060abb538b6c2171d33fa027352f12ce</srcmd5>
+    <version>3.10.9</version>
+    <time>1674997805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061591</requestid>
+  </revision>
 </revisionlist>

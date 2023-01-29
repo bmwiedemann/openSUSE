@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -185,7 +185,7 @@ BuildRequires:  pkgconfig(zlib)
 # The provider for python(abi) is in rpm-build-python
 BuildRequires:  rpm-build-python
 %endif
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
@@ -793,7 +793,9 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %exclude %{sitedir}/sqlite3/test
 %{dynlib readline}
 %{dynlib _sqlite3}
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 %{dynlib nis}
+%endif
 
 %files -n %{python_pkg_name}-idle
 %defattr(644, root, root, 755)
