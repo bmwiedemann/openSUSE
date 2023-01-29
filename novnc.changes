@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jan 26 15:52:16 UTC 2023 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 1.4.0
+    Library:
+      * Secure context (https) is now required
+      * Added support for the ZRLE encoding
+      * Added support for RealVNC's JPEG encoding
+      * Added support for Apple Remote Desktop's authentication
+      * Added support for RealVNC's RSA-AES authentication
+      * Added support for UltraVNC's MSLogonII authentication
+- Renamed to patch novnc-1.3.0-fix-interpreter.patch to novnc-1.4.0-fix-interpreter.patch
+
+-------------------------------------------------------------------
 Sat Oct 29 09:31:34 UTC 2022 - Software System <opensuse@wolke7.net>
 
 - add "Requires: which" in case of missing running requirements
