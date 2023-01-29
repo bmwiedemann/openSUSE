@@ -1,7 +1,7 @@
 #
 # spec file for package python-apache-libcloud
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
@@ -32,6 +32,7 @@ Source1:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}
 Source2:        https://www.apache.org/dist/libcloud/KEYS#/%{name}.keyring
 Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module lxml}

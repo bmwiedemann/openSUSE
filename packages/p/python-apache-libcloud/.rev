@@ -477,4 +477,19 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>1032174</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>62284a2f838a0624b2b95c51d62d529d</srcmd5>
+    <version>3.7.0</version>
+    <time>1674997826</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0:
+  * Support for Python 3.6 which has been EOL for more than a year now has
+    been removed.
+  * [CloudSigma] Update API URLs for US locations.
+  * [GCP] Fix OAuth2 desktop client login.
+  * [Amazon S3] Add support for ``af-south-1`` region.
+  * Also run unit tests under Python 3.11 on CI/CD and indicate we also
+    support Python 3.11.</comment>
+    <requestid>1061730</requestid>
+  </revision>
 </revisionlist>
