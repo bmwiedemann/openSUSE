@@ -2331,7 +2331,7 @@
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libntfs-3g89" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libntlm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2678,8 +2678,8 @@
     <package name="libtheoraenc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libthunarx-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtiff6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtirpc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtomcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtommath1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtotem-plparser-mini18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
