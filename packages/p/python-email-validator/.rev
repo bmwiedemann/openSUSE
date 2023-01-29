@@ -46,4 +46,15 @@
 </comment>
     <requestid>1007824</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>756ad886148a4aaa8241889bbe513709</srcmd5>
+    <version>1.3.1</version>
+    <time>1674997833</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.1:
+  * The new SPF 'v=spf1 -all' (reject-all) deliverability check is removed
+    in most cases. It now is performed only for domains that do not have MX
+    records but do have an A/AAAA fallback record.</comment>
+    <requestid>1061740</requestid>
+  </revision>
 </revisionlist>
