@@ -1,7 +1,7 @@
 #
 # spec file for package qtractor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define qt6 1
 %endif
 Name:           qtractor
-Version:        0.9.29
+Version:        0.9.31
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later

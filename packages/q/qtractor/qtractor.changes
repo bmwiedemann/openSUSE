@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jan 28 16:19:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.31:
+  * Fixed a off-by-one rounding error on MIDI clip offset and lengths
+  that were leaving some clips unlinked on load.
+  * LXVST_PATH environment variable now accrues to VST_PATH for Linux-
+  native VST2 plug-ins search path and not taking over in precedence
+  anymore.
+  * Fixed an old mistake on custom aliased CLAP and VST3 plugin paths.
+  * Plugin latency/delay compensation now in effect immediately after
+  changing track option (cf. Track/Properties... /Plugins/Latency
+  compensation).
+  * Shade-off regions not-in-view from the thumb-views.
+  * Improved MIDI queue time drift correction resilience and stability
+  against in-flight tempo changes.
+  * The main real-time process cycle now runs on uniform block-sizes,
+  in strides of 64 frames per period, meaning a higher resolution
+  automation, independent of buffer-size.
+  * The internal main MIDI engine gets its ALSA sequencer queue to a
+  higher resolution (PPQN aka ticks-per-beat) and not subordinated
+  to the current session's anymore.
+  * Although being deprecated to use, JACK Session support is hopefuly
+  fixed, once again.
+  * Better discriminate CLAP Plug-in specific note events and strict
+  MIDI dialect event processing.
+
+-------------------------------------------------------------------
 Sat Oct 15 13:59:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.9.29:
