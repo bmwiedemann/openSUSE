@@ -17,7 +17,7 @@
 
 
 Name:           lsof
-Version:        4.97.0
+Version:        4.98.0
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib

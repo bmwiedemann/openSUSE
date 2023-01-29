@@ -210,4 +210,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042684</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d265a130aba914a7030a563f12dcc2a</srcmd5>
+    <version>5.6.1</version>
+    <time>1674936441</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.1:
+  * Add a settings key for the gtk-enable-primary-paste GtkSetting.
+  * touchpad: Enable tap-to-click by default.</comment>
+    <requestid>1061776</requestid>
+  </revision>
 </revisionlist>

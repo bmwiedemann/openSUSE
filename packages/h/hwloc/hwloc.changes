@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 26 14:53:18 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove libXNVCtrl support as it brings too many X dependencies
+  (bsc#1207545)
+
+-------------------------------------------------------------------
 Fri Dec 23 07:53:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

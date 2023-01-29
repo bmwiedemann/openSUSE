@@ -15,12 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?suse_version} >= 1550
-%bcond_without XNVCtrl
-%else
-%bcond_with XNVCtrl
-%endif
 %global lname libhwloc15
 Name:           hwloc
 Version:        2.9.0
@@ -36,9 +30,6 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libnuma-devel
-%if %{with XNVCtrl}
-BuildRequires:  libXNVCtrl-devel
-%endif
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  perl

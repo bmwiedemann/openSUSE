@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jan 22 18:20:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lsof 4.98.0:
+  * Fix two potential null pointer access bug when gethostbyname2()
+    returns an empty address list
+  * Fix handling of empty command name
+  * Add -H switch to print human readable size, e.g. 123.4K 
+
+-------------------------------------------------------------------
 Wed Jan 18 09:31:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.97.0:

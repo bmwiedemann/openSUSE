@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 28 18:24:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.1:
+  * Add a settings key for the gtk-enable-primary-paste GtkSetting.
+  * touchpad: Enable tap-to-click by default.
+
+-------------------------------------------------------------------
 Tue Dec  6 12:51:16 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Remove (fix_return_value_void.patch) as it's no longer needed.
