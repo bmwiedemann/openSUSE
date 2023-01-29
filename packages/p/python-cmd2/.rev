@@ -589,4 +589,17 @@
     <comment></comment>
     <requestid>998089</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a5caf00b1f8d16db40248dffe1fd68cd</srcmd5>
+    <version>2.4.3</version>
+    <time>1674997835</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.3:
+  * Fixed ValueError caused when passing `Cmd.columnize()` strings wider than
+    `display_width`.
+  * Renamed `utils.str_to_bool()` -&gt; `utils.to_bool()`.
+  * Enhanced `utils.to_bool()` so that it accepts and converts `bool`, `int`,
+    and `float` in addition to `str`.</comment>
+    <requestid>1061746</requestid>
+  </revision>
 </revisionlist>
