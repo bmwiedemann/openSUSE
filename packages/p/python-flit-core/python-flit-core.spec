@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,12 @@
 %if "%{flavor}" == ""
 # The rest is in Ring1
 %define pprefix python
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} == 150500
+%if 0%{?suse_version} >= 1550
 BuildRequires:  python3-base >= 3.6
 %{expand:%%define skip_%{primary_python} 1}
 %else
 %define python_module() no-build-without-multibuild-flavor
-# no non-primary python in <=15.4
+# no non-primary python in <=15.5
 ExclusiveArch:  do-not-build
 %endif
 %endif

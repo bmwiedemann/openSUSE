@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jan 27 15:43:53 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Exclude the regular build in SLE15 SP5 as in SP4 instead of
+  leaving it as unresolvable
+
+-------------------------------------------------------------------
 Tue Nov  8 00:36:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.8.0 
