@@ -22,7 +22,7 @@
 %define docuver 5.2.0
 
 Name:           ortp
-Version:        5.2.9
+Version:        5.2.16
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        AGPL-3.0-or-later
